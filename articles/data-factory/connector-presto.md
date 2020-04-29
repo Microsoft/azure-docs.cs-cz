@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z Presto pomocí Azure Data Factory (Preview)
-description: Zjistěte, jak kopírovat data z Presto do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+description: Naučte se, jak kopírovat data z Presto do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 261bdedee56bb4de2dfbbef27358fae5ae8fdc3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416746"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopírování dat z Presto pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z Presto. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z Presto. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Preview. Můžete to vyzkoušet a dát nám zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
+> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a sdělit nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Presto je podporován pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data z aplikace Presto můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z Presto můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, proto není nutné ručně instalovat žádný ovladač pomocí tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Factory dat specifických pro konektor Presto.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor Presto.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu Presto jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **Presto** | Ano |
-| host | Adresa IP nebo název hostitele serveru Presto. (tj. 192.168.222.160)  | Ano |
-| serverVersion | Verze serveru Presto. (tj. 0,148 t)  | Ano |
-| Katalogu | Kontext katalogu pro všechny požadavky proti serveru.  | Ano |
-| port | Port TCP, který server Presto používá k naslouchání pro připojení klientů. Výchozí hodnota je 8080.  | Ne |
-| authenticationType | Mechanismus ověřování používaný k připojení k serveru Presto. <br/>Povolené hodnoty jsou: **Anonymní**, **LDAP** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Presto** . | Ano |
+| host | IP adresa nebo název hostitele serveru Presto (tj. 192.168.222.160)  | Ano |
+| serverVersion | Verze serveru Presto (tj. 0,148-t)  | Ano |
+| zařazení | Kontext katalogu pro všechny požadavky na serveru.  | Ano |
+| port | Port TCP, který server Presto používá k naslouchání klientským připojením. Výchozí hodnota je 8080.  | Ne |
+| authenticationType | Ověřovací mechanismus, který se používá pro připojení k serveru Presto. <br/>Povolené hodnoty jsou: **anonymní**, **LDAP** | Ano |
 | uživatelské jméno | Uživatelské jméno použité pro připojení k serveru Presto.  | Ne |
-| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
-| enableSsl | Určuje, zda jsou připojení k serveru šifrována pomocí systému TLS. Výchozí hodnota je False.  | Ne |
-| trustedCertPath | Úplná cesta k souboru PEM obsahujícího důvěryhodné certifikáty certifikační autority pro ověření serveru při připojování přes TLS. Tuto vlastnost lze nastavit pouze při použití TLS na samostatně hostované infračervené ovládání. Výchozí hodnota je soubor cacerts.pem nainstalovaný s infračerveným přenosem.  | Ne |
-| useSystemTrustStore | Určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodných certifikátů systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
-| allowHostNameCNMismatch | Určuje, zda má být při připojování přes TLS vyžadován název certifikátu TLS/SSL vydaný certifikační autoritou. Výchozí hodnota je False.  | Ne |
-| allowSelfSignedServerCert | Určuje, zda mají být ze serveru povoleny certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
-| timeZoneID | Místní časové pásmo používané připojením. Platné hodnoty pro tuto možnost jsou určeny v databázi časových pásem IANA. Výchozí hodnota je systémové časové pásmo.  | Ne |
+| heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| enableSsl | Určuje, jestli se připojení k serveru šifrují pomocí protokolu TLS. Výchozí hodnota je False.  | Ne |
+| trustedCertPath | Úplná cesta k souboru. pem, který obsahuje certifikáty důvěryhodné certifikační autority pro ověření serveru při připojení přes protokol TLS. Tuto vlastnost lze nastavit pouze při použití protokolu TLS v místním prostředí IR. Výchozí hodnota je soubor cacerts. pem nainstalovaný s IR.  | Ne |
+| useSystemTrustStore | Určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Výchozí hodnota je False.  | Ne |
+| allowHostNameCNMismatch | Určuje, jestli se má při připojování přes protokol TLS vyžadovat, aby název certifikátu TLS/SSL vydaný certifikační autoritou odpovídal názvu hostitele serveru. Výchozí hodnota je False.  | Ne |
+| allowSelfSignedServerCert | Určuje, jestli se mají na serveru udělit certifikáty podepsané svým držitelem. Výchozí hodnota je False.  | Ne |
+| timeZoneID | Místní časové pásmo používané připojením. Platné hodnoty pro tuto možnost se zadává v databázi časového pásma IANA. Výchozí hodnota je systémové časové pásmo.  | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -90,18 +90,18 @@ Pro propojenou službu Presto jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou Presto.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných Presto DataSet.
 
-Chcete-li kopírovat data z aplikace Presto, nastavte vlastnost type datové sady na **PrestoObject**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Presto, nastavte vlastnost Type datové sady na **PrestoObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena na: **PrestoObject.** | Ano |
-| Schématu | Název schématu. |Ne (pokud je zadán "dotaz" ve zdroji aktivity)  |
-| tabulka | Název tabulky. |Ne (pokud je zadán "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky se schématem. Tato vlastnost je podporována pro zpětnou kompatibilitu. Použití `schema` `table` a pro nové pracovní zatížení. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **PrestoObject** . | Ano |
+| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -120,18 +120,18 @@ Chcete-li kopírovat data z aplikace Presto, nastavte vlastnost type datové sad
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem Presto.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných Presto zdrojem.
 
-### <a name="presto-as-source"></a>Presto jako zdroj
+### <a name="presto-as-source"></a>Presto as source
 
-Chcete-li kopírovat data z aplikace Presto, nastavte typ zdroje v aktivitě kopírování na **PrestoSource**. V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z Presto, nastavte typ zdroje v aktivitě kopírování na **PrestoSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: PrestoSource** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **PrestoSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -163,10 +163,10 @@ Chcete-li kopírovat data z aplikace Presto, nastavte typ zdroje v aktivitě kop
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

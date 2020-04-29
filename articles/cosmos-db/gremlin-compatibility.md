@@ -1,6 +1,6 @@
 ---
-title: Kompatibilita azure cosmos DB Gremlin s funkcemi TinkerPop
-description: Referenční dokumentace Problémy s kompatibilitou modulu modulu
+title: Azure Cosmos DB kompatibilita Gremlin s funkcemi TinkerPop
+description: Problémy s kompatibilitou modulu Graph Documentation Engine
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -8,38 +8,38 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 989a033a843b861c34dc9dbdbced50399f8e5cd7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81449880"
 ---
-# <a name="azure-cosmos-db-gremlin-compatibility"></a>Kompatibilita s Azure Cosmos DB Gremlin
-Azure Cosmos DB Graph modul úzce sleduje [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) traversal kroky specifikace, ale existují rozdíly.
+# <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB kompatibilita Gremlin
+Modul Azure Cosmos DB Graph úzce sleduje specifikace kroků procházení [Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) , ale existují i rozdíly.
 
 ## <a name="behavior-differences"></a>Rozdíly v chování
 
-* Azure Cosmos DB Graph modul běží ***šířka první*** průchod, zatímco TinkerPop Gremlin je hloubka první. Toto chování dosahuje lepší výkon v horizontálně škálovatelné systému, jako je Cosmos DB. 
+* Modul graphu pro Azure Cosmos DB pracuje ***s prvními*** průchody, zatímco je TinkerPop Gremlin na hloubku. Toto chování dosahuje lepšího výkonu v horizontálním škálovatelném systému, jako je Cosmos DB. 
 
 ## <a name="unsupported-features"></a>Nepodporované funkce
 
-* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph to ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předáte průchod jako textový řetězec.
+* ***[Gremlin Bytecode](https://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** je na konkrétním programovacím jazyku nezávislá specifikace pro procházení grafů. Cosmos DB Graph ho ještě nepodporuje. Použijte `GremlinClient.SubmitAsync()` a předejte procházení jako textový řetězec.
 
-* ***`property(set, 'xyz', 1)`*** nastavená mohutnost není dnes podporována. Místo toho použijte `property(list, 'xyz', 1)`. Další informace naleznete [v tématu Vlastnosti Vertex s TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
+* ***`property(set, 'xyz', 1)`*** sada mohutnosti se v současné době nepodporuje. Místo toho použijte `property(list, 'xyz', 1)`. Další informace najdete v tématu [vlastnosti vrcholu pomocí TinkerPop](http://tinkerpop.apache.org/docs/current/reference/#vertex-properties).
 
-* ***`atch()`*** umožňuje dotazování grafů pomocí deklarativníporovnávání vzorů. Tato funkce není k dispozici.
+* ***`atch()`*** umožňuje dotazování grafů pomocí deklarativního porovnávání vzorů. Tato možnost není k dispozici.
 
-* ***Objekty jako vlastnosti*** vrcholů nebo hran nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
+* ***Objekty jako vlastnosti*** na vrcholech nebo hranách nejsou podporovány. Vlastnosti můžou být pouze primitivní typy nebo pole.
 
-* ***Řazení podle vlastností*** `order().by(<array property>)` pole není podporováno. Podporuje se řazení pouze podle primitivních typů.
+* ***Řazení podle vlastností*** `order().by(<array property>)` pole se nepodporuje. Podporuje se řazení pouze podle primitivních typů.
 
-* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string` `number`, `true` / `false` nebo typy. `null`hodnoty nejsou podporovány. 
+* ***Neprimitivní typy JSON*** nejsou podporovány. Použijte `string`typy `number`, nebo `true` / `false` . `null`hodnoty nejsou podporovány. 
 
-* ***Serializátor GraphSONv3*** není aktuálně podporován. V `GraphSONv2` konfiguraci připojení použijte třídy Serializer, Reader a Writer. Výsledky vrácené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
+* Serializátor ***GraphSONv3*** se v tuto chvíli nepodporuje. V `GraphSONv2` konfiguraci připojení použijte třídy serializátoru, čtecího zařízení a zapisovače. Výsledky vracené rozhraním API Azure Cosmos DB Gremlin nemají stejný formát jako formát GraphSON. 
 
-* **Lambda výrazy a funkce** nejsou aktuálně podporovány. To zahrnuje `.map{<expression>}`, `.by{<expression>}`, `.filter{<expression>}` a funkce. Další informace a informace o tom, jak je přepsat pomocí gremlinové kroky, najdete v [tématu Poznámka k Lambdasovi](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
+* **Výrazy lambda a funkce** nejsou aktuálně podporovány. To zahrnuje `.filter{<expression>}` funkce `.map{<expression>}`, `.by{<expression>}`a. Další informace a informace o tom, jak je přepsat pomocí Gremlin kroků, najdete v [poznámce pro výrazy lambda](http://tinkerpop.apache.org/docs/current/reference/#a-note-on-lambdas).
 
-* Transakce nejsou ***podporovány*** z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence na účtu Gremlin tak, aby "četl vlastní zápisy" a k vyřešení konfliktních zápisů použijte optimistickou souběžnost.
+* ***Transakce*** nejsou podporovány z důvodu distribuované povahy systému.  Nakonfigurujte vhodný model konzistence v účtu Gremlin na číst vlastní zápisy a pomocí optimistické souběžnosti vyřešte konfliktní zápisy.
 
 ## <a name="next-steps"></a>Další kroky
-* Navštivte hlasovou stránku [uživatele Cosmos DB,](https://feedback.azure.com/forums/263030-azure-cosmos-db) kde můžete sdílet zpětnou vazbu a pomoci týmu zaměřit se na funkce, které jsou pro vás důležité.
+* Přejděte na stránku [Cosmos DB hlas uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db) , kde můžete sdílet zpětnou vazbu a pomáhat týmu soustředit se na funkce, které jsou pro vás důležité.

@@ -1,6 +1,6 @@
 ---
-title: Přepínání aktivit ve Službě Azure Data Factory
-description: Aktivita Přepínač umožňuje řídit tok zpracování na základě podmínky.
+title: Přepnout aktivitu v Azure Data Factory
+description: Aktivita Switch umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 author: djpmsft
 ms.author: daperlov
@@ -10,17 +10,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.openlocfilehash: 4f839de6e276727fa910f91eccc34601cf34f85c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418004"
 ---
-# <a name="switch-activity-in-azure-data-factory"></a>Přepínání aktivit ve Službě Azure Data Factory
+# <a name="switch-activity-in-azure-data-factory"></a>Přepnout aktivitu v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Switch aktivita poskytuje stejné funkce, které příkaz switch poskytuje v programovacích jazycích. Vyhodnotí sadu aktivit odpovídající případu, který odpovídá vyhodnocení podmínky.
+Aktivita Switch nabízí stejné funkce jako příkaz switch v programovacích jazycích. Vyhodnocuje sadu aktivit odpovídajících případu, který odpovídá vyhodnocení podmínky.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -69,20 +69,20 @@ Switch aktivita poskytuje stejné funkce, které příkaz switch poskytuje v pro
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity přepínače. | Řetězec | Ano
-type | Musí být nastavena na *přepínač** | Řetězec | Ano
-výraz | Výraz, který musí vyhodnotit na hodnotu řetězce | Výraz s řetězcem typu výsledek | Ano
-Případech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí poskytnout alespoň jeden případ. Je tu maximální limit 25 případů. | Pole objektů case | Ano
-výchozíaktivity | Sada aktivit, které jsou provedeny, když není splněno vyhodnocení výrazu. | Pole aktivit | Ano
+jméno | Název aktivity Switch | Řetězec | Ano
+type | Musí být nastavené na *Switch** | Řetězec | Ano
+výraz | Výraz, který se musí vyhodnotit jako řetězcová hodnota | Výraz s výsledným typem String | Ano
+věcech | Sada případů, které obsahují hodnotu a sadu aktivit, které mají být provedeny, když hodnota odpovídá vyhodnocení výrazu. Musí obsahovat alespoň jeden případ. Maximální velikost je 25 případů. | Pole objektů Case | Ano
+defaultActivities | Sada aktivit, které se spustí, když se nesplní vyhodnocení výrazu. | Pole aktivit | Ano
 
 ## <a name="example"></a>Příklad
 
-Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru potrubí: routeSelection.
+Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection.
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou přepínače (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-switch-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou Switch (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -230,7 +230,7 @@ Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní slo�
 
 ```
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -244,9 +244,9 @@ Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní slo�
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada objektů blob Azure (BlobDataset.json)
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
 
-Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outputPath2** kanálu. 
+Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
 {
@@ -272,7 +272,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
 
 ```json
 {
@@ -288,7 +288,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tyto příkazy předpokládají, že jste uložili soubory JSON do složky: C:\ADF. 
+U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -331,7 +331,7 @@ $result.Error -join "`r`n"
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na další aktivity toku řízení podporované factory: 
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

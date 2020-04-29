@@ -1,6 +1,6 @@
 ---
 title: Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore
-description: Doporučení a důležité informace, které byste měli vědět, jak používáte objednané clusterované columnstore index ke zlepšení výkonu dotazu.
+description: Doporučení a pokyny, které byste měli znát při použití seřazeného clusterovaného indexu columnstore pro zlepšení výkonu dotazů.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417039"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
-Když se uživatelé dotazsloupectabulka v synapse fondu SQL, optimalizátor zkontroluje minimální a maximální hodnoty uložené v každém segmentu.  Segmenty, které jsou mimo hranice predikátu dotazu, se nečtou z disku do paměti.  Dotaz může získat vyšší výkon, pokud počet segmentů ke čtení a jejich celková velikost jsou malé.   
+Když uživatelé dotazují tabulku columnstore ve synapse fondu SQL, optimalizuje zkontroluje minimální a maximální hodnoty uložené v jednotlivých segmentech.  Segmenty mimo hranice predikátu dotazu se nečtou z disku do paměti.  Dotaz může dosáhnout rychlejšího výkonu, pokud je počet čtených segmentů a jejich celková velikost malá.   
 
-## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Objednáno vs. neobjednaný index columnstore columnstore
+## <a name="ordered-vs-non-ordered-clustered-columnstore-index"></a>Seřazený a neuspořádaný clusterovaný index columnstore
 
-Ve výchozím nastavení pro každou tabulku vytvořenou bez možnosti indexu vytvoří interní komponenta (tvůrce indexu) neuspořádaný index úložiště sloupců (CCI).  Data v každém sloupci jsou komprimována do samostatného segmentu skupiny řádků CCI.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se během provádění dotazu nečtou z disku.  CCI nabízí nejvyšší úroveň komprese dat a zmenšuje velikost segmentů ke čtení, takže dotazy mohou běžet rychleji. Protože však tvůrce indexu neseřadí data před jejich kompresí do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobí, že dotazy budou číst další segmenty z disku a jejich dokončení trvá déle.  
+Ve výchozím nastavení pro každou tabulku vytvořenou bez možnosti indexu vytvoří interní komponenta (Tvůrce indexů) neuspořádaný clusterovaný index columnstore (Ski).  Data v jednotlivých sloupcích jsou komprimována do samostatného segmentu skupiny řádků Ski.  V rozsahu hodnot každého segmentu jsou metadata, takže segmenty, které jsou mimo hranice predikátu dotazu, se při provádění dotazu nečtou z disku.  Ski nabízí nejvyšší úroveň komprese dat a snižuje velikost segmentů ke čtení, aby dotazy mohly běžet rychleji. Vzhledem k tomu, že tvůrce indexů neřadí data před jejich komprimací do segmentů, může dojít k segmentům s překrývajícími se rozsahy hodnot, což způsobilo, že dotazy budou číst více segmentů z disku a trvá déle.  
 
-Při vytváření objednané CCI, Synapse SQL engine seřadí existující data v paměti podle klíče pořadí před tvůrce indexu komprimuje do segmentů indexu.  U seřazených dat je omezení překrývání segmentů, což umožňuje dotazům efektivnější eliminaci segmentů a tím i vyšší výkon, protože počet segmentů pro čtení z disku je menší.  Pokud lze všechna data seřadit v paměti najednou, lze se vyhnout překrývání segmentů.  Vzhledem k velké tabulky v datových skladech, tento scénář se nestává často.  
+Při vytváření seřazené instrukce synapse modul SQL seřadí existující data z paměti pomocí klíčů, než je tvůrce indexů komprimuje na segmenty indexu.  U seřazených dat je segment překrývající se snížen, takže dotazy mají efektivnější odstraňování segmentů, což znamená rychlejší výkon, protože počet segmentů ke čtení z disku je menší.  Pokud se všechna data dají řadit v paměti najednou, můžete se vyhnout překrývání segmentu.  V důsledku velkých tabulek v datových skladech se tento scénář často neprovádí.  
 
-Chcete-li zkontrolovat rozsahy segmentů pro sloupec, spusťte následující příkaz s názvem tabulky a názvem sloupce:
+Chcete-li kontrolovat rozsahy segmentů pro sloupec, spusťte následující příkaz s názvem tabulky a názvem sloupce:
 
 ```sql
 SELECT o.name, pnp.index_id, 
@@ -50,18 +50,18 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```
 
 > [!NOTE] 
-> V tabulce objednané CCI jsou nová data vyplývající ze stejné dávky DML nebo operací načítání dat seřazena v rámci této dávky, neexistuje žádné globální řazení mezi všemi daty v tabulce.  Uživatelé mohou znovu sestavit objednané CCI seřadit všechna data v tabulce.  V Synapse SQL, columnstore index REBUILD je operace offline.  Pro dělené tabulky REBUILD se provádí jeden oddíl najednou.  Data v oddílu, který je znovu sestaven je "offline" a není k dispozici, dokud rebuild je dokončena pro tento oddíl. 
+> V seřazené tabulce Ski se v rámci této dávky seřadí nová data, která jsou výsledkem stejné dávky operací DML nebo načítání dat, ale neexistují žádná globální řazení napříč všemi daty v tabulce.  Uživatelé mohou znovu sestavit uspořádanou INSTRUKCi pro řazení všech dat v tabulce.  V synapse SQL je opětovné sestavení indexu columnstore operací offline.  Pro dělenou tabulku je opětovné sestavení provedeno po jednom oddílu.  Data v oddílu, který se má znovu sestavit, jsou "offline" a nejsou k dispozici, dokud není znovu dokončeno opětovné sestavení pro tento oddíl. 
 
 ## <a name="query-performance"></a>Výkon dotazů
 
-Zvýšení výkonu dotazu z objednané CCI závisí na vzorcích dotazu, velikosti dat, způsobu řazení dat, fyzické struktuře segmentů a třídě DWU a prostředku zvolené pro spuštění dotazu.  Uživatelé by měli zkontrolovat všechny tyto faktory před výběrem pořadí sloupců při navrhování objednané tabulky CCI.
+Nárůst výkonu dotazu od seřazené instrukce závisí na vzorech dotazů, velikosti dat, jak dobře jsou data seřazená, na fyzické struktuře segmentů a na třídě DWU a prostředku zvolené pro provedení dotazu.  Před výběrem sloupců řazení při návrhu seřazené tabulky s INSTRUKCEmi musí uživatelé zkontrolovat všechny tyto faktory.
 
-Dotazy se všemi těmito vzory obvykle běží rychleji s objednané CCI.  
-1. Dotazy mají rovnost, nerovnost nebo rozsah predikáty
-1. Sloupce predikátu a seřazené sloupce CCI jsou stejné.  
-1. Sloupce predikátu se používají ve stejném pořadí jako řadové pořadí uspořádaných sloupců CCI.  
+Dotazy se všemi těmito vzory obvykle fungují rychleji s uspořádanou konzulární instrukcí.  
+1. Dotazy mají predikáty rovnosti, nerovnosti nebo rozsahu.
+1. Sloupce predikátu a seřazené sloupce s INSTRUKCEmi jsou stejné.  
+1. Sloupce predikátu se používají ve stejném pořadí jako pořadí sloupců uspořádaných sloupců s konzulárními instrukcemi.  
  
-V tomto příkladu tabulka T1 má seskupený columnstore index seřazený v pořadí Col_C, Col_B a Col_A.
+V tomto příkladu má tabulka T1 clusterovaný index columnstore seřazený v sekvenci Col_C, Col_B a Col_A.
 
 ```sql
 
@@ -70,7 +70,7 @@ ORDER (Col_C, Col_B, Col_A)
 
 ```
 
-Výkon dotazu 1 můžete využít více objednané CCI než ostatní tři dotazy. 
+Výkon dotazů 1 může využít více než jedna z řazené Ski, než ostatní tři dotazy. 
 
 ```sql
 -- Query #1: 
@@ -91,25 +91,25 @@ SELECT * FROM T1 WHERE Col_A = 'a' AND Col_C = 'c';
 
 ## <a name="data-loading-performance"></a>Výkon načítání dat
 
-Výkon načítání dat do objednané tabulky CCI je podobný dělené tabulce.  Načítání dat do objednané tabulky CCI může trvat déle než neobjednaná tabulka CCI z důvodu operace řazení dat, ale dotazy mohou běžet rychleji s objednanými CCI.  
+Výkon načítání dat do seřazené tabulky Ski je podobný tabulce děleno.  Načítání dat do seřazené tabulky s INSTRUKCEmi může v důsledku operace řazení dat trvat déle než neuspořádaná tabulka INSTRUKCí. dotazy ale můžou běžet rychleji, ale s uspořádanou konzulární rutinou.  
 
-Tady je příklad porovnání výkonu načítání dat do tabulek s různými schématy.
+Zde je příklad porovnání výkonu načítání dat do tabulek s různými schématy.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/cci-data-loading-performance.png)
 
 
-Zde je příklad porovnání výkonu dotazu mezi CCI a objednané CCI.
+Tady je příklad porovnání výkonu dotazů mezi Ski a seřazenou konzulární instrukcí.
 
 ![Performance_comparison_data_loading](./media/performance-tuning-ordered-cci/occi_query_performance.png)
 
  
-## <a name="reduce-segment-overlapping"></a>Zmenšit překrývání segmentů
+## <a name="reduce-segment-overlapping"></a>Zmenšení překrývajících se segmentů
 
-Počet překrývajících se segmentů závisí na velikosti dat k řazení, dostupné paměti a maximálníst osti paralelismu (MAXDOP) nastavení během uspořádané vytvoření CCI. Níže jsou uvedeny možnosti, jak snížit překrývání segmentů při vytváření objednaného CCI.
+Počet překrývajících se segmentů závisí na velikosti dat, která se mají seřadit, dostupné paměti a nastavení maximálního stupně paralelismu (MAXDOP) během vytváření řazené Ski. Níže jsou uvedeny možnosti, jak omezit segment překrývající se při vytváření uspořádané konzulární instrukce.
 
-- Použijte třídu prostředků xlargerc na vyšší DWU, abyste povolili více paměti pro řazení dat před tím, než tvůrce indexu komprimuje data do segmentů.  Jakmile je v segmentu indexu, nelze změnit fyzické umístění dat.  V segmentu nebo mezi segmenty nejsou žádná data řazení.  
+- Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistuje žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
-- Vytvořte objednané CCI s MAXDOP = 1.  Každé vlákno používané pro uspořádané vytvoření CCI funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení mezi daty seřazené podle různých vláken.  Použití paralelních vláken může zkrátit dobu vytvoření objednané CCI, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době je možnost MAXDOP podporována pouze při vytváření uspořádané tabulky CCI pomocí příkazu CREATE TABLE AS SELECT.  Vytvoření objednaného CCI pomocí příkazů VYTVOŘIT INDEX nebo VYTVOŘIT TABULKU nepodporuje možnost MAXDOP. Například:
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )
@@ -117,26 +117,26 @@ AS SELECT * FROM ExampleTable
 OPTION (MAXDOP 1);
 ```
 
-- Před seřazením dat podle klíčů řazení před jejich načtením do tabulek.
+- Před jejich nařazením do tabulek předem Seřaďte data pomocí klíčů řazení.
 
-Zde je příklad objednané distribuce tabulky CCI, která má nulový segment překrývající se podle výše uvedených doporučení. Objednaná tabulka CCI je vytvořena v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB pomocí MAXDOP 1 a xlargerc.  CCI je seřazena ve sloupci BIGINT bez duplikátů.  
+Tady je příklad uspořádané distribuce tabulek Ski, která má nulový segment překrývající se nad doporučeními. Seřazená tabulka Ski je vytvořená v databázi DWU1000c prostřednictvím CTAS z tabulky haldy 20 GB s použitím MAXDOP 1 a xlargerc.  INSTRUKCE je seřazená na sloupec typu BIGINT bez duplicit.  
 
 ![Segment_No_Overlapping](./media/performance-tuning-ordered-cci/perfect-sorting-example.png)
 
-## <a name="create-ordered-cci-on-large-tables"></a>Vytvoření uspořádaného CCI u velkých tabulek
+## <a name="create-ordered-cci-on-large-tables"></a>Vytváření uspořádané konzulární instrukce pro velké tabulky
 
-Vytvoření objednané CCI je operace offline.  U tabulek bez oddílů nebudou data přístupná uživatelům, dokud nebude proces vytváření uspořádané kopie cci dokončen.   Pro rozdělené tabulky, protože modul vytvoří objednaný oddíl CCI podle oddílu, uživatelé mohou stále přistupovat k datům v oddílech, kde se nezpracovává uspořádané vytvoření CCI.   Pomocí této možnosti můžete minimalizovat prostoje během seřazeného vytváření CCI u velkých tabulek: 
+Vytvoření seřazené konzulární instrukce je offline operace.  Pro tabulky, které neobsahují oddíly, data nebudou k dispozici uživatelům, dokud se nedokončí proces vytváření řazené Ski.   Pro dělené tabulky, protože modul vytváří seřazený oddíl s pokyny podle oddílu, uživatelé budou mít stále přístup k datům v oddílech, kde se vytváření řazené konzulárních instrukcí nezpracovává.   Tuto možnost můžete použít k minimalizaci výpadku během uspořádaného vytváření Ski v rozsáhlých tabulkách: 
 
-1.    Vytvořte oddíly v cílové velké tabulce (nazývané Table_A).
-2.    Vytvořte prázdnou uspořádanou tabulku CCI (nazvanou Table_B) se stejnou tabulkou a schématem oddílu jako tabulka A.
-3.    Přepněte jeden oddíl z tabulky A do tabulky B.
-4.    Spusťte index ALTER <Ordered_CCI_Index> <zapnuto Table_B>>> ODDÍL PARTITION_ID> <v tabulce B, abyste znovu vybudovali přepínaný oddíl.  
-5.    Opakujte krok 3 a 4 pro každý oddíl v Table_A.
-6.    Jakmile jsou všechny oddíly přepnuty z Table_A na Table_B a byly znovu sestaveny, přetažení Table_A a přejmenování Table_B na Table_A. 
+1.    Vytvořte oddíly pro cílovou rozsáhlou tabulku (s názvem Table_A).
+2.    Vytvoří prázdnou seřazenou tabulku Ski (s názvem Table_B) se stejným schématem Table a partition jako tabulka a.
+3.    Umožňuje přepnout jeden oddíl z tabulky A na tabulku B.
+4.    Spusťte příkaz ALTER INDEX <Ordered_CCI_Index> na <Table_B> znovu sestavit oddíl = <Partition_ID> v tabulce B pro opětovné sestavení přepnutého oddílu.  
+5.    Zopakujte kroky 3 a 4 pro každý oddíl v Table_A.
+6.    Po přepnutí všech oddílů z Table_A na Table_B a jejich opětovné vytvoření, vyřazení Table_A a přejmenování Table_B na Table_A. 
 
 ## <a name="examples"></a>Příklady
 
-**A. Chcete-li zkontrolovat objednané sloupce a pořadí řadové:**
+**A. pro kontrolu seřazených sloupců a pořadí pořadí:**
 
 ```sql
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
@@ -145,7 +145,7 @@ JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
 WHERE column_store_order_ordinal <>0
 ```
 
-**B. Chcete-li změnit pořadové číslo sloupce, přidejte nebo odeberte sloupce ze seznamu objednávek nebo změnit z CCI na objednané CCI:**
+**B. pro změnu pořadí sloupců, přidání nebo odebrání sloupců ze seznamu objednávek nebo pro změnu z instrukce na seřazenou INSTRUKCi:**
 
 ```sql
 CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
@@ -155,4 +155,4 @@ WITH (DROP_EXISTING = ON)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

@@ -1,6 +1,6 @@
 ---
-title: Pokud aktivita stavu v Azure Data Factory
-description: Aktivita If Condition umožňuje řídit tok zpracování na základě podmínky.
+title: Aktivita podmínky v Azure Data Factory
+description: Aktivita podmínka if umožňuje řídit tok zpracování na základě podmínky.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417173"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Pokud aktivita stavu v Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory"></a>Aktivita podmínky v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycích. Vyhodnotí sadu aktivit, když se podmínka vyhodnotí jako `true`, a jinou sadu aktivit, když se podmínka vyhodnotí jako `false`. 
@@ -67,19 +67,19 @@ Aktivita podmínky If funguje stejně jako příkaz if v programovacích jazycí
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity if-condition. | Řetězec | Ano
-type | Musí být nastavena na **IfCondition** | Řetězec | Ano
-výraz | Výraz, který musí být vyhodnocen jako pravdivý nebo nepravdivý | Výraz s logickým textem typu výsledku | Ano
-ifTrueActivities | Sada aktivit, které jsou provedeny při `true`vyhodnocení výrazu na . | Pole | Ano
-ifFalseActivities | Sada aktivit, které jsou provedeny při `false`vyhodnocení výrazu na . | Pole | Ano
+jméno | Název aktivity if-Condition | Řetězec | Ano
+type | Musí být nastavené na **IfCondition** | Řetězec | Ano
+výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz s typem výsledku Boolean | Ano
+ifTrueActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `true`. | Pole | Ano
+ifFalseActivities | Sada aktivit, které se spustí, když se výraz vyhodnotí jako `false`. | Pole | Ano
 
 ## <a name="example"></a>Příklad
-Kanál v tomto příkladu zkopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru potrubí: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud hodnota routeSelection je false, data se zkopíruje do outputPath2. 
+Kanál v tomto příkladu kopíruje data ze vstupní složky do výstupní složky. Výstupní složka je určena hodnotou parametru kanálu: routeSelection. Pokud je hodnota routeSelection true, data se zkopírují do outputPath1. A pokud je hodnota routeSelection false, data se zkopírují do outputPath2. 
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou stavu IF (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou IF-Condition (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -190,7 +190,7 @@ Dalším příkladem výrazu je:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -204,8 +204,8 @@ Dalším příkladem výrazu je:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada objektů blob Azure (BlobDataset.json)
-Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outputPath2** kanálu. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
 {
@@ -231,7 +231,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
 
 ```json
 {
@@ -246,7 +246,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tyto příkazy předpokládají, že jste uložili soubory JSON do složky: C:\ADF. 
+U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -288,7 +288,7 @@ $result.Error -join "`r`n"
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované factory: 
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita For Each](control-flow-for-each-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – klientská knihovna Azure Key Vault pro rozhraní .NET (v4)
-description: Zjistěte, jak vytvořit, načíst a odstranit tajné klíče z trezoru klíčů Azure pomocí knihovny klienta .NET (v4)
+title: Rychlý Start – Azure Key Vault klientskou knihovnu pro .NET (v4)
+description: Naučte se vytvářet, načítat a odstraňovat tajné klíče z trezoru klíčů Azure pomocí klientské knihovny .NET (v4).
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 03/12/2020
@@ -8,51 +8,51 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.openlocfilehash: 5e62e8c3883ad8414d1fb550dd4221eb8b9e4056
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81425032"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Úvodní příručka: Klientská knihovna Azure Key Vault pro rozhraní .NET (SDK v4)
+# <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Rychlý Start: Klientská knihovna Azure Key Vault pro .NET (SDK v4)
 
-Začínáme s klientskou knihovnou Azure Key Vault pro rozhraní .NET. Podle následujících kroků nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začněte s klientskou knihovnou Azure Key Vault pro .NET. Postupujte podle následujících kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
-Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Trezor klíčů pro rozhraní .NET můžete:
+Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče používané cloudovými aplikacemi a službami. Pomocí klientské knihovny Key Vault pro .NET:
 
 - Zvyšte zabezpečení a kontrolu nad klíči a hesly.
-- Vytvořte a importujte šifrovací klíče během několika minut.
-- Snižte latenci díky cloudovému škálování a globální redundanci.
+- Vytvářejte a importujte šifrovací klíče během několika minut.
+- Snižte latenci díky škálování cloudu a globální redundanci.
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
-- Použijte fips 140-2 úroveň 2 ověřené hmeony.
+- Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Referenční dokumentace](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | rozhraní[API Balíček zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [knihovny (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[Dokumentace k referenční dokumentaci](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | knihovny[(NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Sada [.NET Core 2.1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
 
-Tento rychlý start předpokládá, `dotnet`že používáte příkazy [, Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)a Windows v terminálu Windows (například [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), Windows [PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)nebo [Azure Cloud Shell).](https://shell.azure.com/)
+V tomto rychlém startu se `dotnet`předpokládá, že používáte příkazy [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)a Windows v terminálu Windows (například [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)nebo [Azure Cloud Shell](https://shell.azure.com/)).
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-new-net-console-app"></a>Vytvoření nové aplikace konzoly ROZHRANÍ .NET
+### <a name="create-new-net-console-app"></a>Vytvořit novou konzolovou aplikaci .NET
 
-V okně konzoly `dotnet new` vytvořte pomocí příkazu novou konzolovou `key-vault-console-app`aplikaci .NET s názvem .
+V okně konzoly pomocí `dotnet new` příkazu vytvořte novou konzolovou aplikaci .NET s názvem. `key-vault-console-app`
 
 ```console
 dotnet new console -n key-vault-console-app
 ```
 
-Změňte adresář do nově vytvořené složky aplikace. Aplikaci můžete sestavit pomocí:
+Změňte adresář na nově vytvořenou složku aplikace. Aplikaci můžete vytvořit pomocí:
 
 ```console
 dotnet build
 ```
 
-Výstup sestavení by měl obsahovat žádná upozornění nebo chyby.
+Výstup sestavení by neměl obsahovat žádná upozornění ani chyby.
 
 ```console
 Build succeeded.
@@ -62,13 +62,13 @@ Build succeeded.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-V okně konzoly nainstalujte klientskou knihovnu Azure Key Vault pro rozhraní .NET:
+V okně konzoly nainstalujte Azure Key Vault klientskou knihovnu pro .NET:
 
 ```console
 dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
-Pro tento rychlý start budete muset nainstalovat také následující balíčky:
+Pro tento rychlý Start budete muset nainstalovat i tyto balíčky:
 
 ```console
 dotnet add package Azure.Identity
@@ -76,10 +76,10 @@ dotnet add package Azure.Identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Vytvoření skupiny prostředků a trezoru klíčů
 
-Tento rychlý start používá předem vytvořený trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [rychlém startu Azure PowerShellu](quick-create-powershell.md)nebo [rychlém startu na webu Azure Portal](quick-create-portal.md). Případně můžete jednoduše spustit příkazy Azure CLI níže.
+V tomto rychlém startu se používá předem vytvořený Trezor klíčů Azure. Trezor klíčů můžete vytvořit podle kroků v [rychlém startu Azure CLI](quick-create-cli.md), [Azure PowerShell rychlý Start](quick-create-powershell.md)nebo v [rychlém startu Azure Portal](quick-create-portal.md). Případně můžete jednoduše spustit příkazy rozhraní příkazového řádku Azure CLI.
 
 > [!Important]
-> Každý trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <> názvu trezoru s jedinečným klíčem.
+> Každý Trezor klíčů musí mít jedinečný název. V následujících příkladech nahraďte <název trezoru klíčů jedinečných> s názvem vašeho trezoru klíčů.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -95,15 +95,15 @@ New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGr
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Nejjednodušší způsob ověření aplikace .NET na principu shluků je se spravovanou identitou. podrobnosti najdete [v tématu Použití spravované identity služby App Service pro přístup k azure key vault](../general/managed-identity.md) pro podrobnosti. Z důvodu jednoduchosti však tento rychlý start vytvoří aplikaci konzoly .NET. Ověření desktopové aplikace pomocí Azure vyžaduje použití instančního objektu a zásad řízení přístupu.
+Nejjednodušší způsob, jak ověřit cloudovou aplikaci .NET, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . V zájmu zjednodušení ale v tomto rychlém startu se vytvoří Konzolová aplikace .NET. Ověřování desktopové aplikace pomocí Azure vyžaduje použití instančního objektu a zásad řízení přístupu.
 
-Vytvořte princip služby pomocí příkazu Azure CLI [az az ad sp create-for-rbac:](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)
+Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Tato operace vrátí řadu párů klíč / hodnota. 
+Tato operace vrátí řadu párů klíč/hodnota. 
 
 ```console
 {
@@ -119,7 +119,7 @@ Tato operace vrátí řadu párů klíč / hodnota.
 }
 ```
 
-Vytvořte instanční objekt pomocí příkazu Azure PowerShell [New-AzADServicePrincipal:](/powershell/module/az.resources/new-azadserviceprincipal)
+Pomocí příkazu Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) vytvořte instanční objekt:
 
 ```azurepowershell
 # Create a new service principal
@@ -137,14 +137,14 @@ $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret
 $clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
 ```
 
-Další podrobnosti o instančním objektu s Azure PowerShell, najdete v části [Vytvoření hlavního účtu služby Azure s Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+Další podrobnosti o instančním objektu s Azure PowerShell najdete v tématu [Vytvoření instančního objektu Azure s Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
-Poznamenejte si clientId, clientSecret a tenantId, jak budeme používat v následujících krocích.
+Poznamenejte si clientId, clientSecret a tenantId, jak je použijeme v následujících krocích.
 
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Poskytnutí přístupu k objektu služeb trezoru klíčů
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Udělte instančnímu objektu přístup k vašemu trezoru klíčů.
 
-Vytvořte zásady přístupu pro trezor klíčů, který uděluje oprávnění k instančnímu objektu klienta příkazu [az keyvault set-policy.](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) Udělte instančníobjekt get, list a nastavit oprávnění pro klíče i tajné klíče.
+Vytvořte zásady přístupu pro váš Trezor klíčů, který uděluje oprávnění vašemu instančnímu objektu předáním příkazu [AZ klíčového trezoru set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Udělte instančnímu objektu získání, seznam a nastavení oprávnění pro klíče a tajné kódy.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
@@ -156,9 +156,9 @@ Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrinci
 
 #### <a name="set-environmental-variables"></a>Nastavení proměnných prostředí
 
-Metoda DefaultAzureCredential v naší aplikaci závisí na `AZURE_CLIENT_ID` `AZURE_CLIENT_SECRET`třech `AZURE_TENANT_ID`proměnných prostředí: , , a . použijte nastavit tyto proměnné clientId, clientSecret a tenantId hodnoty, které jste si poznamenali v [vytvořit instanční objekt](#create-a-service-principal) krok výše.
+Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`a. `AZURE_TENANT_ID` použijte nastavení těchto proměnných pro hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) výše.
 
-Budete také muset uložit název trezoru klíčů `KEY_VAULT_NAME`jako proměnnou prostředí nazvanou ;
+Také budete muset uložit název trezoru klíčů jako proměnnou prostředí s názvem `KEY_VAULT_NAME`.
 
 ```console
 setx AZURE_CLIENT_ID <your-clientID>
@@ -170,7 +170,7 @@ setx AZURE_TENANT_ID <your-tenantId>
 setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
-Pokaždé, když `setx`zavoláte , měli byste dostat odpověď na "ÚSPĚCH: Zadaná hodnota byla uložena."
+Pokaždé, když `setx`zavoláte, měli byste získat odpověď na úspěch: zadaná hodnota byla uložena.
 
 ```shell
 AZURE_CLIENT_ID=<your-clientID>
@@ -184,31 +184,31 @@ KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektový model
 
-Klientská knihovna Azure Key Vault pro rozhraní .NET umožňuje spravovat klíče a související prostředky, jako jsou certifikáty a tajné klíče. Ukázky kódu níže vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
+Klientská knihovna Azure Key Vault pro .NET umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá konzolová aplikace https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appje k dispozici na adrese .
+Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
 ## <a name="code-examples"></a>Příklady kódu
 
-### <a name="add-directives"></a>Přidání směrnic
+### <a name="add-directives"></a>Přidat direktivy
 
-Na začátek kódu přidejte následující direktivy:
+Do horní části kódu přidejte následující direktivy:
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=directives)]
 
 ### <a name="authenticate-and-create-a-client"></a>Ověření a vytvoření klienta
 
-Ověření do trezoru klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí v kroku [Nastavit proměnné prostředí](#set-environmental-variables) výše. Název trezoru klíčů je rozšířen na identifikátor URI trezoru\<klíčů ve formátu\>"https:// název trezoru klíčů .vault.azure.net".
+Ověřování pro váš Trezor klíčů a vytvoření klienta trezoru klíčů závisí na proměnných prostředí v kroku [nastavit proměnné prostředí](#set-environmental-variables) výše. Název trezoru klíčů se rozšíří na identifikátor URI trezoru klíčů ve formátu https://\<your-key-trezor-name\>. Vault.Azure.NET.
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
 ### <a name="save-a-secret"></a>Uložení tajného klíče
 
-Nyní, když je aplikace ověřena, můžete vložit tajný klíč do trezoru klíčů pomocí [klienta. SetSecret metoda](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) To vyžaduje název pro tajný klíč -- používáme "mySecret" v této ukázce.  
+Teď, když je vaše aplikace ověřená, můžete do trezoru klíčů vložit tajný klíč pomocí [klienta. Metoda SetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) to vyžaduje název tajného kódu – v této ukázce používáme "mySecret".  
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=setsecret)]
 
-Pomocí příkazu [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) můžete ověřit, zda byl tajný klíč nastaven:
+Můžete ověřit, jestli je tajný kód nastavený pomocí příkazu [AZ klíčů trezor tajného zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -218,21 +218,21 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 (Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
-### <a name="retrieve-a-secret"></a>Načtení tajného klíče
+### <a name="retrieve-a-secret"></a>Načtení tajného kódu
 
-Nyní můžete načíst dříve nastavenou hodnotu s [klientem. GetSecret metoda](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Nyní můžete načíst dříve nastavenou hodnotu s [klientem. Getsecret – metoda](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
 
 [!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
 
-Vaše tajemství je `secret.Value`nyní uloženo jako .
+Váš tajný kód se teď uloží `secret.Value`jako.
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 
-Nakonec odstraníme tajný klíč z trezoru klíčů s [klientem. DeleteSecret metoda](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Nakonec smažte tajný klíč z vašeho trezoru klíčů s [klientem. Metoda DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)
 
 [!code-csharp[Delete secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=deletesecret)]
 
-Můžete ověřit, že tajný klíč je pryč s [az keyvault tajné show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) příkazu:
+V případě, že se tajný klíč nachází, můžete ověřit pomocí příkazu [AZ klíčů trezor tajné zobrazení](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -244,7 +244,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete, můžete použít Azure CLI nebo Azure PowerShell odebrat trezor klíčů a odpovídající skupinu prostředků.
+Pokud už je nepotřebujete, můžete k odebrání trezoru klíčů a odpovídající skupiny prostředků použít Azure CLI nebo Azure PowerShell.
 
 ```azurecli
 az group delete -g "myResourceGroup"
@@ -308,11 +308,11 @@ namespace key_vault_console_app
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Podívejte se na [celou konzolovou aplikaci na GitHubu](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
+V tomto rychlém startu jste vytvořili Trezor klíčů, uložili tajný klíč a získali tento tajný klíč. Podívejte se na [celou konzolovou aplikaci v GitHubu](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 
-Chcete-li se dozvědět více o trezoru klíčů a o tom, jak jej integrovat s aplikacemi, pokračujte v následujících článcích.
+Další informace o Key Vault a o tom, jak je integrovat s vašimi aplikacemi, najdete dál v článcích níže.
 
-- Implementace [ověřování mezi službami do trezoru klíčů Azure pomocí rozhraní .NET](../general/service-to-service-authentication.md)
-- Přečtěte si [přehled trezoru klíčů Azure](../general/overview.md)
-- Podívejte se na [průvodce vývojářem azure key vaultu](../general/developers-guide.md)
-- Kontrola [doporučených postupů azure key vaultu](../general/best-practices.md)
+- Implementace [ověřování služby-služba pro Azure Key Vault pomocí .NET](../general/service-to-service-authentication.md)
+- Přečtěte si [přehled Azure Key Vault](../general/overview.md)
+- Další informace najdete v [příručce pro vývojáře Azure Key Vault](../general/developers-guide.md) .
+- Kontrola [Azure Key Vault osvědčených postupů](../general/best-practices.md)

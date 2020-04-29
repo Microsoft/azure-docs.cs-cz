@@ -1,6 +1,6 @@
 ---
 title: Použití smyček T-SQL
-description: Tipy pro použití t-SQL smyčky, nahrazení kurzory a vývoj souvisejících řešení s fondem SQL v Synapse SQL.
+description: Tipy pro použití smyček T-SQL, výměna kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: baff2806b1a8c3c99546365c2496238c24b2b243
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429951"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql"></a>Použití t-SQL smyček v Synapse SQL
-Tento článek obsahuje základní tipy pro použití t-SQL smyčky, nahrazení kurzory a vývoj souvisejících řešení s fondem SQL v Synapse SQL.
+# <a name="using-t-sql-loops-in-synapse-sql"></a>Použití smyček T-SQL v synapse SQL
+Tento článek vám poskytne základní tipy pro používání smyček T-SQL, nahrazení kurzorů a vývoj souvisejících řešení s fondem SQL ve synapse SQL.
 
-## <a name="purpose-of-while-loops"></a>Účel smyčků WHILE
+## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-Synapse SQL podporuje smyčku [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) pro opakované provádění bloků příkazů. Tato smyčka WHILE pokračuje tak dlouho, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
+Synapse SQL podporuje smyčku [while](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK. 
 
-Smyčky ve fondu SQL jsou užitečné pro nahrazení kurzory definované v kódu SQL. Naštěstí téměř všechny kurzory, které jsou napsány v kódu SQL jsou rychlé vpřed, jen pro čtení odrůdy. Takže smyčky [WHILE] jsou skvělou alternativou pro nahrazení kurzorů.
+Smyčky ve fondu SQL jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže smyčky [WHILe] jsou skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replacing-cursors-in-sql-pool"></a>Nahrazení kurzorů ve fondu SQL
+## <a name="replacing-cursors-in-sql-pool"></a>Nahrazování kurzorů ve fondu SQL
 
-Před potápěním v, je třeba zvážit následující otázku: "Mohl by tento kurzor přepsat použít set-založené operace?" V mnoha případech je odpověď ano a je často nejlepším přístupem. Operace založená na sadě často provádí rychleji než iterativní, řádek po řádku přístup.
+Před začnete v je třeba zvážit následující otázku: "Chcete-li tento kurzor přepsat, aby používal operace založené na nastavení?" V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě se často provádí rychleji než iterativní, řádek po řádku.
 
-Kurzory rychlého převíjení jen pro čtení lze snadno nahradit smyčkou. Následující kód je jednoduchý příklad. Tento příklad kódu aktualizuje statistiky pro každou tabulku v databázi. Iterace přes tabulky ve smyčce, každý příkaz provede v pořadí.
+Rychlé dopředné kurzory, které jsou jen pro čtení, se snadno nahrazují konstrukcí smyček. Následující kód je jednoduchý příklad. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Pomocí iterace v tabulkách ve smyčce se každý příkaz provede v pořadí.
 
-Nejprve vytvořte dočasnou tabulku obsahující jedinečné číslo řádku, které slouží k identifikaci jednotlivých příkazů:
+Nejdřív vytvořte dočasnou tabulku obsahující číslo jedinečného řádku, které slouží k identifikaci jednotlivých příkazů:
 
 ```sql
 CREATE TABLE #tbl
@@ -47,7 +47,7 @@ FROM    sys.tables
 ;
 ```
 
-Za druhé, inicializovat proměnné potřebné k provedení smyčky:
+Za druhé inicializujte proměnné potřebné ke spuštění smyčky:
 
 ```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -55,7 +55,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Nyní smyčku přes příkazy jejich provádění jeden po druhém:
+Nyní Projděte přes příkazy, které je spouštějí po jednom v čase:
 
 ```sql
 WHILE   @i <= @nbr_statements
@@ -66,7 +66,7 @@ BEGIN
 END
 ```
 
-Nakonec přetáhněte dočasnou tabulku vytvořenou v prvním kroku
+Nakonec vyřaďte dočasnou tabulku vytvořenou v prvním kroku.
 
 ```sql
 DROP TABLE #tbl;
@@ -74,4 +74,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](develop-overview.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](develop-overview.md).

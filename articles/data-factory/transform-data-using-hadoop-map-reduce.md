@@ -1,6 +1,6 @@
 ---
 title: Transformace dat pomocí aktivity Hadoop MapReduce
-description: Zjistěte, jak zpracovat data spuštěním programů Hadoop MapReduce v clusteru Azure HDInsight z datové továrny Azure.
+description: Naučte se zpracovávat data spuštěním programů Hadoop MapReduce v clusteru Azure HDInsight z objektu pro vytváření dat Azure.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,25 +11,25 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: e3060f7e36f9e2696194da12c3c800555103d271
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418911"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Hadoop MapReduce v Azure Data Factory
 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-map-reduce.md)
 > * [Aktuální verze](transform-data-using-hadoop-map-reduce.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita HDInsight MapReduce v [kanálu](concepts-pipelines-activities.md) data factory vyvolá program MapReduce na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) cluster nebo cluster HDInsight [na vyžádání.](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Tento článek vychází z článku [aktivit transformace dat,](transform-data.md) který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
+Aktivita HDInsight MapReduce v [kanálu](concepts-pipelines-activities.md) Data Factory vyvolá program MapReduce na [vašem](compute-linked-services.md#azure-hdinsight-linked-service) clusteru HDInsight, nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) . Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md) , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.
 
-Pokud jste s Azure Data Factory tečeme na [úvodním úvodu do Azure Data Factory](introduction.md) a proveďte kurz: Transformace [dat](tutorial-transform-data-spark-powershell.md) před přečtením tohoto článku.
+Pokud Azure Data Factory teprve začínáte, přečtěte si [Úvod do Azure Data Factory](introduction.md) a udělejte si kurz: [kurz: transformace dat](tutorial-transform-data-spark-powershell.md) před čtením tohoto článku.
 
-Podrobnosti [Hive](transform-data-using-hadoop-hive.md) o spouštění skriptů Pig/Hive v clusteru HDInsight z kanálu pomocí aktivit HDInsight Pig a Hive najdete v tématu [Pig](transform-data-using-hadoop-pig.md) and Hive.
+Podrobnosti o spouštění skriptů pro vepřové zobrazení a podregistr v clusteru HDInsight z kanálu pomocí aktivit prasete a podregistru služby HDInsight najdete v tématu věnovaném [prase](transform-data-using-hadoop-pig.md) a [podregistru](transform-data-using-hadoop-hive.md) .
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -66,20 +66,20 @@ Podrobnosti [Hive](transform-data-using-hadoop-hive.md) o spouštění skriptů 
 | ----------------- | ---------------------------------------- | -------- |
 | jméno              | Název aktivity                     | Ano      |
 | description       | Text popisující, k čemu se aktivita používá | Ne       |
-| type              | Pro Aktivitu MapReduce je typem aktivity HDinsightMapReduce | Ano      |
-| linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v datové továrně. Další informace o této propojené službě najdete v článku [Výpočetní propojené služby.](compute-linked-services.md) | Ano      |
-| Classname         | Název třídy, která má být provedena         | Ano      |
-| jarLinkedService  | Odkaz na azure storage propojené služby používané k ukládání souborů Jar. Pokud tuto propojenou službu nezadáte, použije se služba Propojená úložištěm Azure definovaná ve službě HDInsight Linked Service. | Ne       |
-| jarFilePath       | Zadejte cestu k souborům Jar uloženým ve službě Azure Storage, na které odkazuje jarLinkedService. Název souboru rozlišuje malá a velká písmena. | Ano      |
-| jarlibs           | Pole řetězce cesty k souborům knihovny Jar odkazuje úlohy uložené v Azure Storage definované v jarLinkedService. Název souboru rozlišuje malá a velká písmena. | Ne       |
-| getDebugInfo      | Určuje, kdy se soubory protokolu zkopírují do úložiště Azure, které používá cluster HDInsight (nebo) určené jarLinkedService. Povolené hodnoty: Žádné, Vždy nebo Selhání. Výchozí hodnota: Žádný. | Ne       |
-| Argumenty         | Určuje pole argumentů pro úlohu Hadoop. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
-| Definuje           | Zadejte parametry jako dvojice klíč/hodnota pro odkazování ve skriptu Hive. | Ne       |
+| type              | Pro aktivitu MapReduce je typ aktivity HDinsightMapReduce. | Ano      |
+| linkedServiceName | Odkaz na cluster HDInsight registrovaný jako propojená služba v Data Factory. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
+| NázevTřídy         | Název třídy, která se má provést         | Ano      |
+| jarLinkedService  | Odkaz na propojenou službu Azure Storage, která se používá k ukládání souborů JAR Pokud tuto propojenou službu nezadáte, použije se propojená služba Azure Storage definovaná v propojené službě HDInsight. | Ne       |
+| jarFilePath       | Zadejte cestu k souborům jar uloženým v Azure Storage, na kterou odkazuje jarLinkedService. V názvu souboru se rozlišují malá a velká písmena. | Ano      |
+| jarlibs           | Pole řetězce cesty pro soubory knihovny jar, na které odkazuje úloha uložená v Azure Storage definované v jarLinkedService. V názvu souboru se rozlišují malá a velká písmena. | Ne       |
+| GetDebugInfo –      | Určuje, kdy se soubory protokolu zkopírují do Azure Storage používaného clusterem HDInsight (nebo) zadaným pomocí jarLinkedService. Povolené hodnoty: žádné, vždy nebo chyba. Výchozí hodnota: Žádný. | Ne       |
+| náhodné         | Určuje pole argumentů pro úlohu Hadoop. Argumenty jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
+| definuje           | Zadejte parametry jako páry klíč/hodnota pro odkazování v rámci skriptu podregistru. | Ne       |
 
 
 
 ## <a name="example"></a>Příklad
-Aktivita HDInsight MapReduce můžete použít ke spuštění libovolného souboru dlaně MapReduce v clusteru HDInsight. V následující ukázce json definice kanálu aktivity HDInsight je nakonfigurován tak, aby spouštět soubor Mahout JAR.
+Aktivitu HDInsight MapReduce můžete použít ke spuštění všech souborů JAR MapReduce v clusteru HDInsight. V následující ukázkové definici JSON kanálu je aktivita HDInsight nakonfigurovaná tak, aby spouštěla soubor Mahout JAR.
 
 ```json
 {
@@ -112,16 +112,16 @@ Aktivita HDInsight MapReduce můžete použít ke spuštění libovolného soubo
     }
 }
 ```
-V části **argumenty** můžete zadat libovolné argumenty pro program MapReduce. Za běhu se zobrazí několik dalších argumentů (například mapreduce.job.tags) z rozhraní MapReduce. Chcete-li odlišit argumenty s Argumenty MapReduce, zvažte použití možnosti a hodnoty jako argumenty, jak je znázorněno v následujícím příkladu (-s, --input, --output atd., jsou možnosti bezprostředně následované jejich hodnotami).
+V části **argumenty** můžete zadat argumenty pro program MapReduce. Za běhu vidíte několik dalších argumentů (například: MapReduce. job. Tags) z rozhraní MapReduce. Chcete-li odlišit argumenty pomocí argumentů MapReduce, zvažte použití možnosti i hodnoty jako argumentů, jak je znázorněno v následujícím příkladu (-s,--Input,--Output atd.) jsou možnosti, které bezprostředně následují jejich hodnoty).
 
 ## <a name="next-steps"></a>Další kroky
-Další články vysvětlují, jak transformovat data jinými způsoby:
+Podívejte se na následující články, které vysvětlují, jak transformovat data jinými způsoby:
 
 * [Aktivita U-SQL](transform-data-using-data-lake-analytics.md)
-* [Aktivita úlu](transform-data-using-hadoop-hive.md)
-* [Aktivita prasat](transform-data-using-hadoop-pig.md)
-* [Aktivita streamování hadoopu](transform-data-using-hadoop-streaming.md)
-* [Aktivita jiskry](transform-data-using-spark.md)
+* [Aktivita v podregistru](transform-data-using-hadoop-hive.md)
+* [Aktivita prasete](transform-data-using-hadoop-pig.md)
+* [Aktivita streamování Hadoop](transform-data-using-hadoop-streaming.md)
+* [Aktivita Sparku](transform-data-using-spark.md)
 * [Vlastní aktivita .NET](transform-data-using-dotnet-custom-activity.md)
-* [Aktivita dávkového spuštění strojového učení](transform-data-using-machine-learning.md)
+* [Aktivita spuštění Machine Learning dávky](transform-data-using-machine-learning.md)
 * [Aktivita uložené procedury](transform-data-using-stored-procedure.md)

@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z obchodního skladu SAP přes Open Hub
-description: Zjistěte, jak kopírovat data z SAP Business Warehouse (BW) přes Open Hub do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z SAP Business Warehouse přes Open hub
+description: Přečtěte si, jak kopírovat data z SAP Business Warehouse (ČERNOBÍLe) prostřednictvím otevřeného centra pro podporovaná úložiště dat jímky pomocí aktivity kopírování v Azure Data Factoryovém kanálu.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,110 +13,110 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
 ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418078"
 ---
-# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z obchodního skladu SAP přes Open Hub pomocí Azure Data Factory
+# <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z obchodního skladu SAP (BW) přes Open Hub. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z SAP Business Warehouse (ČERNOBÍLého) prostřednictvím otevřeného centra. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 >[!TIP]
->Informace o celkové podpoře ADF ve scénáři integrace dat SAP najdete v článku [integrace dat SAP pomocí whitepaper Azure Data Factory](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobným úvodem, porovnáním a pokyny.
+>Pokud chcete získat přehled o celkové podpoře pro integraci dat přes ADF, přečtěte si článek [integrace dat SAP pomocí Azure Data Factory dokumentu White Paper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf) s podrobnými pokyny k úvodu, comparsion a pokyny.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento SAP Business Warehouse přes open hub konektor je podporován pro následující aktivity:
+Tento SAP Business Warehouse prostřednictvím konektoru open hub se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data z OBCHODNÍHO SKLADU SAP můžete kopírovat přes Open Hub do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z SAP Business Warehouse můžete kopírovat prostřednictvím otevřeného centra pro všechna podporovaná úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konkrétně tento konektor SAP Business Warehouse Open Hub podporuje:
+Konkrétně konektor Open hub pro SAP Business Warehouse podporuje:
 
-- SAP Business Warehouse **verze 7.01 nebo vyšší (v nedávném zásobníku balíčku podpory SAP vydaném po roce 2015)**.
-- Kopírování dat přes Open Hub Cílové místní tabulky, které pod může být DSO, InfoCube, MultiProvider, DataSource, atd.
+- SAP Business Warehouse **verze 7,01 nebo vyšší (v nedávných balíčcích balíčku podpory SAP vydané po roce 2015)**.
+- Kopírování dat prostřednictvím místní tabulky Open hub, která je v této části může být DSO, InfoCube, s více dodanými, zdroji dat atd.
 - Kopírování dat pomocí základního ověřování.
-- Připojení k aplikačnímu serveru.
+- Připojování k aplikačnímu serveru.
 
-## <a name="sap-bw-open-hub-integration"></a>Integrace otevřených rozbočovačů SAP BW 
+## <a name="sap-bw-open-hub-integration"></a>SAP BW otevřít integraci centra 
 
-[Služba SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) je efektivní způsob, jak extrahovat data z SAP BW. Následující diagram znázorňuje jeden z typických toků, které mají zákazníci ve svém systému SAP, v takovém případě toky dat z SAP ECC -> PSA -> DSO -> cube.
+[Služba SAP BW Open hub](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) je efektivní způsob, jak extrahovat data z SAP BW. Následující diagram znázorňuje jedno z typických toků zákazníků v jejich systému SAP. v takovém případě data přechází ze SAP ECC-> PSA-> datové krychle DSO->.
 
-SAP BW Open Hub Destination (OHD) definuje cíl, ke kterému jsou přenášena data SAP. Všechny objekty podporované procesem přenosu dat SAP (DTP) lze použít jako otevřené zdroje dat rozbočovače, například DSO, InfoCube, DataSource atd. Typ Open Hub Destination – kde jsou přenášená data uložena – mohou být databázové tabulky (místní nebo vzdálené) a ploché soubory. Tento konektor SAP BW Open Hub podporuje kopírování dat z místní tabulky OHD v BW. V případě, že používáte jiné typy, můžete se přímo připojit k databázi nebo souborovésoustavě pomocí jiných konektorů.
+Cíl OHD (otevřít rozbočovač) definuje cíl, do kterého se přepřenosují data SAP. SAP BW Všechny objekty podporované procesy SAP Přenos dat Process (DTP) se dají použít jako otevřené zdroje dat hub, například DSO, InfoCube, DataSource atd. Otevřít cílový typ centra – kde jsou uložená data, můžou být databázové tabulky (místní nebo vzdálené) a ploché soubory. Tento SAP BW otevřít konektor konektoru podpora kopírování dat z místní tabulky OHD v ČERNOBÍLém prostředí. V případě, že používáte jiné typy, můžete se přímo připojit k databázi nebo systému souborů pomocí jiných konektorů.
 
-![Otevřený rozbočovač SAP BW](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+![SAP BW otevření centra](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
-## <a name="delta-extraction-flow"></a>Delta extrakční tok
+## <a name="delta-extraction-flow"></a>Průběh extrakce Delta
 
-ADF SAP BW Open Hub Connector `excludeLastRequest` `baseRequestId` nabízí dvě volitelné vlastnosti: a které lze použít ke zpracování rozdílového zatížení z Open Hub. 
+Konektor ADF SAP BW Open hub nabízí dvě volitelné vlastnosti: `excludeLastRequest` a `baseRequestId` můžete ho použít ke zpracování rozdílového zatížení z otevřeného centra. 
 
-- **excludeLastRequestId**: Zda vyloučit záznamy posledního požadavku. Výchozí hodnota je true. 
-- **baseRequestId**: ID požadavku na rozdílové zatížení. Jakmile je nastavena, budou načtena pouze data s requestId větší než hodnota této vlastnosti. 
+- **excludeLastRequestId**: Určuje, zda mají být vyloučeny záznamy poslední žádosti. Výchozí hodnota je true. 
+- **baseRequestId**: ID žádosti o rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId větším, než je hodnota této vlastnosti. 
 
-Celkově extrakce z SAP InfoProviders do Azure Data Factory (ADF) se skládá ze dvou kroků: 
+Extrakce z SAP InfoProviders to Azure Data Factory (ADF) se skládá ze dvou kroků: 
 
-1. **Proces přenosu dat SAP BW (DTP)** Tento krok zkopíruje data z poskytovatele SAP BW InfoProvider do tabulky SAP BW Open Hub 
+1. **Proces Přenos dat SAP BW (DTP)** Tento krok zkopíruje data z SAP BW InfoProvider do tabulky SAP BW otevřít hub. 
 
-1. **Kopírování dat ADF** V tomto kroku je tabulka Otevřít rozbočovač přečtena konektorem ADF 
+1. **Kopie dat ADF** V tomto kroku přečte otevřená tabulka hub konektor ADF. 
 
-![Delta extrakční tok](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
+![Průběh extrakce Delta](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
-V prvním kroku je spuštěn DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID požadavku je uloženo v tabulce Otevřít rozbočovač a poté je použito konektorem ADF k identifikaci rozdílu. Dva kroky spustit asynchronně: DTP je spuštěn sap a kopie dat ADF se aktivuje prostřednictvím ADF. 
+V prvním kroku se spustí DTP. Každé spuštění vytvoří nové ID požadavku SAP. ID žádosti je uloženo v otevřené tabulce centra a pak ji použije konektor ADF k identifikaci rozdílu. Dva kroky se spouštějí asynchronně: DTP se aktivuje pomocí SAP a v rámci ADF se aktivuje kopie dat ADF. 
 
-Ve výchozím nastavení adf nečte nejnovější delta z tabulky Otevřít hub (možnost "vyloučit poslední požadavek" je true). Tímto data v ADF není 100% aktuální s daty v tabulce Otevřít hub (poslední delta chybí). Na oplátku tento postup zajišťuje, že žádné řádky ztratí způsobené asynchronní extrakce. Funguje dobře, i když ADF čte tabulku Open Hub, zatímco DTP stále píše do stejné tabulky. 
+Ve výchozím nastavení ADF nečte poslední rozdíl z otevřené tabulky hub (možnost "vyloučit poslední žádost" je true). V tomto případě nejsou data v ADF 100% v aktuálním stavu s daty v otevřené tabulce hub (poslední Delta chybí). V rámci tohoto postupu zajišťuje tento postup, aby se žádné řádky neztratily kvůli asynchronní extrakci. Funguje správně i v případě, že ADF čte otevřenou tabulku hub, zatímco DTP stále zapisuje do stejné tabulky. 
 
-Obvykle ukládáte maximální zkopírované ID požadavku v posledním spuštění adf v úložišti pracovních dat (například Objekt blob Azure ve výše uvedeném diagramu). Proto stejný požadavek není číst podruhé ADF v následném spuštění. Mezitím si všimněte, že data nejsou automaticky odstraněna z tabulky Otevřít centrum.
+V pracovním úložišti dat (jako je Azure Blob ve výše uvedeném diagramu) obvykle ukládáte maximální zkopírované ID žádosti v posledním spuštění pomocí ADF. Proto se stejný požadavek během následného spuštění v rámci ADF nepřečte podruhé. Mezitím si všimněte, že data se v otevřené tabulce hub automaticky neodstraní.
 
-Pro správné rozdílové zpracování není povoleno mít ID žádosti z různých DTP ve stejné tabulce Open Hub. Proto nesmíte vytvořit více než jeden DTP pro každý cíl Open Hub (OHD). Při nutnosti úplné a delta extrakce ze stejného InfoProvider, měli byste vytvořit dva OHD pro stejné InfoProvider. 
+Pro správné zpracování rozdílů není povoleno mít ID žádosti z různých DTPs ve stejné otevřené tabulce hub. Proto nesmíte pro každé místo v otevřeném centru (OHD) vytvořit více než jednu DTP. Pokud budete potřebovat úplnou a rozdílovou extrakci ze stejného InfoProvider, měli byste vytvořit dvě OHDs pro stejné InfoProvider. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor SAP Business Warehouse Open Hub, musíte:
+Pokud chcete použít tento konektor pro SAP Business Warehouse, musíte:
 
-- Nastavte runtime integrace s vlastním hostitelem s verzí 3.13 nebo vyšší. Podrobnosti najdete v článku [runtime integrace s vlastním hostitelem.](create-self-hosted-integration-runtime.md)
+- Nastavte Integration Runtime v místním prostředí s verzí 3,13 nebo vyšší. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
 
-- Stáhněte si **64bitový [konektor SAP .NET Connector 3.0](https://support.sap.com/en/product/connectors/msnet.html) ** z webu SAP a nainstalujte jej do počítače ir hostovaného na vlastní síti. Při instalaci se v okně volitelné kroky nastavení ujistěte, že jste vybrali možnost **Instalovat sestavení do gac,** jak je znázorněno na následujícím obrázku. 
+- Stáhněte si **64-bit [SAP .net Connector 3,0](https://support.sap.com/en/product/connectors/msnet.html) ** z webu SAP a nainstalujte ho na místně hostovaný počítač IR. Při instalaci nástroje v okně volitelné kroky instalace se ujistěte, že jste vybrali možnost **instalovat sestavení do GAC** , jak je znázorněno na následujícím obrázku. 
 
-    ![Instalace konektoru SAP .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
+    ![Nainstalovat konektor SAP .NET](./media/connector-sap-business-warehouse-open-hub/install-sap-dotnet-connector.png)
 
-- Uživatel SAP používaný v konektoru BW datové továrny musí mít následující oprávnění: 
+- Uživatel SAP používaný v konektoru Data Factoryá ČERNOBÍLé připojení musí mít následující oprávnění: 
 
     - Autorizace pro RFC a SAP BW. 
-    - Oprávnění k aktivitě "Spustit" autorizačního objektu "S_SDSAUTH".
+    - Oprávnění pro aktivitu Execute objektu autorizace S_SDSAUTH.
 
-- Vytvořte typ cíle otevřeného rozbočovače SAP jako **databázovou tabulku** se zaškrtnutou možností "Technický klíč".  Doporučujese také ponechat odstranění dat z tabulky jako nezaškrtnuté, i když to není nutné. Využijte DTP (přímo spustit nebo integrovat do existujícího řetězce procesů) k umístění dat ze zdrojového objektu (například datové krychle), který jste zvolili do otevřené cílové tabulky rozbočovače.
+- Vytvoří cílový typ pro SAP otevřený rozbočovač jako **databázovou tabulku** se zaškrtnutou možností "technický klíč".  Doporučuje se také nechat odstranit data z tabulky jako nezaškrtnutá, i když se nevyžaduje. Využijte DTP (přímo spouštěný nebo integrovaný do stávajícího řetězce procesu) a využívejte data ze zdrojového objektu (například datové krychle), který jste zvolili v otevřené cílové tabulce centra.
 
 ## <a name="getting-started"></a>Začínáme
 
 > [!TIP]
 >
-> Návod k použití konektoru SAP BW Open Hub najdete v tématu [Načítání dat z SAP Business Warehouse (BW) pomocí Azure Data Factory](load-sap-bw-data.md).
+> Návod, jak pomocí SAP BW otevřít konektor centra, najdete v tématu [načtení dat z SAP Business Warehouse (černobíle) pomocí Azure Data Factory](load-sap-bw-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor SAP Business Warehouse Open Hub.
+V následujících částech najdete podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro SAP Business Warehouse Open hub Connector.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro propojenou službu SAP Business Warehouse Open Hub jsou podporovány následující vlastnosti:
+Pro propojenou službu SAP Business Warehouse se podporují následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **SapOpenHub** | Ano |
+| type | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
-| systemNumber | Systémové číslo systému SAP BW.<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
-| clientId | ID klienta v systému SAP W.<br/>Povolená hodnota: třímístné desetinné číslo reprezentované jako řetězec. | Ano |
-| language | Jazyk, který používá systém SAP. | Ne (výchozí hodnota je **EN)**|
+| systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
+| clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
+| language | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
 | userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
-| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Runtime integrace hostované samostatně je vyžadován, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| heslo | Heslo pro tohoto uživatele. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -143,18 +143,18 @@ Pro propojenou službu SAP Business Warehouse Open Hub jsou podporovány násled
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Datové sady.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou SAP BW Open Hub.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou SAP BW Open hub.
 
-Chcete-li kopírovat data z a do SAP BW Open Hub, nastavte vlastnost type datové sady na **SapOpenHubTable**. Podporovány jsou následující vlastnosti.
+Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Type objektu DataSet na **SapOpenHubTable**. Podporovány jsou následující vlastnosti.
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na **SapOpenHubTable**.  | Ano |
-| openHubDestinationName | Název cíle otevřeného centra, ze kterých chcete kopírovat data. | Ano |
+| type | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
+| openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
 
-Pokud jste `excludeLastRequest` nastavili a `baseRequestId` v datové sadě, je stále podporována jako-je, zatímco jste navrhl použít nový model ve zdroji aktivity do budoucna.
+Pokud jste `excludeLastRequest` nacházeli `baseRequestId` a v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -175,24 +175,24 @@ Pokud jste `excludeLastRequest` nastavili a `baseRequestId` v datové sadě, je 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem SAP BW Open Hub.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností, které SAP BW Open hub source podporovat.
 
-### <a name="sap-bw-open-hub-as-source"></a>SAP BW Open Hub jako zdroj
+### <a name="sap-bw-open-hub-as-source"></a>SAP BW otevřít centrum jako zdroj
 
-Chcete-li zkopírovat data z otevřeného rozbočovače SAP BW, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **type** zdroje aktivity kopírování musí být nastavena na **SapOpenHubSource**. | Ano |
-| excludeLastRequest | Určuje, zda mají být vyloučeny záznamy posledního požadavku. | Ne (výchozí hodnota je **pravdivá)** |
-| baseRequestId | ID požadavku na načtení delta. Jakmile je nastavena, budou načtena pouze data s requestId **větší než** hodnota této vlastnosti.  | Ne |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
+| excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
+| baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
 
 >[!TIP]
->Pokud vaše tabulka Open Hub obsahuje pouze data vygenerovaná jedním ID požadavku, například vždy provádíte úplné načtení a přepisování existujících dat v tabulce, nebo dtp spustíte pouze jednou pro test, nezapomeňte zrušit zaškrtnutí možnosti "excludeLastRequest", abyste data zkopírovali.
+>Pokud otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo když pro test spustíte jenom DTP, nezapomeňte zrušit kontrolu možnosti excludeLastRequest, aby se data zkopírovala.
 
-Chcete-li urychlit načítání dat, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) můžete nastavit na aktivitu kopírování načíst data z SAP BW Open Hub paralelně. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně provede čtyři volání RFC a každé volání RFC načte část dat z tabulky SAP BW Open Hub rozdělené na ID požadavku DTP a ID balíčku. To platí v případě, že počet jedinečných ID požadavku DTP `parallelCopies`+ ID balíčku je větší než hodnota . Při kopírování dat do úložiště dat založeného na souborech je také přikázáno zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
+Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) , aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies`. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -225,30 +225,30 @@ Chcete-li urychlit načítání dat, [`parallelCopies`](copy-activity-performanc
 ]
 ```
 
-## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapování datových typů pro otevřený rozbočovač SAP BW
+## <a name="data-type-mapping-for-sap-bw-open-hub"></a>Mapování datových typů pro SAP BW otevření centra
 
-Při kopírování dat z OTEVŘENÉHO ROZBOČOVAČE SAP BW se z datových typů SAP BW do dočasných datových typů Azure Data Factory používají následující mapování. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování schématu a datových typů.](copy-activity-schema-and-type-mapping.md)
+Při kopírování dat z SAP BW otevřeném centru, se z SAP BW datových typů používají následující mapování pro Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování typů schématu a dat](copy-activity-schema-and-type-mapping.md) .
 
-| Typ SAP ABAP | Dočasný datový typ datové továrny |
+| Typ SAP ABAP | Typ dat interim Data Factory |
 |:--- |:--- |
 | C (řetězec) | Řetězec |
 | I (celé číslo) | Int32 |
-| F (Plovoucí) | Double |
+| F (float) | Double |
 | D (datum) | Řetězec |
 | T (čas) | Řetězec |
-| P (BCD baleny, měna, desetinné číslo, množství) | Desetinné číslo |
-| N (N) | Řetězec |
-| X (binární a nezpracované) | Řetězec |
+| P (komprimovaná BCD, měna, desetinné číslo, množství) | Desetinné číslo |
+| N (NUMC) | Řetězec |
+| X (binární a hrubá) | Řetězec |
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
-**Příznaky:** Pokud používáte SAP BW na HANA a sledovat pouze podmnožinu dat je zkopírován přes pomocí aktivity kopírování ADF (1 milion řádků), možnou příčinou je, že povolíte možnost "SAP HANA Spuštění" v DTP, v takovém případě ADF můžete načíst pouze první dávku dat.
+**Příznaky:** Pokud používáte SAP BW v HANA a při použití aktivity kopírování ADF (1 000 000 řádků) se kopíruje jenom podmnožina dat, může to být tím, že v DTP povolíte možnost "spuštění SAP HANA". v takovém případě může ADF načíst jenom první dávku dat.
 
-**Rozlišení:** Zakažte možnost "SAP HANA Execution" v DTP, znovu zpracujte data a zkuste znovu spustit aktivitu kopírování.
+**Řešení:** Zakažte v DTP možnost spuštění SAP HANA, znovu zpracujte data a pak zkuste aktivitu kopírování znovu spustit.
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

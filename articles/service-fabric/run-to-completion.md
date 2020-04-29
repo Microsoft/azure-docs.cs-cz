@@ -1,28 +1,28 @@
 ---
-title: Sémantiku RunToCompletion v service fabric
-description: Popisuje sémantiku RunToCompletion v service fabric.
+title: RunToCompletion sémantika v Service Fabric
+description: Popisuje sémantiku RunToCompletion v Service Fabric.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: adf4b11412aa752144d4ed4fef06d2de1d76598d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431290"
 ---
-# <a name="runtocompletion"></a>RunToCompletion
+# <a name="runtocompletion"></a>Spuštění až do konce
 
-Počínaje verzí 7.1 service fabric podporuje sémantiku **RunToCompletion** pro [kontejnery][containers-introduction-link] a [spustitelné][guest-executables-introduction-link] aplikace hosta. Tato sémantika umožňuje aplikacím a službám, které dokončí úlohu a ukončí na rozdíl od vždy spuštěných aplikací a služeb.
+Počínaje verzí 7,1 podporuje Service Fabric sémantiku **RunToCompletion** pro [kontejnery][containers-introduction-link] a spustitelné aplikace [hosta][guest-executables-introduction-link] . Tyto sémantiky umožňují aplikace a služby, které dokončí úlohu a ukončí, na rozdíl od, vždy běžící aplikace a služby.
 
-Než budete pokračovat v tomto článku, doporučujeme seznámit se s [modelem aplikace Service Fabric][application-model-link] a [modelhostování service fabric][hosting-model-link].
+Než budete pokračovat v tomto článku, doporučujeme seznámit se s [Service Fabric aplikačním modelem][application-model-link] a [modelem Service Fabric hostování][hosting-model-link].
 
 > [!NOTE]
-> Sémantiku RunToCompletion nejsou aktuálně podporovány pro služby napsané pomocí programovacího modelu [Spolehlivé služby.][reliable-services-link]
+> Sémantika RunToCompletion se v tuto chvíli nepodporuje u služeb napsaných pomocí programovacího modelu [Reliable Services][reliable-services-link] .
  
-## <a name="runtocompletion-semantics-and-specification"></a>Sémantiku a specifikaci RunToCompletion
-Sémantiku RunToCompletion lze zadat jako zásadu **spuštění** [při importu manifestu ServiceManifest][application-and-service-manifests-link]. Zadaná zásada je zděděna všemi CodePackages obsahující ServiceManifest. Následující fragment applicationManifest.xml poskytuje příklad.
+## <a name="runtocompletion-semantics-and-specification"></a>Sémantika a specifikace RunToCompletion
+Sémantika RunToCompletion může být zadána jako **ExecutionPolicy** při [importu ServiceManifest][application-and-service-manifests-link]. Zadané zásady dědí všechny CodePackages, které tvoří ServiceManifest. Následující fragment kódu souboru ApplicationManifest. XML poskytuje příklad.
 
 ```xml
 <ServiceManifestImport>
@@ -34,20 +34,20 @@ Sémantiku RunToCompletion lze zadat jako zásadu **spuštění** [při importu 
 ```
 **ExecutionPolicy** umožňuje následující dva atributy:
 * **Typ:** **RunToCompletion** je aktuálně jedinou povolenou hodnotou pro tento atribut.
-* **Restartovat:** Tento atribut určuje zásadu restartování, která je použita pro CodePackages obsahující ServicePackage, při selhání. CodePackage ukončení s **nenulový ukončovací kód** se považuje za neúspěšné. Povolené hodnoty pro tento atribut jsou **OnFailure** a **Nikdy** s **OnFailure** je výchozí.
+* **Restartování:** Tento atribut určuje zásady restartování, které se vztahují na CodePackages obsahující ServicePack, při selhání. CodePackage ukončení s **nenulovým ukončovacím kódem** se považuje za neúspěšné. Povolené hodnoty pro tento atribut jsou **Chyba při selhání** a **nikdy** se **nezdařila** výchozí hodnota.
 
-S zásady restartování nastavena **na OnFailure**, pokud některý CodePackage selže **(nenulový ukončovací kód)**, je restartován, s back-off mezi opakovanými selháními. S zásady restartování nastavena na **Nikdy**, pokud některý CodePackage selže, stav nasazení DeployedServicePackage je označen jako **neúspěšný,** ale ostatní CodePackages mohou pokračovat v provádění. Pokud všechny CodePackages obsahující ServicePackage spustit úspěšné dokončení **(ukončovací kód 0)**, stav nasazení DeployedServicePackage je označen jako **RanToCompletion**. 
+Pokud se v případě selhání nějaké CodePackage **(nenulový ukončovací kód)** spustí zásada restartování nastavená na **chybu**, bude restartována s zpětným voláním mezi opakovanými selháními. Když se zásada restartování nastaví na **nikdy**, pokud některé CodePackage selžou, stav nasazení DeployedServicePackage je označený jako **neúspěšný** , ale ostatní CodePackages můžou pokračovat v provádění. Pokud všechny CodePackages, které tvoří rutinu ServicePack k úspěšnému dokončení **(ukončovací kód 0)**, je stav nasazení DeployedServicePackage označený jako **RanToCompletion**. 
 
-## <a name="complete-example-using-runtocompletion-semantics"></a>Kompletní příklad pomocí sémantiky RunToCompletion
+## <a name="complete-example-using-runtocompletion-semantics"></a>Kompletní příklad použití sémantiky RunToCompletion
 
-Podívejme se na úplný příklad pomocí Sémantiku RunToCompletion.
+Pojďme se podívat na kompletní příklad s využitím sémantiky RunToCompletion.
 
 > [!IMPORTANT]
-> Následující příklad předpokládá znalost vytváření [aplikací kontejnerů systému Windows pomocí Service Fabric a Docker][containers-getting-started-link].
+> Následující příklad předpokládá znalost vytváření [kontejnerových aplikací pro Windows pomocí Service Fabric a Docker][containers-getting-started-link].
 >
-> Tento příklad odkazuje mcr.microsoft.com/windows/nanoserver:1809. Kontejnery systému Windows Server nejsou kompatibilní ve všech verzích hostitelského operačního systému. Další informace naleznete v [tématu Kompatibilita verzí kontejneru systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Následující ServiceManifest.xml popisuje ServicePackage skládající se ze dvou CodePackages, které představují kontejnery. *RunToCompletionCodePackage1* pouze protokoly zprávu **stdout** a ukončí. *RunToCompletionCodePackage2* příkazy ping adresu zpětné smyčky na chvíli a potom ukončí s ukončovací kód buď **0**, **1** nebo **2**.
+Následující ServiceManifest. XML popisuje ServicePack, skládající se ze dvou CodePackages, které reprezentují kontejnery. *RunToCompletionCodePackage1* pouze zaznamená zprávu do **stdout** a ukončí. *RunToCompletionCodePackage2* otestuje adresu zpětné smyčky za chvíli a pak ukončí s ukončovacím kódem buď **0**, **1** nebo **2**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -78,7 +78,7 @@ Následující ServiceManifest.xml popisuje ServicePackage skládající se ze d
 </ServiceManifest>
 ```
 
-Následující soubor ApplicationManifest.xml popisuje aplikaci založenou na výše popsaném souboru ServiceManifest.xml. Určuje zásadu **spuštění** **runtocompletion** pro *program WindowsRunToCompletionServicePackage* se zásadou restartování **programu OnFailure**. Po aktivaci *WindowsRunToCompletionServicePackage*, jeho základní CodePackages budou spuštěny. *RunToCompletionCodePackage1* by měl úspěšně ukončit při první aktivaci. *RunToCompletionCodePackage2* však může selhat **(nenulový ukončovací kód)**, v takovém případě bude restartován, protože zásada restartování je **OnFailure**.
+Následující souboru ApplicationManifest. XML popisuje aplikaci založenou na souboru ServiceManifest. XML, který je popsán výše. Určuje **RunToCompletion** **ExecutionPolicy** pro *WindowsRunToCompletionServicePackage* se zásadami restartování při **selhání**. Po aktivaci *WindowsRunToCompletionServicePackage*se spustí jeho prvek CodePackages. *RunToCompletionCodePackage1* by se měl úspěšně ukončit při první aktivaci. *RunToCompletionCodePackage2* ale může selhat **(nenulový ukončovací kód)**. v takovém případě se restartuje, protože zásada restartování je **chybná**.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -102,19 +102,19 @@ Následující soubor ApplicationManifest.xml popisuje aplikaci založenou na v�
   </DefaultServices>
 </ApplicationManifest>
 ```
-## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>Dotazování na stav nasazení balíčku DeployedServicePackage
-Stav nasazení balíčku DeployedServicePackage může být dotazován z prostředí PowerShell pomocí [get-ServiceFabricDeployedServicePackage][deployed-service-package-link] nebo z jazyka C# pomocí rozhraní [FABRICClient][fabric-client-link] API [GetDeployedServicePackageListAsync(Řetězec, Uri, Řetězec)][deployed-service-package-fabricclient-link]
+## <a name="querying-deployment-status-of-a-deployedservicepackage"></a>Dotazování na stav nasazení DeployedServicePackage
+Stav nasazení DeployedServicePackage se dá dotazovat z PowerShellu pomocí rutiny [Get-ServiceFabricDeployedServicePackage][deployed-service-package-link] nebo z C# pomocí rozhraní [FabricClient][fabric-client-link] API [GetDeployedServicePackageListAsync (řetězec, URI, řetězec)][deployed-service-package-fabricclient-link] .
 
-## <a name="considerations-when-using-runtocompletion-semantics"></a>Důležité informace při použití sémantiky RunToCompletion
+## <a name="considerations-when-using-runtocompletion-semantics"></a>Předpoklady při použití sémantiky RunToCompletion
 
-Následující body by měly být uvedeny pro aktuální podporu RunToCompletion.
-* Tato sémantika je podporována pouze pro [kontejnery][containers-introduction-link] a spustitelné aplikace [hosta.][guest-executables-introduction-link]
-* Scénáře upgradu pro aplikace s sémantikou RunToCompletion nejsou povoleny. Uživatelé by měli v případě potřeby tyto aplikace odstranit a znovu vytvořit.
-* Události převzetí služeb při selhání může způsobit CodePackages znovu spustit po úspěšném dokončení, na stejném uzlu nebo jiných uzlů clusteru. Příklady událostí převzetí služeb při selhání jsou restartování uzlu a inovace za běhu service fabric na uzlu.
+Pro aktuální podporu RunToCompletion je třeba si uvědomit následující body.
+* Tyto sémantiky se podporují jenom pro [kontejnery][containers-introduction-link] a [spustitelné aplikace hostované v hostovi][guest-executables-introduction-link] .
+* Scénáře upgradu pro aplikace se sémantikou RunToCompletion nejsou povoleny. Uživatelé by v případě potřeby měli tyto aplikace odstranit a znovu vytvořit.
+* Události převzetí služeb při selhání můžou způsobit, že se CodePackages znovu spustí po úspěšném dokončení, ve stejném uzlu nebo v jiných uzlech clusteru. Příklady událostí převzetí služeb při selhání jsou, restarty uzlu a Service Fabric upgrady modulu runtime v uzlu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Související informace naleznete v následujících článcích.
+Související informace najdete v následujících článcích.
 
 * [Service Fabric a kontejnery.][containers-introduction-link]
 * [Service Fabric a spustitelné soubory hosta.][guest-executables-introduction-link]

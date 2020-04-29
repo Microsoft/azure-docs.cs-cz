@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat ze zdrojů aplikace Microsoft Access
-description: Zjistěte, jak kopírovat data ze zdrojů aplikace Microsoft Access do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z zdrojů aplikace Microsoft Access
+description: Naučte se, jak kopírovat data ze zdrojů Microsoft Access do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,57 +12,57 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: fc2179efcda4ee11dda3b424b16a072a2bb2c26e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418180"
 ---
-# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopírování dat z úložišť dat microsoft access a do nich pomocí Azure Data Factory
+# <a name="copy-data-from-and-to-microsoft-access-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložišť dat z aplikace Microsoft Access pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí kopírovat aktivitu v Azure Data Factory ke kopírování dat z úložiště dat Microsoft Access. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z úložiště dat Microsoft Access. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor aplikace Microsoft Access je podporován pro následující aktivity:
+Tento konektor Microsoft Access se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data ze zdroje aplikace Microsoft Access můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data ze zdroje Microsoft Access můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li používat tento konektor aplikace Microsoft Access, je třeba:
+Pokud chcete použít tento konektor Microsoft Accessu, musíte:
 
-- Nastavte runtime integrace s vlastním hostitelem. Podrobnosti najdete v článku [runtime integrace s vlastním hostitelem.](create-self-hosted-integration-runtime.md)
-- Nainstalujte ovladač ODBC aplikace Microsoft Access pro úložiště dat v integračním automatu Runtime.
+- Nastavte Integration Runtime pro místní hostování. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
+- Na Integration Runtime počítač nainstalujte ovladač ODBC pro Microsoft Access pro úložiště dat.
 
 >[!NOTE]
->Microsoft Access 2016 verze ovladače ODBC nefunguje s tímto konektorem. Místo toho použijte ovladač verze 2013 nebo 2010.
+>V tomto konektoru nefunguje verze ovladače ODBC pro Microsoft Access 2016. Místo toho použijte ovladač verze 2013 nebo 2010.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit datové továrny specifických pro konektor aplikace Microsoft Access.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor Microsoft Access.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro propojenou službu aplikace Microsoft Access jsou podporovány následující vlastnosti:
+Pro propojenou službu Microsoft Access jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **MicrosoftAccess.** | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části pověření. Můžete zadat připojovací řetězec nebo použít systém DSN (Název zdroje dat), který jste nastavili v integračním stroji Runtime (musíte podle toho zadat část pověření v propojené službě).<br> Můžete také umístit heslo v Azure Key `password` Vault a vyžádat konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v přihlašovacích údajích úložiště v azure trezoru](store-credentials-in-key-vault.md) klíčů.| Ano |
-| authenticationType | Typ ověřování používaný k připojení k úložišti dat aplikace Microsoft Access<br/>Povolené hodnoty jsou: **Základní** a **Anonymní**. | Ano |
+| type | Vlastnost Type musí být nastavená na: **MicrosoftAccess** . | Ano |
+| připojovací řetězec | Připojovací řetězec ODBC s výjimkou části s přihlašovacími údaji Můžete zadat připojovací řetězec nebo použít systémový DSN (název zdroje dat), který jste nastavili na Integration Runtimem počítači (v odpovídajícím způsobem je potřeba zadat část přihlašovacích údajů v propojené službě).<br> Můžete také vložit heslo do Azure Key Vault a `password` získat konfiguraci z připojovacího řetězce.Další podrobnosti najdete [v tématu uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) .| Ano |
+| authenticationType | Typ ověřování, který se používá pro připojení k úložišti dat Microsoft Access.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Ano |
 | userName | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ne |
-| pověření | Část připojovacího řetězce přístupová pověření zadaná ve formátu hodnoty vlastnosti specifické pro ovladač. Označte toto pole jako securestring. | Ne |
-| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Runtime integrace hostované samostatně je vyžadován, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| pověření | Část přístupového pověření v připojovacím řetězci, kterou jste zadali ve formátu hodnoty vlastnosti specifické pro ovladač. Označte toto pole jako SecureString. | Ne |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -88,16 +88,16 @@ Pro propojenou službu aplikace Microsoft Access jsou podporovány následujíc�
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou aplikace Microsoft Access.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Microsoft Access.
 
-Chcete-li zkopírovat data z aplikace Microsoft Access, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z aplikace Microsoft Access, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena na: **MicrosoftAccessTable.** | Ano |
-| tableName | Název tabulky v aplikaci Microsoft Access. | Ne pro zdroj (pokud je zadán "dotaz" ve zdroji aktivity);<br/>Ano pro umyvadlo |
+| type | Vlastnost Type datové sady musí být nastavená na: **MicrosoftAccessTable** . | Ano |
+| tableName | Název tabulky v Microsoft Accessu | Ne pro zdroj (Pokud je zadáno "dotaz" ve zdroji aktivity);<br/>Ano pro jímku |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -117,18 +117,18 @@ Chcete-li zkopírovat data z aplikace Microsoft Access, jsou podporovány násle
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem aplikace Microsoft Access.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem přístupu společnosti Microsoft.
 
-### <a name="microsoft-access-as-source"></a>Aplikace Microsoft Access jako zdroj
+### <a name="microsoft-access-as-source"></a>Microsoft Access as source
 
-Chcete-li kopírovat data z úložiště dat kompatibilních s aplikací Microsoft Access, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+Chcete-li kopírovat data z úložiště dat kompatibilního s Microsoft Access, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavena na: **MicrosoftAccessSource** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz. Například: `"SELECT * FROM MyTable"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MicrosoftAccessSource** . | Ano |
+| query | Pomocí vlastního dotazu můžete číst data. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -160,9 +160,9 @@ Chcete-li kopírovat data z úložiště dat kompatibilních s aplikací Microso
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

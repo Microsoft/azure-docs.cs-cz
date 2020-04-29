@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z MySQL pomocí Azure Data Factory
-description: Další informace o konektoru MySQL v Azure Data Factory, který umožňuje kopírovat data z databáze MySQL do úložiště dat podporovaného jako jímka.
+description: Přečtěte si o konektoru MySQL v Azure Data Factory, který umožňuje kopírovat data z databáze MySQL do úložiště dat podporovaného jako jímka.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 8467bbe1512e45342b86ff62d51a3f66b3096f03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418129"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z MySQL pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-onprem-mysql-connector.md)
 > * [Aktuální verze](connector-mysql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z databáze MySQL. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z databáze MySQL. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 >[!NOTE]
->Chcete-li zkopírovat data ze [služby Azure Database for MySQL](../mysql/overview.md) nebo do ní, použijte specializovaný [konektor Azure Database for MySQL](connector-azure-database-for-mysql.md).
+>Chcete-li kopírovat data z nebo do služby [Azure Database for MySQL](../mysql/overview.md) , použijte specializovaný [konektor Azure Database for MySQL](connector-azure-database-for-mysql.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor MySQL je podporován pro následující činnosti:
+Tento konektor MySQL se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Můžete zkopírovat data z databáze MySQL do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z databáze MySQL můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konkrétně tento mysql konektor podporuje MySQL **verze 5.6 a 5.7**.
+Konkrétně tento konektor MySQL podporuje MySQL **verze 5,6 a 5,7**.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-Integrační modul Runtime poskytuje vestavěný ovladač MySQL od verze 3.7, proto nemusíte ručně instalovat žádný ovladač.
+Integration Runtime poskytuje integrovaný ovladač MySQL od verze 3,7, proto nemusíte ručně instalovat žádný ovladač.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor MySQL.
+Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro konektor MySQL.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu MySQL jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **MySql** | Ano |
-| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure Database for MySQL.<br/> Můžete také umístit heslo do azure `password` key vault a vyžádat konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovacích údajích úložiště v](store-credentials-in-key-vault.md) článku Azure Key Vault. | Ano |
-| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, používá výchozí Azure Integration Runtime. |Ne |
+| type | Vlastnost Type musí být nastavená na: **MySQL** . | Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k instanci Azure Database for MySQL.<br/> Můžete také do Azure Key Vault umístit heslo a načíst `password` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
 Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit pro váš případ:
 
 | Vlastnost | Popis | Možnosti | Požaduje se |
 |:--- |:--- |:--- |:--- |
-| Režim SSLMode | Tato možnost určuje, zda ovladač používá šifrování TLS a ověření při připojování k MySQL. Např.`SSLMode=<0/1/2/3/4>`| ZDRAVOTNĚ postižené (0) / PREFEROVANÉ (1) **(Výchozí)** / POVINNÉ (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
-| UseSystemTrustStore | Tato možnost určuje, zda se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1) / Zakázáno (0) **(Výchozí)** | Ne |
+| SSLMode | Tato možnost určuje, zda ovladač při připojování k MySQL používá šifrování TLS a ověřování. Např.:`SSLMode=<0/1/2/3/4>`| DISABLEd (0)/PREFEROVÁNo (1) **(výchozí)** /požadováno (2)/VERIFY_CA (3)/VERIFY_IDENTITY (4) | Ne |
+| UseSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát certifikační autority z úložiště důvěryhodnosti systému nebo ze zadaného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| Povoleno (1)/zakázáno (0) **(výchozí)** | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -87,7 +87,7 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 }
 ```
 
-**Příklad: ukládání hesla v trezoru klíčů Azure**
+**Příklad: uložení hesla v Azure Key Vault**
 
 ```json
 {
@@ -113,7 +113,7 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 }
 ```
 
-Pokud jste používali službu propojenou s MySQL s následující datovou částí, je stále podporována tak, jak je, zatímco se doporučuje používat novou do budoucna.
+Pokud jste používali propojenou službu MySQL s následující datovou částí, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
 **Předchozí datová část:**
 
@@ -141,16 +141,16 @@ Pokud jste používali službu propojenou s MySQL s následující datovou čás
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou MySQL.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou MySQL.
 
 Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena **na: MySqlTable** | Ano |
-| tableName | Název tabulky v databázi MySQL. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **MySQL** . | Ano |
+| tableName | Název tabulky v databázi MySQL | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -168,22 +168,22 @@ Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti:
 }
 ```
 
-Pokud jste `RelationalTable` používali zadaný datový soubor, je stále podporována tak, jak je, zatímco se doporučuje používat novou do budoucna.
+Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem MySQL.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem MySQL.
 
 ### <a name="mysql-as-source"></a>MySQL jako zdroj
 
-Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti v části **zdroj aktivity** kopírování:
+Chcete-li kopírovat data z MySQL, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: MySqlSource** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MySqlSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -215,13 +215,13 @@ Chcete-li kopírovat data z MySQL, jsou podporovány následující vlastnosti v
 ]
 ```
 
-Pokud jste `RelationalSource` používali zadaný zdroj, je stále podporován jako-je, zatímco jste navrhl použít nový do budoucna.
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
 ## <a name="data-type-mapping-for-mysql"></a>Mapování datových typů pro MySQL
 
-Při kopírování dat z MySQL se používají následující mapování z datových typů MySQL do dočasných datových typů Azure Data Factory. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování schématu a datových typů.](copy-activity-schema-and-type-mapping.md)
+Při kopírování dat z MySQL se z datových typů MySQL používají následující mapování pro Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování typů schématu a dat](copy-activity-schema-and-type-mapping.md) .
 
-| Datový typ MySQL | Dočasný datový typ datové továrny |
+| Datový typ MySQL | Typ dat interim Data Factory |
 |:--- |:--- |
 | `bigint` |`Int64` |
 | `bigint unsigned` |`Decimal` |
@@ -265,9 +265,9 @@ Při kopírování dat z MySQL se používají následující mapování z datov
 | `year` |`Int` |
 
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

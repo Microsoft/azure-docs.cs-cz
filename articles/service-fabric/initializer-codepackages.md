@@ -1,34 +1,34 @@
 ---
-title: Inicializátor codepackages v service fabric
-description: Popisuje Initializer CodePackages v service fabric.
+title: CodePackages inicializátoru v Service Fabric
+description: Popisuje CodePackages inicializátoru v Service Fabric.
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430627"
 ---
 # <a name="initializer-codepackages"></a>Balíčky kódu inicializátoru
 
-Počínaje verzí 7.1 service fabric podporuje **Initializer CodePackages** pro [kontejnery][containers-introduction-link] a [host spustitelné][guest-executables-introduction-link] aplikace. Initializer CodePackages poskytují možnost provést inicializace v oboru ServicePackage před spuštěním spuštění jiných CodePackages. Jejich vztah k ServicePackage je obdobou what [SetupEntryPoint][setup-entry-point-link] je pro CodePackage.
+Počínaje verzí 7,1 Service Fabric podporuje **CodePackages inicializátorů** pro [kontejnery][containers-introduction-link] a [spustitelné aplikace hosta][guest-executables-introduction-link] . Inicializátor CodePackages poskytuje možnost provádět inicializace v oboru pro ServicePack ještě předtím, než ostatní CodePackages spustí provádění. Jejich vztah k ServicePack je podobný jako [SetupEntryPoint][setup-entry-point-link] pro CodePackage.
 
-Než budete pokračovat v tomto článku, doporučujeme seznámit se s [modelem aplikace Service Fabric][application-model-link] a [modelhostování service fabric][hosting-model-link].
+Než budete pokračovat v tomto článku, doporučujeme seznámit se s [Service Fabric aplikačním modelem][application-model-link] a [modelem Service Fabric hostování][hosting-model-link].
 
 > [!NOTE]
-> Initializer CodePackages nejsou aktuálně podporovány pro služby napsané pomocí programovacího modelu [Spolehlivé služby.][reliable-services-link]
+> Inicializátor CodePackages se v tuto chvíli nepodporuje u služeb napsaných pomocí programovacího modelu [Reliable Services][reliable-services-link] .
  
-## <a name="semantics"></a>Sémantika
+## <a name="semantics"></a>Sémantiku
 
-Očekává se, že balíček kódu inicializátoru bude spuštěn k **úspěšnému dokončení (ukončovací kód 0).** Neúspěšný balíček kódu inicializátoru je restartován, dokud nebude úspěšně dokončen. Více Initializer CodePackages jsou povoleny a jsou spouštěny k **úspěšnému dokončení**, **postupně** **, v zadaném pořadí** před jiné CodePackages v ServicePackage zahájení spuštění.
+Očekává se spuštění inicializátoru CodePackage pro **úspěšné dokončení (ukončovací kód 0)**. Neúspěšný inicializátor CodePackage se restartuje, dokud se úspěšně nedokončí. Více inicializátorů CodePackages je povoleno a jsou spouštěny do **úspěšného dokončení**v **zadaném pořadí** před jiným CodePackages ve službě ServicePack. **sequentially**
 
-## <a name="specifying-initializer-codepackages"></a>Určení balíčků kódu inicializátoru
-CodePackage můžete označit jako Initializer nastavením **Initializer** atribut **true** v ServiceManifest. Pokud existuje více Initializer CodePackages, jejich pořadí provádění lze zadat prostřednictvím **ExecOrder** atribut. **ExecOrder** musí být nezáporné celé číslo a je platný pouze pro Initializer CodePackages. Initializer CodePackages s nižšími hodnotami **ExecOrder** jsou provedeny jako první. Pokud **ExecOrder** není zadán pro Initializer CodePackage, předpokládá se výchozí hodnota 0. Relativní pořadí provádění Initializer CodePackages se stejnou hodnotou **ExecOrder** není zadán.
+## <a name="specifying-initializer-codepackages"></a>Určení CodePackages inicializátoru
+Můžete označit CodePackage jako inicializátor nastavením atributu **inicializátoru** na **hodnotu true** v ServiceManifest. Pokud existuje více inicializátorů CodePackages, jejich pořadí spuštění lze zadat prostřednictvím atributu **ExecOrder** . **ExecOrder** musí být nezáporné celé číslo a je platné pouze pro inicializátor CodePackages. Nejprve se spustí inicializátor CodePackages s nižšími hodnotami **ExecOrder** . Pokud není **ExecOrder** pro inicializátor CodePackage zadán, je použita výchozí hodnota 0. Relativní pořadí provádění inicializátoru CodePackages se stejnou hodnotou **ExecOrder** není určeno.
 
-Následující serviceManifest úryvek popisuje tři CodePackages dva z nich jsou označeny jako Initializers. Při aktivaci tohoto ServicePackage *InitCodePackage0* je proveden jako první, protože má nejnižší hodnotu **ExecOrder**. Po úspěšném dokončení (ukončovací kód 0) *InitCodePackage0*, *InitCodePackage1* je spuštěn. Nakonec po úspěšném dokončení *InitCodePackage1*, *WorkloadCodePackage* je spuštěn.
+Následující fragment kódu ServiceManifest popisuje tři CodePackagesy, které jsou označeny jako Inicializátory. Když se aktivuje tato ServicePack, *InitCodePackage0* se spustí jako první, protože má nejnižší hodnotu **ExecOrder**. Po úspěšném dokončení (ukončovací kód 0) *InitCodePackage0*se spustí *InitCodePackage1* . Nakonec po úspěšném dokončení *InitCodePackage1*se spustí *WorkloadCodePackage* .
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ Následující serviceManifest úryvek popisuje tři CodePackages dva z nich jso
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>Kompletní příklad pomocí Initializer CodePackages
+## <a name="complete-example-using-initializer-codepackages"></a>Kompletní příklad použití inicializátoru CodePackages
 
-Podívejme se na úplný příklad pomocí Initializer CodePackages.
+Pojďme se podívat na úplný příklad pomocí inicializátoru CodePackages.
 
 > [!IMPORTANT]
-> Následující příklad předpokládá znalost vytváření [aplikací kontejnerů systému Windows pomocí Service Fabric a Docker][containers-getting-started-link].
+> Následující příklad předpokládá znalost vytváření [kontejnerových aplikací pro Windows pomocí Service Fabric a Docker][containers-getting-started-link].
 >
-> Tento příklad odkazuje mcr.microsoft.com/windows/nanoserver:1809. Kontejnery systému Windows Server nejsou kompatibilní ve všech verzích hostitelského operačního systému. Další informace naleznete v [tématu Kompatibilita verzí kontejneru systému Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
+> Tento příklad odkazuje na mcr.microsoft.com/windows/nanoserver:1809. Kontejnery Windows serveru nejsou kompatibilní napříč všemi verzemi hostitelského operačního systému. Další informace najdete v tématu [Kompatibilita verzí kontejnerů Windows](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility).
 
-Následující soubor ServiceManifest.xml vychází z výše popsaného úrychu ServiceManifest. *InitCodePackage0*, *InitCodePackage1* a *WorkloadCodePackage* jsou CodePackages, které představují kontejnery. Po aktivaci *InitCodePackage0* je proveden jako první. Zaznamená zprávu do souboru a ukončí. Dále *InitCodePackage1* je spuštěn, který také zaznamená zprávu do souboru a ukončí. Nakonec *WorkloadCodePackage* spustí spuštění. Také zaznamená zprávu do souboru, výstupy obsahu souboru **stdout** a pak ping navždy.
+Následující ServiceManifest. XML staví na fragmentu ServiceManifest popsané výše. *InitCodePackage0*, *InitCodePackage1* a *WorkloadCodePackage* jsou CodePackages, které představují kontejnery. Při aktivaci se *InitCodePackage0* spustí jako první. Zaznamená zprávu do souboru a ukončí se. V dalším kroku se spustí *InitCodePackage1* , který také zaznamená zprávu do souboru a ukončí. Nakonec *WorkloadCodePackage* zahájí provádění. Zaznamená také zprávu do souboru, vytvoří výstup obsahu souboru do **stdout** a pak se znovu otestuje.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ Následující soubor ServiceManifest.xml vychází z výše popsaného úrychu 
 </ServiceManifest>
 ```
 
-Následující soubor ApplicationManifest.xml popisuje aplikaci založenou na výše popsaném souboru ServiceManifest.xml. Všimněte si, že určuje stejné **připojení svazku** pro všechny kontejnery, **tj.** **C:\WorkspaceOnContainer** Čistý efekt je, že všechny kontejnery zapisovat do stejného souboru protokolu v pořadí, ve kterém jsou aktivovány.
+Následující souboru ApplicationManifest. XML popisuje aplikaci založenou na souboru ServiceManifest. XML, který je popsán výše. Všimněte si, že určuje stejné připojení **svazku** pro všechny kontejnery, tj. **C:\WorkspaceOnHost** je připojeno na **C:\WorkspaceOnContainer** na všech třech kontejnerech. Čistý efekt znamená, že všechny kontejnery zapisují do stejného souboru protokolu v pořadí, ve kterém jsou aktivované.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ Následující soubor ApplicationManifest.xml popisuje aplikaci založenou na v�
   </DefaultServices>
 </ApplicationManifest>
 ```
-Po úspěšné aktivaci servicepackage by měl být následující obsah **C:\WorkspaceOnHost\log.txt.**
+Po úspěšné aktivaci programu ServicePack by měl být obsah **C:\WorkspaceOnHost\log.txt** následující.
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -138,7 +138,7 @@ Hi from WorkloadCodePackage.
 
 ## <a name="next-steps"></a>Další kroky
 
-Související informace naleznete v následujících článcích.
+Související informace najdete v následujících článcích.
 
 * [Service Fabric a kontejnery.][containers-introduction-link]
 * [Service Fabric a spustitelné soubory hosta.][guest-executables-introduction-link]

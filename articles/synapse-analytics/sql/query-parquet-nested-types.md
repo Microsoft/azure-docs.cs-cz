@@ -1,6 +1,6 @@
 ---
-title: Typy vnořených par dotazů pomocí SQL na vyžádání (náhled)
-description: V tomto článku se dozvíte, jak dotaz parkety vnořené typy.
+title: Dotazování na vnořené typy Parquet pomocí SQL na vyžádání (Preview)
+description: V tomto článku se naučíte, jak zadávat dotazy na vnořené typy Parquet.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: a1e3d3c7494aa75b3f6d481d12135316791772d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431654"
 ---
-# <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Vnořené typy parek dotazu pomocí SQL na vyžádání (preview) v Azure Synapse Analytics
+# <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazy Parquet vnořené typy pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (preview) v Azure Synapse Analytics.  Tento dotaz bude číst parkety vnořené typy.
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (ve verzi Preview) ve službě Azure synapse Analytics.  Tento dotaz načte vnořené typy Parquet.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než si přečtete zbytek tohoto článku, přečtěte si následující články:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
-## <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakovaná data projektu
+## <a name="project-nested-or-repeated-data"></a>Vnořená nebo opakující se data projektu
 
-Následující dotaz přečte soubor *justSimpleArray.parquet.* Promítá všechny sloupce ze souboru parket včetně vnořených nebo opakovaných dat.
+Následující dotaz přečte soubor *justSimpleArray. Parquet* . Projekty IT jsou všechny sloupce ze souboru Parquet, včetně vnořených nebo opakovaných dat.
 
 ```sql
 SELECT
@@ -43,7 +43,7 @@ FROM
 
 ## <a name="access-elements-from-nested-columns"></a>Přístup k prvkům z vnořených sloupců
 
-Následující dotaz přečte soubor *structExample.parquet* a ukazuje, jak zobrazit prvky vnořeného sloupce:
+Následující dotaz přečte soubor *structExample. Parquet* a ukazuje, jak surfovat prvky vnořeného sloupce:
 
 ```sql
 SELECT
@@ -68,9 +68,9 @@ FROM
     ) AS [r];
 ```
 
-## <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakovaných sloupců
+## <a name="access-elements-from-repeated-columns"></a>Přístup k prvkům z opakujících se sloupců
 
-Následující dotaz přečte soubor *justSimpleArray.parquet* a používá [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení **skalárního** prvku z opakovaného sloupce, například Array nebo Map:
+Následující dotaz přečte soubor *justSimpleArray. Parquet* a používá [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení **skalárního** prvku v rámci opakujícího se sloupce, jako je například pole nebo mapa:
 
 ```sql
 SELECT
@@ -85,7 +85,7 @@ FROM
     ) AS [r];
 ```
 
-Následující dotaz přečte soubor *mapExample.parquet* a používá [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení **neskalárního** prvku z opakovaného sloupce, například Array nebo Map:
+Následující dotaz přečte soubor *mapExample. Parquet* a používá [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) k načtení **neskalárního** prvku z opakujícího se sloupce, jako je například pole nebo mapa:
 
 ```sql
 SELECT
@@ -100,4 +100,4 @@ FROM
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se zobrazí dotaz na [soubory JSON](query-json-files.md).
+V dalším článku se dozvíte, jak [zadávat dotazy na soubory JSON](query-json-files.md).

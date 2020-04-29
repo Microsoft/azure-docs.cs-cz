@@ -1,6 +1,6 @@
 ---
-title: Key Vault .NET 2.x POZNÁMKY k verzi rozhraní API| Dokumenty společnosti Microsoft
-description: Vývojáři rozhraní .NET budou používat toto rozhraní API ke kódu pro Azure Key Vault
+title: Key Vault poznámky k verzi rozhraní .NET 2. x API | Microsoft Docs
+description: Vývojáři rozhraní .NET budou používat toto rozhraní API k kódování pro Azure Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,67 +11,67 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431914"
 ---
-# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – poznámky k verzi a průvodce migrací
-Následující informace pomáhají migrovat na verzi 2.0 knihovny Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze je třeba aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plné podpoře nových a vylepšených funkcí, jako jsou **například certifikáty trezoru klíčů**.
+# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – poznámky k verzi a Průvodce migrací
+Následující informace pomáhají při migraci na verzi 2,0 knihovny Azure Key Vault pro C# a .NET.  Aplikace napsané pro starší verze se musí aktualizovat, aby podporovaly nejnovější verzi.  Tyto změny jsou potřebné k plnému podpoře nových a vylepšených funkcí, jako jsou **Key Vault certifikáty**.
 
-## <a name="key-vault-certificates"></a>Certifikáty trezoru klíčů
+## <a name="key-vault-certificates"></a>Key Vault certifikátů
 
-Certifikáty trezoru klíčů spravují certifikáty x509 a podporují následující chování:  
+Key Vault certifikáty spravují certifikáty x509 a podporují následující chování:  
 
-* Vytvořte certifikáty prostřednictvím procesu vytváření trezoru klíčů nebo importujte existující certifikát. To zahrnuje certifikáty podepsané svým držitelem i certifikáty (CERTIFIKAČNÍ AUTORITA).
-* Bezpečně uklánějte a spravujte úložiště certifikátů x509 bez interakce pomocí materiálu soukromého klíče.  
-* Definujte zásady, které směrují trezor klíčů ke správě životního cyklu certifikátu.  
-* Zadejte kontaktní informace pro události životního cyklu, jako jsou upozornění na vypršení platnosti a oznámení o obnovení.  
-* Automaticky obnovovat certifikáty s vybranými vystaviteli (poskytovatelé certifikátů Key Vault partner X509 a certifikační autority).* Certifikát podpory od náhradníka (jiného partnera) poskytuje a certifikační autority (nepodporuje automatické obnovení).  
+* Vytvořte certifikáty prostřednictvím procesu vytváření Key Vault nebo importujte stávající certifikát. To zahrnuje certifikáty podepsané svým držitelem i certifikáty vygenerované certifikační autoritou (CA).
+* Bezpečně ukládejte a spravujte úložiště certifikátů x509 bez interakce pomocí materiálu privátních klíčů.  
+* Definujte zásady, které Key Vault pro správu životního cyklu certifikátů nasměrovat.  
+* Poskytněte kontaktní informace pro události životního cyklu, například upozornění vypršení platnosti a oznámení o obnovení.  
+* Automaticky obnovuje certifikáty s vybranými vystaviteli (Key Vault poskytovatelé certifikátů x509 a certifikačních autorit). * certifikát podpory od alternativních (nepartnerských) a certifikačních autorit (nepodporuje automatické obnovení).  
 
 ## <a name="net-support"></a>Podpora rozhraní .NET
 
-* **Rozhraní .NET 4.0** není podporováno verzí knihovny Azure Key Vault .NET 2.0
-* **Rozhraní .NET Framework 4.5.2** je podporováno verzí knihovny Azure Key Vault .NET 2.0
-* **Rozhraní .NET Standard 1.4** je podporováno verzí knihovny Azure Key Vault .NET 2.0
+* **Rozhraní .net 4,0** není podporované verzí 2,0 knihovny Azure Key Vault .NET.
+* **.NET Framework 4.5.2** podporuje verze 2,0 knihovny Azure Key Vault .NET.
+* Verze 2,0 Azure Key Vault knihovny .NET podporuje **.NET Standard 1,4** .
 
 ## <a name="namespaces"></a>Jmenné prostory
 
-* Obor názvů **modelů** se změní z **Microsoft.Azure.KeyVault** na **Microsoft.Azure.KeyVault.Models**.
-* Obor názvů **Microsoft.Azure.KeyVault.Internal** je vynechán.
-* Následující obory názvů závislostí sady Azure SDK mají 
+* Obor názvů pro **modely** se změnil z **Microsoft. Azure. webtrezoru** na **Microsoft. Azure. webtrezor. Models**.
+* **Microsoft. Azure. webtrezor. Internal** obor názvů je vyřazený.
+* Následující obory názvů pro závislosti sady Azure SDK mají 
 
-    - **Hyak.Common** je nyní **Microsoft.Rest**.
-    - **Hyak.Common.Internals** je nyní **Microsoft.Rest.Serialization**.
+    - **Hyak. Common** je teď **Microsoft. REST**.
+    - **Hyak. Common. Internals** je nyní **Microsoft. REST. Serialization**.
 
 ## <a name="type-changes"></a>Změny typu
 
-* *Tajný klíč* byl změněn na *SecretBundle*
+* *Tajný kód* se změnil na *SecretBundle*
 * *Slovník* byl změněn na *IDictionary*
-* *Seznam\<T>, řetězec []* změněn na *\<IList T>*
-* *NextList* byl změněn na *NextPageLink.*
+* *Seznam\<T>, řetězec []* se změnil *na\<IList T>*
+* *NextList* změněny na *NextPageLink*
 
 ## <a name="return-types"></a>Návratové typy
 
-* **KeyList** a **SecretList** nyní vrátí *IPage\<T>* namísto *ListKeysResponseMessage*
-* Vygenerovaný **BackupKeyAsync** nyní vrátí *BackupKeyResult*, který obsahuje *Value* (back-up blob). Dříve byla metoda zabalena a vrácena pouze hodnotu.
+* **Seznam** a **SecretList** nyní vrátí *IPage\<T>* místo *ListKeysResponseMessage*
+* Vygenerovaná **BackupKeyAsync** nyní vrátí *BackupKeyResult*, který obsahuje *hodnotu* (zálohovaný objekt BLOB). Dříve byla metoda zabalena a vrátila pouze hodnotu.
 
 ## <a name="exceptions"></a>Výjimky
 
-* *KeyVaultClientException* byl změněn na *KeyVaultErrorException*
-* Chyba služby se změnila z *výjimky. Chyba* *výjimky. Body.Error.Message*.
-* Z chybové zprávy **[JsonExtensionData]** byly odebrány další informace.
+* *KeyVaultClientException* se změní na *KeyVaultErrorException*
+* Chyba služby se změnila z *výjimky. Chyba* na *výjimku. Tělo. Error. Message*.
+* Odebraly se další informace z chybové zprávy pro: **[JsonExtensionData]**.
 
 ## <a name="constructors"></a>Konstruktory
 
-* Namísto přijetí *httpclient* jako argument konstruktoru konstruktoru konstruktor přijímá pouze *HttpClientHandler* nebo *DelegatingHandler[]*.
+* Namísto přijetí *HttpClient* jako argumentu konstruktoru akceptuje konstruktor pouze *HttpClientHandler* nebo *DelegatingHandler []*.
 
 ## <a name="downloaded-packages"></a>Stažené balíčky
 
-Když klient zpracuje závislost trezoru klíčů, stáhnou se následující balíčky:
+Když klient zpracuje závislost Key Vault, stáhnou se tyto balíčky:
 
-### <a name="previous-package-list"></a>Předchozí seznam balíčků
+### <a name="previous-package-list"></a>Seznam předchozích balíčků
 
 * `package id="Hyak.Common" version="1.0.2" targetFramework="net45"`
 * `package id="Microsoft.Azure.Common" version="2.0.4" targetFramework="net45"`
@@ -90,20 +90,20 @@ Když klient zpracuje závislost trezoru klíčů, stáhnou se následující ba
 
 ## <a name="class-changes"></a>Změny třídy
 
-* **Třída UnixEpoch** byla odebrána.
-* **Třída Base64UrlConverter** je přejmenována na **Base64UrlJsonConverter**.
+* Třída **UnixEpoch** byla odebrána.
+* Třída **Base64UrlConverter** je přejmenována na **Base64UrlJsonConverter**.
 
 ## <a name="other-changes"></a>Další změny
 
-* Do této verze rozhraní API byla přidána podpora pro konfiguraci zásady opakování operace KV s přechodným selháním.
+* Do této verze rozhraní API se přidala podpora konfigurace zásad opakování operací KV pro přechodné selhání.
 
-## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
+## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft. Azure. Management. NuGet – NuGet
 
-* Pro operace, které *vrátily úschovnu*, byl návratový typ třídou, která obsahovala vlastnost **Vault.** Návratový typ je nyní *Trezor*.
-* *PermissionsToKeys* a *PermissionsToSecrets* jsou nyní *Permissions.Keys* a *Permissions.Secrets*
-* Některé změny návratových typů platí také pro rovinu ovládacího prvku.
+* Pro operace, které vrátily *trezor*, byl návratový typ třída, která obsahuje vlastnost **trezoru** . Návratový typ je nyní *trezor*.
+* *PermissionsToKeys* a *PermissionsToSecrets* jsou teď *oprávnění. klíče* a *oprávnění. tajné* klíče
+* Některé změny návratových typů se vztahují i na rovinu ovládacího prvku.
 
-## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
+## <a name="microsoftazurekeyvaultextensions-nuget"></a>NuGet Microsoft. Azure. webtrezor. Extensions. Extensions
 
-* Balíček je rozdělen na **Microsoft.Azure.KeyVault.Extensions** a **Microsoft.Azure.KeyVault.Cryptography** pro kryptografické operace.
+* Balíček je rozdělen do **Microsoft. Azure. webtrezor. Extensions** a **Microsoft. Azure. webtrezor. Cryptography** pro operace kryptografie.
 

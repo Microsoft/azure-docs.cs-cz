@@ -1,6 +1,6 @@
 ---
-title: Průběžná integrace a nasazování
-description: Prostředí Database DevOps podnikové třídy pro ukládání dat s integrovanou podporou pro průběžnou integraci a nasazení pomocí Azure Pipelines.
+title: Průběžná integrace a nasazování
+description: DevOps možnosti databáze na podnikové úrovni pro datové sklady s integrovanou podporou pro průběžnou integraci a nasazování pomocí Azure Pipelines.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,55 +12,55 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416232"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a zavádění datových skladů
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Průběžná integrace a nasazování pro datové sklady
 
-Tento jednoduchý kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) s Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při vytváření průběžné integrace a nasazení kanálu pro ukládání dat.
+V tomto jednoduchém kurzu se naučíte integrovat projekt databáze SSDT (SQL Server Data Tools) do Azure DevOps a využít Azure Pipelines k nastavení průběžné integrace a nasazování. Tento kurz je druhým krokem při sestavování kanálu průběžné integrace a nasazování pro datové sklady.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-- Procházení [kurzu integrace správy zdrojového kódu](sql-data-warehouse-source-control-integration.md)
+- Projděte si [kurz integrace správy zdrojového kódu](sql-data-warehouse-source-control-integration.md)
 
 - Nastavení a připojení k Azure DevOps
 
-## <a name="continuous-integration-with-visual-studio-build"></a>Průběžná integrace s sestavením sady Visual Studio
+## <a name="continuous-integration-with-visual-studio-build"></a>Průběžná integrace se sestavením sady Visual Studio
 
 1. Přejděte na Azure Pipelines a vytvořte nový kanál sestavení.
 
       ![Nový kanál](./media/sql-data-warehouse-continuous-integration-and-deployment/1-new-build-pipeline.png "Nový kanál")
 
-2. Vyberte úložiště zdrojového kódu (Azure Repos Git) a vyberte šablonu aplikace .NET Desktop.
+2. Vyberte úložiště zdrojového kódu (Azure Repos Git) a vyberte šablonu desktopové aplikace .NET.
 
-      ![Instalace kanálu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Instalace kanálu")
+      ![Nastavení kanálu](./media/sql-data-warehouse-continuous-integration-and-deployment/2-pipeline-setup.png "Nastavení kanálu")
 
-3. Upravte soubor YAML tak, aby používal správný fond vašeho agenta. Soubor YAML by měl vypadat nějak takto:
+3. Upravte soubor YAML tak, aby používal správný fond vašeho agenta. Váš soubor YAML by měl vypadat přibližně takto:
 
       ![YAML](./media/sql-data-warehouse-continuous-integration-and-deployment/3-yaml-file.png "YAML")
 
-V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změnami do hlavní větve úložiště správy zdrojového kódu by mělo automaticky aktivovat úspěšné sestavení aplikace Visual Studio databázového projektu. Ověřte, že automatizace pracuje od konce do konce provedením změny v místním databázovém projektu a vrácením této změny se změnami do hlavní větve.
+V tomto okamžiku máte jednoduché prostředí, kde jakékoli vrácení se změnami do hlavní větve úložiště správy zdrojových kódů by mělo automaticky aktivovat úspěšné sestavení databázového projektu sady Visual Studio. Ověřte, že automatizace pracuje na konci, tím, že provedete změnu v projektu místní databáze a zkontrolujete, že se změní na hlavní větev.
 
-## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Průběžné nasazení s úlohou nasazení Datového skladu Azure SQL (nebo databáze)
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Průběžné nasazování s úlohou nasazení Azure SQL Data Warehouse (nebo databáze)
 
-1. Přidejte nový úkol pomocí [úlohy nasazení databáze Azure SQL](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) database a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy dacpac generované z předchozího procesu sestavení se nasadí do cílového datového skladu. Můžete také použít [úlohu nasazení Datového skladu Azure SQL](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
+1. Přidejte nový úkol pomocí [úlohy nasazení Azure SQL Database](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a vyplňte požadovaná pole pro připojení k cílovému datovému skladu. Při spuštění této úlohy je DACPAC vygenerovaný z předchozího procesu sestavení nasazen do cílového datového skladu. Můžete také použít [úlohu nasazení Azure SQL Data Warehouse](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment).
 
       ![Úloha nasazení](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Úloha nasazení")
 
-2. Pokud používáte agenta s vlastním hostitelem, ujistěte se, že jste nastavili proměnnou prostředí tak, aby používala správný sqlpackage.exe pro datový sklad SQL. Cesta by měla vypadat nějak takto:
+2. Pokud používáte samoobslužného agenta, ujistěte se, že jste nastavili proměnnou prostředí tak, aby pro SQL Data Warehouse používala správný soubor SqlPackage. exe. Cesta by měla vypadat přibližně takto:
 
       ![Proměnná prostředí](./media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Proměnná prostředí")
 
-   C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150  
+   C:\Program Files (x86) \Microsoft Visual Studio\2019\Preview\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\150  
 
-   Spusťte a ověřte svůj kanál. Můžete provést změny místně a vrácení se změnami změny správy zdrojového kódu, který by měl generovat automatické sestavení a nasazení.
+   Spusťte a ověřte svůj kanál. Můžete provést změny místně a vrátit se změnami do správy zdrojového kódu, který by měl generovat automatické sestavení a nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Prozkoumejte [architekturu MPP fondu Synapse SQL](massively-parallel-processing-mpp-architecture.md)
-- Rychlé [vytvoření fondu SQL](create-data-warehouse-portal.md)
+- Prozkoumejte [architekturu MPP synapse fondu SQL](massively-parallel-processing-mpp-architecture.md)
+- Rychlé [Vytvoření fondu SQL](create-data-warehouse-portal.md)
 - [Načtení ukázkových dat](load-data-from-azure-blob-storage-using-polybase.md)
-- Prozkoumejte [videa](sql-data-warehouse-videos.md)
+- Prozkoumat [videa](sql-data-warehouse-videos.md)

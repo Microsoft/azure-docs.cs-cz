@@ -6,45 +6,45 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421781"
 ---
-Chcete-li dokončit rychlý start rozpoznávání záměru, budete muset vytvořit účet LUIS a projekt pomocí portálu náhledu LUIS. Tento rychlý start vyžaduje pouze předplatné LUIS. Předplatné služby Řeči *není* vyžadováno.
+K dokončení rychlého startu pro rozpoznávání záměrů budete muset vytvořit účet LUIS a projekt pomocí portálu LUIS Preview. Tento rychlý Start vyžaduje jenom předplatné LUIS. Předplatné služby Speech *není* vyžadováno.
 
-První věc, kterou budete muset udělat, je vytvořit účet LUIS a aplikaci pomocí portálu náhledu LUIS. Aplikace LUIS, kterou vytvoříte, bude používat předem připravenou doménu pro domácí automatizaci, která poskytuje záměry, entity a příklady projevy. Po dokončení budete mít koncový bod LUIS spuštěný v cloudu, který můžete volat pomocí sady Speech SDK. 
+První věc, kterou je potřeba udělat, je vytvořit účet LUIS a aplikaci pomocí portálu LUIS Preview. Aplikace LUIS, kterou vytvoříte, bude používat předem vytvořenou doménu pro automatizaci domů, která poskytuje záměry, entity a příklady projevy. Až budete hotovi, budete mít v cloudu spuštěný koncový bod LUIS, který můžete volat pomocí sady Speech SDK. 
 
-Podle těchto pokynů vytvořte aplikaci LUIS:
+Pokud chcete vytvořit aplikaci LUIS, postupujte podle těchto pokynů:
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Úvodní příručka: Vytvoření předem sestavené aplikace domény<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">Rychlý Start: sestavení předem sestavené doménové aplikace<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 Až budete hotovi, budete potřebovat čtyři věci:
 
-* Re-publikovat s **řeč priming** přepínal na
-* Primární **klíč** LUIS
-* Vaše **umístění služby** LUIS
-* **ID aplikace** LUIS
+* Znovu publikovat se zapnutým přepnutým dočtením **řeči**
+* Váš **primární klíč** Luis
+* Vaše **umístění** Luis
+* **ID aplikace** Luis
 
-Zde najdete tyto informace na [portálu preview LUIS](https://preview.luis.ai/):
+Tyto informace můžete najít na [portálu Luis Preview](https://preview.luis.ai/):
 
-1. Na portálu náhledu LUIS vyberte aplikaci a pak vyberte tlačítko **Publikovat.**
+1. Na portálu LUIS Preview vyberte svoji aplikaci a pak vyberte tlačítko **publikovat** .
 
-2. Pokud `en-US` používáte možnost **Naplnění řeči,** **vyberte** produkční pozici. **On** Pak vyberte tlačítko **Publikovat.**
+2. Vyberte **produkční** slot, pokud používáte `en-US` možnost přepnout u možnosti vytváření **řeči** **na pozici.** Pak vyberte tlačítko **publikovat** .
 
     > [!IMPORTANT]
-    > **Příprava řeči** je vysoce doporučena, protože zlepší přesnost rozpoznávání řeči.
+    > Důrazně se doporučuje používat **rozpoznávání řeči** , protože se tím vylepšit přesnost rozpoznávání řeči.
 
     > [!div class="mx-imgBorder"]
-    > ![Publikování služby LUIS do koncového bodu](../../../media/luis/publish-app-popup.png)
+    > ![Publikování LUIS do koncového bodu](../../../media/luis/publish-app-popup.png)
 
-3. Na portálu náhledu LUIS vyberte **Spravovat**a pak vyberte **Prostředky Azure**. Na této stránce najdete klíč a umístění služby LUIS (někdy označované jako _oblast)._
+3. Na portálu LUIS Preview vyberte **Spravovat**a pak vyberte **prostředky Azure**. Na této stránce najdete LUIS klíč a umístění (někdy označované jako _oblast_).
 
    > [!div class="mx-imgBorder"]
-   > ![Klíč a umístění služby LUIS](../../../media/luis/luis-key-region.png)
+   > ![LUIS klíč a umístění](../../../media/luis/luis-key-region.png)
 
-4. Až budete mít klíč a polohu, budete potřebovat ID aplikace. Vyberte **Nastavení aplikace** – ID aplikace je k dispozici na této stránce.
+4. Až budete mít klíč a polohu, budete potřebovat ID aplikace. Vybrat **nastavení aplikace** – na této stránce je k dispozici vaše ID aplikace.
 
    > [!div class="mx-imgBorder"]
    > ![ID aplikace LUIS](../../../media/luis/luis-app-id.png)

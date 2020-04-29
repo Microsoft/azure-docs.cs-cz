@@ -1,6 +1,6 @@
 ---
 title: Aktivita čekání v Azure Data Factory
-description: Wait aktivita pozastaví provádění kanálu za zadané období.
+description: Aktivita čekání pozastaví provádění kanálu za zadané období.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417908"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>Spuštění aktivity čekání v Azure Data Factory
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Spustit aktivitu čekání v Azure Data Factory
 Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provádění dalších aktivit počká zadanou dobu. 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,17 +41,17 @@ Pokud v kanálu použijete aktivitu Wait, kanál před pokračováním v provád
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity. `Wait` | Řetězec | Ano
-type | Musí být nastavena na **Wait**. | Řetězec | Ano
-waitTimeInSeconds | Počet sekund, které čeká kanálu před pokračováním zpracování. | Integer | Ano
+jméno | Název `Wait` aktivity | Řetězec | Ano
+type | Musí být nastavené na **čekání**. | Řetězec | Ano
+waitTimeInSeconds | Počet sekund, po které bude kanál čekat, než bude pokračovat ve zpracování. | Integer | Ano
 
 ## <a name="example"></a>Příklad
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-wait-activity"></a>Kanál s aktivitou Čekání
-V tomto příkladu má kanál dvě aktivity: **Until** and **Wait**. Aktivita Wait je nakonfigurována tak, aby čekala jednu sekundu. Kanál spustí aktivitu webu ve smyčce s jednou sekundou čekací doby mezi jednotlivými spuštěními. 
+### <a name="pipeline-with-wait-activity"></a>Kanál s aktivitou čekání
+V tomto příkladu má kanál dvě aktivity: **do** a **Wait**. Aktivita čekání je nakonfigurovaná tak, aby čekala jednu sekundu. Kanál spustí aktivitu webu ve smyčce s jednou sekundou čekací dobou mezi jednotlivými spuštěními. 
 
 ```json
 {
@@ -102,7 +102,7 @@ V tomto příkladu má kanál dvě aktivity: **Until** and **Wait**. Aktivita Wa
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované factory: 
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

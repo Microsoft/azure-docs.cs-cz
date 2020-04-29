@@ -1,6 +1,6 @@
 ---
-title: Doporučené postupy pro SQL na vyžádání (preview) v Azure Synapse Analytics
-description: Doporučení a osvědčené postupy, které byste měli znát při práci s SQL na vyžádání (náhled).
+title: Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
+description: Doporučení a osvědčené postupy, které byste měli znát při práci s SQL na vyžádání (Preview).
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,61 +11,61 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429067"
 ---
-# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Doporučené postupy pro SQL na vyžádání (preview) v Azure Synapse Analytics
+# <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
-V tomto článku najdete kolekci osvědčených postupů pro použití SQL na vyžádání (náhled). SQL na vyžádání je další prostředek v rámci Azure Synapse Analytics.
+V tomto článku najdete kolekci osvědčených postupů pro používání SQL na vyžádání (Preview). SQL na vyžádání je další prostředek ve službě Azure synapse Analytics.
 
 ## <a name="general-considerations"></a>Obecné aspekty
 
-SQL na vyžádání umožňuje dotazovat se na soubory ve vašich účtech úložiště Azure. Nemá místní úložiště nebo možnosti ingestování. Jako takové všechny soubory, které cíle dotazu jsou externí SQL na vyžádání. Vše, co souvisí se čtením souborů z úložiště, může mít vliv na výkon dotazu.
+SQL na vyžádání umožňuje dotazování souborů ve vašich účtech úložiště Azure. Nemá místní úložiště ani možnosti ingestování. V takovém případě všechny soubory, které dotaz cílí, jsou externí pro SQL na vyžádání. Všechno, co souvisí s čtením souborů ze služby Storage, může mít dopad na výkon dotazů.
 
-## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Colocate Azure Storage účet a SQL na vyžádání
+## <a name="colocate-azure-storage-account-and-sql-on-demand"></a>Vyhledání účtu Azure Storage a SQL na vyžádání
 
-Chcete-li minimalizovat latenci, můžete spoluumístit účet úložiště Azure a koncový bod SQL na vyžádání. Účty úložiště a koncové body zřízené během vytváření pracovního prostoru se nacházejí ve stejné oblasti.
+Pokud chcete minimalizovat latenci, Najděte svůj účet služby Azure Storage a koncový bod SQL na vyžádání. Účty úložiště a koncové body zřízené během vytváření pracovního prostoru se nacházejí ve stejné oblasti.
 
-Pro optimální výkon, pokud máte přístup k jiným účtům úložiště s SQL na vyžádání, ujistěte se, že jsou ve stejné oblasti. Pokud nejsou ve stejné oblasti, bude zvýšena latence pro přenos sítě dat mezi vzdálené ho a koncového bodu oblastí.
+Pro zajištění optimálního výkonu při přístupu k jiným účtům úložiště s SQL na vyžádání se ujistěte, že jsou ve stejné oblasti. Pokud nejsou ve stejné oblasti, dojde k vyšší latenci pro přenos dat v síti mezi oblastmi vzdáleného a koncového bodu.
 
-## <a name="azure-storage-throttling"></a>Omezení úložiště Azure
+## <a name="azure-storage-throttling"></a>Omezení Azure Storage
 
-K vašemu účtu úložiště může přistupovat více aplikací a služeb. Omezení úložiště dochází, když kombinované VOPS nebo propustnost generované aplikace, služby a sql úlohy na vyžádání překročí limity účtu úložiště. V důsledku toho dojde k významnému negativnímu vlivu na výkon dotazu.
+K vašemu účtu úložiště může mít přístup více aplikací a služeb. K omezování úložiště dochází v případě, že kombinované IOPS nebo propustnost vygenerované aplikacemi, službami a úlohami SQL na vyžádání překračují limity účtu úložiště. Výsledkem je, že budete mít výrazný negativní vliv na výkon dotazů.
 
-Po zjištění omezení sql na vyžádání má integrované zpracování tohoto scénáře. SQL na vyžádání bude vyžadovat úložiště pomalejším tempem, dokud nebude vyřešeno omezení.
+Po zjištění omezení má na vyžádání SQL na vyžádání vestavěnou manipulaci s tímto scénářem. SQL na vyžádání bude podávat požadavky do úložiště pomalejším tempem, dokud se nevyřeší omezení.
 
 > [!TIP]
-> Pro optimální spuštění dotazu byste neměli stres účet úložiště s jinými úlohami během provádění dotazu.
+> Pro optimální provádění dotazů byste během provádění dotazů neměli nastrese účet úložiště dalšími úlohami.
 
 ## <a name="prepare-files-for-querying"></a>Příprava souborů pro dotazování
 
 Pokud je to možné, můžete připravit soubory pro lepší výkon:
 
-- Převést CSV na parkety - Parkety je sloupcový formát. Vzhledem k tomu, že je komprimovaný, jeho velikost souborů je menší než soubory CSV se stejnými daty. SQL na vyžádání bude potřebovat méně času a požadavky na úložiště číst.
-- Pokud dotaz cílí na jeden velký soubor, budete mít prospěch z jeho rozdělení do více menších souborů.
+- Převede CSV na Parquet-Parquet je sloupcový formát. Vzhledem k tomu, že jsou komprimované, jsou velikosti souborů menší než soubory CSV se stejnými daty. SQL na vyžádání bude potřebovat kratší dobu a požadavky na úložiště pro jeho čtení.
+- Pokud se dotaz zaměřuje na jeden velký soubor, budete ho moci rozdělit do několika menších souborů.
 - Zkuste zachovat velikost souboru CSV pod 10 GB.
-- Je lepší mít stejně velké soubory pro jednu cestu OPENROWSET nebo externí tabulku LOCATION.
-- Rozdělte data uložením oddílů do různých složek nebo názvů souborů - zkontrolujte, zda [použijte funkce filename a path pro cílové oddíly](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
+- Je lepší mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
+- Rozdělení dat do oddílů ukládáním oddílů do různých složek nebo názvů souborů – Pokud [chcete cílit na konkrétní oddíly, ověřte použití funkcí filename a FilePath](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
-## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Použití funkcí fileinfo a filepath k cílení na určité oddíly
+## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Použití funkcí FileInfo a FilePath k cílení na konkrétní oddíly
 
-Data jsou často uspořádána v oddílech. Můžete dát pokyn SQL na vyžádání k dotazování na určité složky a soubory. Tato funkce sníží počet souborů a množství dat, které dotaz potřebuje ke čtení a zpracování. Bonusem je, že dosáhnete lepšího výkonu.
+Data jsou často organizována v oddílech. SQL na vyžádání můžete dát zadat dotaz na konkrétní složky a soubory. Tato funkce omezí počet souborů a množství dat, které musí dotaz číst a zpracovat. Přidaný bonus znamená, že dosáhnete lepšího výkonu.
 
-Další informace naleznete v nabídce funkcí [název souboru](develop-storage-files-overview.md#filename-function) a [cesty k souborům](develop-storage-files-overview.md#filepath-function) a příklady [dotazování určitých souborů](query-specific-files.md).
+Další informace najdete v tématu funkce [filename](develop-storage-files-overview.md#filename-function) a [FilePath](develop-storage-files-overview.md#filepath-function) a příklady, jak [zadávat dotazy na konkrétní soubory](query-specific-files.md).
 
-Pokud vaše uložená data nejsou rozdělena na oddíly, zvažte jejich rozdělení, abyste mohli tyto funkce použít k optimalizaci dotazů zaměřených na tyto soubory. Při [dotazování rozdělených tabulek Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání se dotaz automaticky zaměří pouze na potřebné soubory.
+Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
 
-## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití cetas umocnění výkonu dotazů a spojení
+## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Použití CETAS ke zvýšení výkonu a spojení dotazů
 
-[CETAS](develop-tables-cetas.md) je jednou z nejdůležitějších funkcí dostupných v SQL na vyžádání. CETAS je paralelní operace, která vytváří metadata externí tabulky a exportuje výsledky dotazu SELECT do sady souborů v účtu úložiště.
+[CETAS](develop-tables-cetas.md) je jednou z nejdůležitějších funkcí, které jsou k dispozici v SQL na vyžádání. CETAS je paralelní operace, která vytváří externí metadata tabulky a exportuje výsledky dotazu SELECT do sady souborů v účtu úložiště.
 
-Cetas můžete použít k ukládání často používaných částí dotazů, jako jsou spojené referenční tabulky, do nové sady souborů. Dále se můžete připojit k této jedné externí tabulce namísto opakování běžných spojení ve více dotazech.
+Pomocí CETAS můžete ukládat často používané části dotazů, jako jsou připojené referenční tabulky, do nové sady souborů. V dalším kroku se můžete k této jedné externí tabulce připojit místo opakujících se běžných spojení ve více dotazech.
 
-Jak CETAS generuje soubory parket, statistiky budou automaticky vytvořeny, když první dotaz cílí na tuto externí tabulku, což vede ke zlepšení výkonu.
+Když CETAS generuje soubory Parquet, Statistika se automaticky vytvoří, když první dotaz cílí na tuto externí tabulku, což vede k lepšímu výkonu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V článku [Řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) najdete běžné problémy a řešení. Pokud pracujete s fondem SQL spíše než SQL na vyžádání, naleznete v článku [doporučené postupy pro fond SQL](best-practices-sql-pool.md) pro konkrétní pokyny.
+Běžné problémy a řešení najdete v článku [věnovaném řešení potíží](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) . Pokud pracujete s fondem SQL místo SQL na vyžádání, přečtěte si prosím článek [osvědčené postupy pro fond SQL](best-practices-sql-pool.md) , kde najdete konkrétní pokyny.

@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: b84db9eee473b14f2ba078ed1be77f6165a5f3b9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421769"
 ---
-## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
+## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 
-Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovacím jazyce neuviděli rychlý start. Nebojte se, máme další materiály rychlého startu a ukázky kódu, které jsou k dispozici na GitHubu. V tabulce najdete tu správnou ukázku pro váš programovací jazyk a kombinaci platformy a operačního systému.
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme další materiály pro rychlý Start a ukázky kódu dostupné na GitHubu. Pomocí tabulky Najděte správnou ukázku kombinace programovacího jazyka a platformy/OS.
 
 | Jazyk    | Ukázky kódů                                                                                   |
 |-------------|------------------------------------------------------------------------------------------------|
-| C#          | [Rozhraní .NET Framework][dotnet], [.NET Core][netcore], [UPW][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++         | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac]                                   |
+| C#          | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++         | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac]                                   |
 | Java        | [Android][java-android], [JRE][java-jre]                                                       |
-| JavaScript  | [Prohlížeč, Node.js][js-code]                                                                    |
-| Objective-C | [iOS][obj-iOS], [macOS][obj-macOS]                                                             |
+| JavaScript  | [Prohlížeč, Node. js][js-code]                                                                    |
+| Objective-C | [iOS][obj-iOS], [MacOS][obj-macOS]                                                             |
 | Python      | [Windows, Linux, macOS][python]                                                                |
-| Swift       | [iOS][swift-iOS], [macOS][swift-macOS]                                                         |
+| Swift       | [iOS][swift-iOS], [MacOS][swift-macOS]                                                         |
 
 [dotnet]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet
 [netcore]: https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnetcore

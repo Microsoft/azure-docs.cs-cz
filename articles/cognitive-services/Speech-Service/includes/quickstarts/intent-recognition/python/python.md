@@ -7,96 +7,96 @@ ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: d819eaa5c90e304a642efd3a6f2458cab4eefe7f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81422242"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete:
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Nainstalujte sadu Speech SDK pro vývojové<span class="docon docon-navigate-external x-hidden-focus"></span>prostředí a vytvořte prázdný ukázkový projekt</a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?pivots=programming-language-python" target="_blank">Nainstalujte sadu Speech SDK pro vývojové prostředí a vytvořte prázdný ukázkový projekt<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
-## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace LUIS pro rozpoznávání záměru
+## <a name="create-a-luis-app-for-intent-recognition"></a>Vytvoření aplikace v LUIS pro rozpoznávání záměrů
 
 [!INCLUDE [Create a LUIS app for intent recognition](../luis-sign-up.md)]
 
-## <a name="open-your-project"></a>Otevření projektu
+## <a name="open-your-project"></a>Otevřete projekt
 
-1. Otevřete upřednostňované ide.
-2. Vytvořte nový projekt a `quickstart.py`vytvořte soubor s názvem a otevřete jej.
+1. Otevřete preferované integrované vývojové prostředí (IDE).
+2. Vytvořte nový projekt a vytvořte soubor s názvem `quickstart.py`a otevřete ho.
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-7)]
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Před inicializací objektu `IntentRecognizer` je třeba vytvořit konfiguraci, která používá klíč a umístění pro prostředek předpovědi LUIS.
+Předtím, než budete moci `IntentRecognizer` inicializovat objekt, je nutné vytvořit konfiguraci, která používá klíč a umístění prostředku předpovědi Luis.
 
-Vložte tento `quickstart.py`kód do . Ujistěte se, že aktualizujete tyto hodnoty:
+Vložte tento kód do `quickstart.py`. Ujistěte se, že tyto hodnoty aktualizujete:
 
-* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` pomocí predikčního klíče LUIS.
-* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístění luis. Použít **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion)
+* Nahraďte `"YourLanguageUnderstandingSubscriptionKey"` klíčem předpovědi Luis.
+* Nahraďte `"YourLanguageUnderstandingServiceRegion"` umístěním Luis. Použít **identifikátor oblasti** z [oblasti](https://aka.ms/speech/sdkregion)
 
 >[!TIP]
-> Pokud potřebujete pomoc s hledáním těchto hodnot, přečtěte si informace [o vytvoření aplikace LUIS pro rozpoznávání záměru](#create-a-luis-app-for-intent-recognition).
+> Pokud potřebujete nápovědu k nalezení těchto hodnot, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-Tato ukázka `SpeechConfig` vytvoří objekt pomocí klíče luis a oblasti. Úplný seznam dostupných metod naleznete v tématu [SpeechConfig Class](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
+Tato ukázka vytvoří `SpeechConfig` objekt pomocí Luis klíče a oblasti. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig).
 
-Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
+Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
-## <a name="initialize-an-intentrecognizer"></a>Inicializovat rozpoznač záměrů
+## <a name="initialize-an-intentrecognizer"></a>Inicializovat IntentRecognizer
 
-Nyní vytvoříme . `IntentRecognizer` Vložte tento kód přímo pod konfiguraci řeči.
+Teď vytvoříme `IntentRecognizer`. Vložte tento kód přímo pod konfiguraci řeči.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
 
-## <a name="add-a-languageunderstandingmodel-and-intents"></a>Přidání languageunderstandingmodel a záměry
+## <a name="add-a-languageunderstandingmodel-and-intents"></a>Přidat LanguageUnderstandingModel a záměry
 
-Je třeba přidružit `LanguageUnderstandingModel` k nástrojpro rozpoznávání záměru a přidat záměry, které chcete rozpoznat. Použijeme záměry z předem vytvořené domény pro domácí automatizaci.
+Je potřeba přidružit k `LanguageUnderstandingModel` nástroji pro rozpoznávání záměrů a přidat záměry, které chcete rozpoznat. Budeme používat záměry z předem připravené domény pro automatizaci domů.
 
-Vložte tento `IntentRecognizer`kód pod aplikaci . Ujistěte se, `"YourLanguageUnderstandingAppId"` že nahradíte ID aplikace LUIS. 
+Vložte tento kód pod `IntentRecognizer`. Ujistěte se, že jste `"YourLanguageUnderstandingAppId"` nahradili ID aplikace Luis. 
 
 >[!TIP]
-> Pokud potřebujete pomoc s vyhledáním této hodnoty, přečtěte si téma [Vytvoření aplikace LUIS pro rozpoznávání záměru](#create-a-luis-app-for-intent-recognition).
+> Pokud potřebujete nápovědu najít tuto hodnotu, přečtěte si téma [Vytvoření aplikace v Luis pro rozpoznávání záměrů](#create-a-luis-app-for-intent-recognition).
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
-## <a name="recognize-an-intent"></a>Rozpoznání záměru
+## <a name="recognize-an-intent"></a>Rozpoznávání záměru
 
-Z `IntentRecognizer` objektu zavoláte metodu. `recognize_once()` Tato metoda umožňuje řeči služby vědět, že odesíláte jednu frázi pro rozpoznávání a že jakmile je fráze identifikována k zastavení rozpoznávání řeči.
+Z `IntentRecognizer` objektu budete volat `recognize_once()` metodu. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
 
 Vložte tento kód pod model.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
-## <a name="display-the-recognition-results-or-errors"></a>Zobrazení výsledků rozpoznávání (nebo chyb)
+## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
 
-Když je výsledek rozpoznávání vrácen službou Řeč, budete s ním chtít něco udělat. Budeme to jednoduché a vytisknout výsledek na konzoli.
+Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-Pod volání `recognize_once()`mj.
+Pod voláním `recognize_once()`přidejte tento kód.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=38-47)]
 
-## <a name="check-your-code"></a>Kontrola kódu
+## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku by měl váš kód vypadat takto.
+V tomto okamžiku by váš kód měl vypadat takto.
 
 > [!NOTE]
-> K této verzi jsme přidali několik komentářů.
+> Do této verze jsme přidali nějaké komentáře.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Spusťte ukázku z konzoly nebo v ide:
+Spusťte ukázku z konzoly nebo v integrovaném vývojovém prostředí:
 
 ```
 python quickstart.py

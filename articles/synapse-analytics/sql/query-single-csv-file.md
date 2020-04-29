@@ -1,6 +1,6 @@
 ---
-title: Dotaz na soubory CSV pomocí SQL na vyžádání (náhled)
-description: V tomto článku se dozvíte, jak dotazovat jednotlivé soubory CSV s různými formáty souborů pomocí SQL na vyžádání (náhled).
+title: Dotazování na soubory CSV pomocí SQL na vyžádání (Preview)
+description: V tomto článku se dozvíte, jak zadávat dotazy na samostatné soubory CSV s různými formáty souborů pomocí SQL na vyžádání (Preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431589"
 ---
-# <a name="query-csv-files"></a>Dotaz na soubory CSV
+# <a name="query-csv-files"></a>Dotazování na soubory CSV
 
-V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na vyžádání (preview) v Azure Synapse Analytics. Soubory CSV mohou mít různé formáty: 
+V tomto článku se dozvíte, jak zadat dotaz na jeden soubor CSV pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics. Soubory CSV můžou mít různé formáty: 
 
-- S řádkem záhlaví a bez něj
+- S a bez řádku záhlaví
 - Hodnoty oddělené čárkami a tabulátory
-- Koncovky čar stylu Windows a Unix
-- Hodnoty nekotované a uvozovky a unikající znaky
+- Konce řádků ve stylu Windows a UNIX
+- Hodnoty, které nejsou v uvozovkách a uvozovkách, a znaky pro uvozovací znaky
 
-Všechny výše uvedené varianty budou uvedeny níže.
+Všechny výše uvedené variace budou uvedené níže.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než si přečtete zbytek tohoto článku, přečtěte si následující články:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
 ## <a name="windows-style-new-line"></a>Nový řádek stylu Windows
 
-Následující dotaz ukazuje, jak číst soubor CSV bez řádku záhlaví, s novým řádkem ve stylu windows a sloupci oddělenými čárkami.
+Následující dotaz ukazuje, jak číst soubor CSV bez řádku záhlaví, s novým řádkem ve stylu systému Windows a se sloupci oddělenými čárkami.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV bez záhlaví, Windows styl nový řádek.](./media/query-single-csv-file/population.png)
+![Prvních 10 řádků souboru CSV bez záhlaví, nový řádek stylu Windows](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -61,13 +61,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix-styl nové linie
+## <a name="unix-style-new-line"></a>Nový řádek ve stylu systému UNIX
 
-Následující dotaz ukazuje, jak číst soubor bez řádku záhlaví, s unixovým stylem nový řádek a čárky oddělené sloupce. Všimněte si různéumístění souboru ve srovnání s ostatními příklady.
+Následující dotaz ukazuje, jak číst soubor bez řádku záhlaví, s novým řádkem ve stylu systému UNIX a sloupci oddělenými čárkami. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV bez řádku záhlaví a s novým řádkem Unix-Style.](./media/query-single-csv-file/population-unix.png)
+![Prvních 10 řádků souboru CSV bez řádku záhlaví a s novým řádkem ve stylu UNIX](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -90,11 +90,11 @@ WHERE
 
 ## <a name="header-row"></a>Řádek záhlaví
 
-Následující dotaz ukazuje, jak číst soubor s řádky záhlaví, s unixovým stylem nový řádek a čárky oddělené sloupce. Všimněte si různéumístění souboru ve srovnání s ostatními příklady.
+Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým řádkem ve stylu systému UNIX a sloupci oddělenými čárkami. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s hlavičkou a s novým řádkem Unix-Style.](./media/query-single-csv-file/population-unix-hdr.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem ve stylu UNIX.](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -115,13 +115,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>Znak vlastní nabídky
+## <a name="custom-quote-character"></a>Vlastní znak uvozovky
 
-Následující dotaz ukazuje, jak číst soubor s záhlaví malinkaté řádky, s unixovým stylem nový řádek, čárka-oddělené sloupce a kotované hodnoty. Všimněte si různéumístění souboru ve srovnání s ostatními příklady.
+Následující dotaz ukazuje, jak přečíst soubor s řádkem záhlaví s novým řádkem ve stylu systému UNIX, sloupci s oddělovači a hodnotami v uvozovkách. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem a kótovanými hodnotami ve stylu Unix.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a s hodnotami nového řádku a v uvozovkách ve stylu systému UNIX.](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -145,15 +145,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Tento dotaz by vrátit stejné výsledky, pokud jste vynechal fieldquote parametr, protože výchozí hodnota pro FIELDQUOTE je dvojité uvozovky.
+> Tento dotaz vrátí stejné výsledky, pokud jste vynechali parametr FIELDQUOTE, protože výchozí hodnota pro FIELDQUOTE je dvojité uvozovky.
 
-## <a name="escaping-characters"></a>Unikající znaky
+## <a name="escaping-characters"></a>Znaky uvozovacích znaků
 
-Následující dotaz ukazuje, jak číst soubor s záhlaví řádku, s unixový styl nový řádek, čárka-oddělený sloupce a escape char používané pro oddělovač polí (čárka) v rámci hodnoty. Všimněte si různéumístění souboru ve srovnání s ostatními příklady.
+Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví s novým řádkem ve stylu systému UNIX, sloupci s oddělovači a řídicím znakem použitým pro oddělovač pole (čárka) v rámci hodnot. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s řádkem záhlaví a s unixovým stylem nový řádek a escape char používané pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a s novým řádkem a řídicím znakem ve stylu systému UNIX, který se používá pro oddělovač polí.](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -176,15 +176,15 @@ WHERE
 ```
 
 > [!NOTE]
-> Tento dotaz by se nezdaří, pokud ESCAPECHAR není zadán, protože čárka v slov, enia by být považovány za oddělovač polí namísto části názvu země. "Slov,enia" by se považovala za dva sloupce. Proto by konkrétní řádek měl jeden sloupec více než ostatní řádky a jeden sloupec více, než jste definovali v klauzuli WITH.
+> Tento dotaz by se nezdařil, pokud není zadán parametr ESCAPECHAR, protože čárka v "slov, enia" by byla považována za oddělovač polí namísto části názvu země. "Slov, enia" by se považovat za dva sloupce. Proto bude mít konkrétní řádek jeden sloupec více než ostatní řádky a jeden sloupec je více, než jste definovali v klauzuli WITH.
 
-## <a name="tab-delimited-files"></a>Soubory oddělené tabulátory
+## <a name="tab-delimited-files"></a>Soubory s hodnotami oddělenými tabulátory
 
-Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s unixovým řádkem a sloupci oddělenými tabulátory. Všimněte si různéumístění souboru ve srovnání s ostatními příklady.
+Následující dotaz ukazuje, jak číst soubor s řádkem záhlaví, s novým řádkem ve stylu systému UNIX a sloupci oddělenými tabulátory. Všimněte si, že se v porovnání s ostatními příklady liší umístění souboru.
 
 Náhled souboru:
 
-![Prvních 10 řádků souboru CSV s hlavičkovým řádkem a s novým oddělovačem unixového stylu a oddělovače tabulátorů.](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![Prvních 10 řádků souboru CSV s řádkem záhlaví a se systémem UNIX – nový řádek a oddělovač tabulátoru](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
@@ -206,14 +206,14 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>Vrácení podmnožina sloupců
+## <a name="returning-subset-of-columns"></a>Vrácení podmnožiny sloupců
 
-Zatím jste zadali schéma souboru CSV pomocí WITH a výpis všech sloupců. Sloupce, které v dotazu skutečně potřebujete, můžete zadat pouze pomocí řadového čísla pro každý potřebný sloupec. Budete také vynechat sloupce bez zájmu.
+Zatím jste určili schéma souboru CSV pomocí nástroje s a seznamem všech sloupců. V dotazu můžete zadat pouze sloupce, které skutečně potřebujete, a to pomocí pořadového čísla pro každý požadovaný sloupec. Vynecháte také sloupce bez zájmu.
 
-Následující dotaz vrátí počet různých názvů zemí v souboru a určí pouze potřebné sloupce:
+Následující dotaz vrátí do souboru počet jedinečných názvů zemí a určí pouze sloupce, které jsou potřeba:
 
 > [!NOTE]
-> Podívejte se na with klauzule v níže uvedeném dotazu a všimněte si, že je "2" (bez uvozovek) na konci řádku, kde definujete sloupec *[country_name].* To znamená, že sloupec *[country_name]* je druhý sloupec v souboru. Dotaz bude ignorovat všechny sloupce v souboru kromě druhého.
+> Podívejte se na klauzuli WITH v následujícím dotazu a Všimněte si, že na konci řádku, ve kterém definujete sloupec *[country_name]* , se nachází znak "2" (bez uvozovek). To znamená, že sloupec *[country_name]* je druhým sloupcem v souboru. Dotaz bude ignorovat všechny sloupce v souboru s výjimkou druhé.
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ WITH (
 
 ## <a name="next-steps"></a>Další kroky
 
-Další články vám ukážou, jak:
+V dalších článcích se dozvíte, jak:
 
-- [Dotazování na soubory parket](query-parquet-files.md)
-- [Dotazování složek a více souborů](query-folders-multiple-csv-files.md)
+- [Dotazování na soubory Parquet](query-parquet-files.md)
+- [Dotazování na složky a více souborů](query-folders-multiple-csv-files.md)

@@ -1,6 +1,6 @@
 ---
-title: Uživatelem definovaná schémata v rámci synapse SQL
-description: V následujících částech najdete různé tipy pro použití uživatelských schémat T-SQL k vývoji řešení s funkcí Synapse SQL azure synapse analytics.
+title: Uživatelsky definovaná schémata v synapse SQL
+description: V níže uvedených částech najdete různé tipy pro vývoj řešení pomocí uživatelsky definovaných schémat T-SQL k vývoji řešení s využitím funkce synapse SQL Azure synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,49 +10,49 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428703"
 ---
-# <a name="user-defined-schemas-within-synapse-sql"></a>Uživatelem definovaná schémata v rámci synapse SQL
+# <a name="user-defined-schemas-within-synapse-sql"></a>Uživatelsky definovaná schémata v synapse SQL
 
-V následujících částech najdete různé tipy pro použití uživatelských schémat T-SQL k vývoji řešení v rámci synapse SQL.
+V níže uvedených částech najdete různé tipy pro vývoj řešení v synapse SQL pomocí uživatelsky definovaných schémat T-SQL.
 
 ## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
 
-Tradiční analytická architektura často používá samostatné databáze k vytvoření hranic aplikace na základě zatížení, domény nebo zabezpečení. Tradiční analytická infrastruktura serveru SQL Server může například zahrnovat pracovní databázi, analytickou databázi a databáze datového tržiště. V této topologii každá databáze funguje jako pracovní vytížení a hranice zabezpečení v architektuře.
+Tradiční architektura analýzy často používá samostatné databáze k vytvoření hranice aplikace na základě zatížení, domény nebo zabezpečení. Například tradiční analytická infrastruktura SQL Server může zahrnovat pracovní databázi, databázi analýz a databáze datového tržiště. V této topologii každá databáze funguje jako zatížení a hranice zabezpečení v architektuře.
 
-Místo toho Synapse SQL spustí celou úlohu analýzy v rámci jedné databáze. Křížová připojení databáze nejsou povolena. Synapse SQL očekává, že všechny tabulky používané ve skladu, které mají být uloženy v jedné databázi.
-
-> [!NOTE]
-> Fondy SQL nepodporují dotazy mezi databázemi jakéhokoli druhu. V důsledku toho bude nutné revidovat analytické implementace, které tento model využívají. SQL na vyžádání (náhled) podporuje dotazy mezi databázemi.
-
-## <a name="user-defined-schema-recommendations"></a>Doporučení schématu definovaná uživatelem
-
-Zahrnuta jsou doporučení pro konsolidaci úloh, zabezpečení, domény a funkčních hranic pomocí schémat definovaných uživatelem:
-
-- Pomocí jedné databáze spusťte celou pracovní zátěž analýzy.
-- Konsolidujte stávající analytické prostředí a použijte jednu databázi.
-- Využijte **uživatelem definovaná schémata** k zajištění hranice dříve implementované pomocí databází.
-
-Pokud uživatelem definovaná schémata nebyla dříve použita, máte čistý štít. Použijte starý název databáze jako základ pro uživatelem definované schémata v databázi Synapse SQL.
-
-Pokud již byla schémata použita, máte několik možností:
-
-- Odebrání starších názvů schémat a zahájení nového období
-- Zachovat starší názvy schémat předem čekající na název staršího schématu na název tabulky
-- Zachovat starší názvy schématu implementací zobrazení nad tabulka v další schéma, které znovu vytvoří strukturu staré ho schématu.
+Místo toho synapse SQL spouští celou analýzu úloh v rámci jedné databáze. Spojení mezi databázemi nejsou povolena. Synapse SQL očekává, že všechny tabulky používané datovým skladem budou uloženy v rámci jedné databáze.
 
 > [!NOTE]
-> Při první kontrole se možnost 3 může zdát jako nejpřitažlivější volba. Zobrazení jsou jen pro čtení v Synapse SQL. Všechna data nebo změny tabulky by bylo nutné provést proti základní tabulce. Možnost 3 také zavádí vrstvu pohledů do vašeho systému. Možná budete chtít dát tuto další myšlenku, pokud již používáte zobrazení v architektuře.
+> Fondy SQL nepodporují databázové dotazy žádného druhu. V důsledku toho bude nutné provést změny analýz, které využívají tento model. SQL na vyžádání (Preview) podporuje křížové databázové dotazy.
+
+## <a name="user-defined-schema-recommendations"></a>Uživatelsky definovaná doporučení schémat
+
+Zahrnuje doporučení pro konsolidaci úloh, zabezpečení, domény a funkční hranice pomocí uživatelsky definovaných schémat:
+
+- Použijte jednu databázi ke spuštění celé analytické úlohy.
+- Konsolidujte své existující analytické prostředí pro použití jedné databáze.
+- Využijte **uživatelsky definovaných schémat** k poskytnutí hranice dříve implementovaného pomocí databází.
+
+Pokud se dřív definovaná schémata ještě nepoužila, máte čistou SLAT. Jako základ pro uživatelsky definovaná schémata v databázi SQL synapse použijte starý název databáze.
+
+Pokud se už schémata používala, máte několik možností:
+
+- Odebrat starší názvy schémat a začít znovu
+- Zachovat starší názvy schémat pomocí předběžného názvu staršího schématu pro název tabulky
+- Starší názvy schémat si ponechte implementací zobrazení v tabulce ve dodatečném schématu, které znovu vytvoří starou strukturu schématu.
+
+> [!NOTE]
+> Při první inspekci se možnost 3 může zdát jako u nejvyššího opravného rozhodnutí. Zobrazení jsou jen pro čtení v synapse SQL. Veškerá data nebo úpravy tabulek by se musely provést na základě základní tabulky. Možnost 3 také zavádí do systému vrstvu zobrazení. Pokud již používáte zobrazení ve vaší architektuře, je vhodné dát mu další myšlenky.
 > 
 > 
 
 ### <a name="examples"></a>Příklady
 
-Implementujte uživatelem definovaná schémata založená na názvech databází.
+Implementujte uživatelsky definovaná schémata na základě názvů databází.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create analytics tables in the edw schema
 );
 ```
 
-Zachovat starší názvy schématu předem čekající na název tabulky. Použijte schémata pro hranice pracovního vytížení.
+Názvy starších schémat si ponechte předem – čekají na název tabulky. Pro hranici zatížení použijte schémata.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Zachovat starší názvy schématpomocí zobrazení.
+Starší názvy schémat si ponechte pomocí zobrazení.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Každá změna strategie schématu vyžaduje kontrolu modelu zabezpečení pro databázi. V mnoha případech může být možné zjednodušit model zabezpečení přiřazením oprávnění na úrovni schématu.
+> Každá změna v strategii schématu vyžaduje přezkoumání modelu zabezpečení pro databázi. V mnoha případech může být možné zjednodušit model zabezpečení přiřazením oprávnění na úrovni schématu.
 
-Pokud jsou vyžadována podrobnější oprávnění, můžete použít databázové role. Další informace o rolích databáze naleznete v článku [Správa rolí databáze a uživatelů.](../../analysis-services/analysis-services-database-users.md)
+Pokud potřebujete podrobnější oprávnění, můžete použít databázové role. Další informace o databázových rolích najdete v článku [Správa databázových rolí a uživatelů](../../analysis-services/analysis-services-database-users.md) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete [v tématu Přehled vývoje synapse SQL](develop-overview.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje synapse SQL](develop-overview.md).

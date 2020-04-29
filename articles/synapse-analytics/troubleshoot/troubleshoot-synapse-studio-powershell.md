@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s připojením PowerShellu Azure Synapse Studio (preview)
-description: Poradce při potížích s připojením Azure Synapse Studio pomocí PowerShellu
+title: Řešení potíží s prostředím PowerShell pro připojení k Azure synapse Studio (Preview)
+description: Řešení potíží s připojením ke službě Azure synapse Studio pomocí PowerShellu
 author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: conceptual
@@ -8,54 +8,54 @@ ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: bbc985407a6cb56f4f1b539f514ab092b5f7d0de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431472"
 ---
-# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika problémů s připojením Azure Synapse Studio (preview) se skriptem PowerShellu
+# <a name="diagnose-azure-synapse-studio-preview-connectivity-issues-with-powershell-script"></a>Diagnostika potíží s připojením ke službě Azure synapse Studio (Preview) pomocí skriptu PowerShellu
 
-Azure Synapse Studio (preview) závisí na sadě koncových bodů webového rozhraní API správně fungovat. Tato příručka vám pomůže identifikovat příčiny problémů s připojením, když:
-- konfigurace místní sítě (například sítě za podnikovou bránou firewall) pro přístup k Azure Synapse Studio.
-- dochází k problémům s připojením pomocí Azure Synapse Studio.
+Azure synapse Studio (Preview) závisí na sadě koncových bodů webového rozhraní API, aby fungovaly správně. Tato příručka vám pomůže identifikovat příčiny potíží s připojením, když máte tyto možnosti:
+- Konfigurace místní sítě (například sítě za podnikovou bránou firewall) pro přístup k Azure synapse studiu.
+- nastávají problémy s připojením pomocí Azure synapse studia.
 
 ## <a name="prerequisite"></a>Požadavek
 
-* PowerShell 5.0 nebo vyšší verze ve Windows nebo
-* PowerShell Core 6.0 nebo vyšší verze ve Windows nebo Linuxu.
+* PowerShell 5,0 nebo vyšší verze ve Windows nebo
+* PowerShell Core 6,0 nebo vyšší verze v systému Windows nebo Linux.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 
-Klikněte pravým tlačítkem myši na následující odkaz a klikněte na "Uložit cíl jako":
+Klikněte pravým tlačítkem na následující odkaz a klikněte na Uložit cíl jako:
 
-- [Test-AzureSynapse.ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
+- [Test-AzureSynapse. ps1](https://go.microsoft.com/fwlink/?linkid=2119734)
 
-Případně můžete otevřít odkaz přímo a uložit otevřený soubor skriptu. Neukládejte adresu výše uvedeného odkazu, protože se může v budoucnu změnit.
+Alternativně můžete odkaz otevřít přímo a uložit otevřený soubor skriptu. Neuloží adresu odkazu výše, jak se může v budoucnu změnit.
 
-V průzkumníku souborů klikněte pravým tlačítkem myši na stažený soubor skriptu a klikněte na "Spustit pomocí prostředí PowerShell".
+V Průzkumníku souborů klikněte pravým tlačítkem na stažený soubor skriptu a klikněte na spustit s prostředím PowerShell.
 
-![Spuštění staženého souboru skriptu pomocí prostředí PowerShell](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
+![Spustit stažený soubor skriptu pomocí PowerShellu](media/troubleshooting-synapse-studio-powershell/run-with-powershell.png)
 
-Po zobrazení výzvy zadejte název pracovního prostoru Azure Synapse, který právě dochází k potížím nebo který chcete otestovat připojení a stiskněte klávesu ENTER.
+Po zobrazení výzvy zadejte název pracovního prostoru Azure synapse, který aktuálně má problém nebo který chcete otestovat pro připojení, a stiskněte klávesu ENTER.
 
-![Zadání názvu pracovního prostoru](media/troubleshooting-synapse-studio-powershell/enter-workspace-name.png)
+![Zadejte název pracovního prostoru.](media/troubleshooting-synapse-studio-powershell/enter-workspace-name.png)
 
-Bude spuštěna diagnostická relace. Počkejte, až se to dokončí.
+Spustí se diagnostická relace. Počkejte, než se dokončí.
 
-![Počkejte na dokončení diagnózy](media/troubleshooting-synapse-studio-powershell/wait-for-diagnosis.png)
+![Počkat na dokončení diagnostiky](media/troubleshooting-synapse-studio-powershell/wait-for-diagnosis.png)
 
-Nakonec se zobrazí souhrn diagnózy. Pokud se váš počítač nemůže připojit k jednomu nebo více koncovým bodům, zobrazí se v části Souhrn některé návrhy.
+Na konci se zobrazí souhrn diagnostiky. Pokud se Váš počítač nemůže připojit k jednomu nebo více koncovým bodům, zobrazí se v části Shrnutí některé návrhy.
 
-![Zkontrolovat souhrn diagnostiky](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
+![Přehled diagnostiky](media/troubleshooting-synapse-studio-powershell/diagnosis-summary.png)
 
-Kromě toho bude ve stejné složce jako skript pro řešení potíží vygenerován diagnostický soubor protokolu pro tuto relaci. Jeho umístění je zobrazeno v`D:\TestAzureSynapse_2020....log`sekci "Obecné tipy" ( ). V případě potřeby můžete tento soubor odeslat technické podpoře.
+Kromě toho se soubor diagnostického protokolu pro tuto relaci vygeneruje ve stejné složce jako skript pro odstraňování potíží. Jeho umístění se zobrazuje v části Obecné tipy (`D:\TestAzureSynapse_2020....log`). V případě potřeby můžete tento soubor poslat technické podpoře.
 
-Pokud jste správce sítě a ladění konfigurace brány firewall pro Azure Synapse Studio, technické podrobnosti uvedené výše v části "Souhrn" může pomoci.
+Pokud jste správcem sítě a vyladěním konfigurace brány firewall pro Azure synapse Studio, může vám pomáhat technické podrobnosti zobrazené výše v části "Souhrn".
 
-* Všechny testovací položky (požadavky) označené "Předáno" znamenají, že prošly testy připojení, bez ohledu na stavový kód HTTP.
- U neúspěšných požadavků je důvod zobrazen žlutě, například `NamedResolutionFailure` nebo `ConnectFailure`. Tyto důvody vám mohou pomoci zjistit, zda existují chybné konfigurace v síťovém prostředí.
+* Všechny položky testu (požadavky) označené "Pass" znamenají, že prošly testy připojení bez ohledu na stavový kód HTTP.
+ V případě neúspěšných požadavků je důvod zobrazen žlutě, například `NamedResolutionFailure` nebo. `ConnectFailure` Tyto důvody vám pomůžou zjistit, jestli se v síťovém prostředí vyskytly neúspěšné konfigurace.
 
 
 ## <a name="next-steps"></a>Další kroky
-Pokud předchozí kroky nepomáhají k vyřešení [problému: Vytvořte lístek podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).
+Pokud vám předchozí kroky nepomohly vyřešit problém s [vytvořením lístku podpory](../../sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket.md).

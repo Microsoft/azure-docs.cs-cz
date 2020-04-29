@@ -1,6 +1,6 @@
 ---
 title: Ověřování, požadavky a odpovědi
-description: Ověření ve službě AD za použití trezoru klíčů
+description: Ověření ve službě AD pro použití Key Vault
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,67 +11,67 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430887"
 ---
 # <a name="authentication-requests-and-responses"></a>Ověřování, požadavky a odpovědi
 
-Azure Key Vault podporuje požadavky a odpovědi ve formátu JSON. Požadavky na Azure Key Vault jsou směrovány na platnou adresu URL azure key vault pomocí protokolu HTTPS s některými parametry adresy URL a json kódované požadavky a těla odpovědí.
+Azure Key Vault podporuje žádosti a odpovědi ve formátu JSON. Požadavky na Azure Key Vault jsou směrovány na platnou adresu URL Azure Key Vault pomocí protokolu HTTPS s některými parametry adresy URL a texty požadavků a odpovědí kódovaných v kódování JSON.
 
-Toto téma popisuje specifika služby Azure Key Vault. Obecné informace o používání rozhraní Azure REST, včetně ověřování/autorizace a jak získat přístupový token, najdete v [tématu Azure REST API Reference](https://docs.microsoft.com/rest/api/azure).
+Toto téma popisuje konkrétní služby Azure Key Vault. Obecné informace o používání rozhraní REST Azure, včetně ověřování/autorizace a získání přístupového tokenu, najdete v tématu [Azure REST API Reference](https://docs.microsoft.com/rest/api/azure).
 
 ## <a name="request-url"></a>Adresa URL požadavku  
- Operace správy klíčů používají operace HTTP DELETE, GET, PATCH, PUT a HTTP POST a kryptografické operace proti existujícím klíčovým objektům používají http post. Klienti, kteří nemohou podporovat konkrétní slovesa HTTP, mohou také použít protokol HTTP POST pomocí hlavičky X-HTTP-REQUEST k určení zamýšleného slovesa. požadavky, které obvykle nevyžadují tělo by měl obsahovat prázdné tělo při použití HTTP POST, například při použití POST místo DELETE.  
+ Operace správy klíčů používají operace HTTP DELETE, GET, PATCH, PUT a HTTP POST a kryptografických operací pro existující klíčové objekty, které používají HTTP POST. Klienti, kteří nemůžou podporovat konkrétní příkazy HTTP, můžou k určení zamýšleného příkazu použít taky POST protokolu HTTP pomocí záhlaví X-HTTP-REQUEST. požadavky, které obvykle nevyžadují tělo, by měly při použití HTTP POST zahrnovat prázdné tělo, například při použití POST namísto DELETE.  
 
- Chcete-li pracovat s objekty v trezoru klíčů Azure, jsou k tomu ukázkové adresy URL:  
+ Chcete-li pracovat s objekty v Azure Key Vault, jsou zde uvedené příklady adres URL:  
 
-- Chcete-li vytvořit klíč s názvem TESTKEY v trezoru klíčů použití -`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- Postup vytvoření klíče s názvem TESTKEY v Key Vault použít-`PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
-- Import klíče importovaného klíče do trezoru klíčů`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- IMPORT klíče s názvem IMPORTEDKEY do Key Vault use-`POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
-- Chcete-li získat tajný klíč s názvem MYSECRET v trezoru klíčů použití -`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- ZÍSKÁNÍ tajného kódu s názvem MYSECRET v Key Vault použití-`GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
-- Chcete-li podepsat digest pomocí klíče s názvem TESTKEY v trezoru klíčů použití -`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- PODEPSÁNí algoritmu Digest pomocí klíče s názvem TESTKEY v Key Vault use-`POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
-  Oprávnění k žádosti do trezoru klíčů je vždy následující,`https://{keyvault-name}.vault.azure.net/`  
+  Autorita pro požadavek na Key Vault je vždy následující:`https://{keyvault-name}.vault.azure.net/`  
 
-  Klíče jsou vždy uloženy pod /keys cestu, tajné klíče jsou vždy uloženy pod /secrets cestu.  
+  Klíče se vždycky ukládají do cesty/Keys, tajné klíče se vždycky ukládají do cesty/Secrets.  
 
 ## <a name="api-version"></a>Verze rozhraní API  
- Služba Azure Key Vault service podporuje správu verzí protokolů, aby byla zajištěna kompatibilita s klienty nižší úrovně, i když ne všechny funkce budou k dispozici těmto klientům. Klienti musí `api-version` použít parametr řetězce dotazu k určení verze protokolu, který podporují, protože neexistuje žádné výchozí nastavení.  
+ Služba Azure Key Vault podporuje správu verzí protokolu, aby poskytovala kompatibilitu s klienty nižší úrovně, i když pro tyto klienty nebudou k dispozici všechny možnosti. Klienti musí použít parametr `api-version` řetězce dotazu k určení verze protokolu, který podporují, protože není k dispozici výchozí hodnota.  
 
- Verze protokolu Azure Key Vault postupujte podle schématu číslování dat pomocí {YYYY}. {MM}. {DD} formátu.  
+ Verze Azure Key Vaultho protokolu následují po schématu číslování dat pomocí {rrrr}. {MM}. Formát {DD}.  
 
 ## <a name="request-body"></a>Text žádosti  
- Podle specifikace HTTP get operace nesmí mít tělo požadavku a POST a PUT operace musí mít tělo požadavku. Tělo v operacích DELETE je volitelné v protokolu HTTP.  
+ Podle specifikace HTTP nesmí operace GET obsahovat text žádosti a operace POST a PUT musí obsahovat text žádosti. Tělo v rámci operací odstranění je v HTTP volitelné.  
 
- Pokud není v popisu operace uvedeno jinak, musí být typ obsahu těla požadavku application/json a musí obsahovat serializovaný objekt JSON, který odpovídá typu obsahu.  
+ Pokud není uvedeno jinak v popisu operace, musí být typ obsahu textu požadavku Application/JSON a musí obsahovat serializovaný objekt JSON, který odpovídá typu obsahu.  
 
- Pokud není v popisu operace uvedeno jinak, musí hlavička Přijmout požadavek obsahovat typ média aplikace/json.  
+ Pokud není uvedeno jinak v popisu operace, musí hlavička žádosti o přijetí obsahovat typ média Application/JSON.  
 
 ## <a name="response-body"></a>Tělo odpovědi  
- Pokud není v popisu operace uvedeno jinak, bude typem obsahu těla odpovědi úspěšných i neúspěšných operací aplikace/json a obsahuje podrobné informace o chybě.  
+ Pokud není uvedeno jinak v popisu operace, bude typ obsahu odpovědi úspěšné i nezdařené operace aplikace/JSON a obsahuje podrobné informace o chybě.  
 
-## <a name="using-http-post"></a>Použití funkce HTTP POST  
- Někteří klienti nemusí být schopni používat určitá slovesa HTTP, například PATCH nebo DELETE. Azure Key Vault podporuje HTTP POST jako alternativu pro tyto klienty za předpokladu, že klient také obsahuje hlavičku "X-HTTP-METHOD" pro konkrétní původní sloveso HTTP. Podpora pro HTTP POST je třeba poznamenat, pro každý z rozhraní API definované v tomto dokumentu.  
+## <a name="using-http-post"></a>Použití HTTP POST  
+ Někteří klienti nemusí být schopni použít určité příkazy HTTP, například PATCH nebo DELETE. Azure Key Vault podporuje HTTP POST jako alternativu pro tyto klienty, pokud klient nabízí také hlavičku "X-HTTP-METHOD" pro konkrétní původní příkaz HTTP. Pro každé rozhraní API definované v tomto dokumentu se poznamená podpora pro HTTP POST.  
 
 ## <a name="error-responses"></a>Chybové odpovědi  
- Při zpracování chyb budou používat stavové kódy HTTP. Typickými výsledky jsou:  
+ Zpracování chyb bude používat stavové kódy HTTP. Typické výsledky jsou:  
 
-- 2xx – Úspěch: Používá se pro běžný provoz. Tělo odpovědi bude obsahovat očekávaný výsledek  
+- 2xx – úspěch: použito pro normální operaci. Tělo odpovědi bude obsahovat očekávaný výsledek.  
 
-- 3xx – Přesměrování: 304 "Nezměněno" může být vrácena ke splnění podmíněné GET. Další kódy 3xx mohou být v budoucnu použity k označení změn DNS a cesty.  
+- 3xx – přesměrování: pro splnění podmíněného načtení může být vráceno 304 "nezměněno". V budoucnu se můžou použít jiné kódy 3xx k označení změn DNS a cest.  
 
-- 4xx - Chyba klienta: Používá se pro chybné požadavky, chybějící klíče, syntaktické chyby, neplatné parametry, chyby ověřování atd. Tělo odpovědi bude obsahovat podrobné vysvětlení chyby.  
+- 4xx – Chyba klienta: používá se pro chybné požadavky, chybějící klíče, chyby syntaxe, neplatné parametry, chyby ověřování atd. Tělo odpovědi bude obsahovat podrobné vysvětlení chyby.  
 
-- 5xx – Chyba serveru: Používá se pro interní chyby serveru. Tělo odpovědi bude obsahovat souhrnné informace o chybě.  
+- 5xx – chyba serveru: používá se pro interní chyby serveru. Tělo odpovědi bude obsahovat souhrnné informace o chybě.  
 
-  Systém je navržen tak, aby fungoval za proxy nebo firewallem. Klient proto může obdržet další kódy chyb.  
+  Systém je navržený tak, aby fungoval za proxy serverem nebo bránou firewall. Proto může klient získat další chybové kódy.  
 
-  Azure Key Vault také vrátí informace o chybě v těle odpovědi, když dojde k problému. Tělo odezvy je formátováno jsonem a má podobu:  
+  Azure Key Vault také vrátí informace o chybě v těle odpovědi, pokud dojde k problému. Tělo odpovědi je ve formátu JSON a má podobu:  
 
 ```  
 
@@ -89,11 +89,11 @@ Toto téma popisuje specifika služby Azure Key Vault. Obecné informace o použ
 ```  
 
 ## <a name="authentication"></a>Authentication  
- Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje tokeny přístupu služby Azure Active Directory, které lze získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
+ Všechny požadavky na Azure Key Vault musí být ověřeny. Azure Key Vault podporuje přístupové tokeny Azure Active Directory, které se dají získat pomocí OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)]. 
  
- Další informace o registraci aplikace a ověřování používat Azure Key Vault, najdete v [tématu Registrace klientské aplikace s Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
+ Další informace o registraci aplikace a ověřování pro použití Azure Key Vault najdete v tématu [registrace klientské aplikace pomocí Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
  
- Přístupové tokeny musí být odeslány službě pomocí hlavičky autorizace protokolu HTTP:  
+ Přístupové tokeny musí být odesílány službě pomocí hlavičky autorizace protokolu HTTP:  
 
 ```  
 PUT /keys/MYKEY?api-version=<api_version>  HTTP/1.1  
@@ -101,7 +101,7 @@ Authorization: Bearer <access_token>
 
 ```  
 
- Pokud není zadán přístupový token nebo pokud token není službou přijat, bude klientovi vrácena chyba HTTP 401, která bude obsahovat například hlavičku WWW-Authenticate:  
+ Pokud není k dispozici přístupový token nebo když služba token nepřijme, vrátí se klientovi Chyba HTTP 401, která bude obsahovat hlavičku WWW-Authenticate, například:  
 
 ```  
 401 Not Authorized  
@@ -111,7 +111,7 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
  Parametry v hlavičce WWW-Authenticate jsou:  
 
--   Autorizace: Adresa autorizační služby OAuth2, která může být použita k získání přístupového tokenu pro požadavek.  
+-   autorizace: adresa autorizační služby OAuth2, která se dá použít k získání přístupového tokenu pro požadavek.  
 
--   Zdroj: Název prostředku (`https://vault.azure.net`) pro použití v žádosti o autorizaci.  
+-   prostředek: název prostředku (`https://vault.azure.net`), který se má použít v žádosti o autorizaci.  
 

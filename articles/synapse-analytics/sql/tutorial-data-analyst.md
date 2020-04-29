@@ -1,6 +1,6 @@
 ---
-title: Kurz pro datového analytika – použití SQL na vyžádání (preview) k analýze otevřených datových sad Azure v Azure Synapse Studio (preview)
-description: V tomto kurzu se dozvíte, jak snadno provádět průzkumnou analýzu dat kombinující různé datové sady Azure Open pomocí SQL na vyžádání (preview) a vizualizovat výsledky v Azure Synapse Studio.
+title: Kurz pro analytiky dat – použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure v Azure synapse Studio (Preview)
+description: V tomto kurzu se naučíte, jak snadno provádět analýzu průzkumného data s kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání (Preview) a vizualizovat výsledky v Azure synapse studiu.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,21 +10,21 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 1080001cb222f91503080914d7fb253e5ee82626
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423226"
 ---
-# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Použití SQL na vyžádání (preview) k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure Synapse Studio (preview)
+# <a name="use-sql-on-demand-preview-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio-preview"></a>Použití SQL na vyžádání (Preview) k analýze otevřených datových sad Azure a vizualizaci výsledků v Azure synapse Studio (Preview)
 
-V tomto kurzu se dozvíte, jak provádět analýzu průzkumných dat kombinací různých datových sad Azure Open pomocí SQL na vyžádání a pak vizualizaci výsledků v Azure Synapse Studio.
+V tomto kurzu se dozvíte, jak provádět analýzu průzkumnéch dat kombinací různých otevřených datových sad Azure pomocí SQL na vyžádání a pak vizualizace výsledků v Azure synapse studiu.
 
-Zejména analyzujete datovou sadu taxi služby [New York City (NYC),](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) která zahrnuje data/časy vyzvednutí a předání, místa vyzvednutí a předání, vzdálenosti jízdy, rozepsanýtarify, typy sazeb, typy plateb a počty cestujících nahlášené řidičem.
+Konkrétně analyzujete [datovou sadu taxislužby New York City (NYC)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/) , která zahrnuje datum a časy vybírání a oddálení, umístění pro výběr a odkládací umístění, vzdálenosti cest, vypočítané tarify, typy sazeb, typy plateb a počty spolupracujících strojvedoucího.
 
-Cílem analýzy je najít trendy ve změnách počtu jízd taxíkem v průběhu času. Analyzujete další dvě datové sady Azure Open Datasets[(Data o svátcích](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) a [počasí),](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)abyste porozuměli odlehlým hodnotám v počtu jízd taxíkem.
+Tato analýza se zaměřuje na hledání trendů ve změnách počtu taxislužby jezdí v průběhu času. Analyzujete dvě další služby Azure Open DataSets ([veřejné svátky](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/) a [data o počasí](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)), abyste pochopili odlehlé hodnoty taxislužby jezdí.
 
-## <a name="create-credentials"></a>Vytvoření přihlašovacích údajů
+## <a name="create-credentials"></a>Vytvořit pověření
 
 ```sql
 -- There is no secret. We are using public storage account which doesn't need a secret.
@@ -44,11 +44,11 @@ SECRET = ''
 GO
 ```
 
-## <a name="automatic-schema-inference"></a>Odvození automatického schématu
+## <a name="automatic-schema-inference"></a>Automatické odvození schématu
 
-Vzhledem k tomu, že data jsou uložena ve formátu parketového souboru, je k dispozici automatické odvození schématu, takže lze snadno zadat dotaz na data bez nutnosti vypsat datové typy všech sloupců v souborech. Kromě toho lze využít virtuální sloupcový mechanismus a funkci filepath k odfiltrování určité podmnožiny souborů.
+Vzhledem k tomu, že jsou data uložená ve formátu souboru Parquet, je k dispozici automatické odvození schématu, takže jeden může snadno dotazovat data bez nutnosti vypsat datové typy všech sloupců v souborech. Kromě toho může jeden použít mechanizmus virtuálního sloupce a funkci FilePath k odfiltrování určité podmnožiny souborů.
 
-Nejprve se seznámíme s daty NYC Taxi spuštěním následujícího dotazu:
+Nejprve se seznamte s daty NYC taxislužby spuštěním následujícího dotazu:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -58,11 +58,11 @@ SELECT TOP 100 * FROM
     ) AS [nyc]
 ```
 
-Následující text ukazuje fragment výsledku pro data NYC Taxi:
+Následující příklad ukazuje fragment výsledku pro data NYC taxislužby:
 
-![úryvek výsledků](./media/tutorial-data-analyst/1.png)
+![fragment výsledku](./media/tutorial-data-analyst/1.png)
 
-Podobně můžeme dotazovat datové sady státních svátků pomocí následujícího dotazu:
+Podobně je možné zadat dotaz na datovou sadu veřejných svátků pomocí následujícího dotazu:
 
 ```sql
 SELECT TOP 100 * FROM
@@ -72,11 +72,11 @@ SELECT TOP 100 * FROM
     ) AS [holidays]
 ```
 
-Následující text ukazuje fragment výsledku pro datovou sadu státních svátků:
+Následující příklad ukazuje fragment výsledku pro datovou sadu pro veřejné svátky:
 
-![výsledek úryvek 2](./media/tutorial-data-analyst/2.png)
+![fragment výsledku 2](./media/tutorial-data-analyst/2.png)
 
-Nakonec můžeme také dotaz na datové sady počasí pomocí následujícího dotazu:
+Nakonec můžete také zadat dotaz na datovou sadu počasí pomocí následujícího dotazu:
 
 ```sql
 SELECT
@@ -88,15 +88,15 @@ FROM
     ) AS [weather]
 ```
 
-Následující text ukazuje fragment výsledku pro datovou sadu počasí:
+Následující příklad ukazuje fragment výsledku pro datovou sadu počasí:
 
-![výsledek úryvek 3](./media/tutorial-data-analyst/3.png)
+![fragment výsledku 3](./media/tutorial-data-analyst/3.png)
 
-Další informace o významu jednotlivých sloupců naleznete v popisech datových sad [NYC Taxi](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [Státní svátky](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)a [Data o počasí.](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)
+Další informace o významu jednotlivých sloupců najdete v popisech datových sad [NYC taxislužby](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/), [veřejných svátků](https://azure.microsoft.com/services/open-datasets/catalog/public-holidays/)a [počasí](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/) .
 
-## <a name="time-series-seasonality-and-outlier-analysis"></a>Časové řady, sezónnost a odlehlá analýza
+## <a name="time-series-seasonality-and-outlier-analysis"></a>Analýza časových řad, sezónnost a izolované
 
-Můžete snadno shrnout roční počet jízd taxíkem pomocí následujícího dotazu:
+Pomocí následujícího dotazu můžete snadno shrnout roční počet taxislužby jezdí:
 
 ```sql
 SELECT
@@ -112,20 +112,20 @@ GROUP BY YEAR(tpepPickupDateTime)
 ORDER BY 1 ASC
 ```
 
-Následující text ukazuje fragment výsledku pro roční počet jízd taxíkem:
+Následující příklad ukazuje fragment výsledku pro roční počet taxislužby jezdí:
 
-![výsledek úryvek 4](./media/tutorial-data-analyst/4.png)
+![fragment výsledku 4](./media/tutorial-data-analyst/4.png)
 
-Data lze vizualizovat v Synapse Studio přepnutím z tabulky do zobrazení grafu. Můžete si vybrat z různých typů grafů (Oblast, Pruh, Sloupec, Spojnicový, Výsečový a Bodový). V tomto případě vykreslete sloupcový graf se sloupcem Kategorie nastaveným na "current_year":
+Data je možné vizuálně zobrazit v synapse studiu přepnutím z tabulky na zobrazení grafu. Můžete si vybrat z různých typů grafů (plošný, pruhový, sloupcový, spojnicový, výsečový a bodový). V tomto případě vykreslíme sloupcový graf s sloupcem Category nastaveným na "current_year":
 
-![vizualizace výsledků 5](./media/tutorial-data-analyst/5.png)
+![vizualizace výsledku 5](./media/tutorial-data-analyst/5.png)
 
-Z této vizualizace je jasně vidět trend klesajícího počtu jízd v průběhu let, pravděpodobně kvůli nedávné zvýšené popularitě společností pro sdílení jízd.
+Z této vizualizace se může jasně zobrazit trend klesajícího počtu jezdíů za rok, který je pravděpodobně způsobený nedávným nárůstem počtu společností pro sdílení jedoucího.
 
 > [!NOTE]
-> V době psaní tohoto kurzu jsou data pro rok 2019 neúplná, takže pro tento rok dochází k obrovskému poklesu počtu jízd.
+> V době psaní tohoto kurzu jsou data pro 2019 nekompletní, takže se za tento rok bude hodně jezdí velký počet.
 
-Dále se zaměříme na naši analýzu na jeden rok, například 2016. Následující dotaz vrátí denní počet jízd během uvedeného roku:
+Nyní se budeme soustředit na naši analýzu na jeden rok, například 2016. Následující dotaz vrátí denní počet jezdí během tohoto roku:
 
 ```sql
 SELECT
@@ -141,17 +141,17 @@ GROUP BY CAST([tpepPickupDateTime] AS DATE)
 ORDER BY 1 ASC
 ```
 
-Následující text ukazuje fragment výsledku pro tento dotaz:
+Následující příklad ukazuje fragment výsledků pro tento dotaz:
 
-![výsledek úryvek 6](./media/tutorial-data-analyst/6.png)
+![fragment výsledku 6](./media/tutorial-data-analyst/6.png)
 
-Opět můžeme snadno vizualizovat data vykreslením sloupcového grafu se sloupcem Kategorie "current_day" a Legend (série) "rides_per_day".
+Data můžeme snadno vizualizovat tak, že vykreslíte sloupcový graf se sloupcem kategorie current_day a legenda (řady) sloupec "rides_per_day".
 
-![vizualizace výsledků 7](./media/tutorial-data-analyst/7.png)
+![vizualizace výsledku 7](./media/tutorial-data-analyst/7.png)
 
-Z pozemku lze pozorovat, že existuje týdenní vzor se sobotním vrcholem. V letních měsících je kvůli prázdninovému období méně jízd taxíkem. Nicméně, tam jsou také některé významné poklesy v počtu jízd taxíkem bez jasného vzoru, kdy a proč k nim dochází.
+Z grafu může být zjištěno, že existuje týdenní vzor s špičkou sobotu. Během letního měsíce je z důvodu období dovolené méně taxislužby jezdí. Existují však také významná množství taxislužby jezdí bez jasného vzoru, kdy a proč k nim dojde.
 
-Dále se podívejme, jestli tyto kapky jsou potenciálně koreluje s svátky spojením NYC taxi jízdy s datovou sadou státních svátků:
+Teď se podívejme na to, jestli se tyto kapky můžou vzájemně korelovat s veřejnými svátky, a to spojením NYC taxislužby jezdí s datovou sadou veřejných svátků:
 
 ```sql
 WITH taxi_rides AS
@@ -186,13 +186,13 @@ LEFT OUTER JOIN public_holidays p on t.current_day = p.date
 ORDER BY current_day ASC
 ```
 
-![vizualizace výsledků 8](./media/tutorial-data-analyst/8.png)
+![vizualizace výsledku 8](./media/tutorial-data-analyst/8.png)
 
-Tentokrát chceme upozornit na počet jízd taxíkem během státních svátků. Za tímto účelem zvolíme sloupce kategorie a sloupce "rides_per_day" a "holiday" jako Legend (série).
+Tentokrát chceme během veřejných svátků zvýraznit počet taxislužby jezdí. Pro tento účel vybereme "none" pro sloupec Category a "rides_per_day" a "svátek" jako sloupce legendy (řady).
 
-![vizualizace výsledků 9](./media/tutorial-data-analyst/9.png)
+![vizualizace výsledku 9](./media/tutorial-data-analyst/9.png)
 
-Z pozemku je jasně vidět, že během státních svátků je řada jízd taxíkem nižší. 23. ledna však stále dochází k jednomu nevysvětlitelnému obrovskému poklesu. Podívejme se na počasí v New Yorku v ten den dotazem na datové sady počasí:
+Z diagramu může být jasně vidět, že během veřejných svátků je nižší počet taxislužby jezdí. Stále je však k dispozici jeden neobjasněný obrovský pokles od 23. ledna. Pojďme se podívat na NYC počasí v tomto dni tím, že se dotazuje na datovou sadu počasí:
 
 ```sql
 SELECT
@@ -219,17 +219,17 @@ FROM
 WHERE countryorregion = 'US' AND CAST([datetime] AS DATE) = '2016-01-23' AND stationname = 'JOHN F KENNEDY INTERNATIONAL AIRPORT'
 ```
 
-![vizualizace výsledků 10](./media/tutorial-data-analyst/10.png)
+![vizualizace výsledku 10](./media/tutorial-data-analyst/10.png)
 
-Výsledky dotazu naznačují, že pokles počtu jízd taxíkem byl způsoben:
+Výsledky dotazu označují, že pokles počtu taxislužby jezdí byl v důsledku:
 
-- blizzard na ten den v New Yorku, jak tam byl těžký sníh (~ 30 cm)
-- byla zima (teplota pod nulou stupňů Celsia)
-- a větrno (~ 10m / s)
+- Blizzard se za tento den v NYC, protože došlo k velkému sněhu (~ 30 cm).
+- bylo studené (teplota nižší než 0 stupňů Celsia).
+- a vítr (~ 10 milionů/s)
 
-Tento kurz ukázal, jak analytik dat můžete rychle provádět analýzu průzkumných dat, snadno kombinovat různé datové sady pomocí SQL na vyžádání a vizualizovat výsledky pomocí Azure Synapse Studio.
+V tomto kurzu jsme si ukázali, jak může datový analytik rychle provádět analýzu dat, snadno kombinovat různé datové sady pomocí SQL na vyžádání a vizualizovat výsledky pomocí Azure synapse studia.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prohlédněte si [připojení SQL na vyžádání k Power BI Desktopu & vytvořte](tutorial-connect-power-bi-desktop.md) článek sestavy, kde se dozvíte, jak připojit SQL na vyžádání k Power BI Desktopu a vytvářet sestavy.
+Přečtěte si článek [připojení SQL na vyžádání a Power BI Desktop & vytvoření sestavy](tutorial-connect-power-bi-desktop.md) , kde se dozvíte, jak propojit SQL na vyžádání Power BI Desktop a vytvořit sestavy.
  

@@ -1,5 +1,5 @@
 ---
-title: Větvení a řetězení aktivit v kanálu pomocí portálu Azure
+title: Větvení a řetězení aktivit v kanálu pomocí Azure Portal
 description: Zjistěte, jak řídit tok dat v Azure Data Factory prostřednictvím větvení a řetězení aktivit.
 services: data-factory
 author: djpmsft
@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
 ms.openlocfilehash: ff9e5ff099bba7af9cac9862103ef63aa0169545
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81418742"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
@@ -42,8 +42,8 @@ Tento kurz používá Azure Portal. K interakci s Azure Data Factory můžete po
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**. Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
-* **Účet Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, najdete v článku [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) pro kroky k jeho vytvoření.
+* **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
+* **Účet Azure Storage**. Úložiště objektů blob použijete jako **zdrojové** úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../storage/common/storage-account-create.md) , kde najdete kroky, jak ho vytvořit.
 * **Azure SQL Database**. Tuto databázi použijete jako úložiště dat **jímky**. Pokud Azure SQL Database nemáte, přečtěte si článek věnovaný [vytvoření databáze Azure SQL](../sql-database/sql-database-get-started-portal.md), kde najdete kroky pro její vytvoření.
 
 ### <a name="create-blob-table"></a>Vytvoření tabulky objektů blob
@@ -129,7 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. V levé nabídce vyberte **Vytvořit data o prostředku** > **+ Analytics** > **Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
 
    ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -144,14 +144,14 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 4. Pro **Skupinu prostředků** proveďte jeden z následujících kroků:
 
       - Vyberte **Použít existující** a z rozevíracího seznamu vyberte existující skupinu prostředků.
-      - Vyberte **Vytvořit nový**a zadejte název skupiny prostředků.   
+      - Vyberte **vytvořit novou**a zadejte název skupiny prostředků.   
          
         Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
 4. Jako **verzi** vyberte **V2**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na **Vytvořit**.      
-8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **Nasazení datové továrny**.
+8. Na řídicím panelu se zobrazí následující dlaždice se stavem: **nasazování datové továrny**.
 
     ![nasazování dlaždice datové továrny](media/tutorial-control-flow-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
@@ -173,8 +173,8 @@ V tomto kroku vytvoříte kanál s jednou aktivitou kopírování a dvěma aktiv
    ![Stránka Začínáme](./media/tutorial-control-flow-portal/get-started-page.png)
 3. V okně Vlastnosti kanálu přepněte na kartu **Parametry** a pomocí tlačítka **Nový** přidejte následující tři parametry typu řetězec: sourceBlobContainer, sinkBlobContainer a receiver.
 
-    - **sourceBlobContainer** - parametr v kanálu spotřebované zdrojové datové sady objektů blob.
-    - **sinkBlobContainer** – parametr v kanálu spotřebované množiny datová sada objektů blob jímky
+    - **sourceBlobContainer** -parametr v kanálu spotřebovaného zdrojovou datovou sadou objektů BLOB.
+    - **sinkBlobContainer** – parametr kanálu spotřebovaný datovou sadou objektů BLOB jímky
     - **receiver** – tento parametr používají dvě aktivity webu v kanálu, které odesílají e-maily s oznámením o úspěchu nebo selhání příjemci, jehož e-mailová adresa je zadána tímto parametrem.
 
    ![Nabídka Nový kanál](./media/tutorial-control-flow-portal/pipeline-parameters.png)

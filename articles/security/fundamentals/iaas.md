@@ -1,6 +1,6 @@
 ---
-title: Doporučené postupy zabezpečení pro úlohy IaaS v Azure | Dokumenty společnosti Microsoft
-description: " Migrace úloh do Azure IaaS přináší příležitosti k přehodnocení našich návrhů "
+title: Osvědčené postupy zabezpečení pro úlohy IaaS v Azure | Microsoft Docs
+description: " Migrace úloh do Azure IaaS přináší příležitosti k přehodnocení našich návrhů. "
 services: security
 documentationcenter: na
 author: terrylanfear
@@ -16,75 +16,75 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
 ms.openlocfilehash: 49a40d78b4ba3bc1e90bb341cca90bece0b998a8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450011"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Osvědčené postupy zabezpečení pro úlohy IaaS v Azure
 Tento článek popisuje osvědčené postupy zabezpečení pro virtuální počítače a operační systémy.
 
-Osvědčené postupy jsou založeny na konsensu názoru a pracují s aktuálními funkcemi platformy Azure a sadami funkcí. Vzhledem k tomu, že názory a technologie se mohou v průběhu času měnit, bude tento článek aktualizován tak, aby tyto změny odrážel.
+Osvědčené postupy jsou založené na shodě na základě konsensu a pracují s funkcemi a sadami funkcí platformy Azure. Vzhledem k tomu, že se názory a technologie můžou v průběhu času měnit, bude tento článek aktualizován tak, aby odrážel tyto změny.
 
-Ve většině scénářů infrastruktury jako služby (IaaS) jsou [virtuální počítače Azure (VM)](/azure/virtual-machines/) hlavní úlohou pro organizace, které používají cloud computing. Tato skutečnost je zřejmá v [hybridních scénářích,](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) kde organizace chtějí pomalu migrovat úlohy do cloudu. V takových případech postupujte podle [obecných aspektů zabezpečení pro IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)a aplikujte doporučené postupy zabezpečení na všechny vaše virtuální počítače.
+Ve většině scénářů infrastruktury jako služby (IaaS) jsou [virtuální počítače Azure](/azure/virtual-machines/) hlavním zatížením pro organizace, které využívají cloud computing. Tento fakt je zřejmý v [hybridních scénářích](https://social.technet.microsoft.com/wiki/contents/articles/18120.hybrid-cloud-infrastructure-design-considerations.aspx) , ve kterých organizace chtějí pomalu migrovat úlohy do cloudu. V takových scénářích použijte [Obecné požadavky na zabezpečení pro IaaS](https://social.technet.microsoft.com/wiki/contents/articles/3808.security-considerations-for-infrastructure-as-a-service-iaas.aspx)a použijte doporučené postupy zabezpečení pro všechny vaše virtuální počítače.
 
-## <a name="protect-vms-by-using-authentication-and-access-control"></a>Ochrana virtuálních zařízení pomocí ověřování a řízení přístupu
-Prvním krokem při ochraně virtuálních počítačů je zajistit, aby jenom oprávnění uživatelé můžou nastavit nové virtuální počítače a přistupovat k virtuálním počítačům.
-
-> [!NOTE]
-> Chcete-li zlepšit zabezpečení virtuálních počítačích s Linuxem v Azure, můžete integrovat s ověřováním Azure AD. Při použití [ověřování Azure AD pro virtuální počítače s Linuxem](/azure/virtual-machines/linux/login-using-aad), můžete centrálně řídit a vynucovat zásady, které povolují nebo odepírají přístup k virtuálním počítačům.
->
->
-
-**Osvědčený postup:** Řízení přístupu k virtuálním můtím.   
-**Podrobnosti**: Pomocí [zásad Azure](/azure/azure-policy/azure-policy-introduction) můžete vytvořit konvence pro prostředky ve vaší organizaci a vytvořit přizpůsobené zásady. Tyto zásady použijte u prostředků, jako jsou [například skupiny prostředků](/azure/azure-resource-manager/resource-group-overview). Virtuální společnosti, které patří do skupiny prostředků dědí své zásady.
-
-Pokud má vaše organizace mnoho předplatných, můžete potřebovat způsob, jak efektivně u těchto předplatných spravovat přístup, zásady a dodržování předpisů. [Skupiny pro správu Azure](/azure/azure-resource-manager/management-groups-overview) poskytují úroveň oboru nad předplatnými. Můžete uspořádat odběry do skupin pro správu (kontejnery) a použít podmínky zásad správného řízení pro tyto skupiny. Všechna předplatná v rámci skupiny pro správu automaticky dědí podmínky použité pro skupinu. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
-
-**Osvědčený postup**: Snižte variabilitu v nastavení a nasazení virtuálních počítačích.   
-**Podrobnosti:** Pomocí šablon [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) upevnit možnosti nasazení a usnadnit pochopení a inventuru virtuálních počítačů ve vašem prostředí.
-
-**Osvědčený postup:** Zabezpečte privilegovaný přístup.   
-**Podrobnosti**: Pomocí [přístupu s nejnižšími oprávněními](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a integrovaných rolí Azure povolte uživatelům přístup a nastavení virtuálních počítačů:
-
-- [Přispěvatel virtuálního počítače:](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)Můžete spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterému jsou připojeny.
-- [Klasický přispěvatel virtuálního počítače:](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor)Můžete spravovat virtuální počítače vytvořené pomocí klasického modelu nasazení, ale ne virtuální sítě nebo účtu úložiště, ke kterému jsou virtuální počítače připojené.
-- [Správce zabezpečení](../../role-based-access-control/built-in-roles.md#security-admin): Pouze v Centru zabezpečení: Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení.
-- [Uživatel devTest Labs](../../role-based-access-control/built-in-roles.md#devtest-labs-user): Můžete zobrazit všechno a připojit, spustit, restartovat a vypnout virtuální počítače.
-
-Správci a spolusprávci předplatného můžou toto nastavení změnit a udělat tak správce všech virtuálních počítačích v předplatném. Ujistěte se, že důvěřujete všem správcům předplatného a správcům, aby se přihlásili k libovolnému počítači.
+## <a name="protect-vms-by-using-authentication-and-access-control"></a>Ochrana virtuálních počítačů pomocí ověřování a řízení přístupu
+Prvním krokem při ochraně virtuálních počítačů je zajištění toho, aby mohli vytvářet nové virtuální počítače a přistupovat k virtuálním počítačům jenom autorizovaným uživatelům.
 
 > [!NOTE]
-> Doporučujeme konsolidovat virtuální chod se stejným životním cyklem do stejné skupiny prostředků. Pomocí skupin prostředků můžete nasadit, monitorovat a shrnout náklady na fakturaci pro vaše prostředky.
+> Pro zlepšení zabezpečení virtuálních počítačů se systémem Linux v Azure můžete integrovat s ověřováním Azure AD. Když použijete [ověřování Azure AD pro virtuální počítače se systémem Linux](/azure/virtual-machines/linux/login-using-aad), centrálně ovládáte a vynutili zásady, které povolují nebo odmítnou přístup k virtuálním počítačům.
 >
 >
 
-Organizace, které řídí přístup k virtuálním počítačům a jejich nastavení, zlepšují celkové zabezpečení virtuálních počítačích.
+**Osvědčený postup**: řízení přístupu k virtuálnímu počítači.   
+**Podrobnosti**: pomocí [zásad Azure](/azure/azure-policy/azure-policy-introduction) můžete navázat konvence pro prostředky ve vaší organizaci a vytvářet přizpůsobené zásady. Tyto zásady použijte u prostředků, jako jsou třeba [skupiny prostředků](/azure/azure-resource-manager/resource-group-overview). Virtuální počítače patřící do skupiny prostředků dědí své zásady.
+
+Pokud má vaše organizace mnoho předplatných, můžete potřebovat způsob, jak efektivně u těchto předplatných spravovat přístup, zásady a dodržování předpisů. [Skupiny pro správu Azure](/azure/azure-resource-manager/management-groups-overview) poskytují úroveň rozsahu nad odběry. Předplatná uspořádáte do skupin pro správu (kontejnery) a podmínky zásad správného řízení aplikujete na tyto skupiny. Všechna předplatná v rámci skupiny pro správu automaticky přebírají podmínky použité pro skupinu. Skupiny pro správu poskytují správu na podnikové úrovni ve velkém měřítku bez ohledu na to, jaké typy předplatného případně máte.
+
+**Osvědčený postup**: Snižte proměnlivost nastavení a nasazení virtuálních počítačů.   
+**Podrobnosti**: pomocí šablon [Azure Resource Manager](/azure/azure-resource-manager/resource-group-authoring-templates) můžete posílit možnosti nasazení a usnadnit pochopení a inventarizaci virtuálních počítačů ve vašem prostředí.
+
+**Osvědčený postup**: zabezpečený privilegovaný přístup.   
+**Podrobnosti**: použijte [přístup s nejnižšími oprávněními](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) a předdefinované role Azure, které uživatelům umožní přístup k virtuálním počítačům a jejich nastavení:
+
+- [Přispěvatel virtuálních počítačů](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): může spravovat virtuální počítače, ale ne virtuální síť nebo účet úložiště, ke kterým jsou připojené.
+- [Přispěvatel klasických virtuálních počítačů](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): může spravovat virtuální počítače vytvořené pomocí modelu nasazení Classic, ale ne virtuální sítě nebo účtu úložiště, ke kterým jsou virtuální počítače připojené.
+- [Správce zabezpečení](../../role-based-access-control/built-in-roles.md#security-admin): pouze v Security Center: může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení.
+- [Uživatel DevTest Labs](../../role-based-access-control/built-in-roles.md#devtest-labs-user): může zobrazit vše a připojit, spustit, restartovat a vypnout virtuální počítače.
+
+Správci a spolusprávci předplatného můžou toto nastavení změnit, aby měli správci všech virtuálních počítačů v rámci předplatného. Ujistěte se, že všem správcům předplatného a spolusprávcem důvěřujete, abyste se přihlásili k některým z vašich počítačů.
+
+> [!NOTE]
+> Doporučujeme konsolidovat virtuální počítače se stejným životním cyklem do stejné skupiny prostředků. Pomocí skupin prostředků můžete nasazovat, monitorovat a shrnout náklady na fakturaci svých prostředků.
+>
+>
+
+Organizace, které řídí přístup k VIRTUÁLNÍm počítačům a jejich celkové zabezpečení virtuálních počítačů, vylepšit.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Použití více virtuálních počítačů pro lepší dostupnost
-Pokud váš virtuální počítač spouští kritické aplikace, které potřebují mít vysokou dostupnost, důrazně doporučujeme použít více virtuálních počítačů. Pro lepší dostupnost použijte [sadu dostupnosti](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) nebo [zóny dostupnosti](../../availability-zones/az-overview.md).
+Pokud váš virtuální počítač spouští kritické aplikace, které potřebují vysokou dostupnost, důrazně doporučujeme použít více virtuálních počítačů. Pro lepší dostupnost použijte [skupinu dostupnosti](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) nebo [zóny](../../availability-zones/az-overview.md)dostupnosti.
 
-Sada dostupnosti je logické seskupení, které můžete použít v Azure k zajištění, že prostředky virtuálních mitů, které do něj umístíte, jsou od sebe navzájem izolované, když se nasazují v datovém centru Azure. Azure zajišťuje, že virtuální počítače, které umístíte do sady dostupnosti, běží na více fyzických serverech, výpočetních rackech, úložných jednotkách a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru Azure, budou ovlivněny pouze podmnožina virtuálních počítačích a vaše celková aplikace bude i nadále dostupná vašim zákazníkům. Sady dostupnosti jsou základní funkcí, pokud chcete vytvářet spolehlivá cloudová řešení.
+Skupina dostupnosti je logické seskupení, které můžete v Azure použít k zajištění toho, že prostředky virtuálních počítačů, které do nich umístíte, jsou při jejich nasazení v datacentru Azure izolované od sebe. Azure zajišťuje, aby virtuální počítače, které umístíte do skupiny dostupnosti, běžely na několika fyzických serverech, výpočetních skříních, jednotkách úložiště a síťových přepínačích. Pokud dojde k selhání hardwaru nebo softwaru Azure, ovlivní to jenom podmnožinu vašich virtuálních počítačů a vaše celková aplikace bude dál k dispozici pro vaše zákazníky. Skupiny dostupnosti jsou zásadní funkcí, pokud chcete vytvářet spolehlivé cloudová řešení.
 
 ## <a name="protect-against-malware"></a>Ochrana před malwarem
-Měli byste nainstalovat antimalwarovou ochranu, která vám pomůže identifikovat a odstranit viry, spyware a další škodlivý software. Můžete nainstalovat [program Microsoft Antimalware](antimalware.md) nebo řešení ochrany koncových bodů partnera společnosti Microsoft ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)a System [Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
+Měli byste nainstalovat ochranu proti malwaru, která vám usnadní identifikaci a odstraňování virů, spywaru a dalšího škodlivého softwaru. Můžete nainstalovat [Microsoft Antimalware](antimalware.md) nebo řešení ochrany koncového bodu Microsoftu ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security)a [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)).
 
-Microsoft Antimalware obsahuje funkce, jako je ochrana v reálném čase, plánované skenování, náprava malwaru, aktualizace podpisů, aktualizace motorů, ukázky hlášení a shromažďování událostí vyloučení. Pro prostředí, která jsou hostovaná odděleně od produkčního prostředí, můžete použít antimalwarové rozšíření k ochraně virtuálních počítačů a cloudových služeb.
+Microsoft Antimalware obsahuje funkce, jako je ochrana v reálném čase, plánované prohledávání, náprava malwaru, aktualizace signatur, aktualizace modulu, vytváření sestav ukázek a shromažďování událostí vyloučení. Pro prostředí, která jsou hostovaná nezávisle na produkčním prostředí, můžete použít antimalwarové rozšíření, které vám pomůžou ochránit vaše virtuální počítače a cloudové služby.
 
-Antimalwarová a partnerská řešení Microsoftu můžete integrovat pomocí [Azure Security Center](../../security-center/index.yml) pro snadné nasazení a integrované detekce (výstrahy a incidenty).
+Pomocí [Azure Security Center](../../security-center/index.yml) můžete integrovat řešení Microsoftu proti malwaru a partnerům, aby se usnadnilo nasazení a vestavěné detekce (výstrahy a incidenty).
 
-**Osvědčený postup:** Nainstalujte antimalwarové řešení, které chrání před malwarem.   
-**Detail**: [Instalace partnerského řešení společnosti Microsoft nebo antimalwaru společnosti Microsoft](../../security-center/security-center-install-endpoint-protection.md)
+**Osvědčený postup**: Nainstalujte antimalwarové řešení pro ochranu před malwarem.   
+**Podrobnosti**: [instalace partnerského řešení Microsoftu nebo antimalwaru Microsoftu](../../security-center/security-center-install-endpoint-protection.md)
 
-**Osvědčený postup:** Integrujte antimalwarové řešení s Security Center a sledujte stav ochrany.   
-**Detail:** [Správa problémů s ochranou koncového bodu pomocí Centra zabezpečení](../../security-center/security-center-partner-integration.md)
+**Osvědčený postup**: Integrujte své antimalwarové řešení pomocí Security Center, abyste mohli monitorovat stav vaší ochrany.   
+**Podrobnosti**: [Správa potíží s ochranou endpoint Protection pomocí Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Správa aktualizací virtuálních počítačů
-Virtuální počítače Azure, stejně jako všechny místní virtuální počítače, jsou určeny pro spravované uživatelem. Azure v nich nenabízí instalaci aktualizací Windows. Je potřeba spravovat aktualizace virtuálních počítačových sítí.
+Virtuální počítače Azure, jako jsou všechny místní virtuální počítače, se považují za spravované uživatelem. Azure v nich nenabízí instalaci aktualizací Windows. Musíte spravovat aktualizace virtuálních počítačů.
 
-**Osvědčený postup:** Udržujte virtuální počítače aktuální.   
-**Podrobnosti**: Pomocí řešení [pro správu aktualizací](../../automation/automation-update-management.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linuxem, které jsou nasazené v Azure, v místních prostředích nebo v jiných cloudových zprostředkovatelích. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
+**Osvědčený postup**: Udržujte své virtuální počítače aktuální.   
+**Podrobnosti**: pomocí řešení [Update Management](../../automation/automation-update-management.md) v Azure Automation můžete spravovat aktualizace operačního systému pro počítače s Windows a Linux, které jsou nasazené v Azure, v místních prostředích nebo v jiných poskytovatelích cloudu. Můžete rychle vyhodnotit stav dostupných aktualizací na všech počítačích agenta a spravovat proces instalace požadovaných aktualizací pro servery.
 
 Počítače spravované pomocí Update Managementu používají k provádění posuzovacích a aktualizačních nasazení následující konfigurace:
 
@@ -93,96 +93,96 @@ Počítače spravované pomocí Update Managementu používají k provádění p
 - Funkci Hybrid Runbook Worker služby Automation
 - Služby Microsoft Update nebo Windows Server Update Services (WSUS) pro počítače s Windows
 
-Pokud používáte službu Windows Update, ponechte automatické nastavení služby Windows Update povolené.
+Pokud používáte web Windows Update, nechte automatické nastavení web Windows Update povolené.
 
-**Osvědčený postup**: Při nasazení se ujistěte, že vytvořené bitové kopie obsahují nejnovější kolo aktualizací systému Windows.   
-**Podrobnosti**: Jako první krok každého nasazení zkontrolujte a nainstalujte všechny aktualizace systému Windows. Toto opatření je obzvláště důležité použít při nasazování bitových kopií, které pocházejí z vás nebo vlastní knihovny. I když se image z Azure Marketplace aktualizují automaticky ve výchozím nastavení, může být po veřejné verzi prodleva (až několik týdnů).
+**Osvědčené postupy**: Zajistěte, aby vytvořené image zahrnovaly nejnovější verzi aktualizací Windows.   
+**Podrobnosti**: vyhledání a instalace všech aktualizací Windows jako prvního kroku při každém nasazení. Tato míra je obzvláště důležitá pro použití při nasazování bitových kopií, které pocházejí buď z vaší aplikace, nebo z vaší vlastní knihovny. I když se obrázky z Azure Marketplace ve výchozím nastavení automaticky aktualizují, může po veřejné verzi docházet k prodlevě (až na pár týdnů).
 
-**Osvědčený postup:** Pravidelně znovu nasazujte virtuální počítače tak, aby si vynutily novou verzi operačního systému.   
-**Podrobnosti**: Definujte virtuální počítač pomocí [šablony Azure Resource Manager,](../../azure-resource-manager/templates/template-syntax.md) abyste ho mohli snadno znovu nasadit. Pomocí šablony získáte opravený a zabezpečený virtuální virtuální počítače, když ho potřebujete.
+**Osvědčený postup**: pravidelně znovu nasaďte virtuální počítače, abyste vynutili novou verzi operačního systému.   
+**Podrobnosti**: Definujte svůj virtuální počítač pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) , abyste ho mohli snadno znovu nasadit. Pomocí šablony získáte opravu a zabezpečený virtuální počítač, když ho potřebujete.
 
-**Osvědčený postup**: Rychle použít aktualizace zabezpečení pro virtuální chod.   
-**Podrobnosti**: Povolte Azure Security Center (úroveň Free nebo Standard) k [identifikaci chybějících aktualizací zabezpečení a jejich použití](../../security-center/security-center-apply-system-updates.md).
+**Osvědčený postup**: rychlé použití aktualizací zabezpečení u virtuálních počítačů.   
+**Podrobnosti**: Povolte Azure Security Center (úroveň Free nebo úroveň Standard) k [identifikaci chybějících aktualizací zabezpečení a jejich použití](../../security-center/security-center-apply-system-updates.md).
 
-**Osvědčený postup:** Nainstalujte nejnovější aktualizace zabezpečení.   
-**Podrobnosti:** Některé z prvních úloh, které zákazníci přesunoudo Azure jsou testovací prostředí a externí systémy. Pokud vaše virtuální počítače Azure hostují aplikace nebo služby, které musí být přístupné pro internet, buďte opatrní ohledně oprav. Oprava mimo operační systém. Neopravené chyby zabezpečení v partnerských aplikacích mohou také vést k problémům, kterým se lze vyhnout, pokud je zavedena dobrá správa oprav.
+**Osvědčený postup**: Nainstalujte nejnovější aktualizace zabezpečení.   
+**Podrobnosti**: některé z prvních úloh, které zákazníci přesouvají do Azure, jsou laboratoře a systémy s přístupem k externímu prostředí. Pokud vaše virtuální počítače Azure hostují aplikace nebo služby, které musí být dostupné pro Internet, ostražití se o opravách. Oprava nad operačním systémem. Neopravované chyby zabezpečení u partnerských aplikací můžou také vést k problémům, které se dají vyvarovat, pokud je zavedená řádná správa oprav.
 
-**Osvědčený postup:** Nasazení a testování řešení zálohování.   
-**Podrobnosti**: Zálohování musí být zpracováno stejným způsobem jako při jakékoli jiné operaci. To platí pro systémy, které jsou součástí produkčního prostředí, které se rozšiřuje do cloudu.
+**Osvědčený postup**: nasazení a testování záložního řešení.   
+**Podrobnosti**: záloha musí být zpracována stejným způsobem, jakým se zpracovává jakákoli jiná operace. To platí pro systémy, které jsou součástí produkčního prostředí, které se šíří do cloudu.
 
-Testovací a dev systémy musí dodržovat strategie zálohování, které poskytují možnosti obnovení, které jsou podobné tomu, na co si uživatelé zvykli, na základě svých zkušeností s místním prostředím. Produkční úlohy přesunuté do Azure by se měly integrovat s existujícími řešeními zálohování, pokud je to možné. Nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) k řešení vašich požadavků na zálohování.
+Testovací a vývojové systémy musí splňovat strategie zálohování, které poskytují možnosti obnovení, které jsou podobné těm, na které uživatelé zvyklí, na základě zkušeností s místními prostředími. Produkční úlohy přesunuté do Azure by se měly integrovat se stávajícími řešeními zálohování, pokud je to možné. Nebo můžete použít [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) k vyřešení požadavků na zálohování.
 
-Organizace, které nevynucují zásady aktualizace softwaru, jsou více vystaveny hrozbám, které zneužívají známé, dříve opravené chyby zabezpečení. Aby společnosti vyhověly oborovým předpisům, musí prokázat, že jsou důsledné a používají správné bezpečnostní kontroly, aby pomohly zajistit zabezpečení svých úloh umístěných v cloudu.
+Organizace, které vynutily zásady aktualizace softwaru, jsou vystavené hrozbám, které využívají známé, dříve opravené chyby zabezpečení. Společnosti musí prokázat, že jsou pečlivé vylaďování a používají správné bezpečnostní mechanismy, aby bylo zajištěno zabezpečení jejich úloh v cloudu, aby vyhověly oborovým předpisům.
 
-Doporučené postupy pro aktualizaci softwaru pro tradiční datové centrum a Azure IaaS mají mnoho podobností. Doporučujeme vyhodnotit aktuální zásady aktualizace softwaru tak, aby zahrnovaly virtuální počítače umístěné v Azure.
+Osvědčené postupy pro aktualizace softwaru pro tradiční datové centrum a Azure IaaS mají spoustu podobnosti. Doporučujeme, abyste své aktuální zásady aktualizace softwaru vyhodnotili tak, aby zahrnovaly virtuální počítače umístěné v Azure.
 
-## <a name="manage-your-vm-security-posture"></a>Správa stavu zabezpečení virtuálního počítače
-Kybernetické hrozby se vyvíjejí. Zabezpečení virtuálních počítačů vyžaduje funkci monitorování, která může rychle detekovat hrozby, zabránit neoprávněnému přístupu k prostředkům, aktivovat výstrahy a snížit falešně pozitivní výsledky.
+## <a name="manage-your-vm-security-posture"></a>Správa stav zabezpečení virtuálních počítačů
+Týká kybernetických hrozeb se vyvíjí. Ochrana virtuálních počítačů vyžaduje funkci monitorování, která dokáže rychle detekovat hrozby, zabránit neoprávněnému přístupu k prostředkům, aktivovat výstrahy a snížit falešně pozitivní výsledky.
 
-Chcete-li sledovat stav zabezpečení [virtuálních počítačích](../../security-center/security-center-linux-virtual-machine.md) [s Windows](../../security-center/security-center-virtual-machine.md) a Linuxem , použijte Azure Security [Center](../../security-center/security-center-intro.md). V Centru zabezpečení zabezpečte své virtuální počítače využitím následujících funkcí:
+K monitorování stav zabezpečení [virtuálních počítačů](../../security-center/security-center-linux-virtual-machine.md)s [Windows](../../security-center/security-center-virtual-machine.md) a Linux použijte [Azure Security Center](../../security-center/security-center-intro.md). V Security Center zabezpečíte své virtuální počítače, a využijte přitom následující možnosti:
 
-- Použijte nastavení zabezpečení operačního systému s doporučenými pravidly konfigurace.
+- Použijte nastavení zabezpečení operačního systému s doporučenými konfiguračními pravidly.
 - Identifikujte a stáhněte zabezpečení systému a důležité aktualizace, které mohou chybět.
-- Nasaďte doporučení pro antimalwarovou ochranu koncových bodů.
+- Nasaďte doporučení pro antimalwarovou ochranu Endpoint Protection.
 - Ověřte šifrování disku.
-- Vyhodnocovat a narušovat zranitelná místa.
-- Detekujte hrozby.
+- Vyhodnoťte a opravte chyby zabezpečení.
+- Detekuje hrozby.
 
-Centrum zabezpečení může aktivně sledovat ohrožení a potenciální hrozby jsou vystaveny v výstrahách zabezpečení. Korelované hrozby jsou agregovány v jediném zobrazení nazývaném bezpečnostní incident.
+Security Center můžou aktivně monitorovat hrozby a potenciální hrozby se zveřejňují v výstrahách zabezpečení. Korelační hrozby jsou shrnuty v jednom zobrazení s názvem incident zabezpečení.
 
-Security Center ukládá data v [protokolech Azure Monitor .](/azure/log-analytics/log-analytics-overview) Protokoly Azure Monitor poskytuje dotazovací jazyk a analytický modul, který vám poskytne přehled o provozu vašich aplikací a prostředků. Data se také shromažďují z [Azure Monitoru](../../batch/monitoring-overview.md), řešení pro správu a agentů nainstalovaných na virtuálních počítačích v cloudu nebo v místním prostředí. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
+Security Center ukládá data v [protokolech Azure monitor](/azure/log-analytics/log-analytics-overview). Protokoly Azure Monitor poskytují dotazovací jazyk a analytické moduly, které vám poskytnou přehled o provozu aplikací a prostředků. Data se shromažďují taky z [Azure monitor](../../batch/monitoring-overview.md), řešení pro správu a agentů nainstalovaných na virtuálních počítačích v cloudu nebo místně. Tyto sdílené funkce umožňují, abyste si vytvořili úplný přehled o vašem prostředí.
 
-Organizace, které nevynucují silné zabezpečení svých virtuálních počítačů, si stále nejsou vědomy potenciálních pokusů neoprávněných uživatelů obejít ovládací prvky zabezpečení.
+Organizace, které nevyžadují silné zabezpečení pro své virtuální počítače, nevědí o potenciálních pokusech neautorizovaných uživatelů, aby mohli obejít bezpečnostní prvky zabezpečení.
 
-## <a name="monitor-vm-performance"></a>Sledování výkonu virtuálních montovna
-Zneužití prostředků může být problém, když procesy virtuálních ms spotřebovávají více prostředků, než by měly. Problémy s výkonem s virtuálním virtuálním ms může vést k přerušení služby, což porušuje princip zabezpečení dostupnosti. To je obzvláště důležité pro virtuální počítače, které jsou hostitelem služby IIS nebo jiných webových serverů, protože vysoké využití procesoru nebo paměti může znamenat útok odmítnutí služby (DoS). Je nezbytné sledovat přístup k virtuálním můly nejen reaktivně, když dochází k problému, ale také proaktivně proti výkonu podle směrného plánu, měřeno během normálního provozu.
+## <a name="monitor-vm-performance"></a>Monitorování výkonu virtuálního počítače
+Zneužití prostředků může být problém, když procesy virtuálních počítačů spotřebovávají víc prostředků, než by měly. Problémy s výkonem virtuálního počítače mohou způsobit přerušení služby, což porušuje princip zabezpečení dostupnosti. To je důležité zejména pro virtuální počítače, které hostují službu IIS nebo jiné webové servery, protože vysoké využití procesoru nebo paměti může znamenat útok na útok DoS (Denial of Service). Je nutné monitorovat přístup k virtuálnímu počítači nejen znovu, pokud k problému dojde, ale také aktivně na základě směrného výkonu, který je změřen během normálního provozu.
 
-Doporučujeme použít [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) získat přehled o stavu vašeho prostředku. Funkce Azure Monitoru:
+Doporučujeme použít [Azure monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) , abyste získali přehled o stavu prostředku. Azure Monitor funkce:
 
-- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/platform-logs-overview.md): Monitoruje prostředky virtuálního počítače a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
-- [Rozšíření Diagnostika Azure](/azure/azure-monitor/platform/diagnostics-extension-overview): Poskytuje funkce monitorování a diagnostiky na virtuálních počítačích s Windows. Tyto možnosti můžete povolit zahrnutím rozšíření jako součást [šablony Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
+- [Soubory protokolu diagnostiky prostředků](../../azure-monitor/platform/platform-logs-overview.md): monitoruje prostředky virtuálních počítačů a identifikuje potenciální problémy, které by mohly ohrozit výkon a dostupnost.
+- [Rozšíření Azure Diagnostics](/azure/azure-monitor/platform/diagnostics-extension-overview): poskytuje funkce pro monitorování a diagnostiku na virtuálních počítačích s Windows. Tyto funkce můžete povolit zahrnutím rozšíření v rámci [šablony Azure Resource Manager](/azure/virtual-machines/windows/extensions-diagnostics-template).
 
-Organizace, které nesledují výkon virtuálního kapitálu, nemohou určit, jestli jsou určité změny ve vzorcích výkonu normální nebo abnormální. Virtuální počítač, který spotřebovává více prostředků, než je obvyklé, může znamenat útok z externího prostředku nebo kompromitovaného procesu spuštěného ve virtuálním počítači.
+Organizace, které nemonitorují výkon virtuálních počítačů, nemůžou určit, jestli jsou některé změny v vzorech výkonu normální nebo neobvyklé. Virtuální počítač, který spotřebovává více prostředků než obvykle, může indikovat útok z externího prostředku nebo napadený proces spuštěný ve virtuálním počítači.
 
 ## <a name="encrypt-your-virtual-hard-disk-files"></a>Šifrování souborů virtuálního pevného disku
-Doporučujeme zašifrovat virtuální pevné disky (VD), abyste ochránili spouštěcí svazek a datové svazky v klidovém stavu v úložišti spolu s šifrovacími klíči a tajnými klíči.
+Doporučujeme, abyste zašifroval virtuální pevné disky (VHD), které vám pomůžou chránit spouštěcí svazek a datové svazky v klidovém úložišti, a to spolu s šifrovacími klíči a tajnými kódy.
 
-[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) vám pomůže šifrovat vaše disky virtuálních počítačů Windows a Linux IaaS. Azure Disk Encryption používá standardní funkci [Nástroje bitlockeru](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) linuxu k zajištění šifrování svazku pro operační systém a datové disky. Řešení je integrované s [Azure Key Vault,](https://azure.microsoft.com/documentation/services/key-vault/) které vám pomohou řídit a spravovat klíče šifrování disku a tajné klíče v předplatném trezoru klíčů. Řešení také zajišťuje, že všechna data na discích virtuálních počítačů jsou šifrována v klidovém stavu ve službě Azure Storage.
+[Azure Disk Encryption](../azure-security-disk-encryption-overview.md) vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Azure Disk Encryption používá standardní funkci [nástroje BitLocker](https://technet.microsoft.com/library/cc732774.aspx) systému Windows a funkci [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) systému Linux k poskytování šifrování svazku pro operační systém a datové disky. Řešení je integrované s [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) , které vám pomůžou řídit a spravovat šifrovací klíče a tajné klíče disku v předplatném trezoru klíčů. Řešení také zajišťuje, že všechna data na discích virtuálních počítačů jsou v klidovém stavu zašifrovaná v Azure Storage.
 
-Pro použití Azure Disk Encryption postupujte takto:
+Níže jsou uvedené osvědčené postupy pro používání Azure Disk Encryption:
 
-**Osvědčený postup**: Povolit šifrování na virtuálních počítačích.   
-**Podrobnosti:** Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů vyžaduje ověřování Azure AD. Vytvořte aplikaci Azure AD pro tento účel. Pro účely ověřování můžete použít ověřování pomocí tajných klíče klienta nebo [ověřování Azure AD založené na klientských certifikátech](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+**Osvědčený postup**: povolení šifrování na virtuálních počítačích.   
+**Podrobnosti**: Azure Disk Encryption generuje a zapisuje šifrovací klíče do trezoru klíčů. Správa šifrovacích klíčů v trezoru klíčů vyžaduje ověřování Azure AD. Vytvořte pro tento účel aplikaci Azure AD. Pro účely ověřování můžete použít buď ověřování na základě tajného klíče klienta, nebo [ověřování Azure AD založené na certifikátech klienta](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
-**Osvědčený postup:** Použijte šifrovací klíč (KEK) pro další vrstvu zabezpečení pro šifrovací klíče. Přidejte kek do trezoru klíčů.   
-**Podrobnosti**: Pomocí rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) vytvořte v trezoru klíčů šifrovací klíč. KEK můžete také importovat z místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace naleznete v [dokumentaci k trezoru klíčů](../../key-vault/keys/hsm-protected-keys.md). Když je zadán klíč šifrovací klíč, Azure Disk Encryption používá tento klíč k zabalení tajných kódů šifrování před zápisem do trezoru klíčů. Udržování escrow kopii tohoto klíče v místním klíč správy hsm nabízí další ochranu proti náhodnému odstranění klíčů.
+**Osvědčený postup**: použijte klíč šifrování klíče (KEK) pro další vrstvu zabezpečení šifrovacích klíčů. Přidejte KEK do trezoru klíčů.   
+**Podrobnosti**: pomocí rutiny [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) vytvořte šifrovací klíč klíče v trezoru klíčů. KEK můžete také importovat z místního modulu hardwarového zabezpečení (HSM) pro správu klíčů. Další informace najdete v dokumentaci k [Key Vault](../../key-vault/keys/hsm-protected-keys.md). Když je zadaný klíč šifrování klíče, Azure Disk Encryption používá tento klíč k zabalení šifrovacích tajných kódů před zápisem do Key Vault. Udržování v úschově kopie tohoto klíče v modulu HSM místní správy klíčů nabízí další ochranu před náhodným odstraněním klíčů.
 
-**Osvědčený postup**: Před zašifrováním disků pořiďte [snímek](../../virtual-machines/windows/snapshot-copy-managed-disk.md) nebo zálohu. Zálohy poskytují možnost obnovení, pokud dojde k neočekávané chybě během šifrování.   
-**Podrobnosti:** Virtuální počítače se spravovanými disky vyžadují zálohu před šifrováním. Po vytvoření zálohy můžete pomocí rutiny **Set-AzVMDiskEncryptionExtension** šifrovat spravované disky zadáním parametru *-skipVmBackup.* Další informace o tom, jak zálohovat a obnovovat šifrované virtuální počítače, najdete v článku [Zálohování Azure.](../../backup/backup-azure-vms-encryption.md)
+**Osvědčený postup**: před zašifrováním disků si pořídit [snímek](../../virtual-machines/windows/snapshot-copy-managed-disk.md) a/nebo zálohu. Pokud během šifrování dojde k neočekávané chybě, zálohování poskytuje možnost obnovení.   
+**Podrobnosti**: virtuální počítače se spravovanými disky vyžadují zálohování před tím, než dojde k šifrování. Po provedení zálohy můžete použít rutinu **set-AzVMDiskEncryptionExtension** k šifrování spravovaných disků zadáním parametru *-skipVmBackup* . Další informace o zálohování a obnovení šifrovaných virtuálních počítačů najdete v článku o [Azure Backup](../../backup/backup-azure-vms-encryption.md) .
 
-**Osvědčený postup**: Chcete-li zajistit, aby tajné kódy šifrování nepřekračují místní hranice, azure disk encryption potřebuje trezor klíčů a virtuální počítače, které mají být umístěny ve stejné oblasti.   
-**Detail**: Vytvořte a použijte trezor klíčů, který je ve stejné oblasti jako virtuální hod, který má být šifrován.
+**Osvědčený postup**: aby se zajistilo, že šifrovací tajná klíč nepřekračuje regionální hranice, Azure Disk Encryption potřebuje Trezor klíčů a virtuální počítače umístěné ve stejné oblasti.   
+**Podrobnosti**: Vytvořte a použijte Trezor klíčů, který je ve stejné oblasti jako virtuální počítač, který chcete zašifrovat.
 
-Při použití Azure Disk Encryption, můžete uspokojit následující obchodní potřeby:
+Když použijete Azure Disk Encryption, můžete splnit následující obchodní potřeby:
 
-- Virtuální ms IaaS jsou zabezpečené v klidovém stavu prostřednictvím standardní šifrovací technologie, která řeší požadavky na zabezpečení organizace a dodržování předpisů.
-- Virtuální počítače IaaS se spouštějí pod klíči a zásadami řízenými zákazníky a můžete auditovat jejich využití v trezoru klíčů.
+- Virtuální počítače s IaaS jsou zabezpečené v klidové době prostřednictvím standardní šifrovací technologie, která řeší požadavky organizace na zabezpečení a dodržování předpisů.
+- Virtuální počítače s IaaS začínají na klíčích a zásadách řízených zákazníky a můžete auditovat jejich využití v trezoru klíčů.
 
-## <a name="restrict-direct-internet-connectivity"></a>Omezení přímého připojení k internetu
-Monitorujte a omezte přímé připojení k internetu virtuálním můe. Útočníci neustále prohledává rozsahy IP adres veřejného cloudu, kde hledají otevřené porty pro správu, a pokoušejí se o "snadné" útoky, jako jsou běžná hesla a známé neopravené chyby zabezpečení. V následující tabulce jsou uvedeny doporučené postupy, které pomáhají chránit před těmito útoky:
+## <a name="restrict-direct-internet-connectivity"></a>Omezení přímého připojení k Internetu
+Monitorujte a omezte přímé připojení k Internetu z virtuálního počítače. Útočníci nepřetržitě prohledávají rozsahy IP adres veřejných cloudu pro otevřené porty pro správu a pokoušejí "jednoduché" útoky, jako jsou běžná hesla a známá slabá místa v opravených chybách. V následující tabulce jsou uvedeny osvědčené postupy, které vám pomůžou chránit před těmito útoky:
 
-**Osvědčený postup**: Zabraňte neúmyslnému vystavení směrování a zabezpečení sítě.   
-**Podrobnosti**: Pomocí nástroje RBAC zajistíte, že k síťovým prostředkům má oprávnění pouze centrální síťová skupina.
+**Osvědčený postup**: zabránění nechtěnému vystavení síťovému směrování a zabezpečení.   
+**Podrobnosti**: pomocí RBAC zajistěte, aby přístup k síťovým prostředkům měla jenom centrální skupina sítě.
 
-**Osvědčený postup**: Identifikace a náprava exponovaných virtuálních počítačů, které umožňují přístup z libovolné zdrojové IP adresy.   
-**Podrobnosti:** Použijte Azure Security Center. Security Center doporučuje omezit přístup prostřednictvím koncových bodů určených pro Internet, pokud má některá ze skupin zabezpečení sítě jedno nebo více příchozích pravidel, která umožňují přístup z libovolné zdrojové adresy IP. Security Center doporučuje upravit tato příchozí pravidla, abyste [omezili přístup](../../security-center/security-center-network-recommendations.md) ke zdrojovým IP adresám, které skutečně potřebují přístup.
+**Osvědčený postup**: identifikujte a opravte vystavené virtuální počítače, které umožňují přístup z jakékoli zdrojové IP adresy.   
+**Podrobnosti**: použijte Azure Security Center. Security Center se doporučuje omezit přístup prostřednictvím internetových koncových bodů, pokud některá z vašich skupin zabezpečení sítě má jedno nebo několik příchozích pravidel, která umožňují přístup z jakékoli zdrojové IP adresy. Security Center bude doporučit, abyste tato příchozí pravidla upravili a [omezili přístup](../../security-center/security-center-network-recommendations.md) ke zdrojovým IP adresám, které skutečně potřebují přístup.
 
-**Osvědčený postup:** Omezit porty pro správu (RDP, SSH).   
-**Podrobnosti:** [Přístup k virtuálním počítačům just-in-time (JIT)](../../security-center/security-center-just-in-time.md) lze použít k uzamčení příchozího provozu na virtuálních počítačích Azure, což snižuje vystavení útokům a zároveň poskytuje snadný přístup k připojení k virtuálním počítačům v případě potřeby. Když je jit povoleno, Security Center uzamkne příchozí provoz na vaše virtuální počítače Azure vytvořením pravidla skupiny zabezpečení sítě. Vyberete porty na virtuálním počítači, na které bude uzamčen příchozí provoz. Tyto porty jsou řízeny řešením JIT.
+**Osvědčený postup**: Omezte porty pro správu (RDP, SSH).   
+**Podrobnosti**: [přístup k virtuálnímu počítači JIT (just-in-time)](../../security-center/security-center-just-in-time.md) se dá použít k uzamknutí příchozího provozu do virtuálních počítačů Azure. tím se sníží riziko útoků na útoky a zároveň se vám umožní snadný přístup k virtuálním počítačům v případě potřeby. Když je kompilátor JIT povolený, Security Center zamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla skupiny zabezpečení sítě. Vyberete porty na virtuálním počítači, pro které bude příchozí provoz uzamčen. Tyto porty jsou ovládány řešením JIT.
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na [osvědčené postupy a vzory zabezpečení Azure, kde](best-practices-and-patterns.md) najdete další doporučené postupy zabezpečení, které se používají při navrhování, nasazování a správě cloudových řešení pomocí Azure.
+V článku [osvědčené postupy a vzory zabezpečení Azure](best-practices-and-patterns.md) najdete v tématu Doporučené postupy zabezpečení pro použití při navrhování, nasazování a správě cloudových řešení pomocí Azure.
 
 K dispozici jsou následující prostředky, které poskytují obecnější informace o zabezpečení Azure a souvisejících službách Microsoftu:
-* [Blog týmu zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovějších informacích o azure securityu
-* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde lze nahlásit chyby zabezpečení společnosti Microsoft, včetně problémů s Azure, nebo e-mailemsecure@microsoft.com
+* [Blog týmu pro zabezpečení Azure](https://blogs.msdn.microsoft.com/azuresecurity/) – aktuální informace o nejnovější verzi v zabezpečení Azure
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) – kde můžou být chyby zabezpečení Microsoftu, včetně problémů s Azure, nahlášené nebo prostřednictvím e-mailu.secure@microsoft.com

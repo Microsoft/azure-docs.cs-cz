@@ -1,6 +1,6 @@
 ---
-title: Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid
-description: Přečtěte si, jak integrovat trezor klíčů s Azure Event Grid.
+title: Příjem a reakce na oznámení o trezoru klíčů pomocí Azure Event Grid
+description: Naučte se integrovat Key Vault s Azure Event Grid.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,62 +11,62 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 300abc8ca6798866295c865e68bf5ec24a00cf5f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423252"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (preview)
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>Příjem a reakce na oznámení trezoru klíčů pomocí Azure Event Grid (Preview)
 
-Integrace azure key vaultu s Azure Event Grid (aktuálně ve verzi Preview) umožňuje oznámení uživatele při změně stavu tajného klíče uloženého v trezoru klíčů. Přehled této funkce naleznete v [tématu Monitoring Key Vault with Event Grid](event-grid-overview.md).
+Azure Key Vault Integration with Azure Event Grid (aktuálně ve verzi Preview) umožňuje uživateli oznámení, když se změní stav tajného kódu uloženého v trezoru klíčů. Přehled této funkce naleznete v tématu [Monitoring Key Vault with Event Grid](event-grid-overview.md).
 
-Tato příručka popisuje, jak přijímat oznámení trezoru klíčů prostřednictvím event gridu a jak reagovat na změny stavu prostřednictvím Azure Automation.
+Tato příručka popisuje, jak dostávat oznámení o Key Vault prostřednictvím Event Grid a jak reagovat na změny stavu prostřednictvím Azure Automation.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure. Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
-- Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v [nastavení a načíst tajný klíč z azure key vault pomocí Azure CLI](../secrets/quick-create-cli.md).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+- Trezor klíčů ve vašem předplatném Azure. Nový trezor klíčů můžete rychle vytvořit podle kroků v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="concepts"></a>Koncepty
 
-Event Grid je služba událostí pro cloud. Podle kroků v této příručce se přihlásíte k odběru událostí pro trezor klíčů a trasy událostí do automatizace. Pokud vyprší platnost jednoho z tajných klíčů v trezoru klíčů, bude událost mřížka upozorněna na změnu stavu a vytvoří http post do koncového bodu. Webový hák pak spustí spuštění automatizace skriptu prostředí PowerShell.
+Event Grid je služba Eventing Service pro Cloud. Podle kroků v tomto průvodci se můžete přihlásit k odběru událostí pro Key Vault a směrování událostí do automatizace. Když se brzo vyprší platnost jednoho z tajných kódů v trezoru klíčů, Event Grid se zobrazí oznámení o změně stavu a převede HTTP POST na koncový bod. Webhook pak aktivuje spuštění automatizace skriptu PowerShellu.
 
 ![Vývojový diagram HTTP POST](../media/image1.png)
 
 ## <a name="create-an-automation-account"></a>Vytvoření účtu Automation
 
-Vytvořte si účet Automation prostřednictvím [portálu Azure](https://portal.azure.com):
+Vytvořte účet Automation pomocí [Azure Portal](https://portal.azure.com):
 
-1.  Přejděte na portal.azure.com a přihlaste se k předplatnému.
+1.  Přejít na portal.azure.com a přihlaste se ke svému předplatnému.
 
-1.  Do vyhledávacího pole zadejte **Účty automatizace**.
+1.  Do vyhledávacího pole zadejte **účty Automation**.
 
-1.  V části **Služby** v rozevíracím seznamu na panelu hledání vyberte **možnost Účty automatizace**.
+1.  V části **služby** v rozevíracím seznamu na panelu hledání vyberte **účty Automation**.
 
 1.  Vyberte **Přidat**.
 
-    ![Podokno Účty automatizace](../media/image2.png)
+    ![Podokno účty služby Automation](../media/image2.png)
 
-1.  Do podokna **Přidat účet automatizace** zadejte požadované informace a pak vyberte **Vytvořit**.
+1.  V podokně **Přidat účet Automation** zadejte požadované informace a pak vyberte **vytvořit**.
 
 ## <a name="create-a-runbook"></a>Vytvoření runbooku
 
-Po připravení účtu Automation vytvořte runbook.
+Až bude váš účet služby Automation připravený, vytvořte sadu Runbook.
 
-![Vytvoření uzlého i.](../media/image3.png)
+![Vytvoření uživatelského rozhraní Runbooku](../media/image3.png)
 
-1.  Vyberte účet automatizace, který jste právě vytvořili.
+1.  Vyberte účet Automation, který jste právě vytvořili.
 
-1.  V části **Automatizace procesů**vyberte **Runbook** .
+1.  V části **Automatizace procesu**vyberte **Runbooky** .
 
-1.  Vyberte **Vytvořit runbook**.
+1.  Vyberte **vytvořit Runbook**.
 
-1.  Pojmenujte runbook a vyberte **PowerShell** jako typ runbooku.
+1.  Pojmenujte Runbook a jako typ Runbooku vyberte **PowerShell** .
 
-1.  Vyberte runbook, který jste vytvořili, a pak vyberte tlačítko **Upravit.**
+1.  Vyberte Runbook, který jste vytvořili, a pak vyberte tlačítko **Upravit** .
 
-1.  Zadejte následující kód (pro účely testování) a vyberte tlačítko **Publikovat.** Tato akce vrátí výsledek požadavku POST přijatého.
+1.  Zadejte následující kód (pro účely testování) a klikněte na tlačítko **publikovat** . Tato akce vrátí výsledek přijaté žádosti POST.
 
 ```azurepowershell
 param
@@ -92,111 +92,111 @@ write-Error "No input data found."
 }
 ```
 
-![Publikování uj.](../media/image4.png)
+![Publikování uživatelského rozhraní Runbooku](../media/image4.png)
 
-## <a name="create-a-webhook"></a>Vytvoření webového háčku
+## <a name="create-a-webhook"></a>Vytvoření Webhooku
 
-Vytvořte webhooku pro aktivaci nově vytvořené sady Runbook.
+Vytvořte Webhook, který aktivuje nově vytvořenou sadu Runbook.
 
-1.  V části **Zdroje** v právě publikované sady Runbook vyberte **Webhooks.**
+1.  V části **Resources (prostředky** ) sady Runbook, kterou jste právě publikovali, vyberte **Webhooky** .
 
-1.  Vyberte **Přidat webhook**.
+1.  Vyberte **Přidat Webhook**.
 
-    ![Tlačítko Přidat webhook](../media/image5.png)
+    ![Tlačítko Přidat Webhook](../media/image5.png)
 
-1.  Vyberte **Vytvořit nový webhook**.
+1.  Vyberte **vytvořit nový Webhook**.
 
-1. Pojmenujte webhook, nastavte datum vypršení platnosti a zkopírujte adresu URL.
+1. Pojmenujte Webhook, nastavte datum vypršení platnosti a zkopírujte adresu URL.
 
     > [!IMPORTANT] 
-    > Adresu URL nelze zobrazit po jeho vytvoření. Ujistěte se, že jste kopii uložili na bezpečném místě, kde k ní budete mít přístup po zbytek této příručky.
+    > Po vytvoření se adresa URL nedá zobrazit. Nezapomeňte uložit kopii v zabezpečeném umístění, kde k ní máte přístup za zbytek tohoto průvodce.
 
-1. Vyberte **Parametry a spusťte nastavení** a pak vyberte **OK**. Nezadávejte žádné parametry. Tím **povolíte tlačítko Vytvořit.**
+1. Vyberte **parametry a nastavení spuštění** a pak vyberte **OK**. Nezadávejte žádné parametry. Tím se povolí tlačítko **vytvořit** .
 
-1. Vyberte **OK** a pak vyberte **Vytvořit**.
+1. Vyberte **OK** a pak vyberte **vytvořit**.
 
-    ![Vytvořit nové uživatelské tlačítko Webhooku](../media/image6.png)
+    ![Vytvořit nové uživatelské rozhraní Webhooku](../media/image6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Vytvoření odběru Event Gridu
 
-Vytvořte předplatné Event Grid prostřednictvím [portálu Azure](https://portal.azure.com).
+Vytvořte Event Grid předplatné prostřednictvím [Azure Portal](https://portal.azure.com).
 
-1.  Přejděte do trezoru klíčů a vyberte kartu **Události.** Pokud ji nevidíte, ujistěte se, že používáte [verzi náhledu portálu](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
+1.  Přejít do trezoru klíčů a vybrat kartu **události** . Pokud ho nevidíte, ujistěte se, že používáte [verzi Preview portálu](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
 
-    ![Karta Události na webu Azure Portal](../media/image7.png)
+    ![Karta události v Azure Portal](../media/image7.png)
 
-1.  Vyberte tlačítko **Odběr událostí.**
+1.  Vyberte tlačítko **odběr události** .
 
 1.  Vytvořte popisný název předplatného.
 
-1.  Zvolte **schéma mřížky událostí**.
+1.  Vyberte **Event Grid schéma**.
 
-1.  **Zdroj tématu** by měl být trezor klíčů, který chcete sledovat pro změny stavu.
+1.  **Prostředkem tématu** by měl být Trezor klíčů, který chcete monitorovat pro změny stavu.
 
-1.  V **případě filtru na typy událostí**ponechte všechny vybrané možnosti ( 9**vybraných**).
+1.  Pro možnost **Filtr na typ události**ponechte vybrané všechny možnosti (počet**vybraných: 9**).
 
 1.  Jako **Typ koncového bodu** vyberte **Webhook**.
 
-1.  Zvolte **Vybrat koncový bod**. V novém podokně kontextu vložte adresu URL webhooku z pole [Vytvořit webhooku](#create-a-webhook) do pole **Koncový odběratel.**
+1.  Zvolte **Vybrat koncový bod**. V podokně nový kontext vložte adresu URL Webhooku z kroku [Vytvoření Webhooku](#create-a-webhook) do pole **koncový bod odběratele** .
 
-1.  V podokně kontextu vyberte **Potvrdit výběr.**
+1.  V kontextovém podokně vyberte **potvrdit výběr** .
 
 1.  Vyberte **Vytvořit**.
 
-    ![Vytvořit odběr událostí](../media/image8.png)
+    ![Vytvořit odběr události](../media/image8.png)
 
 ## <a name="test-and-verify"></a>Testování a ověření
 
-Ověřte, zda je vaše předplatné služby Event Grid správně nakonfigurováno. Tento test předpokládá, že jste se přihlásili k odběru oznámení "Secret New Version Created" v [předplatném Vytvořit mřížku událostí](#create-an-event-grid-subscription)a že máte potřebná oprávnění k vytvoření nové verze tajného klíče v trezoru klíčů.
+Ověřte, že je vaše předplatné Event Grid správně nakonfigurované. Tento test předpokládá, že jste se přihlásili k odběru oznámení "nově vytvořená tajná verze" v [předplatném vytvoření Event Grid](#create-an-event-grid-subscription)a že máte potřebná oprávnění k vytvoření nové verze tajného klíče v trezoru klíčů.
 
-![Testovací konfigurace předplatného Event Grid](../media/image9.png)
+![Test konfigurace předplatného Event Grid](../media/image9.png)
 
-![Podokno Vytvořit tajné klíče](../media/image10.png)
+![Podokno vytvořit – tajný kód](../media/image10.png)
 
-1.  Přejděte do trezoru klíčů na webu Azure Portal.
+1.  Přejít na svůj Trezor klíčů na Azure Portal.
 
-1.  Vytvořte nový tajný klíč. Pro účely testování nastavte vypršení platnosti na následující den.
+1.  Vytvoří nový tajný kód. Pro účely testování nastavte datum vypršení platnosti na další den.
 
-1.  Na kartě **Události** v trezoru klíčů vyberte předplatné Služby Event Grid, které jste vytvořili.
+1.  Na kartě **události** v trezoru klíčů vyberte Event Grid předplatné, které jste vytvořili.
 
-1.  V části **Metriky**zkontrolujte, zda byla událost zachycena. Očekává se dvě události: SecretNewVersion a SecretNearExpiry. Tyto události ověřují, že služba Event Grid úspěšně zachytila změnu stavu tajného klíče v trezoru klíčů.
+1.  V části **metriky**ověřte, zda byla událost zachycena. Jsou očekávány dvě události: SecretNewVersion a SecretNearExpiry. Tyto události ověřují, že Event Grid úspěšně zachytil změnu stavu tajného kódu v trezoru klíčů.
 
-    ![Podokno Metriky: kontrola zachycených událostí](../media/image11.png)
+    ![Podokno metriky: kontrolovat zaznamenané události](../media/image11.png)
 
-1.  Přejděte na svůj účet Automation.
+1.  Přejít na svůj účet Automation.
 
-1.  Vyberte kartu **Runbook** a pak vyberte runbook, který jste vytvořili.
+1.  Vyberte kartu **Runbooky** a potom vyberte Runbook, který jste vytvořili.
 
-1.  Vyberte kartu **Webhooks** a potvrďte, že časové razítko "poslední spuštění" je do 60 sekund od vytvoření nového tajného klíče. Tento výsledek potvrzuje, že Event Grid udělal POST na webhooku s podrobnostmi o události změny stavu v trezoru klíčů a že webhook byl spuštěn.
+1.  Vyberte kartu **Webhooky** a potvrďte, že časové razítko "naposledy aktivované" je během 60 sekund od okamžiku vytvoření nového tajného kódu. Tento výsledek potvrzuje, že Event Grid provedl příspěvek na Webhook s podrobnostmi události změny stavu v trezoru klíčů a při aktivovaném Webhooku.
 
-    ![Karta Webhooks, poslední spouštěné časové razítko](../media/image12.png)
+    ![Karta Webhooky, časové razítko posledního aktivovaného běhu](../media/image12.png)
 
-1. Vraťte se do runbooku a vyberte kartu **Přehled.**
+1. Vraťte se do Runbooku a vyberte kartu **Přehled** .
 
-1. Podívejte se na seznam **Posledních pracovních míst.** Měli byste vidět, že byla vytvořena úloha a že stav je dokončen. Tím se potvrdí, že webhook spustil runbook, aby začal spouštět svůj skript.
+1. Podívejte se na seznam **posledních úloh** . Měla by se zobrazit, že se vytvořila úloha a že stav je dokončeno. Tím se potvrdí, že Webhook aktivoval Runbook, aby zahájil provádění skriptu.
 
-    ![Seznam nejnovějších úloh webhooku](../media/image13.png)
+    ![Seznam posledních úloh Webhooku](../media/image13.png)
 
-1. Vyberte poslední úlohu a podívejte se na požadavek POST, který byl odeslán z Event Grid do webhooku. Zkontrolujte JSON a ujistěte se, že parametry pro trezor klíčů a typ události jsou správné. Pokud parametr "typ události" v objektu JSON odpovídá události, ke které došlo v trezoru klíčů (v tomto příkladu Microsoft.KeyVault.SecretNearExpiry), test byl úspěšný.
+1. Vyberte poslední úlohu a podívejte se na požadavek POST, který byl odeslán z Event Grid Webhooku. Zkontrolujte kód JSON a ujistěte se, že parametry trezoru klíčů a typu události jsou správné. Pokud parametr "event type" v objektu JSON odpovídá události, ke které došlo v trezoru klíčů (v tomto příkladu je to Microsoft. klíčů trezor. SecretNearExpiry), test byl úspěšný.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-### <a name="you-cant-create-an-event-subscription"></a>Odběr událostí nelze vytvořit.
+### <a name="you-cant-create-an-event-subscription"></a>Nemůžete vytvořit odběr událostí.
 
-Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů u poskytovatelů prostředků předplatného Azure. Viz [Poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md).
+Znovu zaregistrujte Event Grid a poskytovatele trezoru klíčů ve svých poskytovatelích prostředků předplatného Azure. Podívejte [se na téma poskytovatelé a typy prostředků Azure](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Blahopřejeme! Pokud jste správně postupovali podle všech těchto kroků, jste nyní připraveni programově reagovat na změny stavu tajných kódů uložených v trezoru klíčů.
+Blahopřejeme! Pokud jste správně postupovali podle všech těchto kroků, jste teď připraveni programově reagovat na změny stavu tajných kódů uložených ve vašem trezoru klíčů.
 
-Pokud jste používali systém založený na dotazování k hledání změn stavu tajných kódů v trezorech klíčů, můžete nyní začít používat tuto funkci oznámení. Testovací skript v aplikaci Runbook můžete také nahradit kódem, který programově obnoví vaše tajné klíče, když brzy vyprší jejich platnost.
+Pokud jste k hledání změn stavu tajných kódů v trezorech klíčů používali systém založený na cyklické dotazování, můžete nyní začít používat tuto funkci oznámení. Můžete také nahradit testovací skript v Runbooku kódem pro programové obnovení tajných kódů, když brzy vyprší platnost.
 
 Další informace:
 
 
-- Přehled: [Monitorování trezoru klíčů pomocí Azure Event Grid (preview)](event-grid-overview.md)
-- Postup: [Příjem e-mailů při změně tajného klíče trezoru](event-grid-logicapps.md)
-- [Schéma událostí Azure Event Grid pro Azure Key Vault (preview)](../../event-grid/event-schema-key-vault.md)
-- [Azure Key Vault – přehled](overview.md))
+- Přehled: [Key Vault monitorování pomocí Azure Event Grid (Preview)](event-grid-overview.md)
+- Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](event-grid-logicapps.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../../event-grid/event-schema-key-vault.md)
+- [Přehled Azure Key Vault](overview.md))
 - [Přehled Azure Event Gridu](../../event-grid/overview.md)
-- [Azure Automation – přehled](../../automation/index.yml)
+- [Přehled Azure Automation](../../automation/index.yml)

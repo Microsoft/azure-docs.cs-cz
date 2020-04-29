@@ -1,6 +1,6 @@
 ---
-title: Monitorování trezoru klíčů pomocí Azure Event Grid
-description: Přihlášení k odběru událostí trezoru klíčů pomocí Služby Azure Event Grid
+title: Monitorování Key Vault s využitím Azure Event Grid
+description: Použití Azure Event Grid k přihlášení k odběru Key Vaultch událostí
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,43 +10,43 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431901"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Monitorování trezoru klíčů pomocí Azure Event Grid (preview)
+# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Monitorování Key Vault s využitím Azure Event Grid (Preview)
 
-Integrace trezoru klíčů s mřížkou událostí je aktuálně ve verzi preview. Umožňuje uživatelům být upozorněni, když se změní stav tajného klíče uloženého v trezoru klíčů. Změna stavu je definována jako tajný klíč, jehož platnost brzy vyprší (do 30 dnů od vypršení platnosti), tajný klíč, jehož platnost vypršela, nebo tajný klíč, který má k dispozici novou verzi. Oznámení pro všechny tři typy tajných kódů (klíč, certifikát a tajný klíč) jsou podporovány.
+Key Vault integrace s Event Grid je momentálně ve verzi Preview. Umožňuje uživatelům upozornit, když se změní stav tajného kódu uloženého v trezoru klíčů. Změna stavu se definuje jako tajný kód, jehož platnost brzy vyprší (do 30 dnů od vypršení platnosti), tajného kódu, jehož platnost vypršela, nebo tajného klíče, který má k dispozici novou verzi. Jsou podporovány oznámení pro všechny tři tajné typy (klíč, certifikát a tajný kód).
 
-Aplikace mohou reagovat na tyto události pomocí moderních architektur bez serveru, bez nutnosti složitého kódu nebo nákladné a neefektivní dotazování služby. Události se přes [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) zasouvají obslužným rutinám událostí, jako jsou Azure [Functions](https://azure.microsoft.com/services/functions/), Azure [Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce do vlastního Webhooku, a platíte jenom za to, co používáte. Informace o cenách naleznete v [tématu Event Grid pricing](https://azure.microsoft.com/pricing/details/event-grid/).
+Aplikace můžou na tyto události reagovat pomocí moderních architektur bez serveru, aniž by museli mít složitý kód nebo nákladné a neefektivní služby cyklického dotazování. Události jsou odesílány prostřednictvím [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) do obslužných rutin událostí, jako jsou [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)nebo dokonce vlastního Webhooku, a platíte jenom za to, co využijete. Informace o cenách najdete v tématu [Event Grid ceny](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="key-vault-events-and-schemas"></a>Události a schémata úložiště klíčů
+## <a name="key-vault-events-and-schemas"></a>Key Vault události a schémata
 
-Mřížka událostí používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Události úložiště klíčů obsahují všechny informace, které potřebujete k reakci na změny dat. Můžete identifikovat key vault událost, protože eventType vlastnost začíná "Microsoft.KeyVault".
+Event Grid používá [odběry událostí](../../event-grid/concepts.md#event-subscriptions) ke směrování zpráv událostí odběratelům. Key Vault události obsahují všechny informace, které potřebujete k reakci na změny ve vašich datech. Můžete identifikovat událost Key Vault, protože vlastnost eventType začíná na "Microsoft. klíčů trezor".
 
-Další informace naleznete ve [schématu událostí trezoru klíčů](../../event-grid/event-schema-key-vault.md).
+Další informace najdete v tématu [schéma události Key Vault](../../event-grid/event-schema-key-vault.md).
 
 > [!WARNING]
-> Události oznámení se aktivují pouze v nových verzích tajných kódů, klíčů a certifikátů a musíte se nejprve přihlásit k odběru události v trezoru klíčů, abyste tato oznámení obdrželi.
+> Události oznámení se aktivují jenom v nových verzích tajných klíčů, klíčů a certifikátů a při přijímání těchto oznámení se musíte nejdřív přihlásit ke svému trezoru klíčů.
 > 
-> Události oznámení o certifikátech obdržíte pouze v případě, že je certifikát automaticky obnoven podle zásad, které jste pro certifikát zadali.
+> Události oznámení týkající se certifikátů obdržíte pouze v případě, že se certifikát automaticky obnoví podle zásad, které jste pro svůj certifikát určili.
 
 ## <a name="practices-for-consuming-events"></a>Postupy pro náročné události
 
-Aplikace, které zpracovávají události úložiště klíčů, by se měly řídit několika doporučenými postupy:
+Aplikace, které zpracovávají Key Vault události, by měly dodržovat několik doporučených postupů:
 
-* Více předplatných lze nakonfigurovat pro směrování událostí na stejnou obslužnou rutinu události. Je důležité nepředpokládat, že události pocházejí z určitého zdroje, ale zkontrolujte téma zprávy, abyste se ujistili, že pochází z trezoru klíčů, který očekáváte.
-* Podobně zkontrolujte, zda eventType je ten, který jste připraveni ke zpracování a nepředpokládejte, že všechny události, které obdržíte, budou typy, které očekáváte.
-* Ignorujte pole, kterým nerozumíte.  Tento postup vám pomůže udržet odolnost vůči novým funkcím, které by mohly být přidány v budoucnu.
-* Pomocí shody předpony a přípony předmětu omezte události na určitou událost.
+* Více předplatných lze nakonfigurovat pro směrování událostí do stejné obslužné rutiny události. Je důležité, aby se události nepředpokládaly z konkrétního zdroje, ale pokud chcete zkontrolovat téma zprávy, abyste měli jistotu, že pochází z trezoru klíčů, který očekáváte.
+* Podobně ověřte, zda je typ eventType, který je připraven ke zpracování, a nepředpokládá se, že všechny události, které obdržíte, budou takové typy, které očekáváte.
+* Ignorujte pole, která nerozumíte.  Tento postup vám pomůže zajistit odolný přístup k novým funkcím, které se v budoucnu můžou přidat.
+* Pokud chcete omezit události na konkrétní událost, použijte předponu a příponu "Subject".
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Azure Key Vault – přehled](overview.md))
+- [Přehled Azure Key Vault](overview.md))
 - [Přehled Azure Event Gridu](../../event-grid/overview.md)
-- Postup: [Trasa událostí trezoru klíčů do runbooku automation (preview)](event-grid-tutorial.md).
-- Postup: [Příjem e-mailů při změně tajného klíče trezoru](event-grid-logicapps.md)
-- [Schéma událostí Azure Event Grid pro Azure Key Vault (preview)](../../event-grid/event-schema-key-vault.md)
-- [Azure Automation – přehled](../../automation/index.yml)
+- Postupy: [Směrování událostí Key Vault do sady Automation Runbook (Preview)](event-grid-tutorial.md).
+- Postupy: [příjem e-mailu, když se změní tajný kód trezoru klíčů](event-grid-logicapps.md)
+- [Azure Event Grid schéma událostí pro Azure Key Vault (Preview)](../../event-grid/event-schema-key-vault.md)
+- [Přehled Azure Automation](../../automation/index.yml)

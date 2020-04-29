@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat ze Sybase pomocí Azure Data Factory
-description: Zjistěte, jak kopírovat data ze Sybase do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z Sybase pomocí Azure Data Factory
+description: Naučte se kopírovat data z Sybase do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,62 +12,62 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416617"
 ---
-# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopírování dat ze Sybase pomocí Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+# <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopírování dat z Sybase pomocí Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-onprem-sybase-connector.md)
 > * [Aktuální verze](connector-sybase.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak použít aktivitu kopírování v Azure Data Factory ke kopírování dat z databáze Sybase. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z databáze Sybase. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor Sybase je podporován pro následující aktivity:
+Tento konektor Sybase se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data z databáze Sybase můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z databáze Sybase můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 Konkrétně tento konektor Sybase podporuje:
 
-- SAP Sybase SQL Anywhere (ASA) **verze 16 a vyšší**; IQ a ASE nejsou podporovány.
-- Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows.**
+- SAP Sybase SQL Anywhere (ASA) **verze 16 a vyšší**; SWEETIQ a pomocného mechanismu se nepodporují.
+- Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows** .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor Sybase, musíte:
+Pokud chcete použít tento konektor Sybase, musíte:
 
-- Nastavte runtime integrace s vlastním hostitelem. Podrobnosti najdete v článku [runtime integrace s vlastním hostitelem.](create-self-hosted-integration-runtime.md)
-- Nainstalujte [zprostředkovatele dat pro Sybase iAnywhere.Data.SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 nebo vyšší na integračním automatu Runtime.
+- Nastavte Integration Runtime pro místní hostování. Podrobnosti najdete v článku [Integration runtime](create-self-hosted-integration-runtime.md) v místním prostředí.
+- Na Integration Runtime počítač nainstalujte [poskytovatele dat pro Sybase iAnywhere. data. SQLAnywhere](https://go.microsoft.com/fwlink/?linkid=324846) 16 nebo vyšší.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Factory dat specifických pro konektor Sybase.
+Následující části obsahují podrobné informace o vlastnostech, které se používají k definování Data Factory entit specifických pro konektor Sybase.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu Sybase jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **Sybase** | Ano |
+| type | Vlastnost Type musí být nastavená na: **Sybase** . | Ano |
 | server | Název serveru Sybase. |Ano |
-| database | Název databáze Sybase. |Ano |
-| authenticationType | Typ ověřování používaný pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Basic**a **Windows**. |Ano |
+| database | Název databáze Sybase |Ano |
+| authenticationType | Typ ověřování, který se používá pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Basic**a **Windows**. |Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Prostředí Integrace Runtime,](concepts-integration-runtime.md) které se má použít k připojení k úložišti dat. Runtime integrace hostované samostatně je vyžadován, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -94,16 +94,16 @@ Pro propojenou službu Sybase jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou Sybase.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Sybase.
 
-Chcete-li kopírovat data ze sybase, jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z Sybase, jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena na: **SybaseTable.** | Ano |
-| tableName | Název tabulky v databázi Sybase. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **Sybase** . | Ano |
+| tableName | Název tabulky v databázi Sybase | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -120,22 +120,22 @@ Chcete-li kopírovat data ze sybase, jsou podporovány následující vlastnosti
 }
 ```
 
-Pokud jste `RelationalTable` používali zadaný datový soubor, je stále podporována tak, jak je, zatímco se doporučuje používat novou do budoucna.
+Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporovaná tak, jak je, a až budete chtít začít používat novinku dál.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem Sybase.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem Sybase.
 
 ### <a name="sybase-as-source"></a>Sybase jako zdroj
 
-Chcete-li kopírovat data ze služby Sybase, jsou v části **zdroje** aktivity kopírování podporovány následující vlastnosti:
+Chcete-li kopírovat data z Sybase, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: SybaseSource** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SybaseSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -167,19 +167,19 @@ Chcete-li kopírovat data ze služby Sybase, jsou v části **zdroje** aktivity 
 ]
 ```
 
-Pokud jste `RelationalSource` používali zadaný zdroj, je stále podporován jako-je, zatímco jste navrhl použít nový do budoucna.
+Pokud jste používali `RelationalSource` typový zdroj, je stále podporován tak, jak je, a když jste navrhli začít používat nový.
 
-## <a name="data-type-mapping-for-sybase"></a>Mapování datového typu pro Sybase
+## <a name="data-type-mapping-for-sybase"></a>Mapování datových typů pro Sybase
 
-Při kopírování dat ze Sybase se používají následující mapování z datových typů Sybase do dočasných datových typů Azure Data Factory. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování schématu a datových typů.](copy-activity-schema-and-type-mapping.md)
+Při kopírování dat z Sybase se z datových typů Sybase používá následující mapování pro Azure Data Factory dočasných datových typů. Informace o tom, jak aktivita kopírování mapuje zdrojové schéma a datový typ do jímky, najdete v tématu [mapování typů schématu a dat](copy-activity-schema-and-type-mapping.md) .
 
-Sybase podporuje typy T-SQL. Tabulku mapování z typů SQL na dočasné datové typy Azure Data Factory najdete v článku Azure SQL Database Connector – část [mapování datových typů.](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database)
+Sybase podporuje typy T-SQL. Tabulka mapování z typů SQL pro Azure Data Factory dočasných datových typů naleznete v části [Azure SQL Database Connector – mapování datových typů](connector-azure-sql-database.md#data-type-mapping-for-azure-sql-database) .
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

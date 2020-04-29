@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422279"
 ---
-Manipulace s komprimovaným zvukem je realizována pomocí [GStreameru](https://gstreamer.freedesktop.org). Z licenčních důvodů gstreamer binární soubory nejsou kompilovány a propojeny s sadou Speech SDK. Místo toho budete muset použít předem sestavené binární soubory pro Android. Informace o stažení předem vytvořených knihoven naleznete [v tématu instalace pro vývoj systému Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
+Zpracování komprimovaného zvuku je implementováno pomocí [GStreamer](https://gstreamer.freedesktop.org). Z důvodů licencování nejsou binární soubory GStreamer kompilovány a propojeny se sadou Speech SDK. Místo toho budete muset použít předem připravené binární soubory pro Android. Pokud si chcete stáhnout předem připravené knihovny, přečtěte si téma [instalace pro vývoj pro Android](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-`libgstreamer_android.so` je povinné. Ujistěte se, že vaše gstreamer pluginy jsou propojeny v `libgstreamer_android.so`.
+`libgstreamer_android.so` je povinné. Ujistěte se, že jsou v `libgstreamer_android.so`nástroji propojené vaše moduly plug-in GStreamer.
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Příklad `Android.mk` a `Application.mk` soubor jsou uvedeny níže. Vytvoření sdíleného objektu postupujte takto: `gstreamer` `libgstreamer_android.so`.
+Příklad `Android.mk` a `Application.mk` soubor jsou uvedeny níže. Pomocí těchto kroků vytvořte `gstreamer` sdílený objekt:.`libgstreamer_android.so`
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Můžete stavět `libgstreamer_android.so` pomocí následujícího příkazu na Ubuntu 16.04 nebo 18.04. Následující příkazové řádky byly testovány pouze pro [GStreamer Android verze 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) s [AndroidNDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+Pomocí následujícího příkazu `libgstreamer_android.so` můžete sestavit v Ubuntu 16,04 nebo 18,04. Následující příkazové řádky byly testovány pouze pro [GStreamer Android verze 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) s [Androidem NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Jakmile je sdílený`libgstreamer_android.so`objekt ( ) je sestaven vývojář aplikace potřebuje umístit sdílený objekt v aplikaci pro Android, tak, aby jej lze načíst řeči SDK.
+Po sestavení sdíleného objektu (`libgstreamer_android.so`) musí vývojář aplikace umístit sdílený objekt do aplikace pro Android, aby ho bylo možné načíst pomocí sady Speech SDK.

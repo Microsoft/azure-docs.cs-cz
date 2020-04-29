@@ -1,6 +1,6 @@
 ---
 title: Uložení přihlašovacích údajů v Azure Key Vault
-description: Zjistěte, jak ukládat přihlašovací údaje pro úložiště dat používaná v trezoru klíčů Azure, který může Azure Data Factory automaticky načítat za běhu.
+description: Naučte se ukládat přihlašovací údaje pro úložiště dat používaná v trezoru klíčů Azure, který Azure Data Factory může automaticky načíst za běhu.
 services: data-factory
 author: linda33wj
 manager: shwang
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: jingwang
 ms.openlocfilehash: 22ab4433d84db926733fd0b18035875e63322dda
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81451682"
 ---
-# <a name="store-credential-in-azure-key-vault"></a>Přihlašovací údaje pro ukládání v trezoru klíčů Azure
+# <a name="store-credential-in-azure-key-vault"></a>Ukládat přihlašovací údaje v Azure Key Vault
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Můžete uložit přihlašovací údaje pro úložiště dat a výpočetní prostředky v [trezoru klíčů Azure](../key-vault/general/overview.md). Azure Data Factory načte přihlašovací údaje při provádění aktivity, která používá úložiště dat nebo výpočetní prostředky.
+Přihlašovací údaje pro úložiště dat a výpočetní služby můžete ukládat [Azure Key Vault](../key-vault/general/overview.md). Azure Data Factory načte pověření při provádění aktivity, která používá úložiště nebo výpočetní prostředky.
 
-V současné době tuto funkci podporují všechny typy aktivit s výjimkou vlastní chod. Podrobnosti naleznete konkrétně v části "Vlastnosti propojené služby" v [jednotlivých tématech konektoru.](copy-activity-overview.md#supported-data-stores-and-formats)
+V současné době všechny typy aktivit kromě vlastní aktivity podporují tuto funkci. Pro konfiguraci konektoru se konkrétně podívejte na podrobnosti v části Vlastnosti propojené služby v [jednotlivých tématech](copy-activity-overview.md#supported-data-stores-and-formats) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato funkce závisí na identitě spravované z datové továrny. Zjistěte, jak funguje ze [spravované identity pro data factory](data-factory-service-identity.md) a ujistěte se, že vaše data factory mají přidružené.
+Tato funkce závisí na spravované identitě objektu pro vytváření dat. Naučte se, jak to funguje ze [spravované identity pro datovou továrnu](data-factory-service-identity.md) , a ujistěte se, že je k datové továrně přidružená jedna.
 
 ## <a name="steps"></a>Kroky
 
-Chcete-li odkazovat na přihlašovací údaje uložené v úložišti klíčů Azure, musíte:
+Pokud chcete odkazovat na přihlašovací údaje uložené v Azure Key Vault, musíte:
 
-1. **Načtěte identitu spravovanou z továrny** z kopírováním hodnoty "ID spravovaného objektu identity" generovaného spolu s vaší továrnou. Pokud používáte vývojové ui ADF, id spravovaného objektu identity se zobrazí v okně vytvoření propojené služby Azure Key Vault; můžete také načíst z webu Azure Portal, odkazovat na [načíst identitu spravovanou z datové továrny](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Udělte spravované identitě přístup k úložišti klíčů Azure.** V trezoru klíčů -> Zásady přístupu -> Přidat zásady přístupu, vyhledejte tuto spravovanou identitu a **udělte vám** v rozevíracím seznamu Získat oprávnění v tajném oprávnění. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
-3. **Vytvořte propojenou službu směřující na trezor klíčů Azure.** Odkazovat na [azure key vault propojené služby](#azure-key-vault-linked-service).
-4. **Vytvořte propojenou službu úložiště dat, ve které se odkazuje na odpovídající tajný klíč uložený v trezoru klíčů.** Viz [referenční tajný klíč uložený v trezoru klíčů](#reference-secret-stored-in-key-vault).
+1. **Načtěte spravovanou identitu Data Factory** zkopírováním hodnoty "ID objektu spravované identity" generovaného společně s vaší továrnou. Pokud použijete uživatelské rozhraní pro vytváření ADF, zobrazí se ID objektu spravované identity v okně pro vytvoření propojené služby Azure Key Vault. můžete ho také načíst z Azure Portal, přečtěte si téma [načtení spravované identity Data Factory](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Udělte spravované identitě přístup k vašemu Azure Key Vault.** V trezoru klíčů – > zásady přístupu – > přidat zásady přístupu, vyhledejte v této spravované identitě oprávnění **Get** v rozevíracím seznamu oprávnění pro přístup do tajných kódů. Umožňuje této určené továrně přístup k tajným klíčům v trezoru klíčů.
+3. **Vytvořte propojenou službu ukazující na Azure Key Vault.** Přečtěte si téma [Azure Key Vault propojená služba](#azure-key-vault-linked-service).
+4. **Vytvořte propojenou službu úložiště dat, ve které se odkazuje na odpovídající tajný kód uložený v trezoru klíčů.** Přečtěte si [odkaz na tajný kód uložený v trezoru klíčů](#reference-secret-stored-in-key-vault).
 
 ## <a name="azure-key-vault-linked-service"></a>Propojená služba Azure Key Vault
 
-Pro propojenou službu Azure Key Vault jsou podporovány následující vlastnosti:
+Pro Azure Key Vault propojenou službu jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **AzureKeyVault**. | Ano |
-| základní adresa Url | Zadejte adresu URL trezoru klíčů Azure. | Ano |
+| type | Vlastnost Type musí být nastavená na: **AzureKeyVault**. | Ano |
+| baseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
 
-**Použití vývojového ui:**
+**Používání uživatelského rozhraní pro vytváření:**
 
-Vyberte **Možnost Připojení** -> **propojených služeb** -> **Nová**. V nové propojené službě vyhledejte a vyberte "Azure Key Vault":
+Vyberte **připojení** -> **propojené služby** -> **nové**. V části Nová propojená služba vyhledejte a vyberte "Azure Key Vault":
 
-![Hledání trezoru klíčů Azure](media/store-credentials-in-key-vault/search-akv.png)
+![Hledat Azure Key Vault](media/store-credentials-in-key-vault/search-akv.png)
 
-Vyberte zřízený trezor klíčů Azure, kde jsou uloženy vaše přihlašovací údaje. Můžete provést **test připojení,** abyste se ujistili, že vaše připojení AKV je platné. 
+Vyberte zřízené Azure Key Vault, kde jsou uložené vaše přihlašovací údaje. Můžete provést **Test připojení** , abyste se ujistili, že je připojení integrace platné. 
 
 ![Konfigurace Azure Key Vaultu](media/store-credentials-in-key-vault/configure-akv.png)
 
@@ -73,25 +73,25 @@ Vyberte zřízený trezor klíčů Azure, kde jsou uloženy vaše přihlašovac�
 
 ## <a name="reference-secret-stored-in-key-vault"></a>Odkazování na tajný klíč uložený v trezoru klíčů
 
-Při konfiguraci pole v propojené službě odkazující na tajný klíč trezoru klíčů jsou podporovány následující vlastnosti:
+Následující vlastnosti jsou podporované při konfiguraci pole v propojené službě odkazujícího na tajný kód trezoru klíčů:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type pole musí být nastavena na: **AzureKeyVaultSecret**. | Ano |
-| tajný_název | Název tajného klíče v azure key vault. | Ano |
-| secretVersion | Verze tajného klíče v azure key vault.<br/>Pokud není zadán, vždy používá nejnovější verzi tajného klíče.<br/>Pokud je zadán, pak se drží dané verze.| Ne |
-| store | Odkazuje na propojené služby Azure Key Vault, které slouží k ukládání přihlašovacích údajů. | Ano |
+| type | Vlastnost Type pole musí být nastavená na: **AzureKeyVaultSecret**. | Ano |
+| secretName | Název tajného klíče v Azure Key Vault. | Ano |
+| Verzetajnéhoklíče | Verze tajného kódu v Azure Key Vault.<br/>Pokud tento parametr nezadáte, vždy používá nejnovější verzi tajného kódu.<br/>Je-li tento parametr zadán, bude se podávat do dané verze.| Ne |
+| store | Odkazuje na Azure Key Vault propojená služba, kterou použijete k uložení přihlašovacích údajů. | Ano |
 
-**Použití vývojového ui:**
+**Používání uživatelského rozhraní pro vytváření:**
 
-Vyberte **Azure Key Vault** pro tajná pole při vytváření připojení k úložišti dat nebo výpočetním prostředkům. Vyberte zřízenou službu Azure Key Vault Linked Service a zadejte **tajný název**. Volitelně můžete také poskytnout tajnou verzi. 
+Vyberte možnost **Azure Key Vault** pro tajná pole při vytváření připojení k úložišti dat nebo výpočetnímu prostředí. Vyberte zřízené Azure Key Vault propojenou službu a zadejte **název tajného**kódu. Volitelně můžete také zadat tajnou verzi. 
 
 >[!TIP]
->Pro konektory pomocí připojovacího řetězce v propojené službě, jako je SQL Server, úložiště objektů Blob atd., můžete buď uložit pouze tajné pole, například heslo v AKV, nebo uložit celý připojovací řetězec v AKV. Obě možnosti najdete v ui.
+>Pro konektory, které používají připojovací řetězec v propojené službě, jako je SQL Server, úložiště objektů BLOB atd., můžete zvolit, aby se ukládaly jenom tajné pole, třeba heslo v integrace, nebo uložit celý připojovací řetězec do integrace. V uživatelském rozhraní můžete najít obě možnosti.
 
-![Konfigurace tajného klíče Azure Key Vault](media/store-credentials-in-key-vault/configure-akv-secret.png)
+![Konfigurace Azure Key Vault tajného klíče](media/store-credentials-in-key-vault/configure-akv-secret.png)
 
-**Příklad JSON: (viz část "heslo")**
+**Příklad JSON: (viz oddíl heslo)**
 
 ```json
 {
@@ -117,4 +117,4 @@ Vyberte **Azure Key Vault** pro tajná pole při vytváření připojení k úlo
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

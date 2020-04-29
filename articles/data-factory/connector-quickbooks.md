@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z QuickBooks Online pomocí Azure Data Factory (Preview)
-description: Zjistěte, jak kopírovat data z QuickBooks Online do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z QuickBooks online pomocí Azure Data Factory (Preview)
+description: Naučte se, jak kopírovat data z QuickBooks online na podporovaná úložiště dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,55 +13,55 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: e2c9da9c1a37b087a31d1910094f51a39288c192
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416712"
 ---
-# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks Online pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Kopírování dat z QuickBooks online pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí kopírovat aktivitu v Azure Data Factory ke kopírování dat z QuickBooks Online. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v nástroji Azure Data Factory kopírovat data z QuickBooks online. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Preview. Můžete to vyzkoušet a dát nám zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
+> Tento konektor je momentálně ve verzi Preview. Můžete si to vyzkoušet a sdělit nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor QuickBooks je podporován pro následující činnosti:
+Tento konektor QuickBooks se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data z aplikace QuickBooks Online můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z QuickBooks online můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, proto není nutné ručně instalovat žádný ovladač pomocí tohoto konektoru.
+Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
 
-V současné době tento konektor podporuje pouze 1.0a, což znamená, že musíte mít vývojářský účet s aplikacemi vytvořenými před červencem 17, 2017.
+Tento konektor aktuálně podporuje pouze 1.0 a, což znamená, že potřebujete mít vývojářský účet s aplikacemi vytvořenými před 17. července 2017.
 
 ## <a name="getting-started"></a>Začínáme
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Data Factory specifických pro konektor QuickBooks.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro konektor aplikace QuickBooks.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena na: **QuickBooks** | Ano |
-| endpoint | Koncový bod serveru QuickBooks Online. (tedy quickbooks.api.intuit.com)  | Ano |
-| společnostId | ID společnosti QuickBooks k autorizaci. Informace o tom, jak id společnosti najít, najdete v tématu [Jak najdu id společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
-| consumerKey | Spotřebitelský klíč pro ověřování OAuth 1.0. | Ano |
-| consumerSecret | Tajný klíč příjemce pro ověřování OAuth 1.0. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
-| accessToken | Přístupový token pro ověřování OAuth 1.0. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
-| accessTokenSecret | Tajný klíč přístupového tokenu pro ověřování OAuth 1.0. Označte toto pole jako SecureString bezpečně ukládat v datové továrně nebo [odkazovat na tajný klíč uložený v trezoru klíčů Azure](store-credentials-in-key-vault.md). | Ano |
-| použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| type | Vlastnost Type musí být nastavená na: **QuickBooks** . | Ano |
+| endpoint | Koncový bod serveru QuickBooks online. (tj. quickbooks.api.intuit.com)  | Ano |
+| companyId | ID společnosti společnosti QuickBooks, která má být autorizována. Informace o tom, jak najít ID společnosti, najdete v tématu [návody najít moje ID společnosti?](https://quickbooks.intuit.com/community/Getting-Started/How-do-I-find-my-Company-ID/m-p/185551). | Ano |
+| consumerKey | Klíč příjemce pro ověřování OAuth 1,0. | Ano |
+| consumerSecret | Tajný klíč příjemce pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| accessToken | Přístupový token pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| accessTokenSecret | Tajný klíč přístupového tokenu pro ověřování OAuth 1,0. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -92,16 +92,16 @@ Pro propojenou službu QuickBooks jsou podporovány následující vlastnosti:
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou QuickBooks.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných sadou QuickBooks DataSet.
 
-Chcete-li kopírovat data z aplikace QuickBooks Online, nastavte vlastnost type datové sady na **QuickBooksObject**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z QuickBooks online, nastavte vlastnost Type datové sady na **QuickBooksObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena na: **QuickBooksObject.** | Ano |
-| tableName | Název tabulky. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **QuickBooksObject** . | Ano |
+| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -120,18 +120,18 @@ Chcete-li kopírovat data z aplikace QuickBooks Online, nastavte vlastnost type 
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem QuickBooks.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem aplikace QuickBooks.
 
-### <a name="quickbooks-as-source"></a>QuickBooks jako zdroj
+### <a name="quickbooks-as-source"></a>QuickBooks as source
 
-Chcete-li kopírovat data z aplikace QuickBooks Online, nastavte typ zdroje v aktivitě kopírování na **QuickBooksSource**. V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z QuickBooks online, nastavte typ zdroje v aktivitě kopírování na **QuickBooksSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivity kopírování musí být nastavena **na: QuickBooksSource** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **QuickBooksSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -162,14 +162,14 @@ Chcete-li kopírovat data z aplikace QuickBooks Online, nastavte typ zdroje v ak
     }
 ]
 ```
-## <a name="copy-data-from-quickbooks-desktop"></a>Kopírování dat z aplikace Quickbooks Desktop
+## <a name="copy-data-from-quickbooks-desktop"></a>Kopírování dat z aplikace QuickBooks Desktop
 
-Aktivita kopírování v Azure Data Factory nemůže kopírovat data přímo z quickbooks desktopu. Chcete-li zkopírovat data z aplikace Quickbooks Desktop, exportujte data Quickbooks do souboru csv (s hodnotami oddělenými čárkami) a pak soubor nahrajte do úložiště objektů Blob Azure. Odtud můžete použít Data Factory zkopírovat data do jímky podle vašeho výběru.
+Aktivita kopírování v Azure Data Factory nemůže kopírovat data přímo z aplikace QuickBooks Desktop. Pokud chcete kopírovat data z aplikace QuickBooks Desktop, exportujte data aplikace QuickBooks do souboru s hodnotami oddělenými čárkou (CSV) a pak tento soubor nahrajte do služby Azure Blob Storage. Odtud můžete použít Data Factory ke zkopírování dat do jímky dle vašeho výběru.
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

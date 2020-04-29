@@ -1,6 +1,6 @@
 ---
 title: Použití metadat souboru v dotazech
-description: Funkce OPENROWSET poskytuje informace o souborech a cestě o každém souboru použitém v dotazu k filtrování nebo analýze dat na základě názvu souboru a/nebo cesty ke složce.
+description: Funkce OPENROWSET poskytuje informace o souboru a cestě ke každému souboru použitému v dotazu k filtrování nebo analýze dat na základě názvu souboru nebo cesty ke složce.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,34 +10,34 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 40a8e2c153ec3d8e7b4007340b9433a38f9ccc89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431550"
 ---
 # <a name="using-file-metadata-in-queries"></a>Použití metadat souboru v dotazech
 
-Služba dotazu na vyžádání může adresovat více souborů a složek, jak je popsáno ve [složkách dotazu a v](query-folders-multiple-csv-files.md) článku více souborů. V tomto článku se dozvíte, jak používat informace o metadatech o názvech souborů a složek v dotazech.
+Dotazovací služba SQL na vyžádání může adresovat více souborů a složek, jak je popsáno v článku [složky dotazů a více souborů](query-folders-multiple-csv-files.md) . V tomto článku se dozvíte, jak v dotazech používat informace o metadatech souborů a složek.
 
-Někdy možná budete potřebovat vědět, který soubor nebo zdroj složky koreluje s určitým řádkem ve výsledné sadě.
+V některých případech možná budete muset zjistit, který zdroj souborů nebo složek je v sadě výsledků v souvislosti s konkrétním řádkem.
 
-Můžete použít `filepath` funkci `filename` a vrátit názvy souborů a/nebo cestu v sadě výsledků. Nebo je můžete použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány ve [funkci název souboru](develop-storage-files-overview.md#filename-function) sekce syntaxe a [funkci Filepath](develop-storage-files-overview.md#filepath-function). Níže najdete krátké popisy podél vzorků.
+Pomocí funkce `filepath` a `filename` můžete vracet názvy souborů nebo cestu v sadě výsledků dotazu. Můžete je také použít k filtrování dat na základě názvu souboru nebo cesty ke složce. Tyto funkce jsou popsány v oddílu syntaxe [filename](develop-storage-files-overview.md#filename-function) a funkce [FilePath](develop-storage-files-overview.md#filepath-function). Níže najdete krátké popisy v rámci ukázek.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Před přečtením zbývající části tohoto článku si přečtěte následující předpoklady:
+Než si přečtete zbytek tohoto článku, přečtěte si následující požadavky:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
 ## <a name="functions"></a>Functions
 
-### <a name="filename"></a>Název_souboru
+### <a name="filename"></a>Bitmap
 
 Tato funkce vrátí název souboru, ze kterého řádek pochází.
 
-Následující ukázka přečte datové soubory NYC Yellow Taxi za poslední tři měsíce roku 2017 a vrátí počet jízd na soubor. Openrowset část dotazu určuje, které soubory budou číst.
+Následující příklad přečte NYC žluté taxislužby datové soubory za poslední tři měsíce 2017 a vrátí počet jezdí na soubor. Část OPENROWSET dotazu určuje, které soubory budou čteny.
 
 ```sql
 SELECT
@@ -52,7 +52,7 @@ ORDER BY
     [filename];
 ```
 
-Následující příklad ukazuje, jak *filename()* lze použít v klauzuli WHERE filtrovat soubory ke čtení. Přistupuje k celé složce v části OPENROWSET dotazu a filtruje soubory v klauzuli WHERE.
+Následující příklad ukazuje, jak *filename ()* lze použít v klauzuli WHERE pro filtrování souborů, které mají být čteny. Přistupuje k celé složce v části OPENROWSET dotazu a filtruje soubory v klauzuli WHERE.
 
 Vaše výsledky budou stejné jako předchozí příklad.
 
@@ -71,14 +71,14 @@ ORDER BY
     [filename];
 ```
 
-### <a name="filepath"></a>Filepath
+### <a name="filepath"></a>FilePath
 
-Funkce Cesta souboru vrátí úplnou nebo částečnou cestu:
+Funkce FilePath vrátí úplnou nebo částečnou cestu:
 
 - Při volání bez parametru vrátí úplnou cestu k souboru, ze které řádek pochází.
-- Při volání s parametrem vrátí část cesty, která odpovídá zástupný znak na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která odpovídá prvnímu zástupný znak.
+- Při volání s parametrem vrátí část cesty, která odpovídá zástupnému znaku na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která se shoduje s prvním zástupným znakem.
 
-Následující ukázka čte datové soubory NYC Yellow Taxi za poslední tři měsíce roku 2017. Vrátí počet jízd na cestu k souboru. Openrowset část dotazu určuje, které soubory budou číst.
+Následující ukázka přečte NYC žluté taxislužby datové soubory za poslední tři měsíce 2017. Vrátí počet jezdí na cestu k souboru. Část OPENROWSET dotazu určuje, které soubory budou čteny.
 
 ```sql
 SELECT
@@ -114,9 +114,9 @@ ORDER BY
     filepath;
 ```
 
-Následující příklad ukazuje, jak *filepath()* lze použít v klauzuli WHERE filtrovat soubory ke čtení.
+Následující příklad ukazuje, jak lze použít *FilePath ()* v klauzuli WHERE pro filtrování souborů, které mají být čteny.
 
-Můžete použít zástupné znaky v openrowset části dotazu a filtrovat soubory v where klauzule. Vaše výsledky budou stejné jako předchozí příklad.
+Můžete použít zástupné znaky v části OPENROWSET dotazu a filtrovat soubory v klauzuli WHERE. Vaše výsledky budou stejné jako předchozí příklad.
 
 ```sql
 SELECT
@@ -161,4 +161,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Další kroky
 
-V dalším článku se dozvíte, jak se dotaz ovat [parketové soubory](query-parquet-files.md).
+V dalším článku se dozvíte, jak [zadávat dotazy na soubory Parquet](query-parquet-files.md).

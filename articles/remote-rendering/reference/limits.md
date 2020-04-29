@@ -6,47 +6,47 @@ ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: b6e501cdc1d5091a27d86406c6919587bedb261a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417687"
 ---
 # <a name="limitations"></a>Omezení
 
-Řada funkcí má velikost, počet nebo jiná omezení.
+Množství funkcí má velikost, počet nebo jiná omezení.
 
-## <a name="azure-frontend"></a>Azure Front-end
+## <a name="azure-frontend"></a>Azure front-end
 
 * Celkový počet instancí AzureFrontend na proces: 16.
 * Celkový počet instancí AzureSession na AzureFrontend: 16.
 
 ## <a name="objects"></a>Objekty
 
-* Celkový počet povolených objektů jednoho typu (entita, komponenta CutPlaneComponent atd.): 16 777 215.
-* Celkový přípustný počet aktivních rovin řezu: 8.
+* Celkem přípustných objektů jednoho typu (entita, CutPlaneComponent atd.): 16 777 215.
+* Celkový povolený počet aktivních vyjmutých ploch: 8.
 
 ## <a name="materials"></a>Materiály
 
-* Celkový přípustný počet povolených materiálů v aktivu: 65 535.
+* Celkový počet povolených materiálů v prostředku: 65 535.
 
-## <a name="overall-number-of-polygons"></a>Celkový počet mnohonožek
+## <a name="overall-number-of-polygons"></a>Celkový počet mnohoúhelníků
 
-Povolený počet mnohomocnic pro všechny načtené modely závisí na velikosti virtuálního počítače, jak je předán do [rozhraní REST API pro správu relací](../how-tos/session-rest-api.md#create-a-session):
+Povolený počet mnohoúhelníků pro všechny načtené modely závisí na velikosti virtuálního počítače, který je předaný do [REST API správy relace](../how-tos/session-rest-api.md#create-a-session):
 
-| Velikost virtuálního počítače | Maximální počet mnohonožek |
+| Velikost virtuálního počítače | Maximální počet mnohoúhelníků |
 |:--------|:------------------|
-|Standardní| 20 milionů |
-|Premium| bez omezení |
+|standardní| 20 000 000 |
+|nárok| bez omezení |
 
 
 ## <a name="platform-limitations"></a>Omezení platformy
 
 **Stolní počítač s Windows 10**
 
-* "Pc Standalone" nasazení z Unity není podporována. Místo toho použijte UPW.
-* UWP/x86 je jedinou podporovanou platformou UPW. UWP/x64 není podporován.
+* Nasazení samostatného počítače z Unity se nepodporuje. Místo toho použijte UWP.
+* UWP/x86 je jediná podporovaná platforma UWP. UWP/x64 se nepodporuje.
 
-**Hololens 2**
+**HoloLens 2**
 
-* Funkce [vykreslení z PV kamery](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) není podporována.
+* Funkce [vykreslování z PV fotoaparátu](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers#render-from-the-pv-camera-opt-in) není podporována.

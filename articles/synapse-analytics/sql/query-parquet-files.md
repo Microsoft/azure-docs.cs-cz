@@ -1,6 +1,6 @@
 ---
-title: Dotaz na parketové soubory pomocí SQL na vyžádání (náhled)
-description: V tomto článku se dozvíte, jak dotaz ovat parketové soubory pomocí SQL na vyžádání (náhled).
+title: Dotazování souborů Parquet pomocí SQL na vyžádání (Preview)
+description: V tomto článku se naučíte, jak zadávat dotazy na soubory Parquet pomocí SQL na vyžádání (Preview).
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,50 +10,50 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431693"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotaz na parketové soubory pomocí SQL na vyžádání (preview) v Azure Synapse Analytics
+# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazování souborů Parquet pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
-V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (náhled), který bude číst parketové soubory.
+V tomto článku se dozvíte, jak napsat dotaz pomocí SQL na vyžádání (Preview), který načte soubory Parquet.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než si přečtete zbytek tohoto článku, přečtěte si následující články:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
 ## <a name="dataset"></a>Datová sada
 
-Parquet files můžete dotazovat stejným způsobem, jakým čtete soubory CSV. Jediným rozdílem je, že parametr FILEFORMAT by měl být nastaven na PARKETy. Příklady v tomto článku ukazují specifika čtení parketových souborů.
+Soubory Parquet můžete dotazovat stejným způsobem jako soubory CSV. Jediným rozdílem je, že parametr formátu souboru by měl být nastaven na PARQUET. Příklady v tomto článku znázorňují konkrétní soubory pro čtení Parquet.
 
 > [!NOTE]
-> Není nutné zadat sloupce v klauzuli OPENROWSET WITH při čtení parketových souborů. SQL on-demand bude využívat metadata v souboru parket a vázat sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. SQL na vyžádání bude používat metadata v souboru Parquet a sváže sloupce podle názvu.
 
-Budete používat složku *parkety / taxi* pro ukázkové dotazy. Obsahuje nyc taxi - yellow taxi trip records data z července 2016. do června 2018.
+Pro ukázkové dotazy použijete složku *Parquet/taxislužby* . Obsahuje NYC taxislužby – žlutá Taxislužbyová data záznamů záznamů od července 2016. do června 2018.
 
-Data jsou rozdělena podle roku a měsíce a struktura složek je následující:
+Data jsou rozdělená podle roku a měsíce a struktura složek je následující:
 
-- rok =2016
-  - měsíc=6
+- rok = 2016
+  - měsíc = 6
   - ...
-  - měsíc=12
-- rok =2017
-  - měsíc=1
+  - měsíc = 12
+- rok = 2017
+  - měsíc = 1
   - ...
-  - měsíc=12
-- rok =2018
-  - měsíc=1
+  - měsíc = 12
+- Year = 2018
+  - měsíc = 1
   - ...
-  - měsíc=6
+  - měsíc = 6
 
-## <a name="query-set-of-parquet-files"></a>Sada dotazů na parketové soubory
+## <a name="query-set-of-parquet-files"></a>Dotaz sady souborů Parquet
 
-Při dotazování na parketové soubory můžete zadat pouze sloupce, které vás zajímají.
+Při dotazování souborů Parquet můžete zadat pouze sloupce s oznámením.
 
 ```sql
 SELECT
@@ -76,14 +76,14 @@ ORDER BY
     passenger_count;
 ```
 
-## <a name="automatic-schema-inference"></a>Odvození automatického schématu
+## <a name="automatic-schema-inference"></a>Automatické odvození schématu
 
-Při čtení parketových souborů není nutné používat klauzuli OPENROWSET WITH. Názvy sloupců a datové typy se automaticky čtou z parketových souborů.
+Při čtení souborů Parquet není nutné používat klauzuli OPENROWSET WITH. Názvy sloupců a datové typy se automaticky čtou ze souborů Parquet.
 
-Následující ukázka ukazuje možnosti odvození automatického schématu pro soubory parket. Vrátí počet řádků v září 2017 bez zadání schématu.
+Následující ukázka ukazuje možnosti automatického odvození schématu pro soubory Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Nemusíte zadávat sloupce v klauzuli OPENROWSET WITH při čtení parketových souborů. V takovém případě sql on-demand dotazová služba bude využívat metadata v souboru parket a vázat sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce v klauzuli OPENROWSET WITH. V takovém případě dotazovací služba SQL na vyžádání bude používat metadata v souboru Parquet a sváže sloupce podle názvu.
 
 ```sql
 SELECT
@@ -95,12 +95,12 @@ FROM
     ) AS nyc;
 ```
 
-### <a name="query-partitioned-data"></a>Dotaz rozdělená data
+### <a name="query-partitioned-data"></a>Dotazování na dělená data
 
-Sada dat uvedená v této ukázce je rozdělena (rozdělena na oddíly) do samostatných podsložek. Pomocí funkce Filepath můžete cílit na určité oddíly. Tento příklad zobrazuje částky tarifu podle roku, měsíce a payment_type pro první tři měsíce roku 2017.
+Datová sada uvedená v této ukázce je rozdělená (rozdělená do oddílů) na samostatné podsložky. Pomocí funkce FilePath můžete cílit na konkrétní oddíly. V tomto příkladu se zobrazuje množství tarifů podle roku, měsíce a payment_type v prvních třech měsících od 2017.
 
 > [!NOTE]
-> Dotaz SQL na vyžádání je kompatibilní s hive/hadoop schéma dělení.
+> Dotaz SQL na vyžádání je kompatibilní se schématem dělení na oddíly/Hadoop.
 
 ```sql
 SELECT
@@ -129,44 +129,44 @@ ORDER BY
 
 ## <a name="type-mapping"></a>Mapování typů
 
-Parketové soubory obsahují popisy typů pro každý sloupec. Následující tabulka popisuje, jak jsou typy parket mapovány na nativní typy SQL.
+Soubory Parquet obsahují popisy typů pro každý sloupec. Následující tabulka popisuje, jak jsou typy Parquet mapovány na nativní typy SQL.
 
-| Typ parket | Logický typ parket (anotace) | Datový typ SQL |
+| Typ Parquet | Logický typ Parquet (anotace) | Datový typ SQL |
 | --- | --- | --- |
-| Boolean | | bitové |
-| BINÁRNÍ / BYTE_ARRAY | | Varbinary |
-| Dvojité | | float |
-| Float | | reálná |
-| INT32 | | int |
+| DATOVÉHO | | bitové |
+| BINÁRNÍ/BYTE_ARRAY | | varbinary |
+| KLEPAT | | float |
+| Plovák | | real |
+| UVEDENA | | int |
 | INT64 | | bigint |
-| 96. | |datetime2 |
+| INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |binární |
-| Binární |UTF8 |varchar \*(UTF8 kolace) |
-| Binární |Řetězec |varchar \*(UTF8 kolace) |
-| Binární |Výčtu|varchar \*(UTF8 kolace) |
-| Binární |Uuid |uniqueidentifier |
-| Binární |Desetinných |decimal |
-| Binární |JSON |varchar(max) \*(Řazení UTF8) |
-| Binární |BSON |Varbinary(max) |
-| FIXED_LEN_BYTE_ARRAY |Desetinných |decimal |
-| BYTE_ARRAY |Interval |varchar(max), serializovaný do standardizovaného formátu |
-| INT32 |INT(8, pravda) |smallint |
-| INT32 |INT(16, pravda) |smallint |
-| INT32 |INT(32, pravda) |int |
-| INT32 |INT(8, nepravdivé) |tinyint |
-| INT32 |INT(16, nepravdivé) |int |
-| INT32 |INT(32, nepravdivé) |bigint |
-| INT32 |DATE (Datum) |date |
-| INT32 |Desetinných |decimal |
-| INT32 |ČAS (MILLIS)|time |
-| INT64 |INT(64, pravda) |bigint |
-| INT64 |INT(64, nepravdivé ) |desetinné místo (20,0) |
-| INT64 |Desetinných |decimal |
-| INT64 |ČAS (MICROS / NANOS) |time |
-|INT64 |TIMESTAMP (MILLIS / MICROS / NANOS) |datetime2 |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |Seznamu |varchar(max), serializovaný do JSON |
-|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|Mapu|varchar(max), serializovaný do JSON |
+| TVARU |UTF |varchar \*(řazení UTF8) |
+| TVARU |ŘETEZCE |varchar \*(řazení UTF8) |
+| TVARU |VYTVÁŘENÍ|varchar \*(řazení UTF8) |
+| TVARU |IDENTIFIKÁTOR |uniqueidentifier |
+| TVARU |NOTACI |decimal |
+| TVARU |JSON |varchar (max) \*(kolace UTF8) |
+| TVARU |BSON |varbinary (max) |
+| FIXED_LEN_BYTE_ARRAY |NOTACI |decimal |
+| BYTE_ARRAY |DOBA |varchar (max), serializováno do standardizovaného formátu |
+| UVEDENA |INT (8, true) |smallint |
+| UVEDENA |INT (16, true) |smallint |
+| UVEDENA |INT (32, true) |int |
+| UVEDENA |INT (8, false) |tinyint |
+| UVEDENA |INT (16, false) |int |
+| UVEDENA |INT (32, false) |bigint |
+| UVEDENA |DATE (Datum) |date |
+| UVEDENA |NOTACI |decimal |
+| UVEDENA |ČAS (LISOVNY)|time |
+| INT64 |INT (64; true) |bigint |
+| INT64 |INT (64, false) |desetinné číslo (20, 0) |
+| INT64 |NOTACI |decimal |
+| INT64 |ČAS (MIKROČASU A NANO) |time |
+|INT64 |ČASOVÉ RAZÍTKO (LISOVNY//NANO) |datetime2 |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |SEZNAMU |varchar (max), serializováno do formátu JSON |
+|[Komplexní typ](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAPY|varchar (max), serializováno do formátu JSON |
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k dalšímu článku a dozvíte se, jak [zadávat vnořené typy parket](query-parquet-nested-types.md).
+Přejděte k dalšímu článku a Naučte se, jak [zadávat dotazy na vnořené typy Parquet](query-parquet-nested-types.md).

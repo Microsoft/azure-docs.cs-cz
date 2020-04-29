@@ -7,30 +7,30 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 1773e22a54cc86e7736c91e4be757caa0250cbf7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422364"
 ---
-### <a name="speech-to-text-or-custom-speech-to-text"></a>Převod řeči na text nebo vlastní převod řeči na text
+### <a name="speech-to-text-or-custom-speech-to-text"></a>Převod řeči na text nebo Custom Speech na text
 
-Kontejner poskytuje rozhraní API koncového bodu dotazu založené na websocket, které jsou přístupné prostřednictvím [sady Speech SDK](../index.yml). Ve výchozím nastavení používá sada Speech SDK služby online řeči. Chcete-li použít kontejner, je třeba změnit metodu inicializace.
+Kontejner poskytuje rozhraní API koncových bodů dotazů založených na protokolu WebSocket, která jsou k dispozici prostřednictvím [sady Speech SDK](../index.yml). Sada Speech SDK standardně používá online hlasové služby. Chcete-li použít kontejner, je nutné změnit inicializační metodu.
 
 > [!TIP]
-> Při použití sady Speech SDK s kontejnery není nutné zadat klíč předplatného prostředku Azure Speech [nebo token nosiče ověřování](../rest-speech-to-text.md#authentication).
+> Pokud používáte sadu Speech SDK s kontejnery, nemusíte zadávat [klíč předplatného prostředku Azure Speech nebo ověřovací token pro ověřování](../rest-speech-to-text.md#authentication).
 
 Podívejte se na následující příklad:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
-Změna z použití tohoto volání inicializace Azure cloudu:
+Změnit z použití tohoto volání inicializace Azure-Cloud:
 
 ```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-k tomuto volání pomocí [hostitele](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kontejneru :
+do tohoto volání pomocí [hostitele](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)kontejneru:
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -38,14 +38,14 @@ var config = SpeechConfig.FromHost(
 ```
 # <a name="python"></a>[Python](#tab/python)
 
-Změna z použití tohoto volání inicializace Azure cloudu:
+Změnit z použití tohoto volání inicializace Azure-Cloud:
 
 ```python
 speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-k tomuto volání pomocí [hostitele](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kontejneru :
+do tohoto volání pomocí [hostitele](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)kontejneru:
 
 ```python
 speech_config = speechsdk.SpeechConfig(

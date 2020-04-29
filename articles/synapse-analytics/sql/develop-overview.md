@@ -1,6 +1,6 @@
 ---
-title: Zdroje informací pro vývoj funkcí Synapse SQL
-description: Vývojové koncepty, rozhodnutí o návrhu, doporučení a techniky kódování pro Synapse SQL.
+title: Prostředky pro vývoj funkcí SQL synapse
+description: Koncepce vývoje, rozhodování o návrhu, doporučení a techniky kódování pro synapse SQL.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: ba6ceec3064c5c876ca899ab58881e23913b9701
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429015"
 ---
-# <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Návrh rozhodnutí a techniky kódování pro funkce Synapse SQL v Azure Synapse Analytics
-V tomto článku najdete seznam prostředků pro sql fondu a SQL na vyžádání (preview) funkce Synapse SQL. Doporučené články jsou rozděleny do dvou částí: Klíčová rozhodnutí o návrhu a vývojové a kódovací techniky.
+# <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Rozhodnutí o návrhu a techniky kódování pro funkce synapse SQL ve službě Azure synapse Analytics
+V tomto článku najdete seznam prostředků pro funkce SQL Pool a SQL na vyžádání (Preview) služby synapse SQL. Doporučené články jsou rozdělené do dvou částí: klíčová rozhodnutí pro návrh a techniky vývoje a kódování.
 
-Cílem těchto článků je pomoci vám vyvinout optimální technický přístup k komponentám Synapse SQL v rámci Synapse Analytics.
+Cílem těchto článků je pomáhat při vývoji optimálního technického přístupu pro komponenty synapse SQL v rámci synapse Analytics.
 
-## <a name="key-design-decisions"></a>Klíčová rozhodnutí o návrhu
-Níže uvedené články zdůrazňují koncepty a rozhodnutí o návrhu pro vývoj Synapse SQL:
+## <a name="key-design-decisions"></a>Klíčová rozhodnutí pro návrh
+Články níže zvýrazňují koncepty a rozhodnutí o návrhu pro synapse vývoj SQL:
 
 |                                                          |   Fond SQL   | SQL na vyžádání |
 | -----------------------------------------------------    | ---- | ---- |
 | [Připojení](connect-overview.md)                    | Ano | Ano |
-| [Třídy zdrojů a souběžnost](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ano    | Ne |
+| [Třídy prostředků a souběžnost](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ano    | Ne |
 | [Transakce](develop-transactions.md)              | Ano | Ne |
 | [Schémata definovaná uživatelem](develop-user-defined-schemas.md) | Ano | Ano |
 | [Distribuce tabulky](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | Ano | Ne |
@@ -42,7 +42,7 @@ Níže uvedené články zdůrazňují koncepty a rozhodnutí o návrhu pro výv
 
 ## <a name="recommendations"></a>Doporučení
 
-Níže najdete základní články, které zdůrazňují specifické techniky kódování, tipy a doporučení pro vývoj:
+Níže najdete základní články, které zdůrazňují konkrétní techniky kódování, tipy a doporučení pro vývoj:
 
 |                                            | Fond SQL | SQL na vyžádání |
 | ------------------------------------------ | ------------------ | ----------------------- |
@@ -56,5 +56,5 @@ Níže najdete základní články, které zdůrazňují specifické techniky k�
 | [Přiřazení proměnné](develop-variable-assignment.md) | Ano                | Ano                     |
 
 ## <a name="next-steps"></a>Další kroky
-Další referenční informace naleznete v [tématu sql pool T-SQL příkazy](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Další referenční informace najdete v tématu [SQL Pool T-SQL Statements](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 

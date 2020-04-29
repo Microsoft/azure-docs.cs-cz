@@ -1,6 +1,6 @@
 ---
-title: Až do aktivity v Azure Data Factory
-description: Until aktivita provede sadu aktivit ve smyčce, dokud se podmínka přidružená k aktivitě nevyhodnotí jako true nebo vynese časový rozsah.
+title: Dokud aktivita v Azure Data Factory
+description: Aktivita dokud aktivita ve smyčce provede sadu aktivit, dokud se podmínka spojená s aktivitou nevyhodnotí jako true nebo dokud nevyprší časový limit.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417942"
 ---
-# <a name="until-activity-in-azure-data-factory"></a>Až do aktivity v Azure Data Factory
+# <a name="until-activity-in-azure-data-factory"></a>Dokud aktivita v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
@@ -55,19 +55,19 @@ Aktivita Until funguje stejně jako smyčka Do-Until v programovacích jazycích
 
 Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity. `Until` | Řetězec | Ano
-type | Musí být nastavena na **Do**. | Řetězec | Ano
-výraz | Výraz, který musí být vyhodnocen jako pravdivý nebo nepravdivý | Výraz.  | Ano
-timeout | Do-until smyčky časový čas po zadaném čase zde. | Řetězec. `d.hh:mm:ss`(nebo) `hh:mm:ss`. Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
-Aktivity | Sada aktivit, které jsou spouštěny, dokud výraz nevyhodnotí `true`. | Pole aktivit. |  Ano
+jméno | Název `Until` aktivity | Řetězec | Ano
+type | Musí být nastavené **na do**. | Řetězec | Ano
+výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Vyjádření.  | Ano
+timeout | Vyprší časový interval smyčky po zadaném čase. | Řetězec. `d.hh:mm:ss`ani `hh:mm:ss`. Aktuální hodnota činí 7 dní. Maximální hodnota je: 90 dní. | Ne
+Aktivity | Sada aktivit, které jsou provedeny, dokud je výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
 
 ## <a name="example-1"></a>Příklad 1
 
 > [!NOTE]
-> Tato část obsahuje definice JSON a ukázkové příkazy prostředí PowerShell pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření kanálu Datové továrny pomocí definic Azure PowerShellu a JSON najdete [v kurzu: vytvoření datové továrny pomocí Azure PowerShellu](quickstart-create-data-factory-powershell.md).
+> Tato část poskytuje definice JSON a ukázkové příkazy PowerShellu pro spuštění kanálu. Návod s podrobnými pokyny k vytvoření Data Factory kanálu pomocí definic Azure PowerShell a JSON najdete v tématu [kurz: vytvoření datové továrny pomocí Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-until-activity"></a>Kanál s aktivitou Do
-V tomto příkladu má kanál dvě aktivity: **Until** and **Wait**. Wait aktivita čeká na zadané časové období před spuštěním webové aktivity ve smyčce. Další informace o výrazech a funkcích v Datové matné lichvě najdete v [tématu Jazyk a funkce výrazů](control-flow-expression-language-functions.md). 
+### <a name="pipeline-with-until-activity"></a>Kanál s až do aktivity
+V tomto příkladu má kanál dvě aktivity: **do** a **Wait**. Aktivita čekání počká po určenou dobu před spuštěním aktivity webu ve smyčce. Další informace o výrazech a funkcích v Data Factory naleznete v tématu [Expression Language and Functions](control-flow-expression-language-functions.md). 
 
 ```json
 {
@@ -118,9 +118,9 @@ V tomto příkladu má kanál dvě aktivity: **Until** and **Wait**. Wait aktivi
 ```
 
 ## <a name="example-2"></a>Příklad 2 
-Kanál v této ukázce zkopíruje data ze vstupní složky do výstupní složky ve smyčce. Smyčka se ukončí, když je hodnota parametru repeat nastavena na hodnotu false nebo po jedné minutě dojde k jeho výpadku.   
+Kanál v této ukázce kopíruje data ze vstupní složky do výstupní složky ve smyčce. Smyčka končí, když je hodnota parametru opakování nastavena na hodnotu false nebo když uplyne časový limit po jedné minutě.   
 
-### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s aktivitou Until (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-until-activity-adfv2quickstartpipelinejson"></a>Kanál s až do aktivity (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -193,7 +193,7 @@ Kanál v této ukázce zkopíruje data ze vstupní složky do výstupní složky
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Propojená služba Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -207,8 +207,8 @@ Kanál v této ukázce zkopíruje data ze vstupní složky do výstupní složky
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada objektů blob Azure (BlobDataset.json)
-Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outputPath2** kanálu. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Parametrizovaná datová sada Azure Blob (BlobDataset. JSON)
+Kanál nastaví **FolderPath** na hodnotu buď **outputPath1** , nebo parametr **outputPath2** kanálu. 
 
 ```json
 {
@@ -234,7 +234,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr kanálu JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>JSON pro parametr kanálu (PipelineParameters. JSON)
 
 ```json
 {
@@ -248,7 +248,7 @@ Kanál nastaví **folderPath** na hodnotu **parametru outputPath1** nebo **outpu
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tyto příkazy předpokládají, že jste uložili soubory JSON do složky: C:\ADF. 
+U těchto příkazů se předpokládá, že jste soubory JSON uložili do složky: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -288,7 +288,7 @@ while ($True) {
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Podívejte se na další aktivity toku řízení podporované factory: 
+Podívejte se na další aktivity toku řízení podporované Data Factory: 
 
 - [Aktivita podmínky Když](control-flow-if-condition-activity.md)
 - [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)

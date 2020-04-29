@@ -1,6 +1,6 @@
 ---
-title: Kopírování dat z Netezzy pomocí Azure Data Factory
-description: Zjistěte, jak kopírovat data z Netezza do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+title: Kopírování dat z Netezza pomocí Azure Data Factory
+description: Naučte se, jak kopírovat data z Netezza do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,33 +12,33 @@ ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
 ms.openlocfilehash: 89efa8dc9989f693964415741299042c63f93780
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418112"
 ---
-# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezzy pomocí Azure Data Factory
+# <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí kopírovat aktivity v Azure Data Factory ke kopírování dat z Netezza. Článek vychází [z aktivity kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z Netezza. Článek se vytvoří na [aktivitě kopírování v Azure Data Factory](copy-activity-overview.md), která představuje obecný přehled aktivity kopírování.
 
 >[!TIP]
->Pokud se dozvíte, scénář migrace dat z Netezzy do Azure, přečtěte si další informace z [migrace dat z místního serveru Netezza do Azure pomocí Azure Data Factory.](data-migration-guidance-netezza-azure-sqldw.md)
+>V případě scénáře migrace dat z Netezza do Azure se dozvíte víc o tom, jak [pomocí Azure Data Factory migrovat data z místního serveru Netezza do Azure](data-migration-guidance-netezza-azure-sqldw.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
 Tento konektor Netezza je podporován pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
 
-Můžete zkopírovat data z Netezza do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která podporují aktivita kopírování jako zdroje a propady, naleznete v [tématu Podporovaná úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Data z Netezza můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky, najdete v tématu [podporované úložiště a formáty dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Konektor Netezza podporuje paralelní kopírování ze zdroje. Podrobnosti najdete v části [Paralelní kopie z netezzy.](#parallel-copy-from-netezza)
+Konektor Netezza podporuje paralelní kopírování ze zdroje. Podrobnosti najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení. K použití tohoto konektoru není nutné ručně instalovat žádný ovladač.
+Azure Data Factory poskytuje integrovaný ovladač, který umožňuje připojení. Pro použití tohoto konektoru nemusíte ručně instalovat žádný ovladač.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,28 +46,28 @@ Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení. K 
 
 ## <a name="get-started"></a>Začínáme
 
-Můžete vytvořit kanál, který používá aktivitu kopírování pomocí .NET SDK, Python SDK, Azure PowerShell, ROZHRANÍ REST API nebo šablony Azure Resource Manager. Podrobné pokyny k vytvoření kanálu, který má aktivitu kopírování, najdete v [kurzu Kopírovat aktivitu.](quickstart-create-data-factory-dot-net.md)
+Kanál, který používá aktivitu kopírování, můžete vytvořit pomocí sady .NET SDK, sady Python SDK, Azure PowerShell, REST API nebo šablony Azure Resource Manager. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu aktivity kopírování](quickstart-create-data-factory-dot-net.md) .
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které můžete použít k definování entit Data Factory, které jsou specifické pro konektor Netezza.
+Následující části obsahují podrobné informace o vlastnostech, které můžete použít k definování Data Factory entit specifických pro konektor Netezza.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
 Pro propojenou službu Netezza jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **type** musí být nastavena na **Netezza**. | Ano |
-| připojovací řetězec | Připojovací řetězec ODBC pro připojení k Netezze. <br/>Můžete také umístit heslo do azure `pwd` key vault a vyžádat konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovacích údajích úložiště v](store-credentials-in-key-vault.md) článku Azure Key Vault. | Ano |
-| connectVia | [Prostředí Integrace Runtime](concepts-integration-runtime.md) pro připojení k úložišti dat. Další informace naleznete v části [Požadavky.](#prerequisites) Pokud není zadán, použije se výchozí prostředí Azure Integration Runtime. |Ne |
+| type | Vlastnost **Type** musí být nastavená na **Netezza**. | Ano |
+| připojovací řetězec | Připojovací řetězec ODBC, který se má připojit k Netezza. <br/>Můžete také do Azure Key Vault umístit heslo a načíst `pwd` konfiguraci z připojovacího řetězce. Další podrobnosti najdete v následujících ukázkách a [přihlašovací údaje úložiště v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , který se má použít pro připojení k úložišti dat. Další informace najdete v části [požadavky](#prerequisites) . Pokud není zadaný, použije se výchozí Azure Integration Runtime. |Ne |
 
-Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka popisuje další vlastnosti, které můžete nastavit:
+Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<user name>;PWD=<password>`. Následující tabulka obsahuje popis dalších vlastností, které můžete nastavit:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| Úroveň zabezpečení | Úroveň zabezpečení (SSL/TLS), kterou ovladač používá pro připojení k úložišti dat. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** **(pouzeNezabezpečené):** Ovladač nepoužívá TLS.<br/>- **Upřednostňované nezabezpečené (upřednostňovanéNezabezpečené) (výchozí):** Pokud server poskytuje možnost volby, ovladač nepoužívá TLS. <br/>- **Upřednostňované zabezpečené (preferredSecured)**: Pokud server poskytuje možnost volby, ovladač používá TLS. <br/>- **Pouze zabezpečené (pouzeZabezpečené)**: Ovladač se nepřipojí, pokud není k dispozici připojení TLS. | Ne |
-| Soubor CaCert | Úplná cesta k certifikátu TLS/SSL, který používá server. Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolen a je povolen protokol TLS |
+| SecurityLevel | Úroveň zabezpečení (SSL/TLS), kterou ovladač používá pro připojení k úložišti dat. Příklad: `SecurityLevel=preferredSecured`. Podporované hodnoty jsou:<br/>- **Pouze nezabezpečené** (**onlyUnSecured**): ovladač nepoužívá protokol TLS.<br/>- **Upřednostňované nezabezpečené (preferredUnSecured) (výchozí)**: Pokud server nabízí volbu, nepoužije ovladač TLS. <br/>- **Upřednostňované zabezpečené (preferredSecured)**: Pokud server nabízí možnost výběru, použije ovladač TLS. <br/>- **Pouze zabezpečené (onlySecured)**: ovladač se nepřipojí, pokud není k dispozici připojení TLS. | Ne |
+| Soubor_certifikátu_CÚ | Úplná cesta k certifikátu TLS/SSL, který používá server Příklad: `CaCertFile=<cert path>;`| Ano, pokud je povolený protokol TLS |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -85,7 +85,7 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 }
 ```
 
-**Příklad: ukládání hesla v trezoru klíčů Azure**
+**Příklad: uložení hesla v Azure Key Vault**
 
 ```json
 {
@@ -113,20 +113,20 @@ Typický připojovací řetězec je `Server=<server>;Port=<port>;Database=<datab
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Tato část obsahuje seznam vlastností, které podporuje datová sada Netezza.
+V této části najdete seznam vlastností, které datová sada Netezza podporuje.
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete [v tématu Datové sady](concepts-datasets-linked-services.md).
+Úplný seznam sekcí a vlastností, které jsou k dispozici pro definování datových sad, naleznete v tématu [datové sady](concepts-datasets-linked-services.md).
 
-Chcete-li kopírovat data z Netezza, nastavte vlastnost **type** datové sady na **NetezzaTable**. Podporovány jsou následující vlastnosti:
+Chcete-li kopírovat data z Netezza, nastavte vlastnost **Type** datové sady na **NetezzaTable**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena **na: NetezzaTable.** | Ano |
-| Schématu | Název schématu. |Ne (pokud je zadán "dotaz" ve zdroji aktivity)  |
-| tabulka | Název tabulky. |Ne (pokud je zadán "dotaz" ve zdroji aktivity)  |
-| tableName | Název tabulky se schématem. Tato vlastnost je podporována pro zpětnou kompatibilitu. Použití `schema` `table` a pro nové pracovní zatížení. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **NetezzaTable** . | Ano |
+| XSD | Název schématu. |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tabulka | Název tabulky |Ne (Pokud je zadáno "dotaz" ve zdroji aktivity)  |
+| tableName | Název tabulky se schématem Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro `schema` nové `table` zatížení použijte a. | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -142,30 +142,30 @@ Chcete-li kopírovat data z Netezza, nastavte vlastnost **type** datové sady na
 }
 ```
 
-## <a name="copy-activity-properties"></a>Kopírovat vlastnosti aktivity
+## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Tato část obsahuje seznam vlastností, které zdroj Netezza podporuje.
+V této části najdete seznam vlastností, které zdroj Netezza podporuje.
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v [tématu Potrubí](concepts-pipelines-activities.md).
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v tématu [kanály](concepts-pipelines-activities.md).
 
-### <a name="netezza-as-source"></a>Netezza jako zdroj
+### <a name="netezza-as-source"></a>Netezza as source
 
 >[!TIP]
->Chcete-li efektivně načítat data z Netezzy pomocí dělení dat, přečtěte si další informace z paralelní kopie z sekce [Netezza.](#parallel-copy-from-netezza)
+>Pokud chcete data z Netezza efektivně načíst pomocí dělení dat, další informace najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) .
 
-Chcete-li kopírovat data z Netezzy, nastavte **typ zdroje** v okně Kopírovat aktivitu na **NetezzaSource**. V části Zdroj **kopírování aktivity** jsou podporovány následující vlastnosti:
+Chcete-li kopírovat data z Netezza, nastavte typ **zdroje** v aktivitě kopírování na **NetezzaSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost **type** zdroje Aktivity kopírování musí být nastavena na **NetezzaSource**. | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"` | Ne (pokud je v datové sadě zadán "název_tabulky") |
-| partitionOptions | Určuje možnosti rozdělení dat použité k načtení dat z aplikace Netezza. <br>Povolit hodnoty jsou: **None** (výchozí), **DataSlice**a **DynamicRange**.<br>Pokud je povolena možnost oddílu `None`(to znamená, že ne ), stupeň paralelismu souběžně [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) načíst data z databáze Netezza je řízen nastavením na aktivitu kopírování. | Ne |
-| partitionSettings | Zadejte skupinu nastavení pro dělení dat. <br>Použít, pokud možnost `None`oddílu není . | Ne |
-| partitionColumnName | Zadejte název zdrojového sloupce **v typu celé číslo,** který bude použit dělením rozsahu pro paralelní kopírování. Pokud není zadán, primární klíč tabulky je automaticky rozpoznán a použit jako sloupec oddílu. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionColumnName` zdrojových dat, zavěste do klauzule WHERE. Viz příklad paralelní [kopie z oddílu Netezza.](#parallel-copy-from-netezza) | Ne |
-| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použít, pokud `DynamicRange`je možnost oddílu . Pokud použijete dotaz k načtení zdrojových dat, zavěste `?AdfRangePartitionUpbound` do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z netezzy.](#parallel-copy-from-netezza) | Ne |
-| oddíl LowerBound | Minimální hodnota sloupce oddílu zkopírovat data. <br>Použít, pokud je `DynamicRange`možnost oddílu . Pokud použijete dotaz k načtení `?AdfRangePartitionLowbound` zdrojových dat, zavěste do klauzule WHERE. Příklad naleznete v části [Paralelní kopie z netezzy.](#parallel-copy-from-netezza) | Ne |
+| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **NetezzaSource**. | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"` | Ne (Pokud je zadáno "tableName" v datové sadě |
+| partitionOptions | Určuje možnosti dělení dat, které se používají k načtení dat z Netezza. <br>Povolené hodnoty jsou: **none** (výchozí), **dataslice**a **DynamicRange**.<br>Pokud je povolená možnost oddílu (to znamená, ne `None`), stupeň paralelismu na souběžně načtená data z databáze Netezza se řídí [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. | Ne |
+| partitionSettings | Určete skupinu nastavení pro dělení dat. <br>Použijte, pokud není `None`možnost oddílu. | Ne |
+| partitionColumnName | Zadejte název zdrojového sloupce **v typu Integer** , který bude použit pro vytváření oddílů rozsahu pro paralelní kopírování. Pokud není zadaný, primární klíč tabulky se automaticky detekuje a použije se jako sloupec partition. <br>Použijte, pokud je `DynamicRange`parametr partition. Pokud použijete dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionColumnName` v klauzuli WHERE. Viz příklad v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
+| partitionUpperBound | Maximální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`možnost oddílu. Použijete-li dotaz k načtení zdrojových dat, `?AdfRangePartitionUpbound` zapojte v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
+| partitionLowerBound | Minimální hodnota sloupce oddílu pro kopírování dat. <br>Použijte, pokud je `DynamicRange`parametr partition. Použijete-li dotaz k načtení zdrojových dat, zapojte `?AdfRangePartitionLowbound` v klauzuli WHERE. Příklad najdete v části [paralelní kopírování z Netezza](#parallel-copy-from-netezza) . | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -197,23 +197,23 @@ Chcete-li kopírovat data z Netezzy, nastavte **typ zdroje** v okně Kopírovat 
 ]
 ```
 
-## <a name="parallel-copy-from-netezza"></a>Paralelní kopie z Netezzy
+## <a name="parallel-copy-from-netezza"></a>Paralelní kopírování z Netezza
 
-Konektor Netezza data Factory poskytuje vestavěné dělení dat pro paralelní kopírování dat z Netezzy. Možnosti dělení dat najdete v **zdrojové** tabulce aktivity kopírování.
+Konektor Data Factory Netezza poskytuje integrované datové oddíly pro kopírování dat z Netezza paralelně. Možnosti dělení dat najdete ve **zdrojové** tabulce aktivity kopírování.
 
-![Snímek obrazovky s možnostmi oddílu](./media/connector-netezza/connector-netezza-partition-options.png)
+![Snímek obrazovky s možnostmi oddílů](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Když povolíte rozdělenou kopii, Data Factory spustí paralelní dotazy proti zdroji Netezza pro načtení dat pomocí oddílů. Paralelní stupeň je [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) řízen nastavením aktivity kopírování. Pokud například nastavíte `parallelCopies` na čtyři, Data Factory současně generuje a spouští čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Netezza.
+Když povolíte dělenou kopii, Data Factory spustí paralelní dotazy na váš zdroj Netezza a načte data podle oddílů. Paralelní míra je řízena [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) nastavením aktivity kopírování. Pokud jste například nastavili `parallelCopies` čtyři, Data Factory souběžně vygeneruje a spustí čtyři dotazy na základě zadané možnosti oddílu a nastavení a každý dotaz načte část dat z databáze Netezza.
 
-Doporučujeme povolit paralelní kopírování s dělením dat, zejména při načítání velkého množství dat z databáze Netezza. Níže jsou navrženy konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je připonuto zapisovat do složky jako více souborů (pouze zadejte název složky), v takovém případě je výkon lepší než zápis do jednoho souboru.
+Navrhnete, abyste umožnili paralelní kopírování s vytvářením oddílů dat, zejména pokud načítáte velké množství dat z databáze Netezza. Následují Doporučené konfigurace pro různé scénáře. Při kopírování dat do úložiště dat založeného na souborech je znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (zadejte pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 | Scénář                                                     | Navrhovaná nastavení                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Plné zatížení z velkého stolu.                                   | **Možnost oddílu**: Řez dat. <br><br/>Během provádění Data Factory automaticky rozdělí data na základě [integrovaných řezů dat společnosti Netezza](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)a zkopíruje data podle oddílů. |
-| Načtěte velké množství dat pomocí vlastního dotazu.                 | **Možnost oddílu**: Řez dat.<br>**Dotaz** `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`: .<br>Během provádění Data Factory `?AdfPartitionCount` nahradí (s paralelní číslo kopie `?AdfDataSliceCondition` nastavena na kopírování aktivity) a s logikou oddílu řezu dat a odešle netezza. |
-| Načtěte velké množství dat pomocí vlastního dotazu, který má celý sloupec s rovnoměrně rozloženou hodnotou pro dělení rozsahu. | **Možnosti oddílu**: Oddíl dynamického rozsahu.<br>**Dotaz** `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`: .<br>**Sloupec oddílu**: Zadejte sloupec použitý k rozdělení dat. Můžete oddíl proti sloupci s celýdatový typ.<br>**Horní mez oddílu** a **dolní mez oddílu**: Určete, zda chcete filtrovat proti sloupci oddílu, chcete-li načíst data pouze mezi dolní a horní oblastí.<br><br>Během provádění data factory `?AdfRangePartitionColumnName` `?AdfRangePartitionUpbound`nahradí `?AdfRangePartitionLowbound` , a skutečné názvy sloupců a rozsahy hodnot pro každý oddíl a odešle netezza. <br>Například pokud sloupec oddílu "ID" nastavit s dolní mez jako 1 a horní mez jako 80, s paralelní kopírování nastavit jako 4, Data Factory načte data o 4 oddíly. Jejich ID jsou mezi [1,20], [21, 40], [41, 60], a [61, 80]. |
+| Úplné načtení z velké tabulky                                   | **Možnost oddílu**: datový řez. <br><br/>Během provádění Data Factory automaticky rozdělí data na základě [vestavěných datových řezů Netezza](https://www.ibm.com/support/knowledgecenter/en/SSULQD_7.2.1/com.ibm.nz.adm.doc/c_sysadm_data_slices_parts_disks.html)a kopíruje data podle oddílů. |
+| Načtení velkého množství dat pomocí vlastního dotazu.                 | **Možnost oddílu**: datový řez.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE mod(datasliceid, ?AdfPartitionCount) = ?AdfDataSliceCondition AND <your_additional_where_clause>`.<br>Během provádění Data Factory nahradí `?AdfPartitionCount` (pomocí paralelního kopírování nastaveného v aktivitě kopírování) `?AdfDataSliceCondition` a pomocí logiky oddílu datového řezu a pošle Netezza. |
+| Načtěte velké množství dat pomocí vlastního dotazu, který má sloupec s celými čísly s rovnoměrně distribuovanou hodnotou pro dělení rozsahu. | **Možnosti oddílu**: dynamický oddíl rozsahu.<br>**Dotaz**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`.<br>**Partition – sloupec**: Určete sloupec, který se používá k dělení dat. Můžete rozdělit na sloupec s datovým typem Integer.<br>**Horní hranice oddílu** a **dolní mez oddílu**: Určete, jestli chcete filtrovat podle sloupce oddílu, aby se načetla data jenom mezi dolním a horním rozsahem.<br><br>Během provádění Data Factory nahradí `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound`a `?AdfRangePartitionLowbound` skutečným názvem sloupce a rozsahy hodnoty pro každý oddíl a pošle do Netezza. <br>Pokud například sloupec oddílu "ID" nastaví s dolní hranicí jako 1 a horní mez jako 80, s paralelní kopií nastavenou na 4, Data Factory načte data po 4 oddíly. Jejich ID jsou mezi [1, 20], [21, 40], [41, 60] a [61, 80] v uvedeném pořadí. |
 
-**Příklad: dotaz s oddílem řezu dat**
+**Příklad: dotazování pomocí oddílu datového řezu**
 
 ```json
 "source": {
@@ -223,7 +223,7 @@ Doporučujeme povolit paralelní kopírování s dělením dat, zejména při na
 }
 ```
 
-**Příklad: dotaz s oddílem dynamického rozsahu**
+**Příklad: dotaz s dynamickým oddílem rozsahu**
 
 ```json
 "source": {
@@ -238,11 +238,11 @@ Doporučujeme povolit paralelní kopírování s dělením dat, zejména při na
 }
 ```
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Seznam úložišť dat, která podporují aktivity kopírování jako zdroje a propady v Azure Data Factory, najdete v [tématu Podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat, která aktivita kopírování podporuje jako zdroje a jímky v Azure Data Factory, najdete v tématu [podporovaná úložiště dat a formáty](copy-activity-overview.md#supported-data-stores-and-formats).

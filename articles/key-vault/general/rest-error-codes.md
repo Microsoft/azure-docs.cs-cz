@@ -1,6 +1,6 @@
 ---
-title: Chybové kódy rozhraní REST API – trezor klíčů Azure
-description: Tyto kódy chyb může být vrácena operace na webové služby Azure Key Vault.
+title: Kódy chyb rozhraní REST API –⁠ Azure Key Vault
+description: Tyto kódy chyb by mohly být vráceny operací na Azure Key Vault webové služby.
 keywords: ''
 services: machine-learning
 author: msmbaldwin
@@ -11,30 +11,30 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432057"
 ---
-# <a name="azure-key-vault-rest-api-error-codes"></a>Chybové kódy rozhraní API úložiště klíčů Azure
+# <a name="azure-key-vault-rest-api-error-codes"></a>Kódy chyb Azure Key Vault REST API
  
-Následující kódy chyb může být vrácena operace na webové služby Azure Key Vault.
+Následující chybové kódy by mohly být vráceny operací na Azure Key Vault webové služby.
  
-## <a name="http-401-unauthenticated-request"></a>HTTP 401: Neověřený požadavek
+## <a name="http-401-unauthenticated-request"></a>HTTP 401: neověřená žádost
 
-401 znamená, že požadavek je neověřený pro trezor klíčů. 
+401 znamená, že žádost není ověřená pro Key Vault. 
 
-Požadavek je ověřen, pokud:
+Žádost je ověřena v těchto případech:
 
-- Trezor klíčů zná identitu volajícího; A
-- Volající se může pokusit o přístup k prostředkům trezoru klíčů. 
+- Trezor klíčů zná identitu volajícího; ani
+- Volající se může pokusit o přístup k prostředkům Key Vault. 
 
-Existuje několik různých důvodů, proč žádost může vrátit 401.
+Existuje několik různých důvodů, proč může požadavek vracet 401.
 
 ### <a name="no-authentication-token-attached-to-the-request"></a>K požadavku není připojen žádný ověřovací token. 
 
-Zde je příklad put požadavku, nastavení hodnoty tajného klíče:
+Tady je příklad požadavku PUT a nastavení hodnoty tajného klíče:
 
 ``` 
 PUT https://putreqexample.vault.azure.net//secrets/DatabaseRotatingPassword?api-version=7.0 HTTP/1.1
@@ -51,15 +51,15 @@ Content-Length: 31
 }
 ```
 
-Hlavička "Autorizace" je přístupový token, který je vyžadován při každém volání trezoru klíčů pro operace datové roviny. Pokud záhlaví chybí, musí být odpověď 401.
+Hlavička "Authorization" je přístupový token, který je vyžadován při každém volání Key Vault pro operace roviny dat. Pokud hlavička chybí, musí být odpověď 401.
 
-### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token postrádá správný prostředek s ním spojené. 
+### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Token nemá přidružený správný prostředek. 
 
-Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je povinný parametr s názvem "prostředek". Hodnota je důležitá pro zprostředkovatele tokenu, protože obory token pro jeho zamýšlené použití. Prostředek pro **všechny** tokeny pro přístup k trezoru klíčů je *https:\//vault.keyvault.net* (bez koncové lomítko).
+Při vyžádání přístupového tokenu z koncového bodu Azure OAUTH je parametr s názvem "prostředek" povinný. Hodnota je důležitá pro poskytovatele tokenů, protože je v oboru pro zamýšlené použití. Prostředek **pro přístup** k Key Vault je *https\/:/Vault.keyvault.NET* (bez koncového lomítka).
 
 ### <a name="the-token-is-expired"></a>Platnost tokenu vypršela.
 
-Tokeny jsou zakódovány base64 a hodnoty mohou být [http://jwt.calebb.net](http://jwt.calebb.net)dekódovány na webových stránkách, jako je například . Zde je výše uvedený token dekódován:
+Tokeny mají kódování Base64 a hodnoty lze dekódovat na webech, jako je například [http://jwt.calebb.net](http://jwt.calebb.net). Toto je dekódování výše uvedeného tokenu:
 
 ```
     {
@@ -87,20 +87,20 @@ Tokeny jsou zakódovány base64 a hodnoty mohou být [http://jwt.calebb.net](htt
 [signature]
 ```
 
-Můžeme vidět mnoho důležitých částí v tomto tokenu:
+V tomto tokenu jsme viděli spoustu důležitých částí:
 
-- aud (publikum): Zdroj tokenu. Všimněte si, že se jedná <https://vault.azure.net>o . Tento token nebude fungovat pro žádný prostředek, který explicitně neodpovídá této hodnotě, jako je například graf.
-- iat (vydáno na): Počet značek od začátku epochy, kdy byl token vydán.
-- nbf (ne dříve): Počet značek od začátku epochy, když se tento token stane platným.
-- exp (expirace): Počet značek od začátku epochy, když vyprší platnost tohoto tokenu.
-- appid (ID aplikace): IDENTIFIKÁTOR GUID pro ID aplikace, které tuto žádost provádí.
-- tid (ID klienta): IDENTIFIKÁTOR GUID pro ID klienta hlavního, který tuto žádost provádí
+- AUD (cílová skupina): prostředek tokenu. Všimněte si, že <https://vault.azure.net>je to. Tento token nebude fungovat pro všechny prostředky, které explicitně neodpovídají této hodnotě, jako je například Graph.
+- IAT (vydáno v): počet taktů od začátku epocha při vydání tokenu.
+- NBF (ne dříve): počet taktů od začátku epocha, pokud je tento token platný.
+- EXP (vypršení platnosti): počet taktů od začátku epocha po vypršení platnosti tokenu.
+- AppID (ID aplikace): identifikátor GUID pro ID aplikace, který tuto žádost odeslal.
+- TID (ID tenanta): identifikátor GUID ID tenanta, který vytváří tuto žádost.
 
-Je důležité, aby všechny hodnoty správně identifikovány v tokenu, aby požadavek fungoval. Pokud je vše v pořádku, pak požadavek nebude mít za následek 401.
+Je důležité, aby všechny hodnoty správně identifikovaly v tokenu, aby mohla žádost fungovat. Pokud je vše správné, požadavek nebude mít 401.
 
-### <a name="troubleshooting-401"></a>Poradce při potížích s 401
+### <a name="troubleshooting-401"></a>Řešení potíží 401
 
-401s by měly být zkoumány z bodu generování tokenu, před požadavek do trezoru klíčů. Obecně kód se používá k vyžádání tokenu. Jakmile je token přijat, je předán do požadavku trezoru klíčů. Pokud je kód spuštěn místně, můžete použít Šumař zachytit `https://login.microsoftonline.com`požadavek/odpověď na . Požadavek vypadá takto:
+401s by se mělo prozkoumat z bodu generování tokenu, než se do trezoru klíčů dovede požadavek. K vyžádání tokenu se používá všeobecně používaný kód. Po přijetí tokenu je předán do žádosti Key Vault. Pokud kód běží lokálně, můžete použít Fiddler k zachycení žádosti nebo odpovědi na `https://login.microsoftonline.com`. Požadavek vypadá takto:
 
 ``` 
 POST https://login.microsoftonline.com/<key vault tenant ID>/oauth2/token HTTP/1.1
@@ -112,59 +112,59 @@ Content-Length: 192
 resource=https%3A%2F%2Fvault.azure.net&client_id=<registered-app-ID>&client_secret=<registered-app-secret>&client_info=1&grant_type=client_credentials
 ```
 
-Následující uživatelem zadané informace mush být správné:
+Následující uživatelem zadané informace jsou Mush správné:
 
-- ID klienta trezoru klíčů
-- Hodnota prostředku nastavená na https%3A%2F%2Fvault.azure.net (kódované adresy URL)
+- ID tenanta trezoru klíčů
+- Hodnota prostředku nastavená na https %3 A %2 F %2 F trezor. Azure. NET (s kódováním URL)
 - ID klienta
 - Tajný klíč klienta
 
-Ujistěte se, že zbytek požadavku je téměř totožný.
+Zajistěte, aby zbytek žádosti byl skoro identický.
 
-Pokud můžete získat pouze přístupový token odpovědi, můžete dekódovat (jak je uvedeno výše) k zajištění ID klienta, ID klienta (ID aplikace) a prostředek.
+Pokud máte přístup jenom k tokenu odpovědi, můžete ho dekódovat (jak vidíte výše), abyste zajistili ID tenanta, ID klienta (ID aplikace) a prostředek.
 
-## <a name="http-403-insufficient-permissions"></a>HTTP 403: Nedostatečná oprávnění
+## <a name="http-403-insufficient-permissions"></a>HTTP 403: nedostatečná oprávnění
 
-HTTP 403 znamená, že požadavek byl ověřen (zná žádající identitu), ale identita nemá oprávnění k přístupu k požadovanému prostředku. Existují dvě příčiny:
+HTTP 403 znamená, že žádost byla ověřena (zná požadavek identity), ale identita nemá oprávnění pro přístup k požadovanému prostředku. Existují dva příčiny:
 
-- Neexistuje žádná zásada přístupu pro identitu.
-- Adresa IP žádajícího prostředku není uvedena na seznamu povolených adres v nastavení brány firewall trezoru klíčů.
+- Pro tuto identitu nejsou k dispozici žádné zásady přístupu.
+- V nastavení brány firewall trezoru klíčů není povolená IP adresa prostředku žádajícího prostředku.
 
-HTTP 403 často dochází, když aplikace zákazníka nepoužívá ID klienta, který si zákazník myslí, že je. To obvykle znamená, že zásady přístupu není správně nastavena pro skutečné volající identity.
+K protokolu HTTP 403 dochází často tehdy, když aplikace zákazníka nepoužívá ID klienta, které mu zákazník považuje. To obvykle znamená, že zásady přístupu nejsou správně nastaveny pro skutečnou volající identitu.
 
-### <a name="troubleshooting-403"></a>Poradce při potížích 403
+### <a name="troubleshooting-403"></a>Řešení potíží 403
 
-Nejprve zapněte protokolování. Pokyny k tomu, jak to udělat, naleznete [v tématu protokolování Azure Key Vault](logging.md)).
+Nejdříve zapněte protokolování. Pokyny k tomu, jak to udělat, najdete v tématu [Azure Key Vault Logging](logging.md)).
 
-Po zapnutí protokolování můžete určit, zda je 403 z důvodu zásad přístupu nebo zásad brány firewall.
+Jakmile je protokolování zapnuté, můžete zjistit, jestli je 403 v důsledku zásad přístupu nebo zásad brány firewall.
 
-#### <a name="error-due-to-firewall-policy"></a>Chyba způsobená zásadou brány firewall
+#### <a name="error-due-to-firewall-policy"></a>Chyba kvůli zásadám brány firewall
 
 "Adresa klienta (00.00.00.00) není autorizována a volající není důvěryhodná služba"
 
-Existuje omezený seznam "Azure Trusted Services". Weby Azure **nejsou** důvěryhodnou službou Azure. Další informace najdete v příspěvku blogu [Key Vault Firewall access by Azure App Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services).
+Existuje omezený seznam "důvěryhodných služeb Azure". Weby **Azure nejsou důvěryhodnou** službou Azure. Další informace najdete v blogovém příspěvku [Key Vault přístupu k bráně firewall pomocí Azure App Services](https://azidentity.azurewebsites.net/post/2019/01/03/key-vault-firewall-access-by-azure-app-services).
 
-Aby fungovala, musíte do trezoru klíčů přidat IP adresu webu Azure.
+Aby fungovala, je nutné přidat IP adresu webu Azure do Key Vault.
 
-Pokud z důvodu zásady přístupu: najděte ID objektu pro požadavek a ujistěte se, že ID objektu odpovídá objektu, ke kterému se uživatel pokouší přiřadit zásady přístupu. Tam bude často více objektů v AAD, které mají stejný název, takže výběr správného je velmi důležité. Odstraněním a opětovným přidáním zásad přístupu je možné zjistit, zda existuje více objektů se stejným názvem.
+Pokud se jedná o zásady přístupu: Najděte ID objektu pro požadavek a ujistěte se, že ID objektu odpovídá objektu, ke kterému se uživatel pokouší přiřadit zásady přístupu. V AAD bude často více objektů, které mají stejný název, takže výběr správné je velmi důležitý. Odstraněním a novým přidáním zásad přístupu je možné zjistit, zda existuje více objektů se stejným názvem.
 
-Většina zásad přístupu navíc nevyžaduje použití "Autorizované aplikace", jak je znázorněno na portálu. Autorizovaná aplikace se používají pro scénáře ověřování "jménem", které jsou vzácné. 
+Kromě toho většina zásad přístupu nevyžaduje použití autorizované aplikace, jak je znázorněno na portálu. Ověřená aplikace se používá pro scénáře ověřování, které jsou zřídka. 
 
 
-## <a name="http-429-too-many-requests"></a>HTTP 429: Příliš mnoho požadavků
+## <a name="http-429-too-many-requests"></a>HTTP 429: příliš mnoho požadavků
 
-Omezení dochází, když počet požadavků překročí uvedené maximum pro časový rámec. Pokud dojde k omezení, bude odpověď trezoru klíčů http 429. Pro typy pořizované žádosti jsou uvedena maxima. Například: vytvoření klíče 2048 bit ového serveru HSM je 5 požadavků za 10 sekund, ale všechny ostatní transakce hsm mají limit 1000 požadavku/ 10 sekund. Proto je důležité pochopit, které typy volání jsou prováděny při určování příčiny omezení.
-Obecně platí, že požadavky na trezor klíčů jsou omezeny na 2000 požadavků / 10 sekund. Výjimkou jsou operace s klíčem, jak je popsáno v [limitech služeb trezoru klíčů.](service-limits.md)
+K omezování dochází, když počet požadavků překročí stanovený maximální časový rámec. Pokud dojde k omezení, bude odpověď Key Vault HTTP 429. Pro typy požadavků byly zadány maximální hodnoty. Například: vytvoření 2048-bitového klíče modulu HSM je 5 požadavků za 10 sekund, ale všechny ostatní transakce HSM mají omezení 1000 požadavků/10 sekund. Proto je důležité pochopit, jaké typy volání jsou vytvářeny při určování příčiny omezení.
+Obecně platí, že požadavky na Key Vault jsou omezeny na 2000 požadavků za 10 sekund. Výjimky jsou klíčové operace, jak je popsáno v [Key Vault omezení služby](service-limits.md)
 
 ### <a name="troubleshooting-429"></a>Řešení potíží 429
-Omezení se pracuje pomocí těchto technik:
+Omezování se řeší pomocí těchto technik:
 
-- Snižte počet požadavků na trezor klíčů určením, zda existují vzorky pro požadovaný prostředek, a pokusem o jejich uložení do mezipaměti v volající aplikaci. 
+- Snižte počet požadavků provedených v Key Vault tím, že určíte, zda existují vzory pro požadovaný prostředek, a pokusíte se je Uložit do mezipaměti v volající aplikaci. 
 
-- Dojde-li k omezení trezoru klíčů, přizpůsobte žádající kód tak, aby používal exponenciální backoff pro opakování. Algoritmus je vysvětlen zde: [Jak omezit aplikaci](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits)
+- Když dojde k omezení Key Vault, přizpůsobte si požadavek na použití exponenciálního omezení rychlostiu pro opakování. Tento algoritmus je vysvětlený tady: [jak omezit vaši aplikaci](overview-throttling.md#how-to-throttle-your-app-in-response-to-service-limits) .
 
-- Pokud počet požadavků nelze snížit ukládánído mezipaměti a timed backoff nefunguje, zvažte rozdělení klíčů do více trezorů klíčů. Limit služby pro jedno předplatné je 5x více než limit trezoru klíčů. Pokud používáte více než 5 trezorů klíčů, je třeba zvážit použití více odběrů. 
+- Pokud se počet požadavků nedá snížit ukládáním do mezipaměti a časovým limitem omezení rychlosti nefunguje, zvažte rozdělení klíčů do několika trezorů klíčů. Limit služby pro jedno předplatné je pětinásobné omezením jednotlivých Key Vault. Pokud používáte více než 5 trezorů klíčů, měli byste zvážit použití více předplatných. 
 
-Podrobné pokyny, včetně žádosti o zvýšení limitů, najdete zde: [Key Vault omezení pokyny](overview-throttling.md)
+Podrobné pokyny, včetně požadavků na zvýšení limitů, najdete tady: [Key Vault pokyny k omezování](overview-throttling.md) .
 
 

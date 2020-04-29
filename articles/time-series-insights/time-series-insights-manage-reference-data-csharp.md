@@ -1,6 +1,6 @@
 ---
-title: Správa referenčních dat v prostředích GA pomocí jazyka C# – Přehledy časové řady Azure | Dokumenty společnosti Microsoft
-description: Zjistěte, jak spravovat referenční data pro prostředí GA vytvořením vlastní aplikace napsané v C#.
+title: Správa referenčních dat v prostředích GA pomocí C#-Azure Time Series Insights | Microsoft Docs
+description: Naučte se spravovat referenční data pro prostředí GA vytvořením vlastní aplikace napsané v jazyce C#.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,68 +12,68 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: f0ce0f7d90540274d24a7e0248e6f197b74033a1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416986"
 ---
-# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Správa referenčních dat ga pro prostředí Azure Time Series Insights pomocí C #
+# <a name="manage-ga-reference-data-for-an-azure-time-series-insights-environment-using-c"></a>Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí jazyka C #
 
-Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory tak, aby byly požadavky programového rozhraní API pro [referenční rozhraní API pro správu dat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)Azure Time Series Insights GA .
+Tento článek ukazuje, jak kombinovat C#, [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)a Azure Active Directory, aby programové požadavky rozhraní API [ODKAZOVALy na rozhraní](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api)API Azure Time Series Insights GA Správa dat.
 
 > [!TIP]
-> Zobrazit ukázky kódu [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)GA C# na .
+> Podívejte se na ukázky kódů GA [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample)C# na adrese.
 
 ## <a name="summary"></a>Souhrn
 
-Ukázkový kód níže ukazuje následující funkce:
+Vzorový kód níže znázorňuje následující funkce:
 
-* Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**.
-* Sekvenční operace CREATE, READ, UPDATE a DELETE proti rozhraní GA [Reference Data Management API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Získání přístupového tokenu pomocí [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) **PublicClientApplication**
+* Sekvenční vytváření, čtení, aktualizace a odstraňování operací s [referencí GA Správa dat API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
 * Běžné kódy odpovědí včetně [běžných kódů chyb](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api#validation-and-error-handling).
     
-    Rozhraní REFERENCE Data Management API zpracovává každou položku jednotlivě a chyba s jednou položkou nebrání ostatním v úspěšném dokončení. Pokud má například váš požadavek 100 položek a jedna položka má chybu, je zapsáno 99 položek a jedna je odmítnuta.
+    Reference Správa dat API každou položku zpracuje jednotlivě a chyba s jednou položkou nebrání úspěšnému dokončení ostatních položek. Pokud třeba vaše žádost obsahuje 100 položek a jedna položka obsahuje chybu, napíší se položky 99 a jedna z nich se odmítne.
 
-## <a name="prerequisites-and-setup"></a>Požadavky a nastavení
+## <a name="prerequisites-and-setup"></a>Požadavky a instalace
 
 Před kompilací a spuštěním ukázkového kódu proveďte následující kroky:
 
-1. [Zřídit](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
-) prostředí GA Azure Time Series Insights.
+1. [Zřízení Azure Time Series Insightsho prostředí GA](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started
+)
 
-1. [Vytvořte sadu referenčních dat](time-series-insights-add-reference-data-set.md) ve vašem prostředí. Použijte následující schéma referenčních dat:
+1. [Vytvořte referenční datovou sadu](time-series-insights-add-reference-data-set.md) v rámci vašeho prostředí. Použijte následující schéma referenčních dat:
 
    | Název klíče | Typ |
    | --- | --- |
    | Uuid | Řetězec | 
 
-1. Nakonfigurujte prostředí Azure Time Series Insights pro Azure Active Directory, jak je popsáno v [protokolu Ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Použít `http://localhost:8080/` jako **identifikátor URI přesměrování**.
+1. Nakonfigurujte Azure Time Series Insights prostředí pro Azure Active Directory, jak je popsáno v tématu [ověřování a autorizace](time-series-insights-authentication-and-authorization.md). Použijte `http://localhost:8080/` jako **identifikátor URI přesměrování**.
 
 1. Nainstalujte požadované závislosti projektu.
 
-1. Upravte ukázkový kód níže nahrazením každého **#PLACEHOLDER#** příslušným identifikátorem prostředí.
+1. Níže uvedený ukázkový kód nahraďte každým **#PLACEHOLDER #** a příslušným identifikátorem prostředí.
 
-1. Spustit `dotnet run` v kořenovém adresáři projektu. Po zobrazení výzvy se pomocí uživatelského profilu přihlaste do Azure. 
+1. Spusťte `dotnet run` v kořenovém adresáři vašeho projektu. Po zobrazení výzvy použijte svůj uživatelský profil pro přihlášení k Azure. 
 
 ## <a name="project-dependencies"></a>Závislosti projektu
 
-Doporučujeme používat nejnovější verzi Sady Visual Studio a **NETCore.app**:
+Doporučuje se použít nejnovější verzi sady Visual Studio a **NETCore. app**:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) - verze 16.4.2+
-* [NETCore.app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) - verze 2.2.8
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) – verze 16.4.2 +
+* [NETCore. app](https://www.nuget.org/packages/Microsoft.NETCore.App/2.2.8) – verze 2.2.8
 
-Ukázkový kód má dvě požadované závislosti:
+Vzorový kód má dvě požadované závislosti:
 
-* MSAL.NET [microsoft.identity.client](https://www.nuget.org/packages/Microsoft.Identity.Client/) - 4.7.1 balíček.
-* [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json) - 12.0.3 balení.
+* MSAL.NET balíček [Microsoft. identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client/) -4.7.1.
+* Balíček [Newtonsoft. JSON](https://www.nuget.org/packages/Newtonsoft.Json) -12.0.3.
 
-Přidejte balíčky pomocí [NuGet 2.12+](https://www.nuget.org/):
+Přidejte balíčky pomocí [NuGet 2.12 +](https://www.nuget.org/):
 
 * `dotnet add package Newtonsoft.Json --version 12.0.3`
 * `dotnet add package Microsoft.Identity.Client --version 4.7.1`
 
-Nebo:
+Ani
 
 1. Deklarovat `csharp-tsi-msal-ga-sample.csproj` soubor:
 
@@ -94,7 +94,7 @@ Nebo:
     ```
 1. Potom spusťte `dotnet restore`.
 
-## <a name="c-sample-code"></a>Ukázkový kód jazyka C#
+## <a name="c-sample-code"></a>Ukázkový kód C#
 
 ```csharp
 // Copyright (c) Microsoft Corporation.  All rights reserved.
@@ -309,4 +309,4 @@ namespace CsharpTsiMsalGaSample
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si referenční dokumentaci rozhraní [API pro správu referenčních dat](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) GA.
+- Přečtěte si referenční dokumentaci k [rozhraní API Správa dat reference](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) pro ga.

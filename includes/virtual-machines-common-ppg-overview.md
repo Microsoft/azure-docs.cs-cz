@@ -9,48 +9,48 @@ ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
 ms.openlocfilehash: fb2eb2d237a1245627bbdb6f4f2eacbb9966a2c6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81422097"
 ---
-Umístění virtuálních zařízení v jedné oblasti snižuje fyzickou vzdálenost mezi instancemi. Jejich umístění do jedné zóny dostupnosti je také fyzicky sblíží. Však jako stopa Azure roste, jedna zóna dostupnosti může span více fyzických datových center, což může mít za následek latence sítě ovlivňující vaši aplikaci. 
+Umístění virtuálních počítačů v jedné oblasti omezuje fyzickou vzdálenost mezi instancemi. Jejich umístění v rámci jedné zóny dostupnosti se také fyzicky přiblíží dohromady. Pokud se ale nároky na Azure rozroste, může jedna zóna dostupnosti zahrnovat několik fyzických datových center, což může způsobit, že vaše aplikace bude mít vliv na latenci sítě. 
 
-Chcete-li získat virtuální chod co nejblíže a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci skupiny umístění bez kontaktní chod.
+Pokud chcete co nejblíže získat virtuální počítače a dosáhnout nejnižší možné latence, měli byste je nasadit v rámci skupiny umístění blízkosti.
 
-Skupina umístění bezkontaktní komunikace je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěny blízko sebe. Skupiny umístění bezkontaktní komunikace jsou užitečné pro úlohy, kde je požadavek nízké latence.
-
-
-- Nízká latence mezi samostatnými virtuálními servery.
-- Nízká latence mezi virtuálními počítači v jedné sadě dostupnosti nebo škálovací sadě virtuálních strojů. 
-- Nízká latence mezi samostatnými virtuálními počítači, virtuálními počítači ve více sadách dostupnosti nebo více škálovacími sadami. Můžete mít více výpočetních prostředků v jedné skupině umístění, které sdružují vícevrstvou aplikaci. 
-- Nízká latence mezi více aplikačními vrstvami pomocí různých typů hardwaru. Například spuštění back-endu pomocí řady M v sadě dostupnosti a front-end u instance řady D v škálovací sadě v jedné skupině umístění bezkontaktní komunikace.
+Skupina umístění blízkosti je logické seskupení, které se používá k zajištění, že výpočetní prostředky Azure jsou fyzicky umístěné blízko sebe. Skupiny umístění blízkosti jsou užitečné pro úlohy, u kterých je minimální latence požadavek.
 
 
-![Grafika pro skupiny umístění bezkontaktní blízkosti](./media/virtual-machines-common-ppg/ppg.png)
+- Nízká latence mezi samostatnými virtuálními počítači.
+- Nízká latence mezi virtuálními počítači v jedné skupině dostupnosti nebo sadou škálování virtuálního počítače. 
+- Nenízká latence mezi samostatnými virtuálními počítači, virtuálními počítači v několika skupinách dostupnosti nebo několika sadami škálování. K spojování vícevrstvé aplikace můžete mít v jedné skupině umístění více výpočetních prostředků. 
+- Nízká latence mezi několika aplikačními vrstvami, které používají různé typy hardwaru. Například spuštění back-endu pomocí řady M-Series ve skupině dostupnosti a front-Series instance řady D-Series v rámci skupiny škálování v jedné skupině umístění v blízkosti.
 
-## <a name="using-proximity-placement-groups"></a>Použití skupin umístění bezkontaktní komunikace 
 
-Skupina umístění bezkontaktní komunikace je nový typ prostředku v Azure. Před použitím s jinými prostředky je třeba jej vytvořit. Po vytvoření ji lze použít s virtuálními počítači, sadami dostupnosti nebo škálovacími sadami virtuálních počítačů. Skupinu umístění bezkontaktní komunikace určíte při vytváření výpočetních prostředků poskytujících ID skupiny umístění bezkontaktní komunikace. 
+![Grafika pro skupiny umístění pro Proximity](./media/virtual-machines-common-ppg/ppg.png)
 
-Existující prostředek můžete také přesunout do skupiny umístění bez kontaktní ch odst. Při přesouvání prostředku do skupiny umístění bezkontaktní komunikace byste měli nejprve zastavit (navrátit) datový zdroj, protože bude potenciálně přeobsazen do jiného datového centra v oblasti, aby bylo splněno omezení společného umístění. 
+## <a name="using-proximity-placement-groups"></a>Používání skupin umístění blízkosti 
 
-V případě sad dostupnosti a škálovacích sad virtuálních počítačů byste měli nastavit skupinu umístění bezkontaktní komunikace na úrovni prostředků, nikoli na úrovni jednotlivých virtuálních počítačů. 
+Skupina umístění blízkosti je nový typ prostředku v Azure. Musíte ho vytvořit ještě před tím, než ho použijete s jinými prostředky. Po vytvoření se dá použít s virtuálními počítači, skupinami dostupnosti nebo Virtual Machine Scale Sets. Skupina umístění blízkosti se určuje při vytváření výpočetních prostředků, které poskytují ID skupiny umístění blízkosti. 
 
-Skupina umístění bez kontaktní místa je omezení společného umístění, nikoli připnuté mechanismus. Je připnutý do konkrétního datového centra s nasazením prvního prostředku, který jej používá. Jakmile jsou všechny prostředky používající skupinu umístění bezkontaktní komunikace zastaveny (s ambulancí) nebo odstraněny, již se nepřipnou. Proto při použití skupiny umístění bezkontaktní komunikace s více řadami virtuálních počítačů, je důležité zadat všechny požadované typy předem v šabloně, pokud je to možné, nebo postupujte podle pořadí nasazení, které zlepší vaše šance na úspěšné nasazení. Pokud se nasazení nezdaří, restartujte nasazení s velikostí virtuálního počítače, která se nezdařila jako první velikost, která má být nasazena.
+Existující prostředek můžete také přesunout do skupiny umístění blízkosti. Při přesunu prostředku do skupiny umístění blízkosti byste měli nejprve zastavit (zrušit přidělení) Asset, protože se znovu nasadí do jiného datového centra v oblasti, aby splňovalo omezení umístění. 
 
-## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Co můžete očekávat při používání skupin umístění bezkontaktní komunikace 
-Skupiny umístění bezkontaktních umístění nabízejí společné umístění ve stejném datovém centru. Protože však skupiny umístění bezkontaktní komunikace představují další omezení nasazení, může dojít k selhání přidělení. Existuje několik případů použití, kdy se může zobrazit selhání přidělení při použití skupin umístění bezkontaktní komunikace:
+V případě sad dostupnosti a sady škálování virtuálních počítačů byste měli nastavit skupinu umístění blízkosti na úrovni prostředků, nikoli na jednotlivých virtuálních počítačích. 
 
-- Když požádáte o první virtuální počítač ve skupině umístění bezkontaktní komunikace, automaticky se vybere datové centrum. V některých případech může druhý požadavek na jiný virtuální počítač SKU selhat, pokud neexistuje v tomto datovém centru. V tomto případě je vrácena chyba **OverconstrainedAllocationRequest.** Chcete-li tomu zabránit, zkuste změnit pořadí, ve kterém nasazujete vaše skum nebo mají oba prostředky nasazené pomocí jedné šablony ARM.
--   V případě elastické úlohy, kde přidáte a odeberete instance virtuálních počítače, které mají omezení skupiny umístění přiblížení na vaše nasazení může mít za následek selhání splnění požadavku, což má za následek **allocationfailure** chyba. 
-- Zastavení (navrátit) a spuštění virtuálních počítačů podle potřeby je další způsob, jak dosáhnout pružnosti. Vzhledem k tomu, že kapacita není zachována po zastavení (navrátit) virtuální ho, spuštění znovu může mít za následek **allocationfailure** chyba.
+Skupina umístění blízkosti je omezení pro společné umístění, nikoli mechanizmus připnutí. Je připnutý ke konkrétnímu datovému centru s nasazením prvního prostředku, který ho bude používat. Jakmile se všechny prostředky, které používají skupinu umístění blízkosti, se zastavily (oddělují) nebo se odstraní, už se připnuté. Proto při použití skupiny umístění blízkosti s více řadami virtuálních počítačů je důležité určit všechny požadované typy předem v šabloně, pokud je to možné, nebo postupovat podle pořadí nasazení, které vám vylepšit úspěšnost nasazení. Pokud se nasazení nepovede, restartujte nasazení s velikostí virtuálního počítače, která se nezdařila, protože se nasadila první velikost.
+
+## <a name="what-to-expect-when-using-proximity-placement-groups"></a>Co očekávat při používání skupin umístění blízkosti 
+Skupiny umístění pro Proximity nabízí společné umístění ve stejném datovém centru. Protože však skupiny umístění blízkosti označují dodatečné omezení nasazení, může dojít k chybám přidělení. K dispozici je několik případů použití, kde se při použití skupin umístění blízkosti můžou zobrazit chyby přidělení:
+
+- Když na prvním virtuálním počítači požádáte ve skupině umístění blízkosti, bude se automaticky vybrat datové centrum. V některých případech se může stát, že druhý požadavek na jinou SKLADOVOU položku virtuálního počítače selže, pokud v tomto datovém centru neexistuje. V tomto případě se vrátí **OverconstrainedAllocationRequest** chyba. Pokud se tomu chcete vyhnout, zkuste změnit pořadí, ve kterém nasazujete své SKU, nebo použijte oba prostředky nasazené s jednou šablonou ARM.
+-   V případě elastických úloh, kde můžete přidat a odebrat instance virtuálních počítačů, které mají omezení skupiny umístění blízkosti, může dojít k selhání splnění žádosti s výsledkem **AllocationFailure** chyby. 
+- Zastavení (zrušení přidělení) a spuštění virtuálních počítačů podle potřeby je další způsob, jak dosáhnout pružnosti. Vzhledem k tomu, že kapacita není po zastavení (přidělení) virtuálního počítače zachovaná, může dojít k chybě **AllocationFailure** .
 
 
 ## <a name="best-practices"></a>Osvědčené postupy 
-- Pro nejnižší latenci použijte skupiny umístění bezkontaktní komunikace spolu se zrychleným vytvářením sítí. Další informace naleznete [v tématu Vytvoření virtuálního počítače s Linuxem se zrychlenou sítí](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo Vytvoření [virtuálního počítače se systémem Windows se zrychlenou sítí](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-- Nasaďte všechny velikosti virtuálních počítače v jedné šabloně. Chcete-li se vyhnout přistání na hardwaru, který nepodporuje všechny skuténky virtuálních zařízení a velikosti, které požadujete, zahrnout všechny aplikační vrstvy v jedné šabloně tak, aby všechny budou nasazeny ve stejnou dobu.
-- Pokud skriptujete nasazení pomocí prostředí PowerShell, CLI nebo sady SDK, může se zobrazit chyba `OverconstrainedAllocationRequest`přidělení . V takovém případě byste měli zastavit/navrátit všechny existující virtuální počítače a změnit pořadí ve skriptu nasazení tak, aby začínala s položkou nebo velikostmi virtuálních virtuálních stránek, které se nezdařily. 
-- Při opakovaném použití existující skupiny umístění, ze kterých byly odstraněny virtuální chod, počkejte na úplné dokončení odstranění před přidáním virtuálních hraček do něj.
-- Pokud latence je vaše první priorita, vložte virtuální počítače do skupiny umístění bez kontaktní místo a celé řešení v zóně dostupnosti. Pokud je však vaší nejvyšší prioritou odolnost proti chybám, rozdělte instance do více zón dostupnosti (jedna skupina umístění bez kontaktních míst nemůže přesáhnout zóny).
+- Pro nejnižší latenci používejte skupiny umístění pro Proximity společně s akcelerovanými síťovými službami. Další informace najdete v tématu [Vytvoření virtuálního počítače se systémem Linux s akcelerovanými sítěmi](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nebo [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)službami.
+- Nasaďte všechny velikosti virtuálních počítačů v jediné šabloně. Abyste se vyhnuli vykládku na hardware, který nepodporuje všechny SKU virtuálních počítačů a velikosti, které požadujete, zahrňte všechny aplikační vrstvy do jediné šablony, aby se všechny nasadily ve stejnou dobu.
+- Pokud provádíte skriptování nasazení pomocí PowerShellu, CLI nebo sady SDK, může se zobrazit chyba `OverconstrainedAllocationRequest`přidělení. V takovém případě byste měli zastavit nebo zrušit přidělení všech existujících virtuálních počítačů a změnit pořadí ve skriptu nasazení tak, aby začínalo s SKU nebo velikostmi virtuálního počítače, které selhaly. 
+- Při použití existující skupiny umístění, ze které se virtuální počítače odstranily, počkejte, než se odstranění dokončí, než do něj přidáte virtuální počítače.
+- Pokud je latence vaše první priorita, umístěte virtuální počítače do skupiny umístění blízkosti a do celého řešení v zóně dostupnosti. Pokud je odolnost vaše nejvyšší prioritou, rozšíří se vaše instance napříč několika zónami dostupnosti (jedna skupina umístění s jedním okolím nemůže zahrnovat zóny).

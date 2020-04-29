@@ -1,6 +1,6 @@
 ---
-title: Získání aktivity metadat v Azure Data Factory
-description: Přečtěte si, jak používat aktivitu Získat metadata v kanálu datové továrny.
+title: Získat aktivitu metadat v Azure Data Factory
+description: Naučte se, jak používat aktivitu získat metadata v kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 344ad8e106c119c1de59570d1ec4e3df5e1cc8af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417106"
 ---
-# <a name="get-metadata-activity-in-azure-data-factory"></a>Získání aktivity metadat v Azure Data Factory
+# <a name="get-metadata-activity-in-azure-data-factory"></a>Získat aktivitu metadat v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivitu Získat metadata můžete použít k načtení metadat všech dat v Azure Data Factory. Tuto aktivitu můžete použít v následujících scénářích:
+Můžete použít aktivitu získat metadata k načtení metadat všech dat v Azure Data Factory. Tuto aktivitu můžete použít v následujících scénářích:
 
-- Ověřte metadata všech dat.
-- Aktivuj kanál, když jsou data připravená/dostupná.
+- Ověřte metadata jakýchkoli dat.
+- Aktivovat kanál, když jsou data připravena/k dispozici.
 
-V toku řízení je k dispozici následující funkce:
+V toku ovládacích prvků jsou k dispozici následující funkce:
 
-- K ověření můžete použít výstup z aktivity získat metadata v podmíněných výrazech.
-- Můžete spustit potrubí, pokud je splněna podmínka prostřednictvím opakování Do Do.
+- K provedení ověřování můžete použít výstup z aktivity získat metadata v podmíněných výrazech.
+- Kanál můžete aktivovat, pokud je splněna podmínka prostřednictvím klauzule do smyčky.
 
 ## <a name="capabilities"></a>Možnosti
 
-Get Metadata aktivita trvá datovou sadu jako vstup a vrátí informace metadat jako výstup. V současné době jsou podporovány následující konektory a odpovídající navštívená metadata. Maximální velikost vrácených metadat je 2 MB.
+Aktivita získat metadata přebírá datovou sadu jako vstup a vrací informace o metadatech jako výstup. V současné době jsou podporovány následující konektory a odpovídající metadata k dispozici. Maximální velikost vrácených metadat je 2 MB.
 
 >[!NOTE]
->Pokud spustíte aktivitu získat metadata na modul runtime integrace s vlastním hostitelem, nejnovější funkce jsou podporovány ve verzi 3.6 nebo novější.
+>Pokud spustíte aktivitu získat metadata v místním prostředí Integration runtime, jsou nejnovější funkce podporované ve verzi 3,6 nebo novější.
 
 ### <a name="supported-connectors"></a>Podporované konektory
 
 **Úložiště souborů**
 
-| Konektor/metadata | název_položky<br>(soubor/složka) | Itemtype<br>(soubor/složka) | velikost<br>(soubor) | Vytvořen<br>(soubor/složka) | lastModified<br>(soubor/složka) |podřízené položky<br>(složka) |obsahMD5<br>(soubor) | – struktura<br/>(soubor) | Columncount<br>(soubor) | Existuje<br>(soubor/složka) |
+| Konektory/metadata | itemName<br>(soubor/složka) | itemType<br>(soubor/složka) | velikost<br>souborů | vytvářejí<br>(soubor/složka) | lastModified<br>(soubor/složka) |childItems<br>složky |contentMD5<br>souborů | – struktura<br/>souborů | Sloupců<br>souborů | neexistuje<br>(soubor/složka) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Cloudové úložiště Googlu](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Úložiště objektů blob Azure](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Soubory Azure](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -55,47 +55,47 @@ Get Metadata aktivita trvá datovou sadu jako vstup a vrátí informace metadat 
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- Při použití aktivity získat metadata proti složce, ujistěte se, že máte LIST/EXECUTE oprávnění k dané složce.
-- Pro Amazon S3 a `lastModified` Google Cloud Storage, se vztahuje na kbelík a `exists` klíč, ale ne na virtuální složku, a platí pro kbelík a klíč, ale ne na předponu nebo virtuální složku.
-- Pro úložiště objektů `lastModified` blob Azure platí pro kontejner a objekt blob, ale ne pro virtuální složku.
-- `lastModified`filtr se aktuálně vztahuje na podřízené položky filtru, ale ne na samotnou zadanou složku nebo soubor.
-- Filtr se zástupnými kódy ve složkách nebo souborech není pro aktivitu získání metadat podporován.
+- Když použijete aktivitu získat metadata na určitou složku, ujistěte se, že máte oprávnění k zobrazení seznamu/spuštění pro danou složku.
+- Pro Amazon S3 a Google Cloud Storage se `lastModified` vztahuje na kontejner a klíč, ale ne na virtuální složku, a `exists` to na kontejner a klíč, ale ne na předponu nebo virtuální složku.
+- Pro úložiště objektů BLOB v `lastModified` Azure platí pro kontejner a objekt blob, ale ne do virtuální složky.
+- `lastModified`filtr aktuálně platí pro filtrování podřízených položek, ale ne do zadané složky nebo souboru.
+- Pro aktivitu získat metadata není podporován filtr zástupných znaků u složek nebo souborů.
 
 **Relační databáze**
 
-| Konektor/metadata | – struktura | Columncount | Existuje |
+| Konektory/metadata | – struktura | Sloupců | neexistuje |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
-| [Spravovaná instance Azure SQL Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
+| [Azure SQL Database spravovaná instance](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
 | [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Možnosti metadat
 
-Chcete-li načíst odpovídající informace, můžete v seznamu polí Získat metadata zadat následující typy metadat:
+Můžete zadat následující typy metadat v seznamu pole získat aktivitu metadat pro načtení odpovídajících informací:
 
 | Typ metadat | Popis |
 |:--- |:--- |
-| název_položky | Název souboru nebo složky. |
-| Itemtype | Typ souboru nebo složky. Vrácená `File` hodnota `Folder`je nebo . |
-| velikost | Velikost souboru v bajtech. Platí pouze pro soubory. |
-| Vytvořen | Byl vytvořen čas data souboru nebo složky. |
-| lastModified | Datum poslední změny souboru nebo složky. |
-| podřízené položky | Seznam podsložek a souborů v dané složce. Platí pouze pro složky. Vrácená hodnota je seznam názvu a typu každé podřízené položky. |
-| obsahMD5 | MD5 souboru. Platí pouze pro soubory. |
-| – struktura | Datová struktura tabulky souboru nebo relační databáze. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
-| Columncount | Počet sloupců v souboru nebo relační tabulce. |
-| Existuje| Zda existuje soubor, složka nebo tabulka. Všimněte `exists` si, že pokud je zadán v seznamu polí Získat metadata, aktivita se nezdaří, i když soubor, složka nebo tabulka neexistuje. Místo `exists: false` toho je vrácena ve výstupu. |
+| itemName | Název souboru nebo složky |
+| itemType | Typ souboru nebo složky Vrácená hodnota je `File` nebo `Folder`. |
+| velikost | Velikost souboru (v bajtech) Platí pouze pro soubory. |
+| vytvářejí | Datum a čas vytvoření souboru nebo složky. |
+| lastModified | Datum a čas poslední změny souboru nebo složky |
+| childItems | Seznam podsložek a souborů v dané složce. Platí pouze pro složky. Vrácená hodnota je seznam názvů a typů jednotlivých podřízených položek. |
+| contentMD5 | Algoritmus MD5 souboru Platí pouze pro soubory. |
+| – struktura | Datová struktura tabulky souborů nebo relačních databází. Vrácená hodnota je seznam názvů sloupců a typů sloupců. |
+| Sloupců | Počet sloupců v souboru nebo relační tabulce |
+| neexistuje| Zda existuje soubor, složka nebo tabulka. Všimněte si, `exists` že pokud je zadaný v seznamu pole získat metadata, aktivita se nezdařila, i když soubor, složka nebo tabulka neexistují. Místo toho `exists: false` se vrátí ve výstupu. |
 
 >[!TIP]
->Pokud chcete ověřit, zda existuje soubor, složka nebo `exists` tabulka, zadejte v seznamu polí Získat metadata. Potom můžete zkontrolovat `exists: true/false` výsledek ve výstupu aktivity. Pokud `exists` není zadán v seznamu polí, získat metadata aktivity se nezdaří, pokud objekt nebyl nalezen.
+>Pokud chcete ověřit, zda existuje soubor, složka nebo tabulka, zadejte `exists` v seznamu pole aktivity získat metadata. Pak můžete `exists: true/false` výsledek ověřit ve výstupu aktivity. Pokud `exists` není zadaný v seznamu polí, aktivita získat metadata se nezdaří, pokud se objekt nenajde.
 
 >[!NOTE]
->Když získáte metadata z úložišť `modifiedDatetimeEnd`souborů `childItems` a nakonfigurujete `modifiedDatetimeStart` nebo , výstup ve výstupu bude obsahovat pouze soubory v dané cestě, které mají naposledy upravený čas v zadaném rozsahu. V in nebude obsahovat položky v podsložkách.
+>Když načtete metadata z úložišť souborů a nakonfigurujete `modifiedDatetimeStart` nebo `childItems` `modifiedDatetimeEnd`, bude ve výstupu obsaženo pouze soubory v dané cestě s časem poslední změny v zadaném rozsahu. V nezahrnuje položky v podsložkách.
 
 ## <a name="syntax"></a>Syntaxe
 
-**Získat aktivitu metadat**
+**Aktivita získání metadat**
 
 ```json
 {
@@ -111,7 +111,7 @@ Chcete-li načíst odpovídající informace, můžete v seznamu polí Získat m
 }
 ```
 
-**Dataset**
+**Integrován**
 
 ```json
 {
@@ -135,18 +135,18 @@ Chcete-li načíst odpovídající informace, můžete v seznamu polí Získat m
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-V současné době získat metadata aktivity můžete vrátit následující typy informací metadat:
+V současné době aktivita získat metadata může vracet následující typy informací o metadatech:
 
 Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
-seznam polí | Typy požadovaných informací metadat. Podrobnosti o podporovaných metadatech naleznete v části [Možnosti metadat](#metadata-options) v tomto článku. | Ano 
-Dataset | Referenční datová sada, jejíž metadata mají být načtena aktivitou Získat metadata. Informace o podporovaných konektorech naleznete v části [Možnosti.](#capabilities) Podrobnosti o syntaxi datové sady naleznete v konkrétních tématech konektoru. | Ano
-formatSettings | Použít při použití datové sady typu formátu. | Ne
-storeSettings | Použít při použití datové sady typu formátu. | Ne
+fieldList | Typy informací o metadatech, které jsou požadovány. Podrobnosti o podporovaných metadatech najdete v části [Možnosti metadat](#metadata-options) v tomto článku. | Ano 
+integrován | Referenční datová sada, jejíž metadata mají být načtena aktivitou získání metadat. Informace o podporovaných konektorech najdete v části [Možnosti](#capabilities) . Podrobnosti o syntaxi datové sady najdete v tématech konkrétního konektoru. | Ano
+formatSettings | Použijte při použití typu DataSet typu Format. | Ne
+storeSettings | Použijte při použití typu DataSet typu Format. | Ne
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
-Výsledky získat metadata jsou zobrazeny ve výstupu aktivity. Následují dvě ukázky zobrazující rozsáhlé možnosti metadat. Chcete-li výsledky použít v následné aktivitě, použijte tento vzor: `@{activity('MyGetMetadataActivity').output.itemName}`.
+Výsledky získání metadat se zobrazí ve výstupu aktivity. Následují dvě ukázky, které zobrazují rozsáhlé možnosti metadat. Chcete-li použít výsledky v následující aktivitě, použijte tento model `@{activity('MyGetMetadataActivity').output.itemName}`:.
 
 ### <a name="get-a-files-metadata"></a>Získání metadat souboru
 
@@ -173,7 +173,7 @@ Výsledky získat metadata jsou zobrazeny ve výstupu aktivity. Následují dvě
 }
 ```
 
-### <a name="get-a-folders-metadata"></a>Získání metadat složky
+### <a name="get-a-folders-metadata"></a>Získat metadata složky
 
 ```json
 {
@@ -196,9 +196,9 @@ Výsledky získat metadata jsou zobrazeny ve výstupu aktivity. Následují dvě
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o dalších aktivitách toku řízení podporovaných společností Data Factory:
+Seznamte se s dalšími aktivitami toku řízení, které podporuje Data Factory:
 
-- [Spustit aktivitu kanálu](control-flow-execute-pipeline-activity.md)
+- [Aktivita spuštění kanálu](control-flow-execute-pipeline-activity.md)
 - [Aktivita ForEach](control-flow-for-each-activity.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
-- [Webová aktivita](control-flow-web-activity.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
+- [Aktivita webu](control-flow-web-activity.md)

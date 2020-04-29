@@ -1,6 +1,6 @@
 ---
-title: Poskytování a zabezpečení propojené služby v Azure Synapse Analytics
-description: Zjistěte, jak zřídit a zabezpečit propojenou službu pomocí spravované virtuální sítě
+title: Zřízení a zabezpečení propojené služby v Azure synapse Analytics
+description: Naučte se zřizovat a zabezpečovat propojenou službu pomocí spravované virtuální sítě.
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -10,64 +10,64 @@ ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: 435c3fd6b1e6444fa3a31c68b4d74c2553d2e634
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430549"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí soukromých odkazů 
+# <a name="securing-a-linked-service-with-private-links"></a>Zabezpečení propojené služby pomocí privátních odkazů 
 
-V tomto článku se dozvíte, jak zabezpečit propojené služby v Synapse s privátní koncový bod.
+V tomto článku se dozvíte, jak zabezpečit propojenou službu v synapse pomocí privátního koncového bodu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Předplatné Azure**: Pokud nemáte předplatné Azure, vytvořte [si bezplatný účet Azure,](https://azure.microsoft.com/free/) než začnete.
-* **Účet Azure Storage**: Azure Data Lake Gen 2 používáte jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, najdete v [tématu vytvoření účtu Azure Storage](../../storage/blobs/data-lake-storage-quickstart-create-account.md) pro kroky k jeho vytvoření. Ujistěte se, že účet úložiště obsahuje filtrování IP adres synapse studio pro přístup k němu a že povolíte přístup k účtu úložiště pouze **vybraným sítím.** Nastavení pod okovou **firewallem a virtuálními sítěmi** by mělo vypadat jako obrázek níže.
+* **Předplatné Azure**: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
+* **Účet Azure Storage**: Azure Data Lake Gen 2 použijete jako *zdrojové* úložiště dat. Pokud nemáte účet úložiště, přečtěte si článek [vytvoření Azure Storage účtu](../../storage/blobs/data-lake-storage-quickstart-create-account.md) , kde najdete kroky pro jeho vytvoření. Ujistěte se, že účet úložiště má k přístupu přístup synapse Studio IP a že povolujete přístup jenom **vybraným sítím** k účtu úložiště. Nastavení v okně **brány firewall a virtuální sítě** by mělo vypadat jako na obrázku níže.
 
-![Účet zabezpečeného úložiště](./media/secure-storage-account.png)
+![Zabezpečený účet úložiště](./media/secure-storage-account.png)
 
-## <a name="create-a-linked-service-with-private-links"></a>Vytvoření propojené služby pomocí soukromých odkazů
+## <a name="create-a-linked-service-with-private-links"></a>Vytvoření propojené služby s privátními odkazy
 
-V Azure Synapse Analytics, propojené služby je místo, kde definujete informace o připojení k jiným službám. V této části přidáte Azure Synapse Analytics a Azure Data Lake Gen 2 jako propojené služby.
+V Azure synapse Analytics je propojená služba, kde můžete definovat informace o připojení k ostatním službám. V této části přidáte Azure synapse Analytics a Azure Data Lake Gen 2 jako propojené služby.
 
-1. Otevřete Azure Synapse Studio a přejděte na kartu **Spravovat.**
-1. V části **Externí připojení**vyberte **Propojené služby**.
-1. Chcete-li přidat propojenou službu, klepněte na tlačítko **Nový**.
-1. Vyberte dlaždici Azure Data Lake Storage Gen2 ze seznamu a klikněte na **Pokračovat**.
-1. Ujistěte se, že jste **povolili interaktivní vytváření**. Povolení může trvat přibližně 1 minutu. 
-1. Zadejte ověřovací pověření. Klíč účtu, instanční objekt a spravovaná identita jsou aktuálně podporované typy ověřování. Chcete-li ověřit správnost pověření, klepněte na tlačítko Testovat připojení.
-1. Vyberte **Testovat připojení**, mělo by selhat, protože účet úložiště neumožňuje přístup k němu bez vytvoření a schválení privátní koncový bod. V chybové zprávě byste měli vidět odkaz na vytvoření **soukromého koncového bodu,** který můžete sledovat přejít na další část. Pokud budete postupovat podle tohoto odkazu, přeskočte další část.
+1. Otevřete Azure synapse Studio a pokračujte na kartu **Spravovat** .
+1. V části **externí připojení**vyberte **propojené služby**.
+1. Chcete-li přidat propojenou službu, klikněte na tlačítko **Nový**.
+1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a klikněte na **pokračovat**.
+1. Ujistěte se, že jste povolili **interaktivní vytváření**. Povolení může trvat přibližně 1 minutu. 
+1. Zadejte přihlašovací údaje pro ověření. Typy ověřování aktuálně podporují klíč účtu, instanční objekt a spravovanou identitu. Kliknutím na test připojení ověřte správnost vašich přihlašovacích údajů.
+1. Vyberte **Test připojení**, který by neměl selhat, protože účet úložiště nepovoluje přístup k němu bez vytváření a schvalování privátního koncového bodu. V chybové zprávě byste měli vidět odkaz pro vytvoření **privátního koncového bodu** , pomocí kterého můžete přejít k další části. Pokud tento odkaz provedete, přeskočte další část.
 1. Po dokončení vyberte **Vytvořit**.
 
 ## <a name="create-a-managed-private-endpoint"></a>Vytvoření spravovaného privátního koncového bodu
 
-V případě, že jste neklikali do hypertextového odkazu při testování výše uvedeného připojení, postupujte podle následující cesty. Nyní je třeba vytvořit spravovaný soukromý koncový bod, který se připojíte k propojené službě vytvořené výše.
+Pokud jste v případě testování výše uvedeného připojení nepoužili odkaz na hypertextový odkaz, použijte následující cestu. Teď je potřeba vytvořit spravovaný privátní koncový bod, ke kterému se připojíte přes propojenou službu vytvořenou výše.
 
-1. Přejděte na kartu **Spravovat.**
-1. Přejděte do části **Spravované virtuální sítě.**
-1. V části Spravované soukromé koncového bodu vyberte **+ Nový.**
-1. Vyberte dlaždici Azure Data Lake Storage Gen2 ze seznamu a vyberte **Pokračovat**.
+1. Přejít na kartu **Spravovat** .
+1. Přejít do části **spravované virtuální sítě** .
+1. V části spravovaný privátní koncový bod vyberte **+ Nový** .
+1. V seznamu Vyberte dlaždici Azure Data Lake Storage Gen2 a vyberte **pokračovat**.
 1. Zadejte název účtu úložiště, který jste vytvořili výše.
-1. Vybrat **vytvořit**
-1. Měli byste vidět po čekání několik sekund, že soukromý odkaz vytvořil potřebuje schválení.
+1. Vyberte **vytvořit** .
+1. Měli byste vidět, že se po chvíli čekání na vytvoření privátního odkazu vyžaduje schválení.
 
-## <a name="approval-of-a-private-link"></a>Schválení soukromého spojení
-1. Vyberte soukromý koncový bod, který jste vytvořili výše. Můžete zobrazit hypertextový odkaz, který vám umožní schválit soukromý koncový bod na úrovni účtu úložiště. *Alternativou je přejít přímo na účet úložiště portálu Azure a přejít do okna **privátní koncového bodu.***
-1. Zaškrtněte soukromý koncový bod, který jste vytvořili ve studiu, a vyberte **schválit**.
-1. Přidejte popis a klikněte na **tlačítko ano.**
-1. Vraťte se do Synapse Studia v části **Spravované virtuální sítě** na kartě **Správa.**
-1. Mělo by trvat přibližně 1 minutu, než se schválení projeví pro váš soukromý koncový bod.
+## <a name="approval-of-a-private-link"></a>Schválení privátního odkazu
+1. Vyberte privátní koncový bod, který jste vytvořili výše. Můžete se podívat na hypertextový odkaz, který vám umožní schválit privátní koncový bod na úrovni účtu úložiště. *Alternativou je přejít přímo na účet úložiště Azure Portal a přejít do okna **připojení privátního koncového bodu** .*
+1. Zaznačte si privátní koncový bod, který jste vytvořili v nástroji Studio, a vyberte **schválit**.
+1. Přidejte popis a klikněte na **Ano** .
+1. Vraťte se do synapse studia v části **spravované virtuální sítě** na kartě **Spravovat**.
+1. Může trvat přibližně 1 minutu, aby se schválení projevilo pro váš soukromý koncový bod.
 
-## <a name="check-the-connection-works"></a>Zkontrolujte, zda připojení funguje
-1. Přejděte na kartu **Spravovat** a vyberte propojenou službu, kterou jste vytvořili.
-1. Ujistěte se, že interaktivní **vytváření** je aktivní.
-1. Vyberte **Test připojení**. Měli byste vidět připojení být úspěšné.
+## <a name="check-the-connection-works"></a>Ověřte, že připojení funguje
+1. Přejít na kartu **Spravovat** a vybrat propojenou službu, kterou jste vytvořili.
+1. Ujistěte se, že je **interaktivní vytváření obsahu** aktivní.
+1. Vyberte **Test připojení**. Mělo by se zobrazit úspěšné připojení.
 
-Nyní jste vytvořili bezpečné a soukromé spojení mezi Synapse a vaší propojené služby!
+Nyní jste navázali zabezpečené a privátní připojení mezi synapse a propojenou službou.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete v Synapse Analytics rozvíjet další porozumění spravovanému privátnímu koncovému bodu, přečtěte si [článek Koncept kolem soukromého koncového bodu spravovaného synapse.](data-integration-data-lake.md)
+Další porozumění spravovanému privátnímu koncovému bodu v synapse Analytics najdete v článku o [konceptu o synapse spravovaném privátním koncovým bodem](data-integration-data-lake.md) .
 
-Další informace o integraci dat pro Synapse Analytics najdete v tématu [ingestování dat do](data-integration-data-lake.md) článku data lake.
+Další informace o integraci dat pro synapse Analytics najdete v článku ingestování [dat do data Lake](data-integration-data-lake.md) .

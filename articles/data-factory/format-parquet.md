@@ -1,6 +1,6 @@
 ---
-title: Formát parket ve službě Azure Data Factory
-description: Toto téma popisuje, jak zajít s formátem parket v Azure Data Factory.
+title: Formát Parquet v Azure Data Factory
+description: Toto téma popisuje, jak v Azure Data Factory pracovat s formátem Parquet.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 223b1b996b82acaa753eb55723e251dc5901bbec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417704"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Formát parket ve službě Azure Data Factory
+# <a name="parquet-format-in-azure-data-factory"></a>Formát Parquet v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Postupujte podle tohoto článku, pokud chcete **analyzovat parketové soubory nebo zapsat data do formátu parkety**. 
+Pokud chcete **analyzovat soubory Parquet nebo zapsat data do formátu Parquet**, postupujte podle tohoto článku. 
 
-Formát parket je podporovaný pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), File [System](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md)a [SFTP](connector-sftp.md).
+Formát Parquet se podporuje pro následující konektory: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [systém souborů](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [http](connector-http.md)a [SFTP](connector-sftp.md).
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [Datové sady.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou Parket.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Parquet.
 
 | Vlastnost         | Popis                                                  | Požaduje se |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Vlastnost type datové sady musí být nastavena na **parkety**. | Ano      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souboru má svůj `location`vlastní typ umístění a podporované vlastnosti v části . **Viz podrobnosti v článku konektoru -> část vlastností datové sady**. | Ano      |
-| kompreseKodlič | Kompresní kodek, který se má použít při psaní do parketových souborů. Při čtení z parketových souborů data továrny automaticky určit kompresní kodek na základě metadat souboru.<br>Podporované typy jsou "**none**", "**gzip**", "**snappy**" (výchozí) a "**lzo**". Poznámka: Aktuálně kopírovat aktivity nepodporuje LZO při čtení a zápisu parketových souborů. | Ne       |
+| type             | Vlastnost Type datové sady musí být nastavená na **Parquet**. | Ano      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v `location`rámci. **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
+| compressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Parquet Při čtení ze souborů Parquet určují datové továrny automaticky kodek komprese na základě metadat souboru.<br>Podporované typy jsou "**none**", "**gzip**", "**přichycení**" (výchozí) a "**LZO**". Poznámka: v současné době kopírování nepodporuje LZO při čtení a zápisu Parquet souborů. | Ne       |
 
 > [!NOTE]
-> Prázdné místo v názvu sloupce není pro parketové soubory podporováno.
+> Prázdné znaky v názvu sloupce nejsou pro soubory Parquet podporovány.
 
-Níže je uveden příklad datové sady parket v azure blob storage:
+Níže je příklad datové sady Parquet v Azure Blob Storage:
 
 ```json
 {
@@ -62,55 +62,55 @@ Níže je uveden příklad datové sady parket v azure blob storage:
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem a jímkou parket.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností, které Parquet zdroj a jímka podporuje.
 
-### <a name="parquet-as-source"></a>Parkety jako zdroj
+### <a name="parquet-as-source"></a>Parquet as source
 
-Následující vlastnosti jsou podporovány v části *** \*zdroje aktivity\* *** kopírování.
-
-| Vlastnost      | Popis                                                  | Požaduje se |
-| ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost type zdroje aktivity kopírování musí být nastavena na **Název Pole- Zdroj**. | Ano      |
-| storeSettings | Skupina vlastností o čtení dat z úložiště dat. Každý konektor založený na souborech má `storeSettings`vlastní podporovaná nastavení čtení v části . **Viz podrobnosti v článku konektoru -> Kopírovat vlastnosti aktivity .** | Ne       |
-
-### <a name="parquet-as-sink"></a>Parkety jako umyvadlo
-
-Následující vlastnosti jsou podporovány v části *** \*jímky\* *** aktivity kopírování.
+V části *** \*zdroj\* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
 | Vlastnost      | Popis                                                  | Požaduje se |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost type zdroje aktivity kopírování musí být nastavena na **ParketquetSink**. | Ano      |
-| storeSettings | Skupina vlastností o tom, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má `storeSettings`vlastní podporovaná nastavení zápisu v části . **Viz podrobnosti v článku konektoru -> Kopírovat vlastnosti aktivity .** | Ne       |
+| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ParquetSource**. | Ano      |
+| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+
+### <a name="parquet-as-sink"></a>Parquet jako jímka
+
+V části *** \*jímka\* *** aktivity kopírování jsou podporovány následující vlastnosti.
+
+| Vlastnost      | Popis                                                  | Požaduje se |
+| ------------- | ------------------------------------------------------------ | -------- |
+| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **ParquetSink**. | Ano      |
+| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
-Naučte se podrobnosti z [transformace zdroje](data-flow-source.md) a [transformace jímky](data-flow-sink.md) v toku dat mapování.
+Přečtěte si podrobnosti o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v mapování toku dat.
 
-## <a name="data-type-support"></a>Podpora datového typu
+## <a name="data-type-support"></a>Podpora datových typů
 
-Datové typy parketových komplexů nejsou v současné době podporovány (např.
+Parquet komplexní datové typy se momentálně nepodporují (např. MAP, LIST, STRUCT).
 
-## <a name="using-self-hosted-integration-runtime"></a>Použití prostředí Runtime integrace s vlastním hostitelem
+## <a name="using-self-hosted-integration-runtime"></a>Použití Integration Runtime pro místní hostování
 
 > [!IMPORTANT]
-> Pro kopírování zmocněný Self-hosted Integrace Runtime například mezi on-premises a cloud úložiště dat, pokud nejste kopírování parketové **soubory, jak-je**, je třeba nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** a **Microsoft Visual C + + 2010 Redistribuovatelný balíček** na vašem počítači IR. Podívejte se na následující odstavec s dalšími podrobnostmi.
+> Pro kopii, která je oprávněná v místním prostředí Integration Runtime například mezi místními a cloudovým úložištěm dat, pokud soubory Parquet nekopírujete **tak, jak jsou**, je třeba na počítač IR nainstalovat **64-bit JRE 8 (Java Runtime Environment) nebo OpenJDK** and **Microsoft Visual C++ 2010 Redistributable Package** . Další podrobnosti najdete v následujícím odstavci.
 
-Pro kopírování spuštěné na samoobslužné ir s serializací par- souboru serializace/ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* deserializace, ADF vyhledá java runtime *`JAVA_HOME`* za prvé kontrolou registru pro JRE, pokud nebyl nalezen, za druhé kontrolu systémové proměnné pro OpenJDK.
+Pro kopírování běžící v prostředí IR v místním prostředí s Parquet serializací/deserializace vyhledá ADF modul runtime Java tím, že se nejprve *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* zkontroluje registr pro JRE, pokud se nenajde, druhá kontroluje proměnnou *`JAVA_HOME`* systému pro OpenJDK.
 
-- **Použití JRE**: 64bitové infračervené záření vyžaduje 64bitový jre. Najdete ji [zde](https://go.microsoft.com/fwlink/?LinkId=808605).
-- **Chcete-li použít OpenJDK**: Je podporován od IR verze 3.13. Zabalte soubor jvm.dll se všemi ostatními požadovanými sestaveními openjdk do samoobslužného infračerveného počítače a odpovídajícím způsobem nastavte proměnnou prostředí systému JAVA_HOME.
-- **Instalace redistribuovatelného balíčku Visual C++ 2010**: Redistribuovatelný balíček Visual C++ 2010 není nainstalován s infračervenými instalacemi hostovanými samostatně. Najdete ji [zde](https://www.microsoft.com/download/details.aspx?id=14632).
+- **Použití JRE**: 64-bit IR vyžaduje 64-bit JRE. Můžete ho najít [tady](https://go.microsoft.com/fwlink/?LinkId=808605).
+- **Použití OpenJDK**: podporuje se od verze IR 3,13. Zabalit soubor JVM. dll se všemi ostatními požadovanými sestaveními OpenJDK do místního počítače IR a nastavte proměnnou prostředí systému JAVA_HOME odpovídajícím způsobem.
+- **Instalace balíčku Visual C++ 2010 Redistributable**: Visual C++ 2010 Distribuovatelný balíček není nainstalovaný s instalacemi v místním prostředí IR. Můžete ho najít [tady](https://www.microsoft.com/download/details.aspx?id=14632).
 
 > [!TIP]
-> Pokud zkopírujete data do/z formátu Parketu pomocí prostředí s vlastním hostitelem integračního běhu a stisknete chybu s tím, že "Při vyvolání java došlo k chybě, zpráva: **java.lang.OutOfMemoryError:Java hedžprostor**", můžete přidat proměnnou `_JAVA_OPTIONS` prostředí v počítači, který je hostitelem samoobslužné infračervené hodu, a upravit velikost haldy min/max pro JVM, aby se tato kopie uvolnila, a pak znovu spustit kanál.
+> Pokud kopírujete data do nebo z formátu Parquet pomocí Integration Runtime v místním prostředí a omylem zaznamenáte chybu při vyvolání Java, zpráva: **Java. lang. OutOfMemoryError: prostor haldy Java**", můžete přidat proměnnou `_JAVA_OPTIONS` prostředí v počítači, který je hostitelem prostředí IR v místním prostředí, a upravit tak minimální/maximální velikost haldy pro JVM, abyste mohli takovou kopii provést, a pak znovu spustit kanál.
 
-![Nastavit velikost haldy JVM na samoobslužné infračervené ovládání](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Nastavení velikosti haldy JVM v místním prostředí IR](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Příklad: nastavená `_JAVA_OPTIONS` `-Xms256m -Xmx16g`proměnná s hodnotou . Příznak `Xms` určuje počáteční fond přidělení paměti pro virtuální počítač Java `Xmx` (JVM), zatímco určuje maximální fond přidělení paměti. To znamená, že JVM `Xms` bude spuštěn s množstvím paměti a `Xmx` bude moci používat maximální množství paměti. Ve výchozím nastavení používá ADF min 64 MB a max 1G.
+Příklad: nastavte proměnnou `_JAVA_OPTIONS` s hodnotou `-Xms256m -Xmx16g`. Příznak `Xms` Určuje počáteční fond přidělení paměti pro prostředí Java Virtual Machine (JVM), zatímco `Xmx` určuje maximální fond přidělení paměti. To znamená, že JVM bude spuštěn s `Xms` velikostí paměti a bude moci využít maximální `Xmx` množství paměti. Ve výchozím nastavení ADF používá minimální 64 MB a maximální 1G.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kopírovat přehled aktivit](copy-activity-overview.md)
+- [Přehled aktivit kopírování](copy-activity-overview.md)
 - [Mapování toku dat](concepts-data-flow-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
-- [Aktivita getMetadata](control-flow-get-metadata-activity.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
+- [Aktivita GetMetadata](control-flow-get-metadata-activity.md)

@@ -1,6 +1,6 @@
 ---
-title: Pokyny k omezení úložiště klíčů Azure
-description: Omezení trezoru klíčů omezuje počet souběžných volání, aby se zabránilo nadměrnému využívání prostředků.
+title: Pokyny k omezování služby Azure Key Vault
+description: Omezení Key Vault omezuje počet souběžných volání, která zabraňují nadměrnému využití prostředků.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,60 +10,60 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81432083"
 ---
-# <a name="azure-key-vault-throttling-guidance"></a>Pokyny k omezení úložiště klíčů Azure
+# <a name="azure-key-vault-throttling-guidance"></a>Pokyny k omezování služby Azure Key Vault
 
-Omezení je proces, který zahájíte, který omezuje počet souběžných volání služby Azure, aby se zabránilo nadměrnému využívání prostředků. Azure Key Vault (AKV) je navržený pro zpracování velkého objemu požadavků. Pokud dojde k obrovskému počtu požadavků, omezení požadavků klienta pomáhá udržovat optimální výkon a spolehlivost služby AKV.
+Omezování je proces, který zahájíte, který omezuje počet souběžných volání služby Azure, aby nedocházelo k nadměrnému využití prostředků. Azure Key Vault (integrace) je navržena tak, aby zpracovávala velký objem požadavků. Pokud dojde k obrovskému počtu požadavků, omezování požadavků klienta pomáhá udržet optimální výkon a spolehlivost služby integrace.
 
-Omezení omezení omezení omezení se liší v závislosti na scénáři. Například pokud provádíte velký objem zápisů, možnost omezení je vyšší, než pokud provádíte pouze čtení.
+Omezení omezování se liší v závislosti na scénáři. Pokud například provádíte velký objem zápisů, je možnost omezování větší než v případě, že provádíte pouze čtení.
 
-## <a name="how-does-key-vault-handle-its-limits"></a>Jak trezor klíčů zvládá své limity?
+## <a name="how-does-key-vault-handle-its-limits"></a>Jak Key Vault zpracovává své limity?
 
-Omezení služeb v trezoru klíčů zabraňují zneužití prostředků a zajišťují kvalitu služeb pro všechny klienty trezoru klíčů. Při překročení prahové hodnoty služby trezoru klíčů omezuje všechny další požadavky z tohoto klienta po určitou dobu, vrátí stavový kód HTTP 429 (příliš mnoho požadavků) a požadavek se nezdaří. Neúspěšné požadavky, které vracejí 429 počítat do omezení omezení sledovány trezoru klíčů. 
+Omezení služby v Key Vault zabrání zneužití prostředků a zajišťují kvalitní službu pro všechny klienty Key Vault. Pokud dojde k překročení prahové hodnoty služby, Key Vault omezí další požadavky klienta na určitou dobu, vrátí stavový kód HTTP 429 (příliš mnoho požadavků) a požadavek se nezdařil. Neúspěšné požadavky, které vracejí 429 počtu směrem k limitům omezení sledovaných pomocí Key Vault. 
 
-Trezor klíčů byl původně navržen pro ukládání a načítání tajných klíčů v době nasazení.  Svět se vyvinul a Key Vault se používá za běhu k ukládání a načítání tajných kódů a aplikace a služby často chtějí používat Key Vault jako databázi.  Aktuální limity nepodporují vysokou propustnost.
+Key Vault byla původně navržena tak, aby se používala k ukládání a načítání tajných klíčů v době nasazení.  Svět se vyvinul a Key Vault se používá za běhu k ukládání a načítání tajných klíčů a často aplikace a služby chtějí používat Key Vault jako databázi.  Aktuální limity nepodporují vysoké míry propustnosti.
 
-Trezor klíčů byl původně vytvořen s omezeními zadanými v [limitech služby Azure Key Vault](service-limits.md).  Chcete-li maximalizovat úložiště klíčů prostřednictvím sazeb na dotík, zde je několik doporučených pokynů a doporučených postupů pro maximalizaci propustnosti:
-1. Ujistěte se, že máte škrcení na místě.  Klient musí ctít exponenciální zásady back-off pro 429 a ujistěte se, že děláte opakování podle pokynů níže.
-1. Rozdělte provoz v trezoru klíčů mezi více trezorů a různých oblastí.   Pro každou doménu zabezpečení/dostupnosti použijte samostatný trezor.   Pokud máte pět aplikací, každý ve dvou oblastech, pak doporučujeme 10 trezorů každý obsahuje tajné kódy jedinečné pro aplikaci a oblast.  Limit pro celé předplatné pro všechny typy transakcí je pětkrát limit úložiště klíčů. Například transakce HSM ostatní na předplatné jsou omezeny na 5 000 transakcí za 10 sekund na odběr. Zvažte ukládání tajných kódů do mezipaměti ve vaší službě nebo aplikaci, abyste také snížili RPS přímo do trezoru klíčů a/nebo zpracovat provoz založený na shlukování.  Můžete také rozdělit provoz mezi různé oblasti, abyste minimalizovali latenci a použili jiné předplatné nebo trezor.  Neodesílejte více než limit předplatného do služby Trezor klíčů v jedné oblasti Azure.
-1. Ukládat do mezipaměti tajné klíče, které načtete z úložiště klíčů Azure, v paměti a znovu je použít z paměti, kdykoli je to možné.  Znovu číst z Azure Key Vault pouze v případě, že kopie uložené v mezipaměti přestane fungovat (například proto, že se otočený u zdroje). 
-1. Key Vault je určen pro vaše vlastní služby tajemství.   Pokud ukládáte tajné klíče zákazníků (zejména pro scénáře úložiště s vysokou propustností klíče), zvažte umístění klíčů do databáze nebo účtu úložiště s šifrováním a uložení pouze hlavního klíče v úložišti azure key vault.
-1. Šifrovat, zalamovat a ověřovat operace veřejného klíče lze provádět bez přístupu k trezoru klíčů, což nejen snižuje riziko omezení, ale také zvyšuje spolehlivost (pokud správně ukládáte materiál veřejného klíče do mezipaměti).
-1. Pokud používáte Trezor klíčů k ukládání přihlašovacích údajů pro službu, zkontrolujte, jestli tato služba podporuje ověřování Azure AD k přímému ověření. To snižuje zatížení trezoru klíčů, zvyšuje spolehlivost a zjednodušuje váš kód, protože trezor klíčů teď můžete použít token Azure AD.  Mnoho služeb se přesunuly pomocí Azure AD Auth.  Podívejte se na aktuální seznam na [webu Services, který podporuje spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources).
-1. Zvažte rozložení zatížení/nasazení po delší dobu, abyste zůstali pod současnými limity RPS.
-1. Pokud vaše aplikace obsahuje více uzlů, které potřebují číst stejné tajné klíče, zvažte použití vzoru rozptýlí, kde jedna entita čte tajný klíč z trezoru klíčů a fanoušky do všech uzlů.   Ukládat načtené tajné klíče do mezipaměti pouze v paměti.
-Pokud zjistíte, že výše uvedené stále nesplňuje vaše potřeby, vyplňte prosím níže uvedenou tabulku a kontaktujte nás, abyste zjistili, jaká další kapacita může být přidána (příklad je uveden níže pouze pro ilustrační účely).
+Byl původně vytvořen Key Vault s omezeními určenými v [omezeních služby Azure Key Vault](service-limits.md).  Pokud chcete maximalizovat Key Vault prostřednictvím sazeb za PUT, tady jsou některé doporučené pokyny/Osvědčené postupy pro maximalizaci propustnosti:
+1. Ujistěte se, že máte omezení na místě.  Klient musí dodržovat exponenciální back-vypnuté zásady pro 429 a ujistit se, že provádíte opakování podle pokynů níže.
+1. Rozdělte Key Vault provoz mezi několik trezorů a různých oblastí.   Pro každou doménu zabezpečení/dostupnosti použijte samostatný trezor.   Pokud máte pět aplikací, každé ve dvou oblastech, doporučujeme vám, aby každý z nich měl 10 trezorů, které obsahují jedinečné tajné údaje pro aplikaci a oblast.  Limit pro všechny typy transakcí v rámci celého předplatného je pětkrát omezením každého trezoru klíčů. Například modul HSM – ostatní transakce v rámci předplatného jsou omezeny na 5 000 transakcí za 10 sekund na jedno předplatné. Zvažte uložení tajného klíče do mezipaměti v rámci služby nebo aplikace, abyste snížili RPS přímo do trezoru klíčů nebo provozování provozu na bázi shlukování.  Můžete také rozdělit přenosy mezi různými oblastmi, abyste minimalizovali latenci a používali jiné předplatné nebo trezor.  Neodesílejte Key Vault službě v jedné oblasti Azure více než limit předplatného.
+1. Ukládání tajných kódů do mezipaměti, které načtete z Azure Key Vault paměti, a kdykoli je to možné, opakované použití z paměti.  Znovu se Přečtěte z Azure Key Vault jenom v případě, že kopírování v mezipaměti přestane fungovat (např. protože se vytočilo ve zdroji). 
+1. Key Vault je navržená pro vaše tajná klíčová služba.   Pokud ukládáte tajné kódy zákazníků (zejména pro scénáře úložiště klíčů s vysokou propustností), zvažte vložení klíčů do databáze nebo účtu úložiště s šifrováním a uložení pouze hlavního klíče do Azure Key Vault.
+1. Šifrování, zabalení a ověření operací s veřejným klíčem se dá provádět bez přístupu k Key Vault, což snižuje riziko omezování, ale také zlepšuje spolehlivost (Pokud jste správně zaznamenali ukládání materiálu veřejných klíčů do mezipaměti).
+1. Pokud používáte Key Vault k ukládání přihlašovacích údajů pro službu, ověřte, jestli tato služba podporuje ověřování Azure AD, aby se ověřilo přímo. Tím se snižuje zatížení Key Vault, zlepšuje spolehlivost a zjednodušuje váš kód, protože Key Vault nyní může použít token Azure AD.  Mnohé služby se přesunuly na použití ověřování Azure AD.  Podívejte se na aktuální seznam [služeb, které podporují spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources).
+1. Zvažte rovnoměrné rozložení zátěže nebo nasazení během delší doby, aby bylo možné zůstat v rámci současných RPS limitů.
+1. Pokud vaše aplikace obsahuje více uzlů, které potřebují přečtení stejných tajných kódů, zvažte použití vzorku ventilátoru, kde jedna entita přečte tajný klíč z Key Vault a ventilátory pro všechny uzly.   Ukládat načtené tajné klíče do mezipaměti pouze v paměti.
+Pokud zjistíte, že výše uvedené pořád ještě nesplňuje vaše požadavky, vyplňte prosím níže uvedenou tabulku a kontaktujte nás, abyste zjistili, jakou další kapacitu je možné přidat (například níže pro ilustrativní účely).
 
-| Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Provoz (operace)* | Typ klíče | Délka klíče nebo křivka | HSM klíč?| Potřeba RPS v ustáleném stavu | Špičkový RPS potřebný |
+| Název trezoru | Oblast trezoru | Typ objektu (tajný klíč, klíč nebo certifikát) | Operace * | Typ klíče | Délka klíče nebo křivka | Klíč HSM?| Je potřeba RPS stabilního stavu. | Požadovaná špička RPS |
 |--|--|--|--|--|--|--|--|--|
-| https://mykeyvault.vault.azure.net/ | | Klíč | Znaménko | EC | P-256 | Ne | 200 | 1000 |
+| https://mykeyvault.vault.azure.net/ | | Key | Znaménko | EC | P-256 | Ne | 200 | 1000 |
 
-\*Úplný seznam možných hodnot naleznete v tématu [Azure Key Vault operations](/rest/api/keyvault/key-operations).
+\*Úplný seznam možných hodnot naleznete v tématu [Azure Key Vault Operations](/rest/api/keyvault/key-operations).
 
-Pokud je schválena dodatečná kapacita, vezměte prosím na vědomí následující v důsledku zvýšení kapacity:
-1. Změny modelu konzistence dat. Jakmile je úložiště vypsáno s další kapacitou propustnosti, konzistence dat služby Key Vault zaručuje změny (nezbytné pro splnění vyššího objemu RPS, protože základní služba Azure Storage nemůže držet krok).  Ani náhodou:
-  1. **Bez povolení výpis**: Služba Trezor klíčů bude odrážet výsledky operace zápisu (např. SecretSet, CreateKey) okamžitě v následných voláních (např. SecretGet, KeySign).
-  1. **S povolit výpis**: Key Vault služba bude odrážet výsledky operace zápisu (např. SecretSet, CreateKey) do 60 sekund v následných voláních (např. SecretGet, KeySign).
-1. Klientský kód musí respektovat zásady back-off pro 429 opakování. Klientský kód volající službu Trezor klíčů nesmí okamžitě opakovat požadavky trezoru klíčů, když obdrží kód odpovědi 429.  Pokyny k omezení úložiště klíčů Azure, které jsou zde publikovány, doporučuje použít exponenciální zpětný dotaz při příjmu kódu odpovědi 429 Http.
+Pokud je další kapacita schválena, pamatujte na to, že v důsledku zvýšení kapacity se zvyšuje následující:
+1. Změny modelu konzistence dat. Jakmile je trezor povolený v seznamu s další kapacitou propustnosti, konzistence dat Key Vault služby garantuje změny (nutné pro splnění vyššího objemu RPS, protože základní Azure Storage služba nemůže zůstat zapnutá).  V kostce:
+  1. **Bez povoleného výpisu**: služba Key Vault bude odpovídat výsledkům operace zápisu (např. SecretSet, CreateKey) hned v následných voláních (např. SecretGet, symbol.
+  1. **Při povoleném výpisu**: služba Key Vault odráží výsledky operace zápisu (např. SecretSet, CreateKey) během následujících volání během 60 sekund (např. SecretGet, symbol.
+1. Kód klienta musí dodržovat zásady pro obnovení po 429 opakování. Klientský kód, který volá službu Key Vault, nesmí okamžitě opakovat Key Vault žádosti, když obdrží kód odpovědi 429.  Průvodce omezením Azure Key Vault publikovaný tady doporučuje použití exponenciálního omezení rychlostiu při příjmu kódu odpovědi HTTP 429.
 
-Pokud máte platný obchodní případ pro vyšší limity plynu, kontaktujte nás.
+Pokud máte platný obchodní případ pro omezení s vyšším omezením, kontaktujte nás prosím.
 
-## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Jak omezit aplikaci v reakci na omezení služeb
+## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Omezení aplikace v reakci na omezení služby
 
-Následující jsou **doporučené postupy, které** byste měli implementovat, když je vaše služba omezena:
+Níže jsou uvedené **osvědčené postupy** , které byste měli implementovat, když je vaše služba omezená:
 - Snižte počet operací na požadavek.
-- Snižte četnost požadavků.
-- Vyhněte se okamžitým opakováním. 
-    - Všechny požadavky narůstají v porovnání s vašimi limity využití.
+- Snižte frekvenci požadavků.
+- Vyhněte se okamžitému opakování. 
+    - Všechny požadavky se budou načítat podle vašich omezení využití.
 
-Při implementaci zpracování chyb vaší aplikace použijte kód chyby HTTP 429 ke zjištění potřeby omezení na straně klienta. Pokud se požadavek nezdaří znovu s kódem chyby HTTP 429, stále dochází k omezení služby Azure. Pokračujte v používání doporučené metody omezení na straně klienta a opakujte požadavek, dokud nebude úspěšný.
+Když implementujete zpracování chyb vaší aplikace, použijte kód chyby HTTP 429 k detekci potřeby omezování na straně klienta. Pokud se žádost znovu nepovede s kódem chyby HTTP 429, pořád se setkáte s limitem služeb Azure. Pokračujte v používání Doporučené metody omezování na straně klienta a zkuste požadavek opakovat, dokud nebude úspěšný.
 
-Kód, který implementuje exponenciální backoff je uveden níže. 
+Kód, který implementuje exponenciální omezení rychlosti, je uveden níže. 
 ```
 SecretClientOptions options = new SecretClientOptions()
     {
@@ -82,21 +82,21 @@ SecretClientOptions options = new SecretClientOptions()
 ```
 
 
-Použití tohoto kódu v klientské aplikaci C# je jednoduché. 
+Použití tohoto kódu v klientské aplikaci v jazyce C# je jednoduché. 
 
-### <a name="recommended-client-side-throttling-method"></a>Doporučená metoda omezení na straně klienta
+### <a name="recommended-client-side-throttling-method"></a>Doporučená metoda omezování na straně klienta
 
-Na kódu chyby HTTP 429 začněte přiškrcení klienta pomocí exponenciálního přístupu backoff:
+V kódu chyby HTTP 429 začněte omezovat klienta pomocí exponenciálního přístupu omezení rychlosti:
 
-1. Počkejte 1 sekundu, požadavek na opakování
-2. Pokud je stále omezen počkejte 2 sekundy, opakujte požadavek
-3. Pokud je stále omezen počkejte 4 sekundy, opakujte požadavek
-4. Pokud je stále omezen počkejte 8 sekund, opakujte požadavek
-5. Pokud je stále omezen počkejte 16 sekund, opakujte požadavek
+1. Počkat 1 sekundu, opakovat požadavek
+2. Pokud se stále omezuje čekání 2 sekund, opakujte požadavek.
+3. Pokud se stále omezuje čekání 4 sekund, opakujte požadavek.
+4. Pokud se stále omezuje čekání 8 sekund, opakujte požadavek.
+5. Pokud se stále omezuje čekání 16 sekund, opakujte požadavek.
 
-V tomto okamžiku byste neměli dostávat kódy odpovědí HTTP 429.
+V tuto chvíli byste neměli získávat kódy odpovědí HTTP 429.
 
 ## <a name="see-also"></a>Viz také
 
-Hlubší orientaci omezení na Microsoft Cloud, najdete v tématu [škrcení vzor](https://docs.microsoft.com/azure/architecture/patterns/throttling).
+Hlubší orientaci při omezování Microsoft Cloud najdete v tématu [model omezování](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

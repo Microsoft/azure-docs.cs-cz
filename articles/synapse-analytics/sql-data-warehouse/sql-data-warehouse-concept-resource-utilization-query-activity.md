@@ -1,6 +1,6 @@
 ---
-title: Správa a monitorování - aktivita dotazů, využití zdrojů
-description: Zjistěte, jaké funkce jsou k dispozici pro správu a monitorování Azure Synapse Analytics. Pomocí portálu Azure a zobrazení dynamické správy (DMVs) můžete pochopit aktivitu dotazů a využití prostředků vašeho datového skladu.
+title: Správa a monitorování – aktivita dotazů, využití prostředků
+description: Zjistěte, jaké možnosti jsou dostupné pro správu a monitorování Azure synapse Analytics. Pomocí zobrazení Azure Portal a dynamické správy (zobrazení dynamické správy) můžete pochopit aktivity dotazů a využití prostředků datového skladu.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -12,58 +12,58 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416217"
 ---
-# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure Synapse Analytics
+# <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Monitorování využití prostředků a aktivity dotazů v Azure synapse Analytics
 
-Azure Synapse Analytics poskytuje bohaté možnosti monitorování v rámci portálu Azure, abyste získali přehledy o zatížení datového skladu. Portál Azure je doporučený nástroj při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako je Azure Monitor (protokoly) s analýzou protokolů, abyste poskytli komplexní monitorování nejen pro váš datový sklad, ale i pro celou analytickou platformu Azure pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu analytické platformy pomocí služby SQL Analytics.
+Azure synapse Analytics poskytuje bohatě monitorovaný přehled v rámci Azure Portal k obí informací o úlohách datového skladu. Azure Portal je doporučeným nástrojem při monitorování datového skladu, protože poskytuje konfigurovatelné doby uchovávání, výstrahy, doporučení a přizpůsobitelné grafy a řídicí panely pro metriky a protokoly. Portál také umožňuje integraci s dalšími službami monitorování Azure, jako jsou Azure Monitor (protokoly), s Log Analytics a poskytuje tak prostředí pro monitorování holistický nejen pro datový sklad, ale i celou platformu Azure Analytics pro integrované monitorování. Tato dokumentace popisuje, jaké možnosti monitorování jsou k dispozici pro optimalizaci a správu vaší analytické platformy pomocí SQL Analytics.
 
 ## <a name="resource-utilization"></a>Využití prostředků
 
-Následující metriky jsou k dispozici na webu Azure Portal for SQL Analytics. Tyto metriky se objevují prostřednictvím [Azure Monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
+V Azure Portal pro SQL Analytics jsou k dispozici následující metriky. Tyto metriky se procházejí [Azure monitor](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics).
 
 | Název metriky             | Popis                                                  | Typ agregace |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
-| Procento CPU          | Využití procesoru ve všech uzlech pro datový sklad      | Vztaž, Min, Max    |
-| Procento datových V/V      | Využití vi ve všech uzlů pro datový sklad       | Vztaž, Min, Max    |
-| Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | Vztaž, Min, Max   |
-| Aktivní dotazy          | Počet aktivních dotazů spuštěných v systému             | Součet              |
-| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na spuštění provádění          | Součet              |
-| Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Součet, počet       |
-| Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Součet, počet       |
-| Blokováno bránou firewall     | Počet přihlášení do datového skladu, který byl zablokován     | Součet, počet       |
-| DWU limit               | Cíl úrovně služeb datového skladu                | Vztaž, Min, Max    |
-| Procento DWU          | Maximální mezi procentem procesoru a vprocentem vyvázlových dat        | Vztaž, Min, Max    |
-| Použitý DWU                | Limit DWU * Procento DWU                                   | Vztaž, Min, Max    |
-| Procento přístupů do mezipaměti    | (cache hity / cache miss) * 100, kde cache hity je součet všech columnstore segmentů hity v místní mezipaměti SSD a cache miss je columnstore segmenty mine v místní mezipaměti SSD sečteny ve všech uzlech | Vztaž, Min, Max    |
-| Procento použité mezipaměti   | (využitá vyrovnávací paměť / kapacita mezipaměti) * 100, kde se používá mezipaměť, je součet všech bajtů v místní mezipaměti SSD ve všech uzlech a kapacita mezipaměti je součtem úložné kapacity místní mezipaměti SSD ve všech uzlech | Vztaž, Min, Max    |
-| Procento místní databáze tempdb | Místní využití databáze tempdb ve všech výpočetních uzlech – hodnoty jsou vydávány každých pět minut | Vztaž, Min, Max    |
-| Velikost úložiště dat (GB) | Celková velikost databáze. To zahrnuje použité, vyhrazené a nepřidělené místo. Nepřidělené místo je zachováno pro databázi optimalizovat dotaz a načíst výkon. | Součet |
-| Velikost zotavení po havárii (GB) | Celková velikost geografické zálohy zachycované každých 24 hodin | Součet |
-| Velikost úložiště snímků (GB) | Celková velikost snímků pořízených za účelem poskytnutí bodů obnovení databáze. To zahrnuje automatické a uživatelem definované snímky. | Součet |
+| Procento CPU          | Využití CPU ve všech uzlech pro datový sklad      | AVG, min, Max    |
+| Procento datových V/V      | Využití v/v na všech uzlech pro datový sklad       | AVG, min, Max    |
+| Procento paměti       | Využití paměti (SQL Server) ve všech uzlech pro datový sklad | AVG, min, Max   |
+| Aktivní dotazy          | Počet aktivních dotazů zpracovávaných v systému             | Součet              |
+| Dotazy ve frontě          | Počet dotazů ve frontě čekajících na zahájení provádění          | Součet              |
+| Úspěšná připojení  | Počet úspěšných připojení (přihlášení) k databázi | Sum, Count       |
+| Neúspěšná připojení      | Počet neúspěšných připojení (přihlášení) k databázi | Sum, Count       |
+| Blokováno bránou firewall     | Počet přihlášení k datovému skladu, který byl zablokován     | Sum, Count       |
+| DWU limit               | Cíl na úrovni služby datového skladu                | AVG, min, Max    |
+| Procento DWU          | Maximální procento CPU a procento v/v dat        | AVG, min, Max    |
+| DWU použito                | DWU limit * DWU procento                                   | AVG, min, Max    |
+| Procento přístupů do mezipaměti    | (Neúspěšné přístupy do mezipaměti a Neúspěšné přístupy do mezipaměti) * 100 kde jsou přístupy do mezipaměti součtem všech segmentů columnstore v místní mezipaměti SSD a neúspěšných přístupů do mezipaměti jsou segmenty columnstore v místní mezipaměti SSD vyčtené ve všech uzlech. | AVG, min, Max    |
+| Procento využité mezipaměti   | (využitá mezipaměť/kapacita mezipaměti) * 100, kde použitá mezipaměť je součet všech bajtů v místní mezipaměti SSD napříč všemi uzly a kapacita mezipaměti je součet kapacity úložiště místní mezipaměti SSD napříč všemi uzly. | AVG, min, Max    |
+| Místní procento databáze tempdb | Místní využití databáze tempdb napříč všemi výpočetními uzly – hodnoty se generují každých pět minut. | AVG, min, Max    |
+| Velikost úložiště dat (GB) | Celková velikost databáze To zahrnuje použití, rezervované a nepřidělené místo. Pro databázi se uchovává nepřidělené místo pro optimalizaci výkonu dotazů a zatížení. | Součet |
+| Velikost zotavení po havárii (GB) | Celková velikost geografického zálohování pořízeného každých 24 hodin | Součet |
+| Velikost úložiště snímků (GB) | Celková velikost snímků pořízených k zadání bodů obnovení databáze. To zahrnuje automatizované a uživatelem definované snímky. | Součet |
 
-Co je třeba vzít v úvahu při zobrazování metrik a nastavení upozornění:
+Co je potřeba vzít v úvahu při prohlížení metrik a nastavení výstrah:
 
-- DWU používá představuje pouze **vysoké úrovni reprezentace využití** v celém fondu SQL a není určen jako komplexní ukazatel využití. Chcete-li zjistit, zda vertikálně navýšit nebo snížit kapacitu, zvažte všechny faktory, které mohou být ovlivněny DWU, jako je souběžnost, paměť, tempdb a adaptivní kapacita mezipaměti. Doporučujeme [spustit úlohu v různých nastaveních DWU,](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) abyste zjistili, co nejlépe vyhovuje vašim obchodním cílům.
-- Selhání a úspěšná připojení jsou hlášena pro konkrétní datový sklad - nikoli pro logický server
-- Procento paměti odráží využití i v případě, že datový sklad je v nečinnosti stavu - neodráží spotřebu paměti aktivní úlohy. Pomocí a sledování této metriky spolu s ostatními (tempdb, mezipaměť gen2) provést holistické rozhodnutí o tom, zda škálování pro další kapacitu mezipaměti zvýší výkon pracovního vytížení, aby vyhovovalvašim požadavkům.
+- DWU používá **reprezentaci pouze vysoké úrovně využití** napříč fondem SQL a není určena k komplexnímu indikátoru využití. Pokud chcete určit, jestli se má horizontální navýšení nebo snížení kapacity škálovat, vezměte v úvahu všechny faktory, které můžou být ovlivněné DWU, jako je Concurrency, Memory, tempdb a adaptivní kapacita mezipaměti. Doporučujeme [spouštět vaše úlohy v různých nastaveních DWU](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) a určit, co nejlépe vyhovuje vašim obchodním cílům.
+- Neúspěšná a úspěšná připojení se nahlásí pro konkrétní datový sklad – ne pro logický Server.
+- Procento paměti odráží využití i v případě, že je datový sklad v nečinném stavu. neodráží spotřebu paměti aktivní úlohy. Tuto metriku můžete použít a sledovat společně s ostatními (tempdb, Gen2 cache) a vytvořit si holistický rozhodnutí o tom, jestli škálování pro další kapacitu mezipaměti zvýší výkon úlohy, aby splňovala vaše požadavky.
 
 ## <a name="query-activity"></a>Aktivita dotazu
 
-Pro programové prostředí při sledování SQL Analytics přes T-SQL poskytuje služba sadu zobrazení dynamické správy (DMVs). Tato zobrazení jsou užitečné při aktivním řešení problémů a identifikaci kritických bodů výkonu s vaší úlohou.
+Pro programové prostředí při monitorování analýzy SQL prostřednictvím T-SQL poskytuje služba sadu zobrazení dynamické správy (zobrazení dynamické správy). Tato zobrazení jsou užitečná při aktivním řešení potíží a identifikaci slabých míst výkonu s vaším zatížením.
 
-Chcete-li zobrazit seznam dmvs, které se vztahují k Synapse SQL, naleznete v této [dokumentaci](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
+Pokud chcete zobrazit seznam zobrazení dynamické správy, které platí pro synapse SQL, přečtěte si tuto [dokumentaci](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metriky a diagnostické protokolování 
 
-Metriky i protokoly lze exportovat do Azure Monitor, konkrétně součást [protokoly Azure Monitor](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a lze programově přistupovat prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). Latence protokolu pro SQL Analytics je asi 10-15 minut. Další podrobnosti o faktorech ovlivňujících latenci naleznete v následující dokumentaci.
+Obě metriky a protokoly je možné exportovat do Azure Monitor, konkrétně do [Azure monitor protokolů](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a můžou být prostřednictvím [dotazů protokolu](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programově dostupné. Latence protokolu pro SQL Analytics je asi 10-15 minut. Další informace o odezvách, které mají vliv na latenci, najdete v následující dokumentaci.
 
 ## <a name="next-steps"></a>Další kroky
 
-Následující návod popisuje běžné scénáře a případy použití při monitorování a správě datového skladu:
+Následující příručka popisuje běžné scénáře a případy použití při monitorování a správě datového skladu:
 
-- [Sledování úlohy datového skladu pomocí zařízení DMV](sql-data-warehouse-manage-monitor.md)
+- [Monitorování úloh datového skladu pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md)

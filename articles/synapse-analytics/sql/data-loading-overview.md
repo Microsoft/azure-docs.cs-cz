@@ -1,6 +1,6 @@
 ---
-title: Namísto ETL, design ELT pro Synapse SQL pool | Dokumenty společnosti Microsoft
-description: Namísto ETL navrhněte proces extrakce, načtení a transformace (ELT) pro načítání dat nebo fondu SQL.
+title: Místo ETL si ELT design pro synapse SQL Pool | Microsoft Docs
+description: Místo ETL Navrhněte proces extrakce, načítání a transformace (ELT) pro načítání dat nebo fondu SQL.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,48 +11,48 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 596f4bcf2e3f829430fdc90eb1806a44a84b2bc5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81429587"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Návrh strategie načítání dat PolyBase pro fond SQL Azure Synapse
+# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>Návrh strategie načítání základních dat pro fond SQL Azure synapse
 
-Tradiční datové sklady SMP používají proces extrakce, transformace a načtení (ETL) pro načítání dat. Fond Azure SQL je architektura masivně paralelního zpracování (MPP), která využívá výhod škálovatelnosti a flexibility výpočetních prostředků a prostředků úložiště. S využitím procesu extrakce, zatížení a transformace (ELT) můžete využít MPP a eliminovat prostředky potřebné k transformaci dat před načtením.
+Tradiční datové sklady SMP používají proces extrakce, transformace a načítání (ETL) pro načítání dat. Azure SQL Pool je rozsáhlá architektura paralelního zpracování (MPP), která využívá škálovatelnost a flexibilitu výpočetních prostředků a prostředků úložiště. Použití procesu extrakce, načítání a transformace (ELT) může využít funkce MPP a eliminace prostředků potřebných k transformaci dat před jejich načtením.
 
-Zatímco fond SQL podporuje mnoho metod načítání, včetně možností mimo Polybase, jako je například Rozhraní BCP a SQL BulkCopy API, nejrychlejší a nejškálovatelnější způsob, jak načíst datum je prostřednictvím PolyBase.  PolyBase je technologie, která přistupuje k externím datům uloženým v úložišti objektů Blob Azure nebo v Azure Data Lake Store prostřednictvím jazyka T-SQL.
+I když fond SQL podporuje mnoho metod načítání, včetně nezákladních možností, jako je BCP a SQL BulkCopy API, nejrychlejší a nejškálovatelný způsob načítání data je prostřednictvím základny.  Základem je technologie, která přistupuje k externím datům uloženým ve službě Azure Blob Storage nebo Azure Data Lake Store prostřednictvím jazyka T-SQL.
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
 ## <a name="what-is-elt"></a>Co je ELT?
 
-Extrakce, načtení a transformace (ELT) je proces, při kterém jsou data extrahována ze zdrojového systému, načtena do datového skladu a poté transformována.
+Extrahování, načítání a transformace (ELT) je proces, při kterém jsou data extrahována ze zdrojového systému, načtena do datového skladu a následně transformována.
 
-Základní kroky pro implementaci PolyBase ELT pro fond SQL jsou:
+Základní kroky pro implementaci ELT Base pro fond SQL jsou:
 
 1. Extrakce zdrojových dat do textových souborů
-2. Přiěte data do úložiště objektů blob Azure nebo Azure Data Lake Store.
+2. Nakládat data do služby Azure Blob Storage nebo Azure Data Lake Store.
 3. Připravte data pro načtení.
-4. Načtěte data do pracovních tabulek fondu SQL pomocí polybase.
+4. Načtěte data do pracovních tabulek fondu SQL pomocí základu.
 5. Transformujte data.
 6. Vložení dat do produkčních tabulek
 
-Kurz načítání najdete v [článku Použití PolyBase k načtení dat z úložiště objektů blob Azure do Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Kurz načítání najdete v tématu [použití základny k načtení dat z úložiště objektů BLOB v Azure do Azure SQL Data Warehouse](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-Další informace naleznete v [tématu Načítání vzorů blogu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
+Další informace najdete v tématu [načítání vzorů na blogu](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-loading-patterns-and-strategies/).
 
-## <a name="1-extract-the-source-data-into-text-files"></a>1. Extrahujte zdrojová data do textových souborů
+## <a name="1-extract-the-source-data-into-text-files"></a>1. extrahuje zdrojová data do textových souborů.
 
-Získání dat ze zdrojového systému závisí na umístění úložiště.  Cílem je přesunout data do textových souborů podporovaných oddělovači PolyBase.
+Získávání dat ze zdrojového systému závisí na umístění úložiště.  Cílem je přesunout data do podporovaných textových souborů s oddělovači.
 
-### <a name="polybase-external-file-formats"></a>Formáty externích souborů PolyBase
+### <a name="polybase-external-file-formats"></a>Základní formáty externích souborů
 
-PolyBase načte data z UTF-8 a UTF-16 kódované oddělené textové soubory. Kromě oddělených textových souborů se načte z formátů souborů Hadoop RC File, ORC a Parquet. PolyBase může také načíst data z komprimovaných souborů Gzip a Snappy. PolyBase aktuálně nepodporuje rozšířené ASCII, formát s pevnou šířkou a vnořené formáty, jako je WinZip, JSON a XML.
+Základ kódu načítá data z textových souborů s oddělovači v kódování UTF-8 a UTF-16. Kromě textových souborů s oddělovači načte soubory ze souboru Hadoop formáty RC, ORC a Parquet. Základna může také načítat data z gzip a s přichycením komprimovaných souborů. Základová databáze v současné době nepodporuje rozšířené kódování ASCII, formát s pevnou šířkou a vnořené formáty, jako je například WinZip, JSON a XML.
 
-Pokud exportujete ze serveru SQL Server, můžete data exportovat do oddělených textových souborů pomocí [nástroje příkazového řádku bcp.](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Mapování datového typu Parkety na SQL DW je následující:
+Pokud exportujete z SQL Server, můžete pomocí [nástroje příkazového řádku BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) exportovat data do textových souborů s oddělovači. Mapování datových typů Parquet na SQL DW je následující:
 
-| **Datový typ parket** |                      **Datový typ SQL**                       |
+| **Datový typ Parquet** |                      **Datový typ SQL**                       |
 | :-------------------: | :----------------------------------------------------------: |
 |        tinyint        |                           tinyint                            |
 |       smallint        |                           smallint                           |
@@ -60,89 +60,89 @@ Pokud exportujete ze serveru SQL Server, můžete data exportovat do oddělenýc
 |        bigint         |                            bigint                            |
 |        Boolean        |                             bitové                              |
 |        double         |                            float                             |
-|         float         |                             reálná                             |
-|        double         |                            Peníze                             |
-|        double         |                          Smallmoney                          |
-|        řetězec         |                            Nchar                             |
+|         float         |                             real                             |
+|        double         |                            papír                             |
+|        double         |                          smallmoney                          |
+|        řetězec         |                            nchar                             |
 |        řetězec         |                           nvarchar                           |
 |        řetězec         |                             char                             |
 |        řetězec         |                           varchar                            |
 |        binární         |                            binární                            |
-|        binární         |                          Varbinary                           |
+|        binární         |                          varbinary                           |
 |       časové razítko       |                             date                             |
-|       časové razítko       |                        Smalldatetime                         |
+|       časové razítko       |                        smalldatetime                         |
 |       časové razítko       |                          datetime2                           |
 |       časové razítko       |                           datetime                           |
 |       časové razítko       |                             time                             |
 |       date            |                             date                             |
 |        decimal        |                            decimal                           |
 
-## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. Přiložte data do úložiště objektů blob Azure nebo azure data lake store
+## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2. překládat data do služby Azure Blob Storage nebo Azure Data Lake Store
 
-Pokud chcete data přistát ve službě Azure, můžete je přesunout do [úložiště objektů blob Azure](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) nebo Azure Data Lake [Store](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). V obou umístěních by měla být data uložena v textových souborech. PolyBase lze načíst z obou umístění.
+Pokud chcete data z Azure Storage nakládat, můžete je přesunout do služby [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) nebo [Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). V obou umístěních by se data měla ukládat v textových souborech. Základna může být načtena z libovolného umístění.
 
 Nástroje a služby, které můžete použít k přesunu dat do Azure Storage:
 
-- [Služba Azure ExpressRoute](../../expressroute/expressroute-introduction.md) zvyšuje propustnost sítě, výkon a předvídatelnost. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení do Azure. Připojení ExpressRoute nesměrují data přes veřejný internet. Připojení nabízejí vyšší spolehlivost, vyšší rychlosti, nižší latenci a vyšší zabezpečení než běžná připojení přes veřejný internet.
-- [Nástroj AZCopy](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) přesouvá data do služby Azure Storage přes veřejný internet. To funguje, pokud jsou velikosti dat menší než 10 TB. Chcete-li pravidelně provádět zatížení se společností AZCopy, otestujte rychlost sítě, abyste zjistili, zda je přijatelná.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru do Azure Storage. Informace o použití data factory s fondem SQL, najdete v [tématu Načítání dat do fondu SQL](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+- Služba [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) vylepšuje propustnost, výkon a předvídatelnost sítě. ExpressRoute je služba, která směruje vaše data prostřednictvím vyhrazeného privátního připojení k Azure. Připojení ExpressRoute nesměrují data prostřednictvím veřejného Internetu. Připojení nabízejí spolehlivější, rychlejší rychlost, nižší latenci a vyšší zabezpečení než typická připojení přes veřejný Internet.
+- [Nástroj AzCopy](../../storage/common/storage-use-azcopy-v10.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) přesouvá data Azure Storage přes veřejný Internet. To funguje, pokud jsou velikosti vašich dat menší než 10 TB. Pokud chcete pravidelně provádět zátěž s AZCopy, otestujte rychlost sítě a zjistěte, jestli je přijatelné.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) má bránu, kterou můžete nainstalovat na svůj místní server. Pak můžete vytvořit kanál pro přesun dat z místního serveru až do Azure Storage. Pokud chcete použít Data Factory s fondem SQL, přečtěte si téma [načtení dat do fondu SQL](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-## <a name="3-prepare-the-data-for-loading"></a>3. Připravte data pro načítání
+## <a name="3-prepare-the-data-for-loading"></a>3. Příprava dat pro načtení
 
-Možná budete muset připravit a vyčistit data v účtu úložiště před načtením do fondu SQL. Přípravu dat lze provést, když jsou vaše data ve zdroji, při exportu dat do textových souborů nebo po data je ve službě Azure Storage.  Nejjednodušší je pracovat s daty co nejdříve v procesu, jak je to možné.  
+Možná budete muset před načtením do fondu SQL připravit a vyčistit data v účtu úložiště. Přípravu dat lze provést, pokud jsou data ve zdroji, protože exportujete data do textových souborů nebo když jsou data v Azure Storage.  Je nejjednodušší pracovat s daty co nejdříve v tomto procesu.  
 
-### <a name="define-external-tables"></a>Definování externích tabulek
+### <a name="define-external-tables"></a>Definovat externí tabulky
 
-Před načtením dat je třeba definovat externí tabulky v datovém skladu. PolyBase používá externí tabulky k definování a přístupu k datům ve službě Azure Storage. Externí tabulka je podobná zobrazení databáze. Externí tabulka obsahuje schéma tabulky a odkazuje na data uložená mimo datový sklad.
+Předtím, než budete moci načíst data, je třeba definovat externí tabulky v datovém skladu. Základ používá pro definování a přístup k datům v Azure Storage externí tabulky. Externí tabulka je podobná zobrazení databáze. Externí tabulka obsahuje schéma tabulky a odkazuje na data, která jsou uložená mimo datový sklad.
 
 Definování externích tabulek zahrnuje určení zdroje dat, formátu textových souborů a definic tabulek. Jedná se o témata syntaxe T-SQL, která budete potřebovat:
 
-- [VYTVOŘENÍ EXTERNÍHO ZDROJE DAT](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [VYTVOŘIT EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [VYTVOŘIT EXTERNÍ TABULKU](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
 
-Příklad vytváření externích objektů najdete v kroku [Vytvoření externích tabulek](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-external-tables-for-the-sample-data) v kurzu načítání.
+Příklad vytváření externích objektů naleznete v kroku [Vytvoření externích tabulek](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-external-tables-for-the-sample-data) v kurzu načítání.
 
 ### <a name="format-text-files"></a>Formátování textových souborů
 
-Jakmile jsou externí objekty definovány, je třeba zarovnat řádky textových souborů s definicí externí tabulky a formátu souboru. Data v každém řádku textového souboru musí být zarovnána s definicí tabulky.
+Po definování externích objektů je nutné zarovnat řádky textových souborů s externí tabulkou a definicí formátu souboru. Data v každém řádku textového souboru musí být zarovnána s definicí tabulky.
 Formátování textových souborů:
 
-- Pokud data pocházejí z nerelačního zdroje, je třeba je převést na řádky a sloupce. Bez ohledu na to, zda data pocházejí z relačního nebo nerelačního zdroje, musí být data transformována tak, aby byla zarovnána s definicemi sloupců pro tabulku, do které chcete data načíst.
-- Formátováním dat v textovém souboru zarovnáte sloupce a datové typy v cílové tabulce fondu SQL. Nesouosost mezi datovými typy v externích textových souborech a tabulkou datového skladu způsobí, že řádky budou během načítání odmítnuty.
-- Oddělte pole v textovém souboru zakončením.  Ujistěte se, že používáte znak nebo znakovou sekvenci, která nebyla nalezena ve zdrojových datech. Použijte zakončení, které jste zadali pomocí [funkce CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- Pokud vaše data pocházejí z nerelačního zdroje, je nutné je transformovat na řádky a sloupce. Bez ohledu na to, jestli jsou data z relačního nebo nerelačního zdroje, musí být data transformovaná tak, aby odpovídala definicím sloupců pro tabulku, do které plánujete načíst data.
+- Naformátujte data v textovém souboru tak, aby byla v souladu se sloupci a datovými typy v cílové tabulce fondu SQL. Chybné zarovnání mezi datovými typy v externích textových souborech a v tabulce datového skladu způsobí, že se řádky během načítání odmítnou.
+- Oddělte pole v textovém souboru ukončovacím znakem.  Nezapomeňte použít znak nebo sekvenci znaků, které se ve zdrojových datech nenašly. Použijte ukončovací znak, který jste zadali pomocí nástroje [Create External File Format](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. Načtení dat do pracovních tabulek fondu SQL pomocí polybase
+## <a name="4-load-the-data-into-sql-pool-staging-tables-using-polybase"></a>4. načtěte data do pracovních tabulek fondu SQL pomocí základu.
 
-Je vhodné načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez zasahování do produkčních tabulek. Pracovní tabulka také umožňuje použít MPP fondu SQL pro transformace dat před vložením dat do produkčních tabulek.
+Osvědčeným postupem je načíst data do pracovní tabulky. Pracovní tabulky umožňují zpracovávat chyby bez rušivého vlivu na provozní tabulky. Přípravná tabulka vám také nabídne možnost použít MPP fondu SQL pro transformaci dat před vložením dat do provozních tabulek.
 
-### <a name="options-for-loading-with-polybase"></a>Možnosti načítání pomocí PolyBase
+### <a name="options-for-loading-with-polybase"></a>Možnosti načítání s použitím základny
 
-Chcete-li načíst data pomocí funkce PolyBase, můžete použít některou z těchto možností načítání:
+Chcete-li načíst data pomocí základu, můžete použít některou z těchto možností načítání:
 
-- [PolyBase s T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) funguje dobře, když vaše data jsou v úložišti objektů Blob Azure nebo Azure Data Lake Store. Poskytuje největší kontrolu nad procesem načítání, ale také vyžaduje definování externích datových objektů. Ostatní metody definují tyto objekty na pozadí při mapování zdrojových tabulek na cílové tabulky.  Chcete-li organizovat zatížení T-SQL, můžete použít Azure Data Factory, SSIS nebo Azure funkce.
-- [PolyBase s SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) funguje dobře, když jsou zdrojová data na SQL Serveru, buď místně sql servernebo v cloudu. SSIS definuje zdroj mapování cílové tabulky a také orchestruje zatížení. Pokud již máte balíčky SSIS, můžete upravit balíčky pro práci s novým cílem datového skladu.
-- Další nástroj orchestrace [Je PolyBase with Azure Data Factory (ADF).](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)  Definuje kanál a plánuje úlohy.
-- [PolyBase s Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) přenáší data z tabulky datového skladu SQL do datového rámce Databricks a/nebo zapisuje data z datového rámce Databricks do tabulky DATOVÉHO Skladu SQL pomocí PolyBase.
+- [Základ T-SQL](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) funguje dobře, když jsou vaše data ve službě Azure Blob storage nebo Azure Data Lake Store. Poskytuje vám největší kontrolu nad procesem načítání, ale také vyžaduje, abyste definovali externí datové objekty. Ostatní metody definují tyto objekty na pozadí při mapování zdrojových tabulek na cílové tabulky.  K orchestraci načtení T-SQL můžete použít Azure Data Factory, SSIS nebo Azure Functions.
+- [Základna s SSIS](/sql/integration-services/load-data-to-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) funguje dobře, když jsou vaše zdrojová data v SQL Server, a to buď SQL Server místně, nebo v cloudu. SSIS definuje mapování zdrojového do cílové tabulky a také toto zatížení orchestruje. Pokud již máte balíčky SSIS, můžete je upravit tak, aby fungovaly s novým cílem datového skladu.
+- [Základem s Azure Data Factory (ADF)](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) je další nástroj orchestrace.  Definuje kanál a plánuje úlohy.
+- [Základna s Azure Databricks](../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) přenáší data z tabulky SQL Data Warehouse do datacihly datacihly nebo zapisuje data z datového rámce datacihly do tabulky SQL Data Warehouse pomocí základu.
 
-### <a name="non-polybase-loading-options"></a>Jiné možnosti načítání mimo PolyBase
+### <a name="non-polybase-loading-options"></a>Možnosti načítání nezaložených na základech
 
-Pokud vaše data nejsou kompatibilní s PolyBase, můžete použít [bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nebo [SQLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). bcp načte přímo do fondu SQL bez procházení úložiště objektů Blob Azure a je určen pouze pro malé zatížení. Všimněte si, že výkon zatížení těchto možností je výrazně pomalejší než PolyBase.
+Pokud vaše data nejsou kompatibilní s základnu, můžete použít [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) nebo [rozhraní SqlBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). BCP se načítá přímo do fondu SQL bez přechodu přes úložiště objektů BLOB v Azure a je určený jenom pro malé zátěže. Všimněte si, že výkon zatížení těchto možností je výrazně pomalejší než základ.
 
-## <a name="5-transform-the-data"></a>5. Transformace dat
+## <a name="5-transform-the-data"></a>5. Transformujte data
 
-Zatímco data jsou v pracovní tabulce, proveďte transformace, které vaše úloha vyžaduje. Potom přesuňte data do produkční tabulky.
+Data jsou v pracovní tabulce a umožňují transformace, které vaše zatížení vyžaduje. Pak data přesuňte do provozní tabulky.
 
-## <a name="6-insert-the-data-into-production-tables"></a>6. Vložení dat do výrobních tabulek
+## <a name="6-insert-the-data-into-production-tables"></a>6. Vložte data do provozních tabulek.
 
-Vložit do ... Příkaz SELECT přesune data z pracovní tabulky do trvalé tabulky.
+VLOŽIT do... Příkaz SELECT přesune data z pracovní tabulky do trvalé tabulky.
 
-Při navrhování procesu ETL zkuste proces spustit na malém testovacím vzorku. Zkuste extrahovat 1000 řádků z tabulky do souboru, přesuňte ho do Azure a zkuste ho načíst do pracovní tabulky.
+Při navrhování procesu ETL zkuste proces spustit na malém vzorku testu. Zkuste extrahovat řádky 1000 z tabulky do souboru, přesunout je do Azure a pak je zkusit načíst do pracovní tabulky.
 
-## <a name="partner-loading-solutions"></a>Řešení pro nakládku partnerů
+## <a name="partner-loading-solutions"></a>Řešení pro načítání partnerů
 
-Mnoho našich partnerů má řešení pro nakládání. Další informace naleznete v seznamu našich [partnerů pro řešení](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Mnohé z našich partnerů načítají řešení. Pokud se chcete dozvědět víc, podívejte se na seznam našich [partnerů pro řešení](../sql-data-warehouse/sql-data-warehouse-partner-business-intelligence.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokyny k načtení naleznete v [tématu Pokyny pro načtení dat](data-loading-best-practices.md).
+Pokyny k načtení najdete v tématu [doprovodné materiály k načtení dat](data-loading-best-practices.md).

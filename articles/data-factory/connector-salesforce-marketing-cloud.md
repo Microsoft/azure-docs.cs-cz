@@ -1,6 +1,6 @@
 ---
 title: Kopírování dat z marketingového cloudu Salesforce
-description: Zjistěte, jak kopírovat data z Salesforce Marketing Cloud do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
+description: Naučte se, jak kopírovat data z marketingového cloudu Salesforce do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.author: jingwang
@@ -13,52 +13,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/25/2019
 ms.openlocfilehash: 1a5a2682198f9ce9f5cb39f21e244c723ca513d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416653"
 ---
 # <a name="copy-data-from-salesforce-marketing-cloud-using-azure-data-factory"></a>Kopírování dat z marketingového cloudu Salesforce pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z Salesforce Marketing Cloud. Vychází z článku [přehledu aktivity kopírování,](copy-activity-overview.md) který představuje obecný přehled aktivity kopírování.
+Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory kopírovat data z marketingového cloudu Salesforce. Sestaví se v článku [Přehled aktivity kopírování](copy-activity-overview.md) , který představuje obecný přehled aktivity kopírování.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
-Tento konektor Salesforce Marketing Cloud je podporován pro následující aktivity:
+Tento konektor marketingového cloudu Salesforce se podporuje pro následující činnosti:
 
-- [Kopírování aktivity](copy-activity-overview.md) s [podporovanou maticí zdrojového/jímky](copy-activity-overview.md)
-- [Vyhledávací aktivita](control-flow-lookup-activity.md)
+- [Aktivita kopírování](copy-activity-overview.md) s [podporovanou maticí zdroje/jímky](copy-activity-overview.md)
+- [Aktivita vyhledávání](control-flow-lookup-activity.md)
 
-Data z salesforce marketingcloudu můžete zkopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, které jsou podporovány jako zdroje nebo jímky aktivitou kopírování, naleznete v tabulce [Podporovaná úložiště dat.](copy-activity-overview.md#supported-data-stores-and-formats)
+Data z marketingového cloudu Salesforce můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Konektor Salesforce Marketing Cloud podporuje ověřování OAuth 2. Je postaven na rozhraní [Salesforce Marketing Cloud REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
+Konektor marketingu pro služby Salesforce podporuje ověřování OAuth 2. Je postavená na [marketingovém cloudu Salesforce REST API](https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/index-api.htm).
 
 >[!NOTE]
->Tento konektor nepodporuje načítání vlastních objektů nebo vlastních datových rozšíření.
+>Tento konektor nepodporuje načítání vlastních objektů nebo vlastních rozšíření dat.
 
 ## <a name="getting-started"></a>Začínáme
 
-Můžete vytvořit kanál s aktivitou kopírování pomocí .NET SDK, Python SDK, Azure PowerShell, REST API nebo Azure Resource Manager šablony. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [Kopírování](quickstart-create-data-factory-dot-net.md) aktivity.
+Můžete vytvořit kanál s aktivitou kopírování pomocí sady .NET SDK, Python SDK, Azure PowerShell, REST API nebo šablony Azure Resource Manager. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v [kurzu kopírování aktivit](quickstart-create-data-factory-dot-net.md) .
 
-V následujících částech jsou uvedeny podrobnosti o vlastnostech, které se používají k definování entit Datové továrny specifických pro konektor Salesforce Marketing Cloud.
+Následující části obsahují podrobné informace o vlastnostech, které slouží k definování Data Factory entit specifických pro cloudový konektor Salesforce.
 
-## <a name="linked-service-properties"></a>Vlastnosti propojených služeb
+## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro propojenou službu Salesforce Marketing Cloud jsou podporovány následující vlastnosti:
+Pro propojenou službu Salesforce marketing cloudu jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type musí být nastavena **na: SalesforceMarketingCloud.** | Ano |
+| type | Vlastnost Type musí být nastavená na: **SalesforceMarketingCloud** . | Ano |
 | clientId | ID klienta přidružené k aplikaci Salesforce Marketing Cloud.  | Ano |
-| clientSecret | Tajný klíč klienta přidružený k aplikaci Salesforce Marketing Cloud. Toto pole můžete označit jako securestring pro bezpečné uložení v adf nebo ukládat heslo v trezoru klíčů Azure a nechat adf kopírovat aktivitu vytáhnout odtud při provádění kopírování dat - další informace z [přihlašovacích údajů úložiště v trezoru klíčů](store-credentials-in-key-vault.md). | Ano |
-| použitíEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, zda má být při připojování přes TLS vyžadovánnázev hostitele v certifikátu serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, zda se má ověřit identita serveru při připojování přes TLS. Výchozí hodnotou je hodnota true.  | Ne |
+| clientSecret | Tajný klíč klienta přidružený k aplikaci Salesforce Marketing Cloud. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat si z něj při kopírování dat získat z přihlašovacích údajů možnost z [přihlašovacích údajů v Key Vault Store](store-credentials-in-key-vault.md). | Ano |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
 
-**Příklad:**
+**Případě**
 
 ```json
 {
@@ -82,16 +82,16 @@ Pro propojenou službu Salesforce Marketing Cloud jsou podporovány následujíc
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datových sad.](concepts-datasets-linked-services.md) Tato část obsahuje seznam vlastností podporovaných datovou sadou Salesforce Marketing Cloud.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou služby Salesforce marketing cloudu.
 
-Chcete-li kopírovat data z cloudu Salesforce Marketing Cloud, nastavte vlastnost type datové sady na **SalesforceMarketingCloudObject**. Podporovány jsou následující vlastnosti:
+Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte vlastnost Type datové sady na **SalesforceMarketingCloudObject**. Podporovány jsou následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type datové sady musí být nastavena **na: SalesforceMarketingCloudCloudObject.** | Ano |
-| tableName | Název tabulky. | Ne (pokud je zadán "dotaz" ve zdroji aktivity) |
+| type | Vlastnost Type datové sady musí být nastavená na: **SalesforceMarketingCloudObject** . | Ano |
+| tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Příklad**
+**Případě**
 
 ```json
 {
@@ -110,18 +110,18 @@ Chcete-li kopírovat data z cloudu Salesforce Marketing Cloud, nastavte vlastnos
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, naleznete v článku [Kanály.](concepts-pipelines-activities.md) Tato část obsahuje seznam vlastností podporovaných zdrojem služby Salesforce Marketing Cloud.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem marketingového cloudu Salesforce.
 
-### <a name="salesforce-marketing-cloud-as-source"></a>Salesforce Marketing Cloud jako zdroj
+### <a name="salesforce-marketing-cloud-as-source"></a>Marketingový Cloud Salesforce jako zdroj
 
-Chcete-li kopírovat data z cloudu Salesforce Marketing Cloud, nastavte typ zdroje v aktivitě kopírování na **SalesforceMarketingCloudSource**. V části **zdroje** aktivity kopírování jsou podporovány následující vlastnosti:
+Pokud chcete kopírovat data z marketingového cloudu Salesforce, nastavte typ zdroje v aktivitě kopírování na **SalesforceMarketingCloudSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| type | Vlastnost type zdroje aktivit kopírování musí být nastavena **na: SalesforceMarketingCloudSource.** | Ano |
-| query | Ke čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (pokud je v datové sadě zadán "název_tabulky") |
+| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SalesforceMarketingCloudSource** . | Ano |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
-**Příklad:**
+**Případě**
 
 ```json
 "activities":[
@@ -153,9 +153,9 @@ Chcete-li kopírovat data z cloudu Salesforce Marketing Cloud, nastavte typ zdro
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Vlastnosti vyhledávací aktivity
+## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
-Chcete-li se dozvědět podrobnosti o vlastnostech, zkontrolujte [aktivitu vyhledávání](control-flow-lookup-activity.md).
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat podporovaných jako zdroje a propady aktivitou kopírování v Azure Data Factory najdete v [tématu podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat podporovaných jako zdroje a jímky aktivity kopírování v Azure Data Factory najdete v části [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

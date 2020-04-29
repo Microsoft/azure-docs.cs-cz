@@ -1,6 +1,6 @@
 ---
-title: Přiřazení proměnných pomocí synapse SQL
-description: V tomto článku najdete tipy pro přiřazení t-SQL proměnných s Synapse SQL.
+title: Přiřazení proměnných k synapse SQL
+description: V tomto článku najdete tipy pro přiřazování proměnných T-SQL pomocí synapse SQL.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,26 +10,26 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428664"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>Přiřazení proměnných pomocí synapse SQL
+# <a name="assigning-variables-with-synapse-sql"></a>Přiřazení proměnných k synapse SQL
 
-V tomto článku najdete tipy pro přiřazení t-SQL proměnných s Synapse SQL.
+V tomto článku najdete tipy pro přiřazování proměnných T-SQL pomocí synapse SQL.
 
-## <a name="setting-variables-with-declare"></a>Nastavení proměnných pomocí příkazu DECLARE
+## <a name="setting-variables-with-declare"></a>Nastavení proměnných pomocí deklarace
 
-Proměnné v Synapse SQL jsou `DECLARE` nastaveny `SET` pomocí příkazu nebo příkazu. Inicializace proměnných pomocí declare je jedním z nejflexibilnějších způsobů nastavení hodnoty proměnné v synapse SQL.
+Proměnné v synapse SQL jsou nastaveny pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsobů, jak nastavit hodnotu proměnné v synapse SQL.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-Declare můžete také použít k nastavení více než jednu proměnnou najednou. Select nebo UPDATE nelze použít k následujícím akcím:
+Můžete také použít DEKLARaci k nastavení více než jedné proměnné v jednom okamžiku. PŘÍKAZ SELECT nebo UPDATE nelze použít k následujícím akcím:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použít proměnnou ve stejném příkazu DECLARE. Pro ilustraci následující příklad *@p1* není povolen, protože je inicializován a použit ve stejném příkazu DECLARE. Následující příklad uvádí chybu.
+Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci následující příklad není povolen, protože *@p1* je inicializován a použit ve stejném příkazu Declare. Následující příklad obsahuje chybu.
 
 ```sql
 DECLARE @p1 int = 0
@@ -45,11 +45,11 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>Nastavení hodnot pomocí sady
+## <a name="setting-values-with-set"></a>Nastavení hodnot pomocí SET
 
-SET je běžná metoda pro nastavení jedné proměnné.
+SET je společná metoda pro nastavení jedné proměnné.
 
-Následující příkazy jsou všechny platné způsoby nastavení proměnné s SET:
+Následující příkazy jsou platné způsoby, jak nastavit proměnnou pomocí SET:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -58,12 +58,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Pomocí sady lze nastavit pouze jednu proměnnou najednou. Obsluha sloučenin je však přípustná.
+Současně lze nastavit pouze jednu proměnnou. Jsou však přípustné složené operátory.
 
 ## <a name="limitations"></a>Omezení
 
-Nelze použít update pro přiřazení proměnných.
+Nejde použít UPDATE pro přiřazení proměnné.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v článku [přehled vývoje Synapse SQL.](develop-overview.md)
+Další tipy pro vývoj najdete v článku [Přehled vývoje synapse SQL](develop-overview.md) .

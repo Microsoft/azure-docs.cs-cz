@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy načítání dat
-description: Doporučení a optimalizace výkonu pro načítání dat do Synapse SQL
+description: Doporučení a optimalizace výkonu pro načítání dat do synapse SQL
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,13 +12,13 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431043"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Doporučené postupy pro načítání dat pro ukládání dat
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>Osvědčené postupy načítání dat pro datové sklady
 
 Doporučení a optimalizace výkonu pro načítání dat
 
@@ -36,9 +36,9 @@ Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
 ## <a name="running-loads-with-enough-compute"></a>Dostatečné výpočetní prostředky pro načítání dat
 
-Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velké načítání úlohy, zvažte škálování fondu SQL před zatížením.
+Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není možné, spouštějte souběžně co nejmenší počet úloh. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
 
-Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání ke konkrétní třídě prostředků nebo skupině pracovních vytížení. Chcete-li spustit zatížení, přihlaste se jako jeden z uživatelů načítání a spusťte zatížení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
+Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání do konkrétní třídy prostředku nebo skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
 
 ### <a name="example-of-creating-a-loading-user"></a>Příklad vytvoření uživatele načítání
 
@@ -58,13 +58,13 @@ Připojte se k datovému skladu a vytvořte uživatele. Následující kód pře
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-Chcete-li spustit zatížení s prostředky pro třídy prostředků staticRC20, přihlaste se jako LoaderRC20 a spusťte zatížení.
+Pokud chcete spustit zatížení s prostředky pro třídy prostředků staticRC20, přihlaste se jako LoaderRC20 a spusťte zátěž.
 
-Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití tříd statických prostředků zaručuje stejné prostředky bez ohledu na [jednotky datového skladu](resource-consumption-models.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
+Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití statických tříd prostředků garantuje stejné prostředky bez ohledu na [jednotky datového skladu](resource-consumption-models.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby. V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
 
 ## <a name="allowing-multiple-users-to-load"></a>Povolení načítání více uživatelům
 
-Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načítání pomocí [příkazu CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vyžaduje oprávnění control databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
+Často je potřeba, aby data do datového skladu načítalo více uživatelů. Načítání pomocí [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům. Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
 Představte si například schémata databáze schema_A pro oddělení A a schema_B pro oddělení B. Uživatelé databáze user_A a user_B budou uživateli pro načítání PolyBase v oddělení A, respektive oddělení B. Oba uživatelé mají k databázi udělená oprávnění CONTROL. Autoři schémat A a B nyní svá schémata uzamknou pomocí příkazu DENY:
 
@@ -73,7 +73,7 @@ Představte si například schémata databáze schema_A pro oddělení A a schem
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
-User_A a user_B jsou nyní uzamčeny ze schématu druhého oddělení.
+User_A a user_B jsou nyní uzamčeny ze schématu jiné oddělení.
 
 ## <a name="loading-to-a-staging-table"></a>Načítání do pracovní tabulky
 
@@ -88,9 +88,9 @@ Indexy columnstore vyžadují hodně paměti, aby mohly komprimovat data do vyso
 - Pokud chcete zajistit, aby měl nahrávající uživatel dostatek paměti pro dosažení maximální míry komprese, použijte uživatele načítání, kteří jsou členy střední nebo velké třídy prostředků.
 - Načtěte dostatek dat pro úplně naplnění nových skupin řádků. Při hromadném načítání dat se každých 1 048 576 řádků zkomprimuje přímo do indexu columnstore jako kompletní skupina řádků. Při načítání méně než 102 400 řádků se řádky odesílají do tabulky deltastore, kde se řádky uchovávají v indexu B-stromu. Pokud načtete příliš málo řádků, můžou se všechny dostat do indexu deltastore, a nebudou se okamžitě komprimovat do formátu columnstore.
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvětšení velikosti dávky při použití rozhraní SQLBulkCopy API nebo BCP
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvýšit velikost dávky při použití rozhraní SQLBulkCopy API nebo BCP
 
-Jak již bylo zmíněno dříve, načítání s PolyBase bude poskytovat nejvyšší propustnost s Synapse SQL fondu. Pokud nemůžete použít PolyBase k načtení a musí používat SQLBulkCopy API (nebo BCP), měli byste zvážit zvýšení velikosti dávky pro lepší propustnost - dobrým pravidlem je velikost dávky mezi řádky 100K až 1M.
+Jak už bylo zmíněno dříve, načítající se s využitím základny budou poskytovat nejvyšší propustnost s synapse fondem SQL. Pokud nemůžete použít základnu pro načtení a musí používat rozhraní SQLBulkCopy API (nebo BCP), měli byste zvážit zvýšení propustnosti pro lepší propustnost – dobré pravidlo je velikost dávky mezi 100 tisíc a 1M řádky.
 
 ## <a name="handling-loading-failures"></a>Zpracování chyb načítání
 
@@ -106,9 +106,9 @@ Pokud máte za den tisíce nebo více samostatných vložení, vytvořte z nich 
 
 ## <a name="creating-statistics-after-the-load"></a>Vytvoření statistiky po načtení
 
-Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To lze provést ručně nebo můžete povolit [automatické vytváření statistiky](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Pro zlepšení výkonu dotazů je důležité vytvořit statistiku pro všechny sloupce všech tabulek po prvním načtení, nebo když v datech dojde k zásadnějším změnám.  To můžete provést ručně nebo můžete povolit [Automatické vytváření statistik](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-Podrobné vysvětlení statistiky najdete v tématu [Statistika](develop-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku v pěti sloupcích tabulky Customer_Speed.
+Podrobné vysvětlení statistiky najdete v tématu [Statistika](develop-tables-statistics.md). Následující příklad ukazuje, jak ručně vytvořit statistiku pro pět sloupců Customer_Speed tabulky.
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

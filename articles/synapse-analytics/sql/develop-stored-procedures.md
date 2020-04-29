@@ -1,6 +1,6 @@
 ---
 title: Použití uložených procedur
-description: Tipy pro implementaci uložených procedur ve fondu Synapse SQL (datový sklad) pro vývoj řešení.
+description: Tipy pro implementaci uložených procedur v synapse fondu SQL (datový sklad) pro vývoj řešení
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,43 +11,43 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: a431df1ff4ef0984d1197933e7ca78979fa23089
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430978"
 ---
-# <a name="using-stored-procedures-in-sql-pool"></a>Použití uložených procedur ve fondu SQL
+# <a name="using-stored-procedures-in-sql-pool"></a>Používání uložených procedur ve fondu SQL
 
-Tipy pro implementaci uložených procedur ve fondu Synapse SQL (datový sklad) pro vývoj řešení.
+Tipy pro implementaci uložených procedur v synapse fondu SQL (datový sklad) pro vývoj řešení
 
 ## <a name="what-to-expect"></a>Co očekávat
 
-Fond SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Ještě důležitější je, že existují specifické funkce škálování, které můžete použít k maximalizaci výkonu vašeho řešení.
+Fond SQL podporuje mnoho funkcí T-SQL, které se používají v SQL Server. Důležitější je, že existují určité funkce škálované na více instancí, které můžete použít k maximalizaci výkonu řešení.
 
-Chcete-li však zachovat škálování a výkon fondu SQL, existují také některé funkce a funkce, které mají rozdíly v chování a další, které nejsou podporovány.
+Pokud ale chcete zachovat rozsah a výkon fondu SQL, existují i některé funkce a funkce, které mají rozdíly v chování a jiné, které se nepodporují.
 
-## <a name="introducing-stored-procedures"></a>Zavedení uložených procedur
+## <a name="introducing-stored-procedures"></a>Představení uložených procedur
 
-Uložené procedury jsou skvělý způsob, jak zapouzdřit kód SQL; ukládání v blízkosti dat v datovém skladu. Uložené procedury pomáhají vývojářům modularizovat jejich řešení zapouzdřením kódu do spravovatelných jednotek; usnadnění větší opětovné použitelnosti kódu. Každá uložená procedura může také přijímat parametry, aby byly ještě flexibilnější.
+Uložené procedury jsou skvělým způsobem, jak zapouzdření kódu SQL; Uložte je blízko do vašich dat v datovém skladu. Uložené procedury mohou vývojářům naplánovat modularizaci svá řešení zapouzdřením kódu do spravovatelných jednotek. usnadnění větší použitelnosti kódu. Každý uložený postup může také přijímat parametry, aby byly ještě flexibilnější.
 
-Fond SQL poskytuje zjednodušenou a zjednodušenou implementaci uložené procedury. Největší rozdíl ve srovnání s SQL Server je, že uložená procedura není předem zkompilovaný kód. V datových skladech je čas kompilace malý ve srovnání s časem potřebným ke spuštění dotazů na velkých objemech dat. Je důležitější zajistit, aby byl kód uložené procedury správně optimalizován pro velké dotazy. Cílem je ušetřit hodiny, minuty a sekundy, nikoli milisekundy. Je proto užitečnější myslet uložené procedury jako kontejnery pro logiku SQL.
+Fond SQL poskytuje zjednodušenou a zjednodušenou implementaci uložených procedur. Největší rozdíl v porovnání s SQL Server je, že uložená procedura není předem zkompilován kód. V datových skladech je čas kompilace malý v porovnání s časem potřebným ke spouštění dotazů na velké objemy dat. Je důležité zajistit, aby byl kód uložené procedury správně optimalizován pro velké dotazy. Cílem je ušetřit hodiny, minuty a sekundy, ne milisekundy. Je proto vhodnější si představit uložené procedury jako kontejnery pro SQL logiku.
 
-Když fond SQL provede uloženou proceduru, příkazy SQL jsou analyzovány, přeloženy a optimalizovány za běhu. Během tohoto procesu je každý příkaz převeden na distribuované dotazy. Kód SQL, který je spuštěn proti datům, se liší od odeslaných dotazů.
+Když fond SQL spouští vaši uloženou proceduru, příkazy SQL jsou analyzovány, přeloženy a optimalizovány za běhu. Během tohoto procesu se každý příkaz převede na distribuované dotazy. Kód SQL, který je proveden na základě dat, je jiný než odeslaný dotaz.
 
-## <a name="nesting-stored-procedures"></a>Vnoření uložených procedur
+## <a name="nesting-stored-procedures"></a>Vnořování uložených procedur
 
-Při uložené procedury volání jiných uložených procedur nebo spustit dynamické SQL, pak vnitřní uložené procedury nebo vyvolání kódu se říká, že je vnořené.
+Když uložené procedury volají jiné uložené procedury nebo spustí dynamický příkaz SQL, pak je vnitřní uložená procedura nebo volání kódu označována jako vnořená.
 
-Fond SQL podporuje maximálně osm úrovní vnoření. To se mírně liší od SQL Server. Úroveň hnízda v SQL Serveru je 32.
+Fond SQL podporuje maximálně osm úrovní vnoření. To se mírně liší od SQL Server. Úroveň vnoření v SQL Server je 32.
 
-Volání uložené procedury nejvyšší úrovně se rovná úrovni vnoření 1.
+Volání uložené procedury na nejvyšší úrovni je rovno vnořené úrovni 1.
 
 ```sql
 EXEC prc_nesting
 ```
 
-Pokud uložená procedura také provede další volání EXEC, úroveň vnoření se zvýší na dvě.
+Pokud uložená procedura také provede další volání EXEC, úroveň vnořování se zvýší na 2.
 
 ```sql
 CREATE PROCEDURE prc_nesting
@@ -57,7 +57,7 @@ GO
 EXEC prc_nesting
 ```
 
-Pokud druhý postup pak provede některé dynamické SQL, úroveň hnízda se zvýší na tři.
+Pokud druhý postup následně provede nějaký dynamický SQL, úroveň vnořování se zvýší na tři.
 
 ```sql
 CREATE PROCEDURE prc_nesting_2
@@ -68,30 +68,30 @@ EXEC prc_nesting
 ```
 
 > [!NOTE]
-> Fond SQL aktuálně nepodporuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Musíte sledovat úroveň hnízda. Je nepravděpodobné, že překročíte limit úrovně osmi vnoření, ale pokud tak učiníte, budete muset přepracovat kód tak, aby odpovídal úrovním vnoření v rámci tohoto limitu.
+> Fond SQL momentálně nepodporuje [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). Je nutné sledovat úroveň vnoření. Je pravděpodobné, že byste překročili osm omezení na úrovni vnoření, ale pokud to uděláte, budete muset znovu pracovat svůj kód, aby odpovídal úrovním vnoření v rámci tohoto limitu.
 
-## <a name="insertexecute"></a>Vložit.. Provést
+## <a name="insertexecute"></a>Vložit.. SPUSTIT
 
-Fond SQL neumožňuje využívat sadu výsledků uložené procedury s příkazem INSERT. Existuje však alternativní přístup, který můžete použít. Další informace naleznete v článku o [dočasných tabulkách](develop-tables-temporary.md).
+Fond SQL vám neumožňuje zpracovat sadu výsledků uložené procedury pomocí příkazu INSERT. Existuje však alternativní přístup, který můžete použít. Příklad najdete v článku o [dočasných tabulkách](develop-tables-temporary.md).
 
 ## <a name="limitations"></a>Omezení
 
-Existují některé aspekty Transact-SQL uložené procedury, které nejsou implementovány ve fondu SQL.
+Existují některé aspekty uložených procedur v jazyce Transact-SQL, které nejsou implementovány ve fondu SQL.
 
 Jsou to tyto:
 
-* dočasně uložené procedury
+* dočasné uložené procedury
 * číslované uložené procedury
 * rozšířené uložené procedury
-* Postupy uložené v CLR
+* Uložené procedury CLR
 * možnost šifrování
 * možnost replikace
 * parametry s hodnotou tabulky
-* Parametry jen pro čtení
+* parametry jen pro čtení
 * výchozí parametry
 * kontexty spuštění
 * return – příkaz
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](develop-overview.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](develop-overview.md).

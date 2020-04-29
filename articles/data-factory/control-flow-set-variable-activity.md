@@ -1,6 +1,6 @@
 ---
-title: Nastavení aktivity proměnných ve Službě Azure Data Factory
-description: Přečtěte si, jak pomocí aktivity Nastavit proměnnou nastavit hodnotu nastavit hodnotu existující proměnné definované v kanálu datové továrny.
+title: Nastavit aktivitu proměnné v Azure Data Factory
+description: Naučte se používat aktivitu nastavit proměnnou k nastavení hodnoty existující proměnné definované v kanálu Data Factory.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -12,16 +12,16 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417976"
 ---
-# <a name="set-variable-activity-in-azure-data-factory"></a>Nastavení aktivity proměnných ve Službě Azure Data Factory
+# <a name="set-variable-activity-in-azure-data-factory"></a>Nastavit aktivitu proměnné v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Aktivita Nastavit proměnnou slouží k nastavení hodnoty existující proměnné typu String, Bool nebo Array definované v kanálu Datové továrny.
+Aktivitu nastavit proměnnou použijte k nastavení hodnoty existující proměnné typu String, bool nebo Array definovaného v kanálu Data Factory.
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
@@ -29,17 +29,17 @@ Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 jméno | Název aktivity v kanálu | ano
 description | Text popisující, co aktivita dělá | ne
-type | Musí být nastavena na **SetVariable** | ano
-value | Hodnota objektu literálu řetězce nebo výrazu, ke které bude proměnná přiřazena | ano
+type | Musí být nastavené na **SetVariable** | ano
+value | Hodnota řetězcového literálu nebo objektu výrazu, ke kterému se proměnná přiřadí | ano
 variableName | Název proměnné, která bude nastavena touto aktivitou | ano
 
 ## <a name="incrementing-a-variable"></a>Zvýšení proměnné
 
-Běžný scénář zahrnující proměnné v Azure Data Factory používá proměnnou jako iterátor v rámci do nebo foreach aktivity. V aktivitě nastavené proměnné nelze odkazovat `value` na proměnnou nastavenou v poli. Chcete-li toto omezení vyřešit, nastavte dočasnou proměnnou a vytvořte aktivitu proměnné druhé sady. Druhá nastavená proměnná aktivita nastaví hodnotu iterátoru na dočasnou proměnnou. 
+Běžný scénář zahrnující proměnné v Azure Data Factory používá proměnnou jako iterátor v rámci aktivity do nebo foreach. V aktivitě set Variable nelze odkazovat na proměnnou, která je nastavena v `value` poli. Chcete-li toto omezení vyřešit, nastavte dočasnou proměnnou a pak vytvořte druhou aktivitu sady proměnných. Druhá aktivita sady proměnných nastaví hodnotu iterátoru na dočasnou proměnnou. 
 
 Níže je uveden příklad tohoto vzoru:
 
-![Proměnná přírůstek](media/control-flow-set-variable-activity/increment-variable.png "Proměnná přírůstek")
+![Zvýšit proměnnou](media/control-flow-set-variable-activity/increment-variable.png "Zvýšit proměnnou")
 
 ``` json
 {
@@ -97,6 +97,6 @@ Níže je uveden příklad tohoto vzoru:
 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o související aktivitě toku řízení podporované aplikací Data Factory: 
+Přečtěte si o související aktivitě toku ovládacích prvků, kterou podporuje Data Factory: 
 
 - [Aktivita připojení proměnné](control-flow-append-variable-activity.md)

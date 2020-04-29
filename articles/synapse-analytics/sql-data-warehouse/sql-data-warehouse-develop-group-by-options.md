@@ -1,6 +1,6 @@
 ---
-title: Použití seskupit podle možností
-description: Tipy pro implementaci skupiny podle možností v fondu Synapse SQL.
+title: Použití možností Group by
+description: Tipy pro implementaci skupin podle možností v synapse fondu SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,29 +12,29 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416197"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>Seskupit podle možností v fondu Synapse SQL
+# <a name="group-by-options-in-synapse-sql-pool"></a>Možnosti seskupení v synapse fondu SQL
 
-V tomto článku najdete tipy pro implementaci skupiny podle možností ve fondu SQL.
+V tomto článku najdete tipy k implementaci skupin podle možností ve fondu SQL.
 
 ## <a name="what-does-group-by-do"></a>Co dělá GROUP BY?
 
-Klauzule [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data do souhrnné sady řádků. GROUP BY má některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají řešení, která jsou následující:
+Klauzule [Group by](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL agreguje data na souhrnnou sadu řádků. Seskupit podle obsahuje některé možnosti, které fond SQL nepodporuje. Tyto možnosti mají následující alternativní řešení:
 
-* SKUPINA BY S ROLLUP
-* SKUPINY SAD
-* SKUPINA BY S KOSTKOU
+* Seskupit podle se SOUHRNem
+* SADY SESKUPENÍ
+* Seskupit podle s datovou krychlí
 
-## <a name="rollup-and-grouping-sets-options"></a>Možnosti sad souhrnů a seskupení
+## <a name="rollup-and-grouping-sets-options"></a>Možnosti sady možností Shrnutí a seskupení
 
-Nejjednodušší možností je použít UNION ALL k provedení souhrnu spíše než se spoléhat na explicitní syntaxi. Výsledek je naprosto stejný.
+Nejjednodušší možností je použít SJEDNOCENí k provedení souhrnu místo toho, aby se mohla spoléhat na explicitní syntaxi. Výsledek je přesně stejný.
 
-Následující příklad pomocí příkazu GROUP BY s možností ROLLUP:
+Následující příklad používá příkaz GROUP BY s možností ROLLUP:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -49,13 +49,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Pomocí funkce ROLLUP předchozí příklad požaduje následující agregace:
+Pomocí SOUHRNu si předchozí příklad vyžádá následující agregace:
 
-* Země a region
+* Země a oblast
 * Země
 * Celkový součet
 
-Chcete-li nahradit funkce ROLLUP a vrátit stejné výsledky, můžete použít UNION ALL a explicitně zadat požadované agregace:
+Chcete-li nahradit souhrn a vrátit stejné výsledky, můžete použít příkaz UNION ALL a explicitně zadat požadované agregace:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -82,15 +82,15 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Chcete-li nahradit sady seskupení, použije se princip vzorku. Stačí vytvořit UNION VŠECHNY oddíly pro úrovně agregace, které chcete zobrazit.
+Chcete-li nahradit sady seskupení, použije se princip ukázky. Pro úrovně agregace, které chcete zobrazit, stačí vytvořit pouze oddíly SJEDNOCENí.
 
-## <a name="cube-options"></a>Volby datové krychle
+## <a name="cube-options"></a>Možnosti datové krychle
 
-Je možné vytvořit group by with cube pomocí union all přístupu. Problém je, že kód může rychle stát těžkopádné a těžkopádné. Chcete-li tento problém zmírnit, můžete použít tento pokročilejší přístup.
+Je možné vytvořit skupinu pomocí datové krychle s použitím přístupu UNION ALL. Problémem je to, že kód může být rychle náročný a nepraktický. Pro zmírnění tohoto problému můžete použít tento pokročilejší přístup.
 
-Pomocí předchozího příkladu je prvním krokem definování "krychli", která definuje všechny úrovně agregace, které chceme vytvořit.
+Pomocí předchozího příkladu je prvním krokem definování datové krychle, která definuje všechny úrovně agregace, které chceme vytvořit.
 
-Vezměte na vědomí CROSS JOIN dvou odvozených tabulek, protože to generuje všechny úrovně pro nás. Zbytek kódu je k dispozici pro formátování:
+Poznamenejte si vzájemné spojení dvou odvozených tabulek, protože vygeneruje všechny úrovně pro nás. Zbytek kódu je pro formátování:
 
 ```sql
 CREATE TABLE #Cube
@@ -121,11 +121,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Následující obrázek znázorňuje výsledky CTAS:
+Následující obrázek ukazuje výsledky CTAS:
 
-![Seskupit podle krychle](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Seskupit podle datové krychle](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-Druhým krokem je určení cílové tabulky pro ukládání průběžných výsledků:
+Druhým krokem je zadání cílové tabulky pro ukládání dočasných výsledků:
 
 ```sql
 DECLARE
@@ -148,7 +148,7 @@ WITH
 ;
 ```
 
-Třetím krokem je smyčka přes naši krychli sloupců provádějících agregaci. Dotaz bude spuštěn jednou pro každý řádek v #Cube dočasné tabulce. Výsledky jsou uloženy v tabulce #Results temp:
+Třetí krok je smyčka nad naši datovou krychlí sloupců, které provádí agregaci. Dotaz se spustí jednou pro každý řádek v #Cube dočasné tabulce. Výsledky jsou uloženy v #Results dočasné tabulce:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -172,7 +172,7 @@ BEGIN
 END
 ```
 
-Nakonec můžete vrátit výsledky čtením z #Results dočasné tabulky:
+Nakonec můžete vrátit výsledky čtením z dočasné tabulky #Results:
 
 ```sql
 SELECT *
@@ -181,8 +181,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Rozdělením kódu do oddílů a generováním cyklinky konstrukce, kód se stává více zvládnutelné a udržovatelné.
+Rozbalením kódu v sekcích a generováním konstrukce smyčky se kód bude lépe spravovat a udržovatelný.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

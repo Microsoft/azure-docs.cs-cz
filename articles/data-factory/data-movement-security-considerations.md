@@ -1,6 +1,6 @@
 ---
-title: Aspekty zabezpečení
-description: Popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat.
+title: Důležité informace o zabezpečení
+description: Popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k lepšímu zabezpečení vašich dat.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -12,31 +12,31 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
 ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416469"
 ---
-#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+#  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 >
 > * [Verze 1](v1/data-factory-data-movement-security-considerations.md)
 > * [Aktuální verze](data-movement-security-considerations.md)
 
  [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Tento článek popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat. Prostředky správy Data Factory jsou postavené na infrastruktuře zabezpečení Azure a využívají všechna možná bezpečnostní opatření nabízená Azure.
+Tento článek popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k lepšímu zabezpečení vašich dat. Prostředky správy Data Factory jsou postavené na infrastruktuře zabezpečení Azure a využívají všechny možné bezpečnostní míry, které nabízí Azure.
 
-V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály jsou umístěny v oblasti, kde byla vytvořena datová továrna. 
+V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály se nacházejí v oblasti, ve které byl vytvořen objekt pro vytváření dat. 
 
-I když je data factory k dispozici jenom v několika oblastech, služba přesunu dat je [k dispozici globálně,](concepts-integration-runtime.md#integration-runtime-location) aby byla zajištěna kompatibilita dat, efektivita a snížené náklady na odchozí přenos dat. 
+I když je Data Factory k dispozici jenom v několika oblastech, služba přesunu dat je [dostupná globálně](concepts-integration-runtime.md#integration-runtime-location) , aby se zajistila kompatibilita dat, efektivita a snížení nákladů na výstup sítě. 
 
-Azure Data Factory neukládá žádná data s výjimkou pověření propojené služby pro úložiště cloudových dat, které jsou šifrované pomocí certifikátů. Pomocí data factory vytváříte pracovní postupy řízené daty pro orchestraci pohybu dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracováním dat pomocí [výpočetních služeb](compute-linked-services.md) v jiných oblastech nebo v místním prostředí. Pracovní postupy můžete také monitorovat a spravovat pomocí sad SDK a Azure Monitor.
+Azure Data Factory neukládá žádná data s výjimkou přihlašovacích údajů propojených služeb pro cloudová úložiště dat, která jsou zašifrovaná pomocí certifikátů. Pomocí Data Factory můžete vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracování dat pomocí [výpočetních služeb](compute-linked-services.md) v jiných oblastech nebo v místním prostředí. Pracovní postupy můžete monitorovat a spravovat také pomocí sad SDK a Azure Monitor.
 
-Data Factory byla certifikována pro:
+Data Factory bylo certifikováno pro:
 
-| **[Certifikace ČSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
+| **[Certifikace pro CSA STAR](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
 | **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
@@ -47,12 +47,12 @@ Data Factory byla certifikována pro:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje vlastní infrastrukturu, navštivte [Centrum zabezpečení Microsoft Uvěř .](https://microsoft.com/en-us/trustcenter/default.aspx) Nejnovější seznam všech nabídek dodržování předpisů https://aka.ms/AzureComplianceAzure zkontrolujte - .
+Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure – https://aka.ms/AzureCompliance.
 
-V tomto článku kontrolujeme aspekty zabezpečení v následujících dvou scénářích přesunu dat: 
+V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou scénářích přesunu dat: 
 
-- **Scénář cloudu**: V tomto scénáři zdroj i cíl jsou veřejně přístupné prostřednictvím internetu. Patří mezi ně služby spravovaného cloudového úložiště, jako je Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon Redshift, služby SaaS, jako je Salesforce, a webové protokoly, jako jsou FTP a OData. Úplný seznam podporovaných zdrojů dat najdete v [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Hybridní scénář**: V tomto scénáři je zdroj nebo cíl za bránou firewall nebo uvnitř místní podnikové sítě. Nebo úložiště dat je v privátní nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupné. Databázové servery hostované na virtuálních počítačích také spadají do tohoto scénáře.
+- **Scénář cloudu**: v tomto scénáři jsou vaše zdrojová i cílová služba veřejně přístupná prostřednictvím Internetu. Mezi ně patří spravované služby cloudového úložiště, jako jsou Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, Amazon S3, Amazon RedShift, SaaS Services, jako je Salesforce, a webové protokoly, jako jsou FTP a OData. V [podporovaných úložištích a formátech dat](copy-activity-overview.md#supported-data-stores-and-formats)najdete úplný seznam podporovaných zdrojů dat.
+- **Hybridní scénář**: v tomto scénáři je buď zdroj nebo cíl za bránou firewall nebo místní podnikovou sítí. Nebo je úložiště dat v privátní síti nebo virtuální síti (nejčastěji zdroj) a není veřejně přístupné. V tomto scénáři spadají i databázové servery hostované na virtuálních počítačích.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -60,68 +60,68 @@ V tomto článku kontrolujeme aspekty zabezpečení v následujících dvou scé
 
 ### <a name="securing-data-store-credentials"></a>Zabezpečení přihlašovacích údajů úložiště dat
 
-- **Uklápěte šifrovaná pověření ve spravovaném úložišti Azure Data Factory**. Data Factory pomáhá chránit vaše přihlašovací údaje úložiště dat šifrováním pomocí certifikátů spravovaných společností Microsoft. Tyto certifikáty se střídají každé dva roky (což zahrnuje obnovení certifikátu a migraci přihlašovacích údajů). Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/fundamentals/storage-overview.md).
-- **Uložte přihlašovací údaje v trezoru klíčů Azure**. Přihlašovací údaje úložiště dat můžete také uložit do [úložiště klíčů Azure](https://azure.microsoft.com/services/key-vault/). Data Factory načte pověření během provádění aktivity. Další informace najdete [v tématu Store přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md).
+- **Uloží šifrované přihlašovací údaje do spravovaného úložiště Azure Data Factory**. Data Factory pomáhá chránit přihlašovací údaje úložiště dat jejich šifrováním pomocí certifikátů spravovaných Microsoftem. Tyto certifikáty se otočí každé dva roky (včetně obnovení certifikátu a migrace přihlašovacích údajů). Další informace o zabezpečení Azure Storage najdete v tématu [Přehled zabezpečení Azure Storage](../security/fundamentals/storage-overview.md).
+- **Ukládat přihlašovací údaje v Azure Key Vault**. Přihlašovací údaje úložiště dat můžete také uložit v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory načítá přihlašovací údaje během provádění aktivity. Další informace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md).
 
 ### <a name="data-encryption-in-transit"></a>Šifrování dat při přenosu
-Pokud úložiště cloudových dat podporuje protokol HTTPS nebo TLS, všechny přenosy dat mezi službami přesunu dat v Datové továrně a úložištěm cloudových dat se nacházejí přes zabezpečený kanál HTTPS nebo TLS .
+Pokud cloudové úložiště dat podporuje protokol HTTPS nebo TLS, všechna přenosová data mezi službami přesunu dat v Data Factory a cloudovým úložištěm dat jsou prostřednictvím zabezpečeného kanálu HTTPS nebo TLS.
 
 > [!NOTE]
-> Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžadují šifrování (SSL/TLS), zatímco data jsou na cestě do a z databáze. Při vytváření kanálu pomocí JSON přidejte vlastnost šifrování a nastavte ji na **hodnotu true** v připojovacím řetězci. Pro Azure Storage můžete použít **protokol HTTPS** v připojovacím řetězci.
+> Všechna připojení k Azure SQL Database a Azure SQL Data Warehouse vyžadovat šifrování (SSL/TLS) při přenosu dat do a z databáze. Když vytváříte kanál pomocí formátu JSON, přidejte vlastnost šifrování a nastavte ji na **hodnotu true** v připojovacím řetězci. V případě Azure Storage můžete v připojovacím řetězci použít **https** .
 
 > [!NOTE]
-> Chcete-li povolit šifrování při přenosu při přesouvání dat z aplikace Oracle, postupujte podle jedné z následujících možností:
-> 1. Na serveru Oracle přejděte na oracle advanced security (OAS) a nakonfigurujte nastavení šifrování, které podporuje triple-DES šifrování (3DES) a advanced encryption standard (AES), naleznete [zde](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) podrobnosti. ADF automaticky vyjedná metodu šifrování pro použití metody, kterou nakonfigurujete v oas při navazování připojení k oracle.
-> 2. V adf můžete přidat EncryptionMethod = 1 v připojovacím řetězci (v propojené službě). To bude používat SSL/TLS jako metodu šifrování. Chcete-li použít, je třeba zakázat nastavení šifrování bez SSL v OAS na straně serveru Oracle, aby se zabránilo konfliktu šifrování.
+> Pokud chcete povolit šifrování při přenosu při přesouvání dat ze systému Oracle, postupujte podle jedné z následujících možností:
+> 1. V Oracle serveru přejděte na Oracle Advanced Security (OAS) a nakonfigurujte nastavení šifrování, které podporuje šifrování Triple-DES (3DES) a standard AES (Advanced Encryption Standard) (AES). Podrobnosti najdete [tady](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759) . ADF automaticky vyjednává metodu šifrování, aby používala tu, kterou nakonfigurujete v OAS při navazování připojení k Oracle.
+> 2. V ADF můžete přidat EncryptionMethod = 1 do připojovacího řetězce (v propojené službě). Použije se jako metoda šifrování protokol SSL/TLS. Pokud to chcete použít, je třeba zakázat nastavení šifrování bez SSL v OAS na straně serveru Oracle a vyhnout se tak konfliktu šifrování.
 
 > [!NOTE]
-> Použitá verze TLS je 1.2.
+> Použitá verze protokolu TLS je 1,2.
 
 ### <a name="data-encryption-at-rest"></a>Šifrování v klidovém stavu
-Některá úložiště dat podporují šifrování dat v klidovém stavu. Doporučujeme povolit mechanismus šifrování dat pro tato úložiště dat. 
+Některá úložiště dat podporují šifrování neaktivních uložených dat. Pro tato úložiště dat doporučujeme povolit mechanismus šifrování dat. 
 
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Transparentní šifrování dat (TDE) v Azure SQL Data Warehouse pomáhá chránit před hrozbou škodlivé aktivity tím, že provádí šifrování v reálném čase a dešifrování vašich dat v klidovém stavu. Toto chování je transparentní pro klienta. Další informace naleznete [v tématu Zabezpečení databáze v databázi SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
+Transparentní šifrování dat (TDE) v Azure SQL Data Warehouse pomáhá chránit před hrozbou škodlivých aktivit tím, že provádí šifrování v reálném čase a dešifrování vašich dat v klidovém čase. Toto chování je pro klienta transparentní. Další informace najdete v tématu [zabezpečení databáze v SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md).
 
 #### <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL Database také podporuje transparentní šifrování dat (TDE), které pomáhá chránit před hrozbou škodlivé aktivity prováděním šifrování v reálném čase a dešifrování dat, aniž by bylo nutné změny aplikace. Toto chování je transparentní pro klienta. Další informace naleznete v [tématu Transparentní šifrování dat pro databázi SQL a datový sklad](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Azure SQL Database také podporuje transparentní šifrování dat (TDE), které pomáhá chránit před hrozbou škodlivých aktivit pomocí šifrování a dešifrování dat v reálném čase, aniž by to vyžadovalo změny aplikace. Toto chování je pro klienta transparentní. Další informace najdete v tématu [transparentní šifrování dat pro SQL Database a datový sklad](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store
-Azure Data Lake Store také poskytuje šifrování pro data uložená v účtu. Pokud je povoleno, Úložiště dat automaticky šifruje data před uchováním a dešifruje před načtením, takže je transparentní pro klienta, který přistupuje k datům. Další informace najdete [v tématu Zabezpečení v Úložišti datových jezer Azure](../data-lake-store/data-lake-store-security-overview.md). 
+Azure Data Lake Store taky poskytuje šifrování pro data uložená v účtu. Pokud je tato možnost povolená, Data Lake Store automaticky šifruje data před jejich uložením a dešifrováním, takže je transparentní pro klienta, který přistupuje k datům. Další informace najdete v tématu [zabezpečení v Azure Data Lake Store](../data-lake-store/data-lake-store-security-overview.md). 
 
-#### <a name="azure-blob-storage-and-azure-table-storage"></a>Úložiště objektů blob Azure a úložiště tabulek Azure
-Úložiště objektů blob Azure a azure table storage podporují šifrování služby Storage Service Encryption (SSE), které automaticky šifruje vaše data před uchováním do úložiště a dešifruje před načtením. Další informace najdete v tématu [Šifrování služby Úložiště Azure pro data v klidovém stavu](../storage/common/storage-service-encryption.md).
+#### <a name="azure-blob-storage-and-azure-table-storage"></a>Azure Blob Storage a Azure Table Storage
+Azure Blob Storage a Azure Table Storage podporují Šifrování služby Storage (SSE), které automaticky šifrují vaše data před tím, než se uloží do úložiště a dešifruje před načtením. Další informace najdete v tématu [šifrování služby Azure Storage pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 podporuje šifrování dat klientem i serverem v klidovém stavu. Další informace naleznete [v tématu Ochrana dat pomocí šifrování](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Amazon S3 podporuje šifrování dat v klidovém stavu klienta i serveru. Další informace najdete v tématu [Ochrana dat pomocí šifrování](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift podporuje šifrování clusteru pro data v klidovém stavu. Další informace naleznete v tématu [Amazon Redshift Database Encryption](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Amazon RedShift podporuje šifrování clusteru pro neaktivní neaktivní data. Další informace najdete v tématu [šifrování databáze Amazon RedShift](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
-Salesforce podporuje šifrování platformy Shield, které umožňuje šifrování všech souborů, příloh a vlastních polí. Další informace naleznete [v tématu Principy toku ověřování oautu webového serveru](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
+Salesforce podporuje šifrování platformy stínění, které umožňuje šifrování všech souborů, příloh a vlastních polí. Další informace najdete v tématu [Principy toku ověřování webového serveru OAuth](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
 
 ## <a name="hybrid-scenarios"></a>Hybridní scénáře
-Hybridní scénáře vyžadují, aby se prostředí integrace s vlastním hostitelem nainstalovalo do místní sítě, uvnitř virtuální sítě (Azure) nebo uvnitř virtuálního privátního cloudu (Amazon). Prostředí runtime integrace s vlastním hostitelem musí mít přístup k místním úložištím dat. Další informace o prostředí runtime integrace s vlastním hostitelem naleznete v tématu [Jak vytvořit a nakonfigurovat prostředí runtime s vlastním hostitelem integrace](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime). 
+Hybridní scénáře vyžadují instalaci místního prostředí Integration runtime v místní síti, ve virtuální síti (Azure) nebo ve virtuálním privátním cloudu (Amazon). Místní prostředí Integration runtime musí být schopné získat přístup k místním úložištím dat. Další informace o modulu Integration runtime v místním prostředí najdete v tématu [jak vytvořit a nakonfigurovat prostředí Integration runtime](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)v místním prostředí. 
 
-![runtime kanály integrace s vlastním hostitelem](media/data-movement-security-considerations/data-management-gateway-channels.png)
+![kanály prostředí Integration runtime pro místní hostování](media/data-movement-security-considerations/data-management-gateway-channels.png)
 
-Příkazový kanál umožňuje komunikaci mezi službami přesunu dat v datové továrně a runtime integrace s vlastním hostitelem. Sdělení obsahuje informace týkající se aktivity. Datový kanál se používá pro přenos dat mezi místními úložišti dat a cloudovými úložišti dat.    
+Kanál příkazů umožňuje komunikaci mezi službami přesunu dat v Data Factory a v místním prostředí Integration runtime. Tato komunikace obsahuje informace související s aktivitou. Datový kanál se používá k přenosu dat mezi místními úložišti dat a cloudových úložišť dat.    
 
-### <a name="on-premises-data-store-credentials"></a>Přihlašovací údaje úložiště místních dat
-Přihlašovací údaje mohou být uloženy v rámci datové továrny nebo na ně během běhu z azure key [vaultu odkazovat.](store-credentials-in-key-vault.md) Pokud ukládáte přihlašovací údaje v rámci datové továrny, je vždy uložena šifrovaná v prostředí runtime integrace s vlastním hostitelem. 
+### <a name="on-premises-data-store-credentials"></a>Přihlašovací údaje místního úložiště dat
+Přihlašovací údaje mohou být uloženy v rámci objektu pro vytváření dat nebo na [ně odkazovat pomocí služby Data Factory](store-credentials-in-key-vault.md) za běhu z Azure Key Vault. Pokud ukládáte přihlašovací údaje v rámci služby Data Factory, je vždy uložen šifrovaný v místním prostředí Integration runtime. 
  
-- **Uložte pověření místně**. Pokud přímo používáte rutinu **Set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji vložených do jsonu, propojená služba je zašifrována a uložena v prostředí runtime integrace s vlastním hostitelem.  V tomto případě pověření toku prostřednictvím služby azure back-end, která je velmi zabezpečená, do počítače integrace s vlastním hostitelem, kde je nakonec zašifrována a uložena. Prostředí runtime integrace s vlastním hostitelem používá systém Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) k šifrování citlivých dat a informací o pověřeních.
+- **Ukládat přihlašovací údaje lokálně**. Pokud přímo použijete rutinu **set-AzDataFactoryV2LinkedService** s připojovacími řetězci a přihlašovacími údaji, které jsou vložené ve formátu JSON, bude propojená služba zašifrovaná a uložená v místním prostředí Integration runtime.  V takovém případě přihlašovací údaje přes back-end službu Azure, která je mimořádně bezpečná, na integrační počítač v místním prostředí, kde je konečně zašifrovaný a uložený. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) .
 
-- **Uložte přihlašovací údaje v trezoru klíčů Azure**. Přihlašovací údaje úložiště dat můžete také uložit do [úložiště klíčů Azure](https://azure.microsoft.com/services/key-vault/). Data Factory načte pověření během provádění aktivity. Další informace najdete [v tématu Store přihlašovací údaje v Azure Key Vault](store-credentials-in-key-vault.md).
+- **Ukládat přihlašovací údaje v Azure Key Vault**. Přihlašovací údaje úložiště dat můžete také uložit v [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Data Factory načítá přihlašovací údaje během provádění aktivity. Další informace najdete v tématu [uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md).
 
-- **Ukládat přihlašovací údaje místně bez přetékání přihlašovacích údajů přes back-end Azure do runtime integrace s vlastním hostitelem**. Pokud chcete šifrovat a ukládat přihlašovací údaje místně v prostředí runtime s vlastním hostitelem integrace, aniž byste museli protékat back-endem datové továrny, postupujte podle pokynů v [části Šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Tuto možnost podporují všechny konektory. Prostředí runtime integrace s vlastním hostitelem používá systém Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) k šifrování citlivých dat a informací o pověřeních. 
+- **Ukládat přihlašovací údaje místně bez přetečení přihlašovacích údajů prostřednictvím back-endu Azure do místního prostředí Integration runtime**. Pokud chcete místně šifrovat a ukládat přihlašovací údaje v místním prostředí Integration runtime, aniž byste museli procházet přihlašovací údaje prostřednictvím back-endu služby Data Factory, postupujte podle kroků v části [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md). Tato možnost podporuje všechny konektory. Místní prostředí Integration runtime používá k šifrování citlivých dat a přihlašovacích údajů rozhraní Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) . 
 
-   Pomocí rutiny **New-AzDataFactoryV2LinkedServiceEncryptedCredential** zašifrujte pověření propojené služby a citlivé podrobnosti v propojené službě. Potom můžete použít JSON vrácena (s **EncryptedCredential** element v připojovacím řetězci) k vytvoření propojené služby pomocí **Set-AzDataFactoryV2LinkedService** rutina.  
+   Použijte rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** k šifrování přihlašovacích údajů propojené služby a citlivých podrobností v propojené službě. Pak můžete pomocí rutiny **set-AzDataFactoryV2LinkedService** použít vrácený kód JSON (s elementem **EncryptedCredential** v připojovacím řetězci) a vytvořit propojenou službu.  
 
 
-#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Porty používané při šifrování propojené služby v modulu runtime s vlastním hostitelem integrace
-Ve výchozím nastavení používá prostředí PowerShell port 8060 v počítači s prostředím runtime integrace s vlastním hostitelem pro zabezpečenou komunikaci. V případě potřeby lze tento port změnit.  
+#### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Porty používané při šifrování propojené služby v místním prostředí Integration runtime
+Ve výchozím nastavení používá PowerShell pro zabezpečenou komunikaci port 8060 na počítači s místním prostředím Integration runtime. V případě potřeby můžete tento port změnit.  
 
 ![Port HTTPS pro bránu](media/data-movement-security-considerations/https-port-for-gateway.png)
 
@@ -129,21 +129,21 @@ Ve výchozím nastavení používá prostředí PowerShell port 8060 v počíta�
 
 
 ### <a name="encryption-in-transit"></a>Šifrování během přenosu
-Všechny přenosy dat jsou přes zabezpečený kanál HTTPS a TLS přes TCP, aby se zabránilo útokům prostředníkem během komunikace se službami Azure.
+Všechny přenosy dat jsou prostřednictvím zabezpečeného kanálu HTTPS a TLS přes protokol TCP, aby se zabránilo útokům prostředníkem při komunikaci se službami Azure.
 
-Pomocí [IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md) můžete také dále zabezpečit komunikační kanál mezi místní sítí a Azure.
+K dalšímu zabezpečení komunikačního kanálu mezi vaší místní sítí a Azure můžete použít taky [protokol IPSec VPN](../vpn-gateway/vpn-gateway-about-vpn-devices.md) nebo [Azure ExpressRoute](../expressroute/expressroute-introduction.md) .
 
-Virtuální síť Azure je logická reprezentace vaší sítě v cloudu. Místní síť můžete připojit k virtuální síti nastavením sítě IPSec VPN (site-to-site) nebo ExpressRoute (privátní partnerský vztah).    
+Azure Virtual Network je logická reprezentace vaší sítě v cloudu. Můžete připojit místní síť k virtuální síti nastavením IPSec VPN (site-to-site) nebo ExpressRoute (privátní partnerské vztahy).    
 
-Následující tabulka shrnuje doporučení konfigurace runtime integrace sítě a vlastní hospovací integrace založená na různých kombinacích zdrojových a cílových umístění pro hybridní přesun dat.
+Následující tabulka shrnuje doporučení konfigurace sítě a místního prostředí Integration runtime na základě různých kombinací zdrojového a cílového umístění pro pohyb hybridních dat.
 
 | Zdroj      | Cíl                              | Konfigurace sítě                    | Instalace prostředí Integration Runtime                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (point-to-site nebo site-to-site) | Runtime integrace s vlastním hostitelem by měl být nainstalovaný na virtuálním počítači Azure ve virtuální síti.  |
-| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Runtime integrace s vlastním hostitelem by měl být nainstalovaný na virtuálním počítači Azure ve virtuální síti.  |
-| Lokálně | Služby založené na Azure, které mají veřejný koncový bod | ExpressRoute (partnerský vztah Microsoftu)            | Runtime integrace s vlastním hostitelem lze nainstalovat místně nebo na virtuálním počítači Azure. |
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | IPSec VPN (Point-to-site nebo site-to-site) | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Lokálně | Virtuální počítače a cloudové služby nasazené ve virtuálních sítích | ExpressRoute (soukromý partnerský vztah)           | Místní prostředí Integration runtime by se mělo nainstalovat na virtuální počítač Azure ve virtuální síti.  |
+| Lokálně | Služby založené na Azure s veřejným koncovým bodem | ExpressRoute (partnerský vztah Microsoftu)            | Místní prostředí Integration runtime se dá nainstalovat místně nebo na virtuální počítač Azure. |
 
-Následující obrázky ukazují použití modulu runtime integrace s vlastním hostitelem pro přesun dat mezi místní databází a službami Azure pomocí ExpressRoute a IPSec VPN (s virtuální sítí Azure):
+Následující obrázky ukazují použití prostředí Integration runtime v místním prostředí pro přesun dat mezi místní databází a službami Azure pomocí ExpressRoute a IPSec VPN (s využitím Azure Virtual Network):
 
 **ExpressRoute**
 
@@ -153,30 +153,30 @@ Následující obrázky ukazují použití modulu runtime integrace s vlastním 
 
 ![IPSec VPN s bránou](media/data-movement-security-considerations/ipsec-vpn-for-gateway.png)
 
-### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Konfigurace brány firewall a nastavení seznamu povolených adres IP
+### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Nastavení konfigurace brány firewall a povolení seznamu povolených IP adres
 
-#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky brány firewall pro místní/privátní síť    
-V podniku běží podniková brána firewall na centrálním směrovači organizace. Brána Windows Firewall běží jako daemon v místním počítači, ve kterém je nainstalován vlastní hostovaný integrační runtime. 
+#### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť    
+V podniku je podniková brána firewall provozována v centrálním směrovači organizace. Brána Windows Firewall běží jako démon na místním počítači, ve kterém je nainstalovaný modul runtime integrace v místním prostředí. 
 
-Následující tabulka obsahuje požadavky na odchozí port y a domény pro podnikové brány firewall:
+Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podnikové brány firewall:
 
 [!INCLUDE [domain-and-outbound-port-requirements](../../includes/domain-and-outbound-port-requirements.md)]
 
 > [!NOTE] 
-> Podle požadavků příslušných zdrojů dat bude pravděpodobně nutné spravovat porty nebo nastavit seznam povolených domén pro domény na úrovni podnikové brány firewall. Tato tabulka používá jako příklady jenom Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.   
+> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.   
 
-V následující tabulce jsou uvedeny požadavky na příchozí porty brány Windows Firewall:
+Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
 | Příchozí porty | Popis                              |
 | ------------- | ---------------------------------------- |
-| 8060 (TCP)    | Vyžadováno rutinou šifrování Prostředí PowerShell, jak je popsáno v [části Šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikací správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v prostředí runtime integrace s vlastním hostitelem. |
+| 8060 (TCP)    | Vyžadovaná rutinou šifrování PowerShellu, jak je popsáno v tématu [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikace Správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v místním prostředí Integration runtime. |
 
 ![Požadavky na port brány](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
-#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Konfigurace IP adres a nastavení seznamu povolených adres v úložištích dat
-Některá úložiště dat v cloudu také vyžadují, abyste povolili IP adresu počítače, který přistupuje k úložišti. Ujistěte se, že IP adresa samoobslužného integračního runtime stroje je v bráně firewall správně povolena nebo nakonfigurována.
+#### <a name="ip-configurations-and-allow-list-setting-up-in-data-stores"></a>Nastavení konfigurace protokolu IP a povolených seznamů povolených v úložištích dat
+Některá úložiště dat v cloudu také vyžadují, abyste povolili IP adresu počítače, který přistupuje k úložišti. Ujistěte se, že je IP adresa počítače místního prostředí Integration runtime povolená nebo správně nakonfigurovaná v bráně firewall.
 
-Následující cloudová úložiště dat vyžadují povolení IP adresy počítače runtime integrace s vlastním hostitelem. Některá z těchto úložišť dat ve výchozím nastavení nemusí vyžadovat seznam povolených dat. 
+Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu počítače místního prostředí Integration runtime. Některá z těchto úložišť dat nemusí ve výchozím nastavení vyžadovat seznam povolených. 
 
 - [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
@@ -186,16 +186,16 @@ Následující cloudová úložiště dat vyžadují povolení IP adresy počít
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Lze vlastní hostovaný integrační runtime sdílet v různých datových továrnách?**
+**Je možné místní prostředí Integration runtime sdílet mezi různými datovými továrnami?**
 
 Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
-**Jaké jsou požadavky na port pro vlastní hostované integrační zaběhu do práce?**
+**Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 
-Vlastní hostované integrační runtime umožňuje připojení založené na protokolu HTTP pro přístup k Internetu. Chcete-li vytvořit toto připojení, musí být otevřeny odchozí porty 443 pro modul runtime integrace s vlastním hostitelem. Otevřete příchozí port 8060 pouze na úrovni počítače (nikoli na úrovni podnikové brány firewall) pro aplikaci správce pověření. Pokud azure SQL database nebo Azure SQL Data Warehouse se používá jako zdroj nebo cíl, budete muset otevřít port 1433 také. Další informace naleznete v [části Konfigurace brány firewall a nastavení seznamu povolených adres IP.](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) 
+Místní prostředí Integration runtime zpřístupňuje připojení založená na protokolu HTTP pro přístup k Internetu. Aby bylo možné vytvořit toto připojení, musí být otevřeny Odchozí porty 443 pro prostředí Integration runtime v místním prostředí. Pro aplikaci Správce přihlašovacích údajů otevřete příchozí port 8060 jenom na úrovni počítače (ne na úrovni firemní brány firewall). Je-li jako zdroj nebo cíl použit Azure SQL Database nebo Azure SQL Data Warehouse, je nutné otevřít také port 1433. Další informace najdete v části [Konfigurace brány firewall a nastavení seznamu povolených IP adres](#firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway) . 
 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o výkonu aktivity kopírování v Azure Data Factory najdete v tématu [Kopírování výkonu aktivity a průvodce laděním](copy-activity-performance.md).
+Informace o Azure Data Factory výkonu aktivity kopírování najdete v tématu [Průvodce laděním a výkonem aktivity kopírování](copy-activity-performance.md).
 
  
