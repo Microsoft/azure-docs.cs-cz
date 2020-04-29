@@ -9,52 +9,52 @@ ms.date: 03/19/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 317a480c13c5c6e00653fd61878a379df3f65ac4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174743"
 ---
-### <a name="what-is-expressroute-global-reach"></a>Co je globální dosah ExpressRoute?
+### <a name="what-is-expressroute-global-reach"></a>Co je ExpressRoute Global Reach?
 
-ExpressRoute Global Reach je služba Azure, která propojuje vaše místní sítě prostřednictvím služby ExpressRoute prostřednictvím globální sítě Microsoftu. Pokud máte například soukromé datové centrum v Kalifornii připojené k ExpressRoute v Silicon Valley a další soukromé datové centrum v Texasu připojené k ExpressRoute v Dallasu, můžete pomocí expressroute Global Reach propojit svá soukromá datová centra prostřednictvím dvou připojení ExpressRoute a provoz mezi datovými centry bude procházet páteřní sítí společnosti Microsoft.
+ExpressRoute Global Reach je služba Azure, která připojuje vaše místní sítě prostřednictvím služby ExpressRoute prostřednictvím globální sítě Microsoftu. Pokud máte například soukromé datové centrum v Kalifornii připojené k ExpressRoute v karbidu sedlu a jiném privátním datovém centru v Texas připojení k ExpressRoute v Dallasu, s ExpressRoute Global Reach, můžete propojit svá privátní datová centra společně prostřednictvím dvou připojení ExpressRoute a provoz napříč datovým centrem prostřednictvím sítě Microsoftu.
 
-### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Jak povolím nebo zakážu Globální dosah ExpressRoute?
+### <a name="how-do-i-enable-or-disable-expressroute-global-reach"></a>Návody povolit nebo zakázat Global Reach ExpressRoute?
 
-Globální dosah ExpressRoute povolíte spojením okruhů ExpressRoute dohromady. Funkci zakážete odpojením obvodů. Podívejte se na [konfiguraci](../articles/expressroute/expressroute-howto-set-global-reach.md).
+Povolíte ExpressRoute Global Reach připojením okruhů ExpressRoute. Vypnutím této funkce odpojíte okruhy. Podívejte se na [konfiguraci](../articles/expressroute/expressroute-howto-set-global-reach.md).
 
-### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Potřebuji ExpressRoute Premium pro Globální dosah ExpressRoute?
+### <a name="do-i-need-expressroute-premium-for-expressroute-global-reach"></a>Potřebuji ExpressRoute Premium pro ExpressRoute Global Reach?
 
-Pokud jsou vaše okruhy ExpressRoute ve stejné geopolitické oblasti, nepotřebujete ExpressRoute Premium, abyste je spojili. Pokud jsou dva okruhy ExpressRoute v různých geopolitických oblastech, potřebujete ExpressRoute Premium pro oba okruhy, abyste mezi nimi povolili připojení. 
+Pokud jsou vaše okruhy ExpressRoute ve stejné geopolitické oblasti, nepotřebujete ExpressRoute Premium, aby je vzájemně připojovaly. Pokud jsou dva okruhy ExpressRoute v různých geopolitických oblastech, potřebujete ExpressRoute Premium pro oba okruhy, aby bylo možné mezi nimi povolit konektivitu. 
 
-### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Jak se mi bude účtovat globální dosah ExpressRoute?
+### <a name="how-will-i-be-charged-for-expressroute-global-reach"></a>Jak se mi bude účtovat ExpressRoute Global Reach?
 
-ExpressRoute umožňuje připojení z místní sítě ke cloudovým službám Microsoftu. ExpressRoute Global Reach umožňuje připojení mezi vašimi vlastními místními sítěmi prostřednictvím stávajících obvodů ExpressRoute a využívá globální síť společnosti Microsoft. Globální dosah ExpressRoute se účtuje odděleně od stávající služby ExpressRoute. Za povolení této funkce v každém okruhu ExpressRoute se účtuje poplatek za přidání. Provoz mezi místními sítěmi povolený misedy ExpressRoute Global Reach se bude účtovat za rychlost odchozího přenosu ve zdroji a za rychlost příchozího přenosu dat v cílovém umístění. Ceny jsou založeny na zóně, ve které jsou obvody umístěny.
+ExpressRoute umožňuje připojení z vaší místní sítě k cloudovým službám Microsoftu. ExpressRoute Global Reach umožňuje propojení mezi vašimi místními sítěmi prostřednictvím stávajících okruhů ExpressRoute a využitím globální sítě Microsoftu. ExpressRoute Global Reach se fakturuje odděleně od stávající služby ExpressRoute. Pro povolení této funkce na každém okruhu ExpressRoute je k dispozici poplatek za doplněk. Přenosy mezi vašimi místními sítěmi, které jsou povolené službou ExpressRoute Global Reach, se budou účtovat jako výstupní míra ve zdroji a za příchozí sazbu v cíli. Sazby jsou založené na zóně, ve které se okruhy nacházejí.
 
-### <a name="where-is-expressroute-global-reach-supported"></a>Kde je podporován globální dosah ExpressRoute?
+### <a name="where-is-expressroute-global-reach-supported"></a>Kde je ExpressRoute Global Reach podporována?
 
-Globální dosah ExpressRoute je podporován ve [vybraných zemích nebo oblastech nebo místech](../articles/expressroute/expressroute-global-reach.md). Okruhy ExpressRoute musí být vytvořeny v partnerských umístěních v těchto zemích nebo oblastech nebo místech.
+ExpressRoute Global Reach se podporují ve [vybraných zemích nebo oblastech nebo místech](../articles/expressroute/expressroute-global-reach.md). Okruhy ExpressRoute je potřeba vytvořit v umístěních partnerských vztahů v těchto zemích nebo oblastech nebo místech.
 
-### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Mám více než dvě místní sítě, z nichž každá je připojena k okruhu ExpressRoute. Můžu povolit službu ExpressRoute Global Reach pro propojení všech místních sítí?
+### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>Mám více než dvě místní sítě, které jsou připojené k okruhu ExpressRoute. Můžu povolit Global Reach ExpressRoute k propojení všech místních sítí?
 
-Ano, můžete, pokud jsou okruhy v podporovaných zemích nebo oblastech. Musíte připojit dva okruhy ExpressRoute najednou. Chcete-li vytvořit plně síťovou síť, musíte vytvořit výčet všech dvojic okruhů a zopakovat konfiguraci. 
+Ano, můžete, pokud jsou okruhy v podporovaných zemích nebo oblastech. Je potřeba propojit dva okruhy ExpressRoute současně. Pokud chcete vytvořit plně propojenou síť, musíte vytvořit výčet všech párů okruhů a konfiguraci opakovat. 
 
-### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Mohu povolit ExpressRoute Global Reach mezi dvěma okruhy ExpressRoute ve stejném umístění partnerského vztahu?
+### <a name="can-i-enable-expressroute-global-reach-between-two-expressroute-circuits-at-the-same-peering-location"></a>Můžu povolit ExpressRoute Global Reach mezi dvěma ExpressRoute okruhy ve stejném umístění partnerského vztahu?
 
-Ne. Dva okruhy musí být z různých partnerských umístění. Pokud má metro v podporované zemi nebo oblasti více než jedno umístění partnerského vztahu ExpressRoute, můžete propojit okruhy ExpressRoute vytvořené v různých partnerských umístěních v tomto metru. 
+Ne. Dva okruhy musí být z různých umístění partnerského vztahu. Pokud má Metro v podporované zemi nebo oblasti více než jedno umístění partnerského vztahu ExpressRoute, můžete se spojit mezi ExpressRoute okruhy vytvořenými v různých umístěních partnerských vztahů v této službě Metro. 
 
-### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Pokud je expressroute Global Reach povolen mezi okruhem X a obvodem Y a mezi okruhem Y a obvodem Z, budou moje místní sítě připojené k okruhu X a okruhu Z vzájemně mluvit prostřednictvím sítě společnosti Microsoft?
+### <a name="if-expressroute-global-reach-is-enabled-between-circuit-x-and-circuit-y-and-between-circuit-y-and-circuit-z-will-my-on-premises-networks-connected-to-circuit-x-and-circuit-z-talk-to-each-other-via-microsofts-network"></a>Pokud je ExpressRoute Global Reach mezi okruhem X a okruh Y a mezi okruhem Y a okruh Z, budou místní sítě připojené k okruhu X a okruhu Z vzájemně propojeny přes síť Microsoftu?
 
-Ne. Chcete-li povolit připojení mezi dvěma místními sítěmi, musíte explicitně připojit odpovídající okruhy ExpressRoute. Ve výše uvedeném příkladu je nutné připojit obvod X a obvod Z. 
+Ne. Pokud chcete povolit připojení mezi dvěma vašimi místními sítěmi, musíte explicitně propojit odpovídající okruhy ExpressRoute. V předchozím příkladu je třeba spojit okruh X a okruh Z. 
 
-### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Jaká je propustnost sítě, kterou mohu očekávat mezi místními sítěmi po povolení globálního dosahu ExpressRoute?
+### <a name="what-is-the-network-throughput-i-can-expect-between-my-on-premises-networks-after-i-enable-expressroute-global-reach"></a>Jakou propustnost sítě můžu očekávat mezi místními sítěmi po povolení ExpressRoute Global Reach?
 
-Propustnost sítě mezi místními sítěmi, povolená technologií ExpressRoute Global Reach, je omezena menší ze dvou okruhů ExpressRoute. Provoz mezi prostory Azure a provoz mezi místními objekty sdílejí stejný okruh a podléhají stejnému limitu šířky pásma. 
+Propustnost sítě mezi vašimi místními sítěmi, která je povolená ExpressRoute Global Reach, je omezené menším ze dvou okruhů ExpressRoute. Provoz z místního prostředí do Azure a místní provoz sdílí stejný okruh a podléhá stejnému limitu šířky pásma. 
 
-### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>Jaké jsou limity počtu tras, které mohu inzerovat, a počtu tras, které obdržím, v případě, že je společnost ExpressRoute Global Reach?
+### <a name="with-expressroute-global-reach-what-are-the-limits-on-the-number-of-routes-i-can-advertise-and-the-number-of-routes-i-will-receive"></a>S Global Reach ExpressRoute, jaké jsou limity počtu tras, které můžu inzerovat, a počet tras, které budu dostávat?
 
-Počet tras, které můžete inzerovat na Microsoft v Privátní partnerský vztah Azure zůstává na 4000 na okruhu Standard nebo 10000 na okruhu Premium. Počet tras, které obdržíte od Microsoftu v privátním partnerství Azure, bude součtem tras vašich virtuálních sítí Azure a tras z vašich dalších místních sítí připojených přes ExpressRoute Global Reach. Ujistěte se, že jste na místním směrovači nastavili odpovídající maximální limit předpony. 
+Počet tras, které můžete inzerovat Microsoftu na privátním partnerském vztahu Azure, na okruhu Standard a na úrovni Premium zůstane na 4000 nebo 10000. Počet tras, které obdržíte od Microsoftu v rámci privátního partnerského vztahu Azure, bude celkový počet tras vašich virtuálních sítí Azure a tras z vašich dalších místních sítí, které jsou připojené přes ExpressRoute Global Reach. Ujistěte se prosím, že jste na místním směrovači nastavili odpovídající maximální limit předpony. 
 
-### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Co je sla pro Globální dosah ExpressRoute?
+### <a name="what-is-the-sla-for-expressroute-global-reach"></a>Jaká je smlouva SLA pro ExpressRoute Global Reach?
 
-ExpressRoute Global Reach bude poskytovat stejnou [dostupnost SLA](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) jako běžná služba ExpressRoute.
+ExpressRoute Global Reach poskytne smlouvou SLA o stejné [dostupnosti](https://azure.microsoft.com/support/legal/sla/expressroute/v1_3/) jako standardní službu ExpressRoute.

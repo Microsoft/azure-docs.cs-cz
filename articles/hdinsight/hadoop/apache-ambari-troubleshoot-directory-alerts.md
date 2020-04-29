@@ -1,6 +1,6 @@
 ---
-title: Upozornění na adresář Apache Ambari v Azure HDInsight
-description: Diskuse a analýza možných důvodů a řešení pro upozornění adresáře Apache Ambari v HDInsight.
+title: Výstrahy adresáře Apache Ambari v Azure HDInsight
+description: Diskuze a analýza možných důvodů a řešení upozornění pro adresáře Apache Ambari v HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,19 +8,19 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722834"
 ---
-# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Scénář: Výstrahy adresářů Apache Ambari v Azure HDInsight
+# <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Scénář: výstrahy adresáře Apache Ambari v Azure HDInsight
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Od Apache Ambari se zobrazí chyby, které jsou podobné:
+Dostanete chyby z Apache Ambari, které jsou podobné:
 
 ```
 1/1 local-dirs have errors: [ /mnt/resource/hadoop/yarn/local : Cannot create directory: /mnt/resource/hadoop/yarn/local ]
@@ -29,17 +29,17 @@ Od Apache Ambari se zobrazí chyby, které jsou podobné:
 
 ## <a name="cause"></a>Příčina
 
-Uvedené adresáře z výstrahy Ambari chybí na ohrožených uzlů pracovníka.
+V ovlivněných pracovních uzlech chybí zmíněné adresáře z upozornění Ambari.
 
 ## <a name="resolution"></a>Řešení
 
-Ručně vytvořte chybějící adresáře na ohrožených pracovních uzlůch.
+Ručně vytvořte chybějící adresáře na ovlivněných pracovních uzlech.
 
-1. SSH do příslušného pracovního uzlu.
+1. SSH k příslušnému pracovnímu uzlu.
 
-1. Získat uživatele `sudo su`kořene: .
+1. Získat uživatele root: `sudo su`.
 
-1. Rekurzivně vytvářet potřebné adresáře.
+1. Rekurzivní vytváření adresářů potřebných.
 
 1. Změňte vlastníka a skupinu pro tyto adresáře.
 
@@ -50,14 +50,14 @@ Ručně vytvořte chybějící adresáře na ohrožených pracovních uzlůch.
     chgrp -R hadoop /mnt/resource/hadoop/yarn/log
     ```
 
-1. Z ui Apache Ambari zakažte a povolte výstrahu.
+1. V uživatelském rozhraní Apache Ambari zakažte a pak povolte výstrahu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

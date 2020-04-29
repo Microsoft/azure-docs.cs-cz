@@ -9,15 +9,15 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76159072"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
-Připojte se k virtuálnímu počítači, který jste vytvořili, pomocí více privátních IP adres. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte následující kroky pro operační systém virtuálního počítače.
+Připojte se a přihlaste se k virtuálnímu počítači, který jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte následující kroky pro operační systém virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 
@@ -30,16 +30,16 @@ Připojte se k virtuálnímu počítači, který jste vytvořili, pomocí více 
     * **IP adresa:** Zadejte *primární* privátní IP adresu.
     * **Maska podsítě:** Nastavte podle vaší podsítě. Pokud je podsíť například /24, maska podsítě bude 255.255.255.0.
     * **Výchozí brána:** První IP adresa v podsíti. Pokud je vaše podsíť 10.0.0.0/24, IP adresa brány bude 10.0.0.1.
-    * Vyberte **Použít následující adresy serverů DNS** a zadejte následující hodnoty:
+    * Vyberte **použít následující adresy serverů DNS** a zadejte následující hodnoty:
         * **Upřednostňovaný server DNS:** Pokud nepoužíváte vlastní server DNS, zadejte 168.63.129.16.  Pokud používáte vlastní server DNS, zadejte IP adresu pro váš server.
-    * Vyberte tlačítko **Upřesnit** a přidejte další adresy IP. Přidejte každou sekundární privátní IP adresy, které jste přidali do síťového rozhraní Azure v předchozím kroku, do síťového rozhraní Windows, kterému je přiřazena primární IP adresa přiřazená síťovému rozhraní Azure.
+    * Vyberte tlačítko **Upřesnit** a přidejte další IP adresy. Přidejte každou ze sekundárních privátních IP adres, které jste přidali do síťového rozhraní Azure v předchozím kroku, do síťového rozhraní Windows, kterému je přiřazena primární IP adresa přiřazená k síťovému rozhraní Azure.
 
-        Nikdy byste neměli ručně přiřadit veřejnou IP adresu přiřazenou virtuálnímu počítači Azure v rámci operačního systému virtuálního počítače. Když ručně nastavíte IP adresu v operačním systému, ujistěte se, že se jedná o stejnou adresu jako privátní IP adresa přiřazená [síťovému rozhraní](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)Azure , nebo můžete ztratit připojení k virtuálnímu počítači. Přečtěte si další informace o nastavení [privátní IP adresy.](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) Nikdy byste neměli přiřazovat veřejnou IP adresu Azure v rámci operačního systému.
+        Nikdy byste neměli ručně přiřadit veřejnou IP adresu přiřazenou k virtuálnímu počítači Azure v operačním systému virtuálního počítače. Při ručním nastavení IP adresy v operačním systému se ujistěte, že se jedná o stejnou adresu jako soukromá IP adresa přiřazená [síťovému rozhraní](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)Azure, nebo můžete ztratit připojení k virtuálnímu počítači. Přečtěte si další informace o nastavení [privátních IP adres](../articles/virtual-network/virtual-network-network-interface-addresses.md#private) . V operačním systému nikdy nepřiřazujte veřejnou IP adresu Azure.
 
     * Kliknutím na **OK** zavřete nastavení protokolu TCP/IP a pak znovu kliknutím na **OK** zavřete nastavení adaptéru. Vaše připojení RDP je obnoveno.
 
 6. Na příkazovém řádku zadejte *ipconfig /all*. Zobrazí se všechny IP adresy, které jste přidali, a protokol DHCP je vypnutý.
-7. Nakonfigurujte Systém Windows tak, aby jako primární IP adresu pro Windows používal privátní IP adresu primární konfigurace IP adresy v Azure. Podrobnosti najdete v tématu [Žádný přístup k internetu z virtuálního počítače Azure windows, který má více IP adres.](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) 
+7. Nakonfigurujte systém Windows tak, aby používal privátní IP adresu primární konfigurace IP adresy v Azure jako primární IP adresu pro Windows. Další informace najdete v tématu [žádný přístup k Internetu z virtuálního počítače Azure s Windows, který má víc IP adres](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) . 
 
 ### <a name="validation-windows"></a>Ověření (Windows)
 
@@ -49,11 +49,11 @@ Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfig
 ping -S 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->U sekundárních konfigurací PROTOKOLU IP lze příkazem ping k Internetu pouze v případě, že je k ní přidružena veřejná IP adresa. U primárních konfigurací protokolu IP není k příkazu ping k Internetu vyžadována veřejná ip adresa.
+>V případě sekundárních konfigurací IP můžete k ověřování pomocí příkazů pouze testovat připojení k Internetu, pokud má konfigurace přidruženou veřejnou IP adresu. U primárních konfigurací IP adres není k ověřování na internetu nutná veřejná IP adresa.
 
 ### <a name="linux-ubuntu-1416"></a>Linux (Ubuntu 14/16)
 
-Doporučujeme podívat se na nejnovější dokumentaci pro vaši linuxovou distribuci. 
+Doporučujeme si prohlédnout si nejnovější dokumentaci pro distribuci systému Linux. 
 
 1. Otevřete okno terminálu.
 2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:
@@ -112,9 +112,9 @@ Doporučujeme podívat se na nejnovější dokumentaci pro vaši linuxovou distr
 
    V seznamu by se měla zobrazit IP adresa, kterou jste přidali.
 
-### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04+)
+### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
 
-Ubuntu 18.04 a vyšší `netplan` se změnily na pro správu sítě Operačního systému. Doporučujeme podívat se na nejnovější dokumentaci pro vaši linuxovou distribuci. 
+Ubuntu 18,04 a novější se změnily `netplan` na pro správu sítě OS. Doporučujeme si prohlédnout si nejnovější dokumentaci pro distribuci systému Linux. 
 
 1. Otevřete okno terminálu.
 2. Ujistěte se, že jste uživatel root. Pokud ne, zadejte následující příkaz:
@@ -123,13 +123,13 @@ Ubuntu 18.04 a vyšší `netplan` se změnily na pro správu sítě Operačního
     sudo -i
     ```
 
-3. Vytvořte soubor pro druhé rozhraní a otevřete jej v textovém editoru:
+3. Vytvořte soubor pro druhé rozhraní a otevřete ho v textovém editoru:
 
     ```bash
     vi /etc/netplan/60-static.yaml
     ```
 
-4. Přidejte do souboru následující `10.0.0.6/24` řádky, které nahradí masku IP/netmask:
+4. Do souboru přidejte následující řádky, které nahradíte `10.0.0.6/24` IP/maskou:
 
     ```bash
     network:
@@ -146,16 +146,16 @@ Ubuntu 18.04 a vyšší `netplan` se změnily na pro správu sítě Operačního
     :wq
     ```
 
-6. Otestujte změny pomocí [netplan zkuste](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) potvrdit syntaxi:
+6. Otestujte změny pomocí [netplan, zkuste](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html) ověřit syntaxi:
 
     ```bash
     netplan try
     ```
 
 > [!NOTE]
-> `netplan try`dočasně aplikuje změny a po 120 sekundách je vrátí zpět. Pokud dojde ke ztrátě připojení, počkejte 120 sekund a znovu se připojte. V té době budou změny vráceny zpět.
+> `netplan try`změny se projeví dočasně a změny se vrátí po 120 sekundách. Pokud dojde ke ztrátě připojení, počkejte prosím 120 sekund a pak se znovu připojte. V tuto chvíli se změny vrátí zpět.
 
-7. Za předpokladu, že žádné problémy s `netplan try`, použít změny konfigurace:
+7. Pokud se nepředpokládá `netplan try`žádné problémy s, použijte změny konfigurace:
 
     ```bash
     netplan apply
@@ -254,7 +254,7 @@ Abyste se ujistili, že se můžete připojit k internetu ze sekundární konfig
 ping -I 10.0.0.5 hotmail.com
 ```
 >[!NOTE]
->U sekundárních konfigurací PROTOKOLU IP lze příkazem ping k Internetu pouze v případě, že je k ní přidružena veřejná IP adresa. U primárních konfigurací protokolu IP není k příkazu ping k Internetu vyžadována veřejná ip adresa.
+>V případě sekundárních konfigurací IP můžete k ověřování pomocí příkazů pouze testovat připojení k Internetu, pokud má konfigurace přidruženou veřejnou IP adresu. U primárních konfigurací IP adres není k ověřování na internetu nutná veřejná IP adresa.
 
 Pokud ověřujete odchozí připojení ze sekundárního síťového rozhraní na virtuálním počítači s Linuxem, možná bude nutné přidat odpovídající trasy. To lze provést několika způsoby. Další informace najdete v odpovídající dokumentaci k vaší distribuci Linuxu. Toto je jedna z metod, jak to provést:
 
