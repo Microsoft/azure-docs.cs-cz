@@ -1,7 +1,7 @@
 ---
-title: Získání přehledů o videích pomocí rozhraní API pro vyhledávání videí Bingu
+title: Získejte přehled o videích pomocí rozhraní API Bingu pro vyhledávání videí
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí rozhraní API pro vyhledávání videí Bingzískat další informace o videích, například souvisejících videích.
+description: Naučte se používat rozhraní API Bingu pro vyhledávání videí k získání dalších informací o videích, jako jsou například související videa.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68500595"
 ---
-# <a name="get-insights-about-a-video"></a>Získejte přehledo videa
+# <a name="get-insights-about-a-video"></a>Získejte přehled o videu
 
-Každé video vrácené rozhraním API pro vyhledávání videí Bing obsahuje ID videa, které můžete použít k získání dalších informací o něm, například souvisejících videí. Chcete-li získat přehledy o videu, získejte jeho [token videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) v odpovědi rozhraní API. 
+Každé video vrácené rozhraní API Bingu pro vyhledávání videí obsahuje ID videa, pomocí kterého můžete získat další informace, například související videa. Pokud chcete získat přehled o videu, Získejte token [videoid](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) v odpovědi rozhraní API. 
 
 ```json
     "value" : [
@@ -34,7 +34,7 @@ Každé video vrácené rozhraním API pro vyhledávání videí Bing obsahuje I
     ],
 ```
 
-Poté odešlete požadavek GET koncovému bodu podrobností videa s ID. Nastavte parametr dotazu [id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) na `videoId` token. Chcete-li určit přehledy, které chcete získat, nastavte parametr dotazu [modulů.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) Chcete-li získat `modules` všechny přehledy, nastavte na vše. Odpověď zahrnuje všechny přehledy, které jste požadovali, pokud jsou k dispozici.
+Následně odešlete požadavek GET na koncový bod podrobností videa s ID. Nastavte parametr dotazu [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) na `videoId` token. Chcete-li určit přehledy, které chcete získat, nastavte parametr dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) . Pokud chcete získat všechny přehledy `modules` , nastavte na vše. Odpověď zahrnuje všechny informace, které jste požadovali, pokud jsou k dispozici.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -46,9 +46,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ``` 
 
-## <a name="getting-related-videos-insights"></a>Získání přehledů souvisejících videí  
+## <a name="getting-related-videos-insights"></a>Získávání souvisejících videí pro přehledy  
 
-Chcete-li získat videa související se zadaným videem, nastavte parametr dotazu [modulů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) na `RelatedVideos`.
+Chcete-li získat videa související se zadaným videem, nastavte parametr dotazu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) na `RelatedVideos`.
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  
@@ -60,7 +60,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpověď na tento požadavek bude mít objekt [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nejvyšší úrovně namísto objektu [Videa.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos)  
+Odpověď na tento požadavek bude mít objekt [VideoDetails](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videodetails) nejvyšší úrovně namísto objektu [video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) .  
   
 ```json
 {
@@ -97,5 +97,5 @@ Odpověď na tento požadavek bude mít objekt [VideoDetails](https://docs.micro
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Hledání populárních videí](trending-videos.md)
+> [Hledání videí o trendech](trending-videos.md)
 

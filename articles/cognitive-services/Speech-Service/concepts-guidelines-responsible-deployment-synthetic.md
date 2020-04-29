@@ -1,7 +1,7 @@
 ---
-title: Pokyny pro odpovědné zavádění syntetické hlasové technologie
+title: Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
 titleSuffix: Azure Cognitive Services
-description: Obecné pokyny společnosti Microsoft pro používání syntetické hlasové technologie. Ty byly vyvinuty ve studiích, které společnost Microsoft provedla s hlasovým talentem, spotřebiteli, stejně jako jednotlivci s poruchami řeči, aby řídili zodpovědný vývoj syntetického hlasu.
+description: Obecné pokyny pro návrh pro používání syntetické hlasové technologie společnosti Microsoft. Tyto aplikace byly vyvinuty v studiích, které společnost Microsoft provedla s hlasovým talentů, s využitím spotřebitelů i s využitím hlasových poruch, aby se mohli řídit odpovědný vývoj syntetického
 services: cognitive-services
 author: benoah
 manager: nitinme
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
 ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73836764"
 ---
-# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro odpovědné zavádění syntetické hlasové technologie
-Zde jsou obecné pokyny společnosti Microsoft pro použití syntetické hlasové technologie. Ty byly vyvinuty ve studiích, které společnost Microsoft provedla s hlasovým talentem, spotřebiteli, stejně jako jednotlivci s poruchami řeči, aby řídili zodpovědný vývoj syntetického hlasu.
+# <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Pokyny pro zodpovědnost nasazení syntetické hlasové technologie
+Tady jsou obecné pokyny pro návrh Microsoftu pro používání syntetické hlasové technologie. Tyto aplikace byly vyvinuty v studiích, které společnost Microsoft provedla s talentůmi hlasem, spotřebiteli a také jednotlivcům s poruchami řeči.
 
 ## <a name="general-considerations"></a>Obecné aspekty
-Pro nasazení technologie syntetické řeči platí následující pokyny ve většině scénářů.
+Pro nasazení syntetické technologie řeči se ve většině scénářů platí následující pokyny.
 
-### <a name="disclose-when-the-voice-is-synthetic"></a>Zveřejnit, když je hlas syntetický
-Zveřejnění, že hlas je počítač vytvořený nejen minimalizuje riziko škodlivých výsledků z podvodu, ale také zvyšuje důvěru v organizaci přináší hlas. Přečtěte si další informace o [tom, jak zveřejnit](concepts-disclosure-guidelines.md).
+### <a name="disclose-when-the-voice-is-synthetic"></a>Rozvírat po syntetickém hlasu
+V případě, že hlas je vygenerovaný počítačem, je vygenerována nejen minimalizace rizika škodlivých výsledků, ale také zvyšuje důvěryhodnost v organizaci, která hlas poskytuje. Přečtěte si další informace o [tom, jak zveřejnit](concepts-disclosure-guidelines.md).
 
-### <a name="select-appropriate-voice-types-for-your-scenario"></a>Výběr vhodných typů hlasu pro váš scénář
-Pečlivě zvážit kontext použití a potenciální škody spojené s použitím syntetického hlasu. Syntetické hlasy s vysokou věrností nemusí být například vhodné ve vysoce rizikových scénářích, například pro osobní zasílání zpráv, finanční transakce nebo složité situace, které vyžadují lidskou přizpůsobivost nebo empatii. Uživatelé mohou mít také různá očekávání pro typy hlasu. Například při poslechu citlivých zpráv, které jsou čteny syntetickým hlasem, někteří uživatelé dávají přednost empatičtějšímu a lidskému čtení zpráv, zatímco jiní dávají přednost monotónnějšímu, nezaujatému hlasu. Zvažte testování aplikace, abyste lépe porozuměli uživatelským preferencím.
+### <a name="select-appropriate-voice-types-for-your-scenario"></a>Vyberte vhodné typy hlasu pro váš scénář.
+Pečlivě zvažte kontext použití a potenciální poškození související s používáním syntetického hlasu. Například vysoce věrné syntetické hlasy nemusí být vhodné ve vysoce rizikových scénářích, například pro osobní zasílání zpráv, finanční transakce nebo složité situace, které vyžadují lidskou přizpůsobivost nebo soucit. Uživatelé mohou mít také různá očekávání pro typy hlasu. Například při naslouchání citlivých zpráv, které jsou čteny syntetickým hlasem, někteří uživatelé upřednostňují další empatického a podobné čtení zpráv, zatímco ostatní jsou upřednostňovány ještě více monotone, nevyváženého hlasu. Zvažte testování aplikace pro lepší pochopení uživatelských předvoleb.
 
-### <a name="be-transparent-about-capabilities-and-limitations"></a>Buďte transparentní, pokud jde o možnosti a omezení
-Uživatelé mají větší pravděpodobnost, že mají vyšší očekávání při interakci s vysoce věrné syntetické hlasové agenty. V důsledku toho, když systémové schopnosti nesplňují tato očekávání, důvěra může trpět a může mít za následek nepříjemné nebo dokonce škodlivé zážitky.
+### <a name="be-transparent-about-capabilities-and-limitations"></a>Mít transparentní informace o možnostech a omezeních
+Uživatelé mají větší očekávání při komunikaci s vysoce věrnými syntetickými hlasovými agenty. V důsledku toho platí, že pokud systémové možnosti tyto očekávání nesplňují, může to mít za následek nepříjemný nebo dokonce škodlivou činnost.
 
-### <a name="provide-optional-human-support"></a>Poskytněte volitelnou lidskou podporu
-V nejednoznačných transakčních scénářích (například centrum podpory volání) uživatelé ne vždy důvěřují agentovi počítače, aby odpovídajícím způsobem reagoval na jejich požadavky. Lidská podpora může být v těchto situacích nezbytná, bez ohledu na realistickou kvalitu hlasu nebo schopnosti systému.
+### <a name="provide-optional-human-support"></a>Poskytněte volitelnou podporu pro člověka.
+V nejednoznačných transakčních scénářích (například na portálu pro podporu volání) uživatelé nikdy nedůvěřují agentovi počítače, aby na jejich požadavky správně reagovali. V těchto situacích může být nutná lidská podpora, a to bez ohledu na realistickou kvalitu hlasu nebo schopnosti systému.
 
-## <a name="considerations-for-voice-talent"></a>Důležité informace pro hlasové talenty
-Při práci s hlasovým talentem, jako jsou hlasoví herci, na vytvoření syntetických hlasů, platí níže uvedené pokyny.
+## <a name="considerations-for-voice-talent"></a>Předpoklady pro hlasový talentů
+Pokud při práci se službou Voice talentů, jako jsou třeba hlasové objekty Actors, vytváříte syntetické hlasy, platí níže uvedená směrnice.
 
-### <a name="obtain-meaningful-consent-from-voice-talent"></a>Získejte smysluplný souhlas od hlasových talentů
-Hlasový talent očekává, že bude mít kontrolu nad svým hlasovým písmem (jak a kde bude použit) a bude kompenzován kdykoli v něm bude použit. Vlastníci systému by proto měli získat výslovné písemné povolení od hlasových talentů a mít jasné smluvní specifikace týkající se případů použití, doby používání, kompenzace a tak dále. Některé hlasové talenty si nejsou vědomy potenciálního škodlivého využití technologie a měly by být vzdělávány vlastníky systému o schopnostech této technologie. Pro více informací o hlasový talent a souhlas, přečtěte si naše [zveřejnění pro hlasové talenty](https://aka.ms/disclosure-voice-talent).
+### <a name="obtain-meaningful-consent-from-voice-talent"></a>Získání smysluplného souhlasu ze služby Voice talentů
+Hlasový talentů očekává, že má ovládací prvek pro hlasová písma (jak a kde se bude používat) a že se bude na jejich použití kompenzovat kdykoli. Vlastníci systému by proto měli získat explicitní zapsané oprávnění ze služby Voice talentů a mít jasné smluvní specifikace pro případy použití, dobu trvání použití, kompenzaci atd. Některé hlasové talentůy nevědí o potenciálních škodlivých použitích technologií a měly by být určené pro vlastníky systému na schopnosti technologie. Pokud chcete získat další informace o talentů a souhlasech, přečtěte si naše [zveřejnění pro Voice talentů](https://aka.ms/disclosure-voice-talent).
 
 
-## <a name="considerations-for-those-with-speech-disorders"></a>Úvahy pro osoby s poruchami řeči
-Při práci s osobami s poruchami řeči, k vytvoření nebo nasazení syntetické hlasové technologie, platí následující pokyny.
+## <a name="considerations-for-those-with-speech-disorders"></a>Požadavky na ty s poruchami řeči
+Při práci s jednotlivými uživateli s poruchami řeči, aby mohli vytvářet nebo nasazovat syntetickou hlasovou technologii, platí následující pokyny.
 
-### <a name="provide-guidelines-to-establish-contracts"></a>Poskytnout pokyny pro uzavírání smluv
-Poskytnout pokyny pro uzavírání smluv s jednotlivci, kteří používají syntetický hlas pro pomoc při mluvení. Smlouva by měla zvážit určení stran, které vlastní hlas, dobu trvání použití, kritéria převodu vlastnictví, postupy pro odstranění hlasového písma a jak zabránit neoprávněnému přístupu. Kromě toho povolte smluvní převod vlastnictví hlasových písem po smrti rodinným příslušníkům, pokud k tomu tato osoba udělila svolení.
+### <a name="provide-guidelines-to-establish-contracts"></a>Poskytněte pokyny k navázání smluv.
+Poskytněte pokyny pro navázání smluv s jednotlivci, kteří používají syntetické hlasy pro pomoc při mluvení. Kontrakt by měl zvážit určení stran, které vlastní hlas, dobu trvání použití, kritéria přenosu vlastnictví, postupy pro odstranění hlasového písma a zabránění neoprávněnému přístupu. Navíc můžete povolit smluvní přenos vlastnictví hlasového písma po smrti rodinným příslušníkům, pokud tato osoba má udělené oprávnění.
 
-### <a name="account-for-inconsistencies-in-speech-patterns"></a>Účet pro nekonzistence ve vzorcích řeči
-Pro osoby s poruchami řeči, kteří zaznamenávají své vlastní hlasové fonty, mohou nekonzistence v jejich řeči (slurring nebo neschopnost vyslovit určitá slova) komplikovat proces nahrávání. V těchto případech syntetické hlasové technologie a nahrávání relací by měly pojmout (to znamená, že poskytují přestávky a další počet nahrávání relací).
+### <a name="account-for-inconsistencies-in-speech-patterns"></a>Účet pro nekonzistence ve vzorcích pro rozpoznávání řeči
+Pro jednotlivce, kteří mají zaznamenaná vlastní hlasová písma, můžou nekonzistence ve vzorku řeči (zpracování nebo neschopnost vyslovit určitá slova) zkomplikovat proces zaznamenávání. V těchto případech by se na ně měli zajišťovat syntetická hlasová technologie a relace záznamu (tj. přerušit a další počet relací záznamu).
 
-### <a name="allow-modification-over-time"></a>Povolit úpravy v průběhu času
-Jedinci s poruchami řeči touha, aby se aktualizace jejich syntetický hlas odrážet stárnutí (například, dítě dosažení puberty). Jednotlivci mohou mít také stylistické předvolby, které se v průběhu času mění, a mohou chtít provést změny výšky, přízvuku nebo jiných hlasových charakteristik.
+### <a name="allow-modification-over-time"></a>Povolení změny v průběhu času
+Uživatelé s poruchami v rozpoznávání řeči chtějí dělat aktualizace jejich syntetického hlasu, aby odrážely jejich splatnost (například dítě dosáhne puberty). Jednotlivci také můžou mít stylistické předvolby, které se v průběhu času mění a můžou chtít udělat změny v rámci sklonu, zvýraznění nebo dalších hlasových charakteristik.
 
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-* [Zveřejnění pro hlasové talenty](https://aka.ms/disclosure-voice-talent)
-* [Gating – přehled](concepts-gating-overview.md)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
+* [Přehled o uzavírání](concepts-gating-overview.md)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
-* [Zveřejnění návrhových vzorů](concepts-disclosure-patterns.md)
+* [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Zveřejnění pro hlasové talenty](https://aka.ms/disclosure-voice-talent)
+* [Zveřejnění pro hlasový talentů](https://aka.ms/disclosure-voice-talent)
 * [Jak zveřejnit](concepts-disclosure-guidelines.md)
-* [Zveřejnění návrhových vzorů](concepts-disclosure-patterns.md)
+* [Vzory návrhu zpřístupnění](concepts-disclosure-patterns.md)

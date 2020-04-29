@@ -1,7 +1,7 @@
 ---
-title: Předem sestavené entity dimenze – LUIS
+title: Předem připravené entity dimenzí – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o dimenzích předem sestavené entity v jazyce Porozumění (LUIS).
+description: Tento článek obsahuje předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 ms.custom: seodec18
 author: diberry
@@ -12,28 +12,28 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: 3c7bebb38d0331c76eeaaa1d9d6464c568a61b83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270638"
 ---
-# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Předem připravená entita dimenze pro aplikaci LUIS
-Předestavěná dimenze detekuje různé typy dimenzí bez ohledu na jazykovou verzi aplikace LUIS. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat příklad projevy obsahující dimenze záměry aplikace. Entita dimenze je podporována v [mnoha kulturách](luis-reference-prebuilt-entities.md).
+# <a name="dimension-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita dimenze pro aplikaci LUIS
+Entita předem vytvořená dimenze detekuje různé typy dimenzí bez ohledu na jazykovou verzi aplikace LUIS. Vzhledem k tomu, že je tato entita již vyškolená, není nutné do záměrů aplikace přidat příklad projevy obsahující dimenze. Entita dimenze je podporována v [mnoha jazykových verzích](luis-reference-prebuilt-entities.md).
 
 ## <a name="types-of-dimension"></a>Typy dimenzí
 
-Dimenze se spravuje z úložiště GitHub [s textem pro rozpoznávání.](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml)
+Dimenze se spravuje z úložiště GitHub [pro rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-NumbersWithUnit.yaml) .
 
 ## <a name="resolution-for-dimension-entity"></a>Řešení pro entitu dimenze
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `10 1/2 miles of cable`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -45,8 +45,8 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -74,9 +74,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
 }
 ```
 
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení entity **builtin.dimension.**
+Následující příklad ukazuje řešení entity **Builtin. Dimension** .
 
 ```json
 {
@@ -94,6 +94,6 @@ Následující příklad ukazuje rozlišení entity **builtin.dimension.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Přečtěte si o [e-mailových](luis-reference-prebuilt-email.md), [číselných](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.
+Přečtěte si informace o [e-mailu](luis-reference-prebuilt-email.md), [číslu](luis-reference-prebuilt-number.md)a [řadových](luis-reference-prebuilt-ordinal.md) entitách.

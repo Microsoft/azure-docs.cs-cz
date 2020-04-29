@@ -1,7 +1,7 @@
 ---
-title: Příklady přehledů Služby Bing – Vizuální vyhledávání Bingu
+title: Příklady Bing Insights – Vizuální vyhledávání Bingu
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje příklady toho, jak může vizuální vyhledávání Bingu používat a zobrazovat přehledy obrázků v Bing.com.
+description: Tento článek obsahuje příklady, jak může Vizuální vyhledávání Bingu používat a zobrazovat přehledy obrázků v Bing.com.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,71 +11,71 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
 ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74111632"
 ---
-# <a name="examples-of-bing-insights-usage"></a>Příklady využití přehledů Bingu
+# <a name="examples-of-bing-insights-usage"></a>Příklady využití Bing Insights
 
-Tento článek obsahuje příklady toho, jak může Bing používat a zobrazovat přehledy obrázků na Bing.com.
+Tento článek obsahuje příklady, jak může Bing používat a zobrazovat přehledy imagí v Bing.com.
 
-## <a name="pagesincluding-insight-example"></a>StránkyVčetně příkladu přehledu
+## <a name="pagesincluding-insight-example"></a>Příklad PagesIncluding Insight
 
-Následující text zobrazí odkaz na první webovou stránku a umožní uživateli rozbalit a sbalit seznam dalších webových stránek, které obrázek obsahují:
+Následující obrázek zobrazí odkaz na první webovou stránku a umožní uživateli rozbalit a sbalit seznam dalších webových stránek, které obsahují obrázek:
 
-![Rozbalené stránky včetně](./media/pages-including.PNG)
+![Rozšířené stránky včetně](./media/pages-including.PNG)
 
-## <a name="shoppingsources-insight-example"></a>Příklad přehledu ShoppingSources
+## <a name="shoppingsources-insight-example"></a>Příklad ShoppingSources Insight
 
-Následující informace ukazují, jak může Bing zobrazit nákupní zdroje produktů zobrazených na obrázku:
+Následující příklad ukazuje, jak může Bing Zobrazit nákupní zdroje pro produkty, které jsou vidět v imagi:
 
-![Nákupní zdroje](./media/shopping-sources.PNG)
+![Nákupy zdrojů](./media/shopping-sources.PNG)
 
-## <a name="visualsearch-insight-example"></a>Příklad přehledu visualsearch
+## <a name="visualsearch-insight-example"></a>Příklad VisualSearch Insight
 
-Následující text ukazuje, jak může Bing zobrazovat vizuálně podobné obrázky (viz **Související obrázky** v příkladu):
+Následující příklad ukazuje, jak může Bing zobrazit vizuálně podobné obrázky (viz **Související obrázky** v příkladu):
 
 ![Vizuálně podobné obrázky](./media/similar-images.PNG)
 
-## <a name="recipes-insight-example"></a>Příklad přehledu receptů
+## <a name="recipes-insight-example"></a>Příklad přehledu recepty
 
-Následující text ukazuje, jak může Bing zobrazovat recepty na potraviny zobrazené na obrázku. Příklad umožňuje uživateli vědět, že jsou k dispozici recepty:
+V následující části se dozvíte, jak může Bing zobrazovat recepty pro jídlo zobrazená na obrázku. Tento příklad umožňuje uživateli zjistit, že jsou k dispozici recepty:
 
-![Recepty a stránky včetně](./media/recipes-pages-including.PNG)
+![Recepty a stránky, včetně](./media/recipes-pages-including.PNG)
 
  A poskytuje odkaz na recepty, když uživatel rozbalí seznam:
 
-![Rozšířené stránky receptů včetně](./media/expanded-recipes-pages-including.PNG)
+![Rozbalené stránky receptu včetně](./media/expanded-recipes-pages-including.PNG)
 
-## <a name="relatedsearches-insight-example"></a>RelatedSearches příklad vhled
+## <a name="relatedsearches-insight-example"></a>Příklad RelatedSearches Insight
 
-Následující text ukazuje, jak může Bing zobrazovat související vyhledávání obrázků provedených jinými uživateli. Pokud uživatel klepne na obrázek, uživatel se přenese na stránku s výsledky hledání Bing.com/images pro daný související dotaz.
+Následující příklad ukazuje, jak může Bing zobrazit související hledání imagí provedených ostatními. Pokud uživatel klikne na obrázek, uživatel přejde na stránku s výsledky hledání Bing.com/images pro daný dotaz.
 
-![Související vyhledávání obrázků](./media/bordered-related-searches.PNG)
+![Související hledání imagí](./media/bordered-related-searches.PNG)
 
 ## <a name="entity-insight-example"></a>Příklad přehledu entit
 
-Následující text ukazuje, jak může Bing zobrazovat informace o entitě (osobě, místě nebo věci) zobrazené na obrázku. Pokud uživatel klikne na odkaz entity, přejde se na stránku s Bing.com výsledků hledání entity:
+Následující příklad ukazuje, jak může Bing zobrazit informace o entitě (osoba, místo nebo věc) zobrazené na obrázku. Pokud uživatel klikne na odkaz entita, uživatel přejde na stránku výsledků hledání Bing.com pro danou entitu:
 
-![Entita zobrazená na obrázku](./media/entity.PNG)
+![Entita zobrazená v obrázku](./media/entity.PNG)
 
-## <a name="displaying-other-insights-that-the-user-might-explore"></a>Zobrazení dalších přehledů, které by uživatel mohl prozkoumat
+## <a name="displaying-other-insights-that-the-user-might-explore"></a>Zobrazení dalších přehledů, které může uživatel prozkoumat
 
-Následující text ukazuje, jak může Bing zobrazit další informace o obrázku, které může uživatel prozkoumat.
+Následující příklad ukazuje, jak může Bing zobrazit další informace o imagi, kterou může uživatel prozkoumat.
 
-![Prozkoumejte další poznatky o obrázku](./media/apple-pie-more-tags.PNG)
+![Prozkoumat další přehledy o imagi](./media/apple-pie-more-tags.PNG)
 
-## <a name="bounding-boxes-and-hot-spots"></a>Ohraničovací boxy a horké body
+## <a name="bounding-boxes-and-hot-spots"></a>Ohraničovací čtverečky a aktivní body
 
-Jiné než výchozí značky obsahují ohraničovací rámeček, který identifikuje oblast zájmu v obrázku, na který se značka vztahuje. Pokud ohraničovací rámeček neidentifikuje celý obraz, vytvořte aktivní bod v obraze pomocí ohraničovacího rámečku. Uživatel může kliknout na aktivní bod a získat informace týkající se obsahu nalezeného pod aktivním bodem (nebo obdélníkem). Pokud je například obrázek vysoce módní, mohou výsledky obsahovat značky (a ohraničovací rámečky) pro příslušenství zobrazené na obrázku, například kabelku, šperky, šály a tak dále. Následující příklad ukazuje obdélník aktivního bodu pro sluneční brýle zobrazené na obrázku:
+Mezi nevýchozí značky patří ohraničovací rámeček, který identifikuje oblast zájmu v obrázku, na který se značka vztahuje. Pokud ohraničující rámeček neidentifikuje celý obrázek, použijte ohraničovací rámeček pro vytvoření aktivního bodu na obrázku. Uživatel může kliknout na aktivní bod a získat informace týkající se obsahu nalezeného pod aktivním bodem (nebo obdélníkem). Pokud se například jedná o obrázek s vysokou mírou, výsledky mohou obsahovat značky (a ohraničovací čtverečky) pro příslušenství zobrazená na obrázku, jako je například košelkových, Jewelry, scarfs a tak dále. Následující příklad ukazuje obdélník pro Sunglasses, který je zobrazený na obrázku:
 
 ![Ohraničovací rámeček a aktivní bod](./media/click-to-search.PNG)
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít s prvním požadavkem, podívejte se na rychlé starty: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+Pokud chcete začít s prvním požadavkem, přečtěte si rychlý Start: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

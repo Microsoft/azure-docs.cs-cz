@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Použití vlastních příkazů s vlastním hlasem (preview) – služba řeč'
+title: 'Rychlý Start: použití vlastních příkazů s vlastním hlasem (ve verzi Preview) – služba Speech'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku zadáte výstupní hlas aplikace Vlastní příkazy.
+description: V tomto článku určíte výstupní hlas vlastní aplikace příkazů.
 services: cognitive-services
 author: anhoang
 manager: yetian
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
 ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75456407"
 ---
-# <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Úvodní příručka: Použití vlastních příkazů s vlastním hlasem (náhled)
+# <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Rychlý Start: použití vlastních příkazů s vlastním hlasem (Preview)
 
-V [předchozím článku](./quickstart-custom-speech-commands-create-parameters.md)jsme vytvořili nový projekt vlastních příkazů, který reaguje na příkazy s parametry.
+V [předchozím článku](./quickstart-custom-speech-commands-create-parameters.md)jsme vytvořili nový projekt Custom Commands, který bude reagovat na příkazy s parametry.
 
 V tomto článku vybereme vlastní výstupní hlas pro aplikaci, kterou jsme vytvořili.
 
-## <a name="select-a-custom-voice"></a>Výběr vlastního hlasu
+## <a name="select-a-custom-voice"></a>Vyberte vlastní hlas.
 
-1. Otevření projektu, který [jsme vytvořili dříve](./quickstart-custom-speech-commands-create-parameters.md)
-1. V levém podokně vyberte **Nastavení.**
-1. Vybrat **vlastní hlas** v prostředním podokně
+1. Otevřete projekt, který [jsme vytvořili dříve](./quickstart-custom-speech-commands-create-parameters.md) .
+1. V levém podokně vyberte **Nastavení** .
+1. V prostředním podokně vyberte **vlastní hlas** .
 1. Výběr požadovaného vlastního nebo veřejného hlasu z tabulky
-1. Vyberte **Uložit**.
+1. Vybrat **Uložit**
 
 > [!div class="mx-imgBorder"]
-> ![Ukázkové věty s parametry](media/custom-speech-commands/select-custom-voice.png)
+> ![Ukázky vět s parametry](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Vlastní hlasy lze vytvořit ze stránky projektu Vlastní hlas. Chcete-li začít, vyberte odkaz **Pro řečové studio** a pak **vlastní hlas.**
+> Vlastní hlasy lze vytvořit na stránce vlastní hlasový projekt. Vyberte odkaz **řeč Studio** a začněte **vlastním hlasem** .
 
-Nyní aplikace bude reagovat ve zvoleném hlase, místo výchozího hlasu.
+Aplikace teď bude ve vybraném hlasu reagovat místo na výchozí hlas.
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Připojení k aplikaci Custom Command pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+> [Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK (Preview)](./quickstart-custom-speech-commands-speech-sdk.md)
 

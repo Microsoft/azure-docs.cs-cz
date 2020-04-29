@@ -1,7 +1,7 @@
 ---
-title: Jak nahrát dokument - Vlastní Překladač
+title: Jak nahrát dokument – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Funkce nahrávání dokumentů nahrává paralelní dokumenty (dva dokumenty, kde jeden je původ a druhý je překlad) do služby.
+description: Funkce nahrání dokumentu nahrává paralelní dokumenty (dva dokumenty, kde jeden je počátek a druhý je překlad) do služby.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,81 +10,81 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647385"
 ---
 # <a name="upload-a-document"></a>Nahrání dokumentu
 
-V [aplikaci Custom Translator](https://portal.customtranslator.azure.ai)můžete nahrát paralelní dokumenty a trénovat modely překladů. [Paralelní dokumenty](what-are-parallel-documents.md) jsou dvojice dokumentů, kde jeden je překlad druhého. Jeden dokument v páru obsahuje věty ve zdrojovém jazyce a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
+Ve [vlastním překladateli](https://portal.customtranslator.azure.ai)můžete nahrávat paralelní dokumenty pro výuku vašich modelů překladu. [Paralelní dokumenty](what-are-parallel-documents.md) jsou páry dokumentů, kde jedna je překlad druhé. Jeden dokument ve dvojici obsahuje ve zdrojovém jazyce věty a druhý dokument obsahuje tyto věty přeložené do cílového jazyka.
 
-Před nahráním dokumentů zkontrolujte [formáty dokumentů a pokyny k vytváření konvencí,](document-formats-naming-convention.md) abyste se ujistili, že je formát souboru podporován v nástroji Vlastní překladač.
+Před nahráním dokumentů si přečtěte téma [formáty dokumentů a pokyny k konvenci pojmenování a](document-formats-naming-convention.md) Ujistěte se, že je ve vašem vlastním překladateli podporován formát souboru.
 
 ## <a name="how-to-upload-document"></a>Jak nahrát dokument?
 
-Na portálu [Vlastní překladač](https://portal.customtranslator.azure.ai) klikněte na záložku Dokumenty a přejděte na stránku Dokumenty.
+V portálu pro [vlastní překladatele](https://portal.customtranslator.azure.ai) klikněte na kartu dokumenty a přejděte na stránku dokumenty.
 
 ![Odkaz na nahrání dokumentu](media/how-to/how-to-upload-1.png)
 
 
-1.  Klikněte na tlačítko Nahrát soubory na stránce dokumenty.
+1.  Klikněte na tlačítko nahrát soubory na stránce dokumenty.
 
     ![Nahrát stránku dokumentu](media/how-to/how-to-upload-2.png)
 
-2.  V dialogu vyplňte následující informace:
+2.  V dialogovém okně zadejte následující informace:
 
     a.  Typ dokumentu:
 
-    -  Školení: Tyto dokumenty budou použity pro tréninkovou sadu.
-    -  Ladění: Tyto dokumenty budou použity pro ladění sady.
-    -  Testování: Tyto dokumenty budou použity pro testovací sadu.
-    -  Frázový slovník: Tyto dokumenty budou použity pro slovník frází.
-    -  Větný slovník: Tyto dokumenty budou použity pro slovník vět
+    -  Školení: tyto dokumenty se budou používat pro školicí sadu.
+    -  Ladění: tyto dokumenty budou použity pro optimalizaci sady.
+    -  Testování: tyto dokumenty budou použity pro testování sady.
+    -  Slovník frází: tyto dokumenty se použijí pro slovník frází.
+    -  Slovník vět: tyto dokumenty se použijí pro slovník vět.
 
-    b.  Jazykový pár
+    b.  Dvojice jazyků
 
-    c.  Přepsat dokument, pokud existuje: Toto políčko zaškrtněte, pokud chcete přepsat existující dokumenty se stejným názvem.
+    c.  Přepsat dokument, pokud existuje: zaškrtněte toto políčko, pokud chcete přepsat všechny existující dokumenty se stejným názvem.
 
-    d.  Vyplňte příslušnou část pro paralelní data nebo kombinovaná data.
+    d.  Vyplňte příslušné části pro paralelní data nebo kombinovaná data.
 
     -  Paralelní data:
-        -  Zdrojový soubor: Vyberte zdrojový soubor jazyka z místního počítače.
-        -  Cílový soubor: Vyberte cílový soubor jazyka z místního počítače.
-        -  Název dokumentu: Používá se pouze v případě, že nahráváte paralelní soubory.
+        -  Zdrojový soubor: ze svého místního počítače vyberte zdrojový soubor jazyka.
+        -  Cílový soubor: Vyberte cílový jazykový soubor z místního počítače.
+        -  Název dokumentu: používá se pouze v případě, že odesíláte paralelní soubory.
 
-    - Combo data:
-        -  Combo Soubor: Vyberte soubor combo z místního počítače. Kombo soubor obsahuje jak zdrojové, tak cílové jazykové věty. [Konvence pojmenování](document-formats-naming-convention.md) je důležité pro kombinované soubory.
+    - Data kombinovaného:
+        -  Soubor se seznamem: ze svého místního počítače vyberte soubor se seznamem. Soubor se seznamem obsahuje oba věty zdrojového i cílového jazyka. [Zásady vytváření názvů](document-formats-naming-convention.md) jsou důležité pro soubory se seznamem.
 
-    e.  Klikněte na Nahrát
+    e.  Klikněte na nahrát.
 
-    ![Dialogové okno Odeslat dokument](media/how-to/how-to-upload-dialog.png)
+    ![Nahrát dialog dokumentu](media/how-to/how-to-upload-dialog.png)
 
-3.  V tuto chvíli zpracováváme vaše dokumenty a pokoušíme se extrahovat věty. Kliknutím na tlačítko "Zobrazit průběh nahrávání" můžete zkontrolovat stav dokumentů při jejich zpracování.
+3.  V tomto okamžiku zpracováváme vaše dokumenty a zkusíme extrahovat věty. Kliknutím na Zobrazit průběh nahrávání můžete sledovat stav svých dokumentů při jejich zpracování.
 
-    ![Dialogové okno Nahrát zpracování dokumentu](media/how-to/how-to-upload-processing-dialog.png)
+    ![Odeslat dialog pro zpracování dokumentů](media/how-to/how-to-upload-processing-dialog.png)
 
-4.  Na této stránce se zobrazí stav a všechny chyby pro každý soubor v rámci nahrávání. Stav nahrávání v minulosti můžete kdykoli zobrazit kliknutím na kartu "Nahrát historii".
+4.  Na této stránce se zobrazí stav a všechny chyby pro každý soubor v rámci nahrávání. Stav nahrávání po odeslání můžete kdykoli zobrazit kliknutím na kartu odeslat historii.
 
-    ![Dialogové okno Historie dokumentů](media/how-to/how-to-upload-document-history.png)
+    ![Dialogové okno nahrát historii dokumentu](media/how-to/how-to-upload-document-history.png)
 
 
 ## <a name="view-upload-history"></a>Zobrazit historii nahrávání
 
-Na stránce historie nahrávání můžete zobrazit historii všech detailů dokumentu, jako je typ dokumentu, pár jazyků, stav nahrávání atd.
+Na stránce Historie nahrávání můžete zobrazit historii všech odesílání dokumentů, jako je typ dokumentu, dvojice jazyků, stav nahrávání atd.
 
-1. Na portálu [Vlastní překladač](https://portal.customtranslator.azure.ai) klikněte na kartu Nahrát historii a zobrazte historii.
+1. Na portálu [vlastního překladatele](https://portal.customtranslator.azure.ai) klikněte na nahrát kartu Historie a zobrazte historii.
 
-    ![Karta Historie nahrávání](media/how-to/how-to-upload-history-1.png)
+    ![Nahrát kartu Historie](media/how-to/how-to-upload-history-1.png)
 
-2. Na této stránce je uveden stav všech vašich minulých nahrávek. Zobrazuje nahrávání od nejnovějších po nejméně poslední. U každého nahrání se zobrazí název dokumentu, stav nahrání, datum nahrání, počet nahraných souborů, typ nahraného souboru a jazykový pár souboru.
+2. Tato stránka zobrazuje stav všech vašich minulých nahrávání. Zobrazuje nahrávání z nejaktuálnějšího a nejméně nedávného. U každého nahrávání se zobrazuje název dokumentu, stav odeslání, datum odeslání, počet odeslaných souborů, typ odeslaných souborů a dvojici jazyků souboru.
 
-    ![Nahrát stránku historie](media/how-to/how-to-document-history-2.png)
+    ![Odeslat stránku historie](media/how-to/how-to-document-history-2.png)
 
-3. Klikněte na libovolný záznam historie nahrávání. Na stránce podrobností o historii nahrávání můžete zobrazit soubory nahrané jako součást nahrávání, nahraný stav souboru, jazyk souboru a chybovou zprávu (pokud dojde k chybě při nahrávání).
+3. Klikněte na libovolný záznam historie nahrávání. Na stránce Podrobnosti o historii odeslání můžete zobrazit soubory odeslané v rámci nahrávání, odeslat stav souboru, jazyk souboru a chybové zprávy (Pokud se v nahrávání vyskytne nějaká chyba).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Na [stránce podrobností dokumentu](how-to-view-document-details.md) můžete zkontrolovat seznam extrahovaných vět.
-- [Jak trénovat model](how-to-train-model.md).
+- Na [stránce s podrobnostmi o dokumentu](how-to-view-document-details.md) si můžete prohlédnout seznam extrahovaných vět.
+- [Postup výuky modelu](how-to-train-model.md).

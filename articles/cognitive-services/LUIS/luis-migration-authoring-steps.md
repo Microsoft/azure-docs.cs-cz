@@ -1,7 +1,7 @@
 ---
-title: Migrace do vývojového prostředku Azure
+title: Migrace na prostředek pro vytváření obsahu Azure
 titleSuffix: Azure Cognitive Services
-description: Migrujte do vývojového prostředku Azure.
+description: Migrujte na prostředek pro vytváření obsahu Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: f5197ae79670e4543c58224a33838706edae6218
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78194630"
 ---
-# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Kroky migrace do vývojového prostředku Azure
+# <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Postup migrace do prostředku pro vytváření obsahu Azure
 
-Z portálu language understanding (LUIS) migrujte všechny aplikace, které vlastníte, abyste používali zdrojový prostředek Azure.
+Na portálu Language Understanding (LUIS) migrujte všechny aplikace, které vlastníte, abyste mohli používat prostředek pro vytváření obsahu Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Volitelně**zálohujte aplikace ze seznamu aplikací portálu LUIS exportem jednotlivých aplikací nebo použijte [exportní rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40).
-* **Volitelně**můžete uložit seznam spolupracovníků jednotlivých aplikací. Všichni spolupracovníci mohou být zaslány e-mailem jako součást procesu migrace.
-* **Povinné**, musíte mít [předplatné Azure](https://azure.microsoft.com/free/). Část procesu předplatného vyžaduje fakturační údaje. Můžete však použít volné (F0) cenové úrovně při použití LUIS. Možná nakonec zjistíte, že potřebujete placenou úroveň, protože vaše využití se zvyšuje.
+* **Volitelně můžete**aplikace zálohovat ze seznamu aplikací portálu Luis, a to tak, že jednotlivé aplikace exportujete nebo použijete [rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)pro export.
+* **Volitelně můžete**Uložit seznam collaborator's jednotlivých aplikací. V rámci procesu migrace je možné odeslat e-mail všem spolupracovníkům.
+* Je **potřeba mít** [předplatné Azure](https://azure.microsoft.com/free/). Součástí procesu předplatného je vyžadování fakturačních informací. Když ale použijete LUIS, můžete použít cenové úrovně Free (F0). Po zvýšení využití možná budete potřebovat placenou úroveň.
 
-Pokud nemáte předplatné Azure, [zaregistrujte se](https://azure.microsoft.com/free/).
+Pokud nemáte předplatné Azure, [Zaregistrujte](https://azure.microsoft.com/free/)se.
 
 ## <a name="access-the-migration-process"></a>Přístup k procesu migrace
 
-Každý týden budete vyzváni k migraci aplikací. Toto okno můžete zrušit bez migrace. Pokud chcete migrovat před dalším naplánovaným obdobím, můžete zahájit proces migrace z ikony **Azure** na horním panelu nástrojů portálu LUIS.
+Každý týden budete vyzváni k migraci svých aplikací. Toto okno můžete zrušit bez migrace. Pokud chcete provést migraci před dalším naplánovaným obdobím, můžete zahájit proces migrace z ikony **Azure** na horním panelu nástrojů portálu Luis.
 
 > [!div class="mx-imgBorder"]
 > ![Ikona migrace](./media/migrate-authoring-key/migration-button.png)
 
-## <a name="app-owner-begins-the-migration-process"></a>Vlastník aplikace zahájí proces migrace
+## <a name="app-owner-begins-the-migration-process"></a>Vlastník aplikace zahájí proces migrace.
 
-Proces migrace je k dispozici, pokud jste vlastníkem všech aplikací LUIS.
+Pokud jste vlastníkem libovolných aplikací LUIS, je proces migrace k dispozici.
 
-1. Přihlaste se k [portálu LUIS](https://www.luis.ai) a odsouhlaste podmínky použití.
-1. Automaticky otevírané okno migrace umožňuje pokračovat v migraci nebo migrovat později. Vyberte **Možnost Migrovat .** Pokud se rozhodnete migrovat později, máte 9 měsíců na migraci na nový klíč pro vytváření v Azure.
+1. Přihlaste se k [portálu Luis](https://www.luis.ai) a odsouhlaste podmínky použití.
+1. Automaticky otevírané okno migrace vám umožní pokračovat v migraci nebo migrovat později. Vyberte **migrovat nyní**. Pokud se rozhodnete migrovat později, máte 9 měsíců na migraci nového vývojového klíče v Azure.
 
-    ![První automaticky otevírané okno v procesu migrace, vyberte Migrovat.](./media/migrate-authoring-key/migrate-now.png)
+    ![První automaticky otevírané okno v procesu migrace vyberte migrovat nyní.](./media/migrate-authoring-key/migrate-now.png)
 
-1. Volitelně, pokud má některá z vašich aplikací spolupracovníky, budete vyzváni k **odeslání e-mailu** s informací o migraci. Jedná se o volitelný krok.
+1. Případně, pokud má kterákoli z vašich aplikací spolupracovníky, budete vyzváni k **odeslání e-mailu s oznámením** o migraci. Toto je volitelný krok.
 
-    Po migraci účtu do Azure už vaše aplikace nebudou dostupné spolupracovníkům.
+    Po dokončení migrace účtu do Azure už nebudou vaše aplikace k dispozici pro spolupracovníky.
 
-    Pro každého spolupracovníka a aplikaci se otevře výchozí e-mailová aplikace s lehce formátaným e-mailem. E-mail můžete před odesláním upravit.
+    U každého spolupracovníka a aplikace se výchozí e-mailová aplikace otevře s lehce formátovaným e-mailem. E-mail můžete před odesláním upravit.
 
     Šablona e-mailu obsahuje přesné ID aplikace a název aplikace.
 
@@ -65,59 +65,59 @@ Proces migrace je k dispozici, pokud jste vlastníkem všech aplikací LUIS.
     Thank you
     ```
 
-1. Zvolte vytvoření vývojového prostředku LUIS výběrem použití existujícího vývojového prostředku nebo vytvoření nového vývojového prostředku.
+1. Vyberte, pokud chcete vytvořit prostředek pro vytváření obsahu LUIS výběrem možnosti použít existující prostředek pro vytváření obsahu, nebo vytvořte nový prostředek pro vytváření.
 
     > [!div class="mx-imgBorder"]
-    > ![Vytvoření vývojového prostředku](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
+    > ![Vytvořit prostředek pro vytváření](./media/migrate-authoring-key/choose-existing-authoring-resource.png)
 
-1. V dalším okně zadejte informace o klíči zdroje. Po zadání informací vyberte **Vytvořit zdroj**. Můžete mít 10 bezplatných prostředků pro vytváření na oblast a předplatné.
+1. V dalším okně zadejte informace o svém klíči prostředku. Po zadání informací vyberte **vytvořit prostředek**. Můžete mít 10 volných prostředků pro vytváření na jednotlivých oblastech a na jedno předplatné.
 
-    ![Vytvoření vývojového prostředku](./media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Vytvořit prostředek pro vytváření](./media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    Při **vytváření nového zdrojového zdroje**pro vytváření zadejte následující informace:
+    Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace:
 
-    * **Název prostředku** – vlastní název, který zvolíte, který se používá jako součást adresy URL pro dotazy koncového bodu vytváření a předpovědi.
-    * **Tenant** – tenant, ke kterého je vaše předplatné Azure přidruženo.
-    * **Název předplatného** - předplatné, které se bude účtovat pro prostředek.
-    * **Skupina prostředků** – vlastní název skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.
-    * **Umístění** - volba umístění je založena na výběru **skupiny prostředků.**
+    * **Název prostředku** – vlastní název, který zvolíte, se používá jako součást adresy URL pro dotazy na koncový bod vytváření a předpovědi.
+    * **Tenant** – tenant, ke kterému je předplatné Azure přidružené.
+    * **Název předplatného** – předplatné, které se bude fakturovat za prostředek.
+    * **Skupina prostředků** – název vlastní skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.
+    * **Umístění** – Volba umístění je založená na výběru **skupiny prostředků** .
     * **Cenová úroveň** – cenová úroveň určuje maximální transakci za sekundu a měsíc.
 
-1. Ověřte zdroj pro vytváření a **migrujte nyní**.
+1. Ověřte prostředek pro vytváření obsahu a **migrujte ho hned teď**.
 
-    ![Vytvoření vývojového prostředku](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
+    ![Vytvořit prostředek pro vytváření](./media/migrate-authoring-key/choose-authoring-resource-and-migrate.png)
 
-1. Při vytvoření zdrojového zdroje se zobrazí zpráva o úspěchu. Chcete-li zavřít, zavřete možnost **Zavřít.**
+1. Po vytvoření prostředku pro vytváření se zobrazí zpráva o úspěchu. Kliknutím na **Zavřít** zavřete automaticky otevírané okno.
 
-    ![Zdroj pro vytváření byl úspěšně vytvořen.](./media/migrate-authoring-key/migration-success.png)
+    ![Váš prostředek pro vytváření obsahu se úspěšně vytvořil.](./media/migrate-authoring-key/migration-success.png)
 
-    V seznamu **Moje aplikace** jsou uvedeny aplikace migrované na nový zdroj autora.
+    V seznamu **Moje aplikace** se zobrazí aplikace migrované do nového prostředku pro vytváření.
 
-    K pokračování úprav aplikací na portálu LUIS nemusíte znát klíč vývojového prostředku. Pokud plánujete upravovat aplikace programově, potřebujete hodnoty vývojového klíče. Tyto hodnoty se zobrazují na stránce **Spravovat > prostředků Azure** na portálu LUIS a jsou taky dostupné na portálu Azure na stránce **klíčů** prostředků.
+    Pokud chcete pokračovat v úpravách vašich aplikací na portálu LUIS, nemusíte znát klíč prostředku pro vytváření obsahu. Pokud plánujete upravovat aplikace programově, budete potřebovat hodnoty pro vytváření kódu. Tyto hodnoty se zobrazí na stránce **Správa prostředků Azure >** na portálu Luis a jsou k dispozici také v Azure Portal na stránce **klíče** prostředku.
 
-1. Před přístupem k aplikacím vyberte zdroj předplatného a vývojového prostředku LUIS, abyste viděli aplikace, které můžete vytvářet.
+1. Než budete mít přístup k vašim aplikacím, vyberte prostředek pro vytváření předplatného a LUIS, abyste viděli aplikace, které můžete vytvořit.
 
-    ![Chcete-li zobrazit aplikace, které můžete vytvářet, vyberte zdroj předplatného a vytváření luis.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+    ![Pokud chcete zobrazit aplikace, které může vytvořit, vyberte předplatné a LUIS Authoring Resource.](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
 
 
-## <a name="app-contributor-begins-the-migration-process"></a>Přispěvatel aplikace zahájí proces migrace
+## <a name="app-contributor-begins-the-migration-process"></a>Přispěvatel aplikace zahájí proces migrace.
 
-Postupujte podle stejných kroků jako vlastník aplikace pro migraci. Tento proces vytvoří nový zdroj `LUIS.Authoring`vytváření druhu .
+Použijte stejný postup jako u vlastníka aplikace pro migraci. Proces vytvoří nový zdroj obsahu typu `LUIS.Authoring`.
 
-Chcete-li přidat jako přispěvatel do migrovaných aplikací vlastněných jinými uživateli, musíte svůj účet migrovat.
+Abyste se mohli přidat jako přispěvatel do migrovaných aplikací vlastněných ostatními, musíte svůj účet migrovat.
 
-## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Po procesu migrace přidejte přispěvatele do zdrojového zdroje pro vytváření.
+## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>Po dokončení procesu migrace přidejte přispěvatele do prostředku pro vytváření obsahu.
 
 [!INCLUDE [Manage contributors for the Azure authoring resource for language understanding](./includes/manage-contributors-authoring-resource.md)]
 
-Přečtěte [si, jak přidat přispěvatele](luis-how-to-collaborate.md).
+Přečtěte si, [jak přidat přispěvatele](luis-how-to-collaborate.md).
 
-## <a name="troubleshooting-errors-with-the-migration-process"></a>Poradce při potížích s procesem migrace
+## <a name="troubleshooting-errors-with-the-migration-process"></a>Řešení chyb v procesu migrace
 
-Pokud se `MissingSubscriptionRegistration` během procesu migrace zobrazí chyba na portálu LUIS s červeným oznamovacím pruhem, vytvořte prostředek kognitivní služby na [webu Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo Azure [CLI](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Další informace o [příčinách této chyby](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
+Pokud na portálu LUIS `MissingSubscriptionRegistration` obdržíte chybu s červeným oznamovacím pruhem během procesu migrace, vytvořte prostředek služby pro rozpoznávání v [Azure Portal](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal) nebo v rozhraní příkazového [řádku Azure](luis-how-to-azure-subscription.md#create-resources-in-azure-cli). Přečtěte si další informace o [příčinách této chyby](../../azure-resource-manager/templates/error-register-resource-provider.md#cause).
 
 ## <a name="next-steps"></a>Další kroky
 
 
-* Kontrola [konceptů](luis-concept-keys.md) týkajících se vytváření a kláves runtime
-* Kontrola [způsobu přiřazování klíčů](luis-how-to-azure-subscription.md) a [přidávání přispěvatelů](luis-how-to-collaborate.md)
+* Přečtěte si [Koncepty](luis-concept-keys.md) o vytváření a klíčích modulu runtime
+* Přečtěte si, [jak přiřadit klíče](luis-how-to-azure-subscription.md) a přidat [přispěvatele](luis-how-to-collaborate.md) .

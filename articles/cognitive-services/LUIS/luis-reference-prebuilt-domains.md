@@ -1,7 +1,7 @@
 ---
 title: Předem sestavený odkaz na doménu – LUIS
 titleSuffix: Azure Cognitive Services
-description: Odkaz na předem vytvořené domény, které jsou předem vytvořené kolekce záměrů a entit z inteligentních služeb pro porozumění jazykům (LUIS).
+description: Odkaz na předem sestavené domény, které představují předem sestavené kolekce záměrů a entit z Language Understandingch inteligentních služeb (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,41 +12,41 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270613"
 ---
-# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro vaši aplikaci LUIS
-Tento odkaz obsahuje informace o [předem sestavené domény](luis-how-to-use-prebuilt-domains.md), které jsou předem vytvořené kolekce záměrů a entit, které nabízí LUIS.
+# <a name="prebuilt-domain-reference-for-your-luis-app"></a>Předem sestavený odkaz na doménu pro aplikaci LUIS
+Tento odkaz obsahuje informace o [předem sestavených doménách](luis-how-to-use-prebuilt-domains.md), které představují předem sestavené kolekce záměrů a entit, které Luis nabídky.
 
-[Vlastní domény](luis-how-to-start-new-app.md), naopak začít bez záměrů a modelů. Do vlastního modelu můžete přidat všechny předem vytvořené záměry a entity domény.
+[Vlastní domény](luis-how-to-start-new-app.md)na rozdíl od začátku bez záměrů a modelů. Do vlastního modelu můžete přidat všechny předem připravené domény a entity.
 
-## <a name="custom-domains-per-language"></a>Vlastní domény podle jazyka
+## <a name="custom-domains-per-language"></a>Vlastní domény na jazyk
 
-Níže uvedená tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle úplnější než ostatní.
+Následující tabulka shrnuje aktuálně podporované domény. Podpora angličtiny je obvykle více dokončena než jiné.
 
-| Typ entity       | CS-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT-BR |  JP  |      Ko |        NL |    TR |
+| Typ entity       | EN-US      | ZH-CN   | DE    | FR     | ES    | IT      | PT – BR |  JP  |      KO |        NL |    TR |
 |:-----------------:|:-------:|:-------:|:-----:|:------:|:-----:|:-------:| :-------:| :-------:| :-------:| :-------:|  :-------:|
 | Kalendář  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 |Communication  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| E-mail     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| E-mailu     | ✓    | ✓       | ✓   | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | HomeAutomation          | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Poznámky     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Místa   | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | RestaurantReservation  | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
-| Todo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
+| ToDo     | ✓    | ✓       | ✓    | ✓     | ✓     | ✓  | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Nástroje      | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Weather        | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 | Web    | ✓    | ✓        | ✓    | ✓      | ✓     | ✓       | ✓  | ✓      | ✓    | ✓    | ✓     | ✓  |
 
-Předem vytvořené domény **nejsou podporovány** v:
+Předem připravené domény nejsou v nástroji **podporované** :
 
-* Kanadská francouzština
+* Francouzština (Kanada)
 * Hindština
-* Španělština mexická
+* Španělština – Mexiko
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se [jednoduchou entitu](reference-entity-simple.md).
+Seznamte se s [jednoduchou entitou](reference-entity-simple.md).

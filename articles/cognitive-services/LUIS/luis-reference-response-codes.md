@@ -1,7 +1,7 @@
 ---
-title: Kódy odpovědí HTTP rozhraní API – služba LUIS
+title: Kódy odpovědí HTTP API – LUIS
 titleSuffix: Azure Cognitive Services
-description: Pochopit, jaké kódy odpovědí HTTP jsou vráceny z api pro vytváření a koncový bod služby LUIS
+description: Informace o tom, jaké kódy odpovědí HTTP se vracejí z rozhraní API pro vytváření LUIS a koncových bodů
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,34 +12,34 @@ ms.topic: reference
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: 405381a2d80ee6469b2b90bcb25923004fe55882
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270252"
 ---
 # <a name="common-api-response-codes-and-their-meaning"></a>Běžné kódy odpovědí rozhraní API a jejich význam
 
-Vytváření [authoring](https://go.microsoft.com/fwlink/?linkid=2092087) a [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) API vrátit kódy odpovědi HTTP. Zatímco zprávy odpovědí obsahují informace specifické pro požadavek, stavový kód odpovědi HTTP je obecný.
+Rozhraní API pro [vytváření obsahu](https://go.microsoft.com/fwlink/?linkid=2092087) a [koncových bodů](https://go.microsoft.com/fwlink/?linkid=2092356) vrací kódy odpovědí HTTP. I když zprávy odpovědi obsahují informace, které jsou specifické pro požadavek, je kód stavu odpovědi HTTP obecný.
 
 ## <a name="common-status-codes"></a>Běžné stavové kódy
-V následující tabulce jsou uvedeny některé nejběžnější kódy stavu odpovědi HTTP pro [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) a [koncová pole](https://go.microsoft.com/fwlink/?linkid=2092356) API:
+Následující tabulka uvádí některé nejběžnější stavové kódy odpovědí HTTP pro [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) a [koncové](https://go.microsoft.com/fwlink/?linkid=2092356) rozhraní API:
 
-|kód|rozhraní API|Vysvětlení|
+|kód|Rozhraní API|Vysvětlení|
 |:--|--|--|
-|400|Vytváření, koncový bod|parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozeny nebo příliš velké|
-|400|Vytváření, koncový bod|tělo požadavku je nesprávné, což znamená, že json chybí, je poškozený nebo příliš velký|
-|401|Vytváření obsahu|použitý klíč předplatného koncového bodu namísto vytváření klíče|
-|401|Vytváření, koncový bod|neplatný, poškozený nebo prázdný klíč|
-|401|Vytváření, koncový bod| klíč neodpovídá oblasti|
-|401|Vytváření obsahu|nejste vlastníkem ani spolupracovníkem|
-|401|Vytváření obsahu|neplatné pořadí volání rozhraní API|
-|403|Vytváření, koncový bod|celkový limit měsíční klíčové kvóty byl překročen|
-|409|Koncový bod|aplikace se stále načítá|
-|410|Koncový bod|aplikace musí být přeškolena a znovu publikována|
-|414|Koncový bod|dotaz překračuje maximální limit znaků|
-|429|Vytváření, koncový bod|Překročení limitu rychlosti (požadavky za sekundu)|
+|400|Vytváření obsahu, koncový bod|Parametry požadavku jsou nesprávné, což znamená, že požadované parametry chybí, jsou poškozené nebo jsou moc velké.|
+|400|Vytváření obsahu, koncový bod|tělo žádosti není správné, což znamená, že JSON chybí, má špatný nebo je moc velký.|
+|401|Vytváření obsahu|místo vytváření klíče se použil klíč předplatného koncového bodu.|
+|401|Vytváření obsahu, koncový bod|neplatný, poškozený nebo prázdný klíč|
+|401|Vytváření obsahu, koncový bod| klíč neodpovídá oblasti|
+|401|Vytváření obsahu|nejste vlastníkem nebo spolupracovníka.|
+|401|Vytváření obsahu|Neplatné pořadí volání rozhraní API|
+|403|Vytváření obsahu, koncový bod|překročilo se celkový limit kvót klíčů pro měsíční klíč.|
+|409|Koncový bod|aplikace se pořád načítá.|
+|410|Koncový bod|aplikaci je potřeba znovu pronaučit a znovu publikovat.|
+|414|Koncový bod|dotaz překročil maximální limit znaků.|
+|429|Vytváření obsahu, koncový bod|Překročení limitu přenosové rychlosti (počet požadavků za sekundu)|
 
 ## <a name="next-steps"></a>Další kroky
 
-* Dokumentace [pro vytváření](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) rozhraní REST API a [koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)
+* Dokumentace k [vytváření](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) a [Endpoint](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78) REST API

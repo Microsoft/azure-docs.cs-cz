@@ -1,7 +1,7 @@
 ---
 title: Koncový bod vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Chcete-li získat výsledky `GET` hledání na webu, odešlete požadavek na následující koncový bod. Záhlaví a parametry adresy URL definují další specifikace.
+description: Chcete-li získat výsledky hledání na webu `GET` , odešlete požadavek do následujícího koncového bodu. Parametry hlaviček a adres URL definují další specifikace.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74111336"
 ---
-# <a name="web-search-endpoint"></a>Koncový bod vyhledávání na webu
+# <a name="web-search-endpoint"></a>Vyhledávání na webu koncový bod
 
-Rozhraní **API pro vyhledávání na webu** vrací webové stránky, zprávy, obrázky, videa a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entity mají souhrnné informace o osobě, místě nebo tématu.
+**Rozhraní vyhledávání na webu API** vrací webové stránky, novinky, obrázky, videa a [entity](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Entity obsahují souhrnné informace o osobě, místě nebo tématu.
 
 ## <a name="endpoint"></a>Koncový bod
 
-Chcete-li získat výsledky hledání na `GET` webu pomocí rozhraní API Bingu, odešlete požadavek na následující koncový bod. Záhlaví a parametry adresy URL definují další specifikace.
+Chcete-li získat výsledky hledání na webu pomocí rozhraní API Bingu, odešlete `GET` požadavek do následujícího koncového bodu. Parametry hlaviček a adres URL definují další specifikace.
 
-**Koncový bod**: Vrátí výsledky webu, které jsou relevantní `?q=""`pro vyhledávací dotaz uživatele definovaný aplikací .
+**Koncový bod**: vrátí výsledky webu, které jsou relevantní pro vyhledávací dotaz uživatele definovaný v `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-Koncový bod: Podrobnosti o záhlaví, parametry, kódy trhu, objekty odezvy, chyby a další, naleznete v referenční matné rozhraní [Bing web API v7.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+Koncový bod: podrobnosti o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách a dalších najdete v referenčních informacích k [v7 webového rozhraní API Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) .
 
 ## <a name="response-json"></a>Odpověď JSON
 
-Odpověď na požadavek na hledání na webu zahrnuje všechny výsledky jako objekty JSON. Analýza výsledku vyžaduje postupy, které zpracovávají prvky každého typu. Podívejte se na [příklady výukového programu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) a [zdrojového kódu.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search)
+Odpověď na požadavek na hledání na webu zahrnuje všechny výsledky jako objekty JSON. Analýza výsledku vyžaduje postupy, které zpracovávají prvky každého typu. Příklady najdete v [kurzu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) a ve [zdrojovém kódu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) .
 
 ## <a name="next-steps"></a>Další kroky
 
-Bing **Bing** API podporují akce vyhledávání, které vracejí výsledky podle jejich typu.Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON. Všechny koncové body podporují dotazy, které vracejí určitý jazyk a umístění podle zeměpisné délky, zeměpisné šířky a poloměru hledání.
+Rozhraní API **Bing** podporují akce hledání, které vracejí výsledky podle jejich typu.Všechny koncové body hledání vrátí výsledky jako objekty odezvy JSON. Všechny koncové body podporují dotazy, které vracejí konkrétní jazyk a umístění podle délky, zeměpisné šířky a poloměru hledání.
 
-Úplné informace o parametrech podporovaných jednotlivými koncovými body naleznete v referenčních stránkách pro každý typ.
-Příklady základních požadavků pomocí rozhraní API pro vyhledávání na webu naleznete [v tématu Hledání rychlých spuštění webu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web).
+Úplné informace o parametrech podporovaných každým koncovým bodem naleznete na referenčních stránkách pro každý typ.
+Příklady základních požadavků využívajících rozhraní API pro vyhledávání na webu najdete v tématu věnovaném [hledání na webu v rychlém startu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web).

@@ -1,7 +1,7 @@
 ---
-title: Posila Učení - Personalizátor
+title: Posílení učení – přizpůsobené přizpůsobování
 titleSuffix: Azure Cognitive Services
-description: Personalizák používá informace o akcích a aktuálním kontextu k lepšímu hodnocení návrhů. Informace o těchto akcích a kontextu jsou atributy nebo vlastnosti, které jsou označovány jako funkce.
+description: Přizpůsobení používá informace o akcích a aktuálním kontextu k zajištění lepšího hodnocení návrhů. Informace o těchto akcích a kontextu jsou atributy nebo vlastnosti, které jsou označovány jako funkce.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,62 +11,62 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68662841"
 ---
-# <a name="what-is-reinforcement-learning"></a>Co je posilování učení?
+# <a name="what-is-reinforcement-learning"></a>Co je posílení učení?
 
-Reinforcement Learning je přístup ke strojovému učení, který se učí chování tím, že získává zpětnou vazbu z jeho použití.
+Posílení učení je přístup ke strojovém učení, který se učí chování díky získání zpětné vazby od jejího používání.
  
-Posila Učení pracuje na:
+Posílení učení prostřednictvím:
 
-* Poskytnutí příležitosti nebo stupně svobody k uzákonění chování - například rozhodování nebo rozhodování.
+* Poskytnutí příležitosti nebo stupně volnosti k vystavení chování, například rozhodování nebo výběru.
 * Poskytování kontextových informací o prostředí a volbách.
-* Poskytnutí zpětné vazby o tom, jak dobře chování dosahuje určitého cíle.
+* Poskytnutí zpětné vazby o tom, jak dobře má chování dosáhnout určitého cíle.
 
-I když existuje mnoho podtypů a stylů posilování učení, to je, jak koncept funguje v Personalizace:
+I když existuje spousta podtypů a stylů pro posílení učení, jedná se o to, jak koncept funguje v přizpůsobování:
 
-* Vaše aplikace poskytuje možnost zobrazit jednu část obsahu ze seznamu alternativ.
-* Aplikace poskytuje informace o každé alternativě a kontextu uživatele.
-* Vaše aplikace vypočítá _skóre odměny_.
+* Vaše aplikace nabízí možnost zobrazit jednu část obsahu ze seznamu alternativ.
+* Vaše aplikace poskytuje informace o každé Alternative a kontextu uživatele.
+* Vaše aplikace počítá _skóre odměňování_.
 
-Na rozdíl od některých přístupů k výztuže učení, Personalizátor nevyžaduje simulaci pracovat palců Jeho algoritmy učení jsou navrženy tak, aby reagovaly na vnější svět (versus jeho ovládání) a učily se z každého datového bodu s vědomím, že se jedná o jedinečnou příležitost, která stojí čas a peníze na vytvoření, a že existuje nenulová lítost (ztráta možné odměny), pokud dojde k neoptimálnímu výkonu.
+Na rozdíl od některých přístupů k posílení učení, přizpůsobování nevyžaduje simulaci pro práci v. Jeho výukové algoritmy jsou navržené tak, aby reagovaly na vnější svět (nad ním), a Naučte se od každého datového bodu vědět, že se jedná o jedinečnou příležitost, kterou je potřeba vytvořit a který je nenulový (ztrátou případné odměny), pokud dojde k dosažení optimálního výkonu.
 
-## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Jaký typ algoritmů výztuže učení používá Personalizátor?
+## <a name="what-type-of-reinforcement-learning-algorithms-does-personalizer-use"></a>Jaký typ sledovacích algoritmů pro posílení využití přizpůsobuje použití?
 
-Aktuální verze Personalizace používá **kontextové bandity**, přístup k posílení učení, který je orámován kolem rozhodování nebo volby mezi diskrétní akce, v daném kontextu.
+Aktuální verze přizpůsobeného doplňku používá **kontext Bandits**, přístup k posílení učení, které se v rámci daného kontextu rozhodne při rozhodování nebo volbách mezi diskrétními akcemi.
 
-_Rozhodovací paměť_, model, který byl trénován zachytit nejlepší možné rozhodnutí, daný kontext, používá sadu lineárních modelů. Ty opakovaně ukázaly obchodní výsledky a jsou osvědčeným přístupem, částečně proto, že se mohou učit z reálného světa velmi rychle, aniž by potřebovali víceprůchodové školení, a částečně proto, že mohou doplňovat modely učení pod dohledem a hluboké nervové síťových modelů.
+_Rozhodovací paměť_, model, který byl vyškolený k zaznamenání nejlepšího možného rozhodnutí, s ohledem na kontext, používá sadu lineárních modelů. Tyto informace se opakovaně ukázaly jako obchodní výsledky a jsou osvědčeným přístupem, které se dají rychle učit z reálného světa, aniž byste museli postupovat na více průchodech a částečně, protože můžou doplňovat školicí modely a modely rozsáhlých neuronové sítí.
 
-Zkoumání /využití přidělení provozu se provádí náhodně po procento stanovené pro průzkum a výchozí algoritmus pro průzkum je epsilon-chamtivý.
+Přidělení provozu prozkoumat/zneužít se provádí náhodně za procento nastavené pro průzkum a výchozí algoritmus pro zkoumání je Epsilon – hladec.
 
-### <a name="history-of-contextual-bandits"></a>Dějiny kontextových banditů
+### <a name="history-of-contextual-bandits"></a>Historie kontextových Bandits
 
-John Langford vytvořil název Kontextové bandité (Langford a Zhang [2007]) popsat zvladatelné podmnožinu posílení učení a pracoval na půl tuctu dokumentů zlepšení našeho chápání toho, jak se učit v tomto paradigmatu:
+Jan Langford mince kontext Bandits (Langford and Zhang [2007]), aby popsal odvolávatelné podmnožiny pro posílení učení a pracovali na pololetních materiálech, které zlepšují pochopení toho, jak se v tomto paradigmatu naučíte:
 
 * Beygelzimer et al. [2011]
-* Dudík et al. [2011a,b]
+* Dudík et al. [2011 a, b]
 * Agarwal et al. [2014, 2012]
 * Beygelzimer a Langford [2009]
 * Li et al. [2010]
 
-John také poskytl několik výukových programů dříve na témata, jako je společná předpověď (ICML 2015), kontextová teorie banditů (NIPS 2013), aktivní učení (ICML 2009) a hranice složitosti vzorku (ICML 2003)
+Jan taky pro témata, jako je například společná předpověď (ICML 2015), provedl několik kurzů, kontextová Bandit teorie (NIPS 2013), Active Learning (ICML 2009) a meze složitosti vzorku (ICML 2003)
 
-## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Jaké rámce strojového učení personalizace používá?
+## <a name="what-machine-learning-frameworks-does-personalizer-use"></a>Jaké architektury machine learningu používá přizpůsobování?
 
-Personalizátor v současné době používá [Vowpal Wabbit](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) jako základ pro strojové učení. Tento rámec umožňuje maximální propustnost a nejnižší latenci při vytváření personalizace řadí a školení modelu se všemi událostmi.
+Přizpůsobování aktuálně používá [pro dostupné](https://github.com/VowpalWabbit/vowpal_wabbit/wiki) jako základ pro strojové učení. Toto rozhraní umožňuje maximální propustnost a nejnižší latenci při provádění pořadí přizpůsobení a školení modelu se všemi událostmi.
 
 ## <a name="references"></a>Odkazy
 
-* [Dělat kontextová rozhodnutí s nízkým technickým dluhem](https://arxiv.org/abs/1606.03966)
-* [Přístup ke snížení spravedlivé klasifikace](https://arxiv.org/abs/1803.02453)
-* [Efektivní kontextové bandité v nestacionárních světech](https://arxiv.org/abs/1708.01799)
-* [Zbytková ztráta Predikce: Posílení: učení bez přírůstkové zpětné vazby](https://openreview.net/pdf?id=HJNMYceCW)
-* [Mapování pokynů a vizuálních pozorování na akce s výztužným učením](https://arxiv.org/abs/1704.08795)
-* [Naučte se hledat lépe než váš učitel](https://arxiv.org/abs/1502.02206)
+* [Provádění kontextových rozhodnutí s nízkým technickým dluhem](https://arxiv.org/abs/1606.03966)
+* [Snížení přístupu k korektní klasifikaci](https://arxiv.org/abs/1803.02453)
+* [Efektivní kontextová Bandits v nestacionárních světů](https://arxiv.org/abs/1708.01799)
+* [Předpověď reziduální ztráty: posílení: učení bez přírůstkové zpětné vazby](https://openreview.net/pdf?id=HJNMYceCW)
+* [Mapování pokynů a vizuálních pozorování na akce s posílením učení](https://arxiv.org/abs/1704.08795)
+* [Výuka pro hledání lépe než učitelů](https://arxiv.org/abs/1502.02206)
 
 ## <a name="next-steps"></a>Další kroky
 

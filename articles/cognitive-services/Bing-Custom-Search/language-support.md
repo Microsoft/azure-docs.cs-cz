@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: aahi
 ms.openlocfilehash: 85326ae9166f7ea15ec2f45c01755b8f9ef03aff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66388569"
 ---
-# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Jazyková a oblastová podpora rozhraní API pro vlastní vyhledávání Bingu
+# <a name="language-and-region-support-for-the-bing-custom-search-api"></a>Podpora jazyků a oblastí pro rozhraní API pro vlastní vyhledávání Bingu
 
-Rozhraní API pro vlastní vyhledávání Bingu podporuje více než tři desítky zemí nebo oblastí, z nich mnohé s více než jedním jazykem.
+Rozhraní API pro vlastní vyhledávání Bingu podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem.
 
-I když je volitelné, požadavek by měl určit parametr dotazu [mkt,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) který identifikuje trh, odkud chcete, aby výsledky pocházejí. Seznam volitelných parametrů dotazu naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)
+I když je to volitelné, požadavek by měl specifikovat parametr dotazu [MKT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#mkt) , který identifikuje na trhu, ze kterého mají výsledky přijít. Seznam volitelných parametrů dotazu najdete v tématu [parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters) .
 
-Zemi nebo oblast můžete zadat `cc` pomocí parametru dotazu. Pokud zadáte zemi nebo oblast, musíte také zadat jeden `Accept-Language` nebo více kódů jazyka pomocí záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi nebo oblast v tabulce **Trhy.**
+Můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Zadáte-li zemi nebo oblast, je nutné zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` záhlaví. Podporované jazyky se liší podle země nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce **trhy** .
 
-Záhlaví `Accept-Language` a `setLang` parametr dotazu se vzájemně vylučují – nezadávejte obojí. Podrobnosti naleznete v [tématu Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
+`Accept-Language` Záhlaví a parametr `setLang` dotazu se vzájemně vylučují – nespecifikují obojí. Podrobnosti najdete v tématu [Accept-Language](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#acceptlanguage).
 
-## <a name="countriesregions"></a>Země/oblasti
+## <a name="countriesregions"></a>Země nebo oblasti
 
 |Země|kód|
 |-------|----|
@@ -71,45 +71,45 @@ Záhlaví `Accept-Language` a `setLang` parametr dotazu se vzájemně vylučují
 
 ## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Tržní kód|
+|Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|es-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES-AR|
+|Austrálie|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
-|Belgie|Nizozemština|nl-BE|
-|Belgie|Francouzština|fr-BE|
+|Belgie|Nizozemština|NL|
+|Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|en-CA|
-|Kanada|Francouzština|fr-CA|
-|Chile|Španělština|es-CL|
+|Kanada|Francouzština|fr – CA|
+|Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong, SAR|Tradiční čínština|zh-HK|
+|Hongkong, správní oblast|Tradiční čínština|zh – HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
 |Japonsko|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en-MY|
-|Mexiko|Španělština|es-MX|
+|Malajsie|Angličtina|EN – MY|
+|Mexiko|Španělština|ES – MX|
 |Nizozemsko|Nizozemština|nl-NL|
-|Nový Zéland|Angličtina|en-NZ|
-|Norsko|Norština|ne-NE|
+|Nový Zéland|Angličtina|EN-NZ|
+|Norsko|Norština|Ne – ne|
 |Čína|Chinese|zh-CN|
 |Polsko|Polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en-PH|
+|Filipíny|Angličtina|EN-PH|
 |Rusko|Ruština|ru-RU|
 |Saúdská Arábie|Arabština|ar-SA|
-|Jižní Afrika|Angličtina|en-ZA|
+|Jižní Afrika|Angličtina|EN-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|Švédština|sv-SE|
-|Švýcarsko|Francouzština|fr-CH|
+|Švýcarsko|Francouzština|fr – CH|
 |Švýcarsko|Němčina|de-CH|
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
-|Spojené království|Angličtina|en-CZ|
+|Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|es-USA|
+|Spojené státy|Španělština|ES – US|

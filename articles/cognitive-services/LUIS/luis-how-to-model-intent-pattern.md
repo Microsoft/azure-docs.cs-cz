@@ -1,7 +1,7 @@
 ---
-title: Vzorky zvyšují přesnost – LUIS
+title: Vzory – přesnost přidávání – LUIS
 titleSuffix: Azure Cognitive Services
-description: Přidejte šablony vzorů pro zlepšení přesnosti předpovědi v aplikacích jazyka porozumění (LUIS).
+description: Přidejte šablony vzorů, aby se zlepšila přesnost předpovědi v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,66 +12,66 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76311712"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzory pro zlepšení přesnosti predikce
-Poté, co aplikace LUIS obdrží projevy koncového bodu, použijte [vzorek](luis-concept-patterns.md) ke zlepšení přesnosti předpovědi pro projevy, které odhalují vzor v pořadí slov a výběru slov. Vzorky používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entit](luis-concept-entity-types.md), [rolí](luis-concept-roles.md)entit a volitelného textu.
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzorů pro zlepšení přesnosti předpovědi
+Jakmile aplikace LUIS přijme koncový bod projevy, použijte [vzorek](luis-concept-patterns.md) , který vylepšit přesnost předpovědi pro projevy, která odhalí vzor v textovém pořadí a v textovém výběru. Vzory používají specifickou [syntaxi](luis-concept-patterns.md#pattern-syntax) k označení umístění: [entity](luis-concept-entity-types.md), [role](luis-concept-roles.md)entit a volitelného textu.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 > [!CAUTION]
-> Vzorky zahrnují pouze počítačem učené entity, nikoli dílčí součásti.
+> Vzory zahrnují pouze nadřazené entity, které se strojově naučily, ne subsoučásti.
 
-## <a name="adding-example-utterances-as-pattern"></a>Přidání ukázkových promluv jako vzor
+## <a name="adding-example-utterances-as-pattern"></a>Přidání příkladu projevy jako vzoru
 
-Pokud chcete přidat vzorek pro entitu, _nejjednodušší_ způsob je vytvořit vzorek ze stránky podrobnosti záměru. Tím zajistíte, že syntaxe odpovídá ukázkové utterance.
+Pokud chcete přidat vzor pro entitu, _nejjednodušší_ způsob je vytvořit vzor ze stránky s podrobnostmi záměru. Tím se zaručí, že syntaxe odpovídá příkladu utterance.
 
-1. Na [portálu LUIS ve verzi Preview](https://preview.luis.ai)vyberte aplikaci na stránce Moje **aplikace.**
-1. Na stránce seznamu **Záměry** vyberte název záměru ukázkové utterance, ze které chcete vytvořit projev šablony.
-1. Na stránce Podrobnosti záměru vyberte řádek pro ukázkovou promluvu, kterou chcete použít jako utterance šablony, a pak z panelu nástrojů kontextu vyberte **+ Přidat jako vzorek.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s výběrem ukázkové utterance jako vzoru šablony na stránce Podrobnosti záměru.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
-
-1. Ve vyskakovacím poli vyberte **Hotovo** na stránce **Potvrdit vzorky.** Není nutné definovat dílčí součásti entit, omezení nebo popisovače. Stačí pouze uvést stroj-naučil entity.
+1. Na [portálu Luis Preview](https://preview.luis.ai)vyberte aplikaci ze stránky **Moje aplikace** .
+1. Na stránce seznam **záměrů** vyberte název záměru ukázkového utteranceu, ze kterého chcete vytvořit šablonu utterance.
+1. Na stránce Podrobnosti záměru vyberte řádek pro příklad utterance, který chcete použít jako šablonu utterance, a pak vyberte **+ Přidat jako vzorek** z panelu nástrojů kontextu.
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky s potvrzením ukázkového utterance jako vzoru šablony na stránce Podrobnosti záměru](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
+    > ![Snímek obrazovky s výběrem příkladu utterance jako vzoru šablony na stránce s podrobnostmi záměru.](./media/luis-how-to-model-intent-pattern/add-example-utterances-as-pattern-template-utterance-from-intent-detail-page.png)
 
-1. Pokud potřebujete upravit šablonu, například výběr textu jako `[]` volitelného, pomocí (čtvercových) závorek, musíte tuto úpravu provést na stránce **Vzorky.**
+1. V místním okně vyberte na stránce **Potvrdit vzorce** možnost **Hotovo** . Nemusíte definovat dílčí komponenty, omezení nebo popisovače entit. Potřebujete jenom vypsat entitu získanou počítačem.
 
-1. Na navigačním panelu vyberte **Trénovat,** chcete-li aplikaci trénovat s novým vzorem.
+    > [!div class="mx-imgBorder"]
+    > ![Snímek obrazovky s potvrzením příkladu utterance jako vzoru šablony na stránce s podrobnostmi záměru.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-## <a name="add-template-utterance-using-correct-syntax"></a>Přidání promluvy šablony pomocí správné syntaxe
+1. Pokud potřebujete upravit šablonu, jako je `[]` například výběr textu jako volitelné, s hranatými závorkami (hranaté závorky), musíte tuto úpravu provést na stránce **vzory** .
 
-1. Otevřete aplikaci tak, že na stránce **Moje aplikace** vyberete její název, a pak v levém panelu vyberte **Vzorky** v části **Zlepšení výkonu aplikace**.
+1. V navigačním panelu vyberte možnost **výuka** pro výuku aplikace s novým vzorem.
+
+## <a name="add-template-utterance-using-correct-syntax"></a>Přidat šablonu utterance pomocí správné syntaxe
+
+1. Otevřete svou aplikaci tak, že na stránce **Moje aplikace** vyberete její název a na levém panelu jste v části **zlepšení výkonu aplikace**vybrali **vzory** .
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky se seznamem vzorů](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-1. Vyberte správný záměr pro vzorek.
+1. Vyberte správný záměr pro daný model.
 
-1. Do textového pole šablony zadejte utterance šablony a vyberte Enter. Pokud chcete zadat název entity, použijte správnou syntaxi entity vzoru. Začněte syntaxi `{`entity pomocí . Zobrazí se seznam entit. Vyberte správnou entitu.
+1. Do textového pole šablony zadejte šablonu utterance a vyberte Enter. Pokud chcete zadat název entity, použijte správnou syntaxi entity Pattern. Začněte syntaxí entity pomocí `{`. Zobrazí se seznam entit. Vyberte správnou entitu.
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky entity pro vzorek](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+    > ![Snímek entity pro vzor](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), označte roli s jedním dvojtečkou , `:`za názvem entity, například `{Location:Origin}`. Seznam rolí pro entity se zobrazí v seznamu. Vyberte roli a pak vyberte Enter.
+    Pokud vaše entita obsahuje [roli](luis-concept-roles.md), uveďte roli s jednou dvojtečkou `:`, za názvem entity, jako je například. `{Location:Origin}` Seznam rolí pro entity se zobrazí v seznamu. Vyberte roli a pak vyberte zadat.
 
     > [!div class="mx-imgBorder"]
     > ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    Po výběru správné entity dokončete zadávání vzoru a pak vyberte Enter. Až skončíte s zadáváním vzorů, [trénujte](luis-how-to-train.md) aplikaci.
+    Po výběru správné entity Dokončete zadání vzoru a pak vyberte Enter. Jakmile dokončíte zadávání vzorů, proveďte [výuku](luis-how-to-train.md) své aplikace.
 
     > [!div class="mx-imgBorder"]
-    > ![Snímek obrazovky se zadaným vzorkem s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    > ![Snímek obrazovky zadaného vzoru s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Trénování aplikace po změně modelu se vzory
-Po přidání, úpravě, odebrání nebo opětovném přiřazení vzoru [trénování](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace, aby změny ovlivnily dotazy koncových bodů.
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Školení aplikace po změně modelu pomocí vzorů
+Po přidání, úpravě, odebrání nebo opětovném přiřazení vzoru, [školení](luis-how-to-train.md) a [publikování](luis-how-to-publish-app.md) aplikace pro změny, které mají vliv na dotazy koncového bodu.
 
 <a name="search-patterns"></a>
 <a name="edit-a-pattern"></a>
@@ -84,22 +84,22 @@ Po přidání, úpravě, odebrání nebo opětovném přiřazení vzoru [trénov
 <a name="remove-entity-or-intent-filter"></a>
 <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>
 
-## <a name="use-contextual-toolbar"></a>Použití kontextové panelu nástrojů
+## <a name="use-contextual-toolbar"></a>Použít kontextový panel nástrojů
 
-Kontextový panel nástrojů nad seznamem vzorů umožňuje:
+Kontextový panel nad seznamem vzorů vám umožní:
 
-* Hledání vzorů
-* Úprava vzorku
-* Přeřadit individuální vzor k jinému záměru
-* Opětovné přiřazení několika vzorů k jinému záměru
-* Odstranit jeden vzorek
-* Odstranění několika vzorků
-* Seznam vzorků filtru podle entity
-* Filtr-vzor-list-by-intent
-* Odebrat filtr entity nebo záměru
-* Přidání vzoru z existující utterance na stránce záměru nebo entity
+* Vyhledat vzory
+* Úprava vzoru
+* Změna přiřazení jednotlivého vzoru jinému záměru
+* Opětovné přiřazení několika vzorů jinému záměru
+* Odstranění – jeden vzor
+* Odstranění několika vzorů
+* Filtrovat seznam vzorků podle entity
+* Filtr – vzor – seznam po záměru
+* Odebrat entitu nebo filtr záměru
+* Přidat vzor ze stávající stránky utterance na záměr nebo entitu
 
 ## <a name="next-steps"></a>Další kroky
 
-* Naučte [se,](luis-tutorial-pattern.md) jak vytvořit vzor s pattern.any a role s kurzem.
-* Přečtěte si, jak [aplikaci trénovat.](luis-how-to-train.md)
+* Naučte se [vytvářet vzor](luis-tutorial-pattern.md) pomocí vzoru. jakékoli role a s kurzem.
+* Naučte se, jak svou aplikaci [naučit](luis-how-to-train.md) .

@@ -1,7 +1,7 @@
 ---
-title: Upgrade z rozhraní API pro vyhledávání obrázků Bingu v5 na 7
+title: Upgrade z rozhraní API Bingu pro vyhledávání obrázků V5 na v7
 titleSuffix: Azure Cognitive Services
-description: Tento průvodce upgradem popisuje změny mezi verzí 5 a verzí 7 rozhraní API pro vyhledávání obrázků Bingu. V této příručce můžete identifikovat části aplikace, které je třeba aktualizovat, abyste měli používat verzi 7.
+description: Tato příručka pro upgrade popisuje změny mezi verzí 5 a 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,145 +12,145 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68883491"
 ---
-# <a name="bing-image-search-api-v7-upgrade-guide"></a>Průvodce upgradem rozhraní API pro vyhledávání obrázků bingu v7
+# <a name="bing-image-search-api-v7-upgrade-guide"></a>Průvodce upgradem rozhraní API Bingu pro vyhledávání obrázků v7
 
-Tato příručka pro upgrade identifikuje změny mezi verzí 5 a verzí 7 rozhraní API pro vyhledávání obrázků Bingu. V této příručce můžete identifikovat části aplikace, které je třeba aktualizovat, abyste měli používat verzi 7.
+Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání obrázků. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncového bodu se změnilo z verze v5 na v7. Například https:\//api.cognitive.microsoft.com/bing/\*\*v7.0**/images/search.
+- Číslo verze koncového bodu bylo změněno z verze 5 na v7. Například https:\//API.Cognitive.Microsoft.com/Bing/\*\*v 7.0 * */images/Search.
 
-### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědí na chybu a kódy chyb
+### <a name="error-response-objects-and-error-codes"></a>Objekty a chybové kódy pro odpověď na chybu
 
-- Všechny neúspěšné požadavky by `ErrorResponse` nyní měly obsahovat objekt v těle odpovědi.
+- Všechny neúspěšné žádosti by nyní měly `ErrorResponse` obsahovat objekt v těle odpovědi.
 
-- Do objektu byla `Error` přidána následující pole.  
-  - `subCode`&mdash;Rozdělí kód chyby do samostatných bloků, pokud je to možné
-  - `moreDetails`&mdash;Další informace o chybě popsané `message` v poli
+- Do `Error` objektu byla přidána následující pole.  
+  - `subCode`&mdash;Rozdělí kód chyby do diskrétních kontejnerů, pokud je to možné.
+  - `moreDetails`&mdash;Další informace o chybě popsané v `message` poli
 
 
-- Kódy chyb v5 byly nahrazeny následujícími možnými `code` hodnotami a `subCode` hodnotami.
+- Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|kód|Dílčí kód|Popis
+|kód|Podřízeného kódu|Popis
 |-|-|-
-|Chyba serveru|Neočekávaná chyba<br/>Chyba zdroje<br/>Není implementováno|Bing vrátí chybu serveru vždy, když dojde k některé z podmínek podkódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
-|Neplatný požadavek|ParametrMissing ParametrMissing ParametrMissing ParametrMissing<br/>ParametrInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest vždy, když žádná část požadavku není platná. Například chybí požadovaný parametr nebo hodnota parametru není platná.<br/><br/>Pokud je chyba ParametrMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
-|RateLimit překročena||Bing vrátí RateLimitExceeded vždy, když překročíte vaše dotazy za sekundu (QPS) nebo dotazy za měsíc (QPM) kvóta.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
-|Neplatná autorizace|AutorizaceChybí<br/>Redundance autorizace|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo klíč předplatného není platný.<br/><br/>K redundanci dochází, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, stavový kód HTTP je 401.
-|Nedostatečná autorizace|Autorizace zakázána.<br/>Platnost oprávnění vypršela.|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění k přístupu k prostředku. Tato situace může nastat, pokud byl zakázán klíč předplatného nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, stavový kód HTTP je 403.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď zahrnuje tyto chyby, pokud je stavový kód HTTP 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
+|RateLimitExceeded||Bing vrátí RateLimitExceeded vždy, když překročíte kvótu dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM).<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. `Ocp-Apim-Subscription-Key` Hlavička například chybí nebo klíč předplatného není platný.<br/><br/>Redundance probíhá, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, kód stavu HTTP je 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění pro přístup k prostředku. Tato situace může nastat, pokud byl klíč předplatného zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, kód stavu HTTP je 403.
 
-- Následující mapy předchozí kódy chyb na nové kódy. Pokud jste přijali závislost na kódech chyb v5, aktualizujte kód odpovídajícím způsobem.
+- Následující kód namapuje předchozí chybové kódy na nové kódy. Pokud jste se seznámili s kódy chyb V5, aktualizujte odpovídající kód.
 
-|Kód verze 5|Kód 7 verze.subCode
+|Kód verze 5|Kód verze 7. Subcode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
-RequestParameterInvalidValue|Neplatný parametr Invalid.Neplatný parametr
-ResourceAccessDenied|Nedostatečná autorizace
-ExceededVolume|RateLimit překročena
-Limit překročil qpsLimit|RateLimit překročena
-Zakázáno|InsufficientAuthorization.Authorization.AuthorizationDisabled
-Neočekávaná chyba|Chyba_serveru_nechybě
-Chyby zdroje dat|Chyba_serveru.ResourceError
-AutorizaceChybí|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.httpNotAllowed
+RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
+ResourceAccessDenied|InsufficientAuthorization
+ExceededVolume|RateLimitExceeded
+ExceededQpsLimit|RateLimitExceeded
+Zakázáno|InsufficientAuthorization.AuthorizationDisabled
+UnexpectedError|ServerError. UnexpectedError
+DataSourceErrors|ServerError. ResourceError
+AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
+HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Není implementováno|ServerError.NotImplemented
-Neplatná autorizace|Neplatná autorizace
-Metoda Neplatnostauthorizationm|Neplatná autorizace
-Metoda multipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-Platnost tokenu AuthorizationToken|InsufficientAuthorization.AuthorizationVypršela
-Nedostatečný rozsah|Nedostatečná autorizace
-Blokované|Neplatný požadavek.blokován
+NotImplemented|ServerError. NotImplemented
+InvalidAuthorization|InvalidAuthorization
+InvalidAuthorizationMethod|InvalidAuthorization
+MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
+ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
+InsufficientScope|InsufficientAuthorization
+Blokované|InvalidRequest. Block
 
 
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Byl přejmenován na parametr dotazu `modulesRequested` na [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
+- Parametr `modulesRequested` dotazu byl přejmenován na [moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).  
 
-- Přejmenována na poznámky na tagy. Viz [parametr dotazu modulů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na tags.  
+- Poznámky byly přejmenovány na značky. Podívejte se na téma parametr dotazu [modules](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) na značky.  
 
-- Seznam podporovaných trhů s hodnotou filtru ShoppingSources byl změněn pouze na hodnotu en-US. Viz [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
+- Změnil se seznam podporovaných trhů hodnoty filtru ShoppingSources jenom na en-US. Viz [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype).  
 
 
-### <a name="image-insights-changes"></a>Změny přehledů obrázků
+### <a name="image-insights-changes"></a>Změny v přehledech imagí
 
-- Přejmenováno `annotations` pole [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) na `imageTags`.  
+- `annotations` Pole [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) bylo přejmenováno `imageTags`na.  
 
-- Objekt byl `AnnotationModule` přejmenován na [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
+- `AnnotationModule` Objekt byl přejmenován na [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule).  
 
-- Přejmenoval `Annotation` objekt na [Tag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)a `confidence` pole odebral.  
+- Přejmenuje `Annotation` objekt na [tag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag)a odebralo `confidence` se pole.  
 
-- Přejmenováno `insightsSourcesSummary` pole [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektu `insightsMetadata`Image na .  
+- Pole objektu image bylo přejmenováno na `insightsMetadata`. [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) `insightsSourcesSummary`  
 
-- Objekt byl `InsightsSourcesSummary` přejmenován na [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata).  
+- `InsightsSourcesSummary` Objekt byl přejmenován na [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata).  
 
-- Byl `https://api.cognitive.microsoft.com/bing/v7.0/images/details` přidán koncový bod. Tento koncový bod slouží k vyžádání přehledů obrázků namísto koncového bodu /images/search. Viz [Přehledy obrázků](./image-insights.md).
+- Byl přidán `https://api.cognitive.microsoft.com/bing/v7.0/images/details` koncový bod. Tento koncový bod použijte k vyžádání přehledů imagí místo koncového bodu/images/Search. Viz [přehledy imagí](./image-insights.md).
 
-- Následující parametry dotazu jsou nyní `/images/details` platné pouze s koncovým bodem.  
+- Následující parametry dotazu jsou nyní platné pouze s `/images/details` koncovým bodem.  
 
     -   [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightstoken)  
-    -   [Moduly](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
+    -   [Aktualizuj](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)  
     -   [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imgurl)  
-    -   [Cab](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
-    -   [Cal](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
+    -   [souborů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cab)  
+    -   [klientských](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cal)  
     -   [car](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#car)  
-    -   [Kočka](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
-    -   [Ct](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
+    -   [Cat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#cat)  
+    -   [CT](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#ct)  
 
-- Objekt byl `ImageInsightsResponse` přejmenován na [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights).  
+- `ImageInsightsResponse` Objekt byl přejmenován na [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights).  
 
-- Změněny datové typy následujících polí v objektu [ImageInsights.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights)  
+- Změna datových typů následujících polí v objektu [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) .  
 
-    -   Typ pole byl `relatedCollections` změněn `ImageGallery[]` z [modulu RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule).  
+    -   Změnili jste typ `relatedCollections` pole z `ImageGallery[]` na [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule).  
 
-    -   Typ pole byl `pagesIncluding` změněn `Image[]` z funkce [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Změnili jste typ `pagesIncluding` pole z `Image[]` na [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Typ pole byl `relatedSearches` změněn `Query[]` z [modulu RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule).  
+    -   Změnili jste typ `relatedSearches` pole z `Query[]` na [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule).  
 
-    -   Typ pole byl `recipes` změněn `Recipe[]` z [modulu RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule).  
+    -   Změnili jste typ `recipes` pole z `Recipe[]` na [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule).  
 
-    -   Typ pole byl `visuallySimilarImages` změněn `Image[]` z funkce [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Změnili jste typ `visuallySimilarImages` pole z `Image[]` na [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Typ pole byl `visuallySimilarProducts` změněn `ProductSummaryImage[]` z funkce [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
+    -   Změnili jste typ `visuallySimilarProducts` pole z `ProductSummaryImage[]` na [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule).  
 
-    -   Objekt `ProductSummaryImage` byl odebrán a pole související s produktem přesunuta do objektu [Obrázek.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) Objekt `Image` obsahuje pole související s produktem pouze v případě, že je obrázek zahrnut jako součást vizuálně podobných produktů v odpovědi na přehled obrázku.  
+    -   Odebrali `ProductSummaryImage` jste objekt a přesunuli pole související s produktem do objektu [obrázku](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) . `Image` Objekt zahrnuje pole související s produktem pouze v případě, že je obrázek zahrnut jako součást vizuálně podobných produktů v odpovědi na obrázek Insight.  
 
-    -   Typ pole byl `recognizedEntityGroups` změněn `RecognizedEntityGroup[]` z [modulu RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule).  
+    -   Změnili jste typ `recognizedEntityGroups` pole z `RecognizedEntityGroup[]` na [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule).  
 
--   Přejmenoval `categoryClassification` pole [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) `annotations`na a změnil `AnnotationsModule`jeho typ na .  
+-   Přejmenovalo `categoryClassification` pole [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) na `annotations`a změnil jeho typ na `AnnotationsModule`.  
 
-### <a name="images-answer"></a>Odpověď na obrázky
+### <a name="images-answer"></a>Odpovědi na obrázky
 
--   Odstraněna displayShoppingSourcesBadges a displayRecipeSourcesBadges pole z [obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
+-   Z [obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images)byla odebrána pole DisplayShoppingSourcesBadges a displayRecipeSourcesBadges.  
 
--   Přejmenováno `nextOffsetAddCount` pole [Obrázky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) na `nextOffset`. Změnil se také způsob použití odsazení. Dříve jste nastavili parametr [posunového](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) dotazu na hodnotu `nextOffsetAddCount` plus předchozí hodnotu posunu plus počet obrazů ve výsledku. Nyní můžete `offset` nastavit `nextOffset` hodnotu.  
+-   `nextOffsetAddCount` Pole [obrázků](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) bylo přejmenováno `nextOffset`na. Způsob, jakým používáte posun, se také změnil. Dříve jste nastavili parametr [posunutí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) dotazu na `nextOffsetAddCount` hodnotu plus hodnotu předchozí posunutí a počet obrázků ve výsledku. Nyní nastavíte `offset` `nextOffset` hodnotu.  
 
 
-## <a name="non-breaking-changes"></a>Nenarušující změny
+## <a name="non-breaking-changes"></a>Neprůlomové změny
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přidána hodnota filtru Průhledná jako možný [obrázekTyp](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) filtru. Filtr Průhledná vrátí pouze obrazy s průhledným pozadím.
+- Přidat transparentní jako možnou hodnotu filtru [ImageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype) Transparentní filtr vrátí pouze obrázky s průhledným pozadím.
 
-- Jako možnou hodnotu filtru licence byla přidána hodnota filtru [libovolné licence.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) Filtr Any vrátí pouze obrázky, které jsou pod licencí.
+- Přidání jakékoli jako možné hodnoty filtru [licence](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license) . Libovolný filtr vrátí pouze bitové kopie, které jsou v licenci.
 
-- Byly přidány parametry dotazu [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) Tyto filtry slouží k vracení obrazů v rozsahu velikostí souborů.  
+- Přidání parametrů dotazu [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) Pomocí těchto filtrů můžete vracet obrázky v rámci rozsahu velikostí souborů.  
 
-- Byly přidány parametry dotazu [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), [minHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), [maxWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth), [minWidth.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) Tyto filtry slouží k vracení obrazů v rozsahu výšek a šířek.  
+- Přidání parametrů dotazu [maxHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxheight), [minHeight](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minheight), [MaxWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxwidth), [minWidth](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minwidth) Pomocí těchto filtrů můžete vracet obrázky v rámci rozsahu výšek a šířek.  
 
-### <a name="object-changes"></a>Změny objektů
+### <a name="object-changes"></a>Změny objektu
 
-- Do `description` objektu `lastUpdated` [Offer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) byla přidána pole a.  
+- Do objektu `description` nabídky `lastUpdated` byly přidány pole [Offer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) a.  
 
-- Pole `name` bylo přidáno do objektu [ImageGallery.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery)  
+- Pole se přidalo do objektu [ImageGallery.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) `name`  
 
-- Přidáno `similarTerms` do objektu [Obrazy.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) Toto pole obsahuje seznam termínů, které mají podobný význam jako řetězec dotazu uživatele.  
+- Přidáno `similarTerms` do objektu [images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) . Toto pole obsahuje seznam termínů, které jsou ve smyslu řetězce dotazu uživatele podobné.  

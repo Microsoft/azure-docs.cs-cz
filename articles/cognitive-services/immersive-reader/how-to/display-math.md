@@ -1,7 +1,7 @@
 ---
-title: Zobrazení matematiky v immerzivní čtečce
+title: Zobrazit matematiku v moderní čtečce
 titleSuffix: Azure Cognitive Services
-description: Tento článek vám ukáže, jak zobrazit matematiku v immersive Reader.
+description: V tomto článku se dozvíte, jak v moderní čtečce zobrazit matematiku.
 author: pasta
 manager: guillasi
 ms.service: cognitive-services
@@ -10,21 +10,21 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
 ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946119"
 ---
-# <a name="how-to-display-math-in-the-immersive-reader"></a>Jak zobrazit matematiku v Immersive Reader
+# <a name="how-to-display-math-in-the-immersive-reader"></a>Jak zobrazit matematiku v moderní čtečce
 
-Immersive Reader může zobrazit matematiku, pokud je k dispozici ve formě matematického jazyka značek ([MathML](https://developer.mozilla.org/docs/Web/MathML)).
-Typ MIME lze nastavit prostřednictvím [bloku](../reference.md#chunk)Immersive Reader . Další informace naleznete v [podporovaných typech MIME.](../reference.md#supported-mime-types)
+Moderní čtečka může zobrazit matematiku, pokud je k dispozici ve formě formátu[MathML](https://developer.mozilla.org/docs/Web/MathML)(matematických Markup Language).
+Typ MIME se dá nastavit přes [blok](../reference.md#chunk)ponořeného čtecího zařízení. Další informace najdete v tématu [podporované typy MIME](../reference.md#supported-mime-types) .
 
-## <a name="send-math-to-the-immersive-reader"></a>Poslat matematiku do immersive Reader
-Chcete-li odeslat matematiku do immersive Reader, zadejte blok obsahující MathML a nastavte typ MIME na ```application/mathml+xml```;
+## <a name="send-math-to-the-immersive-reader"></a>Odeslání matematiky do moderního čtecího zařízení
+Aby bylo možné odesílat matematickému čtečce, poskytněte blok obsahující kódování MathML a nastavte typ MIME na ```application/mathml+xml```.
 
-Pokud byl například váš obsah následující:
+Například pokud váš obsah byl následující:
 
 ```html
 <div id='ir-content'>
@@ -53,7 +53,7 @@ Pokud byl například váš obsah následující:
 </div>
 ```
 
-Pak můžete zobrazit svůj obsah pomocí následujícího JavaScriptu.
+Pak můžete zobrazit obsah pomocí následujícího JavaScriptu.
 
 ```javascript
 const data = {
@@ -67,10 +67,10 @@ const data = {
 ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, data, YOUR_OPTIONS);
 ```
 
-Při spuštění immersive Reader, měli byste vidět:
+Při spuštění moderního čtecího zařízení byste měli vidět:
 
-![Matematika v immersive Reader](../media/how-tos/1-math.png)
+![Matematika v moderní čtečce](../media/how-tos/1-math.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Seznamte se s [sadou Immersive Reader SDK](https://github.com/microsoft/immersive-reader-sdk) a [referenční sadou Immersive Reader SDK](../reference.md)
+* Prozkoumejte [sadu moderních čtenářů](https://github.com/microsoft/immersive-reader-sdk) a [referenční materiály k sadě pro moderní čtečku](../reference.md)

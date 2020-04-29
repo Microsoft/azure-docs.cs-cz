@@ -1,7 +1,7 @@
 ---
 title: Zvýšení kvóty koncového bodu – LUIS
 titleSuffix: Azure Cognitive Services
-description: Porozumění jazykům (LUIS) nabízí možnost zvýšit kvótu požadavku koncového bodu nad rámec kvóty jednoho klíče. To se provádí vytvořením další klíče pro LUIS a jejich přidání do aplikace LUIS na stránce **Publikovat** v resources **and keys** části.
+description: Language Understanding (LUIS) nabízí možnost zvýšit kvótu požadavku koncového bodu nad rámec kvóty s jedním klíčem. To se provádí vytvořením dalších klíčů pro LUIS a jejich přidáním do aplikace LUIS na stránce **publikovat** v části **prostředky a klíče** .
 author: diberry
 manager: nitinme
 ms.custom: seodec18
@@ -12,65 +12,65 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
 ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70256606"
 ---
-# <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Správa kvót koncového bodu mezi klíči pomocí Microsoft Azure Traffic Manageru
-Porozumění jazykům (LUIS) nabízí možnost zvýšit kvótu požadavku koncového bodu nad rámec kvóty jednoho klíče. To se provádí vytvořením další klíče pro LUIS a jejich přidání do aplikace LUIS na stránce **Publikovat** v resources **and keys** části. 
+# <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Použití Microsoft Azure Traffic Manager ke správě kvóty koncových bodů napříč klíči
+Language Understanding (LUIS) nabízí možnost zvýšit kvótu požadavku koncového bodu nad rámec kvóty s jedním klíčem. To se provádí vytvořením dalších klíčů pro LUIS a jejich přidáním do aplikace LUIS na stránce **publikovat** v části **prostředky a klíče** . 
 
-Klientská aplikace musí spravovat provoz mezi klíči. Luis to nedělá. 
+Klientská aplikace musí spravovat provoz napříč klíči. LUIS to neudělá. 
 
-Tento článek vysvětluje, jak spravovat provoz mezi klíči pomocí Azure [Traffic Manager][traffic-manager-marketing]. Musíte už mít trénované a publikované aplikace LUIS. Pokud ho nemáte, postupujte podle [rychlého startu](luis-get-started-create-app.md)předem sestavené domény . 
+Tento článek vysvětluje, jak spravovat provoz napříč klíči pomocí Azure [Traffic Manager][traffic-manager-marketing]. Musíte mít již naučenou a publikovanou aplikaci LUIS. Pokud ho nemáte, postupujte předem vytvořeným [rychlým startem](luis-get-started-create-app.md)domény. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="connect-to-powershell-in-the-azure-portal"></a>Připojení k PowerShellu na webu Azure Portal
-Na webu [Azure][azure-portal] Portal otevřete okno PowerShellu. Ikona okna PowerShellu je **>_** v horním navigačním panelu. Pomocí PowerShellu z portálu získáte nejnovější verzi prostředí PowerShell a jste ověřeni. Prostředí PowerShell na portálu vyžaduje účet [Azure Storage.](https://azure.microsoft.com/services/storage/) 
+## <a name="connect-to-powershell-in-the-azure-portal"></a>Připojení k PowerShellu v Azure Portal
+Na webu [Azure][azure-portal] Portal otevřete okno PowerShellu. Ikona okna PowerShellu je **>_** v horním navigačním panelu. Pomocí prostředí PowerShell z portálu získáte nejnovější verzi prostředí PowerShell a jste ověřeni. Prostředí PowerShell na portálu vyžaduje účet [Azure Storage](https://azure.microsoft.com/services/storage/) . 
 
-![Snímek obrazovky s portálem Azure s otevřeným oknem Powershellu](./media/traffic-manager/azure-portal-powershell.png)
+![Snímek obrazovky Azure Portal s otevřeným oknem PowerShell](./media/traffic-manager/azure-portal-powershell.png)
 
-V následujících částech jsou [rutiny prostředí Traffic Manager PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager).
+Následující části používají [Traffic Manager rutiny PowerShellu](https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager).
 
 ## <a name="create-azure-resource-group-with-powershell"></a>Vytvoření skupiny prostředků Azure pomocí PowerShellu
-Před vytvořením prostředků Azure vytvořte skupinu prostředků, která bude obsahovat všechny prostředky. Pojmenujte `luis-traffic-manager` skupinu prostředků `West US`a použijte oblast . Oblast skupiny prostředků ukládá metadata o skupině. Nezpomalí vaše prostředky, pokud se nacházejí v jiné oblasti. 
+Před vytvořením prostředků Azure vytvořte skupinu prostředků, která bude obsahovat všechny prostředky. Pojmenujte skupinu `luis-traffic-manager` prostředků a použijte oblast `West US`. V oblasti skupiny prostředků se ukládají metadata o této skupině. Nezpomaluje vaše prostředky, pokud jsou v jiné oblasti. 
 
-Vytvořte skupinu prostředků pomocí rutiny **[New-AzResourceGroup:](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)**
+Vytvořte skupinu prostředků pomocí rutiny **[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup)** :
 
 ```powerShell
 New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 ```
 
 ## <a name="create-luis-keys-to-increase-total-endpoint-quota"></a>Vytvoření klíčů LUIS pro zvýšení celkové kvóty koncového bodu
-1. Na webu Azure Portal vytvořte dva klíče `West US` **language understanding,** jeden v a jeden v . `East US` Použijte existující skupinu prostředků vytvořenou v `luis-traffic-manager`předchozí části s názvem . 
+1. V Azure Portal vytvořte dva klíče **Language Understanding** , jednu v `West US` a jednu v. `East US` Použijte existující skupinu prostředků vytvořenou v předchozí části s názvem `luis-traffic-manager`. 
 
-    ![Snímek obrazovky portálu Azure se dvěma klíči LUIS ve skupině prostředků Luis-Traffic-Manager](./media/traffic-manager/luis-keys.png)
+    ![Snímek obrazovky Azure Portal se dvěma klíči LUIS ve skupině prostředků Luis-Traffic-Manager](./media/traffic-manager/luis-keys.png)
 
-2. Na webu [LUIS][LUIS] v části **Spravovat** na stránce **Prostředky Azure** přiřaďte k aplikaci klíče a znovu publikujte aplikaci výběrem tlačítka **Publikovat** v pravé horní nabídce. 
+2. Na webu [Luis][LUIS] v části **Spravovat** na stránce **prostředky Azure** přiřaďte klíče k aplikaci a znovu publikujte aplikaci, a to tak, že v pravé horní nabídce kliknete na tlačítko **publikovat** . 
 
-    Příklad adresy URL ve sloupci **koncového bodu** používá požadavek GET s klíčem koncového bodu jako parametr dotazu. Zkopírujte adresy URL koncových bodů dvou nových klíčů. Používají se jako součást konfigurace Traffic Manager dále v tomto článku.
+    Ukázková adresa URL ve sloupci **koncový bod** používá jako parametr dotazu požadavek GET s klíčem koncového bodu. Zkopírujte adresy URL koncového bodu pro dva nové klíče. Používají se jako součást konfigurace Traffic Manager dále v tomto článku.
 
-## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>Správa požadavků koncových bodů LUIS napříč klíči pomocí Traffic Manageru
-Traffic Manager vytvoří nový přístupový bod DNS pro koncové body. Nefunguje jako brána nebo proxy, ale přísně na úrovni DNS. Tento příklad nezmění žádné záznamy DNS. Používá knihovnu DNS ke komunikaci se Traffic Managerzískat správný koncový bod pro tento konkrétní požadavek. _Každý_ požadavek určený pro službu LUIS nejprve vyžaduje požadavek Traffic Manager k určení koncového bodu LUIS, který má být používán. 
+## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>Správa požadavků na koncový bod LUIS napříč klíči pomocí Traffic Manager
+Traffic Manager vytvoří nový přístupový bod DNS pro koncové body. Nefunguje jako brána nebo proxy server, ale výhradně na úrovni DNS. Tento příklad nemění žádné záznamy DNS. Pomocí knihovny DNS komunikuje se Traffic Manager a získá správný koncový bod pro konkrétní požadavek. _Každý_ požadavek určený pro Luis nejdřív vyžaduje Traffic Manager žádost o určení, který koncový bod Luis se má použít. 
 
-### <a name="polling-uses-luis-endpoint"></a>Dotazování používá koncový bod LUIS
-Traffic Manager pravidelně dotazování koncové body a ujistěte se, že koncový bod je stále k dispozici. Dotazovaná adresa URL traffic manageru musí být přístupná s požadavkem GET a vrátit 200. Adresa URL koncového bodu na stránce **Publikovat** to dělá. Vzhledem k tomu, že každý klíč koncového bodu má jiné parametry řetězce trasy a dotazu, každý klíč koncového bodu potřebuje jinou cestu dotazování. Pokaždé, když Traffic Manager ankety, to stojí žádost o kvótu. Parametr řetězce dotazu **q** koncového bodu LUIS je utterance odeslaná službě LUIS. Tento parametr, namísto odeslání utterance, se používá k přidání traffic manager dotazování do protokolu koncového bodu LUIS jako ladicí technika při získávání Traffic Manager nakonfigurován.
+### <a name="polling-uses-luis-endpoint"></a>Cyklické dotazování používá koncový bod LUIS.
+Traffic Manager se pravidelně dotazují koncové body, aby se zajistilo, že je koncový bod stále k dispozici. Dotazovaná adresa URL Traffic Manager musí být přístupná pomocí žádosti GET a vracet 200. To dělá adresa URL koncového bodu na stránce **publikovat** . Vzhledem k tomu, že každý klíč koncového bodu má jiný parametr trasy a řetězce dotazů, musí mít každý klíč koncového bodu jinou cestu cyklického dotazování. Pokaždé, když se Traffic Manager dotazuje, účtuje náklady a požadavky na kvótu. Parametr řetězce dotazu **q** koncového bodu Luis je utterance odesílaný do Luis. Tento parametr namísto odeslání utterance slouží k přidání Traffic Manager cyklického dotazování do protokolu koncového bodu LUIS jako techniky ladění při získávání Traffic Manager konfigurace.
 
-Vzhledem k tomu, že každý koncový bod SLUŽBY LUIS potřebuje vlastní cestu, potřebuje vlastní profil Traffic Manageru. Chcete-li spravovat napříč profily, vytvořte [ _vnořenou_ ](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architekturu Traffic Manageru. Jeden nadřazený profil odkazuje na podřízené profily a řídí provoz přes ně.
+Vzhledem k tomu, že každý koncový bod LUIS potřebuje svou vlastní cestu, potřebuje svůj vlastní profil Traffic Manager. Aby bylo možné spravovat napříč profily, vytvořte [ _vnořenou_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architekturu. Jeden nadřazený profil odkazuje na podřízené profily a umožňuje spravovat provoz napříč nimi.
 
-Jakmile je správce provozu nakonfigurován, nezapomeňte změnit cestu k použití parametru řetězce protokolu=false, aby se protokol nevyplňoval dotazováním.
+Po nakonfigurování Traffic Manager nezapomeňte změnit cestu k použití parametru řetězce dotazu Logging = false, takže se protokol neplní dotazem.
 
-## <a name="configure-traffic-manager-with-nested-profiles"></a>Konfigurace traffic manageru s vnořenými profily
-V následujících částech se vytvoří dva podřízené profily, jeden pro klíč Luis východ a jeden pro klíč Západní LUIS. Poté je vytvořen nadřazený profil a dva podřízené profily jsou přidány do nadřazeného profilu. 
+## <a name="configure-traffic-manager-with-nested-profiles"></a>Konfigurace Traffic Manager s vnořenými profily
+V následujících částech se vytvoří dva podřízené profily, jeden pro klávesu východní LUIS a druhý pro klíč západní LUIS. Pak se vytvoří nadřazený profil a do nadřazeného profilu se přidají dva podřízené profily. 
 
-### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>Vytvoření profilu east us traffic manageru pomocí prostředí PowerShell
-Chcete-li vytvořit profil East US Traffic Manager, existuje několik kroků: vytvoření profilu, přidání koncového bodu a nastavení koncového bodu. Profil Traffic Manager může mít mnoho koncových bodů, ale každý koncový bod má stejnou cestu ověření. Vzhledem k tomu, že adresy URL koncového bodu LUIS pro východní a západní odběry se liší z důvodu oblasti a koncového bodu klíče, každý koncový bod LUIS musí být jeden koncový bod v profilu. 
+### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>Vytvoření profilu Východní USA Traffic Manager pomocí prostředí PowerShell
+Chcete-li vytvořit profil Východní USA Traffic Manager, je k dispozici několik kroků: vytvořit profil, přidat koncový bod a nastavit koncový bod. Profil Traffic Manager může mít mnoho koncových bodů, ale každý koncový bod má stejnou cestu ověřování. Vzhledem k tomu, že se adresy URL koncového bodu LUIS pro odběry východ a západ liší v důsledku oblasti a klíče koncového bodu, musí být každý koncový bod LUIS v profilu jeden koncový bod. 
 
 1. Vytvoření profilu pomocí rutiny **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerprofile)**
 
-    K vytvoření profilu použijte následující rutinu. Ujistěte se, `appIdLuis` `subscriptionKeyLuis`že jste změnili a . Název subscriptionKey je pro klíč LUIS východní USA. Pokud cesta není správná, včetně ID aplikace LUIS a klíče koncového `degraded` bodu, dotazování Traffic Manager je stav, protože správa provozu nemůže úspěšně požádat o koncový bod LUIS. Ujistěte se, `q` `traffic-manager-east` že hodnota je, takže můžete vidět tuto hodnotu v protokolech koncového bodu LUIS.
+    K vytvoření profilu použijte následující rutinu. Nezapomeňte změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je určen pro klíč LUIS Východní USA. Pokud cesta není správná, včetně ID aplikace LUIS a klíče koncového bodu, dotazování Traffic Manager je stav, `degraded` protože správa provozu nemůže úspěšně požádat o koncový bod Luis. Ujistěte se, že hodnota `q` je `traffic-manager-east` , takže tuto hodnotu můžete zobrazit v protokolech koncového bodu Luis.
 
     ```powerShell
     $eastprofile = New-AzTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
@@ -78,35 +78,35 @@ Chcete-li vytvořit profil East US Traffic Manager, existuje několik kroků: vy
     
     Tato tabulka vysvětluje každou proměnnou v rutině:
     
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Name|luis-profil-eastus|Název Traffic Manageru na webu Azure Portal|
-    |-ResourceGroupName|luis-dopravní manažer|Vytvořeno v předchozí části|
-    |-TrafficRoutingMethod|Výkon|Další informace naleznete v [tématu Traffic Manager metody směrování][routing-methods]. Pokud používáte výkon, požadavek url správce provozu musí pocházet z oblasti uživatele. Pokud procházíte chatbotem nebo jinou aplikací, je odpovědností chatbota napodobovat region ve volání do Traffic Manageru. |
-    |-RelativeDnsName|luis-dns-eastus|Toto je subdoména služby: luis-dns-eastus.trafficmanager.net|
-    |-Ttl|30|Interval dotazování, 30 sekund|
-    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro službu LUIS je HTTPS/443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Nahraďte `<appIdLuis>` a `<subscriptionKeyLuis>` zadejte své vlastní hodnoty.|
+    |-Name|Luis-Profile-eastus|Název Traffic Manager v Azure Portal|
+    |– ResourceGroupName|Luis – Traffic Manager|Vytvořeno v předchozí části|
+    |-TrafficRoutingMethod|Výkon|Další informace najdete v tématu [metody směrování Traffic Manager][routing-methods]. Pokud používáte výkon, požadavek adresy URL na Traffic Manager musí pocházet z oblasti uživatele. Pokud přecházíte přes chatovací robot nebo jinou aplikaci, je zodpovědností chatovací robot napodobení oblasti ve volání Traffic Manager. |
+    |-RelativeDnsName|Luis-DNS-eastus|Toto je subdoména této služby: luis-dns-eastus.trafficmanager.net|
+    |-TTL|30|Interval dotazování, 30 sekund|
+    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LUIS jsou HTTPS/443.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|`<appIdLuis>` Nahraďte `<subscriptionKeyLuis>` a vlastními hodnotami.|
     
-    Úspěšný požadavek nemá žádnou odpověď.
+    Úspěšná žádost nemá žádnou odpověď.
 
-2. Přidat koncový bod v USA v USA pomocí rutiny **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)**
+2. Přidat Východní USA koncový bod pomocí rutiny **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/add-aztrafficmanagerendpointconfig)**
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-east-endpoint -TrafficManagerProfile $eastprofile -Type ExternalEndpoints -Target eastus.api.cognitive.microsoft.com -EndpointLocation "eastus" -EndpointStatus Enabled
     ```
     Tato tabulka vysvětluje každou proměnnou v rutině:
 
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Název koncového bodu|luis-východ-koncový bod|Název koncového bodu zobrazený pod profilem|
-    |-TrafficManagerProfile|$eastprofile|Použití objektu profilu vytvořeného v kroku 1|
-    |-Typ|Externí koncové body|Další informace naleznete v tématu [Traffic Manager endpoint][traffic-manager-endpoints] |
-    |- Cíl|eastus.api.cognitive.microsoft.com|Toto je doména koncového bodu LUIS.|
-    |-Koncový bodUmístění|"eastus"|Oblast koncového bodu|
-    |-Koncový bodStav|Povoleno|Povolit koncový bod při jeho vytvoření|
+    |-Koncový bod|Luis – východ – koncový bod|Název koncového bodu zobrazený pod profilem|
+    |-TrafficManagerProfile|$eastprofile|Použití objektu Profile vytvořeného v kroku 1|
+    |– Typ|ExternalEndpoints|Další informace najdete v tématu [Traffic Manager koncový bod][traffic-manager-endpoints] . |
+    |– Cíl|eastus.api.cognitive.microsoft.com|Toto je doména pro koncový bod LUIS.|
+    |-EndpointLocation|eastus|Oblast koncového bodu|
+    |-EndpointStatus|Povoleno|Povolit koncový bod při jeho vytvoření|
 
-    Úspěšná odpověď vypadá takto:
+    Úspěšná odpověď vypadá nějak takto:
 
     ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-eastus
@@ -125,20 +125,20 @@ Chcete-li vytvořit profil East US Traffic Manager, existuje několik kroků: vy
     Endpoints                        : {luis-east-endpoint}
     ```
 
-3. Nastavení koncového bodu –USA pomocí rutiny **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)**
+3. Nastavit Východní USA koncový bod pomocí rutiny **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.trafficmanager/set-aztrafficmanagerprofile)**
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $eastprofile
     ```
 
-    Úspěšná odpověď bude stejná odpověď jako krok 2.
+    Úspěšná odpověď bude stejná jako odpověď v kroku 2.
 
-### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>Vytvoření profilu správce provozu v USA v západní části pomocí prostředí PowerShell
-Chcete-li vytvořit profil Správce provozu v usa v západní části, postupujte stejným způsobem: vytvořte profil, přidejte koncový bod a nastavte koncový bod.
+### <a name="create-the-west-us-traffic-manager-profile-with-powershell"></a>Vytvoření profilu Západní USA Traffic Manager pomocí prostředí PowerShell
+Pokud chcete vytvořit profil Západní USA Traffic Manager, postupujte podle stejných kroků: vytvořit profil, přidat koncový bod a nastavit koncový bod.
 
 1. Vytvoření profilu pomocí rutiny **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)**
 
-    K vytvoření profilu použijte následující rutinu. Ujistěte se, `appIdLuis` `subscriptionKeyLuis`že jste změnili a . Název subscriptionKey je pro klíč LUIS východní USA. Pokud cesta není správná, včetně ID aplikace LUIS a klíče koncového `degraded` bodu, dotazování Traffic Manager je stav, protože správa provozu nemůže úspěšně požádat o koncový bod LUIS. Ujistěte se, `q` `traffic-manager-west` že hodnota je, takže můžete vidět tuto hodnotu v protokolech koncového bodu LUIS.
+    K vytvoření profilu použijte následující rutinu. Nezapomeňte změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je určen pro klíč LUIS Východní USA. Pokud cesta není správná, včetně ID aplikace LUIS a klíče koncového bodu, dotazování Traffic Manager je stav, `degraded` protože správa provozu nemůže úspěšně vyžadovat koncový bod Luis. Ujistěte se, že hodnota `q` je `traffic-manager-west` , takže tuto hodnotu můžete zobrazit v protokolech koncového bodu Luis.
 
     ```powerShell
     $westprofile = New-AzTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
@@ -146,19 +146,19 @@ Chcete-li vytvořit profil Správce provozu v usa v západní části, postupujt
     
     Tato tabulka vysvětluje každou proměnnou v rutině:
     
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Name|luis-profil-westus|Název Traffic Manageru na webu Azure Portal|
-    |-ResourceGroupName|luis-dopravní manažer|Vytvořeno v předchozí části|
-    |-TrafficRoutingMethod|Výkon|Další informace naleznete v [tématu Traffic Manager metody směrování][routing-methods]. Pokud používáte výkon, požadavek url správce provozu musí pocházet z oblasti uživatele. Pokud procházíte chatbotem nebo jinou aplikací, je odpovědností chatbota napodobovat region ve volání do Traffic Manageru. |
-    |-RelativeDnsName|luis-dns-westus|Toto je subdoména služby: luis-dns-westus.trafficmanager.net|
-    |-Ttl|30|Interval dotazování, 30 sekund|
-    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro službu LUIS je HTTPS/443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Nahraďte `<appId>` a `<subscriptionKey>` zadejte své vlastní hodnoty. Nezapomeňte, že tento klíč koncového bodu se liší od klíčového koncového bodu|
+    |-Name|Luis-Profile-westus|Název Traffic Manager v Azure Portal|
+    |– ResourceGroupName|Luis – Traffic Manager|Vytvořeno v předchozí části|
+    |-TrafficRoutingMethod|Výkon|Další informace najdete v tématu [metody směrování Traffic Manager][routing-methods]. Pokud používáte výkon, požadavek adresy URL na Traffic Manager musí pocházet z oblasti uživatele. Pokud přecházíte přes chatovací robot nebo jinou aplikaci, je zodpovědností chatovací robot napodobení oblasti ve volání Traffic Manager. |
+    |-RelativeDnsName|Luis-DNS-westus|Toto je subdoména této služby: luis-dns-westus.trafficmanager.net|
+    |-TTL|30|Interval dotazování, 30 sekund|
+    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LUIS jsou HTTPS/443.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|`<appId>` Nahraďte `<subscriptionKey>` a vlastními hodnotami. Zapamatujte si, že tento klíč koncového bodu je jiný než klíč koncového bodu východ|
     
-    Úspěšný požadavek nemá žádnou odpověď.
+    Úspěšná žádost nemá žádnou odpověď.
 
-2. Přidání koncového bodu V USA v západní USA pomocí rutiny **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)**
+2. Přidat Západní USA koncový bod pomocí rutiny **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)**
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName luis-west-endpoint -TrafficManagerProfile $westprofile -Type ExternalEndpoints -Target westus.api.cognitive.microsoft.com -EndpointLocation "westus" -EndpointStatus Enabled
@@ -166,16 +166,16 @@ Chcete-li vytvořit profil Správce provozu v usa v západní části, postupujt
 
     Tato tabulka vysvětluje každou proměnnou v rutině:
 
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Název koncového bodu|luis-west-koncový bod|Název koncového bodu zobrazený pod profilem|
-    |-TrafficManagerProfile|$westprofile|Použití objektu profilu vytvořeného v kroku 1|
-    |-Typ|Externí koncové body|Další informace naleznete v tématu [Traffic Manager endpoint][traffic-manager-endpoints] |
-    |- Cíl|westus.api.cognitive.microsoft.com|Toto je doména koncového bodu LUIS.|
-    |-Koncový bodUmístění|"westus"|Oblast koncového bodu|
-    |-Koncový bodStav|Povoleno|Povolit koncový bod při jeho vytvoření|
+    |-Koncový bod|Luis – západ – koncový bod|Název koncového bodu zobrazený pod profilem|
+    |-TrafficManagerProfile|$westprofile|Použití objektu Profile vytvořeného v kroku 1|
+    |– Typ|ExternalEndpoints|Další informace najdete v tématu [Traffic Manager koncový bod][traffic-manager-endpoints] . |
+    |– Cíl|westus.api.cognitive.microsoft.com|Toto je doména pro koncový bod LUIS.|
+    |-EndpointLocation|westus|Oblast koncového bodu|
+    |-EndpointStatus|Povoleno|Povolit koncový bod při jeho vytvoření|
 
-    Úspěšná odpověď vypadá takto:
+    Úspěšná odpověď vypadá nějak takto:
 
     ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-westus
@@ -194,16 +194,16 @@ Chcete-li vytvořit profil Správce provozu v usa v západní části, postupujt
     Endpoints                        : {luis-west-endpoint}
     ```
 
-3. Nastavení koncového bodu V USA v západní USA pomocí rutiny **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)**
+3. Nastavit Západní USA koncový bod pomocí rutiny **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)**
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $westprofile
     ```
 
-    Úspěšná odpověď je stejná odpověď jako krok 2.
+    Úspěšná odpověď je stejná jako odpověď v kroku 2.
 
-### <a name="create-parent-traffic-manager-profile"></a>Vytvořit nadřazený profil Traffic Manageru
-Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profily Traffic Manageru s nadřazenou položkou.
+### <a name="create-parent-traffic-manager-profile"></a>Vytvořit nadřazený profil Traffic Manager
+Vytvořte nadřazený profil Traffic Manager a propojte dva podřízené Traffic Manager profily s nadřazeným prvkem.
 
 1. Vytvoření nadřazeného profilu pomocí rutiny **[New-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/New-azTrafficManagerProfile)**
 
@@ -213,19 +213,19 @@ Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profil
 
     Tato tabulka vysvětluje každou proměnnou v rutině:
 
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Name|luis-profil-rodič|Název Traffic Manageru na webu Azure Portal|
-    |-ResourceGroupName|luis-dopravní manažer|Vytvořeno v předchozí části|
-    |-TrafficRoutingMethod|Výkon|Další informace naleznete v [tématu Traffic Manager metody směrování][routing-methods]. Pokud používáte výkon, požadavek url správce provozu musí pocházet z oblasti uživatele. Pokud procházíte chatbotem nebo jinou aplikací, je odpovědností chatbota napodobovat region ve volání do Traffic Manageru. |
-    |-RelativeDnsName|luis-dns-parent|Toto je subdoména služby: luis-dns-parent.trafficmanager.net|
-    |-Ttl|30|Interval dotazování, 30 sekund|
-    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro službu LUIS je HTTPS/443|
-    |-MonitorPath|`/`|Na této cestě nezáleží, protože místo toho se používají podřízené cesty koncového bodu.|
+    |-Name|Luis-Profile-nadřazený|Název Traffic Manager v Azure Portal|
+    |– ResourceGroupName|Luis – Traffic Manager|Vytvořeno v předchozí části|
+    |-TrafficRoutingMethod|Výkon|Další informace najdete v tématu [metody směrování Traffic Manager][routing-methods]. Pokud používáte výkon, požadavek adresy URL na Traffic Manager musí pocházet z oblasti uživatele. Pokud přecházíte přes chatovací robot nebo jinou aplikaci, je zodpovědností chatovací robot napodobení oblasti ve volání Traffic Manager. |
+    |-RelativeDnsName|Luis-DNS – nadřazený|Toto je subdoména této služby: luis-dns-parent.trafficmanager.net|
+    |-TTL|30|Interval dotazování, 30 sekund|
+    |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LUIS jsou HTTPS/443.|
+    |-MonitorPath|`/`|Tato cesta nezáleží na tom, že se místo toho používají podřízené cesty koncových bodů.|
 
-    Úspěšný požadavek nemá žádnou odpověď.
+    Úspěšná žádost nemá žádnou odpověď.
 
-2. Přidání podřízeného profilu east us do nadřazeného profilu s **[typem Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** a **NestedEndpoints**
+2. Přidání podřízeného profilu Východní USA k nadřazené položce s typem **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** a **NestedEndpoints**
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-useast -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $eastprofile.Id -EndpointStatus Enabled -EndpointLocation "eastus" -MinChildEndpoints 1
@@ -233,17 +233,17 @@ Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profil
 
     Tato tabulka vysvětluje každou proměnnou v rutině:
 
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Název koncového bodu|dítě-koncový bod-useast|Východní profil|
-    |-TrafficManagerProfile|$parentprofile|Profil pro přiřazení tohoto koncového bodu|
-    |-Typ|Vnořené koncové body|Další informace naleznete v [tématu Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
-    |-TargetResourceId|$eastprofile. Id|ID podřízeného profilu|
-    |-Koncový bodStav|Povoleno|Stav koncového bodu po přidání do nadřazeného|
-    |-Koncový bodUmístění|"eastus"|[Název oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/) prostředku|
+    |-Koncový bod|podřízený koncový bod – useast|Profil pro východní jazyky|
+    |-TrafficManagerProfile|$parentprofile|Profil, kterému chcete přiřadit tento koncový bod|
+    |– Typ|NestedEndpoints|Další informace najdete v tématu [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |– Parametrem targetresourceid|$eastprofile. Účet|ID podřízeného profilu|
+    |-EndpointStatus|Povoleno|Stav koncového bodu po přidání do nadřazeného objektu|
+    |-EndpointLocation|eastus|[Název oblasti prostředku Azure](https://azure.microsoft.com/global-infrastructure/regions/)|
     |-MinChildEndpoints|1|Minimální počet podřízených koncových bodů|
 
-    Úspěšná odpověď vypadá takto a `child-endpoint-useast` zahrnuje nový koncový bod:    
+    Úspěšná odpověď vypadá jako následující a zahrnuje nový `child-endpoint-useast` koncový bod:    
 
     ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
@@ -262,7 +262,7 @@ Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profil
     Endpoints                        : {child-endpoint-useast}
     ```
 
-3. Přidání podřízeného profilu v usa do nadřazeného profilu s **[rutinou Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** a **typem NestedEndpoints**
+3. Přidání podřízeného profilu Západní USA k nadřazené položce pomocí rutiny **[Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.TrafficManager/Add-azTrafficManagerEndpointConfig)** a **NestedEndpoints** typu
 
     ```powerShell
     Add-AzTrafficManagerEndpointConfig -EndpointName child-endpoint-uswest -TrafficManagerProfile $parentprofile -Type NestedEndpoints -TargetResourceId $westprofile.Id -EndpointStatus Enabled -EndpointLocation "westus" -MinChildEndpoints 1
@@ -270,17 +270,17 @@ Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profil
 
     Tato tabulka vysvětluje každou proměnnou v rutině:
 
-    |Konfigurační parametr|Název proměnné nebo hodnota|Účel|
+    |Konfigurační parametr|Název nebo hodnota proměnné|Účel|
     |--|--|--|
-    |-Název koncového bodu|child-endpoint-uswest|Západní profil|
-    |-TrafficManagerProfile|$parentprofile|Profil pro přiřazení tohoto koncového bodu|
-    |-Typ|Vnořené koncové body|Další informace naleznete v [tématu Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
-    |-TargetResourceId|$westprofile. Id|ID podřízeného profilu|
-    |-Koncový bodStav|Povoleno|Stav koncového bodu po přidání do nadřazeného|
-    |-Koncový bodUmístění|"westus"|[Název oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/) prostředku|
+    |-Koncový bod|podřízený koncový bod – uswest|Profil západ|
+    |-TrafficManagerProfile|$parentprofile|Profil, kterému chcete přiřadit tento koncový bod|
+    |– Typ|NestedEndpoints|Další informace najdete v tématu [Add-AzTrafficManagerEndpointConfig](https://docs.microsoft.com/powershell/module/az.trafficmanager/Add-azTrafficManagerEndpointConfig). |
+    |– Parametrem targetresourceid|$westprofile. Účet|ID podřízeného profilu|
+    |-EndpointStatus|Povoleno|Stav koncového bodu po přidání do nadřazeného objektu|
+    |-EndpointLocation|westus|[Název oblasti prostředku Azure](https://azure.microsoft.com/global-infrastructure/regions/)|
     |-MinChildEndpoints|1|Minimální počet podřízených koncových bodů|
 
-    Úspěšná odpověď vypadá a zahrnuje `child-endpoint-useast` předchozí koncový `child-endpoint-uswest` bod i nový koncový bod:
+    Úspěšná odpověď vypadá jako a zahrnuje předchozí `child-endpoint-useast` koncový bod i nový `child-endpoint-uswest` koncový bod:
 
     ```console
     Id                               : /subscriptions/<azure-subscription-id>/resourceGroups/luis-traffic-manager/providers/Microsoft.Network/trafficManagerProfiles/luis-profile-parent
@@ -299,48 +299,48 @@ Vytvořte nadřazený profil traffic manageru a propojte dva podřízené profil
     Endpoints                        : {child-endpoint-useast, child-endpoint-uswest}
     ```
 
-4. Nastavení koncových bodů pomocí rutiny **[Set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** 
+4. Nastavení koncových bodů pomocí rutiny **[set-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Set-azTrafficManagerProfile)** 
 
     ```powerShell
     Set-AzTrafficManagerProfile -TrafficManagerProfile $parentprofile
     ```
 
-    Úspěšná odpověď je stejná odpověď jako krok 3.
+    Úspěšná odpověď je stejná jako odpověď v kroku 3.
 
-### <a name="powershell-variables"></a>Proměnné prostředí PowerShell
-V předchozích částech byly vytvořeny tři `$eastprofile`proměnné `$westprofile` `$parentprofile`prostředí PowerShell: , , . Tyto proměnné se používají ke konci konfigurace Traffic Manager. Pokud jste se rozhodli nevytvářet proměnné nebo zapomněli, nebo vaše okno prostředí PowerShell časový čas out, můžete použít rutinu Prostředí PowerShell, **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)**, chcete-li získat profil znovu a přiřadit jej k proměnné. 
+### <a name="powershell-variables"></a>Proměnné PowerShellu
+V předchozích částech byly vytvořeny tři proměnné prostředí PowerShell: `$eastprofile`, `$westprofile`,. `$parentprofile` Tyto proměnné se používají ke konci konfigurace Traffic Manager. Pokud jste se rozhodli nevytvářet proměnné nebo jste zapomněli, nebo časový limit okna PowerShellu vypršel, můžete použít rutinu PowerShellu **[Get-AzTrafficManagerProfile](https://docs.microsoft.com/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile)** a získat profil znovu a přiřadit ho k proměnné. 
 
-Nahraďte položky v `<>`úhlových závorkách , správnými hodnotami pro každý ze tří potřebných profilů. 
+Položky v lomených závorkách `<>`nahraďte správnými hodnotami pro každý ze tří potřebných profilů. 
 
 ```powerShell
 $<variable-name> = Get-AzTrafficManagerProfile -Name <profile-name> -ResourceGroupName luis-traffic-manager
 ```
 
-## <a name="verify-traffic-manager-works"></a>Ověřit, že Traffic Manager funguje
-Chcete-li ověřit, že profily Traffic Manager práce, profily musí mít stav `Online` Tento stav je založen na cestě dotazování koncového bodu. 
+## <a name="verify-traffic-manager-works"></a>Ověření Traffic Manager funguje
+Aby bylo možné ověřit, že profily Traffic Manager fungují, musí mít profily stav `Online` tohoto stavu na základě cesty cyklického dotazování koncového bodu. 
 
-### <a name="view-new-profiles-in-the-azure-portal"></a>Zobrazení nových profilů na webu Azure Portal
-Můžete ověřit, že všechny tři profily jsou `luis-traffic-manager` vytvořeny při pohledu na prostředky ve skupině prostředků.
+### <a name="view-new-profiles-in-the-azure-portal"></a>Zobrazení nových profilů v Azure Portal
+Můžete ověřit, že jsou vytvořeny všechny tři profily, a to tak, že se `luis-traffic-manager` podíváte na prostředky ve skupině prostředků.
 
-![Snímek obrazovky s luis-traffic-managerem skupiny prostředků Azure](./media/traffic-manager/traffic-manager-profiles.png)
+![Snímek obrazovky skupiny prostředků Azure Luis-Traffic-Manager](./media/traffic-manager/traffic-manager-profiles.png)
 
-### <a name="verify-the-profile-status-is-online"></a>Ověření stavu profilu je online
-Traffic Manager dotazování cestu každého koncového bodu a ujistěte se, že je online. Pokud je online, stav podřízených `Online`profilů je . Zobrazí se v **přehledu** každého profilu. 
+### <a name="verify-the-profile-status-is-online"></a>Ověřte, že stav profilu je online.
+Traffic Manager se dotazuje cesty každého koncového bodu, aby se zajistilo, že je online. Pokud je online, stav podřízených profilů je `Online`. Zobrazuje se na **přehledu** jednotlivých profilů. 
 
-![Snímek obrazovky s profilem Azure Traffic Manager Přehled zobrazující stav monitoru online](./media/traffic-manager/profile-status-online.png)
+![Snímek obrazovky s přehledem profilu Azure Traffic Manager, který zobrazuje stav monitorování online](./media/traffic-manager/profile-status-online.png)
 
-### <a name="validate-traffic-manager-polling-works"></a>Ověřit volební výsledky traffic manageru funguje
-Dalším způsobem, jak ověřit funguje dotazování správce provozu, je protokoly koncového bodu LUIS. Na stránce se seznamem webových aplikací [LUIS][LUIS] exportujte protokol koncového bodu pro aplikaci. Vzhledem k tomu, že Traffic Manager dotazování často pro dva koncové body, existují položky v protokolech i v případě, že byly pouze na několik minut. Nezapomeňte vyhledat položky, kde dotaz `traffic-manager-`začíná .
+### <a name="validate-traffic-manager-polling-works"></a>Ověření, že funguje dotazování Traffic Manager
+Dalším způsobem, jak ověřit, že cyklické dotazování Traffic Manageru funguje, je s protokoly koncového bodu LUIS. Na stránce seznam webových aplikací [Luis][LUIS] exportujte protokol koncového bodu pro aplikaci. Vzhledem k tomu, že Traffic Manager často cyklické dotazování pro dva koncové body, existují položky v protokolech i v případě, že byly pouze během několika minut. Nezapomeňte vyhledat položky, na kterých dotaz začíná `traffic-manager-`.
 
 ```console
 traffic-manager-west    6/7/2018 19:19  {"query":"traffic-manager-west","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 traffic-manager-east    6/7/2018 19:20  {"query":"traffic-manager-east","intents":[{"intent":"None","score":0.944767}],"entities":[]}
 ```
 
-### <a name="validate-dns-response-from-traffic-manager-works"></a>Ověření odpovědi DNS ze správce provozu funguje
-Chcete-li ověřit, zda odpověď DNS vrací koncový bod služby LUIS, požádejte o službu DNS nadřazeného profilu Správa provozu pomocí klientské knihovny DNS. Název DNS nadřazeného profilu je `luis-dns-parent.trafficmanager.net`.
+### <a name="validate-dns-response-from-traffic-manager-works"></a>Ověření odpovědi DNS z Traffic Manager funguje
+Pokud chcete ověřit, že odpověď DNS vrátí koncový bod LUIS, požádejte o provoz správu DNS nadřazeného profilu pomocí klientské knihovny DNS. Název DNS nadřazeného profilu je `luis-dns-parent.trafficmanager.net`.
 
-Následující kód Node.js vytvoří požadavek pro nadřazený profil a vrátí koncový bod LUIS:
+Následující kód Node. js vytvoří požadavek na nadřazený profil a vrátí koncový bod LUIS:
 
 ```javascript
 const dns = require('dns');
@@ -361,19 +361,19 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 ]
 ```
 
-## <a name="use-the-traffic-manager-parent-profile"></a>Použití nadřazeného profilu Traffic Manageru
-Chcete-li spravovat provoz mezi koncovými body, musíte vložit volání dns Traffic Manager najít koncový bod LUIS. Toto volání se provádí pro každý požadavek koncového bodu LUIS a potřebuje simulovat geografické umístění uživatele klientské aplikace LUIS. Přidejte kód odpovědi DNS mezi klientskou aplikaci LUIS a požadavek na službu LUIS pro předpověď koncového bodu. 
+## <a name="use-the-traffic-manager-parent-profile"></a>Použít nadřazený profil Traffic Manager
+Aby bylo možné spravovat provoz mezi koncovými body, je nutné vložit volání služby Traffic Manager DNS, aby se našel koncový bod LUIS. Toto volání je provedeno pro každý požadavek koncového bodu LUIS a musí simulovat geografické umístění uživatele klientské aplikace LUIS. Přidejte kód odpovědi DNS do mezi klientskou aplikací LUIS a požadavkem na LUIS pro předpověď koncového bodu. 
 
-## <a name="resolving-a-degraded-state"></a>Řešení zhoršeného stavu
+## <a name="resolving-a-degraded-state"></a>Řešení stavu snížené úrovně
 
-Povolte [diagnostické protokoly](../../traffic-manager/traffic-manager-diagnostic-logs.md) pro Traffic Manager, abyste zjistili, proč je stav koncového bodu snížen.
+Povolením [diagnostických protokolů](../../traffic-manager/traffic-manager-diagnostic-logs.md) pro Traffic Manager zjistíte, proč je stav koncového bodu degradován.
 
 ## <a name="clean-up"></a>Vyčištění
-Odeberte dva klíče koncového bodu LUIS, tři profily traffic manageru a skupinu prostředků, která obsahovala těchto pět prostředků. To se provádí z portálu Azure. Odstraníte pět prostředků ze seznamu prostředků. Potom odstraňte skupinu prostředků. 
+Odeberte dva klíče koncového bodu LUIS, tři profily Traffic Manager a skupinu prostředků, která obsahuje tyto pět prostředků. To se provádí z Azure Portal. Odstraníte pět prostředků ze seznamu prostředků. Pak odstraňte skupinu prostředků. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zkontrolujte možnosti [middlewaru](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) v BotFramework u4, abyste pochopili, jak lze tento kód řízení provozu přidat do botu BotFramework. 
+Přečtěte si možnosti [middlewaru](https://docs.microsoft.com/azure/bot-service/bot-builder-create-middleware?view=azure-bot-service-4.0&tabs=csaddmiddleware%2Ccsetagoverwrite%2Ccsmiddlewareshortcircuit%2Ccsfallback%2Ccsactivityhandler) v BotFramework v4, abyste porozuměli tomu, jak je možné tento kód správy provozu přidat do robota BotFramework. 
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: https://docs.microsoft.com/azure/traffic-manager/

@@ -1,7 +1,7 @@
 ---
-title: Spolupráce na znalostní bázi - QnA Maker
+title: Spolupráce na znalostní bázi Knowledge Base – QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker umožňuje více lidem spolupracovat na znalostní bázi. Tato funkce je k dispozici s řízením přístupu na základě rolí Azure.
+description: QnA Maker umožňuje více lidem spolupracovat na znalostní bázi. Tato funkce je k dispozici u Access Control na základě rolí Azure.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,41 +11,41 @@ ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: diberry
 ms.openlocfilehash: b5adc7ebacde056a141ca3b361b9eb2ea7900a39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75660745"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Spolupracujte na své znalostní bázi
+# <a name="collaborate-on-your-knowledge-base"></a>Spolupráce na znalostní bázi
 
-QnA Maker umožňuje více lidem spolupracovat na všech znalostních bází ve stejném prostředku QnA Maker. Tato funkce je k dispozici s [řízením přístupu na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)Azure .
+QnA Maker umožňuje více lidem spolupracovat na všech základech znalostní báze ve stejném prostředku QnA Maker. Tato funkce je k dispozici u [Access Control na základě rolí](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)Azure.
 
-Chcete-li službu QnA Maker s někým sdílet, proveďte následující kroky:
+Pomocí následujících kroků můžete svoji QnA Maker službu sdílet s někým:
 
-1. Přihlaste se k portálu Azure a přejděte na prostředek QnA Maker.
+1. Přihlaste se k Azure Portal a Projděte si prostředek QnA Maker.
 
-    ![Seznam zdrojů qnA makeru](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![Seznam prostředků QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-1. Přejděte na kartu **Řízení přístupu (IAM).**
+1. Přejít na kartu **Access Control (IAM)** .
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
 1. Vyberte **Přidat**.
 
-    ![QnA Maker IAM přidat](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
+    ![QnA Maker IAM – přidat](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.PNG)
 
-1. Vyberte **roli Vlastník** nebo **Přispěvatel.** Přístup jen pro čtení nelze udělit prostřednictvím řízení přístupu na základě rolí. Role vlastníka a přispěvatele mají přístupová oprávnění pro čtení a zápis ke službě QnA Maker.
+1. Vyberte **vlastníka** nebo roli **Přispěvatel** . Pomocí Access Control na základě rolí nelze udělit přístup jen pro čtení. Role vlastníka a přispěvatele mají oprávnění ke čtení i zápisu pro službu QnA Maker.
 
-    ![QnA Maker IAM přidat roli](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    ![QnA Maker přidat roli IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-1. Zadejte e-mailovou adresu uživatele a stiskněte **klávesu Save**.
+1. Zadejte e-mailovou adresu uživatele a stiskněte **Uložit**.
 
-    ![QnA Maker IAM přidat e-mail](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![QnA Maker IAM – Přidání e-mailu](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Když osoba, se kterou jste sdíleli službu QnA Maker, přihlásí se k [portálu QnA Maker,](https://qnamaker.ai) může zobrazit všechny znalostní báze v této službě.
+Když někdo sdílí službu QnA Maker s nástrojem, přihlásí se k [portálu QnA maker](https://qnamaker.ai) , kde se zobrazí všechna znalostní báze v této službě.
 
-Nezapomeňte, že určitou znalostní bázi nelze sdílet ve službě QnA Maker. Pokud chcete podrobnější řízení přístupu, zvažte distribuci znalostních bází napříč různými službami QnA Maker.
+Pamatujte, že v QnA Maker službě nemůžete sdílet konkrétní znalostní bázi. Pokud chcete podrobnější řízení přístupu, zvažte distribuci znalostní báze napříč různými QnA Maker službami.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1,7 +1,7 @@
 ---
-title: Detekce obličeje a atributy koncepty
+title: Koncepce rozpoznávání tváře a atributů
 titleSuffix: Azure Cognitive Services
-description: Detekce obličeje je akce lokalizace lidských tváří v obraze a volitelně vrácení různých druhů dat souvisejících s obličejem.
+description: Rozpoznávání tváře je akce hledání lidských plošek v obrázku a volitelně vracení různých druhů dat týkajících se obličeje.
 services: cognitive-services
 author: PatrickFarley
 manager: nitime
@@ -11,73 +11,73 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
 ms.openlocfilehash: 15e39eb9f5b8dd3556ea9ff8240bc2c9d252cd31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73743050"
 ---
-# <a name="face-detection-and-attributes"></a>Detekce obličeje a atributy
+# <a name="face-detection-and-attributes"></a>Detekce a atributy obličeje
 
-Tento článek vysvětluje koncepty rozpoznávání obličeje a dat atributů obličeje. Detekce obličeje je akce lokalizace lidských tváří v obraze a volitelně vrácení různých druhů dat souvisejících s obličejem.
+Tento článek vysvětluje koncepty rozpoznávání tváře a dat atributu Face. Rozpoznávání tváře je akce hledání lidských plošek v obrázku a volitelně vracení různých druhů dat týkajících se obličeje.
 
-Pomocí [operace Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) můžete detekovat tváře v obraze. Minimálně každý zjištěné plochy odpovídá faceRectangle pole v odpovědi. Tato sada souřadnic obrazových bodů pro levou, horní, šířku a výšku označuje umístěnou plochu. Pomocí těchto souřadnic můžete získat umístění plochy a její velikost. V odpovědi rozhraní API jsou plochy uvedeny v pořadí velikostí od největší po nejmenší.
+K detekci plošek v obrázku použijte operaci [rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) . Přinejmenším každá zjištěná ploška odpovídá poli faceRectangle v odpovědi. Tato sada souřadnic v pixelech pro levý, horní, šířku a výšku označuje umístěný obličej. Pomocí těchto souřadnic můžete získat polohu obličeje a jeho velikosti. V odpovědi rozhraní API jsou plošky uvedené v pořadí podle velikosti od největších po nejmenší.
 
 ## <a name="face-id"></a>ID obličeje
 
-ID plochy je jedinečný řetězec identifikátoru pro každou zjištěnou plochu v obraze. Můžete požádat o Face ID v [obličeji – zjistit](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) volání rozhraní API.
+ID obličeje je jedinečný řetězec identifikátoru pro každý zjištěný obličej v obrázku. V volání rozhraní API [pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) můžete požádat o ID obličeje.
 
 ## <a name="face-landmarks"></a>Orientační body tváře
 
-Orientační body obličeje jsou souborem snadno k nalezení bodů na obličeji, jako jsou žáci nebo špička nosu. Standardně existuje 27 předdefinovaných orientačních bodů. Následující obrázek znázorňuje všech 27 bodů:
+Přední orientační body jsou sada snadno hledaných bodů na plošku, jako jsou žákům nebo špička v nos. Standardně existuje 27 předdefinovaných orientačních bodů. Následující obrázek ukazuje všechny 27 bodů:
 
-![Čelní diagram se všemi 27 orientačními body označenými](../Images/landmarks.1.jpg)
+![Obličejový diagram se všemi 27 orientačními částmi s označením](../Images/landmarks.1.jpg)
 
-Souřadnice bodů jsou vráceny v jednotkách obrazových bodů.
+Souřadnice bodů jsou vraceny v jednotkách v pixelech.
 
 ## <a name="attributes"></a>Atributy
 
-Atributy jsou sada funkcí, které mohou být volitelně detekovány [face - detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API. Lze zjistit následující atributy:
+Atributy jsou sadou funkcí, které lze volitelně detekovat pomocí rozhraní API [pro detekci obličeje](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) . Lze zjistit následující atributy:
 
-* **Věk**. Odhadovaný věk v letech určité tváře.
-* **Rozostření**. Rozostření obličeje v obraze. Tento atribut vrátí hodnotu mezi nulou a jedničkou a neformálním hodnocením nízká, střední nebo vysoká.
-* **Emoce**. Seznam emocí s jejich detekcí důvěry pro danou tvář. Skóre důvěry jsou normalizovány, a skóre napříč všemi emocemi přidat až jeden. Emoce vrátil jsou štěstí, smutek, neutrální, hněv, opovržení, znechucení, překvapení a strach.
-* **Expozice**. Expozice obličeje v obraze. Tento atribut vrátí hodnotu mezi nulou a jednou a neformální hodnocení podExpozice, goodExposure nebo overExposure.
-* **Vousy**. Odhadovaná přítomnost vousů a délka daného obličeje.
-* **Pohlaví**. Odhadované pohlaví dané tváře. Možné hodnoty jsou mužské, ženské a bezpohlavní.
-* **Brýle**. Zda daný obličej má brýle. Možné hodnoty jsou NoGlasses, Brýle na čtení, sluneční brýle a plavecké brýle.
-* **Vlasy**. Typ vlasů obličeje. Tento atribut ukazuje, zda jsou vlasy viditelné, zda je zjištěna plešatost a jaké barvy vlasů jsou detekovány.
-* **Hlava představovat**. Orientace plochy ve 3D prostoru. Tento atribut je popsán úhly stoupání, náklonu a stákání ve stupních. Rozsahy hodnot jsou -90 stupňů až 90 stupňů, -180 stupňů až 180 stupňů a -90 stupňů až 90 stupňů. Mapování úhlů naleznete v následujícím diagramu:
+* **Stáří**. Odhad stáří konkrétního obličeje v letech.
+* **Rozostření**. Blurriness obličeje v obrázku. Tento atribut vrací hodnotu od 0 do 1 a neformální hodnocení typu nízká, střední nebo vysoká.
+* **Emoce**. Seznam emoce se spolehlivostí detekce pro danou plošku. Hodnocení spolehlivosti je normalizované a skóre všech emoce přidávají až jednu. Vrácenou emoce jsou štěstí, smutek, neutrální, hněv, retempo, znechucení, neočekávaně a strach.
+* **Ozáření**. Expozice obličeje v obrázku. Tento atribut vrátí hodnotu mezi 0 a 1 a neformálním hodnocením neoficiálního ozáření, goodExposure nebo nadlimitní hodnoty.
+* **Vlasy obličeje**. Odhad přítomnosti obličeje a délky pro daný obličej.
+* **Pohlaví** Odhadované pohlaví dané plošky. Možné hodnoty jsou samčí, ženské a žen bez pohlaví.
+* **Brýle**. Určuje, zda má daná ploška brýlí. Možné hodnoty jsou nesklad, ReadingGlasses, Sunglasses a brýle.
+* **Vlasy**. Typ vlasy obličeje. Tento atribut ukazuje, zda je vlasy viditelné, zda je detekována baldness a jaké barvy vlasů byly zjištěny.
+* **Pozice pozice**. Orientace obličeje v prostorovém prostoru. Tento atribut je popsán ve stupních pro rozteč, hod. a Yaw úhly. Rozsahy hodnot jsou-90 stupňů až 90 stupňů,-180 stupňů až 180 stupňů a-90 stupňů až po 90 stupňů v uvedeném pořadí. Podívejte se na následující diagram pro mapování úhlů:
 
-    ![Hlava s roztečí, role a vyjetých os označených](../Images/headpose.1.jpg)
-* **Make-up**. Zda má obličej make-up. Tento atribut vrátí logickou hodnotu pro eyeMakeup a lipMakeup.
-* **Hluk**. Vizuální šum detekovaný na obrázku obličeje. Tento atribut vrátí hodnotu mezi nulou a jedničkou a neformálním hodnocením nízká, střední nebo vysoká.
-* **Okluze**. Zda jsou objekty, které blokují části plochy. Tento atribut vrátí logickou hodnotu pro eyeOccluded, čeloOccluded a mouthOccluded.
-* **Úsměv**. Úsměv výraz dané tváře. Tato hodnota je mezi nulou bez úsměvu a jednou pro jasný úsměv.
+    ![Hlava s Yaw osami rozteč, hod.](../Images/headpose.1.jpg)
+* **Strukturu**. Zda se strukturu obličej. Tento atribut vrací logickou hodnotu pro eyeMakeup a lipMakeup.
+* **Šum**. Vizuální šum zjištěný na obrázku obličeje. Tento atribut vrací hodnotu od 0 do 1 a neformální hodnocení typu nízká, střední nebo vysoká.
+* **Překrytí**. Zda objekty blokující části obličeje. Tento atribut vrací logickou hodnotu pro eyeOccluded, foreheadOccluded a mouthOccluded.
+* **Smajlík**. Výraz úsměvu dané plošky Tato hodnota je od nuly žádného úsměvu a jedno pro jasný úsměv.
 
 > [!IMPORTANT]
-> Atributy obličeje jsou předpovězeny pomocí statistických algoritmů. Nemusí být vždy přesné. Při rozhodování na základě dat atributů buďte opatrní.
+> Atributy tváře jsou předpovězeny pomocí statistických algoritmů. Nemusí být vždy přesné. Při rozhodování na základě dat atributu buďte opatrní.
 
 ## <a name="input-data"></a>Vstupní data
 
-Pomocí následujících tipů se ujistěte, že vstupní obrázky poskytují nejpřesnější výsledky zjišťování:
+Pomocí následujících tipů se ujistěte, že vstupní image poskytují nejpřesnější výsledky zjišťování:
 
-* Podporované formáty vstupního obrazu jsou JPEG, PNG, GIF pro první snímek a BMP.
+* Podporované formáty vstupních obrázků jsou JPEG, PNG, GIF pro první snímek a BMP.
 * Velikost souboru obrázku by neměla být větší než 4 MB.
-* Detekovatelný rozsah velikostí obličeje je 36 x 36 až 4096 x 4096 pixelů. Plochy mimo tento rozsah nebudou rozpoznány.
-* Některé tváře nemusí být detekovány z důvodu technických problémů. Detekci mohou ovlivnit extrémní úhly obličeje (póza hlavy) nebo okluze obličeje (předměty, jako jsou sluneční brýle nebo ruce, které blokují část obličeje). Čelní a téměř čelní plochy poskytují nejlepší výsledky.
+* Velikost zjistitelného obličejového rozsahu je 36 × 36 až 4096 × 4096 pixelů. Nezjistí se plošky mimo tento rozsah.
+* Některé plošky nemusí být zjištěny z důvodu technických výzev. Extrémní úhly obličeje (hlava pozice) nebo překrytí obličeje (objekty jako Sunglasses nebo ruce, které blokují část plochy) mohou ovlivnit detekci. Nejlepší výsledky poskytují přední a blízko čelních ploch.
 
-Pokud detekujete tváře z videokanálu, můžete zvýšit výkon úpravou určitých nastavení videokamery:
+Pokud detekujete obličeje z informačního kanálu videa, můžete zlepšit výkon úpravou určitých nastavení na kameře:
 
-* **Vyhlazení**: Mnoho videokamer aplikuje efekt vyhlazení. Pokud je to možné, měli byste to vypnout, protože vytváří rozostření mezi snímky a snižuje čistotu.
-* **Rychlost závěrky:** Vyšší rychlost závěrky snižuje množství pohybu mezi snímky a zpřehledňuje každý snímek. Doporučujeme rychlost závěrky 1/60 sekundy nebo vyšší.
-* **Úhel závěrky**: Některé fotoaparáty určují úhel závěrky namísto rychlosti závěrky. Pokud je to možné, měli byste použít nižší úhel závěrky. Výsledkem bude jasnější snímky videa.
+* **Vyhlazení**: pro mnoho videí videokamery platí efekt vyhlazení. Tuto možnost byste měli vypnout, pokud to může být způsobeno tím, že vytváří rozostření mezi snímky a snižuje přehlednost.
+* **Rychlost expozice**: rychlejší rychlost expozice omezuje pohyb mezi snímky a zpřístupňuje jednotlivé snímky. Doporučujeme, abyste rychlosti závěrů 1/60 sekund nebo rychleji.
+* **Úhel rolety**: některé kamery místo rychlosti expozice určují úhel rolety. Pokud je to možné, měli byste použít dolní úhel závěru. Výsledkem bude Vymazání snímků videa.
 
     >[!NOTE]
-    > Fotoaparát s nižším úhlem závěrky bude v každém snímku méně světla, takže obraz bude tmavší. Budete muset určit správnou úroveň použití.
+    > Fotoaparát s dolním úhlem rolety dostane v každém snímku méně světla, takže obrázek bude tmavší. Musíte určit správnou úroveň, kterou chcete použít.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámeni s koncepty detekce obličeje, naučte se psát skript, který detekuje tváře v daném obrázku.
+Teď, když jste obeznámení s koncepty rozpoznávání obličeje, se naučíte napsat skript, který detekuje plošky v dané imagi.
 
 * [Rozpoznávání tváří na obrázku](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

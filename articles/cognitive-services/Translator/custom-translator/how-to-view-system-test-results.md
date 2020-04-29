@@ -1,7 +1,7 @@
 ---
-title: Zobrazit výsledky systémových testů a nasazení – vlastní překladač
+title: Zobrazení výsledků a nasazení systémových testů – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Když je vaše školení úspěšné, zkontrolujte testy systému a analyzujte výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte požadavek na nasazení pro trénovaný model.
+description: Po úspěšném školení si přečtěte systémové testy, které vám umožní analyzovat výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte žádost o nasazení na školicí model.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,98 +10,98 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595596"
 ---
 # <a name="view-system-test-results"></a>Zobrazení výsledků systémových testů
 
-Když je vaše školení úspěšné, zkontrolujte testy systému a analyzujte výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte požadavek na nasazení pro trénovaný model.
+Po úspěšném školení si přečtěte systémové testy, které vám umožní analyzovat výsledky školení. Pokud jste spokojeni s výsledky školení, umístěte žádost o nasazení na školicí model.
 
-## <a name="system-test-results-page"></a>Stránka s výsledky systémových testů
+## <a name="system-test-results-page"></a>Stránka s výsledky testu systému
 
-Vyberte projekt, pak vyberte kartu Modely tohoto projektu, vyhledejte model, který chcete použít, a nakonec vyberte testovací kartu.
+Vyberte projekt, pak vyberte kartu modely daného projektu, vyhledejte model, který chcete použít, a nakonec vyberte kartu test.
 
-Na kartě test se zobrazí:
+Karta test vám ukáže:
 
-1.  **Výsledky systémových testů:** Výsledek zkušebního procesu v tréninkech. Testovací proces vytváří skóre BLEU.
+1.  **Výsledky testů systému:** Výsledek testovacího procesu ve školicích kurzech. Proces testu generuje BLEU skóre.
 
-    **Počet vět:** Kolik paralelnívěty byly použity v testovací sadě.
+    **Počet vět:** Kolik paralelních vět bylo použito v sadě testů.
 
-     **SKÓRE BLEU:** SKÓRE BLEU generované pro model po dokončení školení.
+     **Bleu skóre:** BLEU skóre vygenerované pro model po dokončení školení.
 
-    **Stav:** Označuje, zda je proces testu dokončen nebo probíhá.
+    **Stav:** Určuje, zda je proces testu dokončen nebo probíhá.
 
-    ![Výsledky systémových zkoušek](media/how-to/how-to-system-test-results.png)
+    ![Výsledky systémových testů](media/how-to/how-to-system-test-results.png)
 
-2.  Klikněte na výsledky systémových testů, a to vás bude trvat, než otestujete stránku s podrobnostmi o výsledcích. Tato stránka zobrazuje strojový překlad vět, které byly součástí testovací datové sady.
+2.  Klikněte na výsledky testu systému, které vás převedou na stránku s podrobnostmi výsledků testů. Tato stránka zobrazuje strojový překlad vět, které byly součástí testovací sady dat.
 
-3.  Tabulka na stránce podrobností o výsledku testu má dva sloupce - jeden pro každý jazyk v páru. Sloupec pro zdrojový jazyk zobrazuje větu, která má být přeložena. Sloupec pro cílový jazyk obsahuje dvě věty v každém řádku.
+3.  Tabulka na stránce s podrobnostmi výsledků testů má dva sloupce – jeden pro každý jazyk ve dvojici. Sloupec pro zdrojový jazyk zobrazuje větu, která se má přeložit. Sloupec pro cílový jazyk obsahuje dvě věty v každém řádku.
 
-    **Ref:** Tato věta je referenční překlad zdrojové věty, jak je uvedeno v testovací datové sadě.
+    **Odkaz:** Tato věta je referenčním převodem zdrojové věty, jak je uvedeno v testovací sadě dat.
 
-    **MT:** Tato věta je automatický překlad zdrojové věty provedené modelem postavený po školení byla provedena.
+    **MT:** Tato věta je automatický překlad zdrojové věty provedené v modelu sestaveném po provedení školení.
 
-    ![Porovnání výsledků systémových testů](media/how-to/how-to-system-test-results-2.png)
+    ![Porovnání výsledků testů systému](media/how-to/how-to-system-test-results-2.png)
 
-## <a name="download-test"></a>Test ke stažení
+## <a name="download-test"></a>Stáhnout test
 
-Kliknutím na odkaz Stáhnout překlady stáhněte soubor zip. Zip obsahuje strojové překlady zdrojových vět v testovací datové sadě.
+Kliknutím na odkaz Stáhnout překlady Stáhněte soubor zip. PSČ obsahuje strojové překlady zdrojových vět v sadě testů dat.
 
-![Test ke stažení](media/how-to/how-to-system-test-download.png)
+![Stáhnout test](media/how-to/how-to-system-test-download.png)
 
-Tento stažený zip archiv obsahuje tři soubory.
+Stažený archiv zip obsahuje tři soubory.
 
-1.  **custom.mt.txt:** Tento soubor obsahuje strojové překlady vět zdrojového jazyka v cílovém jazyce provedeném modelem trénovaným s daty uživatele.
+1.  **vlastní. mt. txt:** Tento soubor obsahuje překlady strojových vět zdrojové jazykové verze v cílovém jazyce, který provede model vyškolený daty uživatele.
 
-2.  **ref.txt:** Tento soubor obsahuje uživatelem poskytnuté překlady vět zdrojového jazyka v cílovém jazyce.
+2.  **ref. txt:** Tento soubor obsahuje překlady uživatelsky zadaných překladů zdrojových vět v cílovém jazyce.
 
-3.  **source.txt:** Tento soubor obsahuje věty ve zdrojovém jazyce.
+3.  **zdrojový. txt:** Tento soubor obsahuje ve zdrojovém jazyce věty.
 
-    ![Výsledky stažených systémových testů](media/how-to/how-to-download-system-test.png)
+    ![Výsledky staženého systému testů](media/how-to/how-to-download-system-test.png)
 
 ## <a name="deploy-a-model"></a>Nasazení modelu
 
-Chcete-li požádat o nasazení:
+Požadavek na nasazení:
 
-1.  Vyberte projekt, přejděte na kartu Modely.
+1.  Vyberte projekt, přejít na kartu modely.
 
-2. Pro úspěšně trénovaný model se zobrazí tlačítko "Nasadit", pokud není nasazeno.
+2. V případě úspěšného školení modelu zobrazuje tlačítko "nasadit", pokud není nasazeno.
 
-    ![Nasazení modelu](media/how-to/how-to-deploy-model.png)
+    ![Nasadit model](media/how-to/how-to-deploy-model.png)
 
-3.  Klikněte na Nasadit.
-4.  Vyberte **Nasazeno** pro oblasti, do kterých chcete model nasadit, a klikněte na Uložit. Můžete vybrat **Nasazeno** pro více oblastí.
+3.  Klikněte na nasadit.
+4.  Vyberte **nasazené** pro oblasti, kde chcete model nasadit, a klikněte na Uložit. Můžete vybrat možnost **nasazeno** pro více oblastí.
 
-    ![Nasazení modelu](media/how-to/how-to-deploy-model-regions.png)
+    ![Nasadit model](media/how-to/how-to-deploy-model-regions.png)
 
-5.  Stav modelu můžete zobrazit ve sloupci Stav.
+5.  Stav modelu můžete zobrazit ve sloupci "stav".
 
 >[!Note]
->Vlastní překladač podporuje 10 nasazených modelů v rámci pracovního prostoru v libovolném okamžiku.
+>Vlastní Překladatel podporuje v libovolném bodě v čase 10 nasazených modelů v rámci pracovního prostoru.
 
-## <a name="update-deployment-settings"></a>Aktualizovat nastavení nasazení
+## <a name="update-deployment-settings"></a>Nastavení nasazení aktualizace
 
 Aktualizace nastavení nasazení:
 
-1.  Vyberte projekt a přejděte na kartu **Modely.**
+1.  Vyberte projekt a přejít na kartu **modely** .
 
-2. U úspěšně nasazeného modelu se zobrazí tlačítko **Aktualizovat.**
+2. V případě úspěšného nasazení modelu se zobrazí tlačítko **aktualizovat** .
 
-    ![Nasazení modelu](media/how-to/how-to-update-undeploy-model.png)
+    ![Nasadit model](media/how-to/how-to-update-undeploy-model.png)
 
 3.  Vyberte **Aktualizovat**.
-4.  Vyberte **Nasazené** nebo **Nenasazené** pro oblasti, kde chcete model nasadit nebo zrušit nasazení, klepněte na tlačítko **Uložit**.
+4.  Vyberte **nasazené** nebo **nenasazené pro oblasti** , kde chcete, aby byl model nasazený nebo nenasazený, a pak klikněte na **Uložit**.
 
-    ![Nasazení modelu](media/how-to/how-to-undeploy-model.png)
+    ![Nasadit model](media/how-to/how-to-undeploy-model.png)
 
 >[!Note]
->Pokud vyberete **undeployed** pro všechny oblasti, model je undeployed ze všech oblastí a dát do nenasazeného stavu. Nyní není k dispozici pro použití.
+>Pokud vyberete možnost **nenasazeno** pro všechny oblasti, model se odsadí ze všech oblastí a přepne do nenasazeného stavu. Není nyní k dispozici pro použití.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začněte používat nasazený vlastní model překladu prostřednictvím [rozhraní Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
-- Přečtěte [si, jak spravovat nastavení](how-to-manage-settings.md) pro sdílení pracovního prostoru, spravovat klíč předplatného.
-- [Zjistěte, jak migrovat pracovní prostor a projekt](how-to-migrate.md) z centra Microsoft Translator [Hub](https://hub.microsofttranslator.com)
+- Začněte používat nasazený vlastní model překladu přes [Microsoft Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl).
+- Naučte se [Spravovat nastavení](how-to-manage-settings.md) , abyste mohli sdílet svůj pracovní prostor, spravovat klíč předplatného.
+- Naučte [se migrovat pracovní prostor a projekt](how-to-migrate.md) z [centra Microsoft Translator](https://hub.microsofttranslator.com) .

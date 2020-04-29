@@ -1,7 +1,7 @@
 ---
-title: Odkaz na rozhraní API analýzy textu
+title: Odkaz na rozhraní API pro analýzu textu
 titleSuffix: Azure Cognitive Services
-description: Odkaz na nejnovější definice rozhraní API pro stabilní a náhled
+description: Odkaz na nejnovější stabilní a ukázkové definice rozhraní API
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,13 +10,13 @@ ms.topic: include
 ms.date: 11/19/2019
 ms.author: assafi
 ms.openlocfilehash: 187565f2518145dcd554ae4d300174981eb55ea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74284770"
 ---
 > [!Tip]
-> Pro podrobnou technickou dokumentaci rozhraní API a její zobrazení v akci použijte následující odkazy. Můžete také odeslat požadavky POST z integrované testovací konzole rozhraní API. Není vyžadováno žádné nastavení, jednoduše vložte klíč prostředku a dokumenty JSON do požadavku:
-> - Nejnovější stabilní API - [v2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1)
-> - Nejnovější náhled API - [v3.0-Preview.1](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1)
+> Podrobné technické dokumentace k rozhraní API a její zobrazení v akci najdete pomocí následujících odkazů. Žádosti POST můžete také odeslat z integrované testovací konzoly API. Není nutné žádné nastavení, stačí do žádosti vložit klíč prostředku a dokumenty JSON:
+> - Nejnovější stabilní rozhraní API – [v 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1)
+> - Nejnovější verze Preview API- [v 3.0 – Preview. 1](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1)

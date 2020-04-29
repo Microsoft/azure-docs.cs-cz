@@ -1,7 +1,7 @@
 ---
-title: Ordinal V2 předbudová entita - LUIS
+title: Ordinální v2 předem sestavená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje ordinal V2 předem informace o entitě v porozumění jazykům (LUIS).
+description: Tento článek obsahuje pořadí předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270482"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Ordinal V2 předem sestavená entita pro aplikaci LUIS
-Číslo číslo Číslo 2 rozšiřuje [řadové](luis-reference-prebuilt-ordinal.md) číslo tak, aby `next`poskytovalo relativní odkazy, například , `last`a `previous`. Ty nejsou extrahovány pomocí ordinální předem sestavené entity.
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita pořadí v2 pro aplikaci pro LUIS
+Pořadové číslo v2 rozbalí [pořadí](luis-reference-prebuilt-ordinal.md) , aby poskytoval relativní odkazy `next`, například `last`, a `previous`. Tyto nejsou extrahovány pomocí pořadí předem sestavené entity.
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Rozlišení pro předbudová ordinální entitu V2
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>Řešení pro předem sestavenou ordinální entitu v2
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `what is the second to last choice in the list`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -42,9 +42,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
 }
 ```
 
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -71,9 +71,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení entity **builtin.ordinalV2.**
+Následující příklad ukazuje řešení entity **Builtin. ordinalV2** .
 
 ```json
 "entities": [
@@ -93,6 +93,6 @@ Následující příklad ukazuje rozlišení entity **builtin.ordinalV2.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Seznamte se s [procenty](luis-reference-prebuilt-percentage.md), [telefonním číslem](luis-reference-prebuilt-phonenumber.md)a [teplotními](luis-reference-prebuilt-temperature.md) entitami.
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [telefonním číslu](luis-reference-prebuilt-phonenumber.md)a o [teplotních](luis-reference-prebuilt-temperature.md) entitách.

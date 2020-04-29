@@ -1,7 +1,7 @@
 ---
-title: Předdefinované entity adresy URL – LUIS
+title: Předem připravené entity adresy URL – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o předem sestavené entitě adresy URL v jazyce Porozumění (LUIS).
+description: Tento článek obsahuje předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/04/2019
 ms.author: diberry
 ms.openlocfilehash: 49f145ce3e9022826abad5d274dd611bb2cc6530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270354"
 ---
-# <a name="url-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita adresy URL pro aplikaci LUIS
-Entita URL extrahuje adresy URL s názvy domén nebo adresami IP. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidávat příklad projevy obsahující adresy URL do aplikace. Entita ADRESY `en-us` URL je podporována pouze v jazykové verzi.
+# <a name="url-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita URL pro aplikaci LUIS
+Entita adresy URL extrahuje adresy URL s názvy domén nebo IP adresami. Vzhledem k tomu, že je tato entita již vyškolená, není nutné do aplikace přidat příklad projevy obsahující adresy URL. Entita adresy URL je podporována `en-us` pouze v jazykové verzi.
 
 ## <a name="types-of-urls"></a>Typy adres URL
-Adresa URL je spravována z úložiště GitHub [s textem pro rozpoznávání](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml)
+Adresa URL se spravuje z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-URL.yaml) v GitHubu.
 
-## <a name="resolution-for-prebuilt-url-entity"></a>Řešení pro předem připravenou entitu URL
+## <a name="resolution-for-prebuilt-url-entity"></a>Řešení pro předem vytvořenou entitu URL
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `https://www.luis.ai is a great cognitive services example of artificial intelligence`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -41,9 +41,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
 
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -67,9 +67,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení https://www.luis.ai je velký kognitivní služby příklad umělé inteligence
+Následující příklad ukazuje řešení https://www.luis.ai skvělého příkladu služby pro rozpoznávání umělých inteligentních funkcí.
 
 ```json
 "entities": [
@@ -86,6 +86,6 @@ Následující příklad ukazuje rozlišení https://www.luis.ai je velký kogni
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Seznamte se s [entitami osla](luis-reference-prebuilt-ordinal.md), [počtu](luis-reference-prebuilt-number.md)a [teplotě.](luis-reference-prebuilt-temperature.md)
+Přečtěte si o [pořadí](luis-reference-prebuilt-ordinal.md), [čísle](luis-reference-prebuilt-number.md)a [teplotních](luis-reference-prebuilt-temperature.md) entitách.

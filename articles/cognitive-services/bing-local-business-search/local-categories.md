@@ -1,7 +1,7 @@
 ---
-title: Hledání kategorií rozhraní API pro vyhledávání v místní chodidel Bingu
+title: Kategorie hledání pro rozhraní API pro vyhledávání místních obchodních aplikací Bingu
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak určit kategorie hledání pro koncový bod rozhraní API rozhraní API pro místní firmy Bingu.
+description: V tomto článku se dozvíte, jak zadat kategorie hledání pro koncový bod rozhraní API pro místní vyhledávání Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,79 +11,79 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 56b94d66eb0929d2fd0ca74a1a631d229330adfa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "69906400"
 ---
-# <a name="search-categories-for-the-bing-local-business-search-api"></a>Hledání kategorií rozhraní API pro vyhledávání v místní chodidel Bingu
+# <a name="search-categories-for-the-bing-local-business-search-api"></a>Kategorie hledání pro rozhraní API pro vyhledávání místních obchodních aplikací Bingu
 
-Rozhraní API pro vyhledávání místních společností Bingu umožňuje vyhledávat místní obchodní entity v různých kategoriích, přičemž prioritou je uzavření umístění uživatele. Tato hledání můžete zahrnout do vyhledávání `localCircularView` spolu `localMapView` s [parametry](specify-geographic-search.md)a .
+Rozhraní API pro místní vyhledávání Bingu umožňuje vyhledávat místní obchodní entity v různých kategoriích s prioritou, která má za následek uzavření umístění uživatele. Můžete zahrnout tato hledání do hledání spolu s `localCircularView` `localMapView` [parametry](specify-geographic-search.md)a.
 
 
-## <a name="toplevel-categories"></a>Kategorie nejvyšší úrovně 
+## <a name="toplevel-categories"></a>Kategorie TopLevel 
 
-Následující typy definují hlavní kategorie vyhledávání.  Více než jednu kategorii lze zadat pomocí seznamu odděleného `localCategories` čárkami přiřazeného k parametru.  
+Následující typy definují hlavní kategorie hledání.  Pomocí seznamu odděleného čárkami, který je `localCategories` přiřazen k parametru, lze zadat více než jednu kategorii.  
 - EatDrink 
 - SeeDo 
-- Obchod 
-- HotelyAndMotels 
-- Bankyaúvěrové svazy 
-- Parkování 
-- Nemocnice 
+- Středisko 
+- HotelsAndMotels 
+- BanksAndCreditUnions 
+- Parkovací 
+- Nemocniční 
 
-## <a name="sub-categories"></a>Dílčí kategorie
-Podkategorie jsou předávány `localCategories`stejným způsobem jako . Podkategorie jsou konkrétnější kategorie. Jsou podřízené v tom smyslu, že pokud zadáte kategorii C a jednu z jejích podkategorií S ve stejném seznamu odděleném čárkami, obdržíte stejné výsledky, jako kdybyste zadali c samostatně.
+## <a name="sub-categories"></a>Podkategorie
+Podkategorie jsou předány stejným způsobem jako `localCategories`. Podkategorie jsou konkrétnější kategorie. Jsou podřízené v tom smyslu, že pokud zadáte kategorii C a jednu z jejích podkategorií v jednom seznamu odděleném čárkami, obdržíte stejné výsledky, jako kdyby jste určili pouze C.
 
-### <a name="eat-drink"></a>Jezte drink 
+### <a name="eat-drink"></a>Eat nápoj 
 |  |  |  |  |
 | - | - | - | - |
-| PivovaryAndBrewPubs | Koktejlsalónky | AfricanRestaurants |
-| AmericanRestaurace | Bagels | Restaurace pro grilování |
-| Taverny | Sportovní bary | Bary |
-| BaryGrilyA Hospody | BufetRestaurace| BelgianRestaurants | 
-| BritskéRestaurace | KavárnyRestaurace | KaribikRestaurace |
-| ChineseRestaurants | KávaAndTea | Delikatesy | 
-| Služba doručení | Diners | Diskontní obchody | 
-| Koblihy | Rychlé občerstvení | FrancouzskéRestaurace | 
-| Mražený jogurt | NěmeckéRestaurace | Supermarkety | 
-| ŘeckéRestaurace | Potraviny | HavajskéRestaurace | 
-| HungarianRestaurace | IceCreamAndFrozenDezerty | IndianRestaurace | 
-| ItalskéRestaurace | JaponskéRestaurace | Šťávy | 
-| KoreanRestaurace | Obchody s alkoholem | MexičankyRestaurace |
-| Střední A Střední Toje | Pizza | PolskéRestaurace | 
-| PortugaleRestaurace | Preclíky | Restaurace | 
-| RusandUkrainianRestaurants | Sendviče | Mořské plodyRestaurace | 
-| ŠpanělštinaRestaurace | SteakhouseRestaurace | SushiRestaurace | 
-| Stánek s jídlem | ThajskéRestaurace | TureckéRestaurace | 
-| VegetarianAndVeganRestaurace | VietnamskéRestaurace|  |
+| BreweriesAndBrewPubs | CocktailLounges | AfricanRestaurants |
+| AmericanRestaurants | Bagels | BarbecueRestaurants |
+| Taverns | SportsBars | Webových |
+| BarsGrillsAndPubs | BuffetRestaurants| BelgianRestaurants | 
+| BritishRestaurants | CafeRestaurants | CaribbeanRestaurants |
+| ChineseRestaurants | CoffeeAndTea | Delicatessens | 
+| DeliveryService | Diners | DiscountStores | 
+| Donuts | FastFood | FrenchRestaurants | 
+| FrozenYogurt | GermanRestaurants | Supermarkety | 
+| GreekRestaurants | Nákup | HawaiianRestaurants | 
+| HungarianRestaurants | IceCreamAndFrozenDesserts | IndianRestaurants | 
+| ItalianRestaurants | JapaneseRestaurants | Šťávy | 
+| KoreanRestaurants | LiquorStores | MexicanRestaurants |
+| MiddleEasternRestaurants | Pizza | PolishRestaurants | 
+| PortugueseRestaurants | Pretzels | Stravování | 
+| RussianAndUkrainianRestaurants | Sandwichovy | SeafoodRestaurants | 
+| SpanishRestaurants | SteakHouseRestaurants | SushiRestaurants | 
+| Poznatkem | ThaiRestaurants | TurkishRestaurants | 
+| VegetarianAndVeganRestaurants | VietnameseRestaurants|  |
  
-### <a name="see-do"></a>Viz Do 
+### <a name="see-do"></a>Viz do 
 |  |  |  |
 | -- | -- | -- |
-| Zábavní parky | Atrakcí | Karnevaly |
-| Kasina | PamátkyA Historické Weby | Minigolfhřiště |
-| MovieTheaters | Muzeí | Parky |
-| Prohlídky památek | TuristickéInformace | Zoologické zahrady |
+| AmusementParks | Attractions | Carnivals |
+| Casinos | LandmarksAndHistoricalSites | MiniatureGolfCourses |
+| MovieTheaters | Muzeí | Parků |
+| SightseeingTours | TouristInformation | Zoos |
  
-### <a name="shop"></a>Obchod 
+### <a name="shop"></a>Středisko 
 |  |  |  |
 | -- | -- | -- |
-| Starožitnictví | Knihkupectví | CDAndRecordStores |
-| DětskéOblečeníObchody | CigarAndTobaccoShops | Obchody s komiksy |
-| DepartmentStoresObchody | Diskontní obchody | FleaMarketsAndBazary |
-| FurnitureStores Obchody | HomeImprovementObchody | JewelryAndWatchesStores |
-| Kuchyňské potřebyObchody | Obchody s alkoholem | Nákupní centraAnákupní centra |
-| PánskéOblečeníObchody | Hudební obchody | OutletStores Obchody |
-| PetShops | PetSupplyObchody | SchoolandOfficeSupplyStores |
-| Obchody s obuví | SportingGoodsObchody | ToyAndGameObchody |
-| VitaminAndSupplementStores | DámskéoblečeníObchody |  |
+| AntiqueStores | Bookstore | CDAndRecordStores |
+| ChildrensClothingStores | CigarAndTobaccoShops | ComicBookStores |
+| DepartmentStores | DiscountStores | FleaMarketsAndBazaars |
+| FurnitureStores | HomeImprovementStores | JewelryAndWatchesStores |
+| KitchenwareStores | LiquorStores | MallsAndShoppingCenters |
+| MensClothingStores | MusicStores | OutletStores |
+| PetShops | PetSupplyStores | SchoolAndOfficeSupplyStores |
+| ShoeStores | SportingGoodsStores | ToyAndGameStores |
+| VitaminAndSupplementStores | WomensClothingStores |  |
 
 
-## <a name="examples-of-local-categories-search"></a>Příklady vyhledávání v místních kategoriích
+## <a name="examples-of-local-categories-search"></a>Příklady hledání místních kategorií
 
-Následující příklady GET výsledky `localCategories` podle parametru:
+Následující příklady získají výsledky podle `localCategories` parametru:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=HotelsAndMotels`
 
@@ -93,11 +93,11 @@ Následující příklady GET výsledky `localCategories` podle parametru:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localcategories=Hospitals`
 
-Následující dotaz omezuje počet výsledků "nemocnice" na první tři vrácené z rozhraní API pro vyhledávání místních společností Bingu:
+Následující dotaz omezuje počet "nemocničních" výsledků, které mají být první tři vráceny z rozhraní API služby Bing pro vyhledávání místních obchodních hledání:
 
 `https://api.cognitive.microsoft.com/localbusinesses/v7.0/search?&q=&mkt=en-US&localCategories=Hospitals&count=3&offset=0`
 
-Následující příklad JSON odpověď zahrnuje tři nemocnice ve větší oblasti Seattle:
+Následující příklad odpovědi JSON zahrnuje tři nemocnice v oblasti s větším Seattlem:
 
 ```json
 BingAPIs-TraceId: 68AFB51807C6485CAB8AAF20E232EFFF
@@ -217,6 +217,6 @@ X-MSEdge-Ref: Ref A: 68AFB51807C6485CAB8AAF20E232EFFF Ref B: CO1EDGE0108 Ref C: 
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Hranice geografického vyhledávání](specify-geographic-search.md)
+- [Geografické hranice hledání](specify-geographic-search.md)
 - [Dotaz a odpověď](local-search-query-response.md)
-- [Rychlý start v C #](quickstarts/local-quickstart.md)
+- [Rychlý Start v jazyce C #](quickstarts/local-quickstart.md)

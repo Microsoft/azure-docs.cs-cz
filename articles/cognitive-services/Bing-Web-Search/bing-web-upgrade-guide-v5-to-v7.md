@@ -1,7 +1,7 @@
 ---
-title: Upgrade z rozhraní API v5 na v7 – rozhraní API pro vyhledávání na webu Bingu
+title: Upgrade z rozhraní API V5 na v7-rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Určete, které části aplikace vyžadují aktualizace pro použití souborů API bingového vyhledávání na webu v7.
+description: Určete, které části aplikace vyžadují aktualizace, aby bylo možné používat rozhraní API Vyhledávání na webu Bingu v7.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,77 +12,77 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: 2133cd59c524112ae8a77c0a20cbce1d1336a38d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68881305"
 ---
-# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade z rozhraní API pro vyhledávání na webu Bingu v5 na v7
+# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade z rozhraní API Bingu pro vyhledávání na webu V5 na v7
 
-Tato příručka pro upgrade identifikuje změny mezi verzí 5 a verzí 7 rozhraní API pro vyhledávání na webu Bing. V této příručce můžete identifikovat části aplikace, které je třeba aktualizovat, abyste měli používat verzi 7.
+Tento průvodce upgradem identifikuje změny mezi verzemi 5 a verze 7 rozhraní API Bingu pro vyhledávání na webu. Tento průvodce vám pomůže identifikovat části aplikace, které potřebujete aktualizovat, aby používaly verzi 7.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze koncového bodu se změnilo z verze v5 na v7. Například https:\/\/api.cognitive.microsoft.com/bing/**v7.0**/search.
+- Číslo verze koncového bodu se změnilo z V5 na v7. Například https:\/\/API.Cognitive.Microsoft.com/Bing/**v 7.0**/Search.
 
-### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědí na chybu a kódy chyb
+### <a name="error-response-objects-and-error-codes"></a>Objekty a chybové kódy pro odpověď na chybu
 
-- Všechny neúspěšné požadavky by `ErrorResponse` nyní měly obsahovat objekt v těle odpovědi.
+- Všechny neúspěšné žádosti by nyní měly `ErrorResponse` obsahovat objekt v těle odpovědi.
 
-- Do objektu byla `Error` přidána následující pole.  
-  - `subCode`&mdash;Rozdělí kód chyby do samostatných bloků, pokud je to možné
-  - `moreDetails`&mdash;Další informace o chybě popsané `message` v poli
+- Do `Error` objektu byla přidána následující pole.  
+  - `subCode`&mdash;Rozdělí kód chyby do diskrétních kontejnerů, pokud je to možné.
+  - `moreDetails`&mdash;Další informace o chybě popsané v `message` poli
 
 
-- Kódy chyb v5 byly nahrazeny následujícími možnými `code` hodnotami a `subCode` hodnotami.
+- Kódy chyb 5 nahradily následujícími možnými `code` hodnotami a `subCode` .
 
-|kód|Dílčí kód|Popis
+|kód|Podřízeného kódu|Popis
 |-|-|-
-|Chyba serveru|Neočekávaná chyba<br/>Chyba zdroje<br/>Není implementováno|Bing vrátí chybu serveru vždy, když dojde k některé z podmínek podkódu. Odpověď bude obsahovat tyto chyby, pokud je stavový kód HTTP 500.
-|Neplatný požadavek|ParametrMissing ParametrMissing ParametrMissing ParametrMissing<br/>ParametrInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest vždy, když žádná část požadavku není platná. Například chybí požadovaný parametr nebo hodnota parametru není platná.<br/><br/>Pokud je chyba ParametrMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
-|RateLimit překročena||Bing vrátí RateLimitExceeded vždy, když překročíte vaše dotazy za sekundu (QPS) nebo dotazy za měsíc (QPM) kvóta.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
-|Neplatná autorizace|AutorizaceChybí<br/>Redundance autorizace|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo klíč předplatného není platný.<br/><br/>K redundanci dochází, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, stavový kód HTTP je 401.
-|Nedostatečná autorizace|Autorizace zakázána.<br/>Platnost oprávnění vypršela.|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění k přístupu k prostředku. K této chybě může dojít, pokud byl klíč odběru zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, stavový kód HTTP je 403.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing vrátí ServerError vždy, když dojde ke kterékoli z podmínek dílčího kódu. Odpověď bude obsahovat tyto chyby, pokud je stavový kód HTTP 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokované|Bing vrátí InvalidRequest, pokud jakákoli část požadavku není platná. Například povinný parametr chybí nebo hodnota parametru není platná.<br/><br/>Pokud se jedná o chybu ParameterMissing nebo ParameterInvalidValue, kód stavu HTTP je 400.<br/><br/>Pokud je chyba HttpNotAllowed, kód stavu HTTP 410.
+|RateLimitExceeded||Bing vrátí RateLimitExceeded vždy, když překročíte kvótu dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM).<br/><br/>Bing vrátí stavový kód HTTP 429, pokud jste překročili QPS a 403, pokud jste překročili QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, když Bing nemůže ověřit volajícího. `Ocp-Apim-Subscription-Key` Hlavička například chybí nebo klíč předplatného není platný.<br/><br/>Redundance probíhá, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, kód stavu HTTP je 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud volající nemá oprávnění pro přístup k prostředku. K této chybě může dojít, pokud byl klíč předplatného zakázán nebo vypršela jeho platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, kód stavu HTTP je 403.
 
-- Následující mapy předchozí kódy chyb na nové kódy. Pokud jste přijali závislost na kódech chyb v5, aktualizujte kód odpovídajícím způsobem.
+- Následující kód namapuje předchozí chybové kódy na nové kódy. Pokud jste se seznámili s kódy chyb V5, aktualizujte odpovídající kód.
 
-|Kód verze 5|Kód 7 verze.subCode
+|Kód verze 5|Kód verze 7. Subcode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
-RequestParameterInvalidValue|Neplatný parametr Invalid.Neplatný parametr
-ResourceAccessDenied|Nedostatečná autorizace
-ExceededVolume|RateLimit překročena
-Limit překročil qpsLimit|RateLimit překročena
-Zakázáno|InsufficientAuthorization.Authorization.AuthorizationDisabled
-Neočekávaná chyba|Chyba_serveru_nechybě
-Chyby zdroje dat|Chyba_serveru.ResourceError
-AutorizaceChybí|InvalidAuthorization.AuthorizationMissing
-HttpNotAllowed|InvalidRequest.httpNotAllowed
+RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
+ResourceAccessDenied|InsufficientAuthorization
+ExceededVolume|RateLimitExceeded
+ExceededQpsLimit|RateLimitExceeded
+Zakázáno|InsufficientAuthorization.AuthorizationDisabled
+UnexpectedError|ServerError. UnexpectedError
+DataSourceErrors|ServerError. ResourceError
+AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
+HttpNotAllowed|InvalidRequest.HttpNotAllowed
 UserAgentMissing|InvalidRequest.ParameterMissing
-Není implementováno|ServerError.NotImplemented
-Neplatná autorizace|Neplatná autorizace
-Metoda Neplatnostauthorizationm|Neplatná autorizace
-Metoda multipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
-Platnost tokenu AuthorizationToken|InsufficientAuthorization.AuthorizationVypršela
-Nedostatečný rozsah|Nedostatečná autorizace
-Blokované|Neplatný požadavek.blokován
+NotImplemented|ServerError. NotImplemented
+InvalidAuthorization|InvalidAuthorization
+InvalidAuthorizationMethod|InvalidAuthorization
+MultipleAuthorizationMethod|InvalidAuthorization.AuthorizationRedundancy
+ExpiredAuthorizationToken|InsufficientAuthorization.AuthorizationExpired
+InsufficientScope|InsufficientAuthorization
+Blokované|InvalidRequest. Block
 
 
-## <a name="non-breaking-changes"></a>Nenarušující změny  
+## <a name="non-breaking-changes"></a>Neprůlomové změny  
 
 ### <a name="headers"></a>Hlavičky
 
-- Byla přidána volitelná hlavička požadavku [Pragma.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
+- Byla přidána volitelná Hlavička požadavku [pragma](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#pragma) . Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste Bingu zabránili ve vrácení obsahu uloženého v mezipaměti, hlavičku Pragma nastavte na hodnotu no-cache (například Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Byl přidán parametr dotazu [answerCount.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) Tento parametr slouží k určení počtu odpovědí, které má odpověď obsahovat. Odpovědi jsou vybírány na základě pořadí. Pokud například nastavíte tento parametr na tři (3), odpověď obsahuje tři nejvyšší hodnocené odpovědi.  
+- Byl přidán parametr dotazu [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) . Pomocí tohoto parametru můžete zadat počet odpovědí, které má odpověď zahrnovat. Odpovědi se volí na základě hodnocení. Například pokud nastavíte tento parametr na tři (3), odpověď obsahuje horní tři seřazené odpovědi.  
 
-- Byl přidán parametr [propojovacího](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotazu. Pomocí tohoto parametru spolu s `answerCount` explicitně zahrnout jeden nebo více typů odpovědí, bez ohledu na jejich pořadí. Chcete-li například propagovat videa a obrázky do odpovědi, nastavte propagujete *videa, obrázky*. Seznam odpovědí, které chcete propagovat, se `answerCount` do limitu nezapočítává. Pokud `answerCount` je například `promote` 2 a je nastavena na *videa, obrázky*, může odpověď zahrnovat webové stránky, zprávy, videa a obrázky.
+- Byl přidán parametr [povýšení](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) dotazu. Použijte tento parametr společně s `answerCount` pro explicitní zahrnutí jednoho nebo více typů odpovědí bez ohledu na jejich hodnocení. Například pro zvýšení úrovně videa a obrázků do odpovědi byste měli nastavit zvýšení úrovně na *videa, obrázky*. Seznam odpovědí, které chcete zvýšit, se nepočítá s `answerCount` limitem. Například pokud `answerCount` má hodnotu 2 a `promote` je nastavená na *videa, obrázky*, odpověď může obsahovat webové stránky, novinky, videa a obrázky.
 
-### <a name="object-changes"></a>Změny objektů
+### <a name="object-changes"></a>Změny objektu
 
-- Pole `someResultsRemoved` bylo přidáno do objektu [WebAnswer.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) Pole obsahuje logickou hodnotu, která označuje, zda odpověď vyloučila některé výsledky z webové odpovědi.  
+- `someResultsRemoved` Pole bylo přidáno do objektu [webanswer](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webanswer) . Pole obsahuje logickou hodnotu, která označuje, zda odpověď vyloučila některé výsledky z webové odpovědi.  

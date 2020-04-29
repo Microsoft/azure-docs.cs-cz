@@ -1,7 +1,7 @@
 ---
-title: Moderování textu s vlastními seznamy termínů – Moderátor obsahu
+title: Střední text s vlastními seznamy termínů – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro správu seznamů můžete vytvářet vlastní seznamy termínů, které se mají používat s rozhraním API pro moderování textu.
+description: Pomocí rozhraní API pro správu seznamu můžete vytvořit vlastní seznamy podmínek, které se použijí v rozhraní API pro moderování textu.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75382119"
 ---
-# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Moderovat s vlastními seznamy termínů v konzole rozhraní API
+# <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Střední s vlastními seznamy podmínek v konzole API
 
 Výchozí globální seznam výrazů v Azure Content Moderatoru je dostačující pro většinu potřeb z hlediska moderování obsahu. Možná ale budete potřebovat vyhledat výrazy, které jsou specifické pro vaši organizaci. Například můžete chtít označit názvy konkurentů k další kontrole. 
 
-Pomocí [rozhraní API pro správu seznamů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) můžete vytvářet vlastní seznamy termínů, které se mají používat s rozhraním API pro moderování textu. Operace **Text – obrazovka** prohledá text z důvodu vulgárních výrazů a také porovná text s vlastními a sdílenými seznamy blokování.
+Pomocí [rozhraní API pro správu seznamu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) můžete vytvořit vlastní seznamy podmínek, které se použijí v rozhraní API pro moderování textu. Operace **text-Screen** vyhledá text na základě vulgárních výrazů a také porovná text s vlastním a sdíleným adres.
 
 > [!NOTE]
 > Limit je maximálně **5 seznamů výrazů** a v každém seznamu může být **maximálně 10 000 výrazů**.
 >
 
-Rozhraní API pro správu seznamů můžete použít k následujícím úkolům:
+Pomocí rozhraní API pro správu seznamu můžete provádět následující úlohy:
 - Vytvoření seznamu
 - Přidání výrazů do seznamu
 - Porovnání výrazů s výrazy v seznamu
@@ -36,46 +36,46 @@ Rozhraní API pro správu seznamů můžete použít k následujícím úkolům:
 - Úprava informací o seznamu
 - Aktualizace indexu tak, aby změny provedené v seznamu byly součástí nového porovnávání
 
-## <a name="use-the-api-console"></a>Použití konzoly rozhraní API
+## <a name="use-the-api-console"></a>Použití konzoly API
 
-Než budete moci testovací disk API v online konzole, budete potřebovat klíč předplatného. Tento klíč je umístěn na kartě **Nastavení** v poli **Ocp-Apim-Subscription-Key.** Další informace najdete v tématu [Přehled](overview.md).
+Než budete moct otestovat rozhraní API v online konzole, budete potřebovat svůj klíč předplatného. Tento klíč je umístěný na kartě **Nastavení** v poli **OCP-APIM-Subscription-Key** . Další informace najdete v tématu [Přehled](overview.md).
 
 ## <a name="refresh-search-index"></a>Aktualizovat index vyhledávání
 
-Po provádění změn v seznamu termínů je nutné aktualizovat jeho index, aby změny byly zahrnuty do budoucích prohledávek. Tento krok je podobný tomu, jak vyhledávač na ploše (pokud je povolen) nebo webový vyhledávač neustále aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
+Až provedete změny v seznamu termínů, je nutné aktualizovat index, aby se změny projevily v budoucích kontrolách. Tento krok je podobný tomu, jak vyhledávací modul na ploše (Pokud je povolen) nebo webový vyhledávací modul průběžně aktualizuje svůj index, aby zahrnoval nové soubory nebo stránky.
 
-1. V [odkazu rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)vyberte v levé nabídce **seznamy termínů**a pak vyberte **Aktualizovat index hledání**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **Aktualizovat index vyhledávání**. 
 
-   Otevře se stránka **Seznamy termínů – Aktualizovat index vyhledávání.**
+   Otevře se stránka **termín seznamy-obnovit index vyhledávání** .
 
-2. V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Seznamy termínů – výběr oblasti stránky Aktualizovat index hledání](images/test-drive-region.png)
+   ![Seznam termínů – aktualizovat výběr oblasti stránky indexu hledání](images/test-drive-region.png)
 
-   Otevře **se konzola Seznamy termínů – aktualizovat** konzolu rozhraní API indexu vyhledávání.
+   Otevře se modul **seznam termínů – aktualizuje** se konzola rozhraní API indexu vyhledávání.
 
-3. Do pole **listId** zadejte ID seznamu. Zadejte klíč předplatného a pak vyberte **Odeslat**.
+3. Do pole **listId** zadejte ID seznamu. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-   ![Termín seznamy API - aktualizovat index hledání konzoly odpověď pole](images/try-terms-list-refresh-1.png)
+   ![Termín vypisuje rozhraní API – aktualizovat obsah odpovědi konzoly indexu hledání](images/try-terms-list-refresh-1.png)
 
 ## <a name="create-a-term-list"></a>Vytvoření seznamu výrazů
-1. Přejděte na [odkaz rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
+1. Přejít na [Reference k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). 
 
-   Otevře **se stránka Seznamy termínů** – Vytvořit stránku.
+   Otevře se stránka **termíny seznamy – vytvořit** .
 
-2. V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Seznamy termínů – vytvoření výběru oblasti stránky](images/test-drive-region.png)
+   ![Seznamy podmínek – vytvoření výběru oblasti stránky](images/test-drive-region.png)
 
-   Seznamy **termínů –** otevře se vytvoření konzoly rozhraní API.
+   Otevře se **seznam termínů-vytvořit** konzolu rozhraní API.
  
-3. Do pole **Ocp-Apim-Subscription-Key** zadejte klíč předplatného.
+3. Do pole **OCP-APIM-Subscription-Key** zadejte svůj klíč předplatného.
 
-4. Do pole **Text požadavku** zadejte hodnoty pro **Název** (například MyList) a **Description**.
+4. Do pole **Text žádosti** zadejte hodnoty pro **Name** (například myList) a **Description (popis**).
 
-   ![Seznamy termínů – vytvoření názvu a popisu těla požadavku konzoly](images/try-terms-list-create-1.png)
+   ![Terms – vytvoření názvu a popisu textu žádosti konzoly](images/try-terms-list-create-1.png)
 
-5. Pomocí zástupných symbolů pro párování klíč-hodnota přiřaďte do seznamu popisnější metadata.
+5. Použijte zástupné symboly dvojice klíč-hodnota k přiřazení dalších popisných metadat k seznamu.
 
        {
           "Name": "MyExclusionList",
@@ -87,89 +87,89 @@ Po provádění změn v seznamu termínů je nutné aktualizovat jeho index, aby
           }
        }
 
-   Přidejte metadata seznamu jako dvojice klíč-hodnota a ne skutečné termíny.
+   Přidejte metadata seznamu jako páry klíč-hodnota, nikoli skutečné výrazy.
  
-6. Vyberte **Poslat**. Váš seznam je vytvořen. Poznamenejte si hodnotu **ID,** která je přidružena k novému seznamu. Toto ID potřebujete pro další funkce správy seznamu termínů.
+6. Vyberte **Poslat**. Vytvoří se Váš seznam. Poznamenejte si hodnotu **ID** , která je přidružená k novému seznamu. Toto ID budete potřebovat pro jiné funkce správy seznamu termínů.
 
-   ![Seznamy termínů – pole Vytvořit obsah odpovědi konzoly zobrazuje ID seznamu.](images/try-terms-list-create-2.png)
+   ![Seznamy termínů – pole vytvořit obsah odpovědi konzoly zobrazuje ID seznamu](images/try-terms-list-create-2.png)
  
-7. Přidejte termíny do seznamu MyList. V levé nabídce vyberte v části **Termín** **položku Přidat termín**. 
+7. Přidejte do MyList výrazy. V nabídce vlevo v části **termín**vyberte **Přidat termín**. 
 
-   Otevře se stránka **Termín - Přidat termín.** 
+   Otevře se stránka s termínem **Přidat termín** . 
 
-8. V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
+8. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Termín - Přidat výběr oblasti stránky Termín](images/test-drive-region.png)
+   ![Přidat výběr oblasti termínu stránky](images/test-drive-region.png)
 
-   **Termín - Přidat konzolu rozhraní** API termínu otevře.
+   Otevře se konzola rozhraní API termínu **Přidat** .
  
-9. Do pole **listId** zadejte ID seznamu, který jste vygenerovali, a vyberte hodnotu **jazyka**. Zadejte klíč předplatného a pak vyberte **Odeslat**.
+9. Do pole **listId** zadejte ID seznamu, které jste vygenerovali, a vyberte hodnotu **jazyk**. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-   ![Termín - Přidat parametry dotazu konzoly termínu](images/try-terms-list-create-3.png)
+   ![Přidat parametry dotazu konzoly pro termín](images/try-terms-list-create-3.png)
  
-10. Chcete-li ověřit, zda byl termín přidán do seznamu, vyberte v levé nabídce **možnost Termín**a pak vyberte **možnost Získat všechny podmínky**. 
+10. Chcete-li ověřit, zda byl termín přidán do seznamu, vyberte v nabídce vlevo možnost **termín**a pak vyberte možnost **získat všechny podmínky**. 
 
-    **Termín - získat všechny termíny** rozhraní API konzoly otevře.
+    Otevře se konzola rozhraní API **Term-get all terms** .
 
-11. Do pole **listId** zadejte ID seznamu a zadejte klíč předplatného. Vyberte **Poslat**.
+11. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného. Vyberte **Poslat**.
 
-12. V poli **Obsah odpovědi** ověřte zadaná výraz.
+12. V poli **obsah odpovědi** Ověřte zadané výrazy.
 
-    ![Termín – v poli Získat obsah odpovědi na konzolu Všechny podmínky jsou uvedeny termíny, které jste zadali.](images/try-terms-list-create-4.png)
+    ![V poli termín – získat všechny podmínky obsah odpovědi konzoly je uveden seznam podmínek, které jste zadali.](images/try-terms-list-create-4.png)
  
-13. Přidejte několik dalších podmínek. Nyní, když jste vytvořili vlastní seznam termínů, zkuste [skenovat nějaký text](try-text-api.md) pomocí vlastního seznamu termínů. 
+13. Přidejte několik dalších podmínek. Teď, když jste vytvořili vlastní seznam podmínek, zkuste [zkontrolovat text](try-text-api.md) pomocí vlastního seznamu termínů. 
 
 ## <a name="delete-terms-and-lists"></a>Odstranění výrazů a seznamů
 
-Odstranění výrazu nebo seznamu je jednoduché. Pomocí rozhraní API můžete provést následující úkoly:
+Odstranění výrazu nebo seznamu je jednoduché. Pomocí tohoto rozhraní API provedete následující úlohy:
 
-- Odstranění výrazu. (**Termín - Odstranit**)
-- Odstranění všech výrazů v seznamu bez odstranění seznamu. (**Termín - Odstranit všechny podmínky**)
-- Odstranění seznamu a veškerého jeho obsahu. (**Termín Seznamy - Odstranit**)
+- Odstranění výrazu. (**Doba odstranění**)
+- Odstranění všech výrazů v seznamu bez odstranění seznamu. (**Podmínka – odstranění všech podmínek**)
+- Odstranění seznamu a veškerého jeho obsahu. (**Seznamy termínů-odstranit**)
 
-Tento příklad odstraní jeden termín.
+Tento příklad odstraní jeden výraz.
 
-1. V [odkazu rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)vyberte v levé nabídce **možnost Termín**a pak vyberte **Odstranit**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **termín**a pak vyberte **Odstranit**. 
 
-   Otevře **se termín - odstranit.**
+   Otevře se **výraz – odstranění** .
 
-2. V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Termín – odstranit výběr oblasti stránky](images/test-drive-region.png)
+   ![Vymažte výběr oblasti stránky s termínem odstranění](images/test-drive-region.png)
 
-   Otevře **se konzola Termín - odstranění** rozhraní API.
+   Otevře se konzola rozhraní API **pro odstranění termínů** .
   
-3. Do pole **listId** zadejte ID seznamu, ze kterého chcete termín odstranit. Toto ID je číslo (v našem příkladu **122),** které je vráceno v **seznamech termínů - Získat podrobnosti konzoly** pro MyList. Zadejte termín a vyberte jazyk.
+3. Do pole **listId** zadejte ID seznamu, ze kterého chcete odstranit termín. Toto ID je číslo (v našem příkladu, **122**), které se vrátí do konzoly **seznam termínů – získat podrobnosti** pro myList. Zadejte termín a vyberte jazyk.
  
-   ![Termín – odstranit parametry dotazu konzoly](images/try-terms-list-delete-1.png)
+   ![Podmínka – odstranění parametrů dotazu konzoly](images/try-terms-list-delete-1.png)
 
-4. Zadejte klíč předplatného a pak vyberte **Odeslat**.
+4. Zadejte svůj klíč předplatného a pak vyberte **Odeslat**.
 
-5. Chcete-li ověřit, zda byl termín odstraněn, použijte konzolu **Seznamy termínů – získat vše.**
+5. Chcete-li ověřit, zda byl termín odstraněn, použijte **seznam termínů – získat veškerou** konzolu.
 
-   ![Termín seznamy - Získat všechny konzole Odpověď obsah pole ukazuje, že termín je odstraněn](images/try-terms-list-delete-2.png)
+   ![Seznamy termínů – získat obsah všech odpovědí na konzolu zobrazí, že termín je odstraněný.](images/try-terms-list-delete-2.png)
  
-## <a name="change-list-information"></a>Změna informací o seznamu
+## <a name="change-list-information"></a>Změnit informace o seznamu
 
 Můžete upravit název a popis seznamu a přidat položky metadat.
 
-1. V [odkazu rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)vyberte v levé nabídce **seznamy termínů**a pak vyberte **Aktualizovat podrobnosti**. 
+1. V [referenčních informacích k rozhraní API pro správu seznamu termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f)v nabídce vlevo vyberte **seznamy termínů**a pak vyberte **aktualizovat podrobnosti**. 
 
-   Otevře se stránka **Seznamy termínů – Aktualizovat podrobnosti.**
+   Otevře se stránka **termín seznamy – podrobnosti aktualizace** .
 
-2. V **části Ovládací konzole pro testování rozhraní Open API**vyberte oblast, která nejpřesněji popisuje vaši polohu. 
+2. V případě **konzoly Open API Testing**vyberte oblast, která nejlépe popisuje vaše umístění. 
 
-   ![Seznamy termínů – výběr oblasti stránky Podrobnosti o aktualizaci](images/test-drive-region.png)
+   ![Seznamy termínů – výběr oblasti stránky s podrobnostmi aktualizace](images/test-drive-region.png)
 
-   Otevře **se konzola Termín Seznamy - Aktualizace podrobností** rozhraní API.
+   Otevře se konzola **seznam termínů – podrobnosti o aktualizaci** rozhraní API.
 
-3. Do pole **listId** zadejte ID seznamu a zadejte klíč předplatného.
+3. Do pole **listId** zadejte ID seznamu a potom zadejte svůj klíč předplatného.
 
-4. V poli **Požádat** o tělo proveďte úpravy a pak vyberte **Odeslat**.
+4. V poli **Text žádosti** proveďte úpravy a potom vyberte **Odeslat**.
 
-   ![Seznamy termínů – úpravy textu aktualizace podrobností o textu](images/try-terms-list-change-1.png)
+   ![Seznamy termínů – změny v konzole – podrobnosti o aktualizaci textu](images/try-terms-list-change-1.png)
  
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí rozhraní REST API v kódu nebo začněte s [termínem seznamy .NET rychlý start](term-lists-quickstart-dotnet.md) integrovat s vaší aplikací.
+Použijte REST API ve svém kódu nebo začněte s [termínem Seznamte se s rychlým](term-lists-quickstart-dotnet.md) startem .NET pro integraci s vaší aplikací.

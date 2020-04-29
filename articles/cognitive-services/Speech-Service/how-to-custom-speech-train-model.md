@@ -1,7 +1,7 @@
 ---
-title: Trénování modelu pro vlastní řeč - služba řeči
+title: Výukový model pro službu Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
-description: Školení modelu převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft nebo vlastní model. Model je trénován pomocí přepisů s lidským označením a souvisejícího textu.
+description: Výukový model pro převod řeči na text může zlepšit přesnost rozpoznávání pro základní model Microsoftu nebo vlastní model. Model je vyškolený pomocí přepisů a souvisejících textů v popisku.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,58 +11,58 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: a2bc39a35299f56ba52a0143ce123560bd4d88fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77137775"
 ---
-# <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro vlastní řeč
+# <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 
-Školení modelu převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je trénován pomocí přepisů s lidským označením a souvisejícího textu. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k upřesnění a trénování modelu převodu řeči na text tak, aby rozpoznal slova, fráze, zkratky, názvy a další termíny specifické pro daný produkt. Čím více datových sad v doméně zadáte (data související s tím, co uživatelé řeknou a co očekáváte, že poznáte), tím přesnější bude váš model, což vede k lepšímu rozpoznávání. Mějte na paměti, že tím, že do tréninku nanesete nesouvisející data, můžete snížit nebo poškodit přesnost vašeho modelu.
+Školení pro model převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k upřesnění a výukovém modelu převodu řeči na text pro rozpoznávání slov, frází, zkratek, názvů a dalších podmínek pro konkrétní produkt. Čím více doménových datových sad zadáte (data související s tím, co uživatelé říkají a co očekáváte), tím přesnější bude váš model, což vede k lepšímu rozpoznávání. Mějte na paměti, že díky krmení nesouvisejících dat s vaším školením můžete snížit nebo snížit přesnost modelu.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Řešení problémů s přesností pomocí školení
 
-Pokud se setkáte s problémy s rozpoznáváním modelu, může použití přepisů s lidským označením a souvisejících dat pro další školení pomoci zlepšit přesnost. Tato tabulka slouží k určení, kterou datovou sadu použít k řešení problémů:
+Pokud narazíte na problémy s rozpoznáváním pro váš model, může vám použití přepisů a souvisejících dat pro další školení pomoci zlepšit přesnost. Pomocí této tabulky můžete určit, kterou datovou sadu použít k vyřešení těchto problémů:
 
 | Případ použití | Datový typ |
 | -------- | --------- |
-| Zlepšete přesnost rozpoznávání slovní zásoby a gramatiky specifické pro dané odvětví, jako je lékařská terminologie nebo žargon IT. | Související text (věty/projevy) |
-| Definujte fonetický a zobrazený formulář slova nebo termínu, který má nestandardní výslovnost, například názvy produktů nebo zkratky. | Související text (výslovnost) |
-| Zlepšete přesnost rozpoznávání stylů mluvení, přízvuků nebo specifických zvuků na pozadí. | Audio + přepisy označené člověkem |
+| Vylepšete přesnost rozpoznávání v oboru a gramatikě specifické pro konkrétní odvětví, jako je lékařské terminologie nebo IT žargonu. | Související text (věty/projevy) |
+| Definujte fonetickou a zobrazovanou formu slova nebo termínu, který má nestandardní výslovnost, například názvy produktů nebo akronymy. | Související text (výslovnost) |
+| Vylepšete přesnost rozpoznávání pro mluvené styly, zvýraznění nebo konkrétní šum na pozadí. | Audio + přepisy s popiskem |
 
 > [!IMPORTANT]
-> Pokud jste nenahráli sadu dat, přečtěte si informace [o přípravě a testování dat](how-to-custom-speech-test-data.md). Tento dokument obsahuje pokyny pro nahrávání dat a pokyny pro vytváření vysoce kvalitních datových sad.
+> Pokud jste neodeslali datovou sadu, přečtěte si téma [Příprava a testování dat](how-to-custom-speech-test-data.md). Tento dokument poskytuje pokyny pro nahrávání dat a pokyny pro vytváření vysoce kvalitních datových sad.
 
 ## <a name="train-and-evaluate-a-model"></a>Trénování a vyhodnocení modelu
 
-Prvním krokem k trénování modelu je nahrání trénovacích dat. Pomocí [funkce Příprava a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů s lidským označením a souvisejícího textu (projevy a výslovnosti). Po nahrání trénovacích dat začněte trénování modelu podle těchto pokynů:
+Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 
-1. Přihlaste se k [portálu Vlastní řeč](https://speech.microsoft.com/customspeech).
-2. Přejděte **na > vlastní výuku řeči > řeči**.
-3. Klepněte na **položku Model vlaku**.
-4. Dále uveďte svůj trénink **název** a **popis**.
-5. V rozevírací nabídce **Scénář a Model směrného plánu** vyberte scénář, který nejlépe vyhovuje vaší doméně. Pokud si nejste jisti, který scénář zvolit, vyberte **obecné**. Základní model je výchozím bodem pro školení. Pokud nemáte předvolbu, můžete použít nejnovější.
-6. Na stránce **Vybrat trénovací data** zvolte jednu nebo více datových sad přepisů s označením člověk, které chcete použít pro trénování.
-7. Po dokončení školení můžete provést testování přesnosti na nově trénovaném modelu. Tento krok je volitelný.
-8. Chcete-li vytvořit vlastní model, vyberte **vytvořit.**
+1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+2. Přejít na **> převodu řeči na text Custom Speech > školení**.
+3. Klikněte na **výuka model**.
+4. V dalším kroku poskytněte školení **název** a **Popis**.
+5. V rozevírací nabídce **scénář a model standardních hodnot** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jisti, který scénář zvolíte, vyberte možnost **Obecné**. Základní model je výchozím bodem pro školení. Pokud nemáte předvolbu, můžete použít nejnovější.
+6. Na stránce **Vybrat školicí data** vyberte jednu nebo více zvukových a uživatelem označených datových sad, které chcete použít pro školení.
+7. Po dokončení školení se můžete rozhodnout pro provádění testování přesnosti u nově vyučeného modelu. Tento krok je volitelný.
+8. Vyberte **vytvořit** a sestavte vlastní model.
 
-Tabulka Školení zobrazí novou položku, která odpovídá tomuto nově vytvořenému modelu. V tabulce se také zobrazí stav: Zpracování, Úspěšné, Neúspěšné.
+V tabulce školení se zobrazí nová položka, která odpovídá nově vytvořenému modelu. V tabulce se zobrazí také stav: zpracování, úspěch, selhalo.
 
-## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Vyhodnocení přesnosti trénovaného modelu
+## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Vyhodnotit přesnost vyučeného modelu
 
-Data můžete zkontrolovat a vyhodnotit přesnost modelu pomocí těchto dokumentů:
+Můžete kontrolovat data a vyhodnocovat přesnost modelu pomocí těchto dokumentů:
 
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)
 - [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
 
-Pokud jste se rozhodli otestovat přesnost, je důležité vybrat akustickou datovou sadu, která se liší od té, kterou jste použili s modelem, abyste získali realistický pocit výkonu modelu.
+Pokud se rozhodnete vyzkoušet přesnost testování, je důležité vybrat akustickou datovou sadu, která se liší od ta, kterou jste použili u svého modelu, abyste získali realistickou představu o výkonu modelu.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Příprava a testování dat](how-to-custom-speech-test-data.md)
 - [Kontrola dat](how-to-custom-speech-inspect-data.md)

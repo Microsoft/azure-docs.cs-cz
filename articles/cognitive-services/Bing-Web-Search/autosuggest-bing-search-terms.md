@@ -1,7 +1,7 @@
 ---
-title: Automatické navrhování hledaných výrazů – rozhraní API pro vyhledávání na webu Bingu
+title: Automatické navrhování podmínek vyhledávání – rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Spárujte rozhraní API pro vyhledávání na webu Bing s rozhraním API automatického návrhu bingu a poskytněte uživatelům rozšířené možnosti vyhledávání.
+description: Spárovat rozhraní API Bingu pro vyhledávání na webu s rozhraní API pro automatické návrhy Bingu a poskytnout uživatelům vylepšené možnosti vyhledávání.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/03/2019
 ms.author: aahi
 ms.openlocfilehash: 0fb62966c78eb19c1daf9294efba786a267ae200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66384865"
 ---
-# <a name="autosuggest-bing-search-terms-in-your-application"></a>Automatické navrhování vyhledávacích dotazů Bing ve vaší aplikaci
+# <a name="autosuggest-bing-search-terms-in-your-application"></a>Automatické navrhování vyhledávacích podmínek Bingu v aplikaci
 
 Pokud nabízíte vyhledávací pole, do kterého může uživatel zadat hledaný termín, můžete hledání vylepšit s využitím [rozhraní API pro automatické návrhy Bingu](../bing-autosuggest/get-suggested-search-terms.md). Toto rozhraní API vrací navrhované řetězce dotazů na základě částečné shody hledaných termínů zadávaných uživatelem.
 
-Poté, co uživatel zadá hledaný termín, musí být kódován url před nastavením parametru [dotazu q.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
+Po zadání hledaného výrazu musí být adresa URL zakódovaná, než se nastaví parametr dotazu [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query) . Pokud uživatel například zadá *sailing dinghies*, nastavte parametr `q` na hodnotu `sailing+dinghies` nebo `sailing%20dinghies`.
 
-Pokud termín dotazu obsahuje pravopisnou chybu, odpověď hledání obsahuje [querycontext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) objekt. Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
+Pokud termín dotazu obsahuje pravopisnou chybu, odpověď vyhledávání zahrnuje objekt [QueryContext](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#querycontext) . Objekt zobrazí původní pravopis a opravený pravopis použitý pro vyhledávání Bingu.
 
 ```json
 "queryContext": {
@@ -33,14 +33,14 @@ Pokud termín dotazu obsahuje pravopisnou chybu, odpověď hledání obsahuje [q
 }
 ```
 
-Tyto informace můžete dát uživateli vědět, že jste změnili řetězec dotazu při zobrazení výsledků hledání.
+Tyto informace můžete použít, chcete-li uživateli upozornit, že jste při zobrazení výsledků hledání změnili jejich řetězec dotazu.
 
-![Příklad uživatelského kontextu dotazu](./media/cognitive-services-bing-web-api/bing-query-context.PNG)  
+![Příklad uživatelského rozhraní kontextu dotazu](./media/cognitive-services-bing-web-api/bing-query-context.PNG)  
 
 ## <a name="next-steps"></a>Další kroky  
 
-* Prohlédněte si ukázkové [odpovědi rozhraní API pro vyhledávání na webu Bingu](search-responses.md).  
+* Zkontrolujte ukázkové [rozhraní API Bingu pro vyhledávání na webu odpovědi](search-responses.md).  
 
 ## <a name="see-also"></a>Viz také  
 
-* [Odkaz na rozhraní API webového vyhledávání Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Odkaz na rozhraní API Bingu pro vyhledávání na webu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)

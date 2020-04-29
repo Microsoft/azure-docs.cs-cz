@@ -11,39 +11,39 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 155c88ec4766391f70701b17038b915c399d8b0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77372300"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Přihlášení k portálu LUIS
 
-Nový uživatel služby LUIS musí postupovat podle tohoto postupu:
+Nový uživatel, který má LUIS, musí provést tento postup:
 
-1. Přihlaste se k [portálu LUIS (preview),](https://preview.luis.ai)vyberte svou zemi a odsouhlaste podmínky použití. Pokud se místo toho zobrazí **moje aplikace,** prostředek LUIS již existuje a měli byste přeskočit dopředu k vytvoření aplikace.
+1. Přihlaste se k [portálu Luis (Preview)](https://preview.luis.ai), vyberte svou zemi a vyjádřete souhlas s podmínkami použití. Pokud se místo toho zobrazí **Moje aplikace** , prostředek Luis už existuje a před vytvořením aplikace byste ho měli přeskočit.
 
-1. Vyberte **Vytvořit prostředek Azure** a pak vyberte Vytvořit **vývojový prostředek, do kterých chcete přenést aplikace.**
+1. Vyberte **vytvořit prostředek Azure** a pak vyberte **vytvořit prostředek pro vytváření obsahu, do kterého chcete své aplikace migrovat.**
 
-    ![Výběr prostředku vytváření language understanding](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
+    ![Zvolit typ prostředku pro vytváření Language Understanding](../media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-1. Vyplňte podrobnosti o zdroji.
+1. Vyplňte podrobnosti prostředku.
 
-    ![Vytvoření vývojového prostředku](../media/migrate-authoring-key/choose-authoring-resource-form.png)
+    ![Vytvořit prostředek pro vytváření](../media/migrate-authoring-key/choose-authoring-resource-form.png)
 
-    Při **vytváření nového zdrojového zdroje**pro vytváření zadejte následující informace:
+    Při **vytváření nového prostředku pro vytváření obsahu**zadejte následující informace:
 
-    * **Název prostředku** – vlastní název, který zvolíte, který se používá jako součást adresy URL pro dotazy koncového bodu vytváření a předpovědi.
-    * **Tenant** – tenant, ke kterého je vaše předplatné Azure přidruženo.
-    * **Název předplatného** - předplatné, které se bude účtovat pro prostředek.
-    * **Skupina prostředků** – vlastní název skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.
-    * **Umístění** - volba umístění je založena na výběru **skupiny prostředků.**
+    * **Název prostředku** – vlastní název, který zvolíte, se používá jako součást adresy URL pro dotazy na koncový bod vytváření a předpovědi.
+    * **Tenant** – tenant, ke kterému je předplatné Azure přidružené.
+    * **Název předplatného** – předplatné, které se bude fakturovat za prostředek.
+    * **Skupina prostředků** – název vlastní skupiny prostředků, který zvolíte nebo vytvoříte. Skupiny prostředků umožňují seskupit prostředky Azure pro přístup a správu.
+    * **Umístění** – Volba umístění je založená na výběru **skupiny prostředků** .
     * **Cenová úroveň** – cenová úroveň určuje maximální transakci za sekundu a měsíc.
 
-1. Zobrazí se souhrn zdroje, který má být vytvořen. Vyberte **další**.
+1. Zobrazí se souhrn prostředku, který má být vytvořen. Vyberte **Další**.
 
-    ![Vytvoření vývojového prostředku](../media/sign-in/sign-in-confirm-key-selection.png)
+    ![Vytvořit prostředek pro vytváření](../media/sign-in/sign-in-confirm-key-selection.png)
 
-1. Potvrďte výběrem možnosti **Pokračovat**.
+1. Potvrďte výběr možnosti **pokračovat**.
 
-    ![Vytvoření vývojového prostředku](../media/sign-in/sign-in-confirm-continue.png)
+    ![Vytvořit prostředek pro vytváření](../media/sign-in/sign-in-confirm-continue.png)

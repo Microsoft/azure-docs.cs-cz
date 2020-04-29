@@ -1,7 +1,7 @@
 ---
 title: Jak vybrat vstupní zvukové zařízení pomocí sady Speech SDK
 titleSuffix: Azure Cognitive Services
-description: Informace o výběru vstupních zvukových zařízení v sadě Speech SDK (C++, C#, Python, Objective-C, Java, Java, JavaScript) získáním ID zvukových zařízení připojených k systému.
+description: Přečtěte si, jak vybrat zařízení pro vstup zvuku v sadě Speech SDK (C++, C#, Python, objektiv-C, Java, JavaScript) získáním ID zvukových zařízení připojených k systému.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109977"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Postup: Výběr vstupního zvukového zařízení pomocí sady Speech SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Postupy: Výběr zvukového vstupního zařízení pomocí sady Speech SDK
 
-Verze 1.3.0 sady Speech SDK zavádí rozhraní API pro výběr zvukového vstupu. Tento článek popisuje, jak získat ID zvukových zařízení připojených k systému. Ty pak lze použít v sadě Speech SDK `AudioConfig` konfigurací zvukového zařízení prostřednictvím objektu:
+1.3.0 verze sady Speech SDK zavádí rozhraní API pro výběr zvukového vstupu. Tento článek popisuje, jak získat ID zvukových zařízení připojených k systému. Ty pak můžete použít v sadě Speech SDK nakonfigurováním zvukového zařízení prostřednictvím `AudioConfig` objektu:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,13 +46,13 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
 > [!Note]
-> Použití mikrofonu není k dispozici pro JavaScript spuštěný v souboru Node.js
+> Používání mikrofonu není k dispozici pro JavaScript běžící v Node. js.
 
-## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>ID zvukových zařízení v aplikacích Windows pro stolní počítače
+## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>ID zvukových zařízení ve Windows pro aplikace klasické pracovní plochy
 
-Řetězce [ID koncového bodu zvukového](/windows/desktop/CoreAudio/endpoint-id-strings) zařízení [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) lze načíst z objektu v aplikacích Windows pro stolní počítače.
+[Řetězce ID koncového bodu](/windows/desktop/CoreAudio/endpoint-id-strings) zvukového zařízení lze načíst [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) z objektu ve Windows pro aplikace klasické pracovní plochy.
 
-Následující ukázka kódu ukazuje, jak ji použít k výčetu zvukových zařízení v jazyce C++:
+Následující ukázka kódu ukazuje, jak ho použít k zobrazení výčtu zvukových zařízení v jazyce C++:
 
 ```cpp
 #include <cstdio>
@@ -147,7 +147,7 @@ Exit:
 }
 ```
 
-V c# knihovna [NAudio](https://github.com/naudio/NAudio) lze použít pro přístup k rozhraní CoreAudio API a výčet zařízení takto:
+V jazyce C# se knihovna [NAudio](https://github.com/naudio/NAudio) dá použít pro přístup k rozhraní CoreAudio API a k zobrazení výčtu zařízení následujícím způsobem:
 
 ```cs
 using System;
@@ -171,13 +171,13 @@ namespace ConsoleApp
 }
 ```
 
-Ukázkové ID `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`zařízení je .
+ID ukázkového zařízení je `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}`.
 
-## <a name="audio-device-ids-on-uwp"></a>ID zvukového zařízení v UPW
+## <a name="audio-device-ids-on-uwp"></a>ID zvukových zařízení na UWP
 
-Na univerzální platformě Windows (UPW) lze získat `Id()` vstupní zařízení [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) zvuku pomocí vlastnosti odpovídajícího objektu.
+Na Univerzální platforma Windows (UWP) lze pomocí `Id()` vlastnosti odpovídajícího [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) objektu získat vstupní zvuková zařízení.
 
-Následující ukázky kódu ukazují, jak to udělat v jazyce C++ a C#:
+Následující ukázky kódu ukazují, jak to provést v jazyce C++ a C#:
 
 ```cpp
 #include <winrt/Windows.Foundation.h>
@@ -222,22 +222,22 @@ namespace helloworld {
 }
 ```
 
-Ukázkové ID `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`zařízení je .
+ID ukázkového zařízení je `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-45414013aac8}#{2eef81be-33fa-4800-9670-1cd474972c3f}`.
 
-## <a name="audio-device-ids-on-linux"></a>ID zvukových zařízení v Systému Linux
+## <a name="audio-device-ids-on-linux"></a>ID zvukových zařízení v systému Linux
 
-ID zařízení jsou vybrána pomocí standardních ID zařízení ALSA.
+ID zařízení se vyberou pomocí standardních ID zařízení ALSA.
 
-ID vstupů připojených k systému jsou obsaženy ve výstupu `arecord -L`příkazu .
-Alternativně je lze získat pomocí [knihovny ALSA C](https://www.alsa-project.org/alsa-doc/alsa-lib/).
+ID vstupů připojených k systému jsou obsažena ve výstupu příkazu `arecord -L`.
+Alternativně je lze získat pomocí [knihovny jazyka C ALSA](https://www.alsa-project.org/alsa-doc/alsa-lib/).
 
-Ukázkové ID `hw:1,0` `hw:CARD=CC,DEV=0`jsou a .
+ID vzorků jsou `hw:1,0` a `hw:CARD=CC,DEV=0`.
 
-## <a name="audio-device-ids-on-macos"></a>ID zvukového zařízení v macOS
+## <a name="audio-device-ids-on-macos"></a>ID zvukových zařízení v macOS
 
-Následující funkce implementovaná v objective-C vytvoří seznam názvů a ID zvukových zařízení připojených k Macu.
+Následující funkce implementovaná v cíli – C vytvoří seznam názvů a ID zvukových zařízení připojených k počítači Mac.
 
-Řetězec `deviceUID` se používá k identifikaci zařízení v sadě Speech SDK pro macOS.
+`deviceUID` Řetězec se používá k identifikaci zařízení v sadě Speech SDK pro MacOS.
 
 ```objc
 #import <Foundation/Foundation.h>
@@ -361,11 +361,11 @@ CFArrayRef CreateInputDeviceArray()
 }
 ```
 
-Například UID pro vestavěný mikrofon je `BuiltInMicrophoneDevice`.
+Například UID vestavěného mikrofonu je `BuiltInMicrophoneDevice`.
 
-## <a name="audio-device-ids-on-ios"></a>ID zvukového zařízení v systému iOS
+## <a name="audio-device-ids-on-ios"></a>ID zvukových zařízení v iOS
 
-Výběr zvukového zařízení pomocí sady Speech SDK není v systému iOS podporován. Aplikace používající sdk však může [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) ovlivnit směrování zvuku prostřednictvím rozhraní Framework.
+Výběr zvukového zařízení pomocí sady Speech SDK není v iOS podporován. Aplikace používající sadu SDK ale mohou ovlivnit zvukové směrování prostřednictvím [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc) rozhraní.
 
 Například instrukce
 
@@ -374,16 +374,16 @@ Například instrukce
     withOptions:AVAudioSessionCategoryOptionAllowBluetooth error:NULL];
 ```
 
-umožňuje použití náhlavní soupravy Bluetooth pro aplikaci s podporou řeči.
+Povolí použití sluchátek s mikrofonem Bluetooth pro aplikaci s podporou řeči.
 
-## <a name="audio-device-ids-in-javascript"></a>ID zvukového zařízení v JavaScriptu
+## <a name="audio-device-ids-in-javascript"></a>ID zvukových zařízení v JavaScriptu
 
-V Jazyce JavaScript [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) metoda lze použít k výčet mediálních zařízení `fromMicrophone(...)`a najít ID zařízení předat .
+V JavaScriptu lze pomocí metody [MediaDevices. enumerateDevices ()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) vytvořit výčet mediálních zařízení a vyhledat ID zařízení, které se má předat `fromMicrophone(...)`.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Prohlédněte si naše ukázky na GitHubu](https://aka.ms/csspeech/samples)
+> [Prozkoumejte naše ukázky na GitHubu](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Viz také
 

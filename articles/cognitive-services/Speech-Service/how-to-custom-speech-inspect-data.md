@@ -1,7 +1,7 @@
 ---
-title: Kontrola kvality dat pro vlastní řeč - služba řeč
+title: Kontrola kvality dat pro službu Custom Speech – Speech
 titleSuffix: Azure Cognitive Services
-description: Vlastní řeč poskytuje nástroje, které umožňují vizuálně zkontrolovat kvalitu rozpoznávání modelu porovnáním zvukových dat s odpovídajícím výsledkem rozpoznávání. Můžete přehrát nahraný zvuk a zjistit, zda je zadaný výsledek rozpoznávání správný.
+description: Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,45 +11,45 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74806075"
 ---
-# <a name="inspect-custom-speech-data"></a>Kontrola vlastních dat řeči
+# <a name="inspect-custom-speech-data"></a>Kontrola dat služby Custom Speech
 
 > [!NOTE]
-> Tato stránka předpokládá, že jste si přečetli [připravit testovací data pro vlastní řeč](how-to-custom-speech-test-data.md) a nahráli datovou sadu pro kontrolu.
+> Tato stránka předpokládá, že jste si přečetli [data pro přípravu testu pro Custom Speech](how-to-custom-speech-test-data.md) a nahráli jste datovou sadu pro kontrolu.
 
-Vlastní řeč poskytuje nástroje, které umožňují vizuálně zkontrolovat kvalitu rozpoznávání modelu porovnáním zvukových dat s odpovídajícím výsledkem rozpoznávání. Na [portálu Vlastní řeč](https://speech.microsoft.com/customspeech)můžete přehrát nahraný zvuk a zjistit, zda je zadaný výsledek rozpoznávání správný. Tento nástroj umožňuje rychle kontrolovat kvalitu základního modelu řeči na text společnosti Microsoft nebo trénovaného vlastního modelu bez nutnosti přepisovat žádná zvuková data.
+Custom Speech poskytuje nástroje, které vám umožní vizuálně zkontrolovat kvalitu rozpoznávání modelu tím, že porovná zvuková data s odpovídajícím výsledkem rozpoznávání. Z [portálu Custom Speech](https://speech.microsoft.com/customspeech)můžete přehrát nahraný zvuk a zjistit, jestli je zadaný výsledek rozpoznávání správný. Tento nástroj vám umožní rychle zkontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu, aniž by se musel přepisovat libovolná zvuková data.
 
-V tomto dokumentu se dozvíte, jak vizuálně zkontrolovat kvalitu modelu pomocí trénovacích dat, která jste dříve nahráli.
+V tomto dokumentu se dozvíte, jak vizuálně kontrolovat kvalitu modelu pomocí školicích dat, která jste předtím nahráli.
 
-Na této stránce se dozvíte, jak vizuálně zkontrolovat kvalitu základního modelu převodu řeči na text společnosti Microsoft nebo vlastního modelu, který jste trénovali. Data, která jste nahráli na kartu **Data,** použijete k testování.
+Na této stránce se dozvíte, jak vizuálně kontrolovat kvalitu základního rozpoznávání řeči a textu od Microsoftu nebo vlastního modelu, který jste si naučili. Data, která jste nahráli na kartě **data** , budete používat k testování.
 
-## <a name="create-a-test"></a>Vytvoření testu
+## <a name="create-a-test"></a>Vytvořit test
 
-Podle těchto pokynů vytvořte test:
+Při vytváření testu postupujte podle těchto pokynů:
 
-1. Přihlaste se k [portálu Vlastní řeč](https://speech.microsoft.com/customspeech).
-2. Přejděte **na možnost Převod řeči na text > vlastní testování > řeči**.
-3. Klepněte na **tlačítko Přidat test**.
-4. Vyberte **Zkontrolovat kvalitu (data pouze zvuku).** Pojmenujte test, popis a vyberte zvukovou datovou sadu.
-5. Vyberte až dva modely, které chcete otestovat.
+1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
+2. **> Custom Speech > testování**, přejděte na text na řeč.
+3. Klikněte na **Přidat test**.
+4. Vyberte možnost **kontrolovat kvalitu (jenom zvuková data)**. Dejte testu název, popis a vyberte vaši zvukovou datovou sadu.
+5. Vyberte až dva modely, které chcete testovat.
 6. Klikněte na **Vytvořit**.
 
 Po úspěšném vytvoření testu můžete porovnat modely vedle sebe.
 
 [!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
-## <a name="side-by-side-model-comparisons"></a>Porovnání modelů vedle sebe
+## <a name="side-by-side-model-comparisons"></a>Porovnání modelů souběžného sdílení
 
-Pokud je stav testu _úspěšný_, klepnutím na název testovací položky zobrazíte podrobnosti o testu. Tato stránka podrobností obsahuje seznam všech projevy v datové sadě, označující výsledky rozpoznávání dvou modelů vedle přepisu z odeslané datové sady.
+Po _úspěšném_stavu testu klikněte na název testovací položky a zobrazí se podrobnosti testu. Tato stránka podrobností obsahuje seznam všech projevy ve vaší datové sadě, které označují výsledky rozpoznávání dvou modelů společně s přepisem z odeslané datové sady.
 
-Chcete-li zkontrolovat porovnání vedle sebe, můžete přepnout různé typy chyb, včetně vkládání, odstraňování a nahrazení. Poslechem zvuku a porovnáním výsledků rozpoznávání v každém sloupci (zobrazujícím přepis s lidským označením a výsledky dvou modelů převodu řeči na text) se můžete rozhodnout, který model vyhovuje vašim potřebám a kde jsou zapotřebí vylepšení.
+Chcete-li zkontrolovat souběžné porovnání, můžete přepínat různé typy chyb včetně vložení, odstranění a nahrazování. Díky poslechu zvuku a porovnávání výsledků rozpoznávání v jednotlivých sloupcích (ukazující přepis a výsledky dvou typů řeči na text) se můžete rozhodnout, který model vyhovuje vašim potřebám a kde jsou nutná vylepšení.
 
-Kontrola testování kvality je užitečné k ověření, pokud je pro aplikaci dostatečná kvalita koncového bodu rozpoznávání řeči. Pro objektivní míru přesnosti, vyžadující přepisování zvuku, postupujte podle pokynů v [části Vyhodnotit přesnost](how-to-custom-speech-evaluate-data.md).
+Kontrola kvality testování je užitečná, pokud chcete ověřit, jestli je kvalita koncového bodu rozpoznávání řeči pro aplikaci dostačující. V případě míry přesnosti, která vyžaduje přepisu zvuk, postupujte podle pokynů uvedených v části [vyhodnocení přesnosti](how-to-custom-speech-evaluate-data.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -57,6 +57,6 @@ Kontrola testování kvality je užitečné k ověření, pokud je pro aplikaci 
 - [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
 - [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Příprava testovacích dat pro vlastní řeč](how-to-custom-speech-test-data.md)
+- [Příprava testovacích dat pro Custom Speech](how-to-custom-speech-test-data.md)

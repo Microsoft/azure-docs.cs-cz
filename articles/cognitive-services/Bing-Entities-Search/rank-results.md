@@ -1,7 +1,7 @@
 ---
 title: Použití hodnocení k zobrazení odpovědí – Vyhledávání entit Bingu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí hodnocení zobrazit odpovědi, které vrátí rozhraní API pro vyhledávání entit Bingu.
+description: Naučte se používat hodnocení k zobrazení odpovědí, které rozhraní API Bingu pro vyhledávání entit vrátí.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68423915"
 ---
-# <a name="using-ranking-to-display-entity-search-results"></a>Použití pořadí k zobrazení výsledků vyhledávání entit  
+# <a name="using-ranking-to-display-entity-search-results"></a>Použití hodnocení k zobrazení výsledků hledání entit  
 
-Každá odpověď hledání entity obsahuje odpověď [RankingResponse,](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) která určuje, jak je nutné zobrazit výsledky hledání vrácené rozhraním API pro vyhledávání entit Bingu. Výsledky v hodnocení odpovědí do pole, mainline a sidebar obsahu. Výsledek pólu je nejdůležitější nebo prominentní výsledek a měl by být zobrazen jako první. Pokud nezobrazíte zbývající výsledky v tradičním formátu hlavní a postranní čáry, je nutné poskytnout obsah hlavní čáry vyšší viditelnost než obsah postranního panelu. 
+Každá odpověď hledání entity obsahuje odpověď [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) , která určuje, jak je nutné zobrazit výsledky hledání vrácené rozhraní API Bingu pro vyhledávání entit. Skupiny odpovědí na řazení jsou výsledkem do pole, hlavní a obsahu bočního panelu. Výsledek pole je nejdůležitější nebo výrazný výsledek a měl by se zobrazit jako první. Pokud se zbývající výsledky nezobrazí v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu. 
   
-V rámci každé skupiny pole [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve které se musí obsah zobrazit. Každá položka poskytuje dva způsoby, jak identifikovat výsledek v rámci odpovědi.  
+V rámci každé skupiny pole [položek](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí vyskytovat. Každá položka poskytuje dva způsoby, jak identifikovat výsledek v odpovědi.  
  
 
 |Pole | Popis  |
 |---------|---------|
-|`answerType` a `resultIndex` | `answerType`identifikuje odpověď (entita nebo `resultIndex` místo) a identifikuje výsledek v rámci této odpovědi (například entita). Index začíná na 0.|
-|`value`    | `value`Obsahuje ID, které odpovídá ID odpovědi nebo výsledku v rámci odpovědi. Odpověď nebo výsledky obsahují ID, ale ne obojí. |
+|`answerType` a `resultIndex` | `answerType`Identifikuje odpověď (entitu nebo místo) a `resultIndex` identifikuje výsledek v rámci této odpovědi (například entity). Index začíná na 0.|
+|`value`    | `value`Obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí. |
   
-Použití `answerType` a `resultIndex` je dvoustupňový proces. Nejprve `answerType` použijte k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak `resultIndex` použijte k indexování výsledků této odpovědi, abyste získali výsledek k zobrazení. (Hodnota `answerType` je název pole v objektu [SearchResponse.)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) Pokud máte zobrazit všechny výsledky odpovědi společně, položka odpovědi pořadí neobsahuje `resultIndex` pole.
+Použití `answerType` a `resultIndex` je proces se dvěma kroky. Nejprve použijte `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijte `resultIndex` k indexování výsledků této odpovědi, aby se zobrazil výsledek. ( `answerType` Hodnota je název pole v objektu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.
 
-Pomocí ID vyžaduje, abyste spárovali ID pořadí s ID odpovědi nebo jednoho z jeho výsledků. Pokud objekt odpovědi `id` obsahuje pole, zobrazte všechny výsledky odpovědi společně. Pokud například `Entities` objekt obsahuje `id` pole, zobrazte všechny články entit společně. Pokud `Entities` objekt `id` pole neobsahuje, každá entita obsahuje `id` pole a odpověď pořadí promíchá entity s výsledky místa.  
+Použití ID vyžaduje, abyste se shodovali s ID hodnocení s ID odpovědi nebo jedním z jeho výsledků. Pokud objekt odpovědi obsahuje `id` pole, zobrazí se všechny výsledky odpovědi společně. Například pokud `Entities` objekt obsahuje `id` pole, Zobrazit všechny články dohromady. Pokud `Entities` objekt neobsahuje `id` pole, pak Každá entita obsahuje `id` pole a odpověď na řazení kombinuje entity s výsledky míst.  
   
-## <a name="ranking-response-example"></a>Příklad odpovědi na pořadí
+## <a name="ranking-response-example"></a>Příklad odpovědi na řazení
 
-Následující ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
+Následující příklad ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse).
   
 ```json
 {
@@ -67,7 +67,7 @@ Následující ukazuje příklad [RankingResponse](https://docs.microsoft.com/re
 }
 ```
 
-Na základě této odpovědi v hodnocení by se na postranním panelu zobrazovaly výsledky dvou entit souvisejících s Jimi Hendrixem.
+Na základě této odpovědi na toto řazení by postranní panel zobrazil výsledky dvou entit souvisejících s Jimi Hendrix.
 
 ## <a name="next-steps"></a>Další kroky
 

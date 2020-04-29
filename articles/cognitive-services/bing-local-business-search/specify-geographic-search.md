@@ -1,7 +1,7 @@
 ---
-title: Filtrování výsledků z rozhraní API pro vyhledávání pro místní firmy Bingu pomocí geografických hranic
+title: Použijte geografické hranice k filtrování výsledků z rozhraní API Bingu pro vyhledávání v místním obchodu.
 titleSuffix: Azure Cognitive Services
-description: V tomto článku se dozvíte, jak filtrovat výsledky hledání z rozhraní API pro vyhledávání v místní firmě Bingu.
+description: V tomto článku se dozvíte, jak filtrovat výsledky hledání z rozhraní API pro vyhledávání místních obchodních aplikací Bingu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,27 +11,27 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: 213457bc583494bbe039269b96b25990f7d0a961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "69906243"
 ---
-# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Filtrování výsledků z rozhraní API pro vyhledávání pro místní firmy Bingu pomocí geografických hranic
+# <a name="use-geographic-boundaries-to-filter-results-from-the-bing-local-business-search-api"></a>Použijte geografické hranice k filtrování výsledků z rozhraní API Bingu pro vyhledávání v místním obchodu.
 
-Rozhraní API pro vyhledávání místních společností Bingu umožňuje nastavit hranice pro `localCircularView` konkrétní `localMapView` geografickou oblast, kterou chcete prohledávat pomocí parametrů nebo dotazu. Ujistěte se, že v dotazech používáte pouze jeden parametr. 
+Rozhraní API pro místní vyhledávání Bingu umožňuje nastavit hranice pro konkrétní geografickou oblast, kterou chcete prohledávat pomocí parametrů dotazu `localCircularView` nebo. `localMapView` Nezapomeňte použít jenom jeden parametr v dotazech. 
 
-Pokud vyhledávací dotaz obsahuje explicitní geografickou polohu, rozhraní API pro místní firmu Bing upraví automaticky hranice pro výsledky hledání. Pokud je `sailing in San Diego`například hledaný `San Diego` termín , bude použito jako umístění a všechna další zadaná umístění v parametrech dotazu nebo záhlavích uživatelů budou ignorována. 
+Pokud hledaný termín obsahuje explicitní zeměpisnou polohu, rozhraní API Bingu ho automaticky použije k nastavení hranic pro výsledky hledání. Pokud je `sailing in San Diego`například hledaný termín, `San Diego` bude použit jako umístění a jakékoli jiné zadané umístění v parametrech dotazu nebo hlavičky uživatele budou ignorovány. 
 
-Pokud není ve vyhledávacím dotazu zjištěna geografická poloha a pomocí parametrů dotazu není zadáno žádné zeměpisné umístění, `X-Search-ClientIP` pokusí `X-Search-Location` se rozhraní API pro místní vyhledávání služby Bing určit umístění z požadavků nebo záhlaví. Pokud není zadána ani jedna hlavička, rozhraní API určí umístění z IP adresy klienta požadavku nebo souřadnic GPS pro mobilní zařízení.
+Pokud se v hledaném termínu nezjistí geografické umístění a v parametrech dotazu není zadané geografické umístění, rozhraní API Bingu pro vyhledávání v místním prostředí se pokusí určit umístění z hlavičky `X-Search-ClientIP` nebo `X-Search-Location` žádosti. Pokud není zadána žádná hlavička, rozhraní API určí umístění buď z IP adresy klienta žádosti, nebo souřadnic GPS pro mobilní zařízení.
 
 ## <a name="localcircularview"></a>localCircularView
 
-Parametr `localCircularView` vytvoří kruhovou zeměpisnou oblast kolem sady souřadnic zeměpisné šířky a délky definovaných poloměrem. Při použití tohoto parametru budou odpovědi z rozhraní API pro vyhledávání místních společností Bingu obsahovat pouze umístění v tomto kruhu, na rozdíl od parametru, `localMapView` který může obsahovat umístění mírně mimo oblast vyhledávání.
+`localCircularView` Parametr vytvoří kruhovou geografickou oblast kolem sady souřadnic zeměpisné šířky a délky definované poloměrem. Při použití tohoto parametru budou odpovědi z rozhraní API pro místní vyhledávání Bingu zahrnovat jenom umístění v rámci tohoto kruhu, na rozdíl `localMapView` od parametru, který může zahrnovat umístění mírně mimo oblast hledání.
 
-Chcete-li určit kruhovou zeměpisnou oblast hledání, vyberte zeměpisnou šířku a délku, která bude sloužit jako střed kruhu, a poloměr v metrech. Tento parametr pak lze připojit k řetězci `q=Restaurants&localCircularView=47.6421,-122.13715,5000`dotazu, například: .
+Chcete-li zadat kruhovou geografickou oblast hledání, vyberte zeměpisnou šířku a délku, která bude sloužit jako střed kruhu, a poloměr v metrech. Tento parametr lze následně připojit k řetězci dotazu, například: `q=Restaurants&localCircularView=47.6421,-122.13715,5000`.
 
-Kompletní dotaz:
+Úplný dotaz:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localCircularView=47.6421,-122.13715,5000&appid=0123456789ABCDEF&mkt=en-us&form=monitr
@@ -39,18 +39,18 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restauran
 
 ## <a name="localmapview"></a>localMapView
 
-Parametr `localMapView` určuje obdélníkovou zeměpisnou oblast pro vyhledávání pomocí dvou sad souřadnic pro určení jeho jihovýchodních a severozápadních rohů. Při použití tohoto parametru mohou odpovědi z rozhraní API pro vyhledávání místních společností Bingu zahrnovat umístění v rámci zadané oblasti a mimo ni, na rozdíl od parametru, `localCircularView` který zahrnuje pouze umístění v oblasti vyhledávání.
+`localMapView` Parametr určuje obdélníkovou geografickou oblast, kterou chcete vyhledat, pomocí dvou sad souřadnic pro určení jeho jihovýchodních rohů a severozápadních rohů. Při použití tohoto parametru můžou odpovědi z rozhraní API Bingu pro vyhledávání místních obchodních hledání zahrnovat umístění v rámci zadané oblasti a přímo mimo ni, `localCircularView` na rozdíl od parametru, který obsahuje jenom umístění v oblasti hledání.
 
-Chcete-li určit obdélníkovou oblast hledání, vyberte dvě sady souřadnic zeměpisné šířky a délky, které budou sloužit jako jihovýchodní a severozápadní roh hranice. Nejprve definujte jihovýchodní souřadnice, jako `localMapView=47.619987,-122.181671,47.6421,-122.13715`v následujícím příkladu: .
+Chcete-li určit obdélníkovou oblast hledání, vyberte dvě sady souřadnic zeměpisných šířky a délky, které budou sloužit jako jihovýchodní a severozápadní rohy hranice. Nezapomeňte nejprve definovat souřadnice jihovýchodů, jako v následujícím příkladu: `localMapView=47.619987,-122.181671,47.6421,-122.13715`.
 
-Kompletní dotaz:
+Úplný dotaz:
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search?q=restaurant&localMapView=47.619987,-122.181671,47.6421,-122.13715&appid=0123456789ABCDEF&mkt=en-us&form=monitr
 ```
 
 ## <a name="next-steps"></a>Další kroky
-- [Rychlý start java vyhledávání místních společností](quickstarts/local-search-java-quickstart.md)
-- [Úvodní příručka pro místní obchodní vyhledávání C#](quickstarts/local-quickstart.md)
-- [Rychlý začátek uzlu hledání místní firmy](quickstarts/local-search-node-quickstart.md)
-- [Rychlý start pythonu pro místní obchodní vyhledávání](quickstarts/local-search-python-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v jazyce Java](quickstarts/local-search-java-quickstart.md)
+- [Rychlé zprovoznění hledání v jazyce C# pro místní obchod](quickstarts/local-quickstart.md)
+- [Rychlý Start uzlu místního hledání firmy](quickstarts/local-search-node-quickstart.md)
+- [Rychlý Start pro místní vyhledávání v Pythonu](quickstarts/local-search-python-quickstart.md)

@@ -1,7 +1,7 @@
 ---
-title: Podrobnosti o dokumentu - Vlastní překladač
+title: Podrobnosti o dokumentu – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Na stránce se seznamem dokumentů se zobrazí prvních 10 dokumentů v pracovním prostoru. U každého dokumentu se zobrazí název, párování, typ, jazyk, časové razítko pro nahrávání a e-mailová adresa uživatele, který dokument nahrál.
+description: Stránka seznam dokumentů zobrazuje prvních 10 dokumentů ve vašem pracovním prostoru. U každého dokumentu se zobrazí název, párování, typ, jazyk, časové razítko nahrávání a e-mailová adresa uživatele, který dokument odeslal.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,36 +10,36 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: cf0d96414c40784210723e315da5d885d61198c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595580"
 ---
 # <a name="view-document-details"></a>Zobrazení podrobností o dokumentu
 
-Na stránce se seznamem dokumentů se zobrazí prvních 10 dokumentů v pracovním prostoru. U každého dokumentu se zobrazí název, párování, typ, jazyk, časové razítko pro nahrávání a e-mailová adresa uživatele, který dokument nahrál.
+Stránka seznam dokumentů zobrazuje prvních 10 dokumentů ve vašem pracovním prostoru. U každého dokumentu se zobrazí název, párování, typ, jazyk, časové razítko nahrávání a e-mailová adresa uživatele, který dokument odeslal.
 
-Kliknutím na jednotlivý dokument zobrazíte stránku s podrobnostmi o dokumentu. Na stránce s podrobnostmi dokumentu se zobrazí seznam extrahovaných vět z dokumentu.
+Kliknutím na jednotlivý dokument zobrazíte stránku s podrobnostmi dokumentu. Stránka s podrobnostmi dokumentu zobrazuje seznam extrahovaných vět z dokumentu.
 
-- Ve výchozím nastavení je v rozevíracím poli vybrán "zdrojový" jazyk, ale můžete přepnout a zobrazit věty v cílovém jazyce.
-- Ve výchozím nastavení se na stránce zobrazí 20 vět. Ovládací prvek stránkování můžete použít k procházení mezi stránkami.
+- Ve výchozím nastavení je v rozevíracím poli vybraná možnost "zdrojový" jazyk, ale můžete ho přepínat a zobrazit v cílovém jazyce věty.
+- ve výchozím nastavení se na stránku zobrazují 20 vět. Pomocí ovládacího prvku stránkování můžete procházet mezi stránkami.
 
-![podrobnosti dokumentu](media/how-to/how-to-view-document-details.png)
+![Podrobnosti o dokumentu](media/how-to/how-to-view-document-details.png)
 
 ## <a name="delete-a-document"></a>Odstranění dokumentu
 
-Chcete-li odstranit dokument, musí být uživatel vlastníkem pracovního prostoru. Navíc pokud dokument je používán modelem, který je v jakékoli části procesu školení nebo jakékoli části procesu nasazení, dokument nelze odstranit.
+Aby bylo možné dokument odstranit, musí být uživatel vlastníkem pracovního prostoru. Pokud se navíc dokument používá v modelu, který je v jakékoli části školicího procesu nebo v jakékoli části procesu nasazení, dokument se nedá odstranit.
 
 1. Přejít na stránku dokumentu
-2.  Najeďte na libovolný záznam dokumentu a klikněte na ikonu koše.
+2.  Najeďte myší na libovolný záznam dokumentu a klikněte na ikonu koše.
 
     ![Odstranění dokumentu](media/how-to/how-to-delete-document-1.png)
 
-3.  Potvrďte odstranit.
+3.  Potvrďte odstranění.
 
     ![Odstranit potvrzení](media/how-to/how-to-delete-document-confirm.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte [si, jak trénovat model](how-to-train-model.md).
+- Naučte se naučit [model](how-to-train-model.md).

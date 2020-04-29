@@ -1,7 +1,7 @@
 ---
-title: Co je skóre BLEU? - Vlastní Překladatel
+title: Co je BLEU skóre? – Vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: BLEU je měření rozdílů mezi strojovým překladem a lidskými referenčními překlady stejné zdrojové věty.
+description: BLEU je měření rozdílů mezi strojovým překladem a uživatelsky vytvořenými překlady odkazů stejné zdrojové věty.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.openlocfilehash: 85c4ee27a828a05c64ca6cbf84bff438535328be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647358"
 ---
-# <a name="what-is-a-bleu-score"></a>Co je skóre BLEU?
+# <a name="what-is-a-bleu-score"></a>Co je BLEU skóre?
 
-[BLEU (Dvojjazyčné hodnocení Understudy)](https://en.wikipedia.org/wiki/BLEU) je měření rozdílů mezi automatickýpřeklad a jeden nebo více člověkem vytvořených referenčních překladů stejné zdrojové věty.
+[Bleu (dvojjazyčné hodnocení destudie)](https://en.wikipedia.org/wiki/BLEU) je měření rozdílů mezi automatickým překladem a jedním nebo více uživatelsky vytvořenými překlady odkazů stejné zdrojové věty.
 
-## <a name="scoring-process"></a>Proces hodnocení
+## <a name="scoring-process"></a>Proces bodování
 
-Algoritmus BLEU porovnává po sobě jdoucí fráze automatického překladu s po sobě jdoucími frázemi, které najde v referenčním překladu, a váženě spočítá počet shod. Tyto zápasy jsou nezávislé na pozici. Vyšší stupeň shody označuje vyšší stupeň podobnosti s referenčním překladem a vyšší skóre. Srozumitelnost a gramatická správnost se neberou v úvahu.
+BLEU algoritmus porovnává po sobě jdoucí fráze automatického překladu se po sobě jdoucích frázích, které najde v překladu referencí, a vypočítává počet shod, které se váže. Tyto shody jsou nezávislé na poloze. Vyšší stupeň shody indikuje vyšší úroveň podobnosti s překladem odkazů a vyšším skóre. Intelligibility a gramatické správnosti se neberou v úvahu.
 
 ## <a name="how-bleu-works"></a>Jak BLEU funguje?
 
-BLEU síla je, že koreluje dobře s lidským úsudkem tím, že zprůměrování jednotlivých trest rozsudku chyby přes test korpusu, spíše než se snaží vymyslet přesný lidský úsudek pro každou větu.
+BLEU je v tom, že se dobře koreluje s lidským rozsudkem, a to pomocí průměrného počtu chyb v rámci zkušebních corpus, a ne při pokusu o vytvoření přesného lidského rozhodnutí pro každou větu.
 
-Rozsáhlejší diskuse o skóre BLEU je [zde](https://youtu.be/-UqDljMymMg).
+Podrobnější diskuzi o BLEU hodnoceních [najdete tady](https://youtu.be/-UqDljMymMg).
 
-Výsledky BLEU silně závisí na šíři vaší domény, konzistenci testovacích dat s daty školení a ladění a na množství dat, která máte k dispozici pro trénování. Pokud vaše modely byly trénované na úzké doméně a vaše trénovací data jsou konzistentní s testovacími daty, můžete očekávat vysoké skóre BLEU.
+Výsledky BLEU jsou silně závislé na šířce vaší domény, konzistenci testovacích dat s daty školení a optimalizace a množství dat, která máte k dispozici pro vlak. Pokud byly vaše modely vyškoleny na úzké doméně a vaše školicí data jsou v souladu s vašimi testovacími daty, můžete očekávat vysoké BLEU skóre.
 
 >[!NOTE]
->Porovnání skóre BLEU je ospravedlnitelné pouze v případě, že jsou výsledky BLEU porovnány se stejnou testovací sadou, stejným jazykovým párem a stejným motorem MT. Skóre BLEU z jiné testovací sady se musí lišit.
+>Porovnání výsledků BLEU je oprávněné jenom v případě, že se výsledky BLEU porovnávají se stejnou sadou testů, stejnou dvojici jazyků a stejným modulem MT. Skóre BLEU z jiné sady testů je vázáno na jiné.

@@ -1,7 +1,7 @@
 ---
-title: Nejčastější dotazy hlasové asistenty
+title: Nejčastější dotazy k hlasovým pomocníkům
 titleSuffix: Azure Cognitive Services
-description: Získejte odpovědi na nejčastější dotazy týkající se hlasových asistentů pomocí vlastních příkazů (náhled) nebo kanálu Přímé řeči.
+description: Získejte odpovědi na nejoblíbenější otázky týkající se hlasových asistentů pomocí vlastních příkazů (Preview) nebo přímého kanálu pro hlasový vstup.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -11,64 +11,64 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
 ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110343"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy hlasové asistenty
+# <a name="voice-assistants-frequently-asked-questions"></a>Nejčastější dotazy k hlasovým pomocníkům
 
-Pokud v tomto dokumentu nemůžete najít odpovědi na své otázky, podívejte se na [další možnosti podpory](support.md).
+Pokud nemůžete najít odpovědi na vaše otázky v tomto dokumentu, podívejte se na [Další možnosti podpory](support.md).
 
 ## <a name="general"></a>Obecné
 
-**Otázka: Co je hlasový asistent?**
+**Otázka: co je hlasový asistent?**
 
-**A:** Stejně jako Cortana, hlasový asistent je řešení, které naslouchá mluvené projevy uživatele, analyzuje obsah těchto projevy pro význam, provádí jednu nebo více akcí v reakci na záměr utterance a pak poskytuje odpověď na uživatele, který často obsahuje mluvené komponenty. Je to "voice-in, voice-out" zážitek pro interakci se systémem. autoři hlasového asistenta vytvářejí aplikaci na zařízení pomocí `DialogServiceConnector` sady Speech SDK ke komunikaci s pomocníkem vytvořeným pomocí [vlastních příkazů (Preview)](custom-commands.md) nebo kanálu Přímé řeči [řeči](direct-line-speech.md) v rozhraní Bot Framework. Tito asistenti mohou používat vlastní klíčová slova, vlastní řeč a vlastní hlas, aby poskytli prostředí přizpůsobené vaší značce nebo produktu.
+**A:** Podobně jako Cortana, hlasového asistenta je řešení, které naslouchá uživateli mluveného projevy, analyzuje obsah těchto projevy pro účely, provádí jednu nebo více akcí v reakci na záměr utterance a pak poskytuje reakci na uživatele, který často zahrnuje hlasovou komponentu. Je to "Hlasová" Hlasová prostředí pro interakci se systémem. Autoři hlasového asistenta vytvoří aplikaci na zařízení pomocí sady `DialogServiceConnector` v sadě Speech SDK ke komunikaci s pomocníkem vytvořeným pomocí [vlastních příkazů (Preview)](custom-commands.md) nebo [přímého kanálu pro hlasový vstup](direct-line-speech.md) v rozhraní bot. Tito asistenti můžou používat vlastní klíčová slova, vlastní řeč a vlastní hlas k poskytování prostředí přizpůsobeného vaší značkou nebo produktem.
 
-**Otázka: Mám používat vlastní příkazy (náhled) nebo přímou řeč? Jaký je v tom rozdíl?**
+**Otázka: mám použít vlastní příkazy (Preview) nebo Direct line Speech? Jaký je rozdíl?**
 
-**Odpověď:** [Vlastní příkazy (preview)](custom-commands.md) je sada nástrojů s nižší složitostí, které lze snadno vytvořit a hostit asistenta, který je vhodný pro scénáře dokončení úkolů. [Direct Line Řeč](direct-line-speech.md) poskytuje bohatší, sofistikovanější funkce, které mohou umožnit robustní konverzační scénáře. Další informace naleznete ve [srovnání pomocných řešení.](voice-assistants.md#choosing-an-assistant-solution)
+Odpověď **:** [vlastní příkazy (Preview)](custom-commands.md) jsou vysoce složitou sadou nástrojů, která umožňuje snadno vytvořit a hostovat pomocníka, který je vhodný pro scénáře dokončování úkolů. [Přímý line Speech](direct-line-speech.md) poskytuje bohatší a sofistikované funkce, které umožňují využít robustní scénáře konverzace. Další informace najdete v [porovnání s řešením pomocníka](voice-assistants.md#choosing-an-assistant-solution) .
 
-**Otázka: Jak začít?**
+**Otázka: Návody začít?**
 
-**A:** Nejlepší způsob, jak začít s vytvořením vlastní příkazy (Preview) aplikace nebo základní Bot Framework bot.
+**A:** Nejlepším způsobem, jak začít vytvářet vlastní příkazy (Preview) nebo základní roboty bot Framework.
 
-- [Vytvoření aplikace Vlastní příkazy (Náhled)](quickstart-custom-speech-commands-create-new.md)
-- [Vytvořte si základního robota Framework](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-- [Připojení robota ke kanálu řeči přímé čáry](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Vytvoření vlastní aplikace (Preview)](quickstart-custom-speech-commands-create-new.md)
+- [Vytvoření úrovně Basic bot Framework bot](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Připojení robota k kanálu s přímým přístupem k lince Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Ladění
 
-**Otázka: Kde je můj kanál tajemství?**
+**Otázka: kde je tajný kód mého kanálu?**
 
-**A:** Pokud jste použili verzi náhledu direct line řeči nebo čtete související dokumentaci, můžete očekávat, že najít tajný klíč na stránce registrace kanálu Direct Line řeči. V1.7 `DialogServiceConfig` factory `FromBotSecret` metoda v řeči SDK také očekává tuto hodnotu.
+**A:** Pokud jste použili verzi Preview funkce Direct line Speech nebo čtete související dokumentaci, možná budete chtít najít tajný klíč na stránce pro registraci kanálu s přímým přístupem. Tato hodnota také `DialogServiceConfig` očekává výrobní `FromBotSecret` metoda v 1.7 v sadě Speech SDK.
 
-Nejnovější verze direct line řeči zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží registraci kanálu řeči přímé čáry k prostředku řeči. Po přidružení sada V1.8 Speech SDK obsahuje metodu `BotFrameworkConfig::FromSubscription` výroby, která nakonfiguruje metodu, která nakonfiguruje `DialogServiceConnector` robota, kterého jste přidružili k předplatnému.
+Nejnovější verze funkce Direct line Speech zjednodušuje proces kontaktování robota ze zařízení. Na stránce registrace kanálu rozevírací seznam v horní části přidruží k registraci kanálu rozpoznávání řeči pomocí prostředku řeči. Po přidružení sada Speech SDK v 1.8 zahrnuje `BotFrameworkConfig::FromSubscription` výrobní metodu, která nakonfiguruje `DialogServiceConnector` tak, aby kontaktovala robota, kterou jste přidružili k vašemu předplatnému.
 
-Pokud stále migrujete klientskou aplikaci z v1.7 `DialogServiceConfig::FromBotSecret` na v1.8, může pokračovat v práci s neprázdnou, nenulovou hodnotou pro jeho tajný parametr kanálu, například předchozí tajný klíč, který jste použili. Bude jednoduše ignorována při použití odběru řeči přidružené k registraci novějšího kanálu. Vezměte prosím na vědomí, že hodnota _musí_ být non-null a non-prázdné, protože tyto jsou kontrolovány na zařízení před přidružení na straně služby je relevantní.
+Pokud stále migrujete klientskou aplikaci z verze 1.7 na verzi 1.8, `DialogServiceConfig::FromBotSecret` může i nadále fungovat s neprázdnou hodnotou, která není null, pro parametr tajného klíče kanálu, např. předchozí tajný klíč, který jste použili. Bude jednoduše ignorováno při použití předplatného pro rozpoznávání řeči přidruženého k novější registraci kanálu. Počítejte s tím, že hodnota _nesmí_ být null a neprázdná, protože je na zařízení zaškrtnutá před relevantním přidružení na straně služby.
 
-Podrobnější průvodce naleznete v [sekci výukového programu,](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) který prochází registrací kanálu.
+Podrobnější příručku najdete v [části kurzu](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) , která vás provede registrací kanálu.
 
-**Otázka: Při připojování se zobrazuje chyba 401 a nic nefunguje. Vím, že můj klíč předplatného řeči je platný. Co se děje?**
+**Otázka: zobrazí se chyba 401 při připojování a nic nefunguje. Vím, že klíč předplatného pro rozpoznávání řeči je platný. Co se děje?**
 
-**A:** Při správě předplatného na portálu Azure se ujistěte, že používáte prostředek **řeči** (Microsoft.CognitiveServicesSpeechServices, "Speech") a _ne_ prostředek **kognitivních služeb** (Microsoft.CognitiveServicesAllInOne, "Všechny kognitivní služby"). Zkontrolujte také [podporu oblasti hlasové služby pro hlasové asistenty](regions.md#voice-assistants).
+**A:** Když spravujete předplatné na Azure Portal, ujistěte se prosím, že používáte prostředek **řeči** (Microsoft. CognitiveServicesSpeechServices, "Speech"), a _ne_ prostředek **Cognitive Services** (microsoft. CognitiveServicesAllInOne, "All Cognitive Services"). Podívejte se také na [podporu pro hlasové asistenty v oblasti služby Speech](regions.md#voice-assistants).
 
-![správné předplatné pro řeč na přímé lince](media/voice-assistants/faq-supported-subscription.png "příklad kompatibilního předplatného řeči")
+![správné předplatné pro přímý line Speech](media/voice-assistants/faq-supported-subscription.png "Příklad kompatibilního předplatného pro rozpoznávání řeči")
 
-**Otázka: Dostanu uznání text `DialogServiceConnector`zpět z mého , ale vidím '1011' chyba a nic z mého bot. Proč?**
+**Otázka: mohu získat text rozpoznávání zpátky z my `DialogServiceConnector`, ale zobrazí se chyba 1011 a nic od robota. Proč?**
 
-**A:** Tato chyba označuje problém s komunikací mezi asistentem a službou hlasového asistenta.
+**A:** Tato chyba označuje problém s komunikací mezi vaším asistentem a službou hlasového asistenta.
 
-- U vlastních příkazů (preview) zajistěte, aby byla aplikace vlastní chod příkazů (Preview) publikována.
-- U funkce Direct Line Speech se ujistěte, že jste [robota připojili ke kanálu řeči přímé linky](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [přidali](https://aka.ms/botframework/addstreamingprotocolsupport) jste k botovi podporu protokolu streamování (s podporou souvisejícího webového soketu) a zkontrolujte, zda váš robot reaguje na příchozí požadavky z kanálu.
+- Pro vlastní příkazy (Preview) se ujistěte, že je publikovaná vaše aplikace Custom Commands (Preview).
+- V případě přímého vstupu na řeč se ujistěte, že jste [připojili robota k kanálu přímého řádku s přímým přístupem](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), [Přidali jsme podporu protokolu streamování](https://aka.ms/botframework/addstreamingprotocolsupport) do robotu (s příslušnou podporou webového soketu) a pak zkontrolujete, že robot reaguje na příchozí požadavky z kanálu.
 
-**Otázka: Tento kód stále nefunguje a/nebo se při použití `DialogServiceConnector`aplikace zobrazuje jiná chyba. Co mám dělat?**
+**Otázka: Tento kód stále nefunguje a/nebo se při použití `DialogServiceConnector`. zobrazuje jiná chyba. Co mám dělat?**
 
-**A:** Protokolování založené na souborech poskytuje podstatně více podrobností a může pomoci urychlit žádosti o podporu. Chcete-li tuto funkci povolit, přečtěte si postup [použití protokolování souborů](how-to-use-logging.md).
+**A:** Protokolování na základě souborů poskytuje podstatně větší podrobnosti a může pomoci zrychlit žádosti o podporu. Pokud chcete tuto funkci povolit, přečtěte si téma [Jak používat protokolování souborů](how-to-use-logging.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží](troubleshooting.md)
+- [Odstraňování potíží](troubleshooting.md)
 - [Poznámky k verzi](releasenotes.md)

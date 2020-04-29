@@ -1,5 +1,5 @@
 ---
-title: Nejčastější dotazy k převodu textu na řeč
+title: Převod textu na řeč nejčastějších dotazech
 titleSuffix: Azure Cognitive Services
 description: Získejte odpovědi na nejčastější dotazy týkající se služby Převod textu na řeč.
 services: cognitive-services
@@ -11,57 +11,57 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
 ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110505"
 ---
-# <a name="text-to-speech-frequently-asked-questions"></a>Nejčastější dotazy k převodu textu na řeč
+# <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč nejčastějších dotazech
 
-Pokud v těchto nejčastějších dotazech nemůžete najít odpovědi na své otázky, podívejte se na [další možnosti podpory](support.md).
+Pokud nemůžete najít odpovědi na vaše otázky v těchto nejčastějších dotazech, podívejte se na [Další možnosti podpory](support.md).
 
 ## <a name="general"></a>Obecné
 
-**Otázka: Jaký je rozdíl mezi standardním hlasovým modelem a vlastním hlasovým modelem?**
+**Otázka: Jaký je rozdíl mezi standardním a vlastním modelem hlasu?**
 
-**A**: Standardní hlasový model (také nazývaný _hlasové písmo_) byl trénován pomocí dat vlastněných společností Microsoft a je již nasazen v cloudu. Vlastní hlasový model můžete použít buď k přizpůsobení průměrného modelu a přenosu zabarvení a vyjádření hlasového stylu mluvčího, nebo trénování úplného nového modelu na základě trénovacích dat připravených uživatelem. Dnes, stále více a více zákazníků chce jeden-z-a-druhu, značkové hlas pro své roboty. Vlastní platforma pro vytváření hlasu je pro tuto možnost tou správnou volbou.
+Odpověď **: standardní**hlasový model (označovaný také jako _hlasový Font_) byl vyškolený pomocí dat vlastněných společností Microsoft a je již nasazen v cloudu. Pomocí vlastního modelu hlasu můžete přizpůsobit průměrný model a přenést Timbre a výraz ve stylu hlasu mluvčího nebo naučit plný a nový model založený na školicích datech, která uživatel připravil. Dnes, více a více zákazníků chceme, aby se pro své robotyy vytvářely jeden, značkový hlas. Vlastní platforma pro vytváření hlasu je správná volba pro tuto možnost.
 
-**Otázka: Kde mám začít, pokud chci použít standardní hlasový model?**
+**Otázka: kde se mám začít používat standardní hlasový model?**
 
-**A**: Více než 80 standardních hlasových modelů ve více než 45 jazycích je k dispozici prostřednictvím požadavků HTTP. Nejprve získejte [klíč předplatného](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Chcete-li volání REST na předem nasazené hlasové modely, naleznete v [tématu ROZHRANÍ REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
+**O**: k dispozici jsou více než 80 standardních hlasových modelů ve více než 45 jazycích. Nejprve získejte [klíč předplatného](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Chcete-li provést volání REST pro přednasazené hlasové modely, přečtěte si [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
-**Otázka: Pokud chci použít přizpůsobený hlasový model, je rozhraní API stejné jako rozhraní API, které se používá pro standardní hlasy?**
+**Otázka: Pokud chci použít přizpůsobený hlasový model, je rozhraní API stejné jako pro standardní hlasy?**
 
-**A**: Při vytvoření a nasazení vlastního hlasového modelu získáte jedinečný koncový bod pro váš model. Chcete-li použít hlas mluvit ve vašich aplikacích, musíte zadat koncový bod v požadavcích HTTP. Stejné funkce, které jsou k dispozici v rozhraní REST API pro službu převod textu na řeč je k dispozici pro vlastní koncový bod. Přečtěte si, jak [vytvořit a používat vlastní koncový bod](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
+Odpověď **: když se vytvoří a**nasadí vlastní hlasový model, získáte pro svůj model jedinečný koncový bod. Pokud chcete hlas ve svých aplikacích mluvit pomocí hlasu, musíte v požadavcích HTTP zadat koncový bod. K dispozici jsou stejné funkce, které jsou k dispozici ve REST API pro službu Převod textu na řeč pro váš vlastní koncový bod. Naučte se [vytvářet a používat vlastní koncový bod](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-voice-endpoint).
 
-**Otázka: Musím připravit trénovací data pro vlastní vytvoření vlastních hlasových modelů?**
+**Otázka: Potřebuji připravit školicí data a vytvořit vlastní modely hlasu sami?**
 
-**A:** Ano, musíte připravit trénovací data sami pro vlastní hlasový model.
+Odpověď **: Ano**, je nutné připravit školicí údaje sami pro vlastní model hlasu.
 
-K vytvoření přizpůsobeného hlasového modelu je vyžadována kolekce řečových dat. Tato kolekce se skládá ze sady zvukových souborů hlasových nahrávek a textového souboru přepisu každého zvukového souboru. Výsledek vašeho digitálního hlasu do značné míry závisí na kvalitě vašich tréninkových dat. Chcete-li vytvořit dobrý hlas mezi převody textu na řeč, je důležité, aby nahrávky byly pořízeny v tiché místnosti s vysoce kvalitním stojícím mikrofonem. Konzistentní objem, rychlost mluvení a řečnická hřiště, a dokonce i konzistence v expresivních manýrách řeči jsou nezbytné pro budování skvělého digitálního hlasu. Důrazně doporučujeme nahrávat hlasy v nahrávacím studiu.
+K vytvoření přizpůsobeného hlasového modelu se vyžaduje kolekce dat řeči. Tato kolekce obsahuje sadu zvukových souborů záznamů řeči a textový soubor přepisu každého zvukového souboru. Výsledek digitálního hlasu se spoléhá na kvalitu školicích dat. Aby bylo možné vytvořit dobrý hlas pro převod textu na řeč, je důležité, aby se nahrávky vytvořily v tiché místnosti s vysoce kvalitním a stálým mikrofonem. Pro sestavování skvělého digitálního hlasu jsou nezbytné konzistentní objemy, míra projevení a rozteč a dokonce i konzistence v mannerisms řeči. Důrazně doporučujeme nahrávat hlasy do aplikace recordation Studio.
 
-V současné době neposkytujeme podporu online nahrávání ani nemáme žádná doporučení nahrávacího studia. Požadavek na formát naleznete v tématu [příprava nahrávek a přepisů](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
+V současné době neposkytujeme podporu online nahrávání ani nahrávání doporučení studia. Požadavky na formát najdete v tématu [Příprava nahrávek a přepisů](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice).
 
-**Otázka: Jaké skripty mám použít k záznamu řečových dat pro vlastní hlasové školení?**
+**Otázka: Jaké skripty mám použít k nahrání dat řeči pro vlastní hlasové školení?**
 
-**A**: Neomezujeme skripty pro nahrávání hlasu. K záznamu řeči můžete použít vlastní skripty. Jen se ujistěte, že máte dostatečné fonetické pokrytí v datech řeči. Chcete-li trénovat vlastní hlas, můžete začít s malým objemem řečových dat, což může být 50 různých vět (asi 3-5 minut řeči). Čím více dat poskytnete, tím přirozenější bude váš hlas. Můžete začít trénovat plné hlasové písmo, když zadáte nahrávky více než 2000 vět (asi 3-4 hodiny řeči). Chcete-li získat vysoce kvalitní, plný hlas, musíte připravit nahrávky více než 6 000 vět (asi 8-10 hodin řeči).
+**A**Odpověď: neomezujeme skripty pro záznam hlasu. Pro nahrání řeči můžete použít vlastní skripty. Stačí se ujistit, že máte v datech řeči dostatečné pokrytí foneticky. Pro výuku vlastního hlasu můžete začít s malým objemem dat řeči, což může být 50 různých vět (asi 3-5 minut řeči). Další data, která zadáte, bude přirozený váš hlas. V případě, že zadáte nahrávky o více než 2 000 vět (asi 3-4 hodin řeči), můžete začít zajišťovat všechna hlasová písma. Abyste získali vysoce kvalitní a plný hlas, musíte připravit nahrávky o více než 6 000 vět (asi 8-10 hodin řeči).
 
-Poskytujeme další služby, které vám pomohou připravit skripty pro nahrávání. Obraťte [se na zákaznickou podporu Custom Voice](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) pro dotazy.
+Poskytujeme další služby, které vám pomůžou připravit skripty pro nahrávání. Kontaktujte [zákaznickou podporu vlastního hlasu](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) pro dotazy.
 
-**Otázka: Co když potřebuji vyšší souběžnost než výchozí hodnotu nebo co je nabízeno na portálu?**
+**Otázka: Co když potřebuji vyšší souběžnost, než je výchozí hodnota nebo co se nabízí na portálu?**
 
-**A**: Můžete vertikálně navýšit kapacitu modelu v krocích po 20 souběžných požadavků. Obraťte [se na zákaznickou podporu custom voice](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) s dotazy týkajícími se vyššíškálování.
+Odpověď **: model**můžete škálovat v přírůstcích po 20 souběžných požadavcích. Kontaktujte [zákaznickou podporu vlastního hlasu](mailto:customvoice@microsoft.com?subject=Inquiries%20about%20scripts%20generation%20for%20Custom%20Voice%20creation) pro dotazy týkající se většího škálování.
 
-**Otázka: Mohu stáhnout model a spustit jej místně?**
+**Otázka: můžu stáhnout svůj model a spustit ho místně?**
 
-**A**: Modely nelze stáhnout a spustit místně.
+**A**: modely nelze stáhnout a spustit místně.
 
-**Otázka: Jsou mé požadavky omezeny?**
+**Otázka: jsou omezeny moje požadavky?**
 
-**A**: Rozhraní REST API omezuje požadavky na 25 za 5 sekund. Podrobnosti naleznete na našich stránkách pro [text na řeč](text-to-speech.md).
+Odpověď **: REST API**omezuje požadavky na 25 za 5 sekund. Podrobnosti najdete na stránkách pro [Převod textu na řeč](text-to-speech.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Řešení potíží](troubleshooting.md)
+- [Odstraňování potíží](troubleshooting.md)
 - [Poznámky k verzi](releasenotes.md)

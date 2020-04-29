@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – rozhraní API pro kontrolu pravopisu Bingu
+title: Jazyková podpora – rozhraní API Bingu pro kontrolu pravopisu
 titleSuffix: Azure Cognitive Services
-description: Seznam přirozených jazyků podporovaných rozhraním API pro kontrolu pravopisu Bingu.
+description: Seznam přirozených jazyků, které rozhraní API Bingu pro kontrolu pravopisu podporuje.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390165"
 ---
-# <a name="language-and-region-support-for-bing-spell-check-api"></a>Jazyková a oblastová podpora rozhraní API pro kontrolu pravopisu Bingu
+# <a name="language-and-region-support-for-bing-spell-check-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro kontrolu pravopisu
 
-Tyto jazyky jsou podporovány rozhraním `spell` API pro kontrolu pravopisu Bingu (pouze v režimu).
+Tyto jazyky jsou podporovány rozhraní API Bingu pro kontrolu pravopisu (pouze v `spell` režimu).
 
-Vezměte prosím na vědomí, že `en-US`pro `mkt` práci s `Accept-Language` jiným `setLang` jazykem než , by měla být nastavena a buď nebo by měla být nastavena, jak bylo popsáno v [spell check api v7 odkaz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Počítejte s tím, že `en-US` `mkt` Pokud chcete pracovat s jiným jazykem, než, by měl být `Accept-Language` nastaven `setLang` a buď, nebo by měl být nastaven, jak byl popsán v tématu [rozhraní API pro kontrolu pravopisu v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
 | Arabština      | `ar`          |
 | Čínština (Čínská lidová republika)     | `zh-CN`          |
-| Čínština (Hongkong – zvláštní správní oblast ČLR)    | `zh-HK`          |
+| Čínština (Hongkong – zvláštní administrativní oblast)    | `zh-HK`          |
 | Čínština (Tchaj-wan)     | `zh-TW`          |
 | Dánština      | `da`          |
 | Nizozemština (Belgie)       | `nl-BE`          |
@@ -62,7 +62,7 @@ Vezměte prosím na vědomí, že `en-US`pro `mkt` práci s `Accept-Language` ji
 | Španělština (Chile)     | `es-CL`          |
 | Španělština (Mexiko)    | `es-MX`          |
 | Španělština (Španělsko)    | `es-ES`          |
-| Španělština (Spojené státy)    | `es-US`          |
+| Španělština (USA)    | `es-US`          |
 | Švédština     | `sv`          |
 | Turečtina     | `tr`          |
 

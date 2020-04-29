@@ -1,7 +1,7 @@
 ---
-title: Koncový bod rozhraní API pro vyhledávání entit Bingu
+title: Koncový bod rozhraní API Bingu pro vyhledávání entit
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro vyhledávání entit Bingu má jeden koncový bod, který vrací entity z webu na základě dotazu. Tyto výsledky hledání jsou vráceny v JSON.
+description: Rozhraní API Bingu pro vyhledávání entit má jeden koncový bod, který vrací entity z webu na základě dotazu. Tyto výsledky hledání se vrátí ve formátu JSON.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: e7f5af42d0bb0079746cc9e64b621adfebd565d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072670"
 ---
-# <a name="bing-entity-search-api-endpoint"></a>Koncový bod rozhraní API pro vyhledávání entit Bingu
+# <a name="bing-entity-search-api-endpoint"></a>rozhraní API Bingu pro vyhledávání entit koncový bod
 
 
-Rozhraní API pro vyhledávání entit Bingu má jeden koncový bod, který vrací entity z webu na základě dotazu. Tyto výsledky hledání jsou vráceny v JSON.
+Rozhraní API Bingu pro vyhledávání entit má jeden koncový bod, který vrací entity z webu na základě dotazu. Tyto výsledky hledání se vrátí ve formátu JSON.
 
-## <a name="get-entity-results-from-the-endpoint"></a>Získání výsledků entit z koncového bodu
+## <a name="get-entity-results-from-the-endpoint"></a>Získat výsledky entity z koncového bodu
 
-Chcete-li získat výsledky entity pomocí `GET` rozhraní API **Bing**, odešlete požadavek na následující koncový bod. K přizpůsobení požadavku na vyhledávání použijte [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) a [parametry dotazu.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) Požadavky na vyhledávání lze `?q=` odeslat pomocí parametru.
+Pokud chcete získat výsledky entity pomocí **rozhraní API Bingu**, `GET` odešlete požadavek na následující koncový bod. K přizpůsobení žádosti o vyhledávání použijte [záhlaví](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers) a [Parametry dotazů](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) . Žádosti o vyhledávání lze odeslat pomocí `?q=` parametru.
 
 ```cURL
  GET https://api.cognitive.microsoft.com/bing/v7.0/entities
@@ -33,8 +33,8 @@ Chcete-li získat výsledky entity pomocí `GET` rozhraní API **Bing**, odešle
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Co je rozhraní API pro vyhledávání entit Bingu?](overview.md)
+> [Co je rozhraní API Bingu pro vyhledávání entit?](overview.md)
 
 ## <a name="see-also"></a>Viz také 
 
-Další informace o záhlavích, parametrech, kódech trhu, objektech odpovědí, chybách a dalšíinformace naleznete v referenčním článku [rozhraní API pro vyhledávání entit Bingu v7.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference)
+Další informace o hlavičkách, parametrech, kódech trhu, objektech odpovědí, chybách a dalších najdete v článku referenční informace o [rozhraní API Bingu pro vyhledávání entit v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference) .

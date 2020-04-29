@@ -1,7 +1,7 @@
 ---
 title: Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o režimech kontroly pravopisu Bingu, nastavení choda a dalších informací týkajících se rozhraní API.
+description: Přečtěte si o režimech Kontrola pravopisu Bingu, nastavení a dalších informacích týkajících se rozhraní API.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: 893317b8f46415b1df540d67ebf28b65c5ba6d32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68883441"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Odesílání požadavků do rozhraní API pro kontrolu pravopisu Bingu
@@ -31,7 +31,7 @@ Doporučujeme, aby všechny požadavky pocházely ze serveru. Distribuce klíče
 
 Požadavek musí obsahovat parametr dotazu [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text), který obsahuje textový řetězec ke kontrole. Požadavek by měl obsahovat taky parametr [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt) dotazu, který identifikuje trh, ze kterého chcete obdržet výsledky, i když je tento parametr volitelný. Seznam volitelných parametrů dotazu, jako `mode`, naleznete v tématu [Parametry dotazu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters). Všechny hodnoty parametru dotazu musí mít kódování URL.  
   
-Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey). Přestože volitelné, doporučujeme také zadat následující záhlaví. Tato záhlaví pomáhají rozhraní API pro kontrolu pravopisu Bingu vracet přesnější výsledky:  
+Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey). I když volitelné, doporučujeme také zadat následující hlavičky. Tyto hlavičky pomůžou rozhraní API Bingu pro kontrolu pravopisu vrátit přesnější výsledky:  
   
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
@@ -40,15 +40,15 @@ Požadavek musí obsahovat hlavičku [Ocp-Apim-Subscription-Key](https://docs.mi
 
 Seznam všech hlaviček žádostí a odpovědí najdete v části s [hlavičkami](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
 
-Při volání rozhraní API pro kontrolu pravopisu Bingpomocí jazyka JavaScript vám integrované funkce zabezpečení v prohlížeči mohou bránit v přístupu k hodnotám těchto záhlaví.
+Při volání rozhraní API Bingu pro kontrolu pravopisu pomocí JavaScriptu vám integrované funkce zabezpečení prohlížeče můžou zabránit v přístupu k hodnotám těchto hlaviček.
 
-Chcete-li tento problém vyřešit, můžete vytvořit požadavek rozhraní API kontroly pravopisu Bingu prostřednictvím proxy serveru CORS. Odpověď z takového proxy `Access-Control-Expose-Headers` má záhlaví, které whitelists odpovědi záhlaví a zpřístupní je javascriptu.
+Pokud chcete tento problém vyřešit, můžete žádost o rozhraní API Bingu pro kontrolu pravopisu vytvořit prostřednictvím serveru proxy CORS. Odpověď z takového serveru proxy má `Access-Control-Expose-Headers` záhlaví, které obsahuje hlavičky odpovědí a zpřístupňuje je pro JavaScript.
 
-Je snadné nainstalovat proxy CORS, aby [aplikace kurzového kurzu](../tutorials/spellcheck.md) přístup k volitelné hlavičky klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Poté zadejte následující příkaz na příkazovém řádku.
+Je snadné nainstalovat proxy CORS, aby [aplikace tutorial](../tutorials/spellcheck.md) mohla získat přístup k volitelným hlavičkám klienta. Nejdřív [nainstalujte Node.js](https://nodejs.org/en/download/), pokud jste to ještě neudělali. Pak na příkazovém řádku zadejte následující příkaz.
 
     npm install -g cors-proxy-server
 
-Dále změňte koncový bod rozhraní API pro kontrolu pravopisu Bingu v souboru HTML na:
+Dále změňte koncový bod rozhraní API Bingu pro kontrolu pravopisu v souboru HTML na:
 
     http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/spellcheck/
 
@@ -56,7 +56,7 @@ Nakonec spusťte proxy server CORS pomocí tohoto příkazu:
 
     cors-proxy-server
 
-Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V rozbalitelné masce HTTP Headers pod výsledky `X-MSEdge-ClientID` hledání teď můžete zobrazit záhlaví (mimo jiné) a ověřit, že je pro každý požadavek stejný.
+Při používání ukázkové aplikace nechte příkazové okno otevřené. Zavřením okna se zastaví proxy server. V části rozbalit hlavičky HTTP pod výsledky hledání se teď můžete podívat na `X-MSEdge-ClientID` záhlaví (mimo jiné) a ověřit, jestli je pro každý požadavek stejný.
 
 ## <a name="example-api-request"></a>Příklad požadavku rozhraní API
 

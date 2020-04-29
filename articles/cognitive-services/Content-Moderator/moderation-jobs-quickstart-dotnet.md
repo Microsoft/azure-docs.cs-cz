@@ -1,7 +1,7 @@
 ---
-title: Použití úloh moderování pomocí rozhraní .NET – Moderátor obsahu
+title: Použití úloh moderování pomocí .NET-Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Pomocí sady Content Moderator .NET SDK můžete zahájit úlohy moderování obsahu mezi koncovými soubory pro image nebo textový obsah v moderátoru obsahu Azure.
+description: Pomocí sady Content Moderator .NET SDK zahajte kompletní úlohy Moderování obsahu pro obrázek nebo textový obsah ve službě Azure Content Moderator.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76294333"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Definování a použití úloh moderování (.NET)
 
-Moderování úloha slouží jako druh obálky pro funkce moderování obsahu, pracovnípostupy a recenze. Tato příručka obsahuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content Moderator SDK pro rozhraní .NET,](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) abyste mohli:
+Úloha moderování slouží jako typ obálky pro funkčnost Moderování obsahu, pracovních postupů a revizí. Tato příručka poskytuje informace a ukázky kódu, které vám pomohou začít používat [sadu Content moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) k těmto akcím:
 
 - Spuštění úlohy moderování, která vyhledá a vytvoří kontroly pro lidské moderátory
 - Získání stavu čekající kontroly
 - Sledování kontroly a získání jejího konečného stavu
-- Odeslání výsledků recenze na adresu URL zpětného volání
+- Odeslat výsledky kontroly na adresu URL zpětného volání
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo si vytvořte účet na webu [nástroje Kontrola](https://contentmoderator.cognitive.microsoft.com/) moderátora obsahu.
+- Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Kontrola, že klíč rozhraní API může volat rozhraní API pro kontroly, aby se mohla vytvořit kontrola
 
@@ -80,7 +80,7 @@ using System.Threading;
 Přidejte následující kód, abyste pro své předplatné vytvořili klienta Content Moderatoru.
 
 > [!IMPORTANT]
-> Aktualizujte pole **AzureEndpoint** a **CMSubscriptionKey** s hodnotami adresy URL koncového bodu a klíče předplatného.
+> Aktualizujte pole **AzureEndpoint** a **CMSubscriptionKey** hodnotami adresy URL koncového bodu a klíče předplatného.
 
 ```csharp
 /// <summary>

@@ -1,7 +1,7 @@
 ---
 title: Uložení ověřovacího tokenu do mezipaměti
 titleSuffix: Azure Cognitive Services
-description: Tento článek vám ukáže, jak ukládat ověřovací token do mezipaměti.
+description: V tomto článku se dozvíte, jak token ověřování ukládat do mezipaměti.
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946163"
 ---
-# <a name="how-to-cache-the-authentication-token"></a>Jak ukládat ověřovací token do mezipaměti
+# <a name="how-to-cache-the-authentication-token"></a>Jak uložit ověřovací token do mezipaměti
 
-Tento článek ukazuje, jak ukládat do mezipaměti ověřovací token za účelem zlepšení výkonu vaší aplikace.
+Tento článek ukazuje, jak uložit ověřovací token do mezipaměti za účelem zvýšení výkonu aplikace.
 
 ## <a name="using-aspnet"></a>Použití ASP.NET
 
-Importujte balíček **Microsoft.IdentityModel.Clients.ActiveDirectory** NuGet, který se používá k získání tokenu. Dále použijte následující kód k `AuthenticationResult`získání , pomocí ověřovacích hodnot, které jste získali při [vytváření prostředku Immersive Reader](./how-to-create-immersive-reader.md).
+Importujte balíček NuGet **Microsoft. IdentityModel. clients. Active** , který se používá k získání tokenu. V dalším kroku použijte následující kód k získání `AuthenticationResult`a pomocí hodnot ověřování, které jste dostali při [vytváření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md).
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-Objekt `AuthenticationResult` má `AccessToken` vlastnost, která je skutečný token, který budete používat při spouštění immersive Reader pomocí sady SDK. Má také `ExpiresOn` vlastnost, která označuje, kdy vyprší platnost tokenu. Před spuštěním immersive Reader, můžete zkontrolovat, zda platnost tokenu vypršela, a získat nový token pouze v případě, že vypršela.
+`AuthenticationResult` Objekt má `AccessToken` vlastnost, která je skutečným tokenem, který použijete při spouštění moderního ČTECÍHO zařízení pomocí sady SDK. Obsahuje také `ExpiresOn` vlastnost, která označuje, kdy vyprší platnost tokenu. Před spuštěním moderního čtecího zařízení můžete zjistit, jestli vypršela platnost tokenu, a získat nový token, jenom pokud vypršela jeho platnost.
 
-## <a name="using-nodejs"></a>Použití souboru Node.JS
+## <a name="using-nodejs"></a>Použití Node. JS
 
-Přidejte [**balíček npm požadavku**](https://www.npmjs.com/package/request) do projektu. Pomocí následujícího kódu získáte token pomocí ověřovacích hodnot, které jste získali při [vytváření prostředku immersive Reader](./how-to-create-immersive-reader.md).
+Přidejte do projektu balíček [**Request**](https://www.npmjs.com/package/request) npm. Použijte následující kód k získání tokenu pomocí hodnot ověřování, které jste dostali při [vytváření prostředku pro moderní čtečku](./how-to-create-immersive-reader.md).
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-Vlastnost `expires_on` je datum a čas, kdy vyprší platnost tokenu, vyjádřený jako počet sekund od 1. Pomocí této hodnoty můžete určit, zda platnost tokenu vypršela před pokusem o získání nového.
+`expires_on` Vlastnost je datum a čas, kdy vyprší platnost tokenu, vyjádřený jako počet sekund od 1. ledna 1970 UTC. Tuto hodnotu použijte k určení, jestli vypršela platnost tokenu, než se pokusí získat nový.
 
 ```javascript
 async function getToken() {
@@ -77,4 +77,4 @@ async function getToken() {
 
 ## <a name="next-steps"></a>Další kroky
 
-* Seznamte se s [referenční sadou Immersive Reader SDK](./reference.md)
+* Prozkoumejte [referenční materiály k sadě pro moderní čtečku](./reference.md)

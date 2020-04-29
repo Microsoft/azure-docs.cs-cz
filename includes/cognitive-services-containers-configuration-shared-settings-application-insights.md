@@ -5,17 +5,17 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 046c5c5e32c71364e1bf54551989e19eec4937e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67712557"
 ---
-Toto `ApplicationInsights` nastavení umožňuje přidat podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) do kontejneru. Application Insights poskytuje podrobné monitorování vašeho kontejneru. Můžete snadno sledovat dostupnost, výkon a využití kontejneru. Můžete také rychle identifikovat a diagnostikovat chyby v kontejneru.
+Toto `ApplicationInsights` nastavení umožňuje přidat do svého kontejneru podporu telemetrie [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) . Application Insights poskytuje podrobné monitorování vašeho kontejneru. Svůj kontejner můžete snadno monitorovat z důvodu dostupnosti, výkonu a využití. Můžete také rychle identifikovat a diagnostikovat chyby ve vašem kontejneru.
 
-Následující tabulka popisuje nastavení konfigurace podporovaná v části. `ApplicationInsights`
+Následující tabulka popisuje nastavení konfigurace podporovaná v `ApplicationInsights` části.
 
-|Požaduje se| Name (Název) | Datový typ | Popis |
+|Požaduje se| Název | Datový typ | Popis |
 |--|------|-----------|-------------|
-|Ne| `InstrumentationKey` | Řetězec | Instrumentace klíč application insights instance, do kterého je odeslána telemetrická data pro kontejner. Další informace naleznete v [tématu Application Insights for ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
+|Ne| `InstrumentationKey` | Řetězec | Klíč instrumentace instance Application Insights, do které se odesílají data telemetrie kontejneru. Další informace najdete v tématu [Application Insights pro ASP.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core). <br><br>Příklad:<br>`InstrumentationKey=123456789`|
 

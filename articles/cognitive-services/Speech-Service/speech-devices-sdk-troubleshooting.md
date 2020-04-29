@@ -1,7 +1,7 @@
 ---
-title: Poradce při potížích s sadou SDK pro rozpoznávání řeči – služba Řeč
+title: Řešení potíží se službou Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace, které vám pomohou vyřešit problémy, se kterými se můžete setkat při použití sady SDK pro zařízení pro rozpoznávání řeči.
+description: Tento článek poskytuje informace, které vám pomůžou při řešení problémů, se kterými se můžete setkat při používání sady Speech Devices SDK.
 services: cognitive-services
 author: mswellsi
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74815559"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>Řešení potíže se sadou Speech Devices SDK
 
-Tento článek obsahuje informace, které vám pomohou vyřešit problémy, se kterými se můžete setkat při použití sady SDK pro zařízení pro rozpoznávání řeči.
+Tento článek poskytuje informace, které vám pomůžou při řešení problémů, se kterými se můžete setkat při používání sady Speech Devices SDK.
 
-## <a name="certificate-failures"></a>Selhání certifikátu
+## <a name="certificate-failures"></a>Selhání certifikátů
 
-Pokud se při používání služby Řeč zobrazí selhání certifikátu, zkontrolujte, zda má vaše zařízení správné datum a čas:
+Pokud při používání služby řeči dojde k chybě certifikátu, ujistěte se, že má vaše zařízení správné datum a čas:
 
-1. Přejděte do **nastavení**. V části **Systém**vyberte **datum & času**.
+1. Přejít na **Nastavení**. V části **systém**vyberte **Datum & čas**.
 
-    ![V části Nastavení vyberte Datum & čas.](media/speech-devices-sdk/qsg-12.png)
+    ![V části nastavení vyberte datum & čas.](media/speech-devices-sdk/qsg-12.png)
 
-1. Ponechte vybranou možnost **Automatické datum & čas.** V části **Vybrat časové pásmo**vyberte aktuální časové pásmo.
+1. Ponechte vybranou možnost **automatického data & času** . V části **Vybrat časové pásmo**vyberte své aktuální časové pásmo.
 
-    ![Vybrat možnosti data a časového pásma](media/speech-devices-sdk/qsg-13.png)
+    ![Výběr možností data a času v časovém pásmu](media/speech-devices-sdk/qsg-13.png)
 
-    Když zjistíte, že čas sady pro spuštění odpovídá času v počítači, je sada pro spuštění připojena k internetu.
+    Když zjistíte, že se čas nástroje dev Kit shoduje s časem v počítači, je sada dev Kit připojená k Internetu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Kontrola poznámek k verzi](devices-sdk-release-notes.md)
+* [Přečtěte si poznámky k verzi.](devices-sdk-release-notes.md)

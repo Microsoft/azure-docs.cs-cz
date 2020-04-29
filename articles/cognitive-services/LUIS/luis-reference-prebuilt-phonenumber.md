@@ -1,7 +1,7 @@
 ---
-title: Telefonní číslo Předem sestavené entity – LUIS
+title: Předem připravené entity telefonního čísla – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje informace o předem sestavené entitě telefonního čísla v jazyce Porozumění (LUIS).
+description: Tento článek obsahuje telefonní číslo předem sestavených informací o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 4e2c8e27c6d4195252c6a5b423fa98b2a4247182
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270473"
 ---
-# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Předdefinovaná entita telefonního čísla pro aplikaci LUIS
-Subjekt `phonenumber` extrahuje různé telefonní čísla včetně kódu země. Vzhledem k tomu, že tato entita je již trénovaný, není nutné přidat příklad projevy do aplikace. Entita `phonenumber` je `en-us` podporována pouze v jazykové verzi.
+# <a name="phone-number-prebuilt-entity-for-a-luis-app"></a>Předem vytvořená entita pro aplikaci pro LUIS s telefonním číslem
+`phonenumber` Entita extrahuje celou řadu telefonních čísel včetně kódu země. Vzhledem k tomu, že je tato entita již vyškolená, nemusíte do aplikace přidat příklad projevy. `phonenumber` Entita je podporována pouze v `en-us` jazykové verzi.
 
 ## <a name="types-of-a-phone-number"></a>Typy telefonního čísla
-`Phonenumber`je spravován z úložiště GitHub [s textem pro rozpoznávání](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml)
+`Phonenumber`je spravováno z úložiště pro [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/Base-PhoneNumbers.yaml) v GitHubu.
 
-## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem připravenou entitu
+## <a name="resolution-for-this-prebuilt-entity"></a>Řešení pro tuto předem vytvořenou entitu
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `my mobile is 1 (800) 642-7676`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -41,8 +41,8 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -68,9 +68,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení entity **builtin.phonenumber.**
+Následující příklad ukazuje řešení entity **Builtin. PhoneNumber** .
 
 ```json
 "entities": [
@@ -90,6 +90,6 @@ Následující příklad ukazuje rozlišení entity **builtin.phonenumber.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Informace o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [teplotách.](luis-reference-prebuilt-temperature.md)
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [teplotních](luis-reference-prebuilt-temperature.md) entitách.

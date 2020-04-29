@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Připojení k aplikaci Vlastní příkazy pomocí sady Speech SDK – služba Řeč'
+title: 'Rychlý Start: připojení k vlastnímu příkazu aplikace pomocí sady Speech SDK – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte klientskou aplikaci sady Speech SDK s vlastními příkazy.
 services: cognitive-services
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76156773"
 ---
-# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Úvodní příručka: Připojení k aplikaci vlastních příkazů pomocí sady Speech SDK (Preview)
+# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Rychlý Start: připojení k aplikaci Custom Commands pomocí sady Speech SDK (Preview)
 
-Po vytvoření hostované aplikace vlastní příkazy, můžete začít mluvit s ním z klientského zařízení.
+Po vytvoření hostované vlastní aplikace s příkazy můžete začít mluvit z klientského zařízení.
 
-V tomto článku budete:
+V tomto článku:
 
-- Publikování aplikace vlastních příkazů a získání identifikátoru aplikace (ID aplikace)
-- Vytvoření klientské aplikace pomocí sady Speech SDK, která vám umožní mluvit s aplikací Vlastní příkazy
+- Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
+- Vytvoření klientské aplikace pomocí sady Speech SDK, která vám umožní komunikovat s aplikacemi pro vlastní příkazy
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto článku je vyžadována aplikace vlastní chod. Pokud jste ještě nevytvořili aplikaci Vlastní příkazy, můžete tak učinit v těchto předchozích rychlých startech:
+K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete to udělat v těchto předchozích rychlých startech:
 
-- [Úvodní příručka: Vytvoření vlastního příkazu (náhled)](./quickstart-custom-speech-commands-create-new.md)
-- [Úvodní příručka: Vytvoření vlastního příkazu s parametry (náhled)](./quickstart-custom-speech-commands-create-parameters.md)
+- [Rychlý Start: Vytvoření vlastního příkazu (Preview)](./quickstart-custom-speech-commands-create-new.md)
+- [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
 
 Budete také potřebovat:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klíč předplatného Azure pro hlasové služby. [Získejte jeden zdarma](get-started.md) nebo si ho vytvořte na [webu Azure Portal](https://portal.azure.com)
+- Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
 
-## <a name="optional-get-started-fast"></a>Volitelné: Rychlé zahájení
+## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
 
-Tento rychlý start krok za krokem popisuje, jak vytvořit klientskou aplikaci pro připojení k aplikaci Vlastní příkazy. Pokud dáváte přednost ponořit přímo do, kompletní, připravený ke kompilaci zdrojový kód použitý v tomto `quickstart` rychlém startu je k dispozici v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples) ve složce.
+Tento rychlý Start popisuje, krok za krokem, jak vytvořit klientskou aplikaci pro připojení k aplikaci vlastních příkazů. Pokud upřednostňujete podrobně přímo v, je kompletní zdrojový kód připravený k zkompilování použitý v tomto rychlém startu k dispozici v [ukázkách sady Speech SDK](https://aka.ms/csspeech/samples) ve `quickstart` složce.
 
-## <a name="step-1-publish-custom-commands-application"></a>Krok 1: Publikovat vlastní příkazy aplikace
+## <a name="step-1-publish-custom-commands-application"></a>Krok 1: publikování aplikace Custom Commands
 
-1. Otevřete [dříve vytvořenou aplikaci Vlastní příkazy](./quickstart-custom-speech-commands-create-new.md) a vyberte **Publikovat.**
+1. Otevřete [dříve vytvořenou aplikaci Custom Commands](./quickstart-custom-speech-commands-create-new.md) a vyberte **publikovat** .
 
    > [!div class="mx-imgBorder"]
    > ![Publikování aplikace](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. Kopírování ID aplikace z oznámení publikování pro pozdější použití
+1. Zkopírujte ID aplikace z oznámení o publikování pro pozdější použití.
 
-## <a name="step-2-create-a-visual-studio-project"></a>Krok 2: Vytvoření projektu sady Visual Studio
+## <a name="step-2-create-a-visual-studio-project"></a>Krok 2: vytvoření projektu sady Visual Studio
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
 ## <a name="step-3-add-sample-code"></a>Krok 3: Přidání ukázkového kódu
 
-V tomto kroku přidáme kód XAML, který definuje uživatelské rozhraní aplikace, a přidáme implementaci kódu C#.
+V tomto kroku přidáme kód XAML, který definuje uživatelské rozhraní aplikace, a přidáte implementaci C# kódu na pozadí.
 
 ### <a name="xaml-code"></a>Kód XAML
 
-Vytvořte uživatelské rozhraní aplikace přidáním kódu XAML.
+Vytvořte uživatelské rozhraní aplikace přidáním kódu jazyka XAML.
 
-1. V **Průzkumníku řešení**otevřete`MainPage.xaml`
+1. V **Průzkumník řešení**otevřete`MainPage.xaml`
 
-1. V zobrazení XAML návrháře nahraďte celý obsah následujícím fragmentem kódu:
+1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu:
 
    ```xml
    <Page
@@ -112,24 +112,24 @@ Vytvořte uživatelské rozhraní aplikace přidáním kódu XAML.
    </Page>
    ```
 
-Návrhové zobrazení je aktualizováno tak, aby zobrazovala uživatelské rozhraní aplikace.
+Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
-### <a name="c-code-behind-source"></a>C# kód na pozadí zdroje
+### <a name="c-code-behind-source"></a>Zdrojový kód C# – na pozadí
 
-Přidejte zdroj s kódem na pozadí tak, aby aplikace fungovala podle očekávání. Zdroj kódu na pozadí zahrnuje:
+Přidejte zdroj kódu na pozadí, aby aplikace fungovala podle očekávání. Zdroj kódu na pozadí zahrnuje:
 
-- Povinné `using` příkazy `Speech` `Speech.Dialog` pro obory názvů a
-- Jednoduchá implementace pro zajištění přístupu k mikrofonu, připojená k obslužné rutině tlačítek
-- Základní pomocníci ui pro prezentaci zpráv a chyb v aplikaci
-- Přistávací bod pro cestu inicializace kódu, který bude naplněn později
-- Pomocník pro přehrávání textu na řeč (bez podpory streamování)
-- Prázdná obslužná rutina tlačítka pro zahájení poslechu, která bude naplněna později
+- Povinné `using` příkazy pro `Speech` obory `Speech.Dialog` názvů a
+- Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
+- Základní pomocníky uživatelského rozhraní pro prezentování zpráv a chyb v aplikaci
+- Místo pro cestu inicializačního kódu, který se naplní později
+- Pomocná funkce pro přehrání textu na řeč (bez podpory streamování)
+- Prázdná obslužná rutina tlačítka pro zahájení naslouchání, které se naplní později
 
-Přidejte zdroj s kódem na pozadí následujícím způsobem:
+Přidejte zdroj kódu na pozadí následujícím způsobem:
 
-1. V **Průzkumníku řešení**otevřete zdrojový `MainPage.xaml.cs` soubor s `MainPage.xaml`kódem na pozadí (seskupený pod )
+1. V **Průzkumník řešení**otevřete zdrojový soubor `MainPage.xaml.cs` kódu na pozadí (seskupeno pod `MainPage.xaml`).
 
-1. Nahraďte obsah souboru následujícím kódem:
+1. Obsah souboru nahraďte následujícím kódem:
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -299,7 +299,7 @@ Přidejte zdroj s kódem na pozadí následujícím způsobem:
    }
    ```
 
-1. Přidejte následující kód do těla metody`InitializeDialogServiceConnector`
+1. Do těla metody přidejte následující kód`InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -314,9 +314,9 @@ Přidejte zdroj s kódem na pozadí následujícím způsobem:
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. Nahrazení řetězců `YourApplicationId`, `YourSpeechSubscriptionKey`a `YourServiceRegion` vlastními hodnotami pro aplikaci, předplatné řeči a [oblast](regions.md)
+1. Nahraďte řetězce `YourApplicationId`, `YourSpeechSubscriptionKey`a `YourServiceRegion` vlastními hodnotami vaší aplikace, předplatným řeči a [oblastí](regions.md) .
 
-1. Připomňujte následující fragment kódu na konec těla metody`InitializeDialogServiceConnector`
+1. Přidejte následující fragment kódu na konec těla metody`InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -374,7 +374,7 @@ Přidejte zdroj s kódem na pozadí následujícím způsobem:
    };
    ```
 
-1. Přidejte následující fragment kódu do těla `ListenButton_ButtonClicked` metody `MainPage` ve třídě
+1. Do těla `ListenButton_ButtonClicked` metody ve `MainPage` třídě přidejte následující fragment kódu.
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -398,24 +398,24 @@ Přidejte zdroj s kódem na pozadí následujícím způsobem:
    }
    ```
 
-1. V řádku nabídek zvolte **Uložit** > **vše,** chcete-li uložit změny.
+1. V řádku nabídek vyberte **soubor** > **Uložit vše** a uložte změny.
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-1. Na řádku nabídek zvolte **Sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavení** > sestavit**řešení** a sestavte aplikaci. Kód by se měl zkompilovat bez chyb.
 
-1. **Chcete-li** > spustit aplikaci, zvolte Ladění**spouštění ladění** (nebo stisknutím **klávesy F5).** Zobrazí se okno **Helloworld.**
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 
-   ![Ukázka aplikace virtuálníasistentky UPW v C# - rychlý start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
+   ![Ukázková aplikace virtuálního pomocníka UWP v C# – rychlý Start](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. Vyberte **povolit mikrofon**. Pokud se objeví žádost o přístupová oprávnění, vyberte **Ano**.
+1. Vyberte **Povolit mikrofon**. Pokud se zobrazí žádost o oprávnění k přístupu, vyberte **Ano**.
 
    ![Žádost o oprávnění k přístupu k mikrofonu](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. Vyberte **Talk**a mluvte anglickou frází nebo větou do mikrofonu zařízení. Vaše řeč je přenášena do kanálu Direct Line Speech a přepsána na text, který se zobrazí v okně.
+1. Vyberte **hovořit**a mluvte do mikrofonu zařízení anglickou frázi nebo větu. Váš hlas se přenáší na kanál s přímým přístupem a přepisu na text, který se zobrazí v okně.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Postup: Plnění příkazů na straně klienta pomocí sady Speech SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [Postup: Přidání ověření do parametrů vlastního příkazu (náhled)](./how-to-custom-speech-commands-validations.md)
+> [Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)](./how-to-custom-speech-commands-validations.md)

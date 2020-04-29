@@ -1,7 +1,7 @@
 ---
-title: Zarovnání slov – překladač textového rozhraní API
+title: Zarovnání slov – Translator Text API
 titleSuffix: Azure Cognitive Services
-description: Chcete-li získat informace o zarovnání, použijte metodu Translate a zahrňte volitelný parametr includeAlignment.
+description: Chcete-li získat informace o zarovnání, použijte metodu přeložit a vložte volitelný parametr includeAlignment.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,35 +12,35 @@ ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: dd4ff1e39c062910f4627973c801dc3c51f345e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837230"
 ---
-# <a name="how-to-receive-word-alignment-information"></a>Jak získat informace o zarovnání slov
+# <a name="how-to-receive-word-alignment-information"></a>Jak přijímat informace o zarovnání slov
 
 ## <a name="receiving-word-alignment-information"></a>Příjem informací o zarovnání slov
-Chcete-li získat informace o zarovnání, použijte metodu Translate a zahrňte volitelný parametr includeAlignment.
+Chcete-li získat informace o zarovnání, použijte metodu přeložit a vložte volitelný parametr includeAlignment.
 
 ## <a name="alignment-information-format"></a>Formát informací o zarovnání
-Zarovnání je vrácena jako řetězcová hodnota následujícího formátu pro každé slovo zdroje. Informace pro každé slovo jsou odděleny mezerou, včetně jazyků (skriptů) neoddělených mezerami, jako je čínština:
+Zarovnání je vráceno jako řetězcová hodnota v následujícím formátu pro každé slovo zdroje. Informace pro každé slovo jsou oddělené mezerou, včetně jazyků neoddělených mezerami (skripty), jako je například čínština:
 
-[[SourceTextStartIndex]:[SourceTextEndIndex]-[TgtTextStartIndex]:[TgtTextEndIndex]] *
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
 
-Příklad zarovnání řetězce: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+Příklad řetězce zarovnání: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
 
-Jinými slovy dvojtečka odděluje počáteční a koncový index, pomlčka odděluje jazyky a prostor odděluje slova. Jedno slovo může být zarovnáno s nulou, jedním nebo více slovy v jiném jazyce a zarovnaná slova mohou být nesouvislá. Pokud nejsou k dispozici žádné informace o zarovnání, prvek Zarovnání bude prázdný. Metoda vrátí žádnou chybu v tomto případě.
+Jinými slovy, dvojtečka odděluje počáteční a koncový index, pomlčku odděluje jazyky a mezeru odděluje slova. Jedno slovo může být zarovnáno s nula, jedním nebo více slovy v jiném jazyce a zarovnaná slova mohou být nesouvislá. Pokud nejsou k dispozici žádné informace o zarovnání, element zarovnání bude prázdný. Metoda v takovém případě nevrátí žádnou chybu.
 
 ## <a name="restrictions"></a>Omezení
-Zarovnání je vrácena pouze pro podmnožinu páry jazyků v tomto okamžiku:
-* z angličtiny do jiného jazyka;
-* z jakéhokoli jiného jazyka do angličtiny s výjimkou zjednodušené čínštiny, tradiční čínštiny a lotyštiny do angličtiny
-* z japonštiny do korejštiny nebo z korejštiny do japonštiny Neobdržíte informace o zarovnání, pokud je věta přeložena do konzerv. Příklad konzervovaného překladu je "Toto je test", "Miluji tě" a další vysokofrekvenční věty.
+Zarovnání se vrátí jenom pro podmnožinu párů jazyků v tomto bodě:
+* z angličtiny do jakéhokoli jiného jazyka;
+* z jakéhokoli jiného jazyka až po angličtinu, s výjimkou čínského zjednodušené čínštiny, tradiční čínštiny a lotyšské angličtiny
+* z japonštiny do korejštiny nebo z korejštiny do japonštiny nebudete dostávat informace o zarovnání, pokud je větu zarovnaným převodem. Příkladem překonzervovaného překladu je "Toto je test", "Miluji vás" a další věty s vysokou frekvencí.
 
 ## <a name="example"></a>Příklad
 
-Příklad JSON
+Ukázkový kód JSON
 
 ```json
 [

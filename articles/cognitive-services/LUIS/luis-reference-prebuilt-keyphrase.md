@@ -1,7 +1,7 @@
 ---
-title: Předdefinovaná entita klíčové fráze – LUIS
+title: Keyphrase předem vytvořená entita – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tento článek obsahuje klíčové fráze předem předem informace o entitě v porozumění jazykům (LUIS).
+description: Tento článek obsahuje keyphrase předem připravené informace o entitách v Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 53be1b13f1e2744e143a4be0777e3a8e3135460e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270535"
 ---
-# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>předpřipravená entita keyPhrase pro aplikaci LUIS
-KeyPhrase entita extrahuje různé klíčové fráze z utterance. Není nutné přidávat příklad projevy obsahující keyPhrase do aplikace. KeyPhrase entita je podporována v [mnoha kulturách](luis-language-support.md#languages-supported) jako součást funkcí [analýzy textu.](../text-analytics/overview.md)
+# <a name="keyphrase-prebuilt-entity-for-a-luis-app"></a>keyPhrase předem vytvořenou entitu pro aplikaci LUIS
+Entita keyPhrase extrahuje různé klíčové fráze z utterance. Do aplikace nemusíte přidávat příklad projevy obsahující keyPhrase. Entita keyPhrase je v [mnoha jazykových verzích](luis-language-support.md#languages-supported) podporována jako součást funkcí pro [analýzu textu](../text-analytics/overview.md) .
 
-## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro předem připravenou entitu keyPhrase
+## <a name="resolution-for-prebuilt-keyphrase-entity"></a>Řešení pro předem vytvořenou entitu keyPhrase
 
-Pro dotaz jsou vráceny následující objekty entity:
+Pro dotaz se vrátí následující objekty entity:
 
 `where is the educational requirements form for the development and engineering group`
 
 #### <a name="v3-response"></a>[Odpověď V3](#tab/V3)
 
-Následující JSON je `verbose` s parametrem nastaveným na `false`:
+Následující kód JSON je s `verbose` parametrem nastaveným `false`na:
 
 ```json
 "entities": {
@@ -39,8 +39,8 @@ Následující JSON je `verbose` s parametrem nastaveným na `false`:
     ]
 }
 ```
-#### <a name="v3-verbose-response"></a>[V3 podrobná odpověď](#tab/V3-verbose)
-Následující JSON je `verbose` s parametrem nastaveným na `true`:
+#### <a name="v3-verbose-response"></a>[Podrobná odpověď V3](#tab/V3-verbose)
+Následující kód JSON je s `verbose` parametrem nastaveným `true`na:
 
 ```json
 "entities": {
@@ -76,9 +76,9 @@ Následující JSON je `verbose` s parametrem nastaveným na `true`:
     }
 }
 ```
-#### <a name="v2-response"></a>[Odpověď V2](#tab/V2)
+#### <a name="v2-response"></a>[Odpověď v2](#tab/V2)
 
-Následující příklad ukazuje rozlišení entity **builtin.keyPhrase.**
+Následující příklad ukazuje řešení entity **Builtin. keyPhrase** .
 
 ```json
 "entities": [
@@ -100,6 +100,6 @@ Následující příklad ukazuje rozlišení entity **builtin.keyPhrase.**
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o [koncovém bodu predikce V3](luis-migration-api-v3.md).
+Přečtěte si další informace o [koncovém bodu předpovědi V3](luis-migration-api-v3.md).
 
-Informace o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [věkových](luis-reference-prebuilt-age.md) entitách.
+Přečtěte si o [procentech](luis-reference-prebuilt-percentage.md), [číslech](luis-reference-prebuilt-number.md)a [stáří](luis-reference-prebuilt-age.md) entit.

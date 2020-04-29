@@ -1,7 +1,7 @@
 ---
 title: Podporované typy pro rozpoznávání pojmenovaných entit
 titleSuffix: Azure Cognitive Services
-description: Informace o podporovaných typech entit najdete v rozhraní API pro analýzu textu.
+description: Přečtěte si o podporovaných typech entit v rozhraní API pro analýzu textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 02/06/2020
 ms.author: aahi
 ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77086918"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro modul y pro rozpoznávání pojmenovaných entit verze 3 (preview)
+# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro rozpoznávání pojmenovaných entit verze 3 (Preview)
 
-Rozhraní API pro analýzu textu umožňuje identifikovat a rozptýlit entity nalezené v textu. [Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předdefinovaných tříd.
+Rozhraní API pro analýzu textu poskytuje možnost identifikovat a jednoznačně určit entity nalezené v textu. [Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd.
 
 ## <a name="entity-types"></a>Typy entit
 
-Podporované typy a podtypy entit (pokud jsou použitelné) jsou uvedeny níže:
+Podporované typy entit a dílčí typy (tam, kde je k dispozici) jsou uvedeny níže:
 
 #### <a name="general"></a>[Obecné](#tab/general)
 
@@ -37,4 +37,4 @@ Podporované typy a podtypy entit (pokud jsou použitelné) jsou uvedeny níže:
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití rozpoznávání pojmenovaných entit v textové analýze](how-tos/text-analytics-how-to-entity-linking.md)
+* [Jak používat rozpoznávání pojmenovaných entit v Analýza textu](how-tos/text-analytics-how-to-entity-linking.md)

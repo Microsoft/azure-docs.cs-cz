@@ -1,7 +1,7 @@
 ---
-title: Vytváření recenzí moderování pomocí konzoly REST API – Content Moderator
+title: Vytvoření kontrol moderování pomocí konzoly REST API – Content Moderator
 titleSuffix: Azure Cognitive Services
-description: Pomocí rozhraní API pro kontrolu obsahu Azure můžete vytvářet grafické nebo textové recenze pro lidské moderování.
+description: Pomocí rozhraní API služby Azure Content Moderator prověřit rozhraní API můžete vytvářet Image nebo textové recenze pro moderování lidí.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72757145"
 ---
 # <a name="create-human-reviews-rest"></a>Vytvořit lidské recenze (REST)
 
-[Recenze](./review-api.md#reviews) ukládat a zobrazovat obsah pro lidské moderátory posoudit. Když uživatel dokončí kontrolu, výsledky jsou odeslány do zadaného koncového bodu zpětného volání. V této příručce se dozvíte, jak nastavit recenze pomocí revizní ho rozhraní REST API prostřednictvím konzoly rozhraní API. Jakmile porozumíte struktuře rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s rest.
+[Kontroluje](./review-api.md#reviews) ukládání a zobrazování obsahu pro Moderátoři pro lidské moderování k vyhodnocení. Když uživatel dokončí revizi, výsledky se odešlou do zadaného koncového bodu zpětného volání. V této příručce se dozvíte, jak nastavit recenze pomocí rozhraní API pro kontrolu REST prostřednictvím konzoly API. Jakmile pochopíte strukturu rozhraní API, můžete tato volání snadno přenést na libovolnou platformu kompatibilní s REST.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Přihlaste se nebo si vytvořte účet na webu [nástroje Kontrola](https://contentmoderator.cognitive.microsoft.com/) moderátora obsahu.
+- Přihlaste se nebo vytvořte účet na webu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) Content moderator.
 
-## <a name="create-a-review"></a>Vytvoření recenze
+## <a name="create-a-review"></a>Vytvořit recenzi
 
-Chcete-li vytvořit recenzi, přejděte na stránku **[Recenze – vytvoření](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** referenční stránky rozhraní API a vyberte tlačítko pro oblast klíče (najdete ji v adrese URL koncového bodu na stránce Přihlašovací **údaje** [nástroje Revize).](https://contentmoderator.cognitive.microsoft.com/) Tím se spustí konzola rozhraní API, kde můžete snadno vytvořit a spustit volání rozhraní REST API.
+Chcete-li vytvořit revizi, klikněte na stránku **[recenze – vytvořit](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** rozhraní API a vyberte tlačítko pro vaši oblast klíče (Toto můžete najít v adrese URL koncového bodu na stránce s **přihlašovacími údaji** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/)). Spustí se konzola rozhraní API, kde můžete snadno sestavit a spustit REST API volání.
 
-![Recenze – výběr oblasti](images/test-drive-region.png)
+![Revize – získat výběr oblasti](images/test-drive-region.png)
 
-### <a name="enter-rest-call-parameters"></a>Zadat parametry volání REST
+### <a name="enter-rest-call-parameters"></a>Zadejte parametry volání REST
 
-Zadejte hodnoty pro **teamName**a **Ocp-Apim-Subscription-Key**:
+Zadejte hodnoty pro **Členové týmu**a **OCP-APIM-Subscription-Key**:
 
-- **TeamName**: ID týmu, které jste vytvořili při nastavování účtu [nástroje revize](https://contentmoderator.cognitive.microsoft.com/) (najdete v poli **Id** na obrazovce Pověření nástroje pro kontrolu).
-- **Ocp-Apim-Subscription-Key**: Klíč moderátora obsahu. Najdete ji na kartě **Nastavení** [nástroje Revize](https://contentmoderator.cognitive.microsoft.com).
+- ID **týmu**: ID týmu, které jste vytvořili při nastavování účtu [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com/) (najdete ho v poli **ID** na obrazovce s přihlašovacími údaji nástroje pro kontrolu).
+- **OCP-APIM-Subscription-Key**: váš Content moderator klíč. Najdete ho na kartě **Nastavení** [Nástroje pro kontrolu](https://contentmoderator.cognitive.microsoft.com).
 
-### <a name="enter-a-review-definition"></a>Zadejte definici recenze.
+### <a name="enter-a-review-definition"></a>Zadejte definici revize.
 
-Chcete-li zadat požadavek JSON s následujícími poli, upravte pole **Tělo požadavku:**
+Upravte pole **Text žádosti** , aby se ZADAL požadavek JSON s následujícími poli:
 
-- **Metadata**: Vlastní dvojice klíč-hodnota, které mají být vráceny do koncového bodu zpětného volání. Pokud je klíčem krátký kód definovaný v [nástroji revize](https://contentmoderator.cognitive.microsoft.com), zobrazí se jako značka.
-- **Obsah**: V případě obsahu obrázku a videa se jedná o řetězec URL odkazující na obsah. Pro textový obsah se jedná o skutečný textový řetězec.
-- **ContentId**: Řetězec vlastního identifikátoru. Tento řetězec je předán do rozhraní API a vrácena prostřednictvím zpětného volání. Je užitečné pro připojování vnitřníidentifikátory nebo metadata s výsledky úlohy moderování.
-- **CallbackEndpoint**: (Volitelné) Adresa URL pro příjem informací o zpětném volání po dokončení recenze.
+- **Metadata**: vlastní páry klíč-hodnota, které se mají vrátit do koncového bodu zpětného volání. Pokud je klíč krátkým kódem, který je definován v [nástroji pro revizi](https://contentmoderator.cognitive.microsoft.com), zobrazí se jako značka.
+- **Obsah**: v případě obrázku a obsahu videa se jedná o řetězec adresy URL odkazující na obsah. V případě textového obsahu je to skutečný textový řetězec.
+- ID **obsahu: vlastní**řetězec identifikátoru. Tento řetězec je předán rozhraní API a vrácen prostřednictvím zpětného volání. Je vhodný pro přidružení interních identifikátorů nebo metadat k výsledkům úlohy moderování.
+- **CallbackEndpoint**: (volitelné) adresa URL pro příjem informací o zpětném volání po dokončení revize.
 
-Výchozí tělo požadavku zobrazuje příklady různých typů recenzí, které můžete vytvořit:
+Výchozí text požadavku ukazuje příklady různých typů revizí, které můžete vytvořit:
 
 ```json
 [Image]
@@ -127,29 +127,29 @@ Výchozí tělo požadavku zobrazuje příklady různých typů recenzí, které
 ]
 ```
 
-### <a name="submit-your-request"></a>Odešlete svůj požadavek
+### <a name="submit-your-request"></a>Odeslat žádost
   
-Vyberte **Poslat**. Pokud je operace úspěšná, `200 OK` **je stav odpověď** a v poli Obsah **odpovědi** se zobrazí ID kontroly. Zkopírujte toto ID, které se použije v následujících krocích.
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí ID revize. Zkopírujte toto ID, které chcete použít v následujících krocích.
 
-![Recenze – pole Vytvořit obsah odpovědi konzoly zobrazuje ID recenze.](images/test-drive-review-2.PNG)
+![Revize – pole vytvořit obsah odpovědi konzoly zobrazí ID revize.](images/test-drive-review-2.PNG)
 
-### <a name="examine-the-new-review"></a>Prozkoumat nový přezkum
+### <a name="examine-the-new-review"></a>Prozkoumejte novou kontrolu
 
-V [nástroji revize](https://contentmoderator.cognitive.microsoft.com)vyberte **Zkontrolovat** > **textové**/**video** **obrázku**/(v závislosti na použitém obsahu). Obsah, který jste nahráli, by se měl zobrazit a připravit se na lidskou kontrolu.
+V [nástroji pro revize](https://contentmoderator.cognitive.microsoft.com)vyberte **zkontrolovat** > **video** **text**/**Obrázek**/(v závislosti na obsahu, který jste použili). Obsah, který jste nahráli, by měl být připravený k lidské kontrole.
 
-![Zkontrolujte obrázek nástroje fotbalového míče](images/test-drive-review-5.PNG)
+![Obrázek nástroje pro kontrolu fotbalového míče](images/test-drive-review-5.PNG)
 
-## <a name="get-review-details"></a>Získat podrobnosti o recenzích
+## <a name="get-review-details"></a>Získat podrobnosti o kontrole
 
-Chcete-li načíst podrobnosti o existující recenzi, přejděte na stránku [recenze – získat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) referenční kartu API a vyberte tlačítko pro vaši oblast (oblast, ve které je váš klíč spravován).
+Pokud chcete načíst podrobnosti o existující revizi, klikněte na stránku [recenze – získat](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) rozhraní API a vyberte tlačítko pro vaši oblast (oblast, ve které je klíč spravovaný).
 
-![Pracovní postup – výběr oblasti](images/test-drive-region.png)
+![Pracovní postup – získat výběr oblasti](images/test-drive-region.png)
 
-Zadejte parametry volání REST jako ve výše uvedené části. V tomto kroku **reviewId** je jedinečný řetězec ID, který jste obdrželi při vytváření recenze.
+Zadejte parametry volání REST jako v předchozí části. Pro tento krok je **reviewId** jedinečným řetězcem ID, který jste obdrželi při vytváření revize.
 
-![Recenze – vytvoření konzoly Získat výsledky](images/test-drive-review-3.PNG)
+![Kontrola – vytvoření výsledků získání konzoly](images/test-drive-review-3.PNG)
   
-Vyberte **Poslat**. Pokud je operace úspěšná, `200 OK` **je stav Odpověď** a v poli Obsah **odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, například následující:
+Vyberte **Poslat**. Pokud je operace úspěšná, **stav odpovědi** je `200 OK`a v poli **obsah odpovědi** se zobrazí podrobnosti o kontrole ve formátu JSON, jako je například následující:
 
 ```json
 {  
@@ -184,12 +184,12 @@ Vyberte **Poslat**. Pokud je operace úspěšná, `200 OK` **je stav Odpověď**
 }
 ```
 
-V odpovědi si poznamenejte následující pole:
+Poznamenejte si následující pole v odpovědi:
 
-- **status**
-- **reviewerResultTags**: Zobrazí se, pokud byly některé značky ručně přidány týmem pro kontrolu člověka (zobrazeno pole **createdBy).**
-- **Metadata**: Zobrazí značky, které byly původně přidány do recenze, než tým pro lidské recenze provedl změny.
+- **stav**
+- **reviewerResultTags**: Tato položka se zobrazí, pokud byly některé značky přidány pomocí týmu pro lidské revize (zobrazuje se pole **CreatedBy** ).
+- **metadata**: zobrazuje značky, které byly původně přidány do revize, před provedením změny v týmu pro lidské revize.
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste se naučili, jak vytvořit recenze moderování obsahu pomocí rozhraní REST API. Dále integrujte recenze do scénáře moderování od konce, jako je například kurz [moderování elektronického obchodování.](./ecommerce-retail-catalog-moderation.md)
+V této příručce jste zjistili, jak pomocí REST API vytvořit recenze Moderování obsahu. Dále Integrujte recenze do kompletního scénáře moderování, jako je například kurz pro [moderování elektronického obchodování](./ecommerce-retail-catalog-moderation.md) .

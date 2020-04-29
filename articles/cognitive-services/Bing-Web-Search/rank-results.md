@@ -1,7 +1,7 @@
 ---
-title: Jak používat hodnocení k zobrazení výsledků hledání - Rozhraní API pro vyhledávání na webu Bingu
+title: Použití hodnocení k zobrazení výsledků hledání – rozhraní API Bingu pro vyhledávání na webu
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí hodnocení zobrazit výsledky hledání z rozhraní API pro vyhledávání na webu Bingu.
+description: Naučte se používat hodnocení k zobrazení výsledků hledání z rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -12,29 +12,29 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390124"
 ---
-# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Jak pomocí hodnocení zobrazit výsledky rozhraní API pro vyhledávání na webu Bingu  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Jak používat hodnocení k zobrazení výsledků rozhraní API Bingu pro vyhledávání na webu  
 
-Každá odpověď hledání obsahuje odpověď [RankingResponse,](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) která určuje, jak je nutné zobrazit výsledky hledání. Výsledky skupin odpovědí v hodnocení podle obsahu hlavní linie a obsahu postranního panelu pro tradiční stránku s výsledky vyhledávání. Pokud nezobrazíte výsledky v tradičním formátu hlavní čáry a postranního panelu, je nutné zadat obsah hlavní čáry vyšší viditelnost než obsah postranního panelu.  
+Každá odpověď na hledání zahrnuje odpověď [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse) , která určuje, jak se má zobrazit výsledky hledání. Reakce na hodnocení seskupuje výsledky podle obsahu hlavní a obsahu bočního panelu pro tradiční stránku výsledků hledání. Pokud výsledky nezobrazíte v tradičním formátu hlavní a postranního panelu, musíte poskytnout obsah hlavní větší viditelnost než obsah bočního panelu.  
 
-V rámci každé skupiny (hlavní nebo postranní panel) pole [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve které se musí obsah zobrazit. Každá položka poskytuje následující dva způsoby, jak identifikovat výsledek v rámci odpovědi.  
+V rámci každé skupiny (hlavní nebo postranní panel) pole [položky](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) identifikuje pořadí, ve kterém se obsah musí objevit. Každá položka poskytuje následující dva způsoby, jak identifikovat výsledek v odpovědi.  
 
--   `answerType`a `resultIndex` – `answerType` Pole identifikuje odpověď (například webovou stránku nebo zprávy) a `resultIndex` identifikuje výsledek v rámci odpovědi (například zpravodajský článek). Index je založen na nule.  
+-   `answerType`a `resultIndex` – `answerType` pole identifikuje odpověď (například webovou stránku nebo novinky) a `resultIndex` identifikuje výsledek v odpovědi (například v článku News). Index je založený na nule.  
 
--   `value`— `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Odpověď nebo výsledky obsahují ID, ale ne obojí.  
+-   `value`– `value` Pole obsahuje ID, které odpovídá ID odpovědi nebo výsledku v odpovědi. Buď odpověď, nebo výsledky obsahují ID, ale ne obojí.  
 
-Použití ID je jednodušší, protože stačí spárovat ID pořadí s ID odpovědi nebo jeden z jeho výsledků. Pokud objekt odpovědi `id` obsahuje pole, zobrazte všechny výsledky odpovědi společně. Pokud například `News` objekt obsahuje `id` pole, zobrazte všechny zpravodajské články společně. Pokud `News` objekt neobsahuje `id` pole, pak každý zpravodajský `id` článek obsahuje pole a odpověď pořadí kombinuje zpravodajské články s výsledky z jiných odpovědí.  
+Použití ID se zjednodušuje, protože stačí pouze porovnat ID hodnocení s ID odpovědi nebo jedním z jeho výsledků. Pokud objekt odpovědi obsahuje `id` pole, zobrazí se všechny výsledky odpovědi společně. Například pokud `News` objekt obsahuje `id` pole, zobrazí se všechny články ve zprávách dohromady. Pokud `News` objekt neobsahuje `id` pole, pak jednotlivé příspěvky obsahují `id` pole a odpověď na řazení kombinuje články s výsledky z jiných odpovědí.  
 
-Použití `answerType` a `resultIndex` je trochu složitější. Slouží `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Potom slouží `resultIndex` k indexování výsledků odpovědi získat výsledek k zobrazení. (Hodnota `answerType` je název pole v objektu [SearchResponse.)](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) Pokud máte zobrazit všechny výsledky odpovědi společně, položka odpovědi pořadí neobsahuje `resultIndex` pole.  
+Použití `answerType` a `resultIndex` je trochu složitější. Použijete `answerType` k identifikaci odpovědi, která obsahuje výsledky k zobrazení. Pak použijete `resultIndex` k indexování výsledků odpovědi a získáte tak výsledek zobrazení. ( `answerType` Hodnota je název pole v objektu [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) .) Pokud chcete zobrazit všechny výsledky odpovědi společně, položka odpovědi na řazení neobsahuje `resultIndex` pole.  
 
-## <a name="ranking-response-example"></a>Příklad odpovědi na pořadí
+## <a name="ranking-response-example"></a>Příklad odpovědi na řazení
 
-Následující ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Vzhledem k tomu, `id` že webová odpověď neobsahuje pole, zobrazíte všechny webové stránky `id` jednotlivě na základě pořadí (každá webová stránka obsahuje pole). A protože obrázky, videa a související `id` odpovědi na vyhledávání obsahují pole, zobrazíte výsledky každé z těchto odpovědí společně na základě pořadí.
+Následující příklad ukazuje příklad [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankingresponse). Vzhledem k tomu, že webová odpověď neobsahuje `id` pole, měli byste všechny webové stránky zobrazit jednotlivě podle hodnocení (Každá webová stránka obsahuje `id` pole). A vzhledem k tomu, že obrázky, videa a související dotazy hledání obsahují `id` pole, měli byste zobrazit výsledky každé z těchto odpovědí společně na základě hodnocení.
 
 ```json
 {  
@@ -205,23 +205,23 @@ Následující ukazuje příklad [RankingResponse](https://docs.microsoft.com/re
 }  
 ```  
 
-Na základě této odpovědi hodnocení by hlavní linie zobrazovala následující výsledky vyhledávání:  
+V závislosti na této odpovědi na řazení by hlavní zobrazoval následující výsledky hledání:  
 
--   První výsledek webové stránky
--   Všechny obrázky  
+-   Výsledek první webové stránky
+-   Všechny Image  
 -   Výsledky druhé a třetí webové stránky  
 -   Všechna videa  
--   Výsledky 4., 5.  
+-   Výsledky na čtvrté, 5 a šest webových stránek  
 
-A postranní panel by zobrazoval následující výsledky hledání:  
+A postranní panel zobrazí následující výsledky hledání:  
 
--   Všechna související vyhledávání  
+-   Všechna související hledání  
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o propagaci nehodnocených výsledků naleznete v [tématu Propagace odpovědí, které nejsou hodnoceny](./filter-answers.md#promoting-answers-that-are-not-ranked).
+Informace o podpoře neseřazených výsledků najdete v tématu [propagace odpovědí, které nejsou seřazené](./filter-answers.md#promoting-answers-that-are-not-ranked).
 
-Informace o omezení počtu hodnocených odpovědí v odpovědi naleznete v [tématu Omezení počtu odpovědí v odpovědi](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
+Informace o omezení počtu odpovědí seřazených v odpovědi najdete v tématu [omezení počtu odpovědí v odpovědi](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
 
-Příklad jazyka C#, který k zobrazení výsledků používá hodnocení, naleznete v [tématu C# ranking tutorial](./csharp-ranking-tutorial.md).
+Příklad jazyka C#, který používá hodnocení k zobrazení výsledků, naleznete v tématu [kurz pro jazyk c#](./csharp-ranking-tutorial.md).

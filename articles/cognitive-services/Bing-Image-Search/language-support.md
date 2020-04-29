@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora – rozhraní API pro vyhledávání obrázků bingem
+title: Jazyková podpora – rozhraní API Bingu pro vyhledávání obrázků
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, které země nebo oblasti a jazyky jsou podporovány rozhraním API pro vyhledávání obrázků Bingu.
+description: Zjistěte, které země nebo oblasti a jazyky podporuje rozhraní API Bingu pro vyhledávání obrázků.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68881926"
 ---
-# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Jazyková a oblastová podpora rozhraní API pro vyhledávání obrázků Bingu
+# <a name="language-and-region-support-for-the-bing-image-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání obrázků
 
-Rozhraní API pro vyhledávání obrázků Bingu podporuje více než tři desítky zemí nebo oblastí, mnoho z nich s více než jedním jazykem. Určení země nebo oblasti s dotazem slouží především k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho výsledky mohou obsahovat odkazy na Bing a tyto odkazy mohou lokalizovat uživatelské prostředí Bing podle zadané země nebo oblasti nebo jazyk.
+Rozhraní API Bingu pro vyhledávání obrázků podporuje více než tři desítkové země nebo oblasti, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem slouží hlavně k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho můžou výsledky obsahovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle zadaných zemí nebo oblastí nebo jazyka.
 
-Chcete-li určit zemi nebo oblast `mkt` a jazyk, nastavte parametr (tržní) dotaz na kód z níže uvedené tabulky **Trhy.** Trh specifikuje jak zemi nebo oblast, tak jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
+Pokud chcete zadat zemi nebo oblast a jazyk, nastavte parametr `mkt` dotazu (na trhu) na kód z tabulky **trhy** níže. Tento trh určuje zemi nebo oblast i jazyk. Pokud uživatel upřednostňuje zobrazení textu v jiném jazyce, nastavte `setLang` parametr dotazu na příslušný kód jazyka.
 
-Případně můžete zadat zemi nebo oblast `cc` pomocí parametru dotazu. Pokud zadáte zemi nebo oblast, musíte také zadat jeden `Accept-Language` nebo více kódů jazyka pomocí hlavičky HTTP. Podporované jazyky se liší podle země nebo oblasti; jsou uvedeny pro každou zemi nebo oblast v tabulce Trhy.
+Případně můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí hlavičky `Accept-Language` http. Podporované jazyky se liší podle země nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce trhy.
 
 > [!NOTE]
-> Rozhraní API pro populární obrázky v současné době podporuje pouze následující trhy:
-> - en-US (Angličtina, Spojené státy americké)
-> - cs-CA (angličtina, Kanada)
-> - en-AU (anglicky, Austrálie)
+> Rozhraní API pro vývojové obrázky aktuálně podporuje jenom tyto trhy:
+> - EN-US (angličtina, USA)
+> - en-CA (angličtina, Kanada)
+> - EN-AU (angličtina, Austrálie)
 > - zh-CN (čínština, Čína)
 
-## <a name="countriesregions"></a>Země/oblasti
+## <a name="countriesregions"></a>Země nebo oblasti
 
 |Země|kód|
 |-------|----|
@@ -76,47 +76,47 @@ Případně můžete zadat zemi nebo oblast `cc` pomocí parametru dotazu. Pokud
 
 ## <a name="markets"></a>Trhy
 
-|Země|Jazyk|Tržní kód|
+|Země|Jazyk|Kód trhu|
 |-------|--------|-----------|
-|Argentina|Španělština|es-AR|
-|Austrálie|Angličtina|en-AU|
+|Argentina|Španělština|ES-AR|
+|Austrálie|Angličtina|EN-AU|
 |Rakousko|Němčina|de-AT|
-|Belgie|Nizozemština|nl-BE|
-|Belgie|Francouzština|fr-BE|
+|Belgie|Nizozemština|NL|
+|Belgie|Francouzština|fr – bude|
 |Brazílie|Portugalština|pt-BR|
 |Kanada|Angličtina|en-CA|
-|Kanada|Francouzština|fr-CA|
-|Chile|Španělština|es-CL|
+|Kanada|Francouzština|fr – CA|
+|Chile|Španělština|ES-CL|
 |Dánsko|Dánština|da-DK|
 |Finsko|Finština|fi-FI|
 |Francie|Francouzština|fr-FR|
 |Německo|Němčina|de-DE|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh-HK|
+|Hongkong – zvláštní správní oblast|Tradiční čínština|zh – HK|
 |Indie|Angličtina|en-IN|
-|Indonésie|Angličtina|en-ID|
+|Indonésie|Angličtina|EN-ID|
 |Itálie|Italština|it-IT|
 |Japonsko|Japonština|ja-JP|
 |Jižní Korea|Korejština|ko-KR|
-|Malajsie|Angličtina|en-MY|
-|Mexiko|Španělština|es-MX|
+|Malajsie|Angličtina|EN – MY|
+|Mexiko|Španělština|ES – MX|
 |Nizozemsko|Nizozemština|nl-NL|
-|Nový Zéland|Angličtina|en-NZ|
+|Nový Zéland|Angličtina|EN-NZ|
 |Čína|Chinese|zh-CN|
 |Polsko|Polština|pl-PL|
 |Portugalsko|Portugalština|pt-PT|
-|Filipíny|Angličtina|en-PH|
+|Filipíny|Angličtina|EN-PH|
 |Rusko|Ruština|ru-RU|
 |Saúdská Arábie|Arabština|ar-SA|
-|Jižní Afrika|Angličtina|en-ZA|
+|Jižní Afrika|Angličtina|EN-ZA|
 |Španělsko|Španělština|es-ES|
 |Švédsko|Švédština|sv-SE|
-|Švýcarsko|Francouzština|fr-CH|
+|Švýcarsko|Francouzština|fr – CH|
 |Švýcarsko|Němčina|de-CH|
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Turecko|Turečtina|tr-TR|
-|Spojené království|Angličtina|en-CZ|
+|Spojené království|Angličtina|en-GB|
 |Spojené státy|Angličtina|cs-CZ|
-|Spojené státy|Španělština|es-USA|
+|Spojené státy|Španělština|ES – US|
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o koncových bodech vyhledávání zpráv Bingu naleznete v [tématu News Image Search API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).
+Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní API pro novinky vyhledávání obrázků v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

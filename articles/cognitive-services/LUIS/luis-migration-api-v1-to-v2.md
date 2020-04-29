@@ -1,7 +1,7 @@
 ---
-title: migrace rozhraní API v1 až v2
+title: Migrace V1 na v2 API
 titleSuffix: Azure Cognitive Services
-description: Koncový bod verze 1 a vytváření rozhraní API pro porozumění jazykům jsou zastaralé. V této příručce můžete pochopit, jak migrovat do koncového bodu verze 2 a vytvářet úložiště API.
+description: Koncové body verze 1 a vytváření Language Understanding API jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na koncový bod verze 2 a vytváření rozhraní API.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,38 +12,38 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 2f67bf0951ef8928297c71e8fc9f924cf05c63f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68932691"
 ---
-# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API v1 až v2 pro aplikace LUIS
-[Koncový bod](https://aka.ms/v1-endpoint-api-docs) verze 1 a [vytváření](https://aka.ms/v1-authoring-api-docs) api jsou zastaralé. V této příručce můžete pochopit, jak migrovat do [koncového bodu](https://go.microsoft.com/fwlink/?linkid=2092356) verze 2 a [vytvářet](https://go.microsoft.com/fwlink/?linkid=2092087) úložiště API. 
+# <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Průvodce migrací rozhraní API V1 na v2 pro aplikace LUIS
+[Koncový bod](https://aka.ms/v1-endpoint-api-docs) verze 1 a rozhraní API pro [vytváření obsahu](https://aka.ms/v1-authoring-api-docs) jsou zastaralé. Tento průvodce vám pomůže pochopit, jak migrovat na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) verze 2 a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
 
 ## <a name="new-azure-regions"></a>Nové oblasti Azure
-Služba LUIS má nové [oblasti](https://aka.ms/LUIS-regions) pro lana API LUIS. Služba LUIS poskytuje jiný portál pro skupiny oblastí. Aplikace musí být vytvořena ve stejné oblasti, ve které očekáváte dotaz. Aplikace nemigrují oblasti automaticky. Exportujete aplikaci z jedné oblasti a importujete ji do jiné, aby byla dostupná v nové oblasti.
+LUIS má nové [oblasti](https://aka.ms/LUIS-regions) , které jsou k dispozici pro rozhraní Luis API. LUIS poskytuje pro skupiny oblastí jiný portál. Aplikace musí být vytvořená ve stejné oblasti, kterou očekáváte dotazovat. Aplikace nemigrují automaticky oblasti. Aplikaci exportujete z jedné oblasti a pak ji naimportujete do jiné, aby byla dostupná v nové oblasti.
 
-## <a name="authoring-route-changes"></a>Vytváření změn trasy
-Vývojová trasa rozhraní API se změnila z použití **prog** trasy na pomocí trasy **rozhraní API.**
+## <a name="authoring-route-changes"></a>Vytváření změn tras
+Trasa rozhraní API pro vytváření obsahu se změnila z použití **programové** trasy na používání trasy **rozhraní API** .
 
 
 | version | trasa |
 |--|--|
-|1|/luis/v1.0/**prog**/apps|
-|2|/luis/**api**/v2.0/apps|
+|1|/Luis/v1.0/**/Apps**|
+|2|**rozhraní/Luis/API**/v2.0/Apps|
 
 
-## <a name="endpoint-route-changes"></a>Změny trasy koncového bodu
-Rozhraní API koncového bodu má nové parametry řetězce dotazu, stejně jako jinou odpověď. Pokud je podrobný příznak true, všechny záměry, bez ohledu na skóre, jsou vráceny v poli s názvem záměry, kromě topScoringIntent.
+## <a name="endpoint-route-changes"></a>Změny směrování koncových bodů
+Rozhraní API koncového bodu má nové parametry řetězce dotazu i jinou odpověď. Pokud má příznak verbose hodnotu true, všechny záměry bez ohledu na skóre jsou vráceny v poli s názvem záměry kromě topScoringIntent.
 
-| version | Trasa GET |
+| version | ZÍSKAT trasu |
 |--|--|
-|1|/luis/v1/application?ID={appId}&q={q}|
-|2|/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]|
+|1|/Luis/v1/Application? ID = {appId} &q = {q}|
+|2|/luis/v2.0/apps/{appId}? q = {q} [&timezoneOffset] [&verbose] [&kontrola pravopisu] [&fázování] [&Bing-check-Subscription-Subscription-Key] [&log]|
 
 
-odpověď na úspěch koncového bodu v1:
+V1 odpověď na úspěšný koncový bod:
 ```json
 {
   "odata.metadata":"https://dialogice.cloudapp.net/odata/$metadata#domain","value":[
@@ -54,7 +54,7 @@ odpověď na úspěch koncového bodu v1:
 }
 ```
 
-odpověď na úspěch koncového bodu v2:
+odpověď na úspěšnost koncového bodu v2:
 ```json
 {
   "query": "forward to frank 30 dollars through HSBC",
@@ -104,71 +104,71 @@ odpověď na úspěch koncového bodu v2:
 }
 ```
 
-## <a name="key-management-no-longer-in-api"></a>Správa klíčů již v rozhraní API
-Klíčová řešení API koncového bodu předplatného jsou zastaralé, vrací 410 GONE.
+## <a name="key-management-no-longer-in-api"></a>Správa klíčů už v rozhraní API
+Rozhraní API klíčů koncového bodu předplatného jsou zastaralá a vrátila 410.
 
 | version | trasa |
 |--|--|
 |1|/luis/v1.0/prog/subscriptions|
 |1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-[Klíče koncového bodu](luis-how-to-azure-subscription.md) Azure se generují na webu Azure Portal. Klíč přiřadíte aplikaci LUIS na stránce **[Publikovat.](luis-how-to-azure-subscription.md)** Není nutné znát skutečnou hodnotu klíče. Služba LUIS používá název předplatného k přiřazení. 
+[Klíče koncového bodu](luis-how-to-azure-subscription.md) Azure se generují v Azure Portal. Klíč přiřadíte aplikaci LUIS na stránce **[publikovat](luis-how-to-azure-subscription.md)** . Nemusíte znát skutečnou hodnotu klíče. LUIS pomocí názvu předplatného provádí přiřazení. 
 
-## <a name="new-versioning-route"></a>Nová trasa správy verzí
-Model v2 je nyní obsažen ve [verzi](luis-how-to-manage-versions.md). Název verze je 10 znaků v trase. Výchozí verze je "0.1".
+## <a name="new-versioning-route"></a>Nová trasa verze
+Model v2 je teď obsažený ve [verzi](luis-how-to-manage-versions.md). V trase je název verze 10 znaků. Výchozí verze je "0,1".
 
 | version | trasa |
 |--|--|
-|1|/luis/v1.0/**prog**/apps/{appId}/entities|
-|2|/luis/**api**/v2.0/apps/{appId}/**verze**/{versionId}/entities|
+|1|/Luis/v1.0/**/Apps/{appId}/Entities**|
+|2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/Entities|
 
-## <a name="metadata-renamed"></a>Metadata přejmenována
-Několik api, které vracejí metadata LUIS mají nové názvy.
+## <a name="metadata-renamed"></a>Metadata byla přejmenována
+Několik rozhraní API, které vrací metadata LUIS, mají nové názvy.
 
 | název trasy v1 | název trasy v2 |
 |--|--|
-|Aplikace PersonalAssistantApps |Asistenti|
-|aplikační kultury|jazykové verze|
-|aplikační domény|Domény|
-|applicationusagescenarios|scénáře použití|
+|PersonalAssistantApps |asistenti|
+|applicationcultures|jazykové verze|
+|applicationdomains|doménu|
+|applicationusagescenarios|usagescenarios|
 
 
 ## <a name="sample-renamed-to-suggest"></a>"Ukázka" přejmenována na "navrhnout"
-Služba LUIS navrhuje projevy z existující [projevy koncového bodu,](luis-how-to-review-endpoint-utterances.md) které mohou vylepšit model. V předchozí verzi byla tato verze **pojmenována ukázka**. V nové verzi se název změní z ukázky **navrhnout**. To se nazývá **[revize koncový bod projevy](luis-how-to-review-endpoint-utterances.md)** na webu LUIS.
+LUIS navrhuje projevy z existujícího [koncového bodu projevy](luis-how-to-review-endpoint-utterances.md) , který může model vylepšit. V předchozí verzi se jednalo o název **Sample**. V nové verzi se název změní z ukázky na **navrhnout**. To se označuje jako **[Kontrola projevyového bodu](luis-how-to-review-endpoint-utterances.md)** na webu Luis.
 
 | version | trasa |
 |--|--|
-|1|/luis/v1.0/**prog**/apps/{appId}/entities/{entityId}/**ukázka**|
-|1|/luis/v1.0/**prog**/apps/{appId}/intents/{intentId}/**ukázka**|
-|2|/luis/**api**/v2.0/apps/{appId}/ verze /{versionId}/entities/{entityId}/ suggest /v2.0/apps/{appId}/**versions**/{versionId}/entities/{entityId}/ suggest /luis/ api /v2.0/apps/{appId}/ versions /{versionId}/entities/{entityId}/**suggest /luis/ api** /v2|
-|2|/luis/**api**/v2.0/apps/{appId}/ verze /{versionId}/intents/{intentId}/ suggest /luis/ api /v2.0/apps/{appId}/**versions**/{versionId}/intents/{intentId}/ suggest /luis/ api /v2.0/apps/{appId}/ versions /{versionId}/intents/{intentId}/**suggest /luis/**|
+|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/Entities/{EntityId}/**sample**|
+|1|Ukázka **/Luis/v1.0/** auto/Apps/{appId}/intents/{intentId}/**sample**|
+|2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/Entities/{EntityId}/–**Návrh**|
+|2|/Luis/**API**/v2.0/Apps/{appId}/**verze**/{versionId}/intents/{intentId}/–**Návrh**|
 
 
-## <a name="create-app-from-prebuilt-domains"></a>Vytvoření aplikace z předem vytvořených domén
-[Předdefinované domény](luis-how-to-use-prebuilt-domains.md) poskytují předdefinovaný model domény. Předem sestavené domény umožňují rychle vyvinout aplikaci LUIS pro běžné domény. Toto rozhraní API umožňuje vytvořit novou aplikaci založenou na předem vytvořené doméně. Odpověď je nové appID.
+## <a name="create-app-from-prebuilt-domains"></a>Vytvoření aplikace z předem připravených domén
+Předem [připravené domény](luis-how-to-use-prebuilt-domains.md) poskytují předdefinovaný doménový model. Předem připravené domény umožňují rychle vyvíjet aplikace LUIS pro běžné domény. Toto rozhraní API umožňuje vytvořit novou aplikaci založenou na předem sestavené doméně. Odpověď je nový appID.
 
-|v2 trasa|Sloveso|
+|V2 Route|operace|
 |--|--|
-|/luis/api/v2.0/apps/customprebuiltdomains /luis/api/v2.0/apps/customprebuiltdomains /luis/api/v2.0/apps/customprebuiltdomains /luis  |získat, poštou|
+|/luis/api/v2.0/apps/customprebuiltdomains  |získat, zveřejnit|
 |/luis/api/v2.0/apps/customprebuiltdomains/{culture}  |get|
 
-## <a name="importing-1x-app-into-2x"></a>Import aplikace 1.x do aplikace 2.x
-Exportované aplikace 1.x JSON má některé oblasti, které je třeba změnit před importem do [LUIS][LUIS] 2.0. 
+## <a name="importing-1x-app-into-2x"></a>Importování aplikace 1. x do 2. x
+Exportovaný formát JSON aplikace 1. x obsahuje některé oblasti, které je třeba před importem do [LUIS][LUIS] 2,0 změnit. 
 
 ### <a name="prebuilt-entities"></a>Předem připravené entity 
-Předem vytvořené entity se [změnily.](luis-prebuilt-entities.md) Ujistěte se, že používáte předem sestavené entity V2. To zahrnuje použití [datetimeV2](luis-reference-prebuilt-datetimev2.md), namísto datetime. 
+[Předem připravené entity](luis-prebuilt-entities.md) se změnily. Ujistěte se, že používáte předem připravené Entity v2. To zahrnuje použití [datetimeV2](luis-reference-prebuilt-datetimev2.md)místo data a času. 
 
 ### <a name="actions"></a>Akce
-Vlastnost akce již není platná. Mělo by to být prázdné 
+Vlastnost Actions již není platná. Měla by být prázdná. 
 
-### <a name="labeled-utterances"></a>Popisované projevy
-V1 povoleno popisované projevy zahrnout mezery na začátku nebo na konci slova nebo fráze. Odstranil mezery. 
+### <a name="labeled-utterances"></a>Projevy s popiskem
+V1 s názvem projevy, který obsahuje mezery na začátku nebo na konci slova nebo fráze. Odeberou se mezery. 
 
 ## <a name="common-reasons-for-http-response-status-codes"></a>Běžné důvody pro stavové kódy odpovědi HTTP
-Viz [Kódy odpovědí rozhraní LUIS API](luis-reference-response-codes.md).
+Viz [kódy odpovědí rozhraní API pro Luis](luis-reference-response-codes.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí dokumentace rozhraní API v2 aktualizovat existující volání REST na [koncový bod SLUŽBY](https://go.microsoft.com/fwlink/?linkid=2092356) LUIS a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
+Pomocí dokumentace k rozhraní v2 API aktualizujte existující volání REST na [koncový bod](https://go.microsoft.com/fwlink/?linkid=2092356) Luis a [vytváření](https://go.microsoft.com/fwlink/?linkid=2092087) rozhraní API. 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

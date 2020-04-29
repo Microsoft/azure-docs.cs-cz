@@ -1,7 +1,7 @@
 ---
-title: Trénování modelu - Vlastní překladač
+title: Výuka modelu a vlastního překladatele
 titleSuffix: Azure Cognitive Services
-description: Trénování modelu je důležitým krokem při vytváření modelu překladu. Školení probíhá na základě dokumentů, které vyberete pro tato školení.
+description: Školení modelu je důležitým krokem při vytváření modelu překladu. Školení probíhá na základě vybraných dokumentů pro tato školení.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,63 +10,63 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595677"
 ---
 # <a name="train-a-model"></a>Učení modelu
 
-Trénování modelu je důležitým krokem k vytvoření modelu překladu, protože bez školení nelze model sestavit. Školení probíhá na základě dokumentů, které vyberete pro školení.
+Školení modelu je důležitým krokem pro sestavení modelu překladu, protože bez školení nejde model sestavit. Školení probíhá na základě vybraných dokumentů pro školení.
 
-Jak trénovat model:
+Postup při výukovém modelu:
 
 1.  Vyberte projekt, ve kterém chcete vytvořit model.
 
-2.  Na kartě Data pro projekt se zobrazí všechny příslušné dokumenty pro dvojici jazyků projektu. Ručně vyberte dokumenty, které chcete použít k trénování modelu. Na této obrazovce můžete vybrat dokumenty školení, ladění a testování. Také stačí vybrat tréninkovou sadu a mít vlastní překladač vytvořit tuning a testovací sady pro vás.
+2.  Karta data pro projekt zobrazí všechny relevantní dokumenty pro dvojici jazyka projektu. Ručně vyberte dokumenty, které chcete použít pro výuku modelu. Z této obrazovky můžete vybrat školení, ladění a testování dokumentů. Také stačí vybrat sadu školení a mít vlastní překladatel pro vás vytvořit sady pro optimalizaci a testování.
 
-    -  Název dokumentu: Název dokumentu.
+    -  Název dokumentu: název dokumentu.
 
-    -  Párování: Pokud je tento dokument paralelní nebo jednojazyčný dokument. Jednojazyčné dokumenty nejsou v současné době podporovány pro školení.
+    -  Párování: Pokud je tento dokument paralelním nebo monolingualm dokumentem. Dokumenty Monolingual se v tuto chvíli nepodporují pro školení.
 
-    -  Typ dokumentu: Může být školení, ladění, testování nebo slovník.
+    -  Typ dokumentu: může být školení, ladění, testování nebo slovník.
 
-    -  Dvojice jazyků: Zobrazí zdrojový a cílový jazyk projektu.
+    -  Dvojice jazyků: Zobrazuje zdrojový a cílový jazyk projektu.
 
-    -  Zdrojové věty: Zobrazuje počet vět extrahovaných ze zdrojového souboru.
+    -  Zdrojové věty: zobrazuje počet vět extrahovaných ze zdrojového souboru.
 
-    -  Cílové věty: Zobrazuje počet vět extrahovaných z cílového souboru.
+    -  Cílové věty: zobrazuje počet vět extrahovaných z cílového souboru.
 
     ![Trénování modelu](media/how-to/how-to-train-model.png)
 
-3.  Klikněte na tlačítko Vlak.
+3.  Klikněte na tlačítko výuka.
 
-4.  V dialogovém okně zadejte název modelu.
+4.  V dialogovém okně zadejte název svého modelu.
 
-5.  Klikněte na Model vlaku.
+5.  Klikněte na výuka model.
 
-    ![Dialogové okno modelu vlaku](media/how-to/how-to-train-model-2.png)
+    ![Dialog výukového modelu](media/how-to/how-to-train-model-2.png)
 
-6.  Vlastní Překladač odešle školení a zobrazí stav školení v kartě modely.
+6.  Vlastní Překladatel bude odesílat školení a na kartě modely zobrazí stav školení.
 
-    ![Stránka modelu vlaku](media/how-to/how-to-train-model-3.png)
+    ![Stránka výuka modelu](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->Vlastní překladač podporuje 10 souběžných školení v rámci pracovního prostoru v libovolném okamžiku.
+>Vlastní Překladatel podporuje v libovolném okamžiku 10 souběžných školení v pracovním prostoru.
 
 
 ## <a name="edit-a-model"></a>Úprava modelu
 
-Model můžete upravit pomocí odkazu Upravit na stránce Podrobnosti modelu.
+Model můžete upravit pomocí odkazu upravit na stránce s podrobnostmi modelu.
 
-1.  Klikněte na ikonu Tužka.
+1.  Klikněte na ikonu tužky.
 
     ![Upravit model](media/how-to/how-to-edit-model.png)
 
-2.  V dialogu změnit,
+2.  V dialogu se změní
 
-    1.  Název modelu (povinné): Pojmenujte model smysluplným názvem.
+    1.  Název modelu (povinné): zadejte smysluplný název modelu.
 
         ![Dialogové okno Upravit další](media/how-to/how-to-edit-model-dialog.png)
 
@@ -75,4 +75,4 @@ Model můžete upravit pomocí odkazu Upravit na stránce Podrobnosti modelu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte [si, jak zobrazit podrobnosti o modelu](how-to-view-model-details.md).
+- Podívejte [se, jak zobrazit podrobnosti modelu](how-to-view-model-details.md).

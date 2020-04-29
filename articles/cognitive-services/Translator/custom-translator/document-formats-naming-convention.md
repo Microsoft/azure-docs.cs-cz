@@ -1,7 +1,7 @@
 ---
-title: Formáty dokumentů a konvence pojmenování – vlastní překladač
+title: Formáty dokumentů a konvence pojmenování – vlastní Překladatel
 titleSuffix: Azure Cognitive Services
-description: Toto je průvodce formáty dokumentů a konvence pojmenování v vlastní překladač. Tento koncept pomáhá spravovat názvy dokumentů lépe abd vyhnout konflikty názvů.
+description: Toto je průvodce formáty dokumentů a konvence pojmenování ve vlastním překladateli. Tento koncept pomáhá spravovat názvy dokumentů lépe Abd konflikty při pojmenovávání.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,47 +10,47 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 41b15cc998a7bacd033ef2fe083fc99f1bff0286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595850"
 ---
-# <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k vytváření zásad pojmenování
+# <a name="document-formats-and-naming-convention-guidance"></a>Formáty dokumentů a pokyny k konvenci pojmenování
 
-Každý soubor použitý pro vlastní překlad musí mít délku alespoň **čtyři** znaky.
+Každý soubor, který se používá pro vlastní překlad, musí mít délku alespoň **čtyři** znaky.
 
-Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k vytvoření překladového systému:
+Tato tabulka obsahuje všechny podporované formáty souborů, které můžete použít k sestavení systému překladu:
 
 | Formát            | Rozšíření   | Popis                                                                                                                                                                                                                                                                    |
 |-------------------|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| XLIFF             | . Xlf. XLIFF | Paralelní formát dokumentu, export systémů překladové paměti. Použité jazyky jsou definovány uvnitř souboru.                                                                                                                                                              |
-| Tmx               | . Tmx         | Paralelní formát dokumentu, export systémů překladové paměti. Použité jazyky jsou definovány uvnitř souboru.                                                                                                                                                              |
-| Zip               | . Zip         | ZIP je formát archivního souboru.                                                                                                                                                                                                        |
-| Locstudio         | . Lcl         | Formát společnosti Microsoft pro paralelní dokumenty                                                                                                                                                                                                                                      |
-| Microsoft Word    | . Docx        | Dokument aplikace Microsoft Word                                                                                                                                                                                                                                                        |
-| Adobe Acrobat     | . Pdf         | Přenosný dokument aplikace Adobe Acrobat                                                                                                                                                                                                                                                |
-| HTML              | . Html. HTM  | Dokument HTML                                                                                                                                                                                                                                                                  |
-| Textový soubor         | . Txt         | UTF-16 nebo UTF-8 kódované textové soubory. Název souboru nesmí obsahovat japonské znaky.                                                                                                                                                                                        |
-| Zarovnaný textový soubor | . Zarovnat       | Rozšíření `.ALIGN` je speciální rozšíření, které můžete použít, pokud víte, že věty v páru dokumentu jsou dokonale zarovnány. Pokud zadáte `.ALIGN` soubor, vlastní překladač nebude zarovnat věty za vás. |
-| Excelový soubor        | . Xlsx        | (2013 nebo novější). První řádek/ řádek tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
+| XLIFF             | . XLF, . XLIFF | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
+| TMX               | . TMX         | Formát paralelního dokumentu, který exportuje systémy překladu paměti. Používané jazyky jsou definovány v souboru.                                                                                                                                                              |
+| VĚŘITEL               | . VĚŘITEL         | ZIP je formát souboru archivu.                                                                                                                                                                                                        |
+| Locstudio         | . LCL         | Formát Microsoft pro paralelní dokumenty                                                                                                                                                                                                                                      |
+| Microsoft Word    | . DOCX        | Dokument aplikace Microsoft Word                                                                                                                                                                                                                                                        |
+| Adobe Acrobat     | . FORMÁTU         | Portable Document Adobe Acrobat                                                                                                                                                                                                                                                |
+| HTML              | . HTML,. SOUBORECH  | Dokument HTML                                                                                                                                                                                                                                                                  |
+| Textový soubor         | . TXT         | Textové soubory kódované v kódování UTF-16 nebo UTF-8. Název souboru nesmí obsahovat japonské znaky.                                                                                                                                                                                        |
+| Soubor zarovnaného textu | . VZTAHUJÍ       | Přípona `.ALIGN` je speciální rozšíření, které můžete použít, pokud víte, že věty v páru dokumentů jsou dokonale zarovnané. Pokud zadáte `.ALIGN` soubor, vlastní Překladatel nebude zarovnávat věty za vás. |
+| Excelový soubor        | . XLSX        | Excelový soubor (2013 nebo novější). První řádek nebo řádek tabulky by měl být kód jazyka.                                                                                                                                                                                                                                                      |
 
 ## <a name="dictionary-formats"></a>Formáty slovníku
 
-Pro slovníky vlastní překladač podporuje všechny formáty souborů, které jsou podporovány pro trénovací sady. Pokud používáte slovník aplikace Excel, první řádek / řádek tabulky by měly být kódy jazyků.
+U slovníků podporuje vlastní Překladatel všechny formáty souborů, které jsou podporované pro školicí sady. Pokud používáte slovník aplikace Excel, první řádek nebo řádek tabulky by měl být jazykový kód.
 
-## <a name="zip-file-formats"></a>Formáty souborů ZIP
+## <a name="zip-file-formats"></a>Formáty souborů zip
 
-Dokumenty lze seskupit do jednoho souboru zip a nahrát. Vlastní překladač podporuje formáty souborů ZIP (ZIP, GZ a TGZ).
+Dokumenty mohou být seskupeny do jednoho souboru zip a nahrány. Vlastní Překladatel podporuje formáty souborů zip (ZIP, GZ a TGZ).
 
-Každý dokument v souboru zip s příponou TXT, HTML, HTM, PDF, DOCX, ALIGN musí dodržovat tuto konvenci pojmenování:
+Každý dokument v souboru zip, který má příponu TXT, HTML, HTM, PDF, DOCX, musí být v souladu s těmito konvencemi vytváření názvů:
 
-{název dokumentu} \_{kód jazyka}, kde {název dokumentu} je název dokumentu, {kód jazyka} je ISO LanguageID (dva znaky), což znamená, že dokument obsahuje věty v tomto jazyce. Před kódem jazyka musí být podtržítko (_).
+{název dokumentu} \_{Code Language} kde {Document Name} je název vašeho dokumentu a {Language Code} je ISO LanguageID (dva znaky), což značí, že dokument obsahuje věty v tomto jazyce. Před kódem jazyka musí být znak podtržítka (_).
 
-Chcete-li například nahrát dva paralelní dokumenty v rámci zip pro systém angličtina do španělštiny, soubory by měly být pojmenovány "data_en" a "data_es".
+Například pro nahrání dvou paralelních dokumentů v rámci souboru zip pro angličtinu do španělštiny by měly být soubory pojmenované "data_en" a "data_es".
 
-Soubory překladové paměti (TMX, XLF, XLIFF, LCL, XLSX) nemusí dodržovat konkrétní konvence pojmenování jazyka.  
+Soubory paměti pro překlad (TMX, XLF, XLIFF, LCL, XLSX) nejsou vyžadovány pro konkrétní jazykové konvence pojmenování.  
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si o [projektu,](workspace-and-project.md#what-is-a-custom-translator-project) který je chcete vytvořit a spravovat.
+- Přečtěte si o [projektu](workspace-and-project.md#what-is-a-custom-translator-project) , abyste ho mohli vytvořit a spravovat.

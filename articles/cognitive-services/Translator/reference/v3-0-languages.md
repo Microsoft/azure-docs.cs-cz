@@ -1,7 +1,7 @@
 ---
-title: Metoda jazyků textového rozhraní API překladače
+title: Metoda Translator Text API jazyků
 titleSuffix: Azure Cognitive Services
-description: Metoda Languages získá sadu jazyků, které jsou aktuálně podporovány jinými operacemi rozhraní Translator Text API.
+description: Metoda languages Získá sadu jazyků, které aktuálně podporuje jiné operace Translator Text API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,37 +11,37 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 37f70399e8125db559098869cdfffdf4533498d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73835834"
 ---
-# <a name="translator-text-api-30-languages"></a>Překladač Text API 3.0: Jazyky
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3,0: jazyky
 
-Získá sadu jazyků aktuálně podporovaných jinými operacemi překladače text rozhraní API. 
+Získá sadu jazyků, které aktuálně podporuje jiné operace Translator Text API. 
 
 ## <a name="request-url"></a>Adresa URL požadavku
 
-Odeslání `GET` žádosti na:
+Odeslat `GET` požadavek na:
 ```HTTP
 https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 ```
 
-## <a name="request-parameters"></a>Parametry požadavku
+## <a name="request-parameters"></a>Parametry žádosti
 
-Parametry požadavku předané v řetězci dotazu jsou:
+Parametry žádosti předané řetězci dotazu jsou:
 
 <table width="100%">
   <th width="20%">Parametr dotazu</th>
   <th>Popis</th>
   <tr>
     <td>verze-api</td>
-    <td><em>Povinný parametr</em>.<br/>Verze rozhraní API požadované klientem. Hodnota musí `3.0`být .</td>
+    <td><em>Povinný parametr</em>.<br/>Verze rozhraní API, kterou klient požaduje. Hodnota musí být `3.0`.</td>
   </tr>
   <tr>
     <td>scope</td>
-    <td>*Volitelný parametr*.<br/>Seznam názvů oddělených čárkami definující skupinu jazyků, které mají být vráceny. Povolené názvy `translation`skupin `transliteration` `dictionary`jsou: a . Pokud není uveden žádný obor, jsou vráceny všechny `scope=translation,transliteration,dictionary`skupiny, což je ekvivalentní předávání . Chcete-li se rozhodnout, která sada podporovaných jazyků je pro váš scénář vhodná, naleznete v popisu [objektu odpovědi](#response-body).</td>
+    <td>*Volitelný parametr*.<br/>Čárkami oddělený seznam názvů definující skupinu jazyků, které se mají vrátit. Povolené názvy skupin jsou: `translation` `transliteration` a `dictionary`. Pokud není zadán žádný obor, budou vráceny všechny skupiny, což je ekvivalentem předání `scope=translation,transliteration,dictionary`. Chcete-li se rozhodnout, která sada podporovaných jazyků je vhodná pro váš scénář, přečtěte si popis [objektu Response](#response-body).</td>
   </tr>
 </table> 
 
@@ -52,30 +52,30 @@ Hlavičky požadavku jsou:
   <th>Popis</th>
   <tr>
     <td>Accept-Language</td>
-    <td>*Volitelná hlavička požadavku*.<br/>Jazyk, který se má použít pro řetězce uživatelského rozhraní. Některá pole v odpovědi jsou názvy jazyků nebo názvy oblastí. Tento parametr slouží k definování jazyka, ve kterém jsou tyto názvy vráceny. Jazyk je určen poskytnutím dobře formátované značky jazyka BCP 47. Například použijte hodnotu `fr` k vyžádání názvů ve `zh-Hant` francouzštině nebo použijte hodnotu k vyžádání názvů v tradiční čínštině.<br/>Názvy jsou k dispozici v anglickém jazyce, pokud není zadán cílový jazyk nebo pokud není k dispozici lokalizace.
+    <td>*Nepovinná Hlavička požadavku*<br/>Jazyk, který se má použít pro řetězce uživatelského rozhraní. Některá pole v odpovědi jsou názvy jazyků nebo názvů oblastí. Tento parametr použijte k definování jazyka, ve kterém jsou tyto názvy vraceny. Jazyk je určen tak, že poskytuje značku jazyka BCP 47 ve správném formátu. Použijte například hodnotu `fr` pro vyžádání názvů ve francouzštině nebo použijte hodnotu `zh-Hant` pro vyžádání názvů v tradiční čínštině.<br/>Názvy jsou k dispozici v anglickém jazyce, pokud není zadán cílový jazyk nebo pokud není lokalizace k dispozici.
     </td>
   </tr>
   <tr>
-    <td>X-ClientTraceId</td>
-    <td>*Volitelná hlavička požadavku*.<br/>Identifikátor GUID generovaný klientem k jednoznačné identifikaci požadavku.</td>
+    <td>X – ClientTraceId</td>
+    <td>*Nepovinná Hlavička požadavku*<br/>Identifikátor GUID generovaný klientem pro jednoznačnou identifikaci požadavku.</td>
   </tr>
 </table> 
 
-Ověřování není nutné k získání jazykových prostředků.
+K získání prostředků jazyka není vyžadováno ověřování.
 
 ## <a name="response-body"></a>Text odpovědi
 
-Klient používá `scope` parametr dotazu k definování skupin jazyků, které ho zajímají.
+Klient používá parametr `scope` dotazu k definování skupin jazyků, které vás zajímají.
 
-* `scope=translation`poskytuje jazyky podporované pro překlad textu z jednoho jazyka do jiného;
+* `scope=translation`poskytuje jazyky podporované k překladu textu z jednoho jazyka do jiného jazyka.
 
-* `scope=transliteration`poskytuje možnosti pro převod textu v jednom jazyce z jednoho skriptu do jiného skriptu;
+* `scope=transliteration`poskytuje funkce pro převod textu v jednom jazyce z jednoho skriptu na jiný skript.
 
-* `scope=dictionary`poskytuje dvojice jazyků, `Dictionary` pro které operace vrátí data.
+* `scope=dictionary`poskytuje páry jazyků, pro `Dictionary` které operace vracejí data.
 
-Klient může načíst několik skupin současně zadáním seznamu názvů oddělených čárkami. Například `scope=translation,transliteration,dictionary` vrátí podporované jazyky pro všechny skupiny.
+Klient může načíst několik skupin současně zadáním seznamu názvů oddělených čárkami. Například `scope=translation,transliteration,dictionary` by vracely podporované jazyky pro všechny skupiny.
 
-Úspěšná odpověď je objekt JSON s jednou vlastností pro každou požadovanou skupinu:
+Úspěšná odpověď je objekt JSON, který má jednu vlastnost pro každou požadovanou skupinu:
 
 ```json
 {
@@ -93,17 +93,17 @@ Klient může načíst několik skupin současně zadáním seznamu názvů odd�
 
 Hodnota pro každou vlastnost je následující.
 
-* `translation`Vlastnost
+* `translation`majetek
 
-  Hodnota vlastnosti `translation` je slovník (klíč, hodnota) párů. Každý klíč je jazyková značka BCP 47. Klíč identifikuje jazyk, pro který lze text přeložit nebo z kterého lze přeložit. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk:
+  Hodnota `translation` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text na nebo přeložit. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk:
 
-  * `name`: Zobrazovaný název jazyka v národním `Accept-Language` prostředí požadovaném prostřednictvím záhlaví.
+  * `name`: Zobrazovaný název jazyka v národním prostředí, které je požadováno `Accept-Language` přes hlavičku.
 
-  * `nativeName`: Zobrazit název jazyka v nativním národním prostředí pro tento jazyk.
+  * `nativeName`: Zobrazovaný název jazyka v národním prostředí, které je pro tento jazyk nativní.
 
-  * `dir`: Směrovost, `rtl` která je pro jazyky se zbytkem doleva nebo `ltr` pro jazyky se zbytkem doleva.
+  * `dir`: Směrová orientace, která `rtl` je určena pro jazyky zprava doleva nebo `ltr` pro jazyky zleva doprava.
 
-  Příkladem je:
+  Příklad:
           
   ```json
   {
@@ -119,27 +119,27 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `transliteration`Vlastnost
+* `transliteration`majetek
 
-  Hodnota vlastnosti `transliteration` je slovník (klíč, hodnota) párů. Každý klíč je jazyková značka BCP 47. Klíč identifikuje jazyk, pro který lze text převést z jednoho skriptu na jiný. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk a jeho podporované skripty:
+  Hodnota `transliteration` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který je možné převést text z jednoho skriptu na jiný skript. Hodnota přidružená ke klíči je objekt JSON s vlastnostmi, které popisují jazyk a jeho podporované skripty:
 
-  * `name`: Zobrazovaný název jazyka v národním `Accept-Language` prostředí požadovaném prostřednictvím záhlaví.
+  * `name`: Zobrazovaný název jazyka v národním prostředí, které je požadováno `Accept-Language` přes hlavičku.
 
-  * `nativeName`: Zobrazit název jazyka v nativním národním prostředí pro tento jazyk.
+  * `nativeName`: Zobrazovaný název jazyka v národním prostředí, které je pro tento jazyk nativní.
 
-  * `scripts`: Seznam skriptů, ze kterých se má převést. Každý prvek `scripts` seznamu má vlastnosti:
+  * `scripts`: Seznam skriptů pro převod. Každý prvek `scripts` seznamu má vlastnosti:
 
     * `code`: Kód identifikující skript.
 
-    * `name`: Zobrazovaný název skriptu v `Accept-Language` národním prostředí požadovaném prostřednictvím záhlaví.
+    * `name`: Zobrazovaný název skriptu v národním prostředí, které je požadováno `Accept-Language` přes hlavičku.
 
-    * `nativeName`: Zobrazit název jazyka v národním prostředí nativní pro jazyk.
+    * `nativeName`: Zobrazovaný název jazyka v národním prostředí, které je pro jazyk nativní.
 
-    * `dir`: Směrovost, `rtl` která je pro jazyky se zbytkem doleva nebo `ltr` pro jazyky se zbytkem doleva.
+    * `dir`: Směrová orientace, která `rtl` je určena pro jazyky zprava doleva nebo `ltr` pro jazyky zleva doprava.
 
-    * `toScripts`: Seznam skriptů, na které je k dispozici převod textu. Každý prvek `toScripts` seznamu má `code` `name`vlastnosti , , `nativeName`, a `dir` jak je popsáno výše.
+    * `toScripts`: Seznam skriptů dostupných pro převod textu na. `toScripts` Každý prvek seznamu má vlastnosti `code`, `name` `nativeName`, a `dir` jak je popsáno výše.
 
-  Příkladem je:
+  Příklad:
 
   ```json
   {
@@ -184,27 +184,27 @@ Hodnota pro každou vlastnost je následující.
   }
   ```
 
-* `dictionary`Vlastnost
+* `dictionary`majetek
 
-  Hodnota vlastnosti `dictionary` je slovník (klíč, hodnota) párů. Každý klíč je jazyková značka BCP 47. Klíč identifikuje jazyk, pro který jsou k dispozici alternativní překlady a zpětné překlady. Hodnota je objekt JSON, který popisuje zdrojový jazyk a cílové jazyky s dostupnými překlady:
+  Hodnota `dictionary` vlastnosti je slovník dvojic (klíč, hodnota). Každý klíč je značka jazyka BCP 47. Klíč identifikuje jazyk, pro který jsou k dispozici alternativní překlady a back-překlady. Hodnota je objekt JSON, který popisuje zdrojový jazyk a cílové jazyky s dostupnými překlady:
 
-  * `name`: Zobrazovaný název zdrojového jazyka v `Accept-Language` národním prostředí požadovaném prostřednictvím záhlaví.
+  * `name`: Zobrazovaný název zdrojového jazyka v národním prostředí, které je požadováno `Accept-Language` přes hlavičku.
 
-  * `nativeName`: Zobrazit název jazyka v nativním národním prostředí pro tento jazyk.
+  * `nativeName`: Zobrazovaný název jazyka v národním prostředí, které je pro tento jazyk nativní.
 
-  * `dir`: Směrovost, `rtl` která je pro jazyky se zbytkem doleva nebo `ltr` pro jazyky se zbytkem doleva.
+  * `dir`: Směrová orientace, která `rtl` je určena pro jazyky zprava doleva nebo `ltr` pro jazyky zleva doprava.
 
-  * `translations`: Seznam jazyků se alterativem a příklady dotazu vyjádřené ve zdrojovém jazyce. Každý prvek `translations` seznamu má vlastnosti:
+  * `translations`: Seznam jazyků s překlady alterative a příklady pro dotaz vyjádřený ve zdrojovém jazyce. Každý prvek `translations` seznamu má vlastnosti:
 
-    * `name`: Zobrazovaný název cílového jazyka v `Accept-Language` národním prostředí požadovaném prostřednictvím záhlaví.
+    * `name`: Zobrazovaný název cílového jazyka v národním prostředí, které je požadováno `Accept-Language` přes hlavičku.
 
-    * `nativeName`: Zobrazit název cílového jazyka v nativním národním prostředí pro cílový jazyk.
+    * `nativeName`: Zobrazovaný název cílového jazyka v národním prostředí Native pro cílový jazyk.
 
-    * `dir`: Směrovost, `rtl` která je pro jazyky se zbytkem doleva nebo `ltr` pro jazyky se zbytkem doleva.
+    * `dir`: Směrová orientace, která `rtl` je určena pro jazyky zprava doleva nebo `ltr` pro jazyky zleva doprava.
     
     * `code`: Kód jazyka identifikující cílový jazyk.
 
-  Příkladem je:
+  Příklad:
 
   ```json
   "es": {
@@ -222,9 +222,9 @@ Hodnota pro každou vlastnost je následující.
   },
   ```
 
-Struktura objektu odpovědi se nezmění bez změny ve verzi rozhraní API. Pro stejnou verzi rozhraní API seznam dostupných jazyků se může v průběhu času měnit, protože aplikace Microsoft Translator neustále rozšiřuje seznam jazyků podporovaných jeho službami.
+Struktura objektu Response se nemění bez změny ve verzi rozhraní API. Pro stejnou verzi rozhraní API se seznam dostupných jazyků může v průběhu času měnit, protože Microsoft Translator průběžně rozšiřuje seznam jazyků podporovaných jeho službami.
 
-Seznam podporovaných jazyků se často nemění. Chcete-li ušetřit šířku pásma sítě a zlepšit odezvu, měla by`ETag`klientská aplikace zvážit ukládání prostředků jazyka do mezipaměti a odpovídající značky entity ( ). Potom klientská aplikace může pravidelně (například jednou za 24 hodin) dotaz služby načíst nejnovější sadu podporovaných jazyků. Předání aktuální `ETag` hodnoty `If-None-Match` v poli záhlaví umožní službě optimalizovat odpověď. Pokud prostředek nebyl změněn, služba vrátí stavový kód 304 a prázdné tělo odpovědi.
+Seznam podporovaných jazyků se často nemění. Aby se ušetřila šířka pásma sítě a vylepšila odezva, měla by klientská aplikace zvážit ukládání jazykových prostředků do`ETag`mezipaměti a odpovídající značku entity (). Klientská aplikace se pak může pravidelně (například každých 24 hodin) dotazovat služby a načíst nejnovější sadu podporovaných jazyků. Předáním aktuální `ETag` hodnoty v poli `If-None-Match` záhlaví umožníte službě optimalizovat odpověď. Pokud prostředek nebyl upraven, služba vrátí stavový kód 304 a prázdné tělo odpovědi.
 
 ## <a name="response-headers"></a>Hlavičky odpovědi
 
@@ -232,19 +232,19 @@ Seznam podporovaných jazyků se často nemění. Chcete-li ušetřit šířku p
   <th width="20%">Hlavičky</th>
   <th>Popis</th>
   <tr>
-    <td>Etag</td>
-    <td>Aktuální hodnota značky entity pro požadované skupiny podporovaných jazyků. Chcete-li zefektivnění následných požadavků, `ETag` může `If-None-Match` klient odeslat hodnotu v poli záhlaví.
+    <td>Značk</td>
+    <td>Aktuální hodnota značky entity pro požadované skupiny podporovaných jazyků. Aby bylo možné následné žádosti zefektivnit, může klient odeslat `ETag` hodnotu v poli `If-None-Match` záhlaví.
     </td>
   </tr>
   <tr>
     <td>X-RequestId</td>
-    <td>Hodnota generovaná službou k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
+    <td>Hodnota, kterou služba vygenerovala k identifikaci požadavku. Používá se pro účely řešení potíží.</td>
   </tr>
 </table> 
 
-## <a name="response-status-codes"></a>Stavové kódy odpovědi
+## <a name="response-status-codes"></a>Stavové kódy odpovědí
 
-Následují možné stavové kódy HTTP, které požadavek vrátí. 
+Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí. 
 
 <table width="100%">
   <th width="20%">Stavový kód</th>
@@ -255,27 +255,27 @@ Následují možné stavové kódy HTTP, které požadavek vrátí.
   </tr>
   <tr>
     <td>304</td>
-    <td>Prostředek nebyl změněn od verze určené hlavičkami `If-None-Match`požadavku .</td>
+    <td>Prostředek se od verze určeného hlavičkou `If-None-Match`požadavků nezměnil.</td>
   </tr>
   <tr>
     <td>400</td>
-    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním opravte parametry požadavku.</td>
+    <td>Jeden z parametrů dotazu chybí nebo je neplatný. Před opakováním pokusu proveďte správné parametry žádosti.</td>
   </tr>
   <tr>
     <td>429</td>
-    <td>Server požadavek zamítl, protože klient překročil limity požadavků.</td>
+    <td>Server odmítl požadavek, protože klient překročil omezení požadavků.</td>
   </tr>
   <tr>
     <td>500</td>
-    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, oznamte ji s: datem a `X-RequestId`časem selhání, `X-ClientTraceId`identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
+    <td>Došlo k neočekávané chybě. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, oznamte ji s: datem a `X-RequestId`časem selhání, `X-ClientTraceId`identifikátorem požadavku z hlavičky odpovědi a identifikátorem klienta z hlavičky požadavku .</td>
+    <td>Server je dočasně nedostupný. Opakujte požadavek. Pokud chyba přetrvává, ohlaste ji pomocí: datum a čas selhání, identifikátor požadavku z hlavičky `X-RequestId`odpovědi a identifikátor klienta z hlavičky `X-ClientTraceId`požadavku.</td>
   </tr>
 </table> 
 
-Pokud dojde k chybě, požadavek také vrátí odpověď na chybu JSON. Kód chyby je šestimístné číslo kombinující 3místný stavový kód HTTP následovaný třímístným číslem pro další kategorizaci chyby. Běžné kódy chyb naleznete na [referenční stránce v3 Translator Text API](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
+Pokud dojde k chybě, požadavek vrátí také odpověď na chybu JSON. Kód chyby je číslo na 6 číslic, ve kterém se kombinují stavový kód HTTP s kódem, za nímž následuje 3 číslice a další kategorizace chyby. Běžné kódy chyb najdete na [stránce s referenčními Translator text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Příklady
 
