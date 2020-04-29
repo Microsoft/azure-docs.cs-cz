@@ -1,5 +1,5 @@
 ---
-title: VYTVOŘIT TABULKU JAKO VÝBĚR (CTAS)
+title: CREATE TABLE JAKO SELECT (CTAS)
 description: Vysvětlení a příklady příkazu CREATE TABLE AS SELECT (CTAS) v synapse SQL pro vývoj řešení.
 services: synapse-analytics
 author: XiaoyuMSFT
@@ -12,25 +12,25 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
 ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633548"
 ---
-# <a name="create-table-as-select-ctas"></a>VYTVOŘIT TABULKU JAKO VÝBĚR (CTAS)
+# <a name="create-table-as-select-ctas"></a>CREATE TABLE JAKO SELECT (CTAS)
 
-Tento článek vysvětluje příkaz T-SQL CREATE TABLE AS SELECT (CTAS) v synapse SQL pro vývoj řešení. Článek také obsahuje příklady kódu.
+Tento článek vysvětluje CREATE TABLE jako příkaz SELECT (CTAS) T-SQL v synapse SQL pro vývoj řešení. Článek také poskytuje příklady kódu.
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-Příkaz [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) je jednou z nejdůležitějších dostupných funkcí T-SQL. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky pomocí jediného příkazu.
+Příkaz [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) je jednou z nejdůležitějších funkcí T-SQL, které jsou k dispozici. CTAS je paralelní operace, která vytvoří novou tabulku na základě výstupu příkazu SELECT. CTAS je nejjednodušší a nejrychlejší způsob, jak vytvořit a vložit data do tabulky jediným příkazem.
 
-## <a name="selectinto-vs-ctas"></a>Vyberte... INTO vs. CTAS
+## <a name="selectinto-vs-ctas"></a>VYBRAT... DO vs. CTAS
 
-CTAS je více přizpůsobitelné verze [SELECT ... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) prohlášení.
+CTAS je přizpůsobitelná verze [výběru... DO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) příkazu.
 
-Následuje příklad jednoduchého SELECT... Do:
+Následuje příklad jednoduchého výběru... USKLADNĚN
 
 ```sql
 SELECT *
@@ -38,9 +38,9 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-Vyberte... INTO neumožňuje změnit metodu distribuce nebo typ indexu jako součást operace. Můžete `[dbo].[FactInternetSales_new]` vytvořit pomocí výchozí ho typu distribuce ROUND_ROBIN a výchozí strukturu tabulky clustered COLUMNSTORE INDEX.
+VYBRAT... DO není možné v rámci operace změnit buď metodu distribuce, nebo typ indexu. Vytvoříte `[dbo].[FactInternetSales_new]` pomocí výchozího distribučního typu ROUND_ROBIN a výchozí struktury tabulky CLUSTEROVANÉHO indexu COLUMNSTORE.
 
-S CTAS, na druhé straně můžete určit jak rozdělení dat tabulky, stejně jako typ struktury tabulky. Převod předchozího příkladu na CTAS:
+S CTAS můžete na druhé straně určit rozdělení dat tabulky i typ struktury tabulky. Chcete-li převést předchozí příklad na CTAS:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -55,13 +55,13 @@ FROM    [dbo].[FactInternetSales];
 ```
 
 > [!NOTE]
-> Pokud se pokoušíte změnit index pouze v operaci CTAS a zdrojová tabulka je distribuována hash, udržujte stejný distribuční sloupec a typ dat. Tím se zabrání pohybu dat mezi distribucemi během operace, což je efektivnější.
+> Pokud se pokoušíte změnit index v operaci CTAS a zdrojová tabulka je distribuována jako hodnota hash, udržujte stejný distribuční sloupec a datový typ. Tím se zabrání přesunu mezi distribučními daty během operace, což je efektivnější.
 
 ## <a name="use-ctas-to-copy-a-table"></a>Kopírování tabulky pomocí CTAS
 
-Pravděpodobně jedním z nejběžnějších použití CTAS je vytvoření kopie tabulky za účelem změny DDL. Řekněme, že jste tabulku původně vytvořili jako `ROUND_ROBIN`a nyní ji chcete změnit na tabulku distribuovanou ve sloupci. CTAS je způsob, jakým byste změnili sloupec distribuce. Ctas můžete také změnit dělení, indexování nebo typy sloupců.
+Jedním z nejběžnějších použití CTAS je vytvoření kopie tabulky, aby bylo možné změnit DDL. Řekněme, že jste původně vytvořili tabulku jako `ROUND_ROBIN`a teď ji chcete změnit na tabulku distribuovanou na sloupci. CTAS je způsob, jakým byste změnili distribuční sloupec. CTAS můžete použít také ke změně dělení, indexování nebo typů sloupců.
 
-Řekněme, že jste tuto tabulku vytvořili `ROUND_ROBIN`pomocí výchozího typu distribuce `CREATE TABLE`, který neurčuje sloupec distribuce v .
+Řekněme `ROUND_ROBIN`, že jste tuto tabulku vytvořili pomocí výchozího typu distribuce, a ne zadáním distribučního sloupce v `CREATE TABLE`.
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-Nyní chcete vytvořit novou kopii této tabulky, s `Clustered Columnstore Index`, takže můžete využít výkon clusterovaných columnstore tabulek. Chcete také distribuovat tuto `ProductKey`tabulku na , protože očekáváte spojení v tomto sloupci a chcete `ProductKey`se vyhnout přesunu dat během spojení na . Nakonec také chcete přidat dělení na `OrderDateKey`, takže můžete rychle odstranit stará data uvolněním staré oddíly. Zde je prohlášení CTAS, které zkopíruje starou tabulku do nové tabulky.
+Nyní chcete vytvořit novou kopii této tabulky s `Clustered Columnstore Index`, aby bylo možné využít výkon clusterovaných tabulek columnstore. Tuto tabulku také chcete distribuovat `ProductKey`, protože očekáváte spojení s tímto sloupcem a chcete se vyhnout přesunu dat během spojení. `ProductKey` Nakonec také budete chtít přidat rozdělení do `OrderDateKey`oddílů, abyste mohli rychle odstranit stará data vyřazením starých oddílů. Tady je příkaz CTAS, který zkopíruje starou tabulku do nové tabulky.
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -112,7 +112,7 @@ WITH
 AS SELECT * FROM FactInternetSales;
 ```
 
-Nakonec můžete přejmenovat tabulky, vyměnit v nové tabulce a pak přetáhnout starý stůl.
+Nakonec můžete přejmenovat tabulky, které se zahodí v nové tabulce, a pak vyřadit starou tabulku.
 
 ```sql
 RENAME OBJECT FactInternetSales TO FactInternetSales_old;
@@ -121,20 +121,20 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-## <a name="use-ctas-to-work-around-unsupported-features"></a>Použití ctas k obejít nepodporované funkce
+## <a name="use-ctas-to-work-around-unsupported-features"></a>Použití CTAS k řešení nepodporovaných funkcí
 
-Ctas můžete také použít k řešení řady nepodporovaných funkcí uvedených níže. Tato metoda může často být užitečné, protože nejen že bude váš kód kompatibilní, ale často poběží rychleji na Synapse SQL. Tento výkon je výsledkem jeho plně paralelizované konstrukce. Scénáře zahrnují:
+Pomocí CTAS můžete také vyřešit řadu nepodporovaných funkcí uvedených níže. Tato metoda může být často užitečná, protože nejen váš kód bude kompatibilní, ale bude často běžet rychleji na synapse SQL. Tento výkon je výsledkem úplného paralelního návrhu. Mezi scénáře patří:
 
-* ANSI SPOJENÍ na UPDATEs
-* ANSI JOINs na DELETEs
+* SPOJENÍ ANSI při aktualizacích
+* Spojení ANSI při odstraňování
 * Příkaz MERGE
 
 > [!TIP]
-> Zkus si nejdřív myslet "CTAS.". Řešení problému pomocí CTAS je obecně dobrý přístup, i když v důsledku toho píšete více dat.
+> Zkuste si představit slovo "CTAS First". Řešení potíží pomocí CTAS je obecně dobrým přístupem, a to i v případě, že zapisujete další data v důsledku výsledku.
 
-## <a name="ansi-join-replacement-for-update-statements"></a>Ansi připojit nahrazení pro příkazy aktualizace
+## <a name="ansi-join-replacement-for-update-statements"></a>Nahrazení spojení ANSI pro příkazy Update
 
-Možná zjistíte, že máte komplexní aktualizaci. Aktualizace spojuje více než dvě tabulky dohromady pomocí syntaxe spojení ANSI k provedení UPDATE nebo DELETE.
+Může se stát, že máte složitou aktualizaci. Aktualizace spojí více než dvě tabulky dohromady pomocí syntaxe připojení ANSI k provedení aktualizace nebo odstranění.
 
 Představte si, že jste museli aktualizovat tuto tabulku:
 
@@ -150,7 +150,7 @@ WITH
 );
 ```
 
-Původní dotaz mohl vypadat podobně jako v tomto příkladu:
+Původní dotaz možná vypadal jako v tomto příkladu:
 
 ```sql
 UPDATE    acs
@@ -174,9 +174,9 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Synapse SQL nepodporuje ansi spojení `FROM` v klauzuli příkazu, `UPDATE` takže nelze použít předchozí příklad bez jeho úpravy.
+Synapse SQL nepodporuje spojení ANSI v `FROM` klauzuli `UPDATE` příkazu, takže nemůžete použít předchozí příklad beze změny.
 
-Můžete použít kombinaci CTAS a implicitní spojení nahradit předchozí příklad:
+Pomocí kombinace CTAS a implicitního spojení můžete nahradit předchozí příklad:
 
 ```sql
 -- Create an interim table
@@ -206,11 +206,11 @@ AND     CTAS_acs.[CalendarYear]  = AnnualCategorySales.[CalendarYear] ;
 DROP TABLE CTAS_acs;
 ```
 
-## <a name="ansi-join-replacement-for-delete-statements"></a>Ansi spojení nahrazení delete příkazy
+## <a name="ansi-join-replacement-for-delete-statements"></a>Nahrazení spojení ANSI pro příkazy DELETE
 
-Někdy je nejlepším přístupem k odstranění dat použití CTAS, zejména pro `DELETE` příkazy, které používají syntaxi spojení ANSI. Důvodem je, že Synapse SQL nepodporuje `FROM` ANSI `DELETE` připojí klauzule prohlášení. Místo odstranění dat vyberte data, která chcete zachovat.
+Někdy nejlepší přístup k odstranění dat je použití CTAS, zejména pro `DELETE` příkazy, které používají SYNTAXI spojení ANSI. Důvodem je to, že synapse SQL nepodporuje spojení ANSI v `FROM` klauzuli `DELETE` příkazu. Místo odstranění dat vyberte data, která chcete zachovat.
 
-Následuje příklad převedeného `DELETE` příkazu:
+Následuje příklad převedený `DELETE` příkaz:
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>Nahradit příkazy sloučení
 
-Příkazy sloučení můžete nahradit alespoň částečně pomocí CTAS. Můžete kombinovat `INSERT` a `UPDATE` do jednoho příkazu. Všechny odstraněné záznamy by `SELECT` měly být z příkazu omezeny, aby byly výsledky vynechány.
+Slučovací příkazy můžete nahradit alespoň částečně pomocí CTAS. Můžete zkombinovat `INSERT` a `UPDATE` do jediného příkazu. Všechny odstraněné záznamy by se měly `SELECT` omezit z příkazu, aby se vynechal z výsledků.
 
-Následující příklad je `UPSERT`pro :
+Následující příklad je pro `UPSERT`:
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -264,9 +264,9 @@ RENAME OBJECT dbo.[DimProduct]          TO [DimProduct_old];
 RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
 ```
 
-## <a name="explicitly-state-data-type-and-nullability-of-output"></a>Explicitně stav datový typ a nullability výstupu
+## <a name="explicitly-state-data-type-and-nullability-of-output"></a>Explicitní stavový datový typ a hodnota null výstupu
 
-Při migraci kódu můžete zjistit, že narazíte na tento typ způsobu kódování:
+Při migraci kódu můžete být spuštěni v rámci tohoto typu vzoru kódu:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -281,9 +281,9 @@ INSERT INTO result
 SELECT @d*@f;
 ```
 
-Možná si myslíte, že byste měli tento kód migrovat na CTAS a měli byste mít pravdu. Nicméně, je tu skrytý problém zde.
+Možná si myslíte, že byste tento kód mohli migrovat na CTAS a vy budete mít správný. Zde je ale skrytý problém.
 
-Následující kód nepřináší stejný výsledek:
+Následující kód nepřinese stejný výsledek:
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -295,9 +295,9 @@ AS
 SELECT @d*@f as result;
 ```
 
-Všimněte si, že sloupec "výsledek" přenáší dopředu datový typ a nullability hodnoty výrazu. Pokud nejste opatrní, může přenos datového typu vpřed vést k jemným odchylkám v hodnotách.
+Všimněte si, že sloupec "Result" přenáší datový typ a hodnoty hodnoty null výrazu. Zablokování datového typu může vést k drobným odchylkám v hodnotách, pokud nebudete opatrní.
 
-Zkuste tento příklad:
+Vyzkoušejte tento příklad:
 
 ```sql
 SELECT result,result*@d
@@ -307,17 +307,17 @@ SELECT result,result*@d
 from ctas_r;
 ```
 
-Hodnota uložená pro výsledek se liší. Jako trvalá hodnota ve sloupci výsledek se používá v jiných výrazech, chyba se stává ještě významnější.
+Hodnota uložená pro výsledek je odlišná. Vzhledem k tomu, že hodnota trvalá ve sloupci výsledek se používá v jiných výrazech, bude chyba ještě důležitější.
 
 ![Snímek obrazovky s výsledky CTAS](./media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
-To je důležité pro migrace dat. I když druhý dotaz je pravděpodobně přesnější, je tu problém. Data by se lišila ve srovnání se zdrojovým systémem, což vede k otázkám integrity migrace. To je jeden z těch vzácných případů, kdy "špatná" odpověď je vlastně ten správný!
+To je důležité pro migrace dat. I když je druhý dotaz pravděpodobně přesnější, dojde k problému. Data by se v porovnání se zdrojovým systémem lišila a v případě potřeby vede k otázkám integrity migrace. Toto je jeden z těch vzácných případů, kdy je "nesprávná" odpověď vlastně pravá.
 
-Důvod, proč vidíme rozdíl mezi těmito dvěma výsledky je kvůli implicitní typ odlévání. V prvním příkladu tabulka definuje definici sloupce. Při vložení řádku dojde k implicitní převod typu. V druhém příkladu neexistuje žádný implicitní převod typu, protože výraz definuje datový typ sloupce.
+Důvodem, proč se u dvou výsledků zobrazuje nerovnost, je kvůli implicitnímu přetypování typu. V prvním příkladu tabulka definuje definici sloupce. Při vložení řádku dojde k převodu implicitního typu. V druhém příkladu není k dispozici žádný implicitní převod typu, protože výraz definuje datový typ sloupce.
 
-Všimněte si také, že sloupec v druhém příkladu byl definován jako nullable sloupec, zatímco v prvním příkladu nemá. Při vytvoření tabulky v prvním příkladu byla explicitně definována nullability sloupce. V druhém příkladu byla ponechána na výraz a ve výchozím nastavení by mělo za následek definici NULL.
+Všimněte si také, že sloupec ve druhém příkladu byl definován jako sloupec s možnou hodnotou null, zatímco v prvním příkladu to nemá. Při vytvoření tabulky v prvním příkladu byla explicitně definována možnost null sloupce. Ve druhém příkladu byl ponechán na výraz a ve výchozím nastavení by výsledkem byla definice NULL.
 
-Chcete-li tyto problémy vyřešit, je nutné explicitně nastavit převod typu a nullability v select části ctas prohlášení. Tyto vlastnosti nelze nastavit v příkazu VYTVOŘIT TABULKU.
+Chcete-li tyto problémy vyřešit, je nutné explicitně nastavit převod typu a možnost použití hodnoty null ve vybrané části příkazu CTAS. Tyto vlastnosti nelze nastavit v ' CREATE TABLE '.
 Následující příklad ukazuje, jak opravit kód:
 
 ```sql
@@ -332,13 +332,13 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 
 Je třeba počítat s následujícím:
 
-* Můžete použít CAST nebo CONVERT.
-* Pomocí funkce ISNULL, nikoli COALESCE, vynutíte nullability. Viz následující poznámka.
-* ISNULL je nejkrajnější funkce.
-* Druhá část ISNULL je konstanta, 0.
+* Můžete použít přetypování nebo převod.
+* Pro vynucení hodnoty NULL použijte ISNULL, not COALESCE. Podívejte se na následující poznámku.
+* ISNULL je nejvzdálenější funkce.
+* Druhá část pole ISNULL je konstanta, 0.
 
 > [!NOTE]
-> Pro nullability správně nastavit, je důležité použít ISNULL a ne COALESCE. COALESCE není deterministická funkce, a proto výsledek výrazu bude vždy nullable. HODNOTA ISNULL je odlišná. Je to deterministické. Proto pokud druhá část funkce ISNULL je konstanta nebo literál, výsledná hodnota nebude null.
+> Aby hodnota null byla správně nastavena, je důležité použít funkci ISNULL a NOT COALESCE. COALESCE není deterministické funkce, takže výsledek výrazu bude vždy NULLable. ISNULL je jiný. Je deterministický. Proto pokud je druhá část funkce ISNULL konstanta nebo literál, výsledná hodnota nebude NULL.
 
 Zajištění integrity výpočtů je také důležité pro přepínání oddílů tabulky. Představte si, že máte tuto tabulku definovanou jako tabulku faktů:
 
@@ -362,9 +362,9 @@ WITH
 );
 ```
 
-Pole částky je však vypočítaný výraz. Není součástí zdrojových dat.
+Pole Částka je ale počítaný výraz. Není součástí zdrojových dat.
 
-Chcete-li vytvořit rozdělenou datovou sadu, můžete použít následující kód:
+Chcete-li vytvořit dělenou datovou sadu, můžete použít následující kód:
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-Dotaz by běžel dokonale. Problém nastává, když se pokusíte udělat přepínač oddílu. Definice tabulky se neshodují. Chcete-li, aby definice tabulky odpovídaly, `ISNULL` upravte CTAS a přidejte funkci, aby se zachoval atribut nullability sloupce.
+Dotaz by měl být dokonale správný. K tomuto problému dochází při pokusu o provedení přepínače oddílu. Definice tabulek se neshodují. Chcete-li, aby definice tabulek odpovídaly, upravte CTAS a `ISNULL` Přidejte funkci pro zachování atributu s hodnotou null sloupce.
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -410,10 +410,10 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-Můžete vidět, že konzistence typu a udržování vlastnosti nullability na CTAS je osvědčený postup inženýrství. Pomáhá udržovat integritu ve výpočtech a také zajišťuje, že přepínání oddílů je možné.
+Můžete vidět, že konzistence typů a udržování vlastností s hodnotou null na CTAS je osvědčeným postupem. Pomáhá zachovat integritu ve výpočtech a také zajišťuje, že je možné přepínat oddíly.
 
-CTAS je jedním z nejdůležitějších prohlášení v Synapse SQL. Ujistěte se, že jste důkladně pochopit. Viz [dokumentace CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+CTAS je jedním z nejdůležitějších příkazů v synapse SQL. Ujistěte se, že ji důkladně rozumíte. Další informace najdete v [dokumentaci k CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [přehledu vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

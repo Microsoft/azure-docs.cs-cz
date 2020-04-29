@@ -1,6 +1,6 @@
 ---
-title: Doporučení synapse SQL
-description: Informace o doporučeních Synapse SQL a o jejich generování
+title: Doporučení SQL synapse
+description: Přečtěte si o doporučeních SQL synapse a způsobu jejich generování.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -12,53 +12,53 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633687"
 ---
-# <a name="synapse-sql-recommendations"></a>Doporučení synapse SQL
+# <a name="synapse-sql-recommendations"></a>Doporučení SQL synapse
 
-Tento článek popisuje doporučení Synapse SQL obsluhovaná prostřednictvím Azure Advisor.  
+Tento článek popisuje doporučení SQL synapse, která jsou poskytována prostřednictvím Azure Advisor.  
 
-SQL Analytics poskytuje doporučení, která zajistí, že vaše úloha datového skladu je konzistentně optimalizovaná pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisorem,](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) aby vám poskytla osvědčené postupy přímo na [webu Azure Portal](https://aka.ms/Azureadvisor). SQL Analytics shromažďuje telemetrická data a zobrazuje doporučení pro vaše aktivní úlohy v denní kadenci. Podporované scénáře doporučení jsou uvedeny níže spolu s tím, jak použít doporučené akce.
+SQL Analytics poskytuje doporučení k zajištění konzistentního optimalizace úloh datového skladu pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , aby vám poskytovala osvědčené postupy přímo v rámci [Azure Portal](https://aka.ms/Azureadvisor). SQL Analytics shromažďuje doporučení telemetrie a povrchů pro aktivní úlohy na denní tempo. Podporované scénáře doporučení jsou popsány níže spolu s postupem použití doporučených akcí.
 
-Svá [doporučení si](https://aka.ms/Azureadvisor) můžete ověřit ještě dnes! V současné době je tato funkce použitelná pouze pro datové sklady Gen2.
+Můžete [si vyzkoušet doporučení](https://aka.ms/Azureadvisor) ještě dnes! Tato funkce je momentálně platná jenom pro Gen2 datové sklady.
 
-## <a name="data-skew"></a>Zkosení dat
+## <a name="data-skew"></a>Zkosit data
 
-Zkosení dat může způsobit další přesun dat nebo problémová místa prostředků při spuštění úlohy. Následující dokumentace popisuje zobrazit identifikovat zkosení dat a zabránit tomu, aby se to stalo výběrem optimální distribuční klíč.
+Při spuštění úlohy může zkosit data způsobit větší problém při přesunu dat nebo při jejich používání. V následující dokumentaci se dozvíte, jak identifikovat zešikmení dat a zabránit tomu, aby se vybraly výběrem optimálního distribučního klíče.
 
 - [Identifikace a odebrání zkosení](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
 
 ## <a name="no-or-outdated-statistics"></a>Žádné nebo zastaralé statistiky
 
-S neoptimální statistiky může vážně ovlivnit výkon dotazu, protože může způsobit optimalizace dotazů SQL generovat neoptimální plány dotazů. Následující dokumentace popisuje osvědčené postupy týkající se vytváření a aktualizace statistik:
+Díky podoptimálním statistikám může mít vážně dopad na výkon dotazů, protože může způsobit, že Optimalizátor dotazů SQL vygeneruje jak optimální plány dotazů. Následující dokumentace popisuje osvědčené postupy při vytváření a aktualizaci statistik:
 
-- [Vytváření a aktualizace statistik tabulky](sql-data-warehouse-tables-statistics.md)
+- [Vytváření a aktualizace statistiky tabulky](sql-data-warehouse-tables-statistics.md)
 
-Chcete-li zobrazit seznam ovlivněných tabulek podle těchto doporučení, spusťte následující [skript T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Poradce průběžně spouští stejný skript T-SQL pro generování těchto doporučení.
+Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující [skript T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor průběžně spouští stejný skript T-SQL, aby vygeneroval tato doporučení.
 
 ## <a name="replicate-tables"></a>Replikovat tabulky
 
-U doporučení replikované tabulky poradce zjistí kandidáty v tabulce na základě následujících fyzických charakteristik:
+V případě doporučení pro replikovanou tabulku detekuje Advisor kandidáty na tabulku na základě následujících fyzických vlastností:
 
 - Velikost replikované tabulky
 - Počet sloupců
-- Typ rozložení tabulky
+- Typ distribuce tabulky
 - Počet oddílů
 
-Advisor neustále využívá heuristiky založené na úlohách, jako je frekvence přístupu k tabulce, řádky vrácené v průměru a prahové hodnoty kolem velikosti datového skladu a aktivity, aby zajistily generování vysoce kvalitních doporučení.
+Advisor průběžně využívá heuristiky založené na úlohách, jako je četnost přístupů k tabulkám, počet vrácených řádků v průměru a prahové hodnoty velikosti datového skladu a aktivity, abyste zajistili, že se vygenerují vysoce kvalitní doporučení.
 
-Následující text popisuje heuristiku založenou na úlohách, kterou můžete najít na webu Azure Portal pro každé doporučení replikované tabulky:
+Níže jsou popsány heuristicky založené na úlohách, které můžete najít v Azure Portal pro každé z doporučení replikované tabulky:
 
-- Prohledat avg- průměrné procento řádků, které byly vráceny z tabulky pro každý přístup k tabulce za posledních sedm dní
-- Časté čtení, žádná aktualizace - označuje, že tabulka nebyla aktualizována v posledních sedmi dnech při zobrazení aktivity přístupu
-- Poměr čtení a aktualizace – poměr četnosti přístupu k tabulce vzhledem k aktualizaci za posledních sedm dní
-- Aktivita - měří využití na základě aktivity přístupu. To porovnává aktivitu přístupu k tabulce vzhledem k průměrné aktivitě přístupu k tabulce v datovém skladu za posledních sedm dní.
+- Průměrný počet řádků vrácených z tabulky pro každý přístup k tabulce za posledních sedm dní
+- Časté čtení bez aktualizace – označuje, že se tabulka během posledních sedmi dnů neaktualizovala při zobrazení aktivity přístupu.
+- Poměr pro čtení a aktualizaci – poměr mezi časté, k němuž byla tabulka přístupná, když se aktualizuje za posledních sedm dní
+- Activity – měří míru využití na základě aktivity přístupu. Tím se porovná aktivita přístupu k tabulce vzhledem k průměrné aktivitě přístupu k tabulce v rámci datového skladu za posledních sedm dní.
 
-V současné době poradce zobrazí pouze maximálně čtyři replikované tabulka kandidátů najednou s clusterované columnstore indexy upřednostňující nejvyšší aktivitu.
+V současné době se u clusterovaných indexů columnstore zobrazí jenom čtyři kandidáty replikované tabulky s upřednostněním nejvyšší aktivity.
 
 > [!IMPORTANT]
-> Doporučení replikované tabulky není úplným důkazem a nebere v úvahu operace přesunu dat. Pracujeme na přidání jako heuristické, ale do té doby byste měli vždy ověřit své pracovní vytížení po použití doporučení. Obraťte sqldwadvisor@service.microsoft.com se, pokud zjistíte doporučení replikované tabulky, která způsobí, že vaše úlohy k regress. Další informace o replikovaných tabulkách naleznete v následující [dokumentaci](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+> Doporučení replikované tabulky není úplného ověření a nebere v úvahu operace přesunu dat. Pracujeme na tom, abychom tento postup používali jako heuristickou, ale mezitím byste po použití doporučení měli vždy ověřit své zatížení. Pokud si sqldwadvisor@service.microsoft.com vyžádáte doporučení pro replikovanou tabulku, která způsobí, že se vaše úloha vrátí do služby, kontaktujte prosím Další informace o replikovaných tabulkách najdete v následující [dokumentaci](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).

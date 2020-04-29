@@ -1,6 +1,6 @@
 ---
 title: Použití smyček T-SQL
-description: Tipy pro vývoj řešení pomocí T-SQL smyček a nahrazení kurzorů v fondu Synapse SQL.
+description: Tipy pro vývoj řešení pomocí smyček T-SQL a nahrazení kurzorů ve fondu synapse SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 72a39804931c0834233e91190aacffa8d35912df
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633479"
 ---
-# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Použití t-SQL smyček v fondu Synapse SQL
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Použití smyček T-SQL ve fondu synapse SQL
 
-Součástí tohoto článku jsou tipy pro vývoj řešení fondu SQL pomocí T-SQL smyčky a nahrazení kurzory.
+V tomto článku jsou uvedené tipy pro vývoj řešení fondů SQL pomocí smyček T-SQL a nahrazování kurzorů.
 
-## <a name="purpose-of-while-loops"></a>Účel smyčků WHILE
+## <a name="purpose-of-while-loops"></a>Účel smyčky WHILe
 
-Synapse SQL fond podporuje [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) smyčky pro opakovaně provádění příkazů bloků. Tato smyčka WHILE pokračuje tak dlouho, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK.
+Synapse fond SQL podporuje smyčku [while](/sql/t-sql/language-elements/while-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) pro opakované provádění bloků příkazů. Tato smyčka WHILe pokračuje, dokud jsou zadané podmínky pravdivé nebo dokud kód konkrétně neukončí smyčku pomocí klíčového slova BREAK.
 
-Smyčky jsou užitečné pro nahrazení kurzory definované v kódu SQL. Naštěstí téměř všechny kurzory, které jsou napsány v kódu SQL jsou rychlé vpřed, jen pro čtení odrůdy. Takže, WHILE smyčky jsou skvělou alternativou pro nahrazení kurzory.
+Smyčky jsou užitečné pro nahrazování kurzorů definovaných v kódu SQL. Naštěstí jsou téměř všechny kurzory, které jsou napsány v kódu SQL, určeny pro rychlý posun, jen pro čtení. Takže zatímco smyčky jsou skvělou alternativou pro nahrazování kurzorů.
 
-## <a name="replacing-cursors-in-synapse-sql-pool"></a>Nahrazení kurzorů ve fondu SYNAPSE SQL
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Výměna kurzorů ve fondu SQL synapse
 
-Nicméně, před potápěním v hlavě první byste si měli položit následující otázku: "Mohl by tento kurzor být přepsán, aby používal operace založené na sadě?"
+Předtím, než začnete v hlavě, byste si ale měli zeptat na následující otázku: "chcete, aby se tento kurzor přepsal pro použití operací založených na nastavení?"
 
-V mnoha případech je odpověď ano a je často nejlepším přístupem. Operace založená na sadě často provádí rychleji než iterativní, řádek po řádku přístup.
+V mnoha případech je odpověď ano a často se jedná o nejlepší přístup. Operace založená na sadě často provádí rychlejší zpracování více než iterativního přístupu řádku.
 
-Rychlé převíjení kurzorů jen pro čtení lze snadno nahradit sopakování konstrukce. Následující příklad je jednoduchý. Tento příklad kódu aktualizuje statistiky pro každou tabulku v databázi. Iterace přes tabulky ve smyčce, každý příkaz provede v pořadí.
+Rychlé dopředné kurzory, které jsou jen pro čtení, se dají snadno nahradit konstrukcí smyčky. Následující příklad je jednoduchý. Tento příklad kódu aktualizuje statistiku pro každou tabulku v databázi. Pomocí iterace v tabulkách ve smyčce se každý příkaz provede v pořadí.
 
-Nejprve vytvořte dočasnou tabulku obsahující jedinečné číslo řádku, které slouží k identifikaci jednotlivých příkazů:
+Nejdřív vytvořte dočasnou tabulku obsahující číslo jedinečného řádku, které slouží k identifikaci jednotlivých příkazů:
 
 ```sql
 CREATE TABLE #tbl
@@ -51,7 +51,7 @@ FROM    sys.tables
 ;
 ```
 
-Za druhé, inicializovat proměnné potřebné k provedení smyčky:
+Za druhé inicializujte proměnné potřebné k provedení smyčky:
 
 ```sql
 DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
@@ -59,7 +59,7 @@ DECLARE @nbr_statements INT = (SELECT COUNT(*) FROM #tbl)
 ;
 ```
 
-Nyní smyčku přes příkazy jejich provádění jeden po druhém:
+Nyní Projděte přes příkazy, které je spouštějí po jednom v čase:
 
 ```sql
 WHILE   @i <= @nbr_statements
@@ -70,7 +70,7 @@ BEGIN
 END
 ```
 
-Nakonec přetáhněte dočasnou tabulku vytvořenou v prvním kroku
+Nakonec vyřaďte dočasnou tabulku vytvořenou v prvním kroku.
 
 ```sql
 DROP TABLE #tbl;
@@ -78,4 +78,4 @@ DROP TABLE #tbl;
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

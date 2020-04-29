@@ -1,6 +1,6 @@
 ---
-title: Pozastavení, pokračování, škálování pomocí rest API
-description: Spravujte výpočetní výkon v datovém skladu Azure Synapse Analytics prostřednictvím api REST.
+title: Pozastavení, obnovení, škálování pomocí rozhraní REST API
+description: Spravujte výpočetní výkon v Azure synapse Analytics Data Warehouse prostřednictvím rozhraní REST API.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633207"
 ---
-# <a name="rest-apis-for-azure-sql-data-warehouse"></a>REST API pro Datový sklad Azure SQL
+# <a name="rest-apis-for-azure-sql-data-warehouse"></a>Rozhraní REST API pro Azure SQL Data Warehouse
 
-REST API pro správu výpočetních prostředků v datovém skladu Azure Synapse Analytics.
+Rozhraní REST API pro správu výpočetních prostředků ve službě Azure synapse Analytics Data Warehouse.
 
 ## <a name="scale-compute"></a>Škálování výpočetního výkonu
 
-Chcete-li změnit jednotky datového skladu, použijte rozhraní API REST [vytvořit nebo aktualizovat databázi.](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad nastaví jednotky datového skladu na DW1000 pro databázi MySQLDW, která je hostována na serveru MyServer. Server se nachází ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li změnit jednotky datového skladu, použijte REST API [vytvořit nebo aktualizovat databázi](/rest/api/sql/databases/createorupdate?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Následující příklad nastaví jednotky datového skladu tak, aby DW1000 pro databázi MySQLDW, která je hostována na serveru MyServer. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 PATCH https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -37,43 +37,43 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-## <a name="pause-compute"></a>Pozastavení výpočtu
+## <a name="pause-compute"></a>Pozastavit výpočetní prostředky
 
-Chcete-li databázi pozastavit, použijte rozhraní REST ROZHRANÍ [PAUSE Database.](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad pozastaví databázi s názvem Database02 hostovoci na serveru s názvem Server01. Server se nachází ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li pozastavit databázi, použijte REST API [Pozastavení databáze](/rest/api/sql/databases/pause?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . V následujícím příkladu je pozastavena databáze s názvem Database02, která je hostována na serveru s názvem server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="resume-compute"></a>Pokračovat v výpočtu
+## <a name="resume-compute"></a>Pokračovat v COMPUTE
 
-Chcete-li spustit databázi, použijte rozhraní REST ROZHRANÍ [RESUME Database.](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Následující příklad spustí databázi s názvem Database02 hostovanou na serveru s názvem Server01. Server se nachází ve skupině prostředků Azure s názvem ResourceGroup1.
+Chcete-li spustit databázi, použijte REST API [obnovit databázi](/rest/api/sql/databases/resume?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . V následujícím příkladu se spustí databáze s názvem Database02 hostovaná na serveru s názvem server01. Server je ve skupině prostředků Azure s názvem ResourceGroup1.
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1
 ```
 
-## <a name="check-database-state"></a>Zkontrolovat stav databáze
+## <a name="check-database-state"></a>Kontrolovat stav databáze
 
 > [!NOTE]
-> V současné době Zkontrolujte stav databáze může vrátit ONLINE, zatímco databáze je dokončení pracovního postupu online, výsledkem jsou chyby připojení. Pokud používáte toto volání rozhraní API ke spuštění pokusů o připojení, bude pravděpodobně nutné přidat 2 až 3 minuty zpoždění v kódu aplikace.
+> Stav databáze se v současné době kontroluje ONLINE, zatímco databáze dokončuje online pracovní postup, což vede k chybám připojení. Pokud toto volání rozhraní API používáte k aktivaci pokusů o připojení, může být nutné přidat zpoždění 2 až 3 minuty do kódu aplikace.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>Získejte plán údržby
+## <a name="get-maintenance-schedule"></a>Získat plán údržby
 
-Zkontrolujte plán údržby, který byl nastaven pro datový sklad.
+Ověřte plán údržby, který byl nastaven pro datový sklad.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
 
 ```
 
-## <a name="set-maintenance-schedule"></a>Nastavení plánu údržby
+## <a name="set-maintenance-schedule"></a>Nastavit plán údržby
 
-Nastavení a aktualizace plánu údržby v existujícím datovém skladu.
+Nastavení a aktualizace plánu údržby pro existující datový sklad.
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
@@ -99,4 +99,4 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v [tématu Správa výpočetních prostředků](sql-data-warehouse-manage-compute-overview.md).
+Další informace najdete v tématu [Správa výpočtů](sql-data-warehouse-manage-compute-overview.md).

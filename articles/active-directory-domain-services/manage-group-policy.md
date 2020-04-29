@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a správa zásad skupiny ve službě Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak upravit předdefinované objekty zásad skupiny (GPO) a vytvořit vlastní zásady ve spravované doméně Služby Azure Active Directory Domain Services.
+title: Vytvoření a Správa zásad skupiny v Azure AD Domain Services | Microsoft Docs
+description: Naučte se, jak upravit předdefinované objekty zásad skupiny (GPO) a vytvořit vlastní zásady ve Azure Active Directory Domain Services spravované doméně.
 author: iainfoulds
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -11,116 +11,116 @@ ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 742d716ecdfff6ab67dedc281aa6134020f57add
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655035"
 ---
-# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa zásad skupiny ve spravované doméně služby Azure AD Domain Services
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Správa Zásady skupiny ve spravované doméně Azure AD Domain Services
 
-Nastavení pro objekty uživatelů a počítačů ve službě Azure Active Directory Domain Services (Azure AD DS) se často spravují pomocí objektů zásad skupiny (GPO). Azure AD DS zahrnuje předdefinované objekty zásad skupinpro *kontejnery AADDC users* a *AADDC Computers.* Tyto předdefinované objekty Zásad skupiny můžete přizpůsobit tak, aby nakonfigurovaly zásady skupiny podle potřeby pro vaše prostředí. Členové *skupiny správců řadiče domény Azure AD DC* mají oprávnění pro správu zásad skupiny v doméně Azure AD DS a můžou také vytvářet vlastní objekty zásad skupiny a organizační jednotky (OU). Další informace o tom, co je zásady skupiny a jak fungují, najdete v [tématu Přehled zásad skupiny][group-policy-overview].
+Nastavení pro objekty uživatelů a počítačů v Azure Active Directory Domain Services (Azure služba AD DS) se často spravují pomocí objektů Zásady skupiny (objekty zásad skupiny). Azure služba AD DS obsahuje integrované objekty zásad skupiny pro kontejnery *uživatelů AADDC* a *počítačů AADDC* . Tyto předdefinované objekty zásad skupiny můžete přizpůsobit tak, aby Zásady skupiny podle potřeby pro vaše prostředí. Členové skupiny *Správci domény Azure AD* mají zásady skupiny oprávnění správce v doméně Azure služba AD DS a můžou také vytvářet vlastní objekty zásad skupiny a organizační jednotky (OU). Další informace o tom, co Zásady skupiny a jak funguje, najdete v článku [Zásady skupiny přehled][group-policy-overview].
 
-V hybridním prostředí nejsou zásady skupiny nakonfigurované v místním prostředí služby AD DS synchronizovány se službou Azure AD DS. Chcete-li definovat nastavení konfigurace pro uživatele nebo počítače ve službě Azure AD DS, upravte jeden z výchozích objektů zásad skupiny nebo vytvořte vlastní objekt zásad skupiny.
+V hybridním prostředí se zásady skupiny nakonfigurované v místních služba AD DS prostředí nesynchronizují s Azure služba AD DS. Pokud chcete definovat nastavení konfigurace pro uživatele nebo počítače v Azure služba AD DS, upravte jeden z výchozích objektů zásad skupiny nebo vytvořte vlastní objekt zásad skupiny.
 
-Tento článek ukazuje, jak nainstalovat nástroje pro správu zásad skupiny, potom upravit předdefinované objekty Zásad skupiny a vytvořit vlastní objekty Zásad skupiny.
+V tomto článku se dozvíte, jak nainstalovat nástroje pro správu Zásady skupiny a pak upravit předdefinované objekty zásad skupiny a vytvořit vlastní objekty zásad skupiny.
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávnění:
+K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby proveďte kurz [a vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Virtuální počítač pro správu Windows Serveru, který je spojený se spravovanou doménou Azure AD DS.
-    * V případě potřeby dokončete kurz [vytvoření virtuálního virtuálního uživatele se systémem Windows Server a připojte ho ke spravované doméně][create-join-windows-vm].
-* Uživatelský účet, který je členem *skupiny správců Azure AD DC* ve vašem tenantovi Azure AD.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
+    * V případě potřeby dokončete kurz a [vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně][create-join-windows-vm].
+* Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
 
 > [!NOTE]
-> Šablony pro správu zásad skupiny můžete použít zkopírováním nových šablon do pracovní stanice pro správu. Zkopírujte soubory *ADMX* `%SYSTEMROOT%\PolicyDefinitions` do souborů *ADML* specifických pro `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`dané `Language-CountryRegion` prostředí , kde odpovídá jazyku a oblasti souborů *ADML.*
+> Pomocí Zásady skupiny Šablony pro správu můžete zkopírovat nové šablony do pracovní stanice pro správu. Zkopírujte soubory *. admx* do `%SYSTEMROOT%\PolicyDefinitions` a zkopírujte soubory. *ADML* specifické pro národní prostředí do `%SYSTEMROOT%\PolicyDefinitions\[Language-CountryRegion]`, kde `Language-CountryRegion` odpovídá jazyku a oblasti souborů *. adml* .
 >
-> Do `\en-us` složky například zkopírujte anglickou verzi souborů *ADML* v angličtině.
+> Zkopírujte například anglickou USA verzi souborů *. adml* do `\en-us` složky.
 >
-> Případně můžete centrálně ukládat šablonu pro správu zásad skupiny na řadiče domény, které jsou součástí spravované domény Azure AD DS. Další informace naleznete v [tématu Vytvoření a správa šablon správy zásad central store pro skupiny v systému Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
+> Případně můžete centrálně Uložit Zásady skupiny šablonu pro správu na řadičích domény, které jsou součástí spravované domény Azure služba AD DS. Další informace najdete v tématu [Vytvoření a Správa centrálního úložiště pro Zásady skupiny šablony pro správu v systému Windows](https://support.microsoft.com/help/3087759/how-to-create-and-manage-the-central-store-for-group-policy-administra).
 
-## <a name="install-group-policy-management-tools"></a>Instalace nástrojů pro správu zásad skupiny
+## <a name="install-group-policy-management-tools"></a>Instalace nástrojů pro správu Zásady skupiny
 
-Chcete-li vytvořit a nakonfigurovat objekt zásad skupiny (Objekt y zásad skupiny), je třeba nainstalovat nástroje pro správu zásad skupiny. Tyto nástroje lze nainstalovat jako funkci v systému Windows Server. Další informace o instalaci nástrojů pro správu do klienta systému Windows naleznete v tématu instalace [nástrojů pro vzdálenou správu serveru (RSAT)][install-rsat].
+Pokud chcete vytvořit a nakonfigurovat objekt Zásady skupiny (GPO), musíte nainstalovat nástroje pro správu Zásady skupiny. Tyto nástroje je možné nainstalovat jako funkci Windows serveru. Další informace o tom, jak nainstalovat nástroje pro správu na klienta Windows, najdete v tématu Install [Nástroje pro vzdálenou správu serveru (RSAT)][install-rsat].
 
-1. Přihlaste se k virtuálnímu počítači pro správu. Postup připojení pomocí portálu Azure najdete v [tématu Připojení k virtuálnímu počítači s Windows Server][connect-windows-server-vm].
-1. **Správce serveru** by se měl otevřít ve výchozím nastavení při přihlášení k virtuálnímu virtuálnímu týmu. Pokud ne, vyberte v nabídce **Start** **Správce serveru**.
-1. V podokně *Řídicí panel* v okně **Správce serveru** vyberte Přidat role **a funkce**.
-1. Na stránce **Před zahájením** *Průvodce*přidáním rolí a funkcí vyberte další položku **.**
-1. U *typu instalace*ponechte zaškrtnutou možnost **instalace na základě rolí nebo funkcí** a vyberte **další**.
-1. Na stránce **Výběr serveru** vyberte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
-1. Na stránce **Role serveru** klepněte na tlačítko **Další**.
-1. Na stránce **Funkce** vyberte funkci **Správa zásad skupiny.**
+1. Přihlaste se ke svému VIRTUÁLNÍmu počítači pro správu. Postup, jak se připojit pomocí Azure Portal, najdete v tématu [připojení k virtuálnímu počítači s Windows serverem][connect-windows-server-vm].
+1. Když se přihlásíte k virtuálnímu počítači, **Správce serveru** by se měly otevřít ve výchozím nastavení. Pokud ne, v nabídce **Start** vyberte **Správce serveru**.
+1. V podokně *řídicí panel* v okně **Správce serveru** vyberte **Přidat role a funkce**.
+1. Na stránce **než začnete** v *Průvodci přidáním rolí a funkcí*vyberte **Další**.
+1. Pro *typ instalace*ponechte zaškrtnutou možnost instalace na základě **rolí nebo na základě funkcí** a vyberte **Další**.
+1. Na stránce **Výběr serveru** zvolte aktuální virtuální počítač z fondu serverů, například *myvm.aaddscontoso.com*, a pak vyberte **Další**.
+1. Na stránce **role serveru** klikněte na **Další**.
+1. Na stránce **funkce** vyberte funkci **správy Zásady skupiny** .
 
-    ![Instalace správy zásad skupiny ze stránky Funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
+    ![Instalace ' Zásady skupiny Management ' ze stránky funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. Na stránce **Potvrzení** vyberte **Instalovat**. Instalace nástrojů pro správu zásad skupiny může trvat minutu nebo dvě.
-1. Po dokončení instalace prvku vyberte **Zavřít** a ukončete Průvodce **přidáním rolí a funkcí.**
+1. Na stránce **potvrzení** vyberte **nainstalovat**. Instalace nástrojů pro správu Zásady skupiny může trvat minutu nebo dvě.
+1. Po dokončení instalace funkce vyberte **Zavřít** a ukončete průvodce **přidáním rolí a funkcí** .
 
-## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Otevření Konzoly pro správu zásad skupiny a úprava objektu
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>Otevření Konzola pro správu zásad skupiny a úprava objektu
 
-Výchozí objekty zásad skupiny (GPO) existují pro uživatele a počítače ve spravované doméně Azure AD DS. S nainstalovanou funkcí Správy zásad skupiny z předchozí části zobrazme a upravíme existující objekt zásad skupiny. V další části vytvoříte vlastní objekt gpo.
+Pro uživatele a počítače ve spravované doméně služby Azure služba AD DS existují výchozí objekty zásad skupiny (GPO). Pomocí funkce správy Zásady skupiny nainstalované v předchozí části si můžeme zobrazit a upravit existující objekt zásad skupiny. V další části vytvoříte vlastní objekt zásad skupiny.
 
 > [!NOTE]
-> Chcete-li spravovat zásady skupiny ve spravované doméně Azure AD DS, musíte být přihlášeni k uživatelskému účtu, který je členem *skupiny Správci řadiče domény Řadiče domény AAD.*
+> Pokud chcete spravovat zásady skupiny ve spravované doméně Azure služba AD DS, musíte být přihlášení k uživatelskému účtu, který je členem skupiny *Správci AAD DC* .
 
-1. Na úvodní obrazovce vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, včetně **správy zásad skupiny** nainstalované v předchozí části.
-1. Chcete-li otevřít Konzolu pro správu zásad skupiny (GPMC), zvolte **Nástroj pro správu zásad skupiny**.
+1. Z obrazovky Start vyberte **Nástroje pro správu**. Zobrazí se seznam dostupných nástrojů pro správu, včetně **správy Zásady skupiny** nainstalovanou v předchozí části.
+1. Chcete-li otevřít konzolu Konzola pro správu zásad skupiny (GPMC), vyberte možnost **Zásady skupiny Správa**.
 
-    ![Konzola pro správu zásad skupiny se otevře připravená k úpravám objektů zásad skupiny.](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+    ![Konzola pro správu zásad skupiny se otevře jako připravená pro úpravu objektů zásad skupiny.](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-Ve spravované doméně Azure AD DS existují dva předdefinované objekty zásad skupiny (GPO) – jeden pro kontejner *Počítače AADDC* a jeden pro kontejner *Uživatelů AADDC.* Tyto objekty zásad skupiny můžete přizpůsobit tak, aby podle potřeby nakonfigurovaly zásady skupiny ve spravované doméně Azure AD DS.
+Existují dva předdefinované Zásady skupiny objekty (GPO) v Azure služba AD DS spravované doméně – jeden pro kontejner *počítačů AADDC* a jeden pro kontejner *AADDC Users* . Tyto objekty zásad skupiny můžete přizpůsobit tak, aby podle potřeby v rámci vaší spravované domény služba AD DS Azure nakonfigurovaly zásady skupiny.
 
-1. V konzole **správa zásad skupiny** rozbalte uzel **Doménová struktura: aaddscontoso.com.** Dále rozbalte uzly **domén.**
+1. V konzole **pro správu Zásady skupiny** rozbalte uzel **doménová struktura: aaddscontoso.com** . Dále rozbalte uzly **domény** .
 
-    Existují dva předdefinované kontejnery pro *počítače AADDC* a *uživatele AADDC*. Každý z těchto kontejnerů má výchozí gpo použít na ně.
+    Pro *počítače s AADDC* a *uživatele AADDC*existují dva předdefinované kontejnery. U každého z těchto kontejnerů je použit výchozí objekt zásad skupiny.
 
-    ![Vestavěné objekty Zásad skupiny použité pro výchozí kontejnery AADDC Computers a AADDC Users](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
+    ![Předdefinované objekty zásad skupiny použité pro výchozí kontejnery AADDC počítače a AADDC Users](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-1. Tyto předdefinované objekty zásad skupiny lze přizpůsobit tak, aby nakonfigurovaly konkrétní zásady skupiny ve spravované doméně Azure AD DS. Vyberte jeden z objektů zásad skupiny, například *objekt zásad skupiny Počítačů AADDC*, a pak zvolte **Upravit...**.
+1. Tyto předdefinované objekty zásad skupiny je možné přizpůsobit tak, aby na spravované doméně Azure služba AD DS nakonfigurovaly konkrétní zásady skupiny. Pravým tlačítkem vyberte jeden z objektů zásad skupiny (GPO), třeba *AADDC počítače*, a pak zvolte **Upravit...**.
 
-    ![Zvolte možnost "Upravit" jeden z předdefinovaných objektů zásad skupiny.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
+    ![Vyberte možnost upravit jeden z vestavěných objektů zásad skupiny.](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-1. Otevře se nástroj Editor správy zásad skupiny, který umožňuje přizpůsobit objekt zásad skupiny, například *zásady obchodního vztahu*:
+1. Otevře se nástroj Editor pro správu zásad skupiny, který umožňuje přizpůsobení objektu zásad skupiny (GPO), jako jsou například *Zásady účtů*:
 
-    ![Přizpůsobení příkazu GPO pro konfiguraci nastavení podle potřeby](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![Přizpůsobením objektu zásad skupiny nakonfigurujte nastavení podle potřeby.](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-    Až bude hotovo, zvolte **Soubor > Uložit,** chcete-li zásadu uložit. Počítače aktualizují zásady skupiny ve výchozím nastavení každých 90 minut a aplikují provedené změny.
+    Až budete hotovi, vyberte **soubor > Uložit** a zásadu uložte. Počítače se ve výchozím nastavení aktualizují Zásady skupiny každých 90 minut a použijí změny, které jste provedli.
 
-## <a name="create-a-custom-group-policy-object"></a>Vytvoření vlastního objektu zásad skupiny
+## <a name="create-a-custom-group-policy-object"></a>Vytvořit vlastní objekt Zásady skupiny
 
-Chcete-li seskupit podobné nastavení zásad, často vytvoříte další objekty zásad skupiny namísto použití všech požadovaných nastavení v jednom výchozím objektu zásad skupiny. Pomocí služby Azure AD DS můžete vytvořit nebo importovat vlastní objekty zásad skupiny a propojit je s vlastní ou. Pokud potřebujete nejdřív vytvořit vlastní ouovou akci, přečtěte si hlavní [pracovní příležitost ve spravované doméně Azure AD DS](create-ou.md).
+Pokud chcete seskupit podobná nastavení zásad, často se místo použití všech požadovaných nastavení v jednom výchozím objektu zásad skupiny vytvoří další objekty zásad skupiny. Pomocí Azure služba AD DS můžete vytvářet nebo importovat vlastní objekty zásad skupiny a propojit je s vlastní organizační jednotkou. Pokud potřebujete nejdřív vytvořit vlastní organizační jednotku, přečtěte si téma [Vytvoření vlastní organizační jednotky ve spravované doméně Azure služba AD DS](create-ou.md).
 
-1. V konzole **správy zásad skupiny** vyberte vlastní organizační jednotku (OU), například *MyCustomOU*. Vyberte hlavní výuce vpravo a v této doméně zvolte **Vytvořit zdroj skupiny a propojte ho zde...**:
+1. V konzole **pro správu Zásady skupiny** vyberte vlastní organizační jednotku (OU), například *MyCustomOU*. Klikněte pravým tlačítkem myši na organizační jednotku a zvolte možnost **vytvořit objekt zásad skupiny v této doméně a propojit jej sem...**:
 
-    ![Vytvoření vlastního objektu zásad skupiny v konzole pro správu zásad skupiny](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
+    ![Vytvoření vlastního objektu zásad skupiny v konzole pro správu Zásady skupiny](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
-1. Zadejte název nového objektu gpo, například *Můj vlastní objekt gpo*, a vyberte **OK**. Volitelně můžete založit tento vlastní objekt zásad zásad zásad na existujícím objektu zásad zásad a sadě možností zásad.
+1. Zadejte název nového objektu zásad skupiny, třeba *můj vlastní objekt zásad skupiny*, a pak vyberte **OK**. Volitelně můžete tento vlastní objekt zásad skupiny založit na existujícím objektu zásad skupiny a sadě možností zásad.
 
-    ![Zadejte název nového vlastního objektu gpo](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
+    ![Zadejte název nového vlastního objektu zásad skupiny.](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-1. Vlastní objekt gpo je vytvořen a propojen s vlastní ou. Chcete-li nyní konfigurovat nastavení zásad, vyberte vpravo vlastní objekt zásad y gpo a zvolte **Upravit...**:
+1. Vlastní objekt zásad skupiny se vytvoří a propojí se s vlastní organizační jednotkou. Pokud teď chcete nakonfigurovat nastavení zásad, vyberte vlastní objekt zásad skupiny a zvolte **Upravit...**:
 
-    ![Zvolte možnost "Upravit" vlastní objekt skupiny.](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+    ![Vyberte možnost Upravit vlastní objekt zásad skupiny.](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
 
-1. Otevře se **Editor správy zásad skupiny,** který umožňuje přizpůsobit objekt zásad skupiny:
+1. Otevře se **Editor pro správu zásad skupiny** , abyste mohli přizpůsobit objekt zásad skupiny:
 
-    ![Přizpůsobení příkazu GPO pro konfiguraci nastavení podle potřeby](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![Přizpůsobením objektu zásad skupiny nakonfigurujte nastavení podle potřeby.](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
 
-    Až bude hotovo, zvolte **Soubor > Uložit,** chcete-li zásadu uložit. Počítače aktualizují zásady skupiny ve výchozím nastavení každých 90 minut a aplikují provedené změny.
+    Až budete hotovi, vyberte **soubor > Uložit** a zásadu uložte. Počítače se ve výchozím nastavení aktualizují Zásady skupiny každých 90 minut a použijí změny, které jste provedli.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dostupných nastaveních zásad skupiny, které lze konfigurovat pomocí Konzoly pro správu zásad skupiny, naleznete v [tématu Práce s položkami předvoleb zásad skupiny][group-policy-console].
+Další informace o dostupných nastaveních Zásady skupiny, která můžete nakonfigurovat pomocí Konzola pro správu zásad skupiny, najdete v tématu [work with zásady skupiny Item Preferences][group-policy-console].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

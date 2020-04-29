@@ -1,6 +1,6 @@
 ---
-title: Přiřazení proměnných
-description: V tomto článku najdete základní tipy pro přiřazení proměnných T-SQL ve fondu SQL.
+title: Přiřadit proměnné
+description: V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL ve fondu SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,26 +12,26 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633410"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>Přiřazení proměnných ve fondu Synapse SQL
+# <a name="assign-variables-in-synapse-sql-pool"></a>Přiřazení proměnných ve fondu SQL synapse
 
-V tomto článku najdete základní tipy pro přiřazení proměnných T-SQL ve fondu SQL.
+V tomto článku najdete základní tipy pro přiřazování proměnných T-SQL ve fondu SQL.
 
 ## <a name="set-variables-with-declare"></a>Nastavení proměnných pomocí příkazu DECLARE
 
-Proměnné ve fondu SQL jsou `DECLARE` nastaveny `SET` pomocí příkazu nebo příkazu. Inicializace proměnných pomocí funkce DECLARE je jedním z nejflexibilnějších způsobů nastavení hodnoty proměnné ve fondu SQL.
+Proměnné ve fondu SQL jsou nastaveny pomocí `DECLARE` příkazu nebo `SET` příkazu. Inicializace proměnných pomocí příkazu DECLARE je jedním z nejpružnější způsob, jak nastavit hodnotu proměnné ve fondu SQL.
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-Declare můžete také použít k nastavení více než jednu proměnnou najednou. Select nebo UPDATE nelze použít k následujícím akcím:
+Můžete také použít DEKLARaci k nastavení více než jedné proměnné v jednom okamžiku. PŘÍKAZ SELECT nebo UPDATE nelze použít k následujícím akcím:
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a použít proměnnou ve stejném příkazu DECLARE. Pro ilustraci bodu **následující** příklad @p1 není povolen, protože je inicializován a použit ve stejném příkazu DECLARE. V následujícím příkladu je uvedena chyba:
+Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci tohoto bodu **není povolen následující** příklad, protože @p1 je inicializován i použit ve stejném příkazu Declare. Například následující příklad obsahuje chybu:
 
 ```sql
 DECLARE @p1 int = 0
@@ -47,11 +47,11 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="set-values-with-set"></a>Nastavení hodnot pomocí sady
+## <a name="set-values-with-set"></a>Nastavit hodnoty pomocí SET
 
-SET je běžná metoda pro nastavení jedné proměnné.
+SET je společná metoda pro nastavení jedné proměnné.
 
-Následující příkazy jsou všechny platné způsoby nastavení proměnné s SET:
+Následující příkazy jsou platné způsoby, jak nastavit proměnnou pomocí SET:
 
 ```sql
 SET     @v = (Select max(database_id) from sys.databases);
@@ -60,12 +60,12 @@ SET     @v = @v+1;
 SET     @v +=1;
 ```
 
-Pomocí sady lze nastavit pouze jednu proměnnou najednou. Obsluha sloučenin je však přípustná.
+Současně lze nastavit pouze jednu proměnnou. Jsou však přípustné složené operátory.
 
 ## <a name="limitations"></a>Omezení
 
-Nelze použít update pro přiřazení proměnných.
+Nejde použít UPDATE pro přiřazení proměnné.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

@@ -1,6 +1,6 @@
 ---
 title: Použití dynamického SQL
-description: Tipy pro vývojová řešení využívající dynamické SQL v fondu Synapse SQL.
+description: Tipy pro vývojová řešení s využitím dynamického SQL ve fondu SQL synapse
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: a9280bb8153204f86096cf8249ff053bee3f71cc
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633531"
 ---
-# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dynamické SQL v fondu Synapse SQL
+# <a name="dynamic-sql-in-synapse-sql-pool"></a>Dynamický SQL ve fondu synapse SQL
 
-Součástí tohoto článku jsou tipy pro vývojová řešení pomocí dynamické SQL ve fondu SQL.
+V tomto článku najdete tipy pro vývojová řešení pomocí dynamického SQL ve fondu SQL.
 
-## <a name="dynamic-sql-example"></a>Dynamický příklad SQL
+## <a name="dynamic-sql-example"></a>Příklad dynamického SQL
 
-Při vývoji kódu aplikace pro fond SQL může být nutné použít dynamické SQL, které vám pomohou poskytovat flexibilní, obecná a modulární řešení. Fond SQL v tuto chvíli nepodporuje datové typy objektů blob.
+Při vývoji kódu aplikace pro fond SQL může být nutné použít dynamický jazyk SQL k zajištění flexibilních, obecných a modulárních řešení. Fond SQL v tuto chvíli nepodporuje datové typy objektů BLOB.
 
-Nepodporující datové typy objektů blob může omezit velikost řetězce, protože datové typy objektů blob zahrnují oba typy varchar(max) a nvarchar(max).
+Datové typy objektů BLOB nepodporují velikost řetězců, protože datové typy objektů BLOB zahrnují typy varchar (max) a nvarchar (max).
 
-Pokud jste použili tyto typy v kódu aplikace k vytvoření velkých řetězců, je třeba rozdělit kód na bloky a místo toho použít příkaz EXEC.
+Pokud jste tyto typy v kódu aplikace použili k sestavení velkých řetězců, je nutné rozdělit kód na bloky dat a místo toho použít příkaz EXEC.
 
 Jednoduchý příklad:
 
@@ -43,8 +43,8 @@ EXEC( @sql_fragment1 + @sql_fragment2 + @sql_fragment3);
 Pokud je řetězec krátký, můžete použít [sp_executesql](/sql/relational-databases/system-stored-procedures/sp-executesql-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jako normální.
 
 > [!NOTE]
-> Příkazy provedené jako dynamické SQL budou stále podléhat všem ověřovacím pravidlům T-SQL.
+> Příkazy spouštěné jako dynamické SQL budou nadále platit pro všechna ověřovací pravidla T-SQL.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).

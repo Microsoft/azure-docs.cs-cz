@@ -1,190 +1,190 @@
 ---
-title: Konfigurace úložiště Avere vFXT – Azure
-description: Jak přidat back-end ový úložný systém do avere vFXT pro Azure
+title: Konfigurace úložiště avere vFXT – Azure
+description: Postup přidání back-endového úložného systému do služby avere vFXT pro Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252607"
 ---
 # <a name="configure-storage"></a>Konfigurace úložiště
 
-Tento krok nastaví back-end ový úložný systém pro váš cluster vFXT.
+Tento krok nastaví systém back-endu úložiště pro cluster vFXT.
 
 > [!TIP]
-> Pokud jste vytvořili nový kontejner objektů blob Azure spolu s clusterem Avere vFXT, tento kontejner je již nakonfigurovaný a připravený k použití.
+> Pokud jste vytvořili nový kontejner Azure Blob společně s clusterem avere vFXT, je tento kontejner už nakonfigurovaný a připravený k použití.
 
-Pokud jste s clusterem nevytvořili nový kontejner objektů Blob, postupujte podle těchto pokynů nebo pokud chcete přidat další hardwarový nebo cloudový úložný systém.
+Pokud jste nevytvořili nový kontejner objektů BLOB s clusterem nebo pokud chcete přidat další hardware nebo cloudový systém úložiště, postupujte podle těchto pokynů.
 
-Existují dva hlavní úkoly:
+Existují dva hlavní úlohy:
 
-1. [Vytvořte základní filer](#create-a-core-filer), který propojí váš cluster vFXT s existujícím systémem úložiště nebo kontejnerem účtu Úložiště Azure.
+1. [Vytvořte základní souborového](#create-a-core-filer), který propojí cluster vFXT s existujícím systémem úložiště nebo kontejnerem účtu Azure Storage.
 
-1. [Vytvořte křižovatku oboru názvů](#create-a-junction), která definuje cestu, kterou budou klienti připojovat.
+1. [Vytvořte spojení oboru názvů](#create-a-junction), které definuje cestu, kterou budou klienti připojovat.
 
-Tyto kroky používají ovládací panel Avere. Přečtěte [si Přístup ke clusteru vFXT,](avere-vfxt-cluster-gui.md) abyste se dozvěděli, jak ho používat.
+Tyto kroky používají ovládací panel avere. Pokud se chcete dozvědět, jak ho používat, získáte [přístup ke clusteru vFXT](avere-vfxt-cluster-gui.md) .
 
-## <a name="create-a-core-filer"></a>Vytvoření základního fileru
+## <a name="create-a-core-filer"></a>Vytvoření základního souborového
 
-"Core filer" je termín vFXT pro back-end úložný systém. Úložiště může být hardwarové zařízení NAS, jako je NetApp nebo Isilon, nebo může být úložiště objektů v cloudu. Další informace o základních filers naleznete v [průvodci nastavením clusteru Avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
+"Core souborového" je vFXT termín pro back-endové úložné systémy. Úložiště může být hardwarové zařízení NAS, jako je NetApp nebo Isilon, nebo se může jednat o cloudové úložiště objektů. Další informace o Core filers najdete v [Průvodci nastavením clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers).
 
-Chcete-li přidat základní filer, zvolte jeden ze dvou hlavních typů základních filerů:
+Pokud chcete přidat základní souborového, vyberte jeden ze dvou hlavních typů základních filers:
 
-* [Základní filer NAS](#nas-core-filer) - popisuje, jak přidat základní filer NAS
-* [Azure Storage cloud core filer](#azure-blob-storage-cloud-core-filer) – popisuje, jak přidat kontejner úložiště objektů Blob Azure jako filer jádra cloudu
+* [Server Core souborového](#nas-core-filer) – popisuje, jak přidat Server Core souborového
+* [Azure Storage Cloud Core souborového](#azure-blob-storage-cloud-core-filer) – popisuje postup přidání kontejneru úložiště objektů BLOB v Azure jako Cloud Core souborového.
 
-### <a name="nas-core-filer"></a>Základní filer NAS
+### <a name="nas-core-filer"></a>Jádro NAS souborového
 
-Základní filer NAS může být místní zařízení NetApp nebo Isilon nebo koncový bod NAS v cloudu. Systém úložiště musí mít spolehlivé vysokorychlostní připojení ke clusteru Avere vFXT – například připojení 1GBps ExpressRoute (nikoli VPN) – a musí poskytnout kořenovému přístupu k používaným exportům NAS.
+Jádro NAS souborového může být místní NetApp nebo Isilon zařízení nebo koncový bod NAS v cloudu. Systém úložiště musí mít spolehlivé vysokorychlostní připojení ke clusteru avere vFXT, například připojení 1Gb/s ExpressRoute (ne síť VPN), a musí mu poskytnout kořenový přístup clusteru k používaným exportům serveru NAS.
 
-Chcete-li přidat základní filer NAS, postupujte takto:
+Pomocí těchto kroků přidejte souborového pro NAS Core:
 
-1. V ovládacím panelu Avere klikněte nahoře na kartu **Nastavení.**
+1. V ovládacím panelu avere klikněte na kartu **Nastavení** v horní části.
 
-1. Vlevo klikněte na **Základní filer** > **Spravovat základní filery.**
+1. Na levé straně klikněte na **Core souborového** > **Spravovat Core filers** .
 
 1. Klikněte na **Vytvořit**.
 
-   ![Snímek obrazovky s novou základní stránkou fileru s kurzorem nad tlačítkem Vytvořit](media/avere-vfxt-add-core-filer-start.png)
+   ![Snímek obrazovky se stránkou přidat novou základní souborového s ukazatelem na tlačítku pro vytvoření](media/avere-vfxt-add-core-filer-start.png)
 
 1. Vyplňte požadované informace v průvodci:
 
-   * Pojmenujte základní filer.
-   * Zadejte plně kvalifikovaný název domény (FQDN), pokud je k dispozici. V opačném případě zadejte ADRESU IP nebo název hostitele, který se překládá na základní filer.
-   * Ze seznamu zvolte třídu filer. Pokud si nejste jisti, zvolte **Jiné**.
+   * Pojmenujte základní souborového.
+   * Zadejte plně kvalifikovaný název domény (FQDN), pokud je k dispozici. V opačném případě zadejte IP adresu nebo název hostitele, který se přeloží na váš základní souborového.
+   * Ze seznamu vyberte třídu souborového. Pokud si nejste jistí, vyberte **jiný**.
 
-     ![Snímek obrazovky stránky Přidat nové jádro fileru s názvem základního souboru a jeho plně kvalifikovaným názvem domény](media/avere-vfxt-add-core-filer.png)
+     ![Snímek obrazovky se stránkou přidat novou základní souborového se základním názvem souborového a jeho plně kvalifikovaným názvem domény](media/avere-vfxt-add-core-filer.png)
   
-   * Klikněte na **Další** a zvolte zásadu mezipaměti.
-   * Klepněte na **tlačítko Přidat filer**.
-   * Podrobnější informace najdete [v části Přidání nového fileru jádra NAS](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) v průvodci nastavením clusteru Avere.
+   * Klikněte na **Další** a vyberte zásadu mezipaměti.
+   * Klikněte na **přidat souborového**.
+   * Podrobnější informace najdete v tématu [Přidání nového serveru NAS Core souborového](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_nas.html) v Průvodci nastavením clusteru avere.
 
-Dále pokračujte [k vytvoření křižovatky](#create-a-junction).  
+Potom přejděte k [Vytvoření spojení](#create-a-junction).  
 
-### <a name="azure-blob-storage-cloud-core-filer"></a>Základní filer cloudového úložiště Azure blob Storage
+### <a name="azure-blob-storage-cloud-core-filer"></a>Azure Blob Storage Cloud Core souborového
 
-Chcete-li použít úložiště objektů blob Azure jako back-endové úložiště clusteru vFXT, potřebujete prázdný kontejner, který chcete přidat jako základní filer.
+Pokud chcete jako úložiště back-endu clusteru vFXT použít službu Azure Blob Storage, budete potřebovat prázdný kontejner, který se přidá jako základní souborového.
 
-Přidání úložiště objektů Blob do clusteru vyžaduje tyto úkoly:
+Přidání úložiště objektů blob do clusteru vyžaduje tyto úlohy:
 
 * Vytvoření účtu úložiště (krok 1, níže)
-* Vytvoření prázdnékontejnerové nádoby objektu Blob (kroky 2-3)
-* Přidání přístupového klíče úložiště jako cloudového pověření pro cluster vFXT (kroky 4–6)
-* Přidání kontejneru objektů Blob jako základního fileru pro cluster vFXT (kroky 7–9)
-* Vytvořte spojení oboru názvů, které klienti používají k připojení základního fileru ([Vytvoření křižovatky](#create-a-junction), stejné pro hardwarové i cloudové úložiště)
+* Vytvoření prázdného kontejneru objektů BLOB (kroky 2-3)
+* Přidejte přístupový klíč úložiště jako přihlašovací údaje cloudu pro cluster vFXT (kroky 4-6).
+* Přidání kontejneru objektů BLOB jako základního souborového pro cluster vFXT (kroky 7-9)
+* Vytvoření spojení oboru názvů, které klienti používají k připojení základního souborového ([Vytvoření spojení](#create-a-junction)stejné pro hardwarové i cloudové úložiště)
 
 > [!TIP]
-> Pokud vytvoříte nový kontejner objektů Blob při vytváření Avere vFXT pro cluster Azure, šablona nasazení automaticky nakonfiguruje kontejner jako základní filer. (To platí také v případě, že používáte skript pro vytváření, který je k dispozici na vyžádání.) Není nutné konfigurovat základní filer později.
+> Pokud vytvoříte nový kontejner objektů BLOB při vytváření avere vFXT pro cluster Azure, šablona nasazení automaticky nakonfiguruje kontejner jako základní souborového. (To platí také v případě, že použijete skript pro vytváření, který je k dispozici na vyžádání.) Základní souborového nemusíte konfigurovat později.
 >
-> Nástroj pro vytváření clusteru provádí tyto konfigurační úlohy za vás:
+> Nástroj pro vytvoření clusteru provádí tyto úlohy konfigurace:
 >
-> * Vytvoří nový kontejner objektů Blob v účtu poskytovaného úložiště.
-> * Definuje kontejner jako základní filer.
-> * Vytvoří spojení oboru názvů ke kontejneru.
+> * Vytvoří nový kontejner objektů BLOB v poskytnutém účtu úložiště.
+> * Definuje kontejner jako základní souborového.
+> * Vytvoří obor názvů spojený s kontejnerem.
 > * Vytvoří koncový bod služby úložiště uvnitř virtuální sítě clusteru.
 
-Pokud chcete po vytvoření clusteru přidat úložiště objektů blob, postupujte takto.
+Pokud chcete přidat úložiště objektů BLOB po vytvoření clusteru, postupujte podle těchto kroků.
 
-1. Vytvořte účet úložiště pro obecné účely V2 s těmito nastaveními:
+1. Vytvořte účet úložiště pro obecné účely v2 s těmito nastaveními:
 
-   * **Předplatné** – stejné jako vFXT clusteru
-   * **Skupina prostředků** – stejná jako skupina clusterů vFXT (volitelné)
-   * **Umístění** – stejné jako vFXT clusteru
-   * **Výkon** – standardní (úložiště Premium není podporováno)
-   * **Typ účtu** - Pro všeobecné účely V2 (StorageV2)
+   * **Předplatné** – stejné jako cluster vFXT
+   * **Skupina prostředků** – totéž jako skupina clusteru vFXT (volitelné)
+   * Stejné **umístění** jako cluster vFXT
+   * **Performance** Standard (Premium Storage není podporován)
+   * **Druh účtu** – pro obecné účely v2 (StorageV2)
    * **Replikace** – místně redundantní úložiště (LRS)
-   * **Přístupová úroveň** - hot
-   * **Vyžadován bezpečný přenos** - zakázat tuto možnost (nevýchozí hodnota)
-   * **Virtuální sítě** - není vyžadováno
+   * **Úroveň přístupu** – horká
+   * **Vyžadován zabezpečený přenos** – zakázat tuto možnost (jiná než výchozí hodnota)
+   * **Virtuální sítě** – nevyžadují se
 
-   Můžete použít portál Azure nebo klikněte na tlačítko "Nasadit do Azure" níže.
+   Můžete použít Azure Portal nebo kliknout na tlačítko nasadit do Azure níže.
 
    [![tlačítko pro vytvoření účtu úložiště](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. Po vytvoření účtu přejděte na stránku účtu úložiště.
 
-   ![Nový účet úložiště na webu Azure Portal](media/avere-vfxt-new-storage-acct.png)
+   ![Nový účet úložiště v Azure Portal](media/avere-vfxt-new-storage-acct.png)
 
-1. Vytvoření nového kontejneru objektů Blob: Klikněte na stránce s přehledem na **kontejnery** a potom klikněte na **+Kontejner**. Použijte libovolný název kontejneru a ujistěte se, že je přístup nastaven na **soukromé**.
+1. Vytvořit nový kontejner objektů BLOB: na stránce Přehled klikněte na **kontejnery** a pak klikněte na **+ kontejner**. Použijte libovolný název kontejneru a ujistěte se, že je přístup nastavený na **Private**.
 
-   ![Stránka objektů BLOB úložiště s tlačítkem +container v kroužku a vytvořením nového kontejneru na místní stránce](media/avere-vfxt-new-blob.png)
+   ![Stránka objektů BLOB úložiště s tlačítkem + kontejnerové tlačítko v kruhu a vytvoření nového kontejneru v místní stránce](media/avere-vfxt-new-blob.png)
 
-1. Klíč účtu Azure Storage získáte kliknutím na **přístupové klíče v** části **Nastavení**. Zkopírujte jeden z uvedených klíčů.
+1. Klíč účtu Azure Storage získáte tak, že kliknete na **přístupové klíče** v části **Nastavení**. Zkopírujte jeden z poskytnutých klíčů.
 
-   ![Grafické rozhraní portálu Azure pro kopírování klíče](media/avere-vfxt-copy-storage-key.png)
+   ![Azure Portal grafické uživatelské rozhraní pro kopírování klíče](media/avere-vfxt-copy-storage-key.png)
 
-1. Otevřete ovládací panel Avere pro váš cluster. Klepněte na tlačítko **Nastavení**a v levém navigačním podokně otevřete**pověření cloudu** **clusteru.** >  Na stránce Přihlašovací údaje v cloudu klikněte na **Přidat pověření**.
+1. Otevřete ovládací panel avere pro váš cluster. Klikněte **na nastavení**a pak otevřete**přihlašovací údaje cloudového** **clusteru** > v levém navigačním podokně. Na stránce přihlašovací údaje cloudu klikněte na **Přidat přihlašovací údaje**.
 
-   ![Klikněte na tlačítko Přidat přihlašovací údaje na konfigurační stránce Pověření cloudu.](media/avere-vfxt-new-credential-button.png)
+   ![Klikněte na tlačítko Přidat pověření na stránce konfigurace přihlašovacích údajů cloudu.](media/avere-vfxt-new-credential-button.png)
 
-1. Vyplňte následující informace a vytvořte přihlašovací údaje pro filer jádra cloudu:
+1. Pro vytvoření přihlašovacích údajů pro Cloud Core souborového zadejte následující informace:
 
    | Pole | Hodnota |
    | --- | --- |
-   | Název přihlašovacího údaje | jakýkoli popisný název |
-   | Typ služby | (vyberte přístupový klíč úložiště Azure) |
+   | Název přihlašovacího údaje | libovolný popisný název |
+   | Typ služby | (vyberte Azure Storage přístupová klávesa) |
    | Tenant | název účtu úložiště |
    | Předplatné | subscription ID |
-   | Přístupový klíč úložiště | Klíč účtu úložiště Azure (zkopírovaný v předchozím kroku) |
+   | Přístupový klíč k úložišti | Klíč účtu úložiště Azure (zkopírovaný v předchozím kroku) |
 
-   Klepněte na **tlačítko Odeslat**.
+   Klikněte na **Odeslat**.
 
-   ![Vyplněný formulář pověření cloudu v ovládacím panelu Avere](media/avere-vfxt-new-credential-submit.png)
+   ![Dokončený formulář přihlašovacích údajů cloudu v Ovládacích panelech avere](media/avere-vfxt-new-credential-submit.png)
 
-1. Dále vytvořte základní filer. Na levé straně ovládacího panelu Avere klepněte na **položku Core Filer** >  **Manage Core Filers**.
+1. Dále vytvořte základní souborového. Na levé straně ovládacího panelu avere klikněte na **Core souborového** >  **Spravovat Core filers**.
 
-1. Klepněte na tlačítko **Vytvořit** na stránce **Spravovat základní soubory.**
+1. Klikněte na tlačítko **vytvořit** na stránce **spravovat základní filers** nastavení.
 
-1. Vyplňte průvodce:
+1. Vyplňte Průvodce:
 
-   * Vyberte filer typu **Cloud**.
-   * Pojmenujte nový základní filer a klepněte na tlačítko **Další**.
-   * Přijměte výchozí zásady mezipaměti a pokračujte na třetí stránku.
-   * V **typu Služby**zvolte **úložiště Azure**.
-   * Zvolte pověření vytvořené dříve.
-   * Nastavit **obsah bloku** na **prázdný**
-   * Změnit **ověření certifikátu** na **Zakázáno**
-   * Změnit **režim komprese** na **Žádný**
-   * Klikněte na **Další**.
-   * Na čtvrté stránce zadejte název kontejneru v **názvu bloku** jako *storage_account_name*/*container_name*.
-   * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je šifrované ve výchozím nastavení.
-   * Klepněte na **tlačítko Přidat filer**.
+   * Vyberte souborového typ **Cloud**.
+   * Pojmenujte nový Core souborového a klikněte na **Další**.
+   * Přijměte výchozí zásadu mezipaměti a pokračujte na třetí stránku.
+   * V možnosti **typ služby**vyberte **Azure Storage**.
+   * Vyberte dříve vytvořené přihlašovací údaje.
+   * Nastavit **obsah intervalu** jako **prázdný**
+   * Změnit **ověření certifikátu** na **zakázáno**
+   * Změnit **režim komprese** na **žádný**
+   * Klikněte na **Další**.
+   * Na čtvrté stránce zadejte název kontejneru do pole **název** sady jako *storage_account_name*/*container_name*.
+   * Volitelně můžete nastavit **typ šifrování** na **žádný**.  Azure Storage je ve výchozím nastavení šifrovaný.
+   * Klikněte na **přidat souborového**.
 
-   Podrobnější informace najdeš v [části Přidání nového fileru jádra cloudu](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) v průvodci konfigurací clusteru Avere.
+   Podrobnější informace najdete v článku [Přidání nového Cloud Core souborového](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/new_core_filer_cloud.html>) v Průvodci konfigurací clusteru avere.
 
-Stránka se aktualizuje nebo můžete aktualizovat stránku a zobrazit nový základní filer.
+Stránka se aktualizuje nebo můžete stránku aktualizovat, aby se zobrazila nová základní souborového.
 
-Dále je třeba [vytvořit křižovatku](#create-a-junction).
+Dále musíte [vytvořit spojení](#create-a-junction).
 
-## <a name="create-a-junction"></a>Vytvoření křižovatky
+## <a name="create-a-junction"></a>Vytvoření spojení
 
-Křižovatka je cesta, kterou vytvoříte pro klienty. Klienti připojit cestu a dorazí na cíl, který si vyberete.
+Spojení je cesta, kterou vytvoříte pro klienty. Klienti připojí cestu a dorazí na cíl, který zvolíte.
 
-Můžete například vytvořit `/vfxt/files` mapování na export základního `/vol0/data` `/project/resources` fileru NetApp a podadresář.
+Můžete například vytvořit `/vfxt/files` pro mapování NetApp Core souborového `/vol0/data` export a `/project/resources` podadresář.
 
-Další informace o křižovatkách naleznete v části obor názvů v [průvodci konfigurací clusteru Avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
+Další informace o spojeních najdete v [části obor názvů Průvodce konfigurací clusteru avere](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
-V rozhraní ovládacího panelu Avere postupujte takto:
+V rozhraní ovládacího panelu avere postupujte podle těchto kroků:
 
-* V levém horním rohu klikněte na**Obor názvů** **serveru VServer.** > 
-* Zadejte cestu oboru názvů začínající na ``/vfxt/data``/ (lomítko), jako je .
-* Vyberte si základní filer.
-* Zvolte základní export fileru.
-* Klikněte na **Další**.
+* V levém horním rohu klikněte na **VServer** > **obor názvů** .
+* Zadejte cestu k oboru názvů začínající znakem/(lomítko) ``/vfxt/data``, například.
+* Vyberte si základní souborového.
+* Vyberte základní export souborového.
+* Klikněte na **Další**.
 
-  ![Snímek obrazovky stránky "Přidat novou křižovatku" s vyplněnými poli pro křižovatku, základní filer a export](media/avere-vfxt-add-junction.png)
+  ![Snímek obrazovky se stránkou přidat nový odkaz s poli dokončenými pro spojení, Core souborového a export](media/avere-vfxt-add-junction.png)
 
-Křižovatka se objeví po několika sekundách. Podle potřeby vytvořte další křižovatky.
+Spojení se zobrazí po několika sekundách. Podle potřeby vytvořte další spojení.
 
-Po vytvoření spojení klienti používají cestu oboru názvů pro přístup k souborům ze systému úložiště.
+Po vytvoření spojení budou klienti používat cestu k oboru názvů pro přístup k souborům ze systému úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [Připojení clusteru Avere vFXT](avere-vfxt-mount-clients.md)
-* Naučte se efektivní způsoby [přesunutí dat do nového kontejneru objektů Blob](avere-vfxt-data-ingest.md)
+* Informace o efektivních způsobech [přesunu dat do nového kontejneru objektů BLOB](avere-vfxt-data-ingest.md)

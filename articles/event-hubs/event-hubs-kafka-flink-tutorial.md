@@ -1,6 +1,6 @@
 ---
-title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o tom, jak připojit Apache Flink k centru událostí Azure
+title: Použití Apache Flink pro Apache Kafka – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak připojit Apache Flink k centru událostí Azure.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,34 +10,34 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 2e5a2924cdc00c1cc057d71c40645085df4bae6a
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632811"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Použití Apache Flink se službou Azure Event Hubs pro Apache Kafka
-Tento kurz ukazuje, jak připojit Apache Flink k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html).
+V tomto kurzu se dozvíte, jak připojit Apache Flink k centru událostí beze změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)..
 
-Jednou z klíčových výhod používání Apache Kafka je ekosystém rámců, ke kterému se může připojit. Event Hubs kombinuje flexibilitu Kafky s škálovatelností, konzistencí a podporou ekosystému Azure.
+Jednou z klíčových výhod používání Apache Kafka je ekosystém rozhraní, ke kterému se může připojit. Event Hubs kombinuje flexibilitu Kafka se škálovatelností, konzistencí a podporou ekosystému Azure.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Naklonování ukázkového projektu
-> * Spustit výrobce Flink 
-> * Spustit příjemce Flink
+> * Spustit Flink výrobce 
+> * Spustit Flink příjemce
 
 > [!NOTE]
-> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink)
+> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpoklady:
+K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 * Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks)
+* [Java Development Kit (JDK) 1.7 +](https://aka.ms/azure-jdks)
     * Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.
     * Nezapomeňte nastavit proměnnou prostředí JAVA_HOME tak, aby odkazovala na složku, ve které je sada JDK nainstalovaná.
 * [Stažení](https://maven.apache.org/download.cgi) a [instalace](https://maven.apache.org/install.html) binárního archivu Maven
@@ -47,26 +47,26 @@ Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpokl
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Pokyny k vytvoření oboru názvů a centra událostí najdete v [tématu Vytvoření centra událostí.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
+K odeslání nebo přijetí z jakékoli služby Event Hubs se vyžaduje Event Hubs obor názvů. Pokyny k vytvoření oboru názvů a centra událostí najdete v tématu [vytvoření centra událostí](event-hubs-create.md) . Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
-Teď, když máte připojovací řetězec Event Hubs, klonujte Azure Event Hubs `flink` pro úložiště Kafka a přejděte do podsložky:
+Teď, když máte Event Hubs připojovací řetězec, naklonujte úložiště Azure Event Hubs for Kafka a přejděte do `flink` podsložky:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/flink
 ```
 
-## <a name="run-flink-producer"></a>Spustit výrobce Flink
+## <a name="run-flink-producer"></a>Spustit Flink výrobce
 
-Pomocí uvedeného příkladu výrobce Flink odesílejte zprávy službě Event Hubs.
+Pomocí poskytnutého příkladu Flink producenta odešle zprávy službě Event Hubs.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Poskytnutí koncového bodu Kafka centra událostí
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="producerconfig"></a>producer.config
+#### <a name="producerconfig"></a>soubor. config pro výrobce
 
-Aktualizujte `bootstrap.servers` `sasl.jaas.config` hodnoty `producer/src/main/resources/producer.config` a v aplikaci a nasměrujte producenta na koncový bod Event Hubs Kafka se správným ověřováním.
+Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `producer/src/main/resources/producer.config` nástroji a nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -78,26 +78,26 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Spustit výrobce z příkazového řádku
+### <a name="run-producer-from-the-command-line"></a>Spustit producenta z příkazového řádku
 
-Chcete-li spustit výrobce z příkazového řádku, vygenerujte JAR a pak spustit z evnitř Maven (nebo generovat JAR pomocí Maven, pak spustit v Jazyce Java přidáním potřebné Kafka JAR (y) do třídy):
+Pokud chcete spustit producenta z příkazového řádku, vygenerujte JAR a pak ho spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním nezbytných Kafka JAR do cesty k cestě):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Producent nyní začne odesílat události do `test` centra událostí v tématu a tisk událostí na stdout.
+Producent nyní začne odesílat události do centra událostí v tématu `test` a tisknout události do STDOUT.
 
-## <a name="run-flink-consumer"></a>Spustit příjemce Flink
+## <a name="run-flink-consumer"></a>Spustit Flink příjemce
 
-Pomocí uvedeného spotřebitele příklad přijímat zprávy z centra událostí. 
+Pomocí poskytnutého příkladu příjemce přijímají zprávy z centra událostí. 
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Poskytnutí koncového bodu Kafka centra událostí
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="consumerconfig"></a>consumer.config
+#### <a name="consumerconfig"></a>příjemce. config
 
-Aktualizujte `bootstrap.servers` `sasl.jaas.config` hodnoty `consumer/src/main/resources/consumer.config` a v aplikaci a nasměrujte spotřebitele na koncový bod Event Hubs Kafka se správným ověřováním.
+Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `consumer/src/main/resources/consumer.config` nástroji a nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -109,25 +109,25 @@ sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule require
    password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Spuštění příjemce z příkazového řádku
+### <a name="run-consumer-from-the-command-line"></a>Spustit příjemce z příkazového řádku
 
-Chcete-li spustit příjemce z příkazového řádku, vygenerujte JAR a pak spustit z evnitř Maven (nebo generovat JAR pomocí Maven, pak spustit v jazyce Java přidáním potřebné Kafka JAR (y) do třídy):
+Pokud chcete spustit příjemce z příkazového řádku, vygenerujte JAR a pak spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním potřebných Kafka JAR do cesty pro cestu):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestConsumer"
 ```
 
-Pokud centrum událostí obsahuje události (například pokud je spuštěn také váš výrobce), pak `test`spotřebitel nyní začne přijímat události z tématu .
+Pokud má centrum událostí události (například pokud je váš výrobce také spuštěný), pak uživatel začne přijímat události z tématu `test`.
 
-Podrobnější informace o připojení Flink k Kafkovi najdete v [Průvodci konektorem Kafka společnosti Flink.](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html)
+Podrobnější informace o připojení Flink k Kafka najdete v [příručce k Flink konektoru Kafka](https://ci.apache.org/projects/flink/flink-docs-stable/dev/connectors/kafka.html) .
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o centru událostí pro Kafku najdete v následujících článcích:  
+Další informace o Event Hubs pro Kafka najdete v následujících článcích:  
 
 - [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
-- [Integrace aplikace Kafka Connect s centrem událostí](event-hubs-kafka-connect-tutorial.md)
+- [Integrace Kafka Connect do centra událostí](event-hubs-kafka-connect-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Připojení Streamů Akka k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
-- [Průvodce vývojáři Apache Kafka pro Azure Event Hubs](apache-kafka-developer-guide.md)
+- [Připojení Akka Streams k centru událostí](event-hubs-kafka-akka-streams-tutorial.md)
+- [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md)

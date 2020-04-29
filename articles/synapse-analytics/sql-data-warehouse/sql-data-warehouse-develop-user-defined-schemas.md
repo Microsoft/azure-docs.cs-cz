@@ -1,6 +1,6 @@
 ---
-title: Použití uživatelem definovaných schémat
-description: Tipy pro použití t-SQL uživatelem definované schémata pro vývoj řešení v synapse fondu SQL.
+title: Použití uživatelsky definovaných schémat
+description: Tipy pro vývoj řešení v synapse fondu SQL pomocí uživatelsky definovaných schémat T-SQL
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,50 +12,50 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7144fa75d156ca7aed9d8215592f89c167cfb221
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633457"
 ---
-# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Uživatelem definovaná schémata ve fondu SYNAPse SQL
-Tento článek se zaměřuje na poskytování několika tipů pro použití t-SQL uživatelem definované schémata pro vývoj řešení ve fondu SQL Synapse.
+# <a name="user-defined-schemas-in-synapse-sql-pool"></a>Uživatelsky definovaná schémata ve fondu SQL synapse
+Tento článek se zaměřuje na poskytnutí několika tipů pro vývoj řešení v synapse fondu SQL pomocí uživatelsky definovaných schémat T-SQL.
 
 ## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
 
-Tradiční datové sklady často používají samostatné databáze k vytvoření hranic aplikace na základě zatížení, domény nebo zabezpečení. 
+Tradiční datové sklady často používají samostatné databáze k vytvoření hranice aplikace na základě zatížení, domény nebo zabezpečení. 
 
-Například tradiční datový sklad serveru SQL Server může zahrnovat pracovní databázi, databázi datového skladu a některé databáze datového tržiště. V této topologii každá databáze funguje jako pracovní vytížení a hranice zabezpečení v architektuře.
+Například tradiční datový sklad SQL Server může zahrnovat pracovní databázi, databázi datového skladu a některé databáze datového tržiště. V této topologii každá databáze funguje jako zatížení a hranice zabezpečení v architektuře.
 
-Naproti tomu fond SQL spouští celé úlohy datového skladu v rámci jedné databáze. Křížová připojení databáze nejsou povolena. Fond SQL očekává, že všechny tabulky používané ve skladu, které mají být uloženy v rámci jedné databáze.
+Naproti tomu fond SQL spouští celou úlohu datového skladu v rámci jedné databáze. Spojení mezi databázemi nejsou povolena. Fond SQL očekává, že všechny tabulky používané datovým skladem budou uloženy v rámci jedné databáze.
 
 > [!NOTE]
-> Fond SQL nepodporuje dotazy mezi databázemi jakéhokoli druhu. V důsledku toho implementace datového skladu, které využívají tento vzor bude muset být revidován.
+> Fond SQL nepodporuje databázové dotazy jakéhokoli druhu. V důsledku toho bude nutné implementace datového skladu, které využívají tento model, upravit.
 > 
 > 
 
 ## <a name="recommendations"></a>Doporučení
-Následuje doporučení pro konsolidaci úloh, zabezpečení, domény a funkčních hranic pomocí schémat definovaných uživatelem:
+Níže jsou uvedeny doporučení pro konsolidaci úloh, zabezpečení, domény a funkční hranice pomocí uživatelsky definovaných schémat:
 
 - Pomocí jedné databáze fondu SQL spusťte celou úlohu datového skladu.
-- Konsolidujte stávající prostředí datového skladu a použijte jednu databázi fondu SQL.
-- Využijte **uživatelem definovaná schémata** k zajištění hranice dříve implementované pomocí databází.
+- Konsolidujte stávající prostředí datového skladu tak, aby používalo jednu databázi fondu SQL.
+- Využijte **uživatelsky definovaných schémat** k poskytnutí hranice dříve implementovaného pomocí databází.
 
-Pokud uživatelem definované schémata nebyly použity dříve, pak máte čistý štít. Použijte starý název databáze jako základ pro vaše uživatelem definované schémata v databázi fondu SQL.
+Pokud se dřív definovaná schémata ještě nepoužila, máte čistou SLAT. Jako základ pro schémata definovaná uživatelem v databázi fondu SQL použijte starý název databáze.
 
-Pokud již byla schémata použita, máte několik možností:
+Pokud se už schémata používala, máte několik možností:
 
 - Odeberte starší názvy schémat a začněte znovu.
-- Zachovat starší názvy schématu předem čekající název staršího schématu na název tabulky.
-- Zachovat starší názvy schématu implementací zobrazení nad tabulka v další schéma znovu vytvořit strukturu staré schéma.
+- Názvy starších schémat si ponechte předem – čeká se na název starší verze schématu na název tabulky.
+- Starší názvy schémat zachovejte implementací zobrazení v tabulce ve dodatečném schématu pro opětovné vytvoření staré struktury schématu.
 
 > [!NOTE]
-> Při první kontrole se možnost 3 může zdát jako nejpřitažlivější možnost. Nicméně, ďábel je v detailu. Zobrazení jsou jen pro čtení ve fondu SQL. Všechna data nebo změny tabulky by bylo nutné provést proti základní tabulce. Možnost 3 také zavádí vrstvu pohledů do vašeho systému. Možná budete chtít dát tuto další myšlenku, pokud používáte zobrazení v architektuře již.
+> Při první kontrole 3 se může zdát, že se jedná o možnost nejúčinnějšího odvolání. Nicméně Devil je v podrobnostech. Zobrazení jsou jen pro čtení ve fondu SQL. Veškerá data nebo úpravy tabulek by se musely provést na základě základní tabulky. Možnost 3 také zavádí do systému vrstvu zobrazení. Pokud již používáte zobrazení ve vaší architektuře, je vhodné dát mu další myšlenky.
 > 
 > 
 
 ### <a name="examples"></a>Příklady:
-Implementujte uživatelem definovaná schémata založená na názvech databází:
+Implementace uživatelsky definovaných schémat na základě názvů databází:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -73,7 +73,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Zachovat starší názvy schémat u předem čekající na jejich název tabulky. Použijte schémata pro hranice pracovního vytížení:
+Zachovat starší názvy schémat podle názvu tabulky před jejich vyřízením Pro hranici zatížení použijte schémata:
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -119,10 +119,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Každá změna strategie schématu vyžaduje revizi modelu zabezpečení pro databázi. V mnoha případech může být možné zjednodušit model zabezpečení přiřazením oprávnění na úrovni schématu. Pokud jsou vyžadována podrobnější oprávnění, můžete použít databázové role.
+> Každá změna v strategii schématu vyžaduje přezkoumání modelu zabezpečení pro databázi. V mnoha případech může být možné zjednodušit model zabezpečení přiřazením oprávnění na úrovni schématu. Pokud potřebujete podrobnější oprávnění, můžete použít databázové role.
 > 
 > 
 
 ## <a name="next-steps"></a>Další kroky
-Další tipy pro vývoj najdete v [tématu přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v tématu [Přehled vývoje](sql-data-warehouse-overview-develop.md).
 

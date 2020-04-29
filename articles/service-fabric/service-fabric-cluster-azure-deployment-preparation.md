@@ -1,57 +1,57 @@
 ---
 title: Plánování nasazení clusteru Azure Service Fabric
-description: Přečtěte si o plánování a přípravě na produkční nasazení clusteru Service Fabric do Azure.
+description: Přečtěte si o plánování a přípravě nasazení produkčního Service Fabric clusteru do Azure.
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422280"
 ---
-# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava na nasazení clusteru
+# <a name="plan-and-prepare-for-a-cluster-deployment"></a>Plánování a příprava nasazení clusteru
 
-Plánování a příprava na nasazení produkčního clusteru je velmi důležité.  Existuje mnoho faktorů, aby zvážila.  Tento článek vás provede kroky přípravy nasazení clusteru.
+Plánování a příprava nasazení v produkčním clusteru je velmi důležitá.  Je potřeba vzít v úvahu mnoho faktorů.  Tento článek vás provede jednotlivými kroky při přípravě nasazení clusteru.
 
-## <a name="read-the-best-practices-information"></a>Přečtěte si informace o osvědčených postupech
-Chcete-li úspěšně spravovat aplikace a clustery Azure Service Fabric, existují operace, které důrazně doporučujeme provést k optimalizaci spolehlivosti vašeho produkčního prostředí.  Další informace naleznete v [doporučených postupech aplikace Service Fabric a clusteru](service-fabric-best-practices-overview.md).
+## <a name="read-the-best-practices-information"></a>Přečtěte si informace o osvědčených postupech.
+Aby bylo možné úspěšně spravovat aplikace a clustery Azure Service Fabric, jsou k dispozici operace, které vám umožní optimalizovat spolehlivost provozního prostředí.  Další informace najdete v tématu [Service Fabric osvědčené postupy pro aplikace a cluster](service-fabric-best-practices-overview.md).
 
-## <a name="select-the-os-for-the-cluster"></a>Výběr operačního systému pro cluster
-Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru musíte zvolit operační systém: Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru běží stejný operační systém, nelze kombinovat windows a linuxové virtuální počítače ve stejném clusteru.
+## <a name="select-the-os-for-the-cluster"></a>Vyberte operační systém pro cluster.
+Service Fabric umožňuje vytváření clusterů Service Fabric na všech virtuálních počítačích nebo počítačích se systémem Windows Server nebo Linux.  Před nasazením clusteru je nutné zvolit operační systém: Windows nebo Linux.  Každý uzel (virtuální počítač) v clusteru spouští stejný operační systém. virtuální počítače se systémem Windows a Linux nelze kombinovat ve stejném clusteru.
 
 ## <a name="capacity-planning"></a>Plánování kapacity
 Důležitým krokem každého produkčního nasazení je plánování kapacity. Zde je uvedeno několik bodů, které je vhodné vzít v úvahu v rámci procesu.
 
 * Počáteční počet typů uzlů pro váš cluster 
-* Vlastnosti každého typu uzlu (velikost, počet instancí, primární, internet čelí, počet virtuálních počítače, atd.)
+* Vlastnosti každého typu uzlu (velikost, počet instancí, primární, internetový přístup, počet virtuálních počítačů atd.)
 * Spolehlivost a odolnost clusteru
 
-### <a name="select-the-initial-number-of-node-types"></a>Výběr počátečního počtu typů uzlů
-Nejprve je třeba zjistit, k čemu bude cluster, který vytváříte, použit. Jaké typy aplikací plánujete nasadit do tohoto clusteru? Má vaše aplikace více služeb a musí být kterákoli z nich veřejná nebo internetová? Mají vaše služby (které tvoří vaši aplikaci) různé potřeby infrastruktury, jako je větší paměť RAM nebo vyšší cykly procesoru? Cluster Service Fabric se může skládat z více než jednoho typu uzlu: primárního typu uzlu a jednoho nebo více typů neprimárních uzlů. Každý typ uzlu je mapován na škálovací sadu virtuálních strojů. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlů a omezení umístění][placementconstraints] lze nastavit tak, aby omezovala určité služby na určité typy uzlů.  Další informace naleznete [v části Počet typů uzlů, které cluster potřebuje ke spuštění.](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with)
+### <a name="select-the-initial-number-of-node-types"></a>Vyberte počáteční počet typů uzlů.
+Nejdřív musíte zjistit, k čemu se má vytvářený cluster používat. Jaké druhy aplikací plánujete nasadit do tohoto clusteru? Má vaše aplikace více služeb a některé z nich musí být veřejné nebo internetové? Mají vaše služby (z vaší aplikace) různé požadavky na infrastrukturu, jako je větší nebo vyšší počet cyklů procesoru? Cluster Service Fabric se může skládat z více než jednoho typu uzlu: primární typ uzlu a jeden nebo více typů neprimárních uzlů. Každý typ uzlu je namapován na sadu škálování virtuálního počítače. Pro každý typ uzlu je pak možné nezávislé vertikální navyšování nebo snižování kapacity, otevírání různých sad portů a používání různých metrik kapacity. [Vlastnosti uzlu a omezení umístění][placementconstraints] je možné nastavit tak, aby se omezily konkrétní služby na konkrétní typy uzlů.  Další informace najdete v tématu [počet typů uzlů, ve kterých cluster potřebuje začít](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
 
-### <a name="select-node-properties-for-each-node-type"></a>Výběr vlastností uzlu pro každý typ uzlu
-Typy uzlů definují skladovou položku virtuálního počítače, číslo a vlastnosti virtuálních počítačů v přidružené škálovací sadě.
+### <a name="select-node-properties-for-each-node-type"></a>Vybrat vlastnosti uzlu pro každý typ uzlu
+Typy uzlů definují SKU, číslo a vlastnosti virtuálních počítačů v přidružené sadě škálování.
 
-Minimální velikost virtuálních počítače pro každý typ uzlu je určena [úrovní odolnosti,][durability] kterou zvolíte pro typ uzlu.
+Minimální velikost virtuálních počítačů pro každý typ uzlu je určena [úrovní odolnosti][durability] , kterou zvolíte pro typ uzlu.
 
-Minimální počet virtuálních her pro typ primárního uzlu je určen [úrovní spolehlivosti,][reliability] kterou zvolíte.
+Minimální počet virtuálních počítačů pro typ primárního uzlu závisí na zvolené [úrovni spolehlivosti][reliability] .
 
-Podívejte se na minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimární chod ové typy](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)uzlů a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
+Prohlédněte si minimální doporučení pro [typy primárních uzlů](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [stavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads)a [bezstavové úlohy na neprimárních typech uzlů](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
 
-Onic více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění aplikací. Cluster můžete vždy škálovat nahoru nebo dolů později a upravit tak pro změnu zatížení aplikace. 
+Jakékoli více než minimální počet uzlů by měl být založen na počtu replik aplikace nebo služeb, které chcete spustit v tomto typu uzlu.  [Plánování kapacity pro aplikace Service Fabric](service-fabric-capacity-planning.md) vám pomůže odhadnout prostředky, které potřebujete ke spuštění svých aplikací. Kdykoli můžete cluster škálovat nahoru nebo dolů později, aby se změnila změna aplikační úlohy. 
 
-#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Použití dočasných disků operačního systému pro škálovací sady virtuálních počítačů
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Používejte dočasné disky s operačním systémem pro služby Virtual Machine Scale Sets
 
-*Dočasné disky operačního systému* jsou úložiště vytvořené na místním virtuálním počítači (VM) a neuložené do vzdáleného úložiště Azure. Jsou doporučeny pro všechny typy uzlů Service Fabric (primární a sekundární), protože ve srovnání s tradičními disky trvalého operačního systému, dočasné disky operačního systému:
+*Dočasné disky s operačním systémem* se vytvářejí na místním virtuálním počítači a neukládají se do vzdáleného Azure Storage. Doporučuje se pro všechny Service Fabric typy uzlů (primární a sekundární), protože jsou v porovnání s tradičními trvalými disky s operačním systémem a s dočasnými disky operačního systému:
 
-* Snížení latence čtení a zápisu na disk operačního systému
-* Povolit rychlejší operace správy uzlu resetování a opětovného zobrazení obrazu
-* Snižte celkové náklady (disky jsou zdarma a nevznikají žádné další náklady na úložiště)
+* Snížit latenci čtení/zápisu na disk s operačním systémem
+* Povolení rychlejšího resetování/obnovení operací správy uzlů na obrázku
+* Snižte celkové náklady (disky jsou bezplatné a neúčtují se žádné další náklady na úložiště).
 
-Dočasné disky operačního systému není konkrétní funkce Service Fabric, ale spíše funkce *škálovací sady virtuálních počítačů* Azure, které jsou mapovány na typy uzlů Service Fabric. Jejich použití s Service Fabric vyžaduje následující v šabloně clusteru Azure Resource Manager:
+Dočasné disky s operačním systémem nejsou konkrétní funkcí Service Fabric, ale spíše funkcí *sady škálování virtuálních počítačů* Azure, které jsou namapované na Service Fabric typy uzlů. Použití s Service Fabric v šabloně Azure Resource Manager clusteru vyžaduje následující:
 
-1. Ujistěte se, že typy uzlů určují [podporované velikosti virtuálních počítačů Azure](../virtual-machines/windows/ephemeral-os-disks.md) pro dočasné disky operačního systému a že velikost virtuálního počítače má dostatečnou velikost mezipaměti pro podporu velikosti disku operačního systému (viz *poznámka* níže.) Například:
+1. Ujistěte se, že typy uzlů určují [podporované velikosti virtuálních počítačů Azure](../virtual-machines/windows/ephemeral-os-disks.md) pro dočasné disky s operačním systémem a že velikost virtuálního počítače má dostatečnou velikost mezipaměti, aby podporovala velikost disku s operačním systémem (viz *Poznámka* níže). Například:
 
     ```xml
     "vmNodeType1Size": {
@@ -60,16 +60,16 @@ Dočasné disky operačního systému není konkrétní funkce Service Fabric, a
     ```
 
     > [!NOTE]
-    > Nezapomeňte vybrat velikost virtuálního počítače s velikostí mezipaměti, která je stejná nebo větší než velikost disku operačního systému samotného virtuálního počítače, jinak může mít vaše nasazení Azure za následek chybu (i když je původně přijata).
+    > Ujistěte se, že jste vybrali velikost virtuálního počítače, která je stejná nebo větší než velikost disku operačního systému samotného virtuálního počítače. v opačném případě může při nasazení Azure dojít k chybě (i v případě, že se původně přijal).
 
-2. Zadejte verzi škálovací`vmssApiVersion`sady `2018-06-01` virtuálních strojů ( ) nebo novější:
+2. Zadejte verzi sady škálování sady virtuálních počítačů (`vmssApiVersion`) `2018-06-01` nebo novější:
 
     ```xml
     "variables": {
         "vmssApiVersion": "2018-06-01",
     ```
 
-3. V části škálovací sady virtuálních strojů `Local` v `diffDiskSettings`šabloně nasazení zadejte možnost pro :
+3. V části sada škálování virtuálního počítače v šabloně nasazení zadejte `Local` možnost pro: `diffDiskSettings`
 
     ```xml
     "apiVersion": "[variables('vmssApiVersion')]",
@@ -88,35 +88,35 @@ Dočasné disky operačního systému není konkrétní funkce Service Fabric, a
     ```
 
 > [!NOTE]
-> Uživatelské aplikace by neměly mít na disku s osem žádnou závislost/soubor/artefakt, protože disk operačního systému by byl ztracen v případě upgradu operačního systému.
+> Uživatelské aplikace by neměly mít na disku s operačním systémem žádné závislosti, soubory nebo artefakty, protože by došlo ke ztrátě disku s operačním systémem v případě upgradu operačního systému.
 > Proto se nedoporučuje používat [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) s dočasnými disky.
 >
 
 > [!NOTE]
-> Existující non-efemorální VMSS nelze upgradovat na místě používat dočasné disky.
-> Chcete-li migrovat, uživatelé budou muset [přidat](./virtual-machine-scale-set-scale-node-type-scale-out.md) nový nodeType s dočasnými disky, přesunout úlohy do nového nodeType & [odebrat](./service-fabric-how-to-remove-node-type.md) existující nodeType.
+> Stávající nedočasný VMSS nelze upgradovat na místě, aby bylo možné používat dočasné disky.
+> Aby bylo možné provést migraci, uživatelé budou muset [Přidat](./virtual-machine-scale-set-scale-node-type-scale-out.md) nový typ NodeType s dočasnými disky, přesunout úlohy do nového uzlu NodeType & [Odebrat](./service-fabric-how-to-remove-node-type.md) existující uzel NodeType.
 >
 
-Další informace a další možnosti konfigurace najdete v tématu [Dočasné disky operačního systému pro virtuální počítače Azure](../virtual-machines/windows/ephemeral-os-disks.md) 
+Další informace a další možnosti konfigurace najdete v tématu [dočasné disky s operačním systémem pro virtuální počítače Azure](../virtual-machines/windows/ephemeral-os-disks.md) . 
 
 
-### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vyberte úrovně odolnosti a spolehlivosti clusteru
-Úroveň odolnosti se používá k označení systému oprávnění, která vaše virtuální počítače mají s základní infrastrukturou Azure. V primárním typu uzlu toto oprávnění umožňuje service fabric pozastavit všechny požadavky na infrastrukturu na úrovni virtuálního počítače (například restartování virtuálního počítače, reimage virtuálního počítače nebo migrace virtuálního počítače), které mají vliv na požadavky na kvorum pro systémové služby a stavové služby. V typech neprimárních uzlů toto oprávnění umožňuje service fabric pozastavit všechny požadavky infrastruktury na úrovni virtuálního počítače (například restartování virtuálního počítače, opětovné image virtuálního počítače a migrace virtuálních počítačů), které mají vliv na požadavky na kvora pro vaše stavové služby.  Výhody různých úrovní a doporučení, na které úrovni použít a kdy, viz [Charakteristika trvanlivosti clusteru][durability].
+### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Vybrat úrovně trvanlivosti a spolehlivosti pro cluster
+Úroveň odolnosti se používá k označení systému oprávnění, která vaše virtuální počítače mají s podkladovou infrastrukturou Azure. V primárním typu uzlu toto oprávnění umožňuje Service Fabric pozastavit jakoukoli žádost o infrastrukturu na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení virtuálního počítače nebo migraci virtuálního počítače), která mají vliv na požadavky kvora pro systémové služby a stavové služby. V neprimárních typech uzlů toto oprávnění umožňuje Service Fabric pozastavit všechny požadavky infrastruktury na úrovni virtuálního počítače (třeba restartování virtuálního počítače, obnovení bitové kopie virtuálního počítače a migrace virtuálních počítačů), které mají vliv na požadavky na kvorum pro stavové služby.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky odolnosti clusteru][durability].
 
-Úroveň spolehlivosti se používá k nastavení počtu replik systémových služeb, které chcete spustit v tomto clusteru na typu primárního uzlu. Čím více počtu replik, tím spolehlivější jsou systémové služby v clusteru.  Výhody různých úrovní a doporučení, na které úrovni použít a kdy, viz [Charakteristika spolehlivosti clusteru][reliability]. 
+Úroveň spolehlivosti slouží k nastavení počtu replik systémových služeb, které chcete v tomto clusteru spustit na primárním typu uzlu. Větší počet replik, což je spolehlivější systémové služby ve vašem clusteru.  Výhody různých úrovní a doporučení, na kterých úroveň použít a kdy, najdete v tématu [charakteristiky spolehlivosti clusteru][reliability]. 
 
-## <a name="enable-reverse-proxy-andor-dns"></a>Povolení reverzního proxy serveru nebo DNS
-Služby, které se vzájemně připojují v rámci clusteru, mají obecně přímý přístup ke koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Pro usnadnění připojení mezi službami poskytuje Service Fabric další služby: [Službu DNS](service-fabric-dnsservice.md) a [službu reverzníproxy](service-fabric-reverseproxy.md).  Obě služby lze povolit při nasazování clusteru.
+## <a name="enable-reverse-proxy-andor-dns"></a>Povolení reverzního proxy serveru a/nebo DNS
+Služby, které se vzájemně připojují v rámci clusteru, můžou mít přímý přístup k koncovým bodům jiných služeb, protože uzly v clusteru jsou ve stejné místní síti. Aby bylo snazší se připojit mezi službami, Service Fabric poskytuje další služby: [službu DNS](service-fabric-dnsservice.md) a [službu reverzního proxy serveru](service-fabric-reverseproxy.md).  Při nasazování clusteru je možné povolit obě služby.
 
-Vzhledem k tomu, že mnoho služeb, zejména kontejnerizované služby, může mít existující název adresy URL, je možné je vyřešit pomocí standardního protokolu DNS (spíše než protokolu pojmenování), zejména ve scénářích aplikace "lift and shift". To je přesně to, co služba DNS dělá. Umožňuje mapovat názvy DNS na název služby a tím předávat adresy IP koncového bodu.
+Vzhledem k tomu, že řada služeb, zejména služba s využitím kontejnerů, může mít existující název adresy URL, který je schopný vyřešit pomocí standardního protokolu DNS (místo Naming Service protokolu), zejména ve scénářích "výtah a Shift". To je přesně to, co dělá služba DNS. Umožňuje mapovat názvy DNS na název služby, a proto vyřešte IP adresy koncových bodů.
 
-Reverzní proxy server adresy služby v clusteru, které zveřejňují koncové body HTTP (včetně protokolu HTTPS). Reverzní proxy výrazně zjednodušuje volání jiných služeb tím, že poskytuje konkrétní formát URI.  Reverzní proxy také zpracovává řešení, připojení a opakování kroky potřebné pro jednu službu komunikovat s jinou.
+Servery reverzního proxy adresují služby v clusteru, které zveřejňují koncové body HTTP (včetně protokolu HTTPS). Reverzní proxy značně zjednodušují volání dalších služeb poskytnutím specifického formátu identifikátoru URI.  Reverzní proxy server také zpracovává kroky vyřešit, připojit a opakovat vyžadované pro komunikaci jedné služby s jinou službou.
 
 ## <a name="prepare-for-disaster-recovery"></a>Příprava na zotavení po havárii
-Důležitou součástí poskytování vysoké dostupnosti je zajistit, aby služby mohly přežít všechny různé typy selhání. To je zvláště důležité pro selhání, které jsou neplánované a mimo vaši kontrolu. [Příprava na zotavení po havárii](service-fabric-disaster-recovery.md) popisuje některé běžné režimy selhání, které by mohly být katastrofy, pokud nejsou modelovány a spravovány správně. Popisuje také skutečnosti snižující závažnost rizika a opatření, která je třeba provést, pokud došlo ke katastrofě.
+Kritická součást poskytování vysoké dostupnosti zajišťuje, aby služby mohly zaručovat všechny různé typy selhání. To je obzvláště důležité pro neplánované chyby a mimo vaši kontrolu. [Příprava na zotavení po havárii](service-fabric-disaster-recovery.md) popisuje některé běžné režimy selhání, které by mohly selhat, pokud není modelem a spravováno správně. Zabývá se taky riziky a akcemi, které se mají provést, pokud se přesto stala havárie.
 
 ## <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
-Je vaše aplikace a cluster připraven k převzetí produkčního provozu? Před nasazením clusteru do produkčního prostředí spusťte [kontrolní seznam připravenosti produkčního prostředí](service-fabric-production-readiness-checklist.md). Udržujte aplikaci a cluster běží hladce tím, že pracuje prostřednictvím položek v tomto kontrolním seznamu. Důrazně doporučujeme, aby všechny tyto položky byly odškrtnuty před vstupem do výroby.
+Je vaše aplikace a cluster připravený přijmout provozní provoz? Před nasazením clusteru do produkčního prostředí spouštějte prostřednictvím [kontrolního seznamu připravenosti na produkci](service-fabric-production-readiness-checklist.md). Sledujte položky v tomto kontrolním seznamu a sledujte tak bezproblémové fungování aplikace a clusteru. Než se pustíte do produkčního prostředí, důrazně doporučujeme, abyste všechny tyto položky kontrolovali.
 
 ## <a name="next-steps"></a>Další kroky
 * [Vytvoření clusteru Service Fabric se systémem Windows](service-fabric-best-practices-overview.md)

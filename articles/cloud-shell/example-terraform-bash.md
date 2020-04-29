@@ -1,6 +1,6 @@
 ---
-title: Nasazení s Terraformem z Azure Cloud Shell | Dokumenty společnosti Microsoft
-description: Nasazení pomocí Terraform z Azure Cloud Shellu
+title: Nasazení pomocí Terraformu z Azure Cloud Shell | Microsoft Docs
+description: Nasazení pomocí Terraformu z Azure Cloud Shell
 services: Azure
 documentationcenter: ''
 author: tomarchermsft
@@ -14,43 +14,43 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
 ms.openlocfilehash: 8bacadd8941131f608411e61cc15c120c1b2bc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79458150"
 ---
-# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Nasazení s Terraformem z Bash v Prostředí Azure Cloud Shell
-Tento článek vás provede vytvořením skupiny prostředků s [poskytovatelem Terraform AzureRM](https://www.terraform.io/docs/providers/azurerm/index.html).
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Nasazení pomocí Terraformu z bash v Azure Cloud Shell
+Tento článek vás provede vytvořením skupiny prostředků s [poskytovatelem Terraformu AzureRM](https://www.terraform.io/docs/providers/azurerm/index.html).
 
-[Hashicorp Terraform](https://www.terraform.io/) je open source nástroj, který kodifikuje API do deklarativních konfiguračních souborů, které mohou být sdíleny mezi členy týmu, které mají být upraveny, přezkoumány a verzí. Poskytovatel Microsoft AzureRM se používá k interakci s prostředky podporovanými Správcem prostředků Azure prostřednictvím rozhraní API AzureRM.
+[Hashicorp terraformu](https://www.terraform.io/) je open source nástroj, který kodifikovaly rozhraní API na deklarativní konfigurační soubory, které je možné sdílet mezi členy týmu, aby je bylo možné upravovat, kontrolovat a ve verzi. Zprostředkovatel Microsoft AzureRM se používá k interakci s prostředky, které podporuje Azure Resource Manager prostřednictvím rozhraní API AzureRM.
 
 ## <a name="automatic-authentication"></a>Automatické ověřování
-Terraform je ve výchozím nastavení nainstalován v bash v cloudovém prostředí. Cloud shell navíc automaticky ověřuje vaše výchozí předplatné Rozhraní příkazového systému Azure k nasazení prostředků prostřednictvím modulů Terraform Azure.
+Terraformu je ve výchozím nastavení nainstalován v bash ve Cloud Shell. Navíc Cloud Shell automaticky ověřuje vaše výchozí předplatné Azure CLI pro nasazení prostředků prostřednictvím modulů Azure v Terraformu.
 
-Terraform používá výchozí předplatné Azure CLI, které je nastaveno. Chcete-li aktualizovat výchozí odběry, spusťte:
+Terraformu používá výchozí předplatné Azure CLI, které je nastavené. Chcete-li aktualizovat výchozí odběry, spusťte příkaz:
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
 ```
 
 ## <a name="walkthrough"></a>Názorný postup
-### <a name="launch-bash-in-cloud-shell"></a>Spuštění Bash v Cloud Shell
-1. Spuštění prostředí Cloud Shell z preferovaného místa
-2. Ověřte, zda je nastaveno upřednostňované předplatné.
+### <a name="launch-bash-in-cloud-shell"></a>Spustit bash v Cloud Shell
+1. Spustit Cloud Shell z preferovaného umístění
+2. Ověřte, jestli je nastavené preferované předplatné.
 
 ```azurecli-interactive
 az account show
 ```
 
-### <a name="create-a-terraform-template"></a>Vytvoření šablony Terraform
-Vytvořte novou šablonu Terraform s názvem main.tf pomocí upřednostňovaného textového editoru.
+### <a name="create-a-terraform-template"></a>Vytvoření šablony Terraformu
+Vytvořte novou šablonu Terraformu s názvem main.tf s preferovaným textovým editorem.
 
 ```
 vim main.tf
 ```
 
-Zkopírujte/vložte následující kód do prostředí Cloud Shell.
+Zkopírujte nebo vložte následující kód do Cloud Shell.
 
 ```
 resource "azurerm_resource_group" "myterraformgroup" {
@@ -61,8 +61,8 @@ resource "azurerm_resource_group" "myterraformgroup" {
 
 Uložte soubor a ukončete textový editor.
 
-### <a name="terraform-init"></a>Terraform init
-Začněte `terraform init`spuštěním .
+### <a name="terraform-init"></a>Terraformu init
+Začněte spuštěním `terraform init`.
 
 ```
 justin@Azure:~$ terraform init
@@ -90,10 +90,10 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) slouží k inicializaci pracovního adresáře obsahujícího konfigurační soubory Terraform. Příkaz `terraform init` je první příkaz, který by měl být spuštěn po napsání nové konfigurace Terraform nebo klonování existující z správy verzí. Je bezpečné spustit tento příkaz vícekrát.
+K inicializaci pracovního adresáře obsahujícího konfigurační soubory Terraformu se používá [příkaz terraformu init](https://www.terraform.io/docs/commands/init.html) . `terraform init` Příkaz je prvním příkazem, který by měl být spuštěn po zápisu nové konfigurace terraformu nebo klonování existujícího ze správy verzí. Spuštění tohoto příkazu se dá bezpečně provést víckrát.
 
 ### <a name="terraform-plan"></a>Příkaz terraform plan
-Zobrazit náhled prostředků, které mají být `terraform plan`vytvořeny šablonou Terraform s .
+Zobrazte náhled prostředků, které má šablona Terraformu vytvořit s `terraform plan`.
 
 ```
 justin@Azure:~$ terraform plan
@@ -126,10 +126,10 @@ can't guarantee that exactly these actions will be performed if
 "terraform apply" is subsequently run.
 ```
 
-[Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Terraform provede aktualizaci, pokud není explicitně zakázána, a pak určí, jaké akce jsou nezbytné k dosažení požadovaného stavu zadaného v konfiguračních souborech. Plán lze uložit pomocí -out a poté se použije terraform, aby bylo zajištěno, že budou provedeny pouze předem naplánované akce.
+[Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Terraformu provede aktualizaci, pokud není explicitně zakázaná, a pak určí, jaké akce je potřeba k dosažení požadovaného stavu zadaného v konfiguračních souborech. Plán se dá uložit s použitím a pak se terraformu použít k tomu, aby se zajistilo, že se spustí jenom předem plánované akce.
 
 ### <a name="terraform-apply"></a>Příkaz terraform apply
-Zřídit prostředky `terraform apply`Azure s .
+Zřizování prostředků Azure pomocí `terraform apply`.
 
 ```
 justin@Azure:~$ terraform apply
@@ -142,17 +142,17 @@ azurerm_resource_group.demo: Creation complete after 0s (ID: /subscriptions/mySu
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 ```
 
-[Příkaz terraform apply](https://www.terraform.io/docs/commands/apply.html) se používá k použití změn potřebných k dosažení požadovaného stavu konfigurace.
+[Příkaz terraformu Apply](https://www.terraform.io/docs/commands/apply.html) se používá k aplikování změn požadovaných k dosažení požadovaného stavu konfigurace.
 
-### <a name="verify-deployment-with-azure-cli"></a>Ověření nasazení pomocí rozhraní příkazového příkazu Azure
-Spuštěním `az group show -n myRgName` ověřte, zda byl prostředek úspěšně zřazen.
+### <a name="verify-deployment-with-azure-cli"></a>Ověření nasazení pomocí Azure CLI
+Spusťte `az group show -n myRgName` , abyste ověřili, že se prostředek úspěšně zřídil.
 
 ```azurecli-interactive
 az group show -n myRgName
 ```
 
-### <a name="clean-up-with-terraform-destroy"></a>Vyčistěte s terraform zničit
-Vyčistěte skupinu prostředků vytvořenou [pomocí příkazu Terraform destroy](https://www.terraform.io/docs/commands/destroy.html) a vyčistěte infrastrukturu vytvořenou Terraformem.
+### <a name="clean-up-with-terraform-destroy"></a>Vyčištění pomocí terraformu zničení
+Vyčistěte skupinu prostředků vytvořenou [příkazem terraformu Destroy](https://www.terraform.io/docs/commands/destroy.html) a vyčistěte infrastrukturu vytvořenou v terraformu.
 
 ```
 justin@Azure:~$ terraform destroy
@@ -185,8 +185,8 @@ azurerm_resource_group.demo: Destruction complete after 45s
 Destroy complete! Resources: 1 destroyed.
 ```
 
-Úspěšně jste vytvořili prostředek Azure prostřednictvím Terraform. Navštivte další kroky, abyste se mohli dál učit o Cloud Shellu.
+Úspěšně jste vytvořili prostředek Azure prostřednictvím Terraformu. Pokud chcete pokračovat ve získávání Cloud Shell, přejděte na další kroky.
 
 ## <a name="next-steps"></a>Další kroky
-[Další informace o poskytovateli Terraform Azure](https://www.terraform.io/docs/providers/azurerm/#)<br>
-[Bash v rychlém startu Cloud Shellu](quickstart.md)
+[Přečtěte si o poskytovateli Azure Terraformu](https://www.terraform.io/docs/providers/azurerm/#)<br>
+[Bash v rychlém startu Cloud Shell](quickstart.md)

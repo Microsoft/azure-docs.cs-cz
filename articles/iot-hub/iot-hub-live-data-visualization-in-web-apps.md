@@ -1,6 +1,6 @@
 ---
-title: Vizualizace dat v reálném čase dat z centra IoT ve webové aplikaci
-description: Pomocí webové aplikace můžete vizualizovat údaje o teplotě a vlhkosti, které jsou shromažďovány ze senzoru a odesílány do centra Iot Hub.
+title: Vizualizace dat ve službě IoT Hub v reálném čase ve webové aplikaci
+description: Webovou aplikaci můžete použít k vizualizaci dat o teplotě a vlhkosti shromažďovaných ze senzorů a odeslání do služby IoT Hub.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,73 +9,73 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78675319"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat senzorů v reálném čase z centra Azure IoT hub ve webové aplikaci
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Vizualizace dat snímačů v reálném čase z Azure IoT Hub ve webové aplikaci
 
-![Diagram koncového bodu](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
+![Komplexní diagram](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Co se naučíte
 
-V tomto kurzu se dozvíte, jak vizualizovat data senzorů v reálném čase, která vaše centrum IoT hub přijímá pomocí webové aplikace node.js spuštěné v místním počítači. Po spuštění webové aplikace místně můžete volitelně postupovat podle pokynů pro hostování webové aplikace ve službě Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT hub pomocí Power BI, [přečtěte si, že pomocí Power BI můžete vizualizovat data senzorů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+V tomto kurzu se naučíte vizualizovat data ze senzorů v reálném čase, která vaše centrum IoT obdrží, pomocí webové aplikace Node. js spuštěné v místním počítači. Po místní instalaci webové aplikace můžete podle pokynů použít postup hostování webové aplikace v Azure App Service. Pokud se chcete pokusit vizualizovat data ve službě IoT Hub pomocí Power BI, přečtěte si téma [použití Power BI k vizualizaci dat snímačů v reálném čase z Azure IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
-## <a name="what-you-do"></a>Co děláte
+## <a name="what-you-do"></a>Co dělat
 
-* Přidání skupiny spotřebitelů do centra IoT hubu, kterou webová aplikace použije ke čtení dat ze senzorů
+* Přidejte skupinu příjemců do služby IoT Hub, kterou bude webová aplikace používat ke čtení dat senzorů.
 * Stažení kódu webové aplikace z GitHubu
-* Zkontrolujte kód webové aplikace
-* Konfigurace proměnných prostředí pro uložení artefaktů služby IoT Hub, které vaše webová aplikace potřebuje
-* Spuštění webové aplikace ve vývojovém počítači
-* Otevření webové stránky zobrazíte data o teplotě a vlhkosti v reálném čase z centra IoT hub
-* (Nepovinné) Použití azure cli k hostování webové aplikace ve službě Azure App Service
+* Projděte si kód webové aplikace.
+* Nakonfigurujte proměnné prostředí tak, aby obsahovaly IoT Hub artefaktů, které vaše webová aplikace potřebuje.
+* Spuštění webové aplikace na vývojovém počítači
+* Otevřete webovou stránku pro zobrazení teploty a dat vlhkosti v reálném čase ze služby IoT Hub.
+* Volitelné Použití Azure CLI k hostování vaší webové aplikace v Azure App Service
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-* Dokončete kurz [online simulátoru Raspberry Pi](iot-hub-raspberry-pi-web-simulator-get-started.md) nebo jeden z výukových programů zařízení; například [Raspberry Pi s node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se vztahují na tyto požadavky:
+* Dokončete kurz [online simulátoru malin](iot-hub-raspberry-pi-web-simulator-get-started.md) . nebo v některém z kurzů zařízení; například [Malina Pi s Node. js](iot-hub-raspberry-pi-kit-node-get-started.md). Tyto požadavky se týkají následujících požadavků:
 
   * Aktivní předplatné Azure
-  * Centrum služby Iot v rámci vašeho předplatného
-  * Klientská aplikace, která odesílá zprávy do centra Služby Iot
+  * Centrum IoT v rámci vašeho předplatného
+  * Klientská aplikace, která odesílá zprávy do služby IoT Hub
 
-* [Stažení Git](https://www.git-scm.com/downloads)
+* [Stáhnout Git](https://www.git-scm.com/downloads)
 
-* Kroky v tomto článku předpokládají vývojový počítač systému Windows; tyto kroky však můžete snadno provést v systému Linux ve vašem preferovaném prostředí.
+* Kroky v tomto článku předpokládají vývojový počítač s Windows. v upřednostňovaném prostředí ale můžete tyto kroky snadno provést v systému Linux.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Spusťte následující příkaz a přidejte rozšíření Microsoft Azure IoT extension pro Azure CLI do instance Cloud Shellu. Rozšíření IOT přidá do rozhraní příkazového příkazu Azure CLI specifické pro služby IoT Hub, IoT Edge a Služby zřizování zařízení IoT (DPS).
+Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
 az extension add --name azure-iot
 ```
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidání skupiny spotřebitelů do centra IoT hub
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidání skupiny příjemců do služby IoT Hub
 
-[Skupiny spotřebitelů](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) poskytují do datového proudu událostí nezávislá zobrazení, která umožňují aplikacím a službám Azure nezávisle využívat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu spotřebitelů do integrovaného koncového bodu služby IoT hub, ze kterého bude webová aplikace používat ke čtení dat.
+[Skupiny příjemců](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) poskytují nezávislá zobrazení do datového proudu událostí, který aplikacím a službám Azure umožňuje nezávisle spotřebovat data ze stejného koncového bodu centra událostí. V této části přidáte skupinu příjemců do integrovaného koncového bodu služby IoT Hub, který bude webová aplikace používat pro čtení dat.
 
-Spuštěním následujícího příkazu přidáte skupinu spotřebitelů do integrovaného koncového bodu centra IoT hub:
+Spuštěním následujícího příkazu přidejte skupinu příjemců do integrovaného koncového bodu služby IoT Hub:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGroupName
 ```
 
-Poznamenejte si název, který si vyberete, budete ho potřebovat později v tomto kurzu.
+Poznamenejte si název, který zvolíte, budete ho potřebovat později v tomto kurzu.
 
-## <a name="get-a-service-connection-string-for-your-iot-hub"></a>Získání připojovacího řetězce služby pro centrum IoT hub
+## <a name="get-a-service-connection-string-for-your-iot-hub"></a>Získání připojovacího řetězce služby pro Centrum IoT
 
-Centra IoT jsou vytvořena s několika výchozími zásadami přístupu. Jednou z takových zásad je zásada **služby,** která poskytuje dostatečná oprávnění pro službu ke čtení a zápisu koncových bodů služby IoT hub. Spuštěním následujícího příkazu získáte připojovací řetězec pro centrum IoT hub, který dodržuje zásady služby:
+Centra IoT se vytvářejí s několika výchozími zásadami přístupu. Jedna z těchto zásad je zásada **služby** , která poskytuje dostatečná oprávnění pro službu ke čtení a zápisu koncových bodů služby IoT Hub. Spusťte následující příkaz, který načte připojovací řetězec pro službu IoT Hub, který dodržuje zásady služby:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
 ```
 
-Připojovací řetězec by měl vypadat podobně jako následující:
+Připojovací řetězec by měl vypadat nějak takto:
 
 ```javascript
 "HostName={YourIotHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"
@@ -85,39 +85,39 @@ Poznamenejte si připojovací řetězec služby, budete ho potřebovat později 
 
 ## <a name="download-the-web-app-from-github"></a>Stažení webové aplikace z GitHubu
 
-Otevřete příkazové okno a zadejte následující příkazy, abyste stáhli ukázku z GitHubu a přechyli do ukázkového adresáře:
+Otevřete příkazové okno a zadejte následující příkazy ke stažení ukázky z GitHubu a přejděte do ukázkového adresáře:
 
 ```cmd
 git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
 cd web-apps-node-iot-hub-data-visualization
 ```
 
-## <a name="examine-the-web-app-code"></a>Zkontrolujte kód webové aplikace
+## <a name="examine-the-web-app-code"></a>Projděte si kód webové aplikace.
 
-Z adresáře web-apps-node-iot-hub-data-visualization otevřete webovou aplikaci ve svém oblíbeném editoru. Následující ukazuje strukturu souborů zobrazenou v kódu VS:
+V adresáři Web-Apps-Node-IoT-Hub-data-vizualizace otevřete webovou aplikaci ve svém oblíbeném editoru. Následující příklad ukazuje strukturu souboru zobrazenou v VS Code:
 
 ![Struktura souborů webové aplikace](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
 
-Udělejte si chvilku a prohlédněte si následující soubory:
+Věnujte prosím chvilku, abyste prozkoumali následující soubory:
 
-* **Server.js** je skript na straně služby, který inicializuje webový soket a obálkovou třídu Event Hub. Poskytuje zpětné volání do třídy obálky Centra událostí, kterou třída používá k vysílání příchozích zpráv do webového soketu.
+* **Server. js** je skript na straně služby, který inicializuje webový soket a třídu obálky centra událostí. Poskytuje zpětné volání do třídy obálky centra událostí, které třída používá pro vysílání příchozích zpráv do webového soketu.
 
-* **Event-hub-reader.js** je skript na straně služby, který se připojuje k integrovanému koncovému bodu služby IoT hub pomocí zadaného připojovacího řetězce a skupiny spotřebitelů. Extrahuje DeviceId a EnqueuedTimeUtc z metadat na příchozí zprávy a potom předává zprávu pomocí metody zpětného volání registrované server.js.
+* **Event-hub-Reader. js** je skript na straně služby, který se připojuje ke předdefinovanému koncovému bodu služby IoT Hub pomocí zadaného připojovacího řetězce a skupiny uživatelů. Extrahuje DeviceId a EnqueuedTimeUtc z metadat na příchozích zprávách a pak ji přenáší pomocí metody zpětného volání registrovaného serverem. js.
 
-* **Chart-device-data.js** je skript na straně klienta, který naslouchá na webovém soketu, sleduje každé DeviceId a ukládá posledních 50 bodů příchozích dat pro každé zařízení. Potom sváže vybraná data zařízení s objektem grafu.
+* **Chart-Device-data. js** je skript na straně klienta, který naslouchá na webovém soketu, sleduje každý DeviceID a ukládá poslední 50 bodů příchozích dat pro každé zařízení. Pak váže vybraná data zařízení k objektu grafu.
 
-* **Index.html** zpracovává rozložení uživatelského rozhraní pro webovou stránku a odkazuje na potřebné skripty pro logiku na straně klienta.
+* **Index. html** zpracovává rozložení uživatelského rozhraní pro webovou stránku a odkazuje na potřebné skripty pro logiku na straně klienta.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Konfigurace proměnných prostředí pro webovou aplikaci
 
-Ke čtení dat z centra IoT potřebuje webová aplikace připojovací řetězec služby IoT hub a název skupiny spotřebitelů, kterou by si měla přečíst. Získá tyto řetězce z prostředí procesu v následujících řádcích v souboru server.js:
+Aby webová aplikace mohla číst data ze služby IoT Hub, potřebuje připojovací řetězec služby IoT Hub a název skupiny uživatelů, do které by se měl číst. Získává tyto řetězce z prostředí procesu na následujících řádcích v serveru. js:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
 const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
 ```
 
-Nastavte proměnné prostředí v příkazovém okně pomocí následujících příkazů. Nahraďte zástupné hodnoty připojovacím řetězcem služby pro centrum IoT a názvem skupiny spotřebitelů, kterou jste vytvořili dříve. Necituj struny.
+Nastavte proměnné prostředí v příkazovém okně pomocí následujících příkazů. Nahraďte zástupné hodnoty připojovacím řetězcem služby pro službu IoT Hub a názvem skupiny uživatelů, kterou jste předtím vytvořili. Nepoužívejte uvozovky řetězců.
 
 ```cmd
 set IotHubConnectionString=YourIoTHubConnectionString
@@ -126,91 +126,91 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="run-the-web-app"></a>Spuštění webové aplikace
 
-1. Zkontrolujte, zda je zařízení spuštěné a odesílá data.
+1. Ujistěte se, že vaše zařízení běží a odesílá data.
 
-2. V příkazovém okně spusťte následující řádky pro stažení a instalaci odkazovaných balíčků a spuštění webu:
+2. V příkazovém okně spusťte následující řádky a stáhněte a nainstalujte odkazované balíčky a spusťte web:
 
    ```cmd
    npm install
    npm start
    ```
 
-3. V konzole by měl vidět výstup, který označuje, že se webová aplikace úspěšně připojila k centru IoT hub a naslouchá na portu 3000:
+3. V konzole byste měli vidět výstup, který indikuje, že se webová aplikace úspěšně připojila ke službě IoT Hub a naslouchá na portu 3000:
 
-   ![Webová aplikace spuštěna na konzoli](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
+   ![Webová aplikace se spustila v konzole.](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
 
-## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Otevření webové stránky zobrazíte data z centra IoT hub
+## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Otevřete webovou stránku, kde se zobrazí data ze služby IoT Hub.
 
-Otevřete prohlížeč `http://localhost:3000`aplikace .
+Otevřete prohlížeč `http://localhost:3000`.
 
-V seznamu **Vybrat zařízení** vyberte zařízení, chcete-li zobrazit průběžný obrázek posledních 50 datových bodů teploty a vlhkosti odeslaných zařízením do vašeho centra IoT Hub.
+V seznamu **Vybrat zařízení** vyberte zařízení, aby se zobrazilo běžící vykreslení poslední teploty 50 a datových bodů vlhkosti odesílané zařízením do služby IoT Hub.
 
 ![Stránka webové aplikace zobrazující teplotu a vlhkost v reálném čase](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
-Měli byste také vidět výstup v konzole, která zobrazuje zprávy, které vaše webová aplikace vysílá klientovi prohlížeče:  
+Měl by se také zobrazit výstup v konzole, ve kterém se zobrazují zprávy, které webová aplikace vysílá do klienta prohlížeče:  
 
-![Výstup vysílání webové aplikace na konzoli](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
+![Výstup všesměrového vysílání webové aplikace v konzole](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
 
-## <a name="host-the-web-app-in-app-service"></a>Hostování webové aplikace ve službě App Service
+## <a name="host-the-web-app-in-app-service"></a>Hostování webové aplikace v App Service
 
-[Funkce Webové aplikace služby Azure App Service](https://docs.microsoft.com/azure/app-service/overview) poskytuje platformu jako službu (PAAS) pro hostování webových aplikací. Webové aplikace hostované ve službě Azure App Service můžou využívat výkonné funkce Azure, jako je další zabezpečení, vyrovnávání zatížení a škálovatelnost, stejně jako řešení Azure a partnerdevOps, jako je průběžné nasazení, správa balíčků a tak dále. Azure App Service podporuje webové aplikace vyvinuté v mnoha populárních jazycích a nasazené na infrastruktuře Windows nebo Linuxu.
+[Funkce Web Apps v Azure App Service](https://docs.microsoft.com/azure/app-service/overview) poskytuje platformu jako službu (PaaS) pro hostování webových aplikací. Webové aplikace hostované ve službě Azure App Service můžou využívat výkonné funkce Azure, jako je další zabezpečení, Vyrovnávání zatížení a škálovatelnost, a také řešení Azure a partnerská řešení DevOps, jako je průběžné nasazování, Správa balíčků atd. Azure App Service podporuje webové aplikace vyvinuté v mnoha oblíbených jazycích a nasazené v infrastruktuře systému Windows nebo Linux.
 
-V této části zřídíte webovou aplikaci ve službě App Service a nasadíte do ní svůj kód pomocí příkazů Azure CLI. Podrobnosti o příkazech použitých naleznete v dokumentaci [az webapp.](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) Než začnete, ujistěte se, že jste dokončili kroky k [přidání skupiny prostředků do centra IoT hub](#add-a-consumer-group-to-your-iot-hub), [získejte připojovací řetězec služby pro centrum IoT](#get-a-service-connection-string-for-your-iot-hub)a [stáhněte si webovou aplikaci z GitHubu](#download-the-web-app-from-github).
+V této části zřídíte webovou aplikaci v App Service a do ní nasadíte kód pomocí příkazů rozhraní příkazového řádku Azure CLI. Podrobnosti o příkazech, které se používají v dokumentaci [AZ WebApp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) , najdete v části. Než začnete, ujistěte se, že jste dokončili kroky pro [Přidání skupiny prostředků do služby IoT Hub](#add-a-consumer-group-to-your-iot-hub), [získání připojovacího řetězce služby pro službu IoT Hub](#get-a-service-connection-string-for-your-iot-hub)a [Stažení webové aplikace z GitHubu](#download-the-web-app-from-github).
 
-1. Plán [služby App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) definuje sadu výpočetních prostředků pro aplikaci hostovoci ve službě App Service ke spuštění. V tomto kurzu používáme úroveň Developer/Free k hostování webové aplikace. S úrovní Free se vaše webová aplikace spouští na sdílených prostředcích Windows s dalšími aplikacemi služby App Service, včetně aplikací jiných zákazníků. Azure také nabízí plány služby App Service k nasazení webových aplikací na výpočetní prostředky Linuxu. Tento krok můžete přeskočit, pokud už máte plán služby App Service, který chcete použít.
+1. [Plán App Service](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) definuje sadu výpočetních prostředků pro aplikaci hostovanou v App Service, která se má spustit. V tomto kurzu používáme pro hostování webové aplikace úroveň vývojář/Free. S úrovní Free se vaše webová aplikace spouští na sdílených prostředcích Windows s jinými aplikacemi App Service, včetně aplikací jiných zákazníků. Azure také nabízí App Service plány pro nasazení webových aplikací do výpočetních prostředků Linux. Pokud již máte plán App Service, který chcete použít, můžete tento krok přeskočit.
 
-   Chcete-li vytvořit plán služby App Service pomocí úrovně Windows free, spusťte následující příkaz. Použijte stejnou skupinu prostředků, ve které se nachází vaše centrum IoT. Název plánu služeb může obsahovat velká a malá písmena, čísla a pomlčky.
+   Pokud chcete vytvořit plán App Service pomocí bezplatné úrovně Windows, spusťte následující příkaz. Použijte stejnou skupinu prostředků, ve které je vaše centrum IoT. Název plánu služby může obsahovat velká a malá písmena, číslice a spojovníky.
 
    ```azurecli-interactive
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Teď zřizujte webovou aplikaci v plánu služby App Service. Parametr `--deployment-local-git` umožňuje nahrát a nasadit kód webové aplikace z úložiště Git v místním počítači. Název webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, čísla a pomlčky. Nezapomeňte zadat uzel verze 10.6 nebo `--runtime` novější pro parametr, v závislosti na verzi node.js runtime, který používáte. Pomocí příkazu `az webapp list-runtimes` můžete získat seznam podporovaných modulů runtimes.
+2. Teď v plánu App Service zřídit webovou aplikaci. `--deployment-local-git` Parametr umožňuje nahrát a nasadit kód webové aplikace z úložiště Git na místním počítači. Název vaší webové aplikace musí být globálně jedinečný a může obsahovat velká a malá písmena, číslice a spojovníky. Nezapomeňte zadat uzel verze 10,6 nebo novější pro `--runtime` parametr v závislosti na verzi modulu runtime Node. js, který používáte. Pomocí `az webapp list-runtimes` příkazu můžete získat seznam podporovaných modulů runtime.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
-3. Teď přidejte nastavení aplikace pro proměnné prostředí, které určují připojovací řetězec centra IoT a skupinu spotřebitelů centra událostí. Jednotlivá nastavení jsou v `-settings` parametru vymezena mezerami. Použijte připojovací řetězec služby pro centrum IoT a skupinu spotřebitelů, kterou jste vytvořili dříve v tomto kurzu. Necitovujte hodnoty.
+3. Teď přidejte nastavení aplikace pro proměnné prostředí, které určují připojovací řetězec služby IoT Hub a skupinu uživatelů centra událostí. Jednotlivá nastavení jsou oddělená mezerami v `-settings` parametru. Použijte připojovací řetězec služby pro Centrum IoT a skupinu uživatelů, kterou jste vytvořili dříve v tomto kurzu. Hodnoty nemusíte citovat.
 
    ```azurecli-interactive
    az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
    ```
 
-4. Povolte protokol webových soketů pro webovou aplikaci a nastavte webovou aplikaci tak, aby přijímali pouze požadavky HTTPS (požadavky HTTP jsou přesměrovány na protokol HTTPS).
+4. Povolte pro webovou aplikaci protokol Web Sockets a nastavte webovou aplikaci tak, aby přijímala pouze požadavky HTTPS (požadavky HTTP se přesměrují na HTTPS).
 
    ```azurecli-interactive
    az webapp config set -n <your web app name> -g <your resource group name> --web-sockets-enabled true
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Chcete-li nasadit kód do služby App Service, budete používat [přihlašovací údaje pro nasazení na úrovni uživatele](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). Vaše přihlašovací údaje pro nasazení na úrovni uživatele se liší od vašich přihlašovacích údajů azure a používají se pro místní nasazení Gitu a FTP do webové aplikace. Jakmile jsou nastaveny, jsou platné ve všech vašich aplikacích služby App Service ve všech předplatných ve vašem účtu Azure. Pokud jste dříve nastavili přihlašovací údaje pro nasazení na úrovni uživatele, můžete je použít.
+5. Chcete-li nasadit kód pro App Service, použijte [přihlašovací údaje pro nasazení na úrovni uživatele](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials). Přihlašovací údaje pro nasazení na úrovni uživatele se liší od vašich přihlašovacích údajů Azure a používají se pro místní nasazení Git a FTP do webové aplikace. Po nastavení jsou platné napříč všemi vašimi aplikacemi App Service ve všech předplatných ve vašem účtu Azure. Pokud jste dříve nastavili přihlašovací údaje pro nasazení na úrovni uživatele, můžete je použít.
 
-   Pokud jste dříve nenastavili přihlašovací údaje pro nasazení na úrovni uživatele nebo si nepamatujete heslo, spusťte následující příkaz. Uživatelské jméno nasazení musí být v rámci Azure jedinečné a nesmí obsahovat symbol @pro místní nabízená oznámení Git. Po zobrazení výzvy zadejte a potvrďte nové heslo. Heslo musí mít trvat nejméně osm znaků, přičemž dva z následujících tří prvků: písmena, číslice a symboly.
+   Pokud jste dříve nenastavili přihlašovací údaje pro nasazení na úrovni uživatele nebo si nepamatujete heslo, spusťte následující příkaz. Uživatelské jméno nasazení musí být v rámci Azure jedinečné a nesmí obsahovat symbol @ pro místní nabízená oznámení Git. Po zobrazení výzvy zadejte a potvrďte nové heslo. Heslo musí mít délku alespoň osm znaků a dva z následujících tří prvků: písmena, číslice a symboly.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
    ```
 
-6. Získejte adresu URL Git, kterou chcete použít k nabízení kódu do služby App Service.
+6. Získejte adresu URL Gitu, která se použije k nahrání kódu do App Service.
 
    ```azurecli-interactive
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Přidejte ke svému klonu dálkové ovládání, které odkazuje na úložiště Git pro webovou aplikaci ve službě App Service. Pro \<adresu URL\>klonování Gitu použijte adresu URL vrácenou v předchozím kroku. V příkazovém okně spusťte následující příkaz.
+7. Přidejte vzdálené úložiště k klonu, který odkazuje na úložiště Git webové aplikace v App Service. V \<případě adresy URL\>KLONU Git použijte adresu URL vrácenou v předchozím kroku. Spusťte následující příkaz v příkazovém okně.
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. Chcete-li nasadit kód do služby App Service, zadejte do příkazového okna následující příkaz. Pokud se zobrazí výzva k zadání pověření, zadejte přihlašovací údaje nasazení na úrovni uživatele, které jste vytvořili v kroku 5. Ujistěte se, že push do hlavní větve vzdálené služby App Service.
+8. Chcete-li nasadit kód, který App Service, zadejte následující příkaz v příkazovém okně. Pokud se zobrazí výzva k zadání přihlašovacích údajů, zadejte přihlašovací údaje pro nasazení na úrovni uživatele, které jste vytvořili v kroku 5. Ujistěte se, že nahrajete do hlavní větve App Service vzdálené.
 
     ```cmd
     git push webapp master:master
     ```
 
-9. Průběh nasazení se aktualizuje ve vašem příkazovém okně. Úspěšné nasazení bude zakončeno řádky podobnými následujícímu výstupu:
+9. Průběh nasazení se aktualizuje v příkazovém okně. Úspěšné nasazení skončí s řádky podobnými následujícímu výstupu:
 
     ```cmd
     remote:
@@ -221,44 +221,44 @@ V této části zřídíte webovou aplikaci ve službě App Service a nasadíte 
     6b132dd..7cbc994  master -> master
     ```
 
-10. Spusťte následující příkaz, abyste se dotazují na stav webové aplikace a ujistili se, že je spuštěná:
+10. Spuštěním následujícího příkazu se dotazuje na stav webové aplikace a ujistěte se, že je spuštěná:
 
     ```azurecli-interactive
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. V prohlížeči přejděte na `https://<your web app name>.azurewebsites.net`. Webová stránka podobná té, kterou jste viděli při spuštění webové aplikace místně. Za předpokladu, že vaše zařízení běží a odesílá data, měli byste vidět běžecký obrázek 50 nejnovějších údajů o teplotě a vlhkosti odeslaných zařízením.
+11. V prohlížeči přejděte na `https://<your web app name>.azurewebsites.net`. Webová stránka podobná té, kterou jste viděli při zobrazení webové aplikace v místním prostředí. Za předpokladu, že vaše zařízení běží a odesílá data, měl by se zobrazit běžící vykreslení 50 nejnovější teploty a čtení vlhkosti odesílané zařízením.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Pokud narazíte na nějaké problémy s touto ukázkou, vyzkoušejte kroky v následujících částech. Pokud potíže přetrvávají, pošlete nám zpětnou vazbu v dolní části tohoto tématu.
+Pokud v této ukázce provedete všechny problémy, zkuste postup v následujících částech. Pokud stále máte problémy, pošlete nám svůj názor na konci tohoto tématu.
 
-### <a name="client-issues"></a>Problémy s klientem
+### <a name="client-issues"></a>Problémy klienta
 
-* Pokud se zařízení v seznamu nezobrazuje nebo se nekreslí žádný graf, zkontrolujte, zda je v zařízení spuštěn kód zařízení.
+* Pokud se zařízení v seznamu nezobrazí nebo se žádný graf nevykresluje, ujistěte se, že je na vašem zařízení spuštěný Kód zařízení.
 
-* V prohlížeči otevřete vývojářské nástroje (v mnoha prohlížečích jej otevře klávesa F12) a najděte konzolu. Vyhledejte zde vytištěná varování nebo chyby.
+* V prohlížeči otevřete nástroje pro vývojáře (v mnoha prohlížečích ho otevře klávesa F12) a vyhledejte konzolu. Vyhledejte všechna upozornění nebo chyby, které tam byly vytištěny.
 
-* Skript na straně klienta můžete ladit v souboru /js/chat-device-data.js.
+* V/js/chat-Device-data.js. můžete ladit skript na straně klienta.
 
-### <a name="local-website-issues"></a>Problémy s místními webovými stránkami
+### <a name="local-website-issues"></a>Problémy s místním webem
 
-* Podívejte se na výstup v okně, kde jste spustili uzel pro výstup konzoly.
+* Sledujte výstup v okně, kde jste spustili uzel pro výstup konzoly.
 
-* Ladění kódu serveru, konkrétně server.js a /scripts/event-hub-reader.js.
+* Ladění kódu serveru, konkrétně Server. js a/Scripts/Event-hub-Reader.js.
 
-### <a name="azure-app-service-issues"></a>Problémy se službou Azure App Service
+### <a name="azure-app-service-issues"></a>Problémy s Azure App Service
 
-* Na webu Azure Portal přejděte do webové aplikace. V části **Monitorování** v levém podokně vyberte **protokoly služby App Service**. Zapněte **protokolování aplikací (Systém souborů),** nastavte **úroveň** na chybu a pak vyberte **Uložit**. Pak otevřete **Log stream** (v části **Monitorování).**
+* V Azure Portal přejdete do vaší webové aplikace. V části **monitorování** v levém podokně vyberte **protokoly App Service**. Zapněte **protokolování aplikace (systém souborů)** na zapnuto, nastavte **úroveň** na hodnotu chyba a pak vyberte **Uložit**. Pak otevřete **datový proud protokolu** (pod položkou **monitorování**).
 
-* Ve své webové aplikaci na webu Azure Portal vyberte v části `node -v` `npm -v`Nástroje **pro vývoj** **konzolu** a ověřte verze uzlů a npm pomocí a .
+* Z vaší webové aplikace v Azure Portal v části **vývojové nástroje** vyberte **konzolu** a ověřte verze node a npm `node -v` pomocí `npm -v`a.
 
-* Pokud se zobrazí chyba o nenalezení balíčku, je možné, že jste kroky neprovedli. Když je web nasazen `git push`(s) služba `npm install`aplikace běží , který běží na základě aktuální verze uzlu, který nakonfiguroval. Pokud se to později změní v konfiguraci, budete muset provést bezvýznamnou změnu kódu a znovu tlačit.
+* Pokud se zobrazí chyba týkající se nenalezení balíčku, možná jste spustili kroky mimo pořadí. Při nasazení lokality (s `git push`) je spuštěna `npm install`služba App Service, která běží na základě aktuální verze uzlu, který je nakonfigurován. Pokud se později v konfiguraci změní, budete muset provést nesmyslnou změnu kódu a znovu ho vložit.
 
 ## <a name="next-steps"></a>Další kroky
 
-Úspěšně jste použili webovou aplikaci k vizualizaci dat senzorů v reálném čase z centra IoT hub.
+Úspěšně jste použili svou webovou aplikaci k vizualizaci dat snímačů v reálném čase ze služby IoT Hub.
 
-Další způsob vizualizace dat z Azure IoT Hub najdete v [tématu Visualize dat senzorů v reálném čase z centra IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
+Další způsob, jak vizualizovat data z Azure IoT Hub, najdete v tématu [použití Power BI k vizualizaci dat snímačů v reálném čase ze služby IoT Hub](iot-hub-live-data-visualization-in-power-bi.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

@@ -1,6 +1,6 @@
 ---
-title: Nasazení proxy aplikace Azure AD pro službu Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak zajistit zabezpečený přístup k interním aplikacím pro vzdálené pracovníky nasazením a konfigurací proxy aplikací Služby Azure Active Directory ve spravované doméně služby Azure Active Directory Domain Services.
+title: Nasadit Azure Proxy aplikací služby AD pro Azure AD Domain Services | Microsoft Docs
+description: Přečtěte si, jak zajistit zabezpečený přístup k interním aplikacím pro vzdálené procesy nasazením a konfigurací Proxy aplikací služby Azure Active Directory ve Azure Active Directory Domain Services spravované doméně.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,108 +12,108 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: c1dc5216f758c2dda263e2f61b043dbde5f76604
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655502"
 ---
-# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Nasazení proxy aplikací Azure AD pro zabezpečený přístup k interním aplikacím ve spravované doméně služby Azure AD Domain Services
+# <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure Proxy aplikací služby AD pro zabezpečený přístup k interním aplikacím ve Azure AD Domain Services spravované doméně
 
-Se službou Azure AD Domain Services (Azure AD DS) můžete zvedat a přesouvat starší aplikace spuštěné místně do Azure. Proxy aplikace Azure Active Directory (AD) pak pomáhá podporovat vzdálené pracovníky tím, že bezpečně publikuje tyto interní aplikace součástí spravované domény Azure AD DS, aby k nim bylo možné přistupovat přes internet.
+Pomocí Azure AD Domain Services (Azure služba AD DS) můžete starší verze aplikací, které běží místně, nasouvat do Azure. Proxy aplikace Azure Active Directory (AD) pak pomáhá podporovat vzdálené pracovníky tím, že tyto interní aplikace bezpečně publikují jako součást spravované domény Azure služba AD DS, aby k nim bylo možné přistup přes Internet.
 
-Pokud tečujete s proxy aplikací Azure AD a chcete se dozvědět víc, přečtěte si další informace najdete v [tématu Jak zajistit zabezpečený vzdálený přístup k interním aplikacím](../active-directory/manage-apps/application-proxy.md).
+Pokud se Proxy aplikací služby AD Azure ještě nepoužíváte a chcete získat další informace, přečtěte si téma [jak poskytnout zabezpečený vzdálený přístup k interním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
-Tento článek ukazuje, jak vytvořit a nakonfigurovat konektor proxy aplikací Azure AD, který poskytuje zabezpečený přístup k aplikacím ve spravované doméně Azure AD DS.
+V tomto článku se dozvíte, jak vytvořit a nakonfigurovat konektor Azure Proxy aplikací služby AD, který poskytuje zabezpečený přístup k aplikacím ve spravované doméně Azure služba AD DS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávnění:
+K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-    * K použití proxy aplikace Azure AD Premium je **vyžadována licence Azure AD** Premium.
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+    * K použití Proxy aplikací služby AD Azure je nutná **licence Azure AD Premium** .
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 
-## <a name="create-a-domain-joined-windows-vm"></a>Vytvoření virtuálního virtuálního ms pro Windows přilehlého k doméně
+## <a name="create-a-domain-joined-windows-vm"></a>Vytvoření virtuálního počítače s Windows připojeným k doméně
 
-Chcete-li směrovat provoz do aplikací spuštěných ve vašem prostředí, nainstalujte komponentu konektoru proxy aplikací Azure AD. Tento konektor proxy aplikací Azure AD musí být nainstalovaný na virtuálních počítačích (VM) Windows Serveru, který je spojený se spravovanou doménou Azure AD DS. U některých aplikací můžete nasadit více serverů, z nichž každý má nainstalovaný konektor. Tato možnost nasazení poskytuje větší dostupnost a pomáhá zpracovávat těžší ověřování zatížení.
+Pokud chcete směrovat provoz do aplikací spuštěných ve vašem prostředí, nainstalujte komponentu konektoru Azure Proxy aplikací služby AD. Tento konektor Azure Proxy aplikací služby AD musí být nainstalovaný na virtuálních počítačích s Windows serverem, které jsou připojené ke spravované doméně Azure služba AD DS. U některých aplikací můžete nasadit víc serverů, na kterých je nainstalovaný konektor. Tato možnost nasazení poskytuje větší dostupnost a pomáhá zvládnout těžší ověřování.
 
-Virtuální počítač, který spouští konektor proxy aplikací Azure AD, musí být ve stejné nebo partnerské virtuální síti, ve které jste povolili Azure AD DS. Virtuální počítače, které pak hostují aplikace, které publikujete pomocí proxy aplikace, musí být také nasazeny ve stejné virtuální síti Azure.
+Virtuální počítač, na kterém běží konektor Azure Proxy aplikací služby AD, musí být ve stejné nebo partnerské virtuální síti, ve které jste povolili Azure služba AD DS. Virtuální počítače, které pak hostují aplikace, které publikujete pomocí proxy aplikace, musí být nasazené taky na stejné službě Azure Virtual Network.
 
-Pokud chcete vytvořit virtuální počítač pro konektor proxy aplikací Azure AD, proveďte následující kroky:
+Pokud chcete vytvořit virtuální počítač pro konektor Azure Proxy aplikací služby AD, proveďte následující kroky:
 
-1. [Vytvořte vlastní ou .](create-ou.md) Oprávnění ke správě této vlastní individuální oužiny můžete delegovat uživatelům ve spravované doméně Azure AD DS. Virtuální počítače pro proxy aplikace Azure AD a které spouštějí vaše aplikace, musí být součástí vlastní ou, nikoli *výchozí* ou.
-1. [Připojení k virtuálním počítačům][create-join-windows-vm], a to jak ten, který spouští konektor proxy aplikací Azure AD, a ty, které spouštějí vaše aplikace, do spravované domény Azure AD DS. Vytvořte tyto účty počítačů ve vlastní hlavní výuce z předchozího kroku.
+1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS. Virtuální počítače pro Azure Proxy aplikací služby AD a, které spouštějí vaše aplikace, musí být součástí vlastní organizační jednotky, nikoli výchozí organizační jednotka *počítače AAD DC* .
+1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm], který spouští konektor Azure proxy aplikací služby AD, a těch, které spouštějí vaše aplikace, do spravované domény Azure služba AD DS. Vytvořte tyto účty počítačů ve vlastní organizační jednotce z předchozího kroku.
 
-## <a name="download-the-azure-ad-application-proxy-connector"></a>Stažení konektoru proxy aplikace Azure AD
+## <a name="download-the-azure-ad-application-proxy-connector"></a>Stáhnout konektor Azure Proxy aplikací služby AD
 
-Proveďte následující kroky ke stažení konektoru proxy aplikací Azure AD. Instalační soubor, který stáhnete, se zkopíruje do virtuálního počítače proxy aplikace v další části.
+Pomocí následujících kroků stáhněte konektor Azure Proxy aplikací služby AD. Instalační soubor, který jste stáhli, se zkopíruje do vašeho virtuálního počítače proxy aplikace v následující části.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí uživatelského účtu, který má oprávnění *správce rozlehlé sítě* ve službě Azure AD.
-1. Vyhledejte a vyberte **službu Azure Active Directory** v horní části portálu a pak zvolte **Podnikové aplikace**.
-1. Z nabídky na levé straně vyberte **Proxy aplikace.** Chcete-li vytvořit první konektor a povolit proxy aplikace, vyberte odkaz pro **stažení konektoru**.
-1. Na stránce pro stažení přijměte licenční podmínky a smlouvu o ochraně osobních údajů a vyberte **možnost Přijmout podmínky & stažení**.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí uživatelského účtu, který má ve službě Azure AD oprávnění *Enterprise Administrators* .
+1. Vyhledejte a vyberte **Azure Active Directory** v horní části portálu a pak zvolte **podnikové aplikace**.
+1. V nabídce na levé straně vyberte **proxy aplikace** . Pokud chcete vytvořit první konektor a Povolit proxy aplikací, vyberte odkaz pro **stažení konektoru**.
+1. Na stránce pro stažení přijměte licenční podmínky a smlouvy o ochraně osobních údajů a pak vyberte **přijmout podmínky & stáhnout**.
 
-    ![Stažení konektoru proxy aplikace Azure AD](./media/app-proxy/download-app-proxy-connector.png)
+    ![Stažení konektoru proxy serveru Aplikace Azure AD](./media/app-proxy/download-app-proxy-connector.png)
 
-## <a name="install-and-register-the-azure-ad-application-proxy-connector"></a>Instalace a registrace konektoru proxy aplikací Azure AD
+## <a name="install-and-register-the-azure-ad-application-proxy-connector"></a>Instalace a registrace konektoru Azure Proxy aplikací služby AD
 
-S virtuálním počítačem připraveným k použití jako konektor proxy aplikací Azure AD teď zkopírujte a spusťte instalační soubor stažený z webu Azure Portal.
+Když je virtuální počítač připravený k použití jako konektor Azure Proxy aplikací služby AD, teď zkopírujte a spusťte instalační soubor stažený z Azure Portal.
 
-1. Zkopírujte instalační soubor konektoru proxy aplikace Azure AD do virtuálního počítače.
-1. Spusťte instalační soubor, například *AADApplicationProxyConnectorInstaller.exe*. Přijměte licenční podmínky softwaru.
-1. Během instalace budete vyzváni k registraci konektoru s proxy aplikací v adresáři Azure AD.
-   * Zadejte přihlašovací údaje pro globálního správce v adresáři Azure AD. Přihlašovací údaje globálního správce azure ad se mohou lišit od vašich přihlašovacích údajů Azure na portálu
+1. Zkopírujte instalační soubor konektoru služby Azure Proxy aplikací služby AD do svého virtuálního počítače.
+1. Spusťte instalační soubor, například *aplikaci aadapplicationproxyconnectorinstaller. exe*. Přijměte licenční podmínky pro software.
+1. Během instalace budete vyzváni k registraci konektoru s proxy aplikací v adresáři služby Azure AD.
+   * Zadejte přihlašovací údaje globálního správce v adresáři služby Azure AD. Přihlašovací údaje globálního správce Azure AD se můžou lišit od přihlašovacích údajů Azure na portálu.
 
         > [!NOTE]
-        > Globální účet správce používaný k registraci konektoru musí patřit do stejného adresáře, kde povolíte službu Proxy aplikace.
+        > Globální účet správce použitý k registraci konektoru musí patřit do stejného adresáře, ve kterém povolíte službu proxy aplikací.
         >
-        > Například pokud je *aaddscontoso.com*doména Azure AD `admin@aaddscontoso.com` , globální správce by měl být nebo jiný platný alias v této doméně.
+        > Pokud je například doména Azure AD *aaddscontoso.com*, globální správce by měl být `admin@aaddscontoso.com` nebo jiný platný alias v této doméně.
 
-   * Pokud je pro virtuální počítač, do kterého instalujete konektor, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být obrazovka registrace blokována. Chcete-li povolit přístup, postupujte podle pokynů v chybové zprávě nebo během procesu instalace vypněte rozšířené zabezpečení aplikace Internet Explorer.
-   * Pokud se registrace konektoru nezdaří, [přečtěte si článek Poradce při potížích s proxy aplikací](../active-directory/manage-apps/application-proxy-troubleshoot.md).
-1. Na konci instalace se zobrazí poznámka pro prostředí s odchozíproxy server. Chcete-li nakonfigurovat konektor proxy aplikace Azure AD tak, aby fungoval `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`přes odchozí proxy server, spusťte zadaný skript, například .
-1. Na stránce Proxy aplikace na webu Azure portal je nový konektor uveden se stavem *Active*, jak je znázorněno v následujícím příkladu:
+   * Pokud je pro virtuální počítač, na který konektor instalujete, zapnutá konfigurace rozšířeného zabezpečení aplikace Internet Explorer, může být registrační obrazovka zablokovaná. Pokud chcete povolit přístup, postupujte podle pokynů v chybové zprávě nebo vypněte rozšířené zabezpečení aplikace Internet Explorer během procesu instalace.
+   * Pokud se registrace konektoru nepovede, přečtěte si téma [řešení potíží s proxy aplikací](../active-directory/manage-apps/application-proxy-troubleshoot.md)
+1. Na konci instalace se zobrazí Poznámka pro prostředí s odchozím proxy serverem. Pokud chcete nakonfigurovat konektor Azure Proxy aplikací služby AD tak, aby fungoval přes odchozí proxy server, spusťte zadaný skript, například `C:\Program Files\Microsoft AAD App Proxy connector\ConfigureOutBoundProxy.ps1`.
+1. Na stránce proxy aplikace v Azure Portal je nový konektor uveden se stavem *aktivní*, jak je znázorněno v následujícím příkladu:
 
-    ![Nový konektor proxy aplikací Azure AD zobrazený jako aktivní na webu Azure Portal](./media/app-proxy/connected-app-proxy.png)
-
-> [!NOTE]
-> Chcete-li zajistit vysokou dostupnost pro aplikace ověřování prostřednictvím proxy aplikace Azure AD, můžete nainstalovat konektory na více virtuálních počítačích. Opakováním stejných kroků uvedených v předchozí části nainstalujte konektor na jiné servery spojené se spravovanou doménou Azure AD DS.
-
-## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Povolení delegování omezeného prostředků založeného na prostředku
-
-Pokud chcete používat jednotné přihlašování k aplikacím pomocí integrovaného ověřování systému Windows (IWA), udělte konektorům proxy aplikací Azure AD oprávnění k vydávání se za uživatele a odesílání a přijímání tokenů jejich jménem. Chcete-li udělit tato oprávnění, nakonfigurujete delegování omezeného protokolu Kerberos (KCD) pro konektor pro přístup k prostředkům ve spravované doméně Azure AD DS. Vzhledem k tomu, že nemáte oprávnění správce domény ve spravované doméně Azure AD DS, tradiční kcd na úrovni účtu nelze nakonfigurovat na spravované doméně. Místo toho použijte kcd na základě prostředků.
-
-Další informace naleznete [v tématu Configure Kerberos constrained delegation (KCD) in Azure Active Directory Domain Services](deploy-kcd.md).
+    ![Nový konektor Azure Proxy aplikací služby AD zobrazený jako aktivní v Azure Portal](./media/app-proxy/connected-app-proxy.png)
 
 > [!NOTE]
-> Abyste spouštěli následující rutiny Prostředí PowerShell, musíte být přihlášeni k uživatelskému účtu, který je členem *skupiny správců Azure AD DC* ve vašem tenantovi Azure AD.
+> Pokud chcete zajistit vysokou dostupnost pro aplikace, které ověřují prostřednictvím Proxy aplikací služby AD Azure, můžete konektory nainstalovat na víc virtuálních počítačů. Opakujte stejný postup uvedený v předchozí části a nainstalujte konektor na jiné servery připojené k spravované doméně Azure služba AD DS.
+
+## <a name="enable-resource-based-kerberos-constrained-delegation"></a>Povolení omezeného delegování založeného na prostředku Kerberos
+
+Pokud chcete používat jednotné přihlašování k aplikacím pomocí integrovaného ověřování systému Windows (IWA), udělte konektorům Azure Proxy aplikací služby AD oprávnění k zosobnění uživatelů a posílání a přijímání tokenů vaším jménem. Pro udělení těchto oprávnění nakonfigurujete omezené delegování protokolu Kerberos (KCD) pro konektor pro přístup k prostředkům ve spravované doméně Azure služba AD DS. Protože nemáte oprávnění správce domény ve spravované doméně Azure služba AD DS, nejde na spravované doméně nakonfigurovat tradiční KCD na úrovni účtu. Místo toho použijte KCD podle prostředků.
+
+Další informace najdete v tématu [Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services](deploy-kcd.md).
+
+> [!NOTE]
+> Abyste mohli spouštět následující rutiny PowerShellu, musíte být přihlášeni k uživatelskému účtu, který je členem skupiny *Správci Azure AD DC* v TENANTOVI Azure AD.
 >
-> Účty počítače pro váš virtuální počítač proxy aplikace a virtuální počítače aplikace musí být ve vlastní hlavní výtěr, kde máte oprávnění ke konfiguraci kcd založené na prostředcích. KCD na základě prostředků nelze nakonfigurovat pro účet počítače ve vestavěném kontejneru *Počítače řadiče domény AAD.*
+> Účty počítačů pro virtuální počítač konektoru proxy aplikací a virtuální počítače aplikace musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředcích. KCD na základě prostředků nejde nakonfigurovat pro účet počítače na integrovaném kontejneru *AAD DC Computers* .
 
-Pomocí [get-ADComputer][Get-ADComputer] načíst nastavení pro počítač, ve kterém je nainstalován konektor proxy aplikace Azure AD. Z vašeho virtuálního počítače pro správu připojovaný k doméně a přihlášen jako uživatelský účet, který je členem *skupiny správců Azure AD DC,* spusťte následující rutiny.
+Použijte [příkaz Get-ADComputer][Get-ADComputer] k načtení nastavení pro počítač, na kterém je nainstalovaný konektor Azure proxy aplikací služby AD. Z virtuálního počítače pro správu připojeného k doméně a přihlášený jako uživatelský účet, který je členem skupiny *Azure AD DC Administrators* , spusťte následující rutiny.
 
-Následující příklad získá informace o účtu počítače s názvem *appproxy.aaddscontoso.com*. Zadejte svůj vlastní název počítače pro virtuální počítač proxy aplikace Azure AD nakonfigurované v předchozích krocích.
+Následující příklad načte informace o účtu počítače s názvem *appproxy.aaddscontoso.com*. Zadejte vlastní název počítače pro virtuální počítač Azure Proxy aplikací služby AD nakonfigurovaný v předchozích krocích.
 
 ```powershell
 $ImpersonatingAccount = Get-ADComputer -Identity appproxy.aaddscontoso.com
 ```
 
-Pro každý aplikační server, který spouští aplikace za proxy aplikace Azure AD pomocí rutiny [Set-ADComputer][Set-ADComputer] PowerShell ke konfiguraci kcd založené na prostředcích. V následujícím příkladu je konektoru proxy aplikací Azure AD udělena oprávnění k používání *počítače appserver.aaddscontoso.com:*
+Pro každý aplikační server, na kterém běží aplikace za Azure Proxy aplikací služby AD použijte ke konfiguraci KCD na základě prostředků rutinu PowerShellu [set-ADComputer][Set-ADComputer] . V následujícím příkladu má konektor Azure Proxy aplikací služby AD udělena oprávnění k používání počítače s *AppServer.aaddscontoso.com* :
 
 ```powershell
 Set-ADComputer appserver.aaddscontoso.com -PrincipalsAllowedToDelegateToAccount $ImpersonatingAccount
 ```
 
-Pokud nasadíte více konektorů proxy aplikací Azure AD, musíte nakonfigurovat kcd na základě prostředků pro každou instanci konektoru.
+Pokud nasadíte více konektorů služby Azure Proxy aplikací služby AD, je nutné pro každou instanci konektoru nakonfigurovat KCD založenou na prostředku.
 
 ## <a name="next-steps"></a>Další kroky
 
-Díky proxy aplikací Azure AD integrované s Azure AD DS publikujte aplikace, ke kterým mají uživatelé přístup. Další informace naleznete v [tématu publikování aplikací pomocí proxy aplikace Azure AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
+S Azure Proxy aplikací služby AD integrovány se službou Azure služba AD DS můžete publikovat aplikace pro uživatele, kteří budou mít přístup. Další informace najdete v tématu [publikování aplikací pomocí Azure proxy aplikací služby AD](../active-directory/manage-apps/application-proxy-publish-azure-portal.md).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

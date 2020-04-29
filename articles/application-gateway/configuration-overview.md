@@ -1,6 +1,6 @@
 ---
-title: Přehled konfigurace brány aplikace Azure
-description: Tento článek popisuje, jak nakonfigurovat součásti Azure Application Gateway
+title: Přehled konfigurace Azure Application Gateway
+description: Tento článek popisuje, jak nakonfigurovat komponenty služby Azure Application Gateway
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,19 +8,19 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
 ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632178"
 ---
-# <a name="application-gateway-configuration-overview"></a>Přehled konfigurace aplikační brány
+# <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
-Azure Application Gateway se skládá z několika součástí, které můžete nakonfigurovat různými způsoby pro různé scénáře. Tento článek ukazuje, jak nakonfigurovat jednotlivé součásti.
+Azure Application Gateway se skládá z několika komponent, které můžete nakonfigurovat různými způsoby pro různé scénáře. V tomto článku se dozvíte, jak nakonfigurovat jednotlivé komponenty.
 
-![Vývojový diagram součástí aplikační brány](./media/configuration-overview/configuration-overview1.png)
+![Graf Flow komponent Application Gateway](./media/configuration-overview/configuration-overview1.png)
 
-Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. První dva jsou více-site `http://acme.com/*` posluchače pro a `http://fabrikam.com/*`, resp. Oba poslouchají na portu 80. Třetí je základní naslouchací proces, který má end-to-end transportní vrstvy zabezpečení (TLS) ukončení, dříve známé jako ssl (Secure Sockets Layer) ukončení.
+Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. První dva jsou naslouchací procesy pro více webů pro `http://acme.com/*` a `http://fabrikam.com/*`v uvedeném pořadí. Naslouchat na portu 80. Třetí je základní naslouchací proces, který má komplexní ukončení služby TLS (Transport Layer Security), dříve označované jako ukončení SSL (Secure Sockets Layer) (SSL).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -29,159 +29,159 @@ Tento obrázek znázorňuje aplikaci, která má tři naslouchací procesy. Prvn
 
 ### <a name="azure-virtual-network-and-dedicated-subnet"></a>Virtuální síť Azure a vyhrazená podsíť
 
-Aplikační brána je vyhrazené nasazení ve vaší virtuální síti. V rámci virtuální sítě je pro aplikační bránu vyžadována vyhrazená podsíť. V podsíti můžete mít více instancí daného nasazení aplikační brány. Můžete také nasadit další aplikační brány v podsíti. Ale nelze nasadit žádné jiné prostředky v podsíti aplikační brány.
+Application Gateway je ve vaší virtuální síti vyhrazené nasazení. V rámci virtuální sítě se pro aplikační bránu vyžaduje vyhrazená podsíť. V podsíti můžete mít několik instancí daného nasazení aplikační brány. V podsíti můžete taky nasadit jiné aplikační brány. V podsíti aplikační brány ale nemůžete nasadit žádné další prostředky.
 
 > [!NOTE]
-> Nelze kombinovat Standard_v2 a standardní brány aplikace Azure ve stejné podsíti.
+> Nemůžete kombinovat Standard_v2 a standardní Application Gateway Azure ve stejné podsíti.
 
 #### <a name="size-of-the-subnet"></a>Velikost podsítě
 
-Aplikační brána používá jednu privátní IP adresu pro jednu instanci a další privátní IP adresu, pokud je nakonfigurována privátní front-endová IP adresa.
+Application Gateway používá jednu privátní IP adresu na instanci a další privátní IP adresu, pokud je nakonfigurovaná privátní IP adresa front-endu.
 
-Azure také rezervuje pět IP adres v každé podsíti pro interní použití: první čtyři a poslední IP adresy. Zvažte například 15 instancí aplikační brány bez privátní ip adresy front-endu. Pro tuto podsíť potřebujete alespoň 20 IP adres: pět pro interní použití a 15 pro instance aplikační brány. Takže potřebujete /27 velikost podsítě nebo větší.
+Azure také rezervuje pět IP adres v každé podsíti pro interní použití: první čtyři a poslední IP adresy. Zvažte například 15 instancí aplikační brány bez soukromé front-endové IP adresy. Pro tuto podsíť potřebujete alespoň 20 IP adres: pět pro interní použití a 15 pro instance služby Application Gateway. Proto potřebujete velikost podsítě/27 nebo větší.
 
-Zvažte podsíť, která má 27 instancí aplikační brány a IP adresu pro privátní front-endIP. V takovém případě potřebujete 33 IP adres: 27 pro instance aplikační brány, jednu pro privátní front-end a pět pro interní použití. Takže potřebujete /26 velikost podsítě nebo větší.
+Vezměte v úvahu podsíť, která má 27 instancí aplikační brány a IP adresu pro soukromou front-end IP adresu. V takovém případě potřebujete 33 IP adres: 27 pro instance služby Application Gateway, jednu pro privátní front-end a pět pro interní použití. Proto potřebujete velikost podsítě/26 nebo větší.
 
-Doporučujeme použít velikost podsítě alespoň /28. Tato velikost vám dává 11 použitelných IP adres. Pokud zatížení aplikace vyžaduje více než 10 instancí aplikační brány, zvažte velikost podsítě /27 nebo /26.
+Doporučujeme použít velikost podsítě alespoň/28. Tato velikost poskytuje 11 použitelných IP adres. Pokud zatížení vaší aplikace vyžaduje více než 10 Application Gateway instancí, zvažte velikost podsítě/27 nebo/26.
 
-#### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě v podsíti Aplikační brána
+#### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Skupiny zabezpečení sítě na Application Gateway podsíti
 
-Skupiny zabezpečení sítě (NSG) jsou podporovány v application gateway. Existují však určitá omezení:
+V Application Gateway jsou podporovány skupiny zabezpečení sítě (skupin zabezpečení sítě). Existují však určitá omezení:
 
-- Příchozí internetový provoz na portech TCP 65503-65534 je nutné povolit pro skladovou položku SKU brány aplikace v1 a porty TCP 65200-65535 pro skladovou položku v2 s cílovou podsítí jako **libovolnou** a zdroj jako značku služby **GatewayManager.** Tento rozsah portů je vyžadován pro komunikaci infrastruktury Azure. Tyto porty jsou chráněné (uzamčeny) certifikáty Azure. Externí entity, včetně zákazníků těchto bran, nemohou komunikovat v těchto koncových bodech.
+- Je nutné, aby příchozí internetový provoz na portech TCP 65503-65534 pro SKU Application Gateway V1 a porty TCP 65200-65535 pro SKU verze 2 v2 s cílovou podsítí jako **s označením služby a jako** zdroj jako služba **GatewayManager** . Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Externí entity, včetně zákazníků těchto bran, nemůžou komunikovat na těchto koncových bodech.
 
-- Odchozí připojení k internetu nelze blokovat. Výchozí odchozí pravidla v souboru zabezpečení sítě umožňují připojení k internetu. Doporučený postup:
+- Odchozí připojení k Internetu nejde zablokovat. Výchozí odchozí pravidla v NSG umožňují připojení k Internetu. Doporučený postup:
 
-  - Neodstraňujte výchozí odchozí pravidla.
-  - Nevytvářejte další odchozí pravidla, která odpírají jakékoli odchozí připojení.
+  - Neodstraňujte Výchozí odchozí pravidla.
+  - Nevytvářejte jiná odchozí pravidla, která odmítají jakékoli odchozí připojení.
 
-- Provoz ze značky **AzureLoadBalancer** musí být povolen.
+- Musí být povolený provoz ze značky **AzureLoadBalancer** .
 
-#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolit přístup aplikační brány k několika zdrojovým IP adresy
+#### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>Povolí Application Gateway přístup k několika zdrojovým IP adresám.
 
-V tomto scénáři použijte skupiny nsg v podsíti Aplikační brána. V tomto pořadí podle priority uložte do podsítě následující omezení:
+V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application Gateway. V této prioritě vložte následující omezení podsítě:
 
-1. Povolit příchozí provoz ze zdrojové IP nebo IP oblasti s cílem jako celý rozsah adres podsítě aplikační brány a cílový port jako vstupní přístupový port, například port 80 pro přístup HTTP.
-2. Povolit příchozí požadavky ze zdroje jako značku služby **GatewayManager** a cíl jako **libovolné** a cílové porty jako 65503-65534 pro aplikační bránu v1 SKU a porty 65200-65535 pro v2 Skladovou položku pro [komunikaci stavu back-end](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Tento rozsah portů je vyžadován pro komunikaci infrastruktury Azure. Tyto porty jsou chráněné (uzamčeny) certifikáty Azure. Bez příslušných certifikátů na místě externí entity nelze iniciovat změny na těchto koncových bodů.
-3. Povolit příchozí sondy Nástroje pro vyrovnávání zatížení Azure (značka*AzureLoadBalancer)* a příchozí provoz virtuální sítě (značka*VirtualNetwork)* ve [skupině zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
-4. Zablokujte všechny ostatní příchozí přenosy pomocí pravidla odepřít vše.
-5. Povolit odchozí provoz na internetu pro všechny cíle.
+1. Povolí příchozí provoz ze zdrojové IP adresy nebo rozsahu IP adres s cílem jako celý rozsah adres podsítě Application Gateway a cílový port jako port pro příchozí přístup, například port 80 pro přístup HTTP.
+2. Povolí příchozí požadavky ze zdroje jako **GatewayManager** Service Tag a Destination jako **libovolný** a cílový port jako 65503-65534 pro SKU Application Gateway V1 a porty 65200-65535 pro 2 SKU pro [komunikaci stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Tento rozsah portů je nutný pro komunikaci s infrastrukturou Azure. Tyto porty jsou chráněné (uzamčené) pomocí certifikátů Azure. Bez příslušných certifikátů nemohou externí entity zahájit změny těchto koncových bodů.
+3. Povolit příchozí testy Azure Load Balancer (značka*AzureLoadBalancer* ) a příchozí provoz virtuální sítě (značka*VirtualNetwork* ) ve [skupině zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview).
+4. Zablokuje všechny ostatní příchozí přenosy pomocí pravidla odepřít – vše.
+5. Povolí odchozí provoz do Internetu pro všechny cíle.
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>Trasy definované uživatelem podporované v podsíti služby Application Gateway.
 
 > [!IMPORTANT]
-> Použití udr. [back-end health view](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) **Unknown** Může také způsobit generování protokolů a metrik aplikační brány k selhání. Doporučujeme nepoužívat UDR v podsíti Aplikační brána, abyste mohli zobrazit stav back-endu, protokoly a metriky.
+> Použití udr v podsíti Application Gateway může způsobit, že se stav v [zobrazení stavu back-endu](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#back-end-health) zobrazí jako **Neznámý**. Může to také způsobit selhání generování protokolů Application Gateway a metrik. Doporučujeme, abyste v Application Gateway podsíti nepoužívali udr, abyste mohli zobrazit stav back-endu, protokoly a metriky.
 
-- **v1**
+- **V1**
 
-   Pro skladovou položku v1 jsou v podsíti aplikační brány podporovány uživatelem definované trasy (UDR), pokud nemění komunikaci mezi koncovými požadavky a odpověďmi. Můžete například nastavit UDR v podsíti Aplikační brána tak, aby ukazovala na zařízení brány firewall pro kontrolu paketů. Ale musíte se ujistit, že paket může dosáhnout zamýšleného cíle po kontrole. Pokud tak neučiníte, může dojít k nesprávné mu znehodnocení stavu nebo chování směrování provozu. To zahrnuje učené trasy nebo výchozí trasy 0.0.0.0/0, které jsou šířeny branami Azure ExpressRoute nebo VPN ve virtuální síti.
+   V případě SKU v1 jsou uživatelsky definované trasy (udr) podporované v Application Gateway podsíti, pokud se nezmění na koncovou komunikaci mezi požadavky a odpověďmi. V Application Gateway podsíti můžete například nastavit UDR, aby odkazoval na zařízení brány firewall pro kontrolu paketů. Je ale nutné se ujistit, že paket se po kontrole může dostat k zamýšlenému cíli. V takovém případě může dojít k nesprávnému chování při testování stavu nebo směrování provozu. To zahrnuje naučené trasy nebo výchozí trasy 0.0.0.0/0, které šíří služby Azure ExpressRoute nebo VPN Gateway ve virtuální síti.
 
 - **v2**
 
-   Pro skladovou položku v2 existují podporované a nepodporované scénáře:
+   Pro SKU v2 existují podporované a nepodporované scénáře:
 
-   **podporované scénáře v2**
+   **verze V2 – podporované scénáře**
    > [!WARNING]
-   > Nesprávná konfigurace směrovací tabulky může mít za následek asymetrické směrování v application gateway v2. Ujistěte se, že veškerý provoz roviny správy/řízení je odesílán přímo na Internet a ne prostřednictvím virtuálního zařízení. Mohlo by to mít vliv i na protokolování a metriky.
+   > Nesprávná konfigurace směrovací tabulky by mohla vést k asymetrickému směrování ve Application Gateway v2. Zajistěte, aby se veškerý provoz na rovině správy a řízení odesílal přímo na Internet, a ne přes virtuální zařízení. Protokolování a metriky by taky mohly ovlivnit.
 
 
-  **Scénář 1:** UDR zakázat šíření směrování protokolu NGP protokolu NGP protokolu NGP (Border Gateway Protocol) do podsítě Aplikační brána
+  **Scénář 1**: udr pro zákaz šíření tras Border Gateway Protocol (BGP) do Application Gateway podsítě
 
-   Někdy je výchozí trasa brány (0.0.0.0/0) inzerována prostřednictvím bran ExpressRoute nebo VPN přidružených k virtuální síti Aplikační brána. Tím se přeruší provoz roviny správy, což vyžaduje přímou cestu k Internetu. V takových scénářích lze použít UDR zakázat šíření trasy Protokolu BGP. 
+   Někdy je výchozí trasa brány (0.0.0.0/0) inzerována prostřednictvím bran ExpressRoute nebo VPN, které jsou přidružené k virtuální síti Application Gateway. Tím dojde k přerušení provozu roviny správy, což vyžaduje přímou cestu k Internetu. V takových scénářích se dá UDR použít k zakázání šíření tras protokolu BGP. 
 
-   Chcete-li zakázat šíření trasy protokolu BGP, postupujte takto:
+   Chcete-li zakázat šíření tras protokolu BGP, použijte následující postup:
 
-   1. Vytvořte prostředek tabulky trasy v Azure.
-   2. Zakažte parametr **šíření trasy brány virtuální sítě.** 
-   3. Přidružte tabulku trasy k příslušné podsíti. 
+   1. Vytvořte prostředek směrovací tabulky v Azure.
+   2. Zakažte parametr **šíření trasy brány virtuální sítě** . 
+   3. Přidružte směrovací tabulku k příslušné podsíti. 
 
-   Povolení UDR pro tento scénář by nemělo přerušit žádné existující nastavení.
+   Povolení UDR pro tento scénář by nemělo přerušit existující nastavení.
 
-  **Scénář 2**: UDR na přímé 0.0.0.0/0 na Internet
+  **Scénář 2**: udr k přímému nasměrování 0.0.0.0/0 na Internet
 
-   Můžete vytvořit UDR pro odesílání 0.0.0.0/0 přenosů přímo do Internetu. 
+   Můžete vytvořit UDR pro odeslání provozu 0.0.0.0/0 přímo na Internet. 
 
-  **Scénář 3:** UDR pro službu Azure Kubernetes kubenet
+  **Scénář 3**: udr pro Azure Kubernetes Service kubenet
 
-  Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a řadičem příchozího přenosu dat aplikační brány (AGIC), musíte nastavit směrovací tabulku, která umožní směrování odeslané do podů do správného uzlu. To nebude nutné, pokud používáte Azure CNI. 
+  Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a Application Gateway řadič příchozího přenosu dat (AGIC), musíte nastavit směrovací tabulku, aby bylo možné směrovat provoz odesílaná do lusků do správného uzlu. To nebude nutné v případě, že použijete Azure CNI. 
 
-   Chcete-li nastavit směrovací tabulku tak, aby kubenet fungoval, použijte následující kroky:
+   Chcete-li nastavit směrovací tabulku, aby mohla aplikace kubenet fungovat, použijte následující postup:
 
-  1. Vytvořte prostředek tabulky trasy v Azure. 
-  2. Po vytvoření přejděte na stránku **Trasy.** 
-  3. Přidejte novou trasu:
-     - Předpona adresy by měla být rozsah IP podů, které chcete dosáhnout v AKS. 
-     - Další typ směrování by měl být **Virtual Appliance**. 
-     - Další adresa směrování by měla být IP adresa uzlu hostujícího pody v rozsahu IP adres definovaném v poli předpony adresy. 
+  1. Vytvořte prostředek směrovací tabulky v Azure. 
+  2. Až se vytvoří, přejdete na stránku **trasy** . 
+  3. Přidat novou trasu:
+     - Předpona adresy by měla být rozsahem IP adres lusků, které chcete oslovit v AKS. 
+     - Typ dalšího segmentu směrování by měl být **virtuální zařízení**. 
+     - Adresa dalšího směrování by měla být IP adresa uzlu hostujícího lusky v rámci rozsahu IP adres definovaného v poli Předpona adresy. 
     
-  **v2 nepodporované scénáře**
+  **V2 – nepodporované scénáře**
 
-  **Scénář 1**: UDR pro virtuální zařízení
+  **Scénář 1**: udr pro virtuální zařízení
 
-  Jakýkoli scénář, kde 0.0.0.0/0 musí být přesměrovány prostřednictvím libovolného virtuálního zařízení, centrální/paprskové virtuální sítě nebo místní (vynucené tunelové propojení) není podporovánpro V2.
+  Všechny scénáře, kdy musí být adresa 0.0.0.0/0 přesměrována prostřednictvím libovolného virtuálního zařízení, virtuální sítě typu hub/paprsek nebo místní (vynucené tunelové propojení), není pro v2 podporována.
 
-## <a name="front-end-ip"></a>Ip adresa front-endu
+## <a name="front-end-ip"></a>Front-end IP adresa
 
-Můžete nakonfigurovat aplikační bránu tak, aby měla veřejnou IP adresu, privátní IP adresu nebo obojí. Veřejná IP adresa je vyžadována, pokud hostujete back-end, ke kterému musí klienti přistupovat přes internet prostřednictvím virtuální IP adresy (VIP) orientované na internet. 
+Aplikační bránu můžete nakonfigurovat tak, aby měla veřejnou IP adresu, soukromou IP adresu nebo obojí. Veřejná IP adresa se vyžaduje při hostování back-endu, ke kterému musí klienti přistupovat přes Internet prostřednictvím internetové virtuální IP adresy (VIP). 
 
-Veřejná IP adresa není vyžadována pro interní koncový bod, který není vystaven internetu. To se označuje jako vnitřní koncový bod *vyvažovače zatížení* (ILB) nebo privátní ip adresy front-endu. ILB aplikační brány je užitečné pro interní obchodní aplikace, které nejsou vystaveny internetu. Je také užitečné pro služby a vrstvy ve vícevrstvé aplikaci v rámci hranice zabezpečení, které nejsou vystaveny internetu, ale které vyžadují rozložení zatížení kruhového dotazování, lepivost relace nebo ukončení TLS.
+Veřejná IP adresa není nutná pro interní koncový bod, který není vystavený pro Internet. To se říká jako koncový bod *interního nástroje pro vyrovnávání zatížení* (interního nástroje) nebo privátní IP adresa front-endu. Služba Application Gateway interního nástroje je užitečná pro interní obchodní aplikace, které nejsou přístupné pro Internet. Je to také užitečné pro služby a vrstvy v rámci hranice zabezpečení, které nejsou přístupné z Internetu, ale vyžadují distribuci zatížení kruhového dotazování, vytrvalost relace nebo ukončení protokolu TLS.
 
-Je podporována pouze 1 veřejná IP adresa nebo jedna privátní IP adresa. Front-endOVOU IP adresu zvolíte při vytváření aplikační brány.
+Je podporovaná jenom jedna veřejná IP adresa nebo jedna privátní IP adresa. Při vytváření aplikační brány zvolíte front-end IP adresu.
 
-- Pro veřejnou IP adresu můžete vytvořit novou veřejnou IP adresu nebo použít existující veřejnou IP adresu ve stejném umístění jako aplikační brána. Další informace naleznete [v tématu static kárně vs. dynamická veřejná IP adresa](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- U veřejné IP adresy můžete vytvořit novou veřejnou IP adresu nebo použít stávající veřejnou IP adresu ve stejném umístění jako Aplikační brána. Další informace najdete v tématu [statická a dynamická veřejná IP adresa](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
-- Pro privátní IP adresu můžete zadat privátní IP adresu z podsítě, kde je vytvořena aplikační brána. Pokud ji nezadáte, bude z podsítě automaticky vybrána libovolná adresa IP. Typ IP adresy, který vyberete (statický nebo dynamický), nelze později změnit. Další informace naleznete [v tématu Vytvoření aplikační brány s interním mechanismem vyrovnávání zatížení](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+- U privátních IP adres můžete zadat privátní IP adresu z podsítě, ve které je Aplikační brána vytvořená. Pokud nezadáte žádnou hodnotu, z podsítě se automaticky vybere Libovolná IP adresa. Vybraný typ IP adresy (static nebo Dynamic) nelze později změnit. Další informace najdete v tématu [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
-Front-endová IP adresa je přidružena k *naslouchací procesu*, který kontroluje příchozí požadavky na front-end IP.
+Front-end IP adresa je přidružená k *naslouchacího procesu*, který kontroluje příchozí požadavky na front-endové IP adresu.
 
 ## <a name="listeners"></a>Naslouchací procesy
 
-Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení pomocí portu, protokolu, hostitele a adresy IP. Při konfiguraci naslouchací proces, musíte zadat hodnoty pro tyto, které odpovídají odpovídající hodnoty v příchozí požadavek na bránu.
+Naslouchací proces je logická entita, která kontroluje příchozí požadavky na připojení pomocí portu, protokolu, hostitele a IP adresy. Při konfiguraci naslouchacího procesu je nutné zadat hodnoty, které odpovídají odpovídajícím hodnotám v příchozím požadavku na bráně.
 
-Když vytvoříte aplikační bránu pomocí portálu Azure, vytvoříte také výchozí naslouchací proces výběrem protokolu a portu pro naslouchací proces. Můžete zvolit, zda chcete povolit podporu HTTP2 na naslouchací proces. Po vytvoření brány aplikace můžete upravit nastavení tohoto výchozího naslouchací hoschu *(appGatewayHttpListener)* nebo vytvořit nové naslouchací procesy.
+Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte také výchozí naslouchací proces zvolením protokolu a portu pro naslouchací proces. Můžete zvolit, jestli se má povolit podpora HTTP2 pro naslouchací proces. Po vytvoření aplikační brány můžete upravit nastavení tohoto výchozího naslouchacího procesu (*appGatewayHttpListener*) nebo vytvořit nové naslouchací procesy.
 
-### <a name="listener-type"></a>Typ posluchače
+### <a name="listener-type"></a>Typ naslouchacího procesu
 
-Při vytváření nového naslouchací proces, můžete si vybrat mezi [ *základní* a *více webu*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
+Při vytváření nového naslouchacího procesu si zvolíte mezi [ *základními* a *více lokalitami*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
 
-- Pokud chcete, aby všechny vaše požadavky (pro libovolnou doménu) byly přijaty a předány do back-endových fondů, zvolte základní. [Naučte se, jak vytvořit aplikační bránu se základním naslouchací proces](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Pokud chcete, aby všechny vaše žádosti (pro libovolnou doménu) byly přijaty a předány do fondů back-endu, vyberte základní. Přečtěte si, [jak vytvořit Aplikační bránu s využitím základního naslouchacího procesu](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Pokud chcete předat požadavky do různých back-endových fondů na základě hlavičky *hostitele* nebo názvu hostitele, zvolte naslouchací proces s více weby, kde je také nutné zadat název hostitele, který odpovídá příchozí mu. Důvodem je, že aplikační brána spoléhá na hlavičky hostitele HTTP 1.1 pro hostování více než jednoho webu na stejné veřejné IP adrese a portu.
+- Pokud chcete překládat požadavky na různé back-endové fondy na základě hlavičky *hostitele* nebo názvu hostitele, zvolte možnost naslouchací proces více webů, kde musíte zadat také název hostitele, který odpovídá příchozímu požadavku. Důvodem je to, že Application Gateway spoléhá na hlavičky hostitele HTTP 1,1 k hostování více než jednoho webu na stejné veřejné IP adrese a portu.
 
-#### <a name="order-of-processing-listeners"></a>Pořadí zpracování posluchačů
+#### <a name="order-of-processing-listeners"></a>Pořadí naslouchacího procesu zpracování
 
-Pro skladovou položku v1 jsou požadavky spárovány podle pořadí pravidel a typu naslouchacího procesu. Pokud pravidlo se základním naslouchací proces je na prvním místě v pořadí, je zpracována jako první a přijme jakýkoli požadavek na tento port a kombinaci IP. Chcete-li tomu zabránit, nejprve nakonfigurujte pravidla s naslouchacími procesy s více weby a posuňte pravidlo se základním naslouchacíproces na poslední v seznamu.
+V případě SKU v1 jsou požadavky porovnány podle pořadí pravidel a typu naslouchacího procesu. Pokud se pravidlo se základním naslouchacím rozhraním bude nacházet jako první v uvedeném pořadí, zpracuje se nejprve a přijme všechny žádosti o tuto kombinaci portů a IP adres. Aby k tomu nedocházelo, napřed nakonfigurujte pravidla s využitím naslouchacího procesu Multi-Site a nasaďte pravidlo pomocí základního naslouchacího procesu na poslední v seznamu.
 
-Pro skladovou položku v2 jsou posluchače s více pracemi zpracovány před základními naslouchacími procesy.
+V případě SKU verze v2 jsou procesy naslouchání na více lokalitách zpracovány před základními naslouchacími procesy.
 
-### <a name="front-end-ip"></a>Ip adresa front-endu
+### <a name="front-end-ip"></a>Front-end IP adresa
 
-Zvolte front-endIP adresu, kterou chcete přidružit k tomuto naslouchacímu procesu. Naslouchací proces bude poslouchat příchozí požadavky na této IP adresy.
+Vyberte front-end IP adresu, kterou plánujete přidružit k tomuto naslouchacímu procesu. Naslouchací proces bude naslouchat příchozím žádostem v této IP adrese.
 
 ### <a name="front-end-port"></a>Front-end port
 
-Zvolte port front-end. Vyberte existující port nebo vytvořte nový. Zvolte libovolnou [hodnotu z povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale všechny povolené vlastní porty, které jsou vhodné. Port lze použít pro veřejné naslouchací procesy nebo soukromé naslouchací procesy.
+Vyberte front-end port. Vyberte existující port nebo vytvořte nový. Vyberte libovolnou hodnotu z [povoleného rozsahu portů](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#ports). Můžete použít nejen známé porty, například 80 a 443, ale kterýkoli povolený vlastní port je vhodný. Port lze použít pro veřejné naslouchací procesy nebo privátní naslouchací procesy.
 
 ### <a name="protocol"></a>Protocol (Protokol)
 
-Zvolte HTTP nebo HTTPS:
+Vyberte HTTP nebo HTTPS:
 
-- Pokud zvolíte HTTP, provoz mezi klientem a aplikační bránou je nešifrovaný.
+- Pokud zvolíte protokol HTTP, přenosy mezi klientem a aplikační bránou nejsou šifrované.
 
-- Pokud chcete, aby [protokol TLS ukončil](features.md#secure-sockets-layer-ssltls-termination) nebo ukončil protokol [TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview), zvolte protokol HTTPS . Provoz mezi klientem a aplikační bránou je šifrován. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od konce, musíte zvolit protokol HTTPS a nakonfigurovat nastavení **http back-end.** Tím je zajištěno, že provoz je znovu zašifrována při cestě z brány aplikace do back-endu.
+- Pokud chcete [ukončení TLS](features.md#secure-sockets-layer-ssltls-termination) nebo [komplexní šifrování TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview), vyberte https. Přenos dat mezi klientem a aplikační bránou je zašifrovaný. A připojení TLS končí na aplikační bráně. Pokud chcete šifrování TLS od začátku do konce, musíte zvolit HTTPS a nakonfigurovat nastavení **back-endu http** . Tím se zajistí, že se provoz po přenosu z aplikační brány do back-endu znovu zašifruje.
 
 
-Chcete-li nakonfigurovat ukončení TLS a end-to-end šifrování TLS, musíte přidat certifikát na schůdku, aby aplikační brána mohla odvodit symetrický klíč. To je dáno specifikací protokolu TLS. Symetrický klíč se používá k šifrování a dešifrování přenosů odeslaných do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát umožňuje exportovat soukromý klíč, který brána používá k šifrování a dešifrování provozu.
+Chcete-li nakonfigurovat ukončení protokolu TLS a komplexní šifrování TLS, je nutné do naslouchacího procesu přidat certifikát, aby služba Application Gateway mohla odvodit symetrický klíč. To je určeno specifikací protokolu TLS. Symetrický klíč slouží k šifrování a dešifrování provozu, který je odeslán do brány. Certifikát brány musí být ve formátu PFX (Personal Information Exchange). Tento formát vám umožní exportovat soukromý klíč, který brána používá k šifrování a dešifrování provozu.
 
 #### <a name="supported-certificates"></a>Podporované certifikáty
 
-Viz [certifikáty podporované pro ukončení TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
+Viz [certifikáty podporované pro ukončení protokolu TLS](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination).
 
-### <a name="additional-protocol-support"></a>Další podpora protokolu
+### <a name="additional-protocol-support"></a>Podpora dalších protokolů
 
 #### <a name="http2-support"></a>Podpora HTTP2
 
-Podpora protokolu HTTP/2 je k dispozici klientům, kteří se připojují pouze k naslouchacím chposluchačům aplikační brány. Komunikace s fondy serverů back-end je přes HTTP/1.1. Ve výchozím nastavení je podpora http/2 zakázána. Následující fragment kódu Azure PowerShellu ukazuje, jak to povolit:
+Podpora protokolu HTTP/2 je dostupná pro klienty, kteří se připojují pouze ke službě Application Gateway Listeners. Komunikace se fondy back-end serverů je přes protokol HTTP/1.1. Ve výchozím nastavení je podpora HTTP/2 zakázaná. Následující fragment kódu Azure PowerShell ukazuje, jak tuto možnost povolit:
 
 ```azurepowershell
 $gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
@@ -193,210 +193,210 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="websocket-support"></a>Podpora protokolu WebSocket
 
-Podpora websocketu je ve výchozím nastavení povolena. Neexistuje žádné uživatelsky konfigurovatelné nastavení, které by ho povolilo nebo zakázalo. WebSockets můžete použít s http a https naslouchací procesy.
+Podpora protokolu WebSocket je ve výchozím nastavení povolená. Neexistuje žádné uživatelsky konfigurovatelné nastavení, které by bylo možné povolit nebo zakázat. Můžete použít objekty WebSockets s naslouchacími procesy HTTP i HTTPS.
 
 ### <a name="custom-error-pages"></a>Vlastní chybové stránky
 
-Vlastní chybu můžete definovat na globální úrovni nebo na úrovni posluchače. Ale vytváření vlastních chybových stránek na globální úrovni z portálu Azure není momentálně podporované. Můžete nakonfigurovat vlastní chybovou stránku pro chybu brány firewall webové aplikace 403 nebo stránku údržby 502 na úrovni posluchače. Je také nutné zadat veřejně přístupnou adresu URL objektu blob pro daný kód stavu chyby. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Vlastní chybu můžete definovat na globální úrovni nebo na úrovni naslouchacího procesu. Ale vytváření vlastních chybových stránek na globální úrovni z Azure Portal aktuálně není podporováno. Vlastní chybovou stránku můžete nakonfigurovat pro chybu brány firewall webové aplikace 403 nebo pro stránku údržby 502 na úrovni naslouchacího procesu. Pro daný stavový kód chyby je nutné zadat také veřejně dostupnou adresu URL objektu BLOB. Další informace najdete v tématu [Vytvoření vlastních chybových stránek služby Application Gateway](https://docs.microsoft.com/azure/application-gateway/custom-error).
 
-![Chybové kódy brány aplikace](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
+![Kódy chyb Application Gateway](https://docs.microsoft.com/azure/application-gateway/media/custom-error/ag-error-codes.png)
 
-Pokud chcete nakonfigurovat globální vlastní chybovou stránku, [přečtěte si informace o konfiguraci Prostředí Azure PowerShell](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
+Pokud chcete nakonfigurovat globální vlastní chybovou stránku, přečtěte si téma [Azure PowerShell Configuration](https://docs.microsoft.com/azure/application-gateway/custom-error#azure-powershell-configuration).
 
-### <a name="tls-policy"></a>Zásady TLS
+### <a name="tls-policy"></a>Zásada TLS
 
-Můžete centralizovat správu certifikátů TLS/SSL a snížit režii dešifrování pro serverovou farmu back-end. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované*nebo *vlastní* zásady TLS.
+Můžete centralizovat správu certifikátů TLS/SSL a snížit režijní náklady na dešifrování pro back-endové serverové farmy. Centralizované zpracování TLS také umožňuje určit centrální zásady TLS, které jsou vhodné pro vaše požadavky na zabezpečení. Můžete zvolit *výchozí*, *předdefinované*nebo *vlastní* zásady TLS.
 
-Zásady TLS nakonfigurujete tak, aby řídily verze protokolu TLS. Můžete nakonfigurovat aplikační bránu tak, aby používala minimální verzi protokolu pro protokoly TLS handshakes z protokolů TLS1.0, TLS1.1 a TLS1.2. Ve výchozím nastavení jsou ssl 2.0 a 3.0 zakázány a nelze je konfigurovat. Další informace naleznete v [tématu Přehled zásad TLS aplikační brány](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
+Zásady TLS se konfigurují pro řízení verzí protokolu TLS. Aplikační bránu můžete nakonfigurovat tak, aby používala minimální verzi protokolu pro handshake TLS z TLS 1.0, TLS 1.1 a TLS 1.2. Ve výchozím nastavení jsou SSL 2,0 a 3,0 zakázané a nedají se konfigurovat. Další informace najdete v tématu [Přehled zásad Application Gateway TLS](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview).
 
-Po vytvoření naslouchací proces, přidružení k pravidlo směrování požadavků. Toto pravidlo určuje, jak jsou požadavky přijaté na naslouchací proces směrovány do back-endu.
+Po vytvoření naslouchacího procesu ho přidružíte k pravidlu směrování požadavků. Toto pravidlo určuje, jak jsou požadavky přijaté na naslouchací službě směrovány do back-endu.
 
-## <a name="request-routing-rules"></a>Požádat o pravidla směrování
+## <a name="request-routing-rules"></a>Pravidla směrování žádostí
 
-Když vytvoříte aplikační bránu pomocí portálu Azure, vytvoříte výchozí pravidlo *(pravidlo1).* Toto pravidlo váže výchozí naslouchací proces *(appGatewayHttpListener)* s výchozím back-end fondem *(appGatewayBackendPool)* a výchozím nastavením HTTP back-end *(appGatewayBackendHttpSettings).* Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
+Když vytváříte Aplikační bránu pomocí Azure Portal, vytvoříte výchozí pravidlo (*rule1*). Toto pravidlo váže výchozí naslouchací proces (*appGatewayHttpListener*) s výchozím fondem back-end (*appGatewayBackendPool*) a výchozím nastavením back-endu http (*appGatewayBackendHttpSettings*). Po vytvoření brány můžete upravit nastavení výchozího pravidla nebo vytvořit nová pravidla.
 
 ### <a name="rule-type"></a>Typ pravidla
 
-Při vytváření pravidla si můžete vybrat mezi [ *základní* a *na základě cesty*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
+Když vytvoříte pravidlo, zvolíte mezi [ *základními* a *založenými na cestách*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#request-routing-rules).
 
-- Zvolte základní, pokud chcete předat všechny požadavky na přidružený naslouchací proces (například *blog<i></i>.contoso.com/)\** do jednoho back-endového fondu.
-- Pokud chcete směrovat požadavky z konkrétních cest URL do konkrétních back-endových fondů, zvolte na základě cesty. Vzor cesty se použije pouze na cestu adresy URL, nikoli na parametry dotazu.
+- Pokud chcete před všemi požadavky na přiřazený naslouchací proces (například *blog<i></i>. contoso.com/\*)* na jeden fond back-end, vyberte základní.
+- Pokud chcete směrovat požadavky od konkrétních cest URL ke konkrétním fondům back-endu, vyberte na základě cesty. Vzor cesty je použit pouze pro cestu k adrese URL, nikoli k parametrům dotazu.
 
 #### <a name="order-of-processing-rules"></a>Pořadí pravidel zpracování
 
-Pro skladovou položku v1 je porovnávání vzorků příchozích požadavků zpracováno v pořadí, v jakém jsou cesty uvedeny v mapě cesty URL pravidla založeného na cestě. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách v mapě cesty, cesta, která je uvedena jako první, je spárována. A požadavek je předán na zadní konec, který je spojen s touto cestou.
+V případě SKU V1 se porovnávání vzorů příchozích požadavků zpracovává v pořadí, v jakém jsou cesty uvedeny v mapě cesty URL pravidla založeného na cestě. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách v mapě cesty, cesta uvedená jako první je shodná. A požadavek se přepošle na back-end, který je přidružený k této cestě.
 
-Pro skladovou položku v2 je přesná shoda vyšší prioritou než pořadí cest v mapě cesty URL. Pokud požadavek odpovídá vzoru ve dvou nebo více cest, požadavek je předán do back-endu, který je spojen s cestou, která přesně odpovídá požadavku. Pokud cesta v příchozí žádosti přesně neodpovídá žádné cestě v mapě, porovnávání vzorků požadavku se zpracuje v seznamu pořadí mapy cesty pro pravidlo založené na cestě.
+V případě SKU v2 je přesnou shodou v mapě cesty URL přesná shoda vyšší Priorita než pořadí cest. Pokud požadavek odpovídá vzoru ve dvou nebo více cestách, požadavek se předá do back-endu přidruženého k cestě, která přesně odpovídá požadavku. Pokud cesta v příchozím požadavku neodpovídá přesně žádné cestě v mapě, zpracovává se porovnávání vzorů žádosti v seznamu pořadí mapy cest pro pravidlo na základě cesty.
 
 ### <a name="associated-listener"></a>Přidružený naslouchací proces
 
-Přidružit naslouchací proces k pravidlu tak, aby *pravidlo směrování požadavku,* které je přidruženo k naslouchací proces je vyhodnocena k určení back-end fondu pro směrování požadavku.
+Přidružte naslouchací proces k pravidlu, aby se vyhodnotilo *pravidlo směrování požadavků* , které je přidružené ke naslouchacího procesu, aby se zjistilo, že fond back-end má směrovat požadavek.
 
-### <a name="associated-back-end-pool"></a>Přidružený back-endový fond
+### <a name="associated-back-end-pool"></a>Přidružený fond back-end
 
-Přidružte k pravidlu back-endový fond, který obsahuje back-endové cíle, které obsluhují požadavky, které posluchač obdrží.
+Přidružte k pravidlu fond back-end, který obsahuje cíle back-endu, které obsluhují požadavky, které naslouchací proces obdrží.
 
- - Pro základní pravidlo je povolen pouze jeden fond back-end. Všechny požadavky na přidružené naslouchací proces jsou předány do fondu back-end.
+ - Pro základní pravidlo je povolen pouze jeden fond back-end. Všechny požadavky na přidruženém naslouchacího procesu se předají do tohoto fondu back-end.
 
- - Pro pravidlo založené na cestě přidejte více back-endových fondů, které odpovídají každé cestě url. Požadavky, které odpovídají zadané cestě url, jsou předány do odpovídajícího back-endového fondu. Přidejte také výchozí fond back-end. Požadavky, které neodpovídají žádné cestě URL v pravidle, jsou předány do tohoto fondu.
+ - V případě pravidla založeného na cestách přidejte více fondů back-end, které odpovídají každé cestě URL. Požadavky, které odpovídají zadané cestě URL, se předají do odpovídajícího fondu back-end. Přidejte také výchozí fond back-end. Žádosti, které neodpovídají žádné cestě URL v pravidle, se předají do tohoto fondu.
 
 ### <a name="associated-back-end-http-setting"></a>Přidružené nastavení HTTP back-endu
 
-Přidejte back-end nastavení HTTP pro každé pravidlo. Požadavky jsou směrovány z brány aplikace do back-endových cílů pomocí čísla portu, protokolu a dalších informací, které jsou zadány v tomto nastavení.
+Přidejte nastavení back-endu protokolu HTTP pro každé pravidlo. Požadavky jsou směrovány z aplikační brány na cíle back-endu pomocí čísla portu, protokolu a dalších informací, které jsou zadány v tomto nastavení.
 
-Pro základní pravidlo je povoleno pouze jedno back-endové nastavení HTTP. Všechny požadavky na přidružené naslouchací proces jsou předány odpovídající back-end cíle pomocí tohoto nastavení HTTP.
+Pro základní pravidlo je povolené jenom jedno nastavení back-endu HTTP. Všechny požadavky na přidruženém naslouchacího procesu jsou předávány odpovídajícím cílům back-endu pomocí tohoto nastavení protokolu HTTP.
 
-Pro pravidlo založené na cestě přidejte více back-endových nastavení HTTP, které odpovídají každé cestě URL. Požadavky, které odpovídají cestě URL v tomto nastavení jsou předány odpovídající back-end cíle pomocí nastavení HTTP, které odpovídají každé cestě URL. Přidejte také výchozí nastavení HTTP. Požadavky, které neodpovídají žádné cestě URL v tomto pravidle, jsou předány do výchozího back-endového fondu pomocí výchozího nastavení HTTP.
+Pro pravidlo založené na cestách přidejte více nastavení HTTP back-endu, která odpovídají každé cestě URL. Požadavky, které odpovídají cestě URL v tomto nastavení, se předají do odpovídajících cílů back-endu pomocí nastavení protokolu HTTP, které odpovídá každé cestě URL. Přidejte také výchozí nastavení HTTP. Požadavky, které neodpovídají žádné cestě URL v tomto pravidle, se předají do výchozího fondu back-end s použitím výchozího nastavení HTTP.
 
 ### <a name="redirection-setting"></a>Nastavení přesměrování
 
-Pokud přesměrování je nakonfigurován pro základní pravidlo, všechny požadavky na přidružené naslouchací proces jsou přesměrovány na cíl. Tohle je *globální* přesměrování. Pokud je pro pravidlo založené na cestě nakonfigurováno přesměrování, budou přesměrovány pouze požadavky v určité oblasti lokality. Příkladem je oblast nákupního košíku označená *parametrem /cart/\**. Toto je přesměrování *založené na cestě.*
+Pokud je přesměrování nakonfigurováno pro základní pravidlo, všechny požadavky na přidruženém naslouchací službě budou přesměrovány do cíle. Toto je *globální* přesměrování. Pokud je přesměrování nakonfigurováno pro pravidlo na základě cesty, budou přesměrovány pouze požadavky v určité oblasti lokality. Příkladem je oblast nákupního košíku, která se označuje *jako\*/Cart/*. Toto je přesměrování *na základě cest* .
 
-Další informace o přesměrováních naleznete v tématu [Application Gateway redirect overview](redirect-overview.md).
+Další informace o přesměrování najdete v tématu [Přehled přesměrování Application Gateway](redirect-overview.md).
 
 #### <a name="redirection-type"></a>Typ přesměrování
 
-Zvolte typ požadovaného přesměrování: *Permanent (301)*, *Temporary(307),* *Found(302)* nebo *See other(303)*.
+Vyberte typ požadovaného přesměrování: *trvalá (301)*, *dočasná (307)*, *Nalezeno (302*) nebo *jiný (303)*.
 
 #### <a name="redirection-target"></a>Cíl přesměrování
 
-Jako cíl přesměrování zvolte jiný naslouchací proces nebo externí web.
+Jako cíl přesměrování vyberte jiný naslouchací proces nebo externí Web.
 
 ##### <a name="listener"></a>Naslouchací proces
 
-Zvolte naslouchací proces jako cíl přesměrování přesměrovat provoz z jednoho naslouchací proces na jiný na bránu. Toto nastavení je vyžadováno, pokud chcete povolit přesměrování HTTP-HTTPS. Přesměruje provoz ze zdrojového naslouchacího procesu, který kontroluje příchozí požadavky HTTP na cílový naslouchací proces, který kontroluje příchozí požadavky HTTPS. Můžete také zahrnout řetězec dotazu a cestu z původního požadavku v požadavku, který je předán do cíle přesměrování.
+Jako cíl přesměrování vyberte naslouchací proces pro přesměrování provozu z jednoho naslouchacího procesu do jiného v bráně. Toto nastavení se vyžaduje, když chcete povolit přesměrování od protokolu HTTP do HTTPS. Přesměruje provoz od naslouchacího procesu zdroje, který kontroluje příchozí požadavky HTTP na cílový naslouchací proces, který kontroluje příchozí požadavky HTTPS. Můžete také zvolit, že se má v požadavku, který předává cíli přesměrování, zahrnout řetězec dotazu a cestu z původního požadavku.
 
-![Dialogové okno Součásti aplikační brány](./media/configuration-overview/configure-redirection.png)
+![Dialogové okno Application Gateway součásti](./media/configuration-overview/configure-redirection.png)
 
-Další informace o přesměrování HTTP-HTTPS naleznete v tématu:
-- [Přesměrování HTTP na HTTPS pomocí portálu Azure](redirect-http-to-https-portal.md)
-- [Přesměrování HTTP-HTTPS pomocí prostředí PowerShell](redirect-http-to-https-powershell.md)
-- [Přesměrování http-https pomocí azure cli](redirect-http-to-https-cli.md)
+Další informace o přesměrování mezi HTTP a HTTPS najdete v těchto tématech:
+- [Přesměrování HTTP na HTTPS pomocí Azure Portal](redirect-http-to-https-portal.md)
+- [Přesměrování HTTP na HTTPS pomocí PowerShellu](redirect-http-to-https-powershell.md)
+- [Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku Azure](redirect-http-to-https-cli.md)
 
 ##### <a name="external-site"></a>Externí web
 
-Pokud chcete přesměrovat provoz na naslouchací proces, který je přidružen k tomuto pravidlu, na externí web, zvolte externí web. Můžete zahrnout řetězec dotazu z původního požadavku v požadavku, který je předán do cíle přesměrování. Cestu k externímu webu, který byl v původním požadavku, nelze předat dál.
+Vyberte externí web, když chcete přesměrovat provoz na naslouchací proces, který je přidružený k tomuto pravidlu, na externí Web. Můžete zvolit zahrnutí řetězce dotazu z původní žádosti do žádosti, která je předána cíli přesměrování. Cestu k externímu webu, který byl v původní žádosti, nelze přeslat.
 
-Další informace o přesměrování naleznete v tématu:
-- [Přesměrování provozu na externí web pomocí Prostředí PowerShell](redirect-external-site-powershell.md)
-- [Přesměrování provozu na externí web pomocí rozhraní se knám se klis](redirect-external-site-cli.md)
+Další informace o přesměrování najdete v tématu:
+- [Přesměrování provozu na externí web pomocí prostředí PowerShell](redirect-external-site-powershell.md)
+- [Přesměrování provozu na externí web pomocí rozhraní příkazového řádku](redirect-external-site-cli.md)
 
-#### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví protokolu HTTP
+#### <a name="rewrite-the-http-header-setting"></a>Přepsání nastavení záhlaví HTTP
 
-Toto nastavení přidává, odebere nebo aktualizuje hlavičky požadavků a odpovědí HTTP, zatímco pakety požadavků a odpovědí se pohybují mezi klientským a back-endovým fondem. Další informace naleznete v tématu:
+Toto nastavení přidá, odebere nebo aktualizuje hlavičku požadavku a odpovědi HTTP, zatímco pakety požadavků a odpovědí přecházejí mezi klienty klienta a back-endové fondy. Další informace naleznete v tématu:
 
- - [Přepsat přehled záhlaví protokolu HTTP](rewrite-http-headers.md)
- - [Konfigurace přepisu hlavičky HTTP](rewrite-http-headers-portal.md)
+ - [Přehled hlaviček protokolu HTTP přepisu](rewrite-http-headers.md)
+ - [Konfigurace přepsání hlaviček HTTP](rewrite-http-headers-portal.md)
 
 ## <a name="http-settings"></a>Nastavení HTTP
 
-Aplikační brána směruje provoz na servery back-end pomocí konfigurace, kterou zde zadáte. Po vytvoření nastavení protokolu HTTP je nutné přidružit k jednomu nebo více pravidlům směrování požadavků.
+Služba Application Gateway směruje provoz na back-endové servery pomocí konfigurace, kterou tady zadáte. Po vytvoření nastavení HTTP je potřeba ho přidružit k jednomu nebo více pravidlům směrování požadavků.
 
 ### <a name="cookie-based-affinity"></a>Spřažení na základě souborů cookie.
 
-Azure Application Gateway používá soubory cookie spravované bránou pro údržbu uživatelských relací. Když uživatel odešle první požadavek na application gateway, nastaví soubor cookie spřažení v odpovědi s hodnotou hash, která obsahuje podrobnosti relace, takže následné požadavky nesoucí soubor cookie spřažení budou směrovány na stejný back-endový server pro zachování lepivost. 
+Azure Application Gateway používá soubory cookie spravované bránou k údržbě uživatelských relací. Když uživatel odešle první požadavek na Application Gateway, nastaví soubor cookie spřažení v odpovědi s hodnotou hash, která obsahuje podrobnosti o relaci, takže následné požadavky na soubor cookie spřažení budou směrovány na stejný back-end Server pro zachování vytrvalost. 
 
-Tato funkce je užitečná, pokud chcete zachovat relaci uživatele na stejném serveru a pokud je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení založenou na souborech cookie, nelze tuto funkci použít. Chcete-li jej použít, ujistěte se, že klienti podporují soubory cookie.
+Tato funkce je užitečná, když chcete zachovat relaci uživatele na stejném serveru a když je stav relace uložen místně na serveru pro relaci uživatele. Pokud aplikace nemůže zpracovat spřažení na základě souborů cookie, nemůžete tuto funkci použít. Pokud ho chcete použít, ujistěte se, že klienti podporují soubory cookie.
 
-Aktualizace [chromového prohlížeče](https://www.chromium.org/Home) [v80](https://chromiumdash.appspot.com/schedule) přinesla mandát, kde http cookies bez [atributu SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) musí být považovány za SameSite =Lax. V případě požadavků CORS (Cross-Origin Resource Sharing) pokud má být soubor cookie odeslán v kontextu třetí strany, musí použít *SameSite=None; Zabezpečené* atributy a měly by být odesílány pouze přes protokol HTTPS. V opačném případě v případě pouze http prohlížeč neodesílá soubory cookie v kontextu třetích stran. Cílem této aktualizace z Chromu je zvýšit zabezpečení a vyhnout se útokům na vyžádání mezi webovými servery (CSRF). 
+[Aktualizace v80](https://chromiumdash.appspot.com/schedule) [prohlížeče Chromu](https://www.chromium.org/Home) provedla mandát, kde se soubory cookie protokolu HTTP bez atributu [SameSite](https://tools.ietf.org/id/draft-ietf-httpbis-rfc6265bis-03.html#rfc.section.5.3.7) musí považovat za SameSite = Lax. V případě požadavků CORS (sdílení prostředků mezi zdroji) platí, že pokud se soubor cookie má odeslat v kontextu třetí strany, musí používat *SameSite = None; Zabezpečte* atributy a měly by se odesílat jenom přes HTTPS. V opačném případě se ve scénáři protokolu HTTP v prohlížeči neodesílají soubory cookie v kontextu třetí strany. Cílem této aktualizace z Chrome je zvýšit zabezpečení a vyhnout se útokům prostřednictvím CSRF (pro falšování požadavků mezi lokalitami). 
 
-Pro podporu této změny, počínaje únorem 17 2020, application gateway (všechny typy SKU) vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* kromě existující ho souboru cookie *ApplicationGatewayAffinity.* Soubor cookie *ApplicationGatewayAffinityCORS* obsahuje další dva atributy (*"SameSite=None; Secure"*), takže lepkavá relace jsou udržovány i pro požadavky napříč původem.
+Aby byla tato změna podporovaná, počínaje února 17 2020 se Application Gateway (všechny typy SKU) vloží další soubor cookie s názvem *ApplicationGatewayAffinityCORS* společně s existujícím souborem cookie *ApplicationGatewayAffinity* . K souboru cookie *ApplicationGatewayAffinityCORS* jsou přidané dva další atributy (*"SameSite = None; Secure "*), aby se relace vždy zachovala i pro požadavky na více zdrojů.
 
-Všimněte si, že výchozí název souboru cookie spřažení je *ApplicationGatewayAffinity* a můžete jej změnit. V případě, že používáte vlastní název souboru cookie spřažení, je jako přípona přidán další soubor cookie s CORS. Například *CustomCookieNameCORS*.
+Všimněte si, že výchozí název souboru cookie spřažení je *ApplicationGatewayAffinity* a můžete ho změnit. V případě, že používáte vlastní název souboru cookie spřažení, je jako přípona přidána další soubor cookie s CORS. Například *CustomCookieNameCORS*.
 
 > [!NOTE]
-> Pokud je nastaven atribut *SameSite=None,* je povinné, aby soubor cookie také obsahoval příznak *Zabezpečený* a musí být odeslán přes protokol HTTPS.  Pokud je vyžadována spřažení relace přes CORS, musíte migrovat úlohu na https. Informace o překládce TLS a dokumentaci od koncového tls pro aplikační bránu najdete tady – [Přehled](ssl-overview.md), [Konfigurace aplikační brány s ukončením Protokolu TLS pomocí portálu Azure](create-ssl-portal.md), Konfigurace [komplexního tls pomocí aplikace brány s portálem](end-to-end-ssl-portal.md).
+> Pokud je nastaven atribut *SameSite = None* , je povinný, že soubor cookie obsahuje také příznak *zabezpečení* a musí být odeslán prostřednictvím protokolu HTTPS.  Pokud je v CORS vyžadováno spřažení relací, je nutné migrovat úlohy do HTTPS. Tady najdete informace o přesměrování zpracování TLS a kompletní Application Gateway protokolu TLS – [Přehled](ssl-overview.md), [Konfigurace aplikační brány s ukončením TLS pomocí Azure Portal](create-ssl-portal.md), [konfigurace kompletního TLS pomocí Application Gateway s portálem](end-to-end-ssl-portal.md).
 
 ### <a name="connection-draining"></a>Vyprázdnění připojení
 
-Vyprázdnění připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít na všechny členy back-endového fondu během vytváření pravidel. Zajišťuje, že všechny instance zrušení registrace back-endového fondu nadále udržují existující připojení a obsluhují průběžné požadavky na konfigurovatelný časový čas a nepřijímají žádné nové požadavky nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relací spravované bránou a budou nadále předávány do instancí zrušení registrace. Vyprázdnění připojení platí pro back-endové instance, které jsou explicitně odebrány z fondu back-end.
+Vyprazdňování připojení pomáhá řádně odebrat členy fondu back-end během plánovaných aktualizací služby. Toto nastavení můžete použít pro všechny členy fondu back-end během vytváření pravidla. Zajišťuje, aby všechny odregistrované instance back-end fondu nadále udržovaly stávající připojení a poskytovaly žádosti o konfigurovatelný časový limit a nedostaly žádné nové žádosti nebo připojení. Jedinou výjimkou jsou požadavky vázané na zrušení registrace instancí z důvodu spřažení relace spravované bránou a budou nadále předány do odregistrování instancí. Vyprazdňování připojení se vztahuje na instance back-endu, které jsou explicitně odebrány z fondu back-end.
 
 ### <a name="protocol"></a>Protocol (Protokol)
 
-Aplikační brána podporuje protokol HTTP i protokol HTTPS pro směrování požadavků na servery back-end. Pokud zvolíte HTTP, provoz na servery back-end je nešifrovaný. Pokud nešifrovaná komunikace není přijatelná, zvolte HTTPS.
+Application Gateway podporuje HTTP i HTTPS pro požadavky směrování na back-endové servery. Pokud zvolíte protokol HTTP, přenosy na back-endové servery budou nešifrované. Pokud nešifrovaná komunikace není přijatelná, vyberte HTTPS.
 
-Toto nastavení v kombinaci s https v naslouchací proces podporuje [end-to-end TLS](ssl-overview.md). To vám umožní bezpečně přenášet citlivá data šifrovaná do back-endu. Každý server back-end v back-end fondu, který má povolenou platnost tls typu ukončení, musí být nakonfigurován s certifikátem umožňujícím zabezpečenou komunikaci.
+Toto nastavení kombinované s protokolem HTTPS v naslouchací službě podporuje [kompletní protokol TLS](ssl-overview.md). Díky tomu můžete bezpečně přenášet citlivá data zašifrovaná do back-endu. Každý back-end Server ve fondu back-end, který má zapnutý koncový protokol TLS, musí být nakonfigurovaný s certifikátem, aby umožňoval zabezpečenou komunikaci.
 
 ### <a name="port"></a>Port
 
-Toto nastavení určuje port, ve kterém servery back-end poslouchají přenosy z aplikační brány. Porty můžete konfigurovat od 1 do 65535.
+Toto nastavení určuje port, ve kterém back-endové servery naslouchají provozu z aplikační brány. Můžete nakonfigurovat porty v rozsahu od 1 do 65535.
 
-### <a name="request-timeout"></a>Časový výtok požadavku
+### <a name="request-timeout"></a>Časový limit žádosti
 
-Toto nastavení je počet sekund, po které aplikační brána čeká na odpověď ze serveru back-end.
+Toto nastavení je počet sekund, po které brána Application Gateway čeká, až obdrží odpověď z back-endového serveru.
 
-### <a name="override-back-end-path"></a>Přepsat zadní cestu
+### <a name="override-back-end-path"></a>Přepsat back-end cestu
 
-Toto nastavení umožňuje nakonfigurovat volitelnou vlastní cestu pro předávání, která se použije při předání požadavku do back-endu. Do předané cesty se zkopíruje jakákoli část příchozí cesty, která odpovídá vlastní cestě v poli **cesty back-end.** Následující tabulka ukazuje, jak tato funkce funguje:
+Toto nastavení umožňuje nakonfigurovat volitelnou vlastní cestu přesměrování, která se má použít, když se požadavek přesměruje do back-endu. Všechny části příchozí cesty, které se shodují s vlastní cestou v poli **přepište cestu k back-endu** , se zkopírují do přesměrované cesty. Následující tabulka ukazuje, jak tato funkce funguje:
 
-- Pokud je nastavení HTTP připojeno k základnímu pravidlu směrování požadavků:
+- Když je nastavení HTTP připojené k základnímu pravidlu pro směrování požadavků:
 
-  | Původní požadavek  | Přepsat zadní cestu | Požadavek předán do back-endu |
+  | Původní požadavek  | Přepsat back-end cestu | Požadavek předaný do back-endu |
   | ----------------- | --------------------- | ---------------------------- |
-  | /domů/            | /přepsat/            | /přepsat/domů/              |
-  | /home/secondhome/ | /přepsat/            | /přepsat/domů/secondhome/   |
+  | domovské            | /override musí obsahovat            | /override/home/              |
+  | /home/secondhome/ | /override musí obsahovat            | /override/home/secondhome/   |
 
-- Pokud je nastavení HTTP připojeno k pravidlu směrování požadavků na základě cesty:
+- Pokud je nastavení HTTP připojeno k pravidlu směrování požadavků založené na cestách:
 
-  | Původní požadavek           | Pravidlo cesty       | Přepsat zadní cestu | Požadavek předán do back-endu |
+  | Původní požadavek           | Pravidlo cesty       | Přepsat back-end cestu | Požadavek předaný do back-endu |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |
-  | /pathrule/home/            | /pathrule*      | /přepsat/            | /přepsat/domů/              |
-  | /pathrule/home/secondhome/ | /pathrule*      | /přepsat/            | /přepsat/domů/secondhome/   |
-  | /domů/                     | /pathrule*      | /přepsat/            | /přepsat/domů/              |
-  | /home/secondhome/          | /pathrule*      | /přepsat/            | /přepsat/domů/secondhome/   |
-  | /pathrule/home/            | /pathrule/home* | /přepsat/            | /přepsat/                   |
-  | /pathrule/home/secondhome/ | /pathrule/home* | /přepsat/            | /přepsat/secondhome/        |
-  | /pathrule/                 | /pathrule/      | /přepsat/            | /přepsat/                   |
+  | /pathrule/home/            | pathrule      | /override musí obsahovat            | /override/home/              |
+  | /pathrule/home/secondhome/ | pathrule      | /override musí obsahovat            | /override/home/secondhome/   |
+  | domovské                     | pathrule      | /override musí obsahovat            | /override/home/              |
+  | /home/secondhome/          | pathrule      | /override musí obsahovat            | /override/home/secondhome/   |
+  | /pathrule/home/            | /pathrule/home* | /override musí obsahovat            | /override musí obsahovat                   |
+  | /pathrule/home/secondhome/ | /pathrule/home* | /override musí obsahovat            | /override/secondhome/        |
+  | pathrule                 | pathrule      | /override musí obsahovat            | /override musí obsahovat                   |
 
-### <a name="use-for-app-service"></a>Použití pro službu aplikace
+### <a name="use-for-app-service"></a>Použít pro App Service
 
-Toto je pouze zástupce ui, který vybere dvě požadovaná nastavení pro back-end služby Azure App Service. Umožňuje **vybrat název hostitele z back-endové adresy**a vytvoří novou vlastní sondu, pokud ji ještě nemáte. (Další informace naleznete v části [Nastavení názvu hostitele vyberte z adres back-end](#pick) v tomto článku.) Vytvoří se nová sonda a záhlaví sondy je vybráno z adresy back-endového člena.
+Jedná se o zástupce pouze uživatelského rozhraní, který vybere dvě požadovaná nastavení pro back-end Azure App Service. Umožňuje **Vybrat název hostitele z back-endové adresy**a vytvoří nový vlastní test, pokud ho ještě nemáte. (Další informace naleznete v části [výběr názvu hostitele z nastavení back-endové adresy](#pick) v tomto článku.) Vytvoří se nový test paměti a hlavička testu se vybere z adresy člena, který je back-end.
 
-### <a name="use-custom-probe"></a>Použití vlastní sondy
+### <a name="use-custom-probe"></a>Použít vlastní test paměti
 
-Toto nastavení přidruží [vlastní sondu](application-gateway-probe-overview.md#custom-health-probe) k nastavení PROTOKOLU HTTP. K nastavení PROTOKOLU HTTP lze přidružit pouze jednu vlastní sondu. Pokud explicitně nepřidružíte vlastní sondu, [výchozí sonda](application-gateway-probe-overview.md#default-health-probe-settings) se používá ke sledování stavu back-endu. Doporučujeme vytvořit vlastní sondu pro větší kontrolu nad monitorování stavu zadních konců.
-
-> [!NOTE]
-> Vlastní sonda nesleduje stav back-endového fondu, pokud odpovídající nastavení HTTP není explicitně přidruženo k naslouchací proces.
-
-### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Vybrat jméno hostitele z adresy back-end
-
-Tato funkce dynamicky nastaví záhlaví *hostitele* v požadavku na název hostitele back-endového fondu. Používá IP adresu nebo vícenežony.
-
-Tato funkce pomáhá, když se název domény back-endu liší od názvu DNS aplikační brány a back-end spoléhá na konkrétní hlavičku hostitele, která se má přeložit na správný koncový bod.
-
-Příkladem případu je víceklientské služby jako back-end. Služba aplikace je služba s více klienty, která používá sdílený prostor s jednou IP adresou. Takže služba aplikace lze přistupovat pouze prostřednictvím názvů hostitelů, které jsou nakonfigurovány v nastavení vlastní domény.
-
-Ve výchozím nastavení je vlastní název domény *example.azurewebsites.net*. Chcete-li získat přístup ke službě aplikace pomocí brány aplikace prostřednictvím názvu hostitele, který není explicitně zaregistrován v aplikaci nebo prostřednictvím hlavního názvu názvu služby aplikace, přepíšete název hostitele v původním požadavku na název hostitele služby aplikace. Chcete-li to provést, povolte **nastavení vyskladnění hostitele z back-endové adresy.**
-
-Pro vlastní doménu, jejíž stávající vlastní název DNS je mapován na službu aplikace, není třeba povolit toto nastavení.
+Toto nastavení přidruží [vlastní test](application-gateway-probe-overview.md#custom-health-probe) s nastavením http. K nastavení HTTP můžete přidružit jenom jeden vlastní test paměti. Pokud nechcete explicitně přidružit vlastní test, použije se k monitorování stavu back-endu [výchozí test](application-gateway-probe-overview.md#default-health-probe-settings) . Doporučujeme vytvořit vlastní test pro lepší kontrolu nad monitorováním stavu back-endu.
 
 > [!NOTE]
-> Toto nastavení není vyžadováno pro prostředí služby App Service Environment, což je vyhrazené nasazení.
+> Vlastní test nemonitoruje stav fondu back-end, pokud není odpovídající nastavení HTTP explicitně přidruženo k naslouchacímu procesu.
+
+### <a name="pick-host-name-from-back-end-address"></a><a id="pick"/></a>Vybrat název hostitele z back-endové adresy
+
+Tato funkce dynamicky nastaví hlavičku *hostitele* v požadavku na název hostitele back-end fondu. Používá IP adresu nebo plně kvalifikovaný název domény.
+
+Tato funkce pomáhá v případě, že se název domény back-endu liší od názvu DNS aplikační brány a back-end spoléhá na konkrétní hlavičku hostitele, aby se přeložila na správný koncový bod.
+
+Příkladem případu jsou služby pro více tenantů jako back-end. App Service je víceklientské služby, které používají sdílený prostor s jednou IP adresou. Služba App Service je proto dostupná jenom prostřednictvím názvů hostitelů, které jsou nakonfigurované v nastavení vlastní domény.
+
+Ve výchozím nastavení je název vlastní domény *example.azurewebsites.NET*. Pokud chcete ke službě App Service přistupovat pomocí služby Application Gateway prostřednictvím názvu hostitele, který není explicitně zaregistrovaný ve službě App Service nebo prostřednictvím plně kvalifikovaného názvu domény služby Application Gateway, přepište název hostitele v původní žádosti na název hostitele App Service. Provedete to tak, že povolíte nastavení **Vybrat název hostitele z back-endu adresy** .
+
+U vlastní domény, jejíž existující vlastní název DNS je namapovaný na službu App Service, nemusíte toto nastavení Povolit.
+
+> [!NOTE]
+> Toto nastavení není vyžadováno pro App Service Environment, což je vyhrazené nasazení.
 
 ### <a name="host-name-override"></a>Přepsání názvu hostitele
 
-Tato funkce nahradí hlavičku *hostitele* v příchozí masce v bráně aplikace zadaným názvem hostitele.
+Tato funkce nahrazuje hlavičku *hostitele* v příchozím požadavku na aplikační bráně zadaným názvem hostitele.
 
-Pokud je například v nastavení **název hostitele** zadán`https://appgw.eastus.cloudapp.azure.com/path1` *www.contoso.com,* původní`https://www.contoso.com/path1` požadavek * se změní na * při předání požadavku serveru back-end.
+Pokud je například v nastavení **název hostitele** zadán parametr`https://appgw.eastus.cloudapp.azure.com/path1` *www.contoso.com* , původní požadavek * se změní na *`https://www.contoso.com/path1` při přeposílání požadavku na back-end Server.
 
 ## <a name="back-end-pool"></a>Back-endový fond
 
-Back-endový fond můžete nasměrovat na čtyři typy back-endových členů: konkrétní virtuální počítač, škálovací sadu virtuálních počítačů, IP adresu/vícenež název souboru souborů nebo službu aplikace. 
+Back-end fond můžete nasměrovat na čtyři typy členů back-endu: konkrétní virtuální počítač, sada škálování virtuálního počítače, IP adresa nebo plně kvalifikovaný název domény nebo služba App Service. 
 
-Po vytvoření back-endového fondu jej musíte přidružit k jednomu nebo více pravidlům směrování požadavků. Je také nutné nakonfigurovat sondy stavu pro každý back-endový fond na vaší aplikační bráně. Pokud je splněna podmínka pravidla směrování požadavku, brána aplikace předá provoz na servery v pořádku (jak je určeno sondami stavu) v odpovídajícím back-endovém fondu.
+Až vytvoříte fond back-end, musíte ho přidružit k jednomu nebo více pravidlům směrování požadavků. Pro každý fond back-end v bráně Application Gateway musíte taky nakonfigurovat testy stavu. Pokud je splněna podmínka pravidla směrování požadavků, služba Application Gateway přesměruje provoz na servery, které jsou v pořádku (podle určení sond stavu), do odpovídajícího fondu back-end.
 
 ## <a name="health-probes"></a>Sondy stavu
 
-Aplikační brána ve výchozím nastavení monitoruje stav všech prostředků v back-endu. Ale důrazně doporučujeme vytvořit vlastní sondu pro každé nastavení http back-end získat větší kontrolu nad monitorování stavu. Informace o konfiguraci vlastní sondy naleznete v [tématu Vlastní nastavení sondy stavu](application-gateway-probe-overview.md#custom-health-probe-settings).
+Služba Application Gateway ve výchozím nastavení monitoruje stav všech prostředků ve svém back-endu. Důrazně doporučujeme vytvořit vlastní test pro každé nastavení back-endu HTTP a získat tak větší kontrolu nad monitorováním stavu. Informace o tom, jak nakonfigurovat vlastní test paměti, najdete v tématu [vlastní nastavení sondy stavu](application-gateway-probe-overview.md#custom-health-probe-settings).
 
 > [!NOTE]
-> Po vytvoření vlastní sondy stavu je třeba ji přidružit k nastavení http back-endu. Vlastní sonda nebude sledovat stav back-endového fondu, pokud odpovídající nastavení HTTP není explicitně přidruženo k naslouchací proces pomocí pravidla.
+> Po vytvoření vlastního sondy stavu je potřeba ho přidružit k nastavení back-endu HTTP. Vlastní test nemonitoruje stav fondu back-end, pokud není odpovídající nastavení HTTP explicitně přidruženo k naslouchacímu procesu pomocí pravidla.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když víte o součástech aplikační brány, můžete:
+Teď, když víte o Application Gateway komponent, můžete:
 
-- [Vytvoření aplikační brány na webu Azure Portal](quick-create-portal.md)
+- [Vytvoření aplikační brány v Azure Portal](quick-create-portal.md)
 - [Vytvoření aplikační brány pomocí PowerShellu](quick-create-powershell.md)
-- [Vytvoření aplikační brány pomocí nastavení příkazového příkazu Azure](quick-create-cli.md)
+- [Vytvoření aplikační brány pomocí Azure CLI](quick-create-cli.md)

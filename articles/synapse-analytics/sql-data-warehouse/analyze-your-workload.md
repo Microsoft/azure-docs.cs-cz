@@ -1,6 +1,6 @@
 ---
 title: Analýza úloh
-description: Techniky pro analýzu priorit dotazů pro vaše úlohy v Azure Synapse Analytics.
+description: Techniky pro analýzu priorit dotazů pro vaše úlohy ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631239"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure Synapse Analytics
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Analýza úloh v Azure synapse Analytics
 
-Techniky pro analýzu úlohy Synapse SQL v Azure Synapse Analytics.
+Techniky analýzy úloh SQL synapse ve službě Azure synapse Analytics.
 
 ## <a name="resource-classes"></a>Třídy prostředků
 
-Synapse SQL poskytuje třídy prostředků pro přiřazení systémových prostředků k dotazům.  Další informace o třídách prostředků naleznete v [tématu Třídy prostředků & správa pracovního vytížení](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
+Synapse SQL poskytuje třídy prostředků pro přiřazení systémových prostředků dotazům.  Další informace o třídách prostředků naleznete v tématu [třídy prostředků & Správa úloh](resource-classes-for-workload-management.md).  Dotazy budou čekat, pokud Třída prostředků přiřazená k dotazu potřebuje více prostředků, než je aktuálně k dispozici.
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Zjišťování dotazů ve frontě a další dmv
+## <a name="queued-query-detection-and-other-dmvs"></a>Detekce dotazu ve frontě a další zobrazení dynamické správy
 
-DMV `sys.dm_pdw_exec_requests` můžete použít k identifikaci dotazů, které čekají ve frontě souběžnosti. Dotazy čekající na souběžnou pozici mají stav **pozastaveno**.
+Pomocí `sys.dm_pdw_exec_requests` DMV můžete identifikovat dotazy, které čekají ve frontě souběžnosti. Dotazy, které čekají na pozici souběžnosti, mají stav **pozastaveno**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -41,7 +41,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role správy úloh lze `sys.database_principals`zobrazit pomocí aplikace .
+Role správy úloh je možné zobrazit pomocí `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -51,7 +51,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-Následující dotaz ukazuje, ke které roli je každý uživatel přiřazen.
+Následující dotaz ukazuje, ke které roli má každý uživatel přiřazený.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -65,12 +65,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 
 Synapse SQL má následující typy čekání:
 
-* **LocalQueriesConcurrencyResourceType**: Dotazy, které jsou mimo rámec souběžnosti slot. DMV dotazy a systémové `SELECT @@VERSION` funkce, jako jsou příklady místních dotazů.
-* **UserConcurrencyResourceType**: Dotazy, které jsou v rámci rozhraní slotu souběžnosti. Dotazy proti tabulkám koncových uživatelů představují příklady, které by tento typ prostředku používaly.
-* **DmsConcurrencyResourceType**: Čeká vyplývající z operací přesunu dat.
-* **BackupConcurrencyResourceType**: Toto čekání označuje, že je zálohována databáze. Maximální hodnota pro tento typ prostředku je 1. Pokud bylo požadováno více záloh současně, ostatní fronty. Obecně doporučujeme minimální čas mezi po sobě jdoucísnímky 10 minut.
+* **LocalQueriesConcurrencyResourceType**: dotazy, které sedí mimo rámec rozhraní pro sloty Concurrency. Dotazy DMV a systémové funkce, jako `SELECT @@VERSION` jsou příklady místních dotazů.
+* **UserConcurrencyResourceType**: dotazy, které sedí v rámci rozhraní slotu pro souběžnost. Dotazy na tabulky koncového uživatele reprezentují příklady, které by používaly tento typ prostředku.
+* **DmsConcurrencyResourceType**: čeká v důsledku operací přesunu dat.
+* **BackupConcurrencyResourceType**: Tento počkat indikuje, že se databáze zálohuje. Maximální hodnota pro tento typ prostředku je 1. Pokud je v jednom okamžiku požadováno více záloh, fronta ostatní. Obecně doporučujeme minimální dobu mezi po sobě jdoucí snímky po dobu 10 minut.
 
-`sys.dm_pdw_waits` DMV lze zobrazit prostředky, na které požadavek čeká.
+`sys.dm_pdw_waits` DMV lze použít k zobrazení prostředků, na které požadavek čeká.
 
 ```sql
 SELECT  w.[wait_id]
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-DMV `sys.dm_pdw_resource_waits` zobrazuje informace o čekání pro daný dotaz. Doba čekání prostředků měří dobu čekání na prostředky, které mají být poskytnuty. Doba čekání signálu je doba, kterou základní servery SQL naplánují dotaz na procesor.
+`sys.dm_pdw_resource_waits` DMV zobrazuje informace o čekání pro daný dotaz. Doba čekání prostředku měří čas na zadání prostředků. Doba čekání signálu je doba potřebná k tomu, aby základní SQL servery naplánovaly dotaz na procesor.
 
 ```sql
 SELECT  [session_id]
@@ -126,7 +126,7 @@ WHERE    [session_id] <> SESSION_ID()
 ;
 ```
 
-Můžete také použít `sys.dm_pdw_resource_waits` DMV vypočítat, kolik souběžnost sloty byly uděleny.
+Můžete také použít `sys.dm_pdw_resource_waits` DMV vypočítat, kolik slotů souběžnosti bylo uděleno.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots
@@ -137,7 +137,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` DMV lze použít pro analýzu historického trendu čekání.
+DMV `sys.dm_pdw_wait_stats` se dá použít k historické analýze trendů čekání.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě uživatelů databáze a zabezpečení naleznete [v tématu Zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu clusterované columnstore, naleznete v [tématu Opětovné sestavení indexů ke zlepšení kvality segmentu](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení databáze najdete v tématu [zabezpečení databáze v synapse SQL](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak můžou větší třídy prostředků zlepšit kvalitu clusterovaných indexů columnstore, najdete v tématu [sestavení indexů pro zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).

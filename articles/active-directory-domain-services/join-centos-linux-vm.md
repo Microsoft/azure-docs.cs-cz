@@ -1,6 +1,6 @@
 ---
-title: Připojení k virtuálnímu počítači CentOS ke službám Azure AD Domain Services | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nakonfigurovat a připojit virtuální počítač CentOS Linux ke spravované doméně služby Azure AD Domain Services.
+title: Připojte virtuální počítač CentOS k Azure AD Domain Services | Microsoft Docs
+description: Přečtěte si, jak nakonfigurovat virtuální počítač s CentOS Linux a připojit ho k Azure AD Domain Services spravované doméně.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,59 +12,59 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: d08552dcae51c897f2419d94e5e61e857247f09a
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655241"
 ---
-# <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače CentOS linux ke spravované doméně služby Azure AD Domain Services
+# <a name="join-a-centos-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Připojení virtuálního počítače se systémem CentOS Linux k Azure AD Domain Services spravované doméně
 
-Pokud chcete uživatelům uvolit přihlášení k virtuálním počítačům (VM) v Azure pomocí jediné sady přihlašovacích údajů, můžete virtuální počítače připojit ke spravované doméně služby Azure Active Directory Domain Services (AD DS). Když připojíte virtuální počítač ke spravované doméně Azure AD DS, uživatelské účty a přihlašovací údaje z domény se dají použít k přihlášení a správě serverů. Členství ve skupinách ze spravované domény Azure AD DS se také používají, abyste měli řídit přístup k souborům nebo službám na virtuálním počítači.
+Pokud chcete umožnit uživatelům přihlašovat se k virtuálním počítačům v Azure pomocí jediné sady přihlašovacích údajů, můžete připojit virtuální počítače k spravované doméně Azure Active Directory Domain Services (služba AD DS). Když připojíte virtuální počítač k spravované doméně Azure služba AD DS, můžete k přihlášení a správě serverů použít uživatelské účty a přihlašovací údaje z domény. Členství ve skupinách ze spravované domény Azure služba AD DS se taky používá, aby vám umožnila řídit přístup k souborům nebo službám na virtuálním počítači.
 
-Tento článek ukazuje, jak se připojit k virtuálnímu počítači CentOS Linux do spravované domény Azure AD DS.
+V tomto článku se dozvíte, jak připojit virtuální počítač s CentOS Linux k spravované doméně Azure služba AD DS.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto kurzu potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby první kurz [vytvoří a nakonfiguruje instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
-* Uživatelský účet, který je součástí spravované domény Azure AD DS.
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby se v prvním kurzu [vytvoří a nakonfiguruje instance Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+* Uživatelský účet, který je součástí spravované domény Azure služba AD DS.
 
-## <a name="create-and-connect-to-a-centos-linux-vm"></a>Vytvoření virtuálního počítače SCenOS s Linuxem a připojení k němu
+## <a name="create-and-connect-to-a-centos-linux-vm"></a>Vytvoření virtuálního počítače se systémem CentOS Linux a připojení k němu
 
-Pokud máte existující centos linuxový virtuální počítač v Azure, připojte se k němu pomocí SSH, pak pokračujte dalším krokem a [začněte konfigurovat virtuální počítač](#configure-the-hosts-file).
+Pokud máte v Azure existující virtuální počítač s CentOS Linux, připojte se k němu pomocí SSH a potom pokračujte dalším krokem a [Spusťte konfiguraci virtuálního počítače](#configure-the-hosts-file).
 
-Pokud potřebujete vytvořit virtuální počítač CentOS Linux nebo chcete vytvořit testovací virtuální počítač pro použití s tímto článkem, můžete použít jednu z následujících metod:
+Pokud potřebujete vytvořit virtuální počítač s CentOS Linux nebo chcete vytvořit testovací virtuální počítač pro použití s tímto článkem, můžete použít jednu z následujících metod:
 
 * [portál Azure](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-Při vytváření virtuálního počítače věnujte pozornost nastavení virtuální sítě a ujistěte se, že virtuální počítač může komunikovat se spravovanou doménou Azure AD DS:
+Když vytváříte virtuální počítač, věnujte pozornost nastavení virtuální sítě a ujistěte se, že virtuální počítač může komunikovat se spravovanou doménou Azure služba AD DS:
 
-* Nasaďte virtuální počítač do stejné nebo partnerské virtuální sítě, ve které jste povolili služby Azure AD Domain Services.
-* Nasazení virtuálního počítače do jiné podsítě, než je vaše instance služby Azure AD Domain Services.
+* Nasaďte virtuální počítač do stejné nebo partnerské virtuální sítě, ve které jste povolili Azure AD Domain Services.
+* Virtuální počítač nasaďte do jiné podsítě, než je vaše instance Azure AD Domain Services.
 
-Po nasazení virtuálního virtuálního zařízení postupujte podle pokynů pro připojení k virtuálnímu virtuálnímu zařízení pomocí SSH.
+Až se virtuální počítač nasadí, připojte se k virtuálnímu počítači pomocí SSH podle pokynů.
 
-## <a name="configure-the-hosts-file"></a>Konfigurace souboru hosts
+## <a name="configure-the-hosts-file"></a>Konfigurace souboru hostitelů
 
-Chcete-li se ujistit, že je název hostitele virtuálního počítače správně nakonfigurován pro spravovanou doménu, upravte soubor */etc/hosts* a nastavte název hostitele:
+Abyste se ujistili, že je název hostitele virtuálního počítače správně nakonfigurovaný pro spravovanou doménu, upravte soubor */etc/hosts* a nastavte název hostitele:
 
 ```console
 sudo vi /etc/hosts
 ```
 
-V souboru *hosts* aktualizujte adresu *localhost.* V následujícím příkladu:
+V souboru *hosts* aktualizujte adresu *localhost* . V následujícím příkladu:
 
-* *aaddscontoso.com* je název domény DNS spravované domény Azure AD DS.
-* *centos* je název hostitele vašeho virtuálního počítače CentOS, ke kterému se připojujete ke spravované doméně.
+* *aaddscontoso.com* je název domény DNS vaší spravované domény Azure služba AD DS.
+* *CentOS* je název hostitele vašeho virtuálního počítače s CentOS, ke kterému se připojujete do spravované domény.
 
 Aktualizujte tyto názvy vlastními hodnotami:
 
@@ -72,81 +72,81 @@ Aktualizujte tyto názvy vlastními hodnotami:
 127.0.0.1 centos.aaddscontoso.com centos
 ```
 
-Po dokončení uložte a ukončete soubor *hosts* pomocí `:wq` příkazu editoru.
+Po dokončení uložte a zavřete soubor *hosts* pomocí `:wq` příkazu editoru.
 
 ## <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
-Virtuální počítač potřebuje některé další balíčky pro připojení virtuálního počítače ke spravované doméně Azure AD DS. Chcete-li nainstalovat a nakonfigurovat tyto balíčky, `yum`aktualizujte a nainstalujte nástroje pro připojení k doméně pomocí :
+Virtuální počítač potřebuje nějaké další balíčky, aby se připojil k virtuálnímu počítači do spravované domény Azure služba AD DS. Pokud chcete tyto balíčky nainstalovat a nakonfigurovat, aktualizujte a nainstalujte nástroje pro připojení k `yum`doméně pomocí těchto kroků:
 
 ```console
 sudo yum install realmd sssd krb5-workstation krb5-libs oddjob oddjob-mkhomedir samba-common-tools
 ```
 
-## <a name="join-vm-to-the-managed-domain"></a>Připojení virtuálního virtuálního montovaka ke spravované doméně
+## <a name="join-vm-to-the-managed-domain"></a>Připojit virtuální počítač ke spravované doméně
 
-Teď, když se požadované balíčky nainstalované na virtuálním počítači, připojte virtuální počítač ke spravované doméně Azure AD DS.
+Teď, když jsou na virtuálním počítači nainstalované požadované balíčky, připojte virtuální počítač k spravované doméně Azure služba AD DS.
 
-1. Pomocí `realm discover` příkazu zjišťujte spravovanou doménu Azure AD DS. Následující příklad zjišťuje *AADDSCONTOSO.COM*sféry . Zadejte svůj vlastní název spravované domény Azure AD DS ve všech velkých písmen:
+1. Pomocí `realm discover` příkazu můžete zjistit spravovanou doménu Azure služba AD DS. Následující příklad zjistí sféru *AADDSCONTOSO.com*. Zadejte vlastní název spravované domény Azure služba AD DS, a to velkými PÍSMENy:
 
     ```console
     sudo realm discover AADDSCONTOSO.COM
     ```
 
-   Pokud `realm discover` příkaz nemůže najít vaši spravovanou doménu Azure AD DS, přečtěte si následující kroky řešení potíží:
+   Pokud `realm discover` příkaz nemůže najít spravovanou doménu služby Azure služba AD DS, přečtěte si následující postup řešení potíží:
 
-    * Ujistěte se, že doména je dosažitelná z virtuálního virtuálního soudu. Pokuste `ping aaddscontoso.com` se zjistit, zda je vrácena kladná odpověď.
-    * Zkontrolujte, že virtuální počítač je nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná spravovaná doména Azure AD DS.
-    * Zkontrolujte, zda bylo nastavení serveru DNS pro virtuální síť aktualizováno tak, aby ukazovalo na řadiče domény spravované spravované doménou Azure AD DS.
+    * Ujistěte se, že je doména dosažitelná z virtuálního počítače. Zkuste `ping aaddscontoso.com` zjistit, jestli je vrácená kladná odpověď.
+    * Ověřte, že je virtuální počítač nasazený do stejné nebo partnerské virtuální sítě, ve které je dostupná doména spravovaná v Azure služba AD DS.
+    * Ověřte, že se nastavení serveru DNS pro virtuální síť aktualizovala tak, aby odkazovala na řadiče domény spravované domény Azure služba AD DS.
 
-1. Nyní inicializovat Kerberos pomocí příkazu. `kinit` Zadejte uživatele, který je součástí spravované domény Azure AD DS. V případě potřeby [přidejte uživatelský účet do skupiny ve službě Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
+1. Nyní pomocí `kinit` příkazu inicializujte Kerberos. Zadejte uživatele, který je součástí spravované domény Azure služba AD DS. V případě potřeby [přidejte uživatelský účet do skupiny v Azure AD](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md).
 
-    Znovu název spravované domény Azure AD DS musí být zadán ve všech velkých písmen. V následujícím příkladu se `contosoadmin@aaddscontoso.com` účet s názvem používá k inicializaci protokolu Kerberos. Zadejte svůj vlastní uživatelský účet, který je součástí spravované domény Azure AD DS:
+    Znovu, název spravované domény Azure služba AD DS musí být zadaný velkými PÍSMENy. V následujícím příkladu se k inicializaci protokolu Kerberos `contosoadmin@aaddscontoso.com` používá účet s názvem. Zadejte svůj vlastní uživatelský účet, který je součástí spravované domény Azure služba AD DS:
 
     ```console
     kinit contosoadmin@AADDSCONTOSO.COM
     ```
 
-1. Nakonec připojte počítač ke spravované doméně Azure AD DS pomocí příkazu. `realm join` Použijte stejný uživatelský účet, který je součástí spravované domény Služby Azure AD DS, kterou jste zadali v předchozím `kinit` příkazu, například `contosoadmin@AADDSCONTOSO.COM`:
+1. Nakonec připojte počítač k spravované doméně Azure služba AD DS pomocí `realm join` příkazu. Použijte stejný uživatelský účet, který je součástí spravované domény Azure služba AD DS, kterou jste zadali v předchozím `kinit` příkazu, například: `contosoadmin@AADDSCONTOSO.COM`
 
     ```console
     sudo realm join --verbose AADDSCONTOSO.COM -U 'contosoadmin@AADDSCONTOSO.COM'
     ```
 
-Připojení virtuálního počítače ke spravované doméně Azure AD DS trvá několik okamžiků. Následující příklad výstupu ukazuje, že virtuální počítač se úspěšně připojil ke spravované doméně Azure AD DS:
+Připojení virtuálního počítače k spravované doméně služby Azure služba AD DS vyžaduje chvíli. Následující příklad výstupu ukazuje, že se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS:
 
 ```output
 Successfully enrolled machine in realm
 ```
 
-Pokud váš virtuální počítač nemůže úspěšně dokončit proces připojení k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosprotokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure AD DS.
+Pokud váš virtuální počítač nemůže úspěšně dokončit proces připojení k doméně, ujistěte se, že skupina zabezpečení sítě virtuálního počítače umožňuje odchozí přenosy protokolu Kerberos na portu TCP + UDP 464 do podsítě virtuální sítě pro spravovanou doménu Azure služba AD DS.
 
-## <a name="allow-password-authentication-for-ssh"></a>Povolit ověřování hesla pro SSH
+## <a name="allow-password-authentication-for-ssh"></a>Povolení ověřování hesla pro SSH
 
-Ve výchozím nastavení se uživatelé můžou k virtuálnímu počítačůmu přihlašovat jenom pomocí ověřování pomocí veřejného klíče SSH. Ověřování pomocí hesla se nezdaří. Když připojíte virtuální počítač ke spravované doméně Azure AD DS, musí tyto účty domény používat ověřování založené na heslech. Aktualizujte konfiguraci SSH takto, aby bylo možné ověřování pomocí hesel.
+Ve výchozím nastavení se uživatelé můžou přihlásit jenom k virtuálnímu počítači pomocí ověřování založeného na veřejných klíčích SSH. Ověřování pomocí hesla se nezdařilo. Když připojíte virtuální počítač k spravované doméně Azure služba AD DS, musí tyto účty domény používat ověřování pomocí hesla. Aktualizujte konfiguraci SSH tak, aby umožňovala ověřování na základě hesla následujícím způsobem.
 
-1. Otevřete *soubor sshd_conf* pomocí editoru:
+1. Otevřete *sshd_conf* soubor pomocí editoru:
 
     ```console
     sudo vi /etc/ssh/sshd_config
     ```
 
-1. Aktualizujte řádek pro *passwordauthentication* na *ano*:
+1. Aktualizujte řádek pro *PasswordAuthentication* na *Ano*:
 
     ```console
     PasswordAuthentication yes
     ```
 
-    Po dokončení uložte a ukončete *soubor sshd_conf* pomocí `:wq` příkazu editoru.
+    Po dokončení uložte a zavřete soubor *sshd_conf* pomocí `:wq` příkazu editoru.
 
-1. Chcete-li použít změny a uvolit uživatelům přihlášení pomocí hesla, restartujte službu SSH:
+1. Pokud chcete změny použít a umožnit uživatelům, aby se přihlásili pomocí hesla, restartujte službu SSH:
 
     ```console
     sudo systemctl restart sshd
     ```
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Udělení oprávnění skupiny sudo správců řadiče AAD DC
+## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>Udělte skupině AAD DC Administrators oprávnění sudo
 
-Chcete-li udělit členům *skupiny Správců Řadiče a dministrátorů AAD* oprávnění správce na vos VM CentOS, přidejte položku */etc/sudoers*. Po přidání mohou členové *skupiny AAD DC Administrators* použít `sudo` příkaz na virtuálním počítači CentOS.
+Pokud chcete členům skupiny *AAD DC Administrators* udělit na virtuálním počítači CentOS oprávnění správce, přidejte položku do */etc/sudoers*. Po přidání můžou členové skupiny *Správci AAD DC* použít `sudo` příkaz na virtuálním počítači s CentOS.
 
 1. Otevřete soubor *sudoers* pro úpravy:
 
@@ -154,42 +154,42 @@ Chcete-li udělit členům *skupiny Správců Řadiče a dministrátorů AAD* op
     sudo visudo
     ```
 
-1. Přidejte následující položku na konec *souboru /etc/sudoers.* Skupina *Správci řadiče domény AAD* obsahuje v názvu mezery, takže do názvu skupiny zahrňte řídicí znak zpětného lomítka. Přidejte svůj vlastní název domény, *například aaddscontoso.com*:
+1. Přidejte následující položku na konec souboru */etc/sudoers* . Skupina *AAD DC Administrators* obsahuje v názvu prázdné znaky, takže v názvu skupiny zahrňte řídicí znak zpětného lomítka. Přidejte vlastní název domény, například *aaddscontoso.com*:
 
     ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators@aaddscontoso.com ALL=(ALL) NOPASSWD:ALL
     ```
 
-    Po dokončení uložte a ukončete editor pomocí `:wq` příkazu editoru.
+    Až budete hotovi, uložte a ukončete Editor pomocí `:wq` příkazu editoru.
 
-## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Přihlášení k virtuálnímu virtuálnímu účtu pomocí účtu domény
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>Přihlaste se k virtuálnímu počítači pomocí účtu domény.
 
-Chcete-li ověřit, že virtuální počítač byl úspěšně připojen ke spravované doméně Azure AD DS, spusťte nové připojení SSH pomocí uživatelského účtu domény. Zkontrolujte, zda byl vytvořen domovský adresář a zda je použito členství ve skupině z domény.
+Pokud chcete ověřit, jestli se virtuální počítač úspěšně připojil ke spravované doméně Azure služba AD DS, spusťte nové připojení SSH pomocí účtu uživatele domény. Potvrďte, že byl vytvořen domovský adresář a že je použito členství ve skupině z domény.
 
-1. Vytvořte nové připojení SSH z konzole. Pomocí `ssh -l` příkazu použijte účet domény, který patří `contosoadmin@aaddscontoso.com` do spravované domény, například adresu virtuálního počítače, například *centos.aaddscontoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače, nikoli interní název DNS.
+1. Vytvořte nové připojení SSH z konzoly. Pomocí `ssh -l` příkazu použijte doménový účet, který patří do spravované domény, `contosoadmin@aaddscontoso.com` a pak zadejte adresu vašeho virtuálního počítače, třeba *CentOS.aaddscontoso.com*. Pokud používáte Azure Cloud Shell, použijte veřejnou IP adresu virtuálního počítače místo interního názvu DNS.
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com centos.aaddscontoso.com
     ```
 
-1. Po úspěšném připojení k virtuálnímu virtuálnímu serveru ověřte, že domácí adresář byl inicializován správně:
+1. Po úspěšném připojení k virtuálnímu počítači ověřte, zda byl domovský adresář správně inicializován:
 
     ```console
     pwd
     ```
 
-    Měli byste být v adresáři */home* s vlastním adresářem, který odpovídá uživatelskému účtu.
+    Měli byste být v adresáři */Home* s vlastním adresářem, který odpovídá uživatelskému účtu.
 
-1. Nyní zkontrolujte, zda jsou členství ve skupinách správně vyřešena:
+1. Nyní ověřte, zda jsou členství ve skupině správně řešena:
 
     ```console
     id
     ```
 
-    Měli byste vidět vaše členství ve skupinách ze spravované domény Azure AD DS.
+    Měli byste vidět členství ve skupinách ze spravované domény Azure služba AD DS.
 
-1. Pokud jste se k virtuálnímu virtuálnímu soudu přihlásili jako člen *skupiny Správci řadiče domény AAD,* zkontrolujte, zda můžete `sudo` příkaz správně použít:
+1. Pokud jste se k virtuálnímu počítači přihlásili jako člen skupiny *AAD DC Administrators* , ověřte, že můžete správně použít `sudo` příkaz:
 
     ```console
     sudo yum update
@@ -197,7 +197,7 @@ Chcete-li ověřit, že virtuální počítač byl úspěšně připojen ke spra
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte problémy s připojením virtuálního počítače ke spravované doméně Azure AD DS nebo při přihlášení pomocí účtu domény, [přečtěte si článek Poradce při potížích s připojením domény](join-windows-vm.md#troubleshoot-domain-join-issues).
+Pokud máte problémy s připojením k virtuálnímu počítači ke spravované doméně Azure služba AD DS nebo když se přihlašujete pomocí účtu domény, přečtěte si téma [řešení potíží s připojením k doméně](join-windows-vm.md#troubleshoot-domain-join-issues).
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

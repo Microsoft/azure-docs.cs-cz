@@ -1,7 +1,7 @@
 ---
 title: Interpretace modelu v Azure Machine Learning
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak vysvětlit, proč váš model provádí předpovědi pomocí sady Azure Machine Learning SDK. Lze použít během školení a odvození pochopit, jak váš model dělá předpovědi.
+description: Naučte se vysvětlit, proč model předpovědi pomocí sady SDK Azure Machine Learning. Dá se použít během školení a odvození, abyste porozuměli tomu, jak model dělá předpovědi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,10 +11,10 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
 ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631398"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
@@ -22,35 +22,35 @@ ms.locfileid: "80631398"
 
 ## <a name="overview-of-model-interpretability"></a>Přehled interpretace modelu
 
-Interpretabilita je pro datové vědce, auditory i pracovníky s rozhodovací pravomocí důležitá pro zajištění souladu s firemními politikami, průmyslovými standardy a vládními předpisy:
+Výklad je zásadní pro odborníky na data, auditory a pracovníky pro rozhodování, které se týkají dodržování podnikových zásad, oborových standardů a předpisů pro státní správu:
 
-+ Datoví vědci potřebují schopnost vysvětlovat své modely vedoucím pracovníkům a zúčastněným stranám, aby mohli pochopit hodnotu a přesnost svých zjištění. Vyžadují také interpretovatelnost ladit své modely a činit informovaná rozhodnutí o tom, jak je zlepšit. 
++ Vědečtí data potřebují možnost vysvětlit jejich modely vedoucím pracovníkům a zúčastněným stranám, aby mohli pochopit hodnotu a přesnost jejich zjištění. Vyžadují také výklad pro ladění modelů a rozhodování o tom, jak je zlepšit. 
 
-+ Právní auditoři potřebují nástroje k ověřování modelů s ohledem na dodržování právních předpisů a ke sledování toho, jaký dopad mají rozhodnutí modelů na člověka. 
++ Zákonné auditory vyžadují nástroje k ověřování modelů v souvislosti s dodržováním předpisů a monitorování způsobu, jakým jsou jejich rozhodnutí ovlivněna lidmi. 
 
-+ Tvůrci obchodních rozhodnutí potřebují klid tím, že mají schopnost poskytovat transparentnost pro koncové uživatele. To jim umožňuje získat a udržet důvěru.
++ Pracovníci s rozhodovacím rozhodnutím potřebují klidně, protože mají možnost poskytnout transparentnost koncovým uživatelům. To jim umožní získat a zachovat důvěryhodnost.
 
 
-Povolení možnosti vysvětlit model strojového učení je důležité ve dvou hlavních fázích vývoje modelu:
-+ Během fáze školení jako návrháři modelu a hodnotitelé můžete použít interpretovatelnost výstup modelu k ověření hypotéz a budovat důvěru se zúčastněnými stranami. Také používají přehledy do modelu pro ladění, ověřování chování modelu odpovídá jejich cíle a ke kontrole nespravedlnosti modelu nebo nevýznamné funkce.
+Povolení funkce vysvětlení modelu strojového učení je důležité během dvou hlavních fází vývoje modelu:
++ Ve fázi školení mohou návrháři modelů a hodnotitelé použít výstup interpretace modelu k ověření hypotézy a vztahu důvěryhodnosti se zúčastněnými stranami. Využívají také přehledy modelu pro ladění, ověřování chování modelu odpovídá jejich cílům a ke kontrole nespravedlivých nebo nevýznamných funkcí modelu.
 
-+ Během fáze odvozování, protože transparentnost kolem nasazených modelů umožňuje vedoucím pracovníkům pochopit", když jsou nasazeni", jak model funguje a jak jeho rozhodnutí zacházejí s lidmi a ovlivňují je v reálném životě. 
++ V rámci fáze Inferencing, která má transparentnost kolem nasazených modelů, umožňuje vedoucím pochopit, jak je nasazený, jak model funguje a jak se jeho rozhodnutí zpracovávají a mají dopad na lidi v reálném životě. 
 
-## <a name="interpretability-with-azure-machine-learning"></a>Interpretabilita s Azure Machine Learning
+## <a name="interpretability-with-azure-machine-learning"></a>Interpretace pomocí Azure Machine Learning
 
-Interpretovatelnost třídy jsou k dispozici prostřednictvím více balíčků sady SDK: (Naučte se, jak [nainstalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
+Třídy interpretace jsou zpřístupněny prostřednictvím více balíčků sady SDK: (Naučte se [instalovat balíčky sady SDK pro Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py))
 
-* `azureml.interpret`, hlavní balíček, který obsahuje funkce podporované společností Microsoft.
+* `azureml.interpret`, hlavní balíček obsahující funkce podporované Microsoftem.
 
-* `azureml.contrib.interpret`, náhled a experimentální funkce, které můžete vyzkoušet.
+* `azureml.contrib.interpret`, ve verzi Preview a experimentálních funkcích, které můžete vyzkoušet.
 
 * `azureml.train.automl.automlexplainer`balíček pro interpretaci automatizovaných modelů strojového učení.
 
-Použití `pip install azureml-interpret` `pip install azureml-interpret-contrib` a pro obecné `pip install azureml-interpret-contrib` použití a pro použití AutoML získat interpretovatelné balíčky.
+Použijte `pip install azureml-interpret` a `pip install azureml-interpret-contrib` pro obecné použití a `pip install azureml-interpret-contrib` pro AutoML použijte k získání balíčků pro vyhodnocení.
 
 
 > [!IMPORTANT]
-> Obsah v `contrib` oboru názvů není plně podporován. Jak experimentální funkce zrají, budou postupně přesunuty do hlavního oboru názvů.
+> Obsah v `contrib` oboru názvů není plně podporován. Vzhledem k tomu, že experimentální funkce začnou být v zralosti, budou postupně přesunuty do hlavního oboru názvů.
 .
 
 
@@ -58,66 +58,66 @@ Použití `pip install azureml-interpret` `pip install azureml-interpret-contrib
 ## <a name="how-to-interpret-your-model"></a>Jak interpretovat model
 
 Pomocí tříd a metod v sadě SDK můžete:
-+ Vysvětlete predikci modelu generováním hodnot důležitosti funkce pro celý model nebo jednotlivé datové body. 
-+ Dosáhněte interpretace modelu na reálných datových sadách ve velkém měřítku, během školení a odvození.
-+ Použití interaktivního vizualizačního řídicího panelu ke zjištění vzorců v datech a vysvětlení chrátek v době školení
++ Vysvětlete předpověď modelu tím, že vygenerujete hodnoty důležitosti funkcí pro celý model a/nebo jednotlivé databody. 
++ Dosáhnete možností interpretace modelu na skutečných datových sadách ve velkém měřítku během školení a odvození.
++ Pomocí interaktivního řídicího panelu vizualizace můžete vyhledat vzory v datech a vysvětlení v době školení.
 
 
-Ve strojovém učení jsou **funkce** datová pole používaná k předvídání cílového datového bodu. Chcete-li například předpovědět úvěrové riziko, mohou být použita datová pole pro věk, velikost účtu a stáří účtu. V tomto případě jsou **funkce**věk, velikost účtu a stáří účtu . Důležitost funkce vám řekne, jak každé datové pole ovlivnilo předpovědi modelu. Například věk může být silně používán v predikci, zatímco velikost účtu a stáří významně neovlivňují hodnoty predikce. Tento proces umožňuje datovým vědcům vysvětlit výsledné předpovědi, aby zúčastněné strany měly přehled o tom, jaké funkce jsou v modelu nejdůležitější.
+Ve strojovém učení jsou **funkcemi** datová pole, která slouží k předpovědi cílového datového bodu. Například pro předpověď úvěrového rizika je možné použít datová pole pro stáří, velikost účtu a stáří účtu. V tomto případě jsou **funkce**stáří, velikost účtu a stáří účtu. Důležitost funkcí vysvětluje, jak každé datové pole ovlivnilo předpovědi modelu. Například věk může být v předpovědi silně využíván, zatímco velikost účtu a stáří neovlivňují hodnoty předpovědi významně. Tento proces umožňuje datovým vědcům vysvětlit výsledné předpovědi, aby zúčastněné strany měly přehled o tom, jaké funkce jsou v modelu nejdůležitější.
 
-Další informace o podporovaných technikách interpretability, podporovaných modelech strojového učení a podporovaných prostředích spuštění zde.
+Přečtěte si o podporovaných technikách interpretace, podporovaných modelech strojového učení a podporovaných prostředích pro spuštění.
 
 
 ## <a name="supported-interpretability-techniques"></a>Podporované techniky interpretace
 
- `azureml-interpret`používá techniky interpretability vyvinuté v [Interpret-Community](https://github.com/interpretml/interpret-community/), open source python balíček pro školení interpretovatelné modely a pomáhá vysvětlit blackbox AI systémy. [Interpret-Community](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro podporované vysvětlující moduly této sady SDK a v současné době podporuje následující techniky interpretability:
+ `azureml-interpret`používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
 
-|Technika interpretability|Popis|Typ|
+|Technika interpretace|Popis|Typ|
 |--|--|--------------------|
-|1. SHAP Strom Explainer| Sptovek stromů [SHAP,](https://github.com/slundberg/shap)který se zaměřuje na polynomčasový algoritmus časového odhadu SHAP specifického pro **stromy a soubory stromů**.|Specifické pro model|
-|2. SHAP Deep Explainer| Na základě vysvětlení [shap](https://github.com/slundberg/shap), Deep Explainer "je vysokorychlostní aproximace algoritmus pro HODNOTY SHAP v hlubokém učení modelů, které staví na spojení s DeepLIFT popsané v [shap NIPS papíru](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). Podporovány jsou modely **TensorFlow** a **modely Keras** využívající backend TensorFlow (existuje také předběžná podpora pro PyTorch)".|Specifické pro model|
-|3. SHAP Lineární vysvětlivka| Lineární vysvětlivka [SHAP](https://github.com/slundberg/shap)vypočítá hodnoty SHAP pro **lineární model**, případně zohledňuje korelace mezi funkcemi.|Specifické pro model|
-|4. SHAP jádra Explainer| Vysvětlivka jádra [SHAP](https://github.com/slundberg/shap)používá speciálně váženou lokální lineární regresi k odhadu hodnot SHAP pro **libovolný model**.|Model-agnostik|
-|5. Mimita Explainer (Globální náhradník)| Mimické vysvětlivky je založena na myšlence školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) napodobovat blackbox modely. Globální náhradní model je vnitřně interpretovatelný model, který je trénovaný tak, aby co nejpřesněji aproximoval předpovědi **libovolného modelu černé skříňky.** Datoví vědci mohou interpretovat náhradní model a vyvodit závěry o modelu černé skříňky. Můžete použít jeden z následujících interpretovatelných modelů jako náhradní model: LightGBM (LGBMExplainableModel), Lineární regrese (LinearExplainableModel), Stochastic Gradient Descent vysvětlitelný model (SGDExplainableModel) a Rozhodovací strom (DecisionTreeExplainableModel).|Model-agnostik|
-|6. Permutation Feature Význam Explainer (PFI)| Význam permutace je technika používaná k vysvětlení klasifikačních a regresních modelů, která je [inspirována Breimanovým papírem Random Forests](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na vysoké úrovni, způsob, jakým to funguje, je náhodným mícháním dat po jedné funkci pro celou datovou sadu a výpočtem, jak moc se mění metrika výkonu zájmu. Čím větší je změna, tím důležitější je tato funkce. PFI můžete vysvětlit celkové chování **jakéhokoli základního modelu,** ale nevysvětluje jednotlivé předpovědi. |Model-agnostik|
+|1. SHAP se stromovým vysvětlením| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
+|2. SHAP, podrobný vysvětlující| Na základě vysvětlení z [SHAP](https://github.com/slundberg/shap)je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|
+|3. SHAP, vysvětlený lineární| Lineární [SHAPý](https://github.com/slundberg/shap)vysvětlení vypočítá SHAP hodnoty pro **lineární model**, volitelně také účetní pro korelace mezi funkcemi.|Specifické pro model|
+|4. SHAP – vysvětlení jádra| [SHAP](https://github.com/slundberg/shap)vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro **libovolný model**.|Model – nezávislá|
+|5. podobná vysvětlení (globální náhrada)| Nevhodnější je vycházet z nápadu pro školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) pro napodobování Blackbox modelů. Globální náhradní model je vnitřně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi **model černého pole** . Vědečtí data mohou interpretovat náhradní model, aby vykreslili závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).|Model – nezávislá|
+|6. permutace – vysvětlení důležitosti funkce (PFI)| Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce. PFI může vysvětlit celkové chování **jakéhokoli podkladového modelu** , ale nevysvětluje jednotlivé předpovědi. |Model – nezávislá|
 
 
 
 
-Kromě výše popsaných technik interpretability podporujeme další [vysvětlující techniku založenou na SHAP](https://github.com/slundberg/shap), nazvanou `TabularExplainer`. V závislosti na `TabularExplainer` modelu používá jeden z podporovaných shap explainers:
+Kromě metod interpretace popsaných výše podporujeme jiný [vysvětlující SHAP](https://github.com/slundberg/shap), který se nazývá `TabularExplainer`. V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
 
-* TreeExplainer pro všechny modely na bázi stromů
+* TreeExplainer pro všechny modely založené na stromové struktuře
 * DeepExplainer pro modely DNN
 * LinearExplainer pro lineární modely
 * KernelExplainer pro všechny ostatní modely
 
-`TabularExplainer`učinil také významné vylepšení funkcí a výkonu oproti přímým vysvětlivačům SHAP:
+`TabularExplainer`má také významná vylepšení funkcí a výkonu prostřednictvím přímých SHAPch vysvětlení:
 
-* **Sumarizace datové sady inicializace**. V případech, kdy je nejdůležitější rychlost vysvětlení, shrnujeme inicializační datovou sadu a generujeme malou sadu reprezentativních vzorků, což urychluje generování celkových a individuálních hodnot důležitosti funkce.
-* **Vzorkování souboru hodnotících dat**. Pokud uživatel předá ve velké sadě vzorků hodnocení, ale ve skutečnosti nepotřebuje všechny z nich, které mají být vyhodnoceny, vzorkování parametr lze nastavit na true urychlit výpočet celkového modelu vysvětlení.
+* **Sumarizace inicializační sady dat**. V případech, kdy je rychlost vysvětlení nejdůležitější, shrnujeme inicializační datovou sadu a vygenerujeme malou sadu reprezentativních vzorků, které urychlují generování celkových a individuálních hodnot důležitosti funkcí.
+* **Vzorkování sady dat pro vyhodnocení**. Pokud uživatel projde velkou sadou zkušebních vzorů, ale nepotřebuje vyhodnotit všechny z nich, je možné nastavit parametr vzorkování na hodnotu true, aby se urychlil výpočet celkového vysvětlení modelu.
 
-Následující diagram znázorňuje aktuální strukturu podporovaných explainerů.
+Následující diagram znázorňuje aktuální strukturu podporovaných vysvětlení.
 
-[![Architektura interpretace strojového učení](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
+[![Machine Learning architektura pro interpretaci](./media/how-to-machine-learning-interpretability/interpretability-architecture.png)](./media/how-to-machine-learning-interpretability/interpretability-architecture.png#lightbox)
 
 
 ## <a name="supported-machine-learning-models"></a>Podporované modely strojového učení
 
-Balíček `azureml.interpret` sady SDK podporuje modely trénované v následujících formátech datové sady:
+`azureml.interpret` Balíček sady SDK podporuje modely vyškolené pomocí následujících formátů datových sad:
 - `numpy.array`
 - `pandas.DataFrame`
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-Funkce vysvětlení přijmout modely a kanály jako vstup. Pokud je k dispozici model, musí model `predict` `predict_proba` implementovat předpověď funkce nebo který odpovídá scikit konvence. Pokud váš model nepodporuje toto, můžete zabalit model ve funkci, která generuje stejný výsledek jako `predict` nebo `predict_proba` v Scikit a použít tuto funkci obálky s vybraným explainer. Pokud je k dispozici kanál, vysvětlení funkce předpokládá, že spuštěný skript kanálu vrátí předpověď. Pomocí této techniky `azureml.interpret` balení může podporovat modely vycvičené prostřednictvím rámců hlubokého učení PyTorch, TensorFlow a Keras, stejně jako klasické modely strojového učení.
+Funkce vysvětlení přijímají jako vstup oba modely i kanály. Pokud je k dispozici model, model musí implementovat funkci `predict` předpovědi nebo `predict_proba` , která odpovídá Scikit konvenci. Pokud váš model tento model nepodporuje, můžete model zabalit do funkce, která generuje stejný výsledek jako `predict` nebo `predict_proba` v Scikit a použije tuto obálkovou funkci s vybraným doplňkem. Pokud je k dispozici kanál, funkce vysvětlení předpokládá, že spuštěný skript kanálu vrátí předpověď. Pomocí této techniky balení `azureml.interpret` může podporovat modely vyškolené prostřednictvím PyTorch, TensorFlow a Keras architektury hloubkového učení a také klasických modelů strojového učení.
 
-## <a name="local-and-remote-compute-target"></a>Místní a vzdálený výpočetní cíl
+## <a name="local-and-remote-compute-target"></a>Cíl pro místní a vzdálené výpočty
 
-Balíček `azureml.interpret` je určen pro práci s místními i vzdálenými výpočetními cíli. Pokud běží místně, funkce sady SDK nebude kontaktovat žádné služby Azure. 
+`azureml.interpret` Balíček je navržený tak, aby fungoval s místními i vzdálenými výpočetními cíli. Pokud spustíte místně, funkce SDK nebudou kontaktovat žádné služby Azure. 
 
-Vysvětlení můžete spustit vzdáleně na Azure Machine Learning Compute a protokolovat vysvětlení informace do služby Azure Machine Learning Run History Service. Jakmile jsou tyto informace zaznamenány, sestavy a vizualizace z vysvětlení jsou snadno dostupné ve službě Azure Machine Learning studio pro analýzu uživatelů.
+Vysvětlení můžete spustit vzdáleně na Azure Machine Learning COMPUTE a protokolovat informace o vysvětlení do služby historie spouštění Azure Machine Learning. Po zaznamenání těchto informací jsou sestavy a vizualizace z vysvětlení snadno dostupné na Azure Machine Learning Studiu pro analýzu uživatelů.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte [se na návody, jak](how-to-machine-learning-interpretability-aml.md) povolit interpretabilitu pro modely školení místně i na Azure Machine Learning vzdálené výpočetní prostředky. Další scénáře najdete v [ukázkových poznámkových blocích.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .

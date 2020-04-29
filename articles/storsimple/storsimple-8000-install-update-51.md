@@ -1,6 +1,6 @@
 ---
-title: Instalace aktualizace 5.1 na zařízení řady StorSimple 8000 | Dokumenty společnosti Microsoft
-description: Vysvětluje, jak nainstalovat aktualizaci StorSimple 8000 Series Update 5.1 do zařízení řady StorSimple 8000.
+title: Instalace aktualizace 5,1 na zařízení s StorSimple 8000 series | Microsoft Docs
+description: Vysvětluje, jak nainstalovat aktualizaci StorSimple 8000 Series Update 5,1 na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: priestlg
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658037"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>Instalace aktualizace 5.1 do zařízení StorSimple
+# <a name="install-update-51-on-your-storsimple-device"></a>Instalace aktualizace 5,1 na zařízení StorSimple
 
 ## <a name="overview"></a>Přehled
 
-Tento kurz vysvětluje, jak nainstalovat aktualizaci 5.1 na zařízení StorSimple se starší verzí softwaru prostřednictvím portálu Azure. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+V tomto kurzu se dozvíte, jak nainstalovat Update 5,1 na zařízení StorSimple s dřívější verzí softwaru prostřednictvím Azure Portal. <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-Aktualizace 5.1 obsahuje nerušivé aktualizace zabezpečení. Nerušivé nebo pravidelné aktualizace lze použít prostřednictvím portálu Azure <!--or by the hotfix method-->.
+Aktualizace 5,1 obsahuje aktualizace zabezpečení bez přerušení. Nerušivé nebo pravidelné aktualizace lze použít prostřednictvím Azure Portal <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * Aktualizace 5.1 je povinná aktualizace a měla by být nainstalována okamžitě. Další informace naleznete v [tématu Update 5.1 poznámky k verzi](storsimple-update51-release-notes.md).
-> * Sada ručních a automatických předběžných kontrol se provádí před instalací, aby se zjistil stav zařízení z hlediska stavu hardwaru a připojení k síti. Tyto předběžné kontroly se provádějí jenom v případě, že použijete aktualizace z portálu Azure.
-> * Chcete-li instalaci nainstalovat pomocí metody opravy hotfix, obraťte se na [podporu společnosti Microsoft](mailto:support@microsoft.com).
+> * Aktualizace 5,1 je povinná aktualizace a měla by být nainstalovaná hned. Další informace najdete v [poznámkách k verzi Update 5,1](storsimple-update51-release-notes.md).
+> * Sada ručních a automatických předběžných kontrol se provádí před instalací k určení stavu zařízení z hlediska stavu hardwaru a připojení k síti. Tyto předběžné kontroly se provádějí jenom v případě, že se aktualizace použijí z Azure Portal.
+> * Pokud chcete nainstalovat pomocí metody hotfix, kontaktujte [Podpora Microsoftu](mailto:support@microsoft.com).
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,12 +45,12 @@ Aktualizace 5.1 obsahuje nerušivé aktualizace zabezpečení. Nerušivé nebo p
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>Instalace aktualizace 5.1 přes portál Azure
+## <a name="install-update-51-through-the-azure-portal"></a>Nainstalujte aktualizaci 5,1 prostřednictvím Azure Portal
 
-Chcete-li aktualizovat zařízení na [aktualizaci 5.1](storsimple-update51-release-notes.md), proveďte následující kroky.
+Provedením následujících kroků aktualizujte zařízení tak, aby se [aktualizovalo 5,1](storsimple-update51-release-notes.md).
 
 > [!NOTE]
-> Společnost Microsoft získává další diagnostické informace ze zařízení. V důsledku toho, když náš provozní tým identifikuje zařízení, která mají problémy, jsme lépe vybaveni ke shromažďování informací ze zařízení a diagnostice problémů.
+> Microsoft z tohoto zařízení vyžádá další diagnostické informace. V důsledku toho je v případě, že náš provozní tým identifikuje zařízení, u kterých dochází k problémům, jsme lépe zakázali shromažďovat informace ze zařízení a diagnostikovat problémy.
 
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Instalace aktualizace z webu Azure Portal
 
@@ -58,17 +58,17 @@ Chcete-li aktualizovat zařízení na [aktualizaci 5.1](storsimple-update51-rele
 
     ![Vybrat zařízení](./media/storsimple-8000-install-update-51/update1.png)
 
-2. Přejděte na **nastavení** > **zařízení Aktualizace zařízení**.
+2. Přejděte na **Nastavení** > zařízení**aktualizace zařízení**.
 
-    ![Klikněte na Aktualizace zařízení.](./media/storsimple-8000-install-update-51/update2.png)
+    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update2.png)
 
-3. Pokud jsou k dispozici nové aktualizace, zobrazí se oznámení. Případně v okně **Aktualizace zařízení** klepněte na tlačítko **Prohledávat aktualizace**. Vytvoří se úloha vyhledávání dostupných aktualizací. Po úspěšném dokončení úlohy se zobrazí zpráva.
+3. Pokud jsou k dispozici nové aktualizace, zobrazí se oznámení. Případně můžete v okně **aktualizace zařízení** kliknout na **Vyhledat aktualizace**. Vytvoří se úloha vyhledávání dostupných aktualizací. Po úspěšném dokončení úlohy se zobrazí zpráva.
 
-    ![Klikněte na Aktualizace zařízení.](./media/storsimple-8000-install-update-51/update3.png)
+    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update3.png)
 
-4. Doporučujeme, abyste si před instalací aktualizace na zařízení prošli poznámky k verzi. Chcete-li aktualizace použít, klepněte na tlačítko **Instalovat aktualizace**. V okně **Potvrdit pravidelné aktualizace** zkontrolujte požadavky, které je třeba dokončit před provedením aktualizací. Zaškrtnutím tohoto políčka označte, že jste připraveni zařízení aktualizovat, a klepněte na tlačítko **Instalovat**.
+4. Doporučujeme, abyste si před instalací aktualizace na zařízení prošli poznámky k verzi. Chcete-li použít aktualizace, klikněte na tlačítko **instalovat aktualizace**. V okně **Potvrdit běžné aktualizace** si přečtěte předpoklady, které je potřeba provést před instalací aktualizací. Zaškrtnutím políčka označíte, že jste připraveni aktualizovat zařízení, a pak klikněte na **nainstalovat**.
 
-    ![Klikněte na Aktualizace zařízení.](./media/storsimple-8000-install-update-51/update4.png)
+    ![Klikněte na aktualizace zařízení.](./media/storsimple-8000-install-update-51/update4.png)
 
 5. Spustí se sada kontrol požadavků. Mezi tyto kontroly patří:
    
@@ -76,9 +76,9 @@ Chcete-li aktualizovat zařízení na [aktualizaci 5.1](storsimple-update51-rele
    * **Kontroly stavu hardwarových komponent** pro ověření, že všechny hardwarové komponenty v zařízení StorSimple jsou v pořádku.
    * **Kontroly rozhraní DATA 0** pro ověření, že je na zařízení povolené rozhraní DATA 0. Pokud toto rozhraní není povolené, musíte jej povolit a poté to zkusit znovu.
 
-     Aktualizace je stažena a nainstalována pouze v případě, že jsou všechny kontroly úspěšně dokončeny. Na probíhání kontrol budete upozorněni. Pokud předběžné kontroly selžou, budete mít k dispozici důvody selhání. Vyřazujte tyto problémy a opakujte operaci. Pokud si s těmito problémy neporadíte sami, bude muset kontaktovat podporu Microsoftu.
+     Aktualizace se stáhne a nainstaluje jenom v případě, že se všechny kontroly úspěšně dokončily. Na probíhání kontrol budete upozorněni. Pokud předkontroly selžou, budete mít k dispozici důvody pro selhání. Vyřešte tyto problémy a potom operaci opakujte. Pokud si s těmito problémy neporadíte sami, bude muset kontaktovat podporu Microsoftu.
 
-7. Po úspěšném dokončení předběžných kontrol je vytvořena úloha aktualizace. Po úspěšném vytvoření úlohy aktualizace se zobrazí upozornění.
+7. Po úspěšném dokončení předkontrol se vytvoří úloha aktualizace. Po úspěšném vytvoření úlohy aktualizace se zobrazí upozornění.
    
     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update6.png)
    
@@ -88,14 +88,14 @@ Chcete-li aktualizovat zařízení na [aktualizaci 5.1](storsimple-update51-rele
 
     ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update8.png)
 
-     Průběh úlohy aktualizace můžete také sledovat v **nastavení zařízení > úlohy**. V okně **Úlohy** můžete vidět průběh aktualizace.
+     Můžete také monitorovat průběh úlohy aktualizace z **nastavení zařízení > úloh**. V okně **úlohy** vidíte průběh aktualizace.
 
      ![Vytvoření úlohy aktualizace](./media/storsimple-8000-install-update-51/update7.png)
 
-10. Po dokončení úlohy přejděte na **nastavení zařízení > aktualizace zařízení**. Verze softwaru by nyní měla být aktualizována.
+10. Po dokončení úlohy přejděte do **nastavení zařízení > aktualizace zařízení**. Verze softwaru by se teď měla aktualizovat.
 
 
-Ověřte, zda je v zařízení **spuštěna aktualizace řady StorSimple 8000 5.1 (6.3.9600.17885).** **Datum poslední aktualizace** by mělo být změněno.
+Ověřte, že na zařízení běží **StorSimple 8000 Series Update 5,1 (6.3.9600.17885)**. **Datum poslední aktualizace** by mělo být změněno.
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o [verzi aktualizace 5.1](storsimple-update51-release-notes.md).
+Přečtěte si další informace o [vydání aktualizace 5,1](storsimple-update51-release-notes.md).

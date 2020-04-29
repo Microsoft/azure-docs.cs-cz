@@ -1,6 +1,6 @@
 ---
-title: Omezení prostředků pro soubory Azure NetApp | Dokumenty společnosti Microsoft
-description: Popisuje omezení pro prostředky Azure NetApp Files a jak požádat o zvýšení limitu prostředků.
+title: Omezení prostředků pro Azure NetApp Files | Microsoft Docs
+description: Popisuje omezení pro Azure NetApp Files prostředky a způsob zvýšení limitu prostředků.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,80 +15,80 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: b-juche
 ms.openlocfilehash: ac660b20d519e49e832e979603f763fa672757a5
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80637404"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Omezení prostředků pro Azure NetApp Files
 
-Principy omezení prostředků pro soubory Azure NetApp vám pomůže spravovat svazky.
+Principy omezení prostředků pro Azure NetApp Files vám pomůžou spravovat svazky.
 
 ## <a name="resource-limits"></a>Omezení prostředků
 
-Následující tabulka popisuje omezení prostředků pro soubory Azure NetApp:
+Následující tabulka popisuje omezení prostředků pro Azure NetApp Files:
 
 |  Prostředek  |  Výchozí omezení  |  Nastavitelná prostřednictvím žádosti o podporu  |
 |----------------|---------------------|--------------------------------------|
 |  Počet účtů NetApp na oblast Azure   |  10    |  Ano   |
 |  Počet fondů kapacity na účet NetApp   |    25     |   Ano   |
-|  Počet svazků na kapacitní fond     |    500   |    Ano     |
+|  Počet svazků na fond kapacity     |    500   |    Ano     |
 |  Počet snímků na svazek       |    255     |    Ne        |
-|  Počet podsítí delegovaných na soubory Azure NetApp (Microsoft.NetApp/svazky) na virtuální síť Azure    |   1   |    Ne    |
-|  Počet použitých IP adresy ve virtuální síti (včetně okamžitě partnerských virtuálních sítí) se soubory Azure NetApp   |    1000   |    Ne   |
-|  Minimální velikost jednoho kapacitního fondu   |  4 TiB     |    Ne  |
+|  Počet podsítí delegovaných pro Azure NetApp Files (Microsoft. NetApp/svazky) na Azure Virtual Network    |   1   |    Ne    |
+|  Počet využitých IP adres ve virtuální síti (včetně okamžitě virtuální sítě partnerských vztahů) s Azure NetApp Files   |    1000   |    Ne   |
+|  Minimální velikost jednoho fondu kapacity   |  4 TiB     |    Ne  |
 |  Maximální velikost jednoho fondu kapacity    |  500 TiB   |   Ne   |
 |  Minimální velikost jednoho svazku    |    100 GiB    |    Ne    |
 |  Maximální velikost jednoho svazku     |    100 TiB    |    Ne    |
 |  Maximální velikost jednoho souboru     |    16 TiB    |    Ne    |    
 |  Maximální velikost jednoho adresáře      |    320 MB    |    Ne    |    
-|  Maximální počet souborů ([maxfiles](#maxfiles)) na svazek     |    100 milionů    |    Ano    |    
+|  Maximální počet souborů ([maxfiles](#maxfiles)) na jeden svazek     |    100 000 000    |    Ano    |    
 
-Další informace naleznete v [tématu Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
+Další informace najdete v tématu [Nejčastější dotazy ke správě kapacity](azure-netapp-files-faqs.md#capacity-management-faqs).
 
-## <a name="maxfiles-limits"></a>Omezení maxsouborů<a name="maxfiles"></a> 
+## <a name="maxfiles-limits"></a>Omezení maxfiles<a name="maxfiles"></a> 
 
-Svazky souborů Azure NetApp mají limit nazývaný *maxfiles*. Limit maxsouborů je počet souborů, které může svazek obsahovat. Limit maximálních souborů pro svazek souborů Azure NetApp se indexuje na základě velikosti (kvóty) svazku. Limit maxfiles pro svazek se zvyšuje nebo snižuje rychlostí 20 milionů souborů na TiB rezervované velikosti svazku. 
+Azure NetApp Files svazky mají omezení s názvem *maxfiles*. Limit maxfiles je počet souborů, které může obsahovat svazek. Limit maxfiles pro Azure NetApp Files svazek je indexovaný na základě velikosti (kvóty) svazku. Limit maxfiles pro svazek se zvyšuje nebo snižuje rychlostí 20 000 000 souborů za TiB zřízené velikosti svazku. 
 
-Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízená velikost. Například svazek nakonfigurovaný původně s velikostí 1 TiB by měl maximální limit souborů 20 milionů. Následné změny velikosti svazku by vedly k automatické muzice limitu maxfiles na základě následujících pravidel: 
+Služba dynamicky upravuje limit maxfiles pro svazek na základě jeho zřízené velikosti. Například svazek nakonfigurovaný původně s velikostí 1 TiB by měl maxfiles limit 20 000 000. Následné změny velikosti svazku mají za následek automatické přizpůsobení limitu maxfiles na základě následujících pravidel: 
 
-|    Velikost svazku (kvóta)     |  Automatické seřízení limitu maxfiles    |
+|    Velikost svazku (kvóta)     |  Automatické přizpůsobení limitu maxfiles    |
 |----------------------------|-------------------|
-|    < 1 TiB                 |    20 milionů     |
-|    >= 1 TiB, ale < 2 TiB    |    40 milionů     |
-|    >= 2 TiB, ale < 3 TiB    |    60 milionů     |
-|    >= 3 TiB, ale < 4 TiB    |    80 milionů     |
-|    >= 4 TiB                |    100 milionů    |
+|    < 1 TiB                 |    20 000 000     |
+|    >= 1 TiB, ale < 2 TiB    |    40 000 000     |
+|    >= 2 TiB, ale < 3 TiB    |    60 000 000     |
+|    >= 3 TiB, ale < 4 TiB    |    80 000 000     |
+|    >= 4 TiB                |    100 000 000    |
 
-Pro libovolnou velikost svazku můžete zahájit [žádost o podporu](#limit_increase) a zvýšit limit maximálního počtu souborů nad 100 milionů.
+U libovolné velikosti svazku můžete zahájit [žádost o podporu](#limit_increase) , aby se zvýšil limit maxfiles nad rámec 100 000 000.
 
 ## <a name="request-limit-increase"></a>Zvýšení limitu požadavku<a name="limit_increase"></a> 
 
-Můžete vytvořit žádost o podporu Azure pro zvýšení nastavitelných limitů z výše uvedené tabulky. 
+Můžete vytvořit žádost o podporu Azure, která zvýší nastavitelná omezení z výše uvedené tabulky. 
 
-Z navigační roviny portálu Azure: 
+Z Azure Portal rovina navigace: 
 
-1. Klepněte na **tlačítko Nápověda + podpora**.
+1. Klikněte na tlačítko **help + podpora**.
 2. Klikněte na **+ Nová žádost o podporu**.
-3. Na kartě Základy zadejte následující informace: 
-    1. Typ problému: Vyberte **omezení služby a předplatného (kvóty).**
-    2. Odběry: Vyberte předplatné pro prostředek, který potřebujete zvýšit kvótu.
-    3. Typ kvóty: Vyberte **úložiště: Limity souborů Azure NetApp**.
-    4. Klikněte na **další: Řešení**.
+3. Na kartě základy zadejte následující informace: 
+    1. Typ problému: vyberte **služby a omezení pro předplatné (kvóty)**.
+    2. Předplatná: vyberte předplatné pro prostředek, pro který potřebujete zvýšit kvótu.
+    3. Typ kvóty: vyberte **úložiště: omezení Azure NetApp Files**.
+    4. Klikněte na **Další: řešení**.
 4. Na kartě Podrobnosti:
-    1. V poli Popis zadejte následující informace pro odpovídající typ prostředku:
+    1. V poli Popis zadejte pro odpovídající typ prostředku následující informace:
 
-        |  Prostředek  |    Nadřazené zdroje      |    Požadované nové limity     |    Důvod zvýšení kvóty       |
+        |  Prostředek  |    Nadřazené prostředky      |    Požadovaná nová omezení     |    Důvod zvýšení kvóty       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
-        |  Účet |  *ID předplatného*   |  *Požadované nové číslo **maximálního účtu***    |  *Jaký scénář nebo případ použití vyvolal požadavek?*  |
-        |  Fond    |  *ID předplatného, identifikátor URI účtu*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití vyvolal požadavek?*  |
-        |  Svazek  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu*   |  *Požadované nové maximální **číslo svazku***     |  *Jaký scénář nebo případ použití vyvolal požadavek?*  |
-        |  Maximální počet souborů  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu, identifikátor URI svazku*   |  *Požadované nové maximální **číslo maxsouborů***     |  *Jaký scénář nebo případ použití vyvolal požadavek?*  |    
+        |  Účet |  *ID předplatného*   |  *Požadované nové maximální číslo **účtu***    |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
+        |  Fond    |  *ID předplatného, identifikátor URI účtu*  |  *Požadované nové maximální číslo **fondu***   |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
+        |  Svazek  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu*   |  *Požadované nové maximální číslo **svazku***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |
+        |  Maxfiles  |  *ID předplatného, identifikátor URI účtu, identifikátor URI fondu, identifikátor URI svazku*   |  *Požadované nové maximální číslo **maxfiles***     |  *Jaký scénář nebo případ použití se žádostí vyzve?*  |    
 
-    2. Zadejte vhodnou metodu podpory a zadejte informace o smlouvě.
+    2. Zadejte odpovídající způsob podpory a zadejte informace o kontraktu.
 
-    3. Klikněte na **Další: Kontrola + vytvořit** pro vytvoření požadavku. 
+    3. Klikněte na **Další: zkontrolovat + vytvořit** a vytvořte žádost. 
 
 
 ## <a name="next-steps"></a>Další kroky  

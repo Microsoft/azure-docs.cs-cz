@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s kompresí souborů v Azure CDN | Dokumenty společnosti Microsoft
-description: Řešení problémů s kompresí souborů Azure CDN.
+title: Řešení potíží s kompresí souborů v Azure CDN | Microsoft Docs
+description: Řešení potíží se Azure CDN kompresí souborů.
 services: cdn
 documentationcenter: ''
 author: sohamnc
@@ -15,108 +15,108 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476419"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>Poradce při potížích s kompresí souborů CDN
-Tento článek vám pomůže vyřešit problémy s [kompresí souborů CDN](cdn-improve-performance.md).
+Tento článek vám pomůže při řešení potíží s [kompresí souborů CDN](cdn-improve-performance.md).
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, můžete kontaktovat odborníky Azure na [MSDN Azure a zásobníku přetečení fóra](https://azure.microsoft.com/support/forums/). Případně můžete také soubor incidentu podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na Získat **podporu**.
+Pokud potřebujete další podrobnější informace v jakémkoli bodě tohoto článku, můžete se obrátit na odborníky na Azure na [webu MSDN Azure a ve Stack Overflowch fórech](https://azure.microsoft.com/support/forums/). Případně můžete také použít incident podpory Azure. Přejděte na [web podpory Azure](https://azure.microsoft.com/support/options/) a klikněte na **získat podporu**.
 
 ## <a name="symptom"></a>Příznak
-Komprese pro koncový bod je povolena, ale soubory jsou vráceny nekomprimované.
+Komprese pro koncový bod je povolená, ale soubory se vrací nekomprimované.
 
 > [!TIP]
-> Chcete-li zkontrolovat, zda jsou soubory vráceny komprimovány, je třeba použít nástroj, jako [je Šumař](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)prohlížeče .  Zkontrolujte hlavičky odpovědí HTTP vrácené s obsahem CDN uloženým v mezipaměti.  Pokud je záhlaví `Content-Encoding` pojmenované s hodnotou **gzip**, **bzip2**nebo **deflate**, obsah je komprimován.
+> Chcete-li zjistit, zda jsou soubory vraceny zkomprimované, je třeba použít nástroj, jako je [Fiddler](https://www.telerik.com/fiddler) nebo [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)v prohlížeči.  Ověřte hlavičky odpovědí HTTP vrácené obsahem CDN uloženým v mezipaměti.  Pokud je `Content-Encoding` hlavička s názvem s hodnotou **gzip**, **bzip2**nebo **Deflate**, obsah se komprimuje.
 > 
-> ![Záhlaví kódování obsahu](./media/cdn-troubleshoot-compression/cdn-content-header.png)
+> ![Hlavička Content-Encoding](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 > 
 > 
 
 ## <a name="cause"></a>Příčina
-Existuje několik možných příčin, včetně:
+Existuje několik možných příčin, mezi které patří:
 
-* Požadovaný obsah není vhodný pro kompresi.
-* Komprese není povolena pro požadovaný typ souboru.
+* Požadovaný obsah není způsobilý pro kompresi.
+* Pro požadovaný typ souboru není komprese povolena.
 * Požadavek HTTP neobsahoval hlavičku požadující platný typ komprese.
-* Origin posílá kusový obsah.
+* Počátek odesílá obsah v bloku dat.
 
 ## <a name="troubleshooting-steps"></a>Postup při řešení potíží
 > [!TIP]
-> Stejně jako při nasazování nových koncových bodů trvá šíření konfigurace CDN v síti nějakou dobu.  Obvykle se změny aplikují do 90 minut.  Pokud je to poprvé, co jste nastavili kompresi pro koncový bod CDN, měli byste zvážit čekání 1-2 hodiny, abyste se ujistili, že se nastavení komprese rozšíří na POP. 
+> Stejně jako při nasazování nových koncových bodů se v síti dokončí Změna konfigurace CDN v průběhu sítě.  Změny se obvykle aplikují do 90 minut.  Pokud jste pro koncový bod CDN nastavili kompresi poprvé, měli byste zvážit počkat 1-2 hodin, než se zajistěte, aby se nastavení komprese rozšířila do bodů POP. 
 > 
 > 
 
-### <a name="verify-the-request"></a>Ověření požadavku
-Nejprve bychom měli provést rychlou kontrolu příčetnosti žádosti.  K zobrazení předváděcích požadavků můžete použít [vývojářské nástroje](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) prohlížeče.
+### <a name="verify-the-request"></a>Ověření žádosti
+Nejdřív byste měli provést rychlou správnosti kontrolu na žádosti.  Pomocí [vývojářských nástrojů](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) v prohlížeči můžete zobrazit požadavky, které se provedou.
 
-* Ověřte, `<endpointname>.azureedge.net`zda je žádost odesílána na adresu URL koncového bodu , nikoli na váš původ.
-* Ověřte, zda požadavek obsahuje hlavičku **Accept-Encoding** a hodnota pro tuto hlavičku obsahuje **gzip**, **deflate**nebo **bzip2**.
+* Ověřte, že se požadavek posílá na adresu URL vašeho koncového bodu, `<endpointname>.azureedge.net`a ne na váš původ.
+* Ověřte, že požadavek obsahuje hlavičku **Accept-Encoding** a že hodnota pro tuto hlavičku obsahuje **gzip**, **Deflate**nebo **bzip2**.
 
 > [!NOTE]
-> **Azure CDN z akamai** profily podporují pouze **kódování gzip.**
+> **Azure CDN ze profilů Akamai** podporují pouze kódování **gzip** .
 > 
 > 
 
-![Hlavičky požadavků CDN](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
+![Hlavičky žádosti CDN](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ověření nastavení komprese (standardní profily CDN)
+### <a name="verify-compression-settings-standard-cdn-profiles"></a>Ověřit nastavení komprese (standardní profily CDN)
 > [!NOTE]
-> Tento krok platí jenom v případě, že váš profil CDN je **Standard Azure CDN od Microsoftu**, **Azure CDN Standard od Verizonu**nebo Azure CDN Standard z profilu **Akamai.** 
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Microsoftu**, **Azure CDN Standard od Verizon**nebo **Azure CDN Standard od profilu Akamai** . 
 > 
 > 
 
-Přejděte na svůj koncový bod na [webu Azure Portal](https://portal.azure.com) a klikněte na tlačítko **Konfigurovat.**
+V [Azure Portal](https://portal.azure.com) přejděte na koncový bod a klikněte na tlačítko **Konfigurovat** .
 
-* Ověřte, zda je komprese povolena.
-* Ověřte, zda je obsah, který má být komprimován, zahrnut do seznamu komprimovaných formátů.
+* Ověřte, zda je povolena komprese.
+* Ověřte, že typ MIME obsahu, který se má komprimovat, je zahrnutý v seznamu komprimovaných formátů.
 
 ![Nastavení komprese CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-premium-cdn-profiles"></a>Ověření nastavení komprese (prémiové profily CDN)
+### <a name="verify-compression-settings-premium-cdn-profiles"></a>Ověřit nastavení komprese (profily CDN úrovně Premium)
 > [!NOTE]
-> Tento krok platí pouze v případě, že váš profil CDN je **Azure CDN Premium z** profilu Verizon.
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Premium z profilu Verizon** .
 > 
 > 
 
-Přejděte na svůj koncový bod na [webu Azure Portal](https://portal.azure.com) a klikněte na tlačítko **Spravovat.**  Otevře se doplňkový portál.  Najeďte na kartu **Velké HTTP** a najeďte na informační rámeček **Nastavení mezipaměti.**  Klepněte na **tlačítko Komprese**. 
+V [Azure Portal](https://portal.azure.com) přejděte na koncový bod a klikněte na tlačítko **Spravovat** .  Otevře se doplňkový portál.  Najeďte myší na **velkou kartu http** a pak najeďte myší na informační rámeček **nastavení mezipaměti** .  Klikněte na **Komprese**. 
 
-* Ověřte, zda je komprese povolena.
-* Ověřte, zda seznam **Typy souborů** obsahuje seznam odlišených čárkami (bez mezer) typů MIME.
-* Ověřte, zda je obsah, který má být komprimován, zahrnut do seznamu komprimovaných formátů.
+* Ověřte, zda je povolena komprese.
+* Ověřte, že seznam **typy souborů** obsahuje seznam oddělený čárkami (bez mezer) typů MIME.
+* Ověřte, že typ MIME obsahu, který se má komprimovat, je zahrnutý v seznamu komprimovaných formátů.
 
-![Nastavení komprese PREMIUM CDN](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
+![Nastavení komprese pro CDN Premium](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Ověřte, zda je obsah uložen do mezipaměti (profily Verizon CDN)
+### <a name="verify-the-content-is-cached-verizon-cdn-profiles"></a>Ověřte, jestli je obsah uložený v mezipaměti (profily CDN Verizon).
 > [!NOTE]
-> Tento krok platí jenom v případě, že váš profil CDN je **Standard Azure CDN od Verizonu** nebo **Azure CDN Premium z** profilu Verizon.
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Verizon** nebo **Azure CDN Premium od profilu Verizon** .
 > 
 > 
 
-Pomocí vývojářských nástrojů prohlížeče zkontrolujte záhlaví odpovědí a ujistěte se, že je soubor uložen do mezipaměti v oblasti, kde je požadován.
+Pomocí vývojářských nástrojů v prohlížeči zkontrolujte hlavičky odpovědí a ujistěte se, že je soubor uložen v mezipaměti v oblasti, kde se požaduje.
 
-* Zkontrolujte hlavičku odpovědi **serveru.**  Záhlaví by mělo mít formát **platformy (POP/Server ID)**, jak je vidět v následujícím příkladu.
-* Zkontrolujte hlavičku odpovědi **X-Cache.**  Záhlaví by mělo číst **HIT**.  
+* Podívejte se na hlavičku odpovědi **serveru** .  Hlavička by měla mít formátovou **platformu (pop/server ID)**, jak je vidět v následujícím příkladu.
+* Podívejte se na hlavičku odpovědi **X-cache** .  Hlavička by měla být **načtena**.  
 
 ![Hlavičky odpovědí CDN](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ověřte, zda soubor splňuje požadavky na velikost (profily Verizon CDN)
+### <a name="verify-the-file-meets-the-size-requirements-verizon-cdn-profiles"></a>Ověřte, že soubor splňuje požadavky na velikost (profily CDN Verizon).
 > [!NOTE]
-> Tento krok platí jenom v případě, že váš profil CDN je **Standard Azure CDN od Verizonu** nebo **Azure CDN Premium z** profilu Verizon.
+> Tento krok platí jenom v případě, že váš profil CDN je **Azure CDN Standard od Verizon** nebo **Azure CDN Premium od profilu Verizon** .
 > 
 > 
 
-Aby byl soubor způsobilý pro kompresi, musí splňovat následující požadavky na velikost:
+Aby měl soubor nárok na kompresi, musí splňovat následující požadavky na velikost:
 
 * Větší než 128 bajtů.
 * Menší než 1 MB.
 
-### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Zkontrolujte požadavek na původu serveru pro **via** záhlaví
-Hlavička **Via** HTTP označuje webovému serveru, že požadavek je předáván proxy serverem.  Webové servery služby Microsoft IIS ve výchozím nastavení nekomprimují odpovědi, pokud požadavek obsahuje hlavičku **Via.**  Chcete-li toto chování přepsat, proveďte následující kroky:
+### <a name="check-the-request-at-the-origin-server-for-a-via-header"></a>Ověřte požadavek na zdrojovém serveru **přes hlavičku Via** .
+Hlavička **Via** protokolu HTTP indikuje webovému serveru, že požadavek předává proxy server.  Webové servery Microsoft IIS ve výchozím nastavení nekomprimuje odpovědi, pokud požadavek obsahuje hlavičku **Via** .  Chcete-li toto chování přepsat, postupujte následovně:
 
-* **IIS 6**: [Nastavení hcnokomprese forproxies="FALSE" ve vlastnostech metabáze služby IIS](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 a nahoru**: [Nastavte **noCompressionForHttp10** a **noCompressionForProxies** na False v konfiguraci serveru](https://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 6**: [ve vlastnostech metabáze služby IIS nastavte HCNOCOMPRESSIONFORPROXIES = "false"](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90)) .
+* **IIS 7 a up**: [v konfiguraci serveru nastavte jak **noCompressionForHttp10** , tak **noCompressionForProxies** na false](https://www.iis.net/configreference/system.webserver/httpcompression) .
 

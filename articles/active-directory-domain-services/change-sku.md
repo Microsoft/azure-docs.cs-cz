@@ -1,6 +1,6 @@
 ---
-title: Změna skladové položky pro službu domény Služby Azure AD | Dokumenty společnosti Microsoft
-description: Zjistěte, jak se vrstva SKU pro spravovanou doménu služby Azure AD Domain Services, pokud se změní vaše obchodní požadavky
+title: Změna SKU pro Azure AD Domain Services | Microsoft Docs
+description: Přečtěte si, jak na úrovni SKU Azure AD Domain Services spravované doméně, pokud se změní vaše obchodní požadavky.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,60 +11,60 @@ ms.topic: how-to
 ms.date: 01/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 32f8f157abaf5076911c3908a83be4a644e09656
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655583"
 ---
-# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Změna skladové položky pro existující spravovanou doménu služby Azure AD Domain Services
+# <a name="change-the-sku-for-an-existing-azure-ad-domain-services-managed-domain"></a>Změna SKU pro existující Azure AD Domain Services spravovanou doménu
 
-Ve službě Azure Active Directory Domain Services (Azure AD DS) jsou dostupné výkony a funkce založené na typu skladové položky. Tyto rozdíly funkcí zahrnují frekvenci zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury (aktuálně ve verzi Preview). Skladovou položku vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepnout skladové položky nahoru nebo dolů, jak se vaše obchodní potřeby změní. Změny v obchodních požadavcích mohou zahrnovat potřebu častějších záloh nebo vytvoření dalších vztahů důvěryhodnosti doménové struktury. Další informace o omezeních a cenách různých skladových míst, najdete v [tématu koncepty skladových míst služby Azure AD DS][concepts-sku] a cenových stránek [Služby Azure AD DS.][pricing]
+V Azure Active Directory Domain Services (Azure služba AD DS) je dostupný výkon a funkce na základě typu SKU. Tyto rozdíly mezi funkcemi zahrnují četnost zálohování nebo maximální počet jednosměrných odchozích vztahů důvěryhodnosti doménové struktury (aktuálně ve verzi Preview). SKU vyberete při vytváření spravované domény a po nasazení spravované domény můžete přepínat nebo snížit skladové položky podle toho, jak se vaše firemní potřeby mění. Změny v obchodních požadavcích můžou zahrnovat nutnost častých záloh nebo vytváření dalších vztahů důvěryhodnosti doménové struktury. Další informace o limitech a cenách různých SKU najdete v tématu [Koncepty azure služba AD DS SKU][concepts-sku] a cenové stránky [Azure služba AD DS][pricing] .
 
-Tento článek ukazuje, jak změnit skladovou položku pro existující spravovanou doménu Azure AD DS pomocí portálu Azure.
+V tomto článku se dozvíte, jak změnit SKLADOVOU položku pro existující spravovanou doménu Azure služba AD DS pomocí Azure Portal.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Chcete-li tento článek dokončit, potřebujete následující zdroje a oprávnění:
+K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
 * Aktivní předplatné Azure.
-    * Pokud nemáte předplatné Azure, [vytvořte si účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Tenant Azure Active Directory přidružený k vašemu předplatnému, synchronizovaný s místním adresářem nebo s adresářem pouze pro cloud.
-    * V případě potřeby [vytvořte klienta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure ke svému účtu][associate-azure-ad-tenant].
-* Spravovaná doména Služby Azure Active Directory Domain Services povolená a nakonfigurovaná ve vašem tenantovi Azure AD.
-    * V případě potřeby proveďte kurz [a vytvořte a nakonfigurujte instanci služby Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
+    * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
+* Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
+    * V případě potřeby dokončete kurz a [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
 
-## <a name="sku-change-limitations"></a>Omezení změn skladové položky
+## <a name="sku-change-limitations"></a>Omezení změny SKU
 
-Po nasazení spravované domény Azure AD DS můžete změnit sousady skutek nahoru nebo dolů. Pokud však používáte doménovou strukturu prostředků (aktuálně ve verzi Preview) a vytvořili jednosměrné odchozí vztahy důvěryhodnosti doménové struktury z Azure AD DS do místního prostředí služby AD DS, existují určitá omezení pro operaci změny skladové jednotky. *Hlavní* a *podnikové* sloky definují omezení počtu vztahů důvěryhodnosti, které můžete vytvořit. Nelze změnit na skladovou položku s nižším maximálním limitem, než jste aktuálně nakonfigurovali.
+Po nasazení spravované domény Azure služba AD DS můžete skladové jednotky změnit nahoru nebo dolů. Pokud ale používáte doménovou strukturu prostředků (aktuálně ve verzi Preview) a vytvořili jste jednosměrnou odchozí důvěryhodnost doménové struktury z Azure služba AD DS do místního prostředí služba AD DS, existují určitá omezení operace změny SKU. SKU *Premium* a *Enterprise* definují limit počtu vztahů důvěryhodnosti, které můžete vytvořit. Nemůžete změnit na SKU s nižším maximálním limitem, než je aktuálně nakonfigurované.
 
-Například:
+Příklad:
 
-* Pokud jste vytvořili dva vztahy důvěryhodnosti doménové struktury na *hlavní skladové jednotce,* nelze změnit na *standardní* skladovou položku. *Standardní* skladová položka nepodporuje vztahy důvěryhodnosti doménové struktury.
-* Nebo pokud jste vytvořili sedm vztahů důvěryhodnosti na *hlavní skladové* jednotce Premium, nemůžete změnit na *podnikovou* skladovou položku. *Podniková* skladová položka podporuje maximálně pět vztahů důvěryhodnosti.
+* Pokud jste vytvořili dvě vztahy důvěryhodnosti doménové struktury na SKU *Premium* , nemůžete přejít na standardní SKU *Standard* . *Standardní* SKU nepodporuje vztahy důvěryhodnosti doménové struktury.
+* Případně, pokud jste vytvořili sedm vztahů důvěryhodnosti na SKU *Premium* , nemůžete přejít na SKU *Enterprise* . SKU *Enterprise* podporuje maximálně pět vztahů důvěryhodnosti.
 
-Další informace o těchto omezeních najdete [v tématu Azure AD DS SKU funkce a omezení][concepts-sku].
+Další informace o těchto omezeních najdete v tématu [funkce a omezení služby Azure služba AD DS SKU][concepts-sku].
 
-## <a name="select-a-new-sku"></a>Výběr nové skladové položky
+## <a name="select-a-new-sku"></a>Vybrat novou SKLADOVOU položku
 
-Pokud chcete změnit skladovou položku pro spravovanou doménu Azure AD DS pomocí webu Azure Portal, proveďte následující kroky:
+Pokud chcete změnit SKLADOVOU položku pro spravovanou doménu Azure služba AD DS pomocí Azure Portal, proveďte následující kroky:
 
-1. V horní části portálu Azure vyhledejte a vyberte **služby Azure AD Domain Services**. Vseznamu vyberte spravovanou doménu, například *aaddscontoso.com*.
-1. V nabídce na levé straně stránky Azure AD DS vyberte **Nastavení > skladové položky**.
+1. V horní části Azure Portal vyhledejte a vyberte **Azure AD Domain Services**. Ze seznamu vyberte spravovanou doménu, například *aaddscontoso.com*.
+1. V nabídce na levé straně stránky Azure služba AD DS vyberte **nastavení > SKU**.
 
-    ![Vyberte možnost nabídky Skladová položka pro vaši spravovanou doménu Azure AD DS na webu Azure Portal.](media/change-sku/overview-change-sku.png)
+    ![Vyberte možnost nabídky SKU pro spravovanou doménu Azure služba AD DS v Azure Portal](media/change-sku/overview-change-sku.png)
 
-1. V rozevírací nabídce vyberte skladovou položku, kterou chcete pro spravovanou doménu Azure AD DS. Pokud máte doménovou strukturu zdrojů, nemůžete vybrat *standardní* skladovou položku, protože vztahy důvěryhodnosti doménové struktury jsou k dispozici pouze ve skladové jednotce *rozlehlé* sítě nebo vyšší.
+1. V rozevírací nabídce vyberte SKU, které chcete pro spravovanou doménu Azure služba AD DS. Pokud máte doménovou strukturu prostředků, nemůžete vybrat *standardní* SKU jako vztahy důvěryhodnosti doménové struktury, které jsou k dispozici jenom pro SKU *organizace* nebo vyšší.
 
-    V rozevírací nabídce vyberte požadovanou skladovou položku a pak vyberte **Uložit**.
+    Z rozevírací nabídky zvolte skladovou jednotku, kterou chcete, a pak vyberte **Uložit**.
 
-    ![Výběr požadované skladové položky z rozbalovací nabídky na webu Azure Portal](media/change-sku/change-sku-selection.png)
+    ![Z rozevírací nabídky v Azure Portal vyberte požadovaný SKU.](media/change-sku/change-sku-selection.png)
 
-Změna typu skladové položky může trvat minutu nebo dvě.
+Změna typu SKU může trvat minutu nebo dvě.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte doménovou strukturu prostředků a chcete vytvořit další vztahy důvěryhodnosti po změně skladové položky, přečtěte si informace o [vytvoření odchozí ho vztahu důvěryhodnosti doménové struktury pro místní doménu ve službě Azure AD DS (preview).][create-trust]
+Pokud máte doménovou strukturu prostředků a chcete po změně SKU vytvořit další vztahy důvěryhodnosti, přečtěte si téma [Vytvoření vztahu důvěryhodnosti odchozí doménové struktury k místní doméně v Azure služba AD DS (Preview)][create-trust].
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

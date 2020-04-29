@@ -1,21 +1,21 @@
 ---
 title: Agregační funkce v Azure Cosmos DB
-description: Přečtěte si o syntaxi agregačních funkcí SQL, typech agregačních funkcí podporovaných službou Azure Cosmos DB.
+description: Přečtěte si o syntaxi agregační funkce SQL, typech agregačních funkcí, které podporuje Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79464457"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Agregační funkce v Azure Cosmos DB
 
-Agregační funkce provést výpočet na `SELECT` sadu hodnot v klauzuli a vrátit jednu hodnotu. Například následující dotaz vrátí počet položek `Families` v kontejneru:
+Agregační funkce provádějí výpočet pro sadu hodnot v `SELECT` klauzuli a vrací jedinou hodnotu. Například následující dotaz vrátí počet položek v rámci `Families` kontejneru:
 
 ## <a name="examples"></a>Příklady
 
@@ -45,7 +45,7 @@ Výsledky jsou následující:
     [ 2 ]
 ```
 
-Můžete také kombinovat agregace s filtry. Například následující dotaz vrátí počet položek se stavem adresy `WA`.
+Agregace můžete kombinovat i s filtry. Například následující dotaz vrátí počet položek se stavem adresa `WA`.
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -61,7 +61,7 @@ Výsledky jsou následující:
 
 ## <a name="types-of-aggregate-functions"></a>Typy agregačních funkcí
 
-Rozhraní SQL API podporuje následující agregační funkce. `SUM`a `AVG` pracovat s číselnými hodnotami a `COUNT`, `MIN`a `MAX` pracovat s čísly, řetězci, logickými hodnotami a hodnotami null.
+Rozhraní SQL API podporuje následující agregační funkce. `SUM`a `AVG` pracují s numerickými hodnotami, `COUNT`a `MIN`, a `MAX` pracují na číslech, řetězcích, logických hodnotách a hodnotách null.
 
 | Funkce | Popis |
 |-------|-------------|
@@ -71,17 +71,17 @@ Rozhraní SQL API podporuje následující agregační funkce. `SUM`a `AVG` prac
 | MAX   | Vrátí maximální hodnotu ve výrazu. |
 | PRŮMĚR   | Vrátí průměr hodnot ve výrazu. |
 
-Můžete také agregovat přes výsledky iterace pole.
+Můžete také agregovat výsledky iterace pole.
 
 > [!NOTE]
-> V Průzkumníku dat na webu Azure Portal mohou dotazy agregace agregovat částečné výsledky pouze na jedné stránce dotazu. Sada SDK vytváří jednu kumulativní hodnotu na všech stránkách. Chcete-li provádět dotazy na agregaci pomocí kódu, potřebujete .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.
+> Dotazy agregace v Průzkumník dat Azure Portal můžou agregovat částečné výsledky jenom na jednu stránku dotazu. Sada SDK vytvoří v rámci všech stránek jednu kumulativní hodnotu. Chcete-li provádět agregační dotazy pomocí kódu, potřebujete sadu .NET SDK 1.12.0, .NET Core SDK 1.1.0 nebo Java SDK 1.9.5 nebo vyšší.
 
 ## <a name="remarks"></a>Poznámky
 
-Tyto agregované systémové funkce budou mít prospěch z [indexu rozsahu](index-policy.md#includeexclude-strategy). Pokud očekáváte `COUNT`, `SUM`, `MIN` `MAX`, `AVG` nebo na vlastnost, měli byste [zahrnout příslušnou cestu do zásad indexování](index-policy.md#includeexclude-strategy).
+Tyto agregované systémové funkce budou využívat výhod [indexu rozsahu](index-policy.md#includeexclude-strategy). Pokud očekáváte `COUNT`, `SUM`, `MIN` `MAX`,, nebo `AVG` na vlastnost, měli byste [Zahrnout relevantní cestu do zásad indexování](index-policy.md#includeexclude-strategy).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Úvod do Azure Cosmos DB](introduction.md)
 - [Systémové funkce](sql-query-system-functions.md)
-- [Uživatelem definované funkce](sql-query-udfs.md)
+- [Uživatelsky definované funkce](sql-query-udfs.md)

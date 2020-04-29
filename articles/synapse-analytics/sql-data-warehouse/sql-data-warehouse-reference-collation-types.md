@@ -1,6 +1,6 @@
 ---
 title: Typy řazení datového skladu
-description: Typy řazení podporované ve fondu SQL Azure Synapse Analytics.
+description: Typy kolace podporované ve fondu SQL Azure synapse Analytics.
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,25 +11,25 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633087"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Podpora řazení databází pro fond SQL Azure Synapse Analytics
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Podpora řazení databáze pro fond SQL Azure synapse Analytics
 
-Výchozí řazení databáze můžete změnit z portálu Azure při vytváření nové databáze fondu Azure Synapse SQL. Tato funkce umožňuje ještě více usnadnit vytvoření nové databáze pomocí jednoho z 3800 podporovaných databází kolace.
+Výchozí kolaci databáze můžete změnit z Azure Portal při vytváření nové databáze fondu SQL Azure synapse. Díky této možnosti je ještě snazší vytvořit novou databázi pomocí jedné z podporovaných databázových kola 3800.
 
-Řazení poskytují národní prostředí, znakovou stránku, pořadí řazení a pravidla citlivosti znaků pro datové typy založené na znaku. Po výběru všechny sloupce a výrazy, které vyžadují informace o řazení, zdědí vybrané řazení z nastavení databáze. Výchozí dědičnost lze přepsat explicitním uvedením jiného kolace pro datový typ založený na znaku.
+Kolace poskytují národní prostředí, znakovou stránku, pořadí řazení a pravidla citlivosti znaků pro datové typy založené na znacích. Po výběru budou všechny sloupce a výrazy, které vyžadují informace o kolaci, dědit zvolenou kolaci z nastavení databáze. Výchozí dědičnost lze přepsat explicitním uvedením jiné kolace pro datový typ založený na znacích.
 
-## <a name="changing-collation"></a>Změna řazení
+## <a name="changing-collation"></a>Změna kolace
 
-Chcete-li změnit výchozí řazení, aktualizujte pole Řazení v prostředí zřizování.
+Pokud chcete změnit výchozí kolaci, aktualizujte na pole kolace v prostředí zřizování.
 
-Například pokud chcete změnit výchozí řazení na malá a velká písmena, jednoduše přejmenovat řazení z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS.
+Například pokud jste chtěli změnit výchozí kolaci na rozlišení velkých a malých písmen, můžete jednoduše přejmenovat kolaci z SQL_Latin1_General_CP1_CI_AS na SQL_Latin1_General_CP1_CS_AS.
 
-## <a name="list-of-unsupported-collation-types"></a>Seznam nepodporovaných typů řazení
+## <a name="list-of-unsupported-collation-types"></a>Seznam nepodporovaných typů kolace
 
 * Japanese_Bushu_Kakusu_140_BIN
 * Japanese_Bushu_Kakusu_140_BIN2
@@ -102,12 +102,12 @@ Například pokud chcete změnit výchozí řazení na malá a velká písmena, 
 * SQL_EBCDIC1141_CP1_CS_AS
 * SQL_EBCDIC277_2_CP1_CS_AS
 
-## <a name="checking-the-current-collation"></a>Kontrola aktuálního kolace
+## <a name="checking-the-current-collation"></a>Kontroluje se aktuální kolace.
 
-Chcete-li zkontrolovat aktuální řazení databáze, můžete spustit následující fragment T-SQL:
+Chcete-li zjistit aktuální kolaci pro databázi, můžete spustit následující fragment T-SQL:
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-Při předání 'Kolaation' jako parametr vlastnosti, DatabasePropertyEx funkce vrátí aktuální řazení pro zadanou databázi. Další informace naleznete v tématu [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Když předáte "kolaci" jako parametr vlastnosti, funkce DatabasePropertyEx vrátí aktuální kolaci pro zadanou databázi. Další informace najdete v tématu [DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
