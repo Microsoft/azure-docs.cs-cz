@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 10/05/2018
 ms.custom: mvc
 ms.openlocfilehash: 756ce6c8551d259fc27855489b4276d90c7aa771
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670368"
 ---
 # <a name="respond-to-events-with-azure-monitor-alerts"></a>Reakce na události s upozorněními služby Azure Monitor
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač [připojený k pracovnímu prostoru služby Log Analytics](../../azure-monitor/learn/quick-collect-azurevm.md).  
 
 ## <a name="sign-in-to-azure-portal"></a>Přihlášení k webu Azure Portal
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese . 
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com). 
 
 ## <a name="create-alerts"></a>Vytváření upozornění
 Upozornění vytvářejí pravidla upozornění služby Azure Monitor. Pravidla mohou v pravidelných intervalech automaticky spouštět uložené dotazy nebo vlastní prohledávání protokolů.  Můžete vytvářet upozornění na základě konkrétních metrik výkonu, vytvoření určitých událostí, chybějící události nebo počtu událostí vytvořených v konkrétním časovém intervalu.  Upozornění můžete například použít, když chcete oznámit, že průměrné využití procesoru překročilo určitou prahovou hodnotu, že byla zjištěna chybějící aktualizace nebo ke generování události, protože bylo zjištěno, že neběží určitá služba Windows nebo linuxový démon (proces).  Pokud výsledky prohledávání protokolu odpovídají určitým kritériím, vytvoří se upozornění. Pravidlo pak může automaticky spustit jednu nebo více akcí. Může vás třeba upozornit nebo volat jiný proces. 
@@ -38,7 +38,7 @@ V následujícím příkladu vytvoříte pravidlo upozornění na naměřenou ho
 3. V prvním kroku vyberte v části **Vytvořit upozornění** jako zdroj pracovní prostor služby Log Analytics, protože jde o výstražný signál založený na protokolu.  Vyfiltrujte výsledky. Pokud máte více předplatných, vyberte v rozevíracím seznamu určité **předplatné**, které obsahuje dříve vytvořený virtuální počítač a pracovní prostor služby Log Analytics.  Vyfiltrujte **typ prostředku** tím, že v rozevíracím seznamu vyberete **Log Analytics**.  Nakonec vyberte v poli **Prostředek položku ** **DefaultLAWorkspace** a pak klikněte na **Hotovo**.<br><br> ![Vytvoření upozornění – 1. krok](./media/tutorial-response/alert-rule-03.png)<br>
 4. V části **Kritéria výstrah** klikněte na **Přidat kritéria**, vyberte uložený dotaz a zadejte logiku, která je pro pravidlo upozornění závazná.  V podokně **Konfigurovat logiku signálů** vyberte ze seznamu *Azure VMs - Processor Utilization* (Virtuální počítače Azure – využití procesoru).  Podokno se aktualizuje, aby zobrazovalo nastavení konfigurace upozornění.  Nahoře se zobrazují výsledky za posledních 30 minut vybraného signálu a také samotný vyhledávací dotaz.  
 5. Nakonfigurujte upozornění podle následujících informací:  
-   a. V rozevíracím seznamu **Na základě** vyberte **metrické měření**.  Měření metriky vytvoří pro každý objekt dotazu upozornění s hodnotou, která překračuje zadanou prahovou hodnotu.  
+   a. Z rozevíracího seznamu na **základě** vyberte **měření metriky**.  Měření metriky vytvoří pro každý objekt dotazu upozornění s hodnotou, která překračuje zadanou prahovou hodnotu.  
    b. V poli **Podmínka** vyberte **Větší než** a jako **prahovou hodnotu** zadejte **90**.  
    c. V části Aktivovat upozornění na základě vyberte **Po sobě jdoucí porušení**, v rozevíracím seznamu vyberte **Větší než** a zadejte hodnotu 3.  
    d. V části Hodnocení na základě upravte hodnotu **Období** na **30** minut. Pravidlo se spustí každých pět minut a vrátí záznamy vytvořené za posledních třicet minut od aktuálního času.  Nastavení delšího období zvyšuje potenciál latence dat a zajišťuje, aby dotaz vrátil data a aby se zabránilo falešně negativním hodnotám, kdy se výstraha nespustí.  

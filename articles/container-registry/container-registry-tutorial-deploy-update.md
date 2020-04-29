@@ -1,17 +1,17 @@
 ---
-title: Kurz – nabízená aktualizace do geograficky replikovaného registru
-description: Zatlačte aktualizovanou image Dockeru do geograficky replikovaného registru kontejnerů Azure a pak se zobrazí změny, které se automaticky nasadí do webových aplikací spuštěných ve více oblastech. Třetí částí z třídílné série.
+title: Kurz – aktualizace nabízených oznámení do geograficky replikovaného registru
+description: Nahrajte aktualizovanou image Docker do geograficky replikovaného registru kontejneru Azure a pak si prohlédněte změny automaticky nasazené do webových aplikací, které běží v několika oblastech. Třetí částí z třídílné série.
 ms.topic: tutorial
 ms.date: 04/30/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 9222ac31e067cba6a0ffa71143c90f906ba6ff7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74454690"
 ---
-# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Kurz: Zasunutí aktualizované bitové kopie kontejneru do registru geograficky replikovaného kontejneru pro nasazení místních webových aplikací
+# <a name="tutorial-push-an-updated-container-image-to-a-geo-replicated-container-registry-for-regional-web-app-deployments"></a>Kurz: nahrání aktualizované image kontejneru do geograficky replikovaného registru kontejnerů pro nasazení regionálních webových aplikací
 
 Toto je třetí část z třídílné série kurzů. V [předchozím kurzu](container-registry-tutorial-deploy-app.md) se geografická replikace konfigurovala pro dvě různá nasazení regionální webové aplikace. V tomto kurzu nejprve aplikaci upravíte a potom sestavíte novou image kontejneru a nahrajete ji do geograficky replikovaného registru. Nakonec si zobrazíte změnu, která v obou instancích webové aplikace proběhla automaticky díky webhookům služby Azure Container Registry.
 

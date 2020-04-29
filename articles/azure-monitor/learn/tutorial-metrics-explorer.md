@@ -1,88 +1,88 @@
 ---
-title: Kurz – vytvoření grafu metrik v Azure Monitoru
-description: Přečtěte si, jak vytvořit svůj první graf metriky pomocí Průzkumníka metrik Azure.
+title: Kurz – vytvoření grafu metrik v Azure Monitor
+description: Naučte se, jak vytvořit první graf metriky pomocí Průzkumníka metrik Azure.
 author: bwren
 ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
 ms.openlocfilehash: d8f72471dd3109bf584d18f032ec2f4d949a4993
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79082808"
 ---
-# <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: Vytvoření grafu metrik v Azure Monitoru
-Průzkumník metrik je funkce Azure Monitoru na webu Azure Portal, která umožňuje vytvářet grafy z hodnot metrik, vizuálně korelovat trendy a zkoumat špičky a poklesy hodnot metrik. Pomocí průzkumníka metrik prozkoumejte stav a využití prostředků Azure nebo vykreslujte grafy z vlastních metrik. 
+# <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Kurz: vytvoření grafu metrik v Azure Monitor
+Průzkumník metrik je funkce Azure Monitor v Azure Portal, která umožňuje vytvářet grafy z hodnot metriky, vizuálně sladit trendy a zkoumat špičky a neshodné hodnoty metriky. Pomocí Průzkumníka metrik můžete prozkoumat stav a využití vašich prostředků Azure nebo vykreslit grafy z vlastních metrik. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vyberte metriku, pro kterou chcete graf vykreslit.
-> * Provádění různých agregací hodnot metrik
-> * Změna časového rozsahu a rozlišovací schopnost grafu
+> * Provádění různých agregací hodnot metriky
+> * Úprava časového rozsahu a členitosti grafu
 
-Následuje video, které ukazuje rozsáhlejší scénář než postup popsaný v tomto článku. Pokud s metrikami teprve začínáte, doporučujeme vám nejprve přečíst si tento článek a potom si video prohlédnout, abyste viděli další podrobnosti. 
+Následuje video, které zobrazuje rozsáhlejší scénář, než postup uvedený v tomto článku. Pokud s metrikami začínáte, doporučujeme nejdříve si projít tento článek a potom si Zobrazit video a podívat se na další podrobnosti. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4qO59]
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu budete potřebovat prostředek Azure ke sledování. Můžete použít libovolný prostředek v předplatném Azure, který podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do jeho nabídky na webu Azure portal a ověřte, že v části **Monitorování** v nabídce je možnost **Metriky.**
+K dokončení tohoto kurzu potřebujete prostředek Azure, který se má monitorovat. Můžete použít libovolný prostředek v předplatném Azure, které podporuje metriky. Chcete-li zjistit, zda prostředek podporuje metriky, přejděte do příslušné nabídky v Azure Portal a ověřte, zda je v této nabídce v části **monitorování** k dispozici možnost **metriky** .
 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
 
-## <a name="open-metrics-explorer-and-select-a-scope"></a>Otevření průzkumníka metrik a výběr oboru
-Průzkumník metrik můžete otevřít buď z nabídky Azure Monitor nebo z nabídky prostředku na webu Azure Portal. Metriky ze všech zdrojů jsou k dispozici bez ohledu na to, kterou možnost používáte. 
+## <a name="open-metrics-explorer-and-select-a-scope"></a>Otevřete Průzkumníka metrik a vyberte obor.
+Můžete otevřít Průzkumníka metrik buď z nabídky Azure Monitor, nebo z nabídky prostředku v Azure Portal. Metriky ze všech prostředků jsou dostupné bez ohledu na to, kterou možnost používáte. 
 
-1. V nabídce **Azure Monitor** nebo v části **Monitorování** nabídky prostředku vyberte **Metriky.**
+1. V nabídce **Azure monitor** vyberte **metriky** nebo v části **monitorování** v nabídce prostředku.
 
-1. Vyberte **obor**, což je prostředek, pro který chcete zobrazit metriky. Obor je již naplněn, pokud jste otevřeli průzkumník metrik z nabídky prostředku.
+1. Vyberte **obor**, který je prostředkem, pro který chcete zobrazit metriky. Pokud jste v nabídce prostředku spustili průzkumníka metrik, obor se už naplní.
 
-    ![Výběr oboru](media/tutorial-metrics-explorer/scope-picker.png)
+    ![Vybrat obor](media/tutorial-metrics-explorer/scope-picker.png)
 
-2. Vyberte **obor názvů,** pokud obor má více než jeden. Obor názvů je pouze způsob, jak uspořádat metriky tak, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání metrik Souborů, tabulek, objektů BLOB a Front. Mnoho typů prostředků má pouze jeden obor názvů.
+2. Vyberte **obor názvů** , pokud má obor více než jeden. Obor názvů je jenom způsob, jak uspořádat metriky, abyste je mohli snadno najít. Například účty úložiště mají samostatné obory názvů pro ukládání souborů, tabulek, objektů BLOB a metriky front. Mnoho typů prostředků má pouze jeden obor názvů.
 
 3. Vyberte metriku ze seznamu dostupných metrik pro vybraný obor a obor názvů.
 
-    ![Výběr metriky](media/tutorial-metrics-explorer/metric-picker.png)
+    ![Vyberte metriku](media/tutorial-metrics-explorer/metric-picker.png)
 
-4. Volitelně můžete změnit metriku **Agregace**. To definuje, jak se budou agregovat hodnoty metriky v časovém rozlišovacím čase pro graf. Pokud je například rozlišovací schopnost nastavena na 15 minut a agregace je nastavena na hodnotu součet, bude každý bod v grafu součtem všech shromážděných hodnot v každém segmentu 15 minut.
+4. Volitelně můžete změnit **agregaci**metriky. To definuje, jak se hodnoty metriky agregují napříč časovými rozlišeními grafu. Pokud je například časové rozlišení nastaveno na 15 minut a agregace je nastavena na součet, pak každý bod v grafu bude součtem všech shromážděných hodnot za každých 15 minut segmentů.
 
     ![Graf](media/tutorial-metrics-explorer/chart.png)
 
-5. Pokud chcete zobrazit více metrik vykreslených ve stejném grafu, použijte tlačítko **Přidat metriku** a opakujte tyto kroky. Pro více grafů v jednom zobrazení vyberte tlačítko **Nový graf.**
+5. Použijte tlačítko **Přidat metriku** a opakujte tyto kroky, pokud chcete zobrazit více metrik vykreslených ve stejném grafu. U více grafů v jednom zobrazení vyberte tlačítko **Nový graf** .
 
-## <a name="select-a-time-range-and-granularity"></a>Výběr časového rozsahu a rozlišovací schopnost
+## <a name="select-a-time-range-and-granularity"></a>Vyberte časový rozsah a členitost.
 
-Ve výchozím nastavení graf zobrazuje posledních 24 hodin dat metrik. Pomocí výběru času můžete změnit **časový rozsah** grafu nebo **rozlišovací schopnost Čas,** který definuje časový rozsah pro každý datový bod. Graf používá zadanou agregaci k výpočtu všech vzorkovaných hodnot za zadanou časovou rozlišovací schopnost.
+Ve výchozím nastavení se v grafu zobrazuje posledních 24 hodin dat metrik. Pomocí nástroje pro výběr času můžete změnit **časový rozsah** grafu nebo **časové rozlišení** , které definuje časový rozsah pro každý datový bod. Graf používá určenou agregaci k výpočtu všech vzorků hodnot v časovém intervalu, který je určen.
 
-![Panel Změna časového rozsahu](media/tutorial-metrics-explorer/time-picker.png)
+![Panel změnit rozsah času](media/tutorial-metrics-explorer/time-picker.png)
 
 
-Pomocí **časového štětce** prozkoumejte zajímavou oblast grafu, například špičku nebo pokles. Položte ukazatel myši na začátek oblasti, klepněte na levé tlačítko myši a podržte ho, táhněte na druhou stranu oblasti a uvolněte tlačítko. Graf tento časový rozsah zvětší. 
+Použijte **časový štětec** k prozkoumání zajímavé oblasti grafu, jako je špička nebo DIP. Umístěte ukazatel myši na začátek oblasti, klikněte na levé tlačítko myši, přetáhněte ho na druhou stranu oblasti a uvolněte tlačítko. Graf se v tomto časovém rozsahu přiblíží. 
 
-![Časový štětec](media/tutorial-metrics-explorer/time-brush.png)
+![Štětec času](media/tutorial-metrics-explorer/time-brush.png)
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Použití filtrů dimenzí a rozdělení
-Pokročilé funkce, které umožňují provádět další analýzy metrik a identifikovat potenciální odlehlé hodnoty v datech, naleznete v následujících odkazech.
+V následujících odkazech najdete informace o pokročilých funkcích, které vám umožní provádět další analýzy metrik a identifikovat potenciální odlehlé hodnoty ve vašich datech.
 
-- [Filtrování](../platform/metrics-charts.md#apply-filters-to-charts) umožňuje zvolit, které hodnoty dimenzí budou zahrnuty do grafu. Můžete například chtít zobrazit pouze úspěšné požadavky při vytváření grafů metriky *doby odezvy serveru.* 
+- [Filtrování](../platform/metrics-charts.md#apply-filters-to-charts) umožňuje zvolit, které hodnoty dimenze budou zahrnuty v grafu. Například může být vhodné zobrazit pouze úspěšné požadavky při vytváření grafu metriky *doby odezvy serveru* . 
 
-- [Rozdělení](../platform/metrics-charts.md#apply-splitting-to-a-chart) určuje, zda graf zobrazuje samostatné čáry pro každou hodnotu dimenze nebo agreguje hodnoty do jednoho řádku. Můžete například chtít zobrazit jeden řádek pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo můžete chtít samostatné řádky pro každý server. 
+- [Rozdělení](../platform/metrics-charts.md#apply-splitting-to-a-chart) ovládacích prvků určuje, zda graf zobrazuje samostatné řádky pro každou hodnotu dimenze, nebo agreguje hodnoty do jednoho řádku. Například můžete chtít zobrazit jednu čáru pro průměrnou dobu odezvy napříč všemi instancemi serveru nebo můžete chtít samostatné řádky pro každý server. 
 
-Podívejte se [na příklady grafů,](../platform/metric-chart-samples.md) u kterých bylo použito filtrování a rozdělení.
+Podívejte [se na příklady grafů](../platform/metric-chart-samples.md) , které mají použité filtrování a rozdělení.
 
-## <a name="advanced-chart-settings"></a>Upřesňující nastavení grafu
+## <a name="advanced-chart-settings"></a>Upřesnit nastavení grafu
 
-Můžete přizpůsobit styl grafu, název a upravit upřesňující nastavení grafu. Po dokončení vlastního nastavení jej připněte na řídicí panel a uložte svou práci. Můžete také nakonfigurovat upozornění metriky. Podívejte se na [pokročilé funkce Průzkumníka metrik Azure,](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) kde najdete informace o těchto a dalších pokročilých funkcích průzkumníka metrik Azure Monitoru.
+Můžete přizpůsobit styl grafu, název a upravit pokročilá nastavení grafu. Po dokončení přizpůsobení ho připněte na řídicí panel, abyste mohli svoji práci uložit. Můžete také nakonfigurovat výstrahy metrik. V tématu [Pokročilé funkce služby Azure Průzkumník metrik](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) se dozvíte o těchto a dalších pokročilých funkcích v průzkumníkovi metrik Azure monitor.
 
 
 ## <a name="next-steps"></a>Další kroky
-Teď, když jste se naučili pracovat s metrikami ve Službě Azure Monitor, zjistěte, jak pomocí metrik odesílat proaktivní výstrahy.
+Teď, když jste se naučili pracovat s metrikami v Azure Monitor, Naučte se používat metriky k posílání proaktivní výstrah.
 
 > [!div class="nextstepaction"]
 > [Vytváření, zobrazení a správa upozornění na metriky pomocí služby Azure Monitor](../platform/alerts-metric.md)

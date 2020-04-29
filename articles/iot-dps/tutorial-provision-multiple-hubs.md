@@ -1,6 +1,6 @@
 ---
-title: Kurz – zřízení zařízení napříč centry s vyrovnáváním zatížení pomocí služby Azure IoT Hub Device Provisioning Service
-description: Tento kurz ukazuje, jak služba Zřizování zařízení (DPS) umožňuje automatické zřizování zařízení napříč centry IoT s vyrovnáváním zatížení na Webu Azure Portal.
+title: Kurz – zřizování zařízení napříč rozbočovači s vyrovnáváním zatížení pomocí Azure IoT Hub Device Provisioning Service
+description: V tomto kurzu se dozvíte, jak služba Device Provisioning Service (DPS) umožňuje automatické zřizování zařízení napříč rozbočovači IoT na webu Azure Portal.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,13 +9,13 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: e1a66da52eea6d5da711fa6def58eba65d0960ed
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976736"
 ---
-# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: Zřízení zařízení napříč centry IoT s vyrovnáváním zatížení
+# <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Kurz: zřízení zařízení napříč centrem IoT s vyrovnáváním zatížení
 
 Tento kurz ukazuje, jak zřídit zařízení pro několik center IoT s vyrovnáváním zatížení pomocí služby Device Provisioning. V tomto kurzu se naučíte:
 
@@ -25,7 +25,7 @@ Tento kurz ukazuje, jak zřídit zařízení pro několik center IoT s vyrovnáv
 > * Nastavit zásady přidělování služby Device Provisioning na **rovnoměrnou distribuci**
 > * Propojit nové centrum IoT se službou Device Provisioning
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -63,7 +63,7 @@ Propojte službu Device Provisioning a centrum IoT, aby služba Device Provision
 
 1. Na stránce **Všechny prostředky** klikněte na službu Device Provisioning, kterou jste vytvořili dříve.
 2. Na stránce služby Device Provisioning klikněte na **Propojená centra IoT**.
-3. Klikněte na **Přidat**.
+3. Klikněte na tlačítko **Add** (Přidat).
 4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 

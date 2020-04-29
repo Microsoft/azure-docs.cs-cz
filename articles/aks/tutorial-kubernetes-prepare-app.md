@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.custom: mvc
 ms.openlocfilehash: feab8495536b3306fd96793323d51644570b401b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77593156"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS)
@@ -25,9 +25,9 @@ Po dokončení bude ve vašem místním vývojovém prostředí spuštěná nás
 
 ![Obrázek clusteru Kubernetes v Azure](./media/container-service-tutorial-kubernetes-prepare-app/azure-vote.png)
 
-V dalších kurzech image kontejneru se nahraje do registru kontejnerů Azure a pak se nasadí do clusteru AKS.
+V dalších kurzech se image kontejneru nahraje do Azure Container Registry a pak se nasadí do clusteru AKS.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a příkazy `docker`. Základní informace o kontejnerech najdete v článku [Get started with Docker][docker-get-started] (Začínáme s Dockerem).
 
@@ -45,7 +45,7 @@ Pomocí příkazu [git][] naklonujte ukázkovou aplikaci do svého vývojového 
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Změnit na klonovaný adresář.
+Přejděte do klonovaného adresáře.
 
 ```console
 cd azure-voting-app-redis
@@ -100,7 +100,7 @@ Zastavte a odeberte instance kontejnerů a související prostředky pomocí př
 docker-compose down
 ```
 
-Po odebrání místní aplikace máte image Dockeru, která obsahuje aplikaci Azure Vote, *azure-vote-front*, pro použití s dalším kurzem.
+Po odebrání místní aplikace máte k dispozici image Docker, která obsahuje hlasovací aplikaci Azure, *hlasování pro Azure*pro použití s dalším kurzem.
 
 ## <a name="next-steps"></a>Další kroky
 

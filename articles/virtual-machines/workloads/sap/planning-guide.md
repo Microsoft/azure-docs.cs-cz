@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7ddcc5165f5588ff9015d7fafbc2b822268ffea7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337170"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Plánování a implementace služby Azure Virtual Machines pro SAP NetWeaver
@@ -487,7 +487,7 @@ V případě cenového modelu máte několik různých cenových možností, jak
 
 Ceny každé z různých nabídek s různými nabídkami služeb v rámci operačních systémů a různých oblastí jsou k dispozici na webu [Linux Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Podrobnosti a flexibilitu za jeden rok a tři roky rezervované instance najdete v těchto článcích:
 
-- [Co jsou rezervace Azure?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Co jsou Azure Reservations?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 - [Flexibilita velikosti virtuálních počítačů s rezervovanými instancemi virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
 - [Jak se na virtuální počítače uplatňuje sleva za rezervaci Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
 
@@ -944,7 +944,7 @@ Takový virtuální počítač se nemusí zobecnit a je možné ho nahrát ve st
 ##### <a name="uploading-a-vhd-and-making-it-an-azure-disk"></a>Nahrání virtuálního pevného disku a jeho zpřístupnění na disku Azure
 V tomto případě chceme nahrát VHD, a to buď s operačním systémem, nebo bez něj, a připojit ho k virtuálnímu počítači jako datový disk nebo ho použít jako disk s operačním systémem. Toto je proces s více kroky
 
-**Prostředí**
+**PowerShell**
 
 * Přihlaste se ke svému předplatnému pomocí *Connect-AzAccount* .
 * Nastavte předplatné kontextu pomocí *set-AzContext* a parametrů SubscriptionId nebo Subscription – viz<https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>

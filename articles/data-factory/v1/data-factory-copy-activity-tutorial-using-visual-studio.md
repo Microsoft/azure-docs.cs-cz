@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d9059c9386af6fab6bb1068d6a9e64b763206f94
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74929205"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí sady Visual Studio
@@ -26,8 +26,8 @@ ms.locfileid: "74929205"
 > * [Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 > * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Šablona Azure Resource Manageru](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
-> * [ROZHRANÍ API PRO ODPOČINEK](data-factory-copy-activity-tutorial-using-rest-api.md)
+> * [Šablona Azure Resource Manager](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 > 
 > 
@@ -37,7 +37,7 @@ ms.locfileid: "74929205"
 
 V tomto článku se naučíte, jak používat Microsoft Visual Studio, abyste vytvořili datovou továrnu s kanálem, který kopíruje data z úložiště objektů blob v Azure do databáze Azure SQL. Pokud s Azure Data Factory začínáte, přečtěte si článek [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto kurzem začnete.   
 
-V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. Aktivita kopírování kopíruje data z podporovaného úložiště dat do podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Další informace o aktivitě kopírování naleznete v tématu [Aktivity přesunu dat](data-factory-data-movement-activities.md).
+V tomto kurzu vytvoříte kanál s jednou aktivitou: aktivita kopírování. Aktivita kopírování kopíruje data z podporovaného úložiště dat do podporovaného úložiště dat jímky. Seznam úložišť dat podporovaných jako zdroje a jímky najdete v tématu [podporovaná úložiště dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Aktivita používá globálně dostupnou službu, která může kopírovat data mezi různými úložišti dat zabezpečeným, spolehlivým a škálovatelným způsobem. Další informace o aktivitě kopírování najdete v tématu [aktivity přesunu dat](data-factory-data-movement-activities.md).
 
 Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Další informace naleznete, když přejdete na [více aktivit v kanálu](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline).
 
@@ -49,11 +49,11 @@ Kanál může obsahovat víc než jednu aktivitu. A dvě aktivity můžete zře
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 1. Přečtěte si článek [Přehled kurzu](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) a proveďte **nutné** kroky.       
-2. Chcete-li vytvořit instance data factory, musíte být členem role [přispěvatele datové továrny](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na úrovni předplatného nebo skupiny prostředků.
+2. Chcete-li vytvořit instance Data Factory, musíte být členem role [přispěvatel Data Factory](../../role-based-access-control/built-in-roles.md#data-factory-contributor) na úrovni předplatného nebo skupiny prostředků.
 3. Na počítači musíte mít nainstalované tyto položky: 
    * Visual Studio 2013 nebo Visual Studio 2015.
    * Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
-   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat následujícím postupem: V nabídce klikněte na **položku Rozšíření a** -> **aktualizace online** -> **visual studio** -> **galerie** -> **Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**.
+   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje** -> **rozšíření a aktualizace** -> **online** -> **Galerie** -> **sady Visual Studio Microsoft Azure Data Factory nástrojů pro Visual Studio** -> **Update**.
 
 ## <a name="steps"></a>Kroky
 Zde jsou kroky, které provedete v rámci tohoto kurzu:
@@ -108,7 +108,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
 ### <a name="create-the-azure-sql-linked-service"></a>Vytvoření propojené služby Azure SQL
 1. V **Průzkumníku řešení** znovu klikněte pravým tlačítkem myši na uzel **Propojené služby**, přejděte na **Přidat** a klikněte na **Nová položka**. 
 2. Tentokrát vyberte **Propojená služba Azure SQL** a klikněte na **Přidat**. 
-3. V **souboru AzureSqlLinkedService1.json** `<servername>`nahraďte , `<databasename>`, `<username@servername>`a `<password>` názvy serveru Azure SQL, databáze, uživatelského účtu a hesla.    
+3. V **souboru AzureSqlLinkedService1. JSON**nahraďte `<servername>` `<databasename>`,, `<username@servername>` `<password>` a názvy vašeho serveru SQL Azure, databáze, uživatelského účtu a hesla.    
 4. Uložte soubor **AzureSqlLinkedService1.json**. 
     
     Další informace o těchto vlastnostech JSON najdete v článku [Konektor služby Azure SQL Database](data-factory-azure-sql-connector.md#linked-service-properties).
@@ -167,7 +167,7 @@ Zde raději použijte termín „tabulky“ než „datové sady“. Tabulka je 
     |:--- |:--- |
     | type | Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage. |
     | linkedServiceName | Odkazuje na službu **AzureStorageLinkedService**, kterou jste vytvořili předtím. |
-    | folderPath | Určuje **kontejner** objektů blob a **složku,** která obsahuje vstupní objekty BLOB. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
+    | folderPath | Určuje **kontejner** objektů BLOB a **složku** , která obsahuje vstupní objekty blob. V tomto kurzu je adftutorial kontejnerem objektů blob a složka je kořenová složka. | 
     | fileName | Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto kurzu má fileName hodnotu **emp.txt**, takže se zpracuje pouze tento soubor. |
     | format -> type |Vstupní soubor je v textovém formátu, takže použijeme **TextFormat**. |
     | columnDelimiter | Sloupce ve vstupním souboru jsou oddělené **znakem čárky (`,`)**. |
@@ -229,7 +229,7 @@ Výstupní datové sady v současné době řídí plán. V tomto kurzu je vý
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem myši na **Kanály**, přejděte na **Přidat** a klikněte na **Nová položka**.  
 2. V dialogovém okně **Přidat novou položku** vyberte **Copy Data Pipeline** (Kanál kopírování dat) a klikněte na **Přidat**. 
-3. Nahraďte JSON následujícím jsonem a uložte soubor **CopyActivity1.json.**
+3. Nahraďte kód JSON následujícím kódem JSON a uložte soubor **soubor copyactivity1. JSON** .
 
    ```json   
     {
@@ -345,12 +345,12 @@ Je třeba počítat s následujícím:
 * Název objektu pro vytváření dat se může v budoucnu zaregistrovat jako název DNS, takže pak bude veřejně viditelný.
 
 > [!IMPORTANT]
-> Chcete-li vytvořit instance Data Factory, musíte být správcem/spolusprávcem předplatného Azure.
+> Pokud chcete vytvořit instance Data Factory, musíte být správce nebo spolusprávce předplatného Azure.
 
 ## <a name="monitor-pipeline"></a>Monitorování kanálu
 Přejděte na domovskou stránku své datové továrny:
 
-1. Přihlaste se na [portál Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 2. Klikněte v levé nabídce na **Další služby** a poté na **Datové továrny**.
 
     ![Procházet -> Datové továrny](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
@@ -369,10 +369,10 @@ V tomto kurzu jste vytvořili objekt pro vytváření dat Azure pro zkopírován
 2. Vytvořili jste **propojené služby**:
    1. Propojená služba **Azure Storage** připojující účet úložiště Azure, který obsahuje vstupní data.     
    2. Propojená služba **Azure SQL** připojující databázi Azure SQL, která obsahuje výstupní data. 
-3. Vytvořené **datové sady**, které popisují vstupní data a výstupní data pro kanály.
+3. Vytvořili jste datové **sady**, které popisují vstupní data a výstupní data pro kanály.
 4. Vytvořili jste **kanál** s **aktivitou kopírování**, která má jako zdroj **BlobSource** a jako jímku **SqlSink**. 
 
-Informace o tom, jak pomocí hive aktivity HDInsight používat k transformaci dat pomocí clusteru Azure HDInsight, najdete [v tématu Vytvoření prvního kanálu pro transformaci dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
+Pokud chcete zjistit, jak používat aktivitu podregistru HDInsight k transformaci dat pomocí clusteru Azure HDInsight, přečtěte si [kurz: sestavení prvního kanálu pro transformaci dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md).
 
 Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením výstupní datové sady jedné aktivity jako vstupní datové sady druhé aktivity. Podrobné informace najdete v tématu s popisem [plánování a provádění ve službě Data Factory](data-factory-scheduling-and-execution.md). 
 

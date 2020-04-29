@@ -1,6 +1,6 @@
 ---
-title: Odstranění mezipaměti Azure pro Redis – nastavení příkazu k onomu Azure
-description: Tato ukázka kódu velmocí azure ukazuje, jak odstranit azure cache pro redis instance pomocí příkazu az redis delete.
+title: Odstranění mezipaměti Azure pro Redis – Azure CLI
+description: Tento ukázkový kód Azure CLI ukazuje, jak odstranit Azure cache pro instanci Redis pomocí příkazu AZ Redis DELETE.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: e5178ab4069cc5ffa8607c5feea6ffac86284a5b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75411084"
 ---
 # <a name="delete-an-azure-cache-for-redis"></a>Odstranění mezipaměti Azure pro Redis
 
-V tomto scénáři se dozvíte, jak odstranit mezipaměť Azure pro Redis.
+V tomto scénáři se dozvíte, jak odstranit Azure cache pro Redis.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -29,15 +29,15 @@ V tomto scénáři se dozvíte, jak odstranit mezipaměť Azure pro Redis.
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k odstranění instance Azure Cache for Redis. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů odstraní službu Azure cache for Redis instance. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [az redis odstranit](https://docs.microsoft.com/cli/azure/redis) | Odstraňte azure cache pro instanci Redis. |
+| [AZ Redis DELETE](https://docs.microsoft.com/cli/azure/redis) | Odstraňte službu Azure cache pro instanci Redis. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skriptu Azure Cache for Redis CLI najdete v [dokumentaci k Azure Cache for Redis](../cli-samples.md).
+Další ukázky skriptů Azure cache pro Redis CLI najdete v [dokumentaci k Azure cache pro Redis](../cli-samples.md).

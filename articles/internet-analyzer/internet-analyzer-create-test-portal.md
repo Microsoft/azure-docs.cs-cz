@@ -1,6 +1,6 @@
 ---
-title: Vytvoření testu internetového analyzátoru pomocí portálu | Dokumenty společnosti Microsoft
-description: V tomto článku se dozvíte, jak vytvořit první test nástroje Internet Analyzer.
+title: Vytvoření testu přes Internet Analyzer pomocí portálu | Microsoft Docs
+description: V tomto článku se dozvíte, jak vytvořit první test přes Internet Analyzer.
 services: internet-analyzer
 author: megan-beatty
 ms.service: internet-analyzer
@@ -8,71 +8,71 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73501768"
 ---
-# <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Vytvoření testu internetového analyzátoru pomocí portálu (preview)
+# <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Vytvoření testu přes Internet Analyzer pomocí portálu (Preview)
 
-Existují dva způsoby, jak vytvořit prostředek Nástroje pro analýzu Internetu – pomocí portálu Azure nebo [pomocí příkazového příkazového příkazu](internet-analyzer-cli.md). Tato část vám pomůže vytvořit nový prostředek Azure Internet Analyzer pomocí našeho prostředí portálu.
+Existují dva způsoby, jak vytvořit prostředek nástroje Internet Analyzer pomocí Azure Portal nebo pomocí rozhraní příkazového [řádku](internet-analyzer-cli.md). Tato část vám pomůže vytvořit nový prostředek Azure Internet Analyzer pomocí našeho prostředí portálu.
 
 > [!IMPORTANT]
 > Tato verze Public Preview se poskytuje bez smlouvy o úrovni služeb a neměla by se používat pro úlohy v produkčním prostředí. Některé funkce nemusí být podporované, můžou mít omezené možnosti nebo nemusí být dostupné ve všech umístěních Azure. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-Verze Public Preview je k dispozici pro použití globálně. úložiště dat je však omezena na *US West 2* během náhledu.
+Verze Public Preview je k dispozici pro použití globálně; úložiště dat je ale ve verzi Preview omezené na *USA – západ 2* .
 
 ## <a name="basics"></a>Základy
 
-1. Získejte přístup k náhledu nástroje Internet Analyzer podle pokynů **How do I participate in preview?** z [nejčastějších dotazů nástroje Azure Internet Analyzer](internet-analyzer-faq.md).
-2. Na domovské stránce na [webu Azure Portal](https://preview.portal.azure.com)klikněte na + Vytvořit **prostředek**. Internet Analyzer je momentálně dostupný jenom ve verzi Preview na webu Azure Portal.
-3. Na **nové** stránce vyhledejte v poli *Hledat marketplace* možnost "Internetový analyzátor".
-4. Klepněte na **položku Internetový analyzátor (náhled).** Zkontrolujte, zda je vydavatelem *společnost Microsoft* a zda je kategorie *Síťová .*
-5. Na stránce **Internet Analyzer (preview)** klikněte na **Vytvořit** a otevřete **stránku Vytvořit internetový analyzátor.**
-6. Zadejte následující nastavení konfigurace prostředku nástroje Internet Analyzer:
+1. Získat přístup k aplikaci Internet Analyzer Preview pomocí **návody se účastní verze Preview?** pokyny najdete v tématu [Nejčastější dotazy k Azure Internet Analyzer](internet-analyzer-faq.md).
+2. Z domovské stránky v [Azure Portal](https://preview.portal.azure.com)klikněte na **+ vytvořit prostředek**. Nástroj Internet Analyzer je aktuálně k dispozici pouze ve verzi Preview Azure Portal.
+3. Na **nové** stránce vyhledejte v poli *Hledat v Marketplace* text "Internet Analyzer".
+4. Klikněte na tlačítko **Internet Analyzer (Preview)**. Ujistěte se, že je Vydavatel *Microsoft* a kategorie jsou *sítě*.
+5. Na stránce **Internet Analyzer (Preview)** klikněte na **vytvořit** a otevřete stránku **vytvořit analyzátor sítě Internet** .
+6. Pro prostředek nástroje Internet Analyzer zadejte následující nastavení konfigurace:
 
-    * **Předplatné:** Předplatné Azure pro hostování nového prostředku Nástroje pro analýzu Internetu. ***Použijte stejné ID předplatného, které se používá k vyžádání přístupu k náhledu.***
-    * **Skupina zdrojů:** Skupina prostředků Azure, ve které se vytvoří nový prostředek Nástroje pro analýzu internetu. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
+    * **Předplatné:** Předplatné Azure pro hostování nového prostředku Internet Analyzer. ***Použijte stejné ID předplatného, které se používá k vyžádání přístupu k verzi Preview.***
+    * **Skupina prostředků:** Skupina prostředků Azure, ve které se vytvoří nový prostředek Internet Analyzer. Pokud nemáte existující skupinu prostředků, můžete vytvořit novou.
     * **Název:** Název nového profilu prostředku nástroje Internet Analyzer.
-    * **Region:** Veřejná oblast Azure, ve které se prostředek vytvoří. Během náhledu je k dispozici pouze *US West 2.*
+    * **Oblast:** Veřejná oblast Azure, ve které se prostředek vytvoří. Během období Preview je k dispozici pouze *USA – západ 2* .
 
-7. Po dokončení zadávání nastavení profilu klepněte na **tlačítko Zkontrolovat + vytvořit**.
+7. Po dokončení zadávání nastavení profilu klikněte na tlačítko **zkontrolovat + vytvořit**.
 
 ## <a name="configuration"></a>Konfigurace
 
-Dokončení základních kroků je předpokladem konfigurace testu a vložení klienta JavaScriptu. Po vytvoření profilu přejděte na **nastavení > konfigurace** a nakonfigurujte první test.
+Splnění základních kroků je předpokladem pro konfiguraci testu a vložení klienta jazyka JavaScript. Po vytvoření profilu můžete nakonfigurovat svůj první test tak, že přejdete na **nastavení > konfigurace** .
 
-1. Do pole **Název testu** zadejte název testu.
+1. Zadejte název testu do pole **název testu** .
 2. Do pole **Popis** přidejte popis testu.
-3. Klikněte na **Konfigurovat koncový bod** – karta se zobrazí z pravé strany. Vyberte typ koncového bodu, který chcete nakonfigurovat – jednu oblast Azure, více oblastí Azure nebo vlastní koncový bod.
+3. Klikněte na **Konfigurovat koncový bod** – na pravé straně se zobrazí karta. Vyberte typ koncového bodu, pro který chcete konfigurovat – jednu oblast Azure, několik oblastí Azure nebo vlastní koncový bod.
 
     >
-    ***Předkonfigurované koncové body: jedna a více kombinací oblastí Azure***
-    * Vyberte oblast nebo sadu oblastí z [předem nakonfigurovaného seznamu koncových bodů Azure](internet-analyzer-faq.md).
-    * Dále vyberte typ aplikace nebo architektury doručování obsahu, kterou chcete vyhodnotit.
-        * Oblast single Azure: Akcelerace webu[(Azure Front Door),](https://azure.microsoft.com/services/frontdoor/)ukládání statického obsahu do mezipaměti ([Azure CDN pro Microsoft](https://azure.microsoft.com/services/cdn/)) nebo žádná.
-        * Více oblastí Azure: Akcelerace webu[(Azure Front Door),](https://azure.microsoft.com/services/frontdoor/)řízení DNS[(Azure Traffic Manager)](https://azure.microsoft.com/services/traffic-manager/)  
+    ***Předem nakonfigurované koncové body: kombinace jedné a více oblastí Azure***
+    * Vyberte oblast nebo sadu oblastí z [předkonfigurovaného seznamu koncových bodů Azure](internet-analyzer-faq.md).
+    * V dalším kroku vyberte typ architektury aplikace nebo doručování obsahu, který chcete vyhodnotit.
+        * Jedna oblast Azure: akcelerace webu ([přední vrátka Azure](https://azure.microsoft.com/services/frontdoor/)), ukládání statických obsahu do mezipaměti ([Azure CDN pro Microsoft](https://azure.microsoft.com/services/cdn/)) nebo žádné.
+        * Více oblastí Azure: akcelerace webu ([přední vrátka Azure](https://azure.microsoft.com/services/frontdoor/)), řízení DNS ([Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/))  
 
     ***Vlastní koncové body***
-    * Postupujte podle pokynů na stránce [Vytvořit vlastní koncový bod.](internet-analyzer-custom-endpoint.md)
-    * Vložte umístění adresy URL HTTPS bitové kopie s jedním obrazovým obrazem na portálu.
+    * Postupujte podle pokynů na stránce [Vytvoření vlastního koncového bodu](internet-analyzer-custom-endpoint.md) .
+    * Vložte umístění adresy URL protokolu HTTPS na obrázek s příponou One-pixel na portálu.
     >
 
 4. Kliknutím na **Přidat** přidejte koncový bod do testu.
-5. Opakujte kroky 1-4 pro konfiguraci druhého koncového bodu. Koncový bod B se vždy měří vzhledem ke koncovému bodu A – při konfiguraci koncových bodů zvažte, který koncový bod by měl být vaším testovacím ovládacím prvkem.
-6. Kliknutím na tlačítko **Uložit** test uložte. Po uložení testu již nelze upravovat koncové body konkrétního testu.
-7. Vyberte testy, které chcete spustit, a klepněte na tlačítko **Spustit test**. Tím se změní ***stav*** test (testů) na ***Spuštěno***. Testy můžete spustit kdykoli, ale klient JavaScriptu musí být vložen, aby mohl test začít shromažďovat měření.
-8. Přidejte další testy v libovolném bodě. Všimněte si, že jedinečný klient JavaScript nebude generován, dokud nebude vytvořen jeden test.
+5. Opakujte kroky 1-4 ke konfiguraci druhého koncového bodu. Koncový bod B je vždy měřen jako relativní ke koncovému bodu A – při konfiguraci koncových bodů zvažte, který koncový bod by měl být testovacím ovládacím prvkem.
+6. Kliknutím na tlačítko **Uložit** uložte test. Po uložení testu již nelze upravovat koncové body určitého testu.
+7. Vyberte testy, které chcete spustit, a klikněte na **Spustit test**. Tím se změní ***stav*** testů na ***spuštěno***. Testy můžete spustit kdykoli, ale klient JavaScript musí být vložen pro test a zahájit shromažďování měření.
+8. V jakémkoli okamžiku přidejte další testy. Počítejte s tím, že jedinečný klient jazyka JavaScript nebude vygenerován, dokud nebude vytvořen jeden test.
 
 ## <a name="embed-client"></a>Vložit klienta
 
-Chcete-li zahájit jakýkoli test, musí být klient JavaScript vložen do webové aplikace. Po konfiguraci alespoň jednoho testu klepněte na **tlačítko Revize + vytvořit**, přejděte do nastavení > **konfigurace**a zkopírujte klienta JavaScriptu. Konkrétní pokyny naleznete na stránce [Klient embed internet analyzer.](internet-analyzer-embed-client.md)  
+Chcete-li zahájit libovolný test, musí být klient jazyka JavaScript vložen do vaší webové aplikace. Po nakonfigurování alespoň jednoho testu klikněte na tlačítko **zkontrolovat + vytvořit**, přejděte na **Nastavení > konfigurace**a zkopírujte klienta JavaScriptu. Konkrétní pokyny najdete na stránce pro [vložení klienta Internet Analyzer](internet-analyzer-embed-client.md) .  
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si [nejčastější dotazy k analyzátoru Internetu](internet-analyzer-faq.md)
-* Přečtěte si další informace o vložení [klienta Nástroje pro analýzu Internetu](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md).
+* Přečtěte si [Nejčastější dotazy k Internet Analyzer](internet-analyzer-faq.md)
+* Přečtěte si další informace o vložení [klienta Internet Analyzer](internet-analyzer-embed-client.md) a vytvoření [vlastního koncového bodu](internet-analyzer-custom-endpoint.md).

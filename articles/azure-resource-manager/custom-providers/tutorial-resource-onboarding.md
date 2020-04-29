@@ -1,37 +1,37 @@
 ---
-title: Výuka – zaškolení zdrojů
-description: Přiobování prostředků prostřednictvím vlastních poskytovatelů umožňuje manipulovat a rozšiřovat stávající prostředky Azure.
+title: Kurz – zprovoznění prostředků
+description: Prostředek k registraci prostřednictvím vlastních zprostředkovatelů vám umožní manipulovat s existujícími prostředky Azure a roztáhnout je.
 ms.topic: tutorial
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75649936"
 ---
-# <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Kurz: Přizapisování prostředků pomocí vlastních zprostředkovatelů Azure
+# <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Kurz: zprovoznění prostředků pomocí vlastních zprostředkovatelů Azure
 
-V tomto kurzu nasadíte do Azure vlastního poskytovatele prostředků, který rozšiřuje rozhraní API Azure Resource Manager s typem prostředků Microsoft.CustomProviders/associations. Kurz ukazuje, jak rozšířit existující prostředky, které jsou mimo skupinu prostředků, kde je umístěna instance vlastního zprostředkovatele. V tomto kurzu je poskytovatel vlastních prostředků napájen pomocí aplikace logiky Azure, ale můžete použít libovolný koncový bod veřejného rozhraní API.
+V tomto kurzu nasadíte do Azure vlastního poskytovatele prostředků, který rozšiřuje rozhraní Azure Resource Manager API o typ prostředku Microsoft. CustomProviders/Associations. V tomto kurzu se dozvíte, jak můžete roztáhnout stávající prostředky, které se nacházejí mimo skupinu prostředků, ve které se nachází instance vlastního zprostředkovatele. V tomto kurzu je vlastní poskytovatel prostředků napájený pomocí aplikace logiky Azure, ale můžete použít jakýkoli veřejný koncový bod rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento výukový program, musíte vědět:
+K dokončení tohoto kurzu potřebujete znát tyto informace:
 
 * Možnosti [vlastních zprostředkovatelů Azure](overview.md).
-* Základní informace o [připojení zdrojů u vlastních poskytovatelů](concepts-resource-onboarding.md).
+* Základní informace o [připojování prostředků s vlastními poskytovateli](concepts-resource-onboarding.md).
 
-## <a name="get-started-with-resource-onboarding"></a>Začínáme s připojením zdrojů
+## <a name="get-started-with-resource-onboarding"></a>Začínáme s připojováním zdrojů
 
-V tomto kurzu existují dva kusy, které je třeba nasadit: vlastní zprostředkovatele a přidružení. Chcete-li proces usnadnit, můžete volitelně použít jednu šablonu, která nasazuje obojí.
+V tomto kurzu je potřeba nasadit dva části: vlastní zprostředkovatel a přidružení. Pro usnadnění procesu můžete volitelně použít jedinou šablonu, která nasadí obojí.
 
-Šablona bude používat tyto prostředky:
+Tato šablona bude používat tyto prostředky:
 
-* Microsoft.CustomProviders/resourceProviders
-* Microsoft.Logic/pracovní postupy
-* Microsoft.CustomProviders/associations
+* Microsoft. CustomProviders/resourceProviders
+* Microsoft. Logic/Workflows
+* Microsoft. CustomProviders/Associations
 
 ```json
 {
@@ -203,69 +203,69 @@ V tomto kurzu existují dva kusy, které je třeba nasadit: vlastní zprostředk
 }
 ```
 
-### <a name="deploy-the-custom-provider-infrastructure"></a>Nasazení vlastní infrastruktury zprostředkovatele
+### <a name="deploy-the-custom-provider-infrastructure"></a>Nasazení infrastruktury vlastního zprostředkovatele
 
-První část šablony nasazuje vlastní infrastrukturu zprostředkovatele. Tato infrastruktura definuje účinek prostředku přidružení. Pokud nejste obeznámeni s vlastními poskytovateli, přečtěte [si informace o základech vlastního zprostředkovatele](overview.md).
+První část šablony nasadí infrastrukturu vlastního poskytovatele. Tato infrastruktura definuje účinek prostředku přidružení. Pokud nejste obeznámeni s vlastními poskytovateli, přečtěte si téma [základy vlastních](overview.md)poskytovatelů.
 
-Pojďme nasadit vlastní infrastrukturu zprostředkovatele. Buď zkopírujte, uložte a nasaďte předchozí šablonu, nebo postupujte podle pokynů a nasaďte infrastrukturu pomocí portálu Azure.
+Pojďme nasadit infrastrukturu vlastního poskytovatele. Můžete buď zkopírovat, Uložit a nasadit předchozí šablonu, nebo postupovat podle potřeby a nasadit infrastrukturu pomocí Azure Portal.
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejít na [Azure Portal](https://portal.azure.com).
 
 2. Vyhledejte **šablony** ve **všech službách** nebo pomocí hlavního vyhledávacího pole:
 
    ![Hledání šablon](media/tutorial-resource-onboarding/templates.png)
 
-3. V podokně **Šablony vyberte** **Přidat:**
+3. V podokně **šablony** vyberte **Přidat** :
 
-   ![Vyberte Přidat.](media/tutorial-resource-onboarding/templatesadd.png)
+   ![Vyberte Přidat](media/tutorial-resource-onboarding/templatesadd.png)
 
-4. V části **Obecné**zadejte **název** a **popis** nové šablony:
+4. V části **Obecné**zadejte **název** a **Popis** nové šablony:
 
    ![Název a popis šablony](media/tutorial-resource-onboarding/templatesdescription.png)
 
-5. Vytvořte šablonu Správce prostředků zkopírováním v šabloně JSON z části Začínáme s registrací zdrojů v tomto článku:
+5. Vytvořte šablonu Správce prostředků zkopírováním šablony JSON z části Začínáme s připojováním zdrojů v tomto článku:
 
    ![Vytvoření šablony Resource Manageru](media/tutorial-resource-onboarding/templatesarmtemplate.png)
 
-6. Chcete-li vytvořit šablonu, vyberte **Přidat.** Pokud se nová šablona nezobrazí, vyberte **Aktualizovat**.
+6. Vyberte **Přidat** a vytvořte šablonu. Pokud se nová šablona nezobrazí, vyberte **aktualizovat**.
 
-7. Vyberte nově vytvořenou šablonu a pak vyberte **Nasadit**:
+7. Vyberte nově vytvořenou šablonu a pak vyberte **nasadit**:
 
-   ![Vyberte novou šablonu a pak vyberte Nasadit](media/tutorial-resource-onboarding/templateselectspecific.png)
+   ![Vyberte novou šablonu a pak vyberte nasadit.](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-8. Zadejte nastavení požadovaných polí a vyberte odběr a skupinu prostředků. Pole **Id vlastního zprostředkovatele prostředků** můžete ponechat prázdné.
+8. Zadejte nastavení pro požadovaná pole a pak vyberte předplatné a skupinu prostředků. Pole **ID vlastního poskytovatele prostředků** můžete nechat prázdné.
 
    | Název nastavení | Povinné? | Popis |
    | ------------ | -------- | ----------- |
    | Umístění | Ano | Umístění prostředků v šabloně. |
-   | Název aplikace logiky | Ne | Název aplikace logiky. |
-   | Název vlastního zprostředkovatele prostředků | Ne | Název vlastního zprostředkovatele prostředků. |
-   | Id vlastního zprostředkovatele prostředků | Ne | Existující vlastní zprostředkovatel prostředků, který podporuje prostředek přidružení. Pokud zde zadáte hodnotu, aplikace logiky a nasazení vlastního zprostředkovatele budou přeskočeny. |
+   | Název aplikace logiky | Ne | Název aplikace logiky |
+   | Název vlastního poskytovatele prostředků | Ne | Název vlastního poskytovatele prostředků |
+   | ID vlastního poskytovatele prostředků | Ne | Stávající vlastní poskytovatel prostředků, který podporuje prostředek přidružení. Pokud sem zadáte hodnotu, aplikace logiky a nasazení vlastního poskytovatele se přeskočí. |
    | Název přidružení | Ne | Název prostředku přidružení. |
 
-   Parametry vzorku:
+   Ukázkové parametry:
 
-   ![Zadat parametry šablony](media/tutorial-resource-onboarding/templatescustomprovider.png)
+   ![Zadejte parametry šablony](media/tutorial-resource-onboarding/templatescustomprovider.png)
 
-9. Přejděte na nasazení a počkejte, až bude dokončeno. Měli byste vidět něco jako následující snímek obrazovky. Nový prostředek přidružení byste měli vidět jako výstup:
+9. Přejít na nasazení a počkat na jeho dokončení. Měl by se zobrazit něco podobného jako na následujícím snímku obrazovky. Měl by se zobrazit nový prostředek přidružení jako výstup:
 
    ![Úspěšné nasazení](media/tutorial-resource-onboarding/customproviderdeployment.png)
 
-   Tady je skupina prostředků s vybranou možností **Zobrazit skryté typy:**
+   Tady je skupina prostředků se zvolenými **skrytými typy zobrazit** :
 
-   ![Vlastní nasazení zprostředkovatele](media/tutorial-resource-onboarding/showhidden.png)
+   ![Nasazení vlastního zprostředkovatele](media/tutorial-resource-onboarding/showhidden.png)
 
-10. Prozkoumejte kartu Historie aplikace **logiky A** podívejte se na volání pro vytvoření přidružení:
+10. Prozkoumejte kartu **historie spuštění** aplikace logiky a zobrazte volání pro vytvoření přidružení:
 
-    ![Aplikace logiky Spustí historii](media/tutorial-resource-onboarding/logicapprun.png)
+    ![Historie spuštění aplikace logiky](media/tutorial-resource-onboarding/logicapprun.png)
 
 ## <a name="deploy-additional-associations"></a>Nasazení dalších přidružení
 
-Po nastavení vlastní infrastruktury zprostředkovatele můžete snadno nasadit další přidružení. Skupina prostředků pro další přidružení nemusí být stejná jako skupina prostředků, ve které jste nasadili vlastní infrastrukturu zprostředkovatele. Chcete-li vytvořit přidružení, musíte mít oprávnění Microsoft.CustomProviders/resourceproviders/write na zadané ID vlastního zprostředkovatele prostředků.
+Po nastavení infrastruktury vlastního poskytovatele můžete snadno nasadit více přidružení. Skupina prostředků pro další přidružení nemusí být stejná jako skupina prostředků, ve které jste nasadili infrastrukturu vlastního poskytovatele. Chcete-li vytvořit přidružení, je nutné mít oprávnění Microsoft. CustomProviders/resourceproviders/Write pro zadané ID vlastního poskytovatele prostředků.
 
-1. Přejděte na vlastního zprostředkovatele **Microsoft.CustomProviders/resourceProviders** prostředek ve skupině prostředků předchozího nasazení. Budete muset zaškrtnout políčko **Zobrazit skryté typy:**
+1. Ve skupině prostředků v předchozím nasazení přejdete na prostředek **Microsoft. CustomProviders/resourceProviders** vlastního zprostředkovatele. Bude nutné zaškrtnout políčko **Zobrazit skryté typy** :
 
-   ![Přejít na zdroj](media/tutorial-resource-onboarding/showhidden.png)
+   ![Přejít k prostředku](media/tutorial-resource-onboarding/showhidden.png)
 
 2. Zkopírujte vlastnost ID prostředku vlastního zprostředkovatele.
 
@@ -273,19 +273,19 @@ Po nastavení vlastní infrastruktury zprostředkovatele můžete snadno nasadit
 
    ![Hledání šablon](media/tutorial-resource-onboarding/templates.png)
 
-4. Vyberte dříve vytvořenou šablonu a pak vyberte **Nasadit**:
+4. Vyberte dříve vytvořenou šablonu a pak vyberte **nasadit**:
 
-   ![Vyberte dříve vytvořenou šablonu a pak vyberte Nasadit](media/tutorial-resource-onboarding/templateselectspecific.png)
+   ![Vyberte dříve vytvořenou šablonu a pak vyberte nasadit.](media/tutorial-resource-onboarding/templateselectspecific.png)
 
-5. Zadejte nastavení požadovaných polí a vyberte předplatné a jinou skupinu prostředků. Pro nastavení **ID vlastního zprostředkovatele prostředků** zadejte ID prostředku, které jste zkopírovali z vlastního zprostředkovatele, kterého jste nasadili dříve.
+5. Zadejte nastavení pro požadovaná pole a pak vyberte předplatné a jinou skupinu prostředků. Pro nastavení **ID vlastního poskytovatele prostředků** zadejte ID prostředku, které jste zkopírovali z vlastního poskytovatele, kterého jste nasadili dříve.
 
-6. Přejděte na nasazení a počkejte, až bude dokončeno. Nyní by měl nasadit pouze nový prostředek přidružení:
+6. Přejít na nasazení a počkat na jeho dokončení. Měl by nyní nasazovat pouze nové prostředky přidružení:
 
-   ![Nový zdroj přidružení](media/tutorial-resource-onboarding/createdassociationresource.png)
+   ![Nový prostředek přidružení](media/tutorial-resource-onboarding/createdassociationresource.png)
 
-Pokud chcete, můžete se vrátit do **historie spuštění** aplikace logiky a uvidíte, že bylo provedeno další volání do aplikace logiky. Můžete aktualizovat aplikaci logiky rozšířit další funkce pro každé vytvořené přidružení.
+Pokud chcete, můžete se vrátit k **historii spuštění** aplikace logiky a podívat se, že aplikace logiky provedla jiné volání. Aplikaci logiky můžete aktualizovat a rozšířit tak další funkce pro každé vytvořené přidružení.
 
 ## <a name="getting-help"></a>Získání nápovědy
 
-Pokud máte dotazy týkající se vlastních poskytovatelů Azure, zkuste se jich zeptat na [přetečení zásobníku](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, takže nejprve zkontrolujte před odesláním. Přidejte `azure-custom-providers` značku, abyste získali rychlou odpověď!
+Pokud máte dotazy týkající se vlastních zprostředkovatelů Azure, zkuste se na ně zeptat na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers). Podobná otázka již mohla být zodpovězena, před odesláním proto nejprve proveďte kontrolu. Přidejte značku `azure-custom-providers` , abyste získali rychlou odpověď.
 

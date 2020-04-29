@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Návrh serveru – portál Azure – Databáze Azure pro MySQL'
-description: Tento kurz vysvětluje, jak vytvořit a spravovat Azure Database pro MySQL server a databázi pomocí portálu Azure Portal.
+title: 'Kurz: návrh serveru-Azure Portal-Azure Database for MySQL'
+description: V tomto kurzu se dozvíte, jak vytvořit a spravovat Azure Database for MySQL server a databázi pomocí Azure Portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/20/2020
 ms.custom: mvc
 ms.openlocfilehash: c0d0e9f0994f7d4d75a67911a5191d6e4ffecaa8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382796"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Kurz: Návrh databáze Azure Database for MySQL pomocí webu Azure Portal
@@ -41,11 +41,11 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
 
 1. Vyberte tlačítko **Vytvořit prostředek** (+) v levém horním rohu portálu.
 
-2. Vyberte **databáze** > **databáze Azure databáze pro MySQL**. Pokud nemůžete najít MySQL Server v kategorii **Databáze,** klepněte na tlačítko **Zobrazit vše** a zobrazte všechny dostupné databázové služby. Službu také můžete rychle vyhledat tak, že do vyhledávacího pole zadáte **Azure Database for MySQL**.
+2. Vyberte **databáze** > **Azure Database for MySQL**. Pokud nemůžete najít server MySQL v kategorii **databáze** , klikněte na **Zobrazit vše** , aby se zobrazily všechny dostupné databázové služby. Službu také můžete rychle vyhledat tak, že do vyhledávacího pole zadáte **Azure Database for MySQL**.
    
    ![Přechod na MySQL](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
 
-3. Klikněte na **dlaždici Azure Database for MySQL.** Vyplňte formulář Azure Database for MySQL.
+3. Klikněte na **Azure Database for MySQL** dlaždici. Vyplňte formulář Azure Database for MySQL.
    
    ![Vytvoření formuláře](./media/tutorial-design-database-using-portal/2-create-form.png)
 
@@ -56,18 +56,18 @@ Server Azure Database for MySQL se vytvoří s definovanou sadou [výpočetních
     Skupina prostředků | *myresourcegroup* | Zadejte název nové nebo existující skupiny prostředků.
     Výběr zdroje | *Prázdné* | Vyberte *Prázdné* a vytvořte nový server od začátku. (Pokud vytváříte server z geografické zálohy existujícího serveru Azure Database for MySQL, vyberte *Záloha*.)
     Přihlašovací jméno správce serveru | myadmin | Přihlašovací účet, který budete používat při připojování k serveru. Přihlašovací jméno správce nemůže být **azure_superuser**, **admin**, **administrator**, **root**, **guest** ani **public**.
-    Heslo | *Vaše volba* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
-    Potvrzení hesla | *Vaše volba*| Potvrďte heslo účtu správce.
-    Umístění | *Oblast, která je vašim uživatelům nejblíže*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
+    Heslo | *Podle vašeho výběru* | Zadejte nové heslo pro účet správce serveru. Musí se skládat z 8 až 128 znaků. Heslo musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice (0–9) a jiné než alfanumerické znaky (!, $, #, % apod.).
+    Potvrzení hesla | *Podle vašeho výběru*| Potvrďte heslo účtu správce.
+    Umístění | *Oblast nejblíže vašim uživatelům*| Vyberte umístění co nejblíže vašim uživatelům nebo vašim dalším aplikacím Azure.
     Version | *Nejnovější verze*| Nejnovější verze (pokud nemáte specifické požadavky vyžadující jinou verzi).
-    Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **Cenová úroveň**. Dále vyberte kartu Obecné *Gen 5* **účely.** *2 vCores* *5 GB* *7 days* **Compute Generation** **vCore** **Storage** **Backup Retention Period** Můžete ponechat tyto posuvníky tak, jak jsou. Chcete-li povolit zálohování serveru v geograficky redundantním úložišti, vyberte možnost IVMožnostredundance zálohování vyberte **možnostI** **redundance zálohování**. Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
+    Cenová úroveň | **Obecné účely**, **Gen 5**, **2 virtuální jádra**, **5 GB**, **7 dní**, **Geograficky redundantní** | Konfigurace výpočtů, úložiště a zálohování pro nový server. Vyberte **cenovou úroveň**. V dalším kroku vyberte kartu **pro obecné účely** . *5*, *2 virtuální jádra*, *5 GB*a *7 dní* jsou výchozí hodnoty pro **výpočetní generaci**, **Vcore**, **úložiště**a **dobu uchovávání záloh**. Můžete ponechat tyto posuvníky tak, jak jsou. Pokud chcete povolit zálohování serveru v geograficky redundantním úložišti, vyberte z **možností redundance zálohy**možnost **geograficky redundantní** . Vyberte **OK** a uložte tento výběr cenové úrovně. Další snímek zachycuje tyto výběry.
 
    ![Cenová úroveň](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
    > [!TIP]
-   > S **automatickým růstem** povoleno váš server zvyšuje úložiště, když se blíží přiděleném limitu, aniž by to mělo vliv na vaše pracovní vytížení.
+   > Díky **automatickému růstu** může server zvýšit kapacitu úložiště při přístupu k přidělenému limitu, aniž by to ovlivnilo vaše zatížení.
 
-4. Klikněte na **Zkontrolovat a vytvořit**. Můžete kliknout na tlačítko **Oznámení** na panelu nástrojů a sledovat proces nasazení. Nasazení může trvat až 20 minut.
+4. Klikněte na **Zkontrolovat a vytvořit**. Můžete kliknout na tlačítko **oznámení** na panelu nástrojů a monitorovat proces nasazení. Nasazení může trvat až 20 minut.
 
 ## <a name="configure-firewall"></a>Konfigurace brány firewall
 
@@ -91,7 +91,7 @@ Na webu Azure Portal získejte plně kvalifikovaný **Název serveru** a **Přih
 2. Na stránce **Přehled** si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Může kliknout na tlačítko kopírování vedle jednotlivých polí a zkopírovat údaje do schránky.
    ![4-2 Vlastnosti serveru](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-V tomto příkladu je název serveru *mydemoserver.mysql.database.azure.com*a přihlášení správce serveru je *myadmin\@mydemoserver*.
+V tomto příkladu je název serveru *mydemoserver.MySQL.Database.Azure.com*a přihlašovací jméno správce serveru *myadmin\@mydemoserver*.
 
 ## <a name="connect-to-the-server-using-mysql"></a>Připojení k serveru pomocí mysql
 
@@ -105,7 +105,7 @@ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 
 ## <a name="create-a-blank-database"></a>Vytvoření prázdné databáze
 
-Po připojení k serveru vytvořte prázdnou databázi, se kterou můžete pracovat.
+Po připojení k serveru vytvořte prázdnou databázi, se kterou chcete pracovat.
 
 ```sql
 CREATE DATABASE mysampledb;
@@ -170,7 +170,7 @@ Představte si, že omylem odstraníte důležitou databázovou tabulku a nemů�
 
    ![10-1 Obnovení databáze](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
-2. Vyplňte formulář **Obnovení** s požadovanými informacemi.
+2. Vyplňte formulář **obnovení** požadovanými informacemi.
 
    ![10-2 Formulář Obnovit](./media/tutorial-design-database-using-portal/2-restore-form.png)
 
@@ -179,7 +179,7 @@ Představte si, že omylem odstraníte důležitou databázovou tabulku a nemů�
    - **Umístění:** Oblast se shoduje se zdrojovým serverem a nedá se změnit.
    - **Cenová úroveň:** Cenová úroveň se shoduje se zdrojovým serverem a nedá se změnit.
    
-3. Klepnutím na **tlačítko OK** obnovíte server [a obnovíte tak bod v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k zadanému bodu v čase.
+3. Kliknutím na tlačítko **OK** obnovte server, který chcete [obnovit do bodu v čase](./howto-restore-server-portal.md) před odstraněním tabulky. Při obnovení serveru se vytvoří nová kopie serveru k zadanému bodu v čase.
 
 ## <a name="next-steps"></a>Další kroky
 

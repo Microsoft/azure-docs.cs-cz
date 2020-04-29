@@ -7,10 +7,10 @@ ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376644"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
@@ -31,7 +31,7 @@ V této sérii kurzů se naučíte:
 > * [Nastavit monitorování a diagnostiku aplikace](service-fabric-tutorial-java-elk.md)
 > * Nastavení CI/CD
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalovaný Git ze [stránky pro stažení Gitu](https://git-scm.com/downloads) na místním počítači. Další informace o Gitu najdete v [dokumentaci pro Git](https://git-scm.com/docs).
 * Praktické znalosti [Jenkinse](https://jenkins.io/).

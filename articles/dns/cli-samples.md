@@ -1,6 +1,6 @@
 ---
-title: Ukázky nastavení příkazu Azure pro DNS – Azure DNS
-description: Pomocí této ukázky použijte Azure CLI k vytvoření zón DNS a záznamů v Azure DNS.
+title: Ukázky v Azure CLI pro DNS – Azure DNS
+description: V této ukázce pomocí Azure CLI vytvoříte zóny a záznamy DNS v Azure DNS.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,10 +8,10 @@ ms.topic: sample
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: d5fdeaeb9060794af2168f072a174b49b9c9d3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76937693"
 ---
 # <a name="azure-cli-examples-for-azure-dns"></a>Příklady Azure CLI pro Azure DNS

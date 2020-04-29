@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Trénování prvního modelu Azure ML v Pythonu'
+title: 'Kurz: výuka prvního modelu Azure ML v Pythonu'
 titleSuffix: Azure Machine Learning
-description: V tomto kurzu se naučíte základní návrhové vzory v Azure Machine Learning a trénovat jednoduchý model scikit-learn založený na datové sadě diabetes.
+description: V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,51 +11,51 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80546018"
 ---
-# <a name="tutorial-train-your-first-ml-model"></a>Výuka: Trénujte svůj první model ML
+# <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní návrhové vzory v Azure Machine Learning a trénovat jednoduchý model scikit-learn založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro škálování až do vývoje složitějších experimentů a pracovních postupů.
+Tento kurz je **druhou částí z dvoudílné série kurzů**. V předchozím kurzu jste [vytvořili pracovní prostor a zvolili vývojové prostředí](tutorial-1st-experiment-sdk-setup.md). V tomto kurzu se naučíte základní vzory návrhu v Azure Machine Learning a naučíte se jednoduchý scikit model založený na datové sadě diabetes. Po dokončení tohoto kurzu budete mít praktické znalosti sady SDK pro horizontální navýšení kapacity a vývoje složitějších experimentů a pracovních postupů.
 
 V tomto kurzu se naučíte provádět následující úlohy:
 
 > [!div class="checklist"]
-> * Připojení pracovního prostoru a vytvoření experimentu
-> * Načtení dat a trénování modelů scikit-learn
-> * Zobrazit výsledky školení ve studiu
+> * Připojte svůj pracovní prostor a vytvořte experiment.
+> * Načtěte data a Naučte scikit modely.
+> * Zobrazit výsledky školení v studiu
 > * Načtení nejlepšího modelu
 
 ## <a name="prerequisites"></a>Požadavky
 
-Jediným předpokladem je spuštění první části tohoto kurzu, [instalačního prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
+Jediným předpokladem je spuštění první části tohoto kurzu, [nastavení prostředí a pracovního prostoru](tutorial-1st-experiment-sdk-setup.md).
 
-V této části kurzu spustíte kód v ukázkovém tutoriálu jupyterového *notebooku/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* otevřený na konci první části. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
+V této části kurzu spustíte kód v ukázce poznámkového bloku Jupyter */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* otevřený na konci části 1. Tento článek vás provede stejným kódem, který je v poznámkovém bloku.
 
 ## <a name="open-the-notebook"></a>Otevření poznámkového bloku
 
-1. Přihlaste se do [studia Azure Machine Learning Studio](https://ml.azure.com/).
+1. Přihlaste se k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
-1. Otevřete **výukový program-1st-experiment-sdk-train.ipynb** ve složce, jak je znázorněno v [první části](tutorial-1st-experiment-sdk-setup.md#open).
+1. Otevřete **kurz – 1st-experiment-SDK-vlak. ipynb** ve složce, jak je znázorněno v [části One](tutorial-1st-experiment-sdk-setup.md#open).
 
 
 > [!Warning]
-> **Nevytvářejte** *nový* notebook v rozhraní Jupyter! Poznámkový blok *tutoriály/create-first-ml-experiment/tutorial-1st-experiment-sdk-train.ipynb* zahrnuje **veškerý kód a data potřebná** pro tento kurz.
+> Nevytvářejte *Nový* Poznámkový blok v rozhraní Jupyter. **not** Kurzy poznámkového bloku */Create-First-ml-experiment/tutorial-1st-experiment-SDK-Train. ipynb* jsou včetně **veškerého kódu a dat potřebných** pro účely tohoto kurzu.
 
-## <a name="connect-workspace-and-create-experiment"></a>Připojení pracovního prostoru a vytvoření experimentu
+## <a name="connect-workspace-and-create-experiment"></a>Připojit pracovní prostor a vytvořit experiment
 
 > [!Important]
-> Zbytek tohoto článku obsahuje stejný obsah, který vidíte v poznámkovém bloku.  
+> Zbývající část tohoto článku obsahuje stejný obsah, jaký vidíte v poznámkovém bloku.  
 >
-> Přepněte do poznámkového bloku Jupyter nyní, pokud si chcete přečíst spolu při spuštění kódu. 
-> Pokud chcete v poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **Shift+Enter**. Nebo spusťte celý poznámkový blok tak, že zvolíte **Spustit vše** z horního panelu nástrojů.
+> Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
+> Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
-Importovat `Workspace` třídu a načíst informace `config.json` o `from_config().` předplatném ze souboru pomocí funkce Toto hledí pro soubor JSON v `from_config(path="your/file/path")`aktuálním adresáři ve výchozím nastavení, ale můžete také zadat parametr cesty, který přejde na soubor pomocí . Na cloudovém notebooku je soubor automaticky v kořenovém adresáři.
+Naimportujte `Workspace` třídu a načtěte informace o předplatném `config.json` ze souboru pomocí `from_config().` této funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor `from_config(path="your/file/path")`pomocí. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
 
@@ -64,7 +64,7 @@ from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-Nyní vytvořte experiment ve svém pracovním prostoru. Experiment je další základní cloudový prostředek, který představuje kolekci zkušebních verzí (spuštění jednotlivých modelů). V tomto kurzu použijete experiment k vytvoření spuštění a sledování trénování modelu ve studiu Azure Machine Learning. Parametry zahrnují odkaz na pracovní prostor a název řetězce pro experiment.
+Nyní vytvořte experiment v pracovním prostoru. Experiment je další základní cloudový prostředek, který představuje kolekci zkušebních verzí (jednotlivé spuštěné modely). V tomto kurzu použijete experiment k vytvoření spuštění a sledování školení modelu v nástroji Azure Machine Learning Studio. Parametry zahrnují odkaz na pracovní prostor a název řetězce pro experiment.
 
 
 ```python
@@ -74,7 +74,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Načtení dat a příprava na školení
 
-Pro účely tohoto kurzu použijete sadu dat diabetu, která používá funkce, jako je věk, pohlaví a BMI předpovědět progresi onemocnění diabetu. Načtěte data z třídy [Azure Open Datasets](https://azure.microsoft.com/services/open-datasets/) a `train_test_split()`rozdělte je na trénovací a testovací sady pomocí . Tato funkce odděluje data tak, aby model má neviditelná data pro testování po trénování.
+Pro účely tohoto kurzu použijete sadu dat diabetes, která používá funkce jako věk, pohlaví a BMI k předvídání pokroku diabetesch nemocí. Načtěte data z třídy [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/) a rozdělte je do školicích a testovacích sad `train_test_split()`pomocí. Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
 
 
 ```python
@@ -89,9 +89,9 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Učení modelu
 
-Školení jednoduchý scikit-learn model lze snadno provést místně pro malé-měřítku školení, ale při trénování mnoho iterací s desítkami různých funkcí permutace a nastavení hyperparametrů, je snadné ztratit přehled o tom, jaké modely jste trénovali a jak jste je trénoval. Následující návrhový vzor ukazuje, jak využít sdk snadno sledovat vaše školení v cloudu.
+Výuku jednoduchého scikit modelu se dá snadno udělat místně pro účely malého rozsahu, ale při výuce mnoha iterací s desítkami různých permutací a nastaveními parametrů se snadno ztratí přehled o tom, které modely jste si naučili a jakým způsobem jste je naučili. Následující vzor návrhu ukazuje, jak pomocí sady SDK snadno sledovat vaše školení v cloudu.
 
-Vytvořte skript, který trénuje modely hřebenů ve smyčce prostřednictvím různých hodnot alfa hyperparametrů.
+Sestavte skript, který předávat modely Ridge ve smyčce prostřednictvím různých hodnot alfa parametrů.
 
 
 ```python
@@ -120,37 +120,37 @@ for alpha in alphas:
     run.complete()
 ```
 
-Výše uvedený kód provádí následující:
+Výše uvedený kód provede následující:
 
-1. Pro každou hodnotu alfa `alphas` hyperparametrv poli je v rámci experimentu vytvořen nový běh. Hodnota alfa je zaznamenána rozlišovat mezi každým spuštěním.
-1. V každém spuštění ridge model je vytvořena instance, trénované a slouží ke spuštění předpovědi. Kořenová střední kvadratická chyba se vypočítá pro skutečné versus předpokládané hodnoty a pak se zaznamená do spuštění. V tomto okamžiku má spuštění připojená metadata pro hodnotu alfa i přesnost rmse.
-1. Dále je model pro každý běh serializován a odeslán do spuštění. To vám umožní stáhnout soubor modelu ze spuštění ve studiu.
-1. Na konci každé iterace je `run.complete()`spuštění dokončeno voláním .
+1. Pro každou hodnotu parametru alfa parametr v `alphas` poli se vytvoří nový běh v rámci experimentu. Hodnota alfa je protokolována k odlišení jednotlivých spuštění.
+1. V každém spuštění je vytvořen Ridge model, proškolený a používaný ke spuštění předpovědi. Hodnota root-střed_hodn-Square-Error se vypočítá pro skutečné versus předpovězené hodnoty a potom se do běhu přihlásí. V tomto okamžiku má spuštění metadata připojená jak pro hodnotu alfa, tak pro přesnost rmse.
+1. V dalším kroku je model každého spuštění serializován a nahrán do běhu. To vám umožní stáhnout soubor modelu z běhu v studiu.
+1. Na konci každé iterace je spuštění dokončeno voláním `run.complete()`.
 
-Po dokončení školení zavolejte `experiment` proměnnou načíst odkaz na experiment ve studiu.
+Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na experiment v studiu.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name (Název)</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka Dokumenty</th></tr><tr><td>diabetes-experiment</td><td>název pracovního prostoru</td><td>Propojení se studiem Azure Machine Learning</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
 
-## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení ve studiu
+## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení v studiu
 
-Po **propojení s Azure Machine Learning studio** přejdete na hlavní stránku experimentu. Zde vidíte všechny jednotlivé běží v experimentu. Všechny vlastní protokolované`alpha_value` hodnoty `rmse`( a , v tomto případě) se stanou poli pro každé spuštění a také budou k dispozici pro grafy a dlaždice v horní části stránky experimentu. Pokud chcete do grafu nebo dlaždice přidat protokolovnou metriku, najeďte na ni tak, klikněte na tlačítko pro úpravy a najděte vlastní metriku.
+Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot`alpha_value` ( `rmse`a v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
 
-Při trénování modelů ve velkém měřítku přes stovky a tisíce samostatných spuštění, tato stránka usnadňuje zobrazení každého modelu, který jste trénovali, konkrétně jak byly vyškoleny a jak se vaše jedinečné metriky v průběhu času změnily.
+Když procházíte modely ve velkém množství přes stovky a tisíce samostatných spuštění, Tato stránka usnadňuje zobrazení všech vámi vyškolených modelů, konkrétně jejich školení a způsobu, jakým se vaše jedinečné metriky v průběhu času změnily.
 
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hlavní experiment ve studiu.":::
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Hlavní stránka experimentu v studiu.":::
 
 
-Vyberte odkaz na `RUN NUMBER` číslo spuštění ve sloupci, chcete-li zobrazit stránku pro jednotlivé spuštění. Výchozí karta **Podrobnosti** zobrazují podrobnější informace o každém spuštění. Přejděte na kartu **Výstupy + protokoly** a zobrazí se `.pkl` soubor pro model, který byl odeslán do spuštění během každé iterace školení. Zde si můžete stáhnout soubor modelu, spíše než muset přeškolit ručně.
+Vyberte odkaz číslo spuštění ve `RUN NUMBER` sloupci, aby se zobrazila stránka pro jednotlivé spuštění. Výchozí karta **Podrobnosti** Zobrazí podrobnější informace o každém spuštění. Přejděte na kartu **výstupy + protokoly** a zobrazí se `.pkl` soubor pro model, který byl nahrán do běhu během každé školicí iterace. Tady si můžete stáhnout soubor modelu a nemusíte ho přesměrovat ručně.
 
-:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Spusťte stránku podrobností ve studiu.":::
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Stránka podrobností o spuštění v studiu":::
 
 ## <a name="get-the-best-model"></a>Získejte nejlepší model
 
-Kromě toho, že budete moci stahovat soubory modelů z experimentu ve studiu, můžete je také stáhnout programově. Následující kód iterates prostřednictvím každého spuštění v experimentu a přistupuje protokolované spuštění metriky a podrobnosti spuštění (který obsahuje run_id). To udržuje přehled o nejlepší spuštění, v tomto případě spustit s nejnižší kořen-střední kvadratická chyba.
+Kromě toho, že je možné stahovat soubory modelu z experimentu v studiu, je můžete také stáhnout programově. Následující kód projde každým spuštěním v experimentu a přistupuje ke metrikám s protokolem a k podrobnostem o běhu (které obsahují run_id). Tím se sleduje nejlepší běh, v tomto případě se spustí s nejnižší hodnotou root-střed_hodn-Square-Error.
 
 ```python
 minimum_rmse_runid = None
@@ -178,7 +178,7 @@ print("Best run_id rmse: " + str(minimum_rmse))
     Best run_id: 864f5ce7-6729-405d-b457-83250da99c80
     Best run_id rmse: 57.234760283951765
 
-Použijte nejlepší id spuštění k načtení `Run` jednotlivého spuštění pomocí konstruktoru spolu s objektem experimentu. Pak `get_file_names()` volání zobrazíte všechny soubory, které jsou k dispozici ke stažení z tohoto běhu. V takovém případě jste pro každý běh během tréninku nahráli pouze jeden soubor.
+Použijte nejlepší ID běhu k načtení jednotlivého spuštění pomocí `Run` konstruktoru společně s objektem experiment. Potom zavolejte `get_file_names()` na Zobrazit všechny soubory, které jsou k dispozici ke stažení z tohoto spuštění. V tomto případě jste během školení nahráli jenom jeden soubor pro každé spuštění.
 
 ```python
 from azureml.core import Run
@@ -188,7 +188,7 @@ print(best_run.get_file_names())
 
     ['model_alpha_0.1.pkl']
 
-Volání `download()` na spustit objekt, zadání názvu souboru modelu ke stažení. Ve výchozím nastavení se tato funkce stáhne do aktuálního adresáře.
+Zavolejte `download()` na objekt Run a určete název souboru modelu, který se má stáhnout. Ve výchozím nastavení tato funkce stahuje do aktuálního adresáře.
 
 ```python
 best_run.download_file(name="model_alpha_0.1.pkl")
@@ -196,7 +196,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Nedokončete tuto část, pokud plánujete spustit další kurzy Azure Machine Learning.
+Tuto část neprovádějte, pokud máte v plánu spouštět jiné kurzy Azure Machine Learning.
 
 ### <a name="stop-the-compute-instance"></a>Zastavení výpočetní instance
 
@@ -206,16 +206,16 @@ Nedokončete tuto část, pokud plánujete spustit další kurzy Azure Machine L
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-Skupinu prostředků můžete také zachovat, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
+Můžete také zachovat skupinu prostředků, ale odstranit jeden pracovní prostor. Zobrazte vlastnosti pracovního prostoru a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provedli následující úkoly:
+V tomto kurzu jste provedli následující úlohy:
 
 > [!div class="checklist"]
-> * Propojení pracovního prostoru a vytvoření experimentu
-> * Načtená data a trénované modely scikit-learn
-> * Zobrazeny výsledky školení ve studiu a natržené modely
+> * Připojili jsme váš pracovní prostor a vytvořili experiment.
+> * Nahraná data a školené modely scikit-učení
+> * Zobrazení výsledků školení v studiu a načtených modelů
 
-[Nasaďte svůj model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.
-Přečtěte si, jak vyvíjet automatizované experimenty [strojového učení.](tutorial-auto-train-models.md)
+[Nasaďte model](tutorial-deploy-models-with-aml.md) pomocí Azure Machine Learning.
+Naučte se vyvíjet [automatizované experimenty strojového učení](tutorial-auto-train-models.md) .

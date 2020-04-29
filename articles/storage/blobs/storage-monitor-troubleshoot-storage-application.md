@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68844883"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Monitorování a řešení potíží s aplikací cloudového úložiště
@@ -33,7 +33,7 @@ Protokolování a metriky účtů úložiště se zapínají na kartě **Diagnos
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlášení na [portál Azure](https://portal.azure.com)
+Přihlášení k [Azure Portal](https://portal.azure.com)
 
 ## <a name="turn-on-logging-and-metrics"></a>Zapnutí protokolování a metrik
 
@@ -41,7 +41,7 @@ V nabídce vlevo vyberte **Skupiny prostředků**, pak **myResourceGroup** a v s
 
 V části **Nastavení diagnostiky (klasické)** u položky **Stav** vyberte **Zapnuto**. Přesvědčte se, že všechny možnosti v části **Vlastnosti objektu blob** jsou povolené.
 
-Po dokončení klikněte na **Uložit.**
+Po dokončení klikněte na **Uložit** .
 
 ![Podokno Diagnostika](media/storage-monitor-troubleshoot-storage-application/enable-diagnostics.png)
 
@@ -89,7 +89,7 @@ V tomto scénáři použijete k práci se svým účtem úložiště Azure aplik
 
 Stáhněte a nainstalujte aplikaci [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226).
 
-Spusťte aplikaci a zvolte**Otevřít** >  **soubor** > **z jiných zdrojů souborů**.
+Spusťte aplikaci a vyberte **soubor** > **otevřít** > **z jiných zdrojů souborů**.
 
 V dialogovém okně **File Selector** (Selektor souborů) vyberte **+ Add Azure Connection** (+ Přidat připojení k Azure). Zadejte **název účtu úložiště** a **klíč účtu** a pak klikněte na **OK**.
 

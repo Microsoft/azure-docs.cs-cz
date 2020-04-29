@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/20/2017
 ms.custom: mvc
 ms.openlocfilehash: cc6c7fc94e940732ba180c83344eabf29597d849
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670351"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Použití Azure Application Insights k pochopení, jakým způsobem zákazníci používají vaši aplikaci
@@ -41,7 +41,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - Odesílat [kontext uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context) umožňující sledovat aktivity uživatele v průběhu času a naplno využívat funkce využití.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
 
 ## <a name="get-information-about-your-users"></a>Získání informací o uživatelích
 Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podrobnostem o vašich uživatelích. Pomocí tohoto panelu můžete získat informace, jako například odkud se uživatelé připojují, podrobnosti o jejich klientech a oblasti aplikace, ke kterým přistupují. 
@@ -60,7 +60,7 @@ Panel **Uživatelé** umožňuje různými způsoby porozumět důležitým podr
 
     ![Graf Země nebo oblast](media/tutorial-users/CountryorRegion.png)
 
-5. Umístěte kurzor nad různé pruhy v grafu a všimněte si, že počet pro každou zemi nebo oblast odráží pouze časové okno reprezentované tímto pruhem.
+5. Umístěte kurzor do různých pruhů v grafu a Všimněte si, že počet pro každou zemi nebo oblast odráží pouze časové okno reprezentované tímto pruhem.
 6. Podívejte se na sloupec **Přehledy** na pravé straně, který provádí analýzu dat o vašich uživatelích.  Najdete zde informace, jako je počet jedinečných relací v daném časovém období a záznamy se společnými vlastnostmi, které tvoří významnou část dat o uživatelích. 
 
     ![Sloupec Přehledy](media/tutorial-users/insights.png)
@@ -83,7 +83,7 @@ Panel **Relace** je podobný panelu **Uživatelé**.  Zatímco panel **Uživatel
     ![Časová osa relace](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Seskupení podobných uživatelů
-**Kohorta** je skupina uživatelů seskupených podle podobných charakteristik.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
+**Kohorta** je sada uživatelů seskupených podle podobných vlastností.  Kohorty můžete použít k filtrování dat na dalších panelech, což vám umožní analyzovat konkrétní skupiny uživatelů.  Můžete například chtít analyzovat pouze uživatele, kteří dokončili nákup.
 
 1.  V nabídce vyberte **Kohorty**.
 2.  Kliknutím na **Nová** vytvořte novou kohortu.

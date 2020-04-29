@@ -1,23 +1,23 @@
 ---
 title: Vyčištění samostatného clusteru
-description: V tomto kurzu se dozvíte, jak vyčistit prostředky AWS nebo Azure ve vašem samostatném clusteru Service Fabric.
+description: V tomto kurzu se naučíte vyčistit prostředky AWS nebo Azure v samostatném clusteru Service Fabric.
 author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75639016"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Kurz: Čištění samostatného clusteru
 
-Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný v AWS nebo Azure a nainstalujete do něj aplikaci.
+Samostatné clustery Service Fabric nabízejí možnost volby vlastního prostředí a vytvoření clusteru v rámci přístupu Service Fabric „jakýkoli operační systém a cloud“. V této sérii kurzů vytvoříte samostatný cluster hostovaný na AWS nebo Azure a nainstalujete do něj aplikaci.
 
-Tento kurz je čtvrtou částí série. Tato část kurzu ukazuje, jak vyčistit prostředky AWS nebo Azure, které jste vytvořili pro hostování clusteru Service Fabric.
+Tento kurz je čtvrtou částí série. V této části kurzu se dozvíte, jak vyčistit prostředky AWS nebo Azure, které jste vytvořili pro hostování Service Fabricho clusteru.
 
 Ve čtvrté části této série se naučíte:
 
@@ -27,7 +27,7 @@ Ve čtvrté části této série se naučíte:
 
 ## <a name="clean-up-service-fabric-cluster"></a>Čištění clusteru Service Fabric
 
-1. RDP do virtuálního virtuálního serveru, který jste použili k instalaci Service Fabric.
+1. Protokol RDP na virtuální počítač, který jste použili k instalaci Service Fabric.
 2. Otevřete PowerShell.
 3. Změňte adresář na extrahovaný adresář z druhého kurzu.
 4. Spuštěním následujícího příkazu odeberete cluster Service Fabric:
@@ -36,7 +36,7 @@ Ve čtvrté části této série se naučíte:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. Zadejte `Y` po zobrazení výzvy, pokud byl úspěšný, bude výstup vypadat takto, s vlastními IP adresami nahrazenými v:
+5. Po `Y` zobrazení výzvy zadejte, že pokud bylo úspěšné, váš výstup bude vypadat jako následující s vašimi vlastními IP adresami, které jsou nahrazeny v:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -54,13 +54,13 @@ Ve čtvrté části této série se naučíte:
 1. Přihlaste se ke svému účtu AWS.
 2. Přejděte na konzolu EC2.
 3. Vyberte tři uzly, které jste vytvořili v první části kurzu.
-4. Klikněte na **Akce** > **Instance State** > **Terminate**.
+4. Klikněte na položku **Akce** > **ukončit****stav** > instance.
 
 ## <a name="clean-up-azure-resources"></a>Vyčištění prostředků Azure
 
 1. Přihlaste se k portálu Azure.
-2. Přejděte do části **Virtuální počítače.**
-3. Zaškrtněte políčka u tří uzlů, které jste vytvořili v první části kurzu.
+2. Přejít na část **Virtual Machines** .
+3. Zaškrtněte políčka pro tři uzly, které jste vytvořili v první části kurzu.
 4. Klikněte na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky

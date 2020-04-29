@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kurz služby Azure Container Service – příprava aplikace
+title: ZASTARALÉ Kurz Azure Container Service – Příprava aplikace
 description: Kurz Azure Container Service – Příprava aplikace
 author: iainfoulds
 ms.service: container-service
@@ -8,16 +8,16 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76275425"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(ZASTARALÉ) Vytváření ibi kontejnerů, které se použijí se službou Azure Container Service
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>ZASTARALÉ Vytváření imagí kontejnerů, které se mají používat s Azure Container Service
 
 > [!TIP]
-> Aktualizovaná verze tohoto kurzu, který používá službu Azure Kubernetes, [najdete v tématu Kurz: Příprava aplikace pro službu Azure Kubernetes Service (AKS).](../../aks/tutorial-kubernetes-prepare-app.md)
+> Aktualizovanou verzi v tomto kurzu, který používá službu Azure Kubernetes, najdete v tématu [kurz: Příprava aplikace pro Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -34,7 +34,7 @@ Po dokončení bude ve vašem místním vývojovém prostředí dostupná násle
 
 V následujících kurzech se image kontejneru nahraje do služby Azure Container Registry a pak se spustí v clusteru Kubernetes hostovaném v Azure.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 V tomto kurzu se předpokládá základní znalost klíčových konceptů Dockeru, jako jsou kontejnery, image kontejnerů a základní příkazy Dockeru. V případě potřeby najdete základní informace o kontejnerech v článku [Get started with Docker]( https://docs.docker.com/get-started/) (Začínáme s Dockerem). 
 
@@ -85,7 +85,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Spusťte příkaz [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) a zosakřite spuštěné kontejnery.
+Spuštěním příkazu [Docker PS](https://docs.docker.com/engine/reference/commandline/ps/) Zobrazte spuštěné kontejnery.
 
 ```bash
 docker ps

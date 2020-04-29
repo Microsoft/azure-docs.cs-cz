@@ -1,5 +1,5 @@
 ---
-title: Sledujte své aplikace ve službě Service Fabric pomocí ELK v Azure
+title: Monitorování aplikací v Service Fabric používání ELK v Azure
 description: V tomto kurzu se dozvíte, jak nastavit ELK a monitorovat své aplikace Service Fabric.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: b283982e11449d234da966f15b86cc5b638a026c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75376650"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Kurz: Monitorování aplikací Service Fabric pomocí ELK
@@ -35,14 +35,14 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 * Nastavte svou aplikaci tak, aby vysílala protokoly do umístění zadaného v [druhé části](service-fabric-tutorial-debug-log-local-cluster.md).
 * Dokončete [třetí část](service-fabric-tutorial-java-deploy-azure.md), abyste měli spuštěný cluster Service Fabric nakonfigurovaný pro odesílání protokolů do služby Event Hubs.
 * Potřebujete zásadu ve službě Event Hubs, která má oprávnění naslouchat a přidružený primární klíč ze třetí série.
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
 
-Pokud jste nevytvořili ukázkovou aplikaci Hlasování v [první části této série kurzů](service-fabric-tutorial-create-java-app.md), můžete si ji stáhnout. V příkazovém okně naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
+Pokud jste nevytvořili hlasovací ukázkovou aplikaci v [první části této série kurzů](service-fabric-tutorial-create-java-app.md), můžete si ji stáhnout. V příkazovém okně naklonujte spuštěním následujícího příkazu úložiště ukázkové aplikace do místního počítače.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
@@ -140,7 +140,7 @@ Pro účely tohoto kurzu můžete použít předkonfigurované prostředí ELK. 
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. Přístup k řídicímu panelu Kibana na **adrese http:\//SERVER-IP** a zadejte uživatelské jméno a heslo pro Kibana. Pokud jste použili image ELK v Azure, výchozí uživatelské jméno je user a heslo je to, které jste získali v části **Diagnostika spouštění**.
+8. Přístup k řídicímu panelu Kibana v **http:\//Server-IP** a zadejte uživatelské jméno a heslo pro Kibana. Pokud jste použili image ELK v Azure, výchozí uživatelské jméno je user a heslo je to, které jste získali v části **Diagnostika spouštění**.
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 

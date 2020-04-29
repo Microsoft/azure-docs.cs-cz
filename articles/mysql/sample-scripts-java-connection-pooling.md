@@ -1,21 +1,21 @@
 ---
-title: Java ukázky pro ilustraci sdružování připojení
-description: Tento článek uvádí java ukázky pro ilustraci sdružování připojení.
+title: Ukázky v jazyce Java, které ilustrují sdružování připojení
+description: V tomto článku jsou uvedené ukázky Java, které ilustrují sdružování připojení.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: sample
 ms.date: 02/28/2018
 ms.openlocfilehash: 78b936b21aeeed1db69ac52b2c21e3c41708f62d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72600368"
 ---
-# <a name="java-sample-to-illustrate-connection-pooling"></a>Java ukázka pro ilustraci sdružování připojení
+# <a name="java-sample-to-illustrate-connection-pooling"></a>Ukázka Java pro ilustraci sdružování připojení
 
-Níže ukázkový kód ilustruje sdružování připojení v javě.
+Následující vzorový kód znázorňuje sdružování připojení v jazyce Java.
 
 ```java
 import java.sql.Connection;

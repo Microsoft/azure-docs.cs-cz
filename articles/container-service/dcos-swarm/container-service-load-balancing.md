@@ -1,5 +1,5 @@
 ---
-title: (ZASTARALÉ) Kontejnery pro vyrovnávání zatížení v clusteru Azure DC/OS
+title: ZASTARALÉ Vyrovnávání zatížení kontejnerů v clusteru Azure DC/OS
 description: Článek popisuje, jak se vyrovnává zatížení více kontejnerů v clusteru Azure Container Service DC/OS.
 author: rgardler
 ms.service: container-service
@@ -8,13 +8,13 @@ ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: a8f863f16888e6eca2dbc72c5dd612c38edbe46e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273381"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(ZASTARALÉ) Kontejnery pro vyrovnávání zatížení v clusteru azure container service dc/os
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>ZASTARALÉ Vyrovnávání zatížení kontejnerů v clusteru Azure Container Service DC/OS
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -43,7 +43,7 @@ Nástroj **Marathon Load Balancer (marathon-lb)** směruje příchozí požadavk
 
 Marathon Load Balancer se sám dynamicky rekonfiguruje na základě kontejnerů, které jste nasadili. Kromě toho je také odolný vůči ztrátě kontejneru nebo agenta. Když k takové ztrátě dojde, Apache Mesos restartuje kontejner na jiném místě a marathon-lb se adaptuje.
 
-Přejděte [https://shell.azure.com](https://shell.azure.com) na otevření cloudového prostředí ve vašem prohlížeči.
+[https://shell.azure.com](https://shell.azure.com) V prohlížeči otevřete Cloud Shell.
 
 Spuštěním následujícího příkazu nainstalujte Marathon Load Balancer v clusteru veřejného agenta.
 
@@ -97,7 +97,7 @@ Potom vytvořte soubor s názvem *hello-web.json* a zkopírujte do něj následu
 }
 ```
 
-Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení Marathon nasazuje aplikaci do privátního clusteru. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
+Pomocí rozhraní příkazového řádku DC/OS spusťte aplikaci. Ve výchozím nastavení Marathon nasadí aplikaci do privátního clusteru. To znamená, že výše popsané nasazení je přístupné jenom přes nástroj pro vyrovnávání zatížení, což je obvykle žádoucí chování.
 
 ```console
 dcos marathon app add hello-web.json

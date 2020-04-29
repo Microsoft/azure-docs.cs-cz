@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Python a AI přes Azure objekty BLOB'
+title: 'Kurz: Python a AI přes objekty blob Azure'
 titleSuffix: Azure Cognitive Search
-description: Krokování příklad extrakce textu a zpracování přirozeného jazyka přes obsah v úložišti objektů Blob pomocí poznámkového bloku Jupyter Python a Azure Cognitive Search REST API.
+description: Projděte si příklad extrakce textu a zpracování přirozeného jazyka přes obsah v úložišti objektů BLOB pomocí poznámkového bloku Pythonu Jupyter a rozhraní REST API pro Azure Kognitivní hledání.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,83 +10,83 @@ ms.devlang: python
 ms.topic: tutorial
 ms.date: 02/26/2020
 ms.openlocfilehash: e7708b0043b7f5baf2c12e813306595cc358a01d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78194050"
 ---
-# <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: Ke generování prohledávatelného obsahu z objektů BLOB Azure použijte Python a AI.
+# <a name="tutorial-use-python-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Kurz: použití Pythonu a AI k vygenerování prohledávatelných obsahu z objektů blob Azure
 
-Pokud máte nestrukturovaný text nebo image v úložišti objektů Blob Azure, [kanál obohacení AI](cognitive-search-concept-intro.md) můžete extrahovat informace a vytvořit nový obsah, který je užitečný pro fulltextové vyhledávání nebo scénáře dolování znalostí. Přestože kanál může zpracovávat obrázky, tento kurz pythonu se zaměřuje na text, použití detekce jazyka a zpracování přirozeného jazyka k vytvoření nových polí, která můžete využít v dotazech, omezujících okolností a filtrech.
+Pokud máte v úložišti objektů BLOB v Azure nestrukturovaný text nebo obrázky, [kanál pro rozšíření AI](cognitive-search-concept-intro.md) může extrahovat informace a vytvořit nový obsah, který je vhodný pro scénáře fulltextového vyhledávání nebo dolování ve znalostní bázi. I když může kanál zpracovat image, tento kurz Pythonu se zaměřuje na text, použití detekce jazyka a zpracování přirozeného jazyka pro vytváření nových polí, která můžete využít v dotazech, omezujících objektech a filtrech.
 
-Tento kurz používá Python a [hledání REST API](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úkolů:
+Tento kurz používá Python a [rozhraní REST API pro vyhledávání](https://docs.microsoft.com/rest/api/searchservice/) k provádění následujících úloh:
 
 > [!div class="checklist"]
-> * Začněte s celými dokumenty (nestrukturovaným textem), jako jsou PDF, HTML, DOCX a PPTX v úložišti objektů Blob Azure.
-> * Definujte kanál, který extrahuje text, detekuje jazyk, rozpozná entity a detekuje klíčové fráze.
-> * Definujte index pro uložení výstupu (nezpracovaný obsah plus dvojice název-hodnota generovaný kanálem).
-> * Spusťte kanál ke spuštění transformace a analýzy a vytvořit a načíst index.
-> * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohaté syntaxe dotazu.
+> * Začněte s celými dokumenty (nestrukturovaný text), například PDF, HTML, DOCX a PPTX v úložišti objektů BLOB v Azure.
+> * Definujte kanál, který extrahuje text, detekuje jazyk, rozpoznává entity a detekuje klíčové fráze.
+> * Definujte index pro uložení výstupu (nezpracovaný obsah, plus páry název-hodnota vygenerované kanály).
+> * Spusťte kanál, abyste mohli začít transformovat a analyzovat a vytvořit a načíst index.
+> * Prozkoumejte výsledky pomocí fulltextového vyhledávání a bohatou syntaxí dotazu.
 
-Pokud nemáte předplatné Azure, otevřete si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, otevřete si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 + [Azure Storage](https://azure.microsoft.com/services/storage/)
-+ [Anakonda 3,7](https://www.anaconda.com/distribution/#download-section)
++ [Anaconda 3,7](https://www.anaconda.com/distribution/#download-section)
 + [Vytvoření](search-create-service-portal.md) nebo [vyhledání existující vyhledávací služby](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) 
 
 > [!Note]
-> Můžete použít bezplatnou službu pro tento kurz. Bezplatná vyhledávací služba vás omezí na tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve službě prostor pro přijetí nových zdrojů.
+> Pro tento kurz můžete použít bezplatnou službu. Bezplatná vyhledávací služba omezuje tři indexy, tři indexery a tři zdroje dat. V tomto kurzu se vytváří od každého jeden. Než začnete, ujistěte se, že máte ve své službě místo pro přijímání nových prostředků.
 
 ## <a name="download-files"></a>Stažení souborů
 
-1. Otevřete tuto [složku OneDrivu](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
+1. Otevřete tuto [složku OneDrive](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) a v levém horním rohu klikněte na **Stáhnout** a zkopírujte soubory do počítače. 
 
-1. Klepněte pravým tlačítkem myši na soubor zip a vyberte **možnost Extrahovat vše**. K dispozici je 14 souborů různých typů. Budete používat 7 pro toto cvičení.
+1. Klikněte pravým tlačítkem na soubor zip a vyberte **Extrahovat vše**. Existuje 14 souborů různých typů. Pro toto cvičení budete používat 7.
 
-## <a name="1---create-services"></a>1 - Vytváření služeb
+## <a name="1---create-services"></a>1. vytvoření služeb
 
-Tento kurz používá Azure Cognitive Search pro indexování a dotazy, Cognitive Services na back-endu pro obohacení AI a úložiště objektů blob Azure k poskytování dat. Tento kurz zůstane pod bezplatným přidělením 20 transakcí na indexer za den ve službách Cognitive Services, takže jediné služby, které potřebujete vytvořit, jsou vyhledávání a ukládání.
+V tomto kurzu se používá Azure Kognitivní hledání pro indexování a dotazy, Cognitive Services v back-endu pro rozšíření AI a Azure Blob Storage k poskytnutí dat. Tento kurz zůstává v rámci bezplatného přidělení 20 transakcí na indexer za den v Cognitive Services, takže je potřeba, abyste vytvořili jenom služby pro vyhledávání a úložiště.
 
-Pokud je to možné, vytvořte ve stejné oblasti a skupině prostředků pro blízkost a správu. V praxi může být váš účet Azure Storage v libovolné oblasti.
+Pokud je to možné, vytvořte oba ve stejné oblasti a skupině prostředků pro možnost blízkost a spravovatelnost. V praxi může být váš účet Azure Storage v jakékoli oblasti.
 
-### <a name="start-with-azure-storage"></a>Začněte s Azure Storage
+### <a name="start-with-azure-storage"></a>Začínáme s Azure Storage
 
-1. [Přihlaste se na portál Azure](https://portal.azure.com/) a klikněte na + Vytvořit **prostředek**.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/) a klikněte na **+ vytvořit prostředek**.
 
-1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště společnosti Microsoft.
+1. Vyhledejte *účet úložiště* a vyberte nabídku účtu úložiště od Microsoftu.
 
    ![Vytvořit účet úložiště](media/cognitive-search-tutorial-blob/storage-account.png "Vytvořit účet úložiště")
 
-1. Na kartě Základy jsou požadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
+1. Na kartě základy jsou vyžadovány následující položky. Přijměte výchozí hodnoty pro všechno ostatní.
 
-   + **Skupina prostředků**. Vyberte existující nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli spravovat společně.
+   + **Skupina prostředků**. Vyberte existující jednu nebo vytvořte novou, ale použijte stejnou skupinu pro všechny služby, abyste je mohli souhrnně spravovat.
 
-   + **Název účtu úložiště**. Pokud si myslíte, že můžete mít více prostředků stejného typu, použijte název k oddělení podle typu a oblasti, například *blobstoragewestus*. 
+   + **Název účtu úložiště** Pokud se domníváte, že máte více prostředků stejného typu, použijte název k jednoznačnému odstranění podle typu a oblasti, například *blobstoragewestus*. 
 
-   + **Umístění**. Pokud je to možné, zvolte stejné umístění, které se používá pro Azure Cognitive Search a Cognitive Services. Jedno místo ruší poplatky za šířku pásma.
+   + **Umístění**. Pokud je to možné, vyberte stejné umístění, které se používá pro Azure Kognitivní hledání a Cognitive Services. Jediné místo má za vyrušení poplatky za šířku pásma.
 
-   + **Typ účtu**. Zvolte výchozí, *StorageV2 (pro obecné účely v2)*.
+   + **Druh účtu**. Vyberte výchozí *StorageV2 (obecné účely v2)*.
 
-1. Chcete-li službu vytvořit, klepněte na **tlačítko Revize + Vytvořit.**
+1. Kliknutím na tlačítko **zkontrolovat + vytvořit** službu vytvořte.
 
-1. Po jeho vytvoření kliknutím na **Přejít na zdroj** otevřete stránku Přehled.
+1. Po vytvoření klikněte na **Přejít k prostředku** a otevřete stránku Přehled.
 
-1. Klikněte na **službu Objektů blob.**
+1. Klikněte na služba **BLOB** Service.
 
-1. Klepnutím na **tlačítko + Kontejner** vytvořte kontejner a pojmenujte jej *cog-search-demo*.
+1. Kliknutím na **+ kontejner** vytvořte kontejner a pojmenujte ho *ozubeného kola-Search-demo*.
 
-1. Vyberte *cog-search-demo* a kliknutím na **Nahrát** otevřete složku, do které jste uložili soubory pro stahování. Vyberte všechny soubory, které nejsou obrazové. Měli byste mít 7 souborů. Chcete-li nahrát, klepněte na tlačítko **OK.**
+1. Vyberte *ozubeného kola-Search-demo* a potom kliknutím na **Odeslat** otevřete složku, kam jste uložili soubory ke stažení. Vyberte všechny soubory bez imagí. Měli byste mít 7 souborů. Kliknutím na tlačítko **OK** nahrajte.
 
    ![Nahrání ukázkových souborů](media/cognitive-search-tutorial-blob/sample-files.png "Nahrání ukázkových souborů")
 
-1. Než opustíte Azure Storage, získejte připojovací řetězec, abyste mohli formulovat připojení v Azure Cognitive Search. 
+1. Než ponecháte Azure Storage, Získejte připojovací řetězec, abyste mohli formulovat připojení v Azure Kognitivní hledání. 
 
-   1. Přejděte zpět na stránku Přehled vašeho účtu úložiště (jako příklad jsme použili *blobstragewestus).* 
+   1. Přejděte zpět na stránku Přehled vašeho účtu úložiště (jako příklad jsme použili *blobstragewestus* ). 
    
-   1. V levém navigačním podokně vyberte **přístupové klávesy** a zkopírujte jeden z připojovacích řetězců. 
+   1. V levém navigačním podokně vyberte **přístupové klíče** a zkopírujte jeden z připojovacích řetězců. 
 
    Připojovací řetězec je adresa URL podobná následujícímu příkladu:
 
@@ -94,39 +94,39 @@ Pokud je to možné, vytvořte ve stejné oblasti a skupině prostředků pro bl
       DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
-1. Uložte připojovací řetězec do programu Poznámkový blok. Budete ji potřebovat později při nastavování připojení ke zdroji dat.
+1. Uložte připojovací řetězec do poznámkového bloku. Budete ho potřebovat později při nastavování připojení ke zdroji dat.
 
 ### <a name="cognitive-services"></a>Cognitive Services
 
-Obohacení umělou a ii je podpořeno službami Cognitive Services, včetně analýzy textu a počítačového vidění pro přirozené zpracování jazyka a obrazu. Pokud vaším cílem bylo dokončit skutečný prototyp nebo projekt, by v tomto bodě poskytování cognitive services (ve stejné oblasti jako Azure Cognitive Search), takže můžete připojit k operacím indexování.
+Obohacení AI je zajištěno Cognitive Services, včetně Analýza textu a Počítačové zpracování obrazu pro zpracování přirozeného jazyka a obrazu. Pokud by vaším cílem bylo dokončit skutečný prototyp nebo projekt, měli byste v tomto okamžiku zřídit Cognitive Services (ve stejné oblasti jako Azure Kognitivní hledání), abyste ho mohli připojit k operacím indexování.
 
-Pro toto cvičení však můžete přeskočit zřizování prostředků, protože Azure Cognitive Search můžete připojit k cognitive services na pozadí a poskytnout 20 volných transakcí na spuštění indexeru. Vzhledem k tomu, že tento kurz používá 7 transakcí, je povolená povolenka dostatečná. Pro větší projekty plánujte na zřizování služeb Cognitive Services na úrovni S0 s průběžným platbami. Další informace naleznete v [tématu Attach Cognitive Services](cognitive-search-attach-cognitive-services.md).
+Pro toto cvičení ale můžete přeskočit zřizování prostředků, protože Azure Kognitivní hledání se může připojit k Cognitive Services na pozadí a poskytnout vám 20 bezplatných transakcí na indexer. Vzhledem k tomu, že tento kurz používá 7 transakcí, je bezplatné přidělení dostatečné. Pro větší projekty Naplánujte zřizování Cognitive Services na úrovni průběžných plateb. Další informace najdete v tématu věnovaném [připojení Cognitive Services](cognitive-search-attach-cognitive-services.md).
 
 ### <a name="azure-cognitive-search"></a>Azure Cognitive Search
 
-Třetí komponentou je Azure Cognitive Search, kterou můžete [vytvořit na portálu](search-create-service-portal.md). K dokončení tohoto návodu můžete použít úroveň Free. 
+Třetí součástí je Azure Kognitivní hledání, kterou můžete vytvořit na [portálu](search-create-service-portal.md). K dokončení tohoto Názorného postupu můžete použít bezplatnou úroveň. 
 
-Stejně jako u úložiště objektů Blob Azure, věnujte chvilku shromažďování přístupového klíče. Dále, když začnete strukturovat požadavky, budete muset poskytnout koncový bod a klíč rozhraní api správce, který se používá k ověření každého požadavku.
+Stejně jako u služby Azure Blob Storage si pro získání přístupového klíče chvíli počkejte. Když při zahájení strukturování požadavků začnete, budete muset zadat koncový bod a klíč rozhraní API pro správu, který se použije k ověření každého požadavku.
 
-### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíče api správce a adresy URL pro Azure Cognitive Search
+### <a name="get-an-admin-api-key-and-url-for-azure-cognitive-search"></a>Získání klíčového rozhraní API pro správu a adresy URL pro Azure Kognitivní hledání
 
-1. [Přihlaste se na portál Azure](https://portal.azure.com/)Portal a na stránce **Přehled** vyhledávací služby získáte název vyhledávací služby. Název služby můžete potvrdit kontrolou adresy URL koncového bodu. Pokud by adresa `https://mydemo.search.windows.net`URL koncového bodu `mydemo`byla , byl by název služby .
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte název vaší vyhledávací služby. Název služby můžete potvrdit zkontrolováním adresy URL koncového bodu. Pokud byla `https://mydemo.search.windows.net`adresa URL koncového bodu, název vaší služby `mydemo`by byl.
 
-2. V **nastavení** > **klíče**, získat klíč správce pro úplná práva ke službě. Existují dva zaměnitelné klíče pro správu, které jsou k dispozici pro kontinuitu podnikání v případě, že potřebujete převrátit jeden. Primární nebo sekundární klíč můžete použít při požadavcích na přidávání, úpravy a odstranění objektů.
+2. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
-   Získejte také klíč dotazu. Je osvědčeným postupem pro vydávání požadavků na dotazy s přístupem jen pro čtení.
+   Získejte taky klíč dotazu. Osvědčeným postupem je vystavovat požadavky na dotazy s přístupem jen pro čtení.
 
-   ![Získání názvu služby a klíčů pro správce a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
+   ![Získání názvu služby a klíčů pro správu a dotazy](media/search-get-started-nodejs/service-name-and-keys.png)
 
-Všechny požadavky vyžadují klíč rozhraní api v záhlaví každé žádosti odeslané do vaší služby. Platný klíč vytvoří vztah důvěryhodnosti na základě požadavku mezi aplikací odesílající požadavek a službou, která ji zpracovává.
+Všechny požadavky vyžadují klíč rozhraní API-Key v hlavičce všech požadavků odeslaných službě. Platný klíč vytváří vztah důvěryhodnosti na základě jednotlivých požadavků mezi aplikací odesílající požadavek a službu, která ho zpracovává.
 
-## <a name="2---start-a-notebook"></a>2 - Spuštění poznámkového bloku
+## <a name="2---start-a-notebook"></a>2. spuštění poznámkového bloku
 
-Vytvořte poznámkový blok podle následujících pokynů nebo si stáhněte hotový poznámkový blok z [repo ukázek Azure-Search-python.](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment)
+Poznámkový blok vytvoříte pomocí následujících pokynů nebo si stáhněte kompletní Poznámkový blok z [úložiště Azure-Search-Python-Samples](https://github.com/Azure-Samples/azure-search-python-samples/tree/master/Tutorial-AI-Enrichment).
 
-Pomocí aplikace Anaconda Navigator můžete spustit poznámkový blok Jupyter a vytvořit nový poznámkový blok Pythonu 3.
+Pomocí Anaconda navigátoru můžete spustit Jupyter Notebook a vytvořit nový notebook Python 3.
 
-V poznámkovém bloku spusťte tento skript a načtěte knihovny používané pro práci s JSON a formulování požadavků HTTP.
+Ve svém poznámkovém bloku spuštěním tohoto skriptu načtěte knihovny používané pro práci s JSON a formulujte požadavky HTTP.
 
 ```python
 import json
@@ -134,7 +134,7 @@ import requests
 from pprint import pprint
 ```
 
-Ve stejném poznámkovém bloku definujte názvy zdroje dat, indexu, indexeru a sady dovedností. Spusťte tento skript a nastavte názvy pro tento kurz.
+Ve stejném poznámkovém bloku definujte názvy pro zdroj dat, index, indexer a dovednosti. Spuštěním tohoto skriptu nastavte názvy pro tento kurz.
 
 ```python
 # Define the names for the data source, skillset, index and indexer
@@ -144,7 +144,7 @@ index_name = "cogsrch-py-index"
 indexer_name = "cogsrch-py-indexer"
 ```
 
-V následujícím skriptu nahraďte zástupné symboly vyhledávací služby (VAŠE-SEARCH-SERVICE-NAME) a klíče rozhraní API pro správu (VAŠE-ADMIN-API-KEY) a spusťte jej a nastavte koncový bod vyhledávací služby.
+V následujícím skriptu Nahraďte zástupné symboly pro vaši vyhledávací službu (název služby-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (správce-klíč rozhraní API-KEY) a pak ho spusťte pro nastavení koncového bodu služby Search.
 
 ```python
 # Setup the endpoint
@@ -156,15 +156,15 @@ params = {
 }
 ```
 
-## <a name="3---create-the-pipeline"></a>3 - Vytvoření potrubí
+## <a name="3---create-the-pipeline"></a>3. vytvoření kanálu
 
-V Azure Cognitive Search, Zpracování AI dochází během indexování (nebo přilnutí dat). Tato část návodu vytvoří čtyři objekty: zdroj dat, definice indexu, skillset, indexer. 
+Ve službě Azure Kognitivní hledání se při indexování (nebo ingestování dat) objevuje zpracování AI. Tato část návodu vytvoří čtyři objekty: zdroj dat, index definice, dovednosti, indexer. 
 
 ### <a name="step-1-create-a-data-source"></a>Krok 1: Vytvoření zdroje dat
 
-[Objekt zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec ke kontejneru objektů Blob obsahujícímu soubory.
+[Objekt zdroje dat](https://docs.microsoft.com/rest/api/searchservice/create-data-source) poskytuje připojovací řetězec k kontejneru objektů blob, který obsahuje soubory.
 
-V následujícím skriptu nahraďte zástupný symbol YOUR-BLOB-RESOURCE-CONNECTION-STRING připojovacím řetězcem pro objekt blob, který jste vytvořili v předchozím kroku. Nahraďte zástupný text kontejneru. Potom spusťte skript a vytvořte zdroj dat s názvem `cogsrch-py-datasource`.
+V následujícím skriptu nahraďte zástupný symbol, a to pomocí připojovacího řetězce pro objekt blob, který jste vytvořili v předchozím kroku. Nahraďte zástupný text pro kontejner. Potom spuštěním skriptu vytvořte zdroj dat s názvem `cogsrch-py-datasource`.
 
 ```python
 # Create a data source
@@ -187,15 +187,15 @@ print(r.status_code)
 
 Požadavek by měl vrátit stavový kód 201 potvrzující úspěch.
 
-Na webu Azure Portal na stránce řídicího panelu vyhledávací služby ověřte, že zdroj dat cogsrch-py se zobrazí v seznamu **Zdroje dat.** Kliknutím na **Aktualizovat** stránku aktualizujte.
+V Azure Portal na stránce řídicí panel služby vyhledávání ověřte, že se v seznamu **zdroje dat** zobrazí položka cogsrch-py-DataSource. Stránku můžete aktualizovat kliknutím na **aktualizovat** .
 
-![Dlaždice zdrojů dat na portálu](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Dlaždice zdrojů dat na portálu")
+![Dlaždice zdroje dat na portálu](./media/cognitive-search-tutorial-blob-python/py-data-source-tile.png "Dlaždice zdroje dat na portálu")
 
-### <a name="step-2-create-a-skillset"></a>Krok 2: Vytvoření sady dovedností
+### <a name="step-2-create-a-skillset"></a>Krok 2: vytvoření dovednosti
 
-V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše data. Jednotlivým krokům rozšiřování se říká *dovednosti*, zatímco sada kroků rozšiřování je *sada dovedností*. Tento kurz používá [integrované kognitivní dovednosti](cognitive-search-predefined-skills.md) pro skillset:
+V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše data. Jednotlivým krokům rozšiřování se říká *dovednosti*, zatímco sada kroků rozšiřování je *sada dovedností*. V tomto kurzu se používá integrovaný program pro [rozpoznávání hlasu](cognitive-search-predefined-skills.md) pro dovednosti:
 
-+ [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizací z obsahu v kontejneru objektů blob.
++ [Rozpoznávání entit](cognitive-search-skill-entity-recognition.md) pro extrahování názvů organizací z obsahu v kontejneru objektů BLOB.
 
 + [Rozpoznávání jazyka](cognitive-search-skill-language-detection.md), které identifikuje jazyk obsahu
 
@@ -203,7 +203,7 @@ V tomto kroku definujete sadu kroků obohacení, které se použijí na vaše da
 
 + [Extrakce klíčových frází](cognitive-search-skill-keyphrases.md), která získává hlavní klíčové fráze 
 
-Spusťte následující skript a `cogsrch-py-skillset`vytvořte sadu dovedností nazvanou .
+Spuštěním následujícího skriptu vytvořte dovednosti s názvem `cogsrch-py-skillset`.
 
 ```python
 # Create a skillset
@@ -291,21 +291,21 @@ print(r.status_code)
 
 Požadavek by měl vrátit stavový kód 201 potvrzující úspěch.
 
-Pro každou stránku se použije dovednost extrakce klíčových frází. Nastavením kontextu `"document/pages/*"`na , spustíte tento obohacení pro každého člena pole dokumentu/stránek (pro každou stránku v dokumentu).
+Pro každou stránku se použije dovednost pro extrakci klíčových frází. Nastavením kontextu na `"document/pages/*"`je spuštění tohoto rozšíření pro každého člena pole dokumentu/stránky (pro každou stránku v dokumentu).
 
-Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azure Cognitive Search rozlouskne každý dokument číst obsah z různých formátů souborů. Text nalezený ve zdrojovém `content` souboru je umístěn do pole, jeden pro každý dokument. Proto nastavte vstup `"/document/content"`jako .
+Pro obsah dokumentu se využijí jednotlivé dovednosti. Během zpracování Azure Kognitivní hledání napraskliní každý dokument, aby četl obsah z různých formátů souborů. Text, který se nachází ve zdrojovém souboru, `content` je umístěn do pole, jeden pro každý dokument. Proto nastavte vstup jako `"/document/content"`.
 
 Grafickou reprezentaci sady dovedností najdete níže.
 
-![Pochopte sadu dovedností](media/cognitive-search-tutorial-blob/skillset.png "Pochopte sadu dovedností")
+![Pochopení dovednosti](media/cognitive-search-tutorial-blob/skillset.png "Pochopení dovednosti")
 
-Výstupy lze mapovat na index, který se používá jako vstup do navazující dovednosti nebo obojí, jako je tomu v případě kódu jazyka. V indexu je kód jazyka užitečný při filtrování. Jako vstup se kód jazyka používá v dovednostech analýzy textu, čímž se jazykovým pravidlům poskytne informace o dělení slov.
+Výstupy mohou být mapovány na index, který slouží jako vstup pro podřízenou dovednost, nebo obojí, stejně jako u kódu jazyka. V indexu je kód jazyka užitečný při filtrování. Jako vstup se kód jazyka používá v dovednostech analýzy textu, čímž se jazykovým pravidlům poskytne informace o dělení slov.
 
 Další informace o základních principech sady dovedností najdete v článku o [definování sady dovedností](cognitive-search-defining-skillset.md).
 
-### <a name="step-3-create-an-index"></a>Krok 3: Vytvoření indexu
+### <a name="step-3-create-an-index"></a>Krok 3: vytvoření indexu
 
-V této části definujete schéma indexu zadáním polí, která mají být zahrnuta do indexu s prohledávatelného, a nastavením atributů hledání pro každé pole. Pole mají typ a můžou přijímat argumenty, které určují, jak se pole používá (prohledávatelné, seřaditelné apod.). K vyhledání přesné shody s názvy polí ve zdroji není nutné, aby index tyto názvy polí obsahoval. V pozdějším kroku přidáte v indexeru mapování polí, pomocí kterých propojíte zdrojová a cílová pole. Pro tento krok definujte index pomocí konvencí pojmenování relevantních pro vaši vyhledávací aplikaci.
+V této části definujete schéma indexu zadáním polí, která mají být zahrnuta do prohledávatelný index, a nastavením atributů hledání pro každé pole. Pole mají typ a můžou přijímat argumenty, které určují, jak se pole používá (prohledávatelné, seřaditelné apod.). K vyhledání přesné shody s názvy polí ve zdroji není nutné, aby index tyto názvy polí obsahoval. V pozdějším kroku přidáte v indexeru mapování polí, pomocí kterých propojíte zdrojová a cílová pole. Pro tento krok definujte index pomocí konvencí pojmenování relevantních pro vaši vyhledávací aplikaci.
 
 V tomto cvičení použijeme následující pole a jejich typy:
 
@@ -313,7 +313,7 @@ V tomto cvičení použijeme následující pole a jejich typy:
 |--------------|----------|-------|----------|--------------------|-------------------|
 | Typy polí: | Edm.String|Edm.String| Edm.String| List<Edm.String>  | List<Edm.String>  |
 
-Spusťte tento skript `cogsrch-py-index`a vytvořte index s názvem .
+Spusťte tento skript k vytvoření indexu s názvem `cogsrch-py-index`.
 
 ```python
 # Create an index
@@ -369,21 +369,21 @@ print(r.status_code)
 
 Požadavek by měl vrátit stavový kód 201 potvrzující úspěch.
 
-Další informace o definování indexu najdete v tématu [vytvoření indexu (Azure Cognitive Search REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
+Další informace o definování indexu najdete v tématu [vytvoření indexu (Azure Kognitivní hledání REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: Vytvoření a spuštění indexeru
+### <a name="step-4-create-and-run-an-indexer"></a>Krok 4: vytvoření a spuštění indexeru
 
-[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) řídí potrubí. Tři komponenty, které jste dosud vytvořili (zdroj dat, skillset, index) jsou vstupy do indexeru. Vytvoření indexeru v Azure Cognitive Search je událost, která uvádí celý kanál do pohybu. 
+[Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) vyřídí kanál. Tři komponenty, které jste doposud vytvořili (zdroj dat, dovednosti, index), jsou vstupy pro indexer. Vytvoření indexeru v Azure Kognitivní hledání je událost, která vloží celý kanál do pohybu. 
 
-Chcete-li tyto objekty spojit v indexeru, musíte definovat mapování polí.
+Chcete-li tyto objekty spojit dohromady v indexeru, je nutné definovat mapování polí.
 
-+ PoleMapování jsou zpracovány před skillset, mapování zdrojových polí ze zdroje dat na cílová pole v indexu. Pokud jsou názvy a typy polí na obou koncích stejné, není vyžadováno žádné mapování.
++ FieldMappings se zpracovávají před dovednosti a mapuje zdrojová pole ze zdroje dat na cílová pole v indexu. Pokud jsou názvy polí a typy na obou koncích stejné, není nutné žádné mapování.
 
-+ OutputFieldMappings jsou zpracovány po skillset, odkazování sourceFieldNames, které neexistují, dokud dokument praskání nebo obohacení vytvoří. TargetFieldName je pole v indexu.
++ OutputFieldMappings se zpracovávají po dovednosti a odkazují na sourceFieldNames, které neexistují, dokud je nevytvoří dokument pro vyhodnocování nebo rozšíření. TargetFieldName je pole v indexu.
 
-Kromě připojení vstupů k výstupům můžete také použít mapování polí ke sloučení datových struktur. Další informace naleznete v tématu [Mapování obohacených polí na index s prohledávatelným způsobem](cognitive-search-output-field-mapping.md).
+Kromě zapojení vstupů do výstupů můžete také použít mapování polí pro sloučení datových struktur. Další informace najdete v tématu [mapování obohacených polí na index s možností prohledávání](cognitive-search-output-field-mapping.md).
 
-Spusťte tento skript a `cogsrch-py-indexer`vytvořte indexer s názvem .
+Spuštěním tohoto skriptu vytvořte indexer s názvem `cogsrch-py-indexer`.
 
 ```python
 # Create an indexer
@@ -436,26 +436,26 @@ r = requests.put(endpoint + "/indexers/" + indexer_name,
 print(r.status_code)
 ```
 
-Požadavek by měl brzy vrátit stavový kód 201, zpracování však může trvat několik minut. Přestože je sada dat malá, analytické dovednosti, jako je například analýza obrazu, jsou výpočtově náročné a nějakou dobu trvat.
+Požadavek by měl brzy vrátit stavový kód 201, ale zpracování může trvat několik minut. I když je datová sada malá, analytické dovednosti, jako je například analýza obrázků, jsou výpočty náročné na výpočetní výkon a nějakou dobu trvat.
 
-Můžete [sledovat stav indexeru](#check-indexer-status) k určení, kdy je indexer spuštěn nebo dokončen.
+Můžete [monitorovat stav indexeru](#check-indexer-status) a zjistit, kdy indexer běží nebo je dokončený.
 
 > [!TIP]
-> Vytvoření indexeru vyvolá kanál. Pokud se objeví problém s přístupem k datům, mapování min. vstupy a výstupy nebo s pořadím operací, zobrazí se v této fázi. Chcete-li kanál znovu spustit se změnami kódu nebo skriptu, bude pravděpodobně nutné nejprve odstranit objekty. Další informace najdete v článku o [resetování a opětovném spuštění](#reset).
+> Vytvoření indexeru vyvolá kanál. Pokud dojde k potížím při přístupu k datům, mapování vstupů a výstupů nebo v pořadí operací, zobrazí se v této fázi. Chcete-li znovu spustit kanál se změnami kódu nebo skriptu, bude pravděpodobně nutné nejprve odstranit objekty. Další informace najdete v článku o [resetování a opětovném spuštění](#reset).
 
-#### <a name="about-the-request-body"></a>O textu požadavku
+#### <a name="about-the-request-body"></a>O textu žádosti
 
 Skript nastaví `"maxFailedItems"` na -1, což dá modulu indexování pokyn, aby během importování dat ignoroval chyby. To je užitečné, protože v ukázkovém zdroji dat je velmi málo dokumentů. Pro větší zdroje dat by tato hodnota byla větší než 0.
 
-Navíc si všimněte příkazu `"dataToExtract":"contentAndMetadata"` v parametrech konfigurace. Tento příkaz říká indexerextrahovat obsah z různých formátů souborů a metadata vztahující se ke každému souboru.
+Navíc si všimněte příkazu `"dataToExtract":"contentAndMetadata"` v parametrech konfigurace. Tento příkaz dává indexeru pokyn, aby extrakci obsahu z různých formátů souborů a metadat souvisejících s každým souborem.
 
-Když se extrahuje obsah, můžete nastavit `imageAction`, aby se z obrázků nalezených ve zdroji dat extrahoval text. Konfigurace `"imageAction":"generateNormalizedImages"` v kombinaci s dovedností OCR a dovedností sloučení textu říká indexeru, aby extrahoval text z obrázků (například slovo "stop" ze znaménko stop provozu) a vkládal jej jako součást pole obsahu. Toto chování se vztahuje jak na obrazy vložené do dokumentů (představte si obraz uvnitř PDF), tak pro obrazy nalezené ve zdroji dat, například v souboru JPG.
+Když se extrahuje obsah, můžete nastavit `imageAction`, aby se z obrázků nalezených ve zdroji dat extrahoval text. V `"imageAction":"generateNormalizedImages"` kombinaci s dovedností optického textu a dovednosti pro sloučení textu říká indexeru, aby vyextrahovali text z obrázků (například slovo "Stop" z znaku zastavení provozu) a vloží ho jako součást pole Content. Toto chování platí pro obrázky vložené do dokumentů (můžete si představit obrázek v PDF) a obrázky, které se nacházejí ve zdroji dat, například soubor. JPG.
 
 <a name="check-indexer-status"></a>
 
-## <a name="4---monitor-indexing"></a>4 - Sledování indexování
+## <a name="4---monitor-indexing"></a>4. monitorování indexování
 
-Až se indexer nadefinuje, automaticky se spustí, až se odešle požadavek. Podle kognitivních dovedností, které jste definovali, může indexování trvat déle, než jste čekali. Chcete-li zjistit, zda je zpracování indexeru dokončeno, spusťte následující skript.
+Až se indexer nadefinuje, automaticky se spustí, až se odešle požadavek. Podle kognitivních dovedností, které jste definovali, může indexování trvat déle, než jste čekali. Chcete-li zjistit, zda bylo zpracování indexeru dokončeno, spusťte následující skript.
 
 ```python
 # Get indexer status
@@ -464,19 +464,19 @@ r = requests.get(endpoint + "/indexers/" + indexer_name +
 pprint(json.dumps(r.json(), indent=1))
 ```
 
-V odpovědi sledujte hodnoty "lastResult" pro jeho hodnoty "status" a "endTime". Pravidelně spouštějte skript a zkontrolujte stav. Po dokončení indexeru bude stav nastaven na "úspěch", bude zadán "endTime" a odpověď bude obsahovat všechny chyby a upozornění, ke kterým došlo během obohacení.
+V odpovědi Sledujte "lastResult" pro hodnoty "stav" a "čas". Pravidelně spouštějte skript pro kontrolu stavu. Až se indexer dokončí, stav se nastaví na "úspěch", zadá se "Čas_ukončení" a odpověď bude obsahovat všechny chyby a upozornění, ke kterým došlo během obohacování.
 
-![Indexer je vytvořen](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexer je vytvořen")
+![Indexer je vytvořený.](./media/cognitive-search-tutorial-blob-python/py-indexer-is-created.png "Indexer je vytvořený.")
 
-Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. Mnoho varování je neškodné. Pokud například indexujete soubor JPEG, který nemá text, zobrazí se na tomto snímku obrazovky upozornění.
+Pro určité kombinace zdrojových souborů a dovedností jsou upozornění běžná a ne vždy představují problém. Mnoho upozornění je neškodné. Pokud například nasadíte soubor JPEG, který nemá text, zobrazí se upozornění na tomto snímku obrazovky.
 
 ![Příklad upozornění indexeru](./media/cognitive-search-tutorial-blob-python/py-indexer-warning-example.png "Příklad upozornění indexeru")
 
-## <a name="5---search"></a>5 - Hledání
+## <a name="5---search"></a>5 – hledání
 
-Jakmile se indexování dokončí, spusťte dotazy, které vrátí obsah jednotlivých polí. Ve výchozím nastavení Azure Cognitive Search vrátí prvních 50 nejlepších výsledků. Ukázková data jsou malá, takže výchozí nastavení stačí. Až ale budete pracovat s většími sadami dat, budete možná potřebovat přidat do řetězce dotazu nějaké parametry, aby se výsledků vrátilo více. Pokyny najdete v tématu [Jak zobrazit výsledky stránky v Azure Cognitive Search](search-pagination-page-layout.md).
+Jakmile se indexování dokončí, spusťte dotazy, které vrátí obsah jednotlivých polí. Ve výchozím nastavení vrátí Azure Kognitivní hledání výsledky nejvyšší 50. Ukázková data jsou malá, takže výchozí nastavení stačí. Až ale budete pracovat s většími sadami dat, budete možná potřebovat přidat do řetězce dotazu nějaké parametry, aby se výsledků vrátilo více. Pokyny najdete v tématu [o výsledcích stránky v Azure kognitivní hledání](search-pagination-page-layout.md).
 
-Jako krok ověření získáte definici indexu zobrazující všechna pole.
+Jako ověřovací krok Získejte definici indexu zobrazující všechna pole.
 
 ```python
 # Query the service for the index definition
@@ -487,7 +487,7 @@ pprint(json.dumps(r.json(), indent=1))
 
 Výsledky by měly vypadat podobně jako v následujícím příkladu. Snímek obrazovky zobrazuje pouze část odpovědi.
 
-![Index dotazu pro všechna pole](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Dotaz na index pro všechna pole")
+![Index dotazu pro všechna pole](./media/cognitive-search-tutorial-blob-python/py-query-index-for-fields.png "Dotazování indexu pro všechna pole")
 
 Výstupem je schéma indexu s názvem, typem a atributy všech jednotlivých polí.
 
@@ -502,9 +502,9 @@ pprint(json.dumps(r.json(), indent=1))
 
 Výsledky by měly vypadat podobně jako v následujícím příkladu. Snímek obrazovky zobrazuje pouze část odpovědi.
 
-![Index dotazu pro obsah organizací](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Dotaz na index pro vrácení obsahu organizací")
+![Index dotazu pro obsah organizací](./media/cognitive-search-tutorial-blob-python/py-query-index-for-organizations.png "Dotazování indexu, který vrátí obsah organizací")
 
-Tento postup opakujte pro další pole: obsah, jazykKód, klíčové fráze a organizace v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
+Opakujte pro další pole: obsah, languageCode, klíčová fráze a organizace v tomto cvičení. Prostřednictvím `$select` můžete pomocí seznamu hodnot oddělených čárkami vrátit více než jedno pole.
 
 V závislosti na složitosti a délce řetězce dotazu můžete použít operace GET nebo POST. Další informace najdete v článku o [dotazování pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
@@ -512,13 +512,13 @@ V závislosti na složitosti a délce řetězce dotazu můžete použít operace
 
 ## <a name="reset-and-rerun"></a>Resetování a opětovné spuštění
 
-V raných experimentálních fázích vývoje je nejpraktičtějším přístupem pro iteraci návrhu odstranění objektů z Azure Cognitive Search a povolení jejich opětovného sestavení kódu. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
+Ve fázích předčasného experimentu vývoje je nejužitečnějším přístupem k iteraci návrhu odstranění objektů z Azure Kognitivní hledání a umožnění kódu jejich opětovného sestavení. Názvy prostředků jsou jedinečné. Když se objekt odstraní, je možné ho znovu vytvořit se stejným názvem.
 
-Portál můžete použít k odstranění indexů, indexerů, zdrojů dat a skillsets. Při odstranění indexeru můžete volitelně selektivně odstranit index, skillset a zdroj dat současně.
+Portál můžete použít k odstranění indexů, indexerů, zdrojů dat a dovednosti. Když indexer odstraníte, můžete také selektivně odstranit index, dovednosti a zdroj dat...
 
-![Odstranění vyhledávacích objektů](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Odstranění vyhledávacích objektů na portálu")
+![Odstranit objekty hledání](./media/cognitive-search-tutorial-blob-python/py-delete-indexer-delete-all.png "Odstranění objektů hledání na portálu")
 
-Můžete je také odstranit pomocí skriptu. Následující skript ukazuje, jak odstranit skillset. 
+Můžete je také odstranit pomocí skriptu. Následující skript ukazuje, jak odstranit dovednosti. 
 
 ```python
 # delete the skillset
@@ -533,19 +533,19 @@ Při úspěšném odstranění se vrátí kód stavu 204.
 
 Tento kurz ukazuje základní postup sestavení kanálu pro rozšířené indexování, při kterém se vytvářejí součásti: zdroj dat, sada dovedností, index a indexer.
 
-Byly zavedeny [vestavěné dovednosti](cognitive-search-predefined-skills.md) spolu s definicemi dovedností a způsobem, jak spojit dovednosti prostřednictvím vstupů a výstupů. Také jste `outputFieldMappings` zjistili, že v definici indexeru je vyžadovánpro směrování obohacené hodnoty z kanálu do indexu prohledávatelné na Azure Cognitive Search služby.
+Byly představeny [integrované dovednosti](cognitive-search-predefined-skills.md) společně s definicemi dovednosti a způsobem, jak zřetězit dovednosti prostřednictvím vstupů a výstupů. Zjistili jste taky, `outputFieldMappings` že v definici indexeru se vyžaduje směrování hodnot obohacených z kanálu do indexu s možností vyhledávání ve službě Azure kognitivní hledání.
 
-Nakonec jste se naučili testovat výsledky a resetovat systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. V této verzi existuje mechanismus, jak si zobrazit vnitřní konstrukce (rozšířené dokumenty, které systém vytvořil). Také jste se dozvěděli, jak zkontrolovat stav indexeru a jaké objekty musí být odstraněny před opětovným spuštěním kanálu.
+Nakonec jste zjistili, jak testovat výsledky a obnovit systém pro další iterace. Zjistili jste, že zasílání dotazů na index vrací výstup vytvořený kanálem rozšířeného indexování. V této verzi existuje mechanismus, jak si zobrazit vnitřní konstrukce (rozšířené dokumenty, které systém vytvořil). Zjistili jste také, jak kontrolovat stav indexeru a jaké objekty je nutné před opakovaným spuštěním kanálu odstranit.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Při práci ve vlastním předplatném je na konci projektu vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
+Pokud pracujete ve vlastním předplatném, je vhodné odebrat prostředky, které už nepotřebujete. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
-Můžete najít a spravovat prostředky na portálu pomocí odkazu Všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu všechny prostředky nebo skupiny prostředků v levém navigačním podokně.
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste obeznámeni se všemi objekty v kanálu obohacení AI, podívejme se blíže na definice dovedností a individuální dovednosti.
+Teď, když jste obeznámení se všemi objekty v kanálu obohacení AI, se podíváme na dovednosti definice a jednotlivé dovednosti.
 
 > [!div class="nextstepaction"]
-> [Jak vytvořit sadu dovedností](cognitive-search-defining-skillset.md)
+> [Vytvoření dovednosti](cognitive-search-defining-skillset.md)

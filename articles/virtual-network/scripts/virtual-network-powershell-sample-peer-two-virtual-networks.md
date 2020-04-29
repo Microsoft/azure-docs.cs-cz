@@ -1,5 +1,5 @@
 ---
-title: Peer dvě virtuální sítě – ukázka skriptu Azure PowerShell
+title: Partnerské dva virtuální sítě – ukázka skriptu Azure PowerShell
 description: Ukázkový skript Azure PowerShellu – Vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
 ms.openlocfilehash: 4061997aa2efbae250b30fc58cef06b1249c2b8f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74091299"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Ukázkový skript pro vytvoření partnerského vztahu mezi dvěma virtuálními sítěmi
 
 Tento ukázkový skript vytvoří dvě virtuální sítě ve stejné oblasti a propojí je prostřednictvím sítě Azure. Po spuštění skriptu vytvoříte partnerský vztah mezi dvěma virtuálními sítěmi.
 
-Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte prostředí PowerShell místně, tento skript vyžaduje modul Az PowerShell verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Skript můžete spustit ve službě Azure [Cloud Shell](https://shell.azure.com/powershell) nebo v místně nainstalovaném PowerShellu. Pokud používáte PowerShell místně, vyžaduje tento skript příkaz AZ PowerShell Module verze 5.4.1 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-Az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,8 +48,8 @@ Tento skript k vytvoření skupiny prostředků, virtuálního počítače a vš
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nová virtuální síť Az](/powershell/module/az.network/new-azvirtualnetwork)| Vytvoří virtuální síť Azure a podsíť. |
-| [Doplněk AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
+| [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| Vytvoří virtuální síť Azure a podsíť. |
+| [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering) | Vytvoří partnerský vztah mezi dvěma virtuálními sítěmi.  |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
 ms.openlocfilehash: ee9a68df685095244fc9471b7d4ab0f6cee0642d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68360264"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
@@ -31,11 +31,11 @@ V tomto kurzu provedete následující akce:
 > * Připojení k virtuálnímu počítači
 > * Vrácení virtuálního počítače
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="access-the-lab"></a>Přístup k testovacímu prostředí
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce vlevo vyberte **Všechny prostředky**. 
 3. Jako typ prostředku vyberte **DevTest Labs**. 
 4. Vyberte testovací prostředí. 
@@ -61,12 +61,12 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
     Pokud se chcete připojit k virtuálnímu počítači s Linuxem, musí pro něj být povolený přístup přes SSH nebo protokol RDP. Postup připojení k virtuálnímu počítači s Linuxem přes protokol RDP najdete v tématu [Instalace a konfigurace Vzdálené plochy pro připojení k virtuálnímu počítači s Linuxem v Azure](../virtual-machines/linux/use-remote-desktop.md). 
 
     > [!NOTE]
-    > Existují i jiné způsoby, jak se dostat na stránku virtuálního počítače pro váš virtuální počítač. Zde jsou některé z nich: 
+    > Existují i jiné způsoby, jak se dostat na stránku virtuálního počítače pro váš virtuální počítač. Tady jsou některé z nich: 
     > 
-    > 1. Vyhledejte všechny virtuální počítače ve vašem předplatném. Vyberte virtuální počítač v seznamu virtuálních počítačů, abyste se dostali na stránku **Virtuální počítač.**
-    > 2. Přejděte na stránku **Skupina prostředků** pro skupinu prostředků. Potom vyberte virtuální počítač ze seznamu prostředků ve skupině prostředků, abyste se dostali na stránku **Virtuální počítač.** 
+    > 1. Vyhledejte všechny virtuální počítače ve vašem předplatném. Vyberte svůj virtuální počítač v seznamu virtuálních počítačů, které chcete získat na stránce **virtuálního počítače** .
+    > 2. Přejděte na stránku **skupiny prostředků** pro skupinu prostředků. Pak vyberte svůj virtuální počítač ze seznamu prostředků ve skupině prostředků, abyste se dostali na stránku **virtuálního počítače** . 
     >
-    > Nepoužívejte tlačítko **Připojit** na panelu nástrojů na stránce **Virtuální počítač,** ke kterému se dostanete pomocí těchto možností. Místo toho přejděte na stránku **Virtuální počítač** ze stránky **DevTest Labs,** jak je znázorněno v tomto článku, a pak použijte tlačítko **Připojit** na panelu nástrojů.
+    > Nepoužívejte tlačítko **připojit** na panelu nástrojů na stránce **virtuálního počítače** , ke kterému se dostanete pomocí těchto možností. Místo toho přejděte na stránku **virtuálního počítače** na stránce **DevTest Labs** , jak je znázorněno v tomto článku, a pak použijte tlačítko **připojit** na panelu nástrojů.
 
 
 ## <a name="unclaim-the-vm"></a>Vrácení virtuálního počítače
@@ -76,10 +76,10 @@ Jakmile virtuální počítač přestanete používat, vraťte ho pomocí násle
 
     ![Vrácení virtuálního počítače](./media/tutorial-use-custom-lab/unclaim-vm-menu.png)
 1. Virtuální počítač se před vrácením vypne. Stav této operace můžete zobrazit v oznámeních.  
-3. Přejděte zpět na stránku DevTest Lab kliknutím na název testovacího prostředí v nabídce s popisem cesty v horní části. 
+3. Přejděte zpátky na stránku DevTest Lab kliknutím na název testovacího prostředí v nabídce s popisem cesty v horní části. 
     
-    ![Přejděte zpět do testovacího prostředí](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
-1. Zkontrolujte, že se virtuální počítač zobrazuje v seznamu **claimable virtuálních počítačů** seznamu v dolní části.
+    ![Přejít zpátky do testovacího prostředí](./media/tutorial-use-custom-lab/breadcrumb-to-lab.png)
+1. Ověřte, že se v dolní části seznamu vydaných **virtuálních počítačů** zobrazí virtuální počítač.
 
     
 ## <a name="next-steps"></a>Další kroky

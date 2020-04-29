@@ -5,54 +5,54 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: genemi
 ms.openlocfilehash: e30651cb0ed7d74082163a92acbc428c21018255
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175085"
 ---
-## <a name="c-program-example"></a>Příklad programu Jazyka C#
+## <a name="c-program-example"></a>Příklad programu C#
 
-Další části tohoto článku představují c# program, který používá ADO.NET k odeslání příkazy Transact-SQL (T-SQL) do databáze SQL. Program Jazyka C# ukazuje následující akce:
+V dalších částech tohoto článku se nachází program v jazyce C#, který používá ADO.NET k posílání příkazů jazyka Transact-SQL (T-SQL) do databáze SQL. Program C# předvádí následující akce:
 
-- [Připojení k databázi SQL pomocí ADO.NET](#cs_1_connect)
+- [Připojení k SQL Database pomocí ADO.NET](#cs_1_connect)
 - [Metody, které vracejí příkazy T-SQL](#cs_2_return)
     - Vytvoření tabulek
-    - Vyplnění tabulek daty
+    - Naplnění tabulek daty
     - Aktualizace, odstranění a výběr dat
-- [Odeslání T-SQL do databáze](#cs_3_submit)
+- [Odeslat T-SQL do databáze](#cs_3_submit)
 
-### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů entity (ERD)
+### <a name="entity-relationship-diagram-erd"></a>Diagram vztahů mezi entitami (ERD)
 
-Příkazy `CREATE TABLE` zahrnují klíčové slovo **REFERENCEs** k vytvoření relace *cizího klíče* (FK) mezi dvěma tabulkami. Pokud používáte *tempdb*, zakomentujte `--REFERENCES` klíčové slovo pomocí dvojice předních pomlček.
+`CREATE TABLE` Příkazy zahrnují klíčové slovo **References** k vytvoření vztahu *cizího klíče* (FK) mezi dvěma tabulkami. Pokud používáte *databázi tempdb*, přidejte komentář k `--REFERENCES` klíčovému slovu pomocí dvojice počátečních pomlček.
 
-Erd zobrazí vztah mezi dvěma tabulkami. Hodnoty v **záložcePodřízený sloupec Employee.DepartmentCode** *child* jsou omezeny na hodnoty z *nadřazeného* sloupce **Department.DepartmentCode.**
+Záchranná disketa zobrazuje vztah mezi oběma tabulkami. Hodnoty v *podřízeném* sloupci **tabEmployee. DepartmentCode** jsou omezeny na hodnoty z *nadřazeného* sloupce **tabDepartment. DepartmentCode** .
 
-![ERD zobrazující cizí klíč](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
+![Záchranná disketa ukazující cizí klíč](./media/sql-database-csharp-adonet-create-query-2/erd-dept-empl-fky-2.png)
 
 > [!NOTE]
-> Máte možnost upravit T-SQL přidat proklad `#` do tabulky názvy, které je vytvoří jako dočasné tabulky v *tempdb*. To je užitečné pro účely demonstrace, pokud není k dispozici žádná testovací databáze. Jakýkoli odkaz na cizí klíče nejsou vynuceny během jejich použití a dočasné tabulky jsou odstraněny automaticky po ukončení připojení po dokončení programu.
+> Máte možnost upravovat T-SQL, abyste přidali úvodní `#` název tabulky, který je vytvoří jako dočasné tabulky v *databázi tempdb*. To je užitečné pro demonstrační účely, pokud není k dispozici žádná testovací databáze. Všechny odkazy na cizí klíče se během jejich používání nevynutily a dočasné tabulky se odstraní automaticky, když se připojení ukončí po dokončení programu.
 
-### <a name="to-compile-and-run"></a>Kompilace a spuštění
+### <a name="to-compile-and-run"></a>Pro zkompilování a spuštění
 
-Program Jazyka C# je logicky jeden soubor CS a je fyzicky rozdělen do několika bloků kódu, aby byl každý blok srozumitelnější. Chcete-li program zkompilovat a spustit, postupujte takto:
+Program v jazyce C# je logicky jeden soubor. cs a fyzicky je rozdělen do několika bloků kódu, aby bylo snazší pochopit jednotlivé bloky. Chcete-li zkompilovat a spustit program, proveďte následující kroky:
 
-1. Vytvořte projekt Jazyka C# v sadě Visual Studio. Typ projektu by měl být *konzola*, najdete v části **Šablony** > **Visual C#** > **Windows Desktop** > **Console App (.NET Framework)**.
+1. Vytvořte projekt C# v aplikaci Visual Studio. Typ projektu by měl být *Konzola*, která se nachází v části **šablony** > **Visual C#** > **Windows Desktop** > **Konzolová aplikace (.NET Framework)**.
 
-1. V *Program.cs*souboru nahraďte počáteční řádky kódu následujícími kroky:
+1. V souboru *program.cs*nahraďte počáteční řádky kódu následujícím postupem:
 
-    1. Zkopírujte a vložte následující bloky kódu ve stejném pořadí, ve kterém jsou prezentovány, viz [Připojení k databázi](#cs_1_connect), [Generovat T-SQL](#cs_2_return)a [Odeslat do databáze](#cs_3_submit).
+    1. Zkopírujte a vložte následující bloky kódu ve stejném pořadí, v jakém jsou prezentovány, viz [připojení k databázi](#cs_1_connect), [generování T-SQL](#cs_2_return)a [odeslání do databáze](#cs_3_submit).
 
-    1. Změňte následující hodnoty `Main` v metodě:
+    1. Změňte následující hodnoty v `Main` metodě:
 
-        - *Cb. Datasource*
-        - *Cb. Userid*
-        - *Cb. Heslo*
-        - *Cb. InitialCatalog*
+        - *CB. Datového*
+        - *CB. UserID*
+        - *CB. Zadáno*
+        - *CB. Vlastnost InitialCatalog*
 
-1. Ověřte, zda je odkazováno na soubor *System.Data.dll* sestavení. Chcete-li ověřit, rozbalte uzel **Odkazy** v podokně **Průzkumník řešení.**
+1. Ověřte, že je odkazováno na sestavení *System. data. dll* . Chcete-li ověřit, rozbalte uzel **odkazy** v podokně **Průzkumník řešení** .
 
-1. Chcete-li vytvořit a spustit program z aplikace Visual Studio, vyberte tlačítko **Start.** Výstup sestavy se zobrazí v okně programu, i když hodnoty GUID se budou lišit mezi testovacími běhy.
+1. Chcete-li vytvořit a spustit program ze sady Visual Studio, vyberte tlačítko **Start** . Výstup sestavy se zobrazí v okně programu, i když se hodnoty GUID mezi testovacími běhy budou lišit.
 
     ```Output
     =================================
@@ -82,7 +82,7 @@ Program Jazyka C# je logicky jeden soubor CS a je fyzicky rozdělen do několika
 
 <a name="cs_1_connect"/>
 
-### <a name="connect-to-sql-database-using-adonet"></a>Připojení k databázi SQL pomocí ADO.NET
+### <a name="connect-to-sql-database-using-adonet"></a>Připojení k SQL Database pomocí ADO.NET
 
 ```csharp
 using System;
@@ -240,7 +240,7 @@ static string Build_6_Tsql_SelectEmployees()
 
 <a name="cs_3_submit"/>
 
-### <a name="submit-t-sql-to-the-database"></a>Odeslání T-SQL do databáze
+### <a name="submit-t-sql-to-the-database"></a>Odeslat T-SQL do databáze
 
 ```csharp
 static void Submit_6_Tsql_SelectEmployees(SqlConnection connection)

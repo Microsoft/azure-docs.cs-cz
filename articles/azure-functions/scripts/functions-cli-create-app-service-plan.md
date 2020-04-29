@@ -1,15 +1,15 @@
 ---
-title: Vytvoření aplikace funkcí v plánu služby App Service – Azure CLI
+title: Vytvoření Function App v plánu App Service – Azure CLI
 description: Ukázkový skript Azure CLI – Vytvoření aplikace funkcí v plánu služby App Service
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 77e026e12d14745c308e1d02fade13f318d9e532
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74532845"
 ---
 # <a name="create-a-function-app-in-an-app-service-plan"></a>Vytvoření aplikace funkcí v plánu služby App Service
@@ -38,7 +38,7 @@ Každý příkaz v tabulce odkazuje na příslušnou část dokumentace. Tento s
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Vytvoří účet služby Azure Storage. |
-| [az functionapp plán vytvořit](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Vytvoří plán Premium. |
+| [AZ functionapp Plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) | Vytvoří plán Premium. |
 | [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Vytvoří v plánu služby App Service aplikaci funkcí. |
 
 ## <a name="next-steps"></a>Další kroky

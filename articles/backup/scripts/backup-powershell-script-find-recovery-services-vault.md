@@ -1,18 +1,18 @@
 ---
-title: PowerShell Script – hledání účtu úložiště pro úložiště
-description: Přečtěte si, jak pomocí skriptu Azure PowerShellnajít trezor služeb pro obnovení, kde je registrovaný účet úložiště.
+title: PowerShellový skript – najít trezor pro účet úložiště
+description: Naučte se, jak pomocí skriptu Azure PowerShell najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 ms.topic: sample
 ms.date: 1/28/2020
 ms.openlocfilehash: 786420ec8cef6516f7261c71b40641693efece07
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76775358"
 ---
-# <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Powershellscript pro nalezení trezoru služby Recovery Services, kde je účet úložiště registrován
+# <a name="powershell-script-to-find-the-recovery-services-vault-where-a-storage-account-is-registered"></a>Skript PowerShellu pro vyhledání trezoru Recovery Services, ve kterém je registrovaný účet úložiště
 
-Tento skript vám pomůže najít trezor služeb pro obnovení, kde je váš účet úložiště registrován.
+Tento skript vám pomůže najít trezor služby Recovery Services, ve kterém je váš účet úložiště zaregistrovaný.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -47,16 +47,16 @@ if(!$found)
 }
 ```
 
-## <a name="how-to-execute-the-script"></a>Jak spustit skript
+## <a name="how-to-execute-the-script"></a>Postup spuštění skriptu
 
-1. Uložte výše uvedený skript do počítače s názvem dle vašeho výběru. V tomto příkladu jsme jej uložili jako *FindRegisteredStorageAccount.ps1*.
-2. Spusťte skript poskytnutím následujících parametrů:
+1. Uložte skript výše na svém počítači s názvem, který jste vybrali. V tomto příkladu jsme ho uložili jako *FindRegisteredStorageAccount. ps1*.
+2. Spusťte skript zadáním následujících parametrů:
 
-    * **-ResourceGroupName** - Skupina prostředků účtu úložiště
+    * **-ResourceGroupName** -skupina prostředků účtu úložiště
     * **-StorageAccountName** – název účtu úložiště
-    * **-SubscriptionID** - ID předplatného, kde je k dispozici účet úložiště.
+    * **-SubscriptionId** – ID předplatného, kde se nachází účet úložiště.
 
-Následující příklad se pokusí najít trezor služeb obnovení, kde je registrován účet úložiště *afsaccount:*
+Následující příklad se pokusí najít trezor služby Recovery Services, kde je zaregistrován účet úložiště *afsaccount* :
 
 ```powershell
 .\FindRegisteredStorageAccount.ps1 -ResourceGroupName AzureFiles -StorageAccountName afsaccount -SubscriptionId ef4ad5a7-c2c0-4304-af80-af49f49af3d1
@@ -64,7 +64,7 @@ Následující příklad se pokusí najít trezor služeb obnovení, kde je regi
 
 ## <a name="output"></a>Výstup
 
-Na výstupu se zobrazí úplná cesta trezoru služeb obnovení, kde je účet úložiště registrován. Zde je ukázkový výstup:
+Ve výstupu se zobrazí úplná cesta k trezoru služby Recovery Services, kde je zaregistrován účet úložiště. Zde je ukázkový výstup:
 
 ```output
 Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c2c0-4304-af80-af49f49af3d1/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault123
@@ -72,4 +72,4 @@ Found Storage account afsaccount registered in vault: /subscriptions/ ef4ad5a7-c
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [zálohovat sdílené složky Azure z webu Azure Portal](https://docs.microsoft.com/azure/backup/backup-afs)
+Informace o [Zálohování sdílených složek Azure z Azure Portal](https://docs.microsoft.com/azure/backup/backup-afs)

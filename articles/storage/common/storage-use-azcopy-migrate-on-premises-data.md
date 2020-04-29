@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Migrace místních dat do Úložiště Azure pomocí AzCopy| Dokumenty společnosti Microsoft'
+title: 'Kurz: migrace místních dat na Azure Storage s využitím AzCopy | Microsoft Docs'
 description: V tomto kurzu použijete AzCopy k migraci dat nebo kopírování dat do nebo z objektu blob, tabulky a obsahu souboru. Jednoduše migrujte data z místního úložiště do služby Azure Storage.
 author: normesta
 ms.service: storage
@@ -9,13 +9,13 @@ ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
 ms.openlocfilehash: f7155053072b3533503765dc6f4fbf185d21f0d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74327523"
 ---
-#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: Migrace místních dat do cloudového úložiště pomocí AzCopy
+#  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Kurz: migrace místních dat do cloudového úložiště pomocí AzCopy
 
 AzCopy je nástroj příkazového řádku určený ke kopírování dat do nebo z úložiště objektů blob v Azure, služby Soubory Azure a úložiště tabulek v Azure pomocí jednoduchých příkazů. Příkazy jsou navržené pro zajištění optimálního výkonu. Pomocí AzCopy můžete kopírovat data mezi systémem souborů a účtem úložiště nebo mezi účty úložiště. AzCopy je možné použít ke kopírování místních dat (v místním prostředí) do účtu úložiště.
 
@@ -27,11 +27,11 @@ V tomto kurzu se naučíte:
 > * Úprava dat pro účely testování
 > * Vytvoření plánované úlohy nebo úlohy Cron pro identifikaci nových souborů k nahrání
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento kurz, stáhněte si nejnovější verzi AzCopy. Viz [Začínáme s AzCopy](storage-use-azcopy-v10.md).
+Pokud chcete tento kurz dokončit, Stáhněte si nejnovější verzi AzCopy. Viz Začínáme [s AzCopy](storage-use-azcopy-v10.md).
 
 Pokud používáte Windows, budete potřebovat nástroj [Schtasks](https://msdn.microsoft.com/library/windows/desktop/bb736357(v=vs.85).aspx), který se v tomto kurzu používá k naplánování úlohy. Uživatelé Linuxu místo toho použijí příkaz crontab.
 
@@ -50,31 +50,31 @@ Podle těchto pokynů vytvořte kontejner:
  
 Názvy kontejnerů musí začínat písmenem nebo číslicí. Můžou obsahovat pouze písmena, číslice a znak spojovníku (-). Další informace o pojmenování kontejnerů a objektů blob najdete v tématu [Názvy kontejnerů, objektů blob a metadat a odkazování na ně](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-## <a name="download-azcopy"></a>Stažení AzCopy
+## <a name="download-azcopy"></a>Stáhnout AzCopy
 
-Stáhněte si spustitelný soubor AzCopy V10.
+Stáhněte si spustitelný soubor AzCopy v10 za účelem.
 
-- [Okna](https://aka.ms/downloadazcopy-v10-windows) (zip)
-- [Linux](https://aka.ms/downloadazcopy-v10-linux) (dehet)
-- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (zip)
+- [Windows](https://aka.ms/downloadazcopy-v10-windows) (ZIP)
+- [Linux](https://aka.ms/downloadazcopy-v10-linux) (tar)
+- [MacOS](https://aka.ms/downloadazcopy-v10-mac) (ZIP)
 
-Umístěte soubor AzCopy kamkoli v počítači. Přidejte umístění souboru do proměnné systémové cesty, abyste mohli odkazovat na tento spustitelný soubor z libovolné složky v počítači.
+Uložte soubor AzCopy kamkoli do počítače. Přidejte umístění souboru do proměnné systémové cesty, abyste mohli odkazovat na tento spustitelný soubor z libovolné složky v počítači.
 
 ## <a name="authenticate-with-azure-ad"></a>Ověřování pomocí Azure AD
 
-Nejprve přiřaďte roli [přispěvatele dat objektů blob úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) k vaší identitě. Viz [Udělení přístupu k datům objektů blob Azure a fronty s RBAC na webu Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
+Nejdřív k vaší identitě přiřaďte roli [Přispěvatel dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor) . Podívejte [se na téma Udělení přístupu k datům objektů blob Azure a frontě pomocí RBAC v Azure Portal](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal).
 
-Potom otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
+Pak otevřete příkazový řádek, zadejte následující příkaz a stiskněte klávesu ENTER.
 
 ```azcopy
 azcopy login
 ```
 
-Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadejte kód a pak zvolte tlačítko **Další.**
+Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadejte kód a potom klikněte na tlačítko **Další** .
 
 ![Vytvoření kontejneru](media/storage-use-azcopy-v10/azcopy-login.png)
 
-Zobrazí se přihlašovací okno. V tomto okně se přihlaste ke svému účtu Azure pomocí přihlašovacích údajů účtu Azure. Po úspěšném přihlášení můžete zavřít okno prohlížeče a začít používat AzCopy.
+Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomocí svých přihlašovacích údajů k účtu Azure. Po úspěšném přihlášení můžete zavřít okno prohlížeče a začít používat AzCopy.
 
 ## <a name="upload-contents-of-a-folder-to-blob-storage"></a>Nahrání obsahu složky do úložiště objektů blob
 
@@ -84,31 +84,31 @@ Pomocí AzCopy můžete nahrát všechny soubory ve složce do úložiště obje
 azcopy copy "<local-folder-path>" "https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Nahraďte `<local-folder-path>` zástupný symbol cestou ke složce, `C:\myFolder` `/mnt/myFolder`která obsahuje soubory (například: nebo ).
+* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo `/mnt/myFolder`).
 
-* Nahraďte `<storage-account-name>` zástupný symbol názvem svého účtu úložiště.
+* `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
-* Nahraďte `<container-name>` zástupný symbol názvem kontejneru, který jste vytvořili.
+* `<container-name>` Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
 
-Chcete-li obsah zadaného adresáře nahrát rekurzivně `--recursive` do úložiště objektů Blob, zadejte možnost. Když spustíte AzCopy s touto volbou, všechny podsložky a jejich soubory jsou nahrány také.
+Chcete-li odeslat obsah zadaného adresáře do úložiště objektů BLOB rekurzivně, zadejte `--recursive` možnost. Když s touto možností spustíte AzCopy, nahrají se také všechny podsložky a jejich soubory.
 
 ## <a name="upload-modified-files-to-blob-storage"></a>Nahrání upravených souborů do úložiště objektů blob
 
 Pomocí AzCopy můžete nahrávat soubory na základě času jejich poslední úpravy. 
 
-Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Potom použijte příkaz AzCopy. `sync`
+Pokud to chcete vyzkoušet, upravte nebo vytvořte nové soubory ve zdrojovém adresáři pro účely testování. Pak použijte příkaz AzCopy `sync` .
 
 ```AzCopy
 azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.windows.net/<container-name>" --recursive=true
 ```
 
-* Nahraďte `<local-folder-path>` zástupný symbol cestou ke složce, `C:\myFolder` `/mnt/myFolder`která obsahuje soubory (například: nebo .
+* Nahraďte `<local-folder-path>` zástupný text cestou ke složce, která obsahuje soubory (například: `C:\myFolder` nebo. `/mnt/myFolder`
 
-* Nahraďte `<storage-account-name>` zástupný symbol názvem svého účtu úložiště.
+* `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
-* Nahraďte `<container-name>` zástupný symbol názvem kontejneru, který jste vytvořili.
+* `<container-name>` Zástupný symbol nahraďte názvem kontejneru, který jste vytvořili.
 
-Další informace o `sync` příkazu naleznete v [tématu Synchronizace souborů](storage-use-azcopy-blobs.md#synchronize-files).
+Další informace o `sync` příkazu najdete v tématu [synchronizace souborů](storage-use-azcopy-blobs.md#synchronize-files).
 
 ## <a name="create-a-scheduled-task"></a>Vytvoření plánované úlohy
 
@@ -116,10 +116,10 @@ Můžete vytvořit plánovanou úlohu nebo úlohu Cron, která spouští skript 
 
 Zkopírujte následující příkaz AzCopy do textového editoru. Aktualizujte hodnoty parametrů příkazu AzCopy na odpovídající hodnoty. Uložte soubor jako `script.sh` (Linux) nebo `script.bat` (Windows) pro AzCopy. 
 
-Tyto příklady předpokládají, že `myFolder`složka je pojmenována , název účtu úložiště je `mystorageaccount` a název kontejneru je `mycontainer`.
+V těchto příkladech se předpokládá, že `myFolder`vaše složka je pojmenována `mystorageaccount` , název vašeho účtu úložiště `mycontainer`je a název kontejneru je.
 
 > [!NOTE]
-> Příklad Linuxu připojí token SAS. Budete muset poskytnout jeden ve vašem velení. Aktuální verze AzCopy V10 nepodporuje autorizaci Azure AD v cron úlohy.
+> Příklad pro Linux připojí token SAS. Budete ho muset zadat v příkazu. Aktuální verze AzCopy v10 za účelem nepodporuje autorizaci Azure AD v úlohách cron.
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -150,7 +150,7 @@ Zadání výrazu Cron `*/5 * * * *` v příkazu značí, že se má skript prost
 
 Pokud chcete vytvořit plánovanou úlohu ve Windows, zadejte na příkazovém řádku nebo v PowerShellu následující příkaz:
 
-Tento příklad předpokládá, že skript je umístěn v kořenové jednotce počítače, ale skript může být kdekoli, které chcete.
+V tomto příkladu se předpokládá, že se váš skript nachází na kořenové jednotce vašeho počítače, ale váš skript může být kdekoli, kde chcete.
 
 ```cmd
 schtasks /CREATE /SC minute /MO 5 /TN "AzCopy Script" /TR C:\script.bat
@@ -172,16 +172,16 @@ Pokud chcete ověřit správné spouštění plánované úlohy nebo úlohy Cron
 
 Další informace o způsobech přesunu místních dat do služby Azure Storage a naopak najdete na následujícím odkazu:
 
-* [Přesuňte data do a z Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
+* [Přesunout data do a z Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-moving-data?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).  
 
-Další informace o AzCopy naleznete v některém z těchto článků:
+Další informace o AzCopy najdete v některém z těchto článků:
 
 * [Začínáme s nástrojem AzCopy](storage-use-azcopy-v10.md)
 
-* [Přenos dat pomocí úložiště Objektů blob AzCopy a objektů blob](storage-use-azcopy-blobs.md)
+* [Přenos dat pomocí AzCopy a BLOB Storage](storage-use-azcopy-blobs.md)
 
-* [Přenos dat pomocí AzCopy a ukládání souborů](storage-use-azcopy-files.md)
+* [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 
-* [Přenos dat pomocí kbelíků AzCopy a Amazon S3](storage-use-azcopy-s3.md)
+* [Přenos dat pomocí kontejnerů AzCopy a Amazon S3](storage-use-azcopy-s3.md)
  
-* [Konfigurace, optimalizace a řešení potíží s azcopy](storage-use-azcopy-configure.md)
+* [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)

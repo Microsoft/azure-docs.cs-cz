@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell – přihlášení ke skupině prostředků
-description: Tento článek obsahuje ukázkový skript Azure PowerShell, který ukazuje, jak se přihlásit k odběru událostí Event Grid pro skupinu prostředků a filtrovat prostředek.
+title: Azure PowerShell – přihlášení k odběru skupiny prostředků
+description: Tento článek obsahuje ukázkový skript Azure PowerShell, který ukazuje, jak se přihlásit k odběru Event Grid událostí pro skupinu prostředků a filtrovat prostředek.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 5d41bfec5978d1baf38eaf1608f50375170d9929
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76720601"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Přihlášení k odběru událostí skupiny prostředků a vyfiltrování prostředku pomocí PowerShellu
@@ -30,11 +30,11 @@ Tento skript vytvoří odběr Event Gridu pro události skupiny prostředků. Po
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events/filter-events.ps1 "Filter events")]
 
-## <a name="sample-script---preview-module"></a>Ukázkový skript - modul náhledu
+## <a name="sample-script---preview-module"></a>Vzorový modul Script-Preview
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Ukázkový skript náhledu vyžaduje modul Event Grid. Chcete-li nainstalovat, spusťte`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Vzorový skript ve verzi Preview vyžaduje modul Event Grid. Chcete-li nainstalovat, spusťte příkaz`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 

@@ -1,5 +1,5 @@
 ---
-title: Ukázka skriptu příkazového příkazu Azure – nasazení zásobníku LAMP ve škálovací sadě virtuálních strojů s vyrovnáváním zatížení
+title: Ukázkový skript Azure CLI – nasazení zásobníku LAMP do sady škálování virtuálních počítačů s vyrovnáváním zatížení
 description: Pomocí rozšíření vlastních skriptů nasadíte stack LAMP do škálovací sady virtuálních počítačů v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.custom: mvc
 ms.date: 04/05/2017
 ms.openlocfilehash: 00aa744f09b7bcbbbc258b92a8fd5ab750e447c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74039102"
 ---
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>Nasazení stacku LAMP do škálovací sady virtuálních počítačů s vyrovnáváním zatížení
@@ -30,7 +30,7 @@ Tento příklad vytvoří škálovací sadu virtuálních počítačů a použij
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
-## <a name="connect"></a>Připojení
+## <a name="connect"></a>Připojit
 
 Pomocí tohoto kódu zobrazíte pokyny pro připojení k virtuálním počítačům a škálovací sadě.
 

@@ -9,13 +9,13 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 03/20/2020
 ms.openlocfilehash: 4b6275dfcac011693c2b90dce7b8d308ecec2f93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80371975"
 ---
 > [!TIP]
-> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (klasické), se doporučuje vyzkoušet [Návrháře Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-designer) (preview), který poskytuje moduly ML přetažení __a__ škálovatelnost, správu verzí a podnikové zabezpečení.
+> Zákazníci, kteří aktuálně používají nebo vyhodnocují Machine Learning Studio (Classic), jsou doporučováni k vyzkoušení [Azure Machine Learningho návrháře](https://docs.microsoft.com/azure/machine-learning/concept-designer) (Preview), který __poskytuje moduly pro přetahování a škálovatelnost__ , správu verzí a zabezpečení podniku.
 >
->Další informace najdete v [tématu Azure Machine Learning vs Machine Learning Studio (klasické)](../articles/machine-learning/compare-azure-ml-to-studio-classic.md).
+>Další informace najdete v tématu [Azure Machine Learning vs Machine Learning Studio (Classic)](../articles/machine-learning/compare-azure-ml-to-studio-classic.md).

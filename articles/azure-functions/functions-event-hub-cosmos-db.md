@@ -1,43 +1,43 @@
 ---
-title: 'Kurz: Použití funkcí Java s Azure Cosmos DB a Event Hubs'
-description: Tento kurz ukazuje, jak využívat události z event hubů k aktualizaci v Azure Cosmos DB pomocí funkce napsané v Jazyce Java.
+title: 'Kurz: použití funkcí Java s Azure Cosmos DB a Event Hubs'
+description: V tomto kurzu se dozvíte, jak zpracovávat události z Event Hubs, abyste mohli aktualizovat Azure Cosmos DB pomocí funkce napsané v jazyce Java.
 author: KarlErickson
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.openlocfilehash: b6d7b2c60e777266b1cab578b8970c1fa1c6bc50
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77425319"
 ---
-# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: Vytvoření funkce v Javě s aktivační událostí centra událostí a výstupní vazbou Azure Cosmos DB
+# <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Kurz: vytvoření funkce v Java pomocí triggeru centra událostí a výstupní vazby Azure Cosmos DB
 
-Tento kurz ukazuje, jak používat funkce Azure k vytvoření funkce Java, která analyzuje nepřetržitý proud dat o teplotě a tlaku. Události centra událostí, které představují hodnoty senzorů, aktivují funkci. Funkce zpracuje data událostí a pak přidá položky stavu do databáze Azure Cosmos DB.
+V tomto kurzu se dozvíte, jak pomocí Azure Functions vytvořit funkci jazyka Java, která analyzuje souvislý proud dat o teplotě a tlaku. Funkce události centra událostí, které reprezentují senzory, tuto funkci aktivovaly. Funkce zpracuje data události a poté přidá položky stavu do Azure Cosmos DB.
 
-V tomto kurzu budete:
+V tomto kurzu:
 
 > [!div class="checklist"]
-> * Vytvořte a nakonfigurujte prostředky Azure pomocí rozhraní příkazového příkazu Azure.
-> * Vytvořte a otestujte funkce jazyka Java, které s těmito prostředky interagují.
-> * Nasaďte své funkce do Azure a monitorujte je pomocí Application Insights.
+> * Vytvoření a konfigurace prostředků Azure pomocí Azure CLI.
+> * Vytváření a testování funkcí Java, které komunikují s těmito prostředky.
+> * Nasaďte funkce do Azure a sledujte je pomocí Application Insights.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento kurz, musíte mít nainstalované následující:
+K dokončení tohoto kurzu musíte mít nainstalované následující:
 
 * [Java Developer Kit](https://aka.ms/azure-jdks) verze 8
 * [Apache Maven](https://maven.apache.org) verze 3.0 nebo novější
-* [Azure CLI,](/cli/azure/install-azure-cli) pokud nechcete používat Cloud Shell
-* [Základní nástroje Azure Functions](https://www.npmjs.com/package/azure-functions-core-tools) verze 2.6.666 nebo vyšší
+* [Azure CLI](/cli/azure/install-azure-cli) Pokud nechcete používat Cloud Shell
+* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) verze 2.6.666 nebo vyšší
 
 > [!IMPORTANT]
-> Proměnná `JAVA_HOME` prostředí musí být nastavena na umístění instalace JDK k dokončení tohoto kurzu.
+> Aby `JAVA_HOME` se tento kurz dokončil, musí být proměnná prostředí nastavená na umístění instalace JDK.
 
-Pokud dáváte přednost použití kódu pro tento kurz přímo, naleznete [java functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) ukázkový úložiště.
+Pokud dáváte přednost použití kódu pro tento kurz přímo, přečtěte si ukázkové úložiště [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,20 +45,20 @@ Pokud dáváte přednost použití kódu pro tento kurz přímo, naleznete [java
 
 V tomto kurzu budete potřebovat tyto prostředky:
 
-* Skupina prostředků obsahující ostatní prostředky
-* Obor názvů Centra událostí, centrum událostí a pravidlo autorizace
+* Skupina prostředků, která bude obsahovat další prostředky
+* Obor názvů Event Hubs, centrum událostí a autorizační pravidlo
 * Účet Cosmos DB, databáze a kolekce
-* Aplikace pro funkce a účet úložiště pro její hostování
+* Aplikace Function App a účet úložiště, které se mají hostovat
 
-V následujících částech se ukazuje, jak vytvořit tyto prostředky pomocí azure cli.
+V následujících částech se dozvíte, jak tyto prostředky vytvořit pomocí rozhraní příkazového řádku Azure CLI.
 
 ### <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
-Pokud nepoužíváte Cloud Shell, budete muset použít Azure CLI místně pro přístup ke svému účtu. Pomocí `az login` příkazu z výzvy Bash spusťte přihlašovací prostředí založené na prohlížeči. Pokud máte přístup k více než jednomu předplatnému Azure, nastavte výchozí nastavení s `az account set --subscription` následovaným ID předplatného.
+Pokud nepoužíváte Cloud Shell, budete k přístupu k vašemu účtu muset použít Azure CLI místně. Pomocí `az login` příkazu z příkazového řádku bash spusťte prostředí pro přihlášení na základě prohlížeče. Pokud máte přístup k více než jednomu předplatnému Azure, nastavte výchozí nastavení `az account set --subscription` za NÁSLEDOVÁNím ID předplatného.
 
 ### <a name="set-environment-variables"></a>Nastavení proměnných prostředí
 
-Dále vytvořte některé proměnné prostředí pro názvy a umístění prostředků, které vytvoříte. Použijte následující příkazy a `<value>` nahraďte zástupné symboly hodnotami podle vašeho výběru. Hodnoty by měly odpovídat [pravidlům pojmenování a omezením pro prostředky Azure](/azure/architecture/best-practices/resource-naming). Pro `LOCATION` proměnnou použijte jednu z `az functionapp list-consumption-locations` hodnot vytvořených příkazem.
+Dále vytvořte některé proměnné prostředí pro názvy a umístění prostředků, které vytvoříte. Použijte následující příkazy a nahraďte `<value>` zástupné symboly hodnotami, které zvolíte. Hodnoty by měly odpovídat [pravidlům pojmenovávání a omezením pro prostředky Azure](/azure/architecture/best-practices/resource-naming). Pro `LOCATION` proměnnou použijte jednu z hodnot, které jsou `az functionapp list-consumption-locations` vytvořeny příkazem.
 
 ```azurecli-interactive
 RESOURCE_GROUP=<value>
@@ -71,13 +71,13 @@ FUNCTION_APP=<value>
 LOCATION=<value>
 ```
 
-Zbytek tohoto kurzu používá tyto proměnné. Uvědomte si, že tyto proměnné přetrvávají pouze po dobu trvání aktuální relace Azure CLI nebo Cloud Shell. Pokud použijete jiné okno místního terminálu nebo časový čas relace prostředí Cloud Shell, budete muset tyto příkazy znovu spustit.
+Zbytek tohoto kurzu používá tyto proměnné. Mějte na paměti, že tyto proměnné přetrvávají jenom po dobu trvání aktuální relace Azure CLI nebo Cloud Shell. Tyto příkazy budete muset spustit znovu, pokud použijete jiné místní okno terminálu nebo vypršel časový limit relace Cloud Shell.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Azure používá skupiny prostředků ke shromažďování všech souvisejících prostředků ve vašem účtu. Tímto způsobem je můžete zobrazit jako jednotku a odstranit je jediným příkazem, když s nimi skončíte.
+Azure používá skupiny prostředků ke shromáždění všech souvisejících prostředků ve vašem účtu. Tímto způsobem je můžete zobrazit jako jednotku a odstranit je jediným příkazem, když s nimi budete hotovi.
 
-K vytvoření skupiny prostředků použijte následující příkaz:
+Pomocí následujícího příkazu vytvořte skupinu prostředků:
 
 ```azurecli-interactive
 az group create \
@@ -87,7 +87,7 @@ az group create \
 
 ### <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
-Dále vytvořte obor názvů Centra událostí Azure, centrum událostí a pravidlo autorizace pomocí následujících příkazů:
+Dále vytvořte obor názvů Azure Event Hubs, centrum událostí a autorizační pravidlo pomocí následujících příkazů:
 
 ```azurecli-interactive
 az eventhubs namespace create \
@@ -106,11 +106,11 @@ az eventhubs eventhub authorization-rule create \
     --rights Listen Send
 ```
 
-Obor názvů Event Hubs obsahuje centrum skutečných událostí a jeho autorizační pravidlo. Autorizační pravidlo umožňuje vašim funkcím odesílat zprávy do centra a naslouchat příslušným událostem. Jedna funkce odesílá zprávy, které představují telemetrická data. Jiná funkce naslouchá událostem, analyzuje data událostí a ukládá výsledky v Azure Cosmos DB.
+Obor názvů Event Hubs obsahuje skutečné centrum událostí a jeho autorizační pravidlo. Autorizační pravidlo umožňuje vašim funkcím posílat zprávy do centra a naslouchat odpovídajícím událostem. Jedna funkce odesílá zprávy, které reprezentují data telemetrie. Jiná funkce naslouchá událostem, analyzuje data události a ukládá výsledky v Azure Cosmos DB.
 
 ### <a name="create-an-azure-cosmos-db"></a>Vytvoření služby Azure Cosmos DB
 
-Dále vytvořte účet, databázi a kolekci Azure Cosmos DB pomocí následujících příkazů:
+Dále vytvořte účet Azure Cosmos DB, databázi a kolekci pomocí následujících příkazů:
 
 ```azurecli-interactive
 az cosmosdb create \
@@ -128,11 +128,11 @@ az cosmosdb collection create \
     --partition-key-path '/temperatureStatus'
 ```
 
-Hodnota `partition-key-path` rozdělí data na základě `temperatureStatus` hodnoty každé položky. Klíč oddílu umožňuje Cosmos DB zvýšit výkon rozdělením dat do různých podmnožiny, které lze přistupovat nezávisle.
+`partition-key-path` Hodnota rozdělí data na základě `temperatureStatus` hodnoty každé položky. Klíč oddílu umožňuje Cosmos DB zvýšit výkon tím, že se data rozdělí na samostatné podmnožiny, ke kterým může přistupovat nezávisle.
 
-### <a name="create-a-storage-account-and-function-app"></a>Vytvoření účtu úložiště a aplikace funkcí
+### <a name="create-a-storage-account-and-function-app"></a>Vytvoření účtu úložiště a aplikace Function App
 
-Dále vytvořte účet Azure Storage, který je vyžadován funkcemi Azure, a pak vytvořte aplikaci funkcí. Použijte následující příkazy:
+Dále vytvořte účet Azure Storage, který je vyžadován Azure Functions a pak vytvořte aplikaci Function App. Použijte následující příkazy:
 
 ```azurecli-interactive
 az storage account create \
@@ -147,15 +147,15 @@ az functionapp create \
     --runtime java
 ```
 
-Když `az functionapp create` příkaz vytvoří aplikaci funkce, vytvoří také prostředek Application Insights se stejným názvem. Aplikace funkce se automaticky nakonfiguruje s nastavením s názvem, `APPINSIGHTS_INSTRUMENTATIONKEY` které ji připojuje k Application Insights. Telemetrii aplikací můžete zobrazit po nasazení funkcí do Azure, jak je popsáno dále v tomto kurzu.
+Když `az functionapp create` příkaz vytvoří aplikaci Function App, vytvoří také prostředek Application Insights se stejným názvem. Aplikace Function App se automaticky nakonfiguruje s nastavením s `APPINSIGHTS_INSTRUMENTATIONKEY` názvem, které je připojuje k Application Insights. Telemetrii aplikace můžete zobrazit po nasazení funkcí do Azure, jak je popsáno dále v tomto kurzu.
 
-## <a name="configure-your-function-app"></a>Konfigurace aplikace funkcí
+## <a name="configure-your-function-app"></a>Konfigurace aplikace Function App
 
-Vaše aplikace funkce bude muset přistupovat k ostatním prostředkům, aby fungovaly správně. V následujících částech se ukazuje, jak nakonfigurovat aplikaci funkcí tak, aby mohla běžet v místním počítači.
+Vaše aplikace Function App bude potřebovat přístup k ostatním prostředkům, aby fungovala správně. V následujících částech se dozvíte, jak nakonfigurovat aplikaci Function App, aby mohla běžet na místním počítači.
 
-### <a name="retrieve-resource-connection-strings"></a>Načíst připojovací řetězce prostředků
+### <a name="retrieve-resource-connection-strings"></a>Načtení připojovacích řetězců prostředků
 
-Pomocí následujících příkazů načtěte připojovací řetězce úložiště, centra událostí a cosmos DB a uložte je do proměnných prostředí:
+Pomocí následujících příkazů načtěte úložiště, centrum událostí a Cosmos DB připojovací řetězce a uložte je do proměnných prostředí:
 
 ```azurecli-interactive
 AZURE_WEB_JOBS_STORAGE=$( \
@@ -183,11 +183,11 @@ COSMOS_DB_CONNECTION_STRING=$( \
 echo $COSMOS_DB_CONNECTION_STRING
 ```
 
-Tyto proměnné jsou nastaveny na hodnoty načtené z příkazů Azure CLI. Každý příkaz používá dotaz JMESPath k extrahování připojovacího řetězce z vrácené datové části JSON. Připojovací řetězce jsou `echo` také zobrazeny pomocí, takže můžete potvrdit, že byly úspěšně načteny.
+Tyto proměnné jsou nastavené na hodnoty načtené z příkazů Azure CLI. Každý příkaz používá dotaz JMESPath k extrakci připojovacího řetězce z vrácené datové části JSON. Připojovací řetězce se také zobrazují pomocí `echo` , abyste si ověřili, že byly úspěšně načteny.
 
-### <a name="update-your-function-app-settings"></a>Aktualizace nastavení aplikace funkcí
+### <a name="update-your-function-app-settings"></a>Aktualizovat nastavení aplikace Function App
 
-Dále pomocí následujícího příkazu přeneste hodnoty připojovacího řetězce do nastavení aplikace v účtu Azure Functions:
+Dále pomocí následujícího příkazu přeneste hodnoty připojovacího řetězce do nastavení aplikace ve vašem účtu Azure Functions:
 
 ```azurecli-interactive
 az functionapp config appsettings set \
@@ -199,22 +199,22 @@ az functionapp config appsettings set \
         CosmosDBConnectionString=$COSMOS_DB_CONNECTION_STRING
 ```
 
-Vaše prostředky Azure byly teď vytvořeny a nakonfigurovány tak, aby správně spolupracovaly.
+Prostředky Azure se teď vytvořily a nakonfigurovali tak, aby správně fungovaly.
 
-## <a name="create-and-test-your-functions"></a>Vytvoření a testování funkcí
+## <a name="create-and-test-your-functions"></a>Vytváření a testování funkcí
 
-Dále vytvoříte projekt v místním počítači, přidáte kód Java a otestujete ho. Budete používat příkazy, které fungují s pluginem Azure Functions plugin pro Maven a nástroje Azure Functions Core Tools. Vaše funkce budou spuštěny místně, ale budou používat cloudové prostředky, které jste vytvořili. Po získání funkce pracovat místně, můžete použít Maven nasadit do cloudu a sledovat vaše data a analýzy hromadí.
+V dalším kroku vytvoříte projekt na svém místním počítači, přidáte kód Java a otestujete ho. Budete používat příkazy, které pracují s modulem plug-in Azure Functions pro Maven a Azure Functions Core Tools. Vaše funkce se spustí místně, ale budou používat cloudové prostředky, které jste vytvořili. Jakmile funkce fungují místně, můžete je pomocí Maven nasadit do cloudu a sledovat vaše data a analýzy.
 
-Pokud jste k vytvoření prostředků použili Cloud Shell, nebudete místně připojeni k Azure. V takovém případě `az login` pomocí příkazu spusťte proces přihlášení na základě prohlížeče. Pak v případě potřeby nastavte `az account set --subscription` výchozí předplatné s následovaným ID předplatného. Nakonec spusťte následující příkazy a znovu vytvořte některé proměnné prostředí v místním počítači. Nahraďte `<value>` zástupné symboly stejnými hodnotami, které jste použili dříve.
+Pokud jste k vytváření prostředků použili Cloud Shell, nebudete místně připojeni k Azure. V takovém případě pomocí `az login` příkazu spusťte proces přihlášení založený na prohlížeči. V případě potřeby nastavte výchozí předplatné s `az account set --subscription` NÁSLEDOVÁNím ID předplatného. Nakonec spuštěním následujících příkazů znovu vytvořte některé proměnné prostředí v místním počítači. Nahraďte `<value>` zástupné symboly stejnými hodnotami, které jste použili dříve.
 
 ```bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
 
-### <a name="create-a-local-functions-project"></a>Vytvoření projektu místních funkcí
+### <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
 
-Pomocí následujícího příkazu Maven vytvořte projekt funkcí a přidejte požadované závislosti.
+K vytvoření projektu functions a přidání požadovaných závislostí použijte následující příkaz Maven.
 
 ```bash
 mvn archetype:generate --batch-mode \
@@ -226,24 +226,24 @@ mvn archetype:generate --batch-mode \
     -DartifactId=telemetry-functions
 ```
 
-Tento příkaz generuje několik `telemetry-functions` souborů uvnitř složky:
+Tento příkaz vygeneruje ve `telemetry-functions` složce několik souborů:
 
-* Soubor `pom.xml` pro použití s Maven
-* Soubor `local.settings.json` pro uložení nastavení aplikace pro místní testování
-* Soubor, `host.json` který umožňuje rozšíření Azure Functions Bundle, požadované pro cosmos DB výstupní vazby ve funkci analýzy dat
-* Soubor, `Function.java` který obsahuje výchozí implementaci funkce
-* Několik testovacích souborů, které tento kurz nepotřebuje
+* `pom.xml` Soubor pro použití s Maven
+* `local.settings.json` Soubor pro uložení nastavení aplikace pro místní testování
+* Soubor `host.json` , který povoluje sadu rozšíření Azure Functions požadovanou pro Cosmos DB výstupní vazby v rámci funkce analýzy dat
+* `Function.java` Soubor, který obsahuje implementaci výchozí funkce
+* Několik testovacích souborů, které tento kurz nevyžaduje
 
-Chcete-li se vyhnout chybám kompilace, budete muset odstranit testovací soubory. Spuštěním následujících příkazů přejděte do nové složky projektu a odstraňte testovací složku:
+Aby nedocházelo k chybám při kompilaci, budete muset odstranit testovací soubory. Spusťte následující příkazy, abyste přešli do nové složky projektu a odstranili testovací složku:
 
 ```bash
 cd telemetry-functions
 rm -r src/test
 ```
 
-### <a name="retrieve-your-function-app-settings-for-local-use"></a>Načtení nastavení aplikace pro funkce pro místní použití
+### <a name="retrieve-your-function-app-settings-for-local-use"></a>Načíst nastavení aplikace Function App pro místní použití
 
-Pro místní testování bude projekt funkce potřebovat připojovací řetězce, které jste přidali do aplikace funkce v Azure dříve v tomto kurzu. Použijte následující příkaz Nástroje jádra funkcí Azure, který načte všechna nastavení aplikace `local.settings.json` funkcí uložená v cloudu a přidá je do souboru:
+Pro místní testování bude váš projekt funkcí potřebovat připojovací řetězce, které jste přidali do aplikace Function App v Azure dříve v tomto kurzu. Použijte následující příkaz Azure Functions Core Tools, který načte všechna nastavení aplikací funkcí uložených v cloudu a přidá je do `local.settings.json` souboru:
 
 ```bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
@@ -251,7 +251,7 @@ func azure functionapp fetch-app-settings $FUNCTION_APP
 
 ### <a name="add-java-code"></a>Přidat kód Java
 
-Dále otevřete `Function.java` soubor a nahraďte obsah následujícím kódem.
+Potom otevřete `Function.java` soubor a nahraďte jeho obsah následujícím kódem.
 
 ```java
 package com.example;
@@ -324,11 +324,11 @@ public class Function {
 }
 ```
 
-Jak můžete vidět, tento soubor `generateSensorData` obsahuje `processSensorData`dvě funkce a . Funkce `generateSensorData` simuluje snímač, který odesílá hodnoty teploty a tlaku do centra událostí. Aktivační událost časovače spustí funkci každých 10 sekund a výstupní vazba centra událostí odešle vrácenou hodnotu do centra událostí.
+Jak vidíte, tento soubor obsahuje dvě funkce `generateSensorData` a. `processSensorData` `generateSensorData` Funkce simuluje senzor, který odesílá čtení teploty a tlaku do centra událostí. Aktivační událost časovače spouští funkci každých 10 sekund a výstupní vazba centra událostí odesílá vrácenou hodnotu do centra událostí.
 
-Když centrum událostí obdrží zprávu, vygeneruje událost. Funkce `processSensorData` se spustí, když obdrží událost. Potom zpracuje data událostí a použije výstupní vazbu Azure Cosmos DB k odeslání výsledků do Azure Cosmos DB.
+Když centrum událostí přijme zprávu, vygeneruje událost. Funkce `processSensorData` se spustí, když přijme událost. Poté zpracuje data události a pomocí výstupní vazby Azure Cosmos DB odešle výsledky do Azure Cosmos DB.
 
-Data používaná těmito funkcemi jsou `TelemetryItem`uložena pomocí třídy s názvem , kterou budete muset implementovat. Vytvořte nový `TelemetryItem.java` soubor volaný `Function.java` ve stejném umístění jako a přidejte následující kód:
+Data, která jsou používána těmito funkcemi, jsou uložena pomocí třídy `TelemetryItem`s názvem, kterou budete muset implementovat. Vytvořte nový soubor s názvem `TelemetryItem.java` ve stejném umístění `Function.java` a přidejte následující kód:
 
 ```java
 package com.example;
@@ -389,16 +389,16 @@ public class TelemetryItem {
 
 ### <a name="run-locally"></a>Spuštění v místním prostředí
 
-Teď můžete vytvářet a spouštět funkce místně a zobrazit data se zobrazí ve vašem Azure Cosmos DB.
+Nyní můžete vytvářet a spouštět funkce místně a zobrazovat data v Azure Cosmos DB.
 
-K vytvoření a spuštění funkcí použijte následující příkazy Maven:
+Pro sestavování a spouštění funkcí použijte následující příkazy Maven:
 
 ```bash
 mvn clean package
 mvn azure-functions:run
 ```
 
-Po některých zprávách sestavení a spuštění se zobrazí výstup podobný následujícímu příkladu pro každé spuštění funkcí:
+Po některých zprávách o sestavení a spuštění se zobrazí výstup podobný následujícímu příkladu pro pokaždé, když se funkce spustí:
 
 ```output
 [10/22/19 4:01:30 AM] Executing 'Functions.generateSensorData' (Reason='Timer fired at 2019-10-21T21:01:30.0016769-07:00', Id=c1927c7f-4f70-4a78-83eb-bc077d838410)
@@ -411,29 +411,29 @@ Po některých zprávách sestavení a spuštění se zobrazí výstup podobný 
 [10/22/19 4:01:38 AM] Executed 'Functions.processSensorData' (Succeeded, Id=1cf0382b-0c98-4cc8-9240-ee2a2f71800d)
 ```
 
-Pak můžete přejít na [portál Azure](https://portal.azure.com) a přejít na svůj účet Azure Cosmos DB. Vyberte **Průzkumník dat**, rozbalte **možnost TelemetryInfo**a pak vyberte **Položky,** chcete-li data zobrazit při doručení.
+Pak můžete přejít na [Azure Portal](https://portal.azure.com) a přejít na účet Azure Cosmos DB. Vyberte **Průzkumník dat**, rozbalte **TelemetryInfo**a pak vyberte **položky** , které se po doručení zobrazí.
 
-![Průzkumník dat Cosmos DB](media/functions-event-hub-cosmos-db/data-explorer.png)
+![Cosmos DB Průzkumník dat](media/functions-event-hub-cosmos-db/data-explorer.png)
 
 ## <a name="deploy-to-azure-and-view-app-telemetry"></a>Nasazení do Azure a zobrazení telemetrie aplikací
 
-Nakonec můžete nasadit aplikaci do Azure a ověřit, že i nadále fungovat stejným způsobem to udělal místně.
+Nakonec můžete aplikaci nasadit do Azure a ověřit, že i nadále funguje stejným způsobem jako v místním prostředí.
 
-Nasazení projektu do Azure pomocí následujícího příkazu:
+Nasaďte projekt do Azure pomocí následujícího příkazu:
 
 ```bash
 mvn azure-functions:deploy
 ```
 
-Vaše funkce teď běží v Azure a nadále akumulovat data ve vašem Azure Cosmos DB. Nawebu Na webu Azure Portal můžete zobrazit aplikaci nasazených funkcí a telemetrii aplikací prostřednictvím připojeného prostředku Application Insights, jak je znázorněno na následujících snímcích obrazovky:
+Vaše funkce se teď spouštějí v Azure a budou pokračovat ve shromažďování dat ve vašem Azure Cosmos DB. Nasazenou aplikaci Function App můžete zobrazit v Azure Portal a pomocí prostředku připojené Application Insights zobrazit telemetrii aplikace, jak je znázorněno na následujících snímcích obrazovky:
 
-**Stream živých metrik:**
+**Live Metrics Stream:**
 
-![Datový proud živých metrik Přehledy aplikací](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
+![Application Insights Live Metrics Stream](media/functions-event-hub-cosmos-db/application-insights-live-metrics-stream.png)
 
-**Výkon:**
+**Předepsané**
 
-![Okno Výkon přehledů aplikací](media/functions-event-hub-cosmos-db/application-insights-performance.png)
+![Okno výkonu Application Insights](media/functions-event-hub-cosmos-db/application-insights-performance.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -445,11 +445,11 @@ az group delete --name $RESOURCE_GROUP
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak vytvořit funkci Azure, která zpracovává události centra událostí a aktualizuje Cosmos DB. Další informace najdete v [průvodci vývojářem Azure Functions Java](/azure/azure-functions/functions-reference-java). Informace o použitých poznámkách najdete v odkazu [com.microsoft.azure.functions.anotation.](/java/api/com.microsoft.azure.functions.annotation)
+V tomto kurzu jste zjistili, jak vytvořit funkci Azure, která zpracovává události centra událostí a aktualizuje Cosmos DB. Další informace najdete v příručce pro [vývojáře v jazyce Azure Functions Java](/azure/azure-functions/functions-reference-java). Informace o použitých poznámkách naleznete v tématu [com. Microsoft. Azure. Functions. Annotation](/java/api/com.microsoft.azure.functions.annotation) reference.
 
-Tento kurz používá proměnné prostředí a nastavení aplikace k ukládání tajných kódů, jako jsou připojovací řetězce. Informace o ukládání těchto tajných kódů v azure key vault, najdete [v tématu použití key vault odkazy pro služby App Service a Azure Functions](/azure/app-service/app-service-key-vault-references).
+Tento kurz používal proměnné prostředí a nastavení aplikace k ukládání tajných kódů, jako jsou připojovací řetězce. Informace o ukládání těchto tajných klíčů v Azure Key Vault najdete v tématu [použití Key Vaultch odkazů pro App Service a Azure Functions](/azure/app-service/app-service-key-vault-references).
 
-Dále se dozvíte, jak používat CI/CD Azure Pipelines pro automatizované nasazení:
+V dalším kroku se dozvíte, jak používat Azure Pipelines CI/CD pro automatizované nasazení:
 
 > [!div class="nextstepaction"]
-> [Vytváření a nasazování Javy do funkcí Azure](/azure/devops/pipelines/ecosystems/java-function)
+> [Sestavení a nasazení Java pro Azure Functions](/azure/devops/pipelines/ecosystems/java-function)

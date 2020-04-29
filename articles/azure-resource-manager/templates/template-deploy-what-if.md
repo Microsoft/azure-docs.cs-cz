@@ -3,29 +3,27 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/28/2020
 ms.author: jgao
-ms.openlocfilehash: b5b19bf9d630230fbdb8cec41cc77718bbbb4585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192378"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509580"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
-Před nasazením šablony Azure Resource Manager (ARM) můžete chtít zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
+Před nasazením šablony Azure Resource Manager (ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
 
 > [!NOTE]
 > Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)na adrese.
 
-Můžete použít operaci citlivostní operace s příkazy prostředí PowerShell nebo operacemi REST API.
+Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi.
 
 ## <a name="install-powershell-module"></a>Nainstalovat modul prostředí PowerShell
 
-Pokud chcete použít co v PowerShellu, musíte mít PowerShell Core (6. x nebo 7. x). Pokud máte PowerShell 5. x nebo starší, [aktualizujte svou verzi PowerShellu](/powershell/scripting/install/installing-powershell).
-
-Po ujištění, že máte správnou verzi PowerShellu, nainstalujte do galerie PowerShellu verzi Preview modulu AZ. Resources.
+Pokud chcete v PowerShellu použít co dělat, musíte nainstalovat verzi Preview modulu AZ. Resources z Galerie prostředí PowerShell. Než však modul nainstalujete, ujistěte se, že máte PowerShell Core (6. x nebo 7. x). Pokud máte PowerShell 5. x nebo starší, [aktualizujte svou verzi PowerShellu](/powershell/scripting/install/installing-powershell). Modul pro náhled nemůžete nainstalovat do PowerShellu 5. x nebo staršího.
 
 ### <a name="install-preview-version"></a>Verze Preview instalace
 
@@ -60,9 +58,13 @@ Pokud jste dříve nainstalovali verzi Alpha modulu citlivostní instalace, odin
 
 Jste připraveni použít co dělat.
 
+## <a name="install-azure-cli-module"></a>Instalace modulu CLI Azure
+
+Pokud chcete v Azure CLI použít co dělat, musíte mít Azure CLI 2.5.0 nebo novější. V případě potřeby [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
+
 ## <a name="see-results"></a>Zobrazit výsledky
 
-Výstup v prostředí PowerShell obsahuje barevně kódované výsledky, které vám pomůžou se zobrazením různých typů změn.
+Když v prostředí PowerShell nebo Azure CLI použijete co dělat, výstup obsahuje barevně kódované výsledky, které vám pomůžou zobrazit různé typy změn.
 
 ![Správce prostředků fullresourcepayload a typ změny nasazení šablony](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -97,11 +99,9 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>Příkazy citlivostní informace
 
-Pro operaci citlivostní operace můžete použít buď Azure PowerShell, nebo Azure REST API.
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit náhled změn před nasazením šablony, přidejte do příkazu `-Whatif` nasazení parametr Switch.
+Chcete-li zobrazit náhled změn před nasazením šablony `-Whatif` , přidejte do příkazu Deployment parametr Switch.
 
 * `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
@@ -115,6 +115,23 @@ Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolo
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`pro nasazení skupin prostředků
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`nebo `$results = Get-AzDeploymentWhatIfResult` pro nasazení na úrovni předplatného
+
+### <a name="azure-cli"></a>Azure CLI
+
+Chcete-li zobrazit náhled změn před nasazením `what-if` šablony, použijte příkaz s příkazem nasazení.
+
+* `az deployment group what-if`pro nasazení skupin prostředků
+* `az deployment sub what-if`pro nasazení na úrovni předplatného
+
+Nebo můžete použít `--confirm-with-what-if` parametr k zobrazení náhledu změn a zobrazit výzvu k pokračování v nasazení.
+
+* `az deployment group create --confirm-with-what-if`pro nasazení skupin prostředků
+* `az deployment sub create --confirm-with-what-if`pro nasazení na úrovni předplatného
+
+Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt JSON, který můžete programově kontrolovat změny, použijte:
+
+* `az deployment group what-if --no-pretty-print`pro nasazení skupin prostředků
+* `az deployment sub what-if --no-pretty-print`pro nasazení na úrovni předplatného
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -141,10 +158,17 @@ Operace citlivostní zpracování seznamu obsahuje šest různých typů změn:
 
 ## <a name="result-format"></a>Výsledný formát
 
-Můžete řídit úroveň podrobností vrácených o předpokládaných změnách. V příkazech nasazení (`New-Az*Deployment`) použijte parametr **-WhatIfResultFormat** . V příkazech programového objektu`Get-Az*DeploymentWhatIf`() použijte parametr **ResultFormat** .
+Můžete řídit úroveň podrobností, která se vrátí o předpokládaných změnách. Máte dvě možnosti:
 
-Nastavte parametr Format na **FullResourcePayloads** , abyste získali seznam prostředků, které se změní, a podrobnosti o vlastnostech, které se změní. Nastavte parametr Format na **ResourceIdOnly** a získejte tak seznam prostředků, které se změní. Výchozí hodnota je **FullResourcePayloads**.  
+* **FullResourcePayloads** – vrátí seznam prostředků, které se změní, a zobrazí podrobnosti o vlastnostech, které se změní.
+* **ResourceIdOnly** – vrátí seznam prostředků, které se změní.
 
+Výchozí hodnota je **FullResourcePayloads**.
+
+Pro příkazy nasazení prostředí PowerShell použijte `-WhatIfResultFormat` parametr. V příkazech programového objektu použijte `ResultFormat` parametr.
+
+Pro rozhraní `--result-format` příkazového řádku Azure použijte parametr.
+ 
 Následující výsledky znázorňují dva různé formáty výstupu:
 
 - Úplné datové vytížení prostředků
@@ -197,6 +221,8 @@ Následující výsledky znázorňují dva různé formáty výstupu:
 
 Pokud chcete zjistit, jak to funguje, spustíme některé testy. Nejdřív nasaďte [šablonu, která vytvoří virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json). Tuto virtuální síť použijete k otestování toho, jak jsou změny hlášeny podle toho, co je potřeba.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -206,9 +232,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>Změna testu
 
 Po dokončení nasazení budete připraveni k otestování operace citlivostní zpracování. Tentokrát nasadíte [šablonu, která mění virtuální síť](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json). Chybí původní značky, podsíť se odebrala a předpona adresy se změnila.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -216,6 +257,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 Výstup citlivosti se zobrazuje jako:
 
@@ -260,6 +311,8 @@ Některé vlastnosti, které jsou uvedené jako odstraněné, se ve skutečnosti
 
 Nyní programicky vyhodnotí výsledky citlivosti nastavením příkazu na proměnnou.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -275,19 +328,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>Potvrzení odstranění
 
 Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
 
 Chcete-li zobrazit náhled změn před nasazením šablony `-Confirm` , použijte parametr Switch s příkazem nasazení. Pokud se změní podle očekávání, potvrďte, že chcete nasazení dokončit.
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 Vzhledem k tomu, že v šabloně nejsou definovány žádné prostředky a režim nasazení je nastaven na dokončeno, bude virtuální síť odstraněna.
 
@@ -326,4 +401,5 @@ Zobrazí se očekávané změny a můžete potvrdit, že se nasazení má spusti
 
 - Pokud si všimnete nesprávných výsledků z verze Preview, co-if, nahlaste problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)na adrese.
 - Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
+- Pokud chcete nasadit šablony pomocí Azure CLI, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Azure CLI](deploy-cli.md).
 - Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Správce prostředků REST API](deploy-rest.md).

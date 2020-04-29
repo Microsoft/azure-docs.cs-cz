@@ -1,5 +1,5 @@
 ---
-title: Omezení přístupu k prostředkům PaaS – kurz – portál Azure
+title: Omezení přístupu k prostředkům PaaS – kurz – Azure Portal
 description: V tomto kurzu zjistíte, jak pomocí webu Azure Portal omezit síťový přístup k prostředkům Azure, jako jsou služby Azure Storage a Azure SQL Database, s využitím koncových bodů služeb.
 services: virtual-network
 documentationcenter: virtual-network
@@ -17,10 +17,10 @@ ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
 ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74186372"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s využitím koncových bodů služby pro virtuální síť pomocí webu Azure Portal
@@ -37,7 +37,7 @@ Koncové body služby pro virtuální síť umožňují omezení síťového př
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md) nebo [Azure PowerShellu](tutorial-restrict-network-access-to-resources-powershell.md).
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -51,14 +51,14 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
    |Nastavení|Hodnota|
    |----|----|
-   |Name (Název)| myVirtualNetwork |
+   |Název| myVirtualNetwork |
    |Adresní prostor| 10.0.0.0/16|
    |Předplatné| Vyberte své předplatné.|
    |Skupina prostředků | Vyberte **Vytvořit novou** a zadejte *myResourceGroup*.|
-   |Umístění| Vybrat **východní USA** |
+   |Umístění| Vyberte **východní USA** |
    |Název podsítě| Public|
    |Rozsah adres podsítě| 10.0.0.0/24|
-   |Ochrana před útoky DDoS| Basic|
+   |Ochrana před útoky DDoS| Základní|
    |Koncové body služby| Zakázáno|
    |Brána firewall| Zakázáno|
 
@@ -69,7 +69,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 Koncové body služby se povolují pro každou službu a podsíť. Vytvořte podsíť a povolte pro ni koncový bod služby.
 
 1. Do pole **Hledat prostředky, služby a dokumenty** v horní části portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
-2. Přidejte do virtuální sítě podsíť. V části **NASTAVENÍ**vyberte **Podsítě**a pak vyberte **+ Podsíť**, jak je znázorněno na následujícím obrázku:
+2. Přidejte do virtuální sítě podsíť. V části **Nastavení**vyberte **podsítě**a pak vyberte **+ podsíť**, jak je znázorněno na následujícím obrázku:
 
     ![Přidání podsítě](./media/tutorial-restrict-network-access-to-resources/add-subnet.png) 
 
@@ -77,7 +77,7 @@ Koncové body služby se povolují pro každou službu a podsíť. Vytvořte pod
 
     |Nastavení|Hodnota|
     |----|----|
-    |Name (Název)| Private |
+    |Název| Soukromé |
     |Rozsah adres| 10.0.1.0/24|
     |Koncové body služby| V části **Služby** vyberte **Microsoft.Storage**.|
 
@@ -94,10 +94,10 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
 
     |Nastavení|Hodnota|
     |----|----|
-    |Name (Název)| myNsgPrivate |
+    |Název| myNsgPrivate |
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
-    |Umístění| Vybrat **východní USA** |
+    |Umístění| Vyberte **východní USA** |
 
 4. Po vytvoření skupiny zabezpečení sítě do pole **Hledat prostředky, služby a dokumenty** v horní části portálu zadejte *myNsgPrivate*. Jakmile se ve výsledcích hledání zobrazí skupina zabezpečení sítě **myNsgPrivate**, vyberte ji.
 5. V části **NASTAVENÍ** vyberte **Odchozí pravidla zabezpečení**.
@@ -114,7 +114,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Protocol (Protokol)|Všechny|
     |Akce|Povolit|
     |Priorita|100|
-    |Name (Název)|Allow-Storage-All|
+    |Název|Allow-Storage-All|
 
 8. Vytvořte další odchozí pravidlo zabezpečení, které zakáže komunikaci s internetem. Toto pravidlo přepíše výchozí pravidlo ve všech skupinách zabezpečení sítě, které odchozí komunikaci s internetem povoluje. Zopakujte kroky 5 až 7 s použitím následujících hodnot:
 
@@ -128,7 +128,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Protocol (Protokol)|Všechny|
     |Akce|Odepřít|
     |Priorita|110|
-    |Name (Název)|Deny-Internet-All|
+    |Název|Deny-Internet-All|
 
 9. V části **NASTAVENÍ** vyberte **Příchozí pravidla zabezpečení**.
 10. Vyberte **+ Přidat**.
@@ -143,7 +143,7 @@ Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komun
     |Protocol (Protokol)|Všechny|
     |Akce|Povolit|
     |Priorita|120|
-    |Name (Název)|Allow-RDP-All|
+    |Název|Allow-RDP-All|
 
 12. V části **NASTAVENÍ** vyberte **Podsítě**.
 13. Vyberte **+ Přidružit**.
@@ -162,9 +162,9 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 
     |Nastavení|Hodnota|
     |----|----|
-    |Name (Název)| Zadejte název, který je jedinečný ve všech umístěních Azure, je dlouhý 3 až 24 znaků a obsahuje pouze číslice a malá písmena.|
+    |Název| Zadejte název, který je jedinečný ve všech umístěních Azure, je dlouhý 3 až 24 znaků a obsahuje pouze číslice a malá písmena.|
     |Account kind (Druh účtu)|StorageV2 (obecné účely v2)|
-    |Umístění| Vybrat **východní USA** |
+    |Umístění| Vyberte **východní USA** |
     |Replikace| Místně redundantní úložiště (LRS)|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků | Vyberte **Použít existující** a pak vyberte *myResourceGroup*.|
@@ -186,7 +186,7 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 
 1. V části **NASTAVENÍ** účtu úložiště vyberte **Brány firewall a virtuální sítě**.
 2. Vyberte **Vybrané sítě**.
-3. Vyberte **+Přidat existující virtuální síť**.
+3. Vyberte **+ Přidat existující virtuální síť**.
 4. V části **Přidat sítě** vyberte následující hodnoty a pak vyberte **Přidat**:
 
     |Nastavení|Hodnota|
@@ -217,7 +217,7 @@ Pokud chcete otestovat síťový přístup k účtu úložiště, nasaďte do ka
 
    |Nastavení|Hodnota|
    |----|----|
-   |Name (Název)| myVmPublic|
+   |Název| myVmPublic|
    |Uživatelské jméno|Zadejte libovolné uživatelské jméno.|
    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
    |Předplatné| Vyberte své předplatné.|
@@ -289,7 +289,7 @@ Nasazení virtuálního počítače trvá několik minut. Nepokračujte k dalš�
 
 5. Na svém počítači přejděte na [Azure Portal](https://portal.azure.com).
 6. Do pole **Hledat prostředky, služby a dokumenty** zadejte název účtu úložiště, který jste vytvořili. Jakmile se ve výsledcích hledání zobrazí váš účet úložiště, vyberte ho.
-7. Vyberte **Soubory**.
+7. Vyberte **soubory**.
 8. Zobrazí se chyba jako na následujícím obrázku:
 
    ![Chyba odepření přístupu](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)

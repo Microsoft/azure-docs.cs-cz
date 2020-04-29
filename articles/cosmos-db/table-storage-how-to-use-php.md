@@ -1,5 +1,5 @@
 ---
-title: Použití služby Azure Storage Table nebo rozhraní API tabulky Db Azure Cosmos z PHP
+title: Použití Azure Storage Table service nebo Azure Cosmos DB rozhraní API pro tabulky z PHP
 description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 author: sakash279
 ms.author: akshanka
@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76771056"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
@@ -140,7 +140,7 @@ catch(ServiceException $e){
 Další informace o omezeních a názvech tabulek najdete v tématu [Vysvětlení datového modelu služby Table Storage][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
-Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými ve stejném uzlu fungují lépe než u entit uložených v různých uzlech.) Jedná `RowKey` se o jedinečné ID entity v rámci oddílu.
+Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými ve stejném uzlu mají lepší výkon než u entit uložených v různých uzlech.) `RowKey` Je jedinečné ID entity v rámci oddílu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -314,7 +314,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Načtení podmnožiny vlastností entity
-Dotaz může načíst podmnožinu vlastností entity. Tato technika, nazývaná *projekce*, snižuje šířku pásma a může zlepšit výkon dotazu, zejména u velkých entit. Pokud chcete zadat vlastnost, která se má načíst, předejte její název do metody **Query->addSelectField**. Tuto metodu můžete zavolat vícekrát a přidat další vlastnosti. Po spuštění metody **TableRestProxy->queryEntities** budou vrácené entity obsahovat pouze vybrané vlastnosti. (Pokud chcete vrátit podmnožinu entit tabulky, použijte filtr, jak je znázorněno v předchozích dotazech.)
+Dotaz může načíst podmnožinu vlastností entity. Tato technika, nazývaná *projekce*, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Pokud chcete zadat vlastnost, která se má načíst, předejte její název do metody **Query->addSelectField**. Tuto metodu můžete zavolat vícekrát a přidat další vlastnosti. Po spuštění metody **TableRestProxy->queryEntities** budou vrácené entity obsahovat pouze vybrané vlastnosti. (Pokud chcete vrátit podmnožinu entit tabulky, použijte filtr, jak je znázorněno v předchozích dotazech.)
 
 ```php
 require_once 'vendor/autoload.php';

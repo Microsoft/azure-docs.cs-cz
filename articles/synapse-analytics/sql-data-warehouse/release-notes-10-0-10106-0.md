@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: fce60a10818943a9c6d420044d97c0c5b803de32
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133323"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509733"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -25,9 +25,10 @@ Tento článek shrnuje nové funkce a vylepšení v posledních verzích [synaps
 
 ## <a name="check-your-azure-synapse-version"></a>Podívejte se na verzi Azure synapse.
 
-Protože se nové funkce zavádějí do všech oblastí, podívejte se na verzi nasazenou do vaší instance a nejnovější poznámky k verzi pro dostupnost funkcí. Pokud chcete zjistit verzi, připojte se ke svému fondu SQL prostřednictvím SQL Server Management Studio (SSMS) a `SELECT @@VERSION;` spusťte příkaz a vraťte aktuální verzi.
+Protože se nové funkce zavádějí do všech oblastí, podívejte se na verzi nasazenou do vaší instance a nejnovější poznámky k verzi pro dostupnost funkcí. Pokud chcete zjistit verzi, připojte se ke svému fondu SQL prostřednictvím SQL Server Management Studio (SSMS) a `SELECT @@VERSION;` spusťte příkaz a vraťte aktuální verzi. Pomocí této verze můžete potvrdit, která verze se ve vašem fondu SQL použila. Datum ve výstupu identifikuje měsíc, ve kterém se vydaná verze použije pro váš fond SQL. To platí jenom pro vylepšení na úrovni služby. 
 
-Použijte identifikovanou verzi a potvrďte, která verze se použila pro váš fond SQL. Datum ve výstupu identifikuje měsíc, ve kterém se vydaná verze použije pro váš fond SQL.
+V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k verzi nainstalovanou správnou verzi. 
+
 
 > [!NOTE]
 > Název produktu vrácený SELECT @@VERSION se změní z Microsoft Azure SQL Data Warehouse na Azure synapse Analytics. Než provedete změnu, pošleme vám Pokročilá oznámení. Tato změna je relevantní pro zákazníky, kteří analyzují název produktu z výsledku SELECT @@VERSION v kódu aplikace. Aby se zabránilo změnám kódu aplikace v důsledku přeručního přizpůsobení produktu, použijte prosím tyto příkazy k dotazování SERVERPROPERTY pro název a verzi databázového produktu: pro vrácení čísla verze XX. X. XXXXX. X (bez názvu produktu) použijte tento příkaz:
@@ -40,13 +41,20 @@ Použijte identifikovanou verzi a potvrďte, která verze se použila pro váš 
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>Duben 2020
 
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Úroveň kompatibility databáze (Preview)**| V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze synapse modulu SQL. Další informace najdete v tématu věnovaném konfiguraci oboru [Sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
 |**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server Data Tools (SSDT)** | Tato verze zahrnuje následující vylepšení a opravy pro SSDT: </br> </br> – Vyřešil se problém, kdy Změna tabulky, na kterou odkazuje materializované zobrazení (MV) způsobí, že se generují příkazy ALTER VIEW, které se pro MVs nepodporují.<br/><br/> -Implementace změny pro zajištění, že operace porovnání schématu selže, když jsou objekty zabezpečení na úrovni řádků přítomny v databázi nebo projektu. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro SSDT.  <br/><br/> -Průzkumník objektů systému SQL Server prahová hodnota časového limitu se zvýšila, aby se předešlo vypršení časových limitů při výpisu velkého počtu objektů v databázi.<br/><br/> – Optimalizováno způsob, jak Průzkumník objektů systému SQL Server načítá seznam databázových objektů, aby se snížila nestabilita a zvýšil výkon při naplňování Průzkumníka objektů |
+
+## <a name="march-2020"></a>Březen 2020
+
+| Vylepšení nástrojů                                         | Podrobnosti                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server Data Tools (SSDT)** | Tato verze zahrnuje následující vylepšení a opravy pro SSDT: </br> </br> – Vyřešil se problém, kdy Změna tabulky, na kterou odkazuje materializované zobrazení (MV) způsobí, že se generují příkazy ALTER VIEW, které se pro MVs nepodporují.<br/><br/> -Implementace změny pro zajištění, že operace porovnání schématu selže, když jsou objekty zabezpečení na úrovni řádků přítomny v databázi nebo projektu. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro SSDT.  <br/><br/> -Průzkumník objektů systému SQL Server prahová hodnota časového limitu se zvýšila, aby se předešlo vypršení časových limitů při výpisu velkého počtu objektů v databázi.<br/><br/> – Optimalizováno způsob, jak Průzkumník objektů systému SQL Server načítá seznam databázových objektů, aby se snížila nestabilita a zvýšil výkon při naplňování Průzkumníka objektů |
 
 ## <a name="january-2020"></a>Leden 2020
 

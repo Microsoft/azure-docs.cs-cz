@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell – přihlášení k odběru účtu úložiště objektů Blob
-description: Tento článek obsahuje ukázkový skript Azure PowerShell, který ukazuje, jak se přihlásit k odběru událostí Event Grid pro účet úložiště objektů blob.
+title: Azure PowerShell – přihlášení k odběru účtu úložiště objektů BLOB
+description: Tento článek obsahuje ukázkový skript Azure PowerShell, který ukazuje, jak se přihlásit k odběru Event Grid událostí pro účet Blob Storage.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: a8a0982ca118663cbf0f7e4d72412ce8feda3c4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76721434"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-powershell"></a>Přihlášení k odběru událostí účtu úložiště objektů blob pomocí PowerShellu

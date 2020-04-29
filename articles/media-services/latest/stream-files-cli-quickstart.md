@@ -1,6 +1,6 @@
 ---
-title: Streamování video souborů pomocí Azure Media Services a azure cli
-description: Podle pokynů tohoto kurzu vytvořte nový účet Azure Media Services, zakódujte soubor a streamujte ho do Programu Azure Media Player.
+title: Streamování videosouborů pomocí Azure Media Services a Azure CLI
+description: Pomocí kroků v tomto kurzu vytvoříte nový účet Azure Media Services, zakódujete soubor a Streamujte ho do Azure Media Player.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,19 +14,19 @@ ms.custom: ''
 ms.date: 08/19/2019
 ms.author: juliako
 ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80382779"
 ---
-# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Kurz: Kódování vzdáleného souboru na základě adresy URL a streamování videa – Azure CLI
+# <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>Kurz: kódování vzdáleného souboru na základě adresy URL a streamování videa – Azure CLI
 
-Tento kurz ukazuje, jak snadno kódovat a streamovat videa na různých prohlížečích a zařízeních pomocí Azure Media Services a Azure CLI. Vstupní obsah můžete určit pomocí adres URL HTTPS nebo SAS nebo cest k souborům v úložišti objektů Blob Azure.
+V tomto kurzu se dozvíte, jak pomocí Azure Media Services a Azure CLI snadno kódovat a streamovat videa na nejrůznějších prohlížečích a zařízeních. Vstupní obsah můžete zadat pomocí adres URL protokolu HTTPS nebo SAS nebo cest k souborům v úložišti objektů BLOB v Azure.
 
-Příklad v tomto článku kóduje obsah, který zpřístupníte prostřednictvím adresy URL HTTPS. Media Services v3 v současné době nepodporuje kódování blokových přenosů přes adresy URL HTTPS.
+Příklad v tomto článku zakóduje obsah, který zpřístupníte přes adresu URL HTTPS. Media Services V3 v současné době nepodporuje kódování bloků přenosu prostřednictvím adres URL protokolu HTTPS.
 
-Na konci tohoto kurzu budete moci streamovat video.  
+Na konci tohoto kurzu budete moct streamovat video.  
 
 ![Přehrávání videa](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -34,9 +34,9 @@ Na konci tohoto kurzu budete moci streamovat video.
 
 ## <a name="create-a-media-services-account"></a>Vytvoření účtu Media Services
 
-Než budete moci šifrovat, kódovat, analyzovat, spravovat a streamovat mediální obsah v Azure, musíte vytvořit účet Mediálních služeb. Tento účet musí být přidružen k jednomu nebo více účtům úložiště.
+Než budete moct šifrovat, kódovat, analyzovat, spravovat a streamovat mediální obsah v Azure, musíte vytvořit účet Media Services. Tento účet musí být přidružený k jednomu nebo více účtům úložiště.
 
-Váš účet Mediální chslužeb a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Doporučujeme použít účty úložiště, které jsou na stejném místě jako účet Mediální služby k omezení latence a nákladů na odchozí přenos dat.
+Váš účet Media Services a všechny přidružené účty úložiště musí být ve stejném předplatném Azure. Doporučujeme používat účty úložiště, které jsou na stejném místě jako účet Media Services, abyste omezili náklady na latenci a výstup dat.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -46,9 +46,9 @@ az group create -n amsResourceGroup -l westus2
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
-V tomto příkladu vytvoříme účet LRS standardu pro obecné účely v2.
+V tomto příkladu vytvoříme účet Standard LRS pro obecné účely v2.
 
-Pokud chcete experimentovat s účty `--sku Standard_LRS`úložiště, použijte . Při výběru skladové položky pro `--sku Standard_RAGRS`produkční prostředí zvažte použití aplikace , která poskytuje geografickou replikaci pro kontinuitu provozu. Další informace naleznete v [tématu účty úložiště](/cli/azure/storage/account).
+Pokud chcete experimentovat s účty úložiště, použijte `--sku Standard_LRS`. Když vybíráte SKU pro produkci, zvažte použití nástroje `--sku Standard_RAGRS`, který zajišťuje geografickou replikaci pro kontinuitu podnikových prostředí. Další informace najdete v tématu [účty úložiště](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
@@ -60,7 +60,7 @@ az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_L
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -83,13 +83,13 @@ Dostanete odpověď, jako je tento:
 
 ## <a name="start-the-streaming-endpoint"></a>Spuštění koncového bodu streamování
 
-Následující příkaz Azure CLI spustí výchozí **koncový bod streamování**.
+Následující příkaz rozhraní příkazového řádku Azure spustí výchozí **koncový bod streamování**.
 
 ```azurecli-interactive
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -118,21 +118,21 @@ Dostanete odpověď, jako je tento:
 }
 ```
 
-Pokud koncový bod streamování je již spuštěn, zobrazí se tato zpráva:
+Pokud je koncový bod streamování už spuštěný, zobrazí se tato zpráva:
 
 ```
 (InvalidOperation) The server cannot execute the operation in its current state.
 ```
 
-## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Vytvoření transformace pro adaptivní kódování přenosové rychlosti
+## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Vytvořit transformaci pro kódování s adaptivní přenosovou rychlostí
 
-Vytvořte **transformaci pro** konfiguraci běžných úloh pro kódování nebo analýzu videí. V tomto příkladu děláme adaptivní kódování datových toku. Poté odešleme práci v rámci transformace, kterou jsme vytvořili. Úloha je požadavek na media services použít transformaci na daný vstup video nebo audio obsahu.
+Vytvořte **transformaci** , která konfiguruje běžné úlohy pro kódování a analýzu videí. V tomto příkladu máme kódování s adaptivní přenosovou rychlostí. Pak odešleme úlohu s transformací, kterou jsme vytvořili. Úloha je požadavek, aby se Media Services použít transformaci na daný vstup videa nebo zvukového obsahu.
 
 ```azurecli-interactive
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -158,13 +158,13 @@ Dostanete odpověď, jako je tento:
 
 ## <a name="create-an-output-asset"></a>Vytvoření výstupního prostředku
 
-Vytvořte výstupní **datový zdroj,** který se použije jako výstup úlohy kódování.
+Vytvořte výstupní **prostředek** , který se použije jako výstup úlohy kódování.
 
 ```azurecli-interactive
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -183,22 +183,22 @@ Dostanete odpověď, jako je tento:
 }
 ```
 
-## <a name="start-a-job-by-using-https-input"></a>Zahájení úlohy pomocí vstupu HTTPS
+## <a name="start-a-job-by-using-https-input"></a>Spuštění úlohy pomocí vstupu HTTPS
 
-Při odesílání úloh ke zpracování videí je třeba sdělit službě Media Services, kde vstupní video najít. Jednou z možností je zadat adresu URL HTTPS jako vstup úlohy, jak je znázorněno v tomto příkladu.
+Když odesíláte úlohy pro zpracování videí, je nutné sdělit Media Services, kde najít vstupní video. Jednou z možností je zadat adresu URL HTTPS jako vstup úlohy, jak je znázorněno v tomto příkladu.
 
-Při spuštění `az ams job start`můžete nastavit popisek na výstupu úlohy. Potom můžete použít popisek k identifikaci, k čemu je výstupní datový zdroj určen.
+Když spustíte `az ams job start`, můžete pro výstup úlohy nastavit popisek. Pak můžete pomocí popisku identifikovat, k čemu je výstupní Asset.
 
-- Pokud popisku přiřadíte hodnotu, nastavte příkaz --output-assets na "assetname=label".
-- Pokud popisku nepřiřadíte hodnotu, nastavte hodnotu --output-assets na "assetname=".
+- Pokud k popisku přiřadíte hodnotu, nastavte '--Output-assets ' na "Asset = Label".
+- Pokud k popisku nepřiřadíte hodnotu, nastavte '--Output-assets ' na "Asset =".
 
-  Všimněte si, že přidáme "=" do . `output-assets`
+  Všimněte si, že přidáme "=" `output-assets`do.
 
 ```azurecli-interactive
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -235,15 +235,15 @@ Dostanete odpověď, jako je tento:
 
 ### <a name="check-status"></a>Zkontrolování stavu
 
-Za pět minut zkontrolujte stav úlohy. Mělo by to být "Hotovo". Ještě to není hotové, za pár minut to zkontrolujte znovu. Po dokončení přejděte k dalšímu kroku a vytvořte **lokátor streamování**.
+V pěti minutách ověřte stav úlohy. Měla by být "dokončená". Ještě není hotové, zkuste to znovu za několik minut. Až se dokončí, pokračujte na další krok a vytvořte **Lokátor streamování**.
 
 ```azurecli-interactive
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
-## <a name="create-a-streaming-locator-and-get-a-path"></a>Vytvoření lokátoru streamování a získání cesty
+## <a name="create-a-streaming-locator-and-get-a-path"></a>Vytvořit Lokátor streamování a získat cestu
 
-Po dokončení kódování je dalším krokem zpřístupnění videa ve výstupním datovém zdroji klientům pro přehrávání. Chcete-li to provést, nejprve vytvořte lokátor streamování. Potom sestavte adresy URL streamování, které mohou klienti používat.
+Po dokončení kódování je dalším krokem vytvoření videa ve výstupním prostředku k dispozici pro klienty pro přehrávání. K tomu je třeba nejprve vytvořit Lokátor streamování. Pak Sestavte adresy URL streamování, které můžou klienti používat.
 
 ### <a name="create-a-streaming-locator"></a>Vytvoření lokátoru streamování
 
@@ -251,7 +251,7 @@ Po dokončení kódování je dalším krokem zpřístupnění videa ve výstupn
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -271,13 +271,13 @@ Dostanete odpověď, jako je tento:
 }
 ```
 
-### <a name="get-streaming-locator-paths"></a>Získání cest lokátoru streamování
+### <a name="get-streaming-locator-paths"></a>Získat cesty lokátoru streamování
 
 ```azurecli-interactive
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
-Dostanete odpověď, jako je tento:
+Dostanete odpověď takto:
 
 ```
 {
@@ -308,43 +308,43 @@ Dostanete odpověď, jako je tento:
 }
 ```
 
-Zkopírujte cestu http živého streamování (HLS). V tomto případě je `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`to .
+Zkopírujte cestu k HTTP Live Streaming (HLS). V tomto případě je to `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
 
-## <a name="build-the-url"></a>Vytvoření adresy URL
+## <a name="build-the-url"></a>Sestavení adresy URL
 
-### <a name="get-the-streaming-endpoint-host-name"></a>Získání názvu hostitele koncového bodu streamování
+### <a name="get-the-streaming-endpoint-host-name"></a>Získat název hostitele koncového bodu streamování
 
 ```azurecli-interactive
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
 
-Zkopírujte `hostName` hodnotu. V tomto případě je `amsaccount-usw22.streaming.media.azure.net`to .
+Zkopírujte `hostName` hodnotu. V tomto případě je to `amsaccount-usw22.streaming.media.azure.net`.
 
 ### <a name="assemble-the-url"></a>Sestavení adresy URL
 
-Hodnota cesty &lt;"https://&gt; + &lt;" + hostName hodnota Hls&gt;
+"https://" + &lt;hodnota cesty&gt; + &lt;pro název hostitele HLS&gt;
 
 Tady je příklad:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="test-playback-by-using-azure-media-player"></a>Testování přehrávání pomocí programu Azure Media Player
+## <a name="test-playback-by-using-azure-media-player"></a>Přehrávání testů pomocí Azure Media Player
 
 > [!NOTE]
-> Pokud je hráč hostován na webu HTTPS, nezapomeňte adresu URL spustit pomocí "https".
+> Pokud je přehrávač hostovaný na serveru HTTPS, ujistěte se, že jste spustili adresu URL s protokolem HTTPS.
 
-1. Otevřete webový prohlížeč [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)a přejděte na stránku .
-2. Do pole **ADRESA URL** vložte adresu URL, kterou jste vytvořili v předchozí části. Adresu URL můžete vložit ve formátu HLS, Pomlčka nebo Hladká. Azure Media Player bude automaticky používat příslušný protokol streamování pro přehrávání na vašem zařízení.
-3. Vyberte **možnost Aktualizovat přehrávač**.
+1. Otevřete webový prohlížeč a pokračujte na [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
+2. Do pole **Adresa URL** vložte adresu URL, kterou jste vytvořili v předchozí části. Adresu URL můžete vložit ve formátu HLS, pomlčka nebo vyhlazení. Azure Media Player bude automaticky používat vhodný protokol pro streamování pro přehrávání na vašem zařízení.
+3. Vyberte **aktualizovat přehrávač**.
 
 >[!NOTE]
 >Azure Media Player můžete použít pro účely testování, nesmí se ale používat v produkčním prostředí.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud již nepotřebujete žádné prostředky ve skupině prostředků, včetně mediálních služeb a účtů úložiště, které jste vytvořili pro tento kurz, odstraňte skupinu prostředků.
+Pokud už v rámci skupiny prostředků nepotřebujete žádné prostředky, včetně Media Services a účtů úložiště, které jste pro tento kurz vytvořili, odstraňte skupinu prostředků.
 
-Spusťte tento příkaz příkazového příkazu k příkazu Azure:
+Spusťte tento příkaz rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
 az group delete --name amsResourceGroup
@@ -352,4 +352,4 @@ az group delete --name amsResourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-[Přehled mediálních služeb](media-services-overview.md)
+[Přehled Media Services](media-services-overview.md)

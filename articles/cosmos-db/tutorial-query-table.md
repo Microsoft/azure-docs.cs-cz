@@ -1,6 +1,6 @@
 ---
 title: Jak provádět dotazy na tabulková data ve službě Azure Cosmos DB?
-description: Zjistěte, jak dotazovat data uložená v účtu Rozhraní API tabulky Azure Cosmos DB pomocí filtrů OData a dotazů LINQ
+description: Naučte se, jak zadávat dotazy na data uložená v Azure Cosmos DB rozhraní API pro tabulky účtu pomocí filtrů OData a dotazů LINQ.
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770488"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní Table API
@@ -26,7 +26,7 @@ Tento článek se zabývá následujícími úkony:
 
 Dotazy v tomto článku využívají následující ukázkovou tabulku `People`:
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Výsledky**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ Další informace o vytváření výrazů filtru pro různé datové typy najdet
 
 **Výsledky**
 
-| PartitionKey | RowKey | E-mail | PhoneNumber |
+| PartitionKey | RowKey | E-mailu | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

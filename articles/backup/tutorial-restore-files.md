@@ -1,14 +1,14 @@
 ---
-title: Kurz – obnovení souborů do virtuálního počítače pomocí azure backupu
+title: Kurz – obnovení souborů do virtuálního počítače pomocí Azure Backup
 description: Zjistěte, jak na virtuálním počítači Azure provádět obnovení na úrovni souborů pomocí služeb Backup a Recovery Services.
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 338c6b642076835132b75aa4259381791378577a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74171724"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure

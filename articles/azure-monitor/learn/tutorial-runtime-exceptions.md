@@ -8,10 +8,10 @@ ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
 ms.openlocfilehash: 91a0e4b052571a509ec7122e4440a8eaf58839be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77670419"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
@@ -40,7 +40,7 @@ Pro absolvování tohoto kurzu potřebujete:
 - Kurz popisuje identifikaci výjimky ve vaší aplikaci, proto upravte kód ve vašem prostředí vývoj nebo testování, aby generoval výjimku. 
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
-Přihlaste se k [https://portal.azure.com](https://portal.azure.com)portálu Azure na adrese .
+Přihlaste se k Azure Portal [https://portal.azure.com](https://portal.azure.com)v.
 
 
 ## <a name="analyze-failures"></a>Analýza selhání
@@ -72,7 +72,7 @@ Application Insights shromažďuje informace o selháních v aplikaci a umožňu
     ![Podrobnosti výjimky](media/tutorial-runtime-exceptions/failed-requests-exception.png)
 
 ## <a name="identify-failing-code"></a>Identifikace chyb kódu
-Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Potom máte možnost ladit zdrojový kód stažením snímku a jeho otevřením v Sadě Visual Studio 2019 Enterprise.
+Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek v aplikaci, aby vám pomohl při diagnostice jejich hlavní příčiny v produkčním prostředí.  Snímky ladění můžete zobrazit na portálu a podívat se do zásobníku volání a zkontrolovat proměnné v každém rámci zásobníku volání. Následně máte možnost ladit zdrojový kód stažením snímku a jeho otevřením v aplikaci Visual Studio 2019 Enterprise.
 
 1. Ve vlastnostech výjimky klikněte na tlačítko **Otevřít snímek ladění**.
 2. Otevře se panel **Snímek Ladění** se zásobníkem volání pro daný požadavek.  Kliknutím na kteroukoli metodu můžete zobrazit hodnoty všech místních proměnných v době požadavku.  Počínaje hlavní metodou v tomto příkladu vidíte místní proměnné, které nemají žádnou hodnotu.
@@ -83,9 +83,9 @@ Snapshot Debugger shromažďuje snímky nejčastěji se vyskytujících výjimek
 
     ![Snímek ladění](media/tutorial-runtime-exceptions/debug-snapshot-02.png)
 
-4. Potom máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Chcete-li tak učinit, klepněte na tlačítko **Stáhnout snímek**.
+4. Pak máte možnost stáhnout tento snímek do sady Visual Studio, kde můžeme najít skutečný kód, který je třeba opravit. Uděláte to tak, že kliknete na **Stáhnout snímek**.
 5. Snímek se načte do aplikace Visual Studio.
-6. Nyní můžete spustit relaci ladění v sadě Visual Studio Enterprise, která rychle identifikuje řádek kódu, který způsobil výjimku.
+6. Nyní můžete spustit relaci ladění v Visual Studio Enterprise, která rychle identifikuje řádek kódu, který způsobil výjimku.
 
     ![Výjimka v kódu](media/tutorial-runtime-exceptions/exception-code.png)
 

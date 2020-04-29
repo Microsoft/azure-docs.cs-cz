@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: eamono
 ms.openlocfilehash: 9f99ce5862850c2453e9e72241fff77fe091616f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65521432"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Kurz: Integrace Azure Automation s Event Grid a Microsoft Teams
@@ -28,7 +28,7 @@ V tomto kurzu se naučíte:
 > * Vytvoří odběr Event Gridu.
 > * Vytvořit virtuální počítač, který spustí runbook
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,7 +53,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 4. Vyberte **Importovat** a pojmenujte ho **Watch-VMWrite**.
 
 5. Po importu vyberte **Upravit** a zobrazte zdroj runbooku. 
-6. Aktualizujte řádek 74 ve `Tag` skriptu, který chcete použít místo `Tags`.
+6. Aktualizujte řádek 74 ve skriptu, který chcete `Tag` použít místo `Tags`.
 
     ```powershell
     Update-AzureRmVM -ResourceGroupName $VMResourceGroup -VM $VM -Tag $Tag | Write-Verbose
@@ -70,7 +70,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 
 3. Jako název zadejte **AzureAutomationIntegration** a vyberte **Vytvořit**.
 
-4. Zkopírujte adresu URL webhooku do schránky a uložte ji. Adresa URL webhooku se používá k odesílání informací do Microsoft Teams.
+4. Zkopírujte adresu URL Webhooku do schránky a uložte ji. Adresa URL webhooku se používá k odesílání informací do Microsoft Teams.
 
 5. Vyberte **Hotovo** a uložte webhook.
 
@@ -105,7 +105,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
     4. V rozevíracím seznamu **Definované typy událostí** zrušte zaškrtnutí všech možností kromě možnosti **Úspěšný zápis prostředku**.
 
         > [!NOTE] 
-        > Azure Resource Manager aktuálně nerozlišuje mezi vytvořit a aktualizovat, takže implementace tohoto kurzu pro všechny události Microsoft.Resources.ResourceWriteSuccess ve vašem předplatném Azure může mít za následek vysoký objem volání.
+        > Azure Resource Manager aktuálně nerozlišuje mezi vytvářením a aktualizací, takže implementace tohoto kurzu pro všechny události Microsoft. Resources. ResourceWriteSuccess ve vašem předplatném Azure by mohla vést k velkému objemu volání.
     1. Jako **Typ koncového bodu** vyberte **Webhook**.
     2. Klikněte na **Vybrat koncový bod**. Na stránce **Vybrat webhook**, která se otevře, vložte adresu URL webhooku, který jste vytvořili pro runbook Watch-VMWrite.
     3. V části **FILTRY** zadejte předplatné a skupinu prostředků, kde chcete hledat nově vytvořené virtuální počítače. Mělo by to vypadat takto: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`

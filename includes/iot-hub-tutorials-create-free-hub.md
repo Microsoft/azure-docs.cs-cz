@@ -9,17 +9,17 @@ ms.date: 04/19/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 367a0b1d17f8d5ebe4f46835ace963b00e75354e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68229230"
 ---
 Vytvoření IoT Hubu pomocí webu Azure Portal:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
+1. Vyberte **vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
     ![Výběr instalace služby IoT Hub](media/iot-hub-tutorials-create-free-hub/selectiothub.png)
 
@@ -29,8 +29,8 @@ Vytvoření IoT Hubu pomocí webu Azure Portal:
     | ------- | ----- |
     | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Skupina prostředků | Vytvořte novou. Tento kurz používá název **tutorials-iot-hub-rg**. |
-    | Region (Oblast) | Tento kurz používá **USA – západ**. Vy si můžete vybrat oblast, která je vám nejbližší. |
-    | Name (Název) | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
+    | Oblast | Tento kurz používá **USA – západ**. Vy si můžete vybrat oblast, která je vám nejbližší. |
+    | Název | Následující snímek obrazovky používá název **tutorials-iot-hub**. Když vytváříte své centrum, musíte si zvolit jedinečný název. |
 
     ![Nastavení centra 1](media/iot-hub-tutorials-create-free-hub/hubdefinition-1.png)
 

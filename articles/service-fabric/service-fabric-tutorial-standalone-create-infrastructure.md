@@ -7,10 +7,10 @@ ms.date: 05/11/2018
 ms.author: dekapur
 ms.custom: mvc
 ms.openlocfilehash: b6348d9fdcd4133a4fa69aac3ccf5494e904094e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75613971"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Kurz: Vytvoření infrastruktury AWS pro hostování clusteru Service Fabric
@@ -24,7 +24,7 @@ V první části tohoto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření sady instancí EC2
 > * Úprava skupiny zabezpečení
-> * Přihlášení k jedné z instancí
+> * Přihlaste se k jedné z instancí
 > * Příprava instance pro Service Fabric
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,7 +33,7 @@ K dokončení tohoto kurzu potřebujete mít účet AWS.  Pokud účet ještě n
 
 ## <a name="create-ec2-instances"></a>Vytvoření instancí EC2
 
-Přihlášení ke konzoli AWS > Zadejte **EC2** do vyhledávacího pole > **virtuálních serverech EC2 v cloudu**
+Přihlaste se ke konzole AWS > do vyhledávacího pole zadejte **EC2** > **EC2 virtuálních serverů v cloudu** .
 
 ![Vyhledávání v konzole AWS][aws-console]
 
@@ -142,7 +142,7 @@ V první části této série jste se naučili, jak spustit tři instance EC2 a 
 > [!div class="checklist"]
 > * Vytvoření sady instancí EC2
 > * Úprava skupiny zabezpečení
-> * Přihlášení k jedné z instancí
+> * Přihlaste se k jedné z instancí
 > * Příprava instance pro Service Fabric
 
 Pokračujte druhou částí konfigurace služby Service Fabric v clusteru.

@@ -1,21 +1,21 @@
 ---
-title: 'PowerShell: Připojení k účtu úložiště'
-description: Zjistěte, jak pomocí Azure PowerShellu automatizovat nasazení a správu služby App Service. Tato ukázka ukazuje, jak připojit aplikaci k účtu úložiště.
+title: 'PowerShell: připojení k účtu úložiště'
+description: Naučte se používat Azure PowerShell k automatizaci nasazení a správy App Service. V této ukázce se dozvíte, jak připojit aplikaci k účtu úložiště.
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.topic: sample
 ms.date: 03/20/2017
 ms.custom: mvc
 ms.openlocfilehash: d1c8951445c0be6a3d4b9c4763d719fc7d79d2d5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74685335"
 ---
-# <a name="connect-an-app-service-app-to-a-storage-account"></a>Připojení aplikace Služby App Service k účtu úložiště
+# <a name="connect-an-app-service-app-to-a-storage-account"></a>Připojení aplikace App Service k účtu úložiště
 
-V tomto scénáři se dozvíte, jak vytvořit účet úložiště Azure a aplikaci služby App Service. Pak propojíte účet úložiště s aplikací pomocí nastavení aplikace.
+V tomto scénáři se dozvíte, jak vytvořit účet služby Azure Storage a aplikaci App Service. Pak propojíte účet úložiště s aplikací pomocí nastavení aplikace.
 
 V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [příručce k Azure PowerShellu](/powershell/azure/overview) a pak spuštěním rutiny `Connect-AzAccount` vytvořte připojení k Azure.
 
@@ -27,7 +27,7 @@ V případě potřeby nainstalujte Azure PowerShell podle pokynů uvedených v [
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Po spuštění ukázky skriptu lze následující příkaz použít k odebrání skupiny prostředků, aplikace App Service a všech souvisejících prostředků.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků, App Service aplikaci a všechny související prostředky.
 
 ```powershell
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -40,14 +40,14 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nový-AzAppServicePlán](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
-| [Nový-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří aplikaci služby App Service. |
+| [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Vytvoří plán služby App Service. |
+| [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Vytvoří aplikaci App Service. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Vytvoří účet úložiště. |
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Získá seznam přístupových klíčů pro účet služby Azure Storage. |
-| [Sada-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upravuje konfiguraci aplikace služby App Service. |
+| [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Upraví konfiguraci aplikace App Service. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Další ukázky Azure Powershellu pro Azure App Service najdete ve [ukázkách Azure PowerShellu](../samples-powershell.md).
+Další ukázky Azure PowerShellu pro Azure App Service najdete v [ukázkách Azure PowerShell](../samples-powershell.md).

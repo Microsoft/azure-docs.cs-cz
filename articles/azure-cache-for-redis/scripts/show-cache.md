@@ -1,6 +1,6 @@
 ---
-title: Získejte podrobnosti o azure mezipaměti pro Redis – Azure CLI
-description: Tato ukázka kódu vyvedení účtu Azure ukazuje, jak načíst podrobnosti o azure mezipaměti pro instanci Redis, včetně jeho stavu zřizování.
+title: Získání podrobností o službě Azure cache pro Redis – Azure CLI
+description: Tento ukázkový kód Azure CLI ukazuje, jak načíst podrobnosti o instanci Azure cache for Redis, včetně jejího stavu zřízení.
 author: yegu-ms
 ms.author: yegu
 tags: azure-service-management
@@ -9,15 +9,15 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
 ms.openlocfilehash: 54920017f4a0598a74a54114e3d1e0a5392d7d2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75411056"
 ---
-# <a name="get-details-of-an-azure-cache-for-redis"></a>Získání podrobností o Azure Cache pro Redis
+# <a name="get-details-of-an-azure-cache-for-redis"></a>Získat podrobnosti o službě Azure cache pro Redis
 
-V tomto scénáři se dozvíte, jak načíst podrobnosti azure mezipaměti pro redis instance, včetně jeho stavu zřizování.
+V tomto scénáři se dozvíte, jak načíst podrobnosti o instanci služby Azure cache pro Redis, včetně jejího stavu zřízení.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -27,15 +27,15 @@ V tomto scénáři se dozvíte, jak načíst podrobnosti azure mezipaměti pro r
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k načtení podrobností o instanci Azure Cache for Redis. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript používá následující příkazy k načtení podrobností o službě Azure cache pro instanci Redis. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Načíst podrobnosti o azure mezipaměti pro redis instance. |
+| [AZ Redis show](https://docs.microsoft.com/cli/azure/redis) | Načte podrobnosti instance Azure cache pro instanci Redis. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](https://docs.microsoft.com/cli/azure).
 
-Další ukázky skriptu Azure Cache for Redis CLI najdete v [dokumentaci k Azure Cache for Redis](../cli-samples.md).
+Další ukázky skriptů Azure cache pro Redis CLI najdete v [dokumentaci k Azure cache pro Redis](../cli-samples.md).

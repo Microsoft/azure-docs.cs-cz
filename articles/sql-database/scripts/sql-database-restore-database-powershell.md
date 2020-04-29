@@ -1,6 +1,6 @@
 ---
-title: PowerShell příklad-obnovení-zálohování-Azure SQL databáze
-description: Ukázkový skript Azure PowerShellu pro obnovení jediné databáze Azure SQL do dřívějšího bodu v čase z automatického zálohování
+title: Příklad PowerShellu – obnovení zálohy – Azure SQL Database
+description: Azure PowerShell ukázkový skript pro obnovení databáze Azure SQL, která je starším bodem v čase, z automatického zálohování
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,21 +12,21 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
 ms.openlocfilehash: da4236e138bd75237ca10b85dc1586fecd1cece4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73691548"
 ---
-# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Obnovení jedné databáze Azure SQL do dřívějšího bodu v čase pomocí PowerShellu
+# <a name="use-powershell-to-restore-an-azure-sql-single-database-to-an-earlier-point-in-time"></a>Použití PowerShellu k obnovení izolované databáze SQL Azure do dřívějšího bodu v čase
 
-Tento příklad skriptu Prostředí PowerShell obnoví databázi Azure SQL do určitého bodu v čase.  
+Tento ukázkový skript PowerShellu obnoví databázi SQL Azure do konkrétního bodu v čase.  
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, tento kurz vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, t
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,12 +47,12 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který je hostitelem jedné databáze nebo elastického fondu. |
-| [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří databázi na serveru SQL Database jako samostatnou nebo sdruženou databázi. |
-[Get-AzSqlDatabaseGeoZálohování](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Získá geograficky redundantní zálohu samostatné nebo sdružené databáze. |
-| [Obnovit databázi AzSql](/powershell/module/az.sql/restore-azsqldatabase) | Obnoví samostatnou nebo sdruženou databázi SQL. |
-|[Odebrat databázi AzSql](/powershell/module/az.sql/remove-azsqldatabase) | Odebere samostatnou nebo sdruženou databázi Azure SQL. |
-| [Get-AzSqlDeletedZálohování databáze](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Získá odstraněné samostatné nebo sdružené databáze, které můžete obnovit. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database, který hostuje jednu databázi nebo elastický fond. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří databázi na serveru SQL Database jako samostatnou databázi nebo databázi ve fondu. |
+[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Získá geograficky redundantní zálohu samostatné nebo sdružené databáze. |
+| [Obnovit – AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Obnoví databázi SQL samostatně nebo ve fondu. |
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Odebere samostatnou databázi SQL Azure nebo databázi ve fondu. |
+| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Načte odstraněnou samostatnou databázi nebo databázi ve fondu, kterou můžete obnovit. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky

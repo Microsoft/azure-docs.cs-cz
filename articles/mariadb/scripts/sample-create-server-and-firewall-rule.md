@@ -1,6 +1,6 @@
 ---
-title: Skript příkazového příkazového příkazu – vytvoření serveru – databáze Azure pro MariaDB
-description: Tento ukázkový skript rozhraní příkazového příkazu vytvoří databázi Azure pro server MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru.
+title: Skript CLI – vytvoření serveru – Azure Database for MariaDB
+description: Tento ukázkový skript rozhraní příkazového řádku vytvoří server Azure Database for MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
@@ -9,14 +9,14 @@ ms.topic: sample
 ms.custom: mvc
 ms.date: 11/28/2018
 ms.openlocfilehash: 3e0c17bbb413c2036ad1a3794dc029aaef0fe68c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74771712"
 ---
-# <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru MariaDB a konfigurace pravidla brány firewall pomocí rozhraní příkazového příkazu Azure
-Tento ukázkový skript rozhraní příkazového příkazu vytvoří databázi Azure pro server MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu je server MariaDB přístupný všem službám Azure a nakonfigurované IP adrese.
+# <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru MariaDB a konfigurace pravidla brány firewall pomocí Azure CLI
+Tento ukázkový skript rozhraní příkazového řádku vytvoří server Azure Database for MariaDB a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude server MariaDB přístupný pro všechny služby Azure a nakonfigurovanou IP adresu.
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
@@ -36,10 +36,10 @@ Tento skript používá příkazy uvedené v následující tabulce:
 | **Příkaz** | **Poznámky** |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az mariadb server vytvořit](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databází. |
-| [Az mariadb server firewall vytvořit](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | Vytvoří pravidlo brány firewall umožňující přístup k serveru a jeho databázím ze zadaného rozsahu IP adres. |
+| [AZ MariaDB Server Create](/cli/azure/mariadb/server#az-mariadb-server-create) | Vytvoří server MariaDB, který je hostitelem databází. |
+| [AZ MariaDB server firewall Create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create) | Vytvoří pravidlo brány firewall umožňující přístup k serveru a jeho databázím ze zadaného rozsahu IP adres. |
 | [az group delete](/cli/azure/group#az-group-delete) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o azure cli: [dokumentace KONTo IO Azure](/cli/azure).
-- Vyzkoušejte další skripty: [Ukázky Azure CLI pro Azure Database pro MariaDB](../sample-scripts-azure-cli.md)
+- Další informace najdete v dokumentaci Azure CLI: [dokumentace k Azure CLI](/cli/azure).
+- Vyzkoušejte další skripty: [ukázky v Azure CLI pro Azure Database for MariaDB](../sample-scripts-azure-cli.md)

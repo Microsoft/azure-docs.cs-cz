@@ -1,42 +1,42 @@
 ---
-title: 'Vzor: Účinky definice zásad'
-description: Tento vzor zásad Azure poskytuje příklad použití různých účinků definice zásad.
+title: 'Vzor: účinky definice zásady'
+description: Tento model Azure Policy poskytuje příklad použití různých efektů definice zásady.
 ms.date: 01/31/2020
 ms.topic: sample
 ms.openlocfilehash: 1a9aec50bd328b76271d54f7830c75e0848d3cde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80372633"
 ---
-# <a name="azure-policy-pattern-effects"></a>Vzor zásad Azure: efekty
+# <a name="azure-policy-pattern-effects"></a>Azure Policy – vzor: efekty
 
-Azure Policy má řadu [efektů,](../concepts/effects.md) které určují, jak služba reaguje na nekompatibilní prostředky. Některé efekty jsou jednoduché a nevyžadují žádné další vlastnosti v definici zásady, zatímco jiné vyžadují několik vlastností.
+Azure Policy má množství [efektů](../concepts/effects.md) , které určují, jak služba reaguje na prostředky, které nedodržují předpisy. Některé efekty jsou jednoduché a v definici zásad nevyžadují žádné další vlastnosti, zatímco jiné vyžadují několik vlastností.
 
-## <a name="sample-1-simple-effect"></a>Ukázka 1: Jednoduchý efekt
+## <a name="sample-1-simple-effect"></a>Ukázka 1: jednoduchý efekt
 
-Tato definice zásad zkontroluje, zda značka definovaná v parametru **tagName** existuje na hodnoceném prostředku. Pokud značka ještě neexistuje, spustí se [efekt úpravy](../concepts/effects.md#modify) pro přidání značky s hodnotou v parametru **tagValue**.
+Tato definice zásady kontroluje, zda značka definovaná v parametru **TagName** existuje ve vyhodnoceném prostředku. Pokud značka ještě neexistuje, efekt [změny](../concepts/effects.md#modify) se aktivuje, aby se přidala značka s hodnotou v parametru **tagValue**.
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json":::
 
-### <a name="sample-1-explanation"></a>Ukázka 1: Vysvětlení
+### <a name="sample-1-explanation"></a>Ukázka 1: vysvětlení
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-1.json" range="40-50":::
 
-Efekt **změny** vyžaduje blok **policyRule.then.details,** který definuje **roleDefinitionIds** a **operace**. Tyto parametry informují Zásady Azure, jaké role jsou potřeba k přidání značky a nápravě prostředku a které **upravují** operaci k provedení. V tomto příkladu je **operace** _přidat_ a parametry se používají k nastavení značky a její hodnoty.
+Efekt **úprav** vyžaduje blok **policyRule. then. Details** , který definuje **roleDefinitionIds** a **operace**. Tyto parametry informují Azure Policy, jaké role jsou potřeba k přidání značky a nápravě prostředku a kterou operaci **úprav** provést. V tomto příkladu je **operace** _přidána_ a parametry jsou použity k nastavení značky a její hodnoty.
 
-## <a name="sample-2-complex-effect"></a>Vzorek 2: Komplexní efekt
+## <a name="sample-2-complex-effect"></a>Ukázka 2: složitý efekt
 
-Tato definice zásad audituje každý virtuální počítač, pokud rozšíření definované v parametrech **vydavatela** a **typu**, neexistuje. Používá [auditIfNotExists](../concepts/effects.md#auditifnotexists) ke kontrole prostředku souvisejícího s virtuálním počítačem, aby zjistil, zda existuje instance, která odpovídá definovaným parametrům. Tento příklad kontroluje typ **rozšíření.**
+Tato definice zásad Audituje každý virtuální počítač, pokud není k dispozici rozšíření definované v parametrech typu **Vydavatel** a **typ**. Používá [auditIfNotExists](../concepts/effects.md#auditifnotexists) ke kontrole prostředku, který souvisí s virtuálním počítačem, a zjistí, jestli existuje instance, která odpovídá definovaným parametrům. Tento příklad kontroluje typ **rozšíření** .
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json":::
 
-### <a name="sample-2-explanation"></a>Ukázka 2: Vysvětlení
+### <a name="sample-2-explanation"></a>Ukázka 2: vysvětlení
 
 :::code language="json" source="~/policy-templates/patterns/pattern-effect-details-2.json" range="45-58":::
 
-Efekt **auditIfNotExists** vyžaduje blok **policyRule.then.details** k definování **typu** i **stavu existence,** který má být vyhledán. Existcondition používá prvky jazyka zásad, například [logické operátory](../concepts/definition-structure.md#logical-operators), k určení, zda existuje odpovídající související prostředek. **existenceCondition** V tomto příkladu jsou hodnoty zaškrtnuté proti každému [aliasu](../concepts/definition-structure.md#aliases) definovány v parametrech.
+**AuditIfNotExists** efekt vyžaduje blok **policyRule. then. Details** pro definování **typu** i **existenceCondition** pro hledání. **ExistenceCondition** používá prvky jazyka zásad, jako jsou například [logické operátory](../concepts/definition-structure.md#logical-operators), k určení, zda existuje odpovídající související prostředek. V tomto příkladu jsou v parametrech definovány hodnoty kontrolované proti jednotlivým [aliasům](../concepts/definition-structure.md#aliases) .
 
 ## <a name="next-steps"></a>Další kroky
 

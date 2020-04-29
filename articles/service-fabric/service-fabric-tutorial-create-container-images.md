@@ -1,5 +1,5 @@
 ---
-title: Vytváření ibikopií kontejnerů na Service Fabric v Azure
+title: Vytváření imagí kontejneru v Service Fabric v Azure
 description: V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78252790"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Kurz: Vytváření imagí kontejneru v clusteru Service Fabric s Linuxem
@@ -78,7 +78,7 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Nasazení služby Azure Container Registry
 
-Nejprve spusťte příkaz **az přihlášení** pro přihlášení ke svému účtu Azure.
+Nejprve spuštěním příkazu **AZ Login** Přihlaste se ke svému účtu Azure.
 
 ```azurecli
 az login
@@ -98,7 +98,7 @@ Vytvořte skupinu prostředků pomocí příkazu **az group create**. V tomto p�
 az group create --name <myResourceGroup> --location westus
 ```
 
-Vytvořte registr kontejneru Azure pomocí příkazu **az acr create.** Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
+Pomocí příkazu **AZ ACR Create** vytvořte službu Azure Container Registry. Nahraďte parametr \<acrName> názvem registru kontejneru, který chcete v rámci svého předplatného vytvořit. Tento název smí obsahovat jen alfanumerické znaky a musí být jedinečný.
 
 ```azurecli
 az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
@@ -106,9 +106,9 @@ az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --
 
 V celé zbývající části tohoto kurzu používáme položku „acrName“ jako zástupný symbol pro název registru kontejneru, který jste zvolili. Poznamenejte si tuto hodnotu.
 
-## <a name="sign-in-to-your-container-registry"></a>Přihlášení do registru kontejnerů
+## <a name="sign-in-to-your-container-registry"></a>Přihlaste se ke svému registru kontejneru.
 
-Před odesláním obrázků do ní se přihlaste ke své instanci ACR. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
+Před nahráním imagí do instance ACR se přihlaste. Dokončete operaci pomocí příkazu **az acr login**. Uveďte jedinečný název zadaný pro registr kontejneru při jeho vytvoření.
 
 ```azurecli
 az acr login --name <acrName>
@@ -198,7 +198,7 @@ Na konci kurzu byla image kontejneru uložena v privátní instanci služby Azur
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu byla aplikace vytažena z GitHubu a byly vytvořeny a zatlačeny do registru. Dokončili jste následující kroky:
+V tomto kurzu byla aplikace získána z GitHubu a image kontejneru se vytvořily a vložily do registru. Dokončili jste následující kroky:
 
 > [!div class="checklist"]
 > * Klonovat zdroj aplikace z GitHubu

@@ -1,6 +1,6 @@
 ---
-title: PowerShell example-monitor-scale-elastic-pool-Azure SQL Database
-description: Ukázkový skript Azure PowerShellu pro monitorování a škálování elastického fondu v Azure SQL Database
+title: Příklad PowerShellu – monitorování a škálování elastického fondu – Azure SQL Database
+description: Azure PowerShell ukázkový skript pro monitorování a škálování elastického fondu v Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 6ab361b67741f2b96f593d04dafbabe355fc9121
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73691620"
 ---
 # <a name="use-powershell-to-monitor-and-scale-an-elastic-pool-in-azure-sql-database"></a>Použití PowerShellu k monitorování a škálování elastického fondu v Azure SQL Database
@@ -26,7 +26,7 @@ Tento ukázkový skript PowerShellu monitoruje metriky výkonu elastického fond
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, tento kurz vyžaduje AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -34,7 +34,7 @@ Pokud se rozhodnete nainstalovat a používat prostředí PowerShell místně, t
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
@@ -47,13 +47,13 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | Příkaz | Poznámky |
 |---|---|
  [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který je hostitelem jedné databáze nebo elastického fondu. |
-| [Nový elastický fond AzSql](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří elastický fond. |
-| [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří jednu databázi nebo databázi v elastickém fondu. |
-| [Získat-AzMetric](/powershell/module/az.monitor/get-azmetric) | Zobrazí informace o využití velikosti databáze.|
-| [Pravidlo přidání AzMetricAlert](/powershell/module/az.monitor/add-azmetricalertrule) | Přidá nebo aktualizuje pravidlo upozornění na základě metriky. |
-| [Elastický fond Set-AzSql](/powershell/module/az.sql/set-azsqlelasticpool) | Aktualizuje vlastnosti elastického fondu. |
-| [Pravidlo přidání AzMetricAlert](/powershell/module/az.monitor/add-azmetricalertrule) | Nastaví pravidlo upozornění pro budoucí automatické monitorování DTU. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database, který hostuje jednu databázi nebo elastický fond. |
+| [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Vytvoří elastický fond. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří izolovanou databázi nebo databázi v elastickém fondu. |
+| [Get-AzMetric](/powershell/module/az.monitor/get-azmetric) | Zobrazí informace o využití velikosti databáze.|
+| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Přidá nebo aktualizuje pravidlo upozornění na základě metriky. |
+| [Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) | Aktualizuje vlastnosti elastického fondu. |
+| [Add-AzMetricAlertRule](/powershell/module/az.monitor/add-azmetricalertrule) | Nastaví pravidlo upozornění pro budoucí automatické monitorování DTU. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 

@@ -1,7 +1,7 @@
 ---
-title: Ukázka skriptu příkazového příkazu Azure – odstranění azure app configuration store
+title: Ukázkový skript Azure CLI – odstranění úložiště konfigurace aplikace Azure
 titleSuffix: Azure App Configuration
-description: Odstranění úložiště Konfigurace aplikací Azure pomocí skriptu Azure CLI
+description: Použití skriptu Azure CLI k odstranění úložiště konfigurace aplikace Azure
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -10,15 +10,15 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 7f73de459d8ce9f74e3925789af630b7c804d605
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77523568"
 ---
-# <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikací Azure
+# <a name="delete-an-azure-app-configuration-store"></a>Odstranění úložiště konfigurace aplikace Azure
 
-Tento ukázkový skript odstraní instanci Konfigurace aplikace Azure.
+Tento ukázkový skript odstraní instanci Azure App Configuration.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,14 +39,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k odstranění úložiště konfigurace aplikací. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů odstraní úložiště konfigurace aplikace. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [az appconfig odstranit](/cli/azure/appconfig#az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
+| [AZ appconfig DELETE](/cli/azure/appconfig#az-appconfig-delete) | Odstraní prostředek úložiště konfigurace aplikace. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázky skriptu příkazového příkazu konfigurace aplikace najdete v [ukázkách příkazového příkazu konfigurace aplikace Azure](../cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro konfiguraci aplikace najdete v ukázkách rozhraní příkazového [řádku konfigurace Azure](../cli-samples.md).

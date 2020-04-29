@@ -9,13 +9,13 @@ ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 069baf627c0230b6a4727c375494352ab3e6a803
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67174941"
 ---
-Chcete-li do skupiny prostředků přidat dvě značky, použijte příkaz [Set-AzResourceGroup:](/powershell/module/az.resources/set-azresourcegroup)
+K přidání dvou značek do skupiny prostředků použijte příkaz [set-AzResourceGroup](/powershell/module/az.resources/set-azresourcegroup) :
 
 ```azurepowershell-interactive
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ Dept="IT"; Environment="Test" }
@@ -86,7 +86,7 @@ Pokud chcete sloučit několik hodnot v jedné značce, použijte řetězec JSON
 Set-AzResourceGroup -Name myResourceGroup -Tag @{ CostCenter="{`"Dept`":`"IT`",`"Environment`":`"Test`"}" }
 ```
 
-Chcete-li přidat novou značku s několika hodnotami bez ztráty existujících značek, musíte načíst existující značky, použít řetězec JSON pro novou značku a znovu použít kolekci značek:
+Chcete-li přidat novou značku s několika hodnotami bez ztráty stávajících značek, je nutné načíst existující značky, použít řetězec JSON pro novou značku a znovu použít kolekci značek:
 
 ```azurepowershell-interactive
 # Get existing tags and add a new tag

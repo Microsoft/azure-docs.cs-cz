@@ -1,161 +1,161 @@
 ---
-title: Nasazení ukázky plánu úlohy iso 27001 ASE/SQL
-description: Nasazení kroků iso 27001 App Service prostředí nebo SQL database plán pracovního plánu ukázku včetně podrobností o parametru artefakt u podrobného plánu.
+title: Ukázka předmocného pomocného kódu ISO 27001/úlohy SQL
+description: Nasaďte kroky ukázkového plánu úloh ISO 27001 App Service Environment/SQL Database, včetně podrobností parametrů artefaktu podrobného plánu.
 ms.date: 01/13/2020
 ms.topic: sample
 ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922584"
 ---
-# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázky pracovního plánu prostředí služby ISO 27001 App Service/SQL Database
+# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Nasazení ukázka ISO 27001 App Service Environment/SQL Database úlohy podrobný plán
 
-Chcete-li nasadit azure plány ISO 27001 App Service prostředí nebo SQL database podrobné hopodrobný plán, je nutné podniknout následující kroky:
+Pokud chcete nasadit ukázkovou úlohu Azure modrotisky ISO 27001 App Service Environment/SQL Database, je potřeba provést tyto kroky:
 
 > [!div class="checklist"]
-> - Nasazení ukázky podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md)
-> - Vytvoření nového podrobného plánu z ukázky
+> - Ukázka podrobného plánu pro nasazování [sdílených služeb ISO 27001](../iso27001-shared/index.md)
+> - Vytvořit nový podrobný plán z ukázky
 > - Označení kopie ukázky jako **publikované**
 > - Přiřazení kopie podrobného plánu k existujícímu předplatnému
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free) před tím, než začnete.
 
-## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Nasazení ukázky podrobného plánu sdílených služeb ISO 27001
+## <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Ukázka podrobného plánu pro nasazování sdílených služeb ISO 27001
 
-Před nasazením této ukázky podrobného plánu musí být ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) nasazena do cílového předplatného. Bez úspěšného nasazení ukázky podrobného plánu sdílených služeb ISO 27001 bude v této ukázce podrobného plánu chybět závislosti infrastruktury a během nasazení se nezdaří.
+Před nasazením tohoto ukázkového podrobného plánu musí být ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) nasazená do cílového předplatného. V této ukázce podrobného plánu nemusíte mít k dispozici úspěšné nasazení ukázkového plánu sdílených služeb ISO 27001, v této ukázce podrobného plánu dojde k chybě při nasazení.
 
 > [!IMPORTANT]
-> Tato ukázka podrobného plánu musí být přiřazena ve stejném předplatném jako ukázka podrobného plánu [sdílených služeb ISO 27001.](../iso27001-shared/index.md)
+> Tato ukázka podrobného plánu musí být přiřazená ve stejném předplatném jako ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) .
 
-## <a name="create-blueprint-from-sample"></a>Vytvoření podrobného plánu z ukázky
+## <a name="create-blueprint-from-sample"></a>Vytvořit podrobný plán z ukázky
 
-Nejprve implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako startéru.
+Nejdřív implementujte ukázku podrobného plánu vytvořením nového podrobného plánu ve vašem prostředí pomocí ukázky jako Starter.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
-1. Na stránce **Začínáme** vlevo vyberte tlačítko **Vytvořit** v části _Vytvořit podrobný plán_.
+1. Na stránce **Začínáme** na levé straně vyberte v části _vytvořit podrobný plán_tlačítko **vytvořit** .
 
-1. Najděte **ukázku plánu ISO 27001: ASE/SQL workload** blueprint v části _Další ukázky_ a vyberte **Použít tuto ukázku**.
+1. V části _Další ukázky_ Najděte vzorek podrobného řízení **úloh (ISO 27001: pomocného kódu/SQL** ) a vyberte **použít tuto ukázku**.
 
-1. Zadejte _základy ukázky_ podrobného plánu:
+1. Zadejte _základy_ ukázky podrobného plánu:
 
-   - **Název podrobného**plánu : Zadejte název pro kopii ukázky plánu pracovního vytížení ase/SQL ISO 27001.
-   - **Umístění definice**: Použijte tři tečky a vyberte skupinu pro správu, do které chcete uložit kopii vzorku.
+   - **Název**podrobného plánu: zadejte název vaší kopie ukázkového plánu úloh přidaných na základě ISO 27001/SQL úlohy.
+   - **Umístění definice**: použijte tři tečky a vyberte skupinu pro správu, do které se uloží vaše kopie ukázky.
 
-1. Vyberte kartu _Artefakty_ v horní části stránky nebo **Další: Artefakty** v dolní části stránky.
+1. Vyberte kartu _artefakty_ v horní části stránky nebo **Další: artefakty** v dolní části stránky.
 
-1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnoho artefaktů má parametry, které budeme definovat později. Po dokončení revize ukázky podrobného plánu vyberte **Uložit koncept.**
+1. Zkontrolujte seznam artefaktů, které tvoří ukázku podrobného plánu. Mnohé z artefaktů mají parametry, které budeme definovat později. Po dokončení kontroly ukázkového plánu vyberte **Uložit koncept** .
 
-## <a name="publish-the-sample-copy"></a>Publikování ukázkové kopie
+## <a name="publish-the-sample-copy"></a>Publikovat ukázkovou kopii
 
-Vaše kopie ukázky podrobného plánu byla nyní vytvořena ve vašem prostředí. Je vytvořen v režimu **konceptu** a musí být **publikovánpřed** jeho přiřazením a nasazením. Kopii ukázky podrobného plánu lze přizpůsobit vašemu prostředí a potřebám, ale tato změna ji může přesunout od standardu ISO 27001.
+Vaše kopie ukázky podrobného plánu se teď vytvořila ve vašem prostředí. Je vytvořená v režimu **konceptu** a musí být **publikována** před tím, než bude možné ji přiřadit a nasadit. Kopii ukázky podrobného plánu můžete přizpůsobit vašemu prostředí a potřebám, ale tato změna se může přesunout mimo Standard ISO 27001.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
-1. Vyberte stránku **Definice podrobného plánu** vlevo. Pomocí filtrů vyhledejte kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky vyberte **Publikovat podrobný plán.** Na nové stránce vpravo zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud provedete změnu později. Zadejte **poznámky ke změně,** například "První verze publikovaná z ukázky podrobného plánu ISO 27001". Pak vdolní části stránky vyberte **Publikovat.**
+1. V horní části stránky vyberte **publikovat podrobný plán** . Na stránce Nová na pravé straně zadejte **verzi** pro kopii ukázky podrobného plánu. Tato vlastnost je užitečná, pokud uděláte změnu později. Zadejte **poznámky ke změnám** , například "první verze publikovaná z ukázky ISO 27001 podrobného plánu". Potom v dolní části stránky vyberte **publikovat** .
 
-## <a name="assign-the-sample-copy"></a>Přiřazení ukázkové kopie
+## <a name="assign-the-sample-copy"></a>Přiřadit ukázkovou kopii
 
-Jakmile je kopie ukázky podrobného plánu úspěšně **publikována**, lze ji přiřadit k předplatnému v rámci skupiny pro správu, do které byla uložena. Tento krok je, kde jsou k dispozici parametry, aby každé nasazení kopie ukázky podrobného plánu jedinečné.
+Po úspěšném **publikování**kopie ukázky podrobného plánu je možné ji přiřadit k předplatnému v rámci skupiny pro správu, do které byl uložen. V tomto kroku je uvedeno, že jsou k dispozici parametry pro každé nasazení kopie ukázky podrobného plánu.
 
-1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **podrobné plány**.
+1. V levém podokně vyberte **Všechny služby**. Vyhledejte a vyberte **plány**.
 
-1. Vyberte stránku **Definice podrobného plánu** vlevo. Pomocí filtrů vyhledejte kopii ukázky podrobného plánu a vyberte ji.
+1. Na levé straně vyberte stránku **definice** podrobného plánu. Pomocí filtrů Najděte kopii ukázky podrobného plánu a vyberte ji.
 
-1. V horní části stránky definice podrobného plánu vyberte **Přiřadit podrobný plán.**
+1. V horní části stránky definice podrobného plánu vyberte **přiřadit podrobný plán** .
 
 1. Zadejte hodnoty parametrů pro přiřazení podrobného plánu:
 
    - Základy
 
-     - **Odběry:** Vyberte jedno nebo více předplatných, které jsou ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, bude pro každé z nich vytvořeno přiřazení pomocí zadaných parametrů.
-     - **Název přiřazení**: Název je předem vyplněný na základě názvu podrobného plánu.
-       Změňte podle potřeby nebo odejděte tak, jak je.
-     - **Umístění**: Vyberte oblast pro spravovanou identitu, která má být vytvořena. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Verze definice podrobného plánu**: Vyberte **publikovanou** verzi ukázky podrobného plánu.
+     - **Předplatná**: vyberte jedno nebo více předplatných ve skupině pro správu, do které jste uložili kopii ukázky podrobného plánu. Pokud vyberete více než jedno předplatné, vytvoří se pro každý pomocí zadaných parametrů přiřazení.
+     - **Název přiřazení**: název je předem vyplněný na základě názvu podrobného plánu.
+       Změňte podle potřeby nebo ponechte tak, jak je.
+     - **Umístění**: Vyberte oblast, ve které se má spravovaná identita vytvořit. Podrobný plán Azure Blueprint používá tuto spravovanou identitu k aplikaci všech artefaktů v přiřazené podrobného plánu. Další informace najdete v tématu [spravované identity pro prostředky Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Verze definice**podrobného plánu: vyberte **publikovanou** verzi vaší kopie ukázky podrobného plánu.
 
-   - Přiřazení zámku
+   - Zamknout přiřazení
 
      Vyberte nastavení zámku podrobného plánu pro vaše prostředí. Další informace naleznete v tématu [uzamčení zdrojů plánu](../../concepts/resource-locking.md).
 
    - Spravovaná identita
 
-     Ponechte výchozí možnost spravované identity _přiřazenou systému._
+     Ponechte výchozí _systém přiřazenou_ možnost spravovaná identita.
 
    - Parametry podrobného plánu
 
-     Parametry definované v této části jsou používány mnoho artefaktů v definici podrobného plánu poskytnout konzistenci.
+     Parametry definované v tomto oddílu používá mnoho artefaktů v definici podrobného plánu k zajištění konzistence.
 
-     - **Název organizace**: Zadejte krátký název pro vaši organizaci. Tato vlastnost se používá především pro pojmenování prostředků.
-     - **ID předplatného sdílené služby:** ID předplatného, kde je přiřazena ukázka podrobného plánu [sdílených služeb ISO 27001.](../iso27001-shared/index.md)
-     - **Předpona výchozí adresy podsítě**: Zápis CIDR pro výchozí podsíť virtuální sítě.
+     - **Název organizace**: zadejte krátký název vaší organizace. Tato vlastnost se primárně používá pro pojmenování prostředků.
+     - **ID předplatného sdílené služby**: ID předplatného, ke kterému je přiřazený ukázka podrobného plánu [sdílených služeb ISO 27001](../iso27001-shared/index.md) .
+     - **Výchozí předpona adresy podsítě**: zápis CIDR pro výchozí podsíť virtuální sítě.
        Výchozí hodnota je _10.1.0.0/16_.
-     - **Umístění pracovního vytížení**: Určuje, do jakého umístění jsou artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech lokalitách. Artefakty nasazující tyto služby poskytují možnost parametru pro umístění, do kterého má být tento artefakt nasazen.
+     - **Umístění úlohy**: Určuje umístění, do kterého byly artefakty nasazeny. Ne všechny služby jsou k dispozici ve všech umístěních. Artefakty, které nasazují takové služby, poskytují možnost parametru pro umístění, do kterého se tento artefakt má nasadit.
 
-   - Parametry artefaktů
+   - Parametry artefaktu
 
-     Parametry definované v této části platí pro artefakt, pod kterým je definován. Tyto parametry jsou [dynamické parametry,](../../concepts/parameters.md#dynamic-parameters) protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popisy naleznete v [tabulce parametrů artefaktu](#artifact-parameters-table).
+     Parametry definované v této části se vztahují na artefakt, ve kterém je definován. Tyto parametry jsou [dynamické parametry](../../concepts/parameters.md#dynamic-parameters) , protože jsou definovány během přiřazení podrobného plánu. Úplný seznam nebo parametry artefaktu a jejich popis najdete v tématu [tabulka parametrů artefaktů](#artifact-parameters-table).
 
-1. Po zadání všech parametrů **vyberte** Přiřadit v dolní části stránky. Přiřazení podrobného plánu je vytvořen a artefakt nasazení začíná. Nasazení trvá zhruba hodinu. Chcete-li zkontrolovat stav nasazení, otevřete přiřazení podrobného plánu.
+1. Po zadání všech parametrů vyberte v dolní části stránky **přiřadit** . Vytvoří se přiřazení podrobného plánu a spustí se nasazení artefaktu. Nasazení trvá zhruba hodinu. Chcete-li zjistit stav nasazení, otevřete přiřazení podrobného plánu.
 
 > [!WARNING]
-> Služba Azure Blueprints a integrované ukázky podrobných plánů jsou **zdarma**. Prostředky Azure jsou [oceněny podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na spuštění prostředků nasazených v této ukázce podrobného plánu.
+> Služba Azure modrotisky a předdefinované ukázky podrobného plánu jsou **zdarma**. Ceny prostředků Azure se účtují [podle produktu](https://azure.microsoft.com/pricing/). Pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) můžete odhadnout náklady na provozované prostředky nasazené touto ukázkou podrobného plánu.
 
-## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktu
+## <a name="artifact-parameters-table"></a>Tabulka parametrů artefaktů
 
-V následující tabulce je uveden seznam parametrů artefaktu podrobného plánu:
+Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|Skupina prostředků Log Analytics|Skupina prostředků|Name (Název)|**Uzamčeno** – Zřetězí **název** `-workload-log-rg` organizace tak, aby byla skupina prostředků jedinečná.|
-|Skupina prostředků Log Analytics|Skupina prostředků|Umístění|**Uzamčeno** - Používá parametr podrobného plánu.|
-|Šablona log analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
-|Šablona log analytics|Šablona Resource Manageru|Uchovávání protokolu ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona log analytics|Šablona Resource Manageru|Umístění|Oblast používaná k vytvoření pracovního prostoru Analýzy protokolů. Výchozí hodnota je _Západní US 2_.|
-|Skupina síťových prostředků|Skupina prostředků|Name (Název)|**Uzamčeno** – Zřetězí **název** `-workload-net-rg` organizace tak, aby byla skupina prostředků jedinečná.|
-|Skupina síťových prostředků|Skupina prostředků|Umístění|**Uzamčeno** - Používá parametr podrobného plánu.|
-|Šablona Skupiny zabezpečení sítě|Šablona Resource Manageru|Uchovávání protokolu ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona Virtuální síť a směrovací tabulka|Šablona Resource Manageru|Privátní IP adresa Azure firewall|Konfiguruje privátní IP adresu [brány firewall Azure](../../../../firewall/overview.md). Měla by být součástí zápisu CIDR definovaného v _ISO 27001: Parametr artefaktu sdílené služby_ **Azure Firewall předokonum podsítě**. Výchozí hodnota je _10.0.4.4_.|
-|Šablona Virtuální síť a směrovací tabulka|Šablona Resource Manageru|ID předplatného sdílených služeb|Hodnota používaná k povolení partnerského vztahu virtuální sítě mezi workload a sdílenými službami.|
-|Šablona Virtuální síť a směrovací tabulka|Šablona Resource Manageru|Předpona adresy virtuální sítě|Cidr zápis pro virtuální síť. Výchozí hodnota je _10.1.0.0/16_.|
-|Šablona Virtuální síť a směrovací tabulka|Šablona Resource Manageru|Předpona výchozí adresy podsítě|Zápis CIDR pro výchozí podsíť virtuální sítě. Výchozí hodnota je _10.1.0.0/16_.|
-|Šablona Virtuální síť a směrovací tabulka|Šablona Resource Manageru|PŘIDÁ IP adresu|IP adresa prvního virtuálního virtuálního počítačů ADDS. Tato hodnota se používá jako vlastní virtuální síť DNS.|
-|Skupina prostředků trezoru klíčů|Skupina prostředků|Name (Název)|**Uzamčeno** – Zřetězí **název** `-workload-kv-rg` organizace tak, aby byla skupina prostředků jedinečná.|
-|Skupina prostředků trezoru klíčů|Skupina prostředků|Umístění|**Uzamčeno** - Používá parametr podrobného plánu.|
-|Šablona Trezor klíčů|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci trezoru klíčů. Žádná výchozí hodnota a nemůže být ponechána prázdná. Chcete-li tuto hodnotu vyhledat z webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _Služby_. Pomocí pole _Název_ můžete filtrovat název účtu a vybrat tento účet. Na stránce _Profil uživatele_ vyberte ikonu "Kliknutím na kopírování" vedle _ID objektu_.|
-|Šablona Trezor klíčů|Šablona Resource Manageru|Uchovávání protokolu ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona Trezor klíčů|Šablona Resource Manageru|Skladová položka trezoru klíčů|Určuje skladovou položku vytvořeného trezoru klíčů. Výchozí hodnota je _Premium_.|
-|Šablona Trezor klíčů|Šablona Resource Manageru|Uživatelské jméno správce Azure SQL Serveru|Uživatelské jméno používané pro přístup k Azure SQL Server. V šabloně Azure SQL Database musí odpovídat stejné **hodnotě vlastnosti**. Výchozí hodnota je _sql-admin-user_.|
-|Skupina prostředků databáze Azure SQL|Skupina prostředků|Name (Název)|**Uzamčeno** – Zřetězí **název** `-workload-azsql-rg` organizace tak, aby byla skupina prostředků jedinečná.|
-|Skupina prostředků databáze Azure SQL|Skupina prostředků|Umístění|**Uzamčeno** - Používá parametr podrobného plánu.|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|Uživatelské jméno správce Azure SQL Serveru|Uživatelské jméno pro Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně trezoru klíčů**. Výchozí hodnota je _sql-admin-user_.|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|Heslo správce Azure SQL Serveru (ID prostředku trezoru klíčů)|ID prostředku trezoru klíčů. Použijte "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" `{subscriptionId}` a nahraďte `{orgName}` id předplatného a parametrem podrobného plánu **názvu organizace.**|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|Heslo správce Azure SQL Serveru (tajný název trezoru klíčů)|Uživatelské jméno správce serveru SQL Server. Musí odpovídat hodnotě ve vlastnosti **šablony úložiště klíčů** Azure SQL Server admin uživatelské **jméno**.|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|Uchovávání protokolu ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|ID objektu správce AAD|ID objektu AAD uživatele, který bude přiřazen jako správce služby Active Directory. Žádná výchozí hodnota a nemůže být ponechána prázdná. Chcete-li tuto hodnotu vyhledat z webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _Služby_. Pomocí pole _Název_ můžete filtrovat název účtu a vybrat tento účet. Na stránce _Profil uživatele_ vyberte ikonu "Kliknutím na kopírování" vedle _ID objektu_.|
-|Šablona databáze Azure SQL|Šablona Resource Manageru|Přihlášení správce AAD|V současné době nelze účty Microsoft (například live.com nebo outlook.com) nastavit jako správce. Jako správce lze nastavit pouze uživatele a skupiny zabezpečení ve vaší organizaci. Žádná výchozí hodnota a nemůže být ponechána prázdná. Chcete-li tuto hodnotu vyhledat z webu Azure Portal, vyhledejte a vyberte "Uživatelé" v části _Služby_. Pomocí pole _Název_ můžete filtrovat název účtu a vybrat tento účet. Na stránce _Profil uživatele_ zkopírujte _uživatelské jméno_.|
-|Skupina prostředků prostředí služby App Service|Skupina prostředků|Name (Název)|**Uzamčeno** – Zřetězí **název** `-workload-ase-rg` organizace tak, aby byla skupina prostředků jedinečná.|
-|Skupina prostředků prostředí služby App Service|Skupina prostředků|Umístění|**Uzamčeno** - Používá parametr podrobného plánu.|
-|Šablona Prostředí služby App Service|Šablona Resource Manageru|Název domény|Název služby Active Directory vytvořený ukázkou. Výchozí hodnota je _contoso.com_.|
-|Šablona Prostředí služby App Service|Šablona Resource Manageru|Umístění služby ASE|Umístění prostředí služby App Service. Výchozí hodnota je _Západní US 2_.|
-|Šablona Prostředí služby App Service|Šablona Resource Manageru|Uchovávání protokolu brány aplikace ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
+|Log Analytics skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-log-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Log Analytics skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
+|Šablona Log Analytics|Šablona Resource Manageru|Úroveň služeb|Nastaví úroveň pracovního prostoru Log Analytics. Výchozí hodnota je _PerNode_.|
+|Šablona Log Analytics|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
+|Šablona Log Analytics|Šablona Resource Manageru|Umístění|Oblast, která se používá k vytvoření pracovního prostoru Log Analytics. Výchozí hodnota je _západní USA 2_.|
+|Skupina síťových prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-net-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Skupina síťových prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
+|Šablona skupiny zabezpečení sítě|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
+|Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Privátní IP adresa brány Azure firewall|Nakonfiguruje privátní IP adresu [brány firewall Azure](../../../../firewall/overview.md). By měl být součástí zápisu CIDR definovaného v _ISO 27001:_ parametr artefaktu sdílených služeb **Azure firewall předpony adresy podsítě**. Výchozí hodnota je _10.0.4.4_.|
+|Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|ID předplatného sdílených služeb|Hodnota, která slouží k povolení partnerského vztahu virtuálních sítí mezi úlohou a sdílenými službami.|
+|Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Předpona Virtual Network adresy|Zápis CIDR pro virtuální síť. Výchozí hodnota je _10.1.0.0/16_.|
+|Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Výchozí předpona adresy podsítě|Zápis CIDR pro výchozí podsíť virtuální sítě. Výchozí hodnota je _10.1.0.0/16_.|
+|Šablona směrovací tabulky Virtual Network a|Šablona Resource Manageru|Přidá IP adresu|IP adresa prvního přidání virtuálního počítače Tato hodnota se používá jako vlastní virtuální síť DNS.|
+|Key Vault skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-kv-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Key Vault skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
+|Šablona Key Vault|Šablona Resource Manageru|ID objektu AAD|Identifikátor objektu AAD účtu, který vyžaduje přístup k instanci Key Vault. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
+|Šablona Key Vault|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
+|Šablona Key Vault|Šablona Resource Manageru|SKU Key Vault|Určuje SKLADOVOU položku Key Vault, která je vytvořena. Výchozí hodnota je _Premium_.|
+|Šablona Key Vault|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno použité pro přístup k Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Azure SQL Database**. Výchozí hodnota je _SQL-Admin-User_.|
+|Azure SQL Database skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-azsql-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|Azure SQL Database skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Uživatelské jméno správce SQL Server Azure|Uživatelské jméno pro Azure SQL Server. Musí odpovídat stejné hodnotě vlastnosti v **šabloně Key Vault**. Výchozí hodnota je _SQL-Admin-User_.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Heslo správce Azure SQL Server (ID prostředku Key Vault)|ID prostředku Key Vault. Použijte "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" a nahraďte `{subscriptionId}` ID vašeho předplatného a `{orgName}` parametrem **název organizace** podrobný plán.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Heslo správce Azure SQL Server (název Key Vault tajného klíče)|Uživatelské jméno správce SQL Server. Musí odpovídat hodnotě v **Key Vault** vlastnosti šablony **uživatelské jméno správce Azure SQL Server**.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Uchovávání protokolů ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|ID objektu Správce AAD|ID objektu AAD uživatele, který se přiřadí jako správce služby Active Directory. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ vyberte ikonu "kliknutím ke kopírování" vedle _ID objektu_.|
+|Šablona Azure SQL Database|Šablona Resource Manageru|Přihlášení správce AAD|V současné době se účty Microsoft (například live.com nebo outlook.com) nedají nastavit jako správci. Pouze uživatelé a skupiny zabezpečení v rámci vaší organizace lze nastavit jako správce. Žádná výchozí hodnota a nemůže být ponechána prázdná. Pokud chcete tuto hodnotu najít z Azure Portal, vyhledejte a v části _služby_vyberte uživatelé. Pomocí pole _název_ vyfiltrujte název účtu a vyberte tento účet. Na stránce _Profil uživatele_ zkopírujte _uživatelské jméno_.|
+|App Service Environment skupina prostředků|Skupina prostředků|Název|**Uzamkl** – zřetězí **název organizace** s `-workload-ase-rg` cílem vytvořit skupinu prostředků jako jedinečnou.|
+|App Service Environment skupina prostředků|Skupina prostředků|Umístění|**Locked** – použije parametr podrobného plánu.|
+|Šablona App Service Environment|Šablona Resource Manageru|Název domény|Název adresáře služby Active Directory vytvořeného ukázkou. Výchozí hodnota je _contoso.com_.|
+|Šablona App Service Environment|Šablona Resource Manageru|Umístění pomocného mechanismu|App Service Environment umístění. Výchozí hodnota je _západní USA 2_.|
+|Šablona App Service Environment|Šablona Resource Manageru|Doba uchování protokolu Application Gateway ve dnech|Uchovávání dat ve dnech. Výchozí hodnota je _365_.|
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste zkontrolovali kroky k nasazení iso 27001 App Service prostředí nebo SQL Database plán plánu úlohy ukázku, navštivte následující články se dozvíte o architektuře a mapování ovládacích prvku:
+Teď, když jste si prohlédli postup 27001 nasazení ukázky App Service Environment/SQL Database úlohy podrobného plánu úloh, najdete v následujících článcích informace o architektuře a mapování ovládacích prvků:
 
 > [!div class="nextstepaction"]
-> [ISO 27001 App Service Environment/SQL Database ústuz – přehled](./index.md)
-> [ISO 27001 App Service Environment/SQL Database plán pracovního vytížení – mapování ovládacích sil](./control-mapping.md)
+> [ISO 27001 App Service Environment/SQL Database úlohy podrobného plánu – přehled](./index.md)
+> [ISO 27001 App Service Environment/SQL Database úlohový plán – mapování ovládacích prvků](./control-mapping.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 
-- Přečtěte si o [životním cyklu podrobného plánu](../../concepts/lifecycle.md).
-- Pochopit, jak používat [statické a dynamické parametry](../../concepts/parameters.md).
-- Naučte se přizpůsobit [pořadí sekvencování podrobných plánů](../../concepts/sequencing-order.md).
-- Zjistěte, jak využít [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md).
-- Přečtěte si, jak [aktualizovat existující přiřazení](../../how-to/update-existing-assignments.md).
+- Další informace o [životním cyklu podrobného plánu](../../concepts/lifecycle.md)
+- Principy použití [statických a dynamických parametrů](../../concepts/parameters.md)
+- Další informace o přizpůsobení [pořadí podrobných plánů](../../concepts/sequencing-order.md)
+- Použití [zamykání prostředků podrobného plánu](../../concepts/resource-locking.md)
+- Další informace o [aktualizaci existujících přiřazení](../../how-to/update-existing-assignments.md)

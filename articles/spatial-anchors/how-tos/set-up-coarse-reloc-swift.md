@@ -1,6 +1,6 @@
 ---
-title: Hrubá relokace v Swiftu
-description: Podrobné vysvětlení, jak vytvořit a lokalizovat kotvy pomocí hrubé relokace v Swiftu.
+title: Hrubá reprostředí v SWIFT
+description: Podrobné vysvětlení, jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -9,32 +9,32 @@ ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76546159"
 ---
-# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Jak vytvořit a lokalizovat kotvy pomocí hrubé relokalizace v Swiftu
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Jak vytvořit a najít kotvy s využitím hrubého opětovného rozmístění v SWIFT
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)
 > * [Objective-C](set-up-coarse-reloc-objc.md)
 > * [Swift](set-up-coarse-reloc-swift.md)
 > * [Android Java](set-up-coarse-reloc-java.md)
-> * [C++/NDK](set-up-coarse-reloc-cpp-ndk.md)
+> * [/NDK C++](set-up-coarse-reloc-cpp-ndk.md)
 > * [C++/WinRT](set-up-coarse-reloc-cpp-winrt.md)
 
-Azure Spatial Anchors můžete přidružit data senzorů na zařízení, umístění dat senzoru s kotvy, které vytvoříte. Tato data lze také použít k rychlému určení, zda jsou v blízkosti zařízení nějaké kotvy. Další informace naleznete v tématu [Hrubá relokace](../concepts/coarse-reloc.md).
+Prostorové kotvy Azure můžou přidružit zařízení k datům snímače a umístit je na kotvy, které vytvoříte. Tato data je také možné použít k rychlému zjištění, zda jsou v zařízení ukotveny žádné kotvy. Další informace najdete v tématu [hrubá reprostředí](../concepts/coarse-reloc.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li tuto příručku dokončit, ujistěte se, že máte:
+K dokončení tohoto průvodce se ujistěte, že máte následující:
 
-- Základní znalost Swiftu.
-- Přečtěte si [přehled prostorových kotev Azure](../overview.md).
-- Dokončenjeden z [5minutových rychlých startů](../index.yml).
-- Přečtěte si [prostřednictvím vytvořit a vyhledejte kotvy how-.](../create-locate-anchors-overview.md)
+- Základní znalost SWIFT
+- Přečtěte si [Přehled prostorových kotev Azure](../overview.md).
+- Bylo dokončeno jedno z [5 minut rychlých startů](../index.yml).
+- Přečtěte si [postupy pro vytváření a hledání kotev](../create-locate-anchors-overview.md).
 
 [!INCLUDE [Configure Provider](../../../includes/spatial-anchors-set-up-coarse-reloc-configure-provider.md)]
 

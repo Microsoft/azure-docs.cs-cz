@@ -1,6 +1,6 @@
 ---
 title: Kurz reakce na incidenty – Azure Security Center
-description: V tomto kurzu se dozvíte, jak triage výstrahy zabezpečení, určit hlavní příčinu & rozsah incidentu a hledat data zabezpečení.
+description: V tomto kurzu se dozvíte, jak řadit výstrahy zabezpečení, jak určit hlavní příčinu & rozsahu incidentu, a data zabezpečení hledání.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2018
 ms.author: memildin
 ms.openlocfilehash: 971b93422e2b3f2053e0c5564c7ba924a631d810
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80585774"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Kurz: Reakce na incidenty zabezpečení
@@ -29,10 +29,10 @@ Security Center nepřetržitě analyzuje vaše hybridní cloudové úlohy pomoc�
 > * Dalším šetřením určit hlavní příčinu a rozsah incidentu zabezpečení
 > * Prohledávat data o zabezpečení v rámci vyšetřování
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
-Chcete-li procházet funkce uvedené v tomto kurzu, musíte být na standardní cenové úrovni Security Center. Můžete zkusit Security Center Standard zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
+Pro krokování s funkcemi popsanými v tomto kurzu musíte být v Security Center cenové úrovně Standard. Můžete vyzkoušet Security Center Standard bez jakýchkoli nákladů. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/). Článek Rychlý Start: [Onboarding předplatného Azure na Security Center Standard](security-center-get-started.md) vás provede postupem upgradu na úroveň Standard.
 
 ## <a name="scenario"></a>Scénář
 Společnost Contoso nedávno provedla migraci některých místních prostředků do Azure, včetně některých databází SQL a úloh obchodního systému založených na virtuálních počítačích. Nyní má Hlavní tým reakce na incidenty zabezpečení počítačů (CSIRT) společnosti Contoso problém s vyšetřováním problémů zabezpečení kvůli tomu, že analytické funkce zabezpečení nejsou integrované se současnými nástroji reakce na incidenty. Tato nedostatečná integrace představuje problém během fáze Zjištění (příliš mnoho falešných poplachů) a také během fází Posouzení a Diagnostika. Jako součást této migrace se rozhodli vyjádřit výslovný souhlas s tím, aby jim Security Center pomohl vyřešit tento problém.
@@ -43,12 +43,12 @@ Pro účely tohoto scénáře se soustředíme na role následujících osob, kt
 
 ![Životní cyklus reakce na incidenty](./media/tutorial-security-incident/security-center-incident-response.png)
 
-Judy pracuje v oddělení zabezpečení. Jejich povinnosti zahrnují:
+Judy pracuje v oddělení zabezpečení. Mezi jejich odpovědnosti patří:
 
 * Nepřetržité monitorování a reagování na ohrožení zabezpečení.
 * Předávání řešení ohrožení vlastníkovi cloudových úloh nebo analytikovi zabezpečení (podle potřeby).
 
-Sam je bezpečnostní analytik a jejich povinnosti zahrnují:
+Sam je analytikem zabezpečení a jejich zodpovědnosti zahrnují:
 
 * Vyšetřování útoků.
 * Napravování výstrah.
@@ -87,7 +87,7 @@ Security Center poskytuje jednotné zobrazení všech výstrah zabezpečení. V�
 
    ![Šetření](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-   Mapa šetření je grafická reprezentace entit, které jsou spojené s touto výstrahou nebo incidentem zabezpečení. Kliknutím na entitu v mapě zobrazíte informace o dané a mapa se rozšíří. Typ entity vybrané v mapě má své vlastnosti zvýrazněné v podokně na pravé straně stránky. Informace dostupné na každé kartě se liší podle vybrané entity. Během procesu vyšetřování zkontrolujte všechny relevantní informace, abyste lépe porozuměli pohybu útočníka.
+   Mapa šetření je grafická reprezentace entit, které jsou spojené s touto výstrahou nebo incidentem zabezpečení. Kliknutím na entitu v mapě zobrazíte informace o dané a mapa se rozšíří. Typ entity vybrané v mapě má své vlastnosti zvýrazněné v podokně na pravé straně stránky. Informace dostupné na každé kartě se liší podle vybrané entity. Během procesu šetření zkontrolujte všechny relevantní informace, abyste lépe pochopili pohyb útočníka.
 
 2. Pokud potřebujete další fakta nebo podrobnější zkoumání entit, na které jste narazili během šetření, přejděte k dalšímu kroku.
 
@@ -108,13 +108,13 @@ Další rychlé starty a kurzy v této kolekci vycházejí z tohoto rychlého st
 
 Pokud chcete vypnout automatické zřizování:
 
-1. Vraťte se do hlavní nabídky Centra zabezpečení a vyberte **zásady zabezpečení**.
+1. Vraťte se do hlavní nabídky Security Center a vyberte **zásady zabezpečení**.
 2. Vyberte předplatné, pro které chcete vypnout automatické zřizování.
 3. V části **Zásady zabezpečení – shromažďování dat** výběrem možnosti **Vypnuto** u volby **Onboarding** vypnete automatické zřizování.
 4. Vyberte **Uložit**.
 
 >[!NOTE]
-> Zakázání automatické zřizování neodebere agenta Analýzy protokolů z virtuálních stránek Azure, kde byl agent zřízen. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
+> Při vypnutí automatického zřizování se agent Log Analytics neodebere z virtuálních počítačů Azure, ve kterých se agent zřídil. Vypnutí automatického zřizování omezí sledování zabezpečení pro vaše prostředky.
 >
 
 ## <a name="next-steps"></a>Další kroky

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření záznamu aliasu, který bude odkazovat na záznam o prostředku v zóně'
+title: 'Kurz: vytvoření záznamu aliasu pro odkazování na záznam prostředku v zóně'
 titleSuffix: Azure DNS
 description: V tomto kurzu se dozvíte, jak nakonfigurovat záznam aliasu Azure DNS tak, aby odkazoval na záznam prostředku v rámci zóny.
 services: dns
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76939252"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Kurz: Vytvoření záznamu aliasu odkazujícího na záznam prostředku zóny
@@ -26,7 +26,7 @@ V tomto kurzu se naučíte:
 > * Test záznamu aliasu
 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 Musíte mít k dispozici název domény, kterou můžete hostovat v Azure DNS a použít k testování. Musíte mít úplnou kontrolu nad touto doménou. Úplná kontrola zahrnuje možnost nastavit pro doménu záznamy názvového serveru (NS).
@@ -57,7 +57,7 @@ Vytvořte záznam aliasu, který odkazuje na záznam prostředku v zóně.
 
 ## <a name="test-the-alias-record"></a>Test záznamu aliasu
 
-1. Spusťte svůj oblíbený nástroj nslookup. Jednou z možností [https://network-tools.com/nslook](https://network-tools.com/nslook)je procházení položky .
+1. Spusťte svůj oblíbený nástroj nslookup. Jednou z možností je procházení [https://network-tools.com/nslook](https://network-tools.com/nslook).
 2. Nastavte typ dotazu na záznamy A a vyhledejte **test.\<název_vaší_domény\>**. Odpověď je **10.10.10.10**.
 3. Na webu Azure Portal změňte záznam A **server** na hodnotu **10.11.11.11**.
 4. Počkejte několik minut a pak znovu použijte nástroj nslookup pro záznam **test**. Odpověď je **10.11.11.11**.

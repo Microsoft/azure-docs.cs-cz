@@ -1,35 +1,35 @@
 ---
-title: 'Kurz: Poradce při potížích s Azure Monitorem'
-description: Zjistěte, jak vám Azure Monitor a Log Analytics pomáhají monitorovat webovou aplikaci App Service. Azure Monitor maximalizuje dostupnost tím, že dodává komplexní řešení pro monitorování prostředí.
+title: 'Kurz: řešení potíží pomocí Azure Monitor'
+description: Přečtěte si, jak Azure Monitor a Log Analytics pomáhají monitorovat webovou aplikaci App Service. Azure Monitor maximalizuje dostupnost tím, že dodává ucelené řešení pro monitorování vašich prostředí.
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
 ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399527"
 ---
-# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Kurz: Poradce při potížích s aplikací App Service pomocí Azure Monitoru
+# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Kurz: řešení potíží s aplikací App Service pomocí Azure Monitor
 
 > [!NOTE]
-> Integrace Azure Monitoru se službou App Service je ve [verzi Preview](https://aka.ms/appsvcblog-azmon).
+> Azure Monitor integrace s App Service je ve [verzi Preview](https://aka.ms/appsvcblog-azmon).
 >
 
-[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje komplexní řešení pro shromažďování, analýzu a působení na telemetrii z vašeho cloudu a místních prostředí.
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizuje dostupnost a výkon vašich aplikací a služeb tím, že poskytuje ucelené řešení pro shromažďování, analýzu a vykonávání telemetrie z vašich cloudových a místních prostředí.
 
-Tento kurz ukazuje, jak řešit potíže s aplikací pomocí [Azure Monitoru](https://docs.microsoft.com/azure/azure-monitor/overview). Ukázková aplikace obsahuje kód určený k vyčerpání paměti a způsobit chyby HTTP 500, takže můžete diagnostikovat a opravit problém pomocí Azure Monitor.
+V tomto kurzu se dozvíte, jak řešit potíže s aplikací pomocí [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview). Ukázková aplikace obsahuje kód určený k vyčerpání paměti a způsobuje chyby HTTP 500, takže můžete diagnostikovat a vyřešit problém pomocí Azure Monitor.
 
-Až skončíte, budete mít ukázkovou aplikaci spuštěnou v App Service na Linuxu integrovanou s [Azure Monitorem](https://docs.microsoft.com/azure/azure-monitor/overview).
+Až budete hotovi, budete mít ukázkovou aplikaci spuštěnou na App Service na platformě Linux integrovanou s [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Konfigurace webové aplikace pomocí Azure Monitoru
-> * Odeslání protokolů konzoly do služby Log Analytics
-> * Použití dotazů protokolu k identifikaci a řešení potíží s chybami webových aplikací
+> * Konfigurace webové aplikace s Azure Monitor
+> * Odeslání protokolů konzoly do Log Analytics
+> * Použití dotazů protokolu k identifikaci a řešení chyb webových aplikací
 
 Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windows.
 
@@ -45,7 +45,7 @@ K dokončení tohoto kurzu budete potřebovat:
 
 ## <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
-Nejprve spustit několik příkazů místně nastavit ukázkovou aplikaci pro použití v tomto kurzu. Příkazy klonovat ukázkovou aplikaci, vytvářet prostředky Azure, vytvořit uživatele nasazení a nasadit aplikaci do Azure. Budete vyzváni k zadání hesla jako součást vytvoření uživatele nasazení. 
+Za prvé můžete spustit několik příkazů místně a nastavit ukázkovou aplikaci, která se použije v tomto kurzu. Příkazy naklonují ukázkovou aplikaci, vytvoří prostředky Azure, vytvoří uživatele nasazení a nasadí aplikaci do Azure. Zobrazí se výzva k zadání hesla, které jste zadali jako součást vytvoření uživatele nasazení. 
 
 ```bash
 git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
@@ -57,30 +57,30 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Konfigurace Azure Monitoru (preview)
+## <a name="configure-azure-monitor-preview"></a>Konfigurace Azure Monitor (Preview)
 
-### <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru analýzy protokolů
+### <a name="create-a-log-analytics-workspace"></a>Vytvoření pracovního prostoru Log Analytics
 
-Teď, když jste nasadili ukázkovou aplikaci do služby Azure App Service, nakonfigurujete možnost monitorování k řešení problémů s aplikací, když nastanou problémy. Azure Monitor ukládá data protokolu v pracovním prostoru Analýzy protokolů. Pracovní prostor je kontejner, který obsahuje data a informace o konfiguraci.
+Teď, když jste nasadili ukázkovou aplikaci na Azure App Service, nakonfigurujete možnost monitorování, abyste aplikaci mohli řešit, když dojde k problémům. Azure Monitor ukládá data protokolu v pracovním prostoru Log Analytics. Pracovní prostor je kontejner, který obsahuje data a informace o konfiguraci.
 
-V tomto kroku vytvoříte pracovní prostor Analýzy protokolů pro konfiguraci Azure Monitoru s vaší aplikací.
+V tomto kroku vytvoříte Log Analytics pracovní prostor pro konfiguraci Azure Monitor s vaší aplikací.
 
 ```bash
 az monitor log-analytics workspace create --resource-group myResourceGroup --workspace-name myMonitorWorkspace
 ```
 
 > [!NOTE]
-> [V azure monitoru Log Analytics platíte za ingestování dat a uchovávání dat.](https://azure.microsoft.com/pricing/details/monitor/)
+> [V případě Azure Monitor Log Analytics platíte za příjem dat a uchovávání dat.](https://azure.microsoft.com/pricing/details/monitor/)
 >
 
-### <a name="create-a-diagnostic-setting"></a>Vytvoření diagnostického nastavení
+### <a name="create-a-diagnostic-setting"></a>Vytvoření nastavení diagnostiky
 
-Diagnostická nastavení se dá použít ke shromažďování metrik pro určité služby Azure do protokolů monitorování Azure pro analýzu s dalšími daty monitorování pomocí dotazů protokolu. V tomto kurzu povolíte webový server a standardní výstupní/chybové protokoly. Úplný seznam typů protokolů a popisů naleznete v [podporovaných typech protokolů.](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types)
+Nastavení diagnostiky lze použít ke shromáždění metrik pro určité služby Azure do protokolů Azure Monitor k analýze s ostatními daty monitorování pomocí dotazů protokolu. V tomto kurzu povolíte webový server a standardní protokoly výstupu a chyb. Úplný seznam typů protokolů a popisů najdete v části [podporované typy protokolů](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) .
 
-Spuštěním následujících příkazů vytvoříte diagnostická nastavení pro aplikace AppServiceConsoleLogs (standardní výstup/chyba) a protokoly HTTPLogs služby AppService (protokoly webového serveru). Nahraďte _ \<>názvu aplikace_ a _ \<>názvu pracovního prostoru_ hodnotami. 
+Spuštěním následujících příkazů vytvořte nastavení diagnostiky pro AppServiceConsoleLogs (standardní výstup/chyba) a AppServiceHTTPLogs (protokoly webového serveru). Nahraďte _ \<název aplikace>_ a _ \<název pracovního prostoru>_ hodnotami. 
 
 > [!NOTE]
-> První dva příkazy `resourceID` `workspaceID`a , jsou proměnné, `az monitor diagnostic-settings create` které mají být použity v příkazu. Další informace o tomto příkazu najdete [v tématu Vytvoření diagnostických nastavení pomocí azure cli.](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli)
+> První dva příkazy, a `resourceID` `workspaceID`, jsou proměnné, které mají být použity v `az monitor diagnostic-settings create` příkazu. Další informace o tomto příkazu najdete v tématu [Vytvoření nastavení diagnostiky pomocí Azure CLI](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) .
 >
 
 ```bash
@@ -97,76 +97,76 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 ```
 
-## <a name="troubleshoot-the-app"></a>Poradce při potížích s aplikací
+## <a name="troubleshoot-the-app"></a>Řešení potíží s aplikací
 
 Přejděte na `http://<app-name>.azurewebsites.net`.
 
-Ukázková aplikace ImageConverter převádí zahrnuté obrázky z `JPG` na `PNG`. Chyba byla záměrně umístěna v kódu pro tento kurz. Pokud vyberete dostatek obrázků, aplikace vytvoří chybu HTTP 500 během převodu obrázku. Představte si, že tento scénář nebyl považován během fáze vývoje. Azure Monitor použijete k řešení chyby.
+Ukázková aplikace, ImageConverter, převede zahrnuté obrázky `JPG` z `PNG`na. Chyba byla záměrně umístěna do kódu pro tento kurz. Pokud vyberete dostatek imagí, aplikace během převodu imagí vytvoří chybu HTTP 500. Představte si, že tento scénář nebyl posouzen během fáze vývoje. K odstranění chyby použijte Azure Monitor.
 
-### <a name="verify-the-app-is-works"></a>Ověření, že aplikace funguje
+### <a name="verify-the-app-is-works"></a>Ověřte, že aplikace funguje.
 
-Chcete-li převést obrázky, klepněte `Tools` a vyberte . `Convert to PNG`
+Chcete-li převést obrázky `Tools` , klikněte `Convert to PNG`na tlačítko a vyberte.
 
-![Klikněte na 'Nástroje' a vyberte 'Převést na PNG'](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
+![Klikněte na nástroje a vyberte převést na PNG.](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
 
-Vyberte první dva `convert`obrazy a klepněte na tlačítko . To bude úspěšně převést.
+Vyberte první dva obrázky a klikněte na `convert`. Tím se úspěšně převede.
 
-![Výběr prvních dvou obrázků](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
+![Výběr prvních dvou imagí](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
 
 ### <a name="break-the-app"></a>Přerušení aplikace
 
-Nyní, když jste aplikaci ověřili úspěšným převodem dvou obrázků, pokusíme se převést prvních pět obrázků.
+Teď, když jste aplikaci ověřili tak, že úspěšně převedete dvě image, zkusíme převést prvních pět imagí.
 
-![Převést prvních pět obrázků](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
+![Převést prvních pět imagí](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
 
-Tato akce se nezdaří a vytvoří `HTTP 500` chybu, která nebyla testována během vývoje.
+Tato akce se nezdařila `HTTP 500` a vytvoří chybu, která nebyla testována během vývoje.
 
-![Převod bude mít za následek chybu HTTP 500](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
+![Výsledkem převodu bude chyba HTTP 500](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
 
-## <a name="use-log-query-to-view-azure-monitor-logs"></a>Zobrazení protokolů Azure Monitoru pomocí dotazu protokolu
+## <a name="use-log-query-to-view-azure-monitor-logs"></a>Použití dotazu protokolu k zobrazení protokolů Azure Monitor
 
-Podívejme se, jaké protokoly jsou k dispozici v pracovním prostoru Log Analytics. 
+Pojďme se podívat, jaké protokoly jsou k dispozici v pracovním prostoru Log Analytics. 
 
-Kliknutím na tento [odkaz pracovního prostoru Log Analytics](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) přenesete přístup k vašemu pracovnímu prostoru na webu Azure Portal.
+Kliknutím na tento [odkaz Log Analytics pracovního prostoru](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) získáte přístup k pracovnímu prostoru v Azure Portal.
 
-Na webu Azure Portal vyberte pracovní prostor Analýzy protokolů.
+V Azure Portal vyberte pracovní prostor Log Analytics.
 
 ### <a name="log-queries"></a>Dotazy na protokoly
 
-Protokolové dotazy vám pomohou plně využít hodnotu dat shromážděných v protokolech monitorování Azure. Dotazy protokolu se používají k identifikaci protokolů v protokolech httplogů appservice i v logech AppService. Další informace o dotazech protokolu naleznete v [přehledu dotazů](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) protokolu.
+Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v protokolech Azure Monitor. Pomocí dotazů protokolu můžete identifikovat protokoly v AppServiceHTTPLogs i AppServiceConsoleLogs. Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) .
 
-### <a name="view-appservicehttplogs-with-log-query"></a>Zobrazení protokolů HTTPLogs služby AppService s protokolovým dotazem
+### <a name="view-appservicehttplogs-with-log-query"></a>Zobrazit AppServiceHTTPLogs s dotazem protokolu
 
-Teď, když jsme k aplikaci přistupovali, podívejme data spojená s `AppServiceHTTPLogs`požadavky HTTP, která se nacházejí v aplikaci .
+Teď, když jsme získali aplikaci, Podívejme se na data přidružená k požadavkům HTTP, která najdete v `AppServiceHTTPLogs`části.
 
-1. Klikněte `Logs` z levé navigace.
+1. Klikněte `Logs` na tlačítko z levé navigační části.
 
-![Protokolovat protokoly Anlytics Worksace](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
+![Protokoly Worksace protokolu Anlytics](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
 
-2. Vyhledejte `appservice` a poklepejte na něj `AppServiceHTTPLogs`.
+2. Vyhledejte `appservice` a dvakrát klikněte na tlačítko `AppServiceHTTPLogs`.
 
-![Tabulky pracovních prostorů analýzy protokolů](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
+![Tabulky pracovních prostorů Log Analytics](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
 
 3. Klikněte na `Run` (Další).
 
-![Protokoly HTTP služby HTTP služby Log Analytics Workspace App Service](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
+![Log Analytics pracovního prostoru App Service protokoly HTTP](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
 
-Dotaz `AppServiceHTTPLogs` vrátí všechny požadavky za posledních 24 hodin. Sloupec `ScStatus` obsahuje stav HTTP. Chcete-li `HTTP 500` diagnostikovat `ScStatus` chyby, omezte na 500 a spusťte dotaz, jak je znázorněno níže:
+`AppServiceHTTPLogs` Dotaz vrátí všechny požadavky za posledních 24 hodin. Sloupec `ScStatus` obsahuje stav HTTP. Chcete-li `HTTP 500` diagnostikovat chyby, `ScStatus` omezte na 500 a spusťte dotaz, jak je znázorněno níže:
 
 ```kusto
 AppServiceHTTPLogs
 | where ScStatus == 500
 ```
 
-### <a name="view-appserviceconsolelogs-with-log-query"></a>Zobrazení appserviceconsolelogů s protokolovým dotazem
+### <a name="view-appserviceconsolelogs-with-log-query"></a>Zobrazit AppServiceConsoleLogs s dotazem protokolu
 
-Nyní, když jste potvrdili HTTP 500s, podívejme se na standardní výstup / chyby z aplikace. Tyto protokoly se nacházejí v 'AppServiceConsoleLogs'.
+Teď, když jste potvrdili HTTP 500, Pojďme se podívat na standardní výstup a chyby z aplikace. Tyto protokoly jsou k dispozici v ' AppServiceConsoleLogs '.
 
-(1) `+` Kliknutím vytvoříte nový dotaz. 
+(1) kliknutím `+` vytvoříte nový dotaz. 
 
-(2) Poklepejte `AppServiceConsoleLogs` na `Run`tabulku a klepněte na tlačítko . 
+(2) poklikejte na `AppServiceConsoleLogs` tabulku a klikněte na. `Run` 
 
-Vzhledem k tomu, že převod pěti obrázků má za následek chyby serveru, můžete zjistit, zda aplikace také píše chyby filtrováním `ResultDescription` chyb, jak je uvedeno níže:
+Vzhledem k tomu, že při převodu pěti imagí dojde k chybám serveru, můžete zjistit, jestli je aplikace `ResultDescription` také zapsána chybami filtrováním chyb, jak je vidět níže:
 
 ```kusto
 AppServiceConsoleLogs |
@@ -181,16 +181,16 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Připojení k protokolům HTTPLogs appservice a logům AppServiceConsole
+### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Připojit AppServiceHTTPLogs a AppServiceConsoleLogs
 
-Nyní, když jste identifikovali chyby HTTP 500s i standardní chyby, je třeba potvrdit, zda existuje korelace mezi těmito zprávami. Dále se spojíte tabulky dohromady na `TimeGenerated`základě časového razítka , .
+Teď, když jste identifikovali HTTP 500 i standardní chyby, je potřeba potvrdit, jestli existuje korelace mezi těmito zprávami. V dalším kroku spojíte tabulky na základě časového razítka `TimeGenerated`.
 
 > [!NOTE]
-> Byl pro vás připraven dotaz, který provádí následující akce:
+> Pro vás byl připraven dotaz, který provede následující akce:
 >
-> - Filtruje protokoly HTTPLogs pro 500 chyb.
-> - Protokoly konzoly dotazů
-> - Připojí se ke stolům`TimeGenerated`
+> - HTTPLogs filtry pro chyby 500
+> - Dotazy na protokoly konzoly
+> - Spojí tabulky na.`TimeGenerated`
 >
 
 Spusťte tento dotaz:
@@ -203,7 +203,7 @@ let myConsole = AppServiceConsoleLogs | project TimeGen=substring(TimeGenerated,
 myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, ResultDescription;
 ```
 
-Ve `ResultDescription` sloupci se zobrazí následující chyba současně s chybami webového serveru:
+Ve `ResultDescription` sloupci se zobrazí následující chyba ve stejnou dobu jako chyby webového serveru:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -211,23 +211,23 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-Zpráva uvádí, že paměť byla vyčerpána na řádku 20 z `process.php`. Nyní jste potvrdili, že aplikace způsobila chybu během chyby HTTP 500. Podívejme se na kód k identifikaci problému.
+Zpráva o stavu paměti byla vyčerpána na řádku 20 `process.php`. Nyní jste potvrdili, že aplikace vytvořila chybu během chyby HTTP 500. Pojďme se podívat na kód pro identifikaci problému.
 
 ## <a name="identify-the-error"></a>Určení chyby
 
-V místním adresáři `process.php` otevřete a podívejte se na řádek 20. 
+V místním adresáři otevřete a podívejte se `process.php` na řádek 20. 
 
 ```php
 imagepng($imgArray[$x], $filename);
 ```
 
-První argument `$imgArray[$x]`, je proměnná obsahující všechny soubory JG (v paměti), které potřebují převod. Však `imagepng` potřebuje pouze obraz, který se převádí a ne všechny obrázky. Předběžné načítání obrázků není nutné a může být příčinou vyčerpání paměti, což vede k HTTP 500s. Pojďme aktualizovat kód načíst obrázky na vyžádání, aby zjistili, zda se problém vyřeší. Dále zlepšíte kód k řešení problému s pamětí.
+První argument,, `$imgArray[$x]`je proměnná, která uchovává všechny JPGs (v paměti), které potřebují převod. Ale potřebuje `imagepng` jenom převáděnou image, ne všechny image. Předběžné načtení imagí není nutné a může způsobovat vyčerpání paměti, což vede k 500 HTTP. Pojďme aktualizovat kód, aby se načetly obrázky na vyžádání, aby se zobrazilo, jestli problém vyřešil. Dále Vylepšete kód pro vyřešení problému s pamětí.
 
 ## <a name="fix-the-app"></a>Oprava aplikace
 
 ### <a name="update-locally-and-redeploy-the-code"></a>Místní aktualizace a opětovné nasazení kódu
 
-Provedete následující změny `process.php` pro zpracování vyčerpání paměti:
+Pro zpracování vyčerpání paměti provedete následující změny `process.php` :
 
 ```php
 <?php
@@ -250,17 +250,17 @@ git commit -am "Load images on-demand in process.php"
 git push azure master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 Přejděte na `http://<app-name>.azurewebsites.net`. 
 
-Převod obrazů by již neměl způsobit chyby protokolu HTTP 500.
+Převod obrázků by neměl nadále vydávat chyby HTTP 500.
 
 ![Aplikace PHP spuštěná ve službě Azure App Service](./media/tutorial-azure-monitor/sample-monitor-app-working.png)
 
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
-Odstraňte diagnostické nastavení pomocí následujícího příkazu:
+Odstraňte nastavení diagnostiky pomocí následujícího příkazu:
 
 ```bash
 az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
@@ -268,11 +268,11 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 Naučili jste se:
 
 > [!div class="checklist"]
-> * Konfigurace webové aplikace pomocí Azure Monitoru
-> * Odeslané protokoly do služby Log Analytics
-> * Použití dotazů protokolu k identifikaci a řešení potíží s chybami webových aplikací
+> * Nakonfigurovali jste webovou aplikaci pomocí Azure Monitor
+> * Odeslané protokoly do Log Analytics
+> * Použití dotazů protokolu k identifikaci a řešení chyb webových aplikací
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>Další kroky
-* [Protokoly dotazů pomocí Azure Monitoru](../../azure-monitor/log-query/log-query-overview.md)
-* [Poradce při potížích s azure app service ve Visual Studiu](../troubleshoot-dotnet-visual-studio.md)
-* [Analýza protokolů aplikací v HDInsightu](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Dotazování protokolů pomocí Azure Monitor](../../azure-monitor/log-query/log-query-overview.md)
+* [Řešení potíží s Azure App Service v aplikaci Visual Studio](../troubleshoot-dotnet-visual-studio.md)
+* [Analýza protokolů aplikací v HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

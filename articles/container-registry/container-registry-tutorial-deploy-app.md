@@ -1,17 +1,17 @@
 ---
 title: Kurz – nasazení z geograficky replikovaného registru
-description: Nasazení webové aplikace založené na Linuxu do dvou různých oblastí Azure pomocí image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
+description: Nasazení webové aplikace se systémem Linux do dvou různých oblastí Azure pomocí Image kontejneru z geograficky replikovaného registru kontejnerů Azure. Druhá část třídílné série.
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74456106"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: Nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Kurz: nasazení webové aplikace z geograficky replikovaného registru kontejnerů Azure
 
 Toto je druhá část z třídílné série kurzů. V [první části](container-registry-tutorial-prepare-registry.md) jste vytvořili privátní, geograficky replikovaný registr kontejneru a ze zdroje jste sestavili image kontejneru, kterou jste vložili do registru. V tomto článku nasadíte kontejner do instancí webových aplikací ve dvou různých oblastech Azure a využijete tak aspekt blízkosti sítě u geograficky replikovaného registru. Každá instance pak načte image kontejneru z nejbližšího registru.
 
@@ -37,11 +37,11 @@ V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA
 
 Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
-Vyberte **Repozitáře** > **acr-helloworld**, pak klikněte pravým tlačítkem myši na značku **v1 v** části **Značky** a vyberte **Nasadit do webové aplikace**:
+Vyberte **úložiště** > **ACR-HelloWorld**, potom klikněte pravým tlačítkem na značku **v1** v části **značky** a vyberte **nasadit do webové aplikace**:
 
 ![Nasazení do služby App Service na portálu Azure Portal][deploy-app-portal-01]
 
-Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v**klíčích Přístupu k** **nastavení** > na webu Azure Portal.
+Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Můžete povolit uživatele správce v **Nastavení** > **přístupové klíče** v Azure Portal.
 
 V části **Web App for Containers**, která se zobrazí po výběru možnosti Nasadit do webové aplikace, zadejte u jednotlivých nastavení následující hodnoty:
 
@@ -49,12 +49,12 @@ V části **Web App for Containers**, která se zobrazí po výběru možnosti N
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-westus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
-| **Plán/umístění služby Aplikace** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-westus` v oblasti **USA – západ**. |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 > [!NOTE]
-> Když vytvoříte nový plán služby App Service pro nasazení kontejnerizované aplikace, automaticky se vybere výchozí plán pro hostování vaší aplikace. Výchozí plán závisí na nastavení operačního systému.
+> Při vytváření nového plánu služby App Service pro nasazení kontejnerové aplikace je automaticky vybrán výchozí plán pro hostování aplikace. Výchozí plán závisí na nastavení operačního systému.
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – západ*.
 
@@ -66,7 +66,7 @@ Po dokončení nasazování můžete běžící aplikaci zobrazit tak, že přej
 
 Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-westus*.
 
-Vyberte adresu URL webové aplikace s hypertextovým odkazem v pravém horním rohu přehledu **služby App Service** a zobrazte spuštěnou aplikaci ve vašem prohlížeči.
+Výběrem hypertextového odkazu na adresu URL webové aplikace v pravé horní části přehledu **App Service** zobrazíte běžící aplikaci v prohlížeči.
 
 ![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-04]
 
@@ -82,8 +82,8 @@ Podle postupu uvedeného v předchozí části nasaďte druhou webovou aplikaci 
 |---|---|
 | **Název lokality** | Globálně jedinečný název webové aplikace. V tomto příkladu používáme formát `<acrName>-eastus`, abychom mohli snadno identifikovat, ze kterého registru a oblasti je webová aplikace nasazená. |
 | **Skupina prostředků** | **Použít existující** > `myResourceGroup` |
-| **Plán/umístění služby Aplikace** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
-| **Obrázek** | `acr-helloworld:v1` |
+| **Plán/umístění služby App Service** | Vytvořte nový plán s názvem `plan-eastus` v oblasti **USA – východ**. |
+| **Image** | `acr-helloworld:v1` |
 | **Operační systém** | Linux |
 
 Vyberte **Vytvořit** a webovou aplikaci zřiďte v oblasti *USA – východ*.
@@ -96,7 +96,7 @@ Stejně jako v předchozí části můžete běžící aplikaci zobrazit tak, ž
 
 Na portálu vyberte **App Services** a pak vyberte webovou aplikaci, kterou jste zřídili v předchozím kroku. V tomto příkladu je název webové aplikace *uniqueregistryname-eastus*.
 
-Vyberte adresu URL webové aplikace s hypertextovým odkazem v pravém horním rohu **přehledu služby App Service** a zobrazte spuštěnou aplikaci ve vašem prohlížeči.
+Vyberte adresu URL webové aplikace v pravém horním rohu **přehledu App Service** a zobrazte běžící aplikaci v prohlížeči.
 
 ![Webová aplikace s linuxovou konfigurací na portálu Azure Portal][deploy-app-portal-07]
 

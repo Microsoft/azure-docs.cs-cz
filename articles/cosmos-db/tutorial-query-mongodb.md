@@ -1,6 +1,6 @@
 ---
-title: Dotazujte se na data pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
-description: Zjistěte, jak dotazovat data z rozhraní API Azure Cosmos DB pro MongoDB pomocí příkazů prostředí MongoDB
+title: Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
+description: Naučte se, jak zadávat dotazy na data z rozhraní API Azure Cosmos DB MongoDB pomocí příkazů prostředí MongoDB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,20 +9,20 @@ ms.topic: tutorial
 ms.date: 12/03/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 5b9bc78f6af833d89a3404de0295ddad78ebdf20
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74870135"
 ---
-# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování na data pomocí rozhraní API Azure Cosmos DB pro MongoDB
+# <a name="query-data-by-using-azure-cosmos-dbs-api-for-mongodb"></a>Dotazování dat pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-Rozhraní [API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+[Rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md) podporuje [dotazy MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
 Tento článek se zabývá následujícími úkony: 
 
 > [!div class="checklist"]
-> * Dotazování dat uložených v databázi Cosmos pomocí prostředí MongoDB
+> * Dotazování na data uložená ve vaší databázi Cosmos pomocí prostředí MongoDB
 
 Můžete začít s použitím příkladů v tomto dokumentu a podívat se na video o [dotazování služby Azure Cosmos DB pomocí prostředí MongoDB Shell](https://azure.microsoft.com/resources/videos/query-azure-cosmos-db-data-by-using-the-mongodb-shell/).
 
@@ -62,11 +62,11 @@ Dotazy v tomto článku využívají následující ukázkový dokument.
 
 S použitím výše uvedeného dokumentu family (rodina) vrátí následující dotaz dokumenty, jejichž pole ID odpovídá `WakefieldFamily`.
 
-**Dotazu**
+**Dotaz**
     
     db.families.find({ id: "WakefieldFamily"})
 
-**Results**
+**Výsledky**
 
     {
     "_id": "ObjectId(\"58f65e1198f3a12c7090e68c\")",
@@ -112,11 +112,11 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
 
 Další dotaz vrátí všechny děti v rodině. 
 
-**Dotazu**
+**Dotaz**
     
     db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
-**Results**
+**Výsledky**
 
     {
     "_id": "ObjectId("58f65e1198f3a12c7090e68c")",
@@ -145,7 +145,7 @@ Další dotaz vrátí všechny děti v rodině.
 
 Další dotaz vrátí všechny zaregistrované rodiny. 
 
-**Dotazu**
+**Dotaz**
     
     db.families.find( { "isRegistered" : true })
 **Výsledky** Nevrátí se žádný dokument. 
@@ -154,10 +154,10 @@ Další dotaz vrátí všechny zaregistrované rodiny.
 
 Další dotaz vrátí všechny nezaregistrované rodiny. 
 
-**Dotazu**
+**Dotaz**
     
     db.families.find( { "isRegistered" : false })
-**Results**
+**Výsledky**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -198,11 +198,11 @@ Další dotaz vrátí všechny nezaregistrované rodiny.
 
 Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY. 
 
-**Dotazu**
+**Dotaz**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
-**Results**
+**Výsledky**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -244,11 +244,11 @@ Další dotaz vrátí všechny nezaregistrované rodiny ve státě NY.
 
 Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
 
-**Dotazu**
+**Dotaz**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
-**Results**
+**Výsledky**
 
      {
     "_id": ObjectId("58f65e1198f3a12c7090e68c"),
@@ -289,11 +289,11 @@ Další dotaz vrátí všechny rodiny s dětmi v 8. ročníku.
 
 Další dotaz vrátí všechny rodiny s polem children (děti) velikosti 3.
 
-**Dotazu**
+**Dotaz**
   
       db.Family.find( {children: { $size:3} } )
 
-**Results**
+**Výsledky**
 
 Nevrátí se žádné výsledky, protože v žádné rodině není více než dvě děti. Tento dotaz bude úspěšný pouze v případě, že parametr bude 2, a pak vrátí celý dokument.
 
@@ -302,7 +302,7 @@ Nevrátí se žádné výsledky, protože v žádné rodině není více než dv
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Naučili se dotazovat pomocí rozhraní API Cosmos DB pro MongoDB
+> * Seznámili jste se s dotazování pomocí rozhraní Cosmos DB API pro MongoDB.
 
 Teď můžete pokračovat k dalšímu kurzu, kde se dozvíte, jak globálně distribuovat data.
 
