@@ -1,6 +1,6 @@
 ---
-title: Odkaz na existující virtuální síť v šabloně škálovací sady Azure
-description: Zjistěte, jak přidat virtuální síť do existující šablony sady škálování virtuálních strojů Azure
+title: Odkazování na existující virtuální síť v šabloně Azure Scale set
+description: Přečtěte si, jak přidat virtuální síť do existující šablony Azure Virtual Machine Scale set.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: mimckitt
 ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273660"
 ---
-# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidání odkazu na existující virtuální síť v šabloně škálovací sady Azure
+# <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidání odkazu do existující virtuální sítě v šabloně Azure Scale set
 
-Tento článek ukazuje, jak upravit [základní škálovací sadu šablony](virtual-machine-scale-sets-mvss-start.md) pro nasazení do existující virtuální sítě namísto vytvoření nové.
+V tomto článku se dozvíte, jak upravit [šablonu základní sady škálování](virtual-machine-scale-sets-mvss-start.md) tak, aby se nasadila do existující virtuální sítě, a ne vytvořit novou.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
 
-V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu škálovací sady. Nyní použijeme tuto starší šablonu a upravíme ji, abychom vytvořili šablonu, která nasazuje škálovací sadu do existující virtuální sítě. 
+V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu sady škálování. Nyní použijeme tuto předchozí šablonu a upravíte ji k vytvoření šablony, která nasadí sadu škálování do existující virtuální sítě. 
 
-Nejprve přidejte `subnetId` parametr. Tento řetězec je předán do konfigurace škálovací sady, což umožňuje škálovací sadě k identifikaci předem vytvořené podsítě pro nasazení virtuálních počítačů. Tento řetězec musí být ve tvaru:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
+Nejdřív přidejte `subnetId` parametr. Tento řetězec se předává do konfigurace sady škálování, což umožňuje, aby sada škálování identifikovala předem vytvořenou podsíť pro nasazení virtuálních počítačů. Tento řetězec musí být ve tvaru:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Chcete-li například nasadit škálovací sadu `myvnet`do existující `mysubnet`virtuální `myrg`sítě s `00000000-0000-0000-0000-000000000000`názvem , podsítí , `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`skupinou prostředků a odběrem , bude podsouborní ho dis: .
+Pokud `myvnet`například chcete nasadit sadu škálování do existující virtuální sítě s názvem, podsítí `mysubnet`, skupinou `myrg`prostředků a předplatným `00000000-0000-0000-0000-000000000000`, bude subnetId:. `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`
 
 ```diff
      },
@@ -38,7 +38,7 @@ Chcete-li například nasadit škálovací sadu `myvnet`do existující `mysubne
    },
 ```
 
-Dále odstraňte prostředek virtuální `resources` sítě z pole, protože používáte existující virtuální síť a nepotřebujete nasadit novou.
+Dále odstraňte prostředek virtuální sítě z `resources` pole, když použijete existující virtuální síť a nepotřebujete nasadit novou.
 
 ```diff
    "variables": {},
@@ -66,7 +66,7 @@ Dále odstraňte prostředek virtuální `resources` sítě z pole, protože pou
 -    },
 ```
 
-Virtuální síť již existuje před nasazením šablony, takže není nutné zadávat klauzuli dependsOn z škálovací sady do virtuální sítě. Odstraňte následující řádky:
+Virtuální síť již existuje před nasazením šablony, takže není nutné zadávat klauzuli dependsOn ze sady škálování nastavenou na virtuální síť. Odstraňte následující řádky:
 
 ```diff
      {
@@ -82,7 +82,7 @@ Virtuální síť již existuje před nasazením šablony, takže není nutné z
          "capacity": 2
 ```
 
-Nakonec předajte `subnetId` parametr nastavený uživatelem `resourceId` (namísto použití k získání ID virtuální sítě ve stejném nasazení, což je to, co dělá základní životaschopná šablona škálovací sady).
+Nakonec předejte `subnetId` parametr nastavený uživatelem (místo použití `resourceId` k získání ID virtuální sítě ve stejném nasazení, což je to, co je to šablona Základní životaschopné sady škálování).
 
 ```diff
                        "name": "myIpConfig",

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Extrahování tištěného textu - REST, Java'
+title: 'Rychlý Start: extrakce vytištěného textu – REST, Java'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
@@ -12,25 +12,25 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4a9d2453d1f2dbb1f7efe942eb7a4b813a28783c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404796"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Úvodní příručka: Extrakce tištěného textu (OCR) pomocí rozhraní Api pro odpočinek v počítači a javy
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí Počítačové zpracování obrazu REST API a Java
 
 > [!NOTE]
-> Pokud extrahujete text v anglickém jazyce, zvažte použití nové [operace Čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý start v jazyce Java.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) 
+> Pokud extrahujete text v anglickém jazyce, zvažte použití nové [operace čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start Java](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) . 
 
-V tomto rychlém startu extrahnete tištěný text s optickým rozpoznáváním znaků (OCR) z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+V tomto rychlém startu extrahujete vytištěný text pomocí optického rozpoznávání znaků (OCR) z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
@@ -56,7 +56,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
    import org.json.JSONObject;
    ```
 
-1. Nahraďte veřejnou `Main` třídu následujícím kódem.
+1. Nahraďte `Main` veřejnou třídu následujícím kódem.
 1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, ze kterého chcete extrahovat tištěný text.
 1. Uložte a sestavte projekt Java.
 1. Pokud používáte integrované vývojové prostředí, spusťte `Main`. V opačném případě otevřete okno příkazového řádku a potom pomocí příkazu `java` spusťte zkompilovanou třídu. Například, `java Main`.
@@ -215,7 +215,7 @@ REST Response:
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte aplikaci Java Swing, která používá počítačové vidění k provádění optického rozpoznávání znaků (OCR); vytvářet miniatury s inteligentním oříznutím; a zjišťovat, kategorizovat, označovat a popisovat vizuální funkce v obrázcích.
+Prozkoumejte aplikaci Java, která používá Počítačové zpracování obrazu k provedení optického rozpoznávání znaků (OCR); vytvořit miniatury s inteligentním oříznutím; a k detekci, kategorizaci, označení a popisu vizuálních funkcí v obrázcích.
 
 > [!div class="nextstepaction"]
 > [Kurz rozhraní API pro počítačové zpracování obrazu v Javě](../Tutorials/java-tutorial.md)

@@ -1,6 +1,6 @@
 ---
 title: Architektura agenta zabezpečení
-description: Seznamte se s architekturou agenta zabezpečení pro agenty používané ve službě Azure Security Center for IoT.
+description: Pochopení architektury agenta zabezpečení pro agenty používané ve Azure Security Center pro službu IoT
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,51 +16,51 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 9029ece923b7cda09c7a57d07736791e241c9e70
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310689"
 ---
 # <a name="security-agent-reference-architecture"></a>Referenční architektura agenta zabezpečení
 
-Azure Security Center pro IoT poskytuje referenční architekturu pro agenty zabezpečení, kteří protokolují, zpracovávají, agregují a odesílají data zabezpečení prostřednictvím služby IoT Hub.
+Azure Security Center pro IoT poskytuje referenční architekturu pro agenty zabezpečení, které protokolují, zpracovávají, agreguje a odesílají data zabezpečení prostřednictvím IoT Hub.
 
-Agenti zabezpečení jsou navrženy tak, aby fungovaly v omezeném prostředí IoT a jsou vysoce přizpůsobitelné z hlediska hodnot, které poskytují ve srovnání s prostředky, které spotřebovávají.
+Agenti zabezpečení jsou navrženi pro práci v prostředí s omezeným IoT a jsou vysoce přizpůsobitelné z hlediska hodnot, které poskytují ve srovnání s prostředky, které spotřebovávají.
 
-Agenti zabezpečení podporují následující funkce:
+Agenti zabezpečení podporují tyto funkce:
 
-- Shromážděte nezpracované události zabezpečení ze základního operačního systému (Linux, Windows). Další informace o dostupných kolekcích dat zabezpečení najdete v [tématu Azure Security Center for IoT agent configuration](how-to-agent-configuration.md).
+- Shromážděte nezpracované události zabezpečení ze základního operačního systému (Linux, Windows). Další informace o dostupných kolekcích dat zabezpečení najdete v tématu [Azure Security Center pro konfiguraci agenta IoT](how-to-agent-configuration.md).
 
-- Agregujte nezpracované události zabezpečení do zpráv odeslaných prostřednictvím centra IoT Hub.
+- Agregovat nezpracované události zabezpečení do zpráv odesílaných pomocí IoT Hub.
 
-- Ověřte pomocí existující identity zařízení nebo vyhrazené identity modulu. Další informace najdete v [tématu Metody ověřování agenta zabezpečení.](concept-security-agent-authentication-methods.md)
+- Proveďte ověření pomocí existující identity zařízení nebo identity vyhrazené modulu. Další informace najdete v tématu [metody ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md) .
 
-- Nakonfigurujte vzdáleně pomocí dvojčete modulu **azureiotsecurity.** Další informace najdete [v tématu Konfigurace Centra zabezpečení Azure pro agenta IoT](how-to-agent-configuration.md).
+- Vzdálená konfigurace prostřednictvím použití modulu **azureiotsecurity** s dvojitou platností. Další informace najdete v tématu [konfigurace Azure Security Center pro agenta IoT](how-to-agent-configuration.md).
 
-Azure Security Center pro agenty zabezpečení IoT se vyvíjí jako open source projekty a jsou dostupné na GitHubu:
+Azure Security Center pro agenty zabezpečení IoT se vypracovávají jako open source projekty a jsou dostupné z GitHubu:
 
 - [Azure Security Center pro agenta založeného na IoT C](https://github.com/Azure/Azure-IoT-Security-Agent-C)
-- [Azure Security Center pro agenta založeného na IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+- [Azure Security Center pro agenta založeného na systému IoT C#](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
-## <a name="agent-supported-platforms"></a>Platformy podporované agenty
+## <a name="agent-supported-platforms"></a>Podporované platformy agenta
 
-Azure Security Center pro IoT nabízí různé instalační agenty pro 32bitový a 64bitový Systém Windows a totéž pro 32bitový a 64bitový Linux. Ujistěte se, že máte správný instalátor agenta pro každé z vašich zařízení podle následující tabulky:
+Azure Security Center pro IoT nabízí různé instalační agenty pro 32bitová a 64bitová okna a jsou stejné pro 32bitové a 64bitové systémy Linux. Ujistěte se, že máte pro každé zařízení správný instalační program agentů podle následující tabulky:
 
 | Architektura | Linux | Windows |    Podrobnosti|
 |----------|----------------------------------------------|-------------|-------------------------------------------|
-| 32bitová  | C  | C#  ||
-| 64bitová  | C# nebo C           | C#      | Doporučujeme používat agenta C pro zařízení s omezenějšími nebo minimálními prostředky zařízení.|
+| 32  | C  | C#  ||
+| 64bitový  | C# nebo C           | C#      | Pro zařízení s více omezenými nebo minimálními prostředky zařízení doporučujeme použít agenta jazyka C.|
 |
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli o architektuře agenta zabezpečení Azure Security Center pro IoT a dostupných instalačních programech.
+V tomto článku jste se dozvěděli o Azure Security Center architektuře agenta zabezpečení IoT a dostupných instalačních programů.
 
-Pokud chcete pokračovat v začínáme s Azure Security Center pro nasazení IoT, použijte následující články:
+Pokud chcete pokračovat v seznámení s Azure Security Center pro nasazení IoT, postupujte podle následujících článků:
 
-- Principy [metod ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
+- Porozumění [metodám ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)
 - Výběr a nasazení [agenta zabezpečení](how-to-deploy-agent.md)
-- Kontrola [požadavků služby](service-prerequisites.md) Azure Security Center for IoT
-- Zjistěte, jak [povolit službu Azure Security Center for IoT ve vašem Centru IoT Hub](quickstart-onboard-iot-hub.md)
-- Další informace o službě v [centru zabezpečení Azure pro ioT nejčastější dotazy](resources-frequently-asked-questions.md)
+- Přečtěte si téma Azure Security Center pro [požadavky služby](service-prerequisites.md) IoT
+- Naučte se, jak [povolit Azure Security Center pro službu IoT v IoT Hub](quickstart-onboard-iot-hub.md)
+- Další informace o službě najdete v tématu [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)

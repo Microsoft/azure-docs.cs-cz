@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Nastavení dev platformy'
+title: 'Rychlý Start: nastavení platformy pro vývoj'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu se dozvíte, jak nainstalovat sadu Speech SDK pro preferovanou platformu a kombinaci programovacích jazyků.
+description: V tomto rychlém startu se dozvíte, jak nainstalovat sadu Speech SDK pro vaši preferovanou platformu a programovací jazyk.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,17 +12,17 @@ ms.date: 04/04/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-three
 ms.openlocfilehash: 67ade64cdb3b2da6f78f77beb4d0cdc993715c9a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400871"
 ---
-# <a name="quickstart-setup-development-environment"></a>Úvodní příručka: Nastavení vývojového prostředí
+# <a name="quickstart-setup-development-environment"></a>Rychlý Start: vývojové prostředí pro instalaci
 
 ::: zone pivot="programming-language-csharp"
 
-**Vyberte si cílové prostředí**
+**Volba cílového prostředí**
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -49,7 +49,7 @@ ms.locfileid: "81400871"
 
 ::: zone pivot="programming-language-cpp"
 
-**Vyberte si cílové prostředí**
+**Volba cílového prostředí**
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
@@ -68,7 +68,7 @@ ms.locfileid: "81400871"
 
 ::: zone pivot="programming-language-java"
 
-**Vyberte si cílové prostředí**
+**Volba cílového prostředí**
 
 # <a name="java-runtime"></a>[Java Runtime](#tab/jre)
 

@@ -1,6 +1,6 @@
 ---
 title: Místní konfigurace agenta zabezpečení (C#)
-description: Přečtěte si další informace o službě zabezpečení Azure Security Center for IoT, místním konfiguračním souboru agenta zabezpečení pro C#.
+description: Přečtěte si další informace o Azure Security Center pro službu zabezpečení IoT, místní konfigurační soubor agenta zabezpečení pro jazyk C#.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,53 +16,53 @@ ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
 ms.openlocfilehash: adf0d72763e0cb1892d64c68a6dce05abbf6f582
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311666"
 ---
-# <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent jazyka C#)
+# <a name="understanding-the-local-configuration-file-c-agent"></a>Principy místního konfiguračního souboru (agent C#)
 
 Azure Security Center pro agenta zabezpečení IoT používá konfigurace z místního konfiguračního souboru.
 
-Agent zabezpečení přečte konfigurační soubor jednou při spuštění agenta. Konfigurace nalezené v místním konfiguračním souboru obsahují konfiguraci ověřování i další konfigurace související s agentem.
+Agent zabezpečení čte konfigurační soubor jednou při spuštění agenta. Konfigurace nalezené v místním konfiguračním souboru obsahuje konfiguraci ověřování i další konfigurace související s agenty.
 
-Agent zabezpečení jazyka C# používá více konfiguračních souborů:
+Agent zabezpečení v jazyce C# používá více konfiguračních souborů:
 
-- **General.config** - Konfigurace související s agentem.
-- **Authentication.config** - Konfigurace související s ověřováním (včetně podrobností o ověřování).
-- **SecurityIotInterface.config** - Konfigurace související s IoT.
+- **General. config** – konfigurace související s agenty.
+- **Ověřování. config** – konfigurace související s ověřováním (včetně podrobností ověřování).
+- **SecurityIotInterface. config** – konfigurace související s IoT
 
-Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřování je naplněna během instalace agenta a změny konfiguračního souboru jsou provedeny při restartování agenta.
+Konfigurační soubory obsahují výchozí konfiguraci. Konfigurace ověřování se naplní během instalace agenta a změny konfiguračního souboru se provedou při restartování agenta.
 
 ## <a name="configuration-file-location"></a>Umístění konfiguračního souboru
 
 Pro Linux:
 
-- Konfigurační soubory `/var/ASCIoTAgent`operačního systému jsou umístěny v .
+- Konfigurační soubory operačního systému jsou umístěny v `/var/ASCIoTAgent`.
 
 Ve Windows:
 
-- Konfigurační soubory operačního systému jsou umístěny v adresáři agenta zabezpečení.
+- Konfigurační soubory operačního systému se nacházejí v adresáři agenta zabezpečení.
 
-### <a name="generalconfig-configurations"></a>Konfigurace General.config
+### <a name="generalconfig-configurations"></a>Obecné konfigurace. config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
-| agentId | GUID | Jedinečný identifikátor agenta |
-| readRemoteConfigurationTimeout | TimeSpan | Časové období pro načítání vzdálené konfigurace z ioT hubu. Pokud agent nemůže načíst konfiguraci v zadaném čase, operace bude časový mzda.|
+| ID agenta | GUID | Jedinečný identifikátor agenta |
+| readRemoteConfigurationTimeout | TimeSpan | Časové období načítání vzdálené konfigurace z IoT Hub. Pokud Agent nemůže v zadaném čase načíst konfiguraci, bude časový limit operace vypršel.|
 | schedulerInterval | TimeSpan | Interval interního plánovače. |
-| producentInterval | TimeSpan | Interval pracovníka výrobce událostí. |
-| consumerInterval | TimeSpan | Interval pracovníka příjemce události. |
-| highPriorityQueueSizePercentage | 0 < číslo < 1 | Část celkové mezipaměti vyhrazené pro zprávy s vysokou prioritou. |
-| Loglevel | "Vypnuto", "Závažná", "Chyba", "Varování", "Informace", "Ladění"  | Protokolzprávy stejné a nad tuto závažnost jsou zaznamenány ladění konzole (Syslog v Linuxu). |
-| fileLogLevel |  "Vypnuto", "Závažná", "Chyba", "Varování", "Informace", "Ladění"| Protokolzprávy stejné a vyšší než tato závažnost jsou zaznamenány do souboru (Syslog v Linuxu). |
-| diagnosticVerbosityLevel | "Žádné", "Některé", "Všechny", | Úroveň podrobností diagnostických událostí. Žádné - diagnostické události nejsou odeslány, Některé - Jsou odesílány pouze diagnostické události s vysokou důležitostí, Všechny - všechny protokoly jsou také odesílány jako diagnostické události. |
-| Logfilepath | Cesta k souboru | Pokud fileLogLevel > Off, protokoly jsou zapsány do tohoto souboru. |
-| defaultEventPriority | "Vysoká", "Nízká", "Vypnuto" | Výchozí priorita události. |
+| producerInterval | TimeSpan | Interval pracovního procesu producenta události |
+| consumerInterval | TimeSpan | Interval pracovního procesu pro uživatele události |
+| highPriorityQueueSizePercentage | 0 < číslo < 1 | Část celkové mezipaměti vyhrazená pro zprávy s vysokou prioritou. |
+| logLevel | "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"  | Zprávy protokolu rovnající se této závažnosti se budou protokolovat do ladicí konzoly (syslog v systému Linux). |
+| LogLevel |  "Vypnuto", "závažná", "Chyba", "upozornění", "informace", "ladění"| Zprávy protokolu rovnající se této závažnosti se budou protokolovat do souboru (syslog v Linux). |
+| diagnosticVerbosityLevel | None, "All", "All", | Úroveň podrobností diagnostických událostí. Žádné – neodesílají se diagnostické události, odesílají se jenom diagnostické události s vysokou důležitostí, všechny protokoly se také odesílají jako diagnostické události. |
+| logFilePath | Cesta k souboru | Pokud > vypnuto, protokoly se zapisují do tohoto souboru. |
+| defaultEventPriority | "Vysoká", "nízká", "off" | Výchozí priorita události |
 
-### <a name="generalconfig-example"></a>Příklad souboru General.config
+### <a name="generalconfig-example"></a>Příklad General. config
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -81,22 +81,22 @@ Ve Windows:
 </General>
 ```
 
-### <a name="authenticationconfig"></a>Nástroj Authentication.config
+### <a name="authenticationconfig"></a>Ověřování. config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
-| název modulu | řetězec | Název identity modulu zabezpečení. Tento název musí odpovídat názvu identity modulu v zařízení. |
-| deviceId | řetězec | ID zařízení (jako registrované v Azure IoT Hub). || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
-| gatewayHostname | řetězec | Název hostitele služby Azure Iot Hub. Obvykle <my-hub>.azure-devices.net |
-| Filepath | řetězec - cesta k souboru | Cesta k souboru, který obsahuje tajný klíč ověřování.|
-| type | "SymmetricKey", "SelfSignedCertificateCertificate" | Tajný klíč uživatele pro ověřování. Pokud *SymmetricKey* je tajný klíč uživatele symetrickým klíčem, zvolte *certifikát podepsaný svým držitelem,* pokud je tajný klíč certifikát podepsaný svým držitelem. |
-| identity | "DPS", "Modul", "Zařízení" | Ověřovací identita – DPS, pokud je ověřování provedeno prostřednictvím DPS, Modul, pokud je ověřování provedeno pomocí pověření modulu, nebo zařízení, pokud je ověřování provedeno pomocí pověření zařízení.
-| certifikátLocationKind |  "LocalFile", "Store" | LocalFile Pokud je certifikát uložen v souboru, uložte, pokud je certifikát umístěn v úložišti certifikátů. |
-| idScope | řetězec | ID rozsah DPS |
-| id registrace | řetězec  | DPS ID registrace zařízení. |
+| moduleName | řetězec | Název identity modulu zabezpečení Tento název musí odpovídat názvu identity modulu v zařízení. |
+| deviceId | řetězec | ID zařízení (registrované v Azure IoT Hub) || schedulerInterval | Řetězec TimeSpan | Interval interního plánovače. |
+| gatewayHostname | řetězec | Název hostitele služby Azure IoT Hub. Obvykle <>. azure-devices.net |
+| filePath | řetězec – cesta k souboru | Cesta k souboru, který obsahuje tajný klíč ověřování.|
+| type | "SymmetricKey", "SelfSignedCertificate" | Tajný klíč uživatele pro ověřování. Pokud je tajný klíč uživatele symetrický klíč, vyberte *SymmetricKey* . Pokud je tajný kód certifikát podepsaný svým držitelem, vyberte *certifikát podepsaný držitelem* . |
+| identity | "DPS", "Module", "Device" | Ověřování identity – DPS Pokud se provádí ověření prostřednictvím DPS, modul, pokud se provádí ověřování pomocí přihlašovacích údajů modulu, nebo zařízení, pokud se provádí ověřování pomocí přihlašovacích údajů k zařízení.
+| certificateLocationKind |  "Místní_soubor", "Store" | Místní_soubor Pokud je certifikát uložen v souboru, uloží se, pokud se certifikát nachází v úložišti certifikátů. |
+| idScope | řetězec | Rozsah ID v DPS |
+| registrationId | řetězec  | ID registrace zařízení DPS. |
 |
 
-### <a name="authenticationconfig-example"></a>Příklad authentication.config
+### <a name="authenticationconfig-example"></a>Příklad ověřování. config
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -113,14 +113,14 @@ Ve Windows:
 </Authentication>
 ```
 
-### <a name="securityiotinterfaceconfig"></a>Bezpečnostní rozhraní Iot.config
+### <a name="securityiotinterfaceconfig"></a>SecurityIotInterface. config
 
 | Název konfigurace | Možné hodnoty | Podrobnosti |
 |:-----------|:---------------|:--------|
-| transportType | "Ampq" "Mqtt" | Typ přenosu ioT Hub. |
+| transportType | "Ampq" "MQTT" | IoT Hub typ přenosu. |
 |
 
-### <a name="securityiotinterfaceconfig-example"></a>Příklad SecurityIotInterface.config
+### <a name="securityiotinterfaceconfig-example"></a>Příklad SecurityIotInterface. config
 
 ```XML
 <ExternalInterface>
@@ -131,10 +131,10 @@ Ve Windows:
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled](overview.md) služby Azure Security Center for IoT
-- Další informace o Azure Security Center pro [architekturu](architecture.md) IoT
-- Povolení [služby](quickstart-onboard-iot-hub.md) Azure Security Center for IoT
-- Přečtěte si [nejčastější dotazy](resources-frequently-asked-questions.md) ke Službě Azure Security Center for IoT
-- Zjistěte, jak získat přístup k [nezpracovaným bezpečnostním datům](how-to-security-data-access.md)
-- Principy [doporučení](concept-recommendations.md)
-- Principy [výstrah](concept-security-alerts.md) zabezpečení
+- Přečtěte si [Přehled](overview.md) služby Azure Security Center for IoT.
+- Další informace o [architektuře](architecture.md) Azure Security Center pro IoT
+- Povolení služby Azure Security Center pro [službu](quickstart-onboard-iot-hub.md) IoT
+- Přečtěte si [Nejčastější dotazy](resources-frequently-asked-questions.md) ke službě Azure Security Center for IoT
+- Přečtěte si, jak získat přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
+- Vysvětlení [doporučení](concept-recommendations.md)
+- Vysvětlení [výstrah](concept-security-alerts.md) zabezpečení

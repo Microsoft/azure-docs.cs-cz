@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Detekce tváří v bitové kopii pomocí rozhraní Azure REST API a Node.js'
+title: 'Rychlý Start: detekce plošek v imagi pomocí REST API Azure a Node. js'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní API Azure Face REST s node.js k detekci tváří v bitové kopii.
+description: V tomto rychlém startu použijete REST API Azure Face s Node. js k detekci ploch v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,34 +11,34 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: b88959d1dd936df0315d7365513ab0c0c5b7df17
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81402940"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Úvodní příručka: Detekce tváří v obraze pomocí rozhraní API FACE REST api a node.js
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a Node. js
 
-V tomto rychlém startu použijete rozhraní API Azure Face REST s node.js k detekci lidských tváří v bitové kopii.
+V tomto rychlém startu použijete REST API Azure Face s Node. js k detekci lidských plošek v obraze.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete. 
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného Face. Můžete získat bezplatný klíč zkušebního předplatného od [společnosti Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili ke službě Face a získali klíč.
-- Editor kódu, jako je [například Visual Studio Code](https://code.visualstudio.com/download)
+- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="set-up-the-node-environment"></a>Nastavení prostředí Uzel
+## <a name="set-up-the-node-environment"></a>Nastavení prostředí uzlu
 
-Přejděte do složky, ve které chcete vytvořit projekt, a vytvořte nový soubor *facedetection.js*. Potom nainstalujte `requests` modul do tohoto projektu. To umožňuje skripty, aby se požadavky HTTP.
+Přejít do složky, ve které chcete vytvořit projekt, a vytvořit nový soubor *facedetection. js*. Pak `requests` modul nainstalujte do tohoto projektu. To umožňuje skriptům vytvářet požadavky HTTP.
 
 ```shell
 npm install request --save
 ```
 
-## <a name="write-the-nodejs-script"></a>Napište skript Node.js
+## <a name="write-the-nodejs-script"></a>Zápis skriptu Node. js
 
-Vložte následující kód do *souboru facedetection.js*. Tato pole určují, jak se připojit ke službě Plocha a kde získat vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou klíče předplatného a je třeba `uriBase` změnit řetězec tak, aby obsahoval správný řetězec koncového bodu. Možná budete chtít `imageUrl` změnit pole tak, aby ukazovalo na vlastní vstupní obrázek.
+Do *facedetection. js*vložte následující kód. Tato pole určují, jak se připojit ke službě obličeje a kde získat vstupní data. Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a musíte změnit `uriBase` řetězec tak, aby obsahoval správný řetězec koncového bodu. Možná budete chtít změnit `imageUrl` pole tak, aby odkazovalo na vlastní vstupní image.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -59,7 +59,7 @@ const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
 ```
 
-Potom přidejte následující kód pro volání rozhraní API pro rozpoznávání tváře a získejte data atributů face ze vstupního obrazu. Toto `returnFaceAttributes` pole určuje, které atributy plochy mají být načteny. Tento řetězec můžete změnit v závislosti na zamýšleném použití.
+Pak přidejte následující kód, který volá Face API a získá data atributu Face ze vstupní image. `returnFaceAttributes` Pole určuje, které atributy tváře mají být načteny. Tento řetězec možná budete chtít změnit v závislosti na zamýšleném použití.
 
 
 ```javascript
@@ -94,13 +94,13 @@ request.post(options, (error, response, body) => {
 
 ## <a name="save-and-run-the-script"></a>Uložení a spuštění skriptu
 
-Po provedeném provádění změn otevřete příkazový řádek a `node` spusťte soubor pomocí příkazu.
+Po provedení změn otevřete příkazový řádek a spusťte soubor pomocí `node` příkazu.
 
 ```
 node facedetection.js
 ```
 
-V okně konzoly byste měli vidět informace o ploše zobrazené jako data JSON. Příklad:
+V okně konzoly byste měli vidět informace o tváři jako data JSON. Příklad:
 
 ```json
 [
@@ -283,7 +283,7 @@ V okně konzoly byste měli vidět informace o ploše zobrazené jako data JSON.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste napsali skript Node.js, který volá službu Azure Face ke zjištění tváří v bitové kopii a vrácení jejich atributů. Další informace najdete v dokumentaci k rozhraní API pro rozpoznávání tváře.
+V tomto rychlém startu jste napsali skript Node. js, který volá službu Azure Face k detekci ploch v obrázku a vrátí jejich atributy. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

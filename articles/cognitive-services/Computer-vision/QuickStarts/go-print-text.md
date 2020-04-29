@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Extrahování tištěného textu - REST, Go'
+title: 'Rychlý Start: extrakce vytištěného textu – REST, přejít'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete extrahovat tištěný text z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a Go.
 services: cognitive-services
@@ -12,25 +12,25 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 729c489169d242fdaf3872186da1dc2763ae1ea2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405003"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Úvodní příručka: Extrahování tištěného textu (OCR) pomocí rozhraní API PRO ZPRACOVÁNÍ obrazu pomocí funkce Go
+# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-with-go"></a>Rychlý Start: extrakce vytištěného textu (OCR) pomocí REST API Počítačové zpracování obrazu s příkazem přejít
 
 > [!NOTE]
-> Pokud extrahujete text v anglickém jazyce, zvažte použití nové [operace Čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý start Go.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts-sdk/go-sdk#call-the-read-api)
+> Pokud extrahujete text v anglickém jazyce, zvažte použití nové [operace čtení](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text). K dispozici je [rychlý Start](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts-sdk/go-sdk#call-the-read-api) .
 
-V tomto rychlém startu extrahnete tištěný text s optickým rozpoznáváním znaků (OCR) z obrázku pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
+V tomto rychlém startu budete z obrázku extrahovat vytištěný text pomocí optického rozpoznávání znaků (OCR) pomocí REST API Počítačové zpracování obrazu. Pomocí metody [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) můžete detekovat tištěný text v obrázku a extrahovat rozpoznané znaky do znakového proudu, který je strojově využitelný.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít nainstalovaný [Go](https://golang.org/dl/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 

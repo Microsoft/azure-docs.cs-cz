@@ -1,63 +1,63 @@
 ---
-title: Uložit grafy helmu
-description: Zjistěte, jak ukládat grafy Helm pro vaše aplikace Kubernetes pomocí úložišť v registru kontejnerů Azure
+title: Uložení Helm grafů
+description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úložišť v Azure Container Registry
 ms.topic: article
 ms.date: 03/20/2020
 ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399379"
 ---
-# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Nabízení a vytahováno grafy Helm do registru kontejnerů Azure
+# <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
 
-Chcete-li rychle spravovat a nasazovat aplikace pro Kubernetes, můžete použít [správce balíčků Helm s otevřeným zdrojovým kódem][helm]. S Helm, balíčky aplikací jsou [definovány](https://helm.sh/docs/topics/charts/)jako grafy , které jsou shromažďovány a uloženy v [úložišti grafu Helm](https://helm.sh/docs/topics/chart_repository/).
+Pokud chcete rychle spravovat a nasazovat aplikace pro Kubernetes, můžete použít [Správce balíčků Open Source Helm][helm]. Pomocí Helm jsou balíčky aplikací definované jako [grafy](https://helm.sh/docs/topics/charts/), které se shromažďují a ukládají do [úložiště grafu Helm](https://helm.sh/docs/topics/chart_repository/).
 
-Tento článek ukazuje, jak hostovat úložiště grafů Helm v registru kontejnerů Azure pomocí instalace Helm 3 nebo Helm 2. V mnoha scénářích byste vytvořit a nahrát vlastní grafy pro aplikace, které vyvíjíte. Další informace o tom, jak vytvořit vlastní grafy helmu, naleznete v [průvodci pro vývojáře šablon grafu][develop-helm-charts]. Můžete také uložit existující graf helmu z jiného úložiště helmu.
+V tomto článku se dozvíte, jak hostovat úložiště Helm grafů v registru kontejnerů Azure pomocí instalace Helm 3 nebo Helm 2. V mnoha scénářích byste sestavili a nahráli vlastní grafy pro aplikace, které vyvíjíte. Další informace o tom, jak vytvářet vlastní grafy Helm, najdete v [příručce pro vývojáře šablony grafu][develop-helm-charts]. Existující graf Helm můžete také uložit z jiného úložiště Helm.
 
 > [!IMPORTANT]
-> Podpora grafů Helm v Azure Container Registry je momentálně ve verzi Preview. Náhledy jsou vám k dispozici pod podmínkou, že souhlasíte s [doplňkovými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Podpora Helm grafů v Azure Container Registry je v současnosti ve verzi Preview. Verze Preview jsou k dispozici na základě podmínky, že souhlasíte s doplňkovými [podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
 
-## <a name="helm-3-or-helm-2"></a>Kormidlo 3 nebo Kormidlo 2?
+## <a name="helm-3-or-helm-2"></a>Helm 3 nebo Helm 2?
 
-Chcete-li ukládat, spravovat a instalovat helm grafy, použijte helm klienta a helm ucli. Mezi hlavní verze helmu klienta patří Helm 3 a Helm 2. Helm 3 podporuje nový formát grafu a již neinstaluje součást na straně serveru Tiller. Podrobnosti o rozdílech verzí naleznete v [nejčastějších dotazech](https://helm.sh/docs/faq/)k verzi . Pokud jste dříve nasadili grafy Helm 2, přečtěte si informace [o migraci helmu v2 na 3](https://helm.sh/docs/topics/v2_v3_migration/).
+K ukládání, správě a instalaci Helm grafů použijte klienta Helm a rozhraní příkazového řádku Helm. Hlavní verze klienta Helm zahrnují Helm 3 a Helm 2. Helm 3 podporuje nový formát grafu a už neinstaluje serverovou komponentu do pokladny na straně serveru. Podrobnosti o rozdílech verze najdete v tématu [Nejčastější dotazy k verzi](https://helm.sh/docs/faq/). Pokud jste již dříve nasadili grafy Helm 2, přečtěte si téma [migrace Helm v2 na V3](https://helm.sh/docs/topics/v2_v3_migration/).
 
-Helm 3 nebo Helm 2 můžete použít k hostování grafů helmu v Azure Container Registry, s pracovními postupy specifickými pro každou verzi:
+Pro hostování Helm grafů v Azure Container Registry můžete použít buď Helm 3 nebo Helm 2, a pracovní postupy specifické pro jednotlivé verze:
 
-* [Helm 3](#use-the-helm-3-client) klient `helm chart` - použití příkazů v Helm CLI pro správu grafů v registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts)
-* [Helm 2 client](#use-the-helm-2-client) – použití příkazů [az acr helm][az-acr-helm] v azure CLI přidat a spravovat registr kontejnerů jako úložiště grafu Helm
+* [Helm 3 klient](#use-the-helm-3-client) – pomocí `helm chart` příkazů v rozhraní příkazového řádku Helm můžete spravovat grafy v registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts) .
+* [Klient Helm 2](#use-the-helm-2-client) – pomocí příkazu [AZ ACR Helm][az-acr-helm] v rozhraní příkazového řádku Azure můžete přidat a spravovat registr kontejnerů jako úložiště grafů Helm.
 
 ### <a name="additional-information"></a>Další informace
 
-* Pro většinu scénářů doporučujeme použít pracovní `helm chart` postup Helm 3 s nativními příkazy pro správu grafů jako artefaktů OCI.
-* Můžete použít starší [az acr helm][az-acr-helm] azure cli příkazy a pracovní postup s Helm 3 klienta a grafy. Některé příkazy však `az acr helm list` nejsou kompatibilní s grafy Helm 3.
-* Od Helm 3 jsou příkazy [az acr helm][az-acr-helm] podporovány hlavně pro kompatibilitu s klientem Helm 2 a formátem grafu. Budoucí vývoj těchto příkazů není v současné době plánováno.
+* Pro většinu scénářů doporučujeme použít pracovní postup Helm 3 s nativními `helm chart` příkazy pro správu grafů jako artefakty OCI.
+* Můžete použít starší příkazy [AZ ACR Helm][az-acr-helm] Azure CLI a pracovní postup s klientem a grafy Helm 3. Některé příkazy, jako třeba, `az acr helm list` nejsou kompatibilní s Helm 3 grafy.
+* Od Helm 3 jsou podporovány příkazy [AZ ACR Helm][az-acr-helm] hlavně pro zajištění kompatibility s klientem Helm 2 a formátem grafu. Budoucí vývoj těchto příkazů není aktuálně plánován.
 
 ## <a name="use-the-helm-3-client"></a>Použití klienta Helm 3
 
 ### <a name="prerequisites"></a>Požadavky
 
-- **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [portálu Azure nebo](container-registry-get-started-portal.md) [azure cli](container-registry-get-started-azure-cli.md).
-- **Helm klient verze 3.1.0** `helm version` nebo novější - Spustit najít aktuální verzi. Další informace o instalaci a upgradu helmu naleznete v [tématu Instalace helmu][helm-install].
-- **Kubernetes cluster,** kde budete instalovat Helm graf. V případě potřeby vytvořte [cluster služby Azure Kubernetes][aks-quickstart]. 
-- **Azure CLI verze 2.0.71** `az --version` nebo novější – Spuštěním najdete verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+- **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [Azure Portal](container-registry-get-started-portal.md) nebo [Azure CLI](container-registry-get-started-azure-cli.md).
+- **Helm Client verze 3.1.0 nebo novější** – spusťte `helm version` , abyste našli aktuální verzi. Další informace o tom, jak nainstalovat a upgradovat Helm, najdete v tématu [instalace Helm][helm-install].
+- **Cluster Kubernetes, do** kterého budete instalovat graf Helm. V případě potřeby vytvořte [cluster služby Azure Kubernetes][aks-quickstart]. 
+- Verze **Azure CLI 2.0.71 nebo novější** – spuštění `az --version` , aby se našela verze. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Pracovní postup na vysoké úrovni
 
-S **helmem 3:**
+S **Helm 3** jste:
 
-* Můžete vytvořit jeden nebo více úložišť Helm v registru kontejnerů Azure
-* Uložte grafy Helm 3 do registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts). V současné době je helm 3 podpora pro OCI *experimentální*.
-* Ověřte pomocí `helm registry login` registru pomocí příkazu.
-* Použití `helm chart` příkazů v příkazovém příkazu helmu k nabízení, vytahování a správě grafů helmu v registru
-* Slouží `helm install` k instalaci grafů do clusteru Kubernetes z mezipaměti místního úložiště.
+* Může vytvořit jedno nebo víc úložišť Helm ve službě Azure Container Registry.
+* Uložte Helm 3 grafy do registru jako [artefakty OCI](container-registry-image-formats.md#oci-artifacts). V současné době je podpora Helm 3 pro OCI *experimentální*.
+* Pomocí `helm registry login` příkazu proveďte ověření pomocí vašeho registru.
+* Použití `helm chart` příkazů v rozhraní příkazového řádku Helm k vložení, vyžádání a správě Helm grafů v registru
+* Použijte `helm install` k instalaci grafů do clusteru Kubernetes z místní mezipaměti úložiště.
 
-Příklady naleznete v následujících částech.
+Příklady najdete v následujících oddílech.
 
-### <a name="enable-oci-support"></a>Povolení podpory OCI
+### <a name="enable-oci-support"></a>Povolit podporu OCI
 
-Nastavte následující proměnnou prostředí, abyste povolili podporu OCI v klientovi Helm 3. V současné době je tato podpora experimentální. 
+Nastavte následující proměnnou prostředí pro povolení podpory rozhraní OCI v klientovi Helm 3. V současné době je tato podpora experimentální. 
 
 ```console
 export HELM_EXPERIMENTAL_OCI=1
@@ -65,7 +65,7 @@ export HELM_EXPERIMENTAL_OCI=1
 
 ### <a name="create-a-sample-chart"></a>Vytvoření ukázkového grafu
 
-Vytvořte testovací graf pomocí následujících příkazů:
+Pomocí následujících příkazů vytvořte testovací graf:
 
 ```console
 mkdir helmtest
@@ -74,14 +74,14 @@ cd helmtest
 helm create hello-world
 ```
 
-Jako základní příklad změňte `templates` adresář do složky a nejprve odstraňte obsah:
+Jako základní příklad změňte adresář na `templates` složku a nejprve odstraňte obsah:
 
 ```console
 cd hello-world/templates
 rm -rf *
 ```
 
-Ve `templates` složce vytvořte `configmap.yaml` soubor s následujícím obsahem:
+Ve `templates` složce vytvořte soubor s názvem `configmap.yaml` s následujícím obsahem:
 
 ```console
 cat <<EOF > configmap.yaml
@@ -94,13 +94,13 @@ data:
 EOF
 ```
 
-Další informace o vytváření a spouštění tohoto příkladu najdete v [tématu Začínáme](https://helm.sh/docs/chart_template_guide/getting_started/) v dokumentech helmu.
+Další informace o vytvoření a spuštění tohoto příkladu naleznete v tématu [Začínáme](https://helm.sh/docs/chart_template_guide/getting_started/) v dokumentaci Helm.
 
-### <a name="save-chart-to-local-registry-cache"></a>Uložení grafu do mezipaměti místního registru
+### <a name="save-chart-to-local-registry-cache"></a>Uložit graf do místní mezipaměti registru
 
-Změňte adresář `hello-world` do podadresáře. Potom spusťte `helm chart save` uložit kopii grafu místně a také vytvořit alias s plně kvalifikovaný název registru (všechna malá písmena) a cílové úložiště a značky. 
+Změňte adresář na `hello-world` podadresář. Pak spusťte příkaz `helm chart save` pro uložení kopie grafu místně a také vytvořte alias s plně kvalifikovaným názvem registru (všechny malé písmeno) a cílovým úložištěm a označením. 
 
-V následujícím příkladu je název registru *mycontainerregistry*, cílové ukládání je *hello-world*a cílová značka grafu je *v1*, ale nahradit hodnoty pro vaše prostředí:
+V následujícím příkladu je název registru *mycontainerregistry*, cílové úložiště je *Hello World*a jmenovka cílového grafu je *v1*, ale nahrazující hodnoty pro vaše prostředí:
 
 ```console
 cd ..
@@ -108,7 +108,7 @@ helm chart save . hello-world:v1
 helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Spuštěním `helm chart list` potvrďte, že jste grafy uložili do mezipaměti místního registru. Výstup se podobá tomuto:
+Spusťte `helm chart list` příkaz a potvrďte tak, že jste uložili grafy do místní mezipaměti registru. Výstup se podobá tomuto:
 
 ```console
 REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
@@ -116,11 +116,11 @@ hello-world:v1                                           hello-world       0.1.0
 mycontainerregistry.azurecr.io/helm/hello-world:v1       hello-world       0.1.0   5899db0 3.2 KiB        2 minutes
 ```
 
-### <a name="authenticate-with-the-registry"></a>Ověření pomocí registru
+### <a name="authenticate-with-the-registry"></a>Ověřování pomocí registru
 
-Spusťte `helm registry login` příkaz v helmu 3 CLI k [ověření pomocí registru](container-registry-authentication.md) pomocí pověření vhodných pro váš scénář.
+Spusťte `helm registry login` příkaz v rozhraní příkazového řádku Helm 3 pro ověření pomocí přihlašovacích údajů, které [jsou](container-registry-authentication.md) vhodné pro váš scénář.
 
-Můžete například vytvořit objekt zabezpečení služby Azure Active Directory [s oprávněními pro vyžádat a vyžádat](container-registry-auth-service-principal.md#create-a-service-principal) (role AcrPush) do registru. Potom zadejte pověření zaregistrovaný objekt služby . `helm registry login` Následující příklad zadá heslo pomocí proměnné prostředí:
+Můžete například vytvořit [instanční objekt Azure Active Directory s oprávněním Pull a push](container-registry-auth-service-principal.md#create-a-service-principal) (role AcrPush) do registru. Pak zadejte přihlašovací údaje instančního objektu `helm registry login`do služby. Následující příklad dodá heslo pomocí proměnné prostředí:
 
 ```console
 echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
@@ -128,15 +128,15 @@ echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
   --password-stdin
 ```
 
-### <a name="push-chart-to-azure-container-registry"></a>Nabízený graf do registru kontejnerů Azure
+### <a name="push-chart-to-azure-container-registry"></a>Vložení grafu do Azure Container Registry
 
-Spusťte `helm chart push` příkaz v příkazu příkazu příkazu Helm 3 pro posun grafu do plně kvalifikovaného cílového úložiště:
+Spusťte `helm chart push` příkaz v rozhraní příkazového řádku Helm 3 a nahrajte graf do plně kvalifikovaného cílového úložiště:
 
 ```console
 helm chart push mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Po úspěšném push, výstup je podobný:
+Po úspěšném vložení se výstup podobá:
 
 ```output
 The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
@@ -149,9 +149,9 @@ version: 0.1.0
 
 ### <a name="list-charts-in-the-repository"></a>Seznam grafů v úložišti
 
-Stejně jako u bitových kopií uložených v registru kontejnerů Azure můžete pomocí příkazů [úložiště az acr][az-acr-repository] zobrazit úložiště hostující vaše grafy a značky grafů a manifesty. 
+Stejně jako u imagí uložených v Azure Container Registry můžete pomocí příkazu [AZ ACR úložiště][az-acr-repository] zobrazit úložiště hostující vaše grafy a značky a manifesty grafů. 
 
-Chcete-li například zobrazit vlastnosti úložiště, které jste vytvořili v předchozím kroku, spusťte [az acr repo:][az-acr-repository-show]
+Například spuštěním [AZ ACR úložiště show][az-acr-repository-show] zobrazíte vlastnosti úložiště, které jste vytvořili v předchozím kroku:
 
 ```azurecli
 az acr repository show \
@@ -178,7 +178,7 @@ Výstup se podobá tomuto:
 }
 ```
 
-Spusťte příkaz [az acr repository show-manifests,][az-acr-repository-show-manifests] abyste viděli podrobnosti o grafu uloženém v úložišti. Příklad:
+Spuštěním příkazu [AZ ACR úložiště show-Manifests][az-acr-repository-show-manifests] zobrazíte podrobnosti o grafu, který je uložený v úložišti. Příklad:
 
 ```azurecli
 az acr repository show-manifests \
@@ -186,7 +186,7 @@ az acr repository show-manifests \
   --repository helm/hello-world --detail
 ```
 
-Výstup, zkráceně v tomto příkladu, `configMediaType` `application/vnd.cncf.helm.config.v1+json`ukazuje a z :
+Výstup, zkrácený v tomto příkladu, ukazuje na `configMediaType` `application/vnd.cncf.helm.config.v1+json`:
 
 ```output
 [
@@ -203,37 +203,37 @@ Výstup, zkráceně v tomto příkladu, `configMediaType` `application/vnd.cncf.
     ]
 ```
 
-### <a name="pull-chart-to-local-cache"></a>Vyžádat graf do místní mezipaměti
+### <a name="pull-chart-to-local-cache"></a>Načíst graf do místní mezipaměti
 
-Chcete-li nainstalovat graf Helm do Kubernetes, musí být graf v místní mezipaměti. V tomto příkladu `helm chart remove` nejprve spusťte `mycontainerregistry.azurecr.io/helm/hello-world:v1`odebrání existujícího místního grafu s názvem :
+Pro instalaci grafu Helm do Kubernetes musí být graf v místní mezipaměti. V tomto příkladu se nejdřív spustí `helm chart remove` odebrání existujícího místního grafu s názvem `mycontainerregistry.azurecr.io/helm/hello-world:v1`:
 
 ```console
 helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-Spuštěním `helm chart pull` stáhnete graf z registru kontejnerů Azure do místní mezipaměti:
+Spusťte `helm chart pull` pro stažení grafu ze služby Azure Container Registry do místní mezipaměti:
 
 ```console
 helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:v1
 ```
 
-### <a name="export-helm-chart"></a>Graf kormene exportu
+### <a name="export-helm-chart"></a>Exportovat graf Helm
 
-Chcete-li s grafem dále pracovat, `helm chart export`exportujte jej do místního adresáře pomocí aplikace . Exportujte například vytažený graf `install` do adresáře:
+Pokud chcete s grafem pracovat dál, exportujte ho do místního adresáře pomocí `helm chart export`. Exportujte například graf, který jste vyžádali do `install` tohoto adresáře:
 
 ```console
 helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
   --destination ./install
 ```
 
-Chcete-li zobrazit informace pro exportovaný graf `helm show chart` v repo, spusťte příkaz v adresáři, ve kterém jste graf exportovali.
+Chcete-li zobrazit informace pro exportovaný graf v úložišti, spusťte `helm show chart` příkaz v adresáři, do kterého jste graf exportovali.
 
 ```console
 cd install
 helm show chart hello-world
 ```
 
-Helm vrátí podrobné informace o nejnovější verzi grafu, jak je znázorněno na následujícím ukázkovém výstupu:
+Helm vrátí podrobné informace o nejnovější verzi grafu, jak je znázorněno v následujícím ukázkovém výstupu:
 
 ```output
 apiVersion: v2
@@ -244,15 +244,15 @@ type: application
 version: 0.1.0    
 ```
 
-### <a name="install-helm-chart"></a>Instalace grafu helmu
+### <a name="install-helm-chart"></a>Nainstalovat graf Helm
 
-Spusťte `helm install` instalaci grafu Helm, který jste vytáhli do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předajte `--generate-name` parametr. Příklad:
+Spusťte `helm install` pro instalaci grafu Helm, který jste si vyžádali do místní mezipaměti a exportovali. Zadejte název verze, například *myhelmtest*, nebo předejte `--generate-name` parametr. Příklad:
 
 ```console
 helm install myhelmtest ./hello-world
 ```
 
-Výstup po úspěšné instalaci grafu je podobný:
+Výstup po úspěšné instalaci grafu je podobný následujícímu:
 
 ```console
 NAME: myhelmtest
@@ -263,9 +263,9 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Chcete-li ověřit instalaci, spusťte `helm get manifest` příkaz. Příkaz vrátí data YAML `configmap.yaml` v souboru šablony.
+Chcete-li ověřit instalaci, spusťte `helm get manifest` příkaz. Příkaz vrátí data YAML v souboru `configmap.yaml` šablony.
 
-Spuštěním `helm uninstall` odinstalace verze grafu v clusteru:
+Spusťte `helm uninstall` pro odinstalaci vydaných verzí grafu ve vašem clusteru:
 
 ```console
 helm uninstall myhelmtest
@@ -273,7 +273,7 @@ helm uninstall myhelmtest
 
 ### <a name="delete-a-helm-chart-from-the-repository"></a>Odstranění grafu Helm z úložiště
 
-Chcete-li odstranit graf z úložiště, použijte příkaz [delete úložiště az acr.][az-acr-repository-delete] Spusťte následující příkaz a po zobrazení výzvy potvrďte operaci:
+Pokud chcete graf odstranit z úložiště, použijte příkaz [AZ ACR úložiště Delete][az-acr-repository-delete] . Spusťte následující příkaz a po zobrazení výzvy potvrďte operaci:
 
 ```azurecli
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
@@ -283,25 +283,25 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 ### <a name="prerequisites"></a>Požadavky
 
-- **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [portálu Azure nebo](container-registry-get-started-portal.md) [azure cli](container-registry-get-started-azure-cli.md).
-- **Helm klient verze 2.11.0 (není RC verze) nebo novější** - Spustit `helm version` najít aktuální verzi. Potřebujete také server Helm (Tiller) inicializovaný v rámci clusteru Kubernetes. V případě potřeby vytvořte [cluster služby Azure Kubernetes][aks-quickstart]. Další informace o instalaci a upgradu helmu naleznete v [tématu Instalace helmu][helm-install-v2].
-- **Azure CLI verze 2.0.46** `az --version` nebo novější – Spuštěním najdete verzi. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+- **Registr kontejnerů Azure** ve vašem předplatném Azure. V případě potřeby vytvořte registr pomocí [Azure Portal](container-registry-get-started-portal.md) nebo [Azure CLI](container-registry-get-started-azure-cli.md).
+- **Helm Client verze 2.11.0 (ne verze RC) nebo novější** – spusťte `helm version` , abyste našli aktuální verzi. Také budete potřebovat server Helm (do pokladny) inicializovaný v rámci clusteru Kubernetes. V případě potřeby vytvořte [cluster služby Azure Kubernetes][aks-quickstart]. Další informace o tom, jak nainstalovat a upgradovat Helm, najdete v tématu [instalace Helm][helm-install-v2].
+- Verze **Azure CLI 2.0.46 nebo novější** – spuštění `az --version` , aby se našela verze. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ### <a name="high-level-workflow"></a>Pracovní postup na vysoké úrovni
 
-S **Helm2** můžete:
+S **Helm 2** jste:
 
-* Nakonfigurujte registr kontejnerů Azure jako *jedno* úložiště grafů Helm. Azure Container Registry spravuje definici indexu při přidávání a odebírání grafů do úložiště.
-* Ověřte pomocí registru kontejnerů Azure pomocí příkazového příkazu k příkazu Azure, který pak automaticky aktualizuje klienta Helm pomocí identifikátoru URI registru a přihlašovacích údajů. Není nutné ručně zadat tyto informace registru, takže pověření nejsou vystaveny v historii příkazů.
-* Pomocí příkazů [az acr helm][az-acr-helm] v Azure CLI přidejte registr kontejnerů Azure jako úložiště grafů Helm a nabízení a spravovat grafy. Tyto příkazy Azure CLI zabalit Helm 2 klientské příkazy.
-* Přidejte úložiště grafů v registru kontejnerů Azure do místního indexu úložiště helmy, který podporuje vyhledávání v grafu.
-* Slouží `helm install` k instalaci grafů do clusteru Kubernetes z mezipaměti místního úložiště.
+* Nakonfigurujte službu Azure Container Registry jako *jedno* úložiště Helm grafů. Azure Container Registry spravuje definici indexu při přidávání a odebírání grafů do úložiště.
+* Proveďte ověření pomocí Azure Container Registry prostřednictvím rozhraní příkazového řádku Azure, které pak automaticky aktualizuje klienta Helm s identifikátorem URI a přihlašovacími údaji registru. Tyto informace registru nemusíte zadávat ručně, takže přihlašovací údaje nejsou k dispozici v historii příkazů.
+* Pomocí příkazů [AZ ACR Helm][az-acr-helm] v Azure CLI přidejte svůj registr kontejneru Azure jako úložiště grafů Helm a nahrajte a spravujte grafy. Tyto příkazy rozhraní příkazového řádku Azure zabalí Helm 2 klientské příkazy.
+* Přidejte úložiště grafu do služby Azure Container Registry do svého místního indexu úložiště Helm a podporu vyhledávání grafů.
+* Použijte `helm install` k instalaci grafů do clusteru Kubernetes z místní mezipaměti úložiště.
 
-Příklady naleznete v následujících částech.
+Příklady najdete v následujících oddílech.
 
-### <a name="add-repository-to-helm-client"></a>Přidání úložiště do klienta Helm
+### <a name="add-repository-to-helm-client"></a>Přidat úložiště do klienta Helm
 
-Přidejte úložiště grafu Helm registru registru Azure do klienta Helm pomocí příkazu [az acr helm repo add.][az-acr-helm-repo-add] Tento příkaz získá ověřovací token pro váš registr kontejneru Azure, který používá klient Helm. Ověřovací token je platný po dobu 3 hodin. Podobně `docker login`jako v aplikaci můžete tento příkaz spustit v budoucích relacích příkazového příkazu k ověření klienta Helm pomocí úložiště grafu Helm registru registru Azure:
+Pomocí příkazu [AZ ACR Helm úložiště][az-acr-helm-repo-add] Add přidejte do svého klienta Helm své Azure Container Registry úložiště grafu Helm. Tento příkaz načte ověřovací token pro službu Azure Container Registry, kterou používá klient Helm. Ověřovací token je platný 3 hodiny. Podobně jako `docker login`u tohoto příkazu můžete spustit tento příkaz v budoucích relacích rozhraní příkazového řádku a ověřit klienta Helm pomocí úložiště grafu Azure Container Registry Helm:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
@@ -309,7 +309,7 @@ az acr helm repo add --name mycontainerregistry
 
 ### <a name="add-a-sample-chart-to-the-repository"></a>Přidání ukázkového grafu do úložiště
 
-Za prvé, vytvořit místní adresář na *~ / acr-helm*, pak stáhnout stávající *stabilní / wordpress* graf:
+Nejprve vytvořte místní adresář na adrese *~/ACR-Helm*a pak stáhněte stávající graf *stabilní/WordPress* :
 
 ```console
 mkdir ~/acr-helm && cd ~/acr-helm
@@ -317,19 +317,19 @@ helm repo update
 helm fetch stable/wordpress
 ```
 
-Zadejte `ls` seznam staženého grafu a všimněte si verze Wordpress obsažené v názvu souboru. Příkaz `helm fetch stable/wordpress` nespecifikoval konkrétní verzi, takže byla načtena *nejnovější* verze. V následujícím příkladu výstupu, Wordpress graf je verze *8.1.0*:
+Zadejte `ls` pro výpis staženého grafu a poznamenejte si verzi WordPress obsaženou v názvu souboru. `helm fetch stable/wordpress` Příkaz nezadal konkrétní verzi, takže se načetla *nejnovější* verze. V následujícím příkladu výstupu je graf WordPress verze *8.1.0*:
 
 ```output
 wordpress-8.1.0.tgz
 ```
 
-Posuňte graf do úložiště grafu Helm v azure kontejneru registru pomocí příkazu [az acr helm push][az-acr-helm-push] v Azure CLI. Zadejte název grafu Helm staženého v předchozím kroku, například *wordpress-8.1.0.tgz*:
+Nahrajte graf do úložiště grafu Helm v Azure Container Registry pomocí příkazu [AZ ACR Helm push][az-acr-helm-push] v rozhraní příkazového řádku Azure CLI. Zadejte název vašeho grafu Helm, který jste stáhli v předchozím kroku, například *WordPress-8.1.0. tgz*:
 
 ```azurecli
 az acr helm push --name mycontainerregistry wordpress-8.1.0.tgz
 ```
 
-Po několika okamžicích azure CLI hlásí, že váš graf je uložen, jak je znázorněno na následujícím příkladu výstupu:
+Po chvíli Azure CLI hlásí, že je váš graf uložený, jak je znázorněno v následujícím příkladu výstupu:
 
 ```output
 {
@@ -339,40 +339,40 @@ Po několika okamžicích azure CLI hlásí, že váš graf je uložen, jak je z
 
 ### <a name="list-charts-in-the-repository"></a>Seznam grafů v úložišti
 
-Chcete-li použít graf nahraný v předchozím kroku, musí být aktualizován místní index úložiště helmy. Můžete přeindexovat úložiště v klientovi Helm nebo použít Azure CLI k aktualizaci indexu úložiště. Při každém přidání grafu do úložiště je nutné tento krok dokončit:
+Chcete-li použít graf nahraný v předchozím kroku, je nutné aktualizovat index místního úložiště Helm. Úložiště můžete znovu indexovat v klientovi Helm nebo pomocí Azure CLI aktualizovat index úložiště. Pokaždé, když přidáte graf do úložiště, tento krok je potřeba provést:
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
 ```
 
-S grafem uloženým v úložišti a aktualizovaným indexem, který je k dispozici místně, můžete k vyhledávání nebo instalaci použít běžné klientské příkazy Helm. Chcete-li zobrazit všechny grafy v `helm search` úložišti, použijte příkaz a zadejte vlastní název registru kontejnerů Azure:
+Pomocí grafu uloženého v úložišti a aktualizovaného indexu, který je k dispozici místně, můžete k hledání nebo instalaci použít regulární příkazy klienta Helm. Pokud chcete zobrazit všechny grafy v úložišti, použijte `helm search` příkaz, který poskytuje vlastní Azure Container Registry název:
 
 ```console
 helm search mycontainerregistry
 ```
 
-Tabulka Wordpress posunutá v předchozím kroku je uvedena, jak je znázorněno v následujícím příkladu výstupu:
+V seznamu je uveden graf WordPress nabízený v předchozím kroku, jak je znázorněno v následujícím příkladu výstupu:
 
 ```output
 NAME                  CHART VERSION    APP VERSION    DESCRIPTION
 helmdocs/wordpress    8.1.0           5.3.2          Web publishing platform for building blogs and websites.
 ```
 
-Grafy můžete také uvést pomocí příkazového příkazu k příkazu Kont [akreditivu Azure pomocí seznamu kormidelník az acr][az-acr-helm-list]:
+Grafy můžete také zobrazit pomocí Azure CLI pomocí příkaz [AZ ACR Helm list][az-acr-helm-list]:
 
 ```azurecli
 az acr helm list --name mycontainerregistry
 ```
 
-### <a name="show-information-for-a-helm-chart"></a>Zobrazení informací pro graf helmu
+### <a name="show-information-for-a-helm-chart"></a>Zobrazit informace o Helm grafu
 
-Chcete-li zobrazit informace pro konkrétní graf v `helm inspect` repo, můžete použít příkaz.
+Chcete-li zobrazit informace o konkrétním grafu v úložišti, můžete použít `helm inspect` příkaz.
 
 ```console
 helm inspect mycontainerregistry/wordpress
 ```
 
-Pokud není k dispozici žádné číslo verze, použije se *nejnovější* verze. Helm vrátí podrobné informace o grafu, jak je znázorněno na následujícím výstupu zkráceného příkladu:
+Pokud není k dispozici žádné číslo verze, použije se *nejnovější* verze. Helm vrátí podrobné informace o grafu, jak je znázorněno v následujícím zhuštěném příkladu výstupu:
 
 ```output
 apiVersion: v1
@@ -399,7 +399,7 @@ version: 8.1.0
 [...]
 ```
 
-Můžete také zobrazit informace pro graf pomocí příkazu Azure CLI [az az helm show.][az-acr-helm-show] Ve výchozím nastavení je vrácena *nejnovější* verze grafu. Můžete připojit `--version` k seznamu konkrétní verzi grafu, například *8.1.0*:
+Můžete také zobrazit informace o grafu pomocí příkazu Azure CLI [AZ ACR Helm show][az-acr-helm-show] . Ve výchozím nastavení se vrátí *nejnovější* verze grafu. Můžete připojit `--version` k seznamu konkrétní verze grafu, jako je například *8.1.0*:
 
 ```azurecli
 az acr helm show --name mycontainerregistry wordpress
@@ -407,22 +407,22 @@ az acr helm show --name mycontainerregistry wordpress
 
 ### <a name="install-a-helm-chart-from-the-repository"></a>Instalace grafu Helm z úložiště
 
-Graf Helm ve vašem úložišti se nainstaluje zadáním názvu úložiště a názvu grafu. K instalaci grafu Wordpress použijte klienta Helm:
+Graf Helm v úložišti se nainstaluje zadáním názvu úložiště a názvu grafu. K instalaci grafu WordPress použijte klienta Helm:
 
 ```console
 helm install mycontainerregistry/wordpress
 ```
 
 > [!TIP]
-> Pokud předáte do úložiště grafu Správce registru registru Azure a později se vrátíte v nové relaci příkazového příkazu, váš místní klient Helmu potřebuje aktualizovaný ověřovací token. Chcete-li získat nový ověřovací token, použijte příkaz [add add helmu az acr.][az-acr-helm-repo-add]
+> Pokud přejdete do úložiště grafu Azure Container Registry Helm a později se vrátíte do nové relace CLI, váš místní klient Helm potřebuje aktualizovaný ověřovací token. Pokud chcete získat nový ověřovací token, použijte příkaz [AZ ACR Helm úložiště Add][az-acr-helm-repo-add] .
 
-Během procesu instalace jsou dokončeny následující kroky:
+Během procesu instalace se dokončí tyto kroky:
 
-- Klient Helm prohledává index místního úložiště.
-- Odpovídající graf se stáhne z úložiště registru kontejnerů Azure.
-- Graf se nasazuje pomocí tilleru v clusteru Kubernetes.
+- Klient Helm vyhledá v místním indexu úložiště.
+- Odpovídající graf se stáhne z Azure Container Registryho úložiště.
+- Graf se nasadí pomocí do pokladny v clusteru Kubernetes.
 
-Při instalaci postupujte podle pokynů ve výstupu příkazu a podívejte se na adresy URL a přihlašovací údaje worpressu. Příkaz můžete spustit `kubectl get pods` také a zobrazit prostředky Kubernetes nasazené prostřednictvím grafu Helm:
+Jak instalace pokračuje, postupujte podle pokynů ve výstupu příkazu a zobrazte si adresy URL a přihlašovací údaje WorPress. K zobrazení prostředků Kubernetes nasazených pomocí grafu Helm můžete také spustit `kubectl get pods` příkaz:
 
 ```output
 NAME                                    READY   STATUS    RESTARTS   AGE
@@ -433,15 +433,15 @@ wordpress-1598530621-mariadb-0          1/1     Running   0          2m48s
 
 ### <a name="delete-a-helm-chart-from-the-repository"></a>Odstranění grafu Helm z úložiště
 
-Chcete-li odstranit graf z úložiště, použijte příkaz [az acr helm delete.][az-acr-helm-delete] Zadejte název grafu, například *wordpress*a verzi, kterou chcete odstranit, například *8.1.0*.
+Pokud chcete graf odstranit z úložiště, použijte příkaz [AZ ACR Helm Delete][az-acr-helm-delete] . Zadejte název grafu, například *WordPress*, a verzi, kterou chcete odstranit, například *8.1.0*.
 
 ```azurecli
 az acr helm delete --name mycontainerregistry wordpress --version 8.1.0
 ```
 
-Pokud chcete odstranit všechny verze pojmenovaného grafu, `--version` vynechejte parametr.
+Pokud chcete odstranit všechny verze pojmenovaného grafu, ponechte `--version` parametr.
 
-Graf bude nadále vrácen `helm search`při spuštění . Opět klient Helm automaticky neaktualizuje seznam dostupných grafů v úložišti. Chcete-li aktualizovat index repo klienta Helm, použijte příkaz [add-po repo helmu az acr][az-acr-helm-repo-add] znovu:
+Po spuštění `helm search`bude graf nadále vrácen. Klient Helm nebude automaticky aktualizovat seznam dostupných grafů v úložišti. K aktualizaci indexu úložiště klienta Helm použijte příkaz [AZ ACR Helm úložiště Add][az-acr-helm-repo-add] :
 
 ```azurecli
 az acr helm repo add --name mycontainerregistry
@@ -449,9 +449,9 @@ az acr helm repo add --name mycontainerregistry
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o vytváření a nasazování kormidelních grafů naleznete v [tématu Vývoj grafů helmu][develop-helm-charts].
-* Další informace o instalaci aplikací pomocí helmu ve [službě Azure Kubernetes Service (AKS)](../aks/kubernetes-helm.md).
-* Grafy souřízení lze použít jako součást procesu sestavení kontejneru. Další informace najdete [v tématu Použití úloh registru kontejnerů Azure][acr-tasks].
+* Další informace o tom, jak vytvořit a nasadit grafy Helm, najdete v tématu [vývoj Helm grafů][develop-helm-charts].
+* Přečtěte si další informace o instalaci aplikací pomocí Helm ve [službě Azure Kubernetes Service (AKS)](../aks/kubernetes-helm.md).
+* Grafy Helm lze použít jako součást procesu sestavení kontejneru. Další informace najdete v tématu [použití Azure Container Registry úloh][acr-tasks].
 
 <!-- LINKS - external -->
 [helm]: https://helm.sh/

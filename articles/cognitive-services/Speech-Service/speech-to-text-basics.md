@@ -1,7 +1,7 @@
 ---
-title: Základy rozpoznávání řeči - Služba řeči
+title: Základy rozpoznávání řeči – služba řeči
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí sady Speech SDK převést převod řeči na text. V tomto článku se dozvíte o konstrukci objektů, podporovaných formátech zvukových vstupů a možnostech konfigurace pro rozpoznávání řeči.
+description: Naučte se používat sadu Speech SDK k převodu řeči na text. V tomto článku se naučíte vytváření objektů, podporované formáty zvukového vstupu a možnosti konfigurace pro rozpoznávání řeči.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: bdf8db4a7c946a50698d35aada5950ded671afb7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399759"
 ---
-# <a name="learn-the-basics-of-speech-recognition"></a>Naučte se základy rozpoznávání řeči
+# <a name="learn-the-basics-of-speech-recognition"></a>Seznamte se se základy rozpoznávání řeči
 
-Jedním ze základních funkcí služby Speech je schopnost rozpoznat a přepsat lidskou řeč (často označovanou jako řeč na text). V tomto článku se dozvíte, jak používat sadu Speech SDK ve svých aplikacích a produktech k provádění vysoce kvalitního rozpoznávání řeči.
+Jednou z klíčových funkcí služby Speech je schopnost rozpoznávat a přepisovat lidské řeči (často se označuje jako řeč pro text). V tomto článku se dozvíte, jak používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního rozpoznávání řeči.
 
 > [!TIP]
-> Pokud jste ještě neměli šanci dokončit jeden z našich rychlých startů, doporučujeme vám, abyste nakopli pneumatiky a vyzkoušeli rozpoznávání řeči sami.
+> Pokud jste si ještě neučinili možnost Dokončit některý z našich rychlých startů, doporučujeme, abyste si zavedli pneumatiky a vyzkoušeli rozpoznávání řeči sami.
 > * [Rozpoznávání řeči z mikrofonu](quickstarts/speech-to-text-from-microphone.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -52,4 +52,4 @@ Jedním ze základních funkcí služby Speech je schopnost rozpoznat a přepsat
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití formátů komprimovaného zvuku kodeku](how-to-use-codec-compressed-audio-input-streams.md)
+* [Použití komprimovaných formátů zvukových kodeků](how-to-use-codec-compressed-audio-input-streams.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace blinku pro automatické zřizování uživatelů pomocí služby Azure Active Directory | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat službu Azure Active Directory tak, aby automaticky zřašovala a zřašovala uživatelské účty na Blink.
+title: 'Kurz: Konfigurace blikání pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů ke blikání.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,130 +16,130 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: 314445275f99898913bd91eb8abc2a5acdab098a
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381019"
 ---
-# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blinku pro automatické zřizování uživatelů
+# <a name="tutorial-configure-blink-for-automatic-user-provisioning"></a>Kurz: Konfigurace blikání pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je demonstrovat kroky, které mají být provedeny v Blink a Azure Active Directory (Azure AD) nakonfigurovat Azure AD automaticky zřídit a de-zřizování uživatelů Blink.
+Cílem tohoto kurzu je předvést kroky, které je třeba provést při blikání a Azure Active Directory (Azure AD) ke konfiguraci služby Azure AD tak, aby automaticky zřídily a zrušily zřízení uživatelů ke blikání.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavený na nad službou zřizování uživatelů Azure AD. Důležité podrobnosti o tom, co tato služba dělá, jak funguje, a nejčastější dotazy, najdete [v tématu Automatizace zřizování uživatelů a zrušení zřizování aplikací SaaS pomocí služby Azure Active Directory](../app-provisioning/user-provisioning.md).
+> Tento kurz popisuje konektor založený na službě zřizování uživatelů Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md).
 >
-> Tento konektor je aktuálně ve verzi Public Preview. Další informace o obecných podmínkách použití Microsoft Azure pro funkce preview najdete v [tématu Doplňkové podmínky použití pro Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tento konektor je aktuálně ve Public Preview. Další informace o obecných Microsoft Azure podmínek použití pro funkce ve verzi Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)náhledy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že již máte následující požadavky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Klient Azure AD
-* [Klient Blink](https://joinblink.com/pricing)
-* Uživatelský účet v Blikaci s oprávněními správce.
+* Tenant Azure AD
+* [Klient blikání](https://joinblink.com/pricing)
+* Uživatelský účet ve blikání s oprávněními správce.
 
-## <a name="assigning-users-to-blink"></a>Přiřazení uživatelů k blinku
+## <a name="assigning-users-to-blink"></a>Přiřazování uživatelů ke blikání
 
-Azure Active Directory používá koncept s názvem *přiřazení* k určení, kteří uživatelé by měli získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů jsou synchronizováni pouze uživatelé nebo členové skupiny, kteří byli přiřazeni k aplikaci ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný *přiřazení* k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelů se synchronizují jenom členové skupiny Uživatelé nebo skupiny, kteří jsou přiřazeni k aplikaci v Azure AD.
 
-Před konfigurací a povolením automatického zřizování uživatelů byste se měli rozhodnout, kteří uživatelé nebo členové skupiny ve službě Azure AD potřebují přístup k Blink. Jakmile se rozhodnete, můžete přiřadit tyto uživatele a / nebo skupiny Blink podle pokynů zde:
+Před konfigurací a povolením automatického zřizování uživatelů byste měli rozhodnout, kteří uživatelé nebo členové skupiny ve službě Azure AD potřebují přístup ke blikání. Po rozhodnutí můžete přiřadit tyto uživatele a skupiny do blikání podle pokynů uvedených tady:
 * [Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-blink"></a>Důležité tipy pro přiřazení uživatelů k Blink
+## <a name="important-tips-for-assigning-users-to-blink"></a>Důležité tipy pro přiřazení uživatelů ke blikání
 
-* Doporučuje se, aby jeden uživatel Azure AD je přiřazen blink k testování konfigurace automatického zřizování uživatelů. Další uživatelé a/nebo skupiny mohou být přiřazeny později.
+* Doporučuje se, aby se k tomu, aby bylo možné otestovat automatickou konfiguraci zřizování uživatelů, přiřadil jeden uživatel Azure AD ke blikání. Další uživatele a skupiny můžete přiřadit později.
 
-* Při přiřazování uživatele k funkci Blink musíte v dialogovém okně přiřazení vybrat libovolnou platnou roli specifickou pro aplikaci (pokud je k dispozici). Uživatelé s rolí **Výchozí přístup** jsou z zřizování vyloučeni.
+* Při přiřazování uživatele ke blikání musíte v dialogovém okně přiřazení vybrat jakoukoli platnou roli specifickou pro aplikaci (je-li k dispozici). Uživatelé s **výchozí rolí přístupu** se z zřizování vylučují.
 
-## <a name="setup-blink-for-provisioning"></a>Nastavení Blink pro zřizování
+## <a name="setup-blink-for-provisioning"></a>Nastavení blikání pro zřizování
 
-1. Protokolovat [případ podpory](https://support.joinblink.com) nebo e-mailem Blink **podporu** na support@joinblink.com žádost token SCIM. .
+1. Zaprotokolujte [případ podpory](https://support.joinblink.com) nebo **podporu blikání** e support@joinblink.com -mailu na adrese a vyžádejte si token SCIM. .
 
-2.  Zkopírujte **ověřovací token SCIM**. Tato hodnota se zadá do pole Tajný token na kartě Zřizování aplikace Blink na webu Azure Portal.
+2.  Zkopírujte **token ověřování SCIM**. Tato hodnota se zadá do pole token tajného kódu na kartě zřizování vaší aplikace blikání v Azure Portal.
 
-## <a name="add-blink-from-the-gallery"></a>Přidat Blink z galerie
+## <a name="add-blink-from-the-gallery"></a>Přidat blikání z Galerie
 
-Před konfigurací Blink pro automatické zřizování uživatelů pomocí Azure AD, je třeba přidat Blink z galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
+Před konfigurací blikání pro Automatické zřizování uživatelů pomocí Azure AD je nutné přidat blikání z Galerie aplikací Azure AD do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Blink z galerie aplikací Azure AD, proveďte následující kroky:**
+**Pokud chcete přidat blikání z Galerie aplikací Azure AD, proveďte následující kroky:**
 
-1. Na **[webu Azure Portal](https://portal.azure.com)** vyberte na levém navigačním panelu **položku Azure Active Directory**.
+1. V **[Azure Portal](https://portal.azure.com)** v levém navigačním panelu vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte na **podnikové aplikace**a vyberte **všechny aplikace**.
+2. Vyberte možnost **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
 3. Chcete-li přidat novou aplikaci, vyberte tlačítko **Nová aplikace** v horní části podokna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Blink**, vpanelu s výsledky vyberte **Blink** a pak klepnutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **blikající**, na panelu výsledků vyberte **blikající** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Blikat v seznamu výsledků](common/search-new-app.png)
+    ![Blikání v seznamu výsledků](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-blink"></a>Konfigurace automatického zřizování uživatelů na Blink 
+## <a name="configuring-automatic-user-provisioning-to-blink"></a>Konfigurace automatického zřizování uživatelů ke blikání 
 
-Tato část vás provede kroky konfigurace služby zřizování Azure AD k vytvoření, aktualizaci a zakázání uživatelů v Blinku na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů při blikání na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
 
 > [!TIP]
-> Můžete také povolit jednotné přihlašování na saml pro Blink podle pokynů uvedených v [kurzu Blink Single sign-on](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Jednotné přihlašování lze konfigurovat nezávisle na automatickézřivací službě uživatelů, i když tyto dvě funkce se vzájemně doplňují
+> Můžete se také rozhodnout povolit pro blikání jednotné přihlašování založené na SAML, a to podle pokynů uvedených v [kurzu jednotného přihlašování pro blikání](https://docs.microsoft.com/azure/active-directory/saas-apps/blink-tutorial). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování uživatelů, i když se tyto dvě funkce vzájemně přidávají.
 
-### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Blink ve službě Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-blink-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro blikání v Azure AD:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **Všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Blink**.
+2. V seznamu aplikace vyberte **blikat**.
 
-    ![Odkaz Blink v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na bliknutí v seznamu aplikací](common/all-applications.png)
 
-3. Vyberte kartu **Zřizování.**
+3. Vyberte kartu **zřizování** .
 
-    ![Karta Zřizování](common/provisioning.png)
+    ![Karta zřizování](common/provisioning.png)
 
-4. Nastavte **režim zřizování** na **automatické**.
+4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Karta Zřizování](common/provisioning-automatic.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **Pověření správce** `https://api.joinblink.com/scim` zadejte adresu **URL klienta**. Zadejte hodnotu **ověřovacího tokenu SCIM** načtenou dříve v **tokenu tajného klíče**. Kliknutím na **Testovat připojení** zajistíte, že se Azure AD může připojit k Blinku. Pokud se připojení nezdaří, ujistěte se, že váš účet Blink má oprávnění správce a zkuste to znovu.
+5. V části **přihlašovací údaje správce** zadejte `https://api.joinblink.com/scim` **adresu URL tenanta**. Zadejte hodnotu **SCIM tokenu ověřování** získanou dříve v **tajném tokenu**. Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit ke blikání. Pokud se připojení nepovede, zajistěte, aby měl váš účet blikání oprávnění správce, a zkuste to znovu.
 
-    ![Adresa URL klienta + token](common/provisioning-testconnection-tenanturltoken.png)
+    ![Adresa URL tenanta + token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Do pole **E-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, která by měla dostávat oznámení o chybách při zřizování, a zaškrtněte políčko – **Odeslat e-mailové oznámení, když dojde k chybě**.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování, a zaškrtněte políčko – **pošle e-mailové oznámení, když dojde k chybě**.
 
     ![E-mail s oznámením](common/provisioning-notification-email.png)
 
 7. Klikněte na **Uložit**.
 
-8. V části **Mapování** vyberte **Synchronizovat uživatele služby Azure Active Directory na blikání**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelů ke blikání**.
 
-    ![Mrknutí mapování uživatelů](media/blink-provisioning-tutorial/User_mappings.png)
+    ![Blikání – mapování uživatelů](media/blink-provisioning-tutorial/User_mappings.png)
 
-9. Zkontrolujte atributy uživatele, které jsou synchronizovány z Azure AD na Blink v části **Mapování atributů.** Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelským účtům v Blink pro operace aktualizace. Chcete-li potvrdit všechny změny, vyberte tlačítko **Uložit.**
+9. Kontrola atributů uživatele synchronizovaných z Azure AD pro blikání v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů ve blikat pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-    ![Blink uživatelské atributy](media/blink-provisioning-tutorial/user-attributes.png)
+    ![Blikání atributů uživatele](media/blink-provisioning-tutorial/user-attributes.png)
 
-10. Chcete-li konfigurovat filtry oborů, naleznete v následujících pokynech uvedených v [kurzu filtru oborů](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Chcete-li povolit službu zřizování Azure AD pro Blink, změňte **stav zřizování** **na Zapnuto** v části **Nastavení.**
+11. Pokud chcete povolit službu Azure AD Provisioning pro blikání, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
 
-    ![Stav zřizování zapnutý](common/provisioning-toggle-on.png)
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
 
-12. Definujte uživatele, které chcete zřídit Blink výběrem požadovaných hodnot v **oboru** v části **Nastavení.**
+12. Určete uživatele, které chcete zařadit do blikání, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
 
-    ![Obor zřizování](common/provisioning-scope.png)
+    ![Rozsah zřizování](common/provisioning-scope.png)
 
-15. Až budete připraveni k zřízení, klikněte na **Uložit**.
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
 
-    ![Uložení konfigurace zřizování](common/provisioning-configuration-save.png)
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
 
-Tato operace spustí počáteční synchronizaci všech uživatelů definovaných v **oboru** v části **Nastavení.** Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut tak dlouho, dokud je spuštěna služba zřizování Azure AD. Část **Podrobnosti synchronizace** můžete použít ke sledování průběhu a sledování odkazů na sestavu aktivit zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD v Blinku.
+Tato operace spustí počáteční synchronizaci všech uživatelů definovaných v **oboru** v části **Nastavení** . Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na sestavu aktivity zřizování, která popisuje všechny akce prováděné službou zřizování Azure AD při blikání.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [v tématu Vytváření sestav na automatické zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje
 
@@ -148,5 +148,5 @@ Další informace o tom, jak číst protokoly zřizování Azure AD, naleznete [
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy o aktivitě zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
 

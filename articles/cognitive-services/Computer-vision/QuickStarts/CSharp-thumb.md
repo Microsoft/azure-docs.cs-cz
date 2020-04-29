@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Vygenerování miniatury – REST, C #'
+title: 'Rychlý Start: vygenerování miniatur – REST, C #'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a C#.
 services: cognitive-services
@@ -12,22 +12,22 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: dcb3d12646f995304019e57fb2436b279fad3659
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405109"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Úvodní příručka: Vygenerujte miniaturu pomocí rozhraní API PRO ZPRACOVÁNÍ OBRAZU A C #
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-c"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a C #
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API REKOnČNATÉHO POČÍTAČE. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové vidění využívá inteligentní oříznutí k inteligentní identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Miniaturu obrázku můžete vygenerovat pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb). Zadáte výšku a šířku, které se mohou od poměru stran vstupního obrázku lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [Visual Studio 2015](https://visualstudio.microsoft.com/downloads/) nebo novější.
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 

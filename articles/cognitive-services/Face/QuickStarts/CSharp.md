@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Detekce tváří v bitové kopii pomocí rozhraní Azure REST API a C #'
+title: 'Rychlý Start: detekce plošek v imagi pomocí REST API Azure a C #'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní API Azure Face REST s C# k detekci tváří v bitové kopii.
+description: V tomto rychlém startu použijete REST API Azure Face v jazyce C# k detekci ploch v obrázku.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,31 +11,31 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 69d3f1a7f0c455275a212401110459abb1b8d8d0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403408"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Úvodní příručka: Detekce tváří v obraze pomocí rozhraní API PRO ODPOČINEK tváří a C #
+# <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a C #
 
-V tomto rychlém startu použijete rozhraní API Azure Face REST s C# k detekci lidských tváří v bitové kopii.
+V tomto rychlém startu použijete REST API Azure Face v jazyce C# k detekci lidských plošek v obrázku.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného Face. Můžete získat bezplatný klíč zkušebního předplatného od [společnosti Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili ke službě Face a získali klíč.
-- Libovolné vydání [Visual Studia 2015 nebo 2017](https://www.visualstudio.com/downloads/).
+- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
+- Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. V sadě Visual Studio vytvořte nový projekt **aplikace Console (.NET Framework)** a pojmenujte jej **FaceDetection**.
+1. V aplikaci Visual Studio vytvořte nový projekt **konzolové aplikace (.NET Framework)** a pojmenujte ho **FaceDetection**.
 1. Pokud vaše řešení obsahuje i jiné projekty, vyberte tento projekt jako jediný spouštěný projekt.
 
-## <a name="add-face-detection-code"></a>Přidání kódu detekce obličeje
+## <a name="add-face-detection-code"></a>Přidat kód pro detekci obličeje
 
-Otevřete *soubor Program.cs* nového projektu. Zde přidáte kód potřebný k načtení obrázků a detekci tváří.
+Otevřete soubor *program.cs* nového projektu. Zde přidáte kód potřebný k načtení obrázků a detekci ploch.
 
 ### <a name="include-namespaces"></a>Zahrnutí oborů názvů
 
@@ -50,9 +50,9 @@ using System.Net.Http.Headers;
 using System.Text;
 ```
 
-### <a name="add-essential-fields"></a>Přidání základních polí
+### <a name="add-essential-fields"></a>Přidat důležitá pole
 
-Přidejte třídu **Program** obsahující následující pole. Tato data určují, jak se připojit ke službě Face a kde získat vstupní data. Budete muset aktualizovat `subscriptionKey` pole s hodnotou klíče předplatného a možná budete `uriBase` muset změnit řetězec tak, aby obsahoval řetězec koncového bodu prostředku.
+Přidejte třídu **program** obsahující následující pole. Tato data určují, jak se připojit ke službě obličeje a kde získat vstupní data. Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a možná budete muset změnit `uriBase` řetězec tak, aby obsahoval řetězec koncového bodu prostředku.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -70,9 +70,9 @@ namespace DetectFace
             "https://<myresourcename>.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
-### <a name="receive-image-input"></a>Příjem vstupu obrazu
+### <a name="receive-image-input"></a>Příjem vstupu z obrázku
 
-Přidejte následující kód do **hlavní** metody třídy **Program.** Tento kód zapíše výzvu ke konzoli s výzvou uživateli k zadání adresy URL obrázku. Potom volá jinou metodu **MakeAnalysisRequest**, ke zpracování bitové kopie v tomto umístění.
+Do metody **Main** třídy **program** přidejte následující kód. Tento kód zapíše výzvu do konzoly s výzvou, aby uživatel zadal adresu URL obrázku. Pak volá jinou metodu, **MakeAnalysisRequest**a zpracovává image v tomto umístění.
 
 ```csharp
         static void Main(string[] args)
@@ -103,11 +103,11 @@ Přidejte následující kód do **hlavní** metody třídy **Program.** Tento k
         }
 ```
 
-### <a name="call-the-face-detection-rest-api"></a>Volání rozhraní REST API pro detekci obličeje
+### <a name="call-the-face-detection-rest-api"></a>Volání detekce obličeje REST API
 
-Do třídy **Program** přidejte následující metodu. Vytvoří volání REST rozhraní API pro detekci informací o obličeji ve vzdáleném obrázku `requestParameters` (řetězec určuje, které atributy obličeje načíst). Pak zapíše výstupní data do řetězce JSON.
+Do třídy **Program** přidejte následující metodu. Vytvoří volání REST do Face API k detekci informací o obličejích ve vzdálené imagi ( `requestParameters` řetězec Určuje, které atributy obličeje mají být načteny). Pak zapíše výstupní data do řetězce JSON.
 
-Pomocné metody definujete v následujících krocích.
+Pomocná metoda bude definována v následujících krocích.
 
 ```csharp
         // Gets the analysis of the specified image by using the Face REST API.
@@ -154,9 +154,9 @@ Pomocné metody definujete v následujících krocích.
         }
 ```
 
-### <a name="process-the-input-image-data"></a>Zpracování vstupních obrazových dat
+### <a name="process-the-input-image-data"></a>Zpracování dat vstupní bitové kopie
 
-Do třídy **Program** přidejte následující metodu. Tato metoda převede obraz na zadanou adresu URL do bajtového pole.
+Do třídy **Program** přidejte následující metodu. Tato metoda převede obrázek na zadané adrese URL do pole bajtů.
 
 ```csharp
         // Returns the contents of the specified file as a byte array.
@@ -173,7 +173,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda převede obr
 
 ### <a name="parse-the-json-response"></a>Analyzovat odpověď JSON
 
-Do třídy **Program** přidejte následující metodu. Tato metoda formátuje vstup JSON, aby byl snadněji čitelný. Vaše aplikace zapíše tato řetězcová data do konzoly. Potom můžete zavřít třídu a obor názvů.
+Do třídy **Program** přidejte následující metodu. Tato metoda formátuje vstup JSON tak, aby byl snadněji čitelný. Vaše aplikace bude zapisovat tato řetězcová data do konzoly. Pak můžete zavřít třídu a obor názvů.
 
 ```csharp
         // Formats the given JSON string by adding line breaks and indents.
@@ -244,7 +244,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda formátuje v
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Úspěšná odpověď zobrazí data obličeje ve snadno čitelném formátu JSON. Příklad:
+Úspěšná odpověď zobrazí tvářená data ve formátu JSON, který bude snadno čitelný. Příklad:
 
 ```json
 [
@@ -342,7 +342,7 @@ Do třídy **Program** přidejte následující metodu. Tato metoda formátuje v
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili jednoduchou aplikaci konzoly .NET, která používá volání REST se službou Azure Face ke zjištění tváří v bitové kopii a vrácení jejich atributů. Dále prozkoumejte referenční dokumentaci rozhraní API pro rozpoznávání tváře, abyste se dozvěděli další informace o podporovaných scénářích.
+V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci .NET, která používá volání REST se službou Azure Face k detekci plošek v imagi a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace o podporovaných scénářích.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

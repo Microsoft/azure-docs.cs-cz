@@ -1,6 +1,6 @@
 ---
-title: Bezpečnostní modul a dvojčata zařízení
-description: Seznamte se s konceptem dvojčat zabezpečovacích modulů a s tím, jak se používají v Centru zabezpečení Azure pro IoT.
+title: Modul zabezpečení a vlákna zařízení
+description: Přečtěte si o konceptu nevláken modulu zabezpečení a o tom, jak se používají v Azure Security Center pro IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 07/24/2019
 ms.author: mlottner
 ms.openlocfilehash: d598d291612c6e4f58caf77e1b213b2bc3f42820
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311451"
 ---
 # <a name="security-module"></a>Modul zabezpečení
 
-Tento článek vysvětluje, jak Azure Security Center pro IoT používá dvojčata zařízení a moduly.
+Tento článek vysvětluje, jak Azure Security Center pro IoT používá vlákna a moduly zařízení.
 
-## <a name="device-twins"></a>Dvojčata zařízení
+## <a name="device-twins"></a>Vlákna zařízení
 
-U řešení IoT integrovaných v Azure hrají dvojčata zařízení klíčovou roli jak při správě zařízení, tak v automatizaci procesů.
+V případě řešení IoT, která jsou integrovaná v Azure, jsou vlákna zařízení v automatizaci správy zařízení a v automatizaci procesů klíčovou rolí.
 
-Azure Security Center pro IoT nabízí plnou integraci s vaší stávající platformou pro správu zařízení IoT, což vám umožní spravovat stav zabezpečení zařízení a využívat stávající možnosti řízení zařízení. Integrace je dosaženo využitím mechanismu dvojčete ioT hubu.
+Azure Security Center pro IoT nabízí úplnou integraci s vaší stávající platformou správy zařízení IoT, což vám umožní spravovat stav zabezpečení zařízení a využívat stávající možnosti řízení zařízení. Integrace se dosahuje pomocí IoT Hubho mechanismu vláken.
 
-Další informace o konceptu [dvojčat zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) v Azure IoT Hub.
+Přečtěte si další informace o pojmu [nevláken zařízení](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins) v Azure IoT Hub.
 
-## <a name="security-module-twins"></a>Dvojčata bezpečnostních modulů
+## <a name="security-module-twins"></a>Modul zabezpečení je nevlákenný.
 
-Azure Security Center pro IoT udržuje dvojče modulu zabezpečení pro každé zařízení ve službě.
-Dvojče modulu zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé konkrétní zařízení ve vašem řešení.
-Vlastnosti zabezpečení zařízení jsou udržovány ve vyhrazeném dvojčeti modulu zabezpečení pro bezpečnější komunikaci a pro povolení aktualizací a údržby, které vyžadují méně prostředků.
+Azure Security Center pro IoT udržuje modul zabezpečení pro každé zařízení ve službě.
+Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé konkrétní zařízení ve vašem řešení.
+Vlastnosti zabezpečení zařízení se udržují ve vyhrazeném modulu zabezpečení, který je v bezpečí pro bezpečnější komunikaci a povolování aktualizací a údržby, které vyžadují méně prostředků.
 
-Informace o tom, jak dvojče tekutá verze vytvořit, přizpůsobit a nakonfigurovat, najdete v tématech [Vytvoření dvojčete modulu](quickstart-create-security-twin.md) zabezpečení a [Konfigurace agentů zabezpečení.](how-to-agent-configuration.md) Další informace o konceptu dvojčat modulů v centru IoT Hub najdete v tématu [Principy dvojčat modulů.](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins)
+Informace o tom, jak vytvořit, přizpůsobit a nakonfigurovat vlákna, najdete v tématu [vytvoření vlákna zabezpečení](quickstart-create-security-twin.md) a [Konfigurace agentů zabezpečení](how-to-agent-configuration.md) . Další informace o pojmu nevláken modulu v IoT Hub najdete v tématu [Principy vláken modulů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
 
 ## <a name="see-also"></a>Viz také
 
-- [Azure Security Center pro IoT – přehled](overview.md)
+- [Přehled Azure Security Center pro IoT](overview.md)
 - [Nasazení agentů zabezpečení](how-to-deploy-agent.md)
 - [Metody ověřování agenta zabezpečení](concept-security-agent-authentication-methods.md)

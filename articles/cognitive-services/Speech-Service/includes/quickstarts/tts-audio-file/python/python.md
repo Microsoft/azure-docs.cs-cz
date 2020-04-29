@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 10a11168b8046dbcc877f45141571fccdca879f0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400337"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč předplatného Azure pro službu Řeč. [Získejte jeden zdarma](~/articles/cognitive-services/Speech-Service/get-started.md).
-* [Python 3.5 až 3.8](https://www.python.org/downloads/).
-* Balíček Python Speech SDK je k dispozici pro tyto operační systémy:
+* Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](~/articles/cognitive-services/Speech-Service/get-started.md).
+* [Python 3,5 až 3,8](https://www.python.org/downloads/).
+* Balíček python Speech SDK je k dispozici pro tyto operační systémy:
     * Windows: x64 a x86.
-    * Mac: macOS X verze 10.12 nebo novější.
-    * Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 na x64.
-* V Linuxu spusťte tyto příkazy a nainstalujte požadované balíčky:
+    * Mac: macOS X verze 10,12 nebo novější.
+    * Linux: Ubuntu 16.04/18.04, Debian 9, RHEL 7/8, CentOS 7/8 na platformě x64.
+* V systému Linux spuštěním těchto příkazů nainstalujte požadované balíčky:
 
 # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
@@ -35,7 +35,7 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.2 libasound2
 ```
 
-# <a name="rhel--centos-8"></a>[RHEL / CentOS 8](#tab/rhel-centos)
+# <a name="rhel--centos-8"></a>[RHEL/CentOS 8](#tab/rhel-centos)
 
 ```Bash
 sudo yum update
@@ -43,11 +43,11 @@ sudo yum install alsa-lib openssl python3
 ```
 
 > [!NOTE]
-> Na RHEL/CentOS 7/8 postupujte podle [pokynů, jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
+> V RHEL/CentOS 7/8 postupujte podle pokynů, [jak nakonfigurovat OpenSSL pro Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md).
 
 ---
 
-* V systému Windows potřebujete pro vaši platformu [redistribuovatelný microsoft visual c++ pro Visual Studio 2019.](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* V systému Windows potřebujete [Microsoft Visual C++ distribuovatelné součásti pro Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) pro vaši platformu.
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
@@ -61,23 +61,23 @@ pip install azure-cognitiveservices-speech
 
 ## <a name="support-and-updates"></a>Podpora a aktualizace
 
-Aktualizace balíčku Speech SDK Python jsou distribuovány prostřednictvím PyPI a oznámeny v [poznámkách k verzi](~/articles/cognitive-services/Speech-Service/releasenotes.md).
-Pokud je k dispozici nová verze, můžete `pip install --upgrade azure-cognitiveservices-speech`ji aktualizovat pomocí příkazu .
-Zkontrolujte, která verze je aktuálně `azure.cognitiveservices.speech.__version__` nainstalována kontrolou proměnné.
+Aktualizace balíčku Python sady Speech SDK jsou distribuovány prostřednictvím PyPI a oznámeny v [poznámkách k verzi](~/articles/cognitive-services/Speech-Service/releasenotes.md).
+Pokud je k dispozici nová verze, můžete na ni pomocí příkazu `pip install --upgrade azure-cognitiveservices-speech`aktualizovat.
+Zkontrolováním `azure.cognitiveservices.speech.__version__` proměnné zkontrolujte, kterou verzi aktuálně máte nainstalovanou.
 
-Pokud máte problém nebo vám chybí funkce, přečtěte si článek [Možnosti podpory a nápovědy](~/articles/cognitive-services/Speech-Service/support.md).
+Pokud máte problém nebo nemáte funkci, přečtěte si téma [Podpora a možnosti pomoci](~/articles/cognitive-services/Speech-Service/support.md).
 
-## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>Vytvoření aplikace Pythonu, která používá sadu Speech SDK
+## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>Vytvoření aplikace v Pythonu, která používá sadu Speech SDK
 
 ### <a name="run-the-sample"></a>Spuštění ukázky
 
-[Ukázkový kód](#sample-code) z tohoto rychlého startu `quickstart.py` můžete zkopírovat do zdrojového souboru a spustit jej v prostředí IDE nebo v konzole:
+[Vzorový kód](#sample-code) můžete zkopírovat z tohoto rychlého startu do zdrojového souboru `quickstart.py` a spustit ho v integrovaném vývojovém prostředí nebo v konzole:
 
 ```Bash
 python quickstart.py
 ```
 
-Nebo si můžete stáhnout tento úvodní kurz jako poznámkový blok [Jupyter](https://jupyter.org) z [ukázkového úložiště sady Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spustit jej jako poznámkový blok.
+Nebo si můžete tento kurz rychlý Start stáhnout jako [Jupyter](https://jupyter.org) notebook z [ukázkového úložiště sady Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/) a spustit ho jako Poznámkový blok.
 
 ### <a name="sample-code"></a>Ukázka kódu
 
@@ -113,38 +113,38 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Did you update the subscription info?")
 ````
 
-### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s kódem sady Visual Studio
+### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>Instalace a použití sady Speech SDK s Visual Studio Code
 
-1. Stáhněte a nainstalujte do počítače 64bitovou verzi [Pythonu](https://www.python.org/downloads/)3,5 až 3,8.
-1. Stáhněte a nainstalujte [kód sady Visual Studio](https://code.visualstudio.com/Download).
-1. Otevřete visual studio kód a nainstalujte rozšíření Pythonu. V nabídce vyberte**Přípony** **předvoleb** >  **souborů.** >  Vyhledejte **Python**.
+1. V počítači stáhněte a nainstalujte 64 verze [Pythonu](https://www.python.org/downloads/), 3,5 až 3,8.
+1. Stáhněte a nainstalujte [Visual Studio Code](https://code.visualstudio.com/Download).
+1. Otevřete Visual Studio Code a nainstalujte rozšíření Python. V nabídce vyberte**rozšíření** **předvoleb** >  **souborů** > . Vyhledejte **Python**.
 
-   ![Instalace rozšíření Pythonu](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
+   ![Instalace rozšíření Python](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-extension.png)
 
-1. Vytvořte složku pro uložení projektu. Příkladem je použití Průzkumníka Windows.
-1. V kódu Visual Studia vyberte ikonu **Soubor.** Pak otevřete složku, kterou jste vytvořili.
+1. Vytvořte složku, do které se má projekt uložit. Příkladem je použití Průzkumníka Windows.
+1. V Visual Studio Code vyberte ikonu **souboru** . Pak otevřete složku, kterou jste vytvořili.
 
    ![Otevření složky](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-open-folder.png)
 
-1. Vytvořte nový zdrojový `speechsdk.py`soubor Pythonu výběrem ikony nového souboru.
+1. Vytvořte nový zdrojový soubor Pythonu tak `speechsdk.py`, že vyberete ikonu Nový soubor.
 
    ![Vytvoření souboru](~/articles/cognitive-services/Speech-Service/media/sdk/qs-python-vscode-python-newfile.png)
 
 1. Zkopírujte, vložte a uložte [kód Pythonu](#sample-code) do nově vytvořeného souboru.
 1. Vložte informace o předplatném služby Speech.
-1. Pokud je tato možnost vybrána, zobrazí se na levé straně stavového řádku v dolní části okna interpret Pythonu.
-   V opačném případě zobrazíte seznam dostupných interpretů Pythonu. Otevřete paletu příkazů (<kbd>Ctrl+Shift+P</kbd>) a zadejte **Python: Vyberte interpreta**. Vyberte si vhodnou.
-1. Balíček Speech SDK Python můžete nainstalovat z kódu sady Visual Studio. Udělejte to, pokud ještě není nainstalován pro interpret Pythonu, který jste vybrali.
-   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Znovu vyzvěte paletu příkazů<kbd>(Ctrl+Shift+P)</kbd>a zadejte **Terminál: Vytvořit nový integrovaný terminál**.
-   Do terminálu, který se `python -m pip install azure-cognitiveservices-speech` otevře, zadejte příkaz nebo příslušný příkaz pro váš systém.
-1. Chcete-li spustit ukázkový kód, klepněte pravým tlačítkem myši někde uvnitř editoru. Vyberte **Spustit soubor Pythonu v terminálu**.
-   Text se převede na řeč a uloží se do zadaných zvukových dat.
+1. Pokud je tato možnost vybrána, na levé straně stavového řádku v dolní části okna se zobrazí interpret Pythonu.
+   V opačném případě uveďte seznam dostupných překladačů Pythonu. Otevřete paletu příkazů (<kbd>CTRL + SHIFT + P</kbd>) a zadejte **Python: vyberte Interpret**. Vyberte vhodný.
+1. Balíček python sady Speech SDK můžete nainstalovat v rámci Visual Studio Code. Pokud není ještě nainstalována pro překladač Pythonu, který jste vybrali.
+   Chcete-li nainstalovat balíček sady Speech SDK, otevřete terminál. Znovu vyvolejte paletu příkazů (<kbd>CTRL + SHIFT + P</kbd>) a zadejte **terminál: vytvořit nový integrovaný terminál**.
+   V terminálu, který se otevře, zadejte příkaz `python -m pip install azure-cognitiveservices-speech` nebo příslušný příkaz pro váš systém.
+1. Chcete-li spustit vzorový kód, klikněte pravým tlačítkem někam do editoru. Vyberte možnost **Spustit soubor Pythonu v terminálu**.
+   Váš text se převede na řeč a uloží se do zadaného zvukového data.
 
    ```console
    Speech synthesized to [helloworld.wav] for text [Hello world!]
    ```
 
-Pokud máte problémy podle těchto pokynů, naleznete v [podrobnějším kurzu aplikace Visual Studio Code Python](https://code.visualstudio.com/docs/python/python-tutorial).
+Pokud máte problémy podle těchto pokynů, přečtěte si podrobný [kurz Visual Studio Code Pythonu](https://code.visualstudio.com/docs/python/python-tutorial).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -153,4 +153,4 @@ Pokud máte problémy podle těchto pokynů, naleznete v [podrobnějším kurzu 
 ## <a name="see-also"></a>Viz také
 
 - [Vytvoření vlastního hlasu](~/articles/cognitive-services/Speech-Service/how-to-custom-voice-create-voice.md)
-- [Záznam vlastních hlasových ukázek](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)
+- [Zaznamenat vlastní ukázky hlasu](~/articles/cognitive-services/Speech-Service/record-custom-voice-samples.md)

@@ -1,7 +1,7 @@
 ---
-title: Vytvoření vlastní sondy pomocí prostředí PowerShell
+title: Vytvoření vlastního testu pomocí PowerShellu
 titleSuffix: Azure Application Gateway
-description: Zjistěte, jak vytvořit vlastní sondu pro aplikační bránu pomocí PowerShellu ve Správci prostředků
+description: Naučte se, jak vytvořit vlastní test pro Application Gateway pomocí prostředí PowerShell v Správce prostředků
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,20 +9,20 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312590"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastní sondy pro Bránu aplikací Azure pomocí PowerShellu pro Azure Resource Manager
+# <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>Vytvoření vlastního testu pro Azure Application Gateway pomocí prostředí PowerShell pro Azure Resource Manager
 
 > [!div class="op_single_selector"]
 > * [portál Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-V tomto článku přidáte vlastní sondu do existující aplikační brány s Prostředím PowerShell. Vlastní sondy jsou užitečné pro aplikace, které mají určitou stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webové aplikace.
+V tomto článku přidáte vlastní test paměti do existující aplikační brány pomocí PowerShellu. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webovou aplikaci.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -32,13 +32,13 @@ V tomto článku přidáte vlastní sondu do existující aplikační brány s P
 
 ### <a name="sign-in-and-create-resource-group"></a>Přihlášení a vytvoření skupiny prostředků
 
-1. Slouží `Connect-AzAccount` k ověření.
+1. Použijte `Connect-AzAccount` k ověření.
 
    ```powershell
    Connect-AzAccount
    ```
 
-1. Získejte předplatná pro účet.
+1. Získejte předplatná pro tento účet.
 
    ```powershell
    Get-AzSubscription
@@ -50,19 +50,19 @@ V tomto článku přidáte vlastní sondu do existující aplikační brány s P
    Select-AzSubscription -Subscriptionid '{subscriptionGuid}'
    ```
 
-1. Vytvořte skupinu prostředků. Tento krok můžete přeskočit, pokud máte existující skupinu prostředků.
+1. Vytvořte skupinu prostředků. Pokud máte existující skupinu prostředků, můžete tento krok přeskočit.
 
    ```powershell
    New-AzResourceGroup -Name appgw-rg -Location 'West US'
    ```
 
-Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření aplikační brány používají stejnou skupinu prostředků.
+Azure Resource Manager vyžaduje, aby všechny skupiny prostředků určily umístění. Toto umístění slouží jako výchozí umístění pro prostředky v příslušné skupině prostředků. Ujistěte se, že všechny příkazy k vytvoření služby Application Gateway používají stejnou skupinu prostředků.
 
-V předchozím příkladu jsme vytvořili skupinu prostředků nazvanou **appgw-RG** v umístění **– západní USA**.
+V předchozím příkladu jsme vytvořili skupinu prostředků s názvem **appgw-RG** v umístění **západní USA**.
 
 ### <a name="create-a-virtual-network-and-a-subnet"></a>Vytvoření virtuální sítě a podsítě
 
-Následující příklad vytvoří virtuální síť a podsíť pro aplikační bránu. Aplikační brána vyžaduje vlastní podsíť pro použití. Z tohoto důvodu podsíť vytvořená pro aplikační bránu by měla být menší než adresní prostor virtuální sítě, aby bylo možné vytvářet a používat jiné podsítě.
+Následující příklad vytvoří virtuální síť a podsíť pro aplikační bránu. Aplikační brána vyžaduje vlastní podsíť pro použití. Z tohoto důvodu by podsíť vytvořená pro aplikační bránu měla být menší než adresní prostor virtuální sítě, aby bylo možné vytvářet a používat jiné podsítě.
 
 ```powershell
 # Assign the address range 10.0.0.0/24 to a subnet variable to be used to create a virtual network.
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Vytvoření veřejné IP adresy pro front-end konfiguraci
 
-Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast USA – západ. Tento příklad používá veřejnou IP adresu pro front-endOVOU IP adresu aplikační brány.  Aplikační brána vyžaduje, aby veřejná IP adresa `-DomainNameLabel` měla dynamicky vytvořený název DNS, proto ji nelze zadat při vytváření veřejné IP adresy.
+Vytvořte prostředek veřejné IP adresy **publicIP01** ve skupině prostředků **appgw-rg** pro oblast USA – západ. V tomto příkladu se používá veřejná IP adresa pro front-end IP adresu aplikační brány.  Služba Application Gateway vyžaduje, aby veřejná IP adresa měla dynamicky vytvořený název DNS, `-DomainNameLabel` takže nejde zadat během vytváření veřejné IP adresy.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -85,17 +85,17 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 
 ### <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-Před vytvořením aplikační brány nastavíte všechny položky konfigurace. Následující příklad vytvoří položky konfigurace, které jsou potřebné pro prostředek aplikační brány.
+Před vytvořením služby Application Gateway se nastavují všechny položky konfigurace. Následující příklad vytvoří položky konfigurace, které jsou potřeba pro prostředek aplikační brány.
 
 | **Komponenta** | **Popis** |
 |---|---|
-| **Konfigurace protokolu IP brány** | Konfigurace IP pro aplikační bránu.|
-| **Back-endový fond** | Fond adres IP, souborů FQDN nebo nic, které jsou pro aplikační servery, které jsou hostitelem webové aplikace|
-| **Sonda stavu** | Vlastní sonda používaná ke sledování stavu členů back-endového fondu|
-| **Nastavení protokolu HTTP** | Kolekce nastavení, včetně portu, protokolu, spřažení založené na souborech cookie, sondy a časového času.  Tato nastavení určují způsob směrování provozu na členy back-endového fondu.|
-| **Port front-endu** | Port, který brána aplikace naslouchá pro provoz na|
-| **Naslouchací proces** | Kombinace protokolu, konfigurace ip adres front-endu a portu front-endu. To je to, co naslouchá příchozím požadavkům.
-|**Pravidlo**| Směruje provoz na příslušný back-end na základě nastavení protokolu HTTP.|
+| **Konfigurace protokolu IP brány** | Konfigurace protokolu IP pro aplikační bránu.|
+| **Back-end fond** | Fond IP adres, plně kvalifikovaného názvu domény nebo síťových adaptérů, které jsou aplikačním serverům, které hostují webovou aplikaci.|
+| **Sonda stavu** | Vlastní test, který slouží k monitorování stavu členů fondu back-end|
+| **Nastavení HTTP** | Kolekce nastavení včetně, portu, protokolu, spřažení založeného na souborech cookie, sondy a časového limitu.  Tato nastavení určují způsob směrování provozu do členů fondu back-end.|
+| **Port front-endu** | Port, na kterém brána Application Gateway naslouchá provozu|
+| **Naslouchací proces** | Kombinace protokolu, konfigurace IP adresy front-endu a portu front-endu. To naslouchá příchozím žádostem.
+|**Pravidlo**| Směruje provoz do příslušného back-endu na základě nastavení HTTP.|
 
 ```powershell
 # Creates an application gateway Frontend IP configuration named gatewayIP01
@@ -129,9 +129,9 @@ $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity
 $appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location 'West US' -BackendAddressPools $pool -Probes $probe -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
-## <a name="add-a-probe-to-an-existing-application-gateway"></a>Přidání sondy do existující aplikační brány
+## <a name="add-a-probe-to-an-existing-application-gateway"></a>Přidání sondy do stávající aplikační brány
 
-Následující fragment kódu přidá sondu do existující aplikační brány.
+Následující fragment kódu přidá test do existující aplikační brány.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -147,9 +147,9 @@ $getgw = Set-AzApplicationGatewayBackendHttpSettings -ApplicationGateway $getgw 
 Set-AzApplicationGateway -ApplicationGateway $getgw
 ```
 
-## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Odebrání sondy z existující aplikační brány
+## <a name="remove-a-probe-from-an-existing-application-gateway"></a>Odebrání testu z existující aplikační brány
 
-Následující fragment kódu odebere sondu z existující aplikační brány.
+Následující fragment kódu odebere test z existující aplikační brány.
 
 ```powershell
 # Load the application gateway resource into a PowerShell variable by using Get-AzApplicationGateway.
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte se konfigurovat snižování zátěže TLS na adrese: [Konfigurace snižování zátěže TLS](application-gateway-ssl-arm.md)
+Naučte se konfigurovat snižování zátěže TLS na webu: [Konfigurace snižování zátěže TLS](application-gateway-ssl-arm.md)
 

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 871f992f6457a846d29a7145d53a7e382cbe10dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400686"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -16,20 +16,20 @@ ms.locfileid: "81400686"
 Než začnete:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
-> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
-1. Spuštění **sady Visual Studio 2019**.
-2. Načtěte projekt a otevřete *Program.cs*.
+1. Spusťte **Visual Studio 2019**.
+2. Načtěte svůj projekt a otevřete *program.cs*.
 
 ## <a name="source-code"></a>Zdrojový kód
 
-Nahraďte obsah *Program.cs* souboru následujícím kódem jazyka C#.
+Obsah souboru *program.cs* nahraďte následujícím kódem jazyka C#.
 
 ```csharp
 using System;
@@ -89,13 +89,13 @@ namespace Speech.Recognition
 
 [!INCLUDE [code explanation](../code-explanation.md)]
 
-## <a name="build-and-run-app"></a>Vytváření a spouštění aplikací
+## <a name="build-and-run-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni znovu vytvořit aplikaci a otestovat funkci rozpoznávání řeči pomocí služby Řeč.
+Teď jste připraveni znovu sestavit aplikaci a otestovat funkci rozpoznávání řeči pomocí služby Speech.
 
-1. **Kompilace kódu** – z panelu nabídek sady Visual Studio zvolte **Build** > **Build Build Solution**.
-2. **Spuštění aplikace** – z řádku nabídek zvolte **Ladění** > **ladění startování** nebo stiskněte <kbd>klávesu F5</kbd>.
-3. **Start uznání** - Vyzve vás mluvit frázi v angličtině. Vaše řeč je odeslána do služby Řeč, přepsána jako text a vykreslena v konzole.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** > **řešení**sestavení.
+2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu <kbd>F5</kbd>.
+3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 
 ## <a name="next-steps"></a>Další kroky
 

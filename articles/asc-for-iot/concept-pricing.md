@@ -1,6 +1,6 @@
 ---
 title: Ceny a související náklady
-description: Přečtěte si o nákladech spojených s Azure Security Center pro IoT a o tom, jak je řídit.
+description: Přečtěte si informace o nákladech spojených s Azure Security Center pro IoT a o tom, jak je ovládat.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,66 +16,66 @@ ms.workload: na
 ms.date: 09/27/2019
 ms.author: mlottner
 ms.openlocfilehash: fe117cf8d05ba3392b71858acf94d1fc88c1a527
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311565"
 ---
 # <a name="pricing-and-associated-costs"></a>Ceny a související náklady
 
-Tento článek vysvětluje Azure Security Center pro ioT cenový model, shrnuje všechny související náklady a vysvětluje, jak je spravovat.
+Tento článek vysvětluje Azure Security Center pro cenový model IoT, shrnuje všechny přidružené náklady a vysvětluje, jak je spravovat.
 
 ## <a name="pricing"></a>Ceny
 
-Azure Security Center for IoT cenový model se skládá ze dvou částí a účtuje se, jakmile je služba IoT Hub [povolená](quickstart-onboard-iot-hub.md) v Centru zabezpečení Azure pro IoT:
+Cenové modely Azure Security Center for IoT se skládají ze dvou částí a účtují se po [povolení](quickstart-onboard-iot-hub.md) IoT Hub v Azure Security Center pro IoT:
 
-- Náklady podle zařízení – integrované možnosti zabezpečení založené na analýze protokolů služby IoT Hub.
+- Náklady podle funkcí zabezpečení integrovaných na zařízení na základě analýzy protokolů IoT Hub.
 
-- Náklady podle zpráv – rozšířené možnosti zabezpečení založené na zprávách zabezpečení z IoT Edge nebo leaf zařízení.
+- Náklady podle zpráv – rozšířené možnosti zabezpečení na základě zpráv zabezpečení z IoT Edge nebo na listovém zařízení.
 
-Další informace naleznete v [tématu Security Center pricing](https://azure.microsoft.com/pricing/details/security-center/).
+Další informace najdete v tématu [Security Center ceny](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="associated-costs"></a>Související náklady
+## <a name="associated-costs"></a>Přidružené náklady
 
 Azure Security Center pro IoT má přidružené náklady, které nejsou součástí přímých cen:
 
 - Náklady na úložiště Log Analytics
 
-Související náklady můžete snížit tím, že se odhlásíte z určitých funkcí řešení. Odhlaste se změnou nastavení.
+Můžete snížit související náklady tím, že se odhlásíte od určitých funkcí řešení. Odsouhlasit změnou nastavení.
 
-Změna nastavení:
+Postup změny nastavení:
 
-1. Otevřete centrum IoT.
+1. Otevřete IoT Hub.
 
-1. V části **Zabezpečení**klepněte na položku **Přehled**.
+1. V části **zabezpečení**klikněte na **Přehled**.
 
 1. Klikněte na příkaz **Nastavení**.
 
-Následující tabulka obsahuje souhrn souvisejících nákladů a důsledků jednotlivých možností.
+Následující tabulka poskytuje souhrn souvisejících nákladů a dopadů jednotlivých možností.
 
 |     | Využití | Poznámka |
 | --- | --- | --- |
-| **Úložiště Log Analytics** |  |
-| Doporučení a upozornění zařízení| Doporučení zabezpečení a výstrahy generované službou | Není volitelné |
-| Nezpracovaná bezpečnostní data| Nezpracovaná bezpečnostní data ze zařízení IoT shromážděná bezpečnostními agenty | Zakázat _ukládání nezpracovaných událostí zabezpečení zařízení_ |
+| **Log Analytics úložiště** |  |
+| Doporučení a výstrahy zařízení| Doporučení a výstrahy zabezpečení vygenerované službou | Nenepovinné |
+| Nezpracovaná data zabezpečení| Nezpracovaná data zabezpečení ze zařízení IoT shromažďovaných agenty zabezpečení | Zakázat _události zabezpečení úložiště nezpracovaného zařízení_ |
 |
 
 >[!Important]
-> Odhlášení má závažné důsledky pro dostupnost funkcí zabezpečení Azure Security Center for IoT.
+> Možnost vyzkoušení má vážný dopad na Azure Security Center dostupnosti funkcí zabezpečení IoT.
 
-| Odhlásit | Důsledky |
+| Odhlásit se | Důsledky |
 | --- | --- |
-| _Kolekce metadat dvojčat_ | Zakázání [vlastních výstrah](quickstart-create-custom-alerts.md) |
-| | Zakázat doporučení manifestu IoT Edge |
-| | Zakázání doporučení a výstrah založených na identitách zařízení |
-| _Ukládání nezpracovaných událostí zabezpečení zařízení_ | Podrobnosti o základních doporučeních operačního systémem zařízení nejsou k dispozici. |
-| | Podrobnosti o [vyšetřování výstrah](concept-security-alerts.md) a [doporučení](concept-recommendations.md) nejsou k dispozici |
+| _Kolekce vlákenných metadat_ | Zakázat [vlastní výstrahy](quickstart-create-custom-alerts.md) |
+| | Zakázat doporučení pro IoT Edge manifest |
+| | Zakázat doporučení a výstrahy na základě identity zařízení |
+| _Ukládat události zabezpečení nezpracovaného zařízení_ | Podrobnosti o doporučeních standardních hodnot operačního systému zařízení nejsou k dispozici. |
+| | Podrobnosti o [výstrahách](concept-security-alerts.md) a vyšetřováních [doporučení](concept-recommendations.md) nejsou k dispozici. |
 |
 
 ## <a name="see-also"></a>Viz také
 
-- Přístup k [nezpracovaným bezpečnostním datům](how-to-security-data-access.md)
+- Přístup k [nezpracovaným datům zabezpečení](how-to-security-data-access.md)
 - [Prozkoumání zařízení](how-to-investigate-device.md)
-- Pochopení a zkoumání [bezpečnostních doporučení](concept-recommendations.md)
-- Pochopení a prozkoumání [výstrah zabezpečení](concept-security-alerts.md)
+- Pochopení a zkoumání [doporučení zabezpečení](concept-recommendations.md)
+- Pochopení a zkoumání [výstrah zabezpečení](concept-security-alerts.md)

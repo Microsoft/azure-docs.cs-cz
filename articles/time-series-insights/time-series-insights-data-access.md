@@ -1,6 +1,6 @@
 ---
-title: Konfigurace zabezpečení pro udělení přístupu k datům – Azure Time Series Insights Preview | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nakonfigurovat zabezpečení, oprávnění a spravovat zásady přístupu k datům v prostředí Azure Time Series Insights Preview.
+title: Konfigurace zabezpečení pro udělení přístupu k datům – Azure Time Series Insights Preview | Microsoft Docs
+description: Naučte se konfigurovat zabezpečení, oprávnění a správu zásad přístupu k datům v prostředí Azure Time Series Insights Preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,122 +12,122 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1735daf66483df496141a642ac6633973aa0abf0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407546"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Udělení přístupu k datům do prostředí
 
-Tento článek popisuje dva typy zásad přístupu Azure Time Series Insights Preview.
+Tento článek pojednává o dvou typech zásad přístupu ke službě Azure Time Series Insights Preview.
 
 > [!TIP]
-> Přečtěte si kroky registrace aplikací Azure Active Directory ověřování [a autorizace.](time-series-insights-authentication-and-authorization.md)
+> Přečtěte si téma [ověřování a autorizace](time-series-insights-authentication-and-authorization.md) pro Azure Active Directory kroky registrace aplikace.
 
-## <a name="sign-in-to-time-series-insights"></a>Přihlaste se k přehledům time series
+## <a name="sign-in-to-time-series-insights"></a>Přihlášení k Time Series Insights
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-1. Vyhledejte prostředí Time Series Insights. Zadejte `Time Series` **do** vyhledávacího pole. Ve výsledcích hledání **vyberte prostředí časových řad.**
+1. Najděte své Time Series Insights prostředí. Do `Time Series` **vyhledávacího** pole zadejte. Ve výsledcích hledání vyberte **prostředí Time Series** .
 1. Ze seznamu vyberte vaše prostředí Time Series Insights.
 
 ## <a name="grant-data-access"></a>Udělení přístupu k datům
 
-Chcete-li udělit přístup k datům pro objekt zabezpečení uživatele, postupujte takto.
+Pomocí těchto kroků udělíte přístup k datům pro objekt zabezpečení uživatele.
 
-1. Vyberte **Zásady přístupu k datům**a pak vyberte **+ Přidat**.
+1. Vyberte **zásady přístupu k datům**a pak vybrat **+ Přidat**.
 
     [![Výběr a přidání zásad přístupu k datům](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
-1. Zvolte **Vybrat uživatele**. Vyhledejte uživatele, kterého chcete přidat, vyhledejte uživatelské jméno nebo e-mailovou adresu. Výběrem **možnosti Výběr** výběru potvrďte.
+1. Zvolte **Vybrat uživatele**. Vyhledejte uživatelské jméno nebo e-mailovou adresu a vyhledejte uživatele, kterého chcete přidat. Vyberte **možnost vybrat** a potvrďte výběr.
 
-    [![Vyberte uživatele, který má být](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
+    [![Vyberte uživatele, kterého chcete přidat.](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
-1. Zvolte **Vybrat roli**. Zvolte příslušnou přístupovou roli pro uživatele:
+1. Zvolte **Vybrat roli**. Vyberte příslušnou roli přístupu pro uživatele:
 
-    * Pokud chcete uživateli povolit změnu referenčních dat a sdílet uložené dotazy a perspektivy s ostatními uživateli prostředí, vyberte **přispěvatele.**
+    * Vyberte **Přispěvatel** , pokud chcete, aby uživatel mohl měnit referenční data a sdílet uložené dotazy a perspektivy s ostatními uživateli tohoto prostředí.
 
-    * V opačném případě vyberte **Reader,** aby uživatel mohl dotazovat data v prostředí a ukládat osobní, nesdílené dotazy v prostředí.
+    * V opačném případě vyberte **Čtenář** , který uživateli umožní dotazovat se na data v prostředí a ukládat osobní, nesdílené a dotazy v prostředí.
 
-   Výběrem **možnosti OK** potvrďte volbu role.
+   Výběrem **OK** potvrďte volbu role.
 
-    [![Potvrzení vybrané role](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
+    [![Potvrďte zvolenou roli.](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
-1. Na stránce **Vybrat roli uživatele** vyberte **OK.**
+1. Na stránce **Vybrat roli uživatele** vyberte **OK** .
 
-    [![Výběr OK na stránce Vybrat roli uživatele](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
+    [![Na stránce Vybrat roli uživatele vyberte OK.](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
-1. Zkontrolujte, zda je na stránce **Zásady přístupu k datům** uvedeno seznam uživatelů a rolí jednotlivých uživatelů.
+1. Potvrďte, že na stránce **zásady přístupu k datům** jsou uvedeni uživatelé a role pro každého uživatele.
 
     [![Ověření správných uživatelů a rolí](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Poskytnutí přístupu hosta z jiného klienta Azure AD
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Poskytnutí přístupu hosta z jiného tenanta Azure AD
 
-Role `Guest` není role řízení. Je to termín používaný pro účet, který je pozván z jednoho klienta do druhého. Po pozvání účtu hosta do adresáře klienta může mít stejný ovládací prvek přístupu, který se na něj použije jako u jiných účtů. Přístup ke správě prostředí Time Series Insights můžete udělit pomocí okna Řízení přístupu (IAM). Nebo můžete udělit přístup k datům v prostředí prostřednictvím okna Zásady přístupu k datům. Další informace o přístupu hosta hosta klienta Azure Active Directory (Azure AD) nabloguy [o službě Azure Active Directory nawebu: Přidání uživatelů spolupráce Služby Azure AD B2B na webu Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Tato `Guest` role není rolí správy. Jedná se o termín, který se používá pro účet, který je pozván z jednoho klienta na jiný. Po pozvání účtu hosta do adresáře klienta může být pro něj použito stejné řízení přístupu jako u jakéhokoli jiného účtu. Přístup pro správu můžete Time Series Insights prostředí udělit pomocí okna Access Control (IAM). Nebo můžete přístup k datům v prostředí udělit prostřednictvím okna zásady přístupu k datům. Pokud chcete získat další informace o přístupu klienta Azure Active Directory (Azure AD) k hostům, přečtěte si téma [přidání Azure Active Directory uživatelů pro spolupráci B2B v Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
-Podle těchto kroků udělit hostpřístup k prostředí Time Series Insights pro uživatele Azure AD z jiného klienta.
+Pomocí těchto kroků udělíte uživateli služby Azure AD přístup hosta k Time Series Insights prostředí z jiného tenanta.
 
-1. Vyberte **Zásady přístupu k datům**a pak vyberte **+ Invite**.
+1. Vyberte **zásady přístupu k datům**a pak vybrat **+ pozvat**.
 
-    [![Vyberte zásady přístupu k datům a pak + Pozvat](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
+    [![Vyberte zásady přístupu k datům, potom + pozvání.](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
-1. Zadejte e-mailovou adresu uživatele, kterého chcete pozvat. Tato e-mailová adresa musí být přidružená k Azure AD. Volitelně můžete k pozvánce zahrnout osobní zprávu.
+1. Zadejte e-mailovou adresu uživatele, kterého chcete pozvat. Tato e-mailová adresa musí být přidružená k Azure AD. Volitelně můžete přidat osobní zprávu s pozvánkou.
 
-    [![Zadáním e-mailové adresy vyhledejte vybraného uživatele.](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
+    [![Zadejte e-mailovou adresu pro vyhledání vybraného uživatele.](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
-1. Vyhledejte potvrzovací bublinu, která se zobrazí na obrazovce.
+1. Vyhledejte bublinu s potvrzením, která se zobrazí na obrazovce.
 
-    [![Vyhledejte potvrzovací bublinu, která se zobrazí](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
+    [![Vyhledejte bublinu s potvrzením, které se má zobrazit.](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. Zvolte **Vybrat uživatele**. Vyhledejte e-mailovou adresu uživatele typu Host, kterého jste pozvali k vyhledání uživatele, kterého chcete přidat. Potom **vyberte,** chcete-li výběr potvrdit.
+1. Zvolte **Vybrat uživatele**. Vyhledejte e-mailovou adresu uživatele typu Host, kterého jste pozvali, a vyhledejte uživatele, kterého chcete přidat. Pak **výběrem** potvrďte výběr.
 
-    [![Vyberte uživatele a potvrďte výběr](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
+    [![Vyberte uživatele a potvrďte výběr.](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
-1. Zvolte **Vybrat roli**. Zvolte příslušnou přístupovou roli pro uživatele typu Host:
+1. Zvolte **Vybrat roli**. Vyberte příslušnou roli přístupu pro uživatele typu Host:
 
-    * Pokud chcete uživateli povolit změnu referenčních dat a sdílet uložené dotazy a perspektivy s ostatními uživateli prostředí, vyberte **přispěvatele.**
+    * Vyberte **Přispěvatel** , pokud chcete, aby uživatel mohl měnit referenční data a sdílet uložené dotazy a perspektivy s ostatními uživateli tohoto prostředí.
 
-    * V opačném případě vyberte **Reader,** aby uživatel mohl dotazovat data v prostředí a ukládat osobní, nesdílené dotazy v prostředí.
+    * V opačném případě vyberte **Čtenář** , který uživateli umožní dotazovat se na data v prostředí a ukládat osobní, nesdílené a dotazy v prostředí.
 
-   Výběrem **možnosti OK** potvrďte volbu role.
+   Výběrem **OK** potvrďte volbu role.
 
-    [![Potvrzení volby role](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
+    [![Potvrďte volbu role](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
-1. Na stránce **Vybrat roli uživatele** vyberte **OK.**
+1. Na stránce **Vybrat roli uživatele** vyberte **OK** .
 
-1. Zkontrolujte, zda je na stránce **Zásady přístupu k datům** uvedeno uložit uživatele typu Host a role každého uživatele typu Host.
+1. Potvrďte, že na stránce **zásady přístupu k datům** se zobrazuje uživatel typu Host a role pro každého uživatele typu Host.
 
     [![Ověření správného přiřazení uživatelů a rolí](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. Nyní uživatel hostobdrží e-mail s pozvánkou na výše uvedenou e-mailovou adresu. Uživatel typu Host vybere **Možnost Začínáme,** aby potvrdil jejich přijetí a připojil se k Azure Cloudu.
+1. Nyní uživatel typu Host dostane e-mail s pozvánkou na e-mailovou adresu uvedenou výše. Uživatel typu host vybere možnost **Začínáme, aby** potvrdil přijetí a připojení ke cloudu Azure.
 
-    [![Host vybere Možnost Začít přijímat.](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
+    [![Host vybere začátek pro přijetí.](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. Po výběru **možnosti Začínáme**se uživateli typu Host zobrazí pole oprávnění přidružené k organizaci správce. Po udělení oprávnění výběrem možnosti **Přijmout**budou přihlášeni.
+1. Po výběru **možnosti Začínáme se**uživateli typu Host zobrazí pole oprávnění přidružené k organizaci správce. Po udělení oprávnění výběrem možnosti **přijmout**se přihlásí.
 
     [![Host kontroluje oprávnění a přijímá](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. Správce [sdílí adresu URL prostředí](time-series-insights-parameterized-urls.md) se svým hostem.
+1. Správce [nasdílí adresu URL prostředí](time-series-insights-parameterized-urls.md) s jejich hostem.
 
-1. Poté, co je uživatel typu Host přihlášen k e-mailové adrese, kterou jste použili k pozvání, a on i přijmout pozvánku, bude přesměrován na portál Azure. 
+1. Jakmile je uživatel typu Host přihlášený k e-mailové adrese, kterou jste použili k jejich pozvání, a pozvánku přijme, budou přesměrováni na Azure Portal. 
 
-1. Host má nyní přístup ke sdílenému prostředí pomocí adresy URL prostředí poskytnuté správcem. Mohou zadat tuto adresu URL do svého webového prohlížeče pro okamžitý přístup.
+1. Host teď může přistupovat ke sdílenému prostředí pomocí adresy URL prostředí poskytnuté správcem. Můžou zadat tuto adresu URL do svého webového prohlížeče pro okamžitý přístup.
 
-1. Klient správce se zobrazí uživateli hosta po výběru ikony profilu v pravém horním rohu průzkumníka časové řady.
+1. Po výběru ikony profilu v pravém horním rohu Průzkumníka časových řad se tenant správce zobrazí uživateli typu Host.
 
-    [![Avatar výběr na insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+    [![Výběr avataru na insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
 
-    Poté, co uživatel typu Host vybere klienta správce, bude mít možnost vybrat sdílené prostředí Time Series Insights. 
+    Jakmile uživatel typu host vybere tenanta správce, bude mít možnost vybrat sdílené prostředí Time Series Insights. 
     
-    Nyní mají všechny funkce spojené s rolí, kterou jste jim poskytli v **kroku 5**.
+    Nyní mají všechny možnosti spojené s rolí, které jste jim poskytli v **kroku 5**.
 
-    [![Uživatel Typu Host vybere vašeho klienta Azure z rozbalovacího seznamu.](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
+    [![Uživatel typu host vybere z rozevíracího seznamu klienta Azure.](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte [si, jak přidat zdroj událostí centra Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) do prostředí Time Series Insights.
+* Naučte se, jak do prostředí Time Series Insights [Přidat zdroj událostí Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) .
 
 * Odešle [události do zdroje událostí](./time-series-insights-send-events.md).
 
-* Zobrazení [prostředí v průzkumníku Náhled přehledů časové řady](./time-series-insights-update-explorer.md).
+* Zobrazte [si prostředí v Průzkumníkovi služby Time Series Insights Preview](./time-series-insights-update-explorer.md).

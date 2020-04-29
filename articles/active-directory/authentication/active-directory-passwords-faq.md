@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k samoobslužné resetování hesla – Azure Active Directory
-description: Nejčastější dotazy týkající se samoobslužného resetování hesla Azure AD
+title: Nejčastější dotazy k samoobslužnému resetování hesla – Azure Active Directory
+description: Nejčastější dotazy týkající se samoobslužného resetování hesla služby Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,230 +12,230 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1246b5b980f60c2f3e65aa5b32a7d79dd6efc7d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407165"
 ---
-# <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy týkající se správy hesel
+# <a name="password-management-frequently-asked-questions"></a>Nejčastější dotazy ke správě hesel
 
-Níže jsou uvedeny některé často kladené otázky (FAQ) pro všechny věci týkající se resetování hesla.
+Tady jsou uvedené některé nejčastější dotazy týkající se resetování hesla.
 
-Pokud máte obecnou otázku týkající se Azure Active Directory (Azure AD) a samoobslužné resetování hesla (SSPR), na které tady není odpověď, můžete požádat komunitu o pomoc na [fóru Azure AD](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Členy komunity jsou inženýři, produktoví manažeři, MVP a další IT profesionálové.
+Pokud máte obecnou otázku týkající se Azure Active Directory (Azure AD) a samoobslužného resetování hesla (SSPR), na které tady neodpovíte, můžete požádat o pomoc komunitě [Azure AD](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD). Mezi členy komunity patří inženýri, správci produktů, odborníky MVP a odborníci na IT.
 
-Tyto nejčastější dotazy jsou rozděleny do následujících částí:
+Tyto nejčastější dotazy jsou rozdělené do následujících částí:
 
-* [Otázky týkající se registrace resetování hesla](#password-reset-registration)
+* [Dotazy týkající se registrace resetování hesla](#password-reset-registration)
 * [Otázky týkající se resetování hesla](#password-reset)
-* [Otázky týkající se změny hesla](#password-change)
-* [Otázky týkající se sestav správy hesel](#password-management-reports)
-* [Otázky týkající se zpětného zápisu hesla](#password-writeback)
+* [Dotazy týkající se změny hesla](#password-change)
+* [Dotazy k sestavám správy hesel](#password-management-reports)
+* [Dotazy týkající se zpětného zápisu hesla](#password-writeback)
 
 ## <a name="password-reset-registration"></a>Registrace resetování hesla
 
-* **Otázka: Mohou moji uživatelé zaregistrovat vlastní data pro resetování hesla?**
+* **Otázka: můžou moji uživatelé registrovat vlastní data pro resetování hesla?**
 
-  > **Odpověď:** Ano. Dokud je povoleno resetování hesla a jsou licencovány, mohou uživatelé přejít na registrační portál pro obnovení hesla (https://aka.ms/ssprsetup) zaregistrovat své ověřovací informace. Uživatelé se mohou takéhttps://myapps.microsoft.com)zaregistrovat prostřednictvím přístupového panelu ( . Chcete-li se zaregistrovat prostřednictvím přístupového panelu, musí vybrat svůj profilový obrázek, vybrat **profil**a pak vybrat možnost **Registrovat pro obnovení hesla.**
+  > **Odpověď:** Ano. Pokud je povolené resetování hesla a jsou licencované, můžou uživatelé přejít na registrační portál pro resetování hesla (https://aka.ms/ssprsetup) k registraci ověřovacích informací). Uživatelé se také mohou registrovat prostřednictvím přístupového paneluhttps://myapps.microsoft.com)(. Chcete-li provést registraci prostřednictvím přístupového panelu, je nutné vybrat profilový obrázek, vybrat **profil**a pak vybrat možnost **registrovat pro resetování hesla** .
   >
   >
-* **Otázka: Pokud povolím resetování hesla pro skupinu a pak se rozhodnu ji povolit pro všechny, jsou moji uživatelé povinni znovu zaregistrovat?**
+* **Otázka: Pokud povolím resetování hesla pro skupinu a potom se rozhodnete ji povolit pro všechny, je nutné znovu zaregistrovat své uživatele?**
 
-  > **Odpověď:** Ne. Uživatelé, kteří mají vyplněná ověřovací data, se nemusí znovu registrovat.
+  > **Odpověď:** Ne. Uživatelům, kteří nastavili data ověřování, není nutné znovu registrovat.
   >
   >
-* **Otázka: Lze definovat data pro resetování hesla jménem svých uživatelů?**
+* **Otázka: můžu definovat data resetování hesla jménem uživatelů?**
 
-  > **A:** Ano, můžete tak učinit pomocí Azure AD Connect, PowerShellu, [portálu Azure](https://portal.azure.com)nebo [Centra pro správu Microsoftu 365](https://admin.microsoft.com). Další informace najdete [v tématu Data používaná samoobslužným heslem Azure AD](howto-sspr-authenticationdata.md).
+  > **A:** Ano, můžete to udělat pomocí Azure AD Connect, PowerShellu, [Azure Portal](https://portal.azure.com)nebo [centra pro správu Microsoft 365](https://admin.microsoft.com). Další informace najdete v tématu [data používaná samoobslužným resetováním hesla služby Azure AD](howto-sspr-authenticationdata.md).
   >
   >
-* **Otázka: Můžu synchronizovat data pro otázky zabezpečení z místního prostředí?**
+* **Otázka: mohu synchronizovat data z bezpečnostních otázek z místního prostředí?**
 
-  > **A:** Ne, dnes to není možné.
+  > **A:** Ne, to není možné ještě dnes.
   >
   >
-* **Otázka: Mohou moji uživatelé data registrovat tak, aby ostatní uživatelé tato data neviděli?**
+* **Otázka: můžou uživatelé zaregistrovat data takovým způsobem, že tato data uvidí jiní uživatelé?**
 
-  > **Odpověď:** Ano. Když uživatelé registrují data pomocí registračního portálu pro obnovení hesla, jsou data uložena do soukromých ověřovacích polí, která jsou viditelná pouze globálním správcům a uživateli.
+  > **Odpověď:** Ano. Když uživatelé registrují data pomocí portálu pro registraci resetování hesla, ukládají se data do polí privátního ověřování, která jsou viditelná jenom pro globální správce a uživatele.
   >
   >
-* **Otázka: Musí být moji uživatelé před použitím resetování hesla zaregistrováni?**
+* **Otázka: Mám uživatele zaregistrovat, aby mohli použít resetování hesla?**
 
-  > **Odpověď:** Ne. Pokud definujete dostatek ověřovacích informací jejich jménem, uživatelé se nemusí registrovat. Resetování hesla funguje tak dlouho, dokud jste správně naformátovali data uložená v příslušných polích v adresáři.
+  > **Odpověď:** Ne. Pokud pro své jménem definujete dostatek ověřovacích informací, uživatelé se nebudou muset registrovat. Resetování hesla funguje, pokud máte správně naformátovaná data uložená v příslušných polích v adresáři.
   >
   >
-* **Otázka: Můžu jménem uživatelů synchronizovat nebo nastavit ověřovací telefon, ověřovací e-mail nebo alternativní ověřovací telefonní pole?**
+* **Otázka: mohu synchronizovat nebo nastavit pole telefon pro ověření, e-mail ověřování nebo alternativní ověřování jménem uživatelů?**
 
-  > **A:** Pole, která lze nastavit globálním správcem, jsou definována v článku [Požadavky na data sspr](howto-sspr-authenticationdata.md).
+  > **A:** Pole, která je možné nastavit globálním správcem, jsou definovaná v článku [požadavky na data SSPR](howto-sspr-authenticationdata.md).
   >
   >
-* **Otázka: Jak registrační portál určuje, které možnosti zobrazit svým uživatelům?**
+* **Otázka: jak portál pro registraci určuje, jaké možnosti se mají zobrazovat moji uživatelé?**
 
-  > **A:** Registrační portál pro obnovení hesla zobrazuje pouze možnosti, které jste povolili pro uživatele. Tyto možnosti najdete v části **Zásady pro obnovení uživatelského hesla** na kartě **Konfigurace** adresáře. Pokud například nepovolíte bezpečnostní otázky, uživatelé se nebudou moci pro tuto možnost zaregistrovat.
+  > **A:** Portál pro registraci nového hesla zobrazuje jenom možnosti, které jste povolili pro vaše uživatele. Tyto možnosti najdete v části **zásady resetování hesla uživatele** na kartě **Konfigurace** vašeho adresáře. Pokud třeba bezpečnostní otázky nepovolíte, nebudou se uživatelé moct k této možnosti zaregistrovat.
   >
   >
-* **Otázka: Kdy je uživatel považován za registrovaného?**
+* **Otázka: kdy je uživatel považován za registrovaný?**
 
-  > **A:** Uživatel se považuje za registrovaný pro sspr, pokud zaregistrovali alespoň **počet metod potřebných k resetování** hesla, které jste nastavili na [webu Azure Portal](https://portal.azure.com).
+  > **A:** Uživatel se považuje za registrovaný pro SSPR, pokud zaregistroval alespoň počet metod, které jsou **potřeba k resetování** hesla, které jste nastavili v [Azure Portal](https://portal.azure.com).
   >
   >
 
 ## <a name="password-reset"></a>Resetování hesla
 
-* **Otázka: Zabráníte uživatelům v několika pokusech o resetování hesla v krátkém časovém období?**
+* **Otázka: zabráníte uživatelům v krátkém časovém limitu pokusů o resetování hesla?**
 
-  > **A:** Ano, existují bezpečnostní funkce integrované do resetování hesla, které chrání před zneužitím. 
+  > **A:** Ano, k ochraně před zneužitím jsou integrované funkce zabezpečení pro resetování hesla. 
   >
-  > Uživatelé mohou během 24 hodin vyzkoušet pouze pět pokusů o resetování hesla, než budou na 24 hodin uzamčeni. 
+  > Uživatelé můžou v průběhu 24 hodin vyzkoušet jenom pět pokusů o resetování hesla, než se odblokuje po dobu 24 hodin. 
   >
-  > Uživatelé se mohou pokusit ověřit telefonní číslo, odeslat SMS nebo ověřit bezpečnostní otázky a odpovědi pouze pětkrát během jedné hodiny, než budou uzamčeni po dobu 24 hodin. 
+  > Uživatelé se můžou pokusit ověřit telefonní číslo, odeslat SMS nebo ověřit bezpečnostní otázky a odpovědi jenom pětkrát za hodinu, než se zablokují po dobu 24 hodin. 
   >
-  > Uživatelé mohou odeslat e-mail maximálně 10krát během 10 minut, než budou uzamčeni po dobu 24 hodin.
+  > Uživatelé můžou poslat e-mail maximálně desetkrát během 10 minut, než se odblokuje po dobu 24 hodin.
   >
-  > Čítače jsou resetovány, jakmile uživatel resetuje své heslo.
+  > Čítače se resetují, jakmile uživatel resetuje heslo.
   >
   >
-* **Otázka: Jak dlouho mám čekat na přijetí e-mailu, SMS nebo telefonního hovoru z resetování hesla?**
+* **Otázka: jak dlouho mám čekat na příjem e-mailu, SMS nebo telefonního hovoru z resetování hesla?**
 
-  > **A:** E-maily, SMS zprávy a telefonní hovory by měly být doručeny za méně než minutu. Normální případ je 5 až 20 sekund.
-  > Pokud v tomto časovém rámci neobdržíte oznámení:
-  > * Zkontrolujte složku nevyžádané pošty.
-  > * Zkontrolujte, zda je číslo nebo e-mail, který jste kontaktovali, ten, který očekáváte.
-  > * Zkontrolujte, zda jsou ověřovací data v adresáři správně formátována, například +1 4255551234 nebo *uživatelská\@contoso.com*. 
-* **Otázka: Jaké jazyky jsou podporovány resetováním hesla?**
+  > **A:** E-maily, zprávy SMS a telefonní hovory by se měly dorazit za minutu. Normální případ je 5 až 20 sekund.
+  > Pokud v tomto časovém rámci nedostanete oznámení, postupujte takto:
+  > * Ověřte složku s nevyžádanou poštou.
+  > * Ověřte, že číslo nebo e-mail, který je kontaktován, je ten, který jste očekávali.
+  > * Ověřte, zda jsou ověřovací data v adresáři správně formátována, například + 1 4255551234 nebo *contoso.com uživatele\@*. 
+* **Otázka: Jaké jazyky podporuje resetování hesla?**
 
-  > **A:** UI pro resetování hesla, SMS zprávy a hlasová volání jsou lokalizovány ve stejných jazycích, které jsou podporované v Office 365.
+  > **A:** Uživatelské rozhraní pro resetování hesla, zprávy SMS a hlasové hovory jsou lokalizovány do stejných jazyků, které jsou podporovány v systému Office 365.
   >
   >
-* **Otázka: Jaké části prostředí pro resetování hesla se označují, když nakonfigurované kartě adresáře nastavím položky značky organizace?**
+* **Otázka: jaké části prostředí pro resetování hesla se při nastavování položek značky organizace na kartě Konfigurace v mém adresáři zobrazí logo?**
 
-  > **A:** Portál pro obnovení hesla zobrazuje logo vaší organizace a umožňuje nakonfigurovat odkaz Kontaktovat správce tak, aby ukazoval na vlastní e-mail nebo adresu URL. Všechny e-maily odeslané resetováním hesla obsahují logo, barvy a název vaší organizace v textu e-mailu a jsou přizpůsobeny v nastavení daného jména.
+  > **A:** Portál pro resetování hesla zobrazuje logo vaší organizace a umožňuje nakonfigurovat odkaz "kontaktujte správce", aby odkazoval na vlastní e-mail nebo adresu URL. Všechny e-maily odeslané pomocí resetování hesla zahrnují logo vaší organizace, barvy a jméno v těle e-mailu a přizpůsobují se z nastavení daného konkrétního názvu.
   >
   >
-* **Otázka: Jak mohu uživatele poučit o tom, kam mají resetovat hesla?**
+* **Otázka: Jak můžu informovat uživatele o tom, kde přejít k resetování hesel?**
 
-  > **A:** Vyzkoušejte některé návrhy v našem článku [o nasazení sspr.](howto-sspr-deployment.md#plan-communications)
+  > **A:** Vyzkoušejte některé návrhy v našem článku o [nasazení SSPR](howto-sspr-deployment.md#plan-communications) .
   >
   >
-* **Otázka: Mohu tuto stránku používat z mobilního zařízení?**
+* **Otázka: mohu tuto stránku použít z mobilního zařízení?**
 
-  > **A:** Ano, tato stránka funguje na mobilních zařízeních.
+  > **A:** Ano, Tato stránka funguje na mobilních zařízeních.
   >
   >
-* **Otázka: Podporujete odemknutí místních účtů služby Active Directory při resetování hesel uživateli?**
+* **Otázka: podporujete odemčení místních účtů služby Active Directory, když uživatelé resetují hesla?**
 
-  > **Odpověď:** Ano. Když uživatel resetuje své heslo, pokud bylo pomocí služby Azure AD Connect nasazeno zpětné heslo, účet tohoto uživatele se automaticky odemkne při resetování hesla.
+  > **Odpověď:** Ano. Pokud uživatel resetuje heslo, pokud byl zpětný zápis hesla nasazený prostřednictvím Azure AD Connect, účet uživatele se při resetování hesla automaticky odemkne.
   >
   >
-* **Otázka: Jak lze integrovat resetování hesla přímo do prostředí přihlašování na ploše uživatele?**
+* **Otázka: Jak můžu integrovat resetování hesla přímo do uživatelského prostředí pro přihlašování uživatele?**
 
-  > **A:** Pokud jste zákazníkazure AD Premium, můžete nainstalovat Microsoft Identity Manager bez dalších nákladů a nasadit místní řešení pro resetování hesla.
+  > **A:** Pokud jste zákazníkem Azure AD Premium, můžete Microsoft Identity Manager nainstalovat bez dalších poplatků a nasadit místní řešení pro resetování hesla.
   >
   >
-* **Otázka: Lze nastavit různé bezpečnostní otázky pro různá národní prostředí?**
+* **Otázka: mohu nastavit různé bezpečnostní otázky pro různá národní prostředí?**
 
-  > **A:** Ne, dnes to není možné.
+  > **A:** Ne, to není možné ještě dnes.
   >
   >
-* **Otázka: Kolik otázek lze nakonfigurovat pro možnost ověřování bezpečnostních otázek?**
+* **Otázka: kolik otázek mohu nakonfigurovat pro možnost ověřování bezpečnostních otázek?**
 
-  > **A:** Na [webu Azure Portal](https://portal.azure.com)můžete nakonfigurovat až 20 vlastních otázek týkajících se zabezpečení .
+  > **A:** V [Azure Portal](https://portal.azure.com)můžete nakonfigurovat až 20 vlastních bezpečnostních otázek.
   >
   >
-* **Otázka: Jak dlouho mohou být bezpečnostní otázky?**
+* **Otázka: jak dlouho můžou být bezpečnostní otázky?**
 
-  > **A:** Bezpečnostní otázky mohou mít dlouhou 3 až 200 znaků.
+  > **A:** Bezpečnostní otázky můžou mít délku 3 až 200 znaků.
   >
   >
-* **Otázka: Jak dlouho mohou být odpovědi na bezpečnostní otázky?**
+* **Otázka: jak dlouho mohou být odpovědi na bezpečnostní otázky?**
 
-  > **A:** Odpovědi mohou mít dlouhou 3 až 40 znaků.
+  > **A:** Odpovědi můžou mít délku 3 až 40 znaků.
   >
   >
-* **Otázka: Jsou duplicitní odpovědi na bezpečnostní otázky odmítnuty?**
+* **Otázka: jsou zamítnout duplicitní odpovědi na bezpečnostní otázky?**
 
-  > **A:** Ano, odmítáme duplicitní odpovědi na bezpečnostní otázky.
+  > **A:** Ano, zamítneme duplicitní odpovědi na bezpečnostní otázky.
   >
   >
-* **Otázka: Může uživatel zaregistrovat stejnou bezpečnostní otázku více než jednou?**
+* **Otázka: může uživatel zaregistrovat stejnou bezpečnostní otázku více než jednou?**
 
-  > **Odpověď:** Ne. Poté, co uživatel zaregistruje konkrétní otázku, nemůže se zaregistrovat pro tuto otázku podruhé.
+  > **Odpověď:** Ne. Když uživatel zaregistruje konkrétní otázku, nepůjde na tuto otázku zaregistrovat podruhé.
   >
   >
-* **Otázka: Je možné nastavit minimální limit bezpečnostních otázek pro registraci a reset?**
+* **Otázka: je možné nastavit minimální limit bezpečnostních otázek pro registraci a resetování?**
 
-  > **A:** Ano, jeden limit lze nastavit pro registraci a druhý pro reset. Pro registraci mohou být vyžadovány tři až pět bezpečnostních otázek a pro reset ování mohou být vyžadovány tři až pět otázek.
+  > **A:** Ano, jeden limit se dá nastavit pro registraci a druhý pro resetování. Pro registraci se může vyžadovat tři až pět bezpečnostních otázek a pro resetování se můžou vyžadovat tři až pět otázek.
   >
   >
-* **Otázka: Nakonfiguroval jsem zásady tak, aby vyžadovaly, aby uživatelé používali otázky zabezpečení k resetování, ale správci Azure se zdají být nakonfigurovaní jinak.**
+* **Otázka: Mám nakonfigurovanou zásadu, která vyžaduje, aby uživatelé používali bezpečnostní otázky pro resetování, ale správcům Azure se zdá, že se nakonfigurují jinak.**
 
-  > **A:** Toto je očekávané chování. Microsoft pro všechny role správců Azure vynucuje přísné výchozí zásady resetování hesel. To zabrání správcům v použití bezpečnostních otázek. Další informace o této zásadách najdete v článku [Zásady a omezení hesla.](concept-sspr-policy.md)
+  > **A:** Toto je očekávané chování. Microsoft pro všechny role správců Azure vynucuje přísné výchozí zásady resetování hesel. To brání správcům v používání bezpečnostních otázek. Další informace o této zásadě najdete v tématu [zásady a omezení hesel v Azure Active Directorym](concept-sspr-policy.md) článku.
   >
   >
-* **Otázka: Pokud uživatel zaregistroval více než maximální počet otázek potřebných k resetování, jak jsou bezpečnostní otázky vybrány během resetování?**
+* **Otázka: Pokud uživatel zaregistroval více než maximální počet otázek požadovaných k resetování, jak se bezpečnostní otázky při resetování vybraly?**
 
-  > **A:** *N* počet bezpečnostních otázek jsou vybrány náhodně z celkového počtu otázek, které uživatel zaregistroval, kde *N* je částka, která je nastavena pro počet **otázek potřebných k resetování** možnost. Pokud například uživatel zaregistroval pět bezpečnostních otázek, ale k resetování hesla jsou vyžadovány pouze tři, jsou náhodně vybrány tři z pěti otázek, které jsou uvedeny při resetování. Chcete-li zabránit zatloukání otázek, pokud uživatel získá odpovědi na otázky nesprávné proces výběru začíná znovu.
+  > **A:** *n* počet otázek zabezpečení vybraných náhodně z celkového počtu otázek, pro které uživatel zaregistroval, kde *N* je množství, které je nastaveno pro **počet otázek vyžadovaných k resetování** možnosti. Pokud například uživatel zaregistroval pět bezpečnostních otázek, ale pro resetování hesla jsou vyžadovány pouze tři, tři z pěti otázek jsou náhodně vybrány a zobrazí se při resetování. Chcete-li zabránit kladivu dotazů, pokud uživatel získá odpovědi na otázky, že se spustí proces výběru.
   >
   >
-* **Otázka: Jak dlouho jsou e-mailové a SMS jednorázové přístupové kódy platné?**
+* **Otázka: jak dlouho jsou platná e-mailová a SMS hesla platná?**
 
-  > **A:** Životnost relace pro resetování hesla je 15 minut. Od začátku operace resetování hesla má uživatel 15 minut na resetování hesla. E-mail a SMS jednorázový přístupový kód jsou platné po dobu 5 minut během relace resetování hesla.
+  > **A:** Doba platnosti relace pro resetování hesla je 15 minut. Od spuštění operace resetování hesla má uživatel 15 minut, než se heslo resetuje. Heslo pro jednorázové e-maily a SMS jsou v relaci resetování hesla platné po dobu 5 minut.
   >
   >
-* **Otázka: Mohu uživatelům zablokovat resetování hesla?**
+* **Otázka: můžu zabránit uživatelům v resetování hesla?**
 
-  > **A:** Ano, pokud používáte skupinu k povolení sspr, můžete odebrat jednotlivé uživatele ze skupiny, která umožňuje uživatelům obnovit své heslo. Pokud je uživatel globálním správcem, zachová si možnost resetovat své heslo a nelze jej zakázat.
+  > **A:** Ano, pokud použijete skupinu k povolení SSPR, můžete odebrat jednotlivé uživatele ze skupiny, která umožňuje uživatelům resetovat heslo. Pokud je uživatel globálním správcem, uchová si možnost resetovat heslo a tato funkce se nedá zakázat.
   >
   >
 
 ## <a name="password-change"></a>Změna hesla
 
-* **Otázka: Kde by měli moji uživatelé změnit svá hesla?**
+* **Otázka: kde by měl moji uživatelé přejít ke změně hesla?**
 
-  > **A:** Uživatelé si můžou změnit hesla kdekoli, kde uvidí svůj profilový obrázek nebo ikonu, třeba v pravém horním rohu portálu [Office 365](https://portal.office.com) nebo [přístupového panelu.](https://myapps.microsoft.com) Uživatelé mohou změnit svá hesla na [stránce Profil přístupového panelu](https://account.activedirectory.windowsazure.com/r#/profile). Uživatelé mohou být také požádáni o automatické změně hesla na přihlašovací stránce Azure AD, pokud jejich hesla vypršela. Nakonec uživatelé mohou přejít na [portál změny hesla Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) přímo, pokud chtějí změnit svá hesla.
+  > **A:** Uživatelé můžou změnit svá hesla kdekoli, kde uvidí svůj profil nebo ikonu, jako v pravém horním rohu portálu [Office 365](https://portal.office.com) nebo prostředí [přístupového panelu](https://myapps.microsoft.com) . Uživatelé mohou měnit hesla na [stránce profilu přístupového panelu](https://account.activedirectory.windowsazure.com/r#/profile). Uživatelé můžou být na přihlašovací stránce služby Azure AD automaticky požádáni o změnu hesel, pokud jejich hesla vypršela. Nakonec můžou uživatelé přejít na portál pro [změnu hesel Azure AD](https://account.activedirectory.windowsazure.com/ChangePassword.aspx) přímo, pokud chtějí měnit hesla.
   >
   >
-* **Otázka: Můžou být moji uživatelé upozorněni na portálu Office, když vyprší platnost jejich místního hesla?**
+* **Otázka: je možné, že se uživatelé budou na portálu Office informovat, když vyprší jejich místní heslo?**
 
-  > **A:** Ano, to je možné dnes, pokud používáte službu AD FS (Active Directory Federation Services). Pokud používáte ad fs, postupujte podle pokynů v [odesílání deklarací zásad hesel s ad FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) článku. Pokud používáte synchronizaci hodnot hash hesel, není to dnes možné. Zásady hesel nesynchronizujeme z místních adresářů, takže není možné, abychom do cloudových prostředí zveřejňovali oznámení o vypršení platnosti. V obou případech je také možné [upozornit uživatele, jejichž hesla brzy vyprší prostřednictvím prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  > **A:** Ano, tato možnost je možná dnes, pokud používáte Active Directory Federation Services (AD FS) (AD FS). Pokud používáte AD FS, postupujte podle pokynů v tématu [odesílání deklarací zásad hesel pomocí AD FS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) článku. Pokud používáte synchronizaci hodnot hash hesel, není to ještě dnes. Nesynchronizujeme zásady hesel z místních adresářů, takže nám není možné odesílat oznámení o vypršení platnosti cloudovým prostředím. V obou případech je také možné [upozornit uživatele, jejichž hesla brzy vyprší prostřednictvím prostředí PowerShell](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
   >
   >
-* **Otázka: Mohu uživatelům zabránit ve změně hesla?**
+* **Otázka: můžu zablokovat uživatelům změnu hesla?**
 
-  > **A:** Pro uživatele pouze pro cloud nelze blokovat změny hesel. Pro místní uživatele můžete nastavit možnost **uživatele,** aby nemohl změnit možnost hesla na vybranou. Vybraní uživatelé nemohou změnit své heslo.
+  > **A:** Pro cloudové uživatele nejde změny hesel blokovat. U místních uživatelů můžete nastavit možnost **uživatel nemůže změnit možnost hesla** na zaškrtnuto. Vybraní uživatelé nemohou změnit heslo.
   >
   >
 
 ## <a name="password-management-reports"></a>Sestavy správy hesel
 
-* **Otázka: Jak dlouho trvá, než se data zobrazí v sestavách správy hesel?**
+* **Otázka: jak dlouho trvá zobrazování dat v sestavách správy hesel?**
 
-  > **A:** Data by se měla objevit v sestavách správy hesel za 5 až 10 minut. V některých případech může trvat až hodinu, než se zobrazí.
+  > **A:** Data by se měla zobrazit v sestavách správy hesel během 5 až 10 minut. V některých případech může trvat až hodinu, než se zobrazí.
   >
   >
 * **Otázka: Jak mohu filtrovat sestavy správy hesel?**
 
-  > **A:** Chcete-li filtrovat sestavy správy hesel, vyberte malé lupy vpravo od popisků sloupců v horní části sestavy. Pokud chcete provést bohatší filtrování, můžete si sestavu stáhnout do aplikace Excel a vytvořit kontingenční tabulku.
+  > **A:** Chcete-li filtrovat sestavy správy hesel, vyberte v horní části sestavy malé lupu na krajní pravé straně popisků sloupců. Pokud chcete dělat bohatší filtrování, můžete si stáhnout sestavu do Excelu a vytvořit kontingenční tabulku.
   >
   >
 * **Otázka: Jaký je maximální počet událostí, které jsou uloženy v sestavách správy hesel?**
 
-  > **A:** Až 75 000 událostí registrace obnovení hesla nebo obnovení hesla je uloženo v sestavách správy hesel, které se nacházejí až do 30 dnů. Pracujeme na rozšíření tohoto čísla, aby zahrnovala více událostí.
+  > **A:** V sestavách správy hesel se ukládají až 75 000 událostí obnovení hesla nebo resetování hesla, a to až do 30 dnů. Pracujeme na tom, aby se toto číslo rozšířilo, aby se zahrnovaly další události.
   >
   >
-* **Otázka: Jak daleko zpět jsou sestavy správy hesel?**
+* **Otázka: jak daleko zpátky budou sestavy správy hesel přecházet?**
 
-  > **A:** Sestavy správy hesel zobrazují operace, ke kterým došlo během posledních 30 dnů. Prozatím, pokud potřebujete tato data archivovat, můžete sestavy pravidelně stahovat a ukládat je na samostatném místě.
+  > **A:** Sestavy správy hesel zobrazují operace, ke kterým došlo během posledních 30 dnů. Pokud teď potřebujete archivovat tato data, můžete sestavy stahovat pravidelně a ukládat je do samostatného umístění.
   >
   >
-* **Otázka: Existuje maximální počet řádků, které se mohou zobrazit v sestavách správy hesel?**
+* **Otázka: existuje maximální počet řádků, které se mohou zobrazit v sestavách správy hesel?**
 
-  > **Odpověď:** Ano. Maximálně 75 000 řádků se může zobrazit v některé z sestav správy hesel, ať už jsou zobrazeny v unovém rozhraní nebo jsou staženy.
+  > **Odpověď:** Ano. V jedné ze sestav správy hesel se může zobrazit maximálně 75 000 řádků, ať už jsou zobrazené v uživatelském rozhraní nebo se stáhnou.
   >
   >
-* **Otázka: Existuje rozhraní API pro přístup k datům pro resetování hesla nebo registraci?**
+* **Otázka: je k dispozici rozhraní API pro přístup k datům vytváření sestav pro resetování hesla nebo k registraci?**
 
-  > **Odpověď:** Ano. Informace o tom, jak získat přístup k datům sestav pro resetování hesla, najdete v [tématu Azure Log Analytics REST API Reference](/rest/api/loganalytics/).
+  > **Odpověď:** Ano. Informace o tom, jak získat přístup k datům pro vytváření sestav pro resetování hesel, najdete v referenčních informacích k [Azure Log Analytics REST API](/rest/api/loganalytics/).
   >
   >
 
@@ -243,37 +243,37 @@ Tyto nejčastější dotazy jsou rozděleny do následujících částí:
 
 * **Otázka: Jak funguje zpětný zápis hesla na pozadí?**
 
-  > **A:** Vysvětlení, co se stane, když povolíte zpětný zápis hesla a jak data procházejí systémem zpět do místního prostředí, najdete v článku [Jak funguje zpětný zápis hesla.](howto-sspr-writeback.md)
+  > **A:** Informace o tom, co se stane, když povolíte zpětný zápis hesla a jak data přejdou zpět do místního prostředí, najdete v článku [jak zpětný zápis hesla funguje](howto-sspr-writeback.md) .
   >
   >
-* **Otázka: Jak dlouho trvá zápis hesla do práce? Existuje zpoždění synchronizace, jako je tomu u synchronizace hash hesla?**
+* **Otázka: jak dlouho trvá zpětný zápis hesla? Existuje zpoždění synchronizace, jako je u synchronizace hodnot hash hesel?**
 
-  > **A:** Zpětný zápis hesla je okamžitý. Jedná se o synchronní kanál, který funguje zásadně odlišně než synchronizace hodnot hash hesel. Zpětný zápis hesla umožňuje uživatelům získat zpětnou vazbu v reálném čase o úspěchu jejich resetování nebo změny operace. Průměrná doba úspěšného zpětného zápisu hesla je méně než 500 ms.
+  > **A:** Zpětný zápis hesla je okamžitý. Jedná se o synchronní kanál, který pracuje se zásadním způsobem, než synchronizace hodnot hash hesel. Zpětný zápis hesla umožňuje uživatelům získat zpětnou vazbu v reálném čase o úspěchu jejich resetování nebo změny hesla. Průměrná doba úspěšného zápisu hesla je pod 500 ms.
   >
   >
-* **Otázka: Pokud je můj místní účet deaktivován, jak se můj cloudový účet a přístup týká?**
+* **Otázka: Pokud je můj místní účet zakázaný, jak se to týká můj cloudový účet a přístup?**
 
-  > **A:** Pokud je vaše místní ID zakázané, vaše Cloud ID a přístup se také deaktivují v dalším intervalu synchronizace prostřednictvím služby Azure AD Connect. Ve výchozím nastavení je tato synchronizace každých 30 minut.
+  > **A:** Pokud je vaše místní ID zakázané, vaše ID a přístup k vašemu cloudu se také zakáže při dalším intervalu synchronizace prostřednictvím Azure AD Connect. Ve výchozím nastavení je tato synchronizace každých 30 minut.
   >
   >
-* **Otázka: Pokud je můj místní účet omezen místními zásadami hesel služby Active Directory, dodržuje při změně hesla tuto zásadu obnovení služby Pro bohabojný systém?**
+* **Otázka: Pokud je místní účet omezený místními zásadami hesel služby Active Directory, při změně mého hesla SSPR dodržuje tyto zásady.**
 
-  > **A:** Ano, samoobslužné resetované služby zabezpečení závisí na místních zásadách pro hesla služby Active Directory a řídí je. Tato zásada zahrnuje typické zásady hesel domény služby Active Directory a všechny definované, jemně odstupňované zásady hesel, které jsou zaměřeny na uživatele.
+  > **A:** Ano, SSPR spoléhá na a společnost místní zásady hesel služby Active Directory. Tato zásada zahrnuje typické zásady hesel k doméně služby Active Directory a také všechny definované, jemně odstupňované zásady hesel, které jsou zaměřené na uživatele.
   >
   >
-* **Otázka: Pro jaké typy účtů funguje zpětný zápis hesla?**
+* **Otázka: Jaké typy účtů jsou pro použití zpětného zápisu hesla k pro?**
 
-  > **A:** Zpětný zápis hesla funguje pro uživatelské účty, které jsou synchronizovány z místní služby Active Directory do služby Azure AD, včetně federované, synchronizované hodnoty hash hesla a uživatelů předávací autentication.
+  > **A:** Zpětný zápis hesla funguje u uživatelských účtů, které jsou synchronizované z místní služby Active Directory do služby Azure AD, včetně federovaného, synchronizace hodnot hash hesel a předávacích uživatelů Autentication.
   >
   >
-* **Otázka: Vynucuje zpětný zápis hesla zásady hesel mé domény?**
+* **Otázka: zpětný zápis hesla vynutil zásady hesel moje doména?**
 
-  > **Odpověď:** Ano. Zpětný zápis hesla vynucuje stáří hesla, historii, složitost, filtry a další omezení, která můžete u hesel v místní doméně zavést.
+  > **Odpověď:** Ano. Zpětný zápis hesla vynutil stáří hesla, historii, složitost, filtry a další omezení, která můžete zavést na hesla ve vaší místní doméně.
   >
   >
-* **Otázka: Je zpětný zápis hesla bezpečný?  Jak si můžu být jistý, že mě nehacknou?**
+* **Otázka: Jedná se o zabezpečený zpětný zápis hesla?  Jak můžu zajistit napadení?**
 
-  > **A:** Ano, zpětný zápis hesla je bezpečný. Další informace o více vrstvách zabezpečení implementovaných službou zpětného zápisu hesla naleznete v části [Zabezpečení zpětného zápisu hesla](concept-sspr-writeback.md#password-writeback-security) v článku [Přehled zpětného zápisu hesla.](howto-sspr-writeback.md)
+  > **A:** Ano, zpětný zápis hesla je zabezpečený. Další informace o několika vrstvách zabezpečení implementovaných službou hesla pro zpětný zápis najdete v části [zabezpečení zpětného zápisu hesla](concept-sspr-writeback.md#password-writeback-security) v článku [Přehled zpětného zápisu](howto-sspr-writeback.md) hesla.
   >
   >
 
@@ -289,4 +289,4 @@ Tyto nejčastější dotazy jsou rozděleny do následujících částí:
 * [Co je zpětný zápis hesla a proč byste se o něj měli starat?](howto-sspr-writeback.md)
 * [Jak hlásit aktivitu v SSPR?](howto-sspr-reporting.md)
 * [Jaké jsou všechny možnosti v SSPR a co znamenají?](concept-sspr-howitworks.md)
-* [Myslím, že je něco rozbité. Jak lze vyřešit probléms sspr?](active-directory-passwords-troubleshoot.md)
+* [Myslím, že je něco přerušeno. Návody řešit potíže s SSPR?](active-directory-passwords-troubleshoot.md)

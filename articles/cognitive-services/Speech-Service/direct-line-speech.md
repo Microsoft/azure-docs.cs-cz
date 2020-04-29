@@ -1,7 +1,7 @@
 ---
-title: Řeč přímé linky – služba řeči
+title: Přímý line Speech – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Přehled funkcí, funkcí a omezení pro hlasové asistenty pomocí direct line řeči s sadou Speech Software Development Kit (SDK).
+description: Přehled funkcí, možností a omezení pro hlasové asistenty pomocí přímého Lineového rozpoznávání se sadou Speech Software Development Kit (SDK).
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,29 +11,29 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: 6dc125b68af8f9a07731aaae9d858c19c51f934f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402392"
 ---
 # <a name="what-is-direct-line-speech"></a>Co je Direct Line Speech?
 
-**Direct Line Speech** je robustní komplexní řešení pro vytvoření flexibilního a rozšiřitelného hlasového asistenta. Je poháněn Bot Framework a jeho Direct Line řeči kanál, který je optimalizován pro hlas-in, voice-out interakce s roboty.
+**Přímý line Speech** je robustní ucelené řešení pro vytváření flexibilního a rozšiřitelného hlasového asistenta. Používá se pro robot Framework a jeho přímý spojnicový hlasový kanál, který je optimalizovaný pro hlasové interakce hlasu s roboty.
 
-[Hlasoví asistenti poslouchají](voice-assistants.md) uživatele a reagují na ně a často se ozývou. Používají [převod řeči na text](speech-to-text.md) k přepisu řeči uživatele a poté akce na pochopení textu v přirozeném jazyce. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md).
+[Hlasové asistenti](voice-assistants.md) naslouchají uživatelům a probírají akci v reakci, často se domluví zpět. Používají [Převod řeči na text](speech-to-text.md) k přepisovat řeči uživatele a pak provádějí akci s použitím přirozeného jazyka pro porozumění textu. Tato akce často zahrnuje mluvený výstup z pomocníka generovaného [převodem textu na řeč](text-to-speech.md).
 
-Direct Line Speech nabízí nejvyšší úroveň přizpůsobení a sofistikovanosti pro hlasové asistenty. Je určen pro konverzační scénáře, které jsou otevřené, přírodní nebo hybridy dvou s dokončením úkolu nebo použití příkazu a řízení. Tento vysoký stupeň flexibility přichází s větší složitostí a scénáře, které jsou vymezeny na dobře definované úkoly pomocí vstupu v přirozeném jazyce, mohou chtít zvážit [vlastní příkazy (Preview)](custom-commands.md) pro zjednodušené řešení.
+Přímý line Speech nabízí nejvyšší úrovně přizpůsobení a sofistikovanější pro hlasové asistenty. Je navržený pro konverzační scénáře, které jsou otevřené, přirozené nebo hybridy těchto dvou s dokončováním úkolů nebo pomocí příkazu a řízení. Tento vysoký stupeň flexibility přináší větší složitost a scénáře, které jsou vymezeny na dobře definované úlohy pomocí vstupu v přirozeném jazyce, můžou pro zjednodušené prostředí řešení zvážit [vlastní příkazy (Preview)](custom-commands.md) .
 
-## <a name="getting-started-with-direct-line-speech"></a>Začínáme s přímou přímou řečí
+## <a name="getting-started-with-direct-line-speech"></a>Začínáme s funkcí Direct line Speech
 
-Prvním krokem pro vytvoření hlasového asistenta pomocí přímé řeči je [získat klíč předplatného řeči](get-started.md), vytvořit nového robota přidruženého k tomuto předplatnému a připojit robota k kanálu Řeči přímé čáry.
+Prvním postupem při vytváření hlasového asistenta pomocí funkce Direct line Speech je [získání klíče předplatného pro rozpoznávání řeči](get-started.md), vytvoření nové robota přidruženého k tomuto předplatnému a připojení robota k kanálu přímého line Speech.
 
-   ![Koncepční diagram toku služby orchestrace řeči přímé čáry](media/voice-assistants/overview-directlinespeech.png "Tok řečového kanálu")
+   ![Koncepční diagram toku služby orchestrace zpracování textu v přímém řádku](media/voice-assistants/overview-directlinespeech.png "Tok kanálu řeči")
 
-Úplný podrobný návod k vytvoření jednoduchého hlasového asistenta pomocí funkce Direct Line Speech najdete [v kurzu pro pomocníka pro řeč pomocí sady Speech SDK a kanálu Přímé řeči](tutorial-voice-enable-your-bot-speech-sdk.md).
+Podrobný průvodce vytvořením jednoduchého hlasového pomocníka pomocí funkce Direct line Speech najdete [v kurzu rozpoznávání řeči – povolení robota se sadou Speech SDK a kanálu Direct line Speech](tutorial-voice-enable-your-bot-speech-sdk.md).
 
-Nabízíme také rychlé starty navržené tak, abyste mohli rychle spouštět kód a učit se api. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
+Nabízíme také rychlé starty, které jsou navržené tak, aby vám poskytovaly kód a rychle přeučení rozhraní API. Tato tabulka obsahuje seznam rychlých startů hlasového asistenta uspořádaných podle jazyka a platformy.
 
 | Rychlý start | Platforma | API – referenční informace |
 |------------|----------|---------------|
@@ -43,19 +43,19 @@ Nabízíme také rychlé starty navržené tak, abyste mohli rychle spouštět k
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Ukázkový kód pro vytvoření hlasového asistenta je k dispozici na GitHubu. Tyto ukázky pokrývají klientskou aplikaci pro připojení k asistentovi v několika oblíbených programovacích jazycích.
+Vzorový kód pro vytvoření hlasového asistenta je k dispozici na GitHubu. Tyto ukázky zahrnují klientskou aplikaci pro připojení k vašemu asistentovi v několika oblíbených programovacích jazycích.
 
 * [Ukázky hlasového asistenta (SDK)](https://aka.ms/csspeech/samples)
-* [Kurz: Hlasové povolení asistenta pomocí sady Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
+* [Kurz: hlas – povolení pomocníka se sadou Speech SDK, C #](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Přizpůsobení
 
-Hlasoví asistenti vytvoření pomocí služby Rozpoznávání řeči mohou používat celou řadu možností přizpůsobení, které jsou k dispozici pro [převod řeči na text](speech-to-text.md), převod textu na [řeč](text-to-speech.md)a vlastní [výběr klíčových slov](speech-devices-sdk-create-kws.md).
+Hlasové asistenti sestavené pomocí služby Speech Services můžou používat celou škálu možností přizpůsobení, které jsou k dispozici pro [Převod řeči na text](speech-to-text.md), [Převod textu na řeč](text-to-speech.md)a [vlastní výběr klíčového slova](speech-devices-sdk-create-kws.md).
 
 > [!NOTE]
-> Možnosti vlastního nastavení se liší podle jazyka/národního prostředí (viz [Podporované jazyky](supported-languages.md)).
+> Možnosti přizpůsobení se liší podle jazyka nebo národního prostředí (viz [podporované jazyky](supported-languages.md)).
 
-Direct Line Speech a s ní spojené funkce pro hlasové asistenty jsou ideálním doplňkem [k řešení virtuálního asistenta a podnikové šabloně](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). Ačkoli direct line řeč může pracovat s jakýmkoli kompatibilním robotem, tyto prostředky poskytují opakovaně použitelný směrný plán pro vysoce kvalitní konverzační prostředí, stejně jako společné podpůrné dovednosti a modely pro rychlé zahájení.
+Funkce Direct line Speech a její přidružená funkce pro hlasové asistenty jsou ideálním doplňkem k [řešení Virtual Assistant a šabloně organizace](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview). I když je přímým line Speech možné pracovat s jakýmkoli kompatibilním robotem, poskytují tyto prostředky opakovaně použitelný směrný plán pro vysoce kvalitní konverzační prostředí a také společné podpůrné dovednosti a modely pro rychlé zahájení práce.
 
 ## <a name="reference-docs"></a>Referenční dokumenty
 
@@ -65,6 +65,6 @@ Direct Line Speech a s ní spojené funkce pro hlasové asistenty jsou ideální
 ## <a name="next-steps"></a>Další kroky
 
 * [Získejte zdarma klíč předplatného služby Speech](get-started.md)
-* [Získání sady SDK pro rozpoznávání řeči](speech-sdk.md)
+* [Získat sadu Speech SDK](speech-sdk.md)
 * [Vytvoření a nasazení základního chatbota](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Získejte řešení virtuální asistentky a podnikovou šablonu](https://github.com/Microsoft/AI)
+* [Získat řešení a šablonu společnosti Virtual Assistant](https://github.com/Microsoft/AI)

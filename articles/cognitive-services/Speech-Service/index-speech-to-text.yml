@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace k převodu řeči na text
-summary: Převod řeči na text ze služby Řeč, označovaný také jako rozpoznávání řeči, umožňuje přepis zvukových proudů v reálném čase a v šarži do textu.
+summary: Převod řeči na text ze služby pro rozpoznávání řeči, označovaného také jako rozpoznávání řeči, umožňuje v reálném čase a dávkové přepisy zvukových streamů na text.
 metadata:
-  title: Dokumentace k převodu řeči na text – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace pro převod řeči na text – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/19/2020
   ms.author: trbye
   ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401405"
 landingContent:
-- title: O převodu řeči na text
+- title: Převod řeči na text
   linkLists:
   - linkListType: overview
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Rozpoznávání řeči uložené v úložišti objektů blob
       url: quickstarts/from-blob.md
-- title: Vývoj pomocí převodu řeči na text
+- title: Vývoj s využitím řeči na text
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -68,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: Nejčastější dotazy k převodu řeči na text
       url: faq-stt.md
-    - text: Ceny převodu řeči na text
+    - text: Ceny z převodu řeči na text
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

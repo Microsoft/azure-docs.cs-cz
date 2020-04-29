@@ -1,6 +1,6 @@
 ---
-title: Prošetření podezřelého zařízení
-description: Tento způsob, jak průvodce vysvětluje, jak pomocí Azure Security Center pro IoT prozkoumat podezřelé zařízení IoT pomocí Log Analytics.
+title: Prozkoumat podezřelé zařízení
+description: Tato příručka vysvětluje, jak pomocí Azure Security Center pro IoT prozkoumat podezřelé zařízení IoT pomocí Log Analytics.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,48 +16,48 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311037"
 ---
-# <a name="investigate-a-suspicious-iot-device"></a>Prozkoumání podezřelého zařízení IoT
+# <a name="investigate-a-suspicious-iot-device"></a>Prozkoumat podezřelé zařízení IoT
 
-Výstrahy služby Azure Security Center for IoT poskytují jasné informace o tom, kdy jsou zařízení IoT podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky, že je zařízení ohroženo.
+Azure Security Center pro výstrahy služby IoT poskytují jasné údaje o tom, že zařízení IoT jsou podezřelá z účasti na podezřelých aktivitách nebo když existují náznaky ohrožení zařízení.
 
-V této příručce použijte návrhy šetření k určení potenciálních rizik pro vaši organizaci, rozhodnout, jak napravit a zjistit nejlepší způsoby, jak zabránit podobným útokům v budoucnu.
+V tomto průvodci můžete použít návrhy šetření, které vám pomůžou určit potenciální rizika pro vaši organizaci, rozhodnout se, jak je opravit, a zjistit nejlepší způsoby, jak v budoucnu zabránit podobným útokům.
 
 > [!div class="checklist"]
-> * Vyhledání dat zařízení
-> * Prozkoumat pomocí dotazů kql
+> * Hledání dat zařízení
+> * Prozkoumat pomocí dotazů KQL
 
-## <a name="how-can-i-access-my-data"></a>Jak mohu získat přístup ke svým údajům?
+## <a name="how-can-i-access-my-data"></a>Jak můžu získat přístup k datům?
 
-Ve výchozím nastavení Azure Security Center pro IoT ukládá výstrahy zabezpečení a doporučení v pracovním prostoru Log Analytics. Můžete také zvolit uložení nezpracovaných bezpečnostních dat.
+Ve výchozím nastavení Azure Security Center pro IoT ukládá výstrahy a doporučení zabezpečení v pracovním prostoru Log Analytics. Můžete také zvolit ukládání nezpracovaných dat zabezpečení.
 
-Chcete-li vyhledat pracovní prostor Log Analytics pro ukládání dat:
+Vyhledání pracovního prostoru Log Analytics pro úložiště dat:
 
-1. Otevřete centrum IoT,
-1. V části **Zabezpečení**klepněte na položku **Přehled**a vyberte **položku Nastavení**.
-1. Změňte podrobnosti konfigurace pracovního prostoru Analýzy protokolů.
+1. Otevřete Centrum IoT,
+1. V části **zabezpečení**klikněte na **Přehled**a pak vyberte **Nastavení**.
+1. Změňte podrobnosti konfigurace Log Analytics pracovního prostoru.
 1. Klikněte na **Uložit**.
 
-V návaznosti na konfiguraci postupujte takto, abyste měli přístup k datům uloženým v pracovním prostoru Log Analytics:
+Pro přístup k datům uloženým v pracovním prostoru Log Analytics proveďte následující konfiguraci:
 
-1. Vyberte a klikněte na azure security center pro iot upozornění ve vašem Centru IoT.
-1. Klepněte na tlačítko **Další šetření**.
-1. Vyberte **Chcete-li zjistit, která zařízení mají tuto výstrahu, klikněte sem a zobrazte sloupec DeviceId**.
+1. V IoT Hub vyberte a klikněte na Azure Security Center pro upozornění IoT.
+1. Klikněte na **Další šetření**.
+1. Vyberte **, pokud chcete zobrazit, která zařízení mají toto upozornění, klikněte sem a zobrazte sloupec DeviceID**.
 
-## <a name="investigation-steps-for-suspicious-iot-devices"></a>Vyšetřovací kroky pro podezřelá zařízení IoT
+## <a name="investigation-steps-for-suspicious-iot-devices"></a>Postup šetření pro podezřelá zařízení IoT
 
-Chcete-li zobrazit přehledy a nezpracovaná data o vašich zařízeních IoT, přejděte do pracovního prostoru Log Analytics [a získejte přístup k datům](#how-can-i-access-my-data).
+Pokud chcete zobrazit přehledy a nezpracovaná data o zařízeních IoT, přejděte do svého pracovního prostoru Log Analytics, [abyste měli přístup k datům](#how-can-i-access-my-data).
 
-Podívejte se na ukázkové dotazy kql níže, abyste mohli začít s vyšetřováním upozornění a aktivit na vašem zařízení.
+V ukázkových dotazech k KQL můžete začít s vyšetřováním výstrah a aktivit v zařízení.
 
 ### <a name="related-alerts"></a>Související výstrahy
 
-Chcete-li zjistit, zda byly spuštěny další výstrahy přibližně ve stejnou dobu, použijte následující dotaz kql:
+Pokud chcete zjistit, jestli se po stejnou dobu spouštěly další výstrahy, použijte následující dotaz KQL:
 
   ```
   let device = "YOUR_DEVICE_ID";
@@ -69,7 +69,7 @@ Chcete-li zjistit, zda byly spuštěny další výstrahy přibližně ve stejnou
 
 ### <a name="users-with-access"></a>Uživatelé s přístupem
 
-Chcete-li zjistit, kteří uživatelé mají přístup k tomuto zařízení, použijte následující dotaz kql:
+Pokud chcete zjistit, kteří uživatelé mají k tomuto zařízení přístup, použijte následující dotaz KQL:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -86,12 +86,12 @@ Chcete-li zjistit, kteří uživatelé mají přístup k tomuto zařízení, pou
  ```
 Pomocí těchto dat můžete zjistit:
 
-- Kteří uživatelé mají k zařízení přístup?
+- Kteří uživatelé mají přístup k zařízení?
 - Mají uživatelé s přístupem očekávané úrovně oprávnění?
 
 ### <a name="open-ports"></a>Otevřené porty
 
-Chcete-li zjistit, které porty v zařízení jsou aktuálně používány nebo byly použity, použijte následující dotaz kql:
+Chcete-li zjistit, které porty v zařízení se aktuálně používají nebo byly použity, použijte následující dotaz KQL:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -113,13 +113,13 @@ Chcete-li zjistit, které porty v zařízení jsou aktuálně používány nebo 
 
 Pomocí těchto dat můžete zjistit:
 
-- Které naslouchání zásuvky jsou v zařízení aktuálně aktivní?
-- Mají být povoleny naslouchání sokety, které jsou aktuálně aktivní?
+- Které naslouchající sokety jsou v zařízení aktuálně aktivní?
+- Má se povolit naslouchání soketů, které jsou aktuálně aktivní?
 - Jsou k zařízení připojeny nějaké podezřelé vzdálené adresy?
 
-### <a name="user-logins"></a>Přihlášení uživatele
+### <a name="user-logins"></a>Přihlášení uživatelů
 
-Chcete-li najít uživatele, kteří se přihlásili k zařízení, použijte následující dotaz kql:
+Pokud chcete najít uživatele, kteří se k zařízení přihlásili, použijte následující dotaz KQL:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -143,15 +143,15 @@ Chcete-li najít uživatele, kteří se přihlásili k zařízení, použijte n�
   | summarize CntLoginAttempts=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), CntIPAddress=dcount(RemoteAddress), IPAddress=makeset(RemoteAddress) by UserName, Result, LoginHandler
  ```
 
-Výsledky dotazu slouží ke zjištění:
+Pomocí výsledků dotazu můžete zjistit:
 
 - Kteří uživatelé se k zařízení přihlásili?
-- Mají se uživatelé přihlásit?
-- Připojili se uživatelé, kteří se přihlásili, z očekávaných nebo neočekávaných IP adres?
+- Má uživatel přihlášený, měl by se přihlásit?
+- Pracovali uživatelé, kteří se přihlásili z očekávaných nebo neočekávaných IP adres?
 
 ### <a name="process-list"></a>Seznam procesů
 
-Chcete-li zjistit, zda je seznam procesů očekávaný, použijte následující dotaz kql:
+Pokud chcete zjistit, jestli je seznam procesů podle očekávání, použijte následující dotaz KQL:
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -180,12 +180,12 @@ Chcete-li zjistit, zda je seznam procesů očekávaný, použijte následující
   | summarize CntExecutions=count(), MinObservedTime=min(TimestampLocal), MaxObservedTime=max(TimestampLocal), ExecutingUsers=makeset(UserIdName), ExecutionCommandLines=makeset(CommandLine) by Executable
 ```
 
-Výsledky dotazu slouží ke zjištění:
+Pomocí výsledků dotazu můžete zjistit:
 
-- Byly v zařízení spuštěny nějaké podezřelé procesy?
-- Byly procesy prováděny příslušnými uživateli?
-- Obsahovaly některé spuštění příkazového řádku správné a očekávané argumenty?
+- V zařízení byly spuštěné nějaké podezřelé procesy?
+- Byly procesy spouštěny příslušnými uživateli?
+- Obsahovalo jakékoli spuštění příkazového řádku správné a očekávané argumenty?
 
 ## <a name="next-steps"></a>Další kroky
 
-Po prozkoumání zařízení a lepší pochopení rizik, možná budete chtít [zvážit konfigurace vlastní výstrahy](quickstart-create-custom-alerts.md) ke zlepšení stavu zabezpečení řešení IoT. Pokud agenta zařízení ještě nemáte, zvažte [nasazení agenta zabezpečení](how-to-deploy-agent.md) nebo [změnu konfigurace existujícího agenta zařízení](how-to-agent-configuration.md) za účelem zlepšení výsledků.
+Když prozkoumáte zařízení a získáte lepší porozumění vašim rizikům, možná budete chtít zvážit [konfiguraci vlastních výstrah](quickstart-create-custom-alerts.md) , abyste vylepšili stav zabezpečení řešení IoT. Pokud ještě nemáte agenta zařízení, zvažte [nasazení agenta zabezpečení](how-to-deploy-agent.md) nebo [změnu konfigurace stávajícího agenta zařízení](how-to-agent-configuration.md) , aby se zlepšily vaše výsledky.

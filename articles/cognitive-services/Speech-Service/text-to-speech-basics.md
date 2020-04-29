@@ -1,7 +1,7 @@
 ---
-title: Základy syntézy řeči - Služba řeči
+title: Základy syntézy řeči – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí sady Speech SDK převést převod textu na řeč. V tomto článku se dozvíte o konstrukci objektů, podporovaných formátech zvukového výstupu a vlastních možnostech konfigurace pro syntézu řeči.
+description: Naučte se používat sadu Speech SDK pro převod textu na řeč. V tomto článku se naučíte vytváření objektů, podporované formáty zvukového výstupu a možnosti vlastní konfigurace pro syntézu řeči.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,23 +12,23 @@ ms.date: 04/14/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-sixteen
 ms.openlocfilehash: 74f762dd0004bf72b703d0f611a16762b1ff028d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399563"
 ---
-# <a name="learn-the-basics-of-speech-synthesis"></a>Naučte se základy syntézy řeči
+# <a name="learn-the-basics-of-speech-synthesis"></a>Naučte se základy syntézy řeči.
 
-V tomto článku se dozvíte běžné vzory návrhu pro syntézu převodu textu na řeč pomocí sady Speech SDK. Můžete začít tím, že dělá základní konfiguraci a syntézu a přejít na pokročilejší příklady pro vývoj vlastních aplikací, včetně:
+V tomto článku se seznámíte s běžnými návrhovými vzory pro provádění syntézy textu na řeč pomocí sady Speech SDK. Začnete tím, že provádíte základní konfiguraci a shrnutí a přejdete k pokročilejším příkladům pro vývoj vlastních aplikací, včetně:
 
-* Získávání odpovědí jako datových proudů v paměti
-* Přizpůsobení výstupní vzorkovací rychlosti a přenosové rychlosti
-* Odesílání žádostí o syntézu pomocí SSML (jazyk značek syntézy řeči)
-* Použití neurálních hlasů
+* Získávání odpovědí jako proudů v paměti
+* Přizpůsobení výstupní vzorkovací frekvence a přenosové rychlosti
+* Odesílání požadavků na syntézu pomocí SSML (Speech syntézy Markup Language)
+* Používání hlasů neuronové
 
 > [!TIP]
-> Pokud jste ještě neměli šanci dokončit jeden z našich rychlých startů, doporučujeme vám, abyste nakopli pneumatiky a vyzkoušeli rozpoznávání řeči sami.
+> Pokud jste si ještě neučinili možnost Dokončit některý z našich rychlých startů, doporučujeme, abyste si zavedli pneumatiky a vyzkoušeli rozpoznávání řeči sami.
 > * [Rozpoznávání řeči z mikrofonu](quickstarts/text-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"

@@ -1,7 +1,7 @@
 ---
-title: Vytvořit vlastní klíčová slova – služba Řeč
+title: Vytvořit vlastní klíčová slova – služba Speech
 titleSuffix: Azure Cognitive Services
-description: Vaše zařízení vždy naslouchá klíčovému slovu (nebo frázi). Když uživatel řekne klíčové slovo, zařízení odešle veškerý následný zvuk do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je účinný způsob, jak odlišit vaše zařízení a posílit vaši značku.
+description: Zařízení vždycky naslouchá klíčovému slovu (nebo frázi). Když uživatel uvede klíčové slovo, zařízení pošle veškeré následné zvukové nahrávky do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,50 +11,50 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: trbye
 ms.openlocfilehash: 8e67d624c77eb838f7646731bbdedd8f97f81b96
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400064"
 ---
-# <a name="create-a-custom-keyword-using-speech-studio"></a>Vytvoření vlastního klíčového slova pomocí aplikace Speech Studio
+# <a name="create-a-custom-keyword-using-speech-studio"></a>Vytvoření vlastního klíčového slova pomocí řeči Studio
 
-Vaše zařízení vždy naslouchá klíčovému slovu (nebo frázi). Například "Hey Cortana" je klíčové slovo pro asistenta Cortany. Když uživatel řekne klíčové slovo, zařízení odešle veškerý následný zvuk do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je účinný způsob, jak odlišit vaše zařízení a posílit vaši značku.
+Zařízení vždycky naslouchá klíčovému slovu (nebo frázi). Například "Hey Cortana" je klíčové slovo pro pomocníka Cortana. Když uživatel uvede klíčové slovo, zařízení pošle veškeré následné zvukové nahrávky do cloudu, dokud uživatel nepřestane mluvit. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding.
 
 V tomto článku se dozvíte, jak vytvořit vlastní klíčové slovo pro vaše zařízení.
 
 ## <a name="create-your-keyword"></a>Vytvoření klíčového slova
 
-Před použitím vlastního klíčového slova budete muset vytvořit klíčové slovo pomocí stránky [Vlastní klíčové slovo](https://aka.ms/sdsdk-wakewordportal) v aplikaci Speech [Studio](https://aka.ms/sdsdk-speechportal). Po zadání klíčového slova vytvoří soubor, který nasadíte do zařízení.
+Než budete moct použít vlastní klíčové slovo, budete muset vytvořit klíčové slovo pomocí stránky [vlastní klíčová slova](https://aka.ms/sdsdk-wakewordportal) v [studiu řeči](https://aka.ms/sdsdk-speechportal). Po zadání klíčového slova se vytvoří soubor, který nasadíte do svého zařízení.
 
-1. Přejděte do [aplikace Speech Studio](https://aka.ms/sdsdk-speechportal) a **přihlaste se** nebo, pokud ještě nemáte předplatné řeči, zvolte Vytvořit [**předplatné**](https://go.microsoft.com/fwlink/?linkid=2086754).
+1. Pokud ještě nemáte předplatné pro rozpoznávání řeči, vyberte [**Vytvořit předplatné**](https://go.microsoft.com/fwlink/?linkid=2086754)a přihlaste se ke službě [Speech Studio](https://aka.ms/sdsdk-speechportal) a **přihlaste** se.
 
-1. Na stránce [Vlastní klíčové slovo](https://aka.ms/sdsdk-wakewordportal) vytvořte nový **projekt**. 
+1. Na stránce [vlastní klíčové slovo](https://aka.ms/sdsdk-wakewordportal) vytvořte **Nový projekt**. 
 
-1. Zadejte **název**, volitelný **popis**a vyberte jazyk. Budete potřebovat jeden projekt na jazyk a podpora je v současné době omezena na jazyk en US.
+1. Zadejte **název**, volitelný **Popis**a vyberte jazyk. Budete potřebovat jeden projekt na jazyk a podpora je aktuálně omezená na jazyk EN-US.
 
-    ![Popište projekt klíčových slov](media/custom-keyword/custom-kws-portal-new-project.png)
+    ![Popis projektu s klíčovým slovem](media/custom-keyword/custom-kws-portal-new-project.png)
 
-1. Vyberte projekt ze seznamu. 
+1. Vyberte svůj projekt ze seznamu. 
 
-    ![Výběr projektu klíčových slov](media/custom-keyword/custom-kws-portal-project-list.png)
+    ![Vyberte projekt vašeho klíčového slova.](media/custom-keyword/custom-kws-portal-project-list.png)
 
-1. Chcete-li spustit nový model klíčového slova, klepněte na tlačítko **Vlak model**.
+1. Chcete-li spustit nový model klíčového slova, klikněte na možnost **model výuky**.
 
-1. Zadejte **název** modelu klíčového slova a volitelný **popis** a zadejte klíčové slovo podle svého **výběru** a klepněte na tlačítko **Další**. Máme několik [pokynů,](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) které vám pomohou vybrat efektivní klíčové slovo.
+1. Zadejte **název** modelu klíčového slova a volitelný **Popis** , zadejte **klíčové slovo** podle vlastního výběru a klikněte na **Další**. Máme nějaké [pokyny](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword) , které vám pomůžou zvolit efektivní klíčové slovo.
 
-    ![Zadejte klíčové slovo.](media/custom-keyword/custom-kws-portal-new-model.png)
+    ![Zadejte své klíčové slovo](media/custom-keyword/custom-kws-portal-new-model.png)
 
-1. Portál nyní vytvoří výslovnosti kandidátů pro vaše klíčové slovo. Poslouchejte každého kandidáta kliknutím na tlačítka přehrávání a odstraňte šeky vedle všech nesprávných výslovností. Jakmile jsou zaškrtnuty pouze dobré výslovnosti, klepněte na **tlačítko Vlak** a začněte generovat klíčové slovo. 
+1. Portál teď pro klíčové slovo vytvoří kandidáty na kandidáty. Naslouchat každému kandidátovi kliknutím na tlačítko Přehrát a odebrat kontroly u všech nesprávných výslovností. Jakmile budou kontrolovány pouze dobré výslovnosti, klikněte na možnost **výuka** a začněte vygenerovat klíčové slovo. 
 
     ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. Může trvat až třicet minut pro model, který má být generován. Seznam klíčových slov se po dokončení modelu změní ze **zpracování** na **Úspěšné.** Poté můžete soubor stáhnout.
+1. Generování modelu může trvat až 30 minut. Po dokončení modelu se seznam klíčových slov změní ze **zpracování** na **dokončeno** . Pak můžete soubor stáhnout.
 
     ![Kontrola klíčového slova](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. Uložte soubor ZIP do počítače. Tento soubor budete potřebovat k nasazení vlastního klíčového slova do zařízení.
+1. Uložte soubor. zip do počítače. Tento soubor budete potřebovat k nasazení vašeho vlastního klíčového slova do zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Otestujte vlastní klíčové slovo pomocí [nástroje Speech Devices SDK Quickstart](https://aka.ms/sdsdk-quickstart).
+Otestujte vlastní klíčové slovo pomocí [sady Speech Devices SDK rychlý Start](https://aka.ms/sdsdk-quickstart).

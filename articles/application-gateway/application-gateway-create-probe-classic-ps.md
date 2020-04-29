@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastní sondy pomocí PowerShellu – Aplikační brána Azure
-description: Zjistěte, jak vytvořit vlastní sondu pro aplikační bránu pomocí PowerShellu v klasickém modelu nasazení
+title: Vytvoření vlastní sondy pomocí PowerShellu – Azure Application Gateway
+description: Zjistěte, jak vytvořit vlastní test pro Application Gateway pomocí prostředí PowerShell v modelu nasazení Classic.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,23 +8,23 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312558"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Aplikační bránu Azure (klasická) pomocí PowerShellu
+# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Vytvoření vlastní sondy pro Azure Application Gateway (Classic) pomocí prostředí PowerShell
 
 > [!div class="op_single_selector"]
 > * [portál Azure](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
 
-V tomto článku přidáte vlastní sondu do existující aplikační brány s Prostředím PowerShell. Vlastní sondy jsou užitečné pro aplikace, které mají určitou stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webové aplikace.
+V tomto článku přidáte vlastní test paměti do existující aplikační brány pomocí PowerShellu. Vlastní sondy jsou užitečné pro aplikace, které mají konkrétní stránku kontroly stavu nebo pro aplikace, které neposkytují úspěšnou odpověď na výchozí webovou aplikaci.
 
 > [!IMPORTANT]
-> Azure má dva různé modely nasazení pro vytváření a práci s prostředky: [Resource Manager a Classic](../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití modelu klasické nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](application-gateway-create-probe-ps.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Zjistěte, jak [provést tento postup pomocí modelu Resource Manageru](application-gateway-create-probe-ps.md).
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -36,7 +36,7 @@ Pro vytvoření nové aplikační brány:
 2. Vytvořte konfigurační soubor XML nebo objekt konfigurace.
 3. Potvrďte konfiguraci nově vytvořeného prostředku aplikační brány.
 
-### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Vytvoření prostředku aplikační brány pomocí vlastní sondy
+### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Vytvoření prostředku aplikační brány s vlastní sondou
 
 Pokud chcete vytvořit bránu, použijte rutinu `New-AzureApplicationGateway` a zadejte vlastní hodnoty. Fakturace brány se nespustí v tomhle okamžiku. Fakturace začíná v pozdější fázi, po úspěšném spuštění brány.
 
@@ -53,13 +53,13 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> Výchozí hodnota pro *InstanceCount* je 2 s maximální hodnotou 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Můžete si vybrat mezi malými, středními a velkými.
+> Výchozí hodnota pro *InstanceCount* je 2 s maximální hodnotou 10. Výchozí hodnota *GatewaySize* je Medium (Střední). Můžete si vybrat mezi malým, středním a velkým.
 > 
 > 
 
-Hodnoty *VirtualIPs* a *DnsName* se zobrazují jako prázdné, protože se brána ještě nespustila. Tyto hodnoty jsou vytvořeny, jakmile je brána ve spuštěném stavu.
+Hodnoty *VirtualIPs* a *DnsName* se zobrazují jako prázdné, protože se brána ještě nespustila. Tyto hodnoty se vytvoří, jakmile je brána ve stavu spuštěno.
 
-### <a name="configure-an-application-gateway-by-using-xml"></a>Konfigurace aplikační brány pomocí xml
+### <a name="configure-an-application-gateway-by-using-xml"></a>Konfigurace aplikační brány pomocí XML
 
 V následujícím příkladu použijete soubor XML k nakonfigurování všech nastavení aplikační brány a potvrdíte je pro prostředek aplikační brány.  
 
@@ -131,37 +131,37 @@ Zkopírujte následující text do Poznámkového bloku.
 
 Upravte hodnoty položek konfigurace v závorkách. Uložte soubor s příponou .xml.
 
-Následující příklad ukazuje, jak pomocí konfiguračního souboru nastavit aplikační bránu pro vyrovnávání zatížení http provoz na veřejném portu 80 a odeslat síťový provoz na back-end port 80 mezi dvěma adresami IP pomocí vlastní sondy.
+Následující příklad ukazuje, jak použít konfigurační soubor k nastavení aplikační brány pro vyrovnávání zatížení provozu HTTP na veřejném portu 80 a odesílání síťového provozu do back-endového portu 80 mezi dvěma IP adresami pomocí vlastního testu.
 
 > [!IMPORTANT]
 > Položka protokolu Http nebo Https rozlišuje velká a malá písmena.
 
-Nová konfigurační položka \<Sonda je přidána\> ke konfiguraci vlastních sond.
+Přidá se nová sonda \<\> položky konfigurace, ve které se nakonfigurují vlastní sondy.
 
 Konfigurační parametry jsou:
 
 |Parametr|Popis|
 |---|---|
-|**Název** |Název odkazu pro vlastní sondu. |
-| **Protokol** | (možné hodnoty jsou HTTP nebo HTTPS).|
-| **Hostitel** a **cesta** | Dokončit cestu URL, která je vyvolána aplikační bránou k určení stavu instance. Například pokud máte web http:\//contoso.com/, pak vlastní sonda může být\/nakonfigurován pro "http: /contoso.com/path/custompath.htm" pro kontroly sondy mít úspěšnou odpověď HTTP.|
-| **Interval** | Konfiguruje kontroly intervalu sondy v sekundách.|
-| **Časový limit** | Definuje časový rozsah sondy pro kontrolu odpovědi HTTP.|
-| **Prahová hodnota není v pořádku** | Počet neúspěšných odpovědí HTTP potřebných k označení instance back-end jako *není v pořádku*.|
+|**Název** |Referenční název pro vlastní test paměti |
+| **Protokol** | Použitý protokol (možné hodnoty jsou HTTP nebo HTTPS).|
+| **Hostitel** a **cesta** | Dokončete cestu adresy URL vyvolanou aplikační bránou a určete stav instance. Například pokud máte webovou stránku http:\//contoso.com/, pak se vlastní sonda dá nakonfigurovat pro http:\//contoso.com/Path/custompath.htm, aby testy testů měly úspěšnou odpověď HTTP.|
+| **Doba** | Nakonfiguruje kontrolu intervalu sondy v sekundách.|
+| **Prodlev** | Definuje časový limit testu pro kontrolu odezvy protokolu HTTP.|
+| **UnhealthyThreshold** | Počet neúspěšných odpovědí HTTP nutných k označení back-endové instance jako *chybného*.|
 
-Název sondy je \<odkazován\> v konfiguraci BackendHttpSettings pro přiřazení fondu back-end, který používá vlastní nastavení sondy.
+Na název sondy se odkazuje v konfiguraci \<BackendHttpSettings\> , která přiřadí, který fond back-end používá vlastní nastavení sondy.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Přidání vlastní sondy do existující aplikační brány
+## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Přidání vlastního testu do existující služby Application Gateway
 
-Změna aktuální konfigurace aplikační brány vyžaduje tři kroky: Získat aktuální konfigurační soubor XML, upravit tak, aby měla vlastní sondu, a nakonfigurovat aplikační bránu s novým nastavením XML.
+Změna aktuální konfigurace služby Application Gateway vyžaduje tři kroky: Získejte aktuální konfigurační soubor XML, upravte ho tak, aby měl vlastní test paměti, a nakonfigurujte Aplikační bránu pomocí nového nastavení XML.
 
-1. Získejte soubor XML `Get-AzureApplicationGatewayConfig`pomocí aplikace . Tato rutina exportuje konfigurační XML, který má být upraven pro přidání nastavení sondy.
+1. Získejte soubor XML pomocí `Get-AzureApplicationGatewayConfig`. Tato rutina exportuje konfigurační soubor XML, který se má upravit, aby se přidalo nastavení sondy.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. Otevřete soubor XML v textovém editoru. Za `<probe>` soubor `<frontendport>`přidejte oddíl .
+1. Otevřete soubor XML v textovém editoru. Přidejte `<probe>` oddíl za `<frontendport>`.
 
    ```xml
    <Probes>
@@ -177,7 +177,7 @@ Změna aktuální konfigurace aplikační brány vyžaduje tři kroky: Získat a
    </Probes>
    ```
 
-   V části back-endHttpSettings xml přidejte název sondy, jak je znázorněno v následujícím příkladu:
+   V části backendHttpSettings XML přidejte název sondy, jak je znázorněno v následujícím příkladu:
 
    ```xml
     <BackendHttpSettings>
@@ -192,7 +192,7 @@ Změna aktuální konfigurace aplikační brány vyžaduje tři kroky: Získat a
 
    Uložte soubor XML.
 
-1. Aktualizujte konfiguraci aplikační brány pomocí `Set-AzureApplicationGatewayConfig`nového souboru XML pomocí aplikace . Tato rutina aktualizuje bránu aplikace s novou konfigurací.
+1. Aktualizujte konfiguraci aplikační brány novým souborem XML pomocí `Set-AzureApplicationGatewayConfig`. Tato rutina aktualizuje Aplikační bránu s novou konfigurací.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete nakonfigurovat zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), přečtěte si část [Konfigurace aplikační brány pro redukci TLS](application-gateway-ssl.md).
+Pokud chcete nakonfigurovat protokol TLS (Transport Layer Security), dříve označovaný SSL (Secure Sockets Layer) jako přesměrování zpracování SSL (Transport Layer), přečtěte si téma [Konfigurace aplikační brány pro přesměrování zpracování TLS](application-gateway-ssl.md).
 
 Pokud chcete provést konfiguraci aplikační brány pro použití s interním nástrojem pro vyrovnávání zatížení, přečtěte si část [Vytvoření aplikační brány s interním nástrojem pro vyrovnávání zatížení (ILB)](application-gateway-ilb.md).
 

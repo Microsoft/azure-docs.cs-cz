@@ -1,6 +1,6 @@
 ---
 title: Vlastní témata v Azure Event Grid
-description: Popisuje vlastní témata ve službě Azure Event Grid.
+description: Popisuje vlastní témata v Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 166a48d74d32c8b0a3a59310e693ea96ada29116
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81394355"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Vlastní témata v Azure Event Grid
-Téma mřížky událostí poskytuje koncový bod, kam zdroj odesílá události. Vydavatel vytvoří téma mřížky událostí a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Chcete-li reagovat na určité typy událostí, odběratelé rozhodnout, která témata se přihlásit k odběru.
+Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. Vydavatel vytvoří téma Event Grid a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Pro reakci na určité typy událostí předplatitelé rozhodují, která témata se přihlásí k odběru.
 
-**Vlastní témata** jsou témata aplikace a třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. 
+**Vlastní témata** jsou témata aplikací a třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. 
 
-Při navrhování aplikace máte flexibilitu při rozhodování o tom, kolik témat chcete vytvořit. Pro velká řešení vytvořte **vlastní téma** pro každou **kategorii souvisejících událostí**. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. U malých řešení můžete raději odeslat všechny události na jedno téma. Odběratelé událostí mohou filtrovat typy událostí, které chtějí.
+Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte **vlastní téma** pro **každou kategorii souvisejících událostí**. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
 ## <a name="event-schema"></a>Schéma událostí
-Podrobný přehled schématu událostí najdete v tématu [Schéma událostí služby Azure Event Grid](event-schema.md). Pro vlastní témata určuje datový **objekt** vydavatel události. Data nejvyšší úrovně by měla mít stejná pole jako standardní události definované prostředky.
+Podrobný přehled schématu událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Pro vlastní témata Vydavatel události Určuje **datový** objekt. Data nejvyšší úrovně by měla mít stejná pole jako standardní události definované prostředky.
 
 ```json
 [
@@ -41,36 +41,36 @@ Podrobný přehled schématu událostí najdete v tématu [Schéma událostí sl
 ]
 ```
 
-Následující části obsahují odkazy na kurzy k vytvoření vlastních témat pomocí šablon Azure Portal, CLI, PowerShell a Azure Resource Manager (ARM). 
+Následující části obsahují odkazy na kurzy k vytváření vlastních témat pomocí šablon Azure Portal, CLI, PowerShell a Azure Resource Manager (ARM). 
 
 
-## <a name="azure-portal-tutorials"></a>Kurzy na portál Azure
+## <a name="azure-portal-tutorials"></a>Kurzy Azure Portal
 |Nadpis  |Popis  |
 |---------|---------|
-| [Úvodní příručka: vytváření a směrování vlastních událostí pomocí portálu Azure](custom-event-quickstart-portal.md) | Ukazuje, jak pomocí portálu odesílat vlastní události. |
-| [Úvodní příručka: směrování vlastních událostí do úložiště Azure Queue](custom-event-to-queue-storage.md) | Popisuje, jak odeslat vlastní události do úložiště fronty. |
-| [Jak: příspěvek na vlastní téma](post-to-custom-topic.md) | Ukazuje, jak zveřejnit událost do vlastního tématu. |
+| [Rychlý Start: vytvoření a směrování vlastních událostí pomocí Azure Portal](custom-event-quickstart-portal.md) | Ukazuje, jak používat portál k posílání vlastních událostí. |
+| [Rychlý Start: směrování vlastních událostí do Azure Queue Storage](custom-event-to-queue-storage.md) | Popisuje, jak odesílat vlastní události do úložiště fronty. |
+| [Postupy: odeslání do vlastního tématu](post-to-custom-topic.md) | Ukazuje, jak publikovat událost do vlastního tématu. |
 
 
-## <a name="azure-cli-tutorials"></a>Kurzy Azure CLI
+## <a name="azure-cli-tutorials"></a>Kurzy k rozhraní příkazového řádku Azure
 |Nadpis  |Popis  |
 |---------|---------|
-| [Úvodní příručka: vytváření a směrování vlastních událostí pomocí azure CLI](custom-event-quickstart.md) | Ukazuje, jak používat Azure CLI k odesílání vlastních událostí. |
-| [Nastavení příkazu k řešení Azure: vytvoření vlastního tématu gridu událostí](./scripts/event-grid-cli-create-custom-topic.md)|Ukázkový skript, který vytvoří vlastní téma. Skript načte koncový bod a klíč.|
-| [Nastavení příkazu k příkazu Azure: přihlášení k odběru událostí pro vlastní téma](./scripts/event-grid-cli-subscribe-custom-topic.md)|Ukázkový skript, který vytvoří odběr pro vlastní téma. Odesílá události webhooku.|
+| [Rychlý Start: vytvoření a směrování vlastních událostí pomocí Azure CLI](custom-event-quickstart.md) | Ukazuje, jak používat Azure CLI k posílání vlastních událostí. |
+| [Azure CLI: vytvoření Event Grid vlastního tématu](./scripts/event-grid-cli-create-custom-topic.md)|Vzorový skript, který vytvoří vlastní téma. Skript načte koncový bod a klíč.|
+| [Azure CLI: přihlášení k odběru událostí pro vlastní téma](./scripts/event-grid-cli-subscribe-custom-topic.md)|Ukázkový skript, který vytvoří odběr pro vlastní téma. Odesílá události do Webhooku.|
 
-## <a name="azure-powershell-tutorials"></a>Kurzy Azure PowerShellu
+## <a name="azure-powershell-tutorials"></a>Kurzy Azure PowerShell
 |Nadpis  |Popis  |
 |---------|---------|
-| [Úvodní příručka: vytváření a směrování vlastních událostí pomocí Azure PowerShellu](custom-event-quickstart-powershell.md) | Ukazuje, jak používat Azure PowerShell k odesílání vlastních událostí. |
-| [PowerShell: vytvoření vlastního tématu event gridu](./scripts/event-grid-powershell-create-custom-topic.md)|Ukázkový skript, který vytvoří vlastní téma. Skript načte koncový bod a klíč.|
-| [PowerShell: Přihlášení k odběru událostí pro vlastní téma](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Ukázkový skript, který vytvoří odběr pro vlastní téma. Odesílá události webhooku.|
+| [Rychlý Start: vytvoření a směrování vlastních událostí pomocí Azure PowerShell](custom-event-quickstart-powershell.md) | Ukazuje, jak používat Azure PowerShell k odesílání vlastních událostí. |
+| [PowerShell: vytvoření Event Grid vlastního tématu](./scripts/event-grid-powershell-create-custom-topic.md)|Vzorový skript, který vytvoří vlastní téma. Skript načte koncový bod a klíč.|
+| [PowerShell: přihlášení k odběru událostí vlastního tématu](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Ukázkový skript, který vytvoří odběr pro vlastní téma. Odesílá události do Webhooku.|
 
-## <a name="arm-template-tutorials"></a>Kurzy předlohy ARM
+## <a name="arm-template-tutorials"></a>Kurzy k šablonám ARM
 |Nadpis  |Popis  |
 |---------|---------|
-| [Šablona Správce prostředků: vlastní téma a koncový bod WebHooku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Šablona Správce prostředků, která vytvoří vlastní téma a předplatné pro toto vlastní téma. Odesílá události webhooku. |
-| [Šablona Správce prostředků: vlastní téma a koncový bod Centra událostí](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Šablona Správce prostředků, která vytvoří předplatné pro vlastní téma. Odesílá události do Centra událostí Azure. |
+| [Správce prostředků Šablona: vlastní téma a koncový bod Webhooku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Správce prostředků šablonu, která vytvoří vlastní téma a předplatné pro toto vlastní téma. Odesílá události do Webhooku. |
+| [Správce prostředků Šablona: vlastní téma a koncový bod Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Správce prostředků šablonu, která vytvoří odběr pro vlastní téma. Odesílá události do Azure Event Hubs. |
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články: 

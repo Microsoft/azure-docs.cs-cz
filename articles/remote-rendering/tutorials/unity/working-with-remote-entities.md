@@ -1,43 +1,43 @@
 ---
 title: Práce se vzdálenými entitami v Unity
-description: Kurz, který ukazuje, jak pracovat s entitami ARR.
+description: Kurz, ve kterém se dozvíte, jak pracovat s entitami ARR
 author: florianborn71
 ms.author: flborn
 ms.date: 02/01/2020
 ms.topic: tutorial
 ms.openlocfilehash: db1f6a53121e05b29f7e3441af027985a141bc2e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310215"
 ---
-# <a name="tutorial-working-with-remote-entities-in-unity"></a>Kurz: Práce se vzdálenými entitami v Unity
+# <a name="tutorial-working-with-remote-entities-in-unity"></a>Kurz: práce se vzdálenými entitami v Unity
 
-[Kurz: Nastavení projektu Unity od začátku ukázalo,](project-setup.md) jak nakonfigurovat nový projekt Unity pro práci s azure remote rendering. V tomto kurzu se podíváme na nejběžnější funkce, které potřebuje každý uživatel ARR.
+[Kurz: vytvoření projektu Unity od začátku](project-setup.md) ukazuje, jak nakonfigurovat nový projekt Unity pro práci se vzdáleným vykreslováním Azure. V tomto kurzu se podíváme na nejběžnější funkce, které každý uživatel ARR potřebuje.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> * Vyberte objekty pomocí paprskových nádechů.
-> * Přepsat stavy objektu, jako je barva tónu, stav výběru a viditelnost.
-> * Odstranit vzdálené entity.
-> * Přesuňte vzdálené entity.
-> * Pomocí rovin řezu se můžete podívat dovnitř objektů.
+> * Vyberte objekty využívající přetypování do paprsků.
+> * Přepište stavy objektů, například barevný nádech, stav výběru a viditelnost.
+> * Odstranění vzdálených entit
+> * Přesuňte vzdálené entity kolem.
+> * K vyhledání uvnitř objektů použijte vyjmuté plochy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Tento výukový program navazuje na [kurz: Nastavení projektu Unity od nuly](project-setup.md).
+* Tento kurz sestaví na začátku [kurzu: nastavení projektu Unity od nuly](project-setup.md).
 
 > [!TIP]
-> [Úložiště vzorků ARR](https://github.com/Azure/azure-remote-rendering) obsahuje připravené unity projekty pro všechny kurzy ve složce *Unity,* které můžete použít jako odkaz.
+> [Úložiště ukázek ARR](https://github.com/Azure/azure-remote-rendering) obsahuje připravené projekty Unity pro všechny kurzy ve složce *Unity* , které můžete použít jako referenci.
 
-## <a name="pick-objects"></a>Výběr objektů
+## <a name="pick-objects"></a>Vybrat objekty
 
-Chceme komunikovat s objekty, takže první věc, kterou potřebujeme, je vybírání objektů pod kurzorem myši.
+Chceme s objekty pracovat, takže první věc, kterou potřebujeme, je vyzvednutí objektů pod kurzorem myši.
 
-Vytvořte [nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) s názvem **RemoteRaycaster** a nahradit celý jeho obsah s kódem níže:
+Vytvořte [Nový skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) s názvem **RemoteRaycaster** a nahraďte jeho celý obsah následujícím kódem:
 
 ```csharp
 using Microsoft.Azure.RemoteRendering;
@@ -113,16 +113,16 @@ Přidejte tuto komponentu do objektu *RemoteRendering* ve scéně.
 
 > [!WARNING]
 >
-> Komponenta *RemoteRaycaster* vyžaduje, aby byla komponenta *ARRServiceUnity* připojena ke stejnému objektu. *ARRServiceUnity* je pomocná třída pro snadný přístup k některým funkcím ARR. Může však existovat pouze jedna instance této součásti ve scéně. Proto nezapomeňte přidat všechny součásti, které vyžadují *ARRServiceUnity* do stejného GameObject.
-> Pokud chcete získat přístup k funkcím ARR z více herních objektů, přidejte komponentu *ARRServiceUnity* pouze do jednoho z nich a nazvěte ji v ostatních skriptech nebo přímo získejte přístup k funkci ARR.
+> Komponenta *RemoteRaycaster* vyžaduje, aby součást *ARRServiceUnity* byla připojena ke stejnému objektu. *ARRServiceUnity* je pomocná třída pro snadnější přístup k některým funkcím v kombinaci s funkcí Arr. V scéně však může být pouze jediná instance této součásti. Proto nezapomeňte přidat všechny součásti, které vyžadují *ARRServiceUnity* , do stejného GameObject.
+> Chcete-li získat přístup k funkcím ARR z více herních objektů, přidejte komponentu *ARRServiceUnity* pouze k jednomu z nich a odkazujte na jiné skripty nebo přímý přístup k funkcím Arr.
 
-Stiskněte tlačítko přehrát, připojte se k relaci a načtěte model. Nyní ukažte na objekty ve scéně a sledujte výstup konzoly. Měl by vytisknout název objektu každé části, na kterou najedete.
+Stiskněte Přehrát, připojte se k relaci a načtěte model. Nyní ukažte na objekty ve scéně a Sledujte výstup konzoly. Měl by tisknout název objektu každé části, na kterou najedete myší.
 
 ## <a name="highlight-objects"></a>Zvýraznit objekty
 
-Jako další krok chceme poskytnout vizuální zpětnou vazbu, na které části modelu uživatel ukazuje. K dosažení tohoto cíle připojíme [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) k entitě, kterou jsme vybrali. Tuto komponentu lze použít k povolení nebo zakázání různých funkcí objektu. Zde jej používáme k nastavení barvy tónu a povolení [vykreslování obrysů](../../overview/features/outlines.md).
+V dalším kroku chceme poskytnout vizuální zpětnou vazbu, na které části modelu uživatel odkazuje. K tomuto účelu připojíme [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) k entitě, kterou jsme vybrali. Tuto součást lze použít k povolení nebo zakázání různých funkcí objektu. Zde používáme k nastavení barvy odstínu a k povolení [vykreslování osnovy](../../overview/features/outlines.md).
 
-Vytvořte jiný soubor skriptu s názvem **RemoteModelEntity** a nahraďte jeho obsah následujícím kódem:
+Vytvořte další soubor skriptu s názvem **RemoteModelEntity** a nahraďte jeho obsah následujícím kódem:
 
 ```csharp
 using System.Collections;
@@ -192,11 +192,11 @@ public class RemoteModelEntity : MonoBehaviour
 }
 ```
 > [!CAUTION]
-> Nepřiřazujte tento skript žádnému hernímu objektu, protože bude programově přiřazen níže.
+> Nepřiřazujte tento skript žádnému hernímu objektu, protože ho program přiřadí programově pomocí kódu uvedeného níže.
 
-Další na řadě, musíme rozšířit naše *RemoteRaycaster* přidat *RemoteModelEntity* komponenty do objektu, který jsme právě vybrali.
+V dalším kroku musíme prodloužit naše *RemoteRaycaster* a přidat komponentu *RemoteModelEntity* do objektu, který jsme právě vybrali.
 
-Přidejte následující kód do implementace **RemoteRaycaster** a odeberte duplicitní funkce:
+Do implementace **RemoteRaycaster** přidejte následující kód a odstraňte duplicitní funkce:
 
 ```csharp
     private RemoteModelEntity focusedModel = null;
@@ -242,11 +242,11 @@ Přidejte následující kód do implementace **RemoteRaycaster** a odeberte dup
     }
 ```
 
-Spusťte projekt a přejděte na model, měli byste vidět, že získává červený obraz a bílý obrys výběru.
+Spusťte projekt a ukažte v modelu, měli byste vidět, že se zobrazuje červený nádech a obrys bílého výběru.
 
-## <a name="isolate-the-selected-object"></a>Izolujte vybraný objekt
+## <a name="isolate-the-selected-object"></a>Izolovat vybraný objekt
 
-Jiné použití [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) je schopnost přepsat viditelnost. To umožňuje izolovat vybraný objekt od zbytku modelu. Otevřete skript **RemoteModelEntity,** přidejte následující kód a odeberte duplicitní funkce:
+Další možností použití [HierarchicalStateOverrideComponent](../../overview/features/override-hierarchical-state.md) je možnost přepsat viditelnost. Díky tomu můžete izolovat vybraný objekt od zbytku modelu. Otevřete skript **RemoteModelEntity** , přidejte následující kód a odstraňte duplicitní funkce:
 
 ```csharp
     private bool isolated = false;
@@ -304,9 +304,9 @@ Jiné použití [HierarchicalStateOverrideComponent](../../overview/features/ove
     }
 ```
 
-Tento kód závisí na tom, že má komponentu přepsání stavu na objektu zcela nahoře v hierarchii, což činí všechny objekty neviditelnými. Poté znovu přepíše viditelnost u vybraného objektu, aby byl tento jeden objekt viditelný. Proto musíme vytvořit komponentu přepsání stavu v kořenovém objektu.
+Tento kód spoléhá na to, že má komponentu přepisu stavu v objektu nejvyšší úrovně v hierarchii, která zpřístupňuje všechny objekty jako neviditelné. Pak znovu potlačí viditelnost u vybraného objektu, aby byl jeden objekt viditelný. Proto musíme vytvořit komponentu pro přepsání stavu v kořenovém objektu.
 
-Otevřete skript **RemoteRendering** a vložte níže uvedený kód do horní části funkce *LoadModel:*
+Otevřete skript **RemoteRendering** a vložte následující kód na začátek funkce *LoadModel* :
 
 ```csharp
     public async void LoadModel()
@@ -319,7 +319,7 @@ Otevřete skript **RemoteRendering** a vložte níže uvedený kód do horní č
     }
 ```
 
-Konečně potřebujeme způsob, jak přepnout viditelnost. Otevřete skript **RemoteRaycaster** a nahraďte funkci *Aktualizovat:*
+Nakonec potřebujeme způsob, jak přepnout viditelnost. Otevřete skript **RemoteRaycaster** a nahraďte funkci *Update* :
 
 ```csharp
     private void Update()
@@ -340,15 +340,15 @@ Konečně potřebujeme způsob, jak přepnout viditelnost. Otevřete skript **Re
     }
 ```
 
-Spusťte kód a klikněte pravým tlačítkem myši na část modelu. Zbytek modelu zmizí a pouze zvýrazněný kus zůstane viditelný.
+Spusťte kód a klikněte pravým tlačítkem na součást modelu. Zbytek modelu zmizí a zůstane viditelný jenom zvýrazněný kámen.
 
-## <a name="remove-gameobject-instances-of-remote-entities"></a>Odebrání instancí GameObject vzdálených entit
+## <a name="remove-gameobject-instances-of-remote-entities"></a>Odebrat instance GameObject vzdálených entit
 
-Možná jste si všimli, že kód udržuje vytváření objektů, ale nikdy je nečistí. To je také viditelné v panelu hierarchie objektů. Když během simulace rozbalíte hierarchii vzdálených objektů, zobrazí se při každém najetí na novou část modelu stále více objektů.
+Možná jste si všimli, že kód uchovává objekty, ale nikdy je nečistí. To je také vidět na panelu hierarchie objektů. Když rozbalíte hierarchii vzdáleného objektu během simulace, můžete zobrazit více a více objektů při každém přesunutí ukazatele myši na novou část modelu.
 
-Mít mnoho objektů ve scéně negativně ovlivňuje výkon. Vždy byste měli vyčistit objekty, které již nejsou potřeba.
+Příliš mnoho objektů ve scéně má negativní vliv na výkon. Vždy byste měli vyčistit objekty, které už nejsou potřeba.
 
-Vložte níže uvedený kód do skriptu **RemoteRaycaster** a odeberte duplicitní funkce:
+Do skriptu **RemoteRaycaster** vložte následující kód a odstraňte duplicitní funkce:
 
 ```csharp
     private void ClearFocus()
@@ -370,9 +370,9 @@ Vložte níže uvedený kód do skriptu **RemoteRaycaster** a odeberte duplicitn
     }
 ```
 
-## <a name="move-objects"></a>Přesunutí objektů
+## <a name="move-objects"></a>Přesunout objekty
 
-Jako další krok chceme přesunout vybraný objekt. Ve skriptu **RemoteRaycaster** vložte tento kód a odeberte duplicitní funkci:
+Jako další krok chceme přesunout vybraný objekt kolem. Do **RemoteRaycaster** skriptu vložte tento kód a odstraňte duplicitní funkci:
 
 ```csharp
     private Vector3 lastPosition = Vector3.zero;
@@ -412,7 +412,7 @@ Jako další krok chceme přesunout vybraný objekt. Ve skriptu **RemoteRaycaste
 ```
 
 > [!IMPORTANT]
-> Pokud spustíte tento kód, všimnete si, že se nic neděje. Je to proto, že změna transformace objektu automaticky nesynchronizuje změnu stavu na server z důvodů výkonu. Místo toho budete muset tuto změnu stavu ručně posunout na server nebo povolit **syncEveryFrame** v komponentě *RemoteEntitySyncObject.*
+> Pokud spustíte tento kód, všimnete si, že se nic nestane. To je proto, že změna transformace objektu automaticky nesynchronizuje změnu stavu na server z důvodů výkonu. Místo toho je třeba, aby se tato změna stavu nastavila na server ručně, nebo jste povolili **SyncEveryFrame** na komponentě *RemoteEntitySyncObject* .
 
 Otevřete skript **RemoteModelEntity** a přidejte tento řádek:
 
@@ -425,13 +425,13 @@ Otevřete skript **RemoteModelEntity** a přidejte tento řádek:
     }
 ```
 
-Spuštění kódu znovu, měli byste být schopni levým tlačítkem myši na objekt a přetáhněte jej kolem.
+Opětovné spuštění kódu, byste měli být schopni kliknout levým na objekt a přetáhnout ho kolem.
 
-## <a name="add-a-cut-plane"></a>Přidání roviny řezu
+## <a name="add-a-cut-plane"></a>Přidat vyjmutou rovinu
 
-Poslední funkce, kterou chceme vyzkoušet v tomto tutoriálu, je použití [řezaných rovin](../../overview/features/cut-planes.md). Rovina řezu odřízne části vykreslených objektů tak, abyste se do nich mohli podívat.
+Poslední funkce, kterou chceme v tomto kurzu vyzkoušet, je použití [vyjmutých ploch](../../overview/features/cut-planes.md). Vyjmutá rovina oddělí části vykreslených objektů, takže je můžete prohledat uvnitř.
 
-Vytvořte nový GameObject ve scéně **CutPlane**. Vytvořte nový skript a nazvěte jej **RemoteCutPlane**. Přidejte komponentu do nového objektu GameObject.
+Vytvoří nový GameObject v **CutPlane**scény. Vytvořte nový skript a zavolejte ho **RemoteCutPlane**. Přidejte komponentu do nového GameObject.
 
 Otevřete soubor skriptu a nahraďte jeho obsah následujícím kódem:
 
@@ -487,11 +487,11 @@ public class RemoteCutPlane : MonoBehaviour
 }
 ```
 
-Při spuštění kódu nyní, měli byste vidět, jak je model rozříznut a rovinou. Můžete vybrat objekt *CutPlane* a přesunout ho a otočit ho v okně *Scéna.* Rovinu řezu můžete zapínat a vypínat zakázáním objektu roviny řezu.
+Když teď spustíte kód, měli byste vidět, jak je model vyjmutím otevřený rovinou. Můžete vybrat objekt *CutPlane* a přesunout ho a otočit v okně *scény* . Vyjmutou rovinu můžete zapnout nebo vypnout tak, že zakážete objekt vyjmout plochu.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní znáte nejdůležitější funkce pro interakci se vzdálenými objekty. V dalším tutoriálu se podíváme na přizpůsobení vzhledu scény.
+Nyní znáte nejdůležitější funkce pro interakci se vzdálenými objekty. V dalším kurzu se podíváme na přizpůsobení vzhledu scény.
 
 > [!div class="nextstepaction"]
 > [Kurz: Změna prostředí a materiálů](changing-environment-and-materials.md)

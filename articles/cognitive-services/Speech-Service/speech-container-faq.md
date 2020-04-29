@@ -1,7 +1,7 @@
 ---
-title: Často kladené otázky kontejnerů služby rozpoznávání řeči (FAQ)
+title: Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 titleSuffix: Azure Cognitive Services
-description: Nainstalujte a spusťte kontejnery řeči. převod řeči na text přepisuje zvukové proudy na text v reálném čase, který mohou aplikace, nástroje nebo zařízení využívat nebo zobrazovat. Převod textu na řeč převede vstupní text na syntetizovanou řeč podobné člověku.
+description: Instalace a spuštění kontejnerů řeči. Převod řeči na text transcribes zvukové streamy na text v reálném čase, které mohou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Převod textu na řeč převede vstupní text na syntetizované řeč podobné člověku.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: aahi
 ms.openlocfilehash: 17582244aef173da6ac700c980f7bd7fb0fec307
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81383082"
 ---
-# <a name="speech-service-containers-frequently-asked-questions-faq"></a>Často kladené otázky kontejnerů služby rozpoznávání řeči (FAQ)
+# <a name="speech-service-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy ke kontejnerům služby Speech Service (FAQ)
 
-Při použití služby řeči s kontejnery, spoléhat na tuto kolekci často kladené otázky před eskalovat na podporu. Tento článek zachycuje otázky v různé míře, od obecné po technické. Chcete-li rozbalit odpověď, klikněte na otázku.
+Pokud používáte službu Speech s kontejnery, využijte tuto kolekci nejčastějších dotazů, než předáte podporu. Tento článek zachycuje otázky různého stupně, od obecných až po technický. Chcete-li rozbalit odpověď, klikněte na otázku.
 
 ## <a name="general-questions"></a>Obecné otázky
 
 <details>
 <summary>
-<b>Jak fungují kontejnery řeči a jak je nastavím?</b>
+<b>Jak fungují kontejnery řeči a jak je mám nastavit?</b>
 </summary>
 
-**Odpověď:** Při nastavování produkčního clusteru je třeba zvážit několik věcí. Za prvé, nastavení jednoho jazyka, více kontejnerů, na stejném počítači, by neměl být velký problém. Pokud dochází k problémům, může to být problém související s hardwarem - takže bychom se nejprve podívali na zdroj, to znamená; Specifikace procesoru a paměti.
+**Odpověď:** Při nastavování produkčního clusteru je potřeba zvážit několik věcí. První, nastavení jednoho jazyka, více kontejnerů, na stejném počítači by nemělo být velký problém. Pokud dochází k potížím, může se jednat o problém související s hardwarem, takže se nejprve podíváme na zdroj, tj. Specifikace procesoru a paměti.
 
-Zvažte na chvíli `ja-JP` kontejner a nejnovější model. Akustický model je nejnáročnější kus CPU-moudrý, zatímco jazykový model vyžaduje nejvíce paměti. Když jsme srovnávají použití, trvá asi 0,6 cpu jádra ke zpracování jednoho převodu řeči na text, když zvuk proudí v reálném čase (jako z mikrofonu). Pokud krmíte zvuk rychleji než v reálném čase (například ze souboru), může se toto použití zdvojnásobit (1,2x jádra). Mezitím níže uvedená paměť je operační paměť pro dekódování řeči. *Nebere* v úvahu skutečnou plnou velikost jazykového modelu, který bude umístěn v mezipaměti souborů. Pro `ja-JP` to je další 2 GB; může `en-US`být více (6-7 GB).
+Vezměte v úvahu okamžik, `ja-JP` kontejner a poslední model. Akustický model je nejnáročnějším PROCESORem, zatímco model jazyka vyžaduje nejvíce paměti. Když jsme používali srovnávací testy, při zpracování zvuku v reálném čase (například z mikrofonu) bere v souvislosti s 0,6 PROCESORovým jádrům zpracování jediné žádosti o převod řeči na text. Pokud budete zvuk podávat rychleji než v reálném čase (například ze souboru), může toto využití zdvojnásobit (1,2 × jader). Níže uvedené množství paměti je provozní paměť pro dekódování řeči. Nebere *v úvahu skutečnou* úplnou velikost jazykového modelu, který se nachází v souborové mezipaměti. `ja-JP` To je další 2 GB. `en-US`může to být více (6-7 GB).
 
-Pokud máte počítač, kde je nedostatek paměti a pokoušíte se nasadit více jazyků na to, je možné, že mezipaměť souborů je plná a operační systém je nucen stránkovat modely dovnitř a ven. Pro běžící přepis, které by mohly být katastrofální, a může vést ke zpomalení a další důsledky výkonu.
+Pokud máte počítač, ve kterém je paměť omezených a pokoušíte se do něj nasadit více jazyků, je možné, že je mezipaměť souborů plná a operační systém je nucen k vynechání modelů stránek a. Pro spuštění přepisu, které by mohlo být katastrofální důsledky a může vést k zpomalení a dalším dopadům na výkon.
 
-Dále předem zabalíme spustitelné soubory pro stroje s pokročilou indiční sadou [vektorového rozšíření (AVX2).](speech-container-howto.md#advanced-vector-extension-support) Počítač s instrukční sadou AVX512 bude vyžadovat generování kódu pro tento cíl a spuštění 10 kontejnerů pro 10 jazyků může dočasně vyčerpat procesor. Zpráva, jako je tato, se zobrazí v protokolech dockeru:
+Kromě toho jsme představili spustitelné soubory pro počítače se sadou instrukcí [Rozšířené vektorové rozšíření (AVX2)](speech-container-howto.md#advanced-vector-extension-support) . Počítač se sadou instrukcí AVX512 bude vyžadovat generování kódu pro tento cíl a od deseti kontejnerů se může dočasně vyčerpat procesor. V protokolech Docker se zobrazí zpráva, jako je tato:
 
 ```console
 2020-01-16 16:46:54.981118943 
@@ -42,60 +42,60 @@ Dále předem zabalíme spustitelné soubory pro stroje s pokročilou indiční 
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Nakonec můžete nastavit počet dekodérů, které *single* chcete `DECODER MAX_COUNT` uvnitř jednoho kontejneru pomocí proměnné. Takže v podstatě bychom měli začít s vaší SKU (CPU / paměť), a můžeme navrhnout, jak se dostat to nejlepší z toho. Skvělý výchozí bod odkazuje na doporučené specifikace prostředků hostitelského počítače.
+Nakonec můžete nastavit počet dekodérů, které chcete v *jednom* kontejneru, pomocí `DECODER MAX_COUNT` proměnné. Proto byste měli začít s vaší jednotkou SKU (procesor/paměť) a můžeme navrhnout, jak to máme nejlépe. Skvělý výchozí bod odkazuje na Doporučené specifikace prostředků hostitelského počítače.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Mohl byste pomoci s plánováním kapacity a odhadem nákladů kontejnerů on-prem Speech?</b>
+<b>Mohli byste pomáhat s plánováním kapacity a odhadem nákladů na premch kontejnerů řeči?</b>
 </summary>
 
-**Odpověď:** Pro kapacitu kontejneru v režimu dávkového zpracování může každý dekodér zpracovat 2-3x v reálném čase se dvěma jádry procesoru pro jediné uznání. Nedoporučujeme zachovat více než dvě souběžná rozpoznávání na instanci kontejneru, ale doporučujeme spustit více instancí kontejnerů z důvodů spolehlivosti nebo dostupnosti za nástroj pro vyrovnávání zatížení.
+**Odpověď:** V případě kapacity kontejneru v režimu dávkového zpracování by každý dekodér mohl zvládnout 2 – 3x v reálném čase se dvěma jádry PROCESORU pro jedno rozpoznání. Nedoporučujeme udržovat pro jednu instanci kontejneru více než dva souběžné rozpoznávání, ale doporučujeme spouštět více instancí kontejnerů z důvodů spolehlivosti/dostupnosti za nástrojem pro vyrovnávání zatížení.
 
-I když bychom mohli mít každou instanci kontejneru spuštěnou s více dekodéry. Například můžeme být schopni nastavit 7 dekodérů na instanci kontejneru na osmijádrovém počítači (při více než 2x), což přináší 15x propustnost. Je tu param, o kterém `DECODER_MAX_COUNT` je třeba vědět. V extrémních případech vznikají problémy se spolehlivostí a latencí, přičemž propustnost se výrazně zvýšila. Pro mikrofon to bude 1x v reálném čase. Celkové využití by mělo být přibližně na jednom jádru pro jedno rozpoznávání.
+I když můžeme mít každou instanci kontejneru spuštěnou s dalšími dekodéry. V osmi základních počítačích může být například možné nastavit 7 dekodérů na instanci kontejneru (při více než dvojnásobku každého), což vede k 15x propustnosti. Existuje parametr `DECODER_MAX_COUNT` , na který je třeba vědět. V případě problémů s vysokým případem, spolehlivosti a latence dojde k výraznému nárůstu propustnosti. V případě mikrofonu se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v souvislosti s jedním jádrem pro jedno rozpoznávání.
 
-Pro scénář zpracování 1 K hodin /den v režimu dávkového zpracování v extrémním případě 3 virtuální počítače by to mohly zpracovat do 24 hodin, ale není zaručeno. Chcete-li zpracovat špičaté dny, převzetí služeb při selhání, aktualizovat a poskytnout minimální zálohování/BCP, doporučujeme 4-5 počítačů namísto 3 na cluster a s 2 + clustery.
+Scénář zpracování 1 K hodinám za den v režimu dávkového zpracování v extrémním případě by mohl tyto 3 virtuální počítače zpracovat během 24 hodin, ale nezaručuje se jim. Pro řízení dní špičky, převzetí služeb při selhání, aktualizace a zajištění minimálního zálohování/BCP doporučujeme 4-5 počítačů místo 3 na cluster a s 2 + clustery.
 
-Pro hardware používáme jako `DS13_v2` referenci standardní virtuální počítač Azure (každé jádro musí být 2,6 GHz nebo lepší, s povolenou instrukovací sadou AVX2).
+V případě hardwaru používáme jako referenci standardní `DS13_v2` virtuální počítač Azure (každý jádro musí být 2,6 GHz nebo vyšší, přičemž je povolená sada instrukcí AVX2).
 
-| Instance  | virtuální procesory | Paměť RAM    | Dočasné skladování | Průběžně s AHB | Roční rezerva s AHB (% úspora) | 3-rok vyhrazena s AHB (% Úspory) |
+| Instance  | vCPU (celkem) | Paměť RAM    | Dočasné úložiště | Průběžné platby s AHB | Rezerva na 1 rok s AHB (úspory v%) | za 3 roky rezervované s AHB (úspory v%) |
 |-----------|---------|--------|--------------|------------------------|-------------------------------------|--------------------------------------|
-| `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598/hod.            | $0.3528/hour (~41 %)                 | $0.2333/hour (~61 %)                  |
+| `DS13 v2` | 8       | 56 GiB | 112 GiB      | $0.598 za hodinu            | $0.3528 za hodinu (~ 41%)                 | $0.2333 za hodinu (~ 61%)                  |
 
-Na základě odkazu na návrh (dva clustery 5 virtuálních počítačů pro zpracování dávkového zpracování zvuku 1 K/den) budou náklady na hardware za 1 rok:
+Na základě referenčních informací o návrhu (dva clustery s 5 virtuálními počítači, které budou zpracovávat 1 – hodiny za den zpracování zvukových dávek), budou mít roční náklady na hardware na 1 rok:
 
-> 2 (clustery) * 5 (virtuální chod na cluster) * $0.3528/hour * 365 (dny) * 24 (hodiny) = $31K / rok
+> 2 (clustery) * 5 (počet virtuálních počítačů na cluster) * $0.3528/hod * 365 (dny) * 24 (hodiny) = $31K/rok
 
-Při mapování na fyzický počítač je obecný odhad 1 vCPU = 1 fyzické jádro procesoru. Ve skutečnosti je 1vCPU výkonnější než jedno jádro.
+Při mapování na fyzický počítač je obecný odhad 1 vCPU = 1 jádro fyzického procesoru. Ve skutečnosti je 1vCPU výkonnější než jedna jádro.
 
-Pro on-prem, všechny tyto další faktory vstoupí do hry:
+Pro Prem všechny tyto další faktory přicházejí do hry:
 
-- Na jaký typ fyzickéCPU je a kolik jader na něm
-- Kolik procesorů běží společně na stejném boxu/počítači
-- Jak se virtuální virtuální mích nastavují
-- Jak se používá hyper-threading / multi-threading
-- Jak je paměť sdílena
+- Informace o tom, jaký typ fyzického procesoru je a kolik jader je v něm k disřadě
+- Kolik procesorů běží dohromady ve stejném poli/počítači
+- Jak se nastavují virtuální počítače
+- Jak se používá technologie Hyper-Threading/Multithreading s více vlákny
+- Způsob sdílení paměti
 - Operační systém atd.
 
-Normálně není tak dobře vyladěné jako prostředí Azure. Vzhledem k tomu, že ostatní režie, řekl bych, že bezpečný odhad je 10 fyzických procesorových jader = 8 virtuálních procesorů Azure. Ačkoli populární procesory mají pouze osm jader. S nasazením on-prem budou náklady vyšší než při použití virtuálních počítačích Azure. Zvažte také odpisovou sazbu.
+Obvykle se nejedná o prostředí Azure. S ohledem na jinou režii jsem řekněme, že bezpečný odhad je 10 fyzických jader procesoru = 8 Azure vCPU. I když populární procesory mají jenom osm jader. Při nasazení on-Prem budou náklady vyšší než používání virtuálních počítačů Azure. Zvažte také odpisovou sazbu.
 
-Náklady na služby jsou stejné jako u online služby: $1/hod pro převod řeči na text. Náklady na službu Řeči jsou:
+Náklady na službu jsou stejné jako online služba: $1/hodina pro převod řeči na text. Náklady na službu řeči:
 
 > $1 * 1000 * 365 = $365K
 
-Náklady na údržbu hrazené společnosti Microsoft závisí na úrovni služeb a obsahu služby. To se liší od $ 29.99 / měsíc pro základní úroveň na stovky tisíc, pokud na místě služby zapojeny. Hrubé číslo je $ 300 / hodinu pro servis / údržbu. Náklady na osoby nejsou zahrnuty. Ostatní náklady na infrastrukturu (například úložiště, sítě a vyrovnávání zatížení) nejsou zahrnuty.
+Náklady na údržbu placené Microsoftu závisí na úrovni služby a obsahu služby. Pro základní úroveň na stovky tisíc v případě, že je zapojená služba na pracovišti, se v různých měsících 29.99 měsíčně. Hrubý počet je 300 USD za hodinu pro servis a údržbu. Náklady na lidi nejsou zahrnuté. Jiné náklady na infrastrukturu (například úložiště, sítě a nástroje pro vyrovnávání zatížení) nejsou zahrnuty.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Proč interpunkce chybí v přepisu?</b>
+<b>Proč v přepisu chybí interpunkční znaménka?</b>
 </summary>
 
-**Odpověď:** By `speech_recognition_language=<YOUR_LANGUAGE>` měl být explicitně nakonfigurován v požadavku, pokud používají carbon klienta.
+**Odpověď:** V `speech_recognition_language=<YOUR_LANGUAGE>` případě, že klient používá klienta, musí být explicitně nakonfigurován v žádosti.
 
 Příklad:
 
@@ -127,19 +127,19 @@ RECOGNIZED: SpeechRecognitionResult(
 
 <details>
 <summary>
-<b>Můžu s kontejnerem řeči použít vlastní akustický a jazykový model?</b>
+<b>Můžu používat vlastní akustický model a jazykový model s kontejnerem řeči?</b>
 </summary>
 
-V současné době jsme schopni předat pouze jedno ID modelu, buď vlastní jazykový model nebo vlastní akustický model.
+V současné době je možné předat pouze jedno ID modelu, vlastní jazykový model nebo vlastní akustický model.
 
-**Odpověď:** Současně bylo rozhodnuto *nepodporovat* akustické i jazykové modely. To zůstane v platnosti, dokud jednotný identifikátor je vytvořen ke snížení přestávky rozhraní API. Takže, bohužel to není podporováno právě teď.
+**Odpověď:** Rozhodnutí, že *se současně nepodporují současně* akustické i jazykové modely. Tato akce zůstane v platnosti, dokud se nevytvoří jednotný identifikátor, aby se snížilo rozdělení rozhraní API. To se ale bohužel v tuto chvíli nepodporuje.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Můžete vysvětlit tyto chyby z vlastního kontejneru řeči na text?</b>
+<b>Mohli byste tyto chyby vysvětlit z vlastního kontejneru řeči do textu?</b>
 </summary>
 
 **Chyba 1:**
@@ -152,11 +152,11 @@ Failed to fetch manifest: Status: 400 Bad Request Body:
 }
 ```
 
-**Odpověď 1:** Pokud trénujete s nejnovějším vlastním modelem, v současné době to nepodporujeme. Pokud trénujete se starší verzí, mělo by být možné použít. Stále pracujeme na podpoře nejnovějších verzí.
+**Odpověď 1:** Pokud budete školení používat nejnovější vlastní model, momentálně to nepodporujeme. Pokud budete používat starší verzi, měla by být možná. Pořád pracujeme na podpoře nejnovějších verzí.
 
-V podstatě vlastní kontejnery nepodporují Halide nebo ONNX akustické modely (což je výchozí ve vlastním trénovacím portálu). To je způsobeno tím, že vlastní modely nejsou šifrovány a nechceme vystavit modely ONNX; jazykové modely jsou v pořádku. Zákazník bude muset explicitně vybrat starší model bez ONNX pro vlastní školení. Přesnost nebude ovlivněna. Velikost modelu může být větší (o 100 MB).
+V podstatě vlastní kontejnery nepodporují zvukové modely založené na Halide nebo ONNX (což je výchozí nastavení na portálu Custom Training). Je to kvůli tomu, že se vlastní modely nešifrují a nechceme vystavovat modely ONNX, ale jazykové modely jsou přesné. Zákazník bude muset explicitně vybrat starší model, který není ONNX, pro vlastní školení. Tato přesnost nebude ovlivněna. Velikost modelu může být větší (o 100 MB).
 
-> Model podpory > 20190220 (v4.5 Unified)
+> Model podpory > 20190220 (sjednocená verze 4.5)
 
 **Chyba 2:**
 
@@ -168,7 +168,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Odpověď 2:** V požadavku je třeba zadat správný název hlasu, který rozlišuje malá a velká písmena. Podívejte se na mapování názvů celé služby. Musíte použít `en-US-JessaRUS`, `en-US-JessaNeural` jak není k dispozici právě teď v kontejneru verzi převodu textu na řeč.
+**Odpověď 2:** V požadavku musíte zadat správný název hlasu, což rozlišuje velká a malá písmena. Přečtěte si úplné mapování názvu služby. Je nutné použít `en-US-JessaRUS`, protože `en-US-JessaNeural` není nyní k dispozici ve verzi kontejneru převodu textu na řeč.
 
 **Chyba 3:**
 
@@ -179,7 +179,7 @@ Details: Voice does not match.
 }
 ```
 
-**Odpověď 3:** Reed vytvořit prostředek řeči, nikoli prostředek cognitive services.
+**Odpověď 3:** Reed se vytvořit prostředek pro rozpoznávání řeči, ne prostředek Cognitive Services.
 
 
 <br>
@@ -190,34 +190,34 @@ Details: Voice does not match.
 <b>Jaké protokoly rozhraní API jsou podporovány, REST nebo WS?</b>
 </summary>
 
-**Odpověď:** Pro kontejnery převodu řeči na text a vlastní kontejnery převodu řeči na text v současné době podporujeme pouze protokol založený na websocketu. Sada SDK podporuje pouze volání v WS, ale ne REST. Existuje plán na přidání podpory REST, ale ne ETA pro tuto chvíli. Vždy se podívejte do oficiální dokumentace, viz [koncové body předpovědi dotazu](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Odpověď:** V případě převodů řeči na text a vlastních kontejnerů řeči na text momentálně podporujeme jenom protokol založený na protokolu WebSocket. Sada SDK podporuje pouze volání v WS, ale ne REST. Je k dispozici plán pro přidání podpory REST, ale ne ETA. Vždy se podívejte na oficiální dokumentaci, přečtěte si téma [koncové body předpovědi dotazů](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Je CentOS podporován pro kontejnery řeči?</b>
+<b>Je CentOS podporováno pro kontejnery řeči?</b>
 </summary>
 
-**Odpověď:** CentOS 7 ještě není podporován PythonSDK, také Ubuntu 19.04 není podporováno.
+**Odpověď:** Sada Python SDK zatím nepodporuje CentOS 7, ani Ubuntu 19,04 se nepodporuje.
 
-Balíček Python Speech SDK je k dispozici pro tyto operační systémy:
-- **Windows** - x64 a x86
-- **Mac** - macOS X verze 10.12 nebo novější
-- **Linux** - Ubuntu 16.04, Ubuntu 18.04, Debian 9 na x64
+Balíček python Speech SDK je k dispozici pro tyto operační systémy:
+- **Windows** – x64 a x86
+- **Mac** – MacOS X verze 10,12 nebo novější
+- **Linux** -Ubuntu 16,04, Ubuntu 18,04, Debian 9 na platformě x64
 
-Další informace o nastavení prostředí naleznete v tématu [Nastavení platformy Pythonu](quickstarts/setup-platform.md?pivots=programming-language-python). Pro tuto chvíli je Ubuntu 18.04 doporučená verze.
+Další informace o nastavení prostředí najdete v tématu [instalace platformy Python](quickstarts/setup-platform.md?pivots=programming-language-python). V současnosti je doporučená verze Ubuntu 18,04.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Proč se při pokusu o volání koncových bodů předpovědi SLUŽBY LUIS zodenují chyby?</b>
+<b>Proč se při pokusu o volání koncových bodů předpovědi LUIS zobrazují chyby?</b>
 </summary>
 
-Používám kontejner LUIS v nasazení IoT Edge a pokouším se volat koncový bod předpověď LUIS z jiného kontejneru. Kontejner SLUŽBY LUIS naslouchá na portu 5001 a používám adresu URL:
+Používám kontejner LUIS ve IoT Edge nasazení a snaží se volat koncový bod předpovědi LUIS z jiného kontejneru. Kontejner LUIS naslouchá na portu 5001 a adresa URL, kterou používám, je:
 
 ```csharp
 var luisEndpoint =
@@ -225,35 +225,35 @@ var luisEndpoint =
 var config = SpeechConfig.FromEndpoint(new Uri(luisEndpoint));
 ```
 
-Chyba, kterou dostávám, je:
+Zobrazuje se chyba:
 
 ```cmd
 WebSocket Upgrade failed with HTTP status code: 404 SessionId: 3cfe2509ef4e49919e594abf639ccfeb
 ```
 
-Zobrazí požadavek v protokolech kontejneru LUIS a zpráva říká:
+Zobrazila se žádost v protokolech kontejneru LUIS a zpráva říká:
 
 ```cmd
 The request path /luis//predict" does not match a supported file type.
 ```
 
-Co to znamená? Co mi uniká? Byl jsem po příkladu pro řeč SDK, [odtud](https://github.com/Azure-Samples/cognitive-services-speech-sdk). Scénář je, že jsme detekci zvuku přímo z mikrofonu počítače a snaží se určit záměr, na základě aplikace LUIS jsme trénovali. Příklad jsem souvisí s dělá přesně to. A funguje dobře s cloudovou službou LUIS. Zdálo se, že použití sady Speech SDK nám zachránilo nutnost samostatného explicitního volání rozhraní API pro převod řeči na text a pak druhé volání luis.
+Co to znamená? Co mi chybí? Používal (a) jsem za ukázku pro sadu Speech SDK [.](https://github.com/Azure-Samples/cognitive-services-speech-sdk) Scénář je, že detekujeme zvuk přímo z PC Microphone a snažíte se určit záměr na základě vámi vyškolené aplikace LUIS. Příkladem, na který odkazuje, je přesně to. A funguje dobře s cloudovou službou LUIS. Díky sadě Speech SDK se můžete s tím, že si nemusíte udělat samostatné explicitní volání rozhraní API pro převod řeči na text a pak druhé volání LUIS.
 
-Takže vše, co se pokouším udělat, je přepnout ze scénáře použití služby LUIS v cloudu na použití kontejneru LUIS. Neumím si představit, pokud řeč SDK pracuje pro jednoho, nebude fungovat pro ostatní.
+A to vše, co se snažím udělat, je přepnout ze scénáře použití LUIS v cloudu na používání kontejneru LUIS. Nemůžu si představit, že sada Speech SDK funguje pro jednu, nebude fungovat pro ostatní.
 
-**Odpověď:** Sada Speech SDK by neměla být použita proti kontejneru LUIS. Pro použití kontejneru LUIS by měla být použita sada LUIS SDK nebo rozhraní API LUIS REST. Sada SDK řeči by měla být použita proti kontejneru řeči.
+**Odpověď:** Sada Speech SDK by se neměla používat pro LUIS kontejner. Pro použití kontejneru LUIS by měla být použita sada LUIS SDK nebo LUIS REST API. Sada Speech SDK by měla být použita proti kontejneru řeči.
 
-Cloud se liší od kontejneru. Cloud se může skládat z více agregovaných kontejnerů (někdy nazývaných mikroslužby). Takže je kontejner LUIS a pak je kontejner řeči – dva samostatné kontejnery. Kontejner řeči pouze řeč. Kontejner LUIS pouze luis. V cloudu, protože oba kontejnery je známo, že se nasadit a je špatný výkon pro vzdáleného klienta přejít do cloudu, do řeči, vrátit se, pak přejít do cloudu znovu a luis, poskytujeme funkci, která umožňuje klientovi přejít na řeč, zůstat v cloudu, přejděte na LUIS pak se vrátit ke klientovi. Proto i v tomto scénáři řeči SDK přejde do kontejneru cloud řeči se zvukem a pak kontejner cloud řeči mluví s cloudový kontejner LUIS s textem. Kontejner LUIS nemá žádnou koncepci přijímání zvuku (nemá smysl, aby kontejner LUIS přijímal streamovaný zvuk – SLUŽBA LUIS je služba založená na textu). S on-prem, nemáme jistotu, že náš zákazník nasadil oba kontejnery, nepředpokládáme orchestraci mezi kontejnery v prostorách našich zákazníků a pokud jsou oba kontejnery nasazeny on-prem, vzhledem k tomu, že jsou pro klienta více místní, není zátěží nejprve přejít na SR, zpět ke klientovi a zákazník pak tento text převezme a přejde na SLUŽBU LUIS.
+Cloud se liší od kontejneru. Cloud se může skládat z několika agregovaných kontejnerů (někdy označovaných jako mikroslužby). Proto je k dispozici kontejner LUIS a potom je kontejner řeči – dva samostatné kontejnery. Kontejner řeči funguje pouze v řeči. Kontejner LUIS provádí pouze LUIS. Vzhledem k tomu, že je známo, že jsou oba kontejnery nasazené a že se jedná o špatný výkon vzdáleného klienta pro přechod do cloudu, rozpoznávání řeči, vrácení zpět a následné přechod do cloudu a LUIS, poskytujeme funkci, která klientovi umožňuje přejít na řeč, zůstat v cloudu, přejít na LUIS a pak se vrátit ke klientovi. I když v tomto scénáři sada Speech SDK přejde do cloudového kontejneru řeči se zvukem, a potom hlasové rozhovory cloudového kontejneru LUIS do cloudového kontejneru s textem. Kontejner LUIS nemá žádný koncept přijmout zvuk (není smyslem, aby kontejner LUIS přijímal zvukové streamování – LUIS je textová služba). V Prem jsme nemuseli mít jistotu, že zákazník nasadil oba kontejnery, a pokud jsou oba kontejnery nasazené v místním prostředí, a pokud jsou oba kontejnery nasazeny v-Prem, nejedná se o nezatíženou službu SR, vraťte se ke klientovi a poznáte ho tak, aby se dalo na LUIS.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Proč dostáváme chyby s macOS, kontejnerem řeči a sadou Python SDK?</b>
+<b>Proč dochází k chybám pomocí macOS, kontejneru řeči a sady Python SDK?</b>
 </summary>
 
-Když odešleme soubor *WAV* k přepsání, výsledek se vrátí s:
+Když pošleme soubor *. wav* , který se má přepisu, vrátí se výsledek:
 
 ```cmd
 recognition is running....
@@ -272,11 +272,11 @@ WebSocket
 }
 ```
 
-Víme, že websocket je nastaven správně.
+Víme, že je WebSocket správně nastavený.
 
-**Odpověď:** Pokud tomu tak je, podívejte se na [tento problém GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). Máme řešení, které [je navrženo zde](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722).
+**Odpověď:** Pokud se jedná o tento případ, podívejte se na [Tento problém GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310). [Tady je navržený](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/310#issuecomment-527542722)problém.
 
-Carbon to opravil ve verzi 1.8.
+Uhlík byl opraven na verzi 1,8.
 
 
 <br>
@@ -287,31 +287,31 @@ Carbon to opravil ve verzi 1.8.
 <b>Jaké jsou rozdíly v koncových bodech kontejneru řeči?</b>
 </summary>
 
-Mohl byste pomoci vyplnit následující metriky testu, včetně jaké funkce testovat a jak otestovat sdk a rest API? Zejména rozdíly v "interaktivní" a "konverzace", které jsem neviděl z existujícího doc / vzorku.
+Mohli byste vám pomáhat s plněním následujících metrik testu, včetně toho, které funkce testovat a jak testovat sadu SDK a rozhraní REST API? Obzvláště rozdíly v "interaktivních" a "konverzacích", které jsem nevidí od existující dokumentace/ukázky.
 
-| Koncový bod                                                | Funkční zkouška                                                   | Sada SDK | REST API |
+| Koncový bod                                                | Funkční test                                                   | Sada SDK | REST API |
 |---------------------------------------------------------|-------------------------------------------------------------------|-----|----------|
-| `/speech/synthesize/cognitiveservices/v1`               | Syntetizovat text (převod textu na řeč)                                  |     | Ano      |
-| `/speech/recognition/dictation/cognitiveservices/v1`    | Koncový bod websocketu v 1 websocket u společnosti Cognitive Services on-prem        | Ano | Ne       |
-| `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod websocketu Cognitive Services on-prem interactive v1  |     |          |
-| `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod websocketu konverzace on-prem v1 |     |          |
+| `/speech/synthesize/cognitiveservices/v1`               | Text z syntezátoru (převod textu na řeč)                                  |     | Ano      |
+| `/speech/recognition/dictation/cognitiveservices/v1`    | Cognitive Services koncový bod protokolu WebSocket pro diktování Prem v1        | Ano | Ne       |
+| `/speech/recognition/interactive/cognitiveservices/v1`  | Koncový bod Prem Interactive v1 WebSocket v Cognitive Services  |     |          |
+| `/speech/recognition/conversation/cognitiveservices/v1` | Koncový bod WebSocket v Prem konverzaci v1 služby vnímání |     |          |
 
-**Odpověď:** Jedná se o fúzi:
-- Lidé se snaží dictation koncový bod pro kontejnery, (Nejsem si jistý, jak se dostali, že URL)
-- Koncový bod<sup>první</sup> strany je jeden v kontejneru.
-- Koncový bod 1<sup>st</sup> strany vracející zprávy `speech.hypothesis` speech.fragment namísto zpráv, které se vrátí koncovým bodům třetí<sup>části</sup> pro koncový bod diktování.
-- Carbon quickstarts všechny `RecognizeOnce` použití (interaktivní režim)
-- Carbon s tvrzením, že pro `speech.fragment` zprávy, které vyžadují, nejsou vráceny v interaktivním režimu.
-- Uhlík, který má tvrzení oheň v uvolnění staví (zabíjení procesu).
+**Odpověď:** Toto je Fusion:
+- Lidé, kteří se pokoušejí koncový bod diktování pro kontejnery, (nevím, jak si tuto adresu URL dostali)
+- 1 koncový<sup>bod strany,</sup> který je v kontejneru.
+- <sup>1 koncový</sup> bod koncového bodu vrací Speech. fragment zprávy namísto `speech.hypothesis` zpráv. 3 koncové body částí<sup>vzdálené plochy</sup> se vrátí pro koncový bod diktování.
+- Uhlí Starter všechny použití `RecognizeOnce` (interaktivní režim)
+- Uhlík s kontrolním výrazem `speech.fragment` , který pro zprávy vyžadující, že nejsou vraceny v interaktivním režimu.
+- Uhlík, který má kontrolní výraz v sestavení vydaných verzí (ukončuje se proces)
 
-Řešení je buď přepnout na použití průběžného rozpoznávání v kódu, nebo (rychlejší) připojit k interaktivní nebo průběžné koncové body v kontejneru.
-Pro váš kód nastavte koncový bod na <hostitele:port>/rozpoznávání řeči/interaktivní/cognitiveservices/v1
+Alternativní řešení je buď přepnout na použití průběžného rozpoznávání v kódu, nebo (rychlejší) připojit se k interaktivním nebo souvislým koncovým bodům v kontejneru.
+Pro svůj kód nastavte koncový bod na <hostitel: port>/Speech/Recognition/Interactive/cognitiveservices/v1
 
-Různé režimy viz Režimy řeči – viz níže:
+Různé režimy najdete v tématu režimy řeči – viz níže:
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
-Správná oprava přichází s Sadou SDK 1.8, která má podporu on-prem (vybere správný koncový bod, takže nebudeme horší než online služba). Mezitím je tu vzorek pro neustálé rozpoznávání, proč na něj neukážeme?
+Správná Oprava se koná v sadě SDK 1,8, která má podporu on-Prem (vybírá správný koncový bod, takže nebudeme se od online služby lišit). Do té doby existuje ukázka pro průběžné rozpoznávání, proč na ni neodkazujeme?
 
 https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d9e95c9137fe129bc5d81e35f6309/samples/python/console/speech_sample.py#L196
 
@@ -323,37 +323,24 @@ https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/6805d96bf69d
 <b>Jaký režim mám použít pro různé zvukové soubory?</b>
 </summary>
 
-**Odpověď:** Zde je [rychlý start pomocí Pythonu](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). Další jazyky propojené na webu docs najdete.
+**Odpověď:** Tady je [rychlý Start s použitím Pythonu](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-python). Další jazyky, které jsou propojené na webu Docs, najdete v části.
 
-Jen pro objasnění pro interaktivní, konverzace a diktování; jedná se o pokročilý způsob, jak určit konkrétní způsob, jakým bude naše služba zpracovávat žádost o řeč. Bohužel pro kontejnery on-prem musíme zadat úplný identifikátor URI (protože obsahuje místní počítač), takže tyto informace unikly z abstrakce. Spolupracujeme s týmem SDK, aby chomáč tak byl v budoucnu použitelnější.
-
-<br>
-</details>
-
-<details>
-<summary>
-<b>Jak můžeme porovnat hrubé měřítko transakcí / sekundy / jádro?</b>
-</summary>
-
-**Odpověď:** Zde jsou některé z hrubých čísel očekávat od stávajícího modelu (změní k lepšímu v jednom budeme loď v GA):
-
-- U souborů bude omezení v sadě SDK řeči 2x. Prvních pět sekund zvuku není omezeno. Dekodér je schopen dělat asi 3x v reálném čase. Za tímto účelem celkové využití procesoru bude blízko 2 jádra pro jedno uznání.
-- Pro mikrofon to bude 1x v reálném čase. Celkové využití by mělo být asi 1 jádro pro jediné uznání.
-
-To vše lze ověřit z protokolů dockeru. Jsme vlastně výpis řádku s relace a fráze / utterance statistiky, a to zahrnuje čísla RTF.
-
+Jenom pro objasnění interaktivních, konverzací a diktování; Toto je pokročilý způsob určení konkrétního způsobu, jakým bude naše služba zpracovávat požadavky na řeč. Pro kontejnery on-Prem je ale nutné zadat úplný identifikátor URI (protože zahrnuje místní počítač), proto tyto informace nedošlo k úniku z abstrakce. Spolupracujeme s týmem sady SDK, aby bylo možné ho v budoucnu využít.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Je běžné rozdělit zvukové soubory na sklíčidla pro použití kontejneru řeči?</b>
+<b>Jak můžeme v rámci srovnávacích testů určit hrubou míru transakcí za sekundu/jader?</b>
 </summary>
 
-Můj současný plán je vzít existující zvukový soubor a rozdělit jej na 10 sekund kusy a poslat ty přes kontejner. Je to přijatelný scénář?  Existuje lepší způsob, jak zpracovat větší zvukové soubory s kontejnerem?
+**Odpověď:** Tady jsou některá z hrubých čísel, která je potřeba z existujícího modelu očekávat (v případě, že se to bude lépe nadáme v GA):
 
-**Odpověď:** Stačí použít řeč SDK a dát mu soubor, bude to dělat správnou věc. Proč potřebujete soubor nakouskovat?
+- V případě souborů se omezuje omezení v sadě Speech SDK na 2x. Prvních pět sekund zvukového zvuku není omezeno. Dekodér je schopný v 3x v reálném čase. V takovém případě se celkové využití CPU blíží k 2 jádrům pro jedno rozpoznávání.
+- Pro MIC se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v přibližně 1 jádru pro jedno rozpoznávání.
+
+To se dá ověřit z protokolů Docker. Ve skutečnosti vypíšeme řádek s údaji o relaci a frázi/utterance, který obsahuje čísla ve formátu RTF.
 
 
 <br>
@@ -361,10 +348,23 @@ Můj současný plán je vzít existující zvukový soubor a rozdělit jej na 1
 
 <details>
 <summary>
-<b>Jak lze provést spuštění více kontejnerů na stejném hostiteli?</b>
+<b>Je běžné rozdělit zvukové soubory do Chucks pro použití kontejneru řeči?</b>
 </summary>
 
-Doc říká vystavit jiný port, což mám dělat, ale kontejner LUIS je stále naslouchána na portu 5000?
+V mém aktuálním plánu si můžete vzít existující zvukový soubor a rozdělit ho do 10 sekund bloků dat a odeslat je prostřednictvím kontejneru. Je to přijatelný scénář?  Existuje lepší způsob, jak zpracovat větší zvukové soubory pomocí kontejneru?
+
+**Odpověď:** Stačí použít sadu Speech SDK a dát jí soubor, který bude mít správnou věc. Proč potřebujete soubor zablokovat?
+
+
+<br>
+</details>
+
+<details>
+<summary>
+<b>Návody nastavit více kontejnerů na stejném hostiteli?</b>
+</summary>
+
+V dokumentu se říká, jak vystavit jiný port, který mám dělat, ale kontejner LUIS pořád naslouchá na portu 5000?
 
 **Odpověď:** Zkuste `-p <outside_unique_port>:5000`. Například, `-p 5001:5000`.
 
@@ -372,14 +372,14 @@ Doc říká vystavit jiný port, což mám dělat, ale kontejner LUIS je stále 
 <br>
 </details>
 
-## <a name="technical-questions"></a>Technické otázky
+## <a name="technical-questions"></a>Technické dotazy
 
 <details>
 <summary>
-<b>Jak mohu získat nedávková api &lt;pro zpracování zvuku o 15 sekundách?</b>
+<b>Jak získám jiná než dávková rozhraní API pro zpracování &lt;zvuku 15 sekund?</b>
 </summary>
 
-**Odpověď:** `RecognizeOnce()` V interaktivním režimu zpracovává pouze až 15 sekund zvuku, jako režim je určen pro rozpoznávání řeči příkazu, kde se očekává, že projevy být krátký. Pokud používáte `StartContinuousRecognition()` pro diktování nebo konverzaci, neexistuje žádný limit 15 sekund.
+**Odpověď:** `RecognizeOnce()` v interaktivním režimu se jenom zpracovávají až 15 sekund, protože režim je určený pro příkazy řeči, u kterých se očekává, že projevy bude krátká. Pokud použijete `StartContinuousRecognition()` funkci pro diktování nebo konverzaci, není limit 15 sekund.
 
 
 <br>
@@ -387,12 +387,12 @@ Doc říká vystavit jiný port, což mám dělat, ale kontejner LUIS je stále 
 
 <details>
 <summary>
-<b>Jaké jsou doporučené zdroje, CPU a RAM; pro 50 souběžných žádostí?</b>
+<b>Jaké jsou doporučené prostředky, procesor a paměť RAM; pro 50 souběžných požadavků?</b>
 </summary>
 
-Kolik souběžných požadavků bude 4 core, 4 GB RAM zvládnout? Pokud budeme muset sloužit například 50 souběžných požadavků, kolik Core a RAM se doporučuje?
+Kolik souběžných požadavků povede k 4 jádrům, 4 GB popisovače RAM? Pokud budeme muset zajišťovat například 50 souběžných požadavků, kolik jader a paměti RAM se doporučuje?
 
-**Odpověď:** V reálném čase, 8 `en-US`s naší nejnovější , takže doporučujeme používat více docker kontejnery nad 6 souběžných požadavků. Dostane bláznivější než 16 jader a stane se nerovnoměrným přístupem k paměti (NUMA) citlivým na uzel. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
+**Odpověď:** V reálném čase 8 s naší nejnovější `en-US`, doporučujeme použít více kontejnerů Docker nad rámec 6 souběžných požadavků. Získá crazier nad 16 jádry a stane se neuniformní přístupem k paměti (NUMA), který je citlivý na uzel. Následující tabulka popisuje minimální a doporučené přidělení prostředků pro každý kontejner řeči.
 
 # <a name="speech-to-text"></a>[Převod řeči na text](#tab/stt)
 
@@ -400,11 +400,11 @@ Kolik souběžných požadavků bude 4 core, 4 GB RAM zvládnout? Pokud budeme m
 |----------------|---------------------|---------------------|
 | Převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
-# <a name="custom-speech-to-text"></a>[Vlastní převod řeči na text](#tab/cstt)
+# <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
 | Kontejner             | Minimální             | Doporučené         |
 |-----------------------|---------------------|---------------------|
-| Vlastní převod řeči na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
+| Custom Speech na text | 2 jádra, 2 GB paměti | 4 jádra, 4 GB paměti |
 
 # <a name="text-to-speech"></a>[Převod textu na řeč](#tab/tts)
 
@@ -420,26 +420,26 @@ Kolik souběžných požadavků bude 4 core, 4 GB RAM zvládnout? Pokud budeme m
 
 ***
 
-- Každé jádro musí být alespoň 2,6 GHz nebo rychlejší.
-- U souborů bude omezení v sadě Speech SDK 2x (prvních 5 sekund zvuku není omezeno).
-- Dekodér je schopen dělat asi 2-3x v reálném čase. Za tímto účelem celkové využití procesoru bude blízko dvou jader pro jedno rozpoznávání. To je důvod, proč nedoporučujeme udržovat více než dvě aktivní připojení na instanci kontejneru. Extrémní strana by bylo dát asi 10 dekodérů na 2x `DS13_V2`v reálném čase v osmi jádrové stroje, jako je . Pro kontejner verze 1.3 a novější, je tu param můžete zkusit nastavení `DECODER_MAX_COUNT=20`.
-- Pro mikrofon to bude 1x v reálném čase. Celkové využití by mělo být přibližně na jednom jádru pro jedno rozpoznávání.
+- Každé jádro musí mít aspoň 2,6 GHz nebo rychlejší.
+- V případě souborů se omezuje omezení v sadě Speech SDK na 2x (prvních 5 sekund zvukového zvuku se neomezuje).
+- Dekodér je schopný o 2 – 3x v reálném čase. V tomto případě bude celkové využití procesoru blízko dvou jader pro jedno rozpoznávání. Proto nedoporučujeme udržovat více než dvě aktivní připojení na jednu instanci kontejneru. Extrémní strana by měla být o 10 dekodérech v dvojnásobné reálné době v osmi základních počítačích, jako `DS13_V2`je. Pro kontejner verze 1,3 a novější je k dispozici parametr, který byste si mohli `DECODER_MAX_COUNT=20`zkusit nastavit.
+- V případě mikrofonu se bude nacházet v čase 1x v reálném čase. Celkové využití by mělo být v souvislosti s jedním jádrem pro jedno rozpoznávání.
 
-Zvažte celkový počet hodin zvuku, který máte. Pokud je číslo velké, chcete-li zlepšit spolehlivost/dostupnost, doporučujeme spustit více instancí kontejnerů, buď na jednom poli nebo na více krabicích za nástroj pro vyrovnávání zatížení. Orchestrace lze provést pomocí Kubernetes (K8S) a Helm, nebo s Docker compose.
+Vezměte v úvahu celkový počet hodin zvukového zvuku. Pokud je toto číslo velké, aby se zlepšila spolehlivost a dostupnost, doporučujeme, abyste spustili více instancí kontejnerů, a to buď v jednom poli, nebo ve více polích za nástrojem pro vyrovnávání zatížení. Orchestraci můžete provést pomocí Kubernetes (K8S) a Helm nebo pomocí Docker.
 
-Jako příklad pro zpracování 1000 hodin / 24 hodin jsme se pokusili nastavit 3-4 virtuální chodů s 10 instancemi/dekodéry na virtuální hod.
+Například pro zpracování 1000 hodin za 24 hodin jsme zkusili nastavit virtuální počítače na 3-4 s 10 instancemi/dekodéry na jeden virtuální počítač.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Podporuje kontejner řeči interpunkci?</b>
+<b>Podporuje kontejner řeči interpunkční znaménka?</b>
 </summary>
 
-**Odpověď:** V kontejneru on-prem máme k dispozici velká písmena (ITN). Interpunkce je závislá na jazyku a není podporována pro některé jazyky, včetně čínštiny a japonštiny.
+**Odpověď:** V kontejneru on-Prem je k dispozici velká a malá písmena (vytvořené). Interpunkce je závislá na jazyku a není podporovaná pro některé jazyky, včetně čínských a japonských.
 
-Máme *do* implicitní a základní interpunkční podporu pro existující `off` kontejnery, ale je ve výchozím nastavení. Co to znamená, že `.` můžete získat znak v `。` příkladu, ale ne znak. Chcete-li povolit tuto implicitní logiku, tady je příklad, jak to udělat v Pythonu pomocí naší sady Speech SDK (to by bylo podobné v jiných jazycích):
+Pro existující *kontejnery máme podporu* implicitních a základních interpunkčních znamének, ale ve výchozím nastavení `off` je to. To znamená, že můžete získat `.` znak v příkladu, ale ne `。` znak. Pokud chcete povolit tuto implicitní logiku, tady je příklad, jak to udělat v Pythonu pomocí naší sady Speech SDK (ta by byla podobná v jiných jazycích):
 
 ```python
 speech_config.set_service_property(
@@ -454,10 +454,10 @@ speech_config.set_service_property(
 
 <details>
 <summary>
-<b>Proč se při pokusu o post dat do kontejneru převodu řeči na text zoátáčím o 404 chybách?</b>
+<b>Proč dochází k chybám 404 při pokusu o odeslání dat do kontejneru převodu řeči na text?</b>
 </summary>
 
-Zde je příklad HTTP POST:
+Tady je příklad HTTP POST:
 
 ```http
 POST /speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -477,14 +477,14 @@ Server: Kestrel
 Content-Length: 0
 ```
 
-**Odpověď:** Nepodporujeme rozhraní REST API v jednom kontejneru řeči na text, podporujeme pouze WebSockets prostřednictvím sady Speech SDK. Vždy se podívejte do oficiální dokumentace, viz [koncové body předpovědi dotazu](speech-container-howto.md#query-the-containers-prediction-endpoint).
+**Odpověď:** Nepodporujeme REST API v kontejneru pro převod řeči na text, podporujeme jenom WebSockets prostřednictvím sady Speech SDK. Vždy se podívejte na oficiální dokumentaci, přečtěte si téma [koncové body předpovědi dotazů](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Proč se při použití služby převodu řeči na text zobrazuje tato chyba?</b>
+<b>Proč se při používání služby Speech-to-text zobrazuje tato chyba?</b>
 </summary>
 
 ```cmd
@@ -495,17 +495,17 @@ Error in STT call for file 9136835610040002161_413008000252496:
 }
 ```
 
-**Odpověď:** K tomu obvykle dochází, když krmíte zvuk rychleji, než může kontejner rozpoznávání řeči převzít. Vyrovnávací paměti klienta se zaplní a zrušení se aktivuje. Je třeba řídit souběžnost a RTF, na kterém odešlete zvuk.
+**Odpověď:** K tomu obvykle dochází, když zvuk podáváte rychleji, než je kontejner rozpoznávání řeči může převzít. Vyrovnávací paměti klienta se naplní a zrušení se aktivuje. Je nutné řídit souběžnost a RTF, na kterých se zvuk posílá.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Můžete vysvětlit tyto chyby kontejneru pro převod textu na řeč z příkladů jazyka C++?</b>
+<b>Mohli byste tyto chyby kontejneru textu na řeč vysvětlit z příkladů jazyka C++?</b>
 </summary>
 
-**Odpověď:** Pokud je verze kontejneru starší než 1.3, měl by být použit tento kód:
+**Odpověď:** Pokud je verze kontejneru starší než 1,3, měl by se tento kód použít:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/speech/synthesize/cognitiveservices/v1";
@@ -514,7 +514,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Starší kontejnery nemají požadovaný koncový bod pro carbon `FromHost` pro práci s rozhraním API. Pokud jsou nádoby použité pro verzi 1.3, měl by být použit tento kód:
+Starší kontejnery nemají požadovaný koncový bod pro uhlí pro práci s `FromHost` rozhraním API. Pokud jsou kontejnery používané pro verzi 1,3, je třeba použít tento kód:
 
 ```cpp
 const auto host = "http://localhost:5000";
@@ -525,7 +525,7 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text1}}}").get();
 ```
 
-Níže je uveden příklad `FromEndpoint` použití rozhraní API:
+Níže je příklad použití `FromEndpoint` rozhraní API:
 
 ```cpp
 const auto endpoint = "http://localhost:5000/cognitiveservices/v1";
@@ -536,30 +536,30 @@ auto synthesizer = SpeechSynthesizer::FromConfig(config);
 auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 ```
 
- Funkce `SetSpeechSynthesisVoiceName` je volána, protože kontejnery s aktualizovaným modulem pro převod textu na řeč vyžadují hlasový název.
+ `SetSpeechSynthesisVoiceName` Funkce je volána, protože kontejnery s aktualizovaným modulem pro převod textu na řeč vyžadují hlasový název.
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Jak lze použít v1.7 sady Speech SDK s kontejnerem řeči?</b>
+<b>Jak můžu použít sadu Speech SDK v 1.7 pomocí kontejneru řeči?</b>
 </summary>
 
-**Odpověď:** Existují tři koncové body v kontejneru řeči pro různé použití, jsou definovány jako režimy řeči – viz níže:
+**Odpověď:** Existují tři koncové body kontejneru řeči pro různá použití, jsou definovány jako režimy řeči – viz níže:
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
-Jsou pro různé účely a používají se odlišně.
+Jsou určené pro různé účely a jsou používány odlišně.
 
-[Ukázky Pythonu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py):
-- Pro jednotné rozpoznávání (interaktivní režim) s vlastním koncovým bodem (to znamená; `SpeechConfig` parametrem koncového bodu), viz `speech_recognize_once_from_file_with_custom_endpoint_parameters()`.
-- Pro průběžné rozpoznávání (režim konverzace) a stačí upravit použít `speech_recognize_continuous_from_file()`vlastní koncový bod, jak je uvedeno výše, naleznete v tématu .
-- Chcete-li povolit diktování ve vzorcích jako výše (pouze pokud ji opravdu potřebujete), hned po vytvoření `speech_config`přidejte kód `speech_config.enable_dictation()`.
+[Ukázky](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py)Pythonu:
+- Pro jednoduché rozpoznávání (interaktivní režim) s vlastním koncovým bodem (to znamená; `SpeechConfig` s parametrem koncového bodu) `speech_recognize_once_from_file_with_custom_endpoint_parameters()`, přečtěte si téma.
+- V případě nepřetržitého rozpoznávání (režimu konverzace) a pouhým úpravou použití vlastního koncového bodu, `speech_recognize_continuous_from_file()`který je uveden výše, přečtěte si téma.
+- Chcete-li povolit diktování v ukázkách, jako jsou výše (pouze pokud to opravdu potřebujete), `speech_config`hned po vytvoření `speech_config.enable_dictation()`přidejte kód.
 
-V C# povolit diktování, vyvolat `SpeechConfig.EnableDictation()` funkci.
+V jazyce C# Chcete-li povolit diktování `SpeechConfig.EnableDictation()` , volejte funkci.
 
-### <a name="fromendpoint-apis"></a>`FromEndpoint`Rozhraní api
+### <a name="fromendpoint-apis"></a>`FromEndpoint`Třídy
 | Jazyk | Podrobnosti rozhraní API |
 |----------|:------------|
 | C++ | <a href="https://docs.microsoft.com/en-us/cpp/cognitive-services/speech/speechconfig#fromendpoint" target="_blank">`SpeechConfig::FromEndpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
@@ -567,19 +567,19 @@ V C# povolit diktování, vyvolat `SpeechConfig.EnableDictation()` funkci.
 | Java | <a href="https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.fromendpoint?view=azure-java-stable" target="_blank">`SpeechConfig.fromendpoint` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Objective-C | <a href="https://docs.microsoft.com/en-us/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithendpoint" target="_blank">`SPXSpeechConfiguration:initWithEndpoint;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
-| JavaScript | Není v současné době podporována, ani není plánována. |
+| JavaScript | V současné době není podporována, ani není plánována. |
 
 <br>
 </details>
 
 <details>
 <summary>
-<b>Jak lze použít v1.8 sady Speech SDK s kontejnerem řeči?</b>
+<b>Jak můžu použít sadu Speech SDK pro sadu Speech v kontejneru řeči?</b>
 </summary>
 
-**Odpověď:** Je tu nové `FromHost` API. Tím se nenahradí ani nezmění žádná existující nastavení API. To jen přidává alternativní způsob, jak vytvořit řeč config pomocí vlastního hostitele.
+**Odpověď:** Existuje nové `FromHost` rozhraní API. Nenahrazuje ani nemění žádná existující rozhraní API. Jenom přidá alternativní způsob, jak vytvořit konfiguraci řeči pomocí vlastního hostitele.
 
-### <a name="fromhost-apis"></a>`FromHost`Rozhraní api
+### <a name="fromhost-apis"></a>`FromHost`Třídy
 
 | Jazyk | Podrobnosti rozhraní API |
 |--|:-|
@@ -590,17 +590,17 @@ V C# povolit diktování, vyvolat `SpeechConfig.EnableDictation()` funkci.
 | Python | <a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python" target="_blank">`SpeechConfig;` <span class="docon docon-navigate-external x-hidden-focus"></span></a> |
 | JavaScript | Aktuálně se nepodporuje. |
 
-> Parametry: hostitel (povinné), klíč předplatného (volitelné, pokud můžete službu používat bez něj).
+> Parametry: hostitel (povinný), klíč předplatného (volitelné, pokud můžete službu použít bez ní).
 
-Formát pro `protocol://hostname:port` hostitele `:port` je místo, kde je volitelný (viz níže):
-- Pokud je kontejner spuštěn místně, název `localhost`hostitele je .
+Formát pro hostitele je `protocol://hostname:port` `:port` volitelné (viz níže):
+- Pokud je kontejner spuštěn místně, název hostitele je `localhost`.
 - Pokud je kontejner spuštěn na vzdáleném serveru, použijte název hostitele nebo adresu IPv4 tohoto serveru.
 
 Příklady parametrů hostitele pro převod řeči na text:
-- `ws://localhost:5000`- nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
-- `ws://some.host.com:5000`- nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
+- `ws://localhost:5000`– nezabezpečené připojení k místnímu kontejneru pomocí portu 5000
+- `ws://some.host.com:5000`– nezabezpečené připojení k kontejneru běžícímu na vzdáleném serveru
 
-Python ukázky shora, ale použít `host` parametr namísto `endpoint`:
+Ukázky Pythonu výše, ale použijte `host` parametr místo `endpoint`:
 
 ```python
 speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
@@ -612,4 +612,4 @@ speech_config = speechsdk.SpeechConfig(host="ws://localhost:5000")
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kontejnery služeb Cognitive Services](speech-container-howto.md)
+> [Kontejnery Cognitive Services](speech-container-howto.md)

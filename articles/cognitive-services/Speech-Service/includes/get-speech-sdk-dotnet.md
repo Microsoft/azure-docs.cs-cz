@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 49a38c06e3a6105ad12133268b83ea73bcea2fc4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399956"
 ---
 :::row:::
     :::column span="3":::
-        Sada .NET Speech SDK je k dispozici jako balíček NuGet a implementuje rozhraní .NET Standard 2.0, další informace naleznete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft.CognitiveServices.Speech <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        Sada .NET Speech SDK je k dispozici jako balíček NuGet a implementuje .NET Standard 2,0, další informace najdete v tématu <a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">Microsoft. cognitiveservices Account. <span class="docon docon-navigate-external x-hidden-focus"> </span>Speech </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -23,20 +23,20 @@ ms.locfileid: "81399956"
     :::column-end:::
 :::row-end:::
 
-#### <a name="c-nuget-package"></a>Balíček C# NuGet
+#### <a name="c-nuget-package"></a>Balíček NuGet pro C#
 
-Sada .NET Speech SDK lze nainstalovat z **rozhraní PŘÍKAZU CLI jádra .NET** pomocí následujícího `dotnet add` příkazu.
+Sadu .NET Speech SDK můžete nainstalovat z **.NET Core CLI** pomocí následujícího `dotnet add` příkazu.
 
 ```dotnetcli
 dotnet add package Microsoft.CognitiveServices.Speech
 ```
 
-Sada .NET Speech SDK lze nainstalovat ze `Install-Package` Správce **balíčků** pomocí následujícího příkazu.
+Sadu .NET Speech SDK lze nainstalovat ze **Správce balíčků** pomocí následujícího `Install-Package` příkazu.
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
 
-#### <a name="additional-resources"></a>Další zdroje
+#### <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">Zdrojový kód Jazyka .NET, rozhraní .NET Framework, Unity, UPW a Xamarin<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">Zdrojový kód C# pro .NET Core, .NET Framework, Unity, UWP a Xamarin Starter<span class="docon docon-navigate-external x-hidden-focus"></span></a>

@@ -12,30 +12,30 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: cc764170f9dcdd74288e57dbef403c6092dcca2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404472"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>Úvodní příručka: Analýza vzdáleného obrazu pomocí rozhraní API PRO ODPOČINEK v počítači a Pythonu
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu budete analyzovat vzdáleně uloženou bitovou kopii a extrahovat vizuální funkce pomocí rozhraní API REKONČOVÁNÍ Počítače. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
 Tento rychlý start můžete spustit jako podrobný návod pomocí Jupyter Notebooku na webu [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
-[![Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/try/cognitive-services/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Pokud chcete spustit tuto ukázku v místním prostředí, musíte mít nainstalovaný jazyk [Python](https://www.python.org/downloads/).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
-- Musíte mít nainstalované následující balíčky Pythonu. Pip můžete [použít](https://packaging.python.org/tutorials/installing-packages/) k instalaci balíčků Pythonu.
-    - Požadavky
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Musíte mít nainstalované následující balíčky Pythonu. Pomocí [PIP](https://packaging.python.org/tutorials/installing-packages/) můžete nainstalovat balíčky Pythonu.
+    - požádal
     - [matplotlib](https://matplotlib.org/)
-    - [Polštář](https://python-pillow.org/)
+    - [pillow](https://python-pillow.org/)
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -171,7 +171,7 @@ plt.show()
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále prozkoumejte aplikaci Pythonu, která používá počítačové vidění k provádění optického rozpoznávání znaků (OCR); vytvářet miniatury s inteligentním oříznutím; navíc detekují, kategorizují, označují a popisují vizuální funkce v obrázcích.
+Dále Prozkoumejte aplikaci Python, která používá Počítačové zpracování obrazu k provádění optického rozpoznávání znaků (OCR); vytvořit miniatury s inteligentním oříznutím; a navíc detekuje, kategorizovat, označovat a popsat vizuální funkce na obrázcích.
 
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)

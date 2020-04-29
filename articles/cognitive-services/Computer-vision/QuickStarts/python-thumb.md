@@ -12,22 +12,22 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 68a6504668b9f180a421fe20c2c89d73b87bcc35
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404350"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Úvodní příručka: Generování miniatury pomocí rozhraní API PRO ZPRACOVÁNÍ POČÍTAČE A Pythonu
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a Pythonu
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API REKONČNATÉHO Počítače. Pomocí metody [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete určit požadovanou výšku a šířku a počítačové vidění používá inteligentní oříznutí k inteligentní identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Pomocí metody [získat miniatury](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) můžete určit požadovanou výšku a šířku a počítačové zpracování obrazu používat inteligentní ořezávání k inteligentně identifikaci oblasti zájmu a generování souřadnic oříznutí na základě této oblasti.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/try/cognitive-services/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/try/cognitive-services/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
-- Editor kódu, jako je [například Visual Studio Code](https://code.visualstudio.com/download).
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
 
 ## <a name="create-and-run-the-sample"></a>Vytvoření a spuštění ukázky
 
@@ -75,7 +75,7 @@ plt.axis("off")
 print("Thumbnail is {0}-by-{1}".format(*thumbnail.size))
 ```
 
-Dále postupujte takto:
+Dále postupujte následovně:
 1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, pro který chcete vygenerovat miniaturu.
 1. Uložte kód jako soubor s příponou `.py`. Například, `get-thumbnail.py`.
 1. Otevřete okno příkazového řádku.
@@ -83,17 +83,17 @@ Dále postupujte takto:
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď je vrácena jako binární data, která představují obrazová data pro miniaturu. Ukázka by měla zobrazit tento obrázek. Pokud se požadavek nezdaří, odpověď se zobrazí v okně příkazového řádku a měla by obsahovat kód chyby.
+Úspěšná odpověď se vrátí jako binární data, která představují data obrázku pro miniaturu. Ukázka by měla zobrazit tento obrázek. Pokud se požadavek nepovede, zobrazí se odpověď v okně příkazového řádku a měla by obsahovat kód chyby.
 
-## <a name="run-in-jupyter-optional"></a>Běh v Jupyteru (nepovinné)
+## <a name="run-in-jupyter-optional"></a>Spustit v Jupyter (volitelné)
 
-Volitelně můžete spustit tento rychlý start krok-za krokem pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
+Tento rychlý Start můžete volitelně spustit v kroku pomocí poznámkového bloku Jupyter na [MyBinder](https://mybinder.org). Pokud chcete spustit Binder, vyberte následující tlačítko:
 
-[![Pořadače](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
+[![Vazba](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále prozkoumejte aplikaci Pythonu, která používá počítačové vidění k provádění optického rozpoznávání znaků (OCR); vytvářet miniatury s inteligentním oříznutím; a zjišťovat, kategorizovat, označovat a popisovat vizuální funkce v obrázcích.
+Dále Prozkoumejte aplikaci Python, která používá Počítačové zpracování obrazu k provádění optického rozpoznávání znaků (OCR); vytvořit miniatury s inteligentním oříznutím; a k detekci, kategorizaci, označení a popisu vizuálních funkcí v obrázcích.
 
 > [!div class="nextstepaction"]
 > [Kurz k rozhraní API pro počítačové zpracování obrazu a Pythonu](../Tutorials/PythonTutorial.md)

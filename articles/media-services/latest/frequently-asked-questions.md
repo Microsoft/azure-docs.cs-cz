@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 nejčastější dotazy| Dokumenty společnosti Microsoft
-description: Tento článek poskytuje odpovědi na nejčastější dotazy týkající se Azure Media Services v3.
+title: Nejčastější dotazy k Azure Media Services V3 | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,192 +12,192 @@ ms.topic: article
 ms.date: 04/07/2020
 ms.author: juliako
 ms.openlocfilehash: 713acbd098255af2869d7a462c9990f3d7e10bf1
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309187"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 nejčastější dotazy
+# <a name="media-services-v3-frequently-asked-questions"></a>Nejčastější dotazy k Media Services V3
 
-Tento článek poskytuje odpovědi na nejčastější dotazy týkající se Azure Media Services v3.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure Media Services V3.
 
 ## <a name="general"></a>Obecné
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s prostředky Azure Media Services? 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Jaké role Azure můžou provádět akce s Azure Media Services prostředky? 
 
-Viz [Řízení přístupu na základě rolí (RBAC) pro účty mediálních služeb](rbac-overview.md).
+Přečtěte si téma [řízení přístupu na základě role (RBAC) pro účty Media Services](rbac-overview.md).
 
-### <a name="how-do-i-stream-to-apple-ios-devices"></a>Jak se streamuje do zařízení Apple iOS?
+### <a name="how-do-i-stream-to-apple-ios-devices"></a>Návody Stream do zařízení Apple iOS?
 
-Ujistěte se, že máte **(format=m3u8-aapl)** na konci cesty (po **/manifest** část URL) sdělit zdroj vysílání datového proudu server vrátit OBSAH HTTP Live Streaming (HLS) pro spotřebu na apple iOS nativní zařízení. Podrobnosti naleznete v [tématu Doručování obsahu](dynamic-packaging-overview.md).
+Ujistěte se, že máte **(Format = M3U8-AAPL)** na konci vaší cesty (po **/manifest** části adresy URL), aby server zdroje dat pro streamování vrátil HTTP Live Streaming (HLS) pro spotřebu na nativních zařízeních Apple iOS. Podrobnosti najdete v tématu [doručování obsahu](dynamic-packaging-overview.md).
 
-### <a name="how-do-i-configure-media-reserved-units"></a>Jak nakonfiguruji rezervované jednotky médií?
+### <a name="how-do-i-configure-media-reserved-units"></a>Návody nakonfigurovat rezervované jednotky médií?
 
-U úloh analýzy zvuku a analýzy videa, které jsou spuštěny službou Media Services v3 nebo Video Indexer, doporučujeme zřídit účet s 10 rezervovanými jednotkami médií S3 (MRU). Pokud potřebujete více než 10 OBJEKTŮ MRU S3, otevřete lístek podpory pomocí [portálu Azure](https://portal.azure.com/).
+Pro analýzy zvuku a úlohy analýzy videí, které se spouštějí Media Services V3 nebo Video Indexer, doporučujeme zřídit účet s 10 rezervovanými jednotkami médií (MRUs). Pokud potřebujete více než 10 S3 MRUs, otevřete lístek podpory pomocí [Azure Portal](https://portal.azure.com/).
 
-Podrobnosti naleznete v tématu [Škálování zpracování médií](media-reserved-units-cli-how-to.md).
+Podrobnosti najdete v tématu [škálování zpracování médií](media-reserved-units-cli-how-to.md).
 
-### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaká je doporučená metoda zpracování videí?
+### <a name="what-is-the-recommended-method-to-process-videos"></a>Jaká je doporučená metoda pro zpracování videí?
 
-Transformace slouží ke [konfiguraci běžných](https://docs.microsoft.com/rest/api/media/transforms) úloh pro kódování nebo analýzu videí. Každá transformace popisuje recept nebo pracovní postup úloh pro zpracování video souborů nebo zvukových souborů. [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je skutečný požadavek na mediální služby použít transformace na vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odeslat úlohy pomocí api mediálních služeb nebo libovolné z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
+Pomocí [transformací](https://docs.microsoft.com/rest/api/media/transforms) můžete nakonfigurovat běžné úlohy pro kódování a analýzu videí. Každá transformace popisuje recept nebo pracovní postup úloh pro zpracování vašich videosouborů nebo zvukových souborů. [Úloha](https://docs.microsoft.com/rest/api/media/jobs) je skutečný požadavek na Media Services, jak použít transformaci na vstupní video nebo zvukový obsah. Po vytvoření transformace můžete odesílat úlohy pomocí rozhraní API Media Services nebo kterékoli z publikovaných sad SDK. Další informace najdete v tématu [Transformace a úlohy](transforms-jobs-concept.md).
 
-### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Nahrál jsem, zakódoval a zveřejnil video. Proč se video nepřehrává, když se ho snažím streamovat?
+### <a name="i-uploaded-encoded-and-published-a-video-why-wont-the-video-play-when-i-try-to-stream-it"></a>Video se nahrálo, zakódoval a publikovalo. Proč se video při pokusu o streamování nebude přehrávat?
 
-Jedním z nejčastějších důvodů je, že nemáte koncový bod streamování, ze kterého se pokoušíte přehrát ve stavu Spuštěno.
+Jedním z nejběžnějších důvodů je, že nemáte koncový bod streamování, ze kterého se snažíte přejít do běžícího stavu.
 
 ### <a name="how-does-pagination-work"></a>Jak funguje stránkování?
 
-Pokud používáte stránkování, měli byste vždy použít další odkaz k výčetkolekce a není závislá na konkrétní velikost stránky. Podrobnosti a příklady naleznete v [tématu Filtrování, řazení, stránkování](entities-overview.md).
+Při použití stránkování byste měli vždy použít další odkaz k zobrazení výčtu kolekce a nezáleží na konkrétní velikosti stránky. Podrobnosti a příklady najdete v tématu [filtrování, řazení, stránkování](entities-overview.md).
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou dostupné ve službě Azure Media Services v3?
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Jaké funkce ještě nejsou v Azure Media Services V3 k dispozici?
 
-Podrobnosti naleznete v [tématu Mezery funkcí s ohledem na v2 API](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Podrobnosti najdete v tématu [mezery funkcí v souvislosti s rozhraními API v2](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesouvání účtu mediálních služeb mezi předplatnými?  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Jaký je proces přesunutí účtu Media Services mezi předplatnými?  
 
-Podrobnosti naleznete [v tématu Přesunutí účtu mediálních služeb mezi předplatnými](media-services-account-concept.md).
+Podrobnosti najdete v tématu [přesun Media Services účtu mezi předplatnými](media-services-account-concept.md).
 
 ## <a name="live-streaming"></a>Živé streamování 
 
-### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>Jak zastavím živý přenos po dokončení vysílání?
+### <a name="how-do-i-stop-the-live-stream-after-the-broadcast-is-done"></a>Návody zastavit živý stream po dokončení vysílání?
 
-Můžete k němu přistupovat ze strany klienta nebo na straně serveru.
+K tomuto přístupu se můžete přizpůsobovat ze strany klienta nebo na straně serveru.
 
-#### <a name="client-side"></a>Na straně klienta
+#### <a name="client-side"></a>Strana klienta
 
-Webová aplikace by měla uživatele vyzvat, pokud chce ukončit vysílání při zavírání prohlížeče. Jedná se o událost prohlížeče, kterou vaše webová aplikace zvládne.
+Vaše webová aplikace by měla uživatele vyzvat, pokud chce ukončit všesměrové vysílání, protože zavírá prohlížeč. Toto je událost prohlížeče, kterou může webová aplikace zpracovat.
 
 #### <a name="server-side"></a>Strana serveru
 
-Živé události můžete sledovat tak, že se přihlásíte k odběru událostí služby Azure Event Grid. Další informace naleznete v [tématu EventGrid schéma události](media-services-event-schemas.md#live-event-types).
+Můžete monitorovat živé události tím, že se přihlásíte k odběru Azure Event Gridch událostí. Další informace najdete v tématu [schéma událostí EventGrid](media-services-event-schemas.md#live-event-types).
 
 Máte tyto možnosti:
 
-* [Přihlaste se k odběru](reacting-to-media-services-events.md) událostí [Microsoft.Media.LiveEventEncoder](media-services-event-schemas.md#liveeventencoderdisconnected) na úrovni datového proudu Odpojené události a sledujte, že na chvíli nedojde k opětovnému připojení, abyste zastavili a odstranili vaši živou událost.
-* [Přihlaste se k odběru](reacting-to-media-services-events.md) událostí [prezenčního signálu](media-services-event-schemas.md#liveeventingestheartbeat) na úrovni trati. Pokud všechny stopy mají příchozí přenosový tok klesá na 0 nebo poslední časové razítko se již zvyšuje, můžete bezpečně vypnout živé události. Srdeční tep události přicházejí v každých 20 sekund pro každou skladbu, takže to může být trochu verbose.
+* [Přihlaste](reacting-to-media-services-events.md) se k odběru událostí [Microsoft. Media. LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) na úrovni datového proudu a sledujte, že v průběhu chvilky nejsou žádné znovu navázány, aby se zastavila a odstranila živá událost.
+* [Přihlaste](reacting-to-media-services-events.md) se k odběru událostí [prezenčního signálu](media-services-event-schemas.md#liveeventingestheartbeat) na úrovni sledování. Pokud se u všech stop přestanou příchozí přenosové rychlosti na 0 nebo když se poslední časové razítko nezvyšuje, můžete živou událost bezpečně vypnout. Události prezenčního signálu přicházejí v každé 20 sekundách pro každou stopu, takže se může jednat o bitovou podrobnou bitovou kopii.
 
-###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>Jak vložím přestávky/videa a obrázkové břidlice během živého přenosu?
+###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>V živém streamu Návody vkládat rozlomení, videa a obrazové položky?
 
-Živé kódování Media Services v3 ještě nepodporuje vkládání video nebo obrazových břidlic během živého přenosu. 
+Media Services V3 Live Encoding ještě nepodporuje vkládání videa nebo obrazových obrázků v živém streamu. 
 
-Zdrojové video můžete přepnout pomocí [živého místního kodéru.](recommended-on-premises-live-encoders.md) Mnoho aplikací poskytuje možnost přepínat zdroje, včetně Telestream Wirecast, Switcher Studio (na iOS) a OBS Studio (bezplatná aplikace).
+Pro přepnutí zdrojového videa můžete použít [živý místní kodér](recommended-on-premises-live-encoders.md) . Řada aplikací nabízí možnost přepnout zdroje, včetně Wirecast streamování, přepínač studia (v iOS) a OBS studia (bezplatná aplikace).
 
 ## <a name="content-protection"></a>Ochrana obsahu
 
-### <a name="should-i-use-aes-128-clear-key-encryption-or-a-drm-system"></a>Mám použít šifrování clear key nebo systém DRM AES-128 clear key?
+### <a name="should-i-use-aes-128-clear-key-encryption-or-a-drm-system"></a>Mám použít šifrované šifrování klíče AES-128 nebo systém DRM?
 
-Zákazníci si často kladou otázku, zda by měli používat šifrování AES nebo systém DRM. Hlavní rozdíl mezi těmito dvěma systémy spoážit v tom, že pomocí šifrování AES je klíč obsahu přenášen klientovi přes TLS tak, aby byl klíč šifrován při přenosu, ale bez dalšího šifrování ("v jasném"). V důsledku toho je klíč, který se používá k dešifrování obsahu, přístupný hráči klienta a lze jej zobrazit v síťovém trasování na straně klienta ve formátu prostého textu. Šifrování jasného klíče AES-128 je vhodné pro případy použití, kdy je divák důvěryhodnou stranou (například šifrování firemních videí distribuovaných v rámci společnosti, které mají zaměstnanci zobrazit).
+Zákazníci často chtějí, aby používali šifrování AES nebo systém DRM. Hlavním rozdílem mezi těmito dvěma systémy je to, že při šifrování AES se klíč obsahu přenáší klientovi přes protokol TLS, aby se klíč zašifroval při přenosu, ale bez dalšího šifrování ("v jasném stavu"). V důsledku toho je klíč, který se používá k dešifrování obsahu, přístupný klientskému přehrávači a může se zobrazit v síťovém trasování na klientovi v prostém textu. Šifrování standardu AES-128 je vhodné pro případy použití, kde se jedná o důvěryhodnou osobu (například k šifrování firemních videí distribuovaných v rámci společnosti, které mají zaměstnanci prohlížet).
 
-Systémy DRM jako PlayReady, Widevine a FairPlay poskytují další úroveň šifrování na klíči, který se používá k dešifrování obsahu, ve srovnání s jasným klíčem AES-128. Klíč obsahu je šifrován na klíč chráněný prostředím DRM kromě šifrování na úrovni přenosu poskytovaného protokolem TLS. Kromě toho je dešifrování zpracováno v zabezpečeném prostředí na úrovni operačního systému, kde je pro uživatele se zlými úmysly obtížnější zaútočit. Doporučujeme DRM pro případy použití, kdy prohlížeč nemusí být důvěryhodnou stranou a potřebujete nejvyšší úroveň zabezpečení.
+Systémy DRM, jako je PlayReady, Widevine a FairPlay, poskytují další úroveň šifrování na klíč, který se používá k dešifrování obsahu v porovnání s jasným klíčem AES-128. Klíč obsahu je zašifrovaný na klíč chráněný modulem runtime DRM kromě jakéhokoli šifrování na úrovni přenosu poskytovaného protokolem TLS. Šifrování se navíc zpracovává v zabezpečeném prostředí na úrovni operačního systému, kde je obtížnější útok na uživatele se zlými úmysly. Pro případy použití doporučujeme použít DRM, kdy prohlížeč nemusí být důvěryhodnou stranou a potřebujete nejvyšší úroveň zabezpečení.
 
-### <a name="how-do-i-show-a-video-to-only-users-who-have-a-specific-permission-without-using-azure-ad"></a>Jak můžu zobrazit video jenom uživatelům, kteří mají konkrétní oprávnění, bez použití Azure AD?
+### <a name="how-do-i-show-a-video-to-only-users-who-have-a-specific-permission-without-using-azure-ad"></a>Návody zobrazit video jenom uživatelům, kteří mají určité oprávnění, bez použití Azure AD?
 
-Nemusíte používat žádné konkrétní zprostředkovatele tokenů, jako je Azure Active Directory (Azure AD). Můžete vytvořit vlastní poskytovatele [JWT](https://jwt.io/) (tzv Secure Token Service, nebo STS) pomocí asymetrického šifrování klíče. Ve vašem vlastním STS můžete přidat deklarace identity na základě obchodní logiky.
+Nemusíte používat žádného konkrétního poskytovatele tokenu, jako je Azure Active Directory (Azure AD). Pomocí asymetrického šifrování klíčů můžete vytvořit vlastního zprostředkovatele [JWT](https://jwt.io/) (označovaný jako služba zabezpečeného tokenu nebo STS). Ve vlastní službě STS můžete přidat deklarace identity založené na obchodní logice.
 
-Ujistěte se, že vystavit, publikum a nároky všechny zápas přesně mezi `ContentKeyPolicyRestriction` co `ContentKeyPolicy`je v JWT a hodnota použitá v .
+Ujistěte se, že Vystavitel, skupina a deklarace identity se přesně shodují mezi tím, co je v tokenu JWT `ContentKeyPolicyRestriction` , `ContentKeyPolicy`a hodnotou použitou v.
 
-Další informace naleznete v [tématu Ochrana obsahu pomocí dynamického šifrování služby Media Services](content-protection-overview.md).
+Další informace najdete v tématu [Ochrana obsahu pomocí Media Services dynamického šifrování](content-protection-overview.md).
 
-### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Jak a kde jsem získal token JWT před použitím k žádosti o licenci nebo klíč?
+### <a name="how-and-where-did-i-get-a-jwt-token-before-using-it-to-request-a-license-or-key"></a>Jak a kde získá token JWT před jeho použitím k vyžádání licence nebo klíče?
 
-Pro produkční prostředí musíte mít službu Secure Token Service (tj. webovou službu), která vydává token JWT na požadavek HTTPS. Pro test můžete použít kód zobrazený v metodě `GetTokenAsync` definované v [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
+V případě produkčního prostředí musíte mít službu zabezpečeného tokenu (tj. webovou službu), která vydává token JWT po požadavku HTTPS. Pro test můžete použít kód zobrazený v `GetTokenAsync` metodě definované v [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
 
-Hráč po ověření uživatele požádá o takový token a přiřadí jej jako hodnotu tokenu. Rozhraní Azure [Media Player API](https://amp.azure.net/libs/amp/latest/docs/)můžete použít .
+Hráč vytvoří požadavek, po ověření uživatele, na službu STS pro takový token a přiřadí ho jako hodnotu tokenu. Můžete použít [rozhraní Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/).
 
-Příklad spuštění STS s symetrickou klávesou nebo asymetrickou klávesou naleznete v [nástroji JWT](https://aka.ms/jwt). Příklad přehrávače založeného na Azure Media Playeru pomocí takového tokenu JWT najdete v [nástroji pro testování médií Azure](https://aka.ms/amtest). (Rozbalte **odkaz player_settings** a zobceme vstup tokenu.)
+Příklad spuštění služby STS s symetrickým klíčem nebo asymetrickým klíčem naleznete v tématu [Nástroj JWT](https://aka.ms/jwt). Příklad přehrávače, který je založený na Azure Media Player pomocí takového tokenu JWT, najdete v tématu [Azure Media test Tool](https://aka.ms/amtest). (Pokud chcete zobrazit vstup tokenu, rozbalte odkaz **player_settings** .)
 
-### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Jak povolím žádosti o streamování videí pomocí šifrování AES?
+### <a name="how-do-i-authorize-requests-to-stream-videos-with-aes-encryption"></a>Návody autorizovat požadavky na streamování videí pomocí šifrování AES?
 
-Správný přístup je použití služby Zabezpečené tokeny. V STS, v závislosti na profilu uživatele, přidejte různé deklarace identity (například "Premium User", "Základní uživatel", "Uživatel zkušební verze zdarma"). S různými deklaracemi v JWT může uživatel zobrazit jiný obsah. Pro různé obsahy `ContentKeyPolicyRestriction` nebo majetek, bude mít odpovídající `RequiredClaims` hodnotu.
+Správným přístupem je použití služby Secure token Service. V závislosti na profilu uživatele přidejte v rámci služby STS různé deklarace identity (například "Premium User", "Basic User", "User bezplatnou zkušební verzi"). S různými deklaracemi v tokenu JWT může uživatel zobrazit různý obsah. Pro různé obsahy nebo prostředky `ContentKeyPolicyRestriction` bude mít odpovídající `RequiredClaims` hodnotu.
 
-Pomocí virtuálních zařízení Azure Media Services pro konfiguraci doručování licencí a klíčů a šifrování vašich prostředků (jak je znázorněno v [této ukázce).](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)
+Použijte rozhraní API pro Azure Media Services ke konfiguraci poskytování licencí/klíčů a šifrování prostředků (jak je znázorněno v [této ukázce](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)).
 
 Další informace naleznete v tématu:
 
 - [Přehled ochrany obsahu](content-protection-overview.md)
 - [Návrh systému ochrany obsahu s více variantami DRM s využitím řízení přístupu](design-multi-drm-system-with-access-control.md)
 
-### <a name="should-i-use-http-or-https"></a>Mám použít HTTP nebo HTTPS?
-Aplikace ASP.NET MVC player musí podporovat následující:
+### <a name="should-i-use-http-or-https"></a>Mám použít protokol HTTP nebo HTTPS?
+Aplikace aktéra ASP.NET MVC musí podporovat následující:
 
-* Ověřování uživatelů prostřednictvím Azure AD, který je v části HTTPS.
-* JWT exchange mezi klientem a Azure AD, který je v rámci protokolu HTTPS.
-* Získání licence DRM klientem, které musí být v rámci protokolu HTTPS, pokud je doručení licence poskytováno službou Media Services. Sada produktů PlayReady nenařizuje protokol HTTPS pro doručování licencí. Pokud je licenční server PlayReady mimo službu Media Services, můžete použít protokol HTTP nebo HTTPS.
+* Ověřování uživatelů prostřednictvím služby Azure AD, která je v rámci protokolu HTTPS.
+* Výměna JWT mezi klientem a službou Azure AD, která je v protokolu HTTPS.
+* Získání licence DRM klientem, který musí být v rámci protokolu HTTPS, pokud je doručování licencí poskytované Media Services. Sada produktů PlayReady nevyžaduje pro doručování licencí protokol HTTPS. Pokud je váš licenční server PlayReady mimo Media Services, můžete použít buď protokol HTTP, nebo HTTPS.
 
-Aplikace ASP.NET přehrávačpoužívá jako osvědčený postup protokol HTTPS, takže media player je na stránce v části HTTPS. Protokol HTTP je však upřednostňován pro streamování, takže je třeba zvážit tyto problémy se smíšeným obsahem:
+Aplikace přehrávače ASP.NET používá jako osvědčený postup protokol HTTPS, takže Media Player se nachází na stránce s protokolem HTTPS. Protokol HTTP je ale upřednostňovaný pro streamování, takže je potřeba zvážit tyto problémy se smíšeným obsahem:
 
-* Prohlížeč nepovoluje smíšený obsah. Ale plug-iny jako Silverlight a OSMF plug-in pro Smooth a DASH to umožňují. Smíšený obsah je bezpečnostní problém z důvodu hrozby schopnosti aplikovat škodlivý JavaScript, což může ohrozit zákaznická data. Prohlížeče tuto funkci ve výchozím nastavení blokují. Jediný způsob, jak to obejít, je na straně serveru (původu) povolením všech domén (bez ohledu na protokol HTTPS nebo HTTP). To asi není dobrý nápad jeden.
-* Vyhněte se smíšenému obsahu. Aplikace přehrávače i přehrávač médií by měly používat protokol HTTP nebo HTTPS. Při přehrávání smíšeného obsahu vyžaduje technologie SilverlightSS vymazání upozornění na smíšený obsah. Technologie FlashSS zpracovává smíšený obsah bez upozornění na smíšený obsah.
-* Pokud byl koncový bod streamování vytvořen před srpnem 2014, nebude podporovat protokol HTTPS. V takovém případě vytvořte a použijte nový koncový bod streamování pro protokol HTTPS.
+* Prohlížeč nepovoluje smíšený obsah. Moduly plug-in, jako je Silverlight a modul plug-in OSMF pro zajištění hladkého a PŘERUŠOVANého připojení, to umožňují. Smíšený obsah je bezpečnostní riziko z důvodu hrozby, která umožňuje vložit škodlivý kód JavaScriptu, který může ohrozit zákaznická data. V prohlížečích je tato funkce ve výchozím nastavení zablokovaná. Jediným způsobem, jak se tento problém obejít, je na straně serveru (Origin) povolit všechny domény (bez ohledu na protokol HTTPS nebo HTTP). Tato možnost není pravděpodobně dobrý nápad.
+* Vyhněte se Smíšenému obsahu. Aplikace přehrávače i Media Player by měly používat protokol HTTP nebo HTTPS. Když hrajete smíšený obsah, technologie Silverlight tech vyžaduje vymazání upozornění na smíšený obsah. Technik Flash zpracovává smíšený obsah bez upozornění na smíšený obsah.
+* Pokud byl koncový bod streamování vytvořen před srpna 2014, nebude podporovat protokol HTTPS. V takovém případě vytvořte a použijte nový koncový bod streamování pro protokol HTTPS.
 
-### <a name="what-about-live-streaming"></a>A co živé vysílání?
+### <a name="what-about-live-streaming"></a>Co je živé streamování?
 
-Můžete použít přesně stejný návrh a implementaci k ochraně živého streamování ve službě Media Services tím, že s datovým zdrojem přidruženým k programu zacházíte jako s datovým zdrojem VOD. Chcete-li poskytnout ochranu živého obsahu s více DRM, použijte stejné nastavení nebo zpracování na datový zdroj, jako by se jednalo o prostředek VOD před přidružením datového zdroje k živému výstupu.
+Můžete použít naprosto stejný návrh a implementaci, abyste chránili živé streamování v Media Services tím, že provedete Asset přidružený k programu jako prostředek VOD. Pokud chcete zajistit ochranu pomocí živého obsahu s více technologiemi DRM, použijte stejné nastavení nebo zpracování na Asset, jako by šlo o VOD Asset ještě předtím, než provedete přidružení assetu s živým výstupem.
 
-### <a name="what-about-license-servers-outside-media-services"></a>A co licenční servery mimo službu Media Services?
+### <a name="what-about-license-servers-outside-media-services"></a>Co jsou licenční servery mimo Media Services?
 
-Zákazníci často investovali do licenční serverové farmy buď ve vlastním datovém centru, nebo do jedné hostované poskytovateli služeb DRM. S ochranou obsahu služby Media Services můžete pracovat v hybridním režimu. Obsah může být hostován a dynamicky chráněn ve službě Media Services, zatímco licence DRM jsou dodávány servery mimo službu Media Services. V takovém případě zvažte následující změny:
+Zákazníci se často investovali do farmy licenčních serverů buď ve vlastním datovém centru, nebo v jednom hostovaném poskytovateli služeb DRM. Díky Media Services ochraně obsahu můžete pracovat v hybridním režimu. Obsah je možné hostovat a dynamicky chránit v Media Services a při doručování licencí DRM servery mimo Media Services. V takovém případě zvažte následující změny:
 
-* SLUŽBA STS musí vydávat tokeny, které jsou přijatelné a mohou být ověřeny farmou licenčního serveru. Například licenční servery Widevine poskytované společností Axinom vyžadují konkrétní JWT, který obsahuje zprávu o nároku. Musíte mít STS vydat takový JWT. 
-* Službu doručování licencí již není nutné konfigurovat ve službě Media Services. Při konfiguraci `ContentKeyPolicy`je třeba zadat adresy URL pro získání licence (pro PlayReady, Widevine a FairPlay).
+* Služba tokenů zabezpečení musí vydávat tokeny, které jsou přijatelné a můžou je ověřit farmou licenčního serveru. Například licenční servery Widevine, které poskytuje Axinom, vyžadují konkrétní token JWT, který obsahuje zprávu nároku. K vystavení takového tokenu JWT potřebujete službu STS. 
+* V Media Services už nemusíte konfigurovat službu doručování licencí. Při konfiguraci `ContentKeyPolicy`nástroje musíte zadat adresy URL pro získání licence (pro PlayReady, Widevine a Fairplay).
 
 > [!NOTE]
-> Widevine je služba poskytovaná společností Google a podléhá podmínkám služeb a zásadám ochrany osobních údajů společnosti Google.
+> Widevine je služba poskytovaná společností Google a podléhá podmínkám služby a zásad ochrany osobních údajů Google.
 
-## <a name="media-services-v2-vs-v3"></a>Mediální služby v2 vs. v3 
+## <a name="media-services-v2-vs-v3"></a>Media Services V2 vs. v3 
 
-### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Můžu použít portál Azure ke správě prostředků v3?
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Můžu Azure Portal použít ke správě prostředků V3?
 
-V současné době můžete na [webu Azure Portal:](https://portal.azure.com/)
+V současné době můžete použít [Azure Portal](https://portal.azure.com/) k těmto akcím:
 
-* Správa [živých událostí](live-events-outputs-concept.md) ve službě Media Services v3. 
-* Zobrazit (nespravovat) [v3 datových zdrojů](assets-concept.md). 
-* [Získejte informace o přístupu k api](access-api-portal.md). 
+* Spravujte [živé události](live-events-outputs-concept.md) v Media Services V3. 
+* Umožňuje zobrazit (Nespravovat) [prostředky](assets-concept.md)v3. 
+* [Získejte informace o přístupu k rozhraním API](access-api-portal.md). 
 
-Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [ochrana obsahu](content-protection-overview.md)) použijte rozhraní [REST API](https://docs.microsoft.com/rest/api/media/), rozhraní [příkazového příkazu Azure](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných sad [SDK](media-services-apis-overview.md#sdks).
+Pro všechny ostatní úlohy správy (například [transformace a úlohy](transforms-jobs-concept.md) a [Ochrana obsahu](content-protection-overview.md)) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [Azure CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-### <a name="is-there-an-assetfile-concept-in-v3"></a>Existuje koncept AssetFile ve v3?
+### <a name="is-there-an-assetfile-concept-in-v3"></a>Je v v3 koncept AssetFile?
 
-Koncept `AssetFile` byl odebrán z rozhraní API mediálních služeb, aby oddělil mediální služby od závislosti sady Storage SDK. Azure Storage, ne Media Services, teď uchovává informace, které patří do sady Storage SDK. 
+`AssetFile` Koncept se odebral z rozhraní Media Services API a odděluje Media Services od závislosti sady SDK úložiště. Nyní Azure Storage, nikoli Media Services, uchovává informace, které patří do sady Storage SDK. 
 
-Další informace naleznete v [tématu Migrace do služby Media Services v3](media-services-v2-vs-v3.md).
+Další informace najdete v tématu [migrace na Media Services V3](media-services-v2-vs-v3.md).
 
-### <a name="where-did-client-side-storage-encryption-go"></a>Kam se událo šifrování úložiště na straně klienta?
+### <a name="where-did-client-side-storage-encryption-go"></a>Kde se nacházelo šifrování úložiště na straně klienta?
 
-Nyní doporučujeme použít šifrování úložiště na straně serveru (které je ve výchozím nastavení zapnuto). Další informace najdete v tématu [Šifrování služby Azure Storage Service pro data v klidovém stavu](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Teď doporučujeme použít šifrování úložiště na straně serveru (což je ve výchozím nastavení zapnuté). Další informace najdete v tématu [šifrování služby Azure Storage pro](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)neaktivní neaktivní data.
 
 ## <a name="offline-streaming"></a>Offline streamování
 
-### <a name="fairplay-streaming-for-ios"></a>Streamování fairplay pro iOS
+### <a name="fairplay-streaming-for-ios"></a>FairPlay streaming pro iOS
 
-Následující nejčastější dotazy poskytují pomoc při odstraňování problémů s offline streamováním FairPlay pro iOS.
+Následující nejčastější dotazy poskytují pomoc s řešením potíží s offline FairPlay streamingem pro iOS.
 
-#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Proč se v režimu offline přehrává pouze zvuk, ale ne video?
+#### <a name="why-does-only-audio-play-but-not-video-during-offline-mode"></a>Proč se v režimu offline jenom zvuk hraje, ale ne video?
 
-Toto chování se zdá být záměrné ukázkové aplikace. Pokud je v režimu offline k dispozici alternativní zvuková stopa (což je případ HLS), iOS 10 i iOS 11 jsou ve výchozím nastavení na alternativní zvukovou stopu. Chcete-li kompenzovat toto chování pro režim offline FPS, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést ve službě Media Services, přidejte filtr dynamického manifestu **audio-only=false**. Jinými slovy, ADRESA URL HLS končí **.ism/manifest(format=m3u8-aapl,audio-only=false)**. 
+Zdá se, že se jedná o návrh ukázkové aplikace. Když je v režimu offline k dispozici alternativní zvuková stopa (což je případ pro HLS), v režimu offline se jako výchozí použije alternativní zvuková stopa v systému iOS 10 i iOS 11. Pokud chcete toto chování pro offline režim přechodu na více snímků, odeberte alternativní zvukovou stopu z datového proudu. Chcete-li to provést na Media Services, přidejte Dynamický manifest filtru **pouze zvuk = false**. Jinými slovy, HLS adresa URL končí řetězcem **. ISM/manifest (Format = M3U8-AAPL, audio-Only = false)**. 
 
-#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Proč se po přidání zvuku=false stále přehrává zvuk pouze bez videa v režimu offline?
+#### <a name="why-does-it-still-play-audio-only-without-video-during-offline-mode-after-i-add-audio-onlyfalse"></a>Proč I po přidání zvuku = false zůstane zvuk pouze bez videa v režimu offline?
 
-V závislosti na návrhu klíče mezipaměti pro síť pro doručování obsahu může být obsah uložen do mezipaměti. Vyčistěte mezipaměť.
+V závislosti na návrhu klíče mezipaměti pro Content Delivery Network se může obsah ukládat do mezipaměti. Vyprázdnit mezipaměť.
 
-#### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Je režim offline FPS podporován v systému iOS 11 kromě iOS 10?
+#### <a name="is-fps-offline-mode-supported-on-ios-11-in-addition-to-ios-10"></a>Podporuje se kromě iOS 10 offline režim přechodu do režimu FPS v iOS 11?
 
-Ano. Režim offline FPS je podporován pro iOS 10 a iOS 11.
+Ano. Režim offline režimu FPS je podporován pro iOS 10 a iOS 11.
 
-#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Proč nemohu najít dokument "Offline přehrávání s FairPlay Streaming a HTTP Live Streaming" v FPS Server SDK?
+#### <a name="why-cant-i-find-the-document-offline-playback-with-fairplay-streaming-and-http-live-streaming-in-the-fps-server-sdk"></a>Proč v sadě SDK serveru pro FPS nejde najít dokument "offline přehrávání pomocí FairPlay streaming a HTTP Live Streaming"?
 
-Od doby, kdy byla sada FPS Server SDK verze 4, byl tento dokument sloučen do průvodce programováním streamování hry FairPlay.
+Vzhledem k tomu, že sada FPS Server SDK verze 4, tento dokument se sloučil do Průvodce programováním pro FairPlay streaming.
 
-#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Co je stahovaná/offline struktura souborů na zařízeních se systémem iOS?
+#### <a name="what-is-the-downloadedoffline-file-structure-on-ios-devices"></a>Jaká je struktura souborů ke stažení/offline na zařízeních s iOS?
 
-Struktura stažených souborů na iOS zařízení vypadá jako na následujícím snímku obrazovky. Složka `_keys` ukládá stažené licence FPS s jedním souborem úložiště pro každého hostitele licenční služby. Složka `.movpkg` ukládá zvukový obsah a videoobsah. 
+Stažená struktura souborů na zařízení se systémem iOS vypadá jako na následujícím snímku obrazovky. `_keys` Složka uchovává stažené licence na FPS a jeden soubor úložiště pro každého hostitele licenční služby. `.movpkg` Složka obsahuje zvuk a video obsah. 
 
-První složka s názvem, který končí pomlčkou následovanou číslem, obsahuje videoobsah. Číselná hodnota je maximální šířka pásma interpretací videa. Druhá složka s názvem, který končí pomlčkou následovanou 0, obsahuje zvukový obsah. Třetí s `Data` názvem obsahuje hlavní seznam stop obsahu FPS. Nakonec soubor boot.xml poskytuje úplný `.movpkg` popis obsahu složky. 
+První složka s názvem, který končí spojovníkem následovaným číslem, obsahuje obsah videa. Číselná hodnota je šířka pásma ve špičce pro verze videa. Druhá složka s názvem, který končí čárkou následovanou 0, obsahuje zvukový obsah. Třetí složka s názvem `Data` obsahuje hlavní seznam skladeb obsahu FPS. Nakonec soubor Boot. XML poskytuje úplný popis obsahu `.movpkg` složky. 
 
-![Offline struktura souborů pro ukázkovou aplikaci FairPlay iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
+![Struktura offline souborů pro ukázkovou aplikaci FairPlay iOS](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
 
-Zde je ukázkový soubor boot.xml:
+Tady je ukázkový soubor Boot. XML:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -227,40 +227,40 @@ Zde je ukázkový soubor boot.xml:
 </HLSMoviePackage>
 ```
 
-### <a name="widevine-streaming-for-android"></a>Widevine streaming pro Android
+### <a name="widevine-streaming-for-android"></a>Streamování Widevine pro Android
 
-#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Jak mohu dodat trvalé licence (offline povoleno) pro některé klienty / uživatele a netrvalé licence (offline zakázáno) pro ostatní? Musím duplikovat obsah a používat samostatné klíče obsahu?
+#### <a name="how-can-i-deliver-persistent-licenses-offline-enabled-for-some-clientsusers-and-non-persistent-licenses-offline-disabled-for-others-do-i-have-to-duplicate-the-content-and-use-separate-content-keys"></a>Jak mohu doručovat trvalé licence (offline) pro některé klienty/uživatele a netrvalé licence (offline zakázáno) pro ostatní? Musím duplikovat obsah a používat samostatné klíče obsahu?
 
-Vzhledem k tomu, že služba `StreamingLocator` Media Services v3 umožňuje datovému zdroji mít více instancí, můžete mít:
+Vzhledem k tomu, že Media Services V3 umožňuje assetu mít více `StreamingLocator` instancí, můžete mít:
 
-* Jedna `ContentKeyPolicy` instance `license_type = "persistent"` `ContentKeyPolicyRestriction` s , `"persistent"`s `StreamingLocator`nárokem na , a jeho .
-* Další `ContentKeyPolicy` instance `license_type="nonpersistent"` `ContentKeyPolicyRestriction` s , `"nonpersistent`s nárokem na ", a jeho `StreamingLocator`.
-* Dvě `StreamingLocator` instance, které `ContentKey` mají různé hodnoty.
+* Jedna `ContentKeyPolicy` instance s `license_type = "persistent"` `ContentKeyPolicyRestriction` deklarací identity na `"persistent"`a `StreamingLocator`.
+* Další `ContentKeyPolicy` instance s `license_type="nonpersistent"` `ContentKeyPolicyRestriction` deklarací identity on `"nonpersistent`a `StreamingLocator`.
+* Dvě `StreamingLocator` instance, které mají `ContentKey` různé hodnoty.
 
-V závislosti na obchodní logiku vlastní STS, různé deklarace identity jsou vydány v tokenu JWT. S tokenem lze získat pouze odpovídající licenci a hrát pouze odpovídající ADRESU URL.
+V závislosti na obchodní logice vlastní služby STS se v tokenu JWT vydávají různé deklarace identity. U tokenu lze získat pouze odpovídající licenci a přehrát lze pouze odpovídající adresu URL.
 
-#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Jaké je mapování mezi úrovněmi zabezpečení DRM Widevine a Media Services?
+#### <a name="what-is-the-mapping-between-the-widevine-and-media-services-drm-security-levels"></a>Jaké je mapování mezi Widevine a Media Services úrovní zabezpečení DRM?
 
-Google "Widevine DRM Architektura Přehled" definuje tři úrovně zabezpečení. [Dokumentace k Mediální službě Azure na šabloně licence Widevine](widevine-license-template-overview.md) však popisuje pět úrovní zabezpečení (požadavky na odolnost klientů pro přehrávání). Tato část vysvětluje, jak se mapují úrovně zabezpečení.
+Přehled architektury DRM společnosti Google "Widevine" definuje tři úrovně zabezpečení. [Dokumentace Azure Media Services v šabloně licence Widevine](widevine-license-template-overview.md) ale popisuje pět úrovní zabezpečení (požadavky na odolnost klienta pro přehrávání). V této části se dozvíte, jak se mapují úrovně zabezpečení.
 
-Obě sady úrovní zabezpečení jsou definovány společností Google Widevine. Rozdíl je v úrovni využití: architektura nebo rozhraní API. Pět úrovní zabezpečení se používá v rozhraní WIDEVINE API. Objekt, `content_key_specs` který `security_level`obsahuje , je reserializován a předán službě globální doručení Widevine licenční službou Azure Media Services Widevine. V následující tabulce je uvedeno mapování mezi dvěma sadami úrovní zabezpečení.
+Obě sady úrovní zabezpečení jsou definované Google Widevine. Rozdíl je v úrovni využití: architektura nebo rozhraní API. V rozhraní API Widevine se používá pět úrovní zabezpečení. `content_key_specs` Objekt, který obsahuje `security_level`, je rekonstruován a předán službě Widevine Global Delivery service pomocí licenční služby Azure Media Services Widevine. Následující tabulka ukazuje mapování mezi dvěma sadami úrovní zabezpečení.
 
 | **Úrovně zabezpečení definované v architektuře Widevine** |**Úrovně zabezpečení používané v rozhraní Widevine API**|
 |---|---| 
-| **Úroveň zabezpečení 1**: Veškeré zpracování obsahu, kryptografie a řízení se provádějí v prostředí trusted execution environment (TEE). V některých modelech implementace může být zpracování zabezpečení prováděno v různých čipech.|**security_level=5**: S šifrováním, dekódováním a veškerým zpracováním média (komprimované a nekomprimované) musí být nakládáno v rámci tee podporovaného hardwarem.<br/><br/>**security_level=4**: Šifrování a dekódování obsahu musí být provedeno v rámci tee podporovaného hardwarem.|
-**Úroveň zabezpečení 2**: Kryptografie (nikoli však zpracování videa) se provádí v rámci TEE. Dešifrované vyrovnávací paměti jsou vráceny do domény aplikace a zpracovány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 jsou však kryptografické informace stále zpracovávány pouze v rámci TEE.| **security_level=3**: Klíčové materiálové a kryptografické operace musí být prováděny v rámci TEE podporovaného hardwarem. |
-| **Úroveň zabezpečení 3**: Na zařízení není tee. Mohou být přijata vhodná opatření k ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému. Implementace úrovně 3 může také obsahovat hardwarový kryptografický modul, ale to zvyšuje pouze výkon, nikoli zabezpečení. | **security_level=2**: Je vyžadováno softwarové krypto a zamlžený dekodér.<br/><br/>**security_level=1**: Je vyžadováno softwarové šifrování bílé krabice.|
+| **Úroveň zabezpečení 1**: zpracování, kryptografie a řízení obsahu se provádí v prostředí pro důvěryhodné spouštění (TEE). V některých implementačních modelech se může zpracování zabezpečení provádět v různých čipy.|**security_level = 5**: šifrování, dekódování a veškerá manipulace s médii (komprimovaná a nekomprimovaná) musí být zpracovávány v Tee s hardwarovým zálohováním.<br/><br/>**security_level = 4**: šifrování a dekódování obsahu je třeba provést v rámci Tee se zálohovaným hardwarem.|
+**Úroveň zabezpečení 2**: kryptografie (ale ne zpracování videa) se provádí v rámci Tee. Dešifrované vyrovnávací paměti jsou vráceny do aplikační domény a zpracovávány prostřednictvím samostatného grafického hardwaru nebo softwaru. Na úrovni 2 se však kryptografické informace stále zpracovávají pouze v rámci TEE.| **security_level = 3**: klíčový materiál a kryptografické operace je nutné provést v rámci Tee s hardwarovým zálohováním. |
+| **Úroveň zabezpečení 3**: na zařízení není žádné Tee. K ochraně kryptografických informací a dešifrovaného obsahu v hostitelském operačním systému je možné učinit vhodná opatření. Implementace úrovně 3 může zahrnovat také hardwarový kryptografický modul, který zvyšuje jenom výkon, ne zabezpečení. | **security_level = 2**: je vyžadováno šifrování softwaru a vypsaný dekodér.<br/><br/>**security_level = 1**: je vyžadováno šifrování na základě softwarového bílého boxu.|
 
 #### <a name="why-does-content-download-take-so-long"></a>Proč stahování obsahu trvá tak dlouho?
 
-Rychlost stahování lze zlepšit dvěma způsoby:
+Existují dva způsoby, jak zvýšit rychlost stahování:
 
-* Povolte síť pro doručování obsahu, aby uživatelé s větší pravděpodobností dosáhli přístupového bodu namísto koncového bodu původu a streamování pro stahování obsahu. Pokud uživatel narazí na koncový bod streamování, každý segment HLS nebo DASH fragment je dynamicky zabalena a šifrována. I když je tato latence v milisekundovém měřítku pro každý segment nebo fragment, pokud máte hodinové video, nahromaděná latence může být velká a způsobit delší stahování.
-* Dejte uživatelům možnost selektivně stahovat vrstvy kvality videa a zvukové stopy namísto veškerého obsahu. Pro režim offline nemá smysl stahovat všechny vrstvy kvality. Existují dva způsoby, jak toho dosáhnout:
+* Povolte síť pro doručování obsahu, aby se uživatelé lépe vypnuli a místo počátečního/streamového koncového bodu pro stažení obsahu. Pokud uživatel narazí na koncový bod streamování, každý segment HLS nebo fragment SPOJOVNÍKu se dynamicky zabalí a zašifruje. I když je tato latence v milisekundách pro každý segment nebo fragment, pokud máte video s hodinovým videem, kumulovaná latence může být velká a způsobit delší stahování.
+* Poskytněte uživatelům možnost selektivně stahovat vrstvy kvality videa a zvukové stopy místo veškerého obsahu. V offline režimu neexistuje žádný bod ke stažení všech vrstev kvality. Toho můžete dosáhnout dvěma způsoby:
 
-  * Klient: Aplikace přehrávače automaticky vybere nebo uživatel vybere vrstvu kvality videa a zvukové stopy ke stažení.
-  * Řízeno službou: Funkci dynamického manifestu ve službě Azure Media Services můžete použít k vytvoření (globálního) filtru, který omezuje seznam stop HLS nebo DASH MPD na jednu vrstvu kvality videa a vybrané zvukové stopy. Pak bude adresa URL pro stažení prezentovaná uživatelům obsahovat tento filtr.
+  * Řízená klientem: aplikace přehrávače se automaticky vybere nebo vybere uživatel, vrstvu kvality videa a zvukové stopy, které se mají stáhnout.
+  * Řízená služba: pomocí funkce dynamického manifestu v Azure Media Services vytvoříte filtr (globální), který omezuje HLS seznam skladeb nebo POMLČKy na jednu vrstvu kvality videa a vybrané zvukové stopy. Pak se adresa URL pro stažení prezentovaná uživatelům zahrne do tohoto filtru.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Mediální služby v3 – přehled](media-services-overview.md)
+[Přehled Media Services V3](media-services-overview.md)

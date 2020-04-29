@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 73e6e117428808aae39e361a3b119e9b2af1ac27
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399679"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že máte účet Azure a předplatné služby Rozpoznávání řeči. Pokud nemáte účet a předplatné, [vyzkoušejte bezplatnou službu Řeč](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Než budete moci něco udělat, budete muset nainstalovat sadu Speech SDK. V závislosti na platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Získat řeč <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> řeči článku sady Speech SDK.
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v článku věnovaném sadě Speech SDK.
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 
-Chcete-li spustit příklady v tomto `import` článku, uveďte následující příkazy v horní části **. Soubor* s kódem Java.
+Chcete-li spustit příklady v tomto článku, zahrňte `import` do horní části stránky * následující příkazy *. *Soubor kódu Java.
 
 ```java
 package speech;
@@ -36,7 +36,7 @@ import com.microsoft.cognitiveservices.speech.translation.*;
 
 ## <a name="sensitive-data-and-environment-variables"></a>Citlivá data a proměnné prostředí
 
-Příklad zdrojového kódu v tomto článku závisí na proměnných prostředí pro ukládání citlivých dat, jako je například klíč a oblast odběru prostředků řeči. Soubor s kódem `static final String` Java obsahuje dvě hodnoty, které jsou `SPEECH__SUBSCRIPTION__KEY` přiřazeny z proměnných prostředí hostitelských počítačů, a to a `SPEECH__SERVICE__REGION`. Obě tato pole jsou v oboru třídy, takže jsou přístupné v rámci těla metody třídy. Další informace o proměnných prostředí naleznete v [tématu proměnné prostředí a konfigurace aplikace](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
+Ukázkový zdrojový kód v tomto článku závisí na proměnných prostředí pro ukládání citlivých dat, jako je klíč a oblast předplatného prostředku pro rozpoznávání řeči. Soubor kódu Java obsahuje dvě `static final String` hodnoty, které jsou přiřazené z proměnných prostředí hostitelských počítačů, konkrétně `SPEECH__SUBSCRIPTION__KEY` a `SPEECH__SERVICE__REGION`. Obě tato pole jsou v oboru třídy, takže jsou přístupné v rámci těla metod třídy. Další informace o proměnných prostředí naleznete v tématu [proměnné prostředí a konfigurace aplikace](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
 
 ```java
 public class App {
@@ -50,19 +50,19 @@ public class App {
 
 ## <a name="create-a-speech-translation-configuration"></a>Vytvoření konfigurace překladu řeči
 
-Chcete-li volat službu Řeč pomocí sady Speech [`SpeechTranslationConfig`][config]SDK, je třeba vytvořit . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechTranslationConfig`][config]. Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
 
 > [!TIP]
-> Bez ohledu na to, zda provádíte rozpoznávání řeči, syntézu řeči, překlad nebo záměr rozpoznávání, budete vždy vytvořit konfiguraci.
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
 Existuje několik způsobů, jak můžete inicializovat [`SpeechTranslationConfig`][config]:
 
-* S předplatným: předat klíč a přidružené oblasti.
-* S koncovým bodem: předají v koncovém bodě služby Řeči. Klíč nebo autorizační token je volitelný.
-* S hostitelem: předat adresu hostitele. Klíč nebo autorizační token je volitelný.
-* S tokenem autorizace: předavte autorizační token a přidruženou oblast.
+* S předplatným: předejte klíč a přidruženou oblast.
+* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
+* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
+* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Podívejme se na to, [`SpeechTranslationConfig`][config] jak se vytvoří pomocí klíče a oblasti. Na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) najdete identifikátor oblasti.
+Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```java
 public class App {
@@ -87,9 +87,9 @@ public class App {
 }
 ```
 
-## <a name="change-source-language"></a>Změna zdrojového jazyka
+## <a name="change-source-language"></a>Změnit jazyk zdroje
 
-Jednou z běžných úloh překladu řeči je určení vstupního (nebo zdrojového) jazyka. Podívejme se na to, jak byste změnili vstupní jazyk na italštinu. V kódu, interakci [`SpeechTranslationConfig`][config] s instancí, volání `setSpeechRecognitionLanguage` metody.
+Jedním z běžných úloh překladu řeči je zadání vstupu (nebo zdrojového) jazyka. Pojďme se podívat, jak byste změnili vstupní jazyk na italštinu. V kódu komunikujte s [`SpeechTranslationConfig`][config] instancí, a to voláním `setSpeechRecognitionLanguage` metody.
 
 ```java
 static void translateSpeech() {
@@ -101,11 +101,11 @@ static void translateSpeech() {
 }
 ```
 
-Funkce [`setSpeechRecognitionLanguage`][recognitionlang] očekává řetězec formátu jazykového národního prostředí. Libovolnou hodnotu můžete zadat ve **sloupci Národní prostředí** v seznamu podporovaných [národních prostředí/jazyků](../../../language-support.md).
+[`setSpeechRecognitionLanguage`][recognitionlang] Funkce očekává řetězec formátu národního prostředí jazyka. Můžete zadat libovolnou hodnotu ve sloupci **locale (národní prostředí** ) v seznamu podporovaných [národních prostředí a jazyků](../../../language-support.md).
 
-## <a name="add-translation-language"></a>Přidání jazyka překladu
+## <a name="add-translation-language"></a>Přidat jazyk překladu
 
-Dalším běžným úkolem překladu řeči je určení cílových jazyků překladu, je vyžadovánalespoň jeden, ale násobky jsou podporovány. V následujícím fragmentu kódu, francouzština a němčina jako cíle překladového jazyka.
+Dalším běžným úkolem překladu řeči je určit cílový jazyk překladu, minimálně jeden je povinný, ale podporují se násobení. V následujícím fragmentu kódu jsou francouzština i němčina jako cíle překladu jazyka.
 
 ```java
 static void translateSpeech() {
@@ -120,13 +120,13 @@ static void translateSpeech() {
 }
 ```
 
-Při každém [`addTargetLanguage`][addlang]volání je určen nový cílový jazyk překladu. Jinými slovy, když je rozpoznávání řeči ze zdrojového jazyka, každý cílový překlad je k dispozici jako součást výsledné operace překladu.
+Při každém volání na [`addTargetLanguage`][addlang]je určen nový cílový jazyk překladu. Jinými slovy, pokud je rozpoznávání řeči rozpoznáno ze zdrojového jazyka, je každý cílový překlad k dispozici jako součást výsledné operace překladu.
 
-## <a name="initialize-a-translation-recognizer"></a>Inicializovat nástroj pro rozpoznávání překladů
+## <a name="initialize-a-translation-recognizer"></a>Inicializovat Nástroj pro rozpoznávání překladu
 
-Po vytvoření [`SpeechTranslationConfig`][config]je dalším krokem inicializaci . [`TranslationRecognizer`][recognizer] Když inicializujete [`TranslationRecognizer`][recognizer], budete ji muset `translationConfig`předat . Objekt konfigurace poskytuje pověření, která služba rozpoznávání řeči vyžaduje k ověření vašeho požadavku.
+Po vytvoření [`SpeechTranslationConfig`][config]je dalším krokem inicializace [`TranslationRecognizer`][recognizer]. Když inicializujete [`TranslationRecognizer`][recognizer], budete ho muset předat `translationConfig`. Objekt konfigurace poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
 
-Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu zařízení, [`TranslationRecognizer`][recognizer] mělo by vypadat takto:
+Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu vašeho zařízení, [`TranslationRecognizer`][recognizer] mělo by to vypadat takto:
 
 ```java
 static void translateSpeech() {
@@ -145,12 +145,12 @@ static void translateSpeech() {
 }
 ```
 
-Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`][audioconfig] a `audioConfig` zadat parametr při [`TranslationRecognizer`][recognizer]inicializaci aplikace .
+Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`][audioconfig] a zadat `audioConfig` parametr při inicializaci. [`TranslationRecognizer`][recognizer]
 
 > [!TIP]
-> [Přečtěte si, jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
 
-Nejprve budete odkazovat `AudioConfig` na objekt takto:
+Nejprve na `AudioConfig` objekt odkazujete následujícím způsobem:
 
 ```java
 static void translateSpeech() {
@@ -171,7 +171,7 @@ static void translateSpeech() {
 }
 ```
 
-Pokud chcete místo mikrofonu zadat zvukový soubor, budete muset zadat `audioConfig`soubor . Však při vytváření [`AudioConfig`][audioconfig], namísto volání `fromDefaultMicrophoneInput`, `fromWavFileInput` budete `filename` volat a předat parametr.
+Pokud chcete místo používání mikrofonu zadat zvukový soubor, budete ho muset ještě zadat `audioConfig`. [`AudioConfig`][audioconfig]Pokud však vytvoříte místo `fromDefaultMicrophoneInput`volání, zavoláte `fromWavFileInput` a předáte `filename` parametr.
 
 ```java
 static void translateSpeech() {
@@ -194,7 +194,7 @@ static void translateSpeech() {
 
 ## <a name="translate-speech"></a>Překlad řeči
 
-Chcete-li přeložit řeč, sada Speech SDK spoléhá na mikrofon nebo vstup zvukového souboru. Rozpoznávání řeči dochází před překladem řeči. Po inicializování všech objektů zavolejte funkci rozpoznat jednou a získejte výsledek.
+K překladu řeči sada Speech SDK závisí na mikrofonu nebo na vstupu zvukového souboru. K rozpoznávání řeči dojde před překladem řeči. Po inicializaci všech objektů zavolejte funkci rozpoznávání – jednou a získejte výsledek.
 
 ```java
 static void translateSpeech() throws ExecutionException, InterruptedException {
@@ -222,18 +222,18 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Další informace o převodu řeči na text naleznete [v základech rozpoznávání řeči](../../../speech-to-text-basics.md).
+Další informace o převodu řeči na text najdete v tématu [základy rozpoznávání řeči](../../../speech-to-text-basics.md).
 
-## <a name="synthesize-translations"></a>Syntetizovat překlady
+## <a name="synthesize-translations"></a>Překlady pro syntetizátory
 
-Po úspěšném rozpoznávání řeči a překladu výsledek obsahuje všechny překlady ve slovníku. Funkce [`getTranslations`][translations] vrátí slovník s klíčem jako cílový jazyk překladu a hodnota je přeložený text. Rozpoznaná řeč může být přeložena a poté syntetizována v jiném jazyce (řeč na řeč).
+Po úspěšném rozpoznání a překladu řeči výsledek obsahuje všechny překlady ve slovníku. [`getTranslations`][translations] Funkce vrátí slovník s klíčem jako cílovým jazykem překladu a hodnotou je přeložený text. Rozpoznané rozpoznávání řeči je možné přeložit a pak syntetizovat v jiném jazyce (převod řeči na řeč).
 
-### <a name="event-based-synthesis"></a>Syntéza založená na událostech
+### <a name="event-based-synthesis"></a>Shrnutí založené na událostech
 
-Objekt `TranslationRecognizer` zpřístupňuje `synthesizing` událost. Událost je několikrát vyvolána a poskytuje mechanismus pro načtení syntetizovaného zvuku z výsledku rozpoznávání překladu. Pokud překládáte do více jazyků, přečtěte si [informace o ruční syntéze](#manual-synthesis). Zadejte hlas syntézy [`setVoiceName`][voicename] přiřazením a poskytnout `synthesizing` obslužnou rutinu události pro událost, získat zvuk. Následující příklad uloží přeložený zvuk jako soubor *WAV.*
+`TranslationRecognizer` Objekt zpřístupňuje `synthesizing` událost. Událost je několikrát aktivována a poskytuje mechanismus pro načtení syntetizového zvuku z výsledku rozpoznávání překladu. Pokud překládáte do více jazyků, přečtěte si téma [Ruční syntéza](#manual-synthesis). Pomocí přiřazení [`setVoiceName`][voicename] a poskytněte obslužné rutiny události pro `synthesizing` událost a Stáhněte si zvuk. V následujícím příkladu se přeložený zvuk uloží jako soubor *. wav* .
 
 > [!IMPORTANT]
-> Syntéza založená na událostech funguje pouze s jedním překladem, **nepřidávejte** více cílových jazyků překladu. Kromě toho [`setVoiceName`][voicename] by měl být stejný jazyk jako cílový jazyk překladu, například; `"de"` mohl mapovat na `"de-DE-Hedda"`.
+> Syntéza založená na událostech funguje pouze s jedním překladem **,** nepřidává více cílových jazyků překladu. Kromě toho [`setVoiceName`][voicename] by měl být stejný jazyk jako cílový jazyk překladu, například; `"de"` lze namapovat `"de-DE-Hedda"`na.
 
 ```java
 static void translateSpeech() throws ExecutionException, FileNotFoundException, InterruptedException, IOException {
@@ -280,7 +280,7 @@ static void translateSpeech() throws ExecutionException, FileNotFoundException, 
 
 ### <a name="manual-synthesis"></a>Ruční syntéza
 
-Funkce [`getTranslations`][translations] vrátí slovník, který lze použít k syntéze zvuku z překladového textu. Iterovat prostřednictvím každého překladu a syntetizovat překlad. Při vytváření `SpeechSynthesizer` instance `SpeechConfig` musí mít objekt [`setSpeechSynthesisVoiceName`][speechsynthesisvoicename] svou vlastnost nastavenou na požadovaný hlas. Následující příklad překládá do pěti jazyků a každý překlad je pak syntetizován do zvukového souboru v odpovídajícím neurálním jazyce.
+[`getTranslations`][translations] Funkce vrátí slovník, který lze použít k syntetizování zvuku z textu překladu. Iterujte každým překladem a syntetizujte tento překlad. Při vytváření `SpeechSynthesizer` instance musí `SpeechConfig` objekt mít [`setSpeechSynthesisVoiceName`][speechsynthesisvoicename] vlastnost nastavenou na požadovaný hlas. Následující příklad se přeloží na pět jazyků a každý překlad se pak syntetizuje do zvukového souboru v odpovídajícím neuronové jazyce.
 
 ```java
 static void translateSpeech() throws ExecutionException, InterruptedException {
@@ -327,7 +327,7 @@ static void translateSpeech() throws ExecutionException, InterruptedException {
 }
 ```
 
-Další informace o syntéze řeči naleznete [v základech syntézy řeči](../../../text-to-speech-basics.md).
+Další informace o syntézě řeči najdete [v tématu Základy funkce pro syntézu řeči](../../../text-to-speech-basics.md).
 
 [config]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.translation.SpeechTranslationConfig?view=azure-java-stable
 [audioconfig]: https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.AudioConfig?view=azure-java-stable

@@ -1,7 +1,7 @@
 ---
-title: Přesměrování protokolu HTTP na https pomocí funkce CLI
+title: Přesměrování HTTP na HTTPS pomocí rozhraní příkazového řádku
 titleSuffix: Azure Application Gateway
-description: Zjistěte, jak vytvořit aplikační bránu a přidat certifikát pro ukončení TLS pomocí azure CLI.
+description: Naučte se vytvořit Aplikační bránu a přidat certifikát pro ukončení TLS pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312144"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí azure cli
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Vytvoření aplikační brány s přesměrováním HTTP na HTTPS pomocí Azure CLI
 
-Pomocí azure cli můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro ukončení TLS/SSL. Pravidlo směrování se používá k přesměrování přenosu HTTP na port HTTPS v aplikační bráně. V tomto příkladu také vytvoříte [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-endový fond aplikační brány, který obsahuje dvě instance virtuálního počítače.
+Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro ukončení protokolu TLS/SSL. Pravidlo směrování se používá k přesměrování provozu HTTP na port HTTPS ve vaší aplikační bráně. V tomto příkladu vytvoříte také [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro back-end fond aplikační brány, která obsahuje dvě instance virtuálních počítačů.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -25,10 +25,10 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
-> * Přidání naslouchací proces a pravidlo přesměrování
+> * Přidat pravidlo naslouchacího procesu a přesměrování
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -36,7 +36,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku 
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-Pro použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro účely tohoto kurzu vytvoříte certifikát podepsaný svým držitelem (self-signed certificate) a soubor pfx pomocí příkazu openssl.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -115,11 +115,11 @@ az network application-gateway create \
 - *appGatewayFrontendIP* – přiřadí adresu *myAGPublicIPAddress* naslouchacímu procesu *appGatewayHttpListener*.
 - *rule1* – výchozí pravidlo směrování přidružené k naslouchacímu procesu *appGatewayHttpListener*.
 
-## <a name="add-a-listener-and-redirection-rule"></a>Přidání naslouchací proces a pravidlo přesměrování
+## <a name="add-a-listener-and-redirection-rule"></a>Přidat pravidlo naslouchacího procesu a přesměrování
 
-### <a name="add-the-http-port"></a>Přidání portu HTTP
+### <a name="add-the-http-port"></a>Přidat port HTTP
 
-K přidání portu HTTP do aplikační brány můžete použít [vytvoření front-portu síťové aplikace az.](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create)
+K přidání portu HTTP do aplikační brány můžete použít [příkaz AZ Network Application-Gateway end-port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) .
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -129,9 +129,9 @@ az network application-gateway frontend-port create \
   --name httpPort
 ```
 
-### <a name="add-the-http-listener"></a>Přidání naslouchací proces HTTP
+### <a name="add-the-http-listener"></a>Přidat naslouchací proces HTTP
 
-Můžete použít [az síťové aplikace-gateway http-listener vytvořit](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) přidat naslouchací proces s názvem *myListener* do aplikační brány.
+K přidání naslouchacího procesu s názvem *MyListener* do aplikační brány můžete použít příkaz [AZ Network Application-Gateway http-naslouchacího procesu Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) .
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -142,9 +142,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-redirection-configuration"></a>Přidání konfigurace přesměrování
+### <a name="add-the-redirection-configuration"></a>Přidat konfiguraci přesměrování
 
-Přidejte konfiguraci přesměrování PROTOKOLU HTTP do služby PŘEsměrovávací systém HTTPS do brány aplikace pomocí [vytvoření přesměrování az network application-gateway .](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create)
+Přidejte konfiguraci přesměrování HTTP na HTTPS do aplikační brány pomocí funkce [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -157,9 +157,9 @@ az network application-gateway redirect-config create \
   --include-query-string true
 ```
 
-### <a name="add-the-routing-rule"></a>Přidání pravidla směrování
+### <a name="add-the-routing-rule"></a>Přidat pravidlo směrování
 
-Přidejte pravidlo směrování s názvem *rule2* s konfigurací přesměrování na aplikační bránu pomocí [vytvoření pravidla brány sítě az](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Přidejte pravidlo směrování s názvem *Rule2* s konfigurací přesměrování do aplikační brány pomocí funkce [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -173,7 +173,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
-V tomto příkladu vytvoříte škálovací sadu virtuálních strojů s názvem *myvmss,* která poskytuje servery pro back-endový fond v bráně aplikace. Virtuální počítače jsou ve škálovací sadě přidruženy k podsíti *myBackendSubnet* a back-endovému fondu *appGatewayBackendPool*. K vytvoření škálovací sady použijte příkaz [az vmss create](/cli/azure/vmss#az-vmss-create).
+V tomto příkladu vytvoříte sadu škálování virtuálního počítače s názvem *myvmss* , která poskytuje servery pro back-end fond ve službě Application Gateway. Virtuální počítače jsou ve škálovací sadě přidruženy k podsíti *myBackendSubnet* a back-endovému fondu *appGatewayBackendPool*. K vytvoření škálovací sady použijte příkaz [az vmss create](/cli/azure/vmss#az-vmss-create).
 
 ```azurecli-interactive
 az vmss create \
@@ -230,7 +230,7 @@ V tomto kurzu jste se naučili:
 > * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 > * Nastavit síť
 > * Vytvořit aplikační bránu s certifikátem
-> * Přidání naslouchací proces a pravidlo přesměrování
+> * Přidat pravidlo naslouchacího procesu a přesměrování
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
 

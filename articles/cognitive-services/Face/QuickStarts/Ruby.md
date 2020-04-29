@@ -1,7 +1,7 @@
 ---
 title: 'Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu detekujete tváře z obrázku pomocí rozhraní API FACE REST s Ruby.
+description: V tomto rychlém startu detekujete obličeje z obrázku pomocí REST API obličeje s Ruby.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 3ec6eb60a7325eb87ca637541c5f4222eab98053
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81403176"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Ruby
 
-V tomto rychlém startu použijete rozhraní Azure Face REST API s Ruby k detekci lidských tváří v bitové kopii.
+V tomto rychlém startu použijete REST API Azure Face s Ruby k detekci lidských plošek v obraze.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného Face. Můžete získat bezplatný klíč zkušebního předplatného od [společnosti Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili ke službě Face a získali klíč.
-- Editor kódu, jako je [například Visual Studio Code](https://code.visualstudio.com/download)
+- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
+- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>Napsat skript
 
-Vytvořte nový soubor _faceDetection.rb_a přidejte následující kód. Tento kód volá rozhraní API pro obličej pro danou adresu URL obrázku.
+Vytvořte nový soubor _faceDetection. RB_a přidejte následující kód. Tento kód volá Face API pro danou adresu URL obrázku.
 
 ```ruby
 require 'net/http'
@@ -60,21 +60,21 @@ end
 puts response.body
 ```
 
-Budete muset aktualizovat hodnotu `request['Ocp-Apim-Subscription-Key']` pomocí klíče předplatného `uri` a změnit řetězec tak, aby obsahoval správný koncový bod.
+Je nutné aktualizovat `request['Ocp-Apim-Subscription-Key']` hodnotu pomocí vašeho klíče předplatného a změnit `uri` řetězec tak, aby obsahoval správný koncový bod.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-Můžete také změnit pole `imageUri` tak, aby ukazovalo na vlastní vstupní obrázek. Můžete také chtít změnit `returnFaceAttributes` pole, které určuje, které atributy čela načíst.
+Můžete také chtít změnit `imageUri` pole tak, aby odkazovalo na vlastní vstupní image. Také možná budete chtít změnit `returnFaceAttributes` pole, které určuje, které atributy tváře se mají načíst.
 
 ## <a name="run-the-script"></a>Spuštění skriptu
 
-Spusťte skript Ruby s následujícím příkazem:
+Spusťte skript Ruby pomocí následujícího příkazu:
 
 ```shell
 ruby faceDetection.rb
 ```
 
-Měli byste vidět json řetězec zjištěných dat obličeje vytištěné do konzoly. Následující text je příkladem úspěšné odpovědi JSON.
+Měl by se zobrazit řetězec JSON zjištěných dat obličeje v konzole. Následující text je příkladem úspěšné odpovědi JSON.
 
 ```json
 [
@@ -257,7 +257,7 @@ Měli byste vidět json řetězec zjištěných dat obličeje vytištěné do ko
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste napsali skript Ruby, který volá službu Azure Face k detekci tváří v bitové kopii a vrácení jejich atributů. Další informace najdete v dokumentaci k rozhraní API pro rozpoznávání tváře.
+V tomto rychlém startu jste napsali skript Ruby, který volá službu Azure Face k detekci ploch v obrázku a vrátí jejich atributy. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace.
 
 > [!div class="nextstepaction"]
 > [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

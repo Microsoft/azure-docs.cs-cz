@@ -1,7 +1,7 @@
 ---
-title: Základy překladu řeči - Služba řeči
+title: Základy překladu řeči – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si, jak pomocí sady Speech SDK překládat řeč. V tomto článku se dozvíte o konstrukci objektů, podporovaných formátech zvukových vstupů a možnostech konfigurace překladu řeči.
+description: Naučte se používat sadu Speech SDK k překladu řeči. V tomto článku se naučíte vytváření objektů, podporované formáty zvukového vstupu a možnosti konfigurace pro překlad řeči.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,20 +12,20 @@ ms.date: 04/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399630"
 ---
-# <a name="learn-the-basics-of-speech-translation"></a>Naučte se základy překladu řeči
+# <a name="learn-the-basics-of-speech-translation"></a>Seznamte se se základy překladu řeči
 
-Jedním ze základních funkcí služby Speech je schopnost rozpoznat lidskou řeč a přeložit ji do jiných jazyků. V tomto článku se dozvíte, jak používat sadu Speech SDK ve svých aplikacích a produktech k provádění vysoce kvalitního překladu řeči.
+Jednou ze základních funkcí služby Speech je schopnost rozpoznávat lidské rozpoznávání a překládat ho do jiných jazyků. V tomto článku se dozvíte, jak používat sadu Speech SDK ve vašich aplikacích a produktech k provádění vysoce kvalitního překladu řeči.
 
 > [!TIP]
-> Pokud jste ještě neměli šanci dokončit jeden z našich rychlých startů, doporučujeme vám, abyste nakopli pneumatiky a vyzkoušeli překlad řeči sami.
+> Pokud jste si ještě neučinili možnost Dokončit některý z našich rychlých startů, doporučujeme, abyste si zavedli pneumatiky a vyzkoušet si překlady řeči sami.
 > * [Překlad řeči na text](quickstarts/translate-speech-to-text.md)
-> * [Překlad řeči do více jazyků](quickstarts/translate-speech-to-text-multiple-languages.md)
+> * [Překlad řeči do několika jazyků](quickstarts/translate-speech-to-text-multiple-languages.md)
 > * [Překlad řeči na řeč](quickstarts/translate-speech-to-speech.md)
 
 ::: zone pivot="programming-language-csharp"
@@ -50,4 +50,4 @@ Jedním ze základních funkcí služby Speech je schopnost rozpoznat lidskou ř
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použití formátů komprimovaného zvuku kodeku](how-to-use-codec-compressed-audio-input-streams.md)
+* [Použití komprimovaných formátů zvukových kodeků](how-to-use-codec-compressed-audio-input-streams.md)

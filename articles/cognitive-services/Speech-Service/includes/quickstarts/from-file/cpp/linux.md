@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: ef0ee6047bd23206a2c0122b9409e00cee5f0ddf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400518"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
@@ -29,12 +29,12 @@ Než začnete, ujistěte se, že:
 
 1. V tomto novém souboru nahraďte řetězec `YourSubscriptionKey` klíčem předplatného služby Speech.
 
-1. Nahraďte `YourServiceRegion` řetězec **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) přidružené `westus` k vašemu předplatnému (například pro bezplatné zkušební předplatné).
+1. Nahraďte řetězec `YourServiceRegion` **identifikátorem oblasti** z [oblasti](https://aka.ms/speech/sdkregion) , která je přidružená k vašemu předplatnému (například `westus` pro předplatné bezplatné zkušební verze).
 
-1. Nahraďte `whatstheweatherlike.wav` řetězec vlastním názvem souboru.
+1. Nahraďte řetězec `whatstheweatherlike.wav` vlastním názvem souboru.
 
 > [!NOTE]
-> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
+> Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-the-app"></a>Sestavení aplikace
 
@@ -53,7 +53,7 @@ Než začnete, ujistěte se, že:
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* V systému **ARM64** (64 bit) spusťte následující příkaz k vytvoření aplikace.
+* V systému **ARM64** (64) spusťte následující příkaz, který sestaví aplikaci.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -75,7 +75,7 @@ Než začnete, ujistěte se, že:
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * V systému **ARM64** (64 bit) zadejte následující příkaz.
+   * V systému **ARM64** (64 bitů) zadejte následující příkaz.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"
@@ -87,7 +87,7 @@ Než začnete, ujistěte se, že:
    ./helloworld
    ```
 
-1. Zvukový soubor je přenášen do služby Rozpoznávání řeči a první utterance v souboru je přepsán a text, který se zobrazí ve stejném okně.
+1. Váš zvukový soubor se přenáší do služby pro rozpoznávání řeči a první utterance v souboru je přepisu na text, který se zobrazí ve stejném okně.
 
    ```text
    Recognizing first result...

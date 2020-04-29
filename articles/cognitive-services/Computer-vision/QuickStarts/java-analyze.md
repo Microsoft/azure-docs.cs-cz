@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Analýza vzdáleného obrazu pomocí rozhraní REST API a Javy'
+title: 'Rychlý Start: analýza vzdálené Image pomocí REST API a Java'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu budete analyzovat obrázek pomocí rozhraní API pro počítačové zpracování obrazu a Javy.
 services: cognitive-services
@@ -12,22 +12,22 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: f68c58c16c4efd75941e00b859784f810915b575
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404867"
 ---
-# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Úvodní příručka: Analýza vzdáleného obrazu pomocí rozhraní API PRO ZPRACOVÁNÍ počítače A Javy
+# <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-java"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a Java
 
-V tomto rychlém startu budete analyzovat vzdáleně uloženou bitovou kopii a extrahovat vizuální funkce pomocí javy a rozhraní API PRO ODPOČINEK v počítači. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
+V tomto rychlém startu analyzujete vzdáleně uloženou bitovou kopii pro extrakci vizuálních funkcí pomocí jazyka Java a Počítačové zpracování obrazu REST API. Pomocí metody [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) můžete extrahovat vizuální prvky na základě obsahu obrázku.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít nainstalovanou platformu [Java&trade;, Standard Edition Development Kit 7 nebo 8](https://aka.ms/azure-jdks) (JDK 7 nebo 8).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč. Potom [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec koncového `COMPUTER_VISION_SUBSCRIPTION_KEY` klíče `COMPUTER_VISION_ENDPOINT`a služby s názvem a , resp.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `COMPUTER_VISION_SUBSCRIPTION_KEY` názvem `COMPUTER_VISION_ENDPOINT`a v uvedeném pořadí.
 
 ## <a name="create-and-run-the-sample-application"></a>Vytvoření a spuštění ukázkové aplikace
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
    import org.json.JSONObject;
    ```
 
-1. Nahraďte veřejnou `Main` třídu následujícím kódem.
+1. Nahraďte `Main` veřejnou třídu následujícím kódem.
 1. Volitelně můžete hodnotu `imageToAnalyze` nahradit adresou URL jiného obrázku, který chcete analyzovat.
 
 ```java
@@ -120,9 +120,9 @@ public class Main {
 1. Uložte a sestavte projekt Java.
 1. Pokud používáte integrované vývojové prostředí, spusťte `Main`.
 
-Pokud program spouštěte z okna příkazového řádku, spusťte následující příkazy. Tyto příkazy předpokládají, že knihovny `libs` jsou ve složce `Main.java`s názvem, která je ve stejné složce jako ; pokud ne, budete muset `libs` nahradit cestu do knihoven.
+Pokud chcete program spustit z okna příkazového řádku, spusťte následující příkazy. Tyto příkazy předpokládají, že vaše knihovny jsou ve složce `libs` s názvem, která je ve stejné `Main.java`složce jako. v takovém případě budete muset nahradit `libs` cestou k vašim knihovnám.
 
-1. Kompilace `Main.java`souboru .
+1. Zkompilujte soubor `Main.java`.
 
     ```bash
     javac -cp ".;libs/*" Main.java

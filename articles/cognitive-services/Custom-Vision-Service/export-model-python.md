@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: Spuštění modelu TensorFlow v Pythonu – Custom Vision Service'
 titleSuffix: Azure Cognitive Services
-description: Spusťte model TensorFlow v Pythonu. Tento článek se vztahuje pouze na modely exportované z projektů klasifikace obrázků ve službě Vlastní vize.
+description: Spusťte model TensorFlow v Pythonu. Tento článek se týká pouze modelů exportovaných z projektů klasifikace obrázků ve službě Custom Vision.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 6fcbd84b3cda4adace9c1229f5ed03c3dce68fc0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81404118"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Kurz: Spuštění modelu TensorFlow v Pythonu
@@ -22,7 +22,7 @@ ms.locfileid: "81404118"
 V tomto rychlém startu se dozvíte, jak po [exportování modelu TensorFlow](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) ze služby Custom Vision Service použít tento model místně ke klasifikaci obrázků.
 
 > [!NOTE]
-> Tento kurz se vztahuje pouze na modely exportované z projektů klasifikace bitových obrázků.
+> Tento kurz se týká pouze modelů exportovaných z projektů klasifikace obrázků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ Pro tento kurz budete muset:
 - Nainstalovat Python 2.7+ nebo Python 3.5+.
 - Nainstalovat pip.
 
-Dále budete muset nainstalovat následující balíčky:
+V dalším kroku budete muset nainstalovat tyto balíčky:
 
 ```
 pip install tensorflow
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>Příprava obrázku pro předpověď
 
-Existuje několik kroků, které je třeba provést k přípravě obrázku pro předpověď. Tyto kroky napodobují manipulaci s obrázkem, která se provádí během trénování:
+Pro přípravu image k předpovědi je potřeba provést několik kroků. Tyto kroky napodobují manipulaci s obrázkem, která se provádí během trénování:
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>Otevření souboru a vytvoření obrázku v barevném prostoru BGR
 
@@ -88,7 +88,7 @@ image = update_orientation(image)
 image = convert_to_opencv(image)
 ```
 
-### <a name="handle-images-with-a-dimension-1600"></a>Zpracování obrazů s rozměrem >1600
+### <a name="handle-images-with-a-dimension-1600"></a>Zpracování imagí pomocí dimenze >1600
 
 ```Python
 # If the image has either w or h greater than 1600 we resize it down respecting
@@ -172,7 +172,7 @@ def update_orientation(image):
 
 ## <a name="predict-an-image"></a>Předpověď obrázku
 
-Jakmile je obraz připraven jako tenzor, můžeme jej poslat prostřednictvím modelu pro předpověď:
+Jakmile se obrázek připraví jako tensor, můžeme ho poslat přes model předpovědi:
 
 ```Python
 
@@ -210,7 +210,7 @@ Výsledky zpracování tensoru obrázku modelem pak bude potřeba namapovat zpě
 
 ## <a name="next-steps"></a>Další kroky
 
-Dále se dozvíte, jak zabalit model do mobilní aplikace:
+V dalším kroku se dozvíte, jak model zabalit do mobilní aplikace:
 * [Použití exportovaného modelu Tensorflow v aplikaci pro Android](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)
 * [Použití exportovaného modelu CoreML v aplikaci Swift pro iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)

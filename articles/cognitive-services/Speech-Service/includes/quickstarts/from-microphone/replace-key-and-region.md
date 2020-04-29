@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 04/02/2020
 ms.author: trbye
 ms.openlocfilehash: 15bb680ddd6a6a3dbabf8a1bb74a4dcf15c774b5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400659"
 ---
-`YourSubscriptionKey` Nahraďte `YourServiceRegion` hodnoty a skutečnými hodnotami ze zdroje řeči.
+Hodnoty `YourSubscriptionKey` a `YourServiceRegion` nahraďte skutečnými hodnotami z prostředku řeči.
 
-- Přejděte na <a href="https://portal.azure.com/" target="_blank">portál <span class="docon docon-navigate-external x-hidden-focus"> </span>Azure </a>a otevřete prostředek řeči.
-- Pod **klávesami** vlevo jsou k dispozici dva klíče předplatného
-    - Jako náhradu `YourSubscriptionKey` hodnoty použijte jednu z nich.
-- V části **Přehled** vlevo si poznamenejte oblast a namapujte ji na <a href="https://aka.ms/speech/sdkregion" target="_blank">identifikátor oblasti. <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-    - Jako náhradu `YourServiceRegion` hodnoty použijte **identifikátor oblasti,** například: `"westus"` pro **západní USA.**
+- Přejděte do <a href="https://portal.azure.com/" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>a otevřete prostředek řeči.
+- Pod **klíčem** nalevo jsou k dispozici dva dostupné klíče předplatného.
+    - Použijte buď jednu jako náhradu `YourSubscriptionKey` hodnoty.
+- V **přehledu** vlevo si všimněte oblasti a namapujte ji na <a href="https://aka.ms/speech/sdkregion" target="_blank">identifikátor <span class="docon docon-navigate-external x-hidden-focus"></span> oblasti</a> .
+    - Jako náhradu `YourServiceRegion` hodnoty použijte `"westus"` **identifikátor oblasti** , například: pro **západní USA**

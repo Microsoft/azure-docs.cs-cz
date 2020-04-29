@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: 57c66cb3597d8811be3caef74fa36af193b93be7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400736"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -16,13 +16,13 @@ ms.locfileid: "81400736"
 Než začnete:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programming-language-cpp)
-> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
 ## <a name="source-code"></a>Zdrojový kód
 
-Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do něj následující kód.
+Vytvořte zdrojový soubor C++ s názvem *HelloWorld. cpp*a vložte do něj následující kód.
 
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/from-microphone/helloworld.cpp#code)]
 
@@ -49,7 +49,7 @@ Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do ně
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/x86" -l:libasound.so.2
   ```
 
-* V systému **ARM64** (64 bit) spusťte následující příkaz k vytvoření aplikace.
+* V systému **ARM64** (64) spusťte následující příkaz, který sestaví aplikaci.
 
   ```sh
   g++ helloworld.cpp -o helloworld -I "$SPEECHSDK_ROOT/include/cxx_api" -I "$SPEECHSDK_ROOT/include/c_api" --std=c++14 -lpthread -lMicrosoft.CognitiveServices.Speech.core -L "$SPEECHSDK_ROOT/lib/arm64" -l:libasound.so.2
@@ -71,7 +71,7 @@ Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do ně
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/x86"
      ```
 
-   * V systému **ARM64** (64 bit) zadejte následující příkaz.
+   * V systému **ARM64** (64 bitů) zadejte následující příkaz.
 
      ```sh
      export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$SPEECHSDK_ROOT/lib/arm64"

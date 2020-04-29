@@ -1,6 +1,6 @@
 ---
-title: Principy uchovávání dat ve vašem prostředí – Azure Time Series Insight | Dokumenty společnosti Microsoft
-description: Tento článek popisuje dvě nastavení, která řídí uchovávání dat v prostředí Azure Time Series Insights.
+title: Pochopení uchovávání dat ve vašem prostředí – Azure Time Series Insight | Microsoft Docs
+description: Tento článek popisuje dvě nastavení, která řídí uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,90 +12,90 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
 ms.openlocfilehash: fd34595d5ea942602efc920904ff326fc203c088
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380693"
 ---
-# <a name="understand-data-retention-in-azure-time-series-insights"></a>Principy uchovávání dat v Azure Time Series Insights
+# <a name="understand-data-retention-in-azure-time-series-insights"></a>Pochopení uchovávání dat v Azure Time Series Insights
 
-Tento článek popisuje dvě primární nastavení, která mají vliv na uchovávání dat v prostředí Azure Time Series Insights.
+Tento článek popisuje dvě primární nastavení, která mají vliv na uchovávání dat ve vašem Azure Time Series Insightsovém prostředí.
 
 ## <a name="video"></a>Video
 
-### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Následující video shrnuje uchovávání dat Time Series Insights a jak je naplánovat.</br>
+### <a name="the-following-video-summarizes-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>Následující video shrnuje Time Series Insights uchovávání dat a jejich plánování.</br>
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
-Každé z vašich prostředí Azure Time Series Insights má nastavení, které řídí **čas uchovávání dat**. Hodnota se rozprostírá od 1 do 400 dnů. Data se odstraní na základě kapacity úložiště prostředí nebo doby uchovávání, podle toho, co nastane dříve.
+Každé z vašich Azure Time Series Insightsch prostředí má nastavení, které řídí **dobu uchovávání dat**. Hodnota zahrnuje 1 až 400 dní. Data se odstraňují na základě kapacity úložiště v prostředí nebo doby uchování, podle toho, co nastane dřív.
 
-Vaše prostředí Azure Time Series Insights má navíc **překročení limitu úložiště.** Řídí příchozí přenos dat a vyprázdnit chování při dosažení maximální kapacity prostředí. Při konfiguraci je třeba vybrat ze dvou chování:
+Kromě toho má Azure Time Series Insights prostředí nastavené **chování při překročení limitu úložiště** . Řídí chování vstupu a vyprázdnění při dosažení maximální kapacity prostředí. Při konfiguraci si můžete vybrat ze dvou příznaků:
 
-- **Vyčistit stará data** (výchozí)  
-- **Pozastavení příchozího přenosu dat**
+- **Vyprázdnit stará data** (výchozí)  
+- **Pozastavit příchozí přenos dat**
 
 > [!NOTE]
-> Ve výchozím nastavení je při vytváření nového prostředí uchovávání nakonfigurováno na **vymazání starých dat**. Toto nastavení lze podle potřeby přepnout po vytvoření pomocí portálu Azure na stránce **Konfigurace** prostředí Time Series Insights.
-> * Informace o konfiguraci zásad uchovávání informací naleznete [v zásadách konfigurace uchovávání informací v přehledech časové řady .](time-series-insights-how-to-configure-retention.md)
+> Ve výchozím nastavení platí, že při vytváření nového prostředí se uchování nakonfiguruje tak, aby **vymazala stará data**. Toto nastavení se dá po vytvoření pomocí Azure Portal přepínat podle potřeby, a to na stránce **konfigurace** Time Series Insights prostředí.
+> * Informace o tom, jak nakonfigurovat zásady uchovávání informací, najdete [v článku Konfigurace uchovávání v Time Series Insights](time-series-insights-how-to-configure-retention.md).
 
-Obě zásady uchovávání dat jsou popsány podrobněji níže.
+Obě zásady uchovávání dat jsou popsané podrobněji.
 
-## <a name="purge-old-data"></a>Vyčistit stará data
+## <a name="purge-old-data"></a>Vyprázdnit stará data
 
-- **Vymazání starých dat** je výchozí nastavení pro prostředí Azure Time Series Insights.  
-- **Vymazat stará data** je upřednostňováno, když uživatelé chtějí mít vždy nejnovější *data* ve svém prostředí Time Series Insights.
-- **Nastavení vyčistit stará data** vyčistí data, jakmile jsou *dosaženy* limity prostředí (doba uchovávání, velikost nebo počet, podle toho, co nastane dříve). Uchovávání je ve výchozím nastavení nastaveno na 30 dní.
-- Nejstarší ingestovaná data jsou nejprve vymazána (přístup "First In First Out").
+- **Vyprázdnit stará data** je výchozím nastavením pro Azure Time Series Insights prostředí.  
+- **Vyprázdnit stará data** jsou upřednostňovaná, když uživatelé chtějí mít ve svém Time Series Insights prostředí vždy nejnovější *data* .
+- Nastavení **vyprázdnění starých dat** *vymaže* data po dosažení limitů prostředí (doba uchování, velikost nebo počet, podle toho, co nastane dřív). Doba uchování je ve výchozím nastavení nastavená na 30 dní.
+- Nejstarší ingestovaná data se vyprázdní jako první (přístup "první v prvním)".
 
-### <a name="example-one"></a>Příklad jednoho
+### <a name="example-one"></a>Příklad jedné
 
-Vezměme si příklad prostředí s chováním uchovávání **informací Pokračovat v přenosu dat a vymazat stará data**:
+Vezměte v úvahu ukázkové prostředí s chováním uchovávání **a vyprázdnit stará data**:
 
-**Doba uchovávání dat** je nastavena na 400 dní. **Kapacita** je nastavena na jednotku S1, která obsahuje 30 GB celkové kapacity. Předpokládejme, že příchozí data se hromadí na 500 MB každý den v průměru. Toto prostředí může zachovat pouze 60 dní v hodnotě dat vzhledem k rychlosti příchozích dat, protože maximální kapacita je dosaženo na 60 dnů. Příchozí data se hromadí jako: 500 MB každý den x 60 dní = 30 GB.
+**Doba uchovávání dat** je nastavená na 400 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity. Vybereme, že příchozí data se za průměrně nashromáždí do 500 MB každého dne. Toto prostředí může uchovávat jenom 60 dní, které mají za sekundu množství příchozích dat, protože maximální kapacita dosáhne 60 dnů. Příchozí data se sčítají takto: 500 MB každý den × 60 dní = 30 GB.
 
-61. den prostředí zobrazuje nejčerstvější data, ale vyčistí nejstarší data starší než 60 dní. Vymazání vytváří prostor pro nové datové proudy, takže nová data mohou být i nadále prozkoumány. Pokud si uživatel přeje uchovávat data déle, může zvětšit velikost prostředí přidáním dalších jednotek nebo může tlačit méně dat.  
+V 61stém dni se v prostředí zobrazují data o aktuálnosti, ale vyprázdní nejstarší data starší než 60 dní. Vyprázdnit vytvoří místo pro nové streamování dat v, aby se nová data mohla dál prozkoumat. Pokud si uživatel přeje zachovat data déle, může zvětšit velikost prostředí přidáním dalších jednotek nebo může doručovat méně dat.  
 
-### <a name="example-two"></a>Příklad dva
+### <a name="example-two"></a>Příklad 2
 
-Zvažte prostředí také nakonfigurované chování uchovávání **informací Pokračovat v přenosu dat a vymazat stará data**. V tomto příkladu je **doba uchovávání dat** nastavena na nižší hodnotu 180 dní. **Kapacita** je nastavena na jednotku S1, která obsahuje 30 GB celkové kapacity. Chcete-li ukládat data za celých 180 dní, denní příchozí přenos dat nesmí překročit 0,166 GB (166 MB) za den.  
+Vezměte v úvahu i prostředí, ve kterém se nakonfigurují i chování uchovávání **, a vyprázdnit stará data**. V tomto příkladu je **Doba uchovávání dat** nastavená na nižší hodnotu 180 dní. **Kapacita** je nastavená na jednotku S1, která obsahuje 30 GB celkové kapacity. Aby bylo možné ukládat data po celých 180 dní, denní příchozí přenos dat nemůže překročit 0,166 GB (166 MB) za den.  
 
-Vždy, když toto prostředí denní rychlost příchozího přenosu dat překročí 0,166 GB za den, data nelze uložit po dobu 180 dnů, protože některá data získá vymazány. Zvažte stejné prostředí během zaneprázdněného časového rámce. Předpokládejme, že rychlost příchozího přenosu dat prostředí může zvýšit na průměr 0.189 GB za den. V tomto rušném časovém rámci jsou zachovány přibližně 158 dny dat (30 GB/0,189 = 158,73 dnů uchovávání). Tato doba je kratší než požadovaný časový rámec uchovávání dat.
+Když se denní rychlost příchozího přenosu v tomto prostředí překročí 0,166 GB za den, data se nedají uložit na 180 dnů, protože se některá data vyprázdní. Během zaneprázdněného časového rámce zvažte stejné prostředí. Předpokládat, že se míra příchozího přenosu v prostředí může zvýšit na průměr 0,189 GB za den. V tomto časovém rámci je zachováno přibližně 158 dní dat (30 GB/0.189 = 158,73 dnů uchovávání). Tato doba je kratší než časový rámec požadované doby uchovávání dat.
 
-## <a name="pause-ingress"></a>Pozastavení příchozího přenosu dat
+## <a name="pause-ingress"></a>Pozastavit příchozí přenos dat
 
-- Nastavení **Pozastavení příchozího přenosu dat** je navržentak, aby zajistilo, že data nebudou vymazána, pokud je dosaženo limitů velikosti a počtu před jejich dobou uchovávání.  
-- **Pozastavení příchozího přenosu dat** poskytuje uživatelům další čas na zvýšení kapacity jejich prostředí před vymazáním dat z důvodu porušení doby uchovávání.
-- Pomáhá chránit před ztrátou dat, ale může vytvořit příležitost pro ztrátu nejnovějších dat, pokud je příchozí přenos dat pozastaven po dobu uchování zdroje událostí.
-- Jakmile je však dosaženo maximální kapacity prostředí, prostředí pozastaví příchozí přenos dat, dokud nedojde k následujícím dalším akcím:
+- Nastavení **pozastavit** příjem dat je navrženo tak, aby se zajistilo, že se data neodstraní, pokud jsou dosažena omezení velikosti a počtu před jejich dobou uchování.  
+- **Pozastaví** příchozí přenos dat, aby uživatelé zvýšili kapacitu svého prostředí předtím, než se data vyprázdní kvůli porušení doby uchování.
+- Pomáhá chránit před ztrátou dat, ale může vytvořit příležitost pro ztrátu vašich nejnovějších dat, pokud se příchozí přenos dat pozastaví mimo dobu uchování vašeho zdroje událostí.
+- Jakmile však dosáhnete maximální kapacity prostředí, prostředí pozastaví příchozí přenos dat, dokud neproběhne následující další akce:
 
-   - Maximální kapacitu prostředí pro přidání dalších jednotek škálování, jak je popsáno v části [Jak škálovat prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md).
-   - Je dosaženo doby uchovávání dat a data jsou vymazána, čímž se prostředí pod jeho maximální kapacitu.
+   - Maximální kapacitu prostředí můžete zvýšit tak, aby se přidaly další jednotky škálování, jak je popsáno v tématu [Jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md).
+   - Doba uchovávání dat je dosažená a data se vyprázdní a přinášejí prostředí pod jeho maximální kapacitu.
 
 ### <a name="example-three"></a>Příklad tři
 
-Zvažte prostředí s chováním uchovávání informací nakonfigurovaným tak, aby **pozastavilo příchozí přenos dat**. V tomto příkladu je **doba uchovávání dat** nakonfigurována na 60 dní. **Kapacita** je nastavena na tři (3) jednotky S1. Předpokládejme, že toto prostředí má příchozí přenos dat 2 GB každý den. V tomto prostředí příchozí přenos dat je pozastavena po dosažení maximální kapacity.
+Zvažte prostředí s chováním uchovávání dat nakonfigurovaným pro **pozastavení**příchozího přenosu dat. V tomto příkladu je **Doba uchovávání dat** nakonfigurovaná na 60 dní. **Kapacita** je nastavená na tři (3) jednotky S1. Předpokládejme, že toto prostředí má každý den příchozí přenos dat na 2 GB. V tomto prostředí se příchozí přenos dat pozastaví, jakmile se dosáhne maximální kapacity.
 
-V té době prostředí zobrazuje stejnou datovou sadu, dokud příchozí přenos dat pokračuje nebo dokud není povolen **a pokračovat v příchozím přenosu dat** (což by očistit starší data, aby se uvolnilo místo pro nová data).
+V tuto chvíli prostředí zobrazuje stejnou datovou sadu, dokud se neobnoví nebo dokud nebude zapnuté příchozí **přenosy** (což by vymazalo starší data, aby uvolnila místo pro nová data).
 
-Při obnovení příchozího přenosu dat:
+Po obnovení příchozího přenosu dat:
 
-- Toky dat v pořadí, v jakém byly přijaty podle zdroje událostí
-- Události jsou indexovány na základě jejich časové razítko, pokud jste překročili zásady uchovávání informací na zdroj událostí. Další informace o konfiguraci uchovávání zdrojů událostí [nazbudou nejčastější dotazy k centru událostí.](../event-hubs/event-hubs-faq.md)
+- Toky dat v pořadí, ve kterém byly přijaty zdrojem událostí
+- Události jsou indexovány na základě časového razítka, pokud jste nepřekročili zásady uchovávání informací ve zdroji událostí. Další informace o konfiguraci uchovávání informací o zdrojích událostí [Event Hubs Nejčastější dotazy](../event-hubs/event-hubs-faq.md)
 
 > [!IMPORTANT]
-> Měli byste nastavit výstrahy poskytnout oznámení, aby se zabránilo příchozí přenos dat pozastavena. Ztráta dat je možná, protože výchozí uchovávání je 1 den pro zdroje událostí Azure. Proto po pozastavení příchozího přenosu dat pravděpodobně ztratíte nejnovější data, pokud není provedena další akce. Je nutné zvýšit kapacitu nebo přepnout chování na **vymazat stará data,** aby se zabránilo ztrátě potenciálu dat.
+> Měli byste nastavit výstrahy, které vám poskytnou informace, které vám pomůžou zabránit pozastavenému přenosu. Může dojít ke ztrátě dat, protože výchozí doba uchování je 1 den pro zdroje událostí Azure. Proto když je příchozí příjem pozastaven, pravděpodobně ztratíte nejaktuálnější data, pokud se neprovede žádná další akce. Abyste se vyhnuli potenciálním ztrátám dat, je nutné zvýšit kapacitu nebo přepnout chování, aby se **vymazala stará data** .
 
-V ovlivněných rozbočovačích událostí zvažte úpravu vlastnosti **Uchovávání zpráv,** abyste minimalizovali ztrátu dat, když dojde k pozastavení příchozího přenosu dat v přehledech časové řady.
+V ovlivněných Event Hubs zvažte úpravu vlastnosti **uchovávání zpráv** , aby se minimalizovala ztráta dat, když dojde k pozastavení vstupu v Time Series Insights.
 
-[![Uchovávání zpráv centra událostí.](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
+[![Uchovávání zpráv centra událostí](media/time-series-insights-concepts-retention/event-hub-retention.png)](media/time-series-insights-concepts-retention/event-hub-retention.png#lightbox)
 
-Pokud nejsou ve zdroji událostí`timeStampPropertyName`( ) nakonfigurovány žádné vlastnosti, výchozí časové řady Přehledy na časové razítko doručení v centru událostí jako osa X. Pokud `timeStampPropertyName` je nakonfigurován jako něco jiného, `timeStampPropertyName` prostředí hledá nakonfigurované v datovém paketu při analýzě událostí.
+Pokud ve zdroji událostí (`timeStampPropertyName`) nejsou nakonfigurované žádné vlastnosti, Time Series Insights ve výchozím nastavení časové razítko doručení do centra událostí jako osu X. Pokud `timeStampPropertyName` je nakonfigurovaná tak, aby byla něco jiného, prostředí vyhledá `timeStampPropertyName` při analýze událostí nakonfigurovanou v datovém paketu.
 
-Přečtěte [si, jak škálovat prostředí Time Series Insights](time-series-insights-how-to-scale-your-environment.md) tak, aby škálování prostředí tak, aby vyhovovalo další kapacity nebo zvýšit délku uchovávání.
+Přečtěte si [, jak škálovat Time Series Insights prostředí](time-series-insights-how-to-scale-your-environment.md) a škálovat prostředí tak, aby vyhovovalo další kapacitě nebo zvýšila délku uchovávání.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o konfiguraci nebo změně nastavení uchovávání dat naleznete [v části Konfigurace uchovávání informací v přehledech časové řady .](time-series-insights-how-to-configure-retention.md)
+- Informace o konfiguraci a změně nastavení uchovávání dat najdete [v Time Series Insights konfigurace uchovávání v](time-series-insights-how-to-configure-retention.md)nástroji.
 
 - Přečtěte si o [zmírnění latence v Azure Time Series Insights](time-series-insights-environment-mitigate-latency.md).

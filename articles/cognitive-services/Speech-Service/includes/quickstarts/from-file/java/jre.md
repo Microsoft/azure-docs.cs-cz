@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 85124a51b986b6e3d6444b35aa264e136abcdb76
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400590"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programming-language-java)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Přidání ukázkového kódu
 
-1. Chcete-li do projektu Java přidat novou prázdnou**třídu,** vyberte **možnost Soubor** > **nové** > třídy .
+1. Chcete-li do projektu Java přidat novou prázdnou třídu, vyberte možnost **soubor** > **Nová** > **Třída**.
 
 1. V okně **New Java Class** (Nová třída Javy) zadejte do pole **Package** (Balíček) **speechsdk.quickstart** a do pole **Name** (Název) zadejte **Main** (Hlavní).
 
@@ -111,17 +111,17 @@ ms.locfileid: "81400590"
 
 1. Řetězec `YourServiceRegion` nahraďte [oblastí](~/articles/cognitive-services/Speech-Service/regions.md) přidruženou k vašemu předplatnému (například `westus` pro bezplatnou zkušební verzi předplatného).
 
-1. Nahraďte `whatstheweatherlike.wav` řetězec vlastním názvem souboru.
+1. Nahraďte řetězec `whatstheweatherlike.wav` vlastním názvem souboru.
 
 1. Uložte změny do projektu.
 
 > [!NOTE]
-> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
+> Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ## <a name="build-and-run-the-app"></a>Sestavení a spuštění aplikace
 
-Stiskněte klávesu F11 nebo vyberte **spustit** > **ladění**.
-Prvních 15 sekund hlasového vstupu ze zvukového souboru bude rozpoznáno a zaznamenáno v okně konzoly.
+Stiskněte klávesu F11 nebo vyberte **Spustit** > **ladění**.
+V okně konzoly bude rozpoznáno a zaznamenáno prvních 15 sekund vstupu řeči ze zvukového souboru.
 
    ```text
    Recognizing first result...

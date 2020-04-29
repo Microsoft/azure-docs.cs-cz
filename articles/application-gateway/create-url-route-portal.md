@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Pravidla směrování založená na cestě URL pomocí portálu – Azure Application Gateway'
-description: V tomto kurzu se dozvíte, jak vytvořit pravidla směrování založené na cestě URL pro aplikační bránu a škálovací sadu virtuálních strojů pomocí portálu Azure.
+title: 'Kurz: pravidla směrování na základě cesty URL pomocí portálu – Azure Application Gateway'
+description: V tomto kurzu se naučíte vytvářet pravidla směrování na základě cest URL pro službu Application Gateway a sadu škálování virtuálních počítačů pomocí Azure Portal.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,70 +8,70 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81312201"
 ---
-# <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Kurz: Vytvoření aplikační brány s pravidly směrování na základě cesty pomocí portálu Azure
+# <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Kurz: vytvoření aplikační brány s pravidly směrování založenými na cestách pomocí Azure Portal
 
-Portál Azure můžete použít ke konfiguraci [pravidel směrování založených na cestě k adrese URL](application-gateway-url-route-overview.md) při vytváření aplikační [brány](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy pomocí virtuálních počítačů. Potom vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
+Pomocí Azure Portal můžete nakonfigurovat [pravidla směrování na základě cest URL](application-gateway-url-route-overview.md) při vytváření [aplikační brány](application-gateway-introduction.md). V tomto kurzu vytvoříte back-endové fondy s použitím virtuálních počítačů. Pak vytvoříte pravidla směrování, která zajistí, že webový provoz dorazí na příslušné servery ve fondech.
 
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření služby Application Gateway
-> * Vytvoření virtuálních počítačů pro back-endové servery
-> * Vytvoření back-endových fondů s back-endovými servery
-> * Vytvoření naslouchací proces back-endu
-> * Vytvoření pravidla směrování založeného na cestě
+> * Vytváření virtuálních počítačů pro back-end servery
+> * Vytváření back-end fondů se servery back-end
+> * Vytvoření naslouchacího procesu back-endu
+> * Vytvoření pravidla směrování založeného na cestách
 
 ![Příklad směrování na základě adresy URL](./media/application-gateway-create-url-route-portal/scenario.png)
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se na webu Azure portal na adrese[https://portal.azure.com](https://portal.azure.com)
+Přihlaste se k Azure Portal v[https://portal.azure.com](https://portal.azure.com)
 
 ## <a name="create-virtual-machines"></a>Vytvoření virtuálních počítačů
 
-V tomto příkladu vytvoříte tři virtuální počítače, které se použijí jako back-endové servery pro aplikační bránu. Službu IIS můžete také nainstalovat do virtuálních počítačů, abyste ověřili, že brána aplikace funguje podle očekávání.
+V tomto příkladu vytvoříte tři virtuální počítače, které se použijí jako servery back-end pro aplikační bránu. Nainstalujete také službu IIS na virtuální počítače a ověříte tak, že služba Application Gateway funguje podle očekávání.
 
-1. Na webu Azure Portal vyberte **Vytvořit prostředek**.
-2. V seznamu Oblíbené vyberte **Datové centrum Windows Serveru 2016.**
+1. V Azure Portal vyberte **vytvořit prostředek**.
+2. V seznamu oblíbených vyberte **Windows Server 2016 Datacenter** .
 3. Zadejte pro virtuální počítač tyto hodnoty:
 
-    - **Skupina prostředků**, vyberte **Vytvořit nový**a zadejte *příkaz myResourceGroupAG*.
+    - **Skupina prostředků**, vyberte **vytvořit novou**a potom zadejte *myResourceGroupAG*.
     - **Název virtuálního počítače**: *myVM1*
-    - **Region**: *(USA) – východ USA*
+    - **Oblast**: *(US) východní USA*
     - **Uživatelské jméno**: *azureuser*
-    - **Heslo:** *Azure123456!*
+    - **Heslo**: *Azure123456!*
 
 
-4. Vyberte **Další:Disky**.
-5. Vybrat **další:Vytváření sítí**
-6. V **části Virtuální síť**vyberte Vytvořit **nový** a zadejte pro virtuální síť tyto hodnoty:
+4. Vyberte **Další: disky**.
+5. Vybrat **Další: sítě**
+6. Pro **virtuální síť**vyberte **vytvořit novou** a zadejte tyto hodnoty pro virtuální síť:
 
    - *myVNet* – tuto hodnotu zadejte jako název virtuální sítě.
    - *10.0.0.0/16* – tuto hodnotu zadejte jako adresní prostor virtuální sítě.
    - *myBackendSubnet* pro první název podsítě
-   - *10.0.1.0/24* - pro adresní prostor podsítě.
-   - *myGSubnet* - pro druhý název podsítě.
+   - *10.0.1.0/24* – pro adresní prostor podsítě.
+   - *myAGSubnet* – pro druhý název podsítě.
    - *10.0.0.0/24* – tuto hodnotu zadejte jako adresní prostor podsítě.
 7. Vyberte **OK**.
 
-8. Ujistěte se, že v části **Síťové rozhraní**je pro podsíť vybrána možnost **myBackendSubnet,** a pak vyberte **možnost Další: Správa**.
-9. Chcete-li diagnostiku spouštění zakázat, vyberte **možnost Vypnuto.**
-10. Klikněte na **Zkontrolovat + Vytvořit**, zkontrolujte nastavení na stránce souhrnu a pak vyberte **Vytvořit**.
-11. Vytvořte další dva virtuální počítače, *myVM2* a *myVM3* a umístěte je do virtuální sítě *MyVNet* a podsítě *myBackendSubnet.*
+8. Ujistěte se, že v části **síťové rozhraní**je pro podsíť vybraná možnost **myBackendSubnet** a pak vyberte **Další: Správa**.
+9. Výběrem možnosti **vypnuto** zakážete diagnostiku spouštění.
+10. Klikněte na tlačítko **zkontrolovat + vytvořit**, zkontrolujte nastavení na stránce Souhrn a pak vyberte **vytvořit**.
+11. Vytvořte dva další virtuální počítače, *myVM2* a *myVM3* a umístěte je do virtuální sítě *MyVNet* a podsítě *myBackendSubnet* .
 
 ### <a name="install-iis"></a>Instalace služby IIS
 
-1. Otevřete interaktivní prostředí a ujistěte se, že je nastavena na **PowerShell**.
+1. Otevřete interaktivní prostředí a ujistěte se, že je nastavený na **PowerShell**.
 
     ![Instalace vlastního rozšíření](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
 
@@ -91,98 +91,98 @@ V tomto příkladu vytvoříte tři virtuální počítače, které se použijí
          -Settings $publicSettings
     ```
 
-3. Vytvořte další dva virtuální počítače a nainstalujte službu IIS pomocí kroků, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a hodnoty VMName v Set-AzVMExtension.
+3. Vytvořte dva další virtuální počítače a nainstalujte IIS pomocí kroků, které jste právě dokončili. Zadejte názvy *myVM2* a *myVM3* pro názvy a pro hodnoty VMName v set-AzVMExtension.
 
 ## <a name="create-an-application-gateway"></a>Vytvoření služby Application Gateway
 
-1. V levé nabídce portálu Azure vyberte **Vytvořit prostředek.** Zobrazí se okno **Nový.**
+1. V levé nabídce Azure Portal vyberte **vytvořit prostředek** . Zobrazí se **nové** okno.
 
-2. Vyberte **Síť** a pak v seznamu **Doporučené** vyberte **Aplikační brána.**
+2. Vyberte **sítě** a v seznamu **Doporučené** vyberte **Application Gateway** .
 
-### <a name="basics-tab"></a>Karta Základy
+### <a name="basics-tab"></a>Karta základy
 
-1. Na kartě **Základy** zadejte tyto hodnoty pro následující nastavení brány aplikace:
+1. Na kartě **základy** zadejte tyto hodnoty pro následující nastavení služby Application Gateway:
 
-   - **Skupina prostředků**: Vyberte **myResourceGroupAG** pro skupinu prostředků.
-   - **Název aplikační brány**: Zadejte *myAppGateway* pro název aplikační brány.
-   - **Oblast** – vyberte **(USA) – východ USA**.
+   - **Skupina prostředků**: pro skupinu prostředků vyberte **myResourceGroupAG** .
+   - **Název aplikační brány**: jako název služby Application Gateway zadejte *myAppGateway* .
+   - **Oblast** – výběr **(US) východní USA**.
 
         ![Vytvořit novou aplikační bránu: Základy](./media/application-gateway-create-gateway-portal/application-gateway-create-basics.png)
 
-2.  V části **Konfigurace virtuální sítě**vyberte **myVNet** pro název virtuální sítě.
-3. Vyberte **myAGSubnet** pro podsíť.
-3. Přijměte výchozí hodnoty pro ostatní nastavení a pak vyberte **Další: Frontendy**.
+2.  V části **Konfigurovat virtuální síť**vyberte **myVNet** pro název virtuální sítě.
+3. Jako podsíť vyberte **myAGSubnet** .
+3. Přijměte výchozí hodnoty pro ostatní nastavení a potom vyberte **Další: front-endu**.
 
-### <a name="frontends-tab"></a>Karta Front-endy
+### <a name="frontends-tab"></a>Karta front-endu
 
-1. Na kartě **Frontendy** ověřte, zda je **typ ip adresy front-endu** nastaven na **veřejné**.
+1. Na kartě **front-endu** ověřte, že **typ IP adresy front-end** je nastavený na **veřejné**.
 
    > [!NOTE]
-   > Pro aplikační bránu v2 SKU můžete zvolit pouze **veřejnou** front-endovou konfiguraci IP. Privátní front-endová konfigurace IP není aktuálně povolena pro tuto skladovou položku v2.
+   > V případě SKU Application Gateway v2 můžete zvolit jenom **veřejnou** konfiguraci IP adresy front-endu. V tuto chvíli není u této SKU verze V2 povolená soukromá konfigurace IP adresy front-endu.
 
-2. Zvolte **Vytvořit novou** pro **veřejnou IP adresu** a zadejte adresu *myAGPublicIPAddress* pro název veřejné IP adresy a pak vyberte **OK**. 
-3. Vyberte **další: Back-endy**.
+2. Zvolte **vytvořit nový** pro **veřejnou IP adresu** a jako název veřejné IP adresy zadejte *myAGPublicIPAddress* a pak vyberte **OK**. 
+3. Vyberte **Další: back-endy**.
 
-### <a name="backends-tab"></a>Karta Back-endy
+### <a name="backends-tab"></a>Karta back-endy
 
-Back-endový fond se používá ke směrování požadavků na servery back-endu, které tento požadavek obsluhují. Back-endové fondy se můžou skládat z připojení k síťové karty, škálovacísady virtuálních počítačů, veřejných IP adres, interních IP adres, plně kvalifikovaných názvů domén (Plně kvalifikovaný název domény) a back-endů s více tenanty, jako je Služba Azure App Service.
+Back-end fond slouží ke směrování požadavků na servery back-end, které obsluhují požadavek. Back-endové fondy se dají skládat ze síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service.
 
-1. Na kartě **Backends** vyberte **+Přidat fond back-endů**.
+1. Na kartě back- **endy** vyberte **+ Přidat back-end fond**.
 
-2. V okně **Přidat back-endový fond,** které se otevře, zadejte následující hodnoty pro vytvoření prázdného back-endového fondu:
+2. V okně **Přidat fond back-end** , které se otevře, zadejte následující hodnoty a vytvořte prázdný back-end fond:
 
-    - **Název**: Zadejte *myBackendPool* pro název back-endového fondu.
-3. V části **Back-end Targets**, **Type Target**vyberte v rozevíracím seznamu **virtuální počítač.**
+    - **Název**: jako název back-end fondu zadejte *myBackendPool* .
+3. V části **cíle do back-endu**, **cílový typ**vyberte **virtuální počítač** v rozevíracím seznamu.
 
-5. V části **Cíl** vyberte síťové rozhraní pro **myVM1**.
+5. V části **cíl** vyberte síťové rozhraní pro **myVM1**.
 6. Vyberte **Přidat**.
-7. Opakováním přidáte back-endový fond *obrázků* s *myVM2* jako cílem a fond back-endu *videa* s *myVM3* jako cílem.
-8. Vyberte **Přidat,** chcete-li uložit konfiguraci back-endového fondu a vrátit se na kartu **Backends.**
+7. Opakujte, pokud chcete do cíle přidat back-end fond *imagí* s *myVM2* , a jako cíl se vytvoří fond back-endu *videa* s *myVM3* .
+8. Vyberte **Přidat** a uložte konfiguraci back-end fondu a vraťte se na kartu back- **endy** .
 
-4. Na kartě **Back-endy** vyberte **Další: Konfigurace**.
+4. Na kartě **back-endy** vyberte **Další: Konfigurace**.
 
-### <a name="configuration-tab"></a>Karta Konfigurace
+### <a name="configuration-tab"></a>Karta konfigurace
 
-Na kartě **Konfigurace** připojíte front-endový a back-endový fond, který jste vytvořili, pomocí pravidla směrování.
+Na kartě **Konfigurace** se připojíte k front-endovému a back-endovému fondu, který jste vytvořili pomocí pravidla směrování.
 
-1. Ve sloupci **Pravidla směrování** vyberte **Přidat pravidlo.**
+1. Ve sloupci **pravidla směrování** vyberte **Přidat pravidlo** .
 
-2. V okně **Přidat směrovací pravidlo,** které se otevře, zadejte *myRoutingRule* pro **název pravidla**.
+2. V okně **Přidat pravidlo směrování** , které se otevře, jako **název pravidla**zadejte *myRoutingRule* .
 
-3. Pravidlo směrování vyžaduje naslouchací proces. Na kartě **Listener** v okně **Přidat pravidlo směrování** zadejte pro posluchače následující hodnoty:
+3. Pravidlo směrování vyžaduje naslouchací proces. Na kartě **naslouchací proces** v okně **Přidat pravidlo směrování** zadejte následující hodnoty pro naslouchací proces:
 
-    - **Název naslouchací proces**: Zadejte *myListener* pro název posluchače.
-    - **Front-end IP**: Vyberte **Veřejné,** chcete-li zvolit veřejnou IP adresu, kterou jste pro front-end vytvořili.
-    - **Port**: Typ *8080*
+    - **Název naslouchacího procesu**: jako název naslouchacího procesu zadejte *MyListener* .
+    - **Front-end IP adresa**: vyberte **veřejné** a zvolte veřejnou IP adresu, kterou jste vytvořili pro front-end.
+    - **Port**: typ *8080*
   
-        Přijměte výchozí hodnoty pro ostatní nastavení na kartě **Naslouchací proces** a pak vyberte kartu **Cíle back-endu** a nakonfigurujte zbytek pravidla směrování.
+        Přijměte výchozí hodnoty pro ostatní nastavení na kartě **naslouchací proces** a potom vyberte kartu **cílení na back-end** a nakonfigurujte zbývající část pravidla směrování.
 
-4. Na kartě **Cíle back-endu** vyberte **myBackendPool** pro **cíl back-endu**.
+4. Na kartě **cílení na server back-end** vyberte **MyBackendPool** pro **cíl back-endu**.
 
-5. Pro **nastavení HTTP**vyberte **Vytvořit nový** a vytvořte nové nastavení HTTP. Nastavení HTTP určí chování pravidla směrování. 
+5. Pro **Nastavení http**vyberte **vytvořit novou** a vytvořte nové nastavení http. Nastavením protokolu HTTP se určí chování pravidla směrování. 
 
-6. V okně **Přidat nastavení PROTOKOLU HTTP,** které se otevře, zadejte pro **název nastavení HTTP nastavení myHTTPSetting**. *myHTTPSetting* Přijměte výchozí hodnoty pro ostatní nastavení v **okně Přidat nastavení HTTP** a pak vyberte **Přidat** a vraťte se do okna Přidat **pravidlo směrování.**
-7. V části **Směrování založené na cestě**vyberte Přidat více cílů a **vytvořte pravidlo založené na cestě**.
-8. Do **pole Cesta**zadejte */images/*\*.
-9. Do **pole Path rule name**zadejte *Images*.
-10. Pro **nastavení HTTP**vyberte **myHTTPSetting**
-11. Pro **back-endový cíl**vyberte **Obrázky**.
-12. Vyberte **Přidat,** chcete-li uložit pravidlo cesty a vrátit se na kartu **Přidat pravidlo směrování.**
-13. Opakováním přidáte další pravidlo pro video.
-14. Výběrem **možnosti Přidat** přidáte pravidlo směrování a vraťte se na kartu **Konfigurace.**
-15. Vyberte **další: Značky** a pak **Další: Zkontrolujte + vytvořit**.
+6. V okně **Přidat nastavení protokolu HTTP** , které se otevře, zadejte *myHTTPSetting* pro **název nastavení http**. Přijměte výchozí hodnoty pro ostatní nastavení v okně **Přidat nastavení http** a pak vyberte **Přidat** a vraťte se do okna **Přidat pravidlo směrování** .
+7. V části **směrování na základě cesty**vyberte **Přidat více cílů a vytvořte pravidlo na základě cesty**.
+8. Jako **cestu**zadejte */images/*\*.
+9. Jako **název pravidla cesty**zadejte *Image*.
+10. V **Nastavení http**vyberte **myHTTPSetting**
+11. V případě **cíle pro back-end**vyberte **obrázky**.
+12. Vyberte **Přidat** a uložte pravidlo cesty a vraťte se na kartu **Přidat pravidlo směrování** .
+13. Opakujte, pokud chcete přidat další pravidlo pro video.
+14. Vyberte **Přidat** a přidejte pravidlo směrování a vraťte se na kartu **Konfigurace** .
+15. Vyberte **Další: značky** a potom **Další: zkontrolovat + vytvořit**.
 
 > [!NOTE]
-> Není nutné přidávat vlastní */** cesta pravidlo pro zpracování výchozích případů. To je automaticky zpracována výchozí fond back-end.
+> Nemusíte přidávat vlastní */** pravidlo cesty pro zpracování výchozích případů. To se automaticky zpracuje ve výchozím fondu back-end.
 
-### <a name="review--create-tab"></a>Karta Revize + vytvoření
+### <a name="review--create-tab"></a>Revize + vytvořit kartu
 
-Zkontrolujte nastavení na kartě **Revize + vytvořit** a pak vyberte **Vytvořit,** chcete-li vytvořit virtuální síť, veřejnou IP adresu a bránu aplikace. Vytvoření brány aplikace azure může trvat několik minut. Počkejte, dokud nasazení úspěšně dokončí před přechodem na další část.
+Zkontrolujte nastavení na kartě **Revize + vytvořit** a pak vyberte **vytvořit** k vytvoření virtuální sítě, veřejné IP adresy a aplikační brány. Vytvoření služby Application Gateway v Azure může trvat několik minut. Před přechodem k další části počkejte na úspěšné dokončení nasazení.
 
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-1. Vyberte **Všechny prostředky**a pak **vyberte myAppGateway**.
+1. Vyberte **všechny prostředky**a pak vyberte **myAppGateway**.
 
     ![Záznam veřejné IP adresy aplikační brány](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
@@ -190,21 +190,21 @@ Zkontrolujte nastavení na kartě **Revize + vytvořit** a pak vyberte **Vytvoř
 
     ![Testování základní adresy URL v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-   Naslouchací proces na portu 8080 směruje tento požadavek do výchozího back-endového fondu.
+   Naslouchací proces na portu 8080 směruje tento požadavek na výchozí back-end fond.
 
-3. Změňte adresu URL na *http://&lt;ip-adresu&gt;:8080/images/test.htm*, nahrazení &lt;ip adresy&gt; vaší IP adresou a měli byste vidět něco jako v následujícím příkladu:
+3. Změňte adresu URL na *http://&lt;IP-address&gt;: 8080/images/test.htm*, nahraďte &lt;&gt; IP adresu IP adresou a měli byste vidět něco jako v následujícím příkladu:
 
     ![Testování adresy URL obrázků v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 
-   Naslouchací proces na portu 8080 směruje tento požadavek do back-endového fondu *Images.*
+   Naslouchací proces na portu 8080 směruje tento požadavek do back-endového fondu *imagí* .
 
-4. Změňte adresu URL na *http://&lt;ip-adresu&gt;:8080/video/test.htm*, nahrazení &lt;ip adresy&gt; vaší IP adresou a měli byste vidět něco jako v následujícím příkladu:
+4. Změňte adresu URL na *http://&lt;IP-address&gt;: 8080/video/test.htm*, nahraďte &lt;&gt; IP adresu IP adresou a měli byste vidět něco jako v následujícím příkladu:
 
     ![Testování adresy URL videa v aplikační bráně](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
 
-   Naslouchací proces na portu 8080 směruje tento požadavek do fondu back-endu *videa.*
+   Naslouchací proces na portu 8080 směruje tento požadavek do fondu back-endu *videa* .
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Povolení ukončení tls v bráně aplikace Azure](application-gateway-backend-ssl.md)
+- [Povolení koncového šifrování TLS v Azure Application Gateway](application-gateway-backend-ssl.md)

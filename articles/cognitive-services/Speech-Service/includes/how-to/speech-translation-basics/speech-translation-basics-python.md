@@ -5,23 +5,23 @@ ms.topic: include
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: 17d8c0157fcd478d01452167d240fb67daeeda5b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399616"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že máte účet Azure a předplatné služby Rozpoznávání řeči. Pokud nemáte účet a předplatné, [vyzkoušejte bezplatnou službu Řeč](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Než budete moci něco udělat, budete muset nainstalovat sadu Speech SDK. V závislosti na platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">Získat řeč <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> řeči článku sady Speech SDK.
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle pokynů v části <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/speech-sdk#get-the-speech-sdk" target="_blank">získání sady Speech SDK <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v článku věnovaném sadě Speech SDK.
 
 ## <a name="import-dependencies"></a>Importovat závislosti
 
-Chcete-li spustit příklady v tomto `import` článku, uveďte následující příkazy v horní části souboru kódu pythonu.
+Chcete-li spustit příklady v tomto článku, přidejte následující `import` příkazy v horní části souboru kódu Pythonu.
 
 ```python
 import os
@@ -30,7 +30,7 @@ import azure.cognitiveservices.speech as speechsdk
 
 ## <a name="sensitive-data-and-environment-variables"></a>Citlivá data a proměnné prostředí
 
-Příklad zdrojového kódu v tomto článku závisí na proměnných prostředí pro ukládání citlivých dat, jako je například klíč a oblast odběru prostředků řeči. Soubor kódu pythonu obsahuje dvě hodnoty, které jsou přiřazeny `SPEECH__SUBSCRIPTION__KEY` `SPEECH__SERVICE__REGION`z proměnných prostředí hostitelských počítačů, a to a . Obě tyto proměnné jsou v globálním oboru, takže jsou přístupné v rámci definice funkce souboru kódu. Další informace o proměnných prostředí naleznete v [tématu proměnné prostředí a konfigurace aplikace](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
+Ukázkový zdrojový kód v tomto článku závisí na proměnných prostředí pro ukládání citlivých dat, jako je klíč a oblast předplatného prostředku pro rozpoznávání řeči. Soubor kódu Pythonu obsahuje dvě hodnoty, které jsou přiřazeny z proměnných prostředí hostitelských počítačů, `SPEECH__SUBSCRIPTION__KEY` konkrétně `SPEECH__SERVICE__REGION`a. Obě tyto proměnné jsou v globálním oboru, takže jsou přístupné v rámci definice funkce souboru kódu. Další informace o proměnných prostředí naleznete v tématu [proměnné prostředí a konfigurace aplikace](../../../../cognitive-services-security.md#environment-variables-and-application-configuration).
 
 ```python
 speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ['SPEECH__SERVICE__REGION']
@@ -38,19 +38,19 @@ speech_key, service_region = os.environ['SPEECH__SUBSCRIPTION__KEY'], os.environ
 
 ## <a name="create-a-speech-translation-configuration"></a>Vytvoření konfigurace překladu řeči
 
-Chcete-li volat službu Řeč pomocí sady Speech [`SpeechTranslationConfig`][config]SDK, je třeba vytvořit . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechTranslationConfig`][config]. Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
 
 > [!TIP]
-> Bez ohledu na to, zda provádíte rozpoznávání řeči, syntézu řeči, překlad nebo záměr rozpoznávání, budete vždy vytvořit konfiguraci.
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
 Existuje několik způsobů, jak můžete inicializovat [`SpeechTranslationConfig`][config]:
 
-* S předplatným: předat klíč a přidružené oblasti.
-* S koncovým bodem: předají v koncovém bodě služby Řeči. Klíč nebo autorizační token je volitelný.
-* S hostitelem: předat adresu hostitele. Klíč nebo autorizační token je volitelný.
-* S tokenem autorizace: předavte autorizační token a přidruženou oblast.
+* S předplatným: předejte klíč a přidruženou oblast.
+* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
+* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
+* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Podívejme se na to, [`SpeechTranslationConfig`][config] jak se vytvoří pomocí klíče a oblasti. Na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) najdete identifikátor oblasti.
+Pojďme se podívat, jak [`SpeechTranslationConfig`][config] se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```python
 from_language, to_language = 'en-US', 'de'
@@ -60,9 +60,9 @@ def translate_speech_to_text():
             subscription=speech_key, region=service_region)
 ```
 
-## <a name="change-source-language"></a>Změna zdrojového jazyka
+## <a name="change-source-language"></a>Změnit jazyk zdroje
 
-Jednou z běžných úloh překladu řeči je určení vstupního (nebo zdrojového) jazyka. Podívejme se na to, jak byste změnili vstupní jazyk na italštinu. V kódu, interakci [`SpeechTranslationConfig`][config] s instancí, `speech_recognition_language` přiřazení k vlastnosti.
+Jedním z běžných úloh překladu řeči je zadání vstupu (nebo zdrojového) jazyka. Pojďme se podívat, jak byste změnili vstupní jazyk na italštinu. Ve vašem kódu můžete pracovat s [`SpeechTranslationConfig`][config] instancí a přiřazovat k `speech_recognition_language` vlastnosti.
 
 ```python
 def translate_speech_to_text():
@@ -73,11 +73,11 @@ def translate_speech_to_text():
     translation_config.speech_recognition_language = from_language
 ```
 
-Vlastnost [`speech_recognition_language`][recognitionlang] očekává řetězec formátu jazykového národního prostředí. Libovolnou hodnotu můžete zadat ve **sloupci Národní prostředí** v seznamu podporovaných [národních prostředí/jazyků](../../../language-support.md).
+[`speech_recognition_language`][recognitionlang] Vlastnost očekává řetězec formátu národního prostředí jazyka. Můžete zadat libovolnou hodnotu ve sloupci **locale (národní prostředí** ) v seznamu podporovaných [národních prostředí a jazyků](../../../language-support.md).
 
-## <a name="add-translation-language"></a>Přidání jazyka překladu
+## <a name="add-translation-language"></a>Přidat jazyk překladu
 
-Dalším běžným úkolem překladu řeči je určení cílových jazyků překladu, je vyžadovánalespoň jeden, ale násobky jsou podporovány. V následujícím fragmentu kódu, francouzština a němčina jako cíle překladového jazyka.
+Dalším běžným úkolem překladu řeči je určit cílový jazyk překladu, minimálně jeden je povinný, ale podporují se násobení. V následujícím fragmentu kódu jsou francouzština i němčina jako cíle překladu jazyka.
 
 ```python
 def translate_speech_to_text():
@@ -91,13 +91,13 @@ def translate_speech_to_text():
     translation_config.add_target_language("de")
 ```
 
-Při každém [`add_target_language`][addlang]volání je určen nový cílový jazyk překladu. Jinými slovy, když je rozpoznávání řeči ze zdrojového jazyka, každý cílový překlad je k dispozici jako součást výsledné operace překladu.
+Při každém volání na [`add_target_language`][addlang]je určen nový cílový jazyk překladu. Jinými slovy, pokud je rozpoznávání řeči rozpoznáno ze zdrojového jazyka, je každý cílový překlad k dispozici jako součást výsledné operace překladu.
 
-## <a name="initialize-a-translation-recognizer"></a>Inicializovat nástroj pro rozpoznávání překladů
+## <a name="initialize-a-translation-recognizer"></a>Inicializovat Nástroj pro rozpoznávání překladu
 
-Po vytvoření [`SpeechTranslationConfig`][config]je dalším krokem inicializaci . [`TranslationRecognizer`][recognizer] Když inicializujete [`TranslationRecognizer`][recognizer], budete ji muset `translation_config`předat . Objekt konfigurace poskytuje pověření, která služba rozpoznávání řeči vyžaduje k ověření vašeho požadavku.
+Po vytvoření [`SpeechTranslationConfig`][config]je dalším krokem inicializace [`TranslationRecognizer`][recognizer]. Když inicializujete [`TranslationRecognizer`][recognizer], budete ho muset předat `translation_config`. Objekt konfigurace poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
 
-Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu zařízení, [`TranslationRecognizer`][recognizer] mělo by vypadat takto:
+Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu vašeho zařízení, [`TranslationRecognizer`][recognizer] mělo by to vypadat takto:
 
 ```python
 def translate_speech_to_text():
@@ -111,12 +111,12 @@ def translate_speech_to_text():
             translation_config=translation_config)
 ```
 
-Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`][audioconfig] a `audio_config` zadat parametr při [`TranslationRecognizer`][recognizer]inicializaci aplikace .
+Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`][audioconfig] a zadat `audio_config` parametr při inicializaci. [`TranslationRecognizer`][recognizer]
 
 > [!TIP]
-> [Přečtěte si, jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
 
-Nejprve budete odkazovat `AudioConfig` na objekt takto:
+Nejprve na `AudioConfig` objekt odkazujete následujícím způsobem:
 
 ```python
 def translate_speech_to_text():
@@ -132,7 +132,7 @@ def translate_speech_to_text():
             translation_config=translation_config, audio_config=audio_config)
 ```
 
-Pokud chcete místo mikrofonu zadat zvukový soubor, budete muset zadat `audioConfig`soubor . Však při vytváření [`AudioConfig`][audioconfig], namísto `use_default_microphone=True`volání s , `filename="path-to-file.wav"` budete `filename` volat s a zadat parametr.
+Pokud chcete místo používání mikrofonu zadat zvukový soubor, budete ho muset ještě zadat `audioConfig`. Pokud však [`AudioConfig`][audioconfig]vytvoříte místo volání `use_default_microphone=True`pomocí, zavoláte `filename="path-to-file.wav"` a uvedete `filename` parametr.
 
 ```python
 def translate_speech_to_text():
@@ -150,7 +150,7 @@ def translate_speech_to_text():
 
 ## <a name="translate-speech"></a>Překlad řeči
 
-Chcete-li přeložit řeč, sada Speech SDK spoléhá na mikrofon nebo vstup zvukového souboru. Rozpoznávání řeči dochází před překladem řeči. Po inicializování všech objektů zavolejte funkci rozpoznat jednou a získejte výsledek.
+K překladu řeči sada Speech SDK závisí na mikrofonu nebo na vstupu zvukového souboru. K rozpoznávání řeči dojde před překladem řeči. Po inicializaci všech objektů zavolejte funkci rozpoznávání – jednou a získejte výsledek.
 
 ```python
 import os
@@ -187,18 +187,18 @@ def get_result_text(reason, result):
 translate_speech_to_text()
 ```
 
-Další informace o převodu řeči na text naleznete [v základech rozpoznávání řeči](../../../speech-to-text-basics.md).
+Další informace o převodu řeči na text najdete v tématu [základy rozpoznávání řeči](../../../speech-to-text-basics.md).
 
-## <a name="synthesize-translations"></a>Syntetizovat překlady
+## <a name="synthesize-translations"></a>Překlady pro syntetizátory
 
-Po úspěšném rozpoznávání řeči a překladu výsledek obsahuje všechny překlady ve slovníku. Klíč [`translations`][translations] slovníku je cílový překladový jazyk a hodnota je přeložený text. Rozpoznaná řeč může být přeložena a poté syntetizována v jiném jazyce (řeč na řeč).
+Po úspěšném rozpoznání a překladu řeči výsledek obsahuje všechny překlady ve slovníku. Klíč [`translations`][translations] slovníku je cílový jazyk překladu a hodnota je přeložený text. Rozpoznané rozpoznávání řeči je možné přeložit a pak syntetizovat v jiném jazyce (převod řeči na řeč).
 
-### <a name="event-based-synthesis"></a>Syntéza založená na událostech
+### <a name="event-based-synthesis"></a>Shrnutí založené na událostech
 
-Objekt `TranslationRecognizer` zpřístupňuje `Synthesizing` událost. Událost je několikrát vyvolána a poskytuje mechanismus pro načtení syntetizovaného zvuku z výsledku rozpoznávání překladu. Pokud překládáte do více jazyků, přečtěte si [informace o ruční syntéze](#manual-synthesis). Zadejte hlas syntézy [`voice_name`][voicename] přiřazením a poskytnout `Synthesizing` obslužnou rutinu události pro událost, získat zvuk. Následující příklad uloží přeložený zvuk jako soubor *WAV.*
+`TranslationRecognizer` Objekt zpřístupňuje `Synthesizing` událost. Událost je několikrát aktivována a poskytuje mechanismus pro načtení syntetizového zvuku z výsledku rozpoznávání překladu. Pokud překládáte do více jazyků, přečtěte si téma [Ruční syntéza](#manual-synthesis). Pomocí přiřazení [`voice_name`][voicename] a poskytněte obslužné rutiny události pro `Synthesizing` událost a Stáhněte si zvuk. V následujícím příkladu se přeložený zvuk uloží jako soubor *. wav* .
 
 > [!IMPORTANT]
-> Syntéza založená na událostech funguje pouze s jedním překladem, **nepřidávejte** více cílových jazyků překladu. Kromě toho [`voice_name`][voicename] by měl být stejný jazyk jako cílový jazyk překladu, například; `"de"` mohl mapovat na `"de-DE-Hedda"`.
+> Syntéza založená na událostech funguje pouze s jedním překladem **,** nepřidává více cílových jazyků překladu. Kromě toho [`voice_name`][voicename] by měl být stejný jazyk jako cílový jazyk překladu, například; `"de"` lze namapovat `"de-DE-Hedda"`na.
 
 ```python
 import os
@@ -252,7 +252,7 @@ translate_speech_to_text()
 
 ### <a name="manual-synthesis"></a>Ruční syntéza
 
-Slovník [`translations`][translations] lze použít k syntéze zvuku z překladového textu. Iterovat prostřednictvím každého překladu a syntetizovat překlad. Při vytváření `SpeechSynthesizer` instance `SpeechConfig` musí mít objekt [`speech_synthesis_voice_name`][speechsynthesisvoicename] svou vlastnost nastavenou na požadovaný hlas. Následující příklad překládá do pěti jazyků a každý překlad je pak syntetizován do zvukového souboru v odpovídajícím neurálním jazyce.
+[`translations`][translations] Slovník lze použít k syntetizování zvuku z textu překladu. Iterujte každým překladem a syntetizujte tento překlad. Při vytváření `SpeechSynthesizer` instance musí `SpeechConfig` objekt mít [`speech_synthesis_voice_name`][speechsynthesisvoicename] vlastnost nastavenou na požadovaný hlas. Následující příklad se přeloží na pět jazyků a každý překlad se pak syntetizuje do zvukového souboru v odpovídajícím neuronové jazyce.
 
 ```python
 import os
@@ -300,7 +300,7 @@ def synthesize_translations(result):
 translate_speech_to_text()
 ```
 
-Další informace o syntéze řeči naleznete [v základech syntézy řeči](../../../text-to-speech-basics.md).
+Další informace o syntézě řeči najdete [v tématu Základy funkce pro syntézu řeči](../../../text-to-speech-basics.md).
 
 [config]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.translation.speechtranslationconfig?view=azure-python
 [audioconfig]: https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.audio.audioconfig?view=azure-python

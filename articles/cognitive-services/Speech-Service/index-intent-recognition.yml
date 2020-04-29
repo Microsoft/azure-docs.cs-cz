@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace k rozpoznávání záměru
-summary: Záměr rozpoznávání se službami rozpoznávání řeči a jazyka (LUIS), umožňuje přepis zvukových proudů v reálném čase do textu při identifikaci záměru a entity.
+summary: Rozpoznávání záměrů pomocí služeb Speech a Language Understanding (LUIS) umožňuje přepis zvukových streamů v reálném čase na text a při určování záměrů a entit.
 metadata:
-  title: Dokumentace k rozpoznávání záměru – kurzy, odkaz na rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace k rozpoznávání záměrů – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,19 +12,19 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401491"
 landingContent:
-- title: O uznání záměru
+- title: O rozpoznávání záměrů
   linkLists:
   - linkListType: quickstart
     links:
     - text: Rozpoznávání řeči, záměru a entit
       url: quickstarts/intent-recognition.md
-- title: Vývoj s rozpoznáváním záměru
+- title: Vývoj s rozpoznáváním záměrů
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -40,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: Podpora jazyků
       url: ../luis/luis-language-support.md#languages-supported
-    - text: Ceny za rozhodce za záměr
+    - text: Ceny za rozpoznávání záměrů
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

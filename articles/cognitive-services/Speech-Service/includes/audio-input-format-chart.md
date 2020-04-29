@@ -1,5 +1,5 @@
 ---
-title: Formát vstupu zvuku
+title: Zvukový vstup ve formátu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: trevorbye
@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/16/2020
 ms.author: trbye
 ms.openlocfilehash: b33e131acda0bc7ba094427f6d68cce73bb4142f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400542"
 ---
 ## <a name="supported-audio-input-format"></a>Podporovaný formát zvukového vstupu

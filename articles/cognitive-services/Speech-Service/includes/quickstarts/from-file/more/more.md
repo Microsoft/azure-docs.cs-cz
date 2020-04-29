@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 5ebd56e102ab2ac113e509ea44966aa5f67e9b75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400443"
 ---
-## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
+## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 
-Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovacím jazyce neuviděli rychlý start. Nebojte se, máme další materiály rychlého startu a ukázky kódu, které jsou k dispozici na GitHubu. V tabulce najdete tu správnou ukázku pro váš programovací jazyk a kombinaci platformy a operačního systému.
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme další materiály pro rychlý Start a ukázky kódu dostupné na GitHubu. Pomocí tabulky Najděte správnou ukázku kombinace programovacího jazyka a platformy/OS.
 
 | Jazyk | Další rychlé starty | Ukázky kódů |
 |--|--|--|
-| C# | [Z mikrofonu][1-mic], [Z blob][1-blob] | [Rozhraní .NET Framework][dotnet], [.NET Core][netcore], [UPW][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Z mikrofonu][2-mic], [Z blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Z mikrofonu][3-mic], [Z blob][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Prohlížeč z mikrofonu][js-browser], [Node.js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS z mikrofonu][obj-iOS-qck], [macOS z mikrofonu][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Z mikrofonu][4-mic], [Z blob][4-blob] | [Windows, Linux, macOS][python] |
-| Swift | [iOS z mikrofonu][swift-iOS-qck], [macOS z mikrofonu][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Z MIC][1-mic], [od objektu BLOB][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Z MIC][2-mic], [od objektu BLOB][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Z MIC][3-mic], [od objektu BLOB][3-blob] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | [Prohlížeč z MIC][js-browser], [Node. js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [iOS od mic][obj-iOS-qck], [MacOS od mic][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Z MIC][4-mic], [od objektu BLOB][4-blob] | [Windows, Linux, macOS][python] |
+| Swift | [iOS od mic][swift-iOS-qck], [MacOS od mic][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-mic]: ../../../../quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp
 [1-blob]: ../../../../quickstarts/from-blob.md?pivots=programming-language-csharp

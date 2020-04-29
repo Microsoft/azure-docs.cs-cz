@@ -1,7 +1,7 @@
 ---
-title: Vlastní dovednost nástroje Pro rozpoznávání formulářů (C#)
+title: Vlastní dovednost pro rozpoznávání formulářů (C#)
 titleSuffix: Azure Cognitive Search
-description: Zjistěte, jak vytvořit vlastní dovednosti nástroje pro rozpoznávání formulářů pomocí c# a sady Visual Studio.
+description: Naučte se, jak vytvořit vlastní dovednosti pro rozpoznávání formulářů pomocí C# a Visual studia.
 manager: nitinme
 author: PatrickFarley
 ms.author: pafarley
@@ -9,51 +9,51 @@ ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
 ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81274572"
 ---
-# <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti nástroje pro rozpoznávání formulářů
+# <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
-V tomto příkladu dovedností Azure Cognitive Search se dozvíte, jak vytvořit vlastní dovednosti nástroje pro rozpoznávání formulářů pomocí jazyka C# a sady Visual Studio. Nástroj pro rozpoznávání formulářů analyzuje dokumenty a extrahuje dvojice klíč/hodnota a data tabulky. Zabalením nástroje pro rozpoznávání formulářů do [vlastního rozhraní dovedností](cognitive-search-custom-skill-interface.md)můžete tuto funkci přidat jako krok v kanálu obohacení od konce. Kanál pak můžete načíst dokumenty a provést další transformace.
+V tomto příkladu Azure Kognitivní hledání dovednosti se dozvíte, jak vytvořit vlastní dovednosti pro rozpoznávání formulářů pomocí C# a Visual studia. Nástroj pro rozpoznávání formulářů analyzuje dokumenty a extrahuje páry klíč/hodnota a tabulková data. Když rozbalíte Nástroj pro rozpoznávání formulářů do [vlastního rozhraní dovedností](cognitive-search-custom-skill-interface.md), můžete tuto funkci přidat jako krok v rámci kompletního kanálu pro rozšíření. Kanál pak může načíst dokumenty a dělat další transformace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolné vydání).
-- Nejméně pět forem stejného typu. Můžete použít ukázková data dodaný s touto příručkou.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (libovolná edice).
+- Nejméně pět forem stejného typu. Můžete použít ukázková data uvedená v této příručce.
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../cognitive-services/form-recognizer/includes/create-resource.md)]
 
 ## <a name="train-your-model"></a>Trénování vašeho modelu
 
-Před použitím této dovednosti budete muset trénovat model nástroje pro rozpoznávání formulářů se vstupními formuláři. Postupujte podle [cURL rychlý start](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) se dozvíte, jak trénovat model. Můžete použít ukázkové formuláře uvedené v tomto rychlém startu nebo můžete použít vlastní data. Jakmile je model trénovaný, zkopírujte jeho hodnotu ID do zabezpečeného umístění.
+Předtím, než použijete tuto dovednost, budete muset vytvořit model rozpoznávání formulářů se vstupními formuláři. Postupujte podle pokynů pro [rychlý Start](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract) a Naučte se naučit model. Můžete použít ukázkové formuláře poskytované v rámci tohoto rychlého startu nebo můžete použít vlastní data. Po vyškolení modelu zkopírujte jeho hodnotu ID do zabezpečeného umístění.
 
 ## <a name="set-up-the-custom-skill"></a>Nastavení vlastní dovednosti
 
-Tento kurz používá projekt [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) v úložišti [GitHub Azure Search Power Skills.](https://github.com/Azure-Samples/azure-search-power-skills) Klonujte toto úložiště do místního počítače a přejděte na **Vision/AnalyzeForm/** pro přístup k projektu. Potom _otevřete AnalyzeForm.csproj_ v sadě Visual Studio. Tento projekt vytvoří prostředek funkce Azure, který splňuje [vlastní rozhraní dovedností](cognitive-search-custom-skill-interface.md) a lze použít pro azure cognitive search obohacení. Trvá formulář dokumenty jako vstupy a výstupy (jako text) klíč/hodnota dvojice, které zadáte.
+V tomto kurzu se používá projekt [AnalyzeForm](https://github.com/Azure-Samples/azure-search-power-skills/tree/master/Vision/AnalyzeForm) v úložišti GitHub [Azure Searchch dovedností pro napájení](https://github.com/Azure-Samples/azure-search-power-skills) . Naklonujte toto úložiště do místního počítače a přejděte ke službě **Vision/AnalyzeForm/** , abyste měli přístup k projektu. Pak otevřete _AnalyzeForm. csproj_ v aplikaci Visual Studio. Tento projekt vytvoří prostředek funkce Azure, který splňuje [vlastní dovednostní rozhraní](cognitive-search-custom-skill-interface.md) a dá se použít pro rozšíření Azure kognitivní hledání. Přebírá dokumenty jako vstupy a výstupy IT (jako text) páry klíč/hodnota, které zadáte.
 
-Nejprve přidejte proměnné prostředí na úrovni projektu. Vyhledejte projekt **AnalyzeForm** v levém podokně, klepněte na něj pravým tlačítkem myši a vyberte **příkaz Vlastnosti**. V okně **Vlastnosti** klikněte na kartu **Ladění** a vyhledejte pole **Proměnné prostředí.** Chcete-li přidat následující proměnné, klepněte na **tlačítko Přidat:**
+Nejprve přidejte proměnné prostředí na úrovni projektu. V levém podokně vyhledejte projekt **AnalyzeForm** , klikněte na něj pravým tlačítkem myši a vyberte možnost **vlastnosti**. V okně **vlastnosti** klikněte na kartu **ladění** a poté vyhledejte pole **proměnné prostředí** . Kliknutím na **Přidat** přidejte následující proměnné:
 * `FORMS_RECOGNIZER_ENDPOINT_URL`s hodnotou nastavenou na adresu URL koncového bodu.
 * `FORMS_RECOGNIZER_API_KEY`s hodnotou nastavenou na klíč předplatného.
-* `FORMS_RECOGNIZER_MODEL_ID`s hodnotou nastavenou na ID modelu, který jste trénovali.
-* `FORMS_RECOGNIZER_RETRY_DELAY`s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, který program bude čekat před opakováním dotazu.
-* `FORMS_RECOGNIZER_MAX_ATTEMPTS`s hodnotou nastavenou na 100. Tato hodnota je počet, kolikrát program bude dotaz služby při pokusu o získání úspěšné odpovědi.
+* `FORMS_RECOGNIZER_MODEL_ID`s hodnotou nastavenou na ID modelu, který jste vyškole.
+* `FORMS_RECOGNIZER_RETRY_DELAY`s hodnotou nastavenou na 1000. Tato hodnota je čas v milisekundách, po který bude program čekat před opakováním dotazu.
+* `FORMS_RECOGNIZER_MAX_ATTEMPTS`s hodnotou nastavenou na 100. Tato hodnota představuje počet pokusů, kolikrát program dotazuje službu při pokusu o získání úspěšné odpovědi.
 
-Dále _otevřete AnalyzeForm.cs_ `fieldMappings` a vyhledejte proměnnou, která odkazuje na soubor *field-mappings.json.* Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z formulářů, a vlastní popisek pro každý klíč. Například hodnota `{ "Address:", "address" }, { "Invoice For:", "recipient" }` znamená, že skript uloží pouze hodnoty `Address:` `Invoice For:` pro zjištěné a pole `"address"` a `"recipient"`bude tyto hodnoty označovat písmenem a) a .
+Potom otevřete _AnalyzeForm.cs_ a najděte `fieldMappings` proměnnou, která odkazuje na soubor *. JSON pole-Mapping. JSON* . Tento soubor (a proměnná, která na něj odkazuje) definuje seznam klíčů, které chcete extrahovat z vašich formulářů, a vlastní popisek pro každý klíč. `{ "Address:", "address" }, { "Invoice For:", "recipient" }` Například hodnota znamená, že skript uloží pouze hodnoty pro zjištěné `Address:` a `Invoice For:` pole a označí tyto hodnoty pomocí `"address"` a `"recipient"`v uvedeném pořadí.
 
-Nakonec si `contentType` všimněte proměnné. Tento skript spouští daný model nástroje pro rozpoznávání formulářů ve vzdálených `application/json`dokumentech, na které odkazuje adresa URL, takže typ obsahu je . Pokud chcete analyzovat místní soubory zahrnutím jejich bajtových datových proudů do `contentType` požadavků HTTP, budete muset změnit [příslušný typ MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) pro váš soubor.
+Nakonec si poznamenejte `contentType` proměnnou. Tento skript spustí daný model rozpoznávání formulářů na vzdálených dokumentech, na které odkazuje adresa URL, takže typ obsahu je `application/json`. Pokud chcete analyzovat místní soubory zahrnutím jejich datových proudů do požadavků HTTP, budete muset změnit `contentType` na příslušný [typ MIME](https://developer.mozilla.org/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Complete_list_of_MIME_types) pro váš soubor.
 
-## <a name="test-the-function-from-visual-studio"></a>Testování funkce z aplikace Visual Studio
+## <a name="test-the-function-from-visual-studio"></a>Testování funkce ze sady Visual Studio
 
-Po úpravě projektu ho uložte a nastavte projekt **AnalyzeForm** jako projekt po spuštění v sadě Visual Studio (pokud ještě není nastaven). Potom stisknutím **klávesy F5** spusťte funkci v místním prostředí. Pomocí služby REST, jako [je Pošťák,](https://www.postman.com/) volejte funkci.
+Po úpravě projektu ho uložte a nastavte projekt **AnalyzeForm** jako spouštěný projekt v sadě Visual Studio (Pokud už není nastavený). Potom stisknutím klávesy **F5** spusťte funkci v místním prostředí. Použijte službu REST, jako je například [post](https://www.postman.com/) , pro volání funkce.
 
 ### <a name="http-request"></a>Požadavek HTTP
 
-Provedete následující žádost o volání funkce.
+Pro volání funkce provedete následující požadavek.
 
 ```HTTP
 POST https://localhost:7071/api/analyze-form
@@ -61,7 +61,7 @@ POST https://localhost:7071/api/analyze-form
 
 ### <a name="request-body"></a>Text požadavku
 
-Začněte se šablonou těla požadavku níže.
+Začněte s níže uvedenou šablonou textu žádosti.
 
 ```json
 {
@@ -77,19 +77,19 @@ Začněte se šablonou těla požadavku níže.
 }
 ```
 
-Zde budete muset zadat adresu URL formuláře, který má stejný typ jako formuláře, se kterými jste trénovali. Pro účely testování můžete použít jeden z vašich tréninkových formulářů. Pokud jste postupovali podle rychlého startu cURL, vaše formuláře se budou nacházet v účtu úložiště objektů blob Azure. Otevřete Průzkumníka úložiště Azure, vyhledejte soubor formuláře, klikněte na něj pravým tlačítkem myši a vyberte **získat sdílený přístupový podpis**. Další dialogové okno bude poskytovat adresu URL a token SAS. Zadejte tyto řetězce `"formUrl"` `"formSasToken"` do polí a v těle požadavku.
+Tady budete muset zadat adresu URL formuláře, který má stejný typ jako formuláře, které jste si vystavili. Pro účely testování můžete použít jeden z vašich školicích formulářů. Pokud jste postupovali s rychlým startem, vaše formuláře se budou nacházet v účtu služby Azure Blob Storage. Otevřete Průzkumník služby Azure Storage, vyhledejte soubor formuláře, klikněte na něj pravým tlačítkem myši a vyberte **získat sdílený přístupový podpis**. V dalším dialogovém okně bude k dispozici adresa URL a token SAS. Zadejte tyto řetězce do polí `"formUrl"` a `"formSasToken"` v textu žádosti, v uvedeném pořadí.
 
 > [!div class="mx-imgBorder"]
-> ![Průzkumník úložiště Azure; je vybrán dokument pdf](media/cognitive-search-skill-form/form-sas.png)
+> ![Průzkumník služby Azure Storage; je vybraný dokument PDF.](media/cognitive-search-skill-form/form-sas.png)
 
-Pokud chcete analyzovat vzdálený dokument, který není v úložišti objektů blob Azure, vložte jeho adresu URL do `"formUrl"` pole a ponechte `"formSasToken"` pole prázdné.
+Pokud chcete analyzovat vzdálený dokument, který není v úložišti objektů BLOB v Azure, vložte jeho adresu URL do `"formUrl"` pole a nechejte `"formSasToken"` pole prázdné.
 
 > [!NOTE]
-> Když je dovednost integrována do sady dovedností, adresa URL a token budou poskytnuty kognitivním vyhledáváním.
+> Když je dovednost integrovaná v dovednosti, adresa URL a token se poskytne Kognitivní hledání.
 
 ### <a name="response"></a>Odpověď
 
-Měli byste vidět odpověď podobnou následujícímu příkladu:
+Měla by se zobrazit odpověď podobná následujícímu příkladu:
 
 ```json
 {
@@ -109,17 +109,17 @@ Měli byste vidět odpověď podobnou následujícímu příkladu:
 
 ## <a name="publish-the-function-to-azure"></a>Publikování funkce do Azure
 
-Když jste spokojeni s chováním funkce, můžete ji publikovat.
+Až budete s chováním funkce spokojeni, můžete ho publikovat.
 
-1. V **Průzkumníku řešení** v sadě Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte **publikovat**. Zvolte **Vytvořit novou** > **publikování**.
-1. Pokud jste visual studio ještě nepřipojili ke svému účtu Azure, vyberte **Přidat účet....**
-1. Postupujte podle výzev na obrazovce. Zadejte jedinečný název služby aplikace, předplatného Azure, skupiny prostředků, plánu hostování a účtu úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a nový účet úložiště, pokud je ještě nemáte. Až budete hotovi, vyberte **Vytvořit**.
-1. Po dokončení nasazení si všimněte adresy URL webu. Tato adresa URL je adresa vaší funkční aplikace v Azure. Uložte jej do dočasného umístění.
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte do skupiny `AnalyzeForm` prostředků a vyhledejte funkci, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitelů. Zkopírujte *výchozí* klíč hostitele a uložte jej do dočasného umístění.
+1. V **Průzkumník řešení** v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a vyberte **publikovat**. Vyberte **vytvořit nové** > **publikování**.
+1. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet....**
+1. Postupujte podle výzev na obrazovce. Zadejte jedinečný název pro službu App Service, předplatné Azure, skupinu prostředků, plán hostování a účet úložiště, který chcete použít. Můžete vytvořit novou skupinu prostředků, nový plán hostování a nový účet úložiště, pokud je ještě nemáte. Až budete hotovi, vyberte **vytvořit**.
+1. Po dokončení nasazení si všimněte adresy URL webu. Tato adresa URL je adresa vaší aplikace Function App v Azure. Uložte ho do dočasného umístění.
+1. V [Azure Portal](https://portal.azure.com)přejděte do skupiny prostředků a vyhledejte `AnalyzeForm` funkci, kterou jste publikovali. V části **Spravovat** byste měli vidět klíče hostitele. Zkopírujte *výchozí* klíč hostitele a uložte ho do dočasného umístění.
 
-## <a name="connect-to-your-pipeline"></a>Připojení k potrubí
+## <a name="connect-to-your-pipeline"></a>Připojení k vašemu kanálu
 
-Chcete-li tuto dovednost použít v kanálu kognitivního vyhledávání, budete muset do sady dovedností přidat definici dovedností. Následující blok JSON je ukázková definice dovedností (měli byste aktualizovat vstupy a výstupy tak, aby odrážely vaše konkrétní scénář a prostředí skillset). Nahraďte `AzureFunctionEndpointUrl` adresu URL `AzureFunctionDefaultHostKey` funkce a nahraďte ji hostitelským klíčem.
+Pokud chcete tuto dovednost použít v kanálu Kognitivní hledání, budete muset do dovednosti přidat definici dovedností. Následující blok JSON je ukázková definice dovedností (vaše vstupy a výstupy byste měli aktualizovat tak, aby odrážely konkrétní scénář a dovednosti prostředí). Nahraďte `AzureFunctionEndpointUrl` adresou URL funkce a nahraďte `AzureFunctionDefaultHostKey` klíčem hostitele.
 
 ```json
 { 
@@ -162,10 +162,10 @@ Chcete-li tuto dovednost použít v kanálu kognitivního vyhledávání, budete
 
 ## <a name="next-steps"></a>Další kroky
 
-V této příručce jste vytvořili vlastní dovednosti ze služby Azure Form Recognizer. Další informace o vlastních dovednostech najdete v následujících zdrojích. 
+V této příručce jste vytvořili vlastní dovednost ze služby pro rozpoznávání formulářů Azure. Další informace o vlastních dovednostech najdete v následujících zdrojích. 
 
-* [Azure Search Power Skills: úložiště vlastních dovedností](https://github.com/*zure-Samples/azure-search-power-skills)
-* [Přidání vlastní chudinské dovednosti do kanálu obohacení umělou ai.](cognitive-search-custom-skill-interface.md)
+* [Azure Search schopnosti napájení: úložiště vlastních dovedností](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 * [Definování dovedností](cognitive-search-defining-skillset.md)
-* [Vytvoření sady dovedností (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
-* [Mapovaná pole](cognitive-search-output-field-mapping.md)
+* [Vytvoření dovednosti (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [Obohacená pole mapy](cognitive-search-output-field-mapping.md)

@@ -5,37 +5,37 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: ccompy
 ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312846"
 ---
-* Víceklientské systémy, které podporují celou řadu cenových plánů s výjimkou izolované.
-* Prostředí služby App Service Environment, které se nasazuje do vaší virtuální sítě a podporuje aplikace izolovaného cenového plánu.
+* Víceklientské systémy, které podporují celou škálu cenových plánů s výjimkou izolovaného.
+* App Service Environment, který se nasadí do vaší virtuální sítě a podporuje aplikace izolovaného cenového plánu.
 
-Funkce integrace virtuální sítě se používá ve víceklientských aplikacích. Pokud je vaše aplikace v [prostředí Služby app service][ASEintro], pak je už ve virtuální síti a nevyžaduje použití funkce integrace virtuální sítě k dosažení prostředků ve stejné virtuální síti. Další informace o všech síťových funkcích naleznete v tématu [Síťové funkce služby App Service][Networkingfeatures].
+Funkce integrace virtuální sítě se používá ve víceklientské aplikacích. Pokud je vaše aplikace v [App Service Environment][ASEintro], pak už je ve virtuální síti a nevyžaduje použití funkce integrace virtuální sítě k přístupu k prostředkům ve stejné virtuální síti. Další informace o všech funkcích sítě najdete v tématu [App Service síťové funkce][Networkingfeatures].
 
-Integrace virtuální sítě poskytuje vaší aplikaci přístup k prostředkům ve vaší virtuální síti, ale neuděluje příchozí soukromý přístup k vaší aplikaci z virtuální sítě. Přístup k privátnímu webu znamená zpřístupnění aplikace jenom z privátní sítě, například z virtuální sítě Azure. Integrace virtuální sítě se používá jenom k odchozím voláním z vaší aplikace do vaší virtuální sítě. Funkce integrace virtuální sítě se chová jinak, když se používá s virtuální sítí ve stejné oblasti a s virtuální sítí v jiných oblastech. Funkce integrace virtuální sítě má dvě varianty:
+Integrace virtuální sítě poskytuje vaší aplikaci přístup k prostředkům ve vaší virtuální síti, ale neuděluje příchozímu privátnímu přístupu do vaší aplikace z virtuální sítě. Přístup k privátnímu webu znamená, že aplikace je přístupná jenom z privátní sítě, například z Azure Virtual Network. Integrace virtuální sítě se používá jenom pro odchozí volání z vaší aplikace do vaší virtuální sítě. Funkce integrace virtuální sítě se chová odlišně, když se používá u virtuální sítě ve stejné oblasti a virtuální síti v jiných oblastech. Funkce integrace virtuální sítě má dvě varianty:
 
-* **Regionální integrace virtuální sítě:** Když se připojíte k virtuálním sítím Azure Resource Manager ve stejné oblasti, musíte mít vyhrazenou podsíť ve virtuální síti, se kterou integrujete.
-* **Integrace virtuální sítě požadovaná bránou**: Když se připojíte k virtuální síti v jiných oblastech nebo ke klasické virtuální síti ve stejné oblasti, potřebujete bránu virtuální sítě Azure zřízenou v cílové virtuální síti.
+* **Místní integrace virtuální**sítě: když se připojíte k Azure Resource Manager virtuální sítě ve stejné oblasti, musíte mít ve virtuální síti, ve které se integruje, vyhrazenou podsíť.
+* **Brána – požadovaná integrace virtuální**sítě: když se připojíte k virtuální síti v jiných oblastech nebo k klasické virtuální síti ve stejné oblasti, budete potřebovat bránu Azure Virtual Network zřízenou v cílové síti VNET.
 
 Funkce integrace virtuální sítě:
 
-* Vyžadovat cenový plán Standard, Premium, PremiumV2 nebo Elastic Premium.
-* Podpora Protokolů TCP a UDP.
-* Pracujte s aplikacemi azure app service a funkčními aplikacemi.
+* Vyžadovat Cenový tarif Standard, Premium, PremiumV2 nebo elastické úrovně Premium.
+* Podporují protokoly TCP a UDP.
+* Pracujte s Azure App Service aplikacemi a aplikacemi Function App.
 
-Existují některé věci, které integrace virtuální sítě nepodporuje, jako například:
+Integrace virtuální sítě nepodporují, třeba:
 
-* Montáž pohonu.
+* Připojování jednotky.
 * Integrace služby Active Directory.
-* Netbios.
+* Názv.
 
-Integrace virtuální sítě vyžadované bránou poskytuje přístup k prostředkům jenom v cílové virtuální síti nebo v sítích připojených k cílové virtuální síti s partnerským vztahem nebo virtuálními sítěmi. Integrace virtuální sítě vyžadované bránou neumožňuje přístup k prostředkům dostupným napříč připojeními Azure ExpressRoute ani pracuje s koncovými body služby.
+Brána – požadovaná integrace virtuální sítě poskytuje přístup k prostředkům jenom v cílové virtuální síti nebo v sítích připojených k cílové síti VNet s partnerským vztahem nebo VPN. Brána – požadovaná integrace virtuální sítě nepovoluje přístup k prostředkům dostupným v rámci připojení Azure ExpressRoute nebo funguje s koncovými body služby.
 
-Bez ohledu na použitou verzi umožňuje integrace virtuální sítě vaší aplikaci přístup k prostředkům ve vaší virtuální síti, ale neuděluje příchozí soukromý přístup k vaší aplikaci z virtuální sítě. Přístup k privátnímu webu znamená zpřístupnění vaší aplikace jenom z privátní sítě, například z virtuální sítě Azure. Integrace virtuální sítě je jenom pro odchozí volání z vaší aplikace do vaší virtuální sítě.
+Bez ohledu na použitou verzi poskytuje integrace virtuální sítě přístup k prostředkům ve vaší virtuální síti, ale neuděluje příchozímu privátnímu přístupu do vaší aplikace z virtuální sítě. Přístup k soukromému webu znamená, že vaše aplikace bude přístupná jenom z privátní sítě, například z virtuální sítě Azure. Integrace virtuální sítě je jenom pro odchozí volání z vaší aplikace do vaší virtuální sítě.
 
 <!--Links-->
 [ASEintro]: https://docs.microsoft.com/azure/app-service/environment/intro

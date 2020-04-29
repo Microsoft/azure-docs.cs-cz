@@ -1,7 +1,7 @@
 ---
-title: Nasazení modelu pro vlastní řeč – řečovou službu
+title: Nasazení modelu pro službu Custom Speech-Speech
 titleSuffix: Azure Cognitive Services
-description: V tomto dokumentu se dozvíte, jak vytvořit a nasadit koncový bod pomocí portálu vlastní řeči.
+description: V tomto dokumentu se dozvíte, jak vytvořit a nasadit koncový bod pomocí portálu Custom Speech.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,43 +11,43 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402184"
 ---
 # <a name="deploy-a-custom-model"></a>Nasazení vlastního modelu
 
-Po nahrání a kontrole dat, vyhodnocení přesnosti a trénování vlastního modelu můžete nasadit vlastní koncový bod, který se bude používat s aplikacemi, nástroji a produkty. V tomto dokumentu se dozvíte, jak vytvořit a nasadit koncový bod pomocí [portálu vlastní řeči](https://speech.microsoft.com/customspeech).
+Po nahrání a kontrole dat, vyhodnocení přesnosti a školení vlastního modelu můžete nasadit vlastní koncový bod pro použití s aplikacemi, nástroji a produkty. V tomto dokumentu se dozvíte, jak vytvořit a nasadit koncový bod pomocí [portálu Custom Speech](https://speech.microsoft.com/customspeech).
 
 ## <a name="create-a-custom-endpoint"></a>Vytvoření vlastního koncového bodu
 
-Chcete-li vytvořit nový vlastní koncový bod, přihlaste se k [portálu vlastní řeči](https://speech.microsoft.com/customspeech) a vyberte **nasazení** z nabídky Vlastní řeč v horní části stránky. Pokud se jedná o první spuštění, zjistíte, že v tabulce nejsou uvedeny žádné koncové body. Po vytvoření koncového bodu použijete tuto stránku ke sledování každého nasazeného koncového bodu.
+Pokud chcete vytvořit nový vlastní koncový bod, přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech) a v horní části stránky vyberte **nasazení** v nabídce Custom Speech. Pokud se jedná o první spuštění, všimnete si, že v tabulce nejsou uvedeny žádné koncové body. Po vytvoření koncového bodu použijete tuto stránku ke sledování každého nasazeného koncového bodu.
 
-Dále vyberte **Přidat koncový bod** a zadejte **název** a **popis** pro vlastní koncový bod. Pak vyberte vlastní model, který chcete přidružit k tomuto koncovému bodu. Na této stránce můžete také povolit protokolování. Protokolování umožňuje sledovat přenos koncového bodu. Pokud je zakázánprovoz, provoz se neuloží.
+V dalším kroku vyberte **přidat koncový bod** a zadejte **název** a **Popis** vlastního koncového bodu. Pak vyberte vlastní model, který byste chtěli přidružit k tomuto koncovému bodu. Na této stránce můžete také povolit protokolování. Protokolování umožňuje monitorovat provoz koncového bodu. Pokud je tato zakázaná, provoz se neuloží.
 
-![Jak nasadit model](./media/custom-speech/custom-speech-deploy-model.png)
+![Postup nasazení modelu](./media/custom-speech/custom-speech-deploy-model.png)
 
 > [!NOTE]
 > Nezapomeňte přijmout podmínky použití a podrobnosti o cenách.
 
-Dále vyberte **Vytvořit**. Tato akce vás vrátí na stránku **Nasazení.** Tabulka nyní obsahuje položku, která odpovídá vašemu vlastnímu koncovému bodu. Stav koncového bodu zobrazuje jeho aktuální stav. Vytvoření instance nového koncového bodu pomocí vlastních modelů může trvat až 30 minut. Když se stav nasazení změní na **Dokončení**, koncový bod je připraven k použití.
+V dalším kroku vyberte **vytvořit**. Tato akce vrátí na stránku **nasazení** . Tabulka teď obsahuje položku, která odpovídá vašemu vlastnímu koncovému bodu. Stav koncového bodu zobrazuje aktuální stav. Vytvoření instance nového koncového bodu pomocí vlastních modelů může trvat až 30 minut. Když se změní stav nasazení na **dokončeno**, bude koncový bod připravený k použití.
 
-Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace specifické pro koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a ukázkový kód.
+Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Kliknutím na odkaz zobrazíte informace, které jsou specifické pro váš koncový bod, jako je klíč koncového bodu, adresa URL koncového bodu a ukázkový kód.
 
-## <a name="view-logging-data"></a>Zobrazení dat protokolování
+## <a name="view-logging-data"></a>Zobrazit data protokolování
 
-Data protokolování jsou k dispozici ke stažení v části **Podrobnosti o > koncového bodu**.
+Data protokolování jsou k dispozici ke stažení v části **koncový bod > podrobnosti**.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zde se dozvíte, jak používat vlastní [model](how-to-specify-source-language.md).
+* Naučte se používat vlastní model [tady](how-to-specify-source-language.md).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)
 * [Vyhodnocení dat](how-to-custom-speech-evaluate-data.md)
-* [Vyzkoušejte svůj model](how-to-custom-speech-train-model.md)
+* [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)

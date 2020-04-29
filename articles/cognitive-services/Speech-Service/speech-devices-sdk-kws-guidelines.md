@@ -1,7 +1,7 @@
 ---
-title: Pokyny pro pojmenování klíčových slov – služba Speech Service
+title: Pokyny pro pojmenovávání klíčových slov – služba pro rozpoznávání řeči
 titleSuffix: Azure Cognitive Services
-description: Vytvoření efektivního klíčového slova je nezbytné pro zajištění toho, aby vaše zařízení důsledně a přesně reagovalo.
+description: Vytvoření efektivního klíčového slova je důležité pro zajištění, že zařízení bude konzistentně a přesně reagovat.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
 ms.openlocfilehash: c00d27e5e7b7a8d614ce94ea4024b6093669757c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399850"
 ---
 # <a name="guidelines-for-creating-an-effective-keyword"></a>Pokyny pro vytvoření efektivního klíčového slova
 
-Vytvoření efektivního klíčového slova je nezbytné pro zajištění toho, aby vaše zařízení důsledně a přesně reagovalo. Přizpůsobení klíčového slova je účinný způsob, jak odlišit vaše zařízení a posílit vaši značku. V tomto článku se dozvíte některé hlavní zásady pro vytvoření efektivní klíčové slovo.
+Vytvoření efektivního klíčového slova je důležité pro zajištění, že zařízení bude konzistentně a přesně reagovat. Přizpůsobení klíčového slova je efektivní způsob, jak odlišit vaše zařízení a posílit vaše branding. V tomto článku se dozvíte o některých principech identifikátorů GUID pro vytvoření efektivního klíčového slova.
 
-## <a name="choose-an-effective-keyword"></a>Výběr efektivního klíčového slova
+## <a name="choose-an-effective-keyword"></a>Zvolit efektivní klíčové slovo
 
-Při výběru klíčového slova zvažte následující pokyny:
+Při volbě klíčového slova Vezměte v úvahu následující pokyny:
 
 > [!div class="checklist"]
 > * Klíčové slovo by mělo být anglické slovo nebo fráze.
-> * Nemělo by to trvat déle než dvě sekundy.
-> * Slova 4 až 7 slabik fungují nejlépe. Například "Hey, Computer" je dobré klíčové slovo. Jen "Hej" je chudá.
-> * Klíčová slova by se měla řídit běžnými pravidly výslovnosti v angličtině.
-> * Jedinečné nebo dokonce vymyšlené slovo, které se řídí běžnými pravidly výslovnosti angličtiny, může snížit falešně pozitivní výsledky. Například "computerama" může být dobré klíčové slovo.
-> * Nevybírejte společné slovo. Například "jíst" a "jít" jsou slova, která lidé často říkají v běžné konverzaci. Mohou to být falešné spouštěče pro vaše zařízení.
-> * Nepoužívejte klíčové slovo, které může mít alternativní výslovnosti. Uživatelé by museli znát "správnou" výslovnost, aby jejich zařízení reagovalo. Například "509" lze vyslovit "pět nula devět,""pět oh devět," nebo "pět set devět." "R.E.I." lze vyslovit "r-e-i" nebo "ray". "Live" může být vyslovováno "/līv/" nebo "/liv/".
-> * Nepoužívejte speciální znaky, symboly ani číslice. Problematická klíčová slova mohou být například "Go#" a "20 + cats". Nicméně, "jít ostrý" nebo "dvacet plus kočky" může fungovat. Stále můžete používat symboly ve vaší značce a používat marketing a dokumentaci k posílení správné výslovnosti.
+> * Řekněme, že by neměl trvat déle než dvě sekundy.
+> * Slova 4 až 7 slabiky fungují nejlépe. Například "Hey, Computer" je klíčové slovo dobrý. Pouze "Hey" je nekvalitní.
+> * Klíčová slova by měla dodržovat běžná pravidla pro výslovnost angličtiny.
+> * Jedinečné nebo dokonce zavedené slovo, které následuje po běžných pravidlech výslovnosti angličtiny, může snížit falešně pozitivní výsledky. Například "computerama" může být dobrým klíčovým slovem.
+> * Nevybírejte běžné slovo. Například "EAT" a "jít" jsou slova, která lidé v běžné konverzaci často říkají. Pro vaše zařízení můžou být triggery nepravdivé.
+> * Vyhněte se použití klíčového slova, které může mít alternativní výslovnost. Uživatelé by museli znát správné výslovnost, aby zařízení mohla reagovat. Například "509" lze vyslovit "5 0 9", "5 0 9" nebo "509". "R.E.I." lze vyslovit "r-e-i" nebo "Ray". "Živý" může být vyslovný jako "/līv/" nebo "/Liv/".
+> * Nepoužívejte speciální znaky, symboly a číslice. Například "jít #" a "20 + kočky" mohou být problematická klíčová slova. Může se ale stát, že "jít prudce" nebo "dvacet plus kočky". Můžete pořád používat symboly v brandingu a používat marketing a dokumentaci k posílení správné výslovnosti.
 
 > [!NOTE]
-> Pokud jako klíčové slovo zvolíte slovo chráněné ochrannou známkou, ujistěte se, že tuto ochrannou známku vlastníte nebo že máte od vlastníka ochranné známky oprávnění k použití tohoto slova. Společnost Microsoft nenese odpovědnost za žádné právní problémy, které by mohly vzniknout při výběru klíčového slova.
+> Pokud zvolíte klíčové slovo jako klíčové slovo, ujistěte se, že vlastníte tuto ochrannou známku nebo že máte oprávnění od vlastníka ochranné známky, abyste mohli toto slovo použít. Společnost Microsoft není odpovědná za žádné právní problémy, které mohou nastat podle vašeho výběru klíčového slova.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [vytvořit vlastní klíčové slovo pomocí aplikace Speech Studio](speech-devices-sdk-create-kws.md).
+Naučte se [vytvářet vlastní klíčová slova pomocí rozpoznávání řeči Studio](speech-devices-sdk-create-kws.md).

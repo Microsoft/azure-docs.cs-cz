@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Rozpoznávání řeči uložené v úložišti objektů blob'
+title: 'Rychlý Start: rozpoznávání řeči uložených v úložišti objektů BLOB'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete rozhraní REST API pro batch transcription k asynchronnímu rozpoznání řeči uložené v objektu blob SAS.
+description: V tomto rychlém startu použijete dávku přepisu REST API k asynchronnímu rozpoznávání řeči uloženého v objektu BLOB SAS.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: b302180257ec6624ebd6144a7680755a2856899e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400899"
 ---
-# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Úvodní příručka: Rozpoznávání řeči uložené v úložišti objektů blob
+# <a name="quickstart-recognize-speech-stored-in-blob-storage"></a>Rychlý Start: rozpoznávání řeči uložených v úložišti objektů BLOB
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/from-blob/header.md)]

@@ -1,6 +1,6 @@
 ---
-title: Ukončení TLS pomocí příkazového příkazového příkazu k onomu – Azure Application Gateway
-description: Zjistěte, jak vytvořit aplikační bránu a přidat certifikát pro ukončení TLS pomocí azure CLI.
+title: Ukončení protokolu TLS pomocí CLI – Azure Application Gateway
+description: Naučte se vytvořit Aplikační bránu a přidat certifikát pro ukončení TLS pomocí Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311982"
 ---
-# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí azure cli
+# <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí Azure CLI
 
-Pomocí příkazového příkazového příkazu azure můžete vytvořit [aplikační bránu](overview.md) s certifikátem pro [ukončení TLS](ssl-overview.md). Pro back-endové servery můžete použít [škálovací sadu virtuálních strojů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
+Pomocí rozhraní příkazového řádku Azure můžete vytvořit [Aplikační bránu](overview.md) s certifikátem pro [ukončení protokolu TLS](ssl-overview.md). U back-end serverů můžete použít [sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) . V tomto příkladu obsahuje škálovací sada dvě instance virtuálních počítačů přidané do výchozího back-endového fondu aplikační brány.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -27,17 +27,17 @@ V tomto článku získáte informace o těchto tématech:
 > * Vytvořit aplikační bránu s certifikátem
 > * Vytvořit škálovací sadu virtuálních počítačů s výchozím back-endovým fondem
 
-Pokud chcete, můžete tento postup dokončit pomocí [Azure PowerShellu](tutorial-ssl-powershell.md).
+Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-ssl-powershell.md).
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat příkaz cli místně, tento článek vyžaduje spuštění Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte spustit Azure CLI verze 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. Pro tento článek vytvoříte certifikát podepsaný svým držitelem a soubor pfx pomocí příkazu openssl.
+V případě použití v produkčním prostředí byste měli importovat platný certifikát podepsaný důvěryhodným poskytovatelem. V tomto článku vytvoříte certifikát podepsaný svým držitelem a soubor PFX pomocí příkazu OpenSSL.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je **https://52.170.203.149**adresa URL: .
+Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL: **https://52.170.203.149**.
 
 ![Zabezpečené upozornění](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

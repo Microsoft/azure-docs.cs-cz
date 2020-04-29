@@ -5,38 +5,38 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: d9bc744292922fd127e983392199fa21554d3c62
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400552"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
-> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt `Program.cs`a otevřete .
-3. Stáhněte si <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike.wav <span class="docon docon-download x-hidden-focus"></span> </a> a přidejte jej do svého projektu.
-    - Uložte soubor *Whatstheweatherlike.wav* `Program.cs` vedle souboru.
-    - V **Průzkumníku řešení** klikněte pravým tlačítkem myši na projekt a vyberte **přidat > existující položku**.
-    - Vyberte soubor *whatstheweatherlike.wav* a vyberte tlačítko **Přidat.**
-    - Klikněte pravým tlačítkem myši na nově přidaný soubor a vyberte **příkaz Vlastnosti**.
-    - Změňte **kopírovat do výstupního adresáře** na **kopírovat vždy**.
+2. Načtěte projekt a otevřete `Program.cs`.
+3. Stáhněte si soubor <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV</a> a přidejte ho do projektu.
+    - Uložte soubor *whatstheweatherlike. wav* vedle `Program.cs` souboru.
+    - V **Průzkumník řešení** klikněte pravým tlačítkem myši na projekt a vyberte **Přidat > existující položku**.
+    - Vyberte soubor *whatstheweatherlike. wav* a pak vyberte tlačítko **Přidat** .
+    - Klikněte pravým tlačítkem na nově přidaný soubor a vyberte **vlastnosti**.
+    - Změňte **složku kopírovat na výstupní adresář** na **Kopírovat vždy**.
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt. Všimněte si, že jste vytvořili `RecognizeSpeechAsync()`asynchronní metodu s názvem .
+Pojďme přidat kód, který funguje jako kostra pro náš projekt. Nezapomeňte, že jste vytvořili asynchronní metodu s názvem `RecognizeSpeechAsync()`.
 
 ```csharp
 using System;
@@ -62,11 +62,11 @@ namespace HelloWorld
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Před inicializaci objektu `SpeechRecognizer` je třeba vytvořit konfiguraci, která používá klíč předplatného a oblast předplatného. Vložte tento `RecognizeSpeechAsync()` kód do metody.
+Než budete moct inicializovat `SpeechRecognizer` objekt, musíte vytvořit konfiguraci, která používá váš klíč předplatného a oblast předplatného. Vložte tento kód do `RecognizeSpeechAsync()` metody.
 
 > [!NOTE]
-> Tato ukázka `FromSubscription()` používá metodu k sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [SpeechConfig Class](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
-> Sada Speech SDK bude ve výchozím nastavení rozpoznána použití jazyka en-us, viz [Určení zdrojového jazyka pro řeč na text,](../../../../how-to-specify-source-language.md) kde naleznete informace o výběru zdrojového jazyka.
+> Tato ukázka používá `FromSubscription()` metodu pro sestavení `SpeechConfig`. Úplný seznam dostupných metod naleznete v tématu [Třída SpeechConfig](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Sada Speech SDK bude standardně rozpoznána pomocí en-US pro daný jazyk. informace o výběru zdrojového jazyka najdete v tématu [určení zdrojového jazyka pro převod řeči na text](../../../../how-to-specify-source-language.md) .
 
 ```csharp
 // Replace with your own subscription key and region identifier from here: https://aka.ms/speech/sdkregion
@@ -75,7 +75,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Vytvoření konfigurace zvuku
 
-Nyní je třeba vytvořit `AudioConfig` objekt, který odkazuje na zvukový soubor. Tento objekt je vytvořen uvnitř using prohlášení k zajištění správné uvolnění nespravovaných prostředků. Vložte tento `RecognizeSpeechAsync()` kód do metody přímo pod konfigurací řeči.
+Nyní je třeba vytvořit `AudioConfig` objekt, který odkazuje na váš zvukový soubor. Tento objekt je vytvořen v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `RecognizeSpeechAsync()` metody hned pod konfigurací řeči.
 
 ```csharp
 using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
@@ -83,9 +83,9 @@ using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 }
 ```
 
-## <a name="initialize-a-speechrecognizer"></a>Inicializovat rozpoznávání řeči
+## <a name="initialize-a-speechrecognizer"></a>Inicializovat SpeechRecognizer
 
-Nyní vytvoříme `SpeechRecognizer` objekt pomocí objektů `SpeechConfig` `AudioConfig` a vytvořených dříve. Tento objekt je také vytvořen uvnitř using prohlášení k zajištění správné uvolnění nespravovaných prostředků. Vložte tento `RecognizeSpeechAsync()` kód do metody, uvnitř using ```AudioConfig``` prohlášení, které obtéká objekt.
+Nyní vytvoříme `SpeechRecognizer` objekt pomocí dříve vytvořených objektů `SpeechConfig` a. `AudioConfig` Tento objekt je vytvořen také v rámci příkazu Using, aby bylo zajištěno správné vydání nespravovaných prostředků. Vložte tento kód do `RecognizeSpeechAsync()` metody uvnitř příkazu Using, který zabalí váš ```AudioConfig``` objekt.
 
 ```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
@@ -95,20 +95,20 @@ using (var recognizer = new SpeechRecognizer(config, audioInput))
 
 ## <a name="recognize-a-phrase"></a>Rozpoznání fráze
 
-Z `SpeechRecognizer` objektu zavoláte metodu. `RecognizeOnceAsync()` Tato metoda umožňuje řeči služby vědět, že odesíláte jednu frázi pro rozpoznávání a že jakmile je fráze identifikována k zastavení rozpoznávání řeči.
+Z `SpeechRecognizer` objektu budete volat `RecognizeOnceAsync()` metodu. Tato metoda umožňuje službě rozpoznávání řeči zjistit, že posíláte jednoduchou frázi pro rozpoznávání, a že po identifikaci fráze zastavit rozpoznávání řeči.
 
-Uvnitř příkazu using přidejte tento kód:
+V příkazu Using přidejte tento kód:
 
 ```csharp
 Console.WriteLine("Recognizing first result...");
 var result = await recognizer.RecognizeOnceAsync();
 ```
 
-## <a name="display-the-recognition-results-or-errors"></a>Zobrazení výsledků rozpoznávání (nebo chyb)
+## <a name="display-the-recognition-results-or-errors"></a>Zobrazit výsledky rozpoznávání (nebo chyby)
 
-Když je výsledek rozpoznávání vrácen službou Řeč, budete s ním chtít něco udělat. Budeme to jednoduché a vytisknout výsledek na konzoli.
+Když Služba rozpoznávání řeči vrátí výsledek rozpoznávání, budete s ním chtít něco dělat. My to Zjednodušme a vytiskneme výsledek do konzoly.
 
-Uvnitř příkazu using `RecognizeOnceAsync()`níže přidejte tento kód:
+V příkazu Using níže `RecognizeOnceAsync()`přidejte tento kód:
 
 ```csharp
 switch (result.Reason)
@@ -133,9 +133,9 @@ switch (result.Reason)
 }
 ```
 
-## <a name="check-your-code"></a>Kontrola kódu
+## <a name="check-your-code"></a>Kontrolovat kód
 
-V tomto okamžiku by měl váš kód vypadat takto:
+V tomto okamžiku váš kód by měl vypadat takto:
 
 ```csharp
 //
@@ -193,13 +193,13 @@ namespace HelloWorld
 }
 ```
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni vytvořit aplikaci a otestovat naše rozpoznávání řeči pomocí služby Řeč.
+Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. Kompilace kódu: Z panelu nabídek *sady Visual Studio*zvolte **Sestavení** > **sestavení řešení**.
-2. Spuštění aplikace: Z řádku nabídek zvolte **Ladění** > **ladění startování** nebo stiskněte **klávesu F5**.
-3. Rozpoznávání spuštění: Zvukový soubor je odeslán do služby Řeč, přepsán jako text a vykreslen v konzole.
+1. Zkompilujte kód: z panelu nabídek aplikace *Visual Studio*vyberte **sestavení** > **řešení**sestavení.
+2. Spusťte aplikaci: z panelu nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+3. Spustit rozpoznávání: váš zvukový soubor se pošle službě Speech, přepisu jako text a vykresluje se v konzole.
 
    ```console
    Recognizing first result...

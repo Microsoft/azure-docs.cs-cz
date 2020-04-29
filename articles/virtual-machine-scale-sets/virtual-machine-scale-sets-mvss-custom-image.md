@@ -1,6 +1,6 @@
 ---
-title: Odkaz na vlastní bitovou kopii v šabloně škálovací sady Azure
-description: Přečtěte si, jak přidat vlastní image do existující šablony škálování virtuálních strojů Azure
+title: Odkazování na vlastní image v šabloně sady Azure Scale
+description: Přečtěte si, jak přidat vlastní image do existující šablony sady škálování virtuálních počítačů Azure.
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,24 +9,24 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: mimckitt
 ms.openlocfilehash: 3965090239949b5e1116ceebe427728e49ffafe4
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273689"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Přidání vlastní image do šablony škálovací sady Azure
 
-Tento článek ukazuje, jak upravit [základní šablonu škálovací sady](virtual-machine-scale-sets-mvss-start.md) pro nasazení z vlastní image.
+V tomto článku se dozvíte, jak upravit [šablonu základní sady škálování](virtual-machine-scale-sets-mvss-start.md) pro nasazení z vlastní image.
 
 ## <a name="change-the-template-definition"></a>Změna definice šablony
-V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu škálovací sady. Nyní použijeme tuto starší šablonu a upravíme ji, abychom vytvořili šablonu, která nasazuje škálovací sadu z vlastní bitové kopie.  
+V [předchozím článku](virtual-machine-scale-sets-mvss-start.md) jsme vytvořili základní šablonu sady škálování. Nyní použijeme tuto předchozí šablonu a upravíte ji k vytvoření šablony, která nasadí sadu škálování z vlastní image.  
 
-### <a name="creating-a-managed-disk-image"></a>Vytvoření spravované bitové kopie disku
+### <a name="creating-a-managed-disk-image"></a>Vytvoření image spravovaného disku
 
-Pokud již máte vlastní spravovanou `Microsoft.Compute/images`bitovou kopii disku (prostředek typu), můžete tuto část přeskočit.
+Pokud již máte vlastní image spravovaného disku (prostředek typu `Microsoft.Compute/images`), můžete tuto část přeskočit.
 
-Nejprve přidejte `sourceImageVhdUri` parametr, což je identifikátor URI do generalizovaného objektu blob ve službě Azure Storage, který obsahuje vlastní image, ze které se má nasadit.
+Nejdřív přidejte `sourceImageVhdUri` parametr, což je identifikátor URI pro zobecněný objekt blob v Azure Storage, který obsahuje vlastní image, ze které se má nasadit.
 
 
 ```diff
@@ -44,7 +44,7 @@ Nejprve přidejte `sourceImageVhdUri` parametr, což je identifikátor URI do ge
    "variables": {},
 ```
 
-Dále přidejte prostředek `Microsoft.Compute/images`typu , což je bitová kopie spravovaného disku `sourceImageVhdUri`založená na generalizovaném objektu blob umístěném na adrese URI . Tento obrázek musí být ve stejné oblasti jako škálovací sada, která jej používá. Ve vlastnostech obrázku zadejte typ operačního systému, umístění `sourceImageVhdUri` objektu blob (z parametru) a typ účtu úložiště:
+Dále přidejte prostředek typu `Microsoft.Compute/images`, což je bitová kopie spravovaného disku založená na zobecněném objektu BLOB umístěném v identifikátoru URI. `sourceImageVhdUri` Tento obrázek musí být ve stejné oblasti jako sada škálování, která ho používá. Ve vlastnostech image zadejte typ operačního systému, umístění objektu BLOB (z `sourceImageVhdUri` parametru) a typ účtu úložiště:
 
 ```diff
    "resources": [
@@ -71,7 +71,7 @@ Dále přidejte prostředek `Microsoft.Compute/images`typu , což je bitová kop
 
 ```
 
-Do prostředku škálovací sady `dependsOn` přidejte klauzuli odkazující na vlastní bitovou kopii, abyste se ujistili, že se bitová kopie vytvoří dříve, než se škálovací sada pokusí nasadit z této bitové kopie:
+V prostředku sady škálování přidejte `dependsOn` klauzuli odkazující na vlastní image, abyste se ujistili, že se image vytvoří před tím, než se sada škálování pokusí o nasazení z této image:
 
 ```diff
        "location": "[resourceGroup().location]",
@@ -86,9 +86,9 @@ Do prostředku škálovací sady `dependsOn` přidejte klauzuli odkazující na 
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna vlastností škálovací sady pro použití spravované bitové kopie disku
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>Změna vlastností sady škálování na použití image spravovaného disku
 
-V škálovací sadě `storageProfile`určete místo určení vydavatele, nabídky, sku a verze `id` bitové `Microsoft.Compute/images` kopie platformy prostředek: `imageReference`
+`imageReference` V části sady `storageProfile`škálování místo určení vydavatele, nabídky, SKU a verze image platformy zadejte `id` `Microsoft.Compute/images` zdroj:
 
 ```json
          "virtualMachineProfile": {
@@ -100,7 +100,7 @@ V škálovací sadě `storageProfile`určete místo určení vydavatele, nabídk
            "osProfile": {
 ```
 
-V tomto příkladu `resourceId` použijte funkci k získání ID prostředku obrazu vytvořeného ve stejné šabloně. Pokud jste vytvořeno uspravované ho disku předem, měli byste místo toho zadat ID této bitové kopie. Toto ID musí mít `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`formu: .
+V tomto příkladu použijte `resourceId` funkci k získání ID prostředku obrázku vytvořeného ve stejné šabloně. Pokud jste vytvořili image spravovaného disku předem, měli byste místo toho zadat ID tohoto obrázku. Toto ID musí být ve tvaru: `/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>`.
 
 
 ## <a name="next-steps"></a>Další kroky

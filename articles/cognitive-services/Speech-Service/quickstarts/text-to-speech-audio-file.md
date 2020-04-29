@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Syntetizovat řeč do zvukového souboru - Služba řeči'
+title: 'Rychlý Start: syntetizace řeči do zvukového souboru – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK k převodu textu na syntetizovaný projev ve zvukovém souboru.
+description: V tomto rychlém startu použijete sadu Speech SDK pro převod textu na syntetizované rozpoznávání řeči ve zvukovém souboru.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: b02b43b0f10e1a120ac7e2e3e763aa1e918075b1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400278"
 ---
-# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Úvodní příručka: Syntetizovat řeč do zvukového souboru
+# <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Rychlý Start: syntetizace řeči do zvukového souboru
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/tts-audio-file/header.md)]

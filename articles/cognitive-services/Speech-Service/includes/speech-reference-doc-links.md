@@ -10,38 +10,38 @@ ms.topic: include
 ms.date: 12/06/2019
 ms.author: trbye
 ms.openlocfilehash: 50dd7ddb636658ec6d29c2669d02320c73167fde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399689"
 ---
 ## <a name="reference-docs"></a>Referenční dokumenty
 
-Služba Řeč poskytuje dvě sady SDK. První sada SDK je primární [sadou Speech SDK](../speech-sdk.md) a poskytuje většinu funkcí potřebných k interakci se službou Speech. Druhá sada SDK je specifická pro zařízení, vhodně pojmenovaná [Sada SDK pro řečová zařízení](../speech-devices-sdk.md). Obě sady SDK jsou k dispozici v mnoha jazycích.
+Služba rozpoznávání řeči poskytuje dvě sady SDK. První sada SDK je primární [sada Speech SDK](../speech-sdk.md) a poskytuje většinu funkcí potřebných pro interakci se službou Speech. Druhá sada SDK je specifická pro zařízení, která se vhodně jmenuje [sada Speech Devices SDK](../speech-devices-sdk.md). Obě sady SDK jsou k dispozici v mnoha jazycích.
 
-### <a name="speech-sdk-reference-docs"></a>Referenční dokumenty sady Speech SDK
+### <a name="speech-sdk-reference-docs"></a>Referenční dokumentace sady Speech SDK
 
-Pomocí následujícího seznamu vyhledejte příslušné referenční dokumenty sady Speech SDK:
+V následujícím seznamu najdete vhodné referenční dokumentace sady Speech SDK:
 
-- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/csharpref" target="_blank" rel="noopener">SADA C# SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/cppref" target="_blank" rel="noopener">C++ SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javaref" target="_blank" rel="noopener">Java SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/pythonref" target="_blank" rel="noopener">Python SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://aka.ms/csspeech/javascriptref" target="_blank" rel="noopener">JavaScript SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Objektivní-C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/csspeech/objectivecref" target="_blank" rel="noopener">Cíl – C SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 > [!TIP]
-> Sada SDK služby Rozpoznávání řeči je aktivně udržována a aktualizována. Chcete-li sledovat změny, aktualizace a funkce dodatky naleznete [v poznámkách k verzi sady Speech SDK](../releasenotes.md).
+> Sada SDK služby Speech je aktivně udržovaná a aktualizovaná. Chcete-li sledovat změny, aktualizace a doplňky funkcí najdete v [poznámkách k verzi sady Speech SDK](../releasenotes.md).
 
-### <a name="speech-devices-sdk-reference-docs"></a>Hlasové zařízení SDK referenční dokumenty
+### <a name="speech-devices-sdk-reference-docs"></a>Referenční dokumentace sady Speech Devices SDK
 
-[Sada SDK řečových zařízení](../speech-devices-sdk.md) je nadmnožinou sady Speech SDK s rozšířenými funkcemi pro konkrétní zařízení. Chcete-li stáhnout sadu SDK pro řečová zařízení, musíte [nejprve zvolit vývojovou sadu](../get-speech-devices-sdk.md#choose-a-development-kit).
+[Sada Speech Devices SDK](../speech-devices-sdk.md) je nadmnožinou sady Speech SDK s rozšířenými funkcemi pro konkrétní zařízení. Pokud si chcete stáhnout sadu Speech SDK pro zařízení, musíte nejdřív [zvolit vývojovou sadu](../get-speech-devices-sdk.md#choose-a-development-kit).
 
-### <a name="rest-api-references"></a>Odkazy rozhraní REST API
+### <a name="rest-api-references"></a>Odkazy na REST API
 
-Odkazy na různá reminslovatla REST API naleznete v níže uvedeném seznamu:
+Odkazy na různá rozhraní REST API služby Speech Service najdete v následujícím seznamu:
 
-- [ROZHRANÍ REST API: Převod řeči na text](../rest-speech-to-text.md)
-- [ROZHRANÍ REST API: Převod textu na řeč](../rest-text-to-speech.md)
-- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">ROZHRANÍ REST API: Dávkový přepis a přizpůsobení<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- [REST API: Převod řeči na text](../rest-speech-to-text.md)
+- [REST API: převod textu na řeč](../rest-text-to-speech.md)
+- <a href="https://cris.ai/swagger/ui/index" target="_blank" rel="noopener">REST API: přepis a přizpůsobení Batch<span class="docon docon-navigate-external x-hidden-focus"></span></a>

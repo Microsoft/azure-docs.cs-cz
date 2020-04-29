@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Generování miniatury – REST, cURL'
+title: 'Rychlý Start: vygenerování miniatur – REST, kudrlinkou'
 titleSuffix: Azure Cognitive Services
 description: V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API pro počítačové zpracování obrazu a cURL.
 services: cognitive-services
@@ -12,22 +12,22 @@ ms.date: 04/14/2020
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: d60f1101fc858e9dcaa22162be97417544e13693
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405040"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Úvodní příručka: Generování miniatury pomocí rozhraní API RENA počítačového vidění a cURL
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a kudrlinkou
 
-V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí rozhraní API PRO ODPOČINEK v počítači. Určíte požadovanou výšku a šířku, která se může lišit v poměru stran od vstupního obrazu. Počítačové vidění využívá inteligentní oříznutí k inteligentní identifikaci oblasti zájmu a generování souřadnic oříznutí kolem této oblasti.
+V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Určete požadovanou výšku a šířku, která se může v poměrné dávce od vstupní image lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentnímu identifikaci oblasti zájmu a k vygenerování souřadnic oříznutí kolem této oblasti.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Musíte mít [cURL](https://curl.haxx.se/windows).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Můžete získat bezplatný zkušební klíč od [try cognitive services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Nebo postupujte podle pokynů v [tématu Vytvoření účtu služeb Cognitive Services,](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) abyste se přihlásili k odběru počítačového vidění a získali klíč.
+- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
 
 ## <a name="create-and-run-the-sample-command"></a>Vytvoření a spuštění ukázkového příkazu
 
@@ -37,7 +37,7 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 1. Proveďte v příkazu na příslušných místech následující změny:
     1. Hodnotu `<subscriptionKey>` nahraďte klíčem předplatného.
     1. Hodnotu `<thumbnailFile>` nahraďte cestou a názvem souboru, do kterého chcete miniaturu uložit.
-    1. Nahraďte první část adresy`westcentralus`URL požadavku ( ) textem ve vlastní adrese URL koncového bodu.
+    1. Nahraďte první část adresy URL požadavku (`westcentralus`) textem ve vaší vlastní adrese URL koncového bodu.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Volitelně můžete změnit adresu URL obrázku v textu požadavku (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) na adresu URL jiného obrázku, ze kterého se má generovat miniatura.
 1. Otevřete okno příkazového řádku.
@@ -49,11 +49,11 @@ Pokud chcete vytvořit a spustit ukázku, postupujte takto:
 
 ## <a name="examine-the-response"></a>Prozkoumání odpovědi
 
-Úspěšná odpověď zapíše obrázek miniatury do souboru určeného v `<thumbnailFile>`. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo. Pokud se zdá, že požadavek je úspěšný, ale vytvořená miniatura není platný soubor obrázku, může se stát, že klíč předplatného není platný.
+Úspěšná odpověď zapíše obrázek miniatury do souboru určeného v `<thumbnailFile>`. Pokud požadavek selže, bude odpověď obsahovat chybový kód a zprávu, která vám pomůže určit, co se nepovedlo. Pokud se žádost zdá být úspěšná, ale vytvořená Miniatura není platným souborem obrázku, může to být tím, že váš klíč předplatného není platný.
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte rozhraní API pro počítačové zpracování obrazu, jak analyzovat obrázek, detekovat celebrity a orientační body, vytvořit miniaturu a extrahovat tištěný a ručně psaný text. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu k analýze obrázku, detekci celebrit a orientačních bodů, vytvoření miniatury a extrakci vytištěného a rukopisného textu. Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
 
 > [!div class="nextstepaction"]
 > [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

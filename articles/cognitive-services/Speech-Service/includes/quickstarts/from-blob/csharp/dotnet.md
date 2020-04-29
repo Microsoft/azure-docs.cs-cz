@@ -5,41 +5,41 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: trbye
 ms.openlocfilehash: 8c63c979300af4c180751b3824def0cb974ee186
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400972"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=dotnet&pivots=programmming-language-csharp)
-> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt `Program.cs`a otevřete .
+2. Načtěte projekt a otevřete `Program.cs`.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na Newtonsoft.Json
+## <a name="add-a-reference-to-newtonsoftjson"></a>Přidat odkaz na Newtonsoft. JSON
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt **helloworld** a pak vyberte **spravovat balíčky NuGet,** chcete-li zobrazit Správce balíčků NuGet.
-1. V pravém horním rohu vyhledejte rozevírací pole **Zdroj** balíčku **`nuget.org`** a ujistěte se, že je vybrána.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na projekt **HelloWorld** a pak výběrem **možnosti spravovat balíčky NuGet** Zobrazte správce balíčků NuGet.
+1. V pravém horním rohu Najděte rozevírací seznam **zdroj balíčku** a ujistěte se, že **`nuget.org`** je vybraná možnost.
 1. V levém horním rohu vyberte **Procházet**.
-1. Do vyhledávacího pole zadejte *newtonsoft.json* a vyberte **Enter**.
-1. Ve výsledcích hledání vyberte balíček [**Newtonsoft.Json**](https://www.nuget.org/packages/Newtonsoft.Json) a pak vyberte **Instalovat** a nainstalujte nejnovější stabilní verzi.
-1. Přijměte všechny smlouvy a licence k zahájení instalace.
+1. Do vyhledávacího pole zadejte *Newtonsoft. JSON* a vyberte **ENTER**.
+1. Ve výsledcích hledání vyberte balíček [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) a pak vyberte **instalovat** a nainstalujte nejnovější stabilní verzi.
+1. Přijetím všech smluv a licencí spusťte instalaci.
    Po instalaci balíčku se v okně **konzoly Správce balíčků** zobrazí potvrzení.
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 ```csharp
 class Program
@@ -79,12 +79,12 @@ class Program
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>Obaly JSON
+## <a name="json-wrappers"></a>Obálky JSON
 
-Jako REST API přijmout požadavky ve formátu JSON a také vrátit výsledky v JSON jsme mohli komunikovat s nimi pouze řetězce, ale to se nedoporučuje.
-Aby bylo možné požadavky a odpovědi snadněji spravovat, budeme deklarovat několik tříd použít pro serializaci / deserializaci JSON.
+Jak REST API přijímá požadavky ve formátu JSON a také vrátí výsledky ve formátu JSON, můžeme s nimi pracovat jenom s řetězci, ale to se nedoporučuje.
+Aby bylo možné žádosti a odpovědi snadněji spravovat, deklarujeme několik tříd, které se použijí pro serializaci nebo deserializaci JSON.
 
-Jděte do toho a `TranscribeAsync`dát své prohlášení po .
+Pokračujte a uveďte jejich deklarace po `TranscribeAsync`.
 
 ```csharp
 public class ModelIdentity
@@ -185,9 +185,9 @@ public class TranscriptionDefinition
 }
 ```
 
-## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta Http
+## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta http
 První věc, kterou budeme potřebovat, je klient http, který má správnou základní adresu URL a sadu ověřování.
-Vložte tento `TranscribeAsync`kód do .
+Vložte tento kód do `TranscribeAsync`.
 
 ```csharp
 var client = new HttpClient
@@ -202,7 +202,7 @@ var client = new HttpClient
 ```
 
 ## <a name="generate-a-transcription-request"></a>Generovat žádost o přepis
-Dále vygenerujeme žádost o přepis. Přidejte tento `TranscribeAsync`kód do souboru .
+Dále vygenerujeme žádost o přepis. Přidejte tento kód do `TranscribeAsync`.
 
 ```csharp
 var transcriptionDefinition =
@@ -217,8 +217,8 @@ var sc = new StringContent(res);
 sc.Headers.ContentType = JsonMediaTypeFormatter.DefaultMediaType;
 ```
 
-## <a name="send-the-request-and-check-its-status"></a>Odeslat požadavek a zkontrolovat jeho stav
-Nyní zaúčtujeme požadavek službě Řeči a zkontrolujeme kód počáteční odpovědi. Tento kód odpovědi bude jednoduše označuje, pokud služba obdržela požadavek. Služba vrátí adresu URL v záhlaví odpovědi, která je umístění, kde bude ukládat stav přepisu.
+## <a name="send-the-request-and-check-its-status"></a>Odeslat žádost a ověřit její stav
+Nyní pošleme požadavek službě rozpoznávání řeči a zkontrolujeme kód prvotní odezvy. Tento kód odpovědi jednoduše indikuje, jestli služba požadavek přijala. Služba vrátí adresu URL v hlavičkách odpovědi, kde je umístění, kde bude uložený stav přepisu.
 
 ```csharp
 Uri transcriptionLocation = null;
@@ -234,12 +234,12 @@ using (var response = await client.PostAsync($"{SpeechToTextBasePath}Transcripti
 }
 ```
 
-## <a name="wait-for-the-transcription-to-complete"></a>Počkejte na dokončení přepisu
-Vzhledem k tomu, že služba zpracovává přepis asynchronně, musíme se tak často dotazovat na jeho stav. Budeme to kontrolovat každých 5 sekund.
+## <a name="wait-for-the-transcription-to-complete"></a>Počkejte, až se přepis dokončí.
+Vzhledem k tomu, že služba zpracovává přepis asynchronně, musíme dotazovat se na jeho stav, a to v každém případě často. Zkontrolujeme každých 5 sekund.
 
-Můžete zkontrolovat stav načtením obsahu na url jsme dostali, když posta žádost. Když získáme obsah zpět, dekonstruujeme jej do jedné z našich pomocných tříd, abychom usnadnili interakci.
+Stav můžeme zjistit načtením obsahu na adrese URL, kterou jsme dostali při odeslání žádosti. Když získáme obsah zpátky, deserializovatme ho do jedné z našich pomocných tříd, aby bylo snazší pracovat s.
 
-Zde je volební kód se zobrazením stavu pro všechno kromě úspěšného dokončení, uděláme to dále.
+Toto je kód pro cyklické dotazování se zobrazením stavu pro vše s výjimkou úspěšného dokončení. provedeme to ještě dál.
 
 ```csharp
 Console.WriteLine($"Created transcription at location {transcriptionLocation}.");
@@ -293,8 +293,8 @@ Console.ReadKey();
 ```
 
 ## <a name="display-the-transcription-results"></a>Zobrazení výsledků přepisu
-Jakmile služba úspěšně dokončí přepis, výsledky budou uloženy v jiné adrese URL, kterou můžeme získat z odpovědi na stav. Zde jsme se požádat o stažení těchto výsledků do dočasného souboru před čtením a jejich rekonstrukci.
-Jakmile jsou výsledky načteny, můžeme je vytisknout na konzoli. Do popisku `case "Succeeded":` přidejte následující kód.
+Po úspěšném dokončení přepisu budou výsledky uloženy v jiné adrese URL, kterou můžeme získat z odpovědi na stav. Tady vytvoříme požadavek na stažení těchto výsledků do dočasného souboru před čtením a deserializací.
+Po načtení výsledků je můžete vytisknout do konzoly. Do `case "Succeeded":` popisku přidejte následující kód.
 
 ```csharp
 completed = true;
@@ -306,8 +306,8 @@ Console.WriteLine($"Transcription succeeded. Results: {Environment.NewLine}{resu
 File.Delete(filename);
 ```
 
-## <a name="check-your-code"></a>Kontrola kódu
-V tomto okamžiku by měl váš kód vypadat takto: (Přidali jsme některé komentáře k této verzi)
+## <a name="check-your-code"></a>Kontrolovat kód
+V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře.)
 
 ```csharp
 using Newtonsoft.Json;
@@ -547,13 +547,13 @@ namespace BatchClient
 }
 ```
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni vytvořit aplikaci a otestovat naše rozpoznávání řeči pomocí služby Řeč.
+Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
-1. **Kompilace kódu** – z panelu nabídek sady Visual Studio zvolte **Build** > **Build Build Solution**.
-2. **Spuštění aplikace** – z řádku nabídek zvolte **Ladění** > **ladění startování** nebo stiskněte **klávesu F5**.
-3. **Začněte rozpoznávat** - Vyzve vás, abyste mluvili frází v angličtině. Vaše řeč je odeslána do služby Řeč, přepsána jako text a vykreslena v konzole.
+1. **Zkompilujte kód** -z panelu nabídek v aplikaci Visual Studio, vyberte **sestavení** > **řešení**sestavení.
+2. **Spusťte aplikaci** – z řádku nabídek zvolte **ladění** > **Spustit ladění** nebo stiskněte klávesu **F5**.
+3. **Spustit rozpoznávání** – zobrazí výzvu k vymluvenému vynechání fráze v angličtině. Váš hlas se odešle službě Speech, přepisu jako text a vykreslí se v konzole nástroje.
 
 ## <a name="next-steps"></a>Další kroky
 

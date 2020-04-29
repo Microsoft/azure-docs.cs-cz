@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace k převodu textu na řeč
-summary: Převod textu na řeč ze služby Řeč umožňuje aplikacím, nástrojům nebo zařízením převést text na syntetizovanou řeč podobné člověku.
+summary: Převod textu na řeč od služby pro rozpoznávání řeči umožňuje vašim aplikacím, nástrojům a zařízením převádět text na syntetizované rozpoznávání řeči od člověka.
 metadata:
-  title: Dokumentace pro převod textu na řeč – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace k převodu textu na řeč – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 83bf5f9e623d1d777834e5efdd26fa4cdbc42819
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401449"
 landingContent:
 - title: Převod textu na řeč
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: Syntéza řeči s využitím dlouhého formátu
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: Vývoj s převodem textu na řeč
+- title: Vývoj s využitím převodu textu na řeč
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -62,5 +62,5 @@ landingContent:
       url: language-support.md#neural-voices
     - text: Fonetické sady SSML
       url: speech-ssml-phonetic-sets.md
-    - text: Ceny převodu textu na řeč
+    - text: Ceny za převod textu na řeč
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

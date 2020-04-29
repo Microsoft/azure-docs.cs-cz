@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace ke Speech Devices
-summary: Sada Speech Devices SDK je předem vyladěná knihovna, která je spárována s účelovými sadami pro vývoj mikrofonního pole.
+summary: Sada Speech Devices SDK je předpřipravená knihovna, která se spáruje s navrženými vývojovými sadami pro vytváření mikrofonních polí.
 metadata:
-  title: Dokumentace k řečovým zařízením – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace k zařízením pro rozpoznávání řeči – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 76bb63654778a08244e2207839e12812b7227dff
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401370"
 landingContent:
-- title: O sadě SDK pro rozpoznávání řeči
+- title: O sadě Speech SDK pro zařízení
   linkLists:
   - linkListType: overview
     links:
@@ -26,19 +26,19 @@ landingContent:
       url: speech-devices-sdk.md
   - linkListType: quickstart
     links:
-    - text: Použití sad y SDK pro rozpoznávání řeči (Windows)
+    - text: Použití sady Speech Devices SDK (Windows)
       url: speech-devices-sdk-quickstart.md?pivots=platform-windows
-    - text: Použití řečových zařízení SDK (Linux)
+    - text: Použití sady Speech Devices SDK (Linux)
       url: speech-devices-sdk-quickstart.md?pivots=platform-linux
-    - text: Použití řečových zařízení SDK (Android)
+    - text: Použití sady Speech Devices SDK (Android)
       url: speech-devices-sdk-quickstart.md?pivots=platform-android
-- title: Vývoj pomocí řečových zařízení SDK
+- title: Vývoj se sadou Speech SDK pro zařízení
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Návrh pole mikrofonu
       url: speech-devices-sdk-microphone.md
-    - text: Nastavení roobo v1 kit
+    - text: Nastavení sady Roobo v1
       url: speech-devices-sdk-roobo-v1.md
 - title: Referenční informace
   linkLists:

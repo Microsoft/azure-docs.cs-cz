@@ -1,6 +1,6 @@
 ---
-title: Řada H - Virtuální počítače Azure
-description: Specifikace pro virtuální chody řady H.
+title: H-Series – Azure Virtual Machines
+description: Specifikace pro virtuální počítače řady H-Series.
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,52 +8,52 @@ ms.topic: article
 ms.date: 03/10/2020
 ms.author: lahugh
 ms.openlocfilehash: 6e0257f8a32d05f49dd67195f22d387319358ef2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314136"
 ---
 # <a name="h-series"></a>H-series
 
-Virtuální počítače řady H jsou optimalizované pro aplikace řízené vysokými frekvencemi procesoru nebo velkou pamětí na základní požadavky. Virtuální počítače řady H jsou vybaveny procesorovými jádry 8 nebo 16 Intel Xeon E5 2667 v3, až 14 GB paměti RAM na jádro procesoru a bez hyperthreadingu. Řada H je vybavena 56 Gb/s Mellanox FDR InfiniBand v neblokující konfiguraci tuku pro konzistentní výkon RDMA. Virtuální servery řady H podporují technologie Intel MPI 5.x a MS-MPI.
+Virtuální počítače H-Series jsou optimalizované pro aplikace řízené vysokými kmitočty procesoru nebo velkým množstvím paměti podle základních požadavků. Virtuální počítače řady H-Series funkce 8 nebo 16 Intel Xeon E5 2667 V3 procesory, až 14 GB paměti RAM na jádro procesoru a žádné podprocesy. Funkce H-Series 56 GB/s Mellanox FDR InfiniBand v neblokované konfiguraci stromu FAT pro zajištění konzistentního výkonu RDMA. Virtuální počítače H-series podporují Intel MPI 5. x a MS-MPI.
 
 ACU: 290–300
 
-Úložiště Premium: Není podporováno
+Premium Storage: nepodporováno
 
-Ukládání úložiště Premium: Není podporováno
+Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Migrace za provozu: Není podporována
+Migrace za provozu: nepodporováno
 
-Aktualizace pro zachování paměti: Není podporováno
+Aktualizace pro zachování paměti: nepodporováno
 
-| Velikost | Virtuální procesory | Procesor | Paměť (GB) | Šířka pásma paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Jednojádrová frekvence (GHz, špička) | Výkon RDMA (Gb/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální propustnost disku: IOPS | Maximální síťové karty Ethernet |
+| Velikost | Virtuální procesory | Procesor | Paměť (GB) | Propustnost paměti GB/s | Základní frekvence procesoru (GHz) | Frekvence všech jader (GHz, špička) | Frekvence s jedním jádrem (GHz, špička) | Výkon RDMA (GB/s) | Podpora MPI | Dočasné úložiště (GB) | Max. datových disků | Maximální propustnost disku: IOPS | Maximální počet síťových karet sítě Ethernet |
 | --- | --- |--- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_H8   | 8  | Intel Xeon E5 2667 v3 | 56 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32 × 500 | 2 |
-| Standard_H16  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
-| Standard_H8m  | 8  | Intel Xeon E5 2667 v3 | 112 | 40 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 1000 | 32 | 32 × 500 | 2 |
-| Standard_H16m | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | - | Intel 5.x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
-| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 v3 | 112 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
-| <sup>Standard_H16mr</sup> | 16 | Intel Xeon E5 2667 v3 | 224 | 80 | 3,2 | 3.3 | 3.6 | 56 | Intel 5.x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
+| Standard_H8   | 8  | Intel Xeon E5 2667 V3 | 56 | 40 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32 × 500 | 2 |
+| Standard_H16  | 16 | Intel Xeon E5 2667 V3 | 112 | 80 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
+| Standard_H8m  | 8  | Intel Xeon E5 2667 V3 | 112 | 40 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 1000 | 32 | 32 × 500 | 2 |
+| Standard_H16m | 16 | Intel Xeon E5 2667 V3 | 224 | 80 | 3,2 | 3.3 | 3,6 | - | Intel 5. x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
+| Standard_H16r <sup>1</sup>  | 16 | Intel Xeon E5 2667 V3 | 112 | 80 | 3,2 | 3.3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
+| Standard_H16mr <sup>1</sup> | 16 | Intel Xeon E5 2667 V3 | 224 | 80 | 3,2 | 3.3 | 3,6 | 56 | Intel 5. x, MS-MPI | 2000 | 64 | 64 × 500 | 4 |
 
-<sup>1</sup> Pro aplikace MPI je vyhrazená síť back-endRD povolena sítí FDR InfiniBand.
+<sup>1</sup> pro MPI aplikace je v síti FDR InfiniBand povolena vyhrazená síť s back-end službou RDMA.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 
-## <a name="supported-os-images-linux"></a>Podporované obrázky operačního systému (Linux)
+## <a name="supported-os-images-linux"></a>Podporované image operačního systému (Linux)
  
-Azure Marketplace má mnoho linuxových distribucí, které podporují připojení RDMA:
+Azure Marketplace má mnoho distribucí systému Linux, které podporují připojení RDMA:
   
-* **HPC založená na CentOS** - Pro virtuální počítače bez SR-IOV, verze 6.5 HPC založená na CentOS nebo novější verze jsou vhodné až 7.5. Pro virtuální aplikace řady H se doporučují verze 7.1 až 7.5. Ovladače RDMA a Intel MPI 5.1 jsou nainstalované na virtuálním počítači.
-  Pro virtuální počítače SR-IOV je CentOS-HPC 7.6 optimalizován a předinstalován s nainstalovanými ovladači RDMA a různými balíčky MPI.
-  Pro další image virtuálního počítače RHEL/CentOS přidejte rozšíření InfiniBandLinux, které povolí infiniBand. Toto rozšíření virtuálního počítače s Linuxem nainstaluje ovladače Mellanox OFED (na virtuálních počítačích SR-IOV) pro připojení RDMA. Následující rutina prostředí PowerShell nainstaluje nejnovější verzi (verze 1.0) rozšíření InfiniBandDriverLinux na existující virtuální počítač podporující RDMA. Virtuální ms podporující RDMA se jmenuje *myVM* a nasadí se ve skupině prostředků s názvem *myResourceGroup* v oblasti *ZÁPADNÍ USA* takto:
+* **HPC založená na CentOS** – pro virtuální počítače, které nejsou povolené SR-IOV, CentOS verze 6,5 HPC nebo novější, jsou vhodné až 7,5. Pro virtuální počítače řady H-Series doporučujeme verze 7,1 až 7,5. Na virtuálním počítači jsou nainstalované ovladače RDMA a Intel MPI 5,1.
+  Pro virtuální počítače SR-IOV přináší CentOS-HPC 7,6 optimalizované a předem načtené s ovladači RDMA a různými nainstalovanými balíčky MPI.
+  Pro jiné image virtuálních počítačů s RHEL/CentOS přidejte rozšíření InfiniBandLinux, aby bylo možné InfiniBand povolit. Tato přípona virtuálního počítače se systémem Linux nainstaluje ovladače Mellanox OFED (na virtuálních počítačích SR-IOV) pro připojení RDMA. Následující rutina prostředí PowerShell nainstaluje nejnovější verzi (verze 1,0) rozšíření InfiniBandDriverLinux na existující virtuální počítač s podporou RDMA. Virtuální počítač s podporou RDMA má název *myVM* a do skupiny prostředků s názvem *myResourceGroup* ve *západní USA* oblasti se nasadí takto:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Rozšíření virtuálních počítačů lze také zahrnout do šablon Azure Resource Manager pro snadné nasazení s následujícím prvkem JSON:
+  Alternativně lze rozšíření virtuálních počítačů zahrnout do šablon Azure Resource Manager pro snadné nasazení pomocí následujícího elementu JSON:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -62,7 +62,7 @@ Azure Marketplace má mnoho linuxových distribucí, které podporují připojen
   } 
   ```
   
-  Následující příkaz nainstaluje nejnovější verzi 1.0 InfiniBandDriverLinux rozšíření na všechny virtuální počítače podporující RDMA v existující škálovací sadě virtuálních strojů s názvem *myVMSS* nasazené ve skupině prostředků s názvem *myResourceGroup*:
+  Následující příkaz nainstaluje nejnovější InfiniBandDriverLinux rozšíření verze 1,0 na všechny virtuální počítače podporující RDMA ve stávající sadě virtuálních počítačů s názvem *myVMSS* nasazenou ve skupině prostředků s názvem *myResourceGroup*:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -71,21 +71,21 @@ Azure Marketplace má mnoho linuxových distribucí, které podporují připojen
   ```
   
   > [!NOTE]
-  > Na obrázcích HPC založených na CentOS jsou aktualizace jádra zakázány v konfiguračním **souboru yum.** Důvodem je, že linuxové ovladače RDMA jsou distribuovány jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud je aktualizováno jádro.
+  > U imagí HPC založených na CentOS jsou aktualizace jádra v konfiguračním souboru **Yumu** zakázané. Důvodem je to, že ovladače pro Linux RDMA jsou distribuované jako balíček ot./min. a aktualizace ovladačů nemusí fungovat, pokud je jádro aktualizované.
   >
   
 
-* **SUSE Linux Enterprise Server** - SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15. Ovladače RDMA jsou nainstalovány a balíčky MpI Intel jsou distribuovány na virtuálním počítači. Nainstalujte MPI spuštěním následujícího příkazu:
+* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro HPC, SLES 12 SP1 pro HPC (Premium), SLES 12 SP4 a SLES 15. Jsou nainstalované ovladače RDMA a na virtuálním počítači jsou distribuované balíčky Intel MPI. Nainstalujte MPI spuštěním následujícího příkazu:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** - Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurace ovladačů RDMA na virtuálním počítači a registrace u společnosti Intel ke stažení technologie Intel MPI:
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. Nakonfigurujte na virtuálním počítači ovladače RDMA a zaregistrujte se pomocí Intel pro stažení Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Další podrobnosti o povolení infinibandu, nastavení MPI, naleznete [v tématu Povolit InfiniBand](./workloads/hpc/enable-infiniband.md).
+  Další informace o povolení InfiniBand, nastavení MPI najdete v tématu [Povolení InfiniBand](./workloads/hpc/enable-infiniband.md).
 
 ## <a name="other-sizes"></a>Jiné velikosti
 
@@ -98,4 +98,4 @@ Azure Marketplace má mnoho linuxových distribucí, které podporují připojen
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.

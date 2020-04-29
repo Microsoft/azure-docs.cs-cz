@@ -1,88 +1,88 @@
 ---
-title: Dobrý příklad projevy - LUIS
-description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které si myslíte, že uživatelé zadají. Zahrnout projevy, které znamenají totéž, ale jsou konstruovány odlišně v délce slova a umístění slova.
+title: Dobrý příklad projevy-LUIS
+description: Výrok představuje zadání od uživatele, které má aplikace interpretovat. Shromážděte fráze, které budou uživatelé zadávat. Zahrňte projevy, který je stejný jako stejný objekt, ale je vytvořen jinak v délce slova a v umístění slova.
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382293"
 ---
-# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Pochopit, jaké dobré projevy jsou pro vaši aplikaci LUIS
+# <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Vysvětlení, co je pro vaši aplikaci LUIS dobré projevy
 
-**Projevy** jsou vstup od uživatele, který vaše aplikace potřebuje interpretovat. Chcete-li trénovat LUIS extrahovat záměry a entity z nich, je důležité zachytit různé příklad projevy pro každý záměr. Aktivní učení nebo proces dalšího trénování na nové projevy, je nezbytné pro inteligenci naučil počítače, které poskytuje LUIS.
+**Projevy** jsou vstupy od uživatele, který vaše aplikace potřebuje k interpretaci. Pro výuku LUIS k extrakci záměrů a entit z nich je důležité zachytit různé příklady projevy pro každý záměr. Aktivní učení nebo proces pokračování ve výukovém programu na nové projevy je nezbytný pro důležité informace, které LUIS poskytuje.
 
-Shromažďujte projevy, které podle vás uživatelé zadají. Zahrnout projevy, které znamenají totéž, ale jsou konstruovány různými způsoby:
+Shromážděte projevyy, které se domníváte, že uživatelé vstoupí v úvahu. Zahrňte projevy, což znamená totéž, ale je tvořeno různými způsoby:
 
-* Délka utterance - krátká, střední a dlouhá pro vaši klientskou aplikaci
+* Délka utterance – krátká, střední a dlouhá pro klienta – aplikace
 * Délka slova a fráze
-* Umístění slova – entita na začátku, uprostřed a na konci utterance
+* Umístění slov – entita na začátku, uprostřed a na konci utterance
 * Gramatika
 * Pluralizace
-* Vyplývající
-* Volba nití a slovesa
-* [Interpunkce](luis-reference-application-settings.md#punctuation-normalization) - dobrá odrůda pomocí správné, nesprávné a bez gramatiky
+* Způsobenému výpadky proudu
+* Podstatné jméno a volba příkazu
+* [Interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization) – dobrá škála pomocí správného, nesprávného a bez gramatiky
 
-## <a name="how-to-choose-varied-utterances"></a>Jak si vybrat různé projevy
+## <a name="how-to-choose-varied-utterances"></a>Jak zvolit různé projevy
 
-Při prvním spuštění [přidáním příklad projevy](luis-how-to-add-example-utterances.md) do modelu LUIS, zde jsou některé zásady mít na paměti.
+Když začnete s prvním zprovozněním, [přidáte příklad projevy](luis-how-to-add-example-utterances.md) do modelu Luis. tady je několik principů, které je potřeba vzít v úvahu.
 
-### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždy dobře tvarované
+### <a name="utterances-arent-always-well-formed"></a>Projevy nejsou vždycky správně vytvořené
 
-Může to být věta, jako "Rezervujte si letenku do Paříže pro mě", nebo fragment věty, jako "Rezervace" nebo "Pařížský let".  Uživatelé často dělají pravopisné chyby. Při plánování aplikace zvažte, zda používáte [kontrolu pravopisu Bingu](luis-tutorial-bing-spellcheck.md) k opravě vstupu uživatele před jeho předáním službě LUIS.
+Může se jednat o větu, jako je například "lístek lístku na Paříž pro mě" nebo fragment věty, například "rezervace" nebo "pařížský let".  Uživatelé často vytvářejí pravopisné chyby. Při plánování aplikace zvažte, jestli před předáním vstupu do LUIS použít [Kontrola pravopisu Bingu](luis-tutorial-bing-spellcheck.md) k opravě vstupu uživatele.
 
-Pokud nechcete pravopisu uživatele projevy, měli byste trénovat LUIS na projevy, které obsahují překlepy a překlepy.
+Pokud neprovedete kontrolu pravopisu pro uživatele projevy, měli byste LUIS v projevy, které obsahují překlepy a pravopisné chyby.
 
-### <a name="use-the-representative-language-of-the-user"></a>Použití reprezentativního jazyka uživatele
+### <a name="use-the-representative-language-of-the-user"></a>Použijte zástupce jazyka uživatele.
 
-Při výběru projevy, uvědomte si, že to, co si myslíte, že je běžný termín nebo frázi nemusí být správné pro typického uživatele klientské aplikace. Nemusí mít zkušenosti s doménou. Buďte opatrní při používání termínů nebo frází, které by uživatel řekl pouze v případě, že by byl odborníkem.
+Při volbě projevy mějte na paměti, že si myslíte, že se jedná o běžný výraz nebo fráze nemusí být správná pro typického uživatele klientské aplikace. Nemusí mít prostředí v doméně. Buďte opatrní při použití podmínek nebo frází, které by měl uživatel vyslovit jenom v případě, že byli odborníkem.
 
-### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Vyberte si pestrou terminologii a frázování
+### <a name="choose-varied-terminology-as-well-as-phrasing"></a>Výběr proměnlivé terminologie i formulace
 
-Zjistíte, že i když se budete snažit vytvořit různé věty vzory, budete stále opakovat nějakou slovní zásobu.
+Zjistíte, že i když se rozhodnete vytvořit různé vzory vět, stále se opakují i některé slovníky.
 
-Vezměte v uvedenépříklad projevy:
+Vezměte v úvahu tento příklad projevy:
 
 |Ukázkové promluvy|
 |--|
 |Jak získám počítač?|
 |Kde získám počítač?|
-|Chci si pojít počítač, jak na to mám jít?|
-|Kdy můžu mít počítač?|
+|Chci získat počítač, jak na něj mám přejít?|
+|Kdy můžu počítač dělat?|
 
-Základní termín zde, "počítač", není pestrý. Používejte alternativy, jako je stolní počítač, notebook, pracovní stanice nebo dokonce jen stroj. Služba LUIS můžete inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení, je vždy lepší je měnit.
+Klíčové slovo "Computer" se neliší. Používejte alternativy, jako je stolní počítač, přenosný počítač, pracovní stanice nebo dokonce jenom počítač. LUIS dokáže inteligentně odvodit synonyma z kontextu, ale při vytváření projevy pro školení je vždy lepší je měnit.
 
 ## <a name="example-utterances-in-each-intent"></a>Příklad projevy v každém záměru
 
-Každý záměr musí mít příklad projevy, alespoň 15. Pokud máte záměr, který nemá žádné příklad projevy, nebude možné trénovat LUIS. Pokud máte záměr s jedním nebo velmi málo příklad projevy, LUIS nemusí přesně předpovědět záměr.
+Každý záměr musí mít příklad projevy, nejméně 15. Pokud máte záměr, který nemá žádné ukázkové projevy, nebudete moci LUIS. Pokud máte záměr s jedním nebo velmi malým příkladem projevy, LUIS nemusí přesně předpovědět záměr.
 
-## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Přidání malých skupin 15 projevy pro každou vývojová iterace
+## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Přidat malé skupiny s 15 projevy pro každou iteraci vytváření
 
-V každé iteraci modelu nepřidávejte velké množství promluv. Přidejte projevy v množství 15. [Vlak](luis-how-to-train.md), [publikovat](luis-how-to-publish-app.md)a [znovu testovat.](luis-interactive-test.md)
+V každé iteraci modelu nepřidávejte velké množství projevy. Přidejte projevy do množství 15. Znovu proveďte [výuku](luis-how-to-train.md), [publikování](luis-how-to-publish-app.md)a [testování](luis-interactive-test.md) .
 
-Služba LUIS vytváří efektivní modely s projevy, které jsou pečlivě vybrány autorem modelu LUIS. Přidání příliš mnoho projevy není cenné, protože zavádí zmatek.
+LUIS vytváří efektivní modely s projevy, které pečlivě vybral Autor modelu LUIS. Přidání příliš velkého počtu projevy není důležité, protože představuje nejasnost.
 
-Je lepší začít s několika projevy, pak [zkontrolujte projevy koncového bodu](luis-how-to-review-endpoint-utterances.md) pro správnou předpověď záměru a extrakce entity.
+Je lepší začít s několika projevy a pak [zkontrolovat projevy Endpoint](luis-how-to-review-endpoint-utterances.md) za účelem správné předpovědi záměru a extrakci entit.
 
 ## <a name="utterance-normalization"></a>Normalizace utterance
 
-Utterance normalizace je proces ignorování účinků interpunkce a diakritiky během trénování a predikce. Pomocí [nastavení aplikace](luis-reference-application-settings.md) můžete řídit, jak normalizace utterance ovlivňuje předpovědi utterance.
+Normalizace utterance je proces ignorování efektů interpunkce a diakritiky během školení a předpovědi. Pomocí [nastavení aplikace](luis-reference-application-settings.md) můžete řídit, jak utterance normalizace ovlivňuje utterance předpovědi.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizace utterance pro diakritiku a interpunkci
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Normalizace utterance pro diakritická znaménka a interpunkční znaménka
 
-Normalizace utterance je definována při vytváření nebo importu aplikace, protože se jedná o nastavení v souboru JSON aplikace. Nastavení normalizace utterance jsou ve výchozím nastavení vypnuta.
+Normalizace utterance se definuje při vytváření nebo importu aplikace, protože se jedná o nastavení v souboru JSON aplikace. Nastavení normalizace utterance jsou ve výchozím nastavení vypnutá.
 
-Diakritika jsou značky nebo znaky v textu, například:
+Diakritická znaménka jsou značky nebo znaménka v rámci textu, jako například:
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Pokud vaše aplikace zapne normalizaci, skóre v podokně **Test,** dávkové testy a dotazy koncového bodu se změní pro všechny projevy pomocí diakritiky nebo interpunkce.
+Pokud vaše aplikace zapne normalizaci, skóre v **testovacím** podokně, dávkových testech a dotazech koncového bodu se změní pro všechny projevy pomocí diakritických znamének nebo interpunkce.
 
-Zapněte normalizaci utterance pro diakritiku nebo interpunkci do souboru aplikace LUIS JSON v parametru. `settings`
+Zapněte normalizaci utterance pro diakritická znaménka nebo interpunkční znaménka do souboru aplikace LUIS JSON `settings` v parametru.
 
 ```JSON
 "settings": [
@@ -91,57 +91,57 @@ Zapněte normalizaci utterance pro diakritiku nebo interpunkci do souboru aplika
 ]
 ```
 
-Normalizace **interpunkce** znamená, že před vaše modely získat trénované a před vaše dotazy koncového bodu získat předpovědět, interpunkce bude odebrána z projevy.
+Normalizace **interpunkce** znamená, že před tím, než se vaše modely vyškole a ještě před dokončením dotazů na koncové body, se z projevy odeberou interpunkční znaménka.
 
-Normalizace **diakritiky** nahradí znaky diakritikou v projevech běžnými znaky. Například: `Je parle français` `Je parle francais`se stane .
+Normalizace **diakritických znamének** nahradí znaky diakritikou v projevy pomocí regulárních znaků. Například: `Je parle français` se bude `Je parle francais`jednat o.
 
-Normalizace neznamená, že neuvidíte interpunkci a diakritiku v příkladu projevy nebo předpověď odpovědi, pouze to, že budou ignorovány během školení a předpověď.
+Normalizace neznamená, že se v příkladech projevy nebo prediktivních odpovědí nezobrazí interpunkce a diakritická znaménka, a to jenom tak, že se během školení a předpovědi budou ignorovat.
 
-### <a name="punctuation-marks"></a>Interpunkční znaménka
+### <a name="punctuation-marks"></a>Interpunkční značky
 
-Interpunkce je samostatný token v LUIS. Utterance, který obsahuje tečku na konci versus utterance, která neobsahuje tečku na konci jsou dvě samostatné projevy a může získat dvě různé předpovědi.
+Interpunkce je samostatný token v LUIS. Utterance, která obsahuje tečku na konci oproti utterance, která neobsahuje tečku na konci, je dvě samostatné projevy a může získat dvě různé předpovědi.
 
-Pokud interpunkce není normalizována, LUIS neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace může umístit význam na tyto značky. Ujistěte se, že vaše promluvy příkladu používají interpunkci a žádné interpunkce, aby oba styly vrátit stejné relativní skóre.
+Pokud interpunkční znaménko není normalizováno, LUIS Neignoruje interpunkční znaménka ve výchozím nastavení, protože některé klientské aplikace mohou na tyto značky umístit význam. Ujistěte se, že váš příklad projevy použít interpunkční znaménka i bez interpunkce v případě, že oba styly vrátí stejné relativní skóre.
 
-Ujistěte se, že model zpracovává interpunkci buď v příkladu promluvy (s a nemají interpunkci) nebo ve [vzorcích,](luis-concept-patterns.md) kde je snazší ignorovat interpunkci se speciální syntaxí:`I am applying for the {Job} position[.]`
+Ujistěte se, že model zpracovává interpunkční znaménka buď v příkladu projevy (má a nemá interpunkci), nebo ve [vzorech](luis-concept-patterns.md) , kde je snazší ignorovat interpunkci se speciální syntaxí:`I am applying for the {Job} position[.]`
 
-Pokud interpunkce nemá žádný konkrétní význam v klientské aplikaci, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce.
+Pokud interpunkční znaménko nemá v klientské aplikaci žádný zvláštní význam, zvažte [ignorování interpunkce](#utterance-normalization) normalizací interpunkce.
 
-### <a name="ignoring-words-and-punctuation"></a>Ignorování slov a interpunkce
+### <a name="ignoring-words-and-punctuation"></a>Ignorují se slova a interpunkční znaménka.
 
-Pokud chcete ignorovat určitá slova nebo interpunkci ve vzorcích, použijte [vzorek](luis-concept-patterns.md#pattern-syntax) s `[]` _ignore_ syntaxí hranatých závorek .
+Chcete-li v vzorcích ignorovat určitá slova nebo interpunkční znaménka, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s syntaxí _Ignore_ hranatých závorek, `[]`.
 
-## <a name="training-utterances"></a>Promluvy školení
+## <a name="training-utterances"></a>Projevy školení
 
-Školení je obecně nedeterministické: utterance předpověď se může mírně lišit mezi verzemi nebo aplikacemi.
-Nedeterministické školení můžete odebrat aktualizací rozhraní API `UseAllTrainingData` pro nastavení [verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) pomocí dvojice název/hodnota tak, aby bylo možné použít všechna trénovací data.
+Školení je všeobecně nedeterministické: předpověď utterance se může mírně lišit napříč verzemi nebo aplikacemi.
+Nedeterministické školení můžete odebrat tak, že aktualizujete rozhraní API pro [Nastavení verze](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) s použitím dvojice `UseAllTrainingData` název/hodnota, aby se použila všechna školicí data.
 
-## <a name="testing-utterances"></a>Testování promluv
+## <a name="testing-utterances"></a>Testování projevy
 
-Vývojáři by měli začít testovat jejich luis aplikace s reálným provozem odesláním projevy na adresu URL [koncového bodu předpověď.](luis-how-to-azure-subscription.md) Tyto projevy se používají ke zlepšení výkonu záměry a entity s [review projevy](luis-how-to-review-endpoint-utterances.md). Testy odeslané pomocí podokna testování webu LUIS nejsou odesílány prostřednictvím koncového bodu, a proto nepřispívají k aktivnímu učení.
+Vývojáři by měli zahájit testování své aplikace LUIS pomocí skutečného provozu odesláním projevy na adresu URL [koncového bodu předpovědi](luis-how-to-azure-subscription.md) . Tyto projevy slouží ke zlepšení výkonu záměrů a entit s [kontrolou projevy](luis-how-to-review-endpoint-utterances.md). Testy odeslané pomocí podokna testování webu LUIS nejsou odesílány prostřednictvím koncového bodu, a proto nepřispívají k aktivnímu učení.
 
-## <a name="review-utterances"></a>Kontrola promluv
+## <a name="review-utterances"></a>Zkontrolovat projevy
 
-Po trénování modelu, publikování a přijímání dotazů [koncového bodu](luis-glossary.md#endpoint) [zkontrolujte projevy](luis-how-to-review-endpoint-utterances.md) navržené luis. Služba LUIS vybere projevy koncového bodu, které mají nízké skóre pro záměr nebo entitu.
+Po vyškolení, publikování a přijímání dotazů na [koncové body](luis-glossary.md#endpoint) [si prohlédněte projevy, který](luis-how-to-review-endpoint-utterances.md) navrhuje Luis. LUIS vybere koncový bod projevy, který má nízké skóre pro záměr nebo entitu.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Projděte si [osvědčené postupy](luis-concept-best-practices.md) a aplikujte je jako součást svého pravidelného cyklu vytváření.
+Projděte si [osvědčené postupy](luis-concept-best-practices.md) a použijte je jako součást běžného cyklu vytváření.
 
-## <a name="label-for-word-meaning"></a>Popisek významu slova
+## <a name="label-for-word-meaning"></a>Označení pro wordový význam
 
-Pokud je volba slova nebo uspořádání slov stejné, ale neznamená to též, neoznačte jej entitou.
+Pokud je volba slova nebo uspořádání slov stejná, ale neznamená to stejné, nepište je entitou.
 
-Následující projevy, slovo `fair` je homograph. To je napsáno stejné, ale má jiný význam:
+Následující projevy je slovo `fair` homograf. Je pravopisné, ale má jiný význam:
 
 |Promluva|
 |--|
-|Jaký druh krajských veletrhů se letos v létě konají v oblasti Seattlu?|
-|Je aktuální hodnocení pro recenzi Seattle veletrhu?|
+|Jaký druh veletrhů se děje v oblasti Praha této léto?|
+|Je aktuální hodnocení pro Seattle na veletrzích?|
 
-Pokud jste chtěli, aby entita události `fair` nalezla všechna data události, označte slovo v prvním utterance, ale ne ve druhém.
+Pokud jste chtěli, aby entita události vyhledala všechna data události, označte `fair` slovo v prvním utterance, ale ne za sekundu.
 
 
 ## <a name="next-steps"></a>Další kroky
-Viz [Přidání příklad projevy](luis-how-to-add-example-utterances.md) pro informace o školení aplikace LUIS pochopit projevy uživatelů.
+Informace o výuce aplikace LUIS pro pochopení uživatelského projevy najdete v tématu věnovaném [Přidání ukázkového projevy](luis-how-to-add-example-utterances.md) .
 

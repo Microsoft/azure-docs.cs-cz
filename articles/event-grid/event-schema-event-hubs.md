@@ -1,5 +1,5 @@
 ---
-title: Azure Event Hubs jako zdroj gridu událostí
+title: Azure Event Hubs jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro události centra událostí s Azure Event Grid
 services: event-grid
 author: spelluru
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393342"
 ---
-# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs jako zdroj gridu událostí
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure Event Hubs jako zdroj Event Grid
 
-Tento článek obsahuje vlastnosti a schéma pro události centra událostí.Úvod do schémat událostí najdete v [tématu schéma událostí služby Azure Event Grid](event-schema.md).
+Tento článek poskytuje vlastnosti a schéma pro události centra událostí.Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md).
 
-## <a name="event-grid-event-schema"></a>Schéma události Mřížka událostí
+## <a name="event-grid-event-schema"></a>Schéma událostí služby Event Grid
 
 ### <a name="available-event-types"></a>Dostupné typy událostí
 
-Centra událostí vyzařují typ události **Microsoft.EventHub.CaptureFileCreated** při vytvoření souboru sběru.
+Event Hubs generuje typ události **Microsoft. EventHub. CaptureFileCreated** při vytvoření sběrného souboru.
 
 ### <a name="example-event"></a>Příklad události
 
-Tato ukázková událost zobrazuje schéma události centra událostí, která byla vyvolána, když funkce sběru ukládá soubor: 
+Tato ukázková událost ukazuje schéma události centra událostí, která se aktivuje, když funkce Capture ukládá soubor: 
 
 ```json
 [
@@ -59,12 +59,12 @@ Událost má následující data nejvyšší úrovně:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| téma | řetězec | Úplná cesta k prostředku ke zdroji události. Toto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| Předmět | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
-| Eventtype | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | řetězec | Čas, kdy je událost generována na základě času UTC zprostředkovatele. |
+| téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
+| závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data událostí centra událostí. |
+| data | objekt | Data události centra událostí |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -72,24 +72,24 @@ Datový objekt má následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
-| adresa souboru | řetězec | Cesta k souboru sběru. |
-| Filetype | řetězec | Typ souboru sběru. |
-| Partitionid | řetězec | ID úlomek. |
+| fileUrl | řetězec | Cesta k zachycenému souboru. |
+| fileType | řetězec | Typ souboru digitalizačního souboru. |
+| Oddílu | řetězec | ID horizontálních oddílů |
 | sizeInBytes | celé číslo | Velikost souboru. |
 | eventCount | celé číslo | Počet událostí v souboru. |
-| prvníSequenceNumber | celé číslo | Nejmenší pořadové číslo z fronty. |
+| firstSequenceNumber | celé číslo | Nejmenší číslo sekvence z fronty. |
 | lastSequenceNumber | celé číslo | Poslední pořadové číslo z fronty. |
 | firstEnqueueTime | řetězec | Poprvé z fronty. |
-| lastEnqueueTime | řetězec | Poslední čas z fronty. |
+| lastEnqueueTime | řetězec | Čas posledního spuštění z fronty. |
 
 ## <a name="tutorials-and-how-tos"></a>Kurzy a postupy
 
 |Nadpis  |Popis  |
 |---------|---------|
-| [Kurz: streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Centra událostí vytvoří soubor pro digitalizaci, event grid odešle událost do aplikace funkce. Aplikace načte soubor capture a migruje data do datového skladu. |
+| [Kurz: streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md) | Když Event Hubs vytvoří zachytávací soubor, Event Grid pošle událost do aplikace Function App. Aplikace načte zachytávací soubor a migruje data do datového skladu. |
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Služby Azure Event Grid najdete v tématu [Co je event grid?](overview.md)
-* Další informace o vytvoření předplatného Služby Azure Event Grid najdete v [tématu schéma předplatného služby Event Grid](subscription-creation-schema.md).
-* Informace o zpracování událostí centra událostí najdete v [tématu streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).
+* Úvod do Azure Event Grid najdete v tématu [co je Event Grid?](overview.md)
+* Další informace o vytváření předplatného Azure Event Grid najdete v tématu [schéma předplatného Event Grid](subscription-creation-schema.md).
+* Informace o zpracování událostí centra událostí najdete v tématu [streamování velkých objemů dat do datového skladu](event-grid-event-hubs-integration.md).

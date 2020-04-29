@@ -1,6 +1,6 @@
 ---
 title: Přehled služby
-description: Přečtěte si další informace o funkcích a službách Azure Security Center for IoT a zjistěte, jak Azure Security Center for IoT poskytuje komplexní zabezpečení IoT.
+description: Přečtěte si další informace o Azure Security Center pro funkce a služby IoT a seznamte se s tím, jak Azure Security Center pro IoT poskytuje komplexní zabezpečení IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,45 +15,45 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f4601de6ee495def43d1267131193762ea482d2a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310918"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Představujeme Azure Security Center pro IoT
 
-Sjednocujte správu zabezpečení a povolte komplexní detekci a analýzu hrozeb napříč hybridními cloudovými úlohami a vaším řešením Azure IoT.
+Sjednocení správy zabezpečení a umožnění komplexní detekce a analýzy hrozeb v rámci hybridních cloudových úloh a řešení Azure IoT.
 
-## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpečte celé své řešení IoT od zařízení IoT až po Cloud Azure
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>Zabezpečení celého řešení IoT ze zařízení IoT do cloudu Azure
 
-Vyberte si z našeho bezproblémového řešení bez agentů nebo využijte komplexní zabezpečení založené na agentech, Azure Security Center for IoT poskytuje prevenci a analýzu hrozeb pro každé zařízení, IoT Edge a IoT Hub, napříč vašimi prostředky IoT.
+Můžete si vybrat z našeho bezproblémového řešení bez agentů nebo využít komplexní zabezpečení založené na agentech, Azure Security Center pro IoT zajišťuje prevenci a analýzu hrozeb pro každé zařízení, IoT Edge a IoT Hub v rámci vašich prostředků IoT.
 
-Vzhledem k tomu, že miliardy nových zařízení jsou připojeny k internetu a integrovány do našeho každodenního života a našich podniků, musí vaše bezpečnostní operační týmy zajistit, aby se jejich bezpečnostní strategie vyvíjely dostatečně rychle, aby pokryly každou novou povrchovou plochu útoku. Stejně jako jakýkoli jiný systém, aby bylo možné komplexně zabezpečit vaše řešení IoT, vyžaduje ochranu v každé fázi implementace.
+Vzhledem k tomu, že miliarda nových zařízení je připojená k Internetu a integrovaná do každodenních životních a našich firem, musí vaše týmy zabezpečení provozu zajistit, aby se jejich strategie zabezpečení rychle vyvinuly, aby pokryly jednotlivé nové plochy pro útok. Stejně jako jakýkoli jiný systém, pro komplexní zabezpečení řešení IoT vyžaduje ochranu v každé fázi implementace.
 
-Azure Security Center for IoT zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a řízení, adaptivní prevenci hrozeb a inteligentní detekci hrozeb a odezvu napříč úlohami spuštěnými na hraničních zařízeních, v místním prostředí, v Azure a v jiných cloudech.
+Azure Security Center pro IoT zjednodušuje ochranu hybridních úloh tím, že poskytuje jednotnou viditelnost a řízení, adaptivní prevenci hrozeb a inteligentní detekci hrozeb a reakce napříč úlohami běžícími na hraničních, místních i v Azure a v jiných cloudech.
 
 ![Architektura služby Azure Security Center pro IoT](./media/architecture/azure-iot-security-architecture.png)
 
-### <a name="unified-visibility-and-control"></a>Jednotná viditelnost a kontrola
+### <a name="unified-visibility-and-control"></a>Sjednocená viditelnost a řízení
 
-Získejte jednotný přehled o zabezpečení ve všech místních a cloudových úlohách, včetně vašeho řešení Azure IoT. Zaobsňujte nová zařízení a aplikujte zásady zabezpečení napříč vašimi úlohami (zařízení Leaf, zařízení Microsoft Edge, IoT Hub), abyste zajistili dodržování bezpečnostních standardů a lepší stav zabezpečení.
+Získejte jednotný přehled o zabezpečení napříč všemi vašimi místními i Cloud úlohami, včetně vašeho řešení Azure IoT. Připojte nová zařízení a pomocí zásad zabezpečení pro vaše úlohy (listová zařízení, zařízení Microsoft Edge IoT Hub) zajistěte dodržování standardů zabezpečení a vylepšení stav zabezpečení.
 
-### <a name="adaptive-threat-prevention"></a>Adaptivní prevence hrozeb
+### <a name="adaptive-threat-prevention"></a>Prevence adaptivních hrozeb
 
-Azure Security Center pro IoT slouží k průběžnému monitorování zabezpečení počítačů, sítí a služeb Azure. Vyberte si ze stovek integrovaných hodnocení zabezpečení nebo si vytvořte vlastní v centrálním centru zabezpečení Azure pro řídicí panel IoT Hub. Optimalizujte nastavení zabezpečení a vylepšete skóre zabezpečení pomocí doporučení, která lze přijmout, napříč virtuálními počítači, sítěmi, aplikacemi a daty. Díky nově přidaným funkcím IoT teď můžete snížit prostor pro útok pro vaše řešení Azure IoT a napravit problémy, než je bude možné zneužít.
+Používejte Azure Security Center pro IoT k nepřetržitému monitorování zabezpečení počítačů, sítí a služeb Azure. Vyberte si ze stovek integrovaných posouzení zabezpečení nebo si vytvořte vlastní v centrálním Azure Security Center pro IoT Hub řídicí panel. Optimalizujte nastavení zabezpečení a Vylepšete Vaše skóre zabezpečení s užitečnými doporučeními napříč virtuálními počítači, sítěmi, aplikacemi a daty. Díky nově přidaným funkcím IoT teď můžete omezit prostor pro útoky na vaše řešení Azure IoT a vyřešit problémy dřív, než je budete moct zneužít.
 
 ### <a name="intelligent-threat-detection-and-response"></a>Inteligentní detekce hrozeb a reakce
 
-Využijte pokročilé analýzy a Microsoft Intelligent Security Graph, abyste získali výhodu nad vyvíjejícími se kybernetickými útoky. Integrovaná analýza chování a strojové učení identifikují útoky a zero-day exploity. Sledujte své řešení IoT pro příchozí útoky a aktivity po porušení zabezpečení. Zjednodušte vyšetřování a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
+Využijte pokročilou analýzu a Microsoft Intelligent Security Graph k získání hraničních zařízení, která vám pomohou vyvíjejí se počítačové útoky. Integrované analýzy chování a strojové učení identifikují útoky a zneužití funkce Zero Day. Monitorujte řešení IoT pro příchozí útoky a činnost po porušení zabezpečení. Zjednodušte zkoumání a nápravu zařízení pomocí interaktivních nástrojů a kontextové analýzy hrozeb.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto přehledu jste se dozvěděli o funkcích a službách Azure Security Center pro IoT. Další informace o architektuře Azure Security Center pro architekturu IoT, předpokladech a informacích o tom, jak začít, najdete v následujících článcích:
+V tomto přehledu jste se dozvěděli o funkcích a službách Azure Security Center pro IoT. Další informace o Azure Security Center pro architekturu IoT, požadavcích a informace o tom, jak začít, najdete v následujících článcích:
 
 - [Architektura](architecture.md)
 - [Požadavky služeb](service-prerequisites.md)
 - [Začínáme](getting-started.md)
-- [Definujte své řešení](quickstart-configure-your-solution.md)
-- [Nejčastější dotazy k Centru zabezpečení Azure pro IoT](resources-frequently-asked-questions.md)
-- [Výstrahy Azure Security Center pro IoT](concept-security-alerts.md)
+- [Definice řešení](quickstart-configure-your-solution.md)
+- [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- [Azure Security Center pro výstrahy IoT](concept-security-alerts.md)

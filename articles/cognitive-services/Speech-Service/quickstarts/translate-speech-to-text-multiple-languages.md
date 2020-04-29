@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Překlad řeči do více jazyků – služba Speech Service'
+title: 'Rychlý Start: Převod řeči na více jazyků – Speech Service'
 titleSuffix: Azure Cognitive Services
-description: V tomto rychlém startu použijete sadu Speech SDK k interaktivnímu překladu řeči z jednoho jazyka do řeči v jiném jazyce.
+description: V tomto rychlém startu použijete sadu Speech SDK pro interaktivní převod řeči z jednoho jazyka na řeč v jiném jazyce.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,13 +12,13 @@ ms.date: 02/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: c1e04cdda77da3aac7a3c85f0967e9a48d3d7cca
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400231"
 ---
-# <a name="quickstart-translate-speech-to-multiple-languages"></a>Úvodní příručka: Překlad řeči do více jazyků
+# <a name="quickstart-translate-speech-to-multiple-languages"></a>Rychlý Start: Převod řeči na více jazyků
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Header](../includes/quickstarts/translate-stt-multiple-languages/header.md)]

@@ -5,58 +5,58 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: trbye
 ms.openlocfilehash: 629fc5e3bc41377fe852a1648680d77b22395d02
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400951"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, že:
+Než začnete, nezapomeňte:
 
 > [!div class="checklist"]
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
-> * [Vytvoření prostředku řeči Azure](../../../../get-started.md)
+> * [Vytvoření prostředku Azure Speech](../../../../get-started.md)
 > * [Nahrání zdrojového souboru do objektu blob Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
-## <a name="open-your-project-in-visual-studio"></a>Otevření projektu v sadě Visual Studio
+## <a name="open-your-project-in-visual-studio"></a>Otevřete projekt v aplikaci Visual Studio
 
-Prvním krokem je ujistěte se, že máte projekt otevřený v sadě Visual Studio.
+Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Studio.
 
 1. Spusťte Visual Studio 2019.
-2. Načtěte projekt `helloworld.cpp`a otevřete .
+2. Načtěte projekt a otevřete `helloworld.cpp`.
 
-## <a name="add-a-references"></a>Přidání odkazů
+## <a name="add-a-references"></a>Přidat odkazy
 
-Abychom urychlili vývoj kódu, budeme používat několik externích komponent:
-* [CPP Zbytek SDK](https://github.com/microsoft/cpprestsdk) Klientská knihovna pro volání REST do služby REST.
-* [nlohmann/json](https://github.com/nlohmann/json) Šikovná knihovna JSON Parsing / Serialization / Deserialization.
+K urychlení vývoje kódu budeme používat několik externích komponent:
+* [Cpp REST SDK](https://github.com/microsoft/cpprestsdk) Klientská knihovna pro volání REST pro službu REST.
+* [nlohmann/JSON](https://github.com/nlohmann/json) Užitečnou knihovnu JSON pro analýzu/serializaci/deserializaci.
 
-Oba lze nainstalovat pomocí [vcpkg](https://github.com/Microsoft/vcpkg/).
+Obě můžou být nainstalované pomocí [vcpkg](https://github.com/Microsoft/vcpkg/).
 
 ```
 vcpkg install cpprestsdk cpprestsdk:x64-windows
 vcpkg install nlohmann-json
 ```
 
-## <a name="start-with-some-boilerplate-code"></a>Začněte s nějakým standardním kódem
+## <a name="start-with-some-boilerplate-code"></a>Začínáme s některým často používaným kódem
 
-Přidáme nějaký kód, který funguje jako kostra pro náš projekt.
+Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
 
 [!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
-## <a name="json-wrappers"></a>Obaly JSON
+## <a name="json-wrappers"></a>Obálky JSON
 
-Jako REST API přijmout požadavky ve formátu JSON a také vrátit výsledky v JSON jsme mohli komunikovat s nimi pouze řetězce, ale to se nedoporučuje.
-Aby bylo možné požadavky a odpovědi snadněji spravovat, budeme deklarovat několik tříd použít pro serializaci / deserializaci JSON a některé metody na pomoc nlohmann/json.
+Jak REST API přijímá požadavky ve formátu JSON a také vrátí výsledky ve formátu JSON, můžeme s nimi pracovat jenom s řetězci, ale to se nedoporučuje.
+Aby bylo možné žádosti a odpovědi snadněji spravovat, deklarujeme několik tříd, které se použijí k serializaci/deserializaci formátu JSON a některých metod, které vám pomůžou nlohmann/JSON.
 
-Jděte do toho a `recognizeSpeech` dát své prohlášení před .
+Pokračujte a uveďte jejich deklarace dřív `recognizeSpeech` .
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=33-185)]
 
-## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta Http
+## <a name="create-and-configure-an-http-client"></a>Vytvoření a konfigurace klienta http
 První věc, kterou budeme potřebovat, je klient http, který má správnou základní adresu URL a sadu ověřování.
 Vložit tento kód do`recognizeSpeech`
 
@@ -67,35 +67,35 @@ Dále vygenerujeme žádost o přepis. Přidat tento kód do`recognizeSpeech`
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 
-## <a name="send-the-request-and-check-its-status"></a>Odeslat požadavek a zkontrolovat jeho stav
-Nyní zaúčtujeme požadavek službě Řeči a zkontrolujeme kód počáteční odpovědi. Tento kód odpovědi bude jednoduše označuje, pokud služba obdržela požadavek. Služba vrátí adresu URL v záhlaví odpovědi, která je umístění, kde bude ukládat stav přepisu.
+## <a name="send-the-request-and-check-its-status"></a>Odeslat žádost a ověřit její stav
+Nyní pošleme požadavek službě rozpoznávání řeči a zkontrolujeme kód prvotní odezvy. Tento kód odpovědi jednoduše indikuje, jestli služba požadavek přijala. Služba vrátí adresu URL v hlavičkách odpovědi, kde je umístění, kde bude uložený stav přepisu.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
-## <a name="wait-for-the-transcription-to-complete"></a>Počkejte na dokončení přepisu
-Vzhledem k tomu, že služba zpracovává přepis asynchronně, musíme se tak často dotazovat na jeho stav. Budeme to kontrolovat každých 5 sekund.
+## <a name="wait-for-the-transcription-to-complete"></a>Počkejte, až se přepis dokončí.
+Vzhledem k tomu, že služba zpracovává přepis asynchronně, musíme dotazovat se na jeho stav, a to v každém případě často. Zkontrolujeme každých 5 sekund.
 
-Můžete zkontrolovat stav načtením obsahu na url jsme dostali, když posta žádost. Když získáme obsah zpět, dekonstruujeme jej do jedné z našich pomocných tříd, abychom usnadnili interakci.
+Stav můžeme zjistit načtením obsahu na adrese URL, kterou jsme dostali při odeslání žádosti. Když získáme obsah zpátky, deserializovatme ho do jedné z našich pomocných tříd, aby bylo snazší pracovat s.
 
-Zde je volební kód se zobrazením stavu pro všechno kromě úspěšného dokončení, uděláme to dále.
+Toto je kód pro cyklické dotazování se zobrazením stavu pro vše s výjimkou úspěšného dokončení. provedeme to ještě dál.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
 ## <a name="display-the-transcription-results"></a>Zobrazení výsledků přepisu
-Jakmile služba úspěšně dokončí přepis, výsledky budou uloženy v jiné adrese URL, kterou můžeme získat z odpovědi na stav.
+Po úspěšném dokončení přepisu budou výsledky uloženy v jiné adrese URL, kterou můžeme získat z odpovědi na stav.
 
-Stáhneme obsah této adresy URL, zoserializujeme JSON a projdeme výsledky tisku zobrazovaného textu.
+Stáhneme obsah této adresy URL, deserializaci JSON a projdete výsledky vytištěním zobrazovaného textu.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
-## <a name="check-your-code"></a>Kontrola kódu
-V tomto okamžiku by měl váš kód vypadat takto: (Přidali jsme některé komentáře k této verzi)
+## <a name="check-your-code"></a>Kontrolovat kód
+V tomto okamžiku by váš kód měl vypadat takto: (do této verze jsme přidali nějaké komentáře.)
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
-## <a name="build-and-run-your-app"></a>Vytvoření a spuštění aplikace
+## <a name="build-and-run-your-app"></a>Sestavení a spuštění aplikace
 
-Teď jste připraveni vytvořit aplikaci a otestovat naše rozpoznávání řeči pomocí služby Řeč.
+Nyní jste připraveni sestavit aplikaci a otestovat rozpoznávání řeči pomocí služby Speech.
 
 ## <a name="next-steps"></a>Další kroky
 

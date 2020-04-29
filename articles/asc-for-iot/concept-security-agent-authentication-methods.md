@@ -1,6 +1,6 @@
 ---
 title: Metody ověřování agenta zabezpečení
-description: Přečtěte si o různých metodách ověřování, které jsou k dispozici při používání služby Azure Security Center for IoT.
+description: Přečtěte si o různých metodách ověřování, které jsou k dispozici při použití Azure Security Center pro službu IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,68 +16,68 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 0d9d51292c3cae9634af917819b558cdfd2fa04b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311519"
 ---
 # <a name="security-agent-authentication-methods"></a>Metody ověřování agenta zabezpečení
 
-Tento článek vysvětluje různé metody ověřování, které můžete použít s agentem AzureIoTSecurity k ověření pomocí služby IoT Hub.
+V tomto článku se dozvíte o různých metodách ověřování, které můžete použít s agentem AzureIoTSecurity k ověřování pomocí IoT Hub.
 
-Pro každé zařízení na palubě centra zabezpečení Azure pro IoT v centru IoT Hub je vyžadován modul zabezpečení. K ověření zařízení, Azure Security Center pro IoT můžete použít jednu ze dvou metod. Vyberte si metodu, která nejlépe vyhovuje vašemu stávajícímu řešení IoT.
+Pro každé zařízení připojené k Azure Security Center pro IoT v IoT Hub se vyžaduje modul zabezpečení. Pro ověření zařízení Azure Security Center pro IoT může použít jednu ze dvou metod. Vyberte metodu, která funguje nejlépe pro vaše stávající řešení IoT.
 
 > [!div class="checklist"]
-> * Bezpečnostní modul, volba
+> * SecurityModule – možnost
 > * Možnost zařízení
 
 ## <a name="authentication-methods"></a>Metody ověřování
 
-Dvě metody pro agenta AzureIoTSecurity k provedení ověřování:
+Tyto dvě metody pro agenta AzureIoTSecurity provádějí ověřování:
 
-- Režim ověřování **modulu SecurityModule**<br>
-Agent je ověřen pomocí identity modulu zabezpečení nezávisle na identitě zařízení.
-Tento typ ověřování použijte, pokud chcete, aby agent zabezpečení používal vyhrazenou metodu ověřování prostřednictvím modulu zabezpečení (pouze symetrický klíč).
+- Režim ověřování **SecurityModule**<br>
+Agent se ověřuje pomocí identity modulu zabezpečení nezávisle na identitě zařízení.
+Tento typ ověřování použijte v případě, že chcete, aby Agent zabezpečení používal vyhrazenou metodu ověřování prostřednictvím modulu zabezpečení (jenom symetrický klíč).
 
-- **Režim** ověřování zařízení<br>
-V této metodě agent zabezpečení nejprve ověří s identitou zařízení. Po počátečním ověření provede Azure Security Center pro agenta IoT volání **rest** do služby IoT Hub pomocí rozhraní REST API s ověřovacími daty zařízení. Azure Security Center pro agenta IoT pak požaduje metodu ověřování modulu zabezpečení a data z centra IoT Hub. V posledním kroku Azure Security Center pro ioT agent provede ověřování proti Azure Security Center pro IoT modul.
+- Režim ověřování **zařízení**<br>
+V této metodě se Agent zabezpečení nejprve ověřuje pomocí identity zařízení. Po počátečním ověřování provede Azure Security Center pro agenta IoT volání **REST** do IoT Hub pomocí REST API s ověřovacími daty daného zařízení. Azure Security Center agent IoT pak požádá o metodu ověřování modulu zabezpečení a data z IoT Hub. V posledním kroku provádí Azure Security Center pro agenta IoT ověřování pomocí modulu Azure Security Center for IoT.
 
-Tento typ ověřování použijte, pokud chcete, aby agent zabezpečení znovu použil existující metodu ověřování zařízení (certifikát podepsaný svým držitelem nebo symetrický klíč).
+Tento typ ověřování použijte v případě, že chcete, aby Agent zabezpečení znovu použil existující metodu ověřování zařízení (certifikát podepsaný svým držitelem nebo symetrický klíč).
 
-Informace o konfiguraci najdete v [tématu Parametry instalace agenta zabezpečení.](#security-agent-installation-parameters)
+Informace o tom, jak nakonfigurovat, najdete v tématu [parametry instalace agenta zabezpečení](#security-agent-installation-parameters) .
 
-## <a name="authentication-methods-known-limitations"></a>Známá omezení o metodách ověřování
+## <a name="authentication-methods-known-limitations"></a>Známá omezení metod ověřování
 
-- Režim ověřování **modulu SecurityModule** podporuje pouze symetrické ověřování pomocí klíče.
-- Režim ověřování zařízení nepodporuje certifikát podepsaný certifikační **autoritou.**
+- Režim ověřování **SecurityModule** podporuje pouze ověřování symetrického klíče.
+- Režim ověřování **zařízení** nepodporuje certifikát podepsaný certifikační autoritou.
 
 ## <a name="security-agent-installation-parameters"></a>Parametry instalace agenta zabezpečení
 
-[Při nasazování agenta zabezpečení](how-to-deploy-agent.md)musí být jako argumenty poskytnuty podrobnosti ověřování.
+Při [nasazování agenta zabezpečení](how-to-deploy-agent.md)musí být jako argumenty zadány podrobnosti ověřování.
 Tyto argumenty jsou popsány v následující tabulce.
 
-|Název parametru Linuxu | Název parametru systému Windows | Parametr zkrácené |Popis|Možnosti|
+|Název parametru pro Linux | Název parametru Windows | Parametr zkrácený |Popis|Možnosti|
 |---------------------|---------------|---------|---------------|---------------|
-|identita ověřování|Identita ověřování identity|aui|Ověřovací identita| **Bezpečnostní modul** nebo **zařízení**|
-|metoda ověřování|Metoda ověřování|Aum|Metoda ověřování|**SymmetricKey** nebo **SelfSignedCertificateCertificate**|
-|cesta k souboru|Filepath|f|Absolutní úplná cesta pro soubor obsahující certifikát nebo symetrický klíč| |
-|název hostitele|HostName|Hn|Hlavní qdn centra IoT Hub|Příklad: ContosoIotHub.azure-devices.net|
-|id zařízení|DeviceId|Di|ID zařízení|Příklad: MyDevice1|
-|druh umístění certifikátu|Nastavíse certifikátKind|Cl|Umístění úložiště certifikátu|**Místní soubor** nebo **úložiště**|
+|ověřování-identita|AuthenticationIdentity|aui|Identita ověřování| **SecurityModule** nebo **zařízení**|
+|ověřování – metoda|Parametr|aum|Metoda ověřování|**SymmetricKey** nebo **SelfSignedCertificate**|
+|Cesta k souboru|FilePath|f|Absolutní úplná cesta k souboru obsahujícímu certifikát nebo symetrický klíč| |
+|název hostitele|HostName|HN|Plně kvalifikovaný název domény IoT Hub|Příklad: ContosoIotHub.azure-devices.net|
+|ID zařízení|DeviceId|dži|ID zařízení|Příklad: MyDevice1|
+|certifikát – druh umístění|CertificateLocationKind|CL|Umístění úložiště certifikátů|**Místní_soubor** nebo **Store**|
 |
 
-Při použití skriptu agenta zabezpečení instalace se automaticky provede následující konfigurace. Chcete-li upravit ověřování agenta zabezpečení ručně, upravte konfigurační soubor.
+Při použití skriptu install Security Agent se provede následující konfigurace automaticky. Chcete-li upravit ověřování agenta zabezpečení ručně, upravte konfigurační soubor.
 
 ## <a name="change-authentication-method-after-deployment"></a>Změna metody ověřování po nasazení
 
-Při nasazování agenta zabezpečení pomocí instalačního skriptu se automaticky vytvoří konfigurační soubor.
+Při nasazování agenta zabezpečení pomocí instalačního skriptu je automaticky vytvořen konfigurační soubor.
 
-Chcete-li změnit metody ověřování po nasazení, je nutné ruční úpravy konfiguračního souboru.
+Chcete-li po nasazení změnit metody ověřování, je nutné ručně upravit konfigurační soubor.
 
-### <a name="c-based-security-agent"></a>Agent zabezpečení založený na c#
+### <a name="c-based-security-agent"></a>Agent zabezpečení založený na jazyce C#
 
-Upravit _soubor Authentication.config_ s následujícími parametry:
+Upravte soubor _Authentication. config_ následujícími parametry:
 
 ```xml
 <Authentication>
@@ -90,9 +90,9 @@ Upravit _soubor Authentication.config_ s následujícími parametry:
 </Authentication>
 ```
 
-### <a name="c-based-security-agent"></a>Agent zabezpečení na bázi C
+### <a name="c-based-security-agent"></a>Agent zabezpečení založený na jazyce C
 
-Upravte _soubor LocalConfiguration.json_ s následujícími parametry:
+Upravte _LocalConfiguration. JSON_ s následujícími parametry:
 
 ```json
 "Authentication" : {
@@ -106,6 +106,6 @@ Upravte _soubor LocalConfiguration.json_ s následujícími parametry:
 
 ## <a name="see-also"></a>Viz také
 
-- [Přehled bezpečnostních agentů](security-agent-architecture.md)
-- [Nasazení agenta zabezpečení](how-to-deploy-agent.md)
+- [Přehled agentů zabezpečení](security-agent-architecture.md)
+- [Nasadit agenta zabezpečení](how-to-deploy-agent.md)
 - [Přístup k nezpracovaným datům zabezpečení](how-to-security-data-access.md)

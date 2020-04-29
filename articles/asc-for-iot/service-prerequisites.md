@@ -1,6 +1,6 @@
 ---
-title: Komponenty & předpoklady
-description: Podrobnosti o všem, co potřebujete k zahájení práce s požadavky služby Azure Security Center for IoT.
+title: Součásti & požadavky
+description: Podrobnosti o všech potřebách pro začátek Azure Security Center pro požadavky služby IoT
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,31 +16,31 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.openlocfilehash: fb5c42ad490ed04f14ff150093a44b552434ed9e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310584"
 ---
-# <a name="azure-security-center-for-iot-prerequisites"></a>Předpoklady Centra zabezpečení Azure pro IoT
+# <a name="azure-security-center-for-iot-prerequisites"></a>Azure Security Center pro požadavky IoT
 
-Tento článek obsahuje vysvětlení různých součástí služby Azure Security Center for IoT, co je potřeba začít a vysvětluje základní koncepty, které vám pomohou pochopit službu.
+Tento článek obsahuje vysvětlení různých komponent Azure Security Center pro službu IoT, co je potřeba začít, a vysvětluje základní koncepty, které vám pomůžou pochopit službu.
 
 ## <a name="minimum-requirements"></a>Minimální požadavky
 
-- Úroveň Standard centra IoT
-  - Oprávnění úrovně **vlastníka** role RBAC
-- [Pracovní prostor analýzy protokolů](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+- Úroveň Standard IoT Hub
+  - Oprávnění na úrovni **vlastníka** role RBAC
+- [Pracovní prostor Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
 - Azure Security Center (doporučeno)
-  - Použití Azure Security Center je doporučení a není požadavek. Bez Azure Security Center nebudete moci zobrazit další prostředky Azure v rámci služby IoT Hub.
+  - Použití Azure Security Center je doporučení, nikoli požadavek. Bez Azure Security Center nebudete moci zobrazit další prostředky Azure v rámci IoT Hub.
 
-## <a name="working-with-azure-security-center-for-iot-service"></a>Práce se službou Azure Security Center for IoT
+## <a name="working-with-azure-security-center-for-iot-service"></a>Práce s Azure Security Center pro službu IoT
 
-Přehledy a sestavy Azure Security Center for IoT jsou dostupné pomocí Azure IoT Hub a Azure Security Center. Pokud chcete povolit Azure Security Center pro IoT na azure iot hub, je vyžadován účet s oprávněními na úrovni **vlastníka.** Po povolení ASC pro IoT ve vašem IoT Hub, Azure Security Center pro IoT přehledy se zobrazí jako funkce **zabezpečení** v Azure IoT Hub a jako **IoT** v Azure Security Center.
+Azure Security Center pro IoT Insights a vytváření sestav jsou k dispozici pomocí Azure IoT Hub a Azure Security Center. Pokud chcete povolit Azure Security Center pro IoT na IoT Hub Azure, je potřeba účet s oprávněními na úrovni **vlastníka** . Po povolení funkce ASC pro IoT ve vašem IoT Hub se Azure Security Center pro IoT Insights zobrazí jako funkce **zabezpečení** v Azure IoT Hub a jako **IoT** v Azure Security Center.
 
-## <a name="supported-service-regions"></a>Podporované oblasti služeb
+## <a name="supported-service-regions"></a>Podporované oblasti služby
 
-Azure Security Center pro IoT je momentálně podporované pro Centra IoT v následujících oblastech Azure:
+Azure Security Center pro IoT se v současné době podporují pro centra IoT v následujících oblastech Azure:
 
 - USA – střed
 - USA – východ
@@ -48,7 +48,7 @@ Azure Security Center pro IoT je momentálně podporované pro Centra IoT v nás
 - USA – středozápad
 - USA – západ
 - USA – západ 2
-- Střední USA – jih
+- Střed USA – jih
 - USA – středosever
 - Střední Kanada
 - Kanada – východ
@@ -70,23 +70,23 @@ Azure Security Center pro IoT je momentálně podporované pro Centra IoT v nás
 - Indie – střed
 - Indie – jih
 
-Azure Security Center pro IoT směruje veškerý provoz ze všech evropských oblastí do regionálního datového centra západní Evropy a všech zbývajících oblastí do centrálního amerického regionálního datového centra.
+Azure Security Center pro IoT směruje veškerý provoz ze všech evropských oblastí do Západní Evropa oblastního datového centra a všech zbývajících oblastí do Střed USA regionální datové centrum.
 
 ## <a name="wheres-my-iot-hub"></a>Kde je můj IoT Hub?
 
-Než začnete, zkontrolujte umístění služby IoT Hub a ověřte dostupnost služby.
+Než začnete, zkontrolujte IoT Hub umístění a ověřte dostupnost služby.
 
-1. Otevřete svůj IoT Hub.
+1. Otevřete IoT Hub.
 1. Klikněte na **Přehled**.
-1. Ověřte, zda uvedené umístění odpovídá jedné z [podporovaných oblastí služeb](#supported-service-regions).
+1. Ověřte, že uvedené umístění odpovídá jedné z [podporovaných oblastí služby](#supported-service-regions).
 
 ## <a name="supported-platforms-for-agents"></a>Podporované platformy pro agenty
 
-Azure Security Center pro agenty IoT podporuje rostoucí seznam zařízení a platforem. Podívejte se na [seznam podporovaných platforem](how-to-deploy-agent.md) a zkontrolujte stávající nebo plánovanou knihovnu zařízení.
+Azure Security Center pro agenty IoT podporuje rostoucí seznam zařízení a platforem. Podívejte se na [seznam podporovaných platforem](how-to-deploy-agent.md) pro kontrolu existující nebo plánované knihovny zařízení.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si [přehled](overview.md) zabezpečení Azure IoT
-- Přečtěte si, jak [povolit službu](quickstart-onboard-iot-hub.md)
-- Přečtěte si [nejčastější dotazy k Centru zabezpečení Azure pro IoT](resources-frequently-asked-questions.md)
-- Zjistěte, jak [porozumět výstrahám Azure Security Center for IoT](concept-security-alerts.md)
+- Přečtěte si [Přehled](overview.md) zabezpečení Azure IoT.
+- Informace o tom, jak [službu povolit](quickstart-onboard-iot-hub.md)
+- Přečtěte si [Nejčastější dotazy k Azure Security Center pro IoT](resources-frequently-asked-questions.md)
+- Seznamte se s tím, jak [porozumět Azure Security Center pro výstrahy IoT](concept-security-alerts.md)

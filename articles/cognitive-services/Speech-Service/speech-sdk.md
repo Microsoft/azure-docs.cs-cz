@@ -1,7 +1,7 @@
 ---
-title: O řeči SDK - řeč služby
+title: O sadě Speech SDK – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Sada SDK (Speech software Development Kit) poskytuje mnoho funkcí služby Speech, což usnadňuje vývoj aplikací s podporou řeči.
+description: Sada Speech Software Development Kit (SDK) zveřejňuje mnoho funkcí služby pro rozpoznávání řeči, což usnadňuje vývoj aplikací podporujících řeč.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,83 +11,83 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399885"
 ---
 # <a name="about-the-speech-sdk"></a>Informace o sadě Speech SDK
 
-Sada SDK (Speech software Development Kit) poskytuje mnoho funkcí služby Speech, které vám umožňují vyvíjet aplikace s podporou řeči. Sada Speech SDK je k dispozici v mnoha programovacích jazycích a na všech platformách.
+Sada Speech Software Development Kit (SDK) zveřejňuje mnoho funkcí služby pro rozpoznávání řeči, které vám umožní vyvíjet aplikace s podporou řeči. Sada Speech SDK je dostupná v řadě programovacích jazyků a na všech platformách.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
 ## <a name="scenario-capabilities"></a>Možnosti scénáře
 
-Sada Speech SDK zveřejňuje mnoho funkcí ze služby řeči, ale ne všechny z nich. Možnosti sady Speech SDK jsou často spojeny se scénáři. Sada Speech SDK je ideální pro scénáře v reálném čase i bez vreálném-time, pomocí místních zařízení, souborů, úložiště objektů blob Azure a dokonce i vstupních a výstupních datových proudů. Pokud scénář není dosažitelné s sadou Speech SDK, vyhledejte alternativu rozhraní REST API.
+Sada Speech SDK zpřístupňuje mnoho funkcí služby Speech, ale ne všechny. Funkce sady Speech SDK jsou často přidruženy k scénářům. Sada Speech SDK je ideální pro scénáře v reálném čase i v reálném čase, pomocí místních zařízení, souborů, úložiště objektů BLOB v Azure a dokonce i vstupních a výstupních datových proudů. Pokud scénář není pro sadu Speech SDK dosažitelný, vyhledejte REST API alternativu.
 
 ### <a name="speech-to-text"></a>Převod řeči na text
 
-[Převod řeči na text](speech-to-text.md) (označovaný také jako *rozpoznávání řeči)* přepisuje zvukové proudy na text, který mohou aplikace, nástroje nebo zařízení využívat nebo zobrazovat. Pomocí funkce převod řeči na text s [jazykovou úpravou (LUIS)](../luis/index.yml) můžete odvodit záměry uživatelů z přepisované řeči a jednat s hlasovými příkazy. Pomocí [překladu řeči](speech-translation.md) přeložte vstup řeči do jiného jazyka pomocí jediného volání. Další informace naleznete v [tématu Základy převodu řeči na text](speech-to-text-basics.md).
+[Převod řeči na text](speech-to-text.md) (označovaný také jako *rozpoznávání řeči*) transcribes zvukové streamy na text, který můžou aplikace, nástroje nebo zařízení spotřebovat nebo zobrazit. Použití převodu řeči na text s [Language Understanding (Luis)](../luis/index.yml) k odvození záměrů uživatele z přepisu řeči a fungování hlasových příkazů. [Překlad řeči](speech-translation.md) použijte k překladu vstupu řeči do jiného jazyka s jedním voláním. Další informace najdete v tématu [základy převodu řeči na text](speech-to-text-basics.md).
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
-[Převod textu na řeč](text-to-speech.md) (označovaný také jako *syntéza řeči*) převede text na syntetizovanou řeč podobné člověku. Vstupní text je buď řetězcové literály nebo pomocí [jazyka značek syntézy řeči (SSML).](speech-synthesis-markup.md) Další informace o standardních nebo neurálních hlasech naleznete v [tématu Jazyk převodu textu na řeč a hlasová podpora](language-support.md#text-to-speech).
+Převod [textu na řeč](text-to-speech.md) (označovaný také jako *syntéza řeči*) převede text na syntetizované rozpoznávání řeči od člověka. Vstupní text je buď řetězcové literály, nebo použití [jazyka SSML (Speech syntézy)](speech-synthesis-markup.md). Další informace o standardu nebo neuronové hlasy najdete v tématu věnovaném [jazyku pro převod textu na řeč a hlasové podpoře](language-support.md#text-to-speech).
 
 ### <a name="voice-assistants"></a>Hlasoví asistenti
 
-Hlasoví asistenti používající sadu Speech SDK umožňují vývojářům vytvářet přirozené konverzační rozhraní podobné člověku pro své aplikace a prostředí. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá kanál přímé řeči rozhraní Bot Framework nebo integrovanou službu vlastních příkazů (Preview) pro dokončení úlohy. Kromě toho hlasové asistenty lze vytvořit pomocí [vlastního hlasového portálu](https://aka.ms/customvoice) k vytvoření jedinečného hlasového prostředí.
+Hlasové asistenti, kteří používají sadu Speech SDK, umožňují vývojářům vytvářet pro své aplikace a prostředí přirozené rozhraní pro konverzaci podobné člověku. Služba hlasového asistenta poskytuje rychlou a spolehlivou interakci mezi zařízením a asistentem. Implementace používá kanál s přímým přístupem rozhraní bot Framework nebo integrovaný vlastní příkaz (Preview) služby pro dokončení úkolu. Pomocí vlastního hlasového [portálu](https://aka.ms/customvoice) můžete také vytvořit jedinečné prostředí pro hlasové asistenty.
 
-#### <a name="keyword-spotting"></a>Pozorování klíčových slov
+#### <a name="keyword-spotting"></a>Klíčové slovo hledání
 
-Koncept [zmetenní klíčových slov](speech-devices-sdk-create-kws.md) je podporován v sadě Speech SDK. Pozorování klíčových slov je akt identifikace klíčového slova v řeči, následovaný akcí při poslechu klíčového slova. Například "Hey Cortana" by aktivovat asistenta Cortana.
+Koncept [klíčového slova hledání](speech-devices-sdk-create-kws.md) je podporován v sadě Speech SDK. Klíčové slovo hledání je aktem, který identifikuje klíčové slovo v řeči a po vyslechnutí klíčového slova sleduje akci. Například "Hey Cortana" by aktivoval pomocníka Cortana.
 
 ### <a name="meeting-scenarios"></a>Scénáře schůzky
 
-Sada Speech SDK je ideální pro přepis scénářů schůzek, ať už z jednoho zařízení nebo konverzace s více zařízeními.
+Sada Speech SDK je ideální pro scénáře setkání zdlouhavého přepisování, ať už z jednoho zařízení, nebo z konverzace s více zařízeními.
 
 #### <a name="conversation-transcription"></a>Přepis konverzace
 
-[Přepis konverzace](conversation-transcription.md) umožňuje rozpoznávání řeči v reálném čase (a aasynchronní), identifikaci mluvčího a přiřazení věty každému řečníkovi (označované také jako *diarizace).* Je ideální pro přepis osobních schůzek se schopností rozlišovat řečníky.
+[Přepis konverzace](conversation-transcription.md) umožňuje rozpoznávání řeči v reálném čase (a asynchronní), identifikaci mluvčího a navýšení věty na jednotlivé mluvčí (označované také jako *diarization*). Je ideální pro zdlouhavého přepisování schůzky na osobu s možností odlišit reproduktory.
 
-#### <a name="multi-device-conversation"></a>Konverzace na více zařízeních
+#### <a name="multi-device-conversation"></a>Konverzace s více zařízeními
 
-Díky [konverzaci na více zařízeních](multi-device-conversation.md)připojte do konverzace více zařízení nebo klientů a odesílejte hlasové nebo textové zprávy se snadnou podporou přepisu a překladu.
+Při [konverzaci s více](multi-device-conversation.md)zařízeními můžete propojit několik zařízení nebo klientů v rámci konverzace, abyste mohli odesílat zprávy založené na řeči nebo textové zprávy s jednoduchou podporou pro přepis a překlady.
 
-### <a name="custom--agent-scenarios"></a>Vlastní scénáře / scénáře agenta
+### <a name="custom--agent-scenarios"></a>Vlastní nebo agentské scénáře
 
-Sadu Speech SDK lze použít pro přepis scénářů centra volání, kde jsou generována telefonní data.
+Sadu Speech SDK lze použít pro scénáře zdlouhavého přepisováního centra volání, kde jsou vygenerována data telefonního subsystému.
 
 #### <a name="call-center-transcription"></a>Přepis nahrávek z call centra
 
-[Přepis call centra](call-center-transcription.md) je běžný scénář pro převod řeči na text pro přepis velkých objemů telefonních dat, které mohou pocházet z různých systémů, jako je interaktivní hlasová odezva (IVR). Nejnovější modely rozpoznávání řeči ze služby Rozpoznávání řeči vynikají v přepisu těchto telefonních dat, a to i v případech, kdy je pro člověka obtížné porozumět.
+[Přepis Center pro volání](call-center-transcription.md) je běžný scénář pro zdlouhavého přepisování velkých objemů dat telefonního subsystému, které můžou pocházet z různých systémů, jako je například interaktivní hlasová odezva (IRV). Nejnovější modely rozpoznávání řeči z Excelu služby Speech na zdlouhavého přepisování tato data telefonního subsystému, a to i v případě, že jsou data obtížná člověkem srozumitelná.
 
-### <a name="codec-compressed-audio-input"></a>Kodek komprimovaný zvukový vstup
+### <a name="codec-compressed-audio-input"></a>Komprimovaný zvukový vstup kodeku
 
-Několik programovacích jazyků sady Speech SDK podporuje kodekkomizované vstupní datové proudy zvuku. Další informace naleznete v <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">tématu použití <span class="docon docon-navigate-external x-hidden-focus"> </span>formátů komprimovaných zvukových vstupů </a>.
+Několik programovacích jazyků pro sadu Speech SDK podporuje kodeky komprimované zvukové vstupní proudy. Další informace najdete v tématu <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">použití komprimovaných formátů <span class="docon docon-navigate-external x-hidden-focus"> </span>zvukového vstupu </a>.
 
 ## <a name="rest-api"></a>REST API
 
-Zatímco sada Speech SDK pokrývá mnoho funkcí služby Řeči, pro některé scénáře můžete chtít použít rozhraní REST API.
+Sada Speech SDK obsahuje mnoho funkcí funkce služby Speech, a to v některých případech můžete chtít použít REST API.
 
 ### <a name="batch-transcription"></a>Dávkový přepis
 
-[Dávkový přepis](batch-transcription.md) umožňuje asynchronní přepis řeči na text velkých objemů dat. Dávkový přepis je možný pouze z rozhraní REST API. Kromě převodu zvuku řeči na text umožňuje dávková řeč na text také diarizaci a analýzu mínění.
+[Batch přepis](batch-transcription.md) umožňuje provádět přepis velkých objemů dat z převodu řeči na text. Dávkový přepis je možný jenom z REST API. Kromě převodu zvukového zvuku na text, Batch Speech-to-text také umožňuje diarization a mínění-Analysis.
 
 ## <a name="customization"></a>Přizpůsobení
 
-Služba speech service poskytuje skvělé funkce s výchozími modely napříč převodem řeči na text, převod textu na řeč a překladem řeči. Někdy můžete chtít zvýšit výkon směrného plánu pracovat ještě lépe s jedinečným případem použití. Služba Speech Service má řadu nástrojů pro přizpůsobení bez kódu, které usnadňují a umožňují vytvořit konkurenční výhodu s vlastními modely založenými na vlastních datech. Tyto modely budou k dispozici pouze vám a vaší organizaci.
+Služba Speech přináší skvělé funkce s výchozími modely pro převod řeči na text, převod textu na řeč a převod řeči. V některých případech můžete chtít zvýšit výkon standardních hodnot tak, aby fungoval ještě lépe díky jedinečnému případu použití. Služba Speech má řadu nástrojů pro přizpůsobení bez kódu, které usnadňují a umožňují vytvářet konkurenční výhody s vlastními modely na základě vašich vlastních dat. Tyto modely budou k dispozici pouze pro vás a vaši organizaci.
 
-### <a name="custom-speech-to-text"></a>Vlastní převod řeči na text
+### <a name="custom-speech-to-text"></a>Custom Speech na text
 
-Při použití funkce převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvářet a trénovat vlastní modely akustické, jazykové a výslovnosti, které řeší okolní hluk nebo slovní zásobu specifickou pro dané odvětví. Vytvoření a správa modelů vlastní řeči bez kódu je k dispozici prostřednictvím [portálu vlastní řeči](https://aka.ms/customspeech). Po publikování modelu vlastní řeči, může být spotřebována řeči SDK.
+Při použití převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvořit a vyškolit vlastní modely akustického, jazykového a výslovnosti pro řešení hluku nebo slovníku specifického pro konkrétní odvětví. Vytváření a Správa modelů Custom Speechch bez kódu je k dispozici prostřednictvím [portálu Custom Speech](https://aka.ms/customspeech). Po publikování Custom Speech modelu ho může sada Speech SDK spotřebovat.
 
 ### <a name="custom-text-to-speech"></a>Vlastní převod textu na řeč
 
-Vlastní převod textu na řeč, známý také jako Vlastní hlas, je sada online nástrojů, které vám umožní vytvořit rozpoznatelný, jedinečný hlas pro vaši značku. Vytvoření a správa modelů vlastních hlasových programů bez kódu je k dispozici prostřednictvím [vlastního hlasového portálu](https://aka.ms/customvoice). Po publikování modelu vlastní hlas, může být spotřebována řeči SDK.
+Vlastní převod textu na řeč, označovaný také jako vlastní hlas, je sada online nástrojů, která umožňuje vytvořit rozpoznatelný hlas pro vaši značku. Vytváření a Správa vlastních modelů hlasu bez kódu je k dispozici prostřednictvím [vlastního hlasového portálu](https://aka.ms/customvoice). Po publikování vlastního hlasového modelu ho může sada Speech SDK spotřebovat.
 
-## <a name="get-the-speech-sdk"></a>Získání sady SDK pro rozpoznávání řeči
+## <a name="get-the-speech-sdk"></a>Získat sadu Speech SDK
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -126,4 +126,4 @@ Vlastní převod textu na řeč, známý také jako Vlastní hlas, je sada onlin
 ## <a name="next-steps"></a>Další kroky
 
 * [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Podívejte se, jak rozpoznat řeč v C #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [Přečtěte si téma rozpoznávání řeči v jazyce C. #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

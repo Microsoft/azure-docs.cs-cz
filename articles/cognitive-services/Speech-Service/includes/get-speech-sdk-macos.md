@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400002"
 ---
-Při vývoji pro macOS jsou k dispozici tři sady SDK řeči.
+Při vývoji pro macOS jsou k dispozici tři sady Speech SDK.
 
-- Sada Objective-C Speech SDK je nativně k dispozici jako balíček CocoaPod
-- Sada SDK řeči .NET by mohla být použita s **Xamarin.Mac** při implementaci rozhraní .NET Standard 2.0
-- Sada Python Speech SDK je k dispozici jako modul PyPI
+- Sada SDK pro rozpoznávání řeči typu cíl-C je nativně k dispozici jako balíček CocoaPod.
+- Sada .NET Speech SDK se dá použít s **Xamarin. Mac** , protože implementuje .NET Standard 2,0.
+- Sada Python Speech SDK je k dispozici jako modul PyPI.
 
 > [!TIP]
-> Podrobnosti pomocí sady Objective-C Speech SDK s swiftem naleznete <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">v tématu Import objective-C do swiftu <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+> Podrobné informace o použití sady SDK pro rozpoznávání řeči v cíli-C s SWIFT naleznete v tématu <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">importování cíle – C do SWIFT <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
-### <a name="system-requirements"></a>Systémové požadavky
+### <a name="system-requirements"></a>Požadavky na systém
 
-- MacOS verze 10.13 nebo novější
+- MacOS verze 10,13 nebo novější
 
 # <a name="xcode"></a>[Xcode](#tab/mac-xcode)
 
 :::row:::
     :::column span="3":::
-        Balíček macOS CocoaPod je k dispozici ke stažení a použití s integrovaným vývojovým prostředím <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">(IDE) Xcode 9.4.1 (nebo novější). <span class="docon docon-navigate-external x-hidden-focus"></span> </a> Nejprve <a href="https://aka.ms/csspeech/macosbinary" target="_blank">si stáhněte binární <span class="docon docon-navigate-external x-hidden-focus"> </span>kakaový pod. </a> Extrahujte pod ve stejném adresáři pro jeho zamýšlené `pod` použití, `target`vytvořte *Podfile* a uveďte jako .
+        Balíček CocoaPod MacOS je k dispozici ke stažení a použití s integrovaným vývojovým prostředím (IDE) <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (nebo novějším) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> . Nejdřív <a href="https://aka.ms/csspeech/macosbinary" target="_blank">Stáhněte binární CocoaPod <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Rozbalte pole pod ve stejném adresáři pro zamýšlené použití, vytvořte *souboru podfile* a seznam `pod` jako `target`.
     :::column-end:::
     :::column:::
         <br>
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        Xamarin.Mac zpřístupňuje vývojářům .NET kompletní sadu macOS SDK pro vytváření nativních aplikací pro Mac pomocí jazyka C#. Další informace naleznete v tématu <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        Xamarin.Mac zpřístupňuje vývojářům .NET kompletní sadu macOS SDK pro vytváření nativních aplikací pro Mac pomocí jazyka C#. Další informace najdete v tématu <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -69,7 +69,7 @@ end
 
 ---
 
-#### <a name="additional-resources"></a>Další zdroje
+#### <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">Zdrojový kód objective-C sady MacOS Speech SDK<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">MacOS Speech SDK rychlý start Zdrojový kód Swift<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS Speech pro rychlý start – cíl – zdrojový kód C<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS Speech SDK pro rychlý Start – zdrojový kód SWIFT<span class="docon docon-navigate-external x-hidden-focus"></span></a>

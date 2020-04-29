@@ -1,7 +1,7 @@
 ---
-title: Úvod do brány firewall webových aplikací Azure
+title: Úvod do firewallu webových aplikací Azure
 titleSuffix: Azure Web Application Firewall
-description: Tento článek obsahuje přehled brány firewall webových aplikací (WAF) v application gateway
+description: Tento článek poskytuje přehled firewallu webových aplikací (WAF) na Application Gateway
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -9,162 +9,162 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
 ms.openlocfilehash: e0e5c143e619b1c381a4a618a811883ad189719b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81314358"
 ---
-# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Brána firewall webových aplikací Azure v bráně aplikací Azure
+# <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Firewall webových aplikací Azure v Azure Application Gateway
 
-Azure Web Application Firewall (WAF) ve službě Azure Application Gateway poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Webové aplikace jsou stále více terčem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Vkládání SQL a skriptování mezi lokalitami patří mezi nejběžnější útoky.
+Firewall webových aplikací Azure (WAF) v Azure Application Gateway poskytuje centralizovanou ochranu webových aplikací před běžnými zneužitími a chybami zabezpečení. Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Vkládání SQL a skriptování mezi weby patří mezi nejběžnější útoky.
 
-WAF na aplikační bráně je založen na [základní sadě pravidel (CRS)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1, 3.0 nebo 2.2.9 z projektu zabezpečení otevřených webových aplikací (OWASP). WAF se automaticky aktualizuje tak, aby zahrnoval ochranu před novými chybami zabezpečení, bez další konfigurace. 
+WAF on Application Gateway vychází ze [základní sady pravidel (počítačový systém)](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3,1, 3,0 nebo 2.2.9 z otevřeného projektu webové aplikace Security (OWASP). WAF se automaticky aktualizuje, aby zahrnovala ochranu proti novým chybám zabezpečení bez nutnosti další konfigurace. 
 
-Všechny níže uvedené funkce WAF existují uvnitř zásad WAF. Můžete vytvořit více zásad a mohou být přidruženy k aplikační bráně, k jednotlivým naslouchaným posluchačům nebo k pravidlům směrování na základě cesty v bráně aplikace. Tímto způsobem můžete mít samostatné zásady pro každý web za vaší aplikační brány v případě potřeby. Další informace o zásadách WAF naleznete [v tématu Vytvoření zásad WAF](create-waf-policy-ag.md).
+Všechny níže uvedené funkce WAF existují v zásadách WAF. Můžete vytvořit více zásad a můžete je přidružit k Application Gateway, jednotlivým posluchačům nebo k pravidlům směrování na základě cesty na Application Gateway. Tímto způsobem můžete v případě potřeby mít v případě potřeby samostatné zásady pro každou lokalitu za vaším Application Gateway. Další informace o zásadách WAF najdete v tématu [Vytvoření zásady WAF](create-waf-policy-ag.md).
 
    > [!NOTE]
-   > Zásady WAF pro vlastní web a uri jsou ve verzi Public Preview. To znamená, že tato funkce podléhá doplňkovým podmínkám použití společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+   > Zásady WAF pro jednotlivé lokality a identifikátory URI jsou v Public Preview. To znamená, že tato funkce podléhá dodatečným podmínkám používání společnosti Microsoft. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-![Diagram WAF aplikační brány](../media/ag-overview/waf1.png)
+![Diagram Application Gateway WAF](../media/ag-overview/waf1.png)
 
-Aplikační brána funguje jako řadič pro doručování aplikací (ADC). Nabízí zabezpečení transportní vrstvy (TLS), dříve známé jako SSL (Secure Sockets Layer), ukončení, spřažení relací založené na souborech cookie, distribuci zatížení kruhového dotazování, směrování založené na obsahu, schopnost hostovat více webových stránek a vylepšení zabezpečení.
+Application Gateway funguje jako kontroler doručování aplikací (ADC). Nabízí zabezpečení TLS (Transport Layer Security), dříve označované jako SSL (Secure Sockets Layer) (SSL), ukončení, spřažení relací na základě souborů cookie, distribuce zatížení kruhového dotazování, směrování na základě obsahu, schopnost hostovat více webů a vylepšení zabezpečení.
 
-Vylepšení zabezpečení aplikační brány zahrnují správu zásad TLS a komplexní podporu TLS. Zabezpečení aplikací je posíleno integrací WAF do aplikační brány. Tato kombinace chrání webové aplikace před běžnými chybami zabezpečení. A poskytuje snadno konfigurovatelné centrální umístění pro správu.
+Mezi Application Gateway vylepšení zabezpečení patří Správa zásad TLS a kompletní podpora protokolu TLS. Zabezpečení aplikací je posílené integrací WAF do Application Gateway. Tato kombinace chrání webové aplikace před běžnými chybami zabezpečení. A nabízí snadnou konfiguraci centrálního umístění pro správu.
 
 ## <a name="benefits"></a>Výhody
 
-Tato část popisuje základní výhody, které waf na aplikační brány poskytuje.
+Tato část popisuje základní výhody, které WAF Application Gateway poskytuje.
 
 ### <a name="protection"></a>Ochrana
 
-* Chraňte své webové aplikace před webovými chybami zabezpečení a útoky bez úprav y back-end kódu.
+* Chraňte své webové aplikace proti webovým chybám zabezpečení a útokům bez nutnosti úprav kódu back-endu.
 
-* Chraňte více webových aplikací současně. Instance Application Gateway může hostit až 40 webů, které jsou chráněny bránou firewall webové aplikace.
+* Chraňte více webových aplikací současně. Instance Application Gateway může hostovat až 40 webů, které jsou chráněné bránou firewall webových aplikací.
 
-* Vytvoření vlastních zásad WAF pro různé weby za stejným WAF 
+* Vytváření vlastních zásad WAF pro různé weby za stejným WAF 
 
-* Chraňte své webové aplikace před škodlivými roboty pomocí sady pravidel reputace IP (preview)
+* Chraňte své webové aplikace před škodlivými robotyy pomocí IP reputace RuleSet (Preview).
 
 ### <a name="monitoring"></a>Monitorování
 
-* Sledujte útoky proti webovým aplikacím pomocí protokolu WAF v reálném čase. Protokol je integrovaný s [Azure Monitor](../../azure-monitor/overview.md) sledovat waf výstrahy a snadno sledovat trendy.
+* Sledujte útoky na webové aplikace pomocí protokolu WAF v reálném čase. Protokol je integrovaný do [Azure monitor](../../azure-monitor/overview.md) a umožňuje sledovat výstrahy WAF a snadno sledovat trendy.
 
-* Waf aplikační brány je integrovaný s Azure Security Center. Security Center poskytuje centrální zobrazení stavu zabezpečení všech vašich prostředků Azure.
+* Application Gateway WAF je integrována s Azure Security Center. Security Center poskytuje centrální pohled na stav zabezpečení všech vašich prostředků Azure.
 
 ### <a name="customization"></a>Přizpůsobení
 
-* Přizpůsobte pravidla WAF a skupiny pravidel tak, aby vyhovovaly vašim požadavkům na aplikaci a eliminovaly falešně pozitivní výsledky.
+* Přizpůsobte pravidla WAF a skupiny pravidel tak, aby vyhovovaly vašim požadavkům na aplikace a vyloučily falešně pozitivní výsledky.
 
-* Přidružte zásady WAF pro každý web za waf, aby bylo možné konfiguraci specifické pro web
+* Přiřaďte zásady WAF pro každou lokalitu za vaší WAF, aby bylo možné nakonfigurovat konkrétní lokalitu.
 
-* Vytvoření vlastních pravidel podle potřeb vaší aplikace
+* Vytváření vlastních pravidel podle potřeb vaší aplikace
 
 ## <a name="features"></a>Funkce
 
-- Ochrana proti vstřikování SQL.
-- Ochrana skriptování mezi pracemi.
-- Ochrana proti dalším běžným webovým útokům, jako je například vkládání příkazů, pašování požadavků HTTP, rozdělení odpovědi HTTP a vzdálené zahrnutí souborů.
-- Ochrana proti porušení protokolu HTTP.
-- Ochrana proti anomáliím protokolu HTTP, jako je například chybějící hostitelský uživatelský agent a přijímat záhlaví.
-- Ochrana proti prohledávačům a skenerům.
-- Detekce běžných chybných konfigurací aplikací (například Apache a IIS).
-- Konfigurovatelné limity velikosti požadavku s dolnía horní mezí.
-- Seznamy vyloučení umožňují vynechat určité atributy požadavku z vyhodnocení WAF. Běžným příkladem jsou tokeny vložené službou Active Directory, které se používají pro pole ověřování nebo hesla.
-- Vytvořte vlastní pravidla, která budou vyhovovat konkrétním potřebám vašich aplikací.
-- Geofiltrovat provoz, který některým zemím umožní nebo zablokuje přístup k vašim aplikacím. (Preview)
-- Chraňte své aplikace před roboty pomocí sady pravidel pro zmírnění botů. (Preview)
+- Ochrana injektáže SQL.
+- Ochrana skriptování mezi weby.
+- Ochrana proti jiným běžným webovým útokům, jako je vkládání příkazů, vkládání požadavků HTTP, rozdělování odpovědí HTTP a vzdálené zahrnutí souborů.
+- Ochrana proti narušení protokolu HTTP.
+- Ochrana proti anomáliím protokolu HTTP, například chybějícímu uživatelskému agentovi a hlavičkám přijetí hostitele.
+- Ochrana proti prohledávacím modulům a skenerům
+- Detekce běžných neobvyklých konfigurací aplikací (například Apache a IIS).
+- Konfigurovatelné omezení velikosti žádostí s použitím dolních a horních mezí.
+- Seznamy vyloučení umožňují vynechat určité atributy žádosti z WAF vyhodnocení. Běžným příkladem jsou vložené tokeny vložené službou Active Directory, které se používají pro pole ověřování nebo hesla.
+- Vytvářejte vlastní pravidla, aby vyhovovala konkrétním potřebám vašich aplikací.
+- Přenos geografického filtru pro povolení nebo blokování určitých zemí pro získání přístupu k vašim aplikacím. (Preview)
+- Chraňte své aplikace z roboty pomocí RuleSet zmírnění ochrany bot. (Preview)
 
 ## <a name="waf-policy"></a>Zásady WAF
 
-Chcete-li povolit bránu firewall webových aplikací v bráně aplikace, musíte vytvořit zásady WAF. Tyto zásady jsou místo, kde existují všechna spravovaná pravidla, vlastní pravidla, vyloučení a další vlastní nastavení, jako je limit pro odesílání souborů. 
+Pokud chcete povolit bránu firewall webových aplikací v Application Gateway, musíte vytvořit zásadu WAF. Tato zásada je tam, kde existují všechna spravovaná pravidla, vlastní pravidla, vyloučení a další přizpůsobení, jako je například limit nahrávání souborů. 
 
 ### <a name="core-rule-sets"></a>Základní sady pravidel
 
-Aplikační brána podporuje tři sady pravidel: CRS 3.1, CRS 3.0 a CRS 2.2.9. Tato pravidla chrání webové aplikace před škodlivými aktivitami.
+Application Gateway podporuje tři sady pravidel: počítačový rezervační 3,1, počítačový počítač 3,0 a počítačový 2.2.9. Tato pravidla chrání vaše webové aplikace před škodlivými aktivitami.
 
-Další informace naleznete v tématu [Skupiny a pravidla brány firewall webových aplikací firewall .](application-gateway-crs-rulegroups-rules.md)
+Další informace najdete v tématu [skupiny pravidel a pravidla pro počítačový rezervační Firewall webových aplikací](application-gateway-crs-rulegroups-rules.md).
 
 ### <a name="custom-rules"></a>Vlastní pravidla
 
-Aplikační brána také podporuje vlastní pravidla. Pomocí vlastních pravidel můžete vytvořit vlastní pravidla, která jsou vyhodnocována pro každý požadavek, který prochází WAF. Tato pravidla mají vyšší prioritu než ostatní pravidla ve spravovaných sadách pravidel. Pokud je splněna sada podmínek, je provedena akce povolit nebo blokovat. 
+Application Gateway podporuje také vlastní pravidla. Pomocí vlastních pravidel můžete vytvořit vlastní pravidla, která se vyhodnotí pro každý požadavek, který projde přes WAF. Tato pravidla mají vyšší prioritu než zbývající pravidla ve spravovaných sadách pravidel. Je-li splněna sada podmínek, je provedena akce pro povolení nebo blokování. 
 
-Operátor geomatch je nyní k dispozici ve verzi Public Preview pro vlastní pravidla. Další informace naleznete v [tématu vlastní pravidla geomatch.](custom-waf-rules-overview.md#geomatch-custom-rules-preview)
-
-> [!NOTE]
-> Operátor geomatch pro vlastní pravidla je aktuálně ve verzi Public Preview a je vybaven předběžnou smlouvou o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Další informace o vlastních pravidlech najdete [v tématu Vlastní pravidla pro aplikační bránu.](custom-waf-rules-overview.md)
-
-### <a name="bot-mitigation-preview"></a>Zmírnění botů (náhled)
-
-Spravovanou sadu pravidel ochrany botů lze povolit tak, aby váš WAF blokoval nebo protokoloval požadavky ze známých škodlivých IP adres spolu se spravovanou sadou pravidel. IP adresy jsou získávány z informačního kanálu Microsoft Threat Intelligence. Inteligentní graf zabezpečení pohání microsoftovou analýzu hrozeb a používá ho několik služeb včetně Azure Security Center.
+Operátor inshodě je teď dostupný ve verzi Public Preview pro vlastní pravidla. Další informace najdete v tématu [vlastní pravidla pro inshodě](custom-waf-rules-overview.md#geomatch-custom-rules-preview) .
 
 > [!NOTE]
-> Sada pravidel ochrany botů je aktuálně ve verzi Public Preview a je vybavena předběžnou smlouvou o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Operátor porovnávání pro vlastní pravidla je aktuálně ve verzi Public Preview a je k dispozici ve verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud je povolena ochrana botů, příchozí požadavky, které odpovídají IP adresy klienta škodlivého robota, jsou zaznamenány v protokolu brány firewall, další informace naleznete níže. K protokolům WAF můžete přistupovat z účtu úložiště, centra událostí nebo analýzy protokolů. 
+Další informace o vlastních pravidlech najdete v tématu [vlastní pravidla pro Application Gateway.](custom-waf-rules-overview.md)
 
-### <a name="waf-modes"></a>Režimy WAF
+### <a name="bot-mitigation-preview"></a>Omezení na robota (Preview)
 
-Waf aplikační brány lze nakonfigurovat tak, aby běžel v následujících dvou režimech:
-
-* **Režim zjišťování**: Monitoruje a zaznamenává všechna upozornění na hrozby. Diagnostiku protokolování pro aplikační bránu zapnete v části **Diagnostika.** Musíte se také ujistit, že je vybrán a zapnutý protokol WAF. Brána firewall webové aplikace neblokuje příchozí požadavky, když pracuje v režimu zjišťování.
-* **Režim prevence**: Blokuje vniknutí a útoky, které pravidla detekují. Útočník obdrží výjimku "403 neoprávněný přístup" a připojení je ukončeno. Režim prevence zaznamenává takové útoky v protokolech WAF.
+Sada pravidel spravované ochrany robotů může být povolená pro WAF k blokování nebo protokolování požadavků ze známých škodlivých IP adres společně se spravovaným RuleSet. IP adresy se naúčtují z informačního kanálu Microsoft Threat Intelligence. Intelligent Security Graph využívá Microsoft Threat Intelligence a používá ho víc služeb, včetně Azure Security Center.
 
 > [!NOTE]
-> Doporučujeme spustit nově nasazený WAF v režimu zjišťování na krátkou dobu v produkčním prostředí. To poskytuje možnost získat [protokoly brány firewall](../../application-gateway/application-gateway-diagnostics.md#firewall-log) a aktualizovat všechny výjimky nebo [vlastní pravidla](./custom-waf-rules-overview.md) před přechodem do režimu prevence. To může pomoci snížit výskyt neočekávaného blokovaného provozu.
+> Sada pravidel ochrany robota je aktuálně ve verzi Public Preview a poskytuje verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti. Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-### <a name="anomaly-scoring-mode"></a>Režim hodnocení anomálií
+Pokud je zapnutá ochrana robota, do protokolu brány firewall se zaprotokolují příchozí požadavky, které se shodují s IP adresami klientů škodlivou bot, další informace najdete níže. K protokolům WAF můžete přistupovat z účtu úložiště, centra událostí nebo Log Analytics. 
 
-OWASP má dva režimy pro rozhodování, zda blokovat provoz: tradiční režim a režim hodnocení anomálií.
+### <a name="waf-modes"></a>WAF režimy
 
-V tradičním režimu je provoz, který odpovídá libovolnému pravidlu, považován za nezávisle na jiných shodách pravidel. Tento režim je snadno pochopitelný. Nedostatek informací o tom, kolik pravidel odpovídá konkrétnímu požadavku, je však omezením. Takže byl zaveden režim hodnocení anomálií. Je to výchozí pro OWASP 3. *x*.
+Application Gateway WAF lze nakonfigurovat tak, aby běžela v následujících dvou režimech:
 
-V režimu hodnocení anomálií není provoz, který odpovídá libovolnému pravidlu, okamžitě blokován, když je brána firewall v režimu prevence. Pravidla mají určitou závažnost: *Kritická*, *Chyba*, *Upozornění*nebo *Oznámení*. Tato závažnost ovlivňuje číselnou hodnotu požadavku, která se nazývá Skóre anomálií. Například jedna shoda pravidel *upozornění* přispívá ke skóre 3. Jedna *shoda kritických* pravidel přispívá 5.
+* **Detekční režim**: monitoruje a protokoluje všechny výstrahy hrozeb. Diagnostiku protokolování pro Application Gateway zapnete v části **Diagnostika** . Musíte se také ujistit, že je vybraný a zapnutý protokol WAF. Firewall webových aplikací neblokuje příchozí požadavky, když pracuje v režimu detekce.
+* **Režim prevence**: blokuje vniknutí a útoky, které pravidla zjišťují. Útočník obdrží výjimku "403 neoprávněný přístup" a připojení je zavřené. Režim prevence zaznamenává takové útoky do protokolů WAF.
+
+> [!NOTE]
+> Doporučuje se spouštět nově nasazené WAF v režimu detekce po krátkou dobu v produkčním prostředí. Díky tomu získáte možnost získat [protokoly brány firewall](../../application-gateway/application-gateway-diagnostics.md#firewall-log) a aktualizovat všechny výjimky nebo [vlastní pravidla](./custom-waf-rules-overview.md) před přechodem do režimu prevence. To může přispět k omezení výskytu neočekávaného blokovaného provozu.
+
+### <a name="anomaly-scoring-mode"></a>Režim bodování anomálií
+
+OWASP má dva režimy pro rozhodnutí, jestli se má blokovat provoz: režim vyhodnocování tradičních režimů a anomálií.
+
+V tradičním režimu se provoz, který odpovídá libovolnému pravidlu, považuje za nezávisle na ostatních shodách pravidla. Tento režim je snadno srozumitelný. Ale nedostatek informací o tom, kolik pravidel odpovídá konkrétní žádosti, je omezení. Proto byl zaveden režim bodování anomálií. Ve výchozím nastavení je to pro OWASP 3. *x*.
+
+V režimu bodování anomálií není přenos, který odpovídá libovolnému pravidlu, okamžitě zablokován, pokud je brána firewall v režimu prevence. Pravidla mají určitou závažnost: *kritická*, *Chyba*, *Upozornění* *nebo upozornění*. Tato závažnost má vliv na číselnou hodnotu pro požadavek, který se označuje jako skóre anomálií. Například jedno pravidlo *Upozornění* bude odpovídat 3 do skóre. Jedna *kritická* shoda pravidla přispívá 5.
 
 |Severity  |Hodnota  |
 |---------|---------|
 |Kritická     |5|
 |Chyba        |4|
 |Upozornění      |3|
-|Oznámení       |2|
+|Šestiměsíční       |2|
 
-Existuje prahová hodnota 5 pro skóre anomálií blokovat provoz. Takže jedna *shoda kritické* pravidlo je dost pro aplikační brány WAF blokovat požadavek, a to i v režimu prevence. Ale jedno *pravidlo upozornění* pouze zvyšuje skóre anomálií o 3, což samo o sobě nestačí k zablokování provozu.
+Pro skóre anomálií pro blokování provozu existuje prahová hodnota 5. Proto je pro Application Gateway WAF k blokování požadavku jedna *kritická* pravidla dostatečná, a to i v režimu prevence. Ale jedna shoda pravidla *Upozornění* zvyšuje jenom skóre anomálií o 3, což není dostačující pro blokování provozu.
 
 > [!NOTE]
-> Zpráva, která je zaznamenána, když pravidlo WAF odpovídá provozu, obsahuje hodnotu akce "Blokováno". Ale provoz je ve skutečnosti blokován pouze pro skóre anomálií 5 nebo vyšší.  
+> Zpráva zaznamenaná v případě, že pravidlo WAF odpovídá provozu, zahrnuje hodnotu akce "blokováno". Provoz je ale ve skutečnosti zablokovaný jenom pro skóre anomálií 5 nebo vyšší.  
 
 ### <a name="waf-monitoring"></a>Monitorování WAF
 
-Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu waf a aplikace, které chrání, jsou podporovány integrací s Azure Security Center, Azure Monitor a Azure Monitor protokoly.
+Monitorování stavu službu Application Gateway je velmi důležité. Monitorování stavu WAF a aplikací, které chrání, jsou podporovány integrací s protokoly Azure Security Center, Azure Monitor a Azure Monitor.
 
-![Diagram diagnostiky WAF aplikační brány](../media/ag-overview/diagnostics.png)
+![Diagram diagnostiky Application Gateway WAF](../media/ag-overview/diagnostics.png)
 
 #### <a name="azure-monitor"></a>Azure Monitor
 
-Protokoly aplikační brány jsou integrované s [Azure Monitor](../../azure-monitor/overview.md). To umožňuje sledovat diagnostické informace, včetně výstrah WAF a protokolů. K této funkci se dostanete na kartě **Diagnostika** v prostředku aplikační brány na portálu nebo přímo prostřednictvím Azure Monitoru. Další informace o povolení protokolů naleznete v [tématu Diagnostika aplikační brány](../../application-gateway/application-gateway-diagnostics.md).
+Protokoly Application Gateway jsou integrovány s [Azure monitor](../../azure-monitor/overview.md). To vám umožní sledovat diagnostické informace, včetně výstrah a protokolů WAF. K této funkci můžete přistupovat na kartě **Diagnostika** v prostředku Application Gateway na portálu nebo přímo prostřednictvím Azure monitor. Další informace o povolení protokolů najdete v tématu [diagnostika Application Gateway](../../application-gateway/application-gateway-diagnostics.md).
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Security Center](../../security-center/security-center-intro.md) vám pomůže předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje lepší přehled o zabezpečení vašich prostředků Azure a kontrolu nad ním. Aplikační brána je [integrována s Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center prohledá vaše prostředí a zjistí nechráněné webové aplikace. Může doporučit WAF aplikační brány k ochraně těchto ohrožených prostředků. Brány firewall vytváříte přímo z centra zabezpečení. Tyto instance WAF jsou integrovány s Security Center. Posílají výstrahy a informace o stavu do Centra zabezpečení pro vytváření sestav.
+[Security Center](../../security-center/security-center-intro.md) pomáhá předcházet hrozbám, zjišťovat je a reagovat na ně. Poskytuje lepší přehled o zabezpečení prostředků Azure a kontrolu nad nimi. Application Gateway je [integrována s Security Center](../../application-gateway/application-gateway-integration-security-center.md). Security Center prohledá vaše prostředí a detekuje nechráněné webové aplikace. Může doporučit Application Gateway WAF k ochraně těchto ohrožených prostředků. Brány firewall vytvoříte přímo z Security Center. Tyto instance WAF jsou integrované s Security Center. Odesílají výstrahy a informace o stavu Security Center pro vytváření sestav.
 
-![Okno přehled centra zabezpečení](../media/ag-overview/figure1.png)
+![Okno přehledu Security Center](../media/ag-overview/figure1.png)
 
 #### <a name="azure-sentinel"></a>Azure Sentinel
 
-Microsoft Azure Sentinel je škálovatelné řešení pro nativní pro cloud, správu událostí zabezpečení (SIEM) a automatické odpovědi orchestrace zabezpečení (SOAR). Azure Sentinel poskytuje inteligentní analýzy zabezpečení a analýzy hrozeb v celém podniku a poskytuje jediné řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby.
+Microsoft Azure Sentinel je škálovatelná, cloudová, nativní, SIEM (Security Information Management) a automatizované řešení pro orchestraci zabezpečení (společnosti). Služba Azure Sentinel nabízí inteligentní analýzu zabezpečení a analýzu hrozeb napříč podnikem a poskytuje jediné řešení pro detekci výstrah, viditelnost hrozeb, proaktivní lov a reakci na hrozby.
 
-S integrovaným sešitem událostí brány firewall Azure WAF můžete získat přehled o událostech zabezpečení ve vašem WAF. To zahrnuje události, odpovídající a blokovaná pravidla a vše ostatní, co se zaznamená do protokolů brány firewall. Více informací o protokolování níže. 
+S integrovaným sešitem událostí brány firewall Azure WAF můžete získat přehled událostí zabezpečení na WAF. Patří sem události, odpovídající a blokovaná pravidla a všechno ostatní, co se přihlásí do protokolů brány firewall. Další informace najdete v části protokolování níže. 
 
 
 ![Sentinel](../media/ag-overview/sentinel.png)
 
-#### <a name="logging"></a>Protokolování
+#### <a name="logging"></a>protokolování
 
-Aplikace Gateway WAF poskytuje podrobné zprávy o každé hrozbě, kterou zjistí. Protokolování je integrované s protokoly Diagnostika Azure. Výstrahy jsou zaznamenávány ve formátu json. Tyto protokoly lze integrovat s [protokoly Azure Monitor](../../azure-monitor/insights/azure-networking-analytics.md).
+Application Gateway WAF poskytuje podrobné hlášení o každé zjištěné hrozbě. Protokolování je integrované s protokoly Azure Diagnostics. Výstrahy se zaznamenávají ve formátu. JSON. Tyto protokoly je možné integrovat s [protokoly Azure monitor](../../azure-monitor/insights/azure-networking-analytics.md).
 
-![Okna protokolů diagnostiky aplikační brány](../media/ag-overview/waf2.png)
+![Application Gateway diagnostické protokoly Windows](../media/ag-overview/waf2.png)
 
 ```json
 {
@@ -204,12 +204,12 @@ Aplikace Gateway WAF poskytuje podrobné zprávy o každé hrozbě, kterou zjist
 
 ## <a name="application-gateway-waf-sku-pricing"></a>Ceny SKU WAF služby Application Gateway
 
-Cenové modely se liší pro WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce [S cenami brány aplikací.](https://azure.microsoft.com/pricing/details/application-gateway/) 
+Cenové modely se liší od WAF_v1 a WAF_v2 SKU. Další informace najdete na stránce s [cenami Application Gateway](https://azure.microsoft.com/pricing/details/application-gateway/) . 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Začínáme [vytvořením zásad WAF](create-waf-policy-ag.md)
-- Další informace o [pravidlech spravovaných waf](application-gateway-crs-rulegroups-rules.md)
+- Začněte [vytvořením zásady WAF](create-waf-policy-ag.md)
+- Další informace o [spravovaných pravidlech WAF](application-gateway-crs-rulegroups-rules.md)
 - Další informace o [vlastních pravidlech](custom-waf-rules-overview.md)
-- Informace o [bráně firewall webových aplikací na Azure Front Door](../afds/afds-overview.md)
+- Přečtěte si o [bráně firewall webových aplikací v Azure front-dveří](../afds/afds-overview.md)
 

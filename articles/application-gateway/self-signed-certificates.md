@@ -1,7 +1,7 @@
 ---
-title: Generovat certifikát podepsaný svým držitelem s vlastní kořenovou certifikační autoritou
+title: Generování certifikátu podepsaného svým držitelem s vlastní kořenovou certifikační autoritou
 titleSuffix: Azure Application Gateway
-description: Přečtěte si, jak generovat certifikát podepsaný vlastními podpisy brány Aplikace Azure s vlastní kořenovou certifikační autoritou.
+description: Naučte se generovat certifikát podepsaný svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,99 +9,99 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
 ms.openlocfilehash: 5ceefb076b63df942cfff202946f6b82050bbab9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311943"
 ---
-# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generovat certifikát podepsaný vlastními podpisy brány Aplikace Azure s vlastní kořenovou certifikační autoritou
+# <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Vygenerování certifikátu podepsaného svým držitelem Azure Application Gateway s vlastní kořenovou certifikační autoritou
 
-Aplikační brána v2 SKU zavádí použití důvěryhodných kořenových certifikátů povolit back-endové servery. Tím odeberete ověřovací certifikáty, které byly požadovány ve skladové jednotce v1. *Kořenový certifikát* je Kódovaný X.509(. CER) formátuje kořenový certifikát ze serveru back-endového certifikátu. Identifikuje kořenovou certifikační autoritu (CA), která vydala certifikát serveru, a certifikát serveru se pak použije pro komunikaci TLS/SSL.
+SKU Application Gateway v2 zavádí použití důvěryhodných kořenových certifikátů k povolení back-end serverů. Tím dojde k odebrání ověřovacích certifikátů, které byly požadovány v SKU v1. *Kořenový certifikát* je X. 509 s kódováním Base-64 (. CER) naformátujte kořenový certifikát z back-endu Certificate serveru. Identifikuje kořenovou certifikační autoritu (CA), která vydala certifikát serveru, a certifikát serveru se pak používá pro komunikaci TLS/SSL.
 
-Aplikace Gateway ve výchozím nastavení důvěřuje certifikátu vašeho webu, pokud je podepsán známou certifikační autoritou (například GoDaddy nebo DigiCert). V takovém případě nemusíte explicitně nahrát kořenový certifikát. Další informace naleznete v [tématu Přehled ukončení TLS a ukončení tls s aplikační bránou](ssl-overview.md). Pokud však máte prostředí pro vývoj a testování a nechcete si zakoupit ověřený certifikát podepsaný certifikační autoritou, můžete vytvořit vlastní certifikační autoritu a vytvořit s ním certifikát podepsaný svým držitelem. 
+Application Gateway důvěřuje certifikátu webu ve výchozím nastavení, pokud je podepsaný známou certifikační autoritou (například GoDaddy nebo DigiCert). V takovém případě nemusíte explicitně nahrávat kořenový certifikát. Další informace najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md). Pokud ale máte vývojové a testovací prostředí a nechcete koupit ověřený certifikát podepsaný certifikační autoritou, můžete vytvořit vlastní certifikační autoritu a vytvořit certifikát podepsaný svým držitelem. 
 
 > [!NOTE]
-> Certifikáty podepsané svým držitelem nejsou ve výchozím nastavení důvěryhodné a jejich údržba může být obtížně udržovatelné. Také mohou používat zastaralé hash a šifrovací sady, které nemusí být silné. Pro lepší zabezpečení si zakupte certifikát podepsaný známou certifikační autoritou.
+> Certifikáty podepsané svým držitelem nejsou ve výchozím nastavení důvěryhodné a jejich údržba může být obtížná. Můžou také používat zastaralé sady hash a šifrovací sady, které nemusí být silné. Pro lepší zabezpečení si kupte certifikát podepsaný známou certifikační autoritou.
 
 V tomto článku se dozvíte, jak:
 
 - Vytvoření vlastní certifikační autority
-- Vytvoření certifikátu podepsaného svým držitelem podepsaného vlastní certifikační autoritou
-- Nahrání kořenového certifikátu podepsaného svým držitelem do brány aplikace k ověření back-endového serveru
+- Vytvoření certifikátu podepsaného svým držitelem podepsaného vaší vlastní certifikační autoritou
+- Nahrajte kořenový certifikát podepsaný svým držitelem do Application Gateway k ověření serveru back-end.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **[OpenSSL](https://www.openssl.org/) v počítači se systémem Windows nebo Linux** 
+- **[OpenSSL](https://www.openssl.org/) na počítači se systémem Windows nebo Linux** 
 
-   Zatímco pro správu certifikátů mohou být k dispozici další nástroje, tento kurz používá OpenSSL. Najdete OpenSSL svázaný s mnoha distribucemi Linuxu, jako je Ubuntu.
+   I když mohou být k dispozici jiné nástroje pro správu certifikátů, v tomto kurzu se používá OpenSSL. Můžete najít OpenSSL sady s mnoha distribucemi systému Linux, jako je například Ubuntu.
 - **Webový server**
 
-   Například Apache, IIS nebo NGINX otestovat certifikáty.
+   K testování certifikátů například Apache, IIS nebo NGINX.
 
-- **Aplikační brána v2 skladová položka**
+- **SKU Application Gateway v2**
    
-  Pokud nemáte existující aplikační bránu, přečtěte [si úvodní příručku: Přímý webový provoz s Azure Application Gateway – portál Azure](quick-create-portal.md).
+  Pokud nemáte existující Aplikační bránu, přečtěte si [rychlý Start: přímý webový provoz pomocí Azure Application Gateway-Azure Portal](quick-create-portal.md).
 
 ## <a name="create-a-root-ca-certificate"></a>Vytvoření kořenového certifikátu certifikační autority
 
-Vytvořte kořenový certifikát certifikační autority pomocí openssl.
+Vytvořte certifikát od kořenové certifikační autority pomocí OpenSSL.
 
 ### <a name="create-the-root-key"></a>Vytvoření kořenového klíče
 
-1. Přihlaste se k počítači, kde je nainstalován openssl a spusťte následující příkaz. Tím se vytvoří klíč chráněný heslem.
+1. Přihlaste se k počítači, kde je nainstalován OpenSSL, a spusťte následující příkaz. Tím se vytvoří klíč chráněný heslem.
 
    ```
    openssl ecparam -out contoso.key -name prime256v1 -genkey
    ```
-1. Na výzvu zadejte silné heslo. Například alespoň devět znaků s použitím velkých, malých písmen, čísel a symbolů.
+1. Na příkazovém řádku zadejte silné heslo. Například aspoň devět znaků s použitím velkých písmen, malých písmen, číslic a symbolů.
 
-### <a name="create-a-root-certificate-and-self-sign-it"></a>Vytvoření kořenového certifikátu a jeho vlastní podepsání
+### <a name="create-a-root-certificate-and-self-sign-it"></a>Vytvoření kořenového certifikátu a jeho samoobslužného podepsání
 
-1. Ke generování csr a certifikátu použijte následující příkazy.
+1. Pomocí následujících příkazů vygenerujte CSR a certifikát.
 
    ```
    openssl req -new -sha256 -key contoso.key -out contoso.csr
 
    openssl x509 -req -sha256 -days 365 -in contoso.csr -signkey contoso.key -out contoso.crt
    ```
-   Předchozí příkazy vytvoří kořenový certifikát. Tento certifikát použijete k podepsání certifikátu serveru.
+   Předchozí příkazy vytvoří kořenový certifikát. Použijete ho k podepsání certifikátu serveru.
 
-1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a organizační informace pro vlastní certifikační autoritu, jako je země, stát, organizace, organizační jednotky a plně kvalifikovaný název domény (toto je doména vystavittele).
+1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci vlastní certifikační autority, jako je například země, stát, org, OU a plně kvalifikovaný název domény (Jedná se o doménu vystavitele).
 
    ![vytvořit kořenový certifikát](media/self-signed-certificates/root-cert.png)
 
 ## <a name="create-a-server-certificate"></a>Vytvoření certifikátu serveru
 
-Dále vytvoříte certifikát serveru pomocí OpenSSL.
+V dalším kroku vytvoříte certifikát serveru pomocí OpenSSL.
 
 ### <a name="create-the-certificates-key"></a>Vytvoření klíče certifikátu
 
-Pomocí následujícího příkazu vygenerujte klíč pro certifikát serveru.
+K vygenerování klíče pro certifikát serveru použijte následující příkaz.
 
    ```
    openssl ecparam -out fabrikam.key -name prime256v1 -genkey
    ```
 
-### <a name="create-the-csr-certificate-signing-request"></a>Vytvoření zástupce společnosti (žádost o podpis certifikátu)
+### <a name="create-the-csr-certificate-signing-request"></a>Vytvoření CSR (žádost o podepsání certifikátu)
 
-Zástupce odpovědnosti za zástupce je veřejný klíč, který je přidělen certifikační autoritě při žádosti o certifikát. Certifikační autorita vydává certifikát pro tento konkrétní požadavek.
+CSR je veřejný klíč, který se udělí certifikační autoritě při žádosti o certifikát. Certifikační autorita vydá certifikát pro tento konkrétní požadavek.
 
 > [!NOTE]
-> Cn (Common Name) pro certifikát serveru se musí lišit od domény vystavittele. Například v tomto případě je `www.contoso.com` kn pro vystavittele a certifikát `www.fabrikam.com`serveru cn je .
+> CN (běžný název) pro certifikát serveru musí být jiný než doména vystavitele. V tomto případě je například CN pro vystavitele `www.contoso.com` a CN je certifikát serveru. `www.fabrikam.com`
 
 
-1. Ke generování zástupce počítače použijte následující příkaz:
+1. K vygenerování CSR použijte následující příkaz:
 
    ```
    openssl req -new -sha256 -key fabrikam.key -out fabrikam.csr
    ```
 
-1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: Země, Stát, Organizace, Organizační složka a plně kvalifikovaný název domény. Jedná se o doménu webových stránek a měla by se lišit od vydavatele.
+1. Po zobrazení výzvy zadejte heslo pro kořenový klíč a informace o organizaci pro vlastní certifikační autoritu: země, stát, org, OU, OU a plně kvalifikovaný název domény. Toto je doména webu a měla by se lišit od vystavitele.
 
    ![Certifikát serveru](media/self-signed-certificates/server-cert.png)
 
-### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Generovat certifikát pomocí zástupce a klíče a podepsat jej pomocí kořenového klíče certifikační autority
+### <a name="generate-the-certificate-with-the-csr-and-the-key-and-sign-it-with-the-cas-root-key"></a>Vygenerujte certifikát pomocí CSR a klíče a podepište ho pomocí kořenového klíče certifikační autority.
 
 1. K vytvoření certifikátu použijte následující příkaz:
 
@@ -118,22 +118,22 @@ Zástupce odpovědnosti za zástupce je veřejný klíč, který je přidělen c
 
    ![Ověření certifikátu](media/self-signed-certificates/verify-cert.png)
 
-1. Ověřte soubory v adresáři a ujistěte se, že máte následující soubory:
+1. Ověřte soubory ve vašem adresáři a ujistěte se, že máte následující soubory:
 
-   - contoso.crt
-   - contoso.key
-   - fabrikam.crt
-   - fabrikam.key
+   - contoso. CRT
+   - contoso. Key
+   - Fabrikam. CRT
+   - Fabrikam. Key
 
-## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurace certifikátu v nastavení tls webového serveru
+## <a name="configure-the-certificate-in-your-web-servers-tls-settings"></a>Konfigurace certifikátu v nastavení TLS webového serveru
 
-Na webovém serveru nakonfigurujte protokol TLS pomocí souborů fabrikam.crt a fabrikam.key. Pokud váš webový server nemůže převzít dva soubory, můžete je kombinovat s jedním souborem .pem nebo .pfx pomocí příkazů OpenSSL.
+Na webovém serveru nakonfigurujte TLS pomocí souborů Fabrikam. CRT a Fabrikam. Key. Pokud váš webový server nemůže převzít dva soubory, můžete je zkombinovat do jednoho souboru. pem nebo. pfx pomocí příkazů OpenSSL.
 
 ### <a name="iis"></a>IIS
 
-Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS naleznete v [tématu HOW: Install Imported Certificates on a Web Server in Windows Server 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
+Pokyny k importu certifikátu a jejich nahrání jako certifikátu serveru ve službě IIS najdete v tématu [Postup: instalace importovaných certifikátů na webový server ve Windows serveru 2003](https://support.microsoft.com/help/816794/how-to-install-imported-certificates-on-a-web-server-in-windows-server).
 
-Pokyny pro vazbu TLS naleznete v tématu [Jak nastavit protokol SSL ve službě IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
+Pokyny k vytvoření vazby TLS najdete v tématu [jak nastavit SSL na IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis#create-an-ssl-binding-1).
 
 ### <a name="apache"></a>Apache
 
@@ -151,23 +151,23 @@ Následující konfigurace je příkladem [virtuálního hostitele nakonfigurova
 
 ### <a name="nginx"></a>NGINX
 
-Následující konfigurace je příklad [bloku serveru NGINX](https://nginx.org/docs/http/configuring_https_servers.html) s konfigurací TLS:
+Následující konfigurace je příkladem [Nginx serveru](https://nginx.org/docs/http/configuring_https_servers.html) s konfigurací TLS:
 
-![NGINX s TLS](media/self-signed-certificates/nginx-ssl.png)
+![NGINX s protokolem TLS](media/self-signed-certificates/nginx-ssl.png)
 
-## <a name="access-the-server-to-verify-the-configuration"></a>Přístup k serveru k ověření konfigurace
+## <a name="access-the-server-to-verify-the-configuration"></a>Přístup k serveru pro ověření konfigurace
 
-1. Přidejte kořenový certifikát do důvěryhodného kořenového úložiště počítače. Při přístupu na web se ujistěte, že se v prohlížeči zobrazí celý řetězec certifikátů.
+1. Přidejte kořenový certifikát do důvěryhodného kořenového úložiště vašeho počítače. Při přístupu k webu se ujistěte, že se v prohlížeči zobrazuje celý řetěz certifikátů.
 
    ![Důvěryhodné kořenové certifikáty](media/self-signed-certificates/trusted-root-cert.png)
 
    > [!NOTE]
-   > Předpokládá se, že služba DNS byla nakonfigurována tak, aby nasulala název webového serveru (v tomto příkladu www.fabrikam.com) na adresu IP webového serveru. Pokud tomu tak není, můžete upravit [soubor hosts](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) a přeložit název.
-1. Přejděte na svůj web a kliknutím na ikonu zámku v poli adresy prohlížeče ověřte informace o webu a certifikátu.
+   > Předpokládá se, že služba DNS je nakonfigurovaná tak, aby odkazovala název webového serveru (v tomto příkladu www.fabrikam.com) na IP adresu vašeho webového serveru. V takovém případě můžete upravit [soubor hostitelů](https://answers.microsoft.com/en-us/windows/forum/all/how-to-edit-host-file-in-windows-10/7696f204-2aaf-4111-913b-09d6917f7f3d) pro překlad názvu.
+1. Přejděte na web a kliknutím na ikonu zámku v poli Adresa v prohlížeči ověřte informace o lokalitě a certifikátu.
 
-## <a name="verify-the-configuration-with-openssl"></a>Ověření konfigurace pomocí openssl
+## <a name="verify-the-configuration-with-openssl"></a>Ověření konfigurace pomocí OpenSSL
 
-Nebo můžete použít OpenSSL k ověření certifikátu.
+Nebo můžete certifikát ověřit pomocí OpenSSL.
 
 ```
 openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
@@ -175,22 +175,22 @@ openssl s_client -connect localhost:443 -servername www.fabrikam.com -showcerts
 
 ![Ověření certifikátu OpenSSL](media/self-signed-certificates/openssl-verify.png)
 
-## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Nahrání kořenového certifikátu do nastavení HTTP brány aplikace
+## <a name="upload-the-root-certificate-to-application-gateways-http-settings"></a>Nahrajte kořenový certifikát do nastavení protokolu HTTP Application Gateway.
 
-Chcete-li certifikát odeslat do brány aplikace, musíte exportovat certifikát .crt do formátu .cer Base-64 kódovaného. Vzhledem k tomu, že .crt již obsahuje veřejný klíč v kódu base-64, stačí přejmenovat příponu souboru z .crt na .cer. 
+Pokud chcete nahrát certifikát v Application Gateway, musíte exportovat certifikát. CRT do formátu. cer Base-64 Encoded. Vzhledem k tomu, že. CRT již obsahuje veřejný klíč ve formátu kódování Base-64, stačí přejmenovat příponu souboru z. CRT na. cer. 
 
 ### <a name="azure-portal"></a>portál Azure
 
-Chcete-li nahrát důvěryhodný kořenový certifikát z portálu, vyberte **nastavení PROTOKOLU HTTP** a zvolte protokol **HTTPS.**
+Důvěryhodný kořenový certifikát nahrajte z portálu tak, že vyberete **Nastavení http** a zvolíte protokol **https** .
 
 ![Přidání certifikátu pomocí portálu](media/self-signed-certificates/portal-cert.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Nebo můžete použít Azure CLI nebo Azure PowerShell k nahrání kořenového certifikátu. Následující kód je ukázka Prostředí Azure PowerShell.
+Nebo můžete k nahrání kořenového certifikátu použít Azure CLI nebo Azure PowerShell. Následující kód je Azure PowerShell ukázka.
 
 > [!NOTE]
-> Následující ukázka přidá důvěryhodný kořenový certifikát do brány aplikace, vytvoří nové nastavení HTTP a přidá nové pravidlo za předpokladu, že back-endový fond a naslouchací proces již existují.
+> Následující příklad přidá důvěryhodný kořenový certifikát do aplikační brány, vytvoří nové nastavení HTTP a přidá nové pravidlo, za předpokladu, že již existuje fond back-end a naslouchací proces.
 
 ```azurepowershell
 ## Add the trusted root certificate to the Application Gateway
@@ -263,14 +263,14 @@ Add-AzApplicationGatewayRequestRoutingRule `
 Set-AzApplicationGateway -ApplicationGateway $gw 
 ```
 
-### <a name="verify-the-application-gateway-backend-health"></a>Ověření stavu back-endu brány aplikace
+### <a name="verify-the-application-gateway-backend-health"></a>Ověření stavu back-endu služby Application Gateway
 
-1. Kliknutím na zobrazení **Stavu back-endu** v bráně aplikace zkontrolujte, jestli je sonda v pořádku.
-1. Měli byste vidět, že stav je **v pořádku** pro sondu HTTPS.
+1. Kliknutím na zobrazení **stavu back-endu** služby Application Gateway zkontrolujte, jestli je sonda v pořádku.
+1. Měli byste vidět, že stav je v **pořádku** pro test https.
 
-![Sonda HTTPS](media/self-signed-certificates/https-probe.png)
+![Test HTTPS](media/self-signed-certificates/https-probe.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o ssl\tls v aplikační bráně najdete v [tématu Přehled ukončení TLS a koncového tls s aplikační bránou](ssl-overview.md).
+Další informace o SSL\TLS v Application Gateway najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md).
 

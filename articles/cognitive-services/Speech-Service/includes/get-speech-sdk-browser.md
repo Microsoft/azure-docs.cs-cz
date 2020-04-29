@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 5545b10a4228448d49849e7cd52728febf14ce2d
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399943"
 ---
 :::row:::
     :::column span="3":::
-        Sada JavaScript Speech SDK je k dispozici jako balíček npm, viz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk <span class="docon docon-navigate-external x-hidden-focus"></span> </a> a je to doprovodné úložiště GitHub <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        Sada JavaScript Speech SDK je k dispozici jako balíček NPM, viz <a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">Microsoft-cognitiveservices Account-Speech- <span class="docon docon-navigate-external x-hidden-focus"></span> SDK</a> a je to doprovodné služba pro rozpoznávání úložiště GitHub <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">-Services-Speech- <span class="docon docon-navigate-external x-hidden-focus"> </span>SDK-js </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -24,11 +24,11 @@ ms.locfileid: "81399943"
 :::row-end:::
 
 > [!TIP]
-> Přestože javascriptová sada Speech SDK je k dispozici jako balíček npm, tak jak klientské webové prohlížeče, tak Node.js jej mohou využívat - zvažte různé architektonické důsledky každého prostředí. Například <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">objektový model dokumentu <span class="docon docon-navigate-external x-hidden-focus"></span> (DOM)</a> není k dispozici pro aplikace na straně serveru, stejně jako systém <a href="https://nodejs.org/api/fs.html" target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> souborů</a> není k dispozici pro aplikace na straně klienta.
+> I když je sada JavaScript Speech SDK k dispozici jako balíček NPM, může to být tím, že oba klientské prohlížeče i node. js mohou spotřebovat IT – zvažte různé důsledky architektury každého prostředí. Například <a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">model objektu dokumentu (DOM) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> není k dispozici pro serverové aplikace, stejně jako <a href="https://nodejs.org/api/fs.html" target="_blank">systém <span class="docon docon-navigate-external x-hidden-focus"></span> souborů</a> není k dispozici pro klientské aplikace.
 
-### <a name="nodejs-package-manager-npm"></a>Správce balíčků node.js (NPM)
+### <a name="nodejs-package-manager-npm"></a>Správce balíčků Node. js (NPM)
 
-Chcete-li nainstalovat sadu JavaScript Speech `npm install` SDK, spusťte následující příkaz níže.
+Chcete-li nainstalovat sadu JavaScript Speech SDK, spusťte `npm install` následující příkaz.
 
 ```nodejs
 npm install microsoft-cognitiveservices-speech-sdk
@@ -36,11 +36,11 @@ npm install microsoft-cognitiveservices-speech-sdk
 
 ### <a name="html-script-tag"></a>Značka skriptu HTML
 
-Případně můžete přímo zahrnout `<script>` značku do prvku HTMS `<head>` a spoléhat se na syndikát <a href="https://www.jsdelivr.com/package/npm/microsoft-cognitiveservices-speech-sdk" target="_blank"> **JSDelivr** <span class="docon docon-navigate-external x-hidden-focus"> </span>JSDelivr NPM </a>.
+Alternativně můžete přímo do `<script>` `<head>` elementu HTML přidat značku, která se spoléhá na <a href="https://www.jsdelivr.com/package/npm/microsoft-cognitiveservices-speech-sdk" target="_blank"> **JSDelivr** npm syndikát <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@1.10.1/distrib/lib/microsoft.cognitiveservices.speech.sdk.min.js">
 </script>
 ```
 
-Další informace naleznete v <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser" target="_blank">rychlém spuštění <span class="docon docon-navigate-external x-hidden-focus"> </span>sady Web Browser Speech SDK </a>.
+Další informace najdete v tématu <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser" target="_blank">rychlý Start <span class="docon docon-navigate-external x-hidden-focus"> </span>pro sadu Speech pro webový prohlížeč </a>.

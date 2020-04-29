@@ -1,56 +1,56 @@
 ---
 title: Plánování aplikace – LUIS
-description: Načrtněte relevantní záměry a entity aplikací a pak vytvořte plány aplikací v inteligentních službách pro porozumění jazykům (LUIS).
+description: Vyosnovujte relevantní záměry aplikací a entity a pak vytvořte svoje plány aplikací v Language Understanding inteligentní služby (LUIS).
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382308"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plánování schématu aplikace LUIS s doménou subjektu a extrakcí dat
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>Plánování schématu aplikace LUIS s využitím domény a extrakce dat předmětu
 
-Schéma aplikace LUIS obsahuje [záměry](luis-glossary.md#intent) a [entity](luis-glossary.md#entity) relevantní pro vaši [doménu předmětu](luis-glossary.md#domain). Záměry klasifikovat [projevy](luis-glossary.md#utterance)uživatele a entity extrahovat data z projevy uživatele.
+Schéma aplikace LUIS obsahuje [záměry](luis-glossary.md#intent) a [entity](luis-glossary.md#entity) , které se vztahují k vaší [doméně](luis-glossary.md#domain)předmětu. Záměry klasifikují [projevy](luis-glossary.md#utterance)uživatele a entity extrahují data z uživatelského projevy.
 
 ## <a name="identify-your-domain"></a>Identifikace domény
 
-Aplikace LUIS je soustředěna kolem domény předmětu. Můžete mít například cestovní aplikaci, která zpracovává rezervaci letenek, letů, hotelů a pronajatých vozů. Jiná aplikace může poskytovat obsah související s cvičením, sledováním fitness úsilí a stanovením cílů. Identifikace domény vám pomůže najít slova nebo fráze, které jsou relevantní pro vaši doménu.
+Aplikace LUIS se zacentruje kolem domény předmětu. Můžete mít například cestovní aplikaci, která zpracovává rezervace lístků, letů, hotelů a půjčovny vozidel. Jiná aplikace může poskytovat obsah týkající se výkonu, sledování úsilí o způsobilost a nastavování cílů. Identifikace domény vám pomůže najít slova nebo fráze, které jsou relevantní pro vaši doménu.
 
 > [!TIP]
-> Služba LUIS nabízí [předem vytvořené domény](luis-how-to-use-prebuilt-domains.md) pro mnoho běžných scénářů. Zkontrolujte, jestli můžete jako výchozí bod pro aplikaci použít předem připravenou doménu.
+> LUIS nabízí [předem připravené domény](luis-how-to-use-prebuilt-domains.md) pro mnoho běžných scénářů. Zkontrolujte, jestli můžete použít předem sestavenou doménu jako výchozí bod pro vaši aplikaci.
 
 ## <a name="identify-your-intents"></a>Identifikujte své záměry
 
-Zamyslete se nad [záměry,](luis-concept-intent.md) které jsou důležité pro úlohu vaší aplikace.
+Zamyslete se nad [záměry](luis-concept-intent.md) , které jsou důležité pro úlohu vaší aplikace.
 
-Vezměme si příklad cestovní aplikace s funkcemi pro rezervaci letu a kontrolu počasí v cíli uživatele. Můžete definovat `BookFlight` a `GetWeather` záměry pro tyto akce.
+Podíváme se na příklad cestovní aplikace s funkcemi pro zarezervování letu a zkontrolujeme počasí v cíli uživatele. Pro tyto akce můžete `BookFlight` definovat `GetWeather` záměry a.
 
-Ve složitější aplikaci s více funkcemi máte více záměrů a měli byste je pečlivě definovat, aby záměry nebyly příliš specifické. Například `BookFlight` a `BookHotel` může být nutné samostatné `BookInternationalFlight` záměry, ale a `BookDomesticFlight` může být příliš podobné.
+Ve složitější aplikaci s více funkcemi máte více záměrů a měli byste je pečlivě definovat, aby záměry nebyly příliš specifické. Například `BookFlight` a `BookHotel` může být potřeba oddělit záměry, ale `BookInternationalFlight` `BookDomesticFlight` může být příliš podobný.
 
 > [!NOTE]
-> Je osvědčeným postupem používat pouze tolik záměrů, kolik potřebujete k provádění funkcí vaší aplikace. Pokud definujete příliš mnoho záměrů, bude pro LUIS obtížnější správně klasifikovat projevy. Pokud definujete příliš málo, mohou být tak obecné, že se překrývají.
+> Osvědčeným postupem je použít jenom tolik záměrů, kolik potřebujete k provádění funkcí aplikace. Pokud definujete příliš mnoho záměrů, je LUIS pro projevy správně klasifikovat. Pokud definujete moc málo, můžou být tak obecné, aby se překrývaly.
 
-Pokud nepotřebujete identifikovat celkový záměr uživatele, přidejte všechny ukázkové `None` projevy uživatele k záměru. Pokud se vaše aplikace zvětší a potřebuje více záměrů, můžete je vytvořit později.
+Pokud nepotřebujete identifikovat celkový úmysl uživatele, přidejte do `None` záměru všechny ukázkové projevy uživatele. Pokud vaše aplikace roste na potřebu dalších záměrů, můžete je vytvořit později.
 
-## <a name="create-example-utterances-for-each-intent"></a>Vytvořit ukázkové projevy pro každý záměr
+## <a name="create-example-utterances-for-each-intent"></a>Vytvořit příklad projevy pro každý záměr
 
-Chcete-li začít s, vyhněte se vytváření příliš mnoho projevy pro každý záměr. Jakmile jste určili záměry, vytvořte 15 až 30 příklad projevy na záměr. Každý utterance by se měla lišit od dříve zadaných projevy. Dobrá rozmanitost v projevech zahrnují celkový počet slov, volbu slova, slovesný čas a [interpunkci](luis-reference-application-settings.md#punctuation-normalization).
+Chcete-li začít, vyhněte se vytváření příliš velkého počtu projevy pro každý záměr. Po určení záměrů vytvořte 15 až 30 příkladů projevy na záměr. Každý utterance by se měl lišit od dříve poskytnuté projevy. Dobrá odrůda v projevy zahrnuje celkový počet slov, volbu Word, sloveso vhodné a [interpunkční znaménka](luis-reference-application-settings.md#punctuation-normalization).
 
-Další informace naleznete [v tématu pochopení dobré projevy pro aplikace LUIS](luis-concept-utterance.md).
+Další informace najdete v tématu [porozumění dobrým projevyům pro aplikace Luis](luis-concept-utterance.md).
 
-## <a name="identify-your-entities"></a>Identifikujte své entity
+## <a name="identify-your-entities"></a>Identifikace entit
 
-V příkladu projevy identifikujte entity, které chcete extrahovat. Chcete-li rezervovat let, potřebujete informace, jako je cíl, datum, letecká společnost, kategorie letenek a cestovní třída. Vytvořte entity pro tyto datové typy a pak označte [entity](luis-concept-entity-types.md) v příkladu projevy. Entity jsou důležité pro dosažení záměru.
+V příkladu projevy Identifikujte entity, které mají být extrahovány. Pro zarezervování letu potřebujete informace, jako je cílová, datum, letecká kategorie a třída pro cestování. Vytvořte entity pro tyto datové typy a označte [entity](luis-concept-entity-types.md) v příkladu projevy. Entity jsou důležité pro splnění záměru.
 
-Při určování, které entity se mají ve vaší aplikaci používat, mějte na paměti, že existují různé typy entit pro zachycení vztahů mezi typy objektů. [Entity v LUIS](luis-concept-entity-types.md) poskytuje další podrobnosti o různých typech.
+Při určování entit pro použití ve vaší aplikaci Pamatujte na to, že existují různé typy entit pro zachycení vztahů mezi typy objektů. [Entity v Luis](luis-concept-entity-types.md) poskytují další podrobnosti o různých typech.
 
 > [!TIP]
-> Služba LUIS nabízí [předem vytvořené entity](luis-prebuilt-entities.md) pro běžné scénáře konverzačních uživatelů. Zvažte použití předem sestavené entity jako výchozí bod pro vývoj aplikací.
+> LUIS nabízí [předem připravené entity](luis-prebuilt-entities.md) pro běžné scénáře uživatelů v konverzaci. Zvažte použití předem připravených entit jako výchozího bodu pro vývoj aplikací.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Učení luis vývoj lifecylce](luis-concept-app-iteration.md)
+> [Učení lifecylce vývoje LUIS](luis-concept-app-iteration.md)
 

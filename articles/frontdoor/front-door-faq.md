@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door – nejčastější dotazy
-description: Tato stránka obsahuje odpovědi na nejčastější dotazy týkající se azure front door
+title: Nejčastější dotazy ke službě Azure na přední dveře
+description: Na této stránce najdete odpovědi na nejčastější dotazy týkající se služby Azure front-dveří.
 services: frontdoor
 documentationcenter: ''
 author: sohamnchatterjee
@@ -12,158 +12,158 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
 ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313758"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy týkající se dveří Azure Front Door
+# <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
-Tento článek odpovídá na běžné otázky týkající se funkcí a funkcí Azure Front Door. Pokud odpověď na vaši otázku nevidíte, můžete nás kontaktovat prostřednictvím následujících kanálů (v eskalujícím pořadí):
+Tento článek obsahuje odpovědi na běžné dotazy k funkcím a funkcím služby Azure front-dveří. Pokud nevidíte odpověď na svoji otázku, můžete nás kontaktovat prostřednictvím následujících kanálů (v pořadí eskalace):
 
-1. Komentáře v tomto článku.
-2. [Azure Front Door UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
-3. **Podpora společnosti Microsoft:** Pokud chcete vytvořit novou žádost o podporu, na webu Azure portal na kartě **Nápověda** vyberte tlačítko **Nápověda + podpora** a pak vyberte **Nová žádost o podporu**.
+1. Část s poznámkami tohoto článku.
+2. [Přední dveře Azure ve službě UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+3. **Podpora Microsoftu:** Chcete-li vytvořit novou žádost o podporu, v Azure Portal na kartě **help** klikněte na tlačítko **pomoc a podpora** a pak vyberte **Nová žádost o podporu**.
 
 ## <a name="general"></a>Obecné
 
 ### <a name="what-is-azure-front-door"></a>Co je Azure Front Door?
 
-Azure Front Door je síť pro doručování aplikací (ADN) jako služba, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Poskytuje dynamickou akceleraci webu (DSA) spolu s globálním vyrovnáváním zatížení s převzetím služeb při selhání téměř v reálném čase. Jedná se o vysoce dostupnou a škálovatelnou službu, kterou plně spravuje Azure.
+Přední dvířka Azure je Application Delivery Network (a) jako služba, která nabízí různé možnosti vyrovnávání zatížení vrstvy 7 pro vaše aplikace. Poskytuje akceleraci dynamického webu (DSA) spolu s globálním vyrovnáváním zatížení téměř v reálném čase. Je to vysoce dostupná a škálovatelná služba, která je plně spravovaná pomocí Azure.
 
-### <a name="what-features-does-azure-front-door-support"></a>Jaké funkce azure front door podporuje?
+### <a name="what-features-does-azure-front-door-support"></a>Jaké funkce nabízí podpora front Azure?
 
-Azure Front Door podporuje dynamickou akceleraci webu (DSA), snižování zátěže TLS/SSL a od konce tls, bránou firewall webové aplikace, spřažení relací na základě souborů cookie, směrování na základě cesty url, bezplatné certifikáty a správu více domén a další. Úplný seznam podporovaných funkcí najdete v [tématu Přehled předních dveří Azure](front-door-overview.md).
+Přední dvířka Azure podporují snižování zátěže dynamického webového serveru (DSA), snižování zátěže TLS/SSL a koncového šifrování TLS, Firewall webových aplikací, spřažení relací na základě souborů cookie, směrování na základě cest URL, bezplatné certifikáty a správu více domén a další. Úplný seznam podporovaných funkcí najdete v tématu [Přehled front-dveří Azure](front-door-overview.md).
 
-### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Jaký je rozdíl mezi Azure Front Door a Azure Application Gateway?
+### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Jaký je rozdíl mezi předními dveřmi Azure a Application Gateway Azure?
 
-Zatímco front door a aplikační brána jsou nástroj pro vyrovnávání zatížení vrstvy 7 (HTTP/HTTPS), primární rozdíl je, že přední dveře jsou globální službou, zatímco aplikační brána je regionální služba. Zatímco přední dveře mohou vyvážit zatížení mezi různými jednotkami stupnice / clustery / razítkem napříč oblastmi, aplikační brána umožňuje vyrovnávání zatížení mezi virtuálními počítači/kontejnery atd., které je v rámci jednotky škálování.
+I když jsou přední dveře i Application Gateway nástroje pro vyrovnávání zatížení vrstvy 7 (HTTP/HTTPS), hlavním rozdílem je to, že přední dveře představují globální službu, zatímco Application Gateway je místní služba. Zatímco přední dveře můžou vyrovnávat zatížení mezi různými jednotkami škálování/clustery/jednotkami razítek v různých oblastech, Application Gateway vám umožní vyrovnávat zatížení mezi vašimi virtuálními počítači nebo kontejnery atd. to je v rámci jednotky škálování.
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Kdy bychom měli nasadit aplikační bránu za předními dveřmi?
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>Kdy byste měli nasadit Application Gateway za předními dveřmi?
 
-Klíčové scénáře, proč by měl používat aplikační bránu za předními dveřmi, jsou:
+Klíčové scénáře, proč použít Application Gateway za předními dveřmi:
 
-- Front Door můžete provádět vyrovnávání zatížení založené na cestě pouze na globální úrovni, ale pokud jeden chce, aby zatížení provozu ještě dále v rámci své virtuální sítě (VNET), pak by měli používat aplikační bránu.
-- Vzhledem k tomu, že přední dveře nefunguje na úrovni virtuálního připojení/kontejneru, takže nemůže provést vyprázdnění připojení. Aplikační brána však umožňuje provést vyprázdnění připojení. 
-- S aplikační bránou za AFD lze dosáhnout 100% snížení zátěže TLS/SSL a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
-- Front Door a Application Gateway podporují spřažení relací. Zatímco front door může směrovat následný provoz z relace uživatele do stejného clusteru nebo back-endu v dané oblasti, aplikační brána může směrovat spřažení přenosů na stejný server v rámci clusteru.  
+- Přední dveře můžou vyrovnávání zatížení na základě cesty provádět jenom na globální úrovni, ale pokud jeden chce vyrovnávat zatížení provozu ještě dál v rámci své virtuální sítě (VNET), měl by použít Application Gateway.
+- Vzhledem k tomu, že přední dvířka nefungují na úrovni virtuálního počítače nebo kontejneru, nemůže připojení vyprázdnit. Application Gateway však umožňuje vyprazdňování připojení. 
+- U Application Gateway za AFD může jeden dosáhnout 100% snižování zátěže TLS/SSL a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
+- Přední dvířka a Application Gateway obojí podporují spřažení relace. Zatímco přední dveře můžou směrovat následné přenosy z uživatelské relace do stejného clusteru nebo do back-endu v dané oblasti, Application Gateway můžou spřažení provoz směrovat na stejný server v rámci clusteru.  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Můžeme nasadit Azure Load Balancer za přední dveře?
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Můžeme nasazovat Azure Load Balancer za předními dveřmi?
 
-Azure Front Door potřebuje veřejnou virtuální IP adresu nebo veřejně dostupný název DNS, na který bude provoz směrovat. Nasazení Azure Balancer za přední dveře je běžné použití případu.
+Přední dveře Azure vyžadují veřejnou virtuální IP adresu nebo veřejně dostupný název DNS pro směrování provozu do. Nasazení Azure Load Balancer za předními dveřmi je běžný případ použití.
 
-### <a name="what-protocols-does-azure-front-door-support"></a>Jaké protokoly azure front door podporuje?
+### <a name="what-protocols-does-azure-front-door-support"></a>Jaké protokoly podporuje přední dveře Azure?
 
-Azure Front Door podporuje HTTP, HTTPS a HTTP/2.
+Přední dvířka Azure podporují HTTP, HTTPS a HTTP/2.
 
-### <a name="how-does-azure-front-door-support-http2"></a>Jak Azure Front Door podporuje HTTP/2?
+### <a name="how-does-azure-front-door-support-http2"></a>Jak Azure front-dveře podporuje HTTP/2?
 
-Podpora protokolu HTTP/2 je k dispozici klientům, kteří se připojují jenom k Azure Front Door. Komunikace back-endů v back-endu je přes HTTP/1.1. Podpora protokolu HTTP/2 je ve výchozím nastavení povolena.
+Podpora protokolu HTTP/2 je dostupná jenom pro klienty, kteří se připojují k Azure na přední dveře. Komunikace s back-endy ve fondu back-end je přes protokol HTTP/1.1. Podpora HTTP/2 je ve výchozím nastavení povolená.
 
-### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Jaké prostředky jsou dnes podporovány jako součást back-endového fondu?
+### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Jaké prostředky už dnes podporujeme jako součást fondu back-endu?
 
-Back-endové fondy se mohou skládat z instancí Storage, Web App, Kubernetes nebo jiného vlastního názvu hostitele, který má veřejné připojení. Azure Front Door vyžaduje, aby back-endy byly definovány buď prostřednictvím veřejné IP adresy nebo veřejně řešitelného názvu hostitele DNS. Členové back-endových fondů můžou být napříč zónami, oblastmi nebo dokonce mimo Azure, pokud mají veřejné připojení.
+Back-endové fondy se dají skládat z úložiště, webové aplikace, instancí Kubernetes nebo jakéhokoli jiného vlastního názvu hostitele, který má veřejné připojení. Přední vrátka Azure vyžaduje, aby back-endy byly definovány buď prostřednictvím veřejné IP adresy, nebo veřejně přeložitelných názvů hostitelů DNS. Členové back-end fondu můžou být v různých zónách, oblastech nebo dokonce mimo Azure, pokud mají veřejné připojení.
 
-### <a name="what-regions-is-the-service-available-in"></a>V jakých oblastech je služba dostupná?
+### <a name="what-regions-is-the-service-available-in"></a>Ve kterých oblastech je služba dostupná?
 
-Azure Front Door je globální služba a není vázaná na žádnou konkrétní oblast Azure. Jediné umístění, které je třeba zadat při vytváření předních dveří, je umístění skupiny prostředků, které v podstatě určuje, kde budou uložena metadata pro skupinu prostředků. Prostředek front door sám je vytvořen jako globální prostředek a konfigurace je nasazena globálně na všechny POP (Bod přítomnosti). 
+Přední vrátka Azure je globální služba a není vázaná na žádnou konkrétní oblast Azure. Jediné umístění, které je potřeba zadat při vytváření front-dveří, je umístění skupiny prostředků, které v podstatě určuje, kde se budou ukládat metadata pro skupinu prostředků. Samotný prostředek přední dveře je vytvořen jako globální prostředek a konfigurace je globálně nasazena na všechny body POP (bod přítomnosti). 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Jaká jsou umístění bodů POP pro azure front door?
+### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Jaká jsou umístění POP pro přední dveře Azure?
 
-Azure Front Door má stejný seznam míst POP (Point of Presence) jako Azure CDN od Microsoftu. Úplný seznam našich bodů POP naleznete v [seznamu umístění Azure CDN POP od Microsoftu](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
+Přední dveře Azure mají stejný seznam umístění POP (v bodech) jako Azure CDN od Microsoftu. Úplný seznam našich bodů POP najdete v tématu [Azure CDN umístění pop od Microsoftu](https://docs.microsoft.com/azure/cdn/cdn-pop-locations).
 
-### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Je Azure Front Door vyhrazené nasazení pro mou aplikaci nebo je sdíleno mezi zákazníky?
+### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Je přední z bran Azure vyhrazené nasazení pro moji aplikaci nebo je sdíleno mezi zákazníky?
 
-Azure Front Door je globálně distribuovaná víceklientská služba. Takže infrastruktura pro Front Door je sdílena mezi všemi svými zákazníky. Vytvořením profilu předních dveří však definujete konkrétní konfiguraci požadovanou pro vaši aplikaci a žádné změny provedené v předních dveřích neovlivní ostatní konfigurace předních dveří.
+Přední dvířka Azure je globálně distribuovaná služba pro více tenantů. Proto je infrastruktura pro přední dveře sdílená mezi všemi svými zákazníky. Vytvoříte-li profil front-dveří, definujete specifickou konfiguraci potřebnou pro vaši aplikaci a žádné změny provedené u front-dveří nebudou mít vliv na jiné konfigurace front-dveří.
 
-### <a name="is-http-https-redirection-supported"></a>Je přesměrování HTTP->HTTPS podporováno?
+### <a name="is-http-https-redirection-supported"></a>Je podporováno přesměrování HTTP->HTTPS?
 
-Ano. Azure Front Door ve skutečnosti podporuje přesměrování řetězce hostitele, cesty a dotazu a také součást přesměrování adres URL. Další informace o [přesměrování adres URL](front-door-url-redirect.md). 
+Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
 
-### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou zpracována pravidla směrování?
+### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou pravidla směrování zpracovaná?
 
-Trasy pro vaše přední dveře nejsou objednány a konkrétní trasa je vybrána na základě nejlepší shody. Další informace o [tom, jak front door odpovídá požadavkům na pravidlo směrování](front-door-route-matching.md).
+Trasy pro vaše přední dveře nejsou seřazené a na základě nejlepší shody se vybere konkrétní trasa. Přečtěte si další informace o [tom, jak přední dvířka odpovídají požadavkům na pravidlo směrování](front-door-route-matching.md).
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Jak uzamknu přístup k back-endu jenom k hlavním dveřím Azure?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>Návody uzamknout přístup k back-endu jenom na přední vrátka Azure?
 
-Chcete-li uzamknout aplikaci přijímat provoz pouze z konkrétních předních dveří, budete muset nastavit IP ACLs pro back-end a pak omezit provoz na back-endu na konkrétní hodnotu záhlaví 'X-Azure-FDID' odeslané Front Door. Tyto kroky jsou podrobně popsány takto:
+Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrétních front, budete muset pro svůj back-end nastavit seznamy řízení přístupu (ACL) IP adres a potom omezit provoz back-endu na konkrétní hodnotu hlavičky X-Azure-FDID, kterou odesílají přední dveře. Tyto kroky jsou podrobně popsané níže:
 
-- Nakonfigurujte ip acling pro vaše back-endy tak, aby přijímali provoz z back-endového ip adresového prostoru Azure Front Door a pouze z infrastrukturních služeb Azure. Podívejte se na IP podrobnosti níže pro ACLing váš backend:
+- Nakonfigurujte IP funkce acling pro vaše back-endy pro příjem provozu z adresního prostoru IP adres back-endu na front-endu a Azure služby infrastruktury. Přečtěte si následující podrobnosti o IP adrese pro funkce acling back-end:
  
-    - Odkazovat *AzureFrontDoor.Backend* části v [Rozsahu IP Azure a značky služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro frontdoor je IPv4 rozsah ip adres IP nebo můžete také použít značku služby *AzureFrontDoor.Backend* ve [skupinách zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo s Azure [Firewall](https://docs.microsoft.com/azure/firewall/service-tags).
-    - Back-endIP prostor **IPv6** společnosti Front Door, který je zakrytý servisní majem, není uveden v souboru JSON rozsahů Azure IP. Pokud hledáte explicitní rozsah adres IPv6, je v současné době omezen na`2a01:111:2050::/44`
-    - [Základní infrastrukturní služby](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) Azure prostřednictvím virtualizovaných IP adres hostitele: `168.63.129.16` a`169.254.169.254`
+    - Přečtěte si část *AzureFrontDoor. back-end* v tématu [rozsahy IP adres Azure a značky služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro rozsah IP adres back-endu IPv4 pro front-endu nebo můžete použít také značku služby *AzureFrontDoor. back-end* ve [skupinách zabezpečení sítě](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) nebo v [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags).
+    - IP adresa back-endu **IPv6** front-endu, která je popsaná ve značce služby, není uvedená v souboru JSON rozsahy IP adres Azure. Pokud hledáte explicitní rozsah adres IPv6, je aktuálně omezen na`2a01:111:2050::/44`
+    - [Základní služby infrastruktury](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations) Azure prostřednictvím virtualizované IP adresy hostitele: `168.63.129.16` a`169.254.169.254`
 
     > [!WARNING]
-    > Back-endIP prostor předních dveří se může později změnit, ale zajistíme, že dříve než k tomu dojde, že bychom se integrovali s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro všechny změny nebo aktualizace.
+    > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
--    Proveďte operaci GET na předních `2020-01-01` dveřích s verzí rozhraní API nebo vyšší. Ve volání rozhraní API `frontdoorID` vyhledejte pole. Filtrujte na příchozí záhlaví**X-Azure-FDID**odeslané frontdoorem do back-endu `frontdoorID`s hodnotou jako hodnota pole . 
+-    Proveďte operaci GET na front-dveřích s verzí `2020-01-01` rozhraní API nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku**X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je `frontdoorID`v poli. 
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Může se ip adresa libovolného vysílání během životnosti mých předních dveří změnit?
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Může se IP adresa libovolného vysílání změnit během životnosti mých front-dveří?
 
-Front-end anycast IP pro vaše přední dveře by se obvykle nemělměnit a může zůstat statický po celou dobu životnosti předních dveří. Neexistují však **žádné záruky** pro stejné. Laskavě neužívejte žádné přímé závislosti na IP.
+IP adresa front-endu pro vaše přední dveře by se obvykle neměla měnit a může zůstat statická po dobu života front-dveří. Neexistují však **žádné záruky** za stejné. Neprovádějte žádné přímé závislosti na IP adrese.
 
-### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Podporuje Azure Front Door statické nebo vyhrazené IP adresy?
+### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Podporuje přední dveře Azure statické nebo vyhrazené IP adresy?
 
-Ne, Azure Front Door aktuálně nepodporuje statické nebo vyhrazené front-end žádné ip adresy vysílání. 
+Ne, přední dveře Azure aktuálně nepodporují statické nebo vyhrazené IP adresy front-endu. 
 
-### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Podporuje Azure Front Door záhlaví x-forwarded-for?
+### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Podporuje přední dveře Azure pro hlavičky, které jsou předány?
 
-Ano, Azure Front Door podporuje záhlaví X-Forwarded-For, X-Forwarded-Host a X-Forwarded-Proto. Pro X-Forwarded-For, pokud záhlaví již bylo k dispozici, pak front door připojí ip adresy klienta. Jinak přidá hlavičku s IP klientem soketu jako hodnotu. Pro X-Forwarded-Host a X-Forwarded-Proto je hodnota přepsána.
+Ano, přední dvířka Azure podporují hlavičky x-for, X předávaných hostitelů a X-předávaných za běhu. V případě předávaného X-za Pokud hlavička již existovala, připojí přední dveře k ní IP adresu klientského soketu. V opačném případě přidá hlavičku s IP adresou soketu klienta jako hodnotu. U X předávaných-hostitelů a X předávaných hodnot se hodnota přepíše.
 
-Další informace o [hlavičkách HTTP podporovaných předními dveřmi](front-door-http-headers-protocol.md).  
+Přečtěte si další informace o [podporovaných hlavičkách protokolu HTTP pro front-dveří](front-door-http-headers-protocol.md).  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Jak dlouho trvá nasazení předních dveří Azure? Funguje moje přední dveře i při aktualizaci?
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>Jak dlouho trvá nasazení front-dveří Azure? Pořád při aktualizaci funguje moje dveře?
 
-Vytvoření nového předního dveří nebo jakékoli aktualizace existujících předních dveří trvá přibližně 3 až 5 minut pro globální nasazení. To znamená, že přibližně za 3 až 5 minut bude konfigurace předních dveří nasazena na všechny naše POP po celém světě.
+Pro globální nasazení trvá nové vytvoření nebo jakékoli aktualizace služby na začátku každé z nich o 3 až 5 minut. To znamená přibližně 3 až 5 minut. konfigurace front-dveří se pak globálně nasadí napříč všemi našimi body POP.
 
-Poznámka – Aktualizace vlastních certifikátů TLS/SSL se nasazují globálně přibližně 30 minut.
+Poznámka: vlastní aktualizace certifikátu TLS/SSL trvá přibližně 30 minut, než se nasadí globálně.
 
-Všechny aktualizace tras nebo back-endových fondů atd. Aktualizace certifikátu jsou také atomické a nezpůsobí žádný výpadek, pokud přechod z "AFD Spravované" na "Použít vlastní certifikát" nebo naopak.
+Jakékoli aktualizace pro trasy nebo fondy back-endu atd. jsou bezproblémové a způsobí nulové výpadky (Pokud je nová konfigurace správná). Aktualizace certifikátů se také považují za atomické a nezpůsobují žádný výpadek, pokud se nepřepne z ' AFD Managed ' na ' použít svůj vlastní certifikát ' nebo naopak.
 
 
 ## <a name="configuration"></a>Konfigurace
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Může azure front door vyrovnávání zatížení nebo směrování provozu v rámci virtuální sítě?
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Může služba Azure Load Balancing nebo směrování provozu v rámci virtuální sítě?
 
-Azure Front Door (AFD) vyžaduje veřejnou IP adresu nebo veřejně řešitelný název DNS pro směrování provozu. Takže odpověď není AFD přímo nelze směrovat v rámci virtuální sítě, ale pomocí aplikační brány nebo Nástroje pro vyrovnávání zatížení Azure mezi vyřeší tento scénář.
+Přední dvířka Azure (AFD) vyžadují pro směrování provozu veřejnou IP adresu nebo název DNS, který se veřejně přeložitelný. Proto odpověď není AFD přímo v rámci virtuální sítě, ale při použití Application Gateway nebo Azure Load Balancer v nástroji se tento scénář vyřeší.
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Jaké jsou různé časové limity a limity pro Azure Front Door?
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Jaké jsou různé časové limity a omezení pro přední dveře Azure?
 
-Seznamte se se všemi zdokumentovanámi [časovými limity a limity pro Azure Front Door](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
+Přečtěte si o všech dokumentovaných [časových limitech a omezeních pro přední dveře Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
 
 ## <a name="performance"></a>Výkon
 
-### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Jak Azure Front Door podporuje vysokou dostupnost a škálovatelnost?
+### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Jak Azure front-dveře podporuje vysokou dostupnost a škálovatelnost?
 
-Azure Front Door je globálně distribuovaná platforma pro více klientů s obrovskýmobjemem kapacity, která uspokojí škálovatelnost vaší aplikace. Front Door, který je dodáván z okraje globální sítě Microsoftu, poskytuje globální možnost vyrovnávání zatížení, které vám umožní převzetí služeb při selhání celé aplikace nebo dokonce jednotlivé mikroslužby napříč oblastmi nebo různými cloudy.
+Přední dvířka Azure jsou globálně distribuovaná víceklientská platforma s obrovskými objemy kapacity pro potřeby škálovatelnosti vaší aplikace. Přední dveře dodávané z hranice globální sítě Microsoftu poskytují funkce pro vyrovnávání zatížení, které umožňují převzít služby při selhání celé aplikace nebo dokonce i jednotlivé mikroslužby napříč oblastmi nebo různými cloudy.
 
 ## <a name="tls-configuration"></a>Konfigurace TLS
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Jaké verze TLS jsou podporovány Azure Front Door?
+### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Jaké verze TLS podporuje i přední dvířka Azure?
 
-Všechny profily předních dveří vytvořené po září 2019 používají tls 1.2 jako výchozí minimum.
+Všechny profily front-dveří vytvořené po září 2019 jako výchozí minimum používají TLS 1,2.
 
-Přední dveře podporují TLS verze 1.0, 1.1 a 1.2. TLS 1.3 ještě není podporován.
+Přední dvířka podporují protokol TLS verze 1,0, 1,1 a 1,2. TLS 1,3 není zatím podporován.
 
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Jaké certifikáty jsou podporované na Azure Front Door?
+### <a name="what-certificates-are-supported-on-azure-front-door"></a>Jaké certifikáty jsou podporované na frontách Azure na předních dveřích?
 
-Chcete-li povolit protokol HTTPS pro bezpečné doručování obsahu na vlastní doméně Front Door, můžete použít certifikát, který je spravovaný Azure Front Door nebo použít vlastní certifikát.
-Možnost spravovaná předními dveřmi zřizována je standardní certifikát TLS/SSL prostřednictvím digicertu a uložená v trezoru klíčů předních dveří. Pokud se rozhodnete použít vlastní certifikát, můžete certifikát zavést od podporované certifikační autority a může se z nich povést standardní certifikát TLS, certifikát rozšířeného ověření nebo dokonce certifikát se zástupnými kódy. Certifikáty podepsané svým držitelem nejsou podporovány. Přečtěte [si, jak povolit protokol HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
+Pokud chcete protokol HTTPS povolit pro bezpečné doručování obsahu do vlastní domény na předních dveřích, můžete použít certifikát, který je spravovaný přes službu Azure front-dveří, nebo použít vlastní certifikát.
+Možnost spravovaná přes dvířka zřídí standardní certifikát TLS/SSL prostřednictvím DigiCert a uložený v Key Vaultu na frontě. Pokud se rozhodnete použít vlastní certifikát, můžete připojit certifikát od podporované certifikační autority a může to být standardní TLS, rozšířený ověřovací certifikát nebo certifikát se zástupnými znaky. Certifikáty podepsané svým držitelem nejsou podporovány. Naučte [se, jak povolit protokol HTTPS pro vlastní doménu](https://aka.ms/FrontDoorCustomDomainHTTPS).
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>Podporuje přední dveře automatické střídání certifikátů?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Podporuje přední dveře automatické otočení certifikátů?
 
-Pro možnost spravovaného certifikátu Přední dveře jsou certifikáty automaticky otočeny předními dveřmi. Pokud používáte certifikát se spravovaným předními dveřmi a zjistíte, že datum vypršení platnosti certifikátu je kratší než 60 dní, nasuzte lístek podpory.
-</br>Pro vlastní certifikát TLS/SSL není automatické otáčení podporováno. Podobně jako to, jak byla nastavena poprvé pro danou vlastní doménu, budete muset v trezoru klíčů nasměrovat přední dveře na správnou verzi certifikátu a zajistit, aby byl instanční objekt pro frontdoor stále přístup k trezoru klíčů. Tato aktualizovaná operace zavádění certifikátu předními dveřmi je atomická a nezpůsobuje žádný dopad výroby za předpokladu, že se nezmění název subjektu nebo san pro certifikát.
+Pro možnost spravovaného certifikátu front-dveří se certifikáty připravují pomocí front-dveří. Pokud používáte certifikát spravovaný přes dvířka a zjistíte, že je datum vypršení platnosti certifikátu kratší než 60 dní, zajistěte si soubor a lístek podpory.
+</br>Pro vlastní certifikát TLS/SSL se nepodporuje automatické otočení. Podobně jako při prvním nastavení pro danou vlastní doménu bude nutné, abyste nastavili přední dveře na správnou verzi certifikátu v Key Vault a zajistili, že instanční objekt pro front-dveře má stále přístup k Key Vault. Tato aktualizovaná operace zavedení certifikátu na předních dveřích je atomická a nezpůsobuje žádný dopad na produkční prostředí. název subjektu nebo síť SAN pro certifikát se nezmění.
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jaké jsou aktuální šifrovací sady podporované Azure Front Door?
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Jaké jsou aktuální šifrovací sady, které jsou podporovány předními dvířky Azure?
 
-Pro TLS1.2 jsou podporovány následující šifrovací sady
+Pro protokol TLS 1.2 jsou podporovány následující šifrovací sady.
 
 TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
-Při použití vlastních domén s povolenou technologií TLS1.0/1.1 jsou podporovány následující šifrovací sady:
+Při použití vlastních domén s povoleným protokolem TLS 1.0/1.1 jsou podporovány následující šifrovací sady:
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -186,54 +186,54 @@ Při použití vlastních domén s povolenou technologií TLS1.0/1.1 jsou podpor
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Mohu nakonfigurovat zásady TLS pro řízení verzí protokolu TLS?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>Můžu nakonfigurovat zásady TLS pro řízení verzí protokolu TLS?
 
-Minimální verzi TLS můžete nakonfigurovat ve službě Azure Front Door ve vlastním nastavení HTTPS domény prostřednictvím portálu Azure nebo [rozhraní AZURE REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion). V současné době si můžete vybrat mezi 1.0 a 1.2.
+Minimální verzi protokolu TLS v frontách Azure můžete nakonfigurovat v nastaveních HTTPS vlastní domény pomocí Azure Portal nebo [Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion). V současné době si můžete vybrat mezi 1,0 a 1,2.
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Mohu nakonfigurovat přední dveře tak, aby podporovaly pouze určité šifrovací sady?
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>Můžu nakonfigurovat přední dveře tak, aby podporovaly pouze konkrétní šifrovací sady?
 
-Ne, konfigurace předních dveří pro konkrétní šifrovací sady není podporována. Můžete však získat vlastní certifikát TLS/SSL od certifikační autority (řekněme Verisign, Entrust nebo Digicert) a mít na certifikátu vyznačené specifické šifrovací sady, když jste jej vygenerovali. 
+Ne, konfigurace front-dveří pro konkrétní šifrovací sady není podporována. Vlastní certifikát TLS/SSL ale můžete získat od certifikační autority (například VeriSign, svěřit nebo DigiCert) a mít konkrétní šifrovací sady označené certifikátem, když ho vygenerujete. 
 
-### <a name="does-front-door-support-ocsp-stapling"></a>Podporuje přední dveře sešívání OCSP?
+### <a name="does-front-door-support-ocsp-stapling"></a>Podporuje se pro připojení k protokolu OCSP i přední dvířka?
 
-Ano, sešívání OCSP je ve výchozím nastavení podporováno předními dveřmi a není vyžadována žádná konfigurace.
+Ano, ve výchozím nastavení je připojení protokolu OCSP podporované předními dveřmi a nevyžaduje se žádná konfigurace.
 
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Podporuje azure front door také opětovné šifrování provozu do back-endu?
+### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Podporuje i přední dveře Azure opětovné šifrování provozu do back-endu?
 
-Ano, Azure Front Door podporuje snižování zátěže TLS/SSL a koncové mezikoncovými protokoly TLS, což znovu zašifruje provoz do back-endu. Ve skutečnosti, protože připojení k back-endu dojít přes jeho veřejné IP, je doporučeno nakonfigurovat přední dveře pro použití protokolu HTTPS jako protokol předávání.
+Ano, přední dvířka Azure podporují snižování zátěže TLS/SSL a koncového šifrování TLS, které znovu zašifruje provoz do back-endu. Vzhledem k tomu, že připojení k back-endu nastávají přes veřejnou IP adresu, doporučujeme nakonfigurovat přední dveře tak, aby jako protokol předávání používaly protokol HTTPS.
 
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Podporuje front door certifikáty podepsané svým držitelem v back-endu pro připojení HTTPS?
+### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Podporují přední dveře certifikáty podepsané svým držitelem v back-endu pro připojení HTTPS?
 
-Ne, certifikáty podepsané svým držitelem nejsou u předních dveří podporovány a omezení se vztahuje na obojí:
+Ne, certifikáty podepsané svým držitelem nejsou podporovány na front-dveřích a omezení platí pro:
 
-1. **Back-endy**: Certifikáty podepsané svým držitelem nelze použít při předávání přenosů jako sond stavu HTTPS nebo HTTPS nebo vyplňování mezipaměti od počátku pro pravidla směrování s povoleným ukládáním do mezipaměti.
-2. **Front-end**: Při použití vlastního certifikátu TLS/SSL pro povolení protokolu HTTPS ve vlastní doméně nelze použít certifikáty podepsané svým držitelem.
+1. **Back-endy**: certifikáty podepsané svým držitelem nemůžete použít při předávání provozu jako sondy stavu HTTPS nebo HTTPS nebo při vyplňování mezipaměti pro zdroj od počátku pro pravidla směrování s povoleným ukládáním do mezipaměti.
+2. **Front-end**: certifikáty podepsané svým držitelem nemůžete použít při použití vlastního certifikátu TLS/SSL pro povolení protokolu HTTPS ve vaší vlastní doméně.
 
-### <a name="why-is-https-traffic-to-my-backend-failing"></a>Proč se lhající přenos protokolu HTTPS do mého back-endu nedaří?
+### <a name="why-is-https-traffic-to-my-backend-failing"></a>Proč selhává přenos HTTPS na můj back-end?
 
-Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro předávání požadavků, může být dva důvody, proč může dojít k selhání přenosu HTTPS:
+Pro úspěšné připojení HTTPS k back-endu, ať už pro sondy stavu nebo pro předávání požadavků, můžou existovat dva důvody, proč může selhání provozu HTTPS:
 
-1. **Neshoda názvů předmětů certifikátu**: U připojení HTTPS front door očekává, že back-end zobrazí certifikát z platné certifikační autority s názvem subjektu odpovídajícím názvu hostitele back-endu. Jako příklad pokud je název hostitele back-end nastaven `myapp-centralus.contosonews.net` a certifikát, který back-end představuje `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` během tls handshake, nemá ani v názvu předmětu, front door odmítne připojení a výsledkem je chyba. 
-    1. **Řešení:** I když se to z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu vyřešit zakázáním kontroly názvu předmětu certifikátu pro přední dveře. To se nachází v části Nastavení na webu Azure portal a v části BackendPoolsSettings v rozhraní API.
-2. **Back-endový hostingový certifikát od neplatné certifikační autority**: V back-endu s frontdoorem lze použít pouze certifikáty od [platných certifikačních autorit.](/azure/frontdoor/front-door-troubleshoot-allowed-ca) Certifikáty interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
+1. **Neshoda názvů subjektu certifikátu**: u připojení HTTPS očekává přední dveře, že váš server back-end prezentuje certifikát od platné certifikační autority s názvy subjektů odpovídajícími názvu hostitele back-endu. Pokud je například váš název hostitele back-endu nastavený na `myapp-centralus.contosonews.net` a certifikát, který váš back-end prezentuje během metody handshake `myapp-centralus.contosonews.net` TLS `*myapp-centralus*.contosonews.net` , ani v názvu subjektu není, zamítne Tato dvířka připojení a výsledkem bude chyba. 
+    1. **Řešení**: i když se z hlediska dodržování předpisů nedoporučuje, můžete tuto chybu obejít tím, že pro vaše přední dveře zakážete kontrolu názvu subjektu certifikátu. Tato možnost je k dispozici v části nastavení v Azure Portal a v části BackendPoolsSettings v rozhraní API.
+2. **Certifikát hostování back-endu z neplatného certifikační autority**: pro back-end s předními dveřmi lze použít pouze certifikáty z [platných certifikačních autorit](/azure/frontdoor/front-door-troubleshoot-allowed-ca) . Certifikáty z interních certifikačních autorit nebo certifikátů podepsaných svým držitelem nejsou povoleny.
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Jaké typy metrik a protokolů jsou dostupné u Azure Front Door?
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Jaké typy metrik a protokolů jsou k dispozici v rámci služby Azure front-dveří?
 
-Informace o protokolech a dalších diagnostických funkcích naleznete [v tématu Monitorování metrik a protokolů pro frontdoor](front-door-diagnostics.md).
+Informace o protokolech a dalších diagnostických možnostech najdete v tématu [monitorování metrik a protokolů pro přední dveře](front-door-diagnostics.md).
 
-### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Jaké jsou zásady uchovávání informací v protokolech diagnostiky?
+### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Jaké jsou zásady uchovávání informací v diagnostických protokolech?
 
-Diagnostické protokoly toku do účtu úložiště zákazníků a zákazníci mohou nastavit zásady uchovávání informací na základě jejich preference. Diagnostické protokoly lze také odeslat do centra událostí nebo azure monitor protokoly. Další informace naleznete [v tématu Diagnostika předních dveří Azure](front-door-diagnostics.md).
+Diagnostické protokoly se zaznamenávají do účtu úložiště zákazníků a zákazníci můžou nastavit zásady uchovávání informací na základě jejich preference. Diagnostické protokoly je také možné odeslat do centra událostí nebo do protokolů Azure Monitor. Další informace najdete v tématu [Diagnostika front-dveří pro Azure](front-door-diagnostics.md).
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Jak získám protokoly auditu pro Azure Front Door?
+### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>Návody získat protokoly auditu pro přední dveře Azure?
 
-Protokoly auditu jsou k dispozici pro Azure Front Door. Na portálu klikněte na **protokol aktivit** v okně nabídky přednídveře pro přístup k protokolu auditu. 
+Protokoly auditu jsou k dispozici pro přední dveře Azure. Na portálu klikněte v okně nabídky vaší přední dveře na **Protokol aktivit** , abyste měli přístup k protokolu auditu. 
 
-### <a name="can-i-set-alerts-with-azure-front-door"></a>Můžu nastavit upozornění pomocí Azure Front Door?
+### <a name="can-i-set-alerts-with-azure-front-door"></a>Můžu nastavovat upozornění pomocí front-dveří Azure?
 
-Ano, Azure Front Door podporuje výstrahy. Výstrahy jsou konfigurovány na metriky. 
+Ano, přední dveře Azure podporují výstrahy. Výstrahy jsou nakonfigurovány na metrikách. 
 
 ## <a name="next-steps"></a>Další kroky
 

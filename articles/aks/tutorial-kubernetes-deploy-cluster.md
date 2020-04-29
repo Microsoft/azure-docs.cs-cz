@@ -6,34 +6,34 @@ ms.topic: tutorial
 ms.date: 02/25/2020
 ms.custom: mvc
 ms.openlocfilehash: 609ac66ca27d5cad7dd2fb295c3a2a721a1cda16
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81392696"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Kurz: Nasazení clusteru Azure Kubernetes Service (AKS)
 
-Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. S AKS můžete rychle vytvořit cluster Kubernetes připravený na výrobu. V tomto kurzu, který je třetí částí sedmidílné série, se nasadí cluster Kubernetes ve službě AKS. Získáte informace o těchto tématech:
+Kubernetes poskytuje distribuovanou platformu pro kontejnerizované aplikace. Pomocí AKS můžete rychle vytvořit cluster Kubernetes připravený pro produkční prostředí. V tomto kurzu, který je třetí částí sedmidílné série, se nasadí cluster Kubernetes ve službě AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Nasazení clusteru AKS Kubernetes, který se dá ověřit do registru kontejnerů Azure
+> * Nasazení clusteru Kubernetes AKS, který se může ověřit ve službě Azure Container Registry
 > * Instalace rozhraní příkazového řádku Kubernetes (kubectl)
 > * Konfigurace kubectl pro připojení ke clusteru AKS
 
-V dalších kurzech se aplikace Azure Vote nasazuje do clusteru, škáluje a aktualizuje.
+V dalších kurzech se hlasovací aplikace Azure nasadí do clusteru, škáluje a aktualizuje.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
-V předchozích kurzech se vytvořila image kontejneru a nahrála se do instance služby Azure Container Registry. Pokud jste tyto kroky neprovedli a chcete je sledovat, začněte v [kurzu 1 – Vytvořte i images kontejneru][aks-tutorial-prepare-app].
+V předchozích kurzech se vytvořila image kontejneru a nahrála se do instance služby Azure Container Registry. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte v [kurzu 1 – vytváření imagí kontejneru][aks-tutorial-prepare-app].
 
-Tento kurz vyžaduje, abyste spouštěli Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
+Tento kurz vyžaduje, abyste spustili Azure CLI verze 2.0.53 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
 ## <a name="create-a-kubernetes-cluster"></a>Vytvoření clusteru Kubernetes
 
-Clustery AKS můžou využívat řízení přístupu na základě role (RBAC) v Kubernetes. Toto řízení umožňuje definovat přístup k prostředkům na základě rolí přiřazených uživatelům. Oprávnění jsou kombinována, pokud je uživateli přiřazeno více rolí, a oprávnění mohou být vymezena na jeden obor názvů nebo v celém clusteru. Ve výchozím nastavení Azure CLI automaticky povolí řízení přístupu na základě role při vytvoření clusteru AKS.
+Clustery AKS můžou využívat řízení přístupu na základě role (RBAC) v Kubernetes. Toto řízení umožňuje definovat přístup k prostředkům na základě rolí přiřazených uživatelům. Oprávnění jsou kombinována, pokud je uživateli přiřazena více rolí a oprávnění mohou být vymezena buď na jeden obor názvů, nebo v celém clusteru. Ve výchozím nastavení Azure CLI automaticky povolí řízení přístupu na základě role při vytvoření clusteru AKS.
 
-Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup*. Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr]. Chcete-li povolit clusteru AKS interakci s jinými prostředky Azure, je automaticky vytvořen objekt zabezpečení služby Azure Active Directory, protože jste nezadali jeden. Tady je tomuto instančnímu [objektu uděleno právo na vyžádat ibi][container-registry-integration] z instance Azure Container Registry (ACR), kterou jste vytvořili v předchozím kurzu. Všimněte si, že můžete použít [spravovanou identitu](use-managed-identity.md) namísto instančního objektu pro snadnější správu.
+Vytvořte cluster AKS pomocí příkazu [az aks create][]. Následující příklad vytvoří cluster *myAKSCluster* ve skupině prostředků *myResourceGroup*. Tato skupina prostředků se vytvořila v [předchozím kurzu][aks-tutorial-prepare-acr]. Aby mohl cluster AKS komunikovat s dalšími prostředky Azure, automaticky se vytvoří Azure Active Directory instančního objektu, protože jste ho neurčili. V tomto případě se tomuto instančnímu objektu [uděluje právo na vyžádání imagí][container-registry-integration] z instance Azure Container Registry (ACR), kterou jste vytvořili v předchozím kurzu. Všimněte si, že ke snazší správě můžete použít [spravovanou identitu](use-managed-identity.md) místo instančního objektu.
 
 ```azurecli
 az aks create \
@@ -44,12 +44,12 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-Můžete také ručně nakonfigurovat instanční objekt pro vytahování bitových kopií z ACR. Další informace naleznete v [tématu Ověřování ACR s objekty zabezpečení služby](../container-registry/container-registry-auth-service-principal.md) nebo [Ověření z Kubernetes s tajným klíčem pro vyžádat](../container-registry/container-registry-auth-kubernetes.md).
+Instanční objekt můžete také ručně nakonfigurovat pro vyžádání imagí z ACR. Další informace najdete v tématech [ověřování ACR pomocí instančních objektů](../container-registry/container-registry-auth-service-principal.md) nebo [ověřování z Kubernetes s tajným klíčem pro vyžádání](../container-registry/container-registry-auth-kubernetes.md)obsahu.
 
-Po několika minutách se nasazení dokončí a vrátí informace naformátované jsonem o nasazení AKS.
+Po několika minutách se nasazení dokončí a vrátí informace ve formátu JSON o nasazení AKS.
 
 > [!NOTE]
-> Chcete-li zajistit, aby váš cluster fungoval spolehlivě, měli byste spustit alespoň 2 (dva) uzly.
+> Aby cluster mohl spolehlivě fungovat, měli byste spustit aspoň 2 (dva) uzly.
 
 ## <a name="install-the-kubernetes-cli"></a>Instalace rozhraní příkazového řádku Kubernetes
 
@@ -63,13 +63,13 @@ az aks install-cli
 
 ## <a name="connect-to-cluster-using-kubectl"></a>Připojení ke clusteru pomocí kubectl
 
-Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad získá pověření pro cluster AKS s názvem *myAKSCluster* v *myResourceGroup*:
+Pomocí příkazu [az aks get-credentials][] nakonfigurujte klienta `kubectl` pro připojení k vašemu clusteru Kubernetes. Následující příklad vrátí pověření pro cluster AKS s názvem *myAKSCluster* v *myResourceGroup*:
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Chcete-li ověřit připojení ke clusteru, spusťte příkaz [kubectl get nodes][kubectl-get] a vraťte seznam uzlů clusteru:
+Pokud chcete ověřit připojení ke clusteru, spusťte příkaz [kubectl Get Nodes][kubectl-get] , který vrátí seznam uzlů clusteru:
 
 ```
 $ kubectl get nodes
@@ -83,7 +83,7 @@ aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
 V tomto kurzu se nasadil cluster Kubernetes ve službě AKS a nakonfigurovali jste `kubectl` pro připojení k tomuto clusteru. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Nasazení clusteru AKS Kubernetes, který se dá ověřit do registru kontejnerů Azure
+> * Nasazení clusteru Kubernetes AKS, který se může ověřit ve službě Azure Container Registry
 > * Instalace rozhraní příkazového řádku Kubernetes (kubectl)
 > * Konfigurace kubectl pro připojení ke clusteru AKS
 

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: Dokumentace k hostování
-summary: Kontejnery služby rozpoznávání řeči jsou k dispozici pro scénáře převodu řeči na text i převod textu na řeč, které zahrnují standardní nebo přizpůsobené modely.
+summary: Kontejnery služby Speech jsou k dispozici pro scénáře převodu řeči na text i pro převod textu na řeč, včetně standardních nebo přizpůsobených modelů.
 metadata:
-  title: Hostingová dokumentace – kurzy, referenční rozhraní API – služby Azure Cognitive Services | Dokumenty společnosti Microsoft
+  title: Dokumentace k hostování – kurzy, Reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 03/23/2020
   ms.author: trbye
   ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401511"
 landingContent:
 - title: O hostování
@@ -28,11 +28,11 @@ landingContent:
       url: speech-container-howto-on-premises.md
     - text: Kontejnery služby Speech ve službě Azure Container Instances
       url: deploy-speech-on-container-instances.md
-- title: Vytvořit a nakonfigurovat
+- title: Vytvoření a konfigurace
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření prostředku řeči Azure
+    - text: Vytvoření prostředku Azure Speech
       url: get-started.md#new-resource
     - text: Konfigurace kontejnerů služby Speech
       url: speech-container-configuration.md

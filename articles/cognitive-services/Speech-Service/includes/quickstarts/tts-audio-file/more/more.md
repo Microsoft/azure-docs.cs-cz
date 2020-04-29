@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 793efa7bb3165a74861a9fb437379de84ccb6688
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400315"
 ---
-## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
+## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 
-Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovacím jazyce neuviděli rychlý start. Nebojte se, máme další materiály rychlého startu a ukázky kódu, které jsou k dispozici na GitHubu. V tabulce najdete tu správnou ukázku pro váš programovací jazyk a kombinaci platformy a operačního systému.
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme další materiály pro rychlý Start a ukázky kódu dostupné na GitHubu. Pomocí tabulky Najděte správnou ukázku kombinace programovacího jazyka a platformy/OS.
 
 | Jazyk | Další rychlé starty | Ukázky kódů |
 |--|--|--|
-| C# | [K reproduktoru][1-speaker] | [Rozhraní .NET Framework][dotnet], [.NET Core][netcore], [UPW][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [K reproduktoru][2-speaker] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [K reproduktoru][3-speaker] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Soubor Node.js ke zvukovému souboru][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS na reproduktor][obj-iOS-qck], [macOS na reproduktor][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [K reproduktoru][4-speaker] | [Windows, Linux, macOS][python] |
-| Swift | [iOS na reproduktor][swift-iOS-qck], [macOS na reproduktor][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Do mluvčího][1-speaker] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Do mluvčího][2-speaker] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Do mluvčího][3-speaker] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | [Node. js do zvukového souboru][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [iOS pro mluvčí][obj-iOS-qck], [MacOS a mluvčí][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Do mluvčího][4-speaker] | [Windows, Linux, macOS][python] |
+| Swift | [iOS pro mluvčí][swift-iOS-qck], [MacOS a mluvčí][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-speaker]: ../../../../quickstarts/text-to-speech.md?pivots=programming-language-csharp
 

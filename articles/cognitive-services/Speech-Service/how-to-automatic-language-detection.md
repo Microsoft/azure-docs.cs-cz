@@ -1,7 +1,7 @@
 ---
-title: Jak používat automatickou detekci jazyka pro řeč na text
+title: Jak používat automatické zjišování jazyka pro rozpoznávání řeči na text
 titleSuffix: Azure Cognitive Services
-description: Sada Speech SDK podporuje automatickou detekci jazyka pro převod řeči na text. Při použití této funkce je poskytnutý zvuk porovnán s poskytnutým seznamem jazyků a je určena nejpravděpodobnější shoda. Vrácenou hodnotu lze poté použít k výběru jazykového modelu používaného pro převod řeči na text.
+description: Sada Speech SDK podporuje automatické rozpoznávání jazyka pro rozpoznávání řeči na text. Při použití této funkce se zadaný zvuk porovná se zadaným seznamem jazyků a je určena nejpravděpodobnější shoda. Vrácená hodnota se pak může použít k výběru jazykového modelu použitého pro převod řeči na text.
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,29 +12,29 @@ ms.date: 03/16/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402204"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>Automatická detekce jazyka pro převod řeči na text
+# <a name="automatic-language-detection-for-speech-to-text"></a>Automatické zjišování jazyka pro rozpoznávání řeči na text
 
-Automatická detekce jazyka se používá k určení nejpravděpodobnější shody zvuku předávaného sady Speech SDK ve srovnání se seznamem poskytnutých jazyků. Hodnota vrácená automatickou detekcí jazyka se pak používá k výběru jazykového modelu pro převod řeči na text, což vám poskytuje přesnější přepis. Informace o tom, které jazyky jsou k dispozici, naleznete [v tématu Jazyková podpora](language-support.md).
+Automatická detekce jazyka se používá k určení nejpravděpodobnější shody pro zvuk předaný do sady Speech SDK při porovnání se seznamem poskytovaných jazyků. Hodnota vrácená automatickým rozpoznáním jazyka se pak použije k výběru jazykového modelu pro rozpoznávání řeči textu a poskytuje vám přesnější přepis. Pokud chcete zjistit, které jazyky jsou k dispozici, přečtěte si téma [Podpora jazyků](language-support.md).
 
-V tomto článku se dozvíte, `AutoDetectSourceLanguageConfig` jak `SpeechRecognizer` použít k vytvoření objektu a načtení zjištěného jazyka.
+V tomto článku se naučíte, jak použít `AutoDetectSourceLanguageConfig` k vytvoření `SpeechRecognizer` objektu a načtení zjištěného jazyka.
 
 > [!IMPORTANT]
-> Tato funkce je k dispozici pouze pro sadu Speech SDK pro C#, C++, Java a Python.
+> Tato funkce je dostupná jenom pro sadu Speech SDK pro jazyky C#, C++, Java a Python.
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatická detekce jazyka pomocí sady Speech SDK
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>Automatické rozpoznávání jazyka pomocí sady Speech SDK
 
-Automatická detekce jazyka má v současné době limit na straně služeb dva jazyky na detekci. Mějte toto omezení `AudoDetectSourceLanguageConfig` na paměti při konstrukci objektu. V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig`a pak ji `SpeechRecognizer`použijete k vytvoření .
+Automatické rozpoznání jazyka aktuálně má limit na straně služeb pro každé zjištění. Při vytváření `AudoDetectSourceLanguageConfig` objektu si pamatujte na toto omezení. V následujících ukázkách vytvoříte `AutoDetectSourceLanguageConfig`a pak použijete k vytvoření. `SpeechRecognizer`
 
 > [!TIP]
-> Můžete také určit vlastní model, který se má použít při provádění řeči na text. Další informace naleznete [v tématu Použití vlastního modelu pro automatické zjišťování jazyka](#use-a-custom-model-for-automatic-language-detection).
+> Můžete také zadat vlastní model, který se použije při provádění řeči na text. Další informace najdete v tématu [použití vlastního modelu pro automatické rozpoznávání jazyka](#use-a-custom-model-for-automatic-language-detection).
 
-Následující úryvky ilustrují, jak používat automatickou detekci jazyka ve vašich aplikacích:
+Následující fragmenty kódu ukazují, jak používat automatické rozpoznávání jazyka ve vašich aplikacích:
 
 ::: zone pivot="programming-language-csharp"
 
@@ -118,11 +118,11 @@ detected_language = auto_detect_source_language_result.language
 
 ::: zone-end
 
-## <a name="use-a-custom-model-for-automatic-language-detection"></a>Použití vlastního modelu pro automatickou detekci jazyka
+## <a name="use-a-custom-model-for-automatic-language-detection"></a>Použití vlastního modelu pro automatické zjišování jazyka
 
-Kromě detekce jazyka pomocí modelů služby Rozpoznávání řeči můžete zadat vlastní model pro rozšířené rozpoznávání. Pokud vlastní model není k dispozici, služba bude používat výchozí jazykový model.
+Kromě rozpoznávání jazyka pomocí modelů služby Speech můžete pro lepší rozpoznávání zadat vlastní model. Pokud není k dispozici vlastní model, služba použije výchozí jazykový model.
 
-Výstřižky níže ilustrují, jak zadat vlastní model ve volání služby Řeči. Pokud je `en-US`zjištěný jazyk , použije se výchozí model. Pokud je `fr-FR`zjištěný jazyk , použije se koncový bod pro vlastní model:
+Níže uvedené fragmenty kódu ilustrují, jak zadat vlastní model ve volání služby pro rozpoznávání řeči. Pokud je `en-US`zjištěný jazyk, použije se výchozí model. Pokud je `fr-FR`zjištěný jazyk, je použit koncový bod pro vlastní model:
 
 ::: zone pivot="programming-language-csharp"
 

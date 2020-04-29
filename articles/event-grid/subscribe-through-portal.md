@@ -1,6 +1,6 @@
 ---
 title: Předplatná Azure Event Grid prostřednictvím portálu
-description: Tento článek popisuje, jak vytvořit odběry gridu událostí pro podporované zdroje, jako je azure blob storage, pomocí portálu Azure.
+description: Tento článek popisuje, jak vytvořit předplatná Event Grid pro podporované zdroje, jako je Azure Blob Storage, pomocí Azure Portal.
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,25 +8,25 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393175"
 ---
-# <a name="subscribe-to-events-through-portal"></a>Přihlásit se k odběru událostí prostřednictvím portálu
+# <a name="subscribe-to-events-through-portal"></a>Přihlášení k odběru událostí prostřednictvím portálu
 
-Tento článek popisuje, jak vytvořit odběry event gridprostřednictvím portálu.
+Tento článek popisuje, jak vytvořit předplatná Event Grid prostřednictvím portálu.
 
-## <a name="create-event-subscriptions"></a>Vytvořit odběry událostí
+## <a name="create-event-subscriptions"></a>Vytvoření odběrů událostí
 
-Chcete-li vytvořit odběr služby Event Grid pro některý z podporovaných [zdrojů událostí](overview.md#event-sources), použijte následující kroky. Tento článek ukazuje, jak vytvořit předplatné služby Event Grid pro předplatné Azure.
+Chcete-li vytvořit předplatné Event Grid pro některý z podporovaných [zdrojů událostí](overview.md#event-sources), použijte následující postup. Tento článek ukazuje, jak vytvořit předplatné služby Event Grid pro předplatné Azure.
 
 1. Vyberte **Všechny služby**.
 
    ![Vybrat všechny služby](./media/subscribe-through-portal/select-all-services.png)
 
-1. Vyhledejte **odběry mřížky událostí** a vyberte je z dostupných možností.
+1. Vyhledejte **Event Grid odběry** a vyberte ji z dostupných možností.
 
    ![Search](./media/subscribe-through-portal/search.png)
 
@@ -34,38 +34,38 @@ Chcete-li vytvořit odběr služby Event Grid pro některý z podporovaných [zd
 
    ![Přidat předplatné](./media/subscribe-through-portal/add-subscription.png)
 
-1. Vyberte typ předplatného, který chcete vytvořit. Chcete-li se například přihlásit k odběru událostí pro vaše předplatné Azure, vyberte **předplatná Azure** a cílové předplatné.
+1. Vyberte typ předplatného, které chcete vytvořit. Pokud se například chcete přihlásit k odběru událostí předplatného Azure, vyberte **předplatná Azure** a cílové předplatné.
 
-   ![Vyberte předplatné Azure](./media/subscribe-through-portal/azure-subscription.png)
+   ![Výběr předplatného Azure](./media/subscribe-through-portal/azure-subscription.png)
 
-1. Chcete-li se přihlásit ke všem typům událostí pro tento zdroj událostí, zaškrtněte políčko **Přihlásit se ke všem typům událostí.** V opačném případě vyberte typy událostí pro toto předplatné.
+1. Chcete-li se přihlásit k odběru všech typů událostí pro tento zdroj události, zachovejte možnost přihlásit se k **odběru všech typů událostí** . V opačném případě vyberte typy událostí pro toto předplatné.
 
    ![Výběr typů událostí](./media/subscribe-through-portal/select-event-types.png)
 
-1. Zadejte další podrobnosti o předplatné události, jako je například koncový bod pro zpracování událostí a název předplatného.
+1. Zadejte další podrobnosti o odběru události, například koncový bod pro zpracování událostí a název předplatného.
 
-   ![Poskytnutí podrobností o předplatném](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Zadat podrobnosti předplatného](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. Chcete-li povolit zásady nedoručených zpráv a přizpůsobit zásady opakování, vyberte **možnost Další funkce**.
+1. Pokud chcete povolit nedoručené dopisy a přizpůsobovat zásady opakování, vyberte **Další funkce**.
 
    ![Výběr dalších funkcí](./media/subscribe-through-portal/select-additional-features.png)
 
-1. Vyberte kontejner, který chcete použít pro ukládání událostí, které nejsou doručeny, a nastavte způsob odeslání opakovaných pokusů.
+1. Vyberte kontejner, který se má použít pro ukládání nedoručených událostí, a nastavte způsob, jakým se odesílají pokusy o opakování.
 
-   ![Povolení nedoručených nápisů a opakování](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![Povolit nedoručené dopisy a opakovat akci](./media/subscribe-through-portal/set-deadletter-retry.png)
 
 1. Až budete hotovi, vyberte **Vytvořit**.
 
-## <a name="create-subscription-on-resource"></a>Vytvořit předplatné na prostředku
+## <a name="create-subscription-on-resource"></a>Vytvořit předplatné u prostředku
 
-Některé zdroje událostí podporují vytváření odběru událostí prostřednictvím portálového rozhraní pro tento prostředek. Vyberte zdroj události a vyhledejte **události** v levém podokně.
+Některé zdroje událostí podporují vytvoření odběru událostí prostřednictvím rozhraní portálu pro daný prostředek. Vyberte zdroj události a vyhledejte **události** v levém podokně.
 
-![Poskytnutí podrobností o předplatném](./media/subscribe-through-portal/resource-events.png)
+![Zadat podrobnosti předplatného](./media/subscribe-through-portal/resource-events.png)
 
-Portál vám nabídne možnosti pro vytvoření odběru událostí, které je relevantní pro daný zdroj.
+Portál nabízí možnosti pro vytvoření odběru událostí, které je relevantní pro daný zdroj.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Informace o doručení události a opakování zpráv [event grid u zpráv a opakování](delivery-and-retry.md).
+* Pro informace o doručení a opakování události [Event Grid doručování zpráv a akci opakujte](delivery-and-retry.md).
 * Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
-* Pokud chcete rychle začít používat Event Grid, přečtěte [si tématu Vytváření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: db87f31f4702d3487a11a6d833755105455d74c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400637"
 ---
 ## <a name="prerequisites"></a>Požadavky
@@ -16,13 +16,13 @@ ms.locfileid: "81400637"
 Než začnete:
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku řeči Azure<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Vytvoření prostředku Azure Speech<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Nastavení vývojového prostředí a vytvoření prázdného projektu](../../../../quickstarts/setup-platform.md?tabs=windows&pivots=programming-language-cpp)
-> * Ujistěte se, že máte přístup k mikrofonu pro snímání zvuku
+> * Ujistěte se, že máte přístup k mikrofonu pro záznam zvuku
 
 ## <a name="source-code"></a>Zdrojový kód
 
-Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do něj následující kód.
+Vytvořte zdrojový soubor C++ s názvem *HelloWorld. cpp*a vložte do něj následující kód.
 
 [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
@@ -32,15 +32,15 @@ Vytvořte zdrojový soubor Jazyka C++ s názvem *helloworld.cpp*a vložte do ně
 
 [!INCLUDE [code explanation](../code-explanation.md)]
 
-## <a name="build-and-run-app"></a>Vytváření a spouštění aplikací
+## <a name="build-and-run-app"></a>Sestavení a spuštění aplikace
 
-1. Na řádku nabídek vyberte **sestavení** > **sestavení řešení** k sestavení aplikace. Kód by se teď měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte **sestavit** > **sestavení řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. **Chcete-li** > spustit aplikaci **Helloworld,** zvolte Ladění**spouštění ladění** (nebo stiskněte <kbd>klávesu F5).</kbd>
+1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu <kbd>F5</kbd>) a spusťte aplikaci **HelloWorld** .
 
-1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš projev do služby Speech, která přepisuje na text a odešle jej zpět do aplikace pro zobrazení.
+1. Vyslovte anglickou frázi nebo větu. Aplikace přenáší váš hlas do služby pro rozpoznávání řeči, která transcribes na text a pošle ji zpět do aplikace k zobrazení.
 
-   ![Výstup konzoly po úspěšném rozpoznání](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
+   ![Výstup na konzole po úspěšném rozpoznání](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 
 ## <a name="next-steps"></a>Další kroky
 

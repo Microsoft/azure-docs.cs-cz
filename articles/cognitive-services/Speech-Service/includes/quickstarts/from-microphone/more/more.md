@@ -5,25 +5,25 @@ ms.topic: include
 ms.date: 03/30/2020
 ms.author: trbye
 ms.openlocfilehash: 08686e7b5330dcd734a6ebdc911aa480e6706aef
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400704"
 ---
-## <a name="additional-language-and-platform-support"></a>Další jazyková podpora a podpora platformy
+## <a name="additional-language-and-platform-support"></a>Další podpora jazyků a platforem
 
-Pokud jste klikli na tuto kartu, pravděpodobně jste v oblíbeném programovacím jazyce neuviděli rychlý start. Nebojte se, máme další materiály rychlého startu a ukázky kódu, které jsou k dispozici na GitHubu. V tabulce najdete tu správnou ukázku pro váš programovací jazyk a kombinaci platformy a operačního systému.
+Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovacím jazyce nezobrazili rychlý Start. Nedělejte si starosti, máme další materiály pro rychlý Start a ukázky kódu dostupné na GitHubu. Pomocí tabulky Najděte správnou ukázku kombinace programovacího jazyka a platformy/OS.
 
 | Jazyk | Další rychlé starty | Ukázky kódů |
 |--|--|--|
-| C# | [Ze souboru][1-file], [Z objektu blob][1-blob] | [Rozhraní .NET Framework][dotnet], [.NET Core][netcore], [UPW][uwp], [Unity][unity], [Xamarin][xamarin] |
-| C++ | [Ze souboru][2-file], [Z objektu blob][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [macOS][cpp-mac] |
-| Java | [Ze souboru][3-file], [Z objektu blob][3-blob] | [Android][java-android], [JRE][java-jre] |
-| JavaScript | [Prohlížeč z mikrofonu][js-browser], [Node.js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
-| Objective-C | [iOS][obj-iOS-qck], [macOS][obj-macOS-qck] | [iOS][obj-iOS], [macOS][obj-macOS] |
-| Python | [Ze souboru][4-file], [Z objektu blob][4-blob] | [Windows, Linux, macOS][python] |
-| Swift | [iOS][swift-iOS-qck], [macOS][swift-macOS-qck] | [iOS][swift-iOS], [macOS][swift-macOS] |
+| C# | [Ze souboru][1-file], [z objektu BLOB][1-blob] | [.NET Framework][dotnet], [.NET Core][netcore], [UWP][uwp], [Unity][unity], [Xamarin][xamarin] |
+| C++ | [Ze souboru][2-file], [z objektu BLOB][2-blob] | [Windows][cpp-windows], [Linux][cpp-linux], [MacOS][cpp-mac] |
+| Java | [Ze souboru][3-file], [z objektu BLOB][3-blob] | [Android][java-android], [JRE][java-jre] |
+| JavaScript | [Prohlížeč z MIC][js-browser], [Node. js ze souboru][js-node] | [Windows, Linux, macOS][js-code] |
+| Objective-C | [iOS][obj-iOS-qck], [MacOS][obj-macOS-qck] | [iOS][obj-iOS], [MacOS][obj-macOS] |
+| Python | [Ze souboru][4-file], [z objektu BLOB][4-blob] | [Windows, Linux, macOS][python] |
+| Swift | [iOS][swift-iOS-qck], [MacOS][swift-macOS-qck] | [iOS][swift-iOS], [MacOS][swift-macOS] |
 
 [1-file]: ../../../../quickstarts/speech-to-text-from-file.md?pivots=programming-language-csharp
 [1-blob]: ../../../../quickstarts/from-blob.md?pivots=programming-language-csharp

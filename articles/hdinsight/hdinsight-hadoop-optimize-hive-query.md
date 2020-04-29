@@ -1,6 +1,6 @@
 ---
-title: Optimalizace dotazů hive v Azure HDInsight
-description: Tento článek popisuje, jak optimalizovat vaše apache hive dotazy pro Hadoop v HDInsight.
+title: Optimalizace dotazů na podregistry ve službě Azure HDInsight
+description: Tento článek popisuje, jak optimalizovat dotazy Apache Hive pro Hadoop v HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,71 +9,71 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390302"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
-V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Zvolte příslušný typ clusteru, který vám pomůže optimalizovat výkon pro vaše potřeby pracovního vytížení.
+V Azure HDInsight existuje několik typů clusterů a technologií, které můžou spouštět dotazy Apache Hive. Vyberte vhodný typ clusteru, který vám umožní optimalizovat výkon vašich potřeb úloh.
 
-Chcete-li například optimalizovat pro `ad hoc`interaktivní dotazy, zvolte typ clusteru **interaktivních dotazů.** Zvolte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy Hive používané jako dávkový proces. **Typy** clusterů Spark a **HBase** můžou taky spouštět dotazy Hive. Další informace o spouštění dotazů Hive na různých typech clusterů HDInsight najdete v tématu [Co je Apache Hive a HiveQL na Azure HDInsight?](hadoop/hdinsight-use-hive.md)
+Například vyberte typ clusteru **interaktivních dotazů** , který se má `ad hoc`optimalizovat pro interaktivní dotazy. Vyberte typ clusteru Apache **Hadoop** pro optimalizaci pro dotazy na podregistr používané jako dávkové zpracování. Typy clusterů **Spark** a **HBA** můžou také spouštět dotazy na podregistr. Další informace o spouštění dotazů na podregistry na různých typech clusterů HDInsight najdete v tématu [co je Apache Hive a HiveQL v Azure HDInsight](hadoop/hdinsight-use-hive.md).
 
-Clustery HDInsight typu clusteru Hadoop nejsou ve výchozím nastavení optimalizovány pro výkon. Tento článek popisuje některé nejběžnější metody optimalizace výkonu Hive, které můžete použít na vaše dotazy.
+Clustery HDInsight typu clusteru Hadoop nejsou ve výchozím nastavení optimalizované pro výkon. Tento článek popisuje některé z nejběžnějších metod optimalizace výkonu podregistru, které můžete použít pro vaše dotazy.
 
 ## <a name="scale-out-worker-nodes"></a>Horizontální navýšení kapacity pracovních uzlů
 
-Zvýšení počtu pracovních uzlů v clusteru HDInsight umožňuje práci používat více mapovačů a reduktorů, které mají být spuštěny paralelně. Existují dva způsoby, jak zvýšit kapacitu v HDInsight:
+Zvýšení počtu pracovních uzlů v clusteru HDInsight umožňuje práci používat více mapovačů a reduktorů spustit paralelně. Existují dva způsoby, jak můžete rozšířit horizontální navýšení kapacity v HDInsight:
 
-* Při vytváření clusteru můžete určit počet pracovních uzlů pomocí portálu Azure, Azure PowerShellu nebo rozhraní příkazového řádku.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje konfiguraci pracovního uzlu na webu Azure Portal:
+* Při vytváření clusteru můžete zadat počet pracovních uzlů pomocí rozhraní Azure Portal, Azure PowerShell nebo rozhraní příkazového řádku.  Další informace najdete v tématu [Vytvoření clusterů HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Následující snímek obrazovky ukazuje konfiguraci uzlu pracovní proces na Azure Portal:
   
-    ![Uzly velikosti clusteru Portálu Azure](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    ![Uzly Azure Portal velikosti clusteru](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
-* Po vytvoření můžete také upravit počet pracovních uzlů pro další horizontální navýšení kapacity clusteru bez opětovného vytvoření:
+* Po vytvoření můžete také upravit počet pracovních uzlů pro další horizontální navýšení kapacity clusteru, aniž by bylo nutné ho znovu vytvořit:
 
-    ![Velikost clusteru škálování portálu Azure](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    ![Velikost clusteru Azure Portal škálování](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
-Další informace o škálování HDInsightu najdete v [tématu Škálování clusterů HDInsight](hdinsight-scaling-best-practices.md)
+Další informace o škálování HDInsight najdete v tématu [škálování clusterů HDInsight](hdinsight-scaling-best-practices.md) .
 
-## <a name="use-apache-tez-instead-of-map-reduce"></a>Použijte Apache Tez místo Map Reduce
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Použít Apache Tez místo zmenšení mapy
 
-[Apache Tez](https://tez.apache.org/) je alternativní spuštění motoru MapReduce motoru. Clustery HDInsight založené na Linuxu mají tez ve výchozím nastavení povolené.
+[Apache tez](https://tez.apache.org/) je alternativní spouštěcí modul pro modul MapReduce. Clustery HDInsight se systémem Linux mají ve výchozím nastavení povolené TEZ.
 
-![Diagram přehledu HDInsight Apache Tez](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![Diagram přehledu Apache Tez HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
-Tez je rychlejší, protože:
+Tez je rychlejší z těchto důvodů:
 
-* **Spusťte řízený acyklický graf (DAG) jako jednu úlohu v modulu MapReduce**. Dag vyžaduje, aby každá sada mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že více MapReduce úlohy, které mají být spun off pro každý dotaz Hive. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje počáteční nároky na spuštění úlohy.
-* **Zabraňuje zbytečným zápisům**. Více úloh se používají ke zpracování stejného dotazu Hive v Modulu MapReduce. Výstup každé úlohy MapReduce je zapsán do HDFS pro zprostředkující data. Vzhledem k tomu, že Tez minimalizuje počet úloh pro každý dotaz Hive, je schopen vyhnout se zbytečným zápisům.
-* **Minimalizuje zpoždění při spuštění**. Tez je lépe schopen minimalizovat zpoždění start-up snížením počtu mapovačů, které potřebuje ke spuštění a také zlepšením optimalizace v celém textu.
-* **Opakovaně používá nádoby**. Kdykoli je to možné, Tez znovu použije kontejnery, aby zajistil, že latence od spuštění kontejnerů je snížena.
-* **Techniky průběžné optimalizace**. Tradičně optimalizace byla provedena během fáze kompilace. Nicméně další informace o vstupy je k dispozici, které umožňují lepší optimalizaci za běhu. Tez používá techniky kontinuální optimalizace, které mu umožňují optimalizovat plán dále do fáze runtime.
+* **Spusťte acyklického graf (DAG) jako jednu úlohu v modulu MapReduce**. DAG vyžaduje, aby na každé sadě mapovačů následovala jedna sada reduktorů. Tento požadavek způsobí, že pro každý dotaz na podregistr se má vypínat více úloh MapReduce. Tez nemá takové omezení a může zpracovat komplexní DAG jako jednu úlohu, která minimalizuje náklady na spuštění úlohy.
+* **Nepoužívejte zbytečné zápisy**. Ke zpracování stejného dotazu podregistru v modulu MapReduce se používá víc úloh. Výstup každé úlohy MapReduce se zapisuje do HDFS pro mezilehlé údaje. Vzhledem k tomu, že tez minimalizuje počet úloh pro každý dotaz na podregistr, je možné vyhnout se zbytečnému zápisu.
+* **Minimalizuje prodlevy při spuštění**. Tez je lepším řešením pro minimalizaci počáteční prodlevy tím, že snižuje počet mapovačů, které musí spustit, a také zlepšuje optimalizaci v celém systému.
+* Znovu **použije kontejnery**. Kdykoli je to možné, tez znovu použije kontejnery, aby se snížila latence od spuštění kontejnerů.
+* **Techniky plynulé optimalizace**. Během fáze kompilace byla provedena tradičně optimalizace. K dispozici jsou ale další informace o vstupech, které umožňují lepší optimalizaci během běhu. Tez využívá techniky kontinuální optimalizace, které umožňují IT optimalizaci plánu dále do fáze modulu runtime.
 
-Další informace o těchto konceptech naleznete v [tématu Apache TEZ](https://tez.apache.org/).
+Další informace o těchto konceptech najdete v článku [Apache tez](https://tez.apache.org/).
 
-Libovolný dotaz Hive Tez můžete povolit předponou dotazu pomocí následujícího příkazu set:
+Pomocí příkazu set můžete vytvořit libovolný dotaz tez s podregistrumi, a to tak, že zadáte předponu dotazu:
 
 ```hive
 set hive.execution.engine=tez;
 ```
 
-## <a name="hive-partitioning"></a>Dělení úlu
+## <a name="hive-partitioning"></a>Dělení podregistru
 
-Vstupně-no operace jsou hlavní problémové místo výkonu pro spuštění dotazů Hive. Výkon lze zlepšit, pokud lze snížit množství dat, která je třeba číst. Ve výchozím nastavení dotazy Hive prohledává celé tabulky Hive. Však pro dotazy, které stačí skenovat malé množství dat (například dotazy s filtrováním), toto chování vytváří zbytečné režie. Dělení hive umožňuje dotazům Hive přístup pouze k potřebnému množství dat v tabulkách Hive.
+Vstupně-výstupní operace jsou zásadním kritickým bodem pro spouštění dotazů na podregistr. Výkon lze zvýšit, pokud množství dat, která je třeba číst, může být sníženo. Ve výchozím nastavení dotazy na podregistr prohledají celé tabulky podregistru. V případě dotazů, které potřebují pouze prohledávání malých objemů dat (například dotazů s filtrováním), ale toto chování vytváří zbytečné režijní náklady. Dělení podregistru umožňuje dotazům na podregistr přístup pouze k potřebným objemům dat v tabulkách podregistru.
 
-Dělení hive je implementováno reorganizací nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky Hive podle sloupce *Year*. Pro každý rok je vytvořen nový adresář.
+Dělení oddílů se implementuje změnou uspořádání nezpracovaných dat do nových adresářů. Každý oddíl má svůj vlastní adresář souborů. Dělení je definováno uživatelem. Následující diagram znázorňuje rozdělení tabulky podregistru podle sloupce *year*. Vytvoří se nový adresář pro každý rok.
 
-![HDInsight Apache Hive dělení](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![Apache Hive vytváření oddílů v HDInsight](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
-Některé aspekty dělení:
+Některé předpoklady dělení:
 
-* **Nepod oddíl** - dělení na sloupce s pouze několik hodnot může způsobit několik oddílů. Například dělení na pohlaví vytvoří pouze dva oddíly, které mají být vytvořeny (muž a žena), takže snížit latenci maximálně o polovinu.
-* **Nepřekažovat oddíl** - Na druhé straně extrému vytvoření oddílu na sloupec s jedinečnou hodnotou (například userid) způsobí více oddílů. Přes oddíl způsobuje velké napětí na název uzlu clusteru, protože má zpracovat velký počet adresářů.
-* **Vyhněte se zkosení dat** – zvolte klíč dělení moudře tak, aby všechny oddíly byly rovnoměrné velikosti. Například dělení na *stav* sloupec může zkreslit distribuci dat. Vzhledem k tomu, že stát Kalifornie má populaci téměř 30x více než Vermont, velikost oddílu je potenciálně zkosená a výkon se může výrazně lišit.
+* V části dělení na **oddíly** na sloupcích, které mají jenom několik hodnot, může dojít k několika oddílům. Například při vytváření oddílů u pohlaví se vytvoří jenom dva oddíly, které se mají vytvořit (muž a žena), takže se latence omezí na maximálně polovinu.
+* **Nepoužívejte oddíl** – na druhé extrémní straně vytvoření oddílu na sloupec s jedinečnou hodnotou (například UserID) způsobí více oddílů. Po oddílech se cluster namenode mnohem zátěží, protože je potřeba zvládnout velký počet adresářů.
+* **Vyhněte se zkosení dat** – vyberte klíč pro dělení, aby bylo možné všechny oddíly rovnoměrně měnit. Například vytváření oddílů ve sloupci *stav* může zkosit distribuci dat. Vzhledem k tomu, že stát Kalifornie má naplnění skoro 30krát jako Vermont, velikost oddílu je potenciálně zkosená a výkon se může výrazně lišit.
 
-Chcete-li vytvořit tabulku oddílů, použijte *klauzuli Partitioned By:*
+Chcete-li vytvořit tabulku oddílů, použijte klauzuli *partitiond by* :
 
 ```sql
 CREATE TABLE lineitem_part
@@ -89,7 +89,7 @@ STORED AS TEXTFILE;
 
 Po vytvoření dělené tabulky můžete vytvořit statické dělení nebo dynamické dělení.
 
-* **Statické dělení** znamená, že již máte rozdělená data v příslušných adresářích. U statických oddílů přidáte oddíly Hive ručně na základě umístění adresáře. Následující fragment kódu je příkladem.
+* **Statické dělení** znamená, že už jste horizontálně dělené data v příslušných adresářích. Při statických oddílech se oddíly podregistru přidávají ručně na základě umístění adresáře. Následující fragment kódu je příklad.
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
@@ -101,7 +101,7 @@ Po vytvoření dělené tabulky můžete vytvořit statické dělení nebo dynam
    LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **Dynamické dělení** znamená, že chcete, aby Hive vytvářet oddíly automaticky pro vás. Vzhledem k tomu, že jste již vytvořili tabulku dělení z pracovní tabulky, stačí vložit data do dělené tabulky:
+* **Dynamické dělení** znamená, že chcete, aby podregistr vytvořil oddíly automaticky. Vzhledem k tomu, že jste už vytvořili dělenou tabulku z pracovní tabulky, stačí vložit data do dělené tabulky:
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -118,24 +118,24 @@ Po vytvoření dělené tabulky můžete vytvořit statické dělení nebo dynam
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
 
-Další informace naleznete v [tématu Partitioned Tables](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
+Další informace najdete v tématu [dělené tabulky](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>Použití formátu ORCFile
 
-Hive podporuje různé formáty souborů. Příklad:
+Podregistr podporuje různé formáty souborů. Příklad:
 
-* **Text**: výchozí formát souboru a pracuje s většinou scénářů.
+* **Text**: výchozí formát souboru a funguje ve většině scénářů.
 * **Avro**: funguje dobře pro scénáře interoperability.
-* **ORC/Parkety:** nejvhodnější pro výkon.
+* **ORC/Parquet**: nejvhodnější pro výkon.
 
-Formát ORC (Optimized Row Columnar) je vysoce efektivní způsob ukládání dat Hive. Ve srovnání s jinými formáty, ORC má následující výhody:
+ORC (optimalizovaný sloupcový řádek) je vysoce účinný způsob, jak ukládat data z podregistru. Ve srovnání s jinými formáty ORC má následující výhody:
 
-* podpora pro komplexní typy včetně DateTime a komplexní a polostrukturované typy.
+* Podpora komplexních typů, včetně hodnot DateTime a složitých a částečně strukturovaných typů.
 * až 70% komprese.
-* indexuje každých 10 000 řádků, které umožňují přeskakování řádků.
-* významného poklesu spuštění za běhu.
+* indexuje každých 10 000 řádků, což povoluje přeskočení řádků.
+* významné přerušení spuštění.
 
-Chcete-li povolit formát ORC, nejprve vytvořte tabulku s klauzulí *Uloženo jako ORC*:
+Pokud chcete povolit formát ORC, musíte nejdřív vytvořit tabulku s klauzulí *uloženou jako ORC*:
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -148,7 +148,7 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Dále vložíte data do tabulky ORC z pracovní tabulky. Příklad:
+V dalším kroku vložíte data do tabulky ORC z pracovní tabulky. Příklad:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
@@ -171,32 +171,32 @@ SELECT L_ORDERKEY as L_ORDERKEY,
 FROM lineitem;
 ```
 
-Více informací o formátu ORC si můžete přečíst v [příručce Apache Hive Language Manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Další informace o formátu ORC najdete v [příručce k jazyku Apache Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
-## <a name="vectorization"></a>Vektorizace
+## <a name="vectorization"></a>Vektorizaci
 
-Vektorizace umožňuje Hive zpracovat dávku 1024 řádků společně namísto zpracování jeden řádek najednou. To znamená, že jednoduché operace jsou prováděny rychleji, protože je třeba spustit méně interního kódu.
+Rozvektorování umožňuje podregistru zpracovat dávku 1024 řádků společně namísto zpracování jednoho řádku. To znamená, že jednoduché operace jsou rychlejší, protože je nutné spustit méně interní kód.
 
-Povolení vektorizace předponu dotaz Ujetí pomocí následujícího nastavení:
+Chcete-li povolit vlastní předponu dotazu na podregistr pomocí následujícího nastavení:
 
 ```hive
 set hive.vectorized.execution.enabled = true;
 ```
 
-Další informace naleznete v tématu [Vectorized query execution](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
+Další informace najdete v tématu [zpracování vektorového dotazu](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
-## <a name="other-optimization-methods"></a>Jiné optimalizační metody
+## <a name="other-optimization-methods"></a>Další metody optimalizace
 
-Existuje více optimalizačních metod, které můžete zvážit, například:
+Existuje více metod optimalizace, které je možné zvážit, například:
 
-* **Hive bucketing:** technika, která umožňuje clusterovat nebo segmentovat velké sady dat pro optimalizaci výkonu dotazu.
-* **Optimalizace spojení:** optimalizace plánování provádění dotazů hive ke zlepšení efektivity spojení a snížení potřeby uživatelských rad. Další informace naleznete v [tématu Optimalizace spojení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Zvyšte reduktory**.
+* Sestavování **podregistru:** technika, která umožňuje clusteru a segmentovat velké sady dat pro optimalizaci výkonu dotazů.
+* **Optimalizace spojení:** optimalizace plánování spouštění dotazů na podregistr pro zlepšení efektivity spojení a omezení nutnosti pomocného parametru pro uživatele. Další informace najdete v tématu věnovaném [optimalizaci spojení](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Zvyšte reduktorů**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli několik běžných metod optimalizace dotazů Hive. Další informace naleznete v následujících článcích:
+V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v následujících článcích:
 
-* [Použití Apache Hive v HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analýza dat zpoždění letu pomocí interaktivního dotazu v HDInsightu](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
-* [Analyzujte data z Twitteru pomocí Apache Hive v HDInsightu](hdinsight-analyze-twitter-data-linux.md)
+* [Použití Apache Hive ve službě HDInsight](hadoop/hdinsight-use-hive.md)
+* [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](hdinsight-analyze-twitter-data-linux.md)

@@ -1,25 +1,25 @@
 ---
-title: Pokyny pro vývoj funkcí Azure
-description: Seznamte se s koncepty a technikami Azure Functions, které potřebujete k vývoji funkcí v Azure napříč všemi programovacími jazyky a vazbami.
+title: Pokyny k vývoji Azure Functions
+description: Naučte se Azure Functions koncepty a techniky, které potřebujete k vývoji funkcí v Azure, a to napříč všemi programovacími jazyky a vazbami.
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.openlocfilehash: b6af3d7ab1fdd35391c9a189162c57dfb259f2d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81405355"
 ---
 # <a name="azure-functions-developer-guide"></a>Příručka pro vývojáře v Azure Functions
-Ve funkcích Azure funkce, konkrétní funkce sdílet několik základních technických konceptů a komponent, bez ohledu na jazyk nebo vazbu, kterou používáte. Než přejdete do podrobností o učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který se vztahuje na všechny z nich.
+V Azure Functions konkrétní funkce sdílí několik základních technických konceptů a komponent bez ohledu na jazyk nebo vazbu, které používáte. Než přejdete k podrobnostem učení, které jsou specifické pro daný jazyk nebo vazbu, přečtěte si tento přehled, který platí pro všechny.
 
-Tento článek předpokládá, že jste si už přečetli [přehled funkcí Azure](functions-overview.md).
+V tomto článku se předpokládá, že už jste si přečetli [Azure Functions Overview](functions-overview.md).
 
 ## <a name="function-code"></a>Kód funkce
-*Funkce* je primární koncept v Azure Functions. Funkce obsahuje dva důležité kusy - váš kód, který může být napsán v různých jazycích, a některé config, function.json souboru. Pro kompilované jazyky je tento konfigurační soubor generován automaticky z anotací ve vašem kódu. Pro skriptovací jazyky je nutné zadat konfigurační soubor sami.
+*Funkce* je primární koncept v Azure Functions. Funkce obsahuje dva důležité díly – váš kód, který lze zapsat v nejrůznějších jazycích, a některé konfigurační soubory Function. JSON. V případě kompilovaných jazyků se tento konfigurační soubor automaticky generuje z poznámek ve vašem kódu. V případě skriptovacích jazyků je nutné zadat konfigurační soubor sami.
 
-Soubor function.json definuje aktivační událost funkce, vazby a další nastavení konfigurace. Každá funkce má jednu a jenom jednu aktivační událost. Runtime používá tento konfigurační soubor k určení událostí ke sledování a jak předat data do a vrátit data z provádění funkce. Následuje ukázkový soubor function.json.
+Soubor Function. JSON definuje Trigger funkce, vazby a další nastavení konfigurace. Každá funkce má jednu a jenom jednu aktivační událost. Modul runtime používá tento konfigurační soubor k určení událostí ke sledování a k předávání dat do a návratového data z provádění funkce. Následuje příklad souboru Function. JSON.
 
 ```json
 {
@@ -36,70 +36,70 @@ Soubor function.json definuje aktivační událost funkce, vazby a další nasta
 }
 ```
 
-Další informace najdete v [tématu Azure Functions aktivační události a vazby koncepty](functions-triggers-bindings.md).
+Další informace najdete v tématu [Azure Functions triggery a koncepty vazeb](functions-triggers-bindings.md).
 
-Vlastnost `bindings` je místo, kde nakonfigurujete aktivační události a vazby. Každá vazba sdílí několik běžných nastavení a některá nastavení, která jsou specifická pro určitý typ vazby. Každá vazba vyžaduje následující nastavení:
+`bindings` Vlastnost je místo, kde můžete nakonfigurovat triggery i vazby. Každá vazba sdílí několik společných nastavení a některá nastavení, která jsou specifická pro konkrétní typ vazby. Každá vazba vyžaduje následující nastavení:
 
-| Vlastnost | Hodnoty/typy | Komentáře |
+| Vlastnost | Hodnoty a typy | Komentáře |
 | --- | --- | --- |
-| `type` |řetězec |Typ vazby. Například, `queueTrigger`. |
-| `direction` |'in', 'out' |Označuje, zda je vazba pro příjem dat do funkce nebo odesílání dat z funkce. |
-| `name` |řetězec |Název, který se používá pro vázaná data ve funkci. Pro C#se jedná o název argumentu; pro JavaScript, je to klíč v seznamu klíč/hodnota. |
+| `type` |řetězec |Typ vazby Například, `queueTrigger`. |
+| `direction` |' in ', ' out ' |Označuje, zda je vazba určena pro příjem dat do funkce nebo odesílání dat z funkce. |
+| `name` |řetězec |Název, který se používá pro vázaná data ve funkci. V jazyce C# je toto název argumentu; v případě JavaScriptu je klíč v seznamu klíč/hodnota. |
 
 ## <a name="function-app"></a>Function App
-Aplikace funkce poskytuje kontext spuštění v Azure, ve kterém běží vaše funkce. Jako takový je jednotka nasazení a správy pro vaše funkce. Aplikace funkce se skládá z jedné nebo více jednotlivých funkcí, které jsou spravovány, nasazovány a škálovány společně. Všechny funkce v aplikaci funkce sdílejí stejný cenový plán, metodu nasazení a verzi runtime. Představte si aplikaci pro funkci jako způsob, jak organizovat a kolektivně spravovat své funkce. Další informace najdete v [tématu Správa aplikace pro funkci](functions-how-to-use-azure-function-app-settings.md). 
+Function App poskytuje kontext spuštění v Azure, ve kterém se vaše funkce spouštějí. V takovém případě je to jednotka nasazení a správy pro vaše funkce. Aplikace Function App se skládá z jedné nebo několika individuálních funkcí, které jsou spravované, nasazené a škálovat dohromady. Všechny funkce ve Function App sdílí stejný cenový plán, způsob nasazení a běhovou verzi. Aplikaci Function App si můžete představit jako způsob, jak organizovat a shromažďovat své funkce. Další informace najdete v tématu [Správa aplikace Function App](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
-> Všechny funkce v aplikaci funkce musí být vytvořeny ve stejném jazyce. V [předchozích verzích](functions-versions.md) runtime Funkce Azure to nebylo nutné.
+> Všechny funkce aplikace Function App musí být vytvořené ve stejném jazyce. V [předchozích verzích](functions-versions.md) modulu runtime Azure Functions to nebylo nutné.
 
 ## <a name="folder-structure"></a>Struktura složek
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Výše uvedené je výchozí (a doporučená) struktura složek pro aplikaci Function. Chcete-li změnit umístění kódu funkce, upravte `scriptFile` část souboru _function.json._ Doporučujeme také použít [nasazení balíčku](deployment-zip-push.md) k nasazení projektu do aplikace funkce v Azure. Můžete také použít existující nástroje, jako je [průběžná integrace a nasazení](functions-continuous-deployment.md) a Azure DevOps.
+Výše uvedená je výchozí (a doporučená) struktura složky aplikace Function App. Pokud chcete změnit umístění souboru kódu funkce, upravte `scriptFile` část souboru _Function. JSON_ . K nasazení vašeho projektu do aplikace Function App v Azure doporučujeme také použít [nasazení balíčku](deployment-zip-push.md) . Můžete také použít stávající nástroje, jako je [průběžná integrace a nasazování](functions-continuous-deployment.md) a Azure DevOps.
 
 > [!NOTE]
-> Pokud nasazujete balíček ručně, nezapomeňte nasadit soubor _host.json_ a složky funkcí přímo do `wwwroot` složky. Nezahrnujte složku do `wwwroot` nasazení. V opačném případě `wwwroot\wwwroot` skončíte se složkami.
+> Při ručním nasazování balíčku nezapomeňte nasadit soubor _Host. JSON_ a složky funkcí přímo do `wwwroot` složky. Nezahrnujte `wwwroot` složku do nasazení. V opačném případě budete mít `wwwroot\wwwroot` složky.
 
 #### <a name="use-local-tools-and-publishing"></a>Použití místních nástrojů a publikování
-Aplikace funkcí lze vytvářet a publikovat pomocí různých nástrojů, včetně [Visual Studia](./functions-develop-vs.md), Visual [Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md)a Nástroje azure functions [core tools](./functions-develop-local.md). Další informace najdete v [tématu kód a testování funkcí Azure místně](./functions-develop-local.md).
+Aplikace Function App lze vytvářet a publikovat pomocí různých nástrojů, včetně sady [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [zatmění](./functions-create-maven-eclipse.md)a [Azure Functions Core Tools](./functions-develop-local.md). Další informace naleznete v tématu [Code and test Azure Functions lokálně](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Jak upravit funkce na webu Azure Portal
-Editor functions integrovaný na portálu Azure umožňuje aktualizovat kód a soubor *function.json* přímo vpájecí. To se doporučuje pouze pro malé změny nebo popisy konceptu - osvědčeným postupem je použití nástroje pro místní vývoj, jako je VS Code.
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a>Postup úpravy funkcí v Azure Portal
+Editor funkcí integrovaný do Azure Portal umožňuje aktualizovat kód a soubor *Function. JSON* přímo vložený. Tento postup je doporučený pouze pro malé změny nebo zkoušku konceptu – osvědčeným postupem je použití místního vývojového nástroje, jako je VS Code.
 
 ## <a name="parallel-execution"></a>Paralelní provádění
-Pokud více aktivační události dojít rychleji než jeden podproces funkce runtime může zpracovat, runtime může vyvolat funkci vícekrát paralelně.  Pokud aplikace funkce používá [plán hostování spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work), aplikace funkce může automaticky škálovat.  Každá instance aplikace funkce, ať už je aplikace spuštěna v plánu hostování spotřeby nebo v plánu hostování běžné [služby App Service](../app-service/overview-hosting-plans.md), může souběžně zpracovávat souběžné vyvolání funkcí pomocí více vláken.  Maximální počet vyvolání souběžných funkcí v každé instanci aplikace funkce se liší v závislosti na typu aktivační události, která se používá, stejně jako prostředky používané jinými funkcemi v rámci aplikace funkce.
+Když dojde k více událostem triggeru rychleji než modul runtime s jedním vláknem, může je zpracovat, modul runtime může funkci vyvolat víckrát.  Pokud aplikace Function App používá [plán hostování spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work), aplikace Function app by mohla automaticky škálovat horizontální navýšení kapacity.  Každá instance aplikace Function App, bez ohledu na to, jestli aplikace běží na plánu hostování spotřeby nebo běžném [App Service plánu hostování](../app-service/overview-hosting-plans.md), může zpracovávat souběžné volání funkcí paralelně pomocí několika vláken.  Maximální počet souběžných volání funkcí v každé instanci aplikace Function App se liší v závislosti na používaném typu triggeru a na zdrojích používaných jinými funkcemi v aplikaci Function App.
 
-## <a name="functions-runtime-versioning"></a>Správa verzí za běhu funkcí
+## <a name="functions-runtime-versioning"></a>Správa verzí modulu runtime Functions
 
-Pomocí nastavení `FUNCTIONS_EXTENSION_VERSION` aplikace můžete nakonfigurovat verzi běhu Funkce. Například hodnota "~3" označuje, že aplikace funkce bude používat 3.x jako hlavní verzi. Aplikace funkcí jsou upgradovány na každou novou dílčí verzi po jejich vydání. Další informace, včetně toho, jak zobrazit přesnou verzi aplikace funkce, najdete v tématu [Jak cílit na runtime verze Azure Functions](set-runtime-version.md).
+Verzi modulu runtime Functions můžete nakonfigurovat pomocí nastavení `FUNCTIONS_EXTENSION_VERSION` aplikace. Například hodnota "~ 3" označuje, že vaše Function App bude jako hlavní verzi používat 3. x. Aplikace Function App jsou při vydání upgradovány na každou novou dílčí verzi. Další informace, včetně toho, jak zobrazit přesnou verzi aplikace Function App, najdete v tématu [jak cílit na verze Azure Functions runtime](set-runtime-version.md).
 
 ## <a name="repositories"></a>Úložiště
-Kód pro Funkce Azure je open source a je uložený v úložištích GitHubu:
+Kód pro Azure Functions je open source a uložený v úložištích GitHub:
 
 * [Azure Functions](https://github.com/Azure/Azure-Functions)
-* [Hostitel Azure Functions](https://github.com/Azure/azure-functions-host/)
+* [Azure Functions hostitele](https://github.com/Azure/azure-functions-host/)
 * [Portál Azure Functions](https://github.com/azure/azure-functions-ux)
 * [Šablony Azure Functions](https://github.com/azure/azure-functions-templates)
 * [Sada Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
 * [Rozšíření sady Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
 ## <a name="bindings"></a>Vazby
-Zde je tabulka všech podporovaných vazeb.
+Tady je tabulka všech podporovaných vazeb.
 
 [!INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
 
-Máte problémy s chybami přicházejícími z vazeb? Projděte si dokumentaci [k kódům chyb vazby vazby Azure.](functions-bindings-error-pages.md)
+Máte problémy s chybami pocházejícími z vazeb? Přečtěte si dokumentaci [Azure Functions kódy chyb vazeb](functions-bindings-error-pages.md) .
 
-## <a name="reporting-issues"></a>Hlášení problémů
+## <a name="reporting-issues"></a>Vytváření sestav – problémy
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
 ## <a name="next-steps"></a>Další kroky
 Další informace najdete v následujících materiálech:
 
-* [Azure Funkce aktivační události a vazby](functions-triggers-bindings.md)
+* [Aktivační události a vazby Azure Functions](functions-triggers-bindings.md)
 * [Místní psaní kódu a testování funkcí Azure Functions](./functions-develop-local.md)
-* [Doporučené postupy pro funkce Azure](functions-best-practices.md)
-* [Odkaz na vývojáře Azure Functions C#](functions-dotnet-class-library.md)
-* [Odkaz na vývojáře azure functions node.js](functions-reference-node.md)
+* [Osvědčené postupy pro Azure Functions](functions-best-practices.md)
+* [Referenční informace pro vývojáře v jazyce C# Azure Functions](functions-dotnet-class-library.md)
+* [Azure Functions referenční materiály pro vývojáře Node. js](functions-reference-node.md)
