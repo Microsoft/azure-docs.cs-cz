@@ -1,6 +1,6 @@
 ---
-title: Izolujte aplikace Azure Service Bus proti výpadkům a katastrofám
-description: Tento článek poskytuje techniky k ochraně aplikací před potenciálním výpadkem služby Azure Service Bus.
+title: Izolování Azure Service Bus aplikací proti výpadkům a katastrofám
+description: V tomto článku najdete techniky ochrany aplikací proti možnému výpadku Azure Service Bus.
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -9,84 +9,84 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 07b071b0e8efc5d664dada133a214d778c6531d0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 29eb0625ceebf4fee75d0c1accef7ae03b5f61b9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80984942"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208376"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro ochranu aplikací před haváriemi a výpadky služby Service Bus
 
-Kritické aplikace musí fungovat nepřetržitě, a to i za přítomnosti neplánovaných výpadků nebo katastrof. Tento článek popisuje techniky, které můžete použít k ochraně aplikací service bus proti možnému výpadku služby nebo havárii.
+Klíčové aplikace musí fungovat průběžně, a to i v případě neplánovaných výpadků nebo havárií. Tento článek popisuje postupy, které můžete použít k ochraně Service Bus aplikací proti možnému výpadku nebo havárii služby.
 
-Výpadek je definován jako dočasná nedostupnost Azure Service Bus. Výpadek může ovlivnit některé součásti service bus, jako je například úložiště zpráv nebo dokonce celé datové centrum. Po ohlášení problému service bus bude znovu k dispozici. Výpadek obvykle nezpůsobí ztrátu zpráv nebo jiných dat. Příkladem selhání součásti je nedostupnost konkrétního úložiště zpráv. Příkladem výpadku celého datového centra je výpadek napájení datového centra nebo vadný síťový přepínač datového centra. Výpadek může trvat několik minut až několik dní.
+Výpadek je definován jako dočasná nedostupnost Azure Service Bus. Výpadek může ovlivnit některé součásti Service Bus, jako je třeba úložiště pro zasílání zpráv nebo i celé datové centrum. Po vyřešení problému bude Service Bus opět k dispozici. Výpadky obvykle nezpůsobí ztrátu zpráv nebo jiných dat. Příkladem selhání součásti je nedostupnost konkrétního úložiště pro zasílání zpráv. Příkladem výpadku v rámci datového centra je selhání výpadku datového centra nebo chybný přepínač sítě datového centra. Výpadek může trvat několik minut až pár dní.
 
-Po havárii je definována jako trvalá ztráta jednotky škálování service bus nebo datového centra. Datové centrum může nebo nemusí být znovu k dispozici. Obvykle způsobit ztrátu některých nebo všech zpráv nebo jiných dat. Příkladem katastrof jsou požár, záplavy nebo zemětřesení.
+Havárie se definuje jako trvalá ztráta jednotky škálování Service Bus nebo datacentra. Datové centrum může nebo nemusí být k dispozici znovu. Obvykle dojde ke ztrátě některých nebo všech zpráv nebo jiných dat. Příklady havárií jsou požáry, zahlcení nebo zemětřesení.
 
-## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrana před výpadky a katastrofami - Service Bus Premium
-Koncepty vysoké dostupnosti a zotavení po havárii jsou integrované přímo do úrovně Azure Service Bus Premium, a to jak ve stejné oblasti (prostřednictvím zón dostupnosti), tak napříč různými oblastmi (prostřednictvím geografického zotavení po havárii).
+## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Ochrana před výpadky a haváriemi – Service Bus Premium
+Koncepce vysoké dostupnosti a zotavení po havárii jsou postaveny přímo do Azure Service Bus úrovně Premium, jak v rámci stejné oblasti (přes Zóny dostupnosti), tak i napříč různými oblastmi (prostřednictvím geografického zotavení po havárii).
 
-### <a name="geo-disaster-recovery"></a>Obnova geo-katastrofy
+### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
 
-Service Bus Premium podporuje geografické zotavení po havárii na úrovni oboru názvů. Další informace najdete [v tématu Azure Service Bus Geo-disaster recovery](service-bus-geo-dr.md). Funkce zotavení po havárii, která je k dispozici pouze pro [výhodnou položku sku premium,](service-bus-premium-messaging.md) implementuje obnovení metadat po havárii a spoléhá na primární a sekundární obory názvů zotavení po havárii.
+Service Bus Premium podporuje obnovení geografických havárií na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Busho geografického zotavení po havárii](service-bus-geo-dr.md). Funkce zotavení po havárii, která je dostupná jenom pro [SKU Premium](service-bus-premium-messaging.md) , implementuje zotavení po havárii metadat a spoléhá na primární a sekundární obory názvů pro zotavení po havárii.
 
 ### <a name="availability-zones"></a>Zóny dostupnosti
 
-Skladová položka Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění izolovaná po chybám v rámci stejné oblasti Azure. Service Bus spravuje tři kopie úložiště zpráv (1 primární a 2 sekundární). Service Bus udržuje všechny tři kopie synchronizovány pro operace správy dat a správy. Pokud se primární kopie nezdaří, jedna ze sekundárních kopií je povýšena na primární bez vnímaných prostojů. Pokud aplikace vidět přechodné odpojí od Service Bus, logika opakování v sdk se automaticky znovu připojit k service bus. 
+SKU Service Bus Premium podporuje [zóny dostupnosti](../availability-zones/az-overview.md)a poskytuje umístění s izolací chyb v rámci stejné oblasti Azure. Service Bus spravuje tři kopie úložiště pro zasílání zpráv (1 primární a 2 sekundární). Service Bus udržuje všechny tři kopie synchronizovány s daty a operacemi správy. Pokud primární kopie neproběhne úspěšně, jedna ze sekundárních kopií bude povýšena na primární bez pozorovaného výpadku. Pokud se aplikace zobrazí jako přechodné odpojení od Service Bus, logika opakování v sadě SDK se automaticky znovu připojí k Service Bus. 
 
 > [!NOTE]
-> Podpora zón dostupnosti pro Azure Service Bus Premium je k dispozici jenom v [oblastech Azure,](../availability-zones/az-overview.md#services-support-by-region) kde jsou k dispozici zóny dostupnosti.
+> Podpora Zóny dostupnosti pro Azure Service Bus Premium je dostupná jenom v [oblastech Azure](../availability-zones/az-region.md) , kde se nacházejí zóny dostupnosti.
 
-Zóny dostupnosti můžete povolit pouze v nových oborech názvů pomocí portálu Azure. Service Bus nepodporuje migraci existujících oborů názvů. Redundanci zóny nelze zakázat po povolení v oboru názvů.
+Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure Portal. Service Bus nepodporuje migraci stávajících oborů názvů. Po povolení v oboru názvů nelze zakázat redundanci zóny.
 
 ![1][]
 
 
-## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Ochrana před výpadky a katastrofami - Standard servisní chod
-K dosažení odolnosti proti výpadkům datového centra při použití standardní cenové úrovně zasílání zpráv service bus podporuje dva přístupy: *aktivní* a *pasivní* replikace. Pro každý přístup, pokud daná fronta nebo téma musí zůstat přístupné v přítomnosti výpadku datového centra, můžete jej vytvořit v obou oborech názvů. Obě entity mohou mít stejný název. Například primární fronty lze dosáhnout pod **contosoPrimary.servicebus.windows.net/myQueue**, zatímco jeho sekundární protějšek lze dosáhnout pod **contosoSecondary.servicebus.windows.net/myQueue**.
+## <a name="protecting-against-outages-and-disasters---service-bus-standard"></a>Ochrana před výpadky a haváriemi – Service Bus Standard
+Pro zajištění odolnosti proti výpadkům datového centra při použití cenové úrovně Standard Messaging Service Bus podporuje dva přístupy: *aktivní* a *pasivní* replikace. Pro každý přístup, pokud daná fronta nebo téma musí zůstat přístupné v případě výpadku datového centra, můžete ho vytvořit v obou oborech názvů. Obě entity můžou mít stejný název. Například primární frontu lze dosáhnout v rámci **contosoPrimary.ServiceBus.Windows.NET/myQueue**, zatímco její sekundární protějšek lze dosáhnout v rámci **contosoSecondary.ServiceBus.Windows.NET/myQueue**.
 
 >[!NOTE]
-> Nastavení **Aktivní replikace** a **Pasivní replikace** jsou řešení pro obecné účely a nikoli specifické funkce služby Service Bus. Logika replikace (odesílání do 2 různých oborů názvů) žije v aplikacích odesílatele a příjemce musí mít vlastní logiku pro vyhledávání duplicit.
+> **Aktivní replikace** a nastavení **pasivní replikace** jsou řešení pro obecné účely a ne konkrétní funkce Service Bus. Logika replikace (odesílání do dvou různých oborů názvů) v aplikacích odesílatele a přijímači musí mít vlastní logiku pro detekci duplicit.
 
-Pokud aplikace nevyžaduje trvalou komunikaci odesílatele k příjemci, aplikace může implementovat trvalou frontu na straně klienta, aby se zabránilo ztrátě zprávy a chránilo odesílatele před chybami přechodné sběrnice.
+Pokud aplikace nevyžaduje trvalou komunikaci od odesílatele k přijímači, může aplikace implementovat trvalou frontu na straně klienta, aby se zabránilo ztrátě zpráv a musela chránit odesílatele před případnými přechodnými Service Busmi chybami.
 
 ### <a name="active-replication"></a>Aktivní replikace
-Aktivní replikace používá entity v obou oborech názvů pro každou operaci. Každý klient, který odešle zprávu odešle dvě kopie stejné zprávy. První kopie je odeslána primární entitě (například **contosoPrimary.servicebus.windows.net/sales**) a druhá kopie zprávy je odeslána sekundární entitě (například **contosoSecondary.servicebus.windows.net/sales**).
+Aktivní replikace používá pro každou operaci entity v obou oborech názvů. Každý klient, který odesílá zprávu, odesílá dvě kopie stejné zprávy. První kopii pošle primární entitě (například **contosoPrimary.ServiceBus.Windows.NET/Sales**) a druhá kopie zprávy se pošle sekundární entitě (třeba **contosoSecondary.ServiceBus.Windows.NET/Sales**).
 
-Klient přijímá zprávy z obou front. Příjemce zpracuje první kopii zprávy a druhá kopie je potlačena. Chcete-li potlačit duplicitní zprávy, musí odesílatel označit každou zprávu jedinečným identifikátorem. Obě kopie zprávy musí být označeny stejným identifikátorem. Můžete použít [BrokeredMessage.MessageId][BrokeredMessage.MessageId] nebo [BrokeredMessage.Label][BrokeredMessage.Label] vlastnosti nebo vlastní vlastnost označit zprávu. Příjemce musí udržovat seznam zpráv, které již obdržel.
+Klient přijímá zprávy z obou front. Příjemce zpracuje první kopii zprávy a druhá kopie se potlačí. Chcete-li potlačit duplicitní zprávy, musí odesílatel označit každou zprávu jedinečným identifikátorem. Obě kopie zprávy musí být označené stejným identifikátorem. Můžete použít vlastnosti [BrokeredMessage. MessageID][BrokeredMessage.MessageId] nebo [BrokeredMessage. Label][BrokeredMessage.Label] nebo vlastní vlastnost k označení zprávy. Přijímač musí udržovat seznam zpráv, které již byly přijaty.
 
-Ukázka [geografické replikace se standardní vrstvou služby Service Bus][Geo-replication with Service Bus Standard Tier] ukazuje aktivní replikaci entit zasílání zpráv.
+Ukázka [geografické replikace s Service Bus standardní vrstva][Geo-replication with Service Bus Standard Tier] demonstruje aktivní replikaci entit zasílání zpráv.
 
 > [!NOTE]
-> Aktivní replikace přístup zdvojnásobí počet operací, proto tento přístup může vést k vyšším nákladům.
+> Aktivní replikační přístup zdvojnásobuje počet operací, takže tento přístup může mít za následek vyšší náklady.
 > 
 > 
 
 ### <a name="passive-replication"></a>Pasivní replikace
-V případě bez selhání pasivní replikace používá pouze jednu ze dvou entit zasílání zpráv. Klient odešle zprávu aktivní entitě. Pokud operace aktivní entity selže s kódem chyby, který označuje datové centrum, které hostuje aktivní entitu, může být nedostupné, klient odešle kopii zprávy do entity zálohování. V tomto okamžiku aktivní a záložní entity přepnout role: odesílající klient považuje staré aktivní entity za novou entitu zálohování a stará entita zálohování je nová aktivní entita. Pokud obě operace odesílání nezdaří, role dvou entit zůstávají beze změny a je vrácena chyba.
+V případě nenáročného selhání používá pasivní replikace jenom jednu ze dvou entit zasílání zpráv. Klient odešle zprávu na aktivní entitu. Pokud se operace s aktivní entitou nezdařila s kódem chyby, který indikuje, že datové centrum hostující aktivní entitě nemusí být k dispozici, klient pošle kopii zprávy do zálohovací entity. V tomto okamžiku role přepínače aktivní a entity zálohování: klient odesílajícího klienta považuje starou aktivní entitu za novou entitu zálohování a stará entita zálohování je novou aktivní entitou. Pokud operace odeslání selže, role dvou entit zůstanou beze změny a vrátí se chyba.
 
-Klient přijímá zprávy z obou front. Vzhledem k tomu, že je pravděpodobné, že příjemce obdrží dvě kopie stejné zprávy, příjemce musí potlačit duplicitní zprávy. Duplikáty můžete potlačit stejným způsobem, jak je popsáno pro aktivní replikaci.
+Klient přijímá zprávy z obou front. Vzhledem k tomu, že je pravděpodobné, že příjemce obdrží dvě kopie stejné zprávy, musí příjemce potlačit duplicitní zprávy. Duplicity můžete potlačit stejným způsobem, jak je popsáno v tématu aktivní replikace.
 
-Pasivní replikace je obecně ekonomičtější než aktivní replikace, protože ve většině případů se provádí pouze jedna operace. Latence, propustnost a peněžní náklady jsou shodné s nereplikovaný scénář.
+Obecně platí, že pasivní replikace je výhodnější než aktivní replikace, protože ve většině případů je provedena pouze jedna operace. Latence, propustnost a peněžní náklady jsou stejné jako nereplikovaný scénář.
 
-Při použití pasivní replikace mohou být v následujících scénářích zprávy ztraceny nebo přijaty dvakrát:
+Při použití pasivní replikace mohou být zprávy v následujících scénářích ztraceny nebo přijaty dvakrát:
 
-* **Zpoždění nebo ztráta zprávy**: Předpokládejme, že odesílatel úspěšně odeslal zprávu m1 do primární fronty a poté fronta nebude k dispozici dříve, než příjemce obdrží m1. Odesílatel odešle následující zprávu m2 do sekundární fronty. Pokud je primární fronta dočasně nedostupná, příjemce obdrží m1 poté, co bude fronta znovu k dispozici. V případě havárie nemusí přijímač nikdy přijímat m1.
-* **Duplicitní příjem**: Předpokládejme, že odesílatel odešle zprávu m do primární fronty. Service Bus úspěšně zpracuje m, ale nepodaří odeslat odpověď. Po odestoujíte operace odeslání odešle odesílatel identickou kopii m do sekundární fronty. Pokud příjemce je schopen přijímat první kopii m před primární fronty přestane být k dispozici, příjemce obdrží obě kopie m přibližně ve stejnou dobu. Pokud příjemce není schopen přijmout první kopii m před primární fronty přestane být k dispozici, příjemce zpočátku obdrží pouze druhou kopii m, ale pak obdrží druhou kopii m, když primární fronty k dispozici.
+* **Zpoždění a ztráta zprávy**: předpokládá, že odesílatel úspěšně odeslal zprávu M1 do primární fronty a dokud příjemce neobdrží M1, fronta nebude k dispozici. Odesílatel pošle další zprávu m2 do sekundární fronty. Pokud je primární fronta dočasně nedostupná, příjemce obdrží M1, jakmile bude fronta znovu dostupná. V případě havárie nemusí přijímač nikdy přijímat M1.
+* **Duplicitní příjem**: předpokládá, že odesílatel pošle do primární fronty zprávu m. Service Bus úspěšně zpracovala m, ale nedokáže odeslat odpověď. Po vypršení časového limitu operace odeslání pošle odesílateli identickou kopii m do sekundární fronty. Pokud příjemce může obdržet první kopii m, než bude primární fronta k dispozici, příjemce obdrží obě kopie m ve stejnou dobu. Pokud příjemce nedokáže získat první kopii m, než bude primární fronta k dispozici, příjemce zpočátku obdrží pouze druhou kopii m, ale obdrží druhou kopii m, když bude primární fronta k dispozici.
 
-Ukázka [geografické replikace se standardní vrstvou služby Service Bus][Geo-replication with Service Bus Standard Tier] ukazuje pasivní replikaci entit zasílání zpráv.
+Ukázka [geografické replikace s Service Bus standardní vrstva][Geo-replication with Service Bus Standard Tier] demonstruje pasivní replikaci entit zasílání zpráv.
 
-## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Ochrana koncových bodů přenosu před výpadky nebo katastrofami datového centra
-Geografická replikace koncových bodů [Azure Relay](../service-bus-relay/relay-what-is-it.md) umožňuje službu, která zpřístupňuje koncový bod přenosu k dispozici v přítomnosti výpadků service bus. Chcete-li dosáhnout geografické replikace, služba musí vytvořit dva koncové body přenosu v různých oborech názvů. Obory názvů musí být umístěny v různých datových centrech a dva koncové body musí mít různé názvy. Primárního koncového bodu lze například dosáhnout pod **contosoPrimary.servicebus.windows.net/myPrimaryService**, zatímco jeho sekundární protějšek lze dosáhnout pod **contosoSecondary.servicebus.windows.net/mySecondaryService**.
+## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>Ochrana koncových bodů Relay proti výpadkům Datacenter nebo haváriím
+Geografická replikace koncových bodů [Azure Relay](../service-bus-relay/relay-what-is-it.md) umožňuje službě, která zpřístupňuje koncový bod přenosu, dosažitelná v přítomnosti Service Bus výpadků. Aby bylo možné zajistit geografickou replikaci, musí služba vytvořit dva koncové body přenosu v různých oborech názvů. Obory názvů se musí nacházet v různých datových centrech a dva koncové body musí mít jiné názvy. Například primární koncový bod je možné dosáhnout v rámci **contosoPrimary.ServiceBus.Windows.NET/myPrimaryService**, zatímco jeho sekundární protějšek je možné dosáhnout v rámci **contosoSecondary.ServiceBus.Windows.NET/mySecondaryService**.
 
-Služba pak naslouchá na obou koncových bodech a klient může vyvolat službu prostřednictvím obou koncových bodů. Klientská aplikace náhodně vybere jeden z přenosů jako primární koncový bod a odešle svůj požadavek do aktivního koncového bodu. Pokud se operace nezdaří s kódem chyby, tato chyba označuje, že koncový bod přenosu není k dispozici. Aplikace otevře kanál do koncového bodu zálohování a znovu vydá požadavek. V tomto okamžiku aktivní a záložní koncové body přepnout role: klientská aplikace považuje starý aktivní koncový bod za nový koncový bod zálohování a starý koncový bod zálohování za nový aktivní koncový bod. Pokud obě operace odesílání nezdaří, role dvou entit zůstávají beze změny a je vrácena chyba.
+Služba pak naslouchá oběma koncovým bodům a klient může službu vyvolat prostřednictvím libovolného koncového bodu. Klientská aplikace náhodně vybere jeden z přenosů jako primární koncový bod a pošle svůj požadavek do aktivního koncového bodu. Pokud operace selže s kódem chyby, znamená to, že koncový bod Relay není k dispozici. Aplikace otevře kanál na koncový bod zálohy a znovu vydá požadavek. V tomto okamžiku role přepínače aktivní a koncové body zálohování: klientská aplikace považuje starý aktivní koncový bod za nový koncový bod zálohy a starý koncový bod zálohy bude novým aktivním koncovým bodem. Pokud operace odeslání selže, role dvou entit zůstanou beze změny a vrátí se chyba.
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o zotavení po havárii najdete v těchto článcích:
 
-* [Geografické zotavení azure service bus](service-bus-geo-dr.md)
-* [Kontinuita provozu databáze Azure SQL][Azure SQL Database Business Continuity]
+* [Azure Service Bus geografické zotavení po havárii](service-bus-geo-dr.md)
+* [Azure SQL Database provozní kontinuita][Azure SQL Database Business Continuity]
 * [Návrh odolných aplikací pro Azure][Azure resiliency technical guidance]
 
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md

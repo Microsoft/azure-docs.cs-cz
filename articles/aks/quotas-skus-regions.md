@@ -1,22 +1,22 @@
 ---
-title: Limity pro zdroje, skum, oblasti
+title: Omezení pro prostředky, SKU, oblasti
 titleSuffix: Azure Kubernetes Service
-description: Další informace o výchozí kvóty, omezené velikosti virtuálních zařízení uzlu a dostupnost oblasti služby Azure Kubernetes Service (AKS).
+description: Přečtěte si o výchozích kvótách, omezených velikostech SKU virtuálních počítačů uzlů a dostupnosti oblastí služby Azure Kubernetes (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
-ms.openlocfilehash: 054d6ff4fc105d84192ac81feda97515f6cfae49
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: e3edbcf9603657ce0c747b01b3c59c2923bc0181
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886768"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208019"
 ---
-# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálního počítače a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)
+# <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kvóty, omezení velikosti virtuálních počítačů a dostupnost oblastí ve službě Azure Kubernetes Service (AKS)
 
-Všechny služby Azure nastavují výchozí limity a kvóty pro prostředky a funkce. Některé virtuální počítače (VM) SKU jsou také omezeny pro použití.
+Všechny služby Azure nastavily výchozí limity a kvóty pro prostředky a funkce. Některé skladové položky virtuálních počítačů jsou taky omezené pro použití.
 
-Tento článek podrobně popisuje výchozí limity prostředků pro prostředky služby Azure Kubernetes Service (AKS) a dostupnost AKS v oblastech Azure.
+Tento článek podrobně popisuje výchozí omezení prostředků pro prostředky Azure Kubernetes Service (AKS) a dostupnost AKS v oblastech Azure.
 
 ## <a name="service-quotas-and-limits"></a>Kvóty a omezení služeb
 
@@ -24,14 +24,14 @@ Tento článek podrobně popisuje výchozí limity prostředků pro prostředky 
 
 ## <a name="provisioned-infrastructure"></a>Zřízená infrastruktura
 
-Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výpočtů a úložiště. Příslušná omezení najdete v tématu [Limity předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Na zřízenou infrastrukturu se vztahují všechny další omezení sítě, výpočtů a úložiště. Příslušné limity najdete v tématu [omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 > [!IMPORTANT]
-> Při upgradu clusteru AKS jsou dočasně spotřebovány další prostředky. Tyto prostředky zahrnují dostupné IP adresy v podsíti virtuální sítě nebo kvótu virtuálního procesoru virtuálního počítače virtuálního počítače. Pokud používáte kontejnery Windows Server (aktuálně ve verzi preview v AKS), jedinou schválenou aplikací pro použití nejnovějších aktualizací na uzly je provedení operace upgradu. Neúspěšný proces upgradu clusteru může znamenat, že k zpracování těchto dočasných prostředků nemáte k dispozici adresní prostor IP ani kvótu virtuálního procesoru. Další informace o procesu upgradu uzlu systému Windows Server naleznete [v tématu Upgrade fondu uzlů v systému AKS][nodepool-upgrade].
+> Při upgradu clusteru AKS se dočasně spotřebují další prostředky. Tyto prostředky zahrnují dostupné IP adresy v podsíti virtuální sítě nebo vCPU kvótu virtuálních počítačů. Pokud používáte kontejnery Windows serveru, jediný doporučený přístup k použití nejnovějších aktualizací uzlů je provedení operace upgradu. Selhání procesu upgradu clusteru může znamenat, že nemáte dostupný adresní prostor IP adres ani vCPU kvótu pro zpracování těchto dočasných prostředků. Další informace o procesu upgradu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
-## <a name="restricted-vm-sizes"></a>Omezené velikosti virtuálních počítače
+## <a name="restricted-vm-sizes"></a>Omezené velikosti virtuálních počítačů
 
-Každý uzel v clusteru AKS obsahuje pevné množství výpočetních prostředků, jako je virtuální procesor a paměť. Pokud uzel AKS obsahuje nedostatek výpočetních prostředků, pody nemusí správně fungovat. Chcete-li zajistit, že požadované *pody kube systému* a vaše aplikace lze spolehlivě naplánovat, **nepoužívejte následující virtuální počítače sloky v AKS**:
+Každý uzel v clusteru AKS obsahuje pevné množství výpočetních prostředků, jako je vCPU a paměť. Pokud uzel AKS obsahuje nedostatečné výpočetní prostředky, mohou se stát, že v některých případech nemusí fungovat správně. Aby bylo zajištěno, že požadované *Kube* a vaše aplikace budou spolehlivě plánovány, **nepoužívejte následující SKU virtuálních počítačů v AKS**:
 
 - Standard_A0
 - Standard_A1
@@ -41,15 +41,15 @@ Každý uzel v clusteru AKS obsahuje pevné množství výpočetních prostředk
 - Standard_F1
 - Standard_F1s
 
-Další informace o typech virtuálních počítačů a jejich výpočetních prostředcích najdete [v tématu Velikosti pro virtuální počítače v Azure][vm-skus].
+Další informace o typech virtuálních počítačů a jejich výpočetních prostředcích najdete v tématu [velikosti virtuálních počítačů v Azure][vm-skus].
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Nejnovější seznam, kde můžete nasadit a spustit clustery, naleznete v [tématu dostupnost oblasti AKS][region-availability].
+Nejnovější seznam, kde můžete nasadit a spouštět clustery, najdete v tématu [dostupnost oblasti AKS][region-availability].
 
 ## <a name="next-steps"></a>Další kroky
 
-Některé výchozí limity a kvóty je možné zvýšit. Pokud váš prostředek podporuje zvýšení, požádejte o zvýšení prostřednictvím [žádosti o podporu Azure][azure-support] (pro typ **problému**, vyberte **kvótu**).
+Některé výchozí limity a kvóty je možné zvýšit. Pokud váš prostředek podporuje zvýšení, požádejte o zvýšení žádosti o [podporu Azure][azure-support] (pro **typ problému**vyberte možnost **kvóta**).
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

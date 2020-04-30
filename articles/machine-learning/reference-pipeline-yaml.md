@@ -1,7 +1,7 @@
 ---
-title: Kanál strojového učení YAML
+title: YAML kanálu Machine Learning
 titleSuffix: Azure Machine Learning
-description: Zjistěte, jak definovat kanál strojového učení pomocí souboru YAML. Definice kanálu YAML se používají s rozšířením strojového učení pro azure cli.
+description: Naučte se definovat kanál strojového učení pomocí souboru YAML. Definice kanálů YAML se používají s rozšířením Machine Learning pro rozhraní příkazového řádku Azure CLI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: 40e6d7f3d9c28708c5adec26ddc3c0463e75adc0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81529701"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208495"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
 
-Zjistěte, jak definovat kanály strojového učení v [YAML](https://yaml.org/). Při použití rozšíření strojového učení pro Azure CLI, mnoho příkazů souvisejících s kanálem očekávat soubor YAML, který definuje kanál.
+Naučte se definovat kanály strojového učení v [YAML](https://yaml.org/). Při použití rozšíření Machine Learning pro rozhraní příkazového řádku Azure se v mnoha příkazech souvisejících s kanály očekává soubor YAML, který definuje kanál.
 
-V následující tabulce je uvedeno, co je a není aktuálně podporováno při definování kanálu v YAML:
+Následující tabulka uvádí, co je a není aktuálně podporováno při definování kanálu v YAML:
 
 | Typ kroku | Podporované? |
 | ----- | :-----: |
@@ -30,34 +30,34 @@ V následující tabulce je uvedeno, co je a není aktuálně podporováno při 
 | AzureBatchStep | Ano |
 | DatabricksStep | Ano |
 | DataTransferStep | Ano |
-| Automatický krok MLStep | Ne |
-| Krok HyperDriveStep | Ne |
-| ModulKrok | Ano |
-| Krok MPIStep | Ne |
-| Krok odhadu | Ne |
+| AutoMLStep | Ne |
+| HyperDriveStep | Ne |
+| ModuleStep | Ano |
+| MPIStep | Ne |
+| EstimatorStep | Ne |
 
 ## <a name="pipeline-definition"></a>Definice kanálu
 
-Definice kanálu používá následující klíče, které odpovídají [Pipelines třídy:](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py)
+Definice kanálu používá následující klíče, které odpovídají třídě [kanálů](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?view=azure-ml-py) :
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `name` | Popis kanálu. |
-| `parameters` | Parametry do kanálu. |
-| `data_reference` | Definuje, jak a kde by měla být data k dispozici v běhu. |
-| `default_compute` | Výchozí výpočetní cíl, kde běží všechny kroky v kanálu. |
+| `name` | Popis kanálu |
+| `parameters` | Parametry kanálu. |
+| `data_reference` | Definuje, jak a kde mají být data zpřístupněna při spuštění. |
+| `default_compute` | Výchozí výpočetní cíl, ve kterém se spouští všechny kroky v kanálu |
 | `steps` | Kroky použité v kanálu. |
 
 ## <a name="parameters"></a>Parametry
 
-V `parameters` části používají následující klíče, které odpovídají [pipelineparameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) třídy:
+`parameters` Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) :
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ---- | ---- |
-| `type` | Typ hodnoty parametru. Platné typy `string` `int`jsou `float` `bool`, `datapath`, , , nebo . |
+| `type` | Typ hodnoty parametru. Platné typy jsou `string`, `int`, `float` `bool`, nebo `datapath`. |
 | `default` | Výchozí hodnota. |
 
-Každý parametr je pojmenován. Například následující úryvek YAML definuje tři `NumIterationsParameter`parametry s názvem , `DataPathParameter`a `NodeCountParameter`:
+Každý parametr má název. Například následující fragment kódu YAML definuje tři parametry s názvem `NumIterationsParameter`, `DataPathParameter`a: `NodeCountParameter`
 
 ```yaml
 pipeline:
@@ -78,14 +78,14 @@ pipeline:
 
 ## <a name="data-reference"></a>Reference pro data
 
-V `data_references` části jsou uvedeny následující klávesy, které odpovídají [datareference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
+`data_references` Oddíl používá následující klíče, které odpovídají [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `datastore` | Úložiště dat odkaz. |
-| `path_on_datastore` | Relativní cesta v záložním úložišti pro odkaz na data. |
+| `datastore` | Úložiště dat, na které se má odkazovat |
+| `path_on_datastore` | Relativní cesta v úložišti zálohování pro datový odkaz. |
 
-Každý odkaz na data je obsažen v klíči. Například následující úryvek YAML definuje odkaz na data `employee_data`uložený v klíči s názvem :
+Každý odkaz na data je obsažen v klíči. Například následující fragment kódu YAML definuje odkaz na data uložený v klíči s názvem `employee_data`:
 
 ```yaml
 pipeline:
@@ -102,31 +102,31 @@ pipeline:
 
 ## <a name="steps"></a>Kroky
 
-Kroky definovat výpočetní prostředí, spolu se soubory pro spuštění v prostředí. Chcete-li definovat typ kroku, `type` použijte klíč:
+Kroky definují výpočetní prostředí spolu se soubory, které se mají spustit v prostředí. Chcete-li definovat typ kroku, použijte `type` klíč:
 
 | Typ kroku | Popis |
 | ----- | ----- |
-| `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá [adlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) třídy. |
-| `AzureBatchStep` | Spustí úlohy pomocí Azure Batch. Odpovídá Třídě [AzureBatchStep.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) |
-| `DatabricsStep` | Přidá poznámkový blok Databricks, skript Pythonu nebo JAR. Odpovídá [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) třídy. |
-| `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) |
-| `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep.](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) |
+| `AdlaStep` | Spustí skript U-SQL s Azure Data Lake Analytics. Odpovídá třídě [AdlaStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?view=azure-ml-py) . |
+| `AzureBatchStep` | Spouští úlohy pomocí Azure Batch. Odpovídá třídě [AzureBatchStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?view=azure-ml-py) . |
+| `DatabricsStep` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
+| `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
+| `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
 
 ### <a name="adla-step"></a>Krok ADLA
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `script_name` | Název skriptu U-SQL (vzhledem `source_directory`k ). |
+| `script_name` | Název skriptu U-SQL (relativně k příponě `source_directory`). |
 | `compute_target` | Výpočetní cíl Azure Data Lake, který se má použít pro tento krok. |
-| `parameters` | [Parametry](#parameters) do kanálu. |
-| `inputs` | Vstupy mohou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
-| `outputs` | Výstupy mohou být [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `parameters` | [Parametry](#parameters) kanálu. |
+| `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
 | `source_directory` | Adresář, který obsahuje skript, sestavení atd. |
-| `priority` | Hodnota priority, která má být pro aktuální úlohu. |
+| `priority` | Hodnota priority, která se má použít pro aktuální úlohu. |
 | `params` | Slovník párů název-hodnota. |
-| `degree_of_parallelism` | Stupeň paralelismu použít pro tuto práci. |
-| `runtime_version` | Runtime verze modulu Data Lake Analytics. |
-| `allow_reuse` | Určuje, zda má krok znovu použít předchozí výsledky při opětovném spuštění se stejným nastavením. |
+| `degree_of_parallelism` | Stupeň paralelismu, který se má použít pro tuto úlohu. |
+| `runtime_version` | Běhová verze modulu Data Lake Analytics. |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje definici kroku ADLA:
 
@@ -163,24 +163,24 @@ pipeline:
                     bind_mode: mount
 ```
 
-### <a name="azure-batch-step"></a>Krok dávky Azure
+### <a name="azure-batch-step"></a>Azure Batch krok
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `compute_target` | Azure Batch výpočetní cíl použít pro tento krok. |
-| `inputs` | Vstupy mohou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
-| `outputs` | Výstupy mohou být [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `compute_target` | Výpočetní cíl Azure Batch, který se má použít pro tento krok. |
+| `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
 | `source_directory` | Adresář, který obsahuje binární soubory modulu, spustitelný soubor, sestavení atd. |
-| `executable` | Název příkazu/spustitelného souboru, který bude spuštěn jako součást této úlohy. |
-| `create_pool` | Logický příznak označující, zda chcete vytvořit fond před spuštěním úlohy. |
-| `delete_batch_job_after_finish` | Logický příznak označující, zda má být úloha po dokončení odstraněna z účtu Dávka. |
-| `delete_batch_pool_after_finish` | Logický příznak označující, zda má být fond po dokončení úlohy odstraněn. |
-| `is_positive_exit_code_failure` | Logický příznak označující, pokud se úloha nezdaří, pokud se úloha ukončí s kladným kódem. |
-| `vm_image_urn` | Pokud `create_pool` `True`je , a `VirtualMachineConfiguration`virtuální hod používá . |
-| `pool_id` | ID fondu, kde bude úloha spuštěna. |
-| `allow_reuse` | Určuje, zda má krok znovu použít předchozí výsledky při opětovném spuštění se stejným nastavením. |
+| `executable` | Název příkazu nebo spustitelného souboru, který bude spuštěn jako součást této úlohy. |
+| `create_pool` | Logický příznak, který označuje, zda se má před spuštěním úlohy vytvořit fond. |
+| `delete_batch_job_after_finish` | Logický příznak, který označuje, jestli se má úloha Odstranit z účtu Batch po jeho dokončení. |
+| `delete_batch_pool_after_finish` | Logický příznak označující, zda se má po dokončení úlohy Odstranit fond. |
+| `is_positive_exit_code_failure` | Logický příznak, který označuje, jestli se úloha nezdařila, pokud se úloha ukončí s kladným kódem. |
+| `vm_image_urn` | Pokud `create_pool` je `True`, a virtuální počítač `VirtualMachineConfiguration`používá. |
+| `pool_id` | ID fondu, ve kterém se úloha spustí |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
-Následující příklad obsahuje definici kroku Azure Batch:
+Následující příklad obsahuje Azure Batch definice kroku:
 
 ```yaml
 pipeline:
@@ -217,20 +217,20 @@ pipeline:
                     datastore: workspaceblobstore
 ```
 
-### <a name="databricks-step"></a>Krok Databricks
+### <a name="databricks-step"></a>Krok datacihly
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `compute_target` | Azure Databricks výpočetní cíl použít pro tento krok. |
-| `inputs` | Vstupy mohou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
-| `outputs` | Výstupy mohou být [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
-| `run_name` | Název v Databricks pro tento běh. |
+| `compute_target` | Výpočetní cíl Azure Databricks, který se má použít pro tento krok. |
+| `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `run_name` | Název v datacihlách pro tento běh. |
 | `source_directory` | Adresář, který obsahuje skript a další soubory. |
-| `num_workers` | Statický počet pracovníků pro Databricks spustit clusteru. |
-| `runconfig` | Cesta k `.runconfig` souboru. Tento soubor je reprezentace YAML třídy [RunConfiguration.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) Další informace o struktuře tohoto souboru naleznete v tématu [runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
-| `allow_reuse` | Určuje, zda má krok znovu použít předchozí výsledky při opětovném spuštění se stejným nastavením. |
+| `num_workers` | Statický počet pracovníků pro spuštění clusteru datacihly. |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru naleznete v tématu [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
-Následující příklad obsahuje krok Databricks:
+Následující příklad obsahuje krok datacihly:
 
 ```yaml
 pipeline:
@@ -273,12 +273,12 @@ pipeline:
 
 ### <a name="data-transfer-step"></a>Krok přenosu dat
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
 | `compute_target` | Výpočetní cíl Azure Data Factory, který se má použít pro tento krok. |
-| `source_data_reference` | Vstupní připojení, které slouží jako zdroj operací přenosu dat. Podporované hodnoty jsou [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `source_data_reference` | Vstupní připojení, které slouží jako zdroj operací přenosu dat. Podporované hodnoty jsou [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
 | `destination_data_reference` | Vstupní připojení, které slouží jako cíl operací přenosu dat. Podporované hodnoty jsou [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) a [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
-| `allow_reuse` | Určuje, zda má krok znovu použít předchozí výsledky při opětovném spuštění se stejným nastavením. |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok přenosu dat:
 
@@ -317,14 +317,14 @@ pipeline:
 
 ### <a name="python-script-step"></a>Krok skriptu Pythonu
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `inputs` | Vstupy mohou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
-| `outputs` | Výstupy mohou být [pipelinedata](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
-| `script_name` | Název skriptu Pythonu (vzhledem k `source_directory`). |
-| `source_directory` | Adresář, který obsahuje skript, conda prostředí, atd. |
-| `runconfig` | Cesta k `.runconfig` souboru. Tento soubor je reprezentace YAML třídy [RunConfiguration.](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) Další informace o struktuře tohoto souboru naleznete v tématu [runconfig.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
-| `allow_reuse` | Určuje, zda má krok znovu použít předchozí výsledky při opětovném spuštění se stejným nastavením. |
+| `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory`) |
+| `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
+| `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru naleznete v tématu [RunConfig. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
 Následující příklad obsahuje krok skriptu Pythonu:
 
@@ -362,11 +362,11 @@ pipeline:
                     bind_mode: mount
 ```
 
-### <a name="pipeline-with-multiple-steps"></a>Kanál s několika kroky 
+### <a name="pipeline-with-multiple-steps"></a>Kanál s více kroky 
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `steps` | Posloupnost jedné nebo více definic PipelineStep. Všimněte `destination` si, že `outputs` jeden krok se `inputs` stal klíčem k .| 
+| `steps` | Sekvence jedné nebo více definicí PipelineStep. Všimněte si, `destination` že klíče jednoho kroku `outputs` se stanou `source` klíči pro `inputs` další krok.| 
 
 ```yaml
 pipeline:
@@ -423,22 +423,22 @@ pipeline:
 
 ## <a name="schedules"></a>Plány
 
-Při definování plánu pro kanál, může být buď úložiště dat aktivované nebo opakované na základě časového intervalu. Níže jsou uvedeny klíče používané k definování plánu:
+Při definování plánu pro kanál může to být buď úložiště dat, aktivované nebo opakované v závislosti na časovém intervalu. Níže jsou uvedené klíče, které slouží k definování plánu:
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `description` | Popis plánu. |
+| `description` | Popis plánu |
 | `recurrence` | Obsahuje nastavení opakování, pokud se plán opakuje. |
-| `pipeline_parameters` | Všechny parametry, které jsou vyžadovány kanálu. |
-| `wait_for_provisioning` | Zda čekat na zřizování plánu k dokončení. |
-| `wait_timeout` | Počet sekund čekání před vypršením časového limitu. |
-| `datastore_name` | Úložiště dat pro sledování změněných nebo přidaných objektů BLOB. |
-| `polling_interval` | Jak dlouho, v minutách, mezi dotazování pro upravené/přidané objekty BLOB. Výchozí hodnota: 5 minut. Podporováno pouze pro plány úložiště dat. |
-| `data_path_parameter_name` | Název parametru kanálu cesty dat nastavit se změněnou cestu objektu blob. Podporováno pouze pro plány úložiště dat. |
-| `continue_on_step_failure` | Zda pokračovat v provádění dalších kroků v odeslané PipelineRun, pokud krok selže. Pokud je k dispozici, `continue_on_step_failure` bude přepsat nastavení kanálu.
-| `path_on_datastore` | Nepovinný parametr. Cesta na úložiště dat sledovat upravené/přidané objekty BLOB. Cesta je pod kontejnerem pro úložiště dat, takže skutečná cesta,`path_on_datastore`kterou plán monitoruje, je kontejner/ . Pokud žádný, je sledován kontejner úložiště dat. Dodatky/úpravy provedené v podsložce nejsou sledovány. `path_on_datastore` Podporováno pouze pro plány úložiště dat. |
+| `pipeline_parameters` | Všechny parametry, které kanál vyžaduje. |
+| `wait_for_provisioning` | Zda se má čekat na dokončení zřizování plánu. |
+| `wait_timeout` | Počet sekund, po které se má čekat před vypršením časového limitu |
+| `datastore_name` | Úložiště dat, které se má monitorovat pro upravené nebo přidané objekty blob |
+| `polling_interval` | Doba mezi dotazem na změněné nebo přidané objekty BLOB v minutách Výchozí hodnota: 5 minut. Podporováno pouze pro plány úložiště dat. |
+| `data_path_parameter_name` | Název parametru kanálu pro cestu k datům, který se má nastavit se změněnou cestou k objektu BLOB. Podporováno pouze pro plány úložiště dat. |
+| `continue_on_step_failure` | Určuje, zda pokračovat v provádění dalších kroků v odeslaných PipelineRun, pokud nějaký krok selhává. Pokud je tato `continue_on_step_failure` možnost zadána, přepíše nastavení kanálu.
+| `path_on_datastore` | Nepovinný parametr. Cesta v úložišti dat, která se má monitorovat pro upravené nebo přidané objekty blob Cesta je pod kontejnerem úložiště dat, takže skutečná cesta, ke které je plán monitorování, je kontejnerem`path_on_datastore`. Pokud žádný není, je monitorovaný kontejner úložiště dat. Přidání/úpravy provedené v podsložce `path_on_datastore` nejsou monitorovány. Podporováno pouze pro plány úložiště dat. |
 
-Následující příklad obsahuje definici plánu aktivovaná úložištěm dat:
+Následující příklad obsahuje definici pro plán aktivovaný úložištěm dat:
 
 ```yaml
 Schedule: 
@@ -454,20 +454,20 @@ Schedule:
       path_on_datastore: "file/path" 
 ```
 
-Při definování **opakovaného plánu**použijte následující `recurrence`klávesy v části :
+Při definování **opakovaného plánu**použijte následující klíče `recurrence`:
 
-| Klíč YAML | Popis |
+| YAML klíč | Popis |
 | ----- | ----- |
-| `frequency` | Jak často se plán opakuje. Platné hodnoty `"Minute"` `"Hour"`jsou `"Day"` `"Week"`, `"Month"`, , , nebo . |
-| `interval` | Jak často se plán požáry. Hodnota celého čísla je počet časových jednotek, které mají čekat, až se plán znovu aktivuje. |
-| `start_time` | Čas zahájení plánu. Formát řetězce hodnoty je `YYYY-MM-DDThh:mm:ss`. Pokud není k dispozici žádný čas zahájení, první úloha se spustí okamžitě a budoucí úlohy jsou spuštěny na základě plánu. Pokud je čas zahájení v minulosti, první úloha se spustí při dalším vypočítaném běhu. |
-| `time_zone` | Časové pásmo pro čas zahájení. Pokud není k dispozici žádné časové pásmo, používá se čas UTC. |
-| `hours` | Pokud `frequency` `"Day"` je `"Week"`nebo , můžete zadat jedno nebo více celá čísla od 0 do 23, oddělené čárkami, jako hodiny dne, kdy by měl být spuštěn kanál. Pouze `time_of_day` `hours` nebo `minutes` a mohou být použity. |
-| `minutes` | Pokud `frequency` `"Day"` je `"Week"`nebo , můžete zadat jedno nebo více celá čísla od 0 do 59, oddělené čárkami, jako minuty hodiny, kdy by měl být spuštěn kanál. Pouze `time_of_day` `hours` nebo `minutes` a mohou být použity. |
-| `time_of_day` | Pokud `frequency` `"Day"` je `"Week"`nebo , můžete zadat denní dobu pro spuštění plánu. Formát řetězce hodnoty je `hh:mm`. Pouze `time_of_day` `hours` nebo `minutes` a mohou být použity. |
-| `week_days` | Pokud `frequency` `"Week"`je , můžete zadat jeden nebo více dnů, oddělené čárkami, kdy by měl být plán spuštěn. Platné hodnoty `"Monday"` `"Tuesday"`jsou `"Wednesday"` `"Thursday"`, `"Friday"` `"Saturday"`, `"Sunday"`, , , a . |
+| `frequency` | Jak často se plán opakuje. Platné hodnoty jsou `"Minute"`, `"Hour"`, `"Day"` `"Week"`, nebo `"Month"`. |
+| `interval` | Jak často je plán aktivován. Celočíselná hodnota představuje počet časových jednotek, které se mají počkat, dokud se plán znovu neaktivuje. |
+| `start_time` | Čas spuštění plánu. Formát řetězce hodnoty je `YYYY-MM-DDThh:mm:ss`. Pokud se nezadá žádný počáteční čas, první zatížení se spustí okamžitě a v závislosti na plánu se spustí další úlohy. Pokud je čas začátku v minulosti, první úloha se spustí při další vypočtené době spuštění. |
+| `time_zone` | Časové pásmo pro čas spuštění. Pokud není zadáno žádné časové pásmo, bude použit čas UTC. |
+| `hours` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 23, které jsou odděleny čárkami, jako hodiny dne, kdy se má kanál spustit. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
+| `minutes` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 59, které jsou odděleny čárkami, jako minuty hodiny, kdy se má kanál spustit. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
+| `time_of_day` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat denní dobu, po kterou má být plán spuštěn. Formát řetězce hodnoty je `hh:mm`. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
+| `week_days` | Pokud `frequency` je `"Week"`, můžete zadat jeden nebo více dní, které jsou odděleny čárkami, kdy se má plán spustit. Platné hodnoty jsou `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`a `"Sunday"`. |
 
-Následující příklad obsahuje definici opakovaného plánu:
+Následující příklad obsahuje definici pro opakovaný plán:
 
 ```yaml
 Schedule: 
@@ -497,4 +497,4 @@ Schedule:
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [používat rozšíření příkazového příkazového příkazu pro Azure Machine Learning](reference-azure-machine-learning-cli.md).
+Naučte se [používat rozšíření CLI pro Azure Machine Learning](reference-azure-machine-learning-cli.md).

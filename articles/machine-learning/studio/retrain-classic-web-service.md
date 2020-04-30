@@ -1,82 +1,82 @@
 ---
-title: Přeškolit klasickou webovou službu
+title: Přeučení klasické webové služby
 titleSuffix: ML Studio (classic) - Azure
-description: Zjistěte, jak přeškolit model a aktualizovat klasickou webovou službu tak, aby používala nově trénovaný model v Azure Machine Learning Studio (klasika).
+description: Naučte se, jak přeškolit model a aktualizovat klasickou webovou službu tak, aby používala nově vyškolený model v Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 8094d64eab1a4b25a76554bf9eb6848c2e4d3493
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0639a525384e751ac4441da5d2c03532618b801a
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204235"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209447"
 ---
-# <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeškolit a nasadit klasickou webovou službu Studio (classic)
+# <a name="retrain-and-deploy-a-classic-studio-classic-web-service"></a>Přeučení a nasazení webové služby klasického studia (Classic)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Rekvalifikace modelů strojového učení je jedním ze způsobů, jak zajistit, aby zůstaly přesné a založené na nejrelevantnějších dostupných údajích. Tento článek vám ukáže, jak přeškolit klasickou studiovou (klasickou) webovou službu. Průvodce přeškolit novou webovou službu Studio (klasické) [natomto článku s návody.](retrain-machine-learning-model.md)
+Přeškolení modelů strojového učení je jedním ze způsobů, jak zajistit, aby byly přesné a na základě nejdůležitějších dostupných dat. V tomto článku se dozvíte, jak přeškolit webovou službu klasického studia (Classic). Návod, jak přeškolit novou webovou službu studia (Classic), najdete v [tomto článku s postupem.](retrain-machine-learning-model.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že již máte rekvalifikační experiment a prediktivní experiment. Tyto kroky jsou vysvětleny v [retrain a nasadit model strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Namísto nasazení modelu strojového učení jako nové webové služby však nasadíte prediktivní experiment jako klasickou webovou službu.
+V tomto článku se předpokládá, že už máte experiment s přeškolením i prediktivní experiment. Tyto kroky jsou vysvětleny v tématu [přeučení a nasazení modelu strojového učení.](/azure/machine-learning/studio/retrain-machine-learning-model) Místo toho, abyste model strojového učení nasadili jako novou webovou službu, můžete prediktivní experiment nasadit jako klasickou webovou službu.
      
-## <a name="add-a-new-endpoint"></a>Přidání nového koncového bodu
+## <a name="add-a-new-endpoint"></a>Přidat nový koncový bod
 
-Prediktivní webová služba, kterou jste nasadili obsahuje výchozí bod bodování koncový bod, který je udržován v synchronizaci s původní školení a hodnocení experimenty trénovaný model. Chcete-li aktualizovat webovou službu na nový trénovaný model, musíte vytvořit nový koncový bod vyhodnocování.
+Prediktivní webová služba, kterou jste nasadili, obsahuje výchozí hodnoticí koncový bod, který je synchronizovaný s původní výukou a vyhodnocování experimentů. Chcete-li aktualizovat webovou službu na nový vyškolený model, je nutné vytvořit nový koncový bod bodování.
 
-Existují dva způsoby, jak přidat nový koncový bod do webové služby:
+Existují dva způsoby, jak můžete přidat nový koncový bod do webové služby:
 
 * Prostřednictvím kódu programu
-* Použití portálu Webových služeb Azure
+* Použití portálu webových služeb Azure
 
 > [!NOTE]
-> Ujistěte se, že přidáváte koncový bod do prediktivní webové služby, nikoli školicí webové služby. Pokud jste správně nasadili školení a prediktivní webové služby, měli byste vidět dvě samostatné webové služby uvedené. Prediktivní webová služba by měla končit "[prediktivní exp.]".
+> Ujistěte se, že přidáváte koncový bod do prediktivní webové služby, nikoli do webové služby školení. Pokud jste správně nasadili školení i prediktivní webovou službu, měli byste vidět ze seznamu dvě samostatné webové služby. Prediktivní webová služba by měla končit řetězcem "[prediktivního EXP.]".
 >
 
-### <a name="programmatically-add-an-endpoint"></a>Programově přidání koncového bodu
+### <a name="programmatically-add-an-endpoint"></a>Programové přidání koncového bodu
 
-Koncové body vyhodnocování můžete přidat pomocí ukázkového kódu uvedeného v tomto [úložišti GitHub](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
+Můžete přidat koncové body bodování pomocí ukázkového kódu, který je k dispozici v tomto [úložišti GitHub](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint).
 
-### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Přidání koncového bodu pomocí portálu Azure Web Services
+### <a name="use-the-azure-web-services-portal-to-add-an-endpoint"></a>Použití portálu webových služeb Azure k přidání koncového bodu
 
-1. V Machine Learning Studio (klasické) v levém navigačním sloupci klikněte na Webové služby.
-1. V dolní části řídicího panelu webové služby klikněte na **Spravovat náhled koncových bodů**.
-1. Klikněte na **Přidat**.
-1. Zadejte název a popis nového koncového bodu. Vyberte úroveň protokolování a zda jsou povolena ukázková data. Další informace o protokolování naleznete v [tématu Enable logging for Machine Learning web services](web-services-logging.md).
+1. V Machine Learning Studio (Classic) v levém navigačním sloupci klikněte na webové služby.
+1. V dolní části řídicího panelu webové služby klikněte na možnost **Spravovat koncové body verze Preview**.
+1. Klikněte na tlačítko **Add** (Přidat).
+1. Zadejte název a popis nového koncového bodu. Vyberte úroveň protokolování a jestli jsou povolená ukázková data. Další informace o protokolování najdete v tématu [Povolení protokolování pro Machine Learning webové služby](web-services-logging.md).
 
-## <a name="update-the-added-endpoints-trained-model"></a>Aktualizace trénovaného modelu přidaného koncového bodu
+## <a name="update-the-added-endpoints-trained-model"></a>Aktualizace proučeného modelu přidaného koncového bodu
 
-### <a name="retrieve-patch-url"></a>Načíst adresu URL PATCH
+### <a name="retrieve-patch-url"></a>Načíst adresu URL opravy
 
-Chcete-li pomocí webového portálu získat správnou adresu URL opravy, postupujte takto:
+Použijte následující postup, chcete-li získat správnou adresu URL opravy pomocí webového portálu:
 
-1. Přihlaste se k portálu [Azure Machine Learning Web Services.](https://services.azureml.net/)
-1. Nahoře klikněte na **Webové služby** nebo **Klasické webové služby.**
-1. Klikněte na webovou službu hodnocení, se kterou pracujete (pokud jste neupravili výchozí název webové služby, skončí na "[Vyhodnocování exp.]").
-1. Klikněte na **tlačítko +NOVÝ**.
+1. Přihlaste se k portálu [Azure Machine Learning Web Services](https://services.azureml.net/) .
+1. V horní části klikněte na **webové služby** nebo **klasické webové služby** .
+1. Klikněte na webovou službu bodování, se kterou pracujete (Pokud jste nezměnili výchozí název webové služby, ukončí se "[bodování EXP.]").
+1. Klikněte na **+ Nový**.
 1. Po přidání koncového bodu klikněte na název koncového bodu.
-1. V části Adresa URL **opravy** kliknutím na **nápovědu rozhraní API** otevřete stránku nápovědy pro opravy.
+1. V části Adresa URL **opravy** otevřete stránku s popisem aktualizace kliknutím na tlačítko **nápovědě k rozhraní API** .
 
 > [!NOTE]
-> Pokud jste přidali koncový bod do školicí webové služby namísto prediktivní webové služby, zobrazí se po klepnutí na odkaz **Aktualizovat prostředek** následující chyba: "Omlouváme se, ale tato funkce není v tomto kontextu podporována nebo k dispozici. Tato webová služba nemá žádné aktualizovatelné prostředky. Omlouváme se za nepříjemnosti a pracujeme na zlepšení tohoto pracovního postupu."
+> Pokud jste přidali koncový bod do webové služby školení místo prediktivní webové služby, zobrazí se po kliknutí na odkaz **aktualizovat prostředek** následující chyba, ale tato funkce není v tomto kontextu podporována nebo není dostupná. Tato webová služba nemá žádné aktualizovatelné prostředky. Omlouváme se za nepříjemnosti a pracujeme na vylepšení tohoto pracovního postupu. "
 >
 
-Stránka nápovědy PATCH obsahuje adresu URL PATCH, kterou musíte použít, a poskytuje ukázkový kód, který můžete použít k jeho volání.
+Stránka s informacemi o opravě obsahuje adresu URL opravy, kterou je nutné použít a poskytuje vzorový kód, který můžete použít k jeho volání.
 
-![Adresa URL opravy.](./media/retrain-classic/ml-help-page-patch-url.png)
+![Oprava URL](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Aktualizace koncového bodu
 
-Nyní můžete použít trénovaný model k aktualizaci koncového bodu vyhodnocování, který jste vytvořili dříve.
+Nyní můžete použít trained model pro aktualizaci koncového bodu, který jste vytvořili dříve.
 
-Následující ukázkový kód ukazuje, jak použít adresu URL *BaseLocation*, *RelativeLocation*, *SasBlobToken*a PATCH k aktualizaci koncového bodu.
+Následující vzorový kód ukazuje, jak pomocí adresy URL *BaseLocation*, *RelativeLocation*, *SasBlobToken*a patch aktualizovat koncový bod.
 
     private async Task OverwriteModel()
     {
@@ -116,25 +116,25 @@ Následující ukázkový kód ukazuje, jak použít adresu URL *BaseLocation*, 
         }
     }
 
-*ApiKey* a *endpointUrl* pro volání lze získat z řídicího panelu koncového bodu.
+*ApiKey* a *endpointUrl* pro volání lze získat z řídicího panelu koncových bodů.
 
-Hodnota *Name* parametr v *resources* by měla odpovídat název prostředku uloženétovaný model v prediktivní experiment. Získání názvu prostředku:
+Hodnota parametru *Name* v *prostředcích* by měla odpovídat názvu prostředku uloženého výukového modelu v prediktivním experimentu. Získání názvu prostředku:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
-1. V levé nabídce klikněte na **Machine Learning**.
-1. V části Název klikněte na pracovní prostor a potom klikněte na **Webové služby**.
-1. V části Název klikněte na **Model sčítání lidu [prediktivní exp.]**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. V nabídce vlevo klikněte na **Machine Learning**.
+1. V části název klikněte na pracovní prostor a pak klikněte na **webové služby**.
+1. Pod položkou Název klikněte na položku **model sčítání [prediktivní EXP.]**.
 1. Klikněte na nový koncový bod, který jste přidali.
 1. Na řídicím panelu koncového bodu klikněte na **aktualizovat prostředek**.
-1. Na stránce Dokumentace k aktualizaci rozhraní RESOURCE API pro webovou službu najdete **název prostředku** v části **Aktualizovatelné prostředky**.
+1. Na stránce dokumentace k aktualizačnímu prostředku rozhraní API pro webovou službu můžete najít **název prostředku** v části **aktualizovatelné prostředky**.
 
-Pokud platnost tokenu SAS vyprší před dokončením aktualizace koncového bodu, musíte provést GET s ID úlohy, abyste získali nový token.
+Pokud váš token SAS vyprší před dokončením aktualizace koncového bodu, musíte provést příkaz GET s ID úlohy, abyste získali nový token.
 
-Po úspěšném spuštění kódu by měl nový koncový bod začít používat retrained model přibližně za 30 sekund.
+Po úspěšném spuštění kódu by nový koncový bod měl začít používat převlakový model přibližně 30 sekund.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o správě webových služeb nebo sledování spuštění více experimentů naleznete v následujících článcích:
+Další informace o tom, jak spravovat webové služby nebo sledovat více experimentálních běhů, najdete v následujících článcích:
 
-* [Prozkoumání portálu webových služeb](manage-new-webservice.md)
+* [Prozkoumejte portál Web Services](manage-new-webservice.md)
 * [Správa iterací experimentu](manage-experiment-iterations.md)

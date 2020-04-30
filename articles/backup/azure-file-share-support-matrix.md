@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování sdílených složek Azure
 description: Obsahuje souhrn nastavení podpory a omezení při zálohování sdílených složek Azure.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195685"
+ms.locfileid: "82207985"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -20,13 +20,13 @@ Zálohování sdílených složek Azure je dostupné v následujících zeměpis
 
 | Oblasti GA | Podporované oblasti, ale ne GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Austrálie – jihovýchod (pomocného), Kanada – střed (CNC), Středozápadní USA (WCUS), Západní USA 2 (WUS 2), Indie – jih (in), Střed USA – sever (NCUS), Japonsko – východ (JPE), Brazílie – jih (BRS), Jižní Východní Asie (moře)                                                     |Austrálie – východ (AE), Kanada – východ (CE), Východní Asie (EA), Východní USA (EUS), Východní USA 2 (EUS2), Japonsko – západ (JPW), Indie – střed (INC), Korea – střed (KRC), Korea – jih (KRS), Severní Evropa (NE), Střed USA – jih (SCUS), Velká Británie – jih (UKS), Velká Británie – západ (UKW), Západní Evropa (WE), západní USA (WUS), US Gov – Arizona (UGA), US gov – Texas (UGT), US gov – Virginie (UGV), Austrálie – střed (ACL) , Indie – západ (INW), Jižní Afrika – sever (SAN), Spojené arabské emiráty sever (MOČOVINa, Francie – střed), Německo – sever (GN), Německo – středozápad (GWC), Jižní Afrika – západ (), FRC (Spojené arabské emiráty), Norsko – východ (NDOPORUČUJEME), Norsko – západ (NWW), Švýcarsko – sever (SZN), Střed USA (kapacitní jednotky)           |
+| Austrálie – jihovýchod (pomocného mechanismu), Kanada – střed (CNC), Středozápadní USA (WCUS), Západní USA 2 (WUS 2), Indie – jih (INS), Střed USA – sever (NCUS), Japonsko – východ (JPE), Brazílie – jih (BRS), Jižní Východní Asie (moře), Švýcarsko – západ (SZW), Spojené arabské emiráty Central (ACL), Norsko – východ (NDOPORUČUJEME), Indie – západ (INW), Austrálie – střed                                                  |Austrálie – východ (AE), Kanada – východ (CE), Východní Asie (EA), Východní USA (EUS), Východní USA 2 (EUS2), Japonsko – západ (JPW), Indie – střed (INC), Korea – střed (KRC), Korea – jih (KRS), Severní Evropa (NE), Střed USA – jih (SCUS), Velká Británie – jih (UKS), Velká Británie – západ (UKW), Západní Evropa (WE), západní USA (WUS), US Gov – Arizona (UGA), US gov – Texas (UGT), US gov – Virginie (UGV), Jižní Afrika sever (SAN) , Spojené arabské emiráty severní (MOČOVINy), Francie – střed (FRC), Německo – sever (GN), Německo – středozápad (GWC), Jižní Afrika – západ (pily), Norsko – západ (NWW), Švýcarsko – sever (SZN), Střed USA (kapacitní jednotky)           |
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
 | Podrobnosti účtu úložiště | Podpora                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| Druh účtu            | Azure Backup podporuje sdílené složky Azure, které jsou k dispozici pro obecné účely V1, obecné účely v2 a účty úložiště typu sdílení souborů. |
+| Druh účtu            | Azure Backup podporuje sdílené složky Azure, které jsou k dispozici v obecných účelech V1, pro obecné účely v2 a na typech úložiště souborů. |
 | Výkon              | Azure Backup podporuje sdílení souborů v účtech Standard a Premium Storage. |
 | Replikace              | Sdílené složky Azure Files v účtech úložiště s libovolným typem replikace jsou podporované. |
 

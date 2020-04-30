@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "77365319"
+ms.locfileid: "82561629"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
 
@@ -21,7 +21,7 @@ ms.locfileid: "77365319"
 
 Tento kurz popisuje, jak zřídit službu Data Box Gateway v hostitelském systému s Hyper-V ve Windows Serveru 2016, Windows Serveru 2012 R2 nebo Windows Serveru 2012.
 
-Ke zřízení a konfiguraci virtuálního zařízení potřebujete oprávnění správce. Dokončení zřizování a počátečního nastavení může trvat přibližně 10 minut.
+Ke zřízení a konfiguraci virtuálního zařízení potřebujete oprávnění správce. Dokončení zřizování a počátečního nastavení může trvat přibližně 10 minut. 
 
 V tomto kurzu se naučíte:
 

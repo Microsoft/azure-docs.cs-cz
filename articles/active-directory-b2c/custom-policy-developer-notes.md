@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408712"
+ms.locfileid: "82229659"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Poznámky pro vývojáře pro vlastní zásady v Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | × | Například Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | × | Například Facebook.  |
 | [OAuth1](oauth1-technical-profile.md) |  | × |  | Například Twitter. |
-| [TYPU Saml2](saml-technical-profile.md) |  |   | × | Například Salesforce, ADFS. |
+| [TYPU Saml2](saml-identity-provider-technical-profile.md) |  |   | × | Například Salesforce, ADFS. |
 | WSFED| × |  |  |  |
 
 
@@ -134,7 +134,8 @@ Možnosti architektury prostředí vlastních zásad a identit jsou v rámci st�
 | [Výchozí zprostředkovatel relace jednotného přihlašování](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | × |  |
 | [Externí zprostředkovatel přihlašovací relace](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | × |  |
 | [Zprostředkovatel relací SAML SSO](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | × |  |
-
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | × |  |  |
+| [Jednotné odhlašování](session-overview.md#sign-out)  |  | × |  |  |
 
 ### <a name="security"></a>Zabezpečení
 

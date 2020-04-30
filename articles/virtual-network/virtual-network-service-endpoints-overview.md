@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: b75e0c1e53f1e00579de73897197cdd2f14d79af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455406"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509495"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
@@ -43,7 +43,7 @@ Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsof
 
 **Public Preview**
 
-- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft. ContainerRegistry*): verze Preview je dostupná ve všech oblastech Azure, kde je Azure Container Registry k dispozici.
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (*Microsoft. ContainerRegistry*): verze Preview je dostupná v omezených oblastech Azure, kde je Azure Container Registry k dispozici.
 
 Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 

@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137950"
+ms.locfileid: "82208733"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 Tento článek popisuje běžné problémy, alternativní řešení, diagnostické kroky a nástroje, pokud používáte [sadu .NET SDK](sql-api-sdk-dotnet.md) s Azure Cosmos DB účty rozhraní SQL API.
 Sada .NET SDK poskytuje logickou reprezentaci na straně klienta pro přístup k Azure Cosmos DB rozhraní SQL API. Tento článek popisuje nástroje a přístupy, které vám pomůžou v případě jakýchkoli problémů.
 
-## <a name="checklist-for-troubleshooting-issues"></a>Kontrolní seznam pro řešení problémů:
+## <a name="checklist-for-troubleshooting-issues"></a>Kontrolní seznam pro řešení problémů
 Před přesunutím aplikace do produkčního prostředí Vezměte v úvahu následující kontrolní seznam. Při použití kontrolního seznamu se zabrání několik běžných problémů, které byste mohli vidět. Můžete také rychle diagnostikovat situaci, kdy dojde k problému:
 
 *    Použijte nejnovější [sadu SDK](sql-api-sdk-dotnet-standard.md). Sady SDK verze Preview by se neměly používat pro produkční prostředí. Zabráníte tak známým problémům, které již byly opraveny.
@@ -101,6 +101,30 @@ Jinak čelíte problémům s připojením.
 * Pokud se back-end dotaz rychle vrátí, a při kontrole zatížení počítače stráví na klientovi velký čas. Pravděpodobně není dostatek prostředků a sada SDK čeká, až budou prostředky k dispozici pro zpracování odpovědi.
 * Pokud je back-endové dotaz pomalý, zkuste [optimalizovat dotaz](optimize-cost-queries.md) a podívat se na aktuální [zásady indexování](index-overview.md) . 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401: podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis.
+Pokud se vám zobrazila následující chybová zpráva 401: "podpis MAC nalezený v požadavku HTTP není stejný jako vypočítaný podpis." může to být způsobeno následujícími scénáři.
+
+1. Klíč se otočí a nedodržuje [osvědčené postupy](secure-access-to-data.md#key-rotation). To je obvykle případ. Cosmos DB střídání klíčů účtu může trvat několik sekund, než je možné dny v závislosti na velikosti účtu Cosmos DB.
+   1. 401 signatura MAC se krátce po rotaci klíčů a nakonec zastaví bez jakýchkoli změn. 
+2. Klíč je nesprávně nakonfigurovaný v aplikaci, takže se klíč neshoduje s účtem.
+   1. 401 problém s podpisem MAC bude konzistentní a stane se pro všechna volání.
+3. Existuje konflikt časování s vytvořením kontejneru. Instance aplikace se pokouší o přístup k kontejneru před dokončením vytváření kontejneru. Nejběžnější scénář pro tuto situaci, pokud je aplikace spuštěná a kontejner se odstraní a znovu vytvoří se stejným názvem, i když je aplikace spuštěná. Sada SDK se pokusí použít nový kontejner, ale vytvoření kontejneru stále probíhá, takže nemá klíče.
+   1. 401 problém s podpisem MAC se krátce po vytvoření kontejneru zobrazuje a k tomu dojde, jenom dokud se nedokončí vytváření kontejneru.
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>Chyba protokolu HTTP 400. Velikost hlaviček požadavku je příliš dlouhá.
+ Velikost záhlaví se zvětšila na velkou a překračuje maximální povolenou velikost. Vždycky se doporučuje použít nejnovější sadu SDK. Ujistěte se, že používáte aspoň verzi [3. x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md) nebo [2. x](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md), která do zprávy výjimky přidá trasování velikosti hlavičky.
+
+Mít
+ 1. Token relace se zvětšil příliš velký. Token relace roste jako počet oddílů, které se v kontejneru zvyšují.
+ 2. Token pro pokračování byl nárůst na velká. Různé dotazy budou mít různé velikosti tokenů pro pokračování.
+ 3. Je to způsobeno kombinací tokenu relace a tokenu pokračování.
+
+Řešení:
+   1. Postupujte podle [tipů k výkonu](performance-tips.md) a převeďte aplikaci na režim připojení Direct + TCP. Přímý a TCP nemá omezení velikosti záhlaví, jako je HTTP, což tomuto problému zabrání.
+   2. Pokud je token relace příčinou, pak je dočasné zmírnění restartování aplikace. Restartování instance aplikace obnoví token relace. Pokud se výjimky zastaví po restartu, potvrdí to příčinu tokenu relace. Nakonec se zvětší zpátky na velikost, která způsobí výjimku.
+   3. Pokud aplikace nemůže být převedena na přímý + TCP a token relace je příčinou, je možné zmírnit jejich zmírnění změnou [úrovně konzistence](consistency-levels.md)klienta. Token relace se používá pouze pro konzistenci relací, což je výchozí hodnota pro Cosmos DB. Žádná jiná úroveň konzistence nebude používat token relace. 
+   4. Pokud aplikaci nelze převést na přímý + TCP a token pro pokračování je příčinou, pak zkuste nastavit možnost ResponseContinuationTokenLimitInKb. Možnost lze najít v FeedOptions pro v2 nebo QueryRequestOptions v v3.
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ Jinak čelíte problémům s připojením.
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

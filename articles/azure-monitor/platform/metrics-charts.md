@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80371607"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509818"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -47,6 +47,25 @@ Klikněte na **přidat graf** a vytvořte další graf s jinou metrikou.
 ### <a name="order-or-delete-multiple-charts"></a>Objednat nebo odstranit více grafů
 
 Chcete-li seřadit nebo odstranit více grafů, klikněte na symbol tří teček ( **...** ) a otevřete nabídku graf a vyberte odpovídající položku v nabídce **Přesunout nahoru**, **Přesunout dolů**nebo **Odstranit**.
+
+## <a name="changing-aggregation"></a>Změna agregace
+
+Když přidáte metriku do grafu, Průzkumník metrik automaticky vybere jeho výchozí agregaci. Ve výchozím nastavení je to ve scénářích Basic, ale k získání dalších přehledů o této metrikě můžete použít jinou agregaci. Zobrazení různých agregací v grafu vyžaduje, abyste porozuměli tomu, jak je Průzkumník metrik zpracovává. 
+
+Metriky jsou série měření (neboli hodnoty metrik) zachycené za časové období. Při vykreslení grafu se hodnoty vybrané metriky samostatně agreguje v *časovém intervalu*. Velikost časového intervalu můžete vybrat [pomocí panelu pro výběr Průzkumník metrikho času](metrics-getting-started.md#select-a-time-range). Pokud neprovedete explicitní výběr časového intervalu, časové rozlišení se automaticky vybere v závislosti na aktuálně vybraném časovém rozsahu. Po určení časového intervalu jsou hodnoty metrik, které byly zachyceny během každého intervalu intervalu, agregovány a umístěny do grafu – jedna hodnota DataPoint za časový interval.
+
+Předpokládejme například, že se v grafu zobrazuje metrika **doby odezvy serveru** pomocí **průměrné** agregace za **posledních 24 hodin** časového intervalu:
+
+- Pokud je časová členitost nastavená na 30 minut, graf se vykreslí z 48 agregovaných DataPoint (například Spojnicový graf připojuje 48 teček v oblasti vykreslení grafu). To znamená 24 hodin × 2 datapoints za hodinu. Každý DataPoint představuje *průměr* všech zaznamenaných dob odezvy pro žádosti serveru, ke kterým došlo během každé z příslušných 30 minut časových období.
+- Pokud časové rozlišení přepnete na 15 minut, dostanete 96 agregovaných datapoints.  To znamená 24 hodin × 4 datapoints za hodinu.
+
+V Průzkumníkovi metriky je dostupných pět základních výpočetních výpočtů: **Sum**, **Count**, **min**, **Max**a **Average**. Agregace **součtu** je někdy označována jako **Celková** agregace. U mnoha metrik Průzkumník metrik skryje agregace, které jsou zcela nepodstatné a nelze je použít.
+
+- **Sum** – součet všech hodnot zachycených v intervalu agregace
+- **Count** – počet měření zachycených v intervalu agregace. Počítejte s tím, že v případě, že je metrika vždycky zachycena s hodnotou 1, se **počet** bude rovnat **součtu** . To je běžné v případě, že metrika sleduje počet různých událostí a každé měření představuje jednu událost (tj. kód se při každém výskytu nové žádosti aktivuje na záznam metriky).
+- **Average** – průměr hodnot metriky zachycených v intervalu agregace
+- **Min** – nejmenší hodnota zachycená v intervalu agregace
+- **Max** – největší hodnota zachycená v intervalu agregace
 
 ## <a name="apply-filters-to-charts"></a>Použití filtrů u grafů
 

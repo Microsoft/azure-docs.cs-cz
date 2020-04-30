@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 867b327ac25d51cd3955e622da9d8067ae6d9ae9
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: aba444e618a6ee2c6808b7f6d9d706fdf18fe546
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79127724"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209039"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -58,7 +58,7 @@ Pokud vytvoříte virtuální počítač z existujícího virtuálního pevného
 Pomocí následující rutiny prostředí PowerShell můžete také změnit disk na pevný disk.
 
 ```powershell
-Convert-VHD –Path c:\\test\\MY-VM.vhdx –DestinationPath c:\\test\\MY-NEW-VM.vhd -VHDType Fixed
+Convert-VHD –Path c:\test\MY-VM.vhdx –DestinationPath c:\test\MY-NEW-VM.vhd -VHDType Fixed
 ```
 
 ## <a name="software-preparation-and-installation"></a>Příprava softwaru a instalace
@@ -87,7 +87,7 @@ Další informace o tom, jak nakonfigurovat Windows Defender pro vyloučení ur�
 
 Zakázání automatických aktualizací prostřednictvím místních Zásady skupiny:
 
-1. Otevřete **Editor místních zásad skupiny\\Šablony pro správu\\součásti systému Windows\\web Windows Update**.
+1. Otevřete **Editor místních zásad skupiny\\šablony pro správu\\součásti\\systému Windows Web Windows Update**.
 2. Klikněte pravým tlačítkem na **Konfigurovat Automatické aktualizace** a nastavte ji na **zakázáno**.
 
 Můžete také spustit následující příkaz na příkazovém řádku a zakázat tak automatické aktualizace.
@@ -113,7 +113,7 @@ Postup přesměrování časových pásem:
 1. Na serveru služby Active Directory otevřete **Konzola pro správu zásad skupiny**.
 2. Rozbalíte své domény a Zásady skupiny objekty.
 3. Klikněte pravým tlačítkem myši na **objekt Zásady skupiny** , který jste vytvořili pro nastavení zásad skupiny, a vyberte **Upravit**.
-4. V **Editor pro správu zásad skupiny**přejděte na **Konfigurace počítače** > **zásady** > **šablony pro správu** > **součásti Windows** > **Vzdálená plocha** > **hostitel relace vzdálené plochy** > **zařízení a přesměrování prostředků**.
+4. V **Editor pro správu zásad skupiny**přejděte na**zásady** >  **Konfigurace** > počítače**šablony pro správu** > **součásti** > systému Windows**Vzdálená plocha** > **hostitel relace vzdálené plochy** > **zařízení a přesměrování prostředků**.
 5. Povolte nastavení **Povolit přesměrování časového pásma** .
 
 Tento příkaz můžete také spustit v hlavní imagi pro přesměrování časových pásem:
@@ -136,7 +136,7 @@ reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\
 
 ### <a name="include-additional-language-support"></a>Zahrnutí další jazykové podpory
 
-Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v následujících článcích:
+Tento článek nepopisuje, jak nakonfigurovat jazyk a regionální podporu. Další informace najdete v těchto článcích:
 
 - [Přidání jazyků do imagí Windows](/windows-hardware/manufacture/desktop/add-language-packs-to-windows/)
 - [Funkce na vyžádání](/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities/)
@@ -203,8 +203,8 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
 Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. Další informace o tom, jak vytvořit a aktualizovat fondy hostitelů, najdete v následujících článcích:
 
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manager](create-host-pools-arm-template.md)
+- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
 - [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md)
-- [Vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md)
-- [Konfigurace metody vyrovnávání zatížení pro virtuální počítače s Windows](configure-host-pool-load-balancing.md)
+- [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
+- [Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky](create-host-pools-user-profile.md)
+- [Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop](configure-host-pool-load-balancing.md)

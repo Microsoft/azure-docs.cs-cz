@@ -5,12 +5,12 @@ description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145496"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207356"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu dat se statickou veřejnou IP adresou ve službě Azure Kubernetes Service (AKS)
 
@@ -56,7 +56,7 @@ Do vydaných verzí musíte předat dva další parametry, takže kontroler př�
 1. Přidejte `--set controller.service.loadBalancerIP` parametr. Zadejte vlastní veřejnou IP adresu vytvořenou v předchozím kroku.
 1. Přidejte `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` parametr. Zadejte popisek názvu DNS, který se použije pro veřejnou IP adresu vytvořenou v předchozím kroku.
 
-Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. Uzly Windows serveru (v současné době ve verzi Preview v AKS) by neměli spustit kontroler příchozího přenosu dat. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
+Kontroler příchozího přenosu dat je potřeba naplánovat také v uzlu Linuxu. V uzlech Windows Serveru by se kontroler příchozího přenosu dat neměl spouštět. Selektor uzlů se specifikuje pomocí parametru `--set nodeSelector`, aby plánovači Kubernetes oznámil, že má spustit kontroler příchozího přenosu dat NGINX v uzlu Linuxu.
 
 > [!TIP]
 > Následující příklad vytvoří obor názvů Kubernetes pro prostředky příchozího přenosu dat s názvem příchozí *– Basic*. Podle potřeby zadejte obor názvů pro vlastní prostředí. Pokud váš cluster AKS není RBAC povolený, přidejte `--set rbac.create=false` do příkazů Helm.
@@ -285,7 +285,7 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>Test konfigurace příchozího přenosu dat
 
-Otevřete webový prohlížeč s plně kvalifikovaným názvem domény vašeho kontroleru Kubernetes příchozího přenosu dat *https://demo-aks-ingress.eastus.cloudapp.azure.com*, například.
+Otevřete webový prohlížeč s plně kvalifikovaným názvem domény vašeho kontroleru Kubernetes příchozího přenosu dat *`https://demo-aks-ingress.eastus.cloudapp.azure.com`*, například.
 
 Jak tyto příklady používají `letsencrypt-staging`, vydaný certifikát TLS/SSL není v prohlížeči důvěryhodný. Přijměte výzvu k zadání upozornění, abyste mohli pokračovat v používání aplikace. Informace o certifikátu zobrazí tento *falešný certifikát x1 pro Intermediate* , který je vydaný pomocí zašifrování. Tento falešný certifikát indikuje `cert-manager` správné zpracování žádosti a obdržel certifikát od poskytovatele:
 
@@ -299,7 +299,7 @@ Ukázková aplikace se zobrazí ve webovém prohlížeči:
 
 ![Příklad aplikace jedna](media/ingress/app-one.png)
 
-Nyní přidejte cestu */Hello-World-Two* k plně kvalifikovanému názvu domény, *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*například. Zobrazí se druhá ukázková aplikace s vlastním názvem:
+Nyní přidejte cestu */Hello-World-Two* k plně kvalifikovanému názvu domény, *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`* například. Zobrazí se druhá ukázková aplikace s vlastním názvem:
 
 ![Příklad aplikace – dvě](media/ingress/app-two.png)
 

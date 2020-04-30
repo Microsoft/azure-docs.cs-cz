@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 74fec059bdffb91f5a7774d430e2f1897f0e863c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 553d6f716bbb6e98aa64ef07cb80d2d6cba370b6
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "79474454"
+ms.locfileid: "82561521"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Kurz: Příprava na nasazení Azure Data Box Gateway
 
@@ -51,8 +51,8 @@ Tady najdete požadavky na konfiguraci prostředku Data Box Gateway, zařízení
 Než začnete, ujistěte se, že:
 
 * Vaše předplatné Microsoft Azure je povolené pro prostředek Azure Stack Edge. Ujistěte se, že jste použili podporované předplatné, jako je například [Microsoft smlouva Enterprise (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp)nebo [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
-* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro prostředky Data Box Edge/Data Box Gateway, IoT Hub a Azure Storage.
-    - Chcete-li vytvořit libovolný prostředek Data Box Edge/Data Box Gateway, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) v oboru na úrovni skupiny prostředků. Musíte se také ujistit, že je `Microsoft.DataBoxEdge` poskytovatel zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+* Máte přístup vlastníka nebo přispěvatele na úrovni skupiny prostředků pro Azure Stack prostředky hraniční/Data Box Gateway, IoT Hub a Azure Storage.
+    - Pokud chcete vytvořit Azure Stack hraničního nebo Data Box Gatewayho prostředku, měli byste mít oprávnění jako Přispěvatel (nebo vyšší) vymezené na úrovni skupiny prostředků. Musíte se také ujistit, že je `Microsoft.DataBoxEdge` poskytovatel zaregistrován. Informace o tom, jak se zaregistrovat, najdete v tématu [registrace poskytovatele prostředků](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
     - Pokud chcete vytvořit prostředek účtu úložiště, musíte pro něj znovu použít rozsah přístupu přispěvatele nebo vyšší úrovně. Azure Storage je ve výchozím nastavení registrovaný poskytovatel prostředků.
 - K rozhraní Microsoft Graph API máte přístup pro správce nebo uživatele. Další informace najdete v tématu informace o [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
 - Máte účet služby Microsoft Azure Storage a přihlašovací údaje účtu.
@@ -91,8 +91,7 @@ Chcete-li vytvořit prostředek Data Box Gateway, proveďte následující kroky
 
     - Azure Portal na této adrese URL: [https://portal.azure.com](https://portal.azure.com).
     - Nebo Azure Government portál na této adrese URL: [https://portal.azure.us](https://portal.azure.us). Další podrobnosti najdete na webu [připojení k Azure Government pomocí portálu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
-
-2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **data box Edge/data box Gateway**. Vyberte Data Box Edge/Data Box Gateway. Vyberte **Vytvořit**.
+2. V levém podokně vyberte **+ vytvořit prostředek**. Vyhledejte **Azure Stack Edge/data box Gateway**. Vyberte Azure Stack Edge/Data Box Gateway. Vyberte **Vytvořit**.
 3. Vyberte předplatné, které chcete použít pro Data Box Gateway zařízení. Vyberte oblast, do které chcete nasadit prostředek Data Box Gateway. Seznam všech oblastí, kde jsou k dispozici prostředky Azure Stack Edge, najdete v tématu [Dostupné produkty Azure v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Zvolte umístění, které je nejblíže zeměpisné oblasti, ve které chcete zařízení nasadit. V možnosti **data box Gateway** vyberte **vytvořit**.
 
     ![Vyhledání služby Data Box Gateway](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)

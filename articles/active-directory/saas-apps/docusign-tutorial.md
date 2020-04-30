@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02b0d8290e279b6ed4de08d074597154208cac6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183976"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509359"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s DocuSign
 
@@ -221,7 +221,7 @@ V této části udělíte B. Simon přístup k DocuSign, aby tento uživatel moh
        
        1. Zkopírujte **adresu URL služby vyhodnocení poskytovatele služby**a vložte ji do pole **Adresa URL odpovědi** v části **základní konfigurace SAML** v Azure Portal.
        
-       1. Zkopírujte **přihlašovací adresu URL poskytovatele služby**a pak ji vložte do pole **Adresa URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal.
+       1. Zkopírujte **přihlašovací adresu URL poskytovatele služby**a pak ji vložte do pole **Adresa URL pro přihlášení** v základní části **Konfigurace SAML** v Azure Portal. Na konci **přihlašovací adresy URL poskytovatele služeb** se zobrazí hodnota IDPID.
 
        1. Vyberte **Zavřít**.
 
@@ -238,7 +238,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu vyberete dlaždici DocuSign, měli byste se automaticky přihlásit k instanci DocuSign, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Kurzy týkající se integrace aplikací SaaS s Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -1,33 +1,33 @@
 ---
-title: Jak stahovat data poznámkových bloků (náhledu)
+title: Jak stahovat data poznámkových bloků (Preview)
 titleSuffix: ML Studio (classic) - Azure
-description: Jak stahovat data poznámkových bloků (náhledu) v ML Studio (classic).
+description: Jak stahovat data poznámkových bloků (Preview) v ML Studio (Classic)
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
-author: xiaoharper
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: a342ef86817f4f66a6e74b72b4d167fa548b6345
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8a1de4ceb42ac86d8f945ec973eaa52d6ddec736
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419183"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208461"
 ---
-# <a name="download-notebookspreview-data"></a>Stažení dat poznámkových bloků (náhledu)
+# <a name="download-notebookspreview-data"></a>Stáhnout data poznámkových bloků (Preview)
 
-Funkce Notebooky (preview) byla *odebrána 13.* Odebrání karty Poznámkové bloky (náhled) a soubory uživatelských poznámkových bloků se aktuálně zavádí do oblastí Azure po celém světě.
+Funkce poznámkových bloků (Preview) byla odebrána od *dubna 13 2020*. Odebrání karty poznámkových bloků (Preview) a uživatelských souborů poznámkového bloku se v současné době zavádí do oblastí Azure po celém světě.
 
-Tento článek obsahuje podrobné pokyny, jak stahovat data poznámkových bloků(náhledu).
+Tento článek poskytuje podrobné pokyny ke stažení dat poznámkových bloků (Preview).
 
-1. Přejděte na kartu **Poznámkové bloky** ve službě Azure Machine Learning Studio (klasická).
-    ![Přejděte na kartu Poznámkové bloky!](./media/download-notebooks/notebooks-list.png)
+1. Přejít na kartu **poznámkové bloky** v Azure Machine Learning Studio (Classic).
+    ![Přejděte na kartu poznámkové bloky!](./media/download-notebooks/notebooks-list.png)
 
-1. Vyberte poznámkový blok, který chcete stáhnout. Otevře se v Jupyteru.
-    ![Vyberte](./media/download-notebooks/select-notebook.png) poznámkový blok Stahování více poznámkových bloků najednou není podporováno.
+1. Vyberte Poznámkový blok, který chcete stáhnout. Otevře se v Jupyter.
+    ![Vyberte Poznámkový blok](./media/download-notebooks/select-notebook.png) , ve kterém stahování více poznámkových bloků najednou není podporované.
 
-1. Přejděte na **Soubory** -> **stáhnout jako**a vyberte možnost formátu.
-    ![Možnosti stahování poznámkového bloku](./media/download-notebooks/download-options.PNG)
+1. Přejít na **soubory** -> **Stáhnout jako**a vyberte možnost formát.
+    ![Možnosti stažení poznámkového bloku](./media/download-notebooks/download-options.PNG)
 
-1. Po výběru možnosti se soubor poznámkového bloku začne stahovat. Ignorujte všechny chyby 500 nebo 502, které se zobrazí, nebudou mít vliv na stahování.
+1. Po výběru možnosti se soubor poznámkového bloku začne stahovat. Ignorujte všechny chyby 500 nebo 502, které se zobrazí, nebudou mít vliv na váš soubor ke stažení.

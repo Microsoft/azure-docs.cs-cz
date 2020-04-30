@@ -1,0 +1,45 @@
+---
+title: Restart serveru – Azure PowerShell-Azure Database for MySQL
+description: Tento článek popisuje, jak můžete restartovat server Azure Database for MySQL pomocí prostředí PowerShell.
+author: ajlam
+ms.author: andrela
+ms.service: mysql
+ms.topic: conceptual
+ms.date: 4/28/2020
+ms.openlocfilehash: 3f49ea14d5737e9c55e7193c18a5fc2ac5922ec5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82230857"
+---
+# <a name="restart-azure-database-for-mysql-server-using-powershell"></a>Restartování serveru Azure Database for MySQL pomocí prostředí PowerShell
+
+Toto téma popisuje, jak můžete restartovat server Azure Database for MySQL. Možná budete muset restartovat server z důvodů údržby, což způsobí krátkou výpadky během operace.
+
+Pokud je služba zaneprázdněná, je restartování serveru blokované. Například služba může zpracovávat dříve požadovanou operaci, jako je například škálování virtuální jádra.
+
+Množství času potřebného k dokončení restartování závisí na procesu obnovení MySQL. Chcete-li zkrátit dobu restartování, doporučujeme, abyste minimalizovali množství aktivity, ke kterým došlo na serveru před restartováním.
+
+## <a name="prerequisites"></a>Požadavky
+
+K dokončení tohoto průvodce budete potřebovat:
+
+- [Modul AZ PowerShell](/powershell/azure/install-az-ps) nainstalovaný místně nebo [Azure Cloud Shell](https://shell.azure.com/) v prohlížeči
+- [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-powershell.md)
+
+> [!IMPORTANT]
+> I když je modul PowerShell AZ. MySql ve verzi Preview, musíte ho nainstalovat samostatně z modulu AZ PowerShellu pomocí následujícího příkazu: `Install-Module -Name Az.MySql -AllowPrerelease`.
+> Jakmile je modul PowerShellu AZ. MySql všeobecně dostupný, bude součástí budoucna k budoucímu AZ PowerShell Release releases a k dispozici nativně z Azure Cloud Shell.
+
+Pokud se rozhodnete použít prostředí PowerShell místně, připojte se k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) .
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+## <a name="restart-the-server"></a>Restartování serveru
+
+Restartujte server pomocí následujícího příkazu:
+
+```azurepowershell-interactive
+Restart-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
+```

@@ -1,40 +1,40 @@
 ---
 title: Použití Apache Hive jako nástroje ETL – Azure HDInsight
 description: Použijte Apache Hive k extrakci, transformaci a načítání dat (ETL) ve službě Azure HDInsight.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: be331f36a6305b05ce83a2b2d5fdfb73a154ce3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: c289892246cfce3ffac3f668577073a2af92511f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623122"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509546"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Použití Apache Hive jako nástroje pro extrakci, transformaci a načítání (ETL)
 
-Obvykle je nutné vyčistit a transformovat příchozí data před jejich načtením do cíle vhodného pro analýzu. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíle dat.  Apache Hive ve službě HDInsight může číst v nestrukturovaných datech, zpracovávat data podle potřeby a následně data načíst do relačního datového skladu pro systémy podpory rozhodování. V tomto přístupu se data extrahují ze zdroje a ukládají se do škálovatelného úložiště, například Azure Storage objektů BLOB nebo Azure Data Lake Storage. Data se pak transformují pomocí sekvence dotazů na podregistr a v rámci tohoto podregistru se nakonec připravují pro hromadné načítání do cílového úložiště dat.
+Obvykle je nutné vyčistit a transformovat příchozí data před jejich načtením do cíle vhodného pro analýzu. Operace extrakce, transformace a načítání (ETL) slouží k přípravě dat a jejich načtení do cíle dat.  Apache Hive ve službě HDInsight může číst v nestrukturovaných datech, zpracovávat data podle potřeby a následně data načíst do relačního datového skladu pro systémy podpory rozhodování. V tomto přístupu se data extrahují ze zdroje. Pak se uloží do přizpůsobivého úložiště, například Azure Storage objektů BLOB nebo Azure Data Lake Storage. Data se pak transformují pomocí posloupnosti dotazů na podregistr. Pak se v rámci podregistru připravil pro hromadné načítání do cílového úložiště dat.
 
 ## <a name="use-case-and-model-overview"></a>Přehled případu a modelu použití
 
-Následující obrázek ukazuje přehled případu použití a modelu pro automatizaci ETL. Vstupní data jsou transformovaná tak, aby vygenerovala příslušný výstup.  Během této transformace mohou data měnit tvar, datový typ a dokonce i jazyk.  Procesy ETL můžete převést na možnost britské na metriky, změnit časová pásma a zlepšit přesnost správného zarovnání se stávajícími daty v cíli.  Procesy ETL mohou také kombinovat nová data se stávajícími daty, aby bylo možné sestavy udržovat v aktualizovaném stavu, nebo poskytnout další přehled o stávajících datech.  Aplikace, jako jsou nástroje pro vytváření sestav a služby, pak mohou tato data spotřebovat v požadovaném formátu.
+Následující obrázek ukazuje přehled případu použití a modelu pro automatizaci ETL. Vstupní data jsou transformovaná tak, aby vygenerovala příslušný výstup.  Během této transformace se změní tvar, datový typ a dokonce i jazyk.  Procesy ETL můžete převést na možnost britské na metriky, změnit časová pásma a zlepšit přesnost správného zarovnání se stávajícími daty v cíli. Procesy ETL mohou také kombinovat nová data se stávajícími daty, aby bylo možné sestavy udržovat v aktualizovaném stavu, nebo poskytnout další přehled o stávajících datech. Aplikace, jako jsou nástroje pro vytváření sestav a služby, pak mohou tato data využívat v požadovaném formátu.
 
 ![Apache Hive jako architektura ETL](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop se obvykle používá v procesech ETL, které importují buď obrovské množství textových souborů (například CSV), nebo menší, často se měnící počet textových souborů nebo obojí.  Podregistr je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Podregistr umožňuje vytvořit schéma přes sdílený svazek clusteru a použít jazyk podobný SQL ke generování MapReduce programů, které pracují s daty.
+Hadoop se obvykle používá v procesech ETL, které importují buď obrovské množství textových souborů (například CSV). Nebo menší, ale často měnící se počet textových souborů nebo obojí.  Podregistr je skvělý nástroj, který slouží k přípravě dat před jejich načtením do cíle dat.  Podregistr umožňuje vytvořit schéma přes sdílený svazek clusteru a použít jazyk podobný SQL ke generování MapReduce programů, které pracují s daty.
 
-K provedení ETL jsou typické kroky pro použití podregistru:
+Mezi obvyklé kroky pro použití podregistru do ETL patří následující:
 
 1. Načte data do Azure Data Lake Storage nebo Azure Blob Storage.
 2. Vytvořte databázi úložiště metadat (pomocí Azure SQL Database), kterou použijete v podregistru při ukládání schémat.
 3. Vytvořte cluster HDInsight a připojte úložiště dat.
 4. Zadejte schéma, které se má použít pro dobu čtení dat v úložišti dat:
 
-    ```
+    ```hql
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
@@ -66,30 +66,28 @@ Zdroje dat jsou obvykle externí data, která se dají spárovat se stávající
 
 ## <a name="output-targets"></a>Cíle výstupu
 
-Můžete použít podregistr pro výstup dat do celé řady cílů, včetně:
+Můžete použít podregistr pro výstup dat do různých druhů cílů, včetně:
 
 * Relační databáze, například SQL Server nebo Azure SQL Database.
 * Datový sklad, například Azure SQL Data Warehouse.
 * Excel.
 * Azure Table a BLOB Storage.
 * Aplikace nebo služby, které vyžadují zpracování dat do konkrétních formátů nebo jako soubory, které obsahují určité typy informačních struktur.
-* Úložiště dokumentů JSON, jako je [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
+* Úložiště dokumentů JSON, jako je Azure Cosmos DB.
 
 ## <a name="considerations"></a>Požadavky
 
 Model ETL se obvykle používá, pokud chcete:
 
-* Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
-* Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
-* Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují. Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci. Pokud chcete automaticky spustit dotaz na podregistr, můžete použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) a PowerShell.
+`*`Načtěte data streamu nebo velké objemy částečně strukturovaných nebo nestrukturovaných dat z externích zdrojů do existující databáze nebo informačního systému.
+`*`Vyčistit, transformovat a ověřit data před jejich načtením, například pomocí více než jedné transformace projde clusterem.
+`*`Vygenerujte sestavy a vizualizace, které se pravidelně aktualizují. Například pokud sestava trvá příliš dlouho pro vygenerování během dne, můžete naplánovat, aby se sestava spouštěla v noci. Pokud chcete automaticky spustit dotaz na podregistr, můžete použít [Azure Logic Apps](../../logic-apps/logic-apps-overview.md) a PowerShell.
 
 Pokud cíl pro data není databáze, můžete vygenerovat soubor v příslušném formátu v rámci dotazu, například CSV. Tento soubor je pak možné importovat do aplikace Excel nebo Power BI.
 
-Pokud v rámci procesu ETL potřebujete spustit několik operací s daty, zvažte, jak je spravovat. Pokud jsou operace ovládány externím programem, nikoli jako pracovní postup v rámci řešení, je nutné rozhodnout, zda lze některé operace provádět paralelně, a zjistit, kdy se Každá úloha dokončí. Použití mechanismu pracovního postupu, jako je Oozie v rámci Hadoop, může být jednodušší než pokus o orchestraci sekvence operací pomocí externích skriptů nebo vlastních programů. Další informace o Oozie najdete v článku [orchestrace pracovních postupů a úloh](https://msdn.microsoft.com/library/dn749829.aspx).
+Pokud v rámci procesu ETL potřebujete spustit několik operací s daty, zvažte, jak je spravovat. V případě operací řízených externím programem, nikoli jako pracovní postup v rámci řešení, se rozhodněte, zda lze některé operace provádět paralelně. A ke zjištění, kdy se Každá úloha dokončí. Použití mechanismu pracovního postupu, jako je Oozie v rámci Hadoop, může být jednodušší než pokus o orchestraci sekvence operací pomocí externích skriptů nebo vlastních programů.
 
 ## <a name="next-steps"></a>Další kroky
 
 * [ETL ve velkém měřítku](apache-hadoop-etl-at-scale.md)
-* [Zprovoznění datového kanálu](../hdinsight-operationalize-data-pipeline.md)
-
-<!-- * [ETL Deep Dive](../hdinsight-etl-deep-dive.md) -->
+* [`Operationalize a data pipeline`](../hdinsight-operationalize-data-pipeline.md)

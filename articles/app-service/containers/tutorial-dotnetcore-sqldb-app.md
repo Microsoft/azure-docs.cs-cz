@@ -1,25 +1,25 @@
 ---
-title: 'Výuka: Linux ASP.NET jádro s SQL DB'
-description: Zjistěte, jak získat aplikaci Linux ASP.NET Core založenou na datech, která funguje ve službě Azure App Service, s připojením k databázi SQL.
+title: 'Kurz: ASP.NET Core pro Linux s SQL DB'
+description: Naučte se, jak získat datově řízenou ASP.NET Coreovou aplikaci pro Linux pracující v Azure App Service s připojením k SQL Database.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 7eed76a6d5272b6e4411497ad4e1d5dbc62b6252
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 5bd20f98b10989da0a66acbf45b99d724664cf5d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085891"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82208121"
 ---
-# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core a SQL Database ve službě Azure App Service na Linuxu
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Kurz: Vytvoření aplikace ASP.NET Core a SQL Database v Azure App Service v systému Linux
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Informace o nasazení ve službě App Service ve _Windows_najdete [v tématu Vytvoření aplikace .NET Core a SQL Database ve službě Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit nástroj na App Service ve _Windows_, přečtěte si téma [Vytvoření aplikace .net Core a SQL Database v Azure App Service](../app-service-web-tutorial-dotnetcore-sqldb.md).
 >
 
-[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. Tento kurz ukazuje, jak vytvořit aplikaci .NET Core a připojit ji k databázi SQL. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service v Linuxu.
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu se dozvíte, jak vytvořit aplikaci .NET Core a jak ji připojit k SQL Database. Po dokončení budete mít aplikaci .NET Core MVC spuštěnou ve službě App Service v Linuxu.
 
 ![aplikace spuštěná ve službě App Service v Linuxu](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
@@ -35,12 +35,12 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * [Nainstalovat Git](https://git-scm.com/).
-* [Instalace sady .NET Core SDK 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* [Nainstalovat .NET Core SDK 2,2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 
 ## <a name="create-local-net-core-app"></a>Vytvoření místní aplikace .NET Core
 
@@ -64,7 +64,7 @@ Ukázkový projekt obsahuje základní aplikaci CRUD (vytváření-čtení-aktua
 Spuštěním následujících příkazů nainstalujte požadované balíčky, spusťte operace migrace databáze a spusťte aplikaci.
 
 ```bash
-dotnet restore
+dotnet tool install -g dotnet-ef
 dotnet ef database update
 dotnet run
 ```
@@ -89,9 +89,9 @@ Jako databáze SQL se v tomto kurzu používá [Azure SQL Database](/azure/sql-d
 
 ### <a name="create-a-sql-database-logical-server"></a>Vytvoření logického serveru databáze SQL
 
-V prostředí cloudu vytvořte logický server [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) sql database s příkazem.
+V Cloud Shell vytvořte pomocí [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) příkazu SQL Database logický Server.
 
-Nahraďte * \<zástupný* symbol>název serveru jedinečným názvem databáze SQL. Tento název se používá jako součást koncového bodu databáze SQL (`<server-name>.database.windows.net`), takže název musí být jedinečný v rámci všech logických serverů v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků. Také nahraďte * \<db-uživatelské jméno>* a * \<db-password>* uživatelským jménem a heslem dle vašeho výběru. 
+Zástupný text * \<>název serveru* nahraďte *jedinečným* názvem SQL Database. Tento název se používá jako součást globálně jedinečného SQL Databaseho koncového bodu `<server-name>.database.windows.net`,. Platné znaky jsou `a` - `z` `0` -, `9`, `-`. Také nahraďte * \<DB-username>* a * \<DB-Password>* pomocí uživatelského jména a hesla podle svého výběru. 
 
 
 ```azurecli-interactive
@@ -102,7 +102,7 @@ Po vytvoření logického serveru databáze SQL se v rozhraní příkazového ř
 
 <pre>
 {
-  "administratorLogin": "sqladmin",
+  "administratorLogin": "&lt;db-username&gt;",
   "administratorLoginPassword": null,
   "fullyQualifiedDomainName": "&lt;server-name&gt;.database.windows.net",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/&lt;server-name&gt;",
@@ -126,6 +126,16 @@ Vytvoření [pravidla brány firewall na úrovni serveru služby Azure SQL Datab
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> Pravidlo brány firewall můžete dál omezit [použitím jenom odchozích IP adres, které vaše aplikace používá](../overview-inbound-outbound-ips.md#find-outbound-ips).
+>
+
+V Cloud Shell znovu spusťte příkaz, aby se povolil přístup z místního počítače, a to tak, že nahradíte * \<>adres IP-IP-Address* [vaší místní IP adresou IPv4](https://www.whatsmyip.org/).
+
+```azurecli-interactive
+az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+```
+
 ### <a name="create-a-database"></a>Vytvoření databáze
 
 Vytvořte na serveru databázi s [úrovní výkonu S0](../../sql-database/sql-database-service-tiers-dtu.md) pomocí příkazu [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create).
@@ -136,13 +146,78 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>Vytvoření připojovacího řetězce
 
-Nahraďte následující řetězec * \<>názvem serveru *, * \<db->username *a * \<>db-password,* které jste použili dříve.
+Pomocí [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) příkazu Získejte připojovací řetězec.
 
+```azurecli-interactive
+az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
-Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
-```
+
+Ve výstupu příkazu nahraďte * \<uživatelské jméno>* a * \<>hesla* přihlašovacími údaji správce databáze, které jste použili dříve.
 
 Toto je připojovací řetězec pro aplikaci .NET Core. Zkopírujte ho pro pozdější použití.
+
+### <a name="configure-app-to-connect-to-production-database"></a>Konfigurace aplikace pro připojení k provozní databázi
+
+V místním úložišti otevřete Startup.cs a vyhledejte následující kód:
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlite("Data Source=localdatabase.db"));
+```
+
+Nahraďte následujícím kódem.
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+```
+
+> [!IMPORTANT]
+> U produkčních aplikací, které se musí škálovat, postupujte podle osvědčených postupů při [použití migrace v produkčním](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)prostředí.
+> 
+
+### <a name="run-database-migrations-to-the-production-database"></a>Spuštění migrace databáze do provozní databáze
+
+Vaše aplikace se aktuálně připojuje k místní databázi SQLite. Teď, když jste nakonfigurovali Azure SQL Database, vytvořte novou migraci, abyste ji mohli cílit. 
+
+V kořenovém adresáři úložiště spusťte následující příkazy. * \<Řetězec Connection-String>* nahraďte připojovacím řetězcem, který jste vytvořili dříve.
+
+```
+# Delete old migrations
+rm Migrations -r
+# Recreate migrations
+dotnet ef migrations add InitialCreate
+
+# Set connection string to production database
+# PowerShell
+$env:ConnectionStrings:MyDbConnection="<connection-string>"
+# CMD (no quotes)
+set ConnectionStrings:MyDbConnection=<connection-string>
+# Bash
+export ConnectionStrings__MyDbConnection="<connection-string>"
+
+# Run migrations
+dotnet ef database update
+```
+
+### <a name="run-app-with-new-configuration"></a>Spustit aplikaci s novou konfigurací
+
+Teď, když jsou migrace databáze spuštěné v provozní databázi, otestujte aplikaci spuštěním:
+
+```
+dotnet run
+```
+
+V prohlížeči přejděte na `http://localhost:5000`. Vyberte odkaz **Vytvořit nový** a vytvořte několik položek _úkolů_. Vaše aplikace teď čte a zapisuje data do provozní databáze.
+
+Potvrďte své místní změny a pak je potvrďte do úložiště Git. 
+
+```bash
+git add .
+git commit -m "connect to SQLDB in Azure"
+```
+
+Teď jste připraveni nasadit svůj kód.
 
 ## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
 
@@ -162,94 +237,49 @@ V tomto kroku nasadíte aplikaci .NET Core připojenou k databázi SQL do služb
 
 ### <a name="configure-connection-string"></a>Konfigurace připojovacího řetězce
 
-Pokud chcete nastavit připojovací řetězce [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) pro vaši aplikaci Azure, použijte příkaz v Cloud Shellu. V následujícím příkazu * \< *nahraďte název aplikace>a parametr * \<>připojovacího řetězce* připojovacím řetězcem připojovacím řetězcem, který jste vytvořili dříve.
+K nastavení připojovacích řetězců pro aplikaci Azure použijte [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkaz v Cloud Shell. V následujícím příkazu nahraďte * \<název aplikace>* a také parametr * \<připojovacího řetězce>* připojovacím řetězcem, který jste vytvořili dříve.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
-V ASP.NET core můžete použít tento`MyDbConnection`pojmenovaný připojovací řetězec ( ) pomocí standardního vzoru, stejně jako jakýkoli připojovací řetězec zadaný v *souboru appsettings.json*. V tomto `MyDbConnection` případě je také definována v *appsettings.json*. Při spuštění ve službě App Service má připojovací řetězec definovaný ve službě App Service přednost před připojovacím řetězcem definovaným ve vašem *appsettings.json*. Kód používá hodnotu *appsettings.json* během místního vývoje a stejný kód používá hodnotu Služby aplikace při nasazení.
+V ASP.NET Core můžete použít tento pojmenovaný připojovací řetězec (`MyDbConnection`) pomocí standardního vzoru, jako je libovolný připojovací řetězec zadaný v souboru *appSettings. JSON*. V tomto případě `MyDbConnection` je také definováno v souboru *appSettings. JSON*. Při spuštění v App Service má připojovací řetězec definovaný v App Service přednost před připojovacím řetězcem definovaným v souboru *appSettings. JSON*. Kód používá hodnotu *appSettings. JSON* během místního vývoje a stejný kód používá App Service hodnota při nasazení.
 
-Informace o tom, jak se v kódu odkazuje na připojovací řetězec, naleznete v [tématu Připojení k databázi SQL v produkčním prostředí](#connect-to-sql-database-in-production).
-
-### <a name="configure-environment-variable"></a>Konfigurace proměnné prostředí
-
-Dále nastavte proměnnou `ASPNETCORE_ENVIRONMENT` aplikace na hodnotu _Production_. Toto nastavení vám umožní zjistit, jestli běžíte v Azure, protože pro místní vývojové prostředí a databázi SQL pro prostředí Azure používáte SQLite.
-
-Následující příklad konfiguruje `ASPNETCORE_ENVIRONMENT` nastavení aplikace v aplikaci Azure. Nahraďte zástupný symbol * \<názvu aplikace>.*
-
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
-```
-
-Informace o tom, jak se v kódu odkazuje na proměnnou prostředí, naleznete v [tématu Připojení k databázi SQL v produkčním prostředí](#connect-to-sql-database-in-production).
-
-### <a name="connect-to-sql-database-in-production"></a>Připojení k databázi SQL v produkčním prostředí
-
-V místním úložišti otevřete Startup.cs a vyhledejte následující kód:
-
-```csharp
-services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlite("Data Source=localdatabase.db"));
-```
-
-Nahraďte ho následujícím kódem, který používá proměnné prostředí, které jste nakonfigurovali dřív.
-
-```csharp
-// Use SQL Database if in Azure, otherwise, use SQLite
-if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
-else
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=MvcMovie.db"));
-
-// Automatically perform database migration
-services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
-```
-
-Pokud tento kód zjistí, že běží v produkčním prostředí (což označuje prostředí Azure), použije připojovací řetězec, který jste nakonfigurovali pro připojení k databázi SQL. Informace o tom, jak se přistupuje k nastavení aplikací ve službě App Service, najdete v [tématu Proměnné prostředí Accessu](configure-language-dotnetcore.md#access-environment-variables).
-
-Volání `Database.Migrate()` vám pomůže při spuštění v Azure, protože automaticky vytvoří databáze, které vaše aplikace .NET Core potřebuje, na základě konfigurace migrace.
-
-Uložte provedené změny a potom je potvrďte v úložišti Gitu.
-
-```bash
-git add .
-git commit -m "connect to SQLDB in Azure"
-```
+Pokud chcete zjistit, jak se na připojovací řetězec odkazuje v kódu, přečtěte si téma [Konfigurace aplikace pro připojení k provozní databázi](#configure-app-to-connect-to-production-database).
 
 ### <a name="push-to-azure-from-git"></a>Přenos z Gitu do Azure
 
-[!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
+[!INCLUDE [push-to-azure-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 <pre>
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+Enumerating objects: 273, done.
+Counting objects: 100% (273/273), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (175/175), done.
+Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
+Total 273 (delta 96), reused 259 (delta 88)
+remote: Resolving deltas: 100% (96/96), done.
+remote: Deploy Async
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
-remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Preparing deployment for commit id 'cccecf86c5'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
 remote: .
 remote: .
 remote: .
-remote: Finished successfully.
+remote: Done.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
  * [new branch]      master -> master
 </pre>
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 Přejděte do nasazené aplikace pomocí webového prohlížeče.
 
@@ -269,23 +299,18 @@ V tomto kroku provedete změnu schématu databáze a publikujete ji v Azure.
 
 ### <a name="update-your-data-model"></a>Aktualizace datového modelu
 
-Otevřete _Models\Todo.cs_ v editoru kódu. Do třídy `ToDo` přidejte následující vlastnost:
+Otevřete _modely/todo. cs_ v editoru kódu. Do třídy `ToDo` přidejte následující vlastnost:
 
 ```csharp
 public bool Done { get; set; }
 ```
 
-### <a name="run-code-first-migrations-locally"></a>Místní spuštění migrace Code First
+### <a name="rerun-database-migrations"></a>Znovu spustit migrace databáze
 
-Spuštěním několika příkazů aktualizujte místní databázi.
+Spusťte několik příkazů, abyste provedli aktualizace provozní databáze.
 
 ```bash
 dotnet ef migrations add AddProperty
-```
-
-Aktualizujte místní databázi:
-
-```bash
 dotnet ef database update
 ```
 
@@ -293,15 +318,15 @@ dotnet ef database update
 
 Proveďte v kódu několik změn, aby aplikace využívala vlastnost `Done`. Pro zjednodušení budete v tomto kurzu měnit jen zobrazení `Index` a `Create`, aby se vlastnost projevila v praxi.
 
-Otevřete _Controllers\TodosController.cs_.
+Otevřete _Controllers/TodosController. cs_.
 
-Najděte metodu `Create()` a přidejte vlastnosti `Done` do seznamu vlastností v atributu `Bind`. Po dokončení bude podpis vaší metody `Create()` vypadat podobně jako následující kód:
+Najděte metodu `Create([Bind("ID,Description,CreatedDate")] Todo todo)` a přidejte vlastnosti `Done` do seznamu vlastností v atributu `Bind`. Po dokončení bude podpis vaší metody `Create()` vypadat podobně jako následující kód:
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-Otevřete _Views\Todos\Create.cshtml_.
+Otevřete _zobrazení/TODO/vytvořit. cshtml_.
 
 V kódu Razor byste měli vidět prvek `<div class="form-group">` pro `Description`a pak další prvek `<div class="form-group">` pro `CreatedDate`. Přímo za tyto dva prvky přidejte další prvek `<div class="form-group">` pro `Done`:
 
@@ -315,7 +340,7 @@ V kódu Razor byste měli vidět prvek `<div class="form-group">` pro `Descripti
 </div>
 ```
 
-Otevřete _Views\Todos\Index.cshtml_.
+Otevřete _zobrazení/todoe/index. cshtml_.
 
 Vyhledejte prázdný prvek `<th></th>`. Přímo nad tento prvek přidejte následující kód Razor:
 
@@ -353,36 +378,52 @@ git commit -m "added done field"
 git push azure master
 ```
 
-`git push` Po dokončení přejděte do aplikace Azure a vyzkoušejte nové funkce.
+Až to bude hotové, přejděte do aplikace App Service a zkuste přidat položku úkoly **a vrátit se k ní.** `git push`
 
-![Aplikace Azure po první migraci kódu](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
+![Aplikace Azure po Code First migraci](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
-Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opětovném publikování aplikace .NET Core se neztratí existující data v databázi SQL. Migrace Entity Framework Core také změní jen datové schéma, ale existující data ponechá beze změny.
+Všechny vaše existující položky úkolů jsou nadále zobrazené. Při opětovném publikování ASP.NET Core aplikace nebudou ztracena stávající data v SQL Database. Migrace Entity Framework Core také změní jen datové schéma, ale existující data ponechá beze změny.
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
-Ukázkový projekt se již řídí pokyny v [ASP.NET základní protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) se dvěma změnami konfigurace:
+I když je aplikace ASP.NET Core spuštěná v Azure App Service, můžete získat protokoly konzoly, které budou směrované do Cloud Shell. Tímto způsobem můžete získat stejné diagnostické zprávy, které vám pomůžou ladit chyby aplikace.
 
-- Obsahuje odkaz `Microsoft.Extensions.Logging.AzureAppServices` na *do dotNetCoreSqlDb.csproj*.
-- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *Startup.cs*.
+Vzorový projekt již postupuje podle pokynů [ASP.NET Core protokolování v Azure](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider) se dvěma změnami konfigurace:
+
+- Obsahuje odkaz na `Microsoft.Extensions.Logging.AzureAppServices` v *DotNetCoreSqlDb. csproj*.
+- Volání `loggerFactory.AddAzureWebAppDiagnostics()` v *program.cs*.
+
+Chcete-li nastavit [úroveň protokolu](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level) ASP.NET Core v App Service `Information` na z výchozí úrovně `Error`, použijte [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) příkaz v Cloud Shell.
+
+```azurecli-interactive
+az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
+```
 
 > [!NOTE]
-> Úroveň protokolu projektu je nastavena na `Information` v *appsettings.json*.
->
+> Úroveň protokolu projektu je už nastavená na `Information` v souboru *appSettings. JSON*.
+> 
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+Chcete-li spustit streamování protokolů [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) , použijte příkaz v Cloud Shell.
 
-Další informace o přizpůsobení protokolů jádra ASP.NET naleznete [v tématu Protokolování ASP.NET jádra](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
+```azurecli-interactive
+az webapp log tail --name <app-name> --resource-group myResourceGroup
+```
+
+Po spuštění streamování protokolů aktualizujte aplikaci Azure v prohlížeči, abyste získali nějaký webový provoz. Teď se zobrazí protokoly konzoly směrované do terminálu. Pokud nevidíte protokoly konzoly okamžitě, podívejte se znovu za 30 sekund.
+
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C`.
+
+Další informace o přizpůsobení protokolů ASP.NET Core najdete v tématu věnovaném [přihlášení ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
 
 ## <a name="manage-your-azure-app"></a>Správa aplikace Azure
 
-Přejděte na [portál Azure](https://portal.azure.com) a podívejte se na aplikaci, kterou jste vytvořili.
+Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure Portal](https://portal.azure.com) .
 
-V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
 
-Ve výchozím nastavení se na portálu zobrazuje stránka **Přehled** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení se na portálu zobrazí stránka s **přehledem** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
 
@@ -401,12 +442,12 @@ Naučili jste se:
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal
 
-Přejdete k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS do aplikace.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS do aplikace](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
-Nebo se podívejte na další zdroje:
+Nebo si prohlédněte další zdroje informací:
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace ASP.NET Core](configure-language-dotnetcore.md)

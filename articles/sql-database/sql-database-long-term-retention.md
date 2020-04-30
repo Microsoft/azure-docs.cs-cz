@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380761"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508084"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>Azure SQL Database dlouhodobé uchovávání
 
@@ -84,8 +84,7 @@ Použití dlouhodobého uchovávání záloh s Azure SQL Database spravovanými 
 - **Omezená verze Public Preview** – Tato verze Preview je dostupná jenom pro předplatná EA a CSP a podléhá omezené dostupnosti.  
 - [**Jenom PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) – momentálně není dostupná žádná Azure Portal podpora. LTR musí být povoleno pomocí prostředí PowerShell. 
 
-Pokud chcete požádat o registraci, vytvořte [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/) pod tématem podpory **zálohování, obnovení a provozní kontinuita/dlouhodobé uchovávání záloh**.
-
+Pokud chcete požádat o registraci, vytvořte [lístek podpory Azure](https://azure.microsoft.com/support/create-ticket/). Pro typ problému vyberte technický problém, u služby zvolte SQL Database spravovaná instance a pro typ problému vyberte **zálohování, obnovení a kontinuitu podnikových/dlouhodobého uchovávání záloh**. Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat ve verzi Public Preview pro spravovanou instanci s omezením.
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurace dlouhodobého uchovávání záloh
 
@@ -93,7 +92,7 @@ Informace o tom, jak nakonfigurovat dlouhodobé uchovávání pomocí Azure Port
 
 ## <a name="restore-database-from-ltr-backup"></a>Obnovit databázi ze zálohy LTR
 
-Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohování na základě jeho časového razítka. Databázi můžete obnovit na jakýkoli existující server v rámci stejného předplatného, jako je původní databáze. Informace o tom, jak obnovit databázi ze zálohy LTR, pomocí Azure Portal nebo PowerShellu najdete v tématu [správa Azure SQL Database dlouhodobé uchovávání záloh](sql-database-long-term-backup-retention-configure.md).
+Chcete-li obnovit databázi z úložiště LTR, můžete vybrat konkrétní zálohování na základě jeho časového razítka. Databázi můžete obnovit na jakýkoli existující server v rámci stejného předplatného, jako je původní databáze. Informace o tom, jak obnovit databázi ze zálohy LTR, pomocí Azure Portal nebo PowerShellu najdete v tématu [správa Azure SQL Database dlouhodobé uchovávání záloh](sql-database-long-term-backup-retention-configure.md). Ve vaší žádosti prosím uveďte stav, který chcete zaregistrovat pro spravovanou instanci v části omezené verze Public Preview LTR.
 
 ## <a name="next-steps"></a>Další kroky
 

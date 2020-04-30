@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Migrace skupin z jedné doménové struktury do druhé | Dokumenty společnosti Microsoft'
+title: 'Azure AD Connect: Migrace skupin z jedné doménové struktury do druhé'
 description: Tento článek popisuje kroky potřebné k úspěšné migraci skupin z jedné doménové struktury do druhé pro Azure AD Connect.
 services: active-directory
 author: billmath
@@ -11,29 +11,31 @@ ms.date: 04/02/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602c60de392afbff18bc141605a936636e48dbfe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: da2328674fd601f2e04684e8a9af1ae242ff6106
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81729705"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229795"
 ---
-# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Migrace skupin z jedné doménové struktury do druhé pro Azure AD Connect
+# <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Migrace skupin z jedné doménové struktury na jinou pro Azure AD Connect
 
-Tento článek popisuje kroky potřebné k úspěšné migraci skupin z jedné doménové struktury do druhé tak, aby přenesené objekty skupiny odpovídaly existujícím objektům v cloudu.
+Tento článek popisuje, jak migrovat skupiny z jedné doménové struktury do druhé, aby migrované objekty skupiny odpovídaly existujícím objektům v cloudu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Azure AD Connect verze 1.5.18.0 nebo vyšší
-- Atribut Source Anchor je`mS-DS-ConsistencyGuid`
+- Azure AD Connect verze 1.5.18.0 nebo novější
+- Atribut zdrojového ukotvení nastavený na`mS-DS-ConsistencyGuid`
 
-Počínaje verzí 1.5.18.0 začala služba Azure AD Connect `mS-DS-ConsistencyGuid` podporovat použití pro skupiny. Pokud `mS-DS-ConsistencyGuid` je vybrán jako atribut zdrojové kotvy a hodnota je naplněna ve `mS-DS-ConsistencyGuid` službě AD, Azure AD Connect používá hodnotu jako immutableId. V opačném případě se `objectGUID`vrátí k používání . Upozorňujeme však, že Azure AD Connect **neodepíše** hodnotu atributu `mS-DS-ConsistencyGuid` ve službě AD.
+## <a name="migrate-groups"></a>Migrace skupin
 
-Během scénáře přesunu mezi doménovými strukturami, kdy se objekt skupiny přesouvá z jedné doménové struktury (řekněme F1) do jiné doménové struktury (řekněme F2), budeme muset zkopírovat hodnotu `mS-DS-ConsistencyGuid` (Pokud je přítomen) nebo `objectGUID` hodnotu z objektu v doménové struktuře F1 do `mS-DS-ConsistencyGuid` atributu objektu v F2. 
+Počínaje verzí 1.5.18.0 Azure AD Connect podporuje použití `mS-DS-ConsistencyGuid` atributu pro skupiny. Pokud se rozhodnete `mS-DS-ConsistencyGuid` jako atribut zdrojového ukotvení a hodnota se naplní ve službě Active Directory, Azure AD Connect použije hodnotu `mS-DS-ConsistencyGuid` jako `immutableId`. V opačném případě se vrátí k `objectGUID`použití. Všimněte si ale, že Azure AD Connect nezapisuje hodnotu zpět do `mS-DS-ConsistencyGuid` atributu ve službě Active Directory.
 
-Použijte následující skripty jako vodítko, abyste zjistili, jak můžete migrovat jednu skupinu z doménové struktury F1 do doménové struktury F2. Prosím, neváhejte použít jako vodítko k tomu migrace pro více skupin.
+Při přesunu mezi doménovými strukturami se při přesunu objektu skupiny z jedné doménové struktury (řekněte F1) do jiné doménové struktury (řekněme F2) musí zkopírovat buď `mS-DS-ConsistencyGuid` hodnotu (Pokud je přítomná), nebo `objectGUID` hodnotu z objektu v doménové struktuře F1 na `mS-DS-ConsistencyGuid` atribut objektu ve F2.
 
-Nejprve získáme `objectGUID` `mS-DS-ConsistencyGuid` a skupinový objekt v lese F1. Tyto atributy jsou exportovány do souboru CSV.
+Pomocí následujících skriptů se naučíte migrovat jednu skupinu z jedné doménové struktury do druhé. Tyto skripty můžete použít také jako vodítko pro migraci více skupin. Skripty používají název doménové struktury F1 pro zdrojovou doménovou strukturu a F2 pro cílovou doménovou strukturu.
+
+Nejprve získáme `objectGUID` a `mS-DS-ConsistencyGuid` objekt skupiny v doménové struktuře F1. Tyto atributy jsou exportovány do souboru CSV.
 ```
 <#
 DESCRIPTION
@@ -41,7 +43,7 @@ DESCRIPTION
 This script will take DN of a group as input.
 It then copies the objectGUID and mS-DS-ConsistencyGuid values along with other attributes of the given group to a CSV file.
 
-This CSV file can then be used as input to Export-Group script
+This CSV file can then be used as input to the Export-Group script.
 #>
 Param(
        [ValidateNotNullOrEmpty()]
@@ -81,15 +83,15 @@ $results | Export-Csv "$outputCsv" -NoTypeInformation
 
 ```
 
-Dále použijeme vygenerovaný výstupní soubor `mS-DS-ConsistencyGuid` CSV k razítkování atributu na cílovém objektu v doménové struktuře F2.
+V dalším kroku použijeme vygenerovaný výstupní soubor CSV k razítku `mS-DS-ConsistencyGuid` atributu cílového objektu v doménové struktuře F2:
 
 
 ```
 <#
 DESCRIPTION
 ============
-This script will take DN of a group as input and the CSV file that was generated by Import-Group script
-It copies either the objectGUID or mS-DS-ConsistencyGuid value from CSV file to the given object.
+This script will take DN of a group as input and the CSV file that was generated by the Import-Group script.
+It copies either the objectGUID or the mS-DS-ConsistencyGuid value from the CSV file to the given object.
 
 #>
 Param(
@@ -123,4 +125,4 @@ Set-ADGroup -Identity $dn -Replace @{'mS-DS-ConsistencyGuid'=$targetGuid} -Error
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).
+Přečtěte si další informace o [integraci místních identit s Azure Active Directory](whatis-hybrid-identity.md).

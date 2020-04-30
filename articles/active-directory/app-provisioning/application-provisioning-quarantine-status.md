@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 04/28/2020
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563c049bf3d1606e87db54e3b003dac987594610
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0355bb1c4255e6de4ed17d55097b7b22d6b37db6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154623"
+ms.locfileid: "82229897"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -33,7 +33,7 @@ V karanténě se frekvence přírůstkových cyklů postupně zkracuje na jeden 
 
 Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
   
-- V Azure Portal přejděte na **Azure Active Directory** > **podnikové aplikace** > &lt;*název*&gt; > **zřizování** a posuňte se na indikátor průběhu v dolní části.  
+- V Azure Portal přejděte na **Azure Active Directory** > **podnikové aplikace** > &lt;*název*&gt; > **zřizování** a Projděte si indikátor průběhu pro zprávu o karanténě.   
 
   ![Stavový řádek znázorňující stav karantény](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
@@ -51,7 +51,13 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Proč je moje aplikace v karanténě?
 
-Microsoft Graph požadavek na získání stavu úlohy zřizování zobrazuje následující důvod pro karanténu:
+|Popis|Doporučená akce|
+|---|---|
+|**Problém s dodržováním předpisů SCIM:** Byla vrácena odpověď HTTP/404 nenalezena místo očekávané odpovědi HTTP/200 OK. V tomto případě služba zřizování Azure AD odeslala žádost do cílové aplikace a obdržela neočekávanou odpověď.|Zkontrolujte část přihlašovací údaje správce, abyste viděli, jestli aplikace vyžaduje zadání adresy URL tenanta, a ujistěte se, že je adresa URL správná. Pokud se problém nezobrazuje, obraťte se prosím na vývojáře aplikace, aby se zajistilo, že je jejich služba kompatibilní s SCIM. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
+|**Neplatné přihlašovací údaje:** Při pokusu o autorizaci přístupu k cílové aplikaci jsme dostali odpověď z cílové aplikace, která indikuje, že zadané přihlašovací údaje jsou neplatné.|Přejděte do části přihlašovací údaje správce uživatelského rozhraní pro konfiguraci zřizování a znovu udělte přístup s platnými přihlašovacími údaji. Pokud je aplikace v galerii, Projděte si kurz konfigurace aplikace pro všechny další požadované kroky.|
+|**Duplicitní role:** Role importované z některých aplikací, jako je Salesforce a Zendesk, musí být jedinečné. |V Azure Portal přejděte na [manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) aplikace a odeberte duplicitní roli.|
+
+ Microsoft Graph požadavek na získání stavu úlohy zřizování zobrazuje následující důvod pro karanténu:
 
 - `EncounteredQuarantineException`označuje, že byly zadány neplatné přihlašovací údaje. Služba zřizování nemůže navázat spojení mezi zdrojovým systémem a cílovým systémem.
 

@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264385"
+ms.locfileid: "82229982"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webové přihlašování pomocí OpenID Connect v Azure Active Directory B2C
 
@@ -149,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 | tenant | Ano | Název vašeho tenanta Azure AD B2C |
 | politických | Ano | Tok uživatele, který se použil k získání autorizačního kódu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
-| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) se nedají bezpečně uložit tajné klíče klienta, threfore se v tomto toku nepoužívají. Pokud používáte tajný klíč klienta, pravidelně ho prosím změňte. |
+| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) nelze tajné klíče klienta bezpečně uložit, a proto se v tomto toku nepoužívají. Pokud používáte tajný klíč klienta, pravidelně ho prosím změňte. |
 | kód | Ano | Autorizační kód, který jste získali na začátku toku uživatele. |
 | grant_type | Ano | Typ grantu, který musí být `authorization_code` pro tok autorizačního kódu. |
 | redirect_uri | Ano | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
@@ -218,7 +218,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 | tenant | Ano | Název vašeho tenanta Azure AD B2C |
 | politických | Ano | Tok uživatele, který se použil k získání původního obnovovacího tokenu. V této žádosti nemůžete použít jiný tok uživatele. Přidejte tento parametr do řetězce dotazu, nikoli do těla příspěvku. |
 | client_id | Ano | ID aplikace, které [Azure Portal](https://portal.azure.com/) přiřazena k vaší aplikaci. |
-| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) se nedají bezpečně uložit tajné klíče klienta, threfore se pro toto volání nepoužívá. Pokud používáte tajný klíč klienta, pravidelně ho prosím změňte. |
+| client_secret | Ano, v Web Apps | Tajný klíč aplikace, který byl vygenerován v [Azure Portal](https://portal.azure.com/). Tajné klíče klienta se v tomto toku používají pro scénáře webové aplikace, kde může klient bezpečně uložit tajný klíč klienta. V případě scénářů nativních aplikací (veřejného klienta) nelze tajné klíče klienta bezpečně uložit, a proto se na toto volání nepoužívají. Pokud používáte tajný klíč klienta, pravidelně ho prosím změňte. |
 | grant_type | Ano | Typ grantu, který musí být obnovovacím tokenem pro tuto část toku autorizačního kódu. |
 | refresh_token | Ano | Původní obnovovací token, který byl získán v druhé části toku. `offline_access` Obor musí být použit jak v žádosti o autorizaci, tak na tokeny, aby mohl získat obnovovací token. |
 | redirect_uri | Ne | `redirect_uri` Parametr aplikace, ve které jste obdrželi autorizační kód. |
@@ -262,7 +262,7 @@ Chybové odpovědi vypadají jako:
 
 ## <a name="send-a-sign-out-request"></a>Odeslat žádost o odhlášení
 
-Pokud chcete uživatele podepsat z aplikace, nestačí vymazat soubory cookie aplikace nebo jinak ukončit relaci s uživatelem. Přesměrujte uživatele na Azure AD B2C, abyste se odhlásili. Pokud to neuděláte, uživatel může být schopný znovu ověřit vaši aplikaci, aniž by musel zadávat přihlašovací údaje znovu.
+Pokud chcete uživatele podepsat z aplikace, nestačí vymazat soubory cookie aplikace nebo jinak ukončit relaci s uživatelem. Přesměrujte uživatele na Azure AD B2C, abyste se odhlásili. Pokud to neuděláte, uživatel může být schopný znovu ověřit vaši aplikaci, aniž by musel zadávat přihlašovací údaje znovu. Další informace najdete v tématu [Azure AD B2C relace](session-overview.md).
 
 Pokud chcete uživatele odhlásit, přesměrujte uživatele na `end_session` koncový bod, který je uvedený v dokumentu metadat OpenID Connect popsaného výše:
 
@@ -283,6 +283,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 Po odhlášení se uživatel přesměruje na identifikátor URI zadaný v `post_logout_redirect_uri` parametru, a to bez ohledu na adresy URL odpovědi, které byly pro aplikaci zadané. Pokud se ale předává `id_token_hint` platnost, Azure AD B2C ověří, že hodnota `post_logout_redirect_uri` odpovídá jednomu z konfigurovaných identifikátorů URI přesměrování aplikace před provedením přesměrování. Pokud pro aplikaci nebyla nakonfigurovaná žádná odpovídající adresa URL odpovědi, zobrazí se chybová zpráva a uživatel nebude přesměrován.
 
-### <a name="external-identity-provider-sign-out"></a>Přihlášení k externímu zprostředkovateli identity
 
-Přesměrování uživatele na `end_session` koncový bod vymaže některé ze stavů jednotného přihlašování uživatele pomocí Azure AD B2C, ale nepodepisuje uživatele z relace IDP (sociální identity Provider). Pokud uživatel vybere stejný IDP během následného přihlášení, znovu se ověří bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.

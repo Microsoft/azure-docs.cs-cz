@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4bd9c64e1b9219f6752172d9dc518af71ad67e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268142"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231760"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné bez problémů používat v systémech Windows a Windows Server. Tento článek popisuje důležité informace o používání sdílené složky Azure s Windows a Windows Serverem.
@@ -21,33 +21,33 @@ Aby bylo možné používat sdílenou složku Azure mimo oblast Azure, ve které
 
 Sdílené složky Azure můžete používat v instalaci Windows na virtuálním počítači Azure nebo v místním prostředí. Následující tabulka uvádí, které verze operačního systému a v jakém prostředí podporují přístup ke sdíleným složkám:
 
-| Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Možnost připojit v místním prostředí |
+| Verze systému Windows        | Verze protokolu SMB | Možnost připojit na virtuálním počítači Azure | Místně připojit |
 |------------------------|-------------|-----------------------|-----------------------|
 | Windows Server 2019 | SMB 3.0 | Ano | Ano |
 | Windows 10<sup>1</sup> | SMB 3.0 | Ano | Ano |
-| Pololetní kanál Windows Server<sup>2</sup> | SMB 3.0 | Ano | Ano |
+| Půlroční kanál Windows serveru<sup>2</sup> | SMB 3.0 | Ano | Ano |
 | Windows Server 2016 | SMB 3.0 | Ano | Ano |
-| Windows 8.1 | SMB 3.0 | Ano | Ano |
+| Windows 8.1 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 R2 | SMB 3.0 | Ano | Ano |
 | Windows Server 2012 | SMB 3.0 | Ano | Ano |
-| Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
-| Systém Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Systém Windows 7<sup>3</sup> | SMB 2.1 | Ano | Ne |
+| Windows Server 2008 R2<sup>3</sup> | SMB 2.1 | Ano | Ne |
 
-<sup>1.</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
-<sup>2.</sup> Windows Server, verze 1809, 1903 a 1909.  
-<sup>3.</sup> Běžná podpora společnosti Microsoft pro systémy Windows 7 a Windows Server 2008 R2 byla ukončena. Další podporu pro aktualizace zabezpečení je možné zakoupit pouze prostřednictvím [programu Extended Security Update (ESU).](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates) Důrazně doporučujeme migraci z těchto operačních systémů.
+<sup>1</sup> Windows 10, verze 1507, 1607, 1709, 1803, 1809, 1903 a 1909.  
+<sup>2</sup> . Windows Server, verze 1809, 1903 a 1909.  
+<sup>3</sup> . Pravidelná podpora Microsoftu pro Windows 7 a Windows Server 2008 R2 skončila. Další podporu pro aktualizace zabezpečení je možné zakoupit jenom prostřednictvím [programu Extended Security Update (EVJ)](https://support.microsoft.com/help/4497181/lifecycle-faq-extended-security-updates). Důrazně doporučujeme tyto operační systémy migrovat.
 
 > [!Note]  
 > Vždy doporučujeme získat nejnovější aktualizaci KB pro vaši verzi systému Windows.
 
 ## <a name="prerequisites"></a>Požadavky 
-* **Název účtu úložiště**: Chcete-li připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
+* **Název účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat název účtu úložiště.
 
-* **Klíč účtu úložiště**: Chcete-li připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
+* **Klíč účtu úložiště**: Pokud chcete připojit sdílenou složku Azure, budete potřebovat primární (nebo sekundární) klíč úložiště. Klíče SAS aktuálně nejsou pro připojení podporovány.
 
-* **Zkontrolujte, že je otevřený port 445:** Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Můžete se [dozvědět o různých způsobech řešení blokovanéport 445 zde](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Zkontrolujte, že je otevřený port 445:** Protokol SMB vyžaduje otevřený port TCP 445. Pokud je port 445 zablokovaný, připojení selžou. Ke kontrole, jestli vaše brána firewall neblokuje port 445, můžete použít rutinu `Test-NetConnection`. Další informace o [různých způsobech blokovaného alternativního řešení najdete na portu 445](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
-    Následující kód PowerShellu předpokládá, že máte nainstalovaný modul Azure PowerShell, další informace najdete [v tématu Instalace modulu Azure PowerShell.](https://docs.microsoft.com/powershell/azure/install-az-ps) Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
+    Následující kód PowerShellu předpokládá, že máte nainstalovaný modul Azure PowerShell. Další informace najdete v tématu [instalace Azure PowerShell modulu](https://docs.microsoft.com/powershell/azure/install-az-ps) . Nezapomeňte nahradit `<your-storage-account-name>` a `<your-resource-group-name>` odpovídajícími názvy pro váš účet úložiště.
 
     ```powershell
     $resourceGroupName = "<your-resource-group-name>"
@@ -80,7 +80,7 @@ Sdílené složky Azure můžete používat v instalaci Windows na virtuálním 
 ## <a name="using-an-azure-file-share-with-windows"></a>Použití sdílené složky Azure s Windows
 Pokud chcete používat sdílenou složku Azure s Windows, musíte ji buď připojit, což znamená přiřadit jí písmeno jednotky nebo cestu k přípojnému bodu, nebo k ní přistupovat přes její [cestu UNC](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx). 
 
-Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná pracovali, jako jsou například sdílené složky SMB hostované na Windows Serveru, serveru Linux Samba nebo zařízení NAS, sdílené složky Azure v současné době nepodporují ověřování protokolu Kerberos pomocí identity Active Directory (AD) ani Azure Active Directory (AAD). Na této funkci však [pracujeme](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Místo toho musíte ke sdílené složce Azure přistupovat pomocí klíče účtu úložiště, ve kterém se sdílená složka nachází. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce pro všechny soubory a složky ve sdílené složce, ke které přistupujete, a pro všechny sdílené složky a další prostředky úložiště (objekty BLOB, fronty, tabulky atd.) v rámci vašeho účtu úložiště. Pokud to pro vaši úlohu není dostatečné, v přechodném období do veřejného zpřístupnění chybějícího ověřování protokolu Kerberos založeného na AAD a podpory ACL může tento nedostatek vyřešit [Synchronizace souborů Azure](storage-sync-files-planning.md).
+Na rozdíl od ostatních sdílených složek SMB, se kterými jste možná pracovali, jako jsou například sdílené složky SMB hostované na Windows Serveru, serveru Linux Samba nebo zařízení NAS, sdílené složky Azure v současné době nepodporují ověřování protokolu Kerberos pomocí identity Active Directory (AD) ani Azure Active Directory (AAD). Na této funkci však [pracujeme](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Místo toho musíte ke sdílené složce Azure přistupovat pomocí klíče účtu úložiště, ve kterém se sdílená složka nachází. Klíč účtu úložiště je klíč správce pro účet úložiště, včetně oprávnění správce ke všem souborům a složkám v rámci sdílené složky, ke které přistupujete, a ke všem sdíleným složkám a dalším prostředkům úložiště (objektům blob, frontám, tabulkám atd.) obsaženým v účtu úložiště. Pokud to pro vaši úlohu není dostatečné, v přechodném období do veřejného zpřístupnění chybějícího ověřování protokolu Kerberos založeného na AAD a podpory ACL může tento nedostatek vyřešit [Synchronizace souborů Azure](storage-sync-files-planning.md).
 
 Při migraci obchodních aplikací očekávajících sdílenou složku SMB metodou „lift and shift“ do Azure se jako alternativa k provozu vyhrazeného souborového serveru Windows na virtuálním počítači Azure běžně používá sdílená složka Azure. Jedním z důležitých aspektů úspěšné migrace obchodní aplikace, která má používat sdílenou složku Azure, je to, že řada obchodních aplikací se spouští v kontextu vyhrazeného účtu služby s omezenými systémovými oprávněními, a ne v kontextu účtu správce virtuálního počítače. Proto je potřeba zajistit připojení a uložení přihlašovacích údajů pro sdílenou složku Azure z kontextu účtu služby, a nikoli účtu správce.
 
@@ -126,7 +126,7 @@ Teď byste měli mít možnost připojit sdílenou složku nebo k ní získat p�
 #### <a name="advanced-cmdkey-scenarios"></a>Pokročilé scénáře s nástrojem cmdkey
 V případě nástroje cmdkey existují další dva scénáře, které byste měli zvážit: ukládání přihlašovacích údajů pro jiného uživatele (například k účtu služby) na počítači a ukládání přihlašovacích údajů na vzdáleném počítači s využitím vzdálené komunikace PowerShellu.
 
-Uložení přihlašovacích údajů pro jiného uživatele na počítači je velmi snadné: když jste přihlášeni ke svému účtu, stačí spustit následující příkaz PowerShellu:
+Uložení přihlašovacích údajů pro jiného uživatele v počítači je jednoduché: Pokud jste přihlášeni k účtu, stačí spustit následující příkaz PowerShellu:
 
 ```powershell
 $password = ConvertTo-SecureString -String "<service-account-password>" -AsPlainText -Force
@@ -139,7 +139,7 @@ Tím se otevře nové okno PowerShellu v kontextu uživatele vašeho účtu slu�
 Uložení přihlašovacích údajů na vzdáleném počítači s využitím vzdálené komunikace PowerShellu však není možné, protože nástroj cmdkey neumožňuje přístup ke svému úložišti přihlašovacích údajů, když je uživatel přihlášený přes vzdálenou komunikaci PowerShellu, a to ani za účelem jejich přidání. Doporučujeme přihlásit se k počítači pomocí [Vzdálené plochy](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windows).
 
 ### <a name="mount-the-azure-file-share-with-powershell"></a>Připojení sdílené složky Azure pomocí PowerShellu
-Spuštěním následujících příkazů v normální relaci PowerShellu (tj. bez zvýšených oprávnění) připojte sdílenou složku Azure. Nezapomeňte nahradit `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` a `<desired-drive-letter>` odpovídajícími údaji.
+Spusťte následující příkazy z běžné relace PowerShellu (nikoli vyšší) a připojte sdílenou složku Azure. Nezapomeňte nahradit `<your-resource-group-name>`, `<your-storage-account-name>`, `<your-file-share-name>` a `<desired-drive-letter>` odpovídajícími údaji.
 
 ```powershell
 $resourceGroupName = "<your-resource-group-name>"
@@ -182,30 +182,26 @@ Remove-PSDrive -Name <desired-drive-letter>
 
 1. Otevřete Průzkumníka souborů. Můžete to provést otevřením z nabídky Start nebo stisknutím klávesové zkratky Win+E.
 
-2. Přejděte na položku **Tento počítač** na levé straně okna. Tím se změní dostupné nabídky na pásu karet. V nabídce Počítač vyberte **Mapovat síťovou jednotku**.
+1. Na levé straně okna přejděte na položku **Tento počítač** . Tím se změní dostupné nabídky na pásu karet. V nabídce počítač vyberte **mapovat síťovou jednotku**.
     
     ![Snímek obrazovky s rozevírací nabídkou Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-3. Zkopírování cesty UNC z podokna **Připojit** na webu Azure Portal. 
-
-    ![Cesta UNC z podokna Připojit služby Soubory Azure](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
-
-4. Vyberte písmeno jednotky a zadejte cestu UNC. 
+1. Vyberte písmeno jednotky a zadejte cestu UNC, formát cesty UNC `<storageAccountName>.file.core.windows.net/<fileShareName>`. Například: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![Snímek obrazovky s dialogovým oknem Připojit síťovou jednotku](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
-5. Použijte název účtu úložiště s předponou `AZURE\` jako uživatelské jméno a klíč účtu úložiště jako heslo.
+1. Použijte název účtu úložiště s předponou `AZURE\` jako uživatelské jméno a klíč účtu úložiště jako heslo.
     
     ![Snímek obrazovky s dialogovým oknem Přihlašovací údaje k síti](./media/storage-how-to-use-files-windows/3_MountOnWindows10.png)
 
-6. Používejte sdílenou složku Azure, jak potřebujete.
+1. Používejte sdílenou složku Azure, jak potřebujete.
     
     ![Sdílená složka Azure je teď připojená](./media/storage-how-to-use-files-windows/4_MountOnWindows10.png)
 
-7. Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části **Umístění v síti** a vyberete **Odpojit**.
+1. Až budete připraveni sdílenou složku Azure odpojit, můžete to provést tak, že v Průzkumníku souborů kliknete pravým tlačítkem na položku sdílené složky v části **Umístění v síti** a vyberete **Odpojit**.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Přístup ke snímkům sdílené složky z Windows
-Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit z [webu Azure Portal](storage-how-to-use-files-portal.md), Azure [PowerShellu](storage-how-to-use-files-powershell.md)a [Azure CLI](storage-how-to-use-files-cli.md).
+Pokud jste ručně nebo automaticky prostřednictvím skriptu nebo služby jako Azure Backup pořídili snímek sdílené složky, můžete ve Windows zobrazit předchozí verze sdílené složky, adresáře nebo konkrétního souboru ze sdílené složky. Snímek sdílené složky můžete pořídit z [Azure Portal](storage-how-to-use-files-portal.md), [Azure POWERSHELL](storage-how-to-use-files-powershell.md)a [Azure CLI](storage-how-to-use-files-cli.md).
 
 #### <a name="list-previous-versions"></a>Výpis předchozích verzí
 Přejděte k položce nebo nadřazené položce, kterou je potřeba obnovit. Dvojím kliknutím přejděte do požadovaného adresáře. Klikněte pravým tlačítkem a v nabídce vyberte **Vlastnosti**.
@@ -222,6 +218,7 @@ Výběrem možnosti **Otevřít** můžete otevřít konkrétní snímek.
 
 #### <a name="restore-from-a-previous-version"></a>Obnovení z předchozí verze
 Výběrem možnosti **Obnovit** můžete rekurzivně zkopírovat obsah celého adresáře v době vytvoření snímku sdílené složky do původního umístění.
+
  ![Tlačítko Obnovit ve zprávě upozornění](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Zabezpečení Windows a Windows Serveru
@@ -237,13 +234,13 @@ Následující tabulka obsahuje podrobné informace o stavu protokolu SMB 1 v je
 | Windows Server 2016                       | Povoleno              | Odebrání pomocí funkce Windows |
 | Windows 10 verze 1507, 1607 a 1703 | Povoleno              | Odebrání pomocí funkce Windows |
 | Windows Server 2012 R2                    | Povoleno              | Odebrání pomocí funkce Windows | 
-| Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
+| Windows 8.1                               | Povoleno              | Odebrání pomocí funkce Windows | 
 | Windows Server 2012                       | Povoleno              | Zakázání pomocí registru       | 
 | Windows Server 2008 R2                    | Povoleno              | Zakázání pomocí registru       |
 | Windows 7                                 | Povoleno              | Zakázání pomocí registru       | 
 
 ### <a name="auditing-smb-1-usage"></a>Auditování využití protokolu SMB 1
-> Platí pro Windows Server 2019, Windows Server pololetní kanál (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
+> Platí pro Windows Server 2019, půlroční kanál Windows serveru (verze 1709 a 1803), Windows Server 2016, Windows 10 (verze 1507, 1607, 1703, 1709 a 1803), Windows Server 2012 R2 a Windows 8.1
 
 Před odebráním protokolu SMB 1 z vašeho prostředí možná budete chtít auditovat jeho využití, abyste zjistili, jestli tato změna nezpůsobí, že někteří klienti přestanou fungovat. Při provedení jakéhokoli požadavku na sdílené složky SMB s použitím protokolu SMB 1 se zaznamená událost auditu do protokolu auditu v části `Applications and Services Logs > Microsoft > Windows > SMBServer > Audit`. 
 
@@ -257,7 +254,7 @@ Set-SmbServerConfiguration –AuditSmb1Access $true
 ```
 
 ### <a name="removing-smb-1-from-windows-server"></a>Odebrání protokolu SMB 1 z Windows Serveru
-> Platí pro Windows Server 2019, Windows Server pololetní kanál (verze 1709 a 1803), Windows Server 2016, Windows Server 2012 R2
+> Platí pro Windows Server 2019, Windows Server-půlroční kanál (verze 1709 a 1803), Windows Server 2016, Windows Server 2012 R2
 
 Pokud chcete odebrat protokol SMB 1 z instance Windows Serveru, spusťte v relaci PowerShellu se zvýšenými oprávněními následující rutinu:
 

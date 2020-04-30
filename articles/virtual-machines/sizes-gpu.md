@@ -14,12 +14,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jonbeck
-ms.openlocfilehash: 7e1e0d488844a94bd0be2b91398678e620295729
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73a878d791997169b0823bb949e78bdced77cae6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77913578"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509682"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Velikosti virtuálních počítačů optimalizované pro GPU
 
@@ -35,11 +35,13 @@ Velikosti virtuálních počítačů optimalizované pro GPU jsou specializovan�
 
 ## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
-Aby bylo možné využít možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače GPU NVIDIA.
+Aby bylo možné využívat možnosti GPU pro virtuální počítače řady Azure N-Series, je nutné nainstalovat ovladače NVIDIA nebo AMD GPU.
 
 [Rozšíření ovladače NVIDIA GPU](/azure/virtual-machines/extensions/hpccompute-gpu-windows) nainstaluje vhodné ovladače NVIDIA CUDA nebo Grid na virtuální počítač řady N-Series. Nainstalujte nebo spravujte rozšíření pomocí Azure Portal nebo nástrojů, jako jsou šablony Azure PowerShell nebo Azure Resource Manager. Podporované operační systémy a kroky nasazení najdete v [dokumentaci k rozšíření ovladače GPU NVIDIA](/azure/virtual-machines/extensions/hpccompute-gpu-windows) . Obecné informace o rozšířeních virtuálních počítačů najdete v tématu [rozšíření a funkce virtuálních počítačů Azure](/azure/virtual-machines/extensions/overview).
 
 Pokud se rozhodnete nainstalovat ovladače GPU NVIDIA ručně, přečtěte si téma Instalace ovladače GPU [řady n-Series pro Windows](/azure/virtual-machines/windows/n-series-driver-setup) nebo [n-Series Setup Driver Setup pro Linux](/azure/virtual-machines/linux/n-series-driver-setup) pro podporované operační systémy, ovladače, instalace a postupy ověření.
+
+Chcete-li ručně nainstalovat ovladače AMD GPU, přečtěte si téma [instalace ovladače N-Series AMD GPU pro systém Windows](/azure/virtual-machines/windows/n-series-amd-driver-setup) pro podporované operační systémy, ovladače, instalace a postupy ověření.
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 

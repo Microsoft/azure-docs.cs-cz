@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: a3a81513773ef6d826ad354d47a3e7ec83e75d65
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106640"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82209124"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -40,12 +40,12 @@ K určité zóně taky můžete přidružit Azure Firewall jenom z důvodů blí
 
 Pro bránu firewall, která je nasazená v zóně dostupnosti, se neúčtují žádné další náklady. U příchozích a odchozích přenosů dat spojených s Zóny dostupnosti však existují další náklady. Další informace najdete v tématu [Podrobnosti o cenách šířky pásma](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují Zóny dostupnosti. Další informace najdete v tématu [co je zóny dostupnosti v Azure?](../availability-zones/az-overview.md#services-support-by-region)
+Azure Firewall Zóny dostupnosti jsou k dispozici v oblastech, které podporují Zóny dostupnosti. Další informace najdete v tématu [oblasti, které podporují zóny dostupnosti v Azure](../availability-zones/az-region.md) .
 
 > [!NOTE]
 > Zóny dostupnosti lze nakonfigurovat pouze během nasazování. Existující bránu firewall nemůžete nakonfigurovat tak, aby zahrnovala Zóny dostupnosti.
 
-Další informace o Zóny dostupnosti najdete v tématu [co jsou zóny dostupnosti v Azure?](../availability-zones/az-overview.md)
+Další informace o Zóny dostupnosti najdete v tématu [oblasti a zóny dostupnosti v Azure](../availability-zones/az-overview.md) .
 
 ## <a name="unrestricted-cloud-scalability"></a>Neomezená cloudová škálovatelnost
 

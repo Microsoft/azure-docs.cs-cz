@@ -4,12 +4,12 @@ description: Informace o tom, jaké porty a adresy se vyžadují k řízení odc
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183921"
+ms.locfileid: "82207169"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Řízení přenosů dat pro uzly clusteru ve službě Azure Kubernetes (AKS)
 
@@ -165,19 +165,15 @@ Pro clustery AKS s povoleným Azure Policy jsou vyžadována následující pln�
 | *. GK. \<location\>. azmk8s.IO | HTTPS: 443    | Azure Policy doplněk, který mluví s koncovým bodem auditu serveru gatekeeper spuštěným na hlavním serveru, aby získal výsledky auditu. |
 | dc.services.visualstudio.com | HTTPS: 443 | Azure Policy doplněk, který odesílá data telemetrie do koncového bodu Application Insights. |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>Vyžadované uzly na bázi Windows serveru (ve verzi Public Preview) povolené
+## <a name="required-by-windows-server-based-nodes-enabled"></a>Vyžadované uzly založené na systému Windows Server povoleny
 
-> [!CAUTION]
-> Některé z následujících funkcí jsou ve verzi Preview.  Návrhy v tomto článku se můžou změnit, protože funkce se přesouvá do fází Public Preview a budoucích verzí.
-
-Pro clustery AKS založené na Windows serveru jsou potřeba následující plně kvalifikovaný název domény nebo pravidla použití:
+Pro použití fondů uzlů na bázi Windows serveru jsou potřeba následující plně kvalifikovaný název domény nebo pravidla použití:
 
 | FQDN                                    | Port      | Použití      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net, winlayers.blob.core.windows.net, winlayers.cdn.mscr.io, go.microsoft.com | HTTPS: 443 | Instalace binárních souborů souvisejících s Windows |
 | mp.microsoft.com, www<span></span>. msftconnecttest.com, ctldl.windowsupdate.com | HTTP: 80 | Instalace binárních souborů souvisejících s Windows |
 | kms.core.windows.net | TCP: 1688 | Instalace binárních souborů souvisejících s Windows |
-
 
 ## <a name="next-steps"></a>Další kroky
 

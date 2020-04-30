@@ -1,67 +1,67 @@
 ---
-title: Doporučené postupy pro zabezpečení clusteru
+title: Osvědčené postupy pro zabezpečení clusteru
 titleSuffix: Azure Kubernetes Service
-description: Seznamte se s doporučenými postupy pro operátorclusteru, jak spravovat zabezpečení clusteru a upgrady ve službě Azure Kubernetes Service (AKS).
+description: Seznamte se s osvědčenými postupy pro postup správy zabezpečení a upgradů clusteru ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 3d4e8577116ba1d78aaa881887f64e71c04af4f2
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80668334"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208087"
 ---
-# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Doporučené postupy pro zabezpečení clusteru a upgrady ve službě Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 
-Při správě clusterů ve službě Azure Kubernetes Service (AKS) je zabezpečení vašich úloh a dat klíčovým aspektem. Zejména při spuštění clusterů s více tenanty pomocí logické izolace, je třeba zabezpečit přístup k prostředkům a úlohám. Chcete-li minimalizovat riziko útoku, musíte také použít nejnovější aktualizace zabezpečení Kubernetes a node OS.
+Při správě clusterů ve službě Azure Kubernetes Service (AKS) je důležité zvážit zabezpečení vašich úloh a dat. Zvláště když spouštíte víceklientské clustery s využitím logické izolace, musíte zabezpečit přístup k prostředkům a úlohám. Abyste minimalizovali riziko útoku, musíte také zajistit, abyste použili nejnovější aktualizace zabezpečení operačního systému Kubernetes a Node.
 
 Tento článek se zaměřuje na zabezpečení clusteru AKS. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Použití Azure Active Directory a ovládacích prvků přístupu založených na rolích k zabezpečení přístupu k serveru API
-> * Zabezpečený přístup kontejneru k prostředkům uzlu
+> * Přístup k zabezpečení serveru API pomocí Azure Active Directory a řízení přístupu na základě rolí
+> * Zabezpečený přístup k prostředkům uzlů v kontejneru
 > * Upgrade clusteru AKS na nejnovější verzi Kubernetes
-> * Udržovat uzly aktuální a automaticky používat opravy zabezpečení
+> * Udržování uzlů v aktuálním stavu a automatické použití oprav zabezpečení
 
-Můžete si také přečíst osvědčené postupy pro [správu image kontejneru][best-practices-container-image-management] a pro [zabezpečení podu][best-practices-pod-security].
+Můžete si také přečíst osvědčené postupy pro [správu imagí kontejnerů][best-practices-container-image-management] a pro [zabezpečení pod][best-practices-pod-security].
 
-Můžete také použít [azure kubernetes services integrace s Security Center][security-center-aks] pomoci odhalit hrozby a zobrazit doporučení pro zabezpečení clusterů AKS.
+[Integraci služeb Azure Kubernetes Services s Security Center][security-center-aks] můžete také využít k detekci hrozeb a zobrazení doporučení pro zabezpečení clusterů AKS.
 
-## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Zabezpečený přístup k uzlem serveru api a clusteru
+## <a name="secure-access-to-the-api-server-and-cluster-nodes"></a>Zabezpečený přístup k serveru rozhraní API a uzlům clusteru
 
-**Pokyny pro osvědčené postupy** – zabezpečení přístupu k serveru Api-Server Kubernetes je jednou z nejdůležitějších věcí, které můžete udělat pro zabezpečení clusteru. Integrujte řízení přístupu na základě rolí Kubernetes (RBAC) s Azure Active Directory a řidíte přístup k serveru API. Tyto ovládací prvky umožňují zabezpečit AKS stejným způsobem, jakým zabezpečete přístup k vašim předplatným Azure.
+**Pokyny k osvědčeným postupům** – zabezpečení přístupu k rozhraní Kubernetes API – Server je jedním z nejdůležitějších věcí, které můžete provést pro zabezpečení clusteru. Integrujte Kubernetes řízení přístupu na základě role (RBAC) s Azure Active Directory k řízení přístupu k serveru rozhraní API. Tyto ovládací prvky vám umožní zabezpečit AKS stejným způsobem jako při zabezpečení přístupu k předplatným Azure.
 
-Server rozhraní API Kubernetes poskytuje jeden bod připojení pro požadavky k provádění akcí v rámci clusteru. Chcete-li zabezpečit a auditovat přístup k serveru rozhraní API, omezte přístup a poskytněte požadovaná nejméně privilegovaná přístupová oprávnění. Tento přístup není jedinečný pro Kubernetes, ale je obzvláště důležité, když cluster AKS je logicky izolované pro použití více klienty.
+Server Kubernetes API poskytuje jeden spojovací bod pro požadavky na provádění akcí v rámci clusteru. Pokud chcete zabezpečit a auditovat přístup k serveru rozhraní API, omezte přístup a poskytněte minimální požadovaná oprávnění přístupu. Tento přístup není jedinečný pro Kubernetes, ale je obzvláště důležitý, když je cluster AKS logicky izolovaný pro víceklientské použití.
 
-Azure Active Directory (AD) poskytuje řešení pro správu identit připravené pro podniky, které se integruje s clustery AKS. Vzhledem k tomu, že Kubernetes neposkytuje řešení správy identit, může být jinak obtížné poskytnout podrobný způsob, jak omezit přístup k serveru rozhraní API. S clustery integrované s Azure AD v AKS, můžete použít stávající uživatelské a skupinové účty k ověření uživatelů na serveru rozhraní API.
+Azure Active Directory (AD) poskytuje řešení pro správu identit připravené na podnik, které se integruje s clustery AKS. Vzhledem k tomu, že Kubernetes neposkytuje řešení pro správu identit, může jinak být obtížné poskytnout podrobný způsob, jak omezit přístup k serveru rozhraní API. S integrovanými clustery Azure AD v AKS můžete použít stávající účty uživatelů a skupin k ověřování uživatelů na serveru rozhraní API.
 
 ![Integrace Azure Active Directory pro clustery AKS](media/operator-best-practices-cluster-security/aad-integration.png)
 
-K zabezpečení serveru API pomocí Kubernetes RBAC a integrace Azure AD zajistěte server rozhraní API a zadejte nejmenší počet oprávnění požadovaných pro sadu prostředků s vymezeným oborem, jako je například jeden obor názvů. Různým uživatelům nebo skupinám ve službě Azure AD mohou být uděleny různé role RBAC. Tato podrobná oprávnění umožňují omezit přístup k serveru rozhraní API a poskytují jasnou stopu auditu provedených akcí.
+Použijte Kubernetes RBAC a Azure AD – Integration Server rozhraní API a poskytněte minimální počet oprávnění vyžadovaných pro množinu prostředků, jako je například jeden obor názvů. Různým uživatelům nebo skupinám ve službě Azure AD se dají udělit různé role RBAC. Tato podrobná oprávnění umožňují omezit přístup k serveru rozhraní API a poskytnout jasný záznam pro audit provedených akcí.
 
-Doporučeným osvědčeným postupem je použití skupin k poskytování přístupu k souborům a složkám versus jednotlivým identitám, použití členství *ve skupinách* Azure AD k navázání uživatelů na role RBAC spíše než na jednotlivé *uživatele*. Při změně členství ve skupině uživatele by se odpovídajícím způsobem změnila jejich přístupová oprávnění v clusteru AKS. Pokud svážete uživatele přímo s rolí, může se jeho pracovní funkce změnit. Členství ve skupinách Azure AD by se aktualizovalo, ale oprávnění v clusteru AKS by to neodrážela. V tomto scénáři uživatel i nadále udělena více oprávnění, než uživatel vyžaduje.
+Doporučený postup je použít skupiny k poskytnutí přístupu k souborům a složkám proti jednotlivým identitám. členství ve *skupině* Azure AD můžete použít ke svázání uživatelů s rolemi RBAC, nikoli jednotlivými *uživateli*. Jako změny členství ve skupinách uživatelů se jejich přístupová oprávnění v clusteru AKS mění odpovídajícím způsobem. Pokud uživatele svážete přímo s rolí, může se změnit jeho funkce úlohy. Členství ve skupině Azure AD by se aktualizovalo, ale oprávnění v clusteru AKS to nereflektují. V tomto scénáři se uživateli ukončí udělování dalších oprávnění, než kolik jich uživatel vyžaduje.
 
-Další informace o integraci Azure AD a RBAC, najdete [v tématu Doporučené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
+Další informace o integraci a RBAC služby Azure AD najdete v tématu [osvědčené postupy pro ověřování a autorizaci v AKS][aks-best-practices-identity].
 
-## <a name="secure-container-access-to-resources"></a>Zabezpečený přístup kontejneru k prostředkům
+## <a name="secure-container-access-to-resources"></a>Zabezpečený přístup k prostředkům kontejneru
 
-**Pokyny pro osvědčené postupy** – omezte přístup k akcím, které mohou kontejnery provádět. Zadejte nejmenší počet oprávnění a vyhněte se použití kořenové / privilegované eskalace.
+**Doprovodné materiály k osvědčeným postupům** – omezení přístupu k akcím, které mohou kontejnery provádět. Zadejte nejnižší počet oprávnění a vyhněte se použití kořenového/privilegovaného eskalace.
 
-Stejným způsobem, že byste měli udělit uživatelům nebo skupiny nejmenší počet požadovaných oprávnění, kontejnery by měly být také omezeny pouze na akce a procesy, které potřebují. Chcete-li minimalizovat riziko útoku, nekonfigurujte aplikace a kontejnery, které vyžadují eskalovaná oprávnění nebo root přístup. Například nastavit `allowPrivilegeEscalation: false` v pod manifestu. Tyto *kontexty zabezpečení podu* jsou integrovány do Kubernetes a umožňují definovat další oprávnění, jako je například uživatel nebo skupina spustit jako nebo jaké linuxové schopnosti vystavit. Další doporučené postupy naleznete v [tématu Zabezpečený pod přístup k prostředkům][pod-security-contexts].
+Stejným způsobem, jako byste měli udělit uživatelům nebo skupinám nejmenší počet požadovaných oprávnění, by měly být kontejnery také omezené jenom na akce a procesy, které potřebují. Chcete-li minimalizovat riziko útoku, nekonfigurujte aplikace a kontejnery, které vyžadují zvýšení oprávnění nebo root Access. Například nastavte `allowPrivilegeEscalation: false` v manifestu pod. Tyto položky *zabezpečení* jsou integrovány do Kubernetes a umožňují definovat další oprávnění, jako je například uživatel nebo skupina, které se mají spustit jako nebo jaké možnosti systému Linux mají být vystavení. Další doporučené postupy najdete v tématu [zabezpečení pod přístupem k prostředkům][pod-security-contexts].
 
-Pro podrobnější kontrolu akcí kontejneru můžete také použít integrované funkce zabezpečení Linuxu, jako je *AppArmor* a *seccomp*. Tyto funkce jsou definovány na úrovni uzlu a pak implementovány prostřednictvím manifestu pod. Vestavěné funkce zabezpečení Linuxu jsou k dispozici pouze na linuxových uzlech a podech.
+Pro podrobnější kontrolu nad akcemi kontejneru můžete použít také integrované funkce zabezpečení pro Linux, jako je *AppArmor* a *seccomp*. Tyto funkce jsou definovány na úrovni uzlu a následně implementovány prostřednictvím manifestu pod. Integrované funkce zabezpečení pro Linux jsou dostupné jenom v uzlech a luskech systému Linux.
 
 > [!NOTE]
-> Prostředí Kubernetes v AKS nebo jinde nejsou zcela bezpečná pro nepřátelské použití s více tenanty. Další funkce zabezpečení, jako je *Například AppArmor*, *seccomp*, *Pod zásady zabezpečení*nebo více jemně odstupňované ovládací prvky přístupu na základě rolí (RBAC) pro uzly ztížit zneužití. Pro skutečné zabezpečení při spuštění nepřátelských úloh s více klienty je však hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se stane celým clusterem, nikoli jednotlivým uzlem. Pro tyto typy nepřátelských víceklientských úloh byste měli použít fyzicky izolované clustery.
+> Prostředí Kubernetes, v AKS nebo jinde, nejsou zcela bezpečná pro nepřátelský využití více tenantů. Další funkce zabezpečení, jako jsou *AppArmor*, *seccomp*, *pod, zásady zabezpečení*nebo podrobnější řízení přístupu na základě rolí (RBAC) pro uzly, se obtížně využívají. Pro skutečné zabezpečení při spouštění nepřátelských úloh s více klienty však je hypervisor jedinou úrovní zabezpečení, které byste měli důvěřovat. Doména zabezpečení pro Kubernetes se bude nacházet v celém clusteru, nikoli v jednotlivých uzlech. U těchto typů nepřátelských úloh s více klienty byste měli použít fyzicky izolované clustery.
 
-### <a name="app-armor"></a>Brnění aplikace
+### <a name="app-armor"></a>Obraně aplikace
 
-Chcete-li omezit akce, které kontejnery mohou provádět, můžete použít modul zabezpečení jádra [AppArmor][k8s-apparmor] Linux. AppArmor je k dispozici jako součást základního operačního systému uzlu AKS a je ve výchozím nastavení povolen. Můžete vytvořit Profily AppArmor, které omezují akce, jako je čtení, zápis nebo spuštění nebo systémové funkce, jako je například připojení souborových systémů. Výchozí profily AppArmor `/proc` omezují `/sys` přístup k různým a umístěním a poskytují prostředky k logickému izolátu kontejnerů od základního uzlu. AppArmor funguje pro všechny aplikace, které běží na Linuxu, a to nejen Kubernetes lusky.
+K omezení akcí, které mohou kontejnery provádět, můžete použít modul zabezpečení jádra systému [AppArmor][k8s-apparmor] Linux. AppArmor je k dispozici jako součást základního operačního systému AKS node a je ve výchozím nastavení povolená. Vytvoříte profily AppArmor, které omezují akce, jako jsou čtení, zápis nebo spouštění nebo systémové funkce, jako jsou třeba montážní systémy. Výchozí profily AppArmor omezují přístup k různým `/proc` `/sys` umístěním a poskytují prostředky pro logickou izolaci kontejnerů z podkladového uzlu. AppArmor funguje pro všechny aplikace, které běží na Linux, nejen Kubernetes lusky.
 
-![Profily AppArmor, které se používají v clusteru AKS k omezení akcí kontejnerů](media/operator-best-practices-container-security/apparmor.png)
+![AppArmor profily používané v clusteru AKS k omezení akcí kontejneru](media/operator-best-practices-container-security/apparmor.png)
 
-Chcete-li zobrazit AppArmor v akci, následující příklad vytvoří profil, který brání zápisu do souborů. [SSH][aks-ssh] do uzlu AKS, potom vytvořte soubor s názvem *deny-write.profile* a vložte následující obsah:
+Chcete-li zobrazit AppArmor v akci, následující příklad vytvoří profil, který zabrání v zápisu do souborů. [SSH][aks-ssh] na uzel AKS a pak vytvořte soubor s názvem *Deny-Write. Profile* a vložte následující obsah:
 
 ```
 #include <tunables/global>
@@ -74,15 +74,15 @@ profile k8s-apparmor-example-deny-write flags=(attach_disconnected) {
 }
 ```
 
-Profily AppArmor jsou `apparmor_parser` přidány pomocí příkazu. Přidejte profil do AppArmor a zadejte název profilu vytvořeného v předchozím kroku:
+Profily AppArmor se přidávají pomocí `apparmor_parser` příkazu. Přidejte profil do AppArmor a zadejte název profilu, který jste vytvořili v předchozím kroku:
 
 ```console
 sudo apparmor_parser deny-write.profile
 ```
 
-Neexistuje žádný výstup vrácena, pokud je profil správně analyzována a použita apparmor. Jste vráceni do příkazového řádku.
+Pokud se profil správně analyzuje a použije na AppArmor, nevrátí se žádný výstup. Budete vráceni do příkazového řádku.
 
-Z místního počítače nyní vytvořte manifest pod s názvem *aks-apparmor.yaml* a vložte následující obsah. Tento manifest definuje poznámku `container.apparmor.security.beta.kubernetes` pro přidání odkazů profilu *odepření a zápisu* vytvořeného v předchozích krocích:
+Z místního počítače teď vytvořte manifest pod názvem *AKS-AppArmor. yaml* a vložte následující obsah. Tento manifest definuje anotaci pro `container.apparmor.security.beta.kubernetes` přidání odkazů na profil pro *odepření a zápis* vytvořený v předchozích krocích:
 
 ```yaml
 apiVersion: v1
@@ -98,13 +98,13 @@ spec:
     command: [ "sh", "-c", "echo 'Hello AppArmor!' && sleep 1h" ]
 ```
 
-Nasazení ukázkového podu pomocí příkazu [kubectl apply:][kubectl-apply]
+Nasaďte ukázku pomocí příkazu [kubectl Apply][kubectl-apply] :
 
 ```console
 kubectl apply -f aks-apparmor.yaml
 ```
 
-S nasazeným modulem zapisujte příkaz [kubectl exec][kubectl-exec] k zápisu do souboru. Příkaz nelze provést, jak je znázorněno v následujícím příkladu výstupu:
+Po nasazení pod nasazeným příkazem použijte příkaz [kubectl exec][kubectl-exec] k zápisu do souboru. Příkaz nelze provést, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ kubectl exec hello-apparmor touch /tmp/test
@@ -113,13 +113,13 @@ touch: /tmp/test: Permission denied
 command terminated with exit code 1
 ```
 
-Další informace o AppArmor, viz [AppArmor profily v Kubernetes][k8s-apparmor].
+Další informace o AppArmor najdete v tématu [profily AppArmor v Kubernetes][k8s-apparmor].
 
-### <a name="secure-computing"></a>Bezpečná výpočetní technika
+### <a name="secure-computing"></a>Zabezpečené výpočetní prostředí
 
-Zatímco AppArmor funguje pro jakoukoli aplikaci Linux, [seccomp *(sec*ure *comp*uting)][seccomp] funguje na úrovni procesu. Seccomp je také modul zabezpečení jádra Linuxu a je nativně podporován modulem Docker runtime používaným uzly AKS. S seccomp volání procesu, který kontejnery lze provádět jsou omezené. Vytvoříte filtry, které definují, jaké akce povolit nebo odepřít a pak pomocí poznámky v rámci pod YAML manifest udrhnutí s filtrem seccomp. To je zarovnán s osvědčeným postupem pouze udělení kontejneru minimální oprávnění, která jsou potřeba ke spuštění a žádné další.
+I když AppArmor funguje pro libovolnou aplikaci pro Linux, na úrovni procesu funguje [seccomp (*sec*urovat *comp*uting)][seccomp] . Seccomp je také modul zabezpečení jádra pro Linux a nativně se podporuje za běhu Docker, který používají uzly AKS. V seccomp proces volá tyto kontejnery, které mohou být provedeny. Vytvoříte filtry, které definují akce, které se mají povolit nebo zakázat, a pak pomocí poznámek v rámci manifestu pod YAML přiřadíte k filtru seccomp. To je v souladu s osvědčeným postupem pouze pro udělení minimálních oprávnění, která jsou potřeba ke spuštění, a žádné další.
 
-Chcete-li zobrazit seccomp v akci, vytvořte filtr, který zabrání změně oprávnění k souboru. [SSH][aks-ssh] do uzlu AKS, vytvořte filtr seccomp s názvem */var/lib/kubelet/seccomp/prevent-chmod* a vložte následující obsah:
+Chcete-li zobrazit seccomp v akci, vytvořte filtr, který zabrání změně oprávnění k souboru. [SSH][aks-ssh] na uzel AKS a pak vytvořte filtr seccomp s názvem */var/lib/kubelet/seccomp/Prevent-chmod* a vložte následující obsah:
 
 ```
 {
@@ -133,7 +133,7 @@ Chcete-li zobrazit seccomp v akci, vytvořte filtr, který zabrání změně opr
 }
 ```
 
-Z místního počítače nyní vytvořte manifest pod s názvem *aks-seccomp.yaml* a vložte následující obsah. Tento manifest definuje poznámku `seccomp.security.alpha.kubernetes.io` a odkazuje na filtr *prevent-chmod* vytvořený v předchozím kroku:
+Z místního počítače teď vytvořte manifest pod názvem *AKS-seccomp. yaml* a vložte následující obsah. Tento manifest definuje anotaci pro `seccomp.security.alpha.kubernetes.io` a odkazuje na filtr *prevence – chmod* vytvořený v předchozím kroku:
 
 ```yaml
 apiVersion: v1
@@ -154,13 +154,13 @@ spec:
   restartPolicy: Never
 ```
 
-Nasazení ukázkového podu pomocí příkazu [kubectl apply:][kubectl-apply]
+Nasaďte ukázku pomocí příkazu [kubectl Apply][kubectl-apply] :
 
 ```console
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-Zobrazení stavu podů pomocí příkazu [kubectl get pods.][kubectl-get] Pod hlásí chybu. Příkaz `chmod` není spuštěn filtrem seccomp, jak je znázorněno v následujícím příkladu výstupu:
+Stav lusků zobrazíte pomocí příkazu [kubectl získat lusky][kubectl-get] . Pod ní nahlásí chybu. `chmod` Příkazu je znemožněno spouštěním filtru seccomp, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ kubectl get pods
@@ -169,51 +169,51 @@ NAME                      READY     STATUS    RESTARTS   AGE
 chmod-prevented           0/1       Error     0          7s
 ```
 
-Další informace o dostupných filtrech naleznete v [tématu Seccomp security profiles for Docker][seccomp].
+Další informace o dostupných filtrech najdete v tématu [Seccomp Security profiles for Docker][seccomp].
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Pravidelná aktualizace na nejnovější verzi Kubernetes
 
-**Pokyny pro osvědčené postupy** – Chcete-li mít aktuální informace o nových funkcích a opravách chyb, pravidelně upgradujte na verzi Kubernetes v clusteru AKS.
+**Doprovodné materiály k osvědčeným postupům** – aktuální informace o nových funkcích a opravách chyb pravidelně inovujte na verzi Kubernetes v clusteru AKS.
 
-Kubernetes vydává nové funkce rychlejším tempem než tradiční platformy infrastruktury. Aktualizace Kubernetes zahrnují nové funkce a opravy chyb nebo zabezpečení. Nové funkce se obvykle pohybují přes *alfa* a pak *beta* stav před tím, než se stanou *stabilní* a jsou obecně dostupné a doporučené pro produkční použití. Tento cyklus vydání by vám měl umožnit aktualizovat Kubernetes, aniž byste pravidelně setkávali s nejnovějšími změnami nebo upravovali nasazení a šablony.
+Kubernetes uvolňuje nové funkce rychlejšího tempa než tradičních platforem infrastruktury. Aktualizace Kubernetes zahrnují nové funkce a opravy chyb nebo zabezpečení. Nové funkce obvykle přecházejí přes *alfa* a pak na stav *beta verze* , než se stanou *stabilní* a jsou všeobecně dostupné a doporučené pro použití v produkčním prostředí. Tento cyklus vydaných verzí by vám měl umožňovat aktualizovat Kubernetes bez pravidelného zaznamenání nejnovějších změn nebo přizpůsobení nasazení a šablon.
 
-AKS podporuje čtyři dílčí verze Kubernetes. To znamená, že když je zavedena nová dílčí verze opravy, nejstarší verze dílčí verze a verze opravy jsou podporovány. Drobné aktualizace Kubernetes se dějí v pravidelných intervalech. Ujistěte se, že máte proces zásad správného řízení ke kontrole a upgradu podle potřeby, takže nemusíte vypadnout z podpory. Další informace naleznete [v tématu Supported Kubernetes versions AKS][aks-supported-versions]
+AKS podporuje čtyři dílčí verze Kubernetes. To znamená, že při zavedení nové dílčí verze opravy jsou vyřazení nejstarší podverze a verze patch. Drobné aktualizace k Kubernetes dochází v pravidelných intervalech. Ujistěte se, že máte proces zásad správného řízení pro kontrolu a upgrade podle potřeby, abyste nemuseli zaklesnout na podporu. Další informace najdete v tématu [podporované verze KUBERNETES AKS][aks-supported-versions]
 
-Chcete-li zkontrolovat verze, které jsou k dispozici pro váš cluster, použijte příkaz [az aks get-upgrade,][az-aks-get-upgrades] jak je znázorněno v následujícím příkladu:
+Chcete-li ověřit verze, které jsou pro cluster k dispozici, použijte příkaz [AZ AKS Get-Upgrades][az-aks-get-upgrades] , jak je znázorněno v následujícím příkladu:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Potom můžete upgradovat cluster AKS pomocí příkazu [az aks upgrade.][az-aks-upgrade] Proces upgradu bezpečně kordony a vyprázdní jeden uzel najednou, naplánuje pody na zbývající uzly a pak nasadí nový uzel s nejnovější verze operačního systému a Kubernetes.
+Následně můžete upgradovat cluster AKS pomocí příkazu [AZ AKS upgrade][az-aks-upgrade] . Proces upgradu bezpečně cordons a vyprázdní jeden uzel v čase, plánuje na zbývajících uzlech a pak nasadí nový uzel s nejnovějšími verzemi operačního systému a Kubernetes.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
 ```
 
-Další informace o inovacích v AKS naleznete v [tématu Podporované verze Kubernetes v AKS][aks-supported-versions] a [Upgrade clusteru AKS][aks-upgrade].
+Další informace o upgradech v AKS najdete v tématu [podporované verze Kubernetes v AKS][aks-supported-versions] a [upgrade clusteru AKS][aks-upgrade].
 
-## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Zpracování aktualizací uzlů Linuxu a restartování pomocí kured
+## <a name="process-linux-node-updates-and-reboots-using-kured"></a>Zpracování aktualizací a restartování uzlu Linux pomocí kured
 
-**Pokyny pro osvědčené postupy** – AKS automaticky stáhne a nainstaluje opravy zabezpečení na každé uzly Linuxu, ale v případě potřeby se automaticky nerestartuje. Slouží `kured` k sledování čekajících restartování, pak bezpečně kordon a vyprázdnění uzlu, aby uzel restartovat, použít aktualizace a být co nejbezpečnější s ohledem na OS. Uzly Windows Server (aktuálně ve verzi Preview v AKS) pravidelně provádějte operaci upgradu AKS, abyste bezpečně uzavřeli a vypouštěli pody a nasazovali aktualizované uzly.
+**Doprovodné materiály k osvědčeným postupům** – AKS automaticky stáhne a nainstaluje opravy zabezpečení na jednotlivé uzly Linux, ale v případě potřeby se nerestartuje automaticky. Použijte `kured` ke sledování čeká na restartování, pak bezpečně Cordon a vyprázdněte uzel, aby bylo možné uzel restartovat, použít aktualizace a co nejbezpečněji pro operační systém. Pro uzly Windows serveru pravidelně provádějte operaci upgradu AKS a bezpečně Cordon a vyprázdněte a nasaďte aktualizované uzly.
 
-Každý večer linuxové uzly v AKS získají bezpečnostní záplaty dostupné prostřednictvím kanálu distribuce. Toto chování je konfigurováno automaticky, protože uzly jsou nasazeny v clusteru AKS. Chcete-li minimalizovat narušení a potenciální dopad na spuštěné úlohy, uzly nejsou automaticky restartovány, pokud to vyžaduje oprava zabezpečení nebo aktualizace jádra.
+Každý večer, uzly Linux v AKS získá opravy zabezpečení dostupné prostřednictvím kanálu aktualizace distribuce. Toto chování se konfiguruje automaticky při nasazení uzlů v clusteru AKS. Aby se minimalizovalo přerušení a potenciální dopad na spuštěné úlohy, uzly se automaticky restartují, pokud je vyžaduje Oprava zabezpečení nebo aktualizace jádra.
 
-Open-source [kured (KUbernetes REboot Daemon)][kured] projekt Weaveworks hodinky pro čekající uzel restartuje. Když uzel Linux uplatní aktualizace, které vyžadují restartování, uzel je bezpečně uzavřen a vyčerpaný přesunout a naplánovat pody na jiných uzlech v clusteru. Po restartování uzlu je přidán zpět do clusteru a Kubernetes pokračuje v plánování podů na něm. Chcete-li minimalizovat narušení, pouze jeden uzel v době, kdy je povoleno restartovat `kured`.
+Projekt Open source [kured (KUbernetes restart Daemon)][kured] tím, že Weaveworks sleduje čekání na restartování uzlu. Pokud uzel Linux používá aktualizace, které vyžadují restartování, uzel se bezpečně uzavřené a vyprázdní, aby se přesunuly a naplánovaly lusky na jiných uzlech v clusteru. Jakmile se uzel restartuje, přidá se zpátky do clusteru a Kubernetes obnoví v něm v části plánování lusky. Aby se minimalizovalo přerušení, může restartovat pouze jeden uzel v čase `kured`.
 
 ![Proces restartování uzlu AKS pomocí kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
 
-Pokud chcete jemnější kontrolu zrnitosti při `kured` restartování, můžete integrovat s Prometheus zabránit restartování, pokud existují jiné události údržby nebo clusteru problémy probíhají. Tato integrace minimalizuje další komplikace restartováním uzlů při aktivním řešení dalších problémů.
+Pokud chcete, aby se při restartování prováděla jemnější kontrola, je `kured` možné ji integrovat s Prometheus a zabránit tak restartování, pokud dojde k jiným událostem údržby nebo problémům s clusterem. Tato integrace minimalizuje další komplikace tím, že je restartuje uzly, když aktivně řešíte jiné problémy.
 
-Další informace o tom, jak zpracovat restartování uzlů, naleznete [v tématu Použití aktualizací zabezpečení a jádra u uzlů v AKS][aks-kured].
+Další informace o tom, jak zpracovat restartování uzlu, najdete v tématu [použití aktualizací zabezpečení a jádra na uzlech v AKS][aks-kured].
 
 ## <a name="next-steps"></a>Další kroky
 
-Tento článek se zaměřil na zabezpečení clusteru AKS. Chcete-li implementovat některé z těchto oblastí, naleznete v následujících článcích:
+Tento článek se zaměřuje na zabezpečení clusteru AKS. Chcete-li implementovat některé z těchto oblastí, přečtěte si následující články:
 
-* [Integrace služby Azure Active Directory s AKS][aks-aad]
-* [Upgrade clusteru AKS na nejnovější verzi Kubernetes][aks-upgrade]
-* [Zpracovat aktualizace zabezpečení a restartovat uzel pomocí funkce kured][aks-kured]
+* [Integrace Azure Active Directory s AKS][aks-aad]
+* [Upgrade clusteru AKS na nejnovější verzi nástroje Kubernetes][aks-upgrade]
+* [Zpracování aktualizací zabezpečení a restartování uzlu pomocí kured][aks-kured]
 
 <!-- EXTERNAL LINKS -->
 [kured]: https://github.com/weaveworks/kured
