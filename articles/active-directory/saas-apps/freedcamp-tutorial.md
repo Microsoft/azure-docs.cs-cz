@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Freedcamp | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Freedcamp.
+title: 'Kurz: Azure Active Directory integrace s Freedcamp | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Freedcamp.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,157 +17,157 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4de1ae135df4cd070fe9c6ee322e304caa1e17c9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67101915"
 ---
-# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Kurz: Freedcamp integrovat s Azure Active Directory
+# <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Kurz: integrace Freedcamp s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat Freedcamp s Azure Active Directory (Azure AD). Když integrujete Freedcamp s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Freedcamp.
-* Aby uživatelé mohli být automaticky přihlášeni k Freedcamp pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Freedcamp.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Freedcamp svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Freedcamp jednotné přihlašování (SSO) povolené předplatné.
+* Freedcamp odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Freedcamp **SP a zprostředkovatele identity** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Freedcamp podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
 ## <a name="adding-freedcamp-from-the-gallery"></a>Přidání Freedcamp z Galerie
 
-Konfigurace integrace Freedcamp do služby Azure AD, budete muset přidat Freedcamp z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Freedcamp do služby Azure AD, musíte přidat Freedcamp z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Freedcamp** do vyhledávacího pole.
-1. Vyberte **Freedcamp** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Freedcamp** .
+1. Na panelu výsledků vyberte **Freedcamp** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s Freedcamp pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Freedcamp.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Freedcamp pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Freedcamp.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Freedcamp, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Freedcamp, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Freedcamp](#configure-freedcamp)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Freedcamp](#create-freedcamp-test-user)**  mít protějšek Britta Simon Freedcamp, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Nakonfigurujte Freedcamp](#configure-freedcamp)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** , aby mohl Britta Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořte uživatele Freedcamp test](#create-freedcamp-test-user)** , který má protějšek Britta Simon v Freedcamp, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Freedcamp** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Freedcamp** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, proveďte následující kroky:
+1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    1. V **identifikátor** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
+    1. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.freedcamp.com/sso/<UNIQUEID>`
 
-    2. V **adresy URL odpovědi** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
+    2. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.freedcamp.com/sso/acs/<UNIQUEID>`
 
-1. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce:  `https://<SUBDOMAIN>.freedcamp.com/login`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečnou adresu URL identifikátor, adresa URL odpovědi a přihlašování. Uživatele můžete také zadat hodnoty adresy url s ohledem na své vlastní domény, zákazníků a nemusí být nutně vzoru `freedcamp.com`, mohou zadat jakékoli domény konkrétní hodnotu zákazníka, specifické pro jejich instance aplikace. Můžete také kontaktovat [tým podpory Freedcamp klienta](mailto:devops@freedcamp.com) pro další informace o vzorech adres url.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Uživatelé můžou zadat i hodnoty URL s ohledem na svou vlastní doménu zákazníka a nemusí být nutně vzor `freedcamp.com`, můžou zadat libovolnou hodnotu specifickou pro doménu zákazníka, která je specifická pro svou instanci aplikace. Také se můžete obrátit na [tým podpory klienta Freedcamp](mailto:devops@freedcamp.com) , kde najdete další informace o vzorech adres URL.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. Na **nastavení Freedcamp** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení Freedcamp** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="configure-freedcamp"></a>Konfigurace Freedcamp
 
-1. K automatizaci konfigurace v rámci Freedcamp, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+1. Pokud chcete automatizovat konfiguraci v rámci Freedcamp, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení Freedcamp** nasměruje na Freedcamp aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do Freedcamp. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 5.
+2. Po přidání rozšíření do prohlížeče klikněte na **Freedcamp nastavení** a nasměrujte vás na aplikaci Freedcamp. Odtud zadejte přihlašovací údaje správce, které se přihlásí k Freedcamp. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-3. Pokud chcete nastavit Freedcamp ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti Freedcamp jako správce a proveďte následující kroky:
+3. Pokud chcete nastavit Freedcamp ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu Freedcamp společnosti jako správce a proveďte následující kroky:
 
-4. V pravém horním rohu stránky, klikněte na **profilu** a přejděte na **Můj účet**.
+4. V pravém horním rohu stránky klikněte na **profil** a potom přejděte na **můj účet**.
 
     ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config01.png)
 
-5. V levé části řádku nabídek klikněte na **jednotného přihlašování** a na **si jednotné přihlašování připojení** stránku, proveďte následující kroky:
+5. Na levé straně řádku nabídek klikněte na **jednotné přihlašování** a na stránce **připojení SSO** proveďte následující kroky:
 
     ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config02.png)
 
-    a. V **název** textové pole, zadejte název.
+    a. Do textového pole **název** zadejte název.
 
-    b. V **Entity ID** textového pole, Vložit **Azure AD identifikátor** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    b. Do textového pole **ID entity** vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal.
 
-    c. V **přihlašovací adresa URL** textového pole, Vložit **přihlašovací adresa URL** hodnotu, kterou jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    d. V poznámkovém bloku otevřete certifikát kódovaný v Base64, zkopírujte jeho obsah a vložte ho do **certifikát** textového pole.
+    d. Otevřete v programu Poznámkový blok certifikát kódovaný jako base64, zkopírujte jeho obsah a vložte ho do textového pole **certifikát** .
 
-    e. Klikněte na **Submit** (Odeslat).
+    e. Klikněte na **Odeslat**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části se budou moci používat jednotné přihlašování Azure díky udělení přístupu k Freedcamp Britta Simon.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Freedcamp.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Freedcamp**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Freedcamp**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-freedcamp-test-user"></a>Vytvoření Freedcamp testovacího uživatele
+### <a name="create-freedcamp-test-user"></a>Vytvořit testovacího uživatele Freedcamp
 
-Azure AD uživatelům umožnit přihlásit v k Freedcamp, že musí být poskytnuty do Freedcamp. Zřizování v Freedcamp, je ruční úlohy.
+Pokud chcete povolit uživatele Azure AD, přihlaste se k Freedcamp, musí být zřízené do Freedcamp. V Freedcamp je zřizování ručním úkolem.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. V okně jiné webové prohlížeče Přihlaste se k Freedcamp jako správce zabezpečení.
+1. V jiném okně webového prohlížeče se přihlaste k Freedcamp jako správce zabezpečení.
 
-2. V horní části toright horním rohu stránky, klikněte na **profilu** a přejděte na **spravovat systém**.
+2. V horním toright rohu stránky klikněte na **profil** a potom přejděte ke **správě systému**.
 
     ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config03.png)
 
@@ -175,19 +175,19 @@ Azure AD uživatelům umožnit přihlásit v k Freedcamp, že musí být poskytn
 
     ![Konfigurace Freedcamp](./media/freedcamp-tutorial/config04.png)
 
-    a. Klikněte na **přidat nebo pozvání uživatelů**.
+    a. Klikněte na **Přidat nebo pozvat uživatele**.
 
-    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je `Brittasimon@contoso.com`.
+    b. Do textového pole **e-mail** zadejte e-maily uživatele jako `Brittasimon@contoso.com`.
 
-    c. Klikněte na tlačítko **přidat uživatele**.
+    c. Klikněte na **Add User** (Přidat uživatele).
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice Freedcamp na přístupovém panelu, můžete by měl být automaticky přihlášeni k Freedcamp, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici Freedcamp, měli byste se automaticky přihlásit k Freedcamp, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

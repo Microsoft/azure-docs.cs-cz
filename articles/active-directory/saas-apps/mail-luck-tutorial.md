@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím pošty | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integraci jednotného přihlašování s využitím pošty | Dokumentace Microsoftu'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a poštou!.
 services: active-directory
 documentationCenter: na
@@ -17,10 +17,10 @@ ms.date: 10/24/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: daf86270224d2a76eb124e879594ac2588b46776
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/27/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72969816"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s využitím pošty
@@ -33,24 +33,24 @@ V tomto kurzu se naučíte, jak integrovat poštu! s Azure Active Directory (Azu
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Vyhodně zprávy! odběr s povoleným jednotným přihlašováním (SSO).
+* Mail Luck! odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Vyhodně zprávy! podporuje jednotné přihlašování iniciované v **SP**
+* Mail Luck! podporuje jednotné přihlašování iniciované v **SP**
 
 ## <a name="adding-mail-luck-from-the-gallery"></a>Přidání e-mailu z Galerie
 
 Pokud chcete nakonfigurovat integraci funkce pošta! do služby Azure AD je nutné přidat zprávu o tom, jak hodně. z Galerie do vašeho seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s vy
     * Můžete **[Vytvořit poštu! | testovací uživatel](#create-mail-luck-test-user)** – Pokud má protějšek B. Simon ve vaší poště. který je propojený s reprezentací uživatele Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -82,9 +82,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/sign_in`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/sign_in`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Vaše kontaktní [e-mailová zpráva Tým podpory klientů](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi) , který získá tyto hodnoty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -110,7 +110,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k poště.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte možnost **Pošta – hodně!** .
+1. V seznamu aplikace vyberte možnost **Pošta – hodně!**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
@@ -123,7 +123,7 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-## <a name="configure-mail-luck-sso"></a>Nakonfigurujte WEBLOC! JEDNOTNÉ
+## <a name="configure-mail-luck-sso"></a>Nakonfigurujte WEBLOC! Jednotné přihlašování
 
 Konfigurace jednotného přihlašování při pokusu o **odeslání** po straně je potřeba odeslat **adresu URL federačních metadat aplikace** k [poště. tým podpory](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
@@ -137,7 +137,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Po kliknutí na tlačítko se zobrazí zpráva. na přístupovém panelu, měli byste být automaticky přihlášení k poště. pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
