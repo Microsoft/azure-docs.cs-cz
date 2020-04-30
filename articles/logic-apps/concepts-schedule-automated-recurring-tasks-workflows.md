@@ -1,168 +1,168 @@
 ---
-title: Plánování opakovaných úkolů a pracovních postupů v Aplikacích Azure Logic Apps
-description: Přehled plánování opakovaných automatizovaných úloh, procesů a pracovních postupů pomocí aplikací Azure Logic Apps
+title: Plánování opakujících se úloh a pracovních postupů v Azure Logic Apps
+description: Přehled o plánování opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, klam, logicappspm
+ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270560"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234090"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Plánování a spouštění opakujících se automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps
 
-Logic Apps pomáhá vytvářet a spouštět automatické opakované úlohy a procesy podle plánu. Vytvořením pracovního postupu aplikace logiky, který začíná předdefinovanou aktivační událostí opakování nebo aktivační událostí posuvného okna, což jsou aktivační události typu Schedule, můžete úlohy spustit okamžitě, později nebo v intervalu opakování. Můžete volat služby uvnitř i vně Azure, jako jsou koncové body HTTP nebo HTTPS, posílat zprávy do služeb Azure, jako je Azure Storage a Azure Service Bus, nebo získat soubory nahrané do sdílené složky. Pomocí aktivační události Opakování můžete také nastavit složité plány a upřesňující opakování pro spouštění úloh. Další informace o předdefinovaných aktivačních událostech a akcích plánu najdete v [tématech Plánování aktivačních událostí](#schedule-triggers) a [Akce plánování](#schedule-actions). 
+Logic Apps vám pomůže vytvářet a spouštět automatizované opakované úlohy a procesy podle plánu. Vytvořením pracovního postupu aplikace logiky, který začíná vestavěným triggerem opakování nebo aktivační událostí posuvných oken, což jsou triggery typu plánování, můžete spouštět úlohy hned později nebo v pravidelných intervalech. Můžete volat služby uvnitř i mimo Azure, jako jsou koncové body HTTP nebo HTTPS, odesílat zprávy do služeb Azure, například Azure Storage a Azure Service Bus, nebo získávat soubory odeslané do sdílené složky. Pomocí triggeru opakování můžete také nastavit komplexní plány a pokročilé opakování pro spuštěné úlohy. Další informace o integrovaných triggerech a akcích plánování najdete v tématu [plánování aktivačních událostí](#schedule-triggers) a [plánování akcí](#schedule-actions). 
 
 > [!TIP]
-> Můžete naplánovat a spustit opakované úlohy bez vytvoření samostatné aplikace logiky pro každou naplánovanou úlohu a spuštění do [limitu pracovních postupů na oblast a předplatné](../logic-apps/logic-apps-limits-and-config.md#definition-limits). Místo toho můžete použít vzor aplikace logiky, který je vytvořen [šablonou Azure QuickStart: Plánovač úloh Logic Apps](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/).
+> Můžete naplánovat a spustit opakující se úlohy bez vytváření samostatné aplikace logiky pro každou naplánovanou úlohu a spuštění do [limitu pro pracovní postupy na oblast a předplatné](../logic-apps/logic-apps-limits-and-config.md#definition-limits). Místo toho můžete použít model aplikace logiky, který je vytvořený [šablonou rychlého startu Azure: Logic Apps Plánovač úloh](https://github.com/Azure/azure-quickstart-templates/tree/master/301-logicapps-jobscheduler/).
 >
-> Šablona plánovače úloh aplikace Logic Apps vytvoří aplikaci logiky CreateTimerJob, která volá aplikaci logiky TimerJob. Potom můžete volat createtimerjob aplikace logiky jako rozhraní API tím, že požadavek HTTP a předání plánu jako vstup pro požadavek. Každé volání aplikace logiky CreateTimerJob také volá aplikaci logiky TimerJob, která vytvoří novou instanci TimerJob, která se nepřetržitě spouští na základě zadaného plánu nebo dokud nesplní zadaný limit. Tímto způsobem můžete spustit libovolný počet instancí TimerJob bez obav o omezení pracovního postupu, protože instance nejsou definice pracovního postupu jednotlivých aplikací logiky nebo prostředky.
+> Šablona plánovače úloh Logic Apps vytvoří aplikaci logiky CreateTimerJob, která volá aplikaci logiky TimerJob. Pak můžete zavolat aplikaci logiky CreateTimerJob jako rozhraní API tak, že provedete požadavek HTTP a jako vstup zadáte plán pro požadavek. Každé volání aplikace logiky CreateTimerJob také volá aplikaci logiky TimerJob, která vytvoří novou instanci TimerJob, která se průběžně spouští na základě zadaného plánu nebo až do splnění zadaného limitu. Tímto způsobem můžete spustit tolik instancí TimerJob, kolik chcete, aniž byste se museli starat o omezení pracovního postupu, protože instance nejsou jednotlivými definicemi pracovních postupů aplikace logiky nebo prostředky.
 
-Tento seznam zobrazuje některé ukázkové úlohy, které lze spustit pomocí předdefinovaných aktivačních událostí plánu:
+Tento seznam obsahuje několik ukázkových úloh, které můžete spustit s integrovanými aktivačními událostmi plánu:
 
-* Získejte interní data, jako je například spustit sql uloženou proceduru každý den.
+* Získejte interní data, jako je například spuštění uložené procedury SQL každý den.
 
-* Získejte externí data, jako je například vyžádat zprávy o počasí z NOAA každých 15 minut.
+* Získejte externí data, jako jsou například zprávy o počasí z NOAA každých 15 minut.
 
-* Odešlete data sestavy, například e-mail souhrn pro všechny objednávky větší než určitá částka za poslední týden.
+* Odešlete data sestavy, jako je například Shrnutí e-mailu pro všechny objednávky větší než konkrétní částka za minulý týden.
 
-* Zpracovávat data, jako je komprimování dnešních nahraných obrázků každý všední den mimo špičku.
+* Zpracování dat, jako je například komprese dnešních nahraných obrázků v době mimo špičku.
 
-* Vyčistěte data, například odstranit všechny tweety starší než tři měsíce.
+* Vyčištění dat, například odstranění všech tweety starších než tři měsíce.
 
-* Archivujte data, jako je nabízená faktury službě zálohování každý den v 1:00 po dobu následujících devíti měsíců.
+* Archivace dat, jako jsou nabízené faktury, do služby zálohování v 1:00. každý den v příštích devět měsících.
 
-Integrované akce plánu můžete také pozastavit pracovní postup před spuštěním další akce, například:
+Můžete také použít předdefinované akce plánu k pozastavení pracovního postupu před spuštěním další akce, například:
 
-* Počkejte až do pracovního dne, abyste odeslali aktualizaci stavu prostředpo e-mailem.
+* Počkejte, až pracovní den pošle aktualizaci stavu přes e-mail.
 
-* Zpozdit pracovní postup, dokud nebude mít volání HTTP čas na dokončení před obnovením a načtením výsledku.
+* Odložit pracovní postup do doby, než bude dokončeno volání protokolu HTTP, než bude pokračovat a bude načítán výsledek.
 
-Tento článek popisuje možnosti pro plán integrované aktivační události a akce.
+Tento článek popisuje možnosti pro předdefinované aktivační události a akce pro plán.
 
 <a name="schedule-triggers"></a>
 
-## <a name="schedule-triggers"></a>Spuštění plánu
+## <a name="schedule-triggers"></a>Aktivační události plánu
 
-Pracovní postup aplikace logiky můžete spustit pomocí aktivační události opakování nebo aktivační události posuvného okna, která není přidružena k žádné konkrétní službě nebo systému, například Office 365 Outlook nebo SQL Server. Tyto aktivační události spustí a spustí pracovní postup na základě zadaného opakování, kde vyberete interval a frekvenci, například počet sekund, minut a hodin pro obě aktivační události nebo počet dní, týdnů nebo měsíců pro aktivační událost opakování. Můžete také nastavit počáteční datum a čas a také časové pásmo. Pokaždé, když se spustí aktivační událost, Logic Apps vytvoří a spustí novou instanci pracovního postupu pro vaši aplikaci logiky.
+Pracovní postup aplikace logiky můžete spustit pomocí triggeru opakování nebo aktivační události posuvných oken, které nejsou přidruženy k žádné konkrétní službě nebo systému, například Office 365 Outlook nebo SQL Server. Tyto aktivační události spustí a spustí pracovní postup na základě zadaného opakování, kde můžete vybrat interval a frekvenci, například počet sekund, minut a hodin pro obě aktivační události nebo počet dnů, týdnů nebo měsíců pro aktivační událost opakování. Můžete také nastavit datum a čas zahájení i časové pásmo. Pokaždé, když se Trigger aktivuje, Logic Apps vytvoří a spustí novou instanci pracovního postupu pro vaši aplikaci logiky.
 
-Zde jsou rozdíly mezi těmito aktivačními událostmi:
+Tady jsou rozdíly mezi těmito triggery:
 
-* **Opakování**: Spustí pracovní postup v pravidelných časových intervalech na základě zadaného plánu. Pokud dojde k vynechání opakování, aktivační událost opakování nezpracuje zmeškané opakování, ale restartuje opakování s dalším plánovaným intervalem. Můžete zadat počáteční datum a čas, stejně jako časové pásmo. Pokud vyberete "Den", můžete zadat hodiny dne a minuty hodiny, například každý den ve 2:30. Pokud vyberete "Týden", můžete také vybrat dny v týdnu, například středa a sobota. Další informace naleznete v [tématu Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí aktivační události Opakování](../connectors/connectors-native-recurrence.md).
+* **Opakování**: pracovní postup se spouští v pravidelných časových intervalech na základě zadaného plánu. Pokud nedojde k opakování, Trigger opakování nezpracovává zmeškané opakování, ale restartuje opakování s dalším naplánovaným intervalem. Můžete zadat datum a čas zahájení i časové pásmo. Pokud vyberete "Day", můžete zadat hodiny dne a minuty hodiny, například každý den v 2:30. Pokud vyberete "Week", můžete také vybrat dny v týdnu, například středa a sobotu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů s triggerem opakování](../connectors/connectors-native-recurrence.md).
 
-* **Posuvné okno:** Spustí pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. Pokud opakování jsou vynechány, posuvné okno aktivační událost přejde zpět a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání, která zpozdí každé opakování pracovního postupu. Tato aktivační událost nemá možnosti určit dny, týdny a měsíce, hodiny dne, minuty hodiny a dny v týdnu. Další informace naleznete v [tématu Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí aktivační události Posuvné okno](../connectors/connectors-native-sliding-window.md).
+* **Posuvné okno**: spouští pracovní postup v pravidelných časových intervalech, které zpracovávají data v souvislých blocích. V případě nevracení se aktivační událost posuvných oken vrátí zpět a zpracuje zmeškané opakování. Můžete zadat počáteční datum a čas, časové pásmo a dobu trvání pro zpoždění každého opakování ve vašem pracovním postupu. Tato aktivační událost neobsahuje možnosti pro zadání dnů, týdnů a měsíců, hodin dne, minuty hodiny a dnů v týdnu. Další informace najdete v tématu [vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvných triggerů okna](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
-## <a name="schedule-actions"></a>Plánování akcí
+## <a name="schedule-actions"></a>Plánované akce
 
-Po jakékoli akci v pracovním postupu aplikace logiky můžete pomocí akcí Zpoždění a Zpoždění do, aby váš pracovní postup počkal, než se spustí další akce.
+Po jakékoli akci v pracovním postupu aplikace logiky můžete použít prodlevu a prodlevu, dokud akce nečekají, než bude pracovní postup čekat, než se spustí další akce.
 
-* **Zpoždění**: Počkejte na spuštění další akce pro zadaný počet časových jednotek, například sekund, minut, hodin, dnů, týdnů nebo měsíců. Další informace naleznete [v tématu Delay the next action in workflows](../connectors/connectors-native-delay.md).
+* **Delay**: Počkejte, než se spustí další akce pro zadaný počet časových jednotek, například sekundy, minuty, hodiny, dny, týdny nebo měsíce. Další informace najdete v tématu [zpoždění další akce v pracovních postupech](../connectors/connectors-native-delay.md).
 
-* **Zpoždění do**: Počkejte na spuštění další akce až do zadaného data a času. Další informace naleznete [v tématu Delay the next action in workflows](../connectors/connectors-native-delay.md).
+* **Zpoždění do**: Počkejte na spuštění další akce až do zadaného data a času. Další informace najdete v tématu [zpoždění další akce v pracovních postupech](../connectors/connectors-native-delay.md).
 
-## <a name="patterns-for-start-date-and-time"></a>Vzory počátečního data a času
+## <a name="patterns-for-start-date-and-time"></a>Vzory pro počáteční datum a čas
 
 <a name="start-time"></a>
 
-Zde jsou některé vzory, které ukazují, jak můžete řídit opakování s počátečním datem a časem a jak služba Logic Apps spouští tyto opakování:
+Tady je několik vzorů, které ukazují, jak můžete řídit opakování s počátečním datem a časem a jak služba Logic Apps spouští Tato opakování:
 
-| Čas spuštění | Opakování bez plánu | Opakování s plánem (pouze aktivační událost opakování) |
+| Čas spuštění | Opakování bez plánu | Opakování s plánem (jenom Trigger opakování) |
 |------------|-----------------------------|----------------------------------------------------|
-| {none} | Spustí první úlohy okamžitě. <p>Spustí budoucí úlohy na základě času posledního spuštění. | Spustí první úlohy okamžitě. <p>Spustí budoucí úlohy na základě zadaného plánu. |
-| Čas zahájení v minulosti | Aktivační událost **opakování:** Vypočítá časy spuštění na základě zadaného počátečního času a zahodí minulé časy spuštění. Spustí první úlohu v příštím budoucím běhu. <p>Spustí budoucí úlohy na základě výpočtů z doby posledního spuštění. <p><p>Aktivační událost **posuvného okna:** Vypočítá časy spuštění na základě zadaného počátečního času a vyhoní minulých časů spuštění. <p>Spustí budoucí úlohy na základě výpočtů od zadaného času zahájení. <p><p>Další vysvětlení naleznete v příkladu následující ho. | Spustí první úlohu *nejdříve* čas zahájení, na základě plánu vypočítaného od počátečního času. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadejte hodiny nebo minuty pro plán, budou budoucí časy spuštění vypočteny pomocí hodin nebo minut od prvního běhu. |
-| Čas zahájení v současné době nebo v budoucnu | Spustí první úlohu v zadaném čase zahájení. <p>Spustí budoucí úlohy na základě výpočtů z doby posledního spuštění. | Spustí první úlohu *nejdříve* čas zahájení, na základě plánu vypočítaného od počátečního času. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadejte hodiny nebo minuty pro plán, budou budoucí časy spuštění vypočteny pomocí hodin nebo minut od prvního běhu. |
+| nTato | Okamžitě spustí první úlohu. <p>Spustí budoucí úlohy na základě času posledního spuštění. | Okamžitě spustí první úlohu. <p>Spustí budoucí úlohy na základě zadaného plánu. |
+| Čas začátku v minulosti | Trigger **opakování** : vypočítá dobu běhu založenou na zadaném čase zahájení a zahodí minulé časy spuštění. Spustí první úlohu v příštím budoucím čase spuštění. <p>Spustí budoucí úlohy na základě výpočtů z posledního času spuštění. <p><p>Aktivační událost **posuvných oken** : vypočítá časy spuštění na základě zadaného počátečního času a respektuje minulé časy spuštění. <p>Spustí budoucí úlohy na základě výpočtů z určeného počátečního času. <p><p>Další vysvětlení najdete v příkladu následujícím v této tabulce. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro daný plán, pak se budoucí časy spuštění počítají pomocí hodin nebo minut v první době spuštění. |
+| Čas spuštění v současnosti nebo v budoucnosti | Spustí první úlohu v zadaném počátečním čase. <p>Spustí budoucí úlohy na základě výpočtů z posledního času spuštění. | Spustí první úlohu, která *není dřív* než čas spuštění, podle plánu vypočítaného z času spuštění. <p>Spustí budoucí úlohy na základě zadaného plánu. <p>**Poznámka:** Pokud zadáte opakování s plánem, ale nezadáte hodiny nebo minuty pro daný plán, pak se budoucí časy spuštění počítají pomocí hodin nebo minut v první době spuštění. |
 ||||
 
 > [!IMPORTANT]
-> Pokud opakování neurčují možnosti rozšířeného plánování, jsou budoucí opakování založena na čase posledního spuštění.
-> Počáteční časy pro tyto opakování může posunzou kvůli faktorům, jako je latence během volání úložiště. Chcete-li se ujistit, že vaše aplikace logiky nezmešká opakování, zejména pokud je frekvence ve dnech nebo delších, použijte jednu z těchto možností:
+> Pokud opakování nespecifikují pokročilé možnosti plánování, budoucí opakování vycházejí z času posledního spuštění.
+> Časy zahájení těchto opakování se můžou zpomalit kvůli faktorům, jako je latence během volání úložiště. Abyste se ujistili, že vaše aplikace logiky nezpůsobí opakování, zejména pokud je frekvence ve dnech nebo delší, použijte jednu z těchto možností:
 > 
 > * Zadejte čas zahájení opakování.
 > 
-> * Zadejte hodiny a minuty, kdy chcete spustit opakování pomocí **At these hours** a At these **minutes** vlastnosti.
+> * Zadejte hodiny a minuty pro spuštění opakování pomocí v **těchto hodinách** a **ve vlastnostech těchto minut** .
 > 
-> * Použijte [aktivační událost posuvné okno](../connectors/connectors-native-sliding-window.md), nikoli aktivační událost opakování.
+> * Použijte [aktivační událost posuvných oken](../connectors/connectors-native-sliding-window.md)místo triggeru opakování.
 
-*Příklad času minulého zahájení a opakování, ale bez plánu*
+*Příklad pro čas zahájení a opakování, ale žádný plán*
 
-Předpokládejme, že aktuální datum a čas je 8. Počáteční datum a čas zadáte jako 7.
+Předpokládejme, že aktuální datum a čas jsou 8. září 2017 na 1:00 odp. Zadejte počáteční datum a čas od 7. září 2017 na 2:00 PM, který je v minulosti, a opakování, které se spouští každé dva dny.
 
 | Čas spuštění | Aktuální čas | Opakování | Plán |
 |------------|--------------|------------|----------|
-| 2017-09-**07**T14:00:00Z <br>(2017-09-**07** v 14:00) | 2017-09-**08**T13:00:00Z <br>(2017-09-**08** v 13:00) | Každé dva dny | {none} |
+| 2017-09-**07**T14:00:00Z <br>(2017-09 –**07** v 2:00 odp.) | 2017-09 –**08**T13:00:00Z <br>(2017-09 –**08** v 1:00 odp.) | Každé dva dny | nTato |
 |||||
 
-Pro aktivační událost opakování modul Logic Apps vypočítá časy spuštění na základě času spuštění, zahodí časy minulého spuštění, použije další budoucí čas zahájení pro první spuštění a vypočítá budoucí spuštění na základě posledního běhu.
+U triggeru opakování vypočítá Logic Apps modul časy spuštění na základě času spuštění, zahodí minulé časy spuštění, používá další budoucí čas spuštění pro první spuštění a počítá budoucí běhy na základě posledního času spuštění.
 
-Toto opakování vypadá takto:
+Tady je postup, jak vypadá toto opakování:
 
-| Čas spuštění | Čas prvního spuštění | Budoucí časy běhu |
+| Čas spuštění | Čas prvního spuštění | Budoucí časy spuštění |
 |------------|----------------|------------------|
-| 2017-09-**07** v 14:00 | 2017-09-**09** v 14:00 | 2017-09-**11** v 14:00 </br>2017-09-**13** v 14:00 </br>2017-09-**15** v 14:00 </br>a tak dále... |
+| 2017-09 –**07** v 2:00 odp. | 2017-09 –**09** v 2:00 odp. | 2017-09 –**11** v 2:00 odp. </br>2017-09 –**13** v 2:00 odp. </br>2017-09 –**15** v 2:00 odp. </br>a tak dále... |
 ||||
 
-Takže bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 2017-09-**05** v 14:00 nebo 2017-09-**01** v 14:00, váš první běh vždy používá další budoucí čas zahájení.
+Bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 2017-09-**05** v 2:00 odp. nebo 2017-09-**01** v 2:00 odp. první spuštění vždy používá další budoucí čas spuštění.
 
-Pro aktivační událost posuvné okno modul Logic Apps vypočítá časy spuštění na základě času zahájení, respektuje minulé časy spuštění, používá počáteční čas pro první spuštění a vypočítá budoucí spuštění na základě počátečního času.
+V případě aktivační události posuvných oken modul Logic Apps vypočítá dobu běhu založenou na čase spuštění, respektuje dobu běhu, používá počáteční čas prvního spuštění a vypočítá budoucí běhy na základě času spuštění.
 
-Toto opakování vypadá takto:
+Tady je postup, jak vypadá toto opakování:
 
-| Čas spuštění | Čas prvního spuštění | Budoucí časy běhu |
+| Čas spuštění | Čas prvního spuštění | Budoucí časy spuštění |
 |------------|----------------|------------------|
-| 2017-09-**07** v 14:00 | 2017-09-**07** v 14:00 | 2017-09-**09** v 14:00 </br>2017-09-**11** v 14:00 </br>2017-09-**13** v 14:00 </br>2017-09-**15** v 14:00 </br>a tak dále... |
+| 2017-09 –**07** v 2:00 odp. | 2017-09 –**07** v 2:00 odp. | 2017-09 –**09** v 2:00 odp. </br>2017-09 –**11** v 2:00 odp. </br>2017-09 –**13** v 2:00 odp. </br>2017-09 –**15** v 2:00 odp. </br>a tak dále... |
 ||||
 
-Takže bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 2017-09-**05** v 14:00 nebo 2017-09-**01** v 14:00, váš první běh vždy používá zadaný čas zahájení.
+Bez ohledu na to, jak daleko v minulosti zadáte čas zahájení, například 2017-09-**05** v 2:00 odp. nebo 2017-09-**01** v 2:00 odp. první spuštění vždy používá určený čas spuštění.
 
 <a name="example-recurrences"></a>
 
-## <a name="example-recurrences"></a>Příklad opakování
+## <a name="example-recurrences"></a>Příklady opakování
 
-Zde jsou různé příklady opakování, které můžete nastavit pro aktivační události, které podporují možnosti:
+Tady jsou různé příklady opakování, které můžete nastavit pro aktivační události, které podporují tyto možnosti:
 
 | Trigger | Opakování | Interval | Frequency | Čas spuštění | V tyto dny | V těchto hodinách | V těchto minutách | Poznámka |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
-| Opakování <br>Posuvné okno | Spustit každých 15 minut (bez počátečního data a času) | 15 | Minuta | {none} | {není k dispozici} | {none} | {none} | Tento plán začíná okamžitě, pak vypočítá budoucí opakování na základě času posledního spuštění. |
-| Opakování <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | Minuta | *datum spuštění* T*startTime*Z | {není k dispozici} | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas, pak vypočítá budoucí opakování na základě času posledního spuštění. |
-| Opakování <br>Posuvné okno | Spustit každou hodinu, v hodinu (s počátečním datem a časem) | 1 | Hodina | *datum spuštění* Thh:00:00Z | {není k dispozici} | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas. Budoucí opakování spustit každou hodinu na "00" minutové značky, která se počítá od počátečního času. <p>Pokud je frekvence "Týden" nebo "Měsíc", tento plán běží pouze jeden den v týdnu nebo jeden den za měsíc. |
-| Opakování <br>Posuvné okno | Spustit každou hodinu, každý den (bez počátečního data a času) | 1 | Hodina | {none} | {není k dispozici} | {none} | {none} | Tento plán se spustí okamžitě a vypočítá budoucí opakování na základě času posledního spuštění. <p>Pokud je frekvence "Týden" nebo "Měsíc", tento plán běží pouze jeden den v týdnu nebo jeden den za měsíc. |
-| Opakování <br>Posuvné okno | Spustit každou hodinu, každý den (s počátečním datem a časem) | 1 | Hodina | *datum spuštění* T*startTime*Z | {není k dispozici} | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas, pak vypočítá budoucí opakování na základě času posledního spuštění. <p>Pokud je frekvence "Týden" nebo "Měsíc", tento plán běží pouze jeden den v týdnu nebo jeden den za měsíc. |
-| Opakování <br>Posuvné okno | Spustit každých 15 minut po hodině, každou hodinu (s počátečním datem a časem) | 1 | Hodina | *datum spuštění* T00:15:00Z | {není k dispozici} | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas. Budoucí opakování spustit na "15" minutovou značku, která se počítá od počátečního času, takže v 00:15, 1:15 AM, 2:15 AM a tak dále. |
-| Opakování | Spustit každých 15 minut po hodině, každou hodinu (bez počátečního data a času) | 1 | Den | {none} | {není k dispozici} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Tento plán běží v 00:15, 1:15, 2:15 a tak dále. Tento plán je také ekvivalentní frekvenci "Hodina" a čas zahájení s "15" minut. |
-| Opakování | Spouštět každých 15 minut při zadaných minutových značkách (bez počátečního data a času). | 1 | Den | {none} | {není k dispozici} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento plán začíná až do další zadané 15minutové značky. |
-| Opakování | Spouštějte denně v 8:00 *plus* minutovou značku od uložení aplikace logiky | 1 | Den | {none} | {není k dispozici} | 8 | {none} | Bez počáteční datum a čas, tento plán spustí na základě času při uložení aplikace logiky (PUT operace). |
-| Opakování | Spustit denně v 8:00 (s počátečním datem a časem) | 1 | Den | *datum spuštění* T08:00:00Z | {není k dispozici} | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas. Budoucí výskyty se spouštějí denně v 8:00. | 
-| Opakování | Spustit denně v 8:30 (bez data a času zahájení) | 1 | Den | {none} | {není k dispozici} | 8 | 30 | Tento plán běží každý den v 8:30. |
-| Opakování | Běh denně v 8:30 a 16:30 | 1 | Den | {none} | {není k dispozici} | 8, 16 | 30 | |
-| Opakování | Běh denně v 8:30, 8:45, 16:30 a 16:45 | 1 | Den | {none} | {není k dispozici} | 8, 16 | 30, 45 | |
-| Opakování | Spustit každou sobotu v 17:00 (bez počátečního data a času) | 1 | Týden | {none} | "Sobota" | 17 | 00 | Tento program běží každou sobotu v 17:00. |
-| Opakování | Spustit každou sobotu v 17:00 (s počátečním datem a časem) | 1 | Týden | *datum spuštění* T17:00:00Z | "Sobota" | {none} | {none} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas, v tomto případě 9. Budoucí opakování projdou každou sobotu v 17:00. |
-| Opakování | Spustit každé úterý, čtvrtek v 17:00 *plus* minutové značky od uložení aplikace logiky| 1 | Týden | {none} | "Úterý", "Čtvrtek" | 17 | {none} | |
-| Opakování | Spustit každou hodinu během pracovní doby | 1 | Týden | {none} | Vyberte všechny dny kromě soboty a neděle. | Vyberte požadované hodiny dne. | Vyberte libovolné minuty hodiny, které chcete. | Pokud je například pracovní doba od 8:00 do 17:00, vyberte jako hodiny dne možnost "8, 9, 10, 11, 12, 13, 14, 15, 16, 17". <p>Pokud je pracovní doba od 8:30 do 17:30, vyberte předchozí hodiny dne plus "30" jako minuty hodiny. |
-| Opakování | Běhjednou denně o víkendech | 1 | Týden | {none} | "Sobota", "Neděle" | Vyberte požadované hodiny dne. | Podle potřeby vyberte libovolné minuty hodiny. | Tento plán běží každou sobotu a neděli podle zadaného plánu. |
-| Opakování | Spustit každých 15 minut dvakrát týdně pouze v pondělí | 2 | Týden | {none} | "Pondělí" | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento rozvrh běží každé druhé pondělí na každých 15-minutové ochranné známky. |
-| Opakování | Spustit každý měsíc | 1 | Month | *datum spuštění* T*startTime*Z | {není k dispozici} | {není k dispozici} | {není k dispozici} | Tento plán nezačíná *dříve* než zadané počáteční datum a čas a vypočítá budoucí opakování počátečního data a času. Pokud nezadáte počáteční datum a čas, tento plán použije datum a čas vytvoření. |
-| Opakování | Spustit každou hodinu po dobu jednoho dne v měsíci | 1 | Month | {viz poznámka} | {není k dispozici} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {viz poznámka} | Pokud nezadáte počáteční datum a čas, tento plán použije datum a čas vytvoření. Chcete-li řídit minuty pro plán opakování, zadejte minuty hodiny, čas zahájení nebo použijte čas vytvoření. Pokud je například čas zahájení nebo čas vytvoření 8:25, tento plán se spustí v 8:25, 9:25, 10:25 a tak dále. |
+| Vzorec <br>Posuvné okno | Spustit každých 15 minut (žádné počáteční datum a čas) | 15 | Minuta | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a pak vypočítá budoucí opakování na základě posledního času spuštění. |
+| Vzorec <br>Posuvné okno | Spustit každých 15 minut (s počátečním datem a časem) | 15 | Minuta | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. |
+| Vzorec <br>Posuvné okno | Spustit každou hodinu, ve hodinu (s počátečním datem a časem) | 1 | Hodina | *StartDate* THH: 00:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí opakování se spouští každou hodinu při označení "00" min. počítá se od počátečního času. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
+| Vzorec <br>Posuvné okno | Spustit každou hodinu, každý den (žádné počáteční datum a čas) | 1 | Hodina | nTato | znemožnit | nTato | nTato | Tento plán se spustí okamžitě a vypočítá budoucí opakování na základě posledního času spuštění. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
+| Vzorec <br>Posuvné okno | Spustit každou hodinu, každý den (s počátečním datem a časem) | 1 | Hodina | *StartDate* T*čas_spuštění*Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, a pak vypočítá budoucí opakování na základě posledního času spuštění. <p>Pokud je frekvence "Week" (týden) nebo "Month", tento plán se spustí jenom na jeden den v týdnu nebo jeden den za měsíc. |
+| Vzorec <br>Posuvné okno | Spouští se každých 15 minut po celé hodině (s počátečním datem a časem). | 1 | Hodina | *StartDate* T00:15:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí opakování se spouštějí při "15" minutové značce, která se počítá od počátečního času, takže v 00:15 dop. 1:15 AM, 2:15 a tak dále. |
+| Opakování | Spustit každých 15 minut po celé hodině (bez počátečního data a času) | 1 | Den | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 15 | Tento plán běží v 00:15 dop. 1:15 AM, 2:15 a tak dále. Tento plán je také stejný jako frekvence "hodina" a čas spuštění s "15" minutami. |
+| Opakování | Spustí se každých 15 minut v zadaném počtu minut (žádné počáteční datum a čas). | 1 | Den | nTato | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento plán se nespustí až do další zadané 15 minutové značky. |
+| Opakování | Spustit každý den v 8 dop. *plus* po uložení aplikace logiky se zobrazí minutová značka | 1 | Den | nTato | znemožnit | 8 | nTato | Bez počátečního data a času se tento plán spustí na základě času uložení aplikace logiky (operace PUT). |
+| Opakování | Spustit každý den v 8:00. (s počátečním datem a časem) | 1 | Den | *StartDate* T08:00:00Z | znemožnit | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas. Budoucí výskyty běží denně v 8:00. | 
+| Opakování | Spustit každý den v 8:00. (žádné počáteční datum a čas) | 1 | Den | nTato | znemožnit | 8 | 00 | Tento plán se spustí každý den v 8:00. |
+| Opakování | Spustit každý den v 8:00 a 4:00 odp. | 1 | Den | nTato | znemožnit | 8, 16 | 0 | |
+| Opakování | Každodenní spuštění v 8:30 AM, 8:45 dop., 4:30 ODP. a 4:45 odp. | 1 | Den | nTato | znemožnit | 8, 16 | 30.45 | |
+| Opakování | Spustit každou sobotu v 5:00 PM (žádné počáteční datum a čas) | 1 | Týden | nTato | Sobota | 17 | 0 | Tento plán se spustí každou sobotu v 5:00./odp.. |
+| Opakování | Spustit každou sobotu v 5:00. odp. (s počátečním datem a časem) | 1 | Týden | *StartDate* T17:00:00Z | Sobota | nTato | nTato | Tento plán se nespustí *dříve* , než je zadané počáteční datum a čas, v tomto případě 9. září 2017 na 5:00 odp. Budoucí opakování se spouštějí každou sobotu v 5:00./odp.. |
+| Opakování | Spustit každé úterý, čtvrtek na 5 odp. *plus* minuty od při uložení aplikace logiky| 1 | Týden | nTato | "Úterý", "čtvrtek" | 17 | nTato | |
+| Opakování | Spustí se každou hodinu během pracovní doby. | 1 | Týden | nTato | Vyberte všechny dny s výjimkou sobotu a neděle. | Vyberte hodiny v požadovaném dni. | Vyberte libovolné minuty hodiny, kterou chcete. | Pokud například máte pracovní dobu 8:00 až 5:00 odp., vyberte "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" jako hodiny dne *plus* "0" jako minuty hodiny. |
+| Opakování | Spouštět každý den každý den na víkendech | 1 | Týden | nTato | "Sobota", "neděle" | Vyberte hodiny v požadovaném dni. | V případě potřeby vyberte libovolné minuty hodiny. | Tento plán se spustí každou sobotu a neděli podle zadaného plánu. |
+| Opakování | Spouští se každých 15 minut dva týdny jenom v pondělí. | 2 | Týden | nTato | Pondělí | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Tento plán se spouští každé druhé pondělí při každé 15 minutové značce. |
+| Opakování | Spustit každý měsíc | 1 | Month | *StartDate* T*čas_spuštění*Z | znemožnit | znemožnit | znemožnit | Tento plán se nespustí *dřív* než zadané počáteční datum a čas a vypočte budoucí opakování v počátečním datu a času. Pokud nezadáte počáteční datum a čas, použije tento plán datum a čas vytvoření. |
+| Opakování | Spustit každou hodinu po dobu jednoho dne měsíčně | 1 | Month | {Viz Poznámka} | znemožnit | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Viz Poznámka} | Pokud nezadáte počáteční datum a čas, použije tento plán datum a čas vytvoření. Chcete-li řídit minuty pro plán opakování, zadejte minuty hodiny, čas spuštění nebo použijte čas vytvoření. Pokud je například čas spuštění nebo čas vytvoření 8:25 dop., bude tento plán spuštěn v 8:25 dop., 9:25, 10:25 a tak dále. |
 |||||||||
 
 <a name="run-once"></a>
 
-## <a name="run-one-time-only"></a>Spustit pouze jednou
+## <a name="run-one-time-only"></a>Spustit pouze jednorázově
 
-Pokud chcete spustit aplikaci logiky pouze najednou v budoucnu, můžete použít **šablonu Plánovač: Spustit jednou úlohy.** Po vytvoření nové aplikace **logiky,** ale před otevřením Návrháře logických aplikací, v části Šablony, v seznamu **Kategorie,** vyberte **plán**a pak vyberte tuto šablonu:
+Pokud chcete aplikaci logiky spustit pouze v jednom okamžiku v budoucnu, můžete použít šablonu **Scheduler: Run jedenkrát Jobs** . Po vytvoření nové aplikace logiky, ale před otevřením návrháře Logic Apps v části **šablony** vyberte v seznamu **kategorie** možnost **plán**a pak vyberte tuto šablonu:
 
-![Vyberte šablonu "Plánovač: Spustit jednou, když jste úlohy"](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
+![Vyberte šablonu Plánovač: spustit po úlohách.](./media/concepts-schedule-automated-recurring-tasks-workflows/choose-run-once-template.png)
 
-Nebo pokud můžete spustit aplikaci logiky s **Při přijetí požadavku HTTP - Požadavek** aktivační událost a předat čas zahájení jako parametr pro aktivační událost. Pro první akci použijte **Delay until - Schedule** akce a zadejte čas, kdy se spustí další akce.
+Nebo, pokud můžete aplikaci logiky spustit, **když se přijme požadavek HTTP – Trigger žádosti** a předejte čas spuštění jako parametr triggeru. Pro první akci použijte akci **zpoždění do-plánovaného** a zadejte čas, kdy se má spustit další akce.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí aktivační události Opakování](../connectors/connectors-native-recurrence.md)
-* [Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí aktivační události Posuvné okno](../connectors/connectors-native-sliding-window.md)
-* [Pozastavení pracovních postupů pomocí akcí zpoždění](../connectors/connectors-native-delay.md)
+* [Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí triggeru opakování](../connectors/connectors-native-recurrence.md)
+* [Vytváření, plánování a spouštění opakovaných úloh a pracovních postupů pomocí posuvné aktivační události okna](../connectors/connectors-native-sliding-window.md)
+* [Pozastavit pracovní postupy s akcemi zpoždění](../connectors/connectors-native-delay.md)

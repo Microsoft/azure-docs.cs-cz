@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169037"
+ms.locfileid: "82232645"
 ---
 # <a name="fqdn-tags-overview"></a>Přehled značek plně kvalifikovaného názvu domény
 
@@ -36,6 +36,7 @@ Následující tabulka uvádí aktuální plně kvalifikované názvy domén, kt
 |App Service Environment (pomocného mechanismu)|Umožňuje odchozí přístup k provozu platformy pomocného mechanismu. Tato značka nepokrývá úložiště pro konkrétní zákazníky a koncové body SQL vytvořené pomocí pomocného mechanismu služby. Ty by měly být povolené prostřednictvím [koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidat ručně.<br><br>Další informace o integraci Azure Firewall s pomocným mechanismem řízení přístupu najdete v tématu [uzamčení App Service Environment](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase).|
 |Azure Backup|Povolí odchozí přístup ke službě Azure Backup Services.|
 |Azure HDInsight|Povolí odchozí přístup pro přenosy platformy HDInsight. Tato značka nepokrývá úložiště pro konkrétní zákazníka ani data SQL ze služby HDInsight. Povolte je pomocí [koncových bodů služby](../virtual-network/tutorial-restrict-network-access-to-resources.md) nebo je přidejte ručně.|
+|WindowsVirtualDesktop (WVD)|Umožňuje odchozí přenosy platformy virtuálních počítačů s Windows. Tato značka nepokrývá úložiště specifické pro nasazení a koncové body Service Bus vytvořené nástrojem WVD. Navíc se vyžadují pravidla sítě DNS a služby správy klíčů. Další informace o integraci Azure Firewall s WVD najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](protect-windows-virtual-desktop.md)v systému Windows. 
 
 > [!NOTE]
 > Při výběru značky plně kvalifikovaného názvu domény v pravidle aplikace musí být pole protokol: port nastavené na **https**.

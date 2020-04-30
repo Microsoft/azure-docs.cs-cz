@@ -4,14 +4,14 @@ description: Přečtěte si, jak nakonfigurovat a změnit výchozí zásady inde
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292071"
+ms.locfileid: "82232066"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -97,6 +97,26 @@ Pokud tento parametr nezadáte, budou mít tyto vlastnosti následující výcho
 
 V [této části](how-to-manage-indexing-policy.md#indexing-policy-examples) najdete příklady zásad indexování pro zahrnutí a vyloučení cest.
 
+## <a name="includeexclude-precedence"></a>Zahrnout/vyloučit prioritu
+
+Pokud jsou zahrnuté cesty a vyloučené cesty v konfliktu, má přednost přesnější cesta.
+
+Tady je příklad:
+
+**Zahrnutá cesta**:`/food/ingredients/nutrition/*`
+
+**Vyloučená cesta**:`/food/ingredients/*`
+
+V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest by se z indexu vyloučila jakákoli data v `food/ingredients` cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*`, která by byla indexována.
+
+Tady jsou některá pravidla pro zahrnuté a vyloučené priority cest v Azure Cosmos DB:
+
+- Hlubší cesty jsou přesnější než zúžení cest. Příklad: `/a/b/?` je přesnější než `/a/?`.
+
+- `/?` Je přesnější než `/*`. Například `/a/?` je přesnější, než `/a/*` `/a/?` má přednost.
+
+- Cesta `/*` musí být buď zahrnutá cesta, nebo Vyloučená cesta.
+
 ## <a name="spatial-indexes"></a>Prostorové indexy
 
 Když v zásadách indexování definujete prostorovou cestu, měli byste definovat, který index ```type``` se má pro tuto cestu použít. Mezi možné typy prostorových indexů patří:
@@ -114,6 +134,8 @@ Azure Cosmos DB ve výchozím nastavení nebudou vytvořeny žádné prostorové
 ## <a name="composite-indexes"></a>Složené indexy
 
 Dotazy, které mají `ORDER BY` klauzuli se dvěma nebo více vlastnostmi, vyžadují složený index. Můžete také definovat složený index pro zlepšení výkonu mnoha dotazů na rovnost a rozsah. Ve výchozím nastavení nejsou definovány žádné složené indexy, takže v případě potřeby byste měli [Přidat složené indexy](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
+
+Na `/*` rozdíl od zahrnutých nebo vyloučených cest nemůžete vytvořit cestu se zástupným znakem. Každá složená cesta má implicitní `/?` na konci cesty, kterou nemusíte zadávat. Složené cesty vedou k skalární hodnotě a toto je jediná hodnota, která je obsažena ve složeném indexu.
 
 Při definování složeného indexu zadáte:
 

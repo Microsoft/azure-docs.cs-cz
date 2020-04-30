@@ -1,6 +1,6 @@
 ---
-title: Přehled projektů Azure DevOps | Dokumenty společnosti Microsoft
-description: Principy hodnoty pro projekty Azure DevOps
+title: Přehled služby Azure DevOps Starter | Microsoft Docs
+description: Vysvětlení hodnoty pro Azure DevOps Starter
 services: devops-project
 documentationcenter: ''
 author: mlearned
@@ -12,70 +12,70 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 05/03/2018
+ms.date: 03/24/2020
 ms.author: mlearned
-ms.openlocfilehash: d39702f8e30046dd3cf634fc67ed7095471cd629
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 99a1fdb8caff9953041c996d0f5581318ce11c66
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "71971475"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233682"
 ---
-# <a name="overview-of-azure-devops-projects"></a>Přehled projektů Azure DevOps
+# <a name="overview-of-azure-devops-starter"></a>Přehled služby Azure DevOps Starter
 
- Azure DevOps Projects usnadňuje schůdky v Azure. Pomůže vám spustit oblíbenou aplikaci ve službě Azure podle vašeho výběru v několika rychlých krocích z webu Azure Portal. 
+ Azure DevOps Starter usnadňuje začátek práce v Azure. Pomůže vám spustit svou oblíbenou aplikaci ve vaší zvolené službě Azure v několika rychlých krocích od Azure Portal. 
 
- DevOps Projects nastavuje vše, co potřebujete pro vývoj, nasazování a monitorování vaší aplikace. Pomocí řídicího panelu DevOps Projects můžete monitorovat potvrzení kódu, sestavení a nasazení, to vše z jednoho zobrazení na webu Azure Portal.
+ DevOps Starter nastaví vše, co potřebujete pro vývoj, nasazování a monitorování vaší aplikace. Pomocí řídicího panelu DevOps Starter můžete monitorovat potvrzení kódu, sestavení a nasazení, a to vše z jednoho zobrazení v Azure Portal.
 
-## <a name="why-should-i-use-devops-projects"></a>Proč bych měl používat DevOps projekty?
+## <a name="advantages-of-using-devops-starter"></a>Výhody používání DevOps Starter
 
-  DevOps Project automatizuje nastavení celého kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.  Můžete začít s existujícím kódem nebo použít některou z poskytnutých ukázkových aplikací. Pak můžete tuto aplikaci rychle nasadit do různých služeb Azure, jako jsou virtuální počítače, služba app service, služby Azure Kubernetes Services (AKS), Azure SQL Database a Azure Service Fabric.  
+  DevOps Starter automatizuje automatickou instalaci celého kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.  Můžete začít s existujícím kódem nebo použít jednu z poskytnutých ukázkových aplikací. Pak můžete tuto aplikaci rychle nasadit do různých služeb Azure, jako jsou Virtual Machines, App Service, Azure Kubernetes Services (AKS), Azure SQL Database a Azure Service Fabric.  
 
-  DevOps Projects provádí veškerou práci pro počáteční konfiguraci kanálu DevOps, včetně všeho od nastavení počátečního úložiště Git, konfigurace kanálu CI/CD, vytvoření prostředku Application Insights pro monitorování a poskytnutí jediného zobrazení celého řešení s vytvořením řídicího panelu DevOps Projects na portálu Azure.
+  DevOps Starter provádí veškerou práci při počáteční konfiguraci kanálu DevOps, včetně všeho od nastavení počátečního úložiště Git, konfigurace kanálu CI/CD, vytvoření prostředku Application Insights pro monitorování a poskytování jediného zobrazení celého řešení s vytvořením řídicího panelu DevOps Projects v Azure Portal.
 
-Projekty DevOps můžete použít k tomuto:
+DevOps Starter můžete použít k těmto akcím:
 
 * Rychle nasadit aplikace do Azure
 * Automatizace nastavení kanálu CI/CD
-* Zobrazení a pochopení správného nastavení kanálu CI/CD
-* Další přizpůsobení kanálů verzí na základě konkrétních scénářů
+* Zobrazení a pochopení způsobu správného nastavení kanálu CI/CD
+* Další přizpůsobení kanálů vydání na základě konkrétních scénářů
 
-## <a name="how-do-i-use-devops-projects"></a>Jak se používají devops projekty?
+## <a name="how-to-use-devops-starter"></a>Jak používat DevOps Starter?
 
-  DevOps Projekty je k dispozici na webu Azure Portal. Můžete vytvořit prostředek DevOps Projekty stejně jako vytvořit jakýkoli jiný prostředek Azure z portálu. Projekty DevOps poskytuje podrobné prostředí podobné průvodcům pro různé možnosti konfigurace.  
+  DevOps Starter je k dispozici z Azure Portal. Vytvoříte DevOps Starter Resource stejným způsobem jako jiný prostředek Azure z portálu. DevOps Projects pro různé možnosti konfigurace poskytuje podrobné prostředí s podobným průvodcem.  
 
 V rámci počátečního nastavení zvolíte několik možností konfigurace. K těmto možnostem patří:
 
-* Použití poskytnuté ukázkové aplikace nebo přinášení vlastního kódu
+* Použití poskytnuté ukázkové aplikace nebo uvedení vlastního kódu
 * Výběr jazyka aplikace
-* Výběr architektury aplikace na základě jazyka
+* Výběr architektury aplikace založené na jazyku
 * Výběr služby Azure (cíl nasazení)
-* Vytvoření nové organizace Azure DevOps nebo použití existující organizace 
-* Výběr předplatného Azure
+* Vytvoření nové organizace Azure DevOps nebo použití stávající organizace 
+* Volba předplatného Azure
 * Výběr umístění služeb Azure
 * Výběr z různých cenových úrovní pro služby Azure
 
-Po použití DevOps projekty, můžete také odstranit všechny prostředky z jednoho místa z řídicího panelu DevOps projekty na portálu Azure.
+Po použití DevOps Starter můžete také odstranit všechny prostředky z jednoho místa na řídicím panelu DevOps Starter na Azure Portal.
 
-## <a name="devops-projects-and-azure-devops-integration"></a>DevOps Projekty a Integrace Azure DevOps
+## <a name="devops-starter-and-azure-devops-integration"></a>Integrace DevOps Starter a Azure DevOps
 
-DevOps Projekty je založen na Azure DevOps. DevOps Projekty automatizuje všechny práce, které jsou potřebné v Azure Pipelines nastavit kanál CI/CD. Vytvoří úložiště Git v nové nebo existující organizaci Azure DevOps a pak potvrdí ukázkovou aplikaci nebo váš stávající kód do nového úložiště Git.  
+DevOps Starter využívá Azure DevOps. DevOps Starter automaticky automatizuje veškerou práci, která je potřeba v Azure Pipelines k nastavení kanálu CI/CD. Vytvoří úložiště Git v nové nebo existující organizaci Azure DevOps a pak potvrdí ukázkovou aplikaci nebo svůj existující kód do nového úložiště Git.  
 
-Automatizace také vytvoří aktivační událost CI pro sestavení tak, aby každé potvrzení nového kódu iniciovalo sestavení. DevOps Projects vytvoří aktivační událost CD a nasadí každé nové úspěšné sestavení do služby Azure podle vašeho výběru.  
+Automatizace také naváže Trigger CI pro sestavení tak, že každé nové potvrzení kódu inicializuje sestavení. DevOps Starter vytvoří Trigger CD a nasadí každé nové úspěšné sestavení do služby Azure podle vašeho výběru.  
 
-Kanály buildu a verze se dají přizpůsobit pro další scénáře. Kromě toho můžete klonovat sestavení a uvolnění kanály pro použití v jiných projektech.
+Kanály buildu a verze se dají přizpůsobit pro další scénáře. Kromě toho můžete klonovat kanály sestavení a vydání pro použití v jiných projektech.
 
-Po vytvoření projektu DevOps můžete:
+Po vytvoření DevOps Starter můžete:
 
 * Přizpůsobit kanál sestavení a verzí
 * Pomocí žádostí o přijetí změn spravovat tok kódu a udržovat vysokou kvalitu
 * Testovat a sestavovat každé potvrzení před sloučením kódu kvůli zvýšení kvality
-* Sledujte nevyřízené položky a problémy spolu s vaší aplikací
+* Sledujte své nevyřízené položky a problémy přímo spolu s vaší aplikací.
 
-## <a name="how-do-i-start-using-devops-projects"></a>Jak začít používat projekty DevOps?
+## <a name="getting-started-with-devops-starter"></a>Začínáme s DevOps Starter
 
-* [Začínáme s projekty DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
+* [Začínáme s DevOps Starter](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github)
 
-##  <a name="devops-projects-videos"></a>Videa devOps Projekty
+##  <a name="devops-starter-videos"></a>Úvodní videa pro DevOps
 
-* [Vytvoření CI/CD s projekty Azure DevOps](https://www.youtube.com/watch?v=NuYDAs3kNV8)
+* [Vytvoření CI/CD s využitím Azure DevOps Starter](https://www.youtube.com/watch?v=NuYDAs3kNV8)
