@@ -1,6 +1,6 @@
 ---
-title: E-mailová oznámení v PIM – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Popisuje e-mailová oznámení v privilegované správě identit (PIM) služby Azure AD.
+title: E-mailová oznámení v PIM-Azure Active Directory | Microsoft Docs
+description: Popisuje e-mailová oznámení v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -11,107 +11,107 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
-ms.date: 04/21/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 201abd24bc4056337f1ffecd2dabd002ae352c74
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 02fbfc83c16cb13376cce820f19b247a7cd7db59
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866423"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232304"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailová oznámení v PIM
 
-Privilegovaná správa identit (PIM) vás informuje o tom, kdy dojde k důležitým událostem v organizaci Azure Active Directory (Azure AD), například když je role přiřazená nebo aktivovaná. Správa privilegovaných identit vás informuje tím, že vám a ostatním účastníkům pošle e-mailová oznámení. Tyto e-maily mohou také obsahovat odkazy na příslušné úkoly, například aktivaci nebo obnovení role. Tento článek popisuje, jak tyto e-maily vypadají, kdy jsou odeslány a kdo je přijímá.
+Privileged Identity Management (PIM) vám umožní zjistit, kdy se v organizaci Azure Active Directory (Azure AD) vyskytují důležité události, například když je přiřazena nebo aktivovaná role. Privileged Identity Management vás informují o tom, že vám pošle e-mailová oznámení a další účastníky. Tyto e-maily můžou zahrnovat také odkazy na relevantní úkoly, jako je aktivace nebo obnova role. Tento článek popisuje, co tyto e-maily vypadají jako při jejich posílání a kdo je přijímá.
 
 ## <a name="sender-email-address-and-subject-line"></a>E-mailová adresa odesílatele a řádek předmětu
 
-E-maily odeslané ze správy privilegovaných identit pro role prostředků Azure AD i Azure mají následující e-mailovou adresu odesílatele:
+E-maily odeslané z Privileged Identity Management pro role prostředků Azure AD a Azure mají následující e-mailovou adresu odesílatele:
 
-- E-mailová adresa: **azure-noreply\@microsoft.com**
+- E-mailová adresa: **Azure\@-Microsoft.com Reply**
 - Zobrazovaný název: Microsoft Azure
 
 Tyto e-maily obsahují předponu **PIM** v řádku předmětu. Tady je příklad:
 
-- PIM: Alain Charon byl trvale přiřazen role Backup Reader
+- PIM: Alain Charon byl trvale přiřazen k roli čtečky zálohování.
 
 ## <a name="notifications-for-azure-ad-roles"></a>Oznámení pro role Azure AD
 
-Správa privilegovaných identit odesílá e-maily, když dojde k následujícím událostem pro role Azure AD:
+Privileged Identity Management posílá e-maily, pokud dojde k následujícím událostem pro role Azure AD:
 
-- Pokud aktivace privilegované role čeká na schválení
+- Když je aktivace privilegované role čeká na schválení
 - Po dokončení žádosti o aktivaci privilegované role
-- Když je povolena správa privilegovaných identit Azure AD
+- Když je povolená Azure AD Privileged Identity Management
 
-Kdo obdrží tyto e-maily pro role Azure AD závisí na vaší roli, události a nastavení oznámení:
+Kdo obdrží tyto e-maily pro role Azure AD, závisí na vaší roli, události a nastavení oznámení:
 
-| Uživatel | Aktivace role čeká na schválení. | Požadavek na aktivaci role je dokončen. | PIM je povolena |
+| Uživatel | Aktivace role čeká na schválení. | Žádost o aktivaci role je dokončená. | PIM je povolený. |
 | --- | --- | --- | --- |
-| Správce privilegovaných rolí</br>(Aktivováno/způsobilé) | Ano</br>(pouze v případě, že nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Ano |
-| Správce zabezpečení</br>(Aktivováno/způsobilé) | Ne | Ano* | Ano |
-| Globální správce</br>(Aktivováno/způsobilé) | Ne | Ano* | Ano |
+| Správce privilegovaných rolí</br>(Aktivováno/způsobilo) | Ano</br>(pouze pokud nejsou zadáni žádní explicitní schvalovatelé) | Ano* | Ano |
+| Správce zabezpečení</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
+| Globální správce</br>(Aktivováno/způsobilo) | Ne | Ano* | Ano |
 
-\*Pokud je nastavení [ **Oznámení** ](pim-how-to-change-default-settings.md#notifications) nastaveno na **Povolit**.
+\*Pokud je [nastavení **oznámení** ](pim-how-to-change-default-settings.md#notifications) nastaveno na **Povolit**.
 
-Následující text ukazuje ukázkový e-mail, který se odesílá, když uživatel aktivuje roli Azure AD pro fiktivní organizaci Contoso.
+Níže vidíte příklad e-mailu, který se pošle, když uživatel aktivuje roli Azure AD pro fiktivní organizaci Contoso.
 
-![Nový e-mail správy privilegovaných identit pro role Azure AD](./media/pim-email-notifications/email-directory-new.png)
+![Nový e-mailová Privileged Identity Management pro role Azure AD](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>Týdenní správa privilegovaných identit digest e-mail pro role Azure AD
+### <a name="weekly-privileged-identity-management-digest-email-for-azure-ad-roles"></a>E-mail s Privileged Identity Management hodnotou Digest pro role Azure AD
 
-Týdenní souhrnný e-mail správy privilegovaných identit pro role Azure AD se odesílá správcům privilegovaných rolí, správcům zabezpečení a globálním správcům, kteří povolili správu privilegovaných identit. Tento týdenní e-mail poskytuje snímek aktivit správy privilegovaných identit pro tento týden, stejně jako přiřazení privilegovaných rolí. Je k dispozici jenom pro klienty ve veřejném cloudu. Zde je příklad e-mailu:
+Týdenní Privileged Identity Management souhrnný e-mail pro role Azure AD se pošle správcům privilegovaných rolí, správcům zabezpečení a globálním správcům, kteří povolili Privileged Identity Management. Tento týdenní e-mail poskytuje snímek Privileged Identity Management aktivity pro týden a také přiřazení privilegovaných rolí. Je dostupná jenom pro organizace Azure AD ve veřejném cloudu. Tady je příklad e-mailu:
 
-![Týdenní správa privilegovaných identit digest e-mail pro role Azure AD](./media/pim-email-notifications/email-directory-weekly.png)
+![E-mail s Privileged Identity Management hodnotou Digest pro role Azure AD](./media/pim-email-notifications/email-directory-weekly.png)
 
 E-mail obsahuje čtyři dlaždice:
 
 | dlaždici | Popis |
 | --- | --- |
-| **Uživatelé aktivováni** | Počet, kolikrát uživatelé aktivovali svou způsobilou roli uvnitř klienta. |
-| **Uživatelé se trvalé** | Počet trvalých nastavení uživatelů se způsobilým přiřazením. |
-| **Přiřazení rolí ve správě privilegovaných identit** | Počet, kolikrát je uživatelům přiřazena způsobilá role v rámci správy privilegovaných identit. |
-| **Přiřazení rolí mimo PIM** | Počet, kolikrát uživatelům jsou přiřazeny trvalé role mimo privilegované správy identit (uvnitř Azure AD). |
+| **Aktivované uživatelé** | Počet, kolikrát uživatelé aktivovali svou oprávněnou roli v rámci organizace. |
+| **Uživatelé, kteří udělali trvalé** | Počet, kolikrát se uživatelé s oprávněným přiřazením udělali jako trvalé |
+| **Přiřazení rolí v Privileged Identity Management** | Počet, kolikrát se uživatelům přiřadí oprávněná role v Privileged Identity Management. |
+| **Přiřazení rolí mimo PIM** | Počet, kolikrát se uživatelům přiřadí trvalá role mimo Privileged Identity Management (uvnitř Azure AD). |
 
-**Přehled hlavních rolí** v části uvádí prvních pět rolí ve vašem tenantovi na základě celkového počtu stálých a způsobilých správců pro každou roli. Odkaz **Přijmout akci** otevře průvodce [PIM,](pim-security-wizard.md) kde můžete převést trvalé správce na oprávněné správce v dávkách.
+V části **Přehled hlavních rolí** najdete seznam pěti rolí ve vaší organizaci v závislosti na celkovém počtu trvalých a oprávněných správců pro jednotlivé role. Odkaz **Přijmout akci** otevře [Průvodce PIM](pim-security-wizard.md) , kde můžete převést trvalé správce na oprávněné správce v dávkách.
 
-## <a name="email-timing-for-activation-approvals"></a>Časování e-mailu pro schválení aktivace
+## <a name="email-timing-for-activation-approvals"></a>Načasování e-mailu pro schválení aktivace
 
-Když uživatelé aktivují svou roli a nastavení role vyžaduje schválení, schvalovatelé obdrží tři e-maily pro každé schválení:
+Když uživatelé aktivují svoji roli a nastavení role vyžaduje schválení, obdrží schvalovatelé tři e-maily pro každé schválení:
 
-- Žádost o schválení nebo zamítnutí žádosti o aktivaci uživatele (odeslaná schvalovacím strojem žádosti)
-- Požadavek uživatele je schválen (odeslán o schválení žádosti)
-- Role uživatele je aktivována (odeslána službou Privileged Identity Management)
+- Žádost o schválení nebo zamítnutí žádosti o aktivaci uživatele (odesílané schvalovacím modulem žádosti)
+- Žádost uživatele je schválená (posílá schvalovacímu modulu žádosti).
+- Aktivuje se role uživatele (odesílá se Privileged Identity Management).
 
-První dva e-maily odeslané strojem pro schválení žádosti mohou být zpožděny. V současné době trvá 90% e-mailů tři až deset minut, ale pro 1% zákazníky to může být mnohem delší, až patnáct minut.
+Prvních dvou e-mailů odesílaných modulem pro schvalování požadavků je možné zpozdit. V současné době je 90% e-mailů trvat tři až deset minut, ale 1% zákazníků může být mnohem delší než 15 minut.
 
-Pokud je žádost o schválení schválena na webu Azure Portal před odesláním prvního e-mailu, první e-mail se už neaktivuje a ostatní schvalovatelé nebudou e-mailem upozorněni na žádost o schválení. Může se zdát, že nedostali e-mail, ale je to očekávané chování.
+Pokud je žádost o schválení schválená v Azure Portal před odesláním prvního e-mailu, první e-mail se už neaktivuje a Další schvalovatelé nebudou dostávat e-mailem žádosti o schválení. Může se zdát, že se mu nedostal e-mail, ale jde o očekávané chování.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>PIM e-maily pro role prostředků Azure
+## <a name="pim-emails-for-azure-resource-roles"></a>PIM – e-maily pro role prostředků Azure
 
-Správa privilegovaných identit odesílá e-maily vlastníkům a správcům přístupu uživatelů, když dojde k následujícím událostem pro role prostředků Azure:
+Privileged Identity Management posílá e-maily vlastníkům a správcům přístupu uživatelů při výskytu následujících událostí pro role prostředků Azure:
 
-- Pokud přiřazení role čeká na schválení
-- Když je role přiřazena
-- Když brzy vyprší platnost role
-- Je-li role způsobilá k prodloužení
-- Při obnově role koncovým uživatelem
+- Když přiřazení role čeká na schválení
+- Při přiřazení role
+- Když brzo vyprší platnost role
+- Když je role oprávněná k rozšiřování
+- Při obnovování role koncovým uživatelem
 - Po dokončení žádosti o aktivaci role
 
-Správa privilegovaných identit odesílá e-maily koncovým uživatelům, když dojde k následujícím událostem pro role prostředků Azure:
+Privileged Identity Management odesílá e-maily koncovým uživatelům, když dojde k těmto událostem pro role prostředků Azure:
 
-- Když je uživateli přiřazena role
+- Když je role přiřazena uživateli
 - Po vypršení platnosti role uživatele
-- Když je role uživatele rozšířena
+- Když je rozšířená role uživatele
 - Po dokončení žádosti o aktivaci role uživatele
 
-Následující text ukazuje ukázkový e-mail, který se odesílá, když je uživateli přiřazena role prostředku Azure pro fiktivní organizaci Contoso.
+Níže vidíte příklad e-mailu, který se pošle, když se uživateli přiřadí role prostředku Azure pro fiktivní organizaci Contoso.
 
-![Nový e-mail správy privilegovaných identit pro role prostředků Azure](./media/pim-email-notifications/email-resources-new.png)
+![Nový e-mailová Privileged Identity Management pro role prostředků Azure](./media/pim-email-notifications/email-resources-new.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Konfigurace nastavení role Azure AD ve správě privilegovaných identit](pim-how-to-change-default-settings.md)
-- [Schválení nebo zamítnutí požadavků na role Azure AD ve správě privilegovaných identit](azure-ad-pim-approval-workflow.md)
+- [Konfigurace nastavení role Azure AD v Privileged Identity Management](pim-how-to-change-default-settings.md)
+- [Schválení nebo zamítnutí žádostí o role Azure AD v Privileged Identity Management](azure-ad-pim-approval-workflow.md)

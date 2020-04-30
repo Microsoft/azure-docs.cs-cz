@@ -1,30 +1,25 @@
 ---
-title: Přehled služby Azure API Management Gateway pro místní hostování | Microsoft Docs
-description: Seznamte se s tím, jak brána Azure API Management Gateway umožňuje organizacím spravovat rozhraní API ve hybridních a cloudových prostředích.
+title: Přehled brány pro samoobslužné hostování | Microsoft Docs
+description: Přečtěte si, jak funkce samoobslužná brána v Azure API Management pomáhá organizacím spravovat rozhraní API v hybridních i cloudových prostředích.
 services: api-management
 documentationcenter: ''
 author: vlvinogr
 manager: gwallace
 editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/26/2020
 ms.author: apimpm
-ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73513715"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232968"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>Přehled API Management brány pro samoobslužné hostování
+# <a name="self-hosted-gateway-overview"></a>Přehled brány v místním prostředí
 
-Tento článek vysvětluje, jak funkce samoobslužná brána umožňuje hybridní a multi-cloudovou správu rozhraní API, prezentuje svoji architekturu vysoké úrovně a zvýrazňuje základní funkce.
-
-> [!NOTE]
-> Funkce brány pro samoobslužné hostování je ve verzi Preview. V rámci verze Preview je brána v místním prostředí dostupná jenom pro vývojáře a úrovně Premium bez dalších poplatků. Úroveň pro vývojáře je omezená na jediné nasazení samoobslužné brány.
+Tento článek vysvětluje, jak funkce samoobslužná brána v Azure API Management umožňuje hybridní a multi-cloudovou správu rozhraní API, prezentuje svoji architekturu na nejvyšší úrovni a zvýrazňuje její možnosti.
 
 ## <a name="hybrid-and-multi-cloud-api-management"></a>Hybridní a multi-cloudová Správa API
 
@@ -42,20 +37,27 @@ Ve výchozím nastavení jsou všechny tyto komponenty nasazené v Azure, což z
 
 ![Tok provozu API bez bran pro samoobslužné hostování](media/self-hosted-gateway-overview/without-gateways.png)
 
-Nasazení bran v místním prostředí do stejného prostředí jako implementace rozhraní API back-endu a jejich přidání do služby API Management umožňuje tok provozu rozhraní API přímo do back-endové rozhraní API, což zlepšuje latenci, optimalizuje náklady na přenos dat a umožňuje dodržování předpisů a zároveň přitom zachovává výhody správy a zjišťování všech rozhraní API v rámci organizace bez ohledu na to, kde jsou jejich implementace hostované.
+Nasazení bran v místním prostředí do stejných prostředí, kde jsou hostované implementace rozhraní API back-endu, umožňují tok dat rozhraní API přímo do back-endové rozhraní API, což zlepšuje latenci, optimalizuje náklady na přenos dat a umožňuje dodržování předpisů a současně zachovává výhody, které mají jediný bod správy, pozorovatel a zjišťování všech rozhraní API v rámci organizace bez ohledu na to, kde jsou jejich implementace hostované.
 
 ![Tok provozu rozhraní API s branami pro samoobslužné hostování](media/self-hosted-gateway-overview/with-gateways.png)
 
 ## <a name="packaging-and-features"></a>Balení a funkce
 
-Brána v místním prostředí je v rámci každé služby API Management v rámci každé služby nainstalovaná do Azure v podobě kontejnerem funkčně ekvivalentní verze spravované brány. Samoobslužná brána je k dispozici jako kontejner Docker založený na systému Linux z Microsoft Container Registry. Dá se nasadit do Docker, Kubernetes nebo do jiného řešení orchestrace kontejnerů, které běží na stolních počítačích, na serverovém clusteru nebo v cloudové infrastruktuře.
+Brána v místním prostředí je v rámci každé služby API Management v rámci každé služby nainstalovaná do Azure v podobě kontejnerem funkčně ekvivalentní verze spravované brány. Samoobslužná brána je k dispozici jako [kontejner](https://aka.ms/apim/sputnik/dhub) Docker založený na systému Linux z Microsoft Container Registry. Dá se nasadit do Docker, Kubernetes nebo jakékoli jiné řešení orchestrace kontejnerů, které běží na serverovém clusteru místně, v cloudové infrastruktuře nebo pro účely vyhodnocení a vývoje na osobním počítači.
 
-> [!IMPORTANT]
-> Některé funkce, které jsou k dispozici ve spravované bráně, ještě nejsou k dispozici ve verzi Preview. Hlavně: protokolování do zásad centra událostí, Service Fabric Integration, HTTP/2 pro příjem dat. V samoobslužné bráně není k dispozici žádný plán k zpřístupnění integrované mezipaměti.
+Ve spravovaných branách **nejsou k dispozici** následující funkce bran pro místní hostování:
+
+- Protokoly služby Azure Monitor
+- Nadřazený (back-end) TLS verze a Správa šifr
+- Ověření certifikátů serveru a klienta pomocí [kořenových certifikátů certifikační autority](api-management-howto-ca-certificates.md) odeslaných do služby API Management Pokud chcete přidat podporu pro vlastní certifikační autoritu, přidejte vrstvu do image kontejneru samoobslužná brána, která nainstaluje kořenový certifikát certifikační autority.
+- Integrace s [Service Fabric](../service-fabric/service-fabric-api-management-overview.md)
+- Obnovení relace TLS
+- Opětovné vyjednávání klientského certifikátu. To znamená, že pro klienty rozhraní API pro [ověřování klienta](api-management-howto-mutual-certificates-for-clients.md) musí být certifikáty přítomné jako součást počáteční metody handshake protokolu TLS. Pokud chcete zajistit, aby se při konfiguraci vlastního názvu hostitele pro samoobslužnou bránu povolilo nastavení certifikátu klienta vyjednat.
+- Integrovaná mezipaměť. V tomto [dokumentu](api-management-howto-cache-external.md) se dozvíte, jak používat externí mezipaměť v samoobslužných branách.
 
 ## <a name="connectivity-to-azure"></a>Připojení k Azure
 
-Samoobslužná brána vyžaduje odchozí připojení TCP/IP k Azure na portu 443. Každá brána, která je v místním prostředí, musí být přidružená k jedné API Management službě a nakonfigurovaná přes svou rovinu správy. Samoobslužná brána používá připojení k Azure pro:
+Samoobslužné brány vyžadují odchozí připojení TCP/IP k Azure na portu 443. Každá brána v místním prostředí musí být přidružená k jedné API Management službě a nakonfigurovaná přes rovinu správy. Samoobslužná brána používá připojení k Azure pro:
 
 -   Hlášení stavu odesláním prezenčních zpráv každou minutu
 -   Pravidelně kontroluje (každých 10 sekund) a používá aktualizace konfigurace, kdykoliv jsou k dispozici.
@@ -64,22 +66,22 @@ Samoobslužná brána vyžaduje odchozí připojení TCP/IP k Azure na portu 443
 
 Když dojde ke ztrátě připojení k Azure, místní hostitelská brána nebude moci přijímat aktualizace konfigurace, nahlásit jejich stav nebo nahrát telemetrii.
 
-Samoobslužná brána je navržená tak, aby se nezdařila statická, a mohla by zacházet s dočasnou ztrátou připojení k Azure. Dá se nasadit s povolenou místní zálohou konfigurace nebo bez ní. V bývalém případě budou brány v místním prostředí pravidelně ukládat záložní kopii konfigurace na trvalém svazku připojeném ke kontejneru nebo pod ním.
+Samoobslužná brána je navržená tak, aby byla neúspěšná a mohla docházet k dočasné ztrátě připojení k Azure. Dá se nasadit s místní zálohou konfigurace nebo bez ní. V bývalém případě budou brány v místním prostředí pravidelně ukládat záložní kopii poslední stažené konfigurace na trvalém svazku připojeném ke kontejneru nebo pod.
 
 Když je zálohování konfigurace vypnuté a dojde k přerušení připojení k Azure:
 
--   Používané samoobslužné brány budou dál fungovat s použitím kopie konfigurace v paměti.
+-   Spouštění bran v místním prostředí bude i nadále fungovat s použitím kopie konfigurace v paměti.
 -   Zastavení samoobslužných bran se nebude moct spustit.
 
 Když je zapnuté Zálohování konfigurace a dojde k přerušení připojení k Azure:
 
--   Používané samoobslužné brány budou dál fungovat s použitím kopie konfigurace v paměti.
--   Zastavení místních bran se spustí pomocí záložní kopie konfigurace.
+-   Spouštění bran v místním prostředí bude i nadále fungovat s použitím kopie konfigurace v paměti.
+-   Zastavené samoobslužné brány budou moci začít používat záložní kopii konfigurace.
 
 Po obnovení připojení se v každé samoobslužné bráně ovlivněné výpadkem automaticky znovu připojí ke své přidružené API Management službě a stáhnou všechny aktualizace konfigurace, ke kterým došlo, když brána byla "offline".
 
 ## <a name="next-steps"></a>Další kroky
 
 -   [Další základní informace o tomto tématu najdete na dokumentu White Paper.](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [Nasazení samoobslužné brány do Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [Nasazení samoobslužné brány do Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [Nasazení samoobslužné brány do Docker](how-to-deploy-self-hosted-gateway-docker.md)
+-   [Nasazení samoobslužné brány do Kubernetes](how-to-deploy-self-hosted-gateway-kubernetes.md)

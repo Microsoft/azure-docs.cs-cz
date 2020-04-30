@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 6b9732aab9e3fe0d26b4c572efe87c3a9d3e29f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535345"
+ms.locfileid: "82583321"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -40,7 +40,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 1. [Zkontrolujte](hyper-v-migration-architecture.md) architekturu migrace technologie Hyper-V.
 2. [Kontrola](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Požadavky na hostitele Hyper-V a adresy URL Azure, ke kterým mají hostitelé Hyper-V přístup.
 3. [Zkontrolujte](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) požadavky na virtuální počítače Hyper-V, které chcete migrovat. Virtuální počítače Hyper-V musí splňovat [požadavky na virtuální počítače Azure](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
-2. Doporučujeme, abyste v této sérii dokončili předchozí kurzy. V [prvním kurzu](tutorial-prepare-hyper-v.md) se dozvíte, jak nastavit Azure a Hyper-V pro migraci. V druhém kurzu se dozvíte, jak [vyhodnotit virtuální počítače Hyper-V] (kurz-vyhodnocení – Hyper-v.md před migrací pomocí Azure Migrate: posouzení serveru). 
+2. Doporučujeme, abyste v této sérii dokončili předchozí kurzy. V [prvním kurzu](tutorial-prepare-hyper-v.md) se dozvíte, jak nastavit Azure a Hyper-V pro migraci. Druhý kurz ukazuje, jak [vyhodnotit virtuální počítače Hyper-V](tutorial-assess-hyper-v.md) před migrací pomocí Azure Migrate: posouzení serveru. 
     > [!NOTE]
     > I když doporučujeme, abyste si vyzkoušeli posouzení, nemusíte před migrací virtuálních počítačů spustit posouzení.
     > Pro migraci virtuálních počítačů Hyper-V Azure Migrate: Migrace serveru spouští agenty softwaru (Microsoft Azure poskytovatele Site Recovery a agenta Microsoft Azure Recovery Service) na hostitelích Hyper-V nebo na uzlech clusteru, aby bylo možné orchestrovat a replikovat data do Azure Migrate. [Zařízení Azure Migrate](migrate-appliance.md) se nepoužívá pro migraci technologie Hyper-V.

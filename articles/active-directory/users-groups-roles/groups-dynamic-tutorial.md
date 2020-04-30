@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "74027114"
+ms.locfileid: "82582875"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Kurz: Automatické přidávání nebo odebírání členů skupin
 
-V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele do skupin zabezpečení nebo skupin Office 365 nebo je z nich odebírat, abyste to pokaždé nemuseli dělat ručně. Při každé změně jakýchkoli vlastností uživatele nebo zařízení Azure AD vyhodnotí všechna dynamická pravidla skupin ve vašem tenantovi a zjistí, jestli má změna přidat nebo odebrat členy.
+V Azure Active Directory (Azure AD) můžete automaticky přidávat uživatele do skupin zabezpečení nebo skupin Office 365 nebo je z nich odebírat, abyste to pokaždé nemuseli dělat ručně. Při každé změně vlastností uživatele nebo zařízení vyhodnotí Azure AD všechna dynamická pravidla skupin ve vaší organizaci Azure AD, aby viděli, jestli by tato změna měla přidat nebo odebrat členy.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tato funkce vyžaduje jednu licenci Azure AD Premium pro vás jako globální správce tenanta. Pokud ho nemáte, v Azure AD vyberte **licence** > **produkty** > **vyzkoušet/koupit**.
+Tato funkce vyžaduje jednu licenci Azure AD Premium pro vás jako globální správce organizace. Pokud ho nemáte, v Azure AD vyberte **licence** > **produkty** > **vyzkoušet/koupit**.
 
-Uživatelům, kteří mají být členy dynamických skupin, licence přiřazovat nemusíte. V tenantovi potřebujete pouze minimální počet dostupných licencí Azure AD Premium P1 pro pokrytí všech takových uživatelů. 
+Uživatelům, kteří mají být členy dynamických skupin, licence přiřazovat nemusíte. K pokrytí všech takových uživatelů potřebujete jenom minimální počet dostupných licencí Azure AD Premium P1 v organizaci. 
 
 ## <a name="create-a-group-of-guest-users"></a>Vytvoření skupiny uživatelů typu host
 
 Nejprve vytvoříte skupinu pro uživatele typu host, kteří jsou všichni z jedné partnerské společnosti. Potřebují zvláštní licencování, takže je efektivnější pro tento účel vytvořit skupinu.
 
-1. Přihlaste se k Azure Portalhttps://portal.azure.com) (pomocí účtu, který je globálním správcem vašeho tenanta).
+1. Přihlaste se k Azure Portalhttps://portal.azure.com) (pomocí účtu, který je globálním správcem vaší organizace.
 2. Vyberte **Azure Active Directory** > **skupiny** > **Nová skupina**.
    ![výběrem příkazu zahájíte novou skupinu.](./media/groups-dynamic-tutorial/new-group.png)
 3. V okně **Skupina**:
@@ -80,7 +80,7 @@ Teď, když máte novou skupinu, můžete použít licence, které tito uživate
 
 ## <a name="remove-guests-from-all-users-group"></a>Odebrání hostů ze skupiny Všichni uživatelé
 
-Možná je vaším konečným správním plánem přiřadit všechny uživatele typu host k vlastním skupinám podle společnosti. Teď můžete také změnit skupinu **Všichni uživatelé** tak, aby byla vyhrazená pouze pro členy ve vašem tenantovi. Pak ji můžete použít k přiřazování aplikací a licencí specifických pro vaši domovskou organizaci.
+Možná je vaším konečným správním plánem přiřadit všechny uživatele typu host k vlastním skupinám podle společnosti. Nyní můžete změnit skupinu **Všichni uživatelé** tak, aby byla vyhrazena pouze pro uživatele, kteří jsou ve vaší organizaci. Pak ji můžete použít k přiřazování aplikací a licencí specifických pro vaši domovskou organizaci.
 
    ![Změna skupiny Všichni uživatelé tak, aby byla pouze pro členy](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ Možná je vaším konečným správním plánem přiřadit všechny uživatele 
 
 **Odebrání skupiny uživatelů typu host**
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí účtu, který má k tenantovi oprávnění globálního správce.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu, který je globálním správcem vaší organizace.
 2. Vyberte **Azure Active Directory** > **skupiny**. Vyberte skupinu **Uživatelé typu host – Contoso**, vyberte tři tečky (...) a pak vyberte **Odstranit**. Když odstraníte skupinu, odeberou se všechny přiřazené licence.
 
 **Obnovení skupiny Všichni uživatelé**

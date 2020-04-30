@@ -14,60 +14,59 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3010ee7b996c9d3e96082edeb9447c960da321bd
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77162306"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509759"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
 Můžete si zobrazit dva typy protokolů pro Azure Event Hubs:
 
-* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené.
+* **[Protokoly aktivit](../azure-monitor/platform/platform-logs-overview.md)**: tyto protokoly obsahují informace o operacích provedených v rámci úlohy. Protokoly jsou vždycky povolené. Položky protokolu aktivit můžete zobrazit tak, že v levém podokně pro obor názvů centra událostí v Azure Portal vyberete **Protokol aktivit** . Například: "vytvořit nebo aktualizovat obor názvů", "vytvořit nebo aktualizovat centrum událostí".
+
+    ![Protokol aktivit pro obor názvů Event Hubs](./media/event-hubs-diagnostic-logs/activity-log.png)
 * **[Diagnostické protokoly](../azure-monitor/platform/platform-logs-overview.md)**: můžete nakonfigurovat diagnostické protokoly pro rozsáhlejší zobrazení všeho, co se stane s úlohou. Diagnostické protokoly zahrnují aktivity z doby, kdy se úloha vytvoří, až do odstranění úlohy, včetně aktualizací a aktivit, ke kterým dojde, když je úloha spuštěná.
 
-## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
+    V následující části se dozvíte, jak povolit diagnostické protokoly pro obor názvů Event Hubs.
 
+## <a name="enable-diagnostic-logs"></a>Povolení diagnostických protokolů
 Diagnostické protokoly jsou ve výchozím nastavení zakázané. K povolení diagnostických protokolů použijte následující postup:
 
-1.  V [Azure Portal](https://portal.azure.com)v části **monitorování a Správa**klikněte na **diagnostické protokoly**.
+1.  V [Azure Portal](https://portal.azure.com)přejděte do svého oboru názvů Event Hubs. 
+2. V levém podokně vyberte **nastavení diagnostiky** v části **monitorování** a pak vyberte **+ Přidat nastavení diagnostiky**. 
 
-    ![Navigační podokno pro diagnostické protokoly](./media/event-hubs-diagnostic-logs/image1.png)
+    ![Stránka nastavení diagnostiky – přidat nastavení diagnostiky](./media/event-hubs-diagnostic-logs/diagnostic-settings-page.png)
+4. V části **Podrobnosti kategorie** vyberte **typy diagnostických protokolů** , které chcete povolit. Podrobnosti o těchto kategoriích najdete dále v tomto článku. 
+5. V části **Podrobnosti o cíli** nastavte cíl archivu (cíl), který chcete. například účet úložiště, centrum událostí nebo Log Analytics pracovní prostor.
 
-2.  Klikněte na prostředek, který chcete monitorovat.
+    ![Přidat stránku nastavení diagnostiky](./media/event-hubs-diagnostic-logs/aDD-diagnostic-settings-page.png)
+6.  Kliknutím na tlačítko **Uložit** na panelu nástrojů uložte nastavení diagnostiky.
 
-3.  Klikněte na **Zapnout diagnostiku**.
+    Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
 
-    ![Zapnout diagnostické protokoly](./media/event-hubs-diagnostic-logs/image2.png)
-
-4.  V případě **stavu**klikněte na možnost **zapnuto**.
-
-    ![Změna stavu diagnostických protokolů](./media/event-hubs-diagnostic-logs/image3.png)
-
-5.  Nastavte cíl archivu, který chcete; například účet úložiště, centrum událostí nebo protokoly Azure Monitor.
-
-6.  Uložte nová nastavení diagnostiky.
-
-Nové nastavení se projeví přibližně po dobu 10 minut. Pak se protokoly objeví v nakonfigurovaném cíli archivace v podokně **diagnostické protokoly** .
-
-Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
+    Další informace o konfiguraci diagnostiky najdete v tématu [Přehled diagnostických protokolů Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Kategorie diagnostických protokolů
 
-Event Hubs zachycuje diagnostické protokoly pro dvě kategorie:
+Event Hubs zachycuje diagnostické protokoly pro následující kategorie:
 
-* **Protokoly archivu**: protokoly související s Event Hubs archivy, konkrétně protokoly týkající se chyb archivu.
-* **Provozní protokoly**: informace o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
+- **Protokoly archivu**: protokoly související s Event Hubs archivy, konkrétně protokoly týkající se chyb archivu.
+- **Provozní protokoly**: informace o tom, co se děje během operací Event Hubs, konkrétně typ operace, včetně vytvoření centra událostí, použitých prostředků a stavu operace.
+- **Protokoly automatického škálování**: informace o operacích automatického škálování se provádí v oboru názvů Event Hubs. 
+- **Protokoly koordinátora Kafka** – informace o operacích koordinátora Kafka souvisejících s Event Hubs. 
+- **Kafka User logs**: informace o uživatelských operacích Kafka souvisejících s Event Hubs. 
+- **Událost připojení Event Hubs virtuální sítě (VNET)**: informace o Event Hubs událostech připojení k virtuální síti. 
+- **Klíčové uživatelské protokoly spravované zákazníkem**: informace o operacích souvisejících s klíčem spravovaným zákazníkem. 
 
-## <a name="diagnostic-logs-schema"></a>Schéma diagnostických protokolů
 
-Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následujících částech.
+    Všechny protokoly jsou uložené ve formátu JavaScript Object Notation (JSON). Každá položka má pole řetězce, která používají formát popsaný v následujících částech.
 
-### <a name="archive-logs-schema"></a>Schéma protokolů archivu
+## <a name="archive-logs-schema"></a>Schéma protokolů archivu
 
 Řetězce JSON protokolu archivu obsahují prvky uvedené v následující tabulce:
 
@@ -105,7 +104,7 @@ Následující kód je příkladem řetězce JSON protokolu archivu:
 }
 ```
 
-### <a name="operational-logs-schema"></a>Schéma provozních protokolů
+## <a name="operational-logs-schema"></a>Schéma provozních protokolů
 
 Řetězce JSON provozního protokolu obsahují prvky uvedené v následující tabulce:
 
@@ -137,6 +136,72 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+## <a name="autoscale-logs-schema"></a>Schéma protokolů automatického škálování
+JSON protokolu automatického škálování obsahuje prvky uvedené v následující tabulce:
+
+| Název | Popis |
+| ---- | ----------- | 
+| trackingId | Interní ID, které se používá pro účely trasování |
+| resourceId | Interní ID, které obsahuje ID předplatného Azure a název oboru názvů |
+| zpráva | Informační zpráva, která poskytuje podrobné informace o automatické neploché akci. Zpráva obsahuje předchozí a aktuální hodnotu jednotky propustnosti pro daný obor názvů a, která aktivovala neplochý počet výskytů. |
+
+## <a name="kafka-coordinator-logs-schema"></a>Schéma protokolů koordinátora Kafka
+JSON protokolu Kafka Coordinator obsahuje prvky uvedené v následující tabulce:
+
+| Název | Popis |
+| ---- | ----------- | 
+| Identifikátor | ID žádosti, která se používá pro účely trasování |
+| resourceId | Interní ID, které obsahuje ID předplatného Azure a název oboru názvů |
+| operationName | Název operace, která se má provést během koordinace skupiny |
+| clientId | ID klienta |
+| namespaceName | Název oboru názvů | 
+| subscriptionId | ID předplatného Azure |
+| zpráva | Informační zpráva, která poskytuje podrobné informace o akcích provedených během koordinace skupiny uživatelů. |
+
+## <a name="kafka-user-error-logs-schema"></a>Schéma protokolů chyb uživatele Kafka
+JSON protokolu chyb uživatele Kafka obsahuje prvky uvedené v následující tabulce:
+
+| Název | Popis |
+| ---- | ----------- |
+| trackingId | ID sledování, které se používá pro účely trasování. |
+| namespaceName | Název oboru názvů |
+| eventhub | Název centra událostí |
+| Oddílu | ID oddílu |
+| groupId | ID skupiny |
+| ClientId | ID klienta |
+| resourceId | Interní ID, které obsahuje ID předplatného Azure a název oboru názvů |
+| zpráva | Informační zpráva, která poskytuje podrobné informace o chybě |
+
+## <a name="event-hubs-virtual-network-connection-event-schema"></a>Event Hubs schéma událostí připojení k virtuální síti
+
+Event Hubs JSON události připojení virtuální sítě (VNet) obsahuje prvky uvedené v následující tabulce:
+
+| Název | Popis |
+| ---  | ----------- | 
+| subscriptionId | ID předplatného Azure |
+| namespaceName | Název oboru názvů |
+| Adresa | IP adresa klienta připojujícího se ke službě Event Hubs |
+| action | Akce prováděná službou Event Hubs při vyhodnocování požadavků na připojení. Podporované akce jsou **AcceptConnection** a **RejectConnection**. |
+| reason | Poskytuje důvod, proč byla akce dokončena. |
+| count | Počet výskytů pro danou akci |
+| resourceId | ID interního prostředku, které obsahuje ID předplatného a název oboru názvů. |
+
+## <a name="customer-managed-key-user-logs"></a>Klíčové uživatelské protokoly spravované uživatelem
+Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uvedené v následující tabulce:
+
+| Název | Popis |
+| ---- | ----------- | 
+| category | Typ kategorie pro zprávu Je to jedna z následujících hodnot: **Chyba** a **informace** |
+| resourceId | ID interního prostředku, což zahrnuje ID předplatného Azure a název oboru názvů |
+| keyVault | Název prostředku Key Vault |
+| key | Název Key Vaultho klíče |
+| version | Verze Key Vaultho klíče |
+| NázevOperace | Název operace, která byla provedena k obsluze požadavků |
+| kód | Kód stavu |
+| zpráva | Zpráva, která poskytuje podrobné informace o chybě nebo informativní zprávě |
+
+
 
 ## <a name="next-steps"></a>Další kroky
 - [Úvod do Event Hubs](event-hubs-what-is-event-hubs.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.reviewer: sngun
-ms.openlocfilehash: 13256377b8a8aaebf59196df57eef67d3b960cb8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 5fc74c554cbb283bc6bbfee737ef98e59dd4b0ea
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010541"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509665"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Uložené procedury, triggery a uživatelsky definované funkce
 
@@ -65,6 +65,9 @@ Transakce jsou nativně integrované do programovacího modelu Azure Cosmos DB J
 
 Uložené procedury a triggery se vždycky spouštějí na primární replice kontejneru Azure Cosmos. Tato funkce zajišťuje, že čtení z uložených procedur nabízí [silnou konzistenci](consistency-levels-tradeoffs.md). Dotazy využívající uživatelsky definované funkce lze provádět na primární nebo libovolné sekundární replice. Uložené procedury a triggery jsou určené k podpoře transakčních zápisů – zatímco logika jen pro čtení se nejlépe implementuje jako logika na straně aplikace a dotazy pomocí [Azure Cosmos DB SQL API SDK](sql-api-dotnet-samples.md), vám pomůže sytost propustnosti databáze. 
 
+> [!TIP]
+> Dotazy, které byly provedeny v uložené proceduře nebo triggeru, nemusí zobrazit změny v položkách provedených stejnou transakcí skriptu. Tento příkaz se vztahuje na dotazy SQL, jako `getContent().getCollection.queryDocuments()`je například, i na integrované jazykové dotazy, jako je `getContext().getCollection().filter()`.
+
 ## <a name="bounded-execution"></a>Omezené spouštění
 
 Všechny operace Azure Cosmos DB musí být dokončeny v rámci zadaného časového limitu. Toto omezení se vztahuje na funkce jazyka JavaScript – uložené procedury, triggery a uživatelsky definované funkce. Pokud se operace v tomto časovém limitu nedokončí, transakce se vrátí zpět.
@@ -88,7 +91,7 @@ Podobně jako předběžné triggery jsou po triggerech přidružené k operaci 
 > [!NOTE]
 > Zaregistrované triggery se nespustí automaticky, když dojde k odpovídajícím operacím (vytvořit/odstranit/nahradit/aktualizovat). Při provádění těchto operací se musí explicitně zavolat. Další informace najdete v článku [Jak spustit triggery](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) .
 
-## <a name="user-defined-functions"></a><a id="udfs"></a>Uživatelem definované funkce
+## <a name="user-defined-functions"></a><a id="udfs"></a>Uživatelsky definované funkce
 
 [Uživatelsky definované funkce](sql-query-udfs.md) (UDF) slouží k rozšiřování syntaxe jazyka dotazů rozhraní SQL API a snadné implementaci vlastní obchodní logiky. Mohou být volány pouze v rámci dotazů. UDF nemají přístup k objektu kontextu a jsou určeny pro použití pouze COMPUTE JavaScript. Proto je možné spustit UDF na sekundárních replikách. Příklady najdete v článku [Postup zápisu uživatelem definovaných funkcí](how-to-write-stored-procedures-triggers-udfs.md#udfs) .
 
