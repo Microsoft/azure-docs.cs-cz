@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Vytvoření serveru – Azure CLI – Azure Database for MariaDB'
+title: 'Rychlý Start: vytvoření serveru – Azure CLI – Azure Database for MariaDB'
 description: Tento rychlý start popisuje, jak použít Azure CLI k vytvoření serveru Azure Database for MariaDB ve skupině prostředků Azure.
 author: ajlam
 ms.author: andrela
@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc
 ms.openlocfilehash: f83af794a179634b9b6b7adedd329ea6f4a7b8d0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79536458"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Vytvoření serveru Azure Database for MariaDB pomocí Azure CLI
 
 Pomocí Azure CLI můžete vytvářet a spravovat prostředky Azure z příkazového řádku nebo ve skriptech. Tento rychlý start popisuje, jak za pět minut vytvořit pomocí Azure CLI server Azure Database for MariaDB ve skupině prostředků Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -49,8 +49,8 @@ Nastavení | Ukázková hodnota | Popis
 ---|---|---
 jméno | **mydemoserver** | Zadejte jedinečný název, který identifikuje váš server Azure Database for MariaDB. Název serveru může obsahovat pouze malá písmena, číslice a znak spojovníku (-). Musí mít 3 až 63 znaků.
 resource-group | **myresourcegroup** | Zadejte název skupiny prostředků Azure.
-sku-name | **GP_Gen5_2** | Název skladové položky. Následuje výpočtové virtuální jádra cenové *úrovně*\_*compute generation*\_konvence v těsnopisu.*vCores* Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
-backup-retention | **7** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
+sku-name | **GP_Gen5_2** | Název skladové položky. Postupuje podle konvence*COMPUTE COMPUTE pro výpočet*\_*virtuální jádra* ve zkrácené *úrovni*\_. Další informace o parametru **sku-name** najdete v části pod touto tabulkou.
+backup-retention | **čl** | Určuje, jak dlouho se mají uchovávat zálohy. Jednotkou jsou dny. Rozsah: 7 až 35. 
 geo-redundant-backup | **Disabled** (Zakázáno) | Určuje, jestli pro tento server mají být povolené geograficky redundantní zálohy. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
 location | **westus** | Lokace Azure pro server.
 ssl-enforcement | **Enabled** (Povoleno) | Určuje, jestli pro tento server má být povolený protokol SSL. Povolené hodnoty: **Enabled** (Povoleno), **Disabled** (Zakázáno).
@@ -60,7 +60,7 @@ admin-user | **myadmin** | Uživatelské jméno pro přihlášení správce. Par
 admin-password | *Vaše heslo* | Heslo uživatele, který je správcem. Vaše heslo musí mít 8 až 128 znaků. Musí obsahovat znaky ze tří z těchto kategorií: velká písmena anglické abecedy, malá písmena anglické abecedy, číslice a jiné než alfanumerické znaky.
 
 Hodnota parametru sku-name má formát {cenová_úroveň}\_{výpočetní_generace}\_{počet_virtuálních_jader} jako v následujících příkladech:
-+ `--sku-name B_Gen5_1`mapy na Základní, Gen 5 a 1 virtuální jádro. Tato možnost je nejmenší skladová položka k dispozici.
++ `--sku-name B_Gen5_1`mapuje se na Basic, Gen 5 a 1 vCore. Tato možnost je k dispozici nejmenší SKU.
 + `--sku-name GP_Gen5_32` se mapuje na úroveň pro obecné účely 5. generace se 32 virtuálními jádry.
 + `--sku-name MO_Gen5_2` se mapuje na úroveň optimalizovanou pro paměť 5. generace se 2 virtuálními jádry.
 
@@ -73,7 +73,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 ```
 
 > [!NOTE]
-> Zvažte použití základní cenové úrovně, pokud light compute a V/V jsou dostatečné pro vaše úlohy. Všimněte si, že servery vytvořené v základní cenové vrstvě nelze později škálovat na obecné účely nebo optimalizované pro paměť. Další informace naleznete na [stránce s cenami.](https://azure.microsoft.com/pricing/details/mariadb/)
+> Zvažte použití cenové úrovně Basic, pokud je pro vaše zatížení vhodné světlé výpočetní prostředky a vstupně-výstupní operace. Upozorňujeme, že servery vytvořené v cenové úrovni Basic se nedají později škálovat na Pro obecné účely nebo paměťově optimalizované. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/mariadb/) .
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurace pravidla brány firewall
 
@@ -240,4 +240,4 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Návrh databáze MariaDB pomocí rozhraní příkazového příkazu Azure](./tutorial-design-database-cli.md)
+> [Návrh databáze MariaDB pomocí Azure CLI](./tutorial-design-database-cli.md)

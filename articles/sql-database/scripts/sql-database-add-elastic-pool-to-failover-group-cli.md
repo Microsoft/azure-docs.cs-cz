@@ -1,6 +1,6 @@
 ---
-title: Příklad příkazového příkazu k selhání – skupina převzetí služeb při selhání – elastický fond databáze Azure SQL
-description: Ukázkový skript Azure CLI k vytvoření elastického fondu Azure SQL Database, jeho přidání do skupiny převzetí služeb při selhání a testování převzetí služeb při selhání.
+title: Příklad rozhraní příkazového řádku – skupina převzetí služeb při selhání Azure SQL Database elastický fond
+description: Ukázkový skript Azure CLI, který vytvoří Azure SQL Database elastický fond, přidá ho do skupiny převzetí služeb při selhání a otestuje převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,15 +12,15 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: 2d6f18e373327b758e766dffba341c080622301f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061940"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu Azure SQL Database do skupiny s podporou převzetí služeb při selhání pomocí příkazového příkazu Azure SQL Database
+# <a name="use-cli-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
 
-Tento příklad skriptu Azure CLI vytvoří jednu databázi, přidá ji do elastického fondu, vytvoří skupinu převzetí služeb při selhání a testuje převzetí služeb při selhání.
+Tento ukázkový skript Azure CLI vytvoří izolovanou databázi, přidá ji do elastického fondu, vytvoří skupinu převzetí služeb při selhání a otestuje převzetí služeb při selhání.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -42,23 +42,23 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní spojené prostředky.
+Pomocí následujícího příkazu odeberte skupinu prostředků a všechny k ní přidružené prostředky.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Odkaz na vzorek
+## <a name="sample-reference"></a>Vzorový odkaz
 
 Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | | |
 |---|---|
-| [az sql elastický fond](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
-| [az sql skupina převzetí služeb při selhání](/cli/azure/sql/failover-group) | Příkazy skupiny převzetí služeb při selhání. |
+| [AZ SQL elastický fond](/cli/azure/sql/elastic-pool) | Příkazy elastického fondu. |
+| [AZ SQL Failover-Group](/cli/azure/sql/failover-group) | Příkazy skupiny převzetí služeb při selhání. |
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure/overview).
 
-Další ukázky skriptu SQL Database Azure CLI najdete ve [skriptech Nastavení příkazu Azure azure azure](../sql-database-cli-samples.md).
+Další SQL Database ukázkových skriptech rozhraní příkazového řádku Azure CLI najdete v [Azure SQL Database skriptech](../sql-database-cli-samples.md)rozhraní příkazového řádku Azure.
