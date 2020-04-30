@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření aplikace pro monitorování kvality vody s Azure IoT Central'
-description: 'Kurz: Naučte se, jak vytvořit aplikaci pro monitorování kvality vody pomocí šablon aplikací Azure IoT Central.'
+title: 'Kurz: Vytvoření aplikace pro monitorování kvality vody pomocí Azure IoT Central'
+description: 'Kurz: Naučte se vytvářet aplikace monitorování kvality vody pomocí šablon aplikací Azure IoT Central.'
 author: miriambrus
 ms.author: miriamb
 ms.date: 11/12/2019
@@ -9,248 +9,248 @@ ms.service: iot-central
 services: iot-central
 manager: abjork
 ms.openlocfilehash: 77ec999d63175f63c1de6e31fdb3f72c963d228c
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82024468"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Kurz: Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
 
 
 
-Tento kurz vás provede vytvořením aplikace pro monitorování kvality vody v Azure IoT Central. Aplikaci vytvoříte ze šablony aplikace **pro monitorování kvality virtuálního prostředí** Azure IoT Central Water.
+Tento kurz vás provede vytvořením aplikace monitorování kvality vody v Azure IoT Central. Aplikaci vytvoříte z šablony aplikace **monitorování kvality** služby Azure IoT Central voda.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Pomocí šablony **monitorování kvality vody** vytvořte aplikaci pro monitorování kvality vody.
+> * Použijte šablonu **monitorování kvality vody** k vytvoření aplikace pro monitorování kvality vody.
 > * Prozkoumejte a přizpůsobte řídicí panel operátora.
-> * Prozkoumejte šablonu zařízení pro sledování kvality vody.
+> * Prozkoumejte šablonu zařízení pro monitorování kvality vody.
 > * Prozkoumejte simulovaná zařízení.
 > * Prozkoumejte a nakonfigurujte pravidla.
-> * Konfigurace úloh.
-> * Přizpůsobte branding aplikací pomocí bílého značení.
+> * Nakonfigurujte úlohy.
+> * Přizpůsobte branding aplikace pomocí označení bílé.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-Doporučujeme, abyste měli předplatné Azure k dokončení tohoto kurzu. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace Azure](https://aka.ms/createazuresubscription).
+Doporučujeme, abyste měli k dokončení tohoto kurzu předplatné Azure. Pokud nemáte předplatné Azure, můžete ho vytvořit na [stránce registrace do Azure](https://aka.ms/createazuresubscription).
 
-## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Vytvoření aplikace pro monitorování kvality vody v Azure IoT Central
+## <a name="create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Vytvoření aplikace monitorování kvality vody v Azure IoT Central
 
-V této části použijete šablonu **monitorování kvality azure** IoT Central Water k vytvoření aplikace pro monitorování kvality vody.
+V této části použijete šablonu **monitorování kvality vody** Azure IoT Central k vytvoření aplikace pro monitorování kvality vody.
 
-1. Přejděte na [domovskou stránku Azure IoT Central](https://aka.ms/iotcentral).
+1. Přejít na [domovskou stránku Azure IoT Central](https://aka.ms/iotcentral).
 
-    Pokud máte předplatné Azure, přihlaste se pomocí přihlašovacích údajů, které používáte k přístupu. V opačném případě se přihlaste pomocí účtu Microsoft:
+    Pokud máte předplatné Azure, přihlaste se pomocí přihlašovacích údajů, které používáte pro přístup k němu. V opačném případě se přihlaste pomocí účet Microsoft:
 
-    ![Přihlášení k účtu organizace](./media/tutorial-waterqualitymonitoring/sign-in.png)
+    ![Přihlaste se k účtu vaší organizace.](./media/tutorial-waterqualitymonitoring/sign-in.png)
 
-1. Vyberte **Sestavte** v levém podokně Azure IoT Central a vyberte kartu **Vláda.** Podokno vlády zobrazuje několik šablon vládních aplikací.
+1. Vyberte možnost **sestavit** v levém podokně Azure IoT Central a vyberte kartu **státní správa** . V podokně Správa se zobrazí několik šablon aplikací pro státní správu.
 
-    ![Šablony vládních aplikací](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
+    ![Šablony aplikací pro státní správu](./media/tutorial-waterqualitymonitoring/iotcentral-government-tab-overview1.png)
 
-1. Vyberte šablonu aplikace **monitorování kvality vody.** Tato šablona aplikace obsahuje šablonu zařízení kvality vody, simulovaná zařízení, řídicí panel operátora a předem nakonfigurovaná pravidla monitorování.
+1. Vyberte šablonu aplikace **monitorování kvality vody** . Tato šablona aplikace zahrnuje šablonu zařízení s kvalitou voda, simulovaná zařízení, řídicí panel operátora a předem nakonfigurovaná pravidla monitorování.
 
-1. Vyberte **Vytvořit aplikaci**. Otevře se podokno **Nová aplikace** a zobrazí následující prvky:
+1. Vyberte **Vytvořit aplikaci**. Otevře se **nové podokno aplikace** a zobrazí se následující prvky:
 
-    * **Název aplikace**: Ve výchozím nastavení je název aplikace **Monitorování kvality vody** následované jedinečným řetězcem ID, který generuje Azure IoT Central. Pokud chcete, můžete zadat zobrazovaný název nebo změnit název aplikace později.
-    * **ADRESA URL**: Můžete zadat libovolnou adresu URL nebo hodnotu adresy URL později změnit.
-    * Pokud máte předplatné Azure, zadejte hodnoty pro **Adresář**, **předplatné Azure**a **Oblast**. Pokud nemáte předplatné, můžete zapnout **7denní bezplatnou zkušební verzi** a vyplnit požadované kontaktní informace.
+    * **Název aplikace**: ve výchozím nastavení má název aplikace **monitorování kvality vody** následovaný jedinečným řetězcem ID, který vygeneruje služba Azure IoT Central. Pokud chcete, můžete zadat zobrazované jméno nebo změnit název aplikace později.
+    * **Adresa URL**: můžete zadat libovolnou adresu URL, kterou chcete, nebo změnit hodnotu adresy URL později.
+    * Pokud máte předplatné Azure, zadejte hodnoty pro **adresář**, **předplatné Azure**a **oblast**. Pokud předplatné nemáte, můžete zapnout **7 dní bezplatnou zkušební verzi** a doplnit požadované kontaktní údaje.
 
-    Další informace o adresářích a předplatných najdete v [tématu Vytvoření aplikace](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) rychlý start.
+    Další informace o adresářích a předplatných najdete v tématu rychlý Start [k vytvoření aplikace](../core/quick-deploy-iot-central.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) .
 
-1. V levé dolní části stránky vyberte tlačítko **Vytvořit.**
+1. V levé dolní části stránky vyberte tlačítko **vytvořit** .
 
     ![Stránka nové aplikace Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1.png)
 
-    ![Informace o fakturaci nové aplikace Azure IoT Central](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
+    ![Informace o fakturaci IoT Central nové aplikace v Azure](./media/tutorial-waterqualitymonitoring/new-application-waterqualitymonitoring1-billinginfo.png)
 
-Teď jste vytvořili aplikaci pro monitorování kvality vody pomocí šablony monitorování kvality azure IoT Central **Water.**
+Nyní jste vytvořili aplikaci pro monitorování kvality vody pomocí šablony **monitorování kvality** služby Azure IoT Central voda.
 
-Nová aplikace je dodávána s těmito předkonfigurovanými součástmi:
+Vaše nová aplikace je dodávána s těmito předem konfigurovanými součástmi:
 
 * Řídicí panely operátorů
-* Šablony zařízení pro monitorování kvality vody
-* Simulovaná zařízení pro sledování kvality vody
-* Pravidla a pracovní místa
-* Branding, který používá bílé značení
+* Šablony zařízení monitorování kvality vody
+* Simulovaná zařízení pro monitorování kvality vody
+* Pravidla a úlohy
+* Branding, který používá označení bílé
 
-Aplikaci můžete kdykoli upravit.
+Svou aplikaci můžete kdykoli upravit.
 
-Dále prozkoumejte aplikaci a proveďte některé úpravy.
+Dále Prozkoumejte aplikaci a udělejte si vlastní nastavení.
 
-## <a name="explore-and-customize-the-operator-dashboard"></a>Prozkoumání a přizpůsobení řídicího panelu operátora
+## <a name="explore-and-customize-the-operator-dashboard"></a>Prozkoumejte a přizpůsobte řídicí panel operátora.
 
-Po vytvoření aplikace se otevře **podokno řídicího panelu kvality vody Wide World.**
+Po vytvoření aplikace se otevře podokno **řídicí panel celé světové kvality vody** .
 
-   ![Přístrojová deska pro monitorování kvality vody](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
+   ![Řídicí panel monitorování kvality vody](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-dashboard1.png)
 
-Jako tvůrce můžete vytvářet a přizpůsobovat zobrazení na řídicím panelu pro použití operátory. Než se však pokusíte přizpůsobit, nejprve prozkoumejte řídicí panel.
+Jako tvůrce můžete vytvářet a přizpůsobovat zobrazení na řídicím panelu pro použití operátory. Před tím, než se pokusíte upravit, nejprve Prozkoumejte řídicí panel.
 
-Všechna data zobrazená na řídicím panelu jsou založena na simulovaných datech zařízení, která jsou popsána v další části.
+Všechna data zobrazená na řídicím panelu jsou založena na simulovaných datech zařízení, která jsou popsána v následující části.
 
 Řídicí panel obsahuje následující typy dlaždic:
 
-* **Wide World water utility obrázek dlaždice**: První dlaždice v levém horním rohu přístrojové desky je obrázek, který ukazuje fiktivní nástroj s názvem Wide World. Dlaždici můžete přizpůsobit tak, aby používala vlastní obrázek, nebo můžete dlaždici odebrat.
+* **Dlaždice s obrázkem v celém světě**: první dlaždice v levém horním rohu řídicího panelu je obrázek, který zobrazuje fiktivní nástroj pojmenovaný World. Dlaždici můžete přizpůsobit tak, aby používala vlastní obrázek, nebo můžete dlaždici odebrat.
 
-* **Průměrné dlaždice výkonu výkonu pH**: Dlaždice klíčových ukazatelů výkonu, jako **je Průměrné pH za posledních 30 minut,** jsou v horní části panelu řídicího panelu. Dlaždice klíčových ukazatelů výkonu můžete přizpůsobit a nastavit na jiný typ a časový rozsah.
+* **Průměrných dlaždic KUV na ukazateli**: v horní části podokna řídicích panelů jsou dlaždice klíčových ukazatelů výkonu, jako **průměrná hodnota pH za posledních 30 minut** . Můžete přizpůsobit dlaždice klíčových ukazatelů výkonu a nastavit každý na jiný typ a časový rozsah.
 
-* **Mapa oblasti monitorování vody**: Azure IoT Central používá Azure Maps, které můžete přímo nastavit ve vaší aplikaci k zobrazení umístění zařízení. Můžete také mapovat informace o poloze z vaší aplikace do zařízení a pak pomocí Služby Azure Maps zobrazit informace na mapě. Najeďte přes mapu a vyzkoušejte ovládací prvky.
+* **Mapa oblasti monitorování vody**: Azure IoT Central používá Azure Maps, které můžete přímo nastavit v aplikaci, aby se zobrazilo umístění zařízení. Informace o umístění z aplikace můžete také namapovat na vaše zařízení a pak pomocí Azure Maps zobrazit informace na mapě. Najeďte myší na mapu a vyzkoušejte ovládací prvky.
 
-* **Graf průměrné horečné mapy rozložení pH**: Můžete vybrat různé vizualizační grafy, které zobrazí telemetrii zařízení způsobem, který je nejvhodnější pro vaši aplikaci.
+* **Průměrná hodnota pH – graf tepelného mapování**: můžete vybrat různé grafy vizualizace a zobrazit telemetrii zařízení způsobem, který je pro vaši aplikaci nejvhodnější.
 
-* **Spojnicový graf kritických ukazatelů kvality**: Telemetrii zařízení můžete vizualizovat jako spojnicový graf v časovém rozsahu.  
+* **Indikátory kritické kvality spojnicový graf**: můžete vizualizovat telemetrii zařízení vykreslenou jako spojnicový graf v časovém rozsahu.  
 
-* **Koncentrace pruhového grafu chemických látek**: Telemetrii zařízení můžete vizualizovat v pruhovém grafu.
+* **Soustředění pruhového grafu chemických agentů**: můžete vizualizovat telemetrii zařízení v pruhovém grafu.
 
-* **Tlačítko Akce**: Řídicí panel obsahuje dlaždici pro akce, které může operátor iniciovat přímo z řídicího panelu monitorování. Příkladem takových akcí je obnovení vlastností zařízení.
+* **Tlačítko akce**: řídicí panel obsahuje dlaždici pro akce, které operátor může iniciovat přímo z řídicího panelu monitorování. Obnovení vlastností zařízení je například příkladem těchto akcí.
 
-* **Dlaždice seznamu vlastností**: Řídicí panel obsahuje více dlaždic vlastností, které představují informace o prahové hodnotě, informace o stavu zařízení a informace o údržbě.
+* **Dlaždice seznamu vlastností**: řídicí panel obsahuje více dlaždic vlastností, které reprezentují informace o prahové hodnotě, informace o stavu zařízení a informace o údržbě.
 
 ### <a name="customize-the-dashboard"></a>Přizpůsobit řídicí panel
 
 Jako tvůrce můžete přizpůsobit zobrazení na řídicím panelu pro použití operátory.
 
-1. Vyberte **Upravit,** chcete-li přizpůsobit **podokno řídicího panelu kvality vody wide world.** Řídicí panel můžete přizpůsobit výběrem příkazů v nabídce **Úpravy.** Po zobrazení řídicího panelu v režimu úprav můžete přidat nové dlaždice nebo nakonfigurovat existující soubory.
+1. Výběrem **Upravit upravíte** podokno **řídicí panel celé světové kvality vody** . Řídicí panel můžete přizpůsobit tak, že vyberete příkazy v nabídce **Upravit** . Jakmile je řídicí panel v režimu úprav, můžete přidat nové dlaždice nebo můžete nakonfigurovat stávající soubory.
 
-    ![Úprava řídicího panelu](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
+    ![Upravit řídicí panel](./media/tutorial-waterqualitymonitoring/edit-dashboard.png)
 
-1. Výběrem **možnosti + Nový** vytvořte nový řídicí panel, který můžete konfigurovat. Můžete mít více řídicích panelů a můžete mezi nimi procházet z nabídky řídicího panelu.
+1. Vyberte **+ Nová** a vytvořte nový řídicí panel, který můžete nakonfigurovat. Můžete mít více řídicích panelů a mezi nimi můžete přecházet z nabídky řídicího panelu.
 
-## <a name="explore-a-water-quality-monitoring-device-template"></a>Prozkoumejte šablonu zařízení pro sledování kvality vody
+## <a name="explore-a-water-quality-monitoring-device-template"></a>Prozkoumat šablonu zařízení pro monitorování kvality vody
 
-Šablona zařízení v Azure IoT Central definuje možnosti zařízení. Dostupné možnosti jsou telemetrie, vlastnosti a příkazy. Jako tvůrce můžete definovat šablony zařízení v Azure IoT Central, které představují možnosti připojených zařízení. Můžete také vytvořit simulovaná zařízení pro testování šablony zařízení a aplikace.
+Šablona zařízení v Azure IoT Central definuje možnosti zařízení. Dostupné možnosti jsou telemetrie, vlastnosti a příkazy. Jako tvůrce můžete definovat šablony zařízení v Azure IoT Central, které reprezentují možnosti připojených zařízení. Můžete také vytvořit simulovaná zařízení, abyste mohli testovat šablonu a aplikaci pro svoje zařízení.
 
-Aplikace pro sledování kvality vody, kterou jste vytvořili, je dodávána se šablonou zařízení pro sledování kvality vody.
+Vytvořená aplikace pro monitorování kvality vody je dodávána se šablonou zařízení pro monitorování kvality vody.
 
-Zobrazení šablony zařízení:
+Postup zobrazení šablony zařízení:
 
-1. V levém podokně aplikace v Azure IoT Central vyberte **šablony zařízení.**
-1. V seznamu šablon zařízení vyberte **Sledování kvality vody**. Tato šablona zařízení se otevře.
+1. Vyberte **šablony zařízení** v levém podokně aplikace v Azure IoT Central.
+1. V seznamu šablon zařízení vyberte možnost **monitorování kvality vody**. Otevře se šablona zařízení.
 
     ![Šablona zařízení](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate.png)
 
 ### <a name="customize-the-device-template"></a>Přizpůsobení šablony zařízení
 
-Procvičte si přizpůsobení následujících nastavení šablony zařízení:
+Postup přizpůsobení následujících nastavení šablony zařízení:
 
-1. V nabídce šablony zařízení vyberte **Přizpůsobit**.
-1. Přejděte na typ telemetrie **teploty.**
-1. Změňte hodnotu **Zobrazovaného názvu** na **Hlášenou teplotu**.
-1. Změňte měrnou jednotku nebo nastavte **hodnotu Min** a **Max**.
+1. V nabídce šablona zařízení vyberte **přizpůsobit**.
+1. Přejít na typ telemetrie **teploty** .
+1. Změňte hodnotu **zobrazovaného názvu** na **hlášenou teplotu**.
+1. Změňte jednotku měření nebo nastavte **minimální hodnotu** a **maximální hodnotu**.
 1. Vyberte **Uložit**.
 
-#### <a name="add-a-cloud-property"></a>Přidání vlastnosti cloudu
+#### <a name="add-a-cloud-property"></a>Přidat vlastnost cloudu
 
-1. V nabídce šablony zařízení vyberte **Vlastnost Cloud**.
-1. Chcete-li přidat novou vlastnost cloudu, vyberte **+ Přidat vlastnost cloudu**. Ve službě Azure IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, že bude odeslána zařízením. Jedním z příkladů takové vlastnosti je prahová hodnota výstrahy specifická pro oblast instalace, informace o majetku nebo informace o údržbě.
+1. V nabídce šablony zařízení vyberte **vlastnost Cloud**.
+1. Pokud chcete přidat novou vlastnost cloudu, vyberte **+ Přidat vlastnost cloudu**. V Azure IoT Central můžete přidat vlastnost, která je relevantní pro zařízení, ale neočekává se, že se zařízení pošle. Jedním z příkladů takových vlastností je prahová hodnota pro výstrahu, která je specifická pro oblast instalace, informace o aktivech nebo informace o údržbě.
 1. Vyberte **Uložit**.
 
 ### <a name="explore-views"></a>Prozkoumat zobrazení
 
-Šablona zařízení pro sledování kvality vody je dodávána s předdefinovanými zobrazeními. Zobrazení definují, jak operátoři vidí data zařízení a nastavují vlastnosti cloudu. Prozkoumejte zobrazení a procvičte si provádění změn.
+Šablona zařízení monitorování kvality vody je dodávána s předdefinovanými zobrazeními. Zobrazení definují, jak operátory uvidí data zařízení a nastavují vlastnosti cloudu. Prozkoumejte zobrazení a praktická cvičení, jak provádět změny.
 
-  ![Zobrazení předlohy zařízení](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
+  ![Zobrazení šablon zařízení](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devicetemplate-views.png)
 
 ### <a name="publish-the-device-template"></a>Publikování šablony zařízení
 
-Pokud provedete nějaké změny, nezapomeňte vybrat **Publikovat,** abyste šablonu zařízení publikovali.
+Pokud provedete nějaké změny, nezapomeňte vybrat **publikovat** a publikovat šablonu zařízení.
 
 ### <a name="create-a-new-device-template"></a>Vytvoření nové šablony zařízení
 
-1. Výběrem **možnosti + Nový** vytvořte novou šablonu zařízení a postupujte podle procesu vytváření.
-1. Vytvořte si vlastní šablonu zařízení nebo zvolte šablonu zařízení z katalogu zařízení Azure IoT.
+1. Vyberte **+ Nová** a vytvořte novou šablonu zařízení a postupujte podle procesu vytváření.
+1. Vytvořte vlastní šablonu zařízení nebo vyberte šablonu zařízení z katalogu zařízení Azure IoT.
 
-## <a name="explore-simulated-devices"></a>Prozkoumejte simulovaná zařízení
+## <a name="explore-simulated-devices"></a>Prozkoumat simulovaná zařízení
 
-Aplikace pro sledování kvality vody, kterou jste vytvořili ze šablony aplikace, má dvě simulovaná zařízení. Tato zařízení mapovat na kvalitu vody monitorovací zařízení šablony.
+Aplikace monitorování kvality vody, kterou jste vytvořili v šabloně aplikace, má dvě simulovaná zařízení. Tato zařízení se mapují na šablonu zařízení pro monitorování kvality vody.
 
 ### <a name="view-the-devices"></a>Zobrazit zařízení
 
-1. V levém podokně aplikace vyberte **Zařízení.**
+1. Vyberte **zařízení** v levém podokně aplikace.
 
    ![Zařízení](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-devices.png)
 
 1. Vyberte jedno simulované zařízení.
 
-    ![Vybrat zařízení 1](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
+    ![Vyberte zařízení 1.](./media/tutorial-waterqualitymonitoring/waterqualitymonitor-device1.png)
 
-1. Na kartě **Vlastnosti cloudu** změňte prahovou hodnotu **acidity (pH)** z **8** na **9**.
-1. Prozkoumejte kartu **Vlastnosti zařízení** a kartu **Řídicí panel zařízení.**
+1. Na kartě **vlastnosti cloudu** změňte **prahovou hodnotu pro kyselost (pH)** z **8** na **9**.
+1. Prozkoumejte kartu **vlastnosti zařízení** a kartu **řídicí panel zařízení** .
 
 > [!NOTE]
-> Všechny karty byly nakonfigurovány ze **zobrazení šablony zařízení**.
+> Všechny karty byly nakonfigurovány ze **zobrazení šablon zařízení**.
 
-### <a name="add-new-devices"></a>Přidání nových zařízení
+### <a name="add-new-devices"></a>Přidat nová zařízení
 
-Na kartě **Zařízení** vyberte **+ Nový** a přidejte nové zařízení.
+Na kartě **zařízení** vyberte **+ Nová** a přidejte nové zařízení.
 
-## <a name="explore-and-configure-rules"></a>Prozkoumání a konfigurace pravidel
+## <a name="explore-and-configure-rules"></a>Prozkoumat a nakonfigurovat pravidla
 
-Ve Službě Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla spustí akci, pokud jsou splněny některé z jejich podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce Microsoft Flow nebo akce webhooku pro odesílání dat do jiných služeb.
+V Azure IoT Central můžete vytvořit pravidla, která automaticky monitorují telemetrii zařízení. Tato pravidla aktivují akci, když je splněna kterákoli z podmínek. Jednou z možných akcí je odesílání e-mailových oznámení. Mezi další možnosti patří akce Microsoft Flow nebo akce Webhooku pro posílání dat do jiných služeb.
 
-Aplikace pro monitorování kvality vody, kterou jste vytvořili, má dvě předkonfigurovaná pravidla.
+Vytvořená aplikace pro monitorování kvality vody má dvě předem nakonfigurovaná pravidla.
 
 ### <a name="view-rules"></a>Zobrazit pravidla
 
-1. V levém podokně aplikace vyberte **Pravidla.**
+1. V podokně aplikace vyberte **pravidla** v levém podokně.
 
    ![Pravidla](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-rules.png)
 
-1. Vyberte **výstrahu vysokého pH**, což je jedno z předkonfigurovaných pravidel v aplikaci.
+1. Vyberte **vysoké upozornění pH**, což je jedno z předkonfigurovaných pravidel v aplikaci.
 
-   ![Pravidlo výstrahy vysokého pH](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
+   ![Pravidlo upozornění s vysokým pH](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-highphalert.png)
 
-   Pravidlo **výstrahy vysokého pH** je nakonfigurováno tak, aby kontrolovalo stav kyselosti (pH) větší než 8.
+   Pravidlo **upozornění s vysokým pH** je nakonfigurované tak, aby kontrolovalo stav kyselosti (pH) větší než 8.
 
-Dále přidejte k pravidlu akci e-mailu:
+Potom do pravidla přidejte akci e-mailu:
 
-1. Vyberte **+ E-mail**.
-1. Do pole **Zobrazované jméno** zadejte **výstrahu Vysoké hodnotu pH**.
-1. Do pole **Do** zadejte e-mailovou adresu přidruženou k vašemu účtu Azure IoT Central.
-1. Volitelně zadejte poznámku, která bude zahrnuta do textu e-mailu.
-1. Chcete-li akci dokončit, vyberte **Hotovo.**
-1. Chcete-li uložit a aktivovat nové pravidlo, vyberte **Uložit.**
+1. Vyberte **+ e-mail**.
+1. Do pole **Zobrazovaný název** zadejte **výstrahu vysoké pH**.
+1. Do pole **do** zadejte e-mailovou adresu přidruženou k vašemu účtu Azure IoT Central.
+1. Volitelně můžete zadat poznámku, která se má zahrnout do textu e-mailu.
+1. Akci dokončete výběrem možnosti **Hotovo** .
+1. Kliknutím na **Uložit** uložte a aktivujte nové pravidlo.
 
-Během několika minut byste měli obdržet e-mail, pokud je splněna nakonfigurovaná podmínka.
+Během několika minut byste měli dostávat e-maily, když je splněna nakonfigurovaná podmínka.
 
 > [!NOTE]
-> Aplikace odešle e-mail pokaždé, když je splněna podmínka. Chcete-li zastavit příjem automatického e-mailu z tohoto pravidla, vyberte **možnost Zakázat.**
+> Aplikace pošle e-mail pokaždé, když je splněna podmínka. Vyberte **Zakázat** pro pravidlo, které zastaví příjem automatizovaného e-mailu z tohoto pravidla.
   
-Chcete-li vytvořit nové pravidlo, vyberte v levém podokně aplikace možnost **Pravidla** a pak vyberte **možnost +Nový**.
+Chcete-li vytvořit nové pravidlo, vyberte **pravidla** v levém podokně aplikace a pak vyberte **+ Nový**.
 
 ## <a name="configure-jobs"></a>Konfigurace úloh
 
-Díky úlohám Azure IoT Central můžete aktivovat aktualizace zařízení nebo cloudových vlastností na více zařízeních. Úlohy můžete také použít k aktivaci příkazů zařízení na více zařízeních. Azure IoT Central automatizuje pracovní postup za vás.
+Pomocí úloh Azure IoT Central můžete na více zařízeních aktivovat aktualizace vlastností zařízení nebo cloudu. Úlohy můžete použít také k aktivaci příkazů zařízení na více zařízeních. Azure IoT Central automatizuje pracovní postup za vás.
 
-1. V levém podokně aplikace vyberte **Úlohy.**
-1. Vyberte **+Nový** a nakonfigurujte jednu nebo více úloh.
+1. Vyberte **úlohy** v levém podokně aplikace.
+1. Vyberte **+ Nový** a nakonfigurujte jednu nebo víc úloh.
 
 ## <a name="customize-your-application"></a>Přizpůsobení aplikace
 
-Jako tvůrce můžete změnit několik nastavení přizpůsobit uživatelské prostředí ve vaší aplikaci.
+Jako tvůrce můžete změnit několik nastavení pro přizpůsobení uživatelského prostředí aplikace.
 
-1. Vyberte **možnost Správa** > **Přizpůsobit aplikaci**.
-1. V části **Logo aplikace**vyberte **Změnit,** chcete-li vybrat obrázek, který chcete nahrát jako logo.
-1. V části **Ikona Prohlížeče**vyberte **Změnit** a vyberte obrázek, který se zobrazí na kartách prohlížeče.
-1. V **části Barvy prohlížeče**můžete nahradit výchozí hodnoty šestnáctkovými barevnými kódy HTML.
-1. Výběrem **možnosti Nastavení** změňte hodnotu **motivu**.
+1. Vyberte možnost **Správa** > **přizpůsobení aplikace**.
+1. V části **logo aplikace**vyberte **změnit** a zvolte obrázek, který se má nahrát jako logo.
+1. V části **ikona prohlížeče**vyberte **změnit** a zvolte bitovou kopii, která se zobrazí na kartách prohlížeče.
+1. V části **barvy v prohlížeči**můžete nahradit výchozí hodnoty kódy hexadecimálních barev HTML.
+1. Vyberte **Nastavení** a změňte hodnotu **Theme**.
 
    ![Přizpůsobení aplikace](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-customize-your-application1.png)
 
-### <a name="update-the-application-image"></a>Aktualizace bitové kopie aplikace
+### <a name="update-the-application-image"></a>Aktualizace image aplikace
 
 1. Vyberte**nastavení aplikace** **pro správu** > .
 
-1. Pomocí tlačítka **Vybrat obrázek** vyberte obrázek, který chcete nahrát jako obrázek aplikace.
+1. Pomocí tlačítka **Vybrat obrázek** můžete zvolit obrázek, který se má nahrát jako obrázek aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete aplikaci nadále používat, odstraňte ji pomocí následujících kroků:
+Pokud nebudete nadále používat aplikaci, odstraňte aplikaci pomocí následujících kroků:
 
-1. Otevřete kartu **Správa** v podokně aplikace zcela vlevo.
-1. Vyberte **Nastavení aplikace** a vyberte tlačítko **Odstranit.**
+1. Otevřete kartu **Správa** v levém podokně aplikace.
+1. Vyberte **nastavení aplikace** a klikněte na tlačítko **Odstranit** .
 
     ![Odstranění aplikace](./media/tutorial-waterqualitymonitoring/waterqualitymonitoring-application-settings-delete-app1.png)
 

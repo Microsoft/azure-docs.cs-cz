@@ -1,6 +1,6 @@
 ---
-title: Nasazení vyhrazených hostitelů Azure pomocí Azure PowerShellu
-description: Nasazujte virtuální počítače do vyhrazených hostitelů pomocí Azure PowerShellu.
+title: Nasazení vyhrazených hostitelů Azure pomocí Azure PowerShell
+description: Nasaďte virtuální počítače na vyhrazené hostitele pomocí Azure PowerShell.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -9,32 +9,32 @@ ms.date: 08/01/2019
 ms.author: cynthn
 ms.reviewer: zivr
 ms.openlocfilehash: b90189c6ba5e51a24d0c248b5aa08e9a5e4bbd9b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082845"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů do vyhrazených hostitelů pomocí Azure PowerShellu
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Nasazení virtuálních počítačů na vyhrazené hostitele pomocí Azure PowerShell
 
-Tento článek vás provede, jak vytvořit [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů.This article guides through you through how to create a Azure dedicated host to host your virtual machines (VMs). 
+Tento článek vás provede procesem vytvoření [vyhrazeného hostitele](dedicated-hosts.md) Azure pro hostování virtuálních počítačů. 
 
-Ujistěte se, že jste nainstalovali Azure PowerShell verze 2.8.0 nebo novější `Connect-AzAccount`a jste přihlášení k účtu Azure v aplikaci . 
+Ujistěte se, že máte nainstalovanou Azure PowerShell verze 2.8.0 nebo novější a jste přihlášení k účtu Azure v rámci `Connect-AzAccount`. 
 
 ## <a name="limitations"></a>Omezení
 
-- Škálovací sady virtuálních strojů nejsou aktuálně podporovány na vyhrazených hostitelích.
-- Velikosti a typy hardwaru, které jsou k dispozici pro vyhrazené hostitele, se liší podle oblasti. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
+- Sady škálování virtuálních počítačů se na vyhrazených hostitelích aktuálně nepodporují.
+- Typy velikosti a hardwaru, které jsou dostupné pro vyhrazené hostitele, se v jednotlivých oblastech liší. Další informace najdete na [stránce s cenami](https://aka.ms/ADHPricing) hostitele.
 
 ## <a name="create-a-host-group"></a>Vytvoření skupiny hostitelů
 
-**Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti, existují další možnosti. S vyhrazenými hostiteli můžete použít jednu nebo obě následující možnosti: 
-- Rozsah mezi více zónami dostupnosti. V takovém případě musíte mít skupinu hostitelů v každé zóně, kterou chcete použít.
-- Rozsah mezi více domén ách selhání, které jsou mapovány na fyzické regály. 
+**Skupina hostitelů** je prostředek, který představuje kolekci vyhrazených hostitelů. Vytvoříte skupinu hostitelů v oblasti a zóně dostupnosti a přidáte do ní hostitele. Při plánování vysoké dostupnosti jsou k dispozici další možnosti. U vyhrazených hostitelů můžete použít jednu z následujících možností: 
+- Rozsah napříč několika zónami dostupnosti. V takovém případě je nutné mít skupinu hostitelů v každé z zón, které chcete použít.
+- Rozložit napříč několika doménami selhání, které jsou namapované na fyzické racky. 
  
-V obou případech je třeba zadat počet domén selhání pro vaši skupinu hostitelů. Pokud nechcete, aby se ve skupině promítají domény selhání, použijte počet domén selhání 1. 
+V obou případech je nutné zadat počet domén selhání pro skupinu hostitelů. Pokud nechcete rozsah domén selhání ve skupině, použijte počet domén selhání 1. 
 
-Můžete se také rozhodnout použít zóny dostupnosti i domény selhání. Tento příklad vytvoří skupinu hostitelů v zóně 1 se 2 doménami selhání. 
+Můžete se také rozhodnout použít jak zóny dostupnosti, tak i domény selhání. Tento příklad vytvoří skupinu hostitelů v zóně 1 se dvěma doménami selhání. 
 
 
 ```azurepowershell-interactive
@@ -52,11 +52,11 @@ $hostGroup = New-AzHostGroup `
 
 ## <a name="create-a-host"></a>Vytvoření hostitele
 
-Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu hostitele je nutné zadat skladovou položku pro hostitele. Skladová položka hostitele zachycuje podporovanou řadu virtuálních počítače a generaci hardwaru pro vašeho vyhrazeného hostitele.
+Nyní vytvoříme vyhrazeného hostitele ve skupině hostitelů. Kromě názvu pro hostitele je nutné zadat SKU pro hostitele. SKU hostitele zachytí podporovanou řadu virtuálních počítačů a také generování hardwaru pro vyhrazeného hostitele.
 
-Další informace o hostitelských skum a cenách najdete v [tématu Ceny vyhrazeného hostitele Azure](https://aka.ms/ADHPricing).
+Další informace o SKU a cenách hostitelů najdete v tématu [ceny za vyhrazené hostitele Azure](https://aka.ms/ADHPricing).
 
-Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete vyzváni k zadání domény selhání pro hostitele. V tomto příkladu nastavíme doménu selhání pro hostitele na 1.
+Pokud pro skupinu hostitelů nastavíte počet domén selhání, budete požádáni o zadání domény selhání pro hostitele. V tomto příkladu nastavíme doménu selhání pro hostitele na 1.
 
 
 ```azurepowershell-interactive
@@ -73,7 +73,7 @@ $dHost = New-AzHost `
 
 Vytvořte virtuální počítač na vyhrazeném hostiteli. 
 
-Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, musíte při vytváření virtuálního počítače použít stejnou zónu. V tomto příkladu, protože naše skupina hostitelů je v zóně 1, musíme vytvořit virtuální ho v zóně 1.  
+Pokud jste při vytváření skupiny hostitelů zadali zónu dostupnosti, budete při vytváření virtuálního počítače muset použít stejnou zónu. V tomto příkladu, protože je naše skupina hostitelů v zóně 1, musíme vytvořit virtuální počítač v zóně 1.  
 
 
 ```azurepowershell-interactive
@@ -90,11 +90,11 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> Pokud vytvoříte virtuální počítač na hostiteli, který nemá dostatek prostředků, virtuální počítač se vytvoří ve stavu SELHÁNÍ. 
+> Pokud vytvoříte virtuální počítač na hostiteli, který nemá dostatek prostředků, vytvoří se virtuální počítač ve stavu selhání. 
 
-## <a name="check-the-status-of-the-host"></a>Kontrola stavu hostitele
+## <a name="check-the-status-of-the-host"></a>Zkontroluje stav hostitele.
 
-Můžete zkontrolovat stav hostitele a kolik virtuálních počítačů můžete stále nasadit do `-InstanceView` hostitele pomocí [GetAzHost](/powershell/module/az.compute/get-azhost) s parametrem.
+Můžete kontrolovat stav hostitele a počet virtuálních počítačů, které můžete nasadit na hostitele pomocí [GetAzHost](/powershell/module/az.compute/get-azhost) s `-InstanceView` parametrem.
 
 ```azurepowershell-interactive
 Get-AzHost `
@@ -104,7 +104,7 @@ Get-AzHost `
    -InstanceView
 ```
 
-Výstup bude vypadat podobně jako tento:
+Výstup bude vypadat nějak takto:
 
 ```
 ResourceGroupName      : myDHResourceGroup
@@ -165,15 +165,15 @@ Location               : eastus
 Tags                   : {}
 ```
 
-## <a name="add-an-existing-vm"></a>Přidání existujícího virtuálního virtuálního montovna 
+## <a name="add-an-existing-vm"></a>Přidat existující virtuální počítač 
 
-Existující virtuální ho do vyhrazeného hostitele můžete přidat, ale virtuální modul musí být nejprve Stop\Deallocated. Než přesunete virtuální ho důťák na vyhrazeného hostitele, ujistěte se, že je podporovaná konfigurace virtuálního počítače:
+Existující virtuální počítač můžete přidat do vyhrazeného hostitele, ale tento virtuální počítač musí být nejdříve Stop\Deallocated. Před přesunutím virtuálního počítače na vyhrazeného hostitele se ujistěte, že je konfigurace virtuálních počítačů podporovaná:
 
-- Velikost virtuálního počítače musí být ve stejné rodině velikosti jako vyhrazený hostitel. Například pokud váš vyhrazený hostitel je DSv3, pak velikost virtuálního počítače může být Standard_D4s_v3, ale nemůže to být Standard_A4_v2. 
-- Virtuální modul musí být umístěn ve stejné oblasti jako vyhrazený hostitel.
-- Virtuální virtuální ms nemůže být součástí skupiny umístění bezkontaktní. Před přesunutím do vyhrazeného hostitele odeberte virtuální ho ze skupiny umístění bezkontaktní komunikace. Další informace najdete [v tématu Přesunutí virtuálního virtuálního ms ze skupiny umístění bez kontaktních míst.](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
-- Virtuální virtuální měsíč nemůže být v sadě dostupnosti.
-- Pokud je virtuální virtuální soud v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako hostitelská skupina. Nastavení zóny dostupnosti pro virtuální počítače a skupinu hostitelů se musí shodovat.
+- Velikost virtuálního počítače musí být ve stejné rodině velikostí jako vyhrazený hostitel. Pokud je například vyhrazený hostitel DSv3, může být velikost virtuálního počítače Standard_D4s_v3, ale nemůžete ho Standard_A4_v2. 
+- Virtuální počítač musí být umístěný ve stejné oblasti jako vyhrazený hostitel.
+- Virtuální počítač nemůže být součástí skupiny umístění blízkosti. Odeberte virtuální počítač ze skupiny umístění blízkosti, než ho přesunete na vyhrazeného hostitele. Další informace najdete v tématu [přesun virtuálního počítače ze skupiny umístění do blízkosti](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group) .
+- Virtuální počítač nemůže být ve skupině dostupnosti.
+- Pokud je virtuální počítač v zóně dostupnosti, musí se jednat o stejnou zónu dostupnosti jako skupina hostitelů. Nastavení zóny dostupnosti pro virtuální počítač a skupinu hostitelů se musí shodovat.
 
 Nahraďte hodnoty proměnných vlastními informacemi.
 
@@ -213,27 +213,27 @@ Start-AzVM `
 
 ## <a name="clean-up"></a>Vyčištění
 
-Poplatky za vyhrazené hostitele se vám účtují i v případě, že se nenasazují žádné virtuální počítače. Měli byste odstranit všechny hostitele, které právě nepoužíváte k úspoře nákladů.  
+Účtují se vám poplatky za vaše vyhrazené hostitele i v případě, že nejsou nasazené žádné virtuální počítače. Měli byste odstranit všechny hostitele, na které aktuálně nepoužíváte, abyste ušetřili náklady.  
 
-Hostitele můžete odstranit pouze v případě, že už nejsou virtuální počítače, které by ho používaly. Odstraňte virtuální mích pomocí [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
+Hostitele můžete odstranit jenom v případě, že ho nepoužívá žádný virtuální počítač. Odstraňte virtuální počítače pomocí [Remove-AzVM](/powershell/module/az.compute/remove-azvm).
 
 ```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-Po odstranění virtuálních měn můžete odstranit hostitele pomocí [remove-AzHost](/powershell/module/az.compute/remove-azhost).
+Po odstranění virtuálních počítačů můžete hostitele odstranit pomocí [Remove-AzHost](/powershell/module/az.compute/remove-azhost).
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [skupiny Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
+Po odstranění všech hostitelů můžete skupinu hostitelů odstranit pomocí [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup). 
 
 ```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Můžete také odstranit celou skupinu prostředků v jednom příkazu pomocí [remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Tím odstraníte všechny prostředky vytvořené ve skupině, včetně všech virtuálních uživatelů, hostitelů a skupin hostitelů.
+Celou skupinu prostředků můžete také odstranit v jednom příkazu pomocí příkazu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Tím se odstraní všechny prostředky vytvořené ve skupině včetně všech virtuálních počítačů, hostitelů a skupin hostitelů.
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -242,6 +242,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>Další kroky
 
-- Zde je [nalezena](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)ukázková šablona , která používá zóny i domény selhání pro maximální odolnost proti chybám v oblasti.
+- [Zde](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)najdete ukázkovou šablonu, která pro maximální odolnost v oblasti používá zóny i domény selhání.
 
-- Můžete také nasadit vyhrazené hostitele pomocí [portálu Azure](dedicated-hosts-portal.md).
+- Můžete také nasadit vyhrazené hostitele pomocí [Azure Portal](dedicated-hosts-portal.md).

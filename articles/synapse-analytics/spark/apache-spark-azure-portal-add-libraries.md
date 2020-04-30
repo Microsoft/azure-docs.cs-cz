@@ -1,6 +1,6 @@
 ---
-title: Přidání a správa knihoven pro Apache Spark v Azure Synapse Analytics
-description: Přečtěte si, jak přidávat a spravovat knihovny používané Apache Spark v Azure Synapse Analytics.
+title: Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
+description: Naučte se přidávat a spravovat knihovny používané Apache Spark ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,33 +10,33 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 80414ccd6d5797614dd15bd61af8f37b3d2be05c
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870362"
 ---
-# <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Přidání a správa knihoven pro Apache Spark v Azure Synapse Analytics
+# <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Přidávání a Správa knihoven pro Apache Spark ve službě Azure synapse Analytics
 
-Apache Spark závisí na mnoha knihovnách, které poskytují funkce. Tyto knihovny mohou být rozšířeny nebo nahrazeny dalšími knihovnami nebo aktualizovanými verzemi starších knihoven.
+Apache Spark závisí na řadě knihoven, které poskytují funkce. Tyto knihovny lze rozšířit nebo nahradit dalšími knihovnami nebo aktualizovanými verzemi starších verzí.
 
-Balíčky pythonu lze přidat na úrovni fondu Spark (preview) a balíčky založené na .jar lze přidat na úrovni definice úlohy Spark.
+Balíčky Pythonu se dají přidat na úrovni fondů Spark (Preview) a balíčky založené na JAR se dají přidat na úrovni definice úlohy Spark.
 
-## <a name="adding-or-updating-python-libraries"></a>Přidání nebo aktualizace knihoven Pythonu
+## <a name="adding-or-updating-python-libraries"></a>Přidávání a aktualizace knihoven Pythonu
 
-Apache Spark v Azure Synapse Analytics má plnou instalaci Anacondas plus další knihovny. Úplný seznam knihoven naleznete na [adrese Podpora verzí Apache Spark](apache-spark-version-support.md).
+Apache Spark ve službě Azure synapse Analytics má úplnou instalaci Anacondas a další knihovny. Seznam úplných knihoven najdete na stránce [podpora Apache Spark verzí](apache-spark-version-support.md).
 
-Při spuštění instance Spark se vytvoří nové virtuální prostředí pomocí této instalace jako základu. Kromě toho *soubor requirements.txt* (výstup `pip freeze` z příkazu) lze použít k upgradu virtuálního prostředí. Balíčky uvedené v tomto souboru pro instalaci nebo upgrade jsou staženy z PyPi v době spuštění clusteru. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
+Když se spustí instance Sparku, vytvoří se v této instalaci jako základ nové virtuální prostředí. K upgradu virtuálního prostředí se navíc dá použít soubor *. txt s požadavky* (výstup z `pip freeze` příkazu). Balíčky uvedené v tomto souboru pro instalaci nebo upgrade se stáhnou z PyPi v době spuštění clusteru. Tento soubor požadavků se používá při každém vytvoření instance Spark z tohoto fondu Spark.
 
 > [!IMPORTANT]
 >
-> - Pokud je balíček, který instalujete, velký nebo instalace trvá dlouho, ovlivní to dobu spuštění instance Spark.
-> - Balíčky, které vyžadují podporu kompilátoru v době instalace, jako je například GCC, nejsou podporovány.
-> - Balíčky nelze snížit, pouze přidat nebo upgradovat.
+> - Pokud je balíček, který instalujete, velký nebo trvá jeho instalaci dlouhou dobu, bude to mít vliv na počáteční čas instance Spark.
+> - Balíčky, které vyžadují podporu kompilátoru v době instalace, jako je třeba RSZ, se nepodporují.
+> - Balíčky nemůžou být downgradované, jenom přidané nebo upgradované.
 
 ### <a name="requirements-format"></a>Formát požadavků
 
-Následující úryvek zobrazuje formát souboru požadavků. Název balíčku PyPi je uveden spolu s přesnou verzí. Tento soubor se řídí formátem popsaným v referenční dokumentaci [pro zmrazení pipu.](https://pip.pypa.io/en/stable/reference/pip_freeze/) Tento příklad připne určitou verzi. V tomto souboru můžete také zadat verze "ne větší než" a "menší než".
+Následující fragment kódu ukazuje formát souboru požadavků. Název balíčku PyPi je uveden společně s přesnou verzí. Tento soubor se řídí formátem popsaným v referenční dokumentaci k [zablokování PIP](https://pip.pypa.io/en/stable/reference/pip_freeze/) . Tento příklad připnete konkrétní verzi. V tomto souboru můžete také zadat "ne větší než" a "menší než" verze.
 
 ```
 absl-py==0.7.0
@@ -48,15 +48,15 @@ alabaster==0.7.10
 
 ### <a name="python-library-user-interface"></a>Uživatelské rozhraní knihovny Pythonu
 
-Uživatelské tlačítko pro přidávání knihoven je na kartě **Další nastavení** na stránce **fondu Vytvořit Apache Spark** na webu Azure Portal.
+Uživatelské rozhraní pro přidávání knihoven je na kartě **Další nastavení** stránky **vytvořit fond Apache Spark** na Azure Portal.
 
-Nahrajte konfigurační soubor prostředí pomocí voliče souborů v části **Balíčky** na stránce.
+Nahrajte konfigurační soubor prostředí pomocí voliče souborů v části **Packages (balíčky** ) na stránce.
 
-![Přidání knihoven Pythonu](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Přidání knihoven Pythonu")
+![Přidat knihovny Pythonu](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "Přidat knihovny Pythonu")
 
-### <a name="verifying-installed-libraries"></a>Ověření nainstalovaných knihoven
+### <a name="verifying-installed-libraries"></a>Ověřují se nainstalované knihovny.
 
-Chcete-li ověřit, zda jsou nainstalovány správné verze správných knihoven, spusťte následující kód
+Pokud chcete ověřit, jestli jsou nainstalované správné verze správných knihoven, spusťte následující kód.
 
 ```python
 import pip #needed to use the pip functions
@@ -67,4 +67,4 @@ for i in pip.get_installed_distributions(local_only=True):
 ## <a name="next-steps"></a>Další kroky
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
-- [Dokumentace Apache Spark](https://spark.apache.org/docs/2.4.4/)
+- [Dokumentace k Apache Spark](https://spark.apache.org/docs/2.4.4/)

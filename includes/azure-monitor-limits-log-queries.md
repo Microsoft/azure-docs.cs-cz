@@ -9,31 +9,31 @@ ms.date: 07/22/2019
 ms.author: bwren
 ms.custom: include file
 ms.openlocfilehash: 627b020ce618a2a1f2646a95e143947876bd6a15
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82072633"
 ---
-### <a name="general-query-limits"></a>Obecná omezení dotazů
+### <a name="general-query-limits"></a>Obecné limity dotazů
 
 | Omezení | Popis |
 |:---|:---|
-| Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Průzkumník dat Azure. Viz [Rozdíly v dotazovacím jazyce protokolu Azure Monitor](../articles/azure-monitor/log-query/data-explorer-difference.md) pro prvky jazyka KQL, které nejsou ve službě Azure Monitor podporované. |
-| Oblast Azure | Dotazy protokolu může dojít k nadměrné režii, když data zahrnuje log Analytics pracovníprostory ve více oblastech Azure. Podrobnosti najdete v [tématu Omezení dotazů.](../articles/azure-monitor/log-query/scope.md#query-limits) |
-| Dotazy na křížové prostředky | Maximální počet prostředků Application Insights a pracovních prostorů Analýzy protokolů v jednom dotazu omezeném na 100.<br>V návrháři zobrazení není podporován dotaz mezi prostředky.<br>Dotaz mezi prostředky ve výstrahách protokolu je podporován v novém rozhraní API scheduledQueryRules.<br>Podrobnosti najdete [v tématu Limity dotazů mezi zdroji.](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) |
+| Dotazovací jazyk | Azure Monitor používá stejný [dotazovací jazyk Kusto](/azure/kusto/query/) jako Azure Průzkumník dat. Viz [rozdíly v jazyce Azure monitor protokolu dotazu](../articles/azure-monitor/log-query/data-explorer-difference.md) pro prvky jazyka KQL, které nejsou v Azure monitor podporovány. |
+| Oblast Azure | Dotazy protokolů můžou mít nadměrné nároky na to, kdy data jsou Log Analytics pracovní prostory ve více oblastech Azure. Podrobnosti najdete v tématu [omezení dotazů](../articles/azure-monitor/log-query/scope.md#query-limits) . |
+| Dotazy na různé prostředky | Maximální počet Application Insightsch prostředků a Log Analytics pracovních prostorů v jednom dotazu omezený na 100.<br>Dotaz mezi prostředky není v Návrháři zobrazení podporován.<br>Dotaz na více prostředků v upozorněních protokolu se podporuje v novém rozhraní scheduledQueryRules API.<br>Podrobnosti najdete v tématu [omezení dotazů mezi prostředky](../articles/azure-monitor/log-query/cross-workspace-query.md#cross-resource-query-limits) . |
 
-### <a name="user-query-throttling"></a>Omezení dotazů uživatelů
-Azure Monitor má několik omezení omezení k ochraně proti uživatelům odesílání nadměrného počtu dotazů. Takové chování může potenciálně přetížit prostředky back-endu systému a ohrozit odezvu služby. Následující limity jsou navrženy tak, aby chránily zákazníky před přerušeními a zajišťovaly konzistentní úroveň služeb. Omezení a omezení uživatele jsou navrženy tak, aby ovlivnily pouze scénář extrémního použití a neměly by být relevantní pro typické použití.
+### <a name="user-query-throttling"></a>Omezování uživatelských dotazů
+Azure Monitor má několik omezení omezování ochrany proti uživatelům, kteří odesílají nadměrný počet dotazů. Takové chování může potenciálně přetížit systémové prostředky back-endu a ohrozit odezvu služby. Následující omezení jsou navržená tak, aby chránila zákazníky před přerušením a zajistila konzistenci úrovně služeb. Omezení uživatelů a omezení jsou navržena tak, aby ovlivnila pouze extrémní využití a neměla by být relevantní pro obvyklé využití.
 
 
-| Measure | Limit na uživatele | Popis |
+| Measure | Omezení na uživatele | Popis |
 |:---|:---|:---|
-| Souběžné dotazy | 5 | Pokud již existuje 5 dotazů spuštěných pro uživatele, všechny nové dotazy jsou umístěny ve frontě souběžnosti pro jednotlivé uživatele. Po ukončení jednoho z spuštěných dotazů bude další dotaz stažen z fronty a spuštěn. To nezahrnuje dotazy z pravidel výstrah.
-| Čas ve frontě souběžnosti | 2,5 minuty | Pokud dotaz je ve frontě více než 2,5 minuty bez spuštění, bude ukončen s chybovou odpovědí HTTP s kódem 429. |
-| Celkový počet dotazů ve frontě souběžnosti | 40 | Jakmile počet dotazů ve frontě dosáhne 40, všechny další dotazy budou odmítnuty s kódem chyby HTTP 429. Toto číslo je navíc k 5 dotazů, které lze spustit současně. |
-| Míra dotazů | 200 dotazů za 30 sekund | Jedná se o celkovou rychlost, kterou může dotaz odeslat jeden uživatel do všech pracovních prostorů.  Toto omezení platí pro programové dotazy nebo dotazy iniciované vizualizačními částmi, jako jsou řídicí panely Azure a stránka souhrnu pracovního prostoru Analýzy protokolů. |
+| Souběžné dotazy | 5 | Pokud již existuje 5 dotazů, které jsou spuštěny pro uživatele, všechny nové dotazy jsou umístěny do fronty souběžnosti pro jednotlivé uživatele. Když jeden ze spuštěných dotazů skončí, další dotaz se načte z fronty a spustí se. Nezahrnuje dotazy z pravidel výstrah.
+| Čas ve frontě souběžnosti | 2,5 minut | Pokud dotaz zůstane ve frontě déle než 2,5 minut bez spuštění, bude ukončen chybovou odpovědí HTTP s kódem 429. |
+| Celkový počet dotazů ve frontě concurrency | 40 | Až počet dotazů ve frontě dosáhne 40, budou všechny další dotazy odmítnuty s kódem chyby HTTP 429. Toto číslo je navíc k pěti dotazům, které mohou běžet souběžně. |
+| Míra dotazů | 200 dotazů za 30 sekund | Toto je celková míra, kterou můžou dotazy odeslat jeden uživatel do všech pracovních prostorů.  Toto omezení se vztahuje na programové dotazy nebo dotazy iniciované částmi vizualizace, jako jsou řídicí panely Azure a stránka se souhrnem Log Analytics pracovního prostoru. |
 
-- Optimalizujte své dotazy, jak je popsáno v [optimalizaci dotazů protokolu v Azure Monitoru](../articles/azure-monitor/log-query/query-optimization.md).
-- Řídicí panely a sešity mohou obsahovat více dotazů v jednom zobrazení, které generují shluk dotazů při každém načtení nebo aktualizaci. Zvažte jejich rozdělení do více zobrazení, které se načítají na vyžádání. 
-- V Power BI zvažte extrahování jenom agregované výsledky spíše než nezpracované protokoly.
+- Optimalizujte své dotazy, jak je popsáno v tématu [optimalizace dotazů protokolu v Azure monitor](../articles/azure-monitor/log-query/query-optimization.md).
+- Řídicí panely a sešity mohou obsahovat více dotazů v jednom zobrazení, které generují shluky dotazů při každém načtení nebo aktualizaci. Zvažte jejich rozdělení do více zobrazení, která se načítají na vyžádání. 
+- V Power BI zvažte extrakci pouze agregovaných výsledků místo nezpracovaných protokolů.

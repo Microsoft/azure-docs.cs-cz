@@ -1,6 +1,6 @@
 ---
 title: Vytvoření a šifrování virtuálního počítače s Windows s využitím Azure PowerShellu
-description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShellu vytvořit a zašifrovat virtuální počítač s Windows.
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure PowerShell vytvořit a zašifrovat virtuální počítač s Windows.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machines-windows
@@ -8,22 +8,22 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.openlocfilehash: 6f564a9a4f13136bbe7e28a3600ca71892c82439
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82081587"
 ---
-# <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Úvodní příručka: Vytvoření a šifrování virtuálního počítače s Windows v Azure pomocí PowerShellu
+# <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-in-azure-with-powershell"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows v Azure pomocí PowerShellu
 
-Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. Tento rychlý start ukazuje, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač (VM) windows, vytvořit trezor klíčů pro ukládání šifrovacích klíčů a šifrovat virtuální počítač. 
+Modul Azure PowerShell slouží k vytváření a správě prostředků Azure z příkazového řádku PowerShellu nebo ve skriptech. V tomto rychlém startu se dozvíte, jak pomocí modulu Azure PowerShell vytvořit virtuální počítač s Windows, vytvořit Key Vault pro ukládání šifrovacích klíčů a zašifrovat virtuální počítač. 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků Azure s [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure:
+Vytvořte skupinu prostředků Azure pomocí [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure:
 
 ```powershell
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -31,7 +31,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte virtuální počítač Azure s [New-AzVM](/powershell/module/az.compute/new-azvm). Do rutiny je nutné zadat pověření. 
+Vytvořte virtuální počítač Azure pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Do rutiny musíte zadat přihlašovací údaje. 
 
 ```powershell
 $cred = Get-Credential 
@@ -41,22 +41,22 @@ New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image 
 
 Nasazení virtuálního počítače bude několik minut trvat. 
 
-## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Vytvoření trezoru klíčů nakonfigurovaného pro šifrovací klíče
+## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Vytvoření Key Vault nakonfigurovaného pro šifrovací klíče
 
-Šifrování disku Azure ukládá svůj šifrovací klíč v trezoru klíčů Azure. Vytvořte trezor klíčů s [new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault). Chcete-li povolit trezor klíčů pro ukládání šifrovacích klíčů, použijte parametr -EnabledForDiskEncryption.
+Azure Disk Encryption ukládá šifrovací klíč do Azure Key Vault. Vytvořte Key Vault pomocí [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault). Pokud chcete povolit Key Vault ukládání šifrovacích klíčů, použijte parametr-EnabledForDiskEncryption.
 
 > [!Important]
-> Každý trezor klíčů musí mít jedinečný název. Následující příklad vytvoří trezor klíčů s názvem *myKV*, ale musíte pojmenovat svůj něco jiného.
+> Každý Key Vault musí mít jedinečný název. Následující příklad vytvoří Key Vault s názvem *myKV*, ale je nutné, abyste si pojmenovali něco jiného.
 
 ```powershell
 New-AzKeyvault -name MyKV -ResourceGroupName myResourceGroup -Location EastUS -EnabledForDiskEncryption
 ```
 
-## <a name="encrypt-the-virtual-machine"></a>Šifrování virtuálního počítače
+## <a name="encrypt-the-virtual-machine"></a>Zašifrovat virtuální počítač
 
-Šifrujte virtuální počítač pomocí [rozšíření Set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
+Zašifrujte virtuální počítač pomocí [set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
 
-Set-AzVmDiskEncryptionExtension vyžaduje některé hodnoty z objektu trezoru klíčů. Tyto hodnoty můžete získat předáním jedinečný název trezoru klíčů [get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
+Příkaz set-AzVmDiskEncryptionExtension vyžaduje některé hodnoty z vašeho objektu Key Vault. Tyto hodnoty můžete získat předáním jedinečného názvu trezoru klíčů pro [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault).
 
 ```powershell
 $KeyVault = Get-AzKeyVault -VaultName MyKV -ResourceGroupName MyResourceGroup
@@ -64,7 +64,7 @@ $KeyVault = Get-AzKeyVault -VaultName MyKV -ResourceGroupName MyResourceGroup
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName MyVM -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId
 ```
 
-Po několika minutách se proces vrátí následující:
+Po několika minutách bude proces vracet následující:
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -72,13 +72,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK
 ```
 
-Proces šifrování můžete ověřit spuštěním příkazu [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus).
+Proces šifrování můžete ověřit spuštěním [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus).
 
 ```powershell
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
-Pokud je šifrování povoleno, zobrazí se ve vráceném výstupu následující:
+Pokud je povolené šifrování, ve vráceném výstupu se zobrazí následující:
 
 ```
 OsVolumeEncrypted          : Encrypted
@@ -89,7 +89,7 @@ ProgressMessage            : Provisioning succeeded
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete, můžete pomocí rutiny [Odebrat AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) odebrat skupinu prostředků, virtuální hod a všechny související prostředky:
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, virtuálního počítače a všech souvisejících prostředků použít rutinu [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```powershell
 Remove-AzResourceGroup -Name "myResourceGroup"
@@ -97,7 +97,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili virtuální počítač, vytvořili trezor klíčů, který byl povolen pro šifrovací klíče, a zašifrovali virtuální počítač.  V dalším článku najdete další informace o požadavcích na službu Azure Disk Encryption pro virtuální počítače IaaS.
+V tomto rychlém startu jste vytvořili virtuální počítač, vytvořili Key Vault, která byla povolená pro šifrovací klíče, a zašifroval virtuální počítač.  V dalším článku najdete další informace o požadavcích na službu Azure Disk Encryption pro virtuální počítače IaaS.
 
 > [!div class="nextstepaction"]
-> [Azure Disk Encryption – přehled](disk-encryption-overview.md)
+> [Přehled Azure Disk Encryption](disk-encryption-overview.md)

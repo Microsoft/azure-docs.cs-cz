@@ -1,73 +1,73 @@
 ---
-title: Přehled agenta Azure Application Insights | Dokumenty společnosti Microsoft
-description: Přehled agenta Application Insights. Sledujte výkon webových stránek bez opětovného nasazení webu. Funguje s ASP.NET webových aplikací hostovaných místně, ve virtuálních počítačích nebo v Azure.
+title: Přehled služby Azure Application Insights Agent | Microsoft Docs
+description: Přehled agenta Application Insights. Monitorujte výkon webu bez nutnosti opětovného nasazení webu. Funguje s ASP.NET webovými aplikacemi hostovanými místně, na virtuálních počítačích nebo v Azure.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 09/16/2019
 ms.openlocfilehash: 626a8c96fdc247db174e2cbcd2e5c99cec43d2ea
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770966"
 ---
 # <a name="deploy-azure-monitor-application-insights-agent-for-on-premises-servers"></a>Nasazení agenta Azure Monitor Application Insights pro místní servery
 
 > [!IMPORTANT]
-> Tyto pokyny se doporučují pro místní a neazure cloudová nasazení agenta Application Insights. Tady je doporučený přístup pro [nasazení virtuálních strojů Azure a škálovací sady virtuálních strojů](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
+> Tyto pokyny se doporučují pro nasazení Application Insights agenta v místním prostředí i mimo Azure. Tady je doporučený postup pro [nasazení virtuálních počítačů Azure a virtuálních počítačů ve službě Virtual Machine Scale set](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps).
 
-Agent Application Insights (dříve pojmenovaný Stavový monitor V2) je modul prostředí PowerShell publikovaný v [Galerii prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
-Nahrazuje [sledování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
-Telemetrie se odesílá na portál Azure, kde můžete [sledovat](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) svou aplikaci.
+Agent Application Insights (dřív nazvaný Monitorování stavu v2) je modul prostředí PowerShell publikovaný do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.ApplicationMonitor).
+Nahrazuje [monitorování stavu](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now).
+Telemetrii se pošle do Azure Portal, kde můžete [monitorovat](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) svoji aplikaci.
 
 > [!NOTE]
-> Modul v současné době podporuje pouze bezcodeinstrumentaci webových aplikací .NET hostovaných se službou IIS. Sadou SDK můžete instrumentovat ASP.NET aplikací core, java a node.js.
+> Modul aktuálně podporuje pouze nekódovatelné instrumentaci webových aplikací .NET, jejichž hostitelem je služba IIS. Pomocí sady SDK můžete instrumentovat aplikace ASP.NET Core, Java a Node. js.
 
 ## <a name="powershell-gallery"></a>Galerie prostředí PowerShell
 
-Agent Application Insights se https://www.powershellgallery.com/packages/Az.ApplicationMonitornachází zde: .
+Agent Application Insights se nachází zde: https://www.powershellgallery.com/packages/Az.ApplicationMonitor.
 
 ![Galerie prostředí PowerShell](https://img.shields.io/powershellgallery/v/Az.ApplicationMonitor.svg?color=Blue&label=Current%20Version&logo=PowerShell&style=for-the-badge)
 
 
 ## <a name="instructions"></a>Pokyny
-- Podívejte se na [pokyny začínáme](status-monitor-v2-get-started.md) začít s stručné ukázky kódu.
-- Podívejte se na [podrobné pokyny](status-monitor-v2-detailed-instructions.md) pro podrobný ponor o tom, jak začít.
+- Začínáme s ukázkami stručných ukázek kódu najdete v [pokynech](status-monitor-v2-get-started.md) k zahájení práce.
+- Projděte si [podrobné pokyny](status-monitor-v2-detailed-instructions.md) , jak v podrobně začít.
 
-## <a name="powershell-api-reference"></a>Odkaz na rozhraní API prostředí PowerShell
-- [Zakázat-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
-- [Funkce Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
-- [Enable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
-- [Enable-InstrumentationEngineEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
+## <a name="powershell-api-reference"></a>Reference k rozhraní PowerShell API
+- [Disable-ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-applicationinsightsmonitoring)
+- [Disable-InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#disable-instrumentationengine)
+- [Enable – ApplicationInsightsMonitoring](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-applicationinsightsmonitoring)
+- [Enable – InstrumentationEngine](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#enable-instrumentationengine)
 - [Get-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringconfig)
 - [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus)
 - [Set-ApplicationInsightsMonitoringConfig](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#set-applicationinsightsmonitoringconfig)
-- [Spuštění aplikaceInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
+- [Spustit – ApplicationInsightsMonitoringTrace](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#start-applicationinsightsmonitoringtrace)
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 - [Odstraňování potíží](status-monitor-v2-troubleshoot.md)
 - [Známé problémy](status-monitor-v2-troubleshoot.md#known-issues)
 
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-- Podporuje agent Application Insights instalace proxy serveru?
+- Podporuje agent Application Insights instalaci proxy serveru?
 
-  *Ano.* Existuje několik způsobů, jak stáhnout Agent a insights aplikací. Pokud má váš počítač přístup k internetu, můžete se `-Proxy` k galerii prostředí PowerShell připojit pomocí parametrů.
-Modul můžete také ručně stáhnout a nainstalovat do počítače nebo jej použít přímo.
-Každá z těchto možností je popsána v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
+  *Ano*. Existuje několik způsobů, jak stáhnout agenta Application Insights. Pokud má počítač přístup k Internetu, můžete k Galerie prostředí PowerShell připojit pomocí `-Proxy` parametrů.
+Můžete také ručně stáhnout modul a buď ho nainstalovat do počítače, nebo ho použít přímo.
+Každá z těchto možností je popsaná v [podrobných pokynech](status-monitor-v2-detailed-instructions.md).
 
-- Podporuje sledování stavu v2 ASP.NET základních aplikací?
+- Podporuje Monitorování stavu v2 ASP.NET Core aplikace?
 
-  *Ne*. Pokyny k povolení monitorování ASP.NET základních aplikací naleznete v tématu [Application Insights for ASP.NET Core applications](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Není třeba instalovat StatusMonitor pro aplikaci ASP.NET Core. To platí i v případě, ASP.NET základní aplikace je hostována ve službách IIS.
+  *Ne*. Pokyny k povolení monitorování ASP.NET Corech aplikací najdete v tématu [Application Insights pro ASP.NET Core aplikace](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core). Pro ASP.NET Core aplikace není nutné instalovat StatusMonitor. Platí to i v případě, že je ASP.NET Core aplikace hostovaná ve službě IIS.
 
-- Jak ověřím, že povolení proběhlo úspěšně?
+- Návody ověřit, zda bylo povolení úspěšné?
 
-  - Rutina [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) slouží k ověření, že povolení bylo úspěšné.
-  - Doporučujeme použít [live metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) rychle zjistit, jestli vaše aplikace odesílá telemetrická data.
+  - Pomocí rutiny [Get-ApplicationInsightsMonitoringStatus](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference#get-applicationinsightsmonitoringstatus) můžete ověřit, že je povolení úspěšné.
+  - K rychlému určení, jestli vaše aplikace posílá telemetrii, doporučujeme použít [živé metriky](https://docs.microsoft.com/azure/azure-monitor/app/live-stream) .
 
-  - Pomocí [analýzy protokolů](../log-query/get-started-portal.md) můžete také vypsat všechny cloudové role, které aktuálně odesílají telemetrii:
+  - [Log Analytics](../log-query/get-started-portal.md) můžete použít také k vypsání všech cloudových rolí, které aktuálně odesílají telemetrii:
       ```Kusto
       union * | summarize count() by cloud_RoleName, cloud_RoleInstance
       ```
@@ -76,14 +76,14 @@ Každá z těchto možností je popsána v [podrobných pokynech](status-monitor
 
 Zobrazení telemetrických dat:
 
-* [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) a sledujte výkon a využití.
-* [Hledat události a protokoly](../../azure-monitor/app/diagnostic-search.md) diagnostikovat problémy.
-* Pro pokročilejší dotazy [použijte službu Analytics.](../../azure-monitor/app/analytics.md)
-* [Vytvořte řídicí panely](../../azure-monitor/app/overview-dashboard.md).
+* [Prozkoumejte metriky](../../azure-monitor/platform/metrics-charts.md) pro monitorování výkonu a využití.
+* [Prohledejte události a protokoly](../../azure-monitor/app/diagnostic-search.md) a Diagnostikujte problémy.
+* K pokročilejším dotazům [použijte Analytics](../../azure-monitor/app/analytics.md) .
+* [Vytváření řídicích panelů](../../azure-monitor/app/overview-dashboard.md).
 
 Přidání další telemetrie:
 
 * [Vytvoření webových testů](monitor-web-app-availability.md) a ověření, jestli web zůstává živý.
-* [Přidejte telemetrickou službu webového klienta,](../../azure-monitor/app/javascript.md) chcete-li zobrazit výjimky z kódu webové stránky a povolit volání trasování.
-* [Přidejte do kódu sadou SDK application insights,](../../azure-monitor/app/asp-net.md) abyste mohli vkládat volání trasování a protokolování.
+* [Přidejte telemetrii webového klienta](../../azure-monitor/app/javascript.md) pro zobrazení výjimek z kódu webové stránky a umožnění volání trasování.
+* [Přidejte sadu Application Insights SDK do kódu](../../azure-monitor/app/asp-net.md) , abyste mohli vložit trasování a protokolování volání.
 

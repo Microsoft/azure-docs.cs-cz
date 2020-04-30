@@ -1,7 +1,7 @@
 ---
-title: Referenční příručka jazyka SQL akcelerace dotazu (náhled)
+title: Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
 titleSuffix: Azure Storage
-description: Přečtěte si, jak používat syntaxi sql akcelerace dotazu.
+description: Naučte se používat syntaxi SQL pro zrychlení dotazů.
 services: storage
 author: normesta
 ms.service: storage
@@ -11,44 +11,44 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81772116"
 ---
-# <a name="query-acceleration-sql-language-reference-preview"></a>Referenční příručka jazyka SQL akcelerace dotazu (náhled)
+# <a name="query-acceleration-sql-language-reference-preview"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
 
-Akcelerace dotazu podporuje jazyk podobný ANSI SQL pro vyjádření dotazů nad obsahem objektu blob.  Akcelerace dotazu SQL dialekt je podmnožinou ANSI SQL, s omezenou sadou podporovaných datových typů, operátorů atd., ale také rozšiřuje NA ANSI SQL pro podporu dotazů přes hierarchické polostrukturované datové formáty, jako je Například JSON. 
+Zrychlení dotazů podporuje jazyk podobný standardu ANSI SQL pro vyjádření dotazů přes obsah objektu BLOB.  Dialekt SQL pro zrychlení dotazů je podmnožinou ANSI SQL s omezeným počtem podporovaných datových typů, operátorů atd., ale také rozšiřuje na ANSI SQL pro podporu dotazů v hierarchicky strukturovaných datových formátech, jako je JSON. 
 
 > [!NOTE]
-> Funkce akcelerace dotazu je ve verzi Public Preview a je k dispozici v oblastech Kanada – střed a Francie – střed. Omezení najdete v článku [Známé problémy.](data-lake-storage-known-issues.md) Chcete-li se zaregistrovat do náhledu, přečtěte [si tento formulář](https://aka.ms/adls/qa-preview-signup). 
+> Funkce zrychlení dotazů je ve verzi Public Preview a je dostupná v oblastech Kanada – střed a Francie – střed. Chcete-li zkontrolovat omezení, přečtěte si článek [známé problémy](data-lake-storage-known-issues.md) . Pokud se chcete zaregistrovat ve verzi Preview, podívejte se na [Tento formulář](https://aka.ms/adls/qa-preview-signup). 
 
-## <a name="select-syntax"></a>Syntaxe SELECT
+## <a name="select-syntax"></a>VYBRAT syntaxi
 
-Jediným příkazem SQL podporovaným akcelerací dotazu je příkaz SELECT. Tento příklad vrátí každý řádek, pro který výraz vrátí true.
+Jediným příkazem jazyka SQL podporovaným zrychlením dotazu je příkaz SELECT. Tento příklad vrátí všechny řádky, pro které výraz vrací hodnotu true.
 
 ```sql
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-U dat ve formátu *table* CSV `BlobStorage`musí být tabulka .  To znamená, že dotaz bude spuštěn proti podle toho, blob byl zadán ve volání REST.
-Pro data ve formátu JSON je *tabulka* "popisovač tabulky".   V tomto článku najdete v části [Popisy tabulek.](#table-descriptors)
+Pro data ve formátu CSV musí *table* být `BlobStorage`tabulka.  To znamená, že dotaz bude spuštěn proti libovolnému objektu blob, který byl zadán ve volání REST.
+V případě dat ve formátu JSON je *tabulka* "popisovač tabulky".   Viz část s [popisovači tabulky](#table-descriptors) v tomto článku.
 
-V následujícím příkladu pro každý řádek, pro který *výraz* WHERE vrátí hodnotu true, vrátí tento příkaz nový řádek, který je vyroben z vyhodnocení každého výrazu projekce.
+V následujícím příkladu pro každý řádek, pro který *výraz* WHERE vrátí hodnotu true, vrátí tento příkaz Nový řádek, který je vytvořen z vyhodnocení každého výrazu projekce.
 
 
 ```sql
 SELECT expression [, expression …] FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Následující příklad vrátí agregační výpočet (například průměrná hodnota určitého sloupce) přes každý z řádků, pro které *výraz* vrátí hodnotu true. 
+Následující příklad vrátí agregační výpočet (například: průměrnou hodnotu konkrétního sloupce) nad každým řádkem, pro který *výraz* vrací hodnotu true. 
 
 ```sql
 SELECT aggregate_expression FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Následující příklad vrátí vhodné posuny pro rozdělení objektu blob ve formátu CSV.  V tomto článku najdete v části [Sys.Split.](#sys-split)
+Následující příklad vrátí vhodné posuny pro rozdělení objektu BLOB ve formátu CSV.  Viz část [Sys. Split](#sys-split) tohoto článku.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
@@ -60,21 +60,21 @@ SELECT sys.split(split_size)FROM BlobStorage
 
 |Typ dat|Popis|
 |---------|-------------------------------------------|
-|INT      |64bitové podepsané celé číslo.                     |
-|Float    |64bitová ("dvojitá přesnost") s plovoucí desetinnou tázkou.|
-|Řetězec   |Řetězec Unicode s proměnnou délkou.            |
-|Časové razítko|Bod v čase.                           |
-|Boolean  |True nebo false                             |
+|INT      |64 – celé číslo se znaménkem.                     |
+|Plovák    |64-bit ("dvojitá přesnost") plovoucí desetinná čárka.|
+|ŘETEZCE   |Řetězec Unicode s proměnlivou délkou.            |
+|ČASOVÉ razítko|Bod v čase.                           |
+|DATOVÉHO  |True nebo false                             |
 
-Při čtení hodnot z dat ve formátu CSV jsou všechny hodnoty čteny jako řetězce.  Řetězcové hodnoty mohou být převedeny na jiné typy pomocí výrazů CAST.  Hodnoty mohou být implicitně přetypována do jiných typů v závislosti na kontextu. Další informace naleznete v [tématu Priorita datového typu (Transact-SQL).](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017)
+Při čtení hodnot z dat ve formátu CSV jsou všechny hodnoty čteny jako řetězce.  Řetězcové hodnoty lze převést na jiné typy pomocí výrazů přetypování.  Hodnoty mohou být implicitně přetypování na jiné typy v závislosti na kontextu. Další informace naleznete v tématu [Priorita datového typu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
 ## <a name="expressions"></a>Výrazy
 
 ### <a name="referencing-fields"></a>Odkazování na pole
 
-Pro data ve formátu JSON nebo data ve formátu CSV s řádkem záhlaví mohou být pole odkazována podle názvu.  Názvy polí mohou být citovány nebo nekotovány. Názvy polí v uvozovkách jsou uzavřeny ve dvoucionálových znacích ("), mohou obsahovat mezery a rozlišují malá a velká písmena.  Názvy nekotovaných polí nerozlišují malá a velká písmena a nesmí obsahovat žádné speciální znaky.
+Pro data ve formátu JSON nebo data ve formátu CSV s řádkem záhlaví může být na pole odkazováno podle názvu.  Názvy polí můžou být v uvozovkách nebo v uvozovkách. Názvy polí v uvozovkách jsou uzavřeny ve znakech dvojité uvozovky ("), můžou obsahovat mezery a rozlišují velká a malá písmena.  V názvech polí bez uvozovek se nerozlišují malá a velká písmena a nesmí obsahovat žádné speciální znaky.
 
-V datech ve formátu CSV mohou být pole také odkazována ordinálním znakem s předponou (_).  První pole může být například odkazováno jako _1 nebo jedenácté pole může být odkazováno jako _11.  Odkazování na pole podle řadového čísla je užitečné pro data ve formátu CSV, která neobsahují řádek záhlaví, v takovém případě je jediným způsobem, jak odkazovat na určité pole, řadové.
+V datech ve formátu CSV může být pole také odkazována podle pořadového čísla, s předponou podtržítkem (_).  Například první pole může být odkazováno jako _1 nebo pole jedenáctá může být odkazováno jako _11.  Odkazování na pole podle pořadového čísla je užitečné pro data ve formátu CSV, která neobsahují řádek záhlaví. v takovém případě jediný způsob, jak odkazovat na konkrétní pole, je podle pořadového čísla.
 
 ### <a name="operators"></a>Operátory
 
@@ -82,23 +82,23 @@ Podporovány jsou následující standardní operátory SQL:
 
 ``=``, ``!=``, ``<>``, ``<``, ``<=``, ``>``, ``>=``, ``+``, ``-``, ``/``, ``*``, ``%``, ``AND``, ``OR``, ``NOT``, ``CAST``, ``BETWEEN``, ``IN``, ``NULLIF``, ``COALESCE``
 
-Pokud se datové typy na levé a pravé straně operátoru liší, bude automatický převod proveden podle zde uvedených pravidel: [Priorita datového typu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
+Pokud jsou datové typy nalevo a napravo od operátoru jiné, bude proveden automatický převod podle pravidel, která jsou zde uvedena: [Priorita datového typu (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql?view=sql-server-2017).
 
-Dotaz akcelerace jazyka SQL podporuje pouze velmi malou podmnožinu datových typů popsaných v tomto článku.  V tomto článku najdete část [Datové typy.](#data-types)
+Jazyk SQL pro zrychlení dotazů podporuje pouze velmi malou podmnožinu datových typů popsaných v tomto článku.  Další informace najdete v části [typy dat](#data-types) tohoto článku.
 
-### <a name="casts"></a>Vrhá
+### <a name="casts"></a>Přetypování
 
-Dotaz akcelerace SQL jazyk podporuje operátor CAST, podle pravidel zde: [Převod datového typu (Database Engine)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
+Jazyk SQL pro zrychlení dotazů podporuje operátor přetypování podle pravidel zde: [Převod datového typu (databázový stroj)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-conversion-database-engine?view=sql-server-2017).  
 
-Dotaz akcelerace jazyka SQL podporuje pouze malou podmnožinu datových typů popsaných v tomto článku.  V tomto článku najdete část [Datové typy.](#data-types)
+Jazyk SQL pro zrychlení dotazů podporuje pouze malou podmnožinu datových typů popsaných v tomto článku.  Další informace najdete v části [typy dat](#data-types) tohoto článku.
 
 ### <a name="string-functions"></a>Funkce řetězců
 
-Jazyk SQL akcelerace dotazu podporuje následující standardní funkce řetězce SQL:
+Jazyk SQL pro zrychlení dotazů podporuje následující standardní řetězcové funkce jazyka SQL:
 
 ``LIKE``, ``CHAR_LENGTH``, ``CHARACTER_LENGTH``, ``LOWER``, ``UPPER``, ``SUBSTRING``, ``TRIM``, ``LEADING``, ``TRAILING``.
 
-Zde je několik příkladů:
+Tady je několik příkladů:
 
 |Funkce|Příklad|Výsledek|
 |---|---|---|
@@ -109,7 +109,7 @@ Zde je několik příkladů:
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-Funkce [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) vám pomůže vyhledat vzorek. Zde je několik příkladů, které používají funkci [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``k prohledání datového řetězce .
+Funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) vám pomůže vyhledat vzor. Zde je několik příkladů použití funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) k hledání datového řetězce ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``.
 
 |Dotaz|Příklad|
 |--|--|
@@ -121,15 +121,15 @@ Funkce [LIKE](https://docs.microsoft.com/sql/t-sql/language-elements/like-transa
 
 ### <a name="date-functions"></a>Datové funkce
 
-Podporovány jsou následující standardní funkce data SQL:
+Podporují se tyto standardní funkce data SQL:
 
 ``DATE_ADD``, ``DATE_DIFF``, ``EXTRACT``, ``TO_STRING``, ``TO_TIMESTAMP``.
 
-V současné době převádíme všechny [formáty dat standardního IS08601](https://www.w3.org/TR/NOTE-datetime). 
+V současné době převádíme všechny [formáty data Standard IS08601](https://www.w3.org/TR/NOTE-datetime). 
 
 #### <a name="date_add-function"></a>DATE_ADD funkce
 
-Akceležádost dotazu SQL jazyk podporuje rok, měsíc, ``DATE_ADD`` den, hodina, minuta, sekunda pro funkci.
+Jazyk SQL pro zrychlení dotazů podporuje pro ``DATE_ADD`` funkci rok, měsíc, den, hodinu, minutu a sekundu.
 
 Příklady:
 
@@ -140,16 +140,16 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF funkce
 
-Akceležádost dotazu SQL jazyk podporuje rok, měsíc, ``DATE_DIFF`` den, hodina, minuta, sekunda pro funkci.
+Jazyk SQL pro zrychlení dotazů podporuje pro ``DATE_DIFF`` funkci rok, měsíc, den, hodinu, minutu a sekundu.
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
 DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00') 
 ```
 
-#### <a name="extract-function"></a>FUNKCE EXTRACT
+#### <a name="extract-function"></a>EXTRAHOVAT funkci
 
-Pro extract jiné než datum ``DATE_ADD`` část podporovaná pro funkci, akcelerace dotazu JAZYK SQL podporuje timezone_hour a timezone_minute jako část data.
+Pro EXTRAKCi jinou než datum podporované pro ``DATE_ADD`` funkci podporuje jazyk SQL Acceleration (Query acceleration) timezone_hour a timezone_minute jako součást data.
 
 Příklady:
 
@@ -167,41 +167,41 @@ TO_STRING(TimeStamp , format)
 TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 ```
 
-Tato tabulka popisuje řetězce, které můžete použít k ``TO_STRING`` určení výstupního formátu funkce.
+Tato tabulka popisuje řetězce, které lze použít k určení výstupního formátu ``TO_STRING`` funkce.
 
-|Formátovací řetězec    |Výstup                               |
+|Řetězec formátu    |Výstup                               |
 |-----------------|-------------------------------------|
-|RR               |Rok ve dvoumístném formátu – 1999 jako '99'|
-|y                |Rok ve čtyřmístném formátu               |
-|rrrr             |Rok ve čtyřmístném formátu               |
-|M                |Měsíc v roce – 1                    |
-|MM               |Nula polstrovaný měsíc – 01               |
-|MMM              |Abbr. měsíc roku -JAN            |
+|RR               |Rok ve formátu 2 číslice – 1999 jako "99"|
+|y                |Rok ve formátu 4 číslice               |
+|rrrr             |Rok ve formátu 4 číslice               |
+|M                |Měsíc roku – 1                    |
+|MM               |Nula čalouněný měsíc – 01               |
+|MMM              |Abbr. měsíc roku – LED            |
 |MMMM             |Celý měsíc – květen                      |
 |d                |Den v měsíci (1-31)                  |
-|dd               |Nula polstrovaný den v měsíci (01-31)     |
-|a                |Dopoledne nebo odpoledne                             |
+|dd               |Nula čalouněného dne v měsíci (01-31)     |
+|a                |AM nebo PM                             |
 |h                |Hodina dne (1-12)                   |
-|hh               |Nula polstrované hodiny od den (01-12)     |
+|hh               |Nula čalouněných hodin od dne (01-12)     |
 |H                |Hodina dne (0-23)                   |
-|HH               |Nula Polstrovaná hodina dne (00-23)      |
-|m                |Minuta (0-59)                |
-|mm               |Nulová polstrovaná minuta (00-59)           |
-|s                |Druhá z minut (0-59)             |
-|ss               |Nula polstrované sekundy (00-59)          |
-|S                |Zlomek sekund (0.1-0.9)        |
-|SS               |Zlomek sekund (0.01-0.99)      |
-|Sss              |Zlomek sekund (0.001-0.999)    |
+|HH               |Nula doplněná hodina dne (00-23)      |
+|m                |Minuta v hodinách (0-59)                |
+|mm               |Nula čalouněných minut (00-59)           |
+|s                |Sekunda z minut (0-59)             |
+|ss               |Nula čalouněných sekund (00-59)          |
+|S                |Zlomek sekund (0,1 – 0.9)        |
+|SS               |Zlomek sekund (0,01 – 0,99)      |
+|POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
 |×                |Posun v hodinách                      |
-|XX nebo XXXX       |Posun v hodinách a minutách (+0430)  |
+|XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |
-|xx nebo xxxx       |Posun v hodině a minutě (+0530)    |
-|Xxx nebo xxxxx     |Posun v hodině a minutě (+05:30)   |
+|XX nebo xxxx       |Posun v hodinách a minutách (+ 0530)    |
+|XXX nebo xxxxx     |Posun v hodinách a minutách (+ 05:30)   |
 
 #### <a name="to_timestamp-function"></a>TO_TIMESTAMP funkce
 
-Podporovány jsou pouze formáty IS08601.
+Podporují se jenom formáty IS08601.
 
 Příklady:
 
@@ -211,7 +211,7 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> Můžete také použít ``UTCNOW`` funkci získat systémový čas.
+> K získání systémového času můžete ``UTCNOW`` použít také funkci.
 
 
 ## <a name="aggregate-expressions"></a>Agregační výrazy
@@ -220,22 +220,22 @@ Příkaz SELECT může obsahovat jeden nebo více výrazů projekce nebo jeden a
 
 |Expression|Popis|
 |--|--|
-|[POČET(\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, které odpovídaly predikátu výraz.|
-|[COUNT(výraz)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, pro které výraz není null.|
-|[PRŮMĚR(výraz)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Vrátí průměr hodnot výrazu, které nejsou null.|
-|[MIN(výraz)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Vrátí minimální hodnotu výrazu, která není null.|
-|[MAX(výraz)](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15)    |Vrátí maximální hodnotu výrazu, která není null.|
-|[SUMA(výraz)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |Vrátí součet všech hodnot výrazu, které nejsou nulové.|
+|[COUNT (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, které odpovídají výrazu predikátu.|
+|[COUNT (výraz)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, pro které výraz má hodnotu null.|
+|[AVERAGE (výraz)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Vrátí průměr hodnot výrazu, které nejsou null.|
+|[MIN (výraz)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Vrátí minimální hodnotu výrazu, která není null.|
+|[Max (výraz](https://docs.microsoft.com/sql/t-sql/functions/max-transact-sql?view=sql-server-ver15))    |Vrátí maximální hodnotu výrazu, který není null.|
+|[SUM (výraz)](https://docs.microsoft.com/sql/t-sql/functions/sum-transact-sql?view=sql-server-ver15)    |Vrátí součet všech hodnot, které nejsou null, výrazu.|
 
-### <a name="missing"></a>Chybějící
+### <a name="missing"></a>NENAŠEL
 
-Operátor ``IS MISSING`` je jediný nestandardní, který podporuje dotaz akcelerace jazyka SQL.  Pokud u dat JSON chybí pole v určitém vstupním ``IS MISSING`` záznamu, pole výrazu vyhodnotí logickou hodnotu true.
+``IS MISSING`` Operátor je jediným nestandardním jazykem, který podporuje jazyk SQL pro zrychlení dotazování.  Pokud v případě dat JSON chybí pole v určitém vstupním záznamu, pole ``IS MISSING`` výrazu se vyhodnotí na logickou hodnotu true.
 
 <a id="table-descriptors" />
 
-## <a name="table-descriptors"></a>Popisovače tabulky
+## <a name="table-descriptors"></a>Deskriptory tabulky
 
-U dat CSV je název `BlobStorage`tabulky vždy .  Příklad:
+V případě dat CSV je název tabulky vždycky `BlobStorage`.  Příklad:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -247,13 +247,13 @@ Pro data JSON jsou k dispozici další možnosti:
 SELECT * FROM BlobStorage[*].path
 ```
 
-To umožňuje dotazy přes podmnožiny dat JSON.
+To umožňuje dotazování pro podmnožiny dat JSON.
 
-Pro dotazy JSON můžete uvést cestu v části FROM klauzule. Tyto cesty pomohou analyzovat podmnožinu dat JSON. Tyto cesty mohou odkazovat na hodnoty Pole JSON a Object.
+Pro dotazy JSON můžete uvést cestu v části klauzule FROM. Tyto cesty vám pomůžou analyzovat podmnožinu dat JSON. Tyto cesty mohou odkazovat na hodnoty polí a objektů JSON.
 
-Vezměme si příklad, abychom to pochopili podrobněji.
+Pojďme si tento příklad porozumět podrobněji.
 
-Toto jsou naše ukázková data:
+Tato ukázková data:
 
 ```json
 {
@@ -279,7 +279,7 @@ Toto jsou naše ukázková data:
 }
 ```
 
-Možná vás bude zajímat `warehouses` pouze objekt JSON z výše uvedených dat. Objekt `warehouses` je typ pole JSON, takže to můžete zmínit v klauzuli FROM. Ukázkový dotaz může vypadat nějak takto.
+Může vás zajímat jenom objekt `warehouses` JSON z výše uvedených dat. `warehouses` Objekt je typ pole JSON, takže ho můžete uvést v klauzuli FROM. Vzorový dotaz může vypadat přibližně takto.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
@@ -287,42 +287,42 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 Dotaz získá všechna pole, ale vybere pouze zeměpisnou šířku.
 
-Pokud jste chtěli získat `dimensions` přístup pouze k hodnotě objektu JSON, můžete použít odkazovat na tento objekt v dotazu. Příklad:
+Pokud jste chtěli přístup pouze k hodnotě `dimensions` objektu JSON, můžete použít odkaz na tento objekt v dotazu. Příklad:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
 ```
 
-To také omezuje váš přístup `dimensions` k členům objektu. Pokud chcete získat přístup k ostatním členům polí JSON a vnitřních hodnot objektů JSON, můžete použít dotazy, které jsou uvedeny v následujícím příkladu:
+Tím také omezíte přístup ke členům `dimensions` objektu. Chcete-li získat přístup k dalším členům polí JSON a vnitřním hodnotám objektů JSON, můžete použít dotazy, jako například v následujícím příkladu:
 
 ```sql
 SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage a BlobStorage[\*] oba odkazují na celý objekt. Pokud však máte cestu v klauzuli FROM, budete muset použít\*BlobStorage[ .cesta
+> BlobStorage a BlobStorage [\*] odkazují na celý objekt. Pokud ale máte cestu v klauzuli FROM, budete muset použít BlobStorage [\*]. Path.
 
 <a id="sys-split" />
 
-## <a name="syssplit"></a>Sys.Split
+## <a name="syssplit"></a>Sys. Split
 
-Jedná se o zvláštní formu příkazu SELECT, který je k dispozici pouze pro data ve formátu CSV.
+Jedná se o speciální formu příkazu SELECT, který je k dispozici pouze pro data ve formátu CSV.
 
 ```sql
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-Toto prohlášení použijte v případech, kdy chcete stáhnout a zpracovat datové záznamy CSV v dávkách. Tímto způsobem můžete zpracovávat záznamy paralelně namísto nutnosti stahovat všechny záznamy najednou. Tento příkaz nevrací záznamy ze souboru CSV. Místo toho vrátí kolekci velikostí dávek. Potom můžete použít každou velikost dávky k načtení dávky datových záznamů. 
+Tento příkaz použijte v případech, kdy chcete stáhnout a následně zpracovat záznamy dat CSV v dávkách. Tímto způsobem můžete zpracovávat záznamy paralelně, aniž byste museli stahovat všechny záznamy najednou. Tento příkaz nevrací záznamy ze souboru CSV. Místo toho vrátí kolekci velikostí dávek. Pak můžete použít každou velikost dávky k načtení dávky datových záznamů. 
 
-Pomocí *parametru split_size* určete počet bajtů, které mají každá dávka obsahovat. Například pokud chcete zpracovat pouze 10 MB dat najednou, můžete příkaz vypadat `SELECT sys.split(10485760)FROM BlobStorage` takto: protože 10 MB se rovná 10,485,760 bajtů. Každá dávka bude obsahovat tolik záznamů, kolik se vejde do těchto 10 MB. 
+Pomocí parametru *split_size* určete počet bajtů, které mají jednotlivé dávky obsahovat. Například pokud chcete zpracovávat pouze 10 MB dat najednou, bude příkaz vypadat takto: `SELECT sys.split(10485760)FROM BlobStorage` protože 10 MB je rovno 10 485 760 bajtů. Každá dávka bude obsahovat tolik záznamů, kolik je možné do těchto 10 MB. 
 
-Ve většině případů bude velikost každé dávky mírně vyšší než zadané číslo. To proto, že dávka nemůže obsahovat částečný záznam. Pokud poslední záznam v dávce začíná před koncem prahové hodnoty, dávka bude větší, aby mohla obsahovat celý záznam. Velikost poslední dávky bude pravděpodobně menší než zadaná velikost.
+Ve většině případů bude velikost každé dávky mírně vyšší než číslo, které zadáte. To proto, že dávka nemůže obsahovat částečný záznam. Pokud se poslední záznam v dávce spustí před koncem prahové hodnoty, bude dávka větší, aby mohla obsahovat úplný záznam. Velikost poslední dávky bude pravděpodobně menší než zadaná velikost.
 
 >[!NOTE]
 > Split_size musí být alespoň 10 MB (10485760).
 
 ## <a name="see-also"></a>Viz také
 
-- [Akcelerace dotazu Azure Data Lake Storage (preview)](data-lake-storage-query-acceleration.md)
-- [Filtrování dat pomocí akcelerace dotazu Azure Data Lake Storage (preview)](data-lake-storage-query-acceleration-how-to.md)
+- [Akcelerace dotazů Azure Data Lake Storage (Preview)](data-lake-storage-query-acceleration.md)
+- [Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)](data-lake-storage-query-acceleration-how-to.md)
 

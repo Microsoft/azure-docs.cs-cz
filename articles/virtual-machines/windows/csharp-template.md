@@ -1,5 +1,5 @@
 ---
-title: Nasazení virtuálního počítače pomocí jazyka C# a šablony Správce prostředků
+title: Nasazení virtuálního počítače pomocí C# a šablony Správce prostředků
 description: Naučte se používat C# a šablonu Správce prostředků k nasazení virtuálního počítače Azure.
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,34 +9,34 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
 ms.openlocfilehash: dfcc0c550af9df6c884c8cd864ed90daf5f78e2f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082913"
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí Jazyka C# a šablony Správce prostředků
+# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Nasazení virtuálního počítače Azure pomocí C# a šablony Správce prostředků
 
-Tento článek ukazuje, jak nasadit šablonu Azure Resource Manager pomocí C#. Šablona, kterou vytvoříte, nasadí jeden virtuální počítač se systémem Windows Server v nové virtuální síti s jednou podsítí.
+V tomto článku se dozvíte, jak nasadit šablonu Azure Resource Manager pomocí jazyka C#. Šablona, kterou vytvoříte, nasadí jeden virtuální počítač se systémem Windows Server v nové virtuální síti s jednou podsítí.
 
-Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Správce prostředků Azure](template-description.md). Další informace o všech prostředcích v šabloně najdete v [návodu k šabloně Správce prostředků Azure](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Podrobný popis prostředku virtuálního počítače najdete v tématu [virtuální počítače v šabloně Azure Resource Manager](template-description.md). Další informace o všech prostředcích v šabloně najdete v tématu [Azure Resource Manager návodu](../../azure-resource-manager/resource-manager-template-walkthrough.md)k vytvoření šablony.
 
-Trvá asi 10 minut, než provedete tyto kroky.
+Provedení těchto kroků trvá přibližně 10 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-V tomto kroku se ujistěte, že je nainstalována sada Visual Studio a vytvoříte konzolovou aplikaci používanou k nasazení šablony.
+V tomto kroku se ujistěte, že je nainstalovaná aplikace Visual Studio a Vy vytvoříte konzolovou aplikaci, která se používá k nasazení šablony.
 
-1. Pokud jste tak ještě neučinili, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce Úlohy vyberte **vývoj plochy .NET** a klepněte na tlačítko **Instalovat**. V souhrnu vidíte, že **vývojové nástroje .NET Framework 4 - 4.6** jsou automaticky vybrány za vás. Pokud jste již nainstalovali Visual Studio, můžete přidat zatížení .NET pomocí Spouštěč sady Visual Studio.
-2. V sadě Visual Studio klepněte na **položku Soubor** > **nového** > **projektu**.
-3. V **části Šablony** > **visual c#** vyberte Console App **(.NET Framework)**, zadejte *myDotnetProject* pro název projektu, vyberte umístění projektu a klepněte na tlačítko **OK**.
+1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
+2. V aplikaci Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
+3. V **šablonách** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
-## <a name="install-the-packages"></a>Instalace balíčků
+## <a name="install-the-packages"></a>Nainstalovat balíčky
 
-Balíčky NuGet jsou nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Pokud chcete v sadě Visual Studio získat knihovny, které potřebujete, postupujte takto:
+Balíčky NuGet představují nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které potřebujete v aplikaci Visual Studio, proveďte tyto kroky:
 
-1. Klepněte na **položku Tools** > **Nuget Package Manager**a potom klepněte na příkaz **Konzola správce balíčků**.
-2. Zadejte tyto příkazy do konzoly:
+1. Klikněte na **nástroje** > **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
+2. Do konzoly zadejte tyto příkazy:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
@@ -45,12 +45,12 @@ Balíčky NuGet jsou nejjednodušší způsob, jak nainstalovat knihovny, které
 
 ## <a name="create-the-files"></a>Vytvoření souborů
 
-V tomto kroku vytvoříte soubor šablony, který nasazuje prostředky a soubor parametrů, který do kládání dodává hodnoty parametrů. Můžete také vytvořit autorizační soubor, který se používá k provádění operací Azure Resource Manager.
+V tomto kroku vytvoříte soubor šablony, který nasadí prostředky a soubor parametrů, který do šablony dodá hodnoty parametrů. Můžete také vytvořit autorizační soubor, který se používá k provádění operací Azure Resource Manager.
 
 ### <a name="create-the-template-file"></a>Vytvoření souboru šablony
 
-1. V Průzkumníku řešení klepněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a potom vyberte **položku Textový soubor** v *aplikaci Visual C# Items*. Pojmenujte soubor *CreateVMTemplate.json*a klepněte na tlačítko **Přidat**.
-2. Přidejte tento kód JSON do souboru, který jste vytvořili:
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *CreateVMTemplate. JSON*a klikněte na tlačítko **Přidat**.
+2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
     {
@@ -155,14 +155,14 @@ V tomto kroku vytvoříte soubor šablony, který nasazuje prostředky a soubor 
     }
     ```
 
-3. Uložte soubor CreateVMTemplate.json.
+3. Uložte soubor CreateVMTemplate. JSON.
 
 ### <a name="create-the-parameters-file"></a>Vytvoření souboru parametrů
 
 Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor parametrů, který obsahuje hodnoty.
 
-1. V Průzkumníku řešení klepněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a potom vyberte **položku Textový soubor** v *aplikaci Visual C# Items*. Pojmenujte soubor *Parameters.json*a klepněte na tlačítko **Přidat**.
-2. Přidejte tento kód JSON do souboru, který jste vytvořili:
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Zadejte název souboru *Parameters. JSON*a pak klikněte na **Přidat**.
+2. Tento kód JSON přidejte do souboru, který jste vytvořili:
 
     ```json
     {
@@ -175,13 +175,13 @@ Chcete-li zadat hodnoty parametrů prostředků v šabloně, vytvořte soubor pa
     }
     ```
 
-4. Uložte soubor Parameters.json.
+4. Uložte soubor Parameters. JSON.
 
 ### <a name="create-the-authorization-file"></a>Vytvoření autorizačního souboru
 
-Před nasazením šablony se ujistěte, že máte přístup k [objektu zabezpečení služby Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z instančního objektu získáte token pro ověřování požadavků na Azure Resource Manager. Měli byste také zaznamenat ID aplikace, ověřovací klíč a ID klienta, které potřebujete v autorizačním souboru.
+Než budete moct nasadit šablonu, ujistěte se, že máte přístup k [instančnímu objektu služby Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z instančního objektu získáte token pro ověřování požadavků Azure Resource Manager. Měli byste také zaznamenat ID aplikace, ověřovací klíč a ID tenanta, které v autorizačním souboru potřebujete.
 
-1. V Průzkumníku řešení klepněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a potom vyberte **položku Textový soubor** v *aplikaci Visual C# Items*. Pojmenujte soubor *azureauth.properties*a klepněte na tlačítko **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -195,10 +195,10 @@ Před nasazením šablony se ujistěte, že máte přístup k [objektu zabezpeč
     graphURL=https://graph.microsoft.com/
     ```
 
-    ** &lt;&gt; Nahraďte id předplatného** identifikátorem předplatného, ** &lt;id&gt; aplikace** identifikátorem aplikace služby Active Directory, ** &lt;ověřovacím klíčem&gt; ** s klíčem aplikace a ** &lt;id&gt; klienta** identifikátorem klienta.
+    Nahraďte ** &lt;&gt; ID** předplatného identifikátorem vašeho předplatného, ** &lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, ** &lt;&gt; ** klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt;ID&gt; tenanta** s identifikátorem tenanta.
 
-3. Uložte soubor azureauth.properties.
-4. Nastavte proměnnou prostředí v systému Windows s názvem AZURE_AUTH_LOCATION s úplnou cestou k autorizačnímu souboru, který jste vytvořili, například můžete použít následující příkaz prostředí PowerShell:
+3. Uložte soubor azureauth. Properties.
+4. Nastavte v systému Windows proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k vytvořenému autorizačnímu souboru, například můžete použít následující příkaz prostředí PowerShell:
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -206,9 +206,9 @@ Před nasazením šablony se ujistěte, že máte přístup k [objektu zabezpeč
 
     
 
-## <a name="create-the-management-client"></a>Vytvoření klienta pro správu
+## <a name="create-the-management-client"></a>Vytvořit klienta pro správu
 
-1. Otevřete soubor Program.cs pro projekt, který jste vytvořili. Potom přidejte tyto příkazy using do existujících příkazů v horní části souboru:
+1. Otevřete soubor Program.cs pro projekt, který jste vytvořili. Pak přidejte tyto příkazy using do stávajících příkazů v horní části souboru:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -248,9 +248,9 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Šablona a parametry se nasazují z účtu úložiště v Azure. V tomto kroku vytvoříte účet a nahrajete soubory. 
+Šablonu a parametry se nasazují z účtu úložiště v Azure. V tomto kroku vytvoříte účet a nahrajete soubory. 
 
-Chcete-li vytvořit účet, přidejte tento kód do hlavní metody:
+Chcete-li vytvořit účet, přidejte tento kód do metody Main:
 
 ```csharp
 string storageAccountName = SdkContext.RandomResourceName("st", 10);
@@ -288,9 +288,9 @@ paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasaďte šablonu a parametry z účtu úložiště, který byl vytvořen. 
+Nasaďte šablonu a parametry z účtu úložiště, který jste vytvořili. 
 
-Chcete-li nasadit šablonu, přidejte tento kód do hlavní metody:
+Chcete-li nasadit šablonu, přidejte tento kód do metody Main:
 
 ```csharp
 var templatePath = "https://" + storageAccountName + ".blob.core.windows.net/templates/CreateVMTemplate.json";
@@ -305,11 +305,11 @@ Console.WriteLine("Press enter to delete the resource group...");
 Console.ReadLine();
 ```
 
-## <a name="delete-the-resources"></a>Odstranění prostředků
+## <a name="delete-the-resources"></a>Odstranit prostředky
 
-Vzhledem k tomu, že se vám účtují prostředky používané v Azure, je vždy vhodné odstranit prostředky, které už nejsou potřeba. Není nutné odstranit každý prostředek odděleně od skupiny prostředků. Odstraňte skupinu prostředků a všechny její prostředky se automaticky odstraní. 
+Vzhledem k tomu, že se vám účtují prostředky používané v Azure, je vždy vhodné odstranit prostředky, které už nepotřebujete. Nemusíte odstraňovat jednotlivé prostředky odděleně od skupiny prostředků. Odstraní skupinu prostředků a všechny její prostředky se automaticky odstraní. 
 
-Chcete-li odstranit skupinu prostředků, přidejte tento kód do hlavní metody:
+Pokud chcete odstranit skupinu prostředků, přidejte tento kód do metody Main:
 
 ```csharp
 azure.ResourceGroups.DeleteByName(groupName);
@@ -317,13 +317,13 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Spuštění aplikace
 
-Mělo by trvat asi pět minut, než bude tato konzolová aplikace spuštěna úplně od začátku do konce. 
+Spuštění této konzolové aplikace z začátku do konce by mělo trvat přibližně pět minut. 
 
-1. Chcete-li spustit konzolovou aplikaci, klepněte na tlačítko **Spustit**.
+1. Chcete-li spustit konzolovou aplikaci, klikněte na tlačítko **Start**.
 
-2. Než stisknete **Enter** a začnete spouštět prostředky, může trvat několik minut, než ověříte vytvoření prostředků na webu Azure Portal. Kliknutím na stav nasazení zobrazíte informace o nasazení.
+2. Než stisknete **ENTER** a začnete odstraňovat prostředky, může trvat několik minut, než se ověří vytváření prostředků v Azure Portal. Kliknutím na stav nasazení zobrazíte informace o nasazení.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud by došlo k problémům s nasazením, dalším krokem by bylo podívat se na [řešení běžných chyb nasazení Azure s Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-* Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky kontrolou [Nasazení virtuálního počítače Azure pomocí Jazyka C#](csharp.md).
+* V případě, že došlo k potížím s nasazením, je dalším krokem postup [při řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* Zjistěte, jak nasadit virtuální počítač a jeho podpůrné prostředky pomocí tématu [nasazení virtuálního počítače Azure pomocí jazyka C#](csharp.md).

@@ -1,45 +1,45 @@
 ---
-title: 'Úvodní příručka: Dotaz na předpověď pomocí prohlížeče – LUIS'
-description: V tomto rychlém startu použijte dostupnou veřejnou aplikaci LUIS k určení záměru uživatele z konverzačního textu v prohlížeči.
+title: 'Rychlý Start: dotaz na předpověď s prohlížečem – LUIS'
+description: V tomto rychlém startu pomocí dostupné veřejné aplikace LUIS určíte záměr uživatele z konverzačního textu v prohlížeči.
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.openlocfilehash: 5ba86882ebf3cb538ad6b865382342fcbd43d27c
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769970"
 ---
-# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Úvodní příručka: Doba běhu předpovědi dotazu s textem uživatele
+# <a name="quickstart-query-prediction-runtime-with-user-text"></a>Rychlý Start: modul runtime předpovědi dotazu s uživatelským textem
 
 Abyste porozuměli výsledkům koncového bodu předpovědí služby LUIS, zobrazte si výsledek předpovědi ve webovém prohlížeči.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
+K dotazování veřejné aplikace potřebujete:
 
-* Informace o prostředku pro jazykové porozumění (LUIS):
-    * **Predikční klíč** - který lze získat z [luis portálu](https://www.luis.ai/). Pokud ještě nemáte předplatné na vytvoření klíče, můžete se zaregistrovat k [bezplatnému účtu](https://azure.microsoft.com/free/).
-    * **Poddoména koncového bodu předpověď** – subdoména je také **název** prostředku LUIS.
-* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
+* Informace o prostředcích Language Understanding (LUIS):
+    * **Klíč předpovědi** – který se dá získat z [portálu Luis](https://www.luis.ai/). Pokud ještě nemáte předplatné k vytvoření klíče, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+    * Dílčí doména **koncového bodu předpovědi** – subdoména je také **název** vašeho prostředku Luis.
+* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
 
-## <a name="use-the-browser-to-see-predictions"></a>Zobrazení předpovědí pomocí prohlížeče
+## <a name="use-the-browser-to-see-predictions"></a>Použití prohlížeče k zobrazení předpovědi
 
 1. Otevřete webový prohlížeč.
-1. Použijte úplné adresy URL níže `YOUR-KEY` a nahraďte je vlastním klíčem Luis Prediction. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem LUIS Prediction jako parametr řetězce dotazu.
+1. Pomocí níže uvedených úplných adres URL `YOUR-KEY` nahraďte vlastní klíč předpovědi Luis. Požadavky jsou požadavky GET a zahrnují autorizaci s klíčem předpovědi LUIS jako parametr řetězce dotazu.
 
     #### <a name="v3-prediction-request"></a>[Požadavek na předpověď V3](#tab/V3-1-1)
 
 
-    Formát adresy URL V3 pro požadavek **koncového** bodu GET (podle slotů) je:
+    Formát adresy URL v3 pro požadavek **Get** Endpoint (podle slotů) je:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY
     `
 
-    #### <a name="v2-prediction-request"></a>[Požadavek na předpověď V2](#tab/V2-1-2)
+    #### <a name="v2-prediction-request"></a>[V2 – žádost o předpověď](#tab/V2-1-2)
 
-    Formát adresy URL V2 pro požadavek koncového bodu **GET** je:
+    Formát adresy URL v2 pro požadavek **Get** Endpoint je:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=YOUR-LUIS-PREDICTION-KEY&q=turn on all lights
@@ -47,7 +47,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
 
 1. Vložte adresu URL do okna prohlížeče a stiskněte Enter. V prohlížeči se zobrazí výsledek JSON, který značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOn` jako hlavní záměr a entitu `HomeAutomation.Operation` s hodnotou `on`.
 
-    #### <a name="v3-prediction-response"></a>[Predikční odpověď V3](#tab/V3-2-1)
+    #### <a name="v3-prediction-response"></a>[Odpověď předpovědi V3](#tab/V3-2-1)
 
     ```JSON
     {
@@ -68,7 +68,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     }
     ```
 
-    #### <a name="v2-prediction-response"></a>[Predikční odpověď V2](#tab/V2-2-2)
+    #### <a name="v2-prediction-response"></a>[V2 – odpověď předpovědi](#tab/V2-2-2)
 
     ```json
     {
@@ -93,9 +93,9 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
 
 1. Chcete-li zobrazit všechny záměry, přidejte příslušný parametr řetězce dotazu.
 
-    #### <a name="v3-prediction-endpoint"></a>[Koncový bod predikce V3](#tab/V3-3-1)
+    #### <a name="v3-prediction-endpoint"></a>[Prediktivní koncový bod V3](#tab/V3-3-1)
 
-    Chcete-li zobrazit všechny záměry , přidat `show-all-intents=true` na konec řetězce **dotazu**:
+    Přidejte `show-all-intents=true` na konec řetězce dotazu, aby se **zobrazily všechny záměry**:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/predict/v3.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?query=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&show-all-intents=true
@@ -126,9 +126,9 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
     }
     ```
 
-    #### <a name="v2-prediction-endpoint"></a>[Koncový bod predikce V2](#tab/V2)
+    #### <a name="v2-prediction-endpoint"></a>[Koncový bod pro předpověď v2](#tab/V2)
 
-    Chcete-li zobrazit všechny záměry , přidat `verbose=true` na konec řetězce **dotazu**:
+    Přidejte `verbose=true` na konec řetězce dotazu, aby se **zobrazily všechny záměry**:
 
     `
     https://YOUR-LUIS-ENDPOINT-SUBDOMAIN.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn on all lights&subscription-key=YOUR-LUIS-PREDICTION-KEY&verbose=true
@@ -170,7 +170,7 @@ Chcete-li zadat dotaz na veřejnou aplikaci, potřebujete:
 ## <a name="next-steps"></a>Další kroky
 
 Další informace:
-* [Koncový bod predikce V3](luis-migration-api-v3.md)
+* [Prediktivní koncový bod V3](luis-migration-api-v3.md)
 * [Vlastní subdomény](../cognitive-services-custom-subdomains.md)
 
 > [!div class="nextstepaction"]

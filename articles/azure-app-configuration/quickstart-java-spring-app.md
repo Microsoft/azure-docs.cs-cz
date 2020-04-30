@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka se dozvíte, jak používat Azure App Configuration
-description: Rychlý start pro používání Azure App Configuration s java jarníaplikacemi.
+title: Rychlý Start, kde se dozvíte, jak používat konfiguraci aplikací Azure
+description: Rychlý Start pro použití konfigurace aplikací Azure s aplikacemi pro pružinu v jazyce Java
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -11,58 +11,58 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.openlocfilehash: 69b9733f4d79f5fc42fe86ca0f8a97305205aeef
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085055"
 ---
-# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Úvodní příručka: Vytvoření aplikace Java Spring s konfigurací aplikací Azure
+# <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace s pružinou v jazyce Java pomocí konfigurace aplikace Azure
 
-V tomto rychlém startu můžete začlenit Azure App Configuration do aplikace Java Spring centralizovat ukládání a správu nastavení aplikací odděleně od vašeho kódu.
+V tomto rychlém startu zařadíte konfiguraci aplikace Azure do aplikace v pružině Java, která bude centralizovat úložiště a správu nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-- Podporovaná [java development kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
-- [Apache Maven](https://maven.apache.org/download.cgi) verze 3.0 nebo vyšší.
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- Podporovaná [sada Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk) s verzí 8.
+- [Apache Maven](https://maven.apache.org/download.cgi) verze 3,0 nebo vyšší.
 
-## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikací
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník** > konfigurace **+ Vytvořit** > **klíč-hodnotu** přidat následující dvojice klíč-hodnota:
+6. Vyberte možnost **Průzkumník** > konfigurace **+ vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |---|---|
     | /application/config.message | Dobrý den |
 
-    Ponechte **popisek** a **typ obsahu** prozatím prázdný.
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
 7. Vyberte **Použít**.
 
-## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace jarního spuštění
+## <a name="create-a-spring-boot-app"></a>Vytvoření aplikace pro spouštění pružiny
 
-Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový projekt jarního startu.
+Pomocí [jarního Initializru](https://start.spring.io/) vytvořte nový projekt pro spuštění pružiny.
 
 1. Přejděte na <https://start.spring.io/>.
 
 1. Zadejte následující možnosti:
 
    - Vygenerujte projekt **Maven** v **Javě**.
-   - Zadejte verzi **jarního spuštění,** která je rovna nebo větší než 2.0.
+   - Zadejte verzi pro **jarní spuštění** , která je rovna nebo větší než 2,0.
    - Zadejte názvy skupiny (**Group**) a artefaktu (**Artifact**) pro vaši aplikaci.
-   - Přidejte závislost **spring web.**
+   - Přidejte **webovou závislost pružiny** .
 
-1. Po zadání předchozích možností vyberte **Generovat projekt**. Po zobrazení výzvy stáhněte projekt na místní počítač.
+1. Po zadání předchozích možností vyberte **generovat projekt**. Po zobrazení výzvy stáhněte projekt na místní počítač.
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikací
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace Spring Boot připravena k úpravám. Vyhledejte soubor *pom.xml* v kořenovém adresáři aplikace.
+1. Po extrahování souborů v místním systému je vaše jednoduchá aplikace pro spouštění pomocí pružiny připravená k úpravám. V kořenovém adresáři vaší aplikace vyhledejte soubor *pom. XML* .
 
-1. Otevřete soubor *pom.xml* v textovém editoru a přidejte startér `<dependencies>`Spring Cloud Azure Config do seznamu :
+1. V textovém editoru otevřete soubor *pom. XML* a přidejte jarní cloudovou konfiguraci Azure config Starter do seznamu `<dependencies>`:
 
-    **Jarní mrak 1.1.x**
+    **Jarní Cloud 1.1. x**
 
     ```xml
     <dependency>
@@ -72,7 +72,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     </dependency>
     ```
 
-    **Jarní mrak 1.2.x**
+    **Jarní Cloud 1.2. x**
 
     ```xml
     <dependency>
@@ -82,7 +82,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     </dependency>
     ```
 
-1. Vytvořte nový soubor Java s názvem *MessageProperties.java* v adresáři balíčků vaší aplikace. Přidejte následující řádky:
+1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *MessageProperties. Java* . Přidejte následující řádky:
 
     ```java
     package com.example.demo;
@@ -103,7 +103,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     }
     ```
 
-1. Vytvořte nový soubor Java s názvem *HelloController.java* v adresáři balíčků vaší aplikace. Přidejte následující řádky:
+1. V adresáři balíčku aplikace vytvořte nový soubor Java s názvem *HelloController. Java* . Přidejte následující řádky:
 
     ```java
     package com.example.demo;
@@ -126,7 +126,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     }
     ```
 
-1. Otevřete hlavní soubor Java `@EnableConfigurationProperties` aplikace a přidejte tuto funkci.
+1. Otevřete soubor hlavní aplikace v jazyce Java a přidejte `@EnableConfigurationProperties` ho a povolte tuto funkci.
 
     ```java
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -140,19 +140,19 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     }
     ```
 
-1. Vytvořte nový `bootstrap.properties` soubor pojmenovaný v adresáři prostředků aplikace a přidejte do něj následující řádky. Nahraďte ukázkové hodnoty příslušnými vlastnostmi pro váš obchod SKonfigurací aplikací.
+1. Vytvořte nový soubor s názvem `bootstrap.properties` v adresáři Resources vaší aplikace a přidejte do souboru následující řádky. Nahraďte vzorové hodnoty odpovídajícími vlastnostmi úložiště konfigurace aplikace.
 
     ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING**a nastavte ji na přístupový klíč do obchodu konfigurace aplikací. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **APP_CONFIGURATION_CONNECTION_STRING**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Na příkazovém řádku spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
     setx APP_CONFIGURATION_CONNECTION_STRING "connection-string-of-your-app-configuration-store"
     ```
 
-    Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
+    Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
     ```azurepowershell
     $Env:APP_CONFIGURATION_CONNECTION_STRING = "connection-string-of-your-app-configuration-store"
@@ -164,22 +164,22 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
     export APP_CONFIGURATION_CONNECTION_STRING='connection-string-of-your-app-configuration-store'
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně
+## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Sestavte si aplikaci Spring Boot s Maven a spusťte ji, například:
+1. Sestavte aplikaci pro jarní spouštění pomocí Maven a spusťte ji například takto:
 
     ```cmd
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. Po spuštění aplikace použijte *curl* k testování aplikace, například:
+2. Po spuštění aplikace použijte k otestování aplikace *kudrlinkou* . Příklad:
 
       ```cmd
       curl -X GET http://localhost:8080/
       ```
 
-    Zobrazí se zpráva, kterou jste zadali v úložišti konfigurace aplikací.
+    Zobrazí se zpráva, kterou jste zadali v úložišti konfigurace aplikace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -187,7 +187,7 @@ Pomocí [pružinového inicializru vytvořte](https://start.spring.io/) nový pr
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nový obchod S konfigurací aplikací a použili ho s aplikací Java Spring. Další informace najdete [v tématu jaro v Azure](https://docs.microsoft.com/java/azure/spring-framework/). Chcete-li se dozvědět, jak povolit aplikaci Java Spring dynamicky aktualizovat nastavení konfigurace, pokračujte dalším kurzem.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho v aplikaci Java pružiny. Další informace najdete v tématu [pružina v Azure](https://docs.microsoft.com/java/azure/spring-framework/). Další informace o tom, jak povolit aplikaci v jazyce Java, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-java-spring-app.md)

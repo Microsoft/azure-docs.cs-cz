@@ -13,17 +13,17 @@ ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
 ms.openlocfilehash: e42b403717eb83db06a9f719a6451cbca74c2929
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81770041"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Kurz: Použití simulovaného zařízení k otestování připojení k IoT Hubu
 
 V tomto kurzu použijete nástroje portálu Azure IoT Hub a rozhraní příkazového řádku Azure k otestování připojení zařízení. Tento kurz také využívá jednoduchý simulátor zařízení, který spustíte na svém stolním počítači.
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -44,7 +44,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Potřebujete Node.js v10.x.x nebo novější ve vývojovém počítači.
+Aplikace simulátoru zařízení, kterou budete v tomto kurzu spouštět, je napsána v jazyce Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -56,7 +56,7 @@ node --version
 
 Stáhněte si ukázkový projekt simulátoru zařízení v Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip a extrahujte archiv ZIP.
 
-Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
@@ -82,9 +82,9 @@ Získejte připojovací řetězec zařízení **MyTestDevice** tak, že na něj 
 
 Pokud chcete simulovat, že zařízení **MyTestDevice** odesílá telemetrii do centra IoT, spusťte aplikaci simulovaného zařízení v Node.js, kterou jste si stáhli v předchozí části.
 
-V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Potom přejděte do složky **iot-hub\Tutorials\ConnectivityTests.**
+V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Pak přejděte do složky **IoT-hub\Tutorials\ConnectivityTests** .
 
-V okně terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení. Použijte připojovací řetězec zařízení, který jste si poznamenali při přidání zařízení na portál.
+V okně terminálu pomocí následujících příkazů nainstalujte požadované knihovny a spusťte aplikaci simulovaného zařízení. Použijte připojovací řetězec zařízení, na které jste si poznamenali, když jste zařízení přidali na portálu.
 
 ```cmd/sh
 npm install
@@ -129,7 +129,7 @@ Tentokrát se poté, co se aplikace pokusí o připojení, zobrazí chyba ověř
 
 Pokud zařízení používá některou ze sad SDK pro zařízení centra IoT Hub, vygeneruje kód knihovny SDK token SAS potřebný k ověření u centra. Token SAS se generuje z názvu centra, názvu zařízení a klíče zařízení.
 
-V některých scénářích, například v cloudové bráně protokolu nebo v rámci schématu vlastního ověřování, může být nutné, abyste token SAS vygenerovali sami. Chcete-li vyřešit problémy s kódem generování SAS, je užitečné generovat token SAS považovaný za dobrý, který se použije během testování.
+V některých scénářích, například v cloudové bráně protokolu nebo v rámci schématu vlastního ověřování, může být nutné, abyste token SAS vygenerovali sami. Chcete-li řešit problémy s vaším kódem pro generování SAS, je vhodné vygenerovat token SAS považovaný za známý k použití při testování.
 
 > [!NOTE]
 > Ukázka SimulatedDevice-2.js zahrnuje příklady generování tokenu SAS se sadou SDK i bez ní.
@@ -142,7 +142,7 @@ az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubNam
 
 Poznamenejte si úplný text vygenerovaného tokenu SAS. Token SAS bude vypadat přibližně takto: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
-V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Potom přejděte do složky **iot-hub\Tutorials\ConnectivityTests.**
+V okně terminálu na počítači pro vývoj přejděte do kořenové složky ukázkového projektu Node.js, který máte stažený. Pak přejděte do složky **IoT-hub\Tutorials\ConnectivityTests** .
 
 V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění aplikace simulovaného zařízení:
 
@@ -183,7 +183,7 @@ Nejdřív pomocí následujícího příkazu do simulovaného zařízení načt�
 az iot hub device-identity show-connection-string --device-id MyTestDevice --output table --hub-name {YourIoTHubName}
 ```
 
-Chcete-li spustit simulované zařízení, které odesílá zprávy, přejděte do složky **iot-hub\Tutorials\ConnectivityTests** ve staženém kódu.
+Chcete-li spustit simulované zařízení, které odesílá zprávy, přejděte do složky **IoT-hub\Tutorials\ConnectivityTests** v kódu, který jste stáhli.
 
 V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a spuštění aplikace simulovaného zařízení:
 
@@ -196,7 +196,7 @@ V okně terminálu se během odesílání telemetrie do centra IoT budou zobrazo
 
 ![Simulované zařízení odesílá zprávy](media/tutorial-connectivity/sim-3-sending.png)
 
-Metriky **Metrics** na portálu můžete použít k ověření, že telemetrické zprávy se dostávají do vašeho centra IoT Hub. Vyberte centrum IoT v rozevíracím seznamu **Resource** (Prostředek), vyberte metriku **Telemetry messages sent** (Odeslané telemetrické zprávy) a časové rozmezí nastavte na **Past hour** (Poslední hodina). Graf zobrazuje agregovaný počet zpráv odeslaných simulovaným zařízením:
+**Metriky** můžete na portálu použít k ověření, že zprávy telemetrie dosáhnou služby IoT Hub. Vyberte centrum IoT v rozevíracím seznamu **Resource** (Prostředek), vyberte metriku **Telemetry messages sent** (Odeslané telemetrické zprávy) a časové rozmezí nastavte na **Past hour** (Poslední hodina). Graf zobrazuje agregovaný počet zpráv odeslaných simulovaným zařízením:
 
 ![Zobrazení metrik služby IoT Hub](media/tutorial-connectivity/metrics-portal.png)
 

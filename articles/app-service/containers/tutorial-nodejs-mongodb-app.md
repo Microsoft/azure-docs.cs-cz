@@ -1,32 +1,32 @@
 ---
-title: 'Výuka: Aplikace Linux Node.js s MongoDB'
-description: Zjistěte, jak získat aplikaci Linux Node.js, která funguje ve službě Azure App Service, s připojením k databázi MongoDB v Azure (Cosmos DB). MEAN.js se používá v tutoriálu.
+title: 'Kurz: aplikace pro Linux Node. js s MongoDB'
+description: Naučte se, jak získat aplikaci pro Linux Node. js pracující v Azure App Service s připojením k databázi MongoDB v Azure (Cosmos DB). STŘEDNÍ. js se používá v tomto kurzu.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: c08b99b0449608309b42e51c0ffb8d4b71a0621f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085262"
 ---
-# <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node.js a MongoDB ve službě Azure App Service na Linuxu
+# <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Vytvoření aplikace Node. js a MongoDB v Azure App Service v systému Linux
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Informace o nasazení ve službě App Service ve _Windows_najdete [v tématu Sestavení aplikace Node.js a MongoDB v Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit nástroj na App Service ve _Windows_, přečtěte si téma [Vytvoření aplikace Node. js a MongoDB v Azure](../app-service-web-tutorial-nodejs-mongodb-app.md).
 >
 
-[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. Tento kurz ukazuje, jak vytvořit aplikaci Node.js, připojit ji místně k databázi MongoDB a pak ji nasadit do databáze v rozhraní API Služby Azure Cosmos DB pro MongoDB. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková [webovou architekturu MEAN.js](https://meanjs.org/).
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto kurzu se dozvíte, jak vytvořit aplikaci Node. js, připojit ji místně k databázi MongoDB a pak ji nasadit do databáze v rozhraní API aplikace Azure Cosmos DB pro MongoDB. Po dokončení budete mít ve službě App Service v Linuxu spuštěnou aplikaci MEAN (MongoDB, Express, AngularJS a Node.js). Pro zjednodušení používá ukázková [webovou architekturu MEAN.js](https://meanjs.org/).
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření databáze pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
+> * Vytvoření databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 > * Připojení aplikace Node.js k MongoDB
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
@@ -112,7 +112,7 @@ Node.js můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu.
 
 ## <a name="create-production-mongodb"></a>Vytvoření provozní databáze MongoDB
 
-V tomto kroku vytvoříte databázový účet pomocí rozhraní API Azure Cosmos DB pro MongoDB. Po nasazení do Azure bude aplikace používat tuto cloudovou databázi.
+V tomto kroku vytvoříte databázový účet pomocí rozhraní API služby Azure Cosmos DB pro MongoDB. Po nasazení do Azure bude aplikace používat tuto cloudovou databázi.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -120,9 +120,9 @@ V tomto kroku vytvoříte databázový účet pomocí rozhraní API Azure Cosmos
 
 ### <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB
 
-V prostředí cloudu vytvořte účet Cosmos DB pomocí příkazu. [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create)
+V Cloud Shell vytvořte účet Cosmos DB pomocí [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) příkazu.
 
-V následujícím příkazu nahraďte jedinečný název Cosmos DB zástupným symbolem * \<cosmosdb-name>.* Tento název se používá jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`), takže musí být jedinečný v rámci všech účtů služby Cosmos DB v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků.
+V následujícím příkazu nahraďte zástupný objekt * \<cosmosdb-Name>* jedinečným názvem Cosmos DB. Tento název se používá jako součást koncového bodu služby Cosmos DB (`https://<cosmosdb-name>.documents.azure.com/`), takže musí být jedinečný v rámci všech účtů služby Cosmos DB v Azure. Název smí obsahovat jen malá písmena, číslice a znak spojovníku (-) a musí mít délku 3 až 50 znaků.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -148,13 +148,13 @@ Po vytvoření účtu služby Cosmos DB se v Azure CLI zobrazí podobné informa
 }
 </pre>
 
-## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Připojení aplikace k produkčnímu prostředí nakonfigurovanépomocí rozhraní API Azure Cosmos DB pro MongoDB
+## <a name="connect-app-to-production-configured-with-azure-cosmos-dbs-api-for-mongodb"></a>Připojení aplikace k výrobě nakonfigurované pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
 
 V tomto kroku připojíte ukázkovou aplikaci MEAN.js k právě vytvořené databázi Cosmos DB, a to pomocí připojovacího řetězce MongoDB.
 
 ### <a name="retrieve-the-database-key"></a>Načtení klíče databáze
 
-Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. V prostředí cloudu [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) použijte příkaz k načtení primárního klíče.
+Aby bylo možné se připojit k databázi Cosmos DB, potřebujete klíč databáze. V Cloud Shell použijte [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) příkaz k načtení primárního klíče.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -179,7 +179,7 @@ Zkopírujte hodnotu `primaryMasterKey`. Tyto informace budete potřebovat v dal
 
 V místním úložišti MEAN.js ve složce _config/env/_ vytvořte soubor _local-production.js_. Soubor _.gitignore_ obsahuje konfiguraci, která tento soubor uchovává mimo úložiště.
 
-Zkopírujte do něj následující kód. Nezapomeňte nahradit dva * \<* * \<zástupné symboly názvu cosmosdb>* názvem databáze Cosmos DB a nahradit zástupný symbol primárního hlavního klíče>klíčem, který jste zkopírovali v předchozím kroku.
+Zkopírujte do něj následující kód. Nezapomeňte nahradit dva * \<zástupné symboly cosmosdb-Name>* názvem databáze Cosmos DB a nahradit zástupný text * \<primárního hlavního klíče>* klíčem, který jste zkopírovali v předchozím kroku.
 
 ```javascript
 module.exports = {
@@ -228,7 +228,7 @@ V terminálu zastavte Node.js zadáním `Ctrl+C`.
 
 ## <a name="deploy-app-to-azure"></a>Nasazení aplikace do Azure
 
-V tomto kroku nasadíte aplikaci Node.js do služby Azure App Service.
+V tomto kroku nasadíte aplikaci Node. js na Azure App Service.
 
 ### <a name="configure-local-git-deployment"></a>Konfigurace nasazení místního gitu
 
@@ -248,15 +248,15 @@ V tomto kroku nasadíte aplikaci Node.js do služby Azure App Service.
 
 Ve výchozím nastavení projekt MEAN.js uchovává soubor _config/env/local-production.js_ mimo úložiště Git. Takže pro vaši aplikaci Azure použijete nastavení aplikace k definování připojovacího řetězce MongoDB.
 
-Chcete-li nastavit nastavení [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) aplikace, použijte příkaz v prostředí Cloud Shell.
+Nastavení aplikace nastavíte pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu v Cloud Shell.
 
-Následující příklad konfiguruje `MONGODB_URI` nastavení aplikace v aplikaci Azure. Nahraďte * \<>s názvem aplikace *, * \<>názvu cosmosdb *a * \<zástupné symboly>primárního hlavního klíče.*
+Následující příklad nakonfiguruje nastavení `MONGODB_URI` aplikace v aplikaci Azure. Nahraďte zástupné symboly>* \<název aplikace>*, * \<cosmosdb-Name>* a * \<Primary-Master-Key* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
 ```
 
-V kódu Node.js [přistupujete k tomuto nastavení aplikace](configure-language-nodejs.md#access-environment-variables) pomocí `process.env.MONGODB_URI`aplikace , stejně jako byste měli přístup k libovolné proměnné prostředí.
+V kódu Node. js získáte [přístup k tomuto nastavení aplikace](configure-language-nodejs.md#access-environment-variables) pomocí `process.env.MONGODB_URI`nástroje stejně, jako byste měli přístup k libovolné proměnné prostředí.
 
 V místním úložišti MEAN.js otevřete soubor _config/env/production.js_ (ne _config/env/local-production.js_), který obsahuje konfiguraci specifickou pro produkční prostředí. Výchozí aplikace MEAN.js je již nakonfigurovaná tak, aby používala proměnnou prostředí `MONGODB_URI`, kterou jste vytvořili.
 
@@ -296,9 +296,9 @@ Můžete si všimnout, že proces nasazení po příkazu `npm install` spustí [
 - _.deployment_ – Tento soubor informuje službu App Service, že má jako vlastní skript nasazení spustit `bash deploy.sh`.
 - _deploy.sh_ – Vlastní skript nasazení. Když se do souboru podíváte, zjistíte, že po příkazech `npm install` a `bower install` spouští příkaz `gulp prod`.
 
-Pomocí tohoto postupu můžete přidat libovolný krok nasazení z Gitu. Pokud aplikaci Azure restartujete kdykoli, služba App Service tyto úlohy automatizace znovu nestejde. Další informace naleznete v [tématu Run Grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
+Pomocí tohoto postupu můžete přidat libovolný krok nasazení z Gitu. Pokud aplikaci Azure restartujete kdykoli, App Service se tyto úlohy Automation znovu nespustí. Další informace najdete v tématu [spuštění grunt/Bower/Gulp](configure-language-nodejs.md#run-gruntbowergulp).
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 Přejděte do nasazené aplikace pomocí webového prohlížeče.
 
@@ -308,7 +308,7 @@ http://<app-name>.azurewebsites.net
 
 V horní nabídce klikněte na **Zaregistrovat se** a vytvořte fiktivního uživatele.
 
-Pokud jste úspěšní a aplikace se automaticky přihlásí k vytvořenému uživateli, pak vaše aplikace MEAN.js v Azure má připojení k rozhraní API Azure Cosmos DB pro MongoDB.
+Pokud máte úspěšné a aplikace se automaticky přihlásí k vytvořenému uživateli, pak má vaše střední aplikace v Azure připojení k rozhraní API Azure Cosmos DB pro MongoDB.
 
 ![Aplikace MEAN.js spuštěná v rámci služby Azure App Service](./media/tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -436,7 +436,7 @@ git commit -am "added article comment"
 git push azure master
 ```
 
-`git push` Po dokončení přejděte do aplikace Azure a vyzkoušejte nové funkce.
+`git push` Až to bude hotové, přejděte do aplikace Azure a vyzkoušejte nové funkce.
 
 ![Změny modelu a databáze publikované v Azure](media/tutorial-nodejs-mongodb-app/added-comment-field-published.png)
 
@@ -448,13 +448,13 @@ Pokud jste dříve přidali články, můžete je stále zobrazit. Stávající 
 
 ## <a name="manage-your-azure-app"></a>Správa aplikace Azure
 
-Přejděte na [portál Azure](https://portal.azure.com) a podívejte se na aplikaci, kterou jste vytvořili.
+Pokud si chcete zobrazit aplikaci, kterou jste vytvořili, přejděte na [Azure Portal](https://portal.azure.com) .
 
-V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 
-Ve výchozím nastavení se na portálu zobrazuje stránka **Přehled** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
+Ve výchozím nastavení se na portálu zobrazí stránka s **přehledem** vaší aplikace. Tato stránka poskytuje přehled, jak si vaše aplikace stojí. Tady můžete také provést základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. Karty na levé straně stránky obsahují různé stránky konfigurace, které můžete otevřít.
 
 ![Stránka služby App Service na webu Azure Portal](./media/tutorial-nodejs-mongodb-app/web-app-blade.png)
 
@@ -467,19 +467,19 @@ Ve výchozím nastavení se na portálu zobrazuje stránka **Přehled** vaší a
 Naučili jste se:
 
 > [!div class="checklist"]
-> * Vytvoření databáze pomocí rozhraní API služby Azure Cosmos DB pro MongoDB
-> * Připojení aplikace Node.js k databázi
+> * Vytvoření databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
+> * Připojení aplikace Node. js k databázi
 > * Nasadit aplikaci do Azure
 > * Aktualizovat datový model a znovu nasadit aplikaci
 > * Streamovat protokoly z Azure do terminálu
 > * Spravovat aplikaci na webu Azure Portal
 
-Přejdete k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS do aplikace.
+Přejděte k dalšímu kurzu, kde se dozvíte, jak namapovat vlastní název DNS na svou aplikaci.
 
 > [!div class="nextstepaction"]
-> [Kurz: Mapování vlastního názvu DNS do aplikace](../app-service-web-tutorial-custom-domain.md)
+> [Kurz: mapování vlastního názvu DNS na aplikaci](../app-service-web-tutorial-custom-domain.md)
 
-Nebo se podívejte na další zdroje:
+Nebo si prohlédněte další zdroje informací:
 
 > [!div class="nextstepaction"]
-> [Konfigurace aplikace Node.js](configure-language-nodejs.md)
+> [Konfigurace aplikace Node. js](configure-language-nodejs.md)

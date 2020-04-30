@@ -1,6 +1,6 @@
 ---
-title: Rozšíření jednotky operačního systému virtuálního počítače s Windows v Azure
-description: Rozšiřte velikost jednotky operačního systému virtuálního počítače pomocí Azure Powershellu v modelu nasazení Správce prostředků.
+title: Rozšíření jednotky operačního systému Windows na virtuálním počítači v Azure
+description: Zvětšete velikost jednotky operačního systému virtuálního počítače pomocí prostředí Azure PowerShell v modelu nasazení Správce prostředků.
 author: mimckitt
 manager: vashan
 ms.service: virtual-machines-windows
@@ -10,24 +10,24 @@ ms.date: 07/05/2018
 ms.author: mimckitt
 ms.subservice: disks
 ms.openlocfilehash: e69b041a2e4c8a0715adb6ab126a3aede42f7dde
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869692"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Postup rozšíření jednotky operačního systému virtuálního počítače
 
-Když vytvoříte nový virtuální počítač (VM) ve skupině prostředků nasazením image z [Azure Marketplace](https://azure.microsoft.com/marketplace/), výchozí jednotka operačního systému je často 127 GB (některé bitové kopie mají ve výchozím nastavení menší velikosti disku operačního systému). I když je možné k virtuálnímu počítači přidat datové disky (počet závisí na zvolené skladové položce) a navíc se na tyto dodatečné disky doporučuje instalovat aplikace a úlohy náročné na procesor, zákazníci často potřebují rozšířit jednotku operačního systému pro zajištění podpory určitých scénářů, jako jsou například tyto:
+Při vytváření nového virtuálního počítače ve skupině prostředků nasazením image z [Azure Marketplace](https://azure.microsoft.com/marketplace/)je výchozí jednotka operačního systému často 127 GB (některé image mají ve výchozím nastavení menší velikosti disků operačního systému). I když je možné k virtuálnímu počítači přidat datové disky (počet závisí na zvolené skladové položce) a navíc se na tyto dodatečné disky doporučuje instalovat aplikace a úlohy náročné na procesor, zákazníci často potřebují rozšířit jednotku operačního systému pro zajištění podpory určitých scénářů, jako jsou například tyto:
 
 - Podpora starších verzí aplikací, které instalují komponenty na jednotku operačního systému.
 - Migrace fyzického nebo virtuálního počítače s větší jednotkou operačního systému z místního prostředí.
 
 
 > [!IMPORTANT]
-> Změna velikosti disku operačního systému virtuálního počítače Azure vyžaduje, aby se virtuální počítač naprostředkoval.
+> Změna velikosti disku operačního systému virtuálního počítače Azure vyžaduje, aby byl virtuální počítač navrácený.
 >
-> Po rozšíření disků je třeba [rozšířit svazek v rámci operačního systému,](#expand-the-volume-within-the-os) abyste využili výhod většího disku.
+> Po rozbalení disků je potřeba [rozšířit svazek v operačním systému](#expand-the-volume-within-the-os) a využít tak větší disk.
 > 
 
 
@@ -38,7 +38,7 @@ Když vytvoříte nový virtuální počítač (VM) ve skupině prostředků nas
 
 Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell nebo okno PowerShellu v režimu správy a postupujte podle následujících kroků:
 
-1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a vyberte předplatné takto:
+1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a vyberte své předplatné následujícím způsobem:
    
    ```powershell
    Connect-AzAccount
@@ -60,7 +60,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Získejte odkaz na spravovaný disk operačního systému. Nastavte velikost spravovaného disku operačního systému na požadovanou hodnotu a aktualizujte disk následujícím způsobem:
+5. Získejte odkaz na spravovaný disk s operačním systémem. Nastavte velikost spravovaného disku s operačním systémem na požadovanou hodnotu a aktualizujte disk následujícím způsobem:
    
    ```Powershell
    $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -68,7 +68,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
-   > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2048 GB pro disky operačního systému. (Je možné rozbalit objekt blob virtuálního pevného disku nad tuto velikost, ale operační systém bude moci pracovat pouze s prvním 2048 GB prostoru.)
+   > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2048 GB pro disky s operačním systémem. (Objekt BLOB VHD můžete rozšířit i po této velikosti, ale operační systém bude moct pracovat jenom s prvním 2048 GB místa.)
    > 
    > 
 6. Aktualizace virtuálního počítače může trvat několik sekund. Jakmile se dokončí provádění příkazu, restartujte virtuální počítač následujícím způsobem:
@@ -83,7 +83,7 @@ A to je vše! Teď se pomocí RDP připojte k virtuálnímu počítači, otevře
 
 Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell nebo okno PowerShellu v režimu správy a postupujte podle následujících kroků:
 
-1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a vyberte předplatné takto:
+1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a vyberte své předplatné následujícím způsobem:
    
    ```Powershell
    Connect-AzAccount
@@ -105,7 +105,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Nastavte velikost nespravovaného disku operačního systému na požadovanou hodnotu a aktualizujte virtuální modul takto:
+5. Nastavte velikost nespravovaného disku s operačním systémem na požadovanou hodnotu a aktualizujte virtuální počítač následujícím způsobem:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -113,7 +113,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
    ```
    
    > [!WARNING]
-   > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2048 GB pro disky operačního systému. (Je možné rozbalit objekt blob virtuálního pevného disku nad tuto velikost, ale operační systém bude moci pracovat pouze s prvním 2048 GB prostoru.)
+   > Nová velikost musí být větší než stávající velikost disku. Maximální povolená hodnota je 2048 GB pro disky s operačním systémem. (Objekt BLOB VHD můžete rozšířit i po této velikosti, ale operační systém bude moct pracovat jenom s prvním 2048 GB místa.)
    > 
    > 
    
@@ -124,9 +124,9 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
    ```
 
 
-## <a name="scripts-for-os-disk"></a>Skripty pro disk operačního systému
+## <a name="scripts-for-os-disk"></a>Skripty pro disk s operačním systémem
 
-Níže je uveden úplný skript pro váš odkaz na spravované i nespravované disky:
+Níže je uvedený úplný skript pro váš odkaz na spravované i nespravované disky:
 
 
 **Spravované disky**
@@ -160,7 +160,7 @@ Start-AzVM -ResourceGroupName $rgName -Name $vmName
 
 ## <a name="resizing-data-disks"></a>Změna velikosti datových disků
 
-Tento článek je zaměřen především na rozšíření disku operačního systému virtuálního počítače, ale skript lze také použít pro rozšíření datové disky připojené k virtuálnímu počítači. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt `OSDisk` v části `StorageProfile` polem `DataDisks` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
+Tento článek se zaměřuje hlavně na rozšíření disku operačního systému virtuálního počítače, ale skript se dá použít i k rozšíření datových disků připojených k virtuálnímu počítači. Pokud například chcete rozšířit datový disk připojený k virtuálnímu počítači, nahraďte objekt `OSDisk` v části `StorageProfile` polem `DataDisks` a použijte číselný index k získání odkazu na první připojený datový disk, jak je znázorněno níže:
 
 **Spravovaný disk**
 
@@ -178,7 +178,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-Podobně můžete odkazovat na jiné datové disky připojené k virtuálnímu počítače, a to buď pomocí indexu, jak je uvedeno výše, nebo **name** vlastnost disku:
+Podobně můžete odkazovat na jiné datové disky připojené k virtuálnímu počítači, a to buď pomocí indexu, jak je uvedeno výše, nebo vlastnosti **název** disku:
 
 
 **Spravovaný disk**
@@ -193,21 +193,21 @@ Podobně můžete odkazovat na jiné datové disky připojené k virtuálnímu p
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
 
-## <a name="expand-the-volume-within-the-os"></a>Rozšíření svazku v rámci operačního esu
+## <a name="expand-the-volume-within-the-os"></a>Rozšířit svazek v operačním systému
 
-Po rozšíření disku pro virtuální počítače, budete muset přejít do operačního systému a rozšířit svazek tak, aby zahrnoval a nové místo. Existuje několik metod pro rozbalení oddílu. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP k rozšíření oddílu pomocí **programu DiskPart**.
+Po rozbalení disku pro virtuální počítač musíte přejít do operačního systému a rozšířit svazek tak, aby zahrnoval nové místo. Existuje několik způsobů, jak rozšířit oddíl. Tato část popisuje připojení virtuálního počítače pomocí připojení RDP, které umožňuje rozšířit oddíl pomocí **nástroje DiskPart**.
 
-1. Otevřete připojení RDP k virtuálnímu počítači.
+1. Otevřete připojení RDP k vašemu VIRTUÁLNÍmu počítači.
 
-2.  Otevřete příkazový řádek a zadejte **diskpart**.
+2.  Otevřete příkazový řádek a zadejte příkaz **DiskPart**.
 
-2.  Na výzvu **DISKPART** zadejte . `list volume` Poznamenejte si svazek, který chcete rozšířit.
+2.  Do příkazového řádku **DiskPart** zadejte `list volume`. Poznamenejte si svazek, který chcete zvětšit.
 
-3.  Na výzvu **DISKPART** zadejte . `select volume <volumenumber>` Tím vyberete *číslo svazku* svazku, které chcete rozšířit do souvislého prázdného místa na stejném disku.
+3.  Do příkazového řádku **DiskPart** zadejte `select volume <volumenumber>`. Tím se vybere *volumenumber* svazku, který chcete v jednom disku zvětšit do souvislého prázdného místa.
 
-4.  Na výzvu **DISKPART** zadejte . `extend [size=<size>]` Tím se vybraný svazek rozšíří o *velikost* v megabajtech (MB).
+4.  Do příkazového řádku **DiskPart** zadejte `extend [size=<size>]`. Tím se rozšíří vybraný svazek o *Velikost* v megabajtech (MB).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Disky můžete připojit také pomocí [portálu Azure](attach-managed-disk-portal.md).
+Disky můžete připojit také pomocí [Azure Portal](attach-managed-disk-portal.md).

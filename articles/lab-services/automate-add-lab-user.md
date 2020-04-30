@@ -1,6 +1,6 @@
 ---
-title: Automatizace přidávání uživatele testovacího prostředí v laboratořích Azure DevTest Labs | Dokumenty společnosti Microsoft
-description: Tento článek ukazuje, jak automatizovat přidání uživatele do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového příkazového příkazu.
+title: Automatizace přidávání uživatele testovacího prostředí v Azure DevTest Labs | Microsoft Docs
+description: V tomto článku se dozvíte, jak automatizovat přidávání uživatelů do testovacího prostředí v Azure DevTest Labs pomocí šablon Azure Resource Manager, PowerShellu a rozhraní příkazového řádku.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 81a8c5030f716246caf3dcd8b540bb47fcaf6520
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82023618"
 ---
-# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v laboratořích Azure DevTest Labs
-Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro testování a testování pomocí portálu Azure. Pokud však máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožnou vytvářet testovací prostředí, virtuální počítače testovacího prostředí, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se konkrétně zaměřuje na přidání uživatelů do instance DevTest Labs.
+# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Automatizace přidání uživatele testovacího prostředí do testovacího prostředí v Azure DevTest Labs
+Azure DevTest Labs umožňuje rychle vytvářet samoobslužná prostředí pro vývoj a testování pomocí Azure Portal. Pokud ale máte několik týmů a několik instancí DevTest Labs, automatizace procesu vytváření může ušetřit čas. [Šablony Azure Resource Manager](https://github.com/Azure/azure-devtestlab/tree/master/Environments) umožňují vytvářet laboratoře, testovací virtuální počítače, vlastní image, vzorce a přidávat uživatele automatizovaným způsobem. Tento článek se zaměřuje především na přidávání uživatelů do instance DevTest Labs.
 
-Chcete-li přidat uživatele do testovacího prostředí, přidejte uživatele do role **Uživatel DevTest Labs** pro testovací prostředí. Tento článek ukazuje, jak automatizovat přidání uživatele do testovacího prostředí pomocí jednoho z následujících způsobů:
+Pokud chcete přidat uživatele do testovacího prostředí, přidejte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V tomto článku se dozvíte, jak automatizovat přidání uživatele do testovacího prostředí jedním z následujících způsobů:
 
 - Šablony Azure Resource Manageru
 - Rutiny Azure PowerShellu 
-- Azure CLI.
+- Rozhraní příkazového řádku Azure
 
 ## <a name="use-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
-Následující ukázková šablona Správce prostředků určuje uživatele, který má být přidán do role **uživatele devTest Labs** testovacího prostředí. 
+Následující vzorová Správce prostředků šablona určuje uživatele, který má být přidán do role **uživatele DevTest Labs** v testovacím prostředí. 
 
 ```json
 {
@@ -85,64 +85,64 @@ Následující ukázková šablona Správce prostředků určuje uživatele, kte
 
 ```
 
-Pokud přiřazujete roli ve stejné šabloně, která vytváří testovací prostředí, nezapomeňte přidat závislost mezi zdrojem přiřazení role a testovacím prostředím. Další informace najdete [v tématu Definování závislostí v](../azure-resource-manager/templates/define-resource-dependency.md) článku Šablony Správce prostředků Azure.
+Pokud přiřazujete roli ve stejné šabloně, která vytváří testovací prostředí, nezapomeňte přidat závislost mezi prostředkem přiřazení role a testovacím prostředím. Další informace najdete v článku [Definování závislostí v Azure Resource Manager šablonách](../azure-resource-manager/templates/define-resource-dependency.md) .
 
-### <a name="role-assignment-resource-information"></a>Informace o zdroji přiřazení role
-Zdroj přiřazení role musí zadat typ a název.
+### <a name="role-assignment-resource-information"></a>Informace o prostředku přiřazení role
+Prostředek přiřazení role musí zadat typ a název.
 
-První věc, kterou je třeba poznamenat, `Microsoft.Authorization/roleAssignments` je, že typ zdroje není takový, jaký by byl pro skupinu prostředků.  Místo toho typ prostředku následuje `{provider-namespace}/{resource-type}/providers/roleAssignments`podle vzoru . V takovém případě bude `Microsoft.DevTestLab/labs/providers/roleAssignments`typ prostředku .
+První věcí, kterou si všimněte, je, že typ prostředku není `Microsoft.Authorization/roleAssignments` tak, jak by byl pro skupinu prostředků.  Místo toho typ prostředku odpovídá vzoru `{provider-namespace}/{resource-type}/providers/roleAssignments`. V takovém případě bude typ prostředku `Microsoft.DevTestLab/labs/providers/roleAssignments`.
 
-Samotný název přiřazení role musí být globálně jedinečný.  Název přiřazení používá vzor `{labName}/Microsoft.Authorization/{newGuid}`. Je `newGuid` hodnota parametru pro šablonu. Zajišťuje, že název přiřazení role je jedinečný. Vzhledem k tomu, že neexistují žádné funkce šablony pro vytváření identifikátorů GUID, musíte sami vygenerovat identifikátor GUID pomocí libovolného nástroje generátoru IDENTIFIKÁTORŮ GUID.  
+Samotný název přiřazení role musí být globálně jedinečný.  Název přiřazení používá vzorek `{labName}/Microsoft.Authorization/{newGuid}`. `newGuid` Je hodnota parametru pro šablonu. Zajišťuje, aby byl název přiřazení role jedinečný. Jelikož nejsou k dispozici žádné funkce šablon pro vytváření identifikátorů GUID, je nutné vygenerovat identifikátor GUID sami pomocí nástroje generátoru GUID.  
 
-V šabloně je název přiřazení role definován `fullDevTestLabUserRoleName` proměnnou. Přesný řádek ze šablony je:
+V šabloně je název přiřazení role definovaný `fullDevTestLabUserRoleName` proměnnou. Přesný řádek ze šablony:
 
 ```json
 "fullDevTestLabUserRoleName": "[concat(parameters('labName'), '/Microsoft.Authorization/', parameters('roleAssignmentGuid'))]"
 ```
 
 
-### <a name="role-assignment-resource-properties"></a>Vlastnosti zdroje přiřazení role
-Samotné přiřazení role definuje tři vlastnosti. Potřebuje `roleDefinitionId`, `principalId`a `scope`.
+### <a name="role-assignment-resource-properties"></a>Vlastnosti prostředku přiřazení role
+Vlastní přiřazení role definuje tři vlastnosti. Potřebuje `roleDefinitionId`, `principalId`a `scope`.
 
 ### <a name="role-definition"></a>Definice role
-ID definice role je identifikátor řetězce pro existující definici role. ID role je ve `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`formuláři . 
+ID definice role je identifikátor řetězce pro existující definici role. ID role je ve formátu `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`. 
 
-ID předplatného se získá `subscription().subscriptionId` pomocí funkce šablony.  
+ID předplatného se získává pomocí `subscription().subscriptionId` funkce šablony.  
 
-Musíte získat definici role `DevTest Labs User` pro předdefinovanou roli. Chcete-li získat identifikátor GUID pro roli [uživatele DevTest Labs,](../role-based-access-control/built-in-roles.md#devtest-labs-user) můžete použít [rozhraní REST API přiřazení rolí](/rest/api/authorization/roleassignments) nebo rutinu [Get-AzRoleDefinition.](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0)
+Musíte získat definici role pro `DevTest Labs User` předdefinovanou roli. K získání identifikátoru GUID pro roli [uživatele DevTest Labs](../role-based-access-control/built-in-roles.md#devtest-labs-user) můžete použít [přiřazení rolí REST API](/rest/api/authorization/roleassignments) nebo rutinu [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) .
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ```
 
-ID role je definováno v části `devTestLabUserRoleId`proměnné a pojmenováno . V šabloně je ID role nastavena na: 111111111-0000-0000-1111111111111111111111. 
+ID role je definováno v oddílu proměnné a pojmenované `devTestLabUserRoleId`. V šabloně je ID role nastavené na: 111111111-0000-0000-11111111111111111. 
 
 ```json
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
-### <a name="principal-id"></a>ID jistiny
-ID objektu je ID objektu uživatele, skupiny nebo instančního objektu služby Active Directory, které chcete přidat jako uživatele testovacího prostředí do testovacího prostředí. Šablona používá `ObjectId` jako parametr.
+### <a name="principal-id"></a>ID objektu zabezpečení
+ID objektu zabezpečení je ID objektu uživatele, skupiny nebo instančního objektu služby Active Directory, které chcete přidat jako uživatele testovacího prostředí do testovacího prostředí. Šablona používá `ObjectId` jako parametr.
 
-ObjectId můžete získat pomocí rutin [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup nebo [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell rutiny. Tyto rutiny vrátí jeden nebo seznam objektů služby Active Directory, které mají vlastnost ID, což je ID objektu, které potřebujete. Následující příklad ukazuje, jak získat ID objektu jednoho uživatele ve společnosti.
+Identifikátor ObjectId můžete získat pomocí rutin [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup nebo [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell. Tyto rutiny vrátí jeden nebo seznam objektů služby Active Directory, které mají vlastnost ID, což je ID objektu, které potřebujete. Následující příklad ukazuje, jak získat ID objektu jednoho uživatele ve společnosti.
 
 ```powershell
 $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 ```
 
-Můžete také použít rutiny prostředí Azure Active Directory PowerShell, které zahrnují [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
+Můžete také použít rutiny prostředí PowerShell pro Azure Active Directory, které zahrnují rutiny [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)a [Get-MsolServicePrincipal](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
 
 ### <a name="scope"></a>Rozsah
-Obor určuje zdroj nebo skupinu prostředků, pro kterou by se mělo přiřazení role použít. U prostředků je obor ve `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`formě: . Šablona používá `subscription().subscriptionId` funkci k `subscription-id` vyplnění dílu a funkci `resourceGroup().name` `resource-group-name` šablony k vyplnění dílu. Použití těchto funkcí znamená, že testovací prostředí, kterému přiřazujete roli, musí existovat v aktuálním předplatném a stejné skupině prostředků, do které je nasazení šablony provedeno. Poslední část, `resource-name`, je název laboratoře. Tato hodnota je přijata prostřednictvím parametru šablony v tomto příkladu. 
+Obor Určuje prostředek nebo skupinu prostředků, pro které by se mělo přiřazení role použít. V případě prostředků je rozsah ve formátu: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. Šablona používá `subscription().subscriptionId` funkci k vyplnění `subscription-id` části a funkci `resourceGroup().name` šablony, která se má vyplnit. `resource-group-name` Pomocí těchto funkcí se znamená, že testovací prostředí, ke kterému přiřadíte roli, musí existovat v aktuálním předplatném a stejnou skupinu prostředků, ve které se nasazování šablony provádí. Poslední část `resource-name`je název testovacího prostředí. Tato hodnota je přijímána prostřednictvím parametru šablony v tomto příkladu. 
 
-Rozsah role v šabloně: 
+Rozsah rolí v šabloně: 
 
 ```json
 "roleScope": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.DevTestLab/labs/', parameters('labName'))]"
 ```
 
 ### <a name="deploying-the-template"></a>Nasazení šablony
-Nejprve vytvořte soubor parametrů (například: azuredeploy.parameters.json), který předá hodnoty pro parametry v šabloně Správce prostředků. 
+Nejprve vytvořte soubor parametrů (například: azuredeploy. Parameters. JSON), který předává hodnoty pro parametry v šabloně Správce prostředků. 
 
 ```json
 {
@@ -162,22 +162,22 @@ Nejprve vytvořte soubor parametrů (například: azuredeploy.parameters.json), 
 }
 ```
 
-Potom použijte rutinu [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell k nasazení šablony Správce prostředků. Následující příklad příkazu přiřadí osobu, skupinu nebo instanční objekt roli DevTest Labs uživatele pro testovací prostředí.
+Pak použijte rutinu [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) prostředí PowerShell k nasazení šablony Správce prostředků. Následující vzorový příkaz přiřadí uživateli, skupině nebo instančnímu objektu roli uživatele DevTest Labs pro testovací prostředí.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-Je důležité si uvědomit, že název nasazení skupiny a guid přiřazení role musí být jedinečný. Pokud se pokusíte nasadit přiřazení prostředků s nejedinečným identifikátorem `RoleAssignmentUpdateNotPermitted` GUID, zobrazí se chyba.
+Je důležité si uvědomit, že název nasazení skupiny a identifikátor GUID přiřazení role musí být jedinečné. Pokud se pokusíte nasadit přiřazení prostředku s nejedinečným identifikátorem GUID, zobrazí se `RoleAssignmentUpdateNotPermitted` chyba.
 
-Pokud chcete šablonu použít několikrát k přidání několika objektů služby Active Directory do role Uživatel devTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShell. Následující příklad používá rutinu [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) k dynamickému určení názvu identifikátoru GUID nasazení skupiny prostředků a přiřazení role.
+Pokud plánujete používat šablonu několikrát pro přidání několika objektů služby Active Directory do role uživatele DevTest Labs pro testovací prostředí, zvažte použití dynamických objektů v příkazu PowerShellu. Následující příklad používá rutinu [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) k dynamickému určení názvu nasazení skupiny prostředků a identifikátoru GUID přiřazení role.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
 ## <a name="use-azure-powershell"></a>Použití Azure Powershell
-Jak je popsáno v úvodu, můžete vytvořit nové přiřazení role Azure přidat uživatele do role **DevTest Labs uživatele** pro testovací prostředí. V prostředí PowerShell uděláte to pomocí rutiny [New-AzureRMRoleAssignment.](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) Tato rutina má mnoho volitelných parametrů, které umožňují flexibilitu. V `ObjectId` `SigninName`, `ServicePrincipalName` , nebo lze zadat jako objekt udělují oprávnění.  
+Jak je popsáno v úvodu, vytvoříte nové přiřazení role Azure, ve kterém přidáte uživatele do role **uživatele DevTest Labs** pro testovací prostředí. V PowerShellu to uděláte pomocí rutiny [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) . Tato rutina má mnoho volitelných parametrů, které umožňují flexibilitu. Jako `ObjectId`objekt `SigninName`, který `ServicePrincipalName` má udělena oprávnění, lze zadat, nebo.  
 
 Tady je ukázkový příkaz Azure PowerShell, který přidá uživatele do role uživatele DevTest Labs v zadaném testovacím prostředí.
 
@@ -185,14 +185,14 @@ Tady je ukázkový příkaz Azure PowerShell, který přidá uživatele do role 
 New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinitionName 'DevTest Labs User' -ResourceName '<Lab Name>' -ResourceGroupName '<Resource Group Name>' -ResourceType 'Microsoft.DevTestLab/labs'
 ```
 
-Chcete-li určit prostředek, ke kterému jsou udělena `ResourceName`oprávnění `ResourceType` `ResourceGroup` lze zadat `scope` kombinací , nebo parametr. Bez ohledu na použití kombinace parametrů zadejte rutině dostatek informací k jednoznačné identifikaci objektu služby Active Directory (uživatele, skupiny nebo objektu zabezpečení), oboru (skupiny prostředků nebo prostředku) a definice role.
+`ResourceName`Chcete-li určit prostředek, pro který mají být udělena oprávnění, lze zadat kombinací, `ResourceType` `ResourceGroup` nebo pomocí `scope` parametru. Bez ohledu na to, jakou kombinaci parametrů použijete, poskytněte rutině dostatek informací, aby jednoznačně identifikovala objekt služby Active Directory (uživatel, skupinu nebo instanční objekt), obor (skupinu prostředků nebo prostředek) a definici role.
 
 ## <a name="use-azure-command-line-interface-cli"></a>Použití rozhraní příkazového řádku Azure (CLI)
-V rozhraní příkazového příkazu Azure přidání uživatele testovacího `az role assignment create` prostředí do testovacího prostředí se provádí pomocí příkazu. Další informace o rutinách Azure CLI najdete v [tématu Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
+V Azure CLI se do testovacího prostředí přidá uživatel Labs pomocí `az role assignment create` příkazu. Další informace o rutinách Azure CLI najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC a Azure CLI](../role-based-access-control/role-assignments-cli.md).
 
-Objekt, kterému je udělen přístup, `objectId`může `signInName` `spn` být určen parametry , . Testovací prostředí, ke kterému je objektu udělen `scope` přístup, lze `resource-name`identifikovat `resource-type`pomocí `resource-group` adresy URL nebo kombinace , a parametry.
+Objekt, kterému je udělen přístup, lze určit pomocí parametrů `objectId`, `signInName`,. `spn` `scope` Testovacímu prostředí `resource-name`, ke kterému má být objekt udělen přístup, lze identifikovat pomocí adresy URL nebo kombinace parametrů, `resource-type`a. `resource-group`
 
-Následující příklad rozhraní příkazového systému Azure ukazuje, jak přidat osobu do role uživatele DevTest Labs pro zadaný testovací prostředí.  
+Následující příklad rozhraní příkazového řádku Azure vám ukáže, jak přidat osobu do role uživatele DevTest Labs pro zadané testovací prostředí.  
 
 ```azurecli
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
@@ -201,7 +201,7 @@ az role assignment create --roleName "DevTest Labs User" --signInName <email@com
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Vytváření a správa virtuálních počítačů pomocí devtest labs pomocí azure cli](devtest-lab-vmcli.md)
-- [Vytvoření virtuálního počítače pomocí devTest Labs pomocí Azure PowerShellu](devtest-lab-vm-powershell.md)
-- [Spuštění a zastavení virtuálních počítačů Azure DevTest Labs pomocí nástrojů příkazového řádku](use-command-line-start-stop-virtual-machines.md)
+- [Vytváření a správa virtuálních počítačů pomocí DevTest Labs pomocí Azure CLI](devtest-lab-vmcli.md)
+- [Vytvoření virtuálního počítače s DevTest Labs pomocí Azure PowerShell](devtest-lab-vm-powershell.md)
+- [Spuštění a zastavení Azure DevTest Labs virtuálních počítačů pomocí nástrojů příkazového řádku](use-command-line-start-stop-virtual-machines.md)
 

@@ -1,75 +1,75 @@
 ---
 title: Osvědčené postupy pro nasazení
-description: Přečtěte si o klíčových mechanismech nasazení do služby Azure App Service. Najděte doporučení specifická pro jazyk a další upozornění.
-keywords: azure app service, webová aplikace, nasazení, nasazení, kanály, sestavení
+description: Přečtěte si o klíčových mechanismech nasazení na Azure App Service. Vyhledání doporučení specifických pro jazyk a dalších aspektů.
+keywords: Azure App Service, Webová aplikace, nasazení, nasazení, kanály, sestavení
 author: jasonfreeberg
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
 ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770697"
 ---
-# <a name="deployment-best-practices"></a>Doporučené postupy nasazení
+# <a name="deployment-best-practices"></a>Osvědčené postupy nasazení
 
-Každý vývojový tým má jedinečné požadavky, které mohou ztížit implementaci kanálu efektivního nasazení v jakékoli cloudové službě. Tento článek představuje tři hlavní součásti nasazení do služby App Service: zdroje nasazení, sestavení kanály a mechanismy nasazení. Tento článek také popisuje některé osvědčené postupy a tipy pro konkrétní jazykové zásobníky.
+Každý vývojový tým má jedinečné požadavky, které můžou zajistit obtížné implementaci kanálu efektivního nasazení v jakékoli cloudové službě. Tento článek představuje tři hlavní komponenty nasazení do App Service: zdroje nasazení, kanály sestavení a mechanismy nasazení. Tento článek také popisuje některé osvědčené postupy a tipy pro konkrétní jazykové zásobníky.
 
 ## <a name="deployment-components"></a>Součásti nasazení
 
 ### <a name="deployment-source"></a>Zdroj nasazení
 
-Zdroj nasazení je umístění kódu aplikace. Pro produkční aplikace je zdroj nasazení obvykle úložiště hostované softwarem pro správu verzí, jako je [GitHub, BitBucket nebo Azure Repos](deploy-continuous-deployment.md). Pro scénáře vývoje a testování může být zdrojem nasazení [projekt v místním počítači](deploy-local-git.md). Služba App Service také podporuje [složky OneDrive a Dropbox](deploy-content-sync.md) jako zdroje nasazení. Zatímco cloudové složky mohou usnadnit zahájení používání služby App Service, obvykle se nedoporučuje používat tento zdroj pro produkční aplikace na podnikové úrovni. 
+Zdroj nasazení je umístění vašeho kódu aplikace. U produkčních aplikací je zdrojem nasazení obvykle úložiště hostované softwarem pro řízení verzí, jako je [GitHub, Bitbucket nebo Azure Repos](deploy-continuous-deployment.md). Ve scénářích vývoje a testování může být zdrojem nasazení [projekt na vašem místním počítači](deploy-local-git.md). App Service také podporuje [OneDrive a složky Dropboxu](deploy-content-sync.md) jako zdroje nasazení. I když cloudové složky můžou snadno začít pracovat s App Service, obvykle se tento zdroj nedoporučuje používat pro produkční aplikace na podnikové úrovni. 
 
 ### <a name="build-pipeline"></a>Kanál buildu
 
-Jakmile se rozhodnete pro zdroj nasazení, dalším krokem je výběr kanálu sestavení. Kanál sestavení přečte zdrojový kód ze zdroje nasazení a provede řadu kroků (například kompilaci kódu, minifying HTML a JavaScript, spuštěné testy a součásti balení), aby se aplikace dostala do spustitelného stavu. Konkrétní příkazy prováděné kanálem sestavení závisí na zásobníku jazyka. Tyto operace lze provést na serveru sestavení, jako je například Azure Pipelines, nebo spustit místně.
+Jakmile se rozhodnete pro zdroj nasazení, je dalším krokem výběr kanálu sestavení. Kanál sestavení přečte zdrojový kód ze zdroje nasazení a provede řadu kroků (například kompilování kódu, minifikace HTML a JavaScriptu, spuštění testů a balení komponent) k získání aplikace ve stavu spustitelný. Konkrétní příkazy spouštěné kanálem sestavení závisí na vašem jazykovém zásobníku. Tyto operace lze spustit na serveru sestavení, například Azure Pipelines, nebo v místním prostředí.
 
 ### <a name="deployment-mechanism"></a>Mechanismus nasazení
 
-Mechanismus nasazení je akce, která se používá k vložíní vytvořené aplikace do adresáře */home/site/wwwroot* vaší webové aplikace. Adresář */wwwroot* je připojené úložiště sdílené všemi instancemi webové aplikace. Když mechanismus nasazení vloží vaši aplikaci do tohoto adresáře, vaše instance obdrží oznámení o synchronizaci nových souborů. Služba App Service podporuje následující mechanismy nasazení:
+Mechanismus nasazení je akce, která se používá k umístění vaší sestavené aplikace do adresáře */Home/site/wwwroot* vaší webové aplikace. Adresář */wwwroot* je připojené umístění úložiště sdílené všemi instancemi vaší webové aplikace. Když mechanismus nasazení umístí aplikaci do tohoto adresáře, obdrží vaše instance oznámení o synchronizaci nových souborů. App Service podporuje následující mechanismy nasazení:
 
-- Kudu koncové body: [Kudu](https://github.com/projectkudu/kudu/wiki) je open source vývojářský nástroj produktivity, který běží jako samostatný proces ve službě Windows App Service a jako druhý kontejner v Linux App Service. Kudu zpracovává průběžné nasazení a poskytuje koncové body HTTP pro nasazení, jako je například zipdeploy.
-- FTP a WebDeploy: Pomocí [vašeho webu nebo pověření uživatele](deploy-configure-credentials.md)můžete nahrávat soubory přes [FTP](deploy-ftp.md) nebo WebDeploy. Tyto mechanismy neprocházejí Kudu.  
+- Kudu koncové body: [Kudu](https://github.com/projectkudu/kudu/wiki) je open source nástroj pro zvýšení produktivity vývojářů, který běží jako samostatný proces ve Windows App Service a jako druhý kontejner v App Service systému Linux. Kudu zpracovává nepřetržitá nasazení a poskytuje koncové body HTTP pro nasazení, jako je například zipdeploy.
+- FTP a WebDeploy: pomocí svého [webového serveru nebo přihlašovacích údajů uživatele](deploy-configure-credentials.md)můžete soubory nahrávat [přes FTP](deploy-ftp.md) nebo WebDeploy. Tyto mechanismy nejdou přes Kudu.  
 
-Nástroje pro nasazení, jako jsou moduly plug-in Azure Pipelines, Jenkins a editor, používají jeden z těchto mechanismů nasazení.
+Nástroje pro nasazení, jako jsou Azure Pipelines, Jenkinse a moduly plug-in, používají jeden z těchto mechanismů nasazení.
 
-## <a name="use-deployment-slots"></a>Použití slotů pro nasazení
+## <a name="use-deployment-slots"></a>Použití slotů nasazení
 
-Kdykoli je to možné, použijte [sloty nasazení](deploy-staging-slots.md) při nasazování nového produkčního sestavení. Když používáte úroveň Standard App Service Plan nebo lepší, můžete nasadit aplikaci do pracovního prostředí, ověřit změny a provést kouřové testy. Až budete připraveni, můžete vyměnit pracovní a produkční sloty. Operace prohození zahřeje potřebné instance pracovníka tak, aby odpovídaly vašemu výrobnímu měřítku, čímž eliminuje prostoje.
+Kdykoli je to možné, použijte [nasazovací sloty](deploy-staging-slots.md) při nasazení nového výrobního buildu. Pokud používáte úroveň plánu úrovně Standard App Service nebo lepší, můžete aplikaci nasadit do přípravného prostředí, ověřit své změny a provádět testy kouře. Až budete připraveni, můžete vyměnit pracovní a produkční sloty. Operace prohození zahřívá potřebné pracovní instance, aby odpovídaly vašemu produkčnímu měřítku, a tím eliminuje prostoje.
 
 ### <a name="continuously-deploy-code"></a>Průběžně nasazovat kód
 
-Pokud váš projekt určil větve pro testování, QA a pracovní, pak každá z těchto větví by měla být průběžně nasazena do pracovního slotu. (Tento návrh se označuje jako [návrh Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) To umožňuje zúčastněným stranám snadno posoudit a otestovat nasazenou větev. 
+Pokud váš projekt obsahuje určené větve pro testování, kontrolu a přípravu, pak je třeba každou z těchto větví trvale nasadit do přípravného slotu. (To se označuje jako [Návrh Gitflow](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow).) To umožňuje zúčastněným stranám snadno posoudit a otestovat nasazenou větev. 
 
-Průběžné nasazení by nikdy nemělo být povoleno pro produkční slot. Místo toho by vaše výrobní větev (často hlavní) měla být nasazena do neprodukčního slotu. Až budete připraveni uvolnit základní větev, vyměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – namísto nasazení do produkčního prostředí – zabraňuje prostojům a umožňuje vrátit změny zpět dalším prohozením. 
+Průběžné nasazování by nikdy nemělo být povolené pro produkční slot. Místo toho by měla být vaše produkční větev (často Master) nasazená do neprodukčního slotu. Až budete připraveni k vydání základní větve, Proměňte ji do produkčního slotu. Přepnutí do produkčního prostředí – místo nasazení do produkčního prostředí zabraňuje výpadkům a umožňuje vrátit zpět změny tím, že se znovu odsadí. 
 
-![Vizuální použití slotu](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
+![Vizuál využití slotu](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
 ### <a name="continuously-deploy-containers"></a>Průběžné nasazování kontejnerů
 
-Pro vlastní kontejnery z Dockeru nebo jiných registrů kontejnerů nasaďte bitovou kopii do pracovního slotu a přeměňte na produkční, abyste zabránili prostojům. Automatizace je složitější než nasazení kódu, protože je nutné posunout bitovou kopii do registru kontejneru a aktualizovat značku bitové kopie ve webové aplikaci.
+Pro vlastní kontejnery z Docker nebo jiných registrů kontejnerů nasaďte image do přípravného slotu a Proměňte ji do produkčního prostředí, aby nedocházelo k výpadkům. Automatizace je složitější než nasazení kódu, protože je nutné vložit image do registru kontejneru a aktualizovat značku image na WebApp.
 
-Pro každou větev, kterou chcete nasadit do patice, nastavte automatizaci tak, aby při každém potvrzení větve udělala následující kroky.
+Pro každou větev, kterou chcete nasadit do slotu, nastavte automatizaci tak, aby při každém potvrzení na větev provede následující:
 
-1. **Vytvořte a označte bit ovou bitovou kopii**. Jako součást kanálu sestavení označte bitovou kopii id potvrzení git, časovým razítkem nebo jinými identifikovatelnými informacemi. Je nejlepší nepoužívat výchozí "nejnovější" značku. V opačném případě je obtížné trasovat zpět, jaký kód je aktuálně nasazen, což ztěžuje ladění.
-1. **Zatlačte na označený obrázek**. Jakmile je bitová kopie vytvořena a označena, kanál odešle bitovou kopii do našeho registru kontejnerů. V dalším kroku slot nasazení bude vyžádat tagované bitové kopie z registru kontejneru.
-1. **Aktualizujte slot pro nasazení novou značkou bitové kopie**. Po aktualizaci této vlastnosti se web automaticky restartuje a vytáhne novou bitovou kopii kontejneru.
+1. **Sestavte a označte obrázek**. Jako součást kanálu sestavení označte obrázek pomocí ID potvrzení Git, časového razítka nebo jiných identifikovatelných informací. Doporučujeme nepoužívat výchozí značku "poslední". V opačném případě je obtížné sledovat, jaký kód je aktuálně nasazený, takže ladění bylo mnohem obtížnější.
+1. Nahrajte **tagovaný obrázek**. Jakmile je obrázek sestavený a označený, kanál ho nahraje do našeho registru kontejneru. V dalším kroku slot nasazení načte tagovaný obraz z registru kontejneru.
+1. **Aktualizujte slot nasazení novou značkou image**. Když se tato vlastnost aktualizuje, lokalita se automaticky restartuje a vyžádá si novou image kontejneru.
 
-![Vizuální použití slotu](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
+![Vizuál využití slotu](media/app-service-deploy-best-practices/slot_flow_container_diagram.png)
 
-Níže jsou uvedeny příklady pro běžné architektury automatizace.
+Níže jsou uvedeny příklady pro běžné rozhraní automatizace.
 
 ### <a name="use-azure-devops"></a>Použití Azure DevOps
 
-Služba App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) kontejnerů prostřednictvím Centra nasazení. Přejděte do aplikace na [webu Azure Portal](https://portal.azure.com/) a v části **Nasazení**vyberte **Centrum nasazení** . Podle pokynů vyberte úložiště a pobočku. Tím nakonfigurujete kanál sestavení a vydání DevOps tak, aby automaticky vytvářel, označoval a nasazoval kontejner, když jsou nové revize odesílány do vybrané větve.
+App Service má [integrované průběžné doručování](deploy-continuous-deployment.md) pro kontejnery prostřednictvím centra nasazení. Přejděte do aplikace v [Azure Portal](https://portal.azure.com/) a v části **nasazení**vyberte **centrum nasazení** . Podle pokynů vyberte úložiště a větev. Tím se nakonfiguruje kanál sestavení a verze DevOps pro automatické sestavení, označení a nasazení kontejneru při vložení nových potvrzení do vybrané větve.
 
 ### <a name="use-github-actions"></a>Použití akcí GitHubu
 
-Můžete také automatizovat nasazení kontejneru [pomocí akce GitHub](containers/deploy-container-github-action.md).  Níže uvedený soubor pracovního postupu vytvoří a označí kontejner s ID potvrzení, zasune jej do registru kontejnerů a aktualizuje zadanou patici webu novou značkou bitové kopie.
+Nasazení kontejnerů můžete také automatizovat [pomocí akcí GitHubu](containers/deploy-container-github-action.md).  Níže uvedený soubor pracovního postupu sestaví a označí kontejner s ID potvrzení, nabídne ho do registru kontejneru a aktualizuje zadaný slot webu novou značkou image.
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -109,9 +109,9 @@ jobs:
         images: 'contoso/demo:${{ github.sha }}'
 ```
 
-### <a name="use-other-automation-providers"></a>Použití jiných poskytovatelů automatizace
+### <a name="use-other-automation-providers"></a>Použití dalších zprostředkovatelů automatizace
 
-Kroky uvedené výše platí pro jiné automatizační nástroje, jako je CircleCI nebo Travis CI. Je však nutné použít Azure CLI k aktualizaci slotů nasazení s novými značkami bitové kopie v posledním kroku. Chcete-li použít rozhraní příkazového příkazu Azure ve skriptu automatizace, vygenerujte instanční objekt pomocí následujícího příkazu.
+Výše uvedené kroky se vztahují na další automatizační nástroje, jako je CircleCI nebo Travis CI. K aktualizaci slotů nasazení pomocí nových značek obrázků v posledním kroku ale musíte použít rozhraní příkazového řádku Azure CLI. Pokud chcete ve svém skriptu Automation použít Azure CLI, vygenerujte instanční objekt pomocí následujícího příkazu.
 
 ```shell
 az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
@@ -119,41 +119,41 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
    --sdk-auth
 ```
 
-Ve skriptu se `az login --service-principal`přihlaste pomocí a zadejte informace o objektu zabezpečení. Potom můžete `az webapp config container set` nastavit název kontejneru, značku, adresu URL registru a heslo registru. Níže jsou uvedeny některé užitečné odkazy pro vás k vytvoření kontejneru CI procesu.
+V rámci vašeho skriptu se přihlaste pomocí `az login --service-principal`a poskytněte informace o objektu zabezpečení. Pak můžete použít `az webapp config container set` k nastavení názvu kontejneru, značky, adresy URL registru a hesla k registru. Níže najdete několik užitečných odkazů, které vám pomůžou vytvořit kontejner CI.
 
-- [Jak se přihlásit do azure cli na Circle CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
+- [Jak se přihlásit k rozhraní příkazového řádku Azure CLI v kruhu CI](https://circleci.com/orbs/registry/orb/circleci/azure-cli) 
 
-## <a name="language-specific-considerations"></a>Důležité informace týkající se jazyka
+## <a name="language-specific-considerations"></a>Doporučení pro konkrétní jazyk
 
 ### <a name="java"></a>Java
 
-Použijte Kudu [zipdeploy/](deploy-zip.md) API pro nasazení aplikací JAR a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace WAR. Pokud používáte Jenkins, můžete použít tato api přímo ve fázi nasazení. Další informace najdete v [tomto článku](../jenkins/execute-cli-jenkins-pipeline.md).
+Použijte Kudu [zipdeploy/](deploy-zip.md) rozhraní API pro nasazení aplikací jar a [wardeploy/](deploy-zip.md#deploy-war-file) pro aplikace War. Pokud používáte Jenkinse, můžete tato rozhraní API používat přímo ve fázi nasazení. Další informace najdete v [tomto článku](../jenkins/execute-cli-jenkins-pipeline.md).
 
 ### <a name="node"></a>Node
 
-Ve výchozím nastavení Kudu provede kroky sestavení pro`npm install`aplikaci uzlu ( ). Pokud používáte službu sestavení, jako je Azure DevOps, pak sestavení Kudu je zbytečné. Chcete-li zakázat sestavení Kudu, `SCM_DO_BUILD_DURING_DEPLOYMENT`vytvořte nastavení `false`aplikace , s hodnotou .
+Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci Node (`npm install`). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení `SCM_DO_BUILD_DURING_DEPLOYMENT`aplikace s hodnotou. `false`
 
 ### <a name="net"></a>.NET 
 
-Ve výchozím nastavení Kudu provede kroky sestavení pro`dotnet build`vaši aplikaci .NET ( ). Pokud používáte službu sestavení, jako je Azure DevOps, pak sestavení Kudu je zbytečné. Chcete-li zakázat sestavení Kudu, `SCM_DO_BUILD_DURING_DEPLOYMENT`vytvořte nastavení `false`aplikace , s hodnotou .
+Ve výchozím nastavení Kudu provádí kroky sestavení pro vaši aplikaci .NET (`dotnet build`). Pokud používáte sestavovací službu, jako je například Azure DevOps, sestavení Kudu není nutné. Chcete-li zakázat sestavení Kudu, vytvořte nastavení `SCM_DO_BUILD_DURING_DEPLOYMENT`aplikace s hodnotou. `false`
 
-## <a name="other-deployment-considerations"></a>Další důležité informace o nasazení
+## <a name="other-deployment-considerations"></a>Další požadavky na nasazení
 
 ### <a name="local-cache"></a>Místní mezipaměť
 
-Obsah služby Azure App Service se uložených ve službě Azure Storage a je vynořil a trvanlivým způsobem jako sdílené složky obsahu. Některé aplikace však potřebují pouze vysoce výkonné úložiště obsahu jen pro čtení, které mohou běžet s vysokou dostupností. Tyto aplikace mohou těžit z použití [místní mezipaměti](overview-local-cache.md). Místní mezipaměť se nedoporučuje pro weby pro správu obsahu, jako je WordPress.
+Obsah Azure App Service je uložený v Azure Storage a je vytvořen jako trvalý způsob sdílení obsahu. Některé aplikace ale potřebují jenom vysoce výkonné úložiště obsahu jen pro čtení, které můžou běžet s vysokou dostupností. Tyto aplikace můžou využívat používání [místní mezipaměti](overview-local-cache.md). Pro weby správy obsahu, jako je WordPress, se nedoporučuje místní mezipaměť.
 
-Vždy používejte místní mezipaměť ve spojení s [sloty nasazení,](deploy-staging-slots.md) abyste zabránili prostojům. Informace o společném používání těchto funkcí naleznete v [této části.](overview-local-cache.md#best-practices-for-using-app-service-local-cache)
+V kombinaci s [sloty nasazení](deploy-staging-slots.md) vždy používejte místní mezipaměť, aby nedocházelo k výpadkům. V [této části](overview-local-cache.md#best-practices-for-using-app-service-local-cache) najdete informace o tom, jak tyto funkce používat dohromady.
 
 ### <a name="high-cpu-or-memory"></a>Vysoký procesor nebo paměť
 
-Pokud váš plán služby App Service používá více než 90 % dostupného procesoru nebo paměti, může mít základní virtuální počítač potíže se zpracováním vašeho nasazení. V takovém případě dočasně vertikálně navertit kapacitu počtu instancí k provedení nasazení. Po dokončení nasazení můžete vrátit počet instancí na jeho předchozí hodnotu.
+Pokud váš App Service plán používá více než 90% dostupného procesoru nebo paměti, může mít základní virtuální počítač potíže se zpracováním nasazení. Pokud k tomu dojde, dočasná velikost počtu instancí proveďte v případě nasazení. Po dokončení nasazení můžete počet instancí vrátit do předchozí hodnoty.
 
-Další informace o doporučených postupech najdete v centru [aplikace Diagnostika služby App Service](https://docs.microsoft.com/azure/app-service/overview-diagnostics) a vyhledejte užitečné postupy, které jsou specifické pro váš prostředek.
+Další informace o osvědčených postupech najdete v [App Service Diagnostics](https://docs.microsoft.com/azure/app-service/overview-diagnostics) , kde najdete osvědčené postupy, které jsou specifické pro váš prostředek.
 
-- Přejděte do webové aplikace na [webu Azure Portal](https://portal.azure.com).
-- Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře Diagnostika služby App Service.
-- Zvolte dlaždice domovské stránky **doporučené postupy.**
-- Chcete-li zobrazit aktuální stav aplikace s ohledem na tyto osvědčené postupy, klepněte na tlačítko **Doporučené postupy pro dostupnost & výkonu** nebo doporučené postupy pro optimální **konfiguraci.**
+- Přejděte do webové aplikace v [Azure Portal](https://portal.azure.com).
+- Klikněte na **Diagnostika a řešení problémů** v levém navigačním panelu, který otevře diagnostiku App Service.
+- Vyberte dlaždici domovské stránky s **doporučenými postupy** .
+- Pokud chcete zobrazit aktuální stav aplikace v souvislosti s těmito osvědčenými postupy, klikněte na **osvědčené postupy pro dostupnost & výkon** nebo **osvědčené postupy pro optimální konfiguraci** .
 
-Pomocí tohoto odkazu můžete také přímo otevřít diagnostiku `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`služby App Service pro váš prostředek: .
+Tento odkaz můžete použít také k přímému otevření App Service diagnostiky pro váš prostředek `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`:.

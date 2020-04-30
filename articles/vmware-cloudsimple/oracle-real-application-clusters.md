@@ -1,6 +1,6 @@
 ---
-title: Řešení Azure VMware od CloudSimple – Optimalizace cloudového cloudu CloudSimple pro oracle RAC
-description: Popisuje, jak nasadit nový cluster a optimalizovat virtuální počítač pro instalaci a konfiguraci řešení Oracle Real Application Clusters (RAC).
+title: Řešení Azure VMware podle CloudSimple – optimalizace privátního cloudu CloudSimple pro Oracle RAC
+description: Popisuje postup nasazení nového clusteru a optimalizaci virtuálního počítače pro instalaci a konfiguraci Oracle Real Application Clusters (RAC).
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,105 +9,105 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868079"
 ---
-# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizujte svůj cloud CloudSimple Privátní cloud pro instalaci řešení Oracle RAC
+# <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
 
-Oracle Real Application Clusters (RAC) můžete nasadit ve svém cloudovém prostředí privátního cloudu. Tato příručka popisuje, jak nasadit nový cluster a optimalizovat virtuální počítač pro řešení Oracle RAC. Po dokončení kroků v tomto tématu můžete nainstalovat a nakonfigurovat řešení Oracle RAC.
+V prostředí privátního cloudu CloudSimple můžete nasadit clustery reálné aplikace (RAC) Oracle. Tato příručka popisuje, jak nasadit nový cluster a optimalizovat virtuální počítač pro řešení Oracle RAC. Po dokončení kroků v tomto tématu můžete nainstalovat a nakonfigurovat Oracle RAC.
 
 ## <a name="storage-policy"></a>Zásady úložiště
 
-Úspěšná implementace řešení Oracle RAC vyžaduje dostatečný počet uzlů v clusteru.  V zásadách úložiště vSAN selhání tolerovat (FTT) se používá na datové disky používané pro ukládání databáze, protokolu a znovu disky.  Požadovaný počet uzlů efektivně tolerovat selhání je 2N +1, kde N je hodnota FTT.
+Úspěšná implementace Oracle RAC vyžaduje dostatečný počet uzlů v clusteru.  V zásadách úložiště síti vSAN se v datových discích používaných k ukládání databází, protokolů a opětovného navýšení disků použijí chyby na tolerování (FTT).  Požadovaný počet uzlů efektivně tolerovatcích selhání je 2N + 1, kde N je hodnota FTT.
 
-Příklad: Pokud je požadovaný FTT 2, musí být celkový počet uzlů v clusteru 2*2+1 = 5.
+Příklad: Pokud je požadovaný FTT 2, celkový počet uzlů v clusteru musí být 2 * 2 + 1 = 5.
 
 ## <a name="overview-of-deployment"></a>Přehled nasazování
 
-Následující části popisují, jak nastavit cloudové prostředí cloudového privátního cloudu pro oracle RAC.
+Následující části popisují, jak nastavit privátní cloudové prostředí CloudSimple pro Oracle RAC.
 
-1. Doporučené postupy pro konfiguraci disku
-2. Nasazení privátního cloudového clusteru CloudSimple vSphere
-3. Nastavení síťových sítí pro řešení Oracle RAC
-4. Nastavení zásad úložiště vSAN
-5. Vytvoření virtuálních počítačů Oracle a vytvoření sdílených disků virtuálních počítačů
-6. Nastavení pravidel spřažení virtuálního hry k hostiteli
+1. Osvědčené postupy pro konfiguraci disků
+2. Nasazení clusteru CloudSimple Private Cloud vSphere
+3. Nastavení sítě pro Oracle RAC
+4. Nastavení zásad úložiště síti vSAN
+5. Vytváření virtuálních počítačů Oracle a vytváření sdílených disků virtuálního počítače
+6. Nastavení pravidel vztahů mezi virtuálními počítači a hostiteli
 
-## <a name="best-practices-for-disk-configuration"></a>Doporučené postupy pro konfiguraci disku
+## <a name="best-practices-for-disk-configuration"></a>Osvědčené postupy pro konfiguraci disků
 
-Virtuální počítače Oracle RAC mají více disků, které se používají pro konkrétní funkci.  Sdílené disky jsou připojeny na všech virtuálních počítačích, které používá oracle RAC clusteru.  Instalační disky operačního systému a softwaru jsou připojeny pouze na jednotlivých virtuálních počítačích.  
+Virtuální počítače Oracle RAC mají více disků, které se používají pro konkrétní funkci.  Sdílené disky jsou připojené ke všem virtuálním počítačům, které používá cluster Oracle RAC.  Instalační disky operačního systému a softwaru se namontují jenom na jednotlivé virtuální počítače.  
 
-![Přehled disků virtuálních počítačů Oracle RAC](media/oracle-vm-disks-overview.png)
+![Přehled disků virtuálního počítače Oracle RAC](media/oracle-vm-disks-overview.png)
 
-Následující příklad používá disky definované v následující tabulce.
+V následujícím příkladu se používají disky definované v následující tabulce.
 
 | Disk                                      | Účel                                       | Sdílený disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
 | Operační systém                                        | Disk operačním systému                         | Ne          |
-| Mřížky                                      | Instalace umístění pro software Oracle Grid     | Ne          |
-| Databáze                                  | Instalace umístění pro databázový software Oracle | Ne          |
-| ORAHOME                                   | Základní umístění binárních souborů databáze Oracle    | Ne          |
-| DATA1, DATA2, DATA3, DATA4                | Disk, na kterém jsou uloženy databázové soubory Oracle   | Ano         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Znovu provést disky protokolu                                | Ano         |
+| MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | Ne          |
+| DATABÁZE                                  | Umístění instalace pro software Oracle Database | Ne          |
+| ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | Ne          |
+| DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
 | OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
-| FRA1, FRA2                                | Disky rychlé oblasti obnovení                      | Ano         |
+| FRA1, FRA2                                | Rychlé disky oblasti obnovení                      | Ano         |
 
 ![Konfigurace disku virtuálního počítače Oracle](media/oracle-vmdk.png)
 
 ### <a name="virtual-machine-configuration"></a>Konfigurace virtuálního počítače
 
-* Každý virtuální počítač je nakonfigurován se čtyřmi řadiči SCSI.
-* Typ řadiče SCSI je nastaven na paravirtual VMware.
-* Je vytvořeno více virtuálních disků (.vmdk).
-* Disky jsou připojeny na různých řadičích SCSI.
-* Typ sdílení pro více writerů je nastaven pro sdílené disky clusteru.
-* Zásady úložiště vSAN jsou definovány pro zajištění vysoké dostupnosti disků.
+* Každý virtuální počítač je nakonfigurovaný se čtyřmi řadiči SCSI.
+* Typ řadiče SCSI je nastavený na VMware Paravirtual.
+* Vytvoří se několik virtuálních disků (. vmdk).
+* Disky jsou připojené k různým řadičům SCSI.
+* Pro sdílené disky clusteru je nastaven typ sdílení s více zapisovači.
+* zásady úložiště síti vSAN jsou definované pro zajištění vysoké dostupnosti disků.
 
 ### <a name="operating-system-and-software-disk-configuration"></a>Konfigurace operačního systému a softwarového disku
 
-Každý virtuální počítač Oracle je konfigurován s více disky pro hostitelský operační systém, swap, instalaci softwaru a další funkce operačního systému.  Tyto disky nejsou sdíleny mezi virtuálními počítači.  
+Každý virtuální počítač Oracle je nakonfigurovaný s více disky pro operační systém hostitele, prohození, instalaci softwaru a další funkce operačního systému.  Tyto disky nejsou sdíleny mezi virtuálními počítači.  
 
-* Tři disky pro každý virtuální počítač jsou nakonfigurovány jako virtuální disky a připojeny na virtuálních počítačích Oracle RAC.
+* Tři disky pro každý virtuální počítač jsou nakonfigurovány jako virtuální disky a připojeny na virtuální počítače Oracle RAC.
     * Disk s operačním systémem
-    * Disk pro ukládání souborů oracle grid uvádí
+    * Disk pro ukládání souborů instalace mřížky Oracle
     * Disk pro ukládání instalačních souborů databáze Oracle
-* Disky lze nakonfigurovat jako **thin provisioned**.
-* Každý disk je připojen na první řadič SCSI (SCSI0).  
-* Sdílení je nastaveno na **žádné sdílení**.
-* Redundance je definována v úložišti pomocí zásad vSAN.  
+* Disky je možné nakonfigurovat jako **dynamicky zřízené**.
+* Každý disk je připojený k prvnímu řadiči SCSI (SCSI0).  
+* Sdílení je nastaveno na **bez sdílení**.
+* Redundance je definována v úložišti pomocí zásad síti vSAN.  
 
 ![Konfigurace skupiny datových disků Oracle RAC](media/oracle-vm-os-disks.png)
 
-### <a name="data-disk-configuration"></a>Konfigurace datového disku
+### <a name="data-disk-configuration"></a>Konfigurace datových disků
 
-Datové disky se používají především pro ukládání databázových souborů.  
+Datové disky se primárně používají k ukládání souborů databáze.  
 
-* Čtyři disky jsou konfigurovány jako virtuální disky a připojeny na všech virtuálních počítačích Oracle RAC.
-* Každý disk je připojen na jiný řadič SCSI.
-* Každý virtuální disk je nakonfigurován jako **silné zřízení eager zeroed**.  
-* Sdílení je nastaveno na **multi-writer**.  
-* Disky musí být nakonfigurovány jako skupina disků automatické správy úložiště (ASM).  
-* Redundance je definována v úložišti pomocí zásad vSAN.  
-* Redundance ASM je nastavena na **externí** redundanci.
+* Čtyři disky jsou nakonfigurovány jako virtuální disky a připojeny na všechny virtuální počítače Oracle RAC.
+* Každý disk je připojený k jinému řadiči SCSI.
+* Každý virtuální disk je nakonfigurovaný jako **silné zřízení Eager s nulovou hodnotou**.  
+* Sdílení je nastaveno na **Vícenásobný zápis**.  
+* Disky musí být nakonfigurované jako skupina disků s automatickou správou úložiště (ASM).  
+* Redundance je definována v úložišti pomocí zásad síti vSAN.  
+* Redundance ASM je nastavená na **externí** redundanci.
 
 ![Konfigurace skupiny datových disků Oracle RAC](media/oracle-vm-data-disks.png)
 
-### <a name="redo-log-disk-configuration"></a>Znovu provést konfiguraci disku protokolu
+### <a name="redo-log-disk-configuration"></a>Konfigurace disku protokolu opětovného provedení
 
-Soubory protokolu opakování se používají k ukládání kopie změn provedených v databázi.  Soubory protokolu se používají, když je třeba obnovit data po všech selháních.
+Soubory protokolu opětovného provedení se používají k ukládání kopie změn provedených v databázi.  Soubory protokolu se používají, když je potřeba obnovit data po jakémkoli selhání.
 
-* Znovu nastavit disky protokolu musí být nakonfigurovány jako více skupin disků.  
+* Disky protokolu opětovného záznamu musí být nakonfigurovány jako více skupin disků.  
 * Na všech virtuálních počítačích Oracle RAC je vytvořeno a připojeno šest disků.
-* Disky jsou připojeny na různých řadičích SCSI
-* Každý virtuální disk je nakonfigurován jako **silné zřízení eager zeroed**.
-* Sdílení je nastaveno na **multi-writer**.  
-* Disky musí být nakonfigurovány jako dvě skupiny disků ASM.
+* Disky jsou připojené k různým řadičům SCSI.
+* Každý virtuální disk je nakonfigurovaný jako **silné zřízení Eager s nulovou hodnotou**.
+* Sdílení je nastaveno na **Vícenásobný zápis**.  
+* Disky musí být nakonfigurované jako dvě skupiny disků ASM.
 * Každá skupina disků ASM obsahuje tři disky, které jsou na různých řadičích SCSI.  
-* Redundance ASM je nastavena na **normální** redundanci.
-* Ve skupině protokolů ASM Redo je vytvořeno pět souborů protokolu redo.
+* Redundance ASM je nastavená na **normální** redundanci.
+* Pět souborů protokolu opětovného provedení se vytvoří ve skupině protokolů opětovného provedení ASM.
 
 ```
 SQL > alter database add logfile thread 1 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') size 1G;
@@ -122,144 +122,144 @@ SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') si
 SQL > alter database add logfile thread 2 ('+ORCLRAC_REDO1','+ORCLRAC_REDO2') size 1G;
 ```
 
-![Konfigurace skupiny protokolů Oracle RAC redo](media/oracle-vm-redo-log-disks.png)
+![Konfigurace skupiny disků protokolu opětovného nastavení pro Oracle RAC](media/oracle-vm-redo-log-disks.png)
 
 ### <a name="oracle-voting-disk-configuration"></a>Konfigurace hlasovacího disku Oracle
 
-Hlasovací disky poskytují funkce disku kvora jako další komunikační kanál, aby se zabránilo jakékoli situaci s rozděleným mozkem.
+Hlasovací disky poskytují funkci disku kvora jako dodatečný komunikační kanál, abyste se vyhnuli jakékoli situaci v případě potřeby rozdělení.
 
 * Na všech virtuálních počítačích Oracle RAC je vytvořeno a připojeno pět disků.
-* Disky jsou připojeny na jednom řadiči SCSI
-* Každý virtuální disk je nakonfigurován jako **silné zřízení eager zeroed**.
-* Sdílení je nastaveno na **multi-writer**.  
-* Disky musí být nakonfigurovány jako skupina disků ASM.  
-* Redundance ASM je nastavena na **vysokou** redundanci.
+* Disky jsou připojené k jednomu řadiči SCSI.
+* Každý virtuální disk je nakonfigurovaný jako **silné zřízení Eager s nulovou hodnotou**.
+* Sdílení je nastaveno na **Vícenásobný zápis**.  
+* Disky musí být nakonfigurované jako skupina disků ASM.  
+* Redundance ASM je nastavená na **vysokou** redundanci.
 
-![Konfigurace hlasovacích disků Oracle RAC](media/oracle-vm-voting-disks.png)
+![Konfigurace skupiny hlasovacích disků Oracle RAC](media/oracle-vm-voting-disks.png)
 
-### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Konfigurace disku oblasti rychlého obnovení oracle (volitelně)
+### <a name="oracle-fast-recovery-area-disk-configuration-optional"></a>Konfigurace disku pro oblast rychlého obnovení Oracle (volitelné)
 
-Oblast rychlého obnovení (FRA) je souborový systém spravovaný skupinou disků Oracle ASM.  Agentura FRA poskytuje sdílené umístění úložiště pro záložní a obnovovací soubory. Oracle vytváří archivované protokoly a flashback protokoly v oblasti rychlého obnovení. Oracle Recovery Manager (RMAN) může volitelně ukládat své zálohovací sady a kopie bitových kopií v oblasti rychlého obnovení a používá jej při obnově souborů během obnovení média.
+Oblast rychlé obnovy (v/v) je systém souborů spravovaný skupinou disků Oracle ASM.  Služba předplatných poskytuje sdílené umístění úložiště pro soubory zálohy a obnovení. Oracle vytvoří archivované protokoly a protokoly Flashback v oblasti rychlé obnovení. Oracle Recovery Manager (RMAN) může volitelně ukládat své zálohovací sklady a kopie imagí v oblasti rychlé obnovení a při obnovení souborů ji použije při obnovování médií.
 
-* Dva disky jsou vytvořeny a připojeny na všech virtuálních počítačích Oracle RAC.
-* Disky jsou připojeny na jiný řadič SCSI
-* Každý virtuální disk je nakonfigurován jako **silné zřízení eager zeroed**.
-* Sdílení je nastaveno na **multi-writer**.  
-* Disky musí být nakonfigurovány jako skupina disků ASM.  
-* Redundance ASM je nastavena na **externí** redundanci.
+* Na všech virtuálních počítačích Oracle RAC se vytváří a připevní dva disky.
+* Disky jsou připojené na jiný řadič SCSI.
+* Každý virtuální disk je nakonfigurovaný jako **silné zřízení Eager s nulovou hodnotou**.
+* Sdílení je nastaveno na **Vícenásobný zápis**.  
+* Disky musí být nakonfigurované jako skupina disků ASM.  
+* Redundance ASM je nastavená na **externí** redundanci.
 
-![Konfigurace hlasovacích disků Oracle RAC](media/oracle-vm-fra-disks.png)
+![Konfigurace skupiny hlasovacích disků Oracle RAC](media/oracle-vm-fra-disks.png)
 
-## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Nasazení clusteru CloudSimple Priv. Cloud vSphere
+## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Nasazení clusteru CloudSimple Private Cloud vSphere
 
-Chcete-li nasadit cluster vSphere v privátním cloudu, postupujte podle tohoto postupu:
+Pokud chcete nasadit cluster vSphere do privátního cloudu, postupujte podle tohoto postupu:
 
-1. Z portálu CloudSimple [vytvořte privátní cloud](create-private-cloud.md). CloudSimple vytvoří výchozí ho uživatele vCenter s názvem "cloudowner" v nově vytvořeném privátním cloudu. Podrobnosti o výchozím uživateli privátního cloudu a modelu oprávnění najdete [v tématu Naučte se model oprávnění privátního cloudu](learn-private-cloud-permissions.md).  Tento krok vytvoří primární cluster pro správu privátního cloudu.
+1. Na portálu CloudSimple [vytvořte privátní cloud](create-private-cloud.md). CloudSimple vytvoří výchozího uživatele vCenter s názvem "cloudowner" v nově vytvořeném privátním cloudu. Podrobnosti o výchozím modelu uživatele a oprávnění privátního cloudu najdete v tématu [informace o modelu oprávnění privátního cloudu](learn-private-cloud-permissions.md).  Tento krok vytvoří primární cluster pro správu pro váš privátní cloud.
 
-2. Z portálu CloudSimple [rozbalte privátní cloud](expand-private-cloud.md) pomocí nového clusteru.  Tento cluster se použije k nasazení řešení Oracle RAC.  Vyberte počet uzlů na základě požadované odolnosti proti chybám (minimálně tři uzly).
+2. Na portálu CloudSimple [rozbalte privátní cloud](expand-private-cloud.md) s novým clusterem.  Tento cluster se použije k nasazení Oracle RAC.  Vyberte počet uzlů na základě požadované odolnosti proti chybám (minimálně tři uzly).
 
-## <a name="set-up-networking-for-oracle-rac"></a>Nastavení sítě pro řešení Oracle RAC
+## <a name="set-up-networking-for-oracle-rac"></a>Nastavení sítě pro Oracle RAC
 
-1. V privátním cloudu [vytvořte dvě sítě VLAN](create-vlan-subnet.md), jednu pro veřejnou síť Oracle a jednu pro privátní síť Oracle a přiřaďte příslušné cidrs podsítě.
-2. Po vytvoření vlan vytvořte [skupiny distribuovaných portů v programu Private Cloud vCenter](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
-3. Nastavte [virtuální počítač DHCP a SERVERU DNS](dns-dhcp-setup.md) v clusteru pro správu pro prostředí Oracle.
+1. V privátním cloudu [vytvořte dvě sítě VLAN](create-vlan-subnet.md), jednu pro veřejnou síť Oracle a jednu pro privátní síť Oracle a přiřaďte příslušné CIDRs podsítě.
+2. Po vytvoření sítí VLAN vytvořte [distribuované skupiny portů v privátním cloudu vCenter](create-vlan-subnet.md#use-vlan-information-to-set-up-a-distributed-port-group-in-vsphere).
+3. Nastavte [virtuální počítač DHCP a server DNS](dns-dhcp-setup.md) na cluster pro správu pro prostředí Oracle.
 4. [Nakonfigurujte předávání DNS na serveru DNS](on-premises-dns-setup.md#create-a-conditional-forwarder) nainstalovaném v privátním cloudu.
 
-## <a name="set-up-vsan-storage-policies"></a>Nastavení zásad úložiště vSAN
+## <a name="set-up-vsan-storage-policies"></a>Nastavení zásad úložiště síti vSAN
 
-Zásady vSAN definují selhání tolerovat a disk prokládání pro data uložená na discích virtuálního počítače.  Vytvořené zásady úložiště musí být použity na discích virtuálních počítačů při vytváření virtuálního počítače.
+zásady síti vSAN definují selhání pro tolerovat a diskové obložení pro data uložená na discích virtuálních počítačů.  Vytvořené zásady úložiště musí být na discích virtuálních počítačů při vytváření virtuálního počítače aplikovány.
 
-1. [Přihlaste se k klientovi vSphere](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) vašeho privátního cloudu.
-2. V horní nabídce vyberte **Zásady a profily**.
-3. V levé nabídce vyberte **Zásady úložiště virtuálních zařízení** a pak vyberte **Vytvořit zásady úložiště virtuálních zařízení**.
-4. Zadejte smysluplný název zásady a klepněte na tlačítko **DALŠÍ**.
-5. V části **Struktura zásad** vyberte **Povolit pravidla pro úložiště vSAN** a klepněte na tlačítko **DALŠÍ**.
-6. V části**dostupnost** **vSAN** > vyberte **možnost Žádná** pro toleranci havárie lokality. Pro selhání tolerovat, vyberte **RAID - Zrcadlení** možnost pro požadovaný FTT.
-    ![nastavení vSAN](media/oracle-rac-storage-wizard-vsan.png).
-7. V části **Upřesnit** vyberte počet diskových pruhů na objekt. V části Rezervace prostoru objektu vyberte **možnost Silné zřízené**. Vyberte **zakázat kontrolní součet objektů**. Klepněte na tlačítko **DALŠÍ**.
-8. Podle pokynů na obrazovce zobrazte seznam kompatibilních datových úložišť vSAN, zkontrolujte nastavení a dokončete nastavení.
+1. [Přihlaste se ke klientovi vSphere](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access) vašeho privátního cloudu.
+2. V horní nabídce vyberte **zásady a profily**.
+3. V nabídce vlevo vyberte **zásady úložiště virtuálního počítače** a pak vyberte **vytvořit zásadu úložiště virtuálního počítače**.
+4. Zadejte smysluplný název zásady a klikněte na **Další**.
+5. V části **Struktura zásad** vyberte **Povolit pravidla pro úložiště síti vSAN** a klikněte na **Další**.
+6. V části **vSAN** > **dostupnost** síti vSAN vyberte **žádné** pro odolnost sítě po havárii. Pokud chcete chyby tolerovat, vyberte možnost **zrcadlení RAID** pro požadovaný FTT.
+    ![nastavení](media/oracle-rac-storage-wizard-vsan.png)síti vSAN
+7. V části **Upřesnit** vyberte počet diskových pruhů na jeden objekt. V případě rezervovaného prostoru objektu vyberte **silný zřízený**. Vyberte **Zakázat kontrolní součet objektu**. Klikněte na tlačítko **Další**.
+8. Podle pokynů na obrazovce zobrazte seznam kompatibilních úložišť síti vSAN, zkontrolujte nastavení a dokončete instalaci.
 
-## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Vytvoření virtuálních počítačů Oracle a vytvoření sdílených disků virtuálních počítačů pro Oracle
+## <a name="create-oracle-vms-and-create-shared-vm-disks-for-oracle"></a>Vytvoření virtuálních počítačů Oracle a vytvoření sdílených disků virtuálního počítače pro Oracle
 
-Chcete-li vytvořit virtuální virtuální hod pro Oracle, klonovat existující virtuální hod nebo vytvořit nový.  Tato část popisuje, jak vytvořit nový virtuální virtuální soud a potom jej klonovat k vytvoření druhého po instalaci základního operačního systému.  Po vytvoření virtuálních počítačů můžete vytvořit přidat disky k nim.  Cluster Oracle používá sdílené disky pro ukládání, data, protokoly a opakování protokolů.
+Pokud chcete vytvořit virtuální počítač pro Oracle, naklonujte existující virtuální počítač nebo vytvořte nový.  V této části se dozvíte, jak vytvořit nový virtuální počítač a pak ho naklonovat, abyste po instalaci základního operačního systému vytvořili druhý.  Po vytvoření virtuálních počítačů můžete do nich vytvořit přidat disky.  Cluster Oracle používá sdílené disky pro ukládání, data, protokoly a protokoly opětovného provedení.
 
 ### <a name="create-vms"></a>Vytvoření virtuálních počítačů
 
-1. V programu vCenter klikněte na ikonu **Hostitelé a clustery.** Vyberte cluster, který jste vytvořili pro oracle.
-2. Klepněte pravým tlačítkem myši na cluster a vyberte **nový virtuální počítač**.
-3. Vyberte **Vytvořit nový virtuální počítač** a klepněte na tlačítko **Další**.
-4. Pojmenujte počítač, vyberte umístění virtuálního počítače Oracle a klepněte na tlačítko **Další**.
-5. Vyberte prostředek clusteru a klepněte na tlačítko **Další**.
-6. Vyberte úložiště dat vSAN pro cluster a klepněte na tlačítko **Další**.
-7. Zachovat výchozí výběr kompatibility ESXi 6.5 a klepněte na tlačítko **Další**.
-8. Vyberte hostovaného operačního příkazu ISO pro vytvářený virtuální ho disponizém a klepněte na tlačítko **Další**.
-9. Vyberte velikost pevného disku, která je vyžadována pro instalaci operačního systému.
-10. Chcete-li aplikaci nainstalovat na jiné zařízení, klepněte na tlačítko **Přidat nové zařízení**.
-11. Vyberte možnosti sítě a přiřaďte skupinu distribuovaných portů vytvořenou pro veřejnou síť.
-12. Chcete-li přidat další síťová rozhraní, klepněte na tlačítko **Přidat nové zařízení** a vyberte skupinu distribuovaných portů vytvořenou pro privátní síť.
-13. V případě jednotky New DC/DVD vyberte soubor ISO úložiště dat, který obsahuje ISO pro upřednostňovanou instalaci operačního systému. Vyberte soubor, který jste dříve nahráli do složky ISO a šablony, a klepněte na tlačítko **OK**.
-14. Zkontrolujte nastavení a kliknutím na **OK** vytvořte nový virtuální virtuální počítače.
-15. Napájení virtuálního počítači. Instalace operačního systému a všech požadovaných aktualizací
+1. V vCenter klikněte na ikonu **hostitelé a clustery** . Vyberte cluster, který jste vytvořili pro Oracle.
+2. Klikněte pravým tlačítkem na cluster a vyberte **Nový virtuální počítač**.
+3. Vyberte **vytvořit nový virtuální počítač** a klikněte na **Další**.
+4. Pojmenujte počítač, vyberte umístění virtuálního počítače Oracle a klikněte na **Další**.
+5. Vyberte prostředek clusteru a klikněte na **Další**.
+6. Vyberte úložiště dat síti vSAN pro cluster a klikněte na **Další**.
+7. Zachovejte výchozí výběr kompatibility ESXi 6,5 a klikněte na tlačítko **Další**.
+8. Pro vytvářený virtuální počítač vyberte hostovaný operační systém ISO a klikněte na **Další**.
+9. Vyberte velikost pevného disku, která je nutná pro instalaci operačního systému.
+10. Pokud chcete aplikaci nainstalovat na jiné zařízení, klikněte na **Přidat nové zařízení**.
+11. Vyberte možnosti sítě a přiřaďte distribuovanou skupinu portů vytvořenou pro veřejnou síť.
+12. Pokud chcete přidat další síťová rozhraní, klikněte na **Přidat nové zařízení** a vyberte distribuovanou skupinu portů vytvořenou pro privátní síť.
+13. V případě nové jednotky DC/DVD vyberte soubor ISO úložiště dat, který obsahuje bitovou kopii ISO pro upřednostňovanou instalaci operačního systému. Vyberte soubor, který jste dříve nahráli do složky soubory ISO a Templates a klikněte na **OK**.
+14. Zkontrolujte nastavení a kliknutím na **OK** vytvořte nový virtuální počítač.
+15. Zapněte virtuální počítač. Nainstalujte operační systém a všechny požadované aktualizace.
 
-Po instalaci operačního systému můžete klonovat druhý virtuální virtuální ms. Klikněte pravým tlačítkem myši na položku virtuálního virtuálního soudu a vyberte možnost a klonovat.
+Po instalaci operačního systému můžete naklonovat druhý virtuální počítač. Klikněte pravým tlačítkem myši na položku virtuálního počítače a vyberte možnost klonování a.
 
 ### <a name="create-shared-disks-for-vms"></a>Vytvoření sdílených disků pro virtuální počítače
 
-Společnost Oracle používá sdílený disk k ukládání souborů protokolu, protokolů a opakování dat.  Můžete vytvořit sdílený disk na vCenter a připojit jej na obou virtuálních počítačích.  Chcete-li dosáhnout vyššího výkonu, umístěte datové disky na různé řadiče SCSI Kroky níže ukazují, jak vytvořit sdílený disk v programu vCenter a pak jej připojit k virtuálnímu počítači. Klient vCenter Flash se používá k úpravám vlastností virtuálního počítače.
+Oracle používá sdílený disk k ukládání dat, protokolů a souborů protokolu opětovného provedení.  Můžete vytvořit sdílený disk na vCenter a připojit ho na virtuálním počítači.  Pokud chcete dosáhnout vyššího výkonu, umístěte datové disky do různých kroků řadičů SCSI níže v tématu Postup vytvoření sdíleného disku v vCenter a jeho připojení k virtuálnímu počítači. pro úpravu vlastností virtuálního počítače se používá klient vCenter Flash.
 
 #### <a name="create-disks-on-the-first-vm"></a>Vytvoření disků na prvním virtuálním počítači
 
-1. V programu vCenter klepněte pravým tlačítkem myši na jeden z virtuálních počítače Oracle a vyberte **upravit nastavení**.
-2. V nové části zařízení vyberte **řadič SCSI** a klepněte na **tlačítko Přidat**.
-3. V části Nové zařízení vyberte **Nový pevný disk** a klepněte na tlačítko **Přidat**.
+1. V vCenter klikněte pravým tlačítkem na jeden z virtuálních počítačů Oracle a vyberte **Upravit nastavení**.
+2. V části nové zařízení vyberte **řadič SCSI** a klikněte na **Přidat**.
+3. V části nové zařízení vyberte **nový pevný disk** a klikněte na **Přidat**.
 4. Rozbalte vlastnosti nového pevného disku.
 5. Zadejte velikost pevného disku.
-6. Zadejte zásady úložiště virtuálního zařízení jako zásady úložiště vSAN, které jste definovali dříve.
-7. Vyberte umístění jako složku v úložišti dat vSAN. Umístění pomáhá při procházení a připojení disků k druhému virtuálnímu počítače.
-8. Pro zřizování disků vyberte **možnost Tlusté zřizování eager zeroed**.
-9. Pro sdílení zadejte **Multi-writer**.
-10. Pro uzel virtuálního zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
+6. Zadejte zásady úložiště virtuálních počítačů, které mají být síti vSAN zásadami úložiště, které jste definovali dříve.
+7. Vyberte umístění jako složku v úložišti dat síti vSAN. Umístění pomáhá s procházením a připojením disků k druhému virtuálnímu počítači.
+8. V případě zřizování disků vyberte možnost **silné zřízení Eager s nulovou hodnotou**.
+9. Pro sdílení zadejte **Vícenásobný zapisovač**.
+10. V uzlu virtuální zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
 
-    ![Vytvoření disků na prvním virtuálním počítači](media/oracle-rac-new-hard-disk.png)
+    ![Vytvořit disky na prvním virtuálním počítači](media/oracle-rac-new-hard-disk.png)
 
-Opakujte kroky 2 – 10 pro všechny nové disky potřebné pro soubory protokolu Oracle, protokoly a znovu.
+Opakujte kroky 2 – 10 pro všechny nové disky požadované pro soubory protokolu Oracle data, protokoly a znovu.
 
-#### <a name="attach-disks-to-second-vm"></a>Připojení disků k druhému virtuálnímu virtuálnímu počítače
+#### <a name="attach-disks-to-second-vm"></a>Připojit disky k druhému virtuálnímu počítači
 
-1. V programu vCenter klepněte pravým tlačítkem myši na jeden z virtuálních počítače Oracle a vyberte **upravit nastavení**.
-2. V nové části zařízení vyberte **řadič SCSI** a klepněte na **tlačítko Přidat**.
-3. V části Nové zařízení vyberte **Existující pevný disk** a klepněte na tlačítko **Přidat**.
-4. Přejděte do umístění, kde byl disk vytvořen pro první virtuální počítače a vyberte soubor VMDK.
-5. Zadejte zásady úložiště virtuálního zařízení jako zásady úložiště vSAN, které jste definovali dříve.
-6. Pro zřizování disků vyberte **možnost Tlusté zřizování eager zeroed**.
-7. Pro sdílení zadejte **Multi-writer**.
-8. Pro uzel virtuálního zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
+1. V vCenter klikněte pravým tlačítkem na jeden z virtuálních počítačů Oracle a vyberte **Upravit nastavení**.
+2. V části nové zařízení vyberte **řadič SCSI** a klikněte na **Přidat**.
+3. V části nové zařízení vyberte **existující pevný disk** a klikněte na **Přidat**.
+4. Přejděte do umístění, kde byl vytvořen disk pro první virtuální počítač, a vyberte soubor VMDK.
+5. Zadejte zásady úložiště virtuálních počítačů, které mají být síti vSAN zásadami úložiště, které jste definovali dříve.
+6. V případě zřizování disků vyberte možnost **silné zřízení Eager s nulovou hodnotou**.
+7. Pro sdílení zadejte **Vícenásobný zapisovač**.
+8. V uzlu virtuální zařízení vyberte nový řadič SCSI, který byl vytvořen v kroku 2.
 
-    ![Vytvoření disků na prvním virtuálním počítači](media/oracle-rac-existing-hard-disk.png)
+    ![Vytvořit disky na prvním virtuálním počítači](media/oracle-rac-existing-hard-disk.png)
 
-Opakujte kroky 2 – 7 pro všechny nové disky potřebné pro soubory protokolu Oracle, protokoly a znovu.
+Opakujte kroky 2 – 7 pro všechny nové disky požadované pro soubory protokolu Oracle data, protokoly a znovu.
 
-## <a name="set-up-vm-host-affinity-rules"></a>Nastavení pravidel spřažení hostitele virtuálního provozu
+## <a name="set-up-vm-host-affinity-rules"></a>Nastavení pravidel spřažení hostitelů virtuálních počítačů
 
-Pravidla spřažení virtuálního počítači s hostitelem zajišťují, že virtuální počítač běží na požadovaném hostiteli.  Můžete definovat pravidla v centru, abyste zajistili, že virtuální počítač Oracle běží na hostiteli s odpovídajícími prostředky a splňuje všechny specifické licenční požadavky.
+Pravidla spřažení z virtuálního počítače na hostitele zajistí, že virtuální počítač běží na požadovaném hostiteli.  Můžete definovat pravidla na vCenter, aby se zajistilo, že se virtuální počítač Oracle spustí na hostiteli s odpovídajícími prostředky a splňuje všechny konkrétní požadavky na licencování.
 
-1. Na portálu CloudSimple [eskalovat oprávnění](escalate-private-cloud-privileges.md) uživatele cloudvlastník.
-2. [Přihlaste se k klientovi vSphere](https://docs.azure.cloudsimple.com/vsphere-access) vašeho privátního cloudu.
-3. V klientovi vSphere vyberte cluster, ve kterém se nasazují virtuální počítače Oracle, a klepněte na tlačítko **Konfigurovat**.
-4. V části Konfigurovat vyberte **Skupiny virtuálních hostitelů nebo hostitelů**.
-5. Klepněte na tlačítko **+**.
-6. Přidejte skupinu virtuálních společností. Jako typ vyberte **skupinu virtuálních montovek.** Zadejte název skupiny. Vyberte virtuální hod a kliknutím na **OK** vytvořte skupinu.
-6. Přidejte skupinu hostitelů. Jako typ vyberte **Skupinu hostitelů.** Zadejte název skupiny. Vyberte hostitele, na kterých se virtuální virtuální měbudou spouštět, a kliknutím na **OK** vytvořte skupinu.
-7. Chcete-li vytvořit pravidlo, klikněte na **pravidla virtuálního počítače/hostitele**.
-8. Klepněte na tlačítko **+**.
-9. Zadejte název pravidla a **zaškrtněte políčko Povolit**.
-10. Pro typ pravidla vyberte **Virtuální počítače jako hostitel**.
-11. Vyberte skupinu virtuálních aplikací, která obsahuje virtuální servery Oracle.
-12. Vyberte **možnost Musí být spuštěna na hostitelích v této skupině**.
+1. Na portálu CloudSimple povýšit [oprávnění](escalate-private-cloud-privileges.md) uživatele cloudowner.
+2. [Přihlaste se ke klientovi vSphere](https://docs.azure.cloudsimple.com/vsphere-access) vašeho privátního cloudu.
+3. V klientovi vSphere vyberte cluster, ve kterém jsou nasazené virtuální počítače Oracle, a klikněte na **Konfigurovat**.
+4. V části konfigurovat vyberte **skupiny VM/hostitelů**.
+5. Klikněte **+** na.
+6. Přidejte skupinu virtuálních počítačů. Jako typ vyberte **Skupina virtuálních počítačů** . Zadejte název skupiny. Vyberte virtuální počítače a potom kliknutím na **OK** vytvořte skupinu.
+6. Přidejte skupinu hostitelů. Jako typ vyberte **Skupina hostitelů** . Zadejte název skupiny. Vyberte hostitele, na kterých se budou virtuální počítače spouštět, a pak kliknutím na **OK** vytvořte skupinu.
+7. Pokud chcete vytvořit pravidlo, klikněte na **pravidla virtuálního počítače nebo hostitele**.
+8. Klikněte **+** na.
+9. Zadejte název pravidla a zaškrtněte **Povolit**.
+10. Pro typ pravidla vyberte **Virtual Machines pro hostování**.
+11. Vyberte skupinu virtuálních počítačů, která obsahuje virtuální počítače Oracle.
+12. Vyberte **musí běžet na hostitelích v této skupině**.
 13. Vyberte skupinu hostitelů, kterou jste vytvořili.
 14. Kliknutím na **OK** vytvořte pravidlo.
 
 ## <a name="references"></a>Odkazy
 
-* [O zásadách vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
-* [Atribut vícenásobného zapisovače VMware pro sdílené sady VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)
+* [Informace o zásadách síti vSAN](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
+* [Atribut VMware multi-Writer pro Shared VMDK](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)
