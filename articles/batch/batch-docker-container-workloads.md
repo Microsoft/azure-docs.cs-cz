@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: 27edfe67152857a89840f5cd24b06d66ae8d94c1
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116124"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit aplikace kontejneru v Azure Batch
@@ -21,7 +21,7 @@ Měli byste být obeznámeni se základními pojmy kontejnerů a vytvářením f
 
 Pomocí kontejnerů můžete snadno spouštět úlohy služby Batch bez nutnosti spravovat prostředí a závislosti pro spouštění aplikací. Kontejnery nasazují aplikace jako odlehčené, přenosné a dostatečné jednotky, které mohou běžet v několika různých prostředích. Můžete například sestavit a otestovat kontejner místně a pak nahrát image kontejneru do registru v Azure nebo jinde. Model nasazení kontejneru zajišťuje, že běhové prostředí aplikace je vždy správně nainstalováno a nakonfigurováno všude, kde je aplikace hostována. Úlohy založené na kontejneru v dávce můžou také využívat funkce nekontejnerových úloh, včetně balíčků aplikací a správy souborů prostředků a výstupních souborů.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * **Verze sady SDK**: sady SDK pro Batch podporují image kontejnerů v následujících verzích:
     * Batch REST API verze 2017 -09-01.6.0

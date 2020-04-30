@@ -4,10 +4,10 @@ description: Služba Batch podporuje službu Azure AD k ověřování ze služby
 ms.topic: article
 ms.date: 01/28/2020
 ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116175"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
@@ -69,7 +69,7 @@ Další informace o registraci aplikace v Azure AD najdete v tématu [scénáře
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta použijte následující postup:
 
 1. V Azure Portal vyberte svou službu Active Directory.
-1. Vyberte **vlastnosti**.
+1. Vyberte **Vlastnosti**.
 1. Zkopírujte hodnotu identifikátoru GUID poskytnutou pro **ID adresáře**. Tato hodnota se označuje taky jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)
@@ -199,7 +199,7 @@ Obecnější informace o vytvoření vlastní role najdete v tématu [vlastní r
 ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování pro vaši aplikaci. K získání ID tenanta použijte následující postup:
 
 1. V Azure Portal vyberte svou službu Active Directory.
-1. Vyberte **vlastnosti**.
+1. Vyberte **Vlastnosti**.
 1. Zkopírujte hodnotu identifikátoru GUID poskytnutou pro **ID adresáře**. Tato hodnota se označuje taky jako ID tenanta.
 
 ![Zkopírujte ID adresáře.](./media/batch-aad-auth/aad-directory-id.png)

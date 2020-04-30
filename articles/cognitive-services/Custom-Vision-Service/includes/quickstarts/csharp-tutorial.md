@@ -4,10 +4,10 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 04/14/2020
 ms.openlocfilehash: de0c8fd674872a48a302a76a3f0951df13041206
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134107"
 ---
 Tento článek obsahuje informace a vzorový kód, které vám pomůžou začít s vytvořením modelu klasifikace obrázků pomocí sady Custom Vision SDK a jazyka C#. Po jeho vytvoření můžete přidat značky, nahrát obrázky, vytrénovat projekt, získat adresu URL výchozího koncového bodu předpovědi projektu a použít tento koncový bod k programovému testování obrázku. Použijte tento příklad jako šablonu pro vytvoření vlastní aplikace .NET. Pokud chcete projít procesem sestavování a používání klasifikačního modelu _bez_ kódu, prostudujte si místo toho [pokyny založené na prohlížeči](../../getting-started-build-a-classifier.md) .

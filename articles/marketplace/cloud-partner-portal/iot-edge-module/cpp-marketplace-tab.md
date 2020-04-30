@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: b4a3aa4e92fcabf354de7d550ec53ead5872596d
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144780"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>Karta tržiště modulu IoT Edge
@@ -98,7 +98,7 @@ Tato část obsahuje následující pododdíly: **loga**, snímky **obrazovky**a
 | **Image**                 | Obrázek snímku obrazovky, formát PNG 533x324 pixelů                               |
 | *Videa*  | Videa se zobrazí na stránce s informacemi o produktu. Představují dobrý způsob, jak vizuálně informovat o tom, co váš IoT Edge modul dělá a jak funguje. |
 | **Název**                  | Název nebo název Maximální délka 100 znaků.                             |
-| **Propojit**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |
+| **Odkaz**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |
 | **Miniatuře**             | Formát PNG 533x324 pixelů                                                     |
 |  |  |
 

@@ -6,10 +6,10 @@ ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
 ms.openlocfilehash: 79c4e74086acc0f74bcc43f6b4543afe12916364
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117382"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Použití Azure Pipelines k sestavení a nasazení řešení HPC
@@ -24,7 +24,7 @@ V tomto příkladu vytvoříme kanál sestavení a vydání pro nasazení infras
 
 ![Diagram znázorňující tok nasazení v našem kanálu](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Instalace
+### <a name="setup"></a>Nastavení
 
 Pokud chcete postupovat podle kroků v tomto článku, potřebujete organizaci Azure DevOps a týmový projekt.
 

@@ -5,17 +5,17 @@ ms.assetid: ''
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.openlocfilehash: ccf0778938c873a5510f1408bf31d95c9d6ee873
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116855"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Začínáme se sadou SDK služby Batch pro Node.js
 
 Naučíte se základy vytvoření klienta služby Batch v Node.js pomocí sady [SDK služby Azure Batch pro Node.js](/javascript/api/overview/azure/batch). Pro pochopení scénáře pro aplikaci služby Batch si ho projdeme krok za krokem a pak aplikaci nastavíme pomocí klienta Node.js.  
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že máte praktické znalosti Node.js a umíte do jisté míry pracovat s Linuxem. Předpokládá se také, že máte nastavený účet Azure s přístupovými právy k vytvoření služeb Batch a Storage.
 
 Doporučujeme, abyste si přečetli článek [Technický přehled služby Azure Batch](batch-technical-overview.md), než budete postupovat podle kroků popsaných v tomto článku.

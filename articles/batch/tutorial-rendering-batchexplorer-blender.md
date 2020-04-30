@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
 ms.openlocfilehash: ca23bbc2b53eaaaf1848a7a98228be23c9ffed0c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82117076"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Kurz: Vykreslení scény Blenderu pomocí nástroje Batch Explorer
@@ -23,7 +23,7 @@ V tomto kurzu se naučíte:
 > * Vykreslení několika snímků
 > * Zobrazení a stažení souborů s vykreslenými snímky
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat předplatné s průběžnými platbami nebo jiné možnosti nákupu Azure, abyste použili vykreslovací aplikace ve službě Batch na základě pay-per-use plateb. Licencování s platbami za na základě využití není podporováno, když používáte bezplatnou nabídku Azure, která poskytuje peněžní kredit.
 

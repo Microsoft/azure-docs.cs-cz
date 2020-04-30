@@ -4,10 +4,10 @@ description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spra
 ms.date: 04/23/2020
 ms.topic: overview
 ms.openlocfilehash: aea1451d995d135506fb93e3fc9e86f67227d5b8
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82144263"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?

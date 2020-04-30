@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82130998"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Protokoly prostředků pro službu Azure Signal Service
@@ -27,7 +27,7 @@ Pokud chcete povolit protokoly prostředků, budete si muset někam uložit data
 
 Můžete zobrazit protokoly prostředků pro službu Azure Signal Service. Tyto protokoly poskytují bohatší přehled o připojení ke své instanci služby signalizace Azure. Protokoly prostředků poskytují podrobné informace o každém připojení. Například základní informace (ID uživatele, ID připojení a typ přenosu atd.) a informace o událostech (připojit, odpojit a přerušit událost atd.) připojení. protokoly prostředků se dají použít k identifikaci problémů, sledování a analýze připojení.
 
-### <a name="enable-resource-logs"></a>Povolit protokoly prostředků
+### <a name="enable-resource-logs"></a>Povolení protokolů prostředků
 
 Ve výchozím nastavení jsou protokoly prostředků zakázané. Pokud chcete povolit protokoly prostředků, postupujte podle těchto kroků:
 

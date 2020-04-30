@@ -8,10 +8,10 @@ ms.date: 04/13/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b1c755176a62b7e362707da093a899ae96cfe69a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82128870"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
@@ -163,7 +163,7 @@ Na úrovni serveru Analysis Services poskytuje bránu firewall, ověřování Az
 
 Brána firewall služby Azure Analysis Services blokuje všechna připojení klientů kromě IP adres zadaných v pravidlech. Ve výchozím nastavení není ochrana brány firewall pro nové servery povolena. Doporučuje se povolit ochranu brány firewall a pravidla se konfigurují jako součást skriptu zřizování serveru nebo na portálu hned po vytvoření serveru. Pravidla můžete konfigurovat zadáním povolených IP adres jednotlivých klientů nebo jejich rozsahu. Povolit nebo blokovat je možné také připojení (služby) Power BI. Pravidla a bránu firewall můžete konfigurovat na portálu nebo pomocí PowerShellu. Další informace najdete v článku o [konfiguraci brány firewall serveru](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 

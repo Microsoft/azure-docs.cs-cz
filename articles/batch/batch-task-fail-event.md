@@ -4,10 +4,10 @@ description: Referenční informace pro událost selhání úlohy Batch Tato ud�
 ms.topic: article
 ms.date: 08/15/2019
 ms.openlocfilehash: 0e973a7e0a2ab67300a0f6762c837336e12bae3b
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116447"
 ---
 # <a name="task-fail-event"></a>Událost selhání úlohy

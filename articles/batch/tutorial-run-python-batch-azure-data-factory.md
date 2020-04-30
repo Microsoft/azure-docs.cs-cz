@@ -8,10 +8,10 @@ ms.date: 12/11/2019
 ms.author: komammas
 ms.custom: mvc
 ms.openlocfilehash: 6761896a6555c11d7957f923a5951641c1541012
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82117059"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Kurz: spouštění skriptů Pythonu pomocí Azure Data Factory pomocí Azure Batch
@@ -30,7 +30,7 @@ Následující příklad spustí skript Pythonu, který přijímá vstup sdílen
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Nainstalovaná distribuce [Pythonu](https://www.python.org/downloads/) pro místní testování.
 * Balíček [Azure](https://pypi.org/project/azure/) `pip` .

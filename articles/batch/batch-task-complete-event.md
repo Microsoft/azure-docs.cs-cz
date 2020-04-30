@@ -4,10 +4,10 @@ description: Referenční informace pro událost dokončení dávkové úlohy Ta
 ms.topic: article
 ms.date: 04/20/2017
 ms.openlocfilehash: 9e11eac04009def2bce4476ba2d77c798f25ca15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116498"
 ---
 # <a name="task-complete-event"></a>Událost dokončení úlohy

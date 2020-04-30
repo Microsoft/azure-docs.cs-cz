@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
 ms.openlocfilehash: af0065db087595167ca71bb79b968cc4ad339acd
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116838"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání Key Vault do webové aplikace pomocí připojených služeb sady Visual Studio
@@ -22,7 +22,7 @@ V tomto kurzu se naučíte, jak snadno přidat všechno, co potřebujete, abyste
 
 Podrobnosti o změnách, které připojené služby vytvoří v projektu, aby umožňovaly Key Vault, najdete v tématu [Key Vault připojené služby – co se stalo s mým projektem ASP.NET 4.7.1](#how-your-aspnet-framework-project-is-modified) nebo [Key Vault připojenou službou – co se stalo s mým ASP.NET corem projektem](#how-your-aspnet-core-project-is-modified).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure**. Pokud předplatné nemáte, zaregistrujte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 - **Visual studio 2019 verze 16,3** nebo novější nebo **Visual studio 2017 verze 15,7** s nainstalovanou úlohou **Vývoj webu** . [Stáhnout](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)

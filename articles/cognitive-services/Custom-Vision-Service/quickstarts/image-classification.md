@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-one
 ms.openlocfilehash: 3cc678a214f10450ee382d3ad3dba7e3f98b3d38
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134128"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk"></a>Rychlý Start: vytvoření projektu klasifikace obrázků pomocí sady Custom Vision SDK
