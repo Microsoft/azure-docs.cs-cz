@@ -1,6 +1,6 @@
 ---
-title: Spravované soukromé koncové body
-description: Článek, který vysvětluje spravované privátní koncové body v Azure Synapse Analytics
+title: Spravované privátní koncové body
+description: Článek s vysvětlením spravovaných privátních koncových bodů ve službě Azure synapse Analytics
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
@@ -8,50 +8,50 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 08c6610541d987cddd7cf2aeb71c526cb2359598
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423681"
 ---
-# <a name="synapse-managed-private-endpoints-preview"></a>Soukromé koncové body spravované synapse (náhled)
+# <a name="synapse-managed-private-endpoints-preview"></a>Spravované privátní koncové body synapse (Preview)
 
-Tento článek vysvětluje spravované privátní koncové body v Azure Synapse Analytics.
+V tomto článku se vysvětlují spravované privátní koncové body ve službě Azure synapse Analytics.
 
-## <a name="managed-private-endpoints"></a>Spravované soukromé koncové body
+## <a name="managed-private-endpoints"></a>Spravované privátní koncové body
 
-Spravované privátní koncové body jsou privátní koncové body vytvořené ve virtuální síti spravovaného pracovního prostoru, které vytvářejí privátní propojení s prostředky Azure. Azure Synapse spravuje tyto soukromé koncové body vaším jménem.
+Spravované privátní koncové body jsou privátní koncové body vytvořené ve virtuální síti spravovaného pracovního prostoru a vytvářejí privátní odkaz na prostředky Azure. Azure synapse tyto privátní koncové body spravuje vaším jménem.
 
-Azure Synapse podporuje privátní odkazy. Privátní propojení umožňuje přístup ke službám Azure (jako je Azure Storage, Azure Cosmos DB a Azure SQL Data Warehouse) a službám hostovaných zákazníkům/partnerům Azure z vaší virtuální sítě Azure bezpečně.
+Azure synapse podporuje privátní odkazy. Privátní odkaz vám umožní přístup ke službám Azure (například Azure Storage, Azure Cosmos DB a Azure SQL Data Warehouse) a službám Azure Hosted Customer/Partnerská služba z vaší virtuální sítě Azure.
 
-Při použití privátní propojení, provoz mezi vaší virtuální sítí a pracovního prostoru prochází zcela přes páteřní síť Microsoftu. Private Link chrání před riziky exfiltrace dat. Privátní propojení s prostředkem vytvoříte privátním koncovým bodem.
+Když použijete privátní odkaz, přenosy mezi vaší virtuální sítí a pracovním prostorem procházejí výhradně přes páteřní síť Microsoftu. Soukromé propojení chrání před riziky exfiltrace dat. Vytvořením privátního koncového bodu vytvoříte privátní odkaz na prostředek.
 
-Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě efektivně přenést službu do virtuální sítě. Privátní koncové body jsou mapovány na konkrétní prostředek v Azure a ne na celou službu. Zákazníci mohou omezit připojení k určitému prostředku schválenému jejich organizací. Další informace o [soukromých odkazech a soukromých koncových bodech](https://docs.microsoft.com/azure/private-link/).
+Privátní koncový bod používá privátní IP adresu z vaší virtuální sítě k efektivnímu uvedení služby do vaší virtuální sítě. Soukromé koncové body jsou namapované na konkrétní prostředek v Azure, a ne na celou službu. Zákazníci můžou omezit připojení ke konkrétnímu prostředku schválenému jeho organizací. Přečtěte si další informace o [privátních odkazech a soukromých koncových bodech](https://docs.microsoft.com/azure/private-link/).
 
 >[!IMPORTANT]
->Spravované privátní koncové body jsou podporované jenom v pracovních prostorech Azure Synapse s virtuální sítí spravovaného pracovního prostoru.
+>Spravované privátní koncové body jsou podporované jenom v pracovních prostorech Azure synapse se spravovanými virtuálními sítěmi pracovního prostoru.
 >[!NOTE]
->Doporučujeme vytvořit spravované soukromé koncové body pro připojení ke všem zdrojům dat Azure. Veškerý odchozí provoz z virtuální sítě >spravovaného pracovního prostoru bude v budoucnu zablokován.
+>Doporučuje se vytvořit spravované privátní koncové body pro připojení ke všem zdrojům dat Azure. Veškerý odchozí provoz z virtuální sítě spravovaného pracovního prostoru >bude v budoucnu blokovaný.
 
-Privátní koncového bodu připojení se vytvoří ve stavu čekající na vyřízení při vytváření spravovaného privátního koncového bodu v Azure Synapse. Je zahájen pracovní postup schválení. Vlastník prostředku soukromého propojení je zodpovědný za schválení nebo odmítnutí připojení.
+Při vytváření spravovaného privátního koncového bodu ve službě Azure synapse se připojení privátního koncového bodu vytvoří ve stavu čeká na vyřízení. Byl zahájen pracovní postup schválení. Vlastník prostředku privátního propojení zodpovídá za schválení nebo odmítnutí připojení.
 
-Pokud vlastník připojení schválí, nastotím se soukromé propojení. V opačném případě nebude privátní propojení vytvořeno. V obou případech bude spravované soukromé koncový bod aktualizován o stav připojení.
+Pokud vlastník připojení schválí, vytvoří se privátní odkaz. V opačném případě se privátní odkaz nevytvoří. V obou případech se spravovaný privátní koncový bod aktualizuje se stavem připojení.
 
-Pouze spravovaný soukromý koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení.
+Pouze spravovaný privátní koncový bod ve schváleném stavu může odesílat provoz do daného prostředku privátního propojení.
 
-## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>Spravované privátní koncové body pro fond SQL a SQL na vyžádání
+## <a name="managed-private-endpoints-for-sql-pool-and-sql-on-demand"></a>Spravované soukromé koncové body pro fond SQL a SQL na vyžádání
 
-Fond SQL a SQL na vyžádání jsou analytické funkce ve vašem pracovním prostoru Azure Synapse. Tyto možnosti používají infrastrukturu s více klienty, která není nasazená do [virtuální sítě spravovaného pracovního prostoru](./synapse-workspace-managed-vnet.md).
+SQL fond a SQL na vyžádání jsou analytické možnosti v pracovním prostoru Azure synapse. Tyto možnosti využívají víceklientské infrastruktury, která není nasazená do [virtuální sítě spravovaného pracovního prostoru](./synapse-workspace-managed-vnet.md).
 
-Při vytvoření pracovního prostoru Azure Synapse vytvoří dva spravované soukromé koncové body do fondu SQL a SQL na vyžádání v tomto pracovním prostoru. 
+Když se vytvoří pracovní prostor, vytvoří Azure synapse dva spravované privátní koncové body pro fond SQL a SQL na vyžádání v daném pracovním prostoru. 
 
-Tyto dva spravované soukromé koncové body jsou uvedeny v Azure Synapse Studio. V levém navigačním panelu vyberte **Spravovat** a pak vyberte **Spravované virtuální sítě,** kterou chcete zobrazit ve studiu.
+Tyto dva spravované privátní koncové body jsou uvedené v Azure synapse studiu. V levém navigačním panelu vyberte **Spravovat** a potom v nástroji Studio vyberte **spravované virtuální sítě** .
 
-Spravované privátní koncový bod, který se zaměřuje na fond SQL se nazývá *synapse-ws-sql--\<název_pracovního\> prostoru* a ten, který se zaměřuje na SQL na vyžádání se nazývá *synapse-ws-sqlOnDemand--\<název_pracovního\>prostoru*.
-![Spravované privátní koncové body pro fond SQL a SQL na vyžádání](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
+Spravovaný privátní koncový bod, který cílí na fond SQL, se nazývá *synapse-WS-\<SQL-\> -název pracovního prostoru* a ta, která cílí na SQL na vyžádání, se nazývá *synapse-\<WS-\>sqlOnDemand--Workspace*.
+![Spravované soukromé koncové body pro fond SQL a SQL na vyžádání](./media/synapse-workspace-managed-private-endpoints/managed-pe-for-sql-1.png)
 
-Tyto dva spravované soukromé koncové body se automaticky vytvoří při vytváření pracovního prostoru Azure Synapse. Za tyto dva spravované soukromé koncové body se neúčtují poplatky.
+Při vytváření pracovního prostoru Azure synapse se automaticky vytvoří tyto dva spravované privátní koncové body. Neúčtují se vám poplatky za tyto dva spravované privátní koncové body.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Vytvoření spravovaných privátních koncových bodů do zdrojů dat](./how-to-create-managed-private-endpoints.md)
+[Vytvoření spravovaných privátních koncových bodů pro vaše zdroje dat](./how-to-create-managed-private-endpoints.md)

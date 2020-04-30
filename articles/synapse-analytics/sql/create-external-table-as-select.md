@@ -1,6 +1,6 @@
 ---
-title: Uložit výsledky dotazů do úložiště
-description: V tomto článku se dozvíte, jak ukládat výsledky dotazů do úložiště pomocí SQL na vyžádání (náhled).
+title: Ukládání výsledků dotazů do úložiště
+description: V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -10,29 +10,29 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 462185feb2b9cbebd17ce9cba54c2b23deea6c75
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425144"
 ---
-# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Výsledky dotazů pro ukládání do úložiště pomocí SQL na vyžádání (preview) pomocí Azure Synapse Analytics
+# <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Uložení výsledků dotazu do úložiště pomocí SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
-V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL On-demand (náhled).
+V tomto článku se dozvíte, jak ukládat výsledky dotazu do úložiště pomocí SQL na vyžádání (Preview).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Prvním krokem je projít si níže uvedené články a ujistit se, že jste splnili předpoklady:
+V prvním kroku si Projděte níže uvedené články a ujistěte se, že jste splnili požadavky:
 
-- [První nastavení](query-data-storage.md#first-time-setup)
+- [Nastavení při prvním spuštění](query-data-storage.md#first-time-setup)
 - [Požadavky](query-data-storage.md#prerequisites)
 
-## <a name="create-external-table-as-select"></a>Vytvořit externí tabulku jako výběr
+## <a name="create-external-table-as-select"></a>Vytvořit externí tabulku jako SELECT
 
-K uložení výsledků dotazu do úložiště můžete použít příkaz CREATE EXTERNAL TABLE AS SELECT (CETAS).
+K uložení výsledků dotazu do úložiště můžete použít příkaz vytvořit externí tabulku jako SELECT (CETAS).
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si [první nastavení](query-data-storage.md#first-time-setup).
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -69,12 +69,12 @@ FROM
 
 ```
 
-## <a name="use-a-external-table-created"></a>Použití vytvořené externí tabulky
+## <a name="use-a-external-table-created"></a>Použít externí tabulku vytvořenou
 
-Externí tabulku vytvořenou prostřednictvím CETAS můžete použít jako běžnou externí tabulku.
+Můžete použít externí tabulku vytvořenou prostřednictvím CETAS, jako je normální externí tabulka.
 
 > [!NOTE]
-> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si [první nastavení](query-data-storage.md#first-time-setup).
+> Změňte první řádek v dotazu, tj., [mydbname], takže používáte databázi, kterou jste vytvořili. Pokud jste databázi nevytvořili, přečtěte si prosím [nastavení při prvním spuštění](query-data-storage.md#first-time-setup).
 
 ```sql
 USE [mydbname];
@@ -91,4 +91,4 @@ ORDER BY
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak dotazovat různé typy souborů, naleznete v [článcích souboru Soubor u jednoho souboru CSV dotazu](query-single-csv-file.md), [soubory paretů dotazu](query-parquet-files.md)a soubory [DotazjSON.](query-json-files.md)
+Informace o tom, jak zadávat dotazy na různé typy souborů, najdete v článcích [dotaz na jeden soubor CSV](query-single-csv-file.md), [soubory dotazů Parquet](query-parquet-files.md)a [dotazy na soubory JSON dotazu](query-json-files.md) .

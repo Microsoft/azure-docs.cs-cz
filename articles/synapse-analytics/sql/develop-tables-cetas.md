@@ -1,6 +1,6 @@
 ---
-title: CETAS v Synapse SQL
-description: Použití CETAS se Synapse SQL
+title: CETAS v synapse SQL
+description: Použití CETAS s synapse SQL
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -10,30 +10,30 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424024"
 ---
-# <a name="cetas-with-synapse-sql"></a>CETAS se Synapse SQL
+# <a name="cetas-with-synapse-sql"></a>CETAS s synapse SQL
 
-V fondu SQL nebo SQL na vyžádání (preview) můžete k dokončení následujících úkolů použít příkaz VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT (CETAS):  
+V buď ve fondu SQL nebo na vyžádání SQL (Preview), můžete použít možnost vytvořit externí tabulku jako SELECT (CETAS) a dokončit následující úlohy:  
 
 - Vytvoření externí tabulky
-- Souběžně exportujte výsledky příkazu Transact-SQL SELECT do
+- Export, paralelně, výsledky příkazu jazyka Transact-SQL SELECT do
 
   - Hadoop
-  - Objekt blob úložiště Azure
+  - Azure Storage Blob
   - Azure Data Lake Storage Gen2
 
 ## <a name="cetas-in-sql-pool"></a>CETAS ve fondu SQL
 
-Pro fond SQL, využití CETAS a syntaxi, zkontrolujte [vytvořit externí tabulka jako výběr](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) článku. Kromě toho pokyny pro CTAS pomocí fondu SQL naleznete v článku [vytvořit tabulku jako select.](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+V případě fondu SQL, použití a syntaxe CETAS zaškrtněte políčko [vytvořit externí tabulku jako](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) článek. Další informace o pokynech k CTAS s využitím fondu SQL najdete v článku [CREATE TABLE AS Select](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) .
 
 ## <a name="cetas-in-sql-on-demand"></a>CETAS v SQL na vyžádání
 
-Při použití prostředku SQL na vyžádání se CETAS používá k vytvoření externí tabulky a exportu výsledků dotazu do objektu Blob úložiště Azure nebo Azure Data Lake Storage Gen2.
+Při použití prostředku SQL na vyžádání se CETAS používá k vytvoření externí tabulky a exportu výsledků dotazu pro Azure Storage Blob nebo Azure Data Lake Storage Gen2.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -54,42 +54,42 @@ CREATE EXTERNAL TABLE [ [database_name  . [ schema_name ] . ] | schema_name . ] 
 
 ## <a name="arguments"></a>Argumenty
 
-*[ *database_name* . *[schema_name]* . ] | *schema_name* . ] *table_name**
+*[[ *database_name* . [ *schema_name* ]. ] | *schema_name* . ] *TABLE_NAME**
 
-Název tabulky jedné až tří částí, který chcete vytvořit. Pro externí tabulku sql na vyžádání ukládá pouze metadata tabulky. Žádná skutečná data jsou přesunuta nebo uložena v SQL na vyžádání.
+Název první ze tří částí tabulky, která se má vytvořit. V případě externí tabulky ukládá SQL na vyžádání pouze metadata tabulky. V SQL na vyžádání se nepřesunou ani neukládají žádná skutečná data.
 
-UMÍSTĚNÍ = *"path_to_folder"*
+LOCATION = *' path_to_folder '*
 
-Určuje, kam se mají zapisovat výsledky příkazu SELECT do externího zdroje dat. Kořenová složka je umístění dat zadané v externím zdroji dat. UMÍSTĚNÍ musí přejděte na složku a mají koncové /. Příklad: aggregated_data/
+Určuje, kam se mají zapsat výsledky příkazu SELECT na externím zdroji dat. Kořenová složka je umístění dat zadané v externím zdroji dat. UMÍSTĚNÍ musí ukazovat na složku a mít koncovou/. Příklad: aggregated_data/
 
 DATA_SOURCE = *external_data_source_name*
 
-Určuje název externího objektu zdroje dat, který obsahuje umístění, kde budou uložena externí data. Chcete-li vytvořit externí zdroj dat, použijte [create external data source (Transact-SQL).](develop-tables-external-tables.md#create-external-data-source)
+Určuje název objektu externího zdroje dat, který obsahuje umístění, kde budou externí data uložena. Chcete-li vytvořit externí zdroj dat, použijte příkaz [Create External data source (Transact-SQL)](develop-tables-external-tables.md#create-external-data-source).
 
 FILE_FORMAT = *external_file_format_name*
 
-Určuje název objektu ve formátu externího souboru, který obsahuje formát externího datového souboru. Chcete-li vytvořit externí formát souboru, použijte [příkaz CREATE EXTERNAL FILE FORMAT (Transact-SQL).](develop-tables-external-tables.md#create-external-file-format) V současné době jsou podporovány pouze externí formáty souborů s FORMÁTEM='PARKETY'.
+Určuje název objektu externího souboru formátu, který obsahuje formát pro externí datový soubor. Chcete-li vytvořit externí formát souboru, použijte příkaz [Create External File Format (Transact-SQL)](develop-tables-external-tables.md#create-external-file-format). V současné době se podporují jenom formáty externích souborů s FORMAT = ' PARQUET '.
 
 S *<common_table_expression>*
 
-Určuje dočasnou pojmenovanou sadu výsledků, známou jako výraz společné tabulky (CTE). Další informace naleznete [v tématu WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Určuje dočasnou pojmenovanou sadu výsledků, která se označuje jako výraz běžné tabulky (CTE). Další informace naleznete v tématu [WITH common_table_expression (Transact-SQL)](/sql/t-sql/queries/with-common-table-expression-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-SELECT <select_criteria>
+Vyberte <select_criteria>
 
-Naplní novou tabulku výsledky z příkazu SELECT. *select_criteria* je tělo příkazu SELECT, který určuje, která data se mají kopírovat do nové tabulky. Informace o příkazech SELECT naleznete [v tématu SELECT (Transact-SQL).](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+Naplní novou tabulku výsledky příkazu SELECT. *select_criteria* je tělo příkazu SELECT, který určuje, která data se mají zkopírovat do nové tabulky. Informace o příkazech SELECT naleznete v tématu [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="permissions"></a>Oprávnění
 
-Musíte mít oprávnění k tomu, abyste mohli vypsat obsah složky a zapisovat do složky UMÍSTĚNÍ, aby cetas fungoval.
+Aby CETAS fungovalo, musíte mít oprávnění k výpisu obsahu složky a zápisu do složky umístění.
 
 ## <a name="examples"></a>Příklady
 
-Tyto příklady používají CETAS k uložení celkového počtu agregovaných podle roku a stavu do aggregated_data složky, která je umístěna ve zdroji dat population_ds.
+Tyto příklady používají CETAS k uložení celkového počtu obyvatel agregovaného po rocích a State do složky aggregated_data, která je umístěná ve zdroji dat population_ds.
 
-Tato ukázka závisí na pověření, zdroj dat a externí formát souboru vytvořené dříve. Viz [dokument externích tabulek.](develop-tables-external-tables.md) Chcete-li uložit výsledky dotazu do jiné složky ve stejném zdroji dat, změňte argument UMÍSTĚNÍ. Chcete-li uložit výsledky do jiného účtu úložiště, vytvořte a použijte jiný zdroj dat pro DATA_SOURCE argument.
+Tato ukázka spoléhá na dříve vytvořené přihlašovací údaje, zdroj dat a externí formát souboru. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) . Chcete-li uložit výsledky dotazu do jiné složky ve stejném zdroji dat, změňte argument umístění. Pokud chcete výsledky Uložit do jiného účtu úložiště, vytvořte a použijte jiný zdroj dat pro DATA_SOURCE argument.
 
 > [!NOTE]
-> Ukázky, které následují, používají veřejný účet úložiště Open Data Storage. Je jen pro čtení. Chcete-li provést tyto dotazy, je třeba zadat zdroj dat, pro který máte oprávnění k zápisu.
+> Níže uvedené příklady používají veřejný účet úložiště Azure Open data. Je jen pro čtení. Chcete-li spustit tyto dotazy, je nutné zadat zdroj dat, pro který máte oprávnění k zápisu.
 
 ```sql
 -- use CETAS to export select statement with OPENROWSET result to  storage
@@ -111,7 +111,7 @@ GO
 SELECT * FROM population_by_year_state
 ```
 
-Níže uvedený příklad používá externí tabulku jako zdroj pro CETAS. Spoléhá se na pověření, zdroj dat, externí formát souboru a externí tabulku vytvořenou dříve. Viz [dokument externích tabulek.](develop-tables-external-tables.md)
+Následující ukázka používá externí tabulku jako zdroj pro CETAS. Spoléhá se na přihlašovací údaje, zdroj dat, formát externích souborů a externí tabulku vytvořenou dříve. Přečtěte si dokument [externí tabulky](develop-tables-external-tables.md) .
 
 ```sql
 -- use CETAS with select from external table
@@ -133,10 +133,10 @@ SELECT * FROM population_by_year_state
 
 ## <a name="supported-data-types"></a>Podporované datové typy
 
-CETAS lze použít k ukládání sad výsledků s následujícími datovými typy SQL:
+CETAS lze použít k uložení sad výsledků s následujícími datovými typy SQL:
 
 - binární
-- Varbinary
+- varbinary
 - char
 - varchar
 - date
@@ -145,26 +145,26 @@ CETAS lze použít k ukládání sad výsledků s následujícími datovými typ
 - decimal
 - numerické
 - float
-- reálná
+- real
 - bigint
 - int
 - smallint
 - tinyint
 - bitové
 
-Loby nelze použít s CETAS.
+Objekty LOBs s nelze použít s CETAS.
 
-V části SELECT CETAS nelze použít následující datové typy:
+V rámci vybrané části CETAS nelze použít následující datové typy:
 
-- Nchar
+- nchar
 - nvarchar
 - datetime
-- Smalldatetime
-- Datetimeoffset
-- Peníze
-- Smallmoney
+- smalldatetime
+- DateTimeOffset
+- papír
+- smallmoney
 - uniqueidentifier
 
 ## <a name="next-steps"></a>Další kroky
 
-Můžete zkusit dotazování [tabulek Spark](develop-storage-files-spark-tables.md).
+Můžete vyzkoušet dotazování na [tabulky Spark](develop-storage-files-spark-tables.md).

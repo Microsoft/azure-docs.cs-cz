@@ -1,19 +1,19 @@
 ---
-title: Co je služba Azure SignalR?
-description: Lépe pochopit, jaké scénáře typické použití případu používat Azure SignalR a naučit se klíčové výhody Azure SignalR.
+title: Co je služba signalizace Azure?
+description: Lépe pochopíte typické scénáře použití pro používání služby Azure Signal a Naučte se klíčové výhody služby Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
 ms.openlocfilehash: 31cb4570dd0952f60fbff2fa1131b3af36c278cb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74157588"
 ---
-# <a name="what-is-azure-signalr-service"></a>Co je služba Azure SignalR?
+# <a name="what-is-azure-signalr-service"></a>Co je služba signalizace Azure?
 
 Služba Azure SignalR zjednodušuje proces přidávání webových funkcí pracujících v reálném čase do aplikací přes HTTP. Tato funkce v reálném čase umožňuje službě nabízet aktualizace obsahu do připojených klientů, například jednu webovou stránku nebo mobilní aplikaci. Klienti díky tomu můžou získávat aktualizace, aniž by museli zadávat dotazy na server nebo odesílat nové požadavky HTTP na aktualizace.
 
@@ -22,55 +22,55 @@ Tento článek obsahuje přehled služby Azure SignalR.
 
 ## <a name="what-is-azure-signalr-service-used-for"></a>K čemu slouží služba Azure SignalR?
 
-Jakýkoli scénář, který vyžaduje odesílání dat ze serveru do klienta v reálném čase, můžete použít službu Azure SignalR.
+Libovolný scénář, který vyžaduje vložení dat ze serveru do klienta v reálném čase, může používat službu Azure Signal Service.
 
-Tradiční funkce v reálném čase, které často vyžadují dotazování ze serveru, můžete také použít službu Azure SignalR.
+Pro tradiční funkce v reálném čase, které často vyžadují dotazování ze serveru, může také používat službu Azure Signal Service.
 
-Služba Azure SignalR se používá v široké škále odvětví pro všechny typy aplikací, které vyžadují aktualizace obsahu v reálném čase. Uvádíme některé příklady, které je vhodné používat službu Azure SignalR:
+Služba signalizace Azure se použila v nejrůznějších odvětvích, a to u libovolného typu aplikace, který vyžaduje aktualizace obsahu v reálném čase. Uvádíme několik příkladů, které jsou vhodné pro použití služby signalizace Azure:
 
-* **Aktualizace vysokofrekvenčních dat:** hraní her, hlasování, hlasování, aukce.
-* **Řídicí panely a monitorování:** řídicí panel společnosti, data finančního trhu, okamžitá aktualizace prodeje, žebříček her pro více hráčů a monitorování IoT.
-* **Chat:** live chat ovací místnost, chat bot, on-line zákaznická podpora, nákupní asistent v reálném čase, messenger, herní chat a tak dále.
-* **Poloha v reálném čase na mapě:** sledování logistiky, sledování stavu doručení, aktualizace stavu přepravy, aplikace GPS.
-* **Cílené reklamy v reálném čase:** personalizované reklamy a nabídky v reálném čase, interaktivní reklamy.
-* **Aplikace pro spolupráci:** spoluvytváření, aplikace tabule a software pro týmové schůzky.
-* **Push oznámení:** sociální síť, e-mail, hra, cestovní upozornění.
-* **Vysílání v reálném čase:** živé audio/video vysílání, živé titulky, překlady, události/zpravodajství.
-* **IoT a připojená zařízení:** metriky IoT v reálném čase, dálkové ovládání, stav v reálném čase a sledování polohy.
-* **Automatizace:** aktivační událost v reálném čase z událostí upstream.
+* **Aktualizace dat s vysokou frekvencí:** hraní her, hlasování, dotazování, aukce.
+* **Řídicí panely a monitorování:** řídicí panel společnosti, data finančního trhu, aktualizace rychlých prodejů, vedoucí hry pro více hráčů a sledování IoT.
+* **Chat:** živé chatovací místnosti, chat robota, online podpora zákazníků, Pomocník pro nakupování v reálném čase, Messenger, konverzace v herním zařízení atd.
+* **Umístění v reálném čase na mapě:** logistické sledování, sledování stavu doručování, aktualizace stavu přenosu, aplikace GPS.
+* **Cílené reklamy v reálném čase:** individuální inzeráty a nabídky nabízených oznámení v reálném čase, interaktivní reklamy.
+* **Aplikace pro spolupráci:** spoluvytváření, aplikace tabule a software schůzky týmu.
+* **Nabízená oznámení:** sociální síť, e-mail, hra, oznámení o cestování.
+* **Všesměrové vysílání v reálném čase:** živé vysílání zvuku a videa, živé titulky, překlady, události a šíření zpráv.
+* **IoT a připojená zařízení:** metriky IoT v reálném čase, vzdálené řízení, stav v reálném čase a sledování polohy.
+* **Automatizace:** aktivační událost v reálném čase z nadřazených událostí.
 
-## <a name="what-are-the-benefits-using-azure-signalr-service"></a>Jaké jsou výhody využívající službu Azure SignalR?
+## <a name="what-are-the-benefits-using-azure-signalr-service"></a>Jaké výhody využívá služba Azure Signaler?
 
-**Standardní bázi:**
+**Založené na standardu:**
 
 Ve službě SignalR jsou k dispozici abstrakce pro řadu technik používaných k vytváření webových aplikací pracujících v reálném čase. Optimální pro přenos jsou protokoly [WebSocket](https://wikipedia.org/wiki/WebSocket), ale v případě, že nejsou dostupné jiné možnosti, se používají i jiné techniky, jako jsou [události na straně serveru (SSE)](https://wikipedia.org/wiki/Server-sent_events) a dlouhé intervaly dotazování. SignalR automaticky detekuje funkce, které server a klient podporují, a podle toho inicializuje odpovídající přenos.
 
-**Podpora jádra nativní ASP.NET:**
+**Podpora nativního ASP.NET Core:**
 
-SignalR Service poskytuje nativní programovací zkušenosti s ASP.NET Core a ASP.NET. Vývoj nové aplikace SignalR se službou SignalR nebo migrace z existující aplikace založené na SignalR na službu SignalR vyžaduje minimální úsilí.
-SignalR Service také podporuje ASP.NET nové funkce Core, Server-side Blazor.
+Služba signalizace poskytuje nativní prostředí pro programování ASP.NET Core a ASP.NET. Vývoj nové aplikace pro signalizaci pomocí služby signalizace nebo migrace z existující aplikace založené na signalizaci na službu Signal vyžaduje minimální úsilí.
+Služba signalizace podporuje také nové funkce ASP.NET Core Blazor na straně serveru.
 
-**Široká klientská podpora:**
+**Široká podpora klientů:**
 
-Služba SignalR spolupracuje se širokou škálou klientů, jako jsou webové a mobilní prohlížeče, desktopové aplikace, mobilní aplikace, serverový proces, zařízení IoT a herní konzole. SignalR Service nabízí sady SDK v různých jazycích. Kromě nativníASP.NET jádra nebo ASP.NET sady SDK C# poskytuje služba SignalR také sadu JavaScript client SDK, která umožňuje webové klienty a mnoho rozhraní JavaScript. Sada Java client SDK je podporována také pro java aplikace, včetně nativních aplikací pro Android. Služba SignalR podporuje rozhraní REST API a bez serveru prostřednictvím integrace s funkcemi Azure a gridem událostí.
+Služba signalizace spolupracuje s širokou škálou klientů, jako jsou webové a mobilní prohlížeče, desktopové aplikace, mobilní aplikace, serverový proces, zařízení IoT a herní konzoly. Služba signalizace nabízí sady SDK v různých jazycích. Kromě nativních ASP.NET Core nebo ASP.NETch sad C# SDK služba Signal Service také poskytuje klientskou sadu SDK pro JavaScript, pro povolení webových klientů a mnoho rozhraní JavaScript. Klientská sada SDK pro Java je podporována také pro aplikace v jazyce Java, včetně nativních aplikací pro Android. Služba signalizace podporuje REST API a bez serveru prostřednictvím integrace s Azure Functions a Event Grid.
 
-**Zpracování připojení velkých klientů:**
+**Zpracování rozsáhlých připojení klientů:**
 
-SignalR Service je určena pro rozsáhlé aplikace v reálném čase. Služba SignalR umožňuje více instancí spolupracovat škálovat na miliony připojení klientů. Služba také podporuje více globálních oblastí pro účely sytí, vysoké dostupnosti nebo zotavení po havárii.
+Služba signalizace je navržená pro aplikace v reálném čase ve velkém měřítku. Služba signalizace umožňuje více instancím spolupracovat pro škálování na miliony připojení klientů. Služba také podporuje více globálních oblastí pro účely horizontálního dělení, vysoké dostupnosti nebo zotavení po havárii.
 
-**Odstraňte zátěž pro samoobslužný signalr:**
+**Odstraňte zátěž pro samoobslužného hostitele:**
 
-Ve srovnání s aplikacemi SignalR, které jsou hostovány samostatně, přepnutí na službu SignalR odstraní potřebu spravovat zadní roviny, které zpracovávají váhy a připojení klientů. Plně spravovaná služba také zjednodušuje webové aplikace a šetří náklady na hostování. Služba SignalR nabízí globální dosah a datové centrum a síť světové úrovně, škáluje na miliony připojení, zaručuje sla a zároveň poskytuje veškeré dodržování předpisů a zabezpečení na standardu Azure.
+V porovnání s aplikacemi signalizace v místním prostředí, přepnutí na službu Signaler odebere nutnost spravovat zpětnou rovinu, která bude zpracovávat škály a připojení klientů. Plně spravovaná služba také zjednodušuje webové aplikace a ukládá náklady na hostování. Služba signalizace nabízí globální dosažitelné datové centrum a síť světové úrovně, škáluje se s miliony připojení, garantuje smlouvu SLA a současně zajišťuje veškeré dodržování předpisů a zabezpečení ve službě Azure Standard.
 
-![Spravovanou službu SignalR](./media/signalr-overview/managed-signalr-service.png)
+![Spravovaná služba signálu](./media/signalr-overview/managed-signalr-service.png)
 
-**Nabídněte bohatá api pro různé vzory zasílání zpráv:**
+**Nabízí bohatá rozhraní API pro různé vzory zasílání zpráv:**
 
-Služba SignalR umožňuje serveru odesílat zprávy určitému připojení, všem připojením nebo podmnožině připojení, která patří určitému uživateli nebo byla umístěna do libovolné skupiny.
+Služba signalizace umožňuje serveru posílat zprávy do konkrétního připojení, všechna připojení nebo podmnožinu připojení, která patří konkrétnímu uživateli, nebo být umístěná v libovolné skupině.
 
 ## <a name="how-to-use-azure-signalr-service"></a>Prozkoumání služby Azure SignalR
 
-Existuje mnoho různých způsobů, jak programovat pomocí služby Azure SignalR, protože některé ukázky uvedené zde:
+Existuje mnoho různých způsobů, jak programovat se službou Azure Signal Service, jako některé z uvedených ukázek:
 
 - **[Škálování aplikace ASP.NET Core SignalR](signalr-concept-scale-aspnet-core.md)** – integrace služby Azure SignalR s aplikací ASP.NET Core SignalR pro horizontální navýšení kapacity na stovky tisíc připojení.
 - **[Vytváření aplikací bez serveru pracujících v reálném čase](signalr-concept-azure-functions.md)** – integrace funkcí Azure se službou Azure SignalR pro účely vytváření aplikací bez serveru pracujících v reálném čase v jazycích, jako je JavaScript, C# nebo Java.

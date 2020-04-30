@@ -1,7 +1,7 @@
 ---
-title: Co je virtuální počítač Azure Data Science
+title: Co je Azure Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
-description: Přehled virtuálního počítače Azure Data Science – snadno se vytváří a používá virtuální počítač na cloudové platformě Azure s předinstalovanými a nakonfigurovanými nástroji a knihovnami pro zpracování datové vědy a vývoje inteligentních aplikací.
+description: Přehled Azure Data Science Virtual Machine – snadné vytvoření a použití virtuálního počítače na cloudové platformě Azure s předinstalovanými a nakonfigurovanými nástroji a knihovnami pro účely zpracování datových vědy a vývoje inteligentních aplikací.
 keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy, datové vědy pro linux
 services: machine-learning
 ms.service: machine-learning
@@ -11,82 +11,82 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 04/02/2020
 ms.openlocfilehash: 03bfee258fe96d90c32b6a305b99856a11d9a087
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80754979"
 ---
-# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je virtuální počítač Azure Data Science pro Linux a Windows?
+# <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Co je Azure Data Science Virtual Machine pro Linux a Windows?
 
-Virtuální počítač pro datové vědy (DSVM) je přizpůsobená image virtuálního počítače na cloudové platformě Azure vytvořené speciálně pro zpracování datové vědy. Má mnoho populárních nástrojů pro datovou vědu předinstalovaných a předkonfigurovaných pro jumpstart budování inteligentních aplikací pro pokročilé analýzy. 
+Data Science Virtual Machine (DSVM) je přizpůsobená image virtuálního počítače na cloudové platformě Azure sestavená speciálně pro účely datové vědy. Má spoustu oblíbených nástrojů pro datové vědy, které jsou předinstalované a předem nakonfigurované tak, aby rychlé zprovoznění vytváření inteligentních aplikací pro pokročilou analýzu. 
 
-DSVM je k dispozici na adrese:
+DSVM je k dispozici na:
 
 + **Windows Server 2019**
-+ **Ubuntu 18.04 LTS**
++ **Ubuntu 18,04 LTS**
 + Windows Server 2016
 + Ubuntu 16.04 LTS
 
 > [!NOTE]
-> Všechny nástroje virtuálních zařízení pro hloubkové učení byly přeloženy do virtuálního počítače pro datové vědy. 
+> Všechny nástroje virtuálních počítačů pro obsáhlý Learning byly přeložené do Data Science Virtual Machine. 
 
-## <a name="why-choose-the-dsvm"></a>Proč si vybrat DSVM?
+## <a name="why-choose-the-dsvm"></a>Proč zvolit DSVM?
 
-Cílem virtuálního počítače pro datové vědy je poskytnout odborníkům na data všech úrovní dovedností a napříč průmyslovými odvětvími prostředí bez tření, které je bez tření. Místo zavedení srovnatelné pracovní prostor na vlastní pěst, můžete zřídit DSVM. Tato volba vám může ušetřit dny nebo dokonce _týdny_ na procesech instalace, konfigurace a správy balíčků. Po přidělení virtuálního počítače pro datové vědy můžete okamžitě začít pracovat na svém projektu datové vědy.
+Cílem Data Science Virtual Machine je poskytnout odborníky na data ze všech úrovní dovedností a v rámci odvětví s bezproblémovým a předem nakonfigurovaným prostředím pro datové vědy. Místo toho, abyste si přihlásili srovnatelný pracovní prostor sami, můžete zřídit DSVM. Tato volba může ušetřit dny nebo dokonce _týdny_ v procesech instalace, konfigurace a správy balíčků. Po přidělení virtuálního počítače pro datové vědy můžete okamžitě začít pracovat na svém projektu datové vědy.
 
-## <a name="sample-use-cases"></a>Ukázkové případy použití
+## <a name="sample-use-cases"></a>Příklady případů použití
 
-Níže ilustrujeme některé běžné případy použití pro zákazníky DSVM.
+Níže uvádíme některé běžné případy použití pro DSVM zákazníky.
 
-### <a name="moving-data-science-workloads-to-the-cloud"></a>Přesouvání úloh datové vědy do cloudu
+### <a name="moving-data-science-workloads-to-the-cloud"></a>Přesun úloh pro datové vědy do cloudu
 
-DSVM poskytuje základní konfiguraci pro týmy datové vědy, které chtějí nahradit své místní plochy spravovanou cloudovou plochou, což zajišťuje, že všichni datoví vědci v týmu mají konzistentní nastavení, pomocí kterého můžete ověřit experimenty a podpořit spolupráci. Snižuje také náklady snížením zátěže sysadmin. Toto snížení zátěže šetří čas potřebný k vyhodnocení, instalaci a údržbě softwarových balíčků pro pokročilé analýzy.
+DSVM poskytuje základní konfiguraci pro týmy pro datové vědy, které chtějí nahradit své místní plochy pomocí spravovaného cloudového desktopu a zajistit tak, že všichni odborníci na data v týmu mají konzistentní nastavení, které umožňuje ověřovat experimenty a propagovat spolupráci. Také snižuje náklady snížením zatížení sysadmin. Toto omezení režie šetří dobu potřebnou k vyhodnocení, instalaci a údržbě softwarových balíčků pro pokročilou analýzu.
 
 ### <a name="data-science-training-and-education"></a>Školení a vzdělávání v oblasti datové vědy
 
-Podnikoví školitelé a pedagogové, kteří vyučují kurzy datových věd, obvykle poskytují image virtuálního počítače. Obrázek zajišťuje, že studenti mají konzistentní nastavení a že ukázky fungují předvídatelně. 
+Firemní učitelé a pedagogy, kteří učí třídy pro datové vědy, obvykle poskytují image virtuálního počítače. Bitová kopie zajistí, že studenti mají konzistentní nastavení a že ukázky fungují podle předpovědi. 
 
-DSVM vytváří prostředí na vyžádání s konzistentní nastavení, které usnadňuje podporu a problémy s nekompatibilitou. Užitečný je zejména v případech, kdy je potřeba taková prostředí vytvářet často, například pro kratší školení.
+DSVM vytvoří prostředí na vyžádání s konzistentním nastavením, které usnadňuje problémy s podporou a nekompatibilitou. Užitečný je zejména v případech, kdy je potřeba taková prostředí vytvářet často, například pro kratší školení.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Přizpůsobivá kapacita na vyžádání pro velké projekty
 
-Hackathony/soutěže datové vědy nebo rozsáhlé modelování a zkoumání dat vyžadují škálovnou kapacitu hardwaru, obvykle na krátkou dobu. DSVM může pomoci replikovat prostředí datové vědy rychle na vyžádání, na vertikálně naváděných serverů, které umožňují experimenty, které mohou spustit vysoce výkonné výpočetní prostředky.
+Datové vědy hackathony/soutěže nebo rozsáhlé modelování dat a průzkumy vyžadují kapacitu hardwaru škálované na více instancí, obvykle pro krátkou dobu trvání. DSVM může rychle replikovat prostředí pro datové vědy na vyžádání na serverech se škálováním na více systémů, které umožňují experimenty s vysokými výpočetními prostředky, které se dají spustit.
 
-### <a name="custom-compute-power-for-azure-notebooks"></a>Vlastní výpočetní výkon pro poznámkové bloky Azure
+### <a name="custom-compute-power-for-azure-notebooks"></a>Vlastní výpočetní výkon pro Azure Notebooks
 
-[Poznámkové bloky Azure](../../notebooks/azure-notebooks-overview.md) je bezplatná hostovaná služba pro vývoj, spouštění a sdílení poznámkových bloků Jupyter v cloudu bez instalace. Úroveň bezplatné služby je omezena na 4 GB paměti a 1 GB dat. 
+[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) je bezplatná hostované služba pro vývoj, spouštění a sdílení poznámkových bloků Jupyter v cloudu bez instalace. Úroveň služby Free je omezená na 4 GB paměti a 1 GB dat. 
 
-Chcete-li uvolnit všechna omezení, můžete připojit projekt poznámkových bloků k dsvm nebo jinému virtuálnímu počítači spuštěnému na serveru Jupyter. Pokud se k poznámkovým blokům Azure přihlásíte pomocí účtu pomocí Služby Azure Active Directory (například firemní účet), poznámkové bloky automaticky zobrazí dsvmve všechna předplatná přidružená k tomuto účtu. K [poznámkovým blokům Azure můžete připojit DSVM](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) a rozšířit tak dostupný výpočetní výkon.
+Pokud chcete uvolnit všechna omezení, můžete k DSVM nebo jakémukoli jinému VIRTUÁLNÍmu počítači běžícímu na serveru Jupyter připojit projekt poznámkových bloků. Pokud se k Azure Notebooks přihlašujete pomocí účtu pomocí Azure Active Directory (například podnikového účtu), poznámkové bloky se automaticky zobrazí DSVMs v jakýchkoli předplatných přidružených k tomuto účtu. K rozšíření dostupného výpočetního výkonu můžete k [Azure Notebooks připojit DSVM](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) .
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Krátkodobé experimenty a vyhodnocování
 
-Pomocí dsvm můžete vyhodnotit nebo se naučit nové nástroje pro datové [vědy](./tools-included.md), zejména procházením některých našich publikovaných [ukázek a návodů](./dsvm-samples-and-walkthroughs.md).
+DSVM můžete použít k vyhodnocení nebo získání nových [nástrojů](./tools-included.md)pro datové vědy, zejména Projděte si některé z našich publikovaných [ukázek a návodů](./dsvm-samples-and-walkthroughs.md).
 
 
-### <a name="deep-learning-with-gpus"></a>Hluboké učení s GPU
+### <a name="deep-learning-with-gpus"></a>Obsáhlý Learning s grafickými procesory
 
-V DSVM vaše trénovací modely můžete použít algoritmy hlubokého učení na hardware, který je založen na grafických procesorů (GPU). Díky využití možností škálování virtuálních počítačů platformy Azure vám DSVM pomůže používat hardware založený na GPU v cloudu podle vašich potřeb. Virtuální počítače založené na GPU můžete přepnout na virtuální počítače založené na GPU, když trénujete velké modely nebo když potřebujete vysokorychlostní výpočty při zachování stejného disku operačního systému. Můžete zvolit libovolný virtuální počítač s podporou n gpu s dsvm. Upozorňujeme, že bezplatné účty Azure nepodporují virtuální počítače s povoleným gpu.
+Ve DSVM můžou vaše školicí modely používat algoritmy hloubkového učení na hardwaru, který je založený na procesorech GPU (Graphics Processing units). Díky možnostem škálování virtuálního počítače na platformě Azure vám DSVM pomůže používat v cloudu hardware využívající GPU podle vašich potřeb. Při výuce velkých modelů můžete přepnout na virtuální počítač s grafickým procesorem nebo když budete potřebovat vysokorychlostní výpočty a zároveň zachováte stejný disk s operačním systémem. Můžete zvolit jakoukoli SKU virtuálních počítačů s povoleným grafickým procesorem řady N s DSVM. Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálních počítačů s povoleným GPU.
 
-Edice systému Windows dsvm je dodáván předinstalovaný s ovladači GPU, architektury a GPU verze rozhraní pro hluboké učení. Na edici Linux je na Ubuntu DSVM povoleno hluboké učení na GPU. 
+Edice Windows DSVM jsou předinstalované s ovladači GPU, architekturami a verzemi prostředí pro hloubkové učení. V edici Linux je na Ubuntu DSVMs povolený obsáhlý Learning GPU. 
 
-Můžete také nasadit ubuntu nebo Windows edice DSVM do virtuálního počítače Azure, který není založený na GPU. V tomto případě všechny hluboké učení rozhraní se vrátí do režimu procesoru.
+Můžete také nasadit edice Ubuntu nebo Windows DSVM na virtuální počítač Azure, který není založený na GPU. V takovém případě se všechny architektury hloubkového učení vrátí do režimu CPU.
 
-[Přečtěte si další informace o dostupných architekturách hloubkového učení a umělou ai.](dsvm-tools-deep-learning-frameworks.md)
+[Přečtěte si další informace o dostupných architekturách hloubkového učení a AI](dsvm-tools-deep-learning-frameworks.md).
 
 <a name="included"></a>
 ## <a name="whats-included-on-the-dsvm"></a>Co je součástí DSVM?
 
-Podívejte se na úplný seznam nástrojů na obou Windows a Linux DSVM je [zde](tools-included.md).
+Úplný seznam nástrojů najdete [tady](tools-included.md): DSVM Windows i Linux.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v těchto článcích:
+Další informace najdete v těchto článcích:
 
 + Windows:
   + [Nastavení DSVM s Windows](provision-vm.md)
-  + [Deset věcí, které můžete dělat na Windows DSVM](vm-do-ten-things.md)
+  + [10 věcí, které můžete provádět na DSVM Windows](vm-do-ten-things.md)
 
 + Linux:
-  + [Nastavení Linuxu DSVM (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [Datová věda na Linuxu DSVM](linux-dsvm-walkthrough.md)
+  + [Nastavení DSVM pro Linux (Ubuntu)](dsvm-ubuntu-intro.md)
+  + [Datové vědy na DSVM pro Linux](linux-dsvm-walkthrough.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření virtuálního počítače geoai datové vědy'
+title: 'Rychlý Start: vytvoření geografické AI Data Science Virtual Machine'
 titleSuffix: Azure Data Science Virtual Machine
-description: Konfigurace a vytvoření virtuálního počítače geoaiální datové vědy v Azure pro geoprostorovou analýzu a strojové učení.
+description: Nakonfigurujte a vytvořte geografickou Data Science Virtual Machine AI v Azure pro geoprostorové analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
@@ -9,83 +9,83 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 09/13/2019
 ms.openlocfilehash: f3ff9bd64f54d8f83fd1889078e8a4c01827d135
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77525885"
 ---
-# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Úvodní příručka: Nastavení virtuálního počítače geografické umělé inteligence v Azure 
+# <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Rychlý Start: nastavení geograficky umělého virtuálního počítače s logikou v Azure 
 
-Virtuální počítač Geo AI Data Science (Geo-DSVM) je rozšířením oblíbeného [virtuálního počítače Azure Data Science,](https://aka.ms/dsvm) který je speciálně nakonfigurovaný tak, aby kombinoval analýzu ai a geoprostorové analýzy. Geoprostorové analýzy ve virtuálním provozu jsou založené na [ArcGIS Pro](https://www.arcgis.com/features/index.html). Virtuální počítač pro datové vědy (DSVM) umožňuje rychlé školení modelů strojového učení a dokonce i hloubkového učení. K vývoji těchto modelů používá data obohacená o geografické informace. Geo-DSVM je podporován pouze v systému Windows 2016 DSVM. 
+Geografické AI Data Science Virtual Machine (GEO-DSVM) je rozšíření oblíbeného [Azure Data Science Virtual Machine](https://aka.ms/dsvm) , které je speciálně nakonfigurované pro kombinování AI a geoprostorové analýzy. Geoprostorové analýzy ve virtuálním počítači jsou napájené pomocí [ArcGIS pro](https://www.arcgis.com/features/index.html). Data Science Virtual Machine (DSVM) umožňuje rychlé školení modelů strojového učení a dokonce i obsáhlého učení. Pro vývoj těchto modelů používá data, která jsou obohacena o geografické informace. Geografické DSVM se podporuje jenom v systému Windows 2016 DSVM. 
 
-Nástroje AI, které jsou součástí geo-DSVM patří následující:
+Nástroje AI, které jsou zahrnuté v geograficky DSVM, obsahují tyto možnosti:
 
-- Edice GPU populárních rámců pro hluboké učení, jako jsou Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2 a Chainer
-- Nástroje pro získání a předběžné zpracování obrazových a textových dat
-- Nástroje pro vývojové aktivity, jako jsou Microsoft Machine Learning Server Developer Edition, Anaconda Python, Jupyter notebooky pro Python a R, INEŽ pro Python a R a SQL databáze
-- Stolní software ArcGIS Pro od společnosti ESRI spolu s rozhraními Pythona a R, které mohou pracovat s geoprostorovými daty z vašich aplikací AI
+- Edice GPU oblíbených hloubkových architektur, jako jsou Microsoft Cognitive Toolkit, TensorFlow, Keras, Caffe2 a chainer
+- Nástroje pro získání a předzpracování obrázků a textových dat
+- Nástroje pro vývojové aktivity, jako je Microsoft Machine Learning Server Developer Edition, Anaconda Python, Jupyter poznámkové bloky pro Python a R, IDEs pro Python a R a databáze SQL
+- Desktopový software ArcGIS pro od ESRI, společně s rozhraními Pythonu a R, která můžou pracovat s geoprostorovémi daty z aplikací AI
  
 
-## <a name="create-your-geo-ai-data-science-vm"></a>Vytvořte si virtuální počítač geo ai datové vědy
+## <a name="create-your-geo-ai-data-science-vm"></a>Vytvoření Data Science VM geografické AI
 
-Pokud chcete vytvořit instanci virtuálního soudu geo ai datové vědy, postupujte takto:
+Pokud chcete vytvořit instanci geografického AI Data Science VM, postupujte takto:
 
-1. Přejděte na výpis virtuálního počítače na [webu Azure Portal](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
-1. Chcete-li v dolní části generovat **průvodce,** vyberte vytvořit v dolní části:
+1. Přejít na virtuální počítač výpisu na [Azure Portal](https://ms.portal.azure.com/#create/microsoft-ads.geodsvmwindows).
+1. V dolní části vyberte **vytvořit** , aby se vygeneroval Průvodce:
 
-   ![vytvořit-geo-ai-dsvm](./media/provision-geo-ai-dsvm/Create-Geo-AI.png)
+   ![Vytvoření – geografická-AI – dsvm](./media/provision-geo-ai-dsvm/Create-Geo-AI.png)
 
-1. Průvodce vyžaduje vstup pro každý ze čtyř kroků. Podrobné informace o tomto vstupu naleznete v následující části.
+1. Průvodce vyžaduje vstup pro každý ze čtyř kroků. Podrobné informace o tomto vstupu najdete v následující části.
 
-### <a name="wizard-details"></a>Podrobnosti průvodce ###
+### <a name="wizard-details"></a>Podrobnosti Průvodce ###
 
 **Základy**:
 
-- **Název**: Název serveru pro datové vědy, který vytváříte.
+- **Name (název**): název serveru pro datové vědy, který vytváříte.
     
-- **Uživatelské jméno**: ID přihlášení k účtu správce.
+- **Uživatelské jméno**: přihlašovací ID účtu správce.
     
-- **Heslo**: Heslo účtu správce.
+- **Heslo**: heslo účtu správce.
     
-- **Předplatné**: Pokud máte více než jedno předplatné, vyberte předplatné, ve kterém má být počítač vytvořen a fakturován.
+- **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se má počítač vytvořit a fakturovat.
     
-- **Skupina prostředků**: Můžete vytvořit novou nebo použít **prázdnou** existující skupinu prostředků Azure ve vašem předplatném.
+- **Skupina prostředků**: můžete vytvořit novou nebo ve svém předplatném použít **prázdnou** existující skupinu prostředků Azure.
     
-- **Umístění**: Vyberte nejvhodnější datové centrum. Obvykle je to ten, který má většinu vašich dat nebo který je nejblíže k vašemu fyzickému umístění pro nejrychlejší přístup k síti. Pokud máte v plánu spustit hloubkové učení na GPU, musíte zvolit jedno z umístění v Azure, který má NC-Series GPU instance. V současné době jsou tato místa: **Východní USA, Severní střed USA, Jižní Střed USA, Západní USA 2, Severní Evropa, Západní Evropa**. Nejnovější seznam najdete na stránce [Produkty Azure podle oblastí](https://azure.microsoft.com/regions/services/) a vyhledejte **NC-Series** v části **Výpočetní výkon**. 
+- **Umístění**: Vyberte datové centrum, které je vhodné. Obvykle je to ten, který má většinu vašich dat nebo který je nejblíže vašemu fyzickému umístění pro nejrychlejší přístup k síti. Pokud plánujete provozovat hlubokou výuku na GPU, musíte zvolit jedno z umístění v Azure, které má instance virtuálních počítačů GPU řady NC-Series. V současné době jsou to tato umístění: **východní USA, střed USA – sever, střed USA – jih, západní USA 2, Severní Evropa, západní Evropa**. V seznamu nejnovější Zkontrolujte stránku [produkty Azure podle oblasti](https://azure.microsoft.com/regions/services/) a vyhledejte v části **výpočetní**prostředí **řady NC-Series** . 
     
     
-**Nastavení**: Pokud plánujete spustit hloubkové učení na GPU na geo dsvm, vyberte jednu z velikostí virtuálních strojů GPU řady NC. V opačném případě můžete zvolit jednu z instancí založených na procesoru. Vytvořte účet úložiště pro váš virtuální počítač. 
+**Nastavení**: vyberte jednu z velikostí virtuálních počítačů GPU řady NC-Series, pokud plánujete provozovat hlubokou výuku na GPU v geografických DSVM. V opačném případě můžete zvolit jednu z instancí založenou na procesoru. Vytvořte účet úložiště pro váš virtuální počítač. 
        
-**Shrnutí**: Ověřte, zda jsou všechny zadané informace správné.
+**Shrnutí**: Ověřte, zda jsou všechny informace, které jste zadali, správné.
     
-**Koupit**: Chcete-li zahájit proces zřizování, klepněte na tlačítko **Koupit**. Odkaz je uveden na podmínky služby. Virtuální počítač nemá žádné další poplatky nad rámec výpočetních poplatků za velikost serveru, kterou jste zvolili v kroku **Velikost.** 
+**Koupit**: Pokud chcete zahájit proces zřizování, klikněte na **koupit**. K dispozici je odkaz na podmínku služby. Pro velikost serveru, kterou jste zvolili v kroku **Velikost** , nemá tento virtuální počítač žádné další poplatky nad poplatky za výpočetní výkon. 
  
  >[!NOTE]
- > Zřizování by mělo trvat přibližně 20 až 30 minut. Stav zřizování se zobrazí na webu Azure Portal.
+ > Zřizování by mělo trvat přibližně 20 až 30 minut. Stav zřizování se zobrazí na Azure Portal.
 
  
-## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak získat přístup k virtuálnímu počítači Geo AI Data Science
+## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Jak získat přístup k geografickému AI Data Science Virtual Machine
 
- Po vytvoření virtuálního počítače můžete začít používat nástroje, které jsou na něj nainstalované a předkonfigurované. K dispozici jsou dlaždice nabídky Start a ikony na ploše pro mnoho nástrojů. K virtuálnímu počítači můžete přistupovat pomocí vzdálené plochy pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v části **Základy.**
+ Po vytvoření virtuálního počítače budete připraveni začít používat nástroje, které jsou nainstalované a předem nakonfigurované. Pro mnohé z nástrojů jsou k dispozici dlaždice nabídky Start a ikony na ploše. K virtuálnímu počítači můžete přistupovat pomocí vzdálené plochy pomocí přihlašovacích údajů účtu správce, které jste nakonfigurovali v části **základy** .
 
  
-## <a name="using-arcgis-pro-installed-in-the-vm"></a>Použití ArcGIS Pro nainstalované ve virtuálním mísu
+## <a name="using-arcgis-pro-installed-in-the-vm"></a>Použití ArcGIS pro nainstalovaného na virtuálním počítači
 
-Na geo-DSVM je předinstalována plocha ArcGIS Pro a prostředí je předkonfigurováno pro práci se všemi nástroji v DSVM. Při spuštění ArcGIS budete vyzváni k zadání přihlašovacích údajů k účtu ArcGIS. Pokud již máte účet ArcGIS a máte licence k softwaru, můžete použít svá stávající pověření.  
+Na geograficky DSVM je předinstalována aplikace ArcGIS pro Desktop a prostředí je předem nakonfigurované tak, aby fungovalo se všemi nástroji v DSVM. Po spuštění ArcGIS budete vyzváni k zadání přihlašovacích údajů k účtu ArcGIS. Pokud již máte účet ArcGIS a máte licence na software, můžete použít stávající přihlašovací údaje.  
 
-![Přihlášení k Oblouku-GIS](./media/provision-geo-ai-dsvm/ArcGISLogon.png)
+![Oblouk – GIS – přihlášení](./media/provision-geo-ai-dsvm/ArcGISLogon.png)
 
-V opačném případě se můžete zaregistrovat k novému účtu ArcGIS a licenci nebo získat [bezplatnou zkušební verzi](https://www.arcgis.com/features/free-trial.html). 
+Jinak si můžete zaregistrovat nový účet ArcGIS a licenci nebo si můžete stáhnout [bezplatnou zkušební verzi](https://www.arcgis.com/features/free-trial.html). 
 
-![Zkušební verze bez oblouku GIS](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
+![ArcGIS – bezplatná zkušební verze](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Po registraci buď standardního účtu ArcGIS nebo bezplatné zkušební verze, můžete autorizovat ArcGIS Pro pro svůj účet podle pokynů na [Začínáme s ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf).
+Po registraci standardního účtu ArcGIS nebo bezplatné zkušební verze můžete pro svůj účet autorizovat ArcGIS pro, a to podle pokynů uvedených v tématu [Začínáme s ArcGIS pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf).
 
-Po přihlášení k ploše ArcGIS Pro prostřednictvím účtu ArcGIS můžete začít používat nástroje pro datové vědy, které jsou nainstalované a nakonfigurované na virtuálním počítači pro vaše projekty geoprostorové analýzy a strojového učení.
+Po přihlášení k desktopu ArcGIS pro z účtu ArcGIS jste připraveni začít používat nástroje pro datové vědy, které jsou nainstalované a nakonfigurované na VIRTUÁLNÍm počítači pro geoprostorové analýzy a projekty strojového učení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte používat virtuální ms geo ai datové vědy s pokyny z následujícího zdroje:
+Začněte používat geografické AI Data Science VM s pokyny z tohoto prostředku:
 
-* [Použití virtuálního virtuálního provozu geo ai dat](use-geo-ai-dsvm.md)
+* [Použití geografického AI Data Science VM](use-geo-ai-dsvm.md)

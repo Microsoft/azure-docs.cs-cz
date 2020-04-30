@@ -1,5 +1,5 @@
 ---
-title: Úvodní příručka – vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
+title: Rychlý Start – vytvoření sady škálování virtuálního počítače se systémem Linux pomocí šablony Azure Resource Manager
 description: Zjistěte, jak rychle vytvořit škálovací sadu virtuálních počítačů s Linuxem pomocí šablony Azure Resource Manageru, která nasadí ukázkovou aplikaci a nakonfiguruje pravidla automatického škálování.
 author: ju-shim
 tags: azure-resource-manager
@@ -9,19 +9,19 @@ ms.custom: mvc,subject-armqs
 ms.date: 03/27/2020
 ms.author: jushiman
 ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81010456"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření škálovací sady virtuálních strojů pro Linux pomocí šablony Azure Resource Manageru
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření sady škálování virtuálních počítačů se systémem Linux pomocí šablony Azure Resource Manager
 
 Škálovací sada virtuálních počítačů umožňuje nasadit a spravovat sadu identických virtuálních počítačů s automatickým škálováním. Počet virtuálních počítačů ve škálovací sadě můžete škálovat ručně nebo můžete definovat pravidla pro automatické škálování podle využití prostředků, například podle požadavků na CPU a paměť nebo podle provozu. Nástroj pro vyrovnávání zatížení Azure pak bude distribuovat provoz do instancí virtuálních počítačů ve škálovací sadě. V tomto rychlém startu vytvoříte škálovací sadu virtuálních počítačů a nasadíte ukázkovou aplikaci pomocí šablony Azure Resource Manageru.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,21 +33,21 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/201-vmss-bottle-autoscale/).
 
 :::code language="json" source="~/quickstart-templates/201-vmss-bottle-autoscale/azuredeploy.json" range="1-330" highlight="176-264":::
 
-Tyto prostředky jsou definovány v šabloně:
+Tyto prostředky jsou definované v šabloně:
 
-- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Network/publicIPAdresy**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
 - [**Microsoft.Compute/virtualMachineScaleSets**](/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [**Microsoft.Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
+- [**Microsoft. Insights/autoscaleSettings**](/azure/templates/microsoft.insights/autoscalesettings)
 
 #### <a name="define-a-scale-set"></a>Definice škálovací sady
 
-Zvýrazněná část je definice prostředku škálovací sady. Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
+Zvýrazněná část je definice prostředku sady škálování. Pokud chcete vytvořit škálovací sadu pomocí šablony, nadefinujete odpovídající prostředky. Hlavní části typu prostředku škálovací sady virtuálních počítačů jsou následující:
 
 | Vlastnost                     | Popis vlastnosti                                  | Příklad hodnoty v šabloně                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
@@ -62,7 +62,7 @@ Zvýrazněná část je definice prostředku škálovací sady. Pokud chcete vyt
 | osProfile.adminUsername      | Uživatelské jméno pro všechny instance virtuálních počítačů                        | azureuser                                 |
 | osProfile.adminPassword      | Heslo pro všechny instance virtuálních počítačů                        | P@ssw0rd!                                 |
 
-Chcete-li přizpůsobit šablonu škálovací sady, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu. Další možností je použít jinou platformu nebo vlastní bitovou kopii.
+Pokud chcete přizpůsobit šablonu sady škálování, můžete změnit velikost virtuálního počítače nebo počáteční kapacitu. Další možností je použít jinou platformu nebo vlastní image.
 
 #### <a name="add-a-sample-application"></a>Přidání ukázkové aplikace
 
@@ -74,17 +74,17 @@ Pokud chcete svou škálovací sadu otestovat, nainstalujte základní webovou a
 - Umístění konfiguračních nebo instalačních skriptů
 - Příkazy, které se mají spustit na instancích virtuálních počítačů
 
-Šablona používá rozšíření vlastní skript k instalaci [Bottle](https://bottlepy.org/docs/dev/), python webového rámce a jednoduchý http server.
+Šablona používá rozšíření vlastních skriptů k instalaci [lahvičky](https://bottlepy.org/docs/dev/), webové architektury Pythonu a jednoduchého serveru http.
 
-Dva skripty jsou definovány v **fileUris** - *installserver.sh*a *workserver.py*. Tyto soubory jsou staženy z GitHubu, pak *příkazToExecute* spustí `bash installserver.sh` instalaci a konfiguraci aplikace.
+V **identifikátorech URI** - *installserver.sh*a *workserver.py*jsou definovány dva skripty. Tyto soubory se stáhnou z GitHubu, *commandToExecute* potom commandToExecute `bash installserver.sh` spustí instalaci a konfiguraci aplikace.
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Šablonu můžete nasadit tak, že vyberete následující tlačítko **Nasazení do Azure.** Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
+Šablonu můžete nasadit tak, že vyberete následující tlačítko **nasadit do Azure** . Toto tlačítko otevře Azure Portal, načte kompletní šablonu a zobrazí výzvu k zadání několika parametrů, jako jsou název škálovací sady, počet instancí a přihlašovací údaje správce.
 
 [![Nasazení šablony do Azure](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-Šablonu Správce prostředků můžete nasadit také pomocí azure cli:
+Šablonu Správce prostředků můžete nasadit taky pomocí Azure CLI:
 
 ```azurecli-interactive
 # Create a resource group
@@ -108,7 +108,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Zadejte veřejnou IP adresu nástrojpro vyrovnávání zatížení do webového prohlížeče ve formátu *\/http: /publicIpAddress:9000/do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
+Zadejte veřejnou IP adresu nástroje pro vyrovnávání zatížení do webového prohlížeče ve formátu *http:\//publicIpAddress: 9000/do_work*. Nástroj pro vyrovnávání zatížení distribuuje provoz do jedné z vašich instancí virtuálních počítačů, jak je znázorněno v následujícím příkladu:
 
 ![Výchozí webová stránka na serveru NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Integrace správy zdrojového kódu
-description: Prostředí Database DevOps podnikové třídy pro fond SQL s nativní integrací správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
+description: Prostředí DevOps (Enterprise-Class Database) pro fond SQL s integrací nativní správy zdrojového kódu pomocí Azure Repos (Git a GitHub).
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,73 +11,73 @@ ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81415088"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
 
-Tento kurz popisuje, jak integrovat databázový projekt databázových nástrojů SQL Server (SSDT) se správou zdrojového kódu.  Integrace správy zdrojového kódu je prvním krokem při vytváření kanálu průběžné integrace a nasazení s prostředkem fondu SQL v Azure Synapse Analytics.
+V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Data Tools) se správou zdrojových kódů.  Integrace správy zdrojového kódu je prvním krokem při sestavování kanálu průběžné integrace a nasazování pomocí prostředku fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 - Registrace k [organizaci Azure DevOps](https://azure.microsoft.com/services/devops/)
-- Procházení kurzu [Vytvořit a připojit](create-data-warehouse-portal.md)
-- [Instalace Visual Studia 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
+- Projděte si kurz [Vytvoření a připojení](create-data-warehouse-portal.md) .
+- [Instalace sady Visual Studio 2019](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Nastavení a připojení k Azure DevOps
 
-1. V organizaci Azure DevOps vytvořte projekt, který bude hostovat databázový projekt SSDT prostřednictvím úložiště Azure Repo.
+1. V organizaci Azure DevOps vytvořte projekt, který bude hostovat váš projekt databáze SSDT prostřednictvím úložiště Azure úložiště.
 
    ![Vytvořit projekt](./media/sql-data-warehouse-source-control-integration/1-create-project-azure-devops.png "Vytvořit projekt")
 
-2. Otevřete Visual Studio a připojte se k organizaci a projektu Azure DevOps od kroku 1 výběrem možnosti Spravovat připojení.
+2. Otevřete Visual Studio a připojte se ke svojí organizaci a projektu Azure DevOps z kroku 1 výběrem možnosti spravovat připojení.
 
-   ![Správa připojení](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Správa připojení")
+   ![Spravovat připojení](./media/sql-data-warehouse-source-control-integration/2-manage-connections.png "Spravovat připojení")
 
    ![Připojit](./media/sql-data-warehouse-source-control-integration/3-connect.png "Připojit")
 
-3. Klonování úložiště Azure Repo z projektu do místního počítače
+3. Naklonujte úložiště Azure úložiště z vašeho projektu na místní počítač.
 
-   ![Klonovat repo](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klonovat repo")
+   ![Klonovat úložiště](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "Klonovat úložiště")
 
-## <a name="create-and-connect-your-project"></a>Vytvoření a propojení projektu
+## <a name="create-and-connect-your-project"></a>Vytvoření a připojení projektu
 
-1. V sadě Visual Studio vytvořte nový databázový projekt serveru SQL Server s adresářovým i místním úložištěm Git v **místním klonovaném úložišti.**
+1. V aplikaci Visual Studio vytvořte nový databázový projekt SQL Server s adresářovým a místním úložištěm Git v **místním klonovaném úložišti** .
 
    ![Vytvořit nový projekt](./media/sql-data-warehouse-source-control-integration/5-create-new-project.png "Vytvoření nového projektu")  
 
-2. Klikněte pravým tlačítkem myši na prázdný sqlproject a importujte datový sklad do databázového projektu.
+2. Klikněte pravým tlačítkem na prázdnou sqlproject a importujte datový sklad do databázového projektu.
 
    ![Importovat projekt](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "Importovat projekt")  
 
-3. V Průzkumníkovi týmu ve Visual Studiu potvrdíte všechny změny v místním úložišti Git.
+3. V Průzkumníku týmových souborů v aplikaci Visual Studio potvrďte všechny změny v místním úložišti Git.
 
    ![Potvrzení](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
 
-4. Teď, když máte změny potvrzené místně v klonovanéúložiště, synchronizovat a tlačit změny do úložiště Azure Repo v projektu Azure DevOps.
+4. Teď, když jste provedli změny místně v naklonovaném úložišti, synchronizujte a nahrajte změny do úložiště Azure úložiště v projektu Azure DevOps.
 
-   ![Synchronizace a push - pracovní](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Synchronizace a nabízení - pracovní")
+   ![Synchronizace a nabízené přípravy](./media/sql-data-warehouse-source-control-integration/7-commit-push-changes.png "Synchronizace a nabízené přípravy")
 
-   ![Synchronizace a nabízení](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizace a nabízení")  
+   ![Synchronizovat a vložit](./media/sql-data-warehouse-source-control-integration/7.5-commit-push-changes.png "Synchronizovat a vložit")  
 
 ## <a name="validation"></a>Ověřování
 
-1. Ověřte, zda byly změny do vašeho azure repo posunuty aktualizací sloupce tabulky v databázovém projektu z datových nástrojů SSDT sady Visual Studio SQL Server.
+1. Pomocí sady Visual Studio SQL Server Data Tools (SSDT) ověřte, že jste do svého úložiště Azure posunuli změny pomocí aktualizace sloupce tabulky v projektu databáze.
 
-   ![Ověřit sloupec aktualizace](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Ověřit sloupec aktualizace")
+   ![Sloupec pro ověření aktualizace](./media/sql-data-warehouse-source-control-integration/8-validation-update-column.png "Sloupec pro ověření aktualizace")
 
-2. Potvrzení a posununí změny z místního úložiště do úložiště Azure
+2. Potvrzení změn z místního úložiště a jejich vložení do úložiště Azure
 
    ![Nasdílení změn](./media/sql-data-warehouse-source-control-integration/9-push-column-change.png "Nasdílení změn")
 
-3. Ověřte, zda byla změna posunuta v úložišti Azure Repo.
+3. Ověřte, že se změna provedla v úložišti úložiště Azure.
 
-   ![Ověřit](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Ověření změn")
+   ![Ověřit](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Ověřit změny")
 
-4. (**Nepovinné**) Použití schématu Porovnání a aktualizace změn cílového datového skladu pomocí ssdt, abyste zajistili, že definice objektů v úložišti Azure Repo a místním úložišti budou odrážet váš datový sklad.
+4. (**Volitelné**) Použijte porovnání schématu a aktualizujte změny svého cílového datového skladu pomocí SSDT, abyste zajistili, že definice objektů v úložišti úložiště Azure a místním úložišti odráží váš datový sklad.
 
 ## <a name="next-steps"></a>Další kroky
 

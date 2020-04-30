@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Přímý webový provoz pomocí PowerShellu'
+title: 'Rychlý Start: přímý webový provoz pomocí prostředí PowerShell'
 titleSuffix: Azure Application Gateway
-description: Zjistěte, jak pomocí Azure PowerShellu vytvořit aplikační bránu Azure, která směruje webový provoz na virtuální počítače v back-endovém fondu.
+description: Naučte se, jak pomocí Azure PowerShell vytvořit Azure Application Gateway, který směruje webový provoz do virtuálních počítačů v back-endu fondu.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 3e1ca14d967b0e88ea7eb559fd9962a3824ff9b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81406209"
 ---
-# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Úvodní příručka: Přímý webový provoz s Aplikační bránou Azure pomocí Azure PowerShellu
+# <a name="quickstart-direct-web-traffic-with-azure-application-gateway-using-azure-powershell"></a>Rychlý Start: směrování webového provozu pomocí Azure Application Gateway pomocí Azure PowerShell
 
-V tomto rychlém startu použijete Azure PowerShell k vytvoření aplikační brány. Pak jej otestujete, abyste se ujistili, že funguje správně. 
+V tomto rychlém startu použijete Azure PowerShell k vytvoření aplikační brány. Pak ho otestujete, abyste se ujistili, že funguje správně. 
 
-Aplikační brána směruje webový provoz aplikací na konkrétní prostředky v back-endovém fondu. Naslouchací procesy přiřazujete k portům, vytváříte pravidla a přidáváte prostředky do back-endového fondu. Z důvodu jednoduchosti tento článek používá jednoduché nastavení s veřejnou front-endovou IP adresou, základní naslouchací proces pro hostování jedné sítě na aplikační bráně, základní pravidlo směrování požadavků a dva virtuální počítače v back-endovém fondu.
+Aplikační brána směruje webový provoz aplikace do konkrétních prostředků ve fondu back-end. Posluchačům přiřadíte porty, vytvoříte pravidla a přidáte prostředky do back-endového fondu. V zájmu zjednodušení Tento článek používá jednoduché nastavení s veřejnou front-end IP adresou, základní naslouchací proces, který hostuje jednu lokalitu v aplikační bráně, pravidlo základního směrování požadavku a dva virtuální počítače ve fondu back-end.
 
-Tento rychlý start můžete také dokončit pomocí [azure cli](quick-create-cli.md) nebo [portálu Azure](quick-create-portal.md).
+Tento rychlý Start můžete také dokončit pomocí [Azure CLI](quick-create-cli.md) nebo [Azure Portal](quick-create-portal.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -31,28 +31,28 @@ Tento rychlý start můžete také dokončit pomocí [azure cli](quick-create-cl
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Azure PowerShell verze 1.0.0 nebo novější](/powershell/azure/install-az-ps) (pokud spustíte Azure PowerShell místně).
+- [Azure PowerShell verze 1.0.0 nebo novější](/powershell/azure/install-az-ps) (Pokud Azure PowerShell spustíte místně).
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
 
-Chcete-li se `Connect-AzAccount`připojit k Azure, spusťte .
+Pokud se chcete připojit k Azure `Connect-AzAccount`, spusťte.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-V Azure přidělujete související prostředky skupině prostředků. Můžete použít existující skupinu prostředků nebo vytvořit novou.
+V Azure přidělíte související prostředky skupině prostředků. Můžete použít buď existující skupinu prostředků, nebo vytvořit novou.
 
-Chcete-li vytvořit novou skupinu prostředků, použijte rutinu: `New-AzResourceGroup` 
+Pokud chcete vytvořit novou skupinu prostředků, použijte `New-AzResourceGroup` rutinu: 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 ```
 ## <a name="create-network-resources"></a>Vytvoření síťových prostředků
 
-Pro Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat pouze aplikační brány. Nejsou povoleny žádné další prostředky.  Můžete buď vytvořit novou podsíť pro aplikační bránu, nebo použít existující. V tomto příkladu vytvoříte dvě podsítě v tomto příkladu: jednu pro aplikační bránu a druhou pro servery back-endu. Front-endovou IP adresu aplikační brány můžete nakonfigurovat jako veřejnou nebo soukromou podle případu použití. V tomto příkladu zvolíte veřejnou ip adresu front-endu.
+Aby mohl Azure komunikovat mezi prostředky, které vytvoříte, potřebuje virtuální síť.  Podsíť aplikační brány může obsahovat jenom aplikační brány. Žádné další prostředky nejsou povoleny.  Můžete buď vytvořit novou podsíť pro Application Gateway nebo použít stávající. V tomto příkladu vytvoříte v tomto příkladu dvě podsítě: jednu pro aplikační bránu a druhou pro back-end servery. IP adresu front-endu Application Gateway můžete nakonfigurovat tak, aby byla veřejná nebo soukromá jako na základě vašeho případu použití. V tomto příkladu zvolíte veřejnou front-end IP adresu.
 
-1. Vytvořte konfigurace podsítě `New-AzVirtualNetworkSubnetConfig`pomocí aplikace .
-2. Vytvořte virtuální síť s konfiguracemi `New-AzVirtualNetwork`podsítě pomocí aplikace . 
-3. Vytvořte veřejnou `New-AzPublicIpAddress`IP adresu pomocí aplikace . 
+1. Vytvořte konfigurace podsítě pomocí `New-AzVirtualNetworkSubnetConfig`.
+2. Vytvořte virtuální síť s konfiguracemi podsítí pomocí `New-AzVirtualNetwork`. 
+3. Vytvořte veřejnou IP adresu pomocí `New-AzPublicIpAddress`. 
 
 ```azurepowershell-interactive
 $agSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -78,9 +78,9 @@ New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>Vytvoření konfigurací IP adres a front-endového portu
 
-1. Slouží `New-AzApplicationGatewayIPConfiguration` k vytvoření konfigurace, která přidruží podsíť, kterou jste vytvořili, k aplikační bráně. 
-2. Slouží `New-AzApplicationGatewayFrontendIPConfig` k vytvoření konfigurace, která přiřadí veřejnou IP adresu, kterou jste dříve vytvořili, k aplikační bráně. 
-3. Slouží `New-AzApplicationGatewayFrontendPort` k přiřazení portu 80 pro přístup k aplikační bráně.
+1. Použijte `New-AzApplicationGatewayIPConfiguration` k vytvoření konfigurace, která přidruží podsíť, kterou jste vytvořili s aplikační bránou. 
+2. Použijte `New-AzApplicationGatewayFrontendIPConfig` k vytvoření konfigurace, která přiřadí veřejnou IP adresu, kterou jste předtím vytvořili ve službě Application Gateway. 
+3. Použijte `New-AzApplicationGatewayFrontendPort` k přiřazení portu 80 pro přístup k aplikační bráně.
 
 ```azurepowershell-interactive
 $vnet   = Get-AzVirtualNetwork -ResourceGroupName myResourceGroupAG -Name myVNet
@@ -99,8 +99,8 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pool"></a>Vytvoření back-endového fondu
 
-1. Slouží `New-AzApplicationGatewayBackendAddressPool` k vytvoření back-endového fondu pro aplikační bránu. Back-endový fond bude prozatím prázdný. Když vytvoříte síťové karty back-endového serveru v další části, přidáte je do back-endového fondu.
-2. Nakonfigurujte nastavení back-endového fondu pomocí aplikace `New-AzApplicationGatewayBackendHttpSetting`.
+1. Slouží `New-AzApplicationGatewayBackendAddressPool` k vytvoření back-end fondu pro aplikační bránu. Back-end fond bude nyní prázdný. Při vytváření síťových karet serveru back-end v následující části je přidáte do fondu back-end.
+2. Nakonfigurujte nastavení pro fond back-end pomocí `New-AzApplicationGatewayBackendHttpSetting`.
 
 ```azurepowershell-interactive
 $backendPool = New-AzApplicationGatewayBackendAddressPool `
@@ -115,10 +115,10 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSetting `
 
 ### <a name="create-the-listener-and-add-a-rule"></a>Vytvoření naslouchacího procesu a přidání pravidla
 
-Azure vyžaduje naslouchací proces povolit aplikační brány pro směrování provozu vhodně do back-endového fondu. Azure také vyžaduje pravidlo pro naslouchací proces vědět, který back-end ový fond použít pro příchozí provoz. 
+Azure vyžaduje naslouchací proces, aby mohla služba Application Gateway povolit směrování provozu odpovídajícím způsobem do back-endového fondu. Azure také vyžaduje pravidlo pro naslouchací proces, aby věděli, který back-end fond chcete použít pro příchozí provoz. 
 
-1. Vytvořte naslouchací proces pomocí `New-AzApplicationGatewayHttpListener` konfigurace front-endu a portu front-endu, který jste dříve vytvořili. 
-2. Slouží `New-AzApplicationGatewayRequestRoutingRule` k vytvoření pravidla s názvem *rule1*. 
+1. Vytvořte naslouchací proces pomocí `New-AzApplicationGatewayHttpListener` s konfigurací front-end a portem front-endu, který jste vytvořili dříve. 
+2. Použijte `New-AzApplicationGatewayRequestRoutingRule` k vytvoření pravidla s názvem *rule1*. 
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -136,10 +136,10 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Teď, když jste vytvořili potřebné podpůrné prostředky, vytvořte aplikační bránu:
+Teď, když jste vytvořili potřebné podpůrné prostředky, vytvořte Aplikační bránu:
 
-1. Slouží `New-AzApplicationGatewaySku` k určení parametrů pro aplikační bránu.
-2. Slouží `New-AzApplicationGateway` k vytvoření aplikační brány.
+1. Slouží `New-AzApplicationGatewaySku` k zadání parametrů pro aplikační bránu.
+2. Použijte `New-AzApplicationGateway` k vytvoření aplikační brány.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -162,16 +162,16 @@ New-AzApplicationGateway `
 
 ### <a name="backend-servers"></a>Back-endové servery
 
-Teď, když jste vytvořili aplikační bránu, vytvořte back-endové virtuální počítače, které budou hostovat weby. Back-end se může skládat z připojení k síťové karty, škálovacísady virtuálních počítačů, veřejných IP služeb, interních IP služeb, plně kvalifikovaných názvů domén (FQDN) a víceklientských back-endů, jako je Azure App Service. V tomto příkladu vytvoříte dva virtuální počítače pro Azure, které se mají používat jako back-endové servery pro aplikační bránu. Službu IIS také nainstalujete do virtuálních počítačů a ověříte, že Azure úspěšně vytvořil aplikační bránu.
+Teď, když jste vytvořili Application Gateway, vytvořte back-end virtuální počítače, které budou hostovat weby. Back-end se může skládat z síťových adaptérů, virtuálních počítačů a virtuálních IP adres, interních IP adres, plně kvalifikovaných názvů domény (FQDN) a back-endu s více klienty, jako je Azure App Service. V tomto příkladu vytvoříte dva virtuální počítače pro Azure, které budou používat jako servery back-end pro službu Application Gateway. Nainstalujete také službu IIS na virtuální počítače a ověříte tak, že Azure úspěšně vytvořil Aplikační bránu.
 
 #### <a name="create-two-virtual-machines"></a>Vytvoření dvou virtuálních počítačů
 
-1. Získejte nedávno vytvořenou konfiguraci `Get-AzApplicationGatewayBackendAddressPool`back-endového fondu aplikační brány s aplikací .
-2. Vytvořte síťové `New-AzNetworkInterface`rozhraní s programem .
-3. Vytvořte konfiguraci `New-AzVMConfig`virtuálního počítače pomocí aplikace .
-4. Vytvořte virtuální `New-AzVM`počítač s .
+1. Získejte nedávno vytvořenou konfiguraci Application Gatewayho fondu back `Get-AzApplicationGatewayBackendAddressPool`-Endu.
+2. Vytvořte síťové rozhraní pomocí `New-AzNetworkInterface`.
+3. Vytvořte konfiguraci virtuálního počítače pomocí `New-AzVMConfig`.
+4. Vytvořte virtuální počítač pomocí `New-AzVM`.
 
-Když spustíte následující ukázku kódu k vytvoření virtuálních počítačů, Azure vás vyzve k zadání přihlašovacích údajů. Zadejte *azureuser* pro uživatelské jméno a heslo:
+Když spustíte následující ukázku kódu pro vytvoření virtuálních počítačů, Azure vás vyzve k zadání přihlašovacích údajů. Jako uživatelské jméno a heslo zadejte *azureuser* :
     
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway -ResourceGroupName myResourceGroupAG -Name myAppGateway
@@ -222,10 +222,10 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-I když služba IIS není nutné k vytvoření aplikační brány, nainstalovali jste ji v tomto rychlém startu k ověření, zda Azure úspěšně vytvořil aplikační bránu. Pomocí služby IIS otestujte bránu aplikace:
+I když služba IIS není nutná k vytvoření aplikační brány, nainstalovali jste se v tomto rychlém startu, abyste ověřili, jestli Azure úspěšně vytvořil Aplikační bránu. Použijte službu IIS k otestování služby Application Gateway:
 
-1. Spuštěním `Get-AzPublicIPAddress` získáte veřejnou IP adresu aplikační brány. 
-2. Zkopírujte a vložte veřejnou IP adresu do adresního řádku prohlížeče. Při aktualizaci prohlížeče, měli byste vidět název virtuálního počítače. Platná odpověď ověří, zda byla aplikační brána úspěšně vytvořena a může se úspěšně připojit k back-endu.
+1. Spuštěním `Get-AzPublicIPAddress` Získejte veřejnou IP adresu aplikační brány. 
+2. Zkopírujte veřejnou IP adresu a vložte ji do adresního řádku prohlížeče. Když aktualizujete prohlížeč, měl by se zobrazit název virtuálního počítače. Platná odpověď ověří, že se služba Application Gateway úspěšně vytvořila, a může se úspěšně připojit k back-endu.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -236,9 +236,9 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili pomocí aplikační brány, odstraňte skupinu prostředků. Když odstraníte skupinu prostředků, odstraníte také bránu aplikace a všechny související prostředky. 
+Když už nepotřebujete prostředky, které jste vytvořili v rámci služby Application Gateway, odstraňte skupinu prostředků. Když odstraníte skupinu prostředků, odstraníte také aplikační bránu a všechny související prostředky. 
 
-Chcete-li odstranit skupinu `Remove-AzResourceGroup` prostředků, zavolejte rutinu:
+Pokud chcete odstranit skupinu prostředků, zavolejte `Remove-AzResourceGroup` rutinu:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

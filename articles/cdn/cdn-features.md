@@ -16,51 +16,51 @@ ms.date: 11/15/2019
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 0e57ae691bf4b07b8161bc343929510d6be041a8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81260509"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porovnání funkcí produktu Azure CDN
 
-Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**. Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). Všimněte si, že zatímco existuje cesta upgradu ze standardu Verizon na Premium Verizon, v tuto chvíli neexistuje žádný mechanismus převodu mezi jinými produkty.
+Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**. Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na profil **Azure CDN Premium od společnosti Verizon** najdete v článku [Migrace profilu Azure CDN z úrovně Standard Verizon na úroveň Premium Verizon](cdn-migrate.md). Všimněte si, že když existuje cesta pro upgrade ze Standard Verizon na Premium Verizon, neexistuje žádný mechanismus převodu mezi ostatními produkty v tuto chvíli.
 
 Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jednotlivých produktech.
 
-| **Funkce výkonu a optimalizace** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** |
+| **Funkce a optimalizace výkonu** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** |
 | --- | --- | --- | --- | --- |
-| [Dynamická akcelerace webu](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | Nabízeno prostřednictvím [služby Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dynamická akcelerace webu – adaptivní komprese obrazu](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Dynamická akcelerace webu – předběžné načtení objektu](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
-| [Obecná optimalizace doručování webových stránek](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;**, Vyberte tento typ optimalizace, pokud je průměrná velikost souboru menší než 10 MB.  | **&#x2713;** |  **&#x2713;** |
-| [Optimalizace streamování videa](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | prostřednictvím obecného doručování webových stránek | **&#x2713;**  | prostřednictvím obecného doručování webových stránek |  prostřednictvím obecného doručování webových stránek |
-| [Optimalizace velkých souborů](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | prostřednictvím obecného doručování webových stránek | **&#x2713;**, Vyberte tento typ optimalizace, pokud je průměrná velikost souboru větší než 10 MB.   | prostřednictvím obecného doručování webových stránek |  prostřednictvím obecného doručování webových stránek |
-| Změna typu optimalizace | |**&#x2713;** | | |
-| Port původu |Všechny porty TCP |[Povolené porty původu](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Všechny porty TCP |Všechny porty TCP |
+| [Akcelerace dynamického webu](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration)  | Nabízeno přes [službu Azure front-dveří](https://docs.microsoft.com/azure/frontdoor/front-door-overview) | **&#x2713;**  | **&#x2713;** | **&#x2713;** |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Akcelerace dynamického webu – adaptivní komprese obrázků](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#adaptive-image-compression-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
+| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Akcelerace dynamického webu – předběžné načtení objektů](https://docs.microsoft.com/azure/cdn/cdn-dynamic-site-acceleration#object-prefetch-azure-cdn-from-akamai-only)  |  | **&#x2713;**  |  |  |
+| [Obecná optimalizace webového doručování](https://docs.microsoft.com/azure/cdn/cdn-optimization-overview#general-web-delivery)  | **&#x2713;** | **&#x2713;** vyberte tento typ optimalizace, pokud je průměrná velikost souboru menší než 10 MB.  | **&#x2713;** |  **&#x2713;** |
+| [Optimalizace streamování videa](https://docs.microsoft.com/azure/cdn/cdn-media-streaming-optimization)  | prostřednictvím obecného webového doručování | **&#x2713;**  | prostřednictvím obecného webového doručování |  prostřednictvím obecného webového doručování |
+| [Optimalizace velkých souborů](https://docs.microsoft.com/azure/cdn/cdn-large-file-optimization)  | prostřednictvím obecného webového doručování | **&#x2713;** vyberte tento typ optimalizace, pokud je průměrná velikost souboru větší než 10 MB.   | prostřednictvím obecného webového doručování |  prostřednictvím obecného webového doručování |
+| Změnit typ optimalizace | |**&#x2713;** | | |
+| Zdrojový port |Všechny porty TCP |[Povolené počáteční porty](https://docs.microsoft.com/previous-versions/azure/mt757337(v%3Dazure.100)#allowed-origin-ports) |Všechny porty TCP |Všechny porty TCP |
 | [Globální vyrovnávání zatížení serveru (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, vyčistit všechny a vyprázdnění zástupných symbolů nejsou podporovány Azure CDN z Akamai v současné době |**&#x2713;** |**&#x2713;** |
+| [Rychlé vyprázdnění](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;**, vyprázdnit všechny a zástupné znaky nejsou aktuálně Azure CDN z Akamai. |**&#x2713;** |**&#x2713;** |
 | [Předběžné načítání prostředku](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |**&#x2713;** pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
-| Přizpůsobitelný modul pro doručování obsahu založený na pravidlech |**&#x2713;** pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md)  | | |**&#x2713;** pomocí [modulu pravidel](cdn-rules-engine.md) |
-| Nastavení mezipaměti/záhlaví  |**&#x2713;** pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md) | | |**&#x2713;** pomocí [motoru premium pravidel](cdn-rules-engine.md) |
-| Přesměrování/přepsání adresy URL |**&#x2713;** pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md)  | | |**&#x2713;** pomocí [motoru premium pravidel](cdn-rules-engine.md) |
-| Pravidla pro mobilní zařízení  |**&#x2713;** pomocí [modulu standardních pravidel](cdn-standard-rules-engine.md) | | |**&#x2713;** pomocí [motoru premium pravidel](cdn-rules-engine.md) |
+| Nastavení mezipaměti nebo hlaviček (pomocí [pravidel ukládání do mezipaměti](cdn-caching-rules.md))  |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| Přizpůsobitelný modul pro doručování obsahu založený na pravidlech |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md)  | | |**&#x2713;** pomocí [modulu pravidel](cdn-rules-engine.md) |
+| Nastavení mezipaměti nebo hlaviček  |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md) | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
+| Přesměrování nebo přepsání adresy URL |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md)  | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
+| Pravidla mobilních zařízení  |**&#x2713;** pomocí [modulu Standard Rules](cdn-standard-rules-engine.md) | | |**&#x2713;** používání [modulu pravidel Premium](cdn-rules-engine.md) |
 | [Ukládání řetězce dotazu do mezipaměti](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Duální sada protokolů IPv4/IPv6 | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Podpora HTTP/2](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 ||||
  **Zabezpečení** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | Podpora HTTPS s koncovými body CDN | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [HTTPS pro vlastní doménu](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;**, vyžaduje přímé CNAME povolit |**&#x2713;** |**&#x2713;** |
+| [HTTPS pro vlastní doménu](cdn-custom-ssl.md)  | **&#x2713;** | **&#x2713;** vyžaduje přímý záznam CNAME, aby bylo možné povolit |**&#x2713;** |**&#x2713;** |
 | [Podpora vlastních názvů domén](cdn-map-content-to-custom-domain.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Geografické filtrování](cdn-restrict-access-by-country.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Ověření tokenu](cdn-token-auth.md)  |  |  |  |**&#x2713;**| 
 | [Ochrana DDOS](https://www.us-cert.gov/ncas/tips/ST04-015)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Používání vlastního certifikátu](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#tlsssl-certificates) |**&#x2713;** |  | **&#x2713;** | **&#x2713;** |
-| Podporované verze TLS | TLS 1.2, TLS 1.0/1.1 - [Konfigurovatelné](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
+| Podporované verze TLS | TLS 1,2, TLS 1.0/1.1 – [konfigurovatelný](https://docs.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#usermanagedhttpsparameters) | TLS 1.2 | TLS 1.2 | TLS 1.2 |
 ||||
-| **Analýza a reportování** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
+| **Analýzy a generování sestav** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | [Diagnostické protokoly Azure](cdn-azure-diagnostic-logs.md)  | **&#x2713;** | **&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Základní sestavy od Verizonu](cdn-analyze-usage-patterns.md)  |  | |**&#x2713;** |**&#x2713;** |
 | [Vlastní sestavy od Verizonu](cdn-verizon-custom-reports.md)  |  | |**&#x2713;** |**&#x2713;** |
@@ -71,9 +71,9 @@ Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jed
 ||||
 | **Snadné používání** | **Microsoft Standard** | **Akamai Standard** | **Verizon Standard** | **Verizon Premium** | 
 | Snadná integrace se službami Azure, jako jsou [Storage](cdn-create-a-storage-account-with-cdn.md), [Web Apps](cdn-add-to-web-app.md) a [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| Správa pomocí [rozhraní REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md)nebo [PowerShellu](cdn-manage-powershell.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
-| [Typy kompresních MIME](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Pouze výchozí |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
-| Kódování komprese  |gzip, brotli |Gzip |gzip, deflaci, bzip2, brotili  |gzip, deflaci, bzip2, brotili  |
+| Správa prostřednictvím [REST API](/rest/api/cdn/), [.NET](cdn-app-dev-net.md), [Node. js](cdn-app-dev-node.md)nebo [PowerShellu](cdn-manage-powershell.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
+| [Komprese typů MIME](https://docs.microsoft.com/azure/cdn/cdn-improve-performance)  |Pouze výchozí |Konfigurovatelné |Konfigurovatelné  |Konfigurovatelné  |
+| Kódování komprese  |GZIP, brotli |GZIP |GZIP, Deflate, bzip2, brotili  |GZIP, Deflate, bzip2, brotili  |
 
 
 

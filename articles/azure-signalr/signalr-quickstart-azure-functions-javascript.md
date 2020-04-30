@@ -1,5 +1,5 @@
 ---
-title: Vytvoření chatovací místnosti pomocí služby Azure Functions and SignalR Service pomocí JavaScriptu
+title: Vytvoření chatovací místnosti s Azure Functions a službou Signal pomocí JavaScriptu
 description: Rychlé zprovoznění popisující vytvoření chatovací místnosti pomocí služby Azure SignalR Service a Azure Functions.
 author: sffamily
 ms.service: signalr
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
 ms.openlocfilehash: 2726d5da2613be4ae2065246543d206cf814f353
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77083187"
 ---
-# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Úvodní příručka: Vytvoření chatovací místnosti pomocí služby Azure Functions and SignalR Service pomocí JavaScriptu
+# <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Rychlý Start: použití JavaScriptu k vytvoření chatovací místnosti s Azure Functions a službou signalizace
 
-Služba Azure SignalR service umožňuje snadno přidávat funkce v reálném čase do vaší aplikace a Azure Functions je platforma bez serveru, která vám umožní spouštět kód bez správy jakékoli infrastruktury. V tomto rychlém startu použijete JavaScript k vytvoření chatovací aplikace bez serveru v reálném čase pomocí služby SignalR service a funkcí.
+Služba signalizace Azure umožňuje snadno přidat do aplikace funkce v reálném čase a Azure Functions je platforma bez serveru, která umožňuje spuštění kódu bez nutnosti spravovat infrastrukturu. V tomto rychlém startu pomocí JavaScriptu sestavíte aplikaci Chat bez serveru, která používá službu a funkce signalizace v reálném čase.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Editor kódu, například [Visual Studio Code](https://code.visualstudio.com/)
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Nástroje jádra azure functions](https://github.com/Azure/azure-functions-core-tools#installing), verze 2 nebo vyšší. Používá se ke spuštění aplikací Azure Function místně.
-- [Node.js](https://nodejs.org/en/download/), verze 10.x
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing), verze 2 nebo novější. Slouží ke spouštění aplikací Azure Functions místně.
+- [Node. js](https://nodejs.org/en/download/), verze 10. x
 
    > [!NOTE]
-   > Příklady by měly fungovat s jinými verzemi Node.js, viz [Azure Functions runtime verze dokumentace](../azure-functions/functions-versions.md#languages) pro další informace.
+   > Příklady by měly fungovat s ostatními verzemi Node. js, další informace najdete v [dokumentaci k verzi Azure Functions runtime](../azure-functions/functions-versions.md#languages) .
 
 > [!NOTE]
 > Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo Linux.
@@ -51,7 +51,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
     ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. V editoru kódu otevřete složku *src/chat/javascript* v naktovíraně.
+1. V editoru kódu otevřete složku *Src/chat/JavaScript* v klonovaném úložišti.
 
 1. Přejmenujte soubor *local.settings.sample.json* na *local.settings.json*.
 
@@ -62,7 +62,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **messages** – přijímá zprávy chatu v textu požadavku a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
 
-1. V terminálu se ujistěte, že jste ve složce *src/chat/javascript.* Aplikace funkcí spusťte.
+1. V terminálu se ujistěte, že jste ve složce *Src/chat/JavaScript* . Aplikace funkcí spusťte.
 
     ```bash
     func start
@@ -76,7 +76,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reálném čase v kódu VS. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
+V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez serveru v reálném čase. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
 
 > [!div class="nextstepaction"]
 > [Nasazení Azure Functions přes VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)

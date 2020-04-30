@@ -1,5 +1,5 @@
 ---
-title: Použití dotazu Přejít
+title: Použít Přejít na dotaz
 description: Vytvořte pomocí jazyka Go program, který se připojí ke službě Azure SQL Database, a dotazujte a upravujte data s použitím příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
@@ -12,53 +12,53 @@ ms.author: craigg
 ms.reviewer: MightyPen
 ms.date: 02/12/2019
 ms.openlocfilehash: 9b85b1bfb8935b5e311bb7d9503c17261a210127
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73827080"
 ---
-# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Úvodní příručka: Použití Golangu k dotazování na databázi Azure SQL
+# <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Rychlý Start: použití golang k dotazování databáze SQL Azure
 
-V tomto rychlém startu použijete programovací jazyk [Golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi Azure SQL. Potom spustíte příkazy Transact-SQL pro dotazování a úpravy dat. [Golang](https://golang.org/) je open-source programovací jazyk, který usnadňuje vytváření jednoduchého, spolehlivého a efektivního softwaru.  
+V tomto rychlém startu použijete programovací jazyk [golang](https://godoc.org/github.com/denisenkom/go-mssqldb) pro připojení k databázi SQL Azure. Potom spustíte příkazy jazyka Transact-SQL k dotazování a úpravě dat. [Golang](https://golang.org/) je open source programovací jazyk, který usnadňuje sestavování jednoduchého, spolehlivého a efektivního softwaru.  
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-- Databázi Azure SQL. Pomocí jednoho z těchto rychlých startů můžete vytvořit a pak nakonfigurovat databázi v Azure SQL Database:
+- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
   || Izolovaná databáze | Spravovaná instance |
   |:--- |:--- |:---|
   | Vytvořit| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
-  || [Cli](scripts/sql-database-create-and-configure-database-cli.md) | [Cli](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Rozhraní příkazového řádku](scripts/sql-database-create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurace | [Pravidlo brány firewall IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního virtuálního zařízení](sql-database-managed-instance-configure-vm.md)|
-  |||[Připojení z místa na místě](sql-database-managed-instance-configure-p2s.md)
-  |Načtení dat|Adventure Works načtený podle rychlého startu|[Obnovit wide world dovozci](sql-database-managed-instance-get-started-restore.md)
-  |||Obnovení nebo import adventure works ze souboru [BACPAC](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](sql-database-server-level-firewall-rule.md)| [Připojení z virtuálního počítače](sql-database-managed-instance-configure-vm.md)|
+  |||[Připojení z webu](sql-database-managed-instance-configure-p2s.md)
+  |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](sql-database-managed-instance-get-started-restore.md)
+  |||Obnovení nebo import Adventure Works ze souboru [BacPac](sql-database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > Skripty v tomto článku jsou zapsány k použití databáze Adventure Works. Se spravovanou instancí je nutné buď importovat databázi adventure works do databáze instancí, nebo upravit skripty v tomto článku, aby bylo nutné používat databázi Wide World Importers.
+  > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
 
-- Golang a související software pro váš operační systém nainstalován:
+- Golang a související software pro nainstalovaný operační systém:
 
-  - **MacOS**: Nainstalujte Homebrew a Golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-  - **Ubuntu**: Nainstalujte Golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-  - **Windows**: Instalace Golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
+  - **MacOS**: Nainstalujte homebrew a golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**: Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows**: Nainstalujte golang. Viz [krok 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="get-sql-server-connection-information"></a>Získání informací o připojení k serveru SQL
+## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
 
-Získejte informace o připojení, které potřebujete k připojení k databázi Azure SQL. Pro nadcházející postupy budete potřebovat úplný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Přejděte na stránku **databází SQL** nebo **instancí spravovaných SQL.**
+2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na stránce **Přehled** zkontrolujte úplný název serveru vedle **názvu serveru** pro jednu databázi nebo plně kvalifikovaný název serveru vedle **hostitele** pro spravovanou instanci. Chcete-li zkopírovat název serveru nebo název hostitele, najeďte na něj a vyberte ikonu **Kopírovat.**
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro izolovanou databázi nebo plně kvalifikovaný název serveru vedle možnost **hostitel** pro spravovanou instanci. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
-## <a name="create-golang-project-and-dependencies"></a>Vytvoření projektu Golang a závislostí
+## <a name="create-golang-project-and-dependencies"></a>Vytvoření projektu a závislostí golang
 
 1. Z terminálu vytvořte složku nového projektu s názvem **SqlServerSample**. 
 
@@ -66,7 +66,7 @@ Získejte informace o připojení, které potřebujete k připojení k databázi
    mkdir SqlServerSample
    ```
 
-2. Přejděte na **sqlserversample** a nainstalujte ovladač SQL Server pro Go.
+2. Přejděte na **SqlServerSample** a nainstalujte ovladač SQL Server pro přejít.
 
    ```bash
    cd SqlServerSample
@@ -76,7 +76,7 @@ Získejte informace o připojení, které potřebujete k připojení k databázi
 
 ## <a name="create-sample-data"></a>Vytvoření ukázkových dat
 
-1. V textovém editoru vytvořte soubor s názvem **CreateTestData.sql** ve složce **SqlServerSample.** Do souboru vložte tento kód T-SQL, který vytvoří schéma, tabulku a vloží několik řádků.
+1. V textovém editoru vytvořte ve složce **SqlServerSample** soubor s názvem **CreateTestData. SQL** . Do souboru vložte tento kód T-SQL, který vytvoří schéma, tabulku a vloží několik řádků.
 
    ```sql
    CREATE SCHEMA TestSchema;
@@ -109,7 +109,7 @@ Získejte informace o připojení, které potřebujete k připojení k databázi
 
 1. Ve složce **SqlServerSample** vytvořte soubor **sample.go**.
 
-2. Do souboru vložte tento kód. Přidejte hodnoty pro server, databázi, uživatelské jméno a heslo. Tento příklad používá [kontextové metody](https://golang.org/pkg/context/) Golang k ujistěte se, že je aktivní připojení databázového serveru.
+2. Do tohoto souboru vložte tento kód. Přidejte hodnoty pro váš server, databázi, uživatelské jméno a heslo. V tomto příkladu se používají [metody kontextu](https://golang.org/pkg/context/) golang, aby se zajistilo, že existuje aktivní připojení k databázovému serveru.
 
    ```go
    package main
@@ -328,6 +328,6 @@ Získejte informace o připojení, které potřebujete k připojení k databázi
 ## <a name="next-steps"></a>Další kroky
 
 - [Návrh první databáze Azure SQL](sql-database-design-first-database.md)
-- [Ovladač Golang pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
+- [Ovladač golang pro Microsoft SQL Server](https://github.com/denisenkom/go-mssqldb)
 - [Hlášení problémů nebo kladení dotazů](https://github.com/denisenkom/go-mssqldb/issues)
 

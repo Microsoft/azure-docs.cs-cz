@@ -1,6 +1,6 @@
 ---
-title: Import a export dat mezi fondy Spark (preview) a fondy SQL
-description: Tento článek obsahuje informace o tom, jak používat vlastní konektor pro přesun dat tam a zpět mezi fondy SQL a fondy Spark (náhled).
+title: Import a export dat mezi fondy Spark (Preview) a fondy SQL
+description: Tento článek poskytuje informace o tom, jak používat vlastní konektor pro přesouvání dat mezi fondy SQL a fondy Spark (Preview).
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,35 +10,35 @@ ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424290"
 ---
 # <a name="introduction"></a>Úvod
 
-Spark SQL Analytics Connector je navržený pro efektivní přenos dat mezi fondem Spark (preview) a fondy SQL v Azure Synapse. Spark SQL Analytics Konektor funguje pouze na fondy SQL, nefunguje s SQL na vyžádání.
+Konektor Spark SQL Analytics je navržený tak, aby efektivně přenesl data mezi fondem Spark (Preview) a fondy SQL v Azure synapse. Konektor Spark SQL Analytics funguje jenom na fondech SQL, ale nefunguje s SQL na vyžádání.
 
 ## <a name="design"></a>Návrh
 
-Přenos dat mezi fondy Spark a fondy SQL lze provést pomocí JDBC. Však vzhledem k tomu, dva distribuované systémy, jako je například Spark a SQL fondy, JDBC inklinuje být kritickým bodem s přenosem sériových dat.
+Přenos dat mezi fondy Spark a fondy SQL se dá provést pomocí JDBC. Nicméně u dvou distribuovaných systémů, jako jsou Spark a SQL, je JDBC kritickým bodem pro přenos dat pomocí sériového přenosu dat.
 
-Spark fondy SQL Analytics Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen 2 a Polybase ve fondech SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL Analytics.
+Fondy Sparku na SQL Analytics Connector je implementace zdroje dat pro Apache Spark. Používá Azure Data Lake Storage Gen 2 a základnu v rámci fondů SQL k efektivnímu přenosu dat mezi clusterem Spark a instancí SQL Analytics.
 
 ![Architektura konektoru](./media/synapse-spark-sqlpool-import-export/arch1.png)
 
-## <a name="authentication-in-azure-synapse-analytics"></a>Ověřování v Azure Synapse Analytics
+## <a name="authentication-in-azure-synapse-analytics"></a>Ověřování ve službě Azure synapse Analytics
 
-Ověřování mezi systémy se provádí bezproblémově v Azure Synapse Analytics. K dispozici je tokenová služba, která se připojuje k Azure Active Directory získat tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo serveru datového skladu. Z tohoto důvodu není nutné vytvářet přihlašovací údaje nebo je zadávat v rozhraní API konektoru, pokud je AAD-Auth nakonfigurován na účtu úložiště a serveru datového skladu. Pokud ne, lze zadat sql auth. Další podrobnosti najdete v části [Využití.](#usage)
+Ověřování mezi systémy je v Azure synapse Analytics bezproblémové. Existuje služba tokenů, která se připojuje k Azure Active Directory, aby získala tokeny zabezpečení pro použití při přístupu k účtu úložiště nebo k serveru datového skladu. Z tohoto důvodu není nutné vytvářet přihlašovací údaje ani je zadat v rozhraní API konektoru, pokud je v účtu úložiště a na serveru datového skladu nakonfigurováno AAD-auth. V takovém případě může být zadáno ověřování SQL. Další podrobnosti najdete v části věnované [používání](#usage) .
 
 ## <a name="constraints"></a>Omezení
 
-- Tento konektor funguje pouze v Modelu Scala.
+- Tento konektor funguje pouze v Scala.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Mějte **db_exporter** roli v databázi/fondu SQL, do kterého chcete přenést data do/z nich.
+- Měli byste mít **db_exporter** roli v databázi nebo ve fondu SQL, do které chcete přenést data.
 
 Chcete-li vytvořit uživatele, připojte se k databázi a postupujte podle těchto příkladů:
 
@@ -55,19 +55,19 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 ## <a name="usage"></a>Využití
 
-Příkazy importu není nutné zadat, jsou předem importovány pro prostředí poznámkového bloku.
+Příkazy import není nutné poskytnout, jsou předem importovány pro prostředí poznámkového bloku.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL v logickém serveru (instance DW) připojeném k pracovníploše
+### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL na logickém serveru (instance DW) připojené k pracovnímu prostoru
 
 > [!NOTE]
-> **Importy, které nejsou potřeba v notebooku**
+> **V prostředí poznámkových blocích nejsou importy nutné.**
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
-#### <a name="read-api"></a>Čtení API
+#### <a name="read-api"></a>Rozhraní API pro čtení
 
 ```Scala
 val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
@@ -75,32 +75,32 @@ val df = spark.read.sqlanalytics("[DBName].[Schema].[TableName]")
 
 Výše uvedené rozhraní API bude fungovat pro interní (spravované) i externí tabulky ve fondu SQL.
 
-#### <a name="write-api"></a>Rozhraní API pro zápis
+#### <a name="write-api"></a>Zapisovat rozhraní API
 
 ```Scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-where TableType může být Constants.INTERNAL nebo Constants.EXTERNAL
+kde TableType můžou být konstanty. INTERNAL nebo konstanty. EXTERNAL
 
 ```Scala
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.INTERNAL)
 df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 ```
 
-Ověřování do úložiště a SQL Server se provádí
+Ověřování pro úložiště a SQL Server je dokončeno.
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu SQL nebo databáze na logickém serveru mimo pracovní prostor
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL na logickém serveru mimo pracovní prostor
 
 > [!NOTE]
-> Importy, které nejsou potřeba v notebooku
+> V prostředí poznámkových blocích nejsou importy nutné.
 
 ```Scala
  import com.microsoft.spark.sqlanalytics.utils.Constants
  import org.apache.spark.sql.SqlAnalyticsConnector._
 ```
 
-#### <a name="read-api"></a>Čtení API
+#### <a name="read-api"></a>Rozhraní API pro čtení
 
 ```Scala
 val df = spark.read.
@@ -108,7 +108,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
-#### <a name="write-api"></a>Rozhraní API pro zápis
+#### <a name="write-api"></a>Zapisovat rozhraní API
 
 ```Scala
 df.write.
@@ -116,11 +116,11 @@ option(Constants.SERVER, "[samplews].[database.windows.net]").
 sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>Použití sql auth místo AAD
+### <a name="using-sql-auth-instead-of-aad"></a>Použití ověřování SQL místo AAD
 
-#### <a name="read-api"></a>Čtení API
+#### <a name="read-api"></a>Rozhraní API pro čtení
 
-V současné době konektor nepodporuje ověřování založené na tokenech do fondu SQL, který je mimo pracovní prostor. Musíte použít SQL Auth.
+V současné době konektor nepodporuje ověřování na základě tokenů pro fond SQL, který je mimo pracovní prostor. Musíte použít ověřování SQL.
 
 ```Scala
 val df = spark.read.
@@ -130,7 +130,7 @@ option(Constants.PASSWORD, [SQLServer Login Password]).
 sqlanalytics("<DBName>.<Schema>.<TableName>")
 ```
 
-#### <a name="write-api"></a>Rozhraní API pro zápis
+#### <a name="write-api"></a>Zapisovat rozhraní API
 
 ```Scala
 df.write.
@@ -143,17 +143,17 @@ sqlanalytics("[DBName].[Schema].[TableName]", [TableType])
 ### <a name="using-the-pyspark-connector"></a>Použití konektoru PySpark
 
 > [!NOTE]
-> Tento příklad je uveden pouze s ohledem na zážitek z poznámkového bloku.
+> Tento příklad je dán pouze v případě, že máte na paměti poznámkové bloky zachovány.
 
-Předpokládejme, že máte datový rámec "pyspark_df", který chcete zapsat do DW.
+Předpokládejme, že máte datový rámec "pyspark_df", který chcete zapisovat do datové sady DW.
 
-Vytvoření dočasné tabulky pomocí datového rámce v PySparku
+Vytvoření dočasné tabulky pomocí datového rámce v PySpark
 
 ```Python
 pyspark_df.createOrReplaceTempView("pysparkdftemptable")
 ```
 
-Spuštění buňky Scala v notebooku PySpark pomocí kouzel
+Spuštění Scala buňky v poznámkovém bloku PySpark pomocí MAGICS
 
 ```Scala
 %%spark
@@ -161,9 +161,9 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
-Podobně ve scénáři pro čtení si přečtěte data pomocí Scaly a zapište je do dočasné tabulky a použijte Spark SQL v PySparku k dotazování dočasné tabulky do datového rámce.
+Podobně ve scénáři čtení si přečtěte data pomocí Scala a zapište je do dočasné tabulky a pomocí Spark SQL v PySpark se Dotazujte dočasnou tabulku do datového rámce.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Vytvoření fondu SQL]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
-- [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure Synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 
+- [Vytvoření nového fondu Apache Spark pro pracovní prostor Azure synapse Analytics](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 

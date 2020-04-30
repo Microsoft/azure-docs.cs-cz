@@ -1,6 +1,6 @@
 ---
-title: Vytvoření a dotazování fondu Synapse SQL pomocí Azure PowerShellu
-description: Pomocí Azure PowerShellu můžete rychle vytvořit logický server fondu SQL synapse s pravidlem brány firewall na úrovni serveru.
+title: Vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
+description: K rychlému vytvoření logického serveru synapse fondu SQL pomocí pravidla brány firewall na úrovni serveru použijte Azure PowerShell.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,40 +12,40 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 57564e9dffd6022e1e4fe464b4b26a5bb8eb318b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80631330"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Úvodní příručka: Vytvoření a dotazování fondu Synapse SQL s Azure PowerShellem
+# <a name="quickstart-create-and-query-a-synapse-sql-pool-with-azure-powershell"></a>Rychlý Start: vytvoření a dotazování synapse fondu SQL pomocí Azure PowerShell
 
-Vytvořte fond Synapse SQL (datový sklad) v Azure Synapse Analytics pomocí Azure PowerShellu.
+Vytvořte synapse fond SQL (datový sklad) ve službě Azure synapse Analytics pomocí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet, než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azure.microsoft.com/free/) účet před tím, než začnete.
 
 > [!IMPORTANT]
-> Vytvoření fondu SQL může mít za následek novou fakturovatelnou službu.  Další informace najdete v [tématu Azure Synapse Analytics ceny](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
+> Vytvoření fondu SQL může mít za následek novou fakturovatelnou službu.  Další informace najdete v tématu [ceny služby Azure synapse Analytics](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se ke svému předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a postupujte podle pokynů na obrazovce.
+Přihlaste se k předplatnému Azure pomocí příkazu [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
 ```
 
-Chcete-li zjistit, které předplatné používáte, spusťte [get-azsubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Pokud chcete zjistit, které předplatné používáte, spusťte rutinu [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Get-AzSubscription
 ```
 
-Pokud potřebujete použít jiné předplatné než výchozí, spusťte [Set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Pokud potřebujete použít jiné předplatné než výchozí, spusťte rutinu [set-AzContext](/powershell/module/az.accounts/set-azcontext?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ```powershell
 Set-AzContext -SubscriptionName "MySubscription"
@@ -74,7 +74,7 @@ $databasename = "mySampleDataWarehouse"
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte [skupinu prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pomocí příkazu [New-AzResourceGroup.](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westeurope`.
+Vytvořte [skupinu prostředků Azure](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky jako skupina. Následující příklad vytvoří skupinu prostředků s názvem `myResourceGroup` v umístění `westeurope`.
 
 ```powershell
 New-AzResourceGroup -Name $resourcegroupname -Location $location
@@ -82,7 +82,7 @@ New-AzResourceGroup -Name $resourcegroupname -Location $location
 
 ## <a name="create-a-logical-server"></a>Vytvoření logického serveru
 
-Vytvořte [logický server Azure SQL](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pomocí příkazu [New-AzSqlServer.](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří náhodně pojmenovaný server ve skupině prostředků `ServerAdmin` s názvem `ChangeYourAdminPassword1`správce a heslem aplikace . Podle potřeby tyto předdefinované hodnoty nahraďte.
+Pomocí příkazu [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vytvořte [logický Server Azure SQL](../../sql-database/sql-database-logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Logický server obsahuje soubor databází spravovaných jako skupina. Následující příklad vytvoří ve skupině prostředků náhodně pojmenovaný Server s uživatelem s oprávněními správce s názvem `ServerAdmin` a heslem. `ChangeYourAdminPassword1` Podle potřeby tyto předdefinované hodnoty nahraďte.
 
 ```powershell
 New-AzSqlServer -ResourceGroupName $resourcegroupname `
@@ -93,7 +93,7 @@ New-AzSqlServer -ResourceGroupName $resourcegroupname `
 
 ## <a name="configure-a-server-firewall-rule"></a>Konfigurace pravidla brány firewall serveru
 
-Vytvořte [pravidlo brány firewall na úrovni serveru Azure SQL](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) pomocí příkazu [New-AzSqlServerFirewallRule.](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, například SQL Server Management Studio nebo nástroj SQLCMD, připojit se k fondu SQL prostřednictvím brány firewall služby fondu SQL.
+Pomocí příkazu [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vytvořte [pravidlo brány firewall na úrovni serveru SQL Azure](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) . Pravidlo brány firewall na úrovni serveru umožňuje externí aplikaci, jako je například SQL Server Management Studio nebo nástroj SQLCMD pro připojení ke fondu SQL prostřednictvím brány firewall služby fondu SQL.
 
 V následujícím příkladu je brána firewall otevřená pouze pro ostatní prostředky Azure. Pokud chcete povolit externí připojení, změňte IP adresu na příslušnou adresu pro vaše prostředí. Chcete-li otevřít všechny IP adresy, použijte jako počáteční IP adresu 0.0.0.0 a jako koncovou adresu 255.255.255.255.
 
@@ -104,12 +104,12 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 ```
 
 > [!NOTE]
-> Koncové body SQL komunikují přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, odchozí provoz přes port 1433 nemusí být povoleno bránou firewall vaší sítě. Pokud ano, nebudete se moct připojit k serveru Azure SQL, pokud vaše IT oddělení neotevře port 1433.
+> Koncových bodů SQL komunikuje přes port 1433. Pokud se pokoušíte připojit z podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nebudete se moct připojit k serveru SQL Azure, dokud vaše IT oddělení neotevře port 1433.
 >
 
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
-Následující příklad vytvoří fond SQL pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod s nižšími náklady pro fond SQL.
+Následující příklad vytvoří fond SQL pomocí dříve definovaných proměnných.  Určuje cíl služby jako DW100c, což je výchozí bod pro snížení nákladů pro váš fond SQL.
 
 ```Powershell
 New-AzSqlDatabase `
@@ -124,25 +124,25 @@ New-AzSqlDatabase `
 
 Požadované parametry jsou:
 
-* **RequestedServiceObjectiveName**: Množství [jednotek datového skladu,](what-is-a-data-warehouse-unit-dwu-cdwu.md) které požadujete. Zvýšení této částky zvyšuje náklady na výpočetní prostředky. Seznam podporovaných hodnot naleznete v [tématu limity paměti a souběžnosti](memory-concurrency-limits.md).
-* **Název databáze**: Název fondu SQL, který vytváříte.
-* **Název_serveru**: Název serveru, který používáte pro vytvoření.
+* **RequestedServiceObjectiveName**: množství [jednotek datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) , které požadujete. Zvýšením této hodnoty se zvýší náklady na výpočetní výkon. Seznam podporovaných hodnot naleznete v tématu limity pro [paměť a souběžnost](memory-concurrency-limits.md).
+* **DatabaseName**: název vytvářeného fondu SQL.
+* **Název_serveru**: název serveru, který používáte pro vytváření.
 * **ResourceGroupName**: Skupina prostředků, kterou používáte. K vyhledání dostupných skupin prostředků v rámci vašeho předplatného použijte rutinu Get-AzureResource.
-* **Edition**: Musí být "DataWarehouse" vytvořit fond SQL.
+* **Edice**: pro vytvoření fondu SQL musí být "DataWarehouse".
 
 Volitelné parametry jsou:
 
-* **CollationName:** Pokud není uvedeno, je výchozí kolace SQL_Latin1_General_CP1_CI_AS. Řazení nelze v databázi změnit.
-* **MaxSizeBytes**: Výchozí maximální velikost databáze je 240 TB. Maximální velikost omezuje data rowstore. K dispozici je neomezené úložiště pro sloupcová data.
+* **CollationName:** Pokud není uvedeno, je výchozí kolace SQL_Latin1_General_CP1_CI_AS. V databázi nelze změnit kolaci.
+* **MaxSizeBytes**: výchozí maximální velikost databáze je 240TB. Maximální velikost rowstore data. Pro sloupcová data existuje neomezené úložiště.
 
-Další informace o možnostech parametrů naleznete v tématu [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+Další informace o možnostech parametru naleznete v tématu [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 Další kurzy Rychlý start v této kolekci vycházejí z tohoto rychlého startu.
 
 > [!TIP]
-> Pokud máte v plánu pokračovat v práci s pozdějšími kurzy rychlého startu, nečistěte prostředky vytvořené v tomto rychlém startu. Pokud nemáte v plánu pokračovat, použijte následující kroky k odstranění všech prostředků vytvořených tímto rychlým startem na webu Azure Portal.
+> Pokud budete chtít pokračovat v práci s novějšími kurzy rychlý Start, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem v Azure Portal.
 >
 
 ```powershell
@@ -151,4 +151,4 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste vytvořili fond SQL, vytvořili pravidlo brány firewall, připojili se k fondu SQL a spusťte několik dotazů. Další informace, pokračujte [načíst data do](load-data-from-azure-blob-storage-using-polybase.md) článku fondu SQL.
+Nyní jste vytvořili fond SQL, vytvořili jste pravidlo brány firewall připojenou k vašemu fondu SQL a spustili několik dotazů. Pokud se chcete dozvědět víc, přejděte k článku o [načtení dat do fondu SQL](load-data-from-azure-blob-storage-using-polybase.md) .

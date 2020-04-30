@@ -1,6 +1,6 @@
 ---
 title: Správa přístupu k pracovním prostorům, datům a kanálům
-description: Zjistěte, jak spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure Synapse Analytics (preview).
+description: Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure synapse Analytics (Preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,85 +10,85 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424766"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
-Zjistěte, jak spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure Synapse Analytics (preview).
+Naučte se spravovat řízení přístupu k pracovním prostorům, datům a kanálům v pracovním prostoru Azure synapse Analytics (Preview).
 
 > [!NOTE]
-> Pro GA bude RBAC rozvinutější zavedením rolí Azure RBAC specifických pro Synapse
+> V případě GA se RBAC bude vyvíjet prostřednictvím zavedení rolí Azure RBAC specifických pro synapse.
 
-## <a name="access-control-for-workspace"></a>Řízení přístupu pro pracovní prostor
+## <a name="access-control-for-workspace"></a>Access Control pro pracovní prostor
 
-Pro produkční nasazení do pracovního prostoru Azure Synapse doporučujeme uspořádat vaše prostředí tak, aby bylo snadné zřídit uživatele a správce.
+V případě produkčního nasazení do pracovního prostoru Azure synapse doporučujeme organizovat vaše prostředí a usnadnit tak zřizování uživatelů a správců.
 
 > [!NOTE]
-> Zde přijatý přístup je vytvořit několik skupin zabezpečení a potom nakonfigurovat pracovní prostor tak, aby je používal konzistentně. Po nastavení skupin potřebuje správce pouze spravovat členství v rámci skupin zabezpečení.
+> Tady je postup, jak vytvořit několik skupin zabezpečení a pak nakonfigurovat pracovní prostor tak, aby se konzistentně používal. Po nastavení skupin stačí správce spravovat členství v rámci skupin zabezpečení.
 
-### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Krok 1: Nastavení skupin zabezpečení s názvy podle tohoto vzoru
+### <a name="step-1-set-up-security-groups-with-names-following-this-pattern"></a>Krok 1: nastavení skupin zabezpečení s názvy za tímto vzorem
 
-1. Vytvořit skupinu zabezpečení s názvem`Synapse_WORKSPACENAME_Users`
-2. Vytvořit skupinu zabezpečení s názvem`Synapse_WORKSPACENAME_Admins`
+1. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Users`
+2. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Admins`
 3. Přidání `Synapse_WORKSPACENAME_Admins` do `ProjectSynapse_WORKSPACENAME_Users`
 
 ### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Krok 2: Příprava výchozího účtu ADLS Gen2
 
-Při zřizování pracovního prostoru jste museli vybrat účet ADLSGEN2 a kontejner pro souborový systém pro pracovní prostor, který chcete použít.
+Když jste zřídili pracovní prostor, museli jste vybrat účet ADLSGEN2 a kontejner pro systém souborů, který má pracovní prostor použít.
 
-1. Otevření [portálu Azure](https://portal.azure.com)
-2. Přechod na účet ADLSGEN2
-3. Přechod na kontejner (souborový systém), který jste vybrali pro pracovní prostor Azure Synapse
-4. Klikněte na **Řízení přístupu (IAM)**
+1. Otevřete [Azure Portal](https://portal.azure.com)
+2. Přejít na účet ADLSGEN2
+3. Přejít do kontejneru (FileSystem), který jste vybrali pro pracovní prostor Azure synapse
+4. Klikněte na **Access Control (IAM)** .
 5. Přiřaďte následující role:
-   1. **Role čtenáře:**`Synapse_WORKSPACENAME_Users`
-   2. Role **vlastníka dat objektu blob úložiště:**`Synapse_WORKSPACENAME_Admins`
-   3. Role **přispěvatele dat objektu blob úložiště:**`Synapse_WORKSPACENAME_Users`
-   4. Role **vlastníka dat objektu blob úložiště:**`WORKSPACENAME`
+   1. Role **čtecího modulu** :`Synapse_WORKSPACENAME_Users`
+   2. Role **vlastníka dat objektu BLOB služby Storage** :`Synapse_WORKSPACENAME_Admins`
+   3. Role **Přispěvatel dat objektu BLOB služby Storage** :`Synapse_WORKSPACENAME_Users`
+   4. Role **vlastníka dat objektu BLOB služby Storage** :`WORKSPACENAME`
   
 ### <a name="step-3-configure-the-workspace-admin-list"></a>Krok 3: Konfigurace seznamu správců pracovního prostoru
 
-1. Přejít na [ **webové uživatelské uzuliny Azure Synapse**](https://web.azuresynapse.net)
-2. Přejít na **spravovat**  > **řízení přístupu** **zabezpečení** > 
-3. Klikněte na **Přidat správce**a vyberte`Synapse_WORKSPACENAME_Admins`
+1. Přejít do [ **webového uživatelského rozhraní Azure synapse**](https://web.azuresynapse.net)
+2. Přejít na **Správa**  > **Security** > **řízení přístupu** zabezpečení
+3. Klikněte na **přidat správce**a vyberte`Synapse_WORKSPACENAME_Admins`
 
-### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu sql admin pro pracovní prostor
+### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
 1. Přejděte na web [Azure Portal](https://portal.azure.com).
-2. Přechod do pracovního prostoru
-3. Přejít na **správce služby** > Active**Directory nastavení.**
-4. Klikněte na **Nastavit správce.**
+2. Přejděte do pracovního prostoru.
+3. Přejít na **Nastavení** > **Správce služby Active Directory**
+4. Klikněte na **nastavit správce** .
 5. Vyberte `Synapse_WORKSPACENAME_Admins`
-6. klikněte na **Vybrat**
-7. klikněte na **Uložit**
+6. klikněte na **Vybrat** .
+7. klikněte na **Uložit** .
 
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Krok 5: Přidání a odebrání uživatelů a správců do skupin zabezpečení
 
-1. Přidání uživatelů, kteří potřebují přístup pro správu,`Synapse_WORKSPACENAME_Admins`
+1. Přidat uživatele, kteří potřebují přístup správce k`Synapse_WORKSPACENAME_Admins`
 2. Přidat všechny ostatní uživatele do`Synapse_WORKSPACENAME_Users`
 
-## <a name="access-control-to-data"></a>Řízení přístupu k datům
+## <a name="access-control-to-data"></a>Access Control k datům
 
-Řízení přístupu k podkladovým datům je rozděleno do tří částí:
+Řízení přístupu k podkladovým datům je rozděleno na tři části:
 
-- Přístup k účtu úložiště v rovině dat (již nakonfigurovaný výše v kroku 2)
-- Přístup k databázím SQL (pro fondy SQL i SQL na vyžádání)
-- Vytvoření pověření pro databáze SQL na vyžádání přes účet úložiště
+- Přístup k účtu úložiště (už je nakonfigurovaný výše v kroku 2) – rovina dat
+- Přístup k databázím SQL (pro fondy SQL i SQL na vyžádání) datové roviny
+- Vytvoření přihlašovacích údajů pro databáze SQL na vyžádání přes účet úložiště
 
 ## <a name="access-control-to-sql-databases"></a>Řízení přístupu k databázím SQL
 
 > [!TIP]
-> Níže uvedené kroky je třeba spustit pro **každou** databázi SQL udělit uživateli přístup ke všem databázím SQL.
+> Níže uvedené kroky musí být spuštěny pro **každou** databázi SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL.
 
 ### <a name="sql-on-demand"></a>SQL na vyžádání
 
-Chcete-li uživateli udělit přístup k **jedné** databázi na vyžádání SQL, postupujte podle kroků v tomto příkladu:
+Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžádání, postupujte podle kroků v tomto příkladu:
 
-1. Vytvořit přihlášení
+1. Vytvořit přihlašovací údaje
 
     ```sql
     use master
@@ -105,7 +105,7 @@ Chcete-li uživateli udělit přístup k **jedné** databázi na vyžádání SQ
     CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
     ```
 
-3. Přidat UŽIVATELE k členům zadané role
+3. Přidat uživatele do členů zadané role
 
     ```sql
     use yourdb -- Use your DB name
@@ -115,9 +115,9 @@ Chcete-li uživateli udělit přístup k **jedné** databázi na vyžádání SQ
 
 ### <a name="sql-pools"></a>Fondy SQL
 
-Chcete-li uživateli udělit přístup k **jedné** databázi SQL, postupujte takto:
+Chcete-li uživateli udělit přístup k **jednomu** SQL Database, postupujte podle následujících kroků:
 
-1. Vytvořte uživatele v databázi spuštěním následujícího příkazu, který cílí na požadovanou databázi v selektoru kontextu (rozevírací nabídka pro výběr databází):
+1. Vytvořte uživatele v databázi tak, že spustíte následující příkaz, který cílí na požadovanou databázi v selektor kontextu (rozevírací seznam pro výběr databází):
 
     ```sql
     --Create user in SQL DB
@@ -132,26 +132,26 @@ Chcete-li uživateli udělit přístup k **jedné** databázi SQL, postupujte ta
     ```
 
 > [!IMPORTANT]
-> *db_datareader* a *db_datawriter* mohou pracovat pro oprávnění ke čtení a zápisu, pokud je udělení *oprávnění db_owner* nežádoucí.
-> Pro uživatele Spark číst a zapisovat přímo ze Spark do nebo z fondu SQL, *db_owner* oprávnění je vyžadováno.
+> *db_datareader* a *db_datawriter* mohou fungovat pro oprávnění ke čtení a zápisu, pokud udělení oprávnění *db_owner* není žádoucí.
+> Aby mohl uživatel Spark číst a zapisovat přímo z Sparku do nebo z fondu SQL, vyžaduje se *db_owner* oprávnění.
 
-Po vytvoření uživatelů ověřte, že SQL na vyžádání může dotaz ovat účet úložiště:
+Po vytvoření uživatelů ověřte, jestli se může SQL na vyžádání dotazovat na účet úložiště:
 
-- Spusťte následující příkaz zaměřený na **hlavní** databázi SQL na vyžádání:
+- Spusťte následující příkaz, který cílí na **hlavní** databázi SQL na vyžádání:
 
     ```sql
     CREATE CREDENTIAL [https://<storageaccountname>.dfs.core.windows.net]
     WITH IDENTITY='User Identity';
     ```
 
-## <a name="access-control-to-workspace-pipeline-runs"></a>Řízení přístupu ke spuštění kanálu pracovního prostoru
+## <a name="access-control-to-workspace-pipeline-runs"></a>Řízení přístupu k běhu kanálu pracovního prostoru
 
 ### <a name="workspace-managed-identity"></a>Identita spravovaná pracovním prostorem
 
 > [!IMPORTANT]
-> Chcete-li úspěšně spustit kanály, které obsahují datové sady nebo aktivity, které odkazují na fond SQL, musí být identitě pracovního prostoru udělen přístup přímo do fondu SQL.
+> Aby bylo možné úspěšně spustit kanály, které zahrnují datové sady nebo aktivity odkazující na fond SQL, je nutné identitám pracovního prostoru udělit přímý přístup ke fondu SQL.
 
-Spusťte následující příkazy v každém fondu SQL, abyste umožnili spravované identitě pracovního prostoru spouštět kanály v databázi fondu SQL:
+Spusťte následující příkazy v každém fondu SQL, abyste umožnili spravovanému pracovnímu prostoru používat kanály v databázi fondu SQL:
 
 ```sql
 --Create user in DB
@@ -161,7 +161,7 @@ CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
 ```
 
-Toto oprávnění lze odebrat spuštěním následujícího skriptu ve stejném fondu SQL:
+Toto oprávnění je možné odebrat spuštěním následujícího skriptu na stejném fondu SQL:
 
 ```sql
 --Revoking permission to the identity
@@ -173,4 +173,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled přístupu a řízení v synapse SQL naleznete v tématu [Synapse SQL řízení přístupu](../sql/access-control.md). Další informace o objektových objektech databáze naleznete [v tématu Principals](https://msdn.microsoft.com/library/ms181127.aspx). Další informace o databázových rolích naleznete v článku [Role databáze.](https://msdn.microsoft.com/library/ms189121.aspx)
+Přehled přístupu a řízení v synapse SQL najdete v tématu [synapse SQL Access Control](../sql/access-control.md). Další informace o objektech zabezpečení databáze naleznete v tématu [objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx). Další informace o databázových rolích najdete v článku [databázové role](https://msdn.microsoft.com/library/ms189121.aspx) .

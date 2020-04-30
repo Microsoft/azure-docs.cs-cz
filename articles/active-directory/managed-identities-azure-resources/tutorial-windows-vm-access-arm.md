@@ -1,5 +1,5 @@
 ---
-title: Kurz`:` Použití spravované identity pro přístup ke Správci prostředků Azure – Windows – Azure AD
+title: Kurz`:` použití spravované identity pro přístup k Azure Resource Manager-Windows-Azure AD
 description: Tento kurz vás postupně provede používáním spravované identity přiřazené systémem na virtuálním počítači s Windows pro přístup k Azure Resource Manageru.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240475"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Použití spravované identity přiřazené systémem ve virtuálním počítači s Windows pro přístup k Resource Manageru
@@ -42,7 +42,7 @@ Když použijete spravované identity pro prostředky Azure, může kód získat
 1.  Přejděte ke kartě **Skupiny prostředků**. 
 2.  Vyberte **skupinu prostředků**, kterou jste pro **virtuální počítač s Windows** vytvořili. 
 3.  Na panelu vlevo přejděte na **Řízení přístupu (IAM)**. 
-4.  Potom **přidejte přiřazení role** nové přiřazení role pro váš virtuální počítač se systémem **Windows**.  V poli **Role** zvolte **Čtenář**. 
+4.  Pak **přidejte přiřazení role** k novému přiřazení role pro **virtuální počítač s Windows**.  V poli **Role** zvolte **Čtenář**. 
 5.  V dalším rozevíracím seznamu **Přiřadit přístup k** vyberte prostředek **Virtuální počítač**. 
 6.  Potom zkontrolujte, že je v rozevíracím seznamu **Předplatné** uvedené správné předplatné. A ve **skupině prostředků** vyberte **Všechny skupiny prostředků**. 
 7.  Nakonec **vyberte** v rozevíracím seznamu svůj virtuální počítač s Windows a klikněte na **Uložit**.
@@ -55,8 +55,8 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
 
 1.  Na portálu přejděte na **Virtuální počítače**, přejděte ke svému virtuálnímu počítači s Windows a v části **Přehled** klikněte na **Připojit**. 
 2.  Zadejte své **Uživatelské jméno** a **Heslo**, které jste přidali při vytváření virtuálního počítače s Windows. 
-3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **powershell** ve vzdálené relaci. 
-4.  Pomocí rutiny Invoke-WebRequest vytvořte požadavek na místní spravovanou identitu pro koncový bod prostředků Azure, abyste získali přístupový token pro Azure Resource Manager.
+3.  Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete **PowerShell** ve vzdálené relaci. 
+4.  Pomocí rutiny Invoke-WebRequest vytvořte požadavek na koncový bod místní spravované identity pro prostředky Azure, abyste získali přístupový token pro Azure Resource Manager.
 
     ```powershell
        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -76,7 +76,7 @@ V této části budete muset použít **PowerShell**.  Pokud **PowerShell** nem�
     $ArmToken = $content.access_token
     ```
     
-    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. V tomto příkladu také používáme rutinu Invoke-WebRequest k volání do Správce prostředků Azure a zahrneme přístupový token do hlavičky Autorizace.
+    Nakonec proveďte pomocí přístupového tokenu volání Azure Resource Manageru. V tomto příkladu používáme také rutinu Invoke-WebRequest k volání Azure Resource Manager a do autorizační hlavičky zahrňte přístupový token.
     
     ```powershell
     (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $ArmToken"}).content

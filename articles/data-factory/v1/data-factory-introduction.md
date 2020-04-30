@@ -1,5 +1,5 @@
 ---
-title: Úvod do data factory, služby pro integraci dat
+title: Úvod do Data Factory, služba pro integraci dat
 description: Dozvíte se, že Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 01/22/2018
 ms.openlocfilehash: 30578f204ff05443de82015627d67d3d4d357dce
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73666802"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
-> [!div class="op_single_selector" title1="Vyberte verzi služby Data Factory, kterou používáte:"]
+> [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](data-factory-introduction.md)
 > * [Verze 2 (aktuální verze)](../introduction.md)
 
@@ -125,7 +125,7 @@ V současné době můžete vytvářet datové továrny v oblastech USA – záp
 
 Samotná služba Azure Data Factory žádná data neuchovává. Umožňuje vytvářet pracovní postupy řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](#data-movement-activities). Umožňuje také zpracovávat data pomocí [výpočetních služeb](#data-transformation-activities) v jiných oblastech nebo v místním prostředí. Také vám umožňuje [monitorovat a spravovat pracovní postupy](data-factory-monitor-manage-pipelines.md) pomocí uživatelského prostředí nebo prostřednictvím kódu programu.
 
-Služba Data Factory je dostupná pouze v oblastech USA – západ, USA – východ a Severní Evropa. Služba pohánějící přesouvání dat ve službě Data Factory je dostupná [globálně](data-factory-data-movement-activities.md#global) v několika oblastech. Pokud je úložiště dat za bránou firewall, pak [brána pro správu dat,](data-factory-move-data-between-onprem-and-cloud.md) která je nainstalovaná v místním prostředí, přesune data.
+Služba Data Factory je dostupná pouze v oblastech USA – západ, USA – východ a Severní Evropa. Služba pohánějící přesouvání dat ve službě Data Factory je dostupná [globálně](data-factory-data-movement-activities.md#global) v několika oblastech. Pokud je úložiště dat za bránou firewall, pak [Správa dat bránu](data-factory-move-data-between-onprem-and-cloud.md) , která je nainstalovaná ve vašem místním prostředí, místo toho přesune data.
 
 Předpokládejme například, že vaše výpočetní prostředí, jako je cluster Azure HDInsight nebo služba Azure Machine Learning, se nacházejí v oblasti Západní Evropa. Můžete vytvořit a používat instanci služby Azure Data Factory v oblasti Severní Evropa. Pak ji můžete použít k naplánování úloh ve vašich výpočetních prostředích v oblasti Západní Evropa. Trvá několik milisekund, než Data Factory aktivuje úlohu ve výpočetním prostředí, ale čas potřebný pro vykonání úlohy ve výpočetním prostředí se nemění.
 
@@ -140,7 +140,7 @@ Datové kanály ve službě Azure Data Factory můžete vytvořit pomocí někte
 
 Pokud chcete zjistit, jak sestavit datové továrny s datovými kanály, postupujte podle podrobných pokynů v následujících kurzech:
 
-| Kurz | Popis |
+| Tutoriál | Popis |
 | --- | --- |
 | [Přesun dat mezi dvěma cloudovými úložišti dat](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |Vytvoříte datovou továrnu s kanálem, který přesouvá data z úložiště objektů blob do tabulky SQL. |
 | [Transformace dat pomocí clusteru Hadoop](data-factory-build-your-first-pipeline.md) |Sestavíte svou první datovou továrnu Azure s datovým kanálem, který zpracovává data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop). |

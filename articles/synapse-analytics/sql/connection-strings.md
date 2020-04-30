@@ -1,6 +1,6 @@
 ---
-title: Připojovací řetězce pro Synapse SQL (náhled)
-description: Připojovací řetězce pro Synapse SQL (náhled)
+title: Připojovací řetězce pro synapse SQL (Preview)
+description: Připojovací řetězce pro synapse SQL (Preview)
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8c1f13449c8ee5152e4e5b48af87f41004e599dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424556"
 ---
-# <a name="connection-strings-for-synapse-sql-preview"></a>Připojovací řetězce pro Synapse SQL (náhled)
+# <a name="connection-strings-for-synapse-sql-preview"></a>Připojovací řetězce pro synapse SQL (Preview)
 
-K Synapse SQL (preview) se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Níže jsou uvedeny některé příklady propojení řetězců pro každý protokol. 
+K synapse SQL (Preview) se můžete připojit pomocí několika různých aplikačních protokolů, jako jsou, [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Níže jsou uvedeny příklady řetězců připojení pro každý protokol. 
 
-Můžete také použít portál Azure k vytvoření připojovacího řetězce.  Chcete-li vytvořit připojovací řetězec pomocí portálu Azure, přejděte do okna databáze v části *Essentials* klikněte na *Zobrazit připojovací řetězce databáze*.
+Můžete také použít Azure Portal k sestavení připojovacího řetězce.  Pokud chcete vytvořit připojovací řetězec pomocí Azure Portal, přejděte v okně databáze v části *základy* klikněte na *Zobrazit databázové připojovací řetězce*.
 
-## <a name="sample-adonet-connection-string"></a>Ukázka ADO.NET připojovacířetězec
+## <a name="sample-adonet-connection-string"></a>Ukázkový připojovací řetězec ADO.NET
 
 ```csharp
 Server=tcp:{your_server}.sql.azuresynapse.net,1433;Database={your_database};User ID={your_user_name};Password={your_password_here};Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
@@ -47,12 +47,12 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 > [!NOTE]
-> Zvažte nastavení časového limitu připojení na 300 sekund, aby připojení přežilo krátké období nedostupnosti.
+> Zvažte nastavení časového limitu připojení na 300 sekund, aby připojení bylo zachováno krátkou dobu nedostupnosti.
 
 ## <a name="recommendations"></a>Doporučení
 
-Pro provádění dotazů **SQL na vyžádání** jsou doporučenými nástroji Azure Data [Studio](get-started-azure-data-studio.md) a Azure Synapse Studio.
+Pro spouštění dotazů **na vyžádání SQL** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud chcete začít s analýzou dotazování mj. [Query with Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Pokud chcete začít dotazovat se na analýzy pomocí sady Visual Studio a dalších aplikací, přečtěte si téma [dotazování pomocí sady Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

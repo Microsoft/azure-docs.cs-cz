@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření vyhledávacího indexu v Pythonu pomocí rest API'
+title: 'Rychlý Start: vytvoření indexu vyhledávání v Pythonu pomocí rozhraní REST API'
 titleSuffix: Azure Cognitive Search
-description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, Jupyter poznámkových bloků a rozhraní REST API Azure Cognitive Search.
+description: Vysvětluje, jak vytvořit index, načíst data a spustit dotazy pomocí Pythonu, poznámkových bloků Jupyter a REST API Azure Kognitivní hledání.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -10,53 +10,53 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 04/01/2020
 ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80585927"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Úvodní příručka: Vytvoření indexu Azure Cognitive Search v Pythonu pomocí poznámkových bloků Jupyter
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Pythonu pomocí poznámkových bloků Jupyter
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
-> * [Prostředí PowerShell (REST)](search-create-index-rest-api.md)
-> * [C#](search-create-index-dotnet.md)
-> * [Pošťák (REST)](search-get-started-postman.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
+> * [R #](search-create-index-dotnet.md)
+> * [Post (REST)](search-get-started-postman.md)
 > * [Portál](search-create-index-portal.md)
 > 
 
-Vytvořte poznámkový blok Jupyter, který vytvoří, načte a dotazuje index Azure Cognitive Search pomocí Pythonu a [virtuálních api Azure Cognitive Search REST](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit poznámkový blok krok za krokem. Případně si můžete [stáhnout a spustit hotový jupyter python notebook](https://github.com/Azure-Samples/azure-search-python-samples).
+Vytvářejte Jupyter Poznámkový blok, který vytváří, načítá a odesílá dotazy do indexu služby Azure Kognitivní hledání pomocí Pythonu a [rozhraní REST API azure kognitivní hledání](https://docs.microsoft.com/rest/api/searchservice/). Tento článek vysvětluje, jak vytvořit Poznámkový blok krok za krokem. Případně můžete [Stáhnout a spustit dokončený Poznámkový blok Pythonu Jupyter](https://github.com/Azure-Samples/azure-search-python-samples).
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pro tento rychlý start jsou vyžadovány následující služby a nástroje. 
+V tomto rychlém startu jsou vyžadovány následující služby a nástroje. 
 
-+ [Anaconda 3.x](https://www.anaconda.com/distribution/#download-section), poskytující python 3.x a jupyternotebooky.
++ [Anaconda 3. x](https://www.anaconda.com/distribution/#download-section), který poskytuje Poznámkový blok Python 3. x a Jupyter.
 
-+ [Vytvořte službu Azure Cognitive Search](search-create-service-portal.md) nebo [najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý start můžete použít úroveň Free. 
++ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Úroveň Free můžete použít pro tento rychlý Start. 
 
-## <a name="get-a-key-and-url"></a>Získání klíče a adresy URL
+## <a name="get-a-key-and-url"></a>Získat klíč a adresu URL
 
-Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do předplatného přidali Azure Cognitive Search, postupujte podle následujících kroků a získejte potřebné informace:
+Volání REST vyžadují pro každý požadavek adresu URL služby a přístupový klíč. Vyhledávací služba se vytvoří s oběma, takže pokud jste do svého předplatného přidali Azure Kognitivní hledání, postupujte podle těchto kroků a získejte potřebné informace:
 
-1. [Přihlaste se na portál Azure](https://portal.azure.com/)portal a na stránce **Přehled** vyhledávací služby získáte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
+1. [Přihlaste se k Azure Portal](https://portal.azure.com/)a na stránce **Přehled** vyhledávací služby Získejte adresu URL. Příkladem koncového bodu může být `https://mydemo.search.windows.net`.
 
-1. V **nastavení** > **klíče**, získat klíč správce pro úplná práva ke službě. Existují dva zaměnitelné klíče pro správu, které jsou k dispozici pro kontinuitu podnikání v případě, že potřebujete převrátit jeden. Primární nebo sekundární klíč můžete použít při požadavcích na přidávání, úpravy a odstranění objektů.
+1. V části **Nastavení** > **klíče**Získejte klíč správce s úplnými právy k této službě. Existují dva zaměnitelné klíče správce poskytované pro zajištění kontinuity podnikových služeb pro případ, že byste museli nějakou dobu navrátit. V žádostech o přidání, úpravu a odstranění objektů můžete použít primární nebo sekundární klíč.
 
 ![Získání koncového bodu HTTP a přístupového klíče](media/search-get-started-postman/get-url-key.png "Získání koncového bodu HTTP a přístupového klíče")
 
-Všechny požadavky vyžadují klíč rozhraní api na každý požadavek odeslaný do vaší služby. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
+Všechny požadavky vyžadují klíč rozhraní API na všech žádostech odeslaných službě. Platný klíč vytváří na základě žádosti vztah důvěryhodnosti mezi aplikací, která žádost odeslala, a službou, která ji zpracovává.
 
-## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Připojení k Azure Kognitivní hledání
 
-V této úloze spusťte poznámkový blok Jupyter a ověřte, že se můžete připojit k Azure Cognitive Search. Uděláte to tak, že požádáte o seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete k spuštění poznámkového bloku použít anakonda Navigator.
+V této úloze spusťte Poznámkový blok Jupyter a ověřte, jestli se můžete připojit k Azure Kognitivní hledání. Provedete to tak, že si vyžádáte seznam indexů z vaší služby. Ve Windows s Anaconda3 můžete použít Anaconda Navigator ke spuštění poznámkového bloku.
 
-1. Vytvořte nový poznámkový blok Pythonu3.
+1. Vytvoření nového poznámkového bloku python3
 
-1. V první buňce načtěte knihovny používané pro práci s JSON a formulování požadavků HTTP.
+1. V první buňce načtěte knihovny používané pro práci s JSON a formulujte požadavky HTTP.
 
    ```python
    import json
@@ -64,7 +64,7 @@ V této úloze spusťte poznámkový blok Jupyter a ověřte, že se můžete p�
    from pprint import pprint
    ```
 
-1. V druhé buňce zadejte prvky požadavku, které budou konstanty na každý požadavek. Nahraďte název vyhledávací služby (YOUR-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (YOUR-ADMIN-API-KEY) platnými hodnotami. 
+1. Do druhé buňky zadejte prvky požadavku, které budou konstanty u všech požadavků. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. 
 
    ```python
    endpoint = 'https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/'
@@ -73,9 +73,9 @@ V této úloze spusťte poznámkový blok Jupyter a ověřte, že se můžete p�
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
 
-   Pokud získáte ConnectionError `"Failed to establish a new connection"`, ověřte, zda je klíč rozhraní api primárním nebo sekundárním klíčem správce a zda jsou na místě všechny úvodní a koncové znaky (`?` a `/`).
+   Pokud získáte ConnectionError `"Failed to establish a new connection"`, ověřte, že klíč rozhraní API je primární nebo sekundární klíč správce a že jsou nastavené všechny úvodní a koncové znaky (`?` a `/`).
 
-1. Ve třetí buňce zformulovat požadavek. Tento požadavek GET cílí na kolekci indexů vyhledávací služby a vybere vlastnost název existujících indexů.
+1. V třetí buňce formulujte požadavek. Tento požadavek GET cílí na kolekci indexů vaší vyhledávací služby a vybere vlastnost název existujících indexů.
 
    ```python
    url = endpoint + "indexes" + api_version + "&$select=name"
@@ -84,21 +84,21 @@ V této úloze spusťte poznámkový blok Jupyter a ověřte, že se můžete p�
    pprint(index_list)
    ```
 
-1. Spusťte každý krok. Pokud existují indexy, odpověď obsahuje seznam názvů indexů. Na následujícím snímku obrazovky služba již má azureblob-index a index realestate-us-sample.
+1. Spusťte jednotlivé kroky. Pokud indexy existují, obsahuje odpověď seznam názvů indexů. Na následujícím snímku obrazovky již služba obsahuje index azureblobu-index a realestate-US-Sample.
 
-   ![Skript Pythonu v poznámkovém bloku Jupyter s http požadavky na Azure Cognitive Search](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s http požadavky na Azure Cognitive Search")
+   ![Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání](media/search-get-started-python/connect-azure-search.png "Skript Pythonu v poznámkovém bloku Jupyter s požadavky HTTP na Azure Kognitivní hledání")
 
-   Naproti tomu kolekce prázdný index vrátí tuto odpověď:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
+   Naproti tomu prázdná kolekce indexů vrátí tuto odpověď:`{'@odata.context': 'https://mydemo.search.windows.net/$metadata#indexes(name)', 'value': []}`
 
 ## <a name="1---create-an-index"></a>1. Vytvoření indexu
 
-Pokud nepoužíváte portál, musí existovat index ve službě před načtením dat. Tento krok používá [vytvořit index ROZHRANÍ REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) k nabízení schématu indexu do služby.
+Pokud portál nepoužíváte, musí ve službě existovat index, aby bylo možné načíst data. Tento krok používá [REST API vytvoření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) k odeslání schématu indexu do služby.
 
-Mezi požadované prvky indexu patří název, kolekce polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují způsob použití pole (například zda je fulltextové prohledávatelné, filtrovatelné nebo načítatelné ve výsledcích hledání). V rámci indexu musí být `Edm.String` jedno z polí typu označeno jako *klíč* pro identitu dokumentu.
+Požadované prvky indexu zahrnují název, kolekci polí a klíč. Kolekce polí definuje strukturu *dokumentu*. Každé pole má název, typ a atributy, které určují, jak se pole používá (například zda je fulltextově prohledávatelné, filtrovatelné nebo dá být možné ve výsledcích hledání). V indexu musí být jedno z polí typu `Edm.String` určeno jako *klíč* pro identitu dokumentu.
 
-Tento index se nazývá "hotely-rychlý start" a má definice polí, které vidíte níže. Jedná se o podmnožinu většího [indexu Hotels,](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) který se používá v jiných návodech. Ořezáni jsme to v tomto rychlém startu pro stručnost.
+Tento index má název "hotely-rychlý Start" a obsahuje definice polí, které vidíte níže. Jedná se o podmnožinu většího [indexu hotelů](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) používaných v jiných návodech. V tomto rychlém startu jsme ho pro zkrácení vystříhat.
 
-1. V další buňce vložte následující příklad do buňky, abyste poskytli schéma. 
+1. V další buňce vložte následující příklad do buňky pro zadání schématu. 
 
     ```python
     index_schema = {
@@ -126,7 +126,7 @@ Tento index se nazývá "hotely-rychlý start" a má definice polí, které vid�
     }
     ```
 
-2. V jiné buňce zformulovat požadavek. Tento požadavek POST cílí na kolekci indexů vyhledávací služby a vytvoří index založený na schématu indexu, které jste zadali v předchozí buňce.
+2. V jiné buňce formulujte požadavek. Tento požadavek POST cílí na kolekci indexů vaší vyhledávací služby a vytvoří index založený na schématu indexu, které jste zadali v předchozí buňce.
 
    ```python
    url = endpoint + "indexes" + api_version
@@ -135,22 +135,22 @@ Tento index se nazývá "hotely-rychlý start" a má definice polí, které vid�
    pprint(index)
    ```
 
-3. Spusťte každý krok.
+3. Spusťte jednotlivé kroky.
 
-   Odpověď zahrnuje reprezentaci JSON schématu. Následující snímek obrazovky zobrazuje pouze část odpovědi.
+   Odpověď obsahuje reprezentace schématu ve formátu JSON. Následující snímek obrazovky ukazuje jenom část odpovědi.
 
     ![Požadavek na vytvoření indexu](media/search-get-started-python/create-index.png "Požadavek na vytvoření indexu")
 
 > [!Tip]
-> Dalším způsobem, jak ověřit vytvoření indexu, je zkontrolovat seznam Indexy na portálu.
+> Dalším způsobem, jak ověřit vytvoření indexu, je zkontrolovat seznam indexy na portálu.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2 - Načíst dokumenty
+## <a name="2---load-documents"></a>2. načtení dokumentů
 
-Chcete-li vyžádat dokumenty, použijte požadavek HTTP POST do koncového bodu url indexu. Rozhraní REST API je [Přidat, Aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
+K odesílání dokumentů použijte požadavek HTTP POST na koncový bod adresy URL vašeho indexu. REST API je [Přidání, aktualizace nebo odstranění dokumentů](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Dokumenty pocházejí z [HotelsData](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/HotelsData_toAzureSearch.JSON) na GitHubu.
 
-1. V nové buňce zadejte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci nahrávání pro každý dokument.
+1. V nové buňce poskytněte čtyři dokumenty, které odpovídají schématu indexu. Zadejte akci odeslání pro každý dokument.
 
     ```python
     documents = {
@@ -235,7 +235,7 @@ Chcete-li vyžádat dokumenty, použijte požadavek HTTP POST do koncového bodu
     }
     ```   
 
-2. V jiné buňce zformulovat požadavek. Tento požadavek POST cílí na kolekci dokumentů indexu rychlého startu hotels a odešle dokumenty poskytnuté v předchozím kroku.
+2. V jiné buňce formulujte požadavek. Tento požadavek POST cílí na kolekci docs pro index pro rychlý začátek a vložení dokumentů uvedených v předchozím kroku.
 
    ```python
    url = endpoint + "indexes/hotels-quickstart/docs/index" + api_version
@@ -244,15 +244,15 @@ Chcete-li vyžádat dokumenty, použijte požadavek HTTP POST do koncového bodu
    pprint(index_content)
    ```
 
-3. Spuštěním každého kroku přenesete dokumenty do indexu ve vyhledávací službě. Výsledky by měly vypadat podobně jako v následujícím příkladu. 
+3. Spusťte jednotlivé kroky a nahrajte dokumenty do indexu ve vyhledávací službě. Výsledky by měly vypadat podobně jako v následujícím příkladu. 
 
-    ![Odeslání dokumentů do rejstříku](media/search-get-started-python/load-index.png "Odeslání dokumentů do rejstříku")
+    ![Odeslat dokumenty do indexu](media/search-get-started-python/load-index.png "Odeslat dokumenty do indexu")
 
 ## <a name="3---search-an-index"></a>3. Prohledání indexu
 
-Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+V tomto kroku se dozvíte, jak zadat dotaz na index pomocí [vyhledávacích dokumentů REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-1. V buňce zadejte výraz dotazu, který provede prázdné hledání (search=*) a vrátí nehodnocený seznam (skóre hledání = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Cognitive Search vrátí 50 shod najednou. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentu a hodnoty. Přidejte $count=true, abyste získali počet všech dokumentů ve výsledcích.
+1. V buňce zadejte výraz dotazu, který spustí prázdné vyhledávání (Search = *) a vrátí Neseřazený seznam (hledání skóre = 1,0) libovolných dokumentů. Ve výchozím nastavení Azure Kognitivní hledání vrátí 50 shod v čase. Jako strukturovaný tento dotaz vrátí celou strukturu dokumentů a hodnot. Přidejte $count = true pro získání počtu všech dokumentů ve výsledcích.
 
    ```python
    searchstring = '&search=*&$count=true'
@@ -263,7 +263,7 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
    pprint(query)
    ```
 
-1. V nové buňce uveďte následující příklad pro vyhledávání termínů "hotely" a "wifi". Přidejte $select a určete, která pole mají být zahrnuta do výsledků hledání.
+1. V nové buňce zadejte následující příklad pro hledání podmínek "hotely" a "WiFi". Přidejte $select pro určení, která pole se mají zahrnout do výsledků hledání.
 
    ```python
    searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
@@ -274,11 +274,11 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
    pprint(query)   
    ```
 
-   Výsledky by měly vypadat podobně jako následující výstup. 
+   Výsledky by měly vypadat podobně jako v následujícím výstupu. 
 
     ![Prohledání indexu](media/search-get-started-python/search-index.png "Prohledání indexu")
 
-1. Dále použijte $filter výraz, který vybere pouze ty hotely s hodnocením vyšším než 4. 
+1. Dále použijte výraz $filter, který vybere pouze hotely se hodnocením větším než 4. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
@@ -289,7 +289,7 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
    pprint(query)     
    ```
 
-1. Ve výchozím nastavení vyhledávač vrátí 50 nejlepších dokumentů, ale můžete použít horní a přeskočit přidat stránkování a zvolit, kolik dokumentů v každém výsledku. Tento dotaz vrátí dva dokumenty v každé sadě výsledků.
+1. Ve výchozím nastavení vyhledávací modul vrací prvních 50 dokumentů, ale můžete použít horní a přeskočení pro přidání stránkování a výběr množství dokumentů v každém výsledku. Tento dotaz vrátí v každé sadě výsledků dva dokumenty.
 
    ```python
    searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
@@ -300,7 +300,7 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
    pprint(query)
    ```
 
-1. V tomto posledním příkladu použijte $orderby k seřazení výsledků podle města. Tento příklad obsahuje pole z kolekce Adresa.
+1. V tomto posledním příkladu použijte $orderby k řazení výsledků podle města. Tento příklad obsahuje pole z kolekce adres.
 
    ```python
    searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
@@ -315,13 +315,13 @@ Tento krok ukazuje, jak zadat dotaz na index pomocí [rozhraní REST API pro hle
 
 Pokud pracujete s vlastním předplatným, je vhodné vždy na konci projektu zkontrolovat, jestli budete vytvořené prostředky ještě potřebovat. Prostředky, které necháte běžet, vás můžou stát peníze. Prostředky můžete odstraňovat jednotlivě nebo můžete odstranit skupinu prostředků, a odstranit tak celou sadu prostředků najednou.
 
-Můžete najít a spravovat prostředky na portálu pomocí odkazu **Všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
+Prostředky můžete najít a spravovat na portálu pomocí odkazu **všechny prostředky** nebo **skupiny prostředků** v levém navigačním podokně.
 
-Pokud používáte bezplatnou službu, nezapomeňte, že jste omezeni na tři indexy, indexery a zdroje dat. Můžete odstranit jednotlivé položky na portálu, abyste zůstali pod limitem. 
+Pokud používáte bezplatnou službu, pamatujte na to, že jste omezeni na tři indexy, indexery a zdroje dat. Jednotlivé položky na portálu můžete odstranit, aby zůstaly pod limitem. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Jako zjednodušení tento rychlý start používá zkrácenou verzi indexu Hotels. Můžete vytvořit plnou verzi vyzkoušet další zajímavé dotazy. Chcete-li získat plnou verzi a všech 50 dokumentů, spusťte Průvodce **importem dat** a vyberte *ukázku hotelů* z předdefinovaných ukázkových zdrojů dat.
+V rámci zjednodušení se v tomto rychlém startu používá zkrácená verze indexu hotelů. Můžete vytvořit úplnou verzi a vyzkoušet si zajímavější dotazy. Chcete-li získat úplnou verzi a všechny dokumenty 50, spusťte průvodce **importem dat** a vyberte možnost *hotely-ukázka* z vestavěných ukázkových zdrojů dat.
 
 > [!div class="nextstepaction"]
-> [Úvodní příručka: Vytvoření indexu na webu Azure Portal](search-get-started-portal.md)
+> [Rychlý Start: vytvoření indexu v Azure Portal](search-get-started-portal.md)

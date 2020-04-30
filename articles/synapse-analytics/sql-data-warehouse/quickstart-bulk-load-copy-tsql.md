@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Hromadné načítání dat pomocí jediného příkazu T-SQL'
-description: Hromadné načítání dat pomocí příkazu COPY
+title: 'Rychlý Start: hromadné načtení dat pomocí jednoho příkazu T-SQL'
+description: Hromadné načtení dat pomocí příkazu COPY
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,33 +12,33 @@ ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: d39b3085a802ca0ff745ab1f63f4a8fba966ea48
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81115008"
 ---
-# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Úvodní příručka: Hromadné načítání dat pomocí příkazu COPY
+# <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Rychlý Start: hromadné načtení dat pomocí příkazu COPY
 
-V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jednoduchého a [flexibilního příkazu COPY](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro ingestování dat s vysokou propustností. Příkaz COPY je doporučený nástroj pro načítání, protože umožňuje bezproblémově a flexibilně načítat data tím, že poskytuje funkce pro:
+V tomto rychlém startu budete hromadně načítat data do fondu SQL pomocí jednoduchého a flexibilního [příkazu kopírování](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) pro příjem dat s vysokou propustností. Příkaz COPY je doporučeným nástrojem pro načítání, protože umožňuje hladce a pružně pružně načíst data poskytnutím funkčnosti:
 
-- Povolit načtení uživatelů s nižšími oprávněními bez nutnosti přísných oprávnění CONTROL v datovém skladu
-- Využijte pouze jeden příkaz T-SQL bez nutnosti vytvářet další databázové objekty
-- Využití jemnějšího modelu oprávnění bez vystavení klíčů účtu úložiště pomocí podpisů share access (SAS)
-- Zadejte jiný účet úložiště pro umístění ERRORFILE (REJECTED_ROW_LOCATION)
-- Přizpůsobení výchozích hodnot pro každý cílový sloupec a určení zdrojových datových polí, která se mají načíst do určitých cílových sloupců
-- Určení vlastního zakončení řádku pro soubory CSV
-- Oddělovače únikových řetězců, polí a řádků pro soubory CSV
-- Využití formátů data serveru SQL Server pro soubory CSV
-- Určení zástupných znaků a více souborů v cestě umístění úložiště
+- Povolení načtení nižších privilegovaných uživatelů bez nutnosti přísného řízení pro datový sklad
+- Využijte jenom jeden příkaz T-SQL, aniž byste museli vytvářet žádné další databázové objekty.
+- Využijte model s jemnějším oprávněním bez odhalení klíčů účtu úložiště pomocí sdílených přístupových podpisů (SAS).
+- Zadejte jiný účet úložiště pro umístění ERRORFILE (REJECTED_ROW_LOCATION).
+- Přizpůsobení výchozích hodnot pro každý cílový sloupec a zadání zdrojových datových polí pro načtení do konkrétních cílových sloupců
+- Zadání vlastního ukončovacího znaku řádku pro soubory CSV
+- Řídicí řetězec, pole a oddělovače řádků pro soubory CSV
+- Využití SQL Serverch formátů data pro soubory CSV
+- Zadejte v cestě umístění úložiště zástupné znaky a více souborů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start předpokládá, že již máte fond SQL. Pokud fond SQL nebyl vytvořen, použijte rychlý start [Vytvořit a připojit - portál.](create-data-warehouse-portal.md)
+V tomto rychlém startu se předpokládá, že už máte fond SQL. Pokud se fond SQL nevytvořil, použijte rychlý Start pro [Vytvoření a připojení – portál](create-data-warehouse-portal.md) .
 
 ## <a name="create-the-target-table"></a>Vytvoření cílové tabulky
 
-V tomto příkladu budeme načítat data z datové sady taxi v New Yorku. Naložíme stůl s názvem Trip, který představuje taxi výlety během jednoho roku. Chcete-li tabulku vytvořit, spusťte následující:
+V tomto příkladu budeme načítat data z datové sady taxislužby New York. Načteme tabulku s názvem Trip, která představuje taxislužby TRIPS pořízeného v jednom roce. Vytvořte tabulku spuštěním následujícího:
 
 ```sql
 CREATE TABLE [dbo].[Trip]
@@ -76,7 +76,7 @@ WITH
 
 ## <a name="run-the-copy-statement"></a>Spuštění příkazu COPY
 
-Spusťte následující příkaz COPY, který načte data z účtu úložiště objektů blob Azure do tabulky Výlet.
+Spusťte následující příkaz COPY, který načte data z účtu služby Azure Blob Storage do tabulky Trip.
 
 ```sql
 COPY INTO [dbo].[Trip] FROM 'https://nytaxiblob.blob.core.windows.net/2013/Trip2013/'
@@ -86,9 +86,9 @@ WITH (
 ) OPTION (LABEL = 'COPY: dbo.trip');
 ```
 
-## <a name="monitor-the-load"></a>Sledování zatížení
+## <a name="monitor-the-load"></a>Monitorování zatížení
 
-Zkontrolujte, zda vaše zatížení postupuje pravidelným spuštěním následujícího dotazu:
+Pravidelným spuštěním následujícího dotazu ověřte, zda probíhá zátěž:
 
 ```sql
 SELECT  r.[request_id]                           
@@ -110,5 +110,5 @@ GROUP BY r.[request_id]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Doporučené postupy při načítání dat najdete [v tématu Doporučené postupy pro načítání dat](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
-- Informace o tom, jak spravovat prostředky pro zatížení dat, naleznete v [tématu Izolace pracovního vytížení](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 
+- Osvědčené postupy při načítání dat najdete v tématu [osvědčené postupy pro načítání dat](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/guidance-for-loading-data).
+- Informace o tom, jak spravovat prostředky pro načtení dat, najdete v tématu věnovaném [izolaci úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql). 

@@ -1,6 +1,6 @@
 ---
-title: Co je brána firewall webových aplikací Azure na Azure CDN?
-description: Zjistěte, jak brána firewall webových aplikací Azure ve službě Azure CDN chrání vaše webové aplikace před škodlivými útoky.
+title: Co je firewall webových aplikací Azure na Azure CDN?
+description: Přečtěte si, jak Firewall webových aplikací Azure ve službě Azure CDN chrání vaše webové aplikace před škodlivými útoky.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
@@ -8,110 +8,110 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: victorh
 ms.openlocfilehash: 28cf8d9fd60cc6fc158812aa0a1dff3a4b0dced1
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80754298"
 ---
-# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Brána firewall webových aplikací Azure v síti pro doručování obsahu Azure
+# <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Firewall webových aplikací Azure v Azure Content Delivery Network
 
-Azure Web Application Firewall (WAF) v Síti pro doručování obsahu Azure (CDN) od Microsoftu poskytuje centralizovanou ochranu webového obsahu. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaši službu vysoce dostupnou pro vaše uživatele a pomáhá vám splnit požadavky na dodržování předpisů.
+Firewall webových aplikací Azure (WAF) v Azure Content Delivery Network (CDN) od Microsoftu poskytuje centralizovanou ochranu vašeho webového obsahu. WAF chrání vaše webové služby před běžnými zneužitími a chybami zabezpečení. Udržuje vaše služba vysoce dostupná pro vaše uživatele a pomáhá splnit požadavky na dodržování předpisů.
 
 > [!IMPORTANT]
-> WAF na Azure CDN od Microsoftu je aktuálně ve verzi Public Preview a je k dispozici předběžná smlouva o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure CDN WAF od Microsoftu je momentálně ve verzi Public Preview a poskytuje se ve verzi Preview smlouvy o úrovni služeb. Některé funkce nemusí být podporované nebo můžou mít omezené možnosti.  Podrobnosti najdete v [dodatečných podmínkách použití systémů Microsoft Azure Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-WAF na Azure CDN je globální a centralizované řešení. Nasadí se na okrajových místech Azure po celém světě. WAF zastaví škodlivé útoky v blízkosti zdrojů útoku, než se dostanou do vašeho původu. Získáte globální ochranu ve velkém měřítku, aniž byste obětovali výkon. 
+WAF v Azure CDN je globální a centralizované řešení. Je nasazená na hraničních místech sítě Azure po celém světě. WAF zabraňuje škodlivým útokům blízko zdrojů útoku předtím, než dosáhnou svého původu. Globální ochranu získáte škálováním bez obětování výkonu. 
 
-Zásady WAF snadno odkazy na libovolný koncový bod CDN ve vašem předplatném. Nová pravidla lze nasadit během několika minut, takže můžete rychle reagovat na měnící se vzorce hrozeb.
+Zásady WAF jednoduše odkazují na libovolný koncový bod CDN v rámci vašeho předplatného. Nová pravidla se dají nasadit během několika minut, takže můžete rychle reagovat na měnící se vzory hrozeb.
 
-![Brána firewall pro webové aplikace Azure](../media/cdn-overview/waf-cdn-overview.png)
+![Firewall webových aplikací Azure](../media/cdn-overview/waf-cdn-overview.png)
 
 ## <a name="waf-policy-and-rules"></a>Zásady a pravidla WAF
 
-Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jednomu nebo více koncovým bodům CDN pro ochranu. Zásada WAF se skládá ze dvou typů pravidel zabezpečení:
+Můžete nakonfigurovat zásady WAF a přidružit tuto zásadu k jednomu nebo více koncovým bodům CDN pro ochranu. Zásady WAF se skládají ze dvou typů pravidel zabezpečení:
 
 - vlastní pravidla, která můžete vytvořit.
 
-- spravované sady pravidel, které jsou kolekcí předem nakonfigurovaných pravidel Azure.
+- spravované sady pravidel, které jsou kolekcí předem nakonfigurovaných pravidel spravovaných Azure.
 
-Pokud jsou k dispozici obě, vlastní pravidla jsou zpracovány před zpracováním pravidel ve spravované sadě pravidel. Pravidlo je tvořeno podmínkou shody, prioritou a akcí. Podporované typy akcí jsou: *POVOLIT*, *BLOKOVAT*, *PROTOKOLA*A *PŘESMĚROVÁNÍ*. Kombinací spravovaných a vlastních pravidel můžete vytvořit plně přizpůsobenou zásadu, která splňuje vaše specifické požadavky na ochranu aplikací.
+Pokud jsou přítomny obě, před zpracováním pravidel v sadě spravovaných pravidel se zpracují vlastní pravidla. Pravidlo se skládá z podmínky shody, priority a akce. Podporované typy akcí: *Allow*, *Block*, *log*a *redirect*. Můžete vytvořit plně přizpůsobené zásady, které vyhovují konkrétním požadavkům na ochranu aplikací, a to kombinováním spravovaných a vlastních pravidel.
 
-Pravidla v rámci zásady jsou zpracována v pořadí podle priority. Priorita je jedinečné číslo, které definuje pořadí pravidel ke zpracování. Menší čísla mají vyšší prioritu a tato pravidla jsou vyhodnocována před pravidly s vyšší hodnotou. Jakmile je pravidlo spárováno, odpovídající akce, která byla definována v pravidle, se použije na požadavek. Jakmile je taková shoda zpracována, pravidla s nižšími prioritami nejsou dále zpracována.
+Pravidla v rámci zásad jsou zpracovávána v pořadí podle priority. Priorita je jedinečné číslo definující pořadí pravidel, která se mají zpracovat. Menší čísla mají vyšší prioritu a tato pravidla se vyhodnocují před pravidly s větší hodnotou. Po porovnání pravidla se na žádost aplikuje odpovídající akce, která byla definována v pravidle. Po zpracování této shody se pravidla s nižšími prioritami nezpracují dále.
 
-Webová aplikace hostovaná v Azure CDN může mít současně přidruženou jenom jednu zásadu WAF. Můžete však mít koncový bod CDN bez jakýchkoli zásad WAF s ním spojené. Pokud je k dispozici zásada WAF, je replikována do všech našich hraničních umístění, aby byla zajištěna konzistentní zásady zabezpečení po celém světě.
+Webová aplikace hostovaná v Azure CDN může k ní být přidružená jenom jedna zásada WAF. Je ale možné, že máte koncový bod CDN bez jakýchkoli zásad WAF, které jsou k němu přidružené. Pokud je přítomná zásada WAF, replikuje se na všechna naše hraniční umístění, aby se zajistila konzistence zásad zabezpečení po celém světě.
 
-## <a name="waf-modes"></a>Režimy WAF
+## <a name="waf-modes"></a>WAF režimy
 
-Zásady WAF lze nakonfigurovat tak, aby běžely v následujících dvou režimech:
+Zásady WAF je možné nakonfigurovat tak, aby běžely v následujících dvou režimech:
 
-- *Režim detekce*: Při spuštění v režimu detekce waf nebere žádné jiné akce než monitoruje a protokoluje požadavek a jeho odpovídající WAF pravidlo waf protokoly. Můžete zapnout diagnostiku protokolování pro přední dveře. Při použití portálu přejděte do části **Diagnostika.**
+- *Detekční režim*: při spuštění v režimu detekce neprovádí WAF žádné jiné jiné akce než monitory a zaznamená požadavek a odpovídající WAF pravidlo na WAF protokoly. Diagnostiku protokolování můžete zapnout pro přední dveře. Když použijete portál, přejdete do části **Diagnostika** .
 
-- *Režim prevence*: V režimu prevence provede WAF zadanou akci, pokud požadavek odpovídá pravidlu. Pokud je nalezena shoda, jsou vyhodnocována žádná další pravidla s nižší prioritou. Všechny odpovídající požadavky jsou také zaznamenány v protokolech WAF.
+- *Režim prevence*: v režimu prevence převezme WAF zadanou akci, pokud požadavek odpovídá pravidlu. Pokud je nalezena shoda, nejsou vyhodnocována žádná další pravidla s nižší prioritou. V protokolech WAF se zaznamenávají i všechny odpovídající požadavky.
 
 ## <a name="waf-actions"></a>Akce WAF
 
-Můžete zvolit jednu z následujících akcí, pokud požadavek odpovídá podmínkám pravidla:
+Když požadavek odpovídá podmínkám pravidla, můžete vybrat jednu z následujících akcí:
 
-- *Povolit*: Požadavek prochází WAF a je předán back-end. Žádné další nižší priority pravidla mohou blokovat tento požadavek.
-- *Blok*: Požadavek je blokován a WAF odešle odpověď klientovi bez předání požadavku back-endu.
-- *Protokol*: Požadavek je zaznamenán v protokolech WAF a WAF pokračuje v hodnocení pravidel s nižší prioritou.
-- *Přesměrování*: WAF přesměruje požadavek na zadaný identifikátor URI. Zadaný identifikátor URI je nastavení úrovně zásad. Po nakonfigurování jsou do tohoto identifikátoru URI odeslány všechny požadavky, které odpovídají akci *Přesměrování.*
+- *Allow*: požadavek projde přes WAF a předává se do back-endu. Tato žádost nemůže blokovat žádná další pravidla s nižší prioritou.
+- *Blok*: požadavek je ZABLOKOVÁN a WAF odesílá odpověď klientovi bez předání požadavku back-endu.
+- *Log*: požadavek se zaznamená do protokolů WAF a WAF pokračuje v hodnocení pravidel s nižší prioritou.
+- *Přesměrování*: WAF přesměruje požadavek na zadaný identifikátor URI. Zadaný identifikátor URI je nastavení úrovně zásad. Po nakonfigurování se do tohoto identifikátoru URI odešlou všechny požadavky, které odpovídají akci *přesměrování* .
 
 ## <a name="waf-rules"></a>Pravidla WAF
 
-Zásada WAF se může skládat ze dvou typů pravidel zabezpečení:
+Zásady WAF můžou sestávat ze dvou typů pravidel zabezpečení:
 
-- *vlastní pravidla*: pravidla, která sami vytvoříte 
-- *spravované sady pravidel*: Předem nakonfigurovaná sada pravidel spravované Azure
+- *vlastní pravidla*: pravidla, která vytvoříte sami 
+- *spravované sady pravidel*: spravovaná předem nakonfigurovaná sada pravidel
 
 ### <a name="custom-rules"></a>Vlastní pravidla
 
-Vlastní pravidla mohou mít pravidla shody a pravidla řízení sazeb.
+Vlastní pravidla můžou odpovídat pravidlům pravidel řízení sazeb.
 
-Můžete nakonfigurovat následující vlastní pravidla shody:
+Můžete nakonfigurovat tato vlastní pravidla shody:
 
-- *Seznam povolených ip adres a seznam blokování*: Můžete řídit přístup k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporovány jsou typy adres IPv4 i IPv6. Tento seznam lze nakonfigurovat tak, aby tyto požadavky blokoval nebo povoloval, pokud zdrojová ADRESA IP odpovídá adrese IP v seznamu.
+- Seznam *povolených a blokovaných IP*adres: můžete řídit přístup k webovým aplikacím na základě seznamu IP adres klientů nebo rozsahů IP adres. Podporují se typy adres IPv4 i IPv6. Tento seznam je možné nakonfigurovat tak, aby buď blokoval, nebo povolil tyto požadavky, kde zdrojová IP adresa odpovídá IP adrese v seznamu.
 
-- *Geografické řízení přístupu*: Přístup k webovým aplikacím můžete řídit na základě kódu země, který je přidružen k IP adrese klienta.
+- *Geografické řízení přístupu*: můžete řídit přístup k webovým aplikacím na základě kódu země, který je PŘIDRUŽENÝ k IP adrese klienta.
 
-- *Řízení přístupu založené na parametrech HTTP*: Pravidla pro shody řetězců můžete založit v parametrech požadavku HTTP/HTTPS.  Například řetězce dotazu, POST args, Identifikátor URI požadavku, Hlavička požadavku a Tělo požadavku.
+- *Řízení přístupu na základě parametrů http*: v parametrech požadavků HTTP/HTTPS můžete použít základní pravidla pro řetězcové shody.  Například řetězce dotazů, POST argumenty, identifikátor URI požadavku, Hlavička požadavku a text žádosti.
 
-- *Řízení přístupu založené na metodě*: Pravidla jsou založena na metodě požadavku HTTP požadavku. Například GET, PUT nebo HEAD.
+- *Řízení přístupu na základě metody požadavku*: základem pro metodu požadavku HTTP požadavku je základní pravidlo. Například GET, PUT nebo HEAD.
 
-- *Omezení velikosti*: Můžete založit pravidla na délkách určitých částí požadavku, jako je řetězec dotazu, Uri nebo tělo požadavku.
+- *Omezení velikosti*: můžete odvodit pravidla na délkách určitých částí požadavku, jako je řetězec dotazu, identifikátor URI nebo text žádosti.
 
-Pravidlo řízení rychlosti omezuje abnormálně vysoký provoz z libovolné ip adresy klienta.
+Pravidlo řízení sazeb omezuje neobvykle vysoký provoz z jakékoli IP adresy klienta.
 
-- *Pravidla omezení rychlosti*: Můžete nakonfigurovat prahovou hodnotu počtu webových požadavků povolených z IP adresy klienta během jedné minuty trvání. Toto pravidlo se liší od vlastního pravidla povolit a blokovat seznam ip adres, které umožňuje všechny požadavky z adresy IP klienta nebo blokuje všechny požadavky. Omezení rychlosti lze kombinovat s dalšími podmínkami shody, jako jsou shody parametrů HTTP(S) pro granulární řízení rychlosti.
+- *Pravidla omezení četnosti*: můžete nastavit prahovou hodnotu pro počet webových požadavků povolených z IP adresy klienta během jedné minuty. Toto pravidlo se liší od vlastního pravidla povolit/zablokování založeného na seznamu IP adres, které buď umožňuje všem žádostem z IP adresy klienta nebo blokovat všechny požadavky. Omezení přenosové rychlosti lze kombinovat s dalšími podmínkami shody, jako je například shoda parametru HTTP (S) pro detailní řízení míry.
 
-### <a name="azure-managed-rule-sets"></a>Sady pravidel spravované Azure
+### <a name="azure-managed-rule-sets"></a>Sady pravidel spravované v Azure
 
-Sady pravidel spravované Azure poskytují snadný způsob nasazení ochrany proti společné sadě bezpečnostních hrozeb. Vzhledem k tomu, že tyto sady pravidel jsou spravovány Azure, pravidla jsou aktualizovány podle potřeby k ochraně proti nové podpisy útoku. Výchozí sada pravidel spravované Azure obsahuje pravidla proti následujícím kategoriím hrozeb:
+Sady pravidel spravované pomocí Azure poskytují snadný způsob, jak nasadit ochranu proti běžné sadě bezpečnostních hrozeb. Vzhledem k tomu, že tyto RuleSets jsou spravovány v Azure, pravidla se aktualizují podle potřeby k ochraně před novými signaturami útoku. Sada spravovaných výchozích pravidel Azure obsahuje pravidla pro následující kategorie hrozeb:
 
 - Skriptování mezi weby
-- Java útoky
-- Zahrnutí místního souboru
-- ÚTOKY PHP injekce
+- Útoky Java
+- Zahrnutí místních souborů
+- Útoky injektáže PHP
 - Vzdálené spuštění příkazu
 - Zahrnutí vzdáleného souboru
 - Fixace relace
 - Ochrana před útoky prostřednictvím injektáže SQL.
 - Útočníci protokolu
 
-Číslo verze výchozí sady pravidel se při přidávání nových podpisů útoku do sady pravidel.
-Výchozí sada pravidel je ve výchozím nastavení povolena v režimu *zjišťování* v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozí sady pravidel ke splnění požadavků aplikace. Můžete také nastavit konkrétní akce (ALLOW/BLOCK/REDIRECT/LOG) podle pravidla. Výchozí akce pro spravovanou výchozí sadu pravidel je *Blok*.
+Číslo verze výchozích sad pravidel se zvýší, když jsou do sady pravidel přidány nové podpisy útoků.
+Výchozí sada pravidel je ve výchozím nastavení povolená v režimu *detekce* v zásadách WAF. Můžete zakázat nebo povolit jednotlivá pravidla v rámci výchozího pravidla nastavená tak, aby splňovala požadavky vaší aplikace. Můžete také nastavit konkrétní akce (povolení/blokování/přesměrování/protokol) na pravidlo. Výchozí akce pro sadu spravovaných výchozích pravidel je *zablokovaná*.
 
-Vlastní pravidla jsou vždy použita před vyhodnocením pravidel ve výchozí sadě pravidel. Pokud požadavek odpovídá vlastnímu pravidlu, použije se odpovídající akce pravidla. Požadavek je blokován nebo předán back-endu. Nejsou zpracována žádná další vlastní pravidla ani pravidla ve výchozí sadě pravidel. Můžete také odebrat výchozí sadu pravidel ze zásad WAF.
+Vlastní pravidla se vždycky aplikují předtím, než se vyhodnotí pravidla v sadě výchozích pravidel. Pokud požadavek odpovídá vlastnímu pravidlu, použije se odpovídající akce pravidla. Požadavek je buď zablokován, nebo předán do back-endu. Nezpracují se žádná další vlastní pravidla ani pravidla v sadě výchozích pravidel. Můžete taky odebrat výchozí sadu pravidel ze zásad WAF.
 
 ## <a name="configuration"></a>Konfigurace
 
-Všechny typy pravidel WAF můžete nakonfigurovat a nasadit pomocí portálu Azure, rozhraní API REST, šablon Azure Resource Manager a Azure PowerShellu.
+Všechny typy pravidel WAF můžete nakonfigurovat a nasadit pomocí Azure Portal, rozhraní REST API, šablon Azure Resource Manager a Azure PowerShell.
 
 ## <a name="monitoring"></a>Monitorování
 
-Monitorování WAF s CDN je integrované s Azure Monitor sledovat výstrahy a snadno sledovat trendy provozu.
+Monitorování pro WAF s CDN je integrované s Azure Monitor pro sledování výstrah a snadné monitorování trendů provozu.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření zásadwaf s Azure CDN pomocí portálu Azure](waf-cdn-create-portal.md)
+- [Kurz: vytvoření zásady WAF s Azure CDN pomocí Azure Portal](waf-cdn-create-portal.md)

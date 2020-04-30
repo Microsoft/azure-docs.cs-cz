@@ -1,8 +1,8 @@
 ---
-title: Co je geo umělé inteligence datové vědy virtuální stroj
+title: Co je geograficky umělá inteligentní funkce Data Science Virtual Machine
 titleSuffix: Azure Data Science Virtual Machine
-description: Virtuální stroj Geo Artificial Intelligence Data Science poskytuje ArcGIS Pro pro práci s geografickými daty, stejně jako sady nástrojů Python, R a data science pro práci s ML a AI.
-keywords: hluboké učení, AI, nástroje pro datovou vědu, virtuální stroj pro datové vědy, geoprostorová analytika
+description: Geografické umělé Data Science Virtual Machine inteligentních funkcí poskytuje ArcGIS pro pro práci s geografickými daty a také s Pythonem, R a Toolkity pro datové vědy pro práci s ML a AI.
+keywords: obsáhlý Learning, AI, nástroje pro datové vědy, virtuální počítač pro datové vědy, geoprostorové analýzy
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -11,38 +11,38 @@ ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
 ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80282269"
 ---
-# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co je virtuální stroj geoumělé inteligence pro datové vědy?
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co je geograficky umělá Data Science Virtual Machine inteligentních inteligentních funkcí?
 
-Virtuální počítač geoumělé inteligence pro datové vědy (označovaný také jako Geo AI Data Science VM nebo Geo-DSVM) poskytuje funkce geoprostorové analýzy z virtuálního počítače Azure Data Science Virtual Machine (DSVM). Konkrétně tento virtuální měnový virtuální ms rozšiřuje sady nástrojů pro umělou a cítění a datové vědy v [dsvm](overview.md) přidáním špičkového geografického informačního systému [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) od společnosti ESRI.
+Geografické umělé Data Science Virtual Machine inteligentních analýz (označované také jako geografické AI Data Science VM nebo Geo-DSVM) poskytují možnosti geoprostorové analýzy z Azure Data Science Virtual Machine (DSVM). Konkrétně tento virtuální počítač rozšiřuje sady nástrojů AI a data vědu v [DSVM](overview.md) přidáním špičkového geografického informačního systému [ARCGIS pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) od Esri.
 
- Geo AI Data Science VM je produktová nabídka, která vznikla ze spolupráce mezi ESRI a Microsoft. Výsledkem je výkonné prostředí, které poskytuje možnost:
+ Geografické AI Data Science VM je nabídka produktů, která nevznikla z spolupráce mezi ESRI a Microsoftem. Výsledkem je výkonné prostředí, které poskytuje možnosti:
 
-- Prozkoumejte data pomocí nejoblíbenějších nástrojů pro umělou a datovou vědu
-- Použití statistické analýzy u dat se zeměpisnými nebo prostorovými aspekty
-- Trénování modelů pro prediktivní analýzu pomocí strojového učení a algoritmů hlubokého učení
+- Prozkoumejte data pomocí nejoblíbenějších nástrojů AI a pro datové vědy
+- Použití statistické analýzy na data s geografickými nebo prostorovým aspektem
+- Výukové modely pro prediktivní analýzy pomocí algoritmů strojového učení a hloubkového učení
 - Vytváření bohatých vizualizací
 
-Virtuální počítač Geo AI Data Science je podporovaný v systému Windows 2016 DSVM. Rozhraní Pythonu a R k ArcGIS jsou také předkonfigurována na Geo-DSVM, což umožňuje programový přístup ke geoprostorové analýze v rámci vašich aplikací AI. Kromě toho jsou k dispozici ukázky poznámkového bloku Jupyter, které vám pomohou začít vytvářet aplikace Umělé inteligence s geoprostorovou inteligencí.
+Geografické AI Data Science VM je podporované v systému Windows 2016 DSVM. Rozhraní Pythonu a R pro ArcGIS jsou také předem nakonfigurovaná na geograficky DSVM a umožňují programový přístup k geoprostorové analýze v rámci vašich aplikací AI. Kromě toho jsou k dispozici Jupyter Notebook ukázky, které vám pomůžou začít sestavovat aplikace AI, které byly poopatřeny geoprostorové logikou.
 
 
-## <a name="why-geo-ai-data-science-vm"></a>Proč Geo AI Data Science VM? 
+## <a name="why-geo-ai-data-science-vm"></a>Proč geografické AI Data Science VM? 
 
-Integrace geografických a lokalizačních informací do vašich dat přináší nový silný rozměr pro pochopení světa, který je stále více instrumentovaný zařízeními IoT. V současné době existuje široká škála aplikací prakticky v každém segmentu občanské společnosti, ať už komerční, vládní, akademické nebo neziskové. Geoprostorová analýza poskytuje robustní nástroje pro shromažďování, správu a analýzu geografických dat a dat založených na poloze. Nabízejí také výkonnou vizualizaci, která může umožnit jedinečný přehled o významu těchto dat.
+Integrace geografických a umístění informací do vašich dat přináší výkonnou novou dimenzi pro porozumění světu, která je stále vybavená zařízeními IoT. Teď existuje celá řada aplikací prakticky v každém segmentu občanské společnosti, ať už jde o komerční, státní, školní nebo neziskové. Geoprostorové analýzy poskytují robustní nástroje pro shromažďování, správu a analýzu geografických dat a dat na základě polohy. Nabízejí také výkonnou vizualizaci, která umožňuje jedinečné poznatky o významu těchto dat.
 
-[Virtuální počítač pro datové vědy (DSVM)](overview.md) od Microsoftu je oblíbené prostředí pro experimentování a modelování v Azure, které poskytuje celou řadu nástrojů pro umělou a cítění, strojové učení a datové vědy. Tyto platformy a nástroje jsou pohodlně předem nakonfigurovány, aby vám pomohly okamžitě zvýšit produktivitu.
+[Data Science Virtual Machine (DSVM)](overview.md) od Microsoftu je oblíbená prostředí pro experimentování a modelování v Azure, které poskytuje hostitele nástrojů pro AI, Machine Learning a datové vědy. Tyto platformy a nástroje jsou všechny pohodlně předem nakonfigurované, aby vám pomohly okamžitě získat produktivitu.
 
-Geo AI Data Science VM kombinuje prediktivní možnosti DSVM s škálovatelností cloudu Azure a geoprostorového analytického softwaru od [společnosti ESRI](https://www.esri.com). Tato průkopnická integrace poskytuje datovým vědcům a geoprostorovým analytikům produktivní platformu, ze které mohou získávat nové informace ze svých dat a identifikovat nové příležitosti.
+Geografické AI Data Science VM kombinuje prediktivní možnosti DSVM s škálovatelností cloudu Azure a geoprostorového analytického softwaru z [Esri](https://www.esri.com). Tato integrace průkopnický poskytuje odborníkům na data a geoprostorové analytiky s produktivní platformou, od které získají nové poznatky ze svých dat, a identifikuje nové příležitosti.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Zřídit virtuální hod geo ai data vědy a začít používat s pokyny z následujících zdrojů:
+Zřídit geografickou Data Science VM AI a začít ji používat s pokyny z následujících zdrojů:
 
-* [Zřízení virtuálního virtuálního ms pro datovou vědu geo umělou ai](provision-geo-ai-dsvm.md)
-* [Použití virtuálního virtuálního provozu geo ai dat](use-geo-ai-dsvm.md)
+* [Zřízení geografického AI Data Science VM](provision-geo-ai-dsvm.md)
+* [Použití geografického AI Data Science VM](use-geo-ai-dsvm.md)

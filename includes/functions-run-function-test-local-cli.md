@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 02/09/2020
 ms.author: glenga
 ms.openlocfilehash: 749b733039e89421ac33ef76a11f3291b296e718
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80673186"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Spusťte svou funkci spuštěním místního hostitele runtime Azure Functions ze složky *LocalFunctionProj:*
+Spusťte funkci spuštěním místního hostitele modulu runtime Azure Functions ze složky *LocalFunctionProj* :
 
 ::: zone pivot="programming-language-csharp,programming-language-powershell,programming-language-javascript,programming-language-python"
 ```
@@ -35,7 +35,7 @@ mvn azure-functions:run
 ```
 ::: zone-end
 
-Na konci výstupu by se měly objevit následující řádky: 
+Ke konci výstupu by se měly zobrazit následující řádky: 
 
 <pre>
 ...
@@ -51,12 +51,12 @@ Http Functions:
 </pre>
 
 >[!NOTE]  
-> Pokud httpexample nezobrazí, jak je uvedeno níže, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **klávesy Ctrl**+**C** zastavte hostitele, přejděte do kořenové složky projektu a znovu spusťte předchozí příkaz.
+> Pokud se HttpExample nezobrazí, jak je uvedeno níže, pravděpodobně jste spustili hostitele mimo kořenovou složku projektu. V takovém případě pomocí **kombinace kláves CTRL +**+**C** zastavte hostitele, přejděte do kořenové složky projektu a spusťte předchozí příkaz znovu.
 
-Zkopírujte adresu `HttpExample` URL funkce z tohoto výstupu do prohlížeče `?name=<your-name>`a přidejte `http://localhost:7071/api/HttpExample?name=Functions`řetězec dotazu a změte úplnou adresu URL jako . Prohlížeč by měl zobrazit `Hello Functions`zprávu jako :
+Zkopírujte adresu URL vaší `HttpExample` funkce z tohoto výstupu do prohlížeče a přidejte řetězec `?name=<your-name>`dotazu, jako je třeba `http://localhost:7071/api/HttpExample?name=Functions`celá adresa URL. V prohlížeči by se měla zobrazit zpráva `Hello Functions`jako:
 
-![Výsledek funkce spuštěné místně v prohlížeči](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
+![Výsledek funkce místně spuštěný v prohlížeči](./media/functions-run-function-test-local-cli/function-test-local-browser.png)
 
-Terminál, ve kterém jste projekt spustili, také zobrazuje výstup protokolu při vyřizování požadavků.
+Terminál, ve kterém jste spustili projekt, také zobrazuje výstup protokolu při provádění požadavků.
 
-Až budete připraveni, použijte **kombinaci kláves Ctrl**+**C** a zvolte `y` zastavení hostitele funkcí.
+Až budete připraveni, použijte **CTRL**+**C** a vyberte možnost `y` zastavit hostitele funkcí.

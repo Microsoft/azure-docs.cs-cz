@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Použití témat a předplatných Azure Service Bus s Pythonem'
-description: Tento článek ukazuje, jak vytvořit téma Azure Service Bus, předplatné, odesílat zprávy na téma a přijímat zprávy z předplatného.
+title: 'Rychlý Start: použití témat Azure Service Bus a předplatných v Pythonu'
+description: V tomto článku se dozvíte, jak vytvořit Azure Service Bus téma, předplatné, poslat zprávy do tématu a přijímat zprávy z předplatného.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
@@ -14,38 +14,38 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80478069"
 ---
-# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Úvodní příručka: Použití témat a předplatných služby Service Bus v Pythonu
+# <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rychlý Start: použití témat Service Bus a předplatných v Pythonu
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Tento článek popisuje, jak používat Python s tématy a předplatnými Služby Azure Service Bus. Ukázky používají balíček [Azure Python SDK][Azure Python package] k: 
+Tento článek popisuje, jak používat Python s Azure Service Bus tématem a odběry. Ukázky používají balíček [Azure Python SDK][Azure Python package] k těmto akcím: 
 
-- Vytváření témat a odběrů témat
-- Vytvoření filtrů a pravidel předplatného
-- Odesílání zpráv na témata 
-- Příjem zpráv z předplatných
+- Témata a odběry můžete vytvářet v tématech.
+- Vytváření filtrů a pravidel předplatného
+- Posílání zpráv do témat 
+- Přijímání zpráv z předplatných
 - Odstranění témat a odběrů
 
 ## <a name="prerequisites"></a>Požadavky
-- Předplatné Azure. Můžete aktivovat [výhody pro předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-- Obor názvů Service Bus vytvořený podle kroků na [úvodním panelu: Pomocí portálu Azure vytvořte téma služby Service Bus a předplatná](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte název oboru názvů, název sdíleného přístupového klíče a hodnotu primárního klíče z obrazovky **Zásady sdíleného přístupu,** abyste jej později použili v tomto rychlém startu. 
-- Python 3.4x nebo vyšší s nainstalovaným balíčkem [Azure Python SDK.][Azure Python package] Další informace naleznete v [Průvodci instalací pythonu](/azure/developer/python/azure-sdk-install).
+- Předplatné Azure. Můžete aktivovat výhody pro [předplatitele sady Visual Studio nebo MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+- Service Bus obor názvů vytvořený podle kroků v [části rychlý Start: pomocí Azure Portal vytvořte Service Bus téma a odběry](service-bus-quickstart-topics-subscriptions-portal.md). Zkopírujte název oboru názvů, název sdíleného přístupového klíče a hodnotu primárního klíče z obrazovky **zásady sdíleného přístupu** , které se použijí později v tomto rychlém startu. 
+- Python 3.4 x nebo vyšší s nainstalovaným balíčkem [sady Azure Python SDK][Azure Python package] . Další informace najdete v příručce pro [instalaci Pythonu](/azure/developer/python/azure-sdk-install).
 
 ## <a name="create-a-servicebusservice-object"></a>Vytvoření objektu ServiceBusService
 
-Objekt **ServiceBusService** umožňuje pracovat s tématy a odběry témat. Chcete-li programově přistupovat ke službě Service Bus, přidejte v horní části souboru Pythonu následující řádek:
+Objekt **ServiceBusService** vám umožní pracovat s tématy a odběry v tématech. K programovému přístupu Service Bus přidejte do horní části souboru Pythonu následující řádek:
 
 ```python
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Přidejte následující kód k vytvoření objektu **ServiceBusService.** Nahraďte `<namespace>`, `<sharedaccesskeyname>`a `<sharedaccesskeyvalue>` s názvem oboru názvů Service Bus, název klíče sdílený přístupový podpis (SAS) a hodnotu primárního klíče. Tyto hodnoty najdete v části **Zásady sdíleného přístupu** v oboru názvů Service Bus na [webu Azure Portal][Azure portal].
+Přidejte následující kód pro vytvoření objektu **ServiceBusService** . `<namespace>`Nahraďte `<sharedaccesskeyname>`, a `<sharedaccesskeyvalue>` názvem oboru názvů Service Bus, názvem klíče sdíleného přístupového podpisu (SAS) a hodnotou primárního klíče. Tyto hodnoty najdete v části **zásady sdíleného přístupu** v oboru názvů Service Bus v [Azure Portal][Azure portal].
 
 ```python
 bus_service = ServiceBusService(
@@ -56,13 +56,13 @@ bus_service = ServiceBusService(
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
 
-Následující kód používá `create_topic` metodu k vytvoření `mytopic`tématu service bus s názvem , s výchozím nastavením:
+Následující kód používá `create_topic` metodu k vytvoření Service Busho tématu s názvem `mytopic`s výchozími nastaveními:
 
 ```python
 bus_service.create_topic('mytopic')
 ```
 
-Pomocí možností tématu můžete přepsat výchozí nastavení tématu, například čas zprávy k životu (TTL) nebo maximální velikost tématu. Následující příklad vytvoří téma `mytopic` s názvem s maximální velikostí tématu 5 GB a výchozí zprávou TTL jedné minuty:
+Pomocí možností tématu můžete přepsat výchozí nastavení tématu, jako je například hodnota TTL (Time to Live) nebo maximální velikost tématu. Následující příklad vytvoří téma s názvem `mytopic` s maximální velikostí tématu 5 GB a výchozí hodnotou TTL zprávy 1 minute:
 
 ```python
 topic_options = Topic()
@@ -74,7 +74,7 @@ bus_service.create_topic('mytopic', topic_options)
 
 ## <a name="create-subscriptions"></a>Vytvoření předplatných
 
-Můžete také použít **ServiceBusService** objekt k vytvoření odběry témata. Odběr může mít filtr omezit sadu zpráv doručované do jeho virtuální fronty. Pokud nezadáte filtr, nová předplatná použít výchozí **MatchAll** filtr, který umístí všechny zprávy publikované do tématu do virtuální fronty předplatného. Následující příklad vytvoří odběr `mytopic` `AllMessages` s názvem, který používá **filtr MatchAll:**
+K vytváření předplatných pro témata také použijete objekt **ServiceBusService** . Předplatné může mít filtr, který omezí sadu zpráv doručenou do její virtuální fronty. Pokud neurčíte filtr, nové odběry použijí výchozí filtr **MatchAll** , který umístí všechny zprávy publikované v tématu do virtuální fronty odběru. Následující příklad vytvoří odběr s `mytopic` názvem `AllMessages` , který používá filtr **MatchAll** :
 
 ```python
 bus_service.create_subscription('mytopic', 'AllMessages')
@@ -82,13 +82,13 @@ bus_service.create_subscription('mytopic', 'AllMessages')
 
 ### <a name="use-filters-with-subscriptions"></a>Použití filtrů s předplatnými
 
-Pomocí `create_rule` metody objektu **ServiceBusService** můžete filtrovat zprávy, které se zobrazí v předplatném. Můžete určit pravidla při vytváření předplatného nebo přidat pravidla do existujících odběrů.
+Pomocí `create_rule` metody objektu **ServiceBusService** můžete filtrovat zprávy, které se zobrazují v rámci předplatného. Můžete zadat pravidla při vytváření předplatného nebo přidávat pravidla do stávajících předplatných.
 
-Nejflexibilnějším typem filtru je **sqlfilter**, který používá podmnožinu SQL-92. Filtry SQL pracují na základě vlastností zpráv publikovaných v tématu. Další informace o výrazech, které můžete použít s filtrem SQL, naleznete v syntaxi [SqlFilter.SqlExpression.][SqlFilter.SqlExpression]
+Nejpružnější typ filtru je **SqlFilter**, který používá podmnožinu SQL-92. Filtry SQL fungují na základě vlastností zpráv publikovaných v tématu. Další informace o výrazech, které lze použít s filtrem SQL, naleznete v syntaxi [SqlFilter. syntaxi][SqlFilter.SqlExpression] .
 
-Vzhledem k tomu, že výchozí filtr **MatchAll** se automaticky použije na všechna nová předplatná, je nutné jej odebrat z odběrů, které chcete filtrovat, jinak **matchall** přepíše všechny ostatní filtry, které zadáte. Výchozí pravidlo můžete odebrat `delete_rule` pomocí metody objektu **ServiceBusService.**
+Vzhledem k tomu, že výchozí filtr **MatchAll** se automaticky aplikuje na všechna nová předplatná, musíte ho odebrat z předplatných, která chcete filtrovat, nebo bude **MatchAll** přepsat všechny ostatní filtry, které zadáte. Výchozí pravidlo můžete odebrat pomocí `delete_rule` metody objektu **ServiceBusService** .
 
-Následující příklad vytvoří odběr `mytopic` `HighMessages`s názvem , s `HighMessageFilter`názvem pravidla **SqlFilter** . Pravidlo `HighMessageFilter` vybere pouze zprávy s `messageposition` vlastní vlastností větší než 3:
+Následující příklad vytvoří odběr `mytopic` s názvem `HighMessages`s pravidlem **SqlFilter** s názvem. `HighMessageFilter` `HighMessageFilter` Pravidlo vybere pouze zprávy s vlastní `messageposition` vlastností větší než 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -101,7 +101,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Následující příklad vytvoří odběr `mytopic` `LowMessages`s názvem , s `LowMessageFilter`názvem pravidla **SqlFilter** . Pravidlo `LowMessageFilter` vybere pouze zprávy `messageposition` s vlastností menší nebo rovnou 3:
+Následující příklad vytvoří odběr `mytopic` s názvem `LowMessages`s pravidlem **SqlFilter** s názvem. `LowMessageFilter` `LowMessageFilter` Pravidlo vybere pouze zprávy s `messageposition` vlastností menší nebo rovnou 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -114,13 +114,13 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-S `AllMessages` `HighMessages`, `LowMessages` , a všechny v `mytopic` platnosti, zprávy odeslané do jsou vždy doručeny příjemcům `AllMessages` předplatného. Zprávy jsou také selektivně `LowMessages` doručovány do `messageposition` `HighMessages` nebo předplatného, v závislosti na hodnotě vlastnosti zprávy. 
+V `AllMessages`důsledku `HighMessages`platí, `LowMessages` že zprávy odesílané do `mytopic` jsou vždy doručovány příjemcům `AllMessages` předplatného. Zprávy jsou také selektivně doručovány do předplatného `HighMessages` nebo `LowMessages` v závislosti na hodnotě `messageposition` vlastnosti zprávy. 
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
 
-Aplikace používají `send_topic_message` metodu Objektu **ServiceBusService** k odesílání zpráv do tématu služby Service Bus.
+Aplikace používají `send_topic_message` metodu objektu **ServiceBusService** k posílání zpráv do Service Busho tématu.
 
-Následující příklad odešle pět `mytopic` testovacích zpráv do tématu. Hodnota `messageposition` vlastní vlastnosti závisí na iteraci smyčky a určuje, které odběry přijímat zprávy. 
+Následující příklad odesílá pět zkušebních zpráv do `mytopic` tématu. Hodnota vlastní `messageposition` vlastnosti závisí na iteraci smyčky a určuje, které odběry obdrží zprávy. 
 
 ```python
 for i in range(5):
@@ -129,28 +129,28 @@ for i in range(5):
     bus_service.send_topic_message('mytopic', msg)
 ```
 
-### <a name="message-size-limits-and-quotas"></a>Omezení velikosti a kvóty zpráv
+### <a name="message-size-limits-and-quotas"></a>Omezení velikosti zpráv a kvóty
 
-Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv, které může téma obsahovat, není nijak omezen, ale je zde omezení celkové velikosti zpráv, které téma obsahuje. Velikost tématu můžete definovat v době vytvoření s horním limitem 5 GB. 
+Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni Standard](service-bus-premium-messaging.md) a 1 MB [na úrovni Premium](service-bus-premium-messaging.md). Hlavička, která obsahuje standardní a vlastní vlastnosti aplikace, může mít velikost až 64 KB. Počet zpráv, které může téma uchovávat, není nijak omezený, ale celková velikost zpráv, které toto téma obsahuje, je příliš velká. V části čas vytvoření můžete definovat velikost tématu s horním limitem 5 GB. 
 
-Další informace o kvótách naleznete v [tématu Kvóty služby Service Bus][Service Bus quotas].
+Další informace o kvótách najdete v tématu [Service Bus kvóty][Service Bus quotas].
 
-## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z předplatného
+## <a name="receive-messages-from-a-subscription"></a>Přijímání zpráv z předplatného
 
-Aplikace používají `receive_subscription_message` metodu na **ServiceBusService** objektu přijímat zprávy z předplatného. Následující příklad přijímá zprávy `LowMessages` z předplatného a odstraňuje je při jejich čtení:
+Aplikace používají `receive_subscription_message` metodu objektu **ServiceBusService** k přijímání zpráv z předplatného. Následující příklad přijímá zprávy z `LowMessages` předplatného a odstraňuje je při jejich čtení:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=False)
 print(msg.body)
 ```
 
-Volitelný `peek_lock` parametr `receive_subscription_message` určuje, zda Service Bus odstraní zprávy z předplatného, jak jsou čteny. Výchozí režim pro příjem zpráv je `peek_lock` *PeekLock*, nebo nastavit **True**, který čte (náhledy) a uzamkne zprávy bez jejich odstranění z předplatného. Každá zpráva pak musí být explicitně dokončena, aby byla odebrána z předplatného.
+Volitelný `peek_lock` parametr `receive_subscription_message` určuje, zda Service Bus odstraní zprávy z odběru při jejich čtení. Výchozí režim pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaven na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z předplatného. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z předplatného.
 
-Chcete-li odstranit zprávy z předplatného při jejich `peek_lock` čtení, můžete nastavit parametr **false**, jako v předchozím příkladu. Odstranění zpráv jako součást operace příjmu je nejjednodušší model a funguje dobře, pokud aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Chcete-li pochopit toto chování, zvažte scénář, ve kterém aplikace vydá požadavek na přijetí a pak dojde k chybě před jeho zpracováním. Pokud byla zpráva odstraněna při přijetí, když se aplikace restartuje a začne znovu spotřebovávat zprávy, zmeškala zprávu, kterou obdržela před selháním.
+Pokud chcete odstranit zprávy z odběru při jejich čtení, můžete nastavit `peek_lock` parametr na **false**, jako v předchozím příkladu. Odstraňování zpráv v rámci operace Receive je nejjednodušší model a funguje správně, pokud aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu scénář, ve kterém aplikace vystavuje žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Pokud se zpráva odstranila při obdržení, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu přijatou před selháním.
 
-Pokud vaše aplikace nemůže tolerovat zmeškané zprávy, příjem se stane dvoustupňovou operací. PeekLock najde další zprávu, která má být spotřebována, uzamkne ji zabránit ostatním spotřebitelům v přijímání a vrátí ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu `complete` voláním metody na **Message** objektu.  Metoda `complete` označí zprávu jako spotřebované a odebere ji z předplatného.
+Pokud vaše aplikace nemůže tolerovat zmeškané zprávy, obdrží se příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu voláním `complete` metody objektu **Message** .  `complete` Metoda označí zprávu jako spotřebou a odebere ji z předplatného.
 
-Následující příklad ukazuje scénář uzamčení náhledu:
+Následující příklad ukazuje scénář pro náhled zámku:
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
@@ -159,39 +159,39 @@ if msg.body is not None:
     msg.complete()
 ```
 
-## <a name="handle-application-crashes-and-unreadable-messages"></a>Zpracování selhání aplikací a nečitelných zpráv
+## <a name="handle-application-crashes-and-unreadable-messages"></a>Zpracování chyb aplikace a nečitelných zpráv
 
-Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce nemůže znějakého důvodu zpracovat zprávu, může volat metodu `unlock` na **Message** objektu. Service Bus odemkne zprávu v rámci předplatného a zpřístupní ji k přijetí znovu, buď stejnou nebo jinou náročné aplikace.
+Service Bus poskytuje funkce, které vám pomůžou se elegantně zotavit z chyb v aplikaci nebo vyřešit potíže se zpracováním zprávy. Pokud aplikace příjemce z nějakého důvodu nedokáže zpracovat zprávu, může zavolat `unlock` metodu na objekt **zprávy** . Service Bus odemkne zprávu v rámci předplatného a zpřístupní ji tak, aby byla znovu přijata, a to buď pomocí stejné, nebo jiné náročné aplikace.
 
-K dispozici je také časový čas pro zprávy zamčené v rámci předplatného. Pokud aplikace nepodaří zpracovat zprávu před vypršením časového limitu uzamčení, například pokud dojde k chybě aplikace, service bus automaticky odemkne zprávu a zpřístupní ji k přijetí znovu.
+V rámci předplatného je také časový limit pro zprávy uzamčený. Pokud aplikace nedokáže zpracovat zprávu před vypršením časového limitu zámku, například pokud dojde k selhání aplikace, Service Bus automaticky odemkne zprávu a zpřístupní ji pro příjem.
 
-Pokud dojde k chybě aplikace po zpracování `complete` zprávy, ale před voláním metody, zpráva bude znovu doručena do aplikace při restartování. Toto chování se často nazývá *At-least-once Processing*. Každá zpráva je zpracována alespoň jednou, ale v určitých situacích může být stejná zpráva znovu doručena. Pokud váš scénář nemůže tolerovat duplicitní zpracování, můžete použít **MessageId** vlastnost zprávy, která zůstává konstantní napříč pokusy o doručení, ke zpracování duplicitní doručení zprávy. 
+Pokud dojde k chybě aplikace po zpracování zprávy, ale před voláním `complete` metody, bude zpráva doručena do aplikace při restartu. Toto chování se často nazývá *zpracování nejméně jednou*. Každá zpráva je zpracována alespoň jednou, ale v některých situacích může být stejná zpráva doručena znovu. Pokud váš scénář nemůže tolerovat duplicitní zpracování, můžete použít vlastnost **MessageID** zprávy, která zůstává při pokusůch o doručení konstantní, pro zpracování duplicitního doručování zpráv. 
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
 
-Chcete-li odstranit témata a předplatná, `delete_topic` použijte portál [Azure][Azure portal] nebo metodu. Následující kód odstraní téma `mytopic`s názvem :
+Chcete-li odstranit témata a odběry [Azure portal][Azure portal] , použijte Azure Portal `delete_topic` nebo metodu. Následující kód odstraní téma s názvem `mytopic`:
 
 ```python
 bus_service.delete_topic('mytopic')
 ```
 
-Odstraněním tématu odstraníte všechna odběry tématu. Odběry můžete také odstranit nezávisle. Následující kód odstraní odběr `HighMessages` pojmenovaný `mytopic` z tématu:
+Odstraněním tématu se odstraní všechna předplatná v tématu. Odběry můžete také odstranit nezávisle. Následující kód odstraní odběr s názvem `HighMessages` z `mytopic` tématu:
 
 ```python
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. Chcete-li automaticky odstranit odběry po uplynutí určitého časového období, můžete nastavit [parametr auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
+Ve výchozím nastavení jsou témata a odběry trvalé a existují, dokud je neodstraníte. K automatickému odstranění předplatných po uplynutí určitého časového období můžete nastavit parametr [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) v předplatném. 
 
 > [!TIP]
-> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Aplikace Service Bus Explorer umožňuje připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu a možnost testovat témata, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer vám umožní připojit se k Service Busmu oboru názvů a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, a možnost testovat témata, fronty, odběry, služby přenosu, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste se naučili základy témat služby Service Bus, se dozvíte více na těchto odkazech:
+Teď, když jste se seznámili se základy Service Bus témata, další informace najdete na následujících odkazech:
 
 * [Fronty, témata a odběry][Queues, topics, and subscriptions]
-* Odkaz [SqlFilter.SqlExpression][SqlFilter.SqlExpression]
+* Odkaz na [SqlFilter. syntaxi][SqlFilter.SqlExpression]
 
 [Azure portal]: https://portal.azure.com
 [Azure Python package]: https://pypi.python.org/pypi/azure

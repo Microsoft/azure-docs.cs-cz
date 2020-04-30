@@ -1,6 +1,6 @@
 ---
-title: Monitorování prostředku Azure pomocí Azure Monitoru
-description: Zjistěte, jak shromažďovat a analyzovat data pro prostředek Azure v Azure Monitoru.
+title: Monitorování prostředku Azure pomocí Azure Monitor
+description: Naučte se shromažďovat a analyzovat data pro prostředek Azure v Azure Monitor.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
@@ -8,55 +8,55 @@ author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
 ms.openlocfilehash: 12616fbc80468d35ebb8b0bc5cd12bfd5871e788
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79503654"
 ---
-# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Úvodní příručka: Monitorování virtuálního počítače Azure pomocí Azure Monitoru
-[Azure Monitor](../overview.md) začne shromažďovat data z virtuálních počítačů Azure v okamžiku, kdy jsou vytvořeny. V tomto rychlém startu budete mít stručný návod na data, která se automaticky shromáždí pro virtuální počítač Azure a jak zobrazit na webu Azure Portal. Pak povolíte [Azure Monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
+# <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Rychlý Start: monitorování virtuálního počítače Azure pomocí Azure Monitor
+[Azure monitor](../overview.md) spustí shromažďování dat z virtuálních počítačů Azure a okamžik jejich vytvoření. V tomto rychlém startu se dozvíte, jak se budou automaticky shromažďovat data pro virtuální počítač Azure a jak je zobrazit v Azure Portal. Pak povolíte [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) pro váš virtuální počítač, který umožní agentům na virtuálním počítači shromažďovat a analyzovat data z hostovaného operačního systému, včetně procesů a jejich závislostí.
 
-Tento rychlý start předpokládá, že máte existující virtuální počítač Azure. Pokud ne, můžete vytvořit [virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) nebo vytvořit virtuální počítač s [Linuxem](../../virtual-machines/linux/quick-create-cli.md) po našich rychlých startech virtuálního počítače.
+Tento rychlý start předpokládá, že máte existující virtuální počítač Azure. Pokud nemůžete vytvořit [virtuální počítač s Windows](../../virtual-machines/windows/quick-create-portal.md) nebo vytvořit [virtuální počítač](../../virtual-machines/linux/quick-create-cli.md) se systémem Linux, postupujte podle našich rychlých startů pro virtuální počítače.
 
-Podrobnější popis dat monitorování shromážděných z prostředků Azure najdete v [tématu Monitorování virtuálních počítačů Azure pomocí Azure Monitoru](../insights/monitor-vm-azure.md).
-
-
-## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Dokončete rychlý start monitorování prostředků Azure.
-[Dokončete monitorování prostředku Azure pomocí Azure Monitoru](quick-monitor-azure-resource.md) a zobrazte stránku s přehledem, protokol aktivit a metriky pro virtuální počítač ve vašem předplatném. Virtuální počítače Azure shromažďují stejná data monitorování jako jakýkoli jiný prostředek Azure, ale to je jenom pro virtuální počítač hostitele. Zbytek tohoto rychlého startu se zaměří na sledování hostovaného operačního systému a jeho úloh.
+Podrobnější popis monitorování dat shromážděných z prostředků Azure najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../insights/monitor-vm-azure.md).
 
 
-## <a name="enable-azure-monitor-for-vms"></a>Povolení Azure Monitoru pro virtuální počítače
-Zatímco metriky a protokoly aktivit budou shromažďovány pro hostitelský virtuální počítače, budete potřebovat agenta a některé konfigurace pro shromažďování a analýzu dat monitorování z hostovaného operačního systému a jeho úloh. Azure Monitor pro virtuální počítače nainstaluje tyto agenty a poskytuje další výkonné funkce pro monitorování vašich virtuálních počítačů.
+## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Dokončete monitorování v rychlém startu prostředků Azure.
+Kompletní [monitorování prostředku Azure pomocí Azure monitor](quick-monitor-azure-resource.md) k zobrazení stránky s přehledem, protokolu aktivit a metrik pro virtuální počítač v rámci předplatného. Virtuální počítače Azure shromažďují stejná data monitorování jako všechny ostatní prostředky Azure, ale toto jsou jenom pro virtuální počítač hostitele. Zbytek tohoto rychlého startu se soustředí na monitorování hostovaného operačního systému a jeho úloh.
+
+
+## <a name="enable-azure-monitor-for-vms"></a>Povolit Azure Monitor pro virtuální počítače
+I když budou metriky a protokoly aktivit shromažďovány pro virtuální počítač hostitele, potřebujete agenta a určitou konfiguraci pro shromažďování a analýzu dat monitorování z hostovaného operačního systému a jeho úloh. Azure Monitor pro virtuální počítače tyto agenty nainstaluje a poskytuje další výkonné funkce pro monitorování virtuálních počítačů.
 
 1. Přejděte do nabídky pro váš virtuální počítač.
-2. Buď klikněte na **Přejít na přehledy** z dlaždice na stránce **Přehled,** nebo klikněte na **Přehledy** z nabídky **Monitorování.**
+2. Buď klikněte na **Přejít na přehledy** na dlaždici na stránce **Přehled** , nebo klikněte na **přehledy** v nabídce **monitorování** .
 
-    ![Stránka s přehledem](media/quick-monitor-azure-vm/overview-insights.png)
+    ![Stránka Přehled](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. Pokud Azure Monitor pro virtuální počítače ještě nebyla povolená pro virtuální počítač, klikněte na **povolit**. 
+3. Pokud Azure Monitor pro virtuální počítače pro virtuální počítač ještě není povolená, klikněte na **Povolit**. 
 
-    ![Povolení přehledů](media/quick-monitor-azure-vm/enable-insights.png)
+    ![Povolit přehledy](media/quick-monitor-azure-vm/enable-insights.png)
 
-4. Pokud virtuální počítač ještě není připojený k pracovnímu prostoru Analýzy protokolů, budete vyzváni k výběru existujícího pracovního prostoru nebo k vytvoření nového. Vyberte výchozí pracovní prostor s jedinečným názvem ve stejné oblasti jako váš virtuální počítač.
+4. Pokud virtuální počítač ještě není připojený k pracovnímu prostoru Log Analytics, zobrazí se výzva k výběru existujícího pracovního prostoru nebo vytvoření nového. Vyberte výchozí, což je pracovní prostor s jedinečným názvem ve stejné oblasti, ve které je váš virtuální počítač.
 
     ![Výběr pracovního prostoru](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. Registrace bude trvat několik minut, protože jsou povolena rozšíření a agenti jsou nainstalované ve vašem virtuálním počítači. Po dokončení se zobrazí zpráva, že přehledy byly úspěšně nasazeny. Kliknutím na **Azure Monitor** otevřete Azure Monitor pro virtuální počítače.
+5. Registrace bude trvat několik minut, než se povolí rozšíření a na virtuálním počítači se nainstalují agenti. Až se dokončí, dostanete zprávu, že přehledy se úspěšně nasadily. Kliknutím na **Azure monitor** otevřete Azure monitor pro virtuální počítače.
 
-    ![Otevření Azure Monitoru](media/quick-monitor-azure-vm/azure-monitor.png)
+    ![Otevřít Azure Monitor](media/quick-monitor-azure-vm/azure-monitor.png)
 
-6. Uvidíte svůj virtuální počítač s dalšími virtuálními počítači ve vašem předplatném, které jsou na palubě. Pokud chcete zobrazit virtuální počítače ve vašem předplatném, které nejsou na palubě, vyberte kartu **Nemonitorované.**
+6. Ve vašem předplatném se zobrazí váš virtuální počítač s dalšími virtuálními počítači. Pokud chcete zobrazit virtuální počítače v předplatném, které nejsou připojené, vyberte kartu **nemonitorované** .
 
     ![Začínáme](media/quick-monitor-azure-vm/get-started.png)
 
 
 ## <a name="configure-workspace"></a>Konfigurace pracovního prostoru
-Když vytvoříte nový pracovní prostor Analýzy protokolů, musí být nakonfigurován tak, aby shromažďoval protokoly. Tuto konfiguraci je třeba provést pouze jednou, protože konfigurace je odeslána do všech virtuálních počítačů, které se k ní připojují.
+Když vytváříte nový pracovní prostor Log Analytics, musí být nakonfigurovaný pro shromažďování protokolů. Tato konfigurace se musí provést jenom jednou, protože se konfigurace pošle na všechny virtuální počítače, které se k němu připojují.
 
-1. Vyberte **konfiguraci pracovního prostoru** a pak vyberte pracovní prostor.
+1. Vyberte **Konfigurace pracovního prostoru** a pak vyberte svůj pracovní prostor.
 
-2. Vybrat **upřesnit nastavení**
+2. Vybrat **upřesňující nastavení**
 
     ![Upřesňující nastavení Log Analytics](media/quick-collect-azurevm/log-analytics-advanced-settings-azure-portal.png)
 
@@ -65,46 +65,46 @@ Když vytvoříte nový pracovní prostor Analýzy protokolů, musí být nakonf
 
 2. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.
 
-3. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **systém** a vyberte znaménko **+** plus .
+3. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko **+** Plus.
 
 4. V tabulce zaškrtněte závažnosti **Chyby** a **Upozornění**.
 
-5. V horní části stránky vyberte **Uložit,** chcete-li konfiguraci uložit.
+5. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
 
 ### <a name="data-collection-from-linux-vm"></a>Shromažďování dat z virtuálního počítače s Linuxem
 
 1. Vyberte **Syslog**.  
 
-2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **Syslog** a vyberte znaménko **+** plus .  
+2. Přidejte protokol událostí zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+**.  
 
-3. V tabulce odznačte informace **o**závažnosti , **oznámení** a **ladění**. 
+3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
 
-4. V horní části stránky vyberte **Uložit,** chcete-li konfiguraci uložit.
+4. V horní části stránky vyberte **Uložit** a uložte konfiguraci.
 
 ## <a name="view-data-collected"></a>Zobrazení shromážděných dat
 
-7. Klikněte na virtuální počítač a vyberte kartu **Výkon.** To ukazuje vybranou skupinu čítačů výkonu shromážděných z hostovaného operačního systému vašeho virtuálního počítače. Posunutím dolů zobrazíte další čítače a pohybem myši nad grafem zobrazíte průměr a percentily v různých časech.
+7. Klikněte na virtuální počítač a pak vyberte kartu **výkon** . Tím se zobrazí vybraná skupina čítačů výkonu shromážděných z hostovaného operačního systému virtuálního počítače. Posuňte se dolů a zobrazte další čítače a přesuňte ukazatel myši na graf, abyste zobrazili průměrnou a percentily v různou dobu.
 
     ![Výkon](media/quick-monitor-azure-vm/performance.png)
 
-9. Výběrem **možnosti Mapa** otevřete funkci mapy, která zobrazuje procesy spuštěné ve virtuálním počítači a jejich závislosti. Výběrem **možnosti Vlastnosti** otevřete podokno vlastností, pokud ještě není otevřené.
+9. Výběrem **mapování** otevřete funkci Maps, která zobrazuje procesy běžící na virtuálním počítači a jejich závislosti. Výběrem **vlastnosti** otevřete podokno vlastností, pokud již není otevřeno.
 
     ![Mapa](media/quick-monitor-azure-vm/map.png)
 
-11. Rozšiřte procesy pro váš virtuální počítač. Vyberte jeden z procesů, chcete-li zobrazit jeho podrobnosti a zvýraznit jeho závislosti.
+11. Rozbalíte procesy pro svůj virtuální počítač. Výběrem jednoho z procesů zobrazíte jeho podrobnosti a zvýrazníte jeho závislosti.
 
     ![Procesy](media/quick-monitor-azure-vm/processes.png)
 
-12. Znovu vyberte virtuální počítač a pak **vyberte Protokolovat události**. 
+12. Vyberte virtuální počítač znovu a pak vyberte **události protokolu**. 
 
-    ![Protokolovat události](media/quick-monitor-azure-vm/log-events.png)
+    ![Události protokolu](media/quick-monitor-azure-vm/log-events.png)
 
-13. Zobrazí se seznam tabulek, které jsou uloženy v pracovním prostoru Log Analytics pro virtuální počítač. Tento seznam se bude lišit v závislosti na tom, zda používáte virtuální počítač se systémem Windows nebo Linux. Klikněte na tabulku **Událost.** To zahrnuje všechny události z protokolu událostí systému Windows. Log Analytics otevře s jednoduchýdotaz na číst položky protokolu událostí.
+13. Zobrazí se seznam tabulek, které jsou uložené v pracovním prostoru Log Analytics pro virtuální počítač. Tento seznam se liší v závislosti na tom, zda používáte virtuální počítač se systémem Windows nebo Linux. Klikněte na tabulku **událostí** . To zahrnuje všechny události z protokolu událostí systému Windows. Log Analytics se otevře s jednoduchým dotazem, který načte položky protokolu událostí.
 
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste povolili Azure Monitor pro virtuální počítače pro virtuální počítač a nakonfigurovali pracovní prostor Log Analytics pro shromažďování událostí pro hostovaný operační systém. Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
+V tomto rychlém startu jste povolili Azure Monitor pro virtuální počítače pro virtuální počítač a nakonfigurovali Log Analytics pracovní prostor pro shromažďování událostí pro hostovaný operační systém. Pokud chcete zjistit, jak zobrazit a analyzovat data, pokračujte k následujícímu kurzu.
 
 > [!div class="nextstepaction"]
 > [Zobrazení nebo analýza dat v Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md)

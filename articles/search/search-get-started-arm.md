@@ -1,7 +1,7 @@
 ---
-title: Nasazení služby pomocí šablony Azure Resource Manageru
+title: Použití šablony Azure Resource Manager k nasazení služby
 titleSuffix: Azure Cognitive Search
-description: Instanci služby Azure Cognitive Search můžete rychle nasadit pomocí šablony Správce prostředků Azure.
+description: Pomocí šablony Azure Resource Manageru můžete rychle nasadit instanci služby Azure Kognitivní hledání.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -10,23 +10,23 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/20/2020
 ms.openlocfilehash: 6da2c324872a86c2c0ce6f55801bc7b0ee8d713e
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80607621"
 ---
-# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Úvodní příručka: Nasazení kognitivního vyhledávání pomocí šablony Správce prostředků
+# <a name="quickstart-deploy-cognitive-search-using-a-resource-manager-template"></a>Rychlý Start: nasazení Kognitivní hledání pomocí šablony Správce prostředků
 
-Tento článek vás provede procesem použití šablony Správce prostředků k nasazení prostředku Azure Cognitive Search na webu Azure Portal.
+Tento článek vás provede procesem použití šablony Správce prostředků k nasazení prostředku Azure Kognitivní hledání v Azure Portal.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-a-cognitive-search-service"></a>Vytvoření služby kognitivního vyhledávání
+## <a name="create-a-cognitive-search-service"></a>Vytvoření služby Kognitivní hledání
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
@@ -36,34 +36,34 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Prostředek Azure definovaný v této šabloně:
 
-- [Microsoft.Search/searchServices:](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices)vytvoření služby Azure Cognitive Search
+- [Microsoft. Search/searchServices](https://docs.microsoft.com/azure/templates/Microsoft.Search/2015-08-19/searchServices): vytvoření služby Azure kognitivní hledání
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří prostředek Azure Cognitive Search.
+Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří prostředek služby Azure Kognitivní hledání.
 
 [![Nasazení do Azure](./media/search-get-started-arm/arm-deploybuttona.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2F101-azure-search-create%2Fazuredeploy.json)
 
-Portál zobrazí formulář, který umožňuje snadno zadat hodnoty parametrů. Některé parametry jsou předvyplněny výchozími hodnotami ze šablony. Budete muset zadat předplatné, skupinu prostředků, umístění a název služby. Pokud chcete používat služby Cognitive Services v kanálu [obohacení AI,](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) například k analýze binárních obrazových souborů pro text, zvolte umístění, které nabízí služby Cognitive Search a Cognitive Services. Obě služby musí být ve stejné oblasti pro úlohy obohacení ai. Po vyplnění formuláře budete muset souhlasit s podmínkami a poté vybrat tlačítko nákupu k dokončení nasazení.
+Portál zobrazí formulář, který umožňuje snadno zadat hodnoty parametrů. Některé parametry jsou předem vyplněny výchozími hodnotami ze šablony. Budete muset zadat předplatné, skupinu prostředků, umístění a název služby. Pokud chcete použít Cognitive Services v kanálu pro [rozšíření AI](https://docs.microsoft.com/azure/search/cognitive-search-concept-intro) , například k analýze souborů binárních obrázků pro text, vyberte umístění, které nabízí Kognitivní hledání i Cognitive Services. Obě služby se musí nacházet ve stejné oblasti pro úlohy rozšíření AI. Po vyplnění formuláře budete muset souhlasit s podmínkami a ujednáními a pak vybrat tlačítko koupit a dokončit nasazení.
 
 > [!div class="mx-imgBorder"]
-> ![Zobrazení šablony na webu Azure Portal](./media/search-get-started-arm/arm-portalscrnsht.png)
+> ![Azure Portal zobrazení šablony](./media/search-get-started-arm/arm-portalscrnsht.png)
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
-Po dokončení nasazení máte přístup k nové skupině prostředků a nové vyhledávací službě na portálu.
+Po dokončení nasazení získáte přístup k nové skupině prostředků a nové službě vyhledávání na portálu.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Další rychlé starty a kurzy kognitivního vyhledávání vycházejí z tohoto rychlého startu. Pokud máte v plánu pokračovat v práci s následnými rychlými starty a kurzy, můžete chtít ponechat tento prostředek na místě. Pokud již není potřeba, můžete odstranit skupinu prostředků, která odstraní službu Kognitivní vyhledávání a související prostředky.
+Další Kognitivní hledání rychlý Start a kurzy, které se na tomto rychlém startu sestavují. Pokud máte v úmyslu pokračovat v práci s dalšími rychlými starty a kurzy, možná budete chtít tento prostředek ponechat na místě. Pokud už je nepotřebujete, můžete odstranit skupinu prostředků, která odstraní službu Kognitivní hledání a související prostředky.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili službu cognitive search pomocí šablony Azure Resource Manager a ověřili nasazení. Další informace o kognitivním vyhledávání a Správci prostředků Azure najdete v následujících článcích.
+V tomto rychlém startu jste vytvořili Kognitivní hledání službu pomocí Azure Resource Manager šablony a ověřili jste nasazení. Další informace o Kognitivní hledání a Azure Resource Manager najdete dál v článcích níže.
 
- - Přečtěte si [přehled Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-what-is-azure-search)
+ - Přečtěte si [Přehled Azure kognitivní hledání](https://docs.microsoft.com/azure/search/search-what-is-azure-search)
  - [Vytvoření indexu](https://docs.microsoft.com/azure/search/search-get-started-portal) pro vyhledávací službu
- - [Vytvoření vyhledávací aplikace](https://docs.microsoft.com/azure/search/search-create-app-portal) pomocí průvodce portálem
- - [Vytvoření sady dovedností](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob) pro extrahování informací z dat
+ - [Vytvoření vyhledávací aplikace](https://docs.microsoft.com/azure/search/search-create-app-portal) pomocí Průvodce portálem
+ - [Vytvoření dovednosti](https://docs.microsoft.com/azure/search/cognitive-search-quickstart-blob) k extrakci informací z vašich dat
 
 

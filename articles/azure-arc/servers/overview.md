@@ -1,96 +1,96 @@
 ---
-title: Přehled Azure Arc pro servery (preview)
-description: Zjistěte, jak používat Azure Arc pro servery ke správě počítačů, které jsou hostované mimo Azure, jako by se jedná o prostředek Azure.
+title: Přehled služby Azure ARC pro servery (Preview)
+description: Naučte se používat Azure ARC pro servery ke správě počítačů, které jsou hostované mimo Azure, jako by se jedná o prostředek Azure.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-keywords: azure automation, DSC, powershell, požadovaná konfigurace stavu, správa aktualizací, sledování změn, inventář, runbooky, python, grafické, hybridní
+keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
 ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81308776"
 ---
-# <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure Arc pro servery (preview)
+# <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
-Azure Arc pro servery (preview) umožňuje spravovat vaše počítače s Windows a Linuxem hostované mimo Azure ve vaší podnikové síti nebo jiném poskytovateli cloudu, podobně jako spravujete nativní virtuální počítače Azure. Když je hybridní počítač připojený k Azure, stane se připojeným počítačem a bude v Azure považován za prostředek. Každý připojený počítač má ID prostředků, spravuje se jako součást skupiny prostředků v rámci předplatného a těží ze standardních konstrukcí Azure, jako jsou zásady Azure a použití značek.
+Azure ARC pro servery (Preview) umožňuje spravovat počítače se systémem Windows a Linux hostované mimo Azure v podnikové síti nebo jiném poskytovateli cloudu, podobně jako při správě nativních virtuálních počítačů Azure. Když je hybridní počítač připojený k Azure, bude se jednat o připojený počítač, který se považuje za prostředek v Azure. Každý připojený počítač má ID prostředku, je spravován jako součást skupiny prostředků v rámci předplatného a přináší výhody standardních konstrukcí Azure, jako je například Azure Policy a použití značek.
 
-Chcete-li poskytovat toto prostředí s hybridními počítači hostovanými mimo Azure, musí být agent Azure Connected Machine nainstalován na každém počítači, který plánujete připojit k Azure. Tento agent neposkytuje žádné další funkce a nenahrazuje [agenta](../../azure-monitor/platform/log-analytics-agent.md)Azure Log Analytics . Agent Log Analytics pro Windows a Linux je vyžadován, pokud chcete proaktivně sledovat operační systém a úlohy spuštěné na počítači, spravovat jej pomocí runbooků automation nebo řešení, jako je správa aktualizací, nebo používat jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
+Aby bylo možné doručovat toto prostředí do vašich hybridních počítačů hostovaných mimo Azure, musí být na každém počítači, který plánujete připojit k Azure, nainstalovaný agent připojeného počítače Azure. Tento agent nedoručuje žádné jiné funkce a nenahrazuje [agenta Azure Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo řešení automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).
 
 >[!NOTE]
->Tato verze preview je určena pro účely vyhodnocení a doporučujeme nespravovat kritické výrobní stroje.
+>Tato verze Preview je určená pro účely vyhodnocení a nedoporučujeme spravovat důležité provozní počítače.
 >
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-Azure Arc pro servery (preview) podporuje následující scénáře s připojenými počítači:
+Azure ARC pro servery (verze Preview) podporuje následující scénáře s připojenými počítači:
 
-- Přiřaďte [konfigurace hosta zásad Azure](../../governance/policy/concepts/guest-configuration.md) pomocí stejného prostředí jako přiřazení zásad pro virtuální počítače Azure.
-- Data protokolu shromážděná agentem Analýzy protokolů a uložená v pracovním prostoru Log Analytics, ve kterém je počítač registrován, nyní obsahují vlastnosti specifické pro počítač, jako je například ID prostředku, které lze použít k podpoře přístupu k protokolu [kontextu prostředků.](../../azure-monitor/platform/design-logs-deployment.md#access-mode)
+- Přiřaďte [Azure Policy konfigurace hostů](../../governance/policy/concepts/guest-configuration.md) stejným způsobem jako přiřazení zásad pro virtuální počítače Azure.
+- Data protokolu shromážděná agentem Log Analytics a uložená v pracovním prostoru Log Analytics je počítač zaregistrovaný. nyní obsahuje vlastnosti specifické pro počítač, například ID prostředku, které lze použít k podpoře přístupu k protokolu [kontextu prostředků](../../azure-monitor/platform/design-logs-deployment.md#access-mode) .
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-S Azure Arc pro servery (preview) jsou podporované jenom určité oblasti:
+U Azure ARC pro servery (Preview) jsou podporované jenom některé oblasti:
 
-- Západní US2
+- WestUS2
 - WestEurope
-- Západní Asie
+- WestAsia
 
-Ve většině případů umístění, které vyberete při vytváření instalačního skriptu by měla být oblast Azure geograficky nejblíže k umístění vašeho počítače. Data v klidovém stavu se budou ukládat v rámci geografické oblasti Azure obsahující zadanou oblast, což může mít vliv také na výběr oblasti, pokud máte požadavky na rezidenci dat. Pokud oblast Azure, ke které je váš počítač připojený, je ovlivněna výpadkem, připojený počítač není ovlivněn, ale operace správy pomocí Azure nemusí být neúplné. Z důvodu odolnosti v případě regionálního výpadku, pokud máte více míst, které poskytují geograficky redundantní služby, je nejlepší připojit počítače v každé lokalitě do jiné oblasti Azure.
+Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se uloží v rámci geografické oblasti Azure obsahující oblast, kterou zadáte, což může mít vliv i na výběr oblasti, pokud máte požadavky na umístění dat. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure možná nebude možné dokončit. V případě pružnosti v případě výpadku v oblasti regionu, pokud máte více umístění, která poskytují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Pro agenta Azure Connected Machine jsou oficiálně podporované následující verze operačního systému Windows a Linux: 
+Pro agenta připojeného počítače Azure jsou oficiálně podporované následující verze operačního systému Windows a Linux: 
 
-- Windows Server 2012 R2 a vyšší (včetně Windows Server Core)
-- Ubuntu 16.04 a 18.04
-- Centos Linux 7
+- Windows Server 2012 R2 a vyšší (včetně jádra Windows serveru)
+- Ubuntu 16,04 a 18,04
+- CentOS Linux 7
 - SUSE Linux Enterprise Server (SLES) 15
 - Red Hat Enterprise Linux (RHEL) 7
 - Amazon Linux 2
 
 >[!NOTE]
->Tato předběžná verze agenta connected machine pro systém Windows podporuje pouze systém Windows Server nakonfigurovaný pro použití anglického jazyka.
+>Tato verze Preview agenta připojeného počítače pro Windows podporuje jenom Windows Server nakonfigurovaný pro použití v anglickém jazyce.
 >
 
 ### <a name="required-permissions"></a>Požadovaná oprávnění
 
-- Pro palubní počítače jste členem role **Připojení k počítači Azure.**
+- Pokud chcete připojit počítače, jste členem role **připojení počítače připojeného k Azure** .
 
-- Chcete-li číst, upravovat, znovu napalubě a odstranit počítač, jste členem role **správce prostředků připojeného počítače Azure.** 
+- Pro čtení, úpravy, opětovné zprovoznění a odstranění počítače jste členem role **Správce prostředků počítače připojeného k Azure** . 
 
-### <a name="azure-subscription-and-service-limits"></a>Limity předplatného a služeb Azure
+### <a name="azure-subscription-and-service-limits"></a>Omezení předplatného a služeb Azure
 
-Před konfigurací počítačů s Azure Arc pro servery (preview) byste měli zkontrolovat [limity předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) Azure Resource Manager a [omezení skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) pro plánování počtu počítačů, které mají být připojeny.
+Před konfigurací počítačů pomocí Azure ARC pro servery (Preview) byste měli zkontrolovat [omezení Azure Resource Manager předplatného](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) a [skupiny prostředků](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) pro plánování počtu počítačů, které se mají připojit.
 
-## <a name="tls-12-protocol"></a>Protokol TLS 1.2
+## <a name="tls-12-protocol"></a>Protokol TLS 1,2
 
-Chcete-li zajistit zabezpečení dat při přenosu do Azure, důrazně doporučujeme nakonfigurovat počítač tak, aby používal zabezpečení transportní vrstvy (TLS) 1.2. Starší verze vrstvy TLS/SSockets Layer (SSL) byly shledány zranitelnými a zatímco v současné době pracují na povolení zpětné kompatibility, **nejsou doporučeny**. 
+Abychom zajistili zabezpečení dat při přenosu do Azure, důrazně doporučujeme nakonfigurovat počítač tak, aby používal protokol TLS (Transport Layer Security) 1,2. Zjistili jsme, že starší verze TLS/SSL (Secure Sockets Layer) (SSL) jsou zranitelné a i když stále fungují k tomu, aby se zajistila zpětná kompatibilita, **nedoporučuje**se. 
 
 |Platforma/jazyk | Podpora | Další informace |
 | --- | --- | --- |
-|Linux | Linuxové distribuce mají tendenci spoléhat se na [OpenSSL](https://www.openssl.org) pro podporu TLS 1.2. | Zkontrolujte [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) a potvrďte, že je vaše verze OpenSSL podporována.|
-| Windows Server 2012 R2 a vyšší | Podporováno a ve výchozím nastavení povoleno. | Chcete-li ověřit, zda stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).|
+|Linux | Distribuce systému Linux se obvykle spoléhají na [OpenSSL](https://www.openssl.org) pro podporu TLS 1,2. | Zkontrolujte [OpenSSL protokolu změn](https://www.openssl.org/news/changelog.html) a potvrďte, že je podporovaná vaše verze OpenSSL.|
+| Windows Server 2012 R2 a vyšší | Podporované a povolené ve výchozím nastavení. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).|
 
 ### <a name="networking-configuration"></a>Konfigurace sítě
 
-Agent connected machine pro Linux a Windows bezpečně komunikuje odchozí do Azure Arc přes port TCP 443. Pokud se počítač připojuje přes bránu firewall nebo proxy server pro komunikaci přes Internet, zkontrolujte níže uvedené požadavky, abyste pochopili požadavky na konfiguraci sítě.
+Agent připojeného počítače pro systémy Linux a Windows komunikuje zabezpečeným způsobem přes Azure ARC přes port TCP 443. Pokud se počítač připojí prostřednictvím brány firewall nebo proxy server komunikovat přes Internet, Projděte si níže uvedené požadavky, abyste pochopili požadavky na konfiguraci sítě.
 
-Pokud je odchozí připojení omezeno bránou firewall nebo proxy serverem, zkontrolujte, zda nejsou níže uvedené adresy URL blokovány. Pokud povolíte pouze rozsahy IP adres nebo názvy domén požadované pro agenta ke komunikaci se službou, musíte také povolit přístup k následujícím značkám služeb a adresám URL.
+Pokud je odchozí připojení omezeno bránou firewall nebo proxy server, ujistěte se, že níže uvedené adresy URL nejsou blokované. Pokud povolíte pouze rozsahy IP adres nebo názvy domén, které musí agent komunikovat se službou, musíte taky dovolit přístup k následujícím značkám služby a adresám URL.
 
-Značky služeb:
+Značky služby:
 
-- AzureActiveDirectory
+- Azureactivedirectory selhala
 - AzureTrafficManager
 
-Adresy url:
+Adrese
 
 | Prostředek agenta | Popis |
 |---------|---------|
@@ -98,19 +98,19 @@ Adresy url:
 |login.windows.net|Azure Active Directory|
 |dc.services.visualstudio.com|Application Insights|
 |agentserviceapi.azure-automation.net|Konfigurace hosta|
-|*-agentservice-prod-1.azure-automation.net|Konfigurace hosta|
-|*.his.hybridcompute.azure-automation.net|Hybridní služba identity|
+|* – agentservice-prod-1.azure-automation.net|Konfigurace hosta|
+|*. his.hybridcompute.azure-automation.net|Služba hybridní identity|
 
-Seznam IP adres pro každou značku služby nebo oblast najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publikuje týdenní aktualizace obsahující všechny služby Azure a rozsahy IP adres, které používá. Další informace naleznete v recenzi [na service tagy](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Seznam IP adres pro jednotlivé značky nebo oblasti služby najdete v souboru JSON – [rozsahy IP adres Azure a značky služeb – veřejný cloud](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publikuje týdenní aktualizace obsahující každou službu Azure a rozsahy IP adres, které používá. Další informace najdete v přehledu [značek služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-Adresy URL v předchozí tabulce jsou vyžadovány kromě informací o rozsahu ip adresy výrobních značek, protože většina služeb aktuálně nemá registraci výrobního údaje. V důsledku toho se mohou změnit adresy IP. Pokud jsou pro konfiguraci brány firewall vyžadovány rozsahy IP adres, měla by se k povolení přístupu ke všem službám Azure použít výrobní číslo **AzureCloud.** Nezakazujte monitorování zabezpečení nebo kontrolu těchto adres URL, povolte je stejně jako ostatní internetové přenosy.
+Adresy URL v předchozí tabulce jsou nutné kromě informací o rozsahu IP adres značky služby, protože většina služeb aktuálně nemá registraci značky služby. V takovém případě se tyto IP adresy mohou změnit. Pokud se pro konfiguraci brány firewall vyžadují rozsahy IP adres, měla by se tato značka služby **AzureCloud** použít k povolení přístupu ke všem službám Azure. Nepovolujte monitorování zabezpečení ani kontrolu těchto adres URL. Povolte je stejně jako jiný internetový provoz.
 
-### <a name="register-azure-resource-providers"></a>Registrace poskytovatelů prostředků Azure
+### <a name="register-azure-resource-providers"></a>Registrovat poskytovatele prostředků Azure
 
-Azure Arc pro servery (preview) závisí na následujících zprostředkovatelích prostředků Azure ve vašem předplatném, aby bylo možné používat tuto službu:
+Azure ARC pro servery (verze Preview) závisí na následujících poskytovatelích prostředků Azure ve vašem předplatném, aby bylo možné tuto službu používat:
 
-- **Microsoft.HybridCompute**
-- **Microsoft.GuestConfiguration**
+- **Microsoft. HybridCompute**
+- **Microsoft. GuestConfiguration**
 
 Pokud nejsou registrovány, můžete je zaregistrovat pomocí následujících příkazů:
 
@@ -123,7 +123,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
 Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Cli Azure:
+Rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
 az account set --subscription "{Your Subscription Name}"
@@ -131,34 +131,34 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Poskytovatele prostředků můžete zaregistrovat na webu Azure Portal podle kroků v části [Portál Azure](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+Poskytovatele prostředků můžete také zaregistrovat v Azure Portal podle kroků v části [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
-## <a name="connected-machine-agent"></a>Agent připojeného stroje
+## <a name="connected-machine-agent"></a>Agent připojeného počítače
 
-Balíček agenta Azure Connected Machine pro Windows a Linux si můžete stáhnout z níže uvedených umístění.
+Balíček agenta připojeného počítače Azure pro Windows a Linux si můžete stáhnout z níže uvedených umístění.
 
-- [Balíček Instalační služby systému Windows pro systém Windows](https://aka.ms/AzureConnectedMachineAgent) ze služby Stažení softwaru.
-- Balíček agenta Linuxu je distribuován z [úložiště balíčků](https://packages.microsoft.com/) společnosti Microsoft pomocí upřednostňovaného formátu balíčku pro distribuci (. rpm nebo . DEB).
+- [Balíček Windows agent Instalační služba systému Windows](https://aka.ms/AzureConnectedMachineAgent) z webu Microsoft Download Center.
+- Balíček agenta pro Linux se distribuuje z [úložiště balíčků](https://packages.microsoft.com/) Microsoftu pomocí preferovaného formátu balíčku pro distribuci (. Ot./min. nebo. DEB).
 
 >[!NOTE]
->Během tohoto náhledu byl vydán pouze jeden balíček, který je vhodný pro Ubuntu 16.04 nebo 18.04.
+>V této verzi Preview byl vydán pouze jeden balíček, který je vhodný pro Ubuntu 16,04 nebo 18,04.
 
-Agent azure connected machine pro Windows a Linux lze upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace naleznete [zde](manage-agent.md).
+Agenta připojeného počítače Azure pro Windows a Linux se dá upgradovat na nejnovější verzi ručně nebo automaticky v závislosti na vašich požadavcích. Další informace najdete [tady](manage-agent.md).
 
 ### <a name="agent-status"></a>Stav agenta
 
-Agent připojeného počítače odesílá do služby každých 5 minut zprávu o pravidelném prezenčním signálu. Pokud služba přestane přijímat tyto zprávy prezenčního signálu z počítače, tento počítač je považován za offline a stav se automaticky změní na **Odpojeno** na portálu během 15 až 30 minut. Po přijetí následné zprávy prezenčního signálu od agenta připojeného počítače se jeho stav automaticky změní na **Připojeno**.
+Agent připojeného počítače pošle službě pravidelné zprávy prezenčního signálu každých 5 minut. Pokud služba přestane přijímat tyto zprávy prezenčního signálu z počítače, považuje se tento počítač za offline a na portálu se automaticky změní stav na **Odpojeno** během 15 až 30 minut. Po přijetí následné zprávy prezenčního signálu od připojeného agenta počítače se jeho stav automaticky změní na **připojeno**.
 
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta
 
-Připojení počítačů ve vašem hybridním prostředí přímo s Azure lze provést pomocí různých metod v závislosti na vašich požadavcích. V následující tabulce jsou uvedeny jednotlivé metody k určení, která je pro vaši organizaci nejvhodnější.
+Propojení počítačů ve vašem hybridním prostředí s Azure je možné dosáhnout pomocí různých metod v závislosti na vašich požadavcích. Následující tabulka zvýrazňuje jednotlivé metody, abyste zjistili, které funkce jsou pro vaši organizaci nejvhodnější.
 
 | Metoda | Popis |
 |--------|-------------|
-| Interaktivně | Ručně nainstalujte agenta na jeden nebo malý počet počítačů podle kroků v [části Připojit počítače z portálu Azure](onboard-portal.md).<br> Z portálu Azure můžete vygenerovat skript a spustit jej v počítači a automatizovat kroky instalace a konfigurace agenta.|
-| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů podle [počítačů Connect pomocí instančního objektu .](onboard-service-principal.md)<br> Tato metoda vytvoří instanční objekt pro připojení počítačů neinteraktivně.|
-| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů podle metody [Pomocí prostředí Windows PowerShell DSC](onboard-dsc.md).<br> Tato metoda používá instanční objekt pro připojení počítačů neinteraktivně s Prostředím PowerShell DSC. |
+| Interaktivně | Ručně nainstalujte agenta na jeden nebo malý počet počítačů podle postupu v části [připojení počítačů od Azure Portal](onboard-portal.md).<br> Z Azure Portal můžete vygenerovat skript a spustit ho na počítači, abyste mohli automatizovat kroky instalace a konfigurace agenta.|
+| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů, které následují po [připojení počítačů pomocí instančního objektu](onboard-service-principal.md).<br> Tato metoda vytvoří instanční objekt pro připojení počítačů, které nejsou interaktivně.|
+| Ve velkém měřítku | Nainstalujte a nakonfigurujte agenta pro více počítačů, které následují za metodou [pomocí Windows POWERSHELL DSC](onboard-dsc.md).<br> Tato metoda používá instanční objekt k propojení počítačů bez interaktivního připojení k prostředí PowerShell DSC. |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Chcete-li začít vyhodnocovat Azure Arc pro servery (preview), postupujte podle článku [Připojení hybridních počítačů k Azure z webu Azure Portal](onboard-portal.md). 
+- Pokud chcete začít vyhodnocovat Azure ARC pro servery (Preview), postupujte podle článku [připojení Hybrid Machines k Azure z Azure Portal](onboard-portal.md). 

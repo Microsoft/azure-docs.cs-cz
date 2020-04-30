@@ -1,6 +1,6 @@
 ---
-title: Připojení k Synapse SQL
-description: Spojte se se synapse SQL.
+title: Připojení k synapse SQL
+description: Připojte se k synapse SQL.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,32 +10,32 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9748b0354ce09752296fb7d736e09af716f19351
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424605"
 ---
-# <a name="connect-to-synapse-sql"></a>Připojení k Synapse SQL
-Připojení k funkcím Synapse SQL v Azure Synapse Analytics.
+# <a name="connect-to-synapse-sql"></a>Připojení k synapse SQL
+Připojte se k funkci synapse SQL ve službě Azure synapse Analytics.
 
-## <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (náhled)
+## <a name="supported-tools-for-sql-on-demand-preview"></a>Podporované nástroje pro SQL na vyžádání (Preview)
 
-Plně podporovaný nástroj je Azure Data Studio (preview).
+Plně podporovaný nástroj je Azure Data Studio (Preview).
 
-Sql Server Management Studio je podporovánčástečně z verze 18.4. Existují omezené funkce, jako je například připojení a dotazování.
+SQL Server Management Studio se částečně podporuje od verze 18,4. K dispozici jsou omezené funkce, jako je připojení a dotazování.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 
-Název serveru pro fond SQL V následujícím příkladu je: showdemoweu.sql.azuresynapse.net.
-Název serveru pro SQL na vyžádání v následujícím příkladu je: showdemoweu-ondemand.sql.azuresynapse.net.
+Název serveru pro fond SQL v následujícím příkladu: showdemoweu.sql.azuresynapse.net.
+Název serveru pro SQL na vyžádání v následujícím příkladu: showdemoweu-ondemand.sql.azuresynapse.net.
 
 Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
-2. Klikněte na **pracovní prostory Synapse**.
+1. Přejít na [Azure Portal](https://portal.azure.com).
+2. Klikněte na **synapse pracovní prostory**.
 3. Klikněte na pracovní prostor, ke kterému se chcete připojit.
-4. Přejděte na přehled.
+4. Přejít na přehled
 5. Vyhledejte úplný název serveru.
 
 ## <a name="sql-pool"></a>**Fond SQL**
@@ -47,7 +47,7 @@ Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
 ![Úplný název serveru SQL na vyžádání](./media/connect-overview/server-connect-example-sqlod.png)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky generovat připojovací řetězec pro ovladač, který používáte z portálu Azure, klikněte na **zobrazit připojovací řetězce databáze** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Synapse SQL podporuje [ADO.NET](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx), [ODBC](https://msdn.microsoft.com/library/jj730314.aspx), [php](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)a [JDBC](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx). Chcete-li najít nejnovější verzi a dokumentaci, klikněte na jeden z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z Azure Portal, klikněte na příkaz **Zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.
@@ -77,7 +77,7 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Nastavení připojení
-Synapse SQL standardizuje některá nastavení během připojení a vytváření objektů. Tato nastavení nelze přepsat a zahrnují:
+Synapse SQL v rámci připojení a vytváření objektů standardizace některá nastavení. Tato nastavení nelze přepsat a zahrnují:
 
 | Nastavení databáze | Hodnota |
 |:--- |:--- |
@@ -88,7 +88,7 @@ Synapse SQL standardizuje některá nastavení během připojení a vytváření
 
 ## <a name="recommendations"></a>Doporučení
 
-Pro provádění dotazů **SQL na vyžádání** jsou doporučenými nástroji Azure Data [Studio](get-started-azure-data-studio.md) a Azure Synapse Studio.
+Pro spouštění dotazů **na vyžádání SQL** jsou doporučené nástroje [Azure Data Studio](get-started-azure-data-studio.md) a Azure synapse Studio.
 
 ## <a name="next-steps"></a>Další kroky
-Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Další informace o možnostech ověřování naleznete v [tématu Authentication to Synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Informace o připojení a dotazování pomocí sady Visual Studio najdete v oddílu [Dotazování pomocí sady Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Další informace o možnostech ověřování najdete v tématu [ověřování pro synapse SQL](../sql-data-warehouse/sql-data-warehouse-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

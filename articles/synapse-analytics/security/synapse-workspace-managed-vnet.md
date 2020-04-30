@@ -1,6 +1,6 @@
 ---
-title: Spravovaná virtuální síť v Azure Synapse Analytics
-description: Článek, který vysvětluje spravovanou virtuální síť v Azure Synapse Analytics
+title: Spravovaná virtuální síť ve službě Azure synapse Analytics
+description: Článek s vysvětlením spravované virtuální sítě ve službě Azure synapse Analytics
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
@@ -8,58 +8,58 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 162d96244b01f8c5e1acf224475aadb9508f0aa5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81423632"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Virtuální síť spravovaná azure synapse analytics (preview)
+# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure synapse Analytics Managed Virtual Network (Preview)
 
-Tento článek vysvětluje spravovanou virtuální síť v Azure Synapse Analytics.
+V tomto článku se dozvíte, jak spravovat Virtual Network ve službě Azure synapse Analytics.
 
 ## <a name="managed-workspace-vnet"></a>Virtuální síť spravovaného pracovního prostoru
 
-Když vytvoříte pracovní prostor Azure Synapse, můžete ho přidružit k virtuální síti. Virtuální síť přidružená k vašemu pracovnímu prostoru spravuje Azure Synapse. Tato virtuální síť se nazývá *virtuální síť spravovaného pracovního prostoru*.
+Když vytváříte pracovní prostor Azure synapse, můžete si ho přidružit k virtuální síti. Virtuální síť přidružená k vašemu pracovnímu prostoru je spravovaná pomocí Azure synapse. Tato virtuální síť se nazývá *spravovaná virtuální síť pracovního prostoru*.
 
-Virtuální síť spravovaného pracovního prostoru poskytuje hodnotu čtyřmi způsoby:
+Virtuální síť spravovaného pracovního prostoru poskytuje hodnoty čtyřmi způsoby:
 
-- S virtuální virtuální sítě spravovaného pracovního prostoru můžete přetížit správu virtuální sítě do Azure Synapse.
-- Není nutné konfigurovat příchozí pravidla sítě zabezpečení sítě na vlastních virtuálních sítích, aby provoz správy Azure Synapse mohl vstoupit do vaší virtuální sítě. Nesprávnou konfigurací těchto pravidel nsg způsobí přerušení služeb pro zákazníky.
-- Není nutné vytvářet podsíť pro clustery Spark na základě zatížení ve špičce.
-- Virtuální síť spravovaného pracovního prostoru spolu se spravovanými privátními koncovými body chrání před exfiltrací dat. Spravované soukromé koncové body můžete vytvořit jenom v pracovním prostoru, ke kterému je přidružena virtuální síť spravovaného pracovního prostoru.
+- Díky spravované virtuální síti pracovního prostoru můžete převzít zátěž při správě virtuální sítě do Azure synapse.
+- Nemusíte konfigurovat pravidla příchozího NSG pro vlastní virtuální sítě, aby provoz služby Azure synapse Management mohl vstoupit do vaší virtuální sítě. Chybná konfigurace těchto pravidel NSG způsobuje přerušení služby pro zákazníky.
+- Nemusíte vytvářet podsíť pro clustery Spark na základě špičky zatížení.
+- Spravovaná virtuální síť v pracovním prostoru spolu se spravovanými soukromými koncovými body chrání před exfiltrace dat. V pracovním prostoru můžete vytvářet jenom spravované privátní koncové body, které mají přidruženou virtuální síť spravovaného pracovního prostoru.
 
-Vytvoření pracovního prostoru s přidruženou virtuální sítí spravovaného pracovního prostoru zajistí, že váš pracovní prostor bude izolovaný od ostatních pracovních prostorů. Azure Synapse poskytuje různé analytické funkce v pracovním prostoru: integrace dat, Apache Spark, FOND SQL a SQL na vyžádání.
+Když se vytvoří pracovní prostor, který je přidružený k virtuální síti spravovaného pracovního prostoru, zajistí, že váš pracovní prostor je izolovaný od ostatních pracovních prostorů. Azure synapse nabízí různé analytické funkce v pracovním prostoru: integraci dat, Apache Spark, fond SQL a SQL na vyžádání.
 
-Pokud váš pracovní prostor obsahuje virtuální síť spravovaného pracovního prostoru, nasadí se v něm integrace dat a prostředky Spark. Virtuální síť spravovaného pracovního prostoru také poskytuje izolaci na úrovni uživatele pro aktivity Spark, protože každý cluster Spark je ve své vlastní podsíti.
+Pokud má váš pracovní prostor spravovanou virtuální síť pracovního prostoru, v něm jsou nasazené prostředky pro integraci dat a Spark. Spravovaná virtuální síť pracovního prostoru také poskytuje izolaci na úrovni uživatele pro aktivity Sparku, protože každý cluster Spark je ve vlastní podsíti.
 
-Fond SQL a SQL na vyžádání jsou víceklientské možnosti a proto se nacházejí mimo virtuální síť spravovaného pracovního prostoru. Komunikace v rámci pracovního prostoru do fondu SQL a SQL na vyžádání používá privátní odkazy Azure. Tyto soukromé vazby se automaticky vytvoří při vytváření pracovního prostoru se spravovanou virtuální sítí pracovního prostoru, která je k němu přidružená.
-
->[!IMPORTANT]
->Tuto konfiguraci pracovního prostoru nelze po vytvoření pracovního prostoru změnit. Například nelze překonfigurovat pracovní prostor, který nemá spravovanou virtuální síť pracovního prostoru k němu spojené a přidružit virtuální síť k němu. Podobně nelze změnit konfiguraci pracovního prostoru se spravovanou virtuální sítí pracovního prostoru, která je k němu přidružena, a zrušit přidružení virtuální sítě k ní.
-
-## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Vytvoření pracovního prostoru Azure Synapse pomocí spravované virtuální sítě pracovního prostoru
-
-Pokud chcete vytvořit pracovní prostor Azure Synapse, ke kterému je přidružena virtuální síť spravovaného pracovního prostoru, vyberte na webu Azure Portal kartu **Zabezpečení + síť** a zaškrtněte políčko **Povolit spravovanou virtuální síť.**
-
-Pokud ponecháte zaškrtávací políčko nezaškrtnuté, nebude k němu mít virtuální síť přidruženou virtuální síť.
+Fond SQL a SQL na vyžádání jsou možnosti víceklientské architektury, a proto se nachází mimo spravovanou virtuální síť pracovního prostoru. Komunikace uvnitř pracovního prostoru s fondem SQL a SQL na vyžádání používá privátní odkazy Azure. Tyto privátní odkazy se automaticky vytvoří, když vytvoříte pracovní prostor, který je přidružený k virtuální síti spravovaného pracovního prostoru.
 
 >[!IMPORTANT]
->Soukromé odkazy můžete používat jenom v pracovním prostoru, který má virtuální síť spravovaného pracovního prostoru.
+>Po vytvoření pracovního prostoru už tuto konfiguraci pracovního prostoru nemůžete změnit. Například nemůžete znovu nakonfigurovat pracovní prostor, který nemá přidruženou virtuální síť spravovaného pracovního prostoru a přidružit k němu virtuální síť. Podobně nemůžete znovu nakonfigurovat pracovní prostor se spravovaným virtuálním pracovním prostorem, který je k němu přidružený, a zrušit jeho přidružení k virtuální síti.
 
-![Povolení virtuální sítě spravovaného pracovního prostoru](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
+## <a name="create-an-azure-synapse-workspace-with-a-managed-workspace-vnet"></a>Vytvoření pracovního prostoru Azure synapse s virtuální sítí spravovaného pracovního prostoru
+
+Pokud chcete vytvořit pracovní prostor Azure synapse, který má přidruženou virtuální síť spravovaného pracovního prostoru, vyberte kartu **zabezpečení + sítě** v Azure Portal a zaškrtněte políčko **Povolit spravovanou virtuální síť** .
+
+Pokud políčko nezaškrtnete, nebudete mít k pracovnímu prostoru přidruženou virtuální síť.
+
+>[!IMPORTANT]
+>V pracovním prostoru můžete použít jenom privátní odkazy, které mají spravovanou virtuální síť pracovního prostoru.
+
+![Povolit virtuální síť spravovaného pracovního prostoru](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
 >[!NOTE]
->Veškerý odchozí provoz z virtuální sítě spravovaného pracovního prostoru bude v budoucnu blokován. Doporučujeme připojit se ke všem zdrojům dat pomocí spravovaných soukromých koncových bodů.
+>Veškerý odchozí provoz z virtuální sítě spravovaného pracovního prostoru bude v budoucnu blokovaný. Doporučuje se připojit ke všem zdrojům dat pomocí spravovaných privátních koncových bodů.
 
-Můžete zkontrolovat, jestli váš pracovní prostor Azure Synapse je přidružený k virtuální síti spravovaného pracovního prostoru výběrem **Přehled** z webu Azure Portal.
+Výběrem **přehledu** z Azure Portal můžete ověřit, jestli je váš pracovní prostor Azure synapse přidružený k virtuální síti spravovaného pracovního prostoru.
 
-![Přehled pracovního prostoru na Webu Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
+![Přehled pracovního prostoru v Azure Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvoření [pracovního prostoru Azure Synapse](../quickstart-create-workspace.md)
+Vytvoření [pracovního prostoru Azure synapse](../quickstart-create-workspace.md)
 
 Další informace o [spravovaných privátních koncových bodech](./synapse-workspace-managed-private-endpoints.md)
 
-[Vytvoření spravovaných privátních koncových bodů do zdrojů dat](./how-to-create-managed-private-endpoints.md)
+[Vytvoření spravovaných privátních koncových bodů pro vaše zdroje dat](./how-to-create-managed-private-endpoints.md)

@@ -1,6 +1,6 @@
 ---
-title: Představení služby Azure Active Directory - Služba Azure Active Directory | Dokumenty společnosti Microsoft
-description: Přehled a rámcové informace o službě Azure Active Directory, včetně terminologie, jaké licence jsou k dispozici, a seznam přidružených funkcí s odkazy na další informace.
+title: Představení služby Azure Active Directory -Azure Active Directory | Microsoft Docs
+description: Přehled a koncepční informace o Azure Active Directory, včetně terminologie, jaké licence jsou k dispozici, a seznam přidružených funkcí s odkazy pro další informace.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -12,102 +12,102 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd7b412e99526935738c2494d31a16fded7101a6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240783"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory
 
-Azure Active Directory (Azure AD) je cloudová služba správy identit a přístupu od Microsoftu, která vašim zaměstnancům pomáhá přihlašovat se a přistupovat k prostředkům v:
+Azure Active Directory (Azure AD) je cloudová služba pro správu identit a přístupu od Microsoftu, která pomáhá vašim zaměstnancům přihlašovat se a přistupovat k prostředkům v nástroji:
 
-- Externí prostředky, jako je Microsoft Office 365, portál Azure a tisíce dalších aplikací SaaS.
+- Externí prostředky, například systém Microsoft Office 365, Azure Portal a tisíce dalších aplikací SaaS.
 
-- Interní prostředky, jako jsou aplikace v podnikové síti a intranetu, spolu se všemi cloudovými aplikacemi vyvinutými vaší vlastní organizací.
+- Interní prostředky, jako jsou aplikace ve vaší podnikové síti nebo intranetu, spolu s jakýmikoli cloudovou aplikací vyvinutou vaší organizací.
 
-Pomocí různých plakátů [řady Microsoft Cloud for Enterprise Architects](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) můžete lépe porozumět základním službám identit v Azure, Azure AD a Office 365.
+K lepšímu pochopení základních služeb identit v Azure, Azure AD a Office 365 můžete použít různé [Microsoft Cloud pro plakáty řady Enterprise Architects](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources#identity) .
 
-## <a name="who-uses-azure-ad"></a>Kdo používá Azure AD?
+## <a name="who-uses-azure-ad"></a>Kdo používá službu Azure AD?
 
-Azure AD je určen pro:
+Služba Azure AD je určena pro:
 
-- **Správci IT.** Jako správce IT můžete pomocí Azure AD řídit přístup k vašim aplikacím a prostředkům aplikací na základě vašich obchodních požadavků. Azure AD můžete například použít k vyžadování vícefaktorového ověřování při přístupu k důležitým organizačním prostředkům. Kromě toho můžete pomocí Azure AD automatizovat zřizování uživatelů mezi stávající windows serverovou službou AD a cloudovými aplikacemi, včetně Office 365. Nakonec Azure AD poskytuje výkonné nástroje, které automaticky pomáhají chránit identity uživatelů a přihlašovací údaje a splňují vaše požadavky na zásady přístupu. Chcete-li začít, zaregistrujte si [bezplatnou 30denní zkušební verzi služby Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
+- **Správci IT.** Jako správce IT můžete pomocí Azure AD řídit přístup k vašim aplikacím a prostředkům vaší aplikace, a to na základě vašich obchodních požadavků. Službu Azure AD můžete například použít k vyžádání vícefaktorového ověřování při přístupu k důležitým prostředkům organizace. Kromě toho můžete pomocí Azure AD automatizovat zřizování uživatelů mezi stávajícími službami Windows Server AD a vašimi cloudových aplikací, včetně Office 365. Azure AD vám nakonec poskytuje výkonné nástroje, které automaticky pomůžou chránit identity a přihlašovací údaje uživatelů a splňovat požadavky na řízení přístupu. Pokud chcete začít, zaregistrujte si [bezplatnou 30denní zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/).
 
-- **Vývojáři aplikací.** Jako vývojář aplikace můžete azure ad používat jako přístup založený na standardech pro přidávání jednotného přihlašování (SSO) do vaší aplikace, což mu umožňuje pracovat s již existujícími přihlašovacími údaji uživatele. Azure AD také poskytuje api, která vám můžou pomoct vytvářet přizpůsobené prostředí aplikací pomocí existujících dat organizace. Chcete-li začít, zaregistrujte si [bezplatnou 30denní zkušební verzi služby Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace najdete také [v tématu Azure Active Directory pro vývojáře](../develop/index.yml).
+- **Vývojáři aplikací** Jako vývojář aplikace můžete použít Azure AD jako přístup založený na standardech pro přidání jednotného přihlašování (SSO) do vaší aplikace a tím umožníte, aby fungoval s předem existujícími přihlašovacími údaji uživatele. Azure AD taky poskytuje rozhraní API, která vám pomůžou sestavovat přizpůsobená prostředí aplikací pomocí stávajících dat organizace. Pokud chcete začít, zaregistrujte si [bezplatnou 30denní zkušební verzi Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/). Další informace najdete také v tématu [Azure Active Directory pro vývojáře](../develop/index.yml).
 
-- **Předplatitelé Microsoft365, Office 365, Azure nebo Dynamics CRM Online.** Jako předplatitel už používáte Azure AD. Každý klient Microsoft 365, Office 365, Azure a Dynamics CRM Online je automaticky klientazure ad. Můžete okamžitě začít spravovat přístup k integrovaným cloudovým aplikacím.
+- **Microsoft 365, předplatitelé Office 365, Azure nebo Dynamics CRM Online.** Jako předplatitel už službu Azure AD používáte. Každý Microsoft 365, tenant Office 365, Azure a Dynamics CRM Online, je automaticky tenant služby Azure AD. Můžete hned začít spravovat přístup k vašim integrovaným cloudovým aplikacím.
 
-## <a name="what-are-the-azure-ad-licenses"></a>Co jsou licence Azure AD?
+## <a name="what-are-the-azure-ad-licenses"></a>Jaké jsou licence Azure AD?
 
-Obchodní služby Microsoft Online, jako je Office 365 nebo Microsoft Azure, vyžadují Azure AD pro přihlášení a pomoc s ochranou identity. Pokud se přihlásíte k odběru jakékoli obchodní služby Microsoft Online, automaticky získáte Azure AD s přístupem ke všem bezplatným funkcím.
+Služby Microsoft Online Business Services, například Office 365 nebo Microsoft Azure, vyžadují pro přihlášení službu Azure AD a k usnadnění ochrany identity. Pokud se přihlásíte k odběru jakékoli obchodní služby Microsoft Online, automaticky získáte Azure AD s přístupem ke všem bezplatným funkcím.
 
-Chcete-li vylepšit implementaci Azure AD, můžete také přidat placené funkce upgradem na licence Azure Active Directory Premium P1 nebo Premium P2. Placené licence Azure AD jsou postavené na vašem stávajícím bezplatném adresáři a poskytují samoobslužné, vylepšené monitorování, vytváření sestav zabezpečení a zabezpečený přístup pro mobilní uživatele.
+Pokud chcete zlepšit implementaci Azure AD, můžete také přidat placené možnosti tím, že upgradujete na licence Azure Active Directory Premium P1 nebo Premium P2. Placené licence Azure AD jsou postavené na svém stávajícím volném adresáři, který poskytuje samoobslužné a rozšířené monitorování, generování sestav zabezpečení a zabezpečený přístup pro mobilní uživatele.
 
 >[!Note]
->Cenové možnosti těchto licencí najdete v tématu [Azure Active Directory Pricing](https://azure.microsoft.com/pricing/details/active-directory/).
+>Cenové možnosti těchto licencí najdete v tématu [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
 >
->Azure Active Directory Premium P1 a Premium P2 nejsou aktuálně podporované v Číně. Další informace o cenách Azure AD získáte na [fóru Azure Active Directory .](https://azure.microsoft.com/support/community/?product=active-directory)
+>Azure Active Directory Premium P1 a Premium P2 se v Číně aktuálně nepodporují. Pokud chcete získat další informace o cenách služby Azure AD, obraťte se na [fórum Azure Active Directory](https://azure.microsoft.com/support/community/?product=active-directory).
 
-- **Azure Active Directory zdarma.** Poskytuje správu uživatelů a skupin, místní synchronizaci adresářů, základní sestavy, samoobslužnou změnu hesla pro uživatele v cloudu a jednotné přihlašování v azure, Office 365 a mnoha populárních aplikacích SaaS.
+- **Azure Active Directory Free.** Poskytuje správu uživatelů a skupin, místní synchronizaci adresářů, základní sestavy, samoobslužnou změnu hesla pro cloudové uživatele a jednotné přihlašování v Azure, Office 365 a spoustě oblíbených aplikací SaaS.
 
-- **Azure Active Directory Premium P1.** Kromě bezplatných funkcí umožňuje P1 také hybridním uživatelům přístup k místním i cloudovým prostředkům. Podporuje také pokročilou správu, jako jsou dynamické skupiny, samoobslužná správa skupin, Microsoft Identity Manager (místní sada pro správu identit a přístupu) a funkce pro zpětné prosnížení hodnoty v cloudu, které umožňují samoobslužné resetování hesla pro místní uživatele.
+- **Azure Active Directory Premium P1.** Kromě bezplatných funkcí umožňuje zařízení P1 také vašim hybridním uživatelům přístup k místním i cloudovým prostředkům. Podporuje taky pokročilou správu, jako jsou dynamické skupiny, Samoobslužná správa skupin, Microsoft Identity Manager (místní sada pro správu identit a přístupu) a možnosti zpětného zápisu do cloudu, které umožňují Samoobslužné resetování hesla pro místní uživatele.
 
-- **Azure Active Directory Premium P2.** Kromě bezplatných funkcí a funkcí P1 nabízí P2 také [azure služby Azure Active Directory Identity Protection,](../identity-protection/overview-identity-protection.md) která pomáhá poskytovat podmíněné mušce založené na rizicích vašim aplikacím a důležitým firemním datům a [privilegovanou správu identit,](../privileged-identity-management/pim-getting-started.md) která pomáhá odjišťovat, omezovat a monitorovat správce a jejich přístup k prostředkům a v případě potřeby poskytovat přístup za čas.
+- **Azure Active Directory Premium P2.** Kromě funkcí Free a P1 nabízí P2 také [Azure Active Directory Identity Protection](../identity-protection/overview-identity-protection.md) , které vám pomůžou zajistit podmíněný přístup na základě rizik pro vaše aplikace a kritická podniková data a [Privileged Identity Management](../privileged-identity-management/pim-getting-started.md) , aby mohli zjišťovat, omezovat a monitorovat správce a jejich přístup k prostředkům a v případě potřeby poskytovat přístup za běhu.
 
-- **Licence funkcí "Průběžně plaťte".** Můžete také získat další licence na funkce, jako je azure Active Directory Business-to-Customer (B2C). B2C vám může pomoci poskytovat řešení pro správu identit a přístupu pro vaše aplikace orientované na zákazníky. Další informace naleznete v [dokumentaci k službě Azure Active Directory B2C](../../active-directory-b2c/index.yml).
+- **Licence k funkcím průběžné platby.** Můžete také získat další licence k funkcím, jako je například Azure Active Directory B2C (Business-to-Custom). B2C vám může pomáhat zajistit řešení pro správu identit a přístupu pro vaše zákaznické aplikace. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).
 
-Další informace o přidružení předplatného Azure ke službě Azure AD najdete v tématu [Postup: Přidružení nebo přidání předplatného Azure do služby Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) a další informace o přiřazování licencí uživatelům najdete v [tématu Postup: Přiřazení nebo odebrání licencí Azure Active Directory](license-users-groups.md).
+Další informace o tom, jak přidružit předplatné Azure ke službě Azure AD, najdete v tématu Postup [: přidružení nebo přidání předplatného Azure k Azure Active Directory](active-directory-how-subscriptions-associated-directory.md) a další informace o přiřazování licencí vašim uživatelům najdete v tématu [Postup: přiřazení nebo odebrání licencí Azure Active Directory](license-users-groups.md).
 
 ## <a name="terminology"></a>Terminologie
 
-Chcete-li lépe porozumět Azure AD a jeho dokumentaci, doporučujeme zkontrolovat následující podmínky.
+Abyste lépe pochopili službu Azure AD a její dokumentaci, doporučujeme, abyste provedli následující výrazy.
 
 |Termín nebo koncept|Popis|
 |---------------|-----------|
-|Identita| Věc, která se může ověřit. Identitou může být uživatel s uživatelským jménem a heslem. Identity také zahrnují aplikace nebo jiné servery, které mohou vyžadovat ověření prostřednictvím tajných klíčů nebo certifikátů.|
-|Účet| Identita, která má data s ní spojené. Nemůžete mít účet bez identity.|
-|Účet Azure AD| Identita vytvořená prostřednictvím Azure AD nebo jiné cloudové služby Microsoftu, jako je Office 365. Identity jsou uložené ve službě Azure AD a přístupné pro předplatná cloudových služeb vaší organizace. Tento účet se také někdy nazývá pracovní nebo školní účet.|
-|Předplatné Azure| Používá se k platbě za cloudové služby Azure. Můžete mít mnoho předplatných a jsou propojeny s platební kartou.|
-|Tenant Azure| Vyhrazená a důvěryhodná instance Azure AD, která se automaticky vytvoří, když se vaše organizace zaregistruje k předplatnému cloudových služeb Microsoftu, jako je Microsoft Azure, Microsoft Intune nebo Office 365. Tenant Azure představuje jednu organizaci.|
-|Jeden tenant| Tenanti Azure, kteří přistupují k jiným službám ve vyhrazeném prostředí, jsou považováni za jednoho klienta.|
-|Víc klientů| Tenanti Azure, kteří přistupují k jiným službám ve sdíleném prostředí, napříč více organizacemi, jsou považováni za víceklientské.|
-|Adresář Azure AD|Každý tenant Azure má vyhrazený a důvěryhodný adresář Azure AD. Adresář Azure AD zahrnuje uživatele klienta, skupiny a aplikace a používá se k provádění funkcí správy identit a přístupu pro prostředky klienta.|
-|Vlastní doména|Každý nový adresář Azure AD je dodáván s názvem počáteční domény, domainname.onmicrosoft.com. Kromě tohoto počátečního názvu můžete do seznamu přidat také názvy domén vaší organizace, které zahrnují názvy, které používáte k podnikání a uživatelé pro přístup k prostředkům vaší organizace. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou uživatelům známá, například alain@contoso.com.|
-|Správce účtu|Tato klasická role správce předplatného je koncepčně vlastníkem fakturace předplatného. Tato role má přístup k [Centru účtů Azure](https://account.azure.com/Subscriptions) a umožňuje spravovat všechna předplatná v účtu. Další informace najdete [v tématu Klasické role správce předplatného, role řízení přístupu na základě rolí Azure (RBAC) a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Správce služeb|Tato klasická role správce předplatného umožňuje spravovat všechny prostředky Azure, včetně přístupu. Tato role má ekvivalentní přístup uživatele, kterému je přiřazena role vlastníka v oboru předplatného. Další informace najdete [v tématu Klasické role správce předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Vlastník|Tato role vám pomůže spravovat všechny prostředky Azure, včetně přístupu. Tato role je postavena na novějším autorizačním systému nazývaném řízení přístupu na základě základny rolí (RBAC), který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure. Další informace najdete [v tématu Klasické role správce předplatného, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
-|Globální správce Azure AD|Tato role správce se automaticky přiřadí tomu, kdo vytvořil klienta Azure AD. Globální správci můžou dělat všechny funkce správy pro Azure AD a všechny služby, které federate do Azure AD, jako je Exchange Online, SharePoint Online a Skype pro firmy Online. Můžete mít více globálních správců, ale pouze globální správci mohou přiřadit role správce (včetně přiřazení dalších globálních správců) uživatelům.<br><br>**Poznámka**<br>Tato role správce se nazývá globální správce na webu Azure Portal, ale nazývá se **správce společnosti** v rozhraní Microsoft Graph API a Azure AD PowerShell.<br><br>Další informace o různých rolích správce najdete [v tématu Oprávnění rolí správce ve službě Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
-|Účet Microsoft (také nazývaný, MSA)|Osobní účty, které poskytují přístup k vašim produktům a cloudovým službám Microsoftu orientovaným na spotřebitele, jako je Outlook, OneDrive, Xbox LIVE nebo Office 365. Váš účet Microsoft je vytvořen a uložen v systému účtů identit y microsoftu, který provozuje microsoft.|
+|Identita| Věc, která může získat ověření. Identitou může být uživatel s uživatelským jménem a heslem. Identity také obsahují aplikace nebo jiné servery, které mohou vyžadovat ověření prostřednictvím tajných klíčů nebo certifikátů.|
+|Účet| Identita, která obsahuje data, která jsou k němu přidružená. Nemůžete mít účet bez identity.|
+|Účet Azure AD| Identita vytvořená prostřednictvím Azure AD nebo jiné cloudové služby Microsoftu, jako je například Office 365. Identity se ukládají v Azure AD a jsou dostupné pro předplatné cloudových služeb vaší organizace. Tento účet se taky někdy označuje jako pracovní nebo školní účet.|
+|Předplatné Azure| Používá se pro platby za Azure Cloud Services. Můžete mít mnoho předplatných a jsou propojeny s platební kartou.|
+|Tenant Azure| Vyhrazená a důvěryhodná instance služby Azure AD, která se automaticky vytvoří, když si vaše organizace zaregistruje předplatné cloudové služby Microsoftu, například Microsoft Azure, Microsoft Intune nebo Office 365. Tenant Azure představuje jednu organizaci.|
+|Jeden tenant| Klienti Azure, kteří přistupují k dalším službám ve vyhrazeném prostředí, se považují za jediného tenanta.|
+|Víc klientů| Klienti Azure, kteří přistupují k dalším službám ve sdíleném prostředí v různých organizacích, se považují za více tenantů.|
+|Adresář Azure AD|Každý tenant Azure má vyhrazený a důvěryhodný adresář služby Azure AD. Adresář Azure AD obsahuje uživatele, skupiny a aplikace tenanta a používá se k provádění funkcí správy identit a přístupu pro prostředky tenanta.|
+|Vlastní doména|Každý nový adresář služby Azure AD obsahuje počáteční název domény domainname.onmicrosoft.com. Kromě tohoto počátečního názvu můžete také přidat názvy domén vaší organizace, včetně názvů používaných k podnikání a uživatelů, kteří používají pro přístup k prostředkům vaší organizace, do seznamu. Přidání vlastních názvů domén vám pomůže vytvořit uživatelská jména, která jsou pro vaše uživatele obeznámená, například alain@contoso.com.|
+|Správce účtu|Tato klasická role Správce předplatného je koncepční pro platební majitele předplatného. Tato role má přístup k [centrum účtů Azure](https://account.azure.com/Subscriptions) a umožňuje spravovat všechna předplatná v účtu. Další informace najdete v tématech [role správců klasických předplatných, role řízení přístupu na základě role (RBAC) Azure a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Správce služeb|Tato klasická role Správce předplatného umožňuje spravovat všechny prostředky Azure, včetně přístupu. Tato role má ekvivalentní přístup k uživateli, kterému je přiřazena role vlastníka v oboru předplatného. Další informace najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Vlastník|Tato role vám pomůže se správou všech prostředků Azure, včetně přístupu. Tato role je postavená na novějším autorizačním systému nazývaném role – základní řízení přístupu (RBAC), které poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure. Další informace najdete v tématu [role správců pro klasický odběr, role Azure RBAC a role správce Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).|
+|Globální správce Azure AD|Tato role správce se automaticky přiřadí službě whomever vytvořeného tenanta Azure AD. Globální správci můžou dělat všechny funkce správy pro Azure AD a jakékoli služby, které federovat do Azure AD, jako je Exchange Online, SharePoint Online a Online Skype pro firmy. Můžete mít několik globálních správců, ale k uživatelům může přiřazovat role správce (včetně přiřazování jiných globálních správců).<br><br>**Značte**<br>Tato role správce se v Azure Portal nazývá globální správce, ale nazývá se to **Správce společnosti** v rozhraní Microsoft Graph API a Azure AD PowerShellu.<br><br>Další informace o různých rolích správců najdete [v tématu oprávnění role správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).|
+|Účet Microsoft (označovaný také jako MSA)|Osobní účty, které poskytují přístup k vašim zákaznickým produktům a cloudovým službám Microsoftu, jako je například Outlook, OneDrive, Xbox LIVE nebo Office 365. Vaše účet Microsoft je vytvořená a uložená v systému účtu Microsoft Consumer identity, který je spuštěný Microsoftem.|
 
 ## <a name="which-features-work-in-azure-ad"></a>Které funkce fungují ve službě Azure AD?
 
-Po výběru licence Azure AD získáte přístup k některým nebo všem následujícím funkcím pro vaši organizaci:
+Po výběru licence Azure AD získáte přístup k některým nebo všem následujícím funkcím vaší organizace:
 
 |Kategorie|Popis|
 |-------|-----------|
-|Správa aplikací|Spravujte své cloudové a místní aplikace pomocí proxy aplikace, jednotného přihlášení, portálu Moje aplikace (označovaného také jako panel Access) a aplikací Software jako služba (SaaS). Další informace naleznete v tématu [Jak zajistit zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci ke správě aplikací](../manage-apps/index.yml).|
-|Ověřování|Spravujte samoobslužné resetování hesla služby Azure Active Directory, vícefaktorové ověřování, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace naleznete v [dokumentaci k ověřování azure ad](../authentication/index.yml).|
-|B2B (Business-to-Business)|Spravujte své uživatele typu Host a externí partnery a zároveň si zachovejte kontrolu nad vlastními podnikovými daty. Další informace naleznete v [dokumentaci k službě Azure Active Directory B2B](../b2b/index.yml).|
-|B2C (Business-to-Customer)|Přizpůsobte si a řiďte, jak se uživatelé při používání aplikací přihlašují, přihlašují a spravují své profily. Další informace naleznete v [dokumentaci k službě Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
-|Podmíněný přístup|Spravujte přístup ke svým cloudovým aplikacím. Další informace naleznete v [dokumentaci k podmíněnému přístupu Azure AD](../conditional-access/index.yml).|
-|Azure Active Directory pro vývojáře|Vytvářejte aplikace, které přihlašují všechny identity Microsoftu, získají tokeny pro volání Microsoft Graphu, jiných rozhraní API Microsoftu nebo vlastních rozhraní API. Další informace naleznete [v tématu Platforma identit Microsoftu (Azure Active Directory pro vývojáře)](../develop/index.yml).|
-|Správa zařízení|Spravuje, jak cloudová nebo místní zařízení přistupují k vašim firemním datům. Další informace naleznete v [dokumentaci ke správě zařízení Azure AD](../devices/index.yml).|
-|Doménové služby|Připojte virtuální počítače Azure k doméně bez použití řadičů domény. Další informace naleznete v [dokumentaci k službě Azure AD Domain Services](../../active-directory-domain-services/index.yml).|
-|Podnikoví uživatelé|Spravujte přiřazení licencí, získejte přístup k aplikacím a nastavte delegáty pomocí skupin a rolí správců. Další informace naleznete v [dokumentaci ke správě uživatelů služby Azure Active Directory](../users-groups-roles/index.yml).|
-|Hybridní identita|Azure Active Directory Connect and Connect Health můžete zajistit identitu jednoho uživatele pro ověřování a autorizaci pro všechny prostředky bez ohledu na umístění (cloud nebo místní). Další informace naleznete [v dokumentaci k hybridní identitě](../hybrid/index.yml).|
-|Zásady správného řízení identit|Spravujte identitu vaší organizace prostřednictvím ovládacích prvků pro přístup zaměstnanců, obchodních partnerů, dodavatelů, služeb a aplikací. Můžete také provádět kontroly přístupu. Další informace najdete [v tématu dokumentace zásad správného řízení identit Azure AD](../governance/identity-governance-overview.md) a [kontroly přístupu KAD Azure .](../governance/access-reviews-overview.md)|
-|Ochrana identit|Zjistěte potenciální chyby zabezpečení ovlivňující identitu vaší organizace, nakonfigurujte zásady tak, aby reagovaly na podezřelé akce, a pak proveďte příslušná opatření k jejich vyřešení. Další informace naleznete v [tématu Azure AD Identity Protection](../identity-protection/index.yml).|
-|Spravované identity pro prostředky Azure|Poskytuje vašim službám Azure automaticky spravovanou identitu ve službě Azure AD, která může ověřovat libovolnou ověřovací službu podporovanou službou Azure AD, včetně trezoru klíčů. Další informace najdete v tématu [Co je spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).|
-|Privileged Identity Management (PIM)|Spravujte, kontrolujte a monitorujte přístup v rámci organizace. Tato funkce zahrnuje přístup k prostředkům ve službě Azure AD a Azure a dalším službám Microsoft Online Services, jako je Office 365 nebo Intune. Další informace naleznete v [tématu Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
-|Sestavy a sledování|Získejte přehled o vzorcích zabezpečení a používání ve vašem prostředí. Další informace naleznete v [tématu Sestavy a monitorování služby Azure Active Directory](../reports-monitoring/index.yml).|
+|Správa aplikací|Spravujte své cloudové a místní aplikace pomocí proxy aplikací, jednotného přihlašování, portálu moje aplikace (označovaného také jako přístupový panel) a aplikací SaaS (software jako služba). Další informace najdete v tématu [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md) a [dokumentaci správy aplikací](../manage-apps/index.yml).|
+|Authentication|Spravujte Azure Active Directory Samoobslužné resetování hesla, Multi-Factor Authentication, vlastní seznam zakázaných hesel a inteligentní uzamčení. Další informace najdete v [dokumentaci k ověřování Azure AD](../authentication/index.yml).|
+|B2B (Business-to-Business)|Spravujte uživatele typu Host a externí partnery a udržujte si kontrolu nad vašimi podnikovými daty. Další informace najdete v tématu [Azure Active Directory dokumentaci B2B](../b2b/index.yml).|
+|B2C (Business-to-Customer)|Přizpůsobte a určete, jak se uživatelé při používání vašich aplikací přihlásí, přihlásí a spravují své profily. Další informace najdete v [dokumentaci Azure Active Directory B2C](../../active-directory-b2c/index.yml).|
+|Podmíněný přístup|Spravujte přístup k vašim cloudovým aplikacím. Další informace najdete v [dokumentaci k podmíněnému přístupu v Azure AD](../conditional-access/index.yml).|
+|Azure Active Directory pro vývojáře|Vytvářejte aplikace, které přihlásí všechny identity Microsoftu, získávají tokeny pro volání Microsoft Graph, dalších rozhraní API Microsoftu nebo vlastních rozhraní API. Další informace najdete v tématu [Microsoft Identity Platform (Azure Active Directory pro vývojáře)](../develop/index.yml).|
+|Správa zařízení|Spravuje, jak cloudová nebo místní zařízení přistupují k vašim firemním datům. Další informace najdete v [dokumentaci správy zařízení v Azure AD](../devices/index.yml).|
+|Doménové služby|Připojte virtuální počítače Azure k doméně bez použití řadičů domény. Další informace najdete v [dokumentaci Azure AD Domain Services](../../active-directory-domain-services/index.yml).|
+|Podnikoví uživatelé|Spravujte přiřazení licencí, přístup k aplikacím a nastavte delegáty pomocí skupin a rolí správce. Další informace najdete v tématu [Azure Active Directory dokumentaci správy uživatelů](../users-groups-roles/index.yml).|
+|Hybridní identita|Použijte Azure Active Directory Connect a připojte stav a poskytněte jednu identitu uživatele pro ověřování a autorizaci pro všechny prostředky bez ohledu na umístění (Cloud nebo místní). Další informace najdete v tématu [dokumentace k hybridní identitě](../hybrid/index.yml).|
+|Zásady správného řízení identit|Spravujte identitu vaší organizace prostřednictvím řízení přístupu zaměstnanců, obchodních partnerů, dodavatelů, služeb a aplikací. Můžete také provádět kontroly přístupu. Další informace najdete v [dokumentaci zásad správného řízení identit Azure AD](../governance/identity-governance-overview.md) a v tématu kontroly [přístupu Azure AD](../governance/access-reviews-overview.md).|
+|Ochrana identit|Detekuje potenciální ohrožení zabezpečení, která mají vliv na identity vaší organizace, nakonfigurujte zásady tak, aby odpovídaly podezřelým akcím, a pak proveďte odpovídající opatření k jejich vyřešení. Další informace najdete v tématu [Azure AD Identity Protection](../identity-protection/index.yml).|
+|Spravované identity pro prostředky Azure|Poskytuje službám Azure automatickou spravovanou identitu ve službě Azure AD, která dokáže ověřit jakoukoli ověřovací službu podporovanou službou Azure AD, včetně Key Vault. Další informace najdete v tématu [co jsou spravované identity pro prostředky Azure?](../managed-identities-azure-resources/overview.md).|
+|Privileged Identity Management (PIM)|Spravujte, kontrolujte a sledujte přístup v rámci vaší organizace. Tato funkce zahrnuje přístup k prostředkům v Azure AD a Azure a dalších online službách Microsoftu, jako je Office 365 nebo Intune. Další informace najdete v tématu [Azure AD Privileged Identity Management](../privileged-identity-management/index.yml).|
+|Sestavy a sledování|Získejte přehled o zabezpečení a vzorcích použití ve vašem prostředí. Další informace najdete v tématu [Azure Active Directory sestav a monitorování](../reports-monitoring/index.yml).|
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Registrace služby Azure Active Directory Premium](active-directory-get-started-premium.md)
 
-- [Přidružení předplatného Azure ke službě Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [Přidružte k vašemu Azure Active Directory předplatné Azure](active-directory-how-subscriptions-associated-directory.md)
 
-- [Přístup k Azure Active Directory a vytvoření nového klienta](active-directory-access-create-new-tenant.md)
+- [Přístup Azure Active Directory a vytvoření nového tenanta](active-directory-access-create-new-tenant.md)
 
-- [Kontrolní seznam funkcí služby Azure Active Directory Premium P2](active-directory-deployment-checklist-p2.md)
+- [Azure Active Directory Premium – kontrolní seznam nasazení funkce P2](active-directory-deployment-checklist-p2.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Vytvoření centra událostí se skupinou spotřebitelů – Azure Event Hubs'
-description: 'Úvodní příručka: Vytvoření oboru názvů Centra událostí pomocí centra událostí a skupiny spotřebitelů pomocí šablon Azure Resource Manager'
+title: 'Rychlý Start: vytvoření centra událostí se skupinou uživatelů – Azure Event Hubs'
+description: 'Rychlý Start: vytvoření oboru názvů Event Hubs s centrem událostí a skupinou uživatelů pomocí šablon Azure Resource Manager'
 services: event-hubs
 documentationcenter: .net
 author: spelluru
@@ -15,19 +15,19 @@ ms.date: 02/11/2020
 ms.author: spelluru
 ms.custom: subject-armqs
 ms.openlocfilehash: c2221fe5b5ab38afbdde167e5bcbf6b47ed4f861
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79528077"
 ---
-# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření centra událostí pomocí šablony Azure Resource Manageru
+# <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Rychlý Start: vytvoření centra událostí pomocí šablony Azure Resource Manager
 
-Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md). V tomto rychlém startu vytvoříte centrum událostí pomocí [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Nasadíte šablonu Azure Resource Manager k vytvoření oboru názvů typu [Event Hubs](event-hubs-what-is-event-hubs.md)s jedním centrem událostí.
+Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md). V tomto rychlém startu vytvoříte centrum událostí pomocí [šablony Azure Resource Manager](../azure-resource-manager/management/overview.md). Nasadíte šablonu Azure Resource Manager pro vytvoření oboru názvů typu [Event Hubs](event-hubs-what-is-event-hubs.md)s jedním centrem událostí.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -37,22 +37,22 @@ Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azur
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-eventhubs-create-namespace-and-eventhub/).
 
 :::code language="json" source="~/quickstart-templates/101-eventhubs-create-namespace-and-eventhub/azuredeploy.json" range="1-61" highlight="32-59":::
 
-Mezi prostředky definované v šabloně patří:
+Mezi prostředky, které jsou definované v šabloně, patří:
 
-- [**Obory názvů Microsoft.EventHub/Namespaces**](/azure/templates/microsoft.eventhub/namespaces)
-- [**Microsoft.EventHub/obory názvů/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
+- [**Microsoft. EventHub/obory názvů**](/azure/templates/microsoft.eventhub/namespaces)
+- [**Microsoft. EventHub/obory názvů/eventhubs**](/azure/templates/microsoft.eventhub/namespaces/eventhubs)
 
-Další ukázky šablon najdete v [tématu Šablony rychlého spuštění Azure](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
+Další ukázky šablon najdete v tématu [šablony rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?term=eventhub&pageNumber=1&sort=Popular).
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
 Nasazení šablony:
 
-1. Vyberte **Vyzkoušet** z následujícího bloku kódu a postupujte podle pokynů pro přihlášení do Prostředí Azure Cloud Shell.
+1. Vyberte **vyzkoušet** z následujícího bloku kódu a pak podle pokynů se přihlaste k Azure Cloud Shell.
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -66,14 +66,14 @@ Nasazení šablony:
    Write-Host "Press [ENTER] to continue ..."
    ```
 
-   Vytvoření centra událostí trvá několik okamžiků.
+   Vytvoření centra událostí chvíli trvá.
 
-1. Vyberte **Kopírovat,** chcete-li zkopírovat skript PowerShellu.
-1. Klepněte pravým tlačítkem myši na konzolu prostředí a vyberte příkaz **Vložit**.
+1. Vyberte **Kopírovat** a zkopírujte skript prostředí PowerShell.
+1. Klikněte pravým tlačítkem na konzolu prostředí a pak vyberte **Vložit**.
 
 ## <a name="verify-the-deployment"></a>Ověření nasazení
 
-Chcete-li ověřit nasazení, můžete buď otevřít skupinu prostředků z [webu Azure Portal](https://portal.azure.com), nebo použít následující skript Azure PowerShell.  Pokud cloudové prostředí je stále otevřené, nemusíte kopírovat/spouštět první řádek (Read-Host).
+Chcete-li ověřit nasazení, můžete buď otevřít skupinu prostředků z [Azure Portal](https://portal.azure.com), nebo použít následující skript Azure PowerShell.  Pokud je Cloud Shell stále otevřené, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -87,7 +87,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud cloudové prostředí je stále otevřené, nemusíte kopírovat/spouštět první řádek (Read-Host).
+Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněním skupiny prostředků. Pokud je Cloud Shell stále otevřené, nemusíte kopírovat/spouštět první řádek (pro čtení-hostitel).
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name that you used in the last procedure"
@@ -100,12 +100,12 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili obor názvů Event Hubs a centrum událostí v oboru názvů. Podrobné pokyny k odesílání událostí do centra událostí (nebo) příjmu událostí najdete v tématu **Kurzy odesílání a přijímání událostí:**
+V tomto článku jste vytvořili obor názvů Event Hubs a centrum událostí v oboru názvů. Podrobné pokyny k odesílání událostí do (nebo) přijímání událostí z centra událostí najdete v tématu kurzy pro **odesílání a příjem** :
 
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-java-send-v2.md)
+- [JavaScript](get-started-java-send-v2.md)
 - [Přejít](event-hubs-go-get-started-send.md)
 - [C (jenom odesílání)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (jenom příjem)](event-hubs-storm-getstarted-receive.md)

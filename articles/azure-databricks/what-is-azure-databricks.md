@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Databricks?
-description: Přečtěte si o Azure Databricks a o tom, jak do Azure přináší Spark on Databricks. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
+description: Přečtěte si o Azure Databricks a o tom, jak přináší Spark na datacihly do Azure. Azure Databricks je analytická platforma založená na Apache Spark a optimalizovaná pro platformu cloudových služeb Microsoft Azure.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -11,10 +11,10 @@ ms.date: 04/10/2020
 ms.author: mamccrea
 ms.custom: mvc
 ms.openlocfilehash: 902486f7e19f2dfd7cc64e27589e192c57ef64e8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81255511"
 ---
 # <a name="what-is-azure-databricks"></a>Co je Azure Databricks?
@@ -23,9 +23,9 @@ Azure Databricks je analytická platforma založená na Apache Spark a optimaliz
 
 ![Co je Azure Databricks?](./media/what-is-azure-databricks/azure-databricks-overview.png "Co je Azure Databricks?")
 
-Azure Databricks je rychlá, snadná a kolaborativní analytická služba založená na Apache Spark. Pro kanál velkých objemů dat se data (nezpracovaná nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase pomocí Kafka, Event Hub nebo IoT Hub. Tato data jsou v datovém jezírku pro dlouhodobé trvalé úložiště, v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analýzy použijte Azure Databricks ke čtení dat z různých zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.yml), Azure [Cosmos DB](../cosmos-db/index.yml)nebo Azure SQL Data [Warehouse](../synapse-analytics/sql-data-warehouse/index.yml) a proměnit je v průlomové poznatky pomocí Spark.
+Azure Databricks je rychlá a snadná analytická služba založená na Apache Spark a spolupráci. V případě kanálu pro velké objemy dat se data (hrubá nebo strukturovaná) ingestují do Azure prostřednictvím Azure Data Factory v dávkách nebo se streamují téměř v reálném čase s využitím Kafka, centra událostí nebo IoT Hub. Tato data se nacházejí v Data Lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. V rámci vašeho pracovního postupu analýzy použijte Azure Databricks ke čtení dat z více zdrojů dat, jako je [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.yml), [Azure Cosmos DB](../cosmos-db/index.yml)nebo [Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/index.yml) , a převeďte je na převratné přehledy pomocí Sparku.
 
-![Datový kanál](./media/what-is-azure-databricks/databricks-pipeline.png)
+![Kanál datacihly](./media/what-is-azure-databricks/databricks-pipeline.png)
 
 ## <a name="apache-spark-based-analytics-platform"></a>Analytická platforma založená na Apache Sparku
 
@@ -37,7 +37,7 @@ Azure Databricks zahrnuje kompletní opensourcové možnosti a technologie clust
 
 * **Streamování:** Zpracování dat a analýzy v reálném čase pro analytické a interaktivní aplikace. Integruje se s HDFS, Flume a Kafka.
 
-* **MLlib**: Knihovna strojového učení skládající se z běžných algoritmů učení a nástrojů, včetně klasifikace, regrese, clusteringu, kolaborativního filtrování, redukce dimenzionality a základních optimalizačních primitivů optimalizace.
+* **MLlib**: knihovna Machine Learning skládající se ze společného výukového algoritmu a nástrojů, včetně klasifikace, regrese, clusteringu, filtrování spolupráce, snížení počtu dimenzí a také základních primitiv optimalizace.
 
 * **GraphX:** Grafy a grafické výpočetní funkce pro širokou škálu případů použití od kognitivních analýz až po zkoumání dat.
 
@@ -88,7 +88,7 @@ Azure Databricks poskytuje zabezpečení Azure na podnikové úrovni, včetně i
 
 > [!IMPORTANT]
 >
-> Azure Databricks je služba Microsoft Azure první strany, která se nasadí na globální infrastruktuře Azure Public Cloud. Veškerá komunikace mezi součástmi služby, včetně mezi veřejnými IP adresy v rovině ovládacího prvku a rovinou dat zákazníka, zůstává v páteřní síti Microsoft Azure. Viz také [globální síť společnosti Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
+> Azure Databricks je služba Microsoft Azure první strany, která je nasazená v globální infrastruktuře veřejného cloudu Azure. Veškerá komunikace mezi součástmi služby, včetně mezi veřejnými IP adresami v rovině ovládacího prvku a rovinou zákaznických dat, zůstává v Microsoft Azure páteřní sítě. Viz také [globální síť Microsoft](https://docs.microsoft.com/azure/networking/microsoft-global-network).
 
 
 ## <a name="integration-with-azure-services"></a>Integrace se službami Azure

@@ -1,6 +1,6 @@
 ---
-title: Výuka logistiky připojení IoT | Dokumenty společnosti Microsoft
-description: Výukový program šablony aplikace Connected logistics pro IoT Central
+title: Kurz spojený s logistikou IoT | Microsoft Docs
+description: Kurz připojené šablony logistické aplikace pro IoT Central
 author: KishorIoT
 ms.author: nandab
 ms.service: iot-central
@@ -8,112 +8,112 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.openlocfilehash: eac43ae68b10436b3e45452c6b1d03bec3ae4c9c
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81000557"
 ---
-# <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: Nasazení a procházení šablony připojené logistické aplikace
+# <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Kurz: nasazení a procházení prostřednictvím připojené šablony logistické aplikace
 
 
 
-Tento kurz vám ukáže, jak začít nasazením šablony **aplikace pro propojenou logistickou aplikaci** IoT Central. Dozvíte se, jak nasadit šablonu, co je součástí po vybalení z krabice a co budete chtít udělat dál.
+V tomto kurzu se dozvíte, jak začít nasazením IoT Central **připojené šablony logistické** aplikace. Naučíte se, jak nasadit šablonu, co je součástí okna a co byste chtěli udělat dál.
 
-V tomto tutoriálu se naučíte, jak,
+V tomto kurzu se naučíte,
 
-* vytvořit propojenou logistickou aplikaci
-* projít aplikací 
+* vytvořit připojenou logistickou aplikaci
+* Procházení aplikací 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* K nasazení této aplikace nejsou vyžadovány žádné konkrétní požadavky.
-* Doporučujeme mít předplatné Azure, ale můžete to dokonce zkusit i bez něj
+* K nasazení této aplikace nejsou nutné žádné konkrétní požadavky.
+* Doporučuje se použít předplatné Azure, ale můžete to zkusit i bez něj.
 
-## <a name="create-connected-logistics-application-template"></a>Vytvoření šablony aplikace propojené logistiky
+## <a name="create-connected-logistics-application-template"></a>Vytvořit připojenou šablonu logistické aplikace
 
-Aplikaci můžete vytvořit pomocí následujících kroků
+Aplikaci můžete vytvořit pomocí následujících kroků.
 
-1. Přejděte na web správce aplikací Azure IoT Central. Na levém navigačním panelu vyberte **Build** a klikněte na kartu **Maloobchodní.**
-
-    > [!div class="mx-imgBorder"]
-    > ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
-
-2. V části **Aplikace propojená logistika** vyberte **Vytvořit aplikaci.**
-
-3. **Vytvořit aplikaci** otevře Nový formulář žádosti a vyplnit požadované údaje, jak je uvedeno níže.
-   * **Název aplikace**: můžete použít výchozí navržený název nebo zadat popisný název aplikace.
-   * **URL**: Můžete použít navrhovanou výchozí adresu URL nebo zadat svou přátelskou jedinečnou zapamatovatenou adresu URL. Dále se doporučuje výchozí nastavení, pokud už máte předplatné Azure. Můžete začít s 7-denní zkušební zkušební cenový plán a zvolit převést na standardní cenový plán kdykoli před vypršením platnosti bezplatné stezky.
-   * **Fakturační údaje**: K zajištění prostředků jsou nutné podrobnosti o adresáři, předplatném Azure a oblasti.
-   * **Vytvořit**: Vyberte vytvořit v dolní části stránky k nasazení aplikace.
+1. Přejděte na web Azure IoT Central Správce aplikací. V levém navigačním panelu vyberte **Build (sestavit** ) a pak klikněte na kartu **maloobchod** .
 
     > [!div class="mx-imgBorder"]
-    > ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
+    > ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png)
+
+2. Vybrat **vytvořit aplikaci** v rámci **připojené logistické aplikace**
+
+3. Při **vytváření aplikace** se otevře formulář nové aplikace a vyplní se požadované podrobnosti, jak je vidět níže.
+   * **Název aplikace**: můžete použít výchozí navrhovaný název nebo zadat popisný název aplikace.
+   * **Adresa URL**: můžete použít navrhovanou výchozí adresu URL nebo zadat svou snadno jedinečnou adresu URL. V dalším kroku se doporučuje výchozí nastavení, pokud už předplatné Azure máte. Můžete začít s cenovým tarifem bezplatné zkušební verze na 7 dní a po dobu platnosti bezplatného záznamu můžete kdykoli převést na standardní cenový plán.
+   * **Informace o fakturaci**: ke zřízení prostředků se vyžaduje adresář, předplatné Azure a podrobnosti o oblasti.
+   * **Vytvořit**: v dolní části stránky vyberte vytvořit a nasaďte svoji aplikaci.
 
     > [!div class="mx-imgBorder"]
-    > ![Fakturační údaje připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
+    > ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png)
 
-## <a name="walk-through-the-application"></a>Projděte si aplikaci 
+    > [!div class="mx-imgBorder"]
+    > ![Informace o fakturaci pro Spojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png)
+
+## <a name="walk-through-the-application"></a>Procházení aplikací 
 
 ## <a name="dashboard"></a>Řídicí panel
 
-Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem portál zaměřený na operátora propojené logistiky. Northwind Trader je fiktivní poskytovatel logistiky, který řídí flotilu nákladu v oceánu a na zemi. Na tomto řídicím panelu uvidíte dvě různé brány poskytující telemetrickou datovu dat o dodávkách spolu s přidruženými příkazy, úlohami a akcemi, které můžete provést. Tento řídicí panel je předem nakonfigurovaný tak, aby předváděl aktivitu operací kritických logistických zařízení.
-Řídicí panel je logicky rozdělen mezi dvě různé operace správy zařízení brány, 
-   * Logistická trasa pro přepravu nákladních vozidel a podrobnosti o poloze námořní zásilky jsou základním prvkem pro veškerou multimodální přepravu
-   * Zobrazení stavu brány & relevantníinformace 
+Po úspěšném nasazení šablony aplikace je výchozím řídicím panelem připojený portál logistiky, který se zaměřuje na portál. Northwind obchodník je fiktivní logistický poskytovatel, který spravuje loďstvum nákladu v oceánu a na zemi. V tomto řídicím panelu uvidíte dvě různé brány, které poskytují telemetrii o dodávkách spolu s přidruženými příkazy, úlohami a akcemi, které můžete udělat. Tento řídicí panel je předem nakonfigurovaný tak, aby předvedl aktivitu důležité logistické operace zařízení.
+Řídicí panel je logicky dělený mezi dvěma různými operacemi správy zařízení brány. 
+   * Logistická trasa k expedici nákladní dopravy a podrobnosti umístění dodávek v oceánu jsou základním prvkem pro veškerou přepravu více modálních prvků.
+   * Zobrazit stav brány & relevantní informace 
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png)
 
    * Můžete snadno sledovat celkový počet bran, aktivních a neznámých značek.
-   * Můžete provádět operace správy zařízení, jako je aktualizace firmwaru, zakázat senzor, povolit senzor, aktualizovat prahovou hodnotu senzoru, aktualizovat intervaly telemetrie, & aktualizovat servisní smlouvy zařízení.
+   * Můžete provádět operace správy zařízení, jako je například firmware aktualizace, vypnout senzor, zapnout senzor, aktualizovat prahovou hodnotu senzoru aktualizace, aktualizovat intervaly telemetrie a & aktualizovat kontrakty služby zařízení.
    * Zobrazit spotřebu baterie zařízení
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png)
 
 ## <a name="device-template"></a>Šablona zařízení
 
-Klikněte na kartu Šablony zařízení a uvidíte model schopností brány. Model schopností je strukturován kolem dvou různých rozhraní **gateway telemetrie & vlastnosta** a **gateway příkazy**
+Klikněte na kartu šablony zařízení a zobrazí se model schopností brány. Model schopností je strukturovaný kolem dvou různých rozhraní **telemetrie brány & vlastností** a **příkazů brány** .
 
-**Brána telemetrie & vlastnost** – Toto rozhraní představuje všechny telemetrie související se senzory, umístění a informace o zařízení, stejně jako schopnost vlastnosti dvojče zařízení, jako jsou prahové hodnoty senzorů & intervalech aktualizace.
+**Vlastnost & telemetrie brány** – toto rozhraní představuje veškerou telemetrii související s senzory, umístěním a informacemi o zařízení, jako jsou mezní hodnoty senzoru & intervaly aktualizací.
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png)
 
 **Příkazy brány** – toto rozhraní uspořádá všechny možnosti příkazů brány.
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png)
 
 ## <a name="rules"></a>Pravidla
-Výběrem karty pravidla zobrazíte dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou konfigurována pro e-mailová oznámení operátorům pro další šetření.
+Vyberte kartu pravidla a podívejte se na dvě různá pravidla, která existují v této šabloně aplikace. Tato pravidla jsou nakonfigurovaná tak, aby se pro další šetření použila e-mailová oznámení pro operátory.
  
-**Upozornění na krádež brány**: Toto pravidlo se aktivuje, když senzory během cesty neočekávaně detekují světlo. Operátoři musí být informováni co nejdříve vyšetřovat potenciální krádež.
+**Výstraha krádeže brány**: Toto pravidlo se aktivuje, když senzory v průběhu cesty neočekávaně detekuje světlo. Operátory je potřeba oznámit co nejdříve a prozkoumat možnou odcizení.
  
-**Nereagující brána**: Toto pravidlo se aktivuje, pokud se brána nehlásí do cloudu po delší dobu. Brána může nereagovat kvůli režimu nízkého stavu baterie, ztrátě připojení, stavu zařízení.
+**Nereagující bránu**: Toto pravidlo se aktivuje, pokud brána nehlásí do cloudu po dlouhou dobu. Brána může přestat reagovat z důvodu nízkého stavu baterie, ztráty připojení a stavu zařízení.
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png)
 
 ## <a name="jobs"></a>Úlohy
-Výběrem karty Úlohy zobrazíte pět různých úloh, které existují jako součást této šablony aplikace:
+Vyberte kartu úlohy, chcete-li zobrazit pět různých úloh, které existují jako součást této šablony aplikace:
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png)
 
-Funkci úloh můžete použít k operacím pro celé řešení. Zde úlohy používají příkazy zařízení a schopnost dvojčete k provádění úkolů, jako je zakázání určitých senzorů napříč celou bránou nebo úprava prahové hodnoty senzoru v závislosti na režimu zásilky a trase. 
-   * Jedná se o standardní operaci, která vypíná šokové senzory během dodávky oceánu, aby se šetřila baterie nebo snížila teplotní práh během přepravy studeného řetězce. 
+Funkce Jobs můžete použít k provádění operací v nejrůznějších řešeních. V rámci úloh se používají příkazy zařízení a funkce, které umožňují provádět úlohy, jako je například zakázání specifických senzorů napříč všemi branami nebo změna prahové hodnoty senzoru v závislosti na způsobu dodávek a trase. 
+   * Jedná se o standardní operaci zakázání senzorů v průběhu expedice v oceánu za účelem úspory baterie nebo snížení prahové hodnoty teploty během přepravy studených řetězů. 
  
-   * Úlohy umožňují provádět operace v rámci celého systému, jako je aktualizace firmwaru na branách nebo aktualizace servisní smlouvy, aby zůstaly aktuální v činnostech údržby.
+   * Úlohy umožňují provádět operace v rámci systému, jako je například aktualizace firmwaru v bránách nebo aktualizace kontraktu služby, aby zůstaly aktuální na aktivitách údržby.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud nebudete pokračovat v používání této aplikace, odstraňte šablonu aplikace tak, že navštívíte**nastavení aplikace** **pro správu** > a klepněte na tlačítko **Odstranit**.
+Pokud nebudete tuto aplikaci nadále používat, odstraňte šablonu aplikace na stránce**nastavení aplikace** **pro správu** > a klikněte na **Odstranit**.
 
 > [!div class="mx-imgBorder"]
-> ![Připojený logistický řídicí panel](./media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png)
+> ![Řídicí panel připojené logistiky](./media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png)
 
 ## <a name="next-steps"></a>Další kroky
-* Další informace o [konceptu propojené logistiky](./architecture-connected-logistics.md)
-* Další informace o dalších [maloobchodních šablonách IoT Central](./overview-iot-central-retail.md)
-* Další informace o [přehledu IoT Central](../core/overview-iot-central.md)
+* Další informace o [pojmu spojené logistiky](./architecture-connected-logistics.md)
+* Další informace o jiných [šablonách IoT Central maloobchodních prodejů](./overview-iot-central-retail.md)
+* Další informace o [IoT Central přehledu](../core/overview-iot-central.md)

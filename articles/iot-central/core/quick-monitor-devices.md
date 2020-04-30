@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – monitorování zařízení v Azure IoT Central
-description: Jako operátor se dozvíte, jak používat aplikaci Azure IoT Central ke sledování vašich zařízení.
+title: Rychlý Start – monitorování zařízení v Azure IoT Central
+description: Jako operátor se naučíte, jak pomocí aplikace IoT Central v Azure monitorovat vaše zařízení.
 author: dominicbetts
 ms.author: dobett
 ms.date: 02/12/2020
@@ -10,45 +10,45 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: 1dec52bbf1435cd7e363edf111f769d3e2cffb6a
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80998922"
 ---
-# <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Úvodní příručka: Pomocí Azure IoT Central ke sledování vašich zařízení
+# <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>Rychlý Start: použití IoT Central Azure ke sledování vašich zařízení
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
-Tento rychlý start vám jako operátorovi ukáže, jak používat aplikaci Microsoft Azure IoT Central ke sledování vašich zařízení a změně nastavení.
+V tomto rychlém startu se dozvíte, jak pomocí Microsoft Azure IoT Central aplikace monitorovat vaše zařízení a měnit nastavení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, měli byste dokončit tři předchozí rychlé starty [Vytvoření aplikace Azure IoT Central](./quick-deploy-iot-central.md), Přidání [simulovaného zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a Konfigurace pravidel a akcí pro vaše [zařízení](quick-configure-rules.md).
+Než začnete, měli byste provést tři předchozí rychlé starty a [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md), [Přidat simulované zařízení do aplikace IoT Central](./quick-create-simulated-device.md) a [nakonfigurovat pravidla a akce pro vaše zařízení](quick-configure-rules.md).
 
 ## <a name="receive-a-notification"></a>Přijmout oznámení
 
-Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo pro odeslání oznámení, když teplota v senzoru připojeného zařízení překročila prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
+Azure IoT Central posílá oznámení o zařízení v podobě e-mailových zpráv. Tvůrce přidal pravidlo pro odeslání oznámení v případě, že teplota v snímači připojeného zařízení překročila prahovou hodnotu. Zprávu najdete v e-mailech odeslaných na účet, který tvůrce zvolil pro příjem oznámení.
 
-Otevřete e-mailovou zprávu, kterou jste obdrželi na konci rychlého startu [Konfigurace pravidel a akcí pro zařízení.](quick-configure-rules.md) V e-mailu vyberte odkaz na zařízení:
+Otevřete e-mailovou zprávu, kterou jste dostali na konci [pravidla konfigurace a akcí pro](quick-configure-rules.md) rychlý Start zařízení. V e-mailu vyberte odkaz na zařízení:
 
-![E-mail s upozorněním](media/quick-monitor-devices/email.png)
+![E-mail s oznámením výstrah](media/quick-monitor-devices/email.png)
 
-Otevře se v prohlížeči zobrazení **Přehled** simulovaných zařízení, které jste vytvořili při předchozích rychlých startech:
+Zobrazení **přehledu** pro simulované zařízení, které jste vytvořili v předchozích rychlých startech, se otevře v prohlížeči:
 
 ![Zařízení, které aktivovalo e-mailovou zprávu s oznámením](media/quick-monitor-devices/dashboard.png)
 
 ## <a name="investigate-an-issue"></a>Průzkum problému
 
-Jako operátor můžete zobrazit informace o zařízení v zobrazení **Přehled**, **Informace**a **Příkazy.** Tvůrce vytvořil zobrazení **Spravovat zařízení,** abyste mohli upravovat informace o zařízení a nastavovat vlastnosti zařízení.
+Jako operátor můžete zobrazit informace o zařízení v zobrazeních **Přehled**, **informace**a **příkazy** . Tvůrce vytvořil zobrazení pro **správu zařízení** , ve kterém můžete upravovat informace o zařízení a nastavovat vlastnosti zařízení.
 
-Graf na řídicím panelu vykresluje teplotní křivku zařízení. Rozhodnete se, že teplota zařízení je příliš vysoká.
+Graf na řídicím panelu vykresluje teplotní křivku zařízení. Rozhodnete se, že je teplota zařízení příliš vysoká.
 
 ## <a name="remediate-an-issue"></a>Oprava problému
 
-Chcete-li provést změnu zařízení, použijte stránku **Spravovat zařízení.**
+Chcete-li provést změnu zařízení, použijte stránku **spravovat zařízení** .
 
-Změňte **rychlost ventilátoru** na 500, aby se zařízení ochladilo. Zvolte **Uložit,** chcete-li zařízení aktualizovat. Když zařízení potvrdí změnu nastavení, stav vlastnosti se změní na **synchronizované**:
+Změňte **rychlost ventilátoru** na 500, aby se zařízení vychlado. Pokud chcete zařízení aktualizovat, klikněte na **Uložit** . Když zařízení potvrdí změnu nastavení, stav vlastnosti se změní na **Synchronizovaný**:
 
 ![Aktualizace nastavení](media/quick-monitor-devices/change-settings.png)
 
@@ -60,7 +60,7 @@ V tomto rychlém startu jste se naučili:
 * Průzkum problému
 * Oprava problému
 
-Nyní, když nyní víte, že chcete sledovat své zařízení, je navrhovaným dalším krokem:
+Teď, když už víte, jak zařízení monitorovat, je navržený další krok:
 
 > [!div class="nextstepaction"]
-> [Vytvořte a spravujte šablonu zařízení](howto-set-up-template.md).
+> [Sestavování a Správa šablon zařízení](howto-set-up-template.md).

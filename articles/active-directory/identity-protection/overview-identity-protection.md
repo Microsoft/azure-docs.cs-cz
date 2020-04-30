@@ -1,6 +1,6 @@
 ---
 title: Co je Azure Active Directory Identity Protection?
-description: Zjišťování, náprava, zkoumání a analýza rizik pomocí azure ad identity protection
+description: Zjišťování, náprava, zkoumání a analýza rizik pomocí Azure AD Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,81 +12,81 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2b1d9748b243dcc2104ce7b8e0e8735a7b7276f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79497672"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co je Azure Active Directory Identity Protection?
 
-Ochrana identity je nástroj, který organizacím umožňuje provádět tři klíčové úkoly:
+Identity Protection je nástroj, který organizacím umožňuje provádět tři klíčové úlohy:
 
-- Automatizujte zjišťování a nápravu rizik založených na identitě.
+- Automatizujte detekci a nápravu rizik na základě identity.
 - Prozkoumejte rizika pomocí dat na portálu.
-- Exportujte data detekce rizik do nástrojů třetích stran pro další analýzu.
+- Exportujte data o detekci rizik do nástrojů jiných výrobců pro další analýzu.
 
-Ochrana identity využívá poznatky, které Microsoft získal ze své pozice v organizacích s Azure AD, spotřebitelského prostoru s účty Microsoft a hraní her s konzolí Xbox k ochraně vašich uživatelů. Společnost Microsoft analyzuje 6,5 bilionu signálů denně, aby identifikovala a ochránila zákazníky před hrozbami.
+Služba Identity Protection používá studijní materiály, které Microsoft získal od svého umístění v organizacích s Azure AD, uživatelským prostorem s účty Microsoft a na hraní her s Xbox k ochraně vašich uživatelů. Microsoft analyzuje 6 500 000 000 000 signálů za den k identifikaci a ochraně zákazníků před hrozbami.
 
-Signály generované a přiváděné do ochrany identity mohou být dále vloženy do nástrojů, jako je podmíněný přístup, aby se rozhodovaly o přístupu, nebo vráceny nástroji pro správu informací o zabezpečení a událostí (SIEM) pro další šetření na základě vynucených politik.
+Signály vygenerované a dodané do Identity Protection je možné dále dodávat do nástrojů, jako je podmíněný přístup, pro rozhodování o přístupu nebo za účelem dalšího šetření v nástroji SIEM (Security Information and Event Management), který je založený na vynucované zásadách pro vaši organizaci.
 
 ## <a name="why-is-automation-important"></a>Proč je automatizace důležitá?
 
-Alex Weinert, který vede tým microsoftu Identity Security and Protection, ve svém [příspěvku na blogu v říjnu 2018](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) vysvětluje, proč je automatizace při řešení objemu událostí tak důležitá:
+V jeho [blogovém příspěvku v říjnu od 2018](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Eight-essentials-for-hybrid-identity-3-Securing-your-identity/ba-p/275843) Alex Weinert, který vede tým Microsoftu o zabezpečení a ochranu identity od Microsoftu, vysvětluje, proč je automatizace při práci s objemem událostí tak důležitá:
 
-> Každý den naše systémy strojového učení a heuristické systémy poskytují skóre rizik a 18 miliard pokusů o přihlášení pro více než 800 milionů odlišných účtů, z nichž 300 milionů jsou zřetelně prováděny protivníky (subjekty jako: kriminální aktéři, hackeři).
+> Náš strojové učení a heuristické systémy poskytují hodnocení rizik pro 18 000 000 000 pokusů o přihlášení pro více než 800 000 000 jedinečných účtů 300 000 000, které discernibly provádí nežádoucí osoby (entity jako: trestní aktéri, hackeři).
 >
-> Minulý rok jsem v Ignite mluvil o 3 nejlepších útocích na naše identifikační systémy. Zde je nedávný objem těchto útoků
+> V Ignite minulý rok jsem na konci prvních 3 útoků na naše systémy identit. Toto je poslední objem těchto útoků.
 >   
->   - **Replay porušení**: 4.6BN útoky zjištěné v květnu 2018
->   - **Heslo sprej**: 350k v dubnu 2018
->   - **Phishing**: To je těžké přesně kvantifikovat, ale v březnu 2018 jsme viděli 23M rizikové události, z nichž mnohé jsou spojeny s phish
+>   - Opětovné **přehrání porušení**: 4.6 BN útoky zjištěné v květnu 2018
+>   - **Sprej hesla**: 350K v dubnu 2018
+>   - **Phishing**: těžko se naprosto kvantifikovat, ale v březnu 2018 jsme 23M rizikové události, mnoho z nich je v relaci phishing.
 
 ## <a name="risk-detection-and-remediation"></a>Detekce rizik a náprava
 
-Ochrana identity identifikuje rizika v následujících klasifikacích:
+Identity Protection identifikuje rizika v následujících klasifikacích:
 
-| Typ detekce rizik | Popis |
+| Typ detekce rizika | Popis |
 | --- | --- |
-| Atypické cestování | Přihlaste se z atypického umístění na základě nedávných přihlášení uživatele. |
-| Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Tor browser, anonymizer VNU). |
-| Neznámé přihlašovací vlastnosti | Přihlaste se pomocí vlastností, které jsme u daného uživatele v poslední době neviděli. |
-| Ip adresa propojená s malwarem | Přihlášení z IP adresy propojené s malwarem |
-| Uniklá pověření | Toto zjištění rizik a informací znamená, že došlo k úniku platných přihlašovacích údajů uživatele. |
-| Azure AD threat intelligence | Interní a externí zdroje analýzy hrozeb společnosti Microsoft identifikovaly známý vzorec útoku |
+| Neobvyklé cestování | Přihlaste se z neobvyklých míst na základě nedávných přihlášení uživatele. |
+| Anonymní IP adresa | Přihlaste se z anonymní IP adresy (například: Prohlížeè Browser, Anonymizer VPN). |
+| Neznámou vlastnost přihlášení | Přihlaste se pomocí vlastností, které pro daného uživatele nevidíme nedávno. |
+| Propojená IP adresa pro malware | Přihlášení z IP adresy propojené s malwarem |
+| Nevrácená pověření | Toto zjišťování rizik indikuje, že došlo k úniku platných přihlašovacích údajů uživatele. |
+| Analýza hrozeb v Azure AD | Zdroje analýzy interních a externích hrozeb Microsoftu identifikovaly známý vzor útoku. |
 
-Podrobnější informace o těchto rizicích a jak/kdy jsou vypočtena, naleznete v článku [Co je riziko](concept-identity-protection-risks.md).
+Další podrobnosti o těchto rizicích a o tom, jak se počítají, najdete v článku [co je to riziko](concept-identity-protection-risks.md).
 
-Signály rizikmohou vyvolat nápravné úsilí, jako je například vyžadování, aby uživatelé: provedli azure multifaktorové ověřování, resetovali heslo pomocí samoobslužného resetování hesla nebo blokovali, dokud správce neprovede akci.
+Rizikové signály můžou aktivovat úsilí k nápravě, jako je třeba vyžadování uživatelů: provádět Azure Multi-Factor Authentication, resetovat heslo pomocí samoobslužného resetování hesla nebo zablokovat, dokud správce neprovede akci.
 
 ## <a name="risk-investigation"></a>Vyšetřování rizik
 
-Správci mohou zkontrolovat zjišťování a v případě potřeby na nich provést ruční akci. Existují tři klíčové sestavy, které správci používají pro vyšetřování v identity protection:
+Správci mohou kontrolovat zjišťování a v případě potřeby provádět ruční akce. Existují tři základní sestavy, které správci používají k vyšetřování v ochraně identity:
 
-- Rizikoví uživatelé
+- Rizikové uživatele
 - Riziková přihlášení
 - Detekce rizik
 
-Další informace naleznete v článku [Jak: Prozkoumat riziko](howto-identity-protection-investigate-risk.md).
+Další informace najdete v článku [Postupy: šetření rizik](howto-identity-protection-investigate-risk.md).
 
-## <a name="exporting-risk-data"></a>Export údajů o rizicích
+## <a name="exporting-risk-data"></a>Export rizikových dat
 
-Data z identity protection lze exportovat do jiných nástrojů pro archivaci a další šetření a spoluvztah. Rozhraní API založená na microsoft graphu umožňují organizacím shromažďovat tato data pro další zpracování v nástroji, jako je jejich SIEM. Informace o přístupu k rozhraní API ochrany identity najdete v článku [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](howto-identity-protection-graph-api.md)
+Data z ochrany identity je možné exportovat do jiných nástrojů pro archivaci a další šetření a korelace. Rozhraní API založená na Microsoft Graph umožňují organizacím shromažďovat tato data pro další zpracování v nástroji, jako jsou jejich SIEM. Informace o tom, jak získat přístup k rozhraní Identity Protection API, najdete v článku [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](howto-identity-protection-graph-api.md)
 
-Informace o integraci informací o ochraně identity s Azure Sentinelem najdete v článku [Connect data from Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md).
+Informace o integraci informací o identitě s Azure Sentinel najdete v článku [připojení dat z Azure AD Identity Protection](../../sentinel/connect-azure-ad-identity-protection.md).
 
 ## <a name="permissions"></a>Oprávnění
 
-Ochrana identity vyžaduje, aby uživatelé byli pro přístup čtečkou zabezpečení, operátorem zabezpečení, správcem zabezpečení, globální čtečkou nebo globálním správcem.
+Pro přístup k aplikaci Identity Protection je potřeba, aby uživatelé byli čtenářem zabezpečení, bezpečnostním operátorem, správcem zabezpečení, globálním čtenářem nebo globálním správcem.
 
-| Role | Může dělat | Nelze provést |
+| Role | Může | Nejde |
 | --- | --- | --- |
-| Globální správce | Plný přístup k ochraně identity |   |
-| Správce zabezpečení | Plný přístup k ochraně identity | Resetování hesla pro uživatele |
-| Bezpečnostní operátor | Zobrazit všechny sestavy identity protection a okno Přehled <br><br> Zamítněte riziko uživatele, potvrďte bezpečné přihlášení, potvrďte kompromis | Konfigurace nebo změna zásad <br><br> Resetování hesla pro uživatele <br><br> Konfigurace upozornění |
-| Čtenář zabezpečení | Zobrazit všechny sestavy identity protection a okno Přehled | Konfigurace nebo změna zásad <br><br> Resetování hesla pro uživatele <br><br> Konfigurace upozornění <br><br> Posvězte názor na detekce |
+| Globální správce | Úplný přístup k Identity Protection |   |
+| Správce zabezpečení | Úplný přístup k Identity Protection | Resetování hesla pro uživatele |
+| Operátor zabezpečení | Zobrazit všechny sestavy Identity Protection a okno s přehledem <br><br> Zavřít riziko uživatele, potvrdit bezpečné přihlášení, potvrdit ohrožení | Konfigurace nebo změna zásad <br><br> Resetování hesla pro uživatele <br><br> Konfigurace upozornění |
+| Čtenář zabezpečení | Zobrazit všechny sestavy Identity Protection a okno s přehledem | Konfigurace nebo změna zásad <br><br> Resetování hesla pro uživatele <br><br> Konfigurace upozornění <br><br> Sdělte nám svůj názor na detekce |
 
-Správci podmíněného přístupu mohou také vytvářet zásady, které zvažují riziko přihlášení jako podmínku, další informace naleznete v článku [Podmíněný přístup: Podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
+Správci podmíněného přístupu můžou taky vytvářet zásady, které přistupují k riziku přihlašování jako podmínka. Další informace najdete v článku [podmíněný přístup: podmínky](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk).
 
 ## <a name="license-requirements"></a>Licenční požadavky
 
@@ -94,15 +94,15 @@ Správci podmíněného přístupu mohou také vytvářet zásady, které zvažu
 
 | Schopnost | Podrobnosti | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
 | --- | --- | --- | --- | --- |
-| Rizikové politiky | Zásady rizika uživatelů (prostřednictvím ochrany identity) | Ano | Ne | Ne |
-| Rizikové politiky | Zásady rizika přihlášení (prostřednictvím ochrany identity nebo podmíněného přístupu) | Ano | Ne | Ne |
+| Rizikové zásady | Zásady rizik uživatelů (prostřednictvím Identity Protection) | Ano | Ne | Ne |
+| Rizikové zásady | Zásady rizik přihlašování (přes Identity Protection nebo podmíněný přístup) | Ano | Ne | Ne |
 | Sestavy zabezpečení | Přehled | Ano | Ne | Ne |
-| Sestavy zabezpečení | Rizikoví uživatelé | Full access | Omezené informace | Omezené informace |
+| Sestavy zabezpečení | Rizikové uživatele | Full access | Omezené informace | Omezené informace |
 | Sestavy zabezpečení | Riziková přihlášení | Full access | Omezené informace | Omezené informace |
 | Sestavy zabezpečení | Detekce rizik | Full access | Omezené informace | Ne |
-| Oznámení | Uživatelé v ohrožení zjištěné výstrahy | Ano | Ne | Ne |
-| Oznámení | Týdenní digest | Ano | Ne | Ne |
-| | Zásady registrace vícefaktorové registrace | Ano | Ne | Ne |
+| Oznámení | Uživatelé s výstrahami zjištěnými riziky | Ano | Ne | Ne |
+| Oznámení | Týdenní výtah | Ano | Ne | Ne |
+| | Zásady registrace MFA | Ano | Ne | Ne |
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -110,4 +110,4 @@ Správci podmíněného přístupu mohou také vytvářet zásady, které zvažu
 
 - [Co je riziko](concept-identity-protection-risks.md)
 
-- [Dostupné zásady ke zmírnění rizik](concept-identity-protection-policies.md)
+- [Dostupné zásady pro zmírnění rizik](concept-identity-protection-policies.md)

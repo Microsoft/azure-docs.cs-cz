@@ -1,6 +1,6 @@
 ---
-title: Konfigurace sítě VPN point-to-site (P2S) v systému Windows pro použití se soubory Azure | Dokumenty společnosti Microsoft
-description: Jak nakonfigurovat VPN point-to-site (P2S) v systému Windows pro použití se soubory Azure
+title: Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure | Microsoft Docs
+description: Jak nakonfigurovat síť VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
 author: roygara
 ms.service: storage
 ms.topic: overview
@@ -8,32 +8,32 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 95386af4522adca1d65e04b01c2a349a80e9ab8a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81273473"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN point-to-site (P2S) v systému Windows pro použití se soubory Azure
-Připojení VPN z bodu na webu (P2S) můžete použít k připojení sdílených složek Azure přes SMB mimo Azure, aniž byste museli otevřít port 445. Připojení VPN bodu k webu je připojení VPN mezi Azure a jednotlivým klientem. Chcete-li použít připojení P2S VPN se soubory Azure, připojení P2S VPN bude muset být nakonfigurováno pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složekm Azure z místní sítě, můžete místo připojení typu Point-to-Site pro každého klienta použít připojení VPN site-to-site (Site-to-Site). Další informace najdete [v tématu Konfigurace sítě VPN mezi lokalitami pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
+# <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure
+Pomocí připojení VPN typu Point-to-Site (P2S) můžete připojit sdílené složky Azure přes protokol SMB mimo Azure bez nutnosti otevírat port 445. Připojení VPN typu Point-to-site je připojení VPN mezi Azure a jednotlivými klienty. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud máte mnoho klientů, kteří se potřebují připojit ke sdíleným složkám Azure ze své místní sítě, můžete místo připojení typu Point-to-site pro každého klienta použít připojení VPN typu Site-to-Site (S2S). Další informace najdete v tématu [Konfigurace sítě Site-to-Site VPN pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
 
-Důrazně doporučujeme, abyste si [přečetli aspekty sítě pro přímý přístup ke sdílené složce Azure,](storage-files-networking-overview.md) než budete pokračovat v tomto článku pro úplnou diskusi o možnostech sítě, které jsou k dispozici pro soubory Azure.
+Důrazně doporučujeme, abyste si přečetli [požadavky na síť pro přímý přístup ke sdílené složce Azure](storage-files-networking-overview.md) , než budete pokračovat v tomto článku, kde najdete kompletní informace o možnostech sítě, které jsou dostupné pro soubory Azure.
 
-V článku jsou podrobně kroky konfigurace sítě VPN s bodem na místo v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo místně. Pokud chcete směrovat provoz Azure File Sync přes SÍŤ VPN, přečtěte si prosím [konfiguraci nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek podrobně popisuje postup konfigurace sítě VPN typu Point-to-site v systému Windows (klient Windows a Windows Server) pro připojení sdílených složek Azure přímo v místním prostředí. Pokud chcete směrovat Azure File Sync provoz přes síť VPN, přečtěte si téma [Konfigurace nastavení proxy serveru Azure File Sync a brány firewall](storage-sync-files-firewall-and-proxy.md).
 
 ## <a name="prerequisites"></a>Požadavky
-- Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete [v tématu Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) a vyberte operační systém. Pokud dáváte přednost použití azure cli v systému Windows, můžete, ale níže uvedené pokyny jsou uvedeny pro Azure PowerShell.
+- Nejnovější verze modulu Azure PowerShell. Další informace o tom, jak nainstalovat Azure PowerShell, najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) a výběr operačního systému. Pokud dáváte přednost použití Azure CLI v systému Windows, může se stát, že následující pokyny jsou Azure PowerShell.
 
-- Sdílená složka Azure, kterou chcete připojit místně. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery objektů blob nebo fronty. Další informace o nasazení sdílených složek a úložiště Azure najdete v [části Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
+- Sdílená složka Azure, kterou byste chtěli místně připojit. Sdílené složky Azure se nasazují v rámci účtů úložiště, což jsou konstrukce správy, které představují sdílený fond úložiště, ve kterém můžete nasazovat víc sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Další informace o tom, jak nasadit sdílené složky Azure a účty úložiště, najdete v tématu [Vytvoření sdílené složky Azure](storage-how-to-create-file-share.md).
 
-- Soukromý koncový bod pro účet úložiště obsahující sdílenou složku Azure, kterou chcete připojit místně. Další informace o tom, jak vytvořit privátní koncový bod, najdete [v tématu Konfigurace síťových koncových bodů Souborů Azure](storage-files-networking-endpoints.md?tabs=azure-powershell). 
+- Privátní koncový bod pro účet úložiště, který obsahuje sdílenou složku Azure, kterou chcete místně připojit. Další informace o tom, jak vytvořit privátní koncový bod, najdete v tématu [Konfigurace koncových bodů sítě Azure Files](storage-files-networking-endpoints.md?tabs=azure-powershell). 
 
 ## <a name="deploy-a-virtual-network"></a>Nasazení virtuální sítě
-Chcete-li získat přístup ke sdílené složce Azure a dalším prostředkům Azure z místní sítě prostřednictvím sítě VPN s bodem na webu, musíte vytvořit virtuální síť nebo virtuální síť. Připojení Vpn P2S, které automaticky vytvoříte, je mostem mezi místním počítačem se systémem Windows a touto virtuální sítí Azure.
+Abyste měli přístup ke sdílené složce Azure a dalším prostředkům Azure z místního prostředí prostřednictvím sítě VPN typu Point-to-site, musíte vytvořit virtuální síť nebo virtuální síť. P2S připojení VPN, které vytvoříte automaticky, je most mezi místním počítačem s Windows a touto virtuální sítí Azure.
 
-Následující PowerShell vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby vašeho účtu úložiště, jednu pro soukromý koncový bod vašeho účtu úložiště, která je vyžadována pro přístup k účtu úložiště v místním prostředí bez vytvoření vlastního směrování pro veřejnou IP adresu účtu úložiště, která se může změnit, a pro bránu virtuální sítě, která poskytuje službu VPN. 
+Následující prostředí PowerShell vytvoří virtuální síť Azure se třemi podsítěmi: jednu pro koncový bod služby účtu úložiště, jednu pro privátní koncový bod účtu úložiště, který je vyžadován pro přístup k místnímu účtu úložiště bez vytváření vlastního směrování pro veřejnou IP adresu účtu úložiště, který se může změnit, a druhý pro bránu virtuální sítě, která poskytuje službu VPN. 
 
-Nezapomeňte nahradit `<region>` `<resource-group>`, `<desired-vnet-name>` a příslušné hodnoty pro vaše prostředí.
+Nezapomeňte nahradit `<region>`, `<resource-group>`a `<desired-vnet-name>` s odpovídajícími hodnotami pro vaše prostředí.
 
 ```PowerShell
 $region = "<region>"
@@ -78,8 +78,8 @@ $gatewaySubnet = $virtualNetwork.Subnets | `
     Where-Object { $_.Name -eq "GatewaySubnet" }
 ```
 
-## <a name="create-root-certificate-for-vpn-authentication"></a>Vytvoření kořenového certifikátu pro ověřování pomocí sítě VPN
-Aby bylo možné ověřit připojení VPN z místních počítačů se systémem Windows pro přístup k vaší virtuální síti, musíte vytvořit dva certifikáty: kořenový certifikát, který bude poskytnut bráně virtuálního počítače, a klientský certifikát, který bude podepsán kořenovým certifikátem. Následující prostředí PowerShell vytvoří kořenový certifikát. klientský certifikát se vytvoří po vytvoření brány virtuální sítě Azure s informacemi z brány. 
+## <a name="create-root-certificate-for-vpn-authentication"></a>Vytvoření kořenového certifikátu pro ověřování sítě VPN
+Aby bylo možné pro přístup k virtuální síti ověřit připojení VPN z místních počítačů s Windows, musíte vytvořit dva certifikáty: kořenový certifikát, který se poskytne bráně virtuálního počítače, a klientský certifikát, který bude podepsaný kořenovým certifikátem. Následující PowerShell vytvoří kořenový certifikát; certifikát klienta se vytvoří po vytvoření brány virtuální sítě Azure s informacemi z brány. 
 
 ```PowerShell
 $rootcertname = "CN=P2SRootCert"
@@ -125,13 +125,13 @@ foreach($line in $rawRootCertificate) {
 }
 ```
 
-## <a name="deploy-virtual-network-gateway"></a>Nasazení brány virtuální sítě
-Brána virtuální sítě Azure je služba, ke které se připojí vaše místní počítače s Windows. Nasazení této služby vyžaduje dvě základní součásti: veřejnou IP adresu, která identifikuje bránu pro vaše klienty, ať jsou kdekoli na světě, a kořenový certifikát, který jste vytvořili dříve a který bude použit k ověření vašich klientů.
+## <a name="deploy-virtual-network-gateway"></a>Nasadit bránu virtuální sítě
+Brána virtuální sítě Azure je služba, ke které se budou připojovat vaše místní počítače s Windows. Nasazení této služby vyžaduje dvě základní komponenty: veřejnou IP adresu, která bude bránu klientům označovat bez ohledu na to, kde jsou na světě, a kořenový certifikát, který jste vytvořili dříve a který se použije k ověření vašich klientů.
 
-Nezapomeňte nahradit `<desired-vpn-name-here>` název, který chcete pro tyto prostředky.
+Nezapomeňte nahradit `<desired-vpn-name-here>` názvem, který byste chtěli pro tyto prostředky.
 
 > [!Note]  
-> Nasazení brány virtuální sítě Azure může trvat až 45 minut. Během nasazování tohoto prostředku bude tento skript prostředí PowerShell blokovat pro dokončení nasazení. To se očekává.
+> Nasazení brány virtuální sítě Azure může trvat až 45 minut. Během nasazování tohoto prostředku se tento skript PowerShellu zablokuje, aby se nasazení dokončilo. To se očekává.
 
 ```PowerShell
 $vpnName = "<desired-vpn-name-here>" 
@@ -167,7 +167,7 @@ $vpn = New-AzVirtualNetworkGateway `
 ```
 
 ## <a name="create-client-certificate"></a>Vytvořit klientský certifikát
-Klientský certifikát je vytvořen pomocí identifikátoru URI brány virtuální sítě. Tento certifikát je podepsán kořenovým certifikátem, který jste vytvořili dříve.
+Certifikát klienta se vytvoří s identifikátorem URI brány virtuální sítě. Tento certifikát je podepsán pomocí kořenového certifikátu, který jste vytvořili dříve.
 
 ```PowerShell
 $clientcertpassword = "1234"
@@ -212,9 +212,9 @@ Export-PfxCertificate `
 ```
 
 ## <a name="configure-the-vpn-client"></a>Konfigurace klienta VPN
-Brána virtuální sítě Azure vytvoří balíček ke stažení s konfiguračními soubory potřebnými k inicializaci připojení VPN v místním počítači s Windows. Připojení VPN nakonfigurujeme pomocí funkce [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) systému Windows 10/Windows Server 2016+. Tento balíček také obsahuje spustitelné balíčky, které budou v případě potřeby konfigurovat starší klienta Windows VPN. Tato příručka používá vždy na VPN spíše než starší klient a windows VPN jako vždy na VPN klient umožňuje koncovým uživatelům připojit nebo odpojit od Azure VPN bez oprávnění správce k jejich počítači. 
+Brána virtuální sítě Azure vytvoří balíček ke stažení s konfiguračními soubory potřebnými k inicializaci připojení VPN na místním počítači s Windows. Nakonfigurujeme připojení VPN pomocí funkce [Always On VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/) systému Windows 10/Windows Server 2016 +. Tento balíček také obsahuje spustitelné balíčky, které nakonfigurují starší verzi klienta VPN v systému Windows, pokud je to potřeba. Tato příručka používá rozhraní VPN Always On, nikoli starší klient VPN, protože klient VPN Always On umožňuje koncovým uživatelům připojit se k Azure VPN a odpojit se od něj bez oprávnění správce ke svému počítači. 
 
-Následující skript nainstaluje klientský certifikát potřebný pro ověřování proti bráně virtuální sítě, stáhne a nainstaluje balíček VPN. Nezapomeňte nahradit `<computer1>` `<computer2>` a požadované počítače. Tento skript můžete spustit na tolika počítačích, kolik chcete `$sessions` přidáním dalších relací prostředí PowerShell do pole. Váš účet použití musí být správcem každého z těchto počítačů. Pokud jeden z těchto počítačů je místní počítač, ze které skript spouštěte, je nutné spustit skript z relace prostředí PowerShell se zvýšenými oprávněními. 
+Následující skript nainstaluje klientský certifikát vyžadovaný k ověřování na bráně virtuální sítě, stáhne a nainstaluje balíček VPN. Nezapomeňte nahradit `<computer1>` a `<computer2>` pomocí požadovaných počítačů. Tento skript můžete spustit na tolik počítačů, kolik jich budete chtít, přidáním dalších relací PowerShellu do `$sessions` pole. Váš účet použití musí být správce na každém z těchto počítačů. Pokud je jedním z těchto počítačů místní počítač, ze kterého spouštíte skript, musíte spustit skript z relace PowerShellu se zvýšenými oprávněními. 
 
 ```PowerShell
 $sessions = [System.Management.Automation.Runspaces.PSSession[]]@()
@@ -292,7 +292,7 @@ Remove-Item -Path $vpnTemp -Recurse
 ```
 
 ## <a name="mount-azure-file-share"></a>Připojení sdílené složky Azure
-Teď, když jste nastavili vpn bodu na místo, můžete ji použít k připojení sdílené složky Azure v počítačích, které nastavíte prostřednictvím prostředí PowerShell. Následující příklad připojí sdílenou složku, zobrazí kořenový adresář sdílené složky, aby se prokázalo, že sdílená složka je skutečně připojena, a odpojit sdílenou složku. Bohužel není možné trvale připojit sdílenou složku přes vzdálené předání prostředí PowerShell. Pokud se chcete trvale připojit, přečtěte si část [Použití sdílené složky Azure ve Windows](storage-how-to-use-files-windows.md). 
+Teď, když jste nastavili síť VPN typu Point-to-site, můžete ji použít k připojení sdílené složky Azure na počítačích, které nastavíte prostřednictvím PowerShellu. Následující příklad připojí sdílenou složku, vypíše kořenový adresář sdílené složky, aby prokáže, že sdílená složka je skutečně připojena, a odpojte sdílenou složku. Sdílenou složku bohužel není možné trvale připojit přes vzdálenou komunikaci PowerShellu. Chcete-li se připojit trvale, přečtěte si téma [použití sdílené složky Azure v systému Windows](storage-how-to-use-files-windows.md). 
 
 ```PowerShell
 $myShareToMount = "<file-share>"
@@ -337,6 +337,6 @@ Invoke-Command `
 ```
 
 ## <a name="see-also"></a>Viz také
-- [Důležité informace o vytváření sítí pro přímý přístup ke sdílené složce Azure](storage-files-networking-overview.md)
-- [Konfigurace vpn point-to-site (P2S) na Linuxu pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md)
-- [Konfigurace sítě VPN site-to-site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md)
+- [Požadavky na sítě pro přímý přístup ke sdíleným složkám Azure](storage-files-networking-overview.md)
+- [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md)
+- [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md)

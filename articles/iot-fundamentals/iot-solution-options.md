@@ -1,6 +1,6 @@
 ---
-title: Možnosti řešení Azure Internet of Things (IoT)
-description: Pokyny pro výběr mezi službami platformy nebo přístupem platformy spravované aplikace k vytváření řešení IoT. Přístup služby platformy používá služby, jako je IoT Hub a digitální dvojčata jako stavební bloky. Přístup platformy spravované aplikace používá IoT Central k rychlému zahájení.
+title: Možnosti řešení Azure Internet věcí (IoT)
+description: Pokyny k výběru mezi službami platformy nebo přístupem k platformě spravované aplikace při sestavování řešení IoT. Přístup ke službě platformy používá služby, jako jsou IoT Hub a digitální vlákna jako stavební bloky. Přístup k platformě spravované aplikace používá IoT Central k rychlému zahájení práce.
 author: dominicbetts
 ms.service: iot-fundamentals
 services: iot-fundamentals
@@ -8,71 +8,71 @@ ms.topic: overview
 ms.date: 02/05/2020
 ms.author: dobett
 ms.openlocfilehash: 046116addf643d6c0eb0faf2f821b6ef78d440c6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77050337"
 ---
 # <a name="choose-the-right-iot-solution"></a>Volba vhodného řešení IoT
 
-Chcete-li vytvořit řešení IoT pro vaši firmu, obvykle se rozhodnete použít *služby platformy* nebo přístup *platformy spravované aplikace.*
+Pokud chcete vytvořit řešení IoT pro vaši firmu, obvykle se rozhodnete použít buď *službu platformy* , nebo přístup ke *spravované platformě aplikací* .
 
-Služby platformy poskytují stavební kameny pro přizpůsobené a flexibilní aplikace IoT. Máte další možnosti, jak si vybrat a kód při připojení zařízení a ingestování, ukládání a analýzu dat. Služby platformy Azure IoT zahrnují produkty Azure IoT Hub a Azure Digital Twins.
+Služby platformy poskytují stavební bloky pro přizpůsobené a flexibilní aplikace IoT. Máte k dispozici více možností pro výběr a kódování při připojování zařízení a k ingestování, ukládání a analýze dat. Služby Azure IoT Platform zahrnují produkty Azure IoT Hub a digitální vlákna Azure.
 
-Platforma spravovaných aplikací vám umožní začít vytvářet aplikace rychleji než služby platformy tím, že sníží počet rozhodnutí potřebných k dosažení výsledků. Platforma spravovaných aplikací se stará o většinu prvků vašeho řešení, takže se můžete soustředit na přidávání znalostí v oboru a škálování a připojování zařízení. Azure IoT Central je platforma spravovaných aplikací.
+Spravovaná platforma aplikací vám umožní začít sestavovat aplikace rychleji než služby platformy tím, že se sníží počet rozhodnutí potřebných k dosažení výsledků. Platforma spravované aplikace se stará o většinu prvků vašeho řešení, takže se můžete soustředit na přidání oboru znalostí a škálování a připojení zařízení. Azure IoT Central je platforma spravované aplikace.
 
-Chcete-li si vybrat mezi těmito dvěma přístupy, měli byste zvážit:
+K výběru mezi těmito dvěma přístupy byste měli zvážit následující:
 
-- Jak chcete spravovat své řešení.
-- Jakou úroveň přizpůsobení a kontroly chcete nad svým řešením.
+- Jak chcete spravovat vaše řešení.
+- Jakou úroveň vlastního nastavení a řízení chcete v rámci vašeho řešení.
 - Jakou cenovou strukturu chcete.
 
 ## <a name="management"></a>Správa
 
-Kde chcete strávit čas a prostředky správy systému? 
+Kde chcete trávit čas a prostředky správy systému? 
 
-- Zvolte přístup služeb platformy, abyste měli plnou kontrolu nad základními službami ve vašem řešení. Chcete například:
+- Vyberte přístup ke službám platformy, abyste měli plnou kontrolu nad základními službami ve vašem řešení. Například chcete:
 
-    - Spravujte škálování a zabezpečení služeb podle svých potřeb.
-    - Využijte interních nebo partnerských odborných znalostí k palubním zařízením a službám poskytování.
+    - Spravujte škálování a zabezpečte služby tak, aby vyhovovaly vašim potřebám.
+    - Využijte interní nebo partnerské odborné znalosti k připojení zařízení a zřízení služeb.
 
-- Zvolte přístup platformy spravované aplikace a využijte výhod platformy, která zpracovává škálování, zabezpečení a správu vašich aplikací a zařízení IoT.
+- Vyberte přístup k platformě spravované aplikace, abyste mohli využívat platformu, která zpracovává škálování, zabezpečení a správu vašich aplikací a zařízení IoT.
 
 ## <a name="control"></a>Řízení
 
-Jaké prvky vašeho řešení chcete přizpůsobit?
+Jaké prvky řešení chcete přizpůsobit?
 
-- Zvolte přístup služeb platformy pro celkové přizpůsobení a kontrolu nad architekturou řešení.
+- Vyberte přístup ke službám platformy pro celkové přizpůsobení a kontrolu nad architekturou řešení.
 
-- Zvolte přístup platformy spravované aplikace pro přizpůsobení brandingu, řídicích panelů, uživatelských rolí, zařízení a telemetrie. Však nechcete zpracovat základní režii správy systému IoT.
+- Vyberte přístup k platformě spravované aplikace a přizpůsobte si branding, řídicí panely, role uživatelů, zařízení a telemetrii. Nechcete ale zpracovávat základní režijní náklady na správu systému IoT.
 
 ## <a name="pricing"></a>Ceny
 
-Jaká cenová struktura nejlépe vyhovuje vašim potřebám?
+Jakou cenovou strukturu nejlépe vyhovuje vašim potřebám?
 
-- Vyberte si přístup služeb platformy k jemnému doladění služeb a kontrole mých celkových nákladů.
+- Vyberte si přístup ke službám platformy, abyste mohli vyladit služby a řídit celkové náklady.
 
-- Zvolte přístup platformy spravované aplikace pro jednoduchou a předvídatelnou cenovou strukturu.
+- Vyberte přístup k spravované aplikační platformě pro jednoduchou a předvídatelný cenovou strukturu.
 
 ## <a name="summary"></a>Souhrn
 
-Přístup služeb platformy je vhodný pro firmu s cloudovými řešeními a odbornými znalostmi zařízení, která chce:
+Přístup ke službám platformy je vhodný pro firmu s cloudovým řešením a odbornými znalostmi zařízení, které chtějí:
 
-- Dolaďte služby v řešení.
-- Mají vysoký stupeň kontroly nad službami v řešení.
-- Plně přizpůsobit řešení.
+- Vyladit služby v řešení.
+- Mít vysoký stupeň kontroly nad službami v řešení.
+- Řešení je zcela přizpůsobované.
 
-Přístup platformy spravované aplikace je vhodný pro firmu, která:
+Přístup k platformě spravované aplikace je vhodný pro firmu, která:
 
-- Nechce věnovat rozsáhlé prostředky na návrh, vývoj a správu systému.
-- Chce předvídatelnou cenovou strukturu.
-- Chce nějaké možnosti přizpůsobení.
+- Nechce vyhradit rozsáhlé prostředky pro navrhování a vývoj systému a správu.
+- Má předvídatelné cenové struktury.
+- Aplikace požaduje některé možnosti vlastního nastavení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Podrobnější vysvětlení různých služeb a platforem a jejich použití najdete v [tématu služby a technologie Azure IoT](iot-services-and-technologies.md).
+Komplexnější vysvětlení různých služeb a platforem a způsobu jejich použití najdete v tématu [služby a technologie Azure IoT](iot-services-and-technologies.md).
 
-Další informace o klíčových atributech úspěšných řešení IoT najdete v 8 atributech dokumentu white paper [o úspěšných řešeních IoT.](https://aka.ms/8attributes)
+Další informace o klíčových atributech úspěšných řešení IoT najdete v dokumentu White Paper s [8 atributy úspěšných řešení IoT](https://aka.ms/8attributes) .
 
 Podrobné informace o architektuře IoT najdete v článku [Referenční architektura IoT v Microsoft Azure](https://aka.ms/iotrefarchitecture).

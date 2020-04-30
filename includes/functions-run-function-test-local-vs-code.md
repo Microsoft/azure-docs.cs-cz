@@ -5,32 +5,32 @@ ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
 ms.openlocfilehash: f4af3c202d4f00c4ac3041921175c92226f0db7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76964077"
 ---
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
-Visual Studio Code se integruje s [nástroji Azure Functions Core Tools,](../articles/azure-functions/functions-run-local.md) které vám umožní spustit tento projekt na místním vývojovém počítači před publikováním do Azure.
+Visual Studio Code se integruje s [Azure Functions Core Tools](../articles/azure-functions/functions-run-local.md) a umožní vám spustit tento projekt na místním vývojovém počítači před publikováním do Azure.
 
-1. Chcete-li volat svou funkci, spusťte spuštění projektu aplikace funkce stisknutím klávesy F5. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
+1. Pro volání funkce stiskněte klávesu F5 ke spuštění projektu Function App. Výstup z nástrojů Tools se zobrazí na panelu **Terminál**.
 
-1. Pokud jste ještě nenainstalovali nástroje Azure Functions Core Tools, vyberte **nainstalovat** na výzvu. Když jsou základní nástroje nainstalovány, aplikace se spustí na panelu **Terminál.** Můžete vidět koncový bod adresy URL funkce aktivované http spuštěna místně. 
+1. Pokud jste ještě nenainstalovali Azure Functions Core Tools, vyberte na příkazovém řádku **nainstalovat** . Po instalaci základních nástrojů se vaše aplikace spustí na panelu **terminálu** . Koncový bod adresy URL vámi spuštěné funkce aktivované protokolem HTTP se zobrazí v místním prostředí. 
 
     ![Místní výstup Azure](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 
-1. Při spuštění nástroje Core Tools přejděte na následující adresu `?name=Functions` URL a spusťte požadavek GET, který obsahuje řetězec dotazu.
+1. Pokud běží základní nástroje, přejděte na následující adresu URL a spusťte požadavek GET, který zahrnuje `?name=Functions` řetězec dotazu.
 
     <http://localhost:7071/api/HttpExample?name=Functions>
 
-1. Je vrácena odpověď, která vypadá takto v prohlížeči:
+1. Vrátí se odpověď, která v prohlížeči vypadá jako v následujících případech:
 
     ![Odezva místního hostitele funkce v prohlížeči](./media/functions-run-function-test-local-vs-code/functions-test-local-browser.png)
 
-1. Informace o požadavku jsou zobrazeny v panelu **Terminálu.**
+1. Informace o žádosti se zobrazí na panelu **terminálu** .
 
-    ![Spuštění funkce v terminálovém panelu](./media/functions-run-function-test-local-vs-code/function-execution-terminal.png)
+    ![Spuštění funkce na panelu terminálu](./media/functions-run-function-test-local-vs-code/function-execution-terminal.png)
 
-1. Stisknutím kláves Ctrl + C zastavíte základní nástroje a odpojte ladicí program.
+1. Stisknutím kombinace kláves CTRL + C zastavte základní nástroje a odpojte ladicí program.

@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka – zřízení simulovaného zařízení TPM do služby Azure IoT Hub pomocí c #'
-description: Úvodní příručka – vytvoření a zřízení simulované zařízení TPM pomocí sady SDK zařízení C# pro službu Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
+title: 'Rychlý Start – zřízení simulovaného zařízení TPM pro Azure IoT Hub pomocí jazyka C #'
+description: Rychlý Start – vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení v jazyce C# pro Azure IoT Hub Device Provisioning Service (DPS). V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,21 +9,21 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 82bd284ede23e8880f79c614f4a6e2f588a4293c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74976991"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Úvodní příručka: Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK zařízení C# pro službu zřizování zařízení služby IoT Hub
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Rychlý Start: vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení v jazyce C# pro IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
-Tyto kroky ukazují, jak použít [ukázky Azure IoT pro C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) k simulaci zařízení TPM ve vývojovém počítači se systémem Windows OS. Ukázka také připojí simulované zařízení k centru IoT Hub pomocí služby zřizování zařízení. 
+Tyto kroky ukazují, jak používat [ukázky Azure IoT pro jazyk C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) k simulaci zařízení TPM na vývojovém počítači s operačním systémem Windows. Ukázka také připojí simulované zařízení k IoT Hub pomocí služby Device Provisioning. 
 
 Vzorový kód používá simulátor Windows TPM jako [modul hardwarového zabezpečení (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) zařízení. 
 
-Pokud nejste obeznámeni s procesem automatického zřizování, nezapomeňte také zkontrolovat [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
+Pokud nejste obeznámeni s procesem automatického zřizování, nezapomeňte také zkontrolovat [Koncepty pro Automatické zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
 Služba Azure IoT Device Provisioning podporuje dva typy registrací:
 
@@ -37,11 +37,11 @@ V tomto článku si předvedeme jednotlivé registrace.
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí 
 
-1. Ujistěte se, že máte v počítači nainstalovanou sadu [.NET Core 2.1 SDK nebo novější.](https://www.microsoft.com/net/download/windows) 
+1. Ujistěte se, že máte na svém počítači nainstalovanou [sadu .NET Core 2,1 SDK nebo novější](https://www.microsoft.com/net/download/windows) . 
 
 1. Ujistěte se, že je na vašem počítači nainstalovaný `git` a že je přidaný do proměnných prostředí, ke kterým má příkazové okno přístup. Na stránce [klientských nástrojů Git organizace Software Freedom Conservancy](https://git-scm.com/download/) najdete nejnovější verzi nástrojů `git` k instalaci. Jejich součástí je i **Git Bash**, aplikace příkazového řádku, pomocí které můžete pracovat se svým místním úložištěm Git. 
 
-1. Otevřete příkazový řádek nebo Git Bash. Klonování ukázek Azure IoT pro úložiště C# GitHub:
+1. Otevřete příkazový řádek nebo Git Bash. Naklonujte ukázky Azure IoT pro úložiště GitHub v jazyce C#:
 
     ```cmd
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
@@ -49,7 +49,7 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="provision-the-simulated-device"></a>Zřízení simulovaného zařízení
 
-1. Přihlaste se k portálu Azure. V levé nabídce vyberte tlačítko **Všechny prostředky** a otevřete službu Zřizování zařízení. V okně **Přehled** si poznamenejte hodnotu **_oboru ID._**
+1. Přihlaste se k portálu Azure. V nabídce na levé straně vyberte tlačítko **všechny prostředky** a otevřete svou službu Device Provisioning. V okně **Přehled** si poznamenejte hodnotu **_Rozsah ID_** .
 
     ![Zkopírování hodnoty Rozsah ID služby zřizování z okna portálu](./media/quick-create-simulated-device-tpm-csharp/copy-scope.png) 
 
@@ -65,32 +65,32 @@ V tomto článku si předvedeme jednotlivé registrace.
     dotnet run <IDScope>
     ```
 
-    Tento příkaz spustí simulátor čipů Čip tpm v samostatném příkazovém řádku. V systému Windows se může setkat s výstrahou zabezpečení systému Windows, která se zeptá, zda chcete povolit simulator.exe komunikovat ve veřejných sítích. Pro účely této ukázky můžete požadavek zrušit.
+    Tento příkaz spustí simulátor čipu TPM v samostatném příkazovém řádku. V systému Windows se může zobrazit výstraha zabezpečení systému Windows s dotazem, zda chcete pro komunikaci s veřejnými sítěmi umožňovat simulátor. exe. Pro účely této ukázky můžete žádost zrušit.
 
-1. Původní příkazové okno zobrazuje **_klíč potvrzení_**, **_ID registrace_** a navrhované **_ID zařízení_** potřebné pro registraci zařízení. Vezměte na vědomí tyto hodnoty. Tuto hodnotu použijete k vytvoření individuální registrace v instanci služby Zřizování zařízení. 
+1. V původním příkazovém okně se zobrazí **_ověřovací klíč_**, **_ID registrace_** a navrhované **_ID zařízení_** potřebné pro registraci zařízení. Poznamenejte si tyto hodnoty. Tato hodnota se používá k vytvoření jednotlivé registrace v instanci služby Device Provisioning. 
    > [!NOTE]
-   > Nespleťte si okno obsahující výstup příkazu s oknem obsahujícím výstup ze simulátoru TPM. Možná budete muset vybrat původní příkazové okno, aby se do popředí.
+   > Nespleťte si okno obsahující výstup příkazu s oknem obsahujícím výstup ze simulátoru TPM. Možná budete muset vybrat původní příkazové okno, abyste ho mohli přenést do popředí.
 
     ![Výstup v příkazovém okně](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
-1. Na webu Azure Portal vyberte v nabídce Služba zřizování zařízení **možnost Spravovat registrace**. Vyberte kartu **Individuální zápisy** a nahoře vyberte tlačítko **Přidat jednotlivé zápisy.** 
+1. V Azure Portal v nabídce služba Device Provisioning vyberte **spravovat registrace**. Vyberte kartu **jednotlivé registrace** a v horní části vyberte tlačítko **přidat jednotlivou registraci** . 
 
-1. V panelu **Přidat zápis** zadejte následující informace:
+1. Na panelu **Přidat registraci** zadejte následující informace:
    - Jako *Mechanismus* ověření identity vyberte **TPM**.
-   - Zadejte *ID registrace* a *ověřovací klíč* pro zařízení TPM z hodnot, které jste si dříve poznamenali.
+   - Zadejte *ID registrace* a *ověřovací klíč* pro vaše zařízení TPM z hodnot, které jste si poznamenali dříve.
    - Vyberte centrum IoT propojené s vaší zřizovací službou.
    - Volitelně můžete zadat následující informace:
-       - Zadejte jedinečné *ID zařízení* (můžete použít navrhované nebo zadat vlastní). Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. Pokud se rozhodnete neposkytnout jeden, id registrace se použije k identifikaci zařízení místo.
+       - Zadejte jedinečné *ID zařízení* (můžete použít navržený nebo zadat vlastní). Při pojmenování zařízení se ujistěte, že nepoužíváte citlivá data. Pokud se rozhodnete nezadat žádný, místo toho se použije ID registrace k identifikaci zařízení.
        - Aktualizujte **Počáteční stav dvojčete zařízení** s použitím požadované počáteční konfigurace zařízení.
-   - Po dokončení stiskněte tlačítko **Uložit.** 
+   - Po dokončení klikněte na tlačítko **Uložit** . 
 
      ![Zadání informací o registraci zařízení v okně portálu](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Po úspěšné registraci se *ID registrace* vašeho zařízení zobrazí v seznamu na kartě *Jednotlivé registrace*. 
 
-1. Stisknutím *klávesy Enter* v příkazovém okně (ten, který zobrazil **_inkadovní klíč_**, **_ID registrace_** a navrhované **_ID zařízení)_** zaregistrujte simulované zařízení. Všimněte si zpráv, které simulují spouštění zařízení a jeho připojování ke službě Device Provisioning pro získání informací o vašem centru IoT. 
+1. V příkazovém okně stiskněte klávesu *ENTER* (tu, která zobrazuje **_ověřovací klíč_**, **_ID registrace_** a navrhované **_ID zařízení_**) k registraci simulovaného zařízení. Všimněte si zpráv, které simulují spouštění zařízení a jeho připojování ke službě Device Provisioning pro získání informací o vašem centru IoT. 
 
-1. Ověřte zřízení zařízení. Při úspěšném zřizování simulovaného zařízení do centra IoT propojeného s vaší zřizovací službou se ID zařízení zobrazí na okně **zařízení IoT** centra. 
+1. Ověřte zřízení zařízení. Po úspěšném zřízení simulovaného zařízení pro Centrum IoT propojené se službou zřizování se ID zařízení zobrazí v okně **zařízení IoT** centra. 
 
     ![Zařízení je zaregistrované u centra IoT](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
@@ -98,16 +98,16 @@ V tomto článku si předvedeme jednotlivé registrace.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v plánu pokračovat v práci a zkoumání ukázky klienta zařízení, nečistěte prostředky vytvořené v tomto rychlém startu. Pokud neplánujete pokračovat, odstraňte pomocí následujících kroků všechny prostředky vytvořené tímto rychlým startem.
+Pokud máte v úmyslu pokračovat v práci a prozkoumat si ukázku klienta zařízení, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky klienta zařízení.
 1. Zavřete na svém počítači okno simulátoru TPM.
-1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** a pak vyberte službu Zřizování zařízení. V horní části okna **Přehled** stiskněte **klávesu Delete** v horní části podokna.  
-1. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky** a pak vyberte své centrum IoT. V horní části okna **Přehled** stiskněte **klávesu Delete** v horní části podokna.  
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte svou službu Device Provisioning. V horní části okna **Přehled** klikněte v horní části podokna na **Odstranit** .  
+1. V nabídce na levé straně Azure Portal vyberte **všechny prostředky** a potom vyberte Centrum IoT. V horní části okna **Přehled** klikněte v horní části podokna na **Odstranit** .  
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste v počítači vytvořili simulované zařízení TPM a zřídíte ho do služby IoT hub pomocí služby Zřizování zařízení služby IoT Hub. Chcete-li se dozvědět, jak zaregistrovat zařízení Čipové čipové čipy programově, pokračujte na úvodním startu pro programovou registraci zařízení TPM. 
+V tomto rychlém startu jste na svém počítači vytvořili simulované zařízení TPM a pomocí IoT Hub Device Provisioning Service ho zřídili ve službě IoT Hub. Informace o tom, jak zaregistrovat zařízení TPM prostřednictvím kódu programu, najdete v rychlém startu pro programovou registraci zařízení TPM. 
 
 > [!div class="nextstepaction"]
-> [Azure quickstart – registrace zařízení TPM do služby Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-csharp.md)
+> [Rychlý Start Azure – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service](quick-enroll-device-tpm-csharp.md)

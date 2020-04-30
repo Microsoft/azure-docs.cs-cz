@@ -1,6 +1,6 @@
 ---
 title: Ověřování SQL
-description: Přečtěte si o ověřování SQL v Azure Synapse Analytics.
+description: Přečtěte si o ověřování SQL ve službě Azure synapse Analytics.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,59 +9,59 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: 2b80efa30ac7e04b9eb21dd6f8a39ab4ee90adf6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424850"
 ---
 # <a name="sql-authentication"></a>Ověřování SQL
 
-Azure Synapse Analytics má dva faktory formuláře SQL, které umožňují řídit spotřebu prostředků. Tento článek vysvětluje, jak dva faktory formuláře řídí ověřování uživatele.
+Azure synapse Analytics má dva SQL Form-faktory, které vám umožňují řídit spotřebu prostředků. Tento článek vysvětluje, jak tyto dva formy určují ověřování uživatelů.
 
-Chcete-li autorizovat synapse SQL, můžete použít dva typy autorizace:
+K autorizaci synapse SQL můžete použít dva typy autorizace:
 
 - Autorizace AAD
 - Autorizace SQL
 
-Autorizace AAD závisí na azure active directory a umožňuje mít jedno místo pro správu uživatelů. Sql autorizace umožňuje starší aplikace používat Synapse SQL v dobře známým způsobem.
+Autorizace AAD spoléhá na Azure Active Directory a umožňuje mít jedno místo pro správu uživatelů. Autorizace SQL umožňuje starším aplikacím, aby používaly synapse SQL, dobře známým způsobem.
 
-## <a name="administrative-accounts"></a>Správní účty
+## <a name="administrative-accounts"></a>Účty pro správu
 
-Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Chcete-li identifikovat tyto účty správce pro váš sql server, otevřete portál Azure a přejděte na kartu Vlastnosti vašeho Synapse SQL.
+Jako správci fungují dva účty pro správu (**Správce serveru** a **Správce Active Directory**). Pro identifikaci těchto účtů správců pro váš SQL Server otevřete Azure Portal a přejděte na kartu vlastnosti synapse SQL.
 
 ![Správci SQL serveru](./media/sql-authentication/sql-admins.png)
 
 - **Správce serveru**
 
-  Při vytváření Azure Synapse Analytics, musíte určit **přihlášení správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.
+  Když vytváříte Azure synapse Analytics, musíte určit **přihlašovací jméno správce serveru**. SQL server vytvoří tento účet v hlavní databázi jako přihlašovací. Tento účet používá pro připojení ověřování SQL Serveru (uživatelské jméno a heslo). Existovat může jenom jeden z těchto účtů.
 
 - **Správce Azure Active Directory**
 
-  Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Je volitelné nakonfigurovat správce Azure AD, ale správce Azure AD **musí** být nakonfigurován, pokud chcete použít účty Azure AD pro připojení k Synapse SQL.
+  Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a to buď individuální účet, nebo účet skupiny zabezpečení. Správce Azure AD je nepovinný nakonfigurovat, ale pokud chcete použít účty Azure AD pro připojení k synapse SQL, **musí** být nakonfigurovaný správce Azure AD.
 
-Účty **správce serveru** a azure **ad správce** mají následující charakteristiky:
+Účty správců **serveru** a správce **Azure AD** mají následující vlastnosti:
 
-- Jsou pouze účty, které se mohou automaticky připojit k libovolné databázi SQL na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
+- Jsou jedinými účty, které se můžou automaticky připojit k jakémukoli SQL Database na serveru. (Pro připojení k uživatelské databázi ostatní účty musí buď být vlastníkem databáze, nebo musí v uživatelské databázi mít uživatelský účet.)
 - Tyto účty přistupují k uživatelským databázím jako uživatel `dbo` a mají pro ně veškerá oprávnění. (Vlastník databáze také k databázi přistupuje jako uživatel `dbo`.)
-- Nezadávejte `master` databázi `dbo` jako uživatel a mají omezená oprávnění v hlavním serveru.
-- Nejsou **not** členy standardní role `sysadmin` pevného serveru SQL Server, která není k dispozici v databázi SQL.  
-- Můžete vytvářet, měnit a přepínat databáze, přihlášení, uživatele v hlavních pravidlech a pravidlech brány firewall IP na úrovni serveru.
-- Můžete přidat a odebrat `loginmanager` členy a `dbmanager` role.
+- Nezadávejte `master` databázi jako `dbo` uživatele a mít v hlavní databázi omezená oprávnění.
+- Nejsou **členy standardní** role serveru SQL Server `sysadmin` pevné, což není k dispozici ve službě SQL Database.  
+- Může vytvářet, měnit a odstraňovat databáze, přihlášení, uživatele v hlavní databázi a pravidla brány firewall na úrovni serveru.
+- Může přidat nebo odebrat členy do rolí `dbmanager` a `loginmanager` .
 - Může zobrazit `sys.sql_logins` systémovou tabulku.
 
-## <a name="sql-on-demand-preview"></a>SQL na vyžádání (náhled)
+## <a name="sql-on-demand-preview"></a>SQL na vyžádání (Preview)
 
-Chcete-li spravovat uživatele, kteří mají přístup k SQL na vyžádání, můžete použít níže uvedené pokyny.
+Pokud chcete spravovat uživatele, kteří mají přístup k SQL na vyžádání, můžete použít následující pokyny.
 
-Chcete-li vytvořit přihlášení k SQL na vyžádání, použijte následující syntaxi:
+Pokud chcete vytvořit přihlášení k SQL na vyžádání, použijte tuto syntaxi:
 
 ```sql
 CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
 -- or
 CREATE LOGIN Mary@domainname.net FROM EXTERNAL PROVIDER;
 ```
-Jakmile přihlášení existuje, můžete vytvořit uživatele v jednotlivých databázích uvnitř koncového bodu NA VYŽÁDÁNÍ SQL a udělit těmto uživatelům požadovaná oprávnění. Chcete-li vytvořit použití, můžete použít následující syntaxi:
+Jakmile přihlásíte, můžete vytvořit uživatele v jednotlivých databázích uvnitř koncového bodu SQL na vyžádání a udělit těmto uživatelům požadovaná oprávnění. Chcete-li vytvořit použití, můžete použít následující syntaxi:
 ```sql
 CREATE USER Mary FROM LOGIN Mary;
 -- or
@@ -70,7 +70,7 @@ CREATE USER Mary FROM LOGIN Mary@domainname.net;
 CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER;
 ```
 
-Po vytvoření přihlášení a uživatele můžete použít běžnou syntaxi serveru SQL Server k udělení práv.
+Po vytvoření přihlášení a uživatele můžete k udělení práv použít syntaxi Regular SQL Server.
 
 ## <a name="sql-pool"></a>Fond SQL
 
@@ -78,20 +78,20 @@ Po vytvoření přihlášení a uživatele můžete použít běžnou syntaxi se
 
 Pokud je brána firewall na úrovni serveru správně nakonfigurovaná, může se **správce SQL serveru** a **správce Azure Active Directory** připojit pomocí klientských nástrojů, jako jsou SQL Server Management Studio nebo SQL Server Data Tools. Jenom nejnovější nástroje poskytují všechny funkce a možnosti. 
 
-Následující diagram znázorňuje typickou konfiguraci pro dva účty správce:
+Následující diagram znázorňuje typickou konfiguraci pro tyto dva účty správce:
  
-![konfigurace dvou správních účtů](./media/sql-authentication/1sql-db-administrator-access.png)
+![Konfigurace dvou účtů pro správu](./media/sql-authentication/1sql-db-administrator-access.png)
 
 Při použití otevřeného portu brány firewall na úrovni serveru se můžou správci připojit k jakékoli databázi služby SQL Database.
 
 ### <a name="database-creators"></a>Autoři databází
 
-Jednou z těchto rolí pro správu je role **dbmanager.** Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. 
+Jednou z těchto rolí pro správu je role **dbmanager** . Členové této role mohou vytvářet nové databáze. Pokud chcete použít tuto roli, vytvořte uživatele v databázi `master` a pak ho přidejte do databázové role **dbmanager**. 
 
-Chcete-li vytvořit databázi, musí být uživatel uživatel na `master` základě přihlášení sql serveru v databázi nebo obsahoval databázového uživatele na základě uživatele služby Azure Active Directory.
+Chcete-li vytvořit databázi, musí být uživatel uživatelem na základě přihlášení SQL Server v `master` databázi nebo uživatel databáze s omezením na základě Azure Active Directory uživatele.
 
-1. Pomocí účtu správce se `master` připojte k databázi.
-2. Vytvořte přihlášení ověřování serveru SQL Server pomocí příkazu [CREATE LOGIN.](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Ukázka příkazu:
+1. Pomocí účtu správce se připojte k `master` databázi.
+2. Pomocí příkazu [Create Login](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Vytvořte přihlašovací údaje pro ověření SQL Server. Ukázka příkazu:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';
@@ -102,7 +102,7 @@ Chcete-li vytvořit databázi, musí být uživatel uživatel na `master` zákla
 
    Za účelem zvýšení výkonu se přihlášení (u hlavních účtů na úrovni serveru) dočasně ukládají do mezipaměti na úrovni databáze. Pokud chcete aktualizovat mezipaměť pro ověřování, podívejte se na informace v tématu [DBCC FLUSHAUTHCACHE](/sql/t-sql/database-console-commands/dbcc-flushauthcache-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-3. V `master` databázi vytvořte uživatele pomocí příkazu [CREATE USER.](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Uživatelem může být uživatel azure active directory obsahoval databázový uživatel (pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo sql server ověřování obsahoval uživatele databáze, nebo sql server ověřování uživatele na základě přihlášení ověřování SQL Server (vytvořené v předchozím kroku.) Ukázkové příkazy:
+3. V `master` databázi vytvořte uživatele pomocí příkazu [Create User](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Uživatel může být Azure Active Directory ověřování, které obsahuje uživatele databáze (Pokud jste nakonfigurovali prostředí pro ověřování Azure AD), nebo pokud uživatel s omezením ověřování SQL Server obsahuje uživatele databáze nebo ověřování SQL Server na základě přihlášení SQL Server (vytvořené v předchozím kroku). Ukázkové příkazy:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -110,7 +110,7 @@ Chcete-li vytvořit databázi, musí být uživatel uživatel na `master` zákla
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Přidejte nového uživatele do role `master` databáze **dbmanager** v příkazu [ALTER ROLE.](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) Ukázky příkazů:
+4. Přidejte nového uživatele do role databáze **dbmanager** v `master` části pomocí příkazu [ALTER role](/sql/t-sql/statements/alter-role-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) . Ukázky příkazů:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary;
@@ -122,7 +122,7 @@ Chcete-li vytvořit databázi, musí být uživatel uživatel na `master` zákla
 
 5. V případě potřeby nakonfigurujte pravidlo brány firewall, aby se nový uživatel mohl připojit. (Na nového uživatele se může vztahovat už existující pravidlo brány firewall.)
 
-Nyní se uživatel může `master` připojit k databázi a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
+Nyní se uživatel může připojit k `master` databázi a může vytvářet nové databáze. Účet použitý k vytvoření databáze se stává vlastníkem databáze.
 
 ### <a name="login-managers"></a>Správci přihlášení
 
@@ -147,24 +147,24 @@ Na začátku může uživatele vytvořit jenom jeden ze správců nebo vlastník
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Chcete-li poskytnout další uživatelé úplnou kontrolu nad databází, aby byly členem **db_owner** pevné databázové role.
+Chcete-li poskytnout dalším uživatelům úplnou kontrolu nad databází, zajistěte, aby byly členy **db_owner** pevné databázové role.
 
-V Azure SQL Database `ALTER ROLE` použijte příkaz.
+V Azure SQL Database použijte `ALTER ROLE` příkaz.
 
 ```sql
 ALTER ROLE db_owner ADD MEMBER Mary;
 ```
 
-Ve fondu SQL použijte [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+Ve fondu SQL použijte [Sp_addrolemember exec](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ```sql
 EXEC sp_addrolemember 'db_owner', 'Mary';
 ```
 
 > [!NOTE]
-> Jedním z běžných důvodů pro vytvoření uživatele databáze na základě přihlášení serveru SQL Database je pro uživatele, kteří potřebují přístup k více databázím. Vzhledem k tomu, že uživatelé obsažené databáze jsou jednotlivé entity, každá databáze udržuje své vlastní uživatele a své vlastní heslo. To může způsobit režii, protože uživatel si pak musí pamatovat každé heslo pro každou databázi a může se stát neudržitelným, když musí změnit více hesel pro mnoho databází. Však při použití SQL Server přihlášení a vysokou dostupnost (aktivní geografické replikace a převzetí služeb při selhání skupiny), SQL Server přihlášení musí být nastavena ručně na každém serveru. V opačném případě nebude uživatel databáze již mapován na přihlášení k serveru po převzetí služeb při selhání a nebude mít přístup k převzetí služeb při selhání databázi. 
+> Jedním z běžných důvodů, proč vytvořit uživatele databáze na základě přihlášení k serveru SQL Database, je pro uživatele, kteří potřebují přístup k více databázím. Vzhledem k tomu, že uživatelé databáze s omezením jsou jednotlivé entity, udržuje každá databáze vlastní uživatele a vlastní heslo. To může způsobit režii, protože uživatel si pak musí pamatovat každé heslo pro každou databázi a může se stát untenableou změnou více hesel pro mnoho databází. Pokud ale používáte SQL Server přihlašovacích údajů a vysokou dostupnost (aktivní geografickou replikaci a skupiny převzetí služeb při selhání), SQL Server přihlášení musí být nastavená na každém serveru ručně. V opačném případě již nebude uživatel databáze po převzetí služeb při selhání mapován na přihlašovací jméno serveru a nebude moci získat přístup k databázi po převzetí služeb při selhání. 
 
-Další informace o konfiguraci přihlášení pro geografickou replikaci najdete [v tématu Konfigurace a správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Další informace o konfiguraci přihlášení pro geografickou replikaci najdete v tématu [Konfigurace a Správa zabezpečení Azure SQL Database pro geografické obnovení nebo převzetí služeb při selhání](../../sql-database/sql-database-geo-replication-security-config.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="configuring-the-database-level-firewall"></a>Konfigurace brány firewall na úrovni databáze
 
@@ -200,9 +200,9 @@ Začněte seznamem oprávnění podle tématu [Oprávnění (databázový stroj)
 
 ### <a name="considerations-and-restrictions"></a>Důležité informace a omezení
 
-Při správě přihlášení a uživatelů v databázi SQL zvažte následující body:
+Při správě přihlášení a uživatelů v SQL Database Vezměte v úvahu následující body:
 
-- Při provádění příkazů **master** musíte být připojeni `CREATE/ALTER/DROP DATABASE` k hlavní databázi.
+- Při provádění `CREATE/ALTER/DROP DATABASE` příkazů musíte být připojeni k **Hlavní** databázi.
 - Databázového uživatele, který odpovídá **správci serveru**, není možné změnit ani vyřadit.
 - Výchozím jazykem přihlášení **správce serveru** je americká angličtina.
 - Příkazy `CREATE DATABASE` a `DROP DATABASE` mohou provádět jen správci (přihlášení **správce serveru** nebo správce Azure AD) a členové databázové role **dbmanager** v **hlavní** databázi.

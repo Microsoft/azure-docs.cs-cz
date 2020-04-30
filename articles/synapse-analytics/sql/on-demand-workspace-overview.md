@@ -1,6 +1,6 @@
 ---
-title: SQL na vyžádání (náhled)
-description: Další informace o synapse SQL na vyžádání v Azure Synapse Analytics.
+title: SQL na vyžádání (Preview)
+description: Přečtěte si o synapse SQL na vyžádání v Azure synapse Analytics.
 services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,138 +9,138 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8d4de424d5d4d6da1ee80e04b35e63ae29df57c8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424906"
 ---
-# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (preview) v Azure Synapse Analytics 
+# <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
-Každý pracovní prostor Azure Synapse Analytics (preview) je dodáván s koncovými body SQL na vyžádání (preview), které můžete použít k dotazování dat v jezeře.
+Každý pracovní prostor Azure synapse Analytics (Preview) se dodává s koncovými body SQL na vyžádání (Preview), které můžete použít k dotazování dat v Lake.
 
-SQL na vyžádání je dotazová služba přes data v datovém jezeře. Umožňuje přístup k vašim datům prostřednictvím následujících funkcí:
+SQL na vyžádání je dotazovací služba na základě dat ve službě Data Lake. Umožňuje přístup k datům prostřednictvím následujících funkcí:
  
-- Známá syntaxe T-SQL pro dotazování dat na místě bez nutnosti kopírování nebo načítání dat do specializovaného úložiště. 
-- Integrovaná konektivita prostřednictvím rozhraní T-SQL, které nabízí širokou škálu business intelligence a ad-hoc dotazovacích nástrojů, včetně nejoblíbenějších ovladačů. 
+- Známá syntaxe T-SQL pro dotazování na data, aniž byste museli kopírovat nebo načítat data do specializovaného úložiště. 
+- Integrované připojení prostřednictvím rozhraní T-SQL, které nabízí rozsáhlou škálu business intelligence a nástrojů pro dotazování ad-hoc, včetně nejoblíbenějších ovladačů. 
 
-SQL na vyžádání je distribuovaný systém zpracování dat, vytvořený pro velké množství dat a výpočetních prostředků. SQL na vyžádání umožňuje analyzovat vaše big data během sekund až minut, v závislosti na zatížení. Díky integrované odolnosti proti chybám při provádění dotazů poskytuje systém vysokou spolehlivost a úspěšnost i při dlouhotrvajících dotazech zahrnujících velké datové sady.
+SQL na vyžádání je distribuovaný systém zpracování dat, který je založený na velkém rozsahu dat a výpočetních prostředků. SQL na vyžádání umožňuje analyzovat velké objemy dat v řádu sekund v závislosti na zatížení. Díky integrovanému zajištění odolnosti proti chybám při provádění dotazů poskytuje systém vysokou spolehlivost a úspěšnost i pro dlouhotrvající dotazy zahrnující velké datové sady.
 
-SQL na vyžádání je bez serveru, proto neexistuje žádná infrastruktura pro nastavení nebo clustery udržovat. Výchozí koncový bod pro tuto službu je k dispozici v rámci každého pracovního prostoru Azure Synapse, takže můžete začít dotazování dat, jakmile je vytvořen pracovní prostor. Za rezervované prostředky se neúčtují žádné poplatky, jsou účtovány pouze za data naskenovaná dotazy, které spustíte, a proto je tento model skutečným modelem platby za použití.  
+SQL na vyžádání je bez serveru, proto není k dispozici žádná infrastruktura pro instalaci ani clustery. Výchozí koncový bod pro tuto službu je k dispozici v rámci každého pracovního prostoru Azure synapse, takže můžete začít zadávat dotazy na data hned po vytvoření pracovního prostoru. Za rezervované prostředky se neúčtují žádné poplatky, účtují se vám jenom data, která prohledáváte pomocí dotazů, které spustíte, takže tento model je skutečným modelem plateb za použití.  
 
-Pokud používáte Spark ve vašem datovém kanálu, pro přípravu dat, čištění nebo obohacení, můžete [dotazovat všechny tabulky Spark,](develop-storage-files-spark-tables.md) které jste vytvořili v procesu, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přenesete koncový bod SQL na vyžádání do [spravované virtuální sítě pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
+Pokud používáte Spark v datovém kanálu, pro přípravu a čištění dat, můžete [dotazovat libovolné tabulky Spark](develop-storage-files-spark-tables.md) , které jste v procesu vytvořili, přímo z SQL na vyžádání. Pomocí [privátního odkazu](../security/how-to-connect-to-workspace-with-private-links.md) přeneste koncový bod SQL na vyžádání do vaší [virtuální sítě spravovaného pracovního prostoru](../security/synapse-workspace-managed-vnet.md).  
 
-## <a name="who-is-sql-on-demand-for"></a>Kdo je SQL na vyžádání
+## <a name="who-is-sql-on-demand-for"></a>Kdo je SQL na vyžádání pro
 
-Pokud potřebujete prozkoumat data v datovém jezeře, získat z něj přehledy nebo optimalizovat existující kanál transformace dat, můžete využít sql na vyžádání. Je vhodný pro následující scénáře:
+Pokud potřebujete prozkoumat data v Data Lake, získat z nich přehledy nebo optimalizovat stávající kanál pro transformaci dat, můžete využívat výhod SQL na vyžádání. Je vhodný pro následující scénáře:
 
-- Základní zjišťování a zkoumání – Rychle uvažujte o datech v různých formátech (parkety, CSV, JSON) v datovém jezeře, abyste si mohli naplánovat, jak z něj získat poznatky.
-- Logický datový sklad – poskytuje relační abstrakce nad nezpracovaná nebo různorodá data bez přemístění a transformace dat, což umožňuje vždy aktuální zobrazení dat.
-- Transformace dat – jednoduchý, škálovatelný a výkonný způsob transformace dat v jezeře pomocí T-SQL, takže je lze napájet do BI a dalších nástrojů nebo načíst do relačního úložiště dat (databáze Synapse SQL, Azure SQL Database atd.).
+- Základní zjišťování a průzkum – v datech Lake se rychle pokusíte o data v různých formátech (Parquet, CSV, JSON), abyste si mohli naplánovat, jak z nich získat přehledy.
+- Logický datový sklad – poskytuje relační abstrakci nad nezpracovanými nebo různorodými daty bez nutnosti přemístění a transformaci dat, což umožňuje vždy aktuální zobrazení dat.
+- Transformace dat – jednoduchý, škálovatelný a vykonávající způsob, jak transformovat data v Lake pomocí T-SQL, takže se dají doplňovat do BI a dalších nástrojů nebo načíst do relačního úložiště dat (databáze SQL synapse, Azure SQL Database atd.).
 
-Různé profesionální role mohou těžit z SQL na vyžádání:
+Z SQL na vyžádání můžou využívat různé role Professional:
 
-- Datoví inženýři mohou prozkoumat jezero, transformovat a připravit data pomocí této služby a zjednodušit jejich kanály transformace dat. Další informace naleznete v tomto [kurzu](tutorial-data-analyst.md).
-- Data Vědci mohou rychle uvažovat o obsahu a struktuře dat v jezeře, a to díky funkcím, jako je OPENROWSET a automatické inference schématu.
-- Analytici dat mohou [zkoumat data a tabulky Spark](develop-storage-files-spark-tables.md) vytvořené datovými vědci nebo datovými inženýry pomocí známého jazyka T-SQL nebo jejich oblíbených nástrojů, které se mohou připojit k SQL na vyžádání.
-- Profesionálové bi mohou rychle [vytvářet sestavy Power BI nad data v tabulkách jezera](tutorial-connect-power-bi-desktop.md) a Spark.
+- Data technici můžou Prozkoumat Lake, transformovat a připravit data pomocí této služby a zjednodušit jejich kanály pro transformaci dat. Další informace najdete v tomto [kurzu](tutorial-data-analyst.md).
+- Vědečtí data mohou rychle vypříčinit obsah a strukturu dat v Lake, a to díky funkcím, jako je například OPENROWSET a automatické odvození schématu.
+- Analytiké dat může [Prozkoumat data a tabulky Spark](develop-storage-files-spark-tables.md) vytvořené odborníky přes data nebo pomocí známých nástrojů T-SQL nebo jejich oblíbených nástrojů, které se můžou připojit k SQL na vyžádání.
+- Profesionálové v BI můžou rychle [vytvářet Power BI sestavy nad daty v tabulkách Lake](tutorial-connect-power-bi-desktop.md) a Spark.
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>Co musím udělat, abych ji začal používat?
+## <a name="what-do-i-need-to-do-to-start-using-it"></a>Co je potřeba udělat, aby ji bylo možné začít používat?
 
-Koncový bod SQL na vyžádání je k dispozici v rámci každého pracovního prostoru Azure Synapse. Můžete vytvořit pracovní prostor a začít okamžitě dotazovat data pomocí nástrojů, které znáte.
+Koncový bod SQL na vyžádání je k dispozici v rámci každého pracovního prostoru Azure synapse. Můžete vytvořit pracovní prostor a spustit dotazování na data okamžitě pomocí nástrojů, které znáte.
 
-## <a name="client-tools"></a>Klientské nástroje
+## <a name="client-tools"></a>Nástroje klienta
 
-SQL na vyžádání umožňuje existující sql ad-hoc dotazování a business intelligence nástroje pro připojení k datové jezero. Vzhledem k tomu, že poskytuje známou syntaxi T-SQL, může se každý nástroj schopný navázat na nabídky SQL připojení TDS [připojit a dotazovat se synapse SQL](connect-overview.md) na vyžádání. Můžete se spojit s Azure Data Studio a spouštět ad-hoc dotazy nebo se spojit s Power BI a získat přehled během několika minut.
+SQL na vyžádání umožňuje existujícím nástrojům pro dotazování ad-hoc a business intelligenceům, aby mohli na data Lake klepnout. Vzhledem k tomu, že poskytuje známou syntaxi T-SQL, se může každý nástroj schopný vytvořit nabídky SQL připojení TDS, [připojit k SQL na vyžádání a dotazovat se na synapse](connect-overview.md) . Můžete se připojit pomocí Azure Data Studio a spustit ad-hoc dotazy nebo se připojit pomocí Power BI a získat přehledy během několika minut.
 
-## <a name="is-full-t-sql-supported"></a>Je podporováncelý T-SQL?
+## <a name="is-full-t-sql-supported"></a>Podporuje se kompletní T-SQL?
 
-SQL on-demand nabízí T-SQL dotazování povrchu, který je mírně rozšířené/rozšířené v některých aspektech tak, aby vyhovovaly pro prostředí kolem dotazování částečně strukturovaných a nestrukturovaných dat. Kromě toho některé aspekty jazyka T-SQL nejsou podporovány z důvodu návrhu SQL na vyžádání, jako příklad funkce DML není aktuálně podporována.
+SQL na vyžádání nabízí oblast pro dotazování T-SQL, která je mírně rozšířená nebo rozšířená v některých aspektech, aby se zajistila možnost vyhledávání částečně strukturovaných a nestrukturovaných dat. Kromě toho některé aspekty jazyka T-SQL nejsou podporované v důsledku návrhu SQL na vyžádání, jako například funkce DML není aktuálně podporovaná.
 
-- Pracovní vytížení lze uspořádat pomocí známých konceptů:
-- Databáze – koncový bod na vyžádání sql může mít více databází.
-- Schémata - V rámci databáze může existovat jedna nebo více skupin vlastnictví objektů nazývaných schémata.
+- Úlohy je možné organizovat pomocí známých konceptů:
+- Databáze – koncový bod SQL na vyžádání může mít více databází.
+- Schémata – v rámci databáze může existovat jedna nebo mnoho skupin vlastnictví objektů s názvem schemas.
 - Zobrazení
-- Externí zdroje – zdroje dat, formáty souborů a tabulky
+- Externí prostředky – zdroje dat, formáty souborů a tabulky
 
-Zabezpečení lze vynutit pomocí:
+Zabezpečení je možné vyhovět pomocí:
 
 - Přihlášení a uživatelé
-- Pověření pro řízení přístupu k účtům úložiště
-- Udělení, odepření a odvolání oprávnění podle úrovně objektu
+- Přihlašovací údaje pro řízení přístupu k účtům úložiště
+- Udělení, zamítnutí a odvolání oprávnění na úrovni objektu
 - Integrace Azure Active Directory
 
 Podporované T-SQL:
 
-- Je podporována celá plocha [SELECT,](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) včetně většiny funkcí SQL
-- CETAS - VYTVOŘIT EXTERNÍ TABULKU JAKO VÝBĚR
-- DDL příkazy týkající se pouze zobrazení a zabezpečení
+- Plocha kompletního [výběru](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) je podporovaná, včetně většiny funkcí SQL.
+- CETAS – VYTVOŘIT EXTERNÍ TABULKU JAKO SELECT
+- Příkazy DDL související s pohledy a zabezpečením
 
-SQL na vyžádání nemá žádné místní úložiště, pouze objekty metadat jsou uloženy v databázích. Proto T-SQL vztahující se k následující koncepty není podporována:
+SQL na vyžádání nemá žádné místní úložiště, ukládají se do databází jenom objekty metadat. Proto není podporován T-SQL, který se týká následujících konceptů:
 
 - Tabulky
 - Aktivační události
-- Zhmotněné pohledy
-- DDL příkazy jiné než ty, které se týkají zobrazení a zabezpečení
+- Materializovaná zobrazení
+- Příkazy DDL kromě těch, které souvisejí s zobrazeními a zabezpečením
 - Příkazy DML
 
 ### <a name="extensions"></a>Rozšíření
 
-Aby bylo možné plynule pracovat pro dotazování dat v souborech v datovém jezeře, SQL na vyžádání rozšiřuje stávající funkci [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) přidáním následujících funkcí:
+Aby bylo možné povolit hladké prostředí pro účely zadávání dotazů na data umístěná v souborech v Data Lake, rozšiřuje SQL na vyžádání existující funkci [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) přidáním následujících možností:
 
-[Dotaz na více souborů nebo složek](develop-storage-files-overview.md#query-multiple-files-or-folders)
+[Dotazování na více souborů nebo složek](develop-storage-files-overview.md#query-multiple-files-or-folders)
 
-[FORMÁT SOUBORU PARKET](develop-storage-files-overview.md#parquet-file-format)
+[Formát souboru PARQUET](develop-storage-files-overview.md#parquet-file-format)
 
-[Další možnosti pro práci s odděleným textem (zakončení pole, zakončení řádku, escape char)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
+[Další možnosti pro práci s odděleným textem (ukončovací znak pole, ukončovací znak řádku, řídicí znak)](develop-storage-files-overview.md#additional-options-for-working-with-delimited-text)
 
-[Čtení vybrané podmnožiny sloupců](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
+[Čtení zvolené podmnožiny sloupců](develop-storage-files-overview.md#read-a-chosen-subset-of-columns)
 
 [Odvození schématu](develop-storage-files-overview.md#schema-inference)
 
-[funkce název souboru](develop-storage-files-overview.md#filename-function)
+[filename – funkce](develop-storage-files-overview.md#filename-function)
 
-[funkce cesta souboru](develop-storage-files-overview.md#filepath-function)
+[FilePath – funkce](develop-storage-files-overview.md#filepath-function)
 
 [Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami](develop-storage-files-overview.md#work-with-complex-types-and-nested-or-repeated-data-structures)
 
 ## <a name="security"></a>Zabezpečení
 
-SQL na vyžádání nabízí mechanismy pro zabezpečení přístupu k vašim datům.
+SQL na vyžádání nabízí mechanismy pro zabezpečení přístupu k datům.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 
-SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [integrace Azure Active Directory](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a zároveň podporuje proces jednotného přihlášení.
+SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../sql-database/sql-database-Azure AD-authentication.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../sql-database/sql-database-ssms-mfa-authentication-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
 
 #### <a name="authentication"></a>Authentication
 
-Ověřování SQL na vyžádání odkazuje na způsob, jakým uživatelé prokázat svou identitu při připojování ke koncovému bodu. Podporovány jsou dva typy ověřování:
+Ověřování SQL na vyžádání odkazuje na to, jak uživatelé při připojení ke koncovému bodu prokáže svoji identitu. Podporují se dva typy ověřování:
 
 - **Ověřování SQL**
 
   Tato metoda ověřování používá uživatelské jméno a heslo.
 
-- **Ověřování služby Azure Active Directory**:
+- **Ověřování Azure Active Directory**:
 
-  Tato metoda ověřování používá identity spravované službou Azure Active Directory. Pro uživatele Azure AD lze povolit vícefaktorové ověřování. [Kdykoliv to půjde](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), použijte ověřování pomocí Active Directory (integrované zabezpečení).
+  Tato metoda ověřování používá identity spravované pomocí Azure Active Directory. Pro uživatele Azure AD můžete povolit službu Multi-Factor Authentication. [Kdykoliv to půjde](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), použijte ověřování pomocí Active Directory (integrované zabezpečení).
 
 #### <a name="authorization"></a>Autorizace
 
-Autorizace odkazuje na to, co může uživatel dělat v databázi na vyžádání, a je řízena členstvím v databázové roli vašeho uživatelského účtu a oprávněními na úrovni objektů.
+Autorizace odkazuje na to, co uživatel může provádět v databázi SQL na vyžádání, a je řízen členstvím databázové role vašeho uživatelského účtu a oprávněními na úrovni objektů.
 
-Pokud se používá ověřování SQL, uživatel SQL existuje pouze v SQL na vyžádání a oprávnění jsou vymezeny na objekty v SQL na vyžádání. Přístup k seřiditelným objektům v jiných službách (jako je Azure Storage) nelze udělit uživateli SQL přímo, protože existuje pouze v rozsahu SQL na vyžádání. Uživatel SQL musí pro přístup k souborům použít jeden z [podporovaných typů autorizace.](develop-storage-files-storage-access-control.md#supported-storage-authorization-types)
+Pokud se používá ověřování SQL, uživatel SQL existuje jenom v SQL na vyžádání a oprávnění jsou vymezená na objekty v SQL na vyžádání. Přístup k zabezpečeným objektům v jiných službách (například Azure Storage) se nedá udělit přímo uživateli SQL, protože existuje jenom v rozsahu SQL na vyžádání. Uživatel SQL musí pro přístup k souborům použít jeden z [podporovaných typů autorizace](develop-storage-files-storage-access-control.md#supported-storage-authorization-types) .
 
-Pokud se používá ověřování Azure AD, uživatel se může přihlásit k SQL na vyžádání a dalším službám, jako je Azure Storage, a může udělit oprávnění uživateli Azure AD.
+Pokud se používá ověřování Azure AD, může se uživatel přihlásit k SQL na vyžádání a dalším službám, jako je Azure Storage, a může udělit oprávnění k uživateli Azure AD.
 
 ### <a name="access-to-storage-accounts"></a>Přístup k účtům úložiště
 
-Uživatel, který je přihlášen ke službě SQL na vyžádání, musí mít oprávnění k přístupu k souborům ve službě Azure Storage a k jejich dotazování. SQL na vyžádání podporuje následující typy autorizace:
+Uživatel, který je přihlášen ke službě SQL na vyžádání, musí mít oprávnění pro přístup k souborům v Azure Storage a dotazování na ně. SQL na vyžádání podporuje následující typy autorizace:
 
-- **Podpis sdíleného přístupu (SAS)** poskytuje delegovaný přístup k prostředkům v účtu úložiště. S SAS můžete udělit klientům přístup k prostředkům v účtu úložiště, bez sdílení klíčů účtu. SAS poskytuje podrobnou kontrolu nad typem přístupu, který udělujete klientům, kteří mají Interval platnosti SAS, udělená oprávnění, přijatelný rozsah IP adres, přijatelný protokol (https/http).
+- **Sdílený přístupový podpis (SAS)** poskytuje delegovaný přístup k prostředkům v účtu úložiště. Pomocí SAS můžete klientům udělit přístup k prostředkům v účtu úložiště bez sdílení klíčů účtu. SAS vám poskytne podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají přidružení zabezpečení: Interval platnosti, udělená oprávnění, přijatelný rozsah IP adres, přijatelný protokol (HTTPS/HTTP).
 
-- **Identita uživatele** (označovaná také jako "předávací") je typ autorizace, kde se identita uživatele Azure AD, který se přihlásil k SQL na vyžádání, používá k autorizaci přístupu k datům. Před přístupem k datům musí správce Azure Storage udělit oprávnění uživateli Azure AD pro přístup k datům. Tento typ autorizace používá uživatele Azure AD, který se přihlásil k SQL na vyžádání, proto není podporován pro typy uživatelů SQL.
+- **Identita uživatele** (označovaná také jako "průchozí") je typ autorizace, ve kterém se k autorizaci přístupu k datům používá identita uživatele služby Azure AD, který se přihlásil k SQL na vyžádání. Před přístupem k datům musí Azure Storage správce udělit uživateli Azure AD oprávnění k přístupu k datům. Tento typ autorizace používá uživatele Azure AD, který se přihlásil k SQL na vyžádání, proto není podporován pro uživatelské typy SQL.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o připojení koncových bodů a dotazování souborů lze nalézt v následujících článcích: 
+Další informace o připojení koncových bodů a dotazování souborů najdete v následujících článcích: 
 - [Připojení ke koncovému bodu](connect-overview.md)
-- [Dotaz na soubory](develop-storage-files-overview.md)
+- [Dotazování souborů](develop-storage-files-overview.md)

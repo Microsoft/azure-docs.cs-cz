@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726463"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí Go
@@ -22,22 +22,22 @@ V tomto rychlém startu zjistíte, jak pomocí programovacího jazyka Go nahráv
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ujistěte se, že máte nainstalovány následující další požadavky:
+Ujistěte se, že máte nainstalované následující další požadavky:
  
-* [Přejít na 1,8 nebo vyšší](https://golang.org/dl/)
-* [Azure Storage Blob SDK for Go](https://github.com/azure/azure-storage-blob-go/)pomocí následujícího příkazu:
+* [Přejít 1,8 nebo vyšší](https://golang.org/dl/)
+* [Azure Storage BLOB SDK for přejít](https://github.com/azure/azure-storage-blob-go/), pomocí následujícího příkazu:
 
     ```
     go get -u github.com/Azure/azure-storage-blob-go/azblob
     ``` 
 
     > [!NOTE]
-    > Ujistěte se, že `Azure` máte v této adrese URL velká písmena, abyste se při práci se sadou SDK vyhnuli problémům s importem souvisejícím s případem. Také velká `Azure` písmena v import prohlášení.
+    > Ujistěte se, že je `Azure` v adrese URL velká písmena, aby nedocházelo k problémům s importem případu při práci se sadou SDK. Také velká `Azure` písmena v příkazech importu.
     
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) použitá v tomto rychlém startu je základní aplikace v jazyce Go.  
 
-Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do vývojového prostředí. 
+Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojového prostředí. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-go-quickstart 
@@ -207,7 +207,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>Stažení objektu blob
 
-Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud se připojení nezdaří při čtení, bude další požadavky na obnovení připojení a pokračovat ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
+Objekty blob můžete stáhnout pomocí funkce nízké úrovně **Download** s použitím objektu BlobURL. Tato funkce vrátí strukturu **DownloadResponse**. Spuštěním funkce **Body** pro strukturu získáte datový proud **RetryReader** pro čtení dat. Pokud při čtení dojde k chybě připojení, budou další požadavky na opětovné navázání připojení a pokračování ve čtení. Pokud zadáte RetryReaderOptions s vlastností MaxRetryRequests nastavenou na hodnotu 0 (výchozí hodnota), vrátí se původní text odpovědi bez opakování. Alternativně můžete kód zjednodušit použitím rozhraní API vysoké úrovně **DownloadBlobToBuffer** nebo **DownloadBlobToFile**.
 
 Následující kód stáhne objekt blob pomocí funkce **Download**. Obsah objektu blob se zapíše do vyrovnávací paměti a zobrazí se v konzole.
 

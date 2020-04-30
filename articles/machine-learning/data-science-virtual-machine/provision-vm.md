@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření virtuálního počítače s datovými vědami systému Windows'
+title: 'Rychlý Start: vytvoření Data Science Virtual Machine Windows'
 titleSuffix: Azure Data Science Virtual Machine
-description: Konfigurace a vytvoření virtuálního počítače pro datové vědy v Azure pro analýzy a strojové učení.
+description: Nakonfigurujte a vytvořte Data Science Virtual Machine v Azure pro analýzy a strojové učení.
 ms.service: machine-learning
 ms.subservice: data-science-vm
 author: gvashishtha
@@ -9,66 +9,66 @@ ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
 ms.openlocfilehash: afcb676f68e7be9d3ebef11ea2c6876a86bbd062
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80281778"
 ---
-# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Úvodní příručka: Nastavení virtuálního počítače pro datové vědy pro Windows
+# <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Rychlý Start: nastavení Data Science Virtual Machine pro Windows
 
-Zprovoznění s virtuálním počítačem pro datové vědy se systémem Windows Server 2019.
+Začněte pracovat se systémem Windows Server 2019 Data Science Virtual Machine.
 
 ## <a name="prerequisite"></a>Požadavek
 
-Chcete-li vytvořit virtuální počítač s Windows Data Science, musíte mít předplatné Azure. [Vyzkoušejte Azure zdarma](https://azure.com/free).
-Upozorňujeme, že bezplatné účty Azure nepodporují virtuální počítače s povoleným gpu.
+Pokud chcete vytvořit Data Science Virtual Machine Windows, musíte mít předplatné Azure. [Vyzkoušejte si Azure zdarma](https://azure.com/free).
+Upozorňujeme prosím, že bezplatné účty Azure nepodporují SKU virtuálních počítačů s povoleným GPU.
 
-## <a name="create-your-dsvm"></a>Vytvořte si DSVM
+## <a name="create-your-dsvm"></a>Vytvoření DSVM
 
 Vytvoření instance DSVM:
 
-1. Přejděte na [portál Azure,](https://portal.azure.com) pokud ještě nejste přihlášení, můžete se k vám přihlásit.
-1. Najděte výpis virtuálního počítače zadáním "virtuálního počítače pro datové vědy" a výběrem možnosti "Virtuální počítač pro datové vědy – Windows 2019".
+1. Pokud ještě nejste přihlášení, můžete přejít na [Azure Portal](https://portal.azure.com) zobrazí se výzva k přihlášení k účtu Azure.
+1. Vyhledejte výpis virtuálního počítače zadáním příkazu "virtuální počítač pro datové vědy" a výběrem Data Science Virtual Machine-Windows 2019.
 
-1. V dolní části vyberte tlačítko **Vytvořit.**
+1. V dolní části vyberte tlačítko **vytvořit** .
 
-1. Měli byste být přesměrováni na okno "Vytvořit virtuální počítač".
+1. Měli byste se přesměrovat na okno vytvořit virtuální počítač.
 
-1. Vyplňte kartu **Základy:**
-      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte předplatné, ve kterém bude počítač vytvořen a fakturován. Toto předplatné musí mít oprávnění vytvářet prostředky.
-      * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující skupinu.
-      * **Název virtuálního počítače**: Zadejte název virtuálního počítače. Takhle se zobrazí na vašem webu Azure Portal.
-      * **Umístění**: Vyberte nejvhodnější datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže k vaší fyzické poloze. Další informace o [oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/).
-      * **Obrázek**: Ponechte výchozí hodnotu.
-      * **Velikost**: To by mělo automaticky naplnit s velikostí, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních aplikací pro Windows v Azure](../../virtual-machines/windows/sizes.md).
-      * **Uživatelské jméno**: Zadejte uživatelské jméno správce. Toto je uživatelské jméno, které budete používat k přihlášení k virtuálnímu počítači a nemusí být stejné jako vaše uživatelské jméno Azure.
-      * **Heslo**: Zadejte heslo, které použijete k přihlášení do virtuálního počítače.    
+1. Vyplňte kartu **základy** :
+      * **Předplatné**: Pokud máte více než jedno předplatné, vyberte ten, na kterém se bude počítač vytvářet a účtují. Toto předplatné musí mít oprávnění vytvářet prostředky.
+      * **Skupina prostředků**: Vytvořte novou skupinu nebo použijte existující.
+      * **Název virtuálního počítače**: zadejte název virtuálního počítače. Tímto způsobem se zobrazí ve vašem Azure Portal.
+      * **Umístění**: vyberte příslušné datové centrum. Pro nejrychlejší přístup k síti je to datové centrum, které má většinu vašich dat nebo je nejblíže vašemu fyzickému umístění. Přečtěte si další informace o [oblastech Azure](https://azure.microsoft.com/global-infrastructure/regions/).
+      * **Obrázek**: ponechte výchozí hodnotu.
+      * **Velikost**: Tato hodnota by měla automaticky naplnit velikost, která je vhodná pro obecné úlohy. Přečtěte si další informace o [velikostech virtuálních počítačů s Windows v Azure](../../virtual-machines/windows/sizes.md).
+      * **Uživatelské jméno**: zadejte uživatelské jméno správce. Toto je uživatelské jméno, které použijete k přihlášení k virtuálnímu počítači, a nemusí být stejné jako uživatelské jméno Azure.
+      * **Heslo**: zadejte heslo, které budete používat pro přihlášení k virtuálnímu počítači.    
 1. Vyberte **Zkontrolovat a vytvořit**.
-1. **Zkontrolovat+vytvořit**
+1. **Zkontrolovat a vytvořit**
    * Ověřte správnost všech zadaných informací. 
    * Vyberte **Vytvořit**.
 
 
 > [!NOTE]
-> * Neplatíte licenční poplatky za software, který je dodáván předinstalovaný ve virtuálním počítači. Náklady na výpočetní prostředky zaplatíte za velikost serveru, kterou jste zvolili v kroku **Velikost.**
-> * Zřizování trvá 10 až 20 minut. Můžete zobrazit stav virtuálního počítače na webu Azure Portal.
+> * Na software, který je připravený předem načtený na virtuálním počítači, neplatíte poplatky za licence. Za velikost serveru, kterou jste zvolili v kroku **Velikost** , platíte náklady na výpočetní výkon.
+> * Zřizování trvá 10 až 20 minut. Stav virtuálního počítače můžete zobrazit na Azure Portal.
 
 ## <a name="access-the-dsvm"></a>Přístup k DSVM
 
-Po vytvoření a zřízení virtuálního počítače se podle uvedených kroků [připojte k virtuálnímu počítači založenému na Azure](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Použijte přihlašovací údaje účtu správce, které jste nakonfigurovali v kroku **Základy** vytvoření virtuálního počítače. 
+Až se virtuální počítač vytvoří a zřídí, postupujte podle kroků uvedených v části [připojení k virtuálnímu počítači založenému na Azure](../../marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm.md). Použijte přihlašovací údaje účtu správce, které jste nakonfigurovali v kroku **základní informace** o vytvoření virtuálního počítače. 
 
-Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnoho nástrojů lze přistupovat prostřednictvím dlaždic nabídky **Start** a ikon na ploše.
+Jste připraveni začít používat nástroje, které jsou nainstalované a nakonfigurované na virtuálním počítači. Mnohé z těchto nástrojů jsou dostupné prostřednictvím dlaždic v nabídce **Start** a ikon na ploše.
 
-Můžete také připojit DSVM k poznámkovým blokům Azure ke spuštění poznámkových bloků Jupyter na virtuálním počítači a obejít omezení úrovně bezplatné služby. Další informace naleznete v [tématu Správa a konfigurace projektů poznámkových bloků](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+K Azure Notebooks také můžete připojit DSVM a spustit poznámkové bloky Jupyter na virtuálním počítači a obejít omezení bezplatné úrovně služby. Další informace najdete v tématu [Správa a konfigurace projektů poznámkových bloků](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
 
 <a name="tools"></a>
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prohlédněte si nástroje na DSVM otevřením nabídky **Start.**
-* Další informace o Azure Machine Learning učte [Co je Azure Machine Learning?](../overview-what-is-azure-ml.md) a vyzkoušet výukové [programy](../index.yml).
-* Přečtěte si článek [Deset věcí, které můžete dělat na virtuálním počítači pro datové vědy](https://aka.ms/dsvmtenthings).
-* Navštivte [Galerii AI Azure](https://gallery.cortanaintelligence.com) pro ukázky strojového učení a analýzy dat, které používají Azure Machine Learning a související datové služby v Azure. Také jsme poskytli ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
+* Prozkoumejte nástroje na DSVM otevřením nabídky **Start** .
+* Přečtěte si o Azure Machine Learning tak, že si přečtete, [co je Azure Machine Learning?](../overview-what-is-azure-ml.md) a vyzkoušíte si [kurzy](../index.yml).
+* Přečtěte si článek [deset věcí, které můžete provádět na data Science Virtual Machine](https://aka.ms/dsvmtenthings).
+* Podívejte se na [Azure AI Gallery](https://gallery.cortanaintelligence.com) pro ukázkové strojové učení a analýzu dat, které používají Azure Machine Learning a související datové služby v Azure. K dispozici jsme také ikonu pro tuto galerii v nabídce **Start** a na ploše virtuálního počítače.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Gremlin API s PHP – Azure Cosmos DB'
+title: 'Rychlý Start: Gremlin API s využitím PHP-Azure Cosmos DB'
 description: Tento rychlý start ukazuje, jak použít rozhraní Azure Cosmos DB Gremlin API k vytvoření aplikace pomocí portálu Azure a jazyka PHP.
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 01/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e38f3e2029bdc8dc8c13ce330e37053d491317f3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68736645"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Úvodní příručka: Vytvoření databáze grafů v Azure Cosmos DB pomocí PHP a portálu Azure
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-php-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí PHP a Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -194,7 +194,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
    ![Vytváření nových dokumentů v Průzkumníku dat na webu Azure Portal](./media/create-graph-php/azure-cosmosdb-data-explorer-expanded.png)
 
-2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte **ben** a všimněte si, že jsou spojeni s robinem. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
+2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte možnost **Robert** a Všimněte si, že jsou připojeni k dotazování. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
    ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-php/azure-cosmosdb-graph-explorer-new.png)
 
@@ -204,11 +204,11 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 4. Zadejte popisek *person* (osoba).
 
-5. Kliknutím na **Přidat vlastnost** přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Je vyžadován pouze **id** klíč.
+5. Kliknutím na **Přidat vlastnost** přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se jenom klíč **ID** .
 
-    Klíč | Hodnota | Poznámky
+    Key | Hodnota | Poznámky
     ----|----|----
-    **Id** | ashley | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **účet** | ashley | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     **gender (pohlaví)** | female (žena) | 
     **tech (technologie)** | java | 
 
@@ -223,9 +223,9 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
 9. Kliknutím na **Přidat vlastnost** přidejte následující vlastnosti:
     
-    Klíč | Hodnota | Poznámky
+    Key | Hodnota | Poznámky
     ----|----|----
-    **Id** | rakesh | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
+    **účet** | rakesh | Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
     **gender (pohlaví)** | male (muž) | 
     **school (škola)** | MIT | 
 

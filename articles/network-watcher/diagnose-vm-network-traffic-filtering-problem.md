@@ -1,5 +1,5 @@
 ---
-title: 'Úvodní příručka: Diagnostika problému s filtrem síťového provozu virtuálních počítači – portál Azure'
+title: 'Rychlý Start: Diagnostika problému s filtrem provozu sítě virtuálních počítačů – Azure Portal'
 titleSuffix: Azure Network Watcher
 description: V tomto rychlém startu zjistíte, jak diagnostikovat problém s filtrováním síťového provozu virtuálního počítače pomocí funkce ověření toku protokolů IP služby Azure Network Watcher.
 services: network-watcher
@@ -18,17 +18,17 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241595"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače pomocí webu Azure Portal
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -37,17 +37,17 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 ## <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
-2. Vyberte **Compute**a pak vyberte **Windows Server 2016 Datacenter** nebo verzi **Ubuntu Serveru**.
-3. Zadejte nebo vyberte následující informace, přijměte výchozí hodnoty zbývajících nastavení a pak vyberte **OK**:
+2. Vyberte **COMPUTE**a potom vyberte **Windows Server 2016 Datacenter** nebo verzi **Ubuntu serveru**.
+3. Zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
     |---|---|
-    |Name (Název)|myVm|
+    |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
     |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
-    |Umístění| Vybrat **východní USA**|
+    |Umístění| Vyberte **východní USA**|
 
 4. Vyberte velikost virtuálního počítače a pak vyberte **Vybrat**.
 5. V části **Nastavení** přijměte všechny výchozí hodnoty a vyberte **OK**.
@@ -85,7 +85,7 @@ Když vytvoříte virtuální počítač, Azure u něj ve výchozím nastavení 
     | Směr         | Odchozí                                                                                          |
     | Místní IP adresa  | 10.0.0.4                                                                                          |
     | Místní port      | 60000                                                                                                |
-    | Vzdálená IP adresa | 13.107.21.200 - Jedna z adres <www.bing.com>.                                             |
+    | Vzdálená IP adresa | 13.107.21.200 – jedna z adres pro> <www.bing.com.                                             |
     | Vzdálený port       | 80                                                                                                |
 
     ![Ověření toku protokolu IP](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

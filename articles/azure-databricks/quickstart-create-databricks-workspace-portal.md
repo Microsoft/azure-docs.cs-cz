@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – spuštění úlohy Spark na Azure Databricks pomocí portálu Azure
-description: Tento rychlý start ukazuje, jak pomocí portálu Azure vytvořit pracovní prostor Azure Databricks, cluster Apache Spark a spustit úlohu Spark.
+title: Rychlý Start – spuštění úlohy Sparku na Azure Databricks pomocí Azure Portal
+description: V tomto rychlém startu se dozvíte, jak pomocí Azure Portal vytvořit pracovní prostor Azure Databricks, Apache Spark cluster a spustit úlohu Spark.
 services: azure-databricks
 ms.service: azure-databricks
 author: mamccrea
@@ -11,35 +11,35 @@ ms.topic: quickstart
 ms.date: 03/23/2020
 ms.custom: mvc
 ms.openlocfilehash: d6af521238a034bc22612335119f08284b87eb4b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80132708"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Rychlý start: Spuštění úlohy Spark job v Azure Databricks pomocí portálu Azure
 
-V tomto rychlém startu použijete portál Azure k vytvoření pracovního prostoru Azure Databricks s clusterem Apache Spark. Spustíte úlohu v clusteru a pomocí vlastních grafů vytvoříte sestavy v reálném čase z bostonských bezpečnostních dat.
+V tomto rychlém startu použijete Azure Portal k vytvoření pracovního prostoru Azure Databricks s Apache Sparkm clusterem. Spouštíte úlohu v clusteru a použijete vlastní grafy k vytváření sestav v reálném čase z dat o zabezpečení Boston.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 > [!Note]
-> Tento kurz nelze provést pomocí **bezplatného zkušebního předplatného Azure**.
-> Pokud máte bezplatný účet, přejděte na svůj profil a změňte předplatné na **průběžně placené**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Potom [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro virtuální procesory ve vaší oblasti. Když vytvoříte pracovní prostor Azure Databricks, můžete vybrat **zkušební (premium - 14denní jednotku DBU)** a poskytnout tak pracovnímu prostoru přístup k bezplatným dbům Azure Databricks Azure na 14 dní.
+> Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
+> Pokud máte bezplatný účet, přejděte na svůj profil a změňte si předplatné na **průběžné platby**. Další informace najdete na stránce [bezplatného účtu Azure](https://azure.microsoft.com/free/). Pak [odeberte limit útraty](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)a [požádejte o zvýšení kvóty](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) pro vCPU ve vaší oblasti. Když vytváříte pracovní prostor Azure Databricks, můžete vybrat cenovou úroveň **DBU (Premium-14-days)** a poskytnout tak přístup k pracovnímu prostoru zdarma Premium Azure Databricks DBU po dobu 14 dnů.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Vytvoření pracovního prostoru Azure Databricks
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. Na webu Azure Portal vyberte **Vytvořit zdroj** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
 
-    ![Datové cihly na webu Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Datové cihly na webu Azure Portal")
+    ![Datacihly na Azure Portal](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
 2. V části **Služba Azure Databricks** zadejte hodnoty pro vytvoření pracovního prostoru Databricks.
 
@@ -53,13 +53,13 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
     |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – západ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).        |
-    |**Cenová úroveň**     |  Vyberte si mezi **standardními**, **prémiovými**nebo **zkušebními verzemi**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
+    |**Cenová úroveň**     |  Vyberte si mezi **standardem**, **Premium**nebo **zkušební verzí**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |
 
-3. Vyberte **Zkontrolovat + Vytvořit**a potom **Vytvořit**. Vytvoření pracovního prostoru trvá několik minut. Během vytváření pracovního prostoru můžete zobrazit stav nasazení v **oznámení .** Po dokončení tohoto procesu se váš uživatelský účet automaticky přidá jako správce v pracovním prostoru.
+3. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit**. Vytvoření pracovního prostoru trvá několik minut. Při vytváření pracovního prostoru můžete zobrazit stav nasazení v části **oznámení**. Po dokončení tohoto procesu se váš uživatelský účet automaticky přidá jako uživatel s právy pro správu v pracovním prostoru.
 
-    ![Dlaždice nasazení Datových cihel](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Dlaždice nasazení Datových cihel")
+    ![Dlaždice nasazení datacihly](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Dlaždice nasazení datacihly")
 
-    Pokud se nasazení pracovního prostoru nezdaří, pracovní prostor je stále vytvořen ve stavu selhání. Odstraňte neúspěšný pracovní prostor a vytvořte nový pracovní prostor, který vyřeší chyby nasazení. Při odstranění nezdařeného pracovního prostoru se odstraní také skupina spravovaných prostředků a všechny úspěšně nasazené prostředky.
+    V případě selhání nasazení pracovního prostoru je pracovní prostor stále vytvořen ve stavu selhání. Odstraňte neúspěšný pracovní prostor a vytvořte nový pracovní prostor, který vyřeší chyby nasazení. Při odstranění neúspěšného pracovního prostoru se odstraní také spravovaná skupina prostředků a všechny úspěšně nasazené prostředky.
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Vytvoření clusteru Spark ve službě Databricks
 
@@ -68,19 +68,19 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
 
 1. Na webu Azure Portal přejděte do pracovního prostoru Databricks, který jste vytvořili, a klikněte na **Spustit pracovní prostor**.
 
-2. Budete přesměrováni na portál Azure Databricks. Na portálu klikněte na **Nový cluster**.
+2. Budete přesměrováni na portál Azure Databricks. Na portálu klikněte na **nový cluster**.
 
-    ![Datové cihly v Azure](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Datové cihly v Azure")
+    ![Datacihly v Azure](./media/quickstart-create-databricks-workspace-portal/databricks-on-azure.png "Datacihly v Azure")
 
 3. Na stránce **New cluster** (Nový cluster) zadejte hodnoty pro vytvoření clusteru.
 
-    ![Vytvoření clusteru Databricks Spark v Azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Vytvoření clusteru Databricks Spark v Azure")
+    ![Vytvoření clusteru datacihly Spark v Azure](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Vytvoření clusteru datacihly Spark v Azure")
 
     Přijměte všechny výchozí hodnoty kromě následujících:
 
    * Zadejte název clusteru.
-   * Pro tento článek vytvořte cluster s **5.3** runtime.
-   * Ujistěte se, že jste zaškrtli zaškrtávací políčko **Ukončit po \_ \_ minutách nečinnosti.** Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
+   * V tomto článku vytvořte cluster s modulem runtime **5,3** .
+   * Ujistěte se, že jste zaškrtli políčko **ukončit po \_ \_ minutách nečinnosti** . Zadejte dobu (v minutách), po které se má ukončit činnost clusteru, pokud se cluster nepoužívá.
     
      Vyberte **Vytvořit cluster**. Po spuštění clusteru můžete ke clusteru připojit poznámkové bloky a spouštět úlohy Spark.
 
@@ -88,21 +88,21 @@ Další informace o vytváření clusterů najdete v tématu [Vytvoření cluste
 
 ## <a name="run-a-spark-sql-job"></a>Spuštění úlohy Spark SQL
 
-Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databricks, nakonfigurujte poznámkový blok tak, aby četl data z datových sad Azure Open, a pak spusťte úlohu Spark SQL na datech.
+Pomocí následujících kroků vytvořte v datacihlách Poznámkový blok, nakonfigurujte si Poznámkový blok pro čtení dat z otevřených datových sad Azure a pak na těchto datech spusťte úlohu Spark SQL.
 
-1. V levém podokně vyberte **Azure Databricks**. V seznamu **Běžné úkoly**vyberte **Nový poznámkový blok**.
+1. V levém podokně vyberte **Azure Databricks**. V části **běžné úlohy**vyberte **Nový Poznámkový blok**.
 
-    ![Vytvoření poznámkového bloku v datových cihlách](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Vytvoření poznámkového bloku v datových cihlách")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/quickstart-create-databricks-workspace-portal/databricks-create-notebook.png "Vytvoření poznámkového bloku v datacihlech")
 
-2. V dialogovém okně **Vytvořit poznámkový blok** zadejte název, vyberte **Python** jako jazyk a vyberte cluster Spark, který jste vytvořili dříve.
+2. V dialogovém okně **vytvořit Poznámkový blok** zadejte název, vyberte **Python** jako jazyk a vyberte cluster Spark, který jste vytvořili dříve.
 
-    ![Vytvoření poznámkového bloku v datových cihlách](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Vytvoření poznámkového bloku v datových cihlách")
+    ![Vytvoření poznámkového bloku v datacihlech](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-details.png "Vytvoření poznámkového bloku v datacihlech")
 
     Vyberte **Vytvořit**.
 
-3. V tomto kroku vytvořte datový rámec Spark s bostonským bezpečnostními daty z [otevřených datových sad Azure](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)a použijte SQL k dotazování na data.
+3. V tomto kroku vytvoříte datový rámec Spark dataframe s daty o zabezpečení Boston z [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/catalog/boston-safety-data/#AzureDatabricks)a použijete SQL k dotazování dat.
 
-   Následující příkaz nastaví informace o přístupu k úložišti Azure. Vložte tento kód PySpark do první buňky a pomocí **Shift+Enter** kód spusťte.
+   Následující příkaz nastaví informace o přístupu k Azure Storage. Vložte tento kód PySpark do první buňky a stisknutím **SHIFT + ENTER** kód spusťte.
 
    ```python
    blob_account_name = "azureopendatastorage"
@@ -111,7 +111,7 @@ Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databrick
    blob_sas_token = r"?st=2019-02-26T02%3A34%3A32Z&se=2119-02-27T02%3A34%3A00Z&sp=rl&sv=2018-03-28&sr=c&sig=XlJVWA7fMXCSxCKqJm8psMOh0W4h7cSYO28coRqF2fs%3D"
    ```
 
-   Následující příkaz umožňuje Spark číst z úložiště objektů Blob vzdáleně. Vložte tento kód PySpark do další buňky a pomocí **Shift+Enter** kód spusťte.
+   Následující příkaz umožňuje službě Spark číst z úložiště objektů BLOB vzdáleně. Vložte tento kód PySpark do další buňky a stisknutím **SHIFT + ENTER** kód spusťte.
 
    ```python
    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
@@ -119,7 +119,7 @@ Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databrick
    print('Remote blob path: ' + wasbs_path)
    ```
 
-   Následující příkaz vytvoří datový rámec. Vložte tento kód PySpark do další buňky a pomocí **Shift+Enter** kód spusťte.
+   Následující příkaz vytvoří datový rámec. Vložte tento kód PySpark do další buňky a stisknutím **SHIFT + ENTER** kód spusťte.
 
    ```python
    df = spark.read.parquet(wasbs_path)
@@ -127,7 +127,7 @@ Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databrick
    df.createOrReplaceTempView('source')
    ```
 
-4. Spuštění příkazu SQL vrátí prvních 10 řádků dat z dočasného zobrazení nazývaného **zdroj**. Vložte tento kód PySpark do další buňky a pomocí **Shift+Enter** kód spusťte.
+4. Spusťte příkaz SQL, který vrátí prvních 10 řádků dat z dočasného zobrazení s názvem **zdroj**. Vložte tento kód PySpark do další buňky a stisknutím **SHIFT + ENTER** kód spusťte.
 
    ```python
    print('Displaying top 10 rows: ')
@@ -136,20 +136,20 @@ Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databrick
 
 5. Zobrazí se tabulkový výstup jako na následujícím snímku obrazovky (zobrazí se jenom některé sloupce):
 
-    ![Ukázková data](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Ukázka dat JSON")
+    ![Ukázková data](./media/quickstart-create-databricks-workspace-portal/databricks-sample-csv-data.png "Ukázková data JSON")
 
-6. Nyní vytvoříte vizuální reprezentaci těchto dat, která ukazuje, kolik událostí zabezpečení je hlášeno pomocí aplikace Citizens Connect a aplikace City Worker app místo jiných zdrojů. V dolní části tabulkového výstupu vyberte ikonu **Pruhový graf** a klikněte na **Možnosti vykreslení**.
+6. Teď vytvoříte vizuální reprezentaci těchto dat, abyste viděli, kolik bezpečnostních událostí se nahlásilo pomocí aplikace občané pro připojení aplikace a města pracovního procesu města místo jiných zdrojů. V dolní části tabulkového výstupu vyberte ikonu **pruhového grafu** a potom klikněte na **Možnosti grafu**.
 
-    ![Vytvoření pruhového grafu](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Vytvoření pruhového grafu")
+    ![Vytvořit pruhový graf](./media/quickstart-create-databricks-workspace-portal/create-plots-databricks-notebook.png "Vytvořit pruhový graf")
 
 8. V části **Customize Plot** (Přizpůsobit graf) přetáhněte hodnoty, jak ukazuje snímek obrazovky.
 
     ![Přizpůsobení výsečového grafu](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Přizpůsobení pruhového grafu")
 
-   * Nastavit **klíče** na **zdroj**.
-   * Nastavte **hodnoty** na **<\id>**.
+   * Nastavte **klíče** na **zdroj**.
+   * Nastavte **hodnoty** na **< \id>**.
    * V poli **Aggregation** (Agregace) vyberte možnost **COUNT** (Počet).
-   * Nastavení **typu Zobrazení** na **výsečový graf**.
+   * Nastavte **typ zobrazení** na **výsečový graf**.
 
      Klikněte na **Použít**.
 
@@ -157,13 +157,13 @@ Proveďte následující úkoly, abyste vytvořili poznámkový blok v Databrick
 
 Po dokončení tohoto článku můžete cluster ukončit. Pokud to chcete udělat, v levém podokně v pracovním prostoru Azure Databricks vyberte **Clusters** (Clustery). U clusteru, který chcete ukončit, přesuňte kurzor na tři tečky pod sloupcem **Actions** (Akce) a vyberte ikonu **Terminate** (Ukončit).
 
-![Zastavení clusteru Databricks](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Zastavení clusteru Databricks")
+![Zastavení clusteru datacihly](./media/quickstart-create-databricks-workspace-portal/terminate-databricks-cluster.png "Zastavení clusteru datacihly")
 
-Pokud cluster ručně neukončíte, bude automaticky ukončen za předpokladu, že jste při vytváření clusteru zaškrtli políčko **Ukončit po \_ \_ minutách nečinnosti.** V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
+Pokud cluster neukončíte ručně, zastaví se automaticky, a to za předpokladu, že jste při vytváření clusteru zaškrtli políčko **ukončit po \_ \_ minutách nečinnosti** . V takovém případě se cluster automaticky zastaví, pokud byl po stanovenou dobu neaktivní.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste vytvořili cluster Spark v Azure Databricks a spustili úlohu Spark pomocí dat z otevřených datových sad Azure. Můžete si také projít článek [Zdroje dat Spark](/azure/databricks/data/data-sources/index) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
+V tomto článku jste v Azure Databricks vytvořili cluster Spark a spustili jste úlohu Sparku s využitím dat z Azure Open DataSet. Můžete si také projít článek [Zdroje dat Spark](/azure/databricks/data/data-sources/index) a zjistit, jak do Azure Databricks importovat data z jiných zdrojů dat. V dalším článku se dozvíte, jak pomocí Azure Databricks provést operaci ETL (extrakce, transformace a načítání dat).
 
 > [!div class="nextstepaction"]
 >[Extrakce, transformace a načítání dat pomocí Azure Databricks](databricks-extract-load-sql-data-warehouse.md)

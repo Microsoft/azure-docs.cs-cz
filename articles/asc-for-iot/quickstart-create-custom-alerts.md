@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Vytvoření vlastních výstrah'
-description: Pochopit, vytvořit a přiřadit vlastní výstrahy zařízení pro Azure Security Center pro službu zabezpečení IoT.
+title: 'Rychlý Start: vytvoření vlastních výstrah'
+description: Naučte se vytvářet a přiřazovat vlastní výstrahy zařízení pro Azure Security Center pro službu zabezpečení IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,29 +16,29 @@ ms.workload: na
 ms.date: 1/27/2020
 ms.author: mlottner
 ms.openlocfilehash: 8ba81b669c25d91efa8ad1f07b1a7835b42c5cf4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310838"
 ---
-# <a name="quickstart-create-custom-alerts"></a>Úvodní příručka: Vytvoření vlastních výstrah
+# <a name="quickstart-create-custom-alerts"></a>Rychlý Start: vytvoření vlastních výstrah
 
-Pomocí vlastních skupin zabezpečení a výstrah plně využívá informace o zabezpečení od konce na konec a znalosti kategorických zařízení, aby zajistil lepší zabezpečení v rámci řešení IoT.
+Pomocí vlastních skupin zabezpečení a výstrah aplikace plně využívá kompletní informace o zabezpečení a znalosti zařízení kategorií, aby bylo zajištěno lepší zabezpečení v rámci řešení IoT.
 
 ## <a name="why-use-custom-alerts"></a>Proč používat vlastní výstrahy?
 
-Znáte vaše zařízení IoT nejlépe.
+Víte, co nejlépe jsou vaše zařízení IoT.
 
-Pro zákazníky, kteří plně pochopit jejich očekávané chování zařízení, Azure Security Center pro IoT umožňuje převést toto porozumění do zásadchování zařízení a upozornění na jakékoli odchylky od očekávané, normální chování.
+Pro zákazníky, kteří plně pochopili své očekávané chování zařízení, Azure Security Center pro IoT vám umožní přeložit toto porozumění na zásady chování zařízení a upozornit na jakoukoli odchylku od očekávaného, normálního chování.
 
 ## <a name="security-groups"></a>Skupiny zabezpečení
 
-Skupiny zabezpečení umožňují definovat logické skupiny zařízení a centralizovaným způsobem spravovat jejich stav zabezpečení.
+Skupiny zabezpečení umožňují definovat logické skupiny zařízení a spravovat jejich stav zabezpečení centralizovaným způsobem.
 
-Tyto skupiny mohou představovat zařízení s konkrétním hardwarem, zařízení nasazená v určitém umístění nebo jakoukoli jinou skupinu vhodnou pro vaše specifické potřeby.
+Tyto skupiny můžou představovat zařízení s konkrétním hardwarem, zařízeními nasazenými v určitém umístění nebo v jakékoli jiné skupině vhodné pro vaše konkrétní potřeby.
 
-Skupiny zabezpečení jsou definovány vlastností značky dvojčete zařízení s názvem **SecurityGroup**. Ve výchozím nastavení má každé řešení IoT v iot hubu jednu skupinu zabezpečení s názvem **default**. Změňte hodnotu vlastnosti **SecurityGroup** a změňte skupinu zabezpečení zařízení.
+Skupiny zabezpečení jsou definovány pomocí vlastnosti značky zařízení s názvem **Security**. Ve výchozím nastavení má každé řešení IoT na IoT Hub jednu skupinu zabezpečení s názvem **Default**. Změňte hodnotu vlastnosti **securitycollection** , aby se změnila skupina zabezpečení zařízení.
 
 Příklad:
 
@@ -63,25 +63,25 @@ Příklad:
   },
 ```
 
-Pomocí skupin zabezpečení můžete zařízení seskupit do logických kategorií. Po vytvoření skupin je přiřaďte k vlastním výstrahám podle vašeho výběru, abyste vytvořili nejefektivnější komplexní řešení zabezpečení IoT.
+Skupiny zabezpečení použijte k seskupení zařízení do logických kategorií. Po vytvoření skupin je přiřaďte k vlastním výstrahám podle vašeho výběru a získáte tak nejúčinnější řešení zabezpečení IoT od začátku až do konce.
 
 ## <a name="customize-an-alert"></a>Přizpůsobení výstrahy
 
-1. Otevřete svůj IoT Hub.
-1. V části **Zabezpečení** klikněte na **Vlastní výstrahy.**
-1. Vyberte skupinu zabezpečení, na kterou chcete použít vlastní nastavení.
-1. Klikněte **na Přidat vlastní výstrahu**.
+1. Otevřete IoT Hub.
+1. V části **zabezpečení** klikněte na **vlastní výstrahy** .
+1. Vyberte skupinu zabezpečení, pro kterou chcete použít vlastní nastavení.
+1. Klikněte na **Přidat vlastní výstrahu**.
 1. V rozevíracím seznamu vyberte vlastní výstrahu.
-1. Upravte požadované vlastnosti, klepněte na **tlačítko OK**.
-1. Nezapomeňte klepnout na tlačítko **ULOŽIT**. Bez uložení nové výstrahy se výstraha odstraní při příštím zavření centra IoT Hub.
+1. Upravte požadované vlastnosti a klikněte na tlačítko **OK**.
+1. Nezapomeňte kliknout na **Uložit**. Bez uložení nové výstrahy se upozornění odstraní při příštím zavření IoT Hub.
 
-## <a name="alerts-available-for-customization"></a>Upozornění, která jsou k dispozici pro vlastní nastavení
+## <a name="alerts-available-for-customization"></a>Výstrahy k dispozici pro přizpůsobení
 
-Azure Security Center pro IoT nabízí velké množství výstrah, které lze přizpůsobit podle vašich konkrétních potřeb. Zkontrolujte [přizpůsobitelnou tabulku výstrah,](concept-customizable-security-alerts.md) zda není závažnost výstrah, zdroj dat, popis a naše navrhované nápravné kroky, pokud a kdy je každá výstraha přijata.
+Azure Security Center pro IoT nabízí velký počet výstrah, které je možné přizpůsobit podle vašich konkrétních potřeb. V [tabulce přizpůsobitelné výstrahy](concept-customizable-security-alerts.md) můžete zobrazit Závažnost výstrahy, zdroj dat, popis a naše doporučené kroky k nápravě, pokud a kdy se jednotlivé výstrahy přijaly.
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k dalšímu článku a dozvíte se, jak nasadit agenta zabezpečení...
+V dalším článku se dozvíte, jak nasadit agenta zabezpečení...
 
 > [!div class="nextstepaction"]
 > [Nasazení agenta zabezpečení](how-to-deploy-agent.md)

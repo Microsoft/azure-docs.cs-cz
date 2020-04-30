@@ -16,10 +16,10 @@ ms.date: 05/24/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81254032"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Rychlý start: Vytvoření profilu a koncového bodu Azure CDN
@@ -28,7 +28,7 @@ V tomto rychlém startu povolíte Azure Content Delivery Network (CDN) prostřed
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Pro účely tohoto rychlého startu musíte mít vytvořený účet úložiště *mystorageacct123*, který použijete jako název počátečního hostitele. Další informace najdete [v tématu Integrace účtu úložiště Azure s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Pro účely tohoto rychlého startu musíte mít vytvořený účet úložiště *mystorageacct123*, který použijete jako název počátečního hostitele. Další informace najdete v tématu [integrace účtu Azure Storage s Azure CDN](cdn-create-a-storage-account-with-cdn.md).
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
@@ -53,8 +53,8 @@ Po vytvoření profilu CDN ho můžete použít k vytvoření koncového bodu.
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům uložených v mezipaměti v _ &lt;názvu&gt;koncového bodu_domény .azureedge.net.|
-    | **Typ zdroje** | Vyberte **možnost Úložiště**. | 
+    | **Název** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v _ &lt;názvu&gt;koncového bodu_domény. azureedge.NET.|
+    | **Typ zdroje** | Vyberte **úložiště**. | 
     | **Název počátečního hostitele** | Jako název hostitele zadejte *mystorageacct123.blob.core.windows.net*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
     | **Cesta ke zdroji** | Ponechte prázdné. |
     | **Hlavička počátečního hostitele** | Ponechte výchozí vygenerovanou hodnotu. |  

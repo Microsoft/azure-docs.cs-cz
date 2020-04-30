@@ -1,6 +1,6 @@
 ---
-title: Spravovaná identita v pracovním prostoru Azure Synapse
-description: Článek, který vysvětluje spravovanou identitu v pracovním prostoru Azure Synapse
+title: Spravovaná identita v pracovním prostoru Azure synapse
+description: Článek s vysvětlením spravované identity v pracovním prostoru Azure synapse
 author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
@@ -8,53 +8,53 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: ee0e6249acf3fbbab369d42ae691a5a826df1ee8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425116"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Spravovaná identita pracovního prostoru Azure Synapse (preview)
+# <a name="azure-synapse-workspace-managed-identity-preview"></a>Spravovaná identita v pracovním prostoru Azure synapse (Preview)
 
-V tomto článku se dozvíte o spravované identity v pracovním prostoru Azure Synapse.
+V tomto článku se dozvíte o spravované identitě v pracovním prostoru Azure synapse.
 
 ## <a name="managed-identities"></a>Spravované identity
 
-Spravovaná identita pro prostředky Azure je funkce Služby Azure Active Directory. Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Možnost spravované identity můžete použít k ověření na libovolné služby, které podporují ověřování Azure AD.
+Spravovaná identita pro prostředky Azure je funkcí Azure Active Directory. Tato funkce poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Možnost spravované identity můžete použít k ověření u libovolné služby, která podporuje ověřování Azure AD.
 
-Spravované identity pro prostředky Azure jsou nový název služby dříve známé jako identita spravované služby (MSI). Další informace najdete v [tématu Spravované identity.](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+Spravované identity pro prostředky Azure jsou novým názvem pro službu, která se dřív jmenovala jako Identita spravované služby (MSI). Další informace najdete v tématu [spravované identity](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) .
 
-## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita pracovního prostoru Azure Synapse
+## <a name="azure-synapse-workspace-managed-identity"></a>Spravovaná identita v pracovním prostoru Azure synapse
 
-Systémem přiřazená spravovaná identita se vytvoří pro váš pracovní prostor Azure Synapse při vytváření pracovního prostoru.
+Při vytváření pracovního prostoru se vytvoří spravovaná identita přiřazená systémem pro váš pracovní prostor Azure synapse.
 
 >[!NOTE]
->Tato identita spravované pracovního prostoru bude označována jako spravovaná identita prostřednictvím zbytku tohoto dokumentu.
+>Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
 
-Azure Synapse používá spravovanou identitu k orchestraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure Synapse. Pokud odstraníte pracovní prostor Azure Synapse, pak se také vyčistit spravovaná identita.
+Azure synapse používá spravovanou identitu k orchestraci kanálů. Životní cyklus spravované identity je přímo vázaný na pracovní prostor Azure synapse. Pokud pracovní prostor Azure synapse odstraníte, vyčistí se i spravovaná identita.
 
-Identita spravovaná v pracovním prostoru potřebuje oprávnění k provádění operací v kanálech. ID objektu nebo název pracovního prostoru Azure Synapse můžete použít k nalezení spravované identity při udělování oprávnění.
+Identita spravovaná pracovním prostorem potřebuje oprávnění k provádění operací v kanálech. K vyhledání spravované identity při udělování oprávnění můžete použít ID objektu nebo název vašeho pracovního prostoru Azure synapse.
 
-## <a name="retrieve-managed-identity-in-azure-portal"></a>Načtení spravované identity na webu Azure Portal
+## <a name="retrieve-managed-identity-in-azure-portal"></a>Načtení spravované identity v Azure Portal
 
-Spravovanou identitu můžete načíst na webu Azure Portal. Otevřete pracovní prostor Azure Synapse na webu Azure Portal a z levé navigace vyberte **Přehled.** ID objektu spravované identity se zobrazí na hlavní obrazovce.
+Spravovanou identitu můžete načíst v Azure Portal. V Azure Portal otevřete pracovní prostor Azure synapse a v levém navigačním panelu vyberte **Přehled** . Na hlavní obrazovce se zobrazí ID objektu spravované identity.
 
 ![ID spravovaného objektu identity](./media/synapse-workspace-managed-identity/workspace-managed-identity-1.png)
 
-Informace o spravované identitě se také zobrazí, když vytvoříte propojenou službu, která podporuje ověřování spravované identity z Azure Synapse Studio.
+Informace o spravované identitě se zobrazí také při vytvoření propojené služby, která podporuje ověřování spravované identity z Azure synapse studia.
 
-Spusťte **Azure Synapse Studio** a v levé navigaci vyberte kartu **Spravovat.** Pak vyberte **Propojené služby** a zvolte možnost **+ Nový** pro vytvoření nové propojené služby.
+Spusťte **Azure synapse Studio** a v levém navigačním panelu vyberte kartu **Spravovat** . Pak vyberte **propojené služby** a zvolte možnost **+ Nová** a vytvořte novou propojenou službu.
 
 ![Vytvoření propojené služby 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2*. Vyberte typ prostředku Azure **Data Lake Storage Gen2** ze seznamu níže a zvolte **Pokračovat**.
+V okně **Nová propojená služba** zadejte *Azure Data Lake Storage Gen2*. V níže uvedeném seznamu vyberte typ prostředku **Azure Data Lake Storage Gen2** a zvolte **pokračovat**.
 
 ![Vytvoření propojené služby 2](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 
-V dalším okně zvolte **Metodu Spravované identity** pro **ověřování**. Zobrazí se **název** spravované identity a **ID objektu**.
+V dalším okně vyberte možnost **spravovaná identita** pro **metodu ověřování**. Zobrazí se **název** spravované identity a **ID objektu**.
 
 ![Vytvoření propojené služby 3](./media/synapse-workspace-managed-identity/workspace-managed-identity-4.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-[Udělení oprávnění spravované identitě pracovního prostoru Azure Synapse](./how-to-grant-workspace-managed-identity-permissions.md)
+[Udělení oprávnění spravované identitě Azure synapse Workspace](./how-to-grant-workspace-managed-identity-permissions.md)

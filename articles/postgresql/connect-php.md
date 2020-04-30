@@ -1,6 +1,6 @@
 ---
-title: Připojení k PHP – Databáze Azure pro PostgreSQL – jeden server
-description: Tento rychlý start obsahuje ukázku kódu PHP, kterou můžete použít k připojení a dotazování dat z Databáze Azure pro PostgreSQL – jeden server.
+title: Připojení pomocí PHP-Azure Database for PostgreSQL-Single server
+description: V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,19 +9,19 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
 ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74766374"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: Připojení a dotazování dat pomocí PHP
+# <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: použití PHP pro připojení a dotazování dat
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí aplikace v [PHP](https://secure.php.net/manual/intro-whatis.php). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí PHP a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
-- [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
+- [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-php"></a>Instalace PHP
 Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-service/overview.md) Azure, která zahrnuje PHP.
@@ -45,7 +45,7 @@ Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-ser
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
@@ -54,7 +54,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 ## <a name="connect-and-create-a-table"></a>Připojení a vytvoření tabulky
 Pomocí následujícího kódu se připojte a vytvořte tabulku s využitím příkazu **CREATE TABLE** jazyka SQL, po kterém následují příkazy **INSERT INTO** jazyka SQL, které do tabulky přidají řádky.
 
-Metoda volání kódu [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom několikrát volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění několika příkazů a pokaždé, když dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností. Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
+Metoda volání kódu [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom několikrát volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění několika příkazů a pokaždé, když dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností. Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
 
 Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodnotami. 
 
@@ -112,7 +112,7 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ## <a name="read-data"></a>Čtení dat
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. 
 
- Metoda volání kódu [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění příkazu SELECT, výsledky uloží v sadě výsledků dotazu a v případě, že dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností.  Pro účely čtení sady výsledků dotazu se ve smyčce pro každý řádek jednou volá metoda [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php), a data řádku se načítají v poli `$row`, kde je na každé pozici pole jedna hodnota dat na sloupec.  Pro uvolnění sady výsledků dotazu se volá metoda [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php). Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
+ Metoda volání kódu [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění příkazu SELECT, výsledky uloží v sadě výsledků dotazu a v případě, že dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností.  Pro účely čtení sady výsledků dotazu se ve smyčce pro každý řádek jednou volá metoda [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php), a data řádku se načítají v poli `$row`, kde je na každé pozici pole jedna hodnota dat na sloupec.  Pro uvolnění sady výsledků dotazu se volá metoda [pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php). Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
 
 Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodnotami. 
 
@@ -150,7 +150,7 @@ Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodno
 ## <a name="update-data"></a>Aktualizace dat
 Pomocí následujícího kódu se připojte a aktualizujte data s využitím příkazu **UPDATE** jazyka SQL.
 
-Metoda volání kódu [pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění příkazu a v případě, že dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností. Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
+Metoda volání kódu [pg_connect ()](https://secure.php.net/manual/en/function.pg-connect.php) pro připojení k Azure Database for PostgreSQL. Potom volá metodu [pg_query()](https://secure.php.net/manual/en/function.pg-query.php) pro spuštění příkazu a v případě, že dojde k chybě, volá metodu [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) pro kontrolu podrobností. Potom volá metodu [pg_close()](https://secure.php.net/manual/en/function.pg-close.php) pro ukončení připojení.
 
 Nahraďte parametry `$host`, `$database`, `$user` a `$password` vlastními hodnotami. 
 

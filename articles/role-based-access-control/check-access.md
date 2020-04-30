@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – zobrazení přístupu, který má uživatel k prostředkům Azure
-description: V tomto rychlém startu se dozvíte, jak zobrazit přístup uživatele nebo jiného objektu zabezpečení k prostředkům Azure pomocí řízení přístupu na základě rolí (RBAC) a portálu Azure.
+title: Rychlý Start – zobrazení přístupu uživatele k prostředkům Azure
+description: V tomto rychlém startu se dozvíte, jak zobrazit přístup určitého uživatele nebo jiného objektu zabezpečení k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure Portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -15,43 +15,43 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74419620"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Úvodní příručka: Zobrazení přístupu, který má uživatel k prostředkům Azure
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure
 
-Okno řízení **přístupu (IAM)** v [řízení přístupu na základě rolí (RBAC)](overview.md) můžete použít k zobrazení přístupu uživatele nebo jiného objektu zabezpečení má prostředky Azure. Někdy však stačí rychle zobrazit přístup pro jednoho uživatele nebo jiný objekt zabezpečení. Nejjednodušší způsob, jak to udělat, je použít funkci **Zkontrolovat přístup** na webu Azure Portal.
+V okně **řízení přístupu (IAM)** můžete v [řízení přístupu na základě role (RBAC)](overview.md) zobrazit přístup k prostředkům, ke kterým má uživatel nebo jiný objekt zabezpečení prostředky Azure. Někdy ale stačí pouze rychle zobrazit přístup pro jednoho uživatele nebo jiný objekt zabezpečení. Nejjednodušší způsob, jak to provést, je použití funkce **check Access** v Azure Portal.
 
 ## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
- Způsob zobrazení přístupu pro uživatele je seznam jejich rolí přiřazení. Podle těchto kroků zobrazte přiřazení rolí pro jednoho uživatele, skupinu, instanční objekt nebo spravovanou identitu v oboru předplatného.
+ Způsob, jakým si zobrazíte přístup pro uživatele, je seznam přiřazení rolí. Pomocí těchto kroků můžete zobrazit přiřazení rolí pro jednoho uživatele, skupinu, instanční objekt nebo spravovanou identitu v oboru předplatného.
 
-1. Na webu Azure Portal klikněte na **Všechny služby** a potom na **Předplatná**.
+1. V Azure Portal klikněte na **všechny služby** a pak na **předplatná**.
 
-1. Klikněte na předplatné.
+1. Klikněte na své předplatné.
 
 1. Klikněte na **Řízení přístupu (IAM)**.
 
-1. Klikněte na kartu **Zkontrolovat přístup.**
+1. Klikněte na kartu **kontrolovat přístup** .
 
-    ![Řízení přístupu – kontrola karty přístupu](./media/check-access/access-control-check-access.png)
+    ![Řízení přístupu – karta přístup pro kontrolu](./media/check-access/access-control-check-access.png)
 
-1. V seznamu **Najít** vyberte typ zaregistrovaný objekt zabezpečení, pro který chcete zkontrolovat přístup.
+1. V seznamu **Najít** vyberte typ objektu zabezpečení, pro který chcete ověřit přístup.
 
-1. Do vyhledávacího pole zadejte řetězec pro vyhledávání zobrazované názvy, e-mailové adresy nebo identifikátory objektů v adresáři.
+1. Do vyhledávacího pole zadejte řetězec, ve kterém budou v adresáři hledána zobrazovaná jména, e-mailové adresy nebo identifikátory objektů.
 
-    ![Zkontrolovat výběrový seznam přístupu](./media/check-access/check-access-select.png)
+    ![Zaškrtněte seznam pro výběr přístupu.](./media/check-access/check-access-select.png)
 
-1. Kliknutím na objekt zabezpečení otevřete podokno **přiřazení.**
+1. Kliknutím na objekt zabezpečení otevřete podokno **přiřazení** .
 
     ![podokno přiřazení](./media/check-access/check-access-assignments.png)
 
-    V tomto podokně se zobrazí role přiřazené vybranému objektu zabezpečení a oboru. Pokud existují všechna odepření přiřazení v tomto oboru nebo zděděné do tohoto oboru, budou uvedeny.
+    V tomto podokně můžete zobrazit role přiřazené k vybranému objektu zabezpečení a oboru. Pokud jsou v tomto oboru k dispozici nějaká přiřazení odepřít nebo zděděná do tohoto oboru, budou uvedena.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Udělení přístupu uživateli k prostředkům Azure pomocí RBAC a portálu Azure](quickstart-assign-role-user-portal.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal](quickstart-assign-role-user-portal.md)

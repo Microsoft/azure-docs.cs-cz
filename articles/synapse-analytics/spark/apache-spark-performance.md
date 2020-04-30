@@ -1,6 +1,6 @@
 ---
-title: Optimalizace úloh Spark pro výkon v Azure Synapse Analytics
-description: Tento článek obsahuje úvod do Apache Spark v Azure Synapse Analytics a různé koncepty.
+title: Optimalizace úloh Sparku pro výkon v Azure synapse Analytics
+description: Tento článek poskytuje Úvod do Apache Spark ve službě Azure synapse Analytics a v různých konceptech.
 services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
@@ -10,106 +10,106 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 6ffe7f3d9faf82c892975e9ffa03b383d3610c36
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81424619"
 ---
-# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (preview) v Azure Synapse Analytics
+# <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (Preview) ve službě Azure synapse Analytics
 
-Přečtěte si, jak optimalizovat konfiguraci clusteru [Apache Spark](https://spark.apache.org/) pro konkrétní úlohu.  Nejběžnější výzvou je tlak paměti, protože nesprávné konfigurace (zejména chybné velikosti vykonavatele), dlouhotrvající operace a úkoly, které vedou k operacím kartézy. Můžete urychlit úlohy s vhodným ukládáním do mezipaměti a povolením [zkosení dat](#optimize-joins-and-shuffles). Pro nejlepší výkon, monitorování a kontrolu dlouhotrvající a prostředky náročné spuštění úloh y Spark.
+Naučte se optimalizovat [Apache Spark](https://spark.apache.org/) konfiguraci clusteru pro konkrétní zatížení.  Nejběžnějším problémem je zatížení paměti kvůli nesprávným konfiguracím (zvláště nesprávnému vykonavateli), dlouhotrvajícím operacím a úlohám, které způsobují kartézském operace. Úlohy můžete urychlit s vhodným ukládáním do mezipaměti a díky tomu, aby bylo možné [Zkosit data](#optimize-joins-and-shuffles). Nejlepšího výkonu dosáhnete, když budete monitorovat a kontrolovat dlouhodobá spuštění úloh Sparku, která jsou náročná na prostředky.
 
-V následujících částech jsou popsány běžné optimalizace úloh a doporučení spark.
+Následující části popisují běžné optimalizace úloh Spark a doporučení.
 
-## <a name="choose-the-data-abstraction"></a>Výběr abstrakce dat
+## <a name="choose-the-data-abstraction"></a>Zvolit abstrakci dat
 
-Dřívější verze Spark používají RDD k abstraktním datům, Spark 1.3 a 1.6 představil dataframes a datasets, resp. Zamyslete se nad následujícími relativními přednostmi:
+Starší verze Sparku používají RDD k abstraktním datům, Spark 1,3 a 1,6 zavedla datové rámce a datové sady v uvedeném pořadí. Vezměte v úvahu následující relativní věci:
 
 * **Datové rámce**
   * Nejlepší volba ve většině situací.
-  * Poskytuje optimalizaci dotazů prostřednictvím catalyst.
-  * Generování kódu celé fáze.
+  * Poskytuje optimalizaci dotazů prostřednictvím Catalyst.
+  * Generování kódu v celém fázi.
   * Přímý přístup do paměti.
-  * Nízká režie uvolňování paměti (GC).
-  * Není tak vhodné pro vývojáře jako datasets, protože neexistují žádné kontroly v době kompilace nebo programování objektů domény.
-* **Soubory**
-  * Dobré v komplexních kanálech ETL, kde je přijatelný dopad na výkon.
-  * Není dobré v agregacích, kde dopad na výkon může být značný.
-  * Poskytuje optimalizaci dotazů prostřednictvím catalyst.
-  * Pro vývojáře poskytuje programování objektů domény a kontroly v době kompilace.
+  * Režie v nízkém uvolňování paměti (GC).
+  * Ne jako datové sady srozumitelné pro vývojáře, protože neexistují žádné kontroly doby kompilace nebo programování doménových objektů.
+* **Datové sady**
+  * Dobrá v komplexních kanálech ETL, kde je dopad na výkon přijatelný.
+  * Nedobrý v agregacích, kde dopad na výkon může být značný.
+  * Poskytuje optimalizaci dotazů prostřednictvím Catalyst.
+  * Vývojář – uživatelsky přívětivé poskytováním programování doménových objektů a kontrol při kompilaci.
   * Přidá režii serializace/deserializace.
-  * Vysoká gc režie.
-  * Přestávky generování kódu celé fáze.
-* **RDDs**
-  * Není nutné používat RDD, pokud potřebujete vytvořit nový vlastní RDD.
-  * Žádná optimalizace dotazů prostřednictvím catalystu.
-  * Žádné generování kódu celé fáze.
-  * Vysoká gc režie.
-  * Je nutné používat rozhraní API pro starší verze Spark 1.x.
+  * Vysoká režie GC.
+  * Zruší generování kódu na celé fázi.
+* **RDD**
+  * Nemusíte používat RDD, pokud nepotřebujete vytvářet nové vlastní RDD.
+  * Žádná optimalizace dotazů prostřednictvím Catalyst.
+  * Nevytváření celého připraveného kódu.
+  * Vysoká režie GC.
+  * Musí používat starší rozhraní API Spark 1. x.
 
-## <a name="use-optimal-data-format"></a>Použití optimálního formátu dat
+## <a name="use-optimal-data-format"></a>Použít optimální datový formát
 
-Spark podporuje mnoho formátů, jako jsou csv, json, xml, parkety, orc a avro. Spark lze rozšířit na podporu mnoha dalších formátů s externími zdroji dat - další informace naleznete v [tématu Balíčky Apache Spark](https://spark-packages.org).
+Spark podporuje mnoho formátů, jako je CSV, JSON, XML, Parquet, orc a Avro. Spark se dá rozšířit tak, aby podporoval mnoho dalších formátů s externími zdroji dat. Další informace najdete v tématu [Apache Spark balíčky](https://spark-packages.org).
 
-Nejlepší formát pro výkon je parkety s *elegantní kompresí*, což je výchozí hodnota v Spark 2.x. Parkety ukládají data ve sloupcovém formátu a jsou vysoce optimalizované ve Sparku. Kromě toho *při snappy komprese* může mít za následek větší soubory, než říkají komprese gzip. Vzhledem k rozdělení charakter těchto souborů budou dekomprimovat rychleji]
+Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je výchozí hodnota ve Sparku 2. x. Parquet ukládá data ve sloupcovém formátu a je vysoce optimalizovaná ve Sparku. Kromě toho, že *Komprese přichycení* může mít za následek větší soubory, než je například komprese GZip. Vzhledem k povaze těchto souborů dojde k rychlejšímu dekomprimaci.]
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
-Spark poskytuje své vlastní nativní mechanismy ukládání do mezipaměti, `.cache()`které `CACHE TABLE`lze použít různými metodami, jako `.persist()`jsou , , a . Tento nativní ukládání do mezipaměti je efektivní s malými sadami dat, stejně jako v kanálech ETL, kde je třeba ukládat do mezipaměti průběžné výsledky. Nativní ukládání do mezipaměti Spark však v současné době nefunguje dobře s dělením, protože tabulka uložená v mezipaměti neuchovává data oddílů.
+Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které je možné použít prostřednictvím různých metod `.persist()`, jako `.cache()`jsou, `CACHE TABLE`a. Tato nativní mezipaměť je platná u malých datových sad i v kanálech ETL, kde potřebujete ukládat do mezipaměti mezilehlé výsledky. Nicméně nativní ukládání do mezipaměti v současnosti nefunguje dobře s vytvářením oddílů, protože tabulka v mezipaměti neuchovává data dělení.
 
 ## <a name="use-memory-efficiently"></a>Efektivní využití paměti
 
-Spark funguje tak, že umísťuje data do paměti, takže správa paměťových prostředků je klíčovým aspektem optimalizace provádění úloh Spark.  Existuje několik technik, které můžete použít pro efektivní využití paměti clusteru.
+Spark funguje tak, že umístí data do paměti, takže Správa prostředků paměti je klíčovým aspektem Optimalizace spouštění úloh Sparku.  Existuje několik postupů, které můžete použít pro efektivní použití paměti clusteru.
 
-* Preferujte menší datové oddíly a účet pro velikost dat, typy a distribuci ve strategii dělení.
-* Zvažte novější, efektivnější [serializaci kryo dat](https://github.com/EsotericSoftware/kryo), spíše než výchozí serializace Java.
-* Monitorujte a vylaďte nastavení konfigurace Spark.
+* Preferovat menší datové oddíly a účet pro velikost, typy a distribuci dat v strategii dělení.
+* Zvažte novější a efektivnější [serializaci dat kryo](https://github.com/EsotericSoftware/kryo)místo výchozí serializace Java.
+* Monitorování a optimalizace nastavení konfigurace Sparku
 
-Pro vaši referenci se na následujícím obrázku zobrazí struktura paměti Spark a některé parametry paměti vykonavatele klíčů.
+Pro referenci se v dalším obrázku zobrazí struktura paměti Spark a některé parametry paměti vykonavatele klíče.
 
-### <a name="spark-memory-considerations"></a>Důležité informace o paměti jiskry
+### <a name="spark-memory-considerations"></a>Požadavky na paměť Spark
 
-Apache Spark v Azure Synapse používá YARN [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), YARN řídí maximální součet paměti používané všechny kontejnery na každém uzlu Spark.  Následující diagram znázorňuje klíčové objekty a jejich vztahy.
+Apache Spark ve službě Azure synapse používá PŘÍZe [Apache HADOOP příze](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), příze řídí maximální součet paměti využívané všemi kontejnery na jednotlivých uzlech Spark.  Následující diagram znázorňuje klíčové objekty a jejich vztahy.
 
-![Správa paměti YARN Spark](./media/apache-spark-perf/apache-yarn-spark-memory.png)
+![Správa paměti PŘÍZe Spark](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
-Chcete-li adresovat zprávy s nepaměti, vyzkoušejte:
+Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 
-* Projděte si dag management shuffles. Snižte snížení maskérna, předoddíl (nebo bucketize) zdrojová data, maximalizovat jednotlivé shuffles a snížit množství odeslaných dat.
-* Preferují `ReduceByKey` s jeho `GroupByKey`pevné omezení paměti , který poskytuje agregace, okna a další funkce, ale má ann neomezené omezení paměti.
-* Preferovat `TreeReduce`, který dělá více práce na vykonavatele nebo oddíly, na `Reduce`, který dělá všechny práce na ovladači.
-* Využijte dataframe spíše než objekty RDD nižší úrovně.
-* Vytvořte ComplexTypes, které zapouzdřují akce, jako je například "Top N", různé agregace nebo operace oken.
+* Projděte si přehledy DAG Management. Zmenšete ze zdrojových dat zmenšeného na straně mapy, před rozdělením na oddíly (nebo nastavit interval), maximalizujte jednotlivá místa a snižte množství odesílaných dat.
+* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey`, které poskytuje agregace, okna a další funkce, ale má Ann nevázaný limit paměti.
+* Raději `TreeReduce`, což více funguje na vykonavatelích nebo oddílech, na `Reduce`, který vše funguje na ovladači.
+* Využijte místo objektů RDD na nižší úrovni datový rámec.
+* Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
 
-## <a name="optimize-data-serialization"></a>Optimalizace serializace dat
+## <a name="optimize-data-serialization"></a>Optimalizovat serializaci dat
 
-Úlohy Spark jsou distribuovány, takže vhodná serializace dat je důležitá pro nejlepší výkon.  Pro Spark existují dvě možnosti serializace:
+Úlohy Sparku jsou distribuované, takže pro nejlepší výkon je důležité, aby byla vhodná serializace dat.  Pro Spark existují dvě možnosti serializace:
 
-* Výchozí je serializace jazyka Java.
-* Kryo serializace je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  Kryo vyžaduje, abyste zaregistrovali třídy v programu a ještě nepodporuje všechny serializovatelné typy.
+* Výchozím nastavením je serializace Java.
+* Serializace kryo je novější formát a může mít za následek rychlejší a kompaktnější serializaci než Java.  Kryo vyžaduje, abyste v programu zaregistrovali třídy a zatím nepodporovaly všechny Serializovatelné typy.
 
-## <a name="use-bucketing"></a>Použití kbelíku
+## <a name="use-bucketing"></a>Použít zablokování
 
-Bucketing je podobný dělení dat, ale každý segment může obsahovat sadu hodnot sloupců, nikoli pouze jeden. Bucketing funguje dobře pro dělení na velké (v milionech nebo více) počet hodnot, jako jsou identifikátory produktu. Kbelík je určen hašováním klíče kbelíku řádku. Tabulky s kontejnery nabízejí jedinečné optimalizace, protože ukládají metadata o tom, jak byly bucketed a seřazeny.
+Sestavování se podobá dělení dat, ale každá sada může obsahovat sadu hodnot sloupce, nikoli jenom jednu. Vytváření bloků funguje dobře pro dělení na velké (v milionech a více) číslech hodnot, jako jsou například identifikátory produktu. Sada je určena pomocí algoritmu hash pro klíč kontejneru řádku. Rozdělené tabulky nabízejí jedinečné optimalizace, protože ukládají metadata o způsobu jejich seřazení a řazení.
 
-Některé pokročilé funkce kbelíku jsou:
+Některé pokročilé funkce pro seintervalování jsou tyto:
 
-* Optimalizace dotazů na základě zobrazení metadat.
+* Optimalizace dotazů založená na seintervalování meta-informací.
 * Optimalizované agregace.
-* Optimalizovaná spojení.
+* Optimalizované spojení.
 
-Můžete použít dělení a bucketing ve stejnou dobu.
+Můžete použít dělení a zablokování současně.
 
-## <a name="optimize-joins-and-shuffles"></a>Optimalizace spojení a zamíchacích měsíčů
+## <a name="optimize-joins-and-shuffles"></a>Optimalizace spojení a náhodného navýšení
 
-Pokud máte pomalé úlohy na připojit nebo shuffle, příčinou je pravděpodobně *zkosení dat*, což je asymetrie v datech úlohy. Úloha mapy může například trvat 20 sekund, ale spuštění úlohy, kde jsou data připojena nebo zamíchána, trvá hodiny. Chcete-li opravit zkosení dat, měli byste solit celý klíč nebo použít *izolovanou sůl* pouze pro některé podmnožiny klíčů. Pokud používáte izolovanou sůl, měli byste dále filtrovat, abyste izolovali podmnožinu slaných klíčů v mapových spojeních. Další možností je nejprve zavést sloupec segmentu a předem agregovat v kontejnerech.
+Pokud máte pomalé úlohy při spojení nebo náhodně, příčinou je pravděpodobně *zkosení dat*, což je asymetrie v datech úlohy. Například úloha mapy může trvat 20 sekund, ale při spuštění úlohy, kde se data připojí nebo rozchází, trvá hodiny. Chcete-li opravit zešikmení dat, měli byste nasoleit celý klíč nebo použít *izolovanou hodnotu Salt* pouze pro některé podmnožiny klíčů. Pokud používáte izolovanou sůl, měli byste další filtr k izolaci vaší podmnožiny nasolených klíčů v rámci spojení map. Další možností je zavést sloupec intervalu a předem agregovat do kontejnerů.
 
-Dalším faktorem, který způsobuje pomalé spojení může být typ spojení. Ve výchozím nastavení `SortMerge` Spark používá typ spojení. Tento typ spojení je nejvhodnější pro velké datové sady, ale je jinak výpočtově nákladné, protože musí nejprve seřadit levé a pravé strany dat před jejich sloučením.
+Dalším faktorem způsobující pomalé spojení může být typ spojení. Ve výchozím nastavení používá Spark typ `SortMerge` spojení. Tento typ spojení je nejvhodnější pro velké datové sady, ale je jinak výpočetně nákladný, protože před jejich sloučením musí nejprve seřadit levou a pravou stranu dat.
 
-Spojení `Broadcast` je nejvhodnější pro menší sady dat nebo kde jedna strana spojení je mnohem menší než na druhé straně. Tento typ spojení vysílá jednu stranu všem vykonavatelům, a proto vyžaduje více paměti pro vysílání obecně.
+`Broadcast` Spojení je nejvhodnější pro menší datové sady nebo v případě, že je jedna strana spojení mnohem menší než druhá strana. Tento typ spojení vysílá jednu stranu na všechny prováděcí moduly, a proto vyžaduje více paměti pro vysílání obecně.
 
-Typ spojení v konfiguraci můžete `spark.sql.autoBroadcastJoinThreshold`změnit nastavením nebo můžete nastavit nápovědu spojení`dataframe.join(broadcast(df2))`pomocí api datových rámců ( ).
+Typ spojení můžete v konfiguraci `spark.sql.autoBroadcastJoinThreshold`změnit nastavením nebo můžete nastavit pomocný parametr Join pomocí rozhraní API dataframe (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -124,53 +124,53 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Pokud používáte kontejnerové tabulky, pak máte třetí typ `Merge` spojení, spojení. Správně předrozdělená a předem seřazená datová sada `SortMerge` přeskočí fázi nákladného řazení ze spojení.
+Pokud používáte rozdělené tabulky, pak máte `Merge` k dispozici třetí typ spojení. Správně předělená a předem vytříděná datová sada přeskočí nákladovou fázi řazení z `SortMerge` JOIN.
 
-Pořadí spojení záležitostí, zejména ve složitějších dotazů. Začněte s nejselektivnějšími spojeními. Také přesunout spojení, které zvyšují počet řádků po agregace, pokud je to možné.
+Pořadí spojení, zejména v složitějších dotazech. Začněte s nejvyšším selektivním spojením. Pokud je to možné, přesuňte také spojení, která zvyšují počet řádků po agregacích.
 
-Chcete-li spravovat paralelismus pro kartézská spojení, můžete přidat vnořené struktury, okna a možná přeskočit jeden nebo více kroků ve vaší úloze Spark.
+Pro správu paralelismu pro kartézském spojení můžete přidat vnořené struktury, okna a možná přeskočit jeden nebo více kroků v rámci úlohy Spark.
 
-### <a name="select-the-correct-executor-size"></a>Výběr správné velikosti vykonavatele
+### <a name="select-the-correct-executor-size"></a>Vyberte správnou velikost prováděcího modulu.
 
-Při rozhodování o konfiguraci vykonavatele, zvažte java uvolňování paměti (GC) režie.
+Při rozhodování o konfiguraci prováděcího modulu zvažte režii uvolňování paměti Java.
 
-* Faktory pro snížení velikosti exekutora:
-  * Zmenšete velikost haldy pod 32 GB, aby < 10 % byla <
-  * Snižte počet jader, aby se < 10% <
+* Faktory pro snížení velikosti prováděcího modulu:
+  * Zmenšení velikosti haldy pod 32 GB, aby se zajistila režie GC < 10%.
+  * Snižte počet jader pro zachování režie GC < 10%.
 
-* Faktory pro zvýšení velikosti exekutora:
-  * Snižte režii komunikace mezi vykonavateli.
-  * Snižte počet otevřených připojení mezi vykonavateli (N2) ve větších clusterech (>100 vykonavatelů).
-  * Zvětšete velikost haldy tak, aby vyhovovala úlohám náročným na paměť.
-  * Volitelné: Snížit nároky na paměť vykonavatele.
-  * Volitelné: Zvyšte využití a souběžnost tím, že se přehlášuje procesor.
+* Faktory pro zvýšení velikosti prováděcího modulu:
+  * Snižte náklady na komunikaci mezi prováděcími moduly.
+  * Snižte počet otevřených připojení mezi prováděcími moduly (N2) na větších clusterech (prováděcích modulech >100).
+  * Zvětšete velikost haldy pro úlohy náročné na paměť.
+  * Volitelné: Snižte nároky na paměť pro vykonavatele.
+  * Volitelné: Zvyšte využití a souběžnost tím, že se přeruší předplatné procesoru.
 
-Jako obecné pravidlo při výběru velikosti vykonavatele:
+Při výběru velikosti prováděcího modulu se jako obecné pravidlo pomění:
 
-* Začněte s 30 GB na vykonavatele a distribuujte dostupná jádra počítače.
-* Zvyšte počet jader vykonavatele pro větší clustery (> 100 vykonavatelů).
-* Upravte velikost na základě zkušebních spuštění i předchozích faktorů, jako je například režie gc.
+* Začněte s 30 GB na vykonavatel a distribuujte dostupné jádra počítačů.
+* Zvyšte počet jader prováděcích modulů pro větší clustery (prováděcí modul > 100).
+* Upravte velikost na základě zkušebních běhů a na předchozích faktorech, jako je například režie GC.
 
-Při spouštění souběžných dotazů zvažte následující skutečnosti:
+Při spouštění souběžných dotazů Vezměte v úvahu následující skutečnosti:
 
-* Začněte s 30 GB na vykonavatele a všechna jádra počítače.
-* Vytvořte více paralelních aplikací Spark tím, že se přehlášuje težce procesoru (přibližně 30% zlepšení latence).
-* Distribuujte dotazy mezi paralelními aplikacemi.
-* Upravte velikost na základě zkušebních spuštění i předchozích faktorů, jako je například režie gc.
+* Začněte s 30 GB na prováděcí modul a všechny jádro počítačů.
+* Vytvořte několik paralelních aplikací Spark, protože se přeruší předplatné CPU (přibližně 30% zlepšení latence).
+* Distribuujte dotazy napříč paralelními aplikacemi.
+* Upravte velikost na základě zkušebních běhů a na předchozích faktorech, jako je například režie GC.
 
-Sledujte výkon dotazu pro odlehlé hodnoty nebo jiné problémy s výkonem, a to tak, jak se podíváte na zobrazení časové osy, graf SQL, statistiky úloh a tak dále. Někdy jeden nebo několik vykonavatelů jsou pomalejší než ostatní a úkoly trvat mnohem déle, než se provádí. K tomu často dochází ve větších clusterech (> 30 uzlech). V takovém případě rozdělte práci na větší počet úkolů, aby plánovač mohl kompenzovat pomalé úkoly. 
+Monitorujte výkon dotazů pro odlehlé nebo jiné problémy s výkonem. Prohlédněte si zobrazení Časová osa, SQL Graph, Statistika úloh a tak dále. Někdy je jeden nebo několik prováděcích modulů pomalejší než u ostatních a provádění úloh trvá mnohem déle. K tomu často dochází na větších clusterech (> 30 uzlů). V takovém případě rozdělte práci do většího počtu úkolů, aby mohl Scheduler kompenzovat pomalé úlohy. 
 
-Například mají alespoň dvakrát tolik úkolů jako počet jader prováděcího modulu v aplikaci. Můžete také povolit spekulativní provádění `conf: spark.speculation = true`úkolů s .
+Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů pomocí `conf: spark.speculation = true`.
 
 ## <a name="optimize-job-execution"></a>Optimalizace provádění úloh
 
-* Cache podle potřeby, například pokud použijete data dvakrát, pak do mezipaměti.
-* Proměnné vysílání všem vykonavatelům. Proměnné jsou serializovány pouze jednou, což vede k rychlejšívyhledávání.
-* Použijte fond vláken na ovladači, což má za následek rychlejší provoz pro mnoho úkolů.
+* Ukládat do mezipaměti podle potřeby, například pokud používáte data dvakrát a pak je Uložit do mezipaměti.
+* Všesměrové vysílání proměnných do všech prováděcích modulů. Proměnné jsou serializovány pouze jednou, což vede k rychlejšímu vyhledávání.
+* Použijte fond vláken na ovladači, což vede k rychlejší operaci pro mnoho úkolů.
 
-Klíčem k výkonu dotazů Spark 2.x je modul tungsten, který závisí na generování kódu celé fáze. V některých případech může být zakázáno generování kódu celé fáze. 
+Klíčem k výkonu dotazů Spark 2. x je modul Tungsten, který závisí na generování celého fáze vytváření kódu. V některých případech může být generování celého fáze kódu zakázáno. 
 
-Pokud například ve výrazu agregace použijete neproměnlivý `SortAggregate` typ ( `HashAggregate``string`), zobrazí se místo . Chcete-li například dosáhnout lepšího výkonu, vyzkoušejte následující a znovu povolte generování kódu:
+Například pokud použijete neproměnlivý typ (`string`) v agregačním výrazu, `SortAggregate` zobrazí se místo. `HashAggregate` Pro lepší výkon například vyzkoušejte následující a pak znovu povolte generování kódu:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
@@ -178,6 +178,6 @@ MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Ladění Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
-- [Jak skutečně naladit Apache Spark práce tak, aby práce](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
-- [Kryo serializace](https://github.com/EsotericSoftware/kryo)
+- [Apache Spark ladění](https://spark.apache.org/docs/latest/tuning.html)
+- [Jak ve skutečnosti ladit úlohy Apache Spark, aby fungovaly](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+- [Serializace kryo](https://github.com/EsotericSoftware/kryo)
