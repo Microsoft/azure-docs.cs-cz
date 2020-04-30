@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
 ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82185043"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Kurz: využití odkazu na šablonu Správce prostředků
@@ -112,7 +112,7 @@ Z Visual Studio Code přidejte další typy účtů úložiště, jak je znázor
 
 1. Z Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ```azurecli
     echo "Enter a project name that is used to generate resource group name:" &&
@@ -124,7 +124,7 @@ Z Visual Studio Code přidejte další typy účtů úložiště, jak je znázor
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
     ```
 
-    # <a name="powershell"></a>[Prostředí](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"

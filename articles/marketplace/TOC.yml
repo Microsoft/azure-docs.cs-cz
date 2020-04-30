@@ -23,7 +23,7 @@
               href: ./standard-contract.md
             - name: Přisuzování využití ze strany zákazníků partnerům Azure
               href: ./azure-partner-customer-usage-attribution.md
-        - name: Průvodce publikováním podle typu nabídky
+        - name: Průvodci publikováním podle typu nabídky
           href: ./publisher-guide-by-offer-type.md
           items:
             - name: Virtuální počítače
@@ -38,9 +38,9 @@
               href: ./marketplace-containers.md
             - name: Moduly IoT Edge
               href: ./iot-edge-module.md
-            - name: Konzultační služba
+            - name: Konzultační služby
               href: ./consulting-services.md
-            - name: 'Průvodce publikováním pro Office 365, Dynamics 365 a Power BI'
+            - name: 'Office 365, Dynamics 365 a Power BI'
               href: ./appsource-offer-publishing-guide.md
             - name: Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -559,6 +559,8 @@
       href: ./partner-center-portal/publishing-status.md
     - name: Aktualizace stávajících nabídek
       href: ./partner-center-portal/update-existing-offer.md
+    - name: Aktivace výhod
+      href: ./partner-center-portal/marketplace-rewards.md
     - name: Možnosti podpory
       href: ./partner-center-portal/support.md
     - name: Analýzy partnerského centra

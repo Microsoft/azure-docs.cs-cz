@@ -5,10 +5,10 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82188820"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Kurz: nasazení místní šablony Azure Resource Manager
@@ -50,7 +50,7 @@ Uložte kopii šablony do místního počítače s příponou. JSON, například
 
 Pokud chcete začít pracovat s Azure PowerShell/Azure CLI pro nasazení šablony, přihlaste se pomocí přihlašovacích údajů Azure.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -66,7 +66,7 @@ az login
 
 Pokud máte více předplatných Azure, vyberte předplatné, které chcete použít:
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Select-AzSubscription [SubscriptionID/SubscriptionName]
@@ -84,7 +84,7 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 Když nasadíte šablonu, zadáte skupinu prostředků, která bude obsahovat prostředky. Před spuštěním příkazu k nasazení vytvořte skupinu prostředků buď pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShell. Vyberte karty v následující části kódu a vyberte si mezi Azure PowerShell a Azure CLI. Příklady rozhraní příkazového řádku v tomto článku se napíší pro prostředí bash.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource and resource group names"
@@ -113,7 +113,7 @@ az group create \
 
 K nasazení šablony použijte jednu nebo obě možnosti nasazení.
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter the same project name"

@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: b62cca48323d4e12a92c89d64ab67bf5b783c36f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82183823"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Kurz: vytvoření více instancí prostředků pomocí šablon ARM
@@ -122,7 +122,7 @@ Další informace o vytváření více instancí najdete v tématu [nasazení v�
 
 1. Z Cloud Shell spusťte následující příkazy. Výběrem odpovídající karty zobrazíte kód PowerShellu nebo kód rozhraní příkazového řádku.
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ```azurecli
     echo "Enter a project name that is used to generate resource group name:" &&
@@ -134,7 +134,7 @@ Další informace o vytváření více instancí najdete v tématu [nasazení v�
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json"
     ```
 
-    # <a name="powershell"></a>[Prostředí](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
@@ -159,7 +159,7 @@ az storage account list --resource-group $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"

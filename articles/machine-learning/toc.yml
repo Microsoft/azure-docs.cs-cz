@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Koncepty
   items:
+    - name: Plánování a správa nákladů
+      href: concept-plan-manage-cost.md
     - name: Pracovní prostor
       href: concept-workspace.md
     - name: Prostředí
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: Opětovné vygenerování přístupových klíčů k úložišti
               href: how-to-change-storage-access-key.md
+            - name: Použití Azure Firewallu
+              href: how-to-access-azureml-behind-firewall.md
         - name: Nastavení ověřování
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

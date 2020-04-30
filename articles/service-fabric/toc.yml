@@ -138,6 +138,8 @@
           href: service-fabric-security-controls.md
         - name: Ověřování pomocí certifikátů v Service Fabric
           href: cluster-security-certificates.md
+        - name: Správa certifikátů ve službě Service Fabric
+          href: cluster-security-certificate-management.md
     - name: Terminologie
       href: service-fabric-technical-overview.md
     - name: Sestavování aplikací

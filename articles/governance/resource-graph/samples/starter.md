@@ -4,10 +4,10 @@ description: Pomocí Azure Resource graphu můžete spouštět některé úvodn�
 ms.date: 04/27/2020
 ms.topic: sample
 ms.openlocfilehash: fc499f466d61fb665cc31075a2c310372d993f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82185859"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Ukázky dotazů na graf počátečních prostředků
