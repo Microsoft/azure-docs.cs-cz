@@ -1,6 +1,6 @@
 ---
-title: 'Azure Resource Manager: Vytvoření jedné databáze'
-description: Vytvořte jednu databázi v Azure SQL Database pomocí šablony Azure Resource Manager.
+title: 'Azure Resource Manager: vytvoření samostatné databáze'
+description: Pomocí šablony Azure Resource Manager vytvořte v Azure SQL Database jednu databázi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,15 +12,15 @@ ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
 ms.openlocfilehash: 7c42ff7f42dea049752f9f879abffffd0e7b3902
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79531324"
 ---
-# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Úvodní příručka: Vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
+# <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
 
-Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. Tento rychlý start ukazuje, jak vytvořit jednu databázi pomocí šablony Azure Resource Manager.
+Vytvoření [jedné databáze](sql-database-single-database.md) je nejrychlejší a nejjednodušší možnost nasazení pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit jedinou databázi pomocí šablony Azure Resource Manager.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -28,33 +28,33 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádný
+Žádná
 
-## <a name="create-a-single-database"></a>Vytvoření jedné databáze
+## <a name="create-a-single-database"></a>Vytvoření izolované databáze
 
-Jedna databáze má definovanou sadu výpočetních prostředků, paměti, voda a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md). Když vytvoříte jednu databázi, definujete také [databázový server SQL,](sql-database-servers.md) který ji spravuje a umístí do [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti.
+Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-výstupních prostředků a prostředků úložiště pomocí jednoho ze dvou [nákupních modelů](sql-database-purchase-models.md). Když vytvoříte izolovanou databázi, nadefinujete taky [SQL Database Server](sql-database-servers.md) , který budete spravovat a umístit do [skupiny prostředků Azure](../azure-resource-manager/management/overview.md) v zadané oblasti.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
 
-Tyto prostředky jsou definovány v šabloně:
+Tyto prostředky jsou definované v šabloně:
 
-- [**Microsoft.SQL/servery**](/azure/templates/microsoft.sql/servers)
-- [**Microsoft.Sql/servery/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
-- [**Microsoft.Sql/servers/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
-- [**Microsoft.Sql/servery/hodnocení zranitelnosti**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
-- [**Microsoft.Sql/servery/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
-- [**Microsoft.Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
-- [**Microsoft.Storage/storageAccounts/providers/roleAssignments Microsoft.Storage/storageAccounts/providers/roleAssignments Microsoft.Storage/storageAccounts/providers/roleAssignments Microsoft.**](/azure/templates/microsoft.authorization/roleassignments)
+- [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers)
+- [**Microsoft. SQL/servery/firewallRules**](/azure/templates/microsoft.sql/servers/firewallrules)
+- [**Microsoft. SQL/servery/securityAlertPolicies**](/azure/templates/microsoft.sql/servers/securityalertpolicies)
+- [**Microsoft. SQL/servery/vulnerabilityAssessments**](/azure/templates/microsoft.sql/servers/vulnerabilityassessments)
+- [**Microsoft. SQL/servery/connectionPolicies**](/azure/templates/microsoft.sql/servers/connectionpolicies)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts)
+- [**Microsoft. Storage/storageAccounts/Providers/roleAssignments**](/azure/templates/microsoft.authorization/roleassignments)
 
-Další ukázky šablon databáze Azure SQL najdete v [azure quickstart šablony](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
+Další ukázky šablon Azure SQL Database najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sql&pageNumber=1&sort=Popular).
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Vyberte **Vyzkoušet** z následujícího bloku kódu PowerShellu otevřete Azure Cloud Shell.
+Vyberte příkaz **vyzkoušet** z následujícího bloku kódu prostředí PowerShell a otevřete Azure Cloud Shell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -96,11 +96,11 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
-Chcete-li zadat dotaz na databázi, [přečtěte si informace o dotazu na databázi](./sql-database-single-database-get-started.md#query-the-database).
+Dotaz na databázi najdete v tématu [dotazování databáze](./sql-database-single-database-get-started.md#query-the-database).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li přejít na [další kroky](#next-steps), ponechejte tuto skupinu prostředků, databázový server a jednu databázi. Další kroky ukazují, jak připojit a dotazovat databázi pomocí různých metod.
+Pokud chcete přejít k [dalším krokům](#next-steps), zachovejte tuto skupinu prostředků, databázový server a samostatnou databázi. Následující kroky ukazují, jak se připojit k databázi a dotazovat se na ni pomocí různých metod.
 
 Odstranění skupiny prostředků:
 
@@ -123,10 +123,10 @@ az group delete --name $resourceGroupName
 
 ## <a name="next-steps"></a>Další kroky
 
-- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k jedné databázi z místních nebo vzdálených nástrojů. Další informace naleznete [v tématu Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
-- Po vytvoření pravidla brány firewall na úrovni serveru připojte databázi [a zařaďte se tak pomocí](sql-database-connect-query.md) několika různých nástrojů a jazyků.
+- Vytvořte pravidlo brány firewall na úrovni serveru pro připojení k izolované databázi z místních nebo vzdálených nástrojů. Další informace najdete v tématu [Vytvoření pravidla brány firewall na úrovni serveru](sql-database-server-level-firewall-rule.md).
+- Po vytvoření pravidla brány firewall na úrovni serveru se [připojte a Dotazujte](sql-database-connect-query.md) databázi pomocí několika různých nástrojů a jazyků.
   - [Připojení a dotazování pomocí SQL Server Management Studia](sql-database-connect-query-ssms.md)
   - [Připojení a dotazování pomocí Azure Data Studia](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Pokud chcete vytvořit jednu databázi pomocí Azure CLI, najdete [v tématu ukázky nastavení příkazového příkazu Kavi .](sql-database-cli-samples.md)
-- Pokud chcete vytvořit jednu databázi pomocí Azure PowerShellu, přečtěte si [párky Azure PowerShellu](sql-database-powershell-samples.md).
-- Informace o vytváření šablon Správce prostředků naleznete v tématu [Vytvoření první šablony](../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+- Pokud chcete vytvořit izolovanou databázi pomocí Azure CLI, přečtěte si [ukázky v Azure CLI](sql-database-cli-samples.md).
+- Chcete-li vytvořit izolovanou databázi pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](sql-database-powershell-samples.md).
+- Další informace o vytváření šablon Správce prostředků najdete v tématu [Vytvoření první šablony](../azure-resource-manager/templates/template-tutorial-create-first-template.md).

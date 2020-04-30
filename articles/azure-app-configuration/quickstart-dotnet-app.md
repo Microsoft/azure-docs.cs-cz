@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: lcozzens
 ms.openlocfilehash: 1c56088a2c51c50c7f9cf1ff1e790d580fdb08d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80245391"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace .NET Framework s využitím konfigurace aplikace Azure
 
 V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové aplikace založené na .NET Framework pro centralizaci úložiště a správy nastavení aplikace odděleně od vašeho kódu.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
@@ -31,7 +31,7 @@ V tomto rychlém startu zařadíte konfiguraci aplikací Azure do konzolové apl
 
 6. Vyberte možnost **Průzkumník** > konfigurace**vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 

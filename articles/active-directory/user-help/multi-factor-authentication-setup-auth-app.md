@@ -1,6 +1,6 @@
 ---
-title: Nastavení ověřovací aplikace jako dvoufaktorové metody ověření – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Přečtěte si, jak nastavit aplikaci Microsoft Authenticator jako dvoufaktorovou metodu ověření.
+title: Nastavení ověřovací aplikace jako metody dvojúrovňové ověřování – Azure Active Directory | Microsoft Docs
+description: Přečtěte si, jak nastavit aplikaci Microsoft Authenticator jako metodu ověřování dvou faktorů.
 services: active-directory
 author: curtand
 manager: daveba
@@ -11,112 +11,112 @@ ms.topic: overview
 ms.date: 08/12/2019
 ms.author: curtand
 ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77062570"
 ---
-# <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Nastavení ověřovací aplikace jako dvoufaktorové metody ověření
+# <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Nastavení ověřovací aplikace jako metody ověřování dvou faktorů
 
-Můžete nastavit ověřovací aplikaci pro odeslání oznámení do mobilního zařízení nebo ověřovací kód jako metodu ověření zabezpečení. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavení můžete vybrat jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
+Můžete nastavit ověřovací aplikaci, která odešle oznámení na mobilní zařízení nebo pošle ověřovací kód jako metodu ověření zabezpečení. Nemusíte používat aplikaci Microsoft Authenticator a během procesu nastavování můžete vybrat jinou aplikaci. Tento článek však používá aplikaci Microsoft Authenticator.
 
 >[!Important]
->Před přidáním účtu je nutné stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle pokynů v článku [Ke stažení a instalaci aplikace.](user-help-auth-app-download-install.md)
+>Než budete moct přidat svůj účet, musíte si stáhnout a nainstalovat aplikaci Microsoft Authenticator. Pokud jste to ještě neudělali, postupujte podle kroků v článku [Stažení a instalace aplikace](user-help-auth-app-download-install.md) .
 
 >[!Note]
-> Pokud je možnost Mobilní aplikace zašedlá, je možné, že vaše organizace neumožňuje používat ověřovací aplikaci k ověření. V takovém případě budete muset vybrat jinou metodu nebo požádat správce o další pomoc.
+> Pokud je možnost mobilní aplikace šedá, je možné, že vaše organizace neumožňuje použít ověřovací aplikaci k ověření. V takovém případě budete muset vybrat jinou metodu nebo požádat správce o další nápovědu.
 
-## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Nastavení aplikace Microsoft Authenticator pro odesílání oznámení
+## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Nastavení aplikace Microsoft Authenticator k odesílání oznámení
 
-1. Na stránce **Další ověření zabezpečení** vyberte mobilní **aplikace** v **kroku 1: Jak vás máme kontaktovat** v oblasti.
+1. Na stránce **Další ověření zabezpečení** vyberte **mobilní aplikace** z **kroku 1: jak vás máme kontaktovat vaši** oblastí.
 
-2. V části Jak chcete **používat** oblast mobilní aplikace vyberte **Přijímat oznámení k ověření** a pak vyberte **Nastavit**.
+2. Vyberte možnost **přijímat oznámení pro ověření** z části **jak chcete použít oblast mobilní aplikace** a pak vyberte možnost **nastavit**.
 
-    ![Další stránka pro ověření zabezpečení s možností mobilní aplikace a oznámení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
+    ![Stránka Další ověření zabezpečení s možností mobilní aplikace a oznámení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
-    Zobrazí se stránka **Konfigurovat mobilní aplikaci.**
+    Zobrazí se stránka **Konfigurace mobilní aplikace** .
 
-    ![Obrazovka, která poskytuje QR kód](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
+    ![Obrazovka, která poskytuje kód QR](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
 
-3. Otevřete aplikaci Microsoft Authenticator, **vyberte Přidat účet** z ikony **Přizpůsobit a řídit** v pravém horním bodě a pak vyberte Pracovní nebo **školní účet**.
-
-    >[!Note]
-    >Pokud nastavujete aplikaci Microsoft Authenticator poprvé, může se zobrazit výzva s dotazem, zda má aplikaci povolit přístup ke kameře (iOS) nebo zda aplikaci pořizovat snímky a nahrávat video (Android). Musíte vybrat **Povolit,** aby ověřovací aplikace mohla přistupovat k fotoaparátu a pořit qr kód v dalším kroku. Pokud fotoaparát nepovolíte, můžete aplikaci pro ověřování nastavit, ale budete muset přidat informace o kódu ručně. Informace o ručním přidání kódu najdete v [tématu Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
-
-4. Pomocí fotoaparátu zařízení naskenujte QR kód z obrazovky **Konfigurace mobilní aplikace** v počítači a pak zvolte **Další**.
-
-5. Vraťte se do počítače a na stránku **Další ověření zabezpečení,** zkontrolujte, že se zobrazí zpráva, že konfigurace byla úspěšná, a pak vyberte **další**.
-
-    ![Další stránka ověření zabezpečení se zprávou o úspěchu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
-
-    Ověřovací aplikace odešle oznámení do vašeho mobilního zařízení jako test.
-
-6. Na mobilním zařízení vyberte **Schválit**.
-
-7. V počítači přidejte telefonní číslo mobilního zařízení do **kroku 3: V případě, že ztratíte přístup k** oblasti mobilní aplikace, a pak vyberte **Další**.
-
-    Důrazně doporučujeme přidat číslo mobilního zařízení, které bude fungovat jako záloha, pokud z jakéhokoli důvodu nebudete mít přístup k mobilní aplikaci nebo ji nebudete používat.
-
-8. V **kroku 4: Pokračujte v používání stávající oblasti aplikací, zkopírujte** zadaný hesel aplikace a vložte jej někam do bezpečí.
-
-    ![Oblast hesel aplikací na stránce Další ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
     >[!Note]
-    >Informace o tom, jak používat heslo aplikace ve starších aplikacích, najdete v [tématu Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Hesla aplikací stačí, když nadále používáte starší aplikace, které nepodporují dvoufaktorové ověření.
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+
+4. Pomocí kamery zařízení Naskenujte kód QR z obrazovky **Konfigurace mobilní aplikace** na vašem počítači a pak zvolte **Další**.
+
+5. Vraťte se do počítače a na stránku **Další ověření zabezpečení** , zkontrolujte, že se zobrazí zpráva s informacemi o tom, že konfigurace byla úspěšná, a pak vyberte **Další**.
+
+    ![Stránka dodatečného ověření zabezpečení se zprávou o úspěchu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification-confirm.png)
+
+    Aplikace ověřovatele pošle oznámení na vaše mobilní zařízení jako test.
+
+6. Na mobilním zařízení vyberte **schválit**.
+
+7. V počítači přidejte do kroku 3 telefonní číslo mobilního zařízení: pro **případ, že ztratíte přístup k oblasti mobilní aplikace** , a pak vyberte **Další**.
+
+    Důrazně doporučujeme přidat telefonní číslo mobilního zařízení, které se bude chovat jako záloha, pokud k tomu nemůžete získat přístup k mobilní aplikaci nebo ji z nějakého důvodu použít.
+
+8. V části **Krok 4: pokračujte v oblasti používání stávajících aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
+
+    ![Oblast hesel aplikací na stránce dodatečného ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+
+    >[!Note]
+    >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
 9. Vyberte **Done** (Hotovo).
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Nastavení aplikace Microsoft Authenticator pro použití ověřovacích kódů
 
-1. Na stránce **Další ověření zabezpečení** vyberte mobilní **aplikace** v **kroku 1: Jak vás máme kontaktovat** v oblasti.
+1. Na stránce **Další ověření zabezpečení** vyberte **mobilní aplikace** z **kroku 1: jak vás máme kontaktovat vaši** oblastí.
 
-2. V části Jak **chcete používat** oblast mobilní aplikace vyberte **Použít ověřovací kód** a pak vyberte **Nastavit**.
+2. Vyberte možnost **použít ověřovací kód** z části **jak chcete použít oblast mobilní aplikace** a pak vyberte možnost **nastavit**.
 
-    ![Další stránka pro ověření zabezpečení s možností mobilní aplikace a oznámení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-code.png)
+    ![Stránka Další ověření zabezpečení s možností mobilní aplikace a oznámení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-code.png)
 
-    Zobrazí se stránka **Konfigurovat mobilní aplikaci.**
+    Zobrazí se stránka **Konfigurace mobilní aplikace** .
 
-    ![Obrazovka, která poskytuje QR kód](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
+    ![Obrazovka, která poskytuje kód QR](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-barcode.png)
 
-3. Otevřete aplikaci Microsoft Authenticator, **vyberte Přidat účet** z ikony **Přizpůsobit a řídit** v pravém horním bodě a pak vyberte Pracovní nebo **školní účet**.
-
-    >[!Note]
-    >Pokud nastavujete aplikaci Microsoft Authenticator poprvé, může se zobrazit výzva s dotazem, zda má aplikaci povolit přístup ke kameře (iOS) nebo zda aplikaci pořizovat snímky a nahrávat video (Android). Musíte vybrat **Povolit,** aby ověřovací aplikace mohla přistupovat k fotoaparátu a pořit qr kód v dalším kroku. Pokud fotoaparát nepovolíte, můžete aplikaci pro ověřování nastavit, ale budete muset přidat informace o kódu ručně. Informace o ručním přidání kódu najdete v [tématu Ruční přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
-
-4. Pomocí fotoaparátu zařízení naskenujte QR kód z obrazovky **Konfigurace mobilní aplikace** v počítači a pak zvolte **Další**.
-
-5. Vraťte se do počítače a na stránku **Další ověření zabezpečení,** zkontrolujte, že se zobrazí zpráva, že konfigurace byla úspěšná, a pak vyberte **další**.
-
-    ![Další stránka ověření zabezpečení se zprávou o úspěchu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-confirm.png)
-
-    Ověřovací aplikace požádá o ověřovací kód jako test.
-
-6. V aplikaci Microsoft Authenticator přejděte dolů na svůj pracovní nebo školní účet, zkopírujte a vložte 6místný kód z aplikace do **kroku 2: Zadejte ověřovací kód z** pole mobilní aplikace v počítači a pak vyberte **Ověřit**.
-
-    ![Další stránka pro ověření zabezpečení s ověřovacím testem kódu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
-
-7. V počítači přidejte telefonní číslo mobilního zařízení do **kroku 3: V případě, že ztratíte přístup k** oblasti mobilní aplikace, a pak vyberte **Další**.
-
-    Důrazně doporučujeme přidat číslo mobilního zařízení, které bude fungovat jako záloha, pokud z jakéhokoli důvodu nebudete mít přístup k mobilní aplikaci nebo ji nebudete používat.
-
-8. V **kroku 4: Pokračujte v používání stávající oblasti aplikací, zkopírujte** zadaný hesel aplikace a vložte jej někam do bezpečí.
-
-    ![Oblast hesel aplikací na stránce Další ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+3. Otevřete aplikaci Microsoft Authenticator, v pravém horním rohu vyberte **Přidat účet** **a potom** vyberte **pracovní nebo školní účet**.
 
     >[!Note]
-    >Informace o tom, jak používat heslo aplikace ve starších aplikacích, najdete v [tématu Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Hesla aplikací stačí, když nadále používáte starší aplikace, které nepodporují dvoufaktorové ověření.
+    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+
+4. Pomocí kamery zařízení Naskenujte kód QR z obrazovky **Konfigurace mobilní aplikace** na vašem počítači a pak zvolte **Další**.
+
+5. Vraťte se do počítače a na stránku **Další ověření zabezpečení** , zkontrolujte, že se zobrazí zpráva s informacemi o tom, že konfigurace byla úspěšná, a pak vyberte **Další**.
+
+    ![Stránka dodatečného ověření zabezpečení se zprávou o úspěchu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-confirm.png)
+
+    Ověřovací aplikace se zeptá na ověřovací kód jako test.
+
+6. V aplikaci Microsoft Authenticator se posuňte dolů k pracovnímu nebo školnímu účtu, zkopírujte a vložte 6-číslice kód z aplikace do části **Krok 2: zadejte ověřovací kód z pole mobilní aplikace** v počítači a pak vyberte **ověřit**.
+
+    ![Stránka dodatečného ověření zabezpečení s testem ověřovacího kódu](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
+
+7. V počítači přidejte do kroku 3 telefonní číslo mobilního zařízení: pro **případ, že ztratíte přístup k oblasti mobilní aplikace** , a pak vyberte **Další**.
+
+    Důrazně doporučujeme přidat telefonní číslo mobilního zařízení, které se bude chovat jako záloha, pokud k tomu nemůžete získat přístup k mobilní aplikaci nebo ji z nějakého důvodu použít.
+
+8. V části **Krok 4: pokračujte v oblasti používání stávajících aplikací** , zkopírujte zadané heslo aplikace a vložte ho někam do trezoru.
+
+    ![Oblast hesel aplikací na stránce dodatečného ověření zabezpečení](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
+
+    >[!Note]
+    >Informace o tom, jak používat heslo aplikace pro vaše starší aplikace, najdete v tématu [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md). Pokud budete nadále používat starší aplikace, které nepodporují dvojúrovňové ověřování, je třeba použít hesla aplikací.
 
 9. Vyberte **Done** (Hotovo).
 
 ## <a name="next-steps"></a>Další kroky
 
-Po nastavení dvoufaktorové metody ověření můžete přidat další metody, spravovat nastavení a hesla aplikací, přihlásit se nebo získat pomoc s některými běžnými problémy souvisejícími s dvoufaktorovým ověřováním.
+Po nastavení dvojúrovňové metody ověřování můžete přidat další metody, spravovat nastavení a hesla aplikací, přihlašovat nebo získat pomoc s některými běžnými problémy souvisejícími s ověřováním dvou faktorů.
 
-- [Správa nastavení dvoufaktorových metod ověření](multi-factor-authentication-end-user-manage-settings.md)
+- [Správa nastavení dvojúrovňové metody ověřování](multi-factor-authentication-end-user-manage-settings.md)
 
 - [Správa hesel aplikací](multi-factor-authentication-end-user-app-passwords.md)
 
-- [Přihlášení pomocí dvoufaktorového ověření](multi-factor-authentication-end-user-signin.md)
+- [Přihlášení Pomocí dvojúrovňového ověřování](multi-factor-authentication-end-user-signin.md)
 
-- [Získání nápovědy k dvoufaktorovému ověření](multi-factor-authentication-end-user-troubleshoot.md)
+- [Získat pomoc se dvojúrovňovém ověřováním](multi-factor-authentication-end-user-troubleshoot.md)

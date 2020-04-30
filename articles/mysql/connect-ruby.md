@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí Ruby – Databáze Azure pro MySQL
+title: Připojit pomocí Ruby-Azure Database for MySQL
 description: V tomto rychlém startu najdete několik vzorových kódů Ruby, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 12/02/2019
 ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74770641"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí Ruby
@@ -35,13 +35,13 @@ Nainstalujte na svém počítači Ruby, nástroj Gem a knihovnu MySQL2.
 6. Pomocí nástroje Gem sestavte modul Mysql2 pro Ruby spuštěním příkazu `gem install mysql2`.
 
 ### <a name="macos"></a>MacOS
-1. Nainstalujte Ruby pomocí Homebrew spuštěním příkazu `brew install ruby`. Další možnosti instalace naleznete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/#homebrew)ruby .
+1. Nainstalujte Ruby pomocí Homebrew spuštěním příkazu `brew install ruby`. Další možnosti instalace najdete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/#homebrew)Ruby.
 2. Otestujte instalaci Ruby spuštěním příkazu `ruby -v`, který zobrazí nainstalovanou verzi.
 3. Otestujte instalaci nástroje Gem spuštěním příkazu `gem -v`, který zobrazí nainstalovanou verzi.
 4. Pomocí nástroje Gem sestavte modul Mysql2 pro Ruby spuštěním příkazu `gem install mysql2`.
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-1. Nainstalujte Ruby spuštěním příkazu `sudo apt-get install ruby-full`. Další možnosti instalace naleznete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/)ruby .
+1. Nainstalujte Ruby spuštěním příkazu `sudo apt-get install ruby-full`. Další možnosti instalace najdete v [dokumentaci k instalaci](https://www.ruby-lang.org/en/documentation/installation/)Ruby.
 2. Otestujte instalaci Ruby spuštěním příkazu `ruby -v`, který zobrazí nainstalovanou verzi.
 3. Nainstalujte nejnovější aktualizace pro nástroj Gem spuštěním příkazu `sudo gem update --system`.
 4. Otestujte instalaci nástroje Gem spuštěním příkazu `gem -v`, který zobrazí nainstalovanou verzi.
@@ -52,7 +52,7 @@ Nainstalujte na svém počítači Ruby, nástroj Gem a knihovnu MySQL2.
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

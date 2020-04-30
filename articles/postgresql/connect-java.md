@@ -1,6 +1,6 @@
 ---
-title: Propojení s Javou – databáze Azure pro PostgreSQL – jeden server
-description: Tento rychlý start obsahuje ukázku kódu Jazyka Java, kterou můžete použít k připojení a dotazování dat z Databáze Azure pro PostgreSQL – jeden server.
+title: Připojení pomocí Java-Azure Database for PostgreSQL-Single server
+description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jednom serveru.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -11,31 +11,31 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
 ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80063131"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Úvodní příručka: Připojení k datům azure pro PostgreSQL a dotazování v Azure Database for PostgreSQL – jeden server
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for PostgreSQL – jeden server
 
-V tomto rychlém startu se připojíte k databázi Azure pro PostgreSQL pomocí aplikace Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
+V tomto rychlém startu se připojíte k Azure Database for PostgreSQL pomocí aplikace Java. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Kroky v tomto článku předpokládají, že máte zkušenosti s vývojem pomocí Javy a teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Dokončení [úvodního článku: Vytvořte databázi Azure pro postgreSQL server na webu Azure Portal](quickstart-create-server-database-portal.md) nebo [Quickstart: Vytvořte databázi Azure pro PostgreSQL pomocí azure cli](quickstart-create-server-database-azure-cli.md).
+- Dokončení [rychlého startu: vytvoření serveru Azure Database for PostgreSQL v Azure Portal](quickstart-create-server-database-portal.md) nebo [rychlém startu: vytvoření Azure Database for POSTGRESQL pomocí Azure CLI](quickstart-create-server-database-azure-cli.md).
 
-- [PostgreSQL JDBC Driver](https://jdbc.postgresql.org/download.html) - odpovídá vaší verzi Javy a Java Development Kit.
-- [Podrobnosti cesty třídy](https://jdbc.postgresql.org/documentation/head/classpath.html) - Zahrnout PostgreSQL JDBC jar soubor (například postgresql-42.1.1.jar) v cestě třídy aplikace.
+- [POSTGRESQL JDBC Driver](https://jdbc.postgresql.org/download.html) – odpovídá vaší verzi Java a sady Java Development Kit.
+- [Podrobnosti o cestě třídy](https://jdbc.postgresql.org/documentation/head/classpath.html) – zahrňte do třídy classpath vaší aplikace soubor JAR PostgreSQL JDBC (například PostgreSQL-42.1.1. jar).
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Na [webu Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
+1. V [Azure Portal](https://portal.azure.com/)vyhledejte a vyberte server, který jste vytvořili (například **mydemoserver**).
 
-1. Z panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
+1. Na panelu **Přehled** serveru si poznamenejte **název serveru** a **uživatelské jméno správce**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
 
     ![Připojovací řetězec Azure Database for PostgreSQL](./media/connect-java/server-details-azure-database-postgresql.png)
 

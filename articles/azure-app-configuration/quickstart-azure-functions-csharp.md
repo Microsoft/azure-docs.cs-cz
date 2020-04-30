@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka pro konfiguraci aplikací Azure s funkcemi Azure | Dokumenty společnosti Microsoft
-description: Rychlý start pro používání Azure App Configuration s funkcemi Azure.
+title: Rychlý Start pro konfiguraci aplikací Azure s Azure Functions | Microsoft Docs
+description: Rychlý Start pro použití konfigurace aplikace Azure s Azure Functions.
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,52 +8,52 @@ ms.topic: quickstart
 ms.date: 1/9/2019
 ms.author: lcozzens
 ms.openlocfilehash: 2f6efdad7ab0685e58d2edd73bc36b758e8dbae2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80245493"
 ---
-# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Úvodní příručka: Vytvoření aplikace Azure Functions s konfigurací aplikací Azure
+# <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Rychlý Start: Vytvoření aplikace Azure Functions s využitím konfigurace aplikace Azure
 
-V tomto rychlém startu začleníte službu Azure App Configuration do aplikace Azure Functions, abyste centralizovali úložiště a správu všech nastavení aplikací oddělených od vašeho kódu.
+V tomto rychlém startu zahrňte službu Azure App Configuration Service do aplikace Azure Functions, abyste mohli centralizovat úložiště a správu všech nastavení vaší aplikace odděleně od svého kódu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s **úlohou vývoje Azure.**
+- Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+- [Visual Studio 2019](https://visualstudio.microsoft.com/vs) s úlohou **vývoje Azure** .
 - [Nástroje Azure Functions](../azure-functions/functions-develop-vs.md#check-your-tools-version)
 
-## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikací
+## <a name="create-an-app-configuration-store"></a>Vytvoření úložiště konfigurace aplikace
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Vyberte **Průzkumník** > konfigurace **+ Vytvořit** > **klíč-hodnotu** přidat následující dvojice klíč-hodnota:
+6. Vyberte možnost **Průzkumník** > konfigurace **+ vytvořit** > **klíč-hodnota** a přidejte následující páry klíč-hodnota:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |---|---|
-    | testapp:nastavení:zpráva | Data z konfigurace aplikací Azure |
+    | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure |
 
-    Ponechte **popisek** a **typ obsahu** prozatím prázdný.
+    V tuto chvíli ponechat **popisek** a **typ obsahu** prázdné.
 
 7. Vyberte **Použít**.
 
-## <a name="create-a-functions-app"></a>Vytvoření aplikace Funkce
+## <a name="create-a-functions-app"></a>Vytvoření aplikace Functions
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikací
+## <a name="connect-to-an-app-configuration-store"></a>Připojení k úložišti konfigurace aplikace
 
-1. Klikněte pravým tlačítkem myši na projekt a vyberte **spravovat balíčky NuGet**. Na **kartě Procházet** vyhledejte `Microsoft.Extensions.Configuration.AzureAppConfiguration` a přidejte balíček NuGet do projektu. Pokud ji nemůžete najít, zaškrtněte políčko **Zahrnout předběžnou verzi.**
+1. Klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**. Na kartě **Procházet** vyhledejte a přidejte do svého projektu balíček `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet. Pokud nemůžete najít, zaškrtněte políčko **zahrnout předběžné verze** .
 
-2. Open *Function1.cs*, and add the namespaces of the .NET Core configuration and the App Configuration configuration provider.
+2. Otevřete *function1.cs*a přidejte obory názvů konfigurace .NET Core a poskytovatele konfigurace aplikace.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Přidejte `static` vlastnost `Configuration` s názvem k vytvoření `IConfiguration`instance singleton . Pak přidejte `static` konstruktor pro připojení `AddAzureAppConfiguration()`k konfiguraci aplikace voláním . To se načte konfiguraci jednou při spuštění aplikace. Stejná instance konfigurace bude použita pro všechna volání functions později.
+3. Přidejte `static` vlastnost s názvem `Configuration` pro vytvoření instance singleton `IConfiguration`. Pak přidejte `static` konstruktor pro připojení ke konfiguraci aplikace voláním `AddAzureAppConfiguration()`. Tato akce načte konfiguraci jednou při spuštění aplikace. Stejná instance konfigurace bude použita pro všechny volání funkcí později.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -66,7 +66,7 @@ V tomto rychlém startu začleníte službu Azure App Configuration do aplikace 
     }
     ```
 
-4. Aktualizujte `Run` metodu číst hodnoty z konfigurace.
+4. Aktualizujte `Run` metodu pro čtení hodnot z konfigurace.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -85,13 +85,13 @@ V tomto rychlém startu začleníte službu Azure App Configuration do aplikace 
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
-1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč do úložiště konfigurace aplikace. Pokud používáte příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
+1. Nastavte proměnnou prostředí s názvem **ConnectionString**a nastavte ji na přístupový klíč na úložiště konfigurace aplikace. Použijete-li příkazový řádek systému Windows, spusťte následující příkaz a restartujte příkazový řádek, aby se změna projevila:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
-    Pokud používáte prostředí Windows PowerShell, spusťte následující příkaz:
+    Pokud používáte Windows PowerShell, spusťte následující příkaz:
 
     ```azurepowershell
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
@@ -103,15 +103,15 @@ V tomto rychlém startu začleníte službu Azure App Configuration do aplikace 
         export ConnectionString='connection-string-of-your-app-configuration-store'
     ```
 
-2. Stisknutím klávesy F5 otestujte svou funkci. Pokud se zobrazí výzva, přijměte požadavek z Visual Studia na stažení a instalaci nástrojů **Azure Functions Core (CLI).** Může být také nutné povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
+2. Pro otestování funkce stiskněte klávesu F5. Pokud se zobrazí výzva, přijměte požadavek ze sady Visual Studio a stáhněte a nainstalujte nástroje **Azure Functions Core (CLI)** . Je také možné, že budete muset povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
 
 3. Zkopírujte adresu URL vaší funkce z výstupu modulu runtime služby Azure Functions.
 
-    ![Ladění funkce rychlého startu ve VS](./media/quickstarts/function-visual-studio-debugging.png)
+    ![Rychlé ladění funkcí v VS](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. Následující obrázek znázorňuje odpověď v prohlížeči na místní požadavek GET vrácený funkcí.
+4. Vložte adresu URL pro požadavek HTTP do panelu adresy prohlížeče. Na následujícím obrázku je znázorněna odpověď v prohlížeči na místní požadavek GET vrácený funkcí.
 
-    ![Funkce rychlého startu spustí místní](./media/quickstarts/dotnet-core-function-launch-local.png)
+    ![Rychlé spuštění funkce spustit místně](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -119,7 +119,7 @@ V tomto rychlém startu začleníte službu Azure App Configuration do aplikace 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili nový obchod SKonfiguraci aplikací a použili ho s aplikací Azure Functions prostřednictvím [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Chcete-li se dozvědět, jak nakonfigurovat aplikaci Azure Functions pro dynamickou aktualizaci nastavení konfigurace, pokračujte dalším kurzem.
+V tomto rychlém startu jste vytvořili nové úložiště konfigurace aplikace a použili ho u Azure Functions aplikace přes [poskytovatele konfigurace aplikace](https://go.microsoft.com/fwlink/?linkid=2074664). Další informace o tom, jak nakonfigurovat aplikaci Azure Functions, aby dynamicky aktualizovala nastavení konfigurace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
 > [Povolit dynamickou konfiguraci](./enable-dynamic-configuration-azure-functions-csharp.md)

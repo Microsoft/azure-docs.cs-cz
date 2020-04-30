@@ -1,6 +1,6 @@
 ---
-title: Připojení pomocí Javy – Databáze Azure pro MySQL
-description: Tento rychlý start obsahuje ukázku kódu Jazyka Java, kterou můžete použít k připojení a dotazování dat z databáze Azure pro MySQL.
+title: Připojit pomocí Azure Database for MySQL Java
+description: V tomto rychlém startu najdete ukázku kódu Java, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -9,36 +9,36 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 3/18/2020
 ms.openlocfilehash: b5f1cbf2f822f350b1eeba032199676651364d84
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983819"
 ---
-# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Úvodní příručka: Připojení k datům azure pro MySQL a dotazování na javu
+# <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>Rychlý Start: použití jazyka Java pro připojení k datům a jejich dotazování v Azure Database for MySQL
 
-V tomto rychlém startu se připojíte k databázi Azure pro MySQL pomocí aplikace Java a ovladače JDBC MariaDB Connector/J. Potom pomocí příkazů SQL můžete dotazovat, vkládat, aktualizovat a odstraňovat data v databázi z platforem Mac, Ubuntu Linux a Windows. 
+V tomto rychlém startu se připojíte k Azure Database for MySQL pomocí aplikace Java a ovladače JDBC MariaDB Connector/J. Pak použijete příkazy SQL k dotazování, vkládání, aktualizaci a odstraňování dat v databázi z platforem Mac, Ubuntu Linux a Windows. 
 
-Toto téma předpokládá, že jste obeznámeni s vývojem pomocí jazyka Java, ale jste na práci s Azure Database for MySQL.
+V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí jazyka Java, ale začínáte pracovat s Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databáze Azure pro server MySQL. [Vytvořte databázi Azure pro server MySQL pomocí portálu Azure](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [vytvořte azure databázi pro server MySQL pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
-- Zabezpečení připojení Azure Database for MySQL je nakonfigurované s otevřenou bránou firewall a nastavením připojení SSL nakonfigurovaným pro vaši aplikaci.
+- Server Azure Database for MySQL. [Vytvořte Azure Database for MySQL server pomocí Azure Portal](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvořte Azure Database for MySQL server pomocí Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+- Zabezpečení připojení Azure Database for MySQL je nakonfigurované s otevřeným firewallem a nastavením připojení SSL nakonfigurovaným pro vaši aplikaci.
 
 ## <a name="obtain-the-mariadb-connector"></a>Získání konektoru MariaDB
 
-Pomocí jednoho z následujících přístupů získáte konektor [MariaDB Connector/J:](https://mariadb.com/kb/en/library/mariadb-connector-j/)
-   - Použijte balíček Maven [mariadb-java-client](https://search.maven.org/search?q=a:mariadb-java-client) zahrnout [mariadb-java-client závislost](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) v souboru POM pro váš projekt.
-   - Stáhněte si ovladač JDBC [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) a zahrňte soubor Jar JDBC (například mariadb-java-client-2.4.3.jar) do cesty třídy aplikace. Informace o specifikách cesty ke kurzu třídy, jako je [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) nebo [Java SE,](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) naleznete v dokumentaci vašeho prostředí.
+Získejte konektor [konektoru MariaDB/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) pomocí jednoho z následujících přístupů:
+   - Pomocí balíčku Maven [MariaDB-Java-Client](https://search.maven.org/search?q=a:mariadb-java-client) přidejte [závislost MariaDB-Java-Client](https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client) do souboru pom pro váš projekt.
+   - Stáhněte si ovladač JDBC [MariaDB Connector/J](https://downloads.mariadb.org/connector-java/) a vložte soubor JDBC jar (například MariaDB-Java-Client-2.4.3. jar) do cesty třídy vaší aplikace. V dokumentaci k vašemu prostředí najdete konkrétní cesty ke třídám, jako je [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) nebo [Java se](https://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) .
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky**a vyhledejte server, který jste vytvořili (například **mydemoserver).**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
+2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**a potom vyhledejte server, který jste vytvořili (například **mydemoserver**).
 3. Vyberte název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  ![Název serveru Azure Database for MySQL](./media/connect-java/azure-database-mysql-server-name.png)
@@ -136,7 +136,7 @@ public class CreateTableInsertRows {
 
 ## <a name="read-data"></a>Čtení dat
 
-Pomocí následujícího kódu načtěte data s využitím příkazu **SELECT** jazyka SQL. Metoda [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) slouží k připojení k MySQL. Metody [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) a executeQuery() se používají k připojení a spuštění příkazu select. Výsledky se zpracovávají pomocí objektu ResultSet. 
+Pomocí následujícího kódu načtěte data s využitím příkazu **SELECT** jazyka SQL. Metoda [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) slouží k připojení k MySQL. Metody [createStatement ()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) a ExecuteQuery () slouží k připojení a spuštění příkazu SELECT. Výsledky se zpracovávají pomocí objektu ResultSet. 
 
 Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
 
@@ -283,7 +283,7 @@ public class UpdateTable {
 
 ## <a name="delete-data"></a>Odstranění dat
 
-Pomocí následujícího kódu odstraňte data s využitím příkazu **DELETE** jazyka SQL. Metoda [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) slouží k připojení k MySQL.  Metody [prepareStatement()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) a executeUpdate() se používají k přípravě a spuštění příkazu delete. 
+Pomocí následujícího kódu odstraňte data s využitím příkazu **DELETE** jazyka SQL. Metoda [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) slouží k připojení k MySQL.  Metody [prepareStatement ()](https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html) a ExecuteUpdate () slouží k přípravě a spuštění příkazu DELETE. 
 
 Nahraďte parametry host (hostitel), database (databáze), user (uživatel) a password (heslo) hodnotami, které jste zadali při vytváření vlastního serveru a databáze.
 

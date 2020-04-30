@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí jazyka C# – Databáze Azure pro MySQL
+title: Připojení pomocí C#-Azure Database for MySQL
 description: V tomto rychlém startu najdete vzorový kód jazyka C# (.NET), který můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 715be66e1b7d1c9270600dd3f11ee16d9aa1885d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067992"
 ---
 # <a name="azure-database-for-mysql-use-net-c-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí .NET (jazyk C#)
@@ -24,8 +24,8 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 - [Vytvoření serveru Azure Database for MySQL pomocí Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Budete také muset:
-- Nainstalujte [rozhraní .NET](https://www.microsoft.com/net/download). Postupujte podle kroků v odkazovaném článku a nainstalujte .NET pro vaši platformu (Windows, Ubuntu Linux nebo macOS). 
-- Nainstalujte [visual studio](https://www.visualstudio.com/downloads/).
+- Nainstalujte [.NET](https://www.microsoft.com/net/download). Postupujte podle kroků v odkazovaném článku a nainstalujte .NET pro vaši platformu (Windows, Ubuntu Linux nebo macOS). 
+- Nainstalujte [Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-a-c-project"></a>Vytvoření projektu C#
 Na příkazovém řádku spusťte:
@@ -40,7 +40,7 @@ dotnet add package MySqlConnector
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

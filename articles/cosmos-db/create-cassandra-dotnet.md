@@ -9,13 +9,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.openlocfilehash: 1afdc0319ae26fcd6c8cb3ada0b4aa8c31fe1fbb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240223"
 ---
-# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Úvodní příručka: Vytvoření aplikace Cassandra s .NET SDK a Azure Cosmos DB
+# <a name="quickstart-build-a-cassandra-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady .NET SDK a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
@@ -24,7 +24,7 @@ ms.locfileid: "79240223"
 > * [Python](create-cassandra-python.md)
 >  
 
-Tento rychlý start ukazuje, jak používat rozhraní .NET a [rozhraní API](cassandra-introduction.md) Azure Cosmos DB Cassandra k vytvoření aplikace profilu klonováním příkladu z GitHubu. Tento rychlý start také ukazuje, jak pomocí webového portálu Azure Portal vytvořit účet Azure Cosmos DB.
+V tomto rychlém startu se dozvíte, jak pomocí .NET a Azure Cosmos DB [rozhraní API Cassandra](cassandra-introduction.md) vytvořit profilovou aplikaci klonováním příkladu z GitHubu. Tento rychlý start také ukazuje, jak pomocí webového portálu Azure Portal vytvořit účet Azure Cosmos DB.
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete rychle vytvořit a dotazovat databáze dokumentů, párů klíč-hodnota a grafů, které tak můžou využívat výhody možnosti globální distribuce a horizontálního škálování v jádru služby Azure Cosmos DB. 
 
@@ -33,7 +33,7 @@ Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativně můžete [vyzkoušet službu Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků.
 
 Kromě toho je potřeba toto: 
-* Pokud ještě nemáte nainstalovaný Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
+* Pokud ještě nemáte nainstalovanou aplikaci Visual Studio 2019, můžete si stáhnout a použít **bezplatnou** [edici Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Nezapomeňte při instalaci sady Visual Studio povolit možnost **Azure Development**.
 * Nainstalujte [Git](https://www.git-scm.com/) pro klonování příkladu.
 
 <a id="create-account"></a>
@@ -122,7 +122,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
     ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Připojovací řetězec](./media/create-cassandra-dotnet/keys.png)
 
-2. V sadě Visual Studio otevřete soubor Program.cs. 
+2. V aplikaci Visual Studio otevřete soubor Program.cs. 
 
 3. Vložte hodnotu UŽIVATELSKÉ JMÉNO z portálu místo `<FILLME>` na řádku 13.
 
@@ -146,7 +146,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     
 ## <a name="run-the-net-app"></a>Spuštění aplikace .NET
 
-1. V sadě Visual Studio vyberte **nástroje, ve kterých** > nástroj**NuGet Správce** > **balíčků konzola Správce balíčků**.
+1. V > aplikaci Visual Studio vyberte **nástroje** > **Správce balíčků NuGet****Konzola správce balíčků**.
 
 2. Na příkazovém řádku pomocí následujícího příkazu nainstalujte balíček NuGet ovladače .NET. 
 

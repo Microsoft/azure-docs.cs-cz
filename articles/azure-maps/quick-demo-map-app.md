@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Interaktivní vyhledávání map pomocí Azure Maps | Mapy Microsoft Azure'
-description: Zjistěte, jak vytvořit ukázkovou webovou aplikaci pro interaktivní vyhledávání map pomocí sady Microsoft Azure Maps web SDK.
+title: 'Rychlý Start: interaktivní vyhledávání map pomocí Azure Maps | Mapy Microsoft Azure'
+description: Naučte se vytvářet ukázkovou webovou aplikaci pro interaktivní vyhledávání v mapě pomocí webové sady SDK služby Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 1/14/2020
@@ -10,23 +10,23 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 13dc5f6c7175e1ed568199abcbaa4c5d9a20fa7f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80334420"
 ---
-# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Úvodní příručka: Vytvoření interaktivní mapy vyhledávání pomocí Azure Maps
+# <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rychlý Start: vytvoření interaktivní vyhledávací mapy pomocí Azure Maps
 
 Tento článek ukazuje možnosti Azure Maps pro vytvoření mapy, která uživatelům nabídne interaktivní hledání. Provede vás těmito základními kroky:
 * Vytvořte si vlastní účet Azure Maps.
-* Získejte klíč svého účtu k použití v demo webové aplikaci.
+* Získejte klíč účtu, který se použije v ukázkové webové aplikaci.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 <a id="createaccount"></a>
 
@@ -51,48 +51,48 @@ Pomocí následujících kroků vytvořte nový účet Maps:
 
 ## <a name="get-the-primary-key-for-your-account"></a>Získání primárního klíče pro váš účet
 
-Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní dotazovat rozhraní Maps API. Doporučujeme používat primární klíč vašeho účtu jako klíč předplatného při volání služeb Azure Maps.
+Po úspěšném vytvoření účtu Maps načtěte klíč, který vám umožní dotazovat rozhraní Maps API. Při volání služeb Azure Maps doporučujeme použít primární klíč vašeho účtu jako klíč předplatného.
 
 1. Otevřete svůj účet Maps na portálu.
-2. V části nastavení vyberte **Možnost Ověřování**.
+2. V části nastavení vyberte **ověřování**.
 3. Zkopírujte do schránky **Primární klíč**. Místně ho uložte, abyste ho mohli použít později v tomto kurzu.
 
-![Získání klíče Map Azure primárního klíče na webu Azure Portal](./media/quick-demo-map-app/get-key.png)
+![Získání klíče primárního klíče Azure Maps v Azure Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Stažení aplikace
 
-1. Přejděte na [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) a kliknutím na něj zobrazte obsah v uživatelském rozhraní GitHubu. Klikněte pravým tlačítkem myši na tlačítko **Raw** a zkopírujte obsah souboru nebo "Uložit jako" pro stažení souboru.
-2. Obsah tohoto souboru uložte místně jako **AzureMapDemo.html**. Otevřete ji v textovém editoru.
-3. Vyhledejte řetězec `<Your Azure Maps Key>`. Nahraďte ji hodnotou **Primární klíč** z předchozíčásti.
+1. Přejděte na [interactiveSearch. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) a kliknutím na něj zobrazíte obsah v uživatelském rozhraní GitHubu. Klikněte pravým tlačítkem na tlačítko **nezpracované** a zkopírujte obsah souboru nebo Uložit jako a Stáhněte soubor.
+2. Uložte obsah tohoto souboru místně jako **AzureMapDemo. html**. Otevřete ho v textovém editoru.
+3. Vyhledejte řetězec `<Your Azure Maps Key>`. Nahraďte hodnotou **primárního klíče** z předchozí části.
 
 ## <a name="open-the-application"></a>Otevření aplikace
 
 1. V libovolném prohlížeči otevřete soubor **AzureMapDemo.html**.
 2. Sledujte mapu města Los Angeles. Mapu můžete přiblížit nebo oddálit a ta pak v závislosti na úrovni přiblížení vykreslí více nebo méně informací. 
 3. Změňte výchozí střed mapy. V souboru **AzureMapDemo.html** vyhledejte proměnnou **center**. Nahraďte hodnotu páru zeměpisné délky a šířky pro tuto proměnnou novými hodnotami **[-74.0060, 40.7128]**. Uložte soubor a aktualizujte prohlížeč.
-4. Vyzkoušejte interaktivní hledání. Ve vyhledávacím poli v levém horním rohu ukázkové webové aplikace vyhledejte **restaurace**.
-5. Přesuňte ukazatel myši na seznam adres a míst, která se zobrazí pod vyhledávacím polem. Všimněte si, jak se odpovídající pin na mapě objeví informace o daném místě. Z důvodu zajištění ochrany soukromých podniků jsou zobrazené fiktivní názvy a adresy.
+4. Vyzkoušejte interaktivní hledání. Do vyhledávacího pole v levém horním rohu ukázkové webové aplikace vyhledejte **restaurace**.
+5. Přesuňte ukazatel myši na seznam adres a umístění, která se zobrazí pod vyhledávacím polem. Všimněte si, jak odpovídající kód PIN na mapě vychází z informací o tomto umístění. Z důvodu zajištění ochrany soukromých podniků jsou zobrazené fiktivní názvy a adresy.
 
-    ![Webová aplikace pro interaktivní vyhledávání map](./media/quick-demo-map-app/interactive-search.png)
+    ![Webová aplikace interaktivního vyhledávání map](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Kurzy podrobně popisují, jak používat a konfigurovat Azure Maps s vaším účtem. Nečistěte prostředky vytvořené v tomto rychlém startu, pokud máte v plánu pokračovat v kurzech. Pokud neplánujete pokračovat, postupujte takto, abyste prostředky vyčistili:
+V kurzech najdete podrobné informace o používání a konfiguraci Azure Maps s vaším účtem. Pokud se chystáte pokračovat v kurzech, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, proveďte následující kroky k vyčištění prostředků:
 
-1. Zavřete prohlížeč, ve kterému běží webová aplikace **AzureMapDemo.html.**
-2. V levé nabídce na webu Azure Portal vyberte **Všechny prostředky**. Pak vyberte svůj účet Azure Maps. V horní části okna **Všechny prostředky** vyberte **Odstranit**.
+1. Zavřete prohlížeč, na kterém běží webová aplikace **AzureMapDemo. html** .
+2. V nabídce vlevo v Azure Portal vyberte **všechny prostředky**. Pak vyberte svůj účet Azure Maps. V horní části okna **všechny prostředky** vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste si vytvořili účet Azure Maps a vytvořili ukázkovou aplikaci. Podívejte se na následující kurzy, kde se dozvíte o Azure Maps:
+V tomto rychlém startu jste vytvořili účet Azure Maps a vytvořili jste ukázkovou aplikaci. Další informace o Azure Maps najdete v následujících kurzech:
 
 > [!div class="nextstepaction"]
-> [Vyhledávání v okolí bodů zájmu pomocí Azure Maps](tutorial-search-location.md)
+> [Prohledejte okolní body zájmu pomocí Azure Maps](tutorial-search-location.md)
 
-Další příklady kódu a interaktivní kódování, naleznete v těchto průvodcích:
-
-> [!div class="nextstepaction"]
-> [Vyhledání adresy pomocí vyhledávací služby Azure Maps](how-to-search-for-address.md)
+Další příklady kódu a interaktivní prostředí pro kódování najdete v těchto příručkách:
 
 > [!div class="nextstepaction"]
-> [Použití ovládacího prvku mapy Azure](how-to-use-map-control.md)
+> [Vyhledání adresy pomocí služby Azure Maps Search](how-to-search-for-address.md)
+
+> [!div class="nextstepaction"]
+> [Použití Azure Maps Ovládací prvek Mapa](how-to-use-map-control.md)

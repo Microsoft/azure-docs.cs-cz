@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí PHP – Azure Database for MySQL
+title: Připojení pomocí PHP-Azure Database for MySQL
 description: V tomto rychlém startu najdete vzorový kód PHP, který můžete použít k připojení a dotazování dat z databáze Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 58683cb6eb74fcc3bc2f90245d6f76ef65bdf2e6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80067927"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí PHP
@@ -26,21 +26,21 @@ Tento rychlý start jako výchozí bod využívá prostředky vytvořené v něk
 Nainstalujte PHP na vlastní server nebo vytvořte [webovou aplikaci](../app-service/overview.md) Azure, která zahrnuje PHP.
 
 ### <a name="macos"></a>MacOS
-- Stáhnout [PHP 7.1.4 verze](https://secure.php.net/downloads.php).
-- Nainstalujte PHP a další konfiguraci najdete v [manuálu PHP.](https://secure.php.net/manual/install.macosx.php)
+- Stažení [verze PHP 7.1.4](https://secure.php.net/downloads.php)
+- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.macosx.php) .
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- Ke stažení [PHP 7.1.4 non-thread safe (x64) verze](https://secure.php.net/downloads.php).
-- Nainstalujte PHP a další konfiguraci najdete v [manuálu PHP.](https://secure.php.net/manual/install.unix.php)
+- Stáhněte si [verzi PHP 7.1.4 non-Thread Safe (x64)](https://secure.php.net/downloads.php).
+- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.unix.php) .
 
 ### <a name="windows"></a>Windows
-- Ke stažení [PHP 7.1.4 non-thread safe (x64) verze](https://windows.php.net/download#php-7.1).
-- Nainstalujte PHP a další konfiguraci najdete v [manuálu PHP.](https://secure.php.net/manual/install.windows.php)
+- Stáhněte si [verzi PHP 7.1.4 non-Thread Safe (x64)](https://windows.php.net/download#php-7.1).
+- Nainstalujte PHP a další konfiguraci vyhledejte v [příručce k php](https://secure.php.net/manual/install.windows.php) .
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.

@@ -1,6 +1,6 @@
 ---
-title: Připojení s Go – databáze Azure pro PostgreSQL – jeden server
-description: Tento rychlý start poskytuje ukázku programovacího jazyka Go, kterou můžete použít k připojení a dotazování dat z Databáze Azure pro PostgreSQL – jeden server.
+title: Připojení pomocí funkce Přejít-Azure Database for PostgreSQL-Single server
+description: V tomto rychlém startu najdete ukázku programovacího jazyka na cestách, kterou můžete použít k připojení a dotazování dat z Azure Database for PostgreSQL na jeden server.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -9,19 +9,19 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
 ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74767921"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Databáze Azure pro PostgreSQL – jeden server: Připojení a dotazování na data pomocí jazyka Go
+# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL – jeden server: připojení a dotazování dat pomocí jazyka přejít
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for PostgreSQL pomocí kódu napsaného v jazyce [Go](https://golang.org/) (Golang). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto článku se předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go, ale teprve začínáte pracovat se službou Azure Database for PostgreSQL.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento rychlý start jako výchozí bod využívá prostředky vytvořené v některém z těchto průvodců:
 - [Vytvoření databáze – portál](quickstart-create-server-database-portal.md)
-- [Vytvoření databáze – rozhraní příkazového řádku Azure](quickstart-create-server-database-azure-cli.md)
+- [Vytvoření databáze – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-go-and-pq-connector"></a>Instalace jazyka Go a konektoru pq
 Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [ovladač Pure Go Postgres (pq)](https://github.com/lib/pq). V závislosti na vaší platformě postupujte podle příslušných kroků:
@@ -78,14 +78,14 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a [
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for PostgreSQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
  ![Název serveru Azure Database for PostgreSQL](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>Sestavení a spuštění kódu jazyka Go 
-1. K psaní kódu jazyka Go můžete použít editor prostého textu, jako je Poznámkový blok v systému Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatší interaktivní vývojové prostředí (IDE) zkuste [GoLand](https://www.jetbrains.com/go/) podle Jetbrains, [Visual Studio kód](https://code.visualstudio.com/) od společnosti Microsoft nebo [Atom](https://atom.io/).
+1. K psaní kódu jazyka Go můžete použít editor prostého textu, jako je Poznámkový blok v systému Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost rozsáhlému interaktivnímu vývojovému prostředí (IDE), [Visual Studio Code](https://code.visualstudio.com/) [od společnosti](https://www.jetbrains.com/go/) Microsoft nebo [Atom](https://atom.io/).
 2. Kód jazyka Go z následujících částí vložte do textových souborů a tyto soubory uložte s příponou \*.go do složky vašeho projektu, například `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (cesta ve Windows) nebo `~/go/src/postgresqlgo/createtable.go` (cesta v Linuxu).
 3. V kódu vyhledejte konstanty `HOST`, `DATABASE`, `USER` a `PASSWORD` a příklady hodnot nahraďte vlastními hodnotami.  
 4. Spusťte příkazový řádek nebo prostředí Bash. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\postgresqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/postgresqlgo/`. Některá ze zmíněných integrovaných vývojových prostředí (IDE) nabízejí možnosti ladění a modulu runtime, které nevyžadují příkazy prostředí.
@@ -163,7 +163,7 @@ Pomocí následujícího kódu se připojte a načtěte data s využitím přík
 
 Kód importuje tři balíčky: [balíček sql](https://golang.org/pkg/database/sql/), [balíček pq](https://godoc.org/github.com/lib/pq) jako ovladač pro komunikaci se serverem PostgreSQL a [balíček fmt](https://golang.org/pkg/fmt/) pro tisk vstupů a výstupů na příkazovém řádku.
 
-Kód volá metodu [sql.Open()](https://godoc.org/github.com/lib/pq#Open) pro připojení k databázi Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Dotaz SELECT se spustí zavoláním metody [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) a výsledné řádky se uloží do proměnné typu [rows](https://golang.org/pkg/database/sql/#Rows). Kód čte hodnoty dat sloupců na aktuálním řádku pomocí metody [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) a ve smyčce prochází řádky pomocí iterátoru [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next), dokud nějaké řádky existují. Hodnoty sloupců každého řádku jsou vytištěny do konzoly. Pokaždé, když vlastní checkError() metoda se používá ke kontrole, pokud došlo k chybě a panika ukončit, pokud dojde k chybě.
+Kód volá metodu [sql.Open()](https://godoc.org/github.com/lib/pq#Open) pro připojení k databázi Azure Database for PostgreSQL a pomocí metody [db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) zkontroluje stav připojení. Po celou dobu se používá [popisovač databáze](https://golang.org/pkg/database/sql/#DB), který uchovává fond připojení pro databázový server. Dotaz SELECT se spustí zavoláním metody [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) a výsledné řádky se uloží do proměnné typu [rows](https://golang.org/pkg/database/sql/#Rows). Kód čte hodnoty dat sloupců na aktuálním řádku pomocí metody [rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) a ve smyčce prochází řádky pomocí iterátoru [rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next), dokud nějaké řádky existují. Hodnoty ve sloupcích každého řádku jsou vytištěny na konzolu. Pokaždé, když se použije vlastní metoda metody checkError () ke kontrole, jestli došlo k chybě, a při výskytu chyby se nejedná o nouzové ukončení.
 
 Nahraďte parametry `HOST`, `DATABASE`, `USER` a `PASSWORD` vlastními hodnotami. 
 

@@ -9,14 +9,14 @@ ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: c09327e208719d31b1ae1587c14d0223269abfa9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80062584"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
-Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že jste obeznámeni s vývojem pomocí C++ a jste na práci s Azure Database for MySQL.
+Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. V tomto tématu se předpokládá, že máte zkušenosti s vývojem pomocí jazyka C++ a začínáte pracovat s Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento rychlý start využívá jako výchozí bod prostředky vytvořené v některém z následujících průvodců:
@@ -25,30 +25,30 @@ Tento rychlý start využívá jako výchozí bod prostředky vytvořené v něk
 
 Budete také muset:
 - Nainstalovat [.NET Framework](https://www.microsoft.com/net/download)
-- Instalace [sady Visual Studio](https://www.visualstudio.com/downloads/)
+- Nainstalovat [Visual Studio](https://www.visualstudio.com/downloads/)
 - Nainstalovat [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - Nainstalovat [Boost](https://www.boost.org/)
 
 ## <a name="install-visual-studio-and-net"></a>Instalace sady Visual Studio a .NET
-Kroky v této části předpokládají, že jste obeznámeni s vývojem pomocí rozhraní .NET.
+V krocích v této části se předpokládá, že máte zkušenosti s vývojem pomocí rozhraní .NET.
 
 ### <a name="windows"></a>**Windows**
-- Nainstalujte komunitu Visual Studia 2019. Visual Studio 2019 Community je plnohodnotné, rozšiřitelné a bezplatné IDE. Pomocí tohoto ide můžete vytvářet moderní aplikace pro Android, iOS, Windows, webové a databázové aplikace a cloudové služby. Můžete nainstalovat úplné rozhraní .NET Framework nebo jenom .NET Core: fragmenty kódu v tomto rychlém startu fungují s oběma. Pokud už máte v počítači nainstalovanou sadu Visual Studio, přeskočte následující dva kroky.
-   1. Stáhněte si [instalační program Visual Studia 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
+- Nainstalujte Visual Studio 2019 Community. Visual Studio 2019 Community je plně vybavené, rozšiřitelné a bezplatné integrované vývojové prostředí (IDE). Pomocí tohoto integrovaného vývojového prostředí (IDE) můžete vytvářet moderní aplikace pro Android, iOS, Windows, webové a databázové aplikace a cloudové služby. Můžete nainstalovat úplné rozhraní .NET Framework nebo jenom .NET Core: fragmenty kódu v tomto rychlém startu fungují s oběma. Pokud už máte v počítači nainstalovanou sadu Visual Studio, přeskočte následující dva kroky.
+   1. Stáhněte si [instalační program sady Visual Studio 2019](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
    2. Spusťte instalační program a podle zobrazených pokynů instalaci dokončete.
 
 ### <a name="configure-visual-studio"></a>**Konfigurace sady Visual Studio**
-1. Z aplikace Visual Studio, Project -> Properties -> Linker -> Obecné > další adresáře knihovny, přidejte adresář \lib\opt (například: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) konektoru C++.
+1. V aplikaci Visual Studio, vlastnosti projektu >-> linker-> obecné > další adresáře knihoven, přidejte adresář "\lib\opt" (například C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) konektoru C++.
 2. V sadě Visual Studio v části Projekt -> Vlastnosti -> C/C++ > Obecné -> Další adresáře k zahrnutí:
-   - Přidejte adresář "\include" konektoru c++ (například: C:\Program Files (x86)\MySQL\MySQL Connector\)C++ 1.1.9\include .
-   - Přidejte kořenový adresář knihovny Boost (například: C:\boost_1_64_0\).
+   - Přidejte adresář "\include" konektoru c++ (například: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include\).
+   - Přidejte kořenový adresář knihovny pro zvýšení úrovně (například: C:\ boost_1_64_0\).
 3. V sadě Visual Studio v části Projekt -> Vlastnosti -> Linker -> Vstup -> Další závislosti přidejte do textového pole **mysqlcppconn.lib**.
 4. Zkopírujte soubor **mysqlcppconn.dll** ze složky knihovny konektoru C++ z kroku 3 do stejného adresáře jako spustitelný soubor aplikace nebo ho přidejte do proměnné prostředí, aby ho vaše aplikace mohla najít.
 
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
@@ -57,7 +57,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
 ## <a name="connect-create-table-and-insert-data"></a>Připojení, vytvoření tabulky a vložení dat
 Pomocí následujícího kódu se připojte a nahrajte data s využitím příkazů **CREATE TABLE** a **INSERT INTO** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody createStatement() a execute() pro spuštění příkazů databáze. 
 
-Nahraďte parametry Host, DBName, User a Password. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte parametry hostitel, DBName, uživatel a heslo. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
 
 ```c++
 #include <stdlib.h>
@@ -131,7 +131,7 @@ int main()
 
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **SELECT** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů select. Dále kód použije metodu next() k přechodu na záznamy ve výsledcích. Nakonec kód použije metody getInt() a getString() k parsování hodnot v záznamu.
 
-Nahraďte parametry Host, DBName, User a Password. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte parametry hostitel, DBName, uživatel a heslo. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
 
 ```c++
 #include <stdlib.h>
@@ -190,7 +190,7 @@ int main()
 ## <a name="update-data"></a>Aktualizace dat
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **UPDATE** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů update. 
 
-Nahraďte parametry Host, DBName, User a Password. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte parametry hostitel, DBName, uživatel a heslo. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
 
 ```c++
 #include <stdlib.h>
@@ -248,7 +248,7 @@ int main()
 ## <a name="delete-data"></a>Odstranění dat
 Pomocí následujícího kódu se připojte a načtěte data s využitím příkazu **DELETE** jazyka SQL. Tento kód pro navázání připojení k MySQL využívá třídu sql::Driver s metodou connect(). Potom kód použije metody prepareStatement() a executeQuery() pro spuštění příkazů delete.
 
-Nahraďte parametry Host, DBName, User a Password. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
+Nahraďte parametry hostitel, DBName, uživatel a heslo. Parametry můžete nahradit hodnotami, které jste zadali při vytváření serveru a databáze. 
 
 ```c++
 #include <stdlib.h>

@@ -1,6 +1,6 @@
 ---
 title: Připojení počítačů s Windows ke službě Azure Security Center
-description: Tento rychlý start ukazuje, jak zřídit agenta Analýzy protokolů v počítači se systémem Windows.
+description: V tomto rychlém startu se dozvíte, jak zřídit agenta Log Analytics v počítači s Windows.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
 ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80435926"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Rychlý start: Připojení počítačů s Windows ke službě Azure Security Center
-Po napalubí předplatného Azure můžete povolit Security Center pro prostředky spuštěné mimo Azure, například místně nebo v jiných cloudech, zřízením agenta Log Analytics.
+Po připojení předplatných Azure můžete povolit Security Center pro prostředky běžící mimo Azure, například místně nebo v jiných cloudech, zřizováním agenta Log Analytics.
 
-Tento rychlý start ukazuje, jak nainstalovat agenta Log Analytics do počítače se systémem Windows.
+V tomto rychlém startu se dozvíte, jak nainstalovat agenta Log Analytics do počítače s Windows.
 
 ## <a name="prerequisites"></a>Požadavky
 Pokud chcete začít využívat Security Center, musíte mít předplatné pro Microsoft Azure. Pokud nemáte předplatné, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 
-Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Standard centra zabezpečení můžete vyzkoušet zdarma. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
+Než začnete s tímto rychlým startem, musíte mít službu Security Center na cenové úrovni Standard. Pokyny k upgradu najdete v tématu [Připojení předplatného Azure ke službě Security Center úrovně Standard](security-center-get-started.md). Můžete vyzkoušet Standard Security Center na žádné náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-windows-computer"></a>Přidání nového počítače s Windows
 
-1. Přihlaste se k [portálu Azure](https://azure.microsoft.com/features/azure-portal/).
-2. V nabídce **Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
+1. Přihlaste se k [Azure Portal](https://azure.microsoft.com/features/azure-portal/).
+2. V nabídce **Microsoft Azure** vyberte možnost **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
    ![Přehled služby Security Center][2]
 
@@ -72,7 +72,7 @@ Teď je potřeba stažený soubor nainstalovat na cílový počítač.
 9. Na stránce **Připraveno k instalaci** zkontrolujte zvolené volby a pak vyberte **Nainstalovat**.
 10. Na stránce **Konfigurace byla úspěšně dokončena** vyberte **Dokončit**.
 
-Po dokončení se v **Ovládacích panelech**zobrazí **agent Analýzy protokolů** . Tam můžete zkontrolovat svou konfiguraci a ověřit připojení agenta.
+Po dokončení se **agent Log Analytics** zobrazí v **Ovládacích panelech**. Tam můžete zkontrolovat svou konfiguraci a ověřit připojení agenta.
 
 Další informace o instalaci a konfiguraci agenta najdete v tématu popisujícím [připojení počítačů s Windows](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
@@ -93,10 +93,10 @@ Odebrání agenta:
 
 1. Otevřete **Ovládací panely**.
 2. Otevřete **Programy a funkce**.
-3. V **části Programy a funkce**vyberte možnost Agent log **Analytics** a klepněte na tlačítko **Odinstalovat**.
+3. V nabídce **programy a funkce**vyberte **Log Analytics agent** a klikněte na **odinstalovat**.
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste zřídit agenta Analýzy protokolů v počítači se systémem Windows. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
+V tomto rychlém startu jste zřídili agenta Log Analytics v počítači se systémem Windows. Další informace o tom, jak používat Security Center, najdete v následném kurzu o konfiguraci zásad zabezpečení a o vyhodnocení zabezpečení vašich prostředků.
 
 > [!div class="nextstepaction"]
 > [Kurz: Definování a vyhodnocení zásad zabezpečení](tutorial-security-policy.md)
