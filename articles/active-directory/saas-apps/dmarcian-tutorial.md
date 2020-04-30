@@ -17,13 +17,13 @@ ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602c885deca429b56417181971ced495831ba5d3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68823694"
 ---
-# <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Kurz: Integrace dmarcian s Azure Active Directory
+# <a name="tutorial-integrate-dmarcian-with-azure-active-directory"></a>Kurz: integrace dmarcian s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat dmarcian s Azure Active Directory (Azure AD). Když integrujete dmarcian s Azure AD, můžete:
 
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci dmarcian do služby Azure AD, musíte přidat dmarcian z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -58,7 +58,7 @@ Pokud chcete nakonfigurovat integraci dmarcian do služby Azure AD, musíte při
 1. Na panelu výsledků vyberte **dmarcian** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí dmarcian pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v dmarcian.
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 5. **[Vytvořte dmarcian Test User](#create-dmarcian-test-user)** -to, abyste měli protějšek B. Simon v dmarcian, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -114,7 +114,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="configure-dmarcian-sso"></a>Konfigurace jednotného přihlašování dmarcian
 
@@ -155,19 +155,19 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     * Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k dmarcian.
 
@@ -175,7 +175,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **dmarcian**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -205,19 +205,19 @@ Aby se uživatelé Azure AD mohli přihlašovat k dmarcian, musí se zřídit v 
 
     ![Nový uživatel](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
-    a. Do textového pole **e-mail nového uživatele** zadejte e-maily uživatele, jako je **\@brittasimon contoso.com**.
+    a. Do textového pole **E-mail nového uživatele** zadejte e-maily uživatele, jako je **\@brittasimon contoso.com**.
 
     b. Pokud chcete uživateli udělit práva pro správu, vyberte **nastavit uživatele jako správce**.
 
-    c. Klikněte na tlačítko **přidat uživatele**.
+    c. Klikněte na **Add User** (Přidat uživatele).
 
 ### <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Když na přístupovém panelu kliknete na dlaždici dmarcian, měli byste se automaticky přihlásit k dmarcian, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

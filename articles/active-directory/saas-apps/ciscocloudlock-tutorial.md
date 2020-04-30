@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Azure Active Directory integrace s prostředky infrastruktury zabezpečení cloudu | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a zabezpečení infrastruktury cloudu.
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a prostředky infrastruktury zabezpečení cloudu.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,13 +17,13 @@ ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
-ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/03/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70213604"
 ---
-# <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Kurz: Integrace prostředků infrastruktury zabezpečení cloudu s Azure Active Directory
+# <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Kurz: integrace prostředků infrastruktury cloudového zabezpečení s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat infrastruktury zabezpečení cloudu s Azure Active Directory (Azure AD). Při integraci prostředků infrastruktury cloudového zabezpečení s Azure AD můžete:
 
@@ -46,11 +46,11 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 * Prostředky infrastruktury zabezpečení cloudu podporují jednotné přihlašování v rámci **SP**
 
-## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>Přidání The Fabric zabezpečení cloudu z Galerie
+## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>Přidání prostředků infrastruktury cloudového zabezpečení z Galerie
 
-Konfigurace integrace The Fabric zabezpečení cloudu do služby Azure AD, budete muset přidat The Fabric zabezpečení cloudu z Galerie na váš seznam spravovaných aplikací SaaS.
+Ke konfiguraci integrace prostředků infrastruktury cloudového zabezpečení do služby Azure AD je nutné přidat prostředky infrastruktury Cloud Security z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -58,7 +58,7 @@ Konfigurace integrace The Fabric zabezpečení cloudu do služby Azure AD, budet
 1. Vyberte **prostředek Cloud Security Fabric** z panelu výsledků a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí prostředků infrastruktury zabezpečení cloudu pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v prostředcích infrastruktury zabezpečení cloudu.
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 5. **[Vytvořte testovacího uživatele prostředků infrastruktury cloudového zabezpečení](#create-the-cloud-security-fabric-test-user)** , abyste měli protějšek B. Simon v prostředcích infrastruktury zabezpečení cloudu, která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -98,11 +98,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
     > [!NOTE]
-    > Hodnota identifikátoru není skutečný. Identifikátor skutečné zaktualizujte příslušnou hodnotu. Kontakt [tým podpory klient Fabric zabezpečení cloudu](mailto:support@cloudlock.com) má být získána hodnota. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnota identifikátoru není reálné číslo. Aktualizujte hodnotu skutečným identifikátorem. Pokud chcete získat hodnotu, obraťte [se na tým podpory pro klienta podpory Cloud Security Fabric](mailto:support@cloudlock.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 5. Chcete-li upravit možnosti **podepisování** podle vašich požadavků, klikněte na tlačítko **Upravit** a otevřete dialogové okno **podpisový certifikát SAML** .
 
@@ -120,28 +120,28 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 ### <a name="configure-the-cloud-security-fabric-sso"></a>Konfigurace jednotného přihlašování prostředků infrastruktury cloudového zabezpečení
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **prostředků infrastruktury zabezpečení cloudu** , je potřeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro cloudový Security Fabric](mailto:support@cloudlock.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **prostředků infrastruktury zabezpečení cloudu** , je potřeba odeslat stažený **kód XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory pro cloudový Security Fabric](mailto:support@cloudlock.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k prostředkům infrastruktury Cloud Security.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **The Fabric zabezpečení cloudu**.
+1. V seznamu aplikace vyberte **prostředky infrastruktury zabezpečení cloudu**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -153,17 +153,17 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>Vytvoření testovacího uživatele prostředků infrastruktury cloudového zabezpečení
 
-V této části vytvoříte uživatele s názvem B. Simon v prostředcích infrastruktury zabezpečení cloudu. Pokud chcete přidat uživatele na platformě Cloud Security Fabric, pracujte s [týmem podpory infrastruktury zabezpečení cloudu](mailto:support@cloudlock.com) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon v prostředcích infrastruktury zabezpečení cloudu. Pokud chcete přidat uživatele na platformě Cloud Security Fabric, pracujte s [týmem podpory infrastruktury zabezpečení cloudu](mailto:support@cloudlock.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na dlaždici prostředky Cloud Security Fabric na přístupovém panelu byste se měli automaticky přihlášeni k prostředkům infrastruktury cloudového zabezpečení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

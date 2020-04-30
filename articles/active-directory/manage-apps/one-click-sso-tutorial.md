@@ -1,6 +1,6 @@
 ---
-title: Konfigurace aplikace Azure Marketplace jedním kliknutím na jedno přihlášení (SSO) | Dokumenty společnosti Microsoft
-description: Kroky pro konfiguraci s asoýrek pro vaši aplikaci jedním kliknutím z Azure Marketplace.
+title: Konfigurace jednotného přihlašování (SSO) vaší aplikace Azure Marketplace jedním kliknutím | Microsoft Docs
+description: Postup pro konfiguraci jednotného přihlašování (SSO) pro vaši aplikaci na Azure Marketplace.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67872427"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>Konfigurace aplikace jedním kliknutím pro jednotné přihlašování
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Konfigurace aplikace jedním kliknutím jednotného přihlašování
 
- V tomto kurzu se dozvíte, jak provádět konfiguraci jednotného přihlašování (SSO) jedním kliknutím pro aplikace podporující SAML, Azure Active Directory (Azure AD) z Azure Marketplace.
+ V tomto kurzu se dozvíte, jak v Azure Marketplace provést konfiguraci jednotného přihlašování (SSO) pro aplikace založené na SAML, Azure Active Directory (Azure AD).
 
-## <a name="introduction-to-one-click-sso"></a>Úvod k jednorázovému připomenutí při pořizování a připojetí
+## <a name="introduction-to-one-click-sso"></a>Úvod k jednotnému přihlašování jedním kliknutím
 
-Funkce jednotného přihlašování jedním kliknutím je navržena tak, aby nakonfigurovala jednotné přihlašování pro aplikace Azure Marketplace, které podporují protokol SAML. Na stránce konfigurace služby Azure AD SSO tato možnost umožňuje automaticky nakonfigurovat metadata Azure AD na straně aplikace. Tímto způsobem můžete rychle nastavit přihlašování s minimálním ručním úsilím.
+Funkce jednotného přihlašování jedním kliknutím je určená ke konfiguraci jednotného přihlašování pro Azure Marketplace aplikace, které podporují protokol SAML. Na stránce konfigurace jednotného přihlašování služby Azure AD vám tato možnost umožňuje automaticky konfigurovat metadata Azure AD na straně aplikace. Tímto způsobem můžete rychle nastavit jednotné přihlašování s minimálním ručním úsilím.
 
-## <a name="advantages-of-one-click-sso"></a>Výhody jednorázového připomenutí při připomenutí
+## <a name="advantages-of-one-click-sso"></a>Výhody jednotného přihlašování jedním kliknutím
 
-- Rychlá konfigurace přihlašování aplikací Azure Marketplace, které vyžadují ruční nastavení na straně aplikace.
-- Efektivnější a přesnější konfigurace s připojou.
-- Pro nastavení není nutná žádná partnerská komunikace ani podpora. Aplikace poskytuje ui pro konfiguraci SAML.
+- Rychlá konfigurace jednotného přihlašování Azure Marketplace aplikací, které vyžadují ruční instalaci na straně aplikace
+- Efektivnější a přesná konfigurace jednotného přihlašování.
+- Pro instalaci není nutná žádná komunikace s partnerem ani podpora. Aplikace poskytuje uživatelské rozhraní pro konfiguraci SAML.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Aktivní předplatné aplikace ke konfiguraci pomocí služby SSO. Potřebujete také přihlašovací údaje správce.
-- V prohlížeči je **nainstalováno rozšíření Moje aplikace zabezpečené přihlášení** od společnosti Microsoft. Další informace najdete v [tématu Přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+- Aktivní předplatné aplikace, které se má nakonfigurovat pomocí jednotného přihlašování. Budete také potřebovat přihlašovací údaje správce.
+- **Rozšíření zabezpečené přihlašování aplikace** z Microsoftu nainstalované v prohlížeči Další informace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="one-click-sso-configuration-steps"></a>Kroky konfigurace přistaň jedním kliknutím
+## <a name="one-click-sso-configuration-steps"></a>Kroky pro konfiguraci jednotného přihlašování jedním kliknutím
 
 1. Přidejte aplikaci z Azure Marketplace.
 
-2. Vyberte **možnost Jednotné přihlašování**.
+2. Vyberte **jednotné přihlašování**.
 
 3. Vyberte **Povolit jednotné přihlašování**.
 
-4. Naplnění povinných hodnot konfigurace v části **Základní konfigurace SAML.**
+4. Naplňte hodnoty povinných konfigurací do **základního konfiguračního oddílu SAML** .
 
     > [!NOTE]
-    > Pokud aplikace má vlastní deklarace identity, které je třeba nakonfigurovat, zpracovat je před provedením jedním kliknutím přihlašování.
+    > Pokud má aplikace vlastní deklarace identity, které je třeba nakonfigurovat, zpracujte je před provedením jednotného přihlašování jedním kliknutím.
 
-5. Pokud je pro vaši aplikaci Azure Marketplace dostupná funkce přihlašované jedním kliknutím, zobrazí se následující obrazovka. Rozšíření prohlížeče Zabezpečené **přihlášení ke službě Moje aplikace** bude pravděpodobně nutné nainstalovat výběrem **možnosti Nainstalovat rozšíření**.
+5. Pokud je pro vaši aplikaci Azure Marketplace dostupná funkce jednotného přihlašování (SSO), zobrazí se následující obrazovka. Je možné, že bude nutné nainstalovat **rozšíření prohlížeče pro zabezpečené přihlašování k aplikacím** výběrem možnosti **nainstalovat rozšíření**.
 
-   ![Instalace rozšíření zabezpečeného přihlašovacího prohlížeče my Apps](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
+   ![Nainstalovat zabezpečené přihlašovací rozšíření prohlížeče mých aplikací](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Po přidání rozšíření do prohlížeče vyberte **nastavit \<název\>aplikace**. Po přesměrování na portál pro správu aplikací se přihlaste jako správce.
+6. Po přidání rozšíření do prohlížeče vyberte ** \<nastavit název\>aplikace**. Až budete přesměrováni na portál pro správu aplikací, přihlaste se jako správce.
 
-   ![Nastavení názvu aplikace](./media/one-click-sso-tutorial/setup-sso.png)
+   ![Nastavit název aplikace](./media/one-click-sso-tutorial/setup-sso.png)
 
-7. Rozšíření prohlížeče automaticky konfiguruje sponese v aplikaci. Potvrďte výběrem možnosti **Ano**.
+7. Rozšíření prohlížeče automaticky nakonfiguruje jednotné přihlašování pro aplikaci. Potvrďte výběrem možnosti **Ano**.
 
-   ![Uložení automaticky vyplněných dat](./media/one-click-sso-tutorial/save-autopopulate.png)
+   ![Ukládání automaticky vyplněných dat](./media/one-click-sso-tutorial/save-autopopulate.png)
 
    > [!NOTE]
-   > Pokud konfigurace přihlašuje služby Obecné zabezpečení pro vaši aplikaci vyžaduje další kroky, postupujte podle pokynů k provedení těchto kroků.
+   > Pokud konfigurace jednotného přihlašování pro aplikaci vyžaduje další kroky, postupujte podle pokynů k provedení těchto kroků.
 
-8. Po dokončení konfigurace vyberte **OK,** chcete-li změny uložit.
+8. Po dokončení konfigurace kliknutím na **tlačítko OK** změny uložte.
 
-   ![Uložení automaticky vyplněných dat](./media/one-click-sso-tutorial/save-data.png)
+   ![Uložit automaticky vyplněná data](./media/one-click-sso-tutorial/save-data.png)
 
-9. Zobrazí se potvrzovací okno, které vás dozví, že nastavení připřiponete si úspěšně.
+9. V potvrzovacím okně se zobrazí informace o tom, že nastavení jednotného přihlašování je úspěšně nakonfigurované.
 
-   ![Konfigurace přisávaní při schy](./media/one-click-sso-tutorial/sso-configured.png)
+   ![Nakonfigurované jednotné přihlašování](./media/one-click-sso-tutorial/sso-configured.png)
 
-10. Po úspěšné konfiguraci jste odhlášeni z aplikace a vráceni na portál Azure.
+10. Po úspěšném dokončení konfigurace se odhlásíte z aplikace a vrátíte se do Azure Portal.
 
-11. Můžete vybrat **Test k** testování jednotného přihlášení.
+11. Můžete vybrat **test** pro otestování jednotného přihlašování.
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-* [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Co je rozšíření prohlížeče Zabezpečené přihlášení ke službě Moje aplikace?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+* [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+* [Jaké jsou rozšíření prohlížeče pro zabezpečené přihlašování k aplikacím?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  

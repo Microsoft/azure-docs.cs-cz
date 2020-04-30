@@ -17,10 +17,10 @@ ms.date: 08/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e908cb76a57f027494230edc648b69da0730ac27
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70164241"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onit"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s Onit
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat Onit s Azure Active Directory (Azure A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Onit do služby Azure AD, musíte přidat Onit z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -70,7 +70,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte Onit Test User](#create-onit-test-user)** -to, abyste měli protějšek B. Simon v Onit, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -82,9 +82,9 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<sub-domain>.onit.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<sub-domain>.onit.com`
 
-    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru: `https://<sub-domain>.onit.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<sub-domain>.onit.com`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Onit](https://www.onit.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -137,13 +137,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 2. V nabídce v horní části klikněte na **Správa**.
    
-    ![Řízení](./media/onit-tutorial/IC791174.png "Správa")
+    ![Správa](./media/onit-tutorial/IC791174.png "Správa")
 
 3. Klikněte na **Upravit společnost**.
    
     ![Upravit společnost](./media/onit-tutorial/IC791175.png "Upravit společnost")
    
-4. Klikněte na kartu **zabezpečení** .
+4. Klikněte na kartu **Zabezpečení**.
     
     ![Upravit informace o společnosti](./media/onit-tutorial/IC791176.png "Upravit informace o společnosti")
 
@@ -167,13 +167,13 @@ Aby se uživatelé Azure AD mohli přihlašovat k Onit, musí se zřídit v Onit
 
 1. Přihlaste se k webu **Onit** společnosti jako správce.
 
-2. Klikněte na **Přidat uživatele**.
+2. Klikněte na **Add User** (Přidat uživatele).
 
-    ![Řízení](./media/onit-tutorial/IC791180.png "Správa")
+    ![Správa](./media/onit-tutorial/IC791180.png "Správa")
 
 3. Na stránce **Přidat uživatelský** dialog proveďte následující kroky:
 
-    ![Přidat uživatele](./media/onit-tutorial/IC791181.png "Přidání uživatele")
+    ![Přidání uživatele](./media/onit-tutorial/IC791181.png "Přidání uživatele")
 
     a. Zadejte **jméno** a **e-mailovou adresu** platného účtu Azure AD, který chcete zřídit do souvisejících textových polí.
 
@@ -188,7 +188,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici Onit, měli byste se automaticky přihlásit k Onit, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

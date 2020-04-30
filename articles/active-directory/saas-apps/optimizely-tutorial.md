@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s optimalizátorem | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Optimalizátorně.
+title: 'Kurz: integrace s Azure Active Directory s optimalizací | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a optimalizuje.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,244 +16,244 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e25c615e040dd4359e278b95045fbc71ca60ef1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68943956"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Integrace Služby Azure Active Directory s optimalizátorem
+# <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: integrace s Azure Active Directory s optimalizací
 
-V tomto kurzu se dozvíte, jak optimalizovat s Azure Active Directory (Azure AD).
-Integrace optimalizujte s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se naučíte integrovat optimalizaci s Azure Active Directory (Azure AD).
+Integrace s Azure AD nabízí následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Optimizely.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali k optimalizujte (jednotné přihlašování) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají k optimalizaci přístup.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k optimalizaci (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s optimalizujte, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s optimalizací potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Optimalizmativně jednopřihlášení povoleno předplatné
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Optimalizuje odběr s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Optimizely podporuje **sp** inicioval SSO
+* Optimalizace podporuje jednotné přihlašování spouštěné přes **SP**
 
-## <a name="adding-optimizely-from-the-gallery"></a>Přidání optimalizum z galerie
+## <a name="adding-optimizely-from-the-gallery"></a>Optimalizace se optimalizuje z galerie.
 
-Chcete-li nakonfigurovat integraci Optimalizujte do Azure AD, musíte přidat Optimizely z galerie do seznamu spravovaných aplikací SaaS.
+Ke konfiguraci integrace optimalizuje do Azure AD je potřeba přidat optimalizaci z Galerie do seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat optimalizu z galerie, proveďte následující kroky:**
+**Chcete-li přidat optimalizaci z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Optimalizma**, z panelu výsledků vyberte **Optimalizovat** a pak klepnutím na **tlačítko Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **optimalizované**, vyberte **optimalizuje** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![Optimalizace v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí optimalizu založeného na testovacím uživateli s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v optimalizu.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s optimalizací na základě testovacího uživatele s názvem **Britta Simon**.
+Aby se jednotné přihlašování fungovalo, je potřeba vytvořit odkazový vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci optimalizace.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD s optimalizátorem, musíte dokončit následující stavební bloky:
+Ke konfiguraci a testování jednotného přihlašování Azure AD s optimalizací je potřeba, abyste dokončili tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace optimalizmálně jednotného přihlašování](#configure-optimizely-single-sign-on)** – pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořit optimalizujte testování uživatele](#create-optimizely-test-user)** – mít protějšek Britta Simon v Optimizely, který je propojen s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte optimalizované jednotné přihlašování](#configure-optimizely-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte optimalizuje testovacího uživatele](#create-optimizely-test-user)** , abyste měli protějšek Britta Simon v optimalizuje, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí technologie Optimizely, proveďte následující kroky:
+Pokud chcete jednotné přihlašování Azure AD nakonfigurovat s optimalizací, proveďte následující kroky:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)na stránce **Optimalizace** integrace aplikací vyberte **Jedno přihlášení**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **optimalizace** integrace aplikací vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Optimalizujte informace o jednotlivých přihlašování k doméně a adresám URL](common/sp-identifier.png)
+    ![Optimalizuje informace jednotného přihlašování v doménových a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **Adresa URL přihlášení** zadejte adresu URL pomocí následujícího vzoru:`https://app.optimizely.net/<instance name>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.optimizely.net/<instance name>`
 
-    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`urn:auth0:optimizely:contoso`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`urn:auth0:optimizely:contoso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Hodnotu aktualizujete skutečnou přihlašovací adresou URL a identifikátorem, což je vysvětleno dále v kurzu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Tuto hodnotu aktualizujete skutečnou přihlašovací adresou URL a identifikátorem, který je vysvětlen později v tomto kurzu. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Aplikace Optimizely očekává kontrolní výrazy SAML v určitém formátu, který vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky zobrazuje seznam výchozích atributů. Kliknutím na ikonu **Upravit** otevřete dialogové okno **Atributy uživatele.**
+5. Vaše optimalizovaná aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno **atributy uživatele** .
 
     ![image](common/edit-attribute.png)
 
-6. Kromě výše, Optimizely aplikace očekává několik dalších atributů, které mají být předány zpět v odpovědi SAML. V části **Deklarace identity uživatelů** v dialogovém okně **Atributy uživatele** přidejte atribut tokenu SAML následujícím postupem, jak je znázorněno v následující tabulce:
+6. Kromě toho aplikace optimalizované pro optimalizaci očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Name (Název) | Atribut zdroje |
+    | Název | Zdrojový atribut |
     | ---------------| --------------- |
-    | e-mail | user.mail |
+    | e-mail | uživatel. pošta |
     
-    a. Kliknutím na **Přidat novou deklaraci** otevřete dialogové okno **Spravovat deklarace identity uživatelů.**
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Do textového pole **Název** zadejte název atributu zobrazený pro daný řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Ponechejte **obor názvů** prázdný.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Ze seznamu **atributů Zdroj** zadejte hodnotu atributu zobrazenou pro daný řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Klikněte na **Ok.**
+    f. Klikněte na **OK** .
 
     g. Klikněte na **Uložit**.
 
-4. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavit optimalizu** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **nastavit s optimalizací** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-optimizely-single-sign-on"></a>Konfigurovat optimalizovaně jednotné přihlašování
+### <a name="configure-optimizely-single-sign-on"></a>Konfigurovat optimalizaci jednotného přihlašování
 
-1. Chcete-li nakonfigurovat jednotné přihlašování na straně **Optimizely,** obraťte se na správce účtu Optimizely a poskytněte stažený **certifikát (Base64)** a příslušné zkopírované adresy URL.
+1. Pokud chcete jednotné přihlašování nakonfigurovat na straně **optimalizace** , obraťte se na svého správce optimalizovaného účtu a poskytněte stažený **certifikát (Base64)** a příslušné zkopírované adresy URL.
 
-2. V reakci na váš e-mail, Optimizely poskytuje přihlašovací adresu URL (SP-inicioval SSO) a identifikátor (ID entity poskytovatele služeb) hodnoty.
+2. V reakci na váš e-mail vám optimalizuje i adresu URL pro přihlášení (SSO iniciované nástrojem SP) a identifikátor (ID entity poskytovatele služeb).
 
-    a. Zkopírujte **adresu URL služby SSO iniciované sp,** kterou poskytuje Optimizely, a vložte do textového pole **Přihlašovací adresa URL** v části Základní **konfigurace SAML** na webu Azure Portal.
+    a. Zkopírujte **adresu URL jednotného přihlašování iniciované nástrojem SP** a vložte ji do textového pole **Signing URL** v **základní části Konfigurace SAML** na Azure Portal.
 
-    b. Zkopírujte **ID entity poskytovatele služeb** poskytované optimalizum a vložte do textového pole **Identifikátor** v části Základní **konfigurace SAML** na webu Azure Portal.
+    b. Zkopírujte **ID entity poskytovatele služby** poskytnuté optimalizací a vložte je do textového pole **identifikátoru** v **základní části Konfigurace SAML** na Azure Portal.
 
-3. V jiném okně prohlížeče se přihlaste k aplikaci Optimizely.
+3. V jiném okně prohlížeče se přihlaste k optimalizované aplikaci.
 
-4. V pravém horním rohu klikněte na název účtu a potom na **Nastavení účtu**.
+4. Klikněte na název účtu v pravém horním rohu a pak na **Nastavení účtu**.
 
-    ![Jednotné přihlašování azure ad](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Jednotné přihlašování Azure AD](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
-5. Na kartě Účet zaškrtněte políčko **Povolit jednotné přihlašování** v části Jednotné přihlášení v části **Přehled.**
+5. Na kartě účet zaškrtněte políčko **Povolit jednotné přihlašování** v části jednotné přihlašování v části **Přehled** .
   
-    ![Jednotné přihlašování azure ad](./media/optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Jednotné přihlašování Azure AD](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
-6. Klikněte na **Uložit.**
+6. Klikněte na **Uložit** .
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
+    b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu Optimizely.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k optimalizaci.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Optimalizovat**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **optimalizovat**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **optimalizovat**.
+2. V seznamu aplikace vyberte **optimalizovat**.
 
-    ![Odkaz Optimalizovat v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz optimalizovaného v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-optimizely-test-user"></a>Vytvořit optimalizovaný test uživatele
+### <a name="create-optimizely-test-user"></a>Vytvořit optimalizuje testovacího uživatele
 
-V této části vytvoříte uživatele s názvem Britta Simon v Optimizely.
+V této části vytvoříte v optimalizuje uživatele s názvem Britta Simon.
 
-1. Na domovské stránce vyberte **kartu Spolupracovníci.**
+1. Na domovské stránce vyberte kartu **spolupracovníci** .
 
-2. Chcete-li do projektu přidat nového **spolupracovníka,** klepněte na tlačítko Nový spolupracovník .
+2. Chcete-li do projektu přidat nového spolupracovníka, klikněte na tlačítko **Nový spolupracovníka**.
    
     ![Vytvoření testovacího uživatele Azure AD](./media/optimizely-tutorial/create_aaduser_10.png)
 
-3. Vyplňte e-mailovou adresu a přiřaďte jim roli. Klepněte na **tlačítko Pozvat**.
+3. Zadejte e-mailovou adresu a přiřaďte jim roli. Klikněte na **pozvat**.
 
     ![Vytvoření testovacího uživatele Azure AD](./media/optimizely-tutorial/create_aaduser_11.png)
 
-4. Obdrží e-mailovou pozvánku. Pomocí e-mailové adresy se musí přihlásit do optimizely.
+4. Obdrží pozvání k odeslání e-mailu. Pomocí e-mailové adresy se musí přihlásit k optimalizaci.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Optimizely na přístupovém panelu, měli byste být automaticky přihlášeni k Optimizely, pro které nastavíte přiřazovací ho. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici optimalizované k optimalizaci, měli byste být automaticky přihlášeni k optimalizaci, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

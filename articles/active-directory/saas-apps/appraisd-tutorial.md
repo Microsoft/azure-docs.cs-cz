@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Appraisd | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Appraisd.
+title: 'Kurz: Azure Active Directory integrace s hodnocením | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a hodnocení.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,193 +17,193 @@ ms.date: 05/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 08453928ab000cf906c451fa6c1cd619a00ee4ca
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67561200"
 ---
-# <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Kurz: Appraisd integrovat s Azure Active Directory
+# <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Kurz: integrace vyhodnocení pomocí Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Appraisd s Azure Active Directory (Azure AD). Když integrujete Appraisd s Azure AD, můžete:
+V tomto kurzu se naučíte, jak integrovat vyhodnocení pomocí Azure Active Directory (Azure AD). Když integraci vyhodnotí s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Appraisd.
-* Aby uživatelé mohli být automaticky přihlášeni k Appraisd pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k posouzení.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k vyhodnocení jejich účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Appraisd jednotné přihlašování (SSO) povolené předplatné.
+* Vyhodnocen odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Appraisd **SP a zprostředkovatele identity** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Vyhodnocení podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
-## <a name="adding-appraisd-from-the-gallery"></a>Přidání Appraisd z Galerie
+## <a name="adding-appraisd-from-the-gallery"></a>Přidání hodnocení z Galerie
 
-Konfigurace integrace Appraisd do služby Azure AD, budete muset přidat Appraisd z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci hodnocení do Azure AD, musíte přidat vyhodnocenou z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Appraisd** do vyhledávacího pole.
-1. Vyberte **Appraisd** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **hodnocení** .
+1. Vyberte možnost **vyhodnoceno** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s Appraisd pomocí testovacího uživatele volá **B. Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Appraisd.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD s hodnocením pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v hodnocení.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Appraisd, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí vyhodnocení, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Appraisd](#configure-appraisd)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B. Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B. Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Appraisd](#create-appraisd-test-user)**  mít protějšek B. Simon Appraisd, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Konfigurace se vyhodnotí](#configure-appraisd)** tak, že se na straně aplikace nakonfigurují nastavení jednotného přihlašování.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+5. **[Vytvořte vyhodnoceného testovacího uživatele](#create-appraisd-test-user)** , který má protějšek B. Simon ve vyhodnoceném, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Appraisd** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **vyhodnocená** integrace aplikací najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části aplikace je předem nakonfigurovaný a potřebné adresy URL se už předem vyplní s Azure. Uživatel musí po kliknutí na tlačítko Uložit uložte konfiguraci a proveďte následující kroky:
+4. V **základní sekci konfigurace SAML** je aplikace předem nakonfigurovaná a potřebné adresy URL už jsou předem naplněné pomocí Azure. Uživatel musí konfiguraci uložit kliknutím na tlačítko Uložit a provedením následujících kroků:
 
-    a. Klikněte na tlačítko **nastavit další adresy URL**.
+    a. Klikněte na **nastavit další adresy URL**.
 
-    b. V **stav přenosu** textové pole, zadejte adresu URL: `<TENANTCODE>`
+    b. Do textového pole **stav přenosu** zadejte adresu URL:`<TENANTCODE>`
 
-    c. Pokud chcete nakonfigurovat aplikace v **SP** zahájeno v režimu **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://app.appraisd.com/saml/<TENANTCODE>`
+    c. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** , zadejte do textového pole **přihlašovací adresa** URL adresu URL pomocí následujícího vzoru:`https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
-    > Na stránce Konfigurace jednotného přihlašování Appraisd, který je vysvětlen později v tomto kurzu získáte skutečnou hodnotu přihlašovací adresu URL a stav přenosu.
+    > Na stránce pro konfiguraci hodnocení jednotného přihlašování získáte skutečnou adresu URL a stav přenosu, který je vysvětlen dále v tomto kurzu.
 
-1. Appraisd aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, přičemž **nameidentifier** je namapována na žádnou **user.userprincipalname**. Očekává, že aplikace Appraisd **nameidentifier** namapovat s **user.mail**, takže budete muset upravit mapování atributů po kliknutí na **upravit** ikonu a změňte mapování atributů.
+1. Vyhodnocená aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů, kde **NameIdentifier** je mapován pomocí **User. userPrincipalName**. Vyhodnocená aplikace očekává, že **NameIdentifier** budou namapovány pomocí **User. mail**, takže je nutné upravit mapování atributů kliknutím na ikonu **Upravit** a změnit mapování atributů.
 
     ![image](common/edit-attribute.png)
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. Na **nastavení Appraisd** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **nastavit hodnocení** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-appraisd"></a>Konfigurace Appraisd
+### <a name="configure-appraisd"></a>Konfigurace hodnocení
 
-1. K automatizaci konfigurace v rámci Appraisd, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+1. Chcete-li automatizovat konfiguraci v rámci hodnocení, je nutné nainstalovat **rozšíření prohlížeče zabezpečeného přihlašování aplikace** kliknutím na tlačítko **nainstalovat rozšíření**.
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení Appraisd** nasměruje na Appraisd aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do Appraisd. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 – 7.
+2. Po přidání rozšíření do prohlížeče klikněte na **nastavení hodnocení** , které vás přesměruje na vyhodnocenou aplikaci. Odtud zadejte přihlašovací údaje správce, které se přihlásí k vyhodnocení. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-7.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-3. Pokud chcete nastavit Appraisd ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti Appraisd jako správce a proveďte následující kroky:
+3. Pokud chcete nastavit hodnocení ručně, otevřete nové okno webového prohlížeče a přihlaste se k vaší vyhodnocené společnosti jako správce a proveďte následující kroky:
 
-4. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **konfigurace**.
+4. V pravém horním rohu stránky klikněte na ikonu **Nastavení** a potom přejděte ke **konfiguraci**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
-5. V levé nabídce klikněte na **SAML jednotného přihlašování**.
+5. V levé části nabídky klikněte na **jednotné přihlašování SAML**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
-6. Na **konfigurace SAML 2.0 Single Sign-On** stránce, proveďte následující kroky:
+6. Na stránce **Konfigurace jednotného přihlašování SAML 2,0** proveďte následující kroky:
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Kopírovat **výchozí stav přenosu** hodnotu a vložte ji **stav přenosu** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
+    a. Zkopírujte **výchozí hodnotu stavu přenosu** a vložte ji do textového pole **stav přenosu** v **základní konfiguraci SAML** na Azure Portal.
 
-    b. Kopírovat **spouštěných službou přihlašovací adresa URL** hodnotu a vložte ji **přihlašovací adresa URL** textového pole v **základní konfiguraci SAML** na portálu Azure portal.
+    b. Zkopírujte hodnotu **adresy URL pro přihlášení iniciované službou** a vložte ji do textového pole **přihlašovací adresa URL** v **základní konfiguraci SAML** na Azure Portal.
 
-7. Přejděte dolů na stejné stránce v části **identifikace uživatelů**, proveďte následující kroky:
+7. Posuňte se dolů na stejnou stránku pod položkou **identifikovat uživatele**, proveďte následující kroky:
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
-    a. V **jednotné přihlašování – adresa URL zprostředkovatele Identity** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z webu Azure portal a klikněte na tlačítko **Uložit**.
+    a. V poli **Adresa URL jednotného přihlašování zprostředkovatele identity** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal, a klikněte na **Uložit**.
 
-    b. V **adresa URL Vystavitel zprostředkovatele Identity** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal a klikněte na **Uložit**.
+    b. V poli **Adresa URL vydavatele zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal, a klikněte na **Uložit**.
 
-    c. V poznámkovém bloku otevřete base-64 kódovaných certifikát, který jste si stáhli z webu Azure portal, zkopírujte jeho obsah a vložte jej do **certifikát X.509** pole a klikněte na tlačítko **Uložit**.
+    c. V programu Poznámkový blok otevřete certifikát s kódováním Base-64, který jste stáhli z Azure Portal, zkopírujte jeho obsah a vložte ho do pole **certifikát X. 509** a klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B. Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B. Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B. Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B. Simon k udělení přístupu k Appraisd použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k vyhodnocenému.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Appraisd**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte možnost **Hodnoceno**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B. Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-appraisd-test-user"></a>Vytvoření Appraisd testovacího uživatele
+### <a name="create-appraisd-test-user"></a>Vytvořit hodnoceného testovacího uživatele
 
-Povolení služby Azure AD uživatelé přihlašují k Appraisd, se musí být poskytnuty do Appraisd. Zřizování v Appraisd, je ruční úlohy.
+Aby se uživatelé Azure AD mohli přihlásit k posouzení, musí se zřídit pro vyhodnocení. V rámci hodnocení je zřizování ručním úkolem.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k Appraisd jako správce zabezpečení.
+1. Přihlaste se k posouzení jako správce zabezpečení.
 
-2. V horní části stránky, klikněte na **nastavení** ikonu, přejděte na **Centrum správy**.
+2. V pravém horním rohu stránky klikněte na ikonu **Nastavení** a potom přejděte do **centra pro správu**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. Na panelu nástrojů v horní části stránky klikněte na tlačítko **lidé**, přejděte na **přidat nového uživatele**.
+3. Na panelu nástrojů v horní části stránky klikněte na tlačítko **lidé**a pak přejděte k části **Přidání nového uživatele**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
-4. Na **přidat nového uživatele** stránce, proveďte následující kroky:
+4. Na stránce **Přidat nového uživatele** proveďte následující kroky:
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
-    a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako například **Britta**.
 
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **simon**.
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je `B. Simon@contoso.com`.
+    c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B. Simon@contoso.com`.
 
     d. Klikněte na **Přidat uživatele**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice Appraisd na přístupovém panelu, můžete by měl být automaticky přihlášeni k Appraisd, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když vyberete vyhodnocenou dlaždici na přístupovém panelu, měli byste se automaticky přihlásit k vyhodnocení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

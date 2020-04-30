@@ -1,6 +1,6 @@
 ---
-title: Balíček Apache HBase & podnikové zabezpečení – Azure HDInsight
-description: Kurz – Naučte se nakonfigurovat zásady Apache Ranger pro HBase v Azure HDInsight s balíčkem podnikového zabezpečení.
+title: Apache HBA & Balíček zabezpečení podniku – Azure HDInsight
+description: Kurz – Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro adaptéry HBA v Azure HDInsight pomocí Balíček zabezpečení podniku.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,35 +8,35 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73044646"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBase v HDInsightu pomocí balíčku podnikového zabezpečení
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Kurz: Konfigurace zásad Apache HBA v HDInsight pomocí Balíček zabezpečení podniku
 
-Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro clustery Apache HBase (Enterprise Security Package). ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger omezit přístup k různým rodinám sloupců v tabulce HBase.
+Přečtěte si, jak nakonfigurovat zásady Apache Ranger pro clustery Apache HBA pro Balíček zabezpečení podniku (ESP). ESP clustery jsou připojené k doméně, což uživatelům umožňuje ověření pomocí přihlašovacích údajů do domény. V tomto kurzu vytvoříte dvě zásady Ranger, abyste omezili přístup k různým rodinám sloupců v tabulce HBA.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření uživatelů domén
 > * Vytvoření zásad Ranger
-> * Vytvoření tabulek v clusteru HBase
+> * Vytváření tabulek v clusteru HBA
 > * Testování zásad Ranger
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
-* Přihlaste se k [portálu Azure](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-* Vytvořte [cluster HDInsight HBase s balíčkem enterprise security package](apache-domain-joined-configure-using-azure-adds.md).
+* Vytvořte [cluster HDInsight HBA pomocí balíček zabezpečení podniku](apache-domain-joined-configure-using-azure-adds.md).
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Připojení k uživatelskému rozhraní správce Apache Ranger
 
-1. Z prohlížeče se připojte k uživatelskému rozhraní Ranger Admin pomocí adresy URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Nezapomeňte změnit `<ClusterName>` název clusteru HBase.
+1. Z prohlížeče se připojte k uživatelskému rozhraní Ranger Admin pomocí adresy URL `https://<ClusterName>.azurehdinsight.net/Ranger/`. Nezapomeňte změnit `<ClusterName>` název clusteru HBA.
 
     > [!NOTE]  
     > Přihlašovací údaje k Rangeru nejsou stejné jako údaje ke clusteru Hadoop. Abyste zabránili prohlížeči v použití přihlašovacích údajů clusteru Hadoop uložených v mezipaměti, použijte pro připojení k uživatelskému rozhraní správce Ranger nové okno prohlížeče v režimu InPrivate.
@@ -45,11 +45,11 @@ V tomto kurzu se naučíte:
 
 ## <a name="create-domain-users"></a>Vytvoření uživatelů domén
 
-Navštivte [stránku Vytvoření clusteru HDInsight pomocí balíčku enterprise security package](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds), kde se dozvíte, jak vytvořit **sales_user1** a **marketing_user1** uživatele domény. V produkční scénáři uživatelé domény pocházejí z vašeho klienta služby Active Directory.
+Informace o tom, jak vytvořit **sales_user1** a **marketing_user1** uživatelů domény, najdete v tématu [Vytvoření clusteru HDInsight s balíček zabezpečení podniku](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds). V produkční scénáři uživatelé domény pocházejí z vašeho klienta služby Active Directory.
 
-## <a name="create-hbase-tables-and-import-sample-data"></a>Vytvoření tabulek HBase a import ukázkových dat
+## <a name="create-hbase-tables-and-import-sample-data"></a>Vytváření tabulek HBA a Import ukázkových dat
 
-Pomocí SSH se můžete připojit ke clusterům HBase a potom pomocí [prostředí Apache HBase](https://hbase.apache.org/0.94/book/shell.html) vytvořit tabulky HBase, vložit data a data dotazů. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Pomocí SSH se můžete připojit k clusterům HBA a pak pomocí [prostředí Apache HBA](https://hbase.apache.org/0.94/book/shell.html) vytvořit tabulky HBA, vkládat data a dotazovat data. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="to-use-the-hbase-shell"></a>Postup používání prostředí HBase
 
@@ -59,7 +59,7 @@ Pomocí SSH se můžete připojit ke clusterům HBase a potom pomocí [prostřed
     hbase shell
     ```
 
-2. Vytvořte tabulku `Customers` HBase se dvěma rodinami sloupců: `Name` a `Contact`.
+2. Vytvořte tabulku `Customers` HBA se dvěma skupinami sloupců: `Name` a. `Contact`
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -83,34 +83,34 @@ Pomocí SSH se můžete připojit ke clusterům HBase a potom pomocí [prostřed
     put 'Customers','1002','Contact:State','WA'
     put 'Customers','1002','Contact:ZipCode','98008'
     ```
-4. Zobrazení obsahu tabulky:
+4. Zobrazit obsah tabulky:
     
     ```hbaseshell
     scan 'Customers'
     ```
 
-    ![Výstup prostředí HDInsight Hadoop HBase](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    ![Výstup prostředí HDInsight Hadoop HBA](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Vytvoření zásad Ranger
 
-Vytvořte zásadu rangerpro **sales_user1** a **marketing_user1**.
+Vytvořte zásady Ranger pro **sales_user1** a **marketing_user1**.
 
-1. Otevřete **Uživatelské rozhraní správce Ranger**. Klepněte na ** \<položku Název_clusteru>_hbase** v části **HBase**.
+1. Otevřete **Uživatelské rozhraní správce Ranger**. Klikněte na ** \<název clusteru>_hbase** pod položkou **HBA**.
 
-   ![HDInsight Apache Ranger admin uživatelské rozhraní](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![Uživatelské rozhraní správce HDInsight Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. Na obrazovce **Seznam zásad** se zobrazí všechny zásady rangerů vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klepněte na tlačítko **Přidat nové zásady**.
+2. Na obrazovce **seznam zásad** se zobrazí všechny zásady Ranger vytvořené pro tento cluster. Může být uvedena jedna předem nakonfigurovaná zásada. Klikněte na **Přidat novou zásadu**.
 
-    ![Seznam zásad Apache Ranger HBase](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Seznam zásad HBA pro Apache Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3. Na obrazovce **Vytvořit zásady** zadejte následující hodnoty:
+3. Na obrazovce **vytvořit zásadu** zadejte následující hodnoty:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
    |Název zásady  |  sales_customers_name_contact   |
-   |HBTabulka   |  Zákazníci |
-   |HBase Column-family   |  Jméno, Kontakt |
-   |Sloupec HBase   |  * |
+   |Tabulka HBA   |  Zákazníci |
+   |Řady sloupců HBA   |  Jméno, kontakt |
+   |Sloupce HBA   |  * |
    |Vybrat skupinu  | |
    |Vybrat uživatele  | sales_user1 |
    |Oprávnění  | Čtení |
@@ -120,55 +120,55 @@ Vytvořte zásadu rangerpro **sales_user1** a **marketing_user1**.
    * `*`označuje nula nebo více výskytů znaků.
    * `?`označuje jeden znak.
 
-   ![Zásady Apache Ranger vytvářejí prodej](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Zásady Apache Ranger vytvořit prodej](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >Pokud uživatel domény v části **Select User** (Vybrat uživatele) není k dispozici, chvíli počkejte, než se Ranger synchronizuje s AAD.
 
 4. Kliknutím na **Přidat** uložte zásadu.
 
-5. Klikněte na **Přidat nové zásady** a zadejte následující hodnoty:
+5. Klikněte na **Přidat novou zásadu** a zadejte následující hodnoty:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |
    |---------|---------|
    |Název zásady  |  marketing_customers_contact   |
-   |HBTabulka   |  Zákazníci |
-   |HBase Column-family   |  Kontakt |
-   |Sloupec HBase   |  * |
+   |Tabulka HBA   |  Zákazníci |
+   |Řady sloupců HBA   |  Kontakt |
+   |Sloupce HBA   |  * |
    |Vybrat skupinu  | |
    |Vybrat uživatele  | marketing_user1 |
    |Oprávnění  | Čtení |
 
-   ![Zásady Apache Ranger vytvářejí marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Zásady Apache Ranger vytvořit marketing](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. Kliknutím na **Přidat** uložte zásadu.
 
 ## <a name="test-the-ranger-policies"></a>Testování zásad Ranger
 
-Na základě nakonfigurovaných zásad Ranger **sales_user1** zobrazit všechna `Name` data `Contact` pro sloupce v rodinách sloupců i sloupců. Marketing_user1 **marketing_user1** lze zobrazit pouze `Contact` data v rodině sloupců.
+V závislosti na nakonfigurovaných zásadách Ranger může **sales_user1** Zobrazit všechna data pro sloupce ve skupinách `Name` a. `Contact` **Marketing_user1** může zobrazit pouze data ve skupině `Contact` sloupců.
 
 ### <a name="access-data-as-sales_user1"></a>Přístup k datům jako sales_user1
 
-1. Otevřete nové připojení SSH ke clusteru. Pro přihlášení ke clusteru použijte následující příkaz:
+1. Otevřete nové připojení SSH ke clusteru. Ke clusteru se přihlaste pomocí následujícího příkazu:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. Pomocí příkazu kinit změňte kontext našeho požadovaného uživatele.
+1. Pomocí příkazu kinit se změňte na kontext našeho požadovaného uživatele.
 
    ```bash
    kinit sales_user1
    ```
 
-2. Otevřete prostředí HBase a `Customers`naskenuj tabulku .
+2. Otevřete prostředí HBA a naskenujte tabulku `Customers`.
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Všimněte si, že uživatel prodeje `Customers` může zobrazit všechny `Name` sloupce tabulky včetně dvou sloupců v `Contact` rodině sloupců a také pět sloupců v rodině sloupců.
+3. Všimněte si, že uživatel Sales může zobrazit všechny sloupce `Customers` tabulky včetně dvou sloupců v řadě `Name` sloupců a také pět sloupců v řadě `Contact` sloupců.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -197,20 +197,20 @@ Na základě nakonfigurovaných zásad Ranger **sales_user1** zobrazit všechna 
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. Pomocí příkazu kinit změňte kontext našeho požadovaného uživatele
+1. Pomocí příkazu kinit se změňte kontext našeho požadovaného uživatele.
 
    ```bash
    kinit marketing_user1
    ```
 
-1. Otevřete prostředí HBase a `Customers`naskenujete tabulku :
+1. Otevřete prostředí HBA a naskenujte tabulku `Customers`:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-1. Všimněte si, že marketingový uživatel může `Contact` zobrazit pouze pět sloupců rodiny sloupců.
+1. Všimněte si, že marketingový uživatel může zobrazit jenom pět sloupců řady `Contact` sloupců.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -229,19 +229,19 @@ Na základě nakonfigurovaných zásad Ranger **sales_user1** zobrazit všechna 
 
 1. Zobrazte události přístupu k auditu v uživatelském rozhraní Ranger.
 
-   ![Audit zásad ui rozhraní HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![Audit zásad uživatelského rozhraní HDInsight Ranger](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud nebudete nadále používat tuto aplikaci, odstraňte cluster HBase, který jste vytvořili pomocí následujících kroků:
+Pokud nebudete tuto aplikaci nadále používat, odstraňte cluster HBA, který jste vytvořili, pomocí následujícího postupu:
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
-2. Do pole **Hledat** v horní části zadejte **HDInsight**. 
-1. V části **Služby** **vyberte clustery HDInsight** .
-1. V seznamu clusterů HDInsight, který se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro tento kurz. 
-1. Klepněte na **tlačítko Odstranit**. Klepněte na tlačítko **Ano**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+2. Do **vyhledávacího** pole v horní části zadejte **HDInsight**. 
+1. V části **služby**vyberte **clustery HDInsight** .
+1. V seznamu clusterů HDInsight, které se zobrazí, klikněte na **...** vedle clusteru, který jste vytvořili pro účely tohoto kurzu. 
+1. Klikněte na **Odstranit**. Klikněte na tlačítko **Ano**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Začínáme s Apache HBase](../hbase/apache-hbase-tutorial-get-started-linux.md)
+> [Začínáme s adaptéry Apache HBA](../hbase/apache-hbase-tutorial-get-started-linux.md)

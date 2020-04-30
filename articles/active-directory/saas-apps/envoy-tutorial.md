@@ -17,10 +17,10 @@ ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 28f3fca731c9ceb28f66ecd1c178e5c025f80ede
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/21/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70163545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-envoy"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s zástupné
@@ -33,7 +33,7 @@ V tomto kurzu se dozvíte, jak integrovat zástupné s Azure Active Directory (A
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="prerequisites"></a>Předpoklady
+## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
@@ -55,7 +55,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci zástupné do služby Azure AD, musíte přidat zástupné z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -75,7 +75,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořte zástupné Test User](#create-envoy-test-user)** -to, abyste měli protějšek B. Simon v zástupné, která je propojená s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -87,7 +87,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
 
     > [!NOTE]
     > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta zástupné](https://envoy.com/contact/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
@@ -148,15 +148,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 4. Na panelu nástrojů v horní části klikněte na **Nastavení**.
 
-    ![Zástupné](./media/envoy-tutorial/ic776782.png "Envoy")
+    ![Envoy](./media/envoy-tutorial/ic776782.png "Envoy")
 
 5. Klikněte na **Společnost**.
 
-    ![Podnikový](./media/envoy-tutorial/ic776783.png "Společnost")
+    ![Společnost](./media/envoy-tutorial/ic776783.png "Společnost")
 
 6. Klikněte na **SAML**.
 
-    ![ELEMENT](./media/envoy-tutorial/ic776784.png "SAML")
+    ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
 
 7. V části konfigurace **ověřování SAML** proveďte následující kroky:
 
@@ -181,7 +181,7 @@ V této části otestujete konfiguraci jednotného přihlašování Azure AD pom
 
 Když na přístupovém panelu kliknete na dlaždici zástupné, měli byste se automaticky přihlásit k zástupné, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje informací:
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

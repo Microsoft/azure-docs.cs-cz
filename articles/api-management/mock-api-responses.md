@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 6841695cca5d3864e6823085520d8e9162e54043
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70067947"
 ---
 # <a name="mock-api-responses"></a>Napodobení odpovědí API
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
 + Seznamte se s [konceptem zásad ve službě Azure API Management](api-management-howto-policies.md).
-+ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
++ Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 
 ## <a name="create-a-test-api"></a>Vytvoření testovacího rozhraní API 
 

@@ -1,59 +1,59 @@
 ---
-title: Microsoft Azure FXT Edge Filer – přehled
-description: Popisuje mezipaměť hybridního úložiště Azure FXT Edge Filer, aktivní řešení akcelerátoru archivu a přístupu k souborům pro vysoce výkonné výpočty.
+title: FXT Edge souborového – přehled Microsoft Azure
+description: Popisuje řešení Azure FXT Edge souborového pro hybridní úložiště, aktivní archivní a přístupové akcelerátory pro přístup k souborům pro vysoce výkonné výpočty.
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
 ms.author: rohogue
 ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72254842"
 ---
-# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co je mezipaměť hybridního úložiště Azure FXT Edge Filer?
+# <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Co je Azure FXT Edge – mezipaměť hybridního úložiště souborového?
 
-Azure FXT Edge Filer je hybridní úložiště ukládání do mezipaměti zařízení, které poskytuje rychlý přístup k souborům a aktivní archiv pro vysoce výkonné výpočetní úlohy (HPC).
+Azure FXT Edge souborového je řešení hybridního ukládání do mezipaměti, které poskytuje rychlý přístup k souborům a aktivní archiv pro úlohy s vysokým výkonem výpočetního prostředí (HPC).
 
-Pracuje s více zdroji dat, ať už jsou uloženy v místním datovém centru, vzdáleně nebo v cloudu. Azure FXT Edge Filer může poskytnout jednotný obor názvů pro data v různých úložných systémech.
+Funguje s více zdroji dat, ať už jsou uložené v místním datovém centru, vzdáleně nebo v cloudu. Azure FXT Edge souborového může poskytovat sjednocený obor názvů pro data v různých systémech úložišť.
 
-Tři nebo více hardwarových zařízení FXT Edge Filer spolupracují jako clusterovaný souborový systém, který poskytuje mezipaměť. Podrobnosti o zakoupení požadovaného hardwaru získáte od zástupce společnosti Microsoft. 
+Tři nebo více hardwarových zařízení FXT Edge souborového společně spolupracuje jako clusterovaný systém souborů pro zajištění mezipaměti. Podrobnosti o nákupu požadovaného hardwaru získáte od zástupce společnosti Microsoft. 
 
-Další informace najdete v informacích o produktu a datovém listu v [Azure FXT Edge Filer](https://azure.microsoft.com/services/fxt-edge-filer/).
+Pokud se chcete dozvědět víc, přečtěte si informace o produktu a datový list na [Azure FXT Edge souborového](https://azure.microsoft.com/services/fxt-edge-filer/).
 
 ## <a name="use-cases"></a>Případy použití
 
-Azure FXT Edge Filer zvyšuje produktivitu nejlépe pro pracovní postupy, jako jsou tyto:
+Azure FXT Edge souborového vylepšuje produktivitu pro pracovní postupy, jako jsou tyto:
 
-* Pracovní postup přístupu k souborům s velkým úkolem pro čtení 
+* Pracovní postup pro čtení a těžký přístup k souborům 
 * Protokoly NFSv3 nebo SMB2
-* Výpočetní farmy s 1000 až 100 000 procesorovými jádry
+* Výpočetní farmy 1000 až 100 000 PROCESORových jader
 
-### <a name="nas-optimization-and-scaling"></a>Optimalizace a škálování NAS
+### <a name="nas-optimization-and-scaling"></a>Optimalizace a škálování pro servery NAS
 
-Ke mezipaměti Azure FXT Edge Filer můžete použít k hladkému přístupu ke stávajícím systémům NetApp a Dell EMC Isilon NAS. Můžete také přidat Azure Blob nebo jiné cloudové úložiště poskytovat škálovatelnost bez nutnosti přepracovat procesy přístupu k datům na straně klienta. 
+Mezipaměť souborového pro Azure FXT Edge můžete použít k zajištění hladkého přístupu k existujícím systémům NetApp a Dell EMC Isilon NAS. Můžete taky přidat Azure Blob nebo jiné cloudové úložiště, abyste zajistili škálovatelnost bez nutnosti přepracovat procesy přístupu k datům na straně klienta. 
 
 ### <a name="wan-caching"></a>Ukládání do mezipaměti sítě WAN
 
-Azure FXT Edge Filer lze použít k podpoře rychlého přístupu k souborům od power uživatelů, když data, která potřebují, jsou uložena jinde. Poskytněte přístup při zachování zálohovacích a dalších systémů pro správu dat v centralizovaném datovém centru. 
+Azure FXT Edge souborového se dá použít k podpoře rychlého přístupu k souborům od uživatelů v případě, že data, která potřebují, jsou uložená jinde. Poskytněte přístup a zajistěte v centralizovaném datovém centru zálohování a další systémy správy dat. 
 
-### <a name="active-archive-in-azure-blob"></a>Aktivní archivace v objektu Blob Azure
+### <a name="active-archive-in-azure-blob"></a>Aktivní archiv v objektu blob Azure
 
-Rozšiřte své datové centrum do cloudového úložiště s Azure FXT Edge Filer jako přístupový bod. 
+Rozšiřte své datové centrum do cloudového úložiště s využitím Azure FXT Edge souborového jako přístupového bodu. 
 
 ## <a name="features"></a>Funkce 
 
-K dispozici jsou dva modely hardwaru. 
+K dispozici jsou dva hardwarové modely. 
 
-| Model | Arménský | NVMe SSD | Síťové porty | 
+| Model | DRAM | NVMe SSD | Síťové porty | 
 |-------|------|----------|---------------|
-| FXT 6600 | 1536 GB | 25,6 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
-| FXT 6400 | 768 GB | 12,8 TB | 6 x 25 Gb/10 Gb + 2 x 1 Gb |
+| FXT 6600 | 1536 GB | 25,6 TB | 6 × 25 GB/10Gb + 2 × 1 GB |
+| FXT 6400 | 768 GB | 12,8 TB | 6 × 25 GB/10Gb + 2 × 1 GB |
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokračujte ve správě o Azure FXT Edge Filer načtením [specifikací](fxt-specs.md) nebo [kurzu instalace](fxt-install.md).
-* Přečtěte si, jak zakoupit Azure FXT Edge Filer na [stránce produktu Azure FXT Edge Filer](https://azure.microsoft.com/services/fxt-edge-filer/).
+* Další informace o Azure FXT Edge souborového najdete v kurzu [specifikace](fxt-specs.md) nebo [instalace](fxt-install.md).
+* Přečtěte si, jak zakoupit Azure FXT Edge souborového na [stránce produktu Azure FXT Edge souborového](https://azure.microsoft.com/services/fxt-edge-filer/).

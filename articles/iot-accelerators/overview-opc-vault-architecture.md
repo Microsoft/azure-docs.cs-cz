@@ -1,6 +1,6 @@
 ---
-title: Architektura OPC Vault – Azure | Dokumenty společnosti Microsoft
-description: Architektura služby správy certifikátů OPC Vault
+title: Architektura úložiště OPC – Azure | Microsoft Docs
+description: Architektura služby správy certifikátů úložiště OPC
 author: mregen
 ms.author: mregen
 ms.date: 08/16/2019
@@ -9,81 +9,81 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 1e08968034134e2b9ab3b8064387d18663d5c866
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71200160"
 ---
-# <a name="opc-vault-architecture"></a>Architektura OPC Vault
+# <a name="opc-vault-architecture"></a>Architektura úložiště OPC
 
-Tento článek poskytuje přehled o mikroslužbě OPC Vault a modulu OPC Vault IoT Edge.
+Tento článek poskytuje přehled o mikroslužbě trezoru OPC a modulu OPC pro trezor IoT Edge.
 
-Aplikace OPC UA používají certifikáty instancí aplikace k zajištění zabezpečení na úrovni aplikace. Zabezpečené připojení je navázáno pomocí asymetrické kryptografie, pro kterou aplikační certifikáty poskytují dvojici veřejného a soukromého klíče. Certifikáty mohou být podepsány vlastním podpisem nebo podepsány certifikační autoritou (CA).
+Aplikace OPC UA používají certifikáty instance aplikace k zajištění zabezpečení na úrovni aplikace. Zabezpečené připojení je vytvořeno pomocí asymetrické kryptografie, pro kterou certifikáty aplikací poskytují pár veřejného a privátního klíče. Certifikáty můžou být podepsané svým držitelem nebo podepsaný certifikační autoritou (CA).
 
-Aplikace OPC UA obsahuje seznam důvěryhodných certifikátů, který představuje aplikace, kterým důvěřuje. Tyto certifikáty mohou být podepsány pod svým držitelem nebo podepsány certifikační autoritou nebo mohou být root-CA nebo sub-CA samy. Pokud je důvěryhodný certifikát součástí většího řetězu certifikátů, aplikace důvěřuje všem certifikátům, které se řetězí k certifikátu v seznamu důvěryhodných certifikátů. To platí tak dlouho, dokud lze ověřit celý řetěz certifikátů.
+Aplikace OPC UA obsahuje seznam důvěryhodných certifikátů, které představují aplikace, kterým důvěřují. Tyto certifikáty můžou být podepsané svým držitelem nebo podpisem certifikační autority, nebo se může jednat o samostatnou certifikační AUTORITu nebo podřízenou certifikační autoritu. Pokud je důvěryhodný certifikát součástí většího řetězu certifikátů, aplikace považuje všechny certifikáty, které jsou zřetězené do certifikátu, v seznamu důvěryhodných certifikátů. To platí, pokud je možné ověřit úplný řetěz certifikátů.
 
-Hlavním rozdílem mezi důvěřováním certifikátům podepsaným svým držitelem a důvěřováním certifikátu certifikační autority je úsilí o instalaci potřebné k nasazení a udržení důvěryhodnosti. K dispozici je také další úsilí o hostování certifikační autority specifické pro společnost. 
+Hlavním rozdílem mezi důvěryhodnými certifikáty podepsanými držitelem a důvěryhodným certifikátem certifikační autority je úsilí při instalaci potřebné k nasazení a údržbě důvěryhodnosti. Existuje také další úsilí pro hostování certifikační autority specifické pro společnost. 
 
-Chcete-li distribuovat vztah důvěryhodnosti pro certifikáty podepsané svým držitelem pro více serverů s jednou klientskou aplikací, je nutné nainstalovat všechny certifikáty serverových aplikací do seznamu důvěryhodných certifikátů klientských aplikací. Kromě toho je nutné nainstalovat certifikát klientské aplikace do všech seznamů důvěryhodných certifikátů serverových aplikací. Toto administrativní úsilí je poměrně zátěž, a dokonce zvyšuje, když budete muset zvážit životnost certifikátu a obnovit certifikáty.
+Chcete-li distribuovat důvěru certifikátů podepsaných svým držitelem pro více serverů s jednou klientskou aplikací, je nutné nainstalovat všechny certifikáty serverových aplikací v seznamu důvěryhodných klientských aplikací. Kromě toho je nutné nainstalovat certifikát klientské aplikace do všech seznamů důvěryhodných serverových aplikací. Toto administrativní úsilí je poměrně náročné a dokonce se zvyšuje, když je potřeba zvážit životnost certifikátů a obnovování certifikátů.
 
-Použití certifikační autority specifické pro společnost může výrazně zjednodušit správu důvěryhodnosti s více servery a klienty. V takovém případě správce vygeneruje certifikát instance aplikace podepsaný certifikační autoritou jednou pro každého použitého klienta a serveru. Certifikát certifikační autority je navíc nainstalován v každém seznamu důvěryhodných certifikátů aplikací na všech serverech a klientech. S tímto přístupem je třeba obnovit a nahradit pouze certifikáty, jejichž platnost vypršela pro ohrožené aplikace.
+Použití certifikační autority specifické pro společnost může značně zjednodušit správu důvěryhodnosti s více servery a klienty. V takovém případě správce vygeneruje certifikát instance aplikace podepsaný certifikační autoritou pro každého klienta a server, který se používá. Certifikát certifikační autority se navíc nainstaluje do všech seznamů důvěryhodných aplikací na všech serverech a klientech. S tímto přístupem je potřeba obnovit a nahradit ovlivněné aplikace jenom certifikáty, jejichž platnost vypršela.
 
-Služba správy certifikátů Azure Industrial IoT OPC UA vám pomůže spravovat certifikační autoritu specifickou pro společnost pro aplikace OPC UA. Tato služba je založena na mikroslužbě OPC Vault. OPC Vault poskytuje mikroslužbu pro hostování certifikační autority specifické pro společnost v zabezpečeném cloudu. Toto řešení je zálohováno službami zabezpečenými službou Azure Active Directory (Azure AD), trezorem klíčů Azure s moduly hardwarového zabezpečení (HSM), Azure Cosmos DB a volitelně ioT hubem jako úložiště aplikací.
+Služba Azure průmyslový IoT OPC UA Certificate Management umožňuje spravovat certifikační autoritu pro aplikace OPC UA pro konkrétní společnost. Tato služba je založená na mikroslužbě trezoru OPC. OPC trezor poskytuje mikroslužbu pro hostování certifikační autority specifické pro společnost v zabezpečeném cloudu. Toto řešení je zajištěno službami zabezpečenými službou Azure Active Directory (Azure AD), Azure Key Vault pomocí modulů hardwarového zabezpečení (HSM), Azure Cosmos DB a volitelně IoT Hub jako úložiště aplikace.
 
-Mikroslužba OPC Vault je navržena tak, aby podporovala pracovní postup založený na rolích, kde správci zabezpečení a schvalovatelé s podpisovými právy v azure key vault ukládají nebo odmítají žádosti.
+Mikroslužba trezoru OPC je navržená tak, aby podporovala pracovní postup založený na rolích, kde se správci zabezpečení a schvalovatelé s přihlašovacími právy v Azure Key Vault schvalují nebo zamítají žádosti.
 
-Pro kompatibilitu se stávajícími řešeními OPC UA, služby zahrnují podporu pro oPC Vault microservice couval edge modul. Tím se implementuje **OPC UA Global Discovery Server a rozhraní pro správu certifikátů** k distribuci certifikátů a seznamů důvěryhodných certifikátů podle části 12 specifikace. 
+Pro zajištění kompatibility se stávajícími řešeními OPC UA zahrnují služby podporu pro modul back-(OPC) pro trezor mikroslužeb. Tím se implementuje **globální zjišťování serveru OPC UA a rozhraní pro správu certifikátů** pro distribuci certifikátů a seznamů důvěryhodných certifikátů podle části 12 specifikace. 
 
 
 ## <a name="architecture"></a>Architektura
 
-Architektura je založena na mikroslužbě OPC Vault s modulem OPC Vault IoT Edge pro tovární síť a webovým ukázkovým ux pro řízení pracovního postupu:
+Architektura je založena na mikroslužbě trezoru OPC s modulem IoT Edge OPC pro správu a webovým prostředím, které slouží k řízení pracovního postupu:
 
-![Diagram architektury OPC Vault](media/overview-opc-vault-architecture/opc-vault.png)
+![Diagram architektury OPC trezoru](media/overview-opc-vault-architecture/opc-vault.png)
 
-## <a name="opc-vault-microservice"></a>Mikroservis OPC Vault
+## <a name="opc-vault-microservice"></a>Mikroslužba trezoru OPC
 
-Mikroslužba OPC Vault se skládá z následujících rozhraní pro implementaci pracovního postupu pro distribuci a správu certifikační autority specifické pro opc ua aplikace.
+Mikroslužba trezoru OPC se skládá z následujících rozhraní k implementaci pracovního postupu pro distribuci a správu certifikační autority specifické pro společnost pro aplikace OPC UA.
 
 ### <a name="application"></a>Aplikace 
-- Aplikace OPC UA může být server nebo klient nebo obojí. OPC Vault slouží v tomto případě jako orgán pro registraci aplikací. 
-- Kromě základních operací pro registraci, aktualizaci a zrušení registrace aplikací existují také rozhraní pro vyhledávání a dotazování na aplikace s vyhledávacími výrazy. 
-- Žádosti o certifikát musí odkazovat na platnou žádost, aby bylo možné žádost zpracovat a vystavit podepsaný certifikát se všemi rozšířeními specifickými pro OPC UA. 
-- Aplikační služba je zálohována databází v Azure Cosmos DB.
+- Aplikace OPC UA může být server nebo klient, nebo obojí. OPC trezor slouží jako registrační autorita aplikace v tomto případě. 
+- Kromě základních operací pro registraci, aktualizaci a zrušení registrace aplikací jsou k dispozici také rozhraní pro hledání a dotazování aplikací pomocí vyhledávacích výrazů. 
+- Žádosti o certifikát musí odkazovat na platnou aplikaci, aby bylo možné zpracovat požadavek a vydat podepsaný certifikát se všemi OPC rozšířeními pro UA. 
+- Aplikační služba je zajištěna databází v Azure Cosmos DB.
 
 ### <a name="certificate-group"></a>Skupina certifikátů
-- Skupina certifikátů je entita, ve které je uložen kořenový certifikační autorita nebo dílčí certifikát certifikační autority, včetně soukromého klíče pro podepisování certifikátů. 
-- Délka klíče RSA, délka hash SHA-2 a životnost jsou konfigurovatelné jak pro certifikační autoritu vystavitela, tak pro podepsané certifikáty aplikací. 
-- Certifikáty certifikační autority ukládáte do trezoru klíčů Azure, který je podpořený softwarem zabezpečení 140-2 úrovně 2. Soukromý klíč nikdy neopustí zabezpečené úložiště, protože podepisování se provádí pomocí operace trezoru klíčů zabezpečené službou Azure AD. 
-- Certifikáty certifikační autority můžete v průběhu času obnovit a nechat je v bezpečném úložišti kvůli historii trezoru klíčů. 
-- Seznam odvolání pro každý certifikát certifikační autority je také uložen v trezoru klíčů jako tajný klíč. Pokud je aplikace neregistrovaná, je certifikát aplikace odvolán v seznamu odvolaných certifikátů (CRL) správcem.
-- Můžete odvolat jednotlivé certifikáty, stejně jako dávkové certifikáty.
+- Skupina certifikátů je entita, která ukládá kořenovou certifikační autoritu nebo certifikát podřízené certifikační autority, včetně privátního klíče pro podepisování certifikátů. 
+- Délka klíče RSA, délka hash SHA-2 a životnosti se dají konfigurovat pro certifikační autoritu vystavitele i pro podepsané certifikáty aplikací. 
+- Certifikáty certifikační autority v Azure Key Vault uložíte s použitím modulu HARDWAROVÉho zabezpečení FIPS 140-2 úrovně 2. Privátní klíč nikdy neopouští zabezpečené úložiště, protože se k tomu přihlašování používá operace Key Vault zabezpečenou službou Azure AD. 
+- Certifikáty certifikační autority můžete v průběhu času prodloužit a jejich udržení v bezpečném úložišti kvůli historii Key Vault. 
+- Seznam odvolaných certifikátů pro každý certifikát certifikační autority je uložený také v Key Vault jako tajný klíč. Pokud je aplikace odregistrována, je certifikát aplikace také odvolán v seznamu odvolaných certifikátů (CRL) správcem.
+- Můžete odvolat samostatné certifikáty i dávkové certifikáty.
 
 ### <a name="certificate-request"></a>Žádost o certifikát
-Žádost o certifikát implementuje pracovní postup ke generování nového páru klíčů nebo podepsaného certifikátu pomocí žádosti o podpis certifikátu (CSR) pro aplikaci OPC UA. 
-- Požadavek je uložen v databázi s doprovodnými informacemi, jako je předmět nebo zástupce společnosti, a odkazem na aplikaci OPC UA. 
-- Obchodní logika ve službě ověřuje požadavek proti informacím uloženým v databázi aplikace. Například aplikace Uri v databázi musí odpovídat aplikaci Uri v csr.
-- Správce zabezpečení s podpisovými právy (tj. role Schvalovatel) žádost schválí nebo zamítne. Pokud je žádost schválena, je vygenerován nový pár klíčů nebo podepsaný certifikát (nebo obojí). Nový soukromý klíč je bezpečně uložen v trezoru klíčů a nový podepsaný veřejný certifikát je uložen v databázi žádosti o certifikát.
-- Žadatel může dotazovat stav požadavku, dokud není schválen nebo odvolán. Pokud byla žádost schválena, soukromý klíč a certifikát lze stáhnout a nainstalovat do úložiště certifikátů aplikace OPC UA.
-- Žadatel nyní může přijmout požadavek na odstranění nepotřebných informací z databáze požadavků. 
+Žádost o certifikát implementuje pracovní postup, aby vygeneroval nový pár klíčů nebo podepsaný certifikát pomocí žádosti o podepsání certifikátu (CSR) pro aplikaci OPC UA. 
+- Požadavek je uložen v databázi s doprovodnými informacemi, jako je předmět nebo CSR, a odkazem na aplikaci OPC UA. 
+- Obchodní logika ve službě ověřuje požadavek proti informacím uloženým v aplikační databázi. Například identifikátor URI aplikace v databázi se musí shodovat s identifikátorem URI aplikace v CSR.
+- Správce zabezpečení s právy pro podpis (tj. role schvalovatele) schválí nebo zamítne žádost. Pokud je žádost schválená, vygenerují se nový pár klíčů nebo podepsaný certifikát (nebo obojí). Nový privátní klíč je bezpečně uložený v Key Vault a nový podepsaný veřejný certifikát je uložený v databázi žádostí o certifikát.
+- Žadatel se může dotazovat na stav žádosti, dokud není schválen nebo odvolán. Pokud byl požadavek schválen, privátní klíč a certifikát lze stáhnout a nainstalovat v úložišti certifikátů aplikace OPC UA.
+- Žadatel teď může požadavek přijmout, aby odstranil nepotřebné informace z databáze požadavků. 
 
-Po dobu životnosti podepsaného certifikátu může být aplikace odstraněna nebo může dojít k ohrožení zabezpečení klíče. V takovém případě může správce certifikační autority:
-- Odstraňte aplikaci, která také odstraní všechny nevyřízené a schválené žádosti o certifikát aplikace. 
-- Odstraňte pouze jednu žádost o certifikát, pokud je obnoven nebo ohrožen pouze klíč.
+Po celou dobu životnosti podepsaného certifikátu se může aplikace odstranit nebo může dojít k ohrožení zabezpečení klíče. V takovém případě může správce certifikační autority:
+- Odstraní aplikaci, která také odstraní všechny nedokončené a schválené žádosti o certifikát aplikace. 
+- Odstraní jenom jednu žádost o certifikát, pokud se jenom obnovuje nebo ohrozí jenom klíč.
 
-Nyní jsou schválené a přijaté žádosti o certifikát označeny jako odstraněné.
+Nyní jsou ohrožené schválené a přijaté žádosti o certifikát označeny jako odstraněné.
 
-Manažer může pravidelně obnovovat seznam CRL certifikační autority vystavithona. V době obnovení jsou všechny odstraněné žádosti o certifikát odvolány a sériová čísla certifikátů jsou přidána do seznamu odvolaných certifikátů. Odvolané žádosti o certifikát jsou označeny jako odvolané. V naléhavých událostech lze odvolat také jednotlivé žádosti o certifikát.
+Správce může pravidelně obnovit seznam odvolaných certifikátů certifikační autority vystavitele. V době obnovení jsou všechny odstraněné žádosti o certifikát odvolány a sériová čísla certifikátů jsou přidána do seznamu odvolaných certifikátů CRL. Odvolané žádosti o certifikát jsou označené jako odvolané. V naléhavých událostech je možné odvolat samostatné žádosti o certifikát.
 
-A konečně, aktualizované seznamy CRL jsou k dispozici pro distribuci zúčastněným klientům a serverům OPC UA.
+A nakonec aktualizované seznamy odvolaných certifikátů jsou dostupné pro distribuci do zúčastněných klientů a serverů OPC UA.
 
-## <a name="opc-vault-iot-edge-module"></a>Modul OPC Vault IoT Edge
-Chcete-li podporovat globální server zjišťování v tovární síti, můžete nasadit modul OPC Vault na hraničních zařízeních. Spusťte ji jako místní aplikaci .NET Core nebo ji spusťte v kontejneru Dockeru. Všimněte si, že z důvodu nedostatku podpory ověřování Auth2 v aktuálním zásobníku OPC UA .NET Standard je funkce hraničního modulu OPC Vault omezena na roli čtečky. Uživatel nemůže být zosobněn z hraničního modulu do mikroslužby pomocí standardního rozhraní OPC UA GDS.
+## <a name="opc-vault-iot-edge-module"></a>Modul IoT Edge trezoru OPC
+Pro podporu globálního serveru zjišťování sítě továrny můžete na hranici nasadit modul OPC trezor. Spusťte ji jako místní aplikaci .NET Core nebo ji spusťte v kontejneru Docker. Vzhledem k tomu, že v aktuálním zásobníku služby OPC UA .NET Standard není podporovaná Podpora ověřování auth2, je funkce modulu Edge trezoru OPC omezená na roli čtenáře. Uživatele nejde zosobnit z modulu Edge ke mikroslužbám pomocí rozhraní OPC UA GDS Standard.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní, když jste se dozvěděli o architektuře OPC Vault, můžete:
+Teď, když jste se seznámili s architekturou trezoru OPC, můžete:
 
 > [!div class="nextstepaction"]
-> [Sestavení a nasazení opc trezoru](howto-opc-vault-deploy.md)
+> [Sestavování a nasazování trezoru OPC](howto-opc-vault-deploy.md)

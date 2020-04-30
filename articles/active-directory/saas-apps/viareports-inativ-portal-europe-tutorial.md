@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Viareport (Evropa) | Microsoft Docs'
+title: 'Kurz: Azure Active Directory integrace s Viareport (Evropa) | Microsoft Docs'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Viareport (Evropa).
 services: active-directory
 documentationCenter: na
@@ -17,13 +17,13 @@ ms.date: 07/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7589875356c3d40248c798e753a0e95d900c5b4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68825510"
 ---
-# <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>Kurz: Integrujte Viareport (Evropa) pomocí Azure Active Directory
+# <a name="tutorial-integrate-viareport-europe-with-azure-active-directory"></a>Kurz: integrace Viareport (Evropa) s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat Viareport (Evropa) s Azure Active Directory (Azure AD). Když integrujete Viareport (Evropa) s Azure AD, můžete:
 
@@ -50,7 +50,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci Viareport (Evropa) do Azure AD, musíte přidat Viareport (Evropa) z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -58,7 +58,7 @@ Pokud chcete nakonfigurovat integraci Viareport (Evropa) do Azure AD, musíte p�
 1. Z panelu výsledků vyberte **Viareport (Evropa)** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
 Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Viareport (Evropa) pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Viareport (Evropa).
 
@@ -71,7 +71,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
 5. **[Vytvořte testovacího uživatele Viareport (Evropa)](#create-viareport-europe-test-user)** – Pokud chcete mít protějšek B. Simon v Viareport (Evropa), která je propojená s reprezentací uživatele v Azure AD.
 6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -94,32 +94,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 4. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="configure-viareport-europe-sso"></a>Konfigurace jednotného přihlašování Viareport (Evropa)
 
-Pokud chcete nakonfigurovat jednotné přihlašování na straně **Viareport (Evropa)** , musíte poslat [týmu podpory Viareport (Evropa)](mailto:ycezard@viareport.com) **adresu URL federačních metadat aplikace** . Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **Viareport (Evropa)** , musíte poslat [týmu podpory Viareport (Evropa)](mailto:ycezard@viareport.com) **adresu URL federačních metadat aplikace** . Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon používat jednotné přihlašování pomocí Azure tím, že udělíte přístup k Viareport (Evropa).
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikace vyberte **Viareport (Evropa)** .
+1. V seznamu aplikace vyberte **Viareport (Evropa)**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -131,15 +131,15 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ### <a name="create-viareport-europe-test-user"></a>Vytvořit testovacího uživatele Viareport (Evropa)
 
-V této části vytvoříte uživatele s názvem B. Simon v Viareport (Evropa). Pracujte s [týmem podpory Viareport (Evropa)](mailto:ycezard@viareport.com) a přidejte uživatele na platformě Viareport (Evropa). Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+V této části vytvoříte uživatele s názvem B. Simon v Viareport (Evropa). Pracujte s [týmem podpory Viareport (Evropa)](mailto:ycezard@viareport.com) a přidejte uživatele na platformě Viareport (Evropa). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Viareport (Evropa) na přístupovém panelu byste měli být automaticky přihlášení do Viareport (Evropa), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

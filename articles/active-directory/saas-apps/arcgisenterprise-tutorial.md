@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s ArcGIS Enterprise | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a ArcGIS Enterprise.
+title: 'Kurz: Azure Active Directory integrace s ArcGIS Enterprise | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ArcGIS Enterprise.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,30 +17,30 @@ ms.date: 12/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e21b1c72f191f3644975afd511a900667a04ce9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73157898"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Kurz: Integrace služby Azure Active Directory s ArcGIS Enterprise
+# <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Kurz: Azure Active Directory integrace s ArcGIS Enterprise
 
 V tomto kurzu se dozvíte, jak integrovat ArcGIS Enterprise s Azure Active Directory (Azure AD).
-Integrace ArcGIS Enterprise s Azure AD vám poskytuje následující výhody:
+Integrace ArcGIS Enterprise s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k ArcGIS Enterprise.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali ke společnosti ArcGIS Enterprise (Jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k ArcGIS Enterprise.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k ArcGIS Enterprise (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s ArcGIS Enterprise, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s ArcGIS Enterprise budete potřebovat následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Předplatné s povoleným jedním přihlášením ArcGIS Enterprise
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné ArcGIS Enterprise s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -48,184 +48,184 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 
 
-* ArcGIS Enterprise podporuje **sp a IDP** inicioval sondy
-* ArcGIS Enterprise podporuje zřizování uživatelů **just in time**
+* ArcGIS Enterprise podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
+* ArcGIS Enterprise podporuje zřizování uživatelů **jenom v čase**
 
 
-## <a name="adding-arcgis-enterprise-from-the-gallery"></a>Přidání ArcGIS Enterprise z galerie
+## <a name="adding-arcgis-enterprise-from-the-gallery"></a>Přidání ArcGIS Enterprise z Galerie
 
-Chcete-li nakonfigurovat integraci ArcGIS Enterprise do Azure AD, musíte přidat ArcGIS Enterprise z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ArcGIS Enterprise do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat ArcGIS Enterprise z galerie.
 
-**Chcete-li přidat ArcGIS Enterprise z galerie, proveďte následující kroky:**
+**Pokud chcete přidat ArcGIS Enterprise z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ArcGIS Enterprise**, z panelu výsledků vyberte **ArcGIS Enterprise** a klepnutím na **tlačítko Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **ArcGIS Enterprise**, vyberte **ArcGIS Enterprise** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
      ![ArcGIS Enterprise v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s [Název aplikace] na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v [Název aplikace].
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí [název aplikace] na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí být navázán vztah odkazu mezi uživatelem služby Azure AD a souvisejícím uživatelem v [název aplikace].
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí [Název aplikace], musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí [název aplikace], musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování ArcGIS Enterprise](#configure-arcgis-enterprise-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte testovacího uživatele ArcGIS Enterprise](#create-arcgis-enterprise-test-user)** – chcete-li mít protějšek Britty Simonové v ArcGIS Enterprise, která je propojená s reprezentací uživatele Azure AD.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování ArcGIS Enterprise](#configure-arcgis-enterprise-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte ArcGIS Enterprise Test User](#create-arcgis-enterprise-test-user)** – abyste měli protějšek Britta Simon v ArcGIS Enterprise, který se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlášení služby Azure AD pomocí [Název aplikace], proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí [název aplikace], proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **ArcGIS Enterprise** vyberte **Jedno přihlášení**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace **podnikových aplikací ArcGIS** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciovaného iniciátoru **Protokolu IDP:**
+4. V části **základní konfigurace SAML** proveďte následující kroky, pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** :
 
-    ![Informace o jednotném přihlášení k podnikové doméně ArcGIS a adresurl](common/idp-intiated.png)
+    ![ArcGIS firemní domény a adresy URL jednotného přihlašování](common/idp-intiated.png)
 
-    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`<EXTERNAL_DNS_NAME>.portal`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`<EXTERNAL_DNS_NAME>.portal`
 
-    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2`
 
-    c. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
+    c. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlášení k podnikové doméně ArcGIS a adresurl](common/metadata-upload-additional-signon.png)
+    ![ArcGIS firemní domény a adresy URL jednotného přihlašování](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Obraťte se na [tým podpory arcgis enterprise client](mailto:support@esri.com) získat tyto hodnoty. Hodnotu Identifikátor získáte z **části Nastavit zprostředkovatele identity**, která je vysvětlena dále v tomto kurzu.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory ArcGIS Enterprise Client](mailto:support@esri.com) . Zobrazí se hodnota identifikátoru z **části nastavit zprostředkovatele identity**, která je vysvětlena dále v tomto kurzu.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na tlačítko Kopírovat, chcete-li zkopírovat **adresu URL metadat federace aplikací** a uložit ji do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Konfigurace jednotného přihlašování ArcGIS Enterprise
 
-1. V jiném okně webového prohlížeče se přihlaste k webu společnosti ArcGIS Enterprise jako správce.
+1. V jiném okně webového prohlížeče se přihlaste k webu ArcGIS Enterprise společnosti jako správce.
 
-2. Vyberte **možnost Organizace >UPRAVIT NASTAVENÍ**.
+2. Vyberte **organizace >upravit nastavení**.
 
-    ![Konfigurace arcGIS Enterprise](./media/arcgisenterprise-tutorial/configure1.png)
+    ![Konfigurace ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure1.png)
 
 3. Vyberte kartu **Zabezpečení**.
 
-    ![Konfigurace arcGIS Enterprise](./media/arcgisenterprise-tutorial/configure2.png)
+    ![Konfigurace ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. Přejděte dolů na **část Enterprise Logins pomocí** oddílu SAML a vyberte SET ENTERPRISE **LOGIN**.
+4. Přejděte dolů do části **podnikové přihlášení prostřednictvím SAML** a vyberte **nastavit podnikové přihlášení**.
 
-    ![Konfigurace arcGIS Enterprise](./media/arcgisenterprise-tutorial/configure3.png)
+    ![Konfigurace ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. V části **Nastavit zprostředkovatele identity** proveďte následující kroky:
+5. V části **nastavit zprostředkovatele identity** proveďte následující kroky:
 
-    ![Konfigurace arcGIS Enterprise](./media/arcgisenterprise-tutorial/configure4.png)
+    ![Konfigurace ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure4.png)
 
-    a. V textovém poli **Název** zadejte název, jako je **Test služby Azure Active Directory.**
+    a. Do textového pole **název** zadejte název, třeba **Azure Active Directory test** .
 
-    b. Do textového pole **URL** vložte hodnotu **url metadat federace aplikace,** kterou jste zkopírovali z portálu Azure.
+    b. Do textového pole **Adresa URL** vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal.
 
-    c. Klikněte na **Zobrazit upřesňující nastavení** a zkopírujte hodnotu **ID entity** a vložte ji do textového pole **Identifikátor** v části **ArcGIS Enterprise Domain and URL** na webu Azure Portal.
+    c. Klikněte na **Zobrazit upřesňující nastavení** a ZKOPÍRUJTE hodnotu **ID entity** a vložte ji do textového pole **identifikátor** v části **doména ArcGIS Enterprise a adresy URL** v Azure Portal.
     
-    ![Konfigurace arcGIS Enterprise](./media/arcgisenterprise-tutorial/configure5.png)
+    ![Konfigurace ArcGIS Enterprise](./media/arcgisenterprise-tutorial/configure5.png)
 
-    d. Klepněte na tlačítko **AKTUALIZOVAT ZPROSTŘEDKOVATELE IDENTITY**.
+    d. Klikněte na **aktualizovat zprostředkovatele identity**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** zadejte **\@brittasimon vašecompanydomain.extension**  
+    b. Do pole **uživatelské jméno** zadejte **brittasimon\@yourcompanydomain. extension.**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu arcgis enterprise.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ArcGIS Enterprise.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **ArcGIS Enterprise**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ArcGIS Enterprise**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací zadejte a vyberte **ArcGIS Enterprise**.
+2. V seznamu aplikace zadejte a vyberte **ArcGIS Enterprise**.
 
-    ![Odkaz ArcGIS Enterprise v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz ArcGIS Enterprise v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-arcgis-enterprise-test-user"></a>Vytvořit testovacího uživatele ArcGIS Enterprise
+### <a name="create-arcgis-enterprise-test-user"></a>Vytvořit ArcGIS Enterprise Test User
 
-V této části je uživatel s názvem Britta Simon vytvořen v ArcGIS Enterprise. ArcGIS Enterprise podporuje zřizování uživatelů just-in-time, které je ve výchozím nastavení povoleno. V této části pro vás není žádná položka akce. Pokud uživatel ještě neexistuje v ArcGIS Enterprise, nový je vytvořen po ověření.
+V této části se v ArcGIS Enterprise vytvoří uživatel s názvem Britta Simon. ArcGIS Enterprise podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v ArcGIS Enterprise neexistuje, vytvoří se po ověření nový.
 
 > [!Note]
-> Pokud potřebujete vytvořit uživatele ručně, obraťte se na [tým podpory ArcGIS Enterprise](mailto:support@esri.com).
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na [tým podpory ArcGIS Enterprise](mailto:support@esri.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici ArcGIS Enterprise na přístupovém panelu, můžete by měl být automaticky přihlášeni k ArcGIS Enterprise, pro které nastavíte přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici ArcGIS Enterprise na přístupovém panelu, měli byste se automaticky přihlásit k ArcGIS podniku, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

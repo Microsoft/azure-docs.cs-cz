@@ -9,10 +9,10 @@ ms.date: 05/24/2018
 ms.author: cfowler
 ms.custom: include file
 ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67593979"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Vytvoření nového profilu CDN
@@ -27,7 +27,7 @@ Profil CDN představuje kontejner pro koncové body CDN a určuje cenovou úrove
    
     ![Výběr prostředku CDN](./media/cdn-create-profile/cdn-new-resource.png)
 
-    Zobrazí se podokno **profilu CDN.**
+    Zobrazí se podokno **profil CDN** .
 
 3. K nastavení profilu CDN použijte hodnoty z následující tabulky:
    

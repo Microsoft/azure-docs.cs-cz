@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se Správcem certifikátů Sectigo | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Správcem certifikátů Sectigo.
+title: 'Kurz: Azure Active Directory integrace se správcem certifikátů Sectigo | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Sectigo správcem certifikátů.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,168 +17,168 @@ ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0447a8dd464363ae7e076dde2520565005d7c0a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67588241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Kurz: Integrace služby Azure Active Directory se Správcem certifikátů Sectigo
+# <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Kurz: Azure Active Directory integrace se správcem certifikátů Sectigo
 
-V tomto kurzu se dozvíte, jak integrovat Správce certifikátů Sectigo s Azure Active Directory (Azure AD).
+V tomto kurzu se naučíte integrovat Sectigo Certificate Manageru s Azure Active Directory (Azure AD).
 
-Integrace Správce certifikátů Sectigo s Azure AD vám přináší následující výhody:
+Integrace Sectigo Certificate Manageru s Azure AD přináší následující výhody:
 
-* Azure AD můžete použít k řízení, kdo má přístup k Sectigo Certificate Manager.
-* Uživatelé mohou být automaticky přihlášeni ke Správci certifikátů Sectigo pomocí svých účtů Azure AD (jednotné přihlašování).
-* Účty můžete spravovat v jednom centrálním umístění, na webu Azure Portal.
+* Pomocí Azure AD můžete řídit, kdo má přístup k Sectigo správce certifikátů.
+* Uživatelé můžou být přihlášeni automaticky k Sectigo správce certifikátů pomocí svých účtů Azure AD (jednotné přihlašování).
+* Účty můžete spravovat v jednom centrálním umístění, Azure Portal.
 
-Další informace o integraci aplikací softwaru jako služby (SaaS) s Azure AD najdete [v tématu Jednotné přihlašování k aplikacím ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS (software jako služba) s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD pomocí Správce certifikátů Sectigo, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD pomocí Správce certifikátů Sectigo potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte předplatné Azure AD, vytvořte [si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
-* Předplatné Správce certifikátů Sectigo s povoleným jedním přihlášením.
+* Předplatné služby Azure AD. Pokud nemáte předplatné služby Azure AD, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+* Sectigo předplatné správce certifikátů s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí a integrujete Správce certifikátů Sectigo s Azure AD.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí a integrujte správce certifikátů Sectigo s Azure AD.
 
-Sectigo Certificate Manager podporuje následující funkce:
+Správce certifikátů Sectigo podporuje následující funkce:
 
-* **Jednotné přihlašování iniciované sp**
-* **Jednotné přihlašování iniciované idicí IDP**
+* **Jednotné přihlašování inicializované v SP**
+* **Jednotné přihlašování iniciované IDP**
 
-## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Přidání Správce certifikátů Sectigo na portál Azure
+## <a name="add-sectigo-certificate-manager-in-the-azure-portal"></a>Přidat správce certifikátů Sectigo do Azure Portal
 
-Chcete-li integrovat Správce certifikátů Sectigo s Azure AD, musíte přidat Správce certifikátů Sectigo do seznamu spravovaných aplikací SaaS.
+Pokud chcete integrovat správce certifikátů Sectigo s Azure AD, musíte přidat správce certifikátů Sectigo do seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V levé nabídce vyberte **Azure Active Directory**.
+1. V nabídce vlevo vyberte **Azure Active Directory**.
 
-    ![Možnost služby Azure Active Directory](common/select-azuread.png)
+    ![Možnost Azure Active Directory](common/select-azuread.png)
 
-1. Vyberte **podnikové aplikace** > **Všechny aplikace**.
+1. Vyberte **podnikové aplikace** > **všechny aplikace**.
 
-    ![Podokno Podnikové aplikace](common/enterprise-applications.png)
+    ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
-1. Chcete-li přidat aplikaci, vyberte **možnost Nová aplikace**.
+1. Chcete-li přidat aplikaci, vyberte možnost **Nová aplikace**.
 
-    ![Možnost Nová aplikace](common/add-new-app.png)
+    ![Možnost nové aplikace](common/add-new-app.png)
 
-1. Do vyhledávacího pole zadejte **Správce certifikátů Sectigo**. Ve výsledcích hledání vyberte **Správce certifikátů Sectigo**a pak vyberte **Přidat**.
+1. Do vyhledávacího pole zadejte **Sectigo Certificate Manager**. Ve výsledcích hledání vyberte **Správce certifikátů Sectigo**a pak vyberte **Přidat**.
 
     ![Správce certifikátů Sectigo v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Správce certifikátů Sectigo na základě testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojený vztah mezi uživatelem Služby Azure AD a souvisejícím uživatelem ve Správci certifikátů Sectigo.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Sectigo správce certifikátů na základě testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, musíte vytvořit propojený vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem ve Správci certifikátů Sectigo.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Správce certifikátů Sectigo, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Správce certifikátů Sectigo, musíte dokončit tyto stavební bloky:
 
 | Úkol | Popis |
 | --- | --- |
 | **[Konfigurace jednotného přihlašování Azure AD](#configure-azure-ad-single-sign-on)** | Umožňuje uživatelům používat tuto funkci. |
-| **[Konfigurace jednotného přihlášení Správce certifikátů Sectigo](#configure-sectigo-certificate-manager-single-sign-on)** | Konfiguruje nastavení jednotného přihlášení v aplikaci. |
+| **[Konfigurace jednotného přihlašování správce certifikátů Sectigo](#configure-sectigo-certificate-manager-single-sign-on)** | Nakonfiguruje nastavení jednotného přihlašování v aplikaci. |
 | **[Vytvoření testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** | Testuje jednotné přihlašování Azure AD pro uživatele s názvem Britta Simon. |
-| **[Přiřazení testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** | Umožňuje Britta Simon používat Azure AD jednotné přihlašování. |
-| **[Vytvoření testovacího uživatele Správce certifikátů Sectigo](#create-a-sectigo-certificate-manager-test-user)** | Vytvoří protějšek Britta Simon v Sectigo Certificate Manager, který je propojen s reprezentací Azure AD uživatele. |
-| **[Test jednotného přihlašování](#test-single-sign-on)** | Ověří, zda konfigurace funguje. |
+| **[Přiřazení testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** | Povolí službě Britta Simon používat jednotné přihlašování Azure AD. |
+| **[Vytvoření testovacího uživatele správce certifikátů Sectigo](#create-a-sectigo-certificate-manager-test-user)** | Vytvoří protějšek Britta Simon ve Správci certifikátů Sectigo, který je propojený s reprezentacemi uživatele v Azure AD. |
+| **[Test jednotného přihlašování](#test-single-sign-on)** | Ověřuje, že konfigurace funguje. |
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Správce certifikátů Sectigo na webu Azure Portal.
+V této části nakonfigurujete jednotné přihlašování Azure AD pomocí Správce certifikátů Sectigo ve Azure Portal.
 
-1. Na [portálu Azure](https://portal.azure.com/)vyberte v podokně integrace aplikací **Sectigo Certificate Manager** možnost Jednotné **přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)v podokně integrace aplikace **Správce certifikátů Sectigo** vyberte **jednotné přihlašování**.
 
-    ![Konfigurovat možnost jednotného přihlášení](common/select-sso.png)
+    ![Konfigurovat možnost jednotného přihlašování](common/select-sso.png)
 
-1. V podokně **Vybrat metodu jednotného přihlašování** vyberte režim **SAML** nebo **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+1. V podokně **Vyberte metodu jednotného přihlašování** vyberte možnost **SAML** nebo **SAML/WS-nakrmený** režim pro povolení jednotného přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-1. V podokně **Nastavit jednotné přihlašování pomocí saml** vyberte **Upravit** (ikona tužky), chcete-li otevřít podokno Základní **konfigurace SAML.**
+1. V podokně **nastavit jednotné přihlašování pomocí SAML** vyberte **Upravit** (ikona tužky) a otevřete **základní podokno konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Chcete-li nakonfigurovat *režim iniciátoru IDP,* proveďte v **podokně Základní konfigurace SAML** následující kroky:
+1. V podokně **základní konfigurace SAML** nakonfigurujte *režim iniciované IDP*a proveďte následující kroky:
 
-    1. Do pole **Identifikátor** zadejte jednu z těchto adres URL:
-       * https:\//cert-manager.com/shibboleth
-       * https:\//hard.cert-manager.com/shibboleth
+    1. Do pole **identifikátor** zadejte jednu z těchto adres URL:
+       * https:\//CERT-Manager.com/Shibboleth
+       * https:\//Hard.CERT-Manager.com/Shibboleth
 
-    1. Do pole **Adresa URL pro odpověď** zadejte jednu z těchto adres URL:
-        * https:\//cert-manager.com/Shibboleth.sso/SAML2/POST
-        * https:\//hard.cert-manager.com/Shibboleth.sso/SAML2/POST
+    1. Do pole **Adresa URL odpovědi** zadejte jednu z těchto adres URL:
+        * https:\//CERT-Manager.com/Shibboleth.SSO/Saml2/post
+        * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/Saml2/post
 
-    1. Vyberte **Nastavit další adresy URL**.
+    1. Vyberte **nastavit další adresy URL**.
 
-    1. Do pole **Stav přenosu** zadejte jednu z těchto adres URL:
-       * https:\//cert-manager.com/customer/SSLSupport/idp
-       * https:\//hard.cert-manager.com/customer/SSLSupport/idp
+    1. Do pole **stav přenosu** zadejte jednu z těchto adres URL:
+       * https:\//CERT-Manager.com/Customer/SSLSupport/IDP
+       * https:\//Hard.CERT-Manager.com/Customer/SSLSupport/IDP
 
-    ![Doména Správce certifikátů Sectigo a adresy URL jednotné přihlašovací informace](common/idp-relay.png)
+    ![Sectigo informace o jednotném přihlašování domén správce certifikátů a adres URL](common/idp-relay.png)
 
-1.  Chcete-li aplikaci nakonfigurovat v *režimu iniciovaném službou SP*, proveďte následující kroky:
+1.  Chcete-li nakonfigurovat aplikaci v *režimu iniciované v režimu SP*, proveďte následující kroky:
 
-    * Do pole **Přihlásit se na adresu URL** zadejte jednu z těchto adres URL:
-      * https:\//cert-manager.com/Shibboleth.sso/Login
-      * https:\//hard.cert-manager.com/Shibboleth.sso/Login
+    * Do pole **přihlašovací adresa URL** zadejte jednu z těchto adres URL:
+      * https:\//CERT-Manager.com/Shibboleth.SSO/Login
+      * https:\//Hard.CERT-Manager.com/Shibboleth.SSO/Login
 
-      ![Doména Správce certifikátů Sectigo a adresy URL jednotné přihlašovací informace](common/both-signonurl.png)
+      ![Sectigo informace o jednotném přihlašování domén správce certifikátů a adres URL](common/both-signonurl.png)
 
-1. V podokně **Nastavit jednotné přihlašování pomocí saml** vyberte v části **Podpisový certifikát SAML** **položku Stáhnout** vedle **certifikátu (Base64).** Vyberte možnost stahování na základě vašich požadavků. Uložte certifikát do počítače.
+1. V podokně **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte **Stáhnout** vedle **certifikátu (Base64)**. Vyberte možnost stažení podle vašich požadavků. Uložte certifikát do počítače.
 
     ![Možnost stažení certifikátu (Base64)](common/certificatebase64.png)
 
-1. V části **Nastavit Správce certifikátů Sectigo** zkopírujte na základě vašich požadavků následující adresy URL:
+1. V části **nastavit správce certifikátů Sectigo** zkopírujte na základě vašich požadavků následující adresy URL:
 
     * Přihlašovací adresa URL
-    * Identifikátor azure reklamy
-    * Adresa URL odhlášení
+    * Identifikátor Azure AD
+    * Odhlašovací adresa URL
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurace jednotného přihlášení Správce certifikátů Sectigo
+### <a name="configure-sectigo-certificate-manager-single-sign-on"></a>Konfigurace jednotného přihlašování správce certifikátů Sectigo
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně Správce certifikátů Sectigo, odešlete soubor staženého certifikátu (Base64) a příslušné adresy URL, které jste zkopírovali z portálu Azure, [týmu podpory Správce certifikátů Sectigo](https://sectigo.com/support). Tým podpory Správce certifikátů Sectigo používá informace, které jim odešlete, k zajištění správného nastavení jednotného přihlašovacího připojení SAML na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně správce certifikátů Sectigo odešlete soubor stažený certifikát (Base64) a příslušné adresy URL, které jste zkopírovali z Azure Portal do [týmu podpory správce certifikátů Sectigo](https://sectigo.com/support). Tým podpory správce certifikátů Sectigo používá informace, které odesíláte, aby bylo zajištěno, že připojení jednotného přihlašování pomocí protokolu SAML je správně nastaveno na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-V této části vytvoříte testovací ho uživatele s názvem Britta Simon na webu Azure Portal.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. Na webu Azure Portal vyberte**Možnost Uživatelé Služby** >  **Azure Active Directory** > **Všichni uživatelé**.
+1. V Azure Portal vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
 
-    ![Možnosti Uživatelé a všichni uživatelé](common/users.png)
+    ![Možnosti uživatelé a všichni uživatelé](common/users.png)
 
-1. Vyberte **nový uživatel**.
+1. Vyberte **Nový uživatel**.
 
     ![Možnost Nový uživatel](common/new-user.png)
 
-1. V podokně **Uživatel** proveďte následující kroky:
+1. V podokně **uživatel** proveďte následující kroky:
 
-    1. Do pole **Název** zadejte **BrittaSimon**.
+    1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **Uživatelské jméno** zadejte **\@\<brittasimon>\< domény vaší společnosti. prodloužení\>**. Například **brittasimon\@contoso.com**.
+    1. Do pole **uživatelské jméno** zadejte **brittasimon\@\<Your a Company-Domain>.\< Přípona\>**. Například **brittasimon\@contoso.com**.
 
-    1. Zaškrtněte políčko **Zobrazit heslo.** Poznamenejte si hodnotu, která je zobrazena v poli **Heslo.**
+    1. Zaškrtněte políčko **Zobrazit heslo** . Zapište hodnotu, která se zobrazí v poli **heslo** .
 
     1. Vyberte **Vytvořit**.
 
-    ![Podokno Uživatel](common/user-properties.png)
+    ![Podokno uživatele](common/user-properties.png)
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části udělíte Britta Simon přístup k Sectigo Certificate Manager, aby mohla používat Azure jednotné přihlášení.
+V této části udělíte Britta Simon přístup k Sectigo Správci certifikátů, aby mohli používat jednotné přihlašování Azure.
 
-1. Na portálu Azure vyberte **Podnikové aplikace** > **Všechny aplikace** > **Sectigo Certificate Manager**.
+1. V Azure Portal vyberte možnost **podnikové aplikace** > **všechny aplikace** > **Sectigo Certificate Manager**.
 
-    ![Podokno Podnikové aplikace](common/enterprise-applications.png)
+    ![Podokno podnikové aplikace](common/enterprise-applications.png)
 
-1. V seznamu aplikací vyberte **Sectigo Certificate Manager**.
+1. V seznamu aplikace vyberte **Sectigo správce certifikátů**.
 
     ![Správce certifikátů Sectigo v seznamu aplikací](common/all-applications.png)
 
@@ -186,32 +186,32 @@ V této části udělíte Britta Simon přístup k Sectigo Certificate Manager, 
 
     ![Možnost Uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **Přidat uživatele**. Potom v podokně **Přidat přiřazení** vyberte **Možnost Uživatelé a skupiny**.
+1. Vyberte **Přidat uživatele**. Pak v podokně **Přidat přiřazení** vyberte **Uživatelé a skupiny**.
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-1. V podokně **Uživatelé a skupiny** vyberte v seznamu uživatelů **Brittu Simonovou.** Zvolte **Vybrat**.
+1. V podokně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** . Zvolte **Vybrat**.
 
-1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, vyberte v podokně **role Select** příslušnou roli pro uživatele ze seznamu. Zvolte **Vybrat**.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v podokně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Zvolte **Vybrat**.
 
-1. V podokně **Přidat přiřazení** vyberte **Přiřadit**.
+1. V podokně **Přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-a-sectigo-certificate-manager-test-user"></a>Vytvoření testovacího uživatele Správce certifikátů Sectigo
+### <a name="create-a-sectigo-certificate-manager-test-user"></a>Vytvoření testovacího uživatele správce certifikátů Sectigo
 
-V této části vytvoříte uživatele s názvem Britta Simon v Sectigo Certificate Manager. Spolupracujte s [týmem podpory Správce certifikátů Sectigo](https://sectigo.com/support) a přidejte uživatele do platformy Sectigo Certificate Manager. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+V této části vytvoříte uživatele s názvem Britta Simon ve Správci certifikátů Sectigo. Pokud chcete přidat uživatele na platformě Sectigo správce certifikátů, pracujte s [týmem podpory správce certifikátů Sectigo](https://sectigo.com/support) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí portálu Moje aplikace.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí portálu moje aplikace.
 
-Když po nastavení jednotného přihlášení vyberete správce **certifikátů Sectigo** na portálu Moje aplikace, budete automaticky přihlášeni ke Správci certifikátů Sectigo. Další informace o portálu Moje aplikace najdete [v tématu Přístup a používání aplikací na portálu Moje aplikace](../user-help/my-apps-portal-end-user-access.md).
+Po nastavení jednotného přihlašování vyberete **Sectigo správce certifikátů** na portálu moje aplikace a automaticky jste přihlášeni k Sectigo správce certifikátů. Další informace o portálu moje aplikace najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace naleznete v těchto článcích:
+Pokud se chcete dozvědět víc, přečtěte si tyto články:
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Jednotné přihlašování k aplikacím ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 

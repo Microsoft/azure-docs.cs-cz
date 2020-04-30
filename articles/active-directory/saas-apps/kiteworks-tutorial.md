@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory pomocí Kiteworks | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kiteworks.
+title: 'Kurz: Azure Active Directory integrace s Kiteworks | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Kiteworks.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,97 +16,97 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.openlocfilehash: 52b113d92fa83795e94d5179ea47ed5d9d9e9a26
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/16/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68248904"
 ---
-# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Kurz: Kiteworks integrovat s Azure Active Directory
+# <a name="tutorial-integrate-kiteworks-with-azure-active-directory"></a>Kurz: integrace Kiteworks s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat Kiteworks s Azure Active Directory (Azure AD). Když integrujete Kiteworks s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Kiteworks.
-* Aby uživatelé mohli být automaticky přihlášeni k Kiteworks pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k Kiteworks.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Kiteworks svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
-* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat měsíční zkušební verze [tady](https://azure.microsoft.com/pricing/free-trial/).
-* Kiteworks jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat zdarma [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
+* Kiteworks odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Podporuje Kiteworks **SP** jednotné přihlašování zahájené pomocí
-* Podporuje Kiteworks **JIT** zřizování uživatelů
+* Kiteworks podporuje jednotné přihlašování iniciované v **SP**
+* Kiteworks podporuje zřizování uživatelů **jenom v čase** .
 
 ## <a name="adding-kiteworks-from-the-gallery"></a>Přidání Kiteworks z Galerie
 
-Konfigurace integrace Kiteworks do služby Azure AD, budete muset přidat Kiteworks z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Kiteworks do služby Azure AD, musíte přidat Kiteworks z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Kiteworks** do vyhledávacího pole.
-1. Vyberte **Kiteworks** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **Kiteworks** .
+1. Na panelu výsledků vyberte **Kiteworks** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD pomocí Kiteworks pomocí testovacího uživatele volá **B.Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Kiteworks.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí Kiteworks pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Kiteworks.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD pomocí Kiteworks, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Kiteworks, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace jednotného přihlašování Kiteworks](#configure-kiteworks-sso)**  – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Kiteworks](#create-kiteworks-test-user)**  – Pokud chcete mít protějšek Britta Simon Kiteworks, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte KITEWORKS SSO](#configure-kiteworks-sso)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Kiteworks Test User](#create-kiteworks-test-user)** – pro Britta Simon v Kiteworks, který je propojený s reprezentací uživatele Azure AD.
+6. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Kiteworks** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Kiteworks** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, zadejte hodnoty pro následující pole:
+1. V části **základní konfigurace SAML** zadejte hodnoty pro následující pole:
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<kiteworksURL>.kiteworks.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<kiteworksURL>.kiteworks.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`https://<kiteworksURL>/sp/module.php/saml/sp/saml2-acs.php/sp-sso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Kiteworks klienta](https://accellion.com/support) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají ukazuje **základní konfiguraci SAML** části webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta Kiteworks](https://accellion.com/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. Na **nastavení Kiteworks** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení Kiteworks** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-    ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="configure-kiteworks-sso"></a>Konfigurace jednotného přihlašování Kiteworks
 
-1. Přihlaste se k webu společnosti Kiteworks jako správce.
+1. Přihlaste se k webu Kiteworks společnosti jako správce.
 
-1. Na panelu nástrojů v horní části klikněte na tlačítko **nastavení**.
+1. Na panelu nástrojů v horní části klikněte na **Nastavení**.
 
     ![Konfigurace jednotného přihlašování](./media/kiteworks-tutorial/tutorial_kiteworks_06.png)
 
-1. V **ověřování a autorizace** klikněte na tlačítko **nastavení jednotného přihlašování**.
+1. V části **ověřování a autorizace** klikněte na **nastavení jednotného přihlašování**.
 
     ![Konfigurace jednotného přihlašování](./media/kiteworks-tutorial/tutorial_kiteworks_07.png)
 
@@ -114,68 +114,68 @@ Použijte následující postup povolení jednotného přihlašování Azure AD 
 
     ![Konfigurace jednotného přihlašování](./media/kiteworks-tutorial/tutorial_kiteworks_09.png)
 
-    a. Vyberte **ověřování prostřednictvím jednotného přihlašování**.
+    a. Vyberte **ověřování pomocí jednotného přihlašování**.
 
-    b. Vyberte **zahájit AuthnRequest**.
+    b. Vyberte **Spustit AuthnRequest**.
 
-    c. V **IDP Entity ID** textového pole vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **ID entity IDP** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
-    d. V **jednotné přihlašování – adresa URL služby** textového pole vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    d. Do textového pole **Adresa URL služby jednotného přihlašování** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    e. V **adresu URL jednotného odhlašování služby** textového pole vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    e. Do textového pole **Adresa URL služby Single logout Service** vložte hodnotu **Adresa URL pro odhlášení**, kterou jste zkopírovali z Azure Portal.
 
-    f. Otevřete stažený certifikát v poznámkovém bloku, zkopírujte jeho obsah a vložte jej do **certifikát veřejného klíče RSA** textového pole.
+    f. Otevřete stažený certifikát v programu Poznámkový blok, zkopírujte obsah a vložte ho do textového pole **certifikátu RSA s veřejným klíčem** .
 
     g. Klikněte na **Uložit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B.Simon k udělení přístupu k Kiteworks použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k Kiteworks.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Kiteworks**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **Kiteworks**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B.Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-kiteworks-test-user"></a>Vytvoření Kiteworks testovacího uživatele
+### <a name="create-kiteworks-test-user"></a>Vytvořit testovacího uživatele Kiteworks
 
-Cílem této části je vytvořte uživatele Britta Simon v Kiteworks.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v Kiteworks.
 
-Kiteworks podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Kiteworks, pokud ještě neexistuje.
+Kiteworks podporuje zřizování za běhu, které je ve výchozím nastavení povolené. V této části není žádná položka akce. Nový uživatel se vytvoří během pokusu o přístup k Kiteworks, pokud ještě neexistuje.
 
 > [!NOTE]
-> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Kiteworks](https://accellion.com/support).
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory Kiteworks](https://accellion.com/support).
 
 ### <a name="test-sso"></a>Test SSO
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Kiteworks na přístupovém panelu, můžete by měl být automaticky přihlášeni k Kiteworks, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Kiteworks, měli byste se automaticky přihlásit k Kiteworks, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
