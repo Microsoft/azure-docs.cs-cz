@@ -3,12 +3,12 @@ title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f91fe1c63430a0eac23cf9cbc184babb6dd5f7a4
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106080"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206599"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -50,7 +50,7 @@ Další informace o použití kured najdete v tématu [použití zabezpečení a
 
 ### <a name="windows-server-nodes"></a>Uzly Windows serveru
 
-V případě uzlů Windows serveru (aktuálně ve verzi Preview v AKS) web Windows Update nespustí automaticky a použije nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání web Windows Update a vlastního procesu ověřování byste měli provést upgrade v clusteru a fondech uzlů Windows serveru v clusteru AKS. Tento proces upgradu vytvoří uzly, na kterých běží nejnovější image a opravy Windows serveru, a pak odebere starší uzly. Další informace o tomto procesu najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
+V případě uzlů Windows serveru se web Windows Update automaticky nespustí a nepoužije nejnovější aktualizace. V pravidelných intervalech kolem cyklu vydávání web Windows Update a vlastního procesu ověřování byste měli provést upgrade v clusteru a fondech uzlů Windows serveru v clusteru AKS. Tento proces upgradu vytvoří uzly, na kterých běží nejnovější image a opravy Windows serveru, a pak odebere starší uzly. Další informace o tomto procesu najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>Proč jsou dvě skupiny prostředků vytvořené pomocí AKS?
 
@@ -122,7 +122,7 @@ AKS není aktuálně nativně integrována s Azure Key Vault. [Azure Key Vault F
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžu na AKS spouštět kontejnery Windows serveru?
 
-Ano, kontejnery Windows serveru jsou dostupné ve verzi Preview. Pokud chcete spouštět kontejnery Windows serveru v AKS, vytvořte fond uzlů, na kterém běží Windows Server, jako hostovaný operační systém. Kontejnery Windows serveru můžou používat jenom Windows Server 2019. Informace o tom, jak začít, najdete v tématu [Vytvoření clusteru AKS s fondem uzlů Windows serveru][aks-windows-cli].
+Ano, kontejnery Windows serveru jsou dostupné na AKS. Pokud chcete spouštět kontejnery Windows serveru v AKS, vytvořte fond uzlů, na kterém běží Windows Server, jako hostovaný operační systém. Kontejnery Windows serveru můžou používat jenom Windows Server 2019. Informace o tom, jak začít, najdete v tématu [Vytvoření clusteru AKS s fondem uzlů Windows serveru][aks-windows-cli].
 
 Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou součástí nadřazeného Windows serveru v projektu Kubernetes. Další informace o těchto omezeních najdete v tématu věnovaném [omezením AKS v kontejnerech Windows serveru][aks-windows-limitations].
 

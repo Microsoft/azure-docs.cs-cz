@@ -1,5 +1,5 @@
 ---
-title: Zpráva k vydání verze
+title: Poznámky k verzi
 description: Seznamte se s novými funkcemi a vylepšeními služby Azure SQL Database a v dokumentaci k Azure SQL Database
 services: sql-database
 author: stevestein
@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/28/2020
 ms.author: sstein
-ms.openlocfilehash: 27a62223970b0f697465ce9aa050f3fccbcae464
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106419"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201308"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -49,7 +49,7 @@ V tomto článku jsou uvedené SQL Database funkce, které jsou aktuálně ve ve
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvořte přihlášení na úrovni serveru pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
 | [Transakční replikace](sql-database-managed-instance-transactional-replication.md) | Změny v tabulkách replikujte do jiných databází umístěných na spravovaných instancích, v izolovaných databázích nebo instancích SQL Server, nebo aktualizujte tabulky, když dojde ke změně některých řádků v jiných spravovaných instancích nebo instanci SQL Server. Informace najdete v tématu [Konfigurace replikace v databázi spravované instance Azure SQL Database](replication-with-sql-database-managed-instance.md). |
 | Detekce hrozeb |Informace najdete v tématu [konfigurace detekce hrozeb v Azure SQL Database Managed instance](sql-database-managed-instance-threat-detection.md).|
-| Dlouhodobé uchovávání záloh | Informace najdete v tématu [Konfigurace dlouhodobého uchovávání záloh v Azure SQL Database Managed instance](sql-database-managed-instance-long-term-backup-retention-configure.md). | 
+| Dlouhodobé uchovávání záloh | Informace najdete v tématu [Konfigurace dlouhodobého uchovávání záloh v Azure SQL Database Managed instance](sql-database-managed-instance-long-term-backup-retention-configure.md), která je aktuálně ve verzi Public Preview. | 
 
 ---
 
@@ -69,7 +69,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
   - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Vytvořte instance s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni serveru</a> a <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovou zónou</a> dle vašeho výběru.
   - Spravované instance jsou teď chráněné pomocí <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">integrované brány firewall</a>.
-  - Nakonfigurujte instance tak, aby používaly [veřejné koncové body](sql-database-managed-instance-public-endpoint-configure.md), připojení [přepsání proxy serveru](sql-database-connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až do 35 dnů</a> pro obnovení k bodu v čase. Dlouhodobé uchovávání záloh (až 10 let) není pořád povolené, takže můžete jako alternativu použít <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">zálohy jenom pro kopírování</a> .
+  - Nakonfigurujte instance tak, aby používaly [veřejné koncové body](sql-database-managed-instance-public-endpoint-configure.md), připojení [přepsání proxy serveru](sql-database-connectivity-architecture.md#connection-policy) , aby se dosáhlo lepšího výkonu sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurace uchovávání záloh až do 35 dnů</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](sql-database-long-term-retention.md#managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](sql-database-managed-instance-delete-virtual-cluster.md).
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
   - Spravovaná instance je k dispozici v následujících oblastech Azure Government pro GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.
@@ -81,7 +81,7 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 |[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci](#permissions-on-resource-group-not-applied-to-managed-instance)|Únor 2020|Má alternativní řešení||
 |[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má alternativní řešení||
 |[Role agenta SQL potřebují explicitní oprávnění EXECUTE pro přihlášení jiná než sysadmin.](#in-memory-oltp-memory-limits-are-not-applied)|DEC 2019|Má alternativní řešení||
-|[Úlohy agenta SQL je možné přerušit restartováním procesu agenta.](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|DEC 2019|Žádné alternativní řešení|Březen 2020|
+|[Úlohy agenta SQL je možné přerušit restartováním procesu agenta.](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|DEC 2019|Vyřešeno|Březen 2020|
 |[Přihlášení AAD a uživatelé nejsou v SSDT podporované.](#aad-logins-and-users-are-not-supported-in-ssdt)|Listopadu 2019|Žádné alternativní řešení||
 |[Limity OLTP paměti v paměti se nepoužívají.](#in-memory-oltp-memory-limits-are-not-applied)|Říjen 2019|Má alternativní řešení||
 |[Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Říjen 2019|Má alternativní řešení||
@@ -133,7 +133,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>Úlohy agenta SQL je možné přerušit restartováním procesu agenta.
 
-SQL Agent vytvoří novou relaci při každém spuštění úlohy a postupně zvyšuje spotřebu paměti. Aby nedošlo k překročení limitu interní paměti, který by blokoval provádění plánovaných úloh, proces agenta se restartuje, jakmile jeho spotřeba dosáhne prahové hodnoty. Výsledkem může být přerušení provádění úloh spuštěných v okamžiku restartování.
+**(Vyřešeno v březnu 2020)** SQL Agent vytvoří novou relaci při každém spuštění úlohy a postupně zvyšuje spotřebu paměti. Aby nedošlo k překročení limitu interní paměti, který by blokoval provádění plánovaných úloh, proces agenta se restartuje, jakmile jeho spotřeba dosáhne prahové hodnoty. Výsledkem může být přerušení provádění úloh spuštěných v okamžiku restartování.
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>Limity OLTP paměti v paměti se nepoužívají.
 

@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083297"
+ms.locfileid: "82203875"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Vytvoření topologie Apache Storm v jazyce Java
 
-Naučte se vytvořit topologii založenou na jazyce Java pro [Apache Storm](https://storm.apache.org/). Tady vytvoříte topologii, která implementuje aplikaci počtu slov. Použijte [Apache Maven](https://maven.apache.org/) k sestavení a zabalení projektu. Pak se naučíte, jak definovat topologii pomocí rozhraní [Apache Stormch toků](https://storm.apache.org/releases/2.0.0/flux.html) .
+Naučte se vytvořit topologii založenou na jazyce Java pro Apache Storm. Vytvoříte topologii, která implementuje aplikaci počtu slov. Použijte Apache Maven k sestavení a zabalení projektu. Pak se naučíte, jak definovat topologii pomocí rozhraní Apache Stormch toků.
 
 Po dokončení kroků v tomto dokumentu můžete tuto topologii nasadit do Apache Storm ve službě HDInsight.
 
@@ -197,7 +197,7 @@ Tato část slouží k přidání modulů plug-in, prostředků a dalších mož
 
 * **Modul plug-in kompilátoru Apache Maven**
 
-    Dalším užitečným modulem plug-in je [modul plug-in pro Apache Maven](https://maven.apache.org/plugins/maven-compiler-plugin/), který se používá ke změně možností kompilace. Změňte verzi Java, kterou Maven používá pro zdroj a cíl vaší aplikace.
+    Dalším užitečným modulem plug- [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/)in je, který se používá ke změně možností kompilace. Změňte verzi Java, kterou Maven používá pro zdroj a cíl vaší aplikace.
 
   * Pro HDInsight __3,4 nebo starší__nastavte zdrojovou a cílovou verzi Java na __1,7__.
 
@@ -239,13 +239,13 @@ Apache Storm topologie založené na jazyce Java se skládá ze tří komponent,
 
 * **Spoutů**: čte data z externích zdrojů a vysílá proudy dat do topologie.
 
-* **Šrouby**: provádí zpracování v datových proudech emitovaných spoutů nebo jiném šrouby a vysílá jeden nebo více datových proudů.
+* **Šrouby**: zpracovává zpracování streamů emitovaných spoutů nebo jiným šrouby a vysílá jeden nebo více datových proudů.
 
 * **Topologie**: definuje způsob uspořádání spoutů a šrouby a poskytuje vstupní bod pro topologii.
 
 ### <a name="create-the-spout"></a>Vytvoření Spout
 
-Aby se snížily požadavky na nastavení externích zdrojů dat, následující Spout jednoduše vygeneruje náhodné věty. Jedná se o upravenou verzi Spout, která je k dispozici v příkladech pro zaplavování [– Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  I když tato topologie používá jenom jeden Spout, ostatní můžou mít několik datových kanálů z různých zdrojů do topologie.
+Aby se snížily požadavky na nastavení externích zdrojů dat, následující Spout jednoduše vygeneruje náhodné věty. Jedná se o upravenou verzi Spout, která je k dispozici v příkladech pro zaplavování [– Starter](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  I když tato topologie používá jeden Spout, ostatní můžou mít několik datových kanálů z různých zdrojů do topologie.`.`
 
 Zadáním následujícího příkazu vytvořte a otevřete nový soubor `RandomSentenceSpout.java`:
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>Definování topologie
 
-Topologie spojuje spoutů a šrouby dohromady do grafu, který definuje způsob toku dat mezi komponentami. Poskytuje také pomocný parametr paralelismus, který využívá při vytváření instancí součástí v clusteru.
+Topologie spojuje spoutů a šrouby do grafu. Graf definuje tok dat mezi součástmi. Poskytuje také pomocný parametr paralelismus, který využívá při vytváření instancí součástí v clusteru.
 
 Následující obrázek je základní diagram grafu komponent pro tuto topologii.
 
@@ -613,15 +613,15 @@ Při spuštění topologie zobrazí informace o spuštění. Následující text
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Tento ukázkový protokol indikuje, že slovo a bylo vygenerováno 113 krát. Počet pokračuje v provozu, dokud se topologie spustí, protože Spout průběžně generuje stejné věty.
+Tento ukázkový protokol indikuje, že slovo a bylo vygenerováno 113 krát. Počet se stále zvětšuje, dokud se topologie spustí. Toto zvýšení je, protože Spout průběžně generuje stejné věty.
 
 Mezi emisemi slov a počtů je interval 5 sekund. Komponenta **WORDCOUNT** je nakonfigurována tak, aby vygenerovala pouze informace, když dorazí do řazené kolekce členů. Vyžádá, aby se řazené kolekce členů prodávaly jenom každých pět sekund.
 
 ## <a name="convert-the-topology-to-flux"></a>Převod topologie na tok
 
-[Tok](https://storm.apache.org/releases/2.0.0/flux.html) je nová architektura dostupná s využitím 0.10.0 a vyšší, která umožňuje oddělit konfiguraci od implementace. Vaše komponenty jsou pořád definované v jazyce Java, ale topologie je definovaná pomocí souboru YAML. Můžete zabalit výchozí definici topologie s vaším projektem nebo při odesílání topologie použít samostatný soubor. Při odesílání topologie do prostředí můžete pomocí proměnných prostředí nebo konfiguračních souborů naplnit hodnoty v definici topologie YAML.
+[Tok](https://storm.apache.org/releases/2.0.0/flux.html) je nová architektura dostupná s využitím 0.10.0 a vyšší. Tok umožňuje oddělit konfiguraci od implementace. Vaše komponenty jsou pořád definované v jazyce Java, ale topologie je definovaná pomocí souboru YAML. Můžete zabalit výchozí definici topologie s vaším projektem nebo při odesílání topologie použít samostatný soubor. Při odesílání topologie k vyplavování použijte proměnné prostředí nebo konfigurační soubory k naplnění hodnot definice topologie YAML.
 
-Soubor YAML definuje komponenty, které se mají použít pro topologii a tok dat mezi nimi. Soubor YAML můžete zahrnout jako součást souboru jar nebo můžete použít externí soubor YAML.
+Soubor YAML definuje komponenty, které se mají použít pro topologii a tok dat mezi nimi. Soubor YAML můžete zahrnout jako součást souboru jar. Můžete také použít externí soubor YAML.
 
 Další informace o toku najdete v tématu [tok rozhraní (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
@@ -818,7 +818,7 @@ Další informace o těchto a dalších funkcích rozhraní toků najdete v tém
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) je abstrakce na vysoké úrovni, která je poskytována pomocí průchozího. Podporuje stavové zpracování. Primární výhodou Trident je, že může zaručit, že se každá zpráva, která vstoupí do topologie, zpracovává jenom jednou. Bez použití Trident může vaše topologie zaručit, že se zprávy zpracovávají aspoň jednou. K dispozici jsou také jiné rozdíly, například integrované komponenty, které lze použít místo vytvoření šrouby. Ve skutečnosti jsou šrouby nahrazeny méně obecnými součástmi, jako jsou filtry, projekce a funkce.
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) je abstrakce na vysoké úrovni, která je poskytována pomocí průchozího. Podporuje stavové zpracování. Primární výhodou Trident je, že zaručuje, že všechny zprávy, které vstupují do topologie, se zpracovávají jenom jednou. Bez použití Trident může vaše topologie zaručit, že se zprávy zpracovávají aspoň jednou. K dispozici jsou také jiné rozdíly, například integrované komponenty, které lze použít místo vytvoření šrouby. Šrouby jsou nahrazeny méně obecnými součástmi, jako jsou filtry, projekce a funkce.
 
 Aplikace Trident lze vytvořit pomocí projektů Maven. Použijete stejný základní postup, jak je uvedeno výše v tomto článku – pouze kód je jiný. Trident také nemůže (aktuálně) používat s rozhraním toků.
 
@@ -830,6 +830,6 @@ Zjistili jste, jak vytvořit topologii Apache Storm pomocí Java. Teď se dozví
 
 * [Nasazení a Správa topologií Apache Storm v HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 
-* [Vývoj topologií v jazyce C# pro Apache Storm v HDInsight pomocí sady Visual Studio](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Vývoj topologií pomocí Pythonu](apache-storm-develop-python-topology.md)
 
 Další příklady Apache Storm topologií najdete [v tématu Příklady topologií pro Apache Storm v HDInsight](apache-storm-example-topology.md).

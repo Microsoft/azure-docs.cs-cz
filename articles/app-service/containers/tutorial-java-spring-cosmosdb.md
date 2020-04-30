@@ -1,49 +1,49 @@
 ---
-title: 'Výuka: Linux Java aplikace s MongoDB'
-description: Zjistěte, jak ve službě Azure App Service fungovat datově řízená aplikace Linux Java s připojením k MongoDB spuštěnému v Azure (Cosmos DB).
+title: 'Kurz: aplikace pro Linux Java s MongoDB'
+description: Naučte se, jak získat datově řízenou aplikaci Java pro Linux pracující v Azure App Service s připojením k MongoDB běžícímu v Azure (Cosmos DB).
 author: rloutlaw
 ms.author: routlaw
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e5dcb39430158db1ee9a18524d0214335a2bbbba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b65e8f470b36ab1642e9144e081253a577dabc3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045382"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202498"
 ---
-# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java Spring Boot se službou Azure App Service na Linuxu a Azure Cosmos DB
+# <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>Kurz: Vytvoření webové aplikace Java jarní Boot pomocí Azure App Service v systému Linux a Azure Cosmos DB
 
-Tento kurz vás provede procesem vytváření, konfigurace, nasazování a škálování webových aplikací Java v Azure. Po dokončení budete mít aplikaci [spring boot,](https://projects.spring.io/spring-boot/) která ukládá data v [Azure Cosmos DB](/azure/cosmos-db) spuštěnou ve službě Azure App Service na [Linuxu](/azure/app-service/containers).
+Tento kurz vás provede procesem sestavení, konfigurace, nasazení a škálování webových aplikací v jazyce Java v Azure. Až budete hotovi, budete mít aplikaci pro [spouštění pružiny](https://projects.spring.io/spring-boot/) , která ukládá data v [Azure Cosmos DB](/azure/cosmos-db) spuštěná na [Azure App Service v systému Linux](/azure/app-service/containers).
 
-![Aplikace spring boot ukládání dat v Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Aplikace pro spouštění pružiny, která ukládá data do Azure Cosmos DB](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvořte databázi Cosmos DB.
-> * Připojení ukázkové aplikace k databázi a její místní testování
+> * Připojit ukázkovou aplikaci k databázi a místně ji otestovat
 > * Nasazení ukázkové aplikace do Azure
-> * Streamování diagnostických protokolů ze služby App Service
+> * Streamování diagnostických protokolů z App Service
 > * Přidání dalších instancí pro horizontální navýšení kapacity ukázkové aplikace
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/overview), nainstalované ve vašem počítači. 
+* Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/overview), které je nainstalované na vašem počítači. 
 * [Git](https://git-scm.com/)
 * [Java JDK](https://aka.ms/azure-jdks)
 * [Maven](https://maven.apache.org)
 
-## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>Klonujte ukázkovou aplikaci TODO a připravte repo
+## <a name="clone-the-sample-todo-app-and-prepare-the-repo"></a>Naklonování ukázkové aplikace TODO a příprava úložiště
 
-Tento kurz používá ukázkovou aplikaci seznamu todo s webovým uznaným rozhraním, které volá rozhraní API SPRING REST podporované [spring data Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). Kód aplikace je k dispozici [na GitHubu](https://github.com/Microsoft/spring-todo-app). Další informace o psaní aplikací Java pomocí spring a cosmos DB najdete v článku [startér jarního startu s kurzem Azure Cosmos DB SQL API](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) a v rychlém startu Spring Data Azure [Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
+V tomto kurzu se používá ukázková aplikace seznamu úkolů s webovým uživatelským rozhraním, které volá pružinovou REST APIovou [Azure Cosmos DBovou datovou pružinu](https://github.com/Microsoft/spring-data-cosmosdb). Kód aplikace je k dispozici [na GitHubu](https://github.com/Microsoft/spring-todo-app). Další informace o psaní aplikací v jazyce Java pomocí pružiny a Cosmos DB najdete v tématu o [jaře Boot Starter pomocí Azure Cosmos DB SQL API](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) a na [jarních datech Azure Cosmos DB rychlém startu](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
-Spusťte následující příkazy v terminálu klonovat ukázkové repo a nastavit ukázkové prostředí aplikace.
+Spuštěním následujících příkazů v terminálu naklonujte ukázkové úložiště a nastavte prostředí ukázkové aplikace.
 
 ```bash
 git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git
@@ -53,23 +53,23 @@ yes | cp -rf .prep/* .
 
 ## <a name="create-an-azure-cosmos-db"></a>Vytvoření služby Azure Cosmos DB
 
-Podle těchto kroků vytvořte databázi Azure Cosmos DB ve vašem předplatném. Aplikace seznamu TODO se připojí k této databázi a uloží její data při spuštění, zachování stavu aplikace bez ohledu na to, kde spustíte aplikaci.
+Pomocí těchto kroků vytvořte v předplatném Azure Cosmos DBovou databázi. Aplikace seznamu úkolů se připojí k této databázi a uloží její data při spuštění a zůstane beze stavu aplikace bez ohledu na to, kde aplikaci spustíte.
 
-1. Přihlaste se k nastavení azure cli a volitelně nastavte předplatné, pokud máte více než jeden připojený k přihlašovací údaje.
+1. Přihlaste se k rozhraní příkazového řádku Azure a případně nastavte předplatné, pokud máte více než jedno připojení k přihlašovacím údajům.
 
     ```bash
     az login
     az account set -s <your-subscription-id>
     ```   
 
-2. Vytvořte skupinu prostředků Azure s uznanou název skupiny prostředků.
+2. Vytvořte skupinu prostředků Azure, která označuje název skupiny prostředků.
 
     ```bash
     az group create -n <your-azure-group-name> \
         -l <your-resource-group-region>
     ```
 
-3. Vytvořte Azure Cosmos `GlobalDocumentDB` DB s druhem. Název Cosmos DB musí používat pouze malá písmena. Poznamenejte `documentEndpoint` si pole v odpovědi z příkazu.
+3. Vytvořte Azure Cosmos DB s `GlobalDocumentDB` typem. Název Cosmos DB musí obsahovat jenom malá písmena. Poznamenejte si `documentEndpoint` pole v odpovědi z příkazu.
 
     ```bash
     az cosmosdb create --kind GlobalDocumentDB \
@@ -77,7 +77,7 @@ Podle těchto kroků vytvořte databázi Azure Cosmos DB ve vašem předplatném
         -n <your-azure-COSMOS-DB-name-in-lower-case-letters>
     ```
 
-4. Získejte klíč Azure Cosmos DB pro připojení k aplikaci. Udržujte `primaryMasterKey` `documentEndpoint` , v blízkosti, jak budete potřebovat v dalším kroku.
+4. Získejte Azure Cosmos DB klíč pro připojení k aplikaci. V dalším `primaryMasterKey`kroku `documentEndpoint` nechte v nejbližším případě, že je budete potřebovat.
 
     ```bash
     az cosmosdb list-keys -g <your-azure-group-name> -n <your-azure-COSMOSDB-name>
@@ -85,14 +85,14 @@ Podle těchto kroků vytvořte databázi Azure Cosmos DB ve vašem předplatném
 
 ## <a name="configure-the-todo-app-properties"></a>Konfigurace vlastností aplikace TODO
 
-Otevřete terminál v počítači. Zkopírujte ukázkový soubor skriptu v klonovaném repo, abyste ho mohli přizpůsobit pro databázi Cosmos DB, kterou jste právě vytvořili.
+V počítači otevřete terminál. Zkopírujte ukázkový soubor skriptu do klonovaného úložiště, abyste ho mohli přizpůsobit vaší Cosmos DB databázi, kterou jste právě vytvořili.
 
 ```bash
 cd initial/spring-todo-app
 cp set-env-variables-template.sh .scripts/set-env-variables.sh
 ```
  
-Upravte `.scripts/set-env-variables.sh` ve svém oblíbeném editoru a dodejte informace o připojení Azure Cosmos DB. Pro konfiguraci App Service Linux použijte stejnou`your-resource-group-region`oblast jako`your-azure-group-name`předtím ( ) a skupinu prostředků ( ) používanou při vytváření databáze Cosmos DB. Zvolte WEBAPP_NAME, která je jedinečná, protože nemůže duplikovat žádný název webové aplikace v žádném nasazení Azure.
+Upravte `.scripts/set-env-variables.sh` v oblíbeném editoru a zadejte informace o Azure Cosmos DB připojení. Pro konfiguraci App Service Linux použijte stejnou oblast jako předtím (`your-resource-group-region`) a skupinu prostředků (`your-azure-group-name`), která se používá při vytváření databáze Cosmos DB. Vyberte WEBAPP_NAME, který je jedinečný, protože nemůže duplikovat žádný název webové aplikace v žádném nasazení Azure.
 
 ```bash
 export COSMOSDB_URI=<put-your-COSMOS-DB-documentEndpoint-URI-here>
@@ -105,13 +105,13 @@ export WEBAPP_NAME=<put-your-Webapp-name-here>
 export REGION=<put-your-REGION-here>
 ```
 
-Pak spusťte skript:
+Potom spusťte skript:
 
 ```bash
 source .scripts/set-env-variables.sh
 ```
    
-Tyto proměnné prostředí se `application.properties` používají v aplikaci seznam TODO. Pole v souboru vlastností nastavují výchozí konfiguraci úložiště pro jarní data:
+Tyto proměnné prostředí se používají v `application.properties` aplikaci seznam todo. Pole v souboru s vlastnostmi nastavily výchozí konfiguraci úložiště pro data pružiny:
 
 ```properties
 azure.cosmosdb.uri=${COSMOSDB_URI}
@@ -125,7 +125,7 @@ public interface TodoItemRepository extends DocumentDbRepository<TodoItem, Strin
 }
 ```
 
-Ukázková aplikace pak `@Document` použije poznámku `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` importovanou z k nastavení typu entity, který má být uložen a spravován cosmos DB:
+Ukázková aplikace potom používá `@Document` anotaci importovanou `com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document` z nástroje k nastavení typu entity, který chcete uložit a spravovat pomocí Cosmos DB:
 
 ```java
 @Document
@@ -138,13 +138,13 @@ public class TodoItem {
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Použijte Maven ke spuštění ukázky.
+Pomocí Maven spusťte ukázku.
 
 ```bash
 mvn package spring-boot:run
 ```
 
-Výstup by měl vypadat takto.
+Výstup by měl vypadat nějak takto.
 
 ```bash
 bash-3.2$ mvn package spring-boot:run
@@ -165,15 +165,15 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Můžete přistupovat k jarní TODO App lokálně pomocí [http://localhost:8080/](http://localhost:8080/)tohoto odkazu, jakmile je aplikace spuštěna: .
+Po spuštění aplikace můžete přístup k aplikaci pružiny použít místně pomocí tohoto odkazu: `http://localhost:8080/`.
 
- ![Přístup k aplikaci Spring TODO místně](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Přístup k aplikaci jarní TODO místně](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Pokud se místo zprávy "Started TodoApplication" zobrazí výjimky, zkontrolujte, zda `bash` skript v předchozím kroku správně exportoval proměnné prostředí a zda jsou hodnoty správné pro databázi Azure Cosmos DB, kterou jste vytvořili.
+Pokud se zobrazí výjimky místo zprávy "spuštění TodoApplication", zkontrolujte, zda `bash` skript v předchozím kroku exportovali proměnné prostředí správně a zda jsou hodnoty správné pro Azure Cosmos DB databázi, kterou jste vytvořili.
 
 ## <a name="configure-azure-deployment"></a>Konfigurace nasazení Azure
 
-Otevřete `pom.xml` soubor `initial/spring-boot-todo` v adresáři a přidejte následující modul plug-in Azure Web App pro konfiguraci [Maven.](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)
+Otevřete `pom.xml` soubor v `initial/spring-boot-todo` adresáři a přidejte následující [modul plug-in webové aplikace Azure pro konfiguraci Maven](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) .
 
 ```xml    
 <plugins> 
@@ -236,9 +236,9 @@ Otevřete `pom.xml` soubor `initial/spring-boot-todo` v adresáři a přidejte n
 </plugins>
 ```
 
-## <a name="deploy-to-app-service-on-linux"></a>Nasazení do služby App Service na Linuxu
+## <a name="deploy-to-app-service-on-linux"></a>Nasazení na App Service v systému Linux
 
-Pomocí `azure-webapp:deploy` cíle Maven nasadit aplikaci TODO do služby Azure App Service na Linuxu.
+Použijte cíl `azure-webapp:deploy` Maven k nasazení aplikace TODO pro Azure App Service v systému Linux.
 
 ```bash
 
@@ -270,15 +270,15 @@ bash-3.2$ mvn azure-webapp:deploy
 [INFO] ------------------------------------------------------------------------
 ```
 
-Výstup obsahuje adresu URL nasazené aplikace (v `https://spring-todo-app.azurewebsites.net` tomto příkladu). Tuto adresu URL můžete zkopírovat do webového prohlížeče nebo spustit následující příkaz v okně terminálu a načíst aplikaci.
+Výstup obsahuje adresu URL vaší nasazené aplikace (v tomto příkladu `https://spring-todo-app.azurewebsites.net` ). Tuto adresu URL můžete zkopírovat do webového prohlížeče nebo spuštěním následujícího příkazu v okně terminálu načíst svou aplikaci.
 
 ```bash
 open https://spring-todo-app.azurewebsites.net
 ```
 
-V adresním řádku byste měli vidět aplikaci spuštěnou se vzdálenou adresou URL:
+Na adresním řádku by se měla zobrazit aplikace spuštěná se vzdálenou adresou URL:
 
- ![Aplikace spring boot spuštěná se vzdálenou adresou URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![Aplikace pružinového spuštění běžící se vzdálenou adresou URL](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>Streamování diagnostických protokolů
 
@@ -287,7 +287,7 @@ V adresním řádku byste měli vidět aplikaci spuštěnou se vzdálenou adreso
 
 ## <a name="scale-out-the-todo-app"></a>Horizontální navýšení kapacity aplikace TODO
 
-Horizontální navýšení kapacity aplikace přidáním jiného pracovníka:
+Horizontální navýšení kapacity aplikace přidáním dalšího pracovního procesu:
 
 ```bash
 az appservice plan update --number-of-workers 2 \
@@ -308,9 +308,9 @@ az group delete --name <your-azure-group-name>
 ## <a name="next-steps"></a>Další kroky
 
 [Azure pro vývojáře](/java/azure/)
-Java[Spring Boot](https://spring.io/projects/spring-boot), jarní data [pro Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), Azure [Cosmos DB](/azure/cosmos-db/sql-api-introduction) a App Service [Linux](app-service-linux-intro.md).
+v jazyce Java –[pružinové spouštění](https://spring.io/projects/spring-boot), [pružinová data pro Cosmos DB](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db?view=azure-java-stable), [Azure Cosmos DB](/azure/cosmos-db/sql-api-introduction) a [App Service Linux](app-service-linux-intro.md).
 
-Další informace o spouštění aplikací Java v aplikaci App Service na Linuxu najdete v průvodci pro vývojáře.
+Přečtěte si další informace o spouštění aplikací Java v App Service v systému Linux v příručce pro vývojáře.
 
 > [!div class="nextstepaction"] 
 > [Příručka pro vývojáře v Javě v App Service Linux](configure-language-java.md)

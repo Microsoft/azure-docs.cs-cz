@@ -1,11 +1,11 @@
 ---
-title: Odstranění uživatelé hromadného obnovení na portálu Azure Active Directory | Dokumenty společnosti Microsoft
-description: Hromadné obnovení odstraněných uživatelů v Centru pro správu Azure AD ve službě Azure Active Directory
+title: Hromadné obnovení odstraněných uživatelů na portálu Azure Active Directory | Microsoft Docs
+description: Obnovte odstraněné uživatele hromadně v centru pro správu Azure AD v Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,50 +13,71 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f75fe224491c2853f819a45db678e87849dc72d1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532699"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203286"
 ---
-# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Odstranění uživatelé s hromadným obnovením ve službě Azure Active Directory
+# <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Hromadné obnovení odstraněných uživatelů v Azure Active Directory
 
-Azure Active Directory (Azure AD) podporuje hromadné uživatelské operace vytváření a odstraňování, hromadné pozvání pro hosty a podporuje stahování seznamů uživatelů, skupin a členů skupiny.
+Azure Active Directory (Azure AD) podporuje hromadné operace obnovení uživatelů a podporuje stahování seznamů uživatelů, skupin a členů skupiny.
 
-## <a name="to-bulk-restore-users"></a>Chcete-li hromadně obnovit uživatele
+## <a name="understand-the-csv-template"></a>Princip šablony sdíleného svazku clusteru
 
-1. [Přihlaste se ke své organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci Azure AD.
-1. Ve službě Azure AD vyberte **Položku Odstraněné uživatele** > **Deleted**.
-1. Na stránce **Odstranění uživatelé** vyberte **Hromadné obnovení,** chcete-li nahrát platný soubor CSV vlastností uživatelů, které chcete obnovit.
+Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, která vám umožní úspěšně obnovit uživatele Azure AD. Šablona sdíleného svazku clusteru, kterou stáhnete, může vypadat jako v tomto příkladu:
 
-   ![Výběr příkazu hromadného obnovení na stránce Odstranění uživatelé](./media/users-bulk-restore/bulk-restore.png)
+![Tabulka pro nahrávání a volání s vysvětlením účelu a hodnot pro každý řádek a sloupec](./media/users-bulk-restore/understand-template.png)
 
-1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, kterého chcete obnovit. Jedinou požadovanou hodnotou je **ObjectID**. Pak soubor uložte.
+### <a name="csv-template-structure"></a>Struktura šablony CSV
 
-   ![Vyberte místní soubor CSV, do kterého uvedete seznam uživatelů, které chcete přidat.](./media/users-bulk-restore/upload-button.png)
+Řádky ve stažené šabloně CSV jsou následující:
 
-1. Na stránce **Hromadné obnovení** vyhledejte v části **Upload souboru CSV**soubor. Když vyberete soubor a klepnete na **tlačítko Odeslat**, spustí se ověření souboru CSV.
-1. Po ověření obsahu souboru se **soubor úspěšně nahraje**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
-1. Když váš soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která obnoví uživatele.
+- **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Object ID [objectId] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
+
+### <a name="additional-guidance"></a>Další doprovodné materiály
+
+- První dva řádky šablony nahrávání se nesmí odebrat ani změnit, jinak se nahrávání nedá zpracovat.
+- Požadované sloupce jsou uvedeny jako první.
+- Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
+- Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
+
+## <a name="to-bulk-restore-users"></a>Postup hromadného obnovení uživatelů
+
+1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci Azure AD.
+1. V Azure AD vyberte **Uživatelé** > **odstranění**.
+1. Na stránce **odstraněné uživatele** výběrem možnosti **Hromadná obnova** nahrajte platný soubor CSV s vlastnostmi uživatelů, které chcete obnovit.
+
+   ![Na stránce odstraněné uživatele vyberte příkaz hromadné obnovení.](./media/users-bulk-restore/bulk-restore.png)
+
+1. Otevřete šablonu sdíleného svazku clusteru a přidejte řádek pro každého uživatele, který chcete obnovit. Jediná požadovaná hodnota je **objectID**. Pak soubor uložte.
+
+   ![Vyberte místní soubor CSV, ve kterém chcete zobrazit seznam uživatelů, které chcete přidat.](./media/users-bulk-restore/upload-button.png)
+
+1. Na stránce **hromadné obnovení** v části **nahrát soubor CSV**přejděte k souboru. Když vyberete soubor a kliknete na **Odeslat**, spustí se ověření souboru CSV.
+1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele obnoví.
 1. Po dokončení operace obnovení se zobrazí oznámení, že hromadná operace byla úspěšná.
 
-Pokud dojde k chybám, můžete soubor výsledků stáhnout a zobrazit na stránce **Výsledky hromadné operace.** Soubor obsahuje důvod každé chyby.
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
+Na stránce **výsledků hromadných operací** můžete zobrazit stav všech vašich nevyřízených hromadných požadavků.
 
 [![](media/users-bulk-restore/bulk-center.png "Check status in the Bulk Operations Results page")](media/users-bulk-restore/bulk-center.png#lightbox)
 
-Dále můžete zkontrolovat, zda uživatelé, které jste obnovili, existují v organizaci Azure AD buď na webu Azure Portal, nebo pomocí PowerShellu.
+V dalším kroku můžete zjistit, že uživatelé, které jste obnovili, existují v organizaci Azure AD, a to buď v Azure Portal, nebo pomocí PowerShellu.
 
-## <a name="view-restored-users-in-the-azure-portal"></a>Zobrazení obnovených uživatelů na webu Azure Portal
+## <a name="view-restored-users-in-the-azure-portal"></a>Zobrazit obnovené uživatele v Azure Portal
 
-1. [Přihlaste se do Centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
+1. [Přihlaste se k centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Uživatele**.
-1. V části **Zobrazit**vyberte **Možnost Všichni uživatelé** a ověřte, zda jsou v seznamu uvedeni uživatelé, které jste obnovili.
+1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že jsou v seznamu uvedeni uživatelé, které jste obnovili.
 
 ### <a name="view-users-with-powershell"></a>Zobrazení uživatelů pomocí PowerShellu
 
@@ -66,10 +87,10 @@ Spusťte následující příkaz:
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Měli byste vidět, že uživatelé, které jste obnovili, jsou uvedeny.
+Měli byste vidět, že jsou uvedeni uživatelé, které jste obnovili.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Uživatelé hromadného importu](users-bulk-add.md)
-- [Hromadné odstranění uživatelů](users-bulk-delete.md)
+- [Hromadný import uživatelů](users-bulk-add.md)
+- [Hromadné odstraňování uživatelů](users-bulk-delete.md)
 - [Stáhnout seznam uživatelů](users-bulk-download.md)

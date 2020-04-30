@@ -6,10 +6,10 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: cf876d3c7c100f001ba81082d792e81a777c7315
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82193033"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Kurz: vytvoření šablon ARM se závislými prostředky
@@ -128,7 +128,7 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
 
 1. Spuštěním následujícího skriptu PowerShellu nasaďte šablonu.
 
-    # <a name="cli"></a>[CLI](#tab/CLI)
+    # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
     ```azurecli
     echo "Enter a project name that is used to generate resource group name:" &&
@@ -144,7 +144,7 @@ Určení závislostí umožňuje Resource Manageru účinně nasadit řešení. 
     az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters adminUsername=$adminUsername dnsLabelPrefix=$dnsLabelPrefix
     ```
 
-    # <a name="powershell"></a>[Prostředí](#tab/PowerShell)
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"

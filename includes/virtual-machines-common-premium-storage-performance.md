@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75942790"
+ms.locfileid: "82204546"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -232,7 +232,7 @@ Pamatujte, že Premium Storage disky mají vyšší možnosti výkonu v porovná
 
 ## <a name="disk-caching"></a>Mezipaměť disku
 
-Vysoce škálovatelné virtuální počítače, které využívají Azure Premium Storage, mají vícevrstvou technologii ukládání do mezipaměti s názvem BlobCache. BlobCache používá kombinaci paměti RAM virtuálního počítače a místní jednotky SSD pro ukládání do mezipaměti. Tato mezipaměť je k dispozici pro Premium Storage Trvalé disky a místní disky virtuálních počítačů. Ve výchozím nastavení je nastavení této mezipaměti nastaveno na čtení/zápis pro disky s operačním systémem a jen pro čtení pro datové disky hostované v Premium Storage. Díky ukládání do mezipaměti disku na Premium Storage discích může virtuální počítače s vysokým rozsahem dosáhnout extrémně vysoké úrovně výkonu, které překračují základní diskový výkon.
+Vysoce škálovatelné virtuální počítače, které využívají Azure Premium Storage, mají vícevrstvou technologii ukládání do mezipaměti s názvem BlobCache. BlobCache používá kombinaci paměti RAM hostitele a místního disku SSD pro ukládání do mezipaměti. Tato mezipaměť je k dispozici pro Premium Storage Trvalé disky a místní disky virtuálních počítačů. Ve výchozím nastavení je nastavení této mezipaměti nastaveno na čtení/zápis pro disky s operačním systémem a jen pro čtení pro datové disky hostované v Premium Storage. Díky ukládání do mezipaměti disku na Premium Storage discích může virtuální počítače s vysokým rozsahem dosáhnout extrémně vysoké úrovně výkonu, které překračují základní diskový výkon.
 
 > [!WARNING]
 > Disková mezipaměť není podporovaná pro disky 4 TiB a větší. Pokud je k VIRTUÁLNÍmu počítači připojeno více disků, bude každý disk, který je menší než 4 TiB, podporovat ukládání do mezipaměti.

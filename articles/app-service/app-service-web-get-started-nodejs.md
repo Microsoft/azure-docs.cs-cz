@@ -7,12 +7,12 @@ ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
-ms.openlocfilehash: ad1be88fa7152680551909d91ea4d9f7e79dc00f
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f423880d1789b3486c89538a0af0c4c1fca4b13b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159775"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201155"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
 
@@ -45,7 +45,7 @@ Začněte s Azure App Service vytvořením aplikace Node. js/Express místně po
     npm start
     ```
     
-1. Otevřete prohlížeč a přejděte na [http://localhost:1337](http://localhost:1337). V prohlížeči by se měl zobrazit Hello World!.
+1. Otevřete prohlížeč a přejděte na `http://localhost:1337`. V prohlížeči by se měl zobrazit Hello World!.
 
 1. Stisknutím klávesy **CTRL**+**v terminálu** zastavte Server.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161506"
+ms.locfileid: "82203858"
 ---
 # <a name="security-frame-session-management"></a>Rámec zabezpečení: Správa relací
 | Produkt/služba | Článek |
@@ -221,7 +221,7 @@ Všechny aplikace založené na protokolu HTTP, které používají soubory cook
 | **Použitelné technologie** | webové formuláře |
 | **Atributy**              | –  |
 | **Odkazy**              | [FormsAuthentication. vlastnost RequireSSL – vlastnost](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **Uvedené** | Hodnota vlastnosti vlastnost RequireSSL je nastavena v konfiguračním souboru pro aplikaci ASP.NET pomocí atributu vlastnost requireSSL konfiguračního elementu. Můžete zadat v souboru Web. config pro aplikaci ASP.NET, zda je vyžadován protokol SSL (SSL (Secure Sockets Layer)) pro vrácení souboru cookie ověřování formulářů na server nastavením atributu vlastnost requireSSL.|
+| **Uvedené** | Hodnota vlastnosti vlastnost RequireSSL je nastavena v konfiguračním souboru pro aplikaci ASP.NET pomocí atributu vlastnost requireSSL konfiguračního elementu. Můžete zadat v souboru Web. config pro aplikaci ASP.NET, jestli je pro vrácení souboru cookie s ověřováním pomocí formulářů na server potřeba nastavit atribut vlastnost requireSSL (Transport Layer Security), dříve označovaný jako SSL (SSL (Secure Sockets Layer)).|
 
 ### <a name="example"></a>Příklad 
 Následující příklad kódu nastaví atribut vlastnost requireSSL v souboru Web. config.

@@ -1,35 +1,29 @@
 ---
-title: Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3.11 | Dokumenty společnosti Microsoft
-description: Vytvoření privátního clusteru s Azure Red Hat OpenShift 3.11
+title: Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11 | Microsoft Docs
+description: Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
-keywords: aro, openshift, privátní cluster, červený klobouk
-ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+keywords: ARO, OpenShift, soukromý cluster, Red Hat
+ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399416"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204164"
 ---
-# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Vytvoření privátního clusteru s Azure Red Hat OpenShift 3.11
+# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Vytvoření privátního clusteru pomocí Azure Red Hat OpenShift 3,11
 
-> [!IMPORTANT]
-> Privátní clustery Azure Red Hat OpenShift (ARO) jsou momentálně dostupné jenom v privátní verzi Preview v usa 2 – východ. Přijetí soukromé verze preview je pouze na pozvání. Než se pokusíte tuto funkci povolit, nezapomeňte předplatné zaregistrovat.
+Soukromé clustery poskytují následující výhody:
 
-Privátní clustery poskytují následující výhody:
+* Soukromé clustery nezveřejňují komponenty roviny řízení clusteru (například servery rozhraní API) na veřejné IP adrese.
+* Virtuální síť privátního clusteru je konfigurovatelná pro zákazníky, což umožňuje nastavit síť tak, aby umožňovala vytváření partnerských vztahů s ostatními virtuálními sítěmi, včetně ExpressRoutech prostředí. Ve virtuální síti můžete také nakonfigurovat vlastní DNS pro integraci s interními službami.
 
-* Privátní clustery nezveřejňují součásti roviny clusteru (například servery rozhraní API) na veřejné IP adrese.
-* Virtuální síť privátního clusteru je konfigurovatelná zákazníky, což umožňuje nastavit síť tak, aby umožňovala partnerský vztah s jinými virtuálními sítěmi, včetně prostředí ExpressRoute. Můžete také nakonfigurovat vlastní DNS ve virtuální síti pro integraci s interními službami.
+## <a name="before-you-begin"></a>Před zahájením
 
-## <a name="before-you-begin"></a>Než začnete
-
-> [!NOTE]
-> Tato funkce vyžaduje verzi 2019-10-27-preview rozhraní HTTP API ARO. V azure cli ještě není podporovaná.
-
-Pole v následujícím fragmentu konfigurace jsou nová a musí být zahrnuta do konfigurace clusteru. `managementSubnetCidr`musí být v rámci virtuální sítě clusteru a používá Azure ke správě clusteru.
+Pole v následujícím fragmentu konfigurace jsou nová a musí být zahrnutá v konfiguraci clusteru. `managementSubnetCidr`musí se nacházet v rámci virtuální sítě clusteru a služba Azure ji používá ke správě clusteru.
 
 ```json
 properties:
@@ -40,22 +34,22 @@ properties:
      privateApiServer: true
 ```
 
-Privátní cluster lze nasadit pomocí ukázkových skriptů uvedených níže. Po nasazení clusteru spusťte `cluster get` příkaz `properties.FQDN` a zobrazte vlastnost a určete privátní IP adresu serveru OpenShift API.
+Privátní cluster se dá nasadit pomocí ukázkových skriptů uvedených níže. Po nasazení clusteru spusťte `cluster get` příkaz a zobrazte `properties.FQDN` vlastnost a určete tak soukromou IP adresu serveru OpenShift API.
 
-Virtuální síť clusteru bude vytvořena s oprávněními, abyste ji mohli upravit. Potom můžete nastavit síť pro přístup k virtuální síti (ExpressRoute, VPN, partnerský vztah virtuální sítě) podle potřeby.
+Virtuální síť clusteru se vytvoří s oprávněními, abyste ji mohli upravovat. Pak můžete nastavit síť pro přístup k virtuální síti (ExpressRoute, VPN, partnerské vztahy virtuálních sítí) podle požadavků pro vaše potřeby.
 
-Pokud změníte názvové servery DNS ve virtuální síti clusteru, budete muset `properties.RefreshCluster` vydat `true` aktualizaci v clusteru s vlastností nastavenou tak, aby virtuální počítače mohly být reimaged. Tato aktualizace jim umožní vyzvednout nové názvové servery.
+Pokud změníte názvové servery DNS ve virtuální síti clusteru, budete muset vydat aktualizaci v clusteru s `properties.RefreshCluster` vlastností nastavenou na `true` , aby bylo možné virtuální počítače obnovit z image. Tato aktualizace jim umožní vybrat nové názvové servery.
 
 ## <a name="sample-configuration-scripts"></a>Ukázkové konfigurační skripty
 
-Ukázkové skripty v této části slouží k nastavení a nasazení privátního clusteru.
+K nastavení a nasazení privátního clusteru použijte ukázkové skripty v této části.
 
 ### <a name="environment"></a>Prostředí
 
-Vyplňte proměnné prostředí níže jako pomocí vlastních hodnot.
+Do těchto proměnných prostředí zadejte vlastní hodnoty.
 
 > [!NOTE]
-> Umístění musí být `eastus2` nastaveno na, protože se aktuálně jedná o jediné podporované umístění pro privátní clustery.
+> Umístění musí být nastavené na `eastus2` , protože toto je aktuálně jediné podporované umístění pro privátní clustery.
 
 ``` bash
 export CLUSTER_NAME=
@@ -68,9 +62,9 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>private-cluster.json
+### <a name="private-clusterjson"></a>Private-cluster. JSON
 
-Pomocí výše definovaných proměnných prostředí je zde ukázková konfigurace clusteru s povoleným privátním clusterem.
+Pomocí proměnných prostředí definovaných výše je tady uvedená Ukázková konfigurace clusteru s povoleným privátním clusterem.
 
 ```json
 {
@@ -135,7 +129,7 @@ Pomocí výše definovaných proměnných prostředí je zde ukázková konfigur
 
 ## <a name="deploy-a-private-cluster"></a>Nasazení privátního clusteru
 
-Po konfiguraci privátního clusteru pomocí ukázkových skriptů výše spusťte následující příkaz pro nasazení privátního clusteru.
+Po nakonfigurování privátního clusteru pomocí výše uvedených ukázkových skriptů spusťte následující příkaz, který nasadí váš privátní cluster.
 
 ``` bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -147,4 +141,4 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o přístupu ke konzole OpenShift naleznete v [tématu Návod k webové konzoli](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html).
+Další informace o tom, jak získat přístup ke konzole OpenShift, najdete v tématu [Názorný postup webové konzoly](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html).

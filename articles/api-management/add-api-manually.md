@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072706"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203263"
 ---
 # <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
 
@@ -35,24 +35,14 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 ## <a name="create-an-api"></a>Vytvoření rozhraní API
 
-1. V části **API MANAGEMENT** vyberte **rozhraní API**.
+1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
 2. V levé nabídce vyberte **+ Přidat rozhraní API**.
-3. Vyberte ze seznamu **Prázdné rozhraní API**.
-
-    ![Prázdné rozhraní API](media/add-api-manually/blank-api.png)
-4. Zadejte nastavení pro rozhraní API.
-
-    |**Název**|**Hodnotu**|**Popis**|
-    |---|---|---|
-    |**Zobrazované jméno**|*Prázdné rozhraní API*|Tento název se zobrazí na portálu pro vývojáře.|
-    |**Název**|*prázdné api*|Jedinečný název pro rozhraní API.|
-    |**Adresa URL webové služby** (volitelné)|*https://httpbin.org*| Pokud chcete rozhraní API napodobit, nemusíte zadávat nic. <br/>V tomto případě [https://httpbin.org](https://httpbin.org)zadáme . Jedná se o veřejnou testovací službu. <br/>Pokud chcete automaticky importovat rozhraní API, které je namapované na back-end, přečtěte si některé z témat v části [Související témata](#related-topics).|
-    |**Schéma URL**|*HTTPs*|V tomto případě, i když má back-end nezabezpečený přístup HTTP, určíme k back-endu zabezpečený přístup HTTPS APIM. <br/>Tento druh scénáře (HTTPS na HTTP) se nazývá ukončení protokolu HTTPS. Můžete to udělat, pokud vaše rozhraní API existuje ve virtuální síti (kde víte, že přístup je bezpečný, i když se nepoužívá HTTPS). <br/>„Ukončení protokolu HTTPS“ můžete využít k úspoře některých cyklů procesoru.|
-    |**Přípona adresy URL**|*hbin*| Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.|
-    |**Produkty**|*Neomezené*|Publikujte rozhraní API jeho přidružením k produktu. Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.<br/><br/>Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.<br/><br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **Unlimited**.| 
+3. Vyberte ze seznamu **Prázdné rozhraní API**.  
+    ![Prázdné rozhraní API](media/add-api-manually/blank-api.png)  
+4. Zadejte nastavení pro rozhraní API. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
 5. Vyberte **Vytvořit**.
 
-V tuto chvíli nemáte v APIM žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud budete volat operaci, která je prezentovaná prostřednictvím back-endu, ale ne prostřednictvím APIM, může nastat chyba **404**.
+V tomto okamžiku nemáte v API Management žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud voláte operaci, která je vystavena prostřednictvím back-endu, ale ne prostřednictvím API Management, dostanete **404**.
 
 >[!NOTE] 
 > Ve výchozím nastavení při přidání rozhraní API platí, že i když je připojené k některé back-endové službě, APIM nebude prezentovat žádné operace, dokud je nepřidáte do seznamu povolených. Operaci back-endové služby přidáte do seznamu povolených tak, že vytvoříte operaci APIM, která se namapuje na back-endovou operaci.

@@ -1,31 +1,26 @@
 ---
-title: Použití SCIM, Microsoft Graph a služby zřizování Azure AD ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty | Microsoft Docs
+title: Použití SCIM, Microsoft Graph a Azure AD ke zřízení uživatelů a obohacení aplikací s daty
 description: Použití SCIM a Microsoft Graph dohromady ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181830"
+ms.locfileid: "82201682"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Použití SCIM a Microsoft Graph společně ke zřízení uživatelů a rozšíření vaší aplikace s potřebnými daty
 
-**Cílová skupina:** Tento dokument je zaměřený na vývojáře, kteří vytvářejí aplikace, které mají být integrovány se službou Azure AD. Pokud chcete ostatním uživatelům, kteří chtějí používat aplikace, které už jsou integrované s Azure AD, jako je třeba Lupa, ServiceNow a DropBox, můžete tuto akci přeskočit a podívat se na konkrétní [kurzy](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) k aplikacím nebo si projít, [Jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
+**Cílová skupina:** Tento článek je zaměřený na vývojáře, kteří sestavují aplikace, které se mají integrovat s Azure Active Directory (Azure AD). Pokud chcete používat aplikace, které už jsou integrované s Azure AD, jako je například Lupa, ServiceNow a DropBox, můžete tento článek přeskočit a přečíst si [kurzy](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) specifické pro aplikaci nebo zkontrolovat, [Jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
 
 **Typické scénáře**
 
@@ -46,7 +41,6 @@ V dnešní době správci IT zřídí uživatele ručním vytvářením uživate
 **Doporučení**: 
 * Pokud vaši zákazníci používají různé zprostředkovatelů identity a nechcete spravovat synchronizační modul pro integraci s každým, podporují koncový bod SCIM splňující požadavky [/Users](https://aka.ms/scimreferencecode) . Vaši zákazníci budou moct tento koncový bod snadno použít k integraci se službou zřizování Azure AD a automaticky vytvářet uživatelské účty, když potřebují přístup. Koncový bod můžete vytvořit jednou a bude kompatibilní se všemi zprostředkovatelů identity. Další informace o tom, jak se uživatel vytvoří pomocí SCIM, najdete v níže uvedeném příkladu.
 * Pokud vyžadujete, aby byla uživatelská data v objektu uživatele v Azure AD a dalších datech od Microsoftu, zvažte vytvoření koncového bodu SCIM pro zřizování uživatelů a volání do Microsoft Graph k získání zbytku dat. 
-
 
 ```json
 POST /Users

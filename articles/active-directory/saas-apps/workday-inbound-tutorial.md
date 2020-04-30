@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190312"
+ms.locfileid: "82201631"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracovního dne pro Automatické zřizování uživatelů
 
@@ -458,11 +458,11 @@ V tomto kroku navážeme připojení k Workday a službě Active Directory v Azu
 
    * **Heslo pracovního dne –** Zadejte heslo účtu systému pro integraci Workday.
 
-   * **Adresa URL rozhraní API webových služeb Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto https://wd3-impl-services1.workday.com/ccx/service/contoso4:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí.
+   * **Adresa URL rozhraní API webových služeb Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto `https://wd3-impl-services1.workday.com/ccx/service/contoso4`:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí.
 
      > [!NOTE]
      > Ve výchozím nastavení aplikace používá službu Workday Web Services (WWS) v 21.1, pokud v adrese URL nejsou zadány žádné informace o verzi. Pokud chcete použít konkrétní verzi rozhraní WWS API, použijte prosím formát adresy URL:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Příklad: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > Příklad: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > Pokud používáte rozhraní API WWS v 30.0 a vyšší, než zapnete úlohu zřizování, aktualizujte prosím **výrazy rozhraní API XPath** v části **mapování atributů – > upřesnit možnosti – > upravit seznam atributů pro Workday** , který odkazuje na oddíl [Správa konfigurace](#managing-your-configuration) a [referenčních atributů Workday](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30).  
@@ -621,11 +621,11 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
 
    * **Heslo pracovního dne –** Zadejte heslo účtu systému pro integraci Workday.
 
-   * **Adresa URL rozhraní API webových služeb Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto https://wd3-impl-services1.workday.com/ccx/service/contoso4:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí. Pokud tato adresa URL není známá, obraťte se prosím na svého partnera pro integraci pracovního dne nebo zástupce podpory a určete správnou adresu URL, která se má použít.
+   * **Adresa URL rozhraní API webových služeb Workday –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto `https://wd3-impl-services1.workday.com/ccx/service/contoso4`:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí. Pokud tato adresa URL není známá, obraťte se prosím na svého partnera pro integraci pracovního dne nebo zástupce podpory a určete správnou adresu URL, která se má použít.
 
      > [!NOTE]
      > Ve výchozím nastavení aplikace používá webové služby Workday v 21.1, pokud v adrese URL nejsou zadány žádné informace o verzi. Pokud chcete použít konkrétní verzi rozhraní API webových služeb Workday, použijte prosím formát adresy URL:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Příklad: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > Příklad: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k chybě.
@@ -723,7 +723,7 @@ Podle těchto pokynů nakonfigurujte zpětný zápis e-mailových adres a uživa
 
    * **Heslo správce –** Zadejte heslo účtu systému pro integraci Workday.
 
-   * **Adresa URL tenanta –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí (v případě potřeby).
+   * **Adresa URL tenanta –** Zadejte adresu URL koncového bodu webových služeb Workday pro vašeho tenanta. Tato hodnota by měla vypadat takto `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`:, kde *contoso4* nahrazuje správný název tenanta a *WD3-impl* se nahradí správným řetězcem prostředí (v případě potřeby).
 
    * **E-mail s oznámením –** Zadejte svou e-mailovou adresu a zaškrtněte políčko Odeslat e-mail, pokud dojde k chybě.
 

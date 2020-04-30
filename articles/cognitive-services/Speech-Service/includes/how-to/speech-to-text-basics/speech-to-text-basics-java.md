@@ -4,74 +4,74 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2de836a63eed79b7d166db220218e0c11ef11e70
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d59f2ef564da710d084dc027950bc983a88143de
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204582"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
-Tento článek předpokládá, že máte účet Azure a předplatné služby Rozpoznávání řeči. Pokud nemáte účet a předplatné, [vyzkoušejte bezplatnou službu Řeč](../../../get-started.md).
+V tomto článku se předpokládá, že máte účet Azure a předplatné služby Speech. Pokud účet a předplatné nemáte, [Vyzkoušejte službu Speech Service zdarma](../../../get-started.md).
 
 ## <a name="install-the-speech-sdk"></a>Instalace sady Speech SDK
 
-Než budete moci něco udělat, budete muset nainstalovat sadu Speech SDK. V závislosti na platformě postupujte podle následujících pokynů:
+Předtím, než můžete cokoli udělat, musíte nainstalovat sadu Speech SDK. V závislosti na vaší platformě postupujte podle následujících pokynů:
 
 * <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java Runtime<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Svém<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 
 ## <a name="create-a-speech-configuration"></a>Vytvoření konfigurace řeči
 
-Chcete-li volat službu Řeč pomocí sady Speech [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)SDK, je třeba vytvořit . Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
+Chcete-li volat službu Speech pomocí sady Speech SDK, je třeba vytvořit [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable). Tato třída obsahuje informace o vašem předplatném, jako je klíč a přidružená oblast, koncový bod, hostitel nebo autorizační token.
 
 > [!NOTE]
-> Bez ohledu na to, zda provádíte rozpoznávání řeči, syntézu řeči, překlad nebo záměr rozpoznávání, budete vždy vytvořit konfiguraci.
+> Bez ohledu na to, jestli provádíte rozpoznávání řeči, syntézu řeči, překlad nebo rozpoznávání záměrů, vždy vytvoříte konfiguraci.
 
 Existuje několik způsobů, jak můžete inicializovat [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable):
 
-* S předplatným: předat klíč a přidružené oblasti.
-* S koncovým bodem: předají v koncovém bodě služby Řeči. Klíč nebo autorizační token je volitelný.
-* S hostitelem: předat adresu hostitele. Klíč nebo autorizační token je volitelný.
-* S tokenem autorizace: předavte autorizační token a přidruženou oblast.
+* S předplatným: předejte klíč a přidruženou oblast.
+* S koncovým bodem: předejte koncový bod služby řeči. Klíč nebo autorizační token jsou volitelné.
+* S hostitelem: předejte adresu hostitele. Klíč nebo autorizační token jsou volitelné.
+* Pomocí autorizačního tokenu: předejte autorizační token a přidruženou oblast.
 
-Podívejme se na to, [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) jak se vytvoří pomocí klíče a oblasti. Na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) najdete identifikátor oblasti.
+Pojďme se podívat, jak [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable) se vytvoří pomocí klíče a oblasti. Identifikátor vaší oblasti najdete na stránce [podpory oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) .
 
 ```java
 SpeechConfig config = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-## <a name="initialize-a-recognizer"></a>Inicializovat nástroj pro rozpoznávání
+## <a name="initialize-a-recognizer"></a>Inicializovat Nástroj pro rozpoznávání
 
-Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)je dalším krokem inicializaci . [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable), budete ji muset `config`předat . To poskytuje pověření, která služba řeči vyžaduje k ověření vašeho požadavku.
+Po vytvoření [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)je dalším krokem inicializace [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable). Když inicializujete [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable), budete ho muset předat `config`. To poskytuje přihlašovací údaje, které služba Speech vyžaduje k ověření vaší žádosti.
 
-Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu zařízení, [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) mělo by vypadat takto:
+Pokud rozpoznávání řeči rozpoznáte pomocí výchozího mikrofonu vašeho zařízení, [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) mělo by to vypadat takto:
 
 ```java
 SpeechRecognizer recognizer = new SpeechRecognizer(config);
 ```
 
-Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) a `audioConfig` zadat parametr při [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)inicializaci aplikace .
+Pokud chcete zadat vstupní zvukové zařízení, budete muset vytvořit [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable) a zadat `audioConfig` parametr při inicializaci. [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)
 
 > [!TIP]
-> [Přečtěte si, jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
+> Přečtěte si, [Jak získat ID zařízení pro vstupní zvukové zařízení](../../../how-to-select-audio-input-devices.md).
 
-Nejprve přidejte `import` následující příkazy.
+Nejprve přidejte následující `import` příkazy.
 
 ```java
 import java.util.concurrent.Future;
 import com.microsoft.cognitiveservices.speech.*;
 ```
 
-Dále budete moci odkazovat na `AudioConfig` objekt takto:
+Dále budete moci odkazovat na `AudioConfig` objekt následujícím způsobem:
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromDefaultMicrophoneInput();
 SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 ```
 
-Pokud chcete místo mikrofonu zadat zvukový soubor, budete muset zadat `audioConfig`soubor . Však při vytváření [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable), namísto volání `fromDefaultMicrophoneInput`, `fromWavFileOutput` budete `filename` volat a předat parametr.
+Pokud chcete místo používání mikrofonu zadat zvukový soubor, budete ho muset ještě zadat `audioConfig`. [`AudioConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.audio.audioconfig?view=azure-java-stable)Pokud však vytvoříte místo `fromDefaultMicrophoneInput`volání, zavoláte `fromWavFileOutput` a předáte `filename` parametr.
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
@@ -80,27 +80,27 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 
 ## <a name="recognize-speech"></a>Rozpoznávání řeči
 
-[Třída Rozpoznávání](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) pro sadu Speech SDK pro jazyk Java zveřejňuje několik metod, které můžete použít pro rozpoznávání řeči.
+[Třída pro rozpoznávání](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable) řeči pro sadu Speech SDK pro jazyk Java zpřístupňuje několik metod, které můžete použít pro rozpoznávání řeči.
 
-* Jednorázové rozpoznávání (asynchronní) - Provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím rozpoznáte jeden utterance. Konec jednoho utterance je určena naslouchání pro ticho na konci nebo až do maximálně 15 sekund zvuku je zpracována.
-* Průběžné rozpoznávání (asynchronní) - Asynchronně iniciuje operaci průběžného rozpoznávání. Pokud chcete místo mikrofonu zadat zvukový soubor, budete muset zadat. Chcete-li zastavit asynchronní průběžné rozpoznávání, volejte [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync).
+* Rozpoznávání bez přípony (Async) – provádí rozpoznávání v neblokujícím (asynchronním) režimu. Tím se rozpozná jeden utterance. Konec jednoho utterance se určuje tak, že naslouchá tichému ukončení na konci nebo dokud se nezpracovává po dobu 15 sekund zvuku.
+* Průběžné rozpoznávání (asynchronní) – asynchronně iniciuje operaci průběžného rozpoznávání. Pokud chcete místo používání mikrofonu zadat zvukový soubor, budete ho muset ještě zadat `audioConfig`. Chcete-li zastavit asynchronní průběžné rozpoznávání, zavolejte [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync).
 
 > [!NOTE]
-> Přečtěte si další informace o [tom,](../../../how-to-choose-recognition-mode.md)jak zvolit režim rozpoznávání řeči .
+> Přečtěte si další informace o tom, jak [zvolit režim rozpoznávání řeči](../../../how-to-choose-recognition-mode.md).
 
-### <a name="single-shot-recognition"></a>Rozpoznávání jedním výstřelem
+### <a name="single-shot-recognition"></a>Rozpoznávání s jedním záběrem
 
-Tady je příklad asynchronního rozpoznávání jedním [`recognizeOnceAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-java-stable)výstřelem pomocí :
+Tady je příklad asynchronního samostatného rozpoznávání pomocí [`recognizeOnceAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-java-stable):
 
 ```java
 Future<SpeechRecognitionResult> task = recognizer.recognizeOnceAsync();
 SpeechRecognitionResult result = task.get();
 ```
 
-Budete muset napsat nějaký kód pro zpracování výsledku. Tento vzorek vyhodnocuje [`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable):
+Pro zpracování výsledku budete muset napsat nějaký kód. Tato ukázka vyhodnocuje [`result.getReason()`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.resultreason?view=azure-java-stable):
 
 * Vytiskne výsledek rozpoznávání:`ResultReason.RecognizedSpeech`
-* Pokud neexistuje žádná shoda rozpoznávání, informujte uživatele:`ResultReason.NoMatch`
+* Pokud se neshodují žádné rozpoznávání, informujte uživatele:`ResultReason.NoMatch`
 * Pokud dojde k chybě, vytiskněte chybovou zprávu:`ResultReason.Canceled`
 
 ```java
@@ -128,27 +128,27 @@ switch (result.getReason()) {
 
 ### <a name="continuous-recognition"></a>Průběžné rozpoznávání
 
-Průběžné rozpoznávání je o něco více než jednorázové rozpoznávání. Vyžaduje, abyste se `recognizing`přihlásili k odběru , `recognized`a `canceled` události získat výsledky rozpoznávání. Chcete-li zastavit rozpoznávání, musíte zavolat [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync). Zde je příklad toho, jak se provádí průběžné rozpoznávání zvukového vstupního souboru.
+Průběžné rozpoznávání je trochu větší než rozpoznávání s jedním prostřelou. Pro získání výsledků rozpoznávání se vyžaduje přihlášení `recognizing`k `recognized`odběru událostí `canceled` , a. Chcete-li zastavit rozpoznávání, je [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)nutné zavolat. Tady je příklad toho, jak se provádí nepřetržité rozpoznávání na vstupním souboru zvuku.
 
-Začněme definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable):
+Pojďme začít definováním vstupu a inicializací [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable):
 
 ```java
 AudioConfig audioConfig = AudioConfig.fromWavFileInput("YourAudioFile.wav");
 SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 ```
 
-Dále vytvoříme proměnnou pro správu stavu rozpoznávání řeči. Chcete-li začít, budeme `Semaphore` deklarovat na oboru třídy.
+Nyní vytvoříme proměnnou, která bude spravovat stav rozpoznávání řeči. Chcete-li začít, deklarujeme `Semaphore` v oboru třídy.
 
 ```java
 private static Semaphore stopTranslationWithFileSemaphore;
 ```
 
-Přihlásíme se k odběru událostí [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)odeslaných z aplikace .
+Přihlásíme se k odběru událostí odeslaných [`SpeechRecognizer`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)z.
 
-* [`recognizing`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-java-stable): Signál pro události obsahující průběžné výsledky rozpoznávání.
-* [`recognized`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-java-stable): Signál pro události obsahující konečné výsledky rozpoznávání (označující úspěšný pokus o rozpoznání).
-* [`sessionStopped`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-java-stable): Signál pro události označující konec relace rozpoznávání (operace).
-* [`canceled`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-java-stable): Signál pro události obsahující zrušené výsledky rozpoznávání (označující pokus o uznání, který byl zrušen v důsledku nebo požadavek na přímé zrušení nebo případně selhání přenosu nebo protokolu).
+* [`recognizing`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognizing?view=azure-java-stable): Signál pro události obsahující mezilehlé výsledky rozpoznávání.
+* [`recognized`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.recognized?view=azure-java-stable): Signál pro události obsahující konečné výsledky rozpoznávání (indikující úspěšný pokus o uznání).
+* [`sessionStopped`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.recognizer.sessionstopped?view=azure-java-stable): Signál pro události indikující konec relace rozpoznávání (operace).
+* [`canceled`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.canceled?view=azure-java-stable): Signál pro události obsahující zrušené výsledky rozpoznávání (indikující pokus o deaktivaci, který byl zrušen jako výsledek nebo přímý požadavek na zrušení nebo případně i přenos nebo selhání protokolu).
 
 ```java
 // First initialize the semaphore.
@@ -185,7 +185,7 @@ recognizer.sessionStopped.addEventListener((s, e) -> {
 });
 ```
 
-Se vším, co je [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)nastaveno, můžeme zavolat .
+S nastavením všeho můžeme zavolat [`stopContinuousRecognitionAsync`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync).
 
 ```java
 // Starts continuous recognition. Uses StopContinuousRecognitionAsync() to stop recognition.
@@ -200,34 +200,34 @@ recognizer.stopContinuousRecognitionAsync().get();
 
 ### <a name="dictation-mode"></a>Režim diktování
 
-Při použití průběžného rozpoznávání můžete povolit zpracování diktování pomocí odpovídající funkce "povolit diktování". Tento režim způsobí, že instance konfigurace řeči interpretuje popisy slov větných struktur, jako je interpunkce. Například utterance "Žijete ve městě otazník" by být interpretován jako text "Žijete ve městě?".
+Při použití průběžného rozpoznávání můžete povolit zpracování diktování pomocí odpovídající funkce "Povolit diktování". V tomto režimu bude instance konfigurace řeči interpretovat popisy slov ve strukturách vět, jako je například interpunkční znaménko. Například utterance "provedete to živě ve městě otazník", který se interpretuje jako text "žijete ve městě?".
 
-Chcete-li povolit režim [`enableDictation`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-java-stable) diktování, použijte metodu na vašem [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable).
+Chcete-li povolit režim diktování, [`enableDictation`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-java-stable) použijte metodu na [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable).
 
 ```java
 config.enableDictation();
 ```
 
-## <a name="change-source-language"></a>Změna zdrojového jazyka
+## <a name="change-source-language"></a>Změnit jazyk zdroje
 
-Běžnou úlohou pro rozpoznávání řeči je určení vstupního (nebo zdrojového) jazyka. Podívejme se na to, jak byste změnili vstupní jazyk na francouzštinu. V kódu najděte [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)svůj , pak přidejte tento řádek přímo pod ním.
+Běžným úkolem pro rozpoznávání řeči je zadání vstupu (nebo zdrojového) jazyka. Pojďme se podívat, jak byste změnili vstupní jazyk na francouzštinu. V kódu Najděte [`SpeechConfig`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig?view=azure-java-stable)a pak přidejte tento řádek přímo pod ním.
 
 ```java
 config.setSpeechRecognitionLanguage("fr-FR");
 ```
 
-[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable)je parametr, který bere řetězec jako argument. V seznamu podporovaných [národních prostředí/jazyků](../../../language-support.md)můžete zadat libovolnou hodnotu .
+[`setSpeechRecognitionLanguage`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setspeechrecognitionlanguage?view=azure-java-stable)je parametr, který jako argument přijímá řetězec. Můžete zadat libovolnou hodnotu v seznamu podporovaných [národních prostředí a jazyků](../../../language-support.md).
 
-## <a name="improve-recognition-accuracy"></a>Zlepšete přesnost rozpoznávání
+## <a name="improve-recognition-accuracy"></a>Zlepšení přesnosti rozpoznávání
 
-Existuje několik způsobů, jak zlepšit přesnost rozpoznávání pomocí sady Speech SDK. Podívejme se na seznamy frází. Seznamy frází se používají k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Do seznamu frází lze přidat jednotlivá slova nebo úplné fráze. Během rozpoznávání se používá položka v seznamu frází, pokud je do zvuku zahrnuta přesná shoda pro celou frázi. Pokud není nalezena přesná shoda s frází, rozpoznávání není podporováno.
+Existuje několik způsobů, jak vylepšit přesnost rozpoznávání pomocí sady Speech SDK. Pojďme se podívat na seznamy frází. Seznamy frází slouží k identifikaci známých frází ve zvukových datech, jako je jméno osoby nebo konkrétní umístění. Do seznamu frází lze přidat jednotlivá slova nebo kompletní fráze. Při rozpoznávání se používá záznam v seznamu frází, pokud je do zvukového umístění uvedena přesná shoda celé fráze. Pokud se nenalezne přesná shoda se slovem, rozpoznávání vám nepomáhá.
 
 > [!IMPORTANT]
-> Funkce Seznam frází je k dispozici pouze v angličtině.
+> Funkce seznamu frází je k dispozici pouze v angličtině.
 
-Chcete-li použít seznam frází, nejprve vytvořte [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) objekt [`AddPhrase`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_)a pak přidejte určitá slova a fráze s .
+Chcete-li použít seznam frází, nejprve [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) vytvořte objekt a pak přidejte konkrétní slova a fráze [`AddPhrase`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar.addphrase?view=azure-java-stable#com_microsoft_cognitiveservices_speech_PhraseListGrammar_addPhrase_String_)pomocí.
 
-Jakékoli změny, které se [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) projeví při dalším rozpoznávání nebo po opětovném připojení ke službě Speech.
+Všechny změny se [`PhraseListGrammar`](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.phraselistgrammar?view=azure-java-stable) projeví při příštím rozpoznávání nebo po opětovném připojení ke službě Speech.
 
 ```java
 PhraseListGrammar phraseList = PhraseListGrammar.fromRecognizer(recognizer);
@@ -242,7 +242,7 @@ phraseList.clear();
 
 ### <a name="other-options-to-improve-recognition-accuracy"></a>Další možnosti pro zlepšení přesnosti rozpoznávání
 
-Seznamy frází jsou pouze jednou z možností, jak zlepšit přesnost rozpoznávání. Můžete také: 
+Seznamy frází jsou pouze jedním z možností, jak zlepšit přesnost rozpoznávání. Můžete také: 
 
 * [Zlepšení přesnosti s využitím služby Custom Speech](../../../how-to-custom-speech.md)
 * [Zlepšení přesnosti s využitím modelů tenantů](../../../tutorial-tenant-model.md)

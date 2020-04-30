@@ -1,11 +1,11 @@
 ---
-title: Hromadné odebrání členů skupiny nahráním souboru CSV – Azure Active Directory | Dokumenty společnosti Microsoft
-description: Odeberte členy skupiny v hromadných operacích v Centru pro správu Azure.
+title: Hromadné odebrání členů skupiny odesláním souboru CSV – Azure Active Directory | Microsoft Docs
+description: Odeberte členy skupiny v hromadných operacích v centru pro správu Azure.
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,50 +13,71 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e6d0752245e3864a8ad25efd5181d5cc1eec7ae
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533243"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203440"
 ---
-# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Hromadné odebrání členů skupiny ve službě Azure Active Directory
+# <a name="bulk-remove-group-members-in-azure-active-directory"></a>Hromadné odebrání členů skupiny v Azure Active Directory
 
-Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký počet členů ze skupiny pomocí souboru hodnot oddělených čárkami (CSV) k hromadnému odebrání členů skupiny.
+Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký počet členů ze skupiny pomocí souboru hodnot oddělených čárkami (CSV) pro hromadnou odebrání členů skupiny.
+
+## <a name="understand-the-csv-template"></a>Princip šablony sdíleného svazku clusteru
+
+Pokud chcete úspěšně přidat členy skupiny Azure AD hromadně, Stáhněte a vyplňte šablonu CSV hromadného nahrání. Vaše šablona CSV může vypadat jako v tomto příkladu:
+
+![Tabulka pro nahrávání a volání s vysvětlením účelu a hodnot pro každý řádek a sloupec](./media/groups-bulk-remove-members/template-example.png)
+
+### <a name="csv-template-structure"></a>Struktura šablony CSV
+
+Řádky ve stažené šabloně CSV jsou následující:
+
+- **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Některé starší verze šablony mohou mít drobné variace. Pro změny členství ve skupinách máte možnost, který identifikátor použít: ID objektu člena nebo hlavní název uživatele.
+- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
+
+### <a name="additional-guidance"></a>Další doprovodné materiály
+
+- První dva řádky šablony nahrávání se nesmí odebrat ani změnit, jinak se nahrávání nedá zpracovat.
+- Požadované sloupce jsou uvedeny jako první.
+- Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
+- Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
 
 ## <a name="to-bulk-remove-group-members"></a>Hromadné odebrání členů skupiny
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupin mohou také hromadně odebrat členy skupin, které vlastní.
-1. Ve službě Azure AD vyberte **Skupiny** > **všechny skupiny**.
-1. Otevřete skupinu, ze které odebírat členy, a vyberte **Členové**.
-1. Na stránce **Členové** vyberte **Odebrat členy**.
-1. Na stránce **Hromadné odebrání členů skupiny** vyberte **Stáhnout,** chcete-li získat šablonu souboru CSV s požadovanými vlastnostmi členů skupiny.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí účtu správce uživatele v organizaci. Vlastníci skupiny můžou také hromadně odebírat členy skupin, které vlastní.
+1. V Azure AD vyberte **skupiny** > **všechny skupiny**.
+1. Otevřete skupinu, ze které odebíráte členy, a pak vyberte **Členové**.
+1. Na stránce **Členové** vyberte **odebrat členy**.
+1. Na stránce **hromadné odebrání členů skupiny** vyberte **Stáhnout** a získejte šablonu souboru CSV s požadovanými vlastnostmi člena skupiny.
 
-   ![Příkaz Odebrat členy je na stránce profilu skupiny.](./media/groups-bulk-remove-members/remove-panel.png)
+   ![Příkaz odebrat členy je na stránce profilu pro skupinu.](./media/groups-bulk-remove-members/remove-panel.png)
 
-1. Otevřete soubor CSV a přidejte řádek pro každého člena skupiny, který chcete odebrat ze skupiny (požadované hodnoty jsou ID členského objektu nebo hlavní název uživatele). Pak soubor uložte.
+1. Otevřete soubor CSV a přidejte řádek pro každého člena skupiny, který chcete ze skupiny odebrat (požadované hodnoty jsou ID členského objektu nebo hlavní název uživatele). Pak soubor uložte.
 
-   ![Soubor CSV obsahuje názvy a ID pro členy odebrat](./media/groups-bulk-remove-members/csv-file.png)
+   ![Soubor CSV obsahuje názvy a ID pro členy, kteří mají být odebráni.](./media/groups-bulk-remove-members/csv-file.png)
 
-1. Na stránce **Hromadné odebrání členů skupiny** vyhledejte v části **Upload souboru CSV**soubor. Když vyberete soubor, spustí se ověření souboru CSV.
-1. Po ověření obsahu souboru se na stránce hromadného **importu zobrazí úspěšně nahraný soubor**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
-1. Když váš soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která odebere členy skupiny ze skupiny.
+1. Na stránce **hromadné odebrání členů skupiny** v části **nahrát soubor CSV**přejděte k souboru. Po výběru souboru se spustí ověření souboru CSV.
+1. Po ověření obsahu souboru se zobrazí stránka hromadného importu **úspěšně nahrané soubory**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která odebere členy skupiny ze skupiny.
 1. Po dokončení operace odebrání se zobrazí oznámení, že hromadná operace byla úspěšná.
 
-## <a name="check-removal-status"></a>Zkontrolovat stav odebrání
+## <a name="check-removal-status"></a>Stav odebrání kontroly
 
-Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
+Na stránce **výsledků hromadných operací** můžete zobrazit stav všech vašich nevyřízených hromadných požadavků.
 
 [![](media/groups-bulk-remove-members/bulk-center.png "Check status in the Bulk Operations Results page")](media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Podrobnosti o jednotlivých řádkových položkách v rámci hromadné operace vyberte hodnoty ve sloupcích **#Úspěch**, **Počet neúspěšných**nebo **Celkový počet požadavků.** Pokud došlo k chybám, budou uvedeny důvody selhání.
+Chcete-li zobrazit podrobnosti o jednotlivých položkách řádku v rámci hromadné operace, vyberte hodnoty ve sloupcích **# úspěch**, **# selhání**nebo **Celkový počet požadavků** . Pokud dojde k chybám, zobrazí se důvody selhání.
 
-## <a name="bulk-removal-service-limits"></a>Limity služby hromadného odebrání
+## <a name="bulk-removal-service-limits"></a>Omezení služby hromadného odebrání
 
-Každá hromadná aktivita pro odebrání seznamu členů skupiny může běžet až jednu hodinu. To umožňuje odebrání seznamu alespoň 40 000 členů.
+Každá Hromadná aktivita, ze které se mají odebrat seznam členů skupiny, může běžet po dobu až jedné hodiny. Tím se povolí odebrání seznamu minimálně 40 000 členů.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Členové skupiny hromadného importu](groups-bulk-import-members.md)
 - [Stažení členů skupiny](groups-bulk-download-members.md)
-- [Stáhnout seznam všech skupin](groups-bulk-download.md)
+- [Stažení seznamu všech skupin](groups-bulk-download.md)

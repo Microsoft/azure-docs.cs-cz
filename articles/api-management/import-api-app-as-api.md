@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108501"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202821"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Import aplikace API jako rozhraní API
 
@@ -33,13 +33,13 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 + Projděte si následující rychlý start: [Vytvoření instance služby Azure API Management](get-started-create-service-instance.md)
-+ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace naleznete v [tématu Dokumentace ke službě App Service](https://docs.microsoft.com/azure/app-service/)
++ Zkontrolujte, jestli ve svém předplatném máte aplikaci API. Další informace najdete v [dokumentaci k App Service](https://docs.microsoft.com/azure/app-service/) .
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování rozhraní API back-endu
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování back-endu rozhraní API
 
-1. V části **API MANAGEMENT** vyberte **rozhraní API**.
+1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
 2. Ze seznamu **Přidat nové rozhraní API** vyberte **Aplikace API**.
 
     ![Aplikace API](./media/import-api-app-as-api/api-app.png)
@@ -55,10 +55,11 @@ V tomto článku získáte informace o těchto tématech:
     Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty:
 
     * **Starter**
-    * **Neomezené**   
-7. Vyberte **Vytvořit**.
+    * **Unlimited**   
+7. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+8. Vyberte **Vytvořit**.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Testování nového rozhraní API na webu Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
 
 Operaci můžete volat přímo z portálu Azure Portal, který nabízí pohodlný způsob pro zobrazení a testování operací v rozhraní API.  
 

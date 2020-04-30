@@ -3,12 +3,12 @@ title: Konfigurace Azure Red Hat OpenShift v3. x s Azure Monitor for Containers 
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 3 a vyšší.
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 98ac5752e047c4f5f6db63d228bec7c47271aa00
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82166289"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204130"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift V3 pomocí Azure Monitor for Containers
 
@@ -38,7 +38,7 @@ Azure Monitor for Containers podporuje monitorování Azure Red Hat OpenShift, j
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>Povolení pro nový cluster pomocí šablony Azure Resource Manager
 
-Provedením následujících kroků nasadíte cluster Azure Red Hat OpenShift s povoleným monitorováním. Než budete pokračovat, přečtěte si kurz [Vytvoření clusteru Azure Red Hat OpenShift](../../openshift/tutorial-create-cluster.md#prerequisites) , který vám pomůže pochopit závislosti, které je potřeba nakonfigurovat, aby se vaše prostředí správně nastavilo.
+Provedením následujících kroků nasadíte cluster Azure Red Hat OpenShift s povoleným monitorováním. Než budete pokračovat, přečtěte si kurz [Vytvoření clusteru Azure Red Hat OpenShift](../../openshift/tutorial-create-cluster.md) , který vám pomůže pochopit závislosti, které je potřeba nakonfigurovat, aby se vaše prostředí správně nastavilo.
 
 Tato metoda zahrnuje dvě šablony JSON. Jedna šablona určuje konfiguraci pro nasazení clusteru s povoleným monitorováním a druhý obsahuje hodnoty parametrů, které nakonfigurujete, aby určovaly následující:
 

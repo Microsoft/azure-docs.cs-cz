@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 359b90cc434dad04fc0296c54fcc762f3a75062d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b1fd34824bec9641edc94ce278fa21a1b57b2c0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74107655"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202736"
 ---
 # <a name="import-soap-api"></a>Importování rozhraní API SOAP
 
-Tento článek popisuje, jak importovat standardní reprezentaci XML rozhraní API SOAP. Tento článek také ukazuje, jak otestovat rozhraní API služby APIM.
+Tento článek popisuje, jak importovat standardní reprezentaci XML rozhraní API SOAP. Článek také ukazuje, jak otestovat rozhraní API Management API.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -36,9 +36,9 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování rozhraní API back-endu
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Import a publikování back-endu rozhraní API
 
-1. V části **API MANAGEMENT** vyberte **rozhraní API**.
+1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
 2. Vyberte **WSDL** ze seznamu **Přidat nové rozhraní API**.
 
     ![API SOAP](./media/import-soap-api/wsdl-api.png)
@@ -49,16 +49,17 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
 5. Stiskněte klávesu Tab.
 
     Následující pole se vyplní informacemi z rozhraní API SOAP: Zobrazovaný název, Název, Popis.
-6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci APIM. Musí být v této instanci APIM jedinečná.
-9. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
+6. Přidejte příponu adresy URL rozhraní API. Přípona je název, který identifikuje toto konkrétní rozhraní API v této instanci služby API Management. Musí být v této instanci API Management jedinečný.
+7. Publikujte rozhraní API jeho přidružením k produktu. V tomto případě se použije produkt *Unlimited*.  Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.
 
-    Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.
+    Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci API Management, jste už správce, takže se ve výchozím nastavení přihlásíte k odběru všech produktů.
 
     Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty:
 
     * **Starter**
-    * **Neomezené**   
-10. Vyberte **Vytvořit**.
+    * **Unlimited**   
+8. Zadejte další nastavení rozhraní API. Hodnoty můžete nastavit během vytváření nebo je nakonfigurovat později tak, že na kartu **Nastavení** kliknete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
+9. Vyberte **Vytvořit**.
 
 ### <a name="test-the-new-api-in-the-administrative-portal"></a>Testování nového rozhraní API na portálu pro správu
 
@@ -68,7 +69,7 @@ Operaci můžete volat přímo z portálu pro správu, který nabízí pohodlný
 2. Klikněte na kartu **Test**.
 3. Vyberte nějakou operaci.
 
-    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby APIM, jste už správcem a klíč se tedy vyplní automaticky. 
+    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jednou z hlaviček je klíč „Ocp-Apim-Subscription-Key“. Je to klíč pro přihlášení k odběru produktu, který je k tomuto rozhraní API přidružený. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
 1. Stiskněte **Odeslat**.
 
     Back-end předá odpověď **200 OK** a nějaká data.

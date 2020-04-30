@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128480"
+ms.locfileid: "82207240"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Řešení potíží se správou nároků Azure AD
 
@@ -87,13 +87,19 @@ Tento článek popisuje některé položky, které byste měli ověřit, abyste 
 
     Pokud v žádosti dojde k žádným chybám doručení, stav žádosti se **nedoručení** nebo **částečně doručí**.
 
-    Pokud dojde k chybám doručení, v podokně podrobností žádosti dojde k počtu chyb doručení.
+    Pokud dojde k chybám doručení, zobrazí se v podokně podrobností žádosti počet chyb doručení.
 
 1. Kliknutím na počet zobrazíte všechny chyby doručení žádosti.
 
 ### <a name="reprocess-a-request"></a>Znovu zpracovat požadavek
 
-Pokud v požadavku dojde k chybě, můžete žádost znovu zpracovat a znovu ji vyzkoušet. Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo byl **částečně doručen** a datum dokončení je kratší než jeden týden.
+Pokud po aktivaci žádosti o rezpracování balíčku pro přístup dojde k chybě, musíte počkat, až systém žádost znovu zpracuje. Systém se několikrát pokusí znovu zpracovat několik hodin, takže během této doby nebudete moci vynutit opětovné zpracování. 
+
+Můžete zpracovat pouze požadavek se stavem **doručení se nezdařilo** nebo byl **částečně doručen** a datum dokončení je kratší než jeden týden.
+
+- Pokud je chyba opravena během okna zkušební verze, stav žádosti se změní na **doručení**. Požadavek se znovu zpracuje bez dalších akcí od uživatele.
+
+- Pokud nebyla chyba opravena během okna zkušební verze, může se stát, že se stav žádosti **nezdařil** nebo bylo **doručeno částečně**. Pak můžete použít tlačítko znovu **zpracovat** . Budete mít sedm dní na rezpracování žádosti.
 
 **Požadovaná role:** Globální správce, Správce uživatelů, vlastník katalogu nebo správce balíčků přístupu
 

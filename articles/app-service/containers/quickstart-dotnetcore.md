@@ -1,26 +1,26 @@
 ---
-title: 'Úvodní příručka: Spuštění aplikace Linux ASP.NET Core'
-description: Začínáme s linuxovými aplikacemi ve službě Azure App Service nasazením první aplikace ASP.NET Core do kontejneru Linuxu ve službě App Service.
+title: 'Rychlý Start: spuštění aplikace ASP.NET Core pro Linux'
+description: Začněte s aplikacemi pro Linux v Azure App Service nasazením první ASP.NET Core aplikace do kontejneru Linux v App Service.
 keywords: azure app service, web app, dotnet, core, linux, oss
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
 ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 349aa4652ae9f52641b5865e48dcd4c113ca7f9d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 1eeb5bbd4b10ef660a50f40d6c1300b0ca214561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086282"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206662"
 ---
-# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core ve službě App Service na Linuxu
+# <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Vytvoření aplikace ASP.NET Core v App Service v systému Linux
 
 > [!NOTE]
-> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit službu App Service ve _Windows_, [přečtěte si témat u tématu Vytvoření aplikace ASP.NET Core v Azure](../app-service-web-get-started-dotnet.md).
+> Tento článek nasadí aplikaci do služby App Service v Linuxu. Pokud chcete nasadit nástroj na App Service ve _Windows_, přečtěte si téma [Vytvoření aplikace ASP.NET Core v Azure](../app-service-web-get-started-dotnet.md).
 >
 
-[App Service na Linuxu](app-service-linux-intro.md) poskytuje vysoce škálovatelnou webhostingovou službu s vlastní mizákou pomocí operačního systému Linux. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci [.NET Core](https://docs.microsoft.com/aspnet/core/) ve službě App Service v Linuxu. Vytvoříte aplikaci pomocí [rozhraní příkazového příkazu Konto Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)a pomocí Gitu nasadíte do aplikace kód .NET Core.
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. V tomto rychlém startu se dozvíte, jak vytvořit aplikaci [.NET Core](https://docs.microsoft.com/aspnet/core/) ve službě App Service v Linuxu. Vytvoříte aplikaci pomocí rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)a pomocí Gitu nasadíte kód .NET Core do aplikace.
 
 ![Ukázková aplikace spuštěná v Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -28,12 +28,12 @@ Postup v tomto článku můžete použít v případě počítačů se systémem
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 * <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Instalace nejnovější sady .NET Core SDK 3.1</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Instalace nejnovější sady .NET Core 3,1 SDK</a>
 
 ## <a name="create-the-app-locally"></a>Místní vytvoření aplikace
 
@@ -86,13 +86,13 @@ git commit -m "first commit"
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-linux-no-h.md)]
 
-Přejděte do nově vytvořené aplikace. Nahraďte _ &lt;>názvu aplikace_ názvem aplikace.
+Přejděte k nově vytvořené aplikaci. Nahraďte _ &lt;název aplikace>_ názvem vaší aplikace.
 
 ```bash
 https://<app-name>.azurewebsites.net
 ```
 
-Zde je to, co vaše nová aplikace by měla vypadat:
+Vaše nová aplikace by měla vypadat takto:
 
 ![Prázdná stránka aplikace](media/quickstart-dotnetcore/dotnet-browse-created.png)
 
@@ -133,7 +133,7 @@ V prohlížeči zadejte adresu nasazené aplikace.
 http://<app_name>.azurewebsites.net
 ```
 
-Ukázkový kód .NET Core běží ve službě App Service na Linuxu s integrovanou bitovou kopii.
+Vzorový kód .NET Core je spuštěný v App Service v systému Linux s předdefinovaným obrázkem.
 
 ![Ukázková aplikace spuštěná v Azure](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
@@ -154,19 +154,19 @@ git commit -am "updated output"
 git push azure master
 ```
 
-Po dokončení nasazení přepněte zpět do okna prohlížeče, které se otevřelo v kroku **Procházet do aplikace,** a stiskněte tlačítko Aktualizovat.
+Po dokončení nasazení přepněte zpátky do okna prohlížeče, které se otevřelo v kroku **přechod do aplikace** , a stiskněte tlačítko Aktualizovat.
 
 ![Aktualizovaná ukázková aplikace spuštěná ve službě Azure](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-Přejděte na <a href="https://portal.azure.com" target="_blank">portál Azure</a> a spravujte aplikaci, kterou jste vytvořili.
+Chcete-li spravovat aplikaci, kterou jste vytvořili, otevřete <a href="https://portal.azure.com" target="_blank">Azure Portal</a> .
 
-V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/quickstart-dotnetcore/portal-app-service-list.png)
 
-Zobrazí se stránka Přehled aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
+Zobrazí se stránka s přehledem vaší aplikace. Tady můžete provádět základní úlohy správy, jako je procházení, zastavení, spuštění, restartování a odstranění. 
 
 ![Stránka služby App Service na webu Azure Portal](media/quickstart-dotnetcore/portal-app-overview.png)
 
@@ -177,7 +177,7 @@ Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplika
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: aplikace ASP.NET Core s databází SQL](tutorial-dotnetcore-sqldb-app.md)
+> [Kurz: ASP.NET Core aplikace s SQL Database](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace aplikace ASP.NET Core](configure-language-dotnetcore.md)

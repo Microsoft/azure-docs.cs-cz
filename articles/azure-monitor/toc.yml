@@ -243,11 +243,13 @@
             - name: Samostatné – libovolné prostředí
               items:
                 - name: Java (Preview)
-                  href: app/java-in-process-agent.md
-                - name: Konfigurace JVM v Javě
-                  href: app/java-standalone-arguments.md
-                - name: Možnosti konfigurace Javy
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: Přehled
+                      href: app/java-in-process-agent.md
+                    - name: Možnosti konfigurace
+                      href: app/java-standalone-config.md
+                    - name: Nastavení argumentů JVM
+                      href: app/java-standalone-arguments.md
             - name: Místní servery
               items:
                 - name: ASP.NET
@@ -690,8 +692,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Povolení pro hybridní cluster
                   href: insights/container-insights-hybrid-setup.md
-                - name: Povolení pro Azure Red Hat OpenShift
+                - name: Povolení pro Azure Red Hat OpenShift v3
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: Povolení pro Azure Red Hat OpenShift v4
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: Mapování oblastí
                   href: insights/container-insights-region-mapping.md
             - name: Monitorování výkonu
@@ -724,10 +728,16 @@
               href: insights/container-insights-update-metrics.md
             - name: Konfigurace sledování pro cluster
               href: insights/container-insights-health-monitors-config.md
-            - name: Zákaz monitorování AKS
-              href: insights/container-insights-optout.md
-            - name: Zákaz monitorování Red Hat OpenShiftu
-              href: insights/container-insights-optout-openshift.md
+            - name: Zákaz monitorování
+              items:
+                - name: Zákaz monitorování AKS
+                  href: insights/container-insights-optout.md
+                - name: Zákaz monitorování Red Hat OpenShiftu v3
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: Zákaz monitorování Red Hat OpenShiftu v4
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: Zákaz monitorování hybridního clusteru
+                  href: insights/container-insights-optout-hybrid.md
             - name: Řešení potíží
               href: insights/container-insights-troubleshoot.md
         - name: Monitorování Dockeru a kontejnerů s Windows

@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ca5ef9cebfddb002cd62a9fb0fbbfdf444e0e754
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085892"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206663"
 ---
-Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v plánu služby `myAppServicePlan` App Service. 
+Vytvořte [webovou aplikaci](../articles/app-service/containers/app-service-linux-intro.md) v plánu `myAppServicePlan` App Service. 
 
-V prostředí Cloud Shell můžete [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) použít příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Doba běhu je `DOTNETCORE|LTS`nastavena na , což je .NET Core 3.1. Chcete-li zobrazit všechny [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)podporované moduly runtimes, spusťte . 
+V Cloud Shell můžete použít [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) příkaz. V následujícím příkladu nahraďte `<app-name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `DOTNETCORE|LTS`, což je .net Core 3,1. Pokud chcete zobrazit všechny podporované moduly runtime, [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)spusťte příkaz. 
 
 ```azurecli-interactive
 # Bash
@@ -50,11 +50,11 @@ Vytvořili jste prázdnou webovou aplikaci v kontejneru Linux s povoleným nasaz
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
 >
 
-V současné době je třeba spustit následující příkaz navíc ke správné `<app-name>` konfiguraci verze .NET Core (nahradit verzí z předchozího kroku):
+V současné době musíte spustit následující příkaz navíc ke správné konfiguraci rozhraní .NET Core (nahraďte `<app-name>` ho z předchozího kroku):
 
 ```azurecli-interactive
 # Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 # PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 ```

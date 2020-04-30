@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "60244850"
+ms.locfileid: "82200883"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Obnovení federačních certifikátů pro Office 365 a Azure Active Directory
 ## <a name="overview"></a>Přehled
@@ -120,7 +120,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.XML
 
 kde `(your_FS_name)` je nahrazen název hostitele federační služby, kterou vaše organizace používá, například FS.contoso.com.  Pokud máte možnost úspěšně ověřit obě tato nastavení, nemusíte provádět žádné další kroky.  
 
-Příklad: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+Příklad: `https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>Ruční obnovení podpisového certifikátu tokenů<a name="manualrenew"></a>
 Podpisové certifikáty tokenů si můžete obnovit ručně. Například následující scénáře mohou být vhodnější pro ruční obnovení:
 

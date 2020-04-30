@@ -4,19 +4,19 @@ description: Naučte se, jak převést Azure IoT Edge řešení z vývoje do pro
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191834"
+ms.locfileid: "82204198"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -174,12 +174,22 @@ Příklad konvence značek najdete v tématu [aktualizace modulu runtime IoT Edg
 
 Víte o ukládání imagí kontejneru pro vlastní moduly kódu do privátního registru Azure, ale můžete ji také použít k ukládání veřejných imagí kontejneru, jako jsou například moduly runtime edgeAgent a edgHub. V takovém případě může být vyžadováno, pokud máte přísná omezení brány firewall, protože tyto kontejnery runtime jsou uloženy v Microsoft Container Registry (MCR).
 
-Získejte Image pomocí příkazu Docker Pull k umístění do registru. Mějte na paměti, že budete muset image aktualizovat pomocí každé nové vydané verze IoT Edge runtime.
+Získejte Image pomocí příkazu Docker Pull k umístění do privátního registru. Mějte na paměti, že budete muset image aktualizovat pomocí každé nové vydané verze IoT Edge runtime.
 
 | Kontejner IoT Edge runtime | Příkaz Docker pull |
 | --- | --- |
 | [Agent Azure IoT Edge](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Centrum Azure IoT Edge](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+Dále nezapomeňte aktualizovat odkazy na image v souboru Deployment. template. JSON pro systémové moduly edgeAgent a edgeHub. Nahraďte `mcr.microsoft.com` názvem a serverem registru pro oba moduly.
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub:
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>Sítě
 

@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442670"
+ms.locfileid: "82203144"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
 
@@ -31,36 +31,23 @@ Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][un
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>Nasazení instance služby API Management do nové oblasti
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>Nasazení služby API Management Service do nové oblasti
 
 > [!NOTE]
 > Pokud jste ještě nevytvořili instanci služby API Management, přečtěte si téma [vytvoření instance služby API Management][create an api management service instance].
 
-V Azure Portal přejděte na stránku **škálování a ceny** pro vaši instanci služby API Management.
+1. V Azure Portal přejděte do služby API Management a v nabídce klikněte na položku **umístění** .
+2. Klikněte na tlačítko **+ Přidat** v horním panelu.
+3. V rozevíracím seznamu vyberte umístění a nastavte počet jednotek pomocí posuvníku.
+4. Potvrďte kliknutím na tlačítko **Přidat** .
+5. Tento postup opakujte, dokud nebudete konfigurovat všechna umístění.
+6. Kliknutím na **Uložit** na horním panelu spusťte proces nasazení.
 
-![Karta škálování][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>Odstranění umístění služby API Management
 
-Pokud chcete nasadit do nové oblasti, klikněte na **+ Přidat oblast** z panelu nástrojů.
-
-![Přidat oblast][api-management-add-region]
-
-V rozevíracím seznamu vyberte umístění a nastavte počet jednotek pro posuvník.
-
-![Zadat jednotky][api-management-select-location-units]
-
-Kliknutím na tlačítko **Přidat** umístěte výběr do tabulky umístění.
-
-Tento postup opakujte, dokud nebudete mít všechna umístění nakonfigurovaná a pokud chcete spustit proces nasazení, klikněte na **Uložit** na panelu nástrojů.
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>Odstranění instance služby API Management z umístění
-
-V Azure Portal přejděte na stránku **škálování a ceny** pro vaši instanci služby API Management.
-
-![Karta škálování][api-management-scale-service]
-
-Pro umístění, které chcete odebrat, otevřete místní nabídku pomocí tlačítka **...** na pravé straně tabulky. Vyberte možnost **Odstranit** .
-
-Potvrďte odstranění a klikněte na **Uložit** , aby se změny projevily.
+1. V Azure Portal přejděte do služby API Management a v nabídce klikněte na položku **umístění** .
+2. Pro umístění, které chcete odebrat, otevřete místní nabídku pomocí tlačítka **...** na pravé straně tabulky. Vyberte možnost **Odstranit** .
+3. Potvrďte odstranění a klikněte na **Uložit** , aby se změny projevily.
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>Směrování volání rozhraní API do regionálních back-end služeb
 
@@ -119,11 +106,6 @@ API Management směruje požadavky na místní _bránu_ na základě [nejnižš�
 1. [Konfigurace API Managementch koncových bodů regionálního stavu v Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Místní koncové body stavu se řídí vzorem adresy `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`URL, například `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
 1. Zadejte [metodu směrování](../traffic-manager/traffic-manager-routing-methods.md) Traffic Manager.
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region

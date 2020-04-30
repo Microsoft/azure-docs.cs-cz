@@ -1,66 +1,66 @@
 ---
-title: Podporované prostředky pro Azure Red Hat OpenShift
-description: Zjistěte, které oblasti Azure a velikosti virtuálních strojů jsou podporované microsoft azure red hat openshift.
+title: Podporované prostředky pro Azure Red Hat OpenShift 3,11
+description: Informace o tom, které oblasti Azure a velikosti virtuálních počítačů podporuje Microsoft Azure Red Hat OpenShift
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243663"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203671"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Prostředky Azure Red Hat OpenShift
 
-V tomto tématu jsou uvedeny oblasti Azure a velikosti virtuálních strojů podporované službou Microsoft Azure Red Hat OpenShift.
+Toto téma obsahuje seznam oblastí Azure a velikostí virtuálních počítačů, které podporuje služba Microsoft Azure Red Hat OpenShift 3,11.
 
 ## <a name="azure-regions"></a>Oblast Azure
 
-Aktuální seznam oblastí, kde můžete nasadit clustery Azure Red Hat OpenShift, najdete v tématu [Produkty dostupné podle oblastí.](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all)
+Aktuální seznam oblastí, kde můžete nasadit clustery Azure Red Hat OpenShift, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) .
 
 ## <a name="virtual-machine-sizes"></a>Velikosti virtuálních počítačů
 
-Tady jsou podporované velikosti virtuálních strojů, které můžete zadat pro výpočetní uzly v clusteru Azure Red Hat OpenShift.
+Tady jsou podporované velikosti virtuálních počítačů, které můžete zadat pro výpočetní uzly v clusteru Azure Red Hat OpenShift.
 
 > [!Important]
-> Každý virtuální virtuální virtuální mši má jiný počet jednotek, které lze připojit. To nemusí být tak okamžitě vymazat jako velikost paměti nebo procesoru.
-> Ne všechny velikosti virtuálních počítače jsou k dispozici ve všech oblastech. I v případě, že rozhraní API podporuje velikost, kterou zadáte, může dojít k chybě, pokud velikost není k dispozici v oblasti, kterou zadáte.
-> Další informace najdete [v tématu Aktuální seznam podporovaných velikostí virtuálních](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) počítače na oblast.
+> Každý virtuální počítač má jiný počet jednotek, které je možné připojit. To nemusí být okamžitě jasné jako paměť nebo velikost procesoru.
+> Ne všechny velikosti virtuálních počítačů jsou dostupné ve všech oblastech. I v případě, že rozhraní API podporuje zadanou velikost, může se zobrazit chyba, pokud velikost není k dispozici v oblasti, kterou zadáte.
+> Další informace najdete v tématu [aktuální seznam podporovaných velikostí virtuálních počítačů na oblast](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
-## <a name="compute-node-sizes"></a>Výpočetní velikosti uzlů
+## <a name="compute-node-sizes"></a>Velikosti výpočetních uzlů
 
-Následující velikosti výpočetních uzlů jsou podporovány rozhraním Azure Red Hat OpenShift REST API:
-
-|Velikost|Virtuální procesory|Paměť RAM|
-|-|-|-|
-|Standardní D4s v3|4|16 GB|
-|Standardní D8s v3|8|32 GB|
-|Standardní D16s v3|16|64 GB|
-|Standardní D32s v3|32|128 GB|
-|-|-|-|
-|Standardní E4s v3|4|32 GB|
-|Standardní E8s v3|8|64 GB|
-|Standardní E16s v3|16|128 GB|
-|Standardní E32s v3|32|256 GB|
-|-|-|-|
-|Standardní F8s v2|8|16 GB|
-|Standardní F16s v2|16|32 GB|
-|Standardní F32s v2|32|64 GB|
-
-## <a name="master-node-sizes"></a>Velikosti hlavních uzlů
-
-Následující velikosti uzlů hlavního serveru a infrastruktury jsou podporovány rozhraním AZURE Red Hat OpenShift REST API:
+REST API Azure Red Hat OpenShift podporuje následující velikosti výpočetních uzlů:
 
 |Velikost|Virtuální procesory|Paměť RAM|
 |-|-|-|
-|Standardní D4s v3|4|16 GB|
-|Standardní D8s v3|8|32 GB|
-|Standardní D16s v3|16|64 GB|
-|Standardní D32s v3|32|128 GB|
+|D4S V3 úrovně Standard|4|16 GB|
+|D8s V3 úrovně Standard|8|32 GB|
+|D16s V3 úrovně Standard|16|64 GB|
+|D32s V3 úrovně Standard|32|128 GB|
+|-|-|-|
+|E4s V3 úrovně Standard|4|32 GB|
+|E8s V3 úrovně Standard|8|64 GB|
+|E16s V3 úrovně Standard|16|128 GB|
+|E32s V3 úrovně Standard|32|256 GB|
+|-|-|-|
+|F8s úrovně v2 úrovně Standard|8|16 GB|
+|F16s úrovně v2 úrovně Standard|16|32 GB|
+|F32s v2 úrovně Standard|32|64 GB|
+
+## <a name="master-node-sizes"></a>Velikosti hlavního uzlu
+
+REST API Azure Red Hat OpenShift podporuje následující velikosti uzlů hlavní/infrastruktura:
+
+|Velikost|Virtuální procesory|Paměť RAM|
+|-|-|-|
+|D4S V3 úrovně Standard|4|16 GB|
+|D8s V3 úrovně Standard|8|32 GB|
+|D16s V3 úrovně Standard|16|64 GB|
+|D32s V3 úrovně Standard|32|128 GB|
 
 ## <a name="next-steps"></a>Další kroky
 
-Vyzkoušejte kurz [vytvoření clusteru Azure Red Hat OpenShift.](tutorial-create-cluster.md)
+Vyzkoušejte kurz [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md) .

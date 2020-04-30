@@ -1,25 +1,25 @@
 ---
-title: Funkce šablony – nasazení
-description: Popisuje funkce, které se mají použít v šabloně Azure Resource Manager k načtení informací o nasazení.
+title: Funkce šablon – nasazení
+description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156323"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203790"
 ---
-# <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM 
+# <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
 
-Správce prostředků poskytuje následující funkce pro získávání hodnot souvisejících s aktuálním nasazením šablony Správce prostředků Azure (ARM):
+Správce prostředků poskytuje následující funkce pro získání hodnot vztahujících se k aktuálnímu nasazení šablony Azure Resource Manager (ARM):
 
-* [Nasazení](#deployment)
-* [environment](#environment)
-* [Parametry](#parameters)
-* [Proměnné](#variables)
+* [prostředí](#deployment)
+* [hlediska](#environment)
+* [ukazatelů](#parameters)
+* [proměnné](#variables)
 
-Informace o získání hodnot z prostředků, skupin prostředků nebo předplatných naleznete v [tématu Funkce prostředků](template-functions-resource.md).
+Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatných, přečtěte si téma [funkce prostředků](template-functions-resource.md).
 
 ## <a name="deployment"></a>nasazení
 
@@ -29,7 +29,12 @@ Vrátí informace o aktuální operaci nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Tato funkce vrátí objekt, který je předán během nasazení. Vlastnosti v vráceném objektu se liší v závislosti na tom, zda je objekt nasazení předán jako odkaz nebo jako in-line objekt. Když je objekt nasazení předán in-line, například při použití parametru **-TemplateFile** v prostředí Azure PowerShell k přejděte na místní soubor, má vrácený objekt následující formát:
+Tato funkce vrací objekt, který je předán během nasazování. Vlastnosti vráceného objektu se liší v závislosti na tom, zda jste:
+
+* nasazení šablony, která je místní soubor nebo nasazení šablony, která je vzdáleným souborem, ke kterému se přistupoval prostřednictvím identifikátoru URI.
+* nasazení do skupiny prostředků nebo nasazení do jednoho z dalších oborů ([předplatné Azure](deploy-to-subscription.md), [skupina pro správu](deploy-to-management-group.md)nebo [tenant](deploy-to-tenant.md)).
+
+Když nasadíte místní šablonu do skupiny prostředků: funkce vrátí následující formát:
 
 ```json
 {
@@ -44,6 +49,7 @@ Tato funkce vrátí objekt, který je předán během nasazení. Vlastnosti v vr
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -51,7 +57,7 @@ Tato funkce vrátí objekt, který je předán během nasazení. Vlastnosti v vr
 }
 ```
 
-Když je objekt předán jako odkaz, například při použití parametru **-TemplateUri** k přemísťuje na vzdálený objekt, je objekt vrácen v následujícím formátu: 
+Když nasazujete vzdálenou šablonu do skupiny prostředků: funkce vrátí následující formát:
 
 ```json
 {
@@ -68,6 +74,7 @@ Když je objekt předán jako odkaz, například při použití parametru **-Tem
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -75,11 +82,30 @@ Když je objekt předán jako odkaz, například při použití parametru **-Tem
 }
 ```
 
-Při [nasazení do předplatného Azure](deploy-to-subscription.md), namísto skupiny prostředků, návratový objekt obsahuje `location` vlastnost. Vlastnost umístění je zahrnuta při nasazování místní šablony nebo externí šablony.
+Když nasadíte do předplatného Azure, skupiny pro správu nebo tenanta, návratový objekt obsahuje `location` vlastnost. Vlastnost Location je obsažena při nasazení místní šablony nebo externí šablony. Formát je následující:
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>Poznámky
 
-Nasazení() můžete použít k propojení s jinou šablonou na základě identifikátoru URI nadřazené šablony.
+Nasazení () můžete použít k propojení na jinou šablonu na základě identifikátoru URI nadřazené šablony.
 
 ```json
 "variables": {  
@@ -87,11 +113,11 @@ Nasazení() můžete použít k propojení s jinou šablonou na základě identi
 }
 ```  
 
-Pokud znovu nasadíte šablonu z historie nasazení na portálu, šablona se nasadí jako místní soubor. Vlastnost `templateLink` není vrácena ve funkci nasazení. Pokud vaše šablona `templateLink` závisí na vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
+Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink` Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá `templateLink` na vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
 ### <a name="example"></a>Příklad
 
-Následující [šablona příkladu](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) vrátí objekt nasazení:
 
 ```json
 {
@@ -99,7 +125,7 @@ Následující [šablona příkladu](https://github.com/Azure/azure-docs-json-sa
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -118,12 +144,13 @@ Předchozí příklad vrátí následující objekt:
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
@@ -131,17 +158,15 @@ Předchozí příklad vrátí následující objekt:
 }
 ```
 
-Šablona na úrovni předplatného, která používá funkci nasazení, najdete v [tématu funkce nasazení předplatného](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). Je nasazen s jedním `az deployment create` `New-AzDeployment` nebo příkazy.
-
 ## <a name="environment"></a>environment
 
 `environment()`
 
-Vrátí informace o prostředí Azure používané pro nasazení.
+Vrátí informace o prostředí Azure používaném pro nasazení.
 
 ### <a name="return-value"></a>Návratová hodnota
 
-Tato funkce vrátí vlastnosti pro aktuální prostředí Azure. Následující příklad ukazuje vlastnosti pro globální Azure. Suverénní mraky mohou vracet mírně odlišné vlastnosti.
+Tato funkce vrátí vlastnosti aktuálního prostředí Azure. Následující příklad ukazuje vlastnosti pro globální Azure. Cloudy svrchovaného května můžou vracet mírně odlišné vlastnosti.
 
 ```json
 {
@@ -179,7 +204,7 @@ Tato funkce vrátí vlastnosti pro aktuální prostředí Azure. Následující 
 
 ### <a name="example"></a>Příklad
 
-Následující ukázková šablona vrátí objekt prostředí.
+Následující příklad šablony vrátí objekt prostředí.
 
 ```json
 {
@@ -195,7 +220,7 @@ Následující ukázková šablona vrátí objekt prostředí.
 }
 ```
 
-Předchozí příklad vrátí následující objekt při nasazení do globálního Azure:
+Předchozí příklad vrátí následující objekt při nasazení na globální Azure:
 
 ```json
 {
@@ -235,13 +260,13 @@ Předchozí příklad vrátí následující objekt při nasazení do globální
 
 `parameters(parameterName)`
 
-Vrátí hodnotu parametru. Zadaný název parametru musí být definován v části parametry šablony.
+Vrátí hodnotu parametru. Zadaný název parametru musí být definován v oddílu Parameters této šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| Parametername |Ano |řetězec |Název parametru, který chcete vrátit. |
+| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -249,7 +274,7 @@ Hodnota zadaného parametru.
 
 ### <a name="remarks"></a>Poznámky
 
-Obvykle se parametry používají k nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předanou během nasazení.
+Obvykle použijete parametry pro nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předaného během nasazení.
 
 ```json
 "parameters": { 
@@ -269,7 +294,7 @@ Obvykle se parametry používají k nastavení hodnot prostředků. Následujíc
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce parametrů.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) ukazuje zjednodušené použití funkce Parameters.
 
 ```json
 {
@@ -326,27 +351,27 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | možnost 1 |
 | intOutput | Int | 1 |
-| objectOutput | Objekt | {"one": "a", "dva": "b"} |
-| poleOutput | Pole | [1, 2, 3] |
+| objectOutput | Objekt | {"One": "a", "Two": "b"} |
+| arrayOutput | Pole | [1, 2, 3] |
 | crossOutput | Řetězec | možnost 1 |
 
-Další informace o použití parametrů najdete [v tématu Parametry v šabloně Správce prostředků Azure](template-parameters.md).
+Další informace o použití parametrů naleznete v tématu [Parameters in Azure Resource Manager Template](template-parameters.md).
 
-## <a name="variables"></a>Proměnné
+## <a name="variables"></a>proměnné
 
 `variables(variableName)`
 
-Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v části proměnné šablony.
+Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v oddílu Variables šablony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| variableName |Ano |Řetězec |Název proměnné vrátit. |
+| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -354,7 +379,7 @@ Hodnota zadané proměnné.
 
 ### <a name="remarks"></a>Poznámky
 
-Proměnné se obvykle používají ke zjednodušení šablony vytvořením složitých hodnot pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
+Obvykle používáte proměnné pro zjednodušení šablony vytvořením složitých hodnot pouze jednou. Následující příklad vytvoří jedinečný název pro účet úložiště.
 
 ```json
 "variables": {
@@ -378,7 +403,7 @@ Proměnné se obvykle používají ke zjednodušení šablony vytvořením slož
 
 ### <a name="example"></a>Příklad
 
-Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrátí různé hodnoty proměnných.
+Následující [příklad šablony](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) vrací různé hodnoty proměnných.
 
 ```json
 {
@@ -418,18 +443,15 @@ Následující [ukázková šablona](https://github.com/Azure/azure-docs-json-sa
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Name (Název) | Typ | Hodnota |
+| Název | Typ | Hodnota |
 | ---- | ---- | ----- |
-| exampleOutput1 | Řetězec | myVariable |
+| exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |
-| exampleOutput3 | Řetězec | myVariable |
-| exampleOutput4 |  Objekt | {"property1": "value1", "property2": "value2"} |
+| exampleOutput3 | Řetězec | MojePromenna |
+| exampleOutput4 |  Objekt | {"vlastnost1": "hodnota1"; "Vlastnost2": "hodnota2"} |
 
-Další informace o používání proměnných najdete [v tématu Proměnné v šabloně Správce prostředků Azure](template-variables.md).
+Další informace o použití proměnných naleznete v tématu [proměnné v šabloně Azure Resource Manager](template-variables.md).
 
 ## <a name="next-steps"></a>Další kroky
-* Popis oddílů v šabloně Azure Resource Manager u najdete v tématu [Vytváření šablon Azure Resource Manageru](template-syntax.md).
-* Pokud chcete sloučit několik šablon, přečtěte si informace [o použití propojených šablon ve Správci prostředků Azure](linked-templates.md).
-* Chcete-li itrerate zadaný počet časů při vytváření typu prostředku, najdete v [tématu vytvoření více instancí prostředků ve Správci prostředků Azure](copy-resources.md).
-* Informace o tom, jak nasadit vytvořenou šablonu, najdete [v tématu Nasazení aplikace pomocí šablony Azure Resource Manageru](deploy-powershell.md).
 
+* Popis sekcí v šabloně Azure Resource Manager najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).

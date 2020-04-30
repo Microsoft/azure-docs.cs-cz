@@ -1,0 +1,7 @@
+- name: Dokumentace ke SRE (Site Reliability Engineering)
+  href: ../index.yml
+- name: Nejčastější dotazy
+  expanded: true
+  items:
+    - name: SRE a DevOps
+      href: devops.md

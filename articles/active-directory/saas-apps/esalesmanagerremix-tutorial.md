@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406955"
+ms.locfileid: "82202392"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrace Azure Active Directory s E-Remix manažerem E Sales
 
@@ -158,7 +158,7 @@ Povolte jednotné přihlašování Azure AD v Azure Portal a nakonfigurujte jedn
     
     b. V části **položka pro spolupráci** vyberte v rozevíracím seznamu možnost **e-mail**.
 
-    c. Do pole **položka pro spolupráci** vložte hodnotu deklarace identity, kterou jste zkopírovali dříve z Azure Portal (tj. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Do pole **položka pro spolupráci** vložte hodnotu deklarace identity, kterou jste zkopírovali dříve z Azure Portal (tj. **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
 
     d. Do pole **Vystavitel (ID entity)** vložte hodnotu identifikátoru, kterou jste zkopírovali dříve z části **E Sales Manager Remix doména a adresy URL** v Azure Portal.
 

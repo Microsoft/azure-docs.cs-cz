@@ -1,11 +1,11 @@
 ---
-title: Hromadné odstranění uživatelů na portálu Azure Active Directory | Dokumenty společnosti Microsoft
-description: Hromadné odstranění uživatelů v Centru pro správu Azure ve Službě Azure Active Directory
+title: Hromadné odstranění uživatelů na portálu Azure Active Directory | Microsoft Docs
+description: Hromadné odstranění uživatelů v centru pro správu Azure v Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,50 +13,71 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beb8b4f35dc5f02e59cced05a6bcfc235d42f996
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: ca30d5b050a34000fa7c6465356aba206aeaa8e4
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532801"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203337"
 ---
-# <a name="bulk-delete-users-in-azure-active-directory"></a>Hromadné odstranění uživatelů ve službě Azure Active Directory
+# <a name="bulk-delete-users-in-azure-active-directory"></a>Hromadné odstranění uživatelů v Azure Active Directory
 
-Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký počet členů do skupiny pomocí souboru hodnot oddělených čárkami (CSV) k hromadnému odstranění uživatelů.
+Pomocí portálu Azure Active Directory (Azure AD) můžete odebrat velký počet členů do skupiny pomocí souboru hodnot oddělených čárkami (CSV) pro hromadné odstranění uživatelů.
+
+## <a name="understand-the-csv-template"></a>Princip šablony sdíleného svazku clusteru
+
+Stáhněte si a vyplňte šablonu sdíleného svazku clusteru, abyste mohli úspěšně odstraňovat uživatele Azure AD. Šablona sdíleného svazku clusteru, kterou stáhnete, může vypadat jako v tomto příkladu:
+
+![Tabulka pro nahrávání a volání s vysvětlením účelu a hodnot pro každý řádek a sloupec](./media/users-bulk-delete/understand-template.png)
+
+### <a name="csv-template-structure"></a>Struktura šablony CSV
+
+Řádky ve stažené šabloně CSV jsou následující:
+
+- **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `User name [userPrincipalName] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
+
+### <a name="additional-guidance"></a>Další doprovodné materiály
+
+- První dva řádky šablony nahrávání se nesmí odebrat ani změnit, jinak se nahrávání nedá zpracovat.
+- Požadované sloupce jsou uvedeny jako první.
+- Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
+- Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
 
 ## <a name="to-bulk-delete-users"></a>Hromadné odstranění uživatelů
 
-1. [Přihlaste se k organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
-1. Ve službě Azure AD vyberte **možnost Uživatelé** > **hromadné odstranění**.
-1. Na stránce **Hromadné odstranění uživatele** vyberte **Stáhnout,** chcete-li získat platný soubor CSV s vlastnostmi uživatele.
+1. [Přihlaste se ke svojí organizaci Azure AD](https://aad.portal.azure.com) pomocí účtu, který je správcem uživatele v organizaci.
+1. V Azure AD vyberte **Uživatelé** > **hromadného odstranění**.
+1. Na stránce **hromadné odstranění uživatele** vyberte **Stáhnout** pro příjem platného souboru CSV vlastností uživatele.
 
-   ![Vyberte místní soubor CSV, ve kterém zobrazíte seznam uživatelů, které chcete odstranit.](./media/users-bulk-delete/bulk-delete.png)
+   ![Vyberte místní soubor CSV, ve kterém chcete vypsat uživatele, které chcete odstranit.](./media/users-bulk-delete/bulk-delete.png)
 
-1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, kterého chcete odstranit. Jedinou požadovanou hodnotou je **hlavní název uživatele**. Pak soubor uložte.
+1. Otevřete soubor CSV a přidejte řádek pro každého uživatele, kterého chcete odstranit. Jediná požadovaná hodnota je **hlavní název uživatele**. Pak soubor uložte.
 
-   ![Soubor CSV obsahuje názvy a ID uživatelů, které mají být odstraněny.](./media/users-bulk-delete/delete-csv-file.png)
+   ![Soubor CSV obsahuje jména a ID uživatelů, kteří se mají odstranit.](./media/users-bulk-delete/delete-csv-file.png)
 
-1. Na stránce **Hromadné odstranění uživatele** vyhledejte v části Upload **souboru CSV**soubor. Když vyberete soubor a klepnete na tlačítko Odeslat, spustí se ověření souboru CSV.
-1. Po ověření obsahu souboru se **soubor úspěšně nahraje**. Pokud se jedná o chyby, je nutné je před odesláním úlohy opravit.
-1. Když váš soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která odstraní uživatele.
+1. Na stránce **hromadné odstranění uživatele** v části **nahrát soubor CSV**přejděte k souboru. Když vyberete soubor a kliknete na Odeslat, spustí se ověření souboru CSV.
+1. Když se obsah souboru ověří, zobrazí se soubor se **úspěšně nahrál**. Pokud dojde k chybám, musíte je opravit předtím, než budete moct úlohu odeslat.
+1. Když soubor projde ověřením, vyberte **Odeslat** a spusťte hromadnou operaci Azure, která uživatele odstraní.
 1. Po dokončení operace odstranění se zobrazí oznámení, že hromadná operace byla úspěšná.
 
-Pokud dojde k chybám, můžete soubor výsledků stáhnout a zobrazit na stránce **Výsledky hromadné operace.** Soubor obsahuje důvod každé chyby.
+Pokud dojde k chybám, můžete si stáhnout a zobrazit soubor výsledků na stránce s **výsledky hromadné operace** . Soubor obsahuje důvod každé chyby.
 
 ## <a name="check-status"></a>Zkontrolování stavu
 
-Stav všech nevyřízených hromadných požadavků můžete zobrazit na stránce **S výsledky hromadné operace.**
+Na stránce **výsledků hromadných operací** můžete zobrazit stav všech vašich nevyřízených hromadných požadavků.
 
    [![](media/users-bulk-delete/bulk-center.png "Check delete status in the Bulk Operations Results page")](media/users-bulk-delete/bulk-center.png#lightbox)
 
-Dále můžete zkontrolovat, zda uživatelé, které jste odstranili, existují v organizaci Azure AD buď na webu Azure Portal, nebo pomocí PowerShellu.
+V dalším kroku se můžete podívat, že uživatelé, které jste odstranili, existují v organizaci Azure AD, a to buď v Azure Portal, nebo pomocí PowerShellu.
 
-## <a name="verify-deleted-users-in-the-azure-portal"></a>Ověření odstraněných uživatelů na webu Azure Portal
+## <a name="verify-deleted-users-in-the-azure-portal"></a>Ověřit odstraněné uživatele v Azure Portal
 
-1. Přihlaste se k portálu Azure pomocí účtu, který je správcem uživatele v organizaci.
+1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
 1. V navigačním podokně vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Uživatele**.
-1. V části **Zobrazit**vyberte pouze **všichni uživatelé** a ověřte, že uživatelé, které jste odstranili, již nejsou uvedeni.
+1. V části **Zobrazit**vyberte možnost **Všichni uživatelé** a ověřte, že uživatelé, které jste odstranili, již nejsou uvedeni.
 
 ### <a name="verify-deleted-users-with-powershell"></a>Ověření odstraněných uživatelů pomocí PowerShellu
 
@@ -66,10 +87,10 @@ Spusťte následující příkaz:
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Ověřte, zda již nejsou v seznamu uvedeni odstranění uživatelé.
+Ověřte, že uživatelé, které jste odstranili, již nejsou uvedeni.
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Hromadné přidání uživatelů](users-bulk-add.md)
 - [Stáhnout seznam uživatelů](users-bulk-download.md)
-- [Uživatelé hromadného obnovení](users-bulk-restore.md)
+- [Hromadné obnovování uživatelů](users-bulk-restore.md)

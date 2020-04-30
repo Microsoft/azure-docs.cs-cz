@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190652"
+ms.locfileid: "82204113"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Apache Oozie s Apache Haddopem k definování a spuštění pracovního procesu v linuxové službě Azure HDInsight
 
@@ -644,67 +644,6 @@ Koordinátora můžete použít k určení začátku, konce a frekvence výskytu
 
     ![Karta informace o úloze webové konzoly OOzie](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Řešení potíží
-
-Pomocí uživatelského rozhraní Oozie můžete zobrazit protokoly Oozie. Uživatelské rozhraní Oozie obsahuje také odkazy na protokoly JobTracker pro úlohy MapReduce, které spustila pracovní postup. Vzor pro řešení potíží by měl být následující:
-
-   1. Zobrazte úlohu ve webovém uživatelském rozhraní Oozie.
-
-   2. Pokud dojde k chybě nebo selhání konkrétní akce, vyberte akci a ověřte, zda pole **chybová zpráva** obsahuje další informace o selhání.
-
-   3. Pokud je k dispozici, použijte adresu URL z akce, chcete-li zobrazit další podrobnosti, například protokoly JobTracker, pro akci.
-
-Níže jsou uvedené konkrétní chyby, se kterými se můžete setkat, a jejich řešení.
-
-### <a name="ja009-cant-initialize-cluster"></a>JA009: nejde inicializovat cluster.
-
-**Příznaky**: stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Výběrem této akce se zobrazí následující chybová zpráva:
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**Příčina**: adresy úložiště objektů BLOB v Azure, které se používají v souboru **Job. XML** , neobsahují kontejner úložiště nebo název účtu úložiště. Formát adresy úložiště BLOB musí být `wasbs://containername@storageaccountname.blob.core.windows.net`.
-
-**Řešení**: Změňte adresy BLOB Storage, které úloha používá.
-
-### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: Oozie nemůže zosobnit &lt;uživatele.&gt;
-
-**Příznaky**: stav úlohy se změní na **pozastaveno**. Podrobnosti úlohy zobrazují `RunHiveScript` stav **START_MANUAL**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**Příčina**: aktuální nastavení oprávnění nepovoluje Oozie zosobnit zadaný uživatelský účet.
-
-**Řešení**: Oozie může zosobnit uživatele ve **`users`** skupině. Použijte `groups USERNAME` k zobrazení skupin, kterých je uživatelský účet členem. Pokud uživatel není členem **`users`** skupiny, přidejte uživatele do skupiny pomocí následujícího příkazu:
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> Může to trvat několik minut, než HDInsight rozpozná, že uživatel byl do skupiny přidaný.
-
-### <a name="launcher-error-sqoop"></a>Chyba spouštěče (Sqoop)
-
-**Příznaky**: stav úlohy se změní na **ukončeno**. Podrobnosti úlohy zobrazují `RunSqoopExport` stav **Chyba**. Pokud vyberete akci, zobrazí se tato chybová zpráva:
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**Příčina**: Sqoop nemůže načíst ovladač databáze vyžadovaný pro přístup do databáze.
-
-**Řešení**: Pokud používáte Sqoop z úlohy Oozie, musíte zahrnout ovladač databáze s ostatními prostředky, jako je například Workflow. XML, který úloha používá. Také se odkázat na archiv, který obsahuje ovladač databáze z `<sqoop>...</sqoop>` části souboru Workflow. XML.
-
-Například pro úlohu v tomto dokumentu použijte následující postup:
-
-1. Zkopírujte `mssql-jdbc-7.0.0.jre8.jar` soubor do adresáře **/tutorials/useoozie** :
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. Upravte `workflow.xml` a přidejte následující kód XML na nový řádek výše `</sqoop>`:
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>Další kroky
 
 V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak spustit úlohu Oozie. Další informace o tom, jak pracovat se službou HDInsight, najdete v následujících článcích:
@@ -712,3 +651,4 @@ V tomto článku jste zjistili, jak definovat pracovní postup Oozie a jak spust
 * [Nahrávání dat pro úlohy Apache Hadoop v HDInsight](hdinsight-upload-data.md)
 * [Použití Apache Sqoop s Apache Hadoop ve službě HDInsight](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 * [Použití Apache Hive s Apache Hadoop v HDInsight](hadoop/hdinsight-use-hive.md)
+* [Řešení potíží s Apache Oozie](./troubleshoot-oozie.md)

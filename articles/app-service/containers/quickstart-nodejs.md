@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: c647564d685470d86b2aa54be5a86bb995d914bc
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159724"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202555"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Vytvoření aplikace v Node. js v Azure
 
@@ -31,7 +31,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ![Přihlaste se k Azure](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"**, může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Pomocí `HTTP_PROXY` použijte `HTTPS_PROXY` `export`konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu.
 
@@ -83,7 +83,7 @@ Dále zkontrolujte, zda je aplikace spuštěna. Z terminálu spusťte aplikaci p
 npm start
 ```
 
-Nyní otevřete prohlížeč a přejděte na [http://localhost:3000](http://localhost:3000)místo, kde by se mělo zobrazit něco podobného:
+Nyní otevřete prohlížeč a přejděte na `http://localhost:3000`místo, kde by se mělo zobrazit něco podobného:
 
 ![Spuštění expresní aplikace](./media/quickstart-nodejs/express.png)
 
@@ -134,7 +134,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 
 Až se nasazení dokončí, vyberte **Procházet web** v příkazovém řádku a zobrazte svou čerstvou nasazenou webovou aplikaci.
 
-### <a name="troubleshooting"></a>Poradce při potížích
+### <a name="troubleshooting"></a>Řešení potíží
 
 Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."**, aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
 

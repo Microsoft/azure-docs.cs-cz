@@ -5,36 +5,40 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609804"
+ms.locfileid: "82204283"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualizace předchozí aplikace Java Service Fabric pro načtení knihoven Javy z Mavenu
-Nedávno jsme přesunuli binární soubory Service Fabric Java ze sady Service Fabric Java SDK do hostování v Mavenu. Momentálně můžete k načtení nejnovějších závislostí Service Fabric Java využít **mavencentral**. Tento rychlý start vám pomůže aktualizovat stávající aplikace v Javě, které jste dříve vytvořili pro použití se sadou Service Fabric Java SDK, a to pomocí šablony Yeoman nebo Eclipse, aby byly kompatibilní se sestavením založeným na Mavenu.
+Service Fabric binární soubory Java se přesunuly z Service Fabric Java SDK na Maven hosting. Pomocí **mavencentral** můžete načíst nejnovější závislosti Service Fabric Java. Tato příručka vám pomůže aktualizovat existující aplikace Java vytvořené pro sadu Service Fabric Java SDK, aby byly kompatibilní se sestavením založeným na Maven, a to pomocí šablony Yeoman nebo zatmění.
 
 ## <a name="prerequisites"></a>Požadavky
-1. Nejdřív musíte odinstalovat stávající sadu Java SDK.
+
+1. Nejdřív odinstalujte stávající sadu Java SDK.
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
    ```
+
 2. Pomocí kroků uvedených [tady](service-fabric-cli.md) nainstalujte nejnovější rozhraní příkazového řádku Service Fabric.
 
-3. Pokud chcete sestavovat aplikace Service Fabric Java a pracovat s nimi, musíte zajistit, že máte nainstalovanou sadu JDK 1.8 a Gradle. Pokud ještě nejsou instalované, můžete sadu JDK 1.8.(openjdk-1.8-jdk) a Gradle nainstalovat spuštěním následujícího kódu:
+3. Pokud chcete sestavovat a pracovat s Service Fabric aplikacemi Java, ujistěte se, že máte nainstalované JDK 1,8 a Gradle. Pokud ještě nejsou instalované, můžete sadu JDK 1.8.(openjdk-1.8-jdk) a Gradle nainstalovat spuštěním následujícího kódu:
 
    ```bash
    sudo apt-get install openjdk-8-jdk-headless
    sudo apt-get install gradle
    ```
+
 4. Aktualizujte instalační/odinstalační skripty vaší aplikace, aby používaly nové rozhraní příkazového řádku Service Fabric, a to pomocí kroků uvedených [tady](service-fabric-application-lifecycle-sfctl.md). Pro srovnání si můžete prohlédnout naše úvodní [příklady](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 >[!TIP]
 > Po odinstalaci Service Fabric Java SDK nebude Yeoman fungovat. Pokud chcete zprovoznit generátor šablon Service Fabric Yeoman Java, postupujte v souladu s požadavky uvedenými [tady](service-fabric-create-your-first-linux-application-with-java.md).
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Knihovny Service Fabric Java v Mavenu
+
 Hostitelem knihoven Service Fabric Java je Maven. Můžete přidat závislosti do souborů ``pom.xml`` nebo ``build.gradle`` vašich projektů, aby se používaly knihovny Service Fabric Java z úložiště **mavenCentral**.
 
 ### <a name="actors"></a>Objekty actor
@@ -80,6 +84,7 @@ Podpora bezstavové služby Service Fabric pro vaši aplikaci.
   ```
 
 ### <a name="others"></a>Ostatní
+
 #### <a name="transport"></a>Přenos
 
 Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujete na úrovni přenosové vrstvy, nemusíte tuto závislost do aplikace Reliable Actor nebo aplikace služby explicitně přidávat.
@@ -122,11 +127,11 @@ Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runt
   }
   ```
 
-
 ## <a name="migrating-service-fabric-stateless-service"></a>Migrace bezstavové služby Service Fabric
 
 Pokud chcete mít možnost sestavovat stávající bezstavové služby Service Fabric v Javě s využitím závislostí Service Fabric načtených z Mavenu, je potřeba v rámci příslušné služby aktualizovat soubor ``build.gradle``. Dříve vypadal takto:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':Interface')
@@ -158,8 +163,10 @@ task copyDeps <<{
     }
 }
 ```
+
 Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
-```
+
+```gradle
 repositories {
         mavenCentral()
 }
@@ -211,11 +218,13 @@ task copyDeps <<{
     }
 }
 ```
+
 Obecně platí, že k získání celkové představy o tom, jak bude vypadat skript sestavení pro bezstavovou službu Service Fabric v Javě, můžete využít libovolnou ukázku z našich úvodních příkladů. Tady je [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle) pro ukázku EchoServer.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migrace Service Fabric Actor Service
 
 Pokud chcete mít možnost sestavovat stávající aplikaci Service Fabric Actor v Javě s využitím závislostí Service Fabric načtených z Mavenu, je potřeba v rámci balíčku rozhraní a balíčku příslušné služby aktualizovat soubor ``build.gradle``. Pokud máte balíček TestClient, musíte ho také aktualizovat. Takže pro objekt actor ``Myactor``, je potřeba aktualizovat tato místa:
+
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
@@ -225,15 +234,18 @@ Pokud chcete mít možnost sestavovat stávající aplikaci Service Fabric Actor
 #### <a name="updating-build-script-for-the-interface-project"></a>Aktualizace skriptu sestavení pro projekt rozhraní
 
 Dříve vypadal takto:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
 }
 .
 .
 ```
+
 Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -266,7 +278,8 @@ compileJava.dependsOn(explodeDeps)
 #### <a name="updating-build-script-for-the-actor-project"></a>Aktualizace skriptu sestavení pro projekt objektu actor
 
 Dříve vypadal takto:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':MyactorInterface')
@@ -304,8 +317,10 @@ task copyDeps<< {
     }
 }
 ```
+
 Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -365,7 +380,8 @@ task copyDeps<< {
 #### <a name="updating-build-script-for-the-test-client-project"></a>Aktualizace skriptu sestavení pro testovací klientský projekt
 
 Změny jsou v tomto případě podobné změnám probraným v předchozí části, to znamená u projektu objektu actor. Dříve skript Gradle vypadal takto:
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
       compile project(':MyactorInterface')
@@ -404,8 +420,10 @@ task copyDeps<< {
         }
 }
 ```
+
 Teď by měl **aktualizovaný soubor ** ``build.gradle`` pro načtení závislostí z Mavenu mít příslušné části změněné takto:
-```
+
+```gradle
 repositories {
     mavenCentral()
 }

@@ -1,50 +1,54 @@
 ---
-title: Mapování transformace spojení toku dat
-description: Mapování datového toku Azure Tok nové větve transformace
+title: Mapování sjednocení toku dat
+description: Azure Data Factory transformace toku dat při mapování nové větve
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: 35f6b74f3b6cce5a0af812d4613f9da2f9fbd552
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/27/2020
+ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606267"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204334"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Transformace sjednocení toku dat mapování Azure Data Factory
+# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Azure Data Factory transformace sjednocení toku dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Unie bude kombinovat více datových proudů do jednoho, s SQL Unie těchto datových proudů jako nový výstup z transformace Unie. Všechny schéma z každého vstupního datového proudu budou sloučeny uvnitř toku dat, aniž byste museli mít klíč spojení.
+Sjednocení sloučí několik datových proudů do jednoho s sjednocením SQL těchto datových proudů jako nový výstup z transformace Union. Všechna schémata z každého vstupního datového proudu budou kombinována v toku dat, aniž by bylo nutné mít klávesu JOIN.
 
-N-počet datových proudů v tabulce nastavení můžete kombinovat výběrem ikony "+" vedle každého nakonfigurovaného řádku, včetně zdrojových dat i datových proudů z existujících transformací v toku dat.
+N-Number datových proudů můžete v tabulce nastavení kombinovat tak, že vyberete ikonu "+" vedle každého konfigurovaného řádku, včetně zdrojových dat i datových proudů z existujících transformací v toku dat.
 
-![Transformace Unie](media/data-flow/union.png "Sjednocení")
+Tady je krátký návod k videu transformace sjednocení v toku dat mapování ADF:
 
-V takovém případě můžete kombinovat různorodá metadata z více zdrojů (v tomto příkladu tři různé zdrojové soubory) a zkombinovat je do jednoho datového proudu:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
 
-![Přehled transformace Unie](media/data-flow/union111.png "Unie 1")
+![Transformace sjednocení](media/data-flow/union.png "Sjednocení")
 
-Chcete-li toho dosáhnout, přidejte další řádky v nastavení unie zahrnutím všech zdrojů, které chcete přidat. Není nutné pro běžné vyhledávání nebo klíč spojení:
+V takovém případě můžete zkombinovat různá metadata z více zdrojů (v tomto příkladu tři různé zdrojové soubory) a kombinovat je do jednoho datového proudu:
 
-![Nastavení transformace unie](media/data-flow/unionsettings.png "Nastavení sjednocení")
+![Přehled transformace sjednocení](media/data-flow/union111.png "Sjednocení 1")
 
-Pokud nastavíte Select transformace po unii, budete moci přejmenovat překrývající se pole nebo pole, které nebyly pojmenovány ze zdrojů bez záhlaví. Kliknutím na "Zkontrolovat" zobrazíte metadata kombinovat s celkovými sloupci 132 v tomto příkladu ze tří různých zdrojů:
+Chcete-li toho dosáhnout, přidejte další řádky do nastavení sjednocení zahrnutím veškerého zdroje, který chcete přidat. Nemusíte mít společné vyhledávání ani klíč JOIN:
 
-![Konečné znění transformace Unie](media/data-flow/union333.png "Unie 3")
+![Nastavení transformace sjednocení](media/data-flow/unionsettings.png "Nastavení sjednocení")
 
-## <a name="name-and-position"></a>Jméno a pozice
+Pokud po sjednocení nastavíte transformaci SELECT, budete moct překrývat překrývající se pole nebo pole, která se nejmenují ze zdrojů bez záhlaví. Kliknutím na zkontrolovat zobrazíte kombinaci metadat s 132 celkovými sloupci v tomto příkladu ze tří různých zdrojů:
 
-Zvolíte-li možnost "sjednocení podle názvu", každá hodnota sloupce klesne do odpovídajícího sloupce z každého zdroje s novým schématem zřetězených metadat.
+![Poslední transformace sjednocení](media/data-flow/union333.png "Sjednocení 3")
 
-Pokud zvolíte "sjednocení podle pozice", každá hodnota sloupce klesne do původní pozice z každého odpovídajícího zdroje, což povede k novému kombinovanému datovému proudu, kde jsou data z každého zdroje přidána do stejného datového proudu:
+## <a name="name-and-position"></a>Název a umístění
 
-![Výstup Unie](media/data-flow/unionoutput.png "Výstup unie")
+Pokud zvolíte "sjednotit podle názvu", každá hodnota sloupce se přetáhne do odpovídajícího sloupce z každého zdroje a vytvoří se nové zřetězené schéma metadat.
+
+Pokud zvolíte "sjednotit podle pozice", každá hodnota sloupce se přetáhne do původní pozice z každého odpovídajícího zdroje, což vede k vytvoření nového kombinovaného datového proudu, kde jsou data z jednotlivých zdrojů přidána do stejného datového proudu:
+
+![Výstup sjednocení](media/data-flow/unionoutput.png "Výstup sjednocení")
 
 ## <a name="next-steps"></a>Další kroky
 
-Prozkoumejte podobné transformace včetně [Join](data-flow-join.md) a [Exists](data-flow-exists.md).
+Prozkoumejte podobné transformace, včetně [spojení](data-flow-join.md) a [existence](data-flow-exists.md).

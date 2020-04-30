@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ddead0b5ff094efc4abacb6bfbaf8bc4f47902b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f23520bd724d2f7ed5a9422a0541e717c800dee2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159280"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201019"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Kurz: Ruční konfigurace hybridních zařízení připojených k Azure Active Directory
 
@@ -185,7 +185,7 @@ Pokud používáte AD FS, musíte povolit následující koncové body WS-Trust.
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **AD FS/Services/Trust/2005/windowstransport** , **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
+> **AD FS/Services/Trust/2005/windowstransport** a **AD FS/Services/Trust/13/windowstransport** by měly být povolené jenom jako intranetové koncové body a nesmí být zveřejněné jako extranetové koncové body prostřednictvím proxy webových aplikací. Další informace o tom, jak zakázat koncové body systému Windows WS-Trust, najdete v tématu [zakázání koncových bodů systému Windows WS-Trust na proxy serveru](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Pomocí konzoly pro správu AD FS v části**koncové body** **služby** > můžete zjistit, jaké koncové body jsou povolené.
 
 > [!NOTE]
 >Pokud nemáte AD FS jako místní federační službu, postupujte podle pokynů od dodavatele a ujistěte se, že podporují koncové body WS-Trust 1,3 nebo 2005 a že jsou publikované prostřednictvím souboru výměny metadat (MEX).

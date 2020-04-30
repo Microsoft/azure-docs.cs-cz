@@ -136,10 +136,10 @@
         - name: Zřízení propustnosti u kontejnerů a databází
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Zřízení propustnosti – režim autopilota
-          href: provision-throughput-autopilot.md
-        - name: Nejčastější dotazy k AutoPilotu
-          href: autopilot-faq.md
+        - name: Zřízení propustnosti – režim automatického škálování
+          href: provision-throughput-autoscale.md
+        - name: Nejčastější dotazy k automatickému škálování
+          href: autoscale-faq.md
     - name: Dotaz SQL
       items:
         - name: Začínáme
@@ -518,6 +518,7 @@
         - name: Celkové náklady na vlastnictví
           href: total-cost-ownership.md
         - name: Vysvětlení informací na faktuře
+          displayName: free tier
           href: understand-your-bill.md
         - name: Optimalizace nákladů na zřízenou propustnost
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: Optimalizace nákladů na více oblastí
           href: optimize-cost-regions.md
         - name: Optimalizace nákladů na vývoj/testování
+          displayName: free tier
           href: optimize-dev-test.md
         - name: Optimalizace nákladů s využitím záložní kapacity
           href: cosmos-db-reserved-capacity.md

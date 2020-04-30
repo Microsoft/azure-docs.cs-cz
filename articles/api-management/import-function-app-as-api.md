@@ -1,5 +1,5 @@
 ---
-title: Import aplikace funkce Azure jako rozhraní API ve správě rozhraní API
+title: Import Function App Azure jako rozhraní API v API Management
 titleSuffix: Azure API Management
 description: V tomto kurzu se dozvíte, jak importovat aplikaci Azure Function App do služby Azure API Management jako rozhraní API.
 services: api-management
@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/28/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6f4626a8c42f3a50fa273c55099158750241bfee
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260951"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202916"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Import aplikace Azure Function App jako rozhraní API ve službě Azure API Management
 
@@ -46,7 +46,7 @@ V tomto kurzu se naučíte:
 
 Podle následujícího postupu vytvoříte z aplikace Azure Function App nové rozhraní API.
 
-1. Ve vaší instanci služby **Azure API Management** vyberte v nabídce na levé straně **Rozhraní API**.
+1. V Azure Portal přejděte do služby API Management a v nabídce vyberte **rozhraní API** .
 
 2. V seznamu **Přidat nové rozhraní API** vyberte **Function App**.
 
@@ -71,10 +71,7 @@ Podle následujícího postupu vytvoříte z aplikace Azure Function App nové r
     > [!NOTE]
     > Můžete importovat pouze funkce, které jsou založené na triggeru HTTP a mají úroveň autorizace nastavenou na *Anonymní* nebo *Funkce*.
 
-7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby upravte jiná předvyplněná pole.
-
-    ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-06.png)
-
+7. Přepněte do **úplného** zobrazení a přiřaďte **Produkt** k novému rozhraní API. V případě potřeby zadejte další pole během vytváření nebo je nakonfigurujte později tak, že na kartu **Nastavení** nakonfigurujete. Nastavení jsou vysvětlena v kurzu [importu a publikování prvního rozhraní API](import-and-publish.md#-import-and-publish-a-backend-api) .
 8. Klikněte na **Vytvořit**.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>Připojení aplikace Azure Function App k existujícímu rozhraní API
@@ -107,18 +104,18 @@ Podle následujícího postupu připojíte aplikaci Azure Function App k existuj
 
     ![Přidání z aplikace Function App](./media/import-function-app-as-api/add-05.png)
 
-8. Klepněte na **tlačítko Importovat**.
+8. Klikněte na **importovat**.
 
     ![Připojení z aplikace Function App](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a><a name="authorization"></a>Autorizace
+## <a name="authorization"></a><a name="authorization"></a>Udělován
 
 Při importu aplikace Azure Function App se automaticky vygeneruje:
 
-* Klíč hostitele uvnitř aplikace function app s názvem apim-{*název instance služby Azure API Management*},
-* Pojmenovaná hodnota uvnitř instance Azure API Management s názvem {*název instance aplikace Azure Function App*}-key, který obsahuje vytvořený klíč hostitele.
+* Klíč hostitele v rámci Function App s názvem APIM-{*název instance služby Azure API Management*}
+* Pojmenovaná hodnota v rámci instance služby Azure API Management s názvem {*název instance azure Function App*} – klíč, který obsahuje vytvořený klíč hostitele.
 
-Pro rozhraní API vytvořená po 4. Starší rozhraní API předají klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může `PATCH Backend` být změněno prostřednictvím [volání rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) na entitu *Back-end* přidružené k aplikaci funkce.
+Pro rozhraní API vytvořená po 4. dubnu 2019 se hostitelský klíč předává v požadavcích HTTP od API Management do Function App v hlavičce. Starší rozhraní API předejte klíč hostitele jako [parametr dotazu](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization). Toto chování může být změněno pomocí `PATCH Backend` [REST API volání](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) na entitu *back-end* , která je přidružená k Function App.
 
 > [!WARNING]
 > Odebráním nebo změnou hodnoty klíče hostitele aplikace Azure Function App nebo pojmenované hodnoty ve službě Azure API Management se přeruší komunikace mezi službami. Tyto hodnoty se nesynchronizují automaticky.
@@ -143,7 +140,7 @@ Přejděte k vaší instanci služby Azure API Management a v nabídce na levé 
 
 ![Přidání z aplikace Function App](./media/import-function-app-as-api/keys-01.png)
 
-## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Testování nového rozhraní API na webu Azure Portal
+## <a name="test-the-new-api-in-the-azure-portal"></a><a name="test-in-azure-portal"></a>Otestujte nové rozhraní API v Azure Portal
 
 Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí pohodlný způsob zobrazení a testování operací v rozhraní API.  
 
@@ -153,7 +150,7 @@ Operace můžete volat přímo z webu Azure Portal. Web Azure Portal nabízí po
 
 3. Vyberte operaci.
 
-    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jedním z hlaviček je **Ocp-Apim-Subscription-Key**, pro klíč předplatného produktu, který je přidružen k tomuto rozhraní API. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
+    Stránka zobrazí pole pro parametry dotazu a pole pro hlavičky. Jedna z hlaviček je **OCP-APIM-Subscription-Key**, pro klíč předplatného produktu, který je spojený s tímto rozhraním API. Pokud jste vytvořili instanci služby API Management, jste už správcem a klíč se tedy vyplní automaticky. 
 
 4. Vyberte **Poslat**.
 

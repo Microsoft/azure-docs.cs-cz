@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202872"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Ochrana SPA back-endu pomocí OAuth 2,0, Azure Active Directory B2C a Azure API Management
 
@@ -31,7 +31,7 @@ Zjistíme, jak se dá API Management použít ve zjednodušeném scénáři s Az
 
 Pro důkladnou obranu pak používáme EasyAuth k ověření tokenu v back-endu rozhraní API.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Pokud chcete postupovat podle kroků v tomto článku, musíte mít:
 * Účet úložiště Azure (StorageV2) Pro obecné účely v2 pro hostování jednostránkové aplikace front-end JS
 * Instance Azure API Management 
@@ -148,7 +148,7 @@ Otevřete okno Azure AD B2C na portálu a proveďte následující kroky.
 5. Přepněte zpátky na kartu HttpTrigger1, klikněte na získat adresu URL funkce a potom zkopírujte adresu URL, která se zobrazí.
 
    > [!NOTE]
-   > Vazby, které jste právě vytvořili, jednoduše říkají funkcím, aby odpovídaly anonymním žádostem HTTP GET na adresu URL, kterou jste právě zkopírovali. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) Teď máme škálovatelné rozhraní API HTTPS bez serveru, které dokáže vracet velmi jednoduchou datovou část.
+   > Vazby, které jste právě vytvořili, jednoduše říkají funkcím, aby odpovídaly anonymním žádostem HTTP GET na adresu URL, kterou jste právě zkopírovali. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Teď máme škálovatelné rozhraní API HTTPS bez serveru, které dokáže vracet velmi jednoduchou datovou část.
    > Nyní můžete testovat volání tohoto rozhraní API z webového prohlížeče pomocí výše uvedené adresy URL, můžete také přesměrovat "kód = tajná část adresy URL a prokázat, že Azure Functions vrátí chybu 401.
 
 ## <a name="configure-and-secure-the-function-api"></a>Konfigurace a zabezpečení rozhraní API funkcí
