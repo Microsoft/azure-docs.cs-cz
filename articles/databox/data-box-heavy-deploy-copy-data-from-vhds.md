@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Kopírování z virtuálních pevných disků na spravované disky'
+title: 'Kurz: kopírování z VHD na spravované disky'
 titleSuffix: Azure Data Box Heavy
-description: Zjistěte, jak zkopírovat data z virtuálních disponiál z místních úloh virtuálních zařízení do vaší Azure Data Box Heavy
+description: Přečtěte si, jak kopírovat data z virtuálních pevných disků z místních úloh virtuálních počítačů do Azure Data Box Heavy
 services: databox
 author: alkohli
 ms.service: databox
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 01031159d1894c7cb5f36b48f268186dff21fd22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77471325"
 ---
-# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Kurz: Import dat jako spravovaných disků v Azure pomocí funkce Data Box Heavy
+# <a name="tutorial-use-data-box-heavy-to-import-data-as-managed-disks-in-azure"></a>Kurz: použití Data Box Heavy k importu dat jako spravovaných disků v Azure
 
-Tento kurz popisuje, jak použít Azure Data Box Heavy k migraci místních virtuálních pevných disků na spravované disky v Azure. Virtuální pevné disky z místních virtuálních počítačů se zkopírují do data boxu Heavy jako objekty BLOB stránky a nahrají se do Azure jako spravované disky. Tyto spravované disky pak lze připojit k virtuálním počítačům Azure.
+V tomto kurzu se dozvíte, jak pomocí Azure Data Box Heavy migrovat místní virtuální pevné disky na spravované disky v Azure. Virtuální pevné disky z místních virtuálních počítačů se zkopírují do Data Box Heavy jako objekty blob stránky a nahrají se do Azure jako spravované disky. Tyto spravované disky pak můžete připojit k virtuálním počítačům Azure.
 
 V tomto kurzu se naučíte:
 
@@ -32,60 +32,60 @@ V tomto kurzu se naučíte:
 
 Než začnete, ujistěte se, že:
 
-1. Dokončili jste [kurz: Nastavení Azure Data Box Heavy](data-box-heavy-deploy-set-up.md).
+1. Dokončili jste [kurz: nastavte Azure Data box Heavy](data-box-heavy-deploy-set-up.md).
 2. Obdrželi jste Data Box Heavy a stav objednávky na portálu je **Doručeno**.
-3. Jste připojeni k vysokorychlostní síti. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
-4. Zhodnotili jste:
+3. Jste připojení k síti s vysokou rychlostí. Největší rychlosti kopírování je možné dosáhnout použitím dvou paralelních připojení 40 GbE (jedno na uzel). Pokud nemáte k dispozici připojení 40 GbE, doporučujeme použít alespoň dvě připojení 10 GbE (jedno na uzel). 
+4. Zkontrolovali jste:
 
-    - Podporované [velikosti spravovaných disků v omezení velikosti objektů Azure](data-box-heavy-limits.md#azure-object-size-limits).
-    - [Úvod do spravovaných disků Azure](/azure/virtual-machines/windows/managed-disks-overview). 
+    - Podporované [velikosti spravovaných disků v omezeních velikosti objektů Azure](data-box-heavy-limits.md#azure-object-size-limits).
+    - [Seznámení se službou Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
 
 ## <a name="connect-to-data-box-heavy"></a>Připojení k Data Boxu Heavy
 
-Na základě zadaných skupin prostředků vytvoří data box heavy jednu sdílenou složku pro každou přidruženou skupinu prostředků na uzel. Pokud `mydbmdrg1` například `mydbmdrg2` byly vytvořeny a byly vytvořeny při zadávání objednávky, jsou vytvořeny následující sdílené složky:
+Na základě zadaných skupin prostředků Data Box Heavy vytvoří jednu sdílenou složku pro každou přidruženou skupinu prostředků na jeden uzel. Například pokud `mydbmdrg1` a `mydbmdrg2` byly vytvořeny při umístění objednávky, jsou vytvořeny následující sdílené složky:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-V rámci každé sdílené složky jsou vytvořeny následující tři složky, které odpovídají kontejnery v účtu úložiště.
+V rámci každé sdílené složky jsou vytvořeny následující tři složky, které odpovídají kontejnerům v účtu úložiště.
 
 - SSD úrovně Premium
 - HDD úrovně Standard
 - SSD úrovně Standard
 
-V následující tabulce jsou uvedeny cesty UNC ke sdíleným položkám v datové schránce Heavy.
+V následující tabulce jsou uvedeny cesty UNC ke sdíleným složkám v Data Box Heavy.
  
-|        Protokol připojení           |             Cesta UNC ke sdílené položce                                               |
+|        Protokol připojení           |             Cesta UNC ke sdílené složce                                               |
 |-------------------|--------------------------------------------------------------------------------|
 | SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
 | NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
 
-Na základě toho, zda používáte SMB nebo NFS pro připojení ke sdíleným položkám Data Box Heavy, jsou kroky pro připojení odlišné.
+V závislosti na tom, jestli k připojení Data Box Heavy ke sdíleným složkám používáte SMB nebo NFS, se postup pro připojení liší.
 
 > [!NOTE]
 > - Připojení přes REST není pro tuto funkci podporováno.
-> - Opakujte pokyny pro připojení pro připojení k druhému uzlu Data Box Heavy.
+> - Opakujte pokyny k připojení, abyste se připojili k druhému uzlu Data Box Heavy.
 
-### <a name="connect-to-data-box-heavy-via-smb"></a>Připojení k datové schránce Těžké přes SMB
+### <a name="connect-to-data-box-heavy-via-smb"></a>Připojení k Data Box Heavy přes protokol SMB
 
 Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Data Boxu Heavy pomocí následujícího postupu.
 
-1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **Získat přihlašovací údaje** získáte přístupová pověření pro sdílené složky přidružené ke skupině prostředků. Přístupová pověření můžete taky získat z **podrobností o zařízení** na webu Azure Portal.
+1. Prvním krokem je ověření a zahájení relace. Přejděte do části **Připojit a kopírovat**. Kliknutím na **získat přihlašovací údaje** získáte Přístupová pověření ke sdíleným složkám přidruženým k vaší skupině prostředků. Přihlašovací údaje pro přístup můžete získat taky z **podrobností o zařízení** v Azure Portal.
 
     > [!NOTE]
-    > Pověření pro všechny sdílené složky pro spravované disky jsou identické.
+    > Přihlašovací údaje pro všechny sdílené složky pro spravované disky jsou identické.
 
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. V dialogovém okně Access share and copy data zkopírujte **uživatelské jméno** a **heslo** pro sdílenou složku. Klikněte na tlačítko **OK**.
+2. V dialogovém okně sdílená složka pro přístup a kopírovat data zkopírujte **uživatelské jméno** a **heslo** sdílené složky. Klikněte na tlačítko **OK**.
     
     ![Získání přihlašovacích údajů sdílené složky 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Chcete-li získat přístup ke sdíleným položkám přidruženým k prostředku *(mydbmdrg1* v následujícím příkladu) z hostitelského počítače, otevřete příkazové okno. Na příkazovém řádku zadejte:
+3. Pro přístup ke sdíleným složkám přidruženým k vašemu prostředku (*mydbmdrg1* v následujícím příkladu) z hostitelského počítače otevřete příkazové okno. Na příkazovém řádku zadejte:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Vaše cesty sdílení UNC v tomto příkladu jsou následující:
+    Cesty ke sdílené složce UNC v tomto příkladu jsou následující:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -103,14 +103,14 @@ Pokud používáte hostitelský počítač s Windows Serverem, připojte se k Da
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    Nyní byste měli vidět následující předvytvořené složky v rámci každé sdílené složky.
+    V každé sdílené složce by se teď měly zobrazit následující předem vytvořené složky.
     
     ![Připojení ke sdílené složce přes Průzkumníka souborů 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
-### <a name="connect-to-data-box-heavy-via-nfs"></a>Připojení k datové schránce Heavy přes NFS
+### <a name="connect-to-data-box-heavy-via-nfs"></a>Připojení k Data Box Heavy přes systém souborů NFS
 
-Pokud používáte hostitelský počítač s Linuxem, proveďte následující kroky a nakonfigurujte zařízení tak, aby umožňovalo přístup ke klientům systému automatického připojení k systému zabezpečení sítě.
+Pokud používáte hostitelský počítač se systémem Linux, proveďte následující kroky, abyste mohli nakonfigurovat zařízení tak, aby umožňovalo přístup k klientům NFS.
 
 1. Zadejte IP adresy klientů s povoleným přístupem ke sdílené složce. V místním webovém uživatelském rozhraní přejděte na stránku **Připojit a kopírovat**. V části **Nastavení systému souborů NFS** klikněte na **Přístup klientů systému souborů NFS**.
 
@@ -122,50 +122,50 @@ Pokud používáte hostitelský počítač s Linuxem, proveďte následující k
 
 2. Ujistěte se, že je na hostitelském počítači s Linuxem nainstalovaná [podporovaná verze](data-box-system-requirements.md) klienta systému souborů NFS. Použijte konkrétní verzi pro vaši distribuci Linuxu.
 
-3. Po instalaci klienta systému sdílení systému sdílení systému sdílení systému sdílení systému sdílení systému sdílení na vašem zařízení:
+3. Po instalaci klienta NFS použijte následující příkaz k připojení sdílené složky systému souborů NFS na zařízení:
 
     `sudo mount <Data Box or Data Box Heavy IP>:/<NFS share on Data Box or Data Box Heavy device> <Path to the folder on local Linux computer>`
 
-    Následující příklad ukazuje, jak se připojit přes NFS k datové schránce nebo sdílené schránce Data Box Heavy. Data Box nebo Data Box `169.254.250.200`Heavy device `mydbmdrg1_MDisk` IP je , sdílená složky jsou namontovány na ubuntuVM, mount point je `/home/databoxubuntuhost/databox`.
+    Následující příklad ukazuje, jak se připojit přes systém souborů NFS k Data Box nebo Data Box Heavy sdílet. Data Box nebo Data Box Heavy IP adresa zařízení je `169.254.250.200`, sdílená `mydbmdrg1_MDisk` složka je připojená k ubuntuVM, přípojnému `/home/databoxubuntuhost/databox`bodu.
 
     `sudo mount -t nfs 169.254.250.200:/mydbmdrg1_MDisk /home/databoxubuntuhost/databox`
 
 
 ## <a name="copy-data-to-data-box-heavy"></a>Kopírování dat do Data Boxu Heavy
 
-Po připojení k datovému serveru je dalším krokem kopírování dat. Soubor VHD se zkopíruje do účtu pracovního úložiště jako objekt blob stránky. Objekt blob stránky se pak převede na spravovaný disk a přesune se do skupiny prostředků.
+Až budete připojeni k datovému serveru, je dalším krokem kopírování dat. Soubor VHD se zkopíruje do pracovního účtu úložiště jako objekt blob stránky. Objekt blob stránky se pak převede na spravovaný disk a přesune se do skupiny prostředků.
 
-Než začnete kopírovat data, přečtěte si následující aspekty:
+Než začnete s kopírováním dat, přečtěte si následující skutečnosti:
 
-- Virtuální pevné disky vždy kopírujte do některé z předem vytvořených složek. Pokud zkopírujete virtuální disky mimo tyto složky nebo ve složce, kterou jste vytvořili, virtuální pevné disky se nahrají do účtu Služby Azure Storage jako objekty BLOB stránky a ne spravované disky.
-- K vytvoření spravovaných disků je možné nahrát pouze pevné virtuální pevné disky. VHDX soubory nebo dynamické a differencing VHDnejsou podporovány.
-- Ve všech předem vytvořených složkách můžete mít ve skupině prostředků pouze jeden spravovaný disk s daným názvem. To znamená, že virtuální pevné disky nahrané do předem vytvořených složek musí mít jedinečné názvy. Ujistěte se, že daný název neodpovídá žádnému již existujícímu spravovanému disku ve skupině prostředků.
-- Zkontrolujte limity spravovaných disků v [limitech velikosti objektů Azure](data-box-heavy-limits.md#azure-object-size-limits).
+- Virtuální pevné disky vždy kopírujte do některé z předem vytvořených složek. Pokud zkopírujete virtuální pevné disky mimo tyto složky nebo do složky, kterou jste vytvořili, budou se virtuální pevné disky nahrály do Azure Storage účtu jako objekty blob stránky a ne spravované disky.
+- K vytvoření spravovaných disků je možné nahrát pouze pevné virtuální pevné disky. Soubory VHDX nebo dynamické a rozdílové virtuální pevné disky nejsou podporovány.
+- Ve skupině prostředků ve všech předdefinovaných složkách můžete mít jenom jeden spravovaný disk se zadaným názvem. To znamená, že virtuální pevné disky nahrané do předem vytvořených složek musí mít jedinečné názvy. Ujistěte se, že daný název neodpovídá žádnému již existujícímu spravovanému disku ve skupině prostředků.
+- Zkontrolujte omezení na spravovaných discích v [omezeních velikosti objektů Azure](data-box-heavy-limits.md#azure-object-size-limits).
 
-V závislosti na tom, zda se připojujete přes SMB nebo NFS, můžete použít:
+V závislosti na tom, jestli se připojujete přes protokol SMB nebo NFS, můžete použít:
 
 - [Kopírování dat pomocí protokolu SMB](data-box-heavy-deploy-copy-data.md#copy-data-to-data-box-heavy)
 - [Kopírování dat přes systém souborů NFS](data-box-heavy-deploy-copy-data-via-nfs.md#copy-data-to-data-box-heavy)
 
-Počkejte na dokončení úloh kopírování. Před provedením dalšího kroku se ujistěte, že úlohy kopírování byly dokončeny bez chyb.
+Počkejte, než se úlohy kopírování dokončí. Než přejdete k dalšímu kroku, ujistěte se, že se úlohy kopírování dokončily bez chyb.
 
-![Žádné chyby na stránce **Připojit a kopírovat**](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
+![Žádné chyby na stránce * * připojit a kopírovat * *](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Pokud během kopírování dojde k chybám, stáhněte protokoly ze stránky **Připojit a zkopírovat.**
+Pokud během kopírování dojde k chybám, Stáhněte si protokoly ze stránky **připojit a kopírovat** .
 
-- Pokud jste zkopírovali soubor, který není zarovnaný o 512 bajtů, nebude soubor odeslán jako objekt blob stránky do vašeho účtu pracovního úložiště. Zobrazí se chyba v protokolech. Odeberte soubor a zkopírujte soubor, který je zarovnaný o velikosti 512 bajtů.
+- Pokud jste zkopírovali soubor, který není zarovnaný 512 bajtů, soubor se nahraje jako objekt blob stránky do pracovního účtu úložiště. V protokolech se zobrazí chyba. Odeberte soubor a zkopírujte soubor, který je 512 bajtů zarovnaných.
 
-- Pokud jste zkopírovali VHDX (tyto soubory nejsou podporovány) s dlouhým názvem, zobrazí se chyba v protokolech.
+- Pokud jste zkopírovali soubor VHDX (tyto soubory nejsou podporované) s dlouhým názvem, zobrazí se v protokolech chyba.
 
-    ![Chyba v protokolech ze stránky **Connect and copy**](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Chyba na stránce protokoly z * * připojit a kopírovat * *](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Před dalším krokem vyřešte chyby.
+    Než budete pokračovat k dalšímu kroku, vyřešte tyto chyby.
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
     
 ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data-from-vhds/verify-used-space-dashboard.png)
 
-Po dokončení úlohy kopírování můžete přejít na **připravit k odeslání**.
+Jakmile je úloha kopírování dokončená, můžete přejít na **Příprava k odeslání**.
 
 
 ## <a name="next-steps"></a>Další kroky

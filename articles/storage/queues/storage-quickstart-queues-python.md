@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Knihovna úložiště fronty Azure v12 – Python'
-description: Naučte se používat knihovnu Azure Queue Python v12 k vytvoření fronty a přidání zpráv do fronty. Dále se dozvíte, jak číst a odstraňovat zprávy z fronty. Dozvíte se také, jak odstranit frontu.
+title: 'Rychlý Start: knihovna Azure Queue Storage V12-Python'
+description: Naučte se používat knihovnu Azure Queue V12 Library k vytvoření fronty a přidání zpráv do fronty. V dalším kroku se dozvíte, jak číst a odstraňovat zprávy z fronty. Naučíte se také, jak odstranit frontu.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/10/2019
@@ -8,49 +8,49 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78199763"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Úvodní příručka: Klientská knihovna úložiště fronty Azure v12 pro Python
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python
 
-Začínáme s klientskou knihovnou úložiště Fronty Azure verze 12 pro Python. Azure Queue Storage je služba pro ukládání velkého počtu zpráv pro pozdější načítání a zpracování. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly.
+Začněte s klientskou knihovnou Azure Queue Storage verze 12 pro Python. Azure Queue Storage je služba pro ukládání velkého počtu zpráv pro pozdější načtení a zpracování. Postupujte podle těchto kroků a nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úlohy.
 
-Pomocí klientské knihovny úložiště fronty Azure v12 pro Python:
+Použijte klientskou knihovnu Azure Queue Storage V12 pro Python:
 
 * Vytvoření fronty
 * Přidání zpráv do fronty
-* Náhled na zprávy ve frontě
+* Prohlížet zprávy ve frontě
 * Aktualizace zprávy ve frontě
-* Příjem zpráv z fronty
+* Přijímání zpráv z fronty
 * Odstranění zpráv z fronty
 * Odstranění fronty
 
-[Referenční dokumentace](https://docs.microsoft.com/python/api/azure-storage-queue/index) | rozhraní[API Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue) | [knihovny](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples) [(Python Package Index)](https://pypi.org/project/azure-storage-queue/) | 
+[API reference documentation](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(index balíčku Python)](https://pypi.org/project/azure-storage-queue/) | 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [vytvořte si ho zdarma](https://azure.microsoft.com/free/)
-* Účet úložiště Azure – [vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* [Python](https://www.python.org/downloads/) pro váš operační systém - 2.7, 3.5 nebo vyšší
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Účet úložiště Azure – [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* [Python](https://www.python.org/downloads/) pro váš operační systém – 2,7, 3,5 nebo novější
 
 ## <a name="setting-up"></a>Nastavení
 
-Tato část vás provede přípravou projektu pro práci s klientskou knihovnou úložiště fronty Azure v12 pro Python.
+Tato část vás provede přípravou projektu pro práci s klientskou knihovnou Azure Queue Storage V12 for Python.
 
 ### <a name="create-the-project"></a>Vytvoření projektu
 
-Vytvořte aplikaci Pythonu s názvem *queues-quickstart-v12*.
+Vytvoření aplikace v Pythonu s názvem *Queues-Start-V12*.
 
-1. V okně konzoly (například cmd, PowerShell nebo Bash) vytvořte nový adresář pro projekt.
+1. V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresář pro projekt.
 
     ```console
     mkdir queues-quickstart-v12
     ```
 
-1. Přepněte do nově vytvořeného *adresáře front-quickstart-v12.*
+1. Přepněte na nově vytvořený adresář *s rychlým startem front-V12* .
 
     ```console
     cd queues-quickstart-v12
@@ -58,19 +58,19 @@ Vytvořte aplikaci Pythonu s názvem *queues-quickstart-v12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Nainstalujte klientskou knihovnu úložiště azure blob pro balíček Pythonpomocí příkazu. `pip install`
+Pomocí `pip install` příkazu nainstalujte klientskou knihovnu pro Azure Blob Storage pro balíček python.
 
 ```console
 pip install azure-storage-queue
 ```
 
-Tento příkaz nainstaluje klientskou knihovnu úložiště fronty Azure pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jen základní knihovna Azure pro Python.
+Tento příkaz nainstaluje klientskou knihovnu Azure Queue Storage pro balíček Pythonu a všechny knihovny, na kterých závisí. V tomto případě je to jenom knihovna Azure Core pro Python.
 
-### <a name="set-up-the-app-framework"></a>Nastavení architektury aplikace
+### <a name="set-up-the-app-framework"></a>Nastavení aplikační architektury
 
-1. Otevření nového textového souboru v editoru kódu
+1. Otevřít nový textový soubor v editoru kódu
 1. Přidat `import` příkazy
-1. Vytvoření struktury programu, včetně velmi základní zpracování výjimek
+1. Vytvoření struktury pro program, včetně velmi základního zpracování výjimek
 
     Zde je kód:
 
@@ -87,13 +87,13 @@ Tento příkaz nainstaluje klientskou knihovnu úložiště fronty Azure pro bal
 
     ```
 
-1. Uložte nový soubor jako *queues-quickstart-v12.py* do *adresáře front-quickstart-v12.*
+1. Uložte nový soubor jako *Queues-Quickstart-V12.py* v adresáři *Queues-Starter-V12* .
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektový model
 
-Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Zpráva fronty může mít velikost až 64 kB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště. Fronty se běžně používají k vytvoření nevyřízených položek práce pro zpracování asynchronně. Úložiště front nabízí tři typy prostředků:
+Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Zpráva fronty může mít velikost až 64 KB. Fronta může obsahovat miliony zpráv až do celkového limitu kapacity účtu úložiště. Fronty se běžně používají k vytváření nevyřízených položek pro asynchronní zpracování. Queue Storage nabízí tři typy prostředků:
 
 * Účet úložiště
 * Fronta v účtu úložiště
@@ -101,32 +101,32 @@ Azure Queue Storage je služba pro ukládání velkých objemů zpráv. Zpráva 
 
 Na následujícím diagramu jsou vztahy těchto prostředků.
 
-![Diagram architektury úložiště fronty](./media/storage-queues-introduction/queue1.png)
+![Diagram architektury služby Queue Storage](./media/storage-queues-introduction/queue1.png)
 
-K interakci s těmito prostředky použijte následující třídy Pythonu:
+Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
-* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` Umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vrácené při volání [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
+* [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
+* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` třída představuje jednotlivé objekty vracené při volání [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
-Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou úložiště Fronty Azure pro Python:
+Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s klientskou knihovnou Azure Queue Storage pro Python:
 
 * [Získání připojovacího řetězce](#get-the-connection-string)
 * [Vytvoření fronty](#create-a-queue)
 * [Přidání zpráv do fronty](#add-messages-to-a-queue)
-* [Náhled na zprávy ve frontě](#peek-at-messages-in-a-queue)
+* [Prohlížet zprávy ve frontě](#peek-at-messages-in-a-queue)
 * [Aktualizace zprávy ve frontě](#update-a-message-in-a-queue)
-* [Příjem zpráv z fronty](#receive-messages-from-a-queue)
+* [Přijímání zpráv z fronty](#receive-messages-from-a-queue)
 * [Odstranění zpráv z fronty](#delete-messages-from-a-queue)
 * [Odstranění fronty](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Získání připojovacího řetězce
 
-Níže uvedený kód načte připojovací řetězec pro účet úložiště. Připojovací řetězec je uložen proměnnou prostředí vytvořenou v části [Konfigurovat připojovací řetězec úložiště.](#configure-your-storage-connection-string)
+Následující kód načte připojovací řetězec pro účet úložiště. Připojovací řetězec ukládá proměnnou prostředí vytvořenou v části [Konfigurace připojovacího řetězce úložiště](#configure-your-storage-connection-string) .
 
-Přidejte tento `try` kód do bloku:
+Přidejte tento kód do `try` bloku:
 
 ```python
     # Retrieve the connection string for use with the application. The storage
@@ -140,14 +140,14 @@ Přidejte tento `try` kód do bloku:
 
 ### <a name="create-a-queue"></a>Vytvoření fronty
 
-Rozhodněte o názvu nové fronty. Níže uvedený kód připojí hodnotu UUID k názvu fronty, aby bylo zajištěno, že je jedinečný.
+Určete název nové fronty. Následující kód připojí hodnotu UUID k názvu fronty, aby bylo zajištěno, že je jedinečný.
 
 > [!IMPORTANT]
-> Názvy front mohou obsahovat pouze malá písmena, čísla a pomlčky a musí začínat písmenem nebo číslem. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí být také mezi 3 a 63 znaků dlouhé. Další informace o pojmenování front naleznete [v tématu Pojmenování front a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> Názvy front můžou obsahovat jenom malá písmena, číslice a spojovníky a musí začínat písmenem nebo číslicí. Před i za každým spojovníkem musí být jiný znak než spojovník. Název musí mít také délku 3 až 63 znaků. Další informace o pojmenovávání front najdete v tématu [pojmenování front a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
 
-Vytvořte instanci třídy [QueueClient.](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) Potom zavolejte [metodu create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) k vytvoření fronty v účtu úložiště.
+Vytvořte instanci třídy [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient) . Pak zavolejte metodu [create_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#create-queue---kwargs-) a vytvořte ve svém účtu úložiště frontu.
 
-Přidejte tento kód na `try` konec bloku:
+Přidejte tento kód na konec `try` bloku:
 
 ```python
     # Create a unique name for the queue
@@ -165,9 +165,9 @@ Přidejte tento kód na `try` konec bloku:
 
 ### <a name="add-messages-to-a-queue"></a>Přidání zpráv do fronty
 
-Následující fragment kódu přidá zprávy do fronty voláním [metody send_message.](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) Také uloží [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) vrácena z `send_message` třetího volání. Slouží `saved_message` k aktualizaci obsahu zprávy později v programu.
+Následující fragment kódu přidá zprávy do fronty voláním metody [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) . Také uloží [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) vrácenou z třetího `send_message` volání. `saved_message` Používá se k aktualizaci obsahu zprávy později v programu.
 
-Přidejte tento kód na `try` konec bloku:
+Přidejte tento kód na konec `try` bloku:
 
 ```python
     print("\nAdding messages to the queue...")
@@ -178,11 +178,11 @@ Přidejte tento kód na `try` konec bloku:
     saved_message = queue_client.send_message(u"Third message")
 ```
 
-### <a name="peek-at-messages-in-a-queue"></a>Náhled na zprávy ve frontě
+### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Prohlédněte si zprávy ve frontě voláním [metody peek_messages.](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) Metoda `peek_messages` načte jednu nebo více zpráv z přední části fronty, ale nezmění viditelnost zprávy.
+Podívejte se na zprávy ve frontě tak, že zavoláte metodu [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) . `peek_messages` Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
-Přidejte tento kód na `try` konec bloku:
+Přidejte tento kód na konec `try` bloku:
 
 ```python
     print("\nPeek at the messages in the queue...")
@@ -197,7 +197,7 @@ Přidejte tento kód na `try` konec bloku:
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [update_message.](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) Metoda `update_message` může změnit časový limit viditelnosti zprávy a obsah. Obsah zprávy musí být kódovaný řetězec UTF-8, který má velikost až 64 kB. Spolu s novým obsahem předavěte hodnoty ze zprávy, která byla uložena dříve v kódu. Hodnoty `saved_message` identifikují, kterou zprávu chcete aktualizovat.
+Aktualizujte obsah zprávy voláním metody [update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) . `update_message` Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem předejte hodnoty z zprávy, která byla uložena dříve v kódu. `saved_message` Hodnoty identifikují, která zpráva se má aktualizovat.
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -207,11 +207,11 @@ Aktualizujte obsah zprávy voláním metody [update_message.](https://docs.micro
         content="Third message has been updated")
 ```
 
-### <a name="receive-messages-from-a-queue"></a>Příjem zpráv z fronty
+### <a name="receive-messages-from-a-queue"></a>Přijímání zpráv z fronty
 
-Stáhnout dříve přidané zprávy voláním [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) metody.
+Stažení dříve přidaných zpráv voláním metody [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) .
 
-Přidejte tento kód na `try` konec bloku:
+Přidejte tento kód na konec `try` bloku:
 
 ```python
     print("\nReceiving messages from the queue...")
@@ -222,11 +222,11 @@ Přidejte tento kód na `try` konec bloku:
 
 ### <a name="delete-messages-from-a-queue"></a>Odstranění zpráv z fronty
 
-Po přijetí a zpracování odstraní zprávy z fronty. V tomto případě zpracování je pouze zobrazení zprávy na konzoli.
+Po přijetí a zpracování odstraní zprávy z fronty. V tomto případě se zpracovává jenom zpráva v konzole nástroje.
 
-Aplikace pozastaví vstup uživatele `input` voláním před tím, než zpracuje a odstraní zprávy. Před odstraněním na [webu Azure Portal](https://portal.azure.com) ověřte, že prostředky byly vytvořeny správně. Všechny zprávy, které nejsou explicitně odstraněny, se nakonec znovu zobrazí ve frontě, aby byla možné je zpracovat.
+Aplikace pozastaví vstup uživatele voláním `input` před jeho zpracováním a odstraněním zpráv. Před odstraněním ověřte ve svém [Azure Portal](https://portal.azure.com) , že se prostředky vytvořily správně. Všechny zprávy, které se explicitně neodstraní, se později stanou viditelnými ve frontě, aby se mohly zpracovat další šance na jejich zpracování.
 
-Přidejte tento kód na `try` konec bloku:
+Přidejte tento kód na konec `try` bloku:
 
 ```python
     print("\nPress Enter key to 'process' messages and delete them from the queue...")
@@ -243,9 +243,9 @@ Přidejte tento kód na `try` konec bloku:
 
 ### <a name="delete-a-queue"></a>Odstranění fronty
 
-Následující kód vyčistí prostředky, které aplikace vytvořila odstraněním fronty pomocí [metody delete_queue.](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-)
+Následující kód vyčistí prostředky, které aplikace vytvořila, odstraněním fronty pomocí metody [delete_queue](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#delete-queue---kwargs-) .
 
-Přidejte tento kód na `try` konec bloku a uložte soubor:
+Přidejte tento kód na konec `try` bloku a uložte soubor:
 
 ```python
     print("\nPress Enter key to delete the queue...")
@@ -260,9 +260,9 @@ Přidejte tento kód na `try` konec bloku a uložte soubor:
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Tato aplikace vytvoří a přidá tři zprávy do fronty Azure. Kód uvádí zprávy ve frontě, pak načte a odstraní je, před konečnou odstranění fronty.
+Tato aplikace vytvoří a přidá tři zprávy do fronty Azure. Kód vypíše zprávy ve frontě a pak je načte a odstraní před tím, než se nakonec odstraní fronta.
 
-V okně konzoly přejděte do adresáře obsahujícího soubor `python` *queues-quickstart-v12.py* a spusťte následující příkaz ke spuštění aplikace.
+V okně konzoly přejděte do adresáře obsahujícího soubor *Queues-Quickstart-V12.py* a spuštěním následujícího `python` příkazu spusťte aplikaci.
 
 ```console
 python queues-quickstart-v12.py
@@ -297,18 +297,18 @@ Deleting queue...
 Done
 ```
 
-Když se aplikace před příjemem zpráv pozastaví, zkontrolujte svůj účet úložiště na [webu Azure Portal](https://portal.azure.com). Ověřte, zda jsou zprávy ve frontě.
+Když se aplikace před přijetím zpráv pozastaví, ověřte si účet úložiště v [Azure Portal](https://portal.azure.com). Ověřte, zda jsou zprávy ve frontě.
 
-Stisknutím klávesy **Enter** přijměte a odstraňte zprávy. Po zobrazení výzvy znovu stisknete klávesu **Enter,** abyste odstranili frontu a dokončili ukázku.
+Stiskněte klávesu **ENTER** pro příjem a odstranění zpráv. Po zobrazení výzvy znovu stiskněte klávesu **ENTER** , aby se fronta odstranila, a dokončete ukázku.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak vytvořit frontu a přidat do ní zprávy pomocí kódu Pythonu. Pak jste se naučili prohlížet, načítat a odstraňovat zprávy. Nakonec jste se naučili, jak odstranit frontu zpráv.
+V tomto rychlém startu jste zjistili, jak vytvořit frontu a přidat do ní zprávy pomocí kódu Pythonu. Pak jste se naučili prohlížet, načítat a odstraňovat zprávy. Nakonec jste zjistili, jak odstranit frontu zpráv.
 
-Výukové programy, ukázky, rychlé starty a další dokumentaci naleznete na adrese:
+Kurzy, ukázky, rychlé starty a další dokumentace najdete na webu:
 
 > [!div class="nextstepaction"]
-> [Azure pro vývojáře Pythonu](https://docs.microsoft.com/azure/python/)
+> [Azure pro vývojáře v Pythonu](https://docs.microsoft.com/azure/python/)
 
-* Další informace najdete v [knihovnách Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
-* Chcete-li zobrazit další ukázkové aplikace úložiště fronty Azure, pokračujte na [ukázky knihovny klienta Azure Queue v12 Pythonu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples).
+* Další informace najdete v tématu [knihovny Azure Storage pro Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage).
+* Pokud chcete zobrazit více ukázkových aplikací Azure Queue Storage, pokračujte na [ukázky V12 knihovny klienta Python pro Azure Queue Storage](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue/samples).

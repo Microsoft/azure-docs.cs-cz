@@ -1,6 +1,6 @@
 ---
-title: Přehled zásad Azure Firewall Manager U verze Preview
-description: Informace o zásadách Správce azure firewall
+title: Přehled zásad Preview Azure Firewall Manageru
+description: Další informace o zásadách Azure Firewall Manageru
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,59 +8,59 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: 1308f4ba3335f2fd2633f6e39a679cd6477a4b5c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77445018"
 ---
-# <a name="azure-firewall-manager-preview-policy-overview"></a>Přehled zásad Azure Firewall Manager U verze Preview
+# <a name="azure-firewall-manager-preview-policy-overview"></a>Přehled zásad Preview Azure Firewall Manageru
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, sítě a aplikace a také nastavení Threat Intelligence. Jedná se o globální prostředek, který lze použít ve více instancích Azure Firewall v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovače. Zásady fungují napříč oblastmi a předplatnými.
+Zásada brány firewall je prostředek Azure, který obsahuje kolekce pravidel NAT, síť a aplikace a také nastavení analýzy hrozeb. Jedná se o globální prostředek, který se dá použít napříč několika Azure Firewall instancemi v zabezpečených virtuálních rozbočovačích a virtuálních sítích rozbočovačů. Zásady fungují napříč oblastmi a předplatnými.
 
-![Zásady Správce azure firewall](media/policy-overview/policy-overview.png)
+![Zásady Azure Firewall Manageru](media/policy-overview/policy-overview.png)
 
-## <a name="policy-creation-and-association"></a>Vytváření a přidružení zásad
+## <a name="policy-creation-and-association"></a>Vytvoření a přidružení zásad
 
-Zásady lze vytvořit a spravovat několika způsoby, včetně portálu Azure, rozhraní REST API, šablon, Azure PowerShellu a rozhraní příkazového příkazového příkazu.
+Zásady se dají vytvářet a spravovat několika způsoby, včetně Azure Portal, REST API, šablon, Azure PowerShell a CLI.
 
-Můžete také migrovat existující pravidla z Azure Firewall pomocí portálu nebo Azure PowerShell u vytvořit zásady. Další informace najdete v tématu [Jak migrovat konfigurace Azure Firewall do zásad Azure Firewall (preview).](migrate-to-policy.md) 
+Stávající pravidla můžete také migrovat z Azure Firewall pomocí portálu nebo Azure PowerShell vytvořit zásady. Další informace najdete v tématu [migrace Azure firewall konfigurací na zásady Azure firewall (Preview)](migrate-to-policy.md). 
 
-Zásady lze přidružit k jednomu nebo více virtuálních rozbočovačů nebo virtuálních sítí. Brána firewall může být v libovolném předplatném přidruženém k vašemu účtu a v libovolné oblasti.
+Zásady je možné přidružit k jednomu nebo několika virtuálním rozbočovačům nebo virtuální sítě. Brána firewall může být v jakémkoli předplatném, které je přidružené k vašemu účtu a v jakékoli oblasti.
 
 ## <a name="hierarchical-policies"></a>Hierarchické zásady
 
-Nové zásady lze vytvořit od začátku nebo zděděné z existujících zásad. Dědičnost umožňuje devOps vytvořit místní firewall zásady nad organizací nařízené základní zásady.
+Nové zásady je možné vytvářet od začátku nebo zděděné z existujících zásad. Dědičnost umožňuje DevOps vytvářet místní zásady brány firewall nad základními zásadami pověřenými organizací.
 
-Zásady vytvořené pomocí neprázdných nadřazených zásad dědí všechny kolekce pravidel z nadřazené zásady. Kolekce síťových pravidel zděděné z nadřazené zásady jsou vždy upřednostněny nad kolekcemi síťových pravidel definovanými jako součást nové zásady. Stejná logika platí také pro kolekce pravidel aplikace. Kolekce síťových pravidel jsou však vždy zpracovány před kolekcemi pravidel aplikace bez ohledu na dědičnost.
+Zásady vytvořené pomocí neprázdných nadřazených zásad dědí všechny kolekce pravidel z nadřazené zásady. Kolekce pravidel sítě zděděné z nadřazené zásady mají vždycky přednost před kolekcemi síťových pravidel, které jsou definované jako součást nové zásady. Stejná logika platí také pro kolekce pravidel aplikace. Kolekce pravidel sítě se ale vždycky zpracovávají před kolekcemi pravidel aplikace bez ohledu na dědičnost.
 
-Režim Threat Intelligence je také zděděn z nadřazené zásady. Režim inteligence hrozeb můžete nastavit na jinou hodnotu, abyste toto chování přepsali, ale nemůžete ho vypnout. Je možné přepsat pouze s přísnější hodnotou. Pokud je například nadřazená zásada nastavena pouze na **možnost Výstrahy**, můžete tuto místní zásadu nakonfigurovat tak, aby **byla výstraha a odepření**.
+Režim analýzy hrozeb se taky dědí z nadřazených zásad. Můžete nastavit režim analýzy hrozeb na jinou hodnotu, abyste toto chování přepsali, ale nemůžete ho vypnout. Je možné ji přepsat pouze přísnější hodnotou. Pokud je vaše nadřazená zásada například nastavená na **výstrahu**, můžete tuto místní zásadu nakonfigurovat na **Alert a odepřít**.
 
-Kolekce pravidel NAT nejsou zděděny, protože jsou specifické pro danou bránu firewall.
+Kolekce pravidel NAT nejsou děděny, protože jsou specifické pro danou bránu firewall.
 
-S dědičností jsou všechny změny nadřazené zásady automaticky použity pro přidružené podřízené zásady brány firewall.
+Díky dědičnosti jsou všechny změny nadřazené zásady automaticky aplikovány na související zásady přidružené brány firewall.
 
-## <a name="traditional-rules-and-policies"></a>Tradiční pravidla a politiky
+## <a name="traditional-rules-and-policies"></a>Tradiční pravidla a zásady
 
-Azure Firewall podporuje tradiční pravidla i zásady. Následující tabulka porovnává zásady a pravidla:
+Azure Firewall podporuje tradiční pravidla a zásady. V následující tabulce jsou porovnávány zásady a pravidla:
 
 
 |         |Zásada  |Pravidla  |
 |---------|---------|---------|
-|Contains     |Nastavení NAT, sítě, pravidel aplikací a analýzy hrozeb|Pravidla NAT, sítě a aplikací |
-|Chrání     |Virtuální rozbočovače a virtuální sítě|Pouze virtuální sítě|
+|Contains     |Nastavení překladu adres (NAT), sítě, aplikací a analýzy hrozeb|Pravidla překladu adres (NAT), sítě a aplikace |
+|Proti     |Virtuální rozbočovače a virtuální sítě|Pouze virtuální sítě|
 |Prostředí portálu     |Centrální správa pomocí Správce brány firewall|Samostatné prostředí brány firewall|
-|Podpora více bran firewall     |Zásady brány firewall jsou samostatným zdrojem prostředků, který lze použít v rámci brány firewall.|Ručně exportovat a importovat pravidla nebo pomocí řešení pro správu třetích stran |
-|Ceny     |Fakturováno na základě přidružení brány firewall. Viz [Ceny](#pricing).|Free|
-|Podporované mechanismy nasazení     |Portál, rozhraní REST API, šablony, Azure PowerShell a ROZHRANÍ PŘÍKAZOVÉHO PŘÍKAZU|Portál, rozhraní REST API, šablony, PowerShell a CLI. |
-|Stav vydání     |Veřejná verze Preview|Obecná dostupnost|
+|Podpora více bran firewall     |Zásady brány firewall jsou samostatný prostředek, který se dá použít napříč branami firewall.|Ruční export a Import pravidel nebo použití řešení pro správu třetích stran |
+|Ceny     |Účtuje se podle přidružení brány firewall. Podívejte se na [ceny](#pricing).|Free|
+|Podporované mechanismy nasazení     |Portál, REST API, šablony, Azure PowerShell a CLI|Portál, REST API, šablony, PowerShell a rozhraní příkazového řádku. |
+|Stav verze     |Public Preview|Obecná dostupnost|
 
 ## <a name="pricing"></a>Ceny
 
-Zásady se účtují na základě přidružení brány firewall. Zásady s nulovým nebo jedním přidružením brány firewall jsou zdarma. Zásada s více přidruženími brány firewall se účtuje pevnou sazbou. Další informace najdete v tématu [Azure Firewall Manager Pricing](https://azure.microsoft.com/pricing/details/firewall-manager/).
+Zásady se účtují na základě přidružení brány firewall. Zásada s žádným nebo jedním přidružením brány firewall je bezplatná. Zásada s více přidruženími brány firewall se účtuje pevnou sazbou. Další informace najdete v tématu [ceny Azure firewall Manageru](https://azure.microsoft.com/pricing/details/firewall-manager/).
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o nasazení brány Azure Firewall najdete [v tématu Kurz: Zabezpečení cloudové sítě pomocí Azure Firewall Manager Preview pomocí portálu Azure Portal](secure-cloud-network.md).
+Informace o tom, jak nasadit Azure Firewall, najdete v tématu [kurz: zabezpečení cloudové sítě pomocí nástroje Azure firewall Manager verze Preview pomocí Azure Portal](secure-cloud-network.md).

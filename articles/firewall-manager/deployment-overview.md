@@ -1,6 +1,6 @@
 ---
-title: Přehled nasazení Nástroje pro nasazení správce azure firewallu
-description: Seznamte se s kroky nasazení na vysoké úrovni, které jsou vyžadovány pro Azure Firewall Manager Preview
+title: Přehled nasazení Preview Azure Firewall Manageru
+description: Seznamte se s kroky nasazení na nejvyšší úrovni, které jsou nezbytné pro Azure Firewall Manager Preview
 author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
@@ -8,66 +8,66 @@ ms.topic: overview
 ms.date: 02/18/2020
 ms.author: victorh
 ms.openlocfilehash: c3a94cea838609f65511a21ee2f64e8782a6adea
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77443121"
 ---
-# <a name="azure-firewall-manager-preview-deployment-overview"></a>Přehled nasazení Nástroje pro nasazení správce azure firewallu
+# <a name="azure-firewall-manager-preview-deployment-overview"></a>Přehled nasazení Preview Azure Firewall Manageru
 
 [!INCLUDE [Preview](../../includes/firewall-manager-preview-notice.md)]
 
-Existuje více než jeden způsob nasazení Azure Firewall Manager Preview, ale následující obecný proces se doporučuje.
+Je k dispozici více než jeden způsob nasazení Azure Firewall Manager Preview, ale doporučuje se tento obecný postup.
 
 ## <a name="general-deployment-process"></a>Obecný proces nasazení
 
 ### <a name="hub-virtual-networks"></a>Centrální virtuální sítě
 
-1.  Vytvoření zásad brány firewall
+1.  Vytvoření zásady brány firewall
 
     - Vytvoření nové zásady
-<br>*Nebo*<br>
+<br>*ani*<br>
     - Odvození základní zásady a přizpůsobení místních zásad
-<br>*Nebo*<br>
-    - Importpravidel z existující brány Azure Firewall. Nezapomeňte odebrat pravidla NAT ze zásad, které by měly být použity ve více branách firewall.
-1. Vytvořte si architekturu rozbočovače a paprsku
-   - Vytvoření virtuální sítě hubu pomocí Správce azure firewallu a virtuálních sítí s partnerským paprskem pomocí partnerského vztahu virtuální sítě
-<br>*Nebo*<br>
-    - Vytvoření virtuální sítě a přidání připojení k virtuální síti a virtuálních sítí s partnerským paprskem pomocí partnerského vztahu virtuální sítě
+<br>*ani*<br>
+    - Importuje pravidla z existující Azure Firewall. Nezapomeňte odebrat pravidla překladu adres (NAT) ze zásad, které by se měly použít napříč několika branami firewall.
+1. Vytvoření architektury hub a paprsků
+   - Vytvoření centra Virtual Network s použitím partnerského vztahu virtuálních sítí pomocí správce Azure Firewall a virtuálních sítí s partnerským paprskem
+<br>*ani*<br>
+    - Vytvoření virtuální sítě a přidání připojení virtuální sítě a virtuálních sítí s partnerským paprskem do ní pomocí partnerského vztahu virtuálních sítí
 
-3. Vyberte zprostředkovatele zabezpečení a přidružte zásady brány firewall. V současné době je podporovaným poskytovatelem pouze azure firewall.
+3. Vyberte zprostředkovatelé zabezpečení a přidružte zásady brány firewall. V současné době je jako podporovaný zprostředkovatel jenom Azure Firewall.
 
-   - To se provádí při vytváření virtuální sítě Hub
-<br>*Nebo*<br>
-    - Převeďte existující virtuální síť na virtuální síť rozbočovače. Je také možné převést více virtuálních sítí.
+   - To se provádí při vytváření Virtual Network centra.
+<br>*ani*<br>
+    - Převeďte stávající virtuální síť na Virtual Network centra. Je také možné převést více virtuálních sítí.
 
-4. Nakonfigurujte uživatele definovat trasy pro směrování provozu do brány firewall virtuální sítě hubu.
+4. Nakonfigurujte uživatelsky definované trasy pro směrování provozu do vašeho centra Virtual Network firewall.
 
 
-### <a name="secured-virtual-hubs"></a>Zabezpečené virtuální rozbočovače
+### <a name="secured-virtual-hubs"></a>Zabezpečená virtuální centra
 
-1. Vytvořte si architekturu rozbočovače a paprsku
+1. Vytvoření architektury hub a paprsků
 
-   - Vytvořte zabezpečené virtuální rozbočovač pomocí Správce brány Azure firewall a přidejte připojení virtuálních sítí.<br>*Nebo*<br>
-   - Vytvořte centrum Virtuální síť WAN a přidejte připojení k virtuální síti.
-2. Výběr poskytovatelů zabezpečení
+   - Vytvořte zabezpečeného virtuálního rozbočovače pomocí správce Azure Firewall a přidejte připojení k virtuální síti.<br>*ani*<br>
+   - Vytvořte virtuální síť WAN hub a přidejte připojení k virtuální síti.
+2. Vybrat poskytovatele zabezpečení
 
-   - Hotovo při vytváření zabezpečeného virtuálního rozbočovače.<br>*Nebo*<br>
-   - Převeďte existující virtuální rozbočovač WAN na zabezpečené virtuální centrum.
-3. Vytvoření zásad brány firewall a přidružení k rozbočovači
+   - Při vytváření zabezpečeného virtuálního rozbočovače se dokončila.<br>*ani*<br>
+   - Převeďte stávající virtuální centrum sítě WAN na zabezpečené virtuální centrum.
+3. Vytvoření zásady brány firewall a její přidružení ke svému centru
 
-   - Platí pouze v případě, že používáte Azure Firewall.
+   - Platí pouze při použití Azure Firewall.
    - Zásady zabezpečení jako služby (SECaaS) třetích stran jsou konfigurovány prostřednictvím prostředí pro správu partnerů.
-4. Konfigurace nastavení trasy pro směrování provozu do zabezpečeného rozbočovače
+4. Konfigurace nastavení směrování pro směrování provozu do zabezpečeného centra
 
-   - Pomocí stránky Nastavení trasy zabezpečeného virtuálního rozbočovače můžete snadno směrovat provoz do zabezpečeného rozbočovače pro filtrování a protokolování bez uživatelem definovaných tras (UDR) v virtuálních sítích s paprsky.
+   - Snadná směrování provozu do zabezpečeného centra pro filtrování a protokolování bez uživatelsky definovaných tras (UDR) ve virtuálních sítích rozbočovače pomocí stránky nastavení trasy zabezpečeného virtuálního počítače.
 
 > [!NOTE]
-> - Nemůžete mít více než jeden rozbočovač na virtuální wan na oblast. Ale můžete přidat více virtuálních WAN v oblasti k dosažení tohoto cíle.
-> - V programu vWAN nelze mít překrývající se ip prostory pro rozbočovače.
-> - Připojení virtuální sítě rozbočovače musí být ve stejné oblasti jako rozbočovač.
+> - Pro každou virtuální síť WAN na jednu oblast nemůžete mít více než jedno rozbočovač. Můžete ale do této oblasti přidat víc virtuálních sítí WAN, abyste to dosáhli.
+> - Pro rozbočovače v vWAN se nedají překrývat adresní prostory IP adres.
+> - Připojení k virtuální síti rozbočovače musí být ve stejné oblasti jako centrum.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Zabezpečení cloudové sítě pomocí Azure Firewall Manager Preview pomocí portálu Azure](secure-cloud-network.md)
+- [Kurz: zabezpečení cloudové sítě pomocí nástroje Azure Firewall Manager ve verzi Preview pomocí Azure Portal](secure-cloud-network.md)

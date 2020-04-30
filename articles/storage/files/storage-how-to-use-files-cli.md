@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77598557"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Azure CLI
 Tato příručka vás provede základy práce se [sdílenými složkami Azure](storage-files-introduction.md) pomocí Azure CLI. Sdílené složky Azure jsou stejné jako ostatní sdílené složky, ale jsou uložené v cloudu a využívají platformu Azure. Sdílené složky Azure podporují standardní průmyslový protokol SMB a umožňují sdílení souborů mezi různými počítači, aplikacemi a instancemi. 
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -28,7 +28,7 @@ Ve výchozím nastavení vrací příkazy Azure CLI formát JavaScript Object No
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. Pokud ještě skupinu prostředků Azure nemáte, můžete si ji vytvořit pomocí příkazu [az group create](/cli/azure/group). 
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *Západní USA 2:*
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *západní USA 2* :
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"
@@ -43,7 +43,7 @@ az group create \
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
-Následující příklad vytvoří účet úložiště pomocí příkazu [az storage create.](/cli/azure/storage/account) Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `$RANDOM` připojte číslo, aby byl jedinečný.
+Následující příklad vytvoří účet úložiště pomocí příkazu [AZ Storage Account Create](/cli/azure/storage/account) . Názvy účtů úložiště musí být jedinečné, proto k názvu pomocí rutiny `$RANDOM` připojte číslo, aby byl jedinečný.
 
 ```azurecli-interactive 
 export storageAccountName="mystorageacct$RANDOM"
@@ -59,7 +59,7 @@ az storage account create \
 ```
 
 > [!Note]  
-> Sdílené položky větší než 5 TiB (maximálně 100 TiB na akcii) jsou k dispozici pouze v místně redundantních (LRS) a zónových redundantních účtech (ZRS). Chcete-li vytvořit účet úložiště geograficky redundantní (GRS) nebo geograficky `--enable-large-file-share` redundantní (GZRS), odeberte parametr.
+> Sdílené složky větší než 5 TiB (až do maximálního počtu 100 TiB na sdílenou složku) jsou k dispozici pouze v místně redundantním úložišti (LRS) a zóně redundantního úložiště (ZRS). Pokud chcete vytvořit geograficky redundantní (GRS) nebo účet úložiště GZRS (GEO-Zone-redundantní), odeberte `--enable-large-file-share` parametr.
 
 ### <a name="get-the-storage-account-key"></a>Získání klíče účtu úložiště
 Klíče účtu úložiště řídí přístup k prostředkům v účtu úložiště. Vytváří se automaticky při vytvoření účtu úložiště. Klíče vašeho účtu úložiště můžete získat pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys): 
@@ -85,26 +85,26 @@ az storage share create \
     --output none
 ```
 
-Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Úplné podrobnosti o pojmenování sdílených složek a souborů naleznete v [tématu Pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 ## <a name="use-your-azure-file-share"></a>Použití sdílené složky Azure
 Služba Soubory Azure nabízí dva způsoby práce se soubory a složkami ve sdílené složce Azure: standardní průmyslový [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) a [souborový protokol REST](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api). 
 
 Informace o připojení sdílené složky s využitím protokolu SMB najdete v následujících dokumentech v závislosti na vašem operačním systému:
 - [Linux](storage-how-to-use-files-linux.md)
-- [Macos](storage-how-to-use-files-mac.md)
+- [macOS](storage-how-to-use-files-mac.md)
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Použití sdílené složky Azure se souborovým protokolem REST 
-Je možné pracovat přímo s protokolem File REST přímo (ruční volání REST HTTP sami), ale nejběžnější způsob, jak používat protokol File REST, je použití rozhraní příkazového příkazu Azure, [modulu Azure PowerShell](storage-how-to-use-files-powershell.md)nebo sady Azure Storage SDK, které poskytují pěkný obal kolem protokolu FILE REST v skriptovacím/programovacím jazyce podle vašeho výběru.  
+Je možné pracovat přímo s protokolem REST protokolu přímo (handcrafting REST HTTP), ale nejběžnějším způsobem, jak použít protokol REST, je použít rozhraní příkazového řádku Azure CLI, [modul Azure PowerShell](storage-how-to-use-files-powershell.md)nebo sadu Azure Storage SDK, které nabízí dobrý přehled o protokolu REST ve skriptovacím nebo programovacím jazyce podle vašeho výběru.  
 
 Předpokládáme, že ve většině případů použití služby Soubory Azure budete chtít se sdílenými složkami Azure pracovat přes protokol SMB, protože vám to umožní používat stávající aplikace a nástroje, které očekáváte, že budete moct použít. Existuje však několik důvodů, proč může být výhodnější místo protokolu SMB použít souborové rozhraní REST API, jako například:
 
 - Procházíte sdílenou složku z prostředí Bash ve službě Azure Cloud Shell (které nedokáže připojit sdílené složky přes protokol SMB).
 - Využíváte bezserverové prostředky, jako je služba [Azure Functions](../../azure-functions/functions-overview.md). 
-- Vytváříte službu s přidanou hodnotou, která bude pracovat s mnoha sdílenými složkami souborů Azure, jako je například zálohování nebo antivirové kontroly.
+- Vytváříte službu pro přidávání hodnot, která bude pracovat s mnoha sdílenými složkami Azure, jako je třeba zálohování nebo prohledávání antivirové ochrany.
 
-Následující příklady ukazují, jak používat azure CLI k manipulaci se správou souboru Azure s protokolem FILE REST. 
+V následujících příkladech se dozvíte, jak pomocí rozhraní příkazového řádku Azure manipulovat se sdílenou složkou Azure pomocí protokolu File REST. 
 
 ### <a name="create-a-directory"></a>Vytvoření adresáře
 Pomocí příkazu [`az storage directory create`](/cli/azure/storage/directory) vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure:
@@ -119,7 +119,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Nahrání souboru
-Chcete-li předvést, jak nahrát soubor pomocí příkazu, [`az storage file upload`](/cli/azure/storage/file) nejprve vytvořte soubor pro nahrání na jednotku pro zápis do prostředí Cloud Shell. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
+Chcete-li předvést, jak nahrát soubor pomocí [`az storage file upload`](/cli/azure/storage/file) příkazu, nejprve vytvořte soubor, který se odešle na Cloud Shell domocné jednotky. V následujícím příkladu soubor vytvoříte a potom ho nahrajete:
 
 ```azurecli-interactive
 cd ~/clouddrive/
@@ -135,7 +135,7 @@ az storage file upload \
 
 Pokud používáte Azure CLI místně, nahraďte `~/clouddrive` za cestu, která existuje na vašem počítači.
 
-Po nahrání souboru se [`az storage file list`](/cli/azure/storage/file) pomocí příkazu ujistěte, že byl soubor nahrán do sdílené složky Azure:
+Po nahrání souboru můžete pomocí [`az storage file list`](/cli/azure/storage/file) příkazu zkontrolovat, jestli se soubor nahrál do sdílené složky Azure:
 
 ```azurecli-interactive
 az storage file list \
@@ -147,7 +147,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Stažení souboru
-Pomocí příkazu [`az storage file download`](/cli/azure/storage/file) můžete stáhnout kopii souboru, který jste nahráli na odkládací jednotku cloudového prostředí:
+Pomocí [`az storage file download`](/cli/azure/storage/file) příkazu můžete stáhnout kopii souboru, který jste nahráli do pomocné jednotky Cloud Shell:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -202,16 +202,16 @@ az storage file list \
     --output table
 ```
 
-Zatímco `az storage file copy start` příkaz je vhodný pro přesuny souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat doporučujeme `rsync` v systému macOS a Linux u `robocopy` Windows. `rsync`a `robocopy` použít SMB k provádění přesunů dat namísto rozhraní FILEREST API.
+I když `az storage file copy start` je tento příkaz vhodný pro přesun souborů mezi sdílenými složkami Azure, pro migrace a větší přesuny dat `rsync` doporučujeme v MacOS a Linux `robocopy` a ve Windows. `rsync`a `robocopy` k provádění přesunů dat místo rozhraní REST API použijte protokol SMB.
 
 ## <a name="create-and-manage-share-snapshots"></a>Vytváření a správa snímků sdílených složek
 Další užitečnou úlohou, kterou se sdílenými složkami Azure můžete provádět, je vytváření snímků sdílených složek. Snímek uchovává kopii sdílené složky Azure k určitému bodu v čase. Snímky sdílených složek jsou podobné některým technologiím operačního systému, které už možná znáte:
 
-- [Snímky Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pro systémy Linux.
+- Snímky [Správce logických svazků (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) pro systémy Linux.
 - Snímky [systému souborů Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) v případě macOS.
-- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako jsou ntfs a refs.
+- [Služba Stínová kopie svazku (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) pro systémy souborů Windows, jako je třeba NTFS a ReFS.
  
-Snímek sdílené složky můžete [`az storage share snapshot`](/cli/azure/storage/share) vytvořit pomocí příkazu:
+Snímek sdílené složky můžete vytvořit pomocí [`az storage share snapshot`](/cli/azure/storage/share) příkazu:
 
 ```azurecli-interactive
 snapshot=$(az storage share snapshot \
@@ -275,7 +275,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Odstranění snímku sdílené složky
-Snímek sdílené složky můžete [`az storage share delete`](/cli/azure/storage/share) odstranit pomocí příkazu. Použijte proměnnou, která obsahuje odkaz `$SNAPSHOT` na parametr `--snapshot`:
+Snímek sdílené složky můžete odstranit pomocí [`az storage share delete`](/cli/azure/storage/share) příkazu. Použijte proměnnou, která obsahuje odkaz `$SNAPSHOT` na parametr `--snapshot`:
 
 ```azurecli-interactive
 az storage share delete \
@@ -287,7 +287,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Po dokončení můžete pomocí příkazu [`az group delete`](/cli/azure/group) odebrat skupinu prostředků a všechny související prostředky: 
+Až budete hotovi, můžete k odebrání skupiny [`az group delete`](/cli/azure/group) prostředků a všech souvisejících prostředků použít příkaz: 
 
 ```azurecli-interactive 
 az group delete --name $resourceGroupName

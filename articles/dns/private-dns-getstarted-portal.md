@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – vytvoření privátní zóny DNS Azure pomocí portálu Azure
-description: V tomto rychlém startu vytvoříte a otestujete privátní zónu DNS a záznam v Azure DNS. Toto je podrobný průvodce pro vytvoření a správu první privátní zóny DNS a záznamu pomocí portálu Azure.
+title: Rychlý Start – vytvoření privátní zóny DNS Azure pomocí Azure Portal
+description: V tomto rychlém startu vytvoříte a otestujete privátní zónu a záznam DNS v Azure DNS. Toto je podrobný Průvodce vytvořením a správou první privátní zóny DNS a záznamu pomocí Azure Portal.
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,49 +8,49 @@ ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
 ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78244967"
 ---
-# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Úvodní příručka: Vytvoření privátní zóny DNS Azure pomocí portálu Azure
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rychlý Start: Vytvoření privátní zóny DNS Azure pomocí Azure Portal
 
-Tento rychlý start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí portálu Azure.
+Tento rychlý Start vás provede kroky k vytvoření první privátní zóny DNS a záznamu pomocí Azure Portal.
 
-K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Tyto sítě se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS také aktualizuje záznamy zóny při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
+K hostování záznamů DNS pro konkrétní doménu se používá zóna DNS. Pokud chcete začít hostovat svou doménu v DNS Azure, musíte vytvořit zónu DNS pro daný název domény. Všechny záznamy DNS pro vaši doménu se pak vytvoří v této zóně DNS. Když chcete publikovat privátní zónu DNS do virtuální sítě, zadáte seznam virtuálních sítí, které mají povoleno překládat záznamy v rámci této zóny.  Ty se nazývají *propojené* virtuální sítě. Pokud je povolena automatická registrace, Azure DNS aktualizuje také záznamy zón při každém vytvoření virtuálního počítače, změní jeho IP adresu nebo se odstraní.
 
 V tomto rychlém startu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření privátní zóny DNS
 > * Vytvoření virtuální sítě
-> * Propojení virtuální sítě
+> * Propojit virtuální síť
 > * Vytvoření testovacích virtuálních počítačů
 > * Vytvoření dalšího záznamu DNS
 > * Testování privátní zóny
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-Pokud chcete, můžete tento rychlý start dokončit pomocí [Azure PowerShell](private-dns-getstarted-powershell.md) nebo [Azure CLI](private-dns-getstarted-cli.md).
+Pokud budete chtít, můžete tento rychlý Start dokončit pomocí [Azure PowerShell](private-dns-getstarted-powershell.md) nebo [Azure CLI](private-dns-getstarted-cli.md).
 
 ## <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-Následující příklad vytvoří zónu DNS nazvanou **private.contoso.com** ve skupině prostředků s názvem **MyAzureResourceGroup**.
+Následující příklad vytvoří zónu DNS s názvem **Private.contoso.com** ve skupině prostředků s názvem **MyAzureResourceGroup**.
 
-Zóna DNS obsahuje položky DNS pro doménu. Chcete-li začít hostovat svou doménu ve službě Azure DNS, vytvořte pro tento název domény zónu DNS.
+Zóna DNS obsahuje záznamy DNS pro doménu. Pokud chcete začít hostovat vaši doménu v Azure DNS, vytvořte pro tento název domény zónu DNS.
 
-![Vyhledávání zón DNS v soukromých službách](media/private-dns-portal/search-private-dns.png)
+![Hledání zón Privátní DNS](media/private-dns-portal/search-private-dns.png)
 
-1. Na panelu vyhledávání na portálu zadejte do textového pole hledání **soukromé zóny DNS** a stiskněte **Enter**.
-1. Vyberte **soukromou zónu DNS**.
-2. Vyberte **Možnost Vytvořit soukromou zónu DNS**.
+1. Na panelu hledání na portálu zadejte do textového pole Hledat **privátní zóny DNS** a stiskněte klávesu **ENTER**.
+1. Vyberte **zónu privátní DNS**.
+2. Vyberte **vytvořit privátní zónu DNS**.
 
-1. Na stránce **Vytvořit soukromou zónu DNS** zadejte nebo vyberte následující hodnoty:
+1. Na stránce **vytvořit privátní DNS zónu** zadejte nebo vyberte následující hodnoty:
 
-   - **Skupina prostředků**: Vyberte **Vytvořit nový**, zadejte *MyAzureResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být jedinečný v rámci předplatného Azure.
-   -  **Název**: V tomto příkladu *zadejte private.contoso.com.*
-1. V **umístění skupiny zdrojů**vyberte možnost Střed usa – **západ**.
+   - **Skupina prostředků**: vyberte **vytvořit novou**, zadejte *MyAzureResourceGroup*a vyberte **OK**. Název skupiny prostředků musí být v rámci předplatného Azure jedinečný.
+   -  **Název**: v tomto příkladu zadejte *Private.contoso.com* .
+1. V případě **umístění skupiny prostředků**vyberte **středozápadní USA**.
 
 1. Vyberte **zkontrolovat + vytvořit**.
 
@@ -60,69 +60,69 @@ Vytvoření zóny může trvat několik minut.
 
 ## <a name="virtual-network-and-parameters"></a>Virtuální síť a parametry
 
-V této části budete muset nahradit následující parametry v krocích s níže uvedenými informacemi:
+V této části budete muset v krocích níže nahradit následující parametry:
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<>název skupiny prostředků**  | MyAzureResourceGroup (vyberte existující skupinu prostředků) |
-| **\<>názvů virtuálních sítí** | MyAzureVNet          |
-| **\<>názvu oblasti**          | USA – středozápad      |
-| **\<>adresního prostoru IPv4**   | 10.2.0.0\16          |
-| **\<>názvu podsítě**          | MyAzureSubnet        |
-| **\<>rozsah emitované sítě** | 10.2.0.0\24          |
+| **\<Resource-Group-Name>**  | MyAzureResourceGroup (vyberte existující skupinu prostředků) |
+| **\<název virtuální sítě>** | MyAzureVNet          |
+| **\<název oblasti>**          | USA – středozápad      |
+| **\<IPv4 –>adresního prostoru**   | 10.2.0.0 \ 16          |
+| **\<>názvů podsítí**          | MyAzureSubnet        |
+| **\<podsíť-adresa>rozsahu** | 10.2.0.0 \ 24          |
 
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
-## <a name="link-the-virtual-network"></a>Propojení virtuální sítě
+## <a name="link-the-virtual-network"></a>Propojit virtuální síť
 
-Chcete-li propojit privátní zónu DNS s virtuální sítí, vytvořte propojení virtuální sítě.
+Pokud chcete propojit privátní zónu DNS s virtuální sítí, vytvořte odkaz na virtuální síť.
 
-![Přidání propojení virtuální sítě](media/private-dns-portal/dns-add-virtual-network-link.png)
+![Přidat odkaz virtuální sítě](media/private-dns-portal/dns-add-virtual-network-link.png)
 
-1. Otevřete skupinu prostředků **MyAzureResourceGroup** a vyberte **private.contoso.com** privátní zónu.
-2. V levém podokně vyberte **Propojení virtuálních sítí**.
+1. Otevřete skupinu prostředků **MyAzureResourceGroup** a vyberte privátní zónu **Private.contoso.com** .
+2. V levém podokně vyberte **odkazy virtuální sítě**.
 3. Vyberte **Přidat**.
-4. Zadejte název **odkazu** **myLink** .
-5. V **případě virtuální sítě**vyberte **myAzureVNet**.
-6. Zaškrtněte políčko **Povolit automatickou registraci.**
+4. Jako **název odkazu**zadejte **myLink** .
+5. V případě **virtuální sítě**vyberte **myAzureVNet**.
+6. Zaškrtněte políčko **Povolit automatickou registraci** .
 7. Vyberte **OK**.
 
 ## <a name="create-the-test-virtual-machines"></a>Vytvoření testovacích virtuálních počítačů
 
 Teď vytvořte dva virtuální počítače, abyste mohli privátní zónu DNS otestovat:
 
-1. Na levé horní stránce **portálu**vyberte Vytvořit prostředek a pak vyberte **Windows Server 2016 Datacenter**.
-1. Vyberte **MyAzureResourceGroup** pro skupinu prostředků.
-1. Zadejte **myVM01** - pro název virtuálního počítače.
-1. Vyberte **západní střední USA** pro **oblast**.
-1. Zadejte jméno uživatelského jména správce.
+1. Na stránce portálu nahoře vlevo vyberte **vytvořit prostředek**a pak vyberte **Windows Server 2016 Datacenter**.
+1. Jako skupinu prostředků vyberte **MyAzureResourceGroup** .
+1. Jako název virtuálního počítače zadejte **myVM01** .
+1. Pro **oblast**vyberte **středozápadní USA** .
+1. Zadejte název uživatelského jména správce.
 2. Zadejte heslo a potvrďte heslo.
-5. V **části Veřejné příchozí porty**vyberte **Povolit vybrané porty**a potom vyberte **příkaz RDP (3389)** pro **možnost Vybrat příchozí porty**.
-10. Přijměte další výchozí hodnoty stránky a klepněte na tlačítko **Další: Disky >**.
-11. Přijměte výchozí hodnoty na stránce **Disky a** klepněte na tlačítko **Další: Síťové >**.
-1. Ujistěte se, že je pro virtuální síť vybraná moje **AzureVNet.**
-1. Přijměte další výchozí hodnoty stránky a klikněte na **Další: Správa >**.
-2. V **části Diagnostika spuštění**vyberte Možnost **Vypnuto**, přijměte ostatní výchozí hodnoty a pak vyberte **Možnost Revize + vytvoření**.
-1. Zkontrolujte nastavení a klepněte na tlačítko **Vytvořit**.
+5. U **veřejných příchozích portů**vyberte **Povolit vybrané porty**a pak pro **vybrat příchozí porty**vybrat **RDP (3389)** .
+10. Přijměte ostatní výchozí hodnoty stránky a potom klikněte na **Další: disky >**.
+11. Na stránce **disky** přijměte výchozí hodnoty a pak klikněte na **další: síťové >**.
+1. Ujistěte se, že pro virtuální síť je vybraná možnost **myAzureVNet** .
+1. Přijměte ostatní výchozí hodnoty stránky a potom klikněte na **Další: >správy **.
+2. Pro **diagnostiku spouštění**vyberte **vypnuto**, Přijměte ostatní výchozí nastavení a pak vyberte **zkontrolovat + vytvořit**.
+1. Zkontrolujte nastavení a klikněte na **vytvořit**.
 
-Opakujte tyto kroky a vytvořte jiný virtuální počítač s názvem **myVM02**.
+Opakujte tyto kroky a vytvořte další virtuální počítač s názvem **myVM02**.
 
 Dokončení obou virtuálních počítačů bude trvat několik minut.
 
 ## <a name="create-an-additional-dns-record"></a>Vytvoření dalšího záznamu DNS
 
- Následující příklad vytvoří záznam s relativním názvem **db** v **zóně**DNS private.contoso.com ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **db.private.contoso.com**. Typ záznamu je "A", s IP adresou **myVM01**.
+ Následující příklad vytvoří záznam s relativní názvem **DB** v zóně DNS **Private.contoso.com**ve skupině prostředků **MyAzureResourceGroup**. Plně kvalifikovaný název sady záznamů je **DB.Private.contoso.com**. Typ záznamu je A s IP adresou **myVM01**.
 
-1. Otevřete skupinu prostředků **MyAzureResourceGroup** a vyberte **private.contoso.com** privátní zónu.
+1. Otevřete skupinu prostředků **MyAzureResourceGroup** a vyberte privátní zónu **Private.contoso.com** .
 2. Vyberte **+ Sada záznamů**.
-3. Do **pole Název**zadejte **db**.
-4. Do **pole IP adresa**zadejte adresu IP, která se zobrazí pro **myVM01**. To by mělo být automaticky registrováno při spuštění virtuálního počítače.
+3. Jako **název**zadejte **DB**.
+4. Do pole **IP adresa**zadejte IP adresu, kterou vidíte pro **myVM01**. Tato volba by měla být automaticky registrována při spuštění virtuálního počítače.
 5. Vyberte **OK**.
 
 ## <a name="test-the-private-zone"></a>Testování privátní zóny
 
-Nyní můžete otestovat překlad názvů pro **private.contoso.com** soukromé zóny.
+Teď můžete testovat překlad IP adres pro privátní zónu **Private.contoso.com** .
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Konfigurace virtuálních počítačů pro povolení příchozích přenosů ICMP
 
@@ -182,7 +182,7 @@ Totéž zopakujte pro virtuální počítač myVM02.
 
 ## <a name="delete-all-resources"></a>Odstranění všech prostředků
 
-Pokud už není potřeba, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v tomto rychlém startu.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků **MyAzureResourceGroup** a odstraňte prostředky vytvořené v rámci tohoto rychlého startu.
 
 
 ## <a name="next-steps"></a>Další kroky
