@@ -1,105 +1,105 @@
 ---
-title: Řešení Azure Networking Analytics ve službě Azure Monitor | Dokumenty společnosti Microsoft
-description: Pomocí řešení Azure Networking Analytics v Azure Monitoru můžete zkontrolovat protokoly skupiny zabezpečení sítě Azure a protokoly Azure Application Gateway.
+title: Řešení Azure Networking Analytics v Azure Monitor | Microsoft Docs
+description: Řešení Azure Networking Analytics v Azure Monitor můžete použít ke kontrole protokolů skupin zabezpečení sítě Azure a protokolů Azure Application Gateway.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
 ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275565"
 ---
-# <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítí Azure ve službě Azure Monitor
+# <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Řešení monitorování sítě Azure v Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor nabízí následující řešení pro monitorování vašich sítí:
-* Sledování výkonu sítě (NPM)
-    * Sledování stavu sítě
-* Azure Application Gateway analytics ke kontrole
-    * Protokoly aplikační brány Azure
+Azure Monitor nabízí následující řešení pro monitorování sítí:
+* Network Performance Monitor (NPM) do
+    * Monitorování stavu sítě
+* Přehled služby Azure Application Gateway Analytics
+    * Protokoly Application Gateway Azure
     * Metriky Azure Application Gateway
-* Řešení pro sledování a auditování síťových aktivit v cloudové síti
+* Řešení pro monitorování a audit síťové aktivity v cloudové síti
     * [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
     * Azure Network Security Group Analytics
 
-## <a name="network-performance-monitor-npm"></a>Sledování výkonu sítě (NPM)
+## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
-Řešení [pro správu sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je řešení pro monitorování sítě, které monitoruje stav, dostupnost a dosažitelnost sítí.  Používá se ke sledování připojení mezi:
+Řešení pro správu [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) je řešení pro monitorování sítě, které monitoruje stav, dostupnost a dostupnost sítí.  Slouží k monitorování připojení mezi:
 
 * Veřejný cloud a místní
-* Datová centra a uživatelská lokace (pobočky)
-* Podsítě hostující různé vrstvy vícevrstvé aplikace.
+* Datová centra a umístění uživatelů (pobočky)
+* Podsítě hostující různé úrovně vícevrstvé aplikace.
 
-Další informace naleznete v [tématu Sledování výkonu sítě](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
+Další informace najdete v tématu [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview).
 
-## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway a analýza skupiny zabezpečení sítě
+## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě a Application Gateway Azure
 Použití řešení:
-1. Přidejte řešení pro správu do Služby Azure Monitor a
-2. Povolte diagnostiku a nasměrujte diagnostiku do pracovního prostoru Analýzy protokolů ve službě Azure Monitor. Není nutné zapisovat protokoly do úložiště objektů blob Azure.
+1. Přidejte řešení pro správu do Azure Monitor a
+2. Povolte diagnostiku pro přesměrování diagnostiky do pracovního prostoru Log Analytics v Azure Monitor. Není nutné zapisovat protokoly do úložiště objektů BLOB v Azure.
 
-Můžete povolit diagnostiku a odpovídající řešení pro jednu nebo obě skupiny application gateway a síťové zabezpečení.
+Můžete povolit diagnostiku a odpovídající řešení pro jednu nebo obě skupiny zabezpečení Application Gateway a sítě.
 
-Pokud nepovolíte protokolování diagnostických prostředků pro určitý typ prostředku, ale nainstalujete řešení, jsou řídicí panely pro tento prostředek prázdné a zobrazí se chybová zpráva.
+Pokud nepovolíte protokolování diagnostických prostředků pro konkrétní typ prostředku, ale nainstalujete řešení, ovládací panel pro tento prostředek je prázdný a zobrazí se chybová zpráva.
 
 > [!NOTE]
-> V lednu 2017 se změnil podporovaný způsob odesílání protokolů z aplikačních bran a skupin zabezpečení sítě do pracovního prostoru Log Analytics. Pokud se zobrazí řešení **Azure Networking Analytics (zastaralé),** podívejte se na [migraci ze starého řešení Networking Analytics](#migrating-from-the-old-networking-analytics-solution) pro kroky, které je třeba provést.
+> V lednu 2017 se změnil podporovaný způsob odesílání protokolů z aplikačních bran a skupin zabezpečení sítě do pracovního prostoru Log Analytics. Pokud se zobrazí řešení **Azure Networking Analytics (nepoužívané)** , přečtěte si téma [migrace z původního řešení pro analýzu sítě](#migrating-from-the-old-networking-analytics-solution) , kde najdete kroky, které je potřeba provést.
 >
 >
 
-## <a name="review-azure-networking-data-collection-details"></a>Projděte si podrobnosti o shromažďování dat v síti Azure
-Azure Application Gateway analytics a řešení pro správu analýzy skupiny network security group shromažďují protokoly diagnostiky přímo ze skupin y Azure Application Gateways a Network Security. Není nutné zapisovat protokoly do úložiště objektů blob Azure a pro shromažďování dat není vyžadován žádný agent.
+## <a name="review-azure-networking-data-collection-details"></a>Kontrola informací o kolekci síťových dat Azure
+Řešení Azure Application Gateway Analytics a Správa analýzy skupin zabezpečení sítě shromažďují protokoly diagnostiky přímo ze skupin Azure Application Gateway a zabezpečení sítě. Není nutné zapisovat protokoly do úložiště objektů BLOB v Azure a pro shromažďování dat není nutné žádného agenta.
 
-V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se shromažďují data pro analýzy Azure Application Gateway a analýzy skupiny zabezpečení sítě.
+V následující tabulce jsou uvedeny metody shromažďování dat a další podrobnosti o tom, jak se shromažďují data pro Azure Application Gateway analýzy a analýzy skupin zabezpečení sítě.
 
-| Platforma | Přímý agent | Agent operations manageru systémového centra | Azure | Vyžaduje se provozní manažer? | Data agenta Operations Manager odeslaná prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Platforma | Přímý Agent | Agent Operations Manager pro Systems Center | Azure | Operations Manager požadováno? | Data agenta Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |  |  |&#8226; |  |  |při přihlášení |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Analytické řešení Azure Application Gateway v Azure Monitoru
+## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Řešení Azure Application Gateway Analytics v Azure Monitor
 
 ![Symbol Azure Application Gateway Analytics](media/azure-networking-analytics/azure-analytics-symbol.png)
 
-Pro aplikační brány jsou podporovány následující protokoly:
+Pro aplikační brány se podporují tyto protokoly:
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-Následující metriky jsou podporovány pro aplikační brány:again
+Pro aplikační brány se podporují následující metriky:
 
 
-* 5 minutová propustnost
+* propustnost 5 minut
 
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
-K instalaci a konfiguraci analytického řešení Azure Application Gateway použijte následující pokyny:
+K instalaci a konfiguraci řešení Azure Application Gateway Analytics použijte následující pokyny:
 
-1. Povolte analytické řešení Azure Application Gateway z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v části Přidat řešení Azure Monitor z [Galerie řešení](../../azure-monitor/insights/solutions.md).
-2. Povolte protokolování diagnostiky pro [aplikační brány, které](../../application-gateway/application-gateway-diagnostics.md) chcete sledovat.
+1. Povolte řešení Azure Application Gateway Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání Azure Monitor řešení z galerie řešení](../../azure-monitor/insights/solutions.md).
+2. Povolte protokolování diagnostiky pro [aplikační brány](../../application-gateway/application-gateway-diagnostics.md) , které chcete monitorovat.
 
-#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolení diagnostiky aplikační brány Azure na portálu
+#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Povolení diagnostiky Azure Application Gateway na portálu
 
-1. Na webu Azure Portal přejděte na prostředek aplikační brány, který chcete monitorovat.
-2. Výběrem *možnosti Protokoly diagnostiky* otevřete následující stránku.
+1. V Azure Portal přejděte na prostředek Application Gateway a sledujte ho.
+2. Výběrem *diagnostické protokoly* otevřete následující stránku.
 
-   ![image prostředku azure aplikační brány](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
-3. Kliknutím *na Zapnout diagnostiku* otevřete následující stránku.
+   ![Obrázek prostředku Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
+3. Kliknutím na *zapnout diagnostiku* otevřete následující stránku.
 
-   ![image prostředku azure aplikační brány](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
-4. Chcete-li zapnout diagnostiku, klepněte na tlačítko *Zapnuto* v části *Stav*.
-5. Zaškrtněte políčko *Odeslat do analýzy protokolů*.
+   ![Obrázek prostředku Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics02.png)
+4. Pokud chcete zapnout diagnostiku, klikněte *na pod* položkou *stav*.
+5. Kliknutím na zaškrtávací políčko pro *odeslání Log Analytics*.
 6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor.
-7. Klikněte na zaškrtávací políčko v části **Protokol** pro každý z typů protokolu shromažďovat.
-8. Kliknutím na *Uložit* povolíte protokolování diagnostiky do Azure Monitoru.
+7. Kliknutím zaškrtněte políčko **protokol** pro každý typ protokolu, který chcete shromáždit.
+8. Kliknutím na *Uložit* Povolte protokolování diagnostiky do Azure monitor.
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolení diagnostiky sítě Azure pomocí PowerShellu
 
-Následující skript prostředí PowerShell poskytuje příklad, jak povolit protokolování prostředků pro aplikační brány.
+Následující skript PowerShellu poskytuje příklad, jak povolit protokolování prostředků pro aplikační brány.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -109,68 +109,68 @@ $gateway = Get-AzApplicationGateway -Name 'ContosoGateway'
 Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-application-gateway-analytics"></a>Použití analýzy Služby Azure Application Gateway
-![Obrázek analytické dlaždice Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
+### <a name="use-azure-application-gateway-analytics"></a>Použití Azure Application Gateway Analytics
+![Obrázek dlaždice Azure Application Gateway Analytics](media/azure-networking-analytics/log-analytics-appgateway-tile.png)
 
-Po kliknutí na dlaždici **Analýzy služby Azure Application Gateway** v přehledu můžete zobrazit souhrny protokolů a potom přejít k podrobnostem pro následující kategorie:
+Po kliknutí na dlaždici **Azure Application Gateway Analytics** v přehledu můžete zobrazit souhrny protokolů a pak přejít k podrobnostem v následujících kategoriích:
 
-* Protokoly přístupu k aplikační bráně
-  * Chyby klienta a serveru pro protokoly přístupu k aplikační bráně
-  * Požadavky za hodinu pro každou aplikační bránu
-  * Neúspěšné požadavky za hodinu pro každou aplikační bránu
-  * Chyby podle uživatelského agenta pro aplikační brány
-* Výkon aplikační brány
-  * Stav hostitele pro aplikační bránu
-  * Maximální a 95. percentil pro požadavky application gateway selhaly
+* Protokoly Application Gateway Accessu
+  * Chyby klienta a serveru pro protokoly přístupu Application Gateway
+  * Žádosti za hodinu pro každý Application Gateway
+  * Neúspěšné žádosti za hodinu pro každý Application Gateway
+  * Chyby uživatelského agenta pro aplikační brány
+* Application Gateway výkon
+  * Stav hostitele pro Application Gateway
+  * Maximální a 95. percentilu pro Application Gateway neúspěšné žádosti
 
-![obrázek analytického řídicího panelu Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway01.png)
+![Obrázek řídicího panelu analýzy Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway01.png)
 
-![obrázek analytického řídicího panelu Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway02.png)
+![Obrázek řídicího panelu analýzy Azure Application Gateway](media/azure-networking-analytics/log-analytics-appgateway02.png)
 
-Na řídicím panelu **analýzy Služby Azure Application Gateway** zkontrolujte souhrnné informace v jednom z listů a kliknutím na jeden z nich zobrazte podrobné informace na stránce hledání protokolu.
+Na řídicím panelu **Azure Application Gateway Analytics** zkontrolujte souhrnné informace v jednom z oken a potom kliknutím na jednu Zobrazte podrobné informace na stránce prohledávání protokolu.
 
-Na libovolné stránce hledání protokolu můžete zobrazit výsledky podle času, podrobných výsledků a historie hledání protokolu. Můžete také filtrovat podle omezujících vlastností a zúžit výsledky.
+Na kterékoli stránce pro prohledávání protokolu můžete zobrazit výsledky podle času, podrobných výsledků a historie prohledávání protokolu. K zúžení výsledků můžete také filtrovat podle omezujících vlastností.
 
 
-## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Analytické řešení Skupiny zabezpečení sítě Azure ve službě Azure Monitor
+## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Řešení analýzy skupin zabezpečení sítě Azure v Azure Monitor
 
 ![Symbol Azure Network Security Group Analytics](media/azure-networking-analytics/azure-analytics-symbol.png)
 
 > [!NOTE]
-> Analytické řešení skupiny Network Security Group přechází na komunitní podporu, protože jeho funkce byla nahrazena [službou Traffic Analytics](../../network-watcher/traffic-analytics.md).
-> - Řešení je teď dostupné v [azure quickstart šablony](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) a brzy už nebude k dispozici na Azure Marketplace.
-> - Pro stávající zákazníky, kteří již přidali řešení do svého pracovního prostoru, bude nadále fungovat bez evidenčních změn.
-> - Společnost Microsoft bude i nadále podporovat odesílání protokolů prostředků skupiny NSG do pracovního prostoru pomocí nastavení diagnostiky.
+> Řešení analýzy skupin zabezpečení sítě se přesouvá na podporu komunity, protože její funkce byla nahrazena [Analýza provozu](../../network-watcher/traffic-analytics.md).
+> - Řešení je teď dostupné v [šablonách pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) a už brzy nebude dostupné v Azure Marketplace.
+> - Stávajícím zákazníkům, kteří už toto řešení přidali do svého pracovního prostoru, bude i nadále fungovat bez jakýchkoli změn.
+> - Microsoft bude dál podporovat odesílání protokolů prostředků NSG do vašeho pracovního prostoru pomocí nastavení diagnostiky.
 
 Pro skupiny zabezpečení sítě jsou podporovány následující protokoly:
 
-* Událost NetworkSecurityGroupEvent
-* Čítač pravidel networksecuritygroup
+* NetworkSecurityGroupEvent
+* NetworkSecurityGroupRuleCounter
 
 ### <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
 K instalaci a konfiguraci řešení Azure Networking Analytics použijte následující pokyny:
 
-1. Povolte analytické řešení Skupiny zabezpečení azure ze stránek [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v části Přidat řešení Azure Monitor z [Galerie řešení](../../azure-monitor/insights/solutions.md).
-2. Povolte protokolování diagnostiky pro prostředky [skupiny zabezpečení sítě,](../../virtual-network/virtual-network-nsg-manage-log.md) které chcete sledovat.
+1. Povolte řešení Azure Network Security Group Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení Azure monitor z galerie řešení](../../azure-monitor/insights/solutions.md).
+2. Povolte protokolování diagnostiky pro prostředky [skupiny zabezpečení sítě](../../virtual-network/virtual-network-nsg-manage-log.md) , které chcete monitorovat.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Povolení diagnostiky skupiny zabezpečení sítě Azure na portálu
 
-1. Na webu Azure Portal přejděte na prostředek skupiny zabezpečení sítě, který chcete monitorovat.
-2. Výběrem *možnosti Protokoly diagnostiky* otevřete následující stránku.
+1. V Azure Portal přejděte na prostředek skupiny zabezpečení sítě, který se bude monitorovat.
+2. Výběrem *diagnostické protokoly* otevřete následující stránku
 
-   ![obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
-3. Kliknutím *na Zapnout diagnostiku* otevřete následující stránku.
+   ![Obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics01.png)
+3. Kliknutím na *zapnout diagnostiku* otevřete následující stránku.
 
-   ![obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
-4. Chcete-li zapnout diagnostiku, klikněte *na Možnost Zapnout* v části *Stav.*
-5. Klikněte na zaškrtávací políčko *Odeslat do analýzy protokolů.*
-6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor
-7. Klikněte na zaškrtávací políčko v části **Protokol** pro každý z typů protokolu, které chcete shromáždit.
-8. Chcete-li povolit protokolování diagnostiky do služby Log Analytics, klepněte na tlačítko *Uložit.*
+   ![Obrázek prostředku skupiny zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg-enable-diagnostics02.png)
+4. Pokud chcete zapnout diagnostiku, *klikněte na* pod položkou *stav* .
+5. Kliknutím na zaškrtávací políčko pro *odeslání Log Analytics*
+6. Vyberte existující pracovní prostor Log Analytics nebo vytvořte pracovní prostor.
+7. Zaškrtněte políčko **protokol** pro každý typ protokolu, který se má shromažďovat.
+8. Kliknutím na *Uložit* Povolte protokolování diagnostiky na Log Analytics
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Povolení diagnostiky sítě Azure pomocí PowerShellu
 
-Následující skript prostředí PowerShell poskytuje příklad povolení protokolování prostředků pro skupiny zabezpečení sítě
+Následující skript PowerShellu poskytuje příklad, jak povolit protokolování prostředků pro skupiny zabezpečení sítě.
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -179,54 +179,54 @@ $nsg = Get-AzNetworkSecurityGroup -Name 'ContosoNSG'
 Set-AzDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
-### <a name="use-azure-network-security-group-analytics"></a>Použití analýzy skupiny zabezpečení sítě Azure
-Po kliknutí na dlaždici **Analýzy skupiny zabezpečení sítě Azure** v přehledu můžete zobrazit souhrny protokolů a potom přejít k podrobnostem pro následující kategorie:
+### <a name="use-azure-network-security-group-analytics"></a>Použití analýzy skupin zabezpečení sítě Azure
+Po kliknutí na dlaždici **Azure Network Security Group Analytics** na přehledu můžete zobrazit souhrny protokolů a pak přejít k podrobnostem v následujících kategoriích:
 
-* Skupina zabezpečení sítě blokovala toky
+* Blokované toky ve skupině zabezpečení sítě
   * Pravidla skupiny zabezpečení sítě s blokovanými toky
-  * MAC adresy s blokovanými toky
-* Skupina zabezpečení sítě povolila toky
+  * Adresy MAC s blokovanými toky
+* Povolené toky ve skupině zabezpečení sítě
   * Pravidla skupiny zabezpečení sítě s povolenými toky
-  * MAC adresy s povolenými toky
+  * Adresy MAC s povolenými toky
 
-![obrázek analytického řídicího panelu skupiny Azure Network Security Group](media/azure-networking-analytics/log-analytics-nsg01.png)
+![Obrázek řídicího panelu analýzy skupin zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg01.png)
 
-![obrázek analytického řídicího panelu skupiny Azure Network Security Group](media/azure-networking-analytics/log-analytics-nsg02.png)
+![Obrázek řídicího panelu analýzy skupin zabezpečení sítě Azure](media/azure-networking-analytics/log-analytics-nsg02.png)
 
-Na řídicím panelu **analýzy skupiny zabezpečení sítě Azure** zkontrolujte souhrnné informace v jednom z listů a potom kliknutím na jeden zobrazte podrobné informace na stránce hledání protokolu.
+Na řídicím panelu **Analytics skupiny zabezpečení sítě Azure** zkontrolujte souhrnné informace v jednom z oken a potom kliknutím na jednu Zobrazte podrobné informace na stránce prohledávání protokolu.
 
-Na libovolné stránce hledání protokolu můžete zobrazit výsledky podle času, podrobných výsledků a historie hledání protokolu. Můžete také filtrovat podle omezujících vlastností a zúžit výsledky.
+Na kterékoli stránce pro prohledávání protokolu můžete zobrazit výsledky podle času, podrobných výsledků a historie prohledávání protokolu. K zúžení výsledků můžete také filtrovat podle omezujících vlastností.
 
-## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrace ze starého řešení Networking Analytics
-V lednu 2017 se změnil podporovaný způsob odesílání protokolů z bran Azure Application Gateways a Skupiny zabezpečení sítě Azure do pracovního prostoru Log Analytics. Tyto změny poskytují následující výhody:
-+ Protokoly se zapisují přímo do Azure Monitoru bez nutnosti používat účet úložiště
-+ Menší latence od okamžiku, kdy jsou generovány protokoly k jejich dostupnosti ve službě Azure Monitor
+## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrace ze starého řešení pro analýzu sítě
+V lednu 2017 se v pracovním prostoru Log Analytics změnil podporovaný způsob odesílání protokolů ze skupin Azure Application Gateway a skupin zabezpečení sítě Azure. Tyto změny poskytují následující výhody:
++ Protokoly se zapisují přímo do Azure Monitor bez nutnosti používat účet úložiště.
++ Menší latence od času, kdy jsou do nich generovány protokoly, které jsou k dispozici v Azure Monitor
 + Méně kroků konfigurace
-+ Běžný formát pro všechny typy diagnostiky Azure
++ Společný formát pro všechny typy diagnostiky Azure
 
 Použití aktualizovaných řešení:
 
-1. [Konfigurace diagnostiky, která se má odesílat přímo do Azure Monitoru z aplikačních bran Azure](#enable-azure-application-gateway-diagnostics-in-the-portal)
-2. [Konfigurace diagnostiky, která se má odesílat přímo do Azure Monitoru ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Povolení *azure application gateway analytics* a řešení *Azure Network Security Group Analytics* pomocí procesu popsaného v části Přidat řešení Azure Monitor z Galerie [řešení](solutions.md)
-3. Aktualizace všech uložených dotazů, řídicích panelů nebo výstrah za účelem použití nového datového typu
-   + Typ je AzureDiagnostics. ResourceType můžete použít k filtrování do síťových protokolů Azure.
+1. [Konfigurace diagnostiky, která se pošle přímo do Azure Monitor z Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal)
+2. [Konfigurace diagnostiky, která se má odeslat přímo Azure Monitor ze skupin zabezpečení sítě Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
+2. Povolte *Azure Application Gateway Analytics* a řešení *Azure Network Security Group Analytics* pomocí procesu popsaného v tématu [Přidání Azure monitor řešení z galerie řešení](solutions.md)
+3. Aktualizovat všechny uložené dotazy, řídicí panely nebo výstrahy, aby používaly nový datový typ
+   + Typ je AzureDiagnostics. K filtrování síťových protokolů Azure můžete použít ResourceType.
 
-     | Namísto: | Použít: |
+     | Namísto: | Použije |
      | --- | --- |
-     | NetworkApplicationgateways &#124; kde OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType=="APPLICATIONGATEWAYS" a OperationName=="ApplicationGatewayAccess" |
-     | NetworkApplicationgateways &#124; kde OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType=="APPLICATIONGATEWAYS" a OperationName=="ApplicationGatewayPerformance" |
-     | Skupiny zabezpečení sítě | AzureDiagnostics &#124; kde ResourceType=="NETWORKSECURITYGROUPS" |
+     | NetworkApplicationgateways &#124;, kde OperationName = = "ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" a NázevOperace = = "ApplicationGatewayAccess" |
+     | NetworkApplicationgateways &#124;, kde OperationName = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType = = "APPLICATIONGATEWAYS" a NázevOperace = = "ApplicationGatewayPerformance" |
+     | NetworkSecuritygroups | AzureDiagnostics &#124; kde ResourceType = = "NETWORKSECURITYGROUPS" |
 
-   + Pro každé pole, které má \_příponu \_ \_s, d nebo g v názvu, změňte první znak na malá písmena
-   + Pro každé pole, které má \_příponu o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí.
-4. Odeberte řešení *Azure Networking Analytics (Zastaralé).*
+   + Pro každé pole, které má v názvu \_příponu s \_, d nebo \_g, změňte první znak na malá písmena.
+   + Pro každé pole, které má příponu \_o v názvu, jsou data rozdělena do jednotlivých polí na základě názvů vnořených polí.
+4. Odeberte řešení *Azure Networking Analytics (zastaralé)* .
    + Pokud používáte PowerShell, použijte`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
-Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starých názvů type a polí.
+Data shromážděná před změnou nejsou v novém řešení viditelná. Můžete pokračovat v dotazování na tato data pomocí starého názvu typu a pole.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další kroky
-* Pomocí [dotazů protokolu v Azure Monitoru](../log-query/log-query-overview.md) zobrazte podrobná diagnostická data Azure.
+* K zobrazení podrobných dat diagnostiky Azure použijte [dotazy protokolu v Azure monitor](../log-query/log-query-overview.md) .

@@ -1,6 +1,6 @@
 ---
-title: Monitorování cloudové služby Azure | Dokumenty společnosti Microsoft
-description: Popisuje, co monitorování cloudové služby Azure zahrnuje a jaké jsou některé z vašich možností.
+title: Monitorování cloudové služby Azure | Microsoft Docs
+description: Popisuje, co zahrnuje monitorování cloudové služby Azure a jaké jsou některé z vašich možností.
 services: cloud-services
 documentationcenter: ''
 author: tgore03
@@ -9,58 +9,58 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
 ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273095"
 ---
-# <a name="introduction-to-cloud-service-monitoring"></a>Úvod do monitorování cloudových služeb
+# <a name="introduction-to-cloud-service-monitoring"></a>Seznámení s monitorováním cloudové služby
 
-Můžete sledovat metriky výkonu klíčů pro všechny cloudové služby. Každá role cloudové služby shromažďuje minimální data: využití procesoru, využití sítě a využití disku. Pokud cloudová služba `Microsoft.Azure.Diagnostics` má rozšíření použít na roli, tato role můžete shromažďovat další body dat. Tento článek obsahuje úvod do Diagnostika Azure pro cloudové služby.
+Můžete monitorovat klíčové metriky výkonu pro libovolnou cloudovou službu. Každá role cloudové služby shromažďuje minimální data: využití CPU, využití sítě a využití disku. Pokud má cloudová služba u `Microsoft.Azure.Diagnostics` role použité rozšíření, může tato role shromažďovat další body dat. Tento článek poskytuje Úvod do Azure Diagnostics Cloud Services.
 
-Při základním monitorování jsou vzorkována data čítače výkonu z instancí rolí a shromažďována v 3minutových intervalech. Tato základní data monitorování nejsou uložena ve vašem účtu úložiště a není s ním spojeny žádné další náklady.
+Díky základnímu monitorování jsou data čítače výkonu z instancí rolí ve vzorku a shromažďována v intervalech po dobu 3 minut. Tato základní data monitorování se ve vašem účtu úložiště neukládají a nevztahují se na ně žádné další náklady.
 
-S pokročilým monitorováním jsou vzorkovány další metriky a shromažďovány v intervalech 5 minut, 1 hodina a 12 hodin. Agregovaná data jsou uložena v účtu úložiště, v tabulkách a po 10 dnech se vymažou. Použitý účet úložiště je nakonfigurován podle role; můžete použít různé účty úložiště pro různé role. Tato možnost je konfigurována pomocí připojovacího řetězce v souborech [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) a [.cscfg.](cloud-services-model-and-package.md#serviceconfigurationcscfg)
+S pokročilým monitorováním jsou vzorky a shromážděny další metriky v intervalech 5 minut, 1 hodina a 12 hodin. Agregovaná data jsou uložená v účtu úložiště v tabulkách a vyprázdní se po 10 dnech. Použitý účet úložiště je nakonfigurovaný rolí. pro různé role můžete použít jiné účty úložiště. Tato konfigurace je nakonfigurována pomocí připojovacího řetězce v souborech [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) .
 
 
 ## <a name="basic-monitoring"></a>Základní monitorování
 
-Jak je uvedeno v úvodu, cloudová služba automaticky shromažďuje základní data monitorování z hostitelského virtuálního počítače. Tato data zahrnují procento procesoru, vstup/vycházku sítě a čtení i zápis na disku. Shromážděná data monitorování se automaticky zobrazí na stránkách přehledu a metrik y cloudové služby na webu Azure Portal. 
+Jak je uvedeno v úvodu, cloudová služba automaticky shromažďuje základní data monitorování z hostitelského virtuálního počítače. Tato data zahrnují procento využití procesoru, vstupně-výstupní sítě a čtení a zápis na disk. Shromážděná data monitorování se automaticky zobrazí na stránkách přehled a metrika cloudové služby v Azure Portal. 
 
 Základní monitorování nevyžaduje účet úložiště. 
 
-![základní dlaždice monitorování cloudových služeb](media/cloud-services-how-to-monitor/basic-tiles.png)
+![dlaždice monitorování základní cloudové služby](media/cloud-services-how-to-monitor/basic-tiles.png)
 
 ## <a name="advanced-monitoring"></a>Pokročilé sledování
 
-Pokročilé monitorování zahrnuje použití rozšíření **Diagnostika Azure** (a volitelně Application Insights SDK) na roli, kterou chcete sledovat. Rozšíření diagnostiky používá konfigurační soubor (na roli) s názvem **diagnostics.wadcfgx** ke konfiguraci monitorovaných metrik diagnostiky. Rozšíření Azure Diagnostic shromažďuje a ukládá data v účtu Azure Storage. Tato nastavení jsou konfigurována v souborech **WADCFGX**, [.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)a [.cscfg.](cloud-services-model-and-package.md#serviceconfigurationcscfg) To znamená, že s pokročilým monitorováním jsou spojeny dodatečné náklady.
+Rozšířené monitorování zahrnuje použití rozšíření **Azure Diagnostics** (a volitelně sady Application Insights SDK) na roli, kterou chcete monitorovat. Diagnostické rozšíření pomocí konfiguračního souboru (na roli) s názvem **Diagnostics. wadcfgx** konfiguruje monitorované metriky diagnostiky. Diagnostické rozšíření Azure shromažďuje a ukládá data v Azure Storagem účtu. Tato nastavení jsou konfigurována v souborech **. wadcfgx**, [. csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)a [. cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) . To znamená, že se k pokročilému monitorování účtují dodatečné náklady.
 
-Při vytváření každé role do ní Visual Studio přidá rozšíření Diagnostika Azure. Toto rozšíření diagnostiky může shromažďovat následující typy informací:
+Při vytvoření každé role Visual Studio přidá k němu rozšíření Azure Diagnostics. Toto diagnostické rozšíření může shromažďovat následující typy informací:
 
-* Čítače vlastního výkonu
+* Vlastní čítače výkonu
 * Protokoly aplikací
 * Protokoly událostí Windows
-* Zdroj události rozhraní .NET
+* Zdroj události .NET
 * Protokoly IIS
 * Trasování událostí pro Windows na základě manifestu
 * Výpisy stavu systému
-* Protokoly chyb zákazníka
+* Protokoly chyb zákazníků
 
 > [!IMPORTANT]
-> Zatímco všechna tato data jsou agregována do účtu úložiště, portál **neposkytuje** nativní způsob, jak data zmapovat. Důrazně doporučujeme integrovat do aplikace jinou službu, jako je Application Insights.
+> I když jsou všechna tato data agregována do účtu úložiště, portál **neposkytuje nativní** způsob, jak data graficky vytvořit. Důrazně doporučujeme integrovat do své aplikace další službu, například Application Insights.
 
-## <a name="setup-diagnostics-extension"></a>Rozšíření diagnostiky instalace
+## <a name="setup-diagnostics-extension"></a>Rozšíření Instalace diagnostiky
 
-Za prvé, pokud nemáte **klasický** účet úložiště, [vytvořte si ho](../storage/common/storage-account-create.md). Ujistěte se, že účet úložiště je vytvořen s **klasickým modelem nasazení** zadané.
+Za prvé, pokud nemáte účet **klasického** úložiště, [vytvořte ho](../storage/common/storage-account-create.md). Ujistěte se, že je účet úložiště vytvořený s uvedeným **modelem nasazení Classic** .
 
-Dále přejděte na **prostředek účtu úložiště (klasické).** Vyberte **Nastavení** > **Přístupových kláves** a zkopírujte hodnotu **Primárního připojovacího řetězce.** Tuto hodnotu potřebujete pro cloudovou službu. 
+Potom přejděte do prostředku **účtu úložiště (Classic)** . Vyberte **Nastavení** > **přístupové klíče** a zkopírujte hodnotu **primárního připojovacího řetězce** . Tuto hodnotu budete potřebovat pro cloudovou službu. 
 
-Pro povolení rozšířené diagnostiky je nutné změnit dva konfigurační soubory, **servicedefinition.csdef** a **ServiceConfiguration.cscfg**.
+Existují dva konfigurační soubory, které je třeba změnit, aby bylo možné povolit pokročilou diagnostiku, **ServiceDefinition. csdef** a **ServiceConfiguration. cscfg**.
 
-### <a name="servicedefinitioncsdef"></a>ServiceDefinition.csdef
+### <a name="servicedefinitioncsdef"></a>ServiceDefinition. csdef
 
-V souboru **ServiceDefinition.csdef** přidejte `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` nové nastavení pojmenované pro každou roli, která používá pokročilou diagnostiku. Visual Studio přidá tuto hodnotu do souboru při vytváření nového projektu. V případě, že chybí, můžete jej nyní přidat. 
+V souboru **ServiceDefinition. csdef** přidejte nové nastavení s názvem `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` pro každou roli, která používá pokročilou diagnostiku. Visual Studio přidá tuto hodnotu do souboru při vytváření nového projektu. V případě, že chybí, můžete ho nyní přidat. 
 
 ```xml
 <ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
@@ -69,9 +69,9 @@ V souboru **ServiceDefinition.csdef** přidejte `Microsoft.WindowsAzure.Plugins.
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-Definuje nové nastavení, které musí být přidáno do každého souboru **ServiceConfiguration.cscfg.** 
+Tím se definuje nové nastavení, které se musí přidat ke každému **ServiceConfiguration souboru. cscfg** . 
 
-S největší pravděpodobností máte dva **soubory .cscfg,** jeden s názvem **ServiceConfiguration.cloud.cscfg** pro nasazení do Azure a jeden s názvem **ServiceConfiguration.local.cscfg,** který se používá pro místní nasazení v emulovaném prostředí. Otevřete a změňte každý soubor **.cscfg.** Přidejte nastavení `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`s názvem . Nastavte hodnotu primárního **připojovacího řetězce** klasického účtu úložiště. Pokud chcete použít místní úložiště ve vývojovém `UseDevelopmentStorage=true`počítači, použijte .
+Pravděpodobně máte dva soubory **. cscfg** , jednu s názvem **ServiceConfiguration. Cloud. cscfg** pro nasazení do Azure a jednu s názvem **ServiceConfiguration. Local. cscfg** , která se používá pro místní nasazení v emulovaném prostředí. Otevřete a změňte každý soubor **. cscfg** . Přidejte nastavení s názvem `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString`. Nastavte hodnotu na **primární připojovací řetězec** klasického účtu úložiště. Pokud chcete použít místní úložiště ve vývojovém počítači, použijte `UseDevelopmentStorage=true`.
 
 ```xml
 <ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
@@ -85,16 +85,16 @@ S největší pravděpodobností máte dva **soubory .cscfg,** jeden s názvem *
       -->
 ```
 
-## <a name="use-application-insights"></a>Použití přehledů aplikací
+## <a name="use-application-insights"></a>Použít Application Insights
 
-Při publikování cloudové služby z Visual Studia máte možnost odeslat diagnostická data do Application Insights. V té době můžete vytvořit prostředek Azure application insights nebo odeslat data do existujícího prostředku Azure. Vaše cloudová služba může být monitorována application insights pro dostupnost, výkon, selhání a využití. Vlastní grafy lze přidat do Application Insights, takže můžete vidět data, která jsou nejdůležitější. Data instance role lze shromažďovat pomocí sady Application Insights SDK v projektu cloudové služby. Další informace o tom, jak integrovat Application Insights, najdete v [tématu Application Insights s cloudovými službami](../azure-monitor/app/cloudservices.md).
+Když publikujete cloudovou službu ze sady Visual Studio, budete mít možnost Odeslat diagnostická data do Application Insights. V tuto chvíli můžete vytvořit prostředek služby Application Insights Azure nebo odeslat data do existujícího prostředku Azure. Cloudovou službu je možné monitorovat pomocí Application Insights dostupnosti, výkonu, selhání a využití. Vlastní grafy lze přidat do Application Insights tak, abyste viděli data, která jsou nejvíc nejdůležitější. Data instance role se dají shromažďovat pomocí Application Insights SDK v projektu cloudové služby. Další informace o tom, jak integrovat Application Insights, najdete v článku [Application Insights s Cloud Services](../azure-monitor/app/cloudservices.md).
 
-Všimněte si, že zatímco pomocí application insights můžete zobrazit čítače výkonu (a další nastavení), které jste zadali prostřednictvím rozšíření Diagnostika Windows Azure, získáte pouze bohatší prostředí integrací sady Application Insights SDK do sady Application Insights do sady Application Insights pracovníka a webové role.
+Všimněte si, že když můžete použít Application Insights k zobrazení čítačů výkonu (a dalších nastavení), která jste zadali prostřednictvím rozšíření Windows Azure Diagnostics, získáte bohatou činnost integrující sadu SDK Application Insights do rolí pracovního procesu a webu.
 
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Další informace o přehledech aplikací pomocí cloudových služeb](../azure-monitor/app/cloudservices.md)
+- [Další informace o Application Insights s Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Nastavení čítačů výkonu](diagnostics-performance-counters.md)
 
 

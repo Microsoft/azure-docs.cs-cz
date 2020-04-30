@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření vlastní role pro prostředky Azure pomocí azure cli'
-description: V tomto kurzu můžete začít vytvářet vlastní roli pro prostředky Azure pomocí azure cli.
+title: 'Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI'
+description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure CLI v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239865"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí azure cli
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nesplňují specifické potřeby vaší organizace, můžete si vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role umožňuje uživateli zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
+Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 > * Aktualizace vlastní role
 > * Odstranění vlastní role
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -61,7 +61,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Otevřete soubor ReaderSupportRole.json v editoru a přidejte do něj následující JSON.
 
-    Informace o různých vlastnostech najdete v [tématu Vlastní role pro prostředky Azure](custom-roles.md).
+    Informace o různých vlastnostech najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
 
     ```json
     {

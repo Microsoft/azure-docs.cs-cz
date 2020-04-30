@@ -1,60 +1,60 @@
 ---
-title: Monitorování nového clusteru služby Azure Kubernetes Service (AKS) | Dokumenty společnosti Microsoft
-description: Zjistěte, jak povolit monitorování pro nový cluster služby Azure Kubernetes Service (AKS) s předplatným Azure Monitor for containers.
+title: Monitorování nového clusteru Azure Kubernetes Service (AKS) | Microsoft Docs
+description: Naučte se, jak povolit monitorování pro nový cluster Azure Kubernetes Service (AKS) s předplatným Azure Monitor for Containers.
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.openlocfilehash: c731826f2780c45358730f9ce20d6a6151f6f259
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275435"
 ---
-# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolení monitorování nového clusteru služby Azure Kubernetes Service (AKS)
+# <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Povolit monitorování nového clusteru Azure Kubernetes Service (AKS)
 
-Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes,](https://docs.microsoft.com/azure/aks/) kterou připravujete k nasazení ve vašem předplatném.
+Tento článek popisuje, jak nastavit Azure Monitor pro kontejnery pro monitorování spravovaného clusteru Kubernetes hostovaného ve [službě Azure Kubernetes](https://docs.microsoft.com/azure/aks/) , kterou jste připravili k nasazení v rámci vašeho předplatného.
 
 Monitorování clusteru AKS můžete povolit pomocí jedné z podporovaných metod:
 
 * Azure CLI
 * Terraform
 
-## <a name="enable-using-azure-cli"></a>Povolení používání azure cli
+## <a name="enable-using-azure-cli"></a>Povolit pomocí Azure CLI
 
-Chcete-li povolit monitorování nového clusteru AKS vytvořeného pomocí příkazového příkazu k řešení Azure, postupujte podle kroku v článku o rychlém startu v části [Vytvoření clusteru AKS](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
-
->[!NOTE]
->Pokud se rozhodnete použít azure cli, musíte nejprve nainstalovat a použít příkazového příkazového příkazu místně. Musíte spouštět Azure CLI verze 2.0.74 nebo novější. Chcete-li identifikovat `az --version`verzi, spusťte aplikaci . Pokud potřebujete nainstalovat nebo upgradovat vázačitelné příkazy k Webu Azure, přečtěte si informace [o instalaci příkazového příkazového příkazu k azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud jste nainstalovali rozšíření aks-preview CLI verze 0.4.12 nebo vyšší, odeberte všechny změny, které jste provedli k povolení rozšíření náhledu, protože můžete přepsat výchozí chování rozhraní příkazového příkazu Azure, protože funkce AKS Preview nejsou k dispozici v cloudu Azure US Governmnet.
-
-## <a name="enable-using-terraform"></a>Povolit pomocí Terraform
-
-Pokud [nasazujete nový cluster AKS pomocí Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), zadejte argumenty požadované v profilu [k vytvoření pracovního prostoru Log Analytics,](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) pokud jste se nerozhodli zadat existující. 
+Pokud chcete povolit monitorování nového clusteru AKS vytvořeného pomocí Azure CLI, postupujte podle kroků v článku rychlý Start v části [Vytvoření clusteru AKS](../../aks/kubernetes-walkthrough.md#create-aks-cluster).  
 
 >[!NOTE]
->Pokud se rozhodnete používat Terraform, musíte spustit Terraform Azure RM Provider verze 1.17.0 nebo vyšší.
+>Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.74 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). Pokud máte nainstalovanou verzi rozšíření AKS-Preview CLI 0.4.12 nebo vyšší, odeberte všechny provedené změny, aby bylo možné povolit rozšíření verze Preview, protože funkce AKS Preview nejsou dostupné v cloudu Azure US governmnet.
 
-Pokud chcete přidat Azure Monitor pro kontejnery do pracovního prostoru, najdete v tématu [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadejte **oms_agent**. 
+## <a name="enable-using-terraform"></a>Povolit pomocí Terraformu
 
-Po povolení monitorování a úspěšném dokončení všech konfiguračních úloh můžete sledovat výkon clusteru dvěma způsoby:
+Pokud [nasazujete nový cluster AKS pomocí terraformu](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md), zadáte argumenty požadované v profilu [k vytvoření pracovního prostoru Log Analytics](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) , pokud se nerozhodnete zadat existující. 
 
-* Přímo v clusteru AKS výběrem **stavu** v levém podokně.
-* Výběrem dlaždice **Přehledy kontejnerů monitorování** na stránce clusteru AKS pro vybraný cluster. V Azure Monitoru v levém podokně vyberte **Stav**. 
+>[!NOTE]
+>Pokud se rozhodnete používat Terraformu, musíte mít spuštěného poskytovatele Terraformu Azure RM verze 1.17.0 nebo vyšší.
 
-  ![Možnosti výběru Azure Monitoru pro kontejnery v AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+Chcete-li přidat Azure Monitor pro kontejnery do pracovního prostoru, přečtěte si téma [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) a dokončete profil zahrnutím [**addon_profile**](https://www.terraform.io/docs/providers/azurerm/r/kubernetes_cluster.html#addon_profile) a zadáním **oms_agent**. 
 
-Po povolení monitorování může trvat přibližně 15 minut, než budete moci zobrazit metriky stavu pro cluster. 
+Jakmile povolíte monitorování a všechny úlohy konfigurace budou úspěšně dokončeny, můžete monitorovat výkon clusteru jedním ze dvou způsobů:
+
+* Přímo v clusteru AKS výběrem možnosti **stav** v levém podokně.
+* Výběrem dlaždice **monitorovat službu Container Insights** na stránce clusteru AKS pro vybraný cluster. V Azure Monitor v levém podokně vyberte **stav**. 
+
+  ![Možnosti výběru Azure Monitor pro kontejnery v AKS](./media/container-insights-onboard/kubernetes-select-monitoring-01.png)
+
+Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru. 
 
 ## <a name="verify-agent-and-solution-deployment"></a>Ověření nasazení agenta a řešení
-S verzí *agenta 06072018* nebo novější, můžete ověřit, že agent i řešení byly úspěšně nasazeny. S dřívějšími verzemi agenta můžete ověřit pouze nasazení agenta.
+S agentem verze *06072018* nebo novější můžete ověřit, že se agent i řešení úspěšně nasadily. V dřívějších verzích agenta můžete ověřovat jenom nasazení agenta.
 
 ### <a name="agent-version-06072018-or-later"></a>Agent verze 06072018 nebo novější
-Spusťte následující příkaz a ověřte, zda je agent úspěšně nasazen. 
+Spusťte následující příkaz a ověřte, zda byl agent úspěšně nasazen. 
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Výstup by se měl podobat následujícímu, což znamená, že byl správně nasazen:
+Výstup by měl vypadat podobně jako v následujícím příkladu, což znamená, že byl správně nasazen:
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -62,13 +62,13 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-Chcete-li ověřit nasazení řešení, spusťte následující příkaz:
+Pokud chcete ověřit nasazení řešení, spusťte následující příkaz:
 
 ```
 kubectl get deployment omsagent-rs -n=kube-system
 ```
 
-Výstup by se měl podobat následujícímu, což znamená, že byl správně nasazen:
+Výstup by měl vypadat podobně jako v následujícím příkladu, což znamená, že byl správně nasazen:
 
 ```
 User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
@@ -78,13 +78,13 @@ omsagent   1         1         1            1            3h
 
 ### <a name="agent-version-earlier-than-06072018"></a>Verze agenta starší než 06072018
 
-Chcete-li ověřit, zda je verze agenta Analýzy protokolů vydaná před správnou nasazením *06072018,* spusťte následující příkaz:  
+Pokud chcete ověřit, jestli je verze agenta Log Analytics vydaná před správným nasazením *06072018* , spusťte následující příkaz:  
 
 ```
 kubectl get ds omsagent --namespace=kube-system
 ```
 
-Výstup by se měl podobat následujícímu, což znamená, že byl správně nasazen:  
+Výstup by měl vypadat podobně jako v následujícím příkladu, což znamená, že byl správně nasazen:  
 
 ```
 User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
@@ -92,14 +92,14 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR 
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
 
-## <a name="view-configuration-with-cli"></a>Zobrazit konfiguraci pomocí cli
-Pomocí `aks show` příkazu můžete získat podrobnosti, jako je například povoleno nebo ne, co je ID prostředků pracovního prostoru Analýzy protokolů a souhrnné podrobnosti o clusteru.  
+## <a name="view-configuration-with-cli"></a>Zobrazení konfigurace pomocí rozhraní příkazového řádku
+Pomocí `aks show` příkazu získáte podrobné informace, jako je řešení povoleno nebo ne, co je Log Analytics pracovní prostor ResourceID a souhrnné podrobnosti o clusteru.  
 
 ```azurecli
 az aks show -g <resourceGroupofAKSCluster> -n <nameofAksCluster>
 ```
 
-Po několika minutách příkaz dokončí a vrátí informace o řešení ve formátu JSON.  Výsledky příkazu by měly zobrazovat profil doplňku monitorování a podobat se následujícímu ukázkovému výstupu:
+Po několika minutách se příkaz dokončí a vrátí informace o řešení ve formátu JSON.  Výsledky příkazu by měly zobrazit profil doplňku monitorování a vypadat podobně jako v následujícím příkladu výstupu:
 
 ```
 "addonProfiles": {
@@ -114,6 +114,6 @@ Po několika minutách příkaz dokončí a vrátí informace o řešení ve for
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud při pokusu o připojení k řešení narazíte na problémy, přečtěte si [průvodce odstraňováním potíží](container-insights-troubleshoot.md)
+* Pokud při pokusu o připojení řešení dochází k problémům, přečtěte si [příručku k odstraňování potíží](container-insights-troubleshoot.md) .
 
-* Díky monitorování, které umožňuje shromažďovat využití stavu a prostředků vašeho clusteru AKS a úloh, které na nich běží, najdete informace o [tom, jak používat](container-insights-analyze.md) Azure Monitor pro kontejnery.
+* Díky monitorování s povoleným shromažďováním informací o stavu a využití prostředků v clusteru AKS a úlohách, které se na nich běží, se naučíte, [Jak používat](container-insights-analyze.md) Azure monitor pro kontejnery.

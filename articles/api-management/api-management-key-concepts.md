@@ -14,17 +14,17 @@ ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240363"
 ---
 # <a name="about-api-management"></a>Informace o službě API Management
 
 Služba API Management (APIM) představuje způsob, jak vytvářet konzistentní a moderní brány rozhraní API pro stávající back-endové služby.
 
-Správa rozhraní API pomáhá organizacím publikovat rozhraní API externím, partnerským a interním vývojářům, aby odemkly potenciál svých dat a služeb. Firmy po celém světě hledají způsoby, jak rozšířit svojí činnost na digitální platformě, vytvářejí nové kanály, hledají nové zákazníky a více se propojují s těmi stávajícími. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. S pomocí služby Azure API Management můžete vzít jakýkoli back-end a na jeho základě spustit plnohodnotný program s rozhraním API.
+API Management pomáhá organizacím při publikování rozhraní API pro externí, partnerské a interní vývojáře, aby odemkli potenciál jejich dat a služeb. Firmy po celém světě hledají způsoby, jak rozšířit svojí činnost na digitální platformě, vytvářejí nové kanály, hledají nové zákazníky a více se propojují s těmi stávajícími. Služba API Management nabízí základní možnosti pro zajištění úspěšného programu s rozhraním API prostřednictvím zapojení vývojářů, informací o podniku, analýz, zabezpečení a ochrany. S pomocí služby Azure API Management můžete vzít jakýkoli back-end a na jeho základě spustit plnohodnotný program s rozhraním API.
 
 Tento článek obsahuje přehled běžných scénářů, které zahrnují APIM.  Také poskytuje stručný přehled hlavních komponent systému APIM. Článek dále poskytuje podrobnější přehled jednotlivých komponent.
 
@@ -53,7 +53,7 @@ Systém se skládá z následujících součástí:
   * nastavení zásad, například kvót nebo transformací rozhraní API
   * získání přehledů z analýz
   * správa uživatelů
-* Portál **pro vývojáře** slouží jako hlavní webová prezentace pro vývojáře, kde mohou:
+* **Portál pro vývojáře** slouží jako hlavní web pro vývojáře, kde může:
   
   * Číst dokumentaci k rozhraní API.
   * Vyzkoušet rozhraní API prostřednictvím interaktivní konzoly.
@@ -76,7 +76,7 @@ Rozhraní API jsou základem instance služby API Management. Každé rozhraní 
 
 Další informace najdete v článcích [Vytvoření rozhraní API][How to create APIs] a [Přidání operací do rozhraní API][How to add operations to an API].
 
-## <a name="products"></a><a name="products"> </a> Výrobky
+## <a name="products"></a><a name="products"> </a> Produkty
 Rozhraní API se k vývojářům dostávají prostřednictvím produktů. Produkty v API Management mají jedno nebo několik rozhraní API a mají nakonfigurovaný název, popis a podmínky použití. Produkty můžou být **otevřené** nebo **chráněné**. V případě chráněných produktů se musíte nejdřív přihlásit k jejich odběru a až potom je můžete používat. Otevřené produkty můžete používat bez předplatného. Jakmile je produkt připravený k použití pro vývojáře, můžete ho publikovat. Publikovaný produkt si můžou vývojáři zobrazovat (v případě chráněných produktů je podmínkou předplatné). Schválení předplatného se konfiguruje na úrovni produktu. Buď se může vyžadovat schválení správce, nebo se může schvalovat automaticky.
 
 Ke správě viditelnosti produktů pro vývojáře se používají skupiny. Produkty udělují viditelnost skupinám a vývojáři můžou zobrazovat a odebírat produkty, které jsou viditelné pro skupinu, do které patří. 
@@ -108,7 +108,7 @@ Výrazy zásad můžete použít jako hodnoty atributů nebo textové hodnoty v 
 Úplný seznam zásad služby API Management najdete v [referenční příručce o zásadách][Policy reference]. Další informace o používání a konfiguraci zásad najdete v článku [Zásady služby API Management][API Management policies]. Kurz týkající se vytváření produktu se zásadami kvót a omezování četnosti najdete v článku [Vytvoření a konfigurace pokročilých nastavení produktu][How create and configure advanced product settings].
 
 
-## <a name="developer-portal"></a><a name="developer-portal"> </a> Vývojářský portál
+## <a name="developer-portal"></a><a name="developer-portal"> </a> Portál pro vývojáře
 Portál pro vývojáře je místo, na kterém se můžou vývojáři dozvědět o vašich rozhraních API, zobrazit a volat operace a přihlásit se k odběru produktů. Potenciální zákazníci můžou navštívit portál pro vývojáře, zobrazovat rozhraní API a operace a zaregistrovat se. Adresa URL portálu pro vývojáře je umístěná na řídicím panelu na webu Azure Portal vaší instance služby API Management.
 
 Vzhled portálu pro vývojáře můžete přizpůsobit přidáním vlastního obsahu, přizpůsobením stylů a přidáním brandingu.

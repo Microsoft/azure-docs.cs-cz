@@ -1,6 +1,6 @@
 ---
 title: Vytvoření testovacího prostředí ve službě Azure DevTest Labs | Microsoft Docs
-description: V tomto kurzu vytvoříte testovací prostředí v Azure DevTest Labs pomocí portálu Azure. Správce testovacího prostředí nastaví testovací prostředí, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady.
+description: V tomto kurzu vytvoříte v Azure DevTest Labs testovací prostředí pomocí Azure Portal. Správce testovacího prostředí nastaví testovací prostředí, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 44539c6779afaece6d955a907819ef82d8cd7d5a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239907"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení testovacího prostředí ve službě Azure DevTest Labs
@@ -31,12 +31,12 @@ V tomto kurzu provedete následující akce:
 > * Přidání virtuálních počítačů do testovacího prostředí
 > * Přidání uživatele do role uživatele testovacího prostředí
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-lab"></a>Vytvoření testovacího prostředí
 Následující kroky ukazují postup vytvoření testovacího prostředí ve službě Azure DevTest Labs pomocí webu Azure Portal. 
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V hlavní nabídce na levé straně vyberte **Vytvořit prostředek** (v horní části seznamu), přejděte na **Vývojářské nástroje** a klikněte na **DevTest Labs**. 
 
     ![Nová nabídka DevTest Lab](./media/tutorial-create-custom-lab/new-custom-lab-menu.png)
@@ -49,12 +49,12 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
     6. Zaškrtněte **Připnout na řídicí panel**. Jakmile testovací prostředí vytvoříte, zobrazí se na řídicím panelu. 
 
         ![Vytvoření části testovacího prostředí služby DevTest Labs](./media/tutorial-create-custom-lab/create-custom-lab-blade.png)
-2. Zkontrolujte, zda je testovací prostředí úspěšně vytvořeno při pohledu na oznámení. Vyberte **Přejít na zdroj**.  
+2. Prohlédněte si oznámení a ověřte, že se testovací prostředí vytvořilo úspěšně. Vyberte **Přejít k prostředku**.  
 
     ![Oznámení](./media/tutorial-create-custom-lab/creation-notification.png)
-3. Potvrďte, že se zobrazí **devTest Lab** stránku pro vaše laboratoř. 
+3. Potvrďte, že se na stránce testovacího prostředí zobrazí stránka **DevTest Lab** . 
 
-    ![Domovská stránka pro vaši laboratoř](./media/tutorial-create-custom-lab/lab-home-page.png)
+    ![Domovská stránka pro testovací prostředí](./media/tutorial-create-custom-lab/lab-home-page.png)
 
 ## <a name="add-a-vm-to-the-lab"></a>Přidání virtuálního počítače do testovacího prostředí
 
@@ -68,7 +68,7 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
     3. Jako **Heslo** zadejte heslo pro tohoto uživatele. 
 
         ![Výběr základní image](./media/tutorial-create-custom-lab/new-virtual-machine.png)
-1. Vyberte **karta Upřesnit nastavení.**
+1. Vyberte kartu **Upřesnit nastavení** .
     1. V části **Make this machine claimable** (Nastavit tento počítač jako nárokovatelný) vyberte **Yes** (Ano).
     2. Ujistěte se, že je **počet instancí** nastavený na **1**. Pokud je nastavený na **2**, vytvoří se 2 virtuální počítače s názvy: `<base image name>00' and <base image name>01`. Například: `win10vm00` a `win10vm01`     
     3. Vyberte **Odeslat**. 
@@ -80,16 +80,16 @@ Následující kroky ukazují postup vytvoření testovacího prostředí ve slu
 1. Jakmile se virtuální počítač vytvoří, zobrazí se v seznamu **Nárokovatelné virtuální počítače**. 
 
     > [!NOTE] 
-    > Na stránce **Upřesnit nastavení** můžete nakonfigurovat veřejnou, soukromou nebo sdílenou IP adresu pro virtuální počítač. Když je **sdílená IP adresa** povolena, Azure DevTest Labs automaticky povolí RDP pro virtuální počítače s Windows a SSH pro virtuální počítače s Linuxem. Pokud vytvoříte virtuální chod s **veřejnými IP** adresami, RDP a SSH jsou povoleny bez jakýchkoli změn z DevTest Labs.  
+    > Na stránce **Upřesnit nastavení** můžete pro virtuální počítač nakonfigurovat veřejnou, soukromou nebo sdílenou IP adresu. Pokud je povolená **sdílená IP adresa** , Azure DevTest Labs automaticky POVOLÍ protokol RDP pro virtuální počítače s Windows a pro virtuální počítače se systémem Linux. Pokud vytvoříte virtuální počítače s **veřejnými IP** adresami, POVOLÍ se RDP a SSH bez jakýchkoli změn z DevTest Labs.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Přidání uživatele do role uživatele testovacího prostředí
 
 1. V levé nabídce vyberte **Configuration and policies** (Konfigurace a zásady). 
 
     ![Konfigurace a zásady](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. V nabídce vyberte **Ovládací prvek přístupu (IAM)** a na panelu nástrojů vyberte **+ Přidat přiřazení role.** 
+1. V nabídce vyberte **řízení přístupu (IAM)** a na panelu nástrojů vyberte **+ Přidat přiřazení role** . 
 
-    ![Tlačítko Přidat přiřazení role](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
+    ![Přidat přiřazení role – tlačítko](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
 1. Na stránce **Add permissions** (Přidat oprávnění) proveďte následující akce:
     1. V části **Role** (Role) vyberte **DevTest Labs User** (Uživatel služby DevTest Labs). 
     2. Vyberte **uživatele**, kterého chcete přidat. 

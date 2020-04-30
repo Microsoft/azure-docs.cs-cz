@@ -1,23 +1,23 @@
 ---
-title: Správa úloh zálohování pomocí rozhraní REST API
-description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálohování a obnovení azure backup pomocí rozhraní REST API.
+title: Správa úloh zálohování pomocí REST API
+description: V tomto článku se dozvíte, jak sledovat a spravovat úlohy zálohování a obnovení Azure Backup pomocí REST API.
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
 ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273524"
 ---
-# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí rozhraní REST API
+# <a name="track-backup-and-restore-jobs-using-rest-api"></a>Sledování úloh zálohování a obnovení pomocí REST API
 
-Služba Azure Backup aktivuje úlohy, které běží na pozadí v různých scénářích, jako je aktivace zálohování, obnovení operací, zakázání zálohování. Tyto úlohy lze sledovat pomocí jejich ID.
+Služba Azure Backup Service spouští úlohy, které běží na pozadí v různých scénářích, jako je například aktivace zálohování, obnovení operací, zakázání zálohování. Tyto úlohy je možné sledovat pomocí jejich ID.
 
-## <a name="fetch-job-information-from-operations"></a>Načtení informací o úloze z operací
+## <a name="fetch-job-information-from-operations"></a>Načíst informace o úloze z operací
 
-Operace, jako je například spuštění zálohování vždy vrátí jobID. Příklad: Konečná odpověď [operace rozhraní REST API pro aktivaci je](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) následující:
+Operace, jako je například aktivace zálohování, vždy vrátí jobID. Příklad: konečná odpověď [operace zálohování REST API Backup](backup-azure-arm-userestapi-backupazurevms.md#example-responses-3) je následující:
 
 ```http
 {
@@ -33,7 +33,7 @@ Operace, jako je například spuštění zálohování vždy vrátí jobID. Př�
 }
 ```
 
-Úloha zálohování virtuálního počítače Azure je označena polem "jobId" a lze ji [sledovat,](https://docs.microsoft.com/rest/api/backup/jobdetails/) jak je zde uvedeno pomocí jednoduchého požadavku *GET.*
+Úloha zálohování virtuálních počítačů Azure je identifikovaná polem jobId a je možné ji sledovat tak, jak je uvedeno [tady](https://docs.microsoft.com/rest/api/backup/jobdetails/) , pomocí jednoduché žádosti *Get* .
 
 ## <a name="tracking-the-job"></a>Sledování úlohy
 
@@ -41,17 +41,17 @@ Operace, jako je například spuštění zálohování vždy vrátí jobID. Př�
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupJobs/{jobName}?api-version=2019-05-13
 ```
 
-Je `{jobName}` "jobId" je uvedeno výše. Odpověď je vždy 200 OK s polem "stav", které označuje aktuální stav úlohy. Jakmile je "Dokončeno" nebo "CompletedWithWarnings", 'extendedInfo' sekce odhaluje další podrobnosti o úloze.
+`{jobName}` Je výše uvedená zpráva "jobId". Odpověď je vždy 200 OK s polem "status", které indikuje aktuální stav úlohy. Až bude "dokončeno" nebo "CompletedWithWarnings", sekce "extendedInfo" odhalí další podrobnosti o úloze.
 
 ### <a name="response"></a>Odpověď
 
-|Name (Název)  |Typ  |Popis  |
+|Název  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     | [JobResource](https://docs.microsoft.com/rest/api/backup/jobdetails/get#jobresource)        | OK        |
 
 #### <a name="example-response"></a>Příklad odpovědi
 
-Po odeslání *identifikátoru* URI get je vrácena odpověď 200 (OK).
+Po odeslání identifikátoru URI *Get* se vrátí odpověď 200 (ok).
 
 ```http
 HTTP/1.1 200 OK
