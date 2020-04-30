@@ -1,5 +1,5 @@
 ---
-title: Úvodní příručka – vytvoření objektu blob pomocí portálu Azure
+title: Rychlý Start – vytvoření objektu BLOB s Azure Portal
 titleSuffix: Azure Storage
 description: V tomto rychlém startu použijete v úložišti objektů (blob) web Azure Portal. Pak použijete Azure Portal k nahrání objektu blob do služby Azure Storage, stažení objektu blob a výpisu objektů blob v kontejneru.
 services: storage
@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: tamram
 ms.openlocfilehash: a9a048801c6bea74e6b5318eeedf76f92709bee6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535161"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal
@@ -29,9 +29,9 @@ V tomto rychlém startu se naučíte použít web [Azure Portal](https://portal.
 Při vytváření kontejneru na webu Azure Portal použijte tento postup:
 
 1. Na webu Azure Portal přejděte k novému účtu úložiště.
-2. V levé nabídce pro účet úložiště přejděte do části **Služba objektu Blob** a vyberte **Kontejnery**.
+2. V levé nabídce účtu úložiště přejděte do části **BLOB Service** a pak vyberte **kontejnery**.
 3. Vyberte tlačítko **+ Kontejner**.
-4. Zadejte název nového kontejneru. Název kontejneru musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a spojovníky (-). Další informace o názvech kontejnerů a objektů blob najdete [v tématu Pojmenování a odkazování na kontejnery, objekty BLOB a metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
+4. Zadejte název nového kontejneru. Název kontejneru musí obsahovat malá písmena, musí začínat písmenem nebo číslicí a smí obsahovat jenom písmena, číslice a spojovníky (-). Další informace o názvech kontejnerů a objektů BLOB najdete v tématu [pojmenování a odkazování kontejnerů, objektů BLOB a metadat](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 5. Nastavte úroveň veřejného přístupu ke kontejneru. Výchozí úroveň je **Privátní (bez anonymního přístupu)**.
 6. Kliknutím na **OK** kontejner vytvoříte.
 
@@ -44,12 +44,12 @@ Objekty blob bloku se skládají z bloků dat sestavených do objektu blob. Vět
 Pokud chcete do nového kontejneru na webu Azure Portal nahrát objekt blob bloku, použijte tento postup:
 
 1. Na webu Azure Portal přejděte do kontejneru, který jste vytvořili v předchozí části.
-1. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Tento kontejner je nový, takže ještě nebude obsahovat žádné objekty BLOB.
-1. Výběrem tlačítka **Nahrát** otevřete okno pro nahrávání a procházejte místní systém souborů a vyhledejte soubor, který chcete nahrát jako objekt blob bloku. Volitelně můžete rozšířit upřesňující oddíl a nakonfigurovat další nastavení pro operaci nahrávání.
+1. Vyberte tento kontejner. Zobrazí se seznam objektů blob, které obsahuje. Tento kontejner je nový, takže zatím neobsahuje žádné objekty blob.
+1. Kliknutím na tlačítko **nahrát** otevřete okno Odeslat a vyhledejte soubor, který se má nahrát jako objekt blob bloku, a přejděte do místního systému souborů. Volitelně můžete rozšířit oddíl Upřesnit a nakonfigurovat další nastavení operace nahrávání.
 
     ![Snímek obrazovky ukazující, jak nahrát objekt blob z místního disku](media/storage-quickstart-blobs-portal/upload-blob.png)
 
-1. Kliknutím na tlačítko **Nahrát** nahrajete objekt blob.
+1. Kliknutím na tlačítko **nahrát** nahrajte objekt BLOB.
 1. Tímto způsobem můžete nahrát libovolný počet objektů blob. Uvidíte, že nové objekty blob jsou teď zařazené v kontejneru.
 
 ## <a name="download-a-block-blob"></a>Stažení objektu blob bloku
