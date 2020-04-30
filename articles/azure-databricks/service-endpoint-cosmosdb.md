@@ -1,6 +1,6 @@
 ---
-title: Kurz – implementace datových cihel Azure s koncovým bodem Cosmos DB
-description: Tento kurz popisuje, jak implementovat Azure Databricks ve virtuální síti s koncovým bodem služby povolené pro Cosmos DB.
+title: Kurz – implementace Azure Databricks s koncovým bodem Cosmos DB
+description: V tomto kurzu se dozvíte, jak implementovat Azure Databricks ve virtuální síti s povoleným koncovým bodem služby pro Cosmos DB.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
@@ -8,15 +8,15 @@ ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 04/17/2019
 ms.openlocfilehash: 4ac8c01e986cf1f3158c615a0791ba476e5bf1bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74706163"
 ---
-# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Kurz: Implementace Datových cihel Azure s koncovým bodem Cosmos DB
+# <a name="tutorial-implement-azure-databricks-with-a-cosmos-db-endpoint"></a>Kurz: implementace Azure Databricks s koncovým bodem Cosmos DB
 
-Tento kurz popisuje, jak implementovat virtuální sítě vložené Databricks prostředí s koncovým bodem služby povoleno pro Cosmos DB.
+V tomto kurzu se dozvíte, jak implementovat virtuální síť s vloženým prostředím datacihly s koncovým bodem služby, který je povolený pro Cosmos DB.
 
 Co se v tomto kurzu naučíte:
 
@@ -25,110 +25,110 @@ Co se v tomto kurzu naučíte:
 > * Vytvoření koncového bodu služby Cosmos DB
 > * Vytvoření účtu Cosmos DB a import dat
 > * Vytvoření clusteru Azure Databricks
-> * Dotaz Cosmos DB z poznámkového bloku Azure Databricks
+> * Dotazování Cosmos DB z poznámkového bloku Azure Databricks
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, postupujte takto:
+Než začnete, udělejte toto:
 
-* Vytvořte [pracovní prostor Azure Databricks ve virtuální síti](quickstart-create-databricks-workspace-vnet-injection.md).
+* Vytvořte [Azure Databricks pracovní prostor ve virtuální síti](quickstart-create-databricks-workspace-vnet-injection.md).
 
 * Stáhněte si [konektor Spark](https://search.maven.org/remotecontent?filepath=com/microsoft/azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.4/azure-cosmosdb-spark_2.4.0_2.11-1.3.4-uber.jar).
 
-* Stáhněte si ukázková data z [národních center NOAA pro informace o životním prostředí](https://www.ncdc.noaa.gov/stormevents/). Vyberte stav nebo oblast a vyberte **Hledat**. Na další stránce přijměte výchozí hodnoty a vyberte **Hledat**. Pak vyberte **CSV Download** na levé straně stránky ke stažení výsledků.
+* Stáhněte si ukázková data z [národních Center NOAA pro informace o prostředí](https://www.ncdc.noaa.gov/stormevents/). Vyberte stav nebo oblast a vyberte **Hledat**. Na další stránce přijměte výchozí hodnoty a vyberte **Hledat**. Pak na levé straně stránky vyberte **Stáhnout soubor CSV** a stáhněte výsledky.
 
-* Stáhněte si [předkompilovaný binární soubor](https://aka.ms/csdmtool) nástroje pro migraci dat Azure Cosmos DB.
+* Stáhněte [předem kompilovaný binární soubor](https://aka.ms/csdmtool) nástroje pro migraci dat Azure Cosmos DB.
 
 ## <a name="create-a-cosmos-db-service-endpoint"></a>Vytvoření koncového bodu služby Cosmos DB
 
-1. Po nasazení pracovního prostoru Azure Databricks do virtuální sítě přejděte do virtuální sítě na [webu Azure Portal](https://portal.azure.com). Všimněte si veřejných a soukromých podsítí, které byly vytvořeny prostřednictvím nasazení Databricks.
+1. Po nasazení pracovního prostoru Azure Databricks do virtuální sítě přejděte do [Azure Portal](https://portal.azure.com)na virtuální síť. Všimněte si veřejných a privátních podsítí, které byly vytvořeny pomocí nasazení datacihly.
 
    ![Podsítě virtuální sítě](./media/service-endpoint-cosmosdb/virtual-network-subnets.png)
 
-2. Vyberte *veřejnou podsíť* a vytvořte koncový bod služby Cosmos DB. Pak **uložit**.
+2. Vyberte *veřejnou podsíť* a vytvořte koncový bod služby Cosmos DB. Pak **uložte**.
    
    ![Přidání koncového bodu služby Cosmos DB](./media/service-endpoint-cosmosdb/add-cosmosdb-service-endpoint.png)
 
 ## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB
 
-1. Otevřete web Azure Portal. Na levé horní straně obrazovky vyberte **Vytvořit prostředek > databáze > Azure Cosmos DB**.
+1. Otevřete web Azure Portal. V levé horní části obrazovky vyberte **vytvořit prostředek > databáze > Azure Cosmos DB**.
 
-2. Vyplňte **podrobnosti instance** na kartě **Základy** s následujícími nastaveními:
+2. Vyplňte **Podrobnosti instance** na kartě **základy** s následujícím nastavením:
 
    |Nastavení|Hodnota|
    |-------|-----|
-   |Předplatné|*vaše předplatné*|
+   |Předplatné|*Vaše předplatné*|
    |Skupina prostředků|*vaše skupina prostředků*|
-   |Název účtu|db-vnet-service-endpoint|
-   |rozhraní API|Core (SQL)|
+   |Název účtu|DB-VNet-Service-Endpoint|
+   |Rozhraní API|Core (SQL)|
    |Umístění|USA – západ|
    |Geografická redundance|Zakázat|
    |Zápisy pro více oblastí|Povolení|
 
    ![Přidání koncového bodu služby Cosmos DB](./media/service-endpoint-cosmosdb/create-cosmosdb-account-basics.png)
 
-3. Vyberte kartu **Síť** a nakonfigurujte virtuální síť. 
+3. Vyberte kartu **síť** a nakonfigurujte svou virtuální síť. 
 
-   a. Zvolte virtuální síť, kterou jste vytvořili jako podmínku, a pak vyberte *veřejnou podsíť*. Všimněte si, že *privátní podsíť* má poznámku *"Microsoft AzureCosmosDB" koncový bod chybí '*. Důvodem je, že jste povolili pouze koncový bod služby Cosmos DB ve *veřejné podsíti*.
+   a. Zvolte virtuální síť, kterou jste vytvořili jako požadavek, a pak vyberte *Veřejná podsíť*. Všimněte si, že v *privátní podsíti* *chybí koncový bod Microsoft AzureCosmosDB*. Důvodem je to, že jste povolili koncový bod služby Cosmos DB ve *veřejné podsíti*.
 
-   b. Ujistěte se, že máte povolený **povolený přístup z webu Azure Portal.** Toto nastavení umožňuje přístup k účtu Cosmos DB z portálu Azure. Pokud je tato možnost nastavena na **možnost Odepřít**, zobrazí se při pokusu o přístup k účtu chyby. 
+   b. Ujistěte se, že máte povolený **přístup z Azure Portal** . Toto nastavení umožňuje přístup k účtu Cosmos DB z Azure Portal. Pokud je tato možnost nastavená na **Odepřít**, při pokusu o přístup k vašemu účtu se zobrazí chyby. 
 
    > [!NOTE]
-   > Není nutné pro tento kurz, ale můžete také povolit *povolit přístup z mé IP,* pokud chcete mít přístup k účtu Cosmos DB z místního počítače. Například pokud se připojujete ke svému účtu pomocí Cosmos DB SDK, je třeba povolit toto nastavení. Pokud je zakázán, zobrazí se chyby "Přístup byl odepřen".
+   > V tomto kurzu to není nutné, ale pokud chcete mít přístup k vašemu Cosmos DB účtu z místního počítače, můžete povolit *přístup i z této IP adresy* . Pokud se například připojujete k účtu pomocí Cosmos DB SDK, musíte povolit toto nastavení. Pokud je zakázaný, zobrazí se chyby "přístup byl odepřen".
 
-   ![Nastavení sítě účtu Cosmos DB](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
+   ![Nastavení sítě Cosmos DB účtu](./media/service-endpoint-cosmosdb/create-cosmosdb-account-network.png)
 
-4. Vyberte **Revize + Vytvořit**a pak **Vytvořit** pro vytvoření účtu Cosmos DB uvnitř virtuální sítě.
+4. Vyberte **zkontrolovat + vytvořit**a pak **vytvořit** a vytvořte účet Cosmos DB v rámci virtuální sítě.
 
-5. Po vytvoření účtu Cosmos DB přejděte do části **Klíče** v části **Nastavení**. Zkopírujte primární připojovací řetězec a uložte jej do textového editoru pro pozdější použití.
+5. Po vytvoření účtu Cosmos DB přejděte na **klíče** v části **Nastavení**. Zkopírujte primární připojovací řetězec a uložte ho v textovém editoru pro pozdější použití.
 
     ![Stránka klíčů účtu Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-keys.png)
 
-6. Vyberte **Průzkumník dat** a **Nová kolekce,** chcete-li do účtu Cosmos DB přidat novou databázi a kolekci.
+6. Vyberte **Průzkumník dat** a **novou kolekci** a přidejte do svého účtu Cosmos DB novou databázi a kolekci.
 
-    ![Nová kolekce Cosmos DB](./media/service-endpoint-cosmosdb/new-collection.png)
+    ![Cosmos DB novou kolekci](./media/service-endpoint-cosmosdb/new-collection.png)
 
 ## <a name="upload-data-to-cosmos-db"></a>Nahrání dat do Cosmos DB
 
-1. Otevřete verzi grafického rozhraní [nástroje pro migraci dat pro cosmos DB](https://aka.ms/csdmtool), **Dtui.exe**.
+1. Otevřete verzi grafického rozhraní [Nástroje pro migraci dat pro Cosmos DB](https://aka.ms/csdmtool) **Dtui. exe**.
 
     ![Nástroj pro migraci dat Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-data-migration-tool.png)
 
-2. Na kartě **Informace o zdroji** vyberte v rozevíracím souboru **Importovat z** položku Soubory **CSV.** Pak vyberte **Přidat soubory** a přidejte csv dat bouře, které jste stáhli jako předpoklad.
+2. Na kartě **zdrojové informace** vyberte v rozevíracím seznamu **Import z** možnost **soubory CSV** . Pak vyberte **Přidat soubory** a přidejte soubor CSV s daty, který jste stáhli jako požadavek.
 
-    ![Informace o zdroji zdroje nástroje pro migraci dat Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
+    ![Cosmos DB informace o zdroji nástroje pro migraci dat](./media/service-endpoint-cosmosdb/cosmos-source-information.png)
 
-3. Na kartě **Informace o cíli** zadejte připojovací řetězec. Formát připojovacího řetězce je `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. AccountEndpoint a AccountKey jsou zahrnuty v primárním připojovacím řetězci, který jste uložili v předchozí části. Připojte `Database=<your database name>` jej na konec připojovacího řetězce a vyberte **Ověřit**. Potom přidejte název kolekce a klíč oddílu.
+3. Na kartě **cílové informace** zadejte připojovací řetězec. Formát připojovacího řetězce je `AccountEndpoint=<URL>;AccountKey=<key>;Database=<database>`. AccountEndpoint a AccountKey jsou součástí primárního připojovacího řetězce, který jste uložili v předchozí části. Přidejte `Database=<your database name>` na konec připojovacího řetězce a vyberte **ověřit**. Pak přidejte název kolekce a klíč oddílu.
 
-    ![Informace o cíli nástroje pro migraci dat Cosmos DB](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
+    ![Cosmos DB informace o cíli nástroje pro migraci dat](./media/service-endpoint-cosmosdb/cosmos-target-information.png)
 
-4. Vyberte **Další,** dokud se nedostanete na stránku Souhrn. Potom vyberte **Importovat**.
+4. Vyberte **Další** , dokud se nedostanete na stránku Souhrn. Pak vyberte **importovat**.
 
 ## <a name="create-a-cluster-and-add-library"></a>Vytvoření clusteru a přidání knihovny
 
-1. Přejděte na azure databricks službu na [webu Azure portal](https://portal.azure.com) a vyberte Spustit pracovní **prostor**.
+1. Přejděte ke službě Azure Databricks v [Azure Portal](https://portal.azure.com) a vyberte **Spustit pracovní prostor**.
 
-   ![Spuštění pracovního prostoru Databricks](./media/service-endpoint-cosmosdb/launch-workspace.png)
+   ![Spustit pracovní prostor datacihly](./media/service-endpoint-cosmosdb/launch-workspace.png)
 
-2. Vytvořte nový cluster. Zvolte název clusteru a přijměte zbývající výchozí nastavení.
+2. Vytvořte nový cluster. Vyberte název clusteru a potvrďte zbývající výchozí nastavení.
 
    ![Nové nastavení clusteru](./media/service-endpoint-cosmosdb/create-cluster.png)
 
-3. Po vytvoření clusteru přejděte na stránku clusteru a **Install New** vyberte kartu **Knihovny.**
+3. Po vytvoření clusteru přejděte na stránku clusteru a vyberte kartu **knihovny** . Vyberte **nainstalovat novou** a nahrajte soubor JAR konektoru Sparku, abyste mohli knihovnu nainstalovat.
 
-    ![Instalace knihovny konektorů Spark](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
+    ![Nainstalovat knihovnu Spark Connector](./media/service-endpoint-cosmosdb/install-cosmos-connector-library.png)
 
-    Můžete ověřit, zda byla knihovna nainstalována na kartě **Knihovny.**
+    Můžete ověřit, že se knihovna nainstalovala na kartu **knihovny** .
 
-    ![Karta Knihovny clusteru Databricks](./media/service-endpoint-cosmosdb/installed-library.png)
+    ![Karta knihovny clusteru datacihly](./media/service-endpoint-cosmosdb/installed-library.png)
 
-## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Dotaz Cosmos DB z poznámkového bloku Databricks
+## <a name="query-cosmos-db-from-a-databricks-notebook"></a>Dotazování Cosmos DB z poznámkového bloku datacihly
 
-1. Přejděte do pracovního prostoru Azure Databricks a vytvořte nový poznámkový blok pythonu.
+1. Přejděte do pracovního prostoru Azure Databricks a vytvořte nový Poznámkový blok Python.
 
-    ![Vytvoření nového poznámkového bloku Databricks](./media/service-endpoint-cosmosdb/new-python-notebook.png)
+    ![Vytvoření nového poznámkového bloku datacihly](./media/service-endpoint-cosmosdb/new-python-notebook.png)
 
-2. Spusťte následující kód pythonu a nastavte konfiguraci připojení Cosmos DB. Odpovídajícím způsobem změňte **koncový bod**, **klíč Masterkey**, **databázi**a **kolekci.**
+2. Spusťte následující kód Pythonu, abyste nastavili konfiguraci Cosmos DBho připojení. Odpovídajícím způsobem změňte **koncový bod**, **masterkey**, **databázi**a **kolekci** .
 
     ```python
     connectionConfig = {
@@ -143,33 +143,33 @@ Než začnete, postupujte takto:
     }
     ```
 
-3. Pomocí následujícího kódu pythonu načtěte data a vytvořte dočasné zobrazení.
+3. K načtení dat a vytvoření dočasného zobrazení použijte následující kód Pythonu.
 
     ```python
     users = spark.read.format("com.microsoft.azure.cosmosdb.spark").options(**connectionConfig).load()
     users.createOrReplaceTempView("storm")
     ```
 
-4. Pomocí následujícího příkazu magie spusťte příkaz SQL, který vrací data.
+4. K provedení příkazu SQL, který vrací data, použijte následující příkaz Magic.
 
     ```python
     %sql
     select * from storm
     ```
 
-    Úspěšně jste připojili pracovní prostor Databricks vložených virtuální sítí k prostředku Cosmos DB s povoleným koncovým bodem služby. Další informace o tom, jak se připojit ke službě Cosmos DB, najdete [v tématu Konektor Azure Cosmos DB pro Apache Spark](https://github.com/Azure/azure-cosmosdb-spark).
+    Úspěšně jste propojili pracovní prostor datacihlů vložený do virtuální sítě do prostředku Cosmos DBho koncového bodu služby. Další informace o tom, jak se připojit k Cosmos DB, najdete v tématu [konektor Azure Cosmos DB pro Apache Spark](https://github.com/Azure/azure-cosmosdb-spark).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete, odstraňte skupinu prostředků, pracovní prostor Azure Databricks a všechny související prostředky. Odstraněníúlohy zabrání zbytečné fakturaci. Pokud plánujete v budoucnu používat pracovní prostor Azure Databricks, můžete cluster zastavit a restartovat později. Pokud nebudete nadále používat tento pracovní prostor Azure Databricks, odstraňte všechny prostředky, které jste vytvořili v tomto kurzu pomocí následujících kroků:
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, pracovní prostor Azure Databricks a všechny související prostředky. Odstranění úlohy se vyhne zbytečnému fakturaci. Pokud plánujete použít pracovní prostor Azure Databricks v budoucnu, můžete cluster zastavit a restartovat ho později. Pokud nebudete nadále používat tento Azure Databricks pracovní prostor, odstraňte všechny prostředky, které jste vytvořili v tomto kurzu, pomocí následujících kroků:
 
-1. V levé nabídce na webu Azure Portal klikněte na **Skupiny prostředků** a potom klikněte na název skupiny prostředků, kterou jste vytvořili.
+1. V nabídce na levé straně Azure Portal klikněte na **skupiny prostředků** a pak klikněte na název skupiny prostředků, kterou jste vytvořili.
 
-2. Na stránce skupiny prostředků vyberte **Odstranit**, zadejte název prostředku, který chcete odstranit, do textového pole a pak znovu vyberte **Odstranit.**
+2. Na stránce skupiny prostředků vyberte **Odstranit**, do textového pole zadejte název prostředku, který chcete odstranit, a pak vyberte **Odstranit** znovu.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili pracovní prostor Azure Databricks do virtuální sítě a použili konektor Cosmos DB Spark k dotazování dat Cosmos DB z Databricks. Další informace o práci s Azure Databricks ve virtuální síti nadále kurz pro použití SQL Serveru s Azure Databricks.
+V tomto kurzu jste nasadili pracovní prostor Azure Databricks do virtuální sítě a použili Cosmos DB konektor Spark k dotazování Cosmos DB dat z datových cihl. Další informace o práci s Azure Databricks ve virtuální síti najdete v kurzu použití SQL Server s Azure Databricks.
 
 > [!div class="nextstepaction"]
-> [Kurz: Dotaz na kontejner SQL Server Linux Docker ve virtuální síti z poznámkového bloku Azure Databricks](vnet-injection-sql-server.md)
+> [Kurz: dotazování kontejneru Docker SQL Server Linux ve virtuální síti z poznámkového bloku Azure Databricks](vnet-injection-sql-server.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Aplikace Java pro načtení ukázkových dat do tabulky rozhraní CASSANDRA API v Azure Cosmos DB'
-description: Tento kurz ukazuje, jak načíst ukázková uživatelská data do tabulky rozhraní API Cassandra v Azure Cosmos DB pomocí java aplikace.
+title: 'Kurz: aplikace Java pro načtení ukázkových dat do rozhraní API Cassandra tabulky v Azure Cosmos DB'
+description: V tomto kurzu se dozvíte, jak načíst ukázková uživatelská data do tabulky rozhraní API Cassandra v Azure Cosmos DB pomocí aplikace Java.
 author: kanshiG
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
@@ -10,15 +10,15 @@ ms.author: govindk
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Java application to load data to a Cassandra API table in Azure Cosmos DB so that customers can store and manage the key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
 ms.openlocfilehash: 66c292bcb02e3b2b215cabe4968fa30a45422cef
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75445650"
 ---
-# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Kurz: Načtení ukázkových dat do tabulky rozhraní API Cassandra v Azure Cosmos DB
+# <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>Kurz: načtení ukázkových dat do rozhraní API Cassandra tabulky v Azure Cosmos DB
 
-Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. Účet rozhraní CASSAndRo API v Azure Cosmos DB můžete použít k ukládání a správě dat klíče a hodnoty. Tento kurz ukazuje, jak načíst ukázková uživatelská data do tabulky v účtu rozhraní API Cassandra v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a načte uživatelská data, jako je ID uživatele, uživatelské jméno a uživatelské město. 
+Jako vývojář můžete mít aplikace, které používají páry klíč/hodnota. K ukládání a správě dat o klíčích a hodnotách můžete použít účet rozhraní API Cassandra v Azure Cosmos DB. V tomto kurzu se dozvíte, jak načíst ukázková uživatelská data do tabulky v rozhraní API Cassandra účtu v Azure Cosmos DB pomocí aplikace Java. Aplikace Java používá [ovladač Java](https://github.com/datastax/java-driver) a načítá uživatelská data, jako je ID uživatele, jméno uživatele a město uživatele. 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -26,17 +26,17 @@ Tento kurz se zabývá následujícími úkony:
 > * Načtení dat do tabulky Cassandra
 > * Spuštění aplikace
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Tento článek patří do vícedílného kurzu. Než začnete s tímto [dokumentem,](create-cassandra-api-account-java.md)vytvořte účet cassandra API, keyspace a tabulku .   
+* Tento článek patří do vícedílného kurzu. Než začnete s tímto dokumentem, ujistěte se, že jste [vytvořili rozhraní API Cassandra účet, prostor a tabulku](create-cassandra-api-account-java.md).   
 
 ## <a name="load-data-into-the-table"></a>Načtení dat do tabulky
 
 Pomocí následujícího postupu můžete načíst data do tabulky rozhraní API Cassandra:
 
-1. Otevřete soubor UserRepository.java ve složce "src\main\java\com\azure\cosmosdb\cassandra" a přidejte kód pro vložení polí user_id, user_name a user_bcity do tabulky:
+1. Otevřete soubor "UserRepository. Java" ve složce "src\main\java\com\azure\cosmosdb\cassandra" a přidejte kód pro vložení user_id, user_name a user_bcity pole do tabulky:
 
    ```java
    /**
@@ -62,7 +62,7 @@ Pomocí následujícího postupu můžete načíst data do tabulky rozhraní API
    }
    ```
  
-2. Otevřete soubor UserProfile.java ve složce "src\main\java\com\azure\cosmosdb\cassandra". Tato třída obsahuje hlavní metodu, která volá metody createKeyspace a createTable, které jste definovali dříve. Teď připojte následující kód, aby se vložila nějaká ukázková data do tabulky rozhraní API Cassandra.
+2. Ve složce src\main\java\com\azure\cosmosdb\cassandra otevřete soubor UserProfile. Java. Tato třída obsahuje hlavní metodu, která volá metody createKeyspace a createTable, které jste definovali dříve. Teď připojte následující kód, aby se vložila nějaká ukázková data do tabulky rozhraní API Cassandra.
 
    ```java
    //Insert rows into user table
@@ -76,7 +76,7 @@ Pomocí následujícího postupu můžete načíst data do tabulky rozhraní API
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 
-Otevřete příkazový řádek nebo okno terminálu a změňte cestu ke složce, kde jste projekt vytvořili. Spusťte příkaz "mvn clean install" a vygenerujte soubor cosmosdb-cassandra-examples.jar v cílové složce a spusťte aplikaci. 
+Otevřete příkazový řádek nebo okno terminálu a změňte cestu ke složce na místo, kde jste projekt vytvořili. Spusťte příkaz "MVN Clean Install", který vygeneruje soubor cosmosdb-Cassandra-Examples. jar v cílové složce a spustí aplikaci. 
 
 ```bash
 cd "cassandra-demo"

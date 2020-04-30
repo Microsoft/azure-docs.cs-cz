@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Odesílání dat zařízení přes transparentní bránu – Machine Learning na Azure IoT Edge'
-description: Tento kurz ukazuje, jak můžete použít vývojový počítač jako simulované zařízení IoT Edge k odesílání dat do služby IoT Hub procházením zařízení nakonfigurovaného jako transparentní brána.
+title: 'Kurz: odesílání dat zařízení přes transparentní bránu – Machine Learning v Azure IoT Edge'
+description: V tomto kurzu se dozvíte, jak můžete použít vývojový počítač jako simulované IoT Edge zařízení a posílat data do IoT Hub tím, že projdete zařízení nakonfigurované jako transparentní bránu.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,65 +9,65 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 50f339b257110f0a5dc0ac08b9f40043ee384afb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74706915"
 ---
-# <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: Odesílání dat přes transparentní bránu
+# <a name="tutorial-send-data-via-transparent-gateway"></a>Kurz: posílání dat přes transparentní bránu
 
 > [!NOTE]
-> Tento článek je součástí řady pro kurz o používání Azure Machine Learning na IoT Edge. Pokud jste k tomuto článku dorazili přímo, doporučujeme vám začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) v sérii pro dosažení nejlepších výsledků.
+> Tento článek je součástí série, kde najdete kurz použití Azure Machine Learning v IoT Edge. Pokud jste dorazili přímo do tohoto článku, doporučujeme začít s [prvním článkem](tutorial-machine-learning-edge-01-intro.md) řady, abyste dosáhli nejlepších výsledků.
 
-V tomto článku znovu použijeme vývojový počítač jako simulované zařízení, ale místo odesílání dat přímo do služby IoT Hub zařízení odesílá data do zařízení IoT Edge nakonfigurovaného jako transparentní brána.
+V tomto článku se znovu používá vývojový počítač jako simulované zařízení, ale místo odesílání dat přímo do IoT Hub zařízení odesílá data do IoT Edge zařízení nakonfigurovaného jako transparentní bránu.
 
-Sledujeme provoz zařízení IoT Edge, zatímco simulované zařízení odesílá data. Po dokončení provozu zařízení se podíváme na data v našem účtu úložiště, abychom ověřili, že vše fungovalo podle očekávání.
+Sledujeme operace IoT Edge zařízení, zatímco simulované zařízení odesílá data. Jakmile se zařízení dokončí, podíváme se na data v našem účtu úložiště, abyste ověřili, co všechno fungovalo podle očekávání.
 
 Tento krok obvykle provádí vývojář cloudu nebo zařízení.
 
-## <a name="review-device-harness"></a>Zkontrolovat postroj zařízení
+## <a name="review-device-harness"></a>Zkontrolovat svazek zařízení
 
-Znovu použít [DeviceHarness projektu](tutorial-machine-learning-edge-03-generate-data.md) simulovat downstream (nebo list) zařízení. Připojení k průhledné bráně vyžaduje dvě další věci:
+Znovu použijte [projekt DeviceHarness](tutorial-machine-learning-edge-03-generate-data.md) k simulaci zařízení pro příjem dat (nebo list). Připojení k transparentní bráně vyžaduje dvě další věci:
 
-* Zaregistrujte certifikát, aby navazující zařízení (v tomto případě náš vývojový počítač) důvěřoval certifikační autoritě používané runtime IoT Edge.
-* Přidejte plně kvalifikovaný název domény (FQDN) hraniční brány do připojovacího řetězce zařízení.
+* Zaregistrujte certifikát, aby se zařízení pro příjem dat (v tomto případě náš vývojový počítač) důvěřovalo certifikační autoritě, kterou používá modul runtime IoT Edge.
+* Přidejte do připojovacího řetězce zařízení plně kvalifikovaný název domény (FQDN) hraniční brány.
 
-Podívejte se na kód a zjistěte, jak jsou implementovány tyto dvě položky.
+Podívejte se na kód a podívejte se, jak jsou tyto dvě položky implementovány.
 
-1. Ve vývojovém počítači otevřete visual studio kód.
+1. Na vývojovém počítači otevřete Visual Studio Code.
 
-2. Pomocí**složky Otevřít** **soubor...** > \\otevřete nástroj C:\\\\zdroj IoTEdgeAndMlSample DeviceHarness.
+2. Pomocí **File** > **otevřené složky** souborů otevřete soubor C:\\source\\IoTEdgeAndMlSample\\DeviceHarness.
 
-3. Podívejte se na Metodu InstallCertificate() v Program.cs.
+3. Podívejte se na metodu InstallCertificate () v Program.cs.
 
-4. Všimněte si, že pokud kód najde cestu k certifikátu, volá metodu CertificateManager.InstallCACert k instalaci certifikátu do počítače.
+4. Všimněte si, že pokud kód nalezne cestu k certifikátu, zavolá metodu CertificateManager. InstallCACert pro instalaci certifikátu do počítače.
 
-5. Nyní se podívejte na metodu GetIotHubDevice ve třídě TurbofanDevice.
+5. Nyní se podívejte na metodu GetIotHubDevice třídy TurbofanDevice.
 
-6. Když uživatel určí hlavní název sítě brány pomocí možnosti "-g", tato hodnota je předána této metodě jako gatewayFqdn, který získá připojen k připojovacímu řetězci zařízení.
+6. Když uživatel určí plně kvalifikovaný název domény brány pomocí možnosti "-g", tato hodnota se předává této metodě jako gatewayFqdn, která se připojí k připojovacímu řetězci zařízení.
 
    ```csharp
    connectionString = $"{connectionString};GatewayHostName={gatewayFqdn.ToLower()}";
    ```
 
-## <a name="build-and-run-leaf-device"></a>Sestavení a spuštění zařízení list
+## <a name="build-and-run-leaf-device"></a>Sestavování a spouštění zařízení typu list
 
-1. Pokud je projekt DeviceHarness stále otevřený v kódu sady Visual Studio, sestavte projekt (Ctrl + Shift + B nebo Úloha sestavení **terminálu** > **spustit...**) a v dialogovém okně vyberte **Sestavit.**
+1. Když je projekt DeviceHarness stále otevřený v Visual Studio Code, sestavte projekt (CTRL + SHIFT + B **Terminal** > nebo**Spustit úlohu sestavení terminálu...**) a v dialogovém okně vyberte **Build (sestavit** ).
 
-2. Najděte plně kvalifikovaný název domény (FQDN) pro bránu hraniční ho dužiny tak, že přejdete na virtuální počítač zařízení IoT Edge na portálu a zkopírujete hodnotu **názvu DNS** z přehledu.
+2. Najděte plně kvalifikovaný název domény (FQDN) pro bránu Edge tak, že přejdete na virtuální počítač IoT Edge zařízení na portálu a z přehledu zkopírujete hodnotu pro **název DNS** .
 
-3. Otevřete terminál kódu Visual Studia **(Terminál** > **Nový terminál)** `<edge_device_fqdn>` a spusťte následující příkaz, který nahradí název DNS, který jste zkopírovali z virtuálního počítače:
+3. Otevřete Visual Studio Code terminálu (**terminál** > **Nový**terminál) a spusťte následující příkaz a nahraďte `<edge_device_fqdn>` názvem DNS, který jste zkopírovali z virtuálního počítače:
 
    ```cmd
    dotnet run -- --gateway-host-name "<edge_device_fqdn>" --certificate C:\edgecertificates\certs\azure-iot-test-only.root.ca.cert.pem --max-devices 1
    ```
 
-4. Aplikace se pokusí nainstalovat certifikát do vývojového počítače. Pokud ano, přijměte upozornění zabezpečení.
+4. Aplikace se pokusí nainstalovat certifikát do vývojového počítače. Pokud k tomu dojde, přijměte upozornění zabezpečení.
 
-5. Po zobrazení výzvy k zadání připojovacího řetězce služby IoT Hub klikněte na tři tečky (**...**) na panelu zařízení Azure IoT Hub a vyberte **Kopírovat připojovací řetězec služby IoT Hub**. Vložte hodnotu do terminálu.
+5. Po zobrazení výzvy k zadání připojovacího řetězce IoT Hub klikněte na tlačítko se třemi tečkami (**...**) na panelu zařízení Azure IoT Hub a vyberte **Kopírovat IoT Hub připojovací řetězec**. Vložte hodnotu do terminálu.
 
-6. Uvidíte výstup jako:
+6. Zobrazí se výstup podobný tomuto:
 
    ```output
    Found existing device: Client_001
@@ -79,15 +79,15 @@ Podívejte se na kód a zjistěte, jak jsou implementovány tyto dvě položky.
    Device: 1 Message count: 250
    ```
 
-   Všimněte si přidání "GatewayHostName" do připojovacího řetězce zařízení, který způsobí, že zařízení komunikovat prostřednictvím služby IoT Hub prostřednictvím brány transparentní IoT Edge.
+   Všimněte si přidání "GatewayHostName" do připojovacího řetězce zařízení, což způsobí, že zařízení komunikuje prostřednictvím IoT Hub přes IoT Edge transparentní bránu.
 
-## <a name="check-output"></a>Zkontrolovat výstup
+## <a name="check-output"></a>Kontrolovat výstup
 
 ### <a name="iot-edge-device-output"></a>Výstup zařízení IoT Edge
 
-Výstup z modulu avroFileWriter lze snadno sledovat při pohledu na zařízení IoT Edge.
+Výstup z modulu avroFileWriter se dá snadno pozorovat tak, že se podíváte na zařízení IoT Edge.
 
-1. SSH do virtuálního počítače IoT Edge.
+1. K vašemu IoT Edgemu virtuálnímu počítači se SSH.
 
 2. Vyhledejte soubory zapsané na disk.
 
@@ -101,51 +101,51 @@ Výstup z modulu avroFileWriter lze snadno sledovat při pohledu na zařízení 
    /data/avrofiles/2019/4/18/22/10.avro
    ```
 
-   V závislosti na časování spuštění může mít více než jeden soubor.
+   V závislosti na časování běhu můžete mít více než jeden soubor.
 
-4. Dávejte pozor na časová razítka. Modul avroFileWriter nahraje soubory do cloudu, jakmile je čas poslední změny více\_než\_10 minut v minulosti (viz UPRAVENÝ ČASOVÝ ČAS SOUBORU v uploader.py v modulu avroFileWriter).
+4. Věnujte pozornost časovým razítkům. Modul avroFileWriter nahrává soubory do cloudu, jakmile je čas poslední změny v minulosti více než 10 minut (viz časový limit UPRAVENÉho\_souboru\_v Uploader.py v modulu avroFileWriter).
 
-5. Po uplynutí 10 minut by měl modul nahrát soubory. Pokud je nahrávání úspěšné, odstraní soubory z disku.
+5. Po uplynutí 10 minut by měl modul nahrávat soubory. Pokud je nahrání úspěšné, odstraní soubory z disku.
 
 ### <a name="azure-storage"></a>Úložiště Azure
 
-Výsledky našeho listového zařízení, které odesílá data, můžeme sledovat na účtech úložiště, kde očekáváme, že data budou směrována.
+Na základě účtů úložiště, ve kterých očekáváme, že se data mají směrovat, můžeme sledovat výsledky našeho zařízení na listech, které odesílají data.
 
-1. Ve vývojovém počítači otevřete visual studio kód.
+1. Na vývojovém počítači otevřete Visual Studio Code.
 
-2. V panelu "AZURE STORAGE" v okně prozkoumat, přejděte do stromu najít svůj účet úložiště.
+2. Na panelu úložiště AZURE v okně prozkoumat přejděte ke stromu, kde najdete účet úložiště.
 
-3. Rozbalte uzel **kontejnerů objektů blob.**
+3. Rozbalte uzel **kontejnery objektů BLOB** .
 
-4. Z práce, kterou jsme provedli v předchozí části kurzu, očekáváme, že kontejner **ruldata** by měl obsahovat zprávy s RUL. Rozbalte uzel **ruldata.**
+4. Od práce, kterou jsme provedli v předchozí části tohoto kurzu, očekáváme, že kontejner **ruldata** by měl obsahovat zprávy s RUL. Rozbalte uzel **ruldata** .
 
-5. Zobrazí se jeden nebo více souborů `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`objektů BLOB s názvem: .
+5. Zobrazí se jeden nebo více souborů objektů BLOB s názvem, `<IoT Hub Name>/<partition>/<year>/<month>/<day>/<hour>/<minute>`jako je:.
 
-6. Klikněte pravým tlačítkem myši na jeden ze souborů a zvolte **Stáhnout blob** pro uložení souboru do vývojového počítače.
+6. Klikněte pravým tlačítkem na jeden ze souborů a vyberte **Stáhnout objekt BLOB** a uložte soubor do vývojového počítače.
 
-7. Dále rozbalte uzel **uploadturbofanfiles.** V předchozím článku jsme nastavili toto umístění jako cíl pro soubory nahrané modulem avroFileWriter.
+7. Dále rozbalte uzel **uploadturbofanfiles** . V předchozím článku jsme toto umístění nastavili jako cíl pro soubory odeslané modulem avroFileWriter.
 
-8. Klikněte pravým tlačítkem myši na soubory a zvolte **Stáhnout Blob** uložit do vývojového počítače.
+8. Klikněte pravým tlačítkem na soubory a vyberte **Stáhnout objekt BLOB** a uložte ho do vývojového počítače.
 
-### <a name="read-avro-file-contents"></a>Čtení obsahu souboru Avro
+### <a name="read-avro-file-contents"></a>Číst obsah souboru Avro
 
-Zahrnuli jsme jednoduchý nástroj příkazového řádku pro čtení souboru Avro a vrácení řetězce JSON zpráv v souboru. V této části ji nainstalujeme a spustíme.
+Zahrnuli jsme jednoduchý nástroj příkazového řádku pro čtení souboru Avro a vrácení řetězce JSON zpráv v souboru. V této části ji Nainstalujeme a spustíte.
 
-1. Otevřete terminál v kódu Visual Studio **(Terminál** > **Nový terminál).**
+1. Otevřete terminál v Visual Studio Code (**terminál** > **nový terminál**).
 
-2. Instalace hubavroreader:
+2. Nainstalovat hubavroreader:
 
    ```cmd
    pip install c:\source\IoTEdgeAndMlSample\HubAvroReader
    ```
 
-3. Použijte hubavroreader číst soubor Avro, který jste stáhli z **ruldata**.
+3. Pomocí hubavroreader si přečtěte soubor Avro, který jste stáhli z **ruldata**.
 
    ```cmd
    hubavroreader <avro file with ath> | more
    ```
 
-4. Všimněte si, že tělo zprávy vypadá, jak jsme očekávali s ID zařízení a předpokládané RUL.
+4. Všimněte si, že tělo zprávy vypadá podle očekávání s ID zařízení a předpovězeným RUL.
 
    ```json
    {
@@ -176,9 +176,9 @@ Zahrnuli jsme jednoduchý nástroj příkazového řádku pro čtení souboru Av
    }
    ```
 
-5. Spusťte stejný příkaz předávání souboru Avro, který jste stáhli z **uploadturbofanfiles**.
+5. Spusťte stejný příkaz předáním souboru Avro, který jste stáhli z **uploadturbofanfiles**.
 
-6. Podle očekávání tyto zprávy obsahují všechna data ze senzoru a provozní nastavení z původní zprávy. Tato data by mohla být použita ke zlepšení modelu RUL na našem hraničním zařízení.
+6. Podle očekávání obsahují tyto zprávy všechna data senzorů a provozní nastavení z původní zprávy. Tato data se dají použít ke zlepšení modelu RUL na našem hraničním zařízení.
 
    ```json
    {
@@ -219,21 +219,21 @@ Zahrnuli jsme jednoduchý nástroj příkazového řádku pro čtení souboru Av
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud máte v plánu prozkoumat prostředky používané v tomto kurzu end-to-end, počkejte, až budete hotovi vyčistit prostředky, které jste vytvořili. Pokud neplánujete pokračovat, odstraňte je pomocí následujících kroků:
+Pokud plánujete prozkoumat prostředky používané v tomto uceleném kurzu, počkejte, až budete hotovi, a vyčistěte prostředky, které jste vytvořili. Pokud pokračovat nechcete, pomocí následujících kroků je odstraňte:
 
-1. Odstraňte skupiny prostředků vytvořené pro uložení virtuálního počítače Pro Vývoj, Virtuální počítač IoT Edge, IoT Hub, účet úložiště, služba pracovního prostoru pro strojové učení (a vytvořené prostředky: registr kontejnerů, přehledy aplikací, trezor klíčů, účet úložiště).
+1. Odstraňte vytvořené skupiny prostředků pro vývoj virtuálních počítačů, IoT Edge virtuálních počítačů, IoT Hub, účtu úložiště, služby Machine Learning Workspace Service (a vytvořených prostředků: registr kontejnerů, Application Insights, Trezor klíčů, účet úložiště).
 
-2. Odstraňte projekt strojového učení v [poznámkových blouzncích Azure](https://notebooks.azure.com).
+2. Odstraňte projekt Machine Learningu v [poznámkových blocích Azure](https://notebooks.azure.com).
 
-3. Pokud jste naklonovali úložiště místně, zavřete všechna okna powershellu nebo kódu VS odkazující na místní úložiště a odstraňte adresář úložiště.
+3. Pokud jste úložiště naklonováni místně, zavřete všechny prostředí PowerShell nebo VS Code Windows odkazující na místní úložiště a pak odstraňte adresář úložiště.
 
-4. Pokud jste certifikáty vytvořili místně,\\odstraňte složku c: edgeCertificates.
+4. Pokud jste certifikáty vytvořili místně, odstraňte složku c:\\edgeCertificates.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jsme použili náš vývojový stroj k simulaci listového zařízení, které odesílá senzor a provozní data do našeho hraničního zařízení. Ověřili jsme, že moduly na zařízení směrovány, klasifikovány, trvalé a nahráldata nejprve tím, že zkoumá v reálném čase provoz hraničnízařízení a pak při pohledu na soubory nahrané do účtu úložiště.
+V tomto článku jsme použili náš vývojový počítač k simulaci na zařízení, které odesílá senzory a provozní data do našeho hraničního zařízení. Ověřili jsme, že moduly v zařízení směrované, klasifikované, zachované a nahrály data nejprve prozkoumáním operace v reálném čase hraničního zařízení a následným zobrazením souborů odeslaných do účtu úložiště.
 
-Více informací naleznete na následujících stránkách:
+Další informace najdete na následujících stránkách:
 
 * [Připojení podřízeného zařízení k bráně služby Azure IoT Edge](how-to-connect-downstream-device.md)
-* [Ukládání dat na hraniční chod pomocí Azure Blob Storage na IoT Edge (preview)](how-to-store-data-blob.md)
+* [Ukládání dat na hraničních zařízeních pomocí Azure Blob Storage v IoT Edge (Preview)](how-to-store-data-blob.md)

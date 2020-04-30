@@ -1,5 +1,5 @@
 ---
-title: Použití výstrah v řešení vzdáleného monitorování – Azure | Dokumenty společnosti Microsoft
+title: Použití výstrah v řešení vzdáleného monitorování – Azure | Microsoft Docs
 description: V tomto kurzu se dozvíte, jak pomocí upozornění na použití identifikovat a opravovat problémy se zařízeními připojenými k akcelerátoru řešení pro vzdálené monitorování.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 853fa2b80e04dd8d9225d023db8030fed044ed7f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73890927"
 ---
 # <a name="tutorial-troubleshoot-and-fix-device-issues"></a>Kurz: Řešení a oprava problémů se zařízeními
@@ -28,7 +28,7 @@ V tomto kurzu jste:
 > * Vyšetření upozornění ze zařízení
 > * Vyřešení problému se zařízením
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -36,11 +36,11 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
 
 Na stránce **Řídicí panel** si všimnete neočekávaných upozornění na teplotu pocházejících z pravidla přidruženého k **prototypům** zařízení:
 
-[![Upozornění zobrazená na řídicím panelu](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
+[![Výstrahy zobrazená na řídicím panelu](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardalarm-expanded.png#lightbox)
 
 Pokud chcete problém vyšetřit blíže, vedle upozornění zvolte možnost **Prozkoumat upozornění**:
 
-[![Prozkoumání výstrahy z řídicího panelu](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
+[![Prozkoumat výstrahu z řídicího panelu](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/dashboardexplorealarm-expanded.png#lightbox)
 
 Podrobné zobrazení upozornění obsahuje:
 
@@ -52,13 +52,13 @@ Podrobné zobrazení upozornění obsahuje:
 
 Pokud chcete upozornění potvrdit, vyberte všechny **Výskyty upozornění** a zvolte **Potvrdit**. Touto akcí dáte ostatním operátorům najevo, že jste upozornění viděli a pracujete na něm:
 
-[![Potvrďte upozornění](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
+[![Potvrzení výstrah](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceacknowledge-expanded.png#lightbox)
 
 Když upozornění potvrdíte, stav výskytu se změní na **Potvrzeno**.
 
 V seznamu zařízení s oznámeními vidíte **prototyp** zařízení zodpovědný za aktivaci upozornění na teplotu:
 
-[![Seznam zařízení způsobujících výstrahu](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
+[![Seznam zařízení, která způsobují výstrahy](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenanceresponsibledevice-expanded.png#lightbox)
 
 ## <a name="resolve-the-issue"></a>Vyřešení problému
 
@@ -70,20 +70,20 @@ Pokud chcete pracovat na zařízení, vyberte ho v seznamu zařízení s oznáme
 
 Zvolte **DecreaseTemperature** a nastavte název úlohy na **DecreaseTemperature**. Pak klikněte na **Použít**:
 
-[![Vytvořte úlohu pro snížení teploty](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
+[![Vytvoření úlohy pro snížení teploty](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancecreatejob-expanded.png#lightbox)
 
-Chcete-li sledovat stav úlohy, klepněte na tlačítko **Zobrazit stav úlohy**. Pomocí zobrazení **Úlohy** můžete sledovat všechny úlohy a volání metod v řešení:
+Chcete-li sledovat stav úlohy, klikněte na tlačítko **Zobrazit stav úlohy**. Pomocí zobrazení **Úlohy** můžete sledovat všechny úlohy a volání metod v řešení:
 
-[![Sledujte úlohu, abyste snížili teplotu](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
+[![Monitorujte úlohu, abyste snížili teplotu.](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/maintenancerunningjob-expanded.png#lightbox)
 
 Snížení teploty zařízení můžete zkontrolovat tak, že zobrazíte telemetrii na stránce **Řídicí panel**:
 
-[![Zobrazení poklesu teploty](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
+[![Zobrazit snížení teploty](./media/iot-accelerators-remote-monitoring-maintain/jobresult-inline.png)](./media/iot-accelerators-remote-monitoring-maintain/jobresult-expanded.png#lightbox)
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak pomocí upozornění identifikovat problémy se zařízeními a jak na těchto zařízeních pracovat za účelem vyřešení problémů. Chcete-li se dozvědět, jak připojit skutečné zařízení k akcelerátoru řešení, pokračujte články s postupy.
+V tomto kurzu jste se dozvěděli, jak pomocí upozornění identifikovat problémy se zařízeními a jak na těchto zařízeních pracovat za účelem vyřešení problémů. Pokud se chcete dozvědět, jak připojit reálné zařízení k akcelerátoru řešení, přejděte k článkům s postupy.
 
 Právě jste se naučili spravovat problémy se zařízeními. Jako další krok navrhujeme zjistit, jak [připojit zařízení k akcelerátoru řešení pro vzdálené monitorování](iot-accelerators-connecting-devices.md).

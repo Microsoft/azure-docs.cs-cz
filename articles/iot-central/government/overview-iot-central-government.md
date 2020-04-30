@@ -1,6 +1,6 @@
 ---
 title: Sestavování řešení pro státní správu s využitím služby Azure IoT Central
-description: Naučte se vytvářet řešení pro inteligentní města pomocí šablon aplikací Azure IoT Central.
+description: Naučte se vytvářet řešení inteligentních měst pomocí šablon aplikací pro Azure IoT Central.
 author: miriambrus
 ms.author: miriamb
 ms.date: 10/23/2019
@@ -8,76 +8,76 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 159691ee101e586419d2fd8df314947af28219dd
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77016506"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Sestavování řešení pro státní správu s využitím služby Azure IoT Central
 
 
 
-Začínáme s vytvářením řešení smart city pomocí šablon aplikací Azure IoT Central. Začněte nyní **s monitorováním kvality vody**, **monitorováním spotřeby vody**a **připojeným nakládáním s odpady**.
+Začněte s vytvářením řešení inteligentních měst pomocí šablon aplikací Azure IoT Central. Začněte teď s **monitorováním kvality vody**, **monitorováním spotřeby vody**a **správou propojených odpadů**.
 
-## <a name="what-is-water-quality-monitoring-application-template"></a>Co je šablona aplikace Monitorování kvality vody?   
+## <a name="what-is-water-quality-monitoring-application-template"></a>Co je šablona aplikace monitorování kvality vody?   
 
-Tradiční monitorování kvality vody se opírá o techniky ručního odběru vzorků a analýzu terénnílaboratoře, která je časově náročná a nákladná. Prostřednictvím vzdáleného sledování kvality vody v reálném čase lze problémy s kvalitou vody zvládnout dříve, než budou dotčeni občané. Kromě toho mohou pokročilé analytické služby, vodohospodářské služby a ekologické agentury jednat v časná varování ohledně potenciálních otázek kvality vody a předem plánovat úpravu vody.  
+Tradiční monitorování kvality vod spoléhá na ruční vzorkování vzorků a analýzu polních laboratoří, což je časově náročné a nákladné. Díky vzdálenému monitorování kvality vody v reálném čase je možné spravovat problémy s kvalitou vody před tím, než budou občané ovlivněny. Díky pokročilým analýzám, nástrojům pro práci s vodou a ekologickým úřadům se navíc můžou vycházet z včasného varování o potenciálních problémech s kvalitou vody a předem plánovat zpracování vody.  
 
-Aplikace Pro monitorování kvality vody je šablona aplikace IoT Central, která vám pomůže nastartovat vývoj řešení IoT a umožnit vodohospodářským nástrojům digitálně sledovat kvalitu vody v chytrých městech. 
+Aplikace pro monitorování kvality vody je IoT Central šablony aplikace, které vám pomůžou Kickstart vývoj řešení IoT a povolit vodním nástrojům digitálně monitorovat kvalitu vody ve inteligentních městech. 
 
-![Šablona aplikace Pro sledování kvality vody](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
+![Šablona aplikace monitorování kvality vody](./media/overview-iotcentral-government/waterqualitymonitoring-dashboard-full.png)
 
-Šablona aplikace se skládá z:
-* Ukázkové řídicí panely operátorů
-* Ukázkové šablony zařízení pro sledování kvality vody
-* Simulovaná zařízení pro sledování kvality vody
-* Předem nakonfigurovaná pravidla a úlohy
-* Branding pomocí bílého značení 
+Šablona aplikace se skládá z těchto součástí:
+* Ukázky řídicích panelů operátorů
+* Ukázková voda kvalita monitorování šablon zařízení
+* Monitorovaná zařízení pro sledování kvality vody
+* Předem konfigurovaná pravidla a úlohy
+* Brandingování pomocí bílých popisků 
 
-Začínáme s [kurzem aplikace Sledování kvality vody](./tutorial-water-quality-monitoring.md).
-
-
-## <a name="what-is-water-consumption-monitoring-application-template"></a>Co je šablona aplikace Monitorování spotřeby vody? 
-
-Tradiční sledování spotřeby vody závisí na tom, že vodohospodáři ručně odečtou měřiče spotřeby vody na měřicích přístrojích. Stále více měst nahrazuje tradiční měřiče pokročilými inteligentními měřiči, které umožňují vzdálené sledování spotřeby a dálkové ovládání ventilů pro řízení průtoku vody. Monitorování spotřeby vody spolu s digitální zpětnou vazbou pro občany může zvýšit povědomí a snížit spotřebu vody. 
+Začněte s [kurzem pro monitorování kvality vody](./tutorial-water-quality-monitoring.md).
 
 
-Aplikace Sledování spotřeby vody je šablona aplikace IoT Central, která vám pomůže nastartovat vývoj řešení IoT, aby vodohospodářské nástroje a města mohly vzdáleně monitorovat a řídit průtok vody, aby se snížila spotřeba. 
+## <a name="what-is-water-consumption-monitoring-application-template"></a>Co je šablona aplikace monitorování spotřeby vody? 
 
-  ![Šablona aplikace Pro monitorování spotřeby vody](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
-
-Šablona aplikace Monitorování spotřeby vody se skládá z předem nakonfigurovaných:
-* Ukázkové řídicí panely operátorů
-* Ukázkové šablony zařízení pro sledování kvality vody
-* Simulovaná zařízení pro sledování kvality vody
-* Předem nakonfigurovaná pravidla a úlohy
-* Branding pomocí bílého značení 
-
- Začínáme s [kurzem aplikace Monitorování spotřeby vody](./tutorial-water-consumption-monitoring.md).
-
-## <a name="what-is-connected-waste-management-application-template"></a>Co je šablona aplikace Connected Waste Management? 
-
-Připojená aplikace pro nakládání s odpady je šablona aplikace IoT Central, která vám pomůže nastartovat vývoj řešení IoT a umožnit inteligentním městům vzdáleně monitorovat a maximalizovat tak efektivní sběr odpadu. 
-
-![Šablona připojené aplikace pro nakládání s odpady](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
+Tradiční sledování konzumace vod spoléhá na ruční čtení měřičů spotřeby vody na lokalitách měřiče. Další a další města nahrazují tradiční měřiče s pokročilými inteligentními měřiči, což umožňuje vzdálené monitorování spotřeby a vzdálené řízení ventilů pro kontrolu vodního toku. Monitorování spotřeby vody společně se zprávou o digitální zpětné vazbě na občana může zvýšit povědomí a snížit spotřebu vody. 
 
 
-Šablona aplikace Connected Waste Management se skládá z předem nakonfigurovaných:
-* Ukázkové řídicí panely operátorů
-* Ukázky připojených šablon zařízení pro odpadkové koše
-* Simulovaná připojená zařízení pro odpadkové koše
-* Předem nakonfigurovaná pravidla a úlohy
-* Branding pomocí bílého značení 
+Aplikace pro monitorování spotřeby vody je šablonou aplikace IoT Central, která vám pomůže Kickstart vývoj řešení IoT, aby bylo možné na dálku monitorovat a řídit vodní toky a snižovat spotřebu. 
 
-Začínáme s [kurzem aplikace Connected Waste Management](./tutorial-connected-waste-management.md).
+  ![Šablona aplikace monitorování spotřeby vody](./media/overview-iotcentral-government/waterconsumptionmonitoring-dashboardfull.png)
+
+Šablona aplikace monitorování spotřeby vody se skládá z předem nakonfigurovaných:
+* Ukázky řídicích panelů operátorů
+* Ukázková voda kvalita monitorování šablon zařízení
+* Monitorovaná zařízení pro sledování kvality vody
+* Předem konfigurovaná pravidla a úlohy
+* Brandingování pomocí bílých popisků 
+
+ Začněte s [kurzem pro monitorování spotřeby vody](./tutorial-water-consumption-monitoring.md).
+
+## <a name="what-is-connected-waste-management-application-template"></a>Co je šablona aplikace pro správu propojených odpadů? 
+
+Aplikace pro správu propojených odpadů je IoT Central šablona aplikace, která vám umožní Kickstart vývoj řešení IoT a umožnit tak inteligentním městům vzdálené monitorování, aby se maximalizovala účinnost shromažďování odpadů. 
+
+![Šablona aplikace pro správu propojených odpadů](media/overview-iotcentral-government/connectedwastemanagement-dashboard.png) 
+
+
+Šablona aplikace pro správu propojených odpadů se skládá z předem nakonfigurovaných:
+* Ukázky řídicích panelů operátorů
+* Ukázka propojených odpadových šablon zařízení
+* Zařízení s simulovaným propojenými odpadními přihrádkami
+* Předem konfigurovaná pravidla a úlohy
+* Brandingování pomocí bílých popisků 
+
+Začněte s [kurzem pro aplikace pro správu propojených odpadů](./tutorial-connected-waste-management.md).
 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Vyzkoušejte některou ze šablon aplikací pro vládu v IoT Central zdarma [vytvořit aplikaci](https://apps.azureiotcentral.com/build/government)
+* Vyzkoušejte si některou z šablon aplikací pro státní správu v IoT Central pro bezplatnou [aplikaci Create](https://apps.azureiotcentral.com/build/government)
 * Další informace o [konceptech monitorování kvality vody](./concepts-waterqualitymonitoring-architecture.md)
 * Další informace o [konceptech monitorování spotřeby vody](./concepts-waterconsumptionmonitoring-architecture.md)
-* Seznamte [se s koncepty propojeného nakládání s odpady](./concepts-connectedwastemanagement-architecture.md)  
-* Další informace o IoT Central, viz [Přehled IoT Central](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)
+* Další informace o [konceptech správy propojených odpadů](./concepts-connectedwastemanagement-architecture.md)  
+* Informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central) .
  

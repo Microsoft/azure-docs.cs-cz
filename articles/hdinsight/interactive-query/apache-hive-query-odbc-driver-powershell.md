@@ -1,7 +1,7 @@
 ---
-title: Dotaz Apache Hive s ovladačem ODBC & PowerShell - Azure HDInsight
-description: Pomocí ovladače Microsoft Hive ODBC a prostředí PowerShell můžete dotazovat clusterů Apache Hive na Azure HDInsight.
-keywords: úl,úl odbc,powershell
+title: Dotaz Apache Hive s ovladačem ODBC & PowerShell – Azure HDInsight
+description: K dotazování Apache Hive clusterů v Azure HDInsight použijte Microsoft podregistr ODBC Driver a PowerShell.
+keywords: podregistr, ODBC v podregistru, PowerShell
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,80 +9,80 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73494326"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: Dotaz apache hive s ROZHRANÍM ODBC a PowerShell
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>Kurz: dotazování Apache Hive pomocí rozhraní ODBC a prostředí PowerShell
 
-Ovladače ODBC společnosti Microsoft poskytují flexibilní způsob interakce s různými druhy zdrojů dat, včetně Apache Hive. Můžete psát kód ve skriptovacích jazycích, jako je PowerShell, které používají ovladače ODBC k otevření připojení ke clusteru Hive, předání dotazu podle vašeho výběru a zobrazení výsledků.
+Ovladače Microsoft ODBC poskytují flexibilní způsob, jak pracovat s různými druhy zdrojů dat, včetně Apache Hive. Můžete psát kód ve skriptovacích jazycích, jako je například prostředí PowerShell, které používá ovladače rozhraní ODBC k otevření připojení k vašemu clusteru podregistru, předat dotaz podle vašeho výběru a zobrazit výsledky.
 
-V tomto kurzu budete dělat následující úkoly:
+V tomto kurzu provedete následující úlohy:
 
 > [!div class="checklist"]
-> * Stažení a instalace ovladače Microsoft Hive ODBC
-> * Vytvoření zdroje dat ODBC Apache Hive propojeného s vaším clusterem
-> * Dotaz na ukázkové informace z clusteru pomocí PowerShellu
+> * Stažení a instalace ovladače Microsoft podregistr ODBC Driver
+> * Vytvoření zdroje dat Apache Hive ODBC propojeného s vaším clusterem
+> * Dotazování ukázkových informací z vašeho clusteru pomocí prostředí PowerShell
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před zahájením tohoto kurzu musíte mít tyto položky:
 
-* Cluster interaktivních dotazů na hdinsightu. Pokud chcete ho vytvořit, [přečtěte si, že začínáme s Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Jako typ clusteru vyberte **Interaktivní dotaz.**
+* Interaktivní cluster dotazů v HDInsight. Pokud ho chcete vytvořit, přečtěte si téma Začínáme [se službou Azure HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Jako typ clusteru vyberte **interaktivní dotaz** .
 
-## <a name="install-microsoft-hive-odbc-driver"></a>Instalace ovladače Microsoft Hive ODBC
+## <a name="install-microsoft-hive-odbc-driver"></a>Nainstalovat ovladač Microsoft podregistr ODBC Driver
 
-Stáhněte a nainstalujte [ovladač Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886).
+Stáhněte a nainstalujte [Microsoft Hive ODBC Driver](https://www.microsoft.com/download/details.aspx?id=40886).
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Vytvoření zdroje dat Apache Hive ODBC
 
 Následující kroky ukazují, jak vytvořit zdroj dat Apache Hive ODBC.
 
-1. V systému Windows přejděte na **položku Start** > **Windows Administrative Tools** > **ODBC Data Sources (32-bit)/(64-bit)**.  Otevře se okno **Správce zdroje dat rozhraní ODBC.**
+1. V systému Windows přejděte k **Možnosti spustit** > **nástroje** > pro správu systému Windows**ODBC zdroje dat (32bitová verze)/(64bitová verze)**.  Otevře se okno **Správce zdrojů dat ODBC** .
 
-    ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace dsn pomocí správce zdroje dat ODBC")
+    ![Správce zdroje dat OBDC](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "Konfigurace DSN pomocí Správce zdrojů dat ODBC")
 
-1. Na kartě **DSN uživatele** vyberte **Přidat,** chcete-li otevřít okno **Vytvořit nový zdroj dat.**
+1. Na kartě **uživatelský název DSN** vyberte **Přidat** a otevřete tak okno **vytvořit nový zdroj dat** .
 
-1. Vyberte **ovladač Microsoft Hive ODBC Driver**a pak klepnutím na příkaz **Dokončit** otevřete okno **Instalace dsn ovladače Microsoft Hive ODBC.**
+1. Vyberte **Microsoft Hive ODBC Driver**a pak vyberte **Dokončit** a otevřete tak okno **nastavení Microsoft Hive ODBC Driver DSN** .
 
 1. Zadejte nebo vyberte tyto hodnoty:
 
    | Vlastnost | Popis |
    | --- | --- |
    |  Název zdroje dat |Zadejte název zdroje dat. |
-   |  Hostitelé |Zadejte `CLUSTERNAME.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. |
+   |  Hostitelé: |Zadejte `CLUSTERNAME.azurehdinsight.net`. Například `myHDICluster.azurehdinsight.net`. |
    |  Port |Použijte **443**.|
-   |  Databáze |Použít **výchozí**. |
-   |  Mechanismus |Vyberte **službu Windows Azure HDInsight** |
-   |  Uživatelské jméno |Zadejte uživatelské jméno HTTP clusteru HDInsight. Výchozí uživatelské jméno **admin**. |
-   |  Heslo |Zadejte uživatelské heslo clusteru HDInsight. Zaškrtněte políčko **Uložit heslo (Šifrované).**|
+   |  databáze |Použijte **výchozí nastavení**. |
+   |  Mechanismus |Výběr **služby Windows Azure HDInsight** |
+   |  Uživatelské jméno |Zadejte uživatelské jméno uživatele clusteru HDInsight HTTP. Výchozí uživatelské jméno **admin**. |
+   |  Heslo |Zadejte uživatelské heslo pro cluster HDInsight. Zaškrtněte políčko **Uložit heslo (šifrované)**.|
 
-1. Volitelné: Vyberte **upřesnit možnosti**.  
+1. Volitelné: vyberte **Rozšířené možnosti**.  
 
    | Parametr | Popis |
    | --- | --- |
-   |  Použití nativního dotazu |Pokud je vybrána, ovladač ODBC se nepokouší převést TSQL do HiveQL. Tuto možnost použijte pouze v případě, že jste si 100% jisti, že odesíláte čisté příkazy HiveQL. Při připojování k SQL Server nebo Azure SQL Database, měli byste nechat nezaškrtnuté. |
-   |  Řádky načtené na blok |Při načítání velkého počtu záznamů může být vyžadováno ladění tohoto parametru, aby byl zajištěn optimální výkon. |
-   |  Výchozí délka sloupce řetězce, délka binárního sloupce, měřítko desetinného sloupce |Délky a přesnosti datového typu mohou ovlivnit způsob vrácení dat. Způsobit nesprávné informace, které mají být vráceny z důvodu ztráty přesnosti a zkrácení. |
+   |  Použít nativní dotaz |Když je vybraná, ovladač ODBC se nepokusí převést TSQL na HiveQL. Tuto možnost použijte jenom v případě, že máte 100%, že posíláte čisté příkazy HiveQL. Při připojování k SQL Server nebo Azure SQL Database byste ji měli nechat nezaškrtnutou. |
+   |  Počet načtených řádků na blok |Při načítání velkého počtu záznamů může být nutné vyladit tento parametr, aby bylo zajištěno optimální výkon. |
+   |  Výchozí délka sloupce řetězce, délka binárního sloupce, škála desetinných sloupců |Délky datových typů a jejich přesnost mohou ovlivnit způsob, jakým jsou vrácena data. Způsobují nesprávné informace, které mají být vráceny z důvodu ztráty přesnosti a zkrácení. |
 
     ![Rozšířené možnosti konfigurace DSN](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "Rozšířené možnosti konfigurace DSN")
 
-1. Chcete-li otestovat zdroj dat, vyberte **možnost Testovat.** Pokud je zdroj dat správně nakonfigurován, výsledek testu ukazuje **ÚSPĚCH**.  
+1. Vyberte **test** pro otestování zdroje dat. Pokud je zdroj dat správně nakonfigurován, výsledek testu zobrazí **úspěch**.  
 
-1. Chcete-li zavřít okno Test, vyberte **ok.**  
+1. Kliknutím na **tlačítko OK** zavřete okno testu.  
 
-1. Výběrem **možnosti OK** zavřete okno **Instalace dsn ovladače Microsoft Hive ODBC.**  
+1. Výběrem **OK** zavřete okno **Microsoft Hive ODBC Driver nastavení DSN** .  
 
-1. Chcete-li zavřít okno **Správce zdroje dat ROZHRANÍ ODBC,** vyberte **ok.**  
+1. Kliknutím na **tlačítko OK** zavřete okno **Správce zdrojů dat ODBC** .  
 
-## <a name="query-data-with-powershell"></a>Dotazovat se na data pomocí PowerShellu
+## <a name="query-data-with-powershell"></a>Dotazování dat pomocí PowerShellu
 
-Následující skript prostředí PowerShell je funkce, která ODBC pro dotazování clusteru Hive.
+Následující skript prostředí PowerShell je funkce, kterou rozhraní ODBC slouží k dotazování clusteru podregistru.
 
 ```powershell
 function Get-ODBC-Data {
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-Následující fragment kódu používá výše uvedenou funkci k provedení dotazu v clusteru interaktivních dotazů, který jste vytvořili na začátku kurzu. Nahraďte `DATASOURCENAME` **název zdroje dat,** který jste zadali na obrazovce Instalace **dsn ovladače Microsoft Hive ODBC Driver.** Po zobrazení výzvy k zadání pověření zadejte uživatelské jméno a heslo, které jste zadali v části **uživatelské jméno přihlášení clusteru** a **přihlašovací heslo clusteru** při vytváření clusteru.
+Následující fragment kódu používá výše uvedenou funkci ke spuštění dotazu na interaktivním clusteru dotazů, který jste vytvořili na začátku tohoto kurzu. Nahraďte `DATASOURCENAME` **názvem zdroje dat** , který jste zadali na obrazovce **nastavení Microsoft Hive ODBC Driver DSN** . Po zobrazení výzvy k zadání přihlašovacích údajů zadejte uživatelské jméno a heslo, které jste zadali v části **uživatelské jméno přihlášení clusteru** a **heslo přihlášení clusteru** při vytváření clusteru.
 
 ```powershell
 
@@ -122,11 +122,11 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete, odstraňte skupinu prostředků, cluster HDInsight a účet úložiště. Chcete-li tak učinit, vyberte skupinu prostředků, ve které byl cluster vytvořen, a klepněte na tlačítko **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, cluster HDInsight a účet úložiště. Provedete to tak, že vyberete skupinu prostředků, ve které se cluster vytvořil, a kliknete na **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se naučili, jak pomocí ovladače Microsoft Hive ODBC a prostředí PowerShell načíst data z clusteru interaktivních dotazů Azure HDInsight.
+V tomto kurzu jste zjistili, jak pomocí ovladače Microsoft podregistr ODBC a prostředí PowerShell načíst data z vašeho clusteru Azure HDInsight Interactive Query.
 
 > [!div class="nextstepaction"]
 > [Připojení Excelu k Apache Hive pomocí rozhraní ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md)

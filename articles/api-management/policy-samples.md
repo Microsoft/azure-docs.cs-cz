@@ -14,10 +14,10 @@ ms.date: 10/31/2017
 ms.author: apimpm
 ms.custom: mvc
 ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75940946"
 ---
 # <a name="api-management-policy-samples"></a>Ukázky zásad API Managementu
@@ -33,7 +33,7 @@ ms.locfileid: "75940946"
 | [Autorizace přístupu na základě deklarací JWT](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | Ukazuje, jak autorizovat přístup ke konkrétním metodám HTTP v rozhraní API na základě deklarací JWT.                                                                                                                                       |
 | [Autorizace požadavků na používání externího objektu Authorizer](./policies/authorize-request-using-external-authorizer.md)                                                   | Ukazuje, jak používat externí objekt Authorizer pro zabezpečení přístupu API.                                                                                                                                                               |
 | [Autorizace přístupu pomocí tokenu Google OAuth](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | Ukazuje, jak autorizovat přístup k vašim koncovým bodům s využitím Googlu jako poskytovatele tokenu OAuth.                                                                                                                                    |
-| [Filtrování IP adres při použití aplikační brány](./policies/filter-ip-addresses-when-using-appgw.md) | Ukazuje, jak filtrovat IP adresy v zásadách, když je instance správy rozhraní API přístupná prostřednictvím aplikační brány.
+| [Filtrování IP adres při použití Application Gateway](./policies/filter-ip-addresses-when-using-appgw.md) | Ukazuje, jak filtrovat protokol IP v zásadách při použití API Management instance prostřednictvím Application Gateway
 | [Vygenerování sdíleného přístupového podpisu a předání požadavku do úložiště Azure](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | Ukazuje, jak vygenerovat [sdílený přístupový podpis](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) pomocí výrazů a předat požadavek do úložiště Azure se zásadami rewrite-uri. |
 | [Získání tokenu přístupu OAuth2 z AAD a jeho předání do back-endu](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Poskytuje příklad použití OAuth2 k autorizaci mezi bránou a back-endem. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu.                                                    |
 | [Získání tokenu X-CSRF z brány SAP pomocí zásad odeslání žádosti](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Ukazuje, jak implementovat vzor X-CSRF používaný mnoho rozhraními API. Tento příklad je konkrétně pro bránu SAP.                                                                                                                           |

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat'
-description: 'Kurz: Naučte se používat integrované poznámkové bloky Jupyter k importu dat do Azure Cosmos DB, analyzovat data a vizualizovat výstup.'
+title: 'Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat'
+description: 'Kurz: Naučte se používat vestavěné notebooky Jupyter k importu dat do Azure Cosmos DB, analýze dat a vizualizaci výstupu.'
 author: deborahc
 ms.topic: tutorial
 ms.service: cosmos-db
@@ -8,33 +8,33 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 45dd4e8dcfd74cdb5d96b935e239b9f4b5094a7c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73720922"
 ---
-# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: Vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
+# <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Kurz: vytvoření poznámkového bloku v Azure Cosmos DB pro analýzu a vizualizaci dat
 
-Tento článek popisuje, jak používat integrované poznámkové bloky Jupyter k importu ukázkových maloobchodních dat do Azure Cosmos DB. Uvidíte, jak používat sql a Azure Cosmos DB magické příkazy ke spuštění dotazů, analyzovat data a vizualizovat výsledky.
+Tento článek popisuje, jak pomocí integrovaných poznámkových bloků Jupyter importovat ukázková maloobchodní data do Azure Cosmos DB. Uvidíte, jak použít příkazy SQL a Azure Cosmos DB Magic ke spouštění dotazů, analýze dat a vizualizaci výsledků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Povolení podpory poznámkových bloků při vytváření účtu Azure Cosmos](enable-notebooks.md)
+* [Povolit podporu poznámkových bloků při vytváření účtu Azure Cosmos](enable-notebooks.md)
 
 ## <a name="create-the-resources-and-import-data"></a>Vytvoření prostředků a import dat
  
-V této části vytvoříte databázi, kontejner Azure Cosmos a importujete maloobchodní data do kontejneru.
+V této části vytvoříte databázi Azure Cosmos, kontejner a naimportujete maloobchodní data do kontejneru.
 
-1. Přejděte na svůj účet Azure Cosmos a otevřete **Průzkumníka dat.**
+1. Přejděte k účtu Azure Cosmos a otevřete **Průzkumník dat.**
 
-1. Přejděte na kartu **Poznámkové bloky,** vyberte `…` vedle **položky Poznámkové bloky** a vytvořte nový **poznámkový blok**. Jako výchozí jádro vyberte **Python 3.**
+1. Přejít na kartu **poznámkové bloky** , `…` vyberte vedle do **složky poznámkové bloky** a vytvořte **Nový Poznámkový blok**. Jako výchozí jádro vyberte **Python 3** .
 
    ![Vytvoření nového poznámkového bloku](./media/create-notebook-visualize-data/create-new-notebook.png)
 
-1. Po vytvoření nového poznámkového bloku jej můžete přejmenovat na něco jako **VisualizeRetailData.ipynb.**
+1. Po vytvoření nového poznámkového bloku ho můžete přejmenovat na něco, jako je **VisualizeRetailData. ipynb.**
 
-1. Dále vytvoříte databázi s názvem "RetailDemo" a kontejner s názvem "WebsiteData" pro uložení maloobchodních dat. Jako klíč oddílu můžete použít /CardID. Zkopírujte a vložte následující kód do nové buňky v poznámkovém bloku a spusťte ho:
+1. V dalším kroku vytvoříte databázi s názvem "RetailDemo" a kontejnerem s názvem "WebsiteData", do kterých budou uložena maloobchodní data. /CardID můžete použít jako klíč oddílu. Zkopírujte následující kód a vložte ho do nové buňky v poznámkovém bloku a spusťte ho:
 
    ```python
    import azure.cosmos
@@ -47,22 +47,22 @@ V této části vytvoříte databázi, kontejner Azure Cosmos a importujete malo
    print('Container WebsiteData created')
    ```
 
-   Chcete-li spustit `Shift + Enter` buňku, vyberte Nebo vyberte buňku a na navigačním panelu průzkumníka dat zvolte **spustit možnost Aktivní buňka.**
+   Chcete-li spustit buňku, `Shift + Enter` vyberte nebo vyberte buňku a zvolte možnost **spustit aktivní buňku** na navigačním panelu Průzkumníka dat.
 
-   ![Spuštění aktivní buňky](./media/create-notebook-visualize-data/run-active-cell.png)
+   ![Spustit aktivní buňku](./media/create-notebook-visualize-data/run-active-cell.png)
 
-   Databáze a kontejner se vytvoří ve vašem aktuálním účtu Azure Cosmos. Kontejner je zřízen 400 RU/s. Zobrazí se následující výstup po vytvoření databáze a kontejneru. 
+   Databáze a kontejner se vytvoří v aktuálním účtu Azure Cosmos. Kontejner se zřídí s 400 RU/s. Po vytvoření databáze a kontejneru se zobrazí následující výstup. 
 
    ```console
     Database RetailDemo created
     Container WebsiteData created
    ```
 
-   Můžete také aktualizovat kartu **Data** a zobrazit nově vytvořené prostředky:
+   Kartu **data** můžete také aktualizovat a zobrazit nově vytvořené prostředky:
 
-   ![Aktualizace karty dat pro zobrazení nového kontejneru](media/create-notebook-visualize-data/refresh-data-tab.png)
+   ![Aktualizujte kartu data, aby se zobrazil nový kontejner.](media/create-notebook-visualize-data/refresh-data-tab.png)
 
-1. Dále importujete ukázková maloobchodní data do kontejneru Azure Cosmos. Zde je formát položky z maloobchodních dat:
+1. Dále naimportujete ukázková maloobchodní data do kontejneru Azure Cosmos. Tady je formát položky z maloobchodních dat:
 
    ```json
     {
@@ -80,7 +80,7 @@ V této části vytvoříte databázi, kontejner Azure Cosmos a importujete malo
     }
    ```
 
-   Pro účely kurzu ukázková maloobchodní data se ukládají v úložišti objektů blob Azure. Můžete importovat do kontejneru Azure Cosmos vložením následující kód do nové buňky. Můžete potvrdit, že data byla úspěšně importována spuštěním dotazu pro výběr počtu položek.
+   Pro účely tohoto kurzu se ukázková maloobchodní data ukládají do úložiště objektů BLOB v Azure. Můžete ho naimportovat do kontejneru Azure Cosmos vložením následujícího kódu do nové buňky. Můžete potvrdit, že se data úspěšně importují spuštěním dotazu pro výběr počtu položek.
 
    ```python
     # Read data from storage
@@ -104,7 +104,7 @@ V této části vytvoříte databázi, kontejner Azure Cosmos a importujete malo
     print('Container with id \'{0}\' contains \'{1}\' items'.format(container.id, result[0]))
    ```
 
-   Při spuštění předchozího dotazu vrátí následující výstup:
+   Když spustíte předchozí dotaz, vrátí se následující výstup:
 
    ```console
    Importing data. This will take a few minutes...
@@ -114,43 +114,43 @@ V této části vytvoříte databázi, kontejner Azure Cosmos a importujete malo
 
 ## <a name="get-your-data-into-a-dataframe"></a>Získání dat do datového rámce
 
-Před spuštěním dotazů k analýze dat můžete číst data z kontejneru do [datového rámce Pandas](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) pro analýzu. Ke čtení dat do datového rámce použijte následující příkaz sql magic:
+Před spuštěním dotazů k analýze dat můžete načíst data z kontejneru do [PANDAS dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html) pro účely analýzy. K načtení dat do datového rámce použijte následující příkaz SQL Magic:
 
 ```bash
 %%sql --database {database_id} --container {container_id} --output outputDataframeVar 
 {Query text}
 ```
 
-Další informace najdete [v tématu integrované poznámkové bloky příkazy a funkce v článku Azure Cosmos DB.](use-notebook-features-and-commands.md) Spustíte dotaz- `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Výsledky budou uloženy do datového rámce Pand s názvem df_cosmos. Vložte do nové buňky poznámkového bloku následující příkaz a spusťte ho:
+Další informace najdete v tématu [integrované příkazy a funkce poznámkového bloku v článku Azure Cosmos DB](use-notebook-features-and-commands.md) . Spustíte dotaz – `SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c`. Výsledky budou uloženy do PANDAS dataframe s názvem df_cosmos. Do nové buňky poznámkového bloku vložte následující příkaz a spusťte ho:
 
 ```python
 %%sql --database RetailDemo --container WebsiteData --output df_cosmos
 SELECT c.Action, c.Price as ItemRevenue, c.Country, c.Item FROM c
 ```
 
-V nové buňce poznámkového bloku spusťte následující kód a přečtěte si prvních 10 položek z výstupu:
+V nové buňce poznámkového bloku spusťte následující kód, který přečte prvních 10 položek z výstupu:
 
 ```python
 # See a sample of the result
 df_cosmos.head(10)
 ```
 
-![Spuštění dotazu pro získání 10 nejlepších položek](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
+![Spustit dotaz pro získání prvních 10 položek](./media/create-notebook-visualize-data/run-query-get-top10-items.png)
 
 ## <a name="run-queries-and-analyze-your-data"></a>Spouštění dotazů a analýza dat
 
-V této části spustíte některé dotazy na načtená data.
+V této části budete spouštět některé dotazy na načtená data.
 
-* **Dotaz1:** Spuštěním skupiny podle dotazu na datovém prvku získáte součet celkových tržeb za každou zemi a z výsledků se zobrazí 5 položek. V nové buňce poznámkového bloku spusťte následující kód:
+* **Dotaz1:** Spusťte v dataframe dotaz na skupinu, abyste získali součet celkových tržeb za jednotlivé země a zobrazili 5 položek z výsledků. V nové buňce poznámkového bloku spusťte následující kód:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()
    display(df_revenue.head(5))
    ```
 
-   ![Výstup celkových výnosů z prodeje](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
+   ![Výstup celkového výnosu prodeje](./media/create-notebook-visualize-data/total-sales-revenue-output.png)
 
-* **Dotaz2:** Chcete-li získat seznam pěti nejlepších zakoupených položek, otevřete novou buňku poznámkového bloku a spusťte následující kód:
+* **Query2:** Chcete-li získat seznam pěti nejvyšších nakupovaných položek, otevřete novou buňku s poznámkovým blokem a spusťte následující kód:
 
    ```python
    import pandas as pd
@@ -159,18 +159,18 @@ V této části spustíte některé dotazy na načtená data.
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   ![Pět nakoupených položek](./media/create-notebook-visualize-data/top5-purchased-items.png)
+   ![Pět hlavních nakupovaných položek](./media/create-notebook-visualize-data/top5-purchased-items.png)
 
 ## <a name="visualize-your-data"></a>Vizualizace dat  
 
-1. Teď, když máme naše data o tržbách z kontejneru Azure Cosmos, můžete si je vizualizovat pomocí vizualizační knihovny podle vašeho výběru. V tomto kurzu budeme používat knihovnu Bokeh. Otevřete novou buňku poznámkového bloku a spusťte následující kód pro instalaci knihovny Bokeh. Po splnění všech požadavků bude knihovna nainstalována.
+1. Teď, když máme data o výnosech z kontejneru Azure Cosmos, můžete vizualizovat data pomocí knihovny vizualizace podle vašeho výběru. V tomto kurzu použijeme knihovnu rozostření. Otevřete novou buňku s poznámkovým blokem a spusťte následující kód pro instalaci knihovny rozostření. Po splnění všech požadavků se knihovna nainstaluje.
 
    ```python
    import sys
    !{sys.executable} -m pip install bokeh --user
    ```
 
-1. Dále se připravte na vykreslení dat na mapě. Připojte data v Azure Cosmos DB s informacemi o zemi umístěnými v úložišti objektů Blob Azure a převeďte výsledek do formátu GeoJSON. Zkopírujte následující kód do nové buňky poznámkového bloku a spusťte ji.
+1. Další příprava na vykreslení dat na mapě. Připojte data v Azure Cosmos DB s informacemi o zemi umístěnými ve službě Azure Blob Storage a převeďte výsledek na formát geografického formátu JSON. Zkopírujte následující kód do nové buňky pro Poznámkový blok a spusťte ji.
 
    ```python
    import urllib.request, json
@@ -187,7 +187,7 @@ V této části spustíte některé dotazy na načtená data.
    json_data = json.dumps(merged_json)
    ```
 
-1. Vizualizujte tržby z prodeje různých zemí na mapě světa spuštěním následujícího kódu v nové buňce poznámkového bloku:
+1. Vizualizace tržeb v různých zemích na světové mapě spuštěním následujícího kódu v nové buňce pro Poznámkový blok:
 
    ```python
    from bokeh.io import output_notebook, show
@@ -233,11 +233,11 @@ V této části spustíte některé dotazy na načtená data.
    show(p)
    ```
 
-   Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší až světlejší představují země s nejvyššími příjmy až nejnižšími příjmy.
+   Výstup zobrazuje mapu světa s různými barvami. Barvy tmavší pro světlejší reprezentují země s nejvyšším výnosem nejnižším výnosem.
 
-   ![Vizualizace mapy tržeb zemí](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
+   ![Vizualizace map pro země – tržby](./media/create-notebook-visualize-data/countries-revenue-map-visualization.png)
 
-1. Podívejme se na další případ vizualizace dat. Kontejner WebsiteData má záznam uživatelů, kteří si prohlíželi položku, přidali ji do košíku a zakoupili ji. Vykreslete přepočítací koeficient zakoupených položek. Spusťte následující kód v nové buňce a vizualizujte míru konverze pro každou položku:
+1. Pojďme se podívat na další případ vizualizace dat. Kontejner WebsiteData obsahuje záznam o uživatelích, kteří si prohlíželi položku, přidali do svého košíku a koupili položku. Pojďme vykreslit míru konverze položek, které byly koupeny. Spusťte následující kód v nové buňce pro vizualizaci míry převodu pro každou položku:
 
    ```python
    from bokeh.io import show, output_notebook
@@ -286,8 +286,8 @@ V této části spustíte některé dotazy na načtená data.
    show(p)
    ```
 
-   ![Vizualizujte konverzní poměr nákupu](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
+   ![Míra převodu nákupu vizualizace](./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o příkazech poznámkového bloku najdete v článku o [používání integrovaných příkazů a funkcí poznámkového bloku.](use-notebook-features-and-commands.md)
+* Další informace o příkazech poznámkového bloku najdete [v článku Jak používat integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB](use-notebook-features-and-commands.md) článku.

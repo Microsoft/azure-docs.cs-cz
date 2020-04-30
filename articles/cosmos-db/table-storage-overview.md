@@ -1,5 +1,5 @@
 ---
-title: Přehled úložiště Azure Table
+title: Přehled služby Azure Table Storage
 description: Ukládejte si strukturovaná data v cloudu pomocí Azure Table Storage, úložiště dat typu NoSQL.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 20c799f89394dd8978f120097b054a9adf9f1280
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76770740"
 ---
 # <a name="azure-table-storage-overview"></a>Přehled služby Azure Table Storage
@@ -34,6 +34,6 @@ Table Storage můžete používat k ukládání flexibilních datových sad, nap
 
 * Projděte si referenční dokumentaci ke službě Table service, kde najdete úplné podrobnosti o dostupných rozhraních API:
 
-    * [Klientská knihovna úložiště pro odkaz .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+    * [Klientská knihovna pro úložiště – referenční informace pro .NET](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
-    * [Odkaz na rozhraní REST API](https://msdn.microsoft.com/library/azure/dd179355)
+    * [REST API – referenční informace](https://msdn.microsoft.com/library/azure/dd179355)

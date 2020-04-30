@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: K vytváření clusterů pomocí runbooků Azure Automation - Azure HDInsight'
-description: Zjistěte, jak vytvářet a odstraňovat clustery Azure HDInsight pomocí skriptů, které běží v cloudu pomocí runbooků Azure Automation.
+title: 'Kurz: použití sad Runbook Azure Automation k vytváření clusterů – Azure HDInsight'
+description: Naučte se vytvářet a odstraňovat clustery Azure HDInsight pomocí skriptů, které běží v cloudu, pomocí Azure Automation Runbooky.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,79 +9,79 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
 ms.openlocfilehash: 05c0aaf6cc33442fa4f36eb38eb0d6d593fc6c1f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75553510"
 ---
-# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Kurz: Vytváření clusterů Azure HDInsight pomocí Azure Automation
+# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>Kurz: vytvoření clusterů Azure HDInsight pomocí Azure Automation
 
-Azure Automation umožňuje vytvářet skripty, které běží v cloudu a spravovat prostředky Azure na vyžádání nebo na základě plánu. Tento článek popisuje, jak vytvořit runbooky Prostředí PowerShell k vytvoření a odstranění clusterů Azure HDInsight.
+Azure Automation vám umožní vytvářet skripty, které běží v cloudu a spravují prostředky Azure na vyžádání nebo podle plánu. Tento článek popisuje, jak vytvořit Runbooky PowerShellu pro vytváření a odstraňování clusterů Azure HDInsight.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nainstalujte moduly potřebné pro interakci s HDInsight.
-> * Vytvořte a uložte pověření potřebná během vytváření clusteru.
-> * Vytvořte novou runbook Azure Automation a vytvořte cluster HDInsight.
+> * Nainstalujte moduly nezbytné pro interakci se službou HDInsight.
+> * Vytvořte a uložte přihlašovací údaje potřebné při vytváření clusteru.
+> * Vytvořte novou Azure Automation sadu Runbook pro vytvoření clusteru HDInsight.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Existující [účet Azure Automation](../automation/automation-quickstart-create-account.md).
-* Existující [účet úložiště Azure](../storage/common/storage-account-create.md), který se bude používat jako úložiště clusteru.
+* Existující [účet Azure Storage](../storage/common/storage-account-create.md), který se použije jako úložiště clusteru.
 
-## <a name="install-hdinsight-modules"></a>Instalace modulů HDInsight
+## <a name="install-hdinsight-modules"></a>Nainstalovat moduly HDInsight
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com).
 1. Vyberte účty Azure Automation.
-1. V části **Sdílené prostředky**vyberte **galerii Modulů** .
-1. Do pole zadejte **AzureRM.Profile** a stiskněte klávesu ENTER a vyhledejte. Vyberte dostupný výsledek hledání.
-1. Na obrazovce **profilu AzureRM.vyberte** **Importovat**. Zaškrtněte políčko pro aktualizaci modulů Azure a pak vyberte **OK**.
+1. V části **sdílené prostředky**vyberte **Galerie modulů** .
+1. Do pole zadejte **AzureRM. profil** a stiskněte Enter pro hledání. Vyberte dostupný výsledek hledání.
+1. Na obrazovce **AzureRM. profil** vyberte **importovat**. Zaškrtněte políčko pro aktualizaci modulů Azure a pak vyberte **OK**.
 
-    ![import modulu AzureRM.profile](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    ![importovat modul AzureRM. Profile](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
 
-1. Vraťte se do galerie modulů výběrem **galerie Moduly** v části **Sdílené prostředky**.
-1. Zadejte **příkaz HDInsight**. Vyberte **AzureRM.HDInsight**.
+1. Vraťte se do galerie modulů tak, že v části **sdílené prostředky**vyberete **Galerie moduly** .
+1. Zadejte **HDInsight**. Vyberte **AzureRM. HDInsight**.
 
-    ![procházet moduly HDInsight](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    ![Procházet moduly HDInsight](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
 
-1. Na panelu **AzureRM.HDInsight** vyberte **Importovat** a **OK**.
+1. Na panelu **AzureRM. HDInsight** vyberte **importovat** a **OK**.
 
-    ![import modulu AzureRM.HDInsight](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    ![importovat modul AzureRM. HDInsight](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
 
-## <a name="create-credentials"></a>Vytvoření přihlašovacích údajů
+## <a name="create-credentials"></a>Vytvořit pověření
 
-1. V části **Sdílené prostředky**vyberte **pověření**.
+1. V části **sdílené prostředky**vyberte **přihlašovací údaje**.
 1. Vyberte **Přidat pověření**.
-1. Zadejte požadované informace na panelu **Nové pověření.** Toto pověření je k uložení hesla clusteru, které vám umožní přihlásit se do Ambari.
+1. Zadejte požadované informace na novém panelu **přihlašovací údaje** . Toto pověření slouží k uložení hesla clusteru, které vám umožní přihlásit se k Ambari.
 
     | Vlastnost | Hodnota |
     | --- | --- |
-    | Name (Název) | `cluster-password` |
+    | Název | `cluster-password` |
     | Uživatelské jméno | `admin` |
     | Heslo | `SECURE_PASSWORD` |
     | Potvrzení hesla | `SECURE_PASSWORD` |
 
 1. Vyberte **Vytvořit**.
-1. Opakujte stejný postup pro `ssh-password` nové `sshuser` přihlašovací údaje s uživatelským jménem a heslem dle vašeho výběru. Vyberte **Vytvořit**. Toto pověření je pro uložení hesla SSH pro váš cluster.
+1. Stejný postup opakujte pro nové přihlašovací údaje `ssh-password` s uživatelským `sshuser` jménem a heslem podle vašeho výběru. Vyberte **Vytvořit**. Tento přihlašovací údaj slouží k uložení hesla SSH pro váš cluster.
 
     ![vytvoření přihlašovacích údajů](./media/manage-clusters-runbooks/create-credentials.png)
 
-## <a name="create-a-runbook-to-create-a-cluster"></a>Vytvoření runbooku pro vytvoření clusteru
+## <a name="create-a-runbook-to-create-a-cluster"></a>Vytvoření Runbooku pro vytvoření clusteru
 
-1. V části **Automatizace procesů**vyberte **Runbook** .
-1. Vyberte **Vytvořit runbook**.
-1. Na **panelu Vytvořit runbook** zadejte název runbooku, například `hdinsight-cluster-create`. V rozevíracím seznamu **Typ runbooku** vyberte **Powershell.**
+1. V části **Automatizace procesu**vyberte **Runbooky** .
+1. Vyberte **vytvořit Runbook**.
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-create`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
 
-    ![vytvořit runbook](./media/manage-clusters-runbooks/create-runbook.png)
+    ![vytvořit Runbook](./media/manage-clusters-runbooks/create-runbook.png)
 
-1. Na obrazovce Upravit **runbook prostředí PowerShell** zadejte následující kód a vyberte **Publikovat**:
+1. Na obrazovce **Upravit powershellový Runbook** zadejte následující kód a vyberte **publikovat**:
 
-    ![publikovat runbook](./media/manage-clusters-runbooks/publish-runbook.png)
+    ![publikování Runbooku](./media/manage-clusters-runbooks/publish-runbook.png)
 
     ```powershell
     Param
@@ -126,13 +126,13 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
     New-AzureRmHDInsightCluster –ClusterName $clusterName –ResourceGroupName $resourceGroup –Location $location –DefaultStorageAccountName "$storageAccount.blob.core.windows.net" –DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName –ClusterType $clusterType –OSType $clusterOS –Version “3.6” –HttpCredential $clusterCreds –SshCredential $sshCreds –ClusterSizeInNodes $clusterWorkerNodes –HeadNodeSize $clusterNodeSize –WorkerNodeSize $clusterNodeSize
     ```
 
-## <a name="create-a-runbook-to-delete-a-cluster"></a>Vytvoření runbooku pro odstranění clusteru
+## <a name="create-a-runbook-to-delete-a-cluster"></a>Vytvoření Runbooku pro odstranění clusteru
 
-1. V části **Automatizace procesů**vyberte **Runbook** .
-1. Vyberte **Vytvořit runbook**.
-1. Na **panelu Vytvořit runbook** zadejte název runbooku, například `hdinsight-cluster-delete`. V rozevíracím seznamu **Typ runbooku** vyberte **Powershell.**
+1. V části **Automatizace procesu**vyberte **Runbooky** .
+1. Vyberte **vytvořit Runbook**.
+1. Na panelu **vytvořit Runbook** zadejte název sady Runbook, například `hdinsight-cluster-delete`. V rozevíracím seznamu **typ Runbooku** vyberte **PowerShell** .
 1. Vyberte **Vytvořit**.
-1. Na obrazovce Upravit **runbook prostředí PowerShell** zadejte následující kód a vyberte **Publikovat**:
+1. Na obrazovce **Upravit powershellový Runbook** zadejte následující kód a vyberte **publikovat**:
 
     ```powershell
     Param
@@ -148,26 +148,26 @@ Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azur
     Remove-AzureRmHDInsightCluster -ClusterName $clusterName
     ```
 
-## <a name="execute-runbooks"></a>Spuštění runbooků
+## <a name="execute-runbooks"></a>Spouštění Runbooků
 
 ### <a name="create-a-cluster"></a>Vytvoření clusteru
 
-1. Seznam runbooků pro váš účet Automation zobrazíte výběrem sady **Runbook** v části **Automatizace procesů**.
-1. Vyberte `hdinsight-cluster-create`nebo název, který jste použili při vytváření clusteru runbook.
-1. Chcete-li spustit runbook okamžitě, vyberte **možnost Spustit.** Můžete také naplánovat pravidelné spouštění runbooků. Viz [Plánování runbooku v Azure Automation](../automation/shared-resources/schedules.md)
-1. Zadejte požadované parametry skriptu a vyberte **OK**. Tím se vytvoří nový cluster HDInsight s názvem, který jste zadali v parametru **CLUSTERNAME.**
+1. Seznam runbooků pro váš účet Automation zobrazíte tak, že v části **Automatizace procesu**vyberete **Runbooky** .
+1. Vyberte `hdinsight-cluster-create`nebo název, který jste použili při vytváření Runbooku pro vytváření clusterů.
+1. Vyberte **Spustit** , aby se Runbook spustil hned. Můžete také naplánovat pravidelné spouštění Runbooků. Viz [plánování Runbooku v Azure Automation](../automation/shared-resources/schedules.md)
+1. Zadejte požadované parametry skriptu a vyberte **OK**. Tím se vytvoří nový cluster HDInsight s názvem, který jste zadali v parametru **název_clusteru** .
 
-    ![spuštění vytvořit clusteru runbook](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    ![spustit příkaz Create cluster Runbook](./media/manage-clusters-runbooks/execute-create-runbook.png)
 
 ### <a name="delete-a-cluster"></a>Odstranění clusteru
 
-Odstraňte cluster výběrem `hdinsight-cluster-delete` runbooku, který jste vytvořili. Vyberte **Start**, zadejte parametr **CLUSTERNAME** a vyberte **OK**.
+Odstraňte cluster tak, že vyberete `hdinsight-cluster-delete` Runbook, který jste vytvořili. Vyberte **Start**, zadejte parametr **název_clusteru** a sselect **OK**.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Když už nepotřebujete, odstraňte účet Azure Automation, který byl vytvořen, aby se zabránilo nezamýšleným poplatkům. Pokud tak chcete provést, přejděte na portál Azure, vyberte skupinu prostředků, do které jste vytvořili účet Azure Automation, vyberte účet Automation a pak **vyberte Odstranit**.
+Pokud už je nepotřebujete, odstraňte účet Azure Automation, který jste vytvořili, aby nedocházelo k nezamýšleným poplatkům. Provedete to tak, že přejdete na Azure Portal, vyberete skupinu prostředků, ve které jste vytvořili účet Azure Automation, vyberete účet Automation a pak vyberete **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa clusterů Apache Hadoop v HDInsightu pomocí Azure PowerShellu](hdinsight-administer-use-powershell.md)
+> [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure PowerShell](hdinsight-administer-use-powershell.md)

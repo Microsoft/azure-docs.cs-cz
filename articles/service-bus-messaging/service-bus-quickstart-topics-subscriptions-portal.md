@@ -1,6 +1,6 @@
 ---
-title: Vytvoření témat a předplatných služby Service Bus pomocí portálu Azure
-description: 'Úvodní příručka: V tomto rychlém startu se dozvíte, jak vytvořit téma služby Service Bus a odběry tohoto tématu pomocí portálu Azure.'
+title: Pomocí Azure Portal můžete vytvářet Service Bus témata a předplatná.
+description: 'Rychlý Start: v tomto rychlém startu se dozvíte, jak vytvořit Service Bus téma a odběry k tomuto tématu pomocí Azure Portal.'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -9,33 +9,33 @@ ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: a1e330a62a58daaa3fb2a2e8758d14791a3208c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76260816"
 ---
-# <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Úvodní příručka: Pomocí portálu Azure vytvořte téma služby Service Bus a odběry tématu.
-V tomto rychlém startu použijete portál Azure k vytvoření tématu služby Service Bus a potom k vytvoření předplatných tohoto tématu. 
+# <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rychlý Start: pomocí Azure Portal vytvořit Service Bus téma a odběry tématu
+V tomto rychlém startu použijete Azure Portal k vytvoření Service Bus tématu a pak vytvoříte odběry k tomuto tématu. 
 
 ## <a name="what-are-service-bus-topics-and-subscriptions"></a>Co jsou témata a předplatné služby Service Bus?
 Témata a předplatné služby Service Bus podporují komunikační model zasílání zpráv *publikování/přihlášení*. Součásti distribuované aplikace při používání témat a předplatných nekomunikují navzájem přímo. Místo toho si zprávy vyměňují prostřednictvím tématu, které slouží jako zprostředkovatel.
 
 ![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-Na rozdíl od front service bus, ve kterém je každá zpráva zpracována jedním příjemcem, témata a odběry poskytují formu komunikace 1:N pomocí vzoru publikování nebo odběru. K jednomu tématu můžete zaregistrovat několik předplatných. Při odeslání zprávy do tématu bude zpráva zpřístupněná všem předplatným, aby ji nezávisle zpracovala. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zpráv, které byly odeslány do tématu. Volitelně můžete zaregistrovat pravidla filtru pro téma na základě předplatného, což umožňuje filtrovat nebo omezit, které zprávy na téma jsou přijímány podle tématu odběry.
+Na rozdíl od Service Busch front, ve kterých každá zpráva zpracovává jeden uživatel, témata a odběry poskytují formu komunikace 1: n pomocí vzoru pro publikování a odběr. K jednomu tématu můžete zaregistrovat několik předplatných. Při odeslání zprávy do tématu bude zpráva zpřístupněná všem předplatným, aby ji nezávisle zpracovala. Předplatné tématu se podobá virtuální frontě, která obdrží kopii zpráv, které byly odeslány do tématu. Volitelně můžete zaregistrovat pravidla filtru pro téma na základě jednotlivých předplatných, což umožňuje filtrovat nebo omezit, které zprávy na téma jsou přijímány v rámci předplatných tématu.
 
-Témata a předplatná služby Service Bus umožňují škálovat pro zpracování velkého počtu zpráv napříč velkým počtem uživatelů a aplikací.
+Service Bus témata a předplatná umožňují škálovat na zpracování velkého počtu zpráv napříč velkým počtem uživatelů a aplikací.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 [!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 > [!NOTE]
-> Prostředky služby Service Bus můžete spravovat pomocí [aplikace Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Průzkumník služby Service Bus umožňuje uživatelům připojit se k oboru názvů service bus a snadno spravovat entity zasílání zpráv. Nástroj poskytuje pokročilé funkce, jako je funkce importu a exportu nebo možnost testovat téma, fronty, předplatná, přenosové služby, centra oznámení a centra událostí. 
+> Prostředky Service Bus můžete spravovat pomocí [Service Bus Exploreru](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer umožňuje uživatelům připojit se k oboru názvů Service Bus a snadno spravovat entity zasílání zpráv. Tento nástroj poskytuje pokročilé funkce, jako jsou funkce importu a exportu, nebo možnost testovat témata, fronty, odběry, služby Relay, centra oznámení a centra událostí. 
 
 ## <a name="next-steps"></a>Další kroky
-Informace o tom, jak odesílat zprávy k tématu a přijímat tyto zprávy prostřednictvím předplatného, naleznete v následujícím článku: vyberte programovací jazyk v tématu. 
+Informace o tom, jak odesílat zprávy do tématu a přijímat tyto zprávy prostřednictvím předplatného, najdete v následujícím článku: vyberte programovací jazyk v obsahu. 
 
 > [!div class="nextstepaction"]
 > [Publikování a přihlášení k odběru zpráv](service-bus-dotnet-how-to-use-topics-subscriptions.md)

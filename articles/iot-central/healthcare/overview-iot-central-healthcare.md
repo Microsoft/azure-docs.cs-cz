@@ -1,6 +1,6 @@
 ---
-title: Vytváření řešení zdravotní péče s Azure IoT Central | Dokumenty společnosti Microsoft
-description: Naučte se vytvářet řešení zdravotní péče pomocí šablon aplikací Azure IoT Central.
+title: Sestavování řešení zdravotnictví pomocí Azure IoT Central | Microsoft Docs
+description: Naučte se sestavovat řešení zdravotnictví pomocí šablon aplikací Azure IoT Central.
 author: philmea
 ms.author: philmea
 ms.date: 09/24/2019
@@ -9,39 +9,39 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: 2aee5c56b267f9243b69a48dfd0f5f64196c5f23
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77021481"
 ---
 # <a name="building-healthcare-solutions-with-azure-iot-central"></a>Sestavování řešení pro zdravotnictví s využitím služby Azure IoT Central 
 
 
 
-Naučte se vytvářet řešení zdravotní péče pomocí Azure IoT Central pomocí šablon aplikací.
+Naučte se sestavovat řešení zdravotní péče pomocí šablon aplikací pomocí Azure IoT Central.
 
-## <a name="what-is-continuous-patient-monitoring-template"></a>Co je průběžná šablona monitorování pacientů?
+## <a name="what-is-continuous-patient-monitoring-template"></a>Co je šablona pro průběžné monitorování pacienta?
 
-V oblasti IoT ve zdravotnictví je nepřetržité monitorování pacientů jedním z klíčových faktorů, které umožňují snížit riziko readmise, efektivněji zvládat chronická onemocnění a zlepšovat výsledky pacientů. Průběžné monitorování pacientů lze rozdělit do dvou hlavních kategorií:
+V prostoru IoT pro zdravotnictví je sledování nepřetržitého pacienta jedním z klíčových příchodů, které snižuje riziko opětovného přístupu, správu chronické choroby a zlepšení výsledků pacientů. Nepřetržité monitorování pacientů se dá rozdělit do dvou hlavních kategorií:
 
-1. **Monitorování u pacientů**: Pomocí lékařských nositelných zařízení a dalších zařízení v nemocnici mohou pečovatelské týmy sledovat vitální funkce pacienta a zdravotní stav, aniž by musely posílat zdravotní sestru, aby pacienta několikrát denně zkontrolovala. Pečovatelské týmy mohou pochopit okamžik, kdy pacient potřebuje kritickou pozornost prostřednictvím oznámení a efektivně upřednostňuje svůj čas.
-1. **Vzdálené monitorování pacientů**: Pomocí lékařských nositelných zařízení a výsledků hlášených pacienty (PRO) ke sledování pacientů mimo nemocnici může být riziko zpětného přebírání sníženo. Údaje od pacientů s chronickým onemocněním a rehabilitačních pacientů mohou být shromažďovány, aby se zajistilo, že pacienti budou dostavovat plány péče a že záznamy o zhoršení stavu pacientů mohou být objeveny v pečovatelských týmech dříve, než se stanou kritickými.
+1. **Monitorování v pacientech**: používání lékařských wearables a dalších zařízení v nemocnicích může monitorovat důležité příznaky a lékařské podmínky pro pacienty, aniž by bylo nutné poslat zdravotnímu lékaři, aby se na pacienta několikrát denně zkontroloval. Týmy pro péči o zdravotní péči můžou pochopit okamžik, kdy pacient potřebuje kritickou pozornost prostřednictvím oznámení a efektivně stanovit prioritu jejich času.
+1. **Sledování vzdáleného pacienta**: pomocí lékařských wearables a pacientů hlášených pacienty (specialisty) k monitorování pacientů mimo nemocnice je možné snížit riziko zneužití. Data z útoků chronické choroby pacient a rehabilitace pacienty je možné shromažďovat, aby se zajistilo, že pacientům vyhovují plánům péče a že výstrahy na zhoršení pacienta můžou být v souladu s tím, aby se týmy seznámily, než budou kritické.
 
-Tuto šablonu aplikace lze použít k vytvoření řešení pro obě kategorie nepřetržitého monitorování pacientů. Nabízí například tyto výhody:
+Tato šablona aplikace se dá použít k sestavení řešení pro obě kategorie nepřetržitého monitorování pacientů. Nabízí například tyto výhody:
 
-* Bezproblémově propojte různé druhy lékařských nositelných zařízení s instancí IoT Central.
+* K bezproblémovému připojení různých druhů lékařských wearables instance IoT Central.
 * Monitorujte a spravujte zařízení, abyste zajistili, že zůstanou v pořádku.
-* Vytvořte vlastní pravidla týkající se dat zařízení, která spustí příslušné výstrahy.
-* Exportujte data o stavu pacientů do rozhraní Azure API pro FHIR, kompatibilní úložiště dat.
-* Exportujte agregované přehledy do stávajících nebo nových obchodních aplikací.
+* Vytvořte vlastní pravidla týkající se dat zařízení, aby se aktivovaly příslušné výstrahy.
+* Exportujte data o stavu pacienta do Azure API pro FHIR, což je kompatibilní úložiště dat.
+* Exportujte agregované poznatky do stávajících nebo nových obchodních aplikací.
 
 >[!div class="mx-imgBorder"] 
->![Řídicí panel CPM](media/in-patient-dashboard.png)
+>![CPM – řídicí panel](media/in-patient-dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít vytvářet řešení nepřetržitého monitorování pacientů:
+Začínáme s vytvářením řešení pro monitorování nepřetržitého pacienta:
 
 * [Nasazení šablony aplikace](tutorial-continuous-patient-monitoring.md)
-* [Podívejte se na ukázkovou architekturu](concept-continuous-patient-monitoring-architecture.md)
+* [Podívejte se na příklad architektury.](concept-continuous-patient-monitoring-architecture.md)

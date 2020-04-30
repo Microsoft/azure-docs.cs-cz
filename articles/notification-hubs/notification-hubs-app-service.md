@@ -1,6 +1,6 @@
 ---
-title: Integrace center oznámení s mobilními aplikacemi služby App Service
-description: Zjistěte, jak Azure Notification Hubs funguje s mobilními aplikacemi Služby Ap.
+title: Notification Hubs integrace s App Service Mobile Apps
+description: Přečtěte si, jak Azure Notification Hubs pracuje s Mobile Appsem Azure App Service.
 author: sethmanheim
 manager: femila
 editor: jwargo
@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76264148"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>Integrace s App Service Mobile Apps

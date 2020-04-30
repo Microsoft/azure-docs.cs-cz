@@ -1,6 +1,6 @@
 ---
 title: Kurz pro nastavení globální distribuce pomocí rozhraní Azure Cosmos DB API pro MongoDB
-description: Zjistěte, jak nastavit globální distribuci pomocí rozhraní API Azure Cosmos DB pro MongoDB.
+description: Přečtěte si, jak nastavit globální distribuci pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -9,15 +9,15 @@ ms.topic: tutorial
 ms.date: 12/26/2018
 ms.reviewer: sngun
 ms.openlocfilehash: b446697977395aa9bbbcf2192aa232fbc85a0b68
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444668"
 ---
 # <a name="set-up-global-distributed-database-using-azure-cosmos-dbs-api-for-mongodb"></a>Nastavení globální distribuované databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB
 
-V tomto článku ukážeme, jak pomocí portálu Azure nastavit globální distribuovanou databázi a připojit se k ní pomocí rozhraní API Azure Cosmos DB pro MongoDB.
+V tomto článku ukážeme, jak použít Azure Portal k nastavení globální distribuované databáze a k jejímu připojení pomocí rozhraní Azure Cosmos DB API pro MongoDB.
 
 Tento článek se zabývá následujícími úkony: 
 
@@ -27,8 +27,8 @@ Tento článek se zabývá následujícími úkony:
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-## <a name="verifying-your-regional-setup"></a>Ověření místního nastavení 
-Jednoduchý způsob, jak zkontrolovat globální konfiguraci pomocí rozhraní API Cosmos DB pro MongoDB, je spustit příkaz *isMaster()* z prostředí Mongo.
+## <a name="verifying-your-regional-setup"></a>Ověření místní instalace 
+Jednoduchý způsob, jak kontrolovat globální konfiguraci pomocí rozhraní API Cosmos DB pro *MongoDB, je spuštění příkazu "* Mongo" z prostředí.
 
 V prostředí Mongo Shell:
 
@@ -64,7 +64,7 @@ Příklad výsledků:
 
 ## <a name="connecting-to-a-preferred-region"></a>Připojení k upřednostňované oblasti 
 
-Rozhraní API Azure Cosmos DB pro MongoDB umožňuje určit předvolbu čtení vaší kolekce pro globálně distribuovanou databázi. Pro zajištění nízké latence čtení a globální vysoké dostupnosti doporučujeme nastavit předvolby kolekce pro čtení na *nearest* (nejbližší). Předvolba pro čtení *nearest* (nejbližší) je nakonfigurovaná pro čtení z nejbližší oblasti.
+Rozhraní API Azure Cosmos DB pro MongoDB umožňuje zadat předvolby pro čtení kolekce pro globálně distribuovanou databázi. Pro zajištění nízké latence čtení a globální vysoké dostupnosti doporučujeme nastavit předvolby kolekce pro čtení na *nearest* (nejbližší). Předvolba pro čtení *nearest* (nejbližší) je nakonfigurovaná pro čtení z nejbližší oblasti.
 
 ```csharp
 var collection = database.GetCollection<BsonDocument>(collectionName);

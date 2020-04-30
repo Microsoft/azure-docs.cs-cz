@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73176832"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>Publikování několika verzí rozhraní API 
@@ -37,7 +37,7 @@ V tomto kurzu se naučíte:
 ## <a name="prerequisites"></a>Požadavky
 
 + Seznamte se s [terminologií služby Azure API Management](api-management-terminology.md).
-+ Dokončete následující rychlý start: [Vytvořte instanci Azure API Management](get-started-create-service-instance.md).
++ Dokončete následující rychlý Start: [vytvoření instance služby Azure API Management](get-started-create-service-instance.md).
 + Projděte si také následující kurz: Navíc kurzu: [Import a publikování vašeho prvního rozhraní API](import-and-publish.md).
 
 ## <a name="add-a-new-version"></a>Přidání nové verze
@@ -89,13 +89,13 @@ Aby se volajícím zobrazila nová verze, musí se přidat do **produktu**.
 3. Vyberte **Rozhraní API**.
 4. Vyberte **Přidat**.
 5. Vyberte **Demo Conference API, verze v1**.
-6. Klepněte na **tlačítko Vybrat**.
+6. Klikněte na **Vybrat**.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Zobrazení verze na portálu pro vývojáře
 
 1. V horní nabídce vyberte **Portál pro vývojáře**.
-2. Vyberte **rozhraní API** a klikněte na **rozhraní API ukázkové konference**.
-3. Vedle názvu rozhraní API byste měli zobrazit rozevírací seznam s více verzemi.
+2. Vyberte **rozhraní API** a klikněte na **UKÁZKOVOU konferenci rozhraní API**.
+3. Vedle názvu rozhraní API byste měli vidět rozevírací seznam s více verzemi.
 4. Vyberte **v1**.
 5. Všimněte si **adresy URL požadavku** první operace na seznamu. Ukazuje, že cesta URL rozhraní API zahrnuje **v1**.
 

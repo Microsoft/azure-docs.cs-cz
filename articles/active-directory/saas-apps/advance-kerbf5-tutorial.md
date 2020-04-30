@@ -17,10 +17,10 @@ ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 984fd0c7946a50922315269c87e08b1c35b74348
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74074764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s F5
@@ -57,7 +57,7 @@ V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v
 
 Pokud chcete nakonfigurovat integraci F5 na Azure AD, musíte přidat F5 z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
 1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
 1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
@@ -77,7 +77,7 @@ Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomo
     1. **[Vytvořit testovacího uživatele F5](#create-f5-test-user)** , aby měl protějšek B. Simon v F5, který je propojený s reprezentací uživatele v Azure AD.
 1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
 
-## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
@@ -89,38 +89,38 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , zadejte v **základní části Konfigurace SAML** hodnoty následujících polí:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru: `https://<YourCustomFQDN>.f5.com/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YourCustomFQDN>.f5.com/`
 
     > [!NOTE]
     > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na [tým podpory F5 pro klienty](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
 1. V části **nastavit na F5** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
+1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
    1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na možnost **Vytvořit**.
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k F5.
 
@@ -128,7 +128,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 1. V seznamu aplikace vyberte **F5**.
 1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
@@ -148,7 +148,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. Otevřete nové okno webového prohlížeče a přihlaste se k webu společnosti F5 (rozšířený protokol Kerberos) jako správce a proveďte následující kroky:
 
-1. Certifikát metadat musíte importovat do F5 (rozšířený protokol Kerberos), který se použije později v procesu instalace. Do **> seznamu certifikátů protokolu SSL vyberte System > Certificate management > Traffic Certificate management >** . Klikněte na **Import** pravého rohu.
+1. Certifikát metadat musíte importovat do F5 (rozšířený protokol Kerberos), který se použije později v procesu instalace. V **seznamu certifikátů protokolu SSL > Správa certifikátů v systému > Správa certifikátů >> **. Klikněte na **Import** pravého rohu.
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure01.png)
  
@@ -188,13 +188,13 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     >[!Note]
     >Budete potřebovat vytvořit a zadat účet delegování protokolu Kerberos. Odkazování na oddíl KCD (viz příloha odkazy na proměnné)
 
-    • `session.saml.last.attr.name. http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` zdroje uživatelského jména
+    • Uživatelské jméno zdroje`session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 
-    • `session.logon.last.domain` zdroje sféry uživatele
+    • Zdroj sféry uživatele`session.logon.last.domain`
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure11.png)
 
-1. Pro konfiguraci přístupového profilu přístup **> profilování a zásady > přístup k profilu (zásady pro relace)** .
+1. Pro konfiguraci přístupového profilu přístup **> profilování a zásady > přístup k profilu (zásady pro relace)**.
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure12.png)
 
@@ -225,7 +225,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
     * mcget {Session. Logon. Last. username}
     * mcget {Session. Logon. Last. Password}
 
-1. Pokud chcete přidat nový uzel, přejít na **místní provoz > uzly > seznam uzlů > +** .
+1. Pokud chcete přidat nový uzel, přejít na **místní provoz > uzly > seznam uzlů > +**.
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure21.png)
  
@@ -233,7 +233,7 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
      ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure22.png)
 
- 1. Pokud chcete vytvořit nový virtuální server, přečtěte si **místní provoz > virtuální servery > seznam virtuálních serverů > +** .
+ 1. Pokud chcete vytvořit nový virtuální server, přečtěte si **místní provoz > virtuální servery > seznam virtuálních serverů > +**.
 
     ![F5 (rozšířený protokol Kerberos) – konfigurace](./media/advance-kerbf5-tutorial/configure23.png)
 
@@ -286,14 +286,14 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 | eb46b6b6. Session. SAML. Last. assertionID | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssueInstant  | `<ID>` |
 | eb46b6b6. Session. SAML. Last. assertionIssuer | `https://sts.windows.net/<TENANT ID>`/ |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.microsoft.com/claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.microsoft.com/identity/claims/displayname | user0 |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.microsoft.com/identity/claims/identityprovider | `https://sts.windows.net/<TENANT ID>/` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.microsoft.com/identity/claims/objectidentifier | `<TENANT ID>` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/Claims/authnmethodsreferences | `http://schemas.microsoft.com/ws/2008/06/identity/authenticationmethod/password` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/DisplayName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/IdentityProvider | `https://sts.windows.net/<TENANT ID>/` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/ObjectIdentifier | `<TENANT ID>` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.Microsoft.com/identity/claims/tenantid | `<TENANT ID>` |
 | eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress | `user0@superdemo.live` |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname | user0 |
-| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/name | `user0@superdemo.live` |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/givenName | user0 |
+| eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/Name | `user0@superdemo.live` |
 | eb46b6b6. Session. SAML. Last. attr. Name. http:\//schemas.xmlsoap.org/ws/2005/05/identity/claims/surname | 0 |
 | eb46b6b6. Session. SAML. Last. cílová skupina | `https://kerbapp.superdemo.live` |
 | eb46b6b6. Session. SAML. Last. authNContextClassRef | urn: Oasis: names: TC: SAML: 2.0: AC: Classes: Password |
@@ -318,15 +318,15 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ### <a name="create-f5-test-user"></a>Vytvořit testovacího uživatele F5
 
-V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
+V této části vytvoříte na F5 uživatele s názvem B. Simon. Pokud chcete přidat uživatele na platformě F5, pracujte s nástrojem [F5 Client Support Team](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele. 
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
 Po kliknutí na dlaždici F5 na přístupovém panelu byste měli být automaticky přihlášeni k F5, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

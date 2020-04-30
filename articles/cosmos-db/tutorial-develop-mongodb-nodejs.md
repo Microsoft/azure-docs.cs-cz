@@ -1,5 +1,5 @@
 ---
-title: Node.Js, úhlová aplikace využívající rozhraní API Azure Cosmos DB pro MongoB (část 1)
+title: Node. js, úhlová aplikace s využitím rozhraní API Azure Cosmos DB pro MongoB (part1)
 description: V této sérii kurzů založených na videích zjistíte, jak vytvořit aplikaci MongoDB s Angular a Node postavenou na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 author: johnpapa
 ms.service: cosmos-db
@@ -11,17 +11,17 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 ms.openlocfilehash: d2e7ce959edffdb2e8c929c81837e0ac3fc3da9e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75444687"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb"></a>Vytvoření úhlové aplikace s rozhraním API Azure Cosmos DB pro MongoDB
 
-Tento vícedílný kurz ukazuje, jak vytvořit novou aplikaci napsanou v Souboru Node.js pomocí Express a Angular a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API Cosmos DB pro MongoDB](mongodb-introduction.md).
+Tento kurz s více částmi ukazuje, jak vytvořit novou aplikaci napsanou v Node. js s Express a úhlovými a pak ji připojit k [účtu Cosmos nakonfigurovanému pomocí rozhraní API služby Cosmos DB pro MongoDB](mongodb-introduction.md).
 
-Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Umožňuje rychle vytvářet a dotazovat databáze dokumentů, klíčů a hodnot a grafů, které těží z globální distribuce a horizontálníškálování možností v jádru Cosmos DB. 
+Databáze Azure Cosmos je databázová služba Microsoftu s více modely použitelná v celosvětovém měřítku. Umožňuje rychle vytvořit a dotazovat databáze dokumentů, klíčů/hodnot a grafů, které využívají možnosti globální distribuce a horizontálního škálování v jádru Cosmos DB. 
 
 Tento vícedílný kurz se zabývá následujícími úlohami:
 
