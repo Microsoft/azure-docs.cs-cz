@@ -16,7 +16,7 @@ ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 11eddf0e5f9f950373e222a8007cabf7aa0720bb
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142270"

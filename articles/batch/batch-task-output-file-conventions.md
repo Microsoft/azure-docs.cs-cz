@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí Azure Batch knihovny konvencí souborů pro
 ms.topic: article
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e835b4e4ace344de65bc5d037b99afdf811ed4bb
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 2d7988ef4339280bd729cc1acaa1b7fb2c33b6b9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116430"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232696"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Trvalá data úloh a úloh pro Azure Storage s knihovnou konvence souborů Batch pro .NET
 
@@ -182,7 +182,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Zobrazit výstupní soubory v Azure Portal
 
-Azure Portal zobrazí výstupní soubory úlohy a protokoly, které jsou trvalé na propojený Azure Storage účet pomocí [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Tyto konvence můžete implementovat sami v jazyce, podle vašeho výběru, nebo můžete použít knihovnu pro konvence souborů v aplikacích .NET.
+Azure Portal zobrazí výstupní soubory úlohy a protokoly, které jsou trvalé na propojený Azure Storage účet pomocí [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). Tyto konvence můžete implementovat sami v jazyce, podle vašeho výběru, nebo můžete použít knihovnu pro konvence souborů v aplikacích .NET.
 
 Chcete-li povolit zobrazení výstupních souborů na portálu, je nutné splnit následující požadavky:
 

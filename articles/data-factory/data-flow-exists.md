@@ -1,6 +1,6 @@
 ---
-title: Existuje transformace v toku dat mapování
-description: Kontrola existujících řádků pomocí transformace exists v toku dat mapování Azure Data Factory
+title: Existuje transformace v toku dat mapování.
+description: Vyhledat existující řádky pomocí transformace Exists v Azure Data Factory toku dat mapování
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,39 +8,47 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a303c8fa1e23460fb906232eedb6bfb1930b4bc9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606466"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232462"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování
+# <a name="exists-transformation-in-mapping-data-flow"></a>Existuje transformace v toku dat mapování.
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Existuje transformace je řádek filtrování transformace, která kontroluje, zda vaše data existuje v jiném zdroji nebo datového proudu. Výstupní datový proud obsahuje všechny řádky v levém datovém proudu, které existují nebo neexistují v pravém datovém proudu. Existující transformace je podobná ```SQL WHERE EXISTS``` ```SQL WHERE NOT EXISTS```a .
+Transformace EXISTS je transformace při filtrování řádků, která kontroluje, jestli data existují v jiném zdroji nebo streamu. Výstupní datový proud obsahuje všechny řádky v levém proudu, které buď existují, nebo neexistují ve správném datovém proudu. Transformace EXISTS je podobná ```SQL WHERE EXISTS``` a. ```SQL WHERE NOT EXISTS```
 
 ## <a name="configuration"></a>Konfigurace
 
-1. V rozevíracím souboru Pravý datový **proud** zvolte, který datový proud kontrolujete.
-1. Určete, zda hledáte data, která mají existovat nebo neexistují, v nastavení **Exist type.**
-1. Vyberte, zda chcete **vlastní výraz**.
-1. Zvolte klíčové sloupce, které chcete porovnat, protože existují podmínky. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Chcete-li porovnat pomocí vypočítané hodnoty, najeďte na rozbalovací seznam sloupců a vyberte **Vypočítaný sloupec**.
+1. V rozevíracím seznamu **správný datový proud** vyberte datový proud, který chcete zkontrolovat.
+1. Určete, jestli chcete, aby tato data existovala nebo neexistovala v nastavení s **existujícím typem** .
+1. Vyberte, jestli chcete **vlastní výraz**.
+1. Vyberte klíčové sloupce, které chcete porovnat, protože existují podmínky. Ve výchozím nastavení tok dat hledá rovnost mezi jedním sloupcem v každém datovém proudu. Pro porovnání přes vypočítanou hodnotu umístěte ukazatel myši na rozevírací seznam sloupec a vyberte **vypočítaný sloupec**.
 
-![Existuje nastavení](media/data-flow/exists.png "existuje 1")
+![Existuje nastavení](media/data-flow/exists.png "Existuje 1")
 
-### <a name="multiple-exists-conditions"></a>Více existuje podmínky
+### <a name="multiple-exists-conditions"></a>Existuje několik podmínek.
 
-Chcete-li porovnat více sloupců z každého datového proudu, přidejte novou podmínku kliknutím na ikonu plus vedle existujícího řádku. Každá další podmínka je spojena příkazem "a". Porovnání dvou sloupců je stejné jako následující výraz:
+Pokud chcete porovnat více sloupců z každého datového proudu, přidejte podmínku New Exists kliknutím na ikonu se symbolem plus vedle existujícího řádku. Každá další podmínka je připojena příkazem "a". Porovnání dvou sloupců je stejné jako u následujícího výrazu:
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
 ### <a name="custom-expression"></a>Vlastní výraz
 
-Chcete-li vytvořit výraz volného tvaru, který obsahuje jiné operátory než "a" a "rovná se", vyberte pole **Vlastní výraz.** Zadejte vlastní výraz prostřednictvím tvůrce výrazů toku dat kliknutím na modré pole.
+Chcete-li vytvořit výraz ve volném formátu, který obsahuje operátory jiné než a a Equals, vyberte pole **vlastní výraz** . Kliknutím na modrý rámeček zadejte vlastní výraz pomocí Tvůrce výrazů toku dat.
 
 ![Existuje vlastní nastavení](media/data-flow/exists1.png "existuje vlastní")
+
+## <a name="broadcast-optimization"></a>Optimalizace všesměrového vysílání
+
+![Připojení všesměrového vysílání](media/data-flow/broadcast.png "Připojení všesměrového vysílání")
+
+V okně spojení, vyhledávání a existence transformace, pokud se jeden nebo oba datové proudy vejdou do paměti pracovního uzlu, můžete optimalizovat výkon tím, že povolíte **všesměrové vysílání**. Ve výchozím nastavení se modul Spark automaticky rozhodne, zda se má vysílání jedna strana vysílat. Chcete-li ručně zvolit, která strana se má vysílat, vyberte možnost **pevná**.
+
+Nedoporučuje se zakázat všesměrové vysílání přes možnost **off** , pokud vaše spojení neběží v případě chyb časového limitu.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
@@ -51,29 +59,29 @@ Chcete-li vytvořit výraz volného tvaru, který obsahuje jiné operátory než
     exists(
         <conditionalExpression>,
         negate: { true | false },
-        broadcast: {'none' | 'left' | 'right' | 'both'}
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <existsTransformationName>
 ```
 
 ### <a name="example"></a>Příklad
 
-Níže uvedený příklad je existuje `checkForChanges` transformace s `NameNorm2` názvem, `TypeConversions`který trvá levý proud a pravý proud .  Podmínka exists je `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` výraz, který vrátí `EMPID` `Region` hodnotu true, pokud se shodují sloupce v každém datovém proudu. Jak jsme se snaží o `negate` existenci, je falešný. Nejsme povolení žádné vysílání v optimalizaci `broadcast` kartu, takže má hodnotu `'none'`.
+Níže uvedený příklad je transformace s názvem `checkForChanges` , která přebírá levý `NameNorm2` Stream a pravý `TypeConversions`Stream.  Podmínka EXISTS je výraz `NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region` , který vrací hodnotu true, pokud se `EMPID` shodují `Region` sloupce a v každém datovém proudu. Při kontrole existence `negate` je NEPRAVDA. Na kartě optimalizace nepovolujeme žádné vysílání, takže `broadcast` má hodnotu `'none'`.
 
-V ux datové továrny tato transformace vypadá jako následující obrázek:
+V uživatelském prostředí Data Factory Tato transformace vypadá jako na následujícím obrázku:
 
 ![Existuje příklad](media/data-flow/exists-script.png "Existuje příklad")
 
-Skript toku dat pro tuto transformaci je ve fragmentu níže:
+Skript toku dat pro tuto transformaci je v následujícím fragmentu kódu:
 
 ```
 NameNorm2, TypeConversions
     exists(
         NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
         negate:false,
-        broadcast: 'none'
+        broadcast: 'auto'
     ) ~> checkForChanges
 ```
 
 ## <a name="next-steps"></a>Další kroky
 
-Podobné transformace jsou [Vyhledávání](data-flow-lookup.md) a [Připojit .](data-flow-join.md)
+Podobné transformace jsou [Lookup](data-flow-lookup.md) a [Join](data-flow-join.md).

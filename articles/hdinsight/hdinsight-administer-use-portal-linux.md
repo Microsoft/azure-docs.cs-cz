@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/23/2020
-ms.openlocfilehash: 8380cfcbf267b117108d46794153bd5a61b8ec6a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116226"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232883"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -21,7 +21,7 @@ ms.locfileid: "82116226"
 
 Pomocí [Azure Portal](https://portal.azure.com)můžete spravovat clustery [Apache Hadoop](https://hadoop.apache.org/) ve službě Azure HDInsight. Pro informace o správě clusterů Hadoop ve službě HDInsight pomocí jiných nástrojů použijte selektor karet výše.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Existující cluster Apache Hadoop v HDInsight.  Další informace najdete v tématu [Vytvoření clusterů se systémem Linux v HDInsight pomocí Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md).
 
@@ -61,7 +61,7 @@ Vyberte název vašeho clusteru ze stránky [**clustery HDInsight**](#showCluste
     |Značky|Umožňuje nastavit páry klíč/hodnota pro definování vlastní taxonomie vašich cloudových služeb. Můžete například vytvořit klíč s názvem **Project**a potom použít společnou hodnotu pro všechny služby přidružené ke konkrétnímu projektu.|
     |Diagnostikovat a řešit problémy|Zobrazit informace o řešení potíží.|
     |Rychlý start|Zobrazuje informace, které vám pomůžou začít používat HDInsight.|
-    |nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
+    |Nástroje|Informace o nápovědě k nástrojům souvisejícím s HDInsight|
 
   - **Nabídka Nastavení**  
 
@@ -200,9 +200,9 @@ Z [domovské stránky clusteru](#homePage):
 
 Heslo se změní na všech uzlech v clusteru.
 
-### <a name="change-the-ssh-user-password"></a>Změna hesla uživatele SSH
+### <a name="change-the-ssh-user-password-or-public-key"></a>Změna hesla uživatele SSH nebo veřejného klíče
 
-1. Pomocí textového editoru uložte následující text jako soubor s názvem **ChangePassword.sh**.
+1. Pomocí textového editoru uložte následující text jako soubor s názvem **changecredentials.sh**.
 
     > [!IMPORTANT]  
     > Je nutné použít editor, který jako konec řádku používá LF. Pokud editor používá znaky CRLF, skript nefunguje.
@@ -222,13 +222,13 @@ Heslo se změní na všech uzlech v clusteru.
    | Pole | Hodnota |
    | --- | --- |
    | Typ skriptu | Z rozevíracího seznamu vyberte **-vlastní** .|
-   | Název |Změna hesla SSH |
-   | Identifikátor URI skriptu bash |Identifikátor URI souboru changepassword.sh |
+   | Název |Změna přihlašovacích údajů SSH |
+   | Identifikátor URI skriptu bash |Identifikátor URI souboru changecredentials.sh |
    | Typ (typy) uzlů: (Head, work, Nimbus, nadřízený nebo Zookeeper.) |✓ pro všechny typy uzlů v seznamu |
    | Parametry |Zadejte uživatelské jméno SSH a pak nové heslo. Mezi uživatelským jménem a heslem by měla být jedna mezera. Následující znaky nejsou v heslech SSH podporovány: ' ' '/\ <% ~ | $ &
    | Zachovat tuto akci se skripty... |Nechte toto pole nezaškrtnuté. |
 
-6. Vyberte **vytvořit** pro použití skriptu. Po dokončení skriptu se můžete připojit ke clusteru pomocí protokolu SSH s novým heslem.
+6. Vyberte **vytvořit** pro použití skriptu. Po dokončení skriptu se můžete připojit ke clusteru pomocí protokolu SSH s novými přihlašovacími údaji.
 
 ## <a name="find-the-subscription-id"></a>Najít ID předplatného
 

@@ -1,79 +1,63 @@
 ---
 title: Kurz – odstranění clusteru Azure Red Hat OpenShift
-description: V tomto kurzu se dozvíte, jak odstranit cluster Azure Red Hat OpenShift pomocí příkazového příkazového příkazu Azure
-author: jimzim
-ms.author: jzim
+description: V tomto kurzu se dozvíte, jak odstranit cluster Azure Red Hat OpenShift pomocí Azure CLI.
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 05/06/2019
-ms.openlocfilehash: c335236a2b0b05f03bef1ebef37f1129a5d0352b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: 2de60b90eb6fb75ef013a2fd8785f1b8b616fba6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76278775"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232134"
 ---
-# <a name="tutorial-delete-an-azure-red-hat-openshift-cluster"></a>Kurz: Odstranění clusteru Azure Red Hat OpenShift
+# <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>Kurz: odstranění clusteru Azure Red Hat OpenShift 4
 
-Toto je konec tohoto kurzu. Po dokončení testování ukázkového clusteru, tady je postup, jak ho odstranit a jeho přidružené prostředky, abyste se neúčtovali za to, co nepoužíváte.
-
-Ve třetí části této série se naučíte:
+V tomto kurzu, který je třetí částí než tři, se odstraní cluster Azure Red Hat OpenShift se systémem OpenShift 4. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Odstranění clusteru Azure Red Hat OpenShift
 
-V této sérii kurzů se naučíte:
-> [!div class="checklist"]
-> * [Vytvoření clusteru Azure Red Hat OpenShift](tutorial-create-cluster.md)
-> * [Škálování clusteru Azure Red Hat OpenShift](tutorial-scale-cluster.md)
-> * Odstranění clusteru Azure Red Hat OpenShift
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="before-you-begin"></a>Před zahájením
 
-Než začnete s tímto kurzem:
+V předchozích kurzech se vytvořil cluster Azure Red Hat OpenShift a připojil se k používání webové konzole OpenShift. Pokud jste tyto kroky neudělali a chcete je sledovat, začněte s [kurzem 1 – Vytvoření clusteru Azure Red Hat OpenShift 4.](tutorial-create-cluster.md)
 
-* Vytvořte cluster podle kurzu [vytvořit azure red hat openshift clusteru.](tutorial-create-cluster.md)
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="step-1-sign-in-to-azure"></a>Krok 1: Přihlášení do Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Pokud používáte azure cli místně, `az login` spusťte přihlášení k Azure.
+Pokud používáte Azure CLI místně, spusťte příkaz `az login` pro přihlášení k Azure.
 
 ```bash
 az login
 ```
 
-Pokud máte přístup k více `az account set -s {subscription ID}` předplatných, spusťte nahrazení `{subscription ID}` předplatného, které chcete použít.
+Pokud máte přístup k několika předplatným, `az account set -s {subscription ID}` spusťte `{subscription ID}` nahrazení pomocí předplatného, které chcete použít.
 
-## <a name="step-2-delete-the-cluster"></a>Krok 2: Odstranění clusteru
+## <a name="delete-the-cluster"></a>Odstranění clusteru
 
-Otevřete terminál Bash a nastavte proměnnou CLUSTER_NAME na název clusteru:
-
-```bash
-CLUSTER_NAME=yourclustername
-```
-
-Nyní odstraňte cluster:
+V předchozích kurzech byly nastaveny následující proměnné. 
 
 ```bash
-az openshift delete --resource-group $CLUSTER_NAME --name $CLUSTER_NAME
+CLUSTER=yourclustername
+RESOURCE_GROUP=yourresourcegroup
 ```
 
-Budete vyzváni, zda chcete cluster odstranit. Po potvrzení `y`pomocí služby bude odstranění clusteru trvat několik minut. Po dokončení příkazu bude odstraněna celá skupina prostředků a všechny prostředky uvnitř, včetně clusteru.
+Pomocí těchto hodnot odstraňte cluster:
 
-## <a name="deleting-a-cluster-using-the-azure-portal"></a>Odstranění clusteru pomocí portálu Azure
+```bash
+az aro delete --resource-group $RESOURCEGROUP --name $CLUSTER
+```
 
-Případně můžete odstranit přidružené skupiny prostředků vašeho clusteru prostřednictvím online portálu Azure. Název skupiny prostředků je stejný jako název clusteru.
-
-V současné `Microsoft.ContainerService/openShiftManagedClusters` době prostředek, který se vytvoří při vytváření clusteru je skrytý na portálu Azure. V `Resource group` zobrazení zkontrolujte, zda `Show hidden types` chcete zobrazit skupinu prostředků.
-
-![Snímek obrazovky se zaškrtávacím políčkem Skrytý typ](./media/aro-portal-hidden-type.png)
-
-Odstraněním skupiny prostředků odstraníte všechny související prostředky, které se vytvoří při vytváření clusteru Azure Red Hat OpenShift.
+Pak se zobrazí výzva k potvrzení, jestli chcete cluster odstranit. Po potvrzení v nástroji `y`bude trvat několik minut, než se cluster odstraní. Po dokončení příkazu se odstraní celá skupina prostředků a všechny prostředky uvnitř ní, včetně clusteru –.
 
 ## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
 > [!div class="checklist"]
-> * Odstranění clusteru Azure Red Hat OpenShift
+> * Odstranění clusteru Azure Red Hat OpenShift 4
 
-Další informace o používání OpenShiftu s oficiální [dokumentací Red Hat OpenShift](https://docs.openshift.com/aro/welcome/index.html)
+Další informace o používání OpenShift s oficiální [dokumentací Red Hat OpenShift](https://www.openshift.com/try)
