@@ -1,16 +1,16 @@
 ---
-title: 'Kurz: Hostitelské RESTful API s CORS'
-description: Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS. Služba App Service může hostovat webové aplikace front-end u obou koncových a zadních api.
+title: 'Kurz: hostování rozhraní API RESTful s CORS'
+description: Zjistěte, jak Azure App Service pomáhá hostovat rozhraní RESTful API s podporou CORS. App Service může hostovat webové aplikace front-end i back-end API.
 ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 02/11/2020
 ms.custom: mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
 ms.openlocfilehash: 79aff0b90ad62af221102311d3123f93af30ad08
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
-ms.translationtype: MT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085611"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Kurz: Hostování rozhraní RESTful API s CORS v Azure App Service
@@ -28,12 +28,12 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
 * [Nainstalujte Git](https://git-scm.com/).
-* [Nainstalujte rozhraní .NET Core](https://www.microsoft.com/net/core/).
+* [Nainstalujte .NET Core](https://www.microsoft.com/net/core/).
 
 ## <a name="create-local-aspnet-core-app"></a>Vytvoření místní aplikace ASP.NET Core
 
@@ -123,7 +123,7 @@ To https://&lt;app_name&gt;.scm.azurewebsites.net/&lt;app_name&gt;.git
  * [new branch]      master -> master
 </pre>
 
-### <a name="browse-to-the-azure-app"></a>Přejděte do aplikace Azure
+### <a name="browse-to-the-azure-app"></a>Přejít k aplikaci Azure
 
 V prohlížeči přejděte na adresu `http://<app_name>.azurewebsites.net/swagger` a vyzkoušejte si uživatelské rozhraní Swagger.
 
@@ -141,7 +141,7 @@ Dále pro své rozhraní API povolíte integrovanou podporu CORS v App Service.
 
 V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vašeho nasazeného rozhraní API (`http://<app_name>.azurewebsites.net`). Nahraďte _ \<název aplikace>_ názvem aplikace ve službě App Service.
+Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vašeho nasazeného rozhraní API (`http://<app_name>.azurewebsites.net`). Položku _ \<AppName>_ nahraďte názvem vaší aplikace v App Service.
 
 V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 
@@ -149,7 +149,7 @@ V místním okně terminálu znovu spusťte ukázkovou aplikaci.
 dotnet run
 ```
 
-Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářských nástrojů`Ctrl` + `Shift` + `i` v prohlížeči (v Chromu pro Windows) a zkontrolujte kartu **Konzola.** Nyní by se měla `No 'Access-Control-Allow-Origin' header is present on the requested resource`zobrazit chybová zpráva .
+Přejděte do aplikace v prohlížeči na adrese `http://localhost:5000`. Otevřete okno vývojářské nástroje v prohlížeči`Ctrl` + `Shift` + `i` (v Chrome pro Windows) a prozkoumejte kartu **Konzola** . Nyní by se měla zobrazit chybová zpráva `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![Chyba CORS v prohlížeči](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -159,7 +159,7 @@ V produkčním prostředí by vaše aplikace v prohlížeči měla místo adresy
 
 ### <a name="enable-cors"></a>Povolení CORS 
 
-V prostředí Cloud Shell povolte CORS na adresu [`az resource update`](/cli/azure/resource#az-resource-update) URL vašeho klienta pomocí příkazu. Nahraďte _ &lt;zástupný_ symbol názvu aplikace>.
+V Cloud Shell pomocí [`az resource update`](/cli/azure/resource#az-resource-update) příkazu povolte CORS pro adresu URL vašeho klienta. Nahraďte zástupný symbol _ &lt;>AppName_ .
 
 ```azurecli-interactive
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.cors.allowedOrigins="['http://localhost:5000']" --api-version 2015-06-01
@@ -168,7 +168,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 Ve vlastnosti `properties.cors.allowedOrigins` můžete nastavit více než jednu adresu URL klienta (`"['URL1','URL2',...]"`). Můžete také povolit všechny adresy URL klientů pomocí `"['*']"`.
 
 > [!NOTE]
-> Pokud vaše aplikace vyžaduje, aby byly odeslány přihlašovací údaje, jako `ACCESS-CONTROL-ALLOW-CREDENTIALS` jsou soubory cookie nebo ověřovací tokeny, může prohlížeč vyžadovat záhlaví odpovědi. Chcete-li to povolit `properties.cors.supportCredentials` `true` ve službě App Service, nastavte na v konfiguraci CORS. Tuto možnost nelze `allowedOrigins` `'*'`povolit, pokud obsahuje .
+> Pokud vaše aplikace vyžaduje odeslání přihlašovacích údajů, jako jsou soubory cookie nebo ověřovací tokeny, může prohlížeč `ACCESS-CONTROL-ALLOW-CREDENTIALS` vyžadovat hlavičku odpovědi. Pokud to chcete v App Service povolit, `properties.cors.supportCredentials` nastavte `true` v konfiguraci CORS. Tato možnost se nedá povolit `allowedOrigins` , `'*'`Pokud zahrnuje.
 
 ### <a name="test-cors-again"></a>Opětovný test CORS
 
