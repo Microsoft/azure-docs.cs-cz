@@ -9,10 +9,10 @@ ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
 ms.openlocfilehash: 4338c179fb8c0eebbb64ac5b33dc5dd8878d0794
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82176715"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privátní odkaz pro Azure SQL Database a datový sklad
@@ -49,8 +49,8 @@ Pomocí privátního propojení můžou zákazníci povolit přístup mezi různ
 ### <a name="creation-process"></a>Proces vytváření
 Soukromé koncové body lze vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure:
 - [Portál](../private-link/create-private-endpoint-portal.md)
-- [Prostředí](../private-link/create-private-endpoint-powershell.md)
-- [CLI](../private-link/create-private-endpoint-cli.md)
+- [PowerShell](../private-link/create-private-endpoint-powershell.md)
+- [Rozhraní příkazového řádku](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce SQL spravovat připojení privátního koncového bodu (PEC) k SQL Database.
