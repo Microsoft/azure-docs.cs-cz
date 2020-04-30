@@ -1,55 +1,63 @@
 ---
-title: Zjistěte, jak zabezpečit přístup k datům v Azure Cosmos DB
-description: Další informace o konceptech řízení přístupu v Azure Cosmos DB, včetně hlavních klíčů, klíčů jen pro čtení, uživatelů a oprávnění.
+title: Naučte se zabezpečit přístup k datům v Azure Cosmos DB
+description: Přečtěte si o konceptech řízení přístupu v Azure Cosmos DB, včetně hlavních klíčů, klíčů jen pro čtení, uživatelů a oprávnění.
 author: thomasweiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 448b14168e85e75b7ed19e189600186ce11c2902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f62ad6952170f22fe0f94a792a137f991a0e5026
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251814"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208716"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Zabezpečený přístup k datům ve službě Azure Cosmos DB
 
-Tento článek obsahuje přehled zabezpečení přístupu k datům uloženým v [databázi Microsoft Azure Cosmos](https://azure.microsoft.com/services/cosmos-db/)DB .
+Tento článek poskytuje přehled zabezpečení přístupu k datům uloženým v [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
-Azure Cosmos DB používá dva typy klíčů k ověření uživatelů a poskytují přístup k jeho data a prostředky. 
+Azure Cosmos DB používá dva typy klíčů k ověřování uživatelů a poskytování přístupu k jeho datům a prostředkům. 
 
-|Typ klíče|Prostředky|
+|Typ klíče|Zdroje a prostředky|
 |---|---|
-|[Hlavní klávesy](#master-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatelé a oprávnění|
-|[Tokeny prostředků](#resource-tokens)|Používá se pro aplikační prostředky: kontejnery, dokumenty, přílohy, uložené procedury, aktivační události a ufl|
+|[Hlavní klíče](#master-keys) |Používá se pro prostředky pro správu: databázové účty, databáze, uživatele a oprávnění.|
+|[Tokeny prostředků](#resource-tokens)|Používá se pro prostředky aplikace: kontejnery, dokumenty, přílohy, uložené procedury, triggery a UDF.|
 
 <a id="master-keys"></a>
 
-## <a name="master-keys"></a>Hlavní klávesy
+## <a name="master-keys"></a>Hlavní klíče
 
-Hlavní klíče poskytují přístup ke všem prostředkům pro správu databázového účtu. Hlavní klávesy:
+Hlavní klíče poskytují přístup ke všem prostředkům správy pro účet databáze. Hlavní klíče:
 
 - Poskytněte přístup k účtům, databázím, uživatelům a oprávněním. 
 - Nelze použít k poskytnutí podrobného přístupu k kontejnerům a dokumentům.
-- Jsou vytvořeny při vytváření účtu.
-- Lze regenerovat kdykoliv.
+- Se vytvoří během vytváření účtu.
+- Může být kdykoli znovu vygenerována.
 
-Každý účet se skládá ze dvou hlavních klíčů: primárního a sekundárního klíče. Účelem dvou klíčů je, abyste mohli znovu vygenerovat nebo rolovat klíče a poskytovat nepřetržitý přístup k vašemu účtu a datům.
+Každý účet se skládá ze dvou hlavních klíčů: primárního a sekundárního klíče. Účelem duálních klíčů je, abyste mohli znovu vygenerovat nebo obnovit klíče a zajistit tak nepřetržitý přístup k vašemu účtu a datům.
 
-Kromě dvou hlavních klíčů pro účet Cosmos DB existují dva klíče jen pro čtení. Tyto klíče jen pro čtení umožňují pouze operace čtení v účtu. Klíče jen pro čtení neposkytují přístup k prostředkům oprávnění ke čtení.
+Kromě dvou hlavních klíčů pro účet Cosmos DB jsou k dispozici dva klíče jen pro čtení. Tyto klíče jen pro čtení povolují operace čtení jenom na účtu. Klíče jen pro čtení neposkytují přístup k prostředkům oprávnění ke čtení.
 
-Primární, sekundární, jen pro čtení a hlavní klíče pro čtení a zápis lze načíst a obnovit pomocí portálu Azure. Pokyny naleznete v tématu [Zobrazení, kopírování a opětovné generování přístupových klíčů](manage-with-cli.md#regenerate-account-key).
+Hlavní klíče primární, sekundární, jen pro čtení a pro čtení i zápis se dají načíst a znovu vygenerovat pomocí Azure Portal. Pokyny najdete v tématu [zobrazení, kopírování a obnovení přístupových klíčů](manage-with-cli.md#regenerate-account-key).
 
-![Řízení přístupu (IAM) na portálu Azure – prokázání zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
+![Řízení přístupu (IAM) ve Azure Portal – demonstrace zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-portal.png)
 
-Proces otáčení hlavního klíče je jednoduchý. Přejděte na portál Azure, načtěte sekundární klíč, pak nahraďte primární klíč sekundárním klíčem ve vaší aplikaci a pak otočte primární klíč na webu Azure Portal.
+### <a name="key-rotation"></a>Střídání klíčů<a id="key-rotation"></a>
 
-![Hlavní střídání klíčů na portálu Azure – ukázka zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
+Proces otáčení hlavního klíče je jednoduchý. 
+
+1. Pokud chcete získat sekundární klíč, přejděte na Azure Portal.
+2. Nahraďte primární klíč svým sekundárním klíčem ve vaší aplikaci. Ujistěte se, že všichni klienti Cosmos DB napříč všemi nasazeními se okamžitě restartují a začnou používat aktualizovaný klíč.
+3. Otočení primárního klíče v Azure Portal.
+4. Ověří, jestli má nový primární klíč fungovat u všech prostředků. Proces střídání klíčů může v závislosti na velikosti Cosmos DB účtu trvat od méně než minuty až po hodiny.
+5. Nahraďte sekundární klíč novým primárním klíčem.
+
+![Rotace hlavního klíče v Azure Portal-demonstruje zabezpečení databáze NoSQL](./media/secure-access-to-data/nosql-database-security-master-key-rotate-workflow.png)
 
 ### <a name="code-sample-to-use-a-master-key"></a>Ukázka kódu pro použití hlavního klíče
 
-Následující ukázka kódu ukazuje, jak použít koncový bod účtu Cosmos DB a hlavní klíč k vytvoření instance DocumentClient a vytvoření databáze.
+Následující ukázka kódu ukazuje, jak použít koncový bod účtu Cosmos DB a hlavní klíč pro vytvoření instance objektu DocumentClient a vytvoření databáze.
 
 ```csharp
 //Read the Azure Cosmos DB endpointUrl and authorization keys from config.
@@ -66,38 +74,38 @@ CosmosClient client = new CosmosClient(endpointUrl, authorizationKey);
 
 Tokeny prostředků poskytují přístup k prostředkům aplikace v rámci databáze. Tokeny prostředků:
 
-- Poskytněte přístup ke konkrétním kontejnerům, klíčům oddílů, dokumentům, přílohám, uloženým procedurám, aktivačním událostem a ufl.
-- Jsou vytvořeny, když [je uživateli](#users) udělena [oprávnění](#permissions) k určitému prostředku.
-- Jsou znovu vytvořeny při oprávnění prostředku je zpracována na post, GET, nebo PUT volání.
-- Použijte token prostředku hash speciálně vytvořený pro uživatele, prostředek a oprávnění.
-- Jsou časově vázány přizpůsobitelné doby platnosti. Výchozí platný časový rozsah je jedna hodina. Životnost tokenu však může být explicitně zadána, maximálně pět hodin.
-- Poskytněte bezpečnou alternativu k rozdávání hlavního klíče.
-- Umožněte klientům číst, zapisovat a odstraňovat prostředky v účtu Cosmos DB podle oprávnění, která jim byla udělena.
+- Poskytněte přístup ke konkrétním kontejnerům, klíčům oddílu, dokumentům, přílohám, uloženým procedurám, aktivačním událostem a UDF.
+- Se vytvoří, když se [uživateli](#users) udělí [oprávnění](#permissions) ke konkrétnímu prostředku.
+- Se znovu vytvoří, když se na základě metody POST, GET nebo PUT vrátí prostředek s oprávněním.
+- Použijte token prostředku hash specificky vytvořený pro uživatele, prostředek a oprávnění.
+- Je časová vazba s přizpůsobitelné období platnosti. Výchozí platný časový rozsah je jedna hodina. Životnost tokenu je však možné výslovně zadat, maximálně po dobu pěti hodin.
+- Poskytněte zabezpečenou alternativu pro vytvoření hlavního klíče.
+- Umožněte klientům číst, zapisovat a odstraňovat prostředky v účtu Cosmos DB v závislosti na oprávněních, která byly uděleny.
 
-Token prostředku (vytvořením uživatelů a oprávnění Cosmos DB) můžete použít, pokud chcete poskytnout přístup k prostředkům v účtu Cosmos DB klientovi, kterému nelze důvěřovat s hlavním klíčem.  
+Můžete použít token prostředku (vytvořením Cosmos DB uživatelů a oprávnění), pokud chcete poskytnout přístup k prostředkům v účtu Cosmos DB ke klientovi, který nemůže být důvěryhodný k hlavnímu klíči.  
 
-Tokeny prostředků Cosmos DB poskytují bezpečnou alternativu, která umožňuje klientům číst, zapisovat a odstraňovat prostředky v účtu Cosmos DB podle udělených oprávnění a bez nutnosti hlavního klíče nebo klíče jen pro čtení.
+Cosmos DB tokeny prostředků poskytují bezpečnou alternativu, která klientům umožňuje číst, zapisovat a odstraňovat prostředky v účtu Cosmos DB v závislosti na oprávněních, která jste udělili, a aniž byste museli zadat buď hlavní klíč, nebo klíč jen pro čtení.
 
-Zde je typický vzor návrhu, kdy tokeny prostředků mohou být požadovány, generovány a doručeny klientům:
+Tady je typický vzor návrhu, který umožňuje vyžádat, vygenerovat a doručit tokeny prostředků klientům:
 
-1. Služba střední vrstvy je nastavena tak, aby sloužila mobilní aplikaci pro sdílení uživatelských fotografií.
-2. Služba střední vrstvy má hlavní klíč účtu Cosmos DB.
-3. Fotografická aplikace je nainstalována na mobilních zařízeních koncových uživatelů.
-4. Při přihlášení aplikace pro fotografie vytvoří identitu uživatele pomocí služby střední vrstvy. Tento mechanismus provozovny identity je čistě na žádosti.
-5. Jakmile je identita vytvořena, služba střední vrstvy požaduje oprávnění na základě identity.
-6. Služba střední vrstvy odešle token prostředku zpět do aplikace telefonu.
-7. Telefonní aplikace můžete nadále používat token prostředku pro přímý přístup k prostředkům Cosmos DB s oprávněními definovanými tokenem prostředku a pro interval povolený tokenem prostředku.
-8. Po vypršení platnosti tokenu prostředku následné požadavky obdrží 401 neoprávněné výjimky.  V tomto okamžiku aplikace pro telefon znovu vytvoří identitu a požádá o nový token prostředku.
+1. Služba střední vrstvy je nastavená na poskytování mobilní aplikace pro sdílení fotografií uživatele.
+2. Služba střední vrstvy má hlavní klíč Cosmos DB účtu.
+3. Aplikace Photo je nainstalovaná na mobilních zařízeních koncových uživatelů.
+4. Při přihlášení aplikace Photo vytvoří identitu uživatele se službou střední vrstvy. Tento mechanismus vybudování identity je čistě až do aplikace.
+5. Po navázání identity služba střední vrstvy požaduje oprávnění na základě identity.
+6. Služba střední vrstvy pošle token prostředku zpátky do aplikace pro telefon.
+7. Aplikace pro telefon může i nadále používat token prostředku k přímému přístupu k prostředkům Cosmos DB s oprávněními definovanými tokenem prostředku a v intervalu povoleném tokenem prostředku.
+8. Po vypršení platnosti tokenu prostředku obdrží další požadavky 401 neoprávněnou výjimku.  V tuto chvíli aplikace pro telefon znovu naváže identitu a požádá o nový token prostředku.
 
-    ![Pracovní postup tokenů prostředků Azure Cosmos DB](./media/secure-access-to-data/resourcekeyworkflow.png)
+    ![Pracovní postup Azure Cosmos DB tokenů prostředků](./media/secure-access-to-data/resourcekeyworkflow.png)
 
-Generování a správa tokenů prostředků je zpracována nativními klientskými knihovnami Cosmos DB; Pokud však používáte REST, je nutné vytvořit hlavičky požadavku/ověřování. Další informace o vytváření ověřovacích hlaviček pro rest naleznete [v tématu Řízení přístupu k prostředkům Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo zdrojový kód pro naši [sadu .NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) nebo [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
+Generování a Správa tokenů prostředků jsou zpracovávány nativními klientskými knihovnami Cosmos DB; Pokud však použijete REST, je nutné vytvořit hlavičky žádosti nebo ověřování. Další informace o vytváření ověřovacích hlaviček pro REST naleznete v tématu [Access Control v Cosmos DBch prostředcích](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources) nebo ve zdrojovém kódu pro naši sadu [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/AuthorizationHelper.cs) nebo [Node. js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts).
 
-Příklad služby střední vrstvy, která se používá ke generování nebo zprostředkovateli tokenů prostředků, naleznete v [aplikaci ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
+Příklad služby střední vrstvy, která se používá ke generování tokenů prostředků nebo jejich zprostředkovateli, najdete v [aplikaci ResourceTokenBroker](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 ## <a name="users"></a>Uživatelé<a id="users"></a>
 
-Uživatelé Azure Cosmos DB jsou přidruženi k databázi Cosmos.  Každá databáze může obsahovat nula nebo více uživatelů Cosmos DB. Následující ukázka kódu ukazuje, jak vytvořit uživatele Cosmos DB pomocí [Azure Cosmos DB .NET SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
+Azure Cosmos DB uživatelé jsou přidruženi k databázi Cosmos.  Každá databáze může obsahovat nula nebo více Cosmos DB uživatelů. Následující ukázka kódu ukazuje, jak vytvořit uživatele Cosmos DB pomocí sady [Azure Cosmos DB .NET SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement).
 
 ```csharp
 //Create a user.
@@ -107,21 +115,21 @@ User user = await database.CreateUserAsync("User 1");
 ```
 
 > [!NOTE]
-> Každý uživatel Cosmos DB má ReadAsync() metodu, která lze použít k načtení seznamu [oprávnění](#permissions) spojených s uživatelem.
+> Každý Cosmos DB uživatel má metodu ReadAsync (), která se dá použít k načtení seznamu [oprávnění](#permissions) přidružených k uživateli.
 
 ## <a name="permissions"></a>Oprávnění<a id="permissions"></a>
 
-Prostředek oprávnění je přidružen k uživateli a přiřazen na úrovni kontejneru a klíče oddílu. Každý uživatel může obsahovat nula nebo více oprávnění. Prostředek oprávnění poskytuje přístup k tokenu zabezpečení, který uživatel potřebuje při pokusu o přístup k určitému kontejneru nebo datům v určitém klíči oddílu. Existují dvě dostupné úrovně přístupu, které mohou být poskytnuty prostředkem oprávnění:
+Prostředek oprávnění je přidružen k uživateli a přiřazený v kontejneru a také na úrovni klíče oddílu. Každý uživatel může obsahovat nula nebo více oprávnění. Prostředek oprávnění poskytuje přístup k tokenu zabezpečení, který uživatel potřebuje při pokusu o přístup ke konkrétnímu kontejneru nebo datům v určitém klíči oddílu. Existují dvě dostupné úrovně přístupu, které mohou být poskytnuty prostředkem oprávnění:
 
-- Vše: Uživatel má úplná oprávnění k prostředku.
-- Čtení: Uživatel může číst pouze obsah prostředku, ale nemůže provádět operace zápisu, aktualizace nebo odstranění prostředku.
+- Vše: uživatel má úplné oprávnění k prostředku.
+- Přečtěte si: uživatel může číst jenom obsah prostředku, ale nemůže provádět operace zápisu, aktualizace nebo odstranění na prostředku.
 
 > [!NOTE]
-> Aby bylo možné spustit uložené procedury uživatel musí mít všechna oprávnění na kontejneru, ve kterém bude spuštěna uložená procedura.
+> Aby bylo možné spustit uložené procedury, musí mít uživatel oprávnění všechna oprávnění na kontejneru, ve kterém bude uložená procedura spuštěna.
 
 ### <a name="code-sample-to-create-permission"></a>Ukázka kódu pro vytvoření oprávnění
 
-Následující ukázka kódu ukazuje, jak vytvořit prostředek oprávnění, číst token prostředku oprávnění a přidružit oprávnění k [uživateli](#users) vytvořenému výše.
+Následující ukázka kódu ukazuje, jak vytvořit prostředek oprávnění, přečtěte si token prostředku prostředku oprávnění a přidružte oprávnění k výše vytvořenému [uživateli](#users) .
 
 ```csharp
 // Create a permission on a container and specific partition key value
@@ -134,9 +142,9 @@ user.CreatePermissionAsync(
         resourcePartitionKey: new PartitionKey("012345")));
 ```
 
-### <a name="code-sample-to-read-permission-for-user"></a>Ukázka kódu ke čtení oprávnění pro uživatele
+### <a name="code-sample-to-read-permission-for-user"></a>Ukázka kódu pro oprávnění ke čtení pro uživatele
 
-Následující fragment kódu ukazuje, jak načíst oprávnění přidružené k uživateli vytvořenévýše a vytvořit instanci nového CosmosClient jménem uživatele, s rozsahem na jeden klíč oddílu.
+Následující fragment kódu ukazuje, jak načíst oprávnění přidružené k výše vytvořenému uživateli a vytvořit instanci nového CosmosClient jménem uživatele, vymezenou na jeden klíč oddílu.
 
 ```csharp
 //Read a permission, create user client session.
@@ -145,28 +153,28 @@ PermissionProperties permissionProperties = await user.GetPermission("permission
 CosmosClient client = new CosmosClient(accountEndpoint: "MyEndpoint", authKeyOrResourceToken: permissionProperties.Token);
 ```
 
-## <a name="add-users-and-assign-roles"></a>Přidání uživatelů a přiřazení rolí
+## <a name="add-users-and-assign-roles"></a>Přidat uživatele a přiřadit role
 
-Chcete-li přidat přístup čtečky účtů Azure Cosmos DB ke svému uživatelskému účtu, mají vlastník předplatného provést následující kroky na webu Azure Portal.
+Chcete-li přidat ke svému uživatelskému účtu přístup ke čtečce účtu Azure Cosmos DB, požádejte vlastníka předplatného o provedení následujících kroků v Azure Portal.
 
-1. Otevřete portál Azure a vyberte svůj účet Azure Cosmos DB.
-2. Klikněte na kartu **Řízení přístupu (IAM)** a potom klikněte na **+ Přidat přiřazení role**.
-3. V podokně **Přidat přiřazení rolí** vyberte v poli **Role** **roli čtečky účtů Cosmos DB**.
-4. V **poli Přiřadit přístup**vyberte **uživatele, skupinu nebo aplikaci Azure AD**.
-5. V adresáři, ke kterému chcete udělit přístup, vyberte uživatele, skupinu nebo aplikaci.  Adresář můžete prohledávat podle zobrazované adresy, e-mailové adresy nebo identifikátorů objektů.
-    Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybraných členů.
+1. Otevřete Azure Portal a vyberte svůj účet Azure Cosmos DB.
+2. Klikněte na kartu **řízení přístupu (IAM)** a pak klikněte na **+ Přidat přiřazení role**.
+3. V podokně **Přidat přiřazení role** v poli **role** vyberte **Cosmos DB role čtecího modulu účtu**.
+4. V **poli přiřadit přístup k**vyberte možnost **uživatel, skupina nebo aplikace služby Azure AD**.
+5. V adresáři vyberte uživatele, skupinu nebo aplikaci, ke kterým chcete udělit přístup.  Můžete hledat v adresáři podle zobrazovaného jména, e-mailové adresy nebo identifikátorů objektů.
+    Vybraný uživatel, skupina nebo aplikace se zobrazí v seznamu vybrané členy.
 6. Klikněte na **Uložit**.
 
-Entita teď může číst prostředky Azure Cosmos DB.
+Entita může nyní číst prostředky Azure Cosmos DB.
 
-## <a name="delete-or-export-user-data"></a>Odstranění nebo export uživatelských dat
+## <a name="delete-or-export-user-data"></a>Odstranit nebo exportovat uživatelská data
 
-Azure Cosmos DB umožňuje vyhledávat, vybírat, upravovat a odstraňovat všechna osobní data umístěná v databázi nebo kolekcích. Azure Cosmos DB poskytuje api pro vyhledání a odstranění osobních údajů, ale je vaší odpovědností používat api a definovat logiku potřebnou k vymazání osobních údajů. Každé vícemodelové rozhraní API (SQL, MongoDB, Gremlin, Cassandra, tabulka) poskytuje sady SDK různých jazyků, které obsahují metody vyhledávání a odstraňování osobních údajů. Můžete také povolit funkci [time to live (TTL)](time-to-live.md) k automatickému odstranění dat po zadaném období, aniž by vznikly další náklady.
+Azure Cosmos DB umožňuje vyhledávat, vybírat, upravovat a odstraňovat osobní údaje nacházející se v databázi nebo kolekcích. Azure Cosmos DB poskytuje rozhraní API k hledání a odstraňování osobních údajů, ale vaše zodpovědnost za použití rozhraní API a definování logiky vyžadované k mazání osobních údajů. Každé rozhraní API pro více modelů (SQL, MongoDB, Gremlin, Cassandra, Table) poskytuje různé jazykové sady SDK, které obsahují metody pro hledání a odstraňování osobních údajů. Funkci [TTL (Time to Live)](time-to-live.md) můžete také povolit, aby se data po uplynutí určité doby automaticky odstranila, aniž by se musely účtovat žádné další náklady.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o zabezpečení databáze Cosmos najdete v [tématu Zabezpečení databáze Cosmos DB](database-security.md).
-- Informace o tom, jak vytvořit tokeny autorizace Azure Cosmos DB, najdete [v tématu Řízení přístupu na prostředky Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
-- Ukázky správy uživatelů s uživateli a oprávněními, [.NET SDK v3 vzorky správy uživatelů](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)
+- Další informace o zabezpečení databáze Cosmos najdete v tématu [zabezpečení databáze Cosmos DB](database-security.md).
+- Informace o tom, jak vytvořit Azure Cosmos DB autorizační tokeny, najdete v tématu [Access Control na Azure Cosmos DBch prostředcích](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources).
+- Ukázky správy uživatelů pomocí uživatelů a oprávnění, [ukázky správy uživatelů sady .NET SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/UserManagement/UserManagementProgram.cs)

@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024689"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509512"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojte se k Azure IoT Central
 
@@ -42,7 +42,7 @@ Tento článek popisuje následující případy použití:
 - [Připojení zařízení ve velkém měřítku pomocí certifikátů X. 509](#connect-devices-using-x509-certificates) – doporučený postup pro produkční prostředí.
 - [Připojit zařízení bez jejich prvotní registrace](#connect-without-registering-devices)
 - [Připojit zařízení, která používají DPS pro jednotlivé registrace](#individual-enrollment-based-device-connectivity)
-- [Připojení zařízení pomocí funkcí IoT technologie Plug and Play (Preview)](#connect-devices-with-iot-plug-and-play-preview)
+- [Automatické přidružení zařízení k šabloně zařízení](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>Připojení jednoho zařízení
 
@@ -139,7 +139,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
     Na stránce **> pro správu připojení zařízení** , možnost **automatického schvalování** určuje, jestli je potřeba zařízení před zahájením odesílání dat ručně schválit.
 
     > [!NOTE]
-    > Informace o tom, jak automaticky přidružit zařízení k šabloně zařízení, najdete v tématu [připojení zařízení pomocí technologie Plug and Play IoT (Preview)](#connect-devices-with-iot-plug-and-play-preview).
+    > Informace o tom, jak automaticky přidružit zařízení k šabloně zařízení, najdete v tématu [automatické přidružení zařízení k šabloně zařízení](#automatically-associate-with-a-device-template).
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>Připojení zařízení, která používají certifikáty X. 509 bez registrace
 
@@ -156,7 +156,7 @@ Tok se mírně liší v závislosti na tom, jestli zařízení používají toke
     Na stránce **> pro správu připojení zařízení** , možnost **automatického schvalování** určuje, jestli je potřeba zařízení před zahájením odesílání dat ručně schválit.
 
     > [!NOTE]
-    > Informace o tom, jak automaticky přidružit zařízení k šabloně zařízení, najdete v tématu [připojení zařízení pomocí technologie Plug and Play IoT (Preview)](#connect-devices-with-iot-plug-and-play-preview).
+    > Informace o tom, jak automaticky přidružit zařízení k šabloně zařízení, najdete v tématu [automatické přidružení zařízení k šabloně zařízení](#automatically-associate-with-a-device-template).
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>Jednotlivá připojení zařízení založená na registraci
 
@@ -165,7 +165,7 @@ Pro zákazníky připojující zařízení, která mají vlastní ověřovací p
 > [!NOTE]
 > Když vytvoříte jednotlivou registraci zařízení, bude mít přednost před výchozími možnostmi registrace skupin ve vaší aplikaci IoT Central.
 
-### <a name="creating-individual-enrollments"></a>Vytváření jednotlivých registrací
+### <a name="create-individual-enrollments"></a>Vytvořit jednotlivé registrace
 
 IoT Central podporuje následující mechanismy ověřování identity pro jednotlivé registrace:
 
@@ -181,14 +181,22 @@ IoT Central podporuje následující mechanismy ověřování identity pro jedno
 
 - **Ověření identity čipu TPM (Trusted Platform Module):** [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) je typ modulu hardwarového zabezpečení. Používání čipu TPM je jedním z nejbezpečnější způsobů, jak připojit zařízení. V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nepoužívejte software čipy TPM v produkčním prostředí. Pokud chcete vytvořit jednotlivou registraci, která používá čip TPM, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus vytvořte **TPM** . Zadejte ověřovací klíč čipu TPM a uložte informace o připojení zařízení.
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>Připojení zařízení pomocí technologie Plug and Play IoT (Preview)
+## <a name="automatically-associate-with-a-device-template"></a>Automaticky přidružit k šabloně zařízení
 
-Jednou z klíčových funkcí IoT technologie Plug and Play (Preview) s IoT Central je možnost přidružit šablony zařízení automaticky k připojení zařízení. Spolu s přihlašovacími údaji zařízení teď můžou zařízení odeslat **CapabilityModelId** jako součást volání registrace zařízení. Tato funkce umožňuje IoT Central ke zjištění a přidružení šablony zařízení k zařízení. Proces zjišťování funguje takto:
+Jednou z klíčových funkcí IoT Central je možnost přidružit šablony zařízení automaticky k připojení zařízení. Spolu s přihlašovacími údaji zařízení můžou zařízení odeslat **CapabilityModelId** jako součást volání registrace zařízení. **CapabilityModelID** je název URN, který identifikuje model schopností, který zařízení implementuje. Aplikace IoT Central může použít **CapabilityModelID** k identifikaci šablony zařízení, která se má použít, a pak automaticky přiřadí zařízení k šabloně zařízení. Proces zjišťování funguje takto:
 
-1. Přidruží se k šabloně zařízení, pokud je již publikována v aplikaci IoT Central.
-1. Načte se z veřejného úložiště publikovaných a certifikovaných modelů schopností.
+1. Pokud je šablona zařízení již publikována v aplikaci IoT Central, je zařízení přidruženo k šabloně zařízení.
+1. V případě zařízení, která jsou předem certifikována technologie Plug and Play, se šablona zařízení načte z veřejného úložiště, pokud už není publikovaná v IoT Central aplikaci.
 
-Níže je formát dodatečné datové části, kterou zařízení poslalo během volání registrace DPS.
+Následující fragmenty kódu ukazují formát další datové části, kterou musí zařízení poslat během výzvy k registraci DPS, aby se automatické přidružení fungovalo.
+
+Jedná se o formát zařízení, která používají všeobecně dostupnou sadu SDK pro zařízení, která nepodporuje technologie Plug and Play IoT:
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+Jedná se o formát zařízení, která používají sadu SDK pro sadu Public Preview, která podporuje technologie Plug and Play IoT:
 
 ```javascript
 '__iot:interfaces': {
@@ -197,7 +205,7 @@ Níže je formát dodatečné datové části, kterou zařízení poslalo během
 ```
 
 > [!NOTE]
-> Všimněte si, že možnost **automatického schvalování** ve **správě > připojení zařízení** musí být povolená, aby se zařízení mohla automaticky připojit, zjistit šablonu zařízení a začít odesílat data.
+> Možnost **automatického schvalování** na stránce **Správa > připojení zařízení** musí být povolená, aby se zařízení automaticky připojovala, zjistila šablonu zařízení a začali odesílat data.
 
 ## <a name="device-status-values"></a>Hodnoty stavu zařízení
 

@@ -7,7 +7,7 @@ author: Yahnoosh
 ms.author: jlembicz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 04/27/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9bf0fb1a33a98031a78155a3956ac6d6abe33029
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0d9576f5275bcfc061ce29740f8d85aff4ccfff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74113632"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231080"
 ---
 # <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání vlastních analyzátorů do polí řetězců v indexu služby Azure Kognitivní hledání
 
@@ -146,7 +146,7 @@ Definice pro filtry znaků, tokenizátory musíte nejdřív a filtry tokenů jso
 
 Můžete použít **operaci analyzátoru testů** v [REST API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) k zobrazení, jak analyzátor přerušuje daný text na tokeny.
 
-**Request**
+**Žádost**
 ```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
@@ -279,7 +279,7 @@ Tato část poskytuje platné hodnoty pro atributy zadané v definici vlastního
 |**analyzer_name**|**analyzer_type**  <sup>1</sup>|**Popis a možnosti**|  
 |-|-|-|  
 |[klíčové slovo](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html)| (typ platí pouze v případě, že jsou k dispozici možnosti) |Zachází s celým obsahem pole jako s jedním tokenem. To je užitečné pro data, jako jsou kódy PSČ, ID a některé názvy produktů.|  
-|[vzorku](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Flexibilní oddělení textu do výrazů pomocí vzoru regulárního výrazu.<br /><br /> **Možnosti**<br /><br /> malá písmena (typ: bool) – určuje, zda jsou výrazy v malých písmenech. Výchozí hodnota je true.<br /><br /> [vzor](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je \w +.<br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
+|[vzorku](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/miscellaneous/PatternAnalyzer.html)|PatternAnalyzer|Flexibilní oddělení textu do výrazů pomocí vzoru regulárního výrazu.<br /><br /> **Možnosti**<br /><br /> malá písmena (typ: bool) – určuje, zda jsou výrazy v malých písmenech. Výchozí hodnota je true.<br /><br /> [vzor](https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html?is-external=true) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+`, která odpovídá znakům jiným než Word.<br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
 |[pouh](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/SimpleAnalyzer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti) |Vydělí text bez písmen a převede je na malá písmena. |  
 |[standardní](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardAnalyzer.html) <br />(Označuje se také jako standardní. Lucene)|StandardAnalyzer|Nástroj pro standardní Lucene, který se skládá ze standardního filtru provádějících tokenizaci, malých písmen a filtru stop.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí hodnota je 255. Tokeny delší než maximální délka jsou rozděleny. Maximální délka tokenu, kterou lze použít, je 300 znaků.<br /><br /> stopslova (typ: pole řetězců) – seznam stopslova. Výchozí hodnota je prázdný seznam.|  
 |standardasciifolding. Lucene|(typ platí pouze v případě, že jsou k dispozici možnosti) |Standard Analyzer s filtrem skládání ASCII. |  
@@ -322,7 +322,7 @@ V následující tabulce jsou tokenizátory musíte nejdřív implementované po
 | microsoft_language_stemming_tokenizer | MicrosoftLanguageStemmingTokenizer| Rozděluje text pomocí pravidel specifických pro jazyk a zkracuje slova na jejich základní formy.<br /><br /> **Možnosti**<br /><br />maxTokenLength (typ: int) – maximální délka tokenu, výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny. Tokeny delší než 300 znaků jsou nejprve rozděleny na tokeny o délce 300 a následně jsou jednotlivé tokeny rozděleny na základě maxTokenLength sady.<br /><br /> isSearchTokenizer (typ: bool) – nastavte na hodnotu true, pokud se použije jako vyhledávací provádějících tokenizaci, nastavte na hodnotu false, pokud se používá jako indexovací provádějících tokenizaci.<br /><br /> Language (typ: String) – jazyk, který se má použít, výchozí "Angličtina". Mezi povolené hodnoty patří:<br />"Arabština", "bengálština", "Bulharština", "Katalánština", "chorvatština", "Čeština", "Dánská", "Holandština", "Angličtina", "finština", "francouzština", "Němčina", "Řečtina", "gudžarátština", "Hebrejština", "Hindština", "Maďarština", "Čeština", "gudžarátština", "Italština" Litevština "," Malajština "," malajalámština "," maráthština "," norwegianBokmaal "," Polština "," portugalština "," portugueseBrazilian "," paňdžábština "," Rumunština "," ruština "," serbianCyrillic "," serbianLatin "," Slovenština "," Slovinština "," španělština "," Švédština "," tamilština "," telugština "," Turečtina "," ukrajinština "," urdština " |
 |[nGram](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/ngram/NGramTokenizer.html)|NGramTokenizer|Tokenizes vstup do n-gramů dané velikosti (y).<br /><br /> **Možnosti**<br /><br /> minGram (typ: int) – výchozí hodnota: 1, maximum: 300.<br /><br /> maxGram (typ: int) – výchozí: 2, maximum: 300. Musí být větší než minGram. <br /><br /> tokenChars (typ: pole řetězců) – třídy znaků, které mají být v tokenech uchovávány. Povolené hodnoty: "písmeno", "číslice", "prázdný", "interpunkce", "symbol". Výchozí hodnota je prázdné pole – zachová všechny znaky. |  
 |[path_hierarchy_v2](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/path/PathHierarchyTokenizer.html)|PathHierarchyTokenizerV2|Provádějících tokenizaci pro hierarchie jako cesty.<br /><br /> **Možnosti**<br /><br /> oddělovač (typ: String) – výchozí: '/.<br /><br /> nahrazení (typ: String) – Pokud je nastaveno, nahradí znak oddělovače. Výchozí hodnota je stejná jako hodnota oddělovače.<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 300, maximum: 300. Cesty delší než maxTokenLength jsou ignorovány.<br /><br /> Reverse (Type: bool) – Pokud má hodnotu true, vygeneruje token v opačném pořadí. Výchozí hodnota: false.<br /><br /> Skip (Type: bool) – počáteční tokeny, které se mají přeskočit Výchozí hodnota je 0.|  
-|[vzorku](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Tento provádějících tokenizaci používá porovnávání vzorů regulárního výrazu pro vytváření jedinečných tokenů.<br /><br /> **Možnosti**<br /><br /> [vzor](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (typ: String) – vzor regulárního výrazu. Výchozí hodnota je \w +. <br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> Group (typ: int) – skupina, do které se mají extrahovat tokeny Výchozí hodnota je-1 (rozdělená).|
+|[vzorku](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/pattern/PatternTokenizer.html)|PatternTokenizer|Tento provádějících tokenizaci používá porovnávání vzorů regulárního výrazu pro vytváření jedinečných tokenů.<br /><br /> **Možnosti**<br /><br /> [vzor](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html) (typ: String) – vzor regulárního výrazu, který odpovídá oddělovačům tokenů. Výchozí hodnota je `\W+`, která odpovídá znakům jiným než Word. <br /><br /> [Flags](https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html#field_summary) (Type: String) – příznaky regulárního výrazu. Výchozí hodnota je prázdný řetězec. Povolené hodnoty: CANON_EQ, CASE_INSENSITIVE, komentáře, DOTALL, LITERÁLy, VÍCEŘÁDKOVé UNICODE_CASE, UNIX_LINES<br /><br /> Group (typ: int) – skupina, do které se mají extrahovat tokeny Výchozí hodnota je-1 (rozdělená).|
 |[standard_v2](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/analysis/standard/StandardTokenizer.html)|StandardTokenizerV2|Rozdělí text podle [pravidel segmentace textu Unicode](https://unicode.org/reports/tr29/).<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[uax_url_email](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenizes adresy URL a e-maily jako jeden token.<br /><br /> **Možnosti**<br /><br /> maxTokenLength (typ: int) – maximální délka tokenu. Výchozí: 255, maximum: 300. Tokeny delší než maximální délka jsou rozděleny.|  
 |[typy](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(typ platí pouze v případě, že jsou k dispozici možnosti) |Vydělí text na prázdný znak. Tokeny, které jsou delší než 255 znaků, jsou rozděleny.|  

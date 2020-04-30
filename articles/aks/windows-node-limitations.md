@@ -1,108 +1,102 @@
 ---
-title: Omezení fondů uzlů systému Windows Server
+title: Omezení fondů uzlů Windows serveru
 titleSuffix: Azure Kubernetes Service
-description: Informace o známých omezeních při spuštění fondů uzlů Windows Server a úloh aplikací ve službě Azure Kubernetes Service (AKS)
+description: Přečtěte si o známých omezeních při spouštění fondů uzlů Windows serveru a úloh aplikací ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
 ms.date: 12/18/2019
-ms.openlocfilehash: 934acf06a779c1c3b0b13e74b196b174dd944e66
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886666"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208002"
 ---
-# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows Server a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
+# <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
-Ve službě Azure Kubernetes Service (AKS) můžete vytvořit fond uzlů, který spouští Windows Server jako hostovaný operační systém na uzlech. Tyto uzly můžete spustit nativní aplikace kontejneru systému Windows, například ty, které jsou postaveny na rozhraní .NET Framework. Vzhledem k tomu, že existují velké rozdíly v tom, jak operační systém Linux a Windows poskytuje podporu kontejnerů, některé běžné funkce Kubernetes a pod související nejsou v současné době k dispozici pro fondy uzlů systému Windows.
+Ve službě Azure Kubernetes Service (AKS) můžete vytvořit fond uzlů, na kterém běží Windows Server jako hostovaný operační systém na uzlech. Tyto uzly můžou spouštět nativní aplikace typu kontejner pro Windows, jako jsou ty, které jsou postavené na .NET Framework. Vzhledem k zásadním rozdílům v tom, jak operační systémy Linux a Windows poskytují podporu kontejnerů, nejsou aktuálně pro fondy uzlů Windows k dispozici některé běžné funkce související s Kubernetes a pod.
 
-Tento článek popisuje některá omezení a koncepty operačního systému pro uzly windows serveru v AKS. Fondy uzlů pro windows server jsou aktuálně ve verzi Preview.
-
-> [!IMPORTANT]
-> Funkce AKS preview jsou samoobslužné opt-in. Náhledy jsou poskytovány "tak, jak jsou" a "jako dostupné" a jsou vyloučeny ze smluv o úrovni služeb a omezené záruky. AKS Previews jsou částečně pokryty zákaznickou podporou na základě maximálního úsilí. Jako takové tyto funkce nejsou určeny pro produkční použití. Další informace naleznete v následujících článcích podpory:
->
-> * [Zásady podpory AKS][aks-support-policies]
-> * [Nejčastější dotazy k podpoře Azure][aks-faq]
+Tento článek popisuje některá omezení a koncepty operačního systému pro uzly Windows serveru v AKS.
 
 ## <a name="which-windows-operating-systems-are-supported"></a>Které operační systémy Windows jsou podporovány?
 
-AKS používá Windows Server 2019 jako verzi hostitelského operačního systému a podporuje pouze izolaci procesů. Image kontejnerů vytvořené pomocí jiných verzí systému Windows Server nejsou podporovány. [Kompatibilita verzí kontejneru systému Windows][windows-container-compat]
+AKS používá systém Windows Server 2019 jako verzi hostitelského operačního systému a podporuje pouze izolaci procesů. Image kontejneru vytvořené pomocí jiných verzí Windows serveru se nepodporují. [Kompatibilita Windows kontejneru verze][windows-container-compat]
 
-## <a name="is-kubernetes-different-on-windows-and-linux"></a>Liší se Kubernetes ve Windows a Linuxu?
+## <a name="is-kubernetes-different-on-windows-and-linux"></a>Je Kubernetes v systému Windows a Linux odlišná?
 
-Podpora fondu uzlů Windows Server zahrnuje některá omezení, která jsou součástí projektu windows server v kubernetes. Tato omezení nejsou specifická pro AKS. Další informace o této upstream podporu pro Windows Server v Kubernetes, naleznete v části [podporované funkce a omezení][upstream-limitations] intro na windows podporu v dokumentu [Kubernetes,][intro-windows] z projektu Kubernetes.
+Podpora fondu uzlů serveru oken zahrnuje některá omezení, která jsou součástí nadřazeného Windows serveru v projektu Kubernetes. Tato omezení nejsou specifická pro AKS. Další informace o této nadřazené podpoře pro Windows Server v Kubernetes naleznete v části [podporované funkce a omezení][upstream-limitations] [v článku Úvod do podpory Windows v dokumentu Kubernetes][intro-windows] , z projektu Kubernetes.
 
-Kubernetes je historicky zaměřen na Linux. Mnoho příkladů používaných v upstream [Kubernetes.io][kubernetes] webové stránky jsou určeny pro použití na linuxových uzlech. Při vytváření nasazení, která používají kontejnery Windows Server, platí následující důležité informace na úrovni operačního systému:
+Kubernetes je historicky zaměřený na Linux. Mnohé příklady, které se používají na webu [Kubernetes.IO][kubernetes] pro odesílání dat, jsou určené pro použití v uzlech se systémem Linux. Při vytváření nasazení, která používají kontejnery Windows serveru, platí následující požadavky na úrovni operačního systému:
 
-- **Identita** – Linux identifikuje uživatele podle identifikátoru uživatele celéčíslo (UID). Uživatel má také alfanumerické uživatelské jméno pro přihlášení, které Linux překládá na uživatelské rozhraní uživatele. Podobně Linux identifikuje skupinu uživatelů podle identifikátoru celé skupiny (GID) a převede název skupiny na odpovídající GID.
-    - Systém Windows Server používá větší binární identifikátor zabezpečení (SID), který je uložen v databázi správce přístupu k zabezpečení systému Windows (SAM). Tato databáze není sdílena mezi hostitelem a kontejnery nebo mezi kontejnery.
-- **Oprávnění k souborům** – systém Windows Server používá seznam řízení přístupu založený na sid, nikoli bitovou masku oprávnění a UID+GID
-- **Cesty k souborům** – konvence v systému Windows Server je použití \ místo /.
-    - Ve specifikacích podu, které připevňují svazky, zadejte správnou cestu pro kontejnery windows serveru. Například místo přípojného bodu */mnt/volume* v kontejneru Linuxu zadejte písmeno jednotky a umístění, například */K/Volume,* které chcete připojit jako jednotku *K:* .
+- **Identita** – Linux identifikuje uživatele pomocí celočíselného identifikátoru (UID). Uživatel má také alfanumerické uživatelské jméno pro přihlášení, které Linux překládá na UID uživatele. Podobně Linux identifikuje skupinu uživatelů pomocí identifikátoru celočíselné skupiny (GID) a překládá název skupiny na odpovídající GID.
+    - Windows Server používá větší binární identifikátor zabezpečení (SID), který je uložený v databázi SAM (Windows Security Access Manager). Tato databáze není sdílená mezi hostitelem a kontejnery nebo mezi kontejnery.
+- **Oprávnění k souborům** – Windows Server používá seznam řízení přístupu založený na identifikátorech SID, nikoli bitovou masku oprávnění a UID + GID.
+- **Cesty k souborům** – konvence ve Windows serveru slouží jako místo/.
+    - V části pod specifikacemi, které připojovat svazky, zadejte cestu pro kontejnery Windows serveru správně. Například místo přípojného bodu */mnt/Volume* v kontejneru Linux zadejte písmeno jednotky a umístění, jako je například */K/Volume* , které chcete připojit jako jednotku *k:* .
 
-## <a name="what-kind-of-disks-are-supported-for-windows"></a>Jaký druh disků jsou podporovány pro Windows?
+## <a name="what-kind-of-disks-are-supported-for-windows"></a>Jaký druh disků se podporuje pro Windows?
 
-Disky Azure a soubory Azure jsou podporované typy svazků, ke které se přistupuje jako svazky NTFS v kontejneru Windows Serveru.
+Disky Azure a soubory Azure jsou podporované typy svazků, ke kterým se dostanete jako svazky NTFS v kontejneru Windows serveru.
 
-## <a name="can-i-run-windows-only-clusters-in-aks"></a>Lze spustit pouze clustery Systému Windows v AKS?
+## <a name="can-i-run-windows-only-clusters-in-aks"></a>Můžu v AKS spouštět clustery jenom pro Windows?
 
-Hlavní uzly (rovina řízení) v clusteru AKS jsou hostovány službou AKS, nebudete vystaveni operačnímu systému uzlů hostujících hlavní součásti. Všechny clustery AKS jsou vytvořeny s výchozím fondem prvních uzlů, který je založen na Linuxu. Tento fond uzlů obsahuje systémové služby, které jsou potřebné pro fungování clusteru. Doporučujeme spustit alespoň dva uzly v prvním fondu uzlů, aby byla zajištěna spolehlivost clusteru a schopnost operací clusteru. První fond uzlů založený na Linuxu nelze odstranit, dokud není odstraněn samotný cluster AKS.
+Hlavní uzly (Řídicí rovina) v clusteru AKS jsou hostované AKS služby, nebudete k dispozici pro operační systém uzlů hostujících hlavní součásti. Všechny clustery AKS se vytvoří s výchozím prvním fondem uzlů, který je založený na systému Linux. Tento fond uzlů obsahuje systémové služby, které jsou potřeba ke fungování clusteru. Doporučujeme, abyste spustili aspoň dva uzly v prvním fondu uzlů, abyste zajistili spolehlivost clusteru a možnost provádět operace s clustery. První fond uzlů se systémem Linux nejde odstranit, pokud se neodstraní samotný cluster AKS.
 
-## <a name="what-network-plug-ins-are-supported"></a>Jaké síťové moduly plug-in jsou podporovány?
+## <a name="what-network-plug-ins-are-supported"></a>Jaké síťové moduly plug-in jsou podporované?
 
-Clustery AKS s fondy uzlů Windows musí používat model sítě Azure CNI (advanced). Kubenet (základní) síť není podporována. Další informace o rozdílech v síťových modelech naleznete v [tématu Síťové koncepty pro aplikace v AKS][azure-network-models]. - Model sítě Azure CNI vyžaduje další plánování a aspekty pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete [v tématu Konfigurace azure cni sítě v AKS][configure-azure-cni].
+Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (rozšířené). Kubenet (základní) sítě se nepodporují. Další informace o rozdílech v síťových modelech najdete v tématu [Koncepty sítě pro aplikace v AKS][azure-network-models]. – Model sítě Azure CNI vyžaduje další plánování a předpoklady pro správu IP adres. Další informace o plánování a implementaci Azure CNI najdete v tématu [Konfigurace sítě Azure CNI v AKS][configure-azure-cni].
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Mohu změnit max. # lusků na uzel?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
 
-Ano. Důsledky a možnosti, které jsou k dispozici, naleznete [v tématu Maximální počet podů][maximum-number-of-pods].
+Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
-## <a name="how-do-patch-my-windows-nodes"></a>Jak opravuje uzly systému Windows?
+## <a name="how-do-patch-my-windows-nodes"></a>Jak mám opravit uzly Windows?
 
-Uzly systému Windows Server v Systému AKS musí být *upgradovány,* aby bylo možné získat nejnovější opravy a aktualizace. Aktualizace systému Windows nejsou povoleny na uzlech v AKS. AKS vydává nové image fondu uzlů, jakmile jsou k dispozici opravy, je odpovědností zákazníků upgradovat fondy uzlů, aby zůstali aktuální na opravách oprav a oprav hotfix. To platí i pro používanou verzi Kubernetes. Poznámky k verzi AKS budou označovat, kdy jsou k dispozici nové verze. Další informace o inovaci fondu uzlů systému Windows Server naleznete [v tématu Upgrade fondu uzlů v AKS][nodepool-upgrade].
+Uzly Windows serveru v AKS se musí *upgradovat* , aby se získaly nejnovější opravy a aktualizace oprav. Aktualizace systému Windows nejsou na uzlech v AKS povoleny. AKS uvolní nové image fondu uzlů, jakmile jsou k dispozici opravy, je zákazníkům zodpovědný za upgrade fondů uzlů, aby zůstal aktuální na opravách a opravách hotfix. To platí také pro použitou verzi Kubernetes. Poznámky k verzi AKS budou označovat, že jsou k dispozici nové verze. Další informace o upgradu fondu uzlů Windows serveru najdete v tématu [upgrade fondu uzlů v AKS][nodepool-upgrade].
 
 > [!NOTE]
-> Aktualizovaná bitová kopie systému Windows Server bude použita pouze v případě, že byl před upgradem fondu uzlů proveden upgrade clusteru (upgrade roviny ovládacího prvku).
+> Aktualizovaná image Windows serveru se použije jenom v případě, že se před upgradem fondu uzlů provede upgrade clusteru (upgrade roviny ovládacího prvku).
 >
 
-## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Jak lze otočit instanční objekt pro fond uzlů systému Windows?
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Návody otočit instanční objekt pro fond uzlů Windows?
 
-Během náhledu fondy uzlů systému Windows nepodporují střídání instancí služby jako omezení náhledu. Chcete-li aktualizovat instanční objekt, vytvořte nový fond uzlů systému Windows a migrujte pody ze staršího fondu do nového. Po dokončení odstraňte fond starších uzlů.
+Fondy uzlů Windows nepodporují otočení objektu Service. Pokud chcete aktualizovat instanční objekt, vytvořte nový fond uzlů Windows a migrujte své lusky ze staršího fondu do nového. Až to dokončíte, odstraňte starší fond uzlů.
 
-## <a name="how-many-node-pools-can-i-create"></a>Kolik fondů uzlů mohu vytvořit?
+## <a name="how-many-node-pools-can-i-create"></a>Kolik fondů uzlů lze vytvořit?
 
-Cluster AKS může mít maximálně 10 fondů uzlů. Můžete mít maximálně 1000 uzlů v rámci těchto fondů uzlů. [Omezení fondu uzlů][nodepool-limitations].
+Cluster AKS může mít maximálně 10 fondů uzlů. V těchto fondech uzlů můžete mít maximálně 1000 uzlů. [Omezení fondu uzlů][nodepool-limitations].
 
-## <a name="what-can-i-name-my-windows-node-pools"></a>Jak mohu pojmenovat fondy uzlů systému Windows?
+## <a name="what-can-i-name-my-windows-node-pools"></a>Jak můžu pojmenovat fondy uzlů Windows?
 
-Název je třeba zachovat maximálně na 6 (šest) znaků. Toto je aktuální omezení AKS.
+Název musí být delší než 6 (šest) znaků. Toto je aktuální omezení AKS.
 
-## <a name="are-all-features-supported-with-windows-nodes"></a>Jsou všechny funkce podporovány uzly systému Windows?
+## <a name="are-all-features-supported-with-windows-nodes"></a>Jsou všechny funkce podporované uzly Windows?
 
-Síťové zásady a kubenet nejsou aktuálně podporovány uzly systému Windows. 
+Zásady sítě a kubenet se v tuto chvíli nepodporují s uzly Windows. 
 
-## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Můžu v uzlech Windows spustit řadiče příchozího přenosu dat?
+## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Můžu spustit řadiče příchozího přenosu dat v uzlech Windows?
 
-Ano, řadič příchozího přenosu dat, který podporuje kontejnery systému Windows Server, může být spuštěn v uzlech systému Windows v systému AKS.
+Ano, řadič příchozího přenosu dat, který podporuje kontejnery Windows serveru, se může spouštět na uzlech Windows v AKS.
 
-## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Můžu používat Azure Dev Spaces s uzly Windows?
+## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Můžu použít Azure Dev Spaces s uzly Windows?
 
-Azure Dev Spaces je momentálně dostupná jenom pro fondy uzlů založených na Linuxu.
+Azure Dev Spaces je aktuálně k dispozici pouze pro fondy uzlů se systémem Linux.
 
-## <a name="can-my-windows-server-containers-use-gmsa"></a>Mohou kontejnery Windows Serveru používat gMSA?
+## <a name="can-my-windows-server-containers-use-gmsa"></a>Můžou kontejnery Windows serveru používat gMSA?
 
-Podpora skupinových účtů spravovaných služeb (gMSA) není v současné době v AKS k dispozici.
+Podpora skupinových účtů spravované služby (gMSA) není v současné době k dispozici v AKS.
 
-## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Můžu azure monitor použít pro kontejnery s uzly a kontejnery Windows?
+## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Můžu použít Azure Monitor pro kontejnery s uzly a kontejnery Windows?
 
-Ano, můžete, ale Azure Monitor neshromažďuje protokoly (stdout) z kontejnerů windows. Stále můžete připojit k živému proudu protokolů stdout z kontejneru systému Windows.
+Ano, můžete ale Azure Monitor neshromažďuje protokoly (stdout) z kontejnerů Windows. Můžete se stále připojit k živému streamu protokolů stdout z kontejneru Windows.
 
-## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co když potřebuji funkci, která není podporována?
+## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co když potřebuji funkci, která není podporovaná?
 
-Usilovně pracujeme na tom, abychom do Windows v AKS přinesli všechny funkce, které potřebujete, ale pokud narazíte na mezery, projekt open source a upstream [aks-engine][aks-engine] poskytuje snadný a plně přizpůsobitelný způsob, jak provozovat Kubernetes v Azure, včetně podpory Windows. Prosím, ujistěte se, podívejte se na náš plán funkcí přichází [AKS plán][aks-roadmap].
+V AKS pracujeme na zprovoznění všech funkcí, které v systému Windows potřebujete, ale pokud se setkáte, je open source projekt [AKS-Engine][aks-engine] jednoduchý a plně přizpůsobitelný způsob, jak spustit Kubernetes v Azure, včetně podpory Windows. Ujistěte se prosím, že máte přehled o funkcích, které připravujeme pro [AKS][aks-roadmap].
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít s kontejnery Windows Server v AKS, [vytvořte fond uzlů, který spouští systém Windows Server v AKS][windows-node-cli].
+Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, na kterém běží Windows Server v AKS][windows-node-cli].
 
 <!-- LINKS - external -->
 [kubernetes]: https://kubernetes.io
@@ -120,6 +114,5 @@ Chcete-li začít s kontejnery Windows Server v AKS, [vytvořte fond uzlů, kter
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
-[preview-support]: support-policies.md#preview-features-or-feature-flags
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node

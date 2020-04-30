@@ -1,34 +1,36 @@
 ---
-title: Algoritmus podobnosti pořadí
+title: Řazení algoritmu podobnosti
 titleSuffix: Azure Cognitive Search
-description: Jak nastavit algoritmus podobnosti vyzkoušet nový algoritmus podobnosti pro pořadí
+description: Postup nastavení algoritmu podobnosti pro vyzkoušení nového algoritmu podobnosti pro řazení
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c327440649300533c94c2a1956e3c45f433c9780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409970"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231607"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Cognitive Search
+# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Algoritmus hodnocení v Azure Kognitivní hledání
 
 > [!IMPORTANT]
-> července 2020 budou nově vytvořené vyhledávací služby využívat funkci hodnocení BM25, která se ve většině případů ukázala jako hodnocení vyhledávání, která lépe odpovídá očekáváním uživatelů než současné výchozí hodnocení.  Kromě vynikajícího hodnocení umožňuje BM25 také možnosti konfigurace pro ladění výsledků na základě faktorů, jako je velikost dokumentu.  
+> Od 15. července 2020 nově vytvořené vyhledávací služby použijí funkci hodnocení BM25 automaticky, která se ve většině případů osvědčila pro poskytování vyhledávacích výsledků, které se lépe rovnají se očekáváním uživatelů, než je aktuální výchozí hodnocení. Kromě vynikajícího hodnocení umožňuje BM25 také možnosti konfigurace pro optimalizaci výsledků na základě faktorů, jako je například velikost dokumentu.  
 >
-> S touto změnou se s největší pravděpodobností zobrazí mírné změny v pořadí výsledků vyhledávání.   Pro ty, kteří chtějí otestovat dopad této změny, jsme zpřístupnili v rozhraní API 2019-05-06-Preview možnost povolit vyhodnocování BM25 na nové indexy.  
+> V této změně se pravděpodobně v pořadí výsledků hledání zobrazí mírné změny. Pro ty, kteří chtějí otestovat dopad této změny, je BM25 algoritmus dostupný v rozhraní API verze 2019-05-06-Preview.  
 
-Tento článek popisuje, jak můžete aktualizovat službu vytvořenou před 15.
+Tento článek popisuje, jak můžete použít nový algoritmus řazení BM25 pro existující vyhledávací služby pro vytváření nových indexů a dotazování pomocí rozhraní API pro verzi Preview.
 
-Azure Cognitive Search bude používat oficiální Lucene implementace algoritmu Okapi BM25, *BM25 Podobnost*, který nahradí dříve používané *ClassicSimilarity* implementace. Stejně jako starší algoritmus ClassicSimilarity je BM25Similarity funkce načítání podobná TF-IDF, která používá termín frekvence (TF) a inverzní frekvenci dokumentu (IDF) jako proměnné pro výpočet skóre relevance pro každou dvojici dotazů dokumentu, která je pak používá pro hodnocení. Zatímco koncepčně podobný starší algoritmus classic podobnosti, BM25 má kořen v pravděpodobnostní načítání informací zlepšit na to. BM25 také nabízí pokročilé možnosti přizpůsobení, jako je například umožňuje uživateli rozhodnout, jak relevance skóre měřítko s termínem frekvence spárovaných termínů.
+V rámci služby Azure Kognitivní hledání je potřeba přijmout oficiální implementaci Lucene BM25 algoritmu *BM25Similarity*, který nahradí dříve použitou implementaci *ClassicSimilarity* . Podobně jako u staršího algoritmu ClassicSimilarity je BM25Similarity funkce načítání TF-IDF, která jako proměnné používá frekvenci termínů (TF) a inverzní hustota dokumentů (IDF) jako proměnné pro výpočet skóre relevance pro jednotlivé páry dokumentů, které se pak použijí pro hodnocení. 
 
-## <a name="how-to-test-bm25-today"></a>Jak testovat BM25 dnes
+V koncepční podobě se starším algoritmem podobnosti BM25 převezme svůj kořen v pravděpodobnostní načítání informací, aby se na něm vylepšil. BM25 nabízí také pokročilé možnosti vlastního nastavení, jako je například umožnění, aby se uživatel rozhodl, jak se skóre relevance škáluje s termínem četnosti shodných podmínek.
 
-Při vytváření nového indexu můžete nastavit vlastnost "podobnosti". Budete muset použít verzi *2019-05-06-Preview,* jak je znázorněno níže.
+## <a name="how-to-test-bm25-today"></a>Postup testování BM25 ještě dnes
+
+Při vytváření nového indexu můžete nastavit vlastnost **podobnosti** a zadat algoritmus. Budete muset použít `api-version=2019-05-06-Preview`, jak je znázorněno níže.
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -57,32 +59,35 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-Pro služby vytvořené před 15. červencem 2020: Pokud je podobnost vynechána nebo nastavena na hodnotu null, index použije algoritmus staré klasické podobnosti.
+Vlastnost **podobnost** je užitečná v tomto přechodném období, pokud jsou oba algoritmy k dispozici, pouze u stávajících služeb. 
 
-Pro služby vytvořené po 15.
+| Vlastnost | Popis |
+|----------|-------------|
+| podobnosti | Nepovinný parametr. Platné hodnoty zahrnují *"#Microsoft. Azure. Search. ClassicSimilarity"* nebo *"#Microsoft. Azure. Search. BM25Similarity"*. <br/> Vyžaduje `api-version=2019-05-06-Preview` nebo novější na vyhledávací službě vytvořenou před 15. července 2020. |
 
-Můžete také explicitně nastavit hodnotu podobnosti jako jednu z následujících dvou hodnot: *"#Microsoft.Azure.Search.ClassicSimilarity"* nebo *"#Microsoft.Azure.Search.BM25Similarity"*.
+Pro nové služby vytvořené po 15. červenci 2020 se BM25 používá automaticky a je jediným algoritmem podobnosti. Pokud se pokusíte nastavit **podobnost** `ClassicSimilarity` na novou službu, bude vrácena chyba 400, protože tento algoritmus není podporován v nové službě.
 
+Pro existující služby vytvořené před 15. července 2020 zůstane u klasické podobnosti výchozí algoritmus. Pokud je vlastnost **podobnosti** vynechána nebo je nastavena na hodnotu null, index používá klasický algoritmus. Pokud chcete použít nový algoritmus, budete muset nastavit **podobnost** , jak je popsáno výše.
 
-## <a name="bm25-similarity-parameters"></a>BM25 parametry podobnosti
+## <a name="bm25-similarity-parameters"></a>BM25 – parametry podobnosti
 
-Podobnost BM25 přidává dva uživatele přizpůsobitelné parametry pro kontrolu vypočteného skóre relevance:
+BM25 podobnost přináší dva uživatelsky přizpůsobitelné parametry pro řízení počítaného skóre relevance.
 
-### <a name="k1"></a>k1
+### <a name="k1"></a>K1
 
-Parametr *k1* řídí funkci měřítka mezi četností termínů jednotlivých odpovídajících termínů a konečným skóre relevance dvojice document-query.
+Parametr *K1* řídí funkci škálování mezi pojmem frekvence každého odpovídajícího termínu a konečným skórem pro dvojici dokumentů a dotazů.
 
-Hodnota nula představuje "binární model", kde je příspěvek jednoho odpovídajícího termínu stejný pro všechny odpovídající dokumenty, bez ohledu na to, kolikrát se tento termín objeví v textu, zatímco větší hodnota k1 umožňuje, aby se skóre nadále zvyšovalo jako více instance stejného termínu je v dokumentu. Ve výchozím nastavení Azure Cognitive Search používá hodnotu 1.2 pro parametr k1. Použití vyšší hodnoty k1 může být důležité v případech, kdy očekáváme, že součástí vyhledávacího dotazu bude více termínů. V těchto případech můžeme chtít upřednostnit dokumenty, které odpovídají mnoha různým dotazům prohledávaných přes dokumenty, které se shodují pouze s jedním, vícekrát. Například při dotazování na index pro dokumenty obsahující termíny "Apollo Spaceflight", můžeme chtít snížit skóre článku o řecké mytologie, který obsahuje termín "Apollo" několik desítek krát, bez zmínky o "Spaceflight", ve srovnání s další článek, který výslovně zmiňuje jak "Apollo" a "Spaceflight" několikrát jen. 
+Hodnota nula představuje "binární model", kde je příspěvek jednoho shodného termínu stejný pro všechny odpovídající dokumenty, a to bez ohledu na to, kolikrát se termín v textu zobrazuje, zatímco větší hodnota K1 umožňuje, aby se skóre pokračovalo v navýšení, protože v dokumentu je nalezeno více instancí stejného termínu. Ve výchozím nastavení používá Azure Kognitivní hledání hodnotu 1,2 pro parametr K1. Použití vyšší hodnoty K1 může být důležité v případech, kdy očekáváme, že bude součástí vyhledávacího dotazu více podmínek. V těchto případech můžeme chtít upřednostnit dokumenty, které odpovídají mnoha různým vyhledávaným dotazům přes dokumenty, které odpovídají jenom jednomu jednomu, několikrát. Například při dotazování indexu pro dokumenty, které obsahují termíny "Apollo Spaceflight", můžeme chtít snížit skóre článku o řečtině Mythology, který obsahuje výraz "Apollo", a to v porovnání s jiným článkem, který výslovně zmiňuje "Spaceflight" i "Apollo", a to pouze Spaceflight. 
  
 ### <a name="b"></a>b
 
-Parametr *b* určuje, jak délka dokumentu ovlivňuje skóre relevance.
+Parametr *b* řídí, jak délka dokumentu ovlivňuje skóre relevance.
 
-Hodnota 0,0 znamená, že délka dokumentu nebude mít vliv na skóre, zatímco hodnota 1,0 znamená, že dopad četnosti termínů na skóre relevance bude normalizován délkou dokumentu. Výchozí hodnota použitá v Azure Cognitive Search pro parametr b je 0,75. Normalizace četnosti termínů podle délky dokumentu je užitečná v případech, kdy chceme penalizovat delší dokumenty. V některých případech je pravděpodobnější, že delší dokumenty (například úplný román) budou obsahovat mnoho irelevantních termínů ve srovnání s mnohem kratšími dokumenty.
+Hodnota 0,0 znamená, že délka dokumentu nebude mít vliv na skóre, zatímco hodnota 1,0 znamená, že dopad této frekvence v hodnocení relevance bude normalizována o délku dokumentu. Výchozí hodnota používaná v Azure Kognitivní hledání pro parametr b je 0,75. Normalizace četnosti dokumentů podle délky dokumentu je užitečná v případech, kdy chceme postihnout dokumenty na delší dobu. V některých případech je pravděpodobnější, že delší dokumenty (například kompletní nové) obsahují mnoho nepodstatných podmínek v porovnání s mnohem kratšími dokumenty.
 
-### <a name="setting-k1-and-b-parameters"></a>Nastavení parametrů k1 a b
+### <a name="setting-k1-and-b-parameters"></a>Nastavení parametrů K1 a b
 
-Chcete-li přizpůsobit hodnoty b nebo k1, jednoduše je přidejte jako vlastnosti k objektu podobnosti při použití BM25:
+Chcete-li přizpůsobit hodnoty b nebo K1, jednoduše je přidejte jako vlastnosti objektu podobnosti při použití BM25:
 
 ```json
     "similarity": {
@@ -92,16 +97,15 @@ Chcete-li přizpůsobit hodnoty b nebo k1, jednoduše je přidejte jako vlastnos
     }
 ```
 
-Algoritmus podobnosti lze nastavit pouze v době vytvoření indexu. To znamená, že algoritmus podobnosti, který se používá, nelze změnit pro existující indexy. Parametry *"b"* a *"k1"* lze upravit při aktualizaci existující definice indexu, která používá BM25. Změna těchto hodnot na existující index přenese index do offline po dobu nejméně několika sekund, což způsobí selhání indexování a požadavky na dotazy. Z tohoto důvodu budete muset nastavit parametr "allowIndexDowntime=true" v řetězci dotazu vašeho požadavku na aktualizaci:
+Algoritmus podobnosti lze nastavit pouze v době vytváření indexu. To znamená, že používaný algoritmus podobnosti se nedá změnit pro existující indexy. Parametry *"b"* a *"K1"* lze upravit při aktualizaci existující definice indexu, která používá BM25. Když změníte tyto hodnoty v existujícím indexu, převezmou index v režimu offline aspoň několik sekund, což způsobí, že vaše požadavky na indexování a dotazy budou úspěšné. Z tohoto důvodu budete muset v řetězci dotazu žádosti o aktualizaci nastavit parametr "allowIndexDowntime = true":
 
 ```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
-
 ## <a name="see-also"></a>Viz také  
 
- [Azure Kognitivní vyhledávání REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [Přidání profilů hodnocení do indexu](index-add-scoring-profiles.md)    
- [Vytvoření indexu &#40;rozhraní REST API pro kognitivní vyhledávání Azure&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-  [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [Odkaz na REST API](https://docs.microsoft.com/rest/api/searchservice/)   
++ [Přidání profilů vyhodnocování do indexu](index-add-scoring-profiles.md)    
++ [Vytvoření rozhraní API pro index](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Sada Azure Kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

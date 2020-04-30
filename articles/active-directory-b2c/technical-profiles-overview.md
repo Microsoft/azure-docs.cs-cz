@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057315"
+ms.locfileid: "82229931"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -39,7 +39,7 @@ Technický profil umožňuje tyto typy scénářů:
 - [OpenID Connect](openid-connect-technical-profile.md) -Federation s libovolným poskytovatelem identity protokolu OpenID Connect.
 - [Phone Factor](phone-factor-technical-profile.md) – podpora registrace a ověření telefonních čísel.
 - [Poskytovatel RESTful](restful-technical-profile.md) – volání služeb REST API Services, například ověření vstupu uživatele, rozšíření uživatelských dat nebo integrace s podnikovými aplikacemi.
-- [Typu Saml2](saml-technical-profile.md) – federace s libovolným poskytovatelem identity protokolu SAML.
+- [Zprostředkovatel identity SAML](saml-identity-provider-technical-profile.md) – federace s jakýmkoli poskytovatelem identity protokolu SAML
 - [Vystavitel tokenu SAML](saml-issuer-technical-profile.md) – vygeneruje token SAML, který se vrátí zpátky do aplikace předávající strany.
 - Uživatel s [vlastním uplatněním](self-asserted-technical-profile.md) : interakce s uživatelem. Například Shromážděte přihlašovací údaje uživatele pro přihlášení, vykreslete stránku pro registraci nebo resetování hesla.
 - [Správa relací](custom-policy-reference-sso.md) – zpracovává různé typy relací.

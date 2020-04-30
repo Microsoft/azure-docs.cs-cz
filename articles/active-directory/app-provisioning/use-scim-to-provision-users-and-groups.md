@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297676"
+ms.locfileid: "82229914"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Vytvoření koncového bodu SCIM a konfigurace zřizování uživatelů pomocí Azure Active Directory (Azure AD)
 
@@ -229,7 +229,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-user"></a>Vytvořit uživatele
 
-###### <a name="request"></a>Request
+###### <a name="request"></a>Žádost
 
 *PO/Users*
 ```json
@@ -287,7 +287,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user"></a>Získání uživatele
 
-###### <a name="request"></a><a name="request-1"></a>Request
+###### <a name="request"></a><a name="request-1"></a>Žádost
 *ZÍSKAT/Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response-user-found"></a><a name="response-1"></a>Odpověď (uživatel se našla)
@@ -317,7 +317,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 }
 ```
 
-###### <a name="request"></a>Request
+###### <a name="request"></a>Žádost
 *ZÍSKAT/Users/5171a35d82074e068ce2* 
 
 ###### <a name="response-user-not-found-note-that-the-detail-is-not-required-only-status"></a>Odpověď (uživatel nebyl nalezen. Všimněte si, že podrobnosti nejsou požadovány, pouze stav.)
@@ -334,7 +334,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query"></a>Získat uživatele podle dotazu
 
-##### <a name="request"></a><a name="request-2"></a>Request
+##### <a name="request"></a><a name="request-2"></a>Žádost
 
 *ZÍSKAT/Users? Filter = userName EQ "Test_User_dfeef4c5-5681 -4387-B016-bdf221e82081"*
 
@@ -375,7 +375,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-user-by-query---zero-results"></a>Získat uživatele podle dotazů – žádné výsledky
 
-##### <a name="request"></a><a name="request-3"></a>Request
+##### <a name="request"></a><a name="request-3"></a>Žádost
 
 *ZÍSKAT/Users? Filter = userName EQ "neexistující uživatel"*
 
@@ -395,7 +395,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-multi-valued-properties"></a>Aktualizace uživatele [vlastnosti s více hodnotami]
 
-##### <a name="request"></a><a name="request-4"></a>Request
+##### <a name="request"></a><a name="request-4"></a>Žádost
 
 *Oprava/Users/6764549bef60420686bc HTTP/1.1*
 ```json
@@ -446,7 +446,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-user-single-valued-properties"></a>Aktualizace uživatele [vlastnosti s jednou hodnotou]
 
-##### <a name="request"></a><a name="request-5"></a>Request
+##### <a name="request"></a><a name="request-5"></a>Žádost
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -491,7 +491,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="disable-user"></a>Zakázání uživatele
 
-##### <a name="request"></a><a name="request-14"></a>Request
+##### <a name="request"></a><a name="request-14"></a>Žádost
 
 *Oprava/Users/5171a35d82074e068ce2 HTTP/1.1*
 ```json
@@ -545,7 +545,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 ```
 #### <a name="delete-user"></a>Odstranění uživatele
 
-##### <a name="request"></a><a name="request-6"></a>Request
+##### <a name="request"></a><a name="request-6"></a>Žádost
 
 *Odstranit/Users/5171a35d82074e068ce2 HTTP/1.1*
 
@@ -562,7 +562,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="create-group"></a>Vytvoření skupiny
 
-##### <a name="request"></a><a name="request-7"></a>Request
+##### <a name="request"></a><a name="request-7"></a>Žádost
 
 *POST/Groups HTTP/1.1*
 ```json
@@ -597,7 +597,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group"></a>Získání skupiny
 
-##### <a name="request"></a><a name="request-8"></a>Request
+##### <a name="request"></a><a name="request-8"></a>Žádost
 
 *ZÍSKAT/Groups/40734ae655284ad3abcc? excludedAttributes = Members HTTP/1.1*
 
@@ -619,7 +619,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="get-group-by-displayname"></a>Získat Group by DisplayName
 
-##### <a name="request"></a><a name="request-9"></a>Request
+##### <a name="request"></a><a name="request-9"></a>Žádost
 *GET/Groups? excludedAttributes = Members&Filter = DisplayName EQ "DisplayName" HTTP/1.1*
 
 ##### <a name="response"></a><a name="response-9"></a>Základě
@@ -648,7 +648,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-non-member-attributes"></a>Aktualizovat skupinu [atributy nečlenské]
 
-##### <a name="request"></a><a name="request-10"></a>Request
+##### <a name="request"></a><a name="request-10"></a>Žádost
 
 *Oprava/Groups/fa2ce26709934589afc5 HTTP/1.1*
 ```json
@@ -668,7 +668,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 ### <a name="update-group-add-members"></a>Aktualizace skupiny [přidat členy]
 
-##### <a name="request"></a><a name="request-11"></a>Request
+##### <a name="request"></a><a name="request-11"></a>Žádost
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -691,7 +691,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="update-group-remove-members"></a>Skupina aktualizací [odebrat členy]
 
-##### <a name="request"></a><a name="request-12"></a>Request
+##### <a name="request"></a><a name="request-12"></a>Žádost
 
 *Oprava/Groups/a99962b9f99d4c4fac67 HTTP/1.1*
 ```json
@@ -714,7 +714,7 @@ V této části najdete příklady požadavků SCIM vygenerovaných klientem Azu
 
 #### <a name="delete-group"></a>Odstranění skupiny
 
-##### <a name="request"></a><a name="request-13"></a>Request
+##### <a name="request"></a><a name="request-13"></a>Žádost
 
 *Odstranit/Groups/cdb1ce18f65944079d37 HTTP/1.1*
 
@@ -810,7 +810,7 @@ Další informace o protokolu HTTPS v ASP.NET Core použijte následující odka
 
 V tokenu je Vystavitel identifikovaný deklarací ISS, jako `"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`je. V tomto příkladu základní adresa hodnoty `https://sts.windows.net`deklarace identity identifikuje Azure Active Directory jako Vystavitel, zatímco relativní segment adres _cbb1a5ac-f33b-45fa-9bf5-f37db0fed422_jedinečný identifikátor Azure Active Directory tenanta, pro který byl token vydán.
 
-Cílovou skupinou pro token bude ID šablony aplikace pro aplikaci v galerii, takže každá z aplikací zaregistrovaných v jednom tenantovi může obdržet stejnou `iss` deklaraci požadavků SCIM. ID šablony aplikace pro každou aplikaci v galerii se liší, kontaktujte [ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) prosím otázky týkající se ID šablony aplikace pro aplikaci Galerie. ID šablony aplikace pro všechny vlastní aplikace je _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_.
+Cílovou skupinou pro token bude ID šablony aplikace pro aplikaci v galerii, takže každá z aplikací zaregistrovaných v jednom tenantovi může obdržet stejnou `iss` deklaraci požadavků SCIM. ID šablony aplikace pro všechny vlastní aplikace je _8adf8e6e-67b2-4cf2-a259-e3dc5476c621_. Token vygenerovaný službou Azure AD Provisioning by se měl použít jenom pro testování. Neměl by se používat v produkčním prostředí.
 
 V ukázkovém kódu se požadavky ověřují pomocí balíčku Microsoft. AspNetCore. Authentication. JwtBearer. Následující kód vynutil, že požadavky na koncové body služby jsou ověřovány pomocí tokenu nosiče vydaného Azure Active Directory pro zadaného tenanta:
 

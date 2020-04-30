@@ -1,45 +1,45 @@
 ---
-title: Získejte podporu & školení
+title: Získání podpory & školení
 titleSuffix: ML Studio (classic) - Azure
-description: Získejte podporu a školení a poskytněte zpětnou vazbu pro Azure Machine Learning Studio (classic)
+description: Získejte podporu a školení a poskytněte zpětnou vazbu k Azure Machine Learning Studio (Classic)
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411908"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209430"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získejte podporu a školení pro Azure Machine Learning Studio (klasické)
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>Získání podpory a školení pro Azure Machine Learning Studio (Classic)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Tento článek obsahuje informace o tom, jak se dozvědět více o Azure Machine Learning Studio (klasické) a získat podporu pro vaše problémy a otázky.
+Tento článek poskytuje informace o tom, jak získat další informace o Azure Machine Learning Studio (Classic) a získat podporu pro vaše otázky a otázky.
 
-## <a name="learn-more-about-studio-classic"></a>Další informace o Studiu (klasické)
+## <a name="learn-more-about-studio-classic"></a>Další informace o studiu (klasické)
 
-Podívejte se na naše výukové zdroje:
-+ [Návody a články s postupy](../studio/index.yml) 
-+ [Videa pro vědu o datech pro začátečníky](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
+Podívejte se na naše studijní materiály:
++ [Kurzy a články s postupy](../studio/index.yml) 
++ [Videa pro začátečníky pro datové vědy](../studio/data-science-for-beginners-ask-a-question-you-can-answer-with-data.md) 
 
-## <a name="submit-doc-feedback"></a>Odeslat zpětnou vazbu dokumentu
+## <a name="submit-doc-feedback"></a>Odeslat názor na dokument
 
-Žádosti o další výukové materiály můžete **odeslat** pomocí tlačítka **Zpětná vazba obsahu** na konci každého článku.
+Žádosti o další studijní materiály můžete **Odeslat** pomocí tlačítka pro **zpětnou vazbu obsahu** na konci každého článku.
 
-## <a name="get-service-support"></a>Získejte servisní podporu
+## <a name="get-service-support"></a>Získat podporu služby
 
-Podívejte se na tyto zdroje podpory:
+Podívejte se na tyto prostředky podpory:
 
-+ **Technická podpora pro zákazníky Azure:** [Odešlete a spravujte žádosti o podporu](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) prostřednictvím portálu Azure.
++ **Technická podpora pro zákazníky Azure**: [odesílat a spravovat žádosti o podporu](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) prostřednictvím Azure Portal.
 
-+ **Uživatelské fórum**: Pokládejte otázky, odpovídat na otázky a spojte se s ostatními uživateli ve [fóru podpory Azure Machine Learning Studio (klasické) na webu MSDN](https://aka.ms/aml-forum-studio).
++ **Fórum uživatele**: Položte otázky, odpovězte na otázky a připojte se k ostatním uživatelům ve [fóru podpory Azure Machine Learning Studio (Classic) na webu MSDN](https://aka.ms/aml-forum-studio).
 
-+ **Přetečení zásobníku**: Navštivte komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) označeném "Azure-Machine-Learning".
++ **Stack Overflow**: Navštivte komunitu Azure Machine Learning na [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) , která je označená jako Azure-Machine-Learning.
 
-+ **Sdílejte návrhy produktů** a požadavky na funkce v našem [kanálu zpětné vazby Azure Machine Learning](https://feedback.azure.com/forums/257792-machine-learning). Chcete-li sdílet svůj názor, vyberte tlačítko **Zpětná vazba produktu** na konci každého článku.
++ **Sdílejte návrhy produktů** a žádosti o funkce v našem [kanálu Azure Machine Learning Feedback](https://feedback.azure.com/forums/257792-machine-learning). Pokud chcete svůj názor sdílet, vyberte na konci každého článku tlačítko **Zpětná vazba produktu** .

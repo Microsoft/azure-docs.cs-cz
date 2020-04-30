@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 249b9bb282024431d0ecd38c62d8d780602e6709
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186807"
+ms.locfileid: "82229965"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace v Azure Active Directory B2C
 
@@ -59,3 +59,7 @@ Následující případy použití jsou povolené pomocí těchto vlastností:
     ![Nastavení vlastností chování relace v Azure Portal](./media/session-behavior/session-behavior.png)
 
 8. Klikněte na **Uložit**.
+
+## <a name="next-steps"></a>Další kroky
+
+- Přečtěte si další informace o [Azure AD B2C relaci](session-overview.md).

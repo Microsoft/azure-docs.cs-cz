@@ -4,12 +4,12 @@ description: Naučte se spouštět aplikace MPI (Message Passing Interface) pomo
 ms.topic: article
 ms.date: 03/13/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aad2b649c92716a807d577bb4f112d47d447545e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 39c7aff0618daafc2c02efaea229de3741804c7a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115971"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231692"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Použití úkolů s více instancemi ke spouštění aplikací rozhraní MPI (Message Passing Interface) ve Batch
 
@@ -181,9 +181,7 @@ Následující proměnné prostředí vytváří služba Batch pro použití v �
 Úplné podrobnosti o těchto a dalších proměnných prostředí výpočetních uzlů pro dávkové zpracování, včetně jejich obsahu a viditelnosti, najdete v tématu [proměnné prostředí výpočetního uzlu][msdn_env_var].
 
 > [!TIP]
-> Ukázka kódu MPI služby Batch pro Linux obsahuje příklad toho, jak lze použít několik těchto proměnných prostředí. Skript [koordinace – cmd][coord_cmd_example] bash stáhne běžné aplikace a vstupní soubory z Azure Storage, povolí v hlavním uzlu sdílenou složku NFS (Network File System) a nakonfiguruje ostatní uzly přidělené úloze s více instancemi jako klienti NFS.
->
->
+> Ukázka kódu MPI služby Batch pro Linux obsahuje příklad toho, jak lze použít několik těchto proměnných prostředí.
 
 ## <a name="resource-files"></a>Soubory prostředků
 Existují dvě sady souborů prostředků, které je třeba vzít v úvahu pro úlohy s více instancemi: **běžné soubory prostředků** , které *všechny* úlohy stahují (primární i dílčí úkoly), a **soubory prostředků** zadané pro vlastní úlohu s více instancemi, které se pouze stahují *primární* úlohy.

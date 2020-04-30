@@ -1,20 +1,22 @@
 ---
-title: Převod kódu experimentování ze strojového učení do produkčního kódu
+title: Převod kódu poznámkového bloku na skripty Pythonu
 titleSuffix: Azure Machine Learning
-description: Naučte se, jak převést experimentální kód strojového učení do produkčního kódu pomocí šablony kódu MLOpsPython.
+description: Pomocí šablony kódu MLOpsPython zapněte experimentální poznámkové bloky pro strojové učení do kódu připraveného pro produkční prostředí. Pak můžete tento kód otestovat, nasadit a automatizovat.
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521445"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559674"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Kurz: převod experimentálního kódu ML na produkční kód
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Kurz: převod experimentů ML na produkční kód v Pythonu
+
+V tomto kurzu se dozvíte, jak převést Juptyer poznámkové bloky na skripty Pythonu, aby se zajistilo jejich testování a automatizace pomocí šablony kódu MLOpsPython a Azure Machine Learning. Tento proces se obvykle používá k přezkoušení/školení kódu z poznámkového bloku Juptyer a k jeho převodu na skripty v Pythonu. Tyto skripty pak můžete použít k testování a automatizaci CI/CD v produkčním prostředí. 
 
 Projekt strojového učení vyžaduje experimentování, kde se hypotéza testuje pomocí agilních nástrojů, jako je Jupyter Notebook pomocí reálných datových sad. Jakmile je model připravený k produkci, kód modelu by měl být umístěn v provozním úložišti kódu. V některých případech je nutné kód modelu převést na skripty v jazyce Python, aby byly umístěny do úložiště kódu v produkčním prostředí. Tento kurz se zabývá doporučeným přístupem k exportu kódu experimentování do skriptů Pythonu.
 

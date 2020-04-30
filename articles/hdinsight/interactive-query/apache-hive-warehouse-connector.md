@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252406"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509529"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrace Apache Spark a Apache Hive s konektorem skladu podregistru
 
-Konektor Apache Hive Warehouse (umožní) je knihovna, která umožňuje snadněji pracovat s Apache Spark a Apache Hive tím, že podporuje úkoly, jako je přesun dat mezi datovými tabulkami Sparku a tabulkami podregistru a také nasměrování dat pro streamování Sparku do tabulek podregistru. Konektor datového skladu pro podregistr funguje jako most mezi Sparkem a podregistrem. Podporuje Scala, Java a Python pro vývoj.
+Konektor Apache Hive Warehouse (umožní) je knihovna, která umožňuje snadnější práci s Apache Spark a Apache Hive. Jednodušší podpora úkolů, jako je přesun dat mezi datarámec Spark a tabulkami podregistru. A směruje data streamování Sparku do tabulek podregistru. Konektor datového skladu pro podregistr funguje jako most mezi Sparkem a podregistrem. Podporuje Scala, Java a Python pro vývoj.
 
-Konektor skladiště pro podregistr umožňuje využívat jedinečné funkce podregistru a Sparku k vytváření výkonných aplikací pro velké objemy dat. Apache Hive nabízí podporu pro databázové transakce, které jsou atomické, konzistentní, izolované a trvalé (KYSELé). Další informace o KYSELINě a transakcích v podregistru najdete v tématu [transakce podregistru](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Podregistr také nabízí podrobné kontrolní mechanismy zabezpečení prostřednictvím Apache Ranger a analytické zpracování s nízkou latencí, které není dostupné v Apache Spark.
+Konektor skladiště pro podregistr umožňuje využívat jedinečné funkce pro podregistr a Spark. Funkce, které slouží k vytváření výkonných aplikací pro velké objemy dat. Apache Hive nabízí podporu pro databázové transakce, které jsou atomické, konzistentní, izolované a trvalé (KYSELé). Další informace o KYSELINě a transakcích v podregistru najdete v tématu [transakce podregistru](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions). Podregistr také nabízí podrobné kontrolní mechanismy zabezpečení prostřednictvím Apache Ranger a analytické zpracování s nízkou latencí, které není dostupné v Apache Spark.
 
-Apache Spark má strukturované rozhraní API pro streamování, které poskytuje možnosti streamování, které nejsou dostupné v Apache Hive. Od HDInsight 4,0 Apache Spark 2.3.1 a Apache Hive 3.1.0 samostatné metaúložiště, což může zajistit obtížnou interoperabilitu. Konektor pro skladiště podregistru usnadňuje používání Sparku a úlů společně. Knihovna umožní načítá data ze LLAP démonů do paralelního vykonavatele paralelně, takže je efektivnější a škálovatelnější než použití standardního připojení JDBC z Sparku do podregistru.
+Apache Spark má strukturované rozhraní API pro streamování, které poskytuje možnosti streamování, které nejsou dostupné v Apache Hive. Počínaje HDInsight 4,0 Apache Spark 2.3.1 a Apache Hive 3.1.0 mít samostatné metaúložiště. Tyto samostatné metaúložiště můžou zajistit obtížnou interoperabilitu. Konektor pro skladiště podregistru usnadňuje používání Sparku a úlů společně. Knihovna umožní načte data z démonů LLAP (s nízkou latencí) do paralelních prováděcích procesů. Díky této akci je efektivnější a přizpůsobitelnější než použití standardního připojení JDBC z Sparku do podregistru.
 
 ![Architektura konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Ve webovém uživatelském rozhraní Spark Ambari přejděte do **Spark2** > **C
 
 ![Konfigurace Spark2 Apache Ambari](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-Vyberte **Přidat vlastnost...** podle potřeby přidejte nebo aktualizujte následující:
+Vyberte **Přidat vlastnost...** podle potřeby přidejte nebo aktualizujte následující hodnotu:
 
 | Key | Hodnota |
 |----|----|
@@ -122,13 +123,13 @@ Chcete-li spustit relaci Spark-Shell, proveďte následující kroky:
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>Připojení a spuštění dotazů v clusterech Balíček zabezpečení podniku (ESP)
 
-Balíček zabezpečení podniku (ESP) poskytuje podnikové funkce, jako je ověřování založené na službě Active Directory, podpora více uživatelů a řízení přístupu na základě rolí pro Apache Hadoop clustery ve službě Azure HDInsight. Další informace o protokolu ESP najdete v tématu [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
+Balíček zabezpečení podniku (ESP) poskytuje podnikové funkce, jako je ověřování založené na službě Active Directory. Podpora více uživatelů a řízení přístupu na základě rolí pro Apache Hadoop clustery v Azure HDInsight. Další informace o protokolu ESP najdete v tématu [použití balíček zabezpečení podniku ve službě HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
-1. SSH do hlavnímu uzlu pro váš cluster Apache Spark. Další informace o připojení ke clusteru pomocí SSH najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+1. SSH do hlavnímu uzlu pro váš cluster Apache Spark.
 
 1. Zadejte `kinit` a přihlaste se jako uživatel domény.
 
-1. Spusťte Spark-shell s úplným seznamem parametrů konfigurace, jak je znázorněno níže. V závislosti na vašem clusteru je nutné zadat všechny hodnoty ze všech velkých písmen mezi lomenými závorkami. Pokud potřebujete zjistit hodnoty, které se mají zadat pro některý z níže uvedených parametrů, přečtěte si část o [Nastavení konektoru ve skladu pro podregistr](#hive-warehouse-connector-setup).:
+1. Spusťte Spark-shell s úplným seznamem parametrů konfigurace, jak je znázorněno níže. V závislosti na vašem clusteru je nutné zadat všechny hodnoty ze všech velkých písmen mezi lomenými závorkami. Pokud potřebujete zjistit hodnoty, které se mají zadat pro některý z níže uvedených parametrů, Projděte si část [Nastavení konektoru skladu z podregistru](#hive-warehouse-connector-setup).
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ Spark nebude nativně podporovat zápis do spravovaných tabulek KYSELosti podre
 
 Pomocí konektoru Warehouse pro podregistr můžete pomocí streamování Spark zapisovat data do tabulek podregistru.
 
-Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnožinou, který ingestuje data z datového proudu Spark na portu hostitele 9999 do tabulky podregistru.
+Pomocí následujících kroků vytvořte konektor skladu s podregistry. V příkladu se ingestují data ze streamu Spark na hostiteli na portu 9999 do tabulky podregistru.
 
 1. Postupujte podle kroků v části [připojení a spuštění dotazů](#connecting-and-running-queries).
 
@@ -193,7 +194,7 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
 
 1. Pomocí následujících kroků vygenerujte data pro datový proud Spark, který jste vytvořili:
     1. Otevřete druhou relaci SSH na stejném clusteru Spark.
-    1. Do příkazového řádku zadejte `nc -lk 9999`. Tento příkaz používá nástroj Netcat k posílání dat z příkazového řádku na zadaný port.
+    1. Do příkazového řádku zadejte `nc -lk 9999`. Tento příkaz používá `netcat` nástroj k posílání dat z příkazového řádku na zadaný port.
 
 1. Vraťte se k první relaci SSH a vytvořte novou tabulku podregistru pro ukládání dat streamování. V prostředí Spark zadejte následující příkaz:
 
@@ -224,7 +225,7 @@ Pomocí následujících kroků vytvořte příklad konektoru skladu s podmnoži
     hive.table("stream_table").show()
     ```
 
-Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomocí `:q` příkazu můžete v první relaci SSH ukončit prostředí Spark.
+Pomocí **kombinace kláves CTRL + C** zastavte `netcat` druhou relaci SSH. Pomocí `:q` příkazu můžete v první relaci SSH ukončit prostředí Spark.
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>Zabezpečení dat v clusterech Spark ESP
 
@@ -253,7 +254,7 @@ Pomocí **kombinace kláves CTRL + C** zastavte NetCat v druhé relaci SSH. Pomo
 
         ![seznam zásad podregistru Ranger konektoru skladu podregistru](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. Zadejte požadovaný název zásad. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na tlačítko **Add** (Přidat).
+    a. Zadejte název zásady. Vyberte databázi: **výchozí**, tabulka podregistru: **Ukázka**, sloupec podregistru: **název**, uživatel: **Rsadmin2**, typy přístupu: **Vybrat**a **částečná maska: Zobrazit poslední 4** v nabídce **možností výběru maskování** . Klikněte na tlačítko **Add** (Přidat).
                 ![vytvořit zásadu](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. Znovu zobrazte obsah tabulky. Po použití zásad Ranger uvidíme jenom poslední čtyři znaky sloupce.
 

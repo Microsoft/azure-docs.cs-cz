@@ -3,14 +3,14 @@ title: Spuštění/zastavení virtuálních počítačů během nepracovních ř
 description: Toto řešení pro správu virtuálních počítačů spustí a zastaví vaše virtuální počítače Azure na základě plánu a proaktivně monitoruje z protokolů Azure Monitor.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187326"
+ms.locfileid: "82207594"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v řešení mimo špičku v Azure Automation
 
@@ -19,7 +19,7 @@ ms.locfileid: "82187326"
 Toto řešení spustí virtuální počítače pomocí rutiny [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) . Pro zastavování virtuálních počítačů používá [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) .
 
 > [!NOTE]
-> **Virtuální počítače spustit/zastavit v době mimo špičku** byly aktualizovány tak, aby podporovaly nejnovější verze modulů Azure, které jsou k dispozici.
+> **Virtuální počítače spustit/zastavit v době mimo špičku** byly aktualizovány tak, aby podporovaly nejnovější verze modulů Azure, které jsou k dispozici. Aktualizovaná verze tohoto řešení, která je dostupná na webu Marketplace, nepodporuje AzureRM moduly, protože jsme migrovali z AzureRM na az Modules.
 
 Řešení poskytuje decentralizovanou možnost automatizace s nízkými náklady pro uživatele, kteří chtějí optimalizovat náklady na virtuální počítače. V tomto řešení můžete:
 
