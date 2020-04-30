@@ -8,7 +8,7 @@ ms.date: 11/04/2019
 ms.author: brendm
 ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81687094"

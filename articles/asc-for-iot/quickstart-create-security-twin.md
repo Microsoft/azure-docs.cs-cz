@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Vytvoření dvojčete modulu zabezpečení'
-description: V tomto rychlém startu se dozvíte, jak vytvořit dvojče modulu Azure Security Center pro IoT pro použití s Azure Security Center pro IoT.
+title: 'Rychlý Start: vytvoření vlákna modulu zabezpečení'
+description: V tomto rychlém startu se dozvíte, jak vytvořit Azure Security Center pro práci s modulem IoT pro použití s Azure Security Center for IoT.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,67 +16,67 @@ ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
 ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81310867"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Úvodní příručka: Vytvoření dvojčete modulu azureiotsecurity
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Rychlý Start: vytvoření vlákna modulu azureiotsecurity
 
-Tento rychlý start vysvětluje, jak vytvořit jednotlivá dvojčata _modulu azureiotsecurity_ pro nová zařízení nebo dávková dvojčata modulů pro všechna zařízení v centru IoT Hub.
+V tomto rychlém startu se dozvíte, jak vytvořit jednotlivé _azureiotsecurityy_ modulu pro nová zařízení a vytvořit z něj vlákna pro všechna zařízení v IoT Hub.
 
-## <a name="understanding-azureiotsecurity-module-twins"></a>Principy dvojčat modulů azureiotsecurity
+## <a name="understanding-azureiotsecurity-module-twins"></a>Principy vláken modulu azureiotsecurity
 
-U řešení IoT integrovaných v Azure hrají dvojčata zařízení klíčovou roli jak při správě zařízení, tak v automatizaci procesů.
+V případě řešení IoT, která jsou integrovaná v Azure, jsou vlákna zařízení v automatizaci správy zařízení a v automatizaci procesů klíčovou rolí.
 
-Azure Security Center pro IoT nabízí plnou integraci s vaší stávající platformou pro správu zařízení IoT, což vám umožní spravovat stav zabezpečení zařízení a využívat stávající možnosti řízení zařízení.
-Integrace Azure Security Center pro IoT je dosažena využitím mechanismu dvojčete služby IoT Hub.
+Azure Security Center pro IoT nabízí úplnou integraci s vaší stávající platformou správy zařízení IoT, což vám umožní spravovat stav zabezpečení zařízení a využívat stávající možnosti řízení zařízení.
+Azure Security Center pro integraci IoT se dosahuje tím, že využívá mechanismus IoT Hub vláken.
 
-Další informace o obecném konceptu dvojčat modulů v Azure IoT Hub najdete v tématu [Dvojčata modulů služby IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) Hub.
+Další informace o obecném konceptu vláken v modulech Azure IoT Hub najdete v tématu [vlákna IoT Hubch modulů](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins) .
 
-Azure Security Center pro IoT využívá mechanismus dvojčete modulu a udržuje dvojče modulu zabezpečení s názvem _azureiotsecurity_ pro každé z vašich zařízení.
+Azure Security Center pro IoT využívá modul s dvojitou zátěží a udržuje v modulu zabezpečení pro každé vaše zařízení dvojitou _azureiotsecurityi_ .
 
-Dvojče modulu zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé z vašich zařízení.
+Modul zabezpečení obsahuje všechny informace týkající se zabezpečení zařízení pro každé vaše zařízení.
 
-Pokud chcete plně využít funkce Azure Security Center for IoT, budete muset vytvořit, nakonfigurovat a používat tato dvojčata modulů zabezpečení pro každé zařízení ve službě.
+Aby bylo možné plně využívat Azure Security Center pro funkce IoT, budete muset vytvořit, nakonfigurovat a použít tyto prvky zabezpečení pro každé zařízení ve službě.
 
-## <a name="create-azureiotsecurity-module-twin"></a>Vytvoření dvojčete modulu azureiotsecurity
+## <a name="create-azureiotsecurity-module-twin"></a>Vytvořit dvojitou azureiotsecurity modul
 
-_Azureiotsecurity_ module twins lze vytvořit dvěma způsoby:
+vlákna modulu _azureiotsecurity_ je možné vytvořit dvěma způsoby:
 
-1. [Modul dávkový skript](https://aka.ms/iot-security-github-create-module) - automaticky vytvoří dvojče modulu pro nová zařízení nebo zařízení bez dvojčete modulu pomocí výchozí konfigurace.
-1. Ruční úprava každého dvojčete modulu jednotlivě s konkrétními konfiguracemi pro každé zařízení.
+1. [Modul Batch Script](https://aka.ms/iot-security-github-create-module) – automaticky vytvoří vlákna modulu pro nová zařízení nebo zařízení bez toho, aby modul používal výchozí konfiguraci.
+1. Ruční úprava každého modulu se zpracovává jednotlivě s konkrétní konfigurací pro každé zařízení.
 
 >[!NOTE]
-> Pomocí dávkové metody nebude přepsat existující azureiotsecurity modul dvojčata. Pomocí dávkové metody POUZE vytvoří nová dvojčata modulu pro zařízení, která ještě nemají dvojče modulu zabezpečení.
+> Použití metody Batch nepřepíše stávající vlákna modulu azureiotsecurity. Použití metody Batch vytvoří pouze nové moduly v zařízeních, které ještě nemají modul zabezpečení.
 
-Informace o tom, jak upravit nebo změnit konfiguraci existujícího dvojčete modulu, naleznete v [tématu konfigurace agenta.](how-to-agent-configuration.md)
+V tématu [Konfigurace agenta](how-to-agent-configuration.md) se dozvíte, jak upravit nebo změnit konfiguraci existujícího modulu s dvojitou platností.
 
-Chcete-li ručně vytvořit nový dvojče _modulu azureiotsecurity_ pro zařízení, postupujte podle následujících pokynů:
+K ručnímu vytvoření nového vlákna modulu _azureiotsecurity_ pro zařízení použijte následující pokyny:
 
-1. Ve svém IoT Hubu vyhledejte a vyberte zařízení, pro které chcete vytvořit dvojče modulu zabezpečení.
-1. Klikněte na zařízení a potom na **Přidat identitu modulu**.
-1. Do pole **Název identity modulu** zadejte **azureiotsecurity**.
+1. V IoT Hub vyhledejte a vyberte zařízení, pro které chcete vytvořit modul zabezpečení.
+1. Klikněte na své zařízení a pak na **Přidat identitu modulu**.
+1. Do pole **název identity modulu** zadejte **azureiotsecurity**.
 
 1. Klikněte na **Uložit**.
 
-## <a name="verify-creation-of-a-module-twin"></a>Ověření vytvoření dvojčete modulu
+## <a name="verify-creation-of-a-module-twin"></a>Ověření vytvoření vlákna modulu
 
-Ověření, zda pro určité zařízení existuje dvojče modulu zabezpečení:
+Ověření, jestli pro konkrétní zařízení existuje nějaký modul zabezpečení:
 
-1. Ve službě Azure IoT Hub vyberte **zařízení IoT** z nabídky **Průzkumníky.**
-1. Zadejte ID zařízení nebo vyberte možnost v **poli Dotazovací zařízení** a klikněte na **Dotazová zařízení**.
-    ![Dotazovací zařízení](./media/quickstart/verify-security-module-twin.png)
-1. Vyberte zařízení nebo na něj poklepejte a otevřete stránku podrobností o zařízení.
-1. Vyberte nabídku **Identity modulu** a potvrďte existenci modulu **azureiotsecurity** v seznamu identit modulu přidružených k zařízení.
+1. V IoT Hub Azure vyberte v nabídce **průzkumníky** možnost **zařízení IoT** .
+1. Zadejte ID zařízení nebo vyberte možnost v **poli dotazovací zařízení** a klikněte na **dotazovat zařízení**.
+    ![Dotazování na zařízení](./media/quickstart/verify-security-module-twin.png)
+1. Vyberte zařízení nebo dvakrát klikněte na něj a otevřete stránku s podrobnostmi o zařízení.
+1. Vyberte nabídku **identity modulu** a v seznamu identit modulu přidružených k danému zařízení potvrďte existenci modulu **azureiotsecurity** .
     ![Moduly přidružené k zařízení](./media/quickstart/verify-security-module-twin-3.png)
 
-Další informace o přizpůsobení vlastností Azure Security Center pro dvojčata modulů IoT najdete v [tématu konfigurace agenta](how-to-agent-configuration.md).
+Další informace o přizpůsobení vlastností Azure Security Center pro vlákna modulu IoT najdete v tématu [Konfigurace agenta](how-to-agent-configuration.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k dalšímu článku a dozvíte se, jak konfigurovat vlastní výstrahy...
+V dalším článku se dozvíte, jak nakonfigurovat vlastní výstrahy...
 
 > [!div class="nextstepaction"]
 > [Konfigurace vlastních výstrah](quickstart-create-custom-alerts.md)
