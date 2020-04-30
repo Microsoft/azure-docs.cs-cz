@@ -1,6 +1,6 @@
 ---
-title: Kopírování spravovaných disků do předplatného – ukázka příkazového příkazu
-description: Ukázka skriptu Azure CLI – kopírování (nebo přesunutí) spravovaných disků na stejné nebo jiné předplatné
+title: Kopírování spravovaných disků do ukázky předplatného-CLI
+description: Ukázkový skript Azure CLI – kopírování (nebo přesun) spravovaných disků do stejného nebo jiného předplatného
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 540f11e2089d6aeac1b6c664695d1dafbf31d65a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460881"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Kopírování spravovaných disků do stejného nebo jiného předplatného pomocí rozhraní příkazového řádku
 
-Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatného ve stejné oblasti. Kopie funguje pouze v případě, že odběry jsou součástí stejného klienta AAD.
+Tento skript zkopíruje spravovaný disk do stejného nebo jiného předplatného ve stejné oblasti. Kopie funguje pouze v případě, že odběry jsou součástí stejného tenanta AAD.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

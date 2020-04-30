@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Trénování pomocí popisků pomocí rozhraní REST API a Pythonu – rozpoznávání formulářů'
+title: 'Rychlý Start: výuka s popisky pomocí REST API a Pythonu – rozpoznávání formulářů'
 titleSuffix: Azure Cognitive Services
-description: Zjistěte, jak pomocí funkce rozpoznávání formulářů s popiskem dat s rozhraním REST API a Pythonem trénovat vlastní model.
+description: Naučte se, jak pomocí REST API a Pythonu využít funkci rozpoznávání formulářů s popisky, abyste mohli naučit vlastní model.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,60 +10,60 @@ ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
 ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81531096"
 ---
-# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Trénování modelu rozpoznávání formulářů s popisky pomocí rozhraní REST API a Pythonu
+# <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Výukový model pro rozpoznávání formulářů s popisky pomocí REST API a Pythonu
 
-V tomto rychlém startu použijete rozhraní REST API nástroje pro rozpoznávání formulářů s Pythonem k trénování vlastního modelu s ručně označenými daty. Další informace o této funkci najdete v části [Vlak s popisky](../overview.md#train-with-labels) v přehledu.
+V tomto rychlém startu použijete REST API pro rozpoznávání formulářů s Pythonem k učení vlastního modelu s ručně označenými daty. Další informace o této funkci najdete v části [výuka s visačkami](../overview.md#train-with-labels) v přehledu.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento rychlý start, musíte mít:
-- [Python](https://www.python.org/downloads/) nainstalován (pokud chcete spustit ukázku místně).
-- Sada nejméně šesti forem stejného typu. Tato data použijete k trénování modelu a testování formuláře. Pro tento rychlý start můžete použít [ukázkovou sadu dat.](https://go.microsoft.com/fwlink/?linkid=2090451) Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů blob v účtu Azure Storage.
+K dokončení tohoto rychlého startu musíte mít:
+- Je nainstalovaný [Python](https://www.python.org/downloads/) (Pokud chcete spustit ukázku místně).
+- Sada alespoň šest forem stejného typu. Tato data použijete ke školení modelu a testování formuláře. Pro tento rychlý Start můžete použít [ukázkovou datovou sadu](https://go.microsoft.com/fwlink/?linkid=2090451) . Nahrajte školicí soubory do kořenového adresáře kontejneru úložiště objektů BLOB v účtu Azure Storage.
 
-## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku nástroje pro rozpoznávání formulářů
+## <a name="create-a-form-recognizer-resource"></a>Vytvoření prostředku pro rozpoznávání formulářů
 
 [!INCLUDE [create resource](../includes/create-resource.md)]
 
-## <a name="set-up-training-data"></a>Nastavení trénovacích dat
+## <a name="set-up-training-data"></a>Nastavení školicích dat
 
-Dále budete muset nastavit požadovaná vstupní data. Funkce dat označená popiskem má zvláštní vstupní požadavky nad rámec těch, které jsou potřebné k trénování vlastního modelu. 
+Dále budete muset nastavit požadovaná vstupní data. Funkce s popisky dat má speciální požadavky na vstup nad rámec těch, které jsou potřeba k učení vlastního modelu. 
 
-Ujistěte se, že všechny školicí dokumenty jsou ve stejném formátu. Pokud máte formuláře ve více formátech, uspořádejte je do podsložek na základě běžného formátu. Když trénujete, budete muset rozhraní API nasměrovat do podsložky.
+Ujistěte se, že všechny školicí dokumenty mají stejný formát. Pokud máte formuláře v několika formátech, uspořádejte je do podsložek v závislosti na společném formátu. Při učení budete muset rozhraní API nasměrovat do podsložky.
 
-Chcete-li trénovat model pomocí označených dat, budete potřebovat následující soubory jako vstupy v podsložce. Níže se dozvíte, jak vytvořit tyto soubory.
+Aby bylo možné vytvořit model pomocí popisků dat, budete potřebovat následující soubory jako vstupy v podsložce. Naučíte se, jak vytvořit tento soubor níže.
 
-* **Zdrojové formuláře** – formuláře pro extrahování dat. Podporované typy jsou JPEG, PNG, PDF nebo TIFF.
-* **Soubory rozložení OCR** - Soubory JSON, které popisují velikosti a umístění veškerého čitelného textu v každém zdrojovém formuláři. Ke generování těchto dat použijete rozhraní API pro rozpoznávání formulářů. 
-* **Label files** - JSON files that describe data labels that a user has entered manually.
+* **Zdrojové formuláře** – formuláře pro extrakci dat. Podporované typy jsou JPEG, PNG, PDF nebo TIFF.
+* **Soubory rozložení OCR** – soubory JSON, které popisují velikosti a pozice veškerého čitelného textu v každém zdrojovém formuláři. K vygenerování těchto dat použijete rozhraní API pro rozložení pro rozpoznávání formuláře. 
+* **Soubory popisků** – soubory JSON, které popisují popisky dat, které uživatel zadal ručně.
 
-Všechny tyto soubory by měly zabírat stejnou podsložku a měly by být v následujícím formátu:
+Všechny tyto soubory by měly zabírat stejnou podsložku a musí být v následujícím formátu:
 
-* input_file1.pdf 
-* input_file1.pdf.ocr.json
-* input_file1.pdf.labels.json 
-* input_file2.pdf 
-* input_file2.pdf.ocr.json
-* input_file2.pdf.labels.json
+* input_file1. PDF 
+* input_file1. PDF. OCR. JSON
+* input_file1. PDF. labels. JSON 
+* input_file2. PDF 
+* input_file2. PDF. OCR. JSON
+* input_file2. PDF. labels. JSON
 * ...
 
 > [!TIP]
-> Když vytvoříte popisky formulářů pomocí [nástroje pro vzorové popisky](./label-tool.md)nástroje rozpoznávání formulářů , nástroj automaticky vytvoří tyto soubory popisků a rozložení rozpoznávání OCR.
+> Při označování formulářů pomocí [Nástroje pro označování ukázkových popisků](./label-tool.md)ve formě, nástroj vytvoří tyto soubory rozložení popisků a OCR automaticky.
 
-### <a name="create-the-ocr-output-files"></a>Vytvoření výstupních souborů Rozpoznávání OCR
+### <a name="create-the-ocr-output-files"></a>Vytvoření výstupních souborů OCR
 
-Potřebujete OCR výsledky soubory, aby služba, aby zvážila odpovídající vstupní soubory pro školení s popiskem. Chcete-li získat výsledky Rozpoznávání OCR pro daný zdrojový formulář, postupujte podle následujících kroků:
+Chcete-li, aby služba mohla zvážit odpovídající vstupní soubory pro školení s označením, potřebujete soubory výsledků OCR. Chcete-li získat výsledky OCR pro daný zdrojový formulář, postupujte podle následujících kroků:
 
-1. Volání **[rozhraní Analyzovat rozhraní](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API rozložení v kontejneru rozložení pro čtení se vstupním souborem jako součást těla požadavku. Uložte ID nalezené v hlavičce **Operace lokace** odpovědi.
-1. Volání **[Získat analyzovat rozložení výsledek](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** rozhraní API, pomocí ID operace z předchozího kroku.
-1. Získejte odpověď a zapište obsah do souboru. Pro každý zdrojový formulář by měl mít odpovídající soubor OCR připojen původní název souboru `.ocr.json`. Výstup OCR JSON by měl mít následující formát. Úplný příklad naleznete v [ukázkovém souboru OCR.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) 
+1. Zavolejte rozhraní API **[analyzovat rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** v kontejneru čtení rozložení se vstupním souborem jako součást textu žádosti. Uloží ID nalezené v hlavičce **operace – umístění** odpovědi.
+1. Pomocí ID operace z předchozího kroku zavolejte rozhraní API **[výsledků získat analýzu rozložení](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** .
+1. Získejte odpověď a zapište obsah do souboru. Pro každý zdrojový formulář by měl mít odpovídající soubor optického rozpoznávání znaků připojený původní název souboru `.ocr.json`. Výstup ve formátu JSON OCR by měl mít následující formát. Úplný příklad najdete v [ukázkovém souboru OCR](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) . 
 
     ```json
     {
@@ -116,11 +116,11 @@ Potřebujete OCR výsledky soubory, aby služba, aby zvážila odpovídající v
 
 ### <a name="create-the-label-files"></a>Vytvoření souborů popisků
 
-Soubory popisků obsahují přidružení klíč-hodnota, která uživatel zadal ručně. Jsou potřebné pro školení označených dat, ale ne každý zdrojový soubor musí mít odpovídající soubor popisků. Zdrojové soubory bez štítků budou považovány za běžné školicí dokumenty. Pro spolehlivé školení doporučujeme pět nebo více označených souborů.
+Soubory popisků obsahují přidružení klíč-hodnota, která uživatel zadal ručně. Jsou nutné pro školení s popisky dat, ale ne každý zdrojový soubor musí mít odpovídající soubor popisku. Zdrojové soubory bez popisků se budou považovat za běžné školicí dokumenty. Pro spolehlivé školení doporučujeme pět nebo více označených souborů.
 
-Při vytváření souboru popisků můžete volitelně určit přesné&mdash;umístění hodnot v dokumentu. To dá tréninku ještě vyšší přesnost. Oblasti jsou formátovány jako sada osmi hodnot odpovídajících čtyřem souřadnicím X,Y: vlevo nahoře, vpravo nahoře, vpravo dole a vlevo dole. Hodnoty souřadnic jsou mezi nulou a jednou, měřítko na rozměry stránky.
+Při vytváření souboru popisků můžete volitelně zadat oblasti&mdash;s přesným umístěním hodnot v dokumentu. Tím zajistíte i vyšší přesnost školení. Oblasti jsou formátovány jako sada osmi hodnot, které odpovídají čtyřm souřadnicím X, Y: vlevo nahoře, vpravo nahoře, dole vpravo a vlevo dole. Hodnoty souřadnic jsou mezi nulou a jednou škálované na rozměry stránky.
 
-Pro každý zdrojový formulář by měl mít odpovídající soubor `.labels.json`popisku připojen původní název souboru . Soubor popisku by měl mít následující formát. Úplný příklad naleznete v [ukázkovém souboru popisků.](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json)
+Pro každý zdrojový formulář by měl mít odpovídající soubor popisku příponu původního souboru s `.labels.json`příponou. Soubor popisku by měl mít následující formát. Úplný příklad najdete v [souboru se vzorovým popiskem](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) .
 
 ```json
 {
@@ -188,16 +188,16 @@ Pro každý zdrojový formulář by měl mít odpovídající soubor `.labels.js
 ```
 
 > [!NOTE]
-> Na každý textový prvek lze aplikovat pouze jeden popisek a každý popisek lze použít pouze jednou na stránku. V současné době nelze použít popisek na více stránkách.
+> Můžete použít pouze jeden popisek na každý textový prvek a každý popisek lze použít pouze jednou na stránku. V tuto chvíli nemůžete použít popisek na více stránkách.
 
 
-## <a name="train-a-model-using-labeled-data"></a>Trénování modelu pomocí označených dat
+## <a name="train-a-model-using-labeled-data"></a>Výuka modelu pomocí popiskových dat
 
-Chcete-li trénovat model s označenými daty, zavolejte **[rozhraní TRAIN Custom Model](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API spuštěním následujícího kódu pythonu. Před spuštěním kódu proveďte tyto změny:
+Chcete-li vytvořit model s označením dat, zavolejte rozhraní API **[vlastního modelu vlaku](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** spuštěním následujícího kódu Pythonu. Před spuštěním kódu proveďte tyto změny:
 
-1. Nahraďte `<Endpoint>` adresu URL koncového bodu pro prostředek nástroje pro rozpoznávání formulářů.
-1. Nahraďte `<SAS URL>` adresu URL sdíleného přístupového podpisu (SAS) kontejneru azure blob. Chcete-li načíst adresu URL SAS, otevřete Průzkumníka úložiště Microsoft Azure, klikněte pravým tlačítkem myši na kontejner a vyberte **získat sdílený přístupový podpis**. Zkontrolujte, zda jsou zaškrtnuta oprávnění **Číst** a **seznam,** a klepněte na **tlačítko Vytvořit**. Pak zkopírujte hodnotu v části **ADRESA URL.** Měl by mít `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`formu: .
-1. Nahraďte `<Blob folder name>` název složky v kontejneru objektů blob, kde jsou umístěna vstupní data. Nebo pokud jsou data v kořenovém adresáři, ponechejte toto pole prázdné a odeberte `"prefix"` pole z těla požadavku HTTP.
+1. Nahraďte `<Endpoint>` adresou URL koncového bodu pro prostředek pro rozpoznávání formulářů.
+1. Nahraďte `<SAS URL>` adresou URL sdíleného přístupového podpisu (SAS) kontejneru úložiště objektů BLOB v Azure. Pokud chcete načíst adresu URL SAS, otevřete Průzkumník služby Microsoft Azure Storage, klikněte pravým tlačítkem na svůj kontejner a vyberte **získat sdílený přístupový podpis**. Ujistěte se, že jsou zaškrtnutá oprávnění **číst** a **Zobrazit seznam** , a klikněte na **vytvořit**. Pak zkopírujte hodnotu v části **Adresa URL** . Měla by mít tvar: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+1. Nahraďte `<Blob folder name>` názvem složky ve vašem kontejneru objektů blob, kde se nacházejí vstupní data. Nebo, pokud jsou vaše data v kořenovém adresáři, nechejte toto `"prefix"` pole prázdné a odeberte pole z těla požadavku HTTP.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -240,9 +240,9 @@ except Exception as e:
     quit() 
 ```
 
-## <a name="get-training-results"></a>Získejte výsledky školení
+## <a name="get-training-results"></a>Získat výsledky školení
 
-Po spuštění operace vlaku použijete vrácené ID k získání stavu operace. Přidejte následující kód do dolní části skriptu Pythonu. To používá hodnotu ID z volání školení v nové volání rozhraní API. Operace školení je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud není dokončen stav školení. Doporučujeme interval jedné sekundy nebo více.
+Po spuštění operace vlaku použijete vrácené ID k získání stavu operace. Do dolní části skriptu Pythonu přidejte následující kód. Použije se hodnota ID z školicího hovoru v novém volání rozhraní API. Operace školení je asynchronní, takže tento skript volá rozhraní API v pravidelných intervalech, dokud není stav školení dokončeno. Doporučujeme interval jednoho sekundy nebo více.
 
 ```python 
 n_tries = 15
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-Po dokončení procesu školení obdržíte `201 (Success)` odpověď s obsahem JSON, jako je následující. Odezva byla zkrácena pro jednoduchost.
+Po dokončení procesu školení obdržíte `201 (Success)` odpověď s obsahem JSON podobným následujícímu. Odpověď byla zkrácena pro zjednodušení.
 
 ```json
 { 
@@ -346,7 +346,7 @@ Zkopírujte `"modelId"` hodnotu pro použití v následujících krocích.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Po dokončení procesu obdržíte odpověď `202 (Success)` s obsahem JSON v následujícím formátu. Odezva byla zkrácena pro jednoduchost. Přidružení hlavního klíče/hodnoty `"documentResults"` jsou v uzlu. Výsledky rozhraní API rozložení (obsah a umístění veškerého textu `"readResults"` v dokumentu) jsou v uzlu.
+Po dokončení procesu obdržíte `202 (Success)` odpověď s obsahem JSON v následujícím formátu. Odpověď byla zkrácena pro zjednodušení. Hlavní přidružení klíč/hodnota jsou v `"documentResults"` uzlu. Výsledky rozhraní API rozložení (obsah a pozice veškerého textu v dokumentu) jsou v `"readResults"` uzlu.
 
 ```json
 { 
@@ -549,18 +549,18 @@ Po dokončení procesu obdržíte odpověď `202 (Success)` s obsahem JSON v ná
 }
 ```
 
-## <a name="improve-results"></a>Zlepšete výsledky
+## <a name="improve-results"></a>Zlepšení výsledků
 
-Zkontrolujte `"confidence"` hodnoty pro každý výsledek `"documentResults"` klíče/hodnoty pod uzlem. Měli byste se také podívat `"readResults"` na skóre spolehlivosti v uzlu, které odpovídají operaci rozložení. Důvěra výsledků rozvržení nemá vliv na důvěru výsledků extrakce klíče/hodnoty, takže byste měli zkontrolovat obojí.
-* Pokud jsou skóre spolehlivosti operace rozložení nízké, zkuste zlepšit kvalitu vstupních dokumentů (viz [Požadavky na vstup](../overview.md#input-requirements)).
-* Pokud jsou skóre spolehlivosti pro operaci extrakce klíč/hodnota nízká, ujistěte se, že analyzované dokumenty jsou stejného typu jako dokumenty použité v trénovací sadě. Pokud dokumenty v trénovací sadě mají varianty vzhledu, zvažte jejich rozdělení do různých složek a školení jeden model pro každou variantu.
+Prověřte `"confidence"` hodnoty pro každý výsledek klíč/hodnota pod `"documentResults"` uzlem. Měli byste se také podívat na skóre spolehlivosti v `"readResults"` uzlu, který odpovídá operaci rozložení. Spolehlivost výsledků rozložení neovlivňuje spolehlivost výsledků extrakce klíč/hodnota, proto byste měli zaškrtnout obě.
+* Pokud jsou skóre spolehlivosti pro operaci rozložení nízká, zkuste zlepšit kvalitu vstupních dokumentů (viz [požadavky na vstupy](../overview.md#input-requirements)).
+* Pokud jsou skóre spolehlivosti pro operaci extrakce klíč/hodnota nízká, zajistěte, aby analyzované dokumenty byly stejného typu jako dokumenty používané v sadě školení. Pokud se v dokumentech v sadě školení nacházejí změny, zvažte jejich rozdělení do různých složek a školení jednoho modelu pro každou variaci.
 
-### <a name="avoid-cluttered-labels"></a>Vyhněte se přeplněným štítkům
+### <a name="avoid-cluttered-labels"></a>Vyhnout se zbytečným popiskům
 
-Někdy, když použijete různé popisky v rámci stejného řádku textu, může služba tyto popisky sloučit do jednoho pole. Například v adrese můžete označit město, stát a PSČ jako různá pole, ale během předpovědi tato pole nejsou rozpoznána samostatně.
+Když někdy použijete jiné popisky v rámci stejného řádku textu, služba může tyto popisky sloučit do jednoho pole. Například v adrese můžete označit město, stát a PSČ jako různá pole, ale během předpovědi tato pole nejsou rozpoznána samostatně.
 
-Chápeme, že tento scénář je pro naše zákazníky nezbytný, a v budoucnu pracujeme na jeho zlepšení. V současné době doporučujeme našim uživatelům označit více přeplněných polí jako jedno pole a potom oddělit termíny v post-zpracování výsledků extrakce.
+Chápeme, že tento scénář je pro naše zákazníky nezbytný a pracujeme na jeho vylepšení v budoucnu. V současné době doporučujeme našim uživatelům označit více nezpracovaných polí jako jedno pole a pak tyto výrazy oddělit při následném zpracování výsledků extrakce.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili používat rozhraní REST API nástroje pro rozpoznávání formulářů s Pythonem k trénování modelu s ručně označenými daty. Dále naleznete [v referenční dokumentaci rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) prozkoumat rozhraní API rozpoznávání formulářů podrobněji.
+V tomto rychlém startu jste zjistili, jak pomocí nástroje pro rozpoznávání formulářů REST API s Pythonem naučit model s ručně označenými daty. Dále si přečtěte [referenční dokumentaci rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm) a prozkoumejte rozhraní API pro rozpoznávání formulářů podrobněji.

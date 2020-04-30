@@ -1,7 +1,7 @@
 ---
-title: Jazyková podpora - Immersive Reader
+title: Podpora jazyků – moderní čtečka
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si další informace o lidských jazycích, které jsou k dispozici v aplikaci Immersive Reader.
+description: Přečtěte si další informace o lidských jazycích, které jsou k dispozici v moderní čtečce.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -11,527 +11,527 @@ ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
 ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538744"
 ---
-# <a name="language-support-for-immersive-reader"></a>Jazyková podpora pro immersive Reader
+# <a name="language-support-for-immersive-reader"></a>Podpora jazyků pro moderní čtečku
 
-V tomto článku jsou uvedeny podporované lidské jazyky pro funkce immersive Reader.
+V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního čtečky.
 
 
 ## <a name="text-to-speech"></a>Text na řeč
 
 | Jazyk | Značka |
 |----------|-----|
-| Arabština (egyptská) | ar-EG |
+| Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
-| Bulharština | Bg |
+| Bulharština | BG |
 | bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Chinese | Zh |
+| Chinese | ZH |
 | Čínština (Čína) | zh-CN |
-| Čínština (Hongkong) | zh-HK |
-| Čínština (Macao) | zh-MO |
-| Čínština (Singapur) | zh-SG |
+| Čínština (Hongkong) | zh – HK |
+| Čínština (Macao) | ZH-MO |
+| Čínština (Singapur) | ZH – SG |
 | Čínština (Tchaj-wan) | zh-TW |
-| Čínština (zjednodušená) | zh-Hans |
+| Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
-| Čínština (tradiční) | zh-Hant-Cn |
+| Čínština (tradiční) | zh-Hant-CN |
 | Tradiční čínština (Hongkong) | zh-Hant-HK |
 | Tradiční čínština (Macao) | zh-Hant-MO |
-| Tradiční čínština (Tchaj-wan) | zh-Hant-TW |
+| Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
 | Chorvatština | hr |
 | chorvatština (Chorvatsko) | hr-HR |
-| Čeština | Cs |
+| Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Finština | ﬁ |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
 | řečtina (Řecko) | el-GR |
-| Hebrejština | on |
+| Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
 | Hindština | Ahoj |
 | hindština (Indie) | hi-IN |
-| Maďarština | Hu |
+| Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Indonéština | id |
 | indonéština (Indonésie) | id-ID |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Japonština | ja |
+| Japonština | dža |
 | japonština (Japonsko) | ja-JP |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
-| Malajština | Paní |
+| Malajština | Arial |
 | malajština (Malajsie) | ms-MY |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
 | portugalština (Portugalsko) | pt-PT |  
-| Rumunština | Ro |
+| Rumunština | loď |
 | rumunština (Rumunsko) | ro-RO |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
-| Slovenština | Sk |
+| Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
-| Slovinština | Sl |
-| slovinština (Slovinsko) | sl-SL |
+| Slovinština | SSL |
+| slovinština (Slovinsko) | SL-SL |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
-| Tamilština | ta |
-| Tamil (Indie) | ta-IN |
-| Telugština | Te |
-| Telugu (Indie) | te-IN |
-| Thajština | Th |
+| Tamilština | Ta |
+| Tamilština (Indie) | Ta – IN |
+| Telugština | te |
+| Telugština (Indie) | te-IN |
+| Thajština | Kolik |
 | thajština (Thajsko) | th-TH |
-| Turečtina | Tr |
+| Turečtina | recenzent |
 | turečtina (Turecko) | tr-TR |
-| Vietnamština | Vi |
+| Vietnamština | InterDev |
 | Vietnamština (Vietnam) | vi-VN |
 
 ## <a name="translation"></a>Překlad
 
 | Jazyk | Značka |
 |----------|-----|
-| Afrikánština | Af |
-| Arabština (egyptská) | ar-EG |
+| Afrikánština | AF |
+| Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
-| Bangla | Bn |
-| Bosenština | Bs |
-| Bulharština | Bg |
+| Bengálština | bn |
+| Bosenština | BS |
+| Bulharština | BG |
 | bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Chinese | Zh |
+| Chinese | ZH |
 | Čínština (Čína) | zh-CN |
-| Čínština (Hongkong) | zh-HK |
-| Čínština (Macao) | zh-MO |
-| Čínština (Singapur) | zh-SG |
+| Čínština (Hongkong) | zh – HK |
+| Čínština (Macao) | ZH-MO |
+| Čínština (Singapur) | ZH – SG |
 | Čínština (Tchaj-wan) | zh-TW |
-| Čínština (zjednodušená) | zh-Hans |
+| Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
-| Čínština (tradiční) | zh-Hant-Cn |
+| Čínština (tradiční) | zh-Hant-CN |
 | Tradiční čínština (Hongkong) | zh-Hant-HK |
 | Tradiční čínština (Macao) | zh-Hant-MO |
-| Tradiční čínština (Tchaj-wan) | zh-Hant-TW |
+| Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
 | Chorvatština | hr |
 | chorvatština (Chorvatsko) | hr-HR |
-| Čeština | Cs |
+| Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Estonština | Et |
-| Fidžijská | Fj |
-| Filipino | Fil |
-| Finština | ﬁ |
+| Estonština | et |
+| Fijian | FJ |
+| Filipino | náhl |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
 | řečtina (Řecko) | el-GR |
-| Haitský (Kreolský) | Ht |
-| Hebrejština | on |
+| Haitská (kreolština) | HT |
+| Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
 | Hindština | Ahoj |
 | hindština (Indie) | hi-IN |
-| Hmong Daw | mww |
-| Maďarština | Hu |
+| Hmong Macek | mww |
+| Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
 | indonéština (Indonésie) | id-ID |
-| Irština | Ga |
-| Italština | je to |
+| Irština | GA |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Japonština | ja |
+| Japonština | dža |
 | japonština (Japonsko) | ja-JP |
-| Kannadština | kn |
-| Kiswahili | Sw |
+| Kannadština | KN |
+| Svahilština | software |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
-| Lotyština | Lv |
+| Lotyština | Lotyšsko |
 | Litevština | lt |
-| Malagasy | Mg |
-| Malajština | Paní |
+| Malgašština | mg/Nm3 |
+| Malajština | Arial |
 | malajština (Malajsie) | ms-MY |
 | Malajalámština | ml |
-| Maltština | Mt |
+| Maltština | stroj |
 | Maorština | mi |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Perština | Dm |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Perština | položek |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
 | portugalština (Portugalsko) | pt-PT |  
-| Paňdžábština | Pa |
+| Paňdžábština | PA |
 | Querétaro Otomi | otq |
-| Rumunština | Ro |
+| Rumunština | loď |
 | rumunština (Rumunsko) | ro-RO |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
 | Samoan | sm |
-| Srbština | Sr |
+| Srbština | uvedeno |
 | Srbština (cyrilice) | sr-Cyrl |
-| Srbština (latinka) | sr-Latn |
-| Slovenština | Sk |
+| Srbština (latinka) | SR-Latn |
+| Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
-| Slovinština | Sl |
-| slovinština (Slovinsko) | sl-SL |
+| Slovinština | SSL |
+| slovinština (Slovinsko) | SL-SL |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
-| Tahitian | ty |
-| Tamilština | ta |
-| Tamil (Indie) | ta-IN |
-| Telugština | Te |
-| Telugu (Indie) | te-IN |
-| Thajština | Th |
+| Tahitian | Ty |
+| Tamilština | Ta |
+| Tamilština (Indie) | Ta – IN |
+| Telugština | te |
+| Telugština (Indie) | te-IN |
+| Thajština | Kolik |
 | thajština (Thajsko) | th-TH |
-| Tongan | na |
-| Turečtina | Tr |
+| Tongánština | na |
+| Turečtina | recenzent |
 | turečtina (Turecko) | tr-TR |
-| Ukrajinština | Uk |
-| Urdština | vaše |
-| Vietnamština | Vi |
+| Ukrajinština | Velká Británie |
+| Urdština | poèítaè |
+| Vietnamština | InterDev |
 | Vietnamština (Vietnam) | vi-VN |
-| Velština | Cy |
+| Velština | kr |
 | Yucatec Maya | yua |
-| Yue čínština | Yue |
+| Yue čínština | yue |
 
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
 | Jazyk | Značka |
 |----------|-----|
-| Arabština (egyptská) | ar-EG |
+| Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
-| Baskičtina | Eu |
-| Bulharština | Bg |
+| Baskičtina | Balijšitna |
+| Bulharština | BG |
 | bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Čínština (zjednodušená) | zh-Hans |
+| Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
-| Čínština (tradiční) | zh-Hant-Cn |
+| Čínština (tradiční) | zh-Hant-CN |
 | Tradiční čínština (Hongkong) | zh-Hant-HK |
 | Tradiční čínština (Macao) | zh-Hant-MO |
-| Tradiční čínština (Tchaj-wan) | zh-Hant-TW |
+| Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
 | Chorvatština | hr |
 | chorvatština (Chorvatsko) | hr-HR |
-| Čeština | Cs |
+| Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Estonština | Et |
-| Finština | ﬁ |
+| Estonština | et |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Galicijština | Gl |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Galicijština | GL |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
 | řečtina (Řecko) | el-GR |
-| Hebrejština | on |
+| Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
 | Hindština | Ahoj |
 | hindština (Indie) | hi-IN |
-| Maďarština | Hu |
+| Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
 | indonéština (Indonésie) | id-ID |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Japonština | ja |
+| Japonština | dža |
 | japonština (Japonsko) | ja-JP |
-| Kazaština | Kk |
+| Kazaština | kk |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
-| Lotyština | Lv |
+| Lotyština | Lotyšsko |
 | Litevština | lt |
-| Malajština | Paní |
+| Malajština | Arial |
 | malajština (Malajsie) | ms-MY |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Norský Nynorsk | nn |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Norština Nynorsk | nn |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
 | portugalština (Portugalsko) | pt-PT |  
-| Rumunština | Ro |
+| Rumunština | loď |
 | rumunština (Rumunsko) | ro-RO |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
 | Srbština (cyrilice) | sr-Cyrl |
-| Srbština (latinka) | sr-Latn |
-| Slovenština | Sk |
+| Srbština (latinka) | SR-Latn |
+| Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
-| Slovinština | Sl |
-| slovinština (Slovinsko) | sl-SL |
+| Slovinština | SSL |
+| slovinština (Slovinsko) | SL-SL |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
-| Tamilština | ta |
-| Tamil (Indie) | ta-IN |
-| Telugština | Te |
-| Telugu (Indie) | te-IN |
-| Thajština | Th |
+| Tamilština | Ta |
+| Tamilština (Indie) | Ta – IN |
+| Telugština | te |
+| Telugština (Indie) | te-IN |
+| Thajština | Kolik |
 | thajština (Thajsko) | th-TH |
-| Turečtina | Tr |
+| Turečtina | recenzent |
 | turečtina (Turecko) | tr-TR |
-| Ukrajinština | Uk |
-| Vietnamština | Vi |
+| Ukrajinština | Velká Británie |
+| Vietnamština | InterDev |
 | Vietnamština (Vietnam) | vi-VN |
-| Velština | Cy |
+| Velština | kr |
 
-## <a name="syllabification"></a>Syllabifikace
+## <a name="syllabification"></a>Syllabification
 
 | Jazyk | Značka |
 |----------|-----|
-| Baskičtina | Eu |
-| Bulharština | Bg |
+| Baskičtina | Balijšitna |
+| Bulharština | BG |
 | bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
 | Chorvatština | hr |
 | chorvatština (Chorvatsko) | hr-HR |
-| Čeština | Cs |
+| Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Estonština | Et |
-| Finština | ﬁ |
+| Estonština | et |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Galicijština | Gl |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Galicijština | GL |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
 | řečtina (Řecko) | el-GR |
-| Maďarština | Hu |
+| Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Kazaština | Kk |
-| Lotyština | Lv |
+| Kazaština | kk |
+| Lotyština | Lotyšsko |
 | Litevština | lt |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Norský Nynorsk | nn |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Norština Nynorsk | nn |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
 | portugalština (Portugalsko) | pt-PT |  
-| Rumunština | Ro |
+| Rumunština | loď |
 | rumunština (Rumunsko) | ro-RO |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
-| Srbština | Sr |
+| Srbština | uvedeno |
 | Srbština (cyrilice) | sr-Cyrl |
-| Srbština (latinka) | sr-Latn |
-| Slovenština | Sk |
+| Srbština (latinka) | SR-Latn |
+| Slovenština | SM |
 | slovenština (Slovensko) | sk-SK |
-| Slovinština | Sl |
-| slovinština (Slovinsko) | sl-SL |
+| Slovinština | SSL |
+| slovinština (Slovinsko) | SL-SL |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
-| Turečtina | Tr |
+| Turečtina | recenzent |
 | turečtina (Turecko) | tr-TR |
-| Ukrajinština | Uk |
-| Velština | Cy |
+| Ukrajinština | Velká Británie |
+| Velština | kr |
 
 ## <a name="picture-dictionary"></a>Slovník obrázků
 
 | Jazyk | Značka |
 |----------|-----|
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Finština | ﬁ |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Japonština | ja |
+| Japonština | dža |
 | japonština (Japonsko) | ja-JP |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
 
 ## <a name="parts-of-speech"></a>Části řeči
 
 | Jazyk | Značka |
 |----------|-----|
-| Arabština (egyptská) | ar-EG |
+| Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
-| Dánština | Da |
+| Dánština | & |
 | dánština (Dánsko) | da-DK |
-| Nizozemština | Nl |
+| Nizozemština | belgick |
 | nizozemština (Nizozemsko) | nl-NL |
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Finština | ﬁ |
+| Finština | WiFi |
 | finština (Finsko) | fi-FI |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
-| Japonština | ja |
+| Japonština | dža |
 | japonština (Japonsko) | ja-JP |
 | Korejština | Ko |
 | korejština (Jižní Korea) | ko-KR |
-| Norský Bokmal| Nb |
-| Norština Bokmal (Norsko) | nb-NO |
-| Norský Nynorsk | nn |
-| Polština | Pl |
+| Norština – Bokmal| NB |
+| Norština, Bokmål (Norsko) | nb-NO |
+| Norština Nynorsk | nn |
+| Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
 | Portugalština (Brazílie) | pt-BR |
-| Ruština | Ru |
+| Ruština | ru |
 | ruština (Rusko) | ru-RU |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |
-| Švédština | sv |
+| Švédština | činí |
 | švédština (Švédsko) | sv-SE |
 
 ## <a name="dictionary"></a>Slovník
@@ -539,25 +539,25 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce immersive R
 | Jazyk | Značka |
 |----------|-----|
 | Angličtina | en |
-| Angličtina (Austrálie) | en-AU |
+| Angličtina (Austrálie) | EN-AU |
 | Angličtina (Kanada) | en-CA |
-| Angličtina (Hongkong – zvláštní správní oblast) | en-HK |
+| Angličtina (Hongkong – zvláštní administrativní oblast) | EN-HK |
 | Angličtina (Indie) | en-IN |
-| Angličtina (Irsko) | en-IE |
-| Angličtina (Nový Zéland) | en-NZ |
-| Angličtina (Spojené království) | en-CZ |
+| Angličtina (Irsko) | EN-IE |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené království) | en-GB |
 | Angličtina (Spojené státy) | cs-CZ |
-| Francouzština | Fr |
-| Francouzština (Kanada) | fr-CA |
+| Francouzština | FR |
+| Francouzština (Kanada) | fr – CA |
 | francouzština (Francie) | fr-FR |
-| Francouzština (Švýcarsko) | fr-CH |
-| Němčina | De |
+| Francouzština (Švýcarsko) | fr – CH |
+| Němčina | & |
 | Němčina (Rakousko) | de-AT |
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
-| Italština | je to |
+| Italština | její |
 | italština (Itálie) | it-IT |
 | Španělština | Ano |
-| Španělština (Latinská Amerika) | es-419 (es-419) |
-| Španělština (Mexiko) | es-MX |
+| Španělština (Latinská Amerika) | ES-419 |
+| Španělština (Mexiko) | ES – MX |
 | Španělština (Španělsko) | es-ES |

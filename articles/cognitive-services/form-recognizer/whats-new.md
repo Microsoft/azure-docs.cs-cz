@@ -1,7 +1,7 @@
 ---
 title: Co je nového ve službě Rozpoznávání formulářů?
 titleSuffix: Azure Cognitive Services
-description: Seznamte se s nejnovějšími změnami rozhraní API pro rozpoznávání formulářů.
+description: Pochopení nejnovějších změn rozhraní API pro rozpoznávání formulářů
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,100 +10,100 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81531078"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Co je nového ve službě Rozpoznávání formulářů?
 
-Služba rozpoznávání formulářů je průběžně aktualizována. V tomto článku můžete mít přehled o vylepšeních funkcí, opravách a aktualizacích dokumentace.
+Služba rozpoznávání formulářů se aktualizuje průběžně. Tento článek vám umožní udržovat aktuální informace o vylepšeních, opravách a dokumentaci k funkcím.
 
 > [!NOTE]
-> Rychlé starty a vodítka pro rozpoznávání formulářů vždy používají nejnovější verzi rozhraní API, pokud není zadáno.
+> Rychlé starty a příručky pro rozpoznávání formulářů vždy používají nejnovější verzi rozhraní API, pokud nejsou zadány.
 
 ## <a name="march-2020"></a>Březen 2020 
 
 ### <a name="new-features"></a>Nové funkce
 
-* **Typy hodnot pro popisování** Nyní můžete určit typy hodnot, které označujete nástrojem pro označování vzorků nástroje pro rozpoznávání formulářů. V současné době jsou podporovány následující typy a varianty hodnot:
+* **Typy hodnot pro popisky** Nyní můžete určit typy hodnot, na které přiřadíte, pomocí nástroje pro rozpoznávání popisků ve formě. V současné době jsou podporovány následující typy hodnot a variace:
   * `string`
-    * výchozí, `no-whitespaces``alphanumeric`
+    * výchozí, `no-whitespaces`,`alphanumeric`
   * `number`
-    * Výchozí`currency`
+    * výchozí`currency`
   * `date` 
-    * výchozí, `dmy` `mdy`, ,`ymd`
+    * výchozí, `dmy`, `mdy`,`ymd`
   * `time`
   * `integer`
 
-  Informace o použití této funkce naleznete v průvodci [nástrojem vzorové popisky.](./quickstarts/label-tool.md#specify-tag-value-types)
+  Informace o tom, jak používat tuto funkci, najdete v průvodci [ukázkami popisků](./quickstarts/label-tool.md#specify-tag-value-types) .
 
 
-* **Vizualizace tabulky** Nástroj pro vzorové popisky nyní zobrazuje tabulky, které byly rozpoznány v dokumentu. To umožňuje zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu, před popiskem a analýzou. Tuto funkci lze zapnout/vypnout pomocí volby vrstev.
+* **Vizualizace tabulky** Nástroj pro vzorkování popisků teď zobrazuje tabulky, které byly rozpoznané v dokumentu. To vám umožní zobrazit tabulky, které byly rozpoznány a extrahovány z dokumentu před popisky a analýzou. Tuto funkci můžete zapnout nebo vypnout pomocí možnosti vrstvy.
 
-  Toto je příklad rozpoznaných a extrahovaných tabulek:
+  Toto je příklad, jak jsou tabulky rozpoznány a extrahovány:
 
   > [!div class="mx-imgBorder"]
-  > ![Vizualizace tabulky pomocí nástroje pro popisek vzorku](./media/whats-new/formre-table-viz.png)
+  > ![Vizualizace tabulky pomocí nástroje Sample labeling](./media/whats-new/formre-table-viz.png)
 
-    Extrahované tabulky jsou k dispozici ve `"pageResults"`výstupu JSON pod .
+    Extrahované tabulky jsou k dispozici ve výstupu JSON `"pageResults"`pod.
 
   > [!IMPORTANT]
-  > Tabulky popisků nejsou podporovány. Pokud tabulky nejsou rozpoznány a extrahovány automaticky, můžete je označit pouze jako páry klíč/hodnota. Při popisování tabulek jako párů klíč/hodnota označte každou buňku jako jedinečnou hodnotu.
+  > Tabulky popisků se nepodporují. Pokud se tabulky nerozpoznají a extrated automaticky, můžete je označit jenom jako páry klíč/hodnota. Při označování tabulek jako párů klíč/hodnota označte každou buňku jako jedinečnou hodnotu.
 
 ### <a name="extraction-enhancements"></a>Vylepšení extrakce
 
-Tato verze obsahuje vylepšení extrakce a vylepšení přesnosti, konkrétně schopnost označovat a extrahovat více párů klíč/hodnota ve stejném řádku textu. 
+Tato verze zahrnuje vylepšení a vylepšení přesnosti extrakce, konkrétně možnost označovat a extrahovat více párů klíč/hodnota na stejném řádku textu. 
  
-### <a name="sample-labeling-tool-is-now-open-source"></a>Ukázkový nástroj pro popisování je nyní open source
+### <a name="sample-labeling-tool-is-now-open-source"></a>Ukázka labeling Tool je teď Open-Source.
 
-Nástroj pro vzorové popisky nástroje Pro rozpoznávání formulářů je nyní k dispozici jako projekt s otevřeným zdrojovým kódem. Můžete jej integrovat do svých řešení a provést změny specifické pro zákazníka, aby vyhovoval vašim potřebám.
+Nástroj pro vyznačení ukázky pro rozpoznávání formulářů je teď dostupný jako open source projekt. Můžete ji integrovat v rámci svých řešení a provádět změny specifické pro konkrétní zákazníky, které odpovídají vašim potřebám.
 
-Další informace o nástroji pro ukázkové popisky nástroje Rozpoznávání formulářů naleznete v dokumentaci dostupné na [GitHubu](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
+Další informace o nástroji pro označování ukázek na základě rozpoznávání formulářů najdete v dokumentaci k dispozici na [GitHubu](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ### <a name="tls-12-enforcement"></a>Vynucení protokolu TLS 1.2
 
-TLS 1.2 je nyní vynucena pro všechny požadavky HTTP pro tuto službu. Další informace najdete v [tématu Azure Cognitive Services security](../cognitive-services-security.md).
+Pro všechny požadavky HTTP na tuto službu se teď vynutilo TLS 1,2. Další informace najdete v tématu [zabezpečení Azure Cognitive Services](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>Leden 2020
 
-Tato verze představuje nástroj pro rozpoznávání formulářů 2.0 (náhled). V následujících částech najdete další informace o nových funkcích, vylepšeních a změnách. 
+Tato verze zavádí nástroj pro rozpoznávání formulářů 2,0 (Preview). V následujících částech najdete další informace o nových funkcích, vylepšeních a změnách. 
 
 ### <a name="new-features"></a>Nové funkce
 
 * **Vlastní model**
-  * **Vlak s etiketami** Nyní můžete trénovat vlastní model s ručně označenými daty. Výsledkem jsou výkonnější modely a mohou vytvářet modely, které pracují se složitými formuláři nebo formuláři obsahujícími hodnoty bez klíčů.
-  * **Asynchronní rozhraní API** Asynchronní volání rozhraní API můžete použít k trénování a analýze velkých datových sad a souborů.
-  * **Podpora souborů TIFF** Nyní můžete trénovat a extrahovat data z dokumentů TIFF.
+  * **Výuka s popisky** Nyní můžete vytvořit vlastní model s ručně označenými daty. Výsledkem je lepší provádění modelů a může způsobit vytváření modelů, které pracují se složitými formuláři nebo formuláři obsahujícími hodnoty bez klíčů.
+  * **Asynchronní rozhraní API** Asynchronní volání rozhraní API můžete použít ke školení a analýze velkých datových sad a souborů.
+  * **Podpora souborů TIFF** Nyní můžete data z dokumentů TIFF vyškolit a extrahovat.
   * **Vylepšení přesnosti extrakce**
 
 * **Předem sestavený model příjmu**
-  * **Částky spropitného** Nyní můžete extrahovat množství tipu a další ručně psané hodnoty.
-  * **Extrakce řádkové položky** Hodnoty řádkových položek můžete extrahovat z příjmů.
-  * **Hodnoty spolehlivosti** Můžete zobrazit spolehlivost modelu pro každou extrahoťovnou hodnotu.
+  * **Částky hrotu** Nyní můžete extrahovat množství tipů a další ručně psané hodnoty.
+  * **Extrakce položky řádku** Můžete extrahovat hodnoty položek řádků z příjmů.
+  * **Hodnoty spolehlivosti** U každé extrahované hodnoty můžete zobrazit důvěru modelu.
   * **Vylepšení přesnosti extrakce**
 
-* **Extrakce rozvržení** Nyní můžete použít rozhraní API rozložení k extrahování textových dat a dat tabulky z formulářů.
+* **Extrakce rozložení** Rozhraní API pro rozložení teď můžete použít k extrakci textových dat a tabulkových dat z vašich formulářů.
 
 ### <a name="custom-model-api-changes"></a>Změny rozhraní API vlastního modelu
 
-Všechna uživatelská prostředí API pro školení a používání vlastních modelů byla přejmenována a některé synchronní metody jsou nyní asynchronní. Hlavní změny jsou následující:
+Všechna rozhraní API pro školení a používání vlastních modelů byla přejmenována a některé synchronní metody jsou nyní asynchronní. Níže jsou uvedené zásadní změny:
 
-* Proces trénování modelu je nyní asynchronní. Můžete zahájit školení prostřednictvím volání rozhraní API **/custom/models.** Toto volání vrátí ID operace, které můžete předat do **custom/models/{modelID}** vrátit výsledky školení.
-* Extrakce klíče/hodnoty je nyní iniciována voláním rozhraní API **/custom/models/{modelID}/analyze.** Toto volání vrátí ID operace, které můžete předat do **vlastní/modely/{modelID}/analyzeResults/{resultID}** vrátit výsledky extrakce.
-* ID operace pro operaci Train se nyní nacházejí v hlavičce **Umístění** odpovědí HTTP, nikoli v hlavičce **Umístění operace.**
+* Proces školení modelu je nyní asynchronní. Zahájíte školení prostřednictvím volání rozhraní **/Custom/Models** API. Toto volání vrátí ID operace, kterou můžete předat **vlastním/modelům/{modelID}** a vrátit výsledky školení.
+* Extrakce klíč/hodnota je nyní iniciována voláním rozhraní API **/Custom/Models/{modelID}/Analyze** . Toto volání vrátí ID operace, kterou můžete předat **vlastním/modelům/{modelID}/analyzeResults/{hodnotu resultid}** a vrátit výsledky extrakce.
+* ID operací pro operaci vlaku se nyní nacházejí v hlavičce **umístění** odpovědí HTTP, nikoli v hlavičce **umístění operace** .
 
-### <a name="receipt-api-changes"></a>Změny rozhraní API příjmu
+### <a name="receipt-api-changes"></a>Změny rozhraní API pro příjem
 
-Api pro čtení prodejních příjmů byly přejmenovány.
+Rozhraní API pro čtení prodejních příjmů bylo přejmenováno.
 
-* Extrakce dat příjmu je nyní iniciována voláním rozhraní API **/prebuilt/receipt/analyze.** Toto volání vrátí ID operace, které můžete předat do **/prebuilt/receipt/analyzeResults/{resultID}** vrátit výsledky extrakce.
+* Extrakce dat pro příjem se teď iniciuje voláním rozhraní API **/prebuilt/Receipt/Analyze** . Toto volání vrátí ID operace, kterou můžete předat do **/prebuilt/Receipt/analyzeResults/{resultID}** a vrátit výsledky extrakce.
 
-### <a name="output-format-changes"></a>Změny výstupního formátu
+### <a name="output-format-changes"></a>Změny formátu výstupu
 
-Odpovědi JSON pro všechny volání rozhraní API mají nové formáty. Některé klíče a hodnoty byly přidány, odebrány nebo přejmenovány. Podívejte se na rychlé starty pro příklady aktuálních formátů JSON.
+Odpovědi JSON pro všechna volání rozhraní API mají nové formáty. Některé klíče a hodnoty byly přidány, odebrány nebo přejmenovány. Příklady aktuálních formátů JSON najdete v rychlých startech.
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít pracovat s [api nástroje PRO Rozpoznávání formulářů ,](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)proveďte rychlý [start.](quickstarts/curl-train-extract.md)
+Dokončete [rychlý Start](quickstarts/curl-train-extract.md) , abyste mohli začít s [rozhraními API pro rozpoznávání formulářů](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm).

@@ -7,17 +7,17 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 7704f080b7c1878f2fa2b079a1f242c8c2cc87a9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536977"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
-Účet Azure Automation můžete vytvořit prostřednictvím Azure pomocí portálu Azure, uživatelského rozhraní založeného na prohlížeči, které umožňuje přístup k řadě prostředků. Jeden účet automatizace můžete spravovat prostředky ve všech oblastech a předplatná pro daného klienta. 
+Účet Azure Automation můžete vytvořit prostřednictvím Azure pomocí Azure Portal, což je uživatelské rozhraní založené na prohlížeči, které umožňuje přístup k několika prostředkům. Jeden účet Automation může spravovat prostředky ve všech oblastech a předplatných pro daného tenanta. 
 
-Tento rychlý start vás provede vytvořením účtu Automation a spuštěním runbooku v účtu. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Tento rychlý Start vás provede vytvořením účtu Automation a spuštěním Runbooku v účtu. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -25,25 +25,25 @@ Tento rychlý start vás provede vytvořením účtu Automation a spuštěním r
 
 ## <a name="create-automation-account"></a>Vytvoření účtu Automation
 
-1. Zvolte název svého účtu Azure. Názvy účtů automatizace jsou jedinečné pro oblast a skupinu prostředků. Názvy účtů automatizace, které byly odstraněny, nemusí být okamžitě k dispozici.
+1. Vyberte název svého účtu Azure. Názvy účtů Automation jsou jedinečné pro jednotlivé oblasti a skupiny prostředků. Názvy účtů Automation, které byly odstraněny, nemusí být okamžitě k dispozici.
 
     > [!NOTE]
-    > Po zadání do uživatelského rozhraní nelze název účtu změnit. 
+    > Po zadání v uživatelském rozhraní už název účtu nemůžete změnit. 
 
-2. Klikněte na tlačítko **Vytvořit prostředek,** které se nachází v levém horním rohu portálu Azure.
+2. Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu Azure Portal.
 
-3. Vyberte **nástroje pro správu it &** a pak vyberte **automatizace**.
+3. Vyberte **& nástroje pro správu**a pak vyberte **Automation**.
 
-4. Zadejte informace o účtu včetně vybraného názvu účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Po dokončení informací klikněte na **vytvořit** a spusťte nasazení účtu automatizace.
+4. Zadejte informace o účtu, včetně vybraného názvu účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Po dokončení informací kliknutím na **vytvořit** spusťte nasazení účtu Automation.
 
     ![Zadání informací o účtu Automation na stránce](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > Aktualizovaný seznam umístění, do kterých můžete nasadit účet automatizace, naleznete v [tématu Produkty dostupné podle oblasti](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
+    > Aktualizovaný seznam umístění, do kterých můžete nasadit účet Automation, najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all).
 
-5. Po dokončení nasazení klepněte na položku **Všechny služby**.
+5. Po dokončení nasazení klikněte na **všechny služby**.
 
-6. Vyberte **Účty automatizace** a pak zvolte účet automatizace, který jste vytvořili.
+6. Vyberte **účty Automation** a potom vyberte účet Automation, který jste vytvořili.
 
     ![Přehled účtu Automation](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -51,7 +51,7 @@ Tento rychlý start vás provede vytvořením účtu Automation a spuštěním r
 
 Spusťte některý z runbooků pro tento kurz.
 
-1. V části **Automatizace procesů**klepněte na **položku Runbook** . Zobrazí se seznam runbooků. Ve výchozím nastavení je v účtu povoleno několik knih runbooků.
+1. V části **Automatizace procesu**klikněte na **Runbooky** . Zobrazí se seznam runbooků. Ve výchozím nastavení jsou v účtu povoleny různé Runbooky kurzů.
 
     ![Seznam runbooků v účtu Automation](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
@@ -63,7 +63,7 @@ Spusťte některý z runbooků pro tento kurz.
 
     ![Stránka úlohy runbooku](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. Po stavu úlohy klikněte `Running`na **Výstup** nebo Všechny protokoly a zobrazte výstup **úlohy** runbooku. V případě tohoto cvičného runbooku je výstupem seznam vašich prostředků Azure.
+1. Jakmile se `Running`stav úlohy zobrazí, klikněte na **výstup** nebo **všechny protokoly** a zobrazte výstup úlohy Runbooku. V případě tohoto cvičného runbooku je výstupem seznam vašich prostředků Azure.
 
 ## <a name="next-steps"></a>Další kroky
 

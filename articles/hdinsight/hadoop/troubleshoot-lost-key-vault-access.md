@@ -1,6 +1,6 @@
 ---
-title: Clustery Azure HDInsight s šifrováním disku ztrácejí přístup k trezoru klíčů
-description: Řešení potíží s kroky a možná řešení problémů při interakci s clustery Azure HDInsight.
+title: Clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
+description: Kroky řešení potíží a možná řešení pro problémy při komunikaci s clustery Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,84 +8,84 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.openlocfilehash: b1d941fbf86d453a56a5157ed988a32173c614fc
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461527"
 ---
-# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scénář: Clustery Azure HDInsight s šifrováním disku ztratí přístup k trezoru klíčů
+# <a name="scenario-azure-hdinsight-clusters-with-disk-encryption-lose-key-vault-access"></a>Scénář: clustery Azure HDInsight se ztrátou šifrování disku Key Vault přístup
 
-Tento článek popisuje kroky řešení potíží a možná řešení problémů při interakci s clustery Azure HDInsight.
+Tento článek popisuje postup řešení potíží a možná řešení potíží při komunikaci s clustery Azure HDInsight.
 
 ## <a name="issue"></a>Problém
 
-Výstraha Resource Health Center (RHC), `The HDInsight cluster is unable to access the key for BYOK encryption at rest`, se zobrazí pro clustery Bring Your Own Key (BYOK), kde uzly clusteru ztratily přístup k trezoru klíčů zákazníkům (KV). Podobné výstrahy lze také vidět na Apache Ambari UI.
+Výstraha `The HDInsight cluster is unable to access the key for BYOK encryption at rest`centra Resource Health (RHC) se zobrazuje pro clustery BRING Your Own Key (BYOK), ve kterých uzly clusteru ztratily přístup ke zákazníkům Key Vault (KV). Podobné výstrahy je také možné zobrazit v uživatelském rozhraní Apache Ambari.
 
 ## <a name="cause"></a>Příčina
 
-Výstraha zajišťuje, že KV je přístupná z uzlů clusteru, čímž zajišťuje síťové připojení, stav KV a zásady přístupu pro uživatele přiřazenou spravovanou identitu. Tato výstraha je pouze upozornění na blížící se vypnutí broker při následném restartování uzlu, cluster nadále fungovat až do restartování uzlů.
+Výstraha zajišťuje, že je KV přístupný z uzlů clusteru, a zajišťuje tak síťové připojení, stav KV a zásady přístupu pro spravovanou identitu přiřazenou uživateli. Tato výstraha je jenom upozornění na blížící se vypnutí zprostředkovatele při následném restartování uzlu. cluster bude dál fungovat, dokud se uzly nerestartují.
 
-Přejděte do režimu Apache Ambari a vyhledejte další informace o výstraze ze **stavu trezoru klíče šifrování disku**. Tato výstraha bude mít podrobnosti o důvodu selhání ověření.
+Přejděte na uživatelské rozhraní Apache Ambari, kde najdete další informace o upozornění ze **stavu šifrování disku Key Vault**. Tato výstraha bude obsahovat podrobnosti o příčině selhání ověřování.
 
 ## <a name="resolution"></a>Řešení
 
-### <a name="kvaad-outage"></a>Výpadek KV/AAD
+### <a name="kvaad-outage"></a>KV/výpadek AAD
 
-Další podrobnosti naleznou na [stránku dostupnosta a redundance služby](../../key-vault/general/disaster-recovery-guidance.md) Azure Key Vault a stránka stavu Azure.https://status.azure.com/
+Další podrobnosti najdete v [Azure Key Vault dostupnosti a redundanci](../../key-vault/general/disaster-recovery-guidance.md) a na stránce stavu Azure.https://status.azure.com/
 
-### <a name="kv-accidental-deletion"></a>KV náhodné odstranění
+### <a name="kv-accidental-deletion"></a>Nepředvídatelné odstranění KV
 
-* Obnovit odstraněný klíč na KV automaticky obnovit. Další informace naleznete v [tématu Recover Deleted Key](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
-* Oslovte tým KV, abyste se zotavili z náhodného odstranění.
+* Obnovte odstraněný klíč v KV na automatické obnovení. Další informace najdete v tématu [Obnovení odstraněné klíče](https://docs.microsoft.com/rest/api/keyvault/recoverdeletedkey).
+* Vyzkoušením týmu KV se můžete zotavit z neúmyslných odstranění.
 
-### <a name="kv-access-policy-changed"></a>Zásady přístupu KV byly změněny.
+### <a name="kv-access-policy-changed"></a>KV – zásady přístupu se změnily
 
-Obnovte zásady přístupu pro uživatele přiřazenou spravovanou identitu, která je přiřazena clusteru HDI pro přístup k KV.
+Obnovte zásady přístupu pro spravovanou identitu přiřazenou uživatelem, která je přiřazená HDI clusteru pro přístup ke KV.
 
-### <a name="key-permitted-operations"></a>Klíčové povolené operace
+### <a name="key-permitted-operations"></a>Klíč – povolené operace
 
-Pro každý klíč v KV můžete zvolit sadu povolených operací. Ujistěte se, že máte povoleny operace zalamování a rozbalení pro klíč BYOK
+Pro každý klíč v KV můžete zvolit sadu povolených operací. Ujistěte se, že máte pro klíč BYOK povolené zabalení a rozbalení operací.
 
-### <a name="expired-key"></a>Klíč s prošlou platností
+### <a name="expired-key"></a>Klíč vypršení platnosti
 
-Pokud uplynula platnost a klíč není otočen, obnovte klíč ze záložního hsm nebo kontaktujte tým KV, abyste vymažou datum vypršení platnosti.
+Pokud uplynula platnost a klíč se neotočí, obnovte klíč ze zálohy HSM nebo kontaktujte tým KV a vymažte datum vypršení platnosti.
 
-### <a name="kv-firewall-blocking-access"></a>KV brána firewall blokuje přístup
+### <a name="kv-firewall-blocking-access"></a>KV brány firewall blokující přístup
 
-Opravte nastavení brány firewall KV, aby se uzly clusteru BYOK mohly dostat k KV.
+Opravte nastavení brány firewall KV, aby uzly clusteru BYOK měly přístup k KV.
 
-### <a name="nsg-rules-on-virtual-network-blocking-access"></a>Pravidla nsg pro blokování přístupu virtuální sítě
+### <a name="nsg-rules-on-virtual-network-blocking-access"></a>Pravidla NSG pro blokování přístupu k virtuální síti
 
-Zkontrolujte pravidla skupiny zabezpečení sítě přidružená k virtuální síti připojené ke clusteru.
+Ověřte pravidla NSG přidružená k virtuální síti připojené ke clusteru.
 
-## <a name="mitigation-and-prevention-steps"></a>Kroky ke zmírnění a prevenci
+## <a name="mitigation-and-prevention-steps"></a>Postup zmírnění a prevence
 
-### <a name="kv-accidental-deletion"></a>KV náhodné odstranění
+### <a name="kv-accidental-deletion"></a>Nepředvídatelné odstranění KV
 
-* Konfigurace trezoru klíčů pomocí [sady Zámku prostředků](../../azure-resource-manager/management/lock-resources.md).
-* Zálohovat klíče k modulu hardwarového zabezpečení.
+* Nakonfigurujte Key Vault se [sadou zámků prostředků](../../azure-resource-manager/management/lock-resources.md).
+* Zálohujte klíče do svého modulu hardwarového zabezpečení.
 
 ### <a name="key-deletion"></a>Odstranění klíče
 
-Cluster by měl být odstraněn před odstraněním klíče.
+Cluster by měl být před odstraněním klíče odstraněn.
 
-### <a name="kv-access-policy-changed"></a>Zásady přístupu KV byly změněny.
+### <a name="kv-access-policy-changed"></a>KV – zásady přístupu se změnily
 
-Pravidelně auditujte a otestujte zásady přístupu.
+Pravidelné audit a zásady přístupu k testování.
 
-### <a name="expired-key"></a>Klíč s prošlou platností
+### <a name="expired-key"></a>Klíč vypršení platnosti
 
-* Zálohujte klíče k vašemu hsm.
-* Použijte klíč bez nastavení vypršení platnosti.
-* Pokud je třeba nastavit vypršení platnosti, otočte klíče před datem vypršení platnosti.
+* Zálohujte klíče do modulu HARDWAROVÉho zabezpečení.
+* Použijte klíč bez nastavené platnosti.
+* Pokud je potřeba nastavit vypršení platnosti, otočte klíče před datem vypršení platnosti.
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste problém nezjistili nebo se vám nedaří problém vyřešit, navštivte jeden z následujících kanálů, kde najdete další podporu:
+Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, přejděte k jednomu z následujících kanálů, kde najdete další podporu:
 
-* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory Azure Community Support](https://azure.microsoft.com/support/community/).
+* Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Spojte [@AzureSupport](https://twitter.com/azuresupport) se s oficiálním účtem Microsoft Azure pro zlepšení zákaznického prostředí. Propojení komunity Azure se správnými prostředky: odpovědi, podpora a odborníci.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
-* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [webu Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Na řádku nabídek vyberte **Podpora** nebo otevřete centrum **Nápověda + podpora.** Podrobnější informace najděte v části [Jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatného a fakturační podpoře je součástí vašeho předplatného Microsoft Azure a technická podpora se poskytuje prostřednictvím jednoho z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).
+* Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

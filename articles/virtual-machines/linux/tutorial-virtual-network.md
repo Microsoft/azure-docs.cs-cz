@@ -1,5 +1,5 @@
 ---
-title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem
+title: Kurz – vytváření a správa virtuálních sítí Azure pro virtuální počítače se systémem Linux
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvářet a spravovat virtuální sítě Azure pro virtuální počítače s Linuxem.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460439"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Kurz: Vytváření a správa virtuálních sítí Azure pro virtuální počítače s Linuxem pomocí Azure CLI
@@ -32,7 +32,7 @@ Virtuální počítače Azure používají pro interní i externí síťovou kom
 > * Zabezpečení provozu sítě
 > * Vytvoření back-endového virtuálního počítače
 
-Tento kurz používá vynesené mezizaviny příkazového příkazové číslo v rámci [prostředí Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), které se neustále aktualizuje na nejnovější verzi. Chcete-li otevřít prostředí Cloud Shell, vyberte **Vyzkoušet** v horní části libovolného bloku kódu.
+V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -303,4 +303,4 @@ V tomto kurzu jste v souvislosti s virtuálními počítači vytvořili a zabezp
 Přejděte na další kurs, abyste se dozvěděli o zabezpečení dat na virtuálních počítačích pomocí služby Azure Backup. 
 
 > [!div class="nextstepaction"]
-> [Zálohování virtuálních počítačů s Linuxem v Azure](./tutorial-backup-vms.md)
+> [Zálohování virtuálních počítačů se systémem Linux v Azure](./tutorial-backup-vms.md)
