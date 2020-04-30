@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Vytvoření brány NAT – šablona Správce prostředků'
+title: 'Rychlý Start: Vytvoření brány NAT – šablona Správce prostředků'
 titleSuffix: Azure Virtual Network NAT
-description: Tento rychlý start ukazuje, jak vytvořit bránu NAT pomocí šablony Azure Resource Manager.
+description: V tomto rychlém startu se dozvíte, jak vytvořit bránu NAT pomocí šablony Azure Resource Manager.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,59 +16,59 @@ ms.date: 03/09/2020
 ms.author: allensu
 ms.custom: subject-armqs
 ms.openlocfilehash: 3850f3f22e730e46f6d278b6cef0e17d357b126d
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81618046"
 ---
-# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Úvodní příručka: Vytvoření brány NAT – šablona Správce prostředků
+# <a name="quickstart-create-a-nat-gateway---resource-manager-template"></a>Rychlý Start: Vytvoření brány NAT – šablona Správce prostředků
 
-Můžete začít s virtuální síť NAT pomocí šablony Správce prostředků Azure.  Tato šablona nasazuje virtuální síť, prostředek brány NAT a virtuální počítač Ubuntu. Virtuální počítač Ubuntu se nasadí do podsítě, která je přidružena k prostředku brány NAT.
+Začněte používat službu Virtual Network NAT pomocí Azure Resource Manager šablony.  Tato šablona nasadí virtuální síť, prostředek brány NAT a virtuální počítač s Ubuntu. Virtuální počítač Ubuntu je nasazený do podsítě, která je přidružená k prostředku brány NAT.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="create-a-nat-gateway-and-supporting-resources"></a>Vytvoření brány NAT a podpůrných prostředků
 
-Tato šablona je nakonfigurována tak, aby 
+Tato šablona je nakonfigurovaná tak, aby vytvořila 
 
 * Virtuální síť 
 * Prostředek brány NAT
-* Ubuntu virtuální stroj
+* Virtuální počítač Ubuntu
 
-Virtuální počítač Ubuntu se nasadí do podsítě, která je přidružená k prostředku brány NAT.
+Virtuální počítač Ubuntu je nasazený do podsítě, která je přidružená k prostředku brány NAT.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure QuickStart](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json)
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-nat-gateway-1-vm/azuredeploy.json) .
 
 :::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="1-335" highlight="256-282":::
 
-V šabloně je definováno devět prostředků Azure:
+V šabloně jsou definované devět prostředků Azure:
 
 **Microsoft.Network**
 
-* **[Microsoft.Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)**: Vytvoří prostředek brány NAT.
+* **[Microsoft. Network/natGateways](https://docs.microsoft.com/azure/templates/microsoft.network/natgateways)**: vytvoří prostředek brány NAT.
 
-* **[Microsoft.Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)**: Vytvoří skupinu zabezpečení sítě.
+* **[Microsoft. Network/networkSecurityGroups](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)**: vytvoří skupinu zabezpečení sítě.
 
-    * **[Microsoft.Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: Vytvoří pravidlo zabezpečení.
+    * **[Microsoft. Network/networkSecurityGroups/securityRules](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: vytvoří pravidlo zabezpečení.
 
-* **[Microsoft.Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)**: Vytvoří veřejnou IP adresu.
+* **[Microsoft. Network/publicIPAddresses](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)**: Vytvoří veřejnou IP adresu.
 
-* **[Microsoft.Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)**: Vytvoří veřejnou předponu IP.
+* **[Microsoft. Network/publicIPPrefixes](https://docs.microsoft.com/azure/templates/microsoft.network/publicipprefixes)**: vytvoří předponu veřejné IP adresy.
 
-* **[Microsoft.Network/virtualNetworks:](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)** Vytvoří virtuální síť.
+* **[Microsoft. Network/virtualNetworks](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)**: vytvoří virtuální síť.
 
-    * **[Microsoft.Network/virtualNetworks/podsítě](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)**: Vytvoří podsíť virtuální sítě.
+    * **[Microsoft. Network/virtualNetworks/subnets](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)**: vytvoří podsíť virtuální sítě.
 
-* **[Microsoft.Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)**: Vytvoří síťové rozhraní.
+* **[Microsoft. Network/networkinterfaces](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)**: vytvoří síťové rozhraní.
 
 **Microsoft.Compute**
 
-* **[Microsoft.Compute/virtualMachines:](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)** Vytvoří virtuální počítač.
+* **[Microsoft. COMPUTE/virtualMachines](https://docs.microsoft.com/azure/templates/Microsoft.Compute/virtualMachines)**: vytvoří virtuální počítač.
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -108,19 +108,19 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. V levém podokně vyberte **skupiny prostředků.**
+2. V levém podokně vyberte **skupiny prostředků** .
 
-3. Vyberte skupinu prostředků, kterou jste vytvořili v předchozí části. Výchozí název skupiny prostředků je **myResourceGroupNAT.**
+3. Vyberte skupinu prostředků, kterou jste vytvořili v předchozí části. Výchozí název skupiny prostředků je **myResourceGroupNAT**
 
-4. Ověřte, zda byly ve skupině prostředků vytvořeny následující prostředky:
+4. Ověřte, že se ve skupině prostředků vytvořily tyto prostředky:
 
-    ![Skupina prostředků překladu síťových sítí](./media/quick-create-template/nat-gateway-template-rg.png)
+    ![Virtual Network skupina prostředků NAT](./media/quick-create-template/nat-gateway-template-rg.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 **Azure CLI**
 
-Pokud již není potřeba, můžete použít příkaz [odstranění skupiny az](/cli/azure/group#az-group-delete) k odebrání skupiny prostředků a všech prostředků obsažených v této oblasti.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [AZ Group Delete](/cli/azure/group#az-group-delete) .
 
 ```azurecli-interactive 
   az group delete \
@@ -129,7 +129,7 @@ Pokud již není potřeba, můžete použít příkaz [odstranění skupiny az](
 
 **Azure PowerShell**
 
-Pokud již není potřeba, můžete použít [příkaz Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) k odebrání skupiny prostředků a všech prostředků obsažených v rámci.
+Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků a všech prostředků obsažených v nástroji použít příkaz [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) .
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
@@ -137,7 +137,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **portál Azure**
 
-Pokud již není potřeba, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT,** která obsahuje bránu NAT, a pak vyberte **Odstranit**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, bránu NAT a všechny související prostředky. Vyberte skupinu prostředků **myResourceGroupNAT** , která obsahuje bránu NAT, a pak vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -145,12 +145,12 @@ V tomto rychlém startu jste vytvořili:
 
 * Prostředek brány NAT
 * Virtuální síť
-* Ubuntu virtuální stroj
+* Virtuální počítač Ubuntu
 
-Virtuální počítač se nasadí do podsítě virtuální sítě přidružené k bráně NAT. 
+Virtuální počítač je nasazený do podsítě virtuální sítě přidružené k bráně NAT. 
 
-Další informace o virtuální síti NAT a Azure Resource Manager, pokračujte v článcích níže.
+Další informace o Virtual Network NAT a Azure Resource Manager najdete dál v článcích níže.
 
-* Přečtěte si [přehled virtuální sítě NAT](nat-overview.md)
+* Přečtěte si [přehled Virtual Network NAT](nat-overview.md)
 * Přečtěte si o [prostředku brány NAT](nat-gateway-resource.md)
-* Další informace o [Azure Resource Manageru](../azure-resource-manager/management/overview.md)
+* Další informace o [Azure Resource Manager](../azure-resource-manager/management/overview.md)

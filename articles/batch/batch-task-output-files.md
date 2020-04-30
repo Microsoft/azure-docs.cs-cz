@@ -4,12 +4,12 @@ description: Naučte se používat rozhraní API služby Batch k trvalému zacho
 ms.topic: article
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116464"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234277"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Zachování dat úkolu Azure Storage pomocí rozhraní API služby Batch
 
@@ -26,7 +26,7 @@ Azure Batch poskytuje více než jeden způsob, jak uchovat výstup úlohy. Pou�
 - Chcete napsat kód pro uchování výstupu úlohy z klientské aplikace bez změny aplikace, kterou váš úkol spouští.
 - Chcete zachovat výstup z úloh služby Batch a úloh Správce úloh ve fondech vytvořených s konfigurací virtuálního počítače.
 - Chcete zachovat výstup do kontejneru Azure Storage s libovolným názvem.
-- Chcete zachovat výstup do kontejneru Azure Storage s názvem podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Chcete zachovat výstup do kontejneru Azure Storage s názvem podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). 
 
 Pokud se váš scénář liší od výše uvedených výše, možná budete muset zvážit jiný přístup. Rozhraní API služby Batch například v současné době nepodporuje výstup streamování do Azure Storage, zatímco je úloha spuštěná. Pokud chcete streamovat výstup, zvažte použití knihovny konvence souborů Batch, která je k dispozici pro .NET. V ostatních jazycích budete muset implementovat vlastní řešení. Další informace o dalších možnostech pro zachování výstupu úlohy najdete v tématu [trvalé uložení úloh a úloh do Azure Storage](batch-task-output.md).
 
@@ -155,7 +155,7 @@ V `fileuploadout.txt` protokolech souborů probíhá nahrávání. V tomto soubo
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Použití rozhraní API služby Batch společně se standardními konvencemi pro dávkové soubory
 
-Když zachová výstup úlohy pomocí rozhraní API služby Batch, můžete svůj cílový kontejner a objekty blob pojmenovat, ale budete chtít. Můžete také zvolit jejich pojmenování podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Standardní konvence souborů určuje názvy cílového kontejneru a objektu BLOB v Azure Storage pro daný výstupní soubor na základě názvů úlohy a úlohy. Pokud pro pojmenování výstupních souborů použijete standardní konvence souborů, jsou vaše výstupní soubory k dispozici pro zobrazení v [Azure Portal](https://portal.azure.com).
+Když zachová výstup úlohy pomocí rozhraní API služby Batch, můžete svůj cílový kontejner a objekty blob pojmenovat, ale budete chtít. Můžete také zvolit jejich pojmenování podle [standardu pro dávkové soubory](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files). Standardní konvence souborů určuje názvy cílového kontejneru a objektu BLOB v Azure Storage pro daný výstupní soubor na základě názvů úlohy a úlohy. Pokud pro pojmenování výstupních souborů použijete standardní konvence souborů, jsou vaše výstupní soubory k dispozici pro zobrazení v [Azure Portal](https://portal.azure.com).
 
 Pokud vyvíjíte v jazyce C#, můžete použít metody integrované do [knihovny konvence pro dávkové soubory pro .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files). Tato knihovna vytvoří správně pojmenované kontejnery a cesty objektů BLOB. Například můžete volat rozhraní API a získat tak správný název kontejneru na základě názvu úlohy:
 

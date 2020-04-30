@@ -1,21 +1,21 @@
 ---
-title: Nastavení Azure Multi-Factor Authentication pro virtuální počítače s Windows – Azure
-description: Jak nastavit Azure Multi-Factor Authentication pro zvýšené zabezpečení na virtuálním počítači s Windows
+title: Nastavení Multi-Factor Authentication Azure pro virtuální počítače s Windows – Azure
+description: Jak nastavit Azure Multi-Factor Authentication pro zvýšení zabezpečení na virtuálním počítači s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b470f9278bdca94d1fe98c64b11b070fb36cb075
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998481"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508307"
 ---
-# <a name="set-up-azure-multi-factor-authentication"></a>Nastavení služby Azure Multi-Factor Authentication
+# <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolit Azure Multi-Factor Authentication pro virtuální počítače s Windows
 
 Klient Windows pro virtuální počítače s Windows je vynikající volbou pro integraci virtuálního klienta s Windows s vaším místním počítačem. Když ale konfigurujete účet virtuální plochy Windows na klienta Windows, budete muset provést určitá opatření, abyste měli jistotu, že sami a uživatelé budou v bezpečí.
 
@@ -27,71 +27,34 @@ I když je zapamatování přihlašovacích údajů pohodlné, může také prov
 
 Tady je přehled toho, co budete potřebovat k zahájení práce:
 
-- Přiřaďte všem uživatelům jednu z následujících licencí:
-  - Microsoft 365 E3 nebo E5
-  - Azure Active Directory Premium P1 nebo P2
-  - Enterprise Mobility + Security E3 nebo E5
+- Přiřaďte uživatelům licenci, která zahrnuje Azure Active Directory Premium P1 nebo P2.
 - Skupina Azure Active Directory s vašimi uživateli přiřazenými jako členové skupiny.
 - Povolte Azure MFA pro všechny uživatele. Další informace o tom, jak to provést, najdete v tématu [jak pro uživatele vyžadovat dvoustupňové ověřování](../active-directory/authentication/howto-mfa-userstates.md#view-the-status-for-a-user).
 
->[!NOTE]
->Následující nastavení platí také pro [webového klienta virtuální plochy systému Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).
+> [!NOTE]
+> Následující nastavení platí také pro [webového klienta virtuální plochy systému Windows](https://rdweb.wvd.microsoft.com/webclient/index.html).
 
-## <a name="opt-in-to-the-conditional-access-policy"></a>Přihlášení k zásadám podmíněného přístupu
+## <a name="create-a-conditional-access-policy"></a>Vytvoření zásady podmíněného přístupu
 
-1. Otevřete **Azure Active Directory**.
+V této části se dozvíte, jak vytvořit zásadu podmíněného přístupu, která při připojování k virtuálnímu počítači s Windows vyžaduje vícefaktorové ověřování.
 
-2. Přejít na kartu **všechny aplikace** V rozevírací nabídce Typ aplikace vyberte možnost **podnikové aplikace**a pak vyhledejte **klienta virtuální plochy Windows**.
+1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
+1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+1. Vyberte **nové zásady**.
+1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
+1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
+   1. V části **Zahrnout**vyberte **Vybrat uživatele a skupiny** > **Uživatelé a skupiny** > vyberte skupinu vytvořenou ve fázi požadavků.
+   1. Vyberte **Done** (Hotovo).
+1. V části **cloudové aplikace nebo akce** > **Include**vyberte **vybrat aplikace**.
+   1. Zvolte **virtuální počítač s Windows** a **Klient virtuální plochy Windows**a vyberte **Vybrat** a pak **Hotovo**.
+   ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise-selected.png)
+1. V části **řízení** > přístupu**udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a pak **Vyberte**.
+1. V části > **relace** **řízení přístupu**vyberte **četnost přihlášení**, nastavte hodnotu na **1** a jednotku na **hodiny**a pak **Vyberte**.
+1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
+1. Vyberte **vytvořit** a povolte tak zásady.
 
-    ![Snímek obrazovky karty všechny aplikace Uživatel zadal do panelu hledání "klient virtuální plochy Windows" a aplikace se zobrazí ve výsledcích hledání.](media/all-applications-search.png)
+## <a name="next-steps"></a>Další kroky
 
-3. Vyberte **podmíněný přístup**.
+- [Další informace o zásadách podmíněného přístupu](../active-directory/conditional-access/concept-conditional-access-policies.md)
 
-    ![Snímek obrazovky zobrazující, že uživatel přejede ukazatelem myši na kartu podmíněný přístup](media/conditional-access-location.png)
-
-4. Vyberte **+ Nová zásada**.
-
-   ![Snímek obrazovky se stránkou podmíněného přístupu Uživatel přesune ukazatel myši na tlačítko Nová zásada.](media/new-policy-button.png)
-
-5. Zadejte **název** **pravidla**a potom **Vyberte** * název **skupiny** , kterou jste vytvořili v části požadavky.
-
-6. Vyberte **Vybrat**a potom vyberte **Hotovo**.
-
-7. Pak otevřete **cloudové aplikace nebo akce**.
-
-8. Na panelu **Vybrat** vyberte aplikace **Windows Virtual Desktop** Enterprise.
-
-    ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Uživatel vybral aplikaci pro virtuální plochu systému Windows zaškrtnutím políčka vedle ní. Vybraná aplikace je zvýrazněná červenou.](media/cloud-apps-select.png)
-    
-    >[!NOTE]
-    >Na levé straně obrazovky by se měla zobrazit také klientská aplikace virtuální plochy Windows, jak je znázorněno na následujícím obrázku. Aby tato zásada fungovala, potřebujete pro podnikovou aplikaci virtuálních ploch Windows i klientské aplikace Windows.
-    >
-    > ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise-selected.png)
-
-9. Vybrat **Výběr**
-
-10. Pak otevřete **grant** . 
-
-11. Vyberte možnost **požadovat vícefaktorové ověřování**a pak vyberte **vyžadovat jeden z vybraných ovládacích prvků**.
-   
-    ![Snímek obrazovky se stránkou grant Je vybráno "vyžadovat vícefaktorové ověřování".](media/grant-page.png)
-
-    >[!NOTE]
-    >Pokud máte v organizaci zařízení zaregistrovaná v MDM a nechcete, aby se zobrazila výzva MFA, můžete také vybrat možnost **vyžadovat, aby zařízení bylo označené jako vyhovující**.
-
-12. Vyberte možnost **relace**.
-
-13. Nastavte **četnost přihlášení** na **aktivní**a pak změňte její hodnotu na **1 hod**.
-
-    ![Snímek obrazovky se stránkou relace V nabídce relace se zobrazují rozevírací nabídky četnost přihlášení, které se změnily na 1 a hodiny.](media/sign-in-frequency.png)
-   
-    >[!NOTE]
-    >Aktivní relace v prostředí virtuálního počítače s Windows budou při změně zásady i nadále fungovat. Pokud se ale odpojíte nebo odhlásíte, budete muset znovu zadat svoje přihlašovací údaje po 60 minutách. Když změníte nastavení, můžete časový limit prodloužit tak, jak chcete (Pokud se zarovnává se zásadami zabezpečení vaší organizace).
-    >
-    >Výchozím nastavením je průběžné okno o 90 dní, což znamená, že klient požádá uživatele, aby se znovu přihlásil, když se pokusí o přístup k prostředku po dobu 90 dnů nebo déle.
-
-14. Povolte tuto zásadu.
-
-15. Vyberte **vytvořit** a potvrďte zásadu.
-
-Všechno je hotové. Pokud chcete mít jistotu, že seznam povolených funguje tak, jak má, můžete tuto zásadu vyzkoušet.
+- [Další informace o četnosti přihlašování uživatelů](../active-directory/conditional-access/howto-conditional-access-session-lifetime.md#user-sign-in-frequency)

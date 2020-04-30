@@ -1,5 +1,5 @@
 ---
-title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Dokumenty společnosti Microsoft
+title: Přehled uživatelů, skupin, licencí a rolí – Azure AD | Microsoft Docs
 description: Vztah mezi uživateli a přiřazenými licencemi, role správců a členství ve skupinách v Azure Active Directory
 keywords: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3cc2de5a2f297e8133011905ff2961b44476d6b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8052bb44df6d29e17304763051fa2099009b9701
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77046326"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583016"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Uživatelé, skupiny, licencování a role pro velké organizace
 
@@ -31,7 +31,7 @@ Tento článek představuje správce Azure Active Directory ve vztahu k hlavním
 
 ## <a name="assign-users-to-groups"></a>Přiřazení uživatelů ke skupinám
 
-Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení všech rolí správce s výjimkou globálního správce ve službě Azure AD nebo můžete udělit přístup k prostředkům, které jsou externí, jako jsou aplikace SaaS nebo weby Služby SharePoint.
+Skupiny v Azure Active Directory můžete použít k přiřazení licencí k velkému počtu uživatelů nebo k přiřazení uživatelského přístup k nasazeným podnikovým aplikacím. Skupiny můžete použít k přiřazení všech rolí správce kromě globálního správce ve službě Azure AD nebo můžete udělit přístup k prostředkům, které jsou externí, jako jsou například aplikace SaaS nebo weby služby SharePoint.
 
 Pokud chcete zvýšit flexibilitu a omezit práci spojenou se správou členství ve skupině, můžete v Azure Active Directory použít [dynamické skupiny](groups-create-rule.md), které budou členství ve skupině rozšiřovat a zmenšovat automaticky. Pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin, budete potřebovat licenci Azure AD Premium P1.
 
@@ -52,7 +52,7 @@ Mnoho velkých organizací chce takové možnosti pro své uživatele, aby mohli
 
  Název role | Souhrn oprávnění
  --------- | -------------------
- **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikací mohou zobrazit zásady a zařízení podmíněného přístupu, ale ne spravovat je.
+ **Správce aplikace** | Může přidávat a spravovat podnikové aplikace a registrace aplikací a může konfigurovat nastavení aplikačního proxy serveru. Správci aplikací můžou zobrazovat zásady podmíněného přístupu a zařízení, ale nemůžou je spravovat.
  **Správce cloudové aplikace** | Může přidávat, spravovat a registrovat podnikové aplikace. Tato role má všechna oprávnění správce aplikace, nemůže však spravovat nastavení aplikačního proxy serveru.
 **Vývojář aplikace** | Může přidávat a aktualizovat registrace aplikací, ale nemůže spravovat podnikové aplikace ani konfigurovat nastavení aplikačního proxy serveru.
 
@@ -60,7 +60,7 @@ Nové role správce Azure Active Directory neustále přidáváme. Aktuální do
 
 ## <a name="assign-app-access"></a>Přiřazení přístup k aplikacím
 
-Azure Active Directory můžete k přiřazení skupinového přístupu k [podnikovým aplikacím, které jsou nasazené ve vašem klientovi Azure AD](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
+Pomocí Azure AD můžete přiřadit přístup skupin k [podnikovým aplikacím, které jsou nasazené ve vaší organizaci Azure AD](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Pokud zkombinujete dynamické skupiny s přiřazením skupin k aplikacím, můžete zautomatizovat přiřazování uživatelského přístupu k aplikacím v souladu s růstem vaší organizace. K přiřazení přístupu k podnikovým aplikacím budete potřebovat licenci Azure Active Directory Premium P1 nebo Premium P2.
 
 Azure AD nabízí také podrobné řízení dat, která proudí mezi aplikací a skupinami, kterým přiřadíte přístup. V možnosti [Podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) otevřete aplikaci a vyberte **Zřizování**, poté můžete provést následující:
 

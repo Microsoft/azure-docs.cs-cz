@@ -1,7 +1,7 @@
 ---
-title: Odkaz na sypkou imersive readeru
+title: Referenční dokumentace sady pro moderní čtečku
 titleSuffix: Azure Cognitive Services
-description: Sada Immersive Reader SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat immersive Reader do vaší aplikace.
+description: Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76156399"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231913"
 ---
-# <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka sady Immersive Reader SDK
+# <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
-Sada Immersive Reader SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat immersive Reader do vaší aplikace.
+Sada moderní čtečka SDK obsahuje knihovnu JavaScriptu, která umožňuje integrovat moderní čtečku do vaší aplikace.
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 
-Sada SDK zveřejňuje funkce:
+Sada SDK zpřístupňuje funkce:
 
 - [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
 
@@ -33,7 +33,7 @@ Sada SDK zveřejňuje funkce:
 
 ## <a name="launchasync"></a>launchAsync
 
-Spustí immersive Reader v `iframe` rámci ve vaší webové aplikaci.
+Spustí moderní čtečku v rámci `iframe` ve vaší webové aplikaci.
 
 ```typescript
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
@@ -41,38 +41,38 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
 | `token` | řetězec | Ověřovací token Azure AD. |
-| `subdomain` | řetězec | Vlastní subdoména vašeho prostředku Immersive Reader v Azure. |
-| `content` | [Obsah](#content) | Objekt obsahující obsah, který má být zobrazen v immersive reader. |
-| `options` | [Možnosti](#options) | Možnosti konfigurace určitých chování immersive Reader. Nepovinný parametr. |
+| `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. |
+| `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
+| `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Nepovinný parametr. |
 
 ### <a name="returns"></a>Vrací
 
-Vrátí `Promise<LaunchResponse>`, který řeší při načítání immersive Reader. Překládá `Promise` na [`LaunchResponse`](#launchresponse) objekt.
+Vrátí `Promise<LaunchResponse>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` Překládá na [`LaunchResponse`](#launchresponse) objekt.
 
 ### <a name="exceptions"></a>Výjimky
 
-Vrácené `Promise` bude odmítnut [`Error`](#error) s objektem, pokud immersive Reader nepodaří načíst. Další informace naleznete v [kódech chyb](#error-codes).
+Vrácený `Promise` [`Error`](#error) objekt se odmítne s objektem, pokud se nepovede načíst moderní čtecí zařízení. Další informace najdete v tématu [kódy chyb](#error-codes).
 
 ## <a name="close"></a>close
 
-Zavře immersive Reader.
+Zavře moderní čtečku.
 
-Příkladem případu použití této funkce je, pokud je ```hideExitButton: true``` tlačítko ukončení skryto nastavením v [možnostech](#options). Poté jiné tlačítko (například šipka zpět záhlaví mobilního ```close``` telefonu) může tuto funkci volat po klepnutí.
+Příkladem případu použití této funkce je, že je tlačítko Ukončit skryto nastavením ```hideExitButton: true``` v [Možnosti](#options). Pak jiné tlačítko (například šipky zpět pro mobilní hlavičku) může zavolat tuto ```close``` funkci, když na ni kliknete.
 
 ```typescript
 close(): void;
 ```
 
-## <a name="renderbuttons"></a>vykreslovat tlačítka
+## <a name="renderbuttons"></a>renderButtons
 
-Tato funkce stylizuje a aktualizuje prvky tlačítka Immersive Reader dokumentu. Pokud ```options.elements``` je k dispozici, pak tato ```options.elements```funkce vykreslí tlačítka v rámci . V opačném případě budou tlačítka vykreslena v rámci prvků ```immersive-reader-button```dokumentu, které mají třídu .
+Tato funkce styly a aktualizuje prvky tlačítka pro moderní čtečku dokumentu. Pokud ```options.elements``` je k dispozici, bude tato funkce vykreslovat ```options.elements```tlačítka v rámci. V opačném případě se tlačítka vykreslí v rámci prvků dokumentu, které mají třídu ```immersive-reader-button```.
 
 Tato funkce je automaticky volána sadou SDK při načtení okna.
 
-Další možnosti vykreslování najdete v [tématu Volitelné atributy.](#optional-attributes)
+Další možnosti vykreslování naleznete v tématu [volitelné atributy](#optional-attributes) .
 
 ```typescript
 renderButtons(options?: RenderButtonsOptions): void;
@@ -80,15 +80,15 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Name (Název) | Typ | Popis |
+| Název | Typ | Popis |
 | ---- | ---- |------------ |
-| `options` | [Možnosti renderů](#renderbuttonsoptions) | Možnosti konfigurace určitých chování funkce renderButtons. Nepovinný parametr. |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
 ## <a name="types"></a>Typy
 
 ### <a name="content"></a>Obsah
 
-Obsahuje obsah, který má být zobrazen v immersive Reader.
+Obsahuje obsah, který se zobrazí v moderní čtečce.
 
 ```typescript
 {
@@ -99,7 +99,7 @@ Obsahuje obsah, který má být zobrazen v immersive Reader.
 
 ### <a name="chunk"></a>Blok dat
 
-Jeden blok dat, který bude předán do obsahu immersive Reader.
+Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
 ```typescript
 {
@@ -111,7 +111,7 @@ Jeden blok dat, který bude předán do obsahu immersive Reader.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Obsahuje odpověď z volání `ImmersiveReader.launchAsync`do .
+Obsahuje odpověď od volání `ImmersiveReader.launchAsync`.
 
 ```typescript
 {
@@ -120,9 +120,9 @@ Obsahuje odpověď z volání `ImmersiveReader.launchAsync`do .
 }
 ```
 
-### <a name="cookiepolicy-enum"></a>Výčtu CookiePolicy
+### <a name="cookiepolicy-enum"></a>Výčet CookiePolicy
 
-Výčtu slouží k nastavení zásad pro immersive reader je cookie použití. Viz [možnosti](#options).
+Výčet, který slouží k nastavení zásad pro použití souboru cookie pro moderní čtečku. Viz [Možnosti](#options).
 
 ```typescript
 enum CookiePolicy { Disable, Enable }
@@ -132,25 +132,24 @@ enum CookiePolicy { Disable, Enable }
 
 | Typ MIME | Popis |
 | --------- | ----------- |
-| text/prostý | Prostý text. |
-| text/html | obsah HTML. [Další informace](#html-support)|
-| aplikace/mathml+xml | Matematický značkovací jazyk (MathML). [Další informace](./how-to/display-math.md).
-| aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument ve formátu Docx aplikace Microsoft Word.
+| Text/prostý | Prostý text. |
+| text/html | Obsah HTML. [Další informace](#html-support)|
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](./how-to/display-math.md).
+| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Podpora HTML
 
 | HTML | Podporovaný obsah |
 | --------- | ----------- |
-| Styly písma | Tučné písmo, kurzíva, podtržení, kód, přeškrtávací, horní index, dolní index |
-| Neuspořádané seznamy | Disk, Kruh, Čtverec |
-| Seřazené seznamy | Desetinné, Horní Alfa, Dolní Alfa, Horní-Roman, Dolní-Roman |
-| Hypertextové odkazy | Připravuje se |
+| Styly písma | Tučné, kurzíva, podtržení, kód, přeškrtnutí, horní index, dolní index |
+| Neuspořádané seznamy | Disk, kruh, čtverec |
+| Seřazené seznamy | Decimal, Upper-Alpha, nižší-alfa, horní – Roman, nižší – Roman |
 
-Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky nejsou aktuálně podporovány.
+Nepodporované značky budou vykresleny srovnatelně. Obrázky a tabulky se aktuálně nepodporují.
 
 ### <a name="options"></a>Možnosti
 
-Obsahuje vlastnosti, které konfigurují určité chování immersive Reader.
+Obsahuje vlastnosti, které konfigurují určité chování moderního čtecího zařízení.
 
 ```typescript
 {
@@ -166,9 +165,9 @@ Obsahuje vlastnosti, které konfigurují určité chování immersive Reader.
 }
 ```
 
-### <a name="renderbuttonsoptions"></a>Možnosti renderů
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
 
-Možnosti pro vykreslení tlačítek immersive reader.
+Možnosti pro vykreslování tlačítek pro moderní čtečku
 
 ```typescript
 {
@@ -191,14 +190,14 @@ Obsahuje informace o chybě.
 
 | kód | Popis |
 | ---- | ----------- |
-| Chybný argument | Zadaný argument je `message` neplatný, podrobnosti naleznete v části Podrobnosti. |
-| Časový limit | Immersive Reader se nepodařilo načíst v rámci zadaného časového času. |
+| BadArgument | Zadaný argument je neplatný. Podrobnosti `message` naleznete v tématu. |
+| Časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
-| Škrtil | Byl překročen limit rychlosti volání. |
+| Omezené | Překročilo se omezení četnosti volání. |
 
-## <a name="launching-the-immersive-reader"></a>Spuštění pohlcující čtečky
+## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
-Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění immersive reader. Pomocí `immersive-reader-button` atributu třídy povolte tento styl. Další podrobnosti naleznete v [tomto článku.](./how-to-customize-launch-button.md)
+Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. Pro povolení `immersive-reader-button` tohoto stylu použijte atribut class. Další podrobnosti najdete v [tomto článku](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -206,17 +205,17 @@ Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění immersive reade
 
 ### <a name="optional-attributes"></a>Volitelné atributy
 
-Následující atributy slouží ke konfiguraci vzhledu a chování tlačítka.
+Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tlačítka.
 
 | Atribut | Popis |
 | --------- | ----------- |
-| `data-button-style` | Nastaví styl tlačítka. Může `icon`být `text`, `iconAndText`, nebo . Výchozí hodnota `icon`je na . |
-| `data-locale` | Nastaví národní prostředí. Příkladem je `en-US` nebo `fr-FR`. Výchozí nastavení `en`je angličtina . |
-| `data-icon-px-size` | Nastaví velikost ikony v obrazových bodech. Výchozí hodnota je 20 px. |
+| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text`, nebo `iconAndText`. Výchozí hodnota `icon`je. |
+| `data-locale` | Nastaví národní prostředí. Příkladem je `en-US` nebo `fr-FR`. Výchozí hodnota je `en`angličtina. |
+| `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
 ## <a name="browser-support"></a>Podpora prohlížečů
 
-Pro nejlepší zážitek z immersive Readeru použijte nejnovější verze následujících prohlížečů.
+K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnovější verze následujících prohlížečů.
 
 * Microsoft Edge
 * Internet Explorer 11
@@ -226,5 +225,5 @@ Pro nejlepší zážitek z immersive Readeru použijte nejnovější verze násl
 
 ## <a name="next-steps"></a>Další kroky
 
-* Prozkoumejte sadku [Immersive Reader SDK na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
-* [Úvodní příručka: Vytvoření webové aplikace, která spustí immersive Reader (C#)](./quickstart.md)
+* Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
+* [Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstart.md)

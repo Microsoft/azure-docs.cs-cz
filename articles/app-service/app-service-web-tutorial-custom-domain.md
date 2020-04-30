@@ -5,14 +5,14 @@ keywords: app service, azure app service, domain mapping, domain name, existing 
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/06/2019
+ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: adc9b60ce1c31076a91ec44b9656752b464e024d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 116ec218b1f3947b85b4ab865df30477f05c601a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811783"
+ms.locfileid: "82559932"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Kurz: mapování stávajícího vlastního názvu DNS na Azure App Service
 
@@ -93,6 +93,12 @@ Až se zobrazí následující oznámení, operace škálování je dokončená.
 
 <a name="cname" aria-hidden="true"></a>
 
+## <a name="get-domain-verification-id"></a>Získat ID ověření domény
+
+Pokud chcete do aplikace přidat vlastní doménu, musíte ověřit vlastnictví domény tím, že přidáte ID ověřování jako záznam TXT pro vašeho poskytovatele domény. V levém navigačním panelu na stránce aplikace klikněte na **Průzkumník prostředků** v části **vývojové nástroje**a potom klikněte na **Přejít**.
+
+V zobrazení JSON vlastností vaší aplikace vyhledejte `customDomainVerificationId`a zkopírujte jeho hodnotu do dvojitých uvozovek. Toto ID ověření budete potřebovat pro další krok.
+
 ## <a name="map-your-domain"></a>Mapování domény
 
 K mapování vlastního názvu DNS na službu App Service můžete použít **záznam CNAME** nebo **záznam A**. Postupujte podle příslušných kroků:
@@ -114,11 +120,14 @@ V tomto příkladu přidáte záznam CNAME pro subdoménu `www` (například `ww
 
 #### <a name="create-the-cname-record"></a>Vytvoření záznamu CNAME
 
-Přidejte záznam CNAME pro mapování subdomény k výchozímu názvu domény aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace).
+Namapujte subdoménu na název výchozí domény aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší aplikace). Chcete-li vytvořit mapování CNAME pro `www` subdoménu, vytvořte dva záznamy:
 
-Pro příklad domény `www.contoso.com` přidejte záznam CNAME, který mapuje název `www` na `<app_name>.azurewebsites.net`.
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
+| - | - | - |
+| CNAME | `www` | `<app_name>.azurewebsites.net` | Samotné mapování domény. |
+| TXT | `asuid.www` | [ID ověření, které jste získali dříve](#get-domain-verification-id) | App Service přistupuje k záznamu `asuid.<subdomain>` txt a ověří vlastnictví vlastní domény. |
 
-Po přidání záznamu CNAME bude stránka záznamů DNS vypadat jako v následujícím příkladu:
+Po přidání záznamů CNAME a TXT bude stránka záznamů DNS vypadat jako v následujícím příkladu:
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-tutorial-custom-domain/cname-record.png)
 
@@ -183,17 +192,12 @@ Na stránce **Vlastní domény** zkopírujte IP adresu aplikace.
 
 #### <a name="create-the-a-record"></a>Vytvoření záznamu A
 
-K mapování záznamu A na aplikaci vyžaduje služba App Service **dva** záznamy DNS:
+Pokud chcete namapovat záznam A na aplikaci, obvykle pro kořenovou doménu, vytvořte dva záznamy:
 
-- Záznam **A** pro mapování na IP adresu aplikace.
-- Záznam **txt** pro mapování na výchozí název `<app_name>.azurewebsites.net`domény aplikace. Služba App Service používá tento záznam pouze během konfigurace k ověření, že jste vlastníkem vlastní domény. Po ověření a konfiguraci vlastní domény ve službě App Service můžete tento záznam TXT odstranit.
-
-Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následující tabulky (`@` obvykle představuje kořenovou doménu).
-
-| Typ záznamu | Hostitel | Hodnota |
+| Typ záznamu | Hostitel | Hodnota | Komentáře |
 | - | - | - |
-| A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-| TXT | `@` | `<app_name>.azurewebsites.net` |
+| A | `@` | IP adresa z části [Zkopírování IP adresy aplikace](#info) | Samotné mapování domény (`@` obvykle představuje kořenovou doménu). |
+| TXT | `asuid` | [ID ověření, které jste získali dříve](#get-domain-verification-id) | App Service přistupuje k záznamu `asuid.<subdomain>` txt a ověří vlastnictví vlastní domény. Pro kořenovou doménu použijte `asuid`. |
 
 > [!NOTE]
 > Chcete-li přidat subdoménu `www.contoso.com`(například) pomocí záznamu a místo doporučeného [záznamu CNAME](#map-a-cname-record), měl by váš záznam a záznam TXT vypadat jako v následující tabulce:
@@ -201,7 +205,7 @@ Pro příklad domény `contoso.com` vytvořte záznamy A a TXT podle následují
 > | Typ záznamu | Hostitel | Hodnota |
 > | - | - | - |
 > | A | `www` | IP adresa z části [Zkopírování IP adresy aplikace](#info) |
-> | TXT | `www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
 >
 
 Po přidání záznamů bude stránka záznamů DNS vypadat jako v následujícím příkladu:

@@ -1,49 +1,49 @@
 ---
-title: Odesílání dat z rozšíření diagnostiky Windows Azure do Azure Event Hubs
-description: Nakonfigurujte rozšíření diagnostiky v Azure Monitoru pro odesílání dat do Centra událostí Azure, abyste je mohli předávat do umístění mimo Azure.
+title: Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
+description: Nakonfigurujte diagnostické rozšíření v Azure Monitor, aby se odesílala data do centra událostí Azure, abyste je mohli přesměrovat do umístění mimo Azure.
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 5e5034e99d37d3681192c2ad066f28acd1c4aeeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672527"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233461"
 ---
-# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odesílání dat z rozšíření diagnostiky Windows Azure do Azure Event Hubs
-Rozšíření diagnostiky Azure je agent ve službě Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úlohy virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek popisuje, jak odesílat data z rozšíření Windows Azure Diagnostic (WAD) do [Azure Event Hubs,](https://azure.microsoft.com/services/event-hubs/) abyste mohli přeposílat do umístění mimo Azure.
+# <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Odeslání dat z rozšíření Windows Azure Diagnostics do Azure Event Hubs
+Rozšíření Azure Diagnostics je agent v Azure Monitor, který shromažďuje data monitorování z hostovaného operačního systému a úloh virtuálních počítačů Azure a dalších výpočetních prostředků. Tento článek popisuje, jak odeslat data z diagnostického rozšíření Windows Azure (WAD) do [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) , abyste mohli přesměrovat do umístění mimo Azure.
 
 ## <a name="supported-data"></a>Podporovaná data
 
-Data shromážděná z hostovaného operačního systému, která lze odeslat do centra událostí, zahrnují následující. Jiné zdroje dat shromážděné pomocí protokolu WAD, včetně protokolů iis a výpisů stavu zabezpečení, nelze odeslat do centra událostí.
+Data shromážděná z hostovaného operačního systému, který je možné odeslat do Event Hubs, zahrnují následující. Do Event Hubs nelze odeslat další zdroje dat shromážděné službou WAD, včetně protokolů IIS a výpisů stavu systému.
 
 * Události Trasování událostí pro Windows
 * Čítače výkonu
-* Protokoly událostí systému Windows, včetně protokolů aplikací v protokolu událostí systému Windows
+* Protokoly událostí systému Windows, včetně protokolů aplikace v protokolu událostí systému Windows
 * Protokolů infrastruktury Azure Diagnostics
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Rozšíření diagnostiky systému Windows 1.6 nebo vyšší. Informace o podporovaných prostředcích najdete v [tématu verze a historie](diagnostics-extension-versions.md) konfigurace rozšíření diagnostiky [Azure](diagnostics-extension-overview.md) a historie.
-* Obor názvů Event Hubs musí být vždy zřízen. Podrobnosti [najdete v tématu Začínáme s centrummi událostí.](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* Windows Diagnostics Extension 1,6 nebo vyšší. V tématu [Azure Diagnostics verze schématu konfigurace rozšíření a historie](diagnostics-extension-versions.md) Historie verzí a [Azure Diagnostics rozšíření](diagnostics-extension-overview.md) pro podporované prostředky.
+* Obor názvů Event Hubs musí být vždy zřízen. Podrobnosti najdete v tématu [Začínáme s Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md) .
 
 
 ## <a name="configuration-schema"></a>Schéma konfigurace
-Viz [Instalace a konfigurace rozšíření diagnostiky Windows Azure (WAD)](diagnostics-extension-windows-install.md) pro různé možnosti povolení a konfigurace rozšíření diagnostiky a schéma konfigurace [Diagnostika Azure](diagnostics-extension-schema-windows.md) pro odkaz na schéma konfigurace. Zbytek tohoto článku bude popisovat, jak pomocí této konfigurace odesílat data do centra událostí. 
+V tématu [instalace a konfigurace rozšíření Windows Azure Diagnostics (WAD)](diagnostics-extension-windows-install.md) najdete různé možnosti pro povolení a konfiguraci rozšíření diagnostiky a [schématu konfigurace Azure Diagnostics](diagnostics-extension-schema-windows.md) pro referenci schématu konfigurace. Ve zbývající části tohoto článku se dozvíte, jak tuto konfiguraci použít k posílání dat do centra událostí. 
 
-Diagnostika Azure vždy odesílá protokoly a metriky do účtu Azure Storage. Můžete nakonfigurovat jeden nebo více *jímek dat,* které odesílají data do dalších umístění. Každý jímka je definována v [SinksConfig prvek](diagnostics-extension-schema-windows.md#sinksconfig-element) veřejné konfigurace s citlivými informacemi v privátní konfiguraci. Tato konfigurace pro centra událostí používá hodnoty v následující tabulce.
+Azure Diagnostics vždy odesílá protokoly a metriky do účtu Azure Storage. Můžete nakonfigurovat jednu nebo více *datových umyvadel* , které odesílají data do dalších umístění. Každá jímka je definována v [elementu SinksConfig](diagnostics-extension-schema-windows.md#sinksconfig-element) veřejné konfigurace s citlivými informacemi v privátní konfiguraci. Tato konfigurace pro centra událostí používá hodnoty v následující tabulce.
 
 | Vlastnost | Popis |
 |:---|:---|
-| Name (Název) | Popisný název pro umyvadlo. Používá se v konfiguraci k určení zdrojů dat, které mají být odeslány do jímky. |
-| URL  | Adresa URL centra událostí \<ve formuláři event-hubs-namespace\>.servicebus.windows.net/\<název event-hub-name\>.          |
-| SharedAccessKeyName | Název zásady sdíleného přístupu pro centrum událostí, které má alespoň **oprávnění Odeslat.** |
-| SharedAccessKey     | Primární nebo sekundární klíč ze zásad y sdíleného přístupu pro centrum událostí. |
+| Název | Popisný název jímky. Používá se v konfiguraci k určení zdrojů dat, které se mají odeslat do jímky. |
+| URL  | Adresa URL centra \<událostí ve tvaru událost-centra – obor názvů\>. ServiceBus.Windows.NET/\<– název\>centra událostí          |
+| SharedAccessKeyName | Název zásady sdíleného přístupu pro centrum událostí, která má aspoň autoritu pro **odesílání** . |
+| SharedAccessKey     | Primární nebo sekundární klíč ze zásad sdíleného přístupu pro centrum událostí. |
 
-Příkladveřejné veřejné a soukromé konfigurace jsou uvedeny níže. Jedná se o minimální konfiguraci s jedním čítačem výkonu a protokolem událostí, které ilustrují, jak konfigurovat a používat jímka dat centra událostí. Složitější příklad najdete [v tématu schéma konfigurace diagnostiky Azure.](diagnostics-extension-schema-windows.md)
+Příklad veřejné a privátní konfigurace jsou uvedeny níže. Jedná se o minimální konfiguraci s jedním čítačem výkonu a protokolem událostí, který ilustruje, jak nakonfigurovat a používat datovou jímku centra událostí. Složitější příklad najdete v tématu [schéma konfigurace Azure Diagnostics](diagnostics-extension-schema-windows.md) .
 
 ### <a name="public-configuration"></a>Veřejná konfigurace
 
@@ -51,26 +51,26 @@ Příkladveřejné veřejné a soukromé konfigurace jsou uvedeny níže. Jedná
 {
     "WadCfg": {
         "DiagnosticMonitorConfiguration": {
-            "overallQuotaInMB": 5120
-        },
-        "PerformanceCounters": {
-            "scheduledTransferPeriod": "PT1M",
-            "sinks": "myEventHub",
-            "PerformanceCounterConfiguration": [
-                {
-                    "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                    "sampleRate": "PT3M"
-                }
-            ]
-        },
-        "WindowsEventLog": {
-            "scheduledTransferPeriod": "PT1M",
-            "sinks": "myEventHub",
-                "DataSource": [
-                {
-                    "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
-                }
-            ]
+            "overallQuotaInMB": 5120,
+            "PerformanceCounters": {
+                "scheduledTransferPeriod": "PT1M",
+                "sinks": "myEventHub",
+                "PerformanceCounterConfiguration": [
+                    {
+                        "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+                        "sampleRate": "PT3M"
+                    }
+                ]
+            },
+            "WindowsEventLog": {
+                "scheduledTransferPeriod": "PT1M",
+                "sinks": "myEventHub",
+                    "DataSource": [
+                    {
+                        "name": "Application!*[System[(Level=1 or Level=2 or Level=3)]]"
+                    }
+                ]
+            }
         },
         "SinksConfig": {
             "Sink": [
@@ -89,7 +89,7 @@ Příkladveřejné veřejné a soukromé konfigurace jsou uvedeny níže. Jedná
 ```
 
 
-### <a name="private-configuration"></a>Soukromá konfigurace
+### <a name="private-configuration"></a>Privátní konfigurace
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Příkladveřejné veřejné a soukromé konfigurace jsou uvedeny níže. Jedná
 
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
-Chcete-li odeslat data do jímky dat, zadejte atribut **jímky** v uzlu zdroje dat. Kde umístíte **jímky** atribut určuje rozsah přiřazení. V následujícím příkladu je atribut **jímky** definován uzlu **PerformanceCounters,** který způsobí, že všechny podřízené čítače výkonu budou odeslány do centra událostí.
+Chcete-li odeslat data do datové jímky, zadáte atribut **jímky** v uzlu zdroje dat. Kam umístíte atribut **jímky** , určuje rozsah přiřazení. V následujícím příkladu je atribut **jímky** definován pro uzel **čítače výkonu** , což způsobí, že všechny podřízené čítače výkonu budou odeslány do centra událostí.
 
 ```JSON
 "PerformanceCounters": {
@@ -131,7 +131,7 @@ Chcete-li odeslat data do jímky dat, zadejte atribut **jímky** v uzlu zdroje d
 ```
 
 
-V následujícím příkladu je atribut **jímky** použit přímo na tři čítače, které způsobí, že do centra událostí budou odeslány pouze tyto čítače výkonu. 
+V následujícím příkladu je atribut **jímky** použit přímo na tři čítače, což způsobí, že se do centra událostí odesílají jenom tyto čítače výkonu. 
 
 ```JSON
 "PerformanceCounters": {
@@ -164,19 +164,19 @@ V následujícím příkladu je atribut **jímky** použit přímo na tři čít
 }
 ```
 
-## <a name="validating-configuration"></a>Ověření konfigurace
-Můžete použít různé metody k ověření, že data jsou odesílána do centra událostí. ne přímočará metoda je použití zachycení centra událostí, jak je popsáno v [události capture prostřednictvím Azure Event Hubs v Azure Blob Storage nebo Azure Data Lake Storage](../../event-hubs/event-hubs-capture-overview.md). 
+## <a name="validating-configuration"></a>Ověřování konfigurace
+K ověření, že se data odesílají do centra událostí, můžete použít celou řadu metod. Ne jednoduchá metoda je použití Event Hubsho zachycení, jak je popsáno v tématu [zachycení událostí prostřednictvím azure Event Hubs v azure BLOB Storage nebo Azure Data Lake Storage](../../event-hubs/event-hubs-capture-overview.md). 
 
 
-## <a name="troubleshoot-event-hubs-sinks"></a>Poradce při potížích s propady centra událostí
+## <a name="troubleshoot-event-hubs-sinks"></a>Řešení potíží s Event Hubsmi jímkami
 
-- Podívejte se na tabulku Úložiště Azure **WADDiagnosticInfrastructureLogsTable,** která obsahuje protokoly a chyby pro samotnou diagnostiku Azure. Jednou z možností je použití nástroje, jako je [Například Průzkumník úložiště Azure](https://www.storageexplorer.com) pro připojení k tomuto účtu úložiště, zobrazení této tabulky a přidání dotazu pro časové razítko za posledních 24 hodin. Pomocí tohoto nástroje můžete exportovat soubor .csv a otevřít jej v aplikaci, jako je například aplikace Microsoft Excel. Aplikace Excel usnadňuje vyhledávání řetězců volající karty, jako je například **EventHubs**, aby zjistila, jaká chyba je hlášena.  
+- Podívejte se na Azure Storage tabulce **WADDiagnosticInfrastructureLogsTable** , která obsahuje protokoly a chyby pro Azure Diagnostics sebe sama. Jednou z možností je použít pro připojení k tomuto účtu úložiště nástroj, například [Průzkumník služby Azure Storage](https://www.storageexplorer.com) , zobrazit tuto tabulku a přidat dotaz pro časové razítko za posledních 24 hodin. Pomocí tohoto nástroje můžete exportovat soubor. csv a otevřít ho v aplikaci, jako je Microsoft Excel. Aplikace Excel usnadňuje hledání řetězců volacích karet, jako je například **EventHubs**, k zobrazení informace o tom, jaká chyba je hlášena.  
 
-- Zkontrolujte, zda je centrum událostí úspěšně zřízeno. Všechny informace o připojení v části **PrivateConfig** konfigurace musí odpovídat hodnotám vašeho prostředku, jak je vidět na portálu. Ujistěte se, že máte definované zásady SAS *(SendRule* v příkladu) na portálu a že *oprávnění Odeslat* je uděleno.  
+- Ověřte, že se vaše centrum událostí úspěšně zřídilo. Všechny informace o připojení v části **PrivateConfig** konfigurace se musí shodovat s hodnotami prostředku, jak je vidět na portálu. Ujistěte se, že jste na portálu definovali zásadu SAS (*SendRule* ) a že je udělené oprávnění *Odeslat* .  
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přehled centra událostí](../../event-hubs/event-hubs-about.md)
+* [Přehled Event Hubs](../../event-hubs/event-hubs-about.md)
 * [Vytvoření centra událostí](../../event-hubs/event-hubs-create.md)
 * [Nejčastější dotazy k Event Hubs](../../event-hubs/event-hubs-faq.md)
 

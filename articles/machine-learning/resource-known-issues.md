@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127574"
+ms.locfileid: "82231964"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Známé problémy a řešení potíží Azure Machine Learning
 
@@ -56,7 +56,23 @@ Přečtěte si o [kvótách prostředků](how-to-manage-quotas.md) , se kterými
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Chyby Panda: obvykle se zobrazují během experimentu AutoML:**
+   
+   Když ručně nakonfigurujete environmnet pomocí PIP, všimnete si chyb atributů (obzvláště z PANDAS), protože se instalují nepodporované verze balíčku. Abyste předešli takovým chybám, [nainstalujte prosím sadu AutoML SDK pomocí příkazu automl_setup. cmd](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):
+   
+    1. Otevřete příkazový řádek Anaconda a naklonujte úložiště GitHub pro sadu ukázkových poznámkových bloků.
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. Vložte disk CD do složky s postupy použití-AzureML/automatizovaného strojového učení, kde byly extrahovány ukázkové poznámkové bloky a poté spusťte příkaz:
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **Chybová zpráva: Nejde odinstalovat ' PyYAML '.**
 
     Azure Machine Learning SDK pro Python: PyYAML je `distutils` nainstalovaný projekt. Proto nemůžeme přesně určit, které soubory do ní patří, pokud dojde k částečné odinstalaci. Pokud chcete pokračovat v instalaci sady SDK a tuto chybu ignorovat, použijte:

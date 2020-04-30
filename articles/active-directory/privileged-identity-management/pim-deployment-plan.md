@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025992"
+ms.locfileid: "82233529"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -325,7 +325,7 @@ Tuto fázi byste měli použít k ověření, zda veškerá konfigurace, kterou 
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>Komunikace Privileged Identity Management ovlivněným zúčastněným stranám
 
-Nasazení Privileged Identity Management zavádí další kroky pro uživatele privilegovaných rolí. I když Privileged Identity Management významně snižuje problémy zabezpečení spojené s privilegovanými identitami, musí být tato změna účinně oznámena před nasazením v rámci tenanta. V závislosti na počtu ovlivněných správců se organizace často rozhodnou vytvořit interní dokument, video nebo e-mailovou zprávu o změně. Mezi často zahrnuté do těchto komunikací patří:
+Nasazení Privileged Identity Management zavádí další kroky pro uživatele privilegovaných rolí. I když Privileged Identity Management významně snižuje problémy zabezpečení spojené s privilegovanými identitami, musí být tato změna účinně oznámena před nasazením v rámci organizace. V závislosti na počtu ovlivněných správců se organizace často rozhodnou vytvořit interní dokument, video nebo e-mailovou zprávu o změně. Mezi často zahrnuté do těchto komunikací patří:
 
 - Co je PIM
 - Jaká je výhoda pro organizaci
@@ -371,7 +371,7 @@ Pokud se Privileged Identity Management nepovedlo v produkčním prostředí fun
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>Použití výstrah Privileged Identity Management k ochraně privilegovaného přístupu
 
-K lepší ochraně vašeho tenanta byste měli využívat funkci integrovaného upozorňování Privileged Identity Management. Další informace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
+K lepší ochraně vaší organizace byste měli využívat funkci integrovaného upozorňování Privileged Identity Management. Další informace najdete v tématu [výstrahy zabezpečení](pim-how-to-configure-security-alerts.md#security-alerts). Mezi tyto výstrahy patří: Správci nepoužívají privilegované role, role se přiřazují mimo Privileged Identity Management a role se aktivují příliš často a častěji. K zajištění plné ochrany vaší organizace byste měli pravidelně procházet seznam výstrah a opravovat problémy. Výstrahy můžete zobrazit a opravit následujícím způsobem:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 1. Otevřete **Azure AD Privileged Identity Management**.

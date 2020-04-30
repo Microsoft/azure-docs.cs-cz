@@ -4,14 +4,14 @@ description: Naučte se používat ověřování a autorizaci App Service k zabe
 keywords: app service, azure app service, authN, authZ, secure, security, multi-tiered, azure active directory, azure ad
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d63c143ddbc702f7f3983a9ae5d6d5f2822d9fdc
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "74688946"
+ms.locfileid: "82560347"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service v Linuxu
 
@@ -46,8 +46,8 @@ Podle kroků v tomto kurzu můžete postupovat v systémech macOS, Linux a Windo
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* [Nainstalujte Git](https://git-scm.com/).
-* [Nainstalujte .NET Core](https://www.microsoft.com/net/core/).
+* <a href="https://git-scm.com/" target="_blank">Nainstalovat Git</a>.
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Instalace nejnovější sady .NET Core 3,1 SDK</a>
 
 ## <a name="create-local-net-core-app"></a>Vytvoření místní aplikace .NET Core
 
@@ -75,15 +75,22 @@ ASP.NET Core můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu.
 
 V tomto kroku nasadíte projekt do dvou aplikací App Service. Jedna je front-endová aplikace a druhá je back-endová aplikace.
 
+### <a name="configure-a-deployment-user"></a>Konfigurace uživatele nasazení
+
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
+
 ### <a name="create-azure-resources"></a>Vytvoření prostředků Azure
 
 Ve službě Cloud Shell spuštěním následujících příkazů vytvořte dvě webové aplikace. Nahraďte _ \<název front-end-App-Name>_ a _ \<back-end-App-Name>_ dvěma globálně jedinečnými názvy aplikací (platné `a-z`znaky `0-9`jsou, `-`a). Další informace o jednotlivých příkazech najdete v tématu [Vytvoření aplikace .NET Core v Azure App Service v systému Linux](quickstart-dotnetcore.md).
 
 ```azurecli-interactive
 az group create --name myAuthResourceGroup --location "West Europe"
-az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku B1 --is-linux
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --runtime "dotnetcore|2.0" --deployment-local-git --query deploymentLocalGitUrl
-az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back-end-app-name> --runtime "dotnetcore|2.0" --deployment-local-git --query deploymentLocalGitUrl
+az appservice plan create --name myAuthAppServicePlan --resource-group myAuthResourceGroup --sku FREE --is-linux
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <front-end-app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git --query deploymentLocalGitUrl
+az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePlan --name <back-end-app-name> --runtime "DOTNETCORE|LTS" --deployment-local-git --query deploymentLocalGitUrl
+# Currently the following commands are required to set the .NET Core version properly
+az webapp config set --resource-group myAuthResourceGroup --name <front-end-app-name> --linux-fx-version "DOTNETCORE|3.1"
+az webapp config set --resource-group myAuthResourceGroup --name <back-end-app-name> --linux-fx-version "DOTNETCORE|3.1"
 ```
 
 > [!NOTE]
@@ -135,47 +142,47 @@ private static readonly HttpClient _client = new HttpClient();
 private static readonly string _remoteUrl = "https://<back-end-app-name>.azurewebsites.net";
 ```
 
-Vyhledejte metodu `GetAll()` a nahraďte kód uvnitř složených závorek následujícím kódem:
+Vyhledejte metodu, která je upravena `[HttpGet]` pomocí, a nahraďte kód uvnitř složených závorek následujícím kódem:
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo");
 return JsonConvert.DeserializeObject<List<TodoItem>>(data);
 ```
 
 První řádek provede volání `GET /api/Todo` do back-endové aplikace API.
 
-Dále vyhledejte metodu `GetById(long id)` a nahraďte kód uvnitř složených závorek následujícím kódem:
+Dále vyhledejte metodu, která je upravena pomocí `[HttpGet("{id}")]` , a nahraďte kód uvnitř složených závorek následujícím kódem:
 
 ```cs
-var data = _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var data = await _client.GetStringAsync($"{_remoteUrl}/api/Todo/{id}");
 return Content(data, "application/json");
 ```
 
 První řádek provede volání `GET /api/Todo/{id}` do back-endové aplikace API.
 
-Dále vyhledejte metodu `Create([FromBody] TodoItem item)` a nahraďte kód uvnitř složených závorek následujícím kódem:
+Dále vyhledejte metodu, která je upravena pomocí `[HttpPost]` , a nahraďte kód uvnitř složených závorek následujícím kódem:
 
 ```cs
-var response = _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", item).Result;
-var data = response.Content.ReadAsStringAsync().Result;
+var response = await _client.PostAsJsonAsync($"{_remoteUrl}/api/Todo", todoItem);
+var data = await response.Content.ReadAsStringAsync();
 return Content(data, "application/json");
 ```
 
 První řádek provede volání `POST /api/Todo` do back-endové aplikace API.
 
-Dále vyhledejte metodu `Update(long id, [FromBody] TodoItem item)` a nahraďte kód uvnitř složených závorek následujícím kódem:
+Dále vyhledejte metodu, která je upravena pomocí `[HttpPut("{id}")]` , a nahraďte kód uvnitř složených závorek následujícím kódem:
 
 ```cs
-var res = _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", item).Result;
+var res = await _client.PutAsJsonAsync($"{_remoteUrl}/api/Todo/{id}", todoItem);
 return new NoContentResult();
 ```
 
 První řádek provede volání `PUT /api/Todo/{id}` do back-endové aplikace API.
 
-Dále vyhledejte metodu `Delete(long id)` a nahraďte kód uvnitř složených závorek následujícím kódem:
+Dále vyhledejte metodu, která je upravena pomocí `[HttpDelete("{id}")]` , a nahraďte kód uvnitř složených závorek následujícím kódem:
 
 ```cs
-var res = _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}").Result;
+var res = await _client.DeleteAsync($"{_remoteUrl}/api/Todo/{id}");
 return new NoContentResult();
 ```
 
@@ -205,25 +212,27 @@ Jako zprostředkovatele identity použijete Azure Active Directory. Další info
 
 ### <a name="enable-authentication-and-authorization-for-back-end-app"></a>Povolení ověřování a autorizace pro back-endovou aplikaci
 
-V [Azure Portal](https://portal.azure.com)otevřete stránku správy vaší back-endové aplikace kliknutím na nabídku vlevo: **skupiny** > prostředků**myAuthResourceGroup** > **_\<back-end-App-Name>_**.
+V nabídce [Azure Portal](https://portal.azure.com) vyberte **skupiny prostředků** nebo vyhledejte a vyberte *skupiny prostředků* z libovolné stránky.
+
+V **skupiny prostředků**vyhledejte a vyberte skupinu prostředků. V **přehledu**vyberte stránku správy vaší back-endové aplikace.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/portal-navigate-back-end.png)
 
-V levé nabídce vaší back-endové aplikace klikněte na **Ověřování / autorizace** a pak povolte ověřování pomocí služby App Service kliknutím na **Zapnuto**.
+V nabídce vlevo back-end aplikace vyberte **ověřování/autorizace**a pak povolte App Service ověřování kliknutím **na**.
 
 V části **Akce, která se má provést, když požadavek nebude ověřený** vyberte **Přihlásit se přes Azure Active Directory**.
 
-V části **Zprostředkovatelé ověřování** klikněte na **Azure Active Directory**. 
+V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/configure-auth-back-end.png)
 
-Klikněte na **Expresní**, přijměte výchozí nastavení pro vytvoření nové aplikace AD a klikněte na **OK**.
+Vyberte **Express**, přijměte výchozí nastavení a vytvořte novou aplikaci AD a vyberte **OK**.
 
-Na stránce **Ověřování / autorizace** klikněte na **Uložit**. 
+Na stránce **ověřování/autorizace** vyberte **Uložit**. 
 
-Jakmile se zobrazí oznámení se zprávou `Successfully saved the Auth Settings for <back-end-app-name> App`, aktualizujte stránku.
+Jakmile se zobrazí oznámení se zprávou `Successfully saved the Auth Settings for <back-end-app-name> App`, aktualizujte stránku portálu.
 
-Znovu klikněte **Azure Active Directory** a potom klikněte na **aplikace Azure AD**.
+Znovu vyberte **Azure Active Directory** a pak vyberte **aplikace Azure AD**.
 
 Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodnotu budete potřebovat později.
 
@@ -233,7 +242,7 @@ Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodno
 
 Použijte stejný postup i u front-endové aplikace, ale poslední krok přeskočte. Pro front-end aplikaci nepotřebujete ID klienta.
 
-Pokud chcete, přejděte na adresu `http://<front-end-app-name>.azurewebsites.net`. Měla by vás teď přesměrovat na zabezpečenou přihlašovací stránku. Po přihlášení pořád nemáte přístup k datům z back-endové aplikace, protože je stále potřeba provést tři věci:
+Pokud chcete, přejděte na adresu `http://<front-end-app-name>.azurewebsites.net`. Měla by vás teď přesměrovat na zabezpečenou přihlašovací stránku. Až se přihlásíte, *pořád nemáte přístup k datům z back-endové aplikace*, protože back-end aplikace nyní vyžaduje Azure Active Directory přihlášení z aplikace front-end. Musíte provést tři věci:
 
 - Udělení přístupu front-endu do back-endu
 - Konfigurace služby App Service tak, aby vracela použitelný token
@@ -246,11 +255,13 @@ Pokud chcete, přejděte na adresu `http://<front-end-app-name>.azurewebsites.ne
 
 Teď, když jste povolili ověřování a autorizaci pro obě své aplikace, využívají obě aplikaci AD. V tomto kroku udělíte front-endové aplikaci oprávnění k přístupu k back-endu jménem uživatele. (Technicky vzato udělíte _aplikaci AD_ front-endu oprávnění k přístupu k _aplikaci_ AD back-endu jménem uživatele.)
 
-V nabídce vlevo na portálu vyberte **Azure Active Directory** > **Registrace aplikací** > **vlastněné aplikace** > **\<, front-end-App-Name>**  >  **oprávnění rozhraní API**.
+V nabídce [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory** nebo vyhledejte a vyberte *Azure Active Directory* na libovolné stránce.
+
+Vyberte **Registrace aplikací** > **vlastněné aplikace** > **Zobrazit všechny aplikace v tomto adresáři**. Vyberte název front-end aplikace a pak vyberte **oprávnění API**.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/add-api-access-front-end.png)
 
-Vyberte **Přidat oprávnění**a pak vyberte **Moje rozhraní API** > **\<back-end-App-Name>**.
+Vyberte **Přidat oprávnění**a pak vyberte **rozhraní API moje organizace používá** > **\<back-end-App-Name>**.
 
 Na stránce **požádat o oprávnění API** pro back-endové aplikace vyberte **delegovaná oprávnění** a **user_impersonation**a pak vyberte **Přidat oprávnění**.
 
@@ -260,11 +271,13 @@ Na stránce **požádat o oprávnění API** pro back-endové aplikace vyberte *
 
 Aplikace front-end má teď požadovaná oprávnění pro přístup k back-endové aplikaci jako přihlášený uživatel. V tomto kroku nakonfigurujete ověřování a autorizaci pomocí služby App Service tak, abyste získali použitelná přístupový token pro přístup k back-endu. Pro tento krok potřebujete ID klienta back-endu, které jste zkopírovali z části [Povolení ověřování a autorizace pro back-endové aplikace](#enable-authentication-and-authorization-for-back-end-app).
 
-Přihlaste se k [Azure Resource Exploreru](https://resources.azure.com). V horní části stránky klikněte na **Čtení / zápis** a povolte úpravy vašich prostředků Azure.
+V levé nabídce aplikace front-end vyberte **Průzkumník prostředků** v části **vývojové nástroje**a pak vyberte **Přejít**.
+
+[Azure Resource Explorer](https://resources.azure.com) se teď otevře s vaší front-end aplikací vybranou ve stromu prostředků. V horní části stránky klikněte na **Čtení / zápis** a povolte úpravy vašich prostředků Azure.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/resources-enable-write.png)
 
-V levém prohlížeči klikněte na **předplatná předplatná** > **_\<>_**  >  **resourceGroups** > **myAuthResourceGroup** > **poskytovatelé** > **Microsoft. Web** > **websites** > **_\<front-end-App-Name>_**  >  **config** > **authsettings**.
+V levém prohlížeči přejděte k části **Konfigurace** > **authsettings**.
 
 V zobrazení **authsettings** (nastavení ověřování) klikněte na **Edit** (Upravit). Nastavte `additionalLoginParams` na následující řetězec JSON pomocí ID klienta, které jste zkopírovali. 
 
@@ -302,7 +315,7 @@ public override void OnActionExecuting(ActionExecutingContext context)
 }
 ```
 
-Tento kód do všech volání vzdáleného rozhraní API přidá standardní hlavičku HTTP `Authorization: Bearer <access-token>`. V kanálu provádění požadavků ASP.NET Core MVC se `OnActionExecuting` provede těsně před provedením metody odpovídající akce (například `GetAll()`), takže se v každém z vašich odchozích volání rozhraní API teď uvádí přístupový token.
+Tento kód do všech volání vzdáleného rozhraní API přidá standardní hlavičku HTTP `Authorization: Bearer <access-token>`. V kanálu spuštění žádosti ASP.NET Core MVC se `OnActionExecuting` spustí těsně před příslušnou akcí, takže každé z vašich odchozích volání rozhraní API teď prezentuje přístupový token.
 
 Uložte všechny provedené změny. V okně místního terminálu nasaďte provedené změny do front-endové aplikace pomocí následujících příkazů Git:
 
@@ -325,15 +338,15 @@ V tomto kroku odkážete front-endovou aplikaci Angular.js na back-endové rozhr
 Zatímco kód serveru má přístup k hlavičkám požadavků, klientský kód může stejné přístupové tokeny získat přístupem k `GET /.auth/me` (viz [Načítání tokenů v kódu aplikace](../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#retrieve-tokens-in-app-code)).
 
 > [!TIP]
-> V této části se k předvedení zabezpečených volání HTTP používají standardní metody HTTP. Můžete však použít knihovnu [Active Directory Authentication Library (ADAL) pro JavaScript](https://github.com/AzureAD/azure-activedirectory-library-for-js), která pomůže zjednodušit vzor aplikace Angular.js.
+> V této části se k předvedení zabezpečených volání HTTP používají standardní metody HTTP. Pomocí [knihovny Microsoft Authentication Library pro JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) ale můžete zjednodušit vzor aplikace ve formátu úhlů. js.
 >
 
 ### <a name="configure-cors"></a>Konfigurace CORS
 
-V Cloud Shell pomocí [`az resource update`](/cli/azure/resource#az-resource-update) příkazu povolte CORS pro adresu URL vašeho klienta. Nahraďte text _ \<back-end-App-Name>_ a _ \<front-end-App-Name>_ zástupné symboly.
+V Cloud Shell pomocí [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) příkazu povolte CORS pro adresu URL vašeho klienta. Nahraďte text _ \<back-end-App-Name>_ a _ \<front-end-App-Name>_ zástupné symboly.
 
 ```azurecli-interactive
-az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back-end-app-name> --set properties.cors.allowedOrigins="['https://<front-end-app-name>.azurewebsites.net']" --api-version 2015-06-01
+az webapp cors add --resource-group myAuthResourceGroup --name <back-end-app-name> --allowed-origins 'https://<front-end-app-name>.azurewebsites.net'
 ```
 
 Tento krok nesouvisí s ověřováním a autorizací. Je však potřeba ho provést, aby prohlížeč povoloval volání rozhraní API mezi doménami z vaší aplikace Angular.js. Další informace najdete v tématu popisujícím [přidání funkcí CORS](../app-service-web-tutorial-rest-api.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#add-cors-functionality).
@@ -342,7 +355,7 @@ Tento krok nesouvisí s ověřováním a autorizací. Je však potřeba ho prov�
 
 V místním úložišti otevřete soubor _wwwroot/index.html_.
 
-Na řádku 51 nastavte proměnnou `apiEndpoint` na adresu URL vaší back-endové aplikace (`https://<back-end-app-name>.azurewebsites.net`). V App Service nahraďte _ \<název back-end-App->_ názvem vaší aplikace.
+Na řádku 51 nastavte `apiEndpoint` proměnnou na adresu URL https vaší back-endové aplikace (`https://<back-end-app-name>.azurewebsites.net`). V App Service nahraďte _ \<název back-end-App->_ názvem vaší aplikace.
 
 V místním úložišti otevřete soubor _wwwroot/app/scripts/todoListSvc.js_ a všimněte si, že před všechna volání rozhraní API je připojený koncový bod rozhraní API `apiEndpoint`. Vaše aplikace Angular.js teď volá back-endová rozhraní API. 
 
@@ -384,7 +397,7 @@ $routeProvider.when("/Home", {
 }).otherwise({ redirectTo: "/Home" });
 ```
 
-Tato nová změna přidá mapování `revolve`, které zavolá `/.auth/me` a nastaví přístupový token. Před vytvořením instance kontroleru `todoListCtrl` se ujistí, že máte přístupový token. Díky tomu všechna volání rozhraní API kontrolerem zahrnují token.
+Tato nová změna přidá mapování `resolve`, které zavolá `/.auth/me` a nastaví přístupový token. Před vytvořením instance kontroleru `todoListCtrl` se ujistí, že máte přístupový token. Díky tomu všechna volání rozhraní API kontrolerem zahrnují token.
 
 ### <a name="deploy-updates-and-test"></a>Nasazení aktualizací a test
 

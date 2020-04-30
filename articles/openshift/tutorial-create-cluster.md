@@ -1,236 +1,207 @@
 ---
-title: Kurz – vytvoření clusteru Azure Red Hat OpenShift
-description: Zjistěte, jak vytvořit cluster Microsoft Azure Red Hat OpenShift pomocí rozhraní příkazového příkazu Azure
-author: jimzim
-ms.author: jzim
+title: Kurz – vytvoření clusteru Azure Red Hat OpenShift 4
+description: Zjistěte, jak vytvořit cluster Microsoft Azure Red Hat OpenShift pomocí Azure CLI.
+author: sakthi-vetrivel
+ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 11/04/2019
-ms.openlocfilehash: 58fc695707995aafe4d804ffab8beee7c52b4320
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.date: 04/24/2020
+ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79455294"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509716"
 ---
-# <a name="tutorial-create-an-azure-red-hat-openshift-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift
+# <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
-Tento kurz je první částí série. Dozvíte se, jak vytvořit cluster Microsoft Azure Red Hat OpenShift pomocí rozhraní příkazového příkazu Azure, škálovat ho a pak ho odstranit, abyste vyčistili prostředky.
-
-V první části seriálu se dozvíte, jak:
-
+V tomto kurzu, který je první částí tři, připravíte své prostředí, aby se vytvořil cluster Azure Red Hat OpenShift se systémem OpenShift 4, a vytvořte cluster. V tomto kurzu se naučíte:
 > [!div class="checklist"]
-> * Vytvoření clusteru Azure Red Hat OpenShift
+> * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
+> * Nasazení clusteru
 
-V této sérii kurzů se naučíte:
-> [!div class="checklist"]
-> * Vytvoření clusteru Azure Red Hat OpenShift
-> * [Škálování clusteru Azure Red Hat OpenShift](tutorial-scale-cluster.md)
-> * [Odstranění clusteru Azure Red Hat OpenShift](tutorial-delete-cluster.md)
+## <a name="before-you-begin"></a>Před zahájením
 
-## <a name="prerequisites"></a>Požadavky
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.0.75 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-> [!IMPORTANT]
-> Tento kurz vyžaduje verzi 2.0.65 azure cli.
+### <a name="install-the-az-aro-extension"></a>Nainstalovat `az aro` rozšíření
+`az aro` Rozšíření umožňuje vytvořit, otevřít a odstranit clustery Azure Red Hat OpenShift přímo z příkazového řádku pomocí Azure CLI.
 
-Než začnete s tímto kurzem:
+Spusťte následující příkaz pro instalaci `az aro` rozšíření.
 
-Ujistěte se, že jste [nastavili vývojové prostředí](howto-setup-environment.md), které zahrnuje:
-- Instalace nejnovějšího cli (verze 2.0.65 nebo vyšší)
-- Vytvoření klienta, pokud ho ještě nemáte
-- Vytvoření objektu aplikace Azure, pokud ho ještě nemáte
-- Vytvoření skupiny zabezpečení
-- Vytvoření uživatele služby Active Directory pro přihlášení ke clusteru.
-
-## <a name="step-1-sign-in-to-azure"></a>Krok 1: Přihlášení do Azure
-
-Pokud používáte Azure CLI místně, otevřete příkazové `az login` prostředí Bash a spusťte přihlášení k Azure.
-
-```azurecli
-az login
+```azurecli-interactive
+az extension add -n aro --index https://az.aroapp.io/stable
 ```
 
- Pokud máte přístup k více `az account set -s {subscription ID}` předplatných, spusťte nahrazení `{subscription ID}` předplatného, které chcete použít.
+Pokud už máte rozšíření nainstalované, můžete ho aktualizovat spuštěním následujícího příkazu.
 
-## <a name="step-2-create-an-azure-red-hat-openshift-cluster"></a>Krok 2: Vytvoření clusteru Azure Red Hat OpenShift
-
-V příkazovém okně Bash nastavte následující proměnné:
-
-> [!IMPORTANT]
-> Zvolte název clusteru, který je jedinečný a vytvoření všech malých písmen nebo clusteru se nezdaří.
-
-```bash
-CLUSTER_NAME=<cluster name in lowercase>
+```azurecli-interactive
+az extension update -n aro --index https://az.aroapp.io/stable
 ```
 
-Zvolte umístění pro vytvoření clusteru. Seznam oblastí Azure, které podporují OpenShift v Azure, najdete v [tématu Podporované oblasti](supported-resources.md#azure-regions). Například: `LOCATION=eastus`.
+### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
 
-```bash
-LOCATION=<location>
+Dál je potřeba zaregistrovat poskytovatele `Microsoft.RedHatOpenShift` prostředků ve vašem předplatném.
+
+```azurecli-interactive
+az provider register -n Microsoft.RedHatOpenShift --wait
 ```
 
-Nastavte `APPID` na hodnotu uloženou v kroku 5 [vytvoření registrace aplikace Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-app-registration).
+Ověřte, zda je rozšíření registrováno.
 
-```bash
-APPID=<app ID value>
+```azurecli-interactive
+az -v
 ```
 
-Nastavte "GROUPID" na hodnotu uloženou v kroku 10 [vytvoření skupiny zabezpečení Azure AD](howto-aad-app-configuration.md#create-an-azure-ad-security-group).
+  Měl by se zobrazit výstup podobný následujícímu.
 
-```bash
-GROUPID=<group ID value>
+```output
+...
+Extensions:
+aro                                1.0.0
+...
 ```
 
-Nastavte `SECRET` hodnotu uloženou v kroku 8 [vytvoření tajného klíče klienta](howto-aad-app-configuration.md#create-a-client-secret).
+### <a name="get-a-red-hat-pull-secret-optional"></a>Získání tajného kódu pro vyžádání Red Hat (volitelné)
 
-```bash
-SECRET=<secret value>
+Tajný kód pro stažení Red Hat umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem. Tento krok je nepovinný, ale doporučuje se.
+
+Získání tajného kódu pro vyžádání obsahu získáte https://cloud.redhat.com/openshift/install/azure/aro-provisioned tak, že přejdete na *Stáhnout tajný kód pro vyžádání*obsahu.
+
+Budete se muset přihlásit k účtu Red Hat nebo vytvořit nový účet Red Hat pomocí podnikového e-mailu a přijmout podmínky a ujednání.
+
+Uložte si uložený `pull-secret.txt` soubor na bezpečném místě, bude se používat při každém vytváření clusteru.
+
+### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Vytvoření virtuální sítě obsahující dvě prázdné podsítě
+
+V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné podsítě.
+
+1. **Nastavte následující proměnné.**
+
+   ```console
+   LOCATION=eastus                 # the location of your cluster
+   RESOURCEGROUP=aro-rg            # the name of the resource group where you want to create your cluster
+   CLUSTER=cluster                 # the name of your cluster
+   ```
+
+1. **Vytvoření skupiny prostředků**
+
+    Skupina prostředků Azure je logická skupina, ve které se nasazují a spravují prostředky Azure. Při vytváření skupiny prostředků se zobrazí výzva k zadání umístění. V tomto umístění se ukládají metadata skupin prostředků, a to i v případě, že se vaše prostředky spouštějí v Azure, pokud při vytváření prostředků nezadáte jinou oblast. Vytvořte skupinu prostředků pomocí příkazu [az Group Create] [az-Group-Create].
+
+    ```azurecli-interactive
+    az group create --name $RESOURCEGROUP --location $LOCATION
+    ```
+
+    Následující příklad výstupu ukazuje, že skupina prostředků byla úspěšně vytvořena:
+
+    ```json
+    {
+    "id": "/subscriptions/<guid>/resourceGroups/aro-rg",
+    "location": "eastus",
+    "managedBy": null,
+    "name": "aro-rg",
+    "properties": {
+        "provisioningState": "Succeeded"
+    },
+    "tags": null
+    }
+    ```
+
+2. **Vytvořte virtuální síť.**
+
+    Clustery Azure Red Hat OpenShift se systémem OpenShift 4 vyžadují pro hlavní a pracovní uzly virtuální síť se dvěma prázdnými podsítěmi.
+
+    Vytvořte novou virtuální síť ve stejné skupině prostředků, kterou jste vytvořili dříve.
+
+    ```azurecli-interactive
+    az network vnet create \
+    --resource-group $RESOURCEGROUP \
+    --name aro-vnet \
+    --address-prefixes 10.0.0.0/22
+    ```
+
+    Následující příklad výstupu ukazuje, že virtuální síť byla úspěšně vytvořena:
+
+    ```json
+    {
+    "newVNet": {
+        "addressSpace": {
+        "addressPrefixes": [
+            "10.0.0.0/22"
+        ]
+        },
+        "id": "/subscriptions/<guid>/resourceGroups/aro-rg/providers/Microsoft.Network/virtualNetworks/aro-vnet",
+        "location": "eastus",
+        "name": "aro-vnet",
+        "provisioningState": "Succeeded",
+        "resourceGroup": "aro-rg",
+        "type": "Microsoft.Network/virtualNetworks"
+    }
+    }
+    ```
+
+3. **Přidejte prázdnou podsíť pro hlavní uzly.**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name master-subnet \
+    --address-prefixes 10.0.0.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+4. **Přidejte prázdnou podsíť pro pracovní uzly.**
+
+    ```azurecli-interactive
+    az network vnet subnet create \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --name worker-subnet \
+    --address-prefixes 10.0.2.0/23 \
+    --service-endpoints Microsoft.ContainerRegistry
+    ```
+
+5. **[Zakažte zásady privátního koncového bodu podsítě](https://docs.microsoft.com/azure/private-link/disable-private-link-service-network-policy) v hlavní podsíti.** To je nutné, aby bylo možné připojit a spravovat cluster.
+
+    ```azurecli-interactive
+    az network vnet subnet update \
+    --name master-subnet \
+    --resource-group $RESOURCEGROUP \
+    --vnet-name aro-vnet \
+    --disable-private-link-service-network-policies true
+    ```
+
+## <a name="create-the-cluster"></a>Vytvoření clusteru
+
+Spuštěním následujícího příkazu vytvořte cluster. Volitelně můžete předat tajný klíč pro vyžádání obsahu, který umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem. Přejděte do [Správce clusteru Red Hat OpenShift](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) a kliknutím na **Kopírovat tajný kód pro vyžádání**přístupu na svůj tajný klíč.
+
+```azurecli-interactive
+az aro create \
+  --resource-group $RESOURCEGROUP \
+  --name $CLUSTER \
+  --vnet aro-vnet \
+  --master-subnet master-subnet \
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
 ```
+>[!NOTE]
+> Vytvoření clusteru obvykle trvá přibližně 35 minut.
 
-Nastavit `TENANT` na hodnotu ID klienta, kterou jste uložili v kroku 7 [vytvoření nového klienta](howto-create-tenant.md#create-a-new-azure-ad-tenant)
-
-```bash
-TENANT=<tenant ID>
-```
-
-Vytvořte skupinu prostředků pro cluster. Spusťte následující příkaz ze stejného prostředí Bash, který jste použili k definování výše uvedených proměnných:
-
-```azurecli
-az group create --name $CLUSTER_NAME --location $LOCATION
-```
-
-### <a name="optional-connect-the-clusters-virtual-network-to-an-existing-virtual-network"></a>Volitelné: Připojení virtuální sítě clusteru k existující virtuální síti
-
-Pokud nepotřebujete připojit virtuální síť (VNET) clusteru, který vytvoříte, k existující virtuální síti prostřednictvím partnerského vztahu, tento krok přeskočte.
-
-Pokud partnerský vztah k síti mimo výchozí předplatné pak v tomto předplatném, budete také muset zaregistrovat poskytovatele Microsoft.ContainerService. Chcete-li to provést, spusťte níže uvedený příkaz v tomto předplatném. Jinak pokud virtuální síť, kterou partnerského vztahu je umístěn ve stejném předplatném, můžete přeskočit krok registrace.
-
-`az provider register -n Microsoft.ContainerService --wait`
-
-Nejprve získat identifikátor existující virtuální sítě. Identifikátor bude mít formu: `/subscriptions/{subscription id}/resourceGroups/{resource group of VNET}/providers/Microsoft.Network/virtualNetworks/{VNET name}`.
-
-Pokud neznáte název sítě nebo skupinu prostředků, do které patří existující virtuální síť, přejděte do [okna Virtuální sítě](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Network%2FvirtualNetworks) a klikněte na virtuální síť. Zobrazí se stránka Virtuální síť, která zobrazí název sítě a skupiny prostředků, do které patří.
-
-Definujte proměnnou VNET_ID pomocí následujícího příkazu příkazu příkazu příkazu příkazu PŘÍKAZ VŠAK v prostředí BASH:
-
-```azurecli
-VNET_ID=$(az network vnet show -n {VNET name} -g {VNET resource group} --query id -o tsv)
-```
-
-Příklad: `VNET_ID=$(az network vnet show -n MyVirtualNetwork -g MyResourceGroup --query id -o tsv`
-
-### <a name="optional-connect-the-cluster-to-azure-monitoring"></a>Volitelné: Připojení clusteru k azure monitoringu
-
-Nejprve získejte identifikátor **existujícího** pracovního prostoru analýzy protokolů. Identifikátor bude mít formu:
-
-`/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.OperationalInsights/workspaces/{workspace-id}`.
-
-Pokud neznáte název pracovního prostoru analýzy protokolů nebo skupinu prostředků, do které patří existující pracovní prostor analýzy protokolů, přejděte do [pracovního prostoru Log-Analytics](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) a klikněte na pracovní prostory analýzy protokolů. Zobrazí se stránka pracovního prostoru analýzy protokolu a zobrazí se název pracovního prostoru a skupiny prostředků, do které patří.
-
-_Vytvoření pracovního prostoru analýzy protokolů naleznete v tématu [Vytvoření pracovního prostoru analýzy protokolů](../azure-monitor/learn/quick-create-workspace-cli.md)_
-
-Definujte proměnnou WORKSPACE_ID pomocí následujícího příkazu příkazu příkazu příkazu příkazu PŘÍKAZ VŠAK v prostředí BASH:
-
-```azurecli
-WORKSPACE_ID=$(az monitor log-analytics workspace show -g {RESOURCE_GROUP} -n {NAME} --query id -o tsv)
-```
-
-### <a name="create-the-cluster"></a>Vytvoření clusteru
-
-Nyní jste připraveni vytvořit cluster. Následující vytvoří cluster v zadaném tenantovi Azure AD, zadejte objekt a tajný klíč aplikace Azure AD, který se má použít jako objekt zabezpečení, a skupinu zabezpečení, která obsahuje členy, kteří mají přístup správce ke clusteru.
-
-> [!IMPORTANT]
-> Ujistěte se, že jste správně přidali příslušná oprávnění pro aplikaci Azure AD, jak [je podrobně uvedeno zde](howto-aad-app-configuration.md#add-api-permissions) před vytvořením clusteru
-
-Pokud **cluster neinkují** do virtuální sítě nebo **nechcete** Azure Monitoring, použijte následující příkaz:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID
-```
-
-Pokud **cluster** předáváte do virtuální sítě, použijte následující `--vnet-peer` příkaz, který přidá příznak:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --vnet-peer $VNET_ID
-```
-
-Pokud **chcete** Azure Monitoring s clusterem použít `--workspace-id` následující příkaz, který přidá příznak:
-
-```azurecli
-az openshift create --resource-group $CLUSTER_NAME --name $CLUSTER_NAME -l $LOCATION --aad-client-app-id $APPID --aad-client-app-secret $SECRET --aad-tenant-id $TENANT --customer-admin-group-id $GROUPID --workspace-id $WORKSPACE_ID
-```
-
-> [!NOTE]
-> Pokud se zobrazí chyba, že název hostitele není k dispozici, může to být proto, že název clusteru není jedinečný. Zkuste smazat původní registraci aplikace a předělat kroky s jiným názvem [clusteru](howto-aad-app-configuration.md#create-an-azure-ad-app-registration)v části Vytvoření nové registrace aplikace , vynechání kroku vytvoření nového uživatele a skupiny zabezpečení.
-
-
-
-
-Po několika minutách se `az openshift create` dokončí.
-
-### <a name="get-the-sign-in-url-for-your-cluster"></a>Získání přihlašovací adresy URL pro váš cluster
-
-Získejte adresu URL pro přihlášení ke clusteru spuštěním následujícího příkazu:
-
-```azurecli
-az openshift show -n $CLUSTER_NAME -g $CLUSTER_NAME
-```
-
-Podívejte se `publicHostName` na výstupu, například:`"publicHostname": "openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io"`
-
-Za přihlašovací adresou URL `https://` vašeho clusteru `publicHostName` bude následovat hodnota.  Například: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`.  Tento identifikátor URI použijete v dalším kroku jako součást identifikátoru URI přesměrování registrace aplikace.
-
-## <a name="step-3-update-your-app-registration-redirect-uri"></a>Krok 3: Aktualizace identifikátoru URI přesměrování registrace aplikace
-
-Teď, když máte přihlašovací adresu URL pro cluster, nastavte urozhraní přesměrování registrace aplikace:
-
-1. Otevřete [okno Registrace aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview).
-2. Klikněte na objekt registrace aplikace.
-3. Klikněte na **Přidat identifikátor URI přesměrování**.
-4. Ujistěte se, že **typ** je **web** a nastavte identifikátor **URI přesměrování** pomocí následujícího vzoru: `https://<public host name>/oauth2callback/Azure%20AD`. Příklad: `https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io/oauth2callback/Azure%20AD`
-5. Klikněte na **Uložit.**
-
-## <a name="step-4-sign-in-to-the-openshift-console"></a>Krok 4: Přihlášení ke konzoli OpenShift
-
-Nyní jste připraveni přihlásit se ke konzoli OpenShift pro váš nový cluster. [Webová konzola OpenShift](https://docs.openshift.com/aro/architecture/infrastructure_components/web_console.html) umožňuje vizualizovat, procházet a spravovat obsah vašich projektů OpenShift.
-
-Budete potřebovat novou instanci prohlížeče, která není uložena do mezipaměti identity, kterou běžně používáte k přihlášení k portálu Azure.
-
-1. Otevřete *anonymní* okno (Chrome) nebo *InPrivate* (Microsoft Edge).
-2. Přejděte na přihlašovací adresu URL, kterou jste získali výše, například:`https://openshift.xxxxxxxxxxxxxxxxxxxx.eastus.azmosa.io`
-
-Přihlaste se pomocí uživatelského jména, které jste vytvořili v kroku 3 [vytvoření nového uživatele služby Azure Active Directory](howto-aad-app-configuration.md#create-a-new-azure-active-directory-user).
-
-Zobrazí se dialogové okno **Požadovaná oprávnění.** Klikněte **jménem organizace na Souhlas** a potom klikněte na **Přijmout**.
-
-Nyní jste přihlášeni ke konzole clusteru.
-
-![Snímek obrazovky clusterové konzole OpenShift](./media/aro-console.png)
-
- Další informace o [používání konzoly OpenShift](https://docs.openshift.com/aro/getting_started/developers_console.html) k vytváření a vytváření obrázků v dokumentaci [k Red Hat OpenShift.](https://docs.openshift.com/aro/welcome/index.html)
-
-## <a name="step-5-install-the-openshift-cli"></a>Krok 5: Instalace cli OpenShift
-
-[Příkazy Cli (nebo](https://docs.openshift.com/aro/cli_reference/get_started_cli.html) *OC Tools)* openshift poskytují příkazy pro správu aplikací a nástroje nižší úrovně pro interakci s různými součástmi clusteru OpenShift.
-
-V konzole OpenShift klikněte na otazník v pravém horním rohu podle přihlašovacího jména a vyberte **Nástroje příkazového řádku**.  Chcete-li stáhnout a nainstalovat podporované rozhraní OK CLI pro Linux, MacOS nebo Windows, postupujte podle odkazu **Nejnovější verze.**
-
-> [!NOTE]
-> Pokud se ikona otazníku v pravém horním rohu nezobrazuje, vyberte *katalog služeb* nebo *konzolu aplikací* z rozevíracího seznamu v levém horním rohu.
+>[!IMPORTANT]
+> Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com`, jako je místo v předdefinované doméně. `https://console-openshift-console.apps.<random>.<location>.aroapp.io`
 >
-> Alternativně si můžete [stáhnout ok CLI](https://www.okd.io/download.html) přímo.
-
-Stránka **Nástroje příkazového řádku** poskytuje `oc login https://<your cluster name>.<azure region>.cloudapp.azure.com --token=<token value>`příkaz formuláře .  Chcete-li tento příkaz zkopírovat, klepněte na tlačítko Kopírovat *do schránky.*  V okně terminálu [nastavte cestu](https://docs.okd.io/latest/cli_reference/openshift_cli/getting-started-cli.html#installing-the-cli) tak, aby zahrnovala místní instalaci nástrojů oc. Pak se přihlaste ke clusteru pomocí příkazu příkazu příkazu příkazu příkazu c) oc, který jste zkopírovali.
-
-Pokud se vám nepodařilo získat hodnotu tokenu pomocí výše `https://<your cluster name>.<azure region>.cloudapp.azure.com/oauth/token/request`uvedených kroků, získejte hodnotu tokenu z: .
+> Ve výchozím nastavení používá OpenShift certifikáty podepsané svým držitelem pro všechny trasy vytvořené v `*.apps.<random>.<location>.aroapp.io`nástroji.  Pokud se po připojení ke clusteru rozhodnete použít vlastní DNS, budete muset postupovat podle dokumentace OpenShift a [nakonfigurovat vlastní CA pro váš kontroler](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) příchozího přístupu a [vlastní CA pro váš Server API](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html).
+>
 
 ## <a name="next-steps"></a>Další kroky
 
 V této části kurzu jste se naučili:
-
 > [!div class="checklist"]
-> * Vytvoření clusteru Azure Red Hat OpenShift
+> * Nastavení požadavků a vytvoření požadované virtuální sítě a podsítí
+> * Nasazení clusteru
 
 Přejděte k dalšímu kurzu:
 > [!div class="nextstepaction"]
-> [Škálování clusteru Azure Red Hat OpenShift](tutorial-scale-cluster.md)
+> [Připojení ke clusteru Azure Red Hat OpenShift](tutorial-connect-cluster.md)

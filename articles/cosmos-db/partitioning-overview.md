@@ -1,54 +1,83 @@
 ---
 title: Dělení ve službě Azure Cosmos DB
-description: Informace o dělení v Azure Cosmos DB, osvědčené postupy při výběru klíče oddílu a jak spravovat logické oddíly
-author: markjbrown
-ms.author: mjbrown
+description: Přečtěte si o dělení Azure Cosmos DB, osvědčených postupech při volbě klíče oddílu a o tom, jak spravovat logické oddíly.
+author: deborahc
+ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 551703b5dcca082904197010366ee059998dde4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251866"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234175"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 
-Azure Cosmos DB používá dělení škálování jednotlivých kontejnerů v databázi tak, aby vyhovovaly potřebám výkonu vaší aplikace. Při dělení jsou položky v kontejneru rozděleny do odlišných podmnožiny *nazývaných logické oddíly*. Logické oddíly jsou vytvořeny na základě hodnoty *klíče oddílu,* který je přidružen ke každé položce v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
+Azure Cosmos DB používá dělení ke škálování jednotlivých kontejnerů v databázi tak, aby splňovaly požadavky vaší aplikace na výkon. Při dělení jsou položky v kontejneru rozděleny do samostatných dílčích množin nazývaných *logické oddíly*. Logické oddíly se vytvoří na základě hodnoty *klíče oddílu* , který je spojený s každou položkou v kontejneru. Všechny položky v logickém oddílu mají stejnou hodnotu klíče oddílu.
 
-Kontejner například obsahuje položky. Každá položka má jedinečnou `UserID` hodnotu pro vlastnost. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru `UserID` a existují 1 000 jedinečné hodnoty, 1 000 logické oddíly jsou vytvořeny pro kontejner.
+Například kontejner obsahuje položky. Každá položka má jedinečnou hodnotu pro `UserID` vlastnost. Pokud `UserID` slouží jako klíč oddílu pro položky v kontejneru a jsou-li k dispozici jedinečné `UserID` hodnoty 1 000, jsou pro kontejner vytvořeny logické oddíly 1 000.
 
-Kromě klíče oddílu, který určuje logický oddíl položky, má každá položka v kontejneru *ID položky* (jedinečné v rámci logického oddílu). Kombinace klíče oddílu a ID položky vytvoří *index*položky , který jednoznačně identifikuje položku.
+Kromě klíče oddílu, který určuje logický oddíl položky, každá položka v kontejneru má *ID položky* (jedinečné v rámci logického oddílu). Kombinování klíče oddílu a *ID položky* vytvoří *index*položky, který položku jednoznačně identifikuje.
 
-[Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) je důležité rozhodnutí, které ovlivní výkon vaší aplikace.
+[Výběr klíče oddílu](partitioning-overview.md#choose-partitionkey) je důležité rozhodnutí, které bude mít vliv na výkon vaší aplikace.
 
 ## <a name="managing-logical-partitions"></a>Správa logických oddílů
 
-Azure Cosmos DB transparentně a automaticky spravuje umístění logických oddílů na fyzické oddíly efektivně uspokojit škálovatelnost a požadavky na výkon kontejneru. Jako propustnost a požadavky na úložiště aplikace zvýšit, Azure Cosmos DB přesune logické oddíly automaticky rozložit zatížení přes větší počet serverů. 
+Azure Cosmos DB transparentně a automaticky spravuje umístění logických oddílů na fyzických oddílech, aby bylo možné efektivně splnit požadavky na škálovatelnost a výkon kontejneru. V rámci zvýšení propustnosti a požadavků na úložiště se Azure Cosmos DB přesune logické oddíly, aby se zatížení automaticky rozšířilo do většího počtu fyzických oddílů. Můžete se dozvědět víc o [fyzických oddílech](partition-data.md#physical-partitions).
 
-Azure Cosmos DB používá dělení založené na hash k rozložení logických oddílů mezi fyzické oddíly. Azure Cosmos DB hashes hodnota klíče oddílu položky. Výsledek hashed určuje fyzický oddíl. Azure Cosmos DB pak přiděluje klíčové místo klíče oddílu hashe rovnoměrně přes fyzické oddíly.
+Azure Cosmos DB pro rozprostření logických oddílů mezi fyzickými oddíly používá dělení na základě hodnoty hash. Azure Cosmos DB hodnota hash hodnot klíče oddílu položky. Výsledek s hodnotou hash Určuje fyzický oddíl. Pak Azure Cosmos DB přiděluje klíčové místo hodnot hash klíče oddílu rovnoměrně napříč fyzickými oddíly.
 
-Dotazy, které přistupují k datům v rámci jednoho logického oddílu, jsou nákladově efektivnější než dotazy, které přistupují k více oddílům. Transakce (v uložených procedurách nebo aktivačních událostech) jsou povoleny pouze proti položkám v jednom logickém oddílu.
+Transakce (v uložených procedurách nebo triggerech) jsou povoleny pouze proti položkám v jednom logickém oddílu.
 
-Další informace o tom, jak Azure Cosmos DB spravuje oddíly, najdete [v tématu logické oddíly](partition-data.md). (Není nutné pochopit vnitřní podrobnosti pro sestavení nebo spuštění aplikací, ale přidáno zde pro zvědavé čtenáře.)
+Další informace o tom, [jak Azure Cosmos DB spravuje oddíly](partition-data.md), najdete v tématu. (Není nutné porozumět interním podrobnostem pro sestavování a spouštění aplikací, ale zde jste přidaní pro čtečku zajímá.)
 
 ## <a name="choosing-a-partition-key"></a><a id="choose-partitionkey"></a>Výběr klíče oddílu
 
-Následující je vhodné pokyny pro výběr klíče oddílu:
+Výběr klíče oddílu je jednoduchá, ale důležitá volba návrhu v Azure Cosmos DB. Jakmile vyberete klíč oddílu, není možné ho změnit na místě. Pokud potřebujete změnit klíč oddílu, měli byste přesunout data do nového kontejneru s novým požadovaným klíčem oddílu.
 
-* Jeden logický oddíl má horní limit 20 GB úložiště.  
+Pro **všechny** kontejnery by měl klíč oddílu:
 
-* Kontejnery Azure Cosmos mají minimální propustnost 400 jednotek požadavku za sekundu (RU/s). Když je zřízena propustnost v databázi, minimální ru na kontejner je 100 jednotek požadavku za sekundu (RU/s). Požadavky na stejný klíč oddílu nesmí překročit propustnost, která je přidělena oddílu. Pokud požadavky překročí přidělenou propustnost, požadavky jsou omezeny sazbou. Proto je důležité vybrat klíč oddílu, který nemá za následek "aktivní body" v rámci aplikace.
+* Vlastnost, která má hodnotu, která se nemění. Pokud je vlastnost klíčem oddílu, nemůžete tuto hodnotu vlastnosti aktualizovat.
+* Máte vysokou mohutnost. Jinými slovy, vlastnost by měla mít široké spektrum možných hodnot.
+* Využití jednotky (RU) požadavků na rozprostření (RU) a úložiště dat rovnoměrně napříč všemi logickými oddíly. Tím se zajistí i využití a distribuce úložiště mezi fyzickými oddíly.
 
-* Zvolte klíč oddílu, který má širokou škálu hodnot a vzory přístupu, které jsou rovnoměrně rozloženy mezi logické oddíly. To pomáhá šířit data a aktivity v kontejneru napříč sadou logických oddílů, takže prostředky pro ukládání dat a propustnost lze distribuovat mezi logické oddíly.
+Pokud budete potřebovat [transakce s kyselými položkami](database-transactions-optimistic-concurrency.md#multi-item-transactions) v Azure Cosmos DB, bude nutné použít [uložené procedury nebo triggery](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures). Všechny uložené procedury a triggery založené na JavaScriptu jsou vymezeny na jeden logický oddíl.
 
-* Zvolte klíč oddílu, který rovnoměrně rozloží úlohu ve všech oddílech a rovnoměrně v průběhu času. Vaše volba klíče oddílu by měla vyvážit potřebu efektivní oddíl dotazy a transakce proti cíli distribuce položek mezi více oddílů k dosažení škálovatelnosti.
+## <a name="partition-keys-for-read-heavy-containers"></a>Klíče oddílů pro kontejnery pro čtení a těžký přístup
 
-* Kandidáti pro klíče oddílů může obsahovat vlastnosti, které se často zobrazují jako filtr v dotazech. Dotazy lze efektivně směrovat zahrnutím klíče oddílu do predikátu filtru.
+U většiny kontejnerů je výše uvedená kritéria při vybírání klíče oddílu všechno potřeba zvážit. U velkých kontejnerů pro čtení ale můžete chtít zvolit klíč oddílu, který se často objevuje jako filtr v dotazech. Dotazy mohou být [efektivně směrovány pouze na příslušné fyzické oddíly](how-to-query-container.md#in-partition-query) zahrnutím klíče oddílu do predikátu filtru.
+
+Pokud jsou většina požadavků na vaše úlohy dotazy a většina vašich dotazů má pro stejnou vlastnost filtr rovnosti, může být tato vlastnost vhodnou volbou klíče oddílu. Pokud třeba často spustíte dotaz, který filtrujete `UserID`, pak výběrem možnosti `UserID` klíč oddílu snížíte počet [dotazů mezi oddíly](how-to-query-container.md#avoiding-cross-partition-queries).
+
+Pokud je ale váš kontejner malý, pravděpodobně nemáte dostatek fyzických oddílů, abyste se museli starat o dopad na výkon dotazů mezi oddíly. Většina malých kontejnerů v Azure Cosmos DB vyžaduje pouze jeden nebo dva fyzické oddíly.
+
+Pokud by váš kontejner mohl růst na více než několik fyzických oddílů, měli byste si vybrat klíč oddílu, který minimalizuje dotazy mezi oddíly. Váš kontejner bude vyžadovat více než několik fyzických oddílů, pokud je splněna jedna z následujících podmínek:
+
+* Váš kontejner bude mít zajištěné více než 30 000 RU.
+* Kontejner bude obsahovat více než 100 GB dat.
+
+## <a name="using-item-id-as-the-partition-key"></a>Použití ID položky jako klíče oddílu
+
+Pokud má váš kontejner vlastnost, která má široké spektrum možných hodnot, je pravděpodobné, že je vhodný klíč oddílu. Jedním z možných příkladů takové vlastnosti je *ID položky*. Pro malé kontejnery pro čtení nebo zapisovatelné kontejnery libovolné velikosti je *ID položky* přirozeně skvělým výběrem pro klíč oddílu.
+
+*ID položky* systémové vlastnosti je zaručeno, že existuje v každé položce v kontejneru Cosmos. Můžete mít další vlastnosti, které reprezentují logické ID vaší položky. V mnoha případech jsou to také skvělé volby klíče oddílu ze stejných důvodů jako *ID položky*.
+
+*ID položky* je skvělý výběr klíče oddílu z následujících důvodů:
+
+* Existuje celá řada možných hodnot (jedno jedinečné *ID položky* na jednu položku).
+* Vzhledem k tomu, že existuje jedinečné *ID položky* na jednu položku, má *ID položky* skvělou úlohu s rovnoměrně vyvážením využití ru a úložiště dat.
+* Můžete snadno provádět efektivní čtení bodů, protože poznáte jeho *ID*, vždy znát klíč oddílu položky.
+
+Je potřeba vzít v úvahu několik věcí, které byste měli zvážit při výběru *ID položky* jako klíč oddílu:
+
+* Pokud je *ID položky* klíč oddílu, stane se jedinečným identifikátorem v celém rámci celého kontejneru. Nebudete moct mít položky, které mají duplicitní *ID položky*.
+* Pokud máte kontejner pro čtení s velkým množstvím [fyzických oddílů](partition-data.md#physical-partitions), dotazy budou efektivnější, pokud mají filtr rovnosti s *ID položky*.
+* Uložené procedury nebo triggery nemůžete spouštět v několika logických oddílech.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [dělení a horizontální škálování v Azure Cosmos DB](partition-data.md).
-* Informace o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
-* Další informace o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).
+* Přečtěte si o [dělení a horizontálním škálování v Azure Cosmos DB](partition-data.md).
+* Přečtěte si o [zřízené propustnosti v Azure Cosmos DB](request-units.md).
+* Přečtěte si o [globální distribuci v Azure Cosmos DB](distribute-data-globally.md).

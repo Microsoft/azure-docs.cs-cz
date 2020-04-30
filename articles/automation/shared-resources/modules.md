@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114270"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508951"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Správa modulů ve službě Azure Automation
 
@@ -21,8 +21,9 @@ Azure Automation umožňuje importovat moduly PowerShellu a povolit rutiny v sad
 
 * [Azure PowerShell AZ. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM. Automation](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
-* Interní `Orchestrator.AssetManagement.Cmdlets` modul pro agenta Log Analytics pro Windows
 * Jiné moduly PowerShellu
+* Interní `Orchestrator.AssetManagement.Cmdlets` modul
+* Moduly Python 2
 * Vlastní moduly, které vytvoříte 
 
 Když vytvoříte účet Automation, Azure Automation ve výchozím nastavení importují některé moduly. Viz [výchozí moduly](#default-modules).
@@ -96,9 +97,13 @@ Všimněte si, že se interní rutiny liší v pojmenování pomocí rutin AZ a 
 
 Pro manipulaci s Azure Automation prostředky mimo kontext Runbooku doporučujeme použít rutiny AZ nebo AzureRM. 
 
-## <a name="module-supporting-get-automationpscredential"></a>Modul podporující Get-AutomationPSCredential
+## <a name="orchestratorassetmanagementcmdlets-module"></a>Orchestrator. AssetManagement. rutiny – modul
 
-`Get-AutomationPSCredential` Rutina je součástí modulu `Orchestrator.AssetManagement.Cmdlets`. Tato rutina vrátí `PSCredential` objekt, který je očekáván většinou rutin PowerShellu, které pracují s přihlašovacími údaji. Další informace o použití přihlašovacích údajů v Azure Automation najdete v části [assety s přihlašovacími údaji v Azure Automation](credentials.md).
+Azure Automation podporuje interní `Orchestrator.AssetManagement.Cmdlets` modul pro Log Analytics agenta pro Windows, který je ve výchozím nastavení nainstalovaný. `Get-AutomationPSCredential` Rutina v tomto modulu se běžně používá v sadách Runbook k načtení `PSCredential` objektu, který je očekáván většinou rutin PowerShellu, které pracují s přihlašovacími údaji. Další informace o použití přihlašovacích údajů v Azure Automation najdete v části [assety s přihlašovacími údaji v Azure Automation](credentials.md).
+
+## <a name="python-modules"></a>Moduly Pythonu
+
+Můžete vytvořit Runbooky v Pythonu 2 v Azure Automation. Informace o modulu Pythonu najdete [v tématu Správa balíčků Python 2 v Azure Automation](../python-packages.md).
 
 ## <a name="migrating-to-az-modules"></a>Migrace na az modules
 
@@ -117,7 +122,7 @@ Import modulu AZ Module do účtu Automation neprovede automatický import modul
 * Když sada Runbook vyvolá rutinu z modulu
 * Pokud sada Runbook importuje modul explicitně pomocí rutiny [Import-Module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7)
 * Když sada Runbook importuje jiný závislý modul
-    
+
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>Testování pro vaše Runbooky a konfigurace DSC před migrací modulu
 
 Před migrací na moduly AZ modules nezapomeňte všechny Runbooky a konfigurace DSC pečlivě otestovat v samostatném účtu Automation. 

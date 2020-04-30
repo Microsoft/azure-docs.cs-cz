@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: a9c167c5767a4156147e13a1e4ae21162e506474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3618e6d3fe919bc06496d5b41d162bd211c3d404
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445862"
+ms.locfileid: "82231930"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Vytváření, plánování a spouštění opakujících se úloh a pracovních postupů s triggerem opakování v Azure Logic Apps
 
@@ -77,7 +77,7 @@ Rozdíly mezi touto triggerem a aktivační událostí posuvných oken nebo dal�
    | **Časové pásmo** | `timeZone` | Ne | Řetězec | Platí pouze v případě, že zadáte čas spuštění, protože tato aktivační událost nepřijímá [posun UTC](https://en.wikipedia.org/wiki/UTC_offset). Vyberte časové pásmo, které chcete použít. |
    | **Čas spuštění** | `startTime` | Ne | Řetězec | Zadejte počáteční datum a čas v tomto formátu: <p>RRRR-MM-DDThh: mm: SS Pokud vyberete časové pásmo <p>-nebo- <p>RRRR-MM-DDThh: mm: ssZ, pokud nevyberete časové pásmo <p>Pokud například požadujete 18. září 2017 na 2:00 odp., zadejte "2017-09-18T14:00:00" a vyberte časové pásmo, například Tichomoří (běžný čas). Případně zadejte "2017-09-18T14:00:00Z" bez časového pásma. <p>**Poznámka:** Tento počáteční čas má v budoucnosti maximálně 49 let a musí následovat za [specifikací data a času ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ve [formátu data](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)a času UTC, ale bez [posunu UTC](https://en.wikipedia.org/wiki/UTC_offset). Pokud nevyberete časové pásmo, je nutné na konci přidat písmeno "Z" bez mezer. Tento "Z" odkazuje na ekvivalentní [námořní čas](https://en.wikipedia.org/wiki/Nautical_time). <p>V případě jednoduchých plánů je počáteční čas prvním výskytem, ale u složitých plánů se Trigger neaktivuje dříve, než je čas spuštění. [*Jaké jsou způsoby, jak můžu použít počáteční datum a čas?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    | **V tyto dny** | `weekDays` | Ne | Řetězec nebo pole řetězců | Pokud vyberete týden, můžete vybrat jeden nebo více dní, kdy chcete pracovní postup spustit: **pondělí**, **úterý**, **Středa**, **čtvrtek**, **pátek**, **sobota**a **neděle** . |
-   | **V těchto hodinách** | `hours` | Ne | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 23 jako hodiny dne, kdy chcete pracovní postup spustit. <p><p>Pokud například zadáte "10", "12" a "14", dostanete v hodinách dne 10 DOP., 12 hodin a 2 ODP. v závislosti na dni se ale vypočítají minuty dne v závislosti na spuštění opakování. Chcete-li nastavit minuty dne, zadejte hodnotu vlastnosti pro tento počet **minut** . |
+   | **V těchto hodinách** | `hours` | Ne | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 23 jako hodiny dne, kdy chcete pracovní postup spustit. <p><p>Pokud například zadáte "10", "12" a "14", dostanete v hodinách dne 10 DOP., 12 hodin a 2 ODP. v závislosti na dni se ale vypočítají minuty dne v závislosti na spuštění opakování. Chcete-li nastavit konkrétní minuty dne, například 10:00 dop. 12:00 odp. a 2:00 PM, zadejte tyto hodnoty pomocí vlastnosti **v těchto minutách** . |
    | **V těchto minutách** | `minutes` | Ne | Celočíselné nebo celočíselné pole | Pokud vyberete "Day" nebo "Week", můžete vybrat jedno nebo více celých čísel od 0 do 59 jako minuty hodiny, kdy chcete pracovní postup spustit. <p>Například můžete zadat "30" jako znak minuty a použít předchozí příklad pro hodiny dne, získáte 10:30 dop. 12:30 ODP. a 2:30 PM. |
    |||||
 

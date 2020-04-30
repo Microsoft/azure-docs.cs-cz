@@ -1,81 +1,85 @@
 ---
-title: Poradce při potížích s testy dostupnosti Azure Application Insights
-description: Poradce při potížích s webovými testy v Azure Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
+title: Řešení potíží s testy dostupnosti služby Azure Application Insights
+description: Řešení potíží s webovými testy v Azure Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 09/19/2019
+ms.date: 04/28/2020
 ms.reviewer: sdash
-ms.openlocfilehash: 94b00a36445b0f4284caba218f6416db726611eb
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 8f03099cf2890882a1c1d4ba9d69fcb64d0db600
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81255443"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233954"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
-Tento článek vám pomůže vyřešit běžné problémy, které mohou nastat při použití monitorování dostupnosti.
+Tento článek vám pomůže vyřešit běžné problémy, ke kterým může dojít při použití monitorování dostupnosti.
 
 ## <a name="ssltls-errors"></a>Chyby SSL/TLS
 
-|Zpráva o příznaku/chybě| Možné příčiny|
+|Příznak/chybová zpráva| Možné příčiny|
 |--------|------|
-|Nelze vytvořit zabezpečený kanál SSL/TLS.  | Verze SSL. Podporovány jsou pouze TLS 1.0, 1.1 a 1.2. **SSLv3 není podporován.**
-|TLSv1.2 Record Layer: Výstraha (Úroveň: Fatální, Popis: Bad Record MAC)| Další [informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)naleznete v tématu StackExchange thread .
-|Adresa URL, která selhává, je pro síť CDN (Content Delivery Network) | Příčinou může být nesprávnou konfigurací |  
+|Nejde vytvořit zabezpečený kanál SSL/TLS.  | Verze SSL. Podporují se jenom TLS 1,0, 1,1 a 1,2. **Protokolu SSLv3 se nepodporuje.**
+|Vrstva záznamu TLSv 1.2: výstraha (úroveň: závažná, popis: chybný záznam v počítači MAC)| [Další informace](https://security.stackexchange.com/questions/39844/getting-ssl-alert-write-fatal-bad-record-mac-during-openssl-handshake)najdete v tématu věnovaném vláknu stackexchange.
+|Neúspěšná adresa URL je CDN (Content Delivery Network) | To může být způsobeno chybnou konfigurací v síti CDN. |  
 
-### <a name="possible-workaround"></a>Možné řešení
+### <a name="possible-workaround"></a>Možná alternativní řešení
 
-* Pokud adresy URL, které dochází k problému jsou vždy závislé prostředky, je doporučeno zakázat **požadavky závislé na analýzách** pro webový test.
+* Pokud jsou adresy URL, u kterých dochází k problému, vždy závislé prostředky, doporučuje se zakázat **zpracování závislých požadavků** pro webový test.
 
-## <a name="test-fails-only-from-certain-locations"></a>Test se nezdaří pouze z určitých míst
+## <a name="test-fails-only-from-certain-locations"></a>Test se nezdařil pouze z určitých umístění
 
-|Zpráva o příznaku/chybě| Možné příčiny|
+|Příznak/chybová zpráva| Možné příčiny|
 |----|---------|
-|Pokus o připojení se nezdařil, protože připojená strana po určité době neodpověděla správně  | Testovací agenti v určitých umístěních jsou blokováni bránou firewall.|
-|    |K přesměrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu, Azure Express Route.) 
-|    |Pokud používáte Azure ExpressRoute, existují scénáře, kde pakety mohou být vynechány v případech, kdy [dojde k asymetrickésměrování](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
+|Pokus o připojení se nezdařil, protože připojená strana nereagovala po určitém časovém intervalu správně.  | Testovací agenti v určitých umístěních jsou blokovány bránou firewall.|
+|    |K opětovnému směrování určitých IP adres dochází prostřednictvím (nástroje pro vyrovnávání zatížení, správci geografického provozu a Azure Express Route). 
+|    |Pokud používáte Azure ExpressRoute, existují scénáře, kdy se pakety můžou vyřadit v případech, kdy [dojde k asymetrickému směrování](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing).|
 
 ## <a name="test-failure-with-a-protocol-violation-error"></a>Selhání testu s chybou porušení protokolu
 
-|Zpráva o příznaku/chybě| Možné příčiny| Možná řešení |
+|Příznak/chybová zpráva| Možné příčiny| Možná řešení |
 |----|---------|-----|
-|Server se dopustil porušení protokolu. Section=ResponseHeader Detail=CR musí následovat LF | K tomu dochází, když jsou zjištěny poškozené hlavičky. Konkrétně některé hlavičky nemusí používat CRLF k označení konce řádku, což porušuje specifikaci HTTP. Application Insights vynucuje tuto specifikaci HTTP a selže odpovědi s poškozenými záhlaví.| a. Obraťte se na poskytovatele hostitele webových stránek / poskytovatele CDN opravit vadné servery. <br> b. V případě, že neúspěšné požadavky jsou prostředky (např. soubory stylů, obrázky, skripty), můžete zvážit zakázání analýzy závislých požadavků. Mějte na paměti, pokud tak učiníte, ztratíte možnost sledovat dostupnost těchto souborů).
+|Server potvrdil narušení protokolu. Oddíl = ResponseHeader detail = CR musí být následován znakem LF. | K tomu dochází, když jsou zjištěna chybná záhlaví. Konkrétně některá záhlaví nemusí používat znaky CRLF k označení konce řádku, což porušuje specifikaci protokolu HTTP. Application Insights vynucuje tuto specifikaci HTTP a neúspěšné odpovědi s nesprávně vytvořenými záhlavími.| a. Pokud chcete opravit chybné servery, obraťte se na poskytovatele hostitele webu nebo poskytovatele CDN. <br> b. V případě, že neúspěšné požadavky jsou prostředky (například soubory stylu, obrázky, skripty), můžete zvážit zakázání analýzy závislých požadavků. Mějte na paměti, že pokud to uděláte, ztratíte možnost sledovat dostupnost těchto souborů.
 
 > [!NOTE]
-> Adresa URL nemusí selhat v prohlížečích, které mají uvolněné ověření záhlaví PROTOKOLU HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-## <a name="common-troubleshooting-questions"></a>Běžné otázky k řešení potíží
+## <a name="common-troubleshooting-questions"></a>Běžné otázky k odstraňování potíží
 
-### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Web vypadá v pořádku, ale vidím selhání testu Proč mě Application Insights upozorňují?
+### <a name="site-looks-okay-but-i-see-test-failures-why-is-application-insights-alerting-me"></a>Web vypadá v pořádku, ale vidím selhání testu Proč mi Application Insights upozorňování?
 
-   * Má váš test **analyzovat závislé požadavky povoleny?** To má za následek přísnou kontrolu zdrojů, jako jsou skripty, obrázky atd. Tyto typy selhání nemusí být patrné v prohlížeči. Zkontrolujte všechny image, skripty, šablony stylů a všechny další soubory, které stránka načetla. Pokud některý z nich selže, test se ohlásí jako neúspěšný, i když se hlavní stránka HTML načte bez problémů. Chcete-li znecitlivit test na takové selhání prostředků, jednoduše zrušit zaškrtnutí analýzy závislé požadavky z konfigurace testu.
+   * Má váš test povolené **analyzovat závislé požadavky** ? Výsledkem je striktní kontroly nad prostředky, jako jsou skripty, obrázky atd. Tyto typy selhání nemusí být v prohlížeči patrné. Zkontrolujte všechny image, skripty, šablony stylů a všechny další soubory, které stránka načetla. Pokud některý z nich dojde k selhání, test se ohlásí jako neúspěšný, i když se hlavní HTML stránka načte bez problémů. Pro desenzibilizaci testu u takových selhání prostředků jednoduše zrušte kontrolu požadavků závislých na analýze z konfigurace testu.
 
-   * Chcete-li snížit pravděpodobnost šumu z přechodných síťových výstřiků atd., ujistěte se, že je kontrolována možnost Povolit opakování pro selhání testu. Můžete také testovat z více míst a odpovídajícím způsobem spravovat prahovou hodnotu pravidla výstrahy, abyste zabránili problémům specifickým pro umístění, které způsobují nepatřičná upozornění.
+   * Pokud chcete snížit lichá hluku z přechodné síťové výkyvů atd., zkontrolujte, že je zaškrtnuté políčko Povolit opakování pro konfiguraci selhání testu. Můžete také testovat z více umístění a spravovat prahovou hodnotu pravidla výstrahy, aby se zabránilo problémům specifickým pro konkrétní umístění, což způsobuje neoprávněné výstrahy.
 
-   * Kliknutím na některou z červených tečů ze zkušenosti s dostupností nebo na jakékoli selhání dostupnosti z průzkumníka vyhledávání zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu spolu s korelační telemetrií na straně serveru (pokud je povolena) by měl pomoci pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
+   * Kliknutím na kteroukoli z těchto červených teček v možnosti dostupnosti nebo jakékoli chybě dostupnosti z Průzkumníka služby Search zobrazíte podrobnosti o tom, proč jsme chybu nahlásili. Výsledek testu, společně s korelační telemetrie na straně serveru (Pokud je povolen), by měl pomáhat pochopit, proč se test nezdařil. Běžné příčiny přechodných problémů jsou problémy se sítí nebo připojením.
 
-   * Byl zkušební časový výtok? Testy přerušíme po dvou minutách. Pokud váš ping nebo vícestupňový test trvá déle než 2 minuty, nahlásíme to jako selhání. Zvažte rozdělení testu na více, které lze dokončit v kratšídobě trvání.
+   * Vypršel časový limit testu? Testy jsme přerušili po 2 minutách. Pokud váš test příkazů nebo testování více kroků trvá déle než 2 minuty, pošleme vám zprávu jako chybu. Zvažte rozdělení testu na násobky, které mohou být dokončeny v kratší dobu.
 
-   * Hlásily všechny lokality selhání, nebo jen některé z nich? Pokud pouze některé hlášené chyby, může to být způsobeno problémy sítě /CDN. Opět platí, že kliknutím na červené tečky by měl y pomoci pochopit, proč umístění hlášeny chyby.
+   * Nahlásila se všechna umístění jako neúspěšná nebo jenom některá z nich? Pokud se jedná o pouze některé hlášené chyby, může to být způsobeno problémy se sítí nebo CDN. Opětovným kliknutím na červené tečky by bylo užitečné pochopit, proč se v umístění nahlásilo selhání.
 
-### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nedostal jsem e-mail, když se výstraha spustila, nebo vyřešena nebo obojí?
+### <a name="i-did-not-get-an-email-when-the-alert-triggered-or-resolved-or-both"></a>Nedostali jsme mi e-mail, když se aktivuje výstraha, nebo se vyřešilo?
 
-Zkontrolujte klasickou konfiguraci výstrah a potvrďte, že váš e-mail je přímo uveden, nebo je distribuční seznam, na který se nacházíte, nakonfigurován tak, aby přijímali oznámení. Pokud ano, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Zkontrolujte také, zda správce pošty může mít nakonfigurované zásady, které mohou způsobit tento problém.
+Zkontrolujte konfiguraci klasických výstrah a potvrďte, že je váš e-mail přímo uveden, nebo distribuční seznam, na který jste v systému nakonfigurované, aby přijímal oznámení. Pokud je, zkontrolujte konfiguraci distribučního seznamu a potvrďte, že může přijímat externí e-maily. Také se podívejte, jestli správce pošty může mít nakonfigurované nějaké zásady, které by mohly způsobovat tento problém.
 
-### <a name="i-did-not-receive-the-webhook-notification"></a>Neobdržel(a) jsem oznámení o webhooku?
+### <a name="i-did-not-receive-the-webhook-notification"></a>Nedostali jsme oznámení Webhooku?
 
-Zkontrolujte, zda aplikace přijímající oznámení webhooku je k dispozici a úspěšně zpracovává požadavky webhooku. Další informace naleznete v [tomto](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) tématu.
+Zkontrolujte, zda je k dispozici aplikace, která přijímá oznámení Webhooku, a úspěšně zpracuje žádosti Webhooku. Další informace najdete v [tomto](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) tématu.
+
+### <a name="i-am-getting--403-forbidden-errors-what-does-this-mean"></a>Zobrazují se chyby 403 zakázáno, co to znamená?
+
+Tato chyba označuje, že je potřeba přidat výjimky brány firewall, aby mohli agenti dostupnosti otestovat cílovou adresu URL. Úplný seznam IP adres agenta, který se má použít, najdete v [článku věnovaném výjimkám IP](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses#availability-tests).
 
 ### <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>Občasné selhání testu s chybou porušení protokolu
 
-Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“) značí problémy se serverem (nebo závislostmi). To se stává, když jsou v odpovědi nastavena chybně vytvořená záhlaví. Příčinou mohou být nástroje pro vyrovnávání zatížení nebo CDN. Konkrétně některé hlavičky nemusí používat CRLF k označení konce řádku, což porušuje specifikaci PROTOKOLU HTTP a proto se nezdaří ověření na úrovni .NET WebRequest. Zkontrolujte odpověď na záhlaví bodů, která mohou být v rozporu.
+Chyba („Porušení protokolu... Znak CR musí být následován znakem LF.“) značí problémy se serverem (nebo závislostmi). To se stává, když jsou v odpovědi nastavena chybně vytvořená záhlaví. Příčinou mohou být nástroje pro vyrovnávání zatížení nebo CDN. Konkrétně některá záhlaví nepoužívají znaky CRLF k označení konce řádku, což porušuje specifikaci HTTP, a proto selže ověřování na úrovni .NET WebRequest. Zkontrolujte odpověď na místo, které může být v rozporu.
 
 > [!NOTE]
-> Adresa URL nemusí selhat v prohlížečích, které mají uvolněné ověření záhlaví PROTOKOLU HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+> Adresa URL nemusí selhat v prohlížečích, které mají odlehčené ověřování hlaviček protokolu HTTP. Podrobné vysvětlení tohoto problému najdete v tomto blogovém příspěvku: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
 
-### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nevidím žádné související telemetrie na straně serveru pro diagnostiku selhání testu?*
+### <a name="i-dont-see-any-related-server-side-telemetry-to-diagnose-test-failures"></a>Nezobrazuje se žádná související telemetrie na straně serveru pro diagnostiku selhání testu? *
 
 Pokud máte pro aplikaci na straně serveru nastavenou službu Application Insights, může být důvodem to, že právě probíhá [vzorkování](../../azure-monitor/app/sampling.md). Vyberte jiný výsledek dostupnosti.
 
@@ -93,11 +97,11 @@ Významy těchto dvou výrazů jsou zaměnitelné. Testy dostupnosti jsou obecn�
    Existují dvě možná řešení:
 
    * Nakonfigurujte bránu firewall, aby povolovala příchozí požadavky z [IP adres našich agentů webového testu](../../azure-monitor/app/ip-addresses.md).
-   * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se zobrazí v listech webových testů dostupnosti, i když zkušenosti budou mírně zjednodušeny z toho, co je k dispozici pro testy vytvořené prostřednictvím portálu. Vlastní testy dostupnosti se také zobrazí jako výsledky dostupnosti v Analytics, Vyhledávání a metriky.
+   * Napište vlastní kód, který pravidelně testuje interní server. Spusťte kód na testovacím serveru jako proces na pozadí za vaší bránou firewall. Testovací proces můžete odesílat své výsledky do Application Insights pomocí rozhraní API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) v balíčku Core SDK. To vyžaduje, aby měl váš testovací server odchozí přístup ke koncovému bodu ingestování Application Insights, ale to je mnohem menší riziko zabezpečení než případné povolení příchozích požadavků. Výsledky se zobrazí v oknech webové testy dostupnosti, i když se prostředí mírně zjednoduší z toho, co je k dispozici pro testy vytvořené prostřednictvím portálu. Vlastní testy dostupnosti se také zobrazí jako výsledky dostupnosti v analýzách, vyhledávání a metrikách.
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>Nahrávání vícekrokového webového testu se nezdaří
 
-Některé důvody k tomu může dojít:
+K tomu může dojít z některých důvodů:
    * Maximální velikost je 300 kB.
    * Smyčky nejsou podporovány.
    * Odkazy na jiné webové testy nejsou podporovány.
@@ -105,28 +109,28 @@ Některé důvody k tomu může dojít:
 
 ### <a name="my-multi-step-test-doesnt-complete"></a>Můj vícekrokový test se nedokončil
 
-Existuje limit 100 požadavků na test. Test je také zastaven, pokud běží déle než dvě minuty.
+Existuje limit 100 požadavků na test. Test se také zastaví, pokud běží déle než dvě minuty.
 
 ### <a name="how-can-i-run-a-test-with-client-certificates"></a>Jak mohu spustit test pomocí certifikátů klientů?
 
-Tato tato podpora není v současné době podporována.
+To se v tuto chvíli nepodporuje.
 
-## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží (klasická) upozornění?
+## <a name="who-receives-the-classic-alert-notifications"></a>Kdo obdrží oznámení o výstrahách (Classic)?
 
-Tato část se vztahuje pouze na klasická upozornění a pomůže vám optimalizovat upozornění tak, aby oznámení dostávali pouze požadovaní příjemci. Další informace o rozdílu mezi [klasickými výstrahami](../platform/alerts-classic.overview.md)a novým prostředím výstrah naleznete v [článku s přehledem výstrah](../platform/alerts-overview.md). Chcete-li řídit upozornění v novém prostředí výstrah, použijte [skupiny akcí](../platform/action-groups.md).
+Tato část platí jenom pro klasické výstrahy a pomůže vám optimalizovat oznámení o výstrahách, abyste zajistili, že oznámení budou dostávat jenom vaši dožádaný příjemce. Pokud chcete získat další informace o rozdílu mezi [klasickými výstrahami](../platform/alerts-classic.overview.md)a s novým prostředím výstrah, přečtěte si [článek Přehled výstrah](../platform/alerts-overview.md). Pro řízení upozornění na upozornění v novém prostředí výstrahy použijte [skupiny akcí](../platform/action-groups.md).
 
-* Doporučujeme používat konkrétní příjemce pro klasická upozornění.
+* Pro klasická oznámení o výstrahách doporučujeme používat konkrétní příjemce.
 
-* U výstrah týkajících se chyb z umístění X mimo y odesílá možnost zaškrtávacího **políčka hromadné/skupinové,** pokud je povolena, uživatelům s rolemi správce/spolusprávce.  V podstatě _všichni_ správci _předplatného_ obdrží oznámení.
+* Pro výstrahy týkající se selhání z umístění X z umístění Y, pokud je tato možnost zapnutá, posílá uživatelům s rolemi správce/spolusprávce možnost **Hromadná a skupinová** zaškrtávací políčka.  Oznámení budou dostávat v podstatě _Všichni_ správci _předplatného_ .
 
-* U upozornění na metriky dostupnosti je možnost zaškrtávacího políčka **hromadné/skupinové,** pokud je povolena, odesílá uživatelům s rolemi vlastníka, přispěvatele nebo čtenáře v předplatném. Ve skutečnosti _všichni_ uživatelé s přístupem k předplatnému prostředku Application Insights jsou v oboru a budou dostávat oznámení. 
+* U upozornění na metriky dostupnosti je možnost **Hromadná a skupinová** zaškrtávací políčko, pokud je povolena, odesílá uživatelům s rolemi vlastník, přispěvatel nebo čtenář v předplatném. V důsledku toho budou mít _Všichni_ uživatelé s přístupem k předplatnému Application Insights prostředek v oboru a budou dostávat oznámení. 
 
 > [!NOTE]
-> Pokud aktuálně používáte možnost **hromadného/skupinového** zaškrtávacího políčka a zakážete ji, nebudete moci změnu vrátit zpět.
+> Pokud v tuto chvíli používáte možnost **hromadného a skupinového** zaškrtávacího políčka a zakážete ji, nebudete moct změnu vrátit.
 
-Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové prostředí výstrah y/výstrahy téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům s některou z rolí přispěvatele/vlastníka/čtenáře (není kombinováno dohromady jako jedna možnost).
+Pokud potřebujete upozornit uživatele na základě jejich rolí, použijte nové výstrahy Výstrahy a možnosti téměř v reálném čase. Pomocí [skupin akcí](../platform/action-groups.md)můžete nakonfigurovat e-mailová oznámení uživatelům pomocí kterékoli role Přispěvatel/vlastník/čtenář (bez kombinace společně s jednou možností).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vícestupňové webové testování](availability-multistep.md)
-* [Testy příkazu URL](monitor-web-app-availability.md)
+* [Testování webu ve více krocích](availability-multistep.md)
+* [Testy adresy URL pro příkazy URL](monitor-web-app-availability.md)

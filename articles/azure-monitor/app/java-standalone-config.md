@@ -3,12 +3,12 @@ title: Monitorování aplikací Java kdekoli – Azure Monitor Application Insig
 description: Monitorování výkonu aplikací bez kódu pro aplikace Java běžící v jakémkoli prostředí bez instrumentace aplikace. Najděte hlavní příčinu potíží d pomocí distribuovaného trasování a mapy aplikací.
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641885"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509206"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>Možnosti konfigurace – samostatný agent Java pro Azure Monitor Application Insights
 
@@ -33,14 +33,14 @@ Další podrobnosti a další možnosti konfigurace najdete níže.
 
 ## <a name="configuration-file-path"></a>Cesta ke konfiguračnímu souboru
 
-Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje `ApplicationInsights.json`a že se nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.jar`.
+Ve výchozím nastavení Application Insights Java 3,0 Preview očekává, že se konfigurační soubor pojmenuje `ApplicationInsights.json`a že se nachází ve stejném adresáři jako `applicationinsights-agent-3.0.0-PREVIEW.4.jar`.
 
 Vlastní cestu ke konfiguračnímu souboru můžete zadat buď pomocí
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`Proměnná prostředí nebo
 * `applicationinsights.configurationFile`Systémová vlastnost Java
 
-Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.jar` se nachází.
+Pokud zadáte relativní cestu, bude vyřešena vzhledem k adresáři, kde `applicationinsights-agent-3.0.0-PREVIEW.4.jar` se nachází.
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
@@ -150,11 +150,13 @@ Pokud máte nějaké JMX metriky, které vás zajímají, zachytíte:
 }
 ```
 
-## <a name="micrometer"></a>Mikrometr
+## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Mikroměřič (včetně metrik ze pružinového spouštěcího válce)
 
-Ve výchozím nastavení, pokud vaše aplikace používá [mikroměřič](https://micrometer.io), Application Insights 3,0 (počínaje verzí Preview. 2) nyní přidá sám sebe do globálního registru mikroměřiče a zachytí metriky mikroměřiče.
+Pokud vaše aplikace používá [mikroměřič](https://micrometer.io), Application Insights 3,0 (počínaje verzí Preview. 2) nyní zachycuje metriky odesílané do globálního registru mikroměřiče.
 
-Pokud chcete zakázat tuto funkci:
+Pokud vaše aplikace používá [pružinový spouštěcí systém](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html), Application Insights 3,0 (počínaje verzí Preview. 4) nyní zachycuje metriky nakonfigurované pomocí pružinového spouštěcího limitu (který používá mikroměřiče, ale nepoužívá globální Registry mikroměřiče).
+
+Pokud chcete zakázat tyto funkce:
 
 ```json
 {

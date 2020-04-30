@@ -1,30 +1,30 @@
 ---
 title: Filtrování událostí pro Azure Event Grid
-description: Popisuje, jak filtrovat události při vytváření předplatného Služby Azure Event Grid.
+description: Popisuje, jak filtrovat události při vytváření předplatného Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731945"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509648"
 ---
-# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro odběry služby Event Grid
+# <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
 
-Tento článek popisuje různé způsoby filtrování událostí, které jsou odesílány do koncového bodu. Při vytváření odběru událostí máte tři možnosti filtrování:
+Tento článek popisuje různé způsoby, jak filtrovat, které události se odešlou do vašeho koncového bodu. Při vytváření odběru událostí máte k dispozici tři možnosti pro filtrování:
 
 * Typy událostí
-* Předmět začíná nebo končí
+* Předmět začíná na nebo končí
 * Pokročilá pole a operátory
 
 ## <a name="event-type-filtering"></a>Filtrování typu události
 
-Ve výchozím nastavení jsou všechny [typy událostí](event-schema.md) pro zdroj událostí odeslány do koncového bodu. Můžete se rozhodnout odeslat pouze určité typy událostí do koncového bodu. Můžete například získat upozornění na aktualizace prostředků, ale není oznámeno pro jiné operace, jako je odstranění. V takovém případě filtrujte podle typu `Microsoft.Resources.ResourceWriteSuccess` události. Poskytněte pole s typy `All` událostí nebo určete, chcete-li získat všechny typy událostí pro zdroj události.
+Ve výchozím nastavení jsou všechny [typy událostí](event-schema.md) pro zdroj události odesílány do koncového bodu. Do koncového bodu se můžete rozhodnout odeslat jenom určité typy událostí. Můžete například dostávat oznámení o aktualizacích vašich prostředků, ale ne upozornění na jiné operace, jako je odstranění. V takovém případě filtr podle typu `Microsoft.Resources.ResourceWriteSuccess` události. Zadejte pole s typy událostí nebo určete `All` , že se mají načíst všechny typy událostí pro zdroj události.
 
 Syntaxe JSON pro filtrování podle typu události je:
 
@@ -37,11 +37,11 @@ Syntaxe JSON pro filtrování podle typu události je:
 }
 ```
 
-## <a name="subject-filtering"></a>Filtrování předmětů
+## <a name="subject-filtering"></a>Filtrování subjektu
 
-Pro jednoduché filtrování podle předmětu zadejte počáteční nebo koncovou hodnotu objektu. Můžete například zadat zakončení `.txt` předmětu, chcete-li získat pouze události související s nahráním textového souboru do účtu úložiště. Nebo můžete filtrovat předmět začíná `/blobServices/default/containers/testcontainer` získat všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště.
+Pro jednoduché filtrování podle předmětu zadejte počáteční nebo koncovou hodnotu předmětu. Například můžete určit, že má předmět ukončen, `.txt` aby se zobrazily pouze události související s odesláním textového souboru do účtu úložiště. Nebo můžete filtrovat předmět `/blobServices/default/containers/testcontainer` na začátku a získat tak všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště.
 
-Při publikování událostí do vlastních témat vytvořte pro události předměty, které předplatitelům usnadní zjistit, zda mají o událost zájem. Předplatitelé používají vlastnost předmětu k filtrování a směrování událostí. Zvažte přidání cesty, kde k události došlo, aby odběratelé mohli filtrovat podle segmentů této cesty. Cesta umožňuje odběratelům úzce nebo široce filtrovat události. Pokud zadáte cestu se `/A/B/C` třemi segmenty, jako je v `/A` předmětu, odběratelé mohou filtrovat podle prvního segmentu a získat širokou sadu událostí. Tito odběratelé získat události `/A/B/C` `/A/D/E`s předměty, jako je nebo . Ostatní odběratelé mohou `/A/B` filtrovat podle získat užší sadu událostí.
+Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají vlastnost Subject k filtrování a směrování událostí. Zvažte přidání cesty pro místo, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud zadáte cestu tři segmenty, `/A/B/C` například v předmětu, můžou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získají události s předměty `/A/B/C` , `/A/D/E`jako je nebo. Jiní předplatitelé mohou filtrovat `/A/B` podle a získat tak užší sadu událostí.
 
 Syntaxe JSON pro filtrování podle předmětu je:
 
@@ -55,13 +55,13 @@ Syntaxe JSON pro filtrování podle předmětu je:
 
 ## <a name="advanced-filtering"></a>Rozšířené filtrování
 
-Chcete-li filtrovat podle hodnot v datových polích a zadat operátor porovnání, použijte možnost rozšířeného filtrování. V rozšířeném filtrování zadáte:
+Chcete-li filtrovat podle hodnot v datových polích a zadat operátor porovnání, použijte možnost pokročilého filtrování. V části Rozšířené filtrování zadáte:
 
-* typ operátoru - typ porovnání.
-* klíč – Pole v datech události, které používáte pro filtrování. Může to být číslo, logická hodnota nebo řetězec.
-* hodnoty - Hodnota nebo hodnoty, které mají být porovnány s klíčem.
+* typ operátoru – typ porovnání.
+* klíč – pole v datech události, které používáte pro filtrování. Může to být číslo, logická hodnota nebo řetězec.
+* hodnoty – hodnota nebo hodnoty, které se mají porovnat s klíčem.
 
-Pokud zadáte jeden filtr s více hodnotami, provede se operace **OR,** takže hodnota klíčového pole musí být jednou z těchto hodnot. Zde naleznete příklad:
+Pokud zadáte jeden filtr s více hodnotami, provede se operace **nebo** , takže hodnota pole klíč musí být jedna z těchto hodnot. Zde naleznete příklad:
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ Pokud zadáte jeden filtr s více hodnotami, provede se operace **OR,** takže h
 ]
 ```
 
-Pokud zadáte více různých filtrů, provede se operace **AND,** takže musí být splněna každá podmínka filtru. Zde naleznete příklad: 
+Pokud zadáte více různých filtrů, provede se operace **a** , takže je nutné splnit všechny podmínky filtru. Zde naleznete příklad: 
 
 ```json
 "advancedFilters": [
@@ -97,49 +97,50 @@ Pokud zadáte více různých filtrů, provede se operace **AND,** takže musí 
 ]
 ```
 
-### <a name="operator"></a>Operátor
+### <a name="operators"></a>Operátory
 
-Dostupné operátory pro čísla jsou:
+K dispozici jsou operátory pro **čísla** :
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
-* Bezpočet než
+* NumberLessThan
 * NumberLessThanOrEquals
-* Číslov
-* NumberNotin
+* NumberIn
+* NumberNotIn
 
-Dostupný operátor pro logické hodnoty je: BoolEquals
+Dostupný operátor pro **logické hodnoty** je: 
+- BoolEquals
 
-Dostupné operátory pro řetězce jsou:
+Dostupné operátory pro **řetězce** jsou:
 
-* Obsahuje řetězec
+* StringContains
 * StringBeginsWith
-* Řetězec endswith
+* StringEndsWith
 * StringIn
 * StringNotIn
 
-Všechny porovnání řetězců jsou případ-insensitve.
+Všechna porovnávání řetězců nerozlišují **velká a malá písmena.**
 
-### <a name="key"></a>Klíč
+### <a name="key"></a>Key
 
-Pro události ve schématu Mřížka událostí použijte pro klíč následující hodnoty:
+Pro události ve schématu Event Grid použijte pro klíč následující hodnoty:
 
 * ID
 * Téma
 * Subjekt
 * Typ události
-* Datová verze
-* Data událostí (například Data.key1)
+* Dataverze
+* Data události (jako data. klíč1)
 
-Pro události ve schématu Události cloudu použijte pro klíč následující hodnoty:
+Pro události v rámci schématu cloudových událostí použijte pro klíč tyto hodnoty:
 
-* Eventid
+* ID události
 * Zdroj
 * Typ události
 * EventTypeVersion
-* Data událostí (například Data.key1)
+* Data události (jako data. klíč1)
 
-Pro vlastní vstupní schéma použijte datová pole událostí (například Data.key1).
+Pro vlastní vstupní schéma použijte pole dat události (jako data. klíč1).
 
 ### <a name="values"></a>Hodnoty
 
@@ -154,13 +155,162 @@ Hodnoty mohou být:
 
 Rozšířené filtrování má následující omezení:
 
-* Pět pokročilých filtrů na odběr mřížky událostí
+* Pět rozšířených filtrů na odběr Event gridu
 * 512 znaků na hodnotu řetězce
-* Pět hodnot pro **in** a **not in operátory**
+* Pět hodnot pro operátor **in** a **Not in**
 
 Stejný klíč lze použít ve více než jednom filtru.
 
+### <a name="examples"></a>Příklady
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
+
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o filtrování událostí pomocí PowerShellu a Azure CLI najdete v [tématu Filtrování událostí pro Event Grid](how-to-filter-events.md).
-* Pokud chcete rychle začít používat Event Grid, přečtěte [si tématu Vytváření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).
+* Další informace o filtrování událostí pomocí PowerShellu a rozhraní příkazového řádku Azure najdete v tématu [filtrování událostí pro Event Grid](how-to-filter-events.md).
+* Pokud chcete rychle začít používat Event Grid, přečtěte si téma [Vytvoření a směrování vlastních událostí pomocí Azure Event Grid](custom-event-quickstart.md).

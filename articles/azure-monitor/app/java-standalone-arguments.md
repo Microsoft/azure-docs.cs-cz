@@ -3,12 +3,12 @@ title: Monitorování aplikací Java spuštěných v jakémkoli prostředí – 
 description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí se samostatným agentem Java bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641872"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508033"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>Konfigurace samostatného agenta JVM args Java pro Azure Monitor Application Insights
 
@@ -20,15 +20,25 @@ Nakonfigurujte [App Services](https://docs.microsoft.com/azure/app-service/confi
 
 ## <a name="spring-boot"></a>Spring Boot
 
-Přidejte ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` JVM někam do `-jar <myapp.jar>`, například:
+Přidejte ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` JVM někam do `-jar`, například:
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-> [!NOTE]
-> Argumenty umístěné po `-jar <myapp.jar>` jsou předány do aplikace jako argumenty programu.
+## <a name="spring-boot-via-docker-entry-point"></a>Pružinové spouštění prostřednictvím vstupního bodu Docker
 
+Pokud používáte formulář *exec* , přidejte parametr `"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"` do seznamu parametrů někam před `"-jar"` parametr, například:
+
+```
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
+```
+
+Používáte-li formulář *prostředí* , přidejte ARG `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` JVM někam do `-jar`, například:
+
+```
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
+```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
 

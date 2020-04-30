@@ -1,6 +1,6 @@
 ---
 title: Ochrana před hrozbami v Azure Security Center
-description: Toto téma popisuje prostředky chráněné funkcemi ochrany před hrozbami centra Zabezpečení Azure.
+description: Toto téma popisuje prostředky chráněné funkcí ochrany před internetovými útoky v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,96 +10,100 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: fdf22e4d981549b876a14aed2b0a1d7e0c76e40e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263450"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234073"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
-Pokud Centrum zabezpečení zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhované nápravné kroky a v některých případech možnost aktivovat aplikaci logiky v reakci.
+Pokud Security Center zjistí hrozbu v jakékoli oblasti vašeho prostředí, vygeneruje výstrahu. Tyto výstrahy popisují podrobnosti o ovlivněných prostředcích, navrhovaných krocích pro nápravu a v některých případech možnost aktivovat aplikaci logiky v reakci.
 
-Ochrana před hrozbami Azure Security Center poskytuje komplexní obranu pro vaše prostředí:
+Ochrana před hrozbami Azure Security Center poskytuje komplexní ochranu vašeho prostředí:
 
-* **Ochrana před hrozbami pro výpočetní prostředky Azure:** počítače s Windows, počítače s Linuxem, Azure App Service a kontejnery Azure
+* **Ochrana před hrozbami pro výpočetní prostředky Azure**: počítače s Windows, počítače se systémem Linux, Azure App Service a kontejnery Azure
 
-* **Ochrana před hrozbami pro datové prostředky Azure:** SQL Database a SQL Data Warehouse, Azure Storage a Azure Cosmos DB
+* **Ochrana před hrozbami pro datové prostředky Azure**: SQL Database a SQL Data Warehouse, Azure Storage a Azure Cosmos DB
 
-* **Ochrana před hrozbami pro vrstvy služeb Azure:** Síťová vrstva Azure, vrstva správy Azure (Azure Resource Manager) (Preview) a Azure Key Vault (Preview)
+* **Ochrana před hrozbami pro vrstvy služeb Azure**: síťová vrstva Azure, vrstva správy azure (Azure Resource Manager) (Preview) a Azure Key Vault (Preview)
 
-Bez ohledu na to, zda je výstraha generována centrem zabezpečení nebo přijata centrem zabezpečení z jiného produktu zabezpečení, můžete ji exportovat. Chcete-li exportovat výstrahy do Azure Sentinelu (nebo siem třetí strany) nebo jiného externího nástroje, postupujte podle pokynů v [části Export výstrah do systému SIEM](continuous-export.md). 
+Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijatá Security Center z jiného bezpečnostního produktu, můžete ji exportovat. Pokud chcete exportovat výstrahy do Azure Sentinel (nebo SIEM třetí strany) nebo jakýkoli jiný externí nástroj, postupujte podle pokynů v tématu [Export výstrah do Siem](continuous-export.md). 
+
+> [!TIP]
+> Pokud chcete povolit možnosti ochrany před hrozbami Security Center, musíte použít cenovou úroveň Standard u předplatného, které obsahuje příslušné úlohy.
+>
+> V současné době jsou v současnosti jedinou úlohou, kterou je možné povolit na úrovni prostředků, aby se chránily jednotlivé úlohy úložiště/SQL, je Security Center ochrana před hrozbami pro účty úložiště a PaaS servery SQL/MySQL/PG.
 
 
 
+## <a name="threat-protection-for-windows-machines"></a>Ochrana před hrozbami pro počítače s Windows<a name="windows-machines"></a>
 
-## <a name="threat-protection-for-windows-machines"></a>Ochrana před hrozbami pro počítače se systémem Windows<a name="windows-machines"></a>
+Azure Security Center se integruje se službami Azure za účelem monitorování a ochrany počítačů se systémem Windows. Security Center prezentuje výstrahy a návrhy oprav ze všech těchto služeb ve snadno použitelném formátu.
 
-Azure Security Center se integruje se službami Azure a monitoruje a chrání vaše počítače s Windows. Centrum zabezpečení představuje výstrahy a návrhy nápravných zařízení ze všech těchto služeb ve snadno použitelném formátu.
-
-* **Ochrana ATP** <a name="windows-atp"></a> v programu Microsoft Defender – Security Center rozšiřuje své platformy ochrany cloudových úloh o integraci s programem Microsoft Defender Advanced Threat Protection (ATP). Společně poskytují komplexní funkce detekce koncových bodů a odezvy (EDR).
+* **ATP** <a name="windows-atp"></a> v programu Microsoft Defender – Security Center rozšiřuje své cloudové platformy na ochranu díky integraci s rozšířenou ochranou před internetovými útoky v programu Microsoft Defender (ATP). Společně poskytují komplexní možnosti detekce a odezvy koncových bodů (EDR).
 
     > [!IMPORTANT]
-    > Snímač ochrany ATP programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají centrum zabezpečení.
+    > Senzor ATP v programu Microsoft Defender je automaticky povolen na serverech se systémem Windows, které používají Security Center.
 
-    Když ochrana ATP v programu Microsoft Defender zjistí hrozbu, spustí výstrahu. Výstraha se zobrazí na řídicím panelu Centra zabezpečení. Z řídicího panelu můžete přejít ke konzoli ochrany ATP v programu Microsoft Defender a provést podrobné šetření, abyste odhalili rozsah útoku. Další informace o programu Microsoft Defender ATP naleznete [v tématu Onboard servers to the Microsoft Defender ATP service](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
+    Když ATP v programu Microsoft Defender zjistí hrozbu, aktivuje výstrahu. Výstraha se zobrazí na řídicím panelu Security Center. Z řídicího panelu se můžete překlopit do konzoly ATP v programu Microsoft Defender a provést podrobné šetření, které odhalí rozsah útoku. Další informace o ochraně ATP v programu Microsoft Defender najdete v tématu připojení [serverů ke službě Microsoft Defender ATP](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* **Analýza výpisu stavu systému** <a name="windows-dump"></a> - při selhání softwaru výpis stavu systému zachytí část paměti v době selhání.
+* <a name="windows-dump"></a> **Analýza výpisu stavu systému** – Pokud dojde k chybě softwaru, výpis stavu systému zaznamená část paměti v době selhání.
 
-    Selhání mohlo být způsobeno malwarem nebo obsahovat malware. Aby se zabránilo detekci bezpečnostními produkty, používají různé formy malwaru útok bez souborů, který zabraňuje zápisu na disk nebo šifrování softwarových součástí zapsaných na disk. Tento typ útoku je obtížné zjistit pomocí tradičních přístupů založených na disku.
+    Selhání mohlo být způsobeno malwarem nebo obsahem malwaru. Aby nedocházelo k detekci v produktech zabezpečení, různé formy malwaru používají útok bez souborů, což zabraňuje psaní na disk nebo šifrování softwarových součástí zapsaných na disk. Tento typ útoku se obtížně detekuje pomocí tradičních přístupů založených na disku.
 
-    Však pomocí analýzy paměti, můžete zjistit tento druh útoku. Analýzou paměti v výpisu stavu systému zabezpečení centrum může zjistit techniky útoku používá. Útok se například může pokoušet zneužít chyby zabezpečení v softwaru, získat přístup k důvěrným datům a tajně přetrvávat v ohroženém počítači. Security Center tuto práci s minimálním dopadem na výkon pro hostitele.
+    Pomocí analýzy paměti ale můžete zjistit tento druh útoku. Díky analýze paměti ve výpisu stavu systému může Security Center detekovat techniky, které útok používá. Útok se například může pokusit zneužít ohrožení zabezpečení softwaru, přistupovat k důvěrným datům a nenápadně uchovat v napadeném počítači. Security Center to funguje s minimálním dopadem na výkon hostitelů.
 
-    Podrobnosti o výstrahách analýzy výpisu stavu systému stavu systému naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
+    Podrobnosti o výstrahách analýzy výpisu stavu systému najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
-* **Detekce** <a name="windows-fileless"></a> útoků bez souborů – útoky bez souborů zaměřené na vaše koncové body jsou běžné. Aby se zabránilo detekci, útoky bez souborů injektují škodlivé datové části do paměti. Datové části útočníka přetrvávají v paměti ohrožených procesů a provádějí širokou škálu škodlivých aktivit.
+* **Detekce** <a name="windows-fileless"></a> útoků typu soubor – společné útoky pomocí souborů, které cílí na vaše koncové body, jsou běžné. Aby nedocházelo k detekci, útoky bez souborů vkládají do paměti škodlivá datová data. V paměti napadených procesů a provádění široké škály škodlivých aktivit může dojít k trvalému uložení datových částí.
 
-    Díky detekci útoků bez souborů identifikují automatizované forenzní techniky paměti sady nástrojů, techniky a chování bez souborů. Toto řešení pravidelně prohledává váš počítač za běhu a extrahuje poznatky přímo z paměti procesů kritických pro zabezpečení.
+    Díky detekci útoků bez souborů můžou automatizované techniky forenzní paměti identifikovat sady nástrojů, techniky a chování pro útoky bez souborů. Toto řešení pravidelně kontroluje počítač za běhu a extrahuje přehledy přímo z paměti důležitých procesů, které jsou kritické pro zabezpečení.
 
-    Najde důkazy o zneužití, vkládání kódu a provádění škodlivých datových částí. Detekce útoků bez souborů generuje podrobná výstrahy zabezpečení pro urychlení třídění výstrah, korelace a následné doby odezvy. Tento přístup doplňuje řešení EDR založená na událostech a poskytuje větší detekční pokrytí.
+    Najde důkazy o zneužití, vkládání kódu a spuštění škodlivých datových částí. Detekce útoků bez souborů generuje podrobné výstrahy zabezpečení, které urychlují jejich třídění, korelace a dobu odezvy za provozu. Tento přístup doplňuje řešení EDR založené na událostech a zajišťuje větší pokrytí detekce.
 
-    Podrobnosti o výstrahách detekce útoků bez souborů naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
-
-> [!TIP]
-> Výstrahy systému Windows můžete simulovat stažením [playbooku Centra zabezpečení Azure: Výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).
-
-
-
-
-
-
-## <a name="threat-protection-for-linux-machines"></a>Ochrana před hrozbami pro počítače s Linuxem<a name="linux-machines"></a>
-
-Security Center shromažďuje záznamy auditu z počítačů s Linuxem pomocí **auditovaných**, což je jeden z nejběžnějších architektur pro auditování Linuxu. kontrolované hody v hlavním jádru. 
-
-* **Linux auditované výstrahy a integrace** <a name="linux-auditd"></a> agenta Log Analytics - Auditovaný systém se skládá z podsystému na úrovni jádra, který je zodpovědný za sledování volání systému. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci agenta Log Analytics. Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích Linuxu bez jakýchkoli vyložených.
-
-    auditované záznamy jsou shromažďovány, obohaceny a agregovány do událostí pomocí agenta Log Analytics pro agenta Linuxu. Security Center neustále přidává nové analýzy, které používají signály Linuxu k detekci škodlivého chování na cloudových a místních počítačích s Linuxem. Podobně jako funkce systému Windows se tyto analýzy rozprostírají napříč podezřelými procesy, pochybnými pokusy o přihlášení, načítáním modulu jádra a dalšími aktivitami. Tyto aktivity mohou naznačovat, že stroj je buď napaden, nebo byl porušen.  
-
-    Seznam výstrah linuxových záznamů naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-linux).
+    Podrobnosti o výstrahách detekce útoků bez souborů najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-windows).
 
 > [!TIP]
-> Výstrahy Linuxu můžete simulovat stažením [playbooku Azure Security Center: Linux Detections](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef).
+> Výstrahy Windows můžete simulovat stažením [Azure Security Center PlayBook: výstrahy zabezpečení](https://gallery.technet.microsoft.com/Azure-Security-Center-f621a046).
 
 
 
 
 
-## <a name="threat-protection-for-azure-app-service"></a>Ochrana před hrozbami pro službu Azure App Service<a name="app-services"></a>
+
+## <a name="threat-protection-for-linux-machines"></a>Ochrana před hrozbami pro počítače se systémem Linux<a name="linux-machines"></a>
+
+Security Center shromažďuje záznamy auditu z počítačů se systémem Linux pomocí **auditu**, jeden z nejběžnějších rozhraní pro auditování Linux. auditované života v jádru hlavní. 
+
+* **Auditované výstrahy systému Linux a integrace** <a name="linux-auditd"></a> agenta Log Analytics – auditované systémy se skládají z podsystému na úrovni jádra, který zodpovídá za monitorování volání systému. Filtruje je podle zadané sady pravidel a zapisuje zprávy pro ně do soketu. Security Center integruje funkce z auditovaného balíčku v rámci agenta Log Analytics. Tato integrace umožňuje shromažďování auditovaných událostí ve všech podporovaných distribucích systému Linux bez jakýchkoli požadavků.
+
+    auditované záznamy jsou shromažďovány, obohaceny a agregovány do událostí pomocí agenta Log Analytics pro Linux. Security Center průběžně přidává nové analýzy, které používají signály Linux k detekci škodlivého chování na cloudových a místních počítačích se systémem Linux. Podobně jako funkce Windows tyto analýzy přesahují podezřelé procesy, pokusy o přihlášení k podezřelých, načítání modulů jádra a další činnosti. Tyto aktivity mohou znamenat, že počítač je buď napadený, nebo byl napadený.  
+
+    Seznam výstrah pro Linux najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-linux).
+
+> [!TIP]
+> Výstrahy pro Linux můžete simulovat stažením [Azure Security Center PlayBook: detekce Linux](https://gallery.technet.microsoft.com/Azure-Security-Center-0ac8a5ef).
+
+
+
+
+
+## <a name="threat-protection-for-azure-app-service"></a>Ochrana před hrozbami pro Azure App Service<a name="app-services"></a>
 
 > [!NOTE]
-> Tato služba není momentálně dostupná ve vládních a suverénních cloudových oblastech Azure.
+> Tato služba není aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Security Center používá rozsah cloudu k identifikaci útoků zaměřených na aplikace spuštěné přes App Service. Útočníci sondují webové aplikace, aby našli a zneužili slabiny. Před směrováním do konkrétních prostředí procházejí požadavky na aplikace spuštěné v Azure několika branami, kde jsou kontrolovány a protokolovány. Tato data se pak používají k identifikaci zneužití a útočníků a k naučení nových vzorů, které budou použity později.
+Security Center používá škálování cloudu k identifikaci útoků cílících na aplikace běžící přes App Service. Útočníci hledají webové aplikace a využívají slabých míst. Před směrováním do konkrétních prostředí požadavky na aplikace běžící v Azure procházejí několika branami, kde jsou zkontrolovány a protokolovány. Tato data se pak používají k identifikaci zneužití a útočníků a k získání nových vzorů, které se použijí později.
 
-Pomocí viditelnosti, kterou Azure má jako poskytovatele cloudu, Security Center analyzuje interní protokoly služby App Service k identifikaci metodiky útoku na více cílů. Metodika například zahrnuje rozsáhlé skenování a distribuované útoky. Tento typ útoku obvykle pochází z malé podmnožiny IP adresy a zobrazuje vzorky procházení na podobné koncové body na více hostitelích. Útoky hledají zranitelnou stránku nebo plugin a nelze je identifikovat z hlediska jednoho hostitele.
+Díky viditelnosti, kterou Azure nabízí jako poskytovatel cloudu, Security Center analyzuje App Service interní protokoly k identifikaci metodologie útoku na více cílů. Například metodologie zahrnuje rozšířenou kontrolu a distribuované útoky. Tento typ útoku obvykle pochází z malé podmnožiny IP adres a ukazuje vzory procházení k podobným koncovým bodům na více hostitelích. Útoky hledají zranitelnou stránku nebo modul plug-in a nelze je identifikovat z hlediska jednoho hostitele.
 
-Pokud používáte plán služby App Service založené na Windows, centrum zabezpečení má také přístup k základním karanténám zabezpečení a virtuálním mům. Spolu s výše uvedenými údaji protokolu může infrastruktura vyprávět příběh, od nového útoku, který koluje ve volné přírodě, až po kompromisy v zákaznických strojích. Proto i v případě, že Security Center je nasazen a po webová aplikace byla zneužita, může být schopen detekovat probíhající útoky.
+Pokud používáte plán App Service založený na Windows, Security Center má také přístup k podkladovým izolovaným prostorům a virtuálním počítačům. Spolu s výše uvedenými daty protokolu může infrastruktura sdělit příběh z nového útoku, který je v případě ohrožení bezpečnosti v zákaznických počítačích v nestejné přírodě. Proto i v případě, že je Security Center nasazena po zneužití webové aplikace, může být schopna detekovat průběžné útoky.
 
-Seznam výstrah služby Azure App Service najdete v [tabulce referenčních výstrah](alerts-reference.md#alerts-azureappserv).
+Seznam výstrah Azure App Service najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureappserv).
 
-Další informace o plánech služby App Service najdete v tématu [Plány služby App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
+Další informace o plánech App Service najdete v tématu [plány App Service](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 
 
@@ -108,33 +112,33 @@ Další informace o plánech služby App Service najdete v tématu [Plány služ
 ## <a name="threat-protection-for-azure-containers"></a>Ochrana před hrozbami pro kontejnery Azure<a name="azure-containers"></a>
 
 > [!NOTE]
-> Tato služba není momentálně dostupná ve vládních a suverénních cloudových oblastech Azure.
+> Tato služba není aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Security Center poskytuje ochranu před hrozbami v reálném čase pro kontejnerizovaná prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
+Security Center poskytuje ochranu před internetovými útoky v reálném čase pro vaše kontejnerová prostředí a generuje výstrahy pro podezřelé aktivity. Pomocí těchto informací můžete rychle opravit problémy se zabezpečením a vylepšit zabezpečení kontejnerů.
 
 Security Center poskytuje ochranu před hrozbami na různých úrovních: 
 
-* **Úroveň hostitele** – agent Centra zabezpečení (k dispozici na úrovni Standard, [podrobnosti](security-center-pricing.md) o cenách) monitoruje Linux kvůli podezřelým aktivitám. Agent aktivuje výstrahy pro podezřelé aktivity pocházející z uzlu nebo kontejneru spuštěného na něm. Příklady takových aktivit zahrnují detekci webového prostředí a spojení se známými podezřelými IP adresami.
+* Agent Security Center **úrovně hostitele** (dostupný na úrovni Standard, viz [ceny](security-center-pricing.md) ) monitoruje Linux pro podezřelé aktivity. Agent aktivuje výstrahy pro podezřelé aktivity pocházející z uzlu nebo kontejneru, který je v něm spuštěný. Příklady takových aktivit zahrnují detekci webového prostředí a připojení se známými podezřelými IP adresami.
 
-    Pro hlubší přehled o zabezpečení vašeho kontejnerizovaného prostředí agent monitoruje analýzy specifické pro kontejnery. Spustí výstrahy pro události, jako je vytváření privilegovaných kontejnerů, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) spuštěné uvnitř kontejneru Dockeru.
+    Pro lepší přehled o zabezpečení vašich kontejnerových prostředí agent sleduje analýzu specifickou pro kontejnery. Aktivuje výstrahy pro události, jako je vytvoření privilegovaného kontejneru, podezřelý přístup k serverům rozhraní API a servery Secure Shell (SSH) běžící uvnitř kontejneru Docker.
 
     >[!IMPORTANT]
-    > Pokud se rozhodnete agenty neinstalovat do hostitelů, obdržíte pouze podmnožinu výhod ochrany před hrozbami a výstrah zabezpečení. Stále budete dostávat upozornění týkající se analýzy sítě a komunikace se škodlivými servery.
+    > Pokud se rozhodnete neinstalovat agenty na hostitele, obdržíte pouze podmnožinu výhod ochrany před hrozbami a výstrahy zabezpečení. Pořád budete dostávat výstrahy týkající se analýzy sítě a komunikace se škodlivými servery.
 
-    Seznam výstrah na úrovni hostitele naleznete v [tabulce referenčních výstrah](alerts-reference.md#alerts-containerhost).
+    Seznam výstrah na úrovni hostitele najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-containerhost).
 
 
-* Na **úrovni clusteru AKS**je ochrana před hrozbami založena na analýze protokolů auditu Společnosti Kubernetes. Chcete-li povolit toto monitorování **bez agentů,** přidejte do předplatného možnost Kubernetes ze stránky **Nastavení nastavení cenové &** (viz [ceny).](security-center-pricing.md) Chcete-li generovat výstrahy na této úrovni, Security Center monitoruje služby spravované AKS pomocí protokolů načtených AKS. Příklady událostí na této úrovni zahrnují vystavené řídicí panely Kubernetes, vytváření vysokých privilegovaných rolí a vytváření citlivých připojení.
+* Na **úrovni clusteru AKS**je ochrana před hrozbami založená na analýze protokolů auditu Kubernetes. Pokud chcete toto monitorování bez **agentů** povolit, přidejte na stránce s **nastavením cenové &** možnost Kubernetes (podívejte se na [ceny](security-center-pricing.md)). Pokud chcete na této úrovni generovat výstrahy, Security Center monitorovat služby spravované AKS pomocí protokolů načtených pomocí AKS. Mezi příklady událostí na této úrovni patří exponované řídicí panely Kubernetes, vytváření vysoce privilegovaných rolí a vytváření citlivých připojení.
 
     >[!NOTE]
-    > Security Center generuje výstrahy zabezpečení pro akce služby Azure Kubernetes a nasazení, ke kterým dochází po povolení možnosti Kubernetes v nastavení předplatného. 
+    > Security Center vygeneruje výstrahy zabezpečení pro akce a nasazení služby Azure Kubernetes, ke kterým dochází po povolení možnosti Kubernetes v nastaveních předplatného. 
 
-    Seznam výstrah na úrovni clusteru AKS naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
+    Seznam výstrah na úrovni clusteru AKS najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-akscluster).
 
-Také náš globální tým bezpečnostních výzkumníků neustále sleduje prostředí hrozeb. Přidávají výstrahy specifické pro kontejnery a chyby zabezpečení, jakmile jsou zjištěny.
+Náš globální tým výzkumných pracovníků pro zabezpečení nepřetržitě monitoruje i na šířku hrozby. Přidávají výstrahy a chyby specifické pro kontejner při jejich zjištění.
 
 > [!TIP]
-> Upozornění na kontejnery můžete simulovat podle pokynů v [tomto příspěvku blogu](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270).
+> Pomocí pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-demonstrate-the-new-containers-features-in-azure-security/ba-p/1011270)můžete simulovat výstrahy kontejneru.
 
 
 
@@ -143,50 +147,50 @@ Také náš globální tým bezpečnostních výzkumníků neustále sleduje pro
 
 
 
-## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Ochrana před hrozbami pro databázi SQL a datový sklad SQL<a name="data-sql"></a>
+## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>Ochrana před hrozbami pro SQL Database a SQL Data Warehouse<a name="data-sql"></a>
 
-Pokročilá ochrana před internetovými technologiemi pro Azure SQL Database detekuje neobvyklé aktivity označující neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití.
 
-Zobrazí se výstrahy, pokud existují podezřelé databázové aktivity, potenciální chyby zabezpečení nebo útoky injektáží SQL a neobvyklé vzory přístupu k databázi a dotazů.
+Výstrahy se zobrazí, když dojde k podezřelým databázovým aktivitám, potenciálním ohrožením zabezpečení nebo útokům prostřednictvím injektáže SQL a k neobvyklé přístupu k databázi a ke vzorům dotazů.
 
-Pokročilá ochrana před internetovými hrozbami pro Azure SQL Database a SQL je součástí jednotného balíčku [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé možnosti zabezpečení SQL, který zahrnuje Azure SQL Databases, spravované instance Azure SQL Database, databáze Azure SQL Data Warehouse a sql servery na virtuálních počítačích Azure.
+Rozšířená ochrana před internetovými útoky pro Azure SQL Database a SQL je součástí jednotného balíčku [ADS (Advanced Data Security)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) pro pokročilé funkce zabezpečení SQL, zahrnující databáze SQL Azure, Azure SQL Database spravované instance, Azure SQL Data Warehouse databáze a SQL servery na Azure Virtual Machines.
 
 Další informace naleznete v tématu:
 
-* [Jak povolit pokročilou ochranu před internetovými technologiemi pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
-* [Jak povolit pokročilou ochranu před internetovými hrozbami pro servery SQL ve virtuálních počítačích Azure](security-center-iaas-advanced-data.md)
-* [Seznam výstrah ochrany před hrozbami pro databázi SQL a datový sklad SQL](alerts-reference.md#alerts-sql-db-and-warehouse)
+* [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+* [Jak povolit rozšířenou ochranu před internetovými útoky pro SQL servery na Azure Virtual Machines](security-center-iaas-advanced-data.md)
+* [Seznam výstrah ochrany před hrozbami pro SQL Database a SQL Data Warehouse](alerts-reference.md#alerts-sql-db-and-warehouse)
 
 
 
 ## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage<a name="azure-storage"></a>
 
-Pokročilá ochrana před hrozbami pro úložiště detekuje neobvyklé a potenciálně škodlivé pokusy o přístup k účtům úložiště nebo o zneužití jejich využití. Tato úroveň ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení, a pomáhá vám spravovat systémy monitorování zabezpečení.
+Rozšířená ochrana před internetovými útoky pro úložiště detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení.
 
-Pokročilá ochrana před hrozbami pro Azure Storage je momentálně dostupná jenom pro [úložiště objektů Blob](https://azure.microsoft.com/services/storage/blobs/). 
+Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/). 
 
-Tato služba je dostupná ve všech veřejných cloudech a cloudech vlády USA, ale žádné jiné suverénní nebo vládní oblasti cloudu Azure.
+Tato služba je dostupná ve všech veřejných cloudech a cloudech USA, ale žádné jiné oblasti cloudových služeb Azure ani jiné.
 
-Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Centra zabezpečení Azure](https://azure.microsoft.com/pricing/details/security-center/).
+Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na [stránce s cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
 Další informace naleznete v tématu:
 
-* [Jak povolit pokročilou ochranu před internetovými hrozbami pro azure storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
+* [Jak povolit rozšířenou ochranu před internetovými útoky pro Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Seznam výstrah ochrany před hrozbami pro Azure Storage](alerts-reference.md#alerts-azurestorage)
 
 > [!TIP]
-> Výstrahy Azure Storage můžete simulovat podle pokynů v [tomto příspěvku blogu](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
+> Výstrahy Azure Storage můžete simulovat podle pokynů v [tomto blogovém příspěvku](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131).
 
 
 
 
 ## <a name="threat-protection-for-azure-cosmos-db"></a>Ochrana před hrozbami pro Azure Cosmos DB<a name="cosmos-db"></a>
 
-Výstrahy Azure Cosmos DB jsou generovány neobvyklé a potenciálně škodlivé pokusy o přístup nebo zneužití účtů Azure Cosmos DB.
+Výstrahy Azure Cosmos DB jsou generovány neobvyklými a potenciálně škodlivými pokusy o přístup k účtům Azure Cosmos DB nebo jejich zneužití.
 
 Další informace naleznete v tématu:
 
-* [Pokročilá ochrana před hrozbami pro Azure Cosmos DB (preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
+* [Rozšířená ochrana před internetovými útoky pro Azure Cosmos DB (Preview)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Seznam výstrah ochrany před hrozbami pro Azure Cosmos DB (Preview)](alerts-reference.md#alerts-azurecosmos)
 
 
@@ -194,41 +198,41 @@ Další informace naleznete v tématu:
 
 ## <a name="threat-protection-for-azure-network-layer"></a>Ochrana před hrozbami pro síťovou vrstvu Azure<a name="network-layer"></a>
 
-Analýza síťové vrstvy Security Center je založena na ukázkových [datech IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), což jsou hlavičky paketů shromážděné základními směrovači Azure. Na základě tohoto zdroje dat používá Centrum zabezpečení modely strojového učení k identifikaci a označení škodlivých dopravních aktivit. Security Center také používá databázi Microsoft Threat Intelligence k obohacení IP adres.
+Analýza Security Centerch síťových vrstev vychází z ukázkových [dat IPFIX](https://en.wikipedia.org/wiki/IP_Flow_Information_Export), což jsou hlavičky paketů shromážděné směrovači Azure Core. Na základě tohoto datového kanálu používá Security Center k identifikaci a označení aktivit škodlivého provozu modely strojového učení. Security Center k rozšíření IP adres používá taky databázi Microsoft Threat Intelligence.
 
-Některé konfigurace sítě mohou středisku zabezpečení zabránit ve generování výstrah týkajících se podezřelé síťové aktivity. Centrum zabezpečení pro generování síťových výstrah zajistěte, aby:
+Některé konfigurace sítě mohou omezit Security Center generování výstrah na podezřelé síťové aktivity. Pokud Security Center chcete generovat výstrahy sítě, zajistěte, aby:
 
-- Váš virtuální počítač má veřejnou IP adresu (nebo je na nástroj pro vyrovnávání zatížení s veřejnou IP adresou).
+- Váš virtuální počítač má veřejnou IP adresu (nebo se nachází ve službě Vyrovnávání zatížení s veřejnou IP adresou).
 
-- Přenosy odchozích přenosů v síti virtuálního počítače nejsou blokovány externím řešením IDS.
+- Externí řešení identifikátorů ID neblokuje provoz odchozího výstupu sítě vašeho virtuálního počítače.
 
-- Virtuálnímu počítači byla přiřazena stejná IP adresa za celou hodinu, během které došlo k podezřelé komunikaci. To platí také pro virtuální společnosti vytvořené jako součást spravované služby (například AKS, Databricks).
+- Vašemu virtuálnímu počítači se přiřadila stejná IP adresa pro celou hodinu, během které došlo k podezřelé komunikaci. To platí také pro virtuální počítače vytvořené jako součást spravované služby (například AKS, datacihly).
 
-Seznam výstrah síťové vrstvy Azure najdete v [tabulce reference výstrah](alerts-reference.md#alerts-azurenetlayer).
+Seznam výstrah síťových vrstev Azure najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azurenetlayer).
 
-Podrobnosti o tom, jak může centrum zabezpečení používat signály související se sítí k použití ochrany před [hrozbami, naleznete v tématu Heuristické detekce DNS v Centru zabezpečení](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
+Podrobnosti o tom, jak Security Center můžou použít signály související se sítí pro použití ochrany před hrozbami, najdete [v tématu heuristické detekce služby DNS v Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
 
 
 
-## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>Ochrana před hrozbami pro vrstvu správy Azure (Azure Resource Manager) (preview)<a name ="management-layer"></a>
+## <a name="threat-protection-for-azure-management-layer-azure-resource-manager-preview"></a>Ochrana před hrozbami pro vrstvu správy Azure (Azure Resource Manager) (Preview)<a name ="management-layer"></a>
 
-Vrstva ochrany Centra zabezpečení založená na Azure Resource Manageru je momentálně ve verzi Preview.
+Vrstva ochrany Security Center založená na Azure Resource Manager je momentálně ve verzi Preview.
 
-Security Center nabízí další vrstvu ochrany pomocí událostí Azure Resource Manager, který se považuje za rovinu řízení pro Azure. Analýzou záznamů Azure Resource Manager, Security Center zjistí neobvyklé nebo potenciálně škodlivé operace v prostředí předplatného Azure.
+Security Center nabízí další vrstvu ochrany pomocí Azure Resource Managerch událostí, které se považují za řídicí plochu pro Azure. Díky analýze záznamů Azure Resource Manager Security Center detekuje neobvyklé nebo potenciálně škodlivé operace v prostředí předplatného Azure.
 
-Seznam výstrah Správce prostředků Azure (preview) najdete v [tabulce referenčních výstrah](alerts-reference.md#alerts-azureresourceman).
+Seznam výstrah Azure Resource Manager (Preview) najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureresourceman).
 
 
 
 >[!NOTE]
-> Některé z předchozích analýz jsou poháněny Microsoft Cloud App Security. Chcete-li těžit z těchto analýz, musíte aktivovat licenci Cloud App Security. Pokud máte licenci Cloud App Security, pak jsou tyto výstrahy ve výchozím nastavení povolené. Zakázání výstrah:
+> Některé z předchozích analýz jsou napájené z Microsoft Cloud App Security. Pokud chcete tyto analýzy využít, musíte aktivovat licenci Cloud App Security. Pokud máte licenci Cloud App Security, jsou tyto výstrahy ve výchozím nastavení povolené. Zakázání výstrah:
 >
-> 1. V okně **Centrum zabezpečení** vyberte **zásady zabezpečení**. U předplatného, které chcete změnit, vyberte **Upravit nastavení**.
-> 2. Vyberte **detekci ohrožení**.
-> 3. V části **Povolit integrace**zrušte zaškrtnutí **políčka Povolit zabezpečení Microsoft Cloud App Security přístup k mým datům**a vyberte **Uložit**.
+> 1. V okně **Security Center** vyberte **zásady zabezpečení**. U předplatného, které chcete změnit, vyberte **Upravit nastavení**.
+> 2. Vyberte **detekci hrozeb**.
+> 3. V části **Povolit integrace**zrušte zaškrtnutí políčka **Povolit Microsoft Cloud App Security k přístupu k datům**a vyberte **Uložit**.
 
 >[!NOTE]
->Security Center ukládá zákaznická data související se zabezpečením ve stejné zeměpisné oblasti jako její prostředek. Pokud společnost Microsoft ještě nenasadila Centrum zabezpečení v geografické mno žaznosti prostředku, uloží data do Spojených států. Pokud je povoleno cloudové zabezpečení aplikací, tyto informace se ukládají v souladu s pravidly geografické polohy cloudového zabezpečení aplikací. Další informace naleznete [v tématu Ukládání dat pro neregionální služby](https://azuredatacentermap.azurewebsites.net/).
+>Security Center ukládá zákaznická data týkající se zabezpečení ve stejné geografické podobě jako její prostředek. Pokud společnost Microsoft ještě nebyla nasazena Security Center v geografickém prostředku, uloží data do USA. Pokud je povolená Cloud App Security, ukládají se tyto informace v souladu s pravidly geografického umístění Cloud App Security. Další informace najdete v tématu [úložiště dat pro jiné než regionální služby](https://azuredatacentermap.azurewebsites.net/).
 
 
 
@@ -237,49 +241,49 @@ Seznam výstrah Správce prostředků Azure (preview) najdete v [tabulce referen
 
 
 
-## <a name="threat-protection-for-azure-key-vault-preview"></a>Ochrana před hrozbami pro trezor klíčů Azure (preview)<a name="azure-keyvault"></a>
+## <a name="threat-protection-for-azure-key-vault-preview"></a>Ochrana před hrozbami pro Azure Key Vault (Preview)<a name="azure-keyvault"></a>
 
 > [!NOTE]
-> Tato služba není momentálně dostupná ve vládních a suverénních cloudových oblastech Azure.
+> Tato služba není aktuálně dostupná v oblastech cloudu Azure pro státní správu a svrchované oblasti.
 
-Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče, jako jsou certifikáty, připojovací řetězce a hesla. 
+Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné kódy, jako jsou certifikáty, připojovací řetězce a hesla. 
 
-Azure Security Center zahrnuje Azure nativní, pokročilou ochranu před hrozbami pro Azure Key Vault, která poskytuje další vrstvu inteligence zabezpečení. Security Center detekuje neobvyklé a potenciálně škodlivé pokusy o přístup nebo zneužití účtů trezoru klíčů. Tato vrstva ochrany umožňuje řešit hrozby bez odborníka na zabezpečení a bez nutnosti spravovat systémy monitorování zabezpečení jiných výrobců.  
+Azure Security Center zahrnuje rozšířenou ochranu před internetovými útoky Azure pro Azure Key Vault a poskytuje další vrstvu funkcí Security Intelligence. Security Center detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům Key Vault nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby bez nutnosti provádět odborníky na zabezpečení a bez nutnosti spravovat systémy monitorování zabezpečení třetích stran.  
 
-Když dojde k neobvyklým aktivitám, Centrum zabezpečení zobrazí výstrahy a volitelně je odešle e-mailem správcům předplatného. Tyto výstrahy zahrnují podrobnosti o podezřelé aktivitě a doporučení, jak vyšetřovat a narušovat hrozby. 
+Když dojde k neobvyklé aktivitám, Security Center zobrazuje výstrahy a volitelně je odesílá prostřednictvím e-mailu správcům předplatného. Tyto výstrahy obsahují podrobnosti o podezřelé aktivitě a doporučení ohledně toho, jak tyto hrozby prozkoumat a opravit. 
 
-Seznam výstrah azure key vault uhlečuje v [referenční tabulce výstrah](alerts-reference.md#alerts-azurekv).
-
-
+Seznam výstrah Azure Key Vault najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azurekv).
 
 
 
-## <a name="threat-protection-for-other-microsoft-services"></a>Ochrana před hrozbami pro jiné služby společnosti Microsoft<a name="alerts-other"></a>
+
+
+## <a name="threat-protection-for-other-microsoft-services"></a>Ochrana před hrozbami pro další služby Microsoftu<a name="alerts-other"></a>
 
 ### <a name="threat-protection-for-azure-waf"></a>Ochrana před hrozbami pro Azure WAF<a name="azure-waf"></a>
 
 Azure Application Gateway nabízí Firewall webových aplikací (WAF) poskytující centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožením zabezpečení.
 
-Webové aplikace jsou stále více terčem škodlivých útoků, které zneužívají běžně známé chyby zabezpečení. Waf aplikační brány je založen na základní sadě pravidel 3.0 nebo 2.2.9 z projektu zabezpečení otevřených webových aplikací. WAF se aktualizuje automaticky, aby byl chráněn před novými chybami zabezpečení. 
+Webové aplikace jsou stále více zaměřené na škodlivé útoky, které využívají často známá ohrožení zabezpečení. Application Gateway WAF vychází ze základní sady pravidel 3,0 nebo 2.2.9 v otevřeném projektu zabezpečení webové aplikace. WAF se automaticky aktualizuje, aby se chránila před novými chybami zabezpečení. 
 
-Pokud máte licenci pro Azure WAF, vaše waf výstrahy jsou vyponožené do Security Center bez další konfigurace potřebné. Další informace o výstrahách generovaných systémem WAF naleznete v [tématu Skupiny pravidel a pravidla brány firewall webových aplikací .](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)
+Pokud máte licenci pro Azure WAF, vaše výstrahy WAF se streamují Security Center bez nutnosti další konfigurace. Další informace o výstrahách vygenerovaných službou WAF najdete v tématu [skupiny pravidel a pravidla pro Firewall webových aplikací](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31).
 
 
-### <a name="threat-protection-for-azure-ddos-protection"></a>Ochrana před hrozbami pro ochranu Azure DDoS<a name="azure-ddos"></a>
+### <a name="threat-protection-for-azure-ddos-protection"></a>Ochrana před hrozbami pro Azure DDoS Protection<a name="azure-ddos"></a>
 
-Distribuované útoky odmítnutí služby (DDoS) je známo, že je snadné spustit. Staly se velkým bezpečnostním problémem, zejména pokud přesouváte aplikace do cloudu. 
+Je známo, že je možné snadno spustit útok s cílem odepření služeb (DDoS). Jsou to skvělé problémy se zabezpečením, zejména pokud přesouváte aplikace do cloudu. 
 
-Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace není k dispozici oprávněným uživatelům. Útoky DDoS mohou cílit na libovolný koncový bod, který lze dosáhnout prostřednictvím internetu.
+Útok DDoS se pokusí vyčerpat prostředky aplikace, takže aplikace nebude k dispozici oprávněným uživatelům. Útoky DDoS můžou cílit na libovolný koncový bod, ke kterému se dá získat přístup přes Internet.
 
-Chcete-li se bránit proti útokům DDoS, kupte si licenci pro Azure DDoS Protection a ujistěte se, že dodržujete osvědčené postupy návrhu aplikací. DDoS Protection poskytuje různé úrovně služeb. Další informace naleznete v [tématu Přehled ochrany DDoS Azure](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Pokud chcete chránit před útoky DDoS, Zakupte si licenci pro Azure DDoS Protection a ujistěte se, že jste si jisti osvědčenými postupy pro návrh aplikace. DDoS Protection poskytuje různé úrovně služeb. Další informace najdete v tématu [přehled Azure DDoS Protection](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
 
-Seznam výstrah Azure DDoS Protection naleznete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureddos).
+Seznam výstrah Azure DDoS Protection najdete v [referenční tabulce výstrah](alerts-reference.md#alerts-azureddos).
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o výstrahách zabezpečení z těchto funkcí ochrany před hrozbami naleznete v následujících článcích:
+Další informace o výstrahách zabezpečení z těchto funkcí ochrany před hrozbami najdete v následujících článcích:
 
 * [Referenční tabulka pro všechny výstrahy Azure Security Center](alerts-reference.md)
 * [Výstrahy zabezpečení ve službě Azure Security Center](security-center-alerts-overview.md)
 * [Správa a reakce na upozornění zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Export výstrah a doporučení zabezpečení (Preview)](continuous-export.md)
+* [Exportovat výstrahy a doporučení zabezpečení (Preview)](continuous-export.md)

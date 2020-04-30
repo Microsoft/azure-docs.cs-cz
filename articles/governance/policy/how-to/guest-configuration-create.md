@@ -3,12 +3,12 @@ title: Postup vytvoření zásad konfigurace hostů pro Windows
 description: Naučte se vytvářet Azure Policy zásady konfigurace hostů pro Windows.
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024893"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509614"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Postup vytvoření zásad konfigurace hostů pro Windows
 
@@ -16,7 +16,7 @@ Než začnete vytvářet vlastní zásady, je vhodné si přečíst informace o 
  
 Další informace o vytváření zásad konfigurace hostů pro Linux najdete na stránce [Postup vytvoření zásad konfigurace hostů pro Linux](./guest-configuration-create-linux.md) .
 
-Pokud systém Windows Audituje, používá konfigurace hosta modul prostředku [Konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview) (DSC) a konfigurační soubor. Konfigurace DSC definuje stav, ve kterém má být počítač.
+Při auditování používá konfigurace hosta k vytvoření konfiguračního souboru modul prostředku [Konfigurace požadovaného stavu](/powershell/scripting/dsc/overview/overview) (DSC). Konfigurace DSC definuje stav, ve kterém má být počítač.
 Pokud se konfigurace nezdařila, je aktivován efekt zásad **auditIfNotExists** a počítač se považuje za **nevyhovující**.
 
 [Konfiguraci hosta Azure Policy](../concepts/guest-configuration.md) můžete použít jenom k auditování nastavení v počítačích. Náprava nastavení v počítačích ještě není k dispozici.
