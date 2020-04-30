@@ -1,16 +1,16 @@
 ---
-title: Úvodní příručka – Zálohování virtuálního počítače pomocí portálu Azure
-description: V tomto rychlém startu se dozvíte, jak vytvořit trezor služby Recovery Services, povolit ochranu na virtuálním počítači Azure a zálohovat virtuální počítač pomocí portálu Azure.
+title: Rychlý Start – zálohování virtuálního počítače pomocí Azure Portal
+description: V tomto rychlém startu se dozvíte, jak vytvořit trezor Recovery Services, povolit ochranu na VIRTUÁLNÍm počítači Azure a zálohovat virtuální počítač s Azure Portal.
 ms.reviewer: saurse
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 02/06/2020
 ms.custom: mvc
 ms.openlocfilehash: 4bff53516447408486a6e40f2f7059ebc811aaa4
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240447"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
@@ -21,7 +21,7 @@ V tomto rychlém startu se povolí zálohování na existujícím virtuálním p
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k [portálu Azure](https://portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="select-a-vm-to-back-up"></a>Výběr virtuálního počítače k zálohování
 
@@ -76,7 +76,7 @@ Pokud se chystáte pokračovat ke kurzu služby Backup, který vysvětluje postu
 
 3. Z rozevírací nabídky vyberte **Odstranit zálohovaná data**.
 
-4. V dialogovém okně **Zadejte název zálohované položky** zadejte název vašeho virtuálního počítače, například *myVM*. Vyberte **možnost Zastavit zálohování**.
+4. V dialogovém okně **Zadejte název zálohované položky** zadejte název vašeho virtuálního počítače, například *myVM*. Vyberte **Zastavit zálohování**.
 
     Jakmile je zálohování virtuálního počítače zastaveno a body obnovení jsou odebrány, můžete odstranit skupinu prostředků. Pokud jste použili existující virtuální počítač, možná budete chtít zachovat skupinu prostředků a virtuální počítač.
 

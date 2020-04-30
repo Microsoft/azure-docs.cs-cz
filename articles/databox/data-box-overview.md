@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 09/17/2019
 ms.author: alkohli
 ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240713"
 ---
 # <a name="what-is-azure-data-box"></a>Co je Azure Data Box?
@@ -63,7 +63,7 @@ Zařízení Data Box má v této verzi následující funkce.
 | Místo v racku                                              | 7U při umístění do racku na boku (montáž do racku není možná)|
 | Potřebné kabely                                         | 1 napájecí kabel (je součástí balení) <br> 2 kabely RJ45 <br> 2 měděné kabely SFP+ Twinax|
 | Kapacita úložiště                                        | 100TB zařízení má 80 TB využitelné kapacity po zapnutí ochrany RAID 5|
-| Výkon                                            | Napájecí zdroj je diodován na 700 W. <br> Obvykle jednotka čerpá 375 W.|
+| Hodnocení výkonu                                            | Jednotka zdroje napájení je ohodnocena za 700 W. <br> Jednotka obvykle vykresluje 375 W.|
 | Síťová rozhraní                                      | 2 rozhraní 1 GbE rozhraní – MGMT, DATA 3 <br> MGMT – pro správu, nemůžou konfigurovat uživatelé, používá se pro počáteční instalaci <br> DATA3 – pro data, můžou konfigurovat uživatelé, výchozí je dynamické nastavení <br> MGMT a DATA 3 fungují také jako 10 GbE <br> 2 rozhraní 10 GbE – DATA 1, DATA 2 <br> Oboje slouží pro data, dají se konfigurovat jako dynamická (výchozí) nebo statická |
 | Média pro přenos dat                                     | RJ45, měděný kabel SFP+ 10 GbE Ethernet  |
 | Zabezpečení                                                | Robustní obal zařízení se šroubky odolnými vůči neoprávněné manipulaci <br> Nálepky odhalující manipulaci na spodní straně zařízení|
@@ -109,9 +109,9 @@ Během tohoto procesu budete e-mailem dostávat oznámení o všech změnách st
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
 
-Data Box můžete přenášet data na základě oblasti, ve které je služba nasazena, země nebo oblasti, do které je zařízení dodáváno, a cílový účet úložiště Azure, kde přenášíte data. 
+Data Box může přenášet data na základě oblasti, ve které je služba nasazená, země/oblasti, do které se zařízení dodává, a cílového účtu Azure Storage, kam data přenášíte. 
 
-- **Dostupnost služeb** – informace o dostupnosti oblasti najdete v produktech [Azure dostupných podle oblastí](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box se dá nasadit taky v Azure Government Cloud. Další informace najdete v tématu [Co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostupnost služby** – informace o dostupnosti oblastí najdete v [produktech Azure, které jsou dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure, ve kterých je tato služba k dispozici.  
 

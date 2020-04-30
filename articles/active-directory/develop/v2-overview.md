@@ -1,6 +1,6 @@
 ---
-title: Microsoft identity platforma (v2.0) přehled - Azure
-description: Přečtěte si o koncovém bodu a platformě platformy Microsoft identity platformy (v2.0).
+title: Microsoft Identity Platform (v 2.0) – přehled – Azure
+description: Seznamte se s koncovým bodem a platformou Microsoft Identity Platform (v 2.0).
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,70 +13,70 @@ ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 2e5bbbd311d71f2925e86ae756b36de7194aa9fb
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80886241"
 ---
-# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft identity platformy (v2.0) přehled
+# <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity Platform (v 2.0) – přehled
 
-Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity Microsoftu a získat tokeny pro volání rozhraní API společnosti Microsoft, jako je microsoft graph nebo rozhraní API, která vývojáři vytvořili. Platforma identit společnosti Microsoft se skládá z:
+Platforma identit Microsoftu vznikla z platformy pro vývojáře Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlásí všechny identity Microsoftu, a získat tokeny pro volání rozhraní API Microsoftu, jako jsou Microsoft Graph nebo rozhraní API, které vývojáři vytvořili. Platforma Microsoft identity se skládá z těchto součástí:
 
-- **OAuth 2.0 a OpenID Connect standard-kompatibilní ověřovací služba,** která umožňuje vývojářům ověřit všechny identity Microsoftu, včetně:
+- **Protokol OAuth 2,0 a služba ověřování kompatibilní se standardem OpenID Connect** , které umožňují vývojářům ověřovat jakékoli identity Microsoftu, včetně těchto:
   - Pracovní nebo školní účty (zřízené prostřednictvím Azure AD)
   - Osobní účty Microsoft (například Skype, Xbox a Outlook.com)
-  - Sociální nebo místní účty (přes Azure AD B2C)
-- **Open-source knihovny:** Knihovny ověřování Microsoft (MSAL) a podpora dalších knihoven kompatibilních se standardy
-- **Portál pro správu aplikací:** Prostředí pro registraci a konfiguraci vytvořené na webu Azure Portal spolu se všemi dalšími možnostmi správy Azure.
-- **Konfigurační rozhraní API aplikace a prostředí PowerShell:** které umožňuje programovou konfiguraci vašich aplikací prostřednictvím rozhraní Microsoft Graph API a PowerShellu, takže můžete automatizovat úlohy DevOps.
-- **Obsah pro vývojáře**: koncepční a referenční dokumentace, ukázky rychlého startu, ukázky kódu, kurzy a návody.
+  - Sociální nebo místní účty (prostřednictvím Azure AD B2C)
+- **Open source knihovny**: knihovny Microsoft Authentication Library (MSAL) a podpora dalších knihoven odpovídajících standardům
+- **Portál pro správu aplikací**: prostředí pro registraci a konfiguraci vytvořené v Azure Portal společně se všemi ostatními možnostmi správy Azure.
+- **Rozhraní API pro konfiguraci aplikací a PowerShell**: umožňuje programovou konfiguraci vašich aplikací prostřednictvím rozhraní Microsoft Graph API a PowerShellu, takže můžete automatizovat úlohy DevOps.
+- **Vývojářský obsah**: koncepční a referenční dokumentace, ukázky pro rychlý Start, ukázky kódu, kurzy a návody.
 
-Pro vývojáře platforma identit Microsoftu nabízí bezproblémovou integraci do inovací v prostoru identity a zabezpečení, jako je ověřování bez hesla, step-up ověřování a podmíněný přístup.  Tyto funkce nemusíte implementovat sami: aplikace integrované s platformou identit microsoftu nativně využívají těchto inovací.
+Pro vývojáře nabízí Microsoft Identity Platform bezproblémovou integraci do inovací v rámci identity a prostoru zabezpečení, jako je ověřování bez hesla, krokové ověřování a podmíněný přístup.  Nemusíte tyto funkce implementovat sami: aplikace integrované s Microsoft Identity platformou nativně využívají takové inovace.
 
-S platformou microsoftu identity můžete napsat kód jednou a oslovit libovolného uživatele. Můžete vytvořit aplikaci jednou a mít to fungovat na mnoha platformách, nebo vytvořit aplikaci, která funguje jako klient, stejně jako aplikace prostředků (API).
+S platformou Microsoft Identity můžete napsat kód jenom jednou a oslovit každého uživatele. Můžete vytvořit aplikaci jednou a nechat ji pracovat na celé řadě platforem nebo vytvořit aplikaci, která funguje jako klient a také jako aplikace prostředků (API).
 
 ## <a name="getting-started"></a>Začínáme
 
 Práce s identitou nemusí být těžká. 
 
-Podívejte se na [video platformy identit Microsoftu,](identity-videos.md) ve kterém se dozvíte základní informace. 
+Podívejte se na [video o platformě Microsoft Identity](identity-videos.md) , kde se seznámíte se základy. 
 
-Vyberte [si scénář,](authentication-flows-app-scenarios.md) který se vás týká – každá cesta scénáře má rychlý start a stránku s přehledem, která vám zprovozní během několika minut:
+Vyberte [scénář](authentication-flows-app-scenarios.md) , který vám bude platit – každá cesta scénáře obsahuje rychlý Start a stránku s přehledem, která vám umožní začít pracovat během několika minut:
 
 - [Vytvoření jednostránkové webové aplikace](scenario-spa-overview.md)
 - [Vytvoření webové aplikace, která přihlašuje uživatele](scenario-web-app-sign-user-overview.md)
 - [Vytvoření webové aplikace, která volá webová rozhraní API](scenario-web-app-call-api-overview.md)
 - [Vytvoření chráněného webového rozhraní API](scenario-protected-web-api-overview.md)
-- [Vytvoření webového rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md)
-- [Vytvoření aplikace klasické pracovní plochy](scenario-desktop-overview.md)
-- [Vytvoření aplikace pro daemon](scenario-daemon-overview.md)
+- [Sestavení webového rozhraní API, které volá webová rozhraní API](scenario-web-api-call-api-overview.md)
+- [Sestavení desktopové aplikace](scenario-desktop-overview.md)
+- [Sestavení aplikace typu démon](scenario-daemon-overview.md)
 - [Vytvoření mobilní aplikace](scenario-mobile-overview.md)
 
-Následující graf popisuje běžné scénáře ověřovacíaplikace – použijte ji jako referenci při integraci platformy identit y Microsoft u vaší aplikace.
+Následující tabulka popisuje běžné scénáře aplikací ověřování – použijte je jako referenční informace při integraci platformy Microsoft identity s vaší aplikací.
 
-[![Scénáře aplikací v platformě microsoftidentity](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[![Scénáře aplikací v platformě Microsoft Identity Platform](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se chcete dozvědět více o základních konceptech ověřování, doporučujeme začít s těmito tématy:
+Pokud se chcete dozvědět víc o konceptech základního ověřování, doporučujeme začít s těmito tématy:
 
 - [Toky ověřování a scénáře aplikací](authentication-flows-app-scenarios.md)
 - [Základy ověřování](authentication-scenarios.md)
-- [Instanční objekty a instanční objekty](app-objects-and-service-principals.md)
+- [Aplikační a instanční objekty](app-objects-and-service-principals.md)
 - [Publikum](v2-supported-account-types.md)
 - [Oprávnění a souhlas](v2-permissions-and-consent.md)
-- [ID tokeny](id-tokens.md) a [přístupové tokeny](access-tokens.md)
+- [Tokeny ID](id-tokens.md) a [přístupové tokeny](access-tokens.md)
 
-Vytvořte aplikaci bohatou na data, která volá [Microsoft Graph](https://docs.microsoft.com/graph/overview).
+Sestavte datově bohatou aplikaci, která volá [Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
-Až budete připraveni spustit aplikaci do **produkčního prostředí**, přečtěte si tyto doporučené postupy:
+Až budete připraveni ke spuštění aplikace v **produkčním prostředí**, přečtěte si tyto osvědčené postupy:
 
 - [Povolte protokolování](msal-logging.md) v aplikaci.
 - Povolte telemetrii ve vaší aplikaci.
-- Povolte [proxy servery a přizpůsobte klienty HTTP](msal-net-provide-httpclient.md).
-- Otestujte integraci podle [kontrolního seznamu integrace platformy identit společnosti Microsoft](identity-platform-integration-checklist.md).
+- Povolte [proxy a přizpůsobte si klienty http](msal-net-provide-httpclient.md).
+- Otestujte integraci podle [kontrolního seznamu integrace Microsoft Identity Platform](identity-platform-integration-checklist.md).
 
 ## <a name="learn-more"></a>Další informace
 
-Pokud plánujete vytvořit aplikaci orientosnou na zákazníka, která se přihlásí do sociálních a místních identit, přečtěte [si přehled Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).
+Pokud plánujete vytvořit zákaznickou aplikaci, která podepisuje sociální a místní identity, přečtěte si téma [přehled Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

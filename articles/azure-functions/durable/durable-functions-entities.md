@@ -1,65 +1,65 @@
 ---
-title: Trvalé entity – Funkce Azure
-description: Zjistěte, co jsou trvalé entity a jak je používat v rozšíření Trvalé funkce pro funkce Azure.
+title: Trvalé entity – Azure Functions
+description: Přečtěte si, jaké jsou trvalé entity a jak je používat v rozšíření Durable Functions pro Azure Functions.
 author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4f45ac40e7df865bdb4722d086325096c377cd59
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877538"
 ---
-# <a name="entity-functions"></a>Funkce entity
+# <a name="entity-functions"></a>Funkce entit
 
-Funkce entity definují operace pro čtení a aktualizaci malých částí stavu, označované jako *trvalé entity*. Podobně jako funkce orchestratoru jsou funkce entity funkce mise se speciálním typem aktivační události, *aktivační událost entity*. Na rozdíl od funkcí orchestratoru funkce entity spravují stav entity explicitně, nikoli implicitně reprezentující stav prostřednictvím toku řízení.
-Entity poskytují prostředky pro horizontální navýšení kapacity aplikací distribucí práce mezi mnoho entit, z nichž každá má mírně velikosti stavu.
+Funkce entit definují operace pro čtení a aktualizaci malých částí stavu, označovaných jako *odolné entity*. Podobně jako funkce nástroje Orchestrator jsou funkce entit funkce se speciálním typem triggeru, *triggerem entity*. Na rozdíl od funkcí Orchestrator nástroj entity Functions spravuje stav entity explicitně, spíše než implicitně představující stav prostřednictvím toku řízení.
+Entity poskytují prostředky pro horizontální navýšení kapacity aplikací tím, že distribuují práci napříč mnoha entitami, každý s mírným stavem.
 
 > [!NOTE]
-> Funkce entity a související funkce jsou k dispozici pouze v režimech Durable Functions 2.0 a vyšší.
+> Funkce entit a související funkce jsou dostupné jenom v Durable Functions 2,0 a novějších.
 
-## <a name="general-concepts"></a>Obecné pojmy
+## <a name="general-concepts"></a>Obecné koncepty
 
-Entity se chovají trochu jako malé služby, které komunikují prostřednictvím zpráv. Každá entita má jedinečnou identitu a vnitřní stav (pokud existuje). Podobně jako služby nebo objekty provádějí entity operace, když k tomu budou vyzvány. Při spuštění operace může aktualizovat vnitřní stav entity. Může také volat externí služby a čekat na odpověď. Entity komunikují s jinými entitami, orchestracemi a klienty pomocí zpráv, které jsou implicitně odesílány prostřednictvím spolehlivých front. 
+Entity se chovají jako malé služby, které komunikují prostřednictvím zpráv. Každá entita má jedinečnou identitu a vnitřní stav (pokud existuje). Podobně jako služby a objekty, entity provádějí operace po zobrazení výzvy. Když se operace spustí, může aktualizovat vnitřní stav entity. Může také volat externí služby a čekat na odpověď. Entity komunikují s jinými entitami, orchestrací a klienty pomocí zpráv, které jsou implicitně odesílány prostřednictvím spolehlivých front. 
 
-Aby se zabránilo konfliktům, všechny operace na jedné entitě jsou zaručeny sériové, to znamená jeden po druhém. 
+Aby se zabránilo konfliktům, budou mít všechny operace na jedné entitě zaručené spouštění na základě sériového běhu, tj. jednoho po druhém. 
 
-### <a name="entity-id"></a>Entity ID
-K entitaem se přistupuje prostřednictvím jedinečného identifikátoru, *ID entity*. ID entity je jednoduše dvojice řetězců, které jednoznačně identifikují instanci entity. Skládá se z:
+### <a name="entity-id"></a>ID entity
+K entitám se dostanete pomocí jedinečného identifikátoru *ID entity*. ID entity je jednoduše dvojice řetězců, které jedinečně identifikují instanci entity. Skládá se z:
 
-* **Název entity**, což je název, který identifikuje typ entity. Příkladem je "Counter". Tento název se musí shodovat s názvem funkce entity, která entitu implementuje. Není to citlivé na případ.
-* **Klíč entity**, což je řetězec, který jednoznačně identifikuje entitu mezi všemi ostatními entitami se stejným názvem. Příkladem je identifikátor GUID.
+* **Název entity**, což je název, který identifikuje typ entity. Příkladem je "čítač". Tento název se musí shodovat s názvem funkce entity, která implementuje entitu. Nerozlišuje se případ.
+* **Klíč entity**, což je řetězec, který jedinečně identifikuje entitu mezi všemi ostatními entitami se stejným názvem. Příkladem je identifikátor GUID.
 
-Funkce entity `Counter` může být například použita pro udržování skóre v online hře. Každá instance hry má jedinečné ID entity, například `@Counter@Game1` a `@Counter@Game2`. Všechny operace, které cílí na určitou entitu, vyžadují zadání ID entity jako parametru.
+Například funkce `Counter` entity může být použita k udržení skóre v online hře. Každá instance hry má jedinečné ID entity, například `@Counter@Game1` a. `@Counter@Game2` Všechny operace, které cílí na konkrétní entitu, vyžadují zadání ID entity jako parametru.
 
 ### <a name="entity-operations"></a>Operace s entitami ###
 
-Chcete-li vyvolat operaci entity, zadejte:
+Pokud chcete vyvolat operaci na entitě, zadejte:
 
-* **ID entity** cílové entity.
-* **Název operace**, což je řetězec, který určuje operaci, která má být vykonána. Entita `Counter` může například `get`podporovat `reset` `add`, nebo operace.
-* **Vstup operace**, což je volitelný vstupní parametr pro operaci. Například operace přidání může trvat celé číslo jako vstup.
-* **Plánovaný čas**, což je volitelný parametr pro určení doby dodání operace. Například operace může být spolehlivě naplánováno spustit několik dní v budoucnu.
+* **ID entity** cílové entity
+* **Název operace**, což je řetězec, který určuje operaci, která má být provedena. `Counter` Entita může například podporovat `add`operace, `get`, nebo `reset` .
+* **Vstup operace**, což je volitelný vstupní parametr pro operaci. Například operace přidání může jako vstup mít celočíselnou hodnotu.
+* **Naplánovaný čas**, což je volitelný parametr pro určení doby doručení operace. Například operace může být spolehlivě naplánována na spuštění několik dní v budoucnu.
 
-Operace mohou vrátit výslednou hodnotu nebo výsledek chyby, například chybu JavaScriptu nebo výjimku .NET. Tento výsledek nebo chybu lze pozorovat orchestrations, které volal operaci.
+Operace mohou vracet výslednou hodnotu nebo výsledek chyby, například Chyba JavaScriptu nebo výjimka .NET. Tento výsledek nebo chybu mohou být pozorovány orchestrací, které volaly operaci.
 
-Operace entity můžete také vytvořit, číst, aktualizovat a odstranit stav entity. Stav entity je vždy trvale trvalé v úložišti.
+Operace entity může také vytvořit, číst, aktualizovat a odstranit stav entity. Stav entity je vždy trvale trvalým úložištěm.
 
 ## <a name="define-entities"></a>Definování entit
 
-V současné době dvě odlišná řešení API pro definování entit jsou:
+V současné době jsou dvě různá rozhraní API pro definování entit:
 
-**Syntaxe založená na funkci**, kde jsou entity reprezentovány jako funkce a operace jsou explicitně odesílány aplikací. Tato syntaxe funguje dobře pro entity s jednoduchým stavem, několik operací nebo dynamickou sadu operací, jako v rozhraní aplikace. Tato syntaxe může být zdlouhavá udržovat, protože nezachytává chyby typu v době kompilace.
+**Syntaxe založená na funkcích**, kde jsou entity reprezentovány jako funkce a operace jsou explicitně odesílány aplikací. Tato syntaxe funguje dobře pro entity s jednoduchým stavem, malým počtem operací nebo dynamickou sadou operací, jako v aplikačních architekturách. Tato syntaxe může být zdlouhavá, protože nezachycuje chyby typu v době kompilace.
 
-**Syntaxe založená na třídě (pouze.NET)**, kde entity a operace jsou reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje operace, které mají být vyvolány způsobem bezpečné ho typu. Syntaxe založená na třídě je tenká vrstva nad syntaxí založenou na funkcích, takže obě varianty lze zaměnitve stejnou aplikaci zaměnitelně.
+**Syntaxe založená na třídě (pouze .NET)**, kde entity a operace jsou reprezentovány třídami a metodami. Tato syntaxe vytváří snadněji čitelný kód a umožňuje, aby operace byly vyvolány způsobem bezpečným pro typ. Syntaxe založená na třídě je tenká vrstva nad syntaxí založenou na funkci, takže obě varianty lze ve stejné aplikaci použít zaměnitelné.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
-### <a name="example-function-based-syntax---c"></a>Příklad: Syntaxe založená na funkci - C #
+### <a name="example-function-based-syntax---c"></a>Příklad: syntaxe založená na funkcích – C #
 
-Následující kód je příkladem jednoduché `Counter` entity implementované jako trvalá funkce. Tato funkce definuje tři `add` `reset`operace `get`, , a , z nichž každá pracuje ve stavu celéčíslo.
+Následující kód je příkladem jednoduché `Counter` entity implementované jako trvalá funkce. Tato funkce definuje tři operace, `add` `reset`, a `get`, každý z nich funguje v celočíselném stavu.
 
 ```csharp
 [FunctionName("Counter")]
@@ -80,9 +80,9 @@ public static void Counter([EntityTrigger] IDurableEntityContext ctx)
 }
 ```
 
-Další informace o syntaxi založené na funkcích a o tom, jak ji používat, naleznete [v tématu Syntaxe založená na funkcích](durable-functions-dotnet-entities.md#function-based-syntax).
+Další informace o syntaxi založené na funkcích a způsobu jejich použití naleznete v tématu [syntaxe založená na funkcích](durable-functions-dotnet-entities.md#function-based-syntax).
 
-### <a name="example-class-based-syntax---c"></a>Příklad: Syntaxe založená na třídě - C #
+### <a name="example-class-based-syntax---c"></a>Příklad: syntaxe založená na třídě-C #
 
 Následující příklad je ekvivalentní implementace `Counter` entity pomocí tříd a metod.
 
@@ -105,17 +105,17 @@ public class Counter
 }
 ```
 
-Stav této entity je objekt `Counter`typu , který obsahuje pole, které ukládá aktuální hodnotu čítače. Chcete-li zachovat tento objekt v úložišti, je serializován a deserializován [knihovnou Json.NET.](https://www.newtonsoft.com/json) 
+Stav této entity je objekt typu `Counter`, který obsahuje pole, které ukládá aktuální hodnotu čítače. Chcete-li zachovat tento objekt v úložišti, je jeho serializace a deserializována knihovnou [JSON.NET](https://www.newtonsoft.com/json) . 
 
-Další informace o syntaxi založené na třídě a o tom, jak ji používat, naleznete [v tématu Definování tříd entit](durable-functions-dotnet-entities.md#defining-entity-classes).
+Další informace o syntaxi založené na třídě a způsobu jejich použití naleznete v tématu [definování tříd entit](durable-functions-dotnet-entities.md#defining-entity-classes).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-### <a name="example-javascript-entity"></a>Příklad: Entita JavaScriptu
+### <a name="example-javascript-entity"></a>Příklad: entita JavaScript
 
-Trvalé entity jsou k dispozici v Jazyce JavaScript `durable-functions` počínaje verzí **1.3.0** balíčku npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v Jazyce JavaScript.
+Trvalé entity jsou k dispozici v JavaScriptu počínaje verzí **1.3.0** balíčku `durable-functions` npm. Následující kód je `Counter` entita implementovaná jako trvalá funkce napsaná v JavaScriptu.
 
-**Čítač/funkce.json**
+**Čítač/Function. JSON**
 ```json
 {
   "bindings": [
@@ -129,7 +129,7 @@ Trvalé entity jsou k dispozici v Jazyce JavaScript `durable-functions` počína
 }
 ```
 
-**Čítač/index.js**
+**Čítač/index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -152,29 +152,29 @@ module.exports = df.entity(function(context) {
 
 ---
 
-## <a name="access-entities"></a>Přístup entity
+## <a name="access-entities"></a>Přístup k entitám
 
-Entity lze přistupovat pomocí jednosměrné nebo obousměrné komunikace. Následující terminologie rozlišuje dvě formy komunikace: 
+K entitám lze přistupovat pomocí jednosměrné nebo obousměrné komunikace. Následující terminologie rozlišuje tyto dvě formy komunikace: 
 
-* **Volání** entity používá obousměrnou (round-trip) komunikaci. Odešlete zprávu operace do entity a počkejte na zprávu odpovědi, než budete pokračovat. Zpráva s odpovědí může poskytnout výslednou hodnotu nebo výsledek chyby, například chybu JavaScriptu nebo výjimku .NET. Tento výsledek nebo chyba je pak pozorovánvolajícím.
-* **Signalizace** entity používá jednosměrnou (požární a zapomenout) komunikaci. Odešlete zprávu operace, ale nečekejte na odpověď. Zatímco zpráva je zaručena, že bude doručena nakonec, odesílatel neví, kdy a nemůže sledovat žádné výsledné hodnoty nebo chyby.
+* **Volání** entity používá obousměrnou komunikaci (round-trip). Do entity odešlete zprávu o operaci a potom před pokračováním vyčkejte na zprávu s odpovědí. Zpráva odpovědi může poskytnout výslednou hodnotu nebo výsledek chyby, jako je například Chyba JavaScriptu nebo výjimka .NET. Tento výsledek nebo chyba je následně pozorován volajícím.
+* **Signalizace** entity používá jednosměrnou komunikaci (požární a zapomenuté). Odešlete zprávu o operaci, ale nečekáte na odpověď. I když je zaručeno doručení zprávy, odesílatel neví, kdy a nemůže sledovat žádnou hodnotu výsledku nebo chyby.
 
-Entity lze přistupovat z klientských funkcí, z funkcí orchestrátoru nebo z funkcí v rámci entity. Ne všechny formy komunikace jsou podporovány ve všech kontextech:
+K entitám je možné přistupovat z funkcí klienta, z funkcí nástroje Orchestrator nebo z funkcí entity. Všechny typy komunikace nejsou podporovány všemi kontexty:
 
-* V rámci klientů můžete signalizovat entity a číst stav entity.
-* V rámci orchestrations můžete signalizovat entity a můžete volat entity.
-* Z entity můžete signalizovat entity.
+* V rámci klientů můžete identifikovat entity a můžete si přečíst stav entity.
+* V rámci orchestrace můžete identifikovat entity a můžete volat entity.
+* V rámci entit můžete identifikovat entity.
 
-Následující příklady ilustrují tyto různé způsoby přístupu k entitám.
+Následující příklady znázorňují různé způsoby přístupu k entitám.
 
-### <a name="example-client-signals-an-entity"></a>Příklad: Klient signalizuje entitu
+### <a name="example-client-signals-an-entity"></a>Příklad: klient signalizuje entitu.
 
-Chcete-li získat přístup k entitám z běžné funkce Azure, která se také označuje jako funkce klienta, použijte [vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkci aktivovanou frontou signalizací entity pomocí této vazby.
+Pro přístup k entitám z běžné funkce Azure, která je také známá jako funkce klienta, použijte [vazbu klienta entity](durable-functions-bindings.md#entity-client). Následující příklad ukazuje funkce aktivované frontou, která tuto vazbu používá.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 > [!NOTE]
-> Pro jednoduchost následující příklady ukazují volně zadanou syntaxi pro přístup k entitám. Obecně doporučujeme [přistupovat k entitám prostřednictvím rozhraní,](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) protože poskytuje další kontrolu typů.
+> V následujících příkladech se pro přístup k entitám zobrazí následující příklady s volným typem. Obecně doporučujeme, abyste měli [přístup k entitám prostřednictvím rozhraní](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , protože poskytuje další kontrolu typu.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -203,13 +203,13 @@ module.exports = async function (context) {
 
 ---
 
-Termín *signál* znamená, že vyvolání rozhraní API entity je jednosměrné a asynchronní. Není možné, aby funkce klienta věděla, kdy entita zpracovala operaci. Také funkce klienta nemůže sledovat žádné hodnoty výsledků nebo výjimky. 
+Termínový *signál* znamená, že volání rozhraní API entity je jednosměrné a asynchronní. Pro funkci klienta není možné zjistit, kdy entita tuto operaci zpracovala. Funkce klienta navíc nemůže sledovat žádné hodnoty výsledků ani výjimky. 
 
-### <a name="example-client-reads-an-entity-state"></a>Příklad: Klient přečte stav entity
+### <a name="example-client-reads-an-entity-state"></a>Příklad: klient přečte stav entity.
 
-Klientské funkce mohou také dotazovat stav entity, jak je znázorněno v následujícím příkladu:
+Funkce klienta se také mohou dotazovat na stav entity, jak je znázorněno v následujícím příkladu:
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -238,13 +238,13 @@ module.exports = async function (context) {
 
 ---
 
-Dotazy na stav entity jsou odesílány do úložiště trvalésledování a vrátit poslední trvalý stav entity. Tento stav je vždy "potvrzený" stav, to znamená, že nikdy není dočasný mezilehlý stav předpokládá uprostřed provádění operace. Je však možné, že tento stav je zastaralý ve srovnání se stavem v paměti entity. Pouze orchestrations můžete číst entity ve stavu v paměti, jak je popsáno v následující části.
+Dotazy na stav entity se odesílají do trvalého úložiště sledování a vracejí poslední trvalý stav entity. Tento stav je vždy stav "potvrzený", to znamená, že během provádění operace se nepředpokládá dočasný přechodný stav. Je ale možné, že je tento stav zastaralý ve srovnání se stavem v paměti entity. Pouze orchestrace mohou číst stav v paměti entity, jak je popsáno v následující části.
 
-### <a name="example-orchestration-signals-and-calls-an-entity"></a>Příklad: Signály orchestrace a volání entity
+### <a name="example-orchestration-signals-and-calls-an-entity"></a>Příklad: signály Orchestrace a volání entity
 
-Funkce Orchestrator mohou přistupovat k entitám pomocí api na [vazbě aktivační události orchestrace](durable-functions-bindings.md#orchestration-trigger). Následující ukázkový kód ukazuje funkci orchestrator, `Counter` která volá a signalizuje entitu.
+Funkce Orchestrator mají přístup k entitám pomocí rozhraní API ve [vazbě triggeru orchestrace](durable-functions-bindings.md#orchestration-trigger). Následující příklad kódu ukazuje volání funkce Orchestrator a signalizaci `Counter` entity.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -277,21 +277,21 @@ module.exports = df.orchestrator(function*(context){
 ```
 
 > [!NOTE]
-> JavaScript v současné době nepodporuje signalizaci entity z orchestrátoru. Místo toho použijte `callEntity`.
+> JavaScript v současné době nepodporuje signalizaci entity z nástroje Orchestrator. Místo toho použijte `callEntity`.
 
 ---
 
-Pouze orchestrations jsou schopny volání entit a získání odpovědi, která může být buď vrácená hodnota nebo výjimka. Klientské funkce, které používají [vazby klienta](durable-functions-bindings.md#entity-client) může signalizovat pouze entity.
+Pouze orchestrace jsou schopny volat entity a získat odpověď, což může být buď návratová hodnota, nebo výjimka. Funkce klienta, které používají [vazbu klienta](durable-functions-bindings.md#entity-client) , mohou signalizovat pouze entity.
 
 > [!NOTE]
-> Volání entity z funkce orchestrator je podobné volání [funkce aktivity](durable-functions-types-features-overview.md#activity-functions) z funkce orchestratoru. Hlavní rozdíl je, že funkce entity jsou trvalé objekty s adresou, což je ID entity. Funkce entity podporují zadání názvu operace. Funkce aktivity, na druhé straně jsou bezstavové a nemají koncept operací.
+> Volání entity z funkce Orchestrator je podobné volání [funkce aktivity](durable-functions-types-features-overview.md#activity-functions) z funkce Orchestrator. Hlavním rozdílem je, že funkce entit jsou trvalé objekty s adresou, což je ID entity. Funkce entit podporují zadání názvu operace. Funkce aktivit na druhé straně jsou bezstavové a nemají koncept operací.
 
-### <a name="example-entity-signals-an-entity"></a>Příklad: Entity signalizují entitu
+### <a name="example-entity-signals-an-entity"></a>Příklad: entita signalizuje entitu.
 
-Funkce entity může odesílat signály jiným entitám nebo dokonce sám sobě, zatímco provádí operaci.
-Například můžeme upravit předchozí `Counter` příklad entity tak, aby odešle signál "milník-reached" na některé entity monitoru, když čítač dosáhne hodnoty 100.
+Funkce entity může posílat signály jiným entitám nebo dokonce sám sebe, zatímco provádí operaci.
+Například můžeme upravit příklad předchozí `Counter` entity tak, že pošle signál "byl dosažen milník" do některé entity monitorování, když čítač dosáhne hodnoty 100.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 ```csharp
    case "add":
@@ -321,16 +321,16 @@ Například můžeme upravit předchozí `Counter` příklad entity tak, aby ode
 
 ---
 
-## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>Koordinace entity (aktuálně pouze .NET)
+## <a name="entity-coordination-currently-net-only"></a><a name="entity-coordination"></a>Koordinace entit (aktuálně jenom .NET)
 
-Může nastat čas, kdy je třeba koordinovat operace napříč více entitami. Například v bankovní aplikaci můžete mít entity, které představují jednotlivé bankovní účty. Při převodu finančních prostředků z jednoho účtu na druhý musíte zajistit, aby zdrojový účet měl dostatečné prostředky. Je také nutné zajistit, aby aktualizace zdrojového i cílového účtu byly prováděny způsobem, který je v transakci konzistentní.
+Může nastat situace, kdy potřebujete koordinovat operace mezi několika entitami. Například v bankovní aplikaci můžete mít entity, které reprezentují jednotlivé bankovní účty. Při přenosu finančních prostředků z jednoho účtu na jiný je nutné zajistit, aby měl zdrojový účet dostatečné prostředky. Také je nutné zajistit, aby se aktualizace zdrojového i cílového účtu prováděly v rámci reakčního konzistentního postupu.
 
-### <a name="example-transfer-funds-c"></a>Příklad: Převod finančních prostředků (C#)
+### <a name="example-transfer-funds-c"></a>Příklad: přenosové prostředky (C#)
 
-Následující ukázkový kód převádí prostředky mezi dvěma entitami účtu pomocí funkce orchestrator. Koordinace aktualizace entit `LockAsync` vyžaduje použití metody k vytvoření _kritické části_ v orchestraci.
+Následující příklad kódu přenáší prostředky mezi dvěma entitami účtu pomocí funkce Orchestrator. Koordinace aktualizací entit vyžaduje použití `LockAsync` metody k vytvoření _kritické části_ v orchestraci.
 
 > [!NOTE]
-> Pro jednoduchost tento příklad znovu `Counter` použije entitu definovanou dříve. V reálné aplikaci by bylo lepší definovat `BankAccount` podrobnější entitu.
+> V zájmu jednoduchosti tento příklad znovu používá `Counter` dříve definovanou entitu. V reálné aplikaci by bylo lepší definovat podrobnější `BankAccount` entitu.
 
 ```csharp
 // This is a method called by an orchestrator function
@@ -372,61 +372,61 @@ public static async Task<bool> TransferFundsAsync(
 }
 ```
 
-V rozhraní `LockAsync` .NET vrátí `IDisposable`funkce , která při vyřazení ukončí kritický oddíl. Tento `IDisposable` výsledek lze použít `using` společně s blokem získat syntaktické reprezentace kritické části.
+V rozhraní .NET `LockAsync` vrátí `IDisposable`, který ukončí oddíl kritické, pokud je uvolněn. Tento `IDisposable` výsledek lze použít společně s `using` blokem pro získání syntaktické reprezentace oddílu kritického.
 
-V předchozím příkladu orchestrátorská funkce převedla finanční prostředky ze zdrojové entity do cílové entity. Metoda `LockAsync` uzamkla entity zdrojového i cílového účtu. Toto uzamčení zajistilo, že žádný jiný klient nemohl dotazovat nebo upravovat stav obou `using` účtů, dokud logika orchestrace neukončila kritickou část na konci příkazu. Toto chování zabraňuje možnosti kontokorentu ze zdrojového účtu.
-
-> [!NOTE] 
-> Když orchestrace ukončí, buď normálně nebo s chybou, všechny kritické oddíly v průběhu jsou implicitně ukončeny a všechny zámky jsou uvolněny.
-
-### <a name="critical-section-behavior"></a>Chování kritického oddílu
-
-Metoda `LockAsync` vytvoří kritický oddíl v orchestraci. Tyto kritické oddíly zabraňují provádění překrývajících se změn v zadané sadě entit. Interně `LockAsync` rozhraní API odešle operace "lock" entity a vrátí, když obdrží "lock získané" odpověď zprávy z každé z těchto stejných entit. Uzamčení a odemknutí jsou integrované operace podporované všemi entitami.
-
-Žádné operace od jiných klientů jsou povoleny na entitu, zatímco je v uzamčeném stavu. Toto chování zajišťuje, že pouze jedna instance orchestrace můžete zamknout entitu najednou. Pokud se volající pokusí vyvolat operaci entity, zatímco je uzamčen orchestrací, tato operace je umístěna do fronty čekající operace. Žádné čekající operace jsou zpracovány až poté, co blokování orchestrace uvolní jeho zámek.
+V předchozím příkladu funkce Orchestrator přenesla prostředky ze zdrojové entity na cílovou entitu. `LockAsync` Metoda uzamkl entity zdrojového i cílového účtu. Toto uzamykání zajišťuje, že žádný jiný klient by nemohl zadat dotaz nebo změnit stav obou účtů, dokud logika orchestrace neukončila kritickou část na konci `using` příkazu. Toto chování brání v tom, aby bylo možné přečerpání ze zdrojového účtu.
 
 > [!NOTE] 
-> Toto chování se mírně liší od synchronizace primitiv `lock` používaných ve většině programovacích jazyků, jako je například příkaz v jazyce C#. Například v C#, `lock` příkaz musí být používán všemi vlákny k zajištění správné synchronizace mezi více vlákny. Entity však nevyžadují, aby všichni volající explicitně uzamkli entitu. Pokud některý volající uzamkne entitu, všechny ostatní operace v této entitě jsou blokovány a zařazeny do fronty za tímto zámkem.
+> Pokud se orchestrace ukončí, ať už normálně nebo s chybou, všechny kritické oddíly v průběhu budou implicitně ukončeny a všechny zámky se uvolní.
 
-Zámky na entity jsou trvalé, takže přetrvávají i v případě, že je recyklován proces provádění. Zámky jsou interně trvalé jako součást trvalého stavu entity.
+### <a name="critical-section-behavior"></a>Kritické chování oddílu
 
-Na rozdíl od transakcí kritické oddíly nejsou automaticky vrátit zpět změny v případě chyb. Místo toho jakékoli zpracování chyb, jako je například vrácení zpět nebo opakování, musí být explicitně kódován, například zachycení chyby nebo výjimky. Tato volba návrhu je záměrná. Automatické vrácení zpět všechny účinky orchestrace je obtížné nebo nemožné obecně, protože orchestrations může spouštět aktivity a volání externích služeb, které nelze vrátit zpět. Také pokusy o vrácení zpět může selhat a vyžadují další zpracování chyb.
+`LockAsync` Metoda vytvoří kritickou část v orchestraci. Tyto kritické oddíly zabraňují jiným orchestraci v provádění překrývajících se změn v zadané sadě entit. `LockAsync` Rozhraní API interně odesílá operace "uzamknout" do entit a vrátí, když obdrží zprávu s odpovědí "zámek" ze všech těchto stejných entit. Zámky i odemknutí jsou integrované operace podporované všemi entitami.
 
-### <a name="critical-section-rules"></a>Pravidla kritického oddílu
+V entitě nejsou povoleny žádné operace, pokud je v uzamčeném stavu. Toto chování zajistí, že entita může současně uzamknout pouze jedna instance orchestrace. Pokud se volající pokusí vyvolat operaci u entity, když je uzamčena orchestrací, tato operace je umístěna do fronty čekajících operací. Žádné nedokončené operace se zpracovávají do doby, než orchestrace hospodářství uvolní zámek.
 
-Na rozdíl od nižší úrovně uzamčení primitiv ve většině programovacích jazyků kritické části jsou *zaručeně není zablokování*. Abychom zabránili zablokování, vynucujeme následující omezení: 
+> [!NOTE] 
+> Toto chování se mírně liší od primitiv synchronizace používaných ve většině programovacích jazyků, jako je `lock` například příkaz v jazyce C#. Například v jazyce C# musí být `lock` příkaz používán všemi vlákny k zajištění správné synchronizace napříč více vlákny. Entity ale nevyžadují, aby všichni volající explicitně zamkli entitu. Pokud nějaký volající zamkne entitu, všechny ostatní operace v této entitě se zablokují a zařadí do fronty za tímto zámkem.
 
-* Kritické řezy nelze vnořit.
-* Kritické oddíly nelze vytvořit suborchestrations.
-* Kritické oddíly mohou volat pouze entity, které mají uzamčeny.
-* Kritické oddíly nelze volat stejnou entitu pomocí více paralelních volání.
-* Kritické oddíly mohou signalizovat pouze entity, které nebyly uzamčeny.
+Zámky entit jsou odolné, takže zůstanou i v případě, že je spuštěný proces recyklován. Zámky jsou interně trvale zachované jako součást trvalého stavu entity.
 
-Jakékoli porušení těchto pravidel způsobit chybu za `LockingRulesViolationException` běhu, například v .NET, která obsahuje zprávu, která vysvětluje, jaké pravidlo bylo přerušeno.
+Na rozdíl od transakcí nekritické oddíly automaticky vrátí zpět změny v případě chyb. Místo toho musí být jakékoli zpracování chyb, jako je vrácení zpět nebo opakování, explicitně kódované, například zachycením chyb nebo výjimek. Tato volba návrhu je úmyslné. Automatické vrácení všech důsledků orchestrace je obtížné nebo nemožné, protože orchestrace můžou spouštět aktivity a volat externí služby, které se nedají vrátit zpátky. Také se pokusy o vrácení zpět mohou selhat a vyžadují další zpracování chyb.
+
+### <a name="critical-section-rules"></a>Kritická pravidla oddílů
+
+Na rozdíl od primitivních zámků nízké úrovně ve většině programovacích jazyků jsou důležité oddíly *zaručené zablokování*. Chcete-li zabránit zablokování, vynutili následující omezení: 
+
+* Kritické oddíly nemůžou být vnořené.
+* Kritické oddíly nemůžou vytvářet podorchestry.
+* Kritické oddíly mohou volat pouze entity, které byly uzamčeny.
+* Kritické oddíly nemohou volat stejnou entitu pomocí více paralelních volání.
+* Kritické oddíly mohou signalizovat pouze Neuzamčené entity.
+
+Jakékoli porušení těchto pravidel způsobí chybu za běhu, například `LockingRulesViolationException` v .NET, která obsahuje zprávu s vysvětlením, jaké pravidlo bylo přerušeno.
 
 ## <a name="comparison-with-virtual-actors"></a>Porovnání s virtuálními aktéry
 
-Mnoho prvků odolných entit je inspirováno [modelem objektu actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s herci, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvanlivé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/), neboli zrnům, jak je popularizoval [projekt Orleans](http://dotnet.github.io/orleans/). Příklad:
+Mnohé z funkcí trvalé entity nechte inspirovat [model actor](https://en.wikipedia.org/wiki/Actor_model). Pokud jste již obeznámeni s objekty Actors, můžete rozpoznat mnoho konceptů popsaných v tomto článku. Trvalé entity jsou obzvláště podobné [virtuálním aktérům](https://research.microsoft.com/projects/orleans/)nebo zrnam, jak je oblíbená v rámci [projektu Orleans](http://dotnet.github.io/orleans/). Příklad:
 
-* Trvalé entity lze adresovat prostřednictvím ID entity.
-* Operace trvalé entity provádět sériově, jeden po druhém, aby se zabránilo časování podmínky.
-* Trvalé entity jsou vytvořeny implicitně, když jsou volány nebo signalizovány.
-* Pokud nejsou prováděny operace, trvalé entity jsou tiše uvolněny z paměti.
+* Trvalé entity jsou adresovatelné prostřednictvím ID entity.
+* Trvalé operace s entitami se v jednom okamžiku spouštějí po jednom, aby se zabránilo konfliktům časování.
+* Trvalé entity jsou vytvořeny implicitně při volání nebo signalizaci.
+* Neprovádíte-li operace, odolné entity budou tiše odpojeny od paměti.
 
-Tam jsou některé důležité rozdíly, které stojí za zmínku:
+Je potřeba zaznamenat si několik důležitých rozdílů:
 
-* Trvalé entity upřednostňují odolnost před latencí, a proto nemusí být vhodné pro aplikace s přísnými požadavky na latenci.
-* Trvalé entity nemají předdefinované časové osy pro zprávy. V Orleans, všechny zprávy časový mat po konfigurovatelné době. Výchozí hodnota je 30 sekund.
-* Zprávy odesílané mezi entitami jsou doručovány spolehlivě a v pořadí. V Orleans je spolehlivé nebo objednané doručení podporováno pro obsah odeslaný prostřednictvím datových proudů, ale není zaručeno pro všechny zprávy mezi zrny.
-* Vzory odezvy na požadavek v entitách jsou omezeny na orchestrations. Z entity, pouze jednosměrné zasílání zpráv (také známý jako signalizace) je povoleno, stejně jako v původním modelu actor, a na rozdíl od zrna v Orleans. 
-* Trvalé entity nejsou zablokování. V Orleans může dojít k zablokování a nevyřeší, dokud zprávy časový mat.
-* Trvalé entity lze použít ve spojení s trvalé orchestrace a podporu distribuované zamykání mechanismy. 
+* Odolné entity mají přednost před latencí a nemusí být vhodná pro aplikace s přísnými požadavky na latenci.
+* Trvalé entity nemají předdefinované časové limity pro zprávy. V Orleans vyprší po konfigurovatelné době všechny zprávy. Výchozí hodnota je 30 sekund.
+* Zprávy odesílané mezi entitami jsou spolehlivě doručovány a v daném pořadí. V Orleans je podporováno spolehlivé nebo seřazené doručování obsahu odesílaného prostřednictvím datových proudů, ale není zaručeno pro všechny zprávy mezi zrna.
+* Vzory odpovědí na požadavky v entitách jsou omezené na orchestraci. V rámci entit je povoleno pouze jednosměrné zasílání zpráv (označované také jako signalizace), jako v původním modelu actor a na rozdíl od zrn v Orleans. 
+* Trvalé entity se nezablokují. V Orleans může docházet k zablokování a neřešit, dokud nevyprší časový limit zprávy.
+* Odolné entity lze použít ve spojení s trvalými orchestrací a podporují mechanismy distribuovaného zamykání. 
 
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přečtěte si příručku pro vývojáře k trvalým entitám v rozhraní .NET](durable-functions-dotnet-entities.md)
+> [Přečtěte si příručku pro vývojáře k trvalým entitám v .NET.](durable-functions-dotnet-entities.md)
 
 > [!div class="nextstepaction"]
-> [Informace o centrech úloh](durable-functions-task-hubs.md)
+> [Další informace o centrech úloh](durable-functions-task-hubs.md)

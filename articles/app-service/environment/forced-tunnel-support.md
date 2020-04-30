@@ -1,6 +1,6 @@
 ---
 title: Konfigurace vynuceného tunelování
-description: Zjistěte, jak povolit prostředí služby App Service pracovat, když odchozí provoz je vynuceně tunelové propojení ve vaší virtuální síti.
+description: Naučte se, jak App Service Environment fungovat při vynuceném tunelovém přenosu ve virtuální síti.
 author: ccompy
 ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 3334a19b1ba0e3949ab2670c5d2f70d3bcd02fe8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983906"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurace vynuceného tunelového propojení ve službě App Service Environment
@@ -55,25 +55,25 @@ Pokud už síť směruje provoz do místní sítě, musíte před pokusem o nasa
 
 ## <a name="configure-your-ase-subnet-to-ignore-bgp-routes"></a>Konfigurace ignorování tras protokolu BGP v podsíti služby ASE ## 
 
-V podsíti služby ASE můžete nakonfigurovat ignorování všech tras protokolu BGP.  Při konfiguraci ignorovat trasy Protokolu BGP, bude ase mít přístup ke svým závislostem bez problémů.  Budete však muset vytvořit trasy definované uživatelem, abyste svým aplikacím umožnili přístup k místním prostředkům.
+V podsíti služby ASE můžete nakonfigurovat ignorování všech tras protokolu BGP.  Pokud je nakonfigurovaná tak, aby ignorovala trasy protokolu BGP, bude přístupový modul pro přístup k jeho závislostem moci bez problémů.  Budete však muset vytvořit trasy definované uživatelem, abyste svým aplikacím umožnili přístup k místním prostředkům.
 
 Konfigurace ignorování tras protokolu BGP v podsíti služby ASE:
 
 * Pokud jste to ještě neudělali, vytvořte trasu definovanou uživatelem a přiřaďte ji k vaší podsíti služby ASE.
-* Na webu Azure Portal otevřete uživatelské rozhraní pro směrovací tabulku přiřazenou k vaší podsíti služby ASE.  Vyberte Konfigurace.  Nastavte šíření směrování brány virtuální sítě na Zakázáno.  Klikněte na Uložit. Dokumentaci k vypnutí této možnosti najdete v dokumentu [Vytvoření směrovací tabulky][routetable].
+* Na webu Azure Portal otevřete uživatelské rozhraní pro směrovací tabulku přiřazenou k vaší podsíti služby ASE.  Vyberte Konfigurace.  Nastavte šíření trasy brány virtuální sítě na zakázáno.  Klikněte na Uložit. Dokumentaci k vypnutí této možnosti najdete v dokumentu [Vytvoření směrovací tabulky][routetable].
 
-Po konfiguraci podsítě služby ASE tak, aby ignorovala všechny trasy protokolu BGP, vaše aplikace už nebudou moci oslovit místně. Chcete-li aplikacím povolit přístup k místním prostředkům, upravte udr přiřazenou podsíti služby ASE a přidejte trasy pro místní rozsahy adres. Typ dalšího segmentu směrování by měl být nastavený na bránu virtuální sítě. 
+Když nakonfigurujete podsíť pro pomocné služby tak, aby ignorovala všechny trasy protokolu BGP, aplikace už nebudou mít přístup k místním aplikacím. Pokud chcete vašim aplikacím povolit přístup k místním prostředkům, upravte UDR přiřazený k podsíti přihlašování a přidejte trasy pro místní rozsahy adres. Typ dalšího segmentu směrování by měl být nastavený na bránu virtuální sítě. 
 
 
 ## <a name="configure-your-ase-with-service-endpoints"></a>Konfigurace služby ASE s použitím koncových bodů služby ##
 
 Pokud chcete směrovat veškerý odchozí provoz ze služby ASE kromě provozu směřujícího do SQL Azure a služby Azure Storage, proveďte následující kroky:
 
-1. Vytvořte tabulku směrování a přiřaďte ji ke své podsíti služby ASE. Adresy odpovídající vaší oblasti najdete tady: [Adresy pro správu služby App Service Environment][management]. Vytvořte pro tyto adresy trasy s dalším segmentem směrování do internetu. Tyto trasy jsou potřebné, protože provoz příchozí správy prostředí Služby App Service musí odpovídat ze stejné adresy, na kterou byl odeslán.   
+1. Vytvořte tabulku směrování a přiřaďte ji ke své podsíti služby ASE. Adresy odpovídající vaší oblasti najdete tady: [Adresy pro správu služby App Service Environment][management]. Vytvořte pro tyto adresy trasy s dalším segmentem směrování do internetu. Tyto trasy jsou potřeba, protože příchozí provoz správy App Service Environment musí odpovídat ze stejné adresy, na kterou se odeslal.   
 
 2. Povolte koncové body služby s SQL Azure a službou Azure Storage v podsíti služby ASE.  Po dokončení tohoto kroku můžete ve své virtuální síti nakonfigurovat vynucené tunelování.
 
-Pokud chcete vytvořit službu ASE ve virtuální síti, která už má nakonfigurované směrování veškerého provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru.  Pomocí portálu není možné vytvořit službu ASE v již existující podsíti.  Při nasazování služby ASE do virtuální sítě, která už má nakonfigurované směrování odchozího provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru, která neumožňuje zadání již existující podsítě. Podrobnosti o nasazení služby ASE se šablonou načtěte v části [Vytvoření prostředí služby App Service pomocí šablony][template].
+Pokud chcete vytvořit službu ASE ve virtuální síti, která už má nakonfigurované směrování veškerého provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru.  Pomocí portálu není možné vytvořit službu ASE v již existující podsíti.  Při nasazování služby ASE do virtuální sítě, která už má nakonfigurované směrování odchozího provozu do místní sítě, musíte službu ASE vytvořit pomocí šablony Resource Manageru, která neumožňuje zadání již existující podsítě. Podrobnosti o nasazení pomocného mechanismu pro přístup k šabloně najdete v [tématu vytvoření App Service Environment pomocí šablony][template].
 
 Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci pro [koncové body služby pro virtuální síť][serviceendpoints]. 
 
@@ -81,7 +81,7 @@ Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyš
 
 Pokud jsou koncové body služby povolené v podsíti s instancí SQL Azure, musí mít koncové body služby povolené i všechny instance SQL Azure, ke kterým se z této podsítě připojuje. Pokud chcete ze stejné podsítě přistupovat k několika instancím SQL Azure, není možné povolit koncové body služby v jedné instanci SQL Azure a v jiné ne.  Služba Azure Storage se nechová stejně jako SQL Azure.  Když povolíte koncové body služby se službou Azure Storage, uzamknete přístup k danému prostředku z vaší podsítě, ale stále budete mít přístup k ostatním účtům služby Azure Storage, a to i v případě, že nemají povolené koncové body služby.  
 
-Pokud konfigurujete vynucené tunelování s použitím zařízení síťového filtru, nezapomeňte, že služba ASE má závislosti mimo SQL Azure a službu Azure Storage. Pokud je provoz blokován na tyto závislosti, služba ASE nebude fungovat správně.
+Pokud konfigurujete vynucené tunelování s použitím zařízení síťového filtru, nezapomeňte, že služba ASE má závislosti mimo SQL Azure a službu Azure Storage. Pokud se těmto závislostem zablokuje provoz, nebude pomocné funkce fungovat správně.
 
 ![Vynucené tunelování s použitím koncových bodů služby][2]
 
@@ -89,7 +89,7 @@ Pokud konfigurujete vynucené tunelování s použitím zařízení síťového 
 
 Pokud chcete tunelovat veškerý odchozí provoz ze služby ASE kromě provozu směřujícího do služby Azure Storage, proveďte následující kroky:
 
-1. Vytvořte tabulku směrování a přiřaďte ji ke své podsíti služby ASE. Adresy odpovídající vaší oblasti najdete tady: [Adresy pro správu služby App Service Environment][management]. Vytvořte pro tyto adresy trasy s dalším segmentem směrování do internetu. Tyto trasy jsou potřebné, protože provoz příchozí správy prostředí Služby App Service musí odpovídat ze stejné adresy, na kterou byl odeslán. 
+1. Vytvořte tabulku směrování a přiřaďte ji ke své podsíti služby ASE. Adresy odpovídající vaší oblasti najdete tady: [Adresy pro správu služby App Service Environment][management]. Vytvořte pro tyto adresy trasy s dalším segmentem směrování do internetu. Tyto trasy jsou potřeba, protože příchozí provoz správy App Service Environment musí odpovídat ze stejné adresy, na kterou se odeslal. 
 
 2. Povolení koncových bodů služby se službou Azure Storage v podsíti služby ASE
 

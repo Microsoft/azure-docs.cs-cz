@@ -1,15 +1,15 @@
 ---
 title: Přehled spravovaných aplikací
-description: Popisuje koncepty pro spravované aplikace Azure, které poskytují cloudová řešení, která mohou spotřebitelé snadno nasadit a provozovat.
+description: V této části najdete popis konceptů Azure Managed Applications, které poskytují cloudová řešení, která zákazníkům umožňují nasazení a provozovat.
 author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
 ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81391566"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
@@ -19,7 +19,7 @@ Spravované aplikace Azure umožňují nabízet cloudová řešení, která mů�
 Spravovaná aplikace se podobá šabloně řešení v Marketplace, ale s jedním zásadním rozdílem. Ve spravované aplikaci se prostředky nasazují do skupiny prostředků, kterou spravuje vydavatel aplikace. Skupina prostředků se nachází v rámci předplatného zákazníka, ale má k ní přístup určitá identita v rámci tenanta vydavatele. Jako vydavatel určujete náklady na průběžnou podporu řešení.
 
 > [!NOTE]
-> Dříve dokumentace pro vlastní zprostředkovatele Azure byla součástí dokumentace pro spravované aplikace. Tato dokumentace byla přesunuta. Teď si přečtěte informace [o vlastních zprostředkovatelích Azure](../custom-providers/overview.md).
+> Dříve byla dokumentace pro vlastní zprostředkovatele Azure zahrnutá v dokumentaci pro spravované aplikace. Tato dokumentace byla přesunuta. Nyní si přečtěte téma [Custom Providers pro Azure](../custom-providers/overview.md).
 
 ## <a name="advantages-of-managed-applications"></a>Výhody spravovaných aplikací
 
@@ -31,7 +31,7 @@ I když zákazníci nasadí tyto spravované aplikace do svého předplatného, 
 
 Týmům IT umožňují spravované aplikace nabízet uživatelům v rámci organizace předem schválená řešení. Máte jistotu, že jsou tato řešení v souladu se standardy organizace.
 
-Spravované aplikace podporují [spravované identity pro prostředky Azure](./publish-managed-identity.md).
+Spravované aplikace podporují [spravované identity prostředků Azure](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>Typy spravovaných aplikací
 
@@ -53,7 +53,7 @@ Informace o publikování spravovaných aplikací do Marketplace najdete v téma
 
 ## <a name="resource-groups-for-managed-applications"></a>Skupiny prostředků pro spravované aplikace
 
-Prostředky spravované aplikace jsou obvykle ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Vydavatel může požádat o trvalé přiřazení role nebo [o přístup za chvíli](request-just-in-time-access.md) pro přiřazení, které je omezeno na časové období.
+Prostředky pro spravovanou aplikaci jsou obvykle ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Vydavatel může požádat o trvalé přiřazení role nebo [přístup za běhu](request-just-in-time-access.md) pro přiřazení, které je omezené na časové období.
 
 Omezení přístupu pro [operace dat](../../role-based-access-control/role-definitions.md) se momentálně nepodporuje pro všechny poskytovatele dat v Azure.
 
@@ -69,9 +69,9 @@ Zákazník má k této skupině prostředků plný přístup a používá ji ke 
 
 ### <a name="managed-resource-group"></a>Spravovaná skupina prostředků
 
-Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Přístup je trvalý nebo omezený na určitý čas.
+Tato skupina prostředků obsahuje všechny prostředky, které spravovaná aplikace potřebuje. Tato skupina prostředků třeba obsahuje virtuální počítače, účty úložiště a virtuální sítě pro dané řešení. Zákazník má k této skupině prostředků omezený přístup, protože nespravuje jednotlivé prostředky spravované aplikace. Přístup vydavatele k této skupině prostředků odpovídá roli stanovené v definici spravované aplikace. Vydavatel si může pro tuto skupinu prostředků vyžádat třeba roli vlastníka nebo přispěvatele. Přístup je buď trvalý, nebo omezený na určitou dobu.
 
-Při publikování [spravované aplikace na tržiště](publish-marketplace-app.md)může vydavatel udělit spotřebitelům možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že spotřebitelé mohou restartovat virtuální počítače. Všechny ostatní akce nad rámec akcí čtení jsou stále odepřeny.
+Při publikování [spravované aplikace na webu Marketplace](publish-marketplace-app.md)může vydavatel zákazníkům udělit možnost provádět určité akce s prostředky ve spravované skupině prostředků. Vydavatel může například určit, že uživatelé můžou restartovat virtuální počítače. Všechny ostatní akce nad akcí čtení jsou stále odmítnuty.
 
 Když zákazník spravovanou aplikaci odstraní, dojde i k odstranění spravované skupiny prostředků.
 

@@ -1,6 +1,6 @@
 ---
-title: Co je hybridní identita ve službě Azure Active Directory?
-description: Hybridní identita má společnou identitu uživatele pro ověřování a autorizaci jak místně, tak v cloudu.
+title: Co je hybridní identita s Azure Active Directory?
+description: Hybridní identita má běžnou identitu uživatelů pro ověřování a autorizaci v místním prostředí i v cloudu.
 keywords: Úvod k Azure AD Connect, přehled Azure AD Connect, co je Azure AD Connect, instalace active directory
 services: active-directory
 author: billmath
@@ -14,29 +14,29 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c3d681dd06f07f6174e31b59cccf42df5dc16a1e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68779854"
 ---
-# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Co je hybridní identita ve službě Azure Active Directory?
+# <a name="what-is-hybrid-identity-with-azure-active-directory"></a>Co je hybridní identita s Azure Active Directory?
 
-Dnes se firmy a korporace stávají stále více směsicí místních a cloudových aplikací.  Uživatelé vyžadují přístup k těmto aplikacím místně i v cloudu. Správa uživatelů v místním prostředí i v cloudu představuje náročné scénáře. 
+V současné době se podniky a společnosti stávají více a více než v různých místních i cloudových aplikacích.  Uživatelé vyžadují přístup k těmto aplikacím místně i v cloudu. Správa uživatelů v místním prostředí i v cloudu přináší náročné scénáře. 
 
-Řešení identit společnosti Microsoft zahrnuje místní a cloudové funkce.  Tato řešení vytvořit společnou identitu uživatele pro ověřování a autorizaci pro všechny prostředky, bez ohledu na umístění. Nazýváme tuto **hybridní identitu**.
+Řešení identit od Microsoftu využívají místní a cloudové možnosti.  Tato řešení vytváří společnou identitu uživatelů pro ověřování a autorizaci pro všechny prostředky bez ohledu na jejich umístění. Tuto **hybridní identitu**voláme.
 
-S hybridní identitou azure ad a správou hybridníidentity jsou tyto scénáře možné.
+S hybridní identitou pro Azure AD a hybridní správu identit se tyto scénáře stanou možné.
 
-K dosažení hybridní identity s Azure AD, lze použít jednu ze tří metod ověřování, v závislosti na scénářích.   Tyto tři metody jsou: 
+Pro zajištění hybridní identity pomocí Azure AD se dá použít jedna ze tří metod ověřování v závislosti na vašich scénářích.   Tyto tři metody: 
 
-- **[Synchronizace hash hesel (PHS)](whatis-phs.md)**  
+- **[Synchronizace hodnot hash hesel (KOSMETICE)](whatis-phs.md)**  
 - **[Předávací ověřování (PTA)](how-to-connect-pta.md)**  
 - **[Federace (AD FS)](whatis-fed.md)** 
 
-Tyto metody ověřování také poskytují možnosti [jednotného přihlášení.](how-to-connect-sso.md)  Jednotné přihlašování automaticky přihlásí uživatele, když jsou na svých podnikových zařízeních připojených k podnikové síti.
+Tyto metody ověřování také poskytují možnosti [jednotného přihlašování](how-to-connect-sso.md) .  Jednotné přihlašování automaticky podepisuje uživatele v případě, že jsou na jejich firemních zařízeních, připojené k podnikové síti.
 
-Další informace najdete [v tématu Výběr správné metody ověřování pro řešení hybridní identity služby Azure Active Directory](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
+Další informace najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn). 
 
 ## <a name="common-scenarios-and-recommendations"></a>Běžné scénáře a doporučení 
 
@@ -45,14 +45,14 @@ Tady najdete několik běžných scénářů souvisejících s hybridní identit
 |Požadavky:|PHS a SSO<sup>1</sup>| PTA a SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |Automatická synchronizace nových uživatelských, kontaktních a skupinových účtů vytvořených v místní službě Active Directory do cloudu|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Nastavte si klienta pro hybridní scénáře Office 365.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Umožněte uživatelům přihlásit se ke cloudovým službám a přistupovat k nim pomocí místního hesla.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Nastavte svého tenanta pro hybridní scénáře pro Office 365.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Umožněte uživatelům přihlášení a přístup ke cloudovým službám pomocí jejich místního hesla.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementujte jednotné přihlašování pomocí podnikových přihlašovacích údajů.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| ![Doporučené](./media/whatis-hybrid-identity/ic195031.png) |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|  
-|Ujistěte se, že v cloudu nejsou uloženy žádné hashe hesla.| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Povolte cloudová vícefaktorová ověřování.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Povolte místní řešení vícefaktorového ověřování.| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Podpora ověřování pomocí čipových karet pro uživatele <sup>4.</sup>| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
-|Zobrazte oznámení o vypršení platnosti hesla na portálu Office Portal a na ploše Windows 10.| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Ujistěte se, že v cloudu nejsou uložené žádné hodnoty hash hesel.| |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Povolte cloudová řešení Multi-Factor Authentication.|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)|![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Povolte místní řešení Multi-Factor Authentication.| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Podpora ověřování SmartCard pro moje uživatele <sup>4</sup> .| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
+|Zobrazit oznámení o vypršení platnosti hesla na portálu Office a na desktopu Windows 10| | |![Doporučené](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> Synchronizace hodnot hash hesel a jednotné přihlašování. 
 > 
@@ -63,15 +63,15 @@ Tady najdete několik běžných scénářů souvisejících s hybridní identit
 > <sup>4</sup> AD FS je možné integrovat s podnikovou infrastrukturou veřejných klíčů a umožnit tak přihlašování pomocí certifikátů. Těmito certifikáty můžou být softwarové certifikáty nasazené přes důvěryhodné kanály zřizování, jako MDM nebo GPO, nebo certifikáty čipových karet (včetně karet PIV/CAC) nebo Hello pro firmy (důvěryhodnost certifikátu). Další informace o podpoře ověřování pomocí čipové karty najdete v [tomto blogovém příspěvku](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/). 
 > 
 
-## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenční požadavky pro používání služby Azure AD Connect
+## <a name="license-requirements-for-using-azure-ad-connect"></a>Licenční požadavky pro použití Azure AD Connect
 
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-free-license.md)]
 
 ## <a name="next-steps"></a>Další kroky 
 
 - [Co je Azure AD Connect a Connect Health?](whatis-azure-ad-connect.md) 
-- [Co je synchronizace hash hesla (PHS)?](whatis-phs.md) 
+- [Co je synchronizace hodnot hash hesel (KOSMETICE)?](whatis-phs.md) 
 - [Co je předávací ověřování (PTA)?](how-to-connect-pta.md) 
 - [Co je federace?](whatis-fed.md) 
-- [Co je jednotné přihlášení?](how-to-connect-sso.md) 
+- [Co je jednotné přihlašování?](how-to-connect-sso.md) 
 

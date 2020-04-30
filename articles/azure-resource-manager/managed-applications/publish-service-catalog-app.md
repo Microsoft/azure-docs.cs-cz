@@ -1,22 +1,22 @@
 ---
-title: Publikovat spravovanou aplikaci katalogu služeb
+title: Publikování spravované aplikace katalogu služeb
 description: Ukazuje, jak vytvořit spravovanou aplikaci Azure, která je určená pro členy vaší organizace.
 author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81391510"
 ---
-# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Úvodní příručka: Vytvoření a publikování definice spravované aplikace
+# <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rychlý Start: vytvoření a publikování definice spravované aplikace
 
-Tento rychlý start poskytuje úvod do práce s [azure spravovaných aplikací](overview.md). Můžete vytvořit a publikovat spravovanou aplikaci, která je určena pro členy vaší organizace.
+V tomto rychlém startu najdete Úvod k práci s [Azure Managed Applications](overview.md). Můžete vytvořit a publikovat spravovanou aplikaci, která je určena pro členy vaší organizace.
 
-Chcete-li publikovat spravovanou aplikaci do katalogu služeb, musíte:
+Pokud chcete publikovat spravovanou aplikaci do katalogu služeb, musíte:
 
 * Vytvořte šablonu, která definuje prostředky pro nasazení se spravovanou aplikací.
 * Definujte prvky uživatelského rozhraní portálu pro nasazení spravované aplikace.
@@ -26,7 +26,7 @@ Chcete-li publikovat spravovanou aplikaci do katalogu služeb, musíte:
 
 ## <a name="create-the-arm-template"></a>Vytvoření šablony ARM
 
-Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají nasadit. Šablona se neliší od běžné šablony Správce prostředků Azure (ARM).
+Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají nasadit. Šablona se neliší od šablony běžné Azure Resource Manager (ARM).
 
 Vytvořte soubor s názvem **mainTemplate.json**. V názvu se rozlišují velká a malá písmena.
 
@@ -75,13 +75,13 @@ Přidejte do souboru následující kód JSON. Definuje parametry pro vytvořen�
 
 Uložte soubor mainTemplate.json.
 
-## <a name="define-your-create-experience"></a>Definujte své prostředí pro vytváření
+## <a name="define-your-create-experience"></a>Definice prostředí pro vytváření
 
-Jako vydavatel definujete prostředí portálu pro vytváření spravované aplikace. Soubor **createUiDefinition.json** generuje rozhraní portálu. Můžete definovat, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků,](create-uidefinition-elements.md) včetně rozevíracích seznamů, textových polí a hesel.
+Jako vydavatel definujete prostředí portálu pro vytváření spravovaných aplikací. V souboru **createUiDefinition. JSON** se vygeneruje rozhraní portálu. Definujete, jak uživatelé poskytují vstup pro každý parametr pomocí [ovládacích prvků](create-uidefinition-elements.md) , včetně rozevíracích seznamů, textových polí a polí pro hesla.
 
-Vytvoření souboru s názvem **createUiDefinition.json** (Tento název rozlišuje malá a velká písmena)
+Vytvoří soubor s názvem **createUiDefinition. JSON** (u tohoto názvu se rozlišují velká a malá písmena).
 
-Přidejte do souboru následující počáteční JSON a uložte jej.
+Do souboru přidejte následující spouštěcí kód JSON a uložte ho.
 
 ```json
 {
@@ -132,13 +132,13 @@ Přidejte do souboru následující počáteční JSON a uložte jej.
 }
 ```
 
-Další informace najdete [v tématu Začínáme s createuidefinition](create-uidefinition-overview.md).
+Další informace najdete v tématu Začínáme [s CreateUiDefinition](create-uidefinition-overview.md).
 
 ## <a name="package-the-files"></a>Zabalení souborů
 
 Přidejte oba soubory do souboru ZIP a s názvem app.zip. Oba soubory musí být na kořenové úrovni souboru ZIP. Pokud je umístíte do složky, zobrazí se při vytváření definice spravované aplikace chyba s informacemi, že požadované soubory nejsou k dispozici.
 
-Nahrajte balíček do přístupného umístění, ze kterého je možné použít ho. Budete muset zadat jedinečný název účtu úložiště.
+Nahrajte balíček do přístupného umístění, ze kterého je možné použít ho. Budete muset zadat jedinečný název pro účet úložiště.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -288,38 +288,38 @@ Po dokončení příkazu máte definici spravované aplikace ve vaší skupině 
 
 Některé z parametrů použitých v předchozím příkladu:
 
-* **Skupina prostředků**: Název skupiny prostředků, ve které je vytvořena definice spravované aplikace.
-* **Úroveň zámku**: Typ zámku umístěného ve skupině spravovaných prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
+* **Skupina prostředků**: název skupiny prostředků, ve které se vytvoří definice spravované aplikace.
+* **Úroveň zámku**: typ zámku umístěný do spravované skupiny prostředků. Zabraňuje zákazníkovi v provádění nežádoucích operací s touto skupinou prostředků. Jedinou podporovanou úrovní zámku momentálně je ReadOnly. Prostředky, které jsou ve spravované skupině prostředků dostupné, může při zadání úrovně ReadOnly zákazník jenom číst. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
 * **authorizations:** Popisuje ID objektu zabezpečení a ID definice role, které slouží k udělení oprávnění pro spravovanou skupinu prostředků. tento parametr je zadaný ve formátu `<principalId>:<roleDefinitionId>`. Pokud je potřeba zadat více hodnot, zadejte je ve formátu `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Jednotlivé hodnoty jsou oddělené mezerou.
-* **Identifikátor URI souboru balíčku**: Umístění balíčku ZIP, který obsahuje požadované soubory.
+* **identifikátor URI souboru balíčku**: umístění balíčku. zip, který obsahuje požadované soubory.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Přineste si vlastní úložiště pro definici spravované aplikace
 
-Definici spravované aplikace můžete uložit do účtu úložiště, který jste poskytli během vytváření, aby bylo možné plně spravovat její umístění a přístup pro vaše regulační potřeby.
+Definici spravované aplikace si můžete uložit v rámci účtu úložiště, který jste zadali během vytváření, aby bylo možné její umístění a přístup plně spravovat podle vašich zákonných potřeb.
 
 > [!NOTE]
-> Přineste si vlastní úložiště je podporováno pouze s ARM šablony nebo REST API nasazení definice spravované aplikace.
+> Využití vlastního úložiště je podporované jenom šablonou ARM nebo nasazením REST API definice spravované aplikace.
 
-### <a name="select-your-storage-account"></a>Vyberte účet úložiště
+### <a name="select-your-storage-account"></a>Vyberte svůj účet úložiště.
 
-Je nutné [vytvořit účet úložiště,](../../storage/common/storage-account-create.md) který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
+Musíte [vytvořit účet úložiště](../../storage/common/storage-account-create.md) , který bude obsahovat definici spravované aplikace pro použití s katalogem služeb.
 
-Zkopírujte ID prostředku účtu úložiště. Bude použit později při nasazení definice.
+Zkopírujte ID prostředku účtu úložiště. Použije se později při nasazování definice.
 
-### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavení přiřazení role pro "Zprostředkovatel prostředků zařízení" v účtu úložiště
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Nastavte přiřazení role pro "poskytovatele prostředků zařízení" v účtu úložiště.
 
-Před nasazením definice spravované aplikace do vašeho účtu úložiště musíte udělit oprávnění přispěvatele k roli **Zprostředkovatel prostředků zařízení,** aby mohl zapisovat definiční soubory do kontejneru vašeho účtu úložiště.
+Předtím, než bude možné nasadit definici spravované aplikace do svého účtu úložiště, musíte udělit oprávnění přispěvatele k roli **poskytovatele prostředků zařízení** , aby mohla zapisovat definiční soubory do kontejneru účtu úložiště.
 
-1. Na [webu Azure Portal](https://portal.azure.com)přejděte na svůj účet úložiště.
-1. Vyberte **řízení přístupu (IAM),** chcete-li zobrazit nastavení řízení přístupu pro účet úložiště. Výběrem karty **Přiřazení rolí** zobrazíte seznam přiřazení rolí.
-1. V okně **Přidat přiřazení role** vyberte roli **přispěvatele.** 
-1. V poli **Přiřadit přístup k** vyberte **uživatele, skupinu nebo instanční objekt Azure AD**.
-1. V **části Vybrat**vyhledejte roli **Zprostředkovatele prostředků zařízení** a vyberte ji.
+1. V [Azure Portal](https://portal.azure.com)přejděte do svého účtu úložiště.
+1. Vyberte **řízení přístupu (IAM)** a zobrazte nastavení řízení přístupu pro účet úložiště. Vyberte kartu **přiřazení rolí** a zobrazte seznam přiřazení rolí.
+1. V okně **Přidat přiřazení role** vyberte roli **Přispěvatel** . 
+1. V poli **přiřadit přístup k** vyberte možnost **uživatel, skupina nebo instanční objekt služby Azure AD**.
+1. V části **Vybrat**vyhledejte roli **poskytovatele prostředků zařízení** a vyberte ji.
 1. Uložte přiřazení role.
 
 ### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>Nasazení definice spravované aplikace pomocí šablony ARM 
 
-Následující šablona ARM slouží k nasazení sbalené spravované aplikace jako nové definice spravované aplikace v katalogu služeb, jejíž definiční soubory jsou uloženy a udržovány ve vašem vlastním účtu úložiště:
+Pomocí následující šablony ARM nasaďte zabalené spravované aplikace jako novou definici spravované aplikace v katalogu služeb, jejíž definiční soubory se ukládají a udržují ve vašem vlastním účtu úložiště:
    
 ```json
     {
@@ -391,12 +391,12 @@ Následující šablona ARM slouží k nasazení sbalené spravované aplikace j
 }
 ```
 
-Přidali jsme novou vlastnost s názvem **storageAccountId** do vlastností vaší aplikaceDefintion a poskytnout ID účtu úložiště, které chcete uložit definici jako jeho hodnotu:
+Přidali jsme do vlastností applicationDefintion novou vlastnost s názvem **storageAccountId** a zadáte ID účtu úložiště, do kterého chcete definici uložit, jako její hodnotu:
 
-Můžete ověřit, že soubory definice aplikace jsou uloženy v zadaný účet úložiště v kontejneru s názvem **applicationdefinitions**.
+V kontejneru s názvem **applicationdefinitions**můžete ověřit, zda jsou soubory definic aplikace uloženy v zadaném účtu úložiště.
 
 > [!NOTE]
-> Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací, uložte ji do [objektu blob účtu úložiště Azure, kde je povoleno šifrování](../../storage/common/storage-service-encryption.md). Obsah definice je šifrován prostřednictvím možností šifrování účtu úložiště. Definici mohou v katalogu služeb zobrazit pouze uživatelé s oprávněními k souboru.
+> Pro zvýšení zabezpečení můžete vytvořit definici spravovaných aplikací v [objektu BLOB účtu úložiště Azure, kde je šifrování povolené](../../storage/common/storage-service-encryption.md). Obsah definice se šifruje prostřednictvím možností šifrování účtu úložiště. Jenom uživatelé s oprávněními k tomuto souboru uvidí definici v katalogu služeb.
 
 ## <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
 

@@ -1,7 +1,7 @@
 ---
-title: Vytvoření virtuální sítě – úvodní příručka – Azure PowerShell
+title: Vytvoření virtuální sítě – rychlý Start – Azure PowerShell
 titlesuffix: Azure Virtual Network
-description: V tomto rychlém startu zjistíte, jak vytvořit virtuální síť pomocí webu Azure Portal. Virtuální síť umožňuje prostředky Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou navzájem a s internetem.
+description: V tomto rychlém startu zjistíte, jak vytvořit virtuální síť pomocí webu Azure Portal. Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -15,31 +15,31 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: kumud
 ms.openlocfilehash: 1d30b35264707c59c899cc3a224e4affa2a4696e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79241441"
 ---
 # <a name="quickstart-create-a-virtual-network-using-powershell"></a>Rychlý start: Vytvoření virtuální sítě pomocí PowerShellu
 
-Virtuální síť umožňuje prostředky Azure, jako jsou virtuální počítače (VM), komunikovat soukromě mezi sebou a s internetem. V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Potom se připojíte k virtuálním počítačům z Internetu a soukromě komunikujete prostřednictvím virtuální sítě.
+Virtuální síť umožňuje prostředkům Azure, jako jsou virtuální počítače, komunikovat soukromě mezi sebou a s internetem. V tomto rychlém startu zjistíte, jak vytvořit virtuální síť. Po vytvoření virtuální sítě do ní nasadíte dva virtuální počítače. Pak se k virtuálním počítačům připojíte z Internetu a soukromě komunikujte přes virtuální síť.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si teď [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se místo toho rozhodnete nainstalovat a použít PowerShell místně, tento rychlý start vyžaduje použití modulu Azure PowerShell verze 1.0.0 nebo novějšího. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Informace o instalaci a [upgradu najdete v tématu Instalace modulu Azure PowerShellu.](/powershell/azure/install-az-ps)
+Pokud se rozhodnete nainstalovat a používat PowerShell místně místo toho, musíte použít Azure PowerShell modulu verze 1.0.0 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Informace o instalaci a upgradu najdete v tématu [install Azure PowerShell Module](/powershell/azure/install-az-ps) .
 
-Nakonec, pokud používáte Prostředí PowerShell místně, budete také `Connect-AzAccount`muset spustit . Tento příkaz vytvoří připojení s Azure.
+Nakonec, pokud používáte PowerShell místně, budete také muset spustit `Connect-AzAccount`. Tento příkaz vytvoří připojení k Azure.
 
 ## <a name="create-a-resource-group-and-a-virtual-network"></a>Vytvoření skupiny prostředků a virtuální sítě
 
-Existuje několik kroků, které musíte projít, abyste získali konfiguraci skupiny prostředků a virtuální sítě.
+K dispozici je několik kroků, pomocí kterých si můžete projít, abyste získali nakonfigurovanou skupinu prostředků a virtuální síť.
 
 ### <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Před vytvořením virtuální sítě je třeba vytvořit skupinu prostředků pro hostování ve virtuální síti. Vytvořte skupinu prostředků pomocí [skupiny New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus:*
+Než budete moct vytvořit virtuální síť, musíte vytvořit skupinu prostředků, která bude hostovat virtuální síť. Vytvořte skupinu prostředků pomocí [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup). Tento příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *eastus* :
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
@@ -47,7 +47,7 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 
-Vytvořte virtuální síť s [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* v umístění *EastUS:*
+Vytvořte virtuální síť pomocí [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Tento příklad vytvoří výchozí virtuální síť s názvem *myVirtualNetwork* v umístění *EastUS* :
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzVirtualNetwork `
@@ -59,7 +59,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ### <a name="add-a-subnet"></a>Přidání podsítě
 
-Azure nasazuje prostředky do podsítě v rámci virtuální sítě, takže je potřeba vytvořit podsíť. Vytvořte konfiguraci podsítě s názvem *Výchozí* pomocí [funkce Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže je potřeba vytvořit podsíť. Vytvořte konfiguraci podsítě s názvem *Default* pomocí [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig):
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -68,9 +68,9 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružení podsítě k virtuální síti
+### <a name="associate-the-subnet-to-the-virtual-network"></a>Přidružte podsíť k virtuální síti.
 
-Konfiguraci podsítě můžete zapsat do virtuální sítě pomocí [programu Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Tento příkaz vytvoří podsíť:
+Konfiguraci podsítě můžete zapsat do virtuální sítě pomocí [set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork). Tento příkaz vytvoří podsíť:
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzVirtualNetwork
@@ -82,7 +82,7 @@ Vytvořte ve virtuální síti dva virtuální počítače.
 
 ### <a name="create-the-first-vm"></a>Vytvoření prvního virtuálního počítače
 
-Vytvořte první virtuální virtuální město s [novým AzVM](/powershell/module/az.compute/new-azvm). Při spuštění dalšího příkazu budete vyzváni k zadání pověření. Zadejte uživatelské jméno a heslo pro virtuální počítače:
+Vytvořte první virtuální počítač pomocí [New-AzVM](/powershell/module/az.compute/new-azvm). Po spuštění dalšího příkazu budete vyzváni k zadání přihlašovacích údajů. Zadejte uživatelské jméno a heslo pro virtuální počítač:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -94,9 +94,9 @@ New-AzVm `
     -AsJob
 ```
 
-Tato `-AsJob` možnost vytvoří virtuální ho svitek na pozadí. Můžete pokračovat dalším krokem.
+`-AsJob` Možnost vytvoří virtuální počítač na pozadí. Můžete pokračovat k dalšímu kroku.
 
-Když Azure začne vytvářet virtuální počítač na pozadí, dostanete něco takového zpět:
+Když Azure začne vytvářet virtuální počítač na pozadí, získáte něco podobného:
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
@@ -106,7 +106,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 
 ### <a name="create-the-second-vm"></a>Vytvoření druhého virtuálního počítače
 
-Vytvořte druhý virtuální virtuální ms pomocí tohoto příkazu:
+Vytvořte druhý virtuální počítač pomocí tohoto příkazu:
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -116,14 +116,14 @@ New-AzVm `
   -Name "myVm2"
 ```
 
-Budete muset vytvořit jiného uživatele a heslo. Azure trvá několik minut k vytvoření virtuálního počítače.
+Budete muset vytvořit další uživatele a heslo. K vytvoření virtuálního počítače trvá Azure několik minut.
 
 > [!IMPORTANT]
-> Nepokračujte dalším krokem, dokud Azure neskončí.  Budete vědět, že se provádí, když vrátí výstup do prostředí PowerShell.
+> Nepokračujte dalším krokem až do dokončení Azure.  Zjistíte, že je to hotové, když vrátí výstup do PowerShellu.
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Pomocí [get-azPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) vrátit veřejnou IP adresu virtuálního počítačů. Tento příklad vrátí veřejnou IP adresu virtuálního *montu myVm1:*
+K vrácení veřejné IP adresy virtuálního počítače použijte [příkaz Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) . Tento příklad vrátí veřejnou IP adresu virtuálního počítače *myVm1* :
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress `
@@ -132,10 +132,10 @@ Get-AzPublicIpAddress `
   | Select IpAddress
 ```
 
-Otevřete příkazový řádek v místním počítači. Spusťte příkaz `mstsc`. Nahradit `<publicIpAddress>` veřejnou IP adresou vrácenou z posledního kroku:
+Otevřete příkazový řádek na místním počítači. Spusťte příkaz `mstsc`. Nahraďte `<publicIpAddress>` veřejnou IP adresou vrácenou z posledního kroku:
 
 > [!NOTE]
-> Pokud jste tyto příkazy spouštěli z výzvy prostředí PowerShell v místním počítači a používáte modul Az PowerShell verze 1.0 nebo novější, můžete v tomto rozhraní pokračovat.
+> Pokud jste tyto příkazy spustili z příkazového řádku PowerShellu v místním počítači a používáte modul AZ PowerShell verze 1,0 nebo novější, můžete v tomto rozhraní pokračovat.
 
 ```cmd
 mstsc /v:<publicIpAddress>
@@ -145,19 +145,19 @@ mstsc /v:<publicIpAddress>
 1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
     > [!NOTE]
-    > Možná budete muset vybrat **Další volby:** > K zadání pověření, která jste zadali při vytváření virtuálního vztahu,**můžete zadat jiný účet**.
+    > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
-1. Může se zobrazit upozornění na certifikát. Pokud tak učiníte, vyberte **Ano** nebo **Pokračovat**.
+1. Může se zobrazit upozornění certifikátu. Pokud ano, vyberte **Ano** nebo **pokračovat**.
 
 ## <a name="communicate-between-vms"></a>Komunikace mezi virtuálními počítači
 
-1. Na vzdálené ploše *myVm1*otevřete prostředí PowerShell.
+1. Ve vzdálené ploše *myVm1*otevřete PowerShell.
 
 1. Zadejte `ping myVm2`.
 
-    Dostanete něco takového zpět:
+    Jako tuto akci získáte něco podobného:
 
     ```powershell
     PS C:\Users\myVm1> ping myVm2
@@ -172,23 +172,23 @@ mstsc /v:<publicIpAddress>
         Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
     ```
 
-    Příkaz ping se nezdaří, protože používá protokol ICMP (Internet Control Message Protocol). Ve výchozím nastavení není icmp povoleno prostřednictvím brány firewall systému Windows.
+    Tento příkaz se nezdařil, protože používá protokol ICMP (Internet Control Message Protocol). Ve výchozím nastavení se protokol ICMP nepovoluje přes bránu Windows Firewall.
 
-1. Chcete-li povolit *příkaz myVm2* ping *myVm1* v pozdějším kroku, zadejte tento příkaz:
+1. Pokud chcete, aby se v pozdějším kroku *myVm2* příkaz Test *myVm1* , zadejte tento příkaz:
 
     ```powershell
     New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
     ```
 
-    Tento příkaz umožňuje icmp příchozí přes bránu firewall systému Windows.
+    Tento příkaz umožňuje příchozí připojení ICMP přes bránu Windows Firewall.
 
 1. Ukončete připojení ke vzdálené ploše virtuálního počítače *myVm1*.
 
-1. Opakujte kroky v [části Připojení k virtuálnímu virtuálnímu virtuálnímu zařízení z internetu](#connect-to-a-vm-from-the-internet). Tentokrát se připojte k *myVm2*.
+1. Opakujte kroky v části [připojení k virtuálnímu počítači z Internetu](#connect-to-a-vm-from-the-internet). Tentokrát se připojte k *myVm2*.
 
 1. Na příkazovém řádku na virtuálním počítači *myVm2* zadejte `ping myvm1`.
 
-    Dostanete něco takového zpět:
+    Jako tuto akci získáte něco podobného:
 
     ```cmd
     C:\windows\system32>ping myVm1
@@ -211,7 +211,7 @@ mstsc /v:<publicIpAddress>
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení s virtuální sítí a virtuálními počítači, použijte [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) odebrat skupinu prostředků a všechny prostředky, které má:
+Až skončíte s virtuální sítí a virtuálními počítači, odeberte skupinu prostředků a všechny prostředky, které obsahuje, pomocí [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) :
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -221,4 +221,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 V tomto rychlém startu jste vytvořili výchozí virtuální síť a dva virtuální počítače. K jednomu virtuálnímu počítači jste se připojili z internetu a navázali jste soukromou komunikaci mezi tímto a druhým virtuálním počítačem. Další informace o nastavení virtuální sítě najdete v tématu [Správa virtuální sítě](manage-virtual-network.md).
 
-Azure umožňuje neomezenou privátní komunikaci mezi virtuálními počítači. Ve výchozím nastavení Azure povoluje jenom příchozí připojení ke vzdálené ploše k virtuálním počítačům s Windows z internetu. Další informace o konfiguraci různých typů síťové komunikace virtuálních počítačů najdete v kurzu [Filtrování síťového provozu.](tutorial-filter-network-traffic.md)
+Azure umožňuje neomezenou soukromou komunikaci mezi virtuálními počítači. Ve výchozím nastavení Azure umožňuje příchozí připojení vzdálené plochy k virtuálním počítačům s Windows z Internetu. Další informace o konfiguraci různých typů síťových komunikací virtuálních počítačů najdete v kurzu [filtrování síťového provozu](tutorial-filter-network-traffic.md) .
