@@ -1,7 +1,7 @@
 ---
-title: 'Kurz: Použití dynamické konfigurace konfigurace konfigurace aplikace v ASP.NET jádra'
+title: 'Kurz: použití dynamické konfigurace konfigurace aplikace v ASP.NET Core'
 titleSuffix: Azure App Configuration
-description: V tomto kurzu se dozvíte, jak dynamicky aktualizovat konfigurační data pro ASP.NET základní aplikace
+description: V tomto kurzu se naučíte dynamicky aktualizovat konfigurační data pro ASP.NET Core aplikace.
 services: azure-app-configuration
 documentationcenter: ''
 author: lisaguthrie
@@ -16,59 +16,59 @@ ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
 ms.openlocfilehash: e9df6d2e7a8219d16e7b60f7c3b8d826a87e6110
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80348857"
 ---
-# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: Použití dynamické konfigurace v aplikaci ASP.NET Core
+# <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Kurz: použití dynamické konfigurace v aplikaci ASP.NET Core
 
-ASP.NET Core má připojitelný konfigurační systém, který dokáže číst konfigurační data z různých zdrojů. Může dynamicky zpracovávat změny, aniž by došlo k restartování aplikace. ASP.NET Core podporuje vazbu nastavení konfigurace na silné typy tříd .NET. Vstřikuje je do kódu `IOptions<T>` pomocí různých vzorů. Jeden z těchto vzorů, konkrétně `IOptionsSnapshot<T>`, automaticky znovu načte konfiguraci aplikace při změně podkladových dat. Můžete vložit `IOptionsSnapshot<T>` do řadičů ve vaší aplikaci pro přístup k nejnovější konfiguraci uložené v Azure App Configuration.
+ASP.NET Core má připojitelná konfigurační systém, který může číst konfigurační data z nejrůznějších zdrojů. Může zpracovávat změny dynamicky, aniž by došlo k tomu, že by se aplikace restartovala. ASP.NET Core podporuje vazbu nastavení konfigurace na třídy .NET silného typu. Vloží je do kódu pomocí různých `IOptions<T>` vzorů. Jeden z těchto vzorů, `IOptionsSnapshot<T>`konkrétně, automaticky znovu načte konfiguraci aplikace, když se změní podkladová data. Můžete vložit `IOptionsSnapshot<T>` do řadičů v aplikaci, abyste měli přístup k nejnovější konfiguraci uložené v konfiguraci aplikace Azure.
 
-Můžete také nastavit konfiguraci aplikace ASP.NET základní klientskou knihovnu, aby se dynamicky aktualizovala sada nastavení konfigurace pomocí middlewaru. Nastavení konfigurace se aktualizují s úložištěm konfigurace pokaždé, dokud webová aplikace přijímá požadavky.
+Můžete také nastavit konfiguraci aplikace ASP.NET Core klientské knihovně pro dynamické obnovení sady nastavení konfigurace pomocí middlewaru. V případě, že webová aplikace přijímá požadavky, se nastavení konfigurace aktualizuje na úložiště konfigurace.
 
-Konfigurace aplikace automaticky ukládá každé nastavení do mezipaměti, aby se zabránilo příliš mnoha voláním do úložiště konfigurace. Operace aktualizace čeká, až vyprší platnost hodnoty nastavení uložené v mezipaměti, aby bylo toto nastavení aktualizováno, a to i v případě, že se jeho hodnota změní v úložišti konfigurace. Výchozí doba vypršení platnosti mezipaměti je 30 sekund. V případě potřeby můžete tuto dobu vypršení platnosti přepsat.
+Konfigurace aplikace automaticky ukládá do mezipaměti každé nastavení, aby nedocházelo k příliš velkému počtu volání do úložiště konfigurace. Operace aktualizace počká, dokud nevyprší hodnota nastavení uložené v mezipaměti, a to i v případě, že se změní hodnota v úložišti konfigurace. Výchozí doba vypršení platnosti mezipaměti je 30 sekund. V případě potřeby můžete tento čas vypršení platnosti přepsat.
 
-Tento kurz ukazuje, jak můžete implementovat dynamické aktualizace konfigurace v kódu. Staví na webové aplikaci zavedené v rychlých startech. Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro pomocí konfigurace aplikace.](./quickstart-aspnet-core-app.md)
+V tomto kurzu se dozvíte, jak můžete implementovat aktualizace dynamické konfigurace do kódu. Sestavuje se ve webové aplikaci představené v rychlých startech. Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
 
-Můžete použít libovolný editor kódu k tomu kroky v tomto kurzu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost, která je k dispozici na platformách Windows, macOS a Linux.
+K provedení kroků v tomto kurzu můžete použít libovolný editor kódu. [Visual Studio Code](https://code.visualstudio.com/) je vynikající možnost, která je dostupná na platformách Windows, MacOS a Linux.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavte aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikací.
-> * Vstříkněte nejnovější konfiguraci do řadičů aplikace.
+> * Nastavte svoji aplikaci tak, aby aktualizovala svou konfiguraci v reakci na změny v úložišti konfigurace aplikace.
+> * Vloží nejnovější konfiguraci do řadičů vaší aplikace.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li tento kurz provést, nainstalujte sadu [.NET Core SDK](https://dotnet.microsoft.com/download).
+K provedení tohoto kurzu nainstalujte [.NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro pomocí konfigurace aplikace.](./quickstart-aspnet-core-app.md)
+Než budete pokračovat, dokončete nejprve [Vytvoření aplikace ASP.NET Core s konfigurací aplikace](./quickstart-aspnet-core-app.md) .
 
-## <a name="add-a-sentinel-key"></a>Přidání ověřovacího klíče
+## <a name="add-a-sentinel-key"></a>Přidat klíč Sentinel
 
-*Ověřovací klíč* je speciální klíč používaný k signalizaci při změně konfigurace. Aplikace sleduje změny pomocí ověřovacího klíče. Když je zjištěna změna, aktualizujete všechny hodnoty konfigurace. Tento přístup snižuje celkový počet požadavků provedených vaší aplikací na konfiguraci aplikace ve srovnání s monitorováním všech klíčů pro změny.
+*Klíč Sentinel* je speciální klíč, který se používá k signalizaci, že se konfigurace změnila. Vaše aplikace sleduje změny v klíči Sentinel. Když se zjistí změna, aktualizují se všechny hodnoty konfigurace. Tento přístup snižuje celkový počet požadavků provedených vaší aplikací na konfiguraci aplikací v porovnání s monitorováním všech klíčů pro změny.
 
-1. Na webu Azure Portal vyberte **Průzkumník konfigurace > vytvořit > hodnotu klíče**.
+1. V Azure Portal vyberte možnost **Průzkumník konfigurace > vytvořit > klíč-hodnota**.
 
-1. Do **položky Klíč**zadejte *TestApp:Settings:Sentinel*. Do **pole Hodnota**zadejte hodnotu 1. Ponechejte **typ popisku** a **obsahu** prázdný.
+1. Jako **klíč**zadejte *TestApp: Settings: Sentinel*. Jako **hodnotu**zadejte 1. Ponechte **popisek** a **typ obsahu** prázdné.
 
 1. Vyberte **Použít**.
 
-## <a name="reload-data-from-app-configuration"></a>Opětovné načtení dat z konfigurace aplikace
+## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
-1. Přidejte odkaz `Microsoft.Azure.AppConfiguration.AspNetCore` na balíček NuGet spuštěním následujícího příkazu:
+1. Přidejte odkaz na balíček `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet spuštěním následujícího příkazu:
 
     ```dotnetcli
     dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore
     ```
 
-1. Otevřete *Program.cs*a `CreateWebHostBuilder` aktualizujte `config.AddAzureAppConfiguration()` metodu pro přidání metody.
+1. Otevřete *program.cs*a aktualizujte `CreateWebHostBuilder` metodu pro přidání `config.AddAzureAppConfiguration()` metody.
 
-    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -90,7 +90,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -113,16 +113,16 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     ```
     ---
 
-    Metoda `ConfigureRefresh` se používá k určení nastavení použitého k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. Parametr `refreshAll` `Register` metody označuje, že všechny hodnoty konfigurace by měly být aktualizovány, pokud se změní klíč sentinel.
+    `ConfigureRefresh` Metoda se používá k určení nastavení, která se použijí k aktualizaci konfiguračních dat pomocí úložiště konfigurace aplikace při aktivaci operace aktualizace. `refreshAll` Parametr `Register` metody označuje, že všechny konfigurační hodnoty by měly být aktualizovány, pokud se změní klíč Sentinel.
 
-    `SetCacheExpiration` Metoda také přepíše výchozí dobu vypršení platnosti mezipaměti 30 sekund a místo toho určí čas 5 minut. To snižuje počet požadavků provedených na konfiguraci aplikace.
+    `SetCacheExpiration` Metoda také přepíše výchozí dobu vypršení platnosti mezipaměti 30 sekund, přičemž místo toho zadá čas 5 minut. Tím se sníží počet požadavků provedených v konfiguraci aplikace.
 
     > [!NOTE]
-    > Pro účely testování můžete chtít snížit dobu vypršení platnosti mezipaměti.
+    > Pro účely testování možná budete chtít snížit dobu platnosti mezipaměti.
 
-    Chcete-li skutečně spustit operaci aktualizace, budete muset nakonfigurovat obnovovací middleware pro aplikaci, aby aktualizovala konfigurační data, když dojde ke změně. Uvidíte, jak to udělat v pozdějším kroku.
+    Chcete-li ve skutečnosti aktivovat operaci aktualizace, bude nutné nakonfigurovat middleware aktualizace, aby aplikace aktualizovala konfigurační data, když dojde ke změně. V pozdějším kroku se dozvíte, jak to udělat.
 
-2. Přidejte *soubor Settings.cs,* který definuje `Settings` a implementuje novou třídu.
+2. Přidejte soubor *Settings.cs* , který definuje a implementuje novou `Settings` třídu.
 
     ```csharp
     namespace TestAppConfig
@@ -137,9 +137,9 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     }
     ```
 
-3. Otevřete *Startup.cs* `IServiceCollection.Configure<T>` a `ConfigureServices` použijte v metodě `Settings` vázat konfigurační data do třídy.
+3. Otevřete *Startup.cs*a pomocí `IServiceCollection.Configure<T>` `ConfigureServices` metody navažte konfigurační data ke `Settings` třídě.
 
-    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -149,7 +149,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -160,10 +160,10 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     ```
     ---
 
-4. Aktualizujte `Configure` metodu `UseAzureAppConfiguration` přidáním middlewaru, který umožní aktualizaci nastavení konfigurace registrované pro aktualizaci, zatímco ASP.NET webová aplikace Core nadále přijímá požadavky.
+4. Aktualizujte `Configure` metodu přidáním `UseAzureAppConfiguration` middlewaru, který umožní aktualizaci nastavení konfigurace zaregistrovaných pro aktualizaci, když ASP.NET Core webová aplikace nadále přijímá požadavky.
 
 
-    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -180,7 +180,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -217,19 +217,19 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     ```
     ---
     
-    Middleware používá konfiguraci aktualizace `AddAzureAppConfiguration` zadanou `Program.cs` v metodě v aplikaci k aktivaci aktualizace pro každý požadavek přijatý ASP.NET webovou aplikací Core. Pro každý požadavek se aktivuje operace aktualizace a klientská knihovna zkontroluje, zda vypršela hodnota uložené v mezipaměti pro registrované nastavení konfigurace. Pokud vypršela její platnost, je obnovena.
+    Middleware používá konfiguraci aktualizace zadanou v `AddAzureAppConfiguration` metodě v `Program.cs` k aktivaci aktualizace pro každý požadavek přijatý webovou aplikací ASP.NET Core. Pro každý požadavek se aktivuje operace aktualizace a Klientská knihovna zkontroluje, jestli vypršela platnost hodnoty uložené v mezipaměti pro zaregistrované nastavení konfigurace. Pokud platnost vypršela, aktualizuje se.
 
-## <a name="use-the-latest-configuration-data"></a>Použití nejnovějších konfiguračních dat
+## <a name="use-the-latest-configuration-data"></a>Použít nejnovější konfigurační data
 
-1. Otevřete *HomeController.cs* v adresáři Řadiče a `Microsoft.Extensions.Options` přidejte odkaz na balíček.
+1. Otevřete *HomeController.cs* v adresáři Controllers a přidejte odkaz na `Microsoft.Extensions.Options` balíček.
 
     ```csharp
     using Microsoft.Extensions.Options;
     ```
 
-2. Aktualizujte `HomeController` třídu `Settings` přijímat prostřednictvím vkládání závislostí a využít jeho hodnoty.
+2. Aktualizujte `HomeController` třídu tak, `Settings` aby se přijímala prostřednictvím injektáže závislosti, a využijte její hodnoty.
 
-    #### <a name="net-core-2x"></a>[.NET Jádro 2.x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -252,7 +252,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     }
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Jádro 3.x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
 
     ```csharp
     public class HomeController : Controller
@@ -283,7 +283,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
 
 
 
-3. Otevřete *soubor Index.cshtml* v adresáři Zobrazení > domů a nahraďte jeho obsah následujícím skriptem:
+3. Otevřete *index. cshtml* v zobrazeních > domovském adresáři a nahraďte jeho obsah následujícím skriptem:
 
     ```html
     <!DOCTYPE html>
@@ -306,33 +306,33 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>Sestavení a spuštění aplikace místně
+## <a name="build-and-run-the-app-locally"></a>Místní sestavení a spuštění aplikace
 
-1. Chcete-li vytvořit aplikaci pomocí rozhraní PŘÍKAZU .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
+1. Pokud chcete aplikaci vytvořit pomocí .NET Core CLI, spusťte v příkazovém prostředí následující příkaz:
 
         dotnet build
 
-1. Po úspěšném dokončení sestavení spusťte následující příkaz a spusťte webovou aplikaci místně:
+1. Po úspěšném dokončení sestavení spusťte následující příkaz pro místní spuštění webové aplikace:
 
         dotnet run
-1. Otevřete okno prohlížeče a přejděte na `dotnet run` adresu URL zobrazenou ve výstupu.
+1. Otevřete okno prohlížeče a použijte adresu URL zobrazenou ve `dotnet run` výstupu.
 
-    ![Místní spuštění aplikace rychlého startu](./media/quickstarts/aspnet-core-app-launch-local-before.png)
+    ![Místní spuštění aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com). Vyberte **Všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **všechny prostředky**a vyberte instanci úložiště konfigurace aplikace, kterou jste vytvořili v rychlém startu.
 
 1. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujících klíčů:
 
-    | Klíč | Hodnota |
+    | Key | Hodnota |
     |---|---|
-    | testapp:nastavení:barva na pozadí | green |
-    | testapp:nastavení:barva písma | světleŠedá |
-    | testapp:nastavení:zpráva | Data z Azure App Configuration – teď s živými aktualizacemi! |
-    | testapp: nastavení: sentinel | 2 |
+    | TestApp: nastavení: BackgroundColor | green |
+    | TestApp: nastavení: FontColor | lightGray |
+    | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – teď s aktualizacemi za provozu! |
+    | TestApp: nastavení: Sentinel | 2 |
 
-1. Aktualizujte stránku prohlížeče, abyste viděli nové nastavení konfigurace. Možná budete muset aktualizovat více než jednou, aby se změny projevily.
+1. Aktualizujte stránku prohlížeče, aby se zobrazilo nové nastavení konfigurace. Aby se změny projevily, možná budete muset aktualizovat více než jednou.
 
-    ![Místní spuštění aktualizované aplikace rychlého startu](./media/quickstarts/aspnet-core-app-launch-local-after.png)
+    ![Místní spuštění aktualizované aplikace pro rychlý Start](./media/quickstarts/aspnet-core-app-launch-local-after.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -340,7 +340,7 @@ Než budete pokračovat, nejprve [dokončete vytvoření aplikace ASP.NET Jádro
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste povolili webové aplikaci ASP.NET Core dynamicky aktualizovat nastavení konfigurace z konfigurace aplikace. Chcete-li se dozvědět, jak používat identitu spravovanou Azure zjednodušit přístup ke konfiguraci aplikací, pokračujte dalším kurzem.
+V tomto kurzu jste povolili ASP.NET Core webové aplikaci, abyste mohli dynamicky aktualizovat nastavení konfigurace z konfigurace aplikace. Další informace o tom, jak pomocí identity spravované v Azure zjednodušit přístup ke konfiguraci aplikace, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Integrace spravované identity](./howto-integrate-azure-managed-service-identity.md)
+> [Spravovaná integrace identit](./howto-integrate-azure-managed-service-identity.md)

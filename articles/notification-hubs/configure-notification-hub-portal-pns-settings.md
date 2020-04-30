@@ -1,6 +1,6 @@
 ---
-title: Nastavení nabízených oznámení v centrech oznámení Azure | Dokumenty společnosti Microsoft
-description: Zjistěte, jak nastavit Azure Notification Hubs na webu Azure Portal pomocí nastavení systému oznámení platformy (PNS).
+title: Nastavení nabízených oznámení v Azure Notification Hubs | Microsoft Docs
+description: Přečtěte si, jak nastavit Azure Notification Hubs v Azure Portal pomocí nastavení systému PNS (Platform Notification System).
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -13,57 +13,57 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
 ms.openlocfilehash: 78afb124ee1d1ab9b212197fb7a7140f88de9940
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80349519"
 ---
-# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Úvodní příručka: Nastavení nabízených oznámení v centru oznámení
+# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Rychlý Start: nastavení nabízených oznámení v centru oznámení
 
-Azure Notification Hubs poskytuje snadno použitelný modul pro nabízený tisk, který se škáluje. Pomocí center oznámení můžete odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Baidu) a z libovolného back-endu (cloud nebo místní). Další informace najdete v tématu [Co je Centra oznámení Azure?](notification-hubs-push-notification-overview.md).
+Azure Notification Hubs poskytuje modul nabízených oznámení, který se snadno používá a který se škáluje. Pomocí Notification Hubs můžete odesílat oznámení na libovolnou platformu (iOS, Android, Windows, Baidu) a z libovolného back-endu (v cloudu nebo místně). Další informace najdete v tématu [co je Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-V tomto rychlém startu použijete nastavení systému oznámení platformy (PNS) v centru oznámení k nastavení nabízených oznámení na více platformách. Rychlý start ukazuje kroky, které je třeba provést na webu Azure Portal.  [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) obsahuje pokyny pro použití veloháčového uživatelského příkazu Azure.
+V tomto rychlém startu použijete nastavení PNS (Platform Notification System) v Notification Hubs k nastavení nabízených oznámení na více platformách. V tomto rychlém startu se dozvíte o krocích, které je potřeba provést v Azure Portal.  [Zasílání zpráv v cloudu Google Firebase](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) zahrnuje pokyny k používání rozhraní příkazového řádku Azure CLI.
 
-Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho nyní. Další informace najdete [v tématu Vytvoření centra oznámení Azure na webu Azure Portal](create-notification-hub-portal.md) nebo Vytvoření centra oznámení Azure pomocí azure [cli](create-notification-hub-azure-cli.md)
+Pokud jste centrum oznámení ještě nevytvořili, vytvořte ho hned teď. Další informace najdete v tématu [vytvoření centra oznámení Azure v Azure Portal](create-notification-hub-portal.md) nebo [vytvoření centra oznámení Azure pomocí Azure CLI](create-notification-hub-azure-cli.md) .
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
-Nastavení služby nabízených oznámení Apple (APNS):
+Nastavení služby Apple Push Notification Service (APNS):
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte **apple (APNS)** z levé nabídky.
+1. V Azure Portal na stránce **centra oznámení** vyberte **Apple (APNs)** z nabídky vlevo.
 
-1. V **režimu ověřování**vyberte **certifikát** nebo **token**.
+1. V **režimu ověřování**vyberte buď **certifikát** , nebo **token**.
 
-   a. Pokud vyberete **certifikát**:
-   * Vyberte ikonu souboru a pak vyberte soubor *P12,* který chcete nahrát.
+   a. Pokud vyberete možnost **certifikát**:
+   * Vyberte ikonu souboru a potom vyberte soubor *. p12* , který chcete nahrát.
    * Zadejte heslo.
-   * Vyberte režim **Izolovaný prostor**. Chcete-li odeslat nabízená oznámení uživatelům, kteří si aplikaci zakoupili v obchodě, vyberte **režim produkčního** prostředí.
+   * Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
-     ![Snímek obrazovky s konfigurací certifikátu APNS na webu Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Snímek obrazovky s konfigurací certifikátu APNS v Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Pokud zvolíte **Token**:
+   b. Pokud vyberete **token**:
 
-   * Zadejte hodnoty pro **ID klíče**, **ID balíčku**, **ID týmu**a **token**.
-   * Vyberte režim **Izolovaný prostor**. Chcete-li odeslat nabízená oznámení uživatelům, kteří si aplikaci zakoupili v obchodě, vyberte **režim produkčního** prostředí.
+   * Zadejte hodnoty **ID klíče**, **ID sady**, **ID týmu**a **tokenu**.
+   * Vyberte režim **Izolovaný prostor**. Nebo pokud chcete odesílat nabízená oznámení uživatelům, kteří si zakoupili vaši aplikaci ze Storu, vyberte režim **výroby** .
 
-     ![Snímek obrazovky s konfigurací tokenu APNS na webu Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
+     ![Snímek obrazovky s konfigurací tokenu APNS v Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-Další informace najdete v [tématu Nabízená oznámení do iOS pomocí Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+Další informace najdete v tématu [nabízená oznámení do systému iOS pomocí služby Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
-## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Zasílání zpráv (FCM)
+## <a name="google-firebase-cloud-messaging-fcm"></a>FCM (Google Firebase Cloud Messaging)
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
 Nastavení nabízených oznámení pro Google FCM:
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte **Google (GCM/FCM)** v levé nabídce.
-2. Vložte **klíč rozhraní API** pro projekt Google FCM, který jste uložili dříve.
+1. V Azure Portal na stránce **centra oznámení** v nabídce vlevo vyberte **Google (GCM/FCM)** .
+2. Vložte **klíč rozhraní API** pro projekt Google FCM, který jste předtím uložili.
 3. Vyberte **Uložit**.
 
-   ![Snímek obrazovky, který ukazuje, jak nakonfigurovat centra oznámení pro Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Snímek obrazovky, který ukazuje, jak nakonfigurovat Notification Hubs pro Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-Po dokončení těchto kroků výstraha označuje, že centrum oznámení byla úspěšně aktualizována. Tlačítko **Uložit** je zakázáno.
+Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo úspěšně aktualizováno. Tlačítko **Uložit** je zakázané.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -71,20 +71,20 @@ Po dokončení těchto kroků výstraha označuje, že centrum oznámení byla �
 
 Než začnete, musíte mít následující:
 
-* [Azure CLI](/cli/azure/install-azure-cli) verze 2.0.67 nebo novější.
+* Verze [Azure CLI](/cli/azure/install-azure-cli) 2.0.67 nebo novější.
 
-* Rozšíření Azure CLI [pro centra oznámení](/cli/azure/ext/notification-hub/notification-hub).
-* **Klíč ROZHRANÍ API** pro projekt zasílání zpráv cloudových zpráv Google Firebase (FCM).
+* Rozšíření Azure CLI [pro Notification Hubs](/cli/azure/ext/notification-hub/notification-hub).
+* **Klíč rozhraní API** pro projekt Google Firebase Cloud MESSAGING (FCM).
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Nastavení nabízených oznámení pro Google FCM
 
-1. Pomocí příkazu [aktualizace gcm pověření centra oznámení az](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) přidejte klíč rozhraní GOOGLE API do centra oznámení.
+1. Pomocí příkazu [AZ Notification-hub Credential GCM Update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) přidejte svůj klíč Google API do centra oznámení.
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [az notification hub authorization-rule](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) list můžete uvést dostupné zásady přístupu.  Pomocí příkazu [az notification hub authorization-rule list-keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) získáte připojovací řetězce zásad přístupu.  Zadejte **primaryConnectionString** nebo **secondaryConnectionString** v parametru, `--query` chcete-li získat primární připojovací řetězec přímo.
+2. Aplikace pro Android potřebuje připojovací řetězec pro připojení k centru oznámení.  Pomocí příkazu [AZ Notification-hub Authorization-Rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) zobrazíte seznam dostupných zásad přístupu.  K získání připojovacích řetězců zásad přístupu použijte příkaz [AZ Notification-Center Authorization-Rule list-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) .  Chcete-li získat **secondaryConnectionString** primární připojovací řetězec `--query` přímo, zadejte v parametru parametr **primaryConnectionString** nebo secondaryConnectionString.
 
    ```azurecli
    #list access policies for a notification hub
@@ -97,7 +97,7 @@ Než začnete, musíte mít následující:
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. Pomocí příkazu [az notification hub test-send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) otestujte odesílání zpráv do aplikace pro Android.
+3. Pomocí příkazu [AZ Notification-hub test-Send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) otestujte odesílání zpráv do aplikace pro Android.
 
    ```azurecli
    #test with message body
@@ -107,67 +107,67 @@ Než začnete, musíte mít následující:
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-Získejte odkazy na Azure CLI pro jiné platformy pomocí příkazu [přihlašovacích údajů centra oznámení az.](/cli/azure/ext/notification-hub/notification-hub/credential)
+Reference k rozhraní příkazového řádku Azure CLI pro jiné platformy získáte pomocí příkazu [AZ Notification-hub Credential](/cli/azure/ext/notification-hub/notification-hub/credential) .
 
 ---
 
-Další informace o nabízení oznámení do aplikace pro Android najdete v tématu [Odesílání nabízených oznámení do zařízení Android pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Další informace o doručování oznámení do aplikace pro Android najdete v tématu [Posílání nabízených oznámení do zařízení se systémem Android pomocí Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-## <a name="windows-push-notification-service"></a>Služba nabízených oznámení systému Windows
+## <a name="windows-push-notification-service"></a>Služba nabízených oznámení Windows
 
-Nastavení služby nabízených oznámení systému Windows (WNS):
+Nastavení služby nabízených oznámení Windows (WNS):
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte **windows (WNS)** z levé nabídky.
-2. Zadejte hodnoty pro **balíček SID** a **bezpečnostní klíč**.
+1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows (WNS)** .
+2. Zadejte hodnoty pro **SID balíčku** a **klíč zabezpečení**.
 3. Vyberte **Uložit**.
 
-   ![Snímek obrazovky s okny Sid balíčku a bezpečnostního klíče](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Snímek obrazovky zobrazující pole SID balíčku a klíč zabezpečení](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-Další informace najdete v tématu [Odesílání oznámení do aplikací UPW pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+Informace najdete v tématu [posílání oznámení do aplikací pro UWP pomocí Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-## <a name="microsoft-push-notification-service-for-windows-phone"></a>Služba nabízených oznámení Microsoft pro Windows Phone
+## <a name="microsoft-push-notification-service-for-windows-phone"></a>Služba nabízených oznámení společnosti Microsoft pro Windows Phone
 
 Nastavení služby Microsoft Push Notification Service (MPNS) pro Windows Phone:
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte windows **phone (MPNS)** z levé nabídky.
-1. Povolte neověřená nebo ověřená nabízená oznámení:
+1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Windows Phone (MPNS)** .
+1. Povolit buď neověřené, nebo ověřené nabízené oznámení:
 
-   a. Chcete-li povolit neověřená nabízená oznámení, vyberte **možnost Povolit neověřené nabízené** > **uložení**.
+   a. Pokud chcete povolit neověřená nabízená oznámení, vyberte **Povolit neověřené nabízené** > **oznámení.**
 
       ![Snímek obrazovky, který ukazuje, jak povolit neověřená nabízená oznámení](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
    b. Povolení ověřených nabízených oznámení:
-      * Na panelu nástrojů vyberte **Nahrát certifikát**.
-      * Vyberte ikonu souboru a pak vyberte soubor certifikátu.
+      * Na panelu nástrojů vyberte **Odeslat certifikát**.
+      * Vyberte ikonu souboru a potom vyberte soubor certifikátu.
       * Zadejte heslo pro certifikát.
       * Vyberte **OK**.
       * Na stránce **Windows Phone (MPNS)** vyberte **Uložit**.
 
-Další informace najdete v tématu [Nabízená oznámení aplikacím pro Windows Phone pomocí center oznámení](notification-hubs-windows-mobile-push-notifications-mpns.md).
+Další informace najdete v tématu [nabízená oznámení pro Windows Phone aplikace pomocí Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
-## <a name="baidu-android-china"></a>Baidu (Android Čína)
+## <a name="baidu-android-china"></a>Baidu (Android China)
 
 Nastavení nabízených oznámení pro Baidu:
 
-1. Na webu Azure Portal na stránce **Centrum oznámení** vyberte **baidu (Android China)** v levé nabídce.
-2. Zadejte **klíč api,** který jste získali z konzoly Baidu v projektu push cloud Baidu.
-3. Zadejte **tajný klíč,** který jste získali z konzoly Baidu v projektu push cloud Baidu.
+1. V Azure Portal na stránce **centra oznámení** vyberte v nabídce vlevo možnost **Baidu (Android China)** .
+2. Zadejte **klíč rozhraní API** , který jste získali z konzoly Baidu v projektu nabízená oznámení cloudu Baidu.
+3. Zadejte **tajný klíč** , který jste získali z konzoly Baidu v projektu nabízená oznámení cloudu Baidu.
 4. Vyberte **Uložit**.
 
-    ![Snímek obrazovky s centry oznámení, který zobrazuje konfiguraci Baidu (Android China) pro nabízená oznámení](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![Snímek obrazovky Notification Hubs zobrazující konfiguraci Baidu (Android China) pro nabízená oznámení](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-Po dokončení těchto kroků výstraha označuje, že centrum oznámení byla úspěšně aktualizována. Tlačítko **Uložit** je zakázáno.
+Po dokončení těchto kroků výstraha indikuje, že centrum oznámení bylo úspěšně aktualizováno. Tlačítko **Uložit** je zakázané.
 
-Další informace najdete [v tématu Začínáme s centry oznámení pomocí Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
+Další informace najdete v tématu [Začínáme s Notification Hubs pomocí Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se dozvěděli, jak nakonfigurovat nastavení systému oznámení platformy pro centrum oznámení na webu Azure Portal.
+V tomto rychlém startu jste zjistili, jak nakonfigurovat nastavení systému oznámení platformy pro Centrum oznámení v Azure Portal.
 
-Další informace o nabízení oznámení na různých platformách najdete v těchto kurzech:
+Další informace o nabízených oznámeních na různých platformách najdete v těchto kurzech:
 
--[Nabízená oznámení pro zařízení se systémem iOS pomocí centrů oznámení a](notification-hubs-ios-apple-push-notification-apns-get-started.md)
--nabízených oznámení APNS do zařízení se systémem Android pomocí center oznámení a nabízených oznámení[Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
--[do aplikace UPW spuštěná na zařízení S Windows](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
--Nabízená oznámení do aplikace pro Windows Phone 8 pomocí nabízených oznámení[MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
--[pomocí center oznámení a push cloud push Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)
+-[Nabízená oznámení do zařízení s iOS pomocí Notification Hubs a](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+-[nabízených oznámení služby APN pro zařízení s Androidem pomocí Notification Hubs a nabízených oznámení Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+-[do aplikace pro UWP spuštěné v](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+-[Windows Phone nabízených](notification-hubs-windows-mobile-push-notifications-mpns.md)
+-oznámeních pro zařízení s Windows pomocí nabízených oznámení MPNS na základě[Notification Hubs a nabízená oznámení cloudu Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)
