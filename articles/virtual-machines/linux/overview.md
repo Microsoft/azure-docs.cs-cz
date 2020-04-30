@@ -1,6 +1,6 @@
 ---
-title: Přehled virtuálních počítačích s Linuxem v Azure
-description: Přehled virtuálních počítačů s Linuxem v Azure.
+title: Přehled virtuálních počítačů se systémem Linux v Azure
+description: Přehled virtuálních počítačů se systémem Linux v Azure.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: overview
@@ -9,10 +9,10 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81759424"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
@@ -48,7 +48,7 @@ Tato tabulka ukazuje několik způsobů, jak můžete získat seznam dostupných
 | Metoda | Popis |
 | --- | --- |
 | portál Azure |Při vytváření virtuálního počítače vyberte umístění ze seznamu. |
-| Azure PowerShell |Použijte příkaz [Get-AzLocation.](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) |
+| Azure PowerShell |Použijte příkaz [Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) . |
 | REST API |Použijte operaci [Vypsat umístění](https://docs.microsoft.com/rest/api/resources/subscriptions). |
 | Azure CLI |Použijte operaci [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
@@ -81,7 +81,7 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 * Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian –[Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure Marketplace - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+* FreeBSD- [Azure Marketplace-FreeBSD 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS – [Azure Marketplace – CoreOS (stabilní verze)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS – [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami – [Knihovna Bitnami pro Azure](https://azure.bitnami.com/)
@@ -92,12 +92,12 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když všechny infrastruktury žije v kódu lze snadno znovu vytvořit.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
+K dosažení správné kultury DevOps musí být veškerá infrastruktura tvořená kódem.  Když je veškerá infrastruktura v kódu, můžete ji snadno vytvořit znovu.  Azure spolupracuje se všemi hlavními nástroji pro automatizaci, jako jsou Ansible, Chef, SaltStack a Puppet.  Azure obsahuje také vlastní nástroj pro automatizaci:
 
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure podporuje [cloud-init na](https://cloud-init.io/) většině Distros Linuxu, které ho podporují.  Aktivně spolupracujeme s našimi schválenými partnery pro distribuci Linuxu, abychom měli na webu Azure Marketplace k dispozici image s podporou cloudu. Díky těmto bitovým kopiím budou nasazení a konfigurace v cloudu bezproblémově fungovat s virtuálními počítači a škálovacími sadami virtuálních počítačů.
+Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Linux distribuce, která ho podporují.  Aktivně spolupracujeme s našimi distribuce partnery se systémem Linux, aby byly k dispozici image s povoleným cloudovým inicializacím na webu Azure Marketplace. Díky těmto imagí budou vaše nasazení a konfigurace pro cloudovou inicializaci bez problémů fungovat s virtuálními počítači a sadami škálování virtuálních počítačů.
 
 * [Použití cloud-init na virtuálních počítačích Azure s Linuxem](using-cloud-init.md)
 
@@ -107,7 +107,7 @@ Azure podporuje [cloud-init na](https://cloud-init.io/) většině Distros Linux
 * [Postup připojení datového disku k virtuálnímu počítači s Linuxem na webu Azure Portal](attach-disk-portal.md)
 
 ## <a name="networking"></a>Sítě
-* [Přehled virtuální sítě](../../virtual-network/virtual-networks-overview.md)
+* [Přehled Virtual Network](../../virtual-network/virtual-networks-overview.md)
 * [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
@@ -115,7 +115,7 @@ Azure podporuje [cloud-init na](https://cloud-init.io/) většině Distros Linux
 
 ## <a name="next-steps"></a>Další kroky
 
-Vytvořte si první virtuální počítač!
+Vytvořte svůj první virtuální počítač!
 
 - [Portál](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)

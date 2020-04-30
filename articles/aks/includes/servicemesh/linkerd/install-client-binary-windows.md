@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 1a023475de1ce2891916807632d9ee15e382326c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81737375"
 ---
-## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Stažení a instalace binárního souboru klienta Linkerd Linkerd
+## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Stažení a instalace binárního linkeru linkeru
 
-V prostředí založeném na prostředí `Invoke-WebRequest` PowerShell v systému Windows použijte ke stažení verze Linkerd následujícím způsobem:
+V prostředí založeném na prostředí PowerShell ve Windows použijte `Invoke-WebRequest` ke stažení linkerované verze následujícím způsobem:
 
 ```powershell
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-Binární `linkerd` klient skáče v klientském počítači a umožňuje interakci s mřížkou služby Linkerd. Pomocí následujících příkazů nainstalujte binární `linkerd` soubor klienta Linkerd do prostředí založeného na prostředí PowerShell v systému Windows. Tyto příkazy `linkerd` zkopírují binární soubor klienta do složky Linkerd a poté jej zpřístupní okamžitě `PATH`(v aktuálním prostředí) a trvale (v rámci restartování prostředí) prostřednictvím aplikace . Ke spuštění těchto příkazů nepotřebujete zvýšená oprávnění (Správce) a nemusíte restartovat prostředí.
+Binární `linkerd` soubor klienta běží na klientském počítači a umožňuje interakci s propojenou sítí služby. Použijte následující příkazy k instalaci linkeru binárního `linkerd` klienta do prostředí založeného na prostředí PowerShell ve Windows. Tyto příkazy kopírují `linkerd` binární soubor klienta do linkerované složky a pak ji ihned (v aktuálním prostředí) a trvale (v rámci restartování prostředí) zadají hned přes `PATH`. Ke spuštění těchto příkazů nepotřebujete oprávnění vyšší úrovně (správce) a nemusíte restartovat prostředí.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření živého datového proudu Mediálních služeb Azure pomocí OBS Studia
-description: Zjistěte, jak vytvořit živý přenos Mediálních služeb Azure pomocí portálu a STUDIA OBS
+title: Vytvoření živého datového proudu Azure Media Services pomocí OBS studia
+description: Naučte se vytvářet Azure Media Services živý datový proud pomocí portálu a OBS Studio.
 services: media-services
 ms.service: media-services
 ms.topic: quickstart
@@ -8,216 +8,216 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 04/16/2020
 ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726610"
 ---
-# <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Mediálních služeb Azure pomocí služby OBS
+# <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Azure Media Services pomocí OBS
 
-Tento rychlý start vám pomůže vytvořit živý datový proud Azure Media Services pomocí portálu Azure a Open Broadcasting Studio (OBS). Předpokládá, že máte předplatné Azure a vytvořili účet mediálních služeb.
+Tento rychlý Start vám pomůže vytvořit Azure Media Services živý datový proud pomocí Azure Portal a otevřít OBS (Open pro vysílání studia). Předpokládá, že máte předplatné Azure a máte vytvořený účet Media Services.
 
-V tomto rychlém startu se budeme zabývat:
+V tomto rychlém startu pokryjeme:
 
-- Nastavení místního kodéru s OBS.
-- Nastavení živého přenosu.
-- Nastavení výstupů živého datového proudu.
-- Spuštění výchozího koncového bodu streamování.
-- Pomocí Programu Azure Media Player můžete zobrazit živý přenos a výstup na vyžádání.
+- Nastavení místního kodéru pomocí OBS.
+- Nastavuje se živý datový proud.
+- Nastavení výstupů živého streamu
+- Spouští se výchozí koncový bod streamování.
+- Použití Azure Media Player k zobrazení živého streamu a výstupu na vyžádání.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Otevřete svůj webový prohlížeč a přejděte na [portál Microsoft Azure](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
+Otevřete webový prohlížeč a přejdete na [portál Microsoft Azure](https://portal.azure.com/). Zadejte přihlašovací údaje pro přihlášení k portálu. Výchozím zobrazením je váš řídicí panel služby.
 
 ## <a name="set-up-an-on-premises-encoder-by-using-obs"></a>Nastavení místního kodéru pomocí OBS
 
-1. Stáhněte a nainstalujte OBS pro svůj operační systém na [webových stránkách Open Broadcaster Software](https://obsproject.com/).
+1. Stáhněte a nainstalujte si OBS pro váš operační systém na [webu Open Broadcast software](https://obsproject.com/).
 1. Spusťte aplikaci a nechte ji otevřenou.
 
-## <a name="run-the-default-streaming-endpoint"></a>Spuštění výchozího koncového bodu streamování
+## <a name="run-the-default-streaming-endpoint"></a>Spustit výchozí koncový bod streamování
 
-1. V seznamu Media Services vyberte **koncové body streamování.**
+1. V seznamu Media Services vyberte **koncové body streamování** .
 
-   ![Položka nabídky Datový proud koncových bodů](media/live-events-obs-quickstart/streaming-endpoints.png)
-1. Pokud je výchozí stav koncového bodu streamování zastavený, vyberte ho. Tento krok přejdete na stránku pro tento koncový bod.
+   ![Položka nabídky koncových bodů streamování](media/live-events-obs-quickstart/streaming-endpoints.png)
+1. Pokud je stav výchozího koncového bodu streamu zastavený, vyberte ho. Tento krok vás přesměruje na stránku tohoto koncového bodu.
 1. Vyberte **Spustit**.
 
    ![Tlačítko Start pro koncový bod streamování](media/live-events-obs-quickstart/start.png)
 
-## <a name="set-up-an-azure-media-services-live-stream"></a>Nastavení živého datového proudu Mediálních služeb Azure
+## <a name="set-up-an-azure-media-services-live-stream"></a>Nastavení Azure Media Services živého streamu
 
-1. Přejděte na účet Azure Media Services na portálu a pak ze seznamu **Mediálních služeb** vyberte **Živé streamování.**
+1. Na portálu klikněte na účet Azure Media Services a potom v seznamu **Media Services** vyberte **živé streamování** .
 
-   ![Odkaz na živé vysílání](media/live-events-obs-quickstart/select-live-streaming.png)
-1. Chcete-li vytvořit novou událost živého streamování, vyberte **Přidat živou událost.**
+   ![Odkaz živého streamování](media/live-events-obs-quickstart/select-live-streaming.png)
+1. Vyberte **Přidat živou událost** a vytvořte novou událost živého streamování.
 
-   ![Ikona Přidat živou událost](media/live-events-obs-quickstart/add-live-event.png)
-1. Do pole **Název živé události** zadejte název nové události, například *TestLiveEvent*.
+   ![Přidat živou ikonu události](media/live-events-obs-quickstart/add-live-event.png)
+1. Do pole **název živé události** zadejte název nové události, například *TestLiveEvent*.
 
-   ![Pole s názvem živé události](media/live-events-obs-quickstart/live-event-name.png)
-1. Do pole **Popis** zadejte volitelný popis události.
-1. Vyberte **možnost Předávací – bez možnosti kódování cloudu.**
+   ![Pole název živé události](media/live-events-obs-quickstart/live-event-name.png)
+1. Do pole **Popis** Zadejte nepovinný popis události.
+1. Vyberte možnost **předávat – bez cloudového kódování** .
 
-   ![Možnost kódování za mrakem](media/live-events-obs-quickstart/cloud-encoding.png)
-1. Vyberte možnost **RTMP.**
-1. Ujistěte se, že je pro **spustit živou událost**vybraná možnost **Ne** , abyste se vyhnuli účtování za živou událost, než bude připravena. (Fakturace začne při spuštění živé události.)
+   ![Možnost kódování cloudu](media/live-events-obs-quickstart/cloud-encoding.png)
+1. Vyberte možnost **RTMP** .
+1. Ujistěte se, že není vybraná **žádná** možnost pro **spuštění živé události**, abyste se vyhnuli fakturaci za živou událost předtím, než bude připravená. (Fakturace bude zahájena při spuštění živé události.)
 
-   ![Možnost Spustit živou událost](media/live-events-obs-quickstart/start-live-event-no.png)
-1. Chcete-li zkontrolovat nastavení, vyberte tlačítko **Revize + vytvořit.**
-1. Chcete-li vytvořit živou událost, vyberte tlačítko **Vytvořit.** Poté se vrátíte do seznamu živých událostí.
-1. Vyberte odkaz na živou událost, kterou jste právě vytvořili. Všimněte si, že vaše událost je zastavena.
-1. Ponechte tuto stránku otevřenou v prohlížeči. Vrátíme se k tomu později.
+   ![Možnost spuštění živé události](media/live-events-obs-quickstart/start-live-event-no.png)
+1. Kliknutím na tlačítko **Revize + vytvořit** zkontrolujte nastavení.
+1. Kliknutím na tlačítko **vytvořit** vytvořte živou událost. Pak jste vráceni do seznamu živých událostí.
+1. Vyberte odkaz na živou událost, kterou jste právě vytvořili. Všimněte si, že vaše událost je zastavená.
+1. Tuto stránku nechte otevřenou v prohlížeči. Později se k ní vrátíme.
 
-## <a name="set-up-a-live-stream-by-using-obs-studio"></a>Nastavení živého přenosu pomocí OBS Studio
+## <a name="set-up-a-live-stream-by-using-obs-studio"></a>Nastavení živého datového proudu pomocí OBS studia
 
-OBS začíná výchozí scénou, ale bez vybraných vstupů.
+OBS začíná výchozí scénou, ale nemá vybrané žádné vstupy.
 
    ![Výchozí obrazovka OBS](media/live-events-obs-quickstart/live-event-obs-default-screen.png)
 
-### <a name="add-a-video-source"></a>Přidání zdroje videa
+### <a name="add-a-video-source"></a>Přidat zdroj videa
 
-1. V panelu **Zdroje** klepněte na ikonu **Přidat** a vyberte nové zdrojové zařízení. Otevře se nabídka **Zdroje.**
+1. Na panelu **zdroje** klikněte na ikonu **Přidat** a vyberte nové zdrojové zařízení. Otevře se nabídka **zdroje** .
 
-1. Ze zdrojové nabídky zařízení vyberte **Zařízení pro digitalizaci** videa. Otevře se nabídka **Vytvořit/Vybrat zdroj.**
+1. V nabídce zdrojového zařízení vyberte **zařízení pro digitalizaci videa** . Otevře se nabídka **vytvořit nebo vybrat zdroj** .
 
-   ![Nabídka zdrojů OBS s vybraným videozařízením](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
+   ![Nabídka zdrojů OBS s vybraným video zařízením](media/live-events-obs-quickstart/live-event-obs-video-device-menu.png)
 
-1. Vyberte tlačítko **Přidat existující** přepínací tlačítko a klepněte na **tlačítko OK**. Otevře se nabídka **Vlastnosti videozařízení.**
+1. Vyberte přepínač **Přidat existující** a pak klikněte na **OK**. Otevře se nabídka **vlastnosti pro video zařízení** .
 
-   ![OBS nová nabídka zdroje videa s přidáním existující vybrané](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
+   ![OBS novou nabídku zdroje videa s vybranou možnost Přidat existující](media/live-events-obs-quickstart/live-event-obs-new-video-source.png)
 
-1. V rozevíracím seznamu **Zařízení** vyberte vstup videa, který chcete použít pro vysílání. Zbytek nastavení nechte prozatím na pokoji a klepněte na tlačítko **OK**. Vstupní zdroj bude přidán do panelu **Zdroje** a zobrazení pro vstup videa se zobrazí v oblasti **Náhled.**
+1. V rozevíracím seznamu **zařízení** vyberte vstup videa, který chcete použít pro vysílání. Zbývající nastavení pro teď nechte beze změny a klikněte na **OK**. Vstupní zdroj bude přidán na panel **zdroje** a zobrazení vstupu videa se zobrazí v oblasti **náhledu** .
 
    ![Nastavení kamery OBS](media/live-events-obs-quickstart/live-event-surface-camera.png)
 
-### <a name="add-an-audio-source"></a>Přidání zdroje zvuku
+### <a name="add-an-audio-source"></a>Přidat zdroj zvuku
 
-1. V panelu **Zdroje** klepněte na ikonu **Přidat** a vyberte nové zdrojové zařízení. Otevře se nabídka Zdrojové zařízení.
+1. Na panelu **zdroje** klikněte na ikonu **Přidat** a vyberte nové zdrojové zařízení. Otevře se nabídka zdrojové zařízení.
 
-1. Ze zdrojové nabídky zařízení vyberte **Záznam vstupu zvuku.** Otevře se nabídka **Vytvořit/Vybrat zdroj.**
+1. V nabídce zdrojového zařízení vyberte **záznam zvukového vstupu** . Otevře se nabídka **vytvořit nebo vybrat zdroj** .
 
-   ![Nabídka zdrojů OBS s vybraným zvukovým zařízením](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
+   ![Nabídka zdrojů OBS se zvoleným zvukovým zařízením](media/live-events-obs-quickstart/live-event-obs-audio-device-menu.png)
 
-1. Vyberte tlačítko **Přidat existující** přepínací tlačítko a klepněte na **tlačítko OK**. Otevře se nabídka **Vlastnosti pro zachycení zvukového vstupu.**
+1. Vyberte přepínač **Přidat existující** a pak klikněte na **OK**. Otevře se nabídka **vlastnosti pro záznam zvuku vstupu** .
 
-   ![Zdroj zvuku OBS s přidáním existující vybrané ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
+   ![OBS zdroj zvuku s vybranou možnost Přidat existující ](media/live-events-obs-quickstart/live-event-obs-new-audio-source.png)
 
-1. V rozevíracím seznamu **Zařízení** vyberte zařízení pro digitalizaci zvuku, které chcete použít pro vysílání. Zbytek nastavení nechte prozatím na pokoji a klikněte na OK. Zařízení pro digitalizaci zvuku bude přidáno do panelu zvukového mixážního panelu.
+1. V rozevíracím seznamu **zařízení** vyberte zařízení pro záznam zvuku, které chcete použít pro vysílání. Zbývající nastavení pro teď nechte beze změny a klikněte na OK. Zařízení pro záznam zvuku bude přidáno na panel zvukového směšovače.
 
    ![Rozevírací seznam pro výběr zvukového zařízení OBS](media/live-events-obs-quickstart/live-event-select-audio-device.png)
 
 ### <a name="set-up-streaming-in-obs"></a>Nastavení streamování v OBS
 
-V dalším postupu se vrátíte do Služby Azure Media Services ve vašem prohlížeči a zkopírujete vstupní adresu URL a zadejte do nastavení výstupu:
+V dalším postupu se v prohlížeči vraťte do Azure Media Services a zkopírujte vstupní adresu URL, která se má zadat do nastavení výstupu:
 
-1. Na stránce Azure Media Services na portálu vyberte **Start** a spusťte událost živého přenosu. (Fakturace začíná právě teď.)
+1. Na stránce Azure Media Services na portálu vyberte **Spustit** , aby se spustila událost živého streamu. (Fakturace začíná nyní.)
 
    ![Ikona Start](media/live-events-obs-quickstart/start.png)
-1. Nastavte přepínač **RTMP** na **RTMPS**.
-1. V poli **Vstupní adresa URL** zkopírujte adresu URL do schránky.
+1. Nastavte přepínací tlačítko **RTMP** na **rtmps**.
+1. V poli **vstupní adresa URL** zkopírujte adresu URL do schránky.
 
    ![Vstupní adresa URL](media/live-events-obs-quickstart/input-url.png)
 
 1. Přepněte do aplikace OBS.
 
-1. Klepněte na tlačítko **Nastavení** v panelu **Ovládací prvky.** Otevřou se možnosti Nastavení.
+1. Klikněte na tlačítko **Nastavení** na panelu **ovládací prvky** . Otevře se možnost nastavení.
 
-   ![Panel OBS Controls s vybraným nastavením](media/live-events-obs-quickstart/live-event-obs-settings.png)
+   ![Panel ovládací prvky OBS s vybraným nastavením](media/live-events-obs-quickstart/live-event-obs-settings.png)
 
-1. Z nabídky **Nastavení** vyberte **Stream.**
+1. V nabídce **Nastavení** vyberte **Stream** .
 
-1. V rozevíracím seznamu **Služba** vyberte Zobrazit vše a pak vyberte **Vlastní...**.
+1. V rozevíracím seznamu **Služba** vyberte Zobrazit vše a pak vyberte **vlastní...**.
 
-1. Do pole **Server** vložte adresu URL RTMPS, kterou jste zkopírovali do schránky.
+1. Do pole **Server** vložte adresu URL rtmps, kterou jste zkopírovali do schránky.
 
-1. Zadejte něco do pole **klíč streamu.**  Nezáleží na tom, co to je, ale musí mít hodnotu.
+1. Do pole **klíč streamu** zadejte něco.  Nezáleží na tom, co je, ale musí mít hodnotu.
 
     ![Nastavení datového proudu OBS](media/live-events-obs-quickstart/live-event-obs-stream-settings.png)
 
-1. Z nabídky **Nastavení** vyberte **Výstup.**
+1. V nabídce **Nastavení** vyberte **výstup** .
 
-1. Do pole **Interval klíčového snímku** zadejte *hodnotu 2.* Tím se nastaví délka fragmentu na 2 sekundy. Pro nižší latenci živé doručení použijte hodnotu 1 sekundu.
+1. Do pole **interval klíčového snímku** zadejte *2* . Tím se délka fragmentu nastaví na 2 sekundy. Pro zajištění nižší latence při živém doručování použijte hodnotu 1 sekundu.
 
-1. VOLITELNÉ: Nastavte **přednastavení využití procesoru** na *velmi rychlé,* pokud používáte počítač, který má nízký výpočetní výkon. Volitelně můžete nastavit kbps na něco nižší, pokud existují nežádoucí síťové podmínky.
+1. Volitelné: nastavte **Předvolby využití CPU** na *veryfast* , pokud používáte počítač, který má nízké nároky na výpočetní výkon. V případě potřeby můžete v případě, že jsou nežádoucí síťové podmínky, nastavit KB/s na něco níže.
 
    ![Nastavení výstupu OBS](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Zbývající nastavení ponechejte bez šance a klepněte na tlačítko **OK**.
+1. Ponechte ostatní nastavení nepravděpodobné a klikněte na **OK**.
 
 ### <a name="start-streaming"></a>Spustit streamování
 
-1. V panelu **Ovládací prvky** klepněte na **tlačítko Spustit streamování**.
+1. Na panelu **ovládací prvky** klikněte na **Spustit streamování**.
 
-    ![Tlačítko ZAHÁJENÍ streamování OBS](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
+    ![OBS spustit streamování – tlačítko](media/live-events-obs-quickstart/live-event-obs-start-streaming.png)
 
-2. Přepněte v prohlížeči na obrazovku událostí Azure Media Services Live a klikněte na odkaz **Znovu načíst přehrávač.** Nyní byste měli vidět svůj stream v přehrávači Náhled.
+2. V prohlížeči přepněte na obrazovku Azure Media Services živá událost a klikněte na odkaz **znovu načíst přehrávač** . V přehrávači Preview by se teď měl zobrazit váš datový proud.
 
 ## <a name="set-up-outputs"></a>Nastavení výstupů
 
-Tato část nastaví výstupy a umožní vám uložit záznam vašeho živého streamu.  
+Tato část nastaví vaše výstupy a umožní vám uložit záznam živého streamu.  
 
 > [!NOTE]
-> Chcete-li streamovat tento výstup, musí být spuštěn koncový bod streamování. Viz další [spuštění výchozího koncového bodu streamování.](#run-the-default-streaming-endpoint)
+> Pro streamování tohoto výstupu musí běžet koncový bod streamování. Podívejte se na pozdější [spuštění části výchozí koncový bod streamování](#run-the-default-streaming-endpoint) .
 
-1. Pod prohlížečem **videa Výstupy vyberte** odkaz **Vytvořit výstupy.**
-1. Pokud chcete, upravte název výstupu v poli **Název** na něco uživatelsky přívětivějšího, aby bylo možné ho později snadno najít.
+1. Vyberte odkaz **vytvořit výstupy** pod **výstupem** prohlížeče videa.
+1. Pokud chcete, upravte název výstupu v poli **název** na více uživatelsky přívětivější, aby bylo možné ho později snadno najít.
 
-   ![Pole výstupního názvu](media/live-events-wirecast-quickstart/output-name.png)
-1. Nech všechny ty krabice na pokoji.
-1. Výběrem **možnosti Další** přidáte lokátor streamování.
-1. Změňte název lokátoru na něco uživatelsky přívětivějšího, pokud chcete.
+   ![Pole Název výstupu](media/live-events-wirecast-quickstart/output-name.png)
+1. Ponechte všechna ostatní pole v současnosti samostatně.
+1. Vyberte **Další** a přidejte Lokátor streamování.
+1. Pokud chcete, změňte název lokátoru na něco více uživatelsky přívětivého.
 
-   ![Pole s názvem lokátoru](media/live-events-wirecast-quickstart/live-event-locator.png)
-1. Všechno ostatní na téhle obrazovce zatím nech na pokoji.
+   ![Pole název lokátoru](media/live-events-wirecast-quickstart/live-event-locator.png)
+1. Všechno ostatní na této obrazovce teď ponechte samostatně.
 1. Vyberte **Vytvořit**.
 
-## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Přehrání výstupního vysílání pomocí programu Azure Media Player
+## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Přehrát výstupní všesměrové vysílání pomocí Azure Media Player
 
-1. Zkopírujte adresu URL streamování do přehrávače **výstupního** videa.
-1. Ve webovém prohlížeči otevřete [ukázku přehrávače Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html).
-1. Vložte adresu URL streamování do pole **URL** v programu Azure Media Player.
-1. Vyberte tlačítko **Aktualizovat přehrávač.**
-1. Chcete-li zobrazit živý přenos, vyberte ve videu ikonu **Přehrát.**
+1. Zkopírujte adresu URL streamování do **výstupního** přehrávače videa.
+1. Ve webovém prohlížeči otevřete [ukázku Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html).
+1. Vložte adresu URL streamování do pole **url** Azure Media Player.
+1. Vyberte tlačítko pro **aktualizaci přehrávače** .
+1. Kliknutím na ikonu **Přehrát** na videu zobrazíte živý datový proud.
 
-## <a name="stop-the-broadcast"></a>Zastavení vysílání
+## <a name="stop-the-broadcast"></a>Zastavit vysílání
 
-Když si myslíte, že jste streamovali dostatek obsahu, zastavte vysílání.
+Pokud si myslíte, že máte k dispozici dostatek obsahu, zastavte všesměrové vysílání.
 
-1. Na portálu vyberte **Zastavit**.
+1. Na portálu vyberte **zastavit**.
 
-1. V OBS vyberte v panelu **Ovládací prvky** tlačítko **Zastavit streamování.** Tento krok zastaví vysílání z OBS.
+1. V OBS na panelu **ovládací prvky** vyberte tlačítko **zastavit streamování** . Tento krok zastaví všesměrové vysílání z OBS.
 
-## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>Přehrání výstupu na vyžádání pomocí programu Azure Media Player
+## <a name="play-the-on-demand-output-by-using-azure-media-player"></a>Přehrání výstupu na vyžádání pomocí Azure Media Player
 
-Výstup, který jste vytvořili, je teď k dispozici pro streamování na vyžádání, dokud je spuštěn koncový bod streamování.
+Výstup, který jste vytvořili, je teď dostupný pro streamování na vyžádání, pokud je spuštěný koncový bod streamování.
 
-1. Přejděte do seznamu Mediálních služeb a vyberte **položku Datové zdroje**.
-1. Najděte výstup události, který jste vytvořili dříve, a vyberte odkaz na datový zdroj. Otevře se stránka výstupu datového zdroje.
-1. Zkopírujte adresu URL streamování pod přehrávačem videa pro datový zdroj.
-1. Vraťte se do Programu Azure Media Player v prohlížeči a vložte adresu URL streamování do pole URL.
-1. Vyberte **možnost Aktualizovat přehrávač**.
-1. Výběrem ikony **Přehrát** ve videu zobrazíte datový zdroj na vyžádání.
+1. Přejít na seznam Media Services a vyberte **prostředky**.
+1. Vyhledejte výstup události, který jste vytvořili dříve, a vyberte odkaz na prostředek. Otevře se stránka výstup prostředku.
+1. Zkopírujte adresu URL streamování v přehrávači videa pro daný Asset.
+1. V prohlížeči se vraťte do Azure Media Player a vložte adresu URL streamování do pole URL.
+1. Vyberte **aktualizovat přehrávač**.
+1. Kliknutím na ikonu **Přehrát** na videu zobrazíte prostředek na vyžádání.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 > [!IMPORTANT]
-> Zastavte služby! Po dokončení kroků v tomto rychlém startu nezapomeňte zastavit živou událost a koncový bod streamování, nebo se vám bude účtovat čas, kdy zůstanou spuštěny. Chcete-li zastavit živou událost, podívejte se na postup [Zastavení vysílání,](#stop-the-broadcast) kroky 2 a 3.
+> Zastavte služby. Po dokončení kroků v tomto rychlém startu nezapomeňte zastavit živou událost a koncový bod streamování, nebo se vám bude účtovat čas, kdy je spuštěný. Pokud chcete zastavit živou událost, přečtěte si téma [zastavení postupu vysílání](#stop-the-broadcast) , kroky 2 a 3.
 
 Zastavení koncového bodu streamování:
 
-1. V seznamu Media Services vyberte **položku Koncové body streamování**.
-2. Vyberte výchozí koncový bod streamování, který jste začali dříve. Tento krok otevře stránku koncového bodu.
-3. Vyberte **Zastavit**.
+1. V seznamu Media Services vyberte **koncové body streamování**.
+2. Vyberte výchozí koncový bod streamování, který jste spustili dříve. Tento krok otevře stránku koncového bodu.
+3. Vyberte **zastavit**.
 
 > [!TIP]
-> Pokud nechcete zachovat datové zdroje z této události, nezapomeňte je odstranit, abyste se neúčtovali úložiště.
+> Pokud nechcete, aby se prostředky z této události udržovaly, nezapomeňte je odstranit, takže se vám neúčtují poplatky za úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Živé události a živé výstupy v Mediálních službách](./live-events-outputs-concept.md)
+> [Živé události a živé výstupy v Media Services](./live-events-outputs-concept.md)

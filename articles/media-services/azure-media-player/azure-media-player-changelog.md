@@ -1,620 +1,620 @@
 ---
-title: Azure Media Player Changelog
-description: Azure Media Player changelog.
+title: Protokol změn Azure Media Player
+description: Azure Media Player protokolu změn.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726547"
 ---
-# <a name="changelog"></a>Changelog #
+# <a name="changelog"></a>Protokol změn #
 
-## <a name="224-official-update-february-22-2019"></a>2.2.4 (Oficiální aktualizace 22. února 2019) ##
+## <a name="224-official-update-february-22-2019"></a>2.2.4 (oficiální aktualizace z února 22 2019) ##
 
 ### <a name="bug-fixes-224"></a>Opravy chyb 2.2.4 ###
 
-- [Oprava chyby] [AMP] [Přístupnost] Po zobrazení chybové obrazovky byla odebrána dosažitelná karta Fantom
-- [Oprava chyby] [AMP] Opravena klávesová zkratka "M" pro IE11 a Edge
-- [Oprava chyby] [AMP] Opravena výjimka pro titulky CEA708
-- [Oprava chyby] [AMP] Opraven problém se zmrazením videa v prohlížeči Edge
+- [Oprava chyby] WEBOVÉ Přístup Odebrala se dostupná karta fiktivní, když se zobrazí chybová obrazovka.
+- [Oprava chyby] WEBOVÉ Opravili klávesovou zkratku pro IE11 a Edge.
+- [Oprava chyby] WEBOVÉ Opravila se výjimka pro popisky CEA708.
+- [Oprava chyby] WEBOVÉ Opravili jsme problém se zamrznutím videa pro prohlížeč Edge.
 
 ### <a name="changes-224"></a>Změny 2.2.4 ###
 
-- To je v pořádku. [AMP] Když dojde k chybě dešifrování fragmentu, přehrávač znovu zopakuje aktuální a různé fragmenty, aby obnovil přehrávání
-- To je v pořádku. [AMP] Díky AMP tolerantnější k překrývajícím se fragmentům videa nebo zvuku
+- Mění WEBOVÉ Pokud dojde k chybě dešifrování fragmentů, přehrávač se pokusí přehrání aktuální a různé fragmenty.
+- Mění WEBOVÉ Pružnější překrývající se fragmenty videa nebo zvuku
 
-## <a name="223-official-update-january-9-2019"></a>2.2.3 (Oficiální aktualizace leden 9 2019) ##
+## <a name="223-official-update-january-9-2019"></a>2.2.3 (oficiální aktualizace lednu 9 2019) ##
 
 ### <a name="features"></a>Funkce ###
 
-- To je v pořádku. To je v pořádku. Přidána nabídka zvukové stopy pro přehrávání Safari HLS
+- Zapnut HLS Přidání nabídky zvukové stopy pro přehrávání Safari HLS
 
 ### <a name="bug-fixes-223"></a>Opravy chyb 2.2.3 ###
 
-- [Oprava chyby] [AMP] [Přístupnost] Během živého vysílání nelze tlačítko "live" vybrat pomocí klávesnice
-- [Oprava chyby] [AMP] Opraveny chyby při selhání testu MSE 0x0400003
-- [Oprava chyby] [AMP] Opraven problém, kdy video mohlo při spuštění živého přenosu zamrznout
+- [Oprava chyby] WEBOVÉ Přístup Během živého vysílání se tlačítko "Live" nedá vybrat pomocí klávesnice.
+- [Oprava chyby] WEBOVÉ Pevná falešná falešná 0x0400003 chyby z důvodu neúspěšného testu MSE
+- [Oprava chyby] WEBOVÉ Opravili jsme problém, kdy se může video při spuštění živého streamu ukotvit.
 
 ### <a name="changes-223"></a>Změny 2.2.3 ###
 
-- To je v pořádku. [AMP] Do protokolu byly přidány další informace, které umožňují lepší diagnostiku.
-- To je v pořádku. [AMP] Pokud je ve stejném rozlišení obrazovky k dispozici více než jeden přenosový tok, jsou všechny přenosové rychlosti k dispozici pro výběr
+- Mění WEBOVÉ Přidání dalších informací do protokolu pro povolení lepší diagnostiky
+- Mění WEBOVÉ Pokud je k dispozici více než jedna přenosová rychlost na stejném rozlišení obrazovky, jsou pro výběr dostupné všechny přenosové rychlosti.
 
-## <a name="222-official-update"></a>2.2.2 (Oficiální aktualizace) ##
+## <a name="222-official-update"></a>2.2.2 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-222"></a>Opravy chyb 2.2.2 ###
 
-- [Oprava chyby] [AMP] Když hráč narazí na přechodný výpadek sítě, okamžitě zastaví přehrávání
-- [Oprava chyby] [AMP] [Přístupnost] Chybový dialog není přístupný pomocí klávesnice
-- [Oprava chyby] [AMP] Nekonečná číselník zobrazená při přehrávání zvukového prostředku namísto nepodporované chyby
+- [Oprava chyby] WEBOVÉ Když hráč zaznamená přechodný výpadek sítě, zastaví přehrávání okamžitě.
+- [Oprava chyby] WEBOVÉ Přístup Chybové dialogové okno není dostupné na klávesnici.
+- [Oprava chyby] WEBOVÉ Při přehrávání datového prostředku bez nepodporované chyby se zobrazuje nekonečný číselník
 
 ### <a name="changes-222"></a>Změny 2.2.2 ###
 
-- To je v pořádku. [AMP] přidány lokalizované řetězce pro reklamní uI
+- Mění [AMP] přidání lokalizovaných řetězců pro uživatelské rozhraní inzerce
 
-## <a name="221-official-update"></a>2.2.1 (Oficiální aktualizace) ##
+## <a name="221-official-update"></a>2.2.1 (oficiální aktualizace) ##
 
 ### <a name="features-221"></a>Funkce 2.2.1 ###
 
-- To je v pořádku. TO JE V POŘÁDKU. Přidána podpora pro HLS CMAF
+- Zapnut [CMAF] Přidání podpory pro HLS CMAF
 
 ### <a name="bug-fixes"></a>Opravy chyb ###
 
-- [Oprava chyby] [AMP] nejasné časovače v logice opakování, které přinášejí chyby přehrávání
-- [Oprava chyby] [AMP] [Firefox] skončil událost není vystřelil na Firefox a Chrome, když zastavil živý program
-- [Oprava chyby] [AMP] Ovládací prvky zobrazené po setsource, i když jsou ovládací prvky nastaveny na false v možnostech přehrávače
+- [Oprava chyby] [AMP] nejasné časovače v logice opakování při vyhodnocování chyb přehrávání
+- [Oprava chyby] WEBOVÉ [Firefox] při zastavení živého programu není v prohlížeči Firefox a Chrome vyvolána událost.
+- [Oprava chyby] WEBOVÉ Ovládací prvky zobrazené po SetSource –, i když jsou ovládací prvky nastavené na hodnotu false v možnostech přehrávače
 
 ### <a name="changes"></a>Změny ###
 
-- To je v pořádku. [Živé titulky] Změnil název rozhraní API pro titulky CEA z 608 na 708. Další informace naleznete v tématu [CEA708 Captions Settings](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Mění [Živé titulky] Změnili jste název rozhraní API pro popisky CEA z 608 na 708. Další informace najdete v tématu [Nastavení popisků CEA708](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings) .-->
 
-## <a name="220-official-release"></a>2.2.0 (Oficiální vydání) ##
+## <a name="220-official-release"></a>2.2.0 (oficiální verze) ##
 
 ### <a name="features-220"></a>Funkce 2.2.0 ###
 
-- To je v pořádku. [Azurehtml5JS] To je v pořádku. [LiveCaptions] Cea 708 titulky podporu v Azurehtml5JS a FlashSS tech pro jasné a AES obsah.
+- Zapnut [Azurehtml5JS] Blikající [LiveCaptions] Podpora titulků CEA 708 v Azurehtml5JS a flash tech pro vymazání obsahu a AES.
 
 ### <a name="bug-fixes-220"></a>Opravy chyb 2.2.0 ###
 
-- [Oprava chyby] Detekce verze Flash nefunguje v Prohlížeči Chrome/Edge
+- [Oprava chyby] Detekce verze Flash nefunguje v Chrome nebo Edge
 
-### <a name="changes-220"></a>Změny 2.2.0 ###
+### <a name="changes-220"></a>2.2.0 změny ###
 
-- To je v pořádku. [AMP] To je v pořádku. Název heuriistického profilu byl změněn z funkce Rychlé zahájení na lowlatency.
-- To je v pořádku. To je v pořádku. Změna přehrávače Flash pro detekci verzí umožňuje přehrávání obsahu AES pomocí nové aktualizace Adobe Flash.
+- Mění WEBOVÉ Heuristiky Změnil se název heuristické profilu z rychlého startu na LowLatency
+- Mění Blikající Změna v přehrávači Flash pro detekci verzí, aby se povolilo přehrávání obsahu AES s novou aktualizací Adobe Flash
 
-## <a name="219-official-hotfix"></a>2.1.9 (Oficiální oprava hotfix) ##
+## <a name="219-official-hotfix"></a>2.1.9 (oficiální oprava hotfix) ##
 
 ### <a name="bug-fixes-219"></a>Opravy chyb 2.1.9 ###
 
-- [Oprava chyby] Je to tak. Výjimka, ke které dochází při přechodu živých streamů na video na vyžádání / živé archivy
+- [Oprava chyby] Bydlí Došlo k výjimce při přechodu živých streamů do videa na vyžádání nebo živé archivy.
 
-### <a name="changes-219"></a>Změny 2.1.9 ###
+### <a name="changes-219"></a>2.1.9 změny ###
 
-- To je v pořádku. To je v pořádku. To je v pořádku. Upravená logika Flash tech, aby nepoužívala sharedbytearrays pro dešifrování AES, protože společnost Adobe zablokovala použití od aplikace Flash 30. Upozorňujeme, že přehrávání bude fungovat až poté, co společnost Adobe nasadí novou verzi programu Flash kvůli chybě ve verzi 30. Další podrobnosti naleznete v [tématu Známé problémy](azure-media-player-known-issues.md)
+- Mění Blikající AES Upravená logika flash tech, aby nepoužívala sharedbytearrays pro dešifrování AES, protože společnost Adobe zablokovala použití na flash 30. Mějte prosím na paměti, že přehrávání bude fungovat, jenom když Adobe nasadí novou verzi Flash kvůli chybě v V30. Další podrobnosti najdete v části [známé problémy](azure-media-player-known-issues.md) .
 
 ## <a name="218-official-update"></a>2.1.8 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-218"></a>Opravy chyb 2.1.8 ###
 
-- [Oprava chyby] Spinner občas nezobrazuje post seek a pre-play
-- [Oprava chyby] Přehrávač se nespustí ztlumený, pokud je povolena možnost ztlumený
-- [Oprava chyby] Posuvník hlasitosti se zobrazí, když jsou ovládací prvky nastaveny na hodnotu false
-- [Oprava chyby] Přehrávání se občas opakuje, když uživatel přeskočí na živý okraj
-- [Oprava chyby] [Firefox] Přehrávač občas vyvolá výjimku JavaScriptu při načtení
-- [Oprava chyby] [Přístupnost] Tlačítko Přehrát/ Pozastavit/Pozastavit/Hlasitost ztratí obrys fokusu při výběru pomocí ovládacích prvků klávesnice
-- [Oprava chyby] Opraven únik paměti na přehrávači je likvidován
-- [Oprava chyby] Volání src() po chybách hráče neobnoví zdroj
-- [Oprava chyby] Je to tak. AMP je ve stavu konstantnínačítání, když uživatel klikne na tlačítko Live po ukončení vysílání
-- [Oprava chyby] To je v pořádku. Přehrávač přestane reagovat a přehrávání se nezdaří, když se prohlížeč minimalizuje na pozadí.
+- [Oprava chyby] Číselníkem občas není zobrazený příkaz post a před přehráním.
+- [Oprava chyby] Když je povolená možnost muted, přehrávač se nespustí ztlumený.
+- [Oprava chyby] Posuvník hlasitosti se zobrazí, pokud jsou ovládací prvky nastaveny na hodnotu false.
+- [Oprava chyby] Přehrávání se občas opakuje, když uživatel přeskočí na živou hranu.
+- [Oprava chyby] Firefox Přehrávač občas vyvolá výjimku JavaScriptu při načtení.
+- [Oprava chyby] Přístup Tlačítko Přehrát/pozastavit/hlasitost při výběru pomocí ovládacích prvků klávesnice ztratí osnovu fokus
+- [Oprava chyby] Uvolnění úniku paměti v přehrávači je zrušeno.
+- [Oprava chyby] Volání metody src () po chybě přehrávače neobnoví původní tovární nastavení.
+- [Oprava chyby] Bydlí Když uživatel po ukončení vysílání klikne na živé tlačítko, AMP je ve stavu při načítání konstantní.
+- [Oprava chyby] Chrome Přehrávač přestane reagovat a přehrávání se při minimalizaci prohlížeče na pozadí nezdařilo.
 
-### <a name="changes-218"></a>Změny 2.1.8 ###
+### <a name="changes-218"></a>2.1.8 změny ###
 
-- To je v pořádku. Aktualizováno 0x0600001 errror zobrazit při přehrávání obsahu AES s Flash 30, protože není podporována v tomto okamžiku. Další podrobnosti naleznete v [tématu Známé problémy](azure-media-player-known-issues.md)
-- To je v pořádku. Přidány další opakování pro živé scénáře při požadavky manifestu 404 nebo vrátí prázdné manifesty.
+- Mění Aktualizovala se 0x0600001 chyby, která se zobrazí, když se obsah AES přehrává s použitím Flash 30, protože není v tuto chvíli podporovaný. Další podrobnosti najdete v části [známé problémy](azure-media-player-known-issues.md) .
+- Mění Přidání dalších opakování pro živé scénáře, když manifest vyžádá 404 nebo vrátí prázdné manifesty.
 
 ## <a name="217-official-update"></a>2.1.7 (oficiální aktualizace) ##
 
 ### <a name="features-217"></a>Funkce 2.1.7 ###
 
-- To je v pořádku. [AzureHtml5JS] Přidána možnost konfigurace pro vyprázdnění zastaralých dat ve vyrovnávací paměti zdroje média
+- Zapnut [AzureHtml5JS] Přidání možnosti konfigurace pro vyprázdnění zastaralých dat ve zdrojové vyrovnávací paměti médií
 
 ### <a name="bug-fixes-217"></a>Opravy chyb 2.1.7 ###
 
-- [Oprava chyby] [Přístupnost] [Čtečka obrazovky] Odstraněno prázdné záhlaví, které hráč zahrnul, když není nastaven titul
-- [Oprava chyby] To je v pořádku. AMP vyvolá výjimku při přehrávání v univerzální aplikaci pro Windows
-- [Oprava chyby] [OSX] setActiveTextTrack() nefunguje v Safari na OSx
-- [Oprava chyby] Je to tak. Kliknutím na live edge po likvidaci a re inicializaci hráče výnosy výjimku
-- [Oprava chyby] To je v pořádku. Aktuální čas zkrácený pro určitá aktiva
-- [Oprava chyby] Oprava [DRM] zahrnutá pro podporu přehrávání v prohlížečích, které podporují více CENC DRM
+- [Oprava chyby] Přístup [Čtečka obrazovky] Odstranila se prázdná hlavička, která je zahrnutá v případě, že název není nastavený.
+- [Oprava chyby] [UWA] AMP vyvolá výjimku při přehrávání v univerzální aplikaci pro Windows
+- [Oprava chyby] [OSX] setActiveTextTrack () nefunguje v Safari v OSx
+- [Oprava chyby] Bydlí Kliknutím na živý okraj po odstranění a opětovném spuštění programu Player vrátí výjimku.
+- [Oprava chyby] Pokožk Aktuální čas pro určité prostředky se zkrátí.
+- [Oprava chyby] [DRM] oprava podporovaná pro přehrávání v prohlížečích, které podporují víc CENC DRM
 
-### <a name="changes-217"></a>Změny 2.1.7 ###
+### <a name="changes-217"></a>2.1.7 změny ###
 
-- To je v pořádku. [Ukázky] [Přístupnost] Do všech ukázek byla přidána značka jazyka
+- Mění Vzory Přístup Přidání značky jazyka ke všem ukázkám
 
-## <a name="216-official-update"></a>2.1.6 (Oficiální aktualizace) ##
+## <a name="216-official-update"></a>2.1.6 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-216"></a>Opravy chyb 2.1.6 ###
 
-- [Oprava chyby] AMP zobrazující nesprávnou dobu trvání pro konkrétní majetek
-- [Oprava chyby] [Fairplay-HLS] Chyby fairplay, které se nešíří do uživatelského uživatelského bodu
-- [Oprava chyby] Vlastní heuristické vlastnosti jsou ignorovány v AMP 2.1.5.
+- [Oprava chyby] AMP se zobrazením nesprávné doby trvání konkrétního prostředku
+- [Oprava chyby] [FairPlay-HLS] Fairplay chyby nešířené do uživatelského rozhraní
+- [Oprava chyby] Vlastní heuristické vlastnosti se ignorují v AMP 2.1.5.
 
-### <a name="changes-216"></a>Změny 2.1.6 ###
+### <a name="changes-216"></a>2.1.6 změny ###
 
-- To je v pořádku. [FairPlayDRM] Byl odstraněn časový režim pro žádost cert i žádost o licenci pro FairPlay, aby byla zajištěna parita s implementací PlayReady a Widevine
-- To je v pořádku. Různé heuristické vylepšení pro boj s rozmazaným obsahem
+- Mění [FairPlayDRM] Odebral se časový limit pro žádost o certifikát a žádost o licenci pro FairPlay, aby se zajistila parita s implementacemi PlayReady a Widevine.
+- Mění Různá heuristická vylepšení pro boj s rozmazaným obsahem
 
 ### <a name="features-216"></a>Funkce 2.1.6 ###
 
-- To je v pořádku. Přidána podpora mpd-time-cmaf formátu
+- Zapnut Přidání podpory MPD-Time-CMAF Format
 
-## <a name="215-official-hotfix"></a>2.1.5 (Oficiální oprava hotfix) ##
+## <a name="215-official-hotfix"></a>2.1.5 (oficiální oprava hotfix) ##
 
 ### <a name="bug-fixes-215"></a>Opravy chyb 2.1.5 ###
 
-- [Oprava chyby] [Titulky] Styl VTT není správně vykreslen přehrávačem
-- [Oprava chyby] [Přístupnost] Tlačítko Live nemá štítek árie
+- [Oprava chyby] Titulky VTT stylu není správně vykreslený přehrávačem
+- [Oprava chyby] Přístup Živé tlačítko neobsahuje popisek Aria.
 
 ## <a name="214-official-update"></a>2.1.4 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-214"></a>Opravy chyb 2.1.4 ###
 
-- [Oprava chyby] [Přístupnost] [Focus] Uživatelé nemohou být pomocí karty, aby se zaměřili na vlastní tlačítka přidaná vpravo od tlačítka na celou obrazovku na ovládacím panelu
-- [Oprava chyby] [IE11] [Pruh hlasitosti] Tabulátorem na hlasitost automaticky otevíraná kopie je celá obrazovka videa flash v IE11, zatímco v režimu celé obrazovky
-- [Oprava chyby] [Kůže| Flush] Mezera zobrazená mezi ovládacím panelem a automaticky otevíraná okno panelu hlasitosti
-- [Oprava chyby] [AMP] [Titulky] Staré vložené stopy nejsou vymazány při změně zdroje v existujícím přehrávači
-- [Oprava chyby] [Přístupnost] To je v pořádku. Program Pro čtení z obrazovky nesprávně čte ovládání hlasitosti
-- [Oprava chyby] To je v pořádku. Play Event občas není oheň z Flash tech
-- [Oprava chyby] [AMP] [Focus] Přehrát/pozastavit vyžaduje dvě kliknutí, když má hráč zaostření a je v režimu celé obrazovky
-- [Oprava chyby] [AMP] To je v pořádku. Na indikátoru průběhu pro konkrétní majetek se zobrazuje nesprávná doba trvání
-- [Oprava chyby] To je v pořádku. To je v pořádku. Analyzátor VAST nezpracovává soubor VAST, který nemá událost průběhu
-- [Oprava chyby] To je v pořádku. [AMP 2.1.1] Opraven problém s podporou pluginů Hive SDN
-- [Oprava chyby] [Přístupnost] Předčítání čte "Tlačítko ztlumení půlnoci", když má uživatel zaostření tlačítka hlasitosti
+- [Oprava chyby] Přístup Vybrána Uživatelé se nemohou soustředit na vlastní tlačítka přidaná na pravé straně tlačítka celá obrazovka na ovládacím panelu.
+- [Oprava chyby] IE11 [Panel hlasitosti] Automaticky otevírané okno s kartami na více svazcích zajistí, že se celá obrazovka videa v IE11 v režimu celé obrazovky.
+- [Oprava chyby] [Skin | Flush] zobrazuje se mezera mezi řídicím panelem a automaticky otevíraných oken panelu svazků.
+- [Oprava chyby] WEBOVÉ Titulky Pokud se ve stávajícím přehrávači změní zdroj, staré vložené stopy se nevymažou.
+- [Oprava chyby] Přístup Předčítání Čtečka obrazovky čte nesprávně řízení hlasitosti
+- [Oprava chyby] [Flash] Událost přehrání se občas neaktivuje z flash tech
+- [Oprava chyby] WEBOVÉ Vybrána Pokud má hráč fokus a je v režimu celé obrazovky, vyžaduje možnost Přehrát/pozastavit dvě kliknutí.
+- [Oprava chyby] WEBOVÉ Pokožk Na indikátoru průběhu konkrétního prostředku se zobrazuje nesprávná doba trvání
+- [Oprava chyby] Okna [AD Butler] Nepřeberný analyzátor nezpracovává nepřeberný soubor, který nemá událost průběhu.
+- [Oprava chyby] Sdn [AMP 2.1.1] Opravený problém pro podporu modulu plug-in SDN pro podregistr SDN
+- [Oprava chyby] Přístup Když má uživatel fokus na tlačítko hlasitosti, Narrator přečte "tlačítko pro půlnoc ztlumení".
 
 ### <a name="changes-214"></a>Změny 2.1.4 ###
 
-- To je v pořádku. [Přístupnost] [Asistenční technologie] Tlačítka mají nyní aria-live vlastnost zlepšit zkušenosti s asistenční technologií
-- To je v pořádku. [Přístupnost] [Tlačítko hlasitosti| Předčítání]Vylepšena možnost usnadnění hlasitosti úpravou funkce tabulátoru a chování posuvníku. Tyto změny usnadňují uživatelům klávesnice úpravu hlasitosti přehrávače
-- To je v pořádku. Prodloužený časový rámec kontextové nabídky nečinnosti z 3 na 5 sekund
-- To je v pořádku. [Přístupnost] [Světelnost] Vylepšený kontrastní poměr světelnosti v rozbalovacích nabídkách v nastavení titulků
+- Mění Přístup [Asistenční technologie] Tlačítka teď mají vlastnost Aria-Live pro zlepšení prostředí pomocí technologie pro usnadnění
+- Mění Přístup [Tlačítko hlasitosti | Narrator] vylepšený přístup k tlačítku hlasitosti změnou funkcí procházení a chováním posuvníku. Tyto změny usnadňují uživatelům klávesnice měnit hlasitost přehrávače.
+- Mění Překročení časového limitu kontextové nabídky nečinnosti od 3 do 5 sekund
+- Mění Přístup Jasu Zvýšení poměru kontrastu jasu u rozevíracích nabídek v nastavení titulků
 
-## <a name="213-official-update"></a>2.1.3 (Oficiální aktualizace) ##
+## <a name="213-official-update"></a>2.1.3 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-213"></a>Opravy chyb 2.1.3 ###
 
-- [Oprava chyby] [Pluginy| Název Overlay] Název Overlay plugin vyvolá JS výjimky s AMP v2. X+
-- [Oprava chyby] Událost Source Set je odeslána do konzoly JavaScript i v případě, že je protokolování vypnuto
-- [Oprava chyby] To je v pořádku. Tipy času hráče jsou vykresleny mimo kontext přehrávače při najetí na jeden konec doby trvání bar
-- [Oprava chyby] [Přístupnost] [Čtečka obrazovky] Předčítání čte "Orientační bod oblasti" nebo "Orientační bod pro oblast přehrávače videa", když se prohlížeč zaměřuje na přehrávač
-- [Oprava chyby] [AMP] Nelze zakázat osnovu přehrávače prostřednictvím CSS
-- [Oprava chyby] [Přístupnost] Pokud je uživatel v režimu celé obrazovky, nelze zaostřit na celý přehrávač.
-- [Oprava chyby] To je v pořádku. Je to tak. Vzhled nereaguje na lokalizovaný text LIVE v japonštině
-- [Oprava chyby] To je v pořádku. Doba trvání a aktuální čas se při > proudu > 60 min -[Oprava chyb][iPhone| Live]player zobrazuje text pro aktuální čas/dobu trvání na ovládacím panelu
-- [Oprava chyby] [AMP] Volání heuristik přehrávače API dává výjimky JavaScript
-- [Oprava chyby] [Nativní Html5|iOS] Videotag vlastnost "playsinline" není šíření do přehrávače
-- [Oprava chyby] [iOS|iframe] Přehrávač nemůže vstoupit na celou obrazovku v iPhone, pokud je přehrávač načten do prvku iframe
-- [Oprava chyby] [AMP] To je v pořádku. AMP vždy pracuje s hybridním profilem bez ohledu na možnosti hráče
-- [Oprava chyby] [AMP| Win8.1]hází, když je hostován v aplikaci Win8.1 s webovým zobrazením
+- [Oprava chyby] [Moduly plug-in | Překrytí názvu] modul plug-in nadpisu vyvolá výjimky JS s AMP v2. X +
+- [Oprava chyby] Událost zdrojové sady se posílá do konzoly JavaScriptu i v případě, že je protokolování vypnuté.
+- [Oprava chyby] Pokožk Tipy pro čas přehrávače se vykreslují mimo kontext přehrávače při najetí myší na časový pruh trvání ukončení.
+- [Oprava chyby] Přístup [Čtečka obrazovky] Program Narrator čte "orientační region" nebo "orientační oblast přehrávače videa", když se v prohlížeči soustředí na přehrávač
+- [Oprava chyby] WEBOVÉ Nelze zakázat osnovu přehrávače prostřednictvím šablon stylů CSS.
+- [Oprava chyby] Přístup Pokud je uživatel v režimu zobrazení na celé obrazovce, nelze se soustředit na celý hráč.
+- [Oprava chyby] Pokožk Bydlí Vzhled neodpovídá lokalizovanému ŽIVÉmu textu v japonštině.
+- [Oprava chyby] Pokožk Doba trvání a aktuální čas se odříznout, když datový proud > 60 min-[Oprava chyby] [iPhone | Live] přehrávač zobrazuje text pro aktuální čas a dobu trvání v ovládacím panelu.
+- [Oprava chyby] WEBOVÉ Volání rozhraní API heuristiky přehrávači poskytuje výjimky jazyka JavaScript
+- [Oprava chyby] [Nativní Html5 | iOS] Videotag vlastnost "playsinline", která nešíří do přehrávače
+- [Oprava chyby] [iOS | IFRAME] Hráč nemůže vstoupit do celoobrazovkového režimu na iPhonu, pokud je přehrávač načtený v iframe.
+- [Oprava chyby] WEBOVÉ Heuristiky AMP vždy funguje s hybridním profilem bez ohledu na možnosti přehrávače
+- [Oprava chyby] [AMP | Win 8.1] vyvolá se při hostování aplikace Win 8.1 pomocí webviewu.
 
 ### <a name="changes-213"></a>Změny 2.1.3 ###
 
-- To je v pořádku. [AMP] Přidány informace o koncovém bodu CDN v události FragmentDownloadComplete
-- To je v pořádku. [AMP] Je to tak. Vylepšená a optimalizovaná latence živého streamování
+- Mění WEBOVÉ Přidání informací o koncovém bodu CDN v události FragmentDownloadComplete
+- Mění WEBOVÉ Bydlí Vylepšená a optimalizovaná latence živého streamování
 
-## <a name="212-official-hotfix"></a>2.1.2 (Oficiální oprava hotfix) ##
+## <a name="212-official-hotfix"></a>2.1.2 (oficiální oprava hotfix) ##
 
 ### <a name="bug-fixes-212"></a>Opravy chyb 2.1.2 ####
 
-- [Oprava chyby] [Přístupnost] [Windows Předčítání] Předčítání čte "Průběh půlnoci", pokud má uživatel kontext indikátoru průběhu a aktuální čas je 0:00
-- [Oprava chyby] Velikost loga [Skin] je pevně zakódována v kódu JavaScriptu
-- [Přístupnost] [Klávesové zkratky] Klávesové zkratky nejsou po klepnutí na přehrávač povoleny.
+- [Oprava chyby] Přístup [Narrator systému Windows] Program Narrator přečte "průběh půlnoci", když má uživatel kontext indikátoru průběhu a aktuální čas je 0:00
+- [Oprava chyby] [Skin] velikost loga je pevně zakódována v kódu jazyka JavaScript.
+- Přístup Klávesové zkratky Klávesová zkratka není povolena při kliknutí na přehrávač.
 
 ### <a name="changes-212"></a>Změny 2.1.2 ####
 
-- To je v pořádku. To je v pořádku. Protokolovat adresu URL manifestu, když se hráči nepodaří načíst manifest
+- Mění Protokolu Adresa URL manifestu protokolu, když se přehrávač nepovede načíst manifest
 
 ### <a name="features-212"></a>Funkce 2.1.2 ###
 
-- To je v pořádku. [Výkon] [Optimalizace] Vylepšené časy načítání a spouštění hráčů
+- Mění Předepsané Vybrané Vylepšené zatížení a časy spuštění přehrávače
 
-## <a name="211-official-update"></a>2.1.1 (Oficiální aktualizace) ##
+## <a name="211-official-update"></a>2.1.1 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-211"></a>Opravy chyb 2.1.1 ####
 
-- [Oprava chyby] [iOS] Nastavení automatického přehrávání na falešné výnosy nekonečné číselník v Safari pro iOS
-- [Oprava chyby] Hledám čas větší než trvání obsahu výnosy nekonečné číselník
-- [Oprava chyby] Klávesové zkratky vyžadují více karet klávesnice, aby se kontext přehrávače pracoval
-- [Oprava chyby] Video zamrzne na několik sekund po změna velikosti přehrávače v určitých datových zdrojů
-- [Oprava chyby] Nekonečné číselník (po hledání dokončí), když uživatel dělá více hledá rychle
-- [Oprava chyby] Ovládací panel není během nečinnosti skrytý.
-- [Oprava chyby] Otevření webové aplikace, která je hostitelem AMP, může způsobit, že webová stránka bude načtena dvakrát
-- [Oprava chyby] Nekonečné při přehrávání obsahu určitých aktiv přes Flash Tech
-- [Oprava chyby] Další nabídky Možností nejsou zobrazeny s pluginy třetích stran
-- [Oprava chyby] [Kůže| Tube][Live] Dvě živé ikony jsou zobrazeny, když je hráč na živéhraně programu
-- [Oprava chyby] To je v pořádku. Logo nelze zakázat.
-- [Oprava chyby] [Obsah DD+] Průběžné číselník se zobrazí pro datové zdroje obsahující zvukovou stopu Dolby Digital
-- [Oprava chyby] Nejnovější AMP zamrzne při přepínání zvukových jazykových stop během živého přenosu
-- [Bug Fix] opraveno zmizení pozadí pro číselník
-- [Oprava chyby] Nekonečné číselník v AES flash token statické ukázky opravy chyb
+- [Oprava chyby] iOS Nastavení automatického přehrávání na false vrátí nekonečný číselník v prohlížeči Safari pro iOS.
+- [Oprava chyby] Hledání v čase větším než doba trvání obsahu neposkytuje nekonečné číselník
+- [Oprava chyby] Klávesové zkratky pro získání kontextu přehrávače vyžadují více karet.
+- [Oprava chyby] Video se zablokuje po dobu několika sekund od změny velikosti přehrávače v určitých prostředcích.
+- [Oprava chyby] Nekonečné číselník (po dokončení hledání), když uživatel provede více hledání rychleji
+- [Oprava chyby] Ovládací panel není během neaktivity skrytý.
+- [Oprava chyby] Otevřením WebApp, který hostuje AMP, může způsobit, že se webová stránka načte dvakrát.
+- [Oprava chyby] Neomezeně při přehrávání obsahu určitých prostředků přes flash tech
+- [Oprava chyby] Nabídka další možnosti se nezobrazuje u modulů plug-in třetích stran
+- [Oprava chyby] [Skin | Trubice] [Live] Pokud je hráč na živém okraji programu, zobrazí se dvě živé ikony.
+- [Oprava chyby] Pokožk Logo nejde zakázat.
+- [Oprava chyby] [DD + obsah] Nepřetržitý číselník ukazuje prostředky, které obsahují zvukovou stopu Dolby Digital Audio
+- [Oprava chyby] Při přepínání zvukového jazyka během živě se zablokuje nejnovější AMP.
+- [Chyba oprava] pevná nezobrazení pozadí pro číselník
+- [Oprava chyby] Neomezený číselník v opravách chyb statických ukázek pro AES Flash tokeny
 
 ### <a name="changes-211"></a>Změny 2.1.1 ####
 
-- To je v pořádku. Přidán kód chyby pro požadavek Widevine Https: od Chrome v58 musí `https://` být obsah widevine načten / přehrán přes protokol, jinak přehrávání selže.
-- To je v pořádku. Přidán aria štítek pro vkládání číselník, takže asistenční technologie může vyprávějí "video loading" při načítání obsahu  
+- Mění Byl přidán chybový kód pro požadavek Widevine https: od v58 pro Chrome musí být obsah Widevine načten nebo přehrán prostřednictvím `https://` protokolu, jinak se přehrávání nezdaří.
+- Mění Přidána jmenovka ARIA pro číselník načítání, takže technologie usnadnění může při načítání obsahu v mluveném komentáři popsat "načítání videa"  
 
-## <a name="210-official-release"></a>2.1.0 (Oficiální vydání) ##
+## <a name="210-official-release"></a>2.1.0 (oficiální verze) ##
 
 ### <a name="features-210"></a>Funkce 2.1.0 ###
 
-- To je v pořádku. [AzureHtml5JS] VOD Ad Podpora pro pre-mid-post-rolích
-- To je v pořádku. To je v pořádku. [AzureHtml5JS] Podpora živých reklam pro pre-mid-post-rolls
-- To je v pořádku. Přidána nová možnost skinu - AMP-flush
-- To je v pořádku. Přidány vylepšené aria štítky pro lepší integraci s čtečkami obrazovky / asistenční technologie
-- To je v pořádku. To je v pořádku. Vzhled nyní zobrazuje všechny ikony a tlačítka jasně v režimu vysokého kontrastu
+- Zapnut [AzureHtml5JS] Podpora VOD AD pro předběžnou část příspěvku
+- Zapnut Testování [AzureHtml5JS] Živá podpora ad pro předběžnou část příspěvku
+- Zapnut Přidání nové možnosti vzhledu – AMP-flush
+- Zapnut Přidání vylepšených popisků ARIA pro lepší integraci s čtečkami obrazovky/asistenční technologie
+- Zapnut Pokožk Vzhled teď zobrazuje všechny ikony a tlačítka v režimu vysokého kontrastu.
 
 ### <a name="bug-fixes-210"></a>Opravy chyb 2.1.0 ###
 
-- [Oprava chyby] Počet oprav usnadnění přístupu a ui
-- [Oprava chyby] AMP se v IE9 nenačítá správně
+- [Oprava chyby] Počet problémů s přístupností a uživatelským rozhraním
+- [Oprava chyby] V IE9 se nesprávně načítá AMP.
 
-### <a name="changes-210"></a>Změny 2.1.0 ###
+### <a name="changes-210"></a>2.1.0 změny ###
 
-- To je v pořádku. Restrukturalizované prvky DOM v přehrávači tak, aby vyhovovaly reklamám
-- To je v pořádku. Přechod z CSS na SCSS pro vývoj pokožky
-- To je v pořádku. [Ukázky] Přidána ukázka pro VOD reklamy
-- To je v pořádku. [Ukázky] Přidána ukázka pro rychlost přehrávání
-- To je v pořádku. [Ukázky] Přidán vzorek pro flush skin
+- Mění Přestrukturované elementy modelu DOM v přehrávači pro přizpůsobení reklamy
+- Mění Přepnuto z CSS na SCSS pro vývoj skinů
+- Mění Vzory Přidání ukázky pro reklamy VOD
+- Mění Vzory Přidání vzorku pro rychlost přehrávání
+- Mění Vzory Přidání ukázky pro vyprázdnit vzhled
 
 ## <a name="200-beta-release"></a>2.0.0 (beta verze) ##
 
-- [Změna]aktualizována na VJS5
-- [funkce] Přidáno nové fluidní API pro tekutinu s odezvou hráčů
-- To je v pořádku. Rychlost přehrávání
-- To je v pořádku. Přechod z CSS na SCSS pro skin
+- [Change] Aktualizováno na VJS5
+- zapnut Přidání nového rozhraní API pro tekutiny pro kapalinu odezvy přehrávače
+- Zapnut Rychlost přehrávání
+- Mění Přepnuto z CSS na SCSS pro vzhled
 
-## <a name="183-official-hotfix-update"></a>1.8.3 (oficiální aktualizace opravy hotfix) ##
+## <a name="183-official-hotfix-update"></a>1.8.3 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-183"></a>Opravy chyb 1.8.3 ###
 
-- [Oprava chyby] [AzureHtml5JS] Některé datové zdroje se záporným systémem DTS se v Chromu nepřehrávají
+- [Oprava chyby] [AzureHtml5JS] Některé prostředky s negativním DTS neumožňují přehrávání v Chrome.
 
-## <a name="182-official-hotfix-update"></a>1.8.2 (oficiální aktualizace opravy hotfix) ##
+## <a name="182-official-hotfix-update"></a>1.8.2 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-182"></a>Opravy chyb 1.8.2 ###
 
-- [Oprava chyby] [AzureHtml5JS] Vyšší přenosové rychlosti zvuku se přes AzureHtml5JS nepřehrají
+- [Oprava chyby] [AzureHtml5JS] Rychlejší zvukové přenosové rychlosti se nepřehrávají přes AzureHtml5JS.
 
 ## <a name="181-official-update"></a>1.8.1 (oficiální aktualizace) ##
 
 ### <a name="bug-fixes-181"></a>Opravy chyb 1.8.1 ###
 
-- [Oprava chyby] [iOS] Titulky/titulky, které se nezobrazují v nativním přehrávači
-- [Oprava chyby] [AMP] Adresy URL streamování podporované protokolem CDN připojené k ověřovacím tokenům, které se nepřehrávají
-- [Oprava chyby] To je v pořádku. Kód chyby FairPlay chybí Tech ID (Bity [31-28] errorcode) viz Chybové kódy pro více informací
-- [Oprava chyby] To je v pořádku. To je v pořádku. PlayReady obsah v Safari přináší nekonečné číselník
+- [Oprava chyby] iOS Titulky a titulky se nezobrazují v nativním přehrávači
+- [Oprava chyby] WEBOVÉ Adresy URL streamování zálohovaných přes CDN připojené k tokenům ověřování se nehrají
+- [Oprava chyby] Fairplay Kód chyby FairPlay chybí tech ID (bity [31-28] kódu chyby). Další informace naleznete v části kódy chyb.
+- [Oprava chyby] Prohlížeče Modul Obsah PlayReady v Safari – vracení nekonečné nekonečného číselníku
 
-### <a name="changes-181"></a>Změny 1.8.1 ###
+### <a name="changes-181"></a>1.8.1 změny ###
 
-- To je v pořádku. [Html5] Změna nativní html5 tech podrobné protokoly obsahovat události z VideoTag
+- Mění Html5 Změna nativních protokolů Html5 tech verbose, aby obsahovaly události z VideoTag
 
-## <a name="180-official-update"></a>1.8.0 (Oficiální aktualizace) ##
+## <a name="180-official-update"></a>1.8.0 (oficiální aktualizace) ##
 
 ### <a name="features-180"></a>Funkce 1.8.0 ###
 
-- [Funkce] [DRM] Přidána podpora FairPlay (další informace najdete v [části Chráněný obsah)](azure-media-player-protected-content.md)
+- Funkce DIGITÁLNÍCH Přidání podpory FairPlay (Další informace najdete v [chráněném obsahu](azure-media-player-protected-content.md) )
 
 ### <a name="bug-fixes-180"></a>Opravy chyb 1.8.0 ###
 
-- [Oprava chyby] [AMP] Hledání uživatele neaktivuje událost čekání při omezení sítě
-- [Oprava chyby] To je v pořádku. Výběr kvality v technologii flash tech vyvolá výjimku
-- [Oprava chyby] [AMP] Dynamicky výběr kvality se zobrazuje v kontextové nabídce
-- [Oprava chyby] To je v pořádku. Je obtížné vybrat poslední položku nabídky kontextových nabídek
+- [Oprava chyby] WEBOVÉ Hledání uživatelů neaktivuje událost čekání při omezení sítě.
+- [Oprava chyby] [Flash] Výběr kvality v programu Flash tech vyvolá výjimku
+- [Oprava chyby] WEBOVÉ Možnost dynamického výběru kvality zobrazit v místní nabídce
+- [Oprava chyby] Pokožk Je obtížné vybrat poslední položku nabídky kontextových nabídek
 
-### <a name="changes-180"></a>Změny 1.8.0 ###
+### <a name="changes-180"></a>1.8.0 změny ###
 
-- To je v pořádku. Aktualizováno přehrávač na aktuální požadavky Chrome EME
-- To je v pořádku. Výchozí techOrder změnil tak, aby vyhovovaly nové tech- html5FairPlayHLS (viz [Chráněný obsah](azure-media-player-protected-content.md) pro více informací)
-- To je v pořádku. [AzureHtml5JS] Povoleno Přehrávání MPEG-Dash v Safari
-- To je v pořádku. [Ukázky] Změněny vzorky Multi-DRM pro FairPlay
+- Mění Aktualizace přehrávače na aktuální požadavky EME pro Chrome
+- Mění Výchozí techOrder se změnily tak, aby vyhovovaly novému technickému html5FairPlayHLS (Další informace najdete v části [chráněný obsah](azure-media-player-protected-content.md) ).
+- Mění [AzureHtml5JS] Zapnuté přehrávání MPEG-spojovníku v Safari
+- Mění Vzory Změna vzorků s více technologiemi DRM pro přizpůsobení FairPlay
 
-## <a name="174-official-hotfix-update"></a>1.7.4 (Oficiální aktualizace opravy hotfix) ##
+## <a name="174-official-hotfix-update"></a>1.7.4 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-174"></a>Opravy chyb 1.7.4 ###
 
-- [Oprava chyby] To je v pořádku. Modrá osnova se zobrazí kolem popisovače hledání, když má uživatel kontext přehrávače
-- [Oprava chyby] [IE9] JavaScript výjimka vyvolána při přehrávači naložené v IE9
+- [Oprava chyby] Chrome V případě, že má uživatel kontext přehrávače, se zobrazí modrý obrys kolem popisovače hledání.
+- [Oprava chyby] IE9 Při načítání přehrávače v IE9 došlo k výjimce JavaScriptu.
 
-## <a name="173-official-hotfix-update"></a>1.7.3 (Oficiální aktualizace opravy hotfix) ##
+## <a name="173-official-hotfix-update"></a>1.7.3 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-173"></a>Opravy chyb 1.7.3 ###
 
-- [Oprava chyby] [AzureHtml5JS] Vypršení časového limitu hráčů v omezených sítích
+- [Oprava chyby] [AzureHtml5JS] Časování přehrávače v omezených sítích
 
-### <a name="changes-173"></a>Změny 1.7.3 ###
+### <a name="changes-173"></a>1.7.3 změny ###
 
-- To je v pořádku. Povolení webového šifrování na okraji pro dešifrování obsahu AES
-- To je v pořádku. Optimalizace heuristiky AMP pro účet pro bloky dat uložené v mezipaměti
-- To je v pořádku. [AzureHtml5JS] Optimalizace heuristiky snížením latence odhadu šířky pásma
+- Mění Povoluje se webšifra na Edge pro dešifrování obsahu AES.
+- Mění Optimalizace heuristiky AMP na účet pro bloky uložené v mezipaměti
+- Mění [AzureHtml5JS] Optimalizace heuristiky snížením latence při odhadu šířky pásma
 
-## <a name="172-official-hotfix-update"></a>1.7.2 (oficiální aktualizace opravy hotfix) ##
+## <a name="172-official-hotfix-update"></a>1.7.2 (oficiální aktualizace hotfix) ##
 
 ### <a name="features-172"></a>Funkce 1.7.2 ###
 <!---API needs onboarding. Removed link to API until remedied.--->
-- To je v pořádku. [AzureHtml5JS| Firefox] Povolit přehrávání Widevine s EME pro Firefox 47+
-- To je v pořádku. Přidat událost pro hráče likvidace
+- Zapnut [AzureHtml5JS | Firefox] povolení přehrávání Widevine pomocí EME pro Firefox 47 +
+- Zapnut Přidat událost pro odstraňování hráčů
 <!-- ([disposing](index.html#static-amp.eventname.disposing)) -->
 
 ### <a name="bug-fixes-172"></a>Opravy chyb 1.7.2 ###
 
-- [Oprava chyby] Zakódované parametry dotazu ADRES URL CDN Akamai nejsou správně dekódovány
-- [Oprava chyby] Výjimka je vyvolána na manifestPlayableWindowLength()
-- [Oprava chyby] Prohlížeč nemůže vždy kliknout na přehrát na video poté, co video skončilo, aby se znovu sledovalo
-- [Oprava chyby] Responzivní velikost neodpovídá rychlým změnám velikosti okna
-- [Oprava chyby] [Hrana| IE] Responzivní dimenzování, které se neprojeví při načítání stránky pro width=x, height=auto
-- [Oprava chyby] [Android| Chrome] Chrome žádá o oprávnění k přehrávání obsahu DRM, pokud obsah není šifrovaný
-- [Oprava chyby] [Přístupnost] [Okraj] Ovládací prvky klávesnice nevybírají správně položky kontextové nabídky
-- [Oprava chyby] [Přístupnost] Chybějící zobrazené ohraničení v režimu vysokého kontrastu
-- [Oprava chyby] To je v pořádku. Naslouchací proces události myši není odebrán poté, co přehrávač disponuje výjimkou příčiny
-- [Oprava chyby] To je v pořádku. Analýza adresy URL manifestu s kódované mezery
-- [Oprava chyby] [iOS] Chyba typu při vyhodnocování technologie tech.featuresVolumeControl
+- [Oprava chyby] Kódované parametry dotazu adresy URL pro CDN Akamai nejsou správně dekódované.
+- [Oprava chyby] Vyvolaná výjimka v manifestPlayableWindowLength ()
+- [Oprava chyby] Po skončení přehrávání videa nemůže prohlížeč na videu vždycky kliknout na Přehrát.
+- [Oprava chyby] Reakce na velikost, která není v souladu s rychlými změnami velikosti okna
+- [Oprava chyby] [Edge | IE] reagující na změnu velikosti, která nezohledňuje zatížení stránky pro šířku = x, výšku = auto
+- [Oprava chyby] [Android | Chrome] Chrome, který žádá o oprávnění k přehrání obsahu DRM, pokud není obsah zašifrovaný
+- [Oprava chyby] Přístup Vstupního Ovládací prvky klávesnice nepoužívají správně výběr položek místní nabídky
+- [Oprava chyby] Přístup Chybějící zobrazené ohraničení v režimu vysokého kontrastu
+- [Oprava chyby] [Flash] Po uvolnění přehrávače dojde k výjimce, protože se neodebere naslouchací proces události myši.
+- [Oprava chyby] [Flash] Problém s analýzou adresy URL manifestu se zakódovanými prostory
+- [Oprava chyby] iOS Chyba typu při vyhodnocování tech. featuresVolumeControl
 
-### <a name="changes-172"></a>Změny 1.7.2 ###
+### <a name="changes-172"></a>1.7.2 změny ###
 
-- To je v pořádku. [DRM] Přesunuté kontroly DRM po nastavení zdroje pouze zkontrolovat, kdy je obsah šifrován
-- To je v pořádku. To je v pořádku. Z požadavku na doručení klíče bylo odebráno nedefinované tělo typu/prostého textu.
-- To je v pořádku. [Přístupnost] Předčítání systému Windows nyní čte "Media Player", když je kontext na přehrávači namísto vlastností
+- Mění DIGITÁLNÍCH Přesunuté kontroly DRM po nastavení zdroje jenom ke kontrole, když je obsah zašifrovaný
+- Mění AES Z požadavku na doručení klíče se odebral nedefinovaný text typu nebo prostého textu.
+- Mění Přístup Systém Windows Narrator nyní čte "Media Player", pokud je kontext v přehrávači místo vlastností
 
-## <a name="171-official-hotfix-update"></a>1.7.1 (Oficiální aktualizace opravy hotfix) ##
+## <a name="171-official-hotfix-update"></a>1.7.1 (oficiální aktualizace hotfix) ##
 
 ### <a name="features-171"></a>Funkce 1.7.1 ###
 
-- To je v pořádku. Přidána možnost pro hybridní heuriistický profil (tento profil je nastaven ve výchozím nastavení)
+- Zapnut Přidaná možnost pro hybridní heuristický profil (ve výchozím nastavení je nastavený tento profil)
 
 ### <a name="bug-fixes-171"></a>Opravy chyb 1.7.1 ###
 
-- [Oprava chyby] Responzivní návrh nefunguje podle standardu HTML5 (šířka = 100%, výška = auto)
-- [Oprava chyby] Procentuální hodnoty šířky a výšky, které se nechovají očekávaným způsobem ve v1.7.0
+- [Oprava chyby] Návrh s odezvou nefunguje jako na standardu HTML5 (šířka = 100%, Výška = auto).
+- [Oprava chyby] Procentuální hodnoty pro šířku a výšku se nechovají podle očekávání v v 1.7.0
 
-## <a name="170-official-update"></a>1.7.0 (Oficiální aktualizace) ##
+## <a name="170-official-update"></a>1.7.0 (oficiální aktualizace) ##
 
 ### <a name="features-170"></a>Funkce 1.7.0 ###
 <!---API needs onboarding. Removed link until remedied.--->
-- To je v pořádku. [AzureHtml5JS] To je v pořádku. Přidáno currentMediaTime() pro získání času média kodéru aktuálního času v sekundách
-- To je v pořádku. To je v pořádku. Implementována rozhraní API pro stahování telemetrií s videoBufferData() a audioBufferData()<!-- (see [BufferData](index.html#amp.bufferdata) for more details) -->
-- To je v pořádku. To je v pořádku. Přidána událost downloadbitratechanged
-- To je v pořádku. Doba načítání se zlepšila ve srovnání se staršími verzemi přehrávače
-- To je v pořádku. Chyby jsou zaznamenány do konzoly JavaScript
+- Zapnut [AzureHtml5JS] [Flash] Přidání currentMediaTime () pro získání kodéru čas kodéru aktuální doby v sekundách
+- Zapnut [Flash] Implementovaná rozhraní API telemetrie pro stažení s videoBufferData () a audioBufferData ()<!-- (see [BufferData](index.html#amp.bufferdata) for more details) -->
+- Zapnut [Flash] Přidání události ' downloadbitratechanged '
+- Zapnut Zvýšení času načítání v porovnání se staršími verzemi přehrávače
+- Zapnut Chyby se protokolují do konzoly JavaScriptu.
 
 ### <a name="bug-fixes-170"></a>Opravy chyb 1.7.0 ###
 
-- [Oprava chyby] Kódovaná adresa URL plakátu s parametry řetězce dotazu, které se v přehrávači nezobrazují
-- [Oprava chyby] Výjimka vyvolána, když žádné tech naloženo a zesilovač rozhraní API. Player.poster() se nazývá
-- [Oprava chyby] Výjimka vyvolána, když se funkce pokusí o přístup k přehrávači po vyřazení
-- [Oprava chyby] [Přístupnost] Chybějící osnova na zaměření na vedoucí hledání indikátoru průběhu
-- [Oprava chyby] [Přístupnost] Kontextové nabídky mají stín v režimu vysokého kontrastu
-- [Oprava chyby] [iOS] nativní přehrávač WebVTT titulky přehrávání nefunguje
-- [Oprava chyby] [AzureHtml5JS] Při přehrávání datového proudu HTTP na webu HTTPS by měla být zobrazena chyba 0x0100002, která místo toho poskytuje nekonečnou číselník v důsledku smíšeného obsahu.
-- [Oprava chyby] [AzureHtml5JS] Chybějící koncový segment způsobující chybu kontroly stavu opakování zobrazující vnímaný nekonečný stav ukládání do vyrovnávací paměti
-- [Oprava chyby] [AzureHtml5JS] Při použití kódů useManifestForLabel=false a kódů jazyka se třemi písmeny jsou použity nesprávné názvy zvukových stop v nabídce
-- [Oprava chyby] [AzureHtml5JS| Chrome] Vnímaný nekonečný stav vyrovnávací paměti na konci obsahu způsobený nepřesností plovoucí desetinné čárky v době trvání s JavaScriptem v Chromu
-- [Oprava chyby] To je v pořádku. Při vytvoření přehrávače Flash Player se na okamžik zobrazí nezávažná občasná chyba
-- [Oprava chyby] To je v pořádku. Přehrávání selhává, když video a audio proudy používají různé časové osy kvůli selhání zaokrouhlení s "Fragment url (...) se nepodařilo vygenerovat FLVTagy"
-- [Oprava chyby] To je v pořádku. Problémy s analýzou adres URL manifestu s kódovanými mezerami
-- [Oprava chyby] To je v pořádku. Chybí kontrola, zda flash player verze >= 11.4, která způsobuje chybu v přehrávání namísto pádu zpět na další technologii v techOrder
-- [Oprava chyby] To je v pořádku. To je v pořádku. Problémy s přijímáním tokenů AES s podtržítky v něm
-- [Oprava chyby] [SilverlightSS| OSX] "//" předfixace manifestu namísto protokolu (HTTP nebo HTTPS) je rozpoznán jako místní soubor, který poskytuje nekonečnou číselník
+- [Oprava chyby] Kódovaná adresa URL titulku s parametry řetězce dotazu, které se nezobrazují v přehrávači
+- [Oprava chyby] Výjimka, která se vyvolala v případě, že není načtena technologie API amp Hráč. plakát () se nazývá.
+- [Oprava chyby] Výjimka vyvolaná, když se funkce pokusí získat přístup ke Playeru po vyřazení
+- [Oprava chyby] Přístup Chybějící osnova při zaměření na indikátor průběhu – hlavní pozice
+- [Oprava chyby] Přístup Místní nabídky mají stín v režimu vysokého kontrastu.
+- [Oprava chyby] [iOS] nativní přehrávání titulků přehrávače WebVTT nefunguje
+- [Oprava chyby] [AzureHtml5JS] Při přehrávání streamu HTTP na serveru HTTPS by se měla zobrazit chyba 0x0100002, která místo toho jako výsledek smíšeného obsahu vydává nekonečnou číselník.
+- [Oprava chyby] [AzureHtml5JS] Chybějící Koncový segment, který způsobuje chybu kontroly stavu smyček při zobrazení navnímaného nekonečného stavu ukládání do vyrovnávací paměti
+- [Oprava chyby] [AzureHtml5JS] Nesprávný název zvukové stopy v nabídce, pokud se používají kódy useManifestForLabel = false a tři písmena
+- [Oprava chyby] [AzureHtml5JS | Chrome] vnímaný nekonečný stav vyrovnávací paměti na konci obsahu způsobeného nepřesností s plovoucí desetinnou čárkou v době trvání pomocí JavaScriptu v Chrome
+- [Oprava chyby] [Flash] Při vytvoření přehrávače Flash se nezávažná chyba nezávažně zobrazuje.
+- [Oprava chyby] [Flash] Přehrávání selhává, když video a zvukové streamy používají různá časová měřítka, protože došlo k selhání nepřesnosti při zaokrouhlování s "adresou URL fragmentu (...). Nepovedlo se vygenerovat FLVTags.
+- [Oprava chyby] [Flash] Problémy s analýzou adres URL manifestu pomocí zakódovaných prostorů
+- [Oprava chyby] [Flash] Chybí zaškrtnutí k určení, jestli verze Flash Playeru >= 11,4, která způsobuje chybu v přehrávání, a ne návrat k dalšímu Techu v techOrder.
+- [Oprava chyby] [Flash] AES Problémy, které přijímají tokeny AES s podtržítky
+- [Oprava chyby] [Silverlight | OSX] "//" předpona manifestu namísto protokolu (HTTP nebo HTTPS) je rozpoznána jako neomezený číselník pro získání místního souboru
 
-### <a name="changes-170"></a>Změny 1.7.0 ###
+### <a name="changes-170"></a>1.7.0 změny ###
 
-- To je v pořádku. To je v pořádku. Sloučené skripty SWF ("MSAdaptiveStreamingPlugin-osmf2.0.swf" a "StrobeMediaPlayback.2.0.swf") do jediného souboru SWF nazvaného "StrobeMediaPlayback.2.0.swf"
-- To je v pořádku. To je v pořádku. Byl aktualizován šíření kódu chyby, aby se získaly přesnější kódy chyb (např. 404s nyní za následek 0x30200194 namísto obecné chyby 0x30200000)
+- Mění [Flash] Sloučené skripty SWF ("MSAdaptiveStreamingPlugin-osmf 2.0. swf" a "StrobeMediaPlayback. 2.0. swf") do jediného souboru SWF s názvem "StrobeMediaPlayback. 2.0. swf"
+- Mění [Flash] Bylo aktualizováno šíření kódu chyby, abyste získali přesnější kódy chyb (např. 404s nyní má za následek 0x30200194 namísto obecné chyby 0x30200000).
 
-## <a name="163-official-hotfix-update"></a>1.6.3 (oficiální aktualizace opravy hotfix) ##
+## <a name="163-official-hotfix-update"></a>1.6.3 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-163"></a>Opravy chyb 1.6.3 ###
 
-- [Oprava chyby] Výjimka za běhu javascriptu při spuštění obslužné rutiny události klávesových zkratek po likvidaci přehrávače
-- [Oprava chyby] [Android] [AzureHtml5JS] Žádné přehrávání na mobilním zařízení pomocí mobilní sítě
-- [Oprava chyby] Aktualizováno Forge spustit jako webový pracovník uvolnit uživatelské hod
+- [Oprava chyby] Výjimka běhového prostředí JavaScript při spuštění obslužné rutiny události klávesových zkratek po likvidaci přehrávače
+- [Oprava chyby] Svém [AzureHtml5JS] Bez přehrávání na mobilním zařízení s použitím mobilní sítě
+- [Oprava chyby] Aktualizace zfalšovat pro spuštění jako webový pracovní proces pro uvolnění uživatelského rozhraní
 
-## <a name="162-official-hotfix-update"></a>1.6.2 (oficiální aktualizace opravy hotfix) ##
+## <a name="162-official-hotfix-update"></a>1.6.2 (oficiální aktualizace hotfix) ##
 
 ### <a name="features-162"></a>Funkce 1.6.2 ###
 
-- To je v pořádku. Přidány další jazyky pro lokalizaci (další podrobnosti naleznete v dokumentaci)
+- Zapnut Přidání dalších jazyků k lokalizaci (Další informace najdete v dokumentaci)
 
 ### <a name="bug-fixes-162"></a>Opravy chyb 1.6.2 ###
 
-- [Oprava chyby] [IE9-10] Kliknutím na oblasti kolem přehrávače minimalizované okno prohlížeče kvůli Chybě IE9/IE10, která minimalizuje na window.blur()
-- [Oprava chyby] To je v pořádku. Nepřijetí tokenů AES s podtržítkem
+- [Oprava chyby] [IE9-10] Kliknutí na oblasti v minimalizovaném okně prohlížeče z důvodu chyby IE9/IE10, která se minimalizuje na Window. rozostření ()
+- [Oprava chyby] [Flash] Nepřijímat tokeny AES s podtržítky
 
-## <a name="161-official-hotfix-update"></a>1.6.1 (oficiální aktualizace opravy hotfix) ##
+## <a name="161-official-hotfix-update"></a>1.6.1 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-161"></a>Opravy chyb 1.6.1 ###
 
-- [Oprava chyby] [Flashss| Hrana,IE][SilverlightSS| IE] Nelze získat zaměření na jiné prvky uživatelského rozhraní pro vstupy nebo jiné v IE / Edge
-- [Oprava chyby] Selhání přehrávání aes při falšení nedefinované
-- [Oprava chyby] [Android] [AzureHtml5JS| Chrome] Kontinuální číselník nepřehrává obsah, když je ve smyčce kontroly stavu
-- [Oprava chyby] [IE9] console.log() není podporován iE 9 způsobuje výjimku
+- [Oprava chyby] [Bliknutí | Edge, IE] [Silverlight | IE] nejde získat fokus na jiné prvky uživatelského rozhraní pro vstupy nebo jiné v IE/Edge.
+- [Oprava chyby] Selhání přehrávání AES při nedefinovaném zfalšovat
+- [Oprava chyby] Svém [AzureHtml5JS | Chrome] nepřetržitý číselník nepřehrávání obsahu, když je ve smyčce kontroly stavu
+- [Oprava chyby] [IE9] konzola. log () není podporována službou IE 9, která způsobila výjimku.
 
-## <a name="160-official-update"></a>1.6.0 (Oficiální aktualizace) ##
+## <a name="160-official-update"></a>1.6.0 (oficiální aktualizace) ##
 
 ### <a name="features-160"></a>Funkce 1.6.0 ###
 
-- [Funkce] 33% snížení velikosti azuremediaplayer.min.js
-- To je v pořádku. [AzureHtml5JS| Edge][Netestovaný] Podpora zvukových proudů DD+ v Edge (bez přepínání kodeků po počáteční volbě). Aplikace musí vybrat správný zvukový proud v tomto okamžiku.
-- To je v pořádku. Ovládací prvky kláves (další podrobnosti naleznete v dokumentech)
-- To je v pořádku. Doba průběhu tip vznášet se pro čas přesné hledání
-- To je v pořádku. Povolit asynchronní detekci pluginů, pokud setupDone metoda existuje v pluginu
+- [Funkce] 33% omezení velikosti azuremediaplayer. min. js
+- Zapnut [AzureHtml5JS | Edge] [netestovaný] Podpora pro DD + audio streamy na okraji (po počátečním výběru se nemění žádný kodek). Aplikace musí v tuto chvíli vybrat správný zvukový stream.
+- Zapnut Ovládací prvky pro klávesové zkratky (další podrobnosti najdete v dokumentaci)
+- Zapnut Tip času průběhu najetí myší na přesný čas hledání
+- Zapnut Umožňuje asynchronní detekci modulů plug-in, pokud v modulu plug-in existuje metoda setupDone.
 
 ### <a name="bug-fixes-160"></a>Opravy chyb 1.6.0 ###
 
-- [Oprava chyby] Protokol paměti není vyprázdnění na getMemoryLog (true)
-- [Oprava chyby] Výběrová pole oteknutí se resetuje při pohybu myší, což způsobuje problém při výběru nižších přenosových rychlostí pomocí ovládacího prvku myši
-- [Oprava chyby] Mac Office v aplikaci se při provádění kontroly DRM zhroutí
-- [Oprava chyby] Třídy CSS jsou snadno náhodně přepsány
-- [Oprava chyby] To je v pořádku. Aktualizovat identifikaci z prohlížeče řetězců user-agent je Edge
-- [Oprava chyby] [AzureHtml5JS] Tlačítko Titulky se nezobrazuje v liště nástrojů v Edge (Win10) nebo Chrome (Mac)
-- [Oprava chyby] [Android] [AzureHtml5JS| Chrome] Výjimka InvalidStateError na endOfStream() volání krátkých videí
-- [Oprava chyby] [Firefox] Odstranění VAROVÁNÍ DRM způsobené Firefoxem při kontrole možností prohlížeče
-- [Oprava chyby] [Html5] Titulky/titulky nejsou zobrazeny s progresivním obsahem mp4
-- [Oprava chyby] To je v pořádku. Zprávy s odpovídajícími časovými razítky byly zaznamenány v opačném pořadí
-- [Oprava chyby] [Přístupnost] [Chrome| Firefox] Tab a vyberte ovládací prvky automaticky vybrat první položku nabídky
-- [Oprava chyby] [Přístupnost] Tabulátorem pro ovládání tlačítka hlasitosti
+- [Oprava chyby] Nevyprazdňování protokolu paměti v getMemoryLog (true)
+- [Oprava chyby] Přemístění výběru přenosové rychlosti při přesunu myši způsobuje problém s výběrem nižších přenosových rychlostí prostřednictvím ovládacího prvku myš
+- [Oprava chyby] Při provádění kontroly DRM dojde v systému Mac k chybě aplikace.
+- [Oprava chyby] Třídy CSS jsou snadno nechtěně přepsány
+- [Oprava chyby] Chrome Aktualizace identifikace z prohlížeče řetězce uživatelského agenta je hraniční
+- [Oprava chyby] [AzureHtml5JS] Tlačítko s titulky se nezobrazují na panelu nástrojů na okraji (Win10) nebo Chrome (Mac)
+- [Oprava chyby] Svém [AzureHtml5JS | Chrome] výjimka InvalidStateError při volání endOfStream () na krátká videa
+- [Oprava chyby] Firefox Odebrání upozornění DRM, které vyvolala Firefox při kontrole možností prohlížeče
+- [Oprava chyby] Html5 Titulky a popisky nejsou zobrazené s progresivním obsahem MP4.
+- [Oprava chyby] [Flash] Zprávy s porovnávacími časovými razítky byly přihlášeny v opačném pořadí.
+- [Oprava chyby] Přístup [Chrome | Firefox] TAB a vybrat ovládací prvky automaticky vybrat první položku nabídky
+- [Oprava chyby] Přístup Karta pro řízení hlasitosti – tlačítko
 
-### <a name="changes-160"></a>Změny 1.6.0 ###
+### <a name="changes-160"></a>1.6.0 změny ###
 
-- To je v pořádku. Použití doby dešifrování AES při výběru úrovně kvality
-- To je v pořádku. Aktualizovat url rewriter používat HLS v4 před HLS v3 pro multi-audio proudy
-- To je v pořádku. Nastavit nativeControlsForTouch jako false jako výchozí (musí být false pracovat správně)
+- Mění Pro výběr na úrovni kvality použít čas dešifrování AES
+- Mění Aktualizace přepisu adresy URL pro použití HLS v4 před HLS v3 pro streamování s více zvuky
+- Mění Nastavit nativeControlsForTouch na hodnotu false jako výchozí (aby fungovala správně, musí být false)
 
-## <a name="150-official-update"></a>1.5.0 (Oficiální aktualizace) ##
+## <a name="150-official-update"></a>1.5.0 (oficiální aktualizace) ##
 
 ### <a name="features-150"></a>Funkce 1.5.0 ###
 
-- To je v pořádku. Vylepšení obecného webového zabezpečení (prevence vstřikování, XSS atd.)
-- To je v pořádku. SDN plugin integrace háčky pro sourceset události a options.sdn
-- To je v pořádku. Robustní manipulace s chybami 5XX a 4XX během přehrávání
+- Zapnut Vylepšení obecného webového zabezpečení (prevence injektáže, XSS atd.)
+- Zapnut Moduly pro integraci modulu plug-in SDN pro událost a možnosti sourceset. Sdn
+- Zapnut Zpracování robustních chyb 5XX a 4XX během přehrávání
 
 ### <a name="bug-fixes-150"></a>Opravy chyb 1.5.0 ###
 
-- [Oprava chyby] Aktualizace minifikace CSS pro použití kódů písem entity HTML pro tlačítka namísto unicode
-- [Oprava chyby] [AzureHtml5JS] Obsah více DRM vždy výběrem tokenu prvního prvku z protectionInfo, který způsobuje selhání druhého DRM
-- [Oprava chyby] [AzureHtml5JS] Hledání nikdy nedokončí při hledání v oblasti s chybějícísegmenty.
-- [Oprava chyby] [AzureHtml5JS| Edge] Povolit předponou EME v aktualizaci Edge pro přehrávání PlayReady
-- [Oprava chyby] [AzureHtml5JS| Firefox] Update EME zkontrolovat, aby Firefox v42 + (s MSE) na záložní silverlight pro chráněný obsah
-- [Oprava chyby] To je v pořádku. Aktualizovat error.message z čísla na podrobný řetězec
+- [Oprava chyby] Aktualizace šablon stylů CSS minifikace pro použití kódů písma entity HTML pro tlačítka místo Unicode
+- [Oprava chyby] [AzureHtml5JS] Obsah s více DRM vždy vybere token prvního prvku z protectionInfo, což způsobí selhání druhé DRM.
+- [Oprava chyby] [AzureHtml5JS] Hledání se nikdy nedokončuje při hledání v oblasti s chybějícími segmenty.
+- [Oprava chyby] [AzureHtml5JS | Edge] povolit EME v aktualizaci Edge pro přehrávání PlayReady
+- [Oprava chyby] [AzureHtml5JS | Firefox] aktualizace EME povolte, pokud chcete, aby aplikace Firefox V42 + (s programem MSE) byla chráněná proti Silverlightu pro chráněný obsah
+- [Oprava chyby] [Flash] Chyba aktualizace. zpráva z čísla na podrobný řetězec
 
-### <a name="changes-150"></a>Změny 1.5.0 ###
+### <a name="changes-150"></a>1.5.0 změny ###
 
-- To je v pořádku. Plakáty v současné době fungují pouze jako absolutní adresy URL.
+- Mění Plakáty aktuálně fungují jenom jako absolutní adresy URL.
 
-## <a name="140-official-update"></a>1.4.0 (Oficiální aktualizace) ##
+## <a name="140-official-update"></a>1.4.0 (oficiální aktualizace) ##
 
 ### <a name="features-140"></a>Funkce 1.4.0 ###
 
-- To je v pořádku. [AzureHtml5JS| Podpora chrome] Simple Widevine DRM
-- To je v pořádku. [AzureHtml5JS] Robustní manipulace s chybami 404/412 během přehrávání
+- Zapnut [AzureHtml5JS | Chrome] jednoduchá podpora Widevine DRM
+- Zapnut [AzureHtml5JS] Zpracování robustních chyb 404/412 během přehrávání
 
 ### <a name="bug-fixes-140"></a>Opravy chyb 1.4.0 ###
 
-- [Oprava chyby] To je v pořádku. Vylepšení pro ověření parametrů
+- [Oprava chyby] [Flash] Vylepšení ověřování parametrů
 
-## <a name="130-official-update"></a>1.3.0 (Oficiální aktualizace) ##
+## <a name="130-official-update"></a>1.3.0 (oficiální aktualizace) ##
 
 ### <a name="features-130"></a>Funkce 1.3.0 ###
 
-- To je v pořádku. [AzureHtml5JS] To je v pořádku. Přepínání zvuku stejného kodeku multi-audio obsahu
+- Zapnut [AzureHtml5JS] [Flash] Přepínání zvukového obsahu s více zvukovými kodeky
 
 ### <a name="bug-fixes-130"></a>Opravy chyb 1.3.0 ###
 
-- [Oprava chyby] [AzureHtml5JS| Chrome] Přerušovaný nekonečný číselník
-- [Oprava chyby] [AzureHtml5JS| IE][Windows Phone] Výjimka způsobující, že Windows Phone má problémy s přehráváním
-- [Oprava chyby] To je v pořádku. Automatické přehrávání nastavené na hodnotu false se nezdaří pro další instance
-- [Oprava chyby] Problémy s nastavením velikosti nabídky ui
+- [Oprava chyby] [AzureHtml5JS | Chrome] občasné nekonečné číselníky
+- [Oprava chyby] [AzureHtml5JS | IE] [Windows Phone] výjimka způsobující, že Windows Phone mají potíže s přehráváním
+- [Oprava chyby] [Flash] U dalších instancí se nezdařila hodnota AutoPlay nastavená na hodnotu false.
+- [Oprava chyby] Problémy s velikostí v nabídce uživatelského rozhraní
 
-## <a name="120-official-update"></a>1.2.0 (Oficiální aktualizace) ##
+## <a name="120-official-update"></a>1.2.0 (oficiální aktualizace) ##
 
 ### <a name="features-120"></a>Funkce 1.2.0 ###
 
-- To je v pořádku. [AzureHtml5JS| Firefox] Podpora při povolení MSE
-- To je v pořádku. Již nevyžadují aplikaci k poskytování cest pro záložní technické binární soubory (swf, xap). Cesta je relativní ke skriptu Azure Media Player.
+- Zapnut [AzureHtml5JS | Firefox] podpora, když je povolený MSE
+- Zapnut Už nepotřebujete, aby aplikace poskytovala cesty k záložním technickým binárním souborům (SWF, XAP). Cesta je relativní ke skriptu Azure Media Player.
 
 ### <a name="bug-fixes-120"></a>Opravy chyb 1.2.0 ###
 
-- [Oprava chyby] [AzureHtml5JS| Chrome] Přehrávač se při přehrávání pohybuje za živým okrajem, když je hráč na pozadí
-- [Oprava chyby] [AzureHtml5JS| Edge] Nefunguje celá obrazovka
-- [Oprava chyby] [AzureHtml5JS] Protokolování nebylo správně povoleno, když bylo nastaveno v možnostech
-- [Oprava chyby] To je v pořádku. Obě "vyrovnávací paměti" a vyrovnávací paměti ikona zobrazit během čekání události
-- [Oprava chyby] Povolit pokračování přehrávání, pokud se nezdaří původní požadavek na šířku pásma
-- [Oprava chyby] Přehrávač se nenačte při inicializování s nedefinovanými možnostmi
-- [Oprava chyby] Při pokusu o vyřazení přehrávače poté, co je již uvolněn, dojde k výjimce vdata
-- [Oprava chyby] Ikony pruhů kvality jsou nesprávně namapovány
+- [Oprava chyby] [AzureHtml5JS | Chrome] přehrávač na pozadí se posune za živou hranou.
+- [Oprava chyby] [AzureHtml5JS | Edge] celá obrazovka nepracuje
+- [Oprava chyby] [AzureHtml5JS] Při nastavení v možnostech není protokolování správně zapnuté.
+- [Oprava chyby] Blikající Při čekání na událost se zobrazuje jak ukládání do vyrovnávací paměti, tak i ikona vyrovnávací paměti
+- [Oprava chyby] V případě, že požadavek na počáteční šířku pásma neproběhne, umožní přehrávání pokračovat.
+- [Oprava chyby] Nepovedlo se načíst přehrávač při inicializaci s nedefinovanými možnostmi.
+- [Oprava chyby] Při pokusu o uvolnění přehrávače poté, co je již odstraněn, dojde k výjimce vdata
+- [Oprava chyby] Nesprávně namapované ikony panelu kvality
 
-## <a name="111-official-hotfix-update"></a>1.1.1 (oficiální aktualizace opravy hotfix) ##
+## <a name="111-official-hotfix-update"></a>1.1.1 (oficiální aktualizace hotfix) ##
 
 ### <a name="bug-fixes-111"></a>Opravy chyb 1.1.1 ###
 
-- [Oprava chyby] Starší iE vydání na celou obrazovku
-- [Oprava chyby] Pluginy již nejsou přepsány
+- [Oprava chyby] Problém s aplikací Internet Explorer na celé obrazovce
+- [Oprava chyby] Moduly plug-in již nejsou přepsány
 
-## <a name="110-official-update"></a>1.1.0 (Oficiální aktualizace) ##
+## <a name="110-official-update"></a>1.1.0 (oficiální aktualizace) ##
 
 ### <a name="features-110"></a>Funkce 1.1.0 ###
 
-- To je v pořádku. Aktualizovat řetězce lokalizace ui
+- Zapnut Aktualizovat řetězce lokalizace uživatelského rozhraní
 
 ### <a name="bug-fixes-110"></a>Opravy chyb 1.1.0 ###
 
-- [Oprava chyby] Tlačítko Big Play nemá dostatečný kontrast
-- [Oprava chyby] Indikátor zaostření tabulátoru Vizuáž
-- [Oprava chyby] Vybrat nabídku Bitrate nyní pomocí správných informací o rozlišení
-- [Oprava chyby] Nabídka dalších možností nyní dynamicky dimenzovaná
-- [Oprava chyby] Různé problémy s ui
+- [Oprava chyby] Tlačítko pro velký počet přehrání nemá dostatečný kontrast.
+- [Oprava chyby] Indikátor fokusu na kartě vizuálu
+- [Oprava chyby] Nabídka pro výběr přenosové rychlosti teď používá správné informace o rozlišení
+- [Oprava chyby] Další nabídka možností je teď dynamicky velikost
+- [Oprava chyby] Různé problémy uživatelského rozhraní
 
-## <a name="100-official-release"></a>1.0.0 (Oficiální vydání) ##
+## <a name="100-official-release"></a>1.0.0 (oficiální verze) ##
 
 ### <a name="features-100"></a>Funkce 1.0.0 ###
 
-- To je v pořádku. Základní testování přístupnosti pro ovládání tabulátorů, ovládání fokusu, čtečku obrazovky, vysoce kontrastní ui
-- To je v pořádku. Aktualizované ui
-- To je v pořádku. Protokolování dev
-- To je v pořádku. API pro dynamické nastavení titulků/titulků
-- To je v pořádku. Základní lokalizační funkce
-- To je v pořádku. Konsolidace kódu chyby napříč techniky
-- To je v pořádku. Nový kód chyby, když nejsou nainstalovány pluginy (jako Flash nebo Silverlight)
-- To je v pořádku. [AzureHtml5JS] Implementované základní diagnostické události
+- Zapnut Základní testování dostupnosti pro ovládací prvek karta, ovládací prvek pro výběr, čtečku obrazovky, uživatelské rozhraní s vysokým kontrastem
+- Zapnut Aktualizované uživatelské rozhraní
+- Zapnut Protokolování vývoje
+- Zapnut Rozhraní API pro dynamické nastavení stop titulků a titulků
+- Zapnut Základní funkce lokalizace
+- Zapnut Konsolidace kódu chyby napříč technickými pracovníky
+- Zapnut Nový kód chyby pro, když nejsou nainstalované moduly plug-in (jako flash nebo Silverlight)
+- Zapnut [AzureHtml5JS] Implementované základní diagnostické události
 
 ### <a name="bug-fixes-100"></a>Opravy chyb 1.0.0 ###
 <!---What is that actually supposed to say?--->
-- [Oprava chyby] [AzureHtml5JS] Živé přehrávání zmrazení na mpd aktualizace, když tam jsou malé nepřesnosti v časovém razítku
-- [Oprava chyby] [AzureHtml5JS] Zmírnění několika problémů s přehráváním živého vysílání
-- [Oprava chyby] [AzureHtml5JS] Vyprázdnění vyrovnávacích pamětí, když je zapnuta heuristika velikosti okna a přejděte na obrazovku s vyšším rozlišením
-- [Oprava chyby] [AzureHtml5JS] Chrome nyní správně ukazuje ukončenou událost. Souvisí s předchozím známým vydáním *Chrome nebude správně posílat&euro;â œendedâ&euro;událost při používání AzureHtml5JS. V základním prohlížeči došlo k problému.*
-- [Oprava chyby] [AzureHtml5JS] Zakázané Safari pro tuto technologii s cílem řešit *problém přehrávání s OSX Yosemite s AzureHtml5JS tech. Existují problémy s implementací MSE. Dočasné zmírnění:&euro;síla â œflashSSâ&euro;, â&euro;&euro;œsilverlightSSâ jako tech pořadí pro tyto uživatelské agenty*
-- [Oprava chyby] [FlashSS] loadstart aktivována po došlo k chybě
+- [Oprava chyby] [AzureHtml5JS] Při živém přehrávání se zamrznutí na MPD aktualizace, když jsou v časovém razítku malé nepřesnosti.
+- [Oprava chyby] [AzureHtml5JS] Zmírnění některých problémů s živým přehráváním
+- [Oprava chyby] [AzureHtml5JS] Vyprázdnit vyrovnávací paměť při zapnuté heuristické velikosti okna a přejít na obrazovku s vyšším rozlišením
+- [Oprava chyby] [AzureHtml5JS] Chrome teď správně zobrazuje ukončenou událost. Při použití AzureHtml5JS nebude při použití odkazu na předchozí známý problém s *chromem správně odeslána událost â&euro;œendedâ.&euro; V podkladovém prohlížeči se vyskytl problém.*
+- [Oprava chyby] [AzureHtml5JS] Pro tento techer byl zakázán Safari pro řešení *potíží s přehráváním pomocí OSX Yosemite s AzureHtml5JS tech. K dispozici jsou problémy s implementací programu MSE. Dočasné zmírnění rizika: vynutit&euro;â&euro;œflashSSâ,&euro;â&euro;œsilverlightSSâ jako tech Order pro tyto uživatelské agenty*
+- [Oprava chyby] [Flash] loadstart aktivována po chybě
 
-## <a name="020-beta"></a>0.2.0 (Beta) ##
+## <a name="020-beta"></a>0.2.0 (beta verze) ##
 
 ### <a name="features-020"></a>Funkce 0.2.0 ###
 
-- To je v pořádku. Dokončené testování pro PlayReady a AES na vyžádání a živě - viz matice kompatibility
-- To je v pořádku. Manipulace s nespojitostmi
-- To je v pořádku. Podpora časových razítek větších než 2^53
-- To je v pořádku. Parametr dotazu URL se uchovává v požadavku manifestu.
-- To je v pořádku. [Nevyzkoušený] Podpora `QuickStart` a `HighQuality` heuristiky profily
-- To je v pořádku. [Nevyzkoušený] Vystavení informací o streamu videa pro přenosové rychlosti, šířku a výšku na AzureHtml5JS a FlashS
-- To je v pořádku. [Nevyzkoušený] Vybrat bitový tok na AzureHtml5JS a FlashSS (viz dokumentace rozhraní API)
+- Zapnut Dokončené testování PlayReady a AES pro na vyžádání a živé – viz tabulka kompatibility
+- Zapnut Manipulace s nekontinuitou
+- Zapnut Podpora pro časová razítka větší než 2 ^ 53
+- Zapnut Parametr dotazu adresy URL uchovává požadavek manifestu.
+- Zapnut Netestovanými Podpora pro `QuickStart` profily `HighQuality` a heuristické služby
+- Zapnut Netestovanými Vystavení informací streamu videa pro přenosové rychlosti, šířku a výšku na AzureHtml5JS a na blesku
+- Zapnut Netestovanými Výběr přenosové rychlosti na AzureHtml5JS a přehrávači (viz dokumentace k rozhraní API)
 
 ### <a name="bug-fixes-020"></a>Opravy chyb 0.2.0 ###
 
-- [Bug Fix] velké tlačítko přehrávání nyní zobrazitelné na WP8.1
-- [Bug Fix] opraveno více problémů s přehráváním živého přehrávání
-- Tlačítko [Oprava chyby] unmute nyní funguje na ui
-- [Oprava chyb] aktualizované prostředí pro načítání uživatelského prostředí pro režim automatického přehrávání
+- [Chyba oprava] velké tlačítko Přehrát teď zobrazitelné v WP 8.1
+- [Oprava chyby] Opravili jsme několik problémů s přehráváním za provozu.
+- [Chyba oprava] zrušit ztlumení – tlačítko teď funguje na uživatelském rozhraní.
+- [Chyba oprava] aktualizované prostředí načítání uživatelského rozhraní pro režim automatického přehrávání
 - [Oprava chyby] Problém zavaděče AMD a definování konfliktů metod
-- [Oprava chyby] WP 8.1 Cordova App načítání problém
-- [Oprava chyby] Chráněný obsah dotazy platformu / tech podporované ProtectionType vybrat vhodnou technologii pro přehrávání.  Opravuje předchozí známý problém _'PlayReady obsah na Chrome (desktop) / Safari 8 (na OSX Yosemite) v současné době není záložní silverlight přehrávač_'
-- [Oprava chyb] nezachycená výjimka na winserveru 2012 R2 z důvodu media foundation není nainstalován a ve výchozím nastavení v tomto počítači.  Pokuste se použít rozhraní API značky videa HTML, které nejsou implementovány, a tím vyvolat chybu. Aktuální zmírnění je zachytit tuto chybu a vrátit false namísto vyvolání chyby.
-- [Bug Fix] vždy získat init segment po hledání nebo http selhání, aby se zabránilo závady během přehrávání
-- [Oprava chyb] vypnout sledování simulovaný průběh a aktualizace času, když došlo k chybě.
-- [Bug Fix] odstranit pravým tlačítkem myši menu
-- [Oprava chyby] Chybová zpráva [AzureHtml5JS] se nezobrazuje, když je pro obsah PlayReady nastaven neplatný token
-- [Oprava chyby] [AzureHtml5JS] bude celá obrazovka během živého přehrávání nebyl s ohledem na velikost okna heuristiky v úvahu
-- [Oprava chyby] To je v pořádku. Odstraněné zprávy strobe Media Player zobrazené zprávy tak, aby se zobrazovaly pouze zprávy programu Azure Media Player
-- [Oprava chyby] [SilverlightSS] nedostává 'hledal' událost, když se snažíme po dobu trvání nebo méně než 0
+- [Oprava chyby] Problém načítání aplikace WP 8,1 Cordova
+- [Oprava chyby] Chráněný obsah dotazování na platformu/technickou podporu typ ochrany replik k výběru vhodného Techu pro přehrávání.  Opravuje předchozí známý problém_obsahu PlayReady z aplikace Chrome (Desktop)/Safari 8 (na OSX Yosemite) v současné době neumožňuje použití aplikace Silverlight Player_.
+- [Chyba Fix] nezachycená výjimka v WinServer 2012 R2 z důvodu Media Foundation není ve výchozím nastavení nainstalovaná na tomto počítači.  Došlo k pokusu o použití rozhraní API značek HTML, která nejsou implementována, čímž dojde k chybě. Současné zmírnění je zachytit tuto chybu a vrátit hodnotu false namísto vyvolání chyby.
+- [Chyba oprava] vždy získá segment init po hledání nebo selhání protokolu HTTP, které brání histogramu během přehrávání.
+- [Chyba oprava] vypnout sledování simulovaného průběhu a timeupdates, když došlo k chybě.
+- [Chyba oprava] odebrat nabídku kliknutím pravým tlačítkem
+- [Oprava chyby] [AzureHtml5JS] chybová zpráva, která se nezobrazuje, když je sada tokenů pro obsah PlayReady neplatná
+- [Oprava chyby] [AzureHtml5JS] při živém přehrávání se neberou v úvahu heuristické velikosti oken.
+- [Oprava chyby] [Flash] Odstranění impulzu Media Player zobrazené zprávy, aby se zobrazily jenom Azure Media Player zprávy
+- [Oprava chyby] [Silverlight] při hledání po dobu trvání nebo menší než 0 nejde získat událost Seek
 
 ## <a name="010-beta-release"></a>0.1.0 (beta verze) ##
 
-Počáteční předběžná verze
+Počáteční verze předběžného vydání
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

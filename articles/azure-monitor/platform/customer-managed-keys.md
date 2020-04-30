@@ -1,96 +1,96 @@
 ---
-title: Konfigurace klíče spravované ho zákazníkem Azure Monitor
-description: Informace a kroky konfigurace klíče spravovaného zákazníkem (CMK) k šifrování dat v pracovních prostorech Analýzy protokolů pomocí klíče Azure Key Vault.
+title: Azure Monitor konfiguraci klíče spravovaného zákazníkem
+description: Informace a kroky konfigurace klíče spravovaného zákazníkem (CMK) k šifrování dat ve vašich Log Analyticsch pracovních prostorech pomocí Azure Key Vaultho klíče.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 04/12/2020
 ms.openlocfilehash: 25fdb0aefacbdd9c2630a69981a67821ac155786
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758808"
 ---
-# <a name="azure-monitor-customer-managed-key-configuration"></a>Konfigurace klíče spravované ho zákazníkem Azure Monitor 
+# <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor konfiguraci klíče spravovaného zákazníkem 
 
-Tento článek obsahuje základní informace a kroky ke konfiguraci klíčů spravovaných zákazníkem (CMK) pro pracovní prostory analýzy protokolů a součásti Application Insights. Po nakonfigurování se všechna data odeslaná do pracovních prostorů nebo součástí zašifrují pomocí klíče Azure Key Vault.
+Tento článek poskytuje základní informace a kroky ke konfiguraci klíčů spravovaných zákazníkem (CMK) pro vaše pracovní prostory Log Analytics a Application Insights součásti. Po nakonfigurování budou všechna data odesílaná do vašich pracovních prostorů nebo součástí šifrována pomocí Azure Key Vaultho klíče.
 
-Doporučujeme zkontrolovat [omezení a omezení](#limitations-and-constraints) níže před konfigurací.
+Před konfigurací doporučujeme zkontrolovat níže uvedená [omezení a omezení](#limitations-and-constraints) .
 
 ## <a name="disclaimers"></a>Právní omezení
 
-- Azure Monitor CMK je funkce včasného přístupu a povolená pro registrované předplatná.
+- Azure Monitor CMK je funkce předčasného přístupu a povoluje se u registrovaných předplatných.
 
-- Nasazení CMK popsané v tomto článku je dodáván v kvalitě výroby a podporovány jako takové, i když je to funkce včasného přístupu.
+- Nasazení CMK popsané v tomto článku se dodává v produkční kvalitě a podporuje se, protože se jedná o funkci předčasného přístupu.
 
-- Funkce CMK se dodává ve vyhrazeném clusteru úložiště dat, což je cluster Azure Data Explorer (ADX) a je vhodný pro zákazníky odesílající 1 TB za den nebo více. 
+- Funkce CMK se doručuje na vyhrazený cluster úložiště dat, což je cluster Azure Průzkumník dat (ADX), který je vhodný pro zákazníky, kteří odesílají 1 TB za den. 
 
-- Cenový model CMK není momentálně k dispozici a v tomto článku se na něj nevztahuje. Cenový model pro vyhrazený cluster ADX se očekává ve druhém čtvrtletí kalendářního roku (CY) 2020 a bude se vztahovat na všechna existující nasazení CMK.
+- Cenové modely CMK nejsou momentálně dostupné a nejsou uvedené v tomto článku. V druhém čtvrtletí kalendářního roku (CY) 2020 se očekává cenový model pro vyhrazený cluster ADX, který se bude vztahovat na všechna existující nasazení CMK.
 
-- Tento článek popisuje konfiguraci CMK pro pracovní prostory Analýzy protokolů. Cmk pro součásti Application Insights je také podporovánpomocí tohoto článku, zatímco rozdíly jsou uvedeny v dodatku.
+- Tento článek popisuje CMK konfiguraci pro pracovní prostory Log Analytics. CMK pro součásti Application Insights jsou také podporovány pomocí tohoto článku, zatímco rozdíly jsou uvedeny v příloze.
 
 > [!NOTE]
-> Log Analytics a Application Insights používají stejnou platformu úložiště dat a dotazovací stroj.
-> Tyto dva obchody spojujeme prostřednictvím integrace přehledů aplikací do analýzy protokolů a vytváříme jedno jednotné úložiště protokolů v rámci Azure Monitoru. Tato změna je plánována na druhé čtvrtletí kalendářního roku 2020. Pokud do té doby není nutné nasazovat CMK pro data Application Insights, doporučujeme počkat na dokončení konsolidace, protože tato nasazení budou narušena konsolidací a budete muset po migraci do pracovního prostoru Log Analytics znovu nakonfigurovat CMK. Minimální hodnota 1 TB za den platí na úrovni clusteru a dokud nebude konsolidace dokončena během druhého čtvrtletí, vyžadují přehledy aplikací a analýza protokolů samostatné clustery.
+> Log Analytics a Application Insights používají stejnou platformu pro úložiště dat a dotazovací stroj.
+> Tyto dvě úložiště přinášíme společně prostřednictvím integrace Application Insights do Log Analytics k vytvoření jednoho sjednoceného úložiště protokolů v rámci Azure Monitor. Tato změna se plánuje pro druhé čtvrtletí kalendářního roku 2020. Pokud nemusíte nasazovat CMK pro data Application Insights, doporučujeme počkat na dokončení konsolidace, protože tato nasazení budou přerušena konsolidací a po migraci na Log Analytics pracovní prostor budete muset znovu nakonfigurovat CMK. Minimum 1 TB za den se vztahuje na úrovni clusteru a až do dokončení konsolidace během druhého čtvrtletí Application Insights a Log Analytics vyžadují samostatné clustery.
 
-## <a name="customer-managed-key-cmk-overview"></a>Přehled klíčů spravovaných zákazníkem (CMK)
+## <a name="customer-managed-key-cmk-overview"></a>CMK (Customer-Managed Key) – přehled
 
-[Šifrování v klidovém stavu](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) je běžnýpožadavek na ochranu osobních údajů a zabezpečení v organizacích. Azure můžete zcela spravovat šifrování v klidovém stavu, zatímco máte různé možnosti, jak úzce spravovat šifrovací nebo šifrovací klíče.
+[Šifrování v klidovém umístění](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) je běžným požadavkem na ochranu osobních údajů a zabezpečení v organizacích. Azure vám umožní plně spravovat šifrování v klidovém režimu, zatímco máte k dispozici různé možnosti, jak pečlivě spravovat šifrovací a šifrovací klíče.
 
-Úložiště dat Azure Monitor zajišťuje, že všechna data šifrovaná v klidovém stavu pomocí klíčů spravovaných Azure při ukládání ve službě Azure Storage. Azure Monitor také poskytuje možnost šifrování dat pomocí vlastního klíče, který je uložený ve vašem [trezoru klíčů Azure](https://docs.microsoft.com/azure/key-vault/key-vault-overview), ke kterému se přistupuje pomocí systémově přiřazeného spravovaného ověřování [identity.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) Tento klíč může být [chráněn softwarem nebo hardwarem-HSM](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
-Azure Monitor použití šifrování je shodné se způsobem, jakým [funguje šifrování Azure Storage.](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)
+Azure Monitor data-Store zajišťuje, aby všechna zašifrovaná data byla v klidovém stavu pomocí klíčů spravovaných Azure při uložení v Azure Storage. Azure Monitor taky nabízí možnost šifrování dat pomocí vlastního klíče uloženého v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview), ke kterému se přistupovalo pomocí [spravovaného ověřování identity](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) přiřazené systémem. Tento klíč může být buď [software, nebo hardware – chráněný](https://docs.microsoft.com/azure/key-vault/key-vault-overview)modulem HSM.
+Azure Monitor použití šifrování je stejné jako způsob, jakým [Azure Storage šifrování](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption) funguje.
 
-Frekvence, která Azure Monitor Storage přistupuje k trezoru klíčů pro operace zalamování a rozbalování je mezi 6 až 60 sekund.Azure Monitor Storage vždy respektuje změny v klíčových oprávnění během jedné hodiny.
+Frekvence, kterou Azure Monitor přístup úložiště Key Vault pro zabalení a rozbalení operací je mezi 6 až 60 sekund.Azure Monitor Storage vždy respektuje změny v klíčových oprávněních během hodiny.
 
-Ingestovaná data za posledních 14 dní jsou také uložena v hot-cache (SSD-backed) pro efektivní provoz dotazovacího modulu. Tato data zůstávají šifrována pomocí klíčů společnosti Microsoft bez ohledu na konfiguraci CMK, ale pracujeme na tom, aby byl SSD šifrován s CMK v první polovině roku 2020.
+Ingestovaná data za posledních 14 dní jsou také uchovávána v Hot cache (zazálohovaně SSD) pro efektivní operaci dotazovacího stroje. Tato data zůstávají šifrovaná pomocí klíčů Microsoftu bez ohledu na konfiguraci CMK, ale pracujeme na tom, aby se disk SSD zašifroval s CMK v první polovině 2020.
 
-## <a name="how-cmk-works-in-azure-monitor"></a>Jak cmk funguje ve službě Azure Monitor
+## <a name="how-cmk-works-in-azure-monitor"></a>Jak CMK funguje v Azure Monitor
 
-Azure Monitor využívá spravované identity přiřazené systémem k udělení přístupu k úložišti klíčů Azure.Spravovaná identita přiřazená systémem může být přidružena jenom k jednomu prostředku Azure. Identita úložiště dat Azure Monitor (cluster ADX) je podporována na úrovni clusteru a to vyžaduje, aby funkce CMK byla doručena ve vyhrazeném clusteru ADX. Pro podporu CMK na více pracovních prostorech, nový prostředek Log Analytics *(Cluster)* provádí jako zprostředkující připojení identity mezi trezoru klíčů a pracovníprostory Log Analytics. Tento koncept je v souladu s omezením identity přiřazené systémem a identita je udržována mezi clusterem ADX a prostředkem *clusteru* Log Analytics, zatímco data všech přidružených pracovních prostorů jsou chráněna klíčem trezoru klíčů klíčů. Úložiště clusteru ADX podložení používá\'spravovanou identitu, která je přidružena k prostředku *clusteru* k ověření a přístupu k úložišti klíčů Azure prostřednictvím služby Azure Active Directory.
+Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení přístupu k vašemu Azure Key Vault.Spravovaná identita přiřazená systémem se dá přidružit jenom k jednomu prostředku Azure. Identita Azure Monitorho úložiště dat (ADX) je podporovaná na úrovni clusteru a tím se určí, že se funkce CMK doručí ve vyhrazeném clusteru ADX. Aby bylo možné podporovat CMK ve více pracovních prostorech, nový prostředek Log Analytics (*cluster*) provádí jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory Log Analytics. Tento pojem odpovídá omezení identity přiřazené systémem a identita se udržuje mezi clusterem ADX a prostředkem *clusteru* Log Analytics, zatímco data všech přidružených pracovních prostorů jsou chráněná pomocí vašeho Key Vault klíče. Úložiště clusteru Underlay ADX používá spravovanou identitu, která\'je přidružená k prostředku *clusteru* pro ověřování a přístup k vašemu Azure Key Vault prostřednictvím Azure Active Directory.
 
-![CMK - přehled](media/customer-managed-keys/cmk-overview-8bit.png)
-1.    Trezor klíčů zákazníka.
-2.    Prostředek *clusteru* Log Analytics zákazníka, který má spravovanou identitu s oprávněními k trezoru klíčů – identita je podporována na úrovni úložiště dat (cluster ADX).
-3.    Vyhrazený cluster ADX azure monitoru.
+![CMK – přehled](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    Key Vault zákazníka.
+2.    Prostředek *clusteru* Log Analytics zákazníka, který má spravovanou identitu s oprávněním Key Vault – identita je podporovaná na úrovni clusteru úložiště dat (ADX).
+3.    Azure Monitor vyhrazený cluster ADX.
 4.    Pracovní prostory zákazníka přidružené k prostředku *clusteru* pro šifrování CMK.
 
 ## <a name="encryption-keys-management"></a>Správa šifrovacích klíčů
 
-Šifrování dat úložiště zahrnuje 3 typy klíčů:
+Šifrování dat úložiště má tři typy klíčů:
 
-- **KEK** - Šifrovací klíč (CMK)
-- **AEK** - Šifrovací klíč účtu
-- **DEK** - šifrovací klíč dat
+- Šifrovací klíč **KEK** -Key (CMK)
+- **AEK** šifrovací klíč účtu
+- **Klíč DEK** – šifrovací klíč dat
 
 Platí následující pravidla:
 
-- Účty úložiště ADX generují jedinečný šifrovací klíč pro každý účet úložiště, který se nazývá AEK.
+- Účty úložiště ADX generují jedinečný šifrovací klíč pro každý účet úložiště, který se označuje jako AEK.
 
-- AEK se používá k odvození DEKs, které jsou klíče, které se používají k šifrování každý blok dat zapsaných na disk.
+- AEK se používá k odvození DEKs, což jsou klíče, které slouží k zašifrování každého bloku dat zapsaných na disk.
 
-- Když nakonfigurujete klíč v trezoru klíčů a odkazujete na něj v prostředku *clusteru,* Azure Storage odešle požadavky do trezoru klíčů Azure zabalit a rozbalit AEK k provádění operací šifrování a dešifrování dat.
+- Když nakonfigurujete klíč v Key Vault a odkazujete na něj v prostředku *clusteru* , Azure Storage posílá žádosti do vašeho Azure Key Vault k zabalení a rozbalení AEK k provádění operací šifrování a dešifrování dat.
 
-- Vaše KEK nikdy neopustí trezor klíčů a v případě klíče hardwarového modulu nikdy neopustí hardware.
+- Váš KEK nikdy nezůstane Key Vault a v případě klíče HSM nikdy neopustí hardware.
 
-- Azure Storage používá spravovanou identitu, která je přidružená k prostředku *clusteru,* k ověření a přístupu k Azure Key Vault prostřednictvím Služby Azure Active Directory.
+- Azure Storage používá spravovanou identitu, která je přidružená k prostředku *clusteru* pro ověřování a přístup k Azure Key Vault prostřednictvím Azure Active Directory.
 
-## <a name="cmk-provisioning-procedure"></a>CmK zřizování postup
+## <a name="cmk-provisioning-procedure"></a>Postup zřizování CMK
 
-Pro konfiguraci CMK Application Insights postupujte podle obsahu dodatku pro kroky 3 a 6.
+V případě konfigurace Application Insights CMK postupujte podle obsahu přílohy pro kroky 3 a 6.
 
-1. Odběr whitelisting - to je nutné pro tuto funkci včasného přístupu
-2. Vytváření trezoru klíčů Azure a ukládání klíče
-3. Vytvoření *prostředku clusteru*
+1. Seznam povolených odběrů – to je vyžadováno pro tuto funkci předčasného přístupu
+2. Vytváření Azure Key Vault a ukládání klíče
+3. Vytvoření prostředku *clusteru*
 4. Zřizování úložiště dat Azure Monitor (cluster ADX)
-5. Udělení oprávnění trezoru klíčů
-6. Přisuzování pracovních prostorů Analýzy protokolů
+5. Udělování oprávnění vašemu Key Vault
+6. Přidružení Log Analyticsch pracovních prostorů
 
-Postup není podporován v ui aktuálně a proces zřizování se provádí prostřednictvím rozhraní REST API.
+Procedura není momentálně v uživatelském rozhraní podporovaná a proces zřizování se provádí prostřednictvím REST API.
 
 > [!IMPORTANT]
-> Každý požadavek rozhraní API musí obsahovat token autorizace nosiče v hlavičce požadavku.
+> Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
 
 Příklad:
 
@@ -99,31 +99,31 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 Authorization: Bearer eyJ0eXAiO....
 ```
 
-Kde *eyJ0eXAiO....* představuje úplný token autorizace. 
+Kde *eyJ0eXAiO....* představuje úplný autorizační token. 
 
 Token můžete získat pomocí jedné z těchto metod:
 
-1. Použijte [metodu registrace aplikací.](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+1. Použijte metodu [Registrace aplikací](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens) .
 2. Na webu Azure Portal
-    1. Přechod na portál Azure v "vývojářském nástroji" (F12)
-    1. Vyhledejte autorizační řetězec v části "Záhlaví požadavků" v jedné z instancí "batch?api-version". Vypadá to takto: "autorizace: Bearer eyJ0eXAiO....". 
-    1. Zkopírujte a přidejte do volání rozhraní API podle níže uvedených příkladů.
-3. Přejděte na web dokumentace Azure REST. Stiskněte tlačítko "Try it" na libovolnérozhraní API a zkopírujte token Nosiče.
+    1. Přejít na Azure Portal v nástroji pro vývojáře (F12)
+    1. V části "Batch? rozhraní API-Version" vyhledejte autorizační řetězec v části "hlavičky žádosti". Vypadá to, že: "Authorization: nosiče eyJ0eXAiO....". 
+    1. Zkopírujte a přidejte ho do volání rozhraní API podle níže uvedených příkladů.
+3. Přejděte na stránku dokumentace k Azure REST. V jakémkoli rozhraní API stiskněte tlačítko vyzkoušet a zkopírujte token nosiče.
 
-### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontrola stavu
+### <a name="asynchronous-operations-and-status-check"></a>Asynchronní operace a kontroly stavu
 
-Některé operace v této konfigurační masce jsou spuštěny asynchronně, protože je nelze rychle dokončit. Odpověď pro asynchronní operace zpočátku vrátí stavový kód HTTP 200 (OK) a záhlaví s *vlastností Azure-AsyncOperation* při přijetí:
+Některé operace v této konfiguraci se spouští asynchronně, protože je nejde rychle dokončit. Odpověď na asynchronní operaci zpočátku po přijetí vrátí stavový kód HTTP 200 (OK) a záhlaví s vlastností *Azure-AsyncOperation* :
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-03-01-preview"
 ```
 
-Stav asynchronní operace můžete zkontrolovat odesláním požadavku GET do hodnoty hlavičky *Azure-AsyncOperation:*
+Stav asynchronní operace můžete zjistit odesláním žádosti o získání do hodnoty v hlavičce *Azure-AsyncOperation* :
 ```rst
 GET https://management.azure.com/subscriptions/subscription-id/providers/microsoft.operationalInsights/locations/region-name/operationstatuses/operation-id?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-Odpověď obsahuje informace o operaci a jejím *stavu*. Může to být jedna z následujících možností:
+Odpověď obsahuje informace o operaci a její *stavu*. Může to být jedna z následujících:
 
 Probíhá operace.
 ```json
@@ -135,7 +135,7 @@ Probíhá operace.
 }
 ```
 
-Operace je dokončena.
+Operace je dokončená.
 ```json
 {
     "id": "Azure-AsyncOperation URL value from the GET operation",
@@ -146,7 +146,7 @@ Operace je dokončena.
 }
 ```
 
-Operace se nezdařila.
+Operace se nezdařila
 ```json
 {
     "id": "Azure-AsyncOperation URL value from the GET operation",
@@ -163,32 +163,32 @@ Operace se nezdařila.
 
 ### <a name="subscription-whitelisting"></a>Seznam povolených odběrů
 
-Funkce CMK je funkce včasného přístupu. Předplatná, kde plánujete vytvořit prostředky *clusteru* musí být předem naseznamu povolených podle skupiny produktů Azure. Pomocí kontaktů do Microsoftu zadejte ID předplatných.
+Možnost CMK je funkce předčasného přístupu. K předplatným, ke kterým plánujete vytváření prostředků *clusteru* , musí mít předem povolený produkt skupina produktů Azure. Pomocí kontaktů do Microsoftu poskytněte ID předplatných.
 
 > [!IMPORTANT]
-> Schopnost CMK je regionální. Trezor klíčů Azure, prostředek *clusteru* a přidružené pracovní prostory Analýzy protokolů musí být ve stejné oblasti, ale mohou být v různých předplatných.
+> Možnost CMK je regionální. Vaše Azure Key Vault, prostředek *clusteru* a přidružené pracovní prostory Log Analytics musí být ve stejné oblasti, ale můžou být v různých předplatných.
 
 ### <a name="storing-encryption-key-kek"></a>Ukládání šifrovacího klíče (KEK)
 
-Vytvořte nebo použijte trezor klíčů Azure, který už musíte vygenerovat, nebo importujte klíč, který se použije pro šifrování dat. Trezor klíčů Azure musí být nakonfigurovaný jako obnovitelný, aby byl váš klíč a přístup k vašim datům ve službě Azure Monitor. Tuto konfiguraci můžete ověřit ve vlastnostech v trezoru klíčů, měla by být povolena *ochrana proti odstranění pomocí programu Soft* a *Purge.*
+Vytvořte nebo použijte Azure Key Vault, který již máte vygenerovat, nebo importujte klíč, který se má použít k šifrování dat. Azure Key Vault musí být nakonfigurovaná tak, aby chránila váš klíč a přístup k vašim datům v Azure Monitor. Tuto konfiguraci můžete ověřit v části vlastnosti Key Vault, měla by být povolená ochrana proti *odstranění* a *vyprázdnění* .
 
-![Nastavení ochrany proti odstranění a vymazání](media/customer-managed-keys/soft-purge-protection.png)
+![Obnovitelné odstranění a mazání nastavení ochrany](media/customer-managed-keys/soft-purge-protection.png)
 
-Tato nastavení jsou k dispozici prostřednictvím rozhraní příkazu příkazové ho příkazu a prostředí PowerShell:
+Tato nastavení jsou k dispozici prostřednictvím rozhraní příkazového řádku a prostředí PowerShell:
 - [Obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-- [Očistit ochranné](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) kryty proti vymazání síly tajemství / trezoru i po měkkém odstranění
+- [Vyprázdnit](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) ochranné Guard proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění
 
 ### <a name="create-cluster-resource"></a>Vytvořit prostředek *clusteru*
 
-Tento prostředek se používá jako zprostředkující připojení identity mezi trezorem klíčů a pracovními prostory Analýzy protokolů. Po obdržení potvrzení, že vaše předplatná byla zapsána na seznam povolených, vytvořte prostředek *clusteru* Analýzy protokolů v oblasti, kde jsou umístěny vaše pracovní prostory. Přehledy aplikací a analýzy protokolů vyžadují samostatné typy prostředků *clusteru.* Typ prostředku *clusteru* je definován v době vytvoření nastavením *vlastnosti clusterType* na *LogAnalytics*nebo *ApplicationInsights*. Typ prostředku clusteru nelze změnit po.
+Tento prostředek se používá jako zprostředkující připojení identity mezi Key Vault a vašimi pracovními prostory v Log Analytics. Jakmile obdržíte potvrzení, že vaše předplatná byla na seznamu povolených, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které jsou umístěny vaše pracovní prostory. Application Insights a Log Analytics vyžadují samostatné typy prostředků *clusteru* . Typ prostředku *clusteru* je definován při vytvoření nastavením vlastnosti *ClusterType* na hodnotu *LogAnalytics*nebo *ApplicationInsights*. Typ prostředku clusteru se nedá změnit po.
 
-Pro konfiguraci CMK Application Insights postupujte podle obsahu dodatku.
+V případě konfigurace Application Insights CMK postupujte podle obsahu přílohy.
 
-Při vytváření prostředku *clusteru* je nutné určit úroveň rezervace kapacity (sku). Úroveň rezervace kapacity může být v rozsahu 1 000 až 2 000 GB za den a můžete ji aktualizovat v krocích po 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 2 000 GB za den, obraťte se na kontakt společnosti Microsoft a povolte ji. Tato vlastnost nemá vliv na fakturaci v současné době – po zavedení cenového modelu pro vyhrazený cluster, fakturace se bude vztahovat na všechny existující nasazení CMK.
+Při vytváření prostředku *clusteru* je nutné zadat úroveň rezervace kapacity (SKU). Úroveň rezervace kapacity může být v rozsahu 1 000 až 2 000 GB za den a můžete ji aktualizovat v krocích 100 později. Pokud potřebujete úroveň rezervace kapacity vyšší než 2 000 GB za den, obraťte se na kontakt Microsoftu, abyste ho povolili. Tato vlastnost nemá v současnosti vliv fakturace. v tomto případě se zavede cenový model vyhrazeného clusteru. bude se účtovat na všechna existující nasazení CMK.
 
 **Vytvořit**
 
-Tento požadavek správce prostředků je asynchronní operace.
+Tato Správce prostředků požadavek je asynchronní operace.
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -209,18 +209,18 @@ Content-type: application/json
   "location": "<region-name>",
 }
 ```
-Identita je přiřazena prostředku *clusteru* v době vytvoření.
+Identita je přiřazena ke zdroji *clusteru* v okamžiku vytvoření.
 
-**Reakce**
+**Základě**
 
 200 OK a záhlaví.
-Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
-1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
+Během období předčasného přístupu k této funkci se cluster ADX zřídí ručně. I když trvá zřízení v clusteru v rámci ADX a i po dokončení, můžete stav zřizování zjistit dvěma způsoby:
+1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
 ### <a name="azure-monitor-data-store-adx-cluster-provisioning"></a>Zřizování úložiště dat Azure Monitor (cluster ADX)
 
-Během období předčasného přístupu funkce je cluster ADX zřízen ručně produktovým týmem po dokončení předchozích kroků. Pro tento krok použijte svůj kanál společnosti Microsoft a zadejte odpověď na prostředky *clusteru.* 
+Během období předčasného přístupu k této funkci cluster ADX zřídí produktový tým ručně po dokončení předchozích kroků. Pro tento krok použijte Microsoft Channel a poskytněte odpověď prostředku *clusteru* . 
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2019-08-01-preview
@@ -228,9 +228,9 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Zkopírujte a uložte odpověď, protože budete potřebovat podrobnosti v dalších krocích.
+> Zkopírujte a uložte odpověď, protože budete potřebovat podrobnosti v části Další kroky.
 
-**Reakce**
+**Základě**
 
 ```json
 {
@@ -256,35 +256,35 @@ Authorization: Bearer <token>
 }
 ```
 
-Identifikátor GUID "principalId" je generován službou spravované identity pro prostředek *clusteru.*
+Identifikátor GUID "principalId" vygeneruje Služba Managed identity pro prostředek *clusteru* .
 
-### <a name="grant-key-vault-permissions"></a>Udělení oprávnění trezoru klíčů
+### <a name="grant-key-vault-permissions"></a>Udělení oprávnění Key Vault
 
-Aktualizujte trezor klíčů pomocí nové zásady přístupu, která uděluje oprávnění k prostředku *clusteru.* Tato oprávnění se používají podložení Azure Monitor Storage pro šifrování dat. Otevřete trezor klíčů na webu Azure portal a klikněte na "Zásady přístupu" a potom na "+ Přidat zásady přístupu" a vytvořte zásadu s těmito nastaveními:
+Aktualizujte svůj Key Vault novou zásadou přístupu, která uděluje oprávnění prostředku *clusteru* . Tato oprávnění používá Underlay Azure Monitor Storage pro šifrování dat. Otevřete Key Vault v Azure Portal a klikněte na "zásady přístupu", pak "+ Přidat zásadu přístupu" a vytvořte zásadu s těmito nastaveními:
 
-- Klíčová oprávnění: vyberte oprávnění "Získat", Zalamovat klíč a Rozbalit klíč.
-- Vyberte hlavní: zadejte hodnotu id hlavního povinného, která byla vrácena v odpovědi v předchozím kroku.
+- Klíčová oprávnění: vyberte Get, Wrap Key a Unwrap Key oprávnění.
+- Vyberte objekt zabezpečení: zadejte hodnotu ID objektu zabezpečení, která se vrátila v odpovědi v předchozím kroku.
 
-![udělení oprávnění trezoru klíčů](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
+![udělení oprávnění Key Vault](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
-*Získat* oprávnění je nutné ověřit, že trezor klíčů je nakonfigurovaný jako obnovitelný k ochraně vašeho klíče a přístupu k datům Azure Monitor.
+Aby bylo možné ověřit, jestli je vaše Key Vault nakonfigurovaná tak, aby chránila váš klíč a přístup k datům Azure Monitor, je potřeba oprávnění *získat* .
 
-### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizace prostředku clusteru podrobnostmi o identifikátoru klíče
+### <a name="update-cluster-resource-with-key-identifier-details"></a>Aktualizace prostředku clusteru s podrobnostmi identifikátoru klíče
 
-Tento krok se provádí během počátečních a budoucích aktualizací klíčových verzí v trezoru klíčů. Informuje Azure Monitor Storage o verzi klíče, která se má použít pro šifrování dat. Po aktualizaci se nový klíč používá k zabalení a rozbalení klíče úložiště (AEK).
+Tento krok se provádí během úvodní aktualizace a v budoucích aktualizacích klíčových verzí v Key Vault. Informuje Azure Monitor úložiště o verzi klíče, která se má použít k šifrování dat. Po aktualizaci se nový klíč použije k zabalení a rozbalení klíče úložiště (AEK).
 
-Chcete-li aktualizovat prostředek *clusteru* podrobnostmi *o identifikátoru klíče* trezoru klíčů, vyberte aktuální verzi klíče v trezoru klíčů Azure, abyste získali podrobnosti o identifikátoru klíče.
+Pokud chcete aktualizovat prostředek *clusteru* s podrobnostmi *identifikátoru klíče* Key Vault, vyberte aktuální verzi klíče v Azure Key Vault, abyste získali podrobnosti identifikátoru klíče.
 
-![Udělení oprávnění trezoru klíčů](media/customer-managed-keys/key-identifier-8bit.png)
+![Udělení oprávnění Key Vault](media/customer-managed-keys/key-identifier-8bit.png)
 
-Aktualizujte prostředek *clusteru* KeyVaultProperties podrobnostmi o identifikátoru klíče.
+Aktualizujte prostředek *clusteru* KeyVaultProperties s podrobnostmi identifikátoru klíče.
 
 **Aktualizace**
 
-Tento požadavek Správce prostředků je asynchronní operace při aktualizaci podrobnosti identifikátor klíče, zatímco je synchronní při aktualizaci capacity value.
+Tato Správce prostředků požadavek je asynchronní operace při aktualizaci podrobností identifikátoru klíče, zatímco při aktualizaci hodnoty kapacity je synchronní.
 
 > [!Warning]
-> V aktualizaci prostředků *clusteru* je nutné zadat celé tělo, které zahrnuje *identitu*, *sku*, *KeyVaultProperties* a *umístění*. Chybějící podrobnosti *KeyVaultProperties* odeberou identifikátor klíče z prostředku *clusteru* a způsobí [odvolání klíče](#cmk-kek-revocation).
+> V aktualizaci prostředků *clusteru* musíte poskytnout úplný text, který zahrnuje *identity*, *SKU*, *KeyVaultProperties* a *Location*. Chybějící podrobnosti *KeyVaultProperties* odstraní identifikátor klíče z prostředku *clusteru* a způsobí [odvolání klíče](#cmk-kek-revocation).
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -309,16 +309,16 @@ Content-type: application/json
    "location":"<region-name>"
 }
 ```
-"KeyVaultProperties" obsahuje podrobnosti o identifikátoru klíče trezoru klíčů.
+"KeyVaultProperties" obsahuje podrobnosti o identifikátoru Key Vaultho klíče.
 
-**Reakce**
+**Základě**
 
 200 OK a záhlaví.
-Trvá šíření identifikátor klíče několik minut k dokončení. Stav aktualizace můžete zkontrolovat dvěma způsoby:
-1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties.* Vaše nedávno aktualizované údaje o identifikátoru klíče by se měly vrátit v odpovědi.
+Dokončením tohoto identifikátoru klíče bude dokončeno několik minut. Stav aktualizace můžete zjistit dvěma způsoby:
+1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na vlastnosti *KeyVaultProperties* . Nedávno aktualizované podrobnosti identifikátoru klíče by se měly vrátit v odpovědi.
 
-Odpověď na požadavek GET na prostředek *clusteru* by měla vypadat takto po dokončení aktualizace identifikátoru klíče:
+Odpověď na požadavek GET prostředku *clusteru* by měla vypadat jako při dokončení aktualizace identifikátoru klíče:
 
 ```json
 {
@@ -349,20 +349,20 @@ Odpověď na požadavek GET na prostředek *clusteru* by měla vypadat takto po 
 }
 ```
 
-### <a name="workspace-association-to-cluster-resource"></a>Přidružení pracovního prostoru k prostředku *clusteru*
-Pro konfiguraci CMK Application Insights postupujte podle obsahu dodatku pro tento krok.
+### <a name="workspace-association-to-cluster-resource"></a>Přidružení pracovního prostoru ke zdroji *clusteru*
+V případě konfigurace Application Insights CMK postupujte podle obsahu přílohy pro tento krok.
 
-K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění k zápisu do pracovního prostoru i prostředků *clusteru:*
+K provedení této operace musíte mít oprávnění Write pro váš pracovní prostor i prostředek *clusteru* , což zahrnuje tyto akce:
 
-- V pracovním prostoru: Microsoft.OperationalInsights/workspaces/write
-- V *prostředku clusteru:* Microsoft.OperationalInsights/clusters/write
+- V pracovním prostoru: Microsoft. OperationalInsights/pracovní prostory/Write
+- V prostředku *clusteru* : Microsoft. OperationalInsights/Clusters/Write
 
 > [!IMPORTANT]
-> Tento krok by měl být proveden pouze po zřizování clusteru ADX. Pokud přidružíte pracovní prostory a ingestovat data před zřizování, ingestovaná data budou zrušena a nebude obnovitelná.
+> Tento krok je třeba provést až po zřízení clusteru ADX. Pokud přidružíte pracovní prostory a ingestování dat před zřizováním, ingestovaná data se ztratí a nepůjde obnovit.
 
 **Přidružení pracovního prostoru**
 
-Tento požadavek správce prostředků je asynchronní operace.
+Tato Správce prostředků požadavek je asynchronní operace.
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>/linkedservices/cluster?api-version=2020-03-01-preview 
@@ -376,18 +376,18 @@ Content-type: application/json
 }
 ```
 
-**Reakce**
+**Základě**
 
 200 OK a záhlaví.
-Po operaci přidružení jsou uložena deštovaná data se spravovaným klíčem, což může trvat až 90 minut. Stav přidružení pracovního prostoru můžete zkontrolovat dvěma způsoby:
-1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-2. Odeslat [pracovní prostory – získat](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledovat odpověď, přidružený pracovní prostor bude mít clusterResourceId pod "funkce".
+Ingestovaná data se po operaci přidružení zašifrují pomocí spravovaného klíče, což může trvat až 90 minut. Stav přidružení pracovního prostoru můžete zjistit dvěma způsoby:
+1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odeslání [pracovních prostorů – Získejte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) požadavek a sledujte odpověď. přidružený pracovní prostor bude mít clusterResourceId v části funkce.
 
 ```rest
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview
 ```
 
-**Reakce**
+**Základě**
 
 ```json
 {
@@ -419,67 +419,67 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 }
 ```
 
-## <a name="cmk-kek-revocation"></a>Zrušení CMK (KEK)
+## <a name="cmk-kek-revocation"></a>Odvolání CMK (KEK)
 
-Přístup k datům můžete odvolat zakázáním klíče nebo odstraněním zásad přístupu k prostředkům *clusteru* v trezoru klíčů. Azure Monitor Storage bude vždy respektovat změny v klíčových oprávnění během jedné hodiny, obvykle dříve a úložiště bude k dispozici. Všechna data požitá do pracovních prostorů přidružených k prostředku *clusteru* jsou vynechána a dotazy se nezdaří. Dříve ingestovaná data zůstanou ve službě Azure Monitor Storage nepřístupná, pokud jste vaším *prostředkem clusteru* a vaše pracovní prostory se neodstraní. Nedostupná data se řídí zásadami uchovávání dat a budou vymazána, když je dosaženo uchovávání informací.
+Přístup k datům můžete odvolat zakázáním klíče nebo odstraněním zásad přístupu k prostředkům *clusteru* ve vašem Key Vault. Služba Azure Monitor Storage vždy v průběhu jedné hodiny bude brát v platnost změny klíčových oprávnění a úložiště se stane nedostupným. Všechna data, která jsou v pracovních prostorech přidružených k vašemu prostředku *clusteru* přidružená, se ztratí a dotazy selžou. Dříve přijímaná data zůstávají v Azure Monitor úložišti nepřístupná, pokud jste prostředek *clusteru* a vaše pracovní prostory nebudou smazány. Nepřístupná data se řídí zásadami uchovávání dat a při dosažení doby uchování se odstraní.
 
-Úložiště bude pravidelně dotazování trezoru klíčů, aby se pokusil rozbalit šifrovací klíč a po přístupu k obnovení přihlašování dat a dotazu během 30 minut.
+Úložiště se bude pravidelně dotazovat na Key Vault a pokusí se o rozbalení šifrovacího klíče a po jeho použití, příjmu dat a obnovení dotazů do 30 minut.
 
-## <a name="cmk-kek-rotation"></a>Otáčení CMK (KEK)
+## <a name="cmk-kek-rotation"></a>Rotace CMK (KEK)
 
-Otočení CMK vyžaduje explicitní aktualizaci prostředku *clusteru* s novou verzí klíče v azure key vault. Pokud chcete azure monitor aktualizovat novou verzí klíče, postupujte podle pokynů v kroku Aktualizovat prostředek *clusteru* podrobnosti o identifikátoru klíče. Pokud aktualizujete verzi klíče v trezoru klíčů a neaktualizujete podrobnosti o novém identifikátoru klíče v prostředku *clusteru,* azure monitor storage bude nadále používat váš předchozí klíč.
-Všechna data jsou přístupná po operaci otočení klíče, včetně dat požitých před otočením a po něm, protože všechna data zůstávají šifrována šifrovacím klíčem účtu (AEK), zatímco AEK je nyní šifrována novou verzí kek (Key Encryption Key).
+Rotace CMK vyžaduje explicitní aktualizaci prostředku *clusteru* s novou verzí klíče v Azure Key Vault. Pokud chcete Azure Monitor aktualizovat s novou verzí klíče, postupujte podle pokynů v kroku aktualizace prostředku *clusteru* s podrobnostmi identifikátoru klíče. Pokud aktualizujete verzi klíče v Key Vault a neaktualizujete nové podrobnosti identifikátoru klíče v prostředku *clusteru* , Azure monitor úložiště bude dál používat předchozí klíč.
+Všechna vaše data jsou přístupná po operaci střídání klíčů, včetně dat přijatých před otočením a po ní, protože všechna data zůstanou zašifrovaná šifrovacím klíčem účtu (AEK), zatímco AEK je teď zašifrovaná pomocí vaší nové verze KEK (Key Encryption Key).
 
 ## <a name="limitations-and-constraints"></a>Omezení a omezení
 
-- Funkce CMK je podporovaná na úrovni clusteru ADX a vyžaduje vyhrazený cluster Azure Monitor ADX s požadavkem na odesílání 1 TB za den nebo více.
+- Funkce CMK je podporovaná na úrovni clusteru ADX a vyžaduje vyhrazený cluster Azure Monitor ADX s požadavkem na odeslání 1 TB za den.
 
-- Maximální počet prostředků *clusteru* na jedno předplatné je omezen na 2
+- Maximální počet prostředků *clusteru* na předplatné je omezený na 2.
 
-- Přidružení prostředků *clusteru* do pracovního prostoru by mělo být přeneseno pouze po ověření, že zřizování clusteru ADX bylo dokončeno. Data odeslaná do vašeho pracovního prostoru před dokončením zřizování budou zrušena a nebude obnovitelná.
+- Přidružení prostředků *clusteru* k pracovnímu prostoru by se mělo provádět až po ověření, že se Provisioning cluster ADX dokončil. Data odesílaná do vašeho pracovního prostoru před dokončením zřizování se ztratí a nepůjde obnovit.
 
-- Cmk šifrování platí pro nově pozůstalá data po konfiguraci CMK. Data, která byla ingestována před konfigurací CMK, zůstávají zašifrována pomocí klíče společnosti Microsoft. Můžete dotazovat data pomohou před a po konfiguraci CMK bez problémů.
+- Šifrování CMK se vztahuje na nově ingestovaná data po konfiguraci CMK. Data, která byla ingestovaná před konfigurací CMK, zůstávají šifrovaná pomocí klíče Microsoft Key. Můžete zadávat dotazy na data ingestovaná před a po bezproblémové konfiguraci CMK.
 
-- Při rozhodování o tom, že cmk není pro konkrétní pracovní prostor vyžadován, můžete zrušit přidružení pracovního prostoru k prostředku *clusteru.* Nová ingestovaná data po operaci zrušení přidružení jsou uložena ve sdíleném úložišti Log Analytics, jako tomu bylo před přidružením k prostředku *clusteru.* Můžete dotazovat data přijatá před a po zrušení přidružení bez problémů, pokud je prostředek *clusteru* zřízen a nakonfigurován s platným klíčem trezoru klíčů.
+- Pokud se rozhodnete, že CMK není pro konkrétní pracovní prostor nutný, můžete zrušit přidružení pracovního prostoru od prostředku *clusteru* . Nová ingestovaná data po operaci de-Association se uloží do sdíleného Log Analytics úložiště jako předtím, než byla přidružena k prostředku *clusteru* . Pokud je prostředek *clusteru* zřízený a nakonfigurovaný pomocí platného Key Vaultho klíče, můžete dotazovat se na data ingestovaná před a po deasociaci.
 
-- Trezor klíčů Azure musí být nakonfigurován jako obnovitelný. Tyto vlastnosti nejsou ve výchozím nastavení povoleny a měly by být nakonfigurovány pomocí rozhraní příkazu příkazu příkazu příkazu příkazu příkazového příkazu nebo prostředí PowerShell:
+- Azure Key Vault musí být nakonfigurované jako obnovitelné. Tyto vlastnosti nejsou ve výchozím nastavení povolené a měly by být nakonfigurované pomocí rozhraní příkazového řádku nebo PowerShellu:
 
-  - [Měkké odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) musí být zapnuto.
-  - [Ochrana proti vymazání](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) by měla být zapnuta, aby se chránila před vymazáním síly tajného trezoru / trezoru i po měkkém odstranění
+  - Je nutné zapnout [obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete) .
+  - Pro ochranu proti vynucenému odstranění tajného nebo trezoru i po obnovitelném odstranění by měla být zapnutá [ochrana vyprázdnění](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection) .
 
-- Přehledy aplikací a analýzy protokolů vyžadují samostatné prostředky *clusteru.* Typ prostředku *clusteru* je definován v době vytvoření nastavením vlastnosti "clusterType" na loganalytics nebo "ApplicationInsights". Typ prostředku *clusteru* nelze změnit.
+- Application Insights a Log Analytics vyžadují samostatné prostředky *clusteru* . Typ prostředku *clusteru* je definován při vytvoření nastavením vlastnosti "clusterType" na hodnotu "LogAnalytics" nebo "ApplicationInsights". Typ prostředku *clusteru* se nedá změnit.
 
-- *Prostředek clusteru* přesunout do jiné skupiny prostředků nebo odběr není aktuálně podporována.
+- Prostředek *clusteru* přesunout do jiné skupiny prostředků nebo předplatného se momentálně nepodporuje.
 
-- Trezor klíčů Azure, prostředek *clusteru* a přidružené pracovní prostory musí být ve stejné oblasti a ve stejném tenantovi Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
+- Vaše Azure Key Vault, prostředek *clusteru* a přidružené pracovní prostory musí být ve stejné oblasti a v rámci stejného tenanta Azure Active Directory (Azure AD), ale můžou být v různých předplatných.
 
-- Přidružení pracovního prostoru k prostředku *clusteru* se nezdaří, pokud je přidruženo k jinému prostředku *clusteru.*
+- Přidružení pracovního prostoru ke zdroji *clusteru* selže, pokud je přidruženo k jinému prostředku *clusteru* .
 
-## <a name="troubleshooting-and-management"></a>Řešení potíží a správa
+## <a name="troubleshooting-and-management"></a>Řešení potíží a Správa
 
-- Dostupnost trezoru klíčů
-    - V normálním provozu – Úložiště ukládá do mezipaměti AEK na krátkou dobu a přejde zpět do trezoru klíčů rozbalit pravidelně.
+- Dostupnost Key Vault
+    - V normálním provozu – mezipaměť úložiště AEK na krátkou dobu a vrátí se zpět na Key Vault k pravidelnému rozbalení.
     
-    - Přechodné chyby připojení – úložiště zpracovává přechodné chyby (časové limity, selhání připojení, problémy dns) tím, že klíče zůstat v mezipaměti na krátkou dobu déle, a to překonává všechny malé chyby v dostupnosti. Možnosti dotazu a ingestování pokračovat bez přerušení.
+    - Přechodné chyby připojení – úložiště zpracovává přechodné chyby (vypršení časového limitu, selhání připojení, problémy se službou DNS) tím, že klíče zůstanou v mezipaměti po krátké době delší a to přináší všechny malé výkyvůy v dostupnosti. Funkce dotazování a přijímání i nadále bez přerušení.
     
-    - Živý web – nedostupnost přibližně 30 minut způsobí, že účet úložiště přestane být nedostupný. Funkce dotazu není k dispozici a ingestovaná data jsou uložena do mezipaměti několik hodin pomocí klíče společnosti Microsoft, aby se zabránilo ztrátě dat. Při obnovení přístupu k trezoru klíčů dotaz k dispozici a dočasná data uložená v mezipaměti je požití do úložiště dat a šifrované s CMK.
+    - Živý web – nedostupnost přibližně 30 minut způsobí, že účet úložiště nebude k dispozici. Funkce dotazu není k dispozici a ingestovaná data se po několik hodin ukládají do mezipaměti pomocí Microsoft Key, aby se předešlo ztrátě dat. Po obnovení přístupu k Key Vault se dotaz zpřístupní a dočasná data uložená v mezipaměti se ingestují do úložiště dat a zašifrují pomocí CMK.
 
-- Pokud vytvoříte prostředek *clusteru* a okamžitě zadáte vlastnosti KeyVaultProperties, operace může selhat, protože zásadu přístupu nelze definovat, dokud není prostředku *clusteru* přiřazena systémová identita.
+- Pokud vytvoříte prostředek *clusteru* a okamžitě zadáte KeyVaultProperties, operace může selhat, protože zásady přístupu nejde definovat, dokud není systémová identita přiřazená k prostředku *clusteru* .
 
-- Pokud aktualizujete existující prostředek *clusteru* pomocí vlastností KeyVaultProperties a v trezoru klíčů chybí zásady přístupu klíče Get, operace se nezdaří.
+- Pokud aktualizujete existující prostředek *clusteru* s KeyVaultProperties a zásada přístupu pro klíč "Get" v Key Vault chybí, operace se nezdaří.
 
-- Pokud se pokusíte odstranit prostředek *clusteru,* který je přidružen k pracovnímu prostoru, operace odstranění se nezdaří.
+- Pokud se pokusíte odstranit prostředek *clusteru* , který je přidružen k pracovnímu prostoru, operace odstranění selže.
 
-- Pokud se při vytváření prostředku *clusteru* zobrazí chyba konfliktu – je možné, že jste odstranili prostředek *clusteru* za posledních 14 dní a je v období obnovitelného odstranění. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Název je uvolněn po období obnovitelného odstranění, kdy je prostředek *clusteru* trvale odstraněn.
+- Pokud při vytváření prostředku *clusteru* dojde k chybě, může to být tím, že jste v posledních 14 dnech odstranili prostředek *clusteru* a je v období obnovitelného odstranění. Název prostředku *clusteru* zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Název se uvolní po uplynutí doby dočasného odstranění, kdy se prostředek *clusteru* trvale odstraní.
 
-- Získejte všechny prostředky *clusteru* pro skupinu prostředků:
+- Načíst všechny prostředky *clusteru* pro skupinu prostředků:
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
-  **Reakce**
+  **Základě**
   
   ```json
   {
@@ -514,58 +514,58 @@ Všechna data jsou přístupná po operaci otočení klíče, včetně dat poži
   }
   ```
 
-- Získejte všechny prostředky *clusteru* pro předplatné:
+- Získat všechny prostředky *clusteru* pro předplatné:
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
     
-  **Reakce**
+  **Základě**
     
-  Stejná odpověď jako pro '*prostředky clusteru* pro skupinu prostředků', ale v oboru předplatného.
+  Stejná odpověď jako u ' prostředků*clusteru* pro skupinu prostředků ', ale v oboru předplatného.
 
-- Aktualizace *rezervace kapacity* v prostředku *clusteru* – když se změní svazek dat do přidružených pracovních prostorů a chcete aktualizovat úroveň rezervace kapacity pro účely fakturace, postupujte podle [prostředku *aktualizačního clusteru* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Úroveň rezervace kapacity se může pohybovat v rozmezí od 1 000 do 2 000 GB za den a v krocích po 100. Chcete-li dosáhnout úrovně vyšší než 2 000 GB za den, obraťte se na kontakt společnosti Microsoft a povolte jej.
+- Aktualizovat *rezervaci kapacity* v prostředku *clusteru* – když se změní datový svazek na přidružené pracovní prostory a chcete aktualizovat úroveň rezervace kapacity pro účely fakturace, postupujte podle [prostředku aktualizovat *cluster* ](#update-cluster-resource-with-key-identifier-details) a zadejte novou hodnotu kapacity. Úroveň rezervace kapacity může být v rozsahu 1 000 až 2 000 GB za den a v krocích po 100. Pro zajištění vyšší úrovně než 2 000 GB za den kontaktujte kontakt Microsoftu, abyste ho povolili.
 
-- Odstranit prostředek *clusteru* – operace obnovitelného odstranění se provádí, aby bylo možné obnovit prostředek *clusteru* včetně jeho dat do 14 dnů, bez ohledu na to, zda bylo odstranění náhodné nebo úmyslné. Název *prostředku clusteru* zůstane rezervován během období slabého odstranění a nelze vytvořit nový cluster s tímto názvem. Po období slabého odstranění je uvolněn název prostředku *clusteru,* prostředek *clusteru* a data jsou trvale odstraněny a nelze je obnovit. Všechny přidružené pracovní prostor získá de-associated z prostředku *clusteru* na operaci odstranění. Nová ingovaná data jsou uložena ve sdíleném úložišti Log Analytics a zašifrována pomocí klíče Microsoft. Operace depřidružené pracovní prostory je asynchronní.
+- Odstranění prostředku *clusteru* – provede se operace obnovitelného odstranění, která umožňuje obnovení prostředku *clusteru* včetně jeho dat do 14 dnů, ať už došlo k nechtěnému nebo úmyslnému odstranění. Název prostředku *clusteru* zůstane rezervovaný během období obnovitelného odstranění a nemůžete vytvořit nový cluster s tímto názvem. Po uplynutí doby tichého odstranění se název prostředku *clusteru* uvolní, prostředky a data *clusteru* se trvale odstraní a jsou neobnovitelná. Při operaci odstranění se z prostředku *clusteru* odpojí všechny přidružené pracovní prostory. Nová ingestovaná data se ukládají do sdíleného Log Analyticsho úložiště a šifrují s klíčem Microsoft Key. Operace de-asociované pracovní prostory je asynchronní.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
   Authorization: Bearer <token>
   ```
 
-  **Reakce**
+  **Základě**
 
   200 OK
 
-- Obnovení prostředku *clusteru* a dat – prostředek *clusteru,* který byl odstraněn v posledních 14 dnech, je ve stavu obnovitelného odstranění a lze jej obnovit. To je prováděno ručně skupinou produktů v současné době. Pro žádosti o obnovení použijte svůj kanál Společnosti Microsoft.
+- Obnovení prostředku *clusteru* a vašich dat – prostředek *clusteru* , který se odstranil za posledních 14 dní, je ve stavu obnovitelného odstranění a je možné ho obnovit. Tato služba je v současnosti prováděna ručně skupinou produktů. Pro požadavky na obnovení použijte Microsoft Channel.
 
 ## <a name="appendix"></a>Příloha
 
-Application Insights customer managed key (CMK) je také podporována, i když byste měli zvážit následující změny, které vám pomohou naplánovat nasazení CMK pro komponenty Application Insight.
+Také se podporuje CMK (Customer Managed Key), i když byste měli vzít v úvahu následující změny, které vám pomůžou naplánovat nasazení CMK pro komponenty Insight Application Insights. Application Insights
 
-Log Analytics a Application Insights používají stejnou platformu úložiště dat a dotazovací stroj. Spojujeme tyto dva obchody prostřednictvím integrace Application Insights do Log Analytics, abychom poskytli jediné jednotné úložiště protokolů v rámci Azure Monitoru do druhého čtvrtletí
-2020. Tato změna přinese vaše data Application Insight do pracovních prostorů Log Analytics a umožní dotazy, přehledy a další vylepšení, zatímco konfigurace CMK na vašem pracovním prostoru, se bude vztahovat také na vaše data Application Insights.
+Log Analytics a Application Insights používají stejnou platformu pro úložiště dat a dotazovací stroj. Tato dvě úložiště přinášíme společně prostřednictvím integrace Application Insights do Log Analytics a v rámci Azure Monitor druhé čtvrtletí poskytneme jediné sjednocené úložiště protokolů.
+2020. Tato změna přinese data do vašich aplikací do Log Analytics pracovních prostorů a provede dotazy, přehledy a další vylepšení, které je možné použít i v případě, že se konfigurace CMK v pracovním prostoru vztahuje i na vaše Application Insights data.
 
 > [!NOTE]
-> Pokud není nutné nasadit CMK pro vaše data Application Insight před integrací, doporučujeme počkat s Application Insights CMK, protože tato nasazení bude narušena integrací a budete muset překonfigurovat CMK po migraci do pracovního prostoru Log Analytics. Minimální hodnota 1 TB za den platí na úrovni clusteru a dokud nebude konsolidace dokončena během druhého čtvrtletí, vyžadují přehledy aplikací a analýza protokolů samostatné clustery.
+> Pokud před integrací nemusíte nasazovat CMK pro data vaší aplikace, doporučujeme počkat s Application Insights CMK, protože taková nasazení budou přerušena integrací a po migraci na Log Analytics pracovní prostor budete muset znovu nakonfigurovat CMK. Minimum 1 TB za den se vztahuje na úrovni clusteru a až do dokončení konsolidace během druhého čtvrtletí Application Insights a Log Analytics vyžadují samostatné clustery.
 
-## <a name="application-insights-cmk-configuration"></a>Konfigurace CMK aplikačních přehledů
+## <a name="application-insights-cmk-configuration"></a>Konfigurace Application Insights CMK
 
-Konfigurace Application Insights CMK je shodná s procesem znázorněný v tomto článku, včetně omezení a řešení potíží s výjimkou těchto kroků:
+Konfigurace Application Insights CMK je stejná jako proces, který je znázorněný v tomto článku, včetně omezení a řešení potíží s výjimkou těchto kroků:
 
-- Vytvoření *prostředku clusteru*
-- Přidružení komponenty k prostředku *clusteru*
+- Vytvoření prostředku *clusteru*
+- Přidružení součásti k prostředku *clusteru*
 
-Při konfiguraci CMK pro Application Insights použijte tyto kroky namísto výše uvedených kroků.
+Při konfiguraci CMK pro Application Insights použijte tento postup namísto těch, které jsou uvedeny výše.
 
-### <a name="create-a-cluster-resource"></a>Vytvoření *prostředku clusteru*
+### <a name="create-a-cluster-resource"></a>Vytvoření prostředku *clusteru*
 
-Tento prostředek se používá jako zprostředkující připojení identity mezi trezorem klíčů a součástmi. Poté, co jste obdrželi potvrzení, že vaše předplatná byla zapsána na seznam povolených, vytvořte prostředek *clusteru* Log Analytics v oblasti, kde jsou umístěny vaše součásti. Typ prostředku *clusteru* je definován v době vytvoření nastavením *vlastnosti clusterType* na *LogAnalytics*nebo *ApplicationInsights*. Měl by být *ApplicationInsights* for Application Insights CMK. Nastavení *clusterType* nelze po konfiguraci změnit.
+Tento prostředek se používá jako zprostředkující připojení identity mezi vaším Key Vault a vašimi komponentami. AŽ obdržíte potvrzení, že vaše předplatná byla povolená, vytvořte prostředek *clusteru* Log Analytics v oblasti, ve které jsou umístěné vaše komponenty. Typ prostředku *clusteru* je definován při vytvoření nastavením vlastnosti *ClusterType* na hodnotu *LogAnalytics*nebo *ApplicationInsights*. Měl by být *ApplicationInsights* pro Application Insights CMK. Nastavení *clusterType* nelze po konfiguraci změnit.
 
 **Vytvořit**
 
-Tento požadavek správce prostředků je asynchronní operace.
+Tato Správce prostředků požadavek je asynchronní operace.
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -587,30 +587,30 @@ Content-type: application/json
 }
 ```
 
-**Reakce**
+**Základě**
 
 200 OK a záhlaví.
-Během období předčasného přístupu funkce clusteru ADX je zřízena ručně. Zatímco trvá zřizování poddx clusteru chvíli dokončit, můžete zkontrolovat stav zřizování dvěma způsoby:
-1. Zkopírujte hodnotu adresy URL Azure-AsyncOperation z odpovědi a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
-2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState.* Je *ProvisioningAccount* při zřizování a *úspěšné po* dokončení.
+Během období předčasného přístupu k této funkci se cluster ADX zřídí ručně. I když trvá zřízení v clusteru v rámci ADX a i po dokončení, můžete stav zřizování zjistit dvěma způsoby:
+1. Z odpovědi Zkopírujte hodnotu adresy URL Azure-AsyncOperation a postupujte podle [kontroly stavu asynchronních operací](#asynchronous-operations-and-status-check).
+2. Odešlete požadavek GET na prostředek *clusteru* a podívejte se na hodnotu *provisioningState* . Je *ProvisioningAccount* při zřizování a *úspěšném* dokončení.
 
-### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Přidružení komponenty k prostředku *clusteru* pomocí [rozhraní Components – vytvoření nebo aktualizace](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) rozhraní API
+### <a name="associate-a-component-to-a-cluster-resource-using-components---create-or-update-api"></a>Přidružení součásti k prostředku *clusteru* pomocí [komponent – vytvořit nebo aktualizovat](https://docs.microsoft.com/rest/api/application-insights/components/createorupdate) rozhraní API
 
-K provedení této operace, která zahrnuje tyto akce, musíte mít oprávnění k zápisu pro komponentu i prostředek *clusteru:*
+K provedení této operace je potřeba mít oprávnění Write pro i prostředek *clusteru* , což zahrnuje tyto akce:
 
-- V komponentě: Microsoft.Insights/component/write
-- V *prostředku clusteru:* Microsoft.OperationalInsights/clusters/write
+- V součásti: Microsoft. Insights/Component/Write
+- V prostředku *clusteru* : Microsoft. OperationalInsights/Clusters/Write
 
 > [!IMPORTANT]
-> Tento krok by měl být proveden pouze po zřizování clusteru ADX. Pokud přidružíte komponenty a ingestovat data před zřizování, ingestovaná data budou zrušena a nebude obnovitelná.
-> Chcete-li ověřit, zda je zřízen cluster ADX, spusťte prostředek *clusteru* Získat rozhraní REST API a zkontrolujte, zda je hodnota *provisioningState* *Succeeded*.
+> Tento krok je třeba provést až po zřízení clusteru ADX. Pokud přiřadíte součásti a ingestovat data před zřizováním, ingestovaná data se ztratí a nepůjde obnovit.
+> Pokud chcete ověřit, jestli je cluster ADX zřízený, spusťte *clusterový* prostředek získat REST API a zkontrolujte, jestli je hodnota *provisioningState* *úspěšná*.
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
 Authorization: Bearer <token>
 ```
 
-**Reakce**
+**Základě**
 ```json
 {
   "identity": {
@@ -641,9 +641,9 @@ Authorization: Bearer <token>
 ```
 
 > [!IMPORTANT]
-> Zkopírujte a uchovávejte odpověď, protože ji budete potřebovat v dalších krocích.
+> Zkopírujte a zachovejte odpověď, protože ji budete potřebovat v dalších krocích.
 
-**Přidružení komponenty**
+**Přidružit komponentu**
 
 ```rst
 PUT https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Insights/components/<component-name>?api-version=2015-05-01
@@ -658,10 +658,10 @@ Content-type: application/json
   "kind": "<component-type>"
 }
 ```
-"clusterDefinitionId" je hodnota "clusterId" poskytnutá v odpovědi z předchozího kroku.
-"kind" příklad je "web".
+"clusterDefinitionId" je hodnota "clusterId" zadaná v odpovědi z předchozího kroku.
+Příklad "druh" je "Web".
 
-**Reakce**
+**Základě**
 
 ```json
 {
@@ -692,6 +692,6 @@ Content-type: application/json
   }
 }
 ```
-"clusterDefinitionId" je ID prostředku *clusteru,* které je přidruženo k této součásti.
+"clusterDefinitionId" je ID prostředku *clusteru* , které je přidruženo k této součásti.
 
-Po přidružení jsou data odeslaná do komponent uložena zašifrovaná pomocí spravovaného klíče.
+Po přidružení se data odesílaná do vašich komponent ukládají zašifrovaný pomocí spravovaného klíče.

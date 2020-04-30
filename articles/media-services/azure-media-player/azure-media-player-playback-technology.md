@@ -1,31 +1,31 @@
 ---
-title: Technologie přehrávání přehrávače médií Azure
-description: Přečtěte si další informace o technologii přehrávání přehrávané k přehrávání videa nebo zvuku.
+title: Technologie přehrávání Azure Media Player
+description: Přečtěte si další informace o technologii přehrávání, která se používá k přehrání videa nebo zvuku.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726484"
 ---
 # <a name="playback-technology-tech"></a>Technologie přehrávání ("tech") #
 
-Technologie přehrávání označuje konkrétní technologii prohlížeče nebo pluginu používanou k přehrávání videa nebo zvuku.
+Technologie přehrávání odkazuje na konkrétní technologii prohlížeče nebo modulu plug-in, která se používá k přehrání videa nebo zvuku.
 
-- **azureHtml5JS**: Využívá standardy MSE a EME ve spojení s prvkem videa pro přehrávání obsahu DASH bez pluginů s podporou šifrovaného obsahu aes-128 bitové obálky nebo běžného šifrovaného obsahu DRM (přes PlayReady a Widevine, když to prohlížeč podporuje) z Azure Media Services
-- **flashSS**: využívá technologii flash player k přehrávání plynulého obsahu s podporou dešifrování obálky AES-128 bit ze služby Azure Media Services - vyžaduje verzi Flash 11.4 nebo vyšší
-- **html5FairPlayHLS**: využívá Safari specifické v prohlížeči-založené přehrávání technologie přes HLS s video prvek. Tato technologie je vyžaduje přehrání chráněného obsahu FairPlay ze služby Azure Media Services a byla přidána do techOrder u 10/19/16
-- **silverlightSS:** Využívá technologii silverlight k přehrávání plynulého obsahu s podporou obsahu chráněného službou PlayReady ze služby Azure Media Services.
-- **html5**: využívá v prohlížeči-založené přehrávání technologie s video prvek.  Když se na apple iOS nebo Android zařízení, tato technologie umožňuje přehrávání HLS proudů s nějakou základní podporu pro AES-128 bit obálky šifrování nebo DRM obsahu (přes FairPlay, když prohlížeč podporuje).
+- **azureHtml5JS**: využívá standardy MSE a EME ve spojení s elementem video pro přehrávání přerušovaného obsahu založeného na modulu plug-in s podporou algoritmu AES-128 šifrovaný obsah nebo společný zašifrovaný šifrovaný obsah (přes PlayReady a Widevine, když ho prohlížeč podporuje) od Azure Media Services
+- **Flash**: využívá technologii přehrávače Flash k přehrání hladkého obsahu s podporou šifrování obálek AES-128 od Azure Media Services – vyžaduje verzi Flash 11,4 nebo vyšší.
+- **html5FairPlayHLS**: využívá aplikaci Safari specifickou v prohlížeči v technologii přehrávání prostřednictvím HLS s prvkem video. Tento techer je nutný k přehrání FairPlay chráněného obsahu z Azure Media Services a přidal se do techOrder od 10/19/16.
+- **Silverlight**: využívá technologii Silverlight k přehrání hladkého obsahu s podporou obsahu chráněného technologií PlayReady z Azure Media Services.
+- **HTML5**: využívá technologii přehrávání založenou na prohlížeči s prvkem video.  Když jste na zařízení se systémem iOS nebo Android, tento techer umožňuje přehrávání HLS datových proudů s určitou základní podporou pro šifrování obálek AES-128 nebo obsah DRM (přes FairPlay, když ho prohlížeč podporuje).
 
-## <a name="tech-order"></a>Technická objednávka ##
+## <a name="tech-order"></a>Tech Order ##
 
-Aby bylo zajištěno, že váš datový zdroj je hratelný na široké škále zařízení, `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` doporučujeme následující technickou objednávku a je výchozí, pokud: a lze je nastavit přímo na `<video>` nebo programově v možnostech:
+Aby se zajistilo, že váš Asset bude moct využít širokou škálu zařízení, doporučuje se následující techá objednávka a je výchozí, pokud `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` : a dá se nastavit přímo na `<video>` programově nebo v možnostech:
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
@@ -37,37 +37,37 @@ Aby bylo zajištěno, že váš datový zdroj je hratelný na široké škále z
     });
 ```
 
-## <a name="compatibility-matrix"></a>Matice kompatibility ##
+## <a name="compatibility-matrix"></a>Tabulka kompatibility ##
 
-Vzhledem k doporučené muka s streamování obsahu ze služby Azure Media Services se očekává následující matice přehrávání kompatibility
+Vzhledem k doporučenému technickému pořadí s obsahem streamování z Azure Media Services je očekávána následující matice přehrávání kompatibility.
 
-| Prohlížeč        | Operační systém                                                       | Očekávané technologie (vymazat)  | Očekávané technologie (AES)  | Očekávaná technologie (DRM)          |
+| Prohlížeč        | Operační systém                                                       | Očekávalo se Tech (Clear)  | Očekával se technický (AES).  | Očekávaný technický (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| EdgeiE 11      | Windows 10, Windows 8.1, Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | blikáSS                | blikáSS              | silverlightSS (PlayReady)    |
-| IE 11          | Windows Phone 8,1                                        | azureHtml5JS           | azureHtml5JS         | není podporováno                |
-| Edge           | Xbox One<sup>1</sup> (aktualizace z listopadu 2015)                   | azureHtml5JS           | azureHtml5JS         | není podporováno                |
-| Chrome 37+     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 47+    | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42-46  | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | silverlightSS (PlayReady)    |
-| Firefox 35-41  | Windows 10, Windows 8.1                                  | blikáSS                | blikáSS              | silverlightSS (PlayReady)    |
-| Safari         | iOS 6+                                                   | html5                  | html5 (bez tokenu)3    | není podporováno                |
-| Safari 8+      | OS X Yosemite+                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Safari 6       | OS X Puma<sup>1</sup>                           | blikáSS                | blikáSS              | silverlightSS (PlayReady)    |
-| Chrome 37+     | Android 4.4.4+<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Chrome 37+     | Android 4.02                                             | html5                  | html5 (bez tokenu)<sup>3</sup>    | není podporováno                |
-| Firefox 42+    | Android 5.0+<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | není podporováno                |
-| IE 8           | Windows                                                  | není podporováno          | není podporováno        | není podporováno                |
+| Edge 11      | Windows 10, Windows 8.1 Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | blesk                | blesk              | Silverlight (PlayReady)    |
+| IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
+| Edge           | Xbox 1<sup>(aktualizace</sup> 2015)                   | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
+| Chrome 37 +     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 47 +    | Windows 10, Windows 8.1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 42-46  | Windows 10, Windows 8.1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | Silverlight (PlayReady)    |
+| Firefox 35-41  | Windows 10, Windows 8.1                                  | blesk                | blesk              | Silverlight (PlayReady)    |
+| Safari         | iOS 6+                                                   | HTML5                  | HTML5 (bez tokenu) 3    | nepodporováno                |
+| Safari 8 +      | OS X Yosemite +                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
+| Safari 6       | OS X horská Lion<sup>1</sup>                           | blesk                | blesk              | Silverlight (PlayReady)    |
+| Chrome 37 +     | Android 4.4.4 +<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Chrome 37 +     | Android 4,02                                             | HTML5                  | HTML5 (bez tokenu)<sup>3</sup>    | nepodporováno                |
+| Firefox 42 +    | Android 5.0 +<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | nepodporováno                |
+| IE 8           | Windows                                                  | nepodporováno          | nepodporováno        | nepodporováno                |
 
-<sup>1</sup> Konfigurace není podporována ani testována; uvedeny jako odkaz na dokončení.
+<sup>1</sup> konfigurace není podporována nebo testována; uvádí se jako referenční dokumentace pro dokončení.
 
-<sup>2</sup> Úspěšné přehrávání na zařízeních se systémem Android vyžaduje kombinaci funkcí zařízení, podpory grafiky, vykreslování kodeků, podpory operačního systému a dalších. Vzhledem k tomu, android je open-source platforma, která umožňuje výrobcům telefonů změnit Vanilla Android OS poskytované společností Google, to způsobuje určitou fragmentaci v prostoru Android, a některá zařízení nemusí být podporovány z důvodu nedostatku funkcí. Některé zařízení Android také nemají podporu pro všechny kodeky.  
+<sup>2</sup> úspěšné přehrávání na zařízeních s Androidem vyžaduje kombinaci možností zařízení, podporu grafiky, vykreslování kodeků, podporu operačních systémů a další. Vzhledem k tomu, že Android je open source platforma, která telefonním výrobcům umožňuje změnit Vanilla Android, který poskytuje Google, to způsobí určitou fragmentaci v prostoru Androidu a některá zařízení nemusí být podporovaná z důvodu nedostatku funkcí. Některá zařízení s Androidem navíc nepodporují všechny kodeky.  
 
-<sup>3</sup> V případech, kdy neexistuje žádná podpora tokenu, lze k přidání této funkce použít proxy server. Podívejte se na tento [blog](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) se dozvíte více o tomto řešení.
+<sup>3</sup> v případech, kdy není k dispozici podpora tokenu, lze použít proxy server k přidání této funkce. Další informace o tomto řešení najdete na tomto [blogu](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) .
 
 > [!NOTE]
-> Pokud očekávaná technologie vyžaduje instalaci pluginu, jako je Flash, a která není nainstalována na počítači uživatele, AMP bude i nadále kontrolovat schopnosti další technologie ve spojení s typy zdrojů a informacemi o ochraně v seznamu technologií. Pokud se například pokusíte zobrazit nechráněný datový proud na vyžádání v Safari 8 v OS X Yosemite a flash a silverlight nejsou nainstalovány, AMP vybere nativní technologii Html5 pro přehrávání.<br/><br/>Nové technologie prohlížeče se objevují denně, a jako takový by mohly mít vliv na tuto matici.
+> Pokud se zvolený technický typ vyžaduje, aby byl nainstalovaný modul plug-in, jako je třeba Flash a který není v počítači uživatele nainstalovaný, bude AMP dál kontrolovat možnosti další tech. ve spojení s typy zdrojů a informacemi o ochraně v seznamu tech. Pokud se například pokusíte zobrazit nechráněný Stream na vyžádání v Safari 8 v OS X Yosemite a aplikace Flash i Silverlight nejsou nainstalované, AMP vybere nativní technologii Html5 tech for přehrávání.<br/><br/>Nové technologie prohlížeče se objevují každý den a stejně tak by to mohlo mít vliv na tuto matici.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

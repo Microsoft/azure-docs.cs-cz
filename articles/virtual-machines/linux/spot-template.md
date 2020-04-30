@@ -1,6 +1,6 @@
 ---
-title: Nasazení virtuálních virtuálních počítačů Azure Spot pomocí šablony
-description: Přečtěte si, jak pomocí šablony nasadit virtuální počítače Spot, abyste ušetřili náklady.
+title: Použití šablony k nasazení virtuálních počítačů Azure na místě
+description: Naučte se používat šablonu k nasazení virtuálních počítačů na místě za účelem úspory nákladů.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758345"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních virtuálních počítače pomocí šablony Správce prostředků
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Nasazení virtuálních počítačů na místě pomocí šablony Správce prostředků
 
-Použití [spotových virtuálních měn](spot-vms.md) vám umožní využít naši nevyužitou kapacitu s výraznými úsporami nákladů. Kdykoli v okamžiku, kdy Azure potřebuje kapacitu zpět, infrastruktura Azure vystěhovává virtuální počítače Spot. Virtuální počítače Spot jsou proto skvělé pro úlohy, které zvládnou přerušení, jako jsou úlohy dávkového zpracování, vývojová a testovací prostředí, velké výpočetní úlohy a další.
+Použití [přímých virtuálních počítačů](spot-vms.md) vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
-Ceny pro spotové virtuální počítače jsou variabilní na základě oblasti a skladové položky. Další informace najdete v tématu Ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
+Ceny pro virtuální počítače na místě jsou proměnné na základě oblastí a SKU. Další informace najdete v tématu ceny virtuálních počítačů pro [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) a [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu za virtuální hod. Maximální cenu pro spotový virtuální virtuální mísu lze nastavit v amerických dolarech (USD) s použitím až 5 desetinných míst. Například hodnota `0.98765`by byla maximální cena $0.98765 USD za hodinu. Pokud nastavíte maximální `-1`cenu , virtuální počítač nebude vystěhován na základě ceny. Cena za virtuální ho virtuálního času bude aktuální cena spotu nebo cena za standardní virtuální ms, která je vždy nižší, pokud je k dispozici kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [Spot Virtuální virtuální chod – ceny](spot-vms.md#pricing).
+Máte možnost nastavit maximální cenu, kterou jste ochotni zaplatit za hodinu pro virtuální počítač. Maximální cena za virtuální počítač na místě se dá nastavit v amerických dolarech (USD), a to s využitím až 5 desetinných míst. Hodnota `0.98765`by měla být například maximální cena $0,98765 USD za hodinu. Pokud nastavíte maximální cenu `-1`, nebude se virtuální počítač vyřadit podle ceny. Cena za virtuální počítač bude aktuální cena za bod nebo cena za standardní virtuální počítač, který je stále menší, pokud je dostupná kapacita a kvóta. Další informace o nastavení maximální ceny najdete v tématu [virtuální počítače – ceny](spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Použití šablony
 
-Pro nasazení šablony Spot`"apiVersion": "2019-03-01"` použijte nebo novější. Do `priority`šablony `evictionPolicy` `billingProfile` přidejte vlastnosti a vlastnosti:
+Pro nasazení šablon přímých verzí použijte`"apiVersion": "2019-03-01"` nebo novější. `priority`Do šablony přidejte `evictionPolicy` vlastnosti `billingProfile` a a:
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ Pro nasazení šablony Spot`"apiVersion": "2019-03-01"` použijte nebo novějš�
 }
 ```
 
-Tady je ukázková šablona s přidanými vlastnostmi pro virtuální virtuální počítače s bodem. Nahraďte názvy prostředků `<password>` vlastním a heslem pro účet místního správce na virtuálním počítači.
+Tady je Ukázková šablona s přidanými vlastnostmi pro virtuální počítač s přímým odkazem. Názvy prostředků nahraďte vlastními a `<password>` heslo pro účet místního správce na virtuálním počítači.
 
 ```json
 {
@@ -175,6 +175,6 @@ Tady je ukázková šablona s přidanými vlastnostmi pro virtuální virtuáln�
 
 ## <a name="next-steps"></a>Další kroky
 
-Virtuální počítač Spot můžete taky vytvořit pomocí [Azure PowerShellu](../windows/spot-powershell.md) nebo [Azure CLI](spot-cli.md).
+Můžete také vytvořit virtuální počítač s přímým použitím [Azure PowerShell](../windows/spot-powershell.md) nebo rozhraní příkazového [řádku Azure](spot-cli.md).
 
-Pokud narazíte na chybu, přečtěte si informace [o chybových kódech](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Pokud dojde k chybě, přečtěte si [kódy chyb](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

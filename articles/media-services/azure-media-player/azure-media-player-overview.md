@@ -1,37 +1,37 @@
 ---
-title: Azure Media Player – přehled
-description: Přečtěte si další informace o Azure Media Playeru.
+title: Přehled Azure Media Player
+description: Přečtěte si další informace o Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726519"
 ---
 # <a name="azure-media-player-overview"></a>Přehled Azure Media Playeru #
 
-Azure Media Player je webový přehrávač videa vytvořený pro přehrávání mediálního obsahu ze [služby Microsoft Azure Media Services](https://azure.microsoft.com/services/media-services/) v široké škále prohlížečů a zařízení. Azure Media Player využívá oborové standardy, jako je HTML5, rozšíření zdroje médií (MSE) a rozšíření šifrovaných médií (EME) k poskytování obohaceného adaptivního streamování.  Pokud tyto standardy nejsou k dispozici na zařízení nebo v prohlížeči, Azure Media Player používá Flash a Silverlight jako záložní technologie. Bez ohledu na použitou technologii přehrávání budou mít vývojáři jednotné rozhraní JavaScript pro přístup k rozhraním API.  To umožňuje přehrávat obsah obsluhovaný mediálními službami Azure v celé řadě zařízení a prohlížečů bez dalšího úsilí.
+Azure Media Player je webový přehrávač, který je založený na přehrávání mediálního obsahu z [Microsoft Azure Media Services](https://azure.microsoft.com/services/media-services/) na nejrůznějších prohlížečích a zařízeních. Azure Media Player využívá oborové standardy, jako je HTML5, Media source Extensions (MSE) a rozšíření EME (Encrypted Media Extensions), aby poskytovala obohacené možnosti adaptivního streamování.  Pokud tyto standardy nejsou k dispozici v zařízení nebo v prohlížeči, Azure Media Player používá jako záložní technologii Flash a Silverlight. Bez ohledu na použitou technologii přehrávání budou mít vývojáři sjednocené rozhraní JavaScript pro přístup k rozhraním API.  To umožňuje, aby se obsah sloužil Azure Media Services, aby se hrál v široké škále zařízení a prohlížečů bez dalšího úsilí.
 
-Microsoft Azure Media Services umožňuje obsah, který se bude zobrazovat ve formátech DASH, Smooth Streaming a HLS pro přehrávání obsahu. Azure Media Player bere v úvahu tyto různé formáty a automaticky přehraje nejlepší odkaz na základě možností platformy nebo prohlížeče. Microsoft Azure Media Services také umožňuje dynamické šifrování prostředků pomocí společného šifrování (PlayReady nebo Widevine) nebo Šifrování obálek AES-128 bit. Azure Media Player umožňuje dešifrování PlayReady a AES-128 bit šifrovaný obsah, pokud je správně nakonfigurován.  Postup konfigurace tohoto obsahu naleznete v části [Chráněný obsah.](azure-media-player-protected-content.md)
+Microsoft Azure Media Services umožňuje, aby se obsah zpracoval s POMLČKou, Smooth Streaming a HLS formáty streamování pro přehrávání obsahu. Azure Media Player brát v úvahu tyto různé formáty a automaticky hraje nejlepší odkaz na základě schopností platforem a prohlížečů. Microsoft Azure Media Services taky umožňuje dynamické šifrování assetů s běžným šifrováním (PlayReady nebo Widevine) nebo šifrováním pomocí šifrování AES-128. Azure Media Player umožňuje dešifrování šifrovaného obsahu PlayReady a AES-128, když je správně nakonfigurovaný.  Postup konfigurace najdete v části [chráněný obsah](azure-media-player-protected-content.md) .
 
-Chcete-li požádat o nové funkce, poskytnout nápady nebo zpětnou vazbu, odešlete na [adresu UserVoice pro Azure Media Player](https://aka.ms/ampuservoice). Máte-li a konkrétní problémy, dotazy nebo najít ampinfo@microsoft.comnějaké chyby, napište nám řádek na .
+Pokud chcete požádat o nové funkce, poskytněte nápady nebo zpětnou vazbu, odešlete prosím na [UserVoice pro Azure Media Player](https://aka.ms/ampuservoice). Pokud máte nějaké a specifické problémy, otázky nebo zjistíte případné chyby, pusťte nás na ampinfo@microsoft.com.
 
-[Zaregistrujte se](https://aka.ms/ampsignup) a nikdy nezmeškáte vydání a abyste zůstali v obraze s nejnovějšími informacemi, které azure media player nabízí.
+[Zaregistrujte](https://aka.ms/ampsignup) se ještě předtím, než jste vygenerovali vydání, a zajistěte si nejnovější verzi, kterou Azure Media Player musí nabídnout.
 
 > [!NOTE]
-> Upozorňujeme, že Azure Media Player podporuje jenom datové proudy médií ze služby Azure Media Services.
+> Upozorňujeme, že Azure Media Player podporuje jenom mediální datové proudy z Azure Media Services.
 
 ## <a name="license"></a>Licence ##
 
-Azure Media Player je licencován a podléhá podmínkám uvedeným v licenčních podmínkách pro software společnosti Microsoft pro Azure Media Player. Úplné podmínky naleznete [v licenčním souboru.](azure-media-player-license.md) Další informace naleznete v [Prohlášení o zásadách ochrany osobních údajů.](https://www.microsoft.com/en-us/privacystatement/default.aspx)
+Azure Media Player je licencovaná a podléhá podmínkám, které jsou uvedené v licenčních podmínkami pro software společnosti Microsoft pro Azure Media Player. Úplné výrazy najdete v [souboru s licencí](azure-media-player-license.md) . Další informace najdete v [prohlášení o zásadách ochrany osobních údajů](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
 
-Autorská práva 2015 Microsoft Corporation.
+Copyright 2015 Microsoft Corporation.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

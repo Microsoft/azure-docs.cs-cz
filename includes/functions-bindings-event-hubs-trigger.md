@@ -4,41 +4,41 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e055f2d7b98df9357ecdee5e044305e35935682e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589711"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81791659"
 ---
-Aktivační událost funkce slouží k reakci na událost odeslanou do datového proudu událostí centra událostí centra událostí. Chcete-li nastavit aktivační událost, musíte mít přístup pro čtení do podkladového centra událostí. Při spuštění funkce je zpráva předaná funkci zadána jako řetězec.
+Pomocí triggeru funkce můžete reagovat na událost odeslanou do datového proudu událostí centra událostí. K nastavení triggeru musíte mít přístup pro čtení k základnímu centru událostí. Když je funkce aktivována, zpráva předaná funkci je zapsána jako řetězec.
 
 ## <a name="scaling"></a>Škálování
 
-Každá instance funkce spouštěné události je podpořena jedinou instancí [EventProcessorHost.](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) Aktivační událost (poháněná event huby) zajišťuje, že pouze jedna instance [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) může získat zapůjčení na daný oddíl.
+Každá instance funkce aktivované událostmi je zajištěna jednou instancí [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) . Aktivační událost (s podporou Event Hubs) zajišťuje, že v daném oddílu může získat zapůjčení jenom jedna instance [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) .
 
-Centrum událostí zvažte například takto:
+Můžete například zvážit centrum událostí následujícím způsobem:
 
 * 10 oddílů
-* 1 000 událostí rovnoměrně rozmístěných ve všech oddílech se 100 zprávami v každém oddílu
+* 1 000 událostí distribuovaně napříč všemi oddíly a 100 zprávy v každém oddílu
 
-Pokud je funkce poprvé povolena, existuje pouze jedna instance funkce. Zavolejte první instanci `Function_0`funkce . Funkce `Function_0` má jednu instanci [EventProcessorHost,](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) která obsahuje zapůjčení na všech deseti oddílů. Tato instance je čtení událostí z oddílů 0-9. Od tohoto okamžiku se stane jedna z následujících věcí:
+Je-li funkce nejprve povolena, je k dispozici pouze jedna instance funkce. Pojďme zavolat první instanci `Function_0`funkce. `Function_0` Funkce má jednu instanci [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) , která má zapůjčení na všech deseti oddílech. Tato instance čte události z oddílů 0-9. Od této chvíle nastane jedna z následujících možností:
 
-* **Nové instance funkcí nejsou** `Function_0` potřeba : je schopen zpracovat všech 1 000 událostí, než se projeví logika škálování funkcí. V tomto případě jsou všechny 1 000 `Function_0`zpráv zpracovány .
+* **Nové instance funkcí nejsou potřeba**: `Function_0` je možné zpracovat všechny události 1 000 předtím, než se logika škálování funkcí projeví. V tomto případě jsou všechny zprávy 1 000 zpracovávány pomocí `Function_0`.
 
-* **Je přidána další instance funkce**: Pokud logika škálování funkcí určuje, že `Function_0` má`Function_1`více zpráv, než může zpracovat, vytvoří se nová instance aplikace funkce ( ). Tato nová funkce má také přidruženou instanci [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Jako základní event huby zjistí, že nová instance hostitele se snaží číst zprávy, vyrovnává oddíly mezi instancemi hostitele. Například oddíly 0-4 mohou `Function_0` být přiřazeny a `Function_1`oddíly 5-9 do .
+* **Přidala se další instance funkce**: Pokud logika škálování funkcí určuje, že `Function_0` má víc zpráv, než je možné zpracovat, vytvoří se nová instance aplikace`Function_1`Function App (). Tato nová funkce má také přidruženou instanci [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor). Vzhledem k tomu, že základní Event Hubs zjišťují, že se nová instance hostitele pokouší číst zprávy, načítá vyrovnávání zatížení oddílů v rámci instancí hostitelů. Například oddíly 0-4 mohou být přiřazeny k `Function_0` a oddíly 5-9 až. `Function_1`
 
-* **N další instance funkce jsou přidány**: Pokud funkce `Function_0` škálování logiky určuje, že oba a `Function_1` mají více zpráv, než mohou zpracovat, jsou vytvořeny nové `Functions_N` instance aplikace funkce.  Aplikace se vytvářejí do `N` bodu, kde je větší než počet oddílů centra událostí. V našem příkladu centra událostí opět vyrovnává zatížení oddíly, v `Function_0`tomto případě napříč instancemi ... `Functions_9`.
+* **N je přidaných víc instancí funkcí**: Pokud logika škálování funkcí určuje, `Function_0` že `Function_1` má obojí a má víc zpráv, než můžou `Functions_N` zpracovat, vytvoří se nové instance aplikace Function App.  Aplikace se vytvoří v místě, kde `N` je větší než počet oddílů centra událostí. V našem příkladu Event Hubs znovu vyrovnávání zatížení oddílů, v tomto případě napříč instancemi `Function_0`... `Functions_9`.
 
-Při škálování dojde, `N` instance je číslo větší než počet oddílů centra událostí. Tento vzor se používá k zajištění [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) instance jsou k dispozici získat zámky na oddíly, jakmile budou k dispozici z jiných instancí. Poplatky se vám budou účtovat pouze za prostředky použité při spuštění instance funkce. Jinými slovy, za toto nadměrné zřizování se vám neúčtuje.
+V případě, že `N` dojde ke škálování, jsou instance větší než počet oddílů centra událostí. Tento model se používá k zajištění dostupnosti instancí [EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor) k získání zámků na oddílech, jakmile budou k dispozici z jiných instancí. Účtují se vám jenom prostředky používané při spuštění instance funkce. Jinými slovy, toto nadměrné zřizování se vám neúčtují.
 
-Po dokončení spuštění všech funkcí (s chybami nebo bez něj) jsou kontrolní body přidány do přidruženého účtu úložiště. Při směrování zaškrtávací mačká teceúspěšná, všech 1 000 zpráv jsou nikdy načíst znovu.
+Po dokončení všech spuštění funkce (s chybami nebo bez nich) se do přidruženého účtu úložiště přidají kontrolní body. Po úspěšném vrácení se změnami se nebudou všechny zprávy 1 000 znovu načíst.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Následující příklad ukazuje [c# funkce,](../articles/azure-functions/functions-dotnet-class-library.md) která protokoluje text zprávy aktivační události centra událostí.
+Následující příklad ukazuje [funkci jazyka C#](../articles/azure-functions/functions-dotnet-class-library.md) , která zapisuje text zprávy triggeru centra událostí.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -48,7 +48,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Chcete-li získat přístup k [metadatům události](#event-metadata) v kódu funkce, spojte se s objektem [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vyžaduje příkaz using pro). `Microsoft.Azure.EventHubs` Můžete také přistupovat ke stejným vlastnostem pomocí výrazů vazby v podpisu metody.  Následující příklad ukazuje oba způsoby, jak získat stejná data:
+Chcete-li získat přístup k [metadatům události](#event-metadata) v kódu funkce, připojte se k objektu [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vyžaduje příkaz `Microsoft.Azure.EventHubs`using pro). Ke stejným vlastnostem můžete přistupovat také pomocí výrazů vazeb v signatuře metody.  Následující příklad ukazuje dva způsoby, jak získat stejná data:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -71,10 +71,10 @@ public static void Run(
 }
 ```
 
-Chcete-li přijímat události `string` v `EventData` dávce, vytvořte nebo pole.  
+Chcete-li přijímat události v dávce, `string` udělejte `EventData` nebo Array.  
 
 > [!NOTE]
-> Při příjmu v dávce nelze vázat na parametry `DateTime enqueuedTimeUtc` metody, jako ve `EventData` výše uvedeném příkladu s a musí přijímat tyto z každého objektu  
+> Při příjmu v dávce nejde vytvořit vazby k parametrům metody, jako v předchozím příkladu, `DateTime enqueuedTimeUtc` a získat je z každého `EventData` objektu.  
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
@@ -90,11 +90,11 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje aktivační událost centra událostí v souboru *function.json* a [funkci skriptu Jazyka C#,](../articles/azure-functions/functions-reference-csharp.md) která používá vazbu. Funkce protokoluje text zprávy aktivační události centra událostí.
+Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [funkci skriptu jazyka C#](../articles/azure-functions/functions-reference-csharp.md) , která používá vazbu. Funkce zaznamená text zprávy triggeru centra událostí.
 
-Následující příklady ukazují data vazby centra událostí v souboru *function.json.*
+Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* .
 
-### <a name="version-2x-and-higher"></a>Verze 2.x a vyšší
+### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
 ```json
 {
@@ -106,7 +106,7 @@ Následující příklady ukazují data vazby centra událostí v souboru *funct
 }
 ```
 
-### <a name="version-1x"></a>Verze 1.x
+### <a name="version-1x"></a>Verze 1. x
 
 ```json
 {
@@ -118,7 +118,7 @@ Následující příklady ukazují data vazby centra událostí v souboru *funct
 }
 ```
 
-Zde je kód skriptu C#:
+Tady je kód skriptu jazyka C#:
 
 ```cs
 using System;
@@ -129,7 +129,7 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 }
 ```
 
-Chcete-li získat přístup k [metadatům události](#event-metadata) v kódu funkce, spojte se s objektem [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vyžaduje příkaz using pro). `Microsoft.Azure.EventHubs` Můžete také přistupovat ke stejným vlastnostem pomocí výrazů vazby v podpisu metody.  Následující příklad ukazuje oba způsoby, jak získat stejná data:
+Chcete-li získat přístup k [metadatům události](#event-metadata) v kódu funkce, připojte se k objektu [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) (vyžaduje příkaz `Microsoft.Azure.EventHubs`using pro). Ke stejným vlastnostem můžete přistupovat také pomocí výrazů vazeb v signatuře metody.  Následující příklad ukazuje dva způsoby, jak získat stejná data:
 
 ```cs
 #r "Microsoft.Azure.EventHubs"
@@ -157,7 +157,7 @@ public static void Run(EventData myEventHubMessage,
 }
 ```
 
-Chcete-li přijímat události `string` v `EventData` dávce, vytvořte nebo vytvořte pole:
+Chcete-li přijímat události v dávce, `string` udělejte `EventData` nebo pole:
 
 ```cs
 public static void Run(string[] eventHubMessages, TraceWriter log)
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vazby aktivační události centra událostí v souboru *function.json* a [funkci JavaScriptu,](../articles/azure-functions/functions-reference-node.md) která vazbu používá. Funkce čte [metadata události](#event-metadata) a protokoluje zprávu.
+Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [funkci JavaScriptu](../articles/azure-functions/functions-reference-node.md) , která používá vazbu. Funkce přečte [metadata události](#event-metadata) a zaprotokoluje zprávu.
 
-Následující příklady ukazují data vazby centra událostí v souboru *function.json.*
+Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* .
 
-### <a name="version-2x-and-higher"></a>Verze 2.x a vyšší
+### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
 ```json
 {
@@ -187,7 +187,7 @@ Následující příklady ukazují data vazby centra událostí v souboru *funct
 }
 ```
 
-### <a name="version-1x"></a>Verze 1.x
+### <a name="version-1x"></a>Verze 1. x
 
 ```json
 {
@@ -199,7 +199,7 @@ Následující příklady ukazují data vazby centra událostí v souboru *funct
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = function (context, myEventHubMessage) {
@@ -212,9 +212,9 @@ module.exports = function (context, myEventHubMessage) {
 };
 ```
 
-Chcete-li přijímat události `cardinality` v `many` dávce, nastavte v souboru *function.json,* jak je znázorněno v následujících příkladech.
+Chcete-li přijímat události v dávce, `cardinality` nastavte `many` na hodnotu v souboru *Function. JSON* , jak je znázorněno v následujících příkladech.
 
-### <a name="version-2x-and-higher"></a>Verze 2.x a vyšší
+### <a name="version-2x-and-higher"></a>Verze 2. x a vyšší
 
 ```json
 {
@@ -227,7 +227,7 @@ Chcete-li přijímat události `cardinality` v `many` dávce, nastavte v souboru
 }
 ```
 
-### <a name="version-1x"></a>Verze 1.x
+### <a name="version-1x"></a>Verze 1. x
 
 ```json
 {
@@ -240,7 +240,7 @@ Chcete-li přijímat události `cardinality` v `many` dávce, nastavte v souboru
 }
 ```
 
-Zde je kód JavaScript:
+Tady je kód JavaScriptu:
 
 ```javascript
 module.exports = function (context, eventHubMessages) {
@@ -259,9 +259,9 @@ module.exports = function (context, eventHubMessages) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vazby aktivační události centra událostí v souboru *function.json* a [funkci Pythonu,](../articles/azure-functions/functions-reference-python.md) která používá vazbu. Funkce čte [metadata události](#event-metadata) a protokoluje zprávu.
+Následující příklad ukazuje aktivační vazbu centra událostí v souboru *Function. JSON* a [funkci Pythonu](../articles/azure-functions/functions-reference-python.md) , která používá vazbu. Funkce přečte [metadata události](#event-metadata) a zaprotokoluje zprávu.
 
-Následující příklady ukazují data vazby centra událostí v souboru *function.json.*
+Následující příklady ukazují Event Hubs vázání dat v souboru *Function. JSON* .
 
 ```json
 {
@@ -273,7 +273,7 @@ Následující příklady ukazují data vazby centra událostí v souboru *funct
 }
 ```
 
-Zde je kód Pythonu:
+Tady je kód Pythonu:
 
 ```python
 import logging
@@ -289,7 +289,7 @@ def main(event: func.EventHubEvent):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje aktivační událost centra událostí, která zaznamenává text zprávy aktivační události Event Hub.
+Následující příklad ukazuje aktivační událost centra událostí, která zapisuje text zprávy triggeru centra událostí.
 
 ```java
 @FunctionName("ehprocessor")
@@ -303,17 +303,17 @@ public void eventHubProcessor(
  }
 ```
 
- V [knihovně runtime funkcí javy](/java/api/overview/azure/functions/runtime)použijte poznámku `EventHubTrigger` k parametrům, jejichž hodnota by pocházela z Centra událostí. Parametry s těmito poznámkami způsobit spuštění funkce při příchodu události.  Tuto poznámku lze použít s nativními typy Jazyka Java, `Optional<T>`POJOnebo hodnotami s možnou hodnotou s hodnotou s nulou pomocí .
+ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `EventHubTrigger` anotaci pro parametry, jejichž hodnota by pocházela z centra událostí. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události.  Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo `Optional<T>`nebo Nullable pomocí.
 
  ---
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-V [knihovnách tříd Jazyka C#](../articles/azure-functions/functions-dotnet-class-library.md)použijte atribut [EventHubTriggerAttribute.](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs)
+V [knihovnách tříd jazyka C#](../articles/azure-functions/functions-dotnet-class-library.md)použijte atribut [EventHubTriggerAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubTriggerAttribute.cs) .
 
-Konstruktor atributu přebírá název centra událostí, název skupiny příjemce a název nastavení aplikace, která obsahuje připojovací řetězec. Další informace o těchto nastaveních naleznete v [části konfigurace aktivační události](#configuration). Zde je `EventHubTriggerAttribute` příklad atributu:
+Konstruktor atributu přebírá název centra událostí, název skupiny příjemců a název nastavení aplikace, které obsahuje připojovací řetězec. Další informace o těchto nastaveních najdete v [části Konfigurace aktivační události](#configuration). Tady je příklad `EventHubTriggerAttribute` atributu:
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -323,61 +323,62 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Úplný příklad naleznete v tématu [Trigger - C# příklad](#example).
+Úplný příklad najdete v tématu [Trigger-C# – příklad](#example).
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Atributy nejsou podporovány skriptem jazyka C#.
+Skripty jazyka C# nepodporují atributy.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Atributy nejsou podporovány javascriptem.
+Atributy nejsou podporovány jazykem JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Atributy nejsou podporovány Pythonem.
+Python nepodporuje atributy.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Z [knihovny runtime funkcí](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Java použijte anotaci [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) na parametry, jejichž hodnota by pocházet z Event Hub. Parametry s těmito poznámkami způsobit spuštění funkce při příchodu události. Tuto poznámku lze použít s nativními typy Jazyka Java, `Optional<T>`POJOnebo hodnotami s možnou hodnotou s hodnotou s nulou pomocí .
+Z [běhové knihovny Functions](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)jazyka Java použijte anotaci [EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger) u parametrů, jejichž hodnota by pocházela z centra událostí. Parametry s těmito poznámkami způsobí, že se funkce spustí při přijetí události. Tato poznámka se dá použít s nativními typy s možnou hodnotou null, Pojo `Optional<T>`nebo Nullable pomocí.
 
 ---
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka vysvětluje vlastnosti konfigurace vazby, které jste nastavili `EventHubTrigger` v souboru *function.json* a atributu.
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `EventHubTrigger` atributu.
 
-|vlastnost function.json | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Typ** | neuvedeno | Musí být `eventHubTrigger`nastavena na . Tato vlastnost se nastaví automaticky při vytváření aktivační události na webu Azure Portal.|
-|**direction** | neuvedeno | Musí být `in`nastavena na . Tato vlastnost se nastaví automaticky při vytváření aktivační události na webu Azure Portal. |
+|**textový** | neuvedeno | Musí být nastaven na `eventHubTrigger`hodnotu. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | neuvedeno | Musí být nastaven na `in`hodnotu. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
 |**Jméno** | neuvedeno | Název proměnné, která představuje položku události v kódu funkce. |
-|**Cestu** |**Název EventHubName** | Funkce pouze 1.x. Název centra událostí. Pokud je název centra událostí také přítomen v připojovacím řetězci, tato hodnota přepíše tuto vlastnost za běhu. |
-|**eventHubName** |**Název EventHubName** | Funkce 2.x a vyšší. Název centra událostí. Pokud je název centra událostí také přítomen v připojovacím řetězci, tato hodnota přepíše tuto vlastnost za běhu. Lze odkazovat pomocí nastavení aplikace %eventHubName% |
-|**consumerGroup** |**Skupina spotřebitelů** | Volitelná vlastnost, která nastavuje [skupinu spotřebitelů,](../articles/event-hubs/event-hubs-features.md#event-consumers) která slouží k přihlášení k odběru událostí v centru. Pokud je vynechána, skupina `$Default` příjemce se používá. |
-|**Mohutnost** | neuvedeno | Pro Javascript. Nastavte `many` na chcete-li povolit dávkování.  Pokud je vynechána `one`nebo nastavena na , je funkci předána jedna zpráva. |
-|**Připojení** |**Připojení** | Název nastavení aplikace, která obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec klepnutím na tlačítko **Informace o připojení** pro obor [názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli na samotné centrum událostí. Tento připojovací řetězec musí mít alespoň oprávnění ke čtení, aby aktivoval aktivační událost.|
+|**dílčí** |**EventHubName** | Pouze funkce 1. x. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. |
+|**eventHubName** |**EventHubName** | Functions 2. x a vyšší. Název centra událostí Pokud je v připojovacím řetězci přítomen i název centra událostí, tato hodnota tuto vlastnost Přepisuje za běhu. Dá se odkazovat prostřednictvím nastavení aplikace% eventHubName%. |
+|**Klientská organizace** |**Klientská organizace** | Volitelná vlastnost, která nastaví [skupinu uživatelů](../articles/event-hubs/event-hubs-features.md#event-consumers) použitou k přihlášení k odběru událostí v centru. Je-li tento parametr `$Default` vynechán, je použita skupina uživatelů. |
+|**kardinalita** | neuvedeno | Pro JavaScript. Nastavte na `many` , aby bylo možné dávkování povolit.  Je-li tento parametr vynechán `one`nebo je nastaven na hodnotu, je do funkce předána jedna zpráva. |
+|**vázán** |**Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec k oboru názvů centra událostí. Zkopírujte tento připojovací řetězec kliknutím na tlačítko **informace o připojení** pro [obor názvů](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace), nikoli v samotném centru událostí. Tento připojovací řetězec musí mít aspoň oprávnění ke čtení pro aktivaci triggeru.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="event-metadata"></a>Metadata události
 
-Aktivační událost Event Hubs poskytuje několik [vlastností metadat](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Vlastnosti metadat lze použít jako součást výrazy vazby v jiných vazeb nebo jako parametry v kódu. Vlastnosti pocházejí z [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) třídy.
+Aktivační událost Event Hubs poskytuje několik [vlastností metadat](../articles/azure-functions/./functions-bindings-expressions-patterns.md). Vlastnosti metadat lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Vlastnosti pocházejí ze třídy [EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata) .
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|Instance `PartitionContext`.|
-|`EnqueuedTimeUtc`|`DateTime`|Doba zařazená do fronty v čase UTC.|
-|`Offset`|`string`|Posun dat vzhledem k datovému proudu oddílu centra událostí. Posun je značka nebo identifikátor pro událost v rámci datového proudu Centra událostí. Identifikátor je jedinečný v rámci oddílu datového proudu centra událostí.|
-|`PartitionKey`|`string`|Oddíl, do kterého by měla být odeslána data události.|
+|`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
+|`Offset`|`string`|Posun dat vzhledem ke streamu oddílu centra událostí. Posun je značka nebo identifikátor události v rámci Event Hubsho datového proudu. Identifikátor je jedinečný v rámci oddílu Event Hubsho datového proudu.|
+|`PartitionKey`|`string`|Oddíl, do kterého mají být odeslána data událostí.|
 |`Properties`|`IDictionary<String,Object>`|Vlastnosti uživatele dat události.|
-|`SequenceNumber`|`Int64`|Logické pořadové číslo události.|
-|`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně dat událostí.|
+|`SequenceNumber`|`Int64`|Číslo logické sekvence události|
+|`SystemProperties`|`IDictionary<String,Object>`|Vlastnosti systému, včetně dat události.|
 
-Viz [příklady kódu,](#example) které používají tyto vlastnosti dříve v tomto článku.
+Podívejte se na [Příklady kódu](#example) , které používají tyto vlastnosti dříve v tomto článku.
 
-## <a name="hostjson-properties"></a>vlastnosti host.json
+## <a name="hostjson-properties"></a>vlastnosti Host. JSON
+<a name="host-json"></a>
 
-Soubor [host.json](../articles/azure-functions/functions-host-json.md#eventhub) obsahuje nastavení, která řídí chování centra událostí.
+Soubor [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) obsahuje nastavení, která řídí chování triggeru Event Hubs. Konfigurace se liší v závislosti na verzi Azure Functions.
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

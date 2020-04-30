@@ -1,7 +1,7 @@
 ---
 title: Přidání automatického dokončování a návrhů do vyhledávacího pole
 titleSuffix: Azure Cognitive Search
-description: Povolte akce dotazů jako typ vyhledávání v Azure Cognitive Search vytvořením návrhy a formulováním požadavků, které automaticky doplní vyhledávací pole s hotovými výrazy nebo frázemi. Můžete také vrátit navrhované zápasy.
+description: Povolte v Azure Kognitivní hledání akce dotazování typu hledání jako, které umožňují navrhovat a formulují žádosti, které automaticky vyplní vyhledávací pole s dokončenými podmínkami nebo frázemi. Můžete také vrátit navrhované shody.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758110"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Přidání automatického dokončování a návrhů do klientských aplikací
 
-Hledání podle typu je běžná technika pro zlepšení produktivity dotazů iniciovaných uživatelem. V Azure Cognitive Search je toto prostředí podporováno prostřednictvím *automatického dokončování*, které dokončí termín nebo frázi na základě částečného vstupu (dokončení "micro" s "Microsoft"). Dalším formulářem jsou *návrhy*: krátký seznam odpovídajících dokumentů (vrácení titulů knihy s ID, abyste mohli vytvořit odkaz na stránku podrobností). Automatické dokončování i návrhy jsou založeny na shodě v indexu. Služba nebude nabízet dotazy, které vracejí nulové výsledky.
+Hledání jako typ je běžná technika pro zlepšení produktivity dotazů inicializovaných uživatelem. V Azure Kognitivní hledání se toto prostředí podporuje prostřednictvím *automatického dokončování*, které dokončuje termín nebo frázi na základě částečného vstupu ("mikro" s "Microsoft"). Další forma je *návrhy*: krátký seznam odpovídajících dokumentů (pro vracení titulů knih s ID, aby bylo možné propojit stránku s podrobnostmi). Automatické dokončování i návrhy jsou u shody v indexu predikátem. Služba nebude nabízet dotazy, které vracejí žádné výsledky.
 
-K implementaci těchto prostředí v Azure Cognitive Search, budete potřebovat:
+K implementaci těchto prostředí v Azure Kognitivní hledání budete potřebovat:
 
-+ *Návrhovač* na zadní straně.
-+ *Dotaz* určující [automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) nebo [rozhraní API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) v žádosti.
-+ *Ovládací prvek ui* pro zpracování interakcí jako typ vyhledávání v klientské aplikaci. Pro tento účel doporučujeme použít existující knihovnu JavaScriptu.
++ Modul pro *návrhy* na back-endu.
++ *Dotaz* určující rozhraní API pro [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) nebo [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions) v žádosti.
++ *Ovládací prvek uživatelského rozhraní* , který v klientské aplikaci zpracovává interakce typu hledání podle vás. Pro tento účel doporučujeme použít existující knihovnu JavaScriptu.
 
-V Azure Cognitive Search se automaticky vyplněné dotazy a navrhované výsledky načítají z indexu vyhledávání z vybraných polí, která jste zaregistrovali u návrhovače. Návrhovač je součástí indexu a určuje, která pole budou poskytovat obsah, který buď dokončí dotaz, navrhne výsledek, nebo provede obojí. Při vytvoření a načtení indexu je vytvořena datová struktura sugesteru interně pro uložení předpon používaných pro párování s částečnými dotazy. Pro návrhy, výběr vhodných polí, které jsou jedinečné, nebo alespoň ne opakující se, je nezbytné pro zážitek. Další informace naleznete [v tématu Vytvoření návrhu](index-add-suggesters.md).
+V Azure Kognitivní hledání jsou automatické dokončováné dotazy a navrhované výsledky načteny z indexu hledání z vybraných polí, která jste zaregistrovali v modulu pro návrhy. Modul pro návrhy je součástí indexu a určuje, která pole budou poskytovat obsah, který buď dokončí dotaz, navrhne výsledek nebo provede obojí. Když se index vytvoří a načte, vytvoří se interně struktura dat modulu pro ukládání předpon používaných pro porovnání částečných dotazů. V případě návrhů zvolte vhodná pole, která jsou jedinečná nebo alespoň neopakující, je základem pro prostředí. Další informace najdete v tématu [Vytvoření](index-add-suggesters.md)modulu pro návrhy.
 
-Zbývající část tohoto článku je zaměřena na dotazy a kód klienta. Používá JavaScript a C# pro ilustraci klíčových bodů. Rest API příklady se používají k stručné prezentovat každou operaci. Odkazy na ukázky kódu od konce na konec naleznete [v tématu Další kroky](#next-steps).
+Zbývající část tohoto článku se zaměřuje na dotazy a kód klienta. K ilustraci klíčových bodů používá JavaScript a C#. K stručnému zobrazení jednotlivých operací se používají příklady REST API. Odkazy na komplexní ukázky kódu najdete v části [Další kroky](#next-steps).
 
-## <a name="set-up-a-request"></a>Nastavení požadavku
+## <a name="set-up-a-request"></a>Nastavení žádosti
 
-Mezi prvky požadavku patří jedno z rozhraní API typu hledání, částečný dotaz a návrhová zařízení. Následující skript ilustruje součásti požadavku pomocí rozhraní REST API automatického dokončování jako příklad.
+Mezi prvky požadavku patří jedno z rozhraní API pro hledání podle typu, částečný dotaz a modul pro návrhy. Následující skript ilustruje komponenty požadavku pomocí automatického dokončování REST API jako příklad.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -41,67 +41,67 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 }
 ```
 
-Název **suggesteru** poskytuje pole s informacemi o návrhu, která slouží k dokončení termínů nebo návrhů. U návrhů by se měl seznam polí skládat z těch, které nabízejí jasnou volbu mezi odpovídajícími výsledky. Na webu, který prodává počítačové hry, může být pole název hry.
+**SuggesterName** poskytuje pole s možností použití pro navrhování, která se používají k dokončení podmínek nebo návrhů. Pro konkrétní návrhy se seznam polí musí skládat z těch, které nabízí jasné možnosti výběru mezi odpovídajícími výsledky. V lokalitě, která prodává počítačové hry, může být polem název hry.
 
-Parametr **search** poskytuje částečný dotaz, kde jsou znaky vloženy do požadavku na dotaz prostřednictvím ovládacího prvku automatického dokončování jQuery. Ve výše uvedeném příkladu "minecraf" je statický ilustrací co ovládací prvek může mít předány.
+Parametr **Search** poskytuje částečný dotaz, kde jsou znaky podávány do žádosti dotazu prostřednictvím ovládacího prvku jQuery automatického dokončování. Ve výše uvedeném příkladu je "minecraf" statická ilustrace toho, co ovládací prvek mohl předávat.
 
-Api neukládají požadavky na minimální délku částečného dotazu; to může být tak malý jako jeden znak. Automatické dokončování jQuery však poskytuje minimální délku. Typické jsou minimálně dva nebo tři znaky.
+Rozhraní API neukládají požadavky na minimální délku na částečný dotaz. může to být jen jeden znak. Automatické dokončování jQuery ale poskytuje minimální délku. Typický je minimálně dva nebo tři znaky.
 
-Shody jsou na začátku termínu kdekoli ve vstupním řetězci. Vzhledem k tomu, "rychlé hnědé lišky", jak automatické dokončování a návrhy budou odpovídat na částečné verze "", "rychlé", "hnědé", nebo "liška", ale ne na částečné infix termíny jako "rown" nebo "vůl". Kromě toho každá shoda nastavuje prostor pro následné rozšíření. Částečný dotaz "quick br" se bude shodovat s "rychlým hnědým" nebo "rychlým chlebem", ale ani "hnědý" nebo "chléb" by se sám o sobě neshodoval, pokud jim nepředchází "rychlý".
+Shody jsou na začátku termínu kdekoli ve vstupním řetězci. V případě "rychlé hnědého Fox" se obě funkce automatického dokončování i návrhy shodují na částečných verzích "The", "Quick", "Brown" nebo "Fox", ale ne na částečných vponych výrazech, jako je například "řádku" nebo "Ox". Kromě toho každá shoda nastaví obor pro rozšíření pro příjem dat. Částečný dotaz "Rychlá BR" se bude shodovat s "rychlým hnědá" nebo "rychlým chlebem", ale ani "hnědá" nebo "chléb" by se shodovali s tím, že před nimi "Rychlá".
 
-### <a name="apis-for-search-as-you-type"></a>Api pro hledání jako typ
+### <a name="apis-for-search-as-you-type"></a>Rozhraní API pro hledání podle vašeho typu
 
-Postupujte podle těchto odkazů pro referenční stránky sady REST a .NET SDK:
+Pro referenční stránky REST a .NET SDK použijte tyto odkazy:
 
-+ [Návrhy rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [Automatické dokončování rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
++ [REST API návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
++ [REST API automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
 + [Metoda SuggestWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Metoda automatického dokončováníWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [Metoda AutocompleteWithHttpMessagesAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
-## <a name="structure-a-response"></a>Strukturujte odpověď
+## <a name="structure-a-response"></a>Strukturování odpovědi
 
-Odpovědi na automatické dokončování a návrhy jsou to, co můžete očekávat pro vzorek: [Automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) vrátí seznam termínů, [Návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) vrátí termíny plus ID dokumentu, takže můžete načíst dokument (pomocí rozhraní API [vyhledávacího dokumentu](https://docs.microsoft.com/rest/api/searchservice/lookup-document) načíst konkrétní dokument pro stránku podrobností).
+Odpovědi na automatické dokončování a návrhy jsou to, co byste pro vzor mohli očekávat: [funkce automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) vrátí seznam podmínek, [návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) vrátí výrazy a ID dokumentu, abyste mohli načíst dokument (pomocí rozhraní API pro [vyhledání dokumentu](https://docs.microsoft.com/rest/api/searchservice/lookup-document) načíst konkrétní dokument pro stránku s podrobnostmi).
 
-Odpovědi jsou utvářeny parametry na požadavku. V případě automatického [**dokončování nastavte režim automatického dokončování,**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) abyste zjistili, zda k dokončování textu dojde v jednom nebo dvou termínech. U návrhů určuje pole, které zvolíte, obsah odpovědi.
+Odpovědi jsou ve tvaru podle parametrů v žádosti. Pro automatické dokončování nastavte [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) , abyste zjistili, jestli se při dokončování textu vyskytuje jedna nebo dvě slova. U návrhů se pole, které zvolíte, určí obsah odpovědi.
 
-U návrhů byste měli dále upřesnit odpověď, abyste se vyhnuli duplicitám nebo tomu, co se zdá být nesouvisejícími výsledky. Chcete-li řídit výsledky, zahrnout další parametry na požadavek. Následující parametry platí pro automatické dokončování i návrhy, ale jsou možná více nezbytné pro návrhy, zejména pokud návrhobsahuje více polí.
+V případě návrhů byste měli dál vylepšit odpověď, aby nedocházelo k duplicitám nebo co se jeví jako nesouvisející výsledky. Pro řízení výsledků přidejte do žádosti více parametrů. Následující parametry se vztahují na automatické dokončování i návrhy, ale mohou být vhodnější pro návrhy, zejména v případě, že modul pro návrh obsahuje více polí.
 
 | Parametr | Využití |
 |-----------|-------|
-| **$select** | Pokud máte více **zdrojOvých Polí** v návrhu, použijte **$select** `$select=GameTitle`a zvolte, které pole přispívá hodnotami ( ). |
-| **hledatPole** | Omezí dotaz na určitá pole. |
-| **$filter** | Použít kritéria shody na`$filter=Category eq 'ActionAdventure'`sadu výsledků ( ). |
-| **$top** | Omezte výsledky na`$top=5`konkrétní číslo ( ).|
+| **$select** | Máte-li v nástroji pro návrh více **sourceFields** , pomocí **$Select** vyberte, které pole přispívá k hodnotám (`$select=GameTitle`). |
+| **searchFields** | Omezí dotaz na konkrétní pole. |
+| **$filter** | Použijte kritéria shody pro sadu výsledků dotazu (`$filter=Category eq 'ActionAdventure'`). |
+| **$top** | Omezí výsledky na konkrétní číslo (`$top=5`).|
 
-## <a name="add-user-interaction-code"></a>Přidání kódu interakce uživatele
+## <a name="add-user-interaction-code"></a>Přidat kód interakce uživatele
 
-Automatické vyplnění termínu dotazu nebo zrušení seznamu odpovídajících odkazů vyžaduje kód interakce uživatele, obvykle JavaScript, který může využívat požadavky z externích zdrojů, jako jsou automatické dokončování nebo dotazy na návrhy podle indexu Azure Search Cognitive.
+Automatické vyplňování dotazovacího termínu nebo vyřazení seznamu vyhovujících odkazů vyžaduje kód interakce s uživatelem, obvykle JavaScript, který může spotřebovávat žádosti z externích zdrojů, jako jsou například automatické dokončování nebo návrhy dotazů na Azure Searchho indexu rozpoznávání.
 
-I když můžete napsat tento kód nativně, je mnohem jednodušší používat funkce z existující knihovny JavaScript. Tento článek ukazuje dva, jeden pro návrhy a další pro automatické dokončování. 
+I když byste tento kód mohli nativně psát, je mnohem jednodušší použít funkce z existující knihovny JavaScriptu. Tento článek ukazuje dva, jeden pro návrhy a další pro automatické dokončování. 
 
-+ [Widget automatického dokončování (jQuery UI)](https://jqueryui.com/autocomplete/) se používá v příkladu návrhu. Můžete vytvořit vyhledávací pole a pak na něj odkazovat ve funkci JavaScriptu, která používá widget Automatické dokončování. Vlastnosti widgetu nastavují zdroj (funkce automatického dokončování nebo návrhy), minimální délku vstupních znaků před provedením akce a umístění.
++ V příkladu návrhu se používá [widget pro automatické dokončování (rozhraní jQuery)](https://jqueryui.com/autocomplete/) . Můžete vytvořit vyhledávací pole a pak na něj odkazovat ve funkci JavaScriptu, která používá widget automatického dokončování. Vlastnosti pomůcky nastaví zdroj (funkci automatického dokončování nebo návrhů), minimální délku vstupních znaků před provedením akce a umístění.
 
-+ [Modul plug-in automatického dokončování XDSoft](https://xdsoft.net/jqplugins/autocomplete/) se používá v příkladu automatického dokončování.
++ [Modul plug-in XDSoft AutoComplete](https://xdsoft.net/jqplugins/autocomplete/) slouží jako příklad automatického dokončování.
 
-Tyto knihovny používáme k vytvoření vyhledávacího pole podporujícího návrhy i automatické dokončování. Vstupy shromážděné ve vyhledávacím poli jsou spárovány s návrhy a akcemi automatického dokončování.
+Tyto knihovny používáme k sestavení vyhledávacího pole podporujícího návrhy i automatické dokončování. Vstupy shromážděné do vyhledávacího pole se spárují s návrhy a akcemi automatického dokončování.
 
 ## <a name="suggestions"></a>Návrhy
 
-Tato část vás provede implementací navržených výsledků, počínaje definicí vyhledávacího pole. To také ukazuje, jak a skript, který vyvolá první JavaScript automatické dokončování knihovny odkazuje v tomto článku.
+V této části se seznámíte s implementací navrhovaných výsledků od definice vyhledávacího pole. Ukazuje také, jak a skript vyvolá první knihovnu automatického dokončování JavaScriptu, na kterou odkazuje tento článek.
 
 ### <a name="create-a-search-box"></a>Vytvoření vyhledávacího pole
 
-Za předpokladu, že [knihovna automatického dokončování jQuery UI](https://jqueryui.com/autocomplete/) a projekt MVC v jazyce C#, můžete definovat vyhledávací pole pomocí JavaScriptu v souboru **Index.cshtml.** Knihovna přidá do vyhledávacího pole interakci typu hledání asynchronním voláním řadiče MVC pro načtení návrhů.
+Za předpokladu, že [Knihovna automatického dokončování uživatelského rozhraní jQuery](https://jqueryui.com/autocomplete/) a projekt MVC v jazyce C#, můžete definovat vyhledávací pole pomocí JavaScriptu v souboru **index. cshtml** . Knihovna přidá do vyhledávacího pole interakci prohledat jako typ tak, že provede asynchronní volání kontroleru MVC k načtení návrhů.
 
-V **souboru Index.cshtml** ve složce \Views\Home může být řádek pro vytvoření vyhledávacího pole následující:
+V **indexu. cshtml** ve složce \Views\Home může být čára pro vytvoření vyhledávacího pole následující:
 
 ```html
 <input class="searchBox" type="text" id="searchbox1" placeholder="search">
 ```
 
-Tento příklad je jednoduché vstupní textové pole s třídou pro styling, ID, na které odkazuje JavaScript, a zástupný text.  
+V tomto příkladu je jednoduché vstupní textové pole s třídou pro stylování, na ID, na které se odkazuje pomocí JavaScriptu, a zástupný text.  
 
-Do stejného souboru vemte JavaScript, který odkazuje na vyhledávací pole. Následující funkce volá rozhraní Suggest API, které požaduje odpovídající dokumenty na základě částečných termínových vstupů:
+V rámci stejného souboru vložte JavaScript, který odkazuje na vyhledávací pole. Následující funkce volá rozhraní API pro návrhy, které vyžádá navrhovaný dokument podle dílčích vstupů:
 
 ```javascript
 $(function () {
@@ -116,21 +116,21 @@ $(function () {
 });
 ```
 
-Říká `source` jQuery UI funkce automatického dokončování, kde získat seznam položek, které mají být uvedeny pod vyhledávacím polem. Vzhledem k tomu, že tento projekt je projekt MVC, volá **funkce Suggest** v **HomeController.cs,** která obsahuje logiku pro vrácení návrhů dotazů. Tato funkce také předá několik parametrů pro řízení zvýraznění, přibližné shody a termínu. Automatické dokončování JavaScript API přidá parametr termínu.
+Obsahuje `source` informace o funkci automatického dokončování uživatelského rozhraní jQuery, kde získat seznam položek, které se mají zobrazit v poli hledání. Vzhledem k tomu, že tento projekt je projekt MVC, volá funkci **navrhnout** v **HomeController.cs** , která obsahuje logiku pro vracení návrhů dotazů. Tato funkce také předá několik parametrů pro řízení světel, přibližné spárování a termínu. Rozhraní JavaScript API pro automatické dokončování přidá parametr term.
 
-Zajišťuje, `minLength: 3` že doporučení budou zobrazena pouze v případě, že jsou ve vyhledávacím poli alespoň tři znaky.
+Tím `minLength: 3` zajistíte, aby se doporučení zobrazovala pouze v případě, že pole hledání obsahuje alespoň tři znaky.
 
-### <a name="enable-fuzzy-matching"></a>Povolit přibližné shody
+### <a name="enable-fuzzy-matching"></a>Povolit přibližné porovnání
 
-Vyhledávání přibližných shod umožňuje získat výsledky na základě blízké shody i v případě, že uživatel ve vyhledávacím poli udělá chybu ve slově. Vzdálenost úprav je 1, což znamená, že mezi vstupem uživatele a shodou může být maximální rozdíl jednoho znaku. 
+Vyhledávání přibližných shod umožňuje získat výsledky na základě blízké shody i v případě, že uživatel ve vyhledávacím poli udělá chybu ve slově. Vzdálenost úprav je 1, což znamená, že mezi uživatelským vstupem a shodou může být maximálně jeden znak. 
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=true&",
 ```
 
-### <a name="enable-highlighting"></a>Povolit zvýraznění
+### <a name="enable-highlighting"></a>Povolit zvýrazňování
 
-Zvýraznění aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Například pokud částečný vstup je "micro", výsledek se zobrazí jako **mikro**soft, **mikro**rozsah a tak dále. Zvýraznění je založeno na parametrech HighlightPreTag a HighlightPostTag definovaných vložených s funkcí Návrh.
+Zvýrazňování aplikuje styl písma na znaky ve výsledku, které odpovídají vstupu. Pokud je například částečný vstup "mikro", výsledek by se **zobrazil jako**mikroměkký, **mikroskop Scope a**tak dále. Zvýrazňování je založeno na parametrech HighlightPreTag a HighlightPostTag, který je definovaný jako vložený s funkcí návrh.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -138,9 +138,9 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Navrhnout funkci
 
-Pokud používáte C# a mvc aplikace, **HomeController.cs** soubor v adresáři řadiče je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce Suggest založena na [metodě DocumentsOperationsExtensions.Suggest](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
+Pokud používáte jazyk C# a aplikaci MVC, soubor **HomeController.cs** v adresáři Controllers je místo, kde můžete vytvořit třídu pro navrhované výsledky. V rozhraní .NET je funkce navrhovat založená na [metodě DocumentsOperationsExtensions. navrhuje](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet).
 
-Metoda `InitSearch` vytvoří ověřený http index klienta služby Azure Cognitive Search. Další informace o sdk .NET najdete v tématu [Jak používat Azure Cognitive Search z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
+`InitSearch` Metoda vytvoří ověřeného klienta http indexu pro službu Azure kognitivní hledání. Další informace o sadě .NET SDK najdete v tématu [Jak používat Azure kognitivní hledání z aplikace .NET](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -174,11 +174,11 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [Objekt SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), který je pak předán suggest API. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
+Funkce Suggest přebírá dva parametry, které určují, jestli se mají vracet zvýrazněné shody nebo jestli se má kromě vstupního hledaného výrazu použít i přibližná shoda. Metoda vytvoří [objekt SuggestParameters](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), který je poté předán rozhraní API navrhnout. Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
 ## <a name="autocomplete"></a>Automatické dokončování
 
-Zatím byl vyhledávací kód Uživatelského ux zaměřen na návrhy. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského režimu XDSoft jQuery a předá žádost o automatické dokončování Azure Cognitive Search. Stejně jako u návrhů, v aplikaci C# kód, který podporuje interakci s uživatelem jde do **index.cshtml**.
+V tomto případě byl kód uživatelského rozhraní hledání na základě návrhů na střed. Další blok kódu zobrazuje automatické dokončování pomocí funkce automatického dokončování uživatelského rozhraní XDSoft jQuery, která předá požadavek na automatické dokončování Azure Kognitivní hledání. Stejně jako u návrhů v aplikaci jazyka C#, kód, který podporuje interakci s uživatelem, přechází do **indexu. cshtml**.
 
 ```javascript
 $(function () {
@@ -215,9 +215,9 @@ $(function () {
 });
 ```
 
-### <a name="autocomplete-function"></a>Funkce automatického dokončování
+### <a name="autocomplete-function"></a>Funkce AutoComplete
 
-Automatické dokončování je založeno na [metodě DocumentsOperationsExtensions.Autocomplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Stejně jako u návrhů by tento blok kódu šel do **HomeController.cs** souboru.
+Automatické dokončování je založené na [metodě DocumentsOperationsExtensions. AutoComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet). Stejně jako u návrhů by tento blok kódu byl v souboru **HomeController.cs** .
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -242,12 +242,12 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Funkce automatického dokončování přebírá vstup hledaného výrazu. Metoda vytvoří [objekt AutoCompleteParameters](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
+Funkce automatického dokončování přijímá vstup hledaného termínu. Metoda vytvoří [objekt AutoCompleteParameters](https://docs.microsoft.com/rest/api/searchservice/autocomplete). Výsledek se pak převede do formátu JSON, aby ho bylo možné zobrazit v klientovi.
 
 ## <a name="next-steps"></a>Další kroky
 
-Postupujte podle těchto odkazů pro koncové pokyny nebo kód, který ukazuje obě prostředí typu vyhledávání. Oba příklady kódu zahrnují hybridní implementace návrhů a automatické dokončování společně.
+Pomocí těchto odkazů můžete najít ucelené pokyny nebo kód, který demonstruje prostředí hledání s možností vyhledávání. Mezi příklady kódu patří hybridní implementace návrhů a automatické dokončování.
 
-+ [Kurz: Vytvořte si první aplikaci v C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [Ukázka kódu Jazyka C#: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
-+ [C# a JavaScript s ukázkou kódu REST vedle sebe](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [Kurz: Vytvoření první aplikace v jazyce C# (lekce 3)](tutorial-csharp-type-ahead-and-suggestions.md)
++ [Ukázka kódu C#: Azure-Search-dotnet-Samples/Create-First-App/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [Ukázka C# a JavaScriptu se ZBYTKem kódu pro souběžné navýšení](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

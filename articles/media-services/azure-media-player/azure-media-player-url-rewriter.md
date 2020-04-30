@@ -1,21 +1,21 @@
 ---
-title: Vyzápis adres URL přehrávače médií Azure
-description: Azure Media Player přepíše danou adresu URL ze služby Azure Media Services, aby poskytoval datové proudy pro SMOOTH, DASH, HLS v3 a HLS v4.
+title: Azure Media Player přepisu adresy URL
+description: Azure Media Player přepíše zadanou adresu URL z Azure Media Services a poskytne streamování pro hladké, PŘERUŠOVANé, HLS v3 a HLS v4.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726456"
 ---
-# <a name="url-rewriter"></a>Vypisovač adres URL #
+# <a name="url-rewriter"></a>Přepisovač adres URL #
 
-Ve výchozím nastavení program Azure Media Player přepíše danou adresu URL ze služby Azure Media Services, aby poskytoval datové proudy pro aplikace SMOOTH, DASH, HLS v3 a HLS v4. Pokud je například zdroj uveden následujícím způsobem, azure media player zajistí, že se pokusí přehrát všechny výše uvedené protokoly:
+Ve výchozím nastavení Azure Media Player přepíše zadanou adresu URL z Azure Media Services, aby poskytovala proudy pro hladké, PŘERUŠOVANé, HLS v3 a HLS v4. Například pokud je zdroj uveden následujícím způsobem, Azure Media Player zajistěte, aby se pokusy o přehrání všech výše uvedených protokolů:
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -23,7 +23,7 @@ Ve výchozím nastavení program Azure Media Player přepíše danou adresu URL 
     </video>
 ```
 
-Pokud však nechcete nepoužívat vypisovač adres URL, můžete tak učinit přidáním vlastnosti `disableUrlRewriter` do parametru. To znamená, že všechny informace, které jsou předány zdrojům, jsou přímo předány hráči bez úprav.  Zde je příklad přidání dvou zdrojů do přehrávače, na DASH a jeden HLADKÝ Streaming.
+Pokud ale chcete přepsat adresu URL, můžete to udělat tak, že do parametru přidáte `disableUrlRewriter` vlastnost. To znamená, že všechny informace, které jsou předány do zdrojů, jsou přímo předány do přehrávače beze změny.  Tady je příklad přidání dvou zdrojů do přehrávače, na PŘERUŠOVANém a jednom HLADKÉm streamování.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +41,7 @@ Pokud však nechcete nepoužívat vypisovač adres URL, můžete tak učinit př
     ]);
 ```
 
-Pokud chcete, můžete také zadat konkrétní formáty streamování, které chcete, aby `streamingFormats` program Azure Media Player přepsal na použití parametru. Mezi `DASH`možnosti patří `SMOOTH`, , `HLSv3`, `HLSv4`. `HLS`. Rozdíl mezi HLS a HLSv3 & v4 spoje na tom, že formát HLS podporuje přehrávání obsahu FairPlay. v3 a v4 nepodporují FairPlay. To je užitečné, pokud nemáte k dispozici zásady doručování pro konkrétní protokol.  Zde je příklad, kdy protokol DASH není povolen s vaším datovým zdrojem.
+Pokud chcete, můžete také zadat konkrétní formáty streamování, které chcete přepsat, aby bylo možné tento `streamingFormats` parametr Azure Media Player použít. Mezi možnosti `DASH`patří `SMOOTH`, `HLSv3`, `HLSv4`, `HLS`,. Rozdíl mezi HLS a HLSv3 & v4 je v tom, že formát HLS podporuje přehrávání FairPlay obsahu. Verze v3 a v4 nepodporují FairPlay. To je užitečné, pokud nemáte zásady doručování pro konkrétní protokol k dispozici.  Tady je příklad, kdy není pro váš Asset povolený protokol typu SPOJOVNÍK.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -57,11 +57,11 @@ Pokud chcete, můžete také zadat konkrétní formáty streamování, které ch
     ]);
 ```
 
-Výše uvedené dva mohou být použity v kombinaci s sebou pro více okolností na základě vašeho konkrétního majetku.
+Výše uvedené dvě lze v kombinaci vzájemně použít pro více okolností na základě vašeho konkrétního assetu.
 
 > [!NOTE]
-> Informace o ochraně révy pouze přetrvává v protokolu DASH.
+> Informace o ochraně Widevine trvají jenom u protokolu POMLČKy.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

@@ -1,19 +1,19 @@
 ---
-title: 'Úvodní příručka: Koncový bod předpovědi dotazu sady SDK – LUIS'
-description: Tento rychlý start vám ukáže, jak pomocí sady SDK odeslat projev uživatele do aplikace Luis služby Azure Cognitive Services a získat předpověď.
+title: 'Rychlý Start: koncový bod pro předpověď dotazů sady SDK – LUIS'
+description: V tomto rychlém startu se dozvíte, jak pomocí sady SDK odeslat uživatele utterance do aplikace Azure Cognitive Services LUIS a získat předpovědi.
 ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
 ms.openlocfilehash: 2b85e3085a7265fa007422180ff1cfe93d4fef57
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732052"
 ---
-# <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Úvodní příručka: Koncový bod předpovědi v dotazu V3 pomocí sady SDK
+# <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Rychlý Start: prediktivní koncový bod dotazu V3 pomocí sady SDK
 
-Pomocí sady SDK odešlete projev uživatele jazyku (LUIS) a obdržíte předpověď záměru uživatele.
+Pomocí sady SDK můžete odeslat uživatele utterance do Language Understanding (LUIS) a získat předpověď záměru uživatele.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get prediction with C# SDK](./includes/sdk-csharp-prediction.md)]
@@ -30,4 +30,4 @@ Pomocí sady SDK odešlete projev uživatele jazyku (LUIS) a obdržíte předpov
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Sestavení aplikace LUIS k určení uživatelských záměrů](luis-quickstart-intents-only.md)
+> [Kurz: Vytvoření aplikace LUIS k určení záměrů uživatelů](luis-quickstart-intents-only.md)

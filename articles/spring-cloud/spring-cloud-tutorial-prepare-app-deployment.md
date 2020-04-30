@@ -1,48 +1,48 @@
 ---
-title: Jak na to – příprava aplikace Java Spring pro nasazení v Azure Spring Cloudu
-description: V tomto tématu připravíte aplikaci Java Spring pro nasazení do Azure Spring Cloud.
+title: Postup přípravy aplikace pružiny v jazyce Java pro nasazení v jarním cloudu Azure
+description: V tomto tématu připravíte pružinovou aplikaci Java pro nasazení do jarního cloudu Azure.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
 ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731180"
 ---
-# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava aplikace Java Spring pro nasazení v Azure Spring Cloud
+# <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Příprava pružinové aplikace Java pro nasazení v jarním cloudu Azure
 
-Toto téma ukazuje, jak připravit existující java jarní aplikaci pro nasazení do Azure Spring Cloud. Pokud je Azure Spring Cloud správně nakonfigurovaný, poskytuje robustní služby pro monitorování, škálování a aktualizaci aplikace Java Spring Cloud.
+V tomto tématu se dozvíte, jak připravit existující aplikaci pružiny v jazyce Java pro nasazení do jarního cloudu Azure. Pokud jsou správně nakonfigurovány, poskytuje Azure jarní Cloud robustní služby pro monitorování, škálování a aktualizaci vaší aplikace v Java pro jarní Cloud.
 
-Další příklady vysvětlují, jak nasadit aplikaci do Azure Spring Cloud, když je nakonfigurovaný soubor POM. 
-* [Spuštění aplikace pomocí portálu Azure](spring-cloud-quickstart-launch-app-portal.md)
-* [Spuštění aplikace pomocí azure cli](spring-cloud-quickstart-launch-app-cli.md)
+Další příklady vysvětlují, jak nasadit aplikaci do jarního cloudu Azure při konfiguraci souboru POM. 
+* [Spustit aplikaci pomocí Azure Portal](spring-cloud-quickstart-launch-app-portal.md)
+* [Spuštění aplikace pomocí Azure CLI](spring-cloud-quickstart-launch-app-cli.md)
 
-Tento článek vysvětluje požadované závislosti a jak je přidat do souboru POM.
+Tento článek vysvětluje požadované závislosti a jejich přidání do souboru POM.
 
-## <a name="java-runtime-version"></a>Java Runtime verze
+## <a name="java-runtime-version"></a>Běhová verze Java
 
-V Azure Spring Cloudu můžou běžet jenom jarní/java aplikace.
+V Azure jaře cloudu se dají spouštět jenom pružinové a Java aplikace.
 
-Azure Spring Cloud podporuje Java 8 i Java 11. Hostitelské prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete [v tématu Instalace JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
+Azure jarní Cloud podporuje Java 8 i Java 11. Hostující prostředí obsahuje nejnovější verzi Azul Zulu OpenJDK pro Azure. Další informace o Azul Zulu OpenJDK pro Azure najdete v tématu [instalace JDK](https://docs.microsoft.com/azure/developer/java/fundamentals/java-jdk-install).
 
-## <a name="spring-boot-and-spring-cloud-versions"></a>Verze Spring Boot a Spring Cloud
+## <a name="spring-boot-and-spring-cloud-versions"></a>Jarní spouštěcí a jarní verze cloudu
 
-Chcete-li připravit existující jarní spuštění aplikace pro nasazení do Azure Spring Cloud patří jarní spuštění a jarní cloud závislosti v souboru pom aplikace, jak je znázorněno v následujících částech.
+K přípravě existující aplikace pro nasazování do Azure jarního cloudu je třeba, aby se v souboru POM aplikace napravily síťové závislosti pružinového a jarního cloudu, jak je znázorněno v následujících oddílech.
 
-Azure Spring Cloud podporuje jenom aplikace spring boot u verze 2.1 nebo verze 2.2. V následující tabulce jsou uvedeny podporované kombinace spring boot a spring cloud:
+Jarní cloud Azure podporuje pouze aplikace pružiny pro spuštění, které jsou ve verzi 2,1 nebo 2,2. V následující tabulce jsou uvedeny podporované kombinace pružinové spouštěcí a jarní cloudové sady:
 
-Verze spring bootu | Jarní cloudová verze
+Jarní spouštěcí verze | Jarní cloudová verze
 ---|---
-2.1 | Greenwich.RELEASE
-2,2 | Hoxton.RELEASE
+2.1 | Střední verze
+2,2 | Hoxton. RELEASE
 
-### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jarní spuštění verze 2.1
+### <a name="dependencies-for-spring-boot-version-21"></a>Závislosti pro jaře Booting verze 2,1
 
-Pro jarní spuštění verze 2.1 přidejte následující závislosti do souboru POM aplikace.
+Pro jaře Booting verze 2,1 přidejte do souboru POM aplikace následující závislosti.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -66,9 +66,9 @@ Pro jarní spuštění verze 2.1 přidejte následující závislosti do souboru
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-22"></a>Závislosti pro jarní spuštění verze 2.2
+### <a name="dependencies-for-spring-boot-version-22"></a>Závislosti pro jaře Booting verze 2,2
 
-Pro jarní spuštění verze 2.2 přidejte následující závislosti do souboru POM aplikace.
+Pro jaře Booting verze 2,2 přidejte do souboru POM aplikace následující závislosti.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -92,22 +92,22 @@ Pro jarní spuštění verze 2.2 přidejte následující závislosti do souboru
     </dependencyManagement>
 ```
 
-## <a name="azure-spring-cloud-client-dependency"></a>Závislost klienta Azure Spring Cloud
+## <a name="azure-spring-cloud-client-dependency"></a>Závislost klienta na jaře cloudu Azure
 
-Azure Spring Cloud hostuje a spravuje komponenty Spring Cloud. Mezi součásti patří Spring Cloud Service Registry a Spring Cloud Config Server. Zahrňte klientskou knihovnu Azure Spring Cloud do svých závislostí, abyste mohli komunikovat s instancí služby Azure Spring Cloud.
+Azure jaře Cloud hostuje a spravuje jarní cloudové komponenty. Mezi tyto komponenty patří jarní cloudová služba a server pro konfiguraci jarního cloudu. Zahrňte do svých závislostí klientskou knihovnu jarních cloudů Azure, aby bylo možné komunikovat s instancí cloudové služby Azure na jaře.
 
-V následující tabulce jsou uvedeny správné verze Azure Spring Cloud pro vaši aplikaci, která používá spring boot a spring cloud.
+V následující tabulce jsou uvedené správné verze cloudových cloudů Azure pro vaši aplikaci, které využívají jarní spouštěcí a jarní Cloud.
 
-Verze spring bootu | Jarní cloudová verze | Verze Azure Spring Cloud
+Jarní spouštěcí verze | Jarní cloudová verze | Verze cloudu pro Azure jaře
 ---|---|---
-2.1 | Greenwich.RELEASE | 2.1
-2,2 | Hoxton.RELEASE | 2,2
+2.1 | Střední verze | 2.1
+2,2 | Hoxton. RELEASE | 2,2
 
-Zahrňte do souboru pom.xml jednu z následujících závislostí. Vyberte závislost, jejíž verze Azure Spring Cloud odpovídá vaší vlastní.
+Do souboru pom. xml přidejte jednu z následujících závislostí. Vyberte závislost, jejíž verze cloudu pro Azure jaře se shoduje s vaší vlastní.
 
-### <a name="dependency-for-azure-spring-cloud-version-21"></a>Závislost pro Azure Spring Cloud verze 2.1
+### <a name="dependency-for-azure-spring-cloud-version-21"></a>Závislost pro Azure jaře Cloud verze 2,1
 
-Pro jarní spuštění verze 2.1 přidejte následující závislost do souboru POM aplikace.
+Pro jaře Boot verze 2,1 přidejte do souboru POM aplikace následující závislost.
 
 ```xml
 <dependency>
@@ -117,9 +117,9 @@ Pro jarní spuštění verze 2.1 přidejte následující závislost do souboru 
 </dependency>
 ```
 
-### <a name="dependency-for-azure-spring-cloud-version-22"></a>Závislost pro Azure Spring Cloud verze 2.2
+### <a name="dependency-for-azure-spring-cloud-version-22"></a>Závislost pro Azure jaře Cloud verze 2,2
 
-Pro jarní spuštění verze 2.2 přidejte následující závislost do souboru POM aplikace.
+Pro jaře Boot verze 2,2 přidejte do souboru POM aplikace následující závislost.
 
 ```xml
 <dependency>
@@ -131,15 +131,15 @@ Pro jarní spuštění verze 2.2 přidejte následující závislost do souboru 
 
 ## <a name="other-required-dependencies"></a>Další požadované závislosti
 
-Chcete-li povolit integrované funkce Azure Spring Cloud, vaše aplikace musí obsahovat následující závislosti. Toto zahrnutí zajišťuje, že vaše aplikace nakonfiguruje sám správně s každou komponentu.
+Aby bylo možné povolit integrované funkce Azure jarního cloudu, musí vaše aplikace zahrnovat následující závislosti. Díky tomu je zajištěno, že aplikace správně nakonfiguruje jednotlivé komponenty.
 
-### <a name="enablediscoveryclient-annotation"></a>Povolit poznámky klienta Discovery
+### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient anotace
 
-Přidejte následující poznámku do zdrojového kódu aplikace.
+Přidejte následující anotaci do zdrojového kódu aplikace.
 ```java
 @EnableDiscoveryClient
 ```
-Podívejte se například na aplikaci prasačné metriky z předchozích příkladů:
+Podívejte se například na aplikaci piggymetrics z předchozích příkladů:
 ```java
 package com.piggymetrics.gateway;
 
@@ -159,9 +159,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Závislost registru služeb
+### <a name="service-registry-dependency"></a>Závislost registru služby
 
-Chcete-li použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom.xml, jak je znázorněno zde:
+Pokud chcete použít spravovanou službu Azure Service Registry, zahrňte `spring-cloud-starter-netflix-eureka-client` závislost do souboru pom. XML, jak je znázorněno zde:
 
 ```xml
     <dependency>
@@ -170,11 +170,11 @@ Chcete-li použít spravovanou službu Azure Service Registry, zahrňte `spring-
     </dependency>
 ```
 
-Koncový bod serveru registru služby se automaticky vloží jako proměnné prostředí s vaší aplikací. Aplikace se mohou zaregistrovat na serveru registru služeb a zjistit další závislé mikroslužby.
+Koncový bod serveru registru služby se do vaší aplikace automaticky vloží jako proměnné prostředí. Aplikace se mohou registrovat pomocí serveru registru služby a zjišťovat další závislé mikroslužby.
 
 ### <a name="distributed-configuration-dependency"></a>Závislost distribuované konfigurace
 
-Chcete-li povolit distribuovanou konfiguraci, zahrňte do oddílu závislostí souboru pom.xml následující `spring-cloud-config-client` závislost:
+Pokud chcete povolit distribuovanou konfiguraci, zahrňte do části závislosti v souboru pom. XML následující `spring-cloud-config-client` závislost:
 
 ```xml
 <dependency>
@@ -184,11 +184,11 @@ Chcete-li povolit distribuovanou konfiguraci, zahrňte do oddílu závislostí s
 ```
 
 > [!WARNING]
-> Nespecifikujte `spring.cloud.config.enabled=false` v konfiguraci bootstrap. V opačném případě aplikace přestane pracovat s config serverem.
+> Nezadávejte `spring.cloud.config.enabled=false` v konfiguraci Bootstrap. V opačném případě přestane vaše aplikace pracovat s konfiguračním serverem.
 
 ### <a name="metrics-dependency"></a>Závislost metrik
 
-Zahrňte `spring-boot-starter-actuator` závislost do části závislostí souboru pom.xml, jak je znázorněno zde:
+Zahrňte `spring-boot-starter-actuator` závislost do části závislosti v souboru pom. XML, jak je znázorněno zde:
 
 ```xml
 <dependency>
@@ -197,11 +197,11 @@ Zahrňte `spring-boot-starter-actuator` závislost do části závislostí soubo
 </dependency>
 ```
 
- Metriky jsou pravidelně vykrádány z koncových bodů JMX. Metriky můžete vizualizovat pomocí portálu Azure.
+ Metriky jsou pravidelně načítány z koncových bodů JMX. Metriky můžete vizualizovat pomocí Azure Portal.
 
-### <a name="distributed-tracing-dependency"></a>Závislost distribuovaného trasování
+### <a name="distributed-tracing-dependency"></a>Závislost distribuované vektorizace
 
-Do oddílu závislostí v souboru pom.xml zahrňte následující `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin` závislosti:
+Zahrňte následující `spring-cloud-starter-sleuth` a `spring-cloud-starter-zipkin` závislosti do části závislosti v souboru pom. XML:
 
 ```xml
 <dependency>
@@ -214,20 +214,20 @@ Do oddílu závislostí v souboru pom.xml zahrňte následující `spring-cloud-
 </dependency>
 ```
 
- Taky musíte povolit instanci Azure Application Insights pro práci s instancí služby Azure Spring Cloud. Přečtěte si [kurz o distribuovaném trasování](spring-cloud-tutorial-distributed-tracing.md) a zjistěte, jak používat Application Insights s Azure Spring Cloud.
+ Musíte taky povolit instanci Azure Application Insights, abyste mohli pracovat s instancí cloudové služby Azure na jaře. Přečtěte si [kurz o distribuovaném trasování](spring-cloud-tutorial-distributed-tracing.md) a Naučte se používat Application Insights s využitím Azure jaře cloudu.
 
 ## <a name="see-also"></a>Viz také
-* [Analýza protokolů a metrik aplikací](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
+* [Analýza protokolů a metrik aplikace](https://docs.microsoft.com/azure/spring-cloud/diagnostic-services)
 * [Nastavení konfiguračního serveru](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-config-server)
-* [Použití distribuovaného trasování pomocí Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
+* [Použití distribuovaného trasování u jarního cloudu Azure](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)
 * [Průvodce rychlým startem pružiny](https://spring.io/quickstart)
-* [Dokumentace k jarnímu startu](https://spring.io/projects/spring-boot)
+* [Dokumentace ke jarnímu spuštění](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto tématu jste se dozvěděli, jak nakonfigurovat aplikaci Java Spring pro nasazení do Azure Spring Cloud. Informace o tom, jak nastavit instanci konfiguračního serveru, naleznete v následujícím článku.
+V tomto tématu jste zjistili, jak nakonfigurovat svoji aplikaci v jazyce Java pro nasazení do jarního cloudu Azure. Informace o tom, jak nastavit instanci konfiguračního serveru, najdete v následujícím článku.
 
 > [!div class="nextstepaction"]
-> [Přečtěte si, jak nastavit instanci konfiguračního serveru](spring-cloud-tutorial-config-server.md)
+> [Přečtěte si, jak nastavit instanci konfiguračního serveru.](spring-cloud-tutorial-config-server.md)
 
-Další ukázky jsou k dispozici na [GitHubu: Ukázky Azure Spring Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).

@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: memildin
 ms.openlocfilehash: 48869140ba8cd1a9598562b0057b0005d8fcd9c7
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758006"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
@@ -26,60 +26,60 @@ Tento dokument vám pomůže se správou řešení zabezpečení již propojený
 ## <a name="integrated-azure-security-solutions"></a>Integrovaná řešení zabezpečení Azure
 Security Center umožňuje snadné povolení integrovaných řešení zabezpečení v Azure. Mezi výhody patří:
 
-- **Zjednodušené nasazení:** Security Center nabízí zjednodušené zřízení integrovaných partnerských řešení. U řešení, jako je antimalwarový program a posouzení ohrožení zabezpečení, může Centrum zabezpečení zřídit agenta ve virtuálních počítačích. U zařízení brány firewall se centrum zabezpečení může postarat o velkou část požadované konfigurace sítě.
-- **Integrovaná zjišťování**: Události zabezpečení z partnerských řešení jsou automaticky shromažďovány, agregovány a zobrazovány jako součást výstrah a incidentů centra zabezpečení. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
+- **Zjednodušené nasazení:** Security Center nabízí zjednodušené zřízení integrovaných partnerských řešení. Pro řešení, jako jsou antimalware a posouzení ohrožení zabezpečení, Security Center může zřídit agenta na virtuálních počítačích. U zařízení s bránou firewall může Security Center pořídit většinu požadovaných konfigurací sítě.
+- **Integrované detekce**: události zabezpečení z partnerských řešení se automaticky shromažďují, agregují a zobrazují jako součást Security Center výstrah a incidentů. Tyto události jsou také sloučeny s detekcemi z jiných zdrojů a poskytují pokročilé možnosti detekce hrozeb.
 - **Sjednocená správa a monitorování stavu:** Zákazníci můžou využít integrované události týkající se stavu k monitorování všech partnerských řešení na první pohled. Je dostupná základní správa se snadným přístupem k pokročilému nastavení s použitím partnerského řešení.
 
-V současné době integrovaná řešení zabezpečení zahrnují posouzení zranitelnosti společností [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a brána firewall webových aplikací Microsoft Application Gateway.
+Integrovaná řešení zabezpečení v současné době zahrnují posouzení ohrožení zabezpečení [Qualys](https://www.qualys.com/public-cloud/#azure) a [Rapid7](https://www.rapid7.com/products/insightvm/) a firewall webových aplikací Microsoft Application Gateway.
 
 > [!NOTE]
-> Centrum zabezpečení nenainstaluje agenta Log Analytics do partnerských virtuálních zařízení, protože většina dodavatelů zabezpečení zakazuje externí agenty spuštěné na svých zařízeních.
+> Security Center neinstaluje agenta Log Analytics na partnerských virtuálních zařízeních, protože většina dodavatelů zabezpečení brání externím agentům běžícím na jejich zařízeních.
 
-Další informace o integraci nástrojů pro vyhledávání chyb zabezpečení od společnosti Qualys, včetně integrovaného skeneru dostupného zákazníkům standardní úrovně, naleznete v následujících tématech: 
+Další informace o integraci nástrojů pro kontrolu ohrožení zabezpečení z Qualys, včetně integrovaného skeneru dostupného pro zákazníky úrovně Standard, najdete v těchto tématech: 
 
-- [Integrovaný skener zranitelnosti pro virtuální počítače](built-in-vulnerability-assessment.md).
-- [Nasazení řešení pro vyhledávání chyb zabezpečení partnera](partner-vulnerability-assessment.md).
+- [Integrovaná chyba pro prohledávání virtuálních počítačů](built-in-vulnerability-assessment.md).
+- [Nasazení řešení pro kontrolu ohrožení zabezpečení partnera](partner-vulnerability-assessment.md).
 
-Security Center také nabízí analýzu zranitelnosti pro vaše:
+Security Center taky nabízí analýzu ohrožení zabezpečení pro vaše:
 
-* Databáze SQL – viz [Prozkoumání zpráv o posouzení zranitelnosti na řídicím panelu pro posouzení zranitelnosti](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports)
-* Image registru kontejnerů Azure – viz [integrace registru kontejnerů Azure s Centrem zabezpečení (Preview)](azure-container-registry-integration.md)
+* Databáze SQL – Přečtěte si téma [zkoumání sestav posouzení ohrožení zabezpečení na řídicím panelu posouzení ohrožení zabezpečení](security-center-iaas-advanced-data.md#explore-vulnerability-assessment-reports) .
+* Azure Container Registry imagí – viz [integrace Azure Container Registry s Security Center (Preview)](azure-container-registry-integration.md)
 
 ## <a name="how-security-solutions-are-integrated"></a>Způsob integrace řešení zabezpečení
-Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete také připojit další zdroje dat zabezpečení, včetně počítačů spuštěných místně nebo v jiných cloudech.
+Řešení zabezpečení Azure nasazená ze služby Security Center se automaticky připojí. Můžete taky připojit další zdroje dat zabezpečení, včetně počítačů, které jsou spuštěné místně nebo v jiných cloudech.
 
 [![Integrace partnerských řešení](./media/security-center-partner-integration/security-solutions-page.png)](./media/security-center-partner-integration/security-solutions-page.png#lightbox)
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>Správa integrovaných řešení zabezpečení Azure a dalších zdrojů dat
 
-1. Na [portálu Azure](https://azure.microsoft.com/features/azure-portal/)otevřete **Centrum zabezpečení**.
+1. Z [Azure Portal](https://azure.microsoft.com/features/azure-portal/)otevřete **Security Center**.
 
-1. V nabídce Centra zabezpečení vyberte **možnost Řešení zabezpečení**.
+1. V nabídce Security Center vyberte **řešení zabezpečení**.
 
-Na stránce **Řešení zabezpečení** můžete zobrazit stav integrovaných řešení zabezpečení Azure a spustit základní úlohy správy.
+Na stránce **řešení zabezpečení** uvidíte stav integrovaných řešení zabezpečení Azure a spouštějte základní úlohy správy.
 
 ### <a name="connected-solutions"></a>Připojená řešení
 
-Část **Připojená řešení** obsahuje řešení zabezpečení, která jsou aktuálně připojena k centru zabezpečení. Zobrazuje také stav každého řešení.  
+Oddíl **připojená řešení** obsahuje řešení zabezpečení, která jsou aktuálně připojená k Security Center. Zobrazuje také stav jednotlivých řešení.  
 
 ![Připojená řešení](./media/security-center-partner-integration/connected-solutions.png)
 
 Stav partnerského řešení může být:
 
-* **Zdravé** (zelené) - žádné zdravotní problémy.
-* **Nezdravé** (červené) - je tu zdravotní problém, který vyžaduje okamžitou pozornost.
-* **Zastaveno hlášení** (oranžová) - řešení přestalo hlásit své zdraví.
-* **Není hlášeno** (šedé) - řešení zatím nic nenahlásilo a nejsou k dispozici žádné údaje o zdravotním stavu. Stav řešení může být nehlášené, pokud byl připojen v poslední době a je stále nasazuje.
+* **V pořádku** (zelená) – žádné problémy se stavem.
+* **Chybné** (červené) – existuje problém se stavem, který vyžaduje okamžitou pozornost.
+* **Zastavené generování sestav** (oranžová) – řešení zastavilo hlášení stavu.
+* **Nehlášeno** (šedá) – řešení ještě neohlásilo nic a nejsou k dispozici žádná data o stavu. Stav řešení může být neohlášený, pokud byl v poslední době připojen a stále ještě probíhá jeho nasazení.
 
 > [!NOTE]
-> Pokud nejsou k dispozici údaje o stavu, centrum zabezpečení zobrazí datum a čas poslední přijaté události, které označují, zda se řešení hlásí či nikoli. Pokud nejsou k dispozici žádná data o stavu a během posledních 14 dnů nebyly přijaty žádné výstrahy, Centrum zabezpečení indikuje, že řešení není v pořádku nebo není nahlašováno.
+> Pokud data o stavu nejsou k dispozici, Security Center zobrazuje datum a čas poslední přijaté události, která označuje, jestli řešení hlásí nebo ne. Pokud nejsou k dispozici žádná data o stavu a během posledních 14 dnů nebyla přijata žádná výstraha, Security Center znamená, že řešení není v pořádku nebo není hlášeno.
 >
 >
 
-Vyberte **ZOBRAZIT** pro další informace a možnosti, jako jsou:
+Vyberte **zobrazení** pro další informace a možnosti, jako například:
 
-   - **Konzola řešení** – otevře prostředí pro správu tohoto řešení.
-   - **Virtuální virtuální soud propojení** – otevře stránku Aplikace propojení. Tady můžete ke svému partnerskému řešení připojit prostředky.
+   - **Konzola řešení** – otevře prostředí pro správu pro toto řešení.
+   - **Link VM** – otevře stránku propojit aplikace. Tady můžete ke svému partnerskému řešení připojit prostředky.
    - **Odstranění řešení**
    - **Konfigurace**
 
@@ -88,13 +88,13 @@ Vyberte **ZOBRAZIT** pro další informace a možnosti, jako jsou:
 
 ### <a name="discovered-solutions"></a>Zjištěná řešení
 
-Security Center automaticky zjišťuje řešení zabezpečení spuštěná v Azure, ale není připojena k Centru zabezpečení, a zobrazí řešení v části **Zjištěná řešení.** Mezi tato řešení patří řešení Azure, jako je [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)a partnerská řešení.
+Security Center automaticky vyhledá řešení zabezpečení běžící v Azure, ale nepřipojená k Security Center a zobrazí řešení v části **zjištěná řešení** . Mezi tato řešení patří řešení Azure, jako jsou [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)a partnerská řešení.
 
 > [!NOTE]
-> Funkce Zjištěná řešení vyžaduje úroveň Standard služby Security Center na úrovni předplatného. Další informace o cenových úrovních najdete v [tématu Ceny.](security-center-pricing.md)
+> Funkce Zjištěná řešení vyžaduje úroveň Standard služby Security Center na úrovni předplatného. Další informace o cenových úrovních najdete v tématu [ceny](security-center-pricing.md) .
 >
 
-Vyberte **CONNECT** v části řešení pro integraci s Security Center a být upozorněni na výstrahy zabezpečení.
+Vyberte **připojit** v rámci řešení, které chcete integrovat s Security Center a upozorňovat na výstrahy zabezpečení.
 
 ### <a name="add-data-sources"></a>Přidat zdroje dat
 
@@ -106,7 +106,7 @@ Vyberte **CONNECT** v části řešení pro integraci s Security Center a být u
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Související informace naleznete v následujících článcích:
+V tomto článku jste se naučili integrovat partnerská řešení do služby Security Center. Související informace najdete v následujících článcích:
 
-* [Export výstrah a doporučení zabezpečení](continuous-export.md). Zjistěte, jak nastavit integraci s Azure Sentinelem nebo jiným SIEM.
+* [Exportujte výstrahy a doporučení zabezpečení](continuous-export.md). Přečtěte si, jak nastavit integraci s Sentinel Azure nebo jakoukoli jinou SIEM.
 * [Monitorování stavu zabezpečení ve službě Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.

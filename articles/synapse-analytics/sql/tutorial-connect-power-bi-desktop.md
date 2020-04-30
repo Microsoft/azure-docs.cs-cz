@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Připojení SQL na vyžádání (preview) k Power BI Desktopu & vytvoření sestavy'
-description: V tomto kurzu se dozvíte, jak připojit SQL na vyžádání (preview) v Azure Synapse Analytics k desktopu Power BI a vytvořit ukázkovou sestavu na základě zobrazení.
+title: 'Kurz: připojení SQL na vyžádání (Preview) k Power BI Desktop & vytvoření sestavy'
+description: V tomto kurzu se naučíte připojit SQL na vyžádání (Preview) ve službě Azure synapse Analytics a Power BI plochu a vytvořit ukázkovou sestavu založenou na zobrazení.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81769481"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Kurz: Připojení SQL na vyžádání (preview) k Power BI Desktopu & vytvoření sestavy
+# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Kurz: připojení SQL na vyžádání (Preview) k Power BI Desktop & vytvoření sestavy
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> - Vytvořit demo databázi
+> - Vytvořit ukázkovou databázi
 > - Vytvořit zobrazení použité pro sestavu
 > - Připojení k aplikaci Power BI Desktop
 > - Vytvořit sestavu na základě zobrazení
@@ -31,23 +31,23 @@ V tomto kurzu se naučíte:
 
 K dokončení tohoto kurzu potřebujete následující software:
 
-- Nástroj pro dotazy SQL, jako je [například Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)nebo [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+- Nástroj SQL Query, například [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio), nebo [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
 - [Power BI Desktop](https://powerbi.microsoft.com/downloads/).
 
 Hodnoty pro následující parametry:
 
 | Parametr                                 | Popis                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru                                   |
-| Oblast koncového bodu služby SQL na vyžádání     | Používá se k určení skladování použitého ve vzorcích |
-| Uživatelské jméno a heslo pro přístup ke koncovému bodu | Slouží k přístupu ke koncovému bodu.                               |
-| Databáze, kterou použijete k vytvoření zobrazení     | Databáze použitá jako výchozí bod ve vzorcích       |
+| Adresa koncového bodu služby SQL na vyžádání    | Používá se jako název serveru.                                   |
+| Oblast koncového bodu služby SQL na vyžádání     | Slouží k určení úložiště používaného v ukázkách. |
+| Uživatelské jméno a heslo pro přístup ke koncovému bodu | Používá se pro přístup ke koncovému bodu.                               |
+| Databáze, kterou použijete k vytváření zobrazení     | Databáze použitá jako výchozí bod v ukázkách       |
 
-## <a name="1---create-database"></a>1 - Vytvořit databázi
+## <a name="1---create-database"></a>1. vytvoření databáze
 
-Pro ukázkové prostředí vytvořte vlastní demo databázi. Tato databáze slouží k zobrazení metadat, nikoli k ukládání skutečných dat.
+Pro ukázkové prostředí vytvořte vlastní ukázkovou databázi. Tato databáze slouží k zobrazení metadat, nikoli k uložení skutečných dat.
 
-Vytvořte demo databázi (a v případě potřeby přetáhněte existující databázi) spuštěním následujícího skriptu Transact-SQL (T-SQL):
+Vytvořte ukázkovou databázi (a v případě potřeby vyřaďte existující databázi) spuštěním následujícího skriptu Transact-SQL (T-SQL):
 
 ```sql
 -- Drop database if it exists
@@ -62,11 +62,11 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 - Vytvořit pověření
+## <a name="2---create-credential"></a>2 – Vytvoření přihlašovacích údajů
 
-Pověření je nezbytné pro službu SQL na vyžádání pro přístup k souborům v úložišti. Vytvořte pověření pro účet úložiště, který se nachází ve stejné oblasti jako koncový bod. Přestože SQL na vyžádání přístup k účtům úložiště z různých oblastí, s úložiště a koncový bod ve stejné oblasti poskytuje lepší výkon.
+Přihlašovací údaje jsou nezbytné, aby služba SQL na vyžádání mohla přistupovat k souborům v úložišti. Vytvořte přihlašovací údaje pro účet úložiště, který se nachází ve stejné oblasti jako váš koncový bod. Přestože SQL na vyžádání má přístup k účtům úložiště z různých oblastí, má úložiště a koncový bod ve stejné oblasti lepší výkon.
 
-Vytvořte pověření spuštěním následujícího skriptu Transact-SQL (T-SQL):
+Přihlašovací údaje vytvořte spuštěním následujícího skriptu Transact-SQL (T-SQL):
 
 ```sql
 IF EXISTS (SELECT * FROM sys.credentials WHERE name = 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer')
@@ -81,11 +81,11 @@ SECRET = '';
 GO
 ```
 
-## <a name="3---prepare-view"></a>3 - Připravit pohled
+## <a name="3---prepare-view"></a>3. Příprava zobrazení
 
-Vytvořte zobrazení založené na externích ukázkových datech, která Power BI spotřebovává, spuštěním následujícího skriptu Transact-SQL (T-SQL):
+Vytvořte zobrazení na základě externích ukázkových dat pro Power BI, která se mají spotřebovat spuštěním následujícího skriptu Transact-SQL (T-SQL):
 
-Vytvořte `usPopulationView` zobrazení uvnitř `Demo` databáze s následujícím dotazem:
+Vytvořte zobrazení `usPopulationView` uvnitř databáze `Demo` pomocí následujícího dotazu:
 
 ```sql
 DROP VIEW IF EXISTS usPopulationView;
@@ -103,28 +103,28 @@ FROM
 
 Ukázková data obsahují následující sady dat:
 
-Us populace podle pohlaví a závod pro každý kraj USA pochází z 2000 a 2010 Decennial sčítání lidu v parketovém formátu.
+Naplnění žen a rasy u každého 2000 okresu v USA, který je ve formátu Parquet Decennial a 2010.
 
 | Cesta ke složce                                                  | Popis                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| /uvolnění/                                                    | Nadřazená složka pro data v účtu ukázkového úložiště               |
-| /uvolnění/us_population_county/                               | Usa populace datové soubory ve formátu parket, rozdělena podle roku pomocí Hive / Hadoop dělení schéma. |
+| /Release                                                    | Nadřazená složka pro data v ukázkovém účtu úložiště               |
+| /Release/us_population_county/                               | Datové soubory v USA ve formátu Parquet jsou rozdělené podle roku pomocí schématu dělení na oddíly nebo Hadoop. |
 
-## <a name="4---create-power-bi-report"></a>4 – Vytvoření sestavy Power BI
+## <a name="4---create-power-bi-report"></a>4. vytvoření sestavy Power BI
 
 Vytvořte sestavu pro Power BI Desktop pomocí následujících kroků:
 
-1. Otevřete aplikaci Power BI Desktop a vyberte **Získat data**.
+1. Otevřete aplikaci Power BI Desktop a vyberte **získat data**.
 
-   ![Otevřete desktopovou aplikaci Power BI a vyberte získat data.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
+   ![Otevřete Power BI desktopovou aplikaci a vyberte získat data.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
 2. Vyberte **Azure** > **Azure SQL Database**. 
 
    ![Vyberte zdroj dat.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Zadejte název serveru, na kterém je **Server** databáze umístěna, `Demo` do pole Server a zadejte název databáze. Vyberte volbu **Importovat** a pak vyberte **OK**. 
+3. Do pole **Server** zadejte název serveru, kde se databáze nachází, a pak zadejte `Demo` název databáze. Vyberte možnost **Import** a pak vyberte **OK**. 
 
-   ![Vyberte databázi v koncovém bodě.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
+   ![Na koncovém bodu vyberte databáze.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
 4. Vyberte upřednostňovanou metodu ověřování:
 
@@ -132,47 +132,47 @@ Vytvořte sestavu pro Power BI Desktop pomocí následujících kroků:
   
     ![Klikněte na Přihlásit se.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
-    - Příklad pro přihlášení sql - zadejte své uživatelské jméno a heslo.
+    - Příklad přihlašovacího jména SQL – zadejte své uživatelské jméno a heslo.
 
     ![Použijte přihlášení SQL.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Vyberte `usPopulationView`zobrazení a pak vyberte **Načíst**. 
+5. Vyberte zobrazení `usPopulationView`a pak vyberte **načíst**. 
 
-   ![Vyberte zobrazení v databázi, která je vybrána.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
+   ![Vyberte zobrazení vybrané databáze.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. Počkejte na dokončení operace a zobrazí se vyskakovací okno s uvedením `There are pending changes in your queries that haven't been applied`. Vyberte **Použít změny**. 
+6. Počkejte na dokončení operace a zobrazí se automaticky otevírané okno s oznámením `There are pending changes in your queries that haven't been applied`. Vyberte **použít změny**. 
 
-   ![Klikněte na Použít změny.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
+   ![Klikněte na použít změny.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
-7. Počkejte, až dialogové okno **Použít změny dotazu** zmizí, což může trvat několik minut. 
+7. Počkejte, než dialogové okno **použít změny dotazů** zmizí, což může trvat několik minut. 
 
-   ![Počkejte na dokončení dotazu.](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
+   ![Počkejte, až se dotaz dokončí.](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
 
-8. Po dokončení načítání vyberte v tomto pořadí následující sloupce a vytvořte sestavu:
-   - countyName
-   - Populace
-   - název_stavu
+8. Až se zatížení dokončí, vyberte následující sloupce v tomto pořadí, aby se vytvořila sestava:
+   - název oblasti
+   - výběr
+   - stateName
 
-   ![Vyberte sloupce, které jsou zajímavé, a vygenerujte sestavu mapy.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
+   ![Vyberte sloupce zájmu pro vygenerování sestavy mapy.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení používání této sestavy odstraňte prostředky pomocí následujících kroků:
+Po dokončení práce s touto sestavou tyto prostředky odstraňte pomocí následujících kroků:
 
-1. Odstranění přihlašovacích údajů pro účet úložiště
+1. Odstranit přihlašovací údaje účtu úložiště
 
    ```sql
    DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
    ```
 
-2. Odstranění zobrazení
+2. Odstranit zobrazení
 
    ```sql
    DROP VIEW usPopulationView;
    ```
 
-3. Přetažení databáze
+3. Odstranit databázi
 
    ```sql
    DROP DATABASE Demo;
@@ -180,4 +180,4 @@ Po dokončení používání této sestavy odstraňte prostředky pomocí násle
 
 ## <a name="next-steps"></a>Další kroky
 
-Přejdete k [souborům úložiště dotazu](develop-storage-files-overview.md) a zjistěte, jak dotazovat soubory úložiště pomocí synapse SQL.
+Přejděte do [souborů úložiště dotazů](develop-storage-files-overview.md) a Naučte se, jak zadávat dotazy na soubory úložiště pomocí synapse SQL.

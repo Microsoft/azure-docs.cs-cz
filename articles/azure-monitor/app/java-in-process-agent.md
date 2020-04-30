@@ -1,50 +1,50 @@
 ---
-title: Monitorování aplikací java v libovolném prostředí – Azure Monitor Application Insights
-description: Monitorování výkonu aplikací pro aplikace Java spuštěné v libovolném prostředí bez instrumentace aplikace. Distribuované trasování a mapa aplikací.
+title: Monitorování aplikací Java v jakémkoli prostředí – Azure Monitor Application Insights
+description: Monitorování výkonu aplikací pro aplikace Java spuštěné v jakémkoli prostředí bez instrumentace aplikace Distribuované trasování a mapa aplikací
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687717"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java bezkódové aplikace monitorování Azure Monitor Application Insights - public preview
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Monitorování aplikací nezaložených na kódu Java Azure Monitor Application Insights – Public Preview
 
-Java codeless application monitoring je o jednoduchosti - neexistují žádné změny kódu, agent Java může být povolen pouze prostřednictvím několika konfiguračních změn.
+Monitorování aplikací bez kódu Java je vše o jednoduchosti – neexistují žádné změny kódu, agent Java může být povolený jenom v několika změnách konfigurace.
 
- Agent Java pracuje v jakémkoli prostředí a umožňuje sledovat všechny vaše java aplikace. Jinými slovy, ať už používáte java aplikace na virtuálních počítačích, místně, v AKS, ve Windows, Linuxu – na co si vzpomenete, agent Java 3.0 bude vaši aplikaci monitorovat.
+ Agent Java funguje v jakémkoli prostředí a umožňuje monitorovat všechny aplikace v jazyce Java. Jinými slovy, bez ohledu na to, jestli máte aplikace Java spuštěné na virtuálních počítačích, místně v AKS, v systému Windows, Linux – pojmenujte ji agent Java 3,0, který bude vaši aplikaci monitorovat.
 
-Přidání sady Application Insights Java SDK do vaší aplikace již není nutné, protože agent 3.0 automaticky shromažďuje požadavky, závislosti a zaznamenává všechny samostatně.
+Přidání sady Application Insights Java SDK do vaší aplikace už není potřeba, protože agent 3,0 autoshromáždí požadavky, závislosti a protokoly sám o sobě.
 
-Stále můžete odeslat vlastní telemetrie z vaší aplikace. Agent 3.0 bude sledovat a korelovat spolu se všemi automaticky odebrané telemetrie.
+Z aplikace můžete stále odesílat vlastní telemetrie. Agent 3,0 bude sledovat a koreluje spolu se všemi všemi shromažďovanými telemetriemi.
 
 ## <a name="quickstart"></a>Rychlý start
 
-**1. Stáhněte si agenta**
+**1. Stáhněte agenta.**
 
-Stáhnout [applicationinsights-agent-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+Stáhnout [ApplicationInsights-agent-3.0.0-Preview. 3. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
-**2. Namiřte JVM na agenta**
+**2. Nasměrujte JVM na agenta.**
 
-Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` do vaší aplikace JVM args
+Přidat `-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar` do argumentů JVM vaší aplikace
 
-Typické JVM args patří `-Xmx512m` a `-XX:+UseG1GC`. Takže pokud víte, kam je přidat, pak už víte, kam to přidat.
+Typické argumenty JVM zahrnují `-Xmx512m` a `-XX:+UseG1GC`. Takže pokud víte, kam je přidat, pak už víte, kam je přidat.
 
-Další pomoc s konfigurací jvm args aplikace naleznete v [tématu 3.0 Preview: Tipy pro aktualizaci vašeho JVM args](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
+Další nápovědu ke konfiguraci argumentů JVM vaší aplikace najdete v článku [3,0 Preview: Tipy pro aktualizaci ARGUMENTŮ JVM](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments).
 
-**3. Najeďte agenta na prostředek Application Insights.**
+**3. Nasměrujte agenta na prostředek Application Insights**
 
-Pokud ještě nemáte prostředek Application Insights, můžete vytvořit nový pomocí kroků v [průvodci vytvářením prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
+Pokud ještě prostředek Application Insights nemáte, můžete ho vytvořit pomocí postupu v [příručce pro vytváření prostředků](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
 
-Nasměrujte agenta na prostředek Application Insights nastavením proměnné prostředí:
+Najeďte agentem na prostředek Application Insights, a to nastavením proměnné prostředí:
 
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-Nebo vytvořením konfiguračního souboru s `ApplicationInsights.json` `applicationinsights-agent-3.0.0-PREVIEW.3.jar`názvem a jeho umístěním do stejného adresáře jako s následujícím obsahem:
+Nebo vytvořením konfiguračního souboru s názvem `ApplicationInsights.json`a jeho umístěním do stejného adresáře jako `applicationinsights-agent-3.0.0-PREVIEW.3.jar`s následujícím obsahem:
 
 ```json
 {
@@ -56,83 +56,83 @@ Nebo vytvořením konfiguračního souboru s `ApplicationInsights.json` `applica
 
 Připojovací řetězec najdete v prostředku Application Insights:
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Přehledy aplikací":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Připojovací řetězec Application Insights":::
 
-**4. To je ono!**
+**4. to je!**
 
-Teď spusťte aplikaci a přejděte na svůj prostředek Application Insights na webu Azure Portal a podívejte se na data monitorování.
+Nyní spusťte aplikaci a přejděte do svého prostředku Application Insights v Azure Portal, aby se zobrazila data monitorování.
 
 > [!NOTE]
-> Může trvat několik minut, než se data monitorování zobrazí na portálu.
+> Zobrazení dat monitorování na portálu může trvat několik minut.
 
 
 ## <a name="configuration-options"></a>Možnosti konfigurace
 
-V `ApplicationInsights.json` souboru můžete navíc nakonfigurovat:
+V `ApplicationInsights.json` souboru můžete také nakonfigurovat:
 
-* Název role cloudu
-* Instance role cloudu
-* Zachycení protokolu aplikací
-* Metriky JMX
+* Název cloudové role
+* Instance cloudové role
+* Zachycení protokolu aplikace
+* JMX metriky
 * Mikrometr
 * Prezenční signál
 * Vzorkování
-* HTTP Proxy
-* Vlastní diagnostika
+* Proxy server HTTP
+* Automatická diagnostika
 
-Podrobnosti naleznete v náhledu [3.0: Možnosti konfigurace](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
+Podrobnosti najdete v článku [3,0 Public Preview: možnosti konfigurace](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config).
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Automaticky shromažďované požadavky, závislosti, protokoly a metriky
+## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>Autoshromáždit požadavky, závislosti, protokoly a metriky
 
 ### <a name="requests"></a>Žádosti
 
-* JMS Spotřebitelé
-* Kafka Spotřebitelé
-* Netty/WebFlux
-* Serva
-* Jarní plánování
+* JMS spotřebitelé
+* Kafka spotřebitelé
+* Síťovina/webtokem
+* Servletů
+* Plánování pružiny
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>Závislosti s distribuovaným šířením trasování
+### <a name="dependencies-with-distributed-trace-propagation"></a>Závislosti s šířením distribuovaného trasování
 
-* Klient Apache HttpClient a httpasynchronní klient
+* Apache HttpClient a HttpAsyncClient
 * gRPC
-* java.net.HttpURLPřipojení
+* Java. NET. HttpURLConnection
 * JMS
 * Kafka
-* Klient Netty
+* Klient síťoviny
 * OkHttp
 
 ### <a name="other-dependencies"></a>Další závislosti
 
 * Cassandra
 * JDBC
-* MongoDB (asynchronní a synchronizované)
-* Redis (salát a Jediové)
+* MongoDB (asynchronní a synchronizace)
+* Redis (Lettuce a Jedis)
 
 ### <a name="logs"></a>Protokoly
 
-* java.util.logging
-* Protokol4j
-* SLF4J/Zpětná přihlašování
+* Java. util. Logging
+* Log4j
+* SLF4J/Logback
 
 ### <a name="metrics"></a>Metriky
 
 * Mikrometr
-* Metriky JMX
+* JMX metriky
 
-## <a name="sending-custom-telemetry-from-your-application"></a>Odesílání vlastní telemetrie z vaší aplikace
+## <a name="sending-custom-telemetry-from-your-application"></a>Odesílá se vlastní telemetrie z vaší aplikace.
 
-Naším cílem v 3.0+ je umožnit odesílání vlastní telemetrie pomocí standardních api.
+Naším cílem v 3.0 + je umožnění odesílání vlastní telemetrie pomocí standardních rozhraní API.
 
-Podporujeme Micrometer, OpenTelemetric API a populární logovací rámce. Application Insights Java 3.0 automaticky zachytí telemetrii a koreluje ji spolu se všemi automaticky sebrané telemetrie.
+Podporujeme mikroměřiče, rozhraní OpenTelemetry API a oblíbená rozhraní protokolování. Application Insights Java 3,0 automaticky zachytí telemetrii a koreluje je spolu se všemi automaticky shromážděnou telemetrie.
 
-Z tohoto důvodu neplánujeme vydat sdk s Application Insights 3.0 v tuto chvíli.
+Z tohoto důvodu neplánujeme v současnosti vydání sady SDK s Application Insights 3,0.
 
-Application Insights Java 3.0 již naslouchá telemetrii, která je odeslána do sady Application Insights Java SDK 2.x. Tato funkce je důležitou součástí upgradu příběhu pro stávající uživatele 2.x a vyplňuje důležitou mezeru v naší vlastní telemetrické podpoře, dokud OpenTelemetry API je GA.
+Application Insights Java 3,0 již naslouchá telemetrie, která je odeslána do Application Insights Java SDK 2. x. Tato funkce je důležitou součástí článku upgradu pro existující uživatele 2. x a vyplní důležitou mezeru v naší podpoře vlastní telemetrie, dokud není rozhraní OpenTelemetry API GA.
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Odesílání vlastní telemetrie pomocí application insights java sdcharty 2.x
+## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>Odesílání vlastní telemetrie pomocí Application Insights Java SDK 2. x
 
-Přidejte `applicationinsights-core-2.6.0.jar` do aplikace (všechny verze 2.x jsou podporovány Application Insights Java 3.0, ale stojí za to použít nejnovější, pokud máte na výběr):
+Přidejte `applicationinsights-core-2.6.0.jar` do své aplikace (všechny 2. x verze jsou podporovány Application Insights Java 3,0, ale Využijte možnost nejnovější, pokud máte možnost použít):
 
 ```xml
   <dependency>
@@ -142,13 +142,13 @@ Přidejte `applicationinsights-core-2.6.0.jar` do aplikace (všechny verze 2.x j
   </dependency>
 ```
 
-Vytvořte telemetrický klient:
+Vytvořte TelemetryClient:
 
   ```java
 private static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-a použít pro odesílání vlastní telemetrie.
+a používají se k odesílání vlastní telemetrie.
 
 ### <a name="events"></a>Události
 
@@ -157,14 +157,14 @@ telemetryClient.trackEvent("WinGame");
 ```
 ### <a name="metrics"></a>Metriky
 
-Metrickou telemetrii můžete odesílat pomocí [mikrometru](https://micrometer.io):
+Telemetrii metriky můžete poslat pomocí [mikroměřiče](https://micrometer.io):
 
 ```java
   Counter counter = Metrics.counter("test_counter");
   counter.increment();
 ```
 
-Nebo můžete také použít Application Insights Java SDK 2.x:
+Můžete také použít Application Insights Java SDK 2. x:
 
 ```java
   telemetryClient.trackMetric("queueLength", 42.0);
@@ -187,18 +187,18 @@ Nebo můžete také použít Application Insights Java SDK 2.x:
 ```
 
 ### <a name="logs"></a>Protokoly
-Můžete odeslat vlastní telemetrická data prostřednictvím své oblíbené architektury protokolování.
+Vlastní telemetrii protokolu můžete odeslat prostřednictvím oblíbeného protokolovacího rozhraní.
 
-Nebo můžete také použít Application Insights Java SDK 2.x:
+Můžete také použít Application Insights Java SDK 2. x:
 
 ```java
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
 ### <a name="exceptions"></a>Výjimky
-Můžete odeslat vlastní výjimku telemetrie prostřednictvím své oblíbené rozhraní protokolování.
+Můžete odesílat vlastní telemetrii výjimek prostřednictvím oblíbeného protokolovacího rozhraní.
 
-Nebo můžete také použít Application Insights Java SDK 2.x:
+Můžete také použít Application Insights Java SDK 2. x:
 
 ```java
   try {
@@ -208,9 +208,9 @@ Nebo můžete také použít Application Insights Java SDK 2.x:
   }
 ```
 
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgrade z aplikace Insights Java SDK 2.x
+## <a name="upgrading-from-application-insights-java-sdk-2x"></a>Upgrade z Application Insights Java SDK 2. x
 
-Pokud už ve své aplikaci používáte application insights Java SDK 2.x, není nutné ji odebírat. Agent Java 3.0 ji detekuje a zachytí a koreluje všechny vlastní telemetrie, které odesíláte prostřednictvím sady Java SDK 2.x, a zároveň potlačí všechny automatické vzpomínky prováděné sadou Java SDK 2.x, aby se zabránilo duplicitnímu zachycení.
+Pokud v aplikaci již používáte Application Insights Java SDK 2. x, není nutné ji odebrat. Agent Java 3,0 ho detekuje a zachytí a koreluje se všemi vlastními telemetriemi, které posíláte prostřednictvím sady Java SDK 2. x, a zároveň potlačí všechny kolekce, které provádí Java SDK 2. x, aby se zabránilo duplicitnímu zachycení.
 
 > [!NOTE]
-> Poznámka: Java SDK 2.x TelemetryInitializers a TelemetryProcesors se nespustí při použití agenta 3.0.
+> Poznámka: Java SDK 2. x TelemetryInitializers a TelemetryProcessors se při použití agenta 3,0 nespustí.

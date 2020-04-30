@@ -1,6 +1,6 @@
 ---
-title: Škálování centra Azure IoT Hub | Dokumenty společnosti Microsoft
-description: Jak škálovat službu IoT hub tak, aby podporovala očekávanou propustnost zpráv a požadované funkce. Zahrnuje souhrn podporované propustnost pro každou úroveň a možnosti pro prosazení se tvrdosti.
+title: Škálování služby Azure IoT Hub | Microsoft Docs
+description: Jak škálovat centrum IoT tak, aby podporovalo očekávanou propustnost zpráv a požadované funkce. Obsahuje souhrn podporované propustnosti pro každou úroveň a možnosti pro horizontálního dělení.
 author: wesmc7777
 manager: timlt
 ms.service: iot-hub
@@ -12,133 +12,133 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4b18878cfc5c75bf27fd46cbceaa06e0b6053ddd
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759618"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Volba vhodné vrstvy služby IoT Hub pro vaše řešení
 
-Každé řešení IoT je jiné, takže Azure IoT Hub nabízí několik možností založených na cenách a škálování. Tento článek vám pomůže vyhodnotit vaše potřeby centra IoT Hub. Informace o cenách o úrovních IoT Hub najdete v tématu [Ceny ioT Hub .](https://azure.microsoft.com/pricing/details/iot-hub)
+Každé řešení IoT se liší, takže Azure IoT Hub nabízí několik možností na základě cen a škálování. Tento článek vám může pomáhat při vyhodnocování vašich IoT Hubch potřeb. Informace o cenách IoT Hub úrovní najdete v tématu [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub).
 
-Chcete-li se rozhodnout, která úroveň IoT Hub je pro vaše řešení vhodná, položte si dvě otázky:
+Pokud chcete určit, která IoT Hub úroveň pro vaše řešení je nejvhodnější, položte si dva dotazy:
 
 **Jaké funkce mám v plánu použít?**
 
-Azure IoT Hub nabízí dvě úrovně, základní a standardní, které se liší v počtu funkcí, které podporují. Pokud je vaše řešení IoT založeno na shromažďování dat ze zařízení a centrální analýze, pak je základní úroveň pravděpodobně pro vás ta pravá. Pokud chcete používat pokročilejší konfigurace k vzdálenému řízení zařízení IoT nebo distribuci některých úloh do samotných zařízení, měli byste zvážit standardní úroveň. Pro podrobný rozpis, které funkce jsou zahrnuty v každé úrovni pokračovat na [základní a standardní úrovně](#basic-and-standard-tiers).
+Azure IoT Hub nabízí dvě úrovně Basic a Standard, které se liší podle počtu funkcí, které podporují. Pokud je vaše řešení IoT založené na shromažďování dat ze zařízení a jejich centrální analýze, je pro vás pravděpodobně nejvhodnější úroveň Basic. Pokud chcete použít pokročilejší konfigurace pro vzdálenou kontrolu zařízení IoT nebo jejich distribuci do samotných zařízení, měli byste zvážit úroveň Standard. Podrobný rozpis funkcí zahrnutých do jednotlivých vrstev pokračuje v [úrovni Basic a Standard](#basic-and-standard-tiers).
 
-**Kolik dat mám v plánu denně přesouvat?**
+**Kolik dat mám naplánovat, aby se každý den přesunul?**
 
-Každá úroveň Služby IoT Hub je k dispozici ve třech velikostech na základě toho, kolik propustnost dat mohou v daný den zpracovat. Tyto velikosti jsou číselně označeny jako 1, 2 a 3. Například každá jednotka centra IoT úrovně 1 zvládne 400 tisíc zpráv denně, zatímco jednotka úrovně 3 zvládne 300 milionů. Další podrobnosti o pokynech pro data nadále [message propustnost](#message-throughput).
+Každá IoT Hubová vrstva je dostupná ve třech velikostech, a to na základě toho, kolik propustnosti dat může v daném dni zvládnout. Tyto velikosti se číslně identifikují jako 1, 2 a 3. Například každá jednotka centra IoT úrovně 1 může zpracovávat 400 000 zpráv denně, zatímco jednotka úrovně 3 může zpracovávat 300 000 000. Další podrobnosti o pravidlech pro data můžete pokračovat v [propustnosti zpráv](#message-throughput).
 
-## <a name="basic-and-standard-tiers"></a>Základní a standardní úrovně
+## <a name="basic-and-standard-tiers"></a>Úrovně Basic a Standard
 
-Standardní úroveň Služby IoT Hub umožňuje všechny funkce a je vyžadována pro všechna řešení IoT, která chtějí využívat obousměrné komunikační funkce. Základní úroveň nabízí jen podmnožinu funkcí. Je určená pro řešení IoT, která potřebují jenom jednosměrnou komunikaci ze zařízení do cloudu. Obě úrovně nabízejí stejné bezpečnostní a ověřovací funkce.
+Úroveň Standard IoT Hub povoluje všechny funkce a je vyžadována pro všechna řešení IoT, která chtějí využívat možnosti obousměrné komunikace. Základní úroveň nabízí jen podmnožinu funkcí. Je určená pro řešení IoT, která potřebují jenom jednosměrnou komunikaci ze zařízení do cloudu. Obě úrovně nabízejí stejné bezpečnostní a ověřovací funkce.
 
-Pro centrum IoT Hub lze vybrat jenom jeden typ [edice](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci úrovně. Můžete například vytvořit ioT hub s více jednotkami S1, ale ne se kombinací jednotek z různých edic, jako jsou S1 a S2.
+Pro jednu IoT Hub lze zvolit pouze jeden typ [edice](https://azure.microsoft.com/pricing/details/iot-hub/) v rámci vrstvy. Můžete například vytvořit IoT Hub s více jednotkami S1, ale ne se směsí jednotek z různých edic, například S1 a S2.
 
 | Schopnost | Úroveň Basic | Úroveň Free/Standard |
 | ---------- | ---------- | ------------- |
-| [Telemetrie mezi zařízeními a cloudy](iot-hub-devguide-messaging.md) | Ano | Ano |
-| [Identita pro zařízení](iot-hub-devguide-identity-registry.md) | Ano | Ano |
-| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md), [obohacení zpráv](iot-hub-message-enrichments-overview.md)a integrace [mřížky událostí](iot-hub-event-grid.md) | Ano | Ano |
+| [Telemetrie ze zařízení do cloudu](iot-hub-devguide-messaging.md) | Ano | Ano |
+| [Identita vázaná na zařízení](iot-hub-devguide-identity-registry.md) | Ano | Ano |
+| [Směrování zpráv](iot-hub-devguide-messages-read-custom.md), [rozšiřování zpráv](iot-hub-message-enrichments-overview.md)a [integrace Event Grid](iot-hub-event-grid.md) | Ano | Ano |
 | [Protokoly HTTP, AMQP a MQTT](iot-hub-devguide-protocols.md) | Ano | Ano |
-| [Služba zřizování zařízení](../iot-dps/about-iot-dps.md) | Ano | Ano |
+| [Služba Device Provisioning](../iot-dps/about-iot-dps.md) | Ano | Ano |
 | [Monitorování a diagnostika](iot-hub-monitor-resource-health.md) | Ano | Ano |
-| [Zasílání zpráv mezi cloudy](iot-hub-devguide-c2d-guidance.md) |   | Ano |
-| [Dvojčata zařízení](iot-hub-devguide-device-twins.md), [dvojčata modulů](iot-hub-devguide-module-twins.md)a [správa zařízení](iot-hub-device-management-overview.md) |   | Ano |
-| [Datové proudy zařízení (náhled)](iot-hub-device-streams-overview.md) |   | Ano |
+| [Zasílání zpráv z cloudu na zařízení](iot-hub-devguide-c2d-guidance.md) |   | Ano |
+| [Vlákna zařízení](iot-hub-devguide-device-twins.md), [vlákna modulu](iot-hub-devguide-module-twins.md)a [Správa zařízení](iot-hub-device-management-overview.md) |   | Ano |
+| [Datové proudy zařízení (Preview)](iot-hub-device-streams-overview.md) |   | Ano |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ano |
-| [Náhled ioT plug and play](../iot-pnp/overview-iot-plug-and-play.md) |   | Ano |
+| [technologie Plug and Play IoT Preview](../iot-pnp/overview-iot-plug-and-play.md) |   | Ano |
 
-IoT Hub také nabízí bezplatnou úroveň, která je určena pro testování a hodnocení. Má všechny možnosti standardní úrovně, ale omezené povolenky pro zasílání zpráv. Nelze upgradovat z úrovně free na základní nebo standardní.
+IoT Hub také nabízí bezplatnou úroveň, která je určena pro testování a vyhodnocení. Má všechny možnosti úrovně Standard, ale omezené odchylky pro zasílání zpráv. Nemůžete upgradovat z úrovně Free na Basic nebo Standard.
 
 ## <a name="partitions"></a>Oddíly
 
-Azure IoT Hubs obsahují mnoho základních součástí [Azure Event Hubs](../event-hubs/event-hubs-features.md), včetně [oddílů](../event-hubs/event-hubs-features.md#partitions). Datové proudy událostí pro služby IoT Hubs jsou obvykle naplněny příchozími telemetrickými daty, která jsou hlášena různými zařízeními IoT. Dělení datového proudu událostí se používá ke snížení kolizí, ke kterým dochází při souběžnéčtení a zápisu do datových proudů událostí.
+Centra IoT Azure obsahují mnoho základních součástí [Azure Event Hubs](../event-hubs/event-hubs-features.md), včetně [oddílů](../event-hubs/event-hubs-features.md#partitions). Datové proudy událostí pro centra IoT jsou obvykle vyplněny příchozími daty telemetrie, která jsou uvedena v různých zařízeních IoT. Rozdělení datového proudu událostí se používá ke snížení kolizí, ke kterým dochází při současném čtení a zápisu do datových proudů událostí.
 
-Limit oddílu je vybrán při vytvoření ioT hub a nelze změnit. Maximální limit oddílu pro základní úroveň IoT Hub a standardní úroveň IoT Hub je 32. Většina center IoT potřebuje jenom 4 oddíly. Další informace o určení oddílů najdete v nejčastějších dotazech k centru událostí [Kolik oddílů potřebuji?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+Limit oddílu se zvolí při vytvoření IoT Hub a nedá se změnit. Maximální omezení oddílu IoT Hub úrovně Basic a úrovně Standard IoT Hub je 32. Většina rozbočovačů IoT potřebuje jenom 4 oddíly. Další informace o tom, jak určit oddíly, najdete v Event Hubs Nejčastější dotazy, [kolik oddílů](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need) potřebuji?
 
-## <a name="tier-upgrade"></a>Upgrade úrovně
+## <a name="tier-upgrade"></a>Upgrade vrstvy
 
-Po vytvoření centra IoT můžete upgradovat ze základní vrstvy na standardní úroveň bez přerušení stávajících operací. Další informace najdete v tématu [Jak upgradovat centrum IoT hub](iot-hub-upgrade.md).
+Po vytvoření služby IoT Hub můžete upgradovat z úrovně Basic na úroveň Standard, aniž by došlo k přerušení stávajících operací. Další informace najdete v tématu [Postup upgradu služby IoT Hub](iot-hub-upgrade.md).
 
-Konfigurace oddílu zůstane beze změny při migraci ze základní vrstvy na úroveň standard.
+Pokud migrujete z úrovně Basic na úroveň Standard, zůstane konfigurace oddílu beze změny.
 
 > [!NOTE]
-> Úroveň free nepodporuje upgrade na základní nebo standardní.
+> Úroveň Free nepodporuje upgrade na Basic nebo Standard.
 
-## <a name="iot-hub-rest-apis"></a>Api rest centra IoT Hub
+## <a name="iot-hub-rest-apis"></a>Rozhraní REST API pro IoT Hub
 
-Rozdíl v podporovaných možnostech mezi základní a standardní vrstvy služby IoT Hub znamená, že některá volání rozhraní API nefungují s centry základní vrstvy. V následující tabulce jsou uvedena dostupná rozhraní API:
+Rozdíl v podporovaných možnostech mezi úrovněmi Basic a Standard IoT Hub znamená, že některá volání rozhraní API nefungují s centry na úrovni Basic. Následující tabulka uvádí, která rozhraní API jsou k dispozici:
 
-| rozhraní API | Úroveň Basic | Úroveň Free/Standard |
+| Rozhraní API | Úroveň Basic | Úroveň Free/Standard |
 | --- | ---------- | ------------- |
 | [Odstranit zařízení](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletedevice) | Ano | Ano |
 | [Získat zařízení](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevice) | Ano | Ano |
 | [Odstranit modul](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/deletemodule) | Ano | Ano |
 | [Získat modul](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getmodule) | Ano | Ano |
-| [Získání statistik registru](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | Ano | Ano |
-| [Získat statistiky služeb](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | Ano | Ano |
-| [Vytvoření nebo aktualizace zařízení](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | Ano | Ano |
+| [Získat statistiku registru](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getdevicestatistics) | Ano | Ano |
+| [Získat statistiku služeb](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/getservicestatistics) | Ano | Ano |
+| [Vytvořit nebo aktualizovat zařízení](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatedevice) | Ano | Ano |
 | [Vytvořit nebo aktualizovat modul](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/createorupdatemodule) | Ano | Ano |
-| [Centrum IoT dotazu](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | Ano | Ano |
-| [Vytvořit soubor nahrávání Identifikátor URI](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Ano | Ano |
-| [Přijímat oznámení vázané na zařízení](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Ano | Ano |
-| [Odeslat událost zařízení](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
-| Odeslat událost modulu | Pouze AMQP a MQTT | Pouze AMQP a MQTT |
-| [Aktualizovat stav odeslání souboru](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
-| [Operace s hromadným zařízením](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Ano, s výjimkou funkcí IoT Edge | Ano |
-| [Zrušit úlohu exportu importu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Ano | Ano |
+| [IoT Hub dotazů](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/queryiothub) | Ano | Ano |
+| [Vytvořit soubor SAS SAS pro nahrání souboru](https://docs.microsoft.com/rest/api/iothub/device/createfileuploadsasuri) | Ano | Ano |
+| [Přijmout oznámení vázané na zařízení](https://docs.microsoft.com/rest/api/iothub/device/receivedeviceboundnotification) | Ano | Ano |
+| [Událost odeslání zařízení](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ano | Ano |
+| Událost odeslání modulu | Jenom AMQP a MQTT | Jenom AMQP a MQTT |
+| [Aktualizovat stav nahrávání souboru](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ano | Ano |
+| [Operace hromadného zařízení](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/bulkdevicecrud) | Ano, s výjimkou možností IoT Edge | Ano |
+| [Zrušit import úlohy exportu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/cancelimportexportjob) | Ano | Ano |
 | [Vytvořit úlohu exportu importu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createimportexportjob) | Ano | Ano |
 | [Získat úlohu exportu importu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjob) | Ano | Ano |
-| [Získat import exportní úlohy](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Ano | Ano |
-| [Vymazat frontu příkazů](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Ano |
-| [Získat dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Ano |
-| [Získat dvojče modulu](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Ano |
-| [Metoda invoke zařízení](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Ano |
-| [Aktualizovat dvojče zařízení](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Ano |
-| [Aktualizovat dvojče modulu](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Ano |
-| [Oznámení o opuštění zařízení](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ano |
-| [Úplné oznámení vázané na zařízení](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ano |
+| [Získat úlohy exportu importu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) | Ano | Ano |
+| [Vyprázdnit frontu příkazů](https://docs.microsoft.com/rest/api/iothub/service/registrymanager/purgecommandqueue) |   | Ano |
+| [Získat dvojitou dvojici zařízení](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin) |   | Ano |
+| [Získat nevlákenný modul](https://docs.microsoft.com/rest/api/iothub/service/twin/getmoduletwin) |   | Ano |
+| [Vyvolat metodu zařízení](https://docs.microsoft.com/rest/api/iothub/service/devicemethod/invokedevicemethod) |   | Ano |
+| [Aktualizovat dvojitou dvojici zařízení](https://docs.microsoft.com/rest/api/iothub/service/twin/updatedevicetwin) |   | Ano |
+| [Aktualizovat modul na vlákna](https://docs.microsoft.com/rest/api/iothub/service/twin/updatemoduletwin) |   | Ano |
+| [Opustit oznámení vázané na zařízení](https://docs.microsoft.com/rest/api/iothub/device/abandondeviceboundnotification) |   | Ano |
+| [Dokončit oznámení vázané na zařízení](https://docs.microsoft.com/rest/api/iothub/device/completedeviceboundnotification) |   | Ano |
 | [Zrušit úlohu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/canceljob) |   | Ano |
 | [Vytvoření úlohy](https://docs.microsoft.com/rest/api/iothub/service/jobclient/createjob) |   | Ano |
-| [Získat práci](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Ano |
-| [Úlohy dotazu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Ano |
+| [Získat úlohu](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getjob) |   | Ano |
+| [Dotazy na úlohy](https://docs.microsoft.com/rest/api/iothub/service/jobclient/queryjobs) |   | Ano |
 
 ## <a name="message-throughput"></a>Propustnost zprávy
 
-Nejlepší způsob, jak velikost řešení IoT Hub je vyhodnotit provoz na základě jednotky. Zvažte zejména požadovanou propustnost špičky pro následující kategorie operací:
+Nejlepším způsobem, jak velikost IoT Hub řešení, je vyhodnotit provoz na základě jednotlivých jednotek. Zvažte zejména požadovanou propustnost ve špičce pro následující kategorie operací:
 
 * Zprávy typu zařízení-cloud
 * Zprávy z cloudu na zařízení
 * Operace registru identit
 
-Provoz se měří pro vaše centrum IoT na základě jednotky. Když vytvoříte centrum IoT, zvolíte jeho úroveň a edici a nastavíte počet dostupných jednotek. Pro edici B1, B2, S1 nebo S2 můžete zakoupit až 200 jednotek nebo až 10 jednotek pro edici B3 nebo S3. Po vytvoření služby IoT hub můžete změnit počet jednotek dostupných v jeho edici, upgradovat nebo downgrade mezi edicemi v rámci jeho úrovně (B1 až B2) nebo upgradovat ze základní na standardní úroveň (B1 na S1) bez přerušení stávajících operací. Další informace najdete v tématu [Jak upgradovat centrum IoT hub](iot-hub-upgrade.md).  
+Provoz se měří pro Centrum IoT na jednotlivých jednotkách. Když vytváříte centrum IoT, zvolíte jeho úroveň a edici a nastavíte počet dostupných jednotek. Pro edici B1, B2, S1 nebo S2 můžete zakoupit až 200 jednotek a až 10 jednotek pro edici B3 nebo S3. Po vytvoření centra IoT můžete změnit počet jednotek dostupných v rámci své edice, upgradovat nebo downgradovat mezi edicemi v rámci své vrstvy (B1 až B2) nebo upgradovat z úrovně Basic na úroveň Standard (B1 až S1), aniž by došlo k přerušení stávajících operací. Další informace najdete v tématu [Postup upgradu služby IoT Hub](iot-hub-upgrade.md).  
 
-Jako příklad možností provozu jednotlivých úrovní se zprávy mezi zařízeními a cloudem řídí těmito trvalými pokyny pro propustnost:
+Jako příklad provozu jednotlivých vrstev se zprávy typu zařízení-Cloud řídí těmito zásadami trvalé propustnosti:
 
-| Edice úrovně | Trvalá propustnost | Míra trvalého odesílání |
+| Úroveň edice | Přetrvávající propustnost | Míra trvalého odeslání |
 | --- | --- | --- |
-| B1, S1 |Až 1111 KB/min na jednotku<br/>(1,5 GB/den/jednotka) |Průměr 278 zpráv za minutu na jednotku<br/>(400 000 zpráv za den na jednotku) |
-| B2, S2 |Až 16 MB/min na jednotku<br/>(22,8 GB/den/jednotka) |Průměr 4 167 zpráv za minutu na jednotku<br/>(6 milionů zpráv za den na jednotku) |
-| B3, S3 |Až 814 MB/min na jednotku<br/>(1144,4 GB/den/jednotka) |Průměr 208 333 zpráv za minutu na jednotku<br/>(300 milionů zpráv za den na jednotku) |
+| B1, S1 |Až 1111 KB za minutu na jednotku<br/>(1,5 GB za den/jednotku) |Průměr zpráv 278 za minutu na jednotku<br/>(400 000 zpráv za den na jednotku) |
+| B2, S2 |Až 16 MB za minutu na jednotku<br/>(22,8 GB za den/jednotku) |Průměr zpráv 4 167 za minutu na jednotku<br/>(6 000 000 zpráv za den na jednotku) |
+| B3, S3 |Až 814 MB za minutu na jednotku<br/>(1144,4 GB za den/jednotku) |Průměr zpráv 208 333 za minutu na jednotku<br/>(300 000 000 zpráv za den na jednotku) |
 
-Propustnost zařízení cloud je jenom jedna z metrik, které je třeba zvážit při navrhování řešení IoT. Podrobnější informace naleznete v tématu [Kvóty a omezení centra IoT Hub](iot-hub-devguide-quotas-throttling.md).
+Propustnost typu zařízení-Cloud je jenom jedna z metrik, kterou potřebujete vzít v úvahu při navrhování řešení IoT. Komplexnější informace najdete v tématu [IoT Hub kvót a omezení](iot-hub-devguide-quotas-throttling.md).
 
-### <a name="identity-registry-operation-throughput"></a>Propustnost operace registru identity
+### <a name="identity-registry-operation-throughput"></a>Propustnost operací v registru identit
 
-Operace registru identit služby IoT Hub nemají být operace za běhu, protože většinou souvisejí s zřizováním zařízení.
+IoT Hub operací registru identity by neměly být operace za běhu, protože se většinou týkají zřizování zařízení.
 
-Konkrétní čísla výkonu burst, viz [Kvóty a omezení služby IoT Hub](iot-hub-devguide-quotas-throttling.md).
+Konkrétní čísla výkonu pro nárůst zatížení najdete v tématu [IoT Hub kvóty a omezení](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="auto-scale"></a>Automatické škálování
 
-Pokud se blížíte povolenému limitu zpráv ve službě IoT hub, můžete pomocí těchto [kroků automaticky škálovat](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) tak, aby se jednotka služby IoT Hub na stejné úrovni služby IoT Hub zvětšila.
+Pokud se ve službě IoT Hub blížíte povolenému limitu zpráv, můžete pomocí těchto [kroků automaticky škálovat](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/) IoT Hub jednotku ve stejné IoT Hub vrstvě.
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o možnostech služby IoT Hub a podrobnosti o výkonu najdete v [tématu ioT Hub stanovení cen](https://azure.microsoft.com/pricing/details/iot-hub) nebo [kvóty a omezení služby IoT Hub](iot-hub-devguide-quotas-throttling.md).
+* Další informace o funkcích IoT Hub a podrobnostech o výkonu najdete v článku [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub) nebo [IoT Hub kvóty a omezení](iot-hub-devguide-quotas-throttling.md).
 
-* Pokud chcete změnit úroveň iot hubu, postupujte podle pokynů v [části Upgrade centra IoT hub](iot-hub-upgrade.md).
+* Pokud chcete změnit úroveň IoT Hub, postupujte podle kroků v části [upgrade služby IoT Hub](iot-hub-upgrade.md).

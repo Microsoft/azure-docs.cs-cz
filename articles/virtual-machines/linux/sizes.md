@@ -1,6 +1,6 @@
 ---
-title: Velikosti virtuálních počítačů s Linuxem v Azure
-description: Uvádí různé velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure.
+title: Velikosti virtuálních počítačů Linux v Azure
+description: Zobrazuje seznam různých velikostí dostupných pro virtuální počítače se systémem Linux v Azure.
 author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
@@ -10,49 +10,49 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
 ms.openlocfilehash: 246ab6551667f54e3ef4ec8f91573d9aaa98d64c
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758382"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Velikosti virtuálních počítačů s Linuxem v Azure
 
-Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spuštění linuxových aplikací a úloh. Poskytuje také důležité informace o nasazení, které je třeba znát, když plánujete použít tyto prostředky. Tento článek je k dispozici také pro [virtuální počítače s Windows](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json).
+Tento článek popisuje dostupné velikosti a možnosti pro virtuální počítače Azure, které můžete použít ke spouštění aplikací a úloh pro Linux. Nabízí také informace o nasazení, které vám pomůžeme při plánování používání těchto prostředků. Tento článek je k dispozici také pro [virtuální počítače s Windows](../windows/sizes.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json).
 
 | Typ | Velikosti | Popis |
 |------|-------|-------------|
-| [Obecné účely](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2  | Vyvážený poměr procesoru k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
-| [Optimalizované z hlediska výpočetních služeb](../sizes-compute.md) | Fsv2 | Vysoký poměr procesoru k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
+| [Obecné účely](../sizes-general.md)   | B, Dsv3, Dv3, Dasv4, Dav4, DSv2, Dv2, Av2, DC, DCv2  | Poměr vyrovnaných PROCESORů k paměti. Tato možnost je ideální pro testování a vývoj, malé až střední databáze a webové servery s nízkým až středním provozem. |
+| [Optimalizované z hlediska výpočetních služeb](../sizes-compute.md) | Fsv2 | Vysoký poměr PROCESORů k paměti. Vhodné pro webové servery se středním provozem, síťová zařízení, dávkové procesy a aplikační servery. |
 | [Optimalizované z hlediska paměti](../sizes-memory.md) | Esv3, Ev3, Easv4, Eav4, Mv2, M, DSv2, Dv2 | Vysoký poměr paměti k procesoru. Jsou velmi vhodné pro servery s relační databází, střední a velké mezipaměti a analýzu v paměti.                 |
-| [Optimalizované z hlediska úložiště](../sizes-storage.md) | Lsv2 | Vysoká propustnost disku a IO ideální pro big data, SQL, NoSQL databáze, datové sklady a velké transakční databáze.  |
-| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (náhled), NV, NVv3, NVv4 | Specializované virtuální stroje určené pro těžké grafické vykreslování a střih videa, stejně jako školení a odvozování modelů (ND) s hlubokým učením. K dispozici s jedním nebo více gpu. |
-| [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md) | HB, HBv2, HC, H | Naše nejrychlejší a nejvýkonnější virtuální počítače cpu s volitelným síťovým rozhraním s vysokou propustností (RDMA). |
+| [Optimalizované z hlediska úložiště](../sizes-storage.md) | Lsv2 | Vysoká propustnost disku a vstupně-výstupní operace jsou ideální pro velké objemy dat, SQL, databáze NoSQL, datové sklady a velké transakční databáze.  |
+| [GPU](../sizes-gpu.md) | NC, NCv2, NCv3, ND, NDv2 (Preview), NV, NVv3, NVv4 | Specializované virtuální počítače určené pro náročné vykreslování grafiky a úpravy videa a také školení modelů a Inferencing (ND) s hloubkovým učením. K dispozici s jedním nebo více grafickými procesory. |
+| [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md) | HBv2, HC, H | Naši nejrychlejší a nejvíc nejvýkonnější virtuální počítače s volitelnými síťovými rozhraními s vysokou propustností (RDMA). |
 
-- Informace o cenách různých velikostí najdete v [tématu Ceny virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
-- Dostupnost velikostí virtuálních počítačů v oblastech Azure najdete v [tématu Produkty dostupné podle oblasti](https://azure.microsoft.com/regions/services/).
-- Obecné limity na virtuální chod Azure najdete v [tématu Limity předplatného a služeb Azure, kvóty a omezení](../../azure-subscription-service-limits.md).
-- Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+- Informace o cenách různých velikostí najdete v článku [Virtual Machines ceny](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux). 
+- Dostupnost velikostí virtuálních počítačů v oblastech Azure najdete v tématu [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/regions/services/).
+- Obecné omezení virtuálních počítačů Azure najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../../azure-subscription-service-limits.md).
+- Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 
 ## <a name="rest-api"></a>REST API
 
-Informace o použití rozhraní REST API k dotazování na velikosti virtuálních počítačů najdete v následujících tématech:
+Informace o použití REST API k dotazování na velikosti virtuálních počítačů najdete v následujících tématech:
 
-- [Seznam dostupných velikostí virtuálních strojů pro změna velikosti](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
-- [Seznam dostupných velikostí virtuálních strojů pro předplatné](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
-- [Seznam dostupných velikostí virtuálních strojů v sadě dostupnosti](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
+- [Vypsat dostupné velikosti virtuálních počítačů pro změnu velikosti](https://docs.microsoft.com/rest/api/compute/virtualmachines/listavailablesizes)
+- [Zobrazit seznam dostupných velikostí virtuálních počítačů pro předplatné](https://docs.microsoft.com/rest/api/compute/resourceskus/list)
+- [Zobrazit seznam dostupných velikostí virtuálních počítačů ve skupině dostupnosti](https://docs.microsoft.com/rest/api/compute/availabilitysets/listavailablesizes)
 
 ## <a name="acu"></a>ACU
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](../acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
 
 ## <a name="benchmark-scores"></a>Výsledky srovnávacích testů
 
-Přečtěte si další informace o výpočetním výkonu pro virtuální počítače s Linuxem pomocí [skóre benchmarku CoreMark](compute-benchmark-scores.md).
+Přečtěte si další informace o výpočetním výkonu pro virtuální počítače se systémem Linux pomocí [skóre srovnávacího testu CoreMark](compute-benchmark-scores.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o různých velikostech virtuálních počítače, které jsou k dispozici:
+Další informace o různých velikostech virtuálních počítačů, které jsou k dispozici:
 
 - [Obecné účely](../sizes-general.md)
 - [Optimalizované z hlediska výpočetních služeb](../sizes-compute.md)
@@ -60,4 +60,4 @@ Další informace o různých velikostech virtuálních počítače, které jsou
 - [Optimalizované z hlediska úložiště](../sizes-storage.md)
 - [GPU](../sizes-gpu.md)
 - [Vysokovýkonné výpočetní prostředí](../sizes-hpc.md)
-- Podívejte se na stránku [Předchozí generace](../sizes-previous-gen.md) pro standardy A, Dv1 (D1-4 a D11-14 v1) a řady A8-A11
+- Podívejte se na stránku [předchozí generace](../sizes-previous-gen.md) pro standardní, Dv1 (D1-4 a D11-14 V1) a řady A8-A11.

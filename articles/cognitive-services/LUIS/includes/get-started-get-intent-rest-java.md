@@ -1,5 +1,5 @@
 ---
-title: Získání záměru s voláním REST v Javě
+title: Získání záměru pomocí volání REST v jazyce Java
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,44 +9,44 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: diberry
 ms.openlocfilehash: d59b7ebd1376d0bee10482cfe5faac1c53d1bde0
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733287"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* [Visual Studio Kód](https://code.visualstudio.com/) nebo vaše oblíbené IDE
-* ID aplikace LUIS – použijte veřejné IOT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`ID aplikace . Uživatelský dotaz použitý v kódu rychlého startu je specifický pro tuto aplikaci.
+* [Visual Studio Code](https://code.visualstudio.com/) nebo vaše oblíbené integrované vývojové prostředí (IDE)
+* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Vytvořit klíč runtime LUIS pro předpovědi
+## <a name="create-luis-runtime-key-for-predictions"></a>Vytvoření klíče LUIS runtime pro předpovědi
 
-1. Přihlášení k [portálu Azure](https://portal.azure.com)
-1. Klikněte na [Vytvořit **jazykové znalosti.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč **Runtime:**
+1. Přihlaste se k [Azure Portal](https://portal.azure.com)
+1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Zadejte všechna požadovaná nastavení pro klíč **za běhu** :
 
     |Nastavení|Hodnota|
     |--|--|
     |Název|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vybrat příslušné předplatné|
-    |Umístění|Vyberte libovolné blízké a dostupné místo|
-    |Cenová úroveň|`F0`- minimální cenová úroveň|
-    |Skupina prostředků|Výběr dostupné skupiny prostředků|
+    |Předplatné|Vyberte odpovídající předplatné.|
+    |Umístění|Výběr libovolného okolí a dostupného umístění|
+    |Cenová úroveň|`F0`– Minimální cenová úroveň|
+    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
 
-1. Klikněte na **Vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Sbírat `endpoint` nakonfigurované a `key`.
+1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
+1. Shromažďovat nakonfigurované `endpoint` a `key`.
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
-Použijte Java dotaz [u koncového bodu předpověď](https://aka.ms/luis-apim-v3-prediction) a získat výsledek předpověď.
+Použijte Java k dotazování [koncového bodu předpovědi](https://aka.ms/luis-apim-v3-prediction) a získejte výsledek předpovědi.
 
-1. Vytvořte podadresář `lib` s názvem a zkopírujte v následujících java libs:
+1. Vytvořte podadresář s názvem `lib` a zkopírujte ho v následujícím knihovny Java:
 
-    * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [Commons-Logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [HttpClient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Zkopírujte následující kód a vytvořte třídu v souboru s názvem `Predict.java`:
 
@@ -117,33 +117,33 @@ Použijte Java dotaz [u koncového bodu předpověď](https://aka.ms/luis-apim-v
     }
     ```
 
-1. Nahraďte hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` vlastním predikčním klíčem **runtime** a koncovým bodem.
+1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčovým a koncovým bodem **prostředí** předpovědi.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Váš klíč **runtime** predikce 32 znaků.|
-    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi. Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-KEY`|Klíč **běhu** pro předpověď znaků 32.|
+    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Kompilace java programu z příkazového řádku:
+1. Zkompilujte program Java z příkazového řádku:
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Spusťte program java z příkazového řádku:
+1. Spusťte program Java z příkazového řádku:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Zkontrolujte předpověď odpověď, která je vrácena jako JSON:
+1. Zkontrolujte odpověď předpovědi, která se vrátí jako JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Odpověď JSON formátovaná pro čitelnost:
+    Odpověď JSON naformátovaná pro čitelnost:
 
     ```JSON
     {
@@ -188,9 +188,9 @@ Použijte Java dotaz [u koncového bodu předpověď](https://aka.ms/luis-apim-v
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení tohoto rychlého startu odstraňte soubor ze systému souborů.
+Až budete s tímto rychlým startem hotovi, odstraňte soubor ze systému souborů.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Přidání promluv a trénování pomocí Javy](../get-started-get-model-rest-apis.md)
+> [Přidání projevy a výukového programu pomocí Java](../get-started-get-model-rest-apis.md)

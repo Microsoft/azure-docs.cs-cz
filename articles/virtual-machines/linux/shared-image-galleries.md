@@ -1,6 +1,6 @@
 ---
-title: Sdílení obrázků virtuálních zařízení se sdílenými galeriemi
-description: Přečtěte si, jak pomocí sdílených galerií obrázků sdílet obrázky virtuálních počítačí v celé organizaci.
+title: Sdílení imagí virtuálních počítačů se sdílenými galeriemi
+description: Naučte se používat Galerie sdílených imagí ke sdílení imagí virtuálních počítačů napříč vaší organizací.
 services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
@@ -11,17 +11,17 @@ ms.date: 11/02/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: f65ba45494e3c5301918395e1184ba49efe868d5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758448"
 ---
-# <a name="shared-image-galleries-overview"></a>Sdílené galerie obrázků – přehled
+# <a name="shared-image-galleries-overview"></a>Přehled Galerie sdílených imagí
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak [nasadit sdílené bitové kopie](shared-images.md).
+Naučte se [nasazovat sdílené image](shared-images.md).

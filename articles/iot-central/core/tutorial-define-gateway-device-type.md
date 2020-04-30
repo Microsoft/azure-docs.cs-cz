@@ -1,6 +1,6 @@
 ---
-title: Definování nového typu zařízení brány v Azure IoT Central | Dokumenty společnosti Microsoft
-description: Tento kurz ukazuje, jako tvůrce, jak definovat nový typ zařízení brány IoT ve vaší aplikaci Azure IoT Central.
+title: Definování nového typu zařízení brány v Azure IoT Central | Microsoft Docs
+description: V tomto kurzu se dozvíte jako tvůrce, jak v aplikaci IoT Central Azure definovat nový typ zařízení brány IoT Gateway.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -10,100 +10,100 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81758129"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT ve vaší aplikaci Azure IoT Central
+# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Definování nového typu zařízení brány IoT v aplikaci Azure IoT Central
 
-*Tento článek se vztahuje na tvůrce řešení a vývojáře zařízení.*
+*Tento článek se týká tvůrců řešení a vývojářů zařízení.*
 
-Tento kurz ukazuje, jako tvůrce řešení, jak používat šablonu zařízení brány k definování zařízení brány v aplikaci IoT Central. Potom nakonfigurujete několik podřizovaných zařízení, která se připojují k aplikaci IoT Central prostřednictvím zařízení brány. 
+V tomto kurzu se dozvíte jako tvůrce řešení, jak použít šablonu zařízení brány k definování zařízení brány v IoT Central aplikaci. Potom nakonfigurujete několik podřízených zařízení, která se připojují k vaší IoT Central aplikaci prostřednictvím zařízení brány. 
 
-V tomto kurzu vytvoříte šablonu zařízení brány **inteligentní budovy.** Zařízení **brány inteligentní budovy** má vztahy s jinými zařízeními pro příjem dat.
+V tomto kurzu vytvoříte šablonu zařízení s bránou **Smart budova** . Zařízení **inteligentní brány pro sestavování** má relace s jinými zařízeními pro příjem dat.
 
-![Diagram vztahu mezi zařízením brány a zařízeními pro příjem dat](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
+![Diagram vztahů mezi zařízením brány a zařízeními pro příjem dat](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
 
-Kromě toho, že zařízení pro příjem dat umožňuje komunikaci s vaší aplikací IoT Central, může zařízení brány také:
+I když chcete, aby zařízení komunikovala s aplikací IoT Central, může také zařízení brány:
 
-* Odešlete vlastní telemetrii, například teplotu.
-* Reagujte na aktualizace vlastností, které lze zapisovat, provedené operátorem. Operátor může například změnit interval odesílání telemetrie.
-* Reagujte na příkazy, jako je restartování zařízení.
+* Odeslat svou vlastní telemetrii, například teplotu.
+* Reaguje na aktualizace zapisovatelných vlastností provedené operátorem. Například operátor může změnit interval odesílání telemetrie.
+* Odpovězte na příkazy, jako je třeba restartování zařízení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení tohoto kurzu, je třeba [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
+K dokončení tohoto kurzu potřebujete [vytvořit aplikaci Azure IoT Central](./quick-deploy-iot-central.md).
 
-## <a name="create-downstream-device-templates"></a>Vytvoření šablon zařízení pro příjem dat
+## <a name="create-downstream-device-templates"></a>Vytvoření šablon pro příjem zařízení
 
-Tento kurz používá šablony zařízení pro zařízení **S1 Sensor** a zařízení **RS40 Occupancy Sensor** pro generování simulovaných podřízené zařízení.
+Tento kurz používá šablony zařízení pro zařízení se **senzorem S1** a zařízení **snímače RS40** pro vygenerování simulovaných zařízení pro příjem dat.
 
-Vytvoření šablony zařízení pro zařízení **se snímačem S1:**
+Vytvoření šablony zařízení pro zařízení se **senzorem S1** :
 
-1. V levém podokně vyberte **Položku Šablony zařízení**. Pak **+** vyberte, chcete-li začít přidávat šablonu.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** , pokud chcete začít přidávat šablonu.
 
-1. Posuňte se dolů, dokud neuvidíte dlaždici zařízení **S1 Sensor.** Vyberte dlaždici a pak vyberte **Další: Přizpůsobit**.
+1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení se **senzorem S1** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
-1. Na stránce **Revize** vyberte **Vytvořit** a přidejte do aplikace šablonu zařízení. 
+1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
-Vytvoření šablony zařízení pro zařízení ***RS40 Occupancy Sensor:**
+Vytvoření šablony zařízení pro zařízení**RS40 pro senzory** :
 
-1. V levém podokně vyberte **Položku Šablony zařízení**. Pak **+** vyberte, chcete-li začít přidávat šablonu.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** , pokud chcete začít přidávat šablonu.
 
-1. Posuňte se dolů, dokud neuvidíte dlaždici zařízení ***RS40 Occupancy Sensor.** Vyberte dlaždici a pak vyberte **Další: Přizpůsobit**.
+1. Posuňte se dolů, dokud se nezobrazí dlaždice zařízení ***RS40 pro snímače obsazení** . Vyberte dlaždici a potom vyberte **Další: přizpůsobit**.
 
-1. Na stránce **Revize** vyberte **Vytvořit** a přidejte do aplikace šablonu zařízení. 
+1. Na stránce **Kontrola** vyberte **vytvořit** a přidejte do své aplikace šablonu zařízení. 
 
-Nyní máte šablony zařízení pro dva typy zařízení pro příjem dat:
+Nyní máte šablony zařízení pro dva typy pro stejné zařízení:
 
-![Šablony zařízení pro zařízení pro příjem dat](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
+![Šablony zařízení pro podřízená zařízení](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
 ## <a name="create-a-gateway-device-template"></a>Vytvoření šablony zařízení brány
 
-V tomto kurzu vytvoříte šablonu zařízení pro zařízení brány od začátku. Tuto šablonu později použijete k vytvoření simulovaného zařízení brány ve vaší aplikaci.
+V tomto kurzu vytvoříte šablonu zařízení pro zařízení brány od úplného začátku. Tuto šablonu použijete později k vytvoření simulovaného zařízení brány ve vaší aplikaci.
 
-Přidání nové šablony zařízení brány do aplikace:
+Přidání nové šablony zařízení brány do vaší aplikace:
 
-1. V levém podokně vyberte **Položku Šablony zařízení**. Pak **+** vyberte, chcete-li začít přidávat šablonu.
+1. V levém podokně vyberte **šablony zařízení**. Pak vyberte **+** , pokud chcete začít přidávat šablonu.
 
-1. Na stránce **Vybrat typ šablony** vyberte dlaždici Zařízení **IoT** a pak vyberte **Další: Přizpůsobit**.
+1. Na stránce **Vybrat typ šablony** vyberte dlaždici **zařízení IoT** a potom vyberte **Další: přizpůsobit**.
 
-1. Na stránce **Přizpůsobit zařízení** zaškrtněte políčko **Brána zařízení.**
+1. Na stránce **přizpůsobit zařízení** zaškrtněte políčko **zařízení brány** .
 
-1. Na stránce **Revize** vyberte **Vytvořit**. 
+1. Na stránce **Kontrola** vyberte **vytvořit**. 
 
-1. Jako název šablony zadejte **zařízení brány inteligentní budovy.**
+1. Jako název šablony zadejte **zařízení inteligentního sestavení brány** .
 
-1. Na stránce **Vytvořit model schopností** vyberte **vlastní** dlaždici.
+1. Na stránce **vytvořit model schopností** vyberte **vlastní** dlaždici.
 
-1. Výběrem **+** přidáte rozhraní.  Zvolte standardní rozhraní **Informace o zařízení.**
+1. Tuto **+** možnost vyberte, pokud chcete přidat rozhraní.  Vyberte standardní rozhraní **informace o zařízení** .
 
-### <a name="add-relationships"></a>Přidání relací
+### <a name="add-relationships"></a>Přidat relace
 
 Dále přidáte relace do šablon pro šablony zařízení pro příjem dat:
 
-1. V šabloně **zařízení Brány inteligentní budovy** vyberte **relace**.
+1. V šabloně **zařízení s bránou Smart budova** vyberte možnost **relace**.
 
-1. Vyberte **+ Přidat relaci**. Jako zobrazovaný název zadejte **senzor prostředí** a jako cíl vyberte **snímač S1.**
+1. Vyberte **+ Přidat relaci**. Jako zobrazovaný název zadejte **senzor prostředí** a jako cíl vyberte **S1 senzor** .
 
-1. Vyberte **+ Přidat relaci** znovu. Jako zobrazované jméno zadejte **snímač obsazenosti** a jako cíl vyberte **rs40 occupancy sensor.**
+1. Vyberte **+ Přidat relaci** znovu. Jako zobrazované jméno zadejte **snímač obsazení** a jako cíl vyberte **senzor obsazení RS40** .
 
 1. Vyberte **Uložit**.
 
-![Šablona zařízení brány inteligentní budovy, zobrazující relace](./media/tutorial-define-gateway-device-type/relationships.png)
+![Šablona zařízení inteligentního sestavování, zobrazení relací](./media/tutorial-define-gateway-device-type/relationships.png)
 
-### <a name="add-cloud-properties"></a>Přidání vlastností cloudu
+### <a name="add-cloud-properties"></a>Přidat vlastnosti cloudu
 
-Šablona zařízení brány může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují pouze v aplikaci IoT Central a nikdy se neodesílají nebo nepřijímají ze zařízení.
+Šablona zařízení brány může obsahovat vlastnosti cloudu. Vlastnosti cloudu existují jenom v aplikaci IoT Central a nikdy se neodesílají do zařízení nebo se z něj nepřijímají.
 
-Přidání vlastností cloudu do šablony **zařízení brány Smart Building.**
+Chcete-li přidat vlastnosti cloudu do šablony **zařízení služby inteligentního sestavování** .
 
-1. V šabloně **zařízení Brány inteligentní budovy** vyberte **Vlastnosti cloudu**.
+1. V šabloně **zařízení s bránou Smart budova** vyberte **vlastnosti cloudu**.
 
-1.  Pomocí informací v následující tabulce můžete do šablony zařízení brány přidat dvě vlastnosti cloudu.
+1.  Informace v následující tabulce použijte k přidání dvou vlastností cloudu do šablony zařízení brány.
 
     | Zobrazované jméno      | Sémantický typ | Schéma |
     | ----------------- | ------------- | ------ |
@@ -114,86 +114,86 @@ Přidání vlastností cloudu do šablony **zařízení brány Smart Building.**
 
 ### <a name="create-views"></a>Vytváření zobrazení
 
-Jako tvůrce můžete přizpůsobit aplikaci tak, aby zobrazovala operátorovi relevantní informace o zařízení senzoru prostředí. Vaše vlastní nastavení umožňují obsluze spravovat zařízení environmentálních senzorů připojených k aplikaci. Pro operátora můžete vytvořit dva typy zobrazení, které chcete použít k interakci se zařízeními:
+Jako tvůrce můžete aplikaci přizpůsobit tak, aby zobrazovala relevantní informace o zařízení snímače životního prostředí pro operátora. Vlastní nastavení umožňuje operátorovi spravovat zařízení senzorů pro životní prostředí připojená k aplikaci. Můžete vytvořit dva typy zobrazení pro operátora pro práci se zařízeními:
 
-* Formuláře pro zobrazení a úpravu vlastností zařízení a cloudu.
-* Řídicí panely pro vizualizaci zařízení.
+* Formuláře pro zobrazení a úpravy vlastností zařízení a cloudu.
+* Řídicí panely k vizualizaci zařízení.
 
-Jak generovat výchozí zobrazení pro šablonu **zařízení brány inteligentní budovy:**
+Chcete-li vygenerovat výchozí zobrazení pro šablonu **zařízení inteligentního sestavení brány** :
 
-1. V šabloně **zařízení Brány inteligentní budovy** vyberte **Zobrazení**.
+1. V šabloně **zařízení inteligentní budova brány** vyberte **zobrazení**.
 
-1. Vyberte **Generovat výchozí dlaždici zobrazení** a ujistěte se, že jsou vybrány všechny možnosti.
+1. Vyberte možnost **Generovat výchozí zobrazení** a ujistěte se, že jsou vybrané všechny možnosti.
 
-1. Vyberte **Generovat výchozí zobrazení řídicího panelu**.
+1. Vyberte **generovat zobrazení výchozích řídicích panelů**.
 
 ## <a name="publish-the-device-template"></a>Publikování šablony zařízení
 
-Než budete moct vytvořit simulované zařízení brány nebo připojit skutečné zařízení brány, musíte publikovat šablonu zařízení.
+Než budete moct vytvořit simulované zařízení brány nebo připojit zařízení reálné brány, budete muset publikovat šablonu zařízení.
 
-Jak publikovat šablonu zařízení brány:
+Publikování šablony zařízení brány:
 
-1. Na stránce Šablony zařízení vyberte šablonu zařízení Brány inteligentní **budovy.** **Smart Building gateway device**
+1. Na stránce **šablony zařízení** vyberte šablonu **zařízení inteligentního sestavení brány** .
 
 2. Vyberte **Publikovat**.
 
-3. V **dialogovém** okně Publikovat šablonu zařízení zvolte **Publikovat**.
+3. V dialogovém okně **publikovat šablonu zařízení** klikněte na tlačítko **publikovat**.
 
-Po publikování šablony zařízení se zobrazí na stránce **Zařízení** a operátorovi. V publikované šabloně zařízení nelze upravit model schopností zařízení bez vytvoření nové verze. Můžete však aktualizovat vlastnosti cloudu, vlastní nastavení a zobrazení v publikované šabloně zařízení. Tyto aktualizace nezpůsobí novou verzi, která má být vytvořena. Po provedení jakýchkoli změn vyberte **Publikovat** a tyto změny přenesete na operátora.
+Po publikování je šablona zařízení zobrazená na stránce **zařízení** a v operátoru. V publikované šabloně zařízení nemůžete upravovat model schopností zařízení bez vytváření nové verze. V publikované šabloně zařízení ale můžete dělat aktualizace vlastností cloudu, přizpůsobení a zobrazení. Tyto aktualizace nezpůsobí vytvoření nové verze. Po provedení změn vyberte **publikovat** , aby se tyto změny převedly do vašeho operátoru.
 
 ## <a name="create-the-simulated-devices"></a>Vytvoření simulovaných zařízení
 
-Tento kurz používá simulovaná zařízení pro příjem dat a simulované zařízení brány.
+V tomto kurzu se používá simulovaná zařízení pro příjem dat a simulované zařízení brány.
 
-Vytvoření simulovaného zařízení brány:
+Postup vytvoření simulovaného zařízení brány:
 
-1. Na stránce **Zařízení** vyberte zařízení **Brány inteligentní budovy** v seznamu šablon zařízení.
+1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **zařízení inteligentního sestavení brány** .
 
-1. Výběrem **+** vyberte, chcete-li začít přidávat nové zařízení.
+1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
 
-1. Zachovat generované **ID zařízení** a **název zařízení**. Ujistěte se, že **je** **zapnutý simulovaný** přepínač . Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
-Vytvoření simulovaných navazujících zařízení:
+Postup vytvoření simulovaných zařízení pro příjem dat:
 
-1. Na stránce **Zařízení** vyberte v seznamu šablon zařízení **senzor obsazenosti RS40.**
+1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor obsazenosti RS40** .
 
-1. Výběrem **+** vyberte, chcete-li začít přidávat nové zařízení.
+1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
 
-1. Zachovat generované **ID zařízení** a **název zařízení**. Ujistěte se, že **je** **zapnutý simulovaný** přepínač . Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
-1. Na stránce **Zařízení** vyberte v seznamu šablon zařízení **snímač S1.**
+1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor S1** .
 
-1. Výběrem **+** vyberte, chcete-li začít přidávat nové zařízení.
+1. Tuto **+** možnost vyberte, pokud chcete začít přidávat nové zařízení.
 
-1. Zachovat generované **ID zařízení** a **název zařízení**. Ujistěte se, že **je** **zapnutý simulovaný** přepínač . Vyberte **Vytvořit**.
+1. Ponechte vygenerované **ID zařízení** a **název zařízení**. Ujistěte se, že je **simulovaný** přepínač **zapnutý**. Vyberte **Vytvořit**.
 
 ![Simulovaná zařízení ve vaší aplikaci](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
-### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Přidání vztahů podřízeného zařízení do zařízení brány
+### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Přidání vztahů zařízení pro příjem dat do zařízení brány
 
 Teď, když máte simulovaná zařízení ve vaší aplikaci, můžete vytvořit vztahy mezi zařízeními pro příjem dat a zařízením brány:
 
-1. Na stránce **Zařízení** vyberte v seznamu šablon zařízení **snímač S1** a pak vyberte simulované zařízení **snímače S1.**
+1. Na stránce **zařízení** vyberte v seznamu šablon zařízení možnost **senzor S1** a potom vyberte simulované zařízení **S1 snímače S1** .
 
-1. Vyberte **Připojit k bráně**.
+1. Vyberte **připojit k bráně**.
 
-1. V **dialogovém** okně Připojit k bráně vyberte šablonu **zařízení brány inteligentní budovy** a pak vyberte simulovanou instanci, kterou jste vytvořili dříve.
+1. V dialogovém okně **připojit k bráně** vyberte šablonu **zařízení pro inteligentní sestavení** a potom vyberte simulovanou instanci, kterou jste předtím vytvořili.
 
-1. Vyberte **Připojit .**
+1. Vyberte **připojit**.
 
-1. Na stránce **Zařízení** vyberte v seznamu šablon zařízení **senzor obsazenosti RS40** a pak vyberte simulované zařízení **SNÍMAČ Obsazení RS40.**
+1. Na stránce **zařízení** vyberte v seznamu šablon zařízení **senzor obsazenosti RS40** a pak vyberte vaše simulované zařízení **RS40 pro obsazení** .
 
-1. Vyberte **Připojit k bráně**.
+1. Vyberte **připojit k bráně**.
 
-1. V **dialogovém** okně Připojit k bráně vyberte šablonu **zařízení brány inteligentní budovy** a pak vyberte simulovanou instanci, kterou jste vytvořili dříve.
+1. V dialogovém okně **připojit k bráně** vyberte šablonu **zařízení pro inteligentní sestavení** a potom vyberte simulovanou instanci, kterou jste předtím vytvořili.
 
-1. Vyberte **Připojit .**
+1. Vyberte **připojit**.
 
-Obě simulovaná zařízení pro příjem dat jsou nyní připojena k simulovanému zařízení brány. Pokud přejdete do zobrazení **Zařízení pro příjem dat** pro zařízení brány, uvidíte související zařízení pro příjem dat:
+Simulovaná zařízení pro příjem dat jsou teď připojená k vašemu simulovanému zařízení brány. Pokud přejdete do zobrazení **zařízení pro příjem dat** pro vaše zařízení brány, uvidíte související zařízení pro příjem dat:
 
-![Zobrazení zařízení pro příjem dat](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
+![Zobrazení pro podřízené zařízení](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
-Vyberte šablonu zařízení brány a instanci zařízení brány a vyberte **Připojit .**
+Vyberte šablonu zařízení brány a instanci zařízení brány a pak vyberte **připojit**.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -203,13 +203,13 @@ V tomto kurzu jste se naučili:
 * Vytvořte vlastnosti cloudu.
 * Vytvořte vlastní nastavení.
 * Definujte vizualizaci pro telemetrii zařízení.
-* Přidejte vztahy.
+* Přidejte relace.
 * Publikujte šablonu zařízení.
 
 > [!NOTE]
-> Generování kódu založené na kódu VS není aktuálně podporováno pro zařízení brány modelovaná v IoT Central.
+> Generování kódu založeného na VS Code se v současnosti nepodporuje u zařízení brány, která jsou modelovaná v IoT Central.
 
-Dále se jako vývojář zařízení můžete dozvědět, jak:
+Jako vývojář zařízení se můžete seznámit s postupem:
 
 > [!div class="nextstepaction"]
 > [Přidání zařízení Azure IoT Edge do aplikace Azure IoT Central](tutorial-add-edge-as-leaf-device.md)

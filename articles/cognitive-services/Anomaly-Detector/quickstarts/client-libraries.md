@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Použití klientské knihovny detektoru anomálií'
+title: 'Rychlý Start: použití klientské knihovny anomálií detektoru'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API detektoru anomálií nabízí klientské knihovny pro detekci abnormalit v datových řadách jako dávka nebo na datových datech.
+description: Rozhraní API pro detekci anomálií nabízí klientské knihovny pro detekci anomálií v datové řadě buď jako dávku, nebo na streamovaná data.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: aahi
 ms.openlocfilehash: 7a48992ab5978824f1ffb4b2c3ac0670f40c1424
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759976"
 ---
-# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Úvodní příručka: Použití klientské knihovny detektoru anomálií
+# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Rychlý Start: použití klientské knihovny anomálií detektoru
 
 ::: zone pivot="programming-language-csharp"
 

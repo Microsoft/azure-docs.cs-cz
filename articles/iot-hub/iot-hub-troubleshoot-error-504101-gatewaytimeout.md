@@ -1,6 +1,6 @@
 ---
-title: Poradce při potížích s chybou služby Azure IoT Hub 504101 GatewayTimeout
-description: Pochopit, jak opravit chybu 504101 GatewayTimeout
+title: Řešení potíží s chybami Azure IoT Hub 504101 GatewayTimeout
+description: Vysvětlení, jak opravit chybu 504101 GatewayTimeout
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -10,35 +10,35 @@ ms.date: 01/30/2020
 ms.author: jlian
 ms.custom: amqp
 ms.openlocfilehash: 373acc30ed652a7f540e840dfad5eeeda65ca179
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759554"
 ---
 # <a name="504101-gatewaytimeout"></a>504101 GatewayTimeout
 
-Tento článek popisuje příčiny a řešení pro **chyby 504101 GatewayTimeout.**
+Tento článek popisuje příčiny a řešení 504101 chyb **GatewayTimeout** .
 
 ## <a name="symptoms"></a>Příznaky
 
-Při pokusu o vyvolání přímé metody z ioT hubu do zařízení se požadavek nezdaří s chybou **504101 GatewayTimeout**.
+Při pokusu o vyvolání přímé metody z IoT Hub do zařízení, požadavek se nezdařil s chybou **504101 GatewayTimeout**.
 
 ## <a name="cause"></a>Příčina
 
 ### <a name="cause-1"></a>Příčina 1
 
-IoT Hub zjistil chybu a nemohl potvrdit, pokud byla před vypršením časového limitu dokončena přímá metoda.
+IoT Hub zjistila chybu a nemohla potvrdit, zda byla přímá metoda dokončena před vypršením časového limitu.
 
 ### <a name="cause-2"></a>Příčina 2
 
-Při použití starší verze sady Azure IoT C# SDK (<1.19.0) lze z důvodu chyby bezobslužně vynechat propojení AMQP mezi zařízením a službou IoT Hub.
+Pokud používáte starší verzi sady Azure IoT C# SDK (<1.19.0), propojení AMQP mezi zařízením a IoT Hub se dá v tichém režimu vyřadit z důvodu chyby.
 
 ## <a name="solution"></a>Řešení
 
 ### <a name="solution-1"></a>Řešení 1
 
-Vystaví opakování.
+Vydejte problém znovu.
 
 ### <a name="solution-2"></a>Řešení 2
 

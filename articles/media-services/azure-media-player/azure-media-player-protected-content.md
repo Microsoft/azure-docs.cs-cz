@@ -1,33 +1,33 @@
 ---
-title: Obsah chráněný přehrávačem médií Azure
-description: Azure Media Player v současné době podporuje AES-128 bit obálky šifrovaný obsah a běžný šifrovaný obsah.
+title: Azure Media Player chráněný obsah
+description: Azure Media Player aktuálně podporuje šifrovaný obsah obálek AES-128 a běžný zašifrovaný obsah.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726491"
 ---
 # <a name="protected-content"></a>Chráněný obsah #
 
-Azure Media Player v současné době podporuje šifrovaný obsah a běžný šifrovaný obsah AES-128 bitovou obálku a běžný šifrovaný obsah (prostřednictvím PlayReady a Widevine) nebo šifrovaný obsah prostřednictvím FairPlay. Chcete-li správně přehrávat chráněný obsah, musíte `protectionInfo`sdělit programu Azure Media Player . Tyto informace existují podle zdroje a lze `<source>` je `data-setup`přidat přímo na značku prostřednictvím .  Můžete také přidat `protectionInfo` přímo jako parametr, pokud nastavení zdroje dynamicky.
+Azure Media Player aktuálně podporuje šifrovaný obsah obálek AES-128 a společný šifrovaný obsah (přes PlayReady a Widevine) nebo zašifrovaný obsah prostřednictvím FairPlay. Aby bylo možné správně přehrát chráněný obsah, je nutné sdělit Azure Media Player `protectionInfo`. Tyto informace existují na zdroj a lze je přidat přímo na `<source>` značku prostřednictvím. `data-setup`  V `protectionInfo` případě dynamického nastavování zdroje můžete také přidat přímo jako parametr.
 
-`protectionInfo`přijímá objekt JSON a zahrnuje:
+`protectionInfo`přijímá objekt JSON a obsahuje:
 
-- `type`: `AES` `PlayReady` nebo `Widevine` nebo nebo`FairPlay`
-- `certificateUrl`: to by mělo být přímý odkaz na hostované FairPlay cert
+- `type`: `AES` nebo `PlayReady` nebo `Widevine` or`FairPlay`
+- `certificateUrl`: mělo by to být přímý odkaz na hostovaný FairPlay certifikát.
 
-- `authenticationToken`: Toto je pole možností pro přidání nekódovaného ověřovacího tokenu
+- `authenticationToken`: Toto je pole možností pro přidání nekódovaného ověřovacího tokenu.
 
 > [!IMPORTANT]
-> Objekt **certificateUrl** je potřebný pouze pro FairPlay DRM.***
+> Objekt **certificateUrl** je potřeba jenom pro Fairplay DRM. * * *
 >[!NOTE]
-> Výchozí techOrder byl změněn tak, aby `html5FairPlayHLS` vyhovoval novým technologiím- konkrétně přehrávání obsahu FairPlay nativně v prohlížečích, které jej podporují (Safari na OSX 8 +). Pokud máte obsah FairPlay k přehrávání **a** změnili jste výchozí techOrder na vlastní ve vaší aplikaci, budete muset přidat tuto novou technologii do svého objektu techOrder. Doporučujeme, abyste jej zahrnuli před silverlightSS, aby se váš obsah nepřehrával přes PlayReady.
+> Výchozí techOrder byl změněn tak, aby vyhovovala novému technickému obsahu, `html5FairPlayHLS` konkrétně k přehrávání FairPlayého obsahu v prohlížečích, které ho podporují (Safari na OSX 8 +). Pokud jste FairPlay obsah pro přehrávání **a** v aplikaci jste změnili výchozí techOrder na vlastní, budete ho muset přidat do svého objektu techOrder. Doporučujeme, abyste ho zahrnuli před Silverlightem, takže váš obsah nebude přehrán přes PlayReady.
 
 ## <a name="code-sample"></a>Ukázka kódu ##
 
@@ -55,7 +55,7 @@ or
     );
 ```
 
-nebo s více DRM
+nebo, s více DRM
 
 ```javascript
     var myPlayer = amp("vid1", /* Options */);
@@ -79,10 +79,10 @@ nebo s více DRM
 ```
 
 > [!NOTE]
-> Ne všechny prohlížeče/platformy jsou schopny přehrávat chráněný obsah. Další informace o podporovaných informacích naleznete v části [Technologie přehrávání.](azure-media-player-playback-technology.md)
+> Ne všechny prohlížeče/platformy umožňují přehrávání chráněného obsahu. Další informace o tom, co je podporováno, najdete v části [technologie přehrávání](azure-media-player-playback-technology.md) .
 > [!IMPORTANT]
-> Token předaný do přehrávače je určen pro zabezpečený obsah a používá se pouze pro ověřené uživatele. Předpokládá se, že aplikace používá SSL nebo jinou formu bezpečnostního opatření. Také koncový uživatel je assummed být důvěryhodný nezneužít token; Pokud tomu tak není, zapojte prosím své bezpečnostní odborníky.
+> Token předaný do přehrávače je určen pro zabezpečený obsah a používá se pouze pro ověřené uživatele. Předpokládá se, že aplikace používá protokol SSL, nebo jinou formu bezpečnostního opatření. Také je možné, aby koncový uživatel byl assummed důvěryhodný, aby token nezneužitíal. v takovém případě se prosím zapojíte s odborníky na zabezpečení.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

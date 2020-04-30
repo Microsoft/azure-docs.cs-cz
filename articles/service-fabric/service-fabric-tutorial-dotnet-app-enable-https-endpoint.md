@@ -1,14 +1,14 @@
 ---
-title: Přidání koncového bodu HTTPS pomocí kestrelu
+title: Přidání koncového bodu HTTPS pomocí Kestrel
 description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core využívající Kestrel přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 2b867a65fa11e14cdc3fc3e5c269686fa4d559de
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81757177"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
@@ -20,14 +20,14 @@ Ve třetí části této série se naučíte:
 > [!div class="checklist"]
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
-> * Instalace certifikátu TLS/SSL do uzlů vzdáleného clusteru
+> * Instalace certifikátu TLS/SSL na uzlech vzdáleného clusteru
 > * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru
 
 V této sérii kurzů se naučíte:
 > [!div class="checklist"]
-> * [Vytvoření aplikace .NET Service Fabric](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Vytvoření aplikace Service Fabric .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [Nasazení aplikace do vzdáleného clusteru](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Přidání koncového bodu HTTPS do front-end služby ASP.NET Core
 > * [Nakonfigurovat CI/CD s využitím služby Azure Pipelines](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
@@ -40,13 +40,13 @@ V této sérii kurzů se naučíte:
 
 Než začnete s tímto kurzem:
 
-* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) verze 16.5 nebo novější s vývojovými a **ASP.NET a webovými úlohami** **Azure.**
+* Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+* [Nainstalujte Visual Studio 2019](https://www.visualstudio.com/) verze 16,5 nebo novější s úlohami vývoje pro vývoj a **ASP.NET a webový vývoj** pro **Azure** .
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 
 ## <a name="obtain-a-certificate-or-create-a-self-signed-development-certificate"></a>Získání certifikátu nebo vytvoření certifikátu podepsaného svým držitelem pro vývoj
 
-Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spusťte následující příkaz k vytvoření certifikátu s předmětem "CN=mytestcert":
+Pro produkční aplikace používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority). Pro účely vývoje a testování můžete vytvořit a používat certifikát podepsaný svým držitelem. Sada Service Fabric SDK poskytuje skript *CertSetup.ps1*, který vytvoří certifikát podepsaný svým držitelem a importuje ho do úložiště certifikátů `Cert:\LocalMachine\My`. Otevřete příkazový řádek jako správce a spuštěním následujícího příkazu vytvořte certifikát s předmětem CN = mytestcert:
 
 ```powershell
 PS C:\program files\microsoft sdks\service fabric\clustersetup\secure> .\CertSetup.ps1 -Install -CertSubjectName CN=mytestcert
@@ -152,8 +152,8 @@ serviceContext =>
 
 Přidejte také následující metodu, aby Kestrel mohl vyhledat certifikát v úložišti `Cert:\LocalMachine\My` pomocí předmětu.  
 
-Pokud&lt;jste&gt;vytvořili certifikát podepsaný svým držitelem s předchozím příkazem prostředí PowerShell nebo použijte kku certifikátu, nahraďte "your_CN_value " "mytestcert".
-Uvědomte si, že v `localhost` případě místní nasazení je vhodnější použít "CN = localhost" aby se zabránilo výjimky ověřování.
+Pokud jste&lt;vytvořili&gt;certifikát podepsaný svým držitelem pomocí předchozího příkazu prostředí PowerShell, nahraďte "your_CN_value" pomocí "mytestcert", nebo použijte CN certifikátu.
+Pamatujte na to, že v případě místního nasazení `localhost` je vhodnější použít "CN = localhost", aby nedocházelo k výjimkám ověřování.
 
 ```csharp
 private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonName)
@@ -186,12 +186,12 @@ private X509Certificate2 FindMatchingCertificateBySubject(string subjectCommonNa
 
 ```
 
-## <a name="grant-network-service-access-to-the-certificates-private-key"></a>Udělit službě NETWORK SERVICE přístup k soukromému klíči certifikátu
+## <a name="grant-network-service-access-to-the-certificates-private-key"></a>Udělení přístupu k privátnímu klíči certifikátu síťové službě
 
-V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Nyní explicitně udělit účet spuštěnslužbu (NETWORK SERVICE, ve výchozím nastavení) přístup k soukromému klíči certifikátu. Tento krok můžete provést ručně (pomocí nástroje certlm.msc), ale je lepší automaticky spustit skript prostředí PowerShell [konfigurací spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v **setupentrypointu** manifestu služby.
+V předchozím kroku jste importovali certifikát do úložiště `Cert:\LocalMachine\My` na vývojovém počítači.  Nyní explicitně udělte účtu, který spouští službu (ve výchozím nastavení síťová služba) přístup k privátnímu klíči certifikátu. Tento krok můžete provést ručně (pomocí nástroje Certlm. msc), ale je lepší automaticky spouštět skript prostředí PowerShell [konfigurací spouštěcího skriptu](service-fabric-run-script-at-service-startup.md) v **SetupEntryPoint** manifestu služby.
 
 >[!NOTE]
-> Service Fabric podporuje deklarování certifikátů koncového bodu kryptografickým otiskem nebo běžným názvem subjektu. V takovém případě za běhu nastaví vazbu a ACL certifikátu soukromý klíč k identitě, která je spuštěna jako služba. Runtime bude také sledovat certifikát pro změny nebo obnovení a re-ACL odpovídající soukromý klíč odpovídajícím způsobem.
+> Service Fabric podporuje deklaraci certifikátů koncového bodu podle kryptografického otisku nebo běžného názvu subjektu. V takovém případě modul runtime nastaví vazbu a seznam ACL privátního klíče certifikátu na identitu, jako je služba spuštěná. Modul runtime také monitoruje certifikát pro změny/obnovení a odpovídajícím způsobem znovu přiacl odpovídající privátní klíč.
 
 ### <a name="configure-the-service-setup-entry-point"></a>Konfigurace vstupního bodu nastavení služby
 
@@ -350,23 +350,23 @@ Dále v části **ServiceManifestImport** souboru VotingWebPkg nakonfigurujte **
 
 ## <a name="run-the-application-locally"></a>Místní spuštění aplikace
 
-V Průzkumníku řešení vyberte **hlasovací** aplikaci a nastavte\/vlastnost URL **aplikace** na "https: /localhost:443".
+V Průzkumník řešení vyberte **hlasovací** aplikaci a nastavte vlastnost **Adresa URL aplikace** na https:\//localhost: 443.
 
-Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se otevře webový prohlížeč\/https: /localhost:443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
+Uložte všechny soubory a stisknutím klávesy F5 aplikaci místně spusťte.  Po nasazení aplikace se webový prohlížeč otevře v protokolu https:\//localhost: 443. Pokud používáte certifikát podepsaný svým držitelem, zobrazí se upozornění, že váš počítač nedůvěřuje zabezpečení tohoto webu.  Pokračujte na webovou stránku.
 
 ![Hlasovací aplikace][image2]
 
 ## <a name="install-certificate-on-cluster-nodes"></a>Instalace certifikátu na uzlech clusteru
 
-Před nasazením aplikace do Azure nainstalujte `Cert:\LocalMachine\My` certifikát do úložiště všech vzdálených uzlů clusteru.  Služby se mohou přesunout do různých uzlů clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
+Před nasazením aplikace do Azure nainstalujte certifikát do `Cert:\LocalMachine\My` úložiště všech uzlů vzdáleného clusteru.  Služby se můžou přesunout do různých uzlů clusteru.  Při spuštění webové front-end služby na uzlu clusteru vyhledá spouštěcí skript certifikát a nakonfiguruje přístupová oprávnění.
 
-Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci certlm.msc a přejděte na **osobní**>**certifikáty**.  Klikněte pravým tlačítkem myši na certifikát *mytestcert* a vyberte**export** **všech úkolů**>.
+Nejprve exportujte certifikát do souboru PFX. Otevřete aplikaci Certlm. msc a přejděte k **osobním**>**certifikátům**.  Klikněte pravým tlačítkem na certifikát *mytestcert* a vyberte **všechny úkoly**>**exportovat**.
 
 ![Export certifikátu][image4]
 
 V průvodci exportem zvolte **Ano, exportovat privátní klíč** a zvolte formát PFX (Personal Information Exchange).  Exportujte soubor do umístění *C:\Users\sfuser\votingappcert.pfx*.
 
-Dále nainstalujte certifikát do vzdáleného clusteru pomocí [těchto zapředpokladudaných skriptů Powershellu](./scripts/service-fabric-powershell-add-application-certificate.md).
+V dalším kroku nainstalujte certifikát na vzdálený cluster pomocí [těchto dodaných skriptů PowerShellu](./scripts/service-fabric-powershell-add-application-certificate.md).
 
 > [!Warning]
 > Certifikát podepsaný svým držitelem je dostačující pro vývoj a testování aplikací. Pro produkční aplikace místo certifikátu podepsaného svým držitelem používejte certifikát od [certifikační autority (CA)](https://wikipedia.org/wiki/Certificate_authority).
@@ -411,7 +411,7 @@ V této části kurzu jste se naučili:
 > [!div class="checklist"]
 > * Definovat ve službě koncový bod HTTPS
 > * Nakonfigurovat Kestrel k používání HTTPS
-> * Instalace certifikátu TLS/SSL do uzlů vzdáleného clusteru
+> * Instalace certifikátu TLS/SSL na uzlech vzdáleného clusteru
 > * Poskytnout účtu NETWORK SERVICE přístup k privátnímu klíči certifikátu
 > * Otevřít port 443 v nástroji pro vyrovnávání zatížení Azure
 > * Nasadit aplikaci do vzdáleného clusteru

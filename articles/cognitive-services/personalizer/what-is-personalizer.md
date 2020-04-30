@@ -1,99 +1,99 @@
 ---
 title: Co je služba Personalizace?
-description: Personalizátor je cloudová služba rozhraní API, která vám umožní vybrat nejlepší prostředí, které se zobrazí vašim uživatelům, a učit se z jejich chování v reálném čase.
+description: Přizpůsobování je cloudová služba API, která umožňuje vybrat nejlepší prostředí pro zobrazování vašich uživatelů a seznámit se s jejich chováním v reálném čase.
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687267"
 ---
 # <a name="what-is-personalizer"></a>Co je služba Personalizace?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Personalizer je cloudová služba rozhraní API, která pomáhá klientské aplikaci vybrat nejlepší položku s jedním _obsahem,_ která se zobrazí každému uživateli. Služba vybere nejlepší položku z položek obsahu na základě kolektivních informací v reálném čase, které poskytnete o obsahu a kontextu.
+Přizpůsobování Azure je cloudová služba API, která pomáhá klientské aplikaci zvolit nejlepší a jedinou položku _obsahu_ pro zobrazení jednotlivých uživatelů. Služba vybere nejlepší položku z položek obsahu na základě souhrnných informací v reálném čase, které poskytnete o obsahu a kontextu.
 
-Po prezentaci položky obsahu uživateli systém sleduje chování uživatelů a hlásí skóre odměny zpět personalistovi, aby zlepšil jeho schopnost vybrat nejlepší obsah na základě kontextových informací, které obdrží.
+Po zobrazení položky obsahu uživateli systém monitoruje chování uživatelů a nahlásí skóre pro odměnu zpátky do přizpůsobené aplikace, aby se zlepšila možnost výběru nejlepšího obsahu na základě informací o kontextu, který obdrží.
 
-**Obsahem** může být libovolná jednotka informací, jako je text, obrázky, adresy URL nebo e-maily, ze kterých chcete vybrat, aby se zobrazila uživateli.
+**Obsah** může být libovolná jednotka informací, jako je text, obrázky, adresy URL nebo e-maily, které chcete vybrat, aby se uživateli zobrazila.
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
 -->
 
-## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak personalizátor vybírá nejlepší položku obsahu?
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Jak přizpůsobuje výběr nejlepší položky obsahu?
 
-Personalizár používá **posilování učení** vybrat nejlepší položku (_akce_) na základě kolektivního chování a odměnit skóre na příčku všech uživatelů. Akce jsou položky obsahu, jako jsou zpravodajské články, konkrétní filmy nebo produkty, ze kterých si můžete vybrat.
+Přizpůsobování využívá **posílení učení** k výběru nejlepší položky (_Akce_) na základě kolektivního chování a odměňování výsledků napříč všemi uživateli. Akce jsou položky obsahu, jako jsou například články s novinkami, konkrétní filmy nebo produkty, ze kterých si můžete vybrat.
 
-Volání **Pořadí** přebírá položku akce spolu s funkcemi akce a kontextovými funkcemi pro výběr nejvyšší položky akce:
+Volání **pořadí** přijímá položku akce, společně s funkcemi akce a funkce kontextu pro výběr nejvyšší položky akce:
 
-* **Akce s funkcemi** – položky obsahu s funkcemi specifickými pro každou položku
-* **Kontextové funkce** – funkce uživatelů, jejich kontext nebo prostředí při používání aplikace
+* **Akce s funkcemi** – položky obsahu s funkcemi specifickými pro jednotlivé položky
+* **Kontextové funkce** – funkce uživatelů, jejich kontext nebo prostředí při použití vaší aplikace
 
-Volání Pořadí vrátí ID, která položka obsahu, __akce__, se uživateli zobrazí v poli **ID akce odměny.**
-__Akce__ zobrazená uživateli je vybrána pomocí modelů strojového učení a snaží se maximalizovat celkovou částku odměn v průběhu času.
+Volání pořadí vrátí ID, které položky obsahu, __Akce__, která se má uživateli zobrazit, v poli **ID akce odměna** .
+__Akce__ , která se zobrazí uživateli, je zvolená u modelů strojového učení a snaží se maximalizovat celkové množství nevyužité ceny v průběhu času.
 
-Několik příkladů scénářů jsou:
+Několik ukázkových scénářů:
 
-|Typ obsahu|**Akce (s funkcemi)**|**Kontextové funkce**|ID vrácené akce odměny<br>(zobrazit tento obsah)|
+|Typ obsahu|**Akce (s funkcemi)**|**Kontextové funkce**|Vráceno ID akce odměna<br>(Zobrazit tento obsah)|
 |--|--|--|--|
-|Seznam novinek|a. `The president...`(národní, politika, [text])<br>b. `Premier League ...`(globální, sportovní, [text, obrázek, video])<br> c. `Hurricane in the ...`(regionální, počasí, [text,obrázek]|Zprávy o zařízení se čtou z<br>Měsíc nebo sezóna<br>|A`The president...`|
-|Seznam filmů|1. `Star Wars` (1977, [akce, dobrodružství, fantazie], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentární, sportovní], Steve James<br>3. `Casablanca` (1942, [romantika, drama, válka], Michael Curtiz)|Film o zařízení je zhlédnout z<br>velikost obrazovky<br>Typ uživatele<br>|3.`Casablanca`|
-|Seznam produktů|i. `Product A`(3 kg, $$$$, dodání za 24 hodin)<br>ii. `Product B`(20 kg, $$, 2 týdenní přeprava s celnicí)<br>iii. `Product C`(3 kg, $$$, dodání za 48 hodin)|Nakupování zařízení se čte z<br>Úroveň útraty uživatele<br>Měsíc nebo sezóna|ii. `Product B`|
+|Seznam zpráv|a. `The president...`(National, politika, [text])<br>b. `Premier League ...`(globální, sportovní, [text, obrázek, video])<br> c. `Hurricane in the ...`(oblastní, počasí, [text, obrázek]|Zprávy ze zařízení se čtou z<br>Měsíc nebo období<br>|určitého`The president...`|
+|Seznam filmů|1. `Star Wars` (1977, [akce, Adventure, virtuální aplikace], Jiří Lucas)<br>2. `Hoop Dreams` (1994, [dokumentace, Sport], Steve James<br>3. `Casablanca` (1942, [románské drama, války], Michael Curtiz)|Video ze zařízení se bude sledovat<br>Velikost obrazovky<br>Typ uživatele<br>|1.`Casablanca`|
+|Seznam produktů|i. `Product A`(3 kg, $ $ $ $, doručování za 24 hodin)<br>ii. `Product B`(20 kg, $ $, 2 týdny expedice s celním clem)<br>iii. `Product C`(3 kg, $ $ $, doručování za 48 hodin)|Nákupy zařízení se čtou z<br>Úroveň útraty uživatele<br>Měsíc nebo období|ii. `Product B`|
 
-Personalista použil výztuže učení vybrat jednu nejlepší akci, známý jako _odměna akce ID_, na základě kombinace:
-* Trénovaný model - minulé informace, které obdržela služba Personalista
-* Aktuální data – specifické akce s funkcemi a kontextovými funkcemi
+Přizpůsobené přizpůsobování, pomocí něhož se naučíte vybírat jednu nejlepší akci, která se označuje jako _ID akce_oddálení na základě kombinace:
+* Školený model – informace o tom, kterou služba přizpůsobené
+* Aktuální akce specifické pro data s funkcemi a funkcemi kontextu
 
-## <a name="when-to-call-personalizer"></a>Kdy zavolat personalistu
+## <a name="when-to-call-personalizer"></a>Kdy volat přizpůsobování
 
-[Rozhraní](https://go.microsoft.com/fwlink/?linkid=2092082) API **ranku** personalisty se nazývá _pokaždé, když_ prezentujete obsah v reálném čase. Tento událost se označuje jako **událost**, označená _ID události_.
+[Rozhraní API](https://go.microsoft.com/fwlink/?linkid=2092082) pro **řazení** přizpůsobeného objektu se volá _pokaždé_ , když prezentujete obsah v reálném čase. To se označuje jako **událost**zaznamenaná s _ID události_.
 
-Rozhraní [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) **pro odměňování** personalisty lze volat v reálném čase nebo zpožděno tak, aby lépe vyhovovalo vaší infrastruktuře. Skóre odměny určujete na základě vašich obchodních potřeb. Skóre odměny se pohybuje mezi 0 a 1. To může být jedna hodnota, například 1 pro dobro a 0 pro špatné, nebo číslo vyrobené algoritmem, který vytvoříte s ohledem na vaše obchodní cíle a metriky.
+[Rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) pro **vlastní** nastavení se dá volat v reálném čase nebo opožděně, aby lépe vyhovovalo vaší infrastruktuře. Můžete určit skóre odměňování podle vašich obchodních potřeb. Skóre odměňování je mezi 0 a 1. To může být jedna hodnota, například 1 pro dobrý, a 0 pro chybné nebo číslo vytvořené algoritmem, který vytvoříte s ohledem na obchodní cíle a metriky.
 
-## <a name="personalizer-content-requirements"></a>Požadavky na personalizaci obsahu
+## <a name="personalizer-content-requirements"></a>Požadavky na obsah pro přizpůsobení obsahu
 
-Při použití personalistik a obsahu:
+Použít přizpůsobeného přizpůsobování obsahu:
 
-* Má omezenou sadu položek (max ~ 50) z výběru. Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) snížit seznam až na 50 položek.
-* Obsahuje informace popisující obsah, který chcete seřadit: _akce s funkcemi_ a _kontextovými funkcemi_.
-* Má minimálně ~ 1k / den obsah-související události pro Personalizace, aby byly účinné. Pokud personalizátor neobdrží minimální požadovaný provoz, služba trvá déle určit jednu nejlepší položku obsahu.
+* Pro výběr z má omezená sada položek (max. ~ 50). Pokud máte větší seznam, [použijte modul doporučení](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) , který zmenší seznam na 50 položek.
+* Obsahuje informace popisující obsah, který chcete seřadit: _akce s funkcemi_ a _funkcemi kontextu_.
+* Má minimálně ~ 1 tisíc události související s obsahem pro přizpůsobení, aby byly účinné. Pokud přizpůsobený modul neobdrží potřebný minimální provoz, služba trvá déle a určí jednu nejlepší položku obsahu.
 
-Vzhledem k tomu, že personalista používá kolektivní informace téměř v reálném čase k vrácení jedné nejlepší položky obsahu, služba ne:
-* Uchování a správa informací o profilu uživatele
-* Protokolovat předvolby nebo historii jednotlivých uživatelů
+Vzhledem k tomu, že přidaný modul používá k vrácení jediné nejlepší položky obsahu informace v reálném čase téměř v reálném čase, služba nebude:
+* Zachovat a spravovat informace o profilu uživatele
+* Protokolovat Předvolby nebo historii jednotlivých uživatelů
 * Vyžadovat vyčištěný a označený obsah
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Jak navrhnout a implementovat personalizace pro vaši klientskou aplikaci
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Návrh a implementace přizpůsobení pro vaši klientskou aplikaci
 
-1. [Návrh](concepts-features.md) a plánování obsahu, **_akcí_** a **_kontextu_**. Určete algoritmus odměny za skóre **_odměny._**
-1. Každý [prostředek personalizátoru,](how-to-settings.md) který vytvoříte, je považován za 1 výukový smyčku. Smyčka obdrží výzvy hodnosti i odměny pro tento obsah nebo uživatelské prostředí.
-1. Přidejte personalizátor na vaše webové stránky nebo obsahový systém:
-    1. Přidejte volání **Pořadí** do personalistu ve vaší aplikaci, webu nebo systému, abyste určili nejlepší položku _obsahu_ před zobrazením obsahu uživateli.
-    1. Zobrazit uživateli nejlepší _položku s_ jedním obsahem, což je _ID vrácené akce odměny_.
-    1. Použijte _algoritmus_ pro shromážděné informace o tom, jak se uživatel choval, k určení skóre **odměny,** například:
+1. [Navrhněte](concepts-features.md) a Naplánujte obsah, **_Akce_** a **_kontext_**. Určete algoritmus odměna pro skóre **_odměňování_** .
+1. Každý vytvořený prostředek přizpůsobeného přizpůsobeného [prostředku](how-to-settings.md) se považuje za 1 smyčku učení. Smyčka získá jak pořadí, tak i možnosti pro daný obsah nebo uživatelské prostředí.
+1. Přidání přizpůsobeného doplňku na web nebo systém obsahu:
+    1. Přidejte volání **pořadí** do přizpůsobené aplikace, webu nebo systému a určete nejlepší, jednotlivou položku _obsahu_ před zobrazením obsahu uživateli.
+    1. Zobrazí nejlepší, jednotlivou položku _obsahu_ , což je vráceno _ID akce odměna_pro uživatele.
+    1. Použijte _algoritmus_ na shromážděné informace o tom, jak se uživatel chová, aby se určilo skóre **odměňování** , například:
 
         |Chování|Vypočtené skóre odměny|
         |--|--|
-        |Uživatel vybral nejlepší položku s jedním _obsahem_ (ID akce odměny)|**1**|
-        |Uživatel vybral jiný obsah|**0**|
-        |Uživatel se pozastavil, nerozhodně se posouval, než vybral nejlepší položku _obsahu_ (ID akce odměny)|**0,5**|
+        |Uživatel zvolil nejlepší, jednu položku _obsahu_ (ID akce pro odměnu).|**1**|
+        |Uživatel vybral jiný obsah.|**0**|
+        |Uživatel byl pozastaven, je před tím nerozhodující, aby bylo možné vybrat nejlepší, jednu položku _obsahu_ (ID akce odměna).|**0,5**|
 
-    1. Přidání **výzvy k odměňování,** které zasílá skóre odměny mezi 0 a 1
-        * Ihned po zobrazení obsahu
+    1. Přidejte volání **odměňování** , které posílá skóre odměňování od 0 do 1.
+        * Hned po zobrazení obsahu
         * Nebo někdy později v offline systému
-    1. Po určité době používání [vyhodnoťte smyčku](concepts-offline-evaluation.md) pomocí offline vyhodnocení. Offline vyhodnocení umožňuje testovat a vyhodnocovat účinnost služby personalisty bez změny kódu nebo ovlivnění uživatelského prostředí.
+    1. [Vyhodnoťte smyčku](concepts-offline-evaluation.md) pomocí offline zkušebního období po určité době použití. Testování v režimu offline umožňuje testovat a hodnotit efektivitu služby přizpůsobeného službou bez změny kódu nebo ovlivnění uživatelského prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 
 
 * [Jak služba Personalizace funguje](how-personalizer-works.md)
-* [Co je posilování učení?](concepts-reinforcement-learning.md)
-* [Informace o funkcích a akcích pro žádost o hodnost](concepts-features.md)
-* [Informace o určení skóre žádosti o odměnu](concept-rewards.md)
-* [Rychlý start](sdk-learning-loop.md)
+* [Co je posílení učení?](concepts-reinforcement-learning.md)
+* [Informace o funkcích a akcích pro požadavek na řazení](concepts-features.md)
+* [Informace o určování skóre pro žádost o odměnu](concept-rewards.md)
+* [Rychlé starty](sdk-learning-loop.md)
 * [Tutoriál](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Použití interaktivní ukázky](https://personalizationdemo.azurewebsites.net/)

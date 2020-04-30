@@ -1,6 +1,6 @@
 ---
 title: Synchronizace stavu zařízení ze služby Azure IoT Hub | Microsoft Docs
-description: Přečtěte si, jak pomocí dvojčat zařízení nakonfigurovat zařízení z cloudu a přijímat data o stavu a dodržování předpisů ze svých zařízení.
+description: Naučte se používat vlákna zařízení ke konfiguraci vašich zařízení z cloudu a získávat data o stavu a dodržování předpisů z vašich zařízení.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81767822"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -37,11 +37,11 @@ V tomto kurzu provedete následující úlohy:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Potřebujete Node.js v10.x.x nebo novější ve vývojovém počítači.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí Node.js. Ve vývojovém počítači potřebujete Node. js v10 za účelem. x. x nebo novější.
 
 Node.js pro různé platformy si můžete stáhnout z webu [nodejs.org](https://nodejs.org).
 
@@ -53,13 +53,13 @@ node --version
 
 Stáhněte si ukázkový projekt Node.js z https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip a extrahujte archiv ZIP.
 
-Zkontrolujte, zda je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokován v některých prostředích podnikové a vzdělávací sítě. Další informace a způsoby, jak tento problém vyřešit, najdete [v tématu připojení k centru IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto kurzu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="set-up-azure-resources"></a>Nastavení prostředků Azure
 
 Abyste mohli dokončit tento kurz, musí vaše předplatné Azure obsahovat centrum IoT se zařízením přidaným do registru identit zařízení. Záznam v registru identit zařízení umožňuje připojení simulovaného zařízení, které v tomto kurzu spustíte, do vašeho centra.
 
-Pokud ještě nemáte službu IoT hub nastavenou ve vašem předplatném, můžete ji nastavit pomocí následujícího skriptu příkazového příkazu. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
+Pokud ještě nemáte ve svém předplatném nastavený IoT Hub, můžete ho nastavit pomocí následujícího skriptu CLI. Skript používá pro centrum IoT název **tutorial-iot-hub**. Při spuštění ho nahraďte vlastním jedinečným názvem. Skript vytvoří skupinu prostředků a centrum v oblasti **USA – střed**, kterou můžete změnit na bližší zeměpisnou oblast. Skript načte připojovací řetězec služby IoT Hub, který použijete v ukázkové back-endové aplikaci k připojení do centra IoT:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +240,7 @@ Následující snímek obrazovky ukazuje výstup z aplikace simulovaného zaří
 
 ![Simulované zařízení](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-Následující snímek obrazovky ukazuje výstup z back-endové aplikace a zvýrazní, jak přijímá a zpracovává ohlášenou aktualizaci vlastností ze zařízení:
+Na následujícím snímku obrazovky vidíte výstup z back-endové aplikace a zvýrazní, jak přijímá a zpracovává aktualizaci hlášené vlastnosti ze zařízení:
 
 ![Back-endová aplikace](./media/tutorial-device-twins/BackEnd2.png)
 

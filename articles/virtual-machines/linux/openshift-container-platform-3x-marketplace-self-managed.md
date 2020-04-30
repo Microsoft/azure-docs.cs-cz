@@ -1,6 +1,6 @@
 ---
-title: Nasazení nabídky OpenShift Container Platform 3.11 S vlastním spravovaným marketplace v Azure
-description: Nasazení nabídky OpenShift Container Platform 3.11 S vlastním spravovaným marketplace v Azure.
+title: Nasazení nabídky OpenShift Container Platform 3,11 pro samoobslužnou správu v Azure
+description: Nasaďte v Azure nabídku OpenShift Container Platform 3,11, která je samostatně spravovaná.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,181 +11,181 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 1cf6c7417aa86d47e59e08786e7807e32c175a25
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759571"
 ---
-# <a name="configure-prerequisites"></a>Konfigurace požadavků
+# <a name="configure-prerequisites"></a>Konfigurovat požadavky
 
-Před použitím nabídky Marketplace k nasazení clusteru OpenShift Container Platform 3.11 s vlastním názvem v Azure musí být nakonfigurovaných několik předpokladů.  Přečtěte si článek [o požadavcích na předpoklady OpenShift,](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) kde najdete pokyny k vytvoření klíče ssh (bez přístupové fráze), trezoru klíčů Azure, tajného klíče trezoru klíčů a instančního objektu služby.
+Než začnete používat nabídku Marketplace k nasazení samostatného clusteru OpenShift Container Platform 3,11 v Azure, je nutné nakonfigurovat několik požadavků.  Pokyny k vytvoření klíče SSH (bez hesla) najdete v článku [požadavky na OpenShift](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-container-platform-3x-prerequisites) , Trezor klíčů Azure, tajný klíč trezoru klíčů a instanční objekt.
 
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Nasazení pomocí nabídky Marketplace
 
-Nejjednodušší způsob nasazení clusteru OpenShift Container Platform 3.11 s vlastním správou do Azure je použít [nabídku Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
+Nejjednodušší způsob, jak nasadit cluster OpenShift Container Platform 3,11 do Azure, je použití [nabídky Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy).
 
-Tato možnost je nejjednodušší, ale má také omezené možnosti přizpůsobení. Nabídka Marketplace nasazuje platformu OpenShift Container Platform 3.11.82 a obsahuje následující možnosti konfigurace:
+Tato možnost je nejjednodušší, ale má také omezené možnosti přizpůsobení. Nabídka Marketplace nasadí OpenShift kontejnerové platformy 3.11.82 a obsahuje následující možnosti konfigurace:
 
-- **Hlavní uzly**: Tři (3) hlavní uzly s konfigurovatelným typem instance.
-- **Infranozy**: Tři (3) Infra nodes s konfigurovatelným typem instance.
-- **Uzly**: Počet uzlů (mezi 1 a 9) a typ instance jsou konfigurovatelné.
-- **Typ disku**: Používají se spravované disky.
-- **Networking**: Podpora nové nebo stávající sítě a vlastní řady CIDR.
-- **CNS**: CNS může být povolena.
-- **Metriky:** Hawkular metriky mohou být povoleny.
-- **Protokolování**: Protokolování EFK lze povolit.
-- **Azure Cloud Provider**: Ve výchozím nastavení je povoleno, může být zakázáno.
+- **Hlavní uzly**: tři (3) hlavní uzly s konfigurovatelným typem instance.
+- **Infračervené uzly**: tři (3) infračervené uzly s konfigurovatelným typem instance.
+- **Uzly**: počet uzlů (mezi 1 a 9) a typ instance lze konfigurovat.
+- **Typ disku**: Managed disks se používají.
+- **Sítě**: podpora pro nové nebo existující sítě a vlastní rozsah CIDR.
+- **CNS**: je možné povolit propojené sítě.
+- **Metriky**: metriky Hawkular je možné povolit.
+- **Protokolování**: protokolování EFK lze povolit.
+- **Poskytovatel cloudu Azure**: ve výchozím nastavení povolený může být zakázaný.
 
-V levém horním rohu portálu Azure klikněte na **Vytvořit prostředek**, do vyhledávacího pole zadejte "openshift container platform" a klikněte na Enter.
+V levém horním rohu Azure Portal klikněte na **vytvořit prostředek**, do vyhledávacího pole zadejte ' OpenShift Container Platform ' a stiskněte ENTER.
 
-   ![Hledání nových zdrojů](media/openshift-marketplace-self-managed/ocp-search.png)  
+   ![Nové vyhledávání prostředků](media/openshift-marketplace-self-managed/ocp-search.png)  
 <br>
 
-Stránka Výsledky se otevře v seznamu s **vlastní spravovanou platformou Red Hat OpenShift Container Platform 3.11.** 
+Stránka s výsledky se otevře s **platformou Red Hat OpenShift Container Platform 3,11** , která je v seznamu samostatně spravovaná. 
 
-   ![Výsledek hledání nových zdrojů](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
+   ![Výsledek hledání nového prostředku](media/openshift-marketplace-self-managed/ocp-searchresult.png)  
 <br>
 
-Kliknutím na nabídku zobrazíte podrobnosti o nabídce. Chcete-li tuto nabídku nasadit, klepněte na tlačítko **Vytvořit**. Zobrazí se ui pro zadání potřebných parametrů. První obrazovka je okno **Základy.**
+Kliknutím na nabídku zobrazíte podrobnosti o této nabídce. Chcete-li nasadit tuto nabídku, klikněte na tlačítko **vytvořit**. Zobrazí se uživatelské rozhraní pro zadání potřebných parametrů. První obrazovka je okno **základy** .
 
    ![Stránka s názvem nabídky](media/openshift-marketplace-self-managed/ocp-titlepage.png)  
 <br>
 
 **Základy**
 
-Chcete-li získat pomoc na některý ze vstupních parametrů, najeďte nad ***i*** vedle názvu parametru.
+Pokud chcete získat nápovědu k libovolnému vstupnímu parametru, najeďte myší na ***i*** vedle názvu parametru.
 
-Zadejte hodnoty vstupních parametrů a klepněte na **OK**.
+Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Uživatelské jméno správce virtuálního účtu | Uživatel správce, který má být vytvořen ve všech instancích virtuálních počítačů |
-| Veřejný klíč SSH pro uživatele správce | Veřejný klíč SSH používaný k přihlášení k virtuálnímu virtuálnímu mísu – nesmí mít přístupové heslo |
-| Předplatné | Předplatné Azure pro nasazení clusteru do |
-| Skupina prostředků | Vytvoření nové skupiny prostředků nebo výběr existující prázdné skupiny prostředků pro prostředky clusteru |
-| Umístění | Oblast Azure pro nasazení clusteru do |
+| Uživatelské jméno správce virtuálního počítače | Uživatel s oprávněními správce, který se má vytvořit na všech instancích virtuálních počítačů |
+| Veřejný klíč SSH pro uživatele s oprávněními správce | Veřejný klíč SSH, který se používá pro přihlášení k virtuálnímu počítači, nesmí mít přístupové heslo. |
+| Předplatné | Předplatné Azure, do kterého se má cluster nasadit |
+| Skupina prostředků | Vytvořte novou skupinu prostředků nebo vyberte existující prázdnou skupinu prostředků pro prostředky clusteru. |
+| Umístění | Oblast Azure, do které se má cluster nasadit |
 
-   ![Nabídka základů čepele](media/openshift-marketplace-self-managed/ocp-basics.png)  
+   ![Okno základy nabídky](media/openshift-marketplace-self-managed/ocp-basics.png)  
 <br>
 
 **Nastavení infrastruktury**
 
-Zadejte hodnoty vstupních parametrů a klepněte na **OK**.
+Zadejte hodnoty pro vstupní parametry a klikněte na tlačítko **OK**.
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Předpona názvu clusteru OCP | Předpona clusteru slouží ke konfiguraci názvů hostitelů pro všechny uzly. Mezi 1 a 20 znaky |
-| Velikost hlavního uzlu | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **Změnit velikost** a vyberte jinou velikost virtuálního počítače.  Výběr vhodné velikosti virtuálního počítače pro pracovní zatížení |
-| Velikost uzlu infrastruktury | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **Změnit velikost** a vyberte jinou velikost virtuálního počítače.  Výběr vhodné velikosti virtuálního počítače pro pracovní zatížení |
-| Počet uzlů aplikace | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **Změnit velikost** a vyberte jinou velikost virtuálního počítače.  Výběr vhodné velikosti virtuálního počítače pro pracovní zatížení |
-| Velikost uzlu aplikace | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **Změnit velikost** a vyberte jinou velikost virtuálního počítače.  Výběr vhodné velikosti virtuálního počítače pro pracovní zatížení |
-| Velikost hostitele bašty | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **Změnit velikost** a vyberte jinou velikost virtuálního počítače.  Výběr vhodné velikosti virtuálního počítače pro pracovní zatížení |
-| Nová nebo existující virtuální síť | Vytvoření nové virtuální sítě (výchozí) nebo použití existující virtuální sítě |
-| Zvolte výchozí nastavení CIDR nebo přizpůsobit rozsah IP (CIDR) | Přijměte výchozí rozsahy CIDR nebo vyberte **vlastní rozsah IP adres** a zadejte vlastní informace CIDR.  Výchozí nastavení vytvoří virtuální síť s CIDR 10.0.0.0/14, hlavní podsíť s 10.1.0.0/16, infrapodsíť s 10.2.0.0/16 a výpočetní a cns podsíť s 10.3.0.0/16 |
-| Název skupiny prostředků trezoru klíčů | Název skupiny prostředků obsahující trezor klíčů |
-| Název trezoru klíčů | Název trezoru klíčů, který obsahuje tajný klíč s ssh soukromý klíč.  Jsou povoleny pouze alfanumerické znaky a pomlčky, které mají 3 až 24 znaků. |
-| Tajný název | Název tajného klíče, který obsahuje ssh soukromý klíč.  Povoleny jsou pouze alfanumerické znaky a pomlčky. |
+| OCP – Předpona názvu clusteru | Předpona clusteru používaná ke konfiguraci názvů hostitelů pro všechny uzly. Mezi 1 a 20 znaky |
+| Velikost hlavního uzlu | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **změnit velikost** a vyberte jinou velikost virtuálního počítače.  Vyberte vhodnou velikost virtuálního počítače pro vaše pracovní zatížení. |
+| Velikost uzlu infrastruktury | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **změnit velikost** a vyberte jinou velikost virtuálního počítače.  Vyberte vhodnou velikost virtuálního počítače pro vaše pracovní zatížení. |
+| Počet uzlů aplikace | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **změnit velikost** a vyberte jinou velikost virtuálního počítače.  Vyberte vhodnou velikost virtuálního počítače pro vaše pracovní zatížení. |
+| Velikost uzlu aplikace | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **změnit velikost** a vyberte jinou velikost virtuálního počítače.  Vyberte vhodnou velikost virtuálního počítače pro vaše pracovní zatížení. |
+| Velikost hostitele bastionu | Přijměte výchozí velikost virtuálního počítače nebo klikněte na **změnit velikost** a vyberte jinou velikost virtuálního počítače.  Vyberte vhodnou velikost virtuálního počítače pro vaše pracovní zatížení. |
+| Nové nebo existující Virtual Network | Vytvoření nové virtuální sítě (výchozí) nebo použití existující virtuální sítě |
+| Výběr výchozích nastavení CIDR nebo přizpůsobení rozsahu IP adres (CIDR) | Přijměte výchozí rozsahy CIDR nebo vyberte **vlastní rozsah IP adres** a zadejte vlastní informace o CIDR.  Ve výchozím nastavení se vytvoří virtuální síť s CIDR CIDR 10.0.0.0/14, hlavní podsíť s 10.1.0.0/16, podsíť v 10.2.0.0/16 a podsíť COMPUTE a CNS s 10.3.0.0/16. |
+| Název skupiny prostředků Key Vault | Název skupiny prostředků, která obsahuje Key Vault |
+| Název Key Vault | Název Key Vault, který obsahuje tajný klíč, s privátním klíčem SSH.  Jsou povoleny pouze alfanumerické znaky a spojovníky a musí být v rozmezí 3 až 24 znaků. |
+| Název tajného kódu | Název tajného klíče, který obsahuje privátní klíč SSH.  Jsou povoleny pouze alfanumerické znaky a spojovníky. |
 
-   ![Nabídka lopatek infrastruktury](media/openshift-marketplace-self-managed/ocp-inframain.png)  
+   ![Okno nabídky infrastruktury](media/openshift-marketplace-self-managed/ocp-inframain.png)  
 <br>
 
-**Změna velikosti**
+**Změnit velikost**
 
-Pokud chcete vybrat jinou velikost virtuálního počítače, klikněte na ***Změnit velikost***.  Otevře se okno pro výběr virtuálního zařízení.  Vyberte požadovanou velikost virtuálního počítače a klepněte na **vybrat**.
+Pokud chcete vybrat jinou velikost virtuálního počítače, klikněte na ***změnit velikost***.  Otevře se okno Výběr virtuálního počítače.  Vyberte velikost virtuálního počítače, kterou chcete, a klikněte na **Vybrat**.
 
-   ![Vybrat velikost virtuálního počítače](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
+   ![Vyberte velikost virtuálního počítače.](media/openshift-marketplace-self-managed/ocp-selectvmsize.png)  
 <br>
 
-**Existující virtuální síť**
+**Existující Virtual Network**
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Název existující virtuální sítě | Název existující virtuální sítě |
-| Název podsítě pro hlavní uzly | Název existující podsítě pro hlavní uzly.  Musí obsahovat alespoň 16 IP adres a sledovat RFC 1918 |
-| Název podsítě pro infranozy | Název existující podsítě pro infranozuly.  Musí obsahovat alespoň 32 IP adres a sledovat RFC 1918 |
-| Název podsítě pro výpočetní a cns uzly | Název existující podsítě pro výpočetní a cns uzly.  Musí obsahovat alespoň 32 IP adres a sledovat RFC 1918 |
-| Skupina prostředků pro existující virtuální síť | Název skupiny prostředků, která obsahuje existující virtuální síť |
+| Existující název Virtual Network | Název existující virtuální sítě |
+| Název podsítě pro hlavní uzly | Název existující podsítě pro hlavní uzly.  Musí obsahovat aspoň 16 IP adres a dodržovat RFC 1918. |
+| Název podsítě pro infračervené uzly | Název existující podsítě pro infračervené uzly.  Musí obsahovat aspoň 32 IP adres a musí odpovídat specifikaci RFC 1918. |
+| Název podsítě pro uzly COMPUTE a CNS | Název existující podsítě pro uzly COMPUTE a CNS.  Musí obsahovat aspoň 32 IP adres a musí odpovídat specifikaci RFC 1918. |
+| Skupina prostředků pro existující Virtual Network | Název skupiny prostředků, která obsahuje existující virtuální síť |
 
-   ![Nabídka existující infrastruktury virtuální sítě](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
+   ![Nabídka existující virtuální sítě infrastruktury](media/openshift-marketplace-self-managed/ocp-existingvnet.png)  
 <br>
 
 **Vlastní rozsah IP adres**
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Rozsah adres pro virtuální síť | Vlastní CIDR pro virtuální síť |
+| Rozsah adres pro Virtual Network | Vlastní CIDR pro virtuální síť |
 | Rozsah adres pro podsíť obsahující hlavní uzly | Vlastní CIDR pro hlavní podsíť |
 | Rozsah adres pro podsíť obsahující uzly infrastruktury | Vlastní CIDR pro podsíť infrastruktury |
-| Rozsah adres pro podsíť obsahující výpočetní uzly a uzly cns | Vlastní CIDR pro výpočetní a cns uzly |
+| Rozsah adres pro podsíť obsahující uzly COMPUTE a CNS | Vlastní CIDR pro uzly COMPUTE a CNS |
 
-   ![Nabídka vlastní hospo- oblasti IP infrastruktury](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
+   ![Nabídka vlastní rozsah IP adres infrastruktury](media/openshift-marketplace-self-managed/ocp-customiprange.png)  
 <br>
 
 **OpenShift Container Platform 3.11**
 
-Zadejte hodnoty vstupních parametrů a klepněte na **OK.**
+Zadejte hodnoty pro vstupní parametry a klikněte na **OK** .
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Uživatelské heslo správce OpenShift | Heslo pro počátečního uživatele OpenShift.  Tento uživatel bude také správcem clusteru. |
-| Potvrdit heslo uživatele openshiftadmin | Znovu zadejte uživatelské heslo správce OpenShiftu |
-| Uživatelské jméno Správce předplatného Red Hat | Uživatelské jméno pro přístup k předplatnému Red Hat nebo ID organizace.  Toto pověření se používá k registraci instance RHEL do vašeho předplatného a nebude uloženo společností Microsoft nebo Red Hat. |
-| Uživatelské heslo správce předplatného Red Hat | Heslo pro přístup k předplatnému nebo aktivačnímu klíči Red Hat.  Toto pověření se používá k registraci instance RHEL do vašeho předplatného a nebude uloženo společností Microsoft nebo Red Hat. |
-| Red Hat Správce předplatného OpenShift ID fondu | ID fondu, který obsahuje oprávnění platformy OpenShift Container Platform. Ujistěte se, že máte dostatek nároků na Platformu kontejnerů OpenShift pro instalaci clusteru |
-| Red Hat Subscription Manager OpenShift ID fondu pro Broker / Hlavní uzly | ID fondu, který obsahuje nároky platformy OpenShift Container Platform pro broker / hlavní uzly. Ujistěte se, že máte dostatek nároků OpenShift Kontejner platformy pro instalaci clusteru. Pokud nepoužíváte ID brokera / hlavního fondu, zadejte ID fondu pro uzly aplikací. |
-| Konfigurace poskytovatele Cloudu Azure | Nakonfigurujte OpenShift tak, aby používal Azure Cloud Provider. Nezbytné, pokud používáte disk Azure připojit pro trvalé svazky.  Výchozí hodnota je Ano |
-| Identifikátor GUID hlavního klienta služby Azure AD | Identifikátor GUID id klienta hlavního servisního objektu Azure AD – označovaný také jako AppID. Potřeba jenom v případě, že konfigurace Azure Cloud Provider nastavena na **Ano** |
-| Tajný klíč ID klienta hlavního klienta služby Azure AD | Tajný klíč ID hlavního klienta služby Azure AD. Potřeba jenom v případě, že konfigurace Azure Cloud Provider nastavena na **Ano** |
+| Heslo uživatele správce OpenShift | Heslo pro počátečního uživatele OpenShift.  Tento uživatel také bude správcem clusteru. |
+| Potvrzení hesla uživatele správce OpenShift | Zadejte znovu heslo uživatele správce OpenShift. |
+| Uživatelské jméno správce předplatného Red Hat | Uživatelské jméno pro přístup k vašemu předplatnému Red Hat nebo ID organizace.  Tyto přihlašovací údaje se používají k registraci instance RHEL do předplatného a neuloží se do Microsoftu ani Red Hat. |
+| Heslo uživatele Správce předplatného Red Hat | Heslo pro přístup k předplatnému Red Hat nebo aktivačnímu klíči.  Tyto přihlašovací údaje se používají k registraci instance RHEL do předplatného a neuloží se do Microsoftu ani Red Hat. |
+| ID fondu OpenShift Správce předplatného Red Hat | ID fondu, které obsahuje nárok na OpenShift kontejnerové platformy Ujistěte se, že máte dostatečné nároky na OpenShift kontejnerové platformy pro instalaci clusteru. |
+| ID fondu OpenShift Správce předplatného Red Hat pro zprostředkovatele nebo hlavní uzly | ID fondu, které obsahuje nároky na OpenShift kontejnerové platformy pro uzly pro zprostředkovatele nebo hlavní servery. Ujistěte se, že máte dostatečné nároky na OpenShift kontejnerové platformy pro instalaci clusteru. Pokud nepoužíváte zprostředkovatele nebo ID hlavního fondu, zadejte ID fondu pro uzly aplikace. |
+| Konfigurace poskytovatele cloudu Azure | Nakonfigurujte OpenShift pro použití poskytovatele cloudu Azure. Nutné při použití připojení k disku Azure pro trvalé svazky.  Výchozí hodnota je Yes (Ano). |
+| Identifikátor GUID ID klienta instančního objektu služby Azure AD | Identifikátor GUID ID klienta instančního objektu služby Azure AD – označuje se také jako AppID. Vyžaduje se jenom v případě, že je konfigurace Azure Cloud Provider nastavená na **Ano** . |
+| Tajný kód ID klienta instančního objektu služby Azure AD | Tajný kód ID klienta instančního objektu služby Azure AD. Vyžaduje se jenom v případě, že je konfigurace Azure Cloud Provider nastavená na **Ano** . |
  
-   ![Nabídka čepele OpenShift](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
+   ![Okno nabídky OpenShift](media/openshift-marketplace-self-managed/ocp-ocpmain.png)  
 <br>
 
 **Další nastavení**
 
-Okno Další nastavení umožňuje konfiguraci cns pro úložiště glusterfs, protokolování, metriky a dílčí doménu směrovače.  Výchozí nastavení nenainstaluje žádnou z těchto možností a použije nip.io jako subdoménu směrovače pro účely testování. Povolení CNS nainstaluje tři další výpočetní uzly se třemi dalšími připojenými disky, které budou hostovat pody glusterfs.  
+V okně Další nastavení lze nakonfigurovat GlusterFS pro úložiště, protokolování, metriky a poddoménu směrovače.  Ve výchozím nastavení se neinstaluje žádná z těchto možností a pro účely testování bude používat nip.io jako dílčí doménou směrovače. Když se povolí CNS, nainstaluje se tři dodatečné výpočetní uzly se třemi dalšími připojenými disky, které budou hostovat GlusterFS lusky.  
 
-Zadejte hodnoty vstupních parametrů a klepněte na **OK.**
+Zadejte hodnoty pro vstupní parametry a klikněte na **OK** .
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| Konfigurace nativního úložiště kontejnerů (CNS) | Nainstaluje CNS do clusteru OpenShift a povolí jej jako úložiště. Bude výchozí, pokud je azure provider zakázáno |
-| Konfigurace protokolování clusteru | Nainstaluje do clusteru funkci protokolování EFK.  Velikost infrauzlů vhodně pro hostování podů EFK |
-| Konfigurace metrik pro cluster | Nainstaluje hawkular metriky do clusteru OpenShift.  Velikost infrauzlů vhodně pro hostování podů hawkular metriky |
-| Výchozí subdoména směrovače | Vyberte nipio pro testování nebo vlastní pro vstup do vlastní sub domény pro produkční prostředí |
+| Konfigurace nativního úložiště kontejneru (CNS) | Nainstaluje v clusteru OpenShift propojené sítě a povolí je jako úložiště. Pokud je poskytovatel Azure zakázaný, bude výchozí. |
+| Konfigurace protokolování clusteru | Nainstaluje funkce protokolování EFK do clusteru.  Velikost infračervených uzlů vhodně pro hostování EFKch lusků |
+| Konfigurace metrik pro cluster | Nainstaluje metriky Hawkular do clusteru OpenShift.  Velikost infračervených uzlů odpovídajícím způsobem hostování Hawkular metriky |
+| Podřízená doména výchozího směrovače | Vyberte nipio pro testování nebo vlastní a zadejte vlastní subdoménu pro produkční prostředí. |
  
-   ![Nabídněte další čepel](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
+   ![Nabídka další okno](media/openshift-marketplace-self-managed/ocp-additionalmain.png)  
 <br>
 
 **Další nastavení – další parametry**
 
 | Vstupní parametr | Popis parametru |
 |-----------------------|-----------------|
-| (CNS) Velikost uzlu | Přijetí výchozí velikosti uzlu nebo výběrem **možnosti Změnit velikost** vyberte novou velikost virtuálního počítače. |
-| Zadání vlastní subdomény | Vlastní směrovací doména, která má být použita pro vystavení aplikací prostřednictvím směrovače v clusteru OpenShift.  Nezapomeňte vytvořit příslušnou položku DNS se zástupnými symboly] |
+| PROPOJEN Velikost uzlu | Přijměte výchozí velikost uzlu nebo vyberte **změnit velikost** a vyberte novou velikost virtuálního počítače. |
+| Zadejte vlastní subdoménu | Vlastní doména směrování, která se má použít k vystavení aplikací přes směrovač v clusteru OpenShift.  Nezapomeňte vytvořit odpovídající položku DNS se zástupnými znaky. |
  
-   ![Nabídka další cns Instalace](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
+   ![Nabídnout další instalaci propojené sítě](media/openshift-marketplace-self-managed/ocp-additionalcnsall.png)  
 <br>
 
 **Souhrn**
 
-Ověření dochází v této fázi ke kontrole kvóty jádra je dostatečná k nasazení celkový počet virtuálních disek vybraných pro cluster.  Zkontrolujte všechny zadané parametry.  Pokud jsou vstupy přijatelné, pokračujte klepnutím na **tlačítko OK.**
+K ověření v této fázi dojde, pokud chcete ověřit, jestli je kvóta jader dostatečná pro nasazení celkového počtu virtuálních počítačů vybraných pro cluster.  Zkontrolujte všechny zadané parametry.  Pokud jsou vstupy přijatelné, pokračujte kliknutím na tlačítko **OK** .
 
-   ![Nabídka souhrnného nože](media/openshift-marketplace-self-managed/ocp-summary.png)  
+   ![Okno souhrnu nabídky](media/openshift-marketplace-self-managed/ocp-summary.png)  
 <br>
 
 **Koupě**
 
-Potvrďte kontaktní informace na stránce Koupit a kliknutím na **Koupit** přijměte podmínky použití a spusťte nasazení clusteru platformy OpenShift Container Platform.
+Potvrďte kontaktní údaje na stránce koupit a kliknutím na **koupit** přijměte podmínky použití a spusťte nasazení clusteru OpenShift Container Platform.
 
-   ![Nabídka nákupního kotouče](media/openshift-marketplace-self-managed/ocp-purchase.png)  
+   ![Okno nákupu nabídky](media/openshift-marketplace-self-managed/ocp-purchase.png)  
 <br>
 
 
 ## <a name="connect-to-the-openshift-cluster"></a>Připojení ke clusteru OpenShift
 
-Po dokončení nasazení načtěte připojení z výstupní části nasazení. Připojte se ke konzoli OpenShift s prohlížečem pomocí **adresy URL konzoly OpenShift**. můžete také SSH na hostitele Bastion. Následuje příklad, kdy je uživatelské jméno správce clusteradmin a je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com veřejný název domény dns DNS bastion:
+Až se nasazení dokončí, načtěte připojení z části výstup nasazení. Pomocí **adresy URL konzoly OpenShift**se připojte ke konzole OpenShift pomocí prohlížeče. k hostiteli bastionu můžete také přissh. Tady je příklad, kde uživatelské jméno správce je clusteradmin a plně kvalifikovaný název domény DNS bastionu pro veřejnou IP adresu je bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -193,7 +193,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pomocí příkazu [delete skupiny az](/cli/azure/group) odeberte skupinu prostředků, cluster OpenShift a všechny související prostředky, pokud už nejsou potřeba.
+Pomocí příkazu [AZ Group Delete](/cli/azure/group) odeberte skupinu prostředků, cluster OpenShift a všechny související prostředky, pokud už je nepotřebujete.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -201,7 +201,7 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Úlohy po nasazení](./openshift-container-platform-3x-post-deployment.md)
-- [Poradce při potížích s nasazením OpenShift v Azure](./openshift-container-platform-3x-troubleshooting.md)
-- [Začínáme s platformou OpenShift Container Platform](https://docs.openshift.com)
+- [Úkoly po nasazení](./openshift-container-platform-3x-post-deployment.md)
+- [Řešení potíží s nasazením OpenShift v Azure](./openshift-container-platform-3x-troubleshooting.md)
+- [Začínáme s kontejnerovou platformou OpenShift](https://docs.openshift.com)
 - 

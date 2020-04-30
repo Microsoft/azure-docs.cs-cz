@@ -1,31 +1,31 @@
 ---
 title: Konfigurace aplikací PHP
-description: Přečtěte si, jak pro vaši aplikaci nakonfigurovat předem sestavený kontejner PHP. Tento článek ukazuje nejběžnější úlohy konfigurace.
+description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner PHP pro vaši aplikaci. Tento článek ukazuje nejběžnější konfigurační úlohy.
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 9e87466f810dc4ebf767c36ad74c358cbf6069e5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758878"
 ---
-# <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace Linux PHP pro Azure App Service
+# <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux PHP pro Azure App Service
 
-Tato příručka vám ukáže, jak nakonfigurovat vestavěný běh ový čas PHP pro webové aplikace, mobilní back-endy a aplikace rozhraní API ve službě Azure App Service.
+V této příručce se dozvíte, jak nakonfigurovat integrovaný modul runtime PHP pro webové aplikace, mobilní back-endy a aplikace API v Azure App Service.
 
-Tato příručka obsahuje klíčové koncepty a pokyny pro vývojáře PHP, kteří používají vestavěný kontejner Linuxu ve službě App Service. Pokud jste službu Azure App Service nikdy nepoužívali, postupujte nejprve podle [rychlého startu PHP](quickstart-php.md) a [PHP s kurzem MySQL.](tutorial-php-mysql-app.md)
+Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v PHP, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, postupujte nejprve podle kurzu [rychlý Start](quickstart-php.md) a [php s](tutorial-php-mysql-app.md) využitím php.
 
 ## <a name="show-php-version"></a>Zobrazit verzi PHP
 
-Chcete-li zobrazit aktuální verzi PHP, spusťte v [prostředí Cloud Shell](https://shell.azure.com)následující příkaz :
+Pokud chcete zobrazit aktuální verzi PHP, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Chcete-li zobrazit všechny podporované verze PHP, spusťte v [prostředí Cloud Shell](https://shell.azure.com)následující příkaz :
+Pokud chcete zobrazit všechny podporované verze PHP, spusťte v [Cloud Shell](https://shell.azure.com)následující příkaz:
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep PHP
@@ -33,7 +33,7 @@ az webapp list-runtimes --linux | grep PHP
 
 ## <a name="set-php-version"></a>Nastavit verzi PHP
 
-Spusťte následující příkaz v [prostředí Cloud Shell](https://shell.azure.com) a nastavte verzi PHP na verzi 7.2:
+Spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) nastavte verzi PHP na 7,2:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
@@ -41,28 +41,28 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="customize-build-automation"></a>Přizpůsobení automatizace sestavení
 
-Pokud aplikaci nasadíte pomocí balíčků Git nebo zip se zapnutou automatizací sestavení, služba App Service provede automatizaci automatizace následujícím pořadím:
+Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
-1. Spusťte vlastní `PRE_BUILD_SCRIPT_PATH`skript, pokud je určen programem .
+1. Spusťte vlastní skript `PRE_BUILD_SCRIPT_PATH`, pokud je určen.
 1. Spusťte `php composer.phar install`.
-1. Spusťte vlastní `POST_BUILD_SCRIPT_PATH`skript, pokud je určen programem .
+1. Spusťte vlastní skript `POST_BUILD_SCRIPT_PATH`, pokud je určen.
 
-`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy `PRE_BUILD_COMMAND`předběžného sestavení, definujte . Chcete-li spustit příkazy `POST_BUILD_COMMAND`po sestavení, definujte .
+`PRE_BUILD_COMMAND`a `POST_BUILD_COMMAND` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením `PRE_BUILD_COMMAND`, definujte. Chcete-li spustit příkazy po sestavení, `POST_BUILD_COMMAND`definujte.
 
-Následující příklad určuje dvě proměnné řady příkazů oddělených čárkami.
+Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
 ```
 
-Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v [tématu Konfigurace Oryx](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
+Další proměnné prostředí pro přizpůsobení automatizace sestavení naleznete v tématu [Oryx Configuration](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md).
 
-Další informace o tom, jak služba App Service běží a vytváří aplikace PHP v Linuxu, najdete v [dokumentaci oryxu: Jak jsou aplikace PHP detekovány a sestaveny](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
+Další informace o tom, jak App Service spouští a sestavuje aplikace PHP v systému Linux, najdete v [dokumentaci k Oryx: jak se zjišťují a vytváří aplikace v php](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/php.md).
 
 ## <a name="customize-start-up"></a>Přizpůsobení spuštění
 
-Ve výchozím nastavení vestavěný kontejner PHP spouští server Apache. Při startu běží `apache2ctl -D FOREGROUND"`. Pokud chcete, můžete při spuštění spustit jiný příkaz spuštěním následujícího příkazu v [prostředí Cloud Shell](https://shell.azure.com):
+Ve výchozím nastavení používá integrovaný kontejner PHP server Apache. Při spuštění se spustí `apache2ctl -D FOREGROUND"`. Pokud chcete, můžete při spuštění spustit jiný příkaz spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
@@ -70,17 +70,17 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-Ve službě App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód aplikace. Pak k nim můžete přistupovat pomocí standardního [getenv()](https://secure.php.net/manual/function.getenv.php) vzoru. Chcete-li například získat `DB_HOST`přístup k nastavení aplikace s názvem , použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [getenv ()](https://secure.php.net/manual/function.getenv.php) . Chcete-li například získat přístup k nastavení aplikace `DB_HOST`s názvem, použijte následující kód:
 
 ```php
 getenv("DB_HOST")
 ```
 
-## <a name="change-site-root"></a>Změna kořenového adresáře webu
+## <a name="change-site-root"></a>Změnit kořenovou složku webu
 
-Webový rámec podle vašeho výběru může jako kořenový adresář webu používat podadresář. Například [Laravel](https://laravel.com/)používá `public/` podadresář jako kořenovou síť.
+Vybraná webová architektura může jako kořen webu použít podadresář. Například [Laravel](https://laravel.com/)používá `public/` podadresář jako kořenový adresář webu.
 
-Výchozí obrázek PHP pro App Service používá Apache a neumožňuje vám přizpůsobit kořen webu pro vaši aplikaci. Chcete-li toto omezení obejít, přidejte soubor *HTAccess* do kořenového adresáře úložiště s následujícím obsahem:
+Výchozí obrázek PHP pro App Service používá Apache a neumožňuje přizpůsobení kořene webu pro vaši aplikaci. Pokud chcete toto omezení obejít, přidejte do svého kořene úložiště soubor *. htaccess* s následujícím obsahem:
 
 ```
 <IfModule mod_rewrite.c>
@@ -92,9 +92,9 @@ Výchozí obrázek PHP pro App Service používá Apache a neumožňuje vám př
 
 Pokud byste raději nepoužívali přepisování v souboru *.htaccess*, můžete místo toho nasadit svou aplikaci Laravel s použitím [vlastní image Dockeru](quickstart-docker-go.md).
 
-## <a name="detect-https-session"></a>Rozpoznat relaci HTTPS
+## <a name="detect-https-session"></a>Zjistit relaci HTTPS
 
-Ve službě App Service dojde k [ukončení SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v síťových nástrojích pro vyrovnávání zatížení, takže všechny požadavky HTTPS se dostanou do vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje zkontrolovat, jestli jsou požadavky `X-Forwarded-Proto` uživatelů zašifrované nebo ne, zkontrolujte záhlaví.
+V App Service dojde k [ukončení protokolu SSL](https://wikipedia.org/wiki/TLS_termination_proxy) v nástrojích pro vyrovnávání zatížení sítě, takže všechny požadavky HTTPS dosáhnou vaší aplikace jako nešifrované požadavky HTTP. Pokud vaše logika aplikace potřebuje, aby zkontrolovala, jestli jsou požadavky uživatele zašifrované, zkontrolujte `X-Forwarded-Proto` záhlaví.
 
 ```php
 if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
@@ -102,21 +102,21 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 }
 ```
 
-Oblíbené webové architektury umožňují `X-Forwarded-*` přístup k informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/), [is_https()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) kontroluje `X_FORWARDED_PROTO` hodnotu ve výchozím nastavení.
+Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve výchozím nastavení kontroluje hodnotu `X_FORWARDED_PROTO` .
 
-## <a name="customize-phpini-settings"></a>Přizpůsobení nastavení php.ini
+## <a name="customize-phpini-settings"></a>Přizpůsobení nastavení php. ini
 
-Pokud potřebujete provést změny v instalaci PHP, můžete změnit některou ze [směrnic php.ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
+Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [direktivy php. ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
 
 > [!NOTE]
-> Nejlepší způsob, jak vidět verzi PHP a aktuální *konfiguraci php.ini,* je zavolat [phpinfo()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
+> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
-### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Direktivy vlastní PHP_INI_SYSTEM
+### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Přizpůsobení – direktivy bez PHP_INI_SYSTEM
 
-Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivy php.ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *HTAccess* do kořenového adresáře aplikace.
+Chcete-li přizpůsobit direktivy PHP_INI_USER, PHP_INI_PERDIR a PHP_INI_ALL (viz [direktivy php. ini](https://www.php.net/manual/ini.list.php)), přidejte soubor *. htaccess* do kořenového adresáře aplikace.
 
-Do souboru *.htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
+V souboru *. htaccess* přidejte direktivy pomocí `php_value <directive-name> <value>` syntaxe. Příklad:
 
 ```
 php_value upload_max_filesize 1000M
@@ -128,28 +128,28 @@ php_value display_errors On
 php_value upload_max_filesize 10M
 ```
 
-Znovu nasaďte aplikaci se změnami a restartujte ji. Pokud ji nasadíte s Kudu (například pomocí [Gitu),](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)automaticky se po nasazení restartuje.
+Znovu nasaďte aplikaci se změnami a restartujte ji. Pokud ho nasadíte pomocí Kudu (například pomocí [Gitu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), po nasazení se automaticky restartuje.
 
-Jako alternativu k použití *.htaccess*můžete použít [ini_set()](https://www.php.net/manual/function.ini-set.php) ve vaší aplikaci k přizpůsobení těchto direktiv, které nejsou PHP_INI_SYSTEM.
+Jako alternativu k používání *. htaccess*můžete v aplikaci použít [ini_set ()](https://www.php.net/manual/function.ini-set.php) k přizpůsobení těchto nePHP_INI_SYSTEMch direktiv.
 
 ### <a name="customize-php_ini_system-directives"></a><a name="customize-php_ini_system-directives"></a>Přizpůsobení direktiv PHP_INI_SYSTEM
 
-Chcete-li přizpůsobit PHP_INI_SYSTEM direktivy (viz [direktivy php.ini](https://www.php.net/manual/ini.list.php)), nelze použít přístup *.htaccess.* Služba App Service poskytuje `PHP_INI_SCAN_DIR` samostatný mechanismus pomocí nastavení aplikace.
+Pokud chcete přizpůsobit direktivy PHP_INI_SYSTEM (viz [direktivy php. ini](https://www.php.net/manual/ini.list.php)), nemůžete použít přístup *. htaccess* . App Service poskytuje samostatný mechanismus pomocí nastavení `PHP_INI_SCAN_DIR` aplikace.
 
-Nejprve spusťte následující příkaz v prostředí Cloud `PHP_INI_SCAN_DIR` [Shell](https://shell.azure.com) a přidejte nastavení aplikace s názvem :
+Nejdřív spuštěním následujícího příkazu v [Cloud Shell](https://shell.azure.com) přidejte nastavení aplikace s názvem `PHP_INI_SCAN_DIR`:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
 ```
 
-`/usr/local/etc/php/conf.d`je výchozí adresář, kde *php.ini* existuje. `/home/site/ini`je vlastní adresář, do kterého přidáte vlastní soubor *INI.* Hodnoty oddělíte `:`pomocí .
+`/usr/local/etc/php/conf.d`je výchozí adresář, ve kterém existuje *php. ini* . `/home/site/ini`je vlastní adresář, do kterého přidáte vlastní soubor *. ini* . Hodnoty oddělíte hodnotou `:`.
 
-Přejděte na webovou relaci SSH`https://<app-name>.scm.azurewebsites.net/webssh/host`s linuxovým kontejnerem ( ).
+Přejděte k webové relaci SSH pomocí kontejneru Linux (`https://<app-name>.scm.azurewebsites.net/webssh/host`).
 
-Vytvořte adresář `/home/site` `ini`s názvem , pak vytvořte `/home/site/ini` soubor INI v *adresáři* (například *settings.ini)* se směrnicemi, které chcete přizpůsobit. Použijte stejnou syntaxi, kterou byste použili v souboru *php.ini.* 
+Vytvořte `/home/site` adresář s názvem `ini`a pak vytvořte soubor *. ini* v `/home/site/ini` adresáři (například *Settings. ini)* se směrnicemi, které chcete přizpůsobit. Použijte stejnou syntaxi, kterou použijete v souboru *php. ini* . 
 
 > [!TIP]
-> Ve vestavěných kontejnerech Linuxu ve službě App Service */home* se používá jako trvalé sdílené úložiště. 
+> V integrovaných kontejnerech pro Linux v App Service se jako trvalé sdílené úložiště používá */Home* . 
 >
 
 Chcete-li například změnit hodnotu [expose_php](https://php.net/manual/ini.core.php#ini.expose-php) spusťte následující příkazy:
@@ -160,56 +160,56 @@ mkdir ini
 echo "expose_php = Off" >> ini/setting.ini
 ```
 
-Změny se projeví tak, že aplikaci uvátáte.
+Aby se změny projevily, restartujte aplikaci.
 
-## <a name="enable-php-extensions"></a>Povolení rozšíření PHP
+## <a name="enable-php-extensions"></a>Povolit rozšíření PHP
 
-Vestavěné instalace PHP obsahují nejčastěji používaná rozšíření. Můžete povolit další rozšíření stejným způsobem, jakým [můžete přizpůsobit php.ini směrnic](#customize-php_ini_system-directives).
+Vestavěné instalace PHP obsahují nejběžněji používaná rozšíření. Můžete povolit další rozšíření stejným způsobem, jakým [přizpůsobíte direktivy php. ini](#customize-php_ini_system-directives).
 
 > [!NOTE]
-> Nejlepší způsob, jak vidět verzi PHP a aktuální *konfiguraci php.ini,* je zavolat [phpinfo()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
+> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
-Chcete-li povolit další rozšíření, postupujte takto:
+Pokud chcete povolit další rozšíření, postupujte podle těchto kroků:
 
-Přidejte `bin` adresář do kořenového adresáře `.so` aplikace a vložte do něj soubory rozšíření (například *mongodb.so*). Ujistěte se, že rozšíření jsou kompatibilní s verzí PHP v Azure a jsou kompatibilní s VC9 a nepro přístup pro přístup z více vláken (nts).
+Přidejte `bin` adresář do kořenového adresáře aplikace a umístěte do něj soubory `.so` rozšíření (například *MongoDB.so*). Ujistěte se, že jsou rozšíření kompatibilní s verzí PHP v Azure a jsou kompatibilní s VC9 a bez NTS (non-Thread-Safe).
 
 Nasaďte změny.
 
-Postupujte podle pokynů v [části Přizpůsobit PHP_INI_SYSTEM direktivy](#customize-php_ini_system-directives), přidejte rozšíření do vlastního souboru *INI* pomocí direktiv [rozšíření](https://www.php.net/manual/ini.core.php#ini.extension) nebo [zend_extension.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
+Postupujte podle kroků v části [přizpůsobení direktiv PHP_INI_SYSTEM](#customize-php_ini_system-directives)a přidejte rozšíření do vlastního souboru *. ini* s direktivami [Extension](https://www.php.net/manual/ini.core.php#ini.extension) nebo [zend_extension](https://www.php.net/manual/ini.core.php#ini.zend-extension) .
 
 ```ini
 extension=/home/site/wwwroot/bin/mongodb.so
 zend_extension=/home/site/wwwroot/bin/xdebug.so
 ```
 
-Změny se projeví tak, že aplikaci uvátáte.
+Aby se změny projevily, restartujte aplikaci.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>Otevření relace SSH v prohlížeči
+## <a name="open-ssh-session-in-browser"></a>Otevřít relaci SSH v prohlížeči
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 
-Když se pracovní aplikace PHP ve službě App Service chová jinak nebo má chyby, zkuste toto:
+Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 
-- [Přístup k datovému proudu protokolu](#access-diagnostic-logs).
-- Otestujte aplikaci místně v produkčním režimu. Služba App Service spouští aplikace Node.js v produkčním režimu, takže se musíte ujistit, že váš projekt funguje podle očekávání v produkčním režimu místně. Příklad:
-    - V závislosti na souboru *composer.json*mohou být`require` pro `require-dev`produkční režim (vs.) nainstalovány různé balíčky.
-    - Některé webové architektury mohou nasadit statické soubory odlišně v produkčním režimu.
-    - Některé webové architektury mohou při spuštění v produkčním režimu používat vlastní spouštěcí skripty.
-- Spusťte aplikaci ve službě App Service v režimu ladění. Například v [Laravel](https://meanjs.org/), můžete nakonfigurovat aplikaci pro výstup ladicí zprávy v produkčním prostředí [nastavením `APP_DEBUG` nastavení aplikace na `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
+- [Přístup ke streamu protokolů](#access-diagnostic-logs).
+- Otestujte aplikaci místně v provozním režimu. App Service spouští aplikace v Node. js v produkčním režimu, takže je nutné zajistit, aby váš projekt fungoval v provozním režimu místně. Příklad:
+    - V závislosti na vašem *skladatele. JSON*se můžou nainstalovat různé balíčky pro produkční režim (`require` vs. `require-dev`).
+    - Některé webové architektury můžou nasazovat statické soubory odlišně v produkčním režimu.
+    - Při spuštění v produkčním režimu mohou některé webové architektury používat vlastní spouštěcí skripty.
+- Spusťte aplikaci v App Service v režimu ladění. Například v [Laravel](https://meanjs.org/)můžete nakonfigurovat aplikaci tak, aby výstupní zprávy ladění v produkčním prostředí nakonfigurovali nastavením [ `APP_DEBUG` aplikace na `true` ](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings).
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Výuka: PHP aplikace s MySQL](tutorial-php-mysql-app.md)
+> [Kurz: aplikace PHP s MySQL](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Nejčastější dotazy k aplikační službě Linux](app-service-linux-faq.md)
+> [Nejčastější dotazy k App Service Linux](app-service-linux-faq.md)

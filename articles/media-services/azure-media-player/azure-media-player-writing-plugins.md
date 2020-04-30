@@ -1,25 +1,25 @@
 ---
-title: Psaní pluginů pro Azure Media Player
-description: Naučte se psát plugin pomocí Azure Media Player u JavaScriptu
+title: Psaní modulů plug-in pro Azure Media Player
+description: Naučte se psát modul plug-in s Azure Media Player pomocí JavaScriptu
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727109"
 ---
-# <a name="writing-plugins-for-azure-media-player"></a>Psaní pluginů pro Azure Media Player #
+# <a name="writing-plugins-for-azure-media-player"></a>Psaní modulů plug-in pro Azure Media Player #
 
-Plugin je JavaScript psaný rozšířit nebo zlepšit přehrávač. Můžete psát pluginy, které mění vzhled programu Azure Media Player, jeho funkčnost nebo dokonce mají rozhraní s jinými službami. Můžete to udělat ve dvou jednoduchých krocích:
+Modul plug-in je zapsaný do JavaScriptu pro rozšíření nebo vylepšení přehrávače. Můžete psát moduly plug-in, které mění vzhled Azure Media Player, jeho funkce nebo dokonce mají rozhraní pro jiné služby. Můžete to udělat ve dvou snadných krocích:
 
 ## <a name="step-1"></a>Krok 1 ##
 
-Napište svůj JavaScript ve funkci, jako je takto:
+Napište svůj JavaScript do funkce, například takto:
 
 ```javascript
 
@@ -33,7 +33,7 @@ Napište svůj JavaScript ve funkci, jako je takto:
     }).call(this);
 ```
 
-Kód můžete napsat přímo na stránku HTML ve `<script>` značkách nebo v externím souboru JavaScriptu. Pokud tak učiníte, nezapomeňte za skript AMP `<head>` zahrnout soubor JavaScript u *stránky* HTML.
+Svůj kód můžete napsat přímo na stránce HTML v rámci `<script>` značek nebo v externím souboru JavaScriptu. Pokud to uděláte, nezapomeňte zahrnout soubor JavaScriptu do `<head>` stránky HTML *za* skriptem amp.
 
 Příklad:
 
@@ -47,7 +47,7 @@ Příklad:
 ```
 
 ## <a name="step-2"></a>Krok 2 ##
-Inicializovat plugin s JavaScriptem jedním ze dvou způsobů:
+Inicializujte modul plug-in pomocí JavaScriptu jedním ze dvou způsobů:
 
 Metoda 1:
 
@@ -74,21 +74,21 @@ Metoda 2:
     video.yourPluginName({[your plugins option]: [example option]});
 ```
 
-Plugin možnosti nejsou vyžadovány, včetně nich jen umožňuje vývojářům pomocí pluginu nakonfigurovat své chování, aniž by museli měnit zdrojový kód.
+Možnosti modulu plug-in nejsou vyžadovány, včetně těch, které umožňují vývojářům použít modul plug-in ke konfiguraci chování bez nutnosti změny zdrojového kódu.
 
-Pro inspiraci a další příklady na vytvoření pluginu se podívejte na naši [galerii](azure-media-player-plugin-gallery.md)
+Inspiraci a další příklady vytváření modulů plug-in najdete v naší [galerii](azure-media-player-plugin-gallery.md) .
 
 >[!NOTE]
-> Plugin kód dynamicky mění položky v DOM během životnosti diváka hráče zkušenosti, nikdy neprovede trvalé změny ve zdrojovém kódu hráče. To je místo, kde pochopení vašeho prohlížeče vývojářské nástroje přijde vhod. Chcete-li například změnit vzhled prvku v přehrávači, můžete najít jeho element HTML podle názvu třídy a pak odtud přidat nebo změnit atributy. Zde je skvělý zdroj pro [změnu atributů HTML.](http://www.w3schools.com/js/js_htmldom_html.asp)
+> Kód modulu plug-in dynamicky mění položky v modelu DOM během životnosti přehrávače prohlížeče, nikdy neprovádí trvalé změny ve zdrojovém kódu přehrávače. Tady jsou informace o vývojářských nástrojích prohlížeče, které jsou užitečné. Například pokud chcete změnit vzhled prvku v přehrávači, můžete najít jeho element HTML jeho názvem třídy a potom přidat nebo změnit atributy. Tady je skvělý prostředek pro [změnu atributů HTML.](http://www.w3schools.com/js/js_htmldom_html.asp)
 
-### <a name="integrated-plugins"></a>Integrované pluginy ###
+### <a name="integrated-plugins"></a>Integrované moduly plug-in ###
 
- V současné době existují dva pluginy pečené do AMP: [time-tip](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) a [klávesové zkratky](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html). Tyto pluginy byly původně vyvinuty tak, aby byly modulární pluginy pro hráče, ale jsou nyní zahrnuty do zdrojového kódu přehrávače.
+ V současné době jsou dva moduly plug-in vloženými do AMP: [časový popis](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/timetip/example.html) a [klávesové zkratky](http://sr-test.azurewebsites.net/Tests/Plugin%20Gallery/plugins/hotkeys/example.html). Tyto moduly plug-in se původně vyvinuly jako modulární moduly plug-in pro přehrávač, ale teď jsou součástí zdrojového kódu přehrávače.
 
-### <a name="plugin-gallery"></a>Galerie pluginů ###
+### <a name="plugin-gallery"></a>Galerie modulů plug-in ###
 
-[Plugin galerie](http//:aka.ms/ampplugins) má několik pluginů, které komunita již přispěla pro funkce, jako jsou časové osy značky, zoom, analytika a další. Stránka poskytuje přístupy k pluginům a pokyny, jak ji nastavit, stejně jako demo, které zobrazuje plugin v akci. Pokud vytvoříte skvělý plugin, který si myslíte, že by měly být zahrnuty v naší galerii, neváhejte a předložit, takže můžeme podívat.
+[Galerie modulů plug-in](http//:aka.ms/ampplugins) má několik modulů plug-in, které už komunita přispěla k funkcím, jako jsou značky časových řádků, přiblížení, analýzy a další. Stránka poskytuje přístup k modulům plug-in a pokyny, jak je nastavit, a ukázku, která zobrazuje modul plug-in v akci. Pokud vytvoříte modul plug-in, který se domníváte, že byste si myslíte, že byste se měli v naší galerii začlenit, můžete ho kdykoli odeslat.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

@@ -12,10 +12,10 @@ ms.custom:
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81730855"
 ---
 # <a name="what-is-azure-iot-hub"></a>Co je Azure IoT Hub?
@@ -28,7 +28,7 @@ Možnosti služby IoT Hub vám pomůžou vytvářet škálovatelná řešení Io
 
 ## <a name="scale-your-solution"></a>Škálování vlastního řešení
 
-IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Další informace o škálování vašeho ioT hubu najdete v [tématu Škálování rozbočovače ioT](iot-hub-scaling.md?branch=release-iotbasic). Další informace o více úrovních služeb nabízených službou IoT Hub a o tom, jak nejlépe vyhovovat vašim potřebám škálovatelnosti, najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
+IoT Hub zajišťuje podporu vašich úloh IoT díky škálování na miliony současně připojených zařízení a miliony událostí za sekundu. Další informace o škálování IoT Hub najdete v tématu [IoT Hub škálování](iot-hub-scaling.md?branch=release-iotbasic). Pokud chcete získat další informace o různých úrovních služby, které nabízí IoT Hub a co nejlépe vyhovuje vašim potřebám škálovatelnosti, podívejte se na [stránku s cenami](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Zabezpečení komunikace
 
@@ -52,7 +52,7 @@ IoT Hub poskytuje zabezpečený komunikační kanál, přes který vaše zaříz
 
 Integrovaná funkce směrování zpráv poskytuje flexibilitu umožňující nastavení automatického odesílání zpráv založeného na pravidlech:
 
-* Pomocí směrování zpráv můžete [řídit,](iot-hub-devguide-messages-d2c.md) kam vaše centrum odesílá telemetrii zařízení.
+* [Směrování zpráv](iot-hub-devguide-messages-d2c.md) slouží k určení, kam váš rozbočovač odesílá telemetrii zařízení.
 
 * Za směrování zpráv do více koncových bodů se neúčtují žádné další poplatky.
 
@@ -112,9 +112,9 @@ Pokud vaše řešení nemůže používat některý z podporovaných protokolů,
 
 ## <a name="quotas-and-limits"></a>Kvóty a omezení
 
-Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit na základě předplatného je 50 IoT hubů na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další informace naleznete v [tématu Kvóty ioT hub a omezení](iot-hub-devguide-quotas-throttling.md). Další podrobnosti o limitech kvót naleznete v jednom z následujících článků:
+Pro každé předplatné Azure platí výchozí omezení kvót, která brání zneužití služeb, a tato omezení můžou ovlivnit dosah vašeho řešení IoT. Aktuální limit pro každé předplatné je 50 centra IoT na předplatné. O navýšení kvóty můžete požádat kontaktováním podpory. Další informace najdete v tématu [IoT Hub kvóty a omezování](iot-hub-devguide-quotas-throttling.md). Další podrobnosti o limitech kvót najdete v jednom z následujících článků:
 
-* [Limity předplacených služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
+* [Omezení služby předplatného Azure](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Omezování služby IoT Hub a vy](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -124,6 +124,6 @@ Pokud chcete vyzkoušet komplexní řešení IoT, projděte si rychlé starty pr
 
 * [Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT](quickstart-send-telemetry-node.md)
 
-Další informace o způsobech vytváření a nasazování řešení IoT pomocí Azure IoT najdete na adrese:
+Další informace o tom, jak můžete vytvářet a nasazovat řešení IoT pomocí Azure IoT, najdete tady:
 
-* [Základy: Technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
+* [Základy: technologie a řešení Azure IoT](../iot-fundamentals/iot-services-and-technologies.md).
