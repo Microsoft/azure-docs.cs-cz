@@ -1,6 +1,6 @@
 ---
-title: Úvodní příručka – konfigurace brány firewall serveru Služby Azure Analysis Services | Dokumenty společnosti Microsoft
-description: Tento rychlý start vám pomůže nakonfigurovat bránu firewall pro server Azure Analysis Services pomocí portálu Azure.
+title: Rychlý Start – konfigurace brány firewall serveru Azure Analysis Services | Microsoft Docs
+description: Tento rychlý Start vám pomůže nakonfigurovat bránu firewall pro Azure Analysis Services Server pomocí Azure Portal.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 68994f9b79af55b32527eed52bbc4e5866c89538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79205161"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Rychlý start: Konfigurace brány firewall serveru – portál
@@ -22,19 +22,19 @@ V tomto rychlém startu se dozvíte, jak nakonfigurovat firewall pro server slu�
 
 - Server služby Analysis Services v předplatném. Další informace najdete v článku [Rychlý start: Vytvoření serveru – portál](analysis-services-create-server.md) nebo v článku [Rychlý start: Vytvoření serveru – PowerShell](analysis-services-create-powershell.md).
 - Jeden nebo více rozsahů IP adres pro klientské počítače (pokud jsou potřeba).
-- Některé scénáře, ve kterých se Power BI Premium připojuje ke službě Azure Analysis Services, včetně importu dat (aktualizace) a stránkovaných sestav, nejsou momentálně podporované, i když je povolený povolený přístup z Power BI. Běžnější scénář používání live connectu z Power BI Premium je podporovaný. Všechny scénáře Power BI Pro jsou podporované.
+- Některé scénáře, kdy se Power BI Premium připojuje k Azure Analysis Services, včetně importu dat (aktualizace) a stránkovaných sestav, se v tuto chvíli nepodporují, i když je povolená možnost povolit přístup z Power BI. Podporuje se i častější scénář použití živého připojení z Power BI Premium. Jsou podporovány všechny scénáře Power BI Pro.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal 
 
-[Přihlášení k portálu](https://portal.azure.com)
+[Přihlásit se k portálu](https://portal.azure.com)
 
 ## <a name="configure-a-firewall"></a>Konfigurace brány firewall
 
 1. Když kliknete na server, otevře se stránka Přehled. 
-2. V **nastavení** > **brány firewall** > **Povolit bránu firewall**klepněte na tlačítko **Zapnuto**.
+2. V **Nastavení** > **Brána firewall** > **Povolit bránu firewall**klikněte **na zapnuto**.
 3. Pokud chcete povolit přístup DirectQuery ze služby Power BI, u položky **Povolit přístup ze služby Power BI** klikněte na **Zapnuto**.  
-4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. Název pravidla brány firewall by měl být omezen na 128 znaků a může obsahovat pouze velká písmena, malá písmena, čísla, podtržítko a pomlčku. Mezery a další speciální znaky nejsou povoleny.
+4. (Volitelné) Zadejte jeden nebo více rozsahů IP adres. V každém rozsahu zadejte název a počáteční a koncovou IP adresu. Název pravidla brány firewall by měl být omezený na 128 znaků a může obsahovat jenom velká písmena, malá písmena, číslice, podtržítka a spojovníky. Prázdné znaky a jiné speciální znaky nejsou povoleny.
 5. Klikněte na **Uložit**.
 
      ![Nastavení brány firewall](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
