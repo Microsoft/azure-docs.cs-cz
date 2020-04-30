@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory
-description: Informace o tom, jak používat Azure Active Directory pro ověřování pomocí databáze SQL, spravované instance a synapse SQL
+description: Přečtěte si, jak používat Azure Active Directory k ověřování pomocí SQL Database, spravované instance a synapse SQL.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,89 +9,89 @@ ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
 ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82086092"
 ---
-# <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Použití ověřování azure active directory pro ověřování pomocí Synapse SQL
+# <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Použití ověřování Azure Active Directory pro ověřování pomocí synapse SQL
 
-Azure Active Directory ověřování je mechanismus připojení k [Azure Synapse Analytics](../overview-faq.md) pomocí identit ve službě Azure Active Directory (Azure AD).
+Ověřování Azure Active Directory je mechanismus připojení ke [službě Azure synapse Analytics](../overview-faq.md) pomocí identit v Azure Active Directory (Azure AD).
 
-Díky ověřování Azure AD můžete centrálně spravovat uživatelské identity, které mají přístup k Azure Synapse, a zjednodušit tak správu oprávnění. Mezi jeho výhody patří následující:
+Pomocí ověřování Azure AD můžete centrálně spravovat identity uživatelů, kteří mají přístup k Azure synapse, a zjednodušit tak správu oprávnění. Mezi jeho výhody patří následující:
 
-- Poskytuje alternativu k běžnému ověřování uživatelského jména a hesla.
+- Nabízí alternativu k pravidelnému ověřování uživatelského jména a hesla.
 - Pomáhá zastavit šíření identit uživatelů napříč databázovými servery.
-- Umožňuje střídání hesel na jednom místě.
-- Zákazníci mohou spravovat oprávnění pomocí externích skupin (Azure AD).
-- Umožňuje integrované ověřování systému Windows a další formy ověřování podporované službou Azure Active Directory.
-- Azure AD podporuje ověřování na základě tokenů pro aplikace, které se připojují k Azure Synapse.
-- Azure AD ověřování podporuje ADFS (federace domény) nebo nativní ověřování uživatelů/hesel pro místní Azure Active Directory bez synchronizace domény.
-- Azure AD podporuje připojení z aplikace SQL Server Management Studio využívající univerzální ověřování Active Directory, což zahrnuje službu Multi-Factor Authentication (MFA).  MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace naleznete v [tématu Podpora SSMS pro Azure AD MFA s Synapse SQL](mfa-authentication.md).
+- Umožňuje otočení hesla na jednom místě.
+- Zákazníci můžou spravovat oprávnění pomocí externích skupin (Azure AD).
+- Může eliminovat ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování, které Azure Active Directory podporuje.
+- Azure AD podporuje ověřování založené na tokenech pro aplikace, které se připojují ke službě Azure synapse.
+- Ověřování Azure AD podporuje službu ADFS (federaci domén) nebo nativní ověřování uživatelů a hesel pro místní Azure Active Directory bez synchronizace domény.
+- Azure AD podporuje připojení z aplikace SQL Server Management Studio využívající univerzální ověřování Active Directory, což zahrnuje službu Multi-Factor Authentication (MFA).  MFA zahrnuje silné ověřování s využitím celé řady možností ověření – telefonických hovorů, textových zpráv, čipových karet s kódem PIN nebo oznámení mobilní aplikace. Další informace najdete v tématu [Podpora SSMS pro Azure AD MFA s synapse SQL](mfa-authentication.md).
 - Azure AD podporuje podobná připojení z nástrojů SQL Server Data Tools (SSDT) využívající interaktivní ověřování Active Directory. Další informace najdete v tématu [Podpora Azure Active Directory v nástrojích SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
-Kroky konfigurace zahrnují následující postupy konfigurace a použití ověřování služby Azure Active Directory.
+Kroky konfigurace obsahují následující postupy pro konfiguraci a použití ověřování Azure Active Directory.
 
-1. Vytvořte a naplňte Azure AD.
-2. Vytvoření identity služby Azure Active Directory
-3. Přiřazení role vytvořené identitě služby Azure Active Directory v pracovním prostoru Synapse (preview)
-4. Připojte se k Synapse Studio pomocí identit Azure AD.
+1. Vytvoření a naplnění služby Azure AD.
+2. Vytvoření Azure Active Directory identity
+3. Přiřazení role k vytvořeným Azure Active Directory identitě v pracovním prostoru synapse (Preview)
+4. Připojte se k synapse studiu pomocí identit Azure AD.
 
-## <a name="aad-pass-through-in-azure-synapse-analytics"></a>Předávací řešení AAD v Azure Synapse Analytics
+## <a name="aad-pass-through-in-azure-synapse-analytics"></a>Předávací úložiště AAD ve službě Azure synapse Analytics
 
-Azure Synapse Analytics umožňuje přístup k datům v datovém jezeře pomocí identity Azure Active Directory.
+Azure synapse Analytics umožňuje přístup k datům v Data Lake pomocí vaší Azure Active Directory identity.
 
-Definování přístupových práv k souborům a datům, která jsou respektována v různých datových modulech, umožňuje zjednodušit řešení datových jezer tím, že máte jedno místo, kde jsou definována oprávnění, místo toho, abyste je museli definovat na více místech.
+Definování přístupových práv k souborům a datům, která jsou v různých datových modulech, vám umožní zjednodušit vaše řešení Data Lake tím, že bude mít jedno místo, kde jsou definovaná oprávnění, místo aby je bylo nutné definovat na více místech.
 
 ## <a name="trust-architecture"></a>Architektura důvěryhodnosti
 
-Následující diagram vysoké úrovně shrnuje architekturu řešení pomocí ověřování Azure AD s Synapse SQL. Pro podporu nativní ho uživatele Azure AD, jenom cloudové části a Azure AD/Synapse Synapse SQL se považuje za. Pro podporu federovaného ověřování (nebo uživatele/hesla pro pověření systému Windows) je vyžadována komunikace s blokem Služby ADFS. Šipky ukazují komunikační cesty.
+Následující diagram vysoké úrovně shrnuje architekturu řešení pro použití ověřování Azure AD s synapse SQL. Aby bylo možné podporovat heslo nativního uživatele služby Azure AD, je považována pouze část cloudu a Azure AD/synapse synapse SQL. Aby bylo možné podporovat federované ověřování (nebo uživatele/heslo pro přihlašovací údaje systému Windows), je vyžadována komunikace s blokem ADFS. Šipky označují cesty komunikace.
 
-![aad auth diagram](./media/aad-authentication/1-active-directory-authentication-diagram.png)
+![Diagram ověřování AAD](./media/aad-authentication/1-active-directory-authentication-diagram.png)
 
-Následující diagram označuje vztahy federace, důvěryhodnosti a hostování, které umožňují klientovi připojit se k databázi odesláním tokenu. Token je ověřen službou Azure AD a databáze mu důvěřuje. 
+Následující diagram označuje vztahy federace, vztahu důvěryhodnosti a hostování, které umožňují klientovi připojit se k databázi odesláním tokenu. Token se ověřuje pomocí Azure AD a je důvěryhodný pro databázi. 
 
-Zákazník 1 může představovat službu Azure Active Directory s nativními uživateli nebo Službu Azure AD s federovanými uživateli. Zákazník 2 představuje možné řešení včetně importovaných uživatelů; V tomto příkladu pochází z federované služby Azure Active Directory s ADFS synchronizovány s Azure Active Directory. 
+Zákazník 1 může představovat Azure Active Directory s nativními uživateli nebo Azure AD s federovaným uživateli. Zákazník 2 představuje možné řešení, včetně importovaných uživatelů; v tomto příkladu přichází z federované Azure Active Directory se službou AD FS synchronizovanou pomocí Azure Active Directory. 
 
-Je důležité si uvědomit, že přístup k databázi pomocí ověřování Azure AD vyžaduje, aby hostování předplatné je přidružené k Azure AD. Stejné předplatné musí být použito k vytvoření SQL Serveru hostujícího azure SQL database nebo fond SQL.
+Je důležité pochopit, že přístup k databázi pomocí ověřování Azure AD vyžaduje, aby se k Azure AD přidružil hostitelské předplatné. K vytvoření SQL Server hostování Azure SQL Database nebo fondu SQL se musí použít stejné předplatné.
 
 ![vztah předplatného](./media/aad-authentication/2-subscription-relationship.png)
 
 ## <a name="administrator-structure"></a>Struktura správce
 
-Při použití ověřování Azure AD existují dva účty správce pro Synapse SQL; původního správce serveru SQL Server a správce služby Azure AD. Pouze správce na základě účtu Azure AD můžete vytvořit první Azure AD obsahoval databázi uživatele v databázi uživatele. 
+Při použití ověřování Azure AD jsou k dispozici dva účty správců pro synapse SQL. původní správce SQL Server a správce Azure AD. Pouze správce, který je založen na účtu Azure AD, může vytvořit prvního uživatele databáze s omezením Azure AD v uživatelské databázi. 
 
-Přihlášení správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Pokud je správce účet skupiny, může jej použít libovolný člen skupiny, což umožňuje více správců ms administrátorů Azure AD pro instanci Synapse SQL. 
+Přihlášení správce Azure AD může být uživatel Azure AD nebo skupina Azure AD. Když je správcem účet skupiny, může ho použít libovolný člen skupiny a povolit pro instanci SQL synapse více správců služby Azure AD. 
 
-Použití účtu skupiny jako správce zvyšuje možnosti správy tím, že umožňuje centrálně přidávat a odebírat členy skupiny ve službě Azure AD beze změny uživatelů nebo oprávnění v pracovním prostoru Synapse Analytics. Kdykoli lze nakonfigurovat pouze jednoho správce Azure AD (uživatele nebo skupinu).
+Použití účtu skupiny jako správce vylepšuje spravovatelnost tím, že umožňuje centrálně přidávat a odebírat členy skupin ve službě Azure AD beze změny uživatelů nebo oprávnění v pracovním prostoru synapse Analytics. Kdykoli se dá nakonfigurovat jenom jeden správce Azure AD (uživatel nebo skupina).
 
-![struktura správce](./media/aad-authentication/3-admin-structure.png)
+![struktura správy](./media/aad-authentication/3-admin-structure.png)
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` oprávnění v databázi. Oprávnění `ALTER ANY USER` lze udělit libovolnému uživateli databáze. Oprávnění `ALTER ANY USER` je také v držení účtů správce serveru `CONTROL ON DATABASE` a `ALTER ON DATABASE` uživatelů databáze s oprávněním `db_owner` nebo pro tuto databázi a členy role databáze.
+Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` v databázi oprávnění. `ALTER ANY USER` Oprávnění lze udělit libovolnému uživateli databáze. `ALTER ANY USER` Oprávnění je také uchováváno pomocí účtů správců serveru a uživatelů databáze s oprávněním `CONTROL ON DATABASE` nebo `ALTER ON DATABASE` pro tuto databázi a členy `db_owner` databázové role.
 
-Chcete-li vytvořit obsaženého uživatele databáze v synapse SQL, musíte se připojit k databázi nebo instanci pomocí identity Azure AD. Chcete-li vytvořit první obsažené uživatele databáze, musíte se připojit k databázi pomocí správce Azure AD (kdo je vlastníkem databáze). 
+Pokud chcete vytvořit uživatele databáze s omezením v synapse SQL, musíte se k databázi nebo instanci připojit pomocí identity Azure AD. Chcete-li vytvořit prvního uživatele databáze s omezením, je nutné se připojit k databázi pomocí správce Azure AD (který je vlastníkem databáze). 
 
-Jakékoli ověřování Azure AD je možné jenom v případě, že správce Azure AD byl vytvořen pro Synapse SQL. Pokud byl správce služby Azure Active Directory odebrán ze serveru, stávající uživatelé služby Azure Active Directory, kteří byli vytvořeni dříve v synapse SQL, se již nemohou připojit k databázi pomocí svých přihlašovacích údajů služby Azure Active Directory.
+Jakékoli ověřování Azure AD je možné pouze v případě, že byl vytvořen správce Azure AD pro synapse SQL. Pokud byl správce Azure Active Directory odebraný ze serveru, stávající uživatelé Azure Active Directory dříve vytvořeni dříve v synapse SQL se už nebudou moct připojit k databázi pomocí svých přihlašovacích údajů Azure Active Directory.
  
-## <a name="azure-ad-features-and-limitations"></a>Funkce a omezení Azure AD
+## <a name="azure-ad-features-and-limitations"></a>Funkce a omezení služby Azure AD
 
-- Následující členy Azure AD lze zřídit v Synapse SQL:
+- V synapse SQL se dají zřídit následující členové Azure AD:
 
-  - Nativní členové: Člen vytvořený ve službě Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete [v tématu Přidání vlastního názvu domény do Azure AD](../../active-directory/fundamentals/add-custom-domain.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
-  - Členové federované domény: Člen vytvořený ve službě Azure AD s federovovovnou doménou. Další informace naleznete v tématu [Microsoft Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
-  - Importovaní členové z jiných členů Azure AD, kteří jsou nativní nebo federované členy domény.
-  - Skupiny služby Active Directory vytvořené jako skupiny zabezpečení.
+  - Nativní členové: člen vytvořený v Azure AD ve spravované doméně nebo v doméně zákazníka. Další informace najdete v tématu [Přidání vlastního názvu domény do Azure AD](../../active-directory/fundamentals/add-custom-domain.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+  - Členové federované domény: člen vytvořený v Azure AD se federované doménou. Další informace najdete v tématu [Microsoft Azure nyní podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Importované členy z jiných členů služby Azure AD, kteří jsou nativní nebo federované domény.
+  - Skupiny služby Active Directory se vytvořily jako skupiny zabezpečení.
 
-- Uživatelé Azure AD, kteří jsou `db_owner` součástí skupiny, která má roli serveru nelze použít **[create database scoped credential](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** syntaxe proti Synapse SQL. Zobrazí se následující chyba:
+- Uživatelé Azure AD, kteří jsou součástí skupiny, která má `db_owner` roli serveru, nemůžou používat SYNTAXI **[Create Database scoped Credential](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** v synapse SQL. Zobrazí se následující chyba:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Udělte `db_owner` roli přímo jednotlivým uživatelům služby Azure AD ke zmírnění problému **s pověřením OBORU VYTVOŘENÍ DATABÁZE.**
+    Udělte `db_owner` roli přímo individuálnímu uživateli služby Azure AD, aby se zmírnil problém s **rozsahem pro vytvoření databáze s oborem přihlašovacích údajů** .
 
-- Tyto systémové funkce vrátí hodnoty NULL při spuštění v rámci objektů zabezpečení Azure AD:
+- Tyto systémové funkce vrací hodnoty NULL při spuštění v rámci objektů zabezpečení Azure AD:
 
   - `SUSER_ID()`
   - `SUSER_NAME(<admin ID>)`
@@ -103,32 +103,32 @@ Jakékoli ověřování Azure AD je možné jenom v případě, že správce Azu
 
 Ověřování Azure Active Directory podporuje následující metody připojení k databázi pomocí identit Azure AD:
 
-- Heslo služby Azure Active Directory
-- Integrovaná služba Azure Active Directory
-- Univerzální služba Azure Active Directory s vícefaktorovou pomocí
-- Použití ověřování tokenu aplikace
+- Azure Active Directory heslo
+- Azure Active Directory integrovaný
+- Azure Active Directory univerzální s MFA
+- Použití ověřování pomocí tokenu aplikace
 
-Následující metody ověřování jsou podporované pro objekty zabezpečení serveru Azure AD (přihlášení)**(public Preview**):
+Následující metody ověřování jsou podporovány pro objekty zabezpečení serveru Azure AD (přihlášení) (**Public Preview**):
 
-- Heslo služby Azure Active Directory
-- Integrovaná služba Azure Active Directory
-- Univerzální služba Azure Active Directory s vícefaktorovou pomocí
+- Azure Active Directory heslo
+- Azure Active Directory integrovaný
+- Azure Active Directory univerzální s MFA
 
 ### <a name="additional-considerations"></a>Další aspekty
 
-- Chcete-li zvýšit možnosti správy, doporučujeme zřídit vyhrazenou skupinu Azure AD jako správce.
-- Pro fond Synapse SQL lze kdykoli nakonfigurovat jenom jednoho správce služby Azure AD (uživatele nebo skupiny).
-  - Přidání objektů zabezpečení serveru Azure AD (přihlášení) pro SQL na vyžádání (preview) umožňuje možnost vytvoření více objektů serveru Azure `sysadmin` AD (přihlášení), které lze přidat do role.
-- Pouze správce Azure AD pro Synapse SQL můžete zpočátku připojit k Synapse SQL pomocí účtu Azure Active Directory. Správce služby Active Directory může nakonfigurovat následné uživatele databáze Azure AD.
+- Pro zlepšení spravovatelnosti doporučujeme zřídit vyhrazenou skupinu Azure AD jako správce.
+- Pro synapse fond SQL se dá kdykoli nakonfigurovat jenom jeden správce Azure AD (uživatel nebo skupina).
+  - Přidání objektů zabezpečení serveru Azure AD (přihlášení) pro SQL na vyžádání (Preview) umožňuje vytvořit více objektů zabezpečení serveru Azure AD (přihlášení), které je možné do `sysadmin` role přidat.
+- Pouze správce Azure AD pro synapse SQL se může zpočátku připojit k synapse SQL pomocí účtu Azure Active Directory. Správce služby Active Directory může nakonfigurovat další uživatele databáze služby Azure AD.
 - Doporučujeme nastavit časový limit připojení na 30 sekund.
-- SQL Server 2016 Management Studio a SQL Server Datové nástroje pro Visual Studio 2015 (verze 14.0.60311.1Duben 2016 nebo novější) podporují ověřování Azure Active Directory. (Azure AD ověřování je podporováno **zprostředkovatelem dat rozhraní .NET Framework pro SqlServer**; alespoň verze .NET Framework 4.6). Proto nejnovější verze těchto nástrojů a aplikace datové vrstvy (DAC a . BACPAC) můžete použít ověřování Azure AD.
-- Počínaje verzí 15.0.1 podporují [nástroj sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a [nástroj bcp](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) interaktivní ověřování služby Active Directory pomocí vícefaktorového ověřování.
-- Sql Server Datové nástroje pro Visual Studio 2015 vyžaduje alespoň z dubna 2016 verzi datových nástrojů (verze 14.0.60311.1). V současné době uživatelé Azure AD nejsou zobrazeny v Průzkumníku objektů SSDT. Jako zástupné řešení zobrazíte uživatele v [souboru sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-- [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) podporuje ověřování Azure AD. Viz také [nastavení vlastností připojení](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- SQL Server 2016 Management Studio a SQL Server Data Tools for Visual Studio 2015 (verze 14.0.60311.1 Duben 2016 nebo novější) podporují Azure Active Directory ověřování. (Ověřování Azure AD podporuje **.NET Framework Zprostředkovatel dat pro SQLServer**; minimálně verze .NET Framework 4,6). Proto nejnovější verze těchto nástrojů a aplikací na datové vrstvě (DAC a. BACPAC) může používat ověřování Azure AD.
+- Od verze 15.0.1 [Nástroj Sqlcmd Utility](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) a [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) podporuje interaktivní ověřování služby Active Directory s MFA.
+- Nástroj SQL Server Data Tools for Visual Studio 2015 vyžaduje alespoň 2016 verze nástrojů Data Tools (verze 14.0.60311.1) z dubna. V SSDT Průzkumník objektů se aktuálně nezobrazuje uživatelé Azure AD. Alternativním řešením je zobrazit uživatele v zobrazení [Sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+- [Microsoft JDBC Driver 6,0 pro SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) podporuje ověřování Azure AD. Viz také [Nastavení vlastností připojení](/sql/connect/jdbc/setting-the-connection-properties?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přehled přístupu a řízení v synapse SQL naleznete v tématu [Synapse SQL řízení přístupu](../sql/access-control.md).
+- Přehled přístupu a řízení v synapse SQL najdete v tématu [synapse SQL Access Control](../sql/access-control.md).
 - Další informace o objektech zabezpečení databáze najdete v tématu [Objekty zabezpečení](/sql/relational-databases/security/authentication-access/principals-database-engine?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 - Další informace o databázových rolích najdete v tématu věnovaném [databázovým rolím](/sql/relational-databases/security/authentication-access/database-level-roles?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 

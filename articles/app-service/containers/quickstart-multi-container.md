@@ -1,25 +1,25 @@
 ---
-title: 'Úvodní příručka: Vytvoření aplikace s více kontejnery'
-description: Nasadíte svou první aplikaci s více kontejnery ve službě Azure App Service.
-keywords: azure app service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, wordpress, azure db for mysql, production database with containers Azure App Service, web app, linux, docker, compose, multicontainer, multi-container, web app for containers, multiple containers, container, wordpress, azure db for mysql, production database with containers Azure App
+title: 'Rychlý Start: Vytvoření aplikace s více kontejnery'
+description: Začněte s aplikacemi pro více kontejnerů na Azure App Service nasazením první aplikace s více kontejnery.
+keywords: Azure App Service, Web App, Linux, Docker, sestavení, více kontejnerů, Web App for Containers, více kontejnerů, kontejnerů, WordPress, Azure DB pro MySQL, provozní databáze s kontejnery
 author: msangapu-msft
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: ab8e416e460546dcf758c83aa8b357139c6dbefb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085871"
 ---
-# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (preview) pomocí konfigurace Docker Compose
+# <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>Vytvoření aplikace s více kontejnery (Preview) pomocí konfigurace Docker Compose
 
 > [!NOTE]
-> Multi-kontejner je ve verzi preview.
+> Vícenásobný kontejner je ve verzi Preview.
 
-Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. Tento rychlý start ukazuje, jak nasadit vícekontejnerovou aplikaci (preview) do webové aplikace pro kontejnery v [cloudovém prostředí](https://docs.microsoft.com/azure/cloud-shell/overview) pomocí konfigurace Docker Compose.
+Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. V tomto rychlém startu se dozvíte, jak nasadit aplikaci s více kontejnery (Preview), která Web App for Containers v [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) pomocí konfigurace Docker Compose.
 
 Tento rychlý start absolvujete ve službě Cloud Shell, ale uvedené příkazy můžete spustit také místně v [Azure CLI](/cli/azure/install-azure-cli) (verze 2.0.32 nebo novější). 
 
@@ -55,7 +55,7 @@ cd multicontainerwordpress
 
 [!INCLUDE [resource group intro text](../../../includes/resource-group.md)]
 
-V prostředí cloudu vytvořte skupinu prostředků pomocí příkazu. [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
+V Cloud Shell vytvořte skupinu prostředků pomocí [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) příkazu. Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v umístění *USA – středojih*. Pokud chcete zobrazit všechna podporovaná umístění pro službu App Service v Linuxu na úrovni **Standard**, spusťte příkaz [`az appservice list-locations --sku S1 --linux-workers-enabled`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"
@@ -67,7 +67,7 @@ Po dokončení příkazu se ve výstupu JSON zobrazí vlastnosti skupiny prostř
 
 ## <a name="create-an-azure-app-service-plan"></a>Vytvoření plánu služby Azure App Service
 
-V prostředí Cloud vytvořte plán služby App [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) Service ve skupině prostředků pomocí příkazu.
+V Cloud Shell vytvořte pomocí [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) příkazu plán App Service ve skupině prostředků.
 
 Následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v cenové úrovni **Standard** (`--sku S1`) a v kontejneru Linuxu (`--is-linux`).
 
@@ -98,9 +98,9 @@ Po vytvoření plánu služby App Service se v rozhraní příkazového řádku 
 ## <a name="create-a-docker-compose-app"></a>Vytvoření aplikace Docker Compose
 
 > [!NOTE]
-> Docker Compose ve službě Azure App Services má momentálně limit 4 000 znaků.
+> V tuto chvíli má Docker Compose v Azure App Services aktuálně povolený limit 4 000 znaků.
 
-V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte `0-9`nahradit `-` _ \<app_name>_ jedinečným názvem aplikace (platné `a-z`znaky jsou , a ).
+V terminálu Cloud Shell pomocí příkazu [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) vytvořte vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) v plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _ \<APP_NAME>_ jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9`a `-`).
 
 ```azurecli
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --multicontainer-config-type compose --multicontainer-config-file compose-wordpress.yml
@@ -136,7 +136,7 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: Aplikace WordPress s více kontejnery](tutorial-multi-container-app.md)
+> [Kurz: aplikace pro více kontejnerů WordPress](tutorial-multi-container-app.md)
 
 > [!div class="nextstepaction"]
 > [Konfigurace vlastního kontejneru](configure-custom-container.md)

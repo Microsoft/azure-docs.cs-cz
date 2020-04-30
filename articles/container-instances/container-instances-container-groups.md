@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115648"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů ve službě Azure Container Instances
@@ -67,7 +67,7 @@ V tomto scénáři můžete pro instanci kontejneru nastavit limit prostředků 
 
 * **Maximální** prostředky ve skupině kontejnerů najdete v tématu [dostupnost prostředků][region-availability] pro Azure Container Instances v oblasti nasazení.
 
-## <a name="networking"></a>Síťové služby
+## <a name="networking"></a>Sítě
 
 Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů na této IP adrese a popisek DNS s plně kvalifikovaným názvem domény (FQDN). Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Po odstranění skupiny kontejnerů se uvolní IP adresa a plně kvalifikovaný název domény skupiny kontejnerů. 
 

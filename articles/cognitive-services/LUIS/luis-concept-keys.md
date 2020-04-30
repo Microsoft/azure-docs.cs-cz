@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 954e7a22ae6b242c6221119c688259e4ce629a2a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82101055"
 ---
 # <a name="authoring-and-runtime-keys"></a>Klíče pro vytváření obsahu a běhové klíče
@@ -44,7 +44,7 @@ Když poprvé začnete používat LUIS, vytvoří se pro vás **počáteční kl
 
 LUIS umožňuje tři typy prostředků Azure:
 
-|Klíč|Účel|Služba rozpoznávání`kind`|Služba rozpoznávání`type`|
+|Key|Účel|Služba rozpoznávání`kind`|Služba rozpoznávání`type`|
 |--|--|--|--|
 |[Vytváření klíče](#programmatic-key)|Přístup k datům aplikací a jejich správa pomocí vytváření, školení, publikování a testování. Pokud máte v úmyslu programově vytvářet aplikace LUIS, vytvořte si klíč pro vytváření LUIS.<br><br>Účelem klíče je poskytnout `LUIS.Authoring` tyto kroky:<br>* prostřednictvím kódu programu spravujte Language Understanding aplikace a modely, včetně školení a publikování<br> * řízení oprávnění k vytváření prostředků tím, že uživatelům přiřadíte [roli Přispěvatel](#contributions-from-other-authors).|`LUIS.Authoring`|`Cognitive Services`|
 |[Klíč předpovědi](#prediction-endpoint-runtime-key)| Požadavky koncového bodu předpovědi dotazu. Vytvořte klíč předpovědi LUIS před tím, než klientská aplikace požaduje předpovědi nad požadavky 1 000, které poskytuje počáteční prostředek. |`LUIS`|`Cognitive Services`|

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 79473c5fb63a5f5ad29194c65cd8094ea444dbd8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115835"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Správa prostředků služby Batch pomocí rutin PowerShellu
@@ -19,7 +19,7 @@ Pomocí rutin PowerShellu pro službu Azure Batch můžete provádět a převád
 
 Tento článek je založený na rutinách v AZ Batch Module 1.0.0. Moduly Azure PowerShellu doporučujeme pravidelně aktualizovat, abyste mohli využívat výhody, které vám přinášejí aktualizace a vylepšení služby.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * [Nainstalujte a nakonfigurujte modul Azure PowerShellu](/powershell/azure/overview). Pokud chcete nainstalovat konkrétní modul Azure Batch, například předběžnou verzi modulu, přejděte do [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az.Batch/1.0.0).
 

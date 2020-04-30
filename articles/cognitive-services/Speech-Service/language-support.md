@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
 ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82113829"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči

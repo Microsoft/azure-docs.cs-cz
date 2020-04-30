@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2020
 ms.openlocfilehash: 545c1720ef379ec74bd2e7c0bc68f6a2fcbba789
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115495"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Zprávy Exchange AS2 pro integraci B2B Enterprise v Azure Logic Apps s využitím Enterprise Integration Pack
@@ -49,7 +49,7 @@ Pokud chcete pracovat se AS2 zprávami v Azure Logic Apps, můžete použít kon
 
 Tento článek ukazuje, jak přidat akce kódování a dekódování AS2 do existující aplikace logiky.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [Zaregistrujte si bezplatný účet Azure](https://azure.microsoft.com/free/).
 

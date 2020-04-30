@@ -9,13 +9,13 @@ ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
 ms.openlocfilehash: 0ea8048ed72aab11a144b0160eb9299398ec37ac
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085994"
 ---
-V prostředí Cloud vytvořte plán služby App Service pomocí příkazu. [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)
+V Cloud Shell vytvořte App Service plán pomocí [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) příkazu.
 
 Následující příklad vytvoří plán služby App Service s názvem `myAppServicePlan` v cenové úrovni **Free**:
 

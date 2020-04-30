@@ -12,10 +12,10 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
 ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82112707"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core

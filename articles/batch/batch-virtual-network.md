@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 616118d5f75f9bfa6d97d89baac9d7ea9186cd5d
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82111891"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Vytvoření fondu Azure Batch ve virtuální síti
@@ -19,7 +19,7 @@ Když vytváříte fond Azure Batch, můžete fond zřídit v podsíti [virtuál
 
 Fond Azure Batch obsahuje nastavení, která umožňují komunikačním uzlům vzájemně komunikovat – například pro spouštění úkolů s více instancemi. Tato nastavení nevyžadují samostatnou virtuální síť. Ve výchozím nastavení ale uzly nemůžou komunikovat s virtuálními počítači, které nejsou součástí fondu dávek, například licenčního serveru nebo souborového serveru. Pokud chcete, aby výpočetní uzly fondu umožňovaly zabezpečeně komunikovat s jinými virtuálními počítači nebo s místní sítí, můžete fond zřídit v podsíti virtuální sítě Azure.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * **Ověřování**. Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112571"
 ---
-# <a name="continuous-access-evaluation"></a>Vyhodnocování průběžného přístupu
+# <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
 Služby Microsoftu, jako jsou Azure Active Directory (Azure AD) a Office 365, umožňují maximalizovat interoperabilitu pomocí otevřených standardů a protokolů. Jedním z nejdůležitějších z nich je Open ID Connect (OIDC). Když se klientská aplikace, jako je Outlook, připojí ke službě, jako je Exchange Online, požadavky rozhraní API se autorizují pomocí přístupových tokenů OAuth 2,0. Ve výchozím nastavení jsou tyto přístupové tokeny platné po dobu jedné hodiny. Po vypršení platnosti se klient přesměruje zpátky do služby Azure AD, aby je aktualizoval. To také umožňuje znovu vyhodnotit zásady pro přístup uživatelů – můžeme se rozhodnout neaktualizovat token z důvodu zásad podmíněného přístupu nebo proto, že uživatel byl v adresáři zakázán. 
 

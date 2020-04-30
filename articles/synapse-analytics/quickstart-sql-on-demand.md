@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82113778"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Rychlý Start: používání SQL na vyžádání
@@ -22,7 +22,7 @@ Synapse SQL na vyžádání (Preview) je služba pro dotazování bez serveru, k
 
 Podporovány jsou následující typy souborů: JSON, CSV, Apache Parquet
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Zvolit klienta SQL pro vydávání dotazů:
 

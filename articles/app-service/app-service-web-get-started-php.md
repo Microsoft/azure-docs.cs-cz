@@ -1,15 +1,15 @@
 ---
-title: 'Rychlý start: Vytvoření webové aplikace PHP'
-description: Nasaďte svůj první PHP Hello World do služby Azure App Service během několika minut. Nasazujete pomocí Gitu, což je jeden z mnoha způsobů nasazení do služby App Service.
+title: 'Rychlý Start: Vytvoření webové aplikace v PHP'
+description: Nasaďte první Hello World PHP do Azure App Service v řádu minut. Nasadíte pomocí Gitu, což je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/24/2018
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: de51df50995c47800a2084108973c3b009ae3462
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085936"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
@@ -18,7 +18,7 @@ ms.locfileid: "82085936"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v PHP ve službě App Service v Linuxu](./containers/quickstart-php.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento úvodní kurz ukazuje, jak nasadit aplikaci PHP do služby Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto kurzu rychlý Start se dozvíte, jak nasadit aplikaci v PHP do Azure App Service. Pomocí [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ve službě Cloud Shell vytvoříte webovou aplikaci a pomocí Gitu do této webové aplikace nasadíte vzorový kód PHP.
 
 ![Ukázková aplikace spuštěná v Azure](media/app-service-web-get-started-php/hello-world-in-browser.png)
 
@@ -26,7 +26,7 @@ Tento postup můžete použít v případě počítačů se systémem Mac, Windo
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
@@ -68,9 +68,9 @@ V okně terminálu ukončete webový server stisknutím **Ctrl + C**.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V prostředí Cloud Shell vytvořte `myAppServicePlan` webovou aplikaci [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v plánu služby App Service pomocí příkazu. 
+V Cloud Shell v plánu `myAppServicePlan` App Service pomocí [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkazu vytvořte webovou aplikaci. 
 
-V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Chcete-li zobrazit všechny [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)podporované moduly runtimes, spusťte . 
+V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`). Modul runtime je nastavený na `PHP|7.0`. Pokud chcete zobrazit všechny podporované moduly runtime, [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)spusťte příkaz. 
 
 
 ```azurecli-interactive
@@ -80,7 +80,7 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0" --deployment-local-git
 ```
 > [!NOTE]
-> Symbol `(--%)`stop-parsing , který byl zaveden v prostředí PowerShell 3.0, nasměruje prostředí PowerShell, aby se zdrželinterpretace vstupu jako příkazů nebo výrazů prostředí PowerShell. 
+> Symbol `(--%)`stop-analyze, představený v powershellu 3,0, směruje prostředí PowerShell na neinterpretaci vstupu jako příkazů nebo výrazů PowerShellu. 
 >
 
 Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
@@ -100,7 +100,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app_name&gt;.s
 }
 </pre>
 
-Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením gitu.
+Vytvořili jste prázdnou novou webovou aplikaci s povoleným nasazením Gitu.
 
 > [!NOTE]
 > Adresa URL vzdáleného úložiště Git se zobrazuje ve vlastnosti `deploymentLocalGitUrl` ve formátu `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`. Tuto adresu URL si uložte, protože ji budete potřebovat později.
@@ -178,15 +178,15 @@ Po dokončení nasazení se vraťte do okna prohlížeče, které se otevřelo v
 
 ## <a name="manage-your-new-azure-app"></a>Správa nové aplikace Azure
 
-1. Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Vyhledejte a vyberte **služby App Services**.
+1. Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>. Vyhledejte a vyberte **App Services**.
 
-    ![Hledání služeb aplikace, portál Azure, vytvoření webové aplikace PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
+    ![Hledání App Services, Azure Portal a vytvoření webové aplikace v PHP](media/app-service-web-get-started-php/navigate-to-app-services-in-the-azure-portal.png)
 
 2. Vyberte název aplikace Azure.
 
     ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-php/php-docs-hello-world-app-service-list.png)
 
-    Zobrazí se stránka **Přehled** vaší webové aplikace. Zde můžete provádět základní úlohy správy, jako **je Procházet**, **Zastavit**, **Restartovat**a **Odstranit**.
+    Zobrazí se stránka s **přehledem** vaší webové aplikace. Tady můžete provádět základní úlohy správy, jako je **procházení**, **zastavení**, **restartování**a **odstranění**.
 
     ![Stránka služby App Service na webu Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 

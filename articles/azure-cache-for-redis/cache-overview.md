@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: overview
 ms.date: 03/11/2020
 ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82113200"
 ---
 # <a name="azure-cache-for-redis-description"></a>Popis služby Azure Cache for Redis

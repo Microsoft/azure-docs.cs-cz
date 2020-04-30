@@ -10,10 +10,10 @@ ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 4b5e4fe585b01670c06d5ff08fb3d221086d94d2
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82100426"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-windows-virtual-machines-in-azure"></a>Kurz: Zálohování a obnova souborů pro virtuální počítače s Windows v Azure

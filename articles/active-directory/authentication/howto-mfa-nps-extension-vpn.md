@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f90a6dd94a498b6de6b5e2ec8381180483d0ac8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113149"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrujte svoji infrastrukturu VPN s Azure MFA pomocí rozšíření serveru NPS (Network Policy Server) pro Azure.
@@ -72,7 +72,7 @@ Když je rozšíření NPS pro Azure integrované s NPS, výsledky toku úspěš
 7. Jakmile je pokus o připojení ověřen i autorizován, server NPS, ve kterém je rozšíření nainstalováno, odesílá zprávu RADIUS *Access-Accept* na server VPN (klient RADIUS).
 8. Uživateli je udělen přístup k virtuálnímu portu na serveru VPN a vytvoří šifrované tunelové propojení VPN.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Tato část podrobně popisuje požadavky, které je třeba provést před integrací vícefaktorového ověřování pomocí sítě VPN. Než začnete, musíte mít splněné následující předpoklady:
 
@@ -328,7 +328,7 @@ V rámci konfigurace rozšíření serveru NPS musíte zadat přihlašovací úd
 
 2. V nabídce Azure Portal vyberte **Azure Active Directory**nebo vyhledejte a vyberte **Azure Active Directory** na libovolné stránce.
 
-3. Vyberte **vlastnosti**.
+3. Vyberte **Vlastnosti**.
 
 4. Pokud chcete zkopírovat ID služby Azure AD, vyberte tlačítko **Kopírovat** .
 

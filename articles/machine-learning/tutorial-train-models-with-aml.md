@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
 ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115563"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před t
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.83 verze.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 * Dokončete [kurz: Začínáme s vytvořením prvního experimentu Azure ml](tutorial-1st-experiment-sdk-setup.md) :
     * Vytvoření pracovního prostoru

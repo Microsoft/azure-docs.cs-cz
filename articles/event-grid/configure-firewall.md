@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: 4aa86b3619897c310473f12e1c28101185ebf3ab
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82100987"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains-preview"></a>Konfigurace brány firewall protokolu IP pro Azure Event Grid témata nebo domény (Preview)
@@ -39,7 +39,7 @@ V této části se dozvíte, jak pomocí Azure Portal vytvořit pravidla brány 
 V této části se dozvíte, jak pomocí příkazů rozhraní příkazového řádku Azure vytvářet témata s pravidly příchozích IP adres. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
 
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 Aktualizujte rozšíření Azure Event Grid pro rozhraní příkazového řádku spuštěním následujícího příkazu: 
 
 ```azurecli-interactive
@@ -166,7 +166,7 @@ az eventgrid topic update \
 ## <a name="use-powershell"></a>Použití prostředí PowerShell
 V této části se dozvíte, jak pomocí Azure PowerShellch příkazů vytvářet Azure Event Grid témata s pravidly brány firewall pro příchozí IP adresy. Postup uvedený v této části najdete v tématu. Pomocí podobných kroků můžete vytvořit pravidla příchozího přenosu IP adres pro **domény**. 
 
-### <a name="prerequisites"></a>Požadované součásti
+### <a name="prerequisites"></a>Požadavky
 Postupujte podle pokynů v tématu [Postupy: použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](../active-directory/develop/howto-create-service-principal-portal.md) k vytvoření aplikace Azure Active Directory a poznamenejte si následující hodnoty:
 
 - ID adresáře (tenanta)

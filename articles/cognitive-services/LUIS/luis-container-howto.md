@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82100239"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalace a spuštění kontejnerů Docker LUIS
@@ -28,7 +28,7 @@ Následující video znázorňuje použití tohoto kontejneru.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete spustit kontejner LUIS, vezměte na vědomí následující požadavky:
 

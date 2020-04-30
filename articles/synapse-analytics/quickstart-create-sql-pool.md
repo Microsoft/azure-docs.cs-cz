@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: a50f203b8057dd4ea51eff1cf09fc97fb598cb3e
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82096431"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool"></a>Rychlý Start: vytvoření synapse fondu SQL
@@ -24,7 +24,7 @@ V tomto rychlém startu se naučíte vytvořit fond SQL v pracovním prostoru sy
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 [Pracovní prostor synapse](quickstart-create-workspace.md)
 

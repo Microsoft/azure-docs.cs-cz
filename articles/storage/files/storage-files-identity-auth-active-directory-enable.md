@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: rogarana
 ms.openlocfilehash: b2dd501344e1ea799db58ea749395aaed05d05f8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106542"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Povolit místní Active Directory Domain Services ověřování pomocí protokolu SMB pro sdílené složky Azure
@@ -40,7 +40,7 @@ Identity používané pro přístup ke sdíleným složkám Azure se musí synch
 > - Výměna místních souborových serverů se soubory Azure (včetně nastavení na privátním odkazu pro soubory a ověřování AD)
 > - Používání služby soubory Azure jako kontejneru profilů pro virtuální počítače s Windows (včetně nastavení ověřování AD a konfigurace FsLogix)
 
-## <a name="prerequisites"></a>Požadované součásti 
+## <a name="prerequisites"></a>Požadavky 
 
 Než povolíte služba AD DS ověřování sdílených složek Azure, ujistěte se, že jste dokončili následující požadavky: 
 

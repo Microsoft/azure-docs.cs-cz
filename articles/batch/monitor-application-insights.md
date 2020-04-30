@@ -4,10 +4,10 @@ description: Naučte se, jak instrumentovat aplikaci Azure Batch .NET pomocí kn
 ms.topic: article
 ms.date: 04/05/2018
 ms.openlocfilehash: ca8cde9b1838239a79ebca4efe43d9e619f80f12
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115461"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Monitorování a ladění aplikace Azure Batch .NET pomocí Application Insights
@@ -22,7 +22,7 @@ Ukázkové řešení jazyka C# s kódem, který se doprovází do tohoto článk
 > Jako alternativu můžete nakonfigurovat řešení Batch tak, aby zobrazovalo Application Insightsá data, jako jsou čítače výkonu virtuálních počítačů v Batch Explorer. [Batch Explorer](https://github.com/Azure/BatchExplorer) je bezplatný a samostatný klientský nástroj s bohatými funkcemi, který vám umožní vytvářet, ladit a monitorovat Azure Batch aplikace. Můžete si stáhnout [instalační balíček](https://azure.github.io/BatchExplorer/) pro Mac, Linux nebo Windows. Rychlé kroky pro povolení Application Insights dat v Batch Explorer najdete v části [úložiště Batch-Insights](https://github.com/Azure/batch-insights) . 
 >
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 * [Visual Studio 2017 nebo novější](https://www.visualstudio.com/vs)
 
 * [Účet Batch a propojený účet úložiště](batch-account-create-portal.md)

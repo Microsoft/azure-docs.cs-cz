@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Vytvoření webové aplikace Node.js'
-description: Nasaďte svůj první Node.js Hello World do služby Azure App Service během několika minut. Nasazení pomocí balíčku ZIP, což je jeden z mnoha způsobů nasazení do služby App Service.
+title: 'Rychlý Start: Vytvoření webové aplikace v Node. js'
+description: Nasaďte první Hello World Node. js do Azure App Service v řádu minut. Nasadíte pomocí balíčku ZIP, který je jedním z mnoha způsobů, jak nasadit do App Service.
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 08/23/2019
@@ -8,10 +8,10 @@ ms.custom: mvc, devcenter, seodec18
 experimental: false
 experiment_id: a231f2b4-2625-4d
 ms.openlocfilehash: a185565ec125e327297883c63b1d50a2548c7853
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82085993"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure
@@ -20,11 +20,11 @@ ms.locfileid: "82085993"
 > Tento článek nasadí aplikaci do služby App Service ve Windows. Nasazení do služby App Service v _Linuxu_ je popsané v tématu [Vytvoření webové aplikace v Node.js ve službě Azure App Service v Linuxu](./containers/quickstart-nodejs.md).
 >
 
-[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  Tento rychlý start ukazuje, jak nasadit aplikaci Node.js do služby Azure App Service. Webovou aplikaci vytvoříte pomocí [prostředí Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale tyto příkazy můžete spustit také místně pomocí azure [CLI](/cli/azure/install-azure-cli). Ukázkový kód Node.js nasadíte do webové aplikace pomocí příkazu [config-zip zdroje nasazení az webapp.](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip)  
+[Azure App Service ](overview.md) je vysoce škálovatelná služba s automatickými opravami pro hostování webů.  V tomto rychlém startu se dozvíte, jak nasadit aplikaci Node. js do Azure App Service. Webovou aplikaci vytvoříte pomocí [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), ale tyto příkazy můžete spustit i místně pomocí [Azure CLI](/cli/azure/install-azure-cli). Ukázkový kód Node. js nasadíte do webové aplikace pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
 
 ![Ukázková aplikace spuštěná v Azure](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-Tento postup můžete použít v případě počítačů se systémem Mac, Windows nebo Linux. Dokončení kroků trvá asi tři minuty.
+Tento postup můžete použít v případě počítačů se systémem Mac, Windows nebo Linux. Dokončení kroků trvá přibližně tři minuty.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -57,7 +57,7 @@ Checking connectivity... done.
 ```
 
 > [!NOTE]
-> Ukázkový index index.js nastaví naslouchací port na process.env.PORT. Tato proměnná prostředí je přiřazena službou App Service.
+> Vzorový index. js nastaví port naslouchání na proces. env. PORT. Tato proměnná prostředí je přiřazena pomocí App Service.
 >
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-scus.md)]
@@ -66,7 +66,7 @@ Checking connectivity... done.
 
 ## <a name="create-a-web-app"></a>Vytvoření webové aplikace
 
-V prostředí Cloud Shell vytvořte `myAppServicePlan` webovou aplikaci [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) v plánu služby App Service pomocí příkazu.
+V Cloud Shell v plánu `myAppServicePlan` App Service pomocí [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkazu vytvořte webovou aplikaci.
 
 V následujícím příkladu nahraďte `<app_name>` globálně jedinečným názvem aplikace (platné znaky jsou `a-z`, `0-9` a `-`).
 
@@ -93,7 +93,7 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
 
 ### <a name="set-nodejs-runtime"></a>Nastavení modulu runtime Node.js
 
-Nastavte za běhu uzlu na 10.14.1. Chcete-li zobrazit všechny [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)podporované moduly runtimes, spusťte .
+Nastavte modul runtime uzlu na 10.14.1. Pokud chcete zobrazit všechny podporované moduly runtime, [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)spusťte příkaz.
 
 ```azurecli-interactive
 # Bash and Powershell
@@ -106,11 +106,11 @@ Přejděte do vaší nově vytvořené webové aplikace. Nahraďte `<app_name>` 
 http://<app_name>.azurewebsites.net
 ```
 
-Zde je to, co vaše ![nová webová aplikace by měla vypadat: Prázdný web app stránku](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
+Vaše nová webová aplikace by měla vypadat takto: ![prázdná stránka webové aplikace](media/app-service-web-get-started-nodejs-poc/app-service-web-service-created.png)
 
 ## <a name="deploy-zip-file"></a>Nasazení souboru ZIP
 
-V prostředí Cloud Shell přejděte do kořenového adresáře aplikace a vytvořte nový soubor ZIP pro ukázkový projekt.
+V Cloud Shell přejděte do kořenového adresáře vaší aplikace, vytvořte nový soubor ZIP pro ukázkový projekt.
 
 ```console
 cd nodejs-docs-hello-world  
@@ -118,13 +118,13 @@ cd nodejs-docs-hello-world
 zip -r myUpdatedAppFiles.zip *.*
 ```
 
-Nasaďte soubor ZIP do webové aplikace pomocí příkazu [config-zip zdroje nasazení az webapp.](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip)  
+Pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) nasaďte soubor zip do vaší webové aplikace.  
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src myUpdatedAppFiles.zip
 ```
 
-Tento příkaz nasadí soubory a adresáře ze souboru ZIP do vaší výchozí složky aplikací služby App Service (`\home\site\wwwroot`) a restartuje aplikaci. Pokud je nakonfigurovaný nějaký vlastní proces sestavení, spustí se také. Další informace naleznete v [dokumentaci kudu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+Tento příkaz nasadí soubory a adresáře ze souboru ZIP do vaší výchozí složky aplikací služby App Service (`\home\site\wwwroot`) a restartuje aplikaci. Pokud je nakonfigurovaný nějaký vlastní proces sestavení, spustí se také. Další informace najdete v [dokumentaci k Kudu](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
@@ -145,9 +145,9 @@ Vzorový kód Node.js je spuštěný ve webové aplikaci služby Azure App Servi
 
 ## <a name="update-and-redeploy-the-code"></a>Aktualizace a opětovné nasazení kódu
 
-V prostředí Cloud `code index.js` Shell, zadejte otevřít editor Cloud Shell.
+V Cloud Shell zadejte `code index.js` , aby se otevřel Editor Cloud Shell.
 
-![Index kódu.js](media/app-service-web-get-started-nodejs-poc/code-indexjs.png)
+![Index kódu. js](media/app-service-web-get-started-nodejs-poc/code-indexjs.png)
 
 Proveďte malou změnu textu ve volání na `response.end`:
 
@@ -155,9 +155,9 @@ Proveďte malou změnu textu ve volání na `response.end`:
 response.end("Hello Azure!");
 ```
 
-Uložte změny a ukončete editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
+Uložte změny a ukončete Editor. K uložení použijte příkaz `^S` a k zavření příkaz `^Q`.
 
-Vytvořte soubor ZIP a nasaďte jej pomocí příkazu [az webapp deployment source config-zip.](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip)  
+Vytvořte soubor ZIP a nasaďte ho pomocí příkazu [AZ WebApp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
 
 ```azurecli-interactive
 # Bash
@@ -174,7 +174,7 @@ Vraťte se do okna prohlížeče, které se otevřelo v kroku **Přechod do apli
 
 Pokud chcete spravovat webovou aplikaci, kterou jste vytvořili, přejděte na web <a href="https://portal.azure.com" target="_blank">Azure Portal</a>.
 
-V levé nabídce klikněte na **App Services**a potom klikněte na název aplikace Azure.
+V nabídce vlevo klikněte na **App Services**a pak klikněte na název aplikace Azure.
 
 ![Přechod do aplikace Azure na portálu](./media/app-service-web-get-started-nodejs-poc/nodejs-docs-hello-world-app-service-list.png)
 

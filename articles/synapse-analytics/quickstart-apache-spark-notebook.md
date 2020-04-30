@@ -10,10 +10,10 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
 ms.openlocfilehash: f8525c883eb6b2c736e5fbf433464aa64ff42068
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82101783"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web
@@ -25,7 +25,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit fond Apache Spark (ve verzi P
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před tím, než začnete](https:/azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 
 - Předplatné Azure – [Vytvořte si ho zdarma](https:/azure.microsoft.com/free/) .
 - [Pracovní prostor analýzy synapse](quickstart-create-workspace.md)

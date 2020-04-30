@@ -6,10 +6,10 @@ ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
 ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113557"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
