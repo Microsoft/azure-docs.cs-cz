@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 12/07/2018
 ms.author: alkohli
 ms.openlocfilehash: 8a09a52db40f4f52219bce3e703e275b0f310c1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175674"
 ---
-Podle těchto kroků se připojte k účtu úložiště a ověřte připojení.
+Pomocí těchto kroků se připojte k účtu úložiště a ověřte připojení.
 
-1. V Průzkumníku úložiště otevřete dialogové okno **Připojit k úložišti Azure.** V dialogovém okně **Připojit k úložišti Azure** vyberte Použít název a klíč účtu **úložiště**.
+1. V Průzkumník služby Storage otevřete dialog **připojit k Azure Storage** . V dialogovém okně **připojit k Azure Storage** vyberte **použít název a klíč účtu úložiště**.
 
-    ![Řídicí panel datové schránky](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
+    ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-9.png)
 
-2. Vložte **název účtu** a klíč **účtu** (hodnota klíče 1 ze stránky Připojit **a zkopírovat** v místním webovém uživatelském prostředí). Vyberte doménu koncových bodů úložiště jako **other (zadejte níže)** a pak zadejte koncový bod služby objektů blob, jak je znázorněno níže. Zaškrtněte **políčko Použít** možnost HTTP pouze v případě přenosu přes *http*. Pokud používáte *https*, ponechte možnost nezaškrtnutou. Vyberte **další**.
+2. Vložte **název účtu** a **klíč účtu** (hodnota klíče 1 na stránce **připojit a kopírovat** ) v místním webovém uživatelském rozhraní. Vyberte možnost Doména koncových bodů úložiště jako **jinou (níže zadejte)** a pak zadejte koncový bod služby BLOB Service, jak je znázorněno níže. Možnost **použít protokol HTTP** se dá zaškrtnout jenom v případě, že se převádí přes *http*. Pokud používáte *protokol HTTPS*, ponechte možnost nezaškrtnutou. Vyberte **Další**.
 
-    ![Řídicí panel datové schránky](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
+    ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-11.png)    
 
-3. V dialogovém okně **Souhrn připojení** zkontrolujte poskytnuté informace. Vyberte **Connect** (Připojit).
+3. V dialogovém okně **Souhrn připojení** zkontrolujte zadané informace. Vyberte **Connect** (Připojit).
 
-    ![Řídicí panel datové schránky](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
+    ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-12.png)
 
-4. Účet, který jste úspěšně přidali, se zobrazí v levém podokně Průzkumníka úložiště s názvem (Externí, Jiné). Kliknutím na **Kontejnery objektů blob** zobrazíte kontejner.
+4. Účet, který jste úspěšně přidali, se zobrazí v levém podokně Průzkumník služby Storage s (externí, jiný) připojeným k názvu. Kliknutím na **kontejnery objektů BLOB** Zobrazte kontejner.
 
-    ![Řídicí panel datové schránky](media/data-box-verify-connection/data-box-connect-via-rest-17.png)
+    ![Řídicí panel Data Box](media/data-box-verify-connection/data-box-connect-via-rest-17.png)

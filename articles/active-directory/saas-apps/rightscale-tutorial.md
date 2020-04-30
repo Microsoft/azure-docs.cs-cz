@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s rightscale | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a pravým škála.
+title: 'Kurz: Azure Active Directory integrace s RightScale | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a RightScale.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,144 +16,144 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 53799b62da043b7680f010e1eaaf0d9243f07dd5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67093079"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Integrace Azure Active Directory s Rightscale
+# <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Azure Active Directory integrace s RightScale
 
-V tomto kurzu se dozvíte, jak integrovat Rightscale s Azure Active Directory (Azure AD).
-Integrace Rightscale s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat RightScale s Azure Active Directory (Azure AD).
+Integrace RightScale s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Rightscale.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali k Rightscale (jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k RightScale.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k RightScale (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Rightscale, budete potřebovat následující položky:
+Ke konfiguraci integrace služby Azure AD s RightScale potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Předplatné s povoleným jedním přihlášením v pravém měřítku
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné s povoleným Rightscalem jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Rightscale podporuje **sp a IDP** inicioval a so
+* RightScale podporuje jednotné přihlašování (SSO) **a IDP** .
 
-## <a name="adding-rightscale-from-the-gallery"></a>Přidání rightscale z galerie
+## <a name="adding-rightscale-from-the-gallery"></a>Přidání RightScale z Galerie
 
-Chcete-li nakonfigurovat integraci Rightscale do Azure AD, musíte přidat Rightscale z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci RightScale do služby Azure AD, musíte přidat RightScale z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat rightscale z galerie, proveďte následující kroky:**
+**Pokud chcete přidat RightScale z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Rightscale**, z panelu výsledků vyberte **Rightscale** a pak klepněte na **tlačítko Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **RightScale**, vyberte **RightScale** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Měřítko vpravo v seznamu výsledků](common/search-new-app.png)
+     ![RightScale v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Rightscale na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Rightscale.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí RightScale na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v RightScale.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí rightscale, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí RightScale, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování](#configure-rightscale-single-sign-on)** v pravém měřítku – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořit rightscale testovací ho uživatele](#create-rightscale-test-user)** – mít protějšek Britta Simon v Rightscale, který je propojený s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování RightScale](#configure-rightscale-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření RightScale Test User](#create-rightscale-test-user)** – pro Britta Simon v RightScale, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí rightscale, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí RightScale, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Rightscale** vyberte **Jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **RightScale** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** uživatel nemusí provádět žádný krok, protože aplikace je již předem integrovaná s Azure.
+4. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-    ![Informace o jednotném přihlášení domény a adres URL správného měřítku](common/preintegrated.png)
+    ![Informace o jednotném přihlašování v doméně RightScale a adresách URL](common/preintegrated.png)
 
-5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Informace o jednotném přihlášení domény a adres URL správného měřítku](common/metadata-upload-additional-signon.png)
+    ![Informace o jednotném přihlašování v doméně RightScale a adresách URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL:`https://login.rightscale.com/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://login.rightscale.com/`
 
-6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-7. V části **Nastavit rightscale** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+7. V části **Nastavení RightScale** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-rightscale-single-sign-on"></a>Konfigurace jednotného přihlašování v pravém měřítku
+### <a name="configure-rightscale-single-sign-on"></a>Konfigurace jednotného přihlašování RightScale
 
-1. Chcete-li získat nakonfigurované přihlašování pro vaši aplikaci, musíte se přihlásit k tenantovi RightScale jako správce.
+1. Pokud chcete pro vaši aplikaci nakonfigurovat jednotné přihlašování, musíte se přihlásit ke klientovi RightScale jako správce.
 
-2. V horní nabídce klikněte na kartu **Nastavení** a vyberte **Jedno přihlášení**.
+2. V nabídce v horní části klikněte na kartu **Nastavení** a vyberte **jednotné přihlašování**.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
-3. Klepnutím na **nové** tlačítko přidáte **zprostředkovatele identity SAML**.
+3. Kliknutím na tlačítko **Nový** přidejte **poskytovatele identity SAML**.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
-4. Do textového pole **Zobrazované jméno**zadejte název společnosti.
+4. Do textového pole **Zobrazovaný název**zadejte název vaší společnosti.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
-5. Vyberte **Povolit přiřazování a řízení systému s uvolňované** ho pravým měřítkem pomocí nápovědy pro zjišťování a zadejte **název domény** do následujícího textového pole.
+5. Vyberte možnost **povolení jednotného přihlašování iniciované RightScale pomocí nápovědy pro zjišťování** a zadáním **názvu domény** do následujícího textového pole.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
-6. Vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z portálu Azure do **koncového bodu saml sso** v RightScale.
+6. Vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal do **koncového bodu SAML SSO** v RightScale.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
-7. Vložte hodnotu **identifikátoru Azure AD,** který jste zkopírovali z portálu Azure do **SAML EntityID** v RightScale.
+7. Vložte hodnotu **identifikátoru Azure AD** , kterou jste zkopírovali z Azure Portal do **EntityId SAML** v RightScale.
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
-8. Kliknutím na tlačítko **Prohlížeč** nahrajte certifikát, který jste stáhli z webu Azure Portal.
+8. Kliknutím na tlačítko **prohlížeč** Nahrajte certifikát, který jste stáhli z Azure Portal.
 
 
     ![Konfigurace jednotného přihlašování](./media/rightscale-tutorial/tutorial_rightscale_009.png)
@@ -162,69 +162,69 @@ Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí rightscale,
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** typ pole`brittasimon@yourcompanydomain.extension`  
+    b. Do pole typ **uživatelského jména**`brittasimon@yourcompanydomain.extension`  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Rightscale.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k RightScale.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Rightscale**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **RightScale**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Rightscale**.
+2. V seznamu aplikace vyberte **RightScale**.
 
-    ![Odkaz Rightscale v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz RightScale v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-rightscale-test-user"></a>Vytvořit testovacího uživatele v pravém měřítku
+### <a name="create-rightscale-test-user"></a>Vytvořit testovacího uživatele RightScale
 
-V této části vytvoříte uživatele s názvem Britta Simon v rightscale. Spolupracujte s  [týmem podpory klienta Rightscale](mailto:support@rightscale.com)a přidejte uživatele na platformě Rightscale. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+V této části vytvoříte uživatele s názvem Britta Simon v RightScale. Pokud chcete přidat uživatele na platformě RightScale, pracujte s  [týmem podpory klienta RightScale](mailto:support@rightscale.com). Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Rightscale na přístupovém panelu, měli byste být automaticky přihlášeni k rightscale, pro které nastavíte přiřazování. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici RightScale, měli byste se automaticky přihlásit k RightScale, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s Infinite Campus | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Infinite Campus.
+title: 'Kurz: Azure Active Directory integrace s nekonečným areálem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a nekonečné areály.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,199 +16,199 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67100356"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Integrace služby Azure Active Directory s Infinite Campus
+# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Kurz: Azure Active Directory integrace s nekonečným areálem
 
-V tomto kurzu se dozvíte, jak integrovat Infinite Campus s Azure Active Directory (Azure AD).
-Integrace Infinite Campus s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat nekonečný areál práce s Azure Active Directory (Azure AD).
+Integrování nekonečné školních areálů pomocí Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Infinite Campus.
-* Můžete povolit, aby se uživatelé automaticky přihlašovali k Infinite Campus (Jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k nekonečné Campus.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k nekonečnému areálu (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Infinite Campus, budete potřebovat následující položky:
+Pokud chcete nakonfigurovat integraci Azure AD s neomezeným areálem, budete potřebovat tyto položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Předplatné s povoleným jedním přihlášením infinite campus
-* Minimálně musíte být správcem služby Azure Active Directory a k dokončení konfigurace mít roli zabezpečení produktu campusu "Studentský informační systém (SIS)".
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Neomezené předplatné s povoleným jednotným přihlašováním
+* Aby se konfigurace dokončila, musíte být správcem Azure Active Directory a máte k dispozici roli zabezpečení školních produktů (SIS).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Infinite Campus podporuje **sp** inicioval sso
+* Neomezený areál, který podporuje jednotné přihlašování v **SP**
 
-## <a name="adding-infinite-campus-from-the-gallery"></a>Přidání Infinite Campus z galerie
+## <a name="adding-infinite-campus-from-the-gallery"></a>Přidání nekonečného areálu z Galerie
 
-Chcete-li nakonfigurovat integraci Infinite Campus do Azure AD, musíte přidat Infinite Campus z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci nekonečného areálu do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat nekonečný areál z galerie.
 
-**Chcete-li přidat Infinite Campus z galerie, proveďte následující kroky:**
+**Chcete-li přidat nekonečný areál z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Infinite Campus**, z panelu výsledků vyberte **Infinite Campus** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **infinité areály**, v panelu výsledek vyberte **nekonečná areály** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Infinite Campus v seznamu výsledků](common/search-new-app.png)
+    ![Neomezený areál v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s Infinite Campus na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Infinite Campus.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s neomezeným areálem na základě testovacího uživatele s názvem **Britta Simon**.
+Aby bylo jednotné přihlašování fungovat, je třeba vytvořit odkaz na propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v nekonečném areálu.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Infinite Campus, musíte dokončit následující stavební bloky:
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD pomocí nekonečné školních areálů, je potřeba, abyste dokončili tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace nekonečného jednotného přihlášení](#configure-infinite-campus-single-sign-on)** do areálu - konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte uživatele testu Infinite Campus](#create-infinite-campus-test-user)** – chcete-li mít protějšek Britta Simon v Infinite Campus, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Konfigurace nekonečného jednotného přihlašování](#configure-infinite-campus-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření nekonečného školního testovacího uživatele](#create-infinite-campus-test-user)** – Pokud chcete mít protějšek Britta Simon v nekonečném areálu, který je propojený s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí infinite campusu, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí nekonečné školních areálů, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Infinite Campus** vyberte **Jedno přihlášení**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **nekonečná integrace aplikace Campus** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části Základní konfigurace SAML proveďte následující kroky (všimněte si, že doména se bude lišit podle hostitelského modelu, ale hodnota **plně kvalifikované domény** musí odpovídat instalaci infinite campusu):
+4. V části základní konfigurační oddíl SAML proveďte následující kroky (Všimněte si, že se doména bude lišit v případě hostujícího modelu, ale hodnota **plně kvalifikované domény** musí odpovídat vaší nekonečné instalaci areálu):
 
-    a. Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    b. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
+    b. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
 
-    c. Do textového pole **Adresa URL pro odpověď** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
 
-    ![Nekonečné Campus domény a adresy URL jednotné přihlašovací informace](common/sp-identifier-reply.png)
+    ![Nekonečná doména školního areálu a adresy URL jednotného přihlašování](common/sp-identifier-reply.png)
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na tlačítko Kopírovat, chcete-li zkopírovat **adresu URL metadat federace aplikací** a uložit ji do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 
-### <a name="configure-infinite-campus-single-sign-on"></a>Konfigurace jednotného přihlášení do nekonečného kampusu
+### <a name="configure-infinite-campus-single-sign-on"></a>Konfigurace neomezeného jednotného přihlašování přes vysokoškolské areály
 
-1. V jiném okně webového prohlížeče se přihlaste do Infinite Campus jako správce zabezpečení.
+1. V jiném okně webového prohlížeče se přihlaste k nekonečnému areálu jako správce zabezpečení.
 
-2. V levé části nabídky klepněte na **položku Správa systému**.
+2. Na levé straně nabídky klikněte na **Správa systému**.
 
     ![Správce](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. Přejděte na**konfiguraci zprostředkovatele služeb****správu SAML služby** >  **zabezpečení uživatele** > .
+3. Přejděte na **zabezpečení** > uživatele**Konfigurace poskytovatele služeb pro jednotné přihlašování**v**nástroji** > SAML.
 
-    ![Saml](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
+    ![SAML](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
-4. Na stránce **Konfigurace poskytovatele služeb s přistaň proveďte** následující kroky:
+4. Na stránce **Konfigurace poskytovatele služeb jednotného přihlašování** proveďte následující kroky:
 
-    ![Sso](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
+    ![Jednotné přihlašování](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
-    a. Vyberte **možnost Povolit jednotné přihlašování SAML**.
+    a. Vyberte **Povolit jednotné přihlašování SAML**.
 
-    b. Úprava **názvu volitelného atributu** tak, aby obsahoval **název**
+    b. Upravte **volitelný název atributu** tak, aby obsahoval **název** .
 
-    c. V části **Vybrat možnost pro načtení dat serveru Zprostředkovatel identity (IDP)** vyberte **URL metadata**, vložte hodnotu **URL metadat federace aplikace,** kterou jste zkopírovali z portálu Azure do pole, a klikněte na **Synchronizovat**.
+    c. V části **vybrat možnost načtení dat serveru zprostředkovatele identity (IDP)** vyberte **URL metadata**, vložte hodnotu **adresy URL federačních metadat aplikace** , kterou jste zkopírovali z Azure Portal v poli a pak klikněte na **synchronizovat**.
 
-    d. Po kliknutí na **tlačítko Synchronizovat** se hodnoty automaticky naplní na stránce **Konfigurace poskytovatele služeb při způsobovaném řízení.** Tyto hodnoty lze ověřit tak, aby odpovídaly hodnotám uvedeným v kroku 4 výše.
+    d. Po kliknutí na **synchronizovat** se hodnoty získá automaticky vyplněné na stránce **Konfigurace poskytovatele služeb jednotného přihlašování** . Tyto hodnoty lze ověřit tak, aby odpovídaly hodnotám zobrazeným v kroku 4 výše.
 
     e. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například, BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například, BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
 > [!NOTE]
-> Pokud chcete, aby všichni vaši uživatelé Azure měli přístup k infinite campusu a spoléhali na systém interních oprávnění Infinite Campus pro řízení přístupu, můžete nastavit vlastnost **Přiřazení uživatele požadované** aplikace na Ne a přeskočit následující kroky.
+> Pokud chcete, aby všichni uživatelé Azure měli přístup s jednotným přihlašováním k nekonečnému areálu a při řízení přístupu nemusíte spoléhat na nekonečné interní systémové oprávnění, můžete nastavit vlastnost **požadovaná pro přiřazení uživatele** u aplikace na ne a přeskočit následující kroky.
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k Infinite Campus.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k nekonečnému areálu.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte Infinite **Campus**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **nekonečné areály**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Infinite Campus**.
+2. V seznamu aplikace vyberte **nekonečná areály**.
 
-    ![Nekonečný odkaz campus v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz nekonečné Campus v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-infinite-campus-test-user"></a>Vytvořit nekonečné Campus test uživatele
+### <a name="create-infinite-campus-test-user"></a>Vytvořit neomezený uživatel pro testování Campus
 
-Infinite Campus má demograficky zaměřenou architekturu. Obraťte se na [tým podpory Infinite Campus](mailto:sales@infinitecampus.com) a přidejte uživatele na platformě Infinite Campus.
+Nekonečné areály mají demografické architektury s centry. Obraťte se prosím na [neomezený tým podpory pro vysokoškolské pracovníky](mailto:sales@infinitecampus.com) a přidejte uživatele do nekonečné školní platformy.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici Infinite Campus na přístupovém panelu, měli byste být automaticky přihlášeni k infinite campus, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici nekonečné Campy na přístupovém panelu, měli byste se automaticky přihlásit k nekonečnému areálu, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

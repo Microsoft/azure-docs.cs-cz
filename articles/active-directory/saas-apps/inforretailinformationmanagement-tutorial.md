@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s infor retailem – správou informací | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a infor retail – správou informací.
+title: 'Kurz: Azure Active Directory integrace s informacemi v maloobchodních prodejích – Správa informací | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a maloobchodní prodej informačního systému – Správa informací.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,195 +17,195 @@ ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6572560833e6336495b3bec782a096b584be1ec0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67100272"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Kurz: Integrace Azure Active Directory s Infor Retail – správa informací
+# <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Kurz: Azure Active Directory integrace s informacemi v maloobchodních prodejích – Správa informací
 
-V tomto kurzu se dozvíte, jak integrovat Infor Retail – správa informací s Azure Active Directory (Azure AD).
-Integrace Infor Retail – správa informací s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat maloobchodní prodej informací – Správa informací pomocí Azure Active Directory (Azure AD).
+Integrace informačního maloobchodu – Správa informací pomocí Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Infor Retail – správa informací.
-* Uživatelům můžete povolit automatické přihlášení k infor retail – správu informací (jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete řídit v Azure AD, kteří mají přístup k prodejnímu informačnímu programu – Správa informací.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k prodejnímu informačnímu programu – Správa informací (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Infor Retail – Správa informací, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím informačního maloobchodu – Správa informací budete potřebovat následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Infor Retail – předplatné s povoleno jedním přihlášením pro správu informací
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Maloobchodní prodej – předplatné s povoleným jednotným přihlašováním pro správu informací
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Infor Retail – správa informací podporuje **sp a IDP** inicioval sso
+* Maloobchodní prodej – Správa informací podporuje **SP a IDP** iniciované jednotné přihlašování
 
-## <a name="adding-infor-retail--information-management-from-the-gallery"></a>Přidání Infor Retail – Správa informací z galerie
+## <a name="adding-infor-retail--information-management-from-the-gallery"></a>Přidání maloobchodního informačního programu – Správa informací z Galerie
 
-Chcete-li nakonfigurovat integraci Infor Retail – Správa informací do Azure AD, je třeba přidat Infor Retail – Správa informací z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci informačního maloobchodu – správy informací do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat informace o maloobchodních prodejích – Správa informací z galerie.
 
-**Chcete-li přidat Infor Retail – Správa informací z galerie, proveďte následující kroky:**
+**Pokud chcete přidat maloobchodní informace – Správa informací z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Infor Retail – Information Management**, vyberte **Infor Retail – Information Management** z panelu výsledků a pak kliknutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **informace maloobchodní prodej – Správa informací**, vybrat **maloobchodní prodej – Správa informací** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Infor Retail – Správa informací v seznamu výsledků](common/search-new-app.png)
+    ![Maloobchodní prodej – Správa informací v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí infor retail – správy informací na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v infor retail – správa informací.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím informačního maloobchodu – Správa informací na základě testovacího uživatele s názvem **Britta Simon**.
+Aby bylo jednotné přihlašování fungovat, je třeba zřídit odkaz na vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v informačním programu informující o správě informací.
 
-Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí infor retail – správa informací, je třeba dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s využitím informačního maloobchodu – Správa informací, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace infor maloobchodu – správa informací jednotné přihlášení](#configure-infor-retail--information-management-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte Infor Retail – uživatel testu správy informací](#create-infor-retail--information-management-test-user)** – chcete-li mít protějšek Britta Simon v Infor Retail – správa informací, která je propojena s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte maloobchodní prodej – Správa informací – jednotné přihlašování](#configure-infor-retail--information-management-single-sign-on)** – pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření maloobchodního prodeje – Správa informací – testovací uživatel](#create-infor-retail--information-management-test-user)** – pro Britta Simon v informačním maloobchodním prodeji – Správa informací, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí infor retail – správa informací, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí maloobchodního informačního programu – Správa informací, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Infor Retail – Správa informací** vyberte Jednotné **přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce informace pro **maloobchodní prodej – Správa informací o správě** aplikací vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML,** pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Infor Retail – domény správy informací a adresy URL jednotné přihlašovací informace](common/idp-intiated.png)
+    ![Maloobchodní prodej – informace o jednotném přihlašování v doméně a v adresách URL pro správu informací](common/idp-intiated.png)
 
-    a. Do textového pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:
+    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:
     
     | |
     |--|
     | `https://<company name>.mingle.infor.com` |
     | `http://<company name>.mingledev.infor.com` |
 
-    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/sp/ACS.saml2`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/sp/ACS.saml2`
 
-5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Infor Retail – domény správy informací a adresy URL jednotné přihlašovací informace](common/metadata-upload-additional-signon.png)
+    ![Maloobchodní prodej – informace o jednotném přihlašování v doméně a v adresách URL pro správu informací](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/<company code>`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<company name>.mingle.infor.com/<company code>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL pro odpověď a přihlašovací adresou URL. Chcete-li získat tyto hodnoty, obraťte se na tým podpory klienta pro [správu informací Infor .](mailto:innovate@infor.com) Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Oddělení kontaktní [informace – maloobchod – tým podpory pro správu informací](mailto:innovate@infor.com) , který získá tyto hodnoty. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
+6. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-7. V části **Nastavit infor maloobchod – správa informací** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+7. V části **nastavit informace pro maloobchodní prodej – Správa informací** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-infor-retail--information-management-single-sign-on"></a>Konfigurace infor maloobchodu – jednotné přihlašování pro správu informací
+### <a name="configure-infor-retail--information-management-single-sign-on"></a>Konfigurace maloobchodního informačního programu – jednotné přihlašování pro správu informací
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **Infor Retail – Správa informací,** musíte odeslat stažený **XML metadat** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory Infor Retail – Information Management](mailto:innovate@infor.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování v **maloobchodních prodejích – na straně pro správu informací** , je třeba odeslat stažená **metadata XML** a příslušné zkopírované adresy URL z Azure Portal do [informačního oddělení maloobchodního prodeje – Správa informací](mailto:innovate@infor.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Infor Retail – správa informací.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k informačnímu maloobchodu – Správa informací.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Infor Retail – Information Management**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **informace maloobchodní prodej – Správa informací**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **možnost Infor Retail – Information Management**.
+2. V seznamu aplikace vyberte **informace maloobchodní prodej – Správa informací**.
 
-    ![Odkaz Infor Retail – Správa informací v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz informace o maloobchodních prodejích – Správa informací v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-infor-retail--information-management-test-user"></a>Vytvořit Infor Retail – uživatel testu správy informací
+### <a name="create-infor-retail--information-management-test-user"></a>Vytvoření informačního maloobchodu – Správa informací – testovací uživatel
 
-V této části vytvoříte uživatele s názvem Britta Simon v Infor Retail – Správa informací. Spolupracujte s [týmem podpory Infor Retail – Information Management](mailto:innovate@infor.com) a přidejte uživatele do platformy Infor Retail – Information Management. Uživatelé musí být vytvořena a aktivována před použitím jednotného přihlášení.
+V této části vytvoříte uživatele s názvem Britta Simon v části informační program – Správa informací. V části práce se službou [Information Management – tým podpory pro správu informací](mailto:innovate@infor.com) umožňuje přidávat uživatele v maloobchodních prodejních – informace o platformě správy informací. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na infor retail – správa informací na přístupovém panelu, měli byste být automaticky přihlášeni k Infor Retail – správa informací, pro které nastavíte přiřazování k šaten. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici informace o maloobchodním prodeji – Správa informací na přístupovém panelu byste měli být automaticky přihlášeni k prodejnímu informačnímu programu – Správa informací, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

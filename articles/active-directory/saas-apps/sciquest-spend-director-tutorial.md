@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s ředitelem výdajů SciQuest | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a ředitelem výdajů SciQuest.
+title: 'Kurz: Azure Active Directory integrace s ředitelem útraty v SciQuest | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ředitelem útraty pro SciQuest.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,195 +16,195 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 199f531485a6a6c9ea234b35a7dbb88b66b3067c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67091639"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Kurz: Integrace služby Azure Active Directory s ředitelem výdajů SciQuest
+# <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Kurz: Integrace Azure Active Directory s využitím ředitele útraty SciQuest
 
-V tomto kurzu se dozvíte, jak integrovat Ředitel výdajů SciQuest s Azure Active Directory (Azure AD).
-Integrace ředitele výdajů SciQuest s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak pomocí Azure Active Directory (Azure AD) integrovat ředitele útraty SciQuest.
+Integrace ředitele útraty SciQuest s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Řediteli výdajů SciQuest.
-* Můžete povolit, aby se uživatelé automaticky přihlásili ke službě SciQuest Spend Director (Single Sign-On) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete řídit v Azure AD, kteří mají přístup k SciQuest ředitele útraty.
+* Můžete uživatelům povolit, aby se automaticky přihlásili k SciQuest útraty (jednotné přihlašování) s účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Ředitelem výdajů SciQuest, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím ředitele SciQuest útraty potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* SciQuest Strávit ředitel jednotného přihlášení povoleno předplatné
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným jednotným přihlašováním pro SciQuest výdaje
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* SciQuest Strávit ředitel podporuje **SP** zahájila SSO
-* SciQuest Strávit ředitel podporuje **just in time** uživatele zřizování
+* Ředitel útraty pro SciQuest podporuje jednotné přihlašování s podporou **SP**
+* Ředitel útraty pro SciQuest podporuje zřizování uživatelů **jenom v čase**
 
-## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Přidání SciQuest Strávit ředitel z galerie
+## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Přidání ředitele útraty SciQuest z Galerie
 
-Chcete-li nakonfigurovat integraci ředitele SciQuest Spend Director do služby Azure AD, musíte přidat ředitele výdajů SciQuest z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ředitele útraty SciQuest do služby Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat z Galerie SciQueste ředitele útraty.
 
-**Chcete-li přidat Ředitel výdajů SciQuest z galerie, proveďte následující kroky:**
+**Pokud chcete přidat ředitele útraty SciQuest z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **SciQuest Spend Director**, vyberte **SciQuest Spend Director** z panelu výsledků a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **ředitel SciQuest útraty**, vyberte **SciQuest ředitel** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![SciQuest Strávit ředitel v seznamu výsledků](common/search-new-app.png)
+     ![Ředitel SciQuest útraty v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí programu SciQuest Spend Director na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v aplikaci SciQuest Spend Director.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím ředitele SciQuest útraty na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v SciQuest ředitele útraty.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí programu SciQuest Spend Director, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD s využitím ředitele SciQuest útraty, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace SciQuest Strávit ředitel jednotného přihlášení](#configure-sciquest-spend-director-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte sciquest strávit ředitel testovací ho uživatele](#create-sciquest-spend-director-test-user)** – mít protějšek Britta Simon v SciQuest Strávit ředitel, který je propojen s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování ředitele útraty v SciQuest](#configure-sciquest-spend-director-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořit testovacího uživatele vedoucích výdajů na SciQuest](#create-sciquest-spend-director-test-user)** – Pokud chcete mít protějšek Britta Simon v SciQuest ředitele útraty, která je propojená s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí programu SciQuest Spend Director, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD s využitím ředitele SciQuest útraty, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **SciQuest Spend Director** vyberte Jednotné **přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikace **ředitele SciQuest výdaje** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![SciQuest Strávit ředitel domény a URL jednotnépřihlašovací informace](common/sp-identifier-reply.png)
+    ![Informace o jednotném přihlašování v SciQuest a doméně ředitele útraty](common/sp-identifier-reply.png)
 
-    a. Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`
 
-    b. Do pole **Identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com`
+    b. Do pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com`
 
-    c. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+    c. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou přihlašovací adresou URL, identifikátorem a adresou URL pro odpověď. Kontaktujte [SciQuest Strávit ředitel klienta tým podpory](https://www.jaggaer.com/contact-us/) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné přihlašovací adresy URL, identifikátoru a adresy URL odpovědi. Pokud chcete získat tyto hodnoty, kontaktujte [tým podpory pro klienta podpory SciQuest](https://www.jaggaer.com/contact-us/) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. V části **Nastavit Ředitel výdajů SciQuest** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **Nastavení ředitele útraty pro SciQuest** zkopírujte příslušné adresy URL dle vašeho požadavku.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-sciquest-spend-director-single-sign-on"></a>Konfigurace SciQuest Strávit ředitel jednotného přihlášení
+### <a name="configure-sciquest-spend-director-single-sign-on"></a>Konfigurace jednotného přihlašování ředitelů SciQuest útraty
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **SciQuest Spend Director,** musíte odeslat stažený **xml metadat federace** a příslušné zkopírované adresy URL z portálu Azure do týmu podpory programu [SciQuest Spend Director](https://www.jaggaer.com/contact-us/). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na straně **ředitele útraty SciQuest** , je potřeba odeslat stažený **soubor XML federačních metadat** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory SciQuest útraty](https://www.jaggaer.com/contact-us/). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
+    b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k SciQuest Strávit director.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k řediteli SciQuest útraty.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **SciQuest Spend Director**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **ředitel SciQuest útraty**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **SciQuest Spend Director**.
+2. V seznamu aplikace vyberte **SciQuest ředitele útraty**.
 
-    ![Odkaz SciQuest Spend Director v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na ředitele útraty SciQuest v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-sciquest-spend-director-test-user"></a>Vytvořit SciQuest Strávit ředitel test uživatele
+### <a name="create-sciquest-spend-director-test-user"></a>Vytvořit testovacího uživatele pro vedoucí výdaje na SciQuest
 
-Cílem této sekce je vytvořit uživatele s názvem Britta Simon v SciQuest Strávit ředitel.
+Cílem této části je vytvořit uživatele s názvem Britta Simon v řediteli útraty pro SciQuest.
 
-Musíte kontaktovat svůj [tým podpory SciQuest Strávit ředitel](https://www.jaggaer.com/contact-us/) a poskytnout jim podrobnosti o vašem testovacím účtu, aby si to vytvořil.
+Musíte se obrátit na [tým podpory ředitele pro SciQuest výdaje](https://www.jaggaer.com/contact-us/) a poskytnout jim podrobnosti o testovacím účtu, abyste ho mohli vytvořit.
 
-Případně můžete také využít zřizování just-in-time, což je funkce jednotného přihlášení, kterou podporuje ředitel výdajů SciQuest.  
-Pokud je povoleno zřizování just-in-time, uživatelé jsou automaticky vytvořeny SciQuest Strávit ředitel během pokusu o jednotné přihlášení, pokud neexistují. Tato funkce eliminuje potřebu ručně vytvářet uživatele s jedním přihlašujícím se protějškem.
+Alternativně můžete také využít zřizování za běhu, což je jednotné přihlašování, které podporuje ředitel SciQuest útraty.  
+Pokud je zajišťování za běhu povoleno, uživatelé se automaticky vytvoří prostřednictvím SciQuest výdaje v rámci jednotného přihlašování, pokud neexistují. Tato funkce eliminuje nutnost ručního vytvoření uživatelů partnerského přihlášení s jednotným přihlašováním.
 
-Chcete-li získat just-in-time zřizování povoleno, musíte kontaktovat váš [tým podpory SciQuest Strávit ředitel](https://www.jaggaer.com/contact-us/).
+Pokud chcete získat povolení pro práci za běhu, musíte se obrátit na [tým podpory ředitelů SciQuest útraty](https://www.jaggaer.com/contact-us/).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici SciQuest Strávit ředitel na přístupovém panelu, měli byste být automaticky přihlášeni k SciQuest strávit ředitel, pro který nastavíte sso. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici režiséra SciQuest útraty na přístupovém panelu byste měli být automaticky přihlášení k SciQuest řediteli útraty, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

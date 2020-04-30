@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušejte cloudové řešení prediktivní údržby IoT – Azure | Dokumenty společnosti Microsoft
+title: Vyzkoušejte cloudové řešení IoT pro prediktivní údržbu – Azure | Microsoft Docs
 description: V tomto rychlém startu nasadíte akcelerátor řešení prediktivní údržby Azure IoT, přihlásíte se k řídicímu panelu řešení a budete s ním pracovat.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: cecf23d61d6a12c20aa3e64e4ee0ddacddbe7823
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "62106809"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Rychlý start: Vyzkoušení cloudového řešení za účelem spuštění analýzy prediktivní údržby na připojených zařízeních
@@ -26,7 +26,7 @@ Motory letadel společnosti Fabrikam jsou vybaveny snímači, které monitorují
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
@@ -42,7 +42,7 @@ Na stránce **vytvoření řešení prediktivní údržby** zadejte jedinečný 
 
 Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerátoru řešení použít. Obvykle byste měli zvolit oblast, která je vám nejblíže. V tomto rychlém startu používáme možnosti **Visual Studio Enterprise** a **USA – východ**. V předplatném musíte být [globálním správcem nebo uživatelem](iot-accelerators-permissions.md).
 
-Chcete-li zahájit nasazení, klepněte na tlačítko **Vytvořit.** Dokončení tohoto procesu trvá minimálně pět minut:
+Kliknutím na **vytvořit** zahajte nasazení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti řešení prediktivní údržby](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Na stránce **Zřízená řešení** klikněte na nový akcelerátor řešení p
 
 ![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solution.png)
 
- Informace o akcelerátoru řešení můžete zobrazit na stránce, která se zobrazí. Zvolte **Přejít na akcelerátor řešení** a zobrazte si akcelerátor řešení prediktivní údržby:
+ Informace o akcelerátoru řešení můžete zobrazit na stránce, která se zobrazí. Zvolením možnosti **Přejít do akcelerátoru řešení** můžete zobrazit akcelerátor řešení prediktivní údržby:
 
 ![Panel řešení](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
@@ -80,7 +80,7 @@ Simulaci lze zastavit v libovolný okamžik, ale kliknutím na tlačítko **Star
 
 Pokud chcete pokračovat v prozkoumávání, ponechte akcelerátor řešení prediktivní údržby nasazený.
 
-Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [Zřízená řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) tak, že ho vyberete a kliknete na **Odstranit řešení**:
+Pokud už akcelerátor řešení nepotřebujete, odstraňte ho ze stránky [zřízené řešení](https://www.azureiotsolutions.com/Accelerators#dashboard) , a to tak, že ho vyberete a pak kliknete na **Odstranit řešení**:
 
 ![Odstranění řešení](media/quickstart-predictive-maintenance-deploy/deletesolution.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s infogix data3Sixty govern | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Infogix Data3Sixty Govern.
+title: 'Kurz: Azure Active Directory integrace se Infogix Data3Sixty | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Infogix Data3Sixty.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,226 +16,226 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: a0b8dbb3992808bdcb94291d876192431c72f6c2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67100348"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Kurz: Integrace Služby Azure Active Directory s řízením Infogix Data3Sixty
+# <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Kurz: Azure Active Directory integrace se Infogix Data3Sixty se řídí
 
-V tomto kurzu se dozvíte, jak integrovat Infogix Data3Sixty řídit s Azure Active Directory (Azure AD).
-Integrace Infogix Data3Sixty Govern s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat Infogix Data3Sixty s Azure Active Directory (Azure AD).
+Integrace Infogix Data3Sixty, která se řídí pomocí Azure AD, poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Infogix Data3Sixty Govern.
-* Můžete povolit uživatelům, aby se automaticky přihlásili k Infogix Data3Sixty Govern (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete řídit v Azure AD, kteří mají přístup k Infogix Data3Sixty.
+* Můžete uživatelům povolit, aby se automaticky přihlásili k Infogix Data3Sixty (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD pomocí infogix data3Sixty govern, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s Infogix Data3Sixty se řídí tyto položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Infogix Data3Sixty Řídí předplatné s povoleným jedním přihlášením
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Infogix Data3Sixty řídí předplatné s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Infogix Data3Sixty Govern podporuje **sp a IDP** iniciované zabezpečení
-* Infogix Data3Sixty Govern podporuje zřizování uživatelů **just in time**
+* Infogix Data3Sixty se řídí podporou **SP a IDP** , kterou iniciují jednotné přihlašování.
+* Infogix Data3Sixty řídí podporu **při zřizování uživatelů jenom včas**
 
-## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>Přidání Infogix Data3Sixty Vládnout z galerie
+## <a name="adding-infogix-data3sixty-govern-from-the-gallery"></a>Přidání Infogix Data3Sixty se řídí z Galerie
 
-Chcete-li nakonfigurovat integraci Infogix Data3Sixty Govern do Azure AD, musíte přidat Infogix Data3Sixty Govern z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Infogix Data3Sixty na Azure AD, musíte přidat Infogix Data3Sixty z Galerie na svůj seznam spravovaných aplikací SaaS.
 
-**Chcete-li přidat Infogix Data3Sixty Govern z galerie, proveďte následující kroky:**
+**Pokud chcete přidat Infogix Data3Sixty z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Příkaz Infogix Data3Sixty Govern**, vyberte **infogix Data3Sixty Govern** z panelu výsledků a pak klepněte na tlačítko **Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Infogix Data3Sixty**, vyberte **Infogix Data3Sixty** řízení z panelu výsledek a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Infogix Data3Sixty Řídit v seznamu výsledků](common/search-new-app.png)
+     ![Infogix Data3Sixty se řídí v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí infogixdata3Sixty Govern na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Infogix Data3Sixty Govern.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Infogix Data3Sixty na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Infogix Data3Sixty.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí infogix data3Sixty govern, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Infogix Data3Sixty, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace Infogix Data3Sixty Řídit jednotné přihlašování](#configure-infogix-data3sixty-govern-single-sign-on)** - ke konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte Infogix Data3Sixty Řídit testovacího uživatele](#create-infogix-data3sixty-govern-test-user)** – mít protějšek Britta Simon v Infogix Data3Sixty Govern, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Konfigurace Infogix Data3Sixty řídí jednotné přihlašování](#configure-infogix-data3sixty-govern-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Infogix Data3Sixty řídí testovacího uživatele](#create-infogix-data3sixty-govern-test-user)** – aby bylo možné mít protějšek Britta Simon v Infogix Data3Sixty, která se odkazuje na reprezentaci uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí funkce Infogix Data3Sixty Govern, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Infogix Data3Sixty, postupujte takto:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)na stránce **Infogix Data3Sixty Govern application** integration vyberte Single **sign-on**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **Infogix Data3Sixty** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML,** Pokud chcete nakonfigurovat aplikaci v režimu iniciovaného **protokolem IDP,** proveďte následující kroky:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující kroky:
 
-    ![Infogix Data3Sixty řídí informace o jednotném přihlášení doméně a adres URL](common/idp-intiated.png)
+    ![Infogix Data3Sixty řídí informace o jednotném přihlašování domén a adres URL](common/idp-intiated.png)
 
-    a. Do textového pole **Identifikátor** zadejte adresu URL:`https://data3sixty.com/ui`
+    a. Do textového pole **identifikátor** zadejte adresu URL:`https://data3sixty.com/ui`
 
-    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.data3sixty.com/sso/acs`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.data3sixty.com/sso/acs`
 
-5. Klepněte na tlačítko **Nastavit další adresy URL** a proveďte následující krok, pokud chcete aplikaci nakonfigurovat v režimu iniciovaném **službou SP:**
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    ![Infogix Data3Sixty řídí informace o jednotném přihlášení doméně a adres URL](common/metadata-upload-additional-signon.png)
+    ![Infogix Data3Sixty řídí informace o jednotném přihlašování domén a adres URL](common/metadata-upload-additional-signon.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.data3sixty.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<subdomain>.data3sixty.com`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Aktualizujte tyto hodnoty skutečnou adresou URL pro odpověď a adresou URL pro přihlášení. Kontaktujte [Infogix Data3Sixty řídit tým podpory klienta](mailto:data3sixtysupport@infogix.com) získat tyto hodnoty. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty pomocí skutečné adresy URL odpovědi a přihlašovací adresy URL. Pokud chcete získat tyto hodnoty, kontaktujte [Infogix Data3Sixty tým podpory klientů](mailto:data3sixtysupport@infogix.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-6. Infogix Data3Sixty Govern aplikace očekává, že saml kontrolní výrazy v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Hodnoty těchto atributů můžete spravovat v části **Atributy uživatele** na stránce integrace aplikace. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na **tlačítko Upravit** otevřete dialogové okno **Atributy uživatele.**
+6. Aplikace řízení Infogix Data3Sixty očekává kontrolní výrazy SAML v určitém formátu. Pro tuto aplikaci nakonfigurujte následující deklarace identity. Hodnoty těchto atributů můžete spravovat z oddílu **atributy uživatele** na stránce integrace aplikací. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na tlačítko **Upravit** a otevřete dialog **uživatelské atributy** .
 
     ![image](common/edit-attribute.png)
 
-7. V části **Deklarace identity uživatelů** v dialogovém okně **Atributy uživatele** upravte deklarace pomocí **ikony Upravit** nebo přidejte deklarace pomocí funkce Přidat **novou deklaraci** pro konfiguraci atributu tokenu SAML, jak je znázorněno na obrázku výše, a proveďte následující kroky:
+7. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** upravte deklarace pomocí **ikony upravit** nebo přidejte deklarace pomocí **Přidat novou deklaraci identity** , jak je znázorněno na obrázku výše, a proveďte následující kroky:
 
-    | Name (Název) | Atribut zdroje|
+    | Název | Zdrojový atribut|
     | -----------| -------------- |
-    | Jméno  | user.givenname |
-    | Lastname   | user.příjmení |
-    | uživatelské jméno   | user.mail    |
+    | FirstName  | User. křestní jméno |
+    | polím   | User. příjmení |
+    | uživatelské jméno   | uživatel. pošta    |
 
-    a. Kliknutím na **Přidat novou deklaraci** otevřete dialogové okno **Spravovat deklarace identity uživatelů.**
+    a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
     ![image](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
-    b. Do textového pole **Název** zadejte název atributu zobrazený pro daný řádek.
+    b. Do textového pole **název** zadejte název atributu zobrazeného pro tento řádek.
 
-    c. Ponechejte **obor názvů** prázdný.
+    c. Ponechte **obor názvů** prázdný.
 
-    d. Vyberte zdroj jako **atribut**.
+    d. Jako **atribut**vyberte zdroj.
 
-    e. Ze seznamu **atributů Zdroj** zadejte hodnotu atributu zobrazenou pro daný řádek.
+    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
 
-    f. Klikněte na **Ok.**
+    f. Klikněte na **OK** .
 
     g. Klikněte na **Uložit**.
 
-8. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
+8. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
+    ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
-9. V **části Nastavit Infogix Data3Sixty Govern** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+9. V části **Nastavení Data3Sixty řízení Infogix** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Konfigurace funkce Infogix Data3Sixty Řídí jednotné přihlašování
+### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Konfigurace Infogix Data3Sixty řídí jednotné přihlašování
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **Infogix Data3Sixty Govern,** musíte odeslat stažený **certifikát (Raw)** a příslušné zkopírované adresy URL z portálu Azure do [týmu podpory Infogix Data3Sixty Govern](mailto:data3sixtysupport@infogix.com). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Chcete-li nakonfigurovat jednotné přihlašování na **Infogix Data3Sixty** , je třeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [Infogix Data3Sixty řídí tým podpory](mailto:data3sixtysupport@infogix.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské jméno** typ pole**brittasimon@yourcompanydomain.extension**  
+    b. Do pole typ **uživatelského jména****brittasimon@yourcompanydomain.extension**  
     Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Infogix Data3Sixty Govern.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Infogix Data3Sixty řízení.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Infogix Data3Sixty Govern**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte **Infogix Data3Sixty**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Infogix Data3Sixty Govern**.
+2. V seznamu aplikace vyberte **Infogix Data3Sixty**.
 
-    ![Odkaz Infogix Data3Sixty Govern v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na Infogix Data3Sixty řídí v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-infogix-data3sixty-govern-test-user"></a>Vytvořit infogix Data3Sixty Řídit testovacího uživatele
+### <a name="create-infogix-data3sixty-govern-test-user"></a>Vytvoření Infogix Data3Sixty řídí testovacího uživatele
 
-V této části je vytvořen uživatel s názvem Britta Simon v Infogix Data3Sixty Govern. Infogix Data3Sixty Govern podporuje zřizování uživatelů just-in-time, které je ve výchozím nastavení povoleno. V této části pro vás není žádná položka akce. Pokud uživatel ještě neexistuje v Infogix Data3Sixty Govern, nový je vytvořen po ověření.
+V této části se v Infogix Data3Sixty řídí uživatel s názvem Britta Simon. Infogix Data3Sixty Určuje podporu zřizování uživatelů za běhu, která je ve výchozím nastavení povolená. V této části není žádná položka akce. Pokud uživatel ještě neexistuje v Infogix Data3Sixty, vytvoří se po ověření nový.
 
 > [!Note]
-> Pokud potřebujete vytvořit uživatele ručně, obraťte se [na infogix Data3Sixty řídí tým podpory](mailto:data3sixtysupport@infogix.com).
+> Pokud potřebujete ručně vytvořit uživatele, obraťte se na Infogix Data3Sixty, který se [řídí týmem podpory](mailto:data3sixtysupport@infogix.com).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Infogix Data3Sixty Řídit na přístupovém panelu, měli byste být automaticky přihlášeni k Infogix Data3Sixty řídit, pro které nastavíte přistupující služby. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Infogix Data3Sixty, měli byste být automaticky přihlášeni k Infogix Data3Sixty řízení, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

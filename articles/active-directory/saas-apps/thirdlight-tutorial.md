@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory se službou ThirdLight | Dokumenty společnosti Microsoft'
+title: 'Kurz: Azure Active Directory integrace s ThirdLight | Microsoft Docs'
 description: V tomto kurzu se dozvíte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ThirdLight.
 services: active-directory
 documentationCenter: na
@@ -16,219 +16,219 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67089093"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Kurz: Integrace služby Azure Active Directory se službou ThirdLight
+# <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Kurz: Azure Active Directory integrace s ThirdLight
 
 V tomto kurzu se dozvíte, jak integrovat ThirdLight s Azure Active Directory (Azure AD). Tato integrace poskytuje tyto výhody:
 
-* Azure AD můžete použít k řízení, kdo má přístup k ThirdLight.
-* Můžete povolit, aby vaši uživatelé byli automaticky přihlášeni k ThirdLight (jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění: na portálu Azure.
+* Pomocí Azure AD můžete řídit, kdo má přístup k ThirdLight.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k ThirdLight (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění: Azure Portal.
 
-Pokud se chcete dozvědět víc o integraci aplikací SaaS s Azure AD, přečtěte [si témat jednotné přihlašování k aplikacím ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud se chcete dozvědět víc o integraci aplikací SaaS s Azure AD, přečtěte si téma [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s ThirdLight, musíte mít:
+Pokud chcete nakonfigurovat integraci Azure AD s ThirdLight, musíte mít:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné ThirdLight, které má povoleno jednotné přihlašování.
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
+* Předplatné ThirdLight s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu budete konfigurovat a testovat jednotné přihlašování Azure AD v testovacím prostředí.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* ThirdLight podporuje sp-iniciované spřiby.
+* ThirdLight podporuje jednotné přihlašování iniciované v SP.
 
-## <a name="add-thirdlight-from-the-gallery"></a>Přidat ThirdLight z galerie
+## <a name="add-thirdlight-from-the-gallery"></a>Přidání ThirdLight z Galerie
 
-Chcete-li nastavit integraci ThirdLight do Azure AD, musíte přidat ThirdLight z galerie do seznamu spravovaných aplikací SaaS.
+K nastavení integrace ThirdLight do služby Azure AD je nutné přidat ThirdLight z Galerie do seznamu spravovaných aplikací SaaS.
 
-1. Na [webu Azure Portal](https://portal.azure.com)v levém podokně vyberte **Službu Azure Active Directory**:
+1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte **Azure Active Directory**:
 
     ![Vyberte Azure Active Directory.](common/select-azuread.png)
 
-2. Přejít na **podnikové aplikace** > **Všechny aplikace**:
+2. Přejít k **podnikovým aplikacím** > **všechny aplikace**:
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-3. Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace:**
+3. Chcete-li přidat aplikaci, vyberte v horní části okna možnost **Nová aplikace** :
 
     ![Vybrat novou aplikaci](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **ThirdLight**. Ve výsledcích hledání vyberte **Třetí světlo** a pak vyberte **Přidat**.
+4. Do vyhledávacího pole zadejte **ThirdLight**. Ve výsledcích hledání vyberte **ThirdLight** a pak vyberte **Přidat**.
 
      ![Výsledky hledání](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí thirdlight pomocí testovacího uživatele s názvem Britta Simon.
-Chcete-li povolit jednotné přihlašování, musíte vytvořit vztah mezi uživatelem Azure AD a odpovídajícím uživatelem v ThirdLight.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí ThirdLight pomocí testovacího uživatele s názvem Britta Simon.
+Pokud chcete povolit jednotné přihlašování, musíte vytvořit relaci mezi uživatelem služby Azure AD a odpovídajícím uživatelem v ThirdLight.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí thirdlight, je třeba provést tyto kroky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ThirdLight, musíte provést tyto kroky:
 
-1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** tak, aby byla tato funkce povolena pro vaše uživatele.
-2. **[Konfigurace ThirdLight jednotné přihlášení na](#configure-thirdlight-single-sign-on)** straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlášení Azure AD.
-4. **[Přiřaďte testovacímu uživateli Azure AD,](#assign-the-azure-ad-test-user)** aby uživatel povolil jednotné přihlašování Azure AD.
-5. **[Vytvořte uživatele testu ThirdLight,](#create-a-thirdlight-test-user)** který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlášení](#test-single-sign-on)** a ověřte, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** , abyste funkci povolili uživatelům.
+2. **[Konfigurace jednotného přihlašování ThirdLight](#configure-thirdlight-single-sign-on)** na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** povolení jednotného přihlašování Azure AD pro uživatele.
+5. **[Vytvořte testovacího uživatele ThirdLight](#create-a-thirdlight-test-user)** , který je propojený s Předprezentací Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** a ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ThirdLight, postupujte takto:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí ThirdLight, proveďte tyto kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací ThirdLight vyberte **Jednotné přihlašování**:
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací ThirdLight vyberte **jednotné přihlašování**:
 
-    ![Vybrat jednotné přihlašování](common/select-sso.png)
+    ![Vyberte jednotné přihlašování.](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování:
+2. V dialogovém okně **Vybrat metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** pro povolení jednotného přihlašování:
 
-    ![Výběr metody jednotného přihlášení](common/select-saml-option.png)
+    ![Vyberte metodu jednotného přihlašování.](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** vyberte ikonu **Upravit** a otevřete dialogové okno Základní **konfigurace SAML:**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte ikonu **Upravit** a otevřete DIALOGOVÉ okno **základní konfigurace SAML** :
 
     ![Ikona úprav](common/edit-urls.png)
 
-4. V dialogovém okně **Základní konfigurace SAML** proveďte následující kroky.
+4. V dialogovém okně **základní konfigurace SAML** proveďte následující kroky.
 
-    ![Dialogové okno Základní konfigurace SAML](common/sp-identifier.png)
+    ![Základní dialogové okno Konfigurace SAML](common/sp-identifier.png)
 
-    1. Do pole **Přihlásit se na adresu URL** zadejte adresu URL v tomto vzoru:
+    1. Do pole **přihlašovací adresa URL** zadejte adresu URL v tomto vzoru:
     
           `https://<subdomain>.thirdlight.com/`
 
-    1. Do pole **Identifikátor (ID entity)** zadejte adresu URL v tomto vzoru:
+    1. Do pole **identifikátor (ID entity)** zadejte adresu URL v tomto vzoru:
 
        `https://<subdomain>.thirdlight.com/saml/sp`
 
        > [!NOTE]
-       > Tyto hodnoty jsou zástupné symboly. Musíte použít skutečnou přihlašovací adresu URL a identifikátor. Obraťte se na [tým podpory ThirdLight](https://www.thirdlight.com/support) získat hodnoty. Můžete také odkazovat na vzory zobrazené v dialogovém okně **Základní konfigurace SAML** na webu Azure Portal.
+       > Tyto hodnoty jsou zástupné symboly. Musíte použít vlastní přihlašovací adresu URL a identifikátor. Pokud chcete získat hodnoty, obraťte se na [tým podpory ThirdLight](https://www.thirdlight.com/support) . Můžete se také podívat na vzory zobrazené v dialogovém okně **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** vyberte v části **Podpisový certifikát SAML** odkaz **Ke stažení** vedle xml metadat **federace**a uložte soubor do počítače:
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** vedle **metadat federace XML**podle vašich požadavků a uložte soubor do počítače:
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. V části **Nastavit ThirdLight** zkopírujte příslušné adresy URL na základě vašich požadavků:
+6. V části **Nastavení ThirdLight** zkopírujte podle vašich požadavků příslušné adresy URL:
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat konfigurační adresy URL](common/copy-configuration-urls.png)
 
-    1. **Adresa URL přihlášení**.
+    1. **Přihlašovací adresa URL**
 
-    1. **Identifikátor služby Azure .**
+    1. **Identifikátor Azure AD**.
 
-    1. **Adresa URL pro odhlášení**.
+    1. **Odhlašovací adresa URL**
 
 ### <a name="configure-thirdlight-single-sign-on"></a>Konfigurace jednotného přihlašování ThirdLight
 
-1. V novém okně webového prohlížeče se přihlaste na web společnosti ThirdLight jako správce.
+1. V novém okně webového prohlížeče se přihlaste k webu ThirdLight společnosti jako správce.
 
-1. Přejít na **správu konfiguračního** > **systému** > **SAML2**:
+1. Přejít do **Configuration** > **správy** > konfiguračního systému**typu Saml2**:
 
     ![Správa systému](./media/thirdlight-tutorial/ic805843.png "Správa systému")
 
-1. V části konfigurace SAML2 postupujte podle následujících kroků.
+1. V části Konfigurace typu Saml2 proveďte následující kroky.
   
-    ![Oddíl konfigurace SAML2](./media/thirdlight-tutorial/ic805844.png "Oddíl konfigurace SAML2")
+    ![Konfigurační oddíl typu Saml2](./media/thirdlight-tutorial/ic805844.png "Konfigurační oddíl typu Saml2")
 
-    1. Vyberte **povolit jednotné přihlašování SAML2**.
+    1. Vyberte **Povolit jednotné přihlašování typu Saml2**.
 
-    1. V části **Zdroj metadat idp**vyberte **načíst metadata idp z XML**.
+    1. V části **zdroj pro metadata IDP**vyberte **načíst IDP metadata z XML**.
 
-    1. Otevřete soubor metadat, který jste stáhli z webu Azure Portal v předchozí části. Zkopírujte obsah souboru a vložte jej do pole **XML metadat idp.**
+    1. Otevřete soubor metadat, který jste stáhli z Azure Portal v předchozí části. Zkopírujte obsah souboru a vložte ho do pole **XML metadat IDP** .
 
-    1. Vyberte **Uložit nastavení SAML2**.
+    1. Vyberte **Uložit nastavení typu Saml2**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele s názvem Britta Simon na webu Azure Portal.
+V této části vytvoříte testovacího uživatele s názvem Britta Simon v Azure Portal.
 
-1. Na webu Azure Portal vyberte v levém podokně **Službu Azure Active Directory,** vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**:
+1. V Azure Portal v levém podokně vyberte **Azure Active Directory** , vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**:
 
     ![Vyberte Všichni uživatelé.](common/users.png)
 
-2. V horní části okna vyberte **Nového uživatele:**
+2. V horní části okna vyberte **Nový uživatel** :
 
     ![Vybrat nového uživatele](common/new-user.png)
 
-3. V dialogovém okně **Uživatel** proveďte následující kroky.
+3. V dialogovém okně **uživatel** proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatel – dialogové okno](common/user-properties.png)
 
-    1. Do pole **Název** zadejte **BrittaSimon**.
+    1. Do pole **název** zadejte **BrittaSimon**.
   
-    1. Do pole **Uživatelské jméno** zadejte **BrittaSimon@\<\<> vaší firemní domény. prodloužení>**. (Například BrittaSimon@contoso.com.)
+    1. Do pole **uživatelské jméno** zadejte **BrittaSimon@\<\< yourcompanydomain>.>rozšíření **. (Například BrittaSimon@contoso.com.)
 
-    1. Vyberte **Zobrazit heslo**a poznamenejte si hodnotu, která je v poli **Heslo.**
+    1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která je uvedena v poli **heslo** .
 
     1. Vyberte **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení tím, že jí přístup k ThirdLight.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k ThirdLight.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **ThirdLight**.
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **ThirdLight**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **ThirdLight**.
+2. V seznamu aplikací vyberte možnost **ThirdLight**.
 
-    ![Seznam žádostí](common/all-applications.png)
+    ![Seznam aplikací](common/all-applications.png)
 
 3. V levém podokně vyberte **Uživatelé a skupiny**:
 
     ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
-4. V **dialogovém okně Přidat** **přiřazení** vyberte Přidat uživatele a pak vyberte **Uživatelé a skupiny.**
+4. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu Uživatelé **Brittu Simonovou** a v dolní části okna klikněte na tlačítko **Vybrat.**
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu Uživatelé položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části okna.
 
-6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu. Klepněte na tlačítko **Vybrat** v dolní části okna.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele. Klikněte na tlačítko **Vybrat** v dolní části okna.
 
-7. V dialogovém okně **Přidat přiřazení** vyberte **Přiřadit**.
+7. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
-### <a name="create-a-thirdlight-test-user"></a>Vytvoření testovacího uživatele ThirdLight
+### <a name="create-a-thirdlight-test-user"></a>Vytvořit testovacího uživatele v ThirdLight
 
-Chcete-li povolit uživatelům Azure AD k přihlášení k ThirdLight, je nutné je přidat do ThirdLight. Musíte je přidat ručně.
+Pokud chcete uživatelům Azure AD povolit, aby se přihlásili k ThirdLight, musíte je přidat do ThirdLight. Musíte je přidat ručně.
 
-Chcete-li vytvořit uživatelský účet, postupujte takto:
+Chcete-li vytvořit uživatelský účet, proveďte následující kroky:
 
-1. Přihlaste se na své stránky společnosti ThirdLight jako správce.
+1. Přihlaste se k webu ThirdLight společnosti jako správce.
 
-1. Přejděte na kartu **Uživatelé.**
+1. Přejít na kartu **Uživatelé** .
 
-1. Vyberte **možnost Uživatelé a skupiny**.
+1. Vyberte **Uživatelé a skupiny**.
 
 1. Vyberte **Přidat nového uživatele**.
 
-1. Zadejte uživatelské jméno, jméno nebo popis a e-mailovou adresu platného účtu Azure AD, který chcete zřídit. Zvolte přednastavení nebo skupinu nových členů.
+1. Zadejte uživatelské jméno, název nebo popis a e-mailovou adresu platného účtu Azure AD, který chcete zřídit. Vyberte předvolbu nebo skupinu nových členů.
 
 1. Vyberte **Vytvořit**.
 
 > [!NOTE]
-> Můžete použít libovolný nástroj pro vytváření uživatelských účtů nebo rozhraní API poskytované ThirdLight zřídit uživatelské účty Azure AD.
+> K zřizování uživatelských účtů Azure AD můžete použít libovolný nástroj pro vytváření uživatelských účtů nebo rozhraní API, které poskytuje ThirdLight.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-Teď je potřeba otestovat konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+Teď je potřeba otestovat konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když vyberete dlaždici ThirdLight na přístupovém panelu, měli byste být automaticky přihlášeni k instanci ThirdLight, pro kterou nastavíte přispojené přispojené k zemi. Další informace o přístupovém panelu najdete v [tématu Přístup a používání aplikací na portálu Moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici ThirdLight, měli byste se automaticky přihlásit k instanci ThirdLight, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu věnovaném [přístupu a používání aplikací na portálu moje aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 - [Kurzy integrace aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

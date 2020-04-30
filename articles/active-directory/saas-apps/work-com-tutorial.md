@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s Work.com | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a Work.com.
+title: 'Kurz: Azure Active Directory integrace s Work.com | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Work.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,295 +17,295 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7a6dc16eef1bb36a5bd6cbf0502a83481230bc0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67087081"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Kurz: Integrace Azure Active Directory s Work.com
+# <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Kurz: Azure Active Directory integrace s Work.com
 
 V tomto kurzu se dozvíte, jak integrovat Work.com s Azure Active Directory (Azure AD).
 Integrace Work.com s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k Work.com.
-* Můžete povolit, aby vaši uživatelé byli automaticky přihlášeni k Work.com (jednotné přihlášení) pomocí svých účtů Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k Work.com.
+* Můžete povolit, aby se vaši uživatelé automaticky přihlásili k Work.com (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s Work.com, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s Work.com potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Work.com předplatné s povolenou přihlášením
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné s povoleným Work.comm jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Work.com podporuje **sp** inicioval sso
+* Work.com podporuje jednotné přihlašování iniciované v **SP**
 
-## <a name="adding-workcom-from-the-gallery"></a>Přidání Work.com z galerie
+## <a name="adding-workcom-from-the-gallery"></a>Přidání Work.com z Galerie
 
-Chcete-li nakonfigurovat integraci Work.com do Azure AD, je potřeba přidat Work.com z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Work.com do služby Azure AD, musíte přidat Work.com z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-**Chcete-li přidat Work.com z galerie, proveďte následující kroky:**
+**Pokud chcete přidat Work.com z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Work.com**, vyberte **Work.com** z panelu výsledků a klepnutím na **tlačítko Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **Work.com**, vyberte **Work.com** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
     ![Work.com v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s Work.com na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, je třeba vytvořit vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v Work.com.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí Work.com na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v Work.com.
 
-Chcete-li konfigurovat a testovat jednotné přihlašování azure ad s Work.com, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí Work.com, musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace Work.com jednotného přihlašování](#configure-workcom-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte Work.com testovacího uživatele](#create-workcom-test-user)** – chcete-li mít protějšek Britta Simon v Work.com, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování Work.com](#configure-workcom-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvoření Work.com test User](#create-workcom-test-user)** – pro Britta Simon v work.com, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
 >[!NOTE]
->Chcete-li konfigurovat jednotné přihlašování, musíte ještě nastavit vlastní Work.com název domény. Musíte definovat alespoň název domény, otestovat název domény a nasadit jej do celé organizace.
+>Pokud chcete nakonfigurovat jednotné přihlašování, musíte si zatím nastavit vlastní název domény Work.com. Musíte definovat aspoň název domény, otestovat název domény a nasadit ho do celé organizace.
 
-Chcete-li nakonfigurovat jednotné přihlašování azure a disponu, pomocí Work.com, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí Work.com, proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace **Work.com** aplikací vyberte **Jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Work.com** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![Work.com informace o jedné registraci domény a adresy URL](common/sp-signonurl.png)
+    ![Informace o jednotném přihlašování v doméně Work.com a adresách URL](common/sp-signonurl.png)
 
-    Do textového pole **Přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://<companyname>.my.salesforce.com`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
-    > Hodnota není skutečná. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Obraťte [se Work.com tým podpory klienta](https://help.salesforce.com/articleView?id=000159855&type=3) získat hodnotu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Hodnota není reálné číslo. Aktualizujte hodnotu skutečnou přihlašovací adresou URL. Pokud chcete získat hodnotu, obraťte se na [tým podpory klienta Work.com](https://help.salesforce.com/articleView?id=000159855&type=3) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Base64)** z daných možností podle vašeho požadavku a uložte jej do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (Base64)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+    ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-6. V části **Nastavit Work.com** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **nastavení Work.com** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-workcom-single-sign-on"></a>Konfigurace Work.com jednotného přihlašování
+### <a name="configure-workcom-single-sign-on"></a>Konfigurace jednotného přihlašování Work.com
 
-1. Přihlaste se ke svému Work.com tenantovi jako správce.
+1. Přihlaste se ke svému tenantovi Work.com jako správce.
 
-2. Přejděte na **instalační program**.
+2. Přejít na **Nastavení**.
    
-    ![Nastavení](./media/work-com-tutorial/ic794108.png "Nastavení")
+    ![Instalace a nastavení](./media/work-com-tutorial/ic794108.png "Nastavení")
 
-3. V levém navigačním podokně klikněte v části **Správa** na **položku Správa domény** a rozbalte související oddíl a potom kliknutím na **Moje doména** otevřete stránku **Moje doména.** 
+3. V levém navigačním podokně v části **Spravovat** kliknutím na **Správa domény** rozbalte související část a potom kliknutím na **moje doména** otevřete stránku **moje doména** . 
    
     ![Moje doména](./media/work-com-tutorial/ic767825.png "Moje doména")
 
-4. Chcete-li ověřit, zda byla vaše doména správně nastavena, zkontrolujte, zda je v kroku**4 nasazeném uživatelům,** a zkontrolujte**nastavení domény**.
+4. Pokud chcete ověřit, jestli je vaše doména nastavená správně, ujistěte se, že je v**kroku 4 nasazená pro uživatele**, a zkontrolujte**Nastavení moje doména**.
    
     ![Doména nasazená pro uživatele](./media/work-com-tutorial/ic784377.png "Doména nasazená pro uživatele")
 
-5. Přihlaste se ke svému Work.com tenantovi.
+5. Přihlaste se ke svému tenantovi Work.com.
 
-6. Přejděte na **instalační program**.
+6. Přejít na **Nastavení**.
     
-    ![Nastavení](./media/work-com-tutorial/ic794108.png "Nastavení")
+    ![Instalace a nastavení](./media/work-com-tutorial/ic794108.png "Nastavení")
 
-7. Rozbalte nabídku **Ovládací prvky zabezpečení** a klepněte na **položku Nastavení jednotného přihlášení**.
+7. Rozbalte nabídku **ovládací prvky zabezpečení** a pak klikněte na **nastavení jednotného přihlašování**.
     
-    ![Nastavení jednotného přihlášení](./media/work-com-tutorial/ic794113.png "Nastavení jednotného přihlášení")
+    ![Nastavení jednotného přihlašování](./media/work-com-tutorial/ic794113.png "Nastavení jednotného přihlašování")
 
-8. Na stránce dialogového okna **Nastavení jednotného přihlášení** proveďte následující kroky:
+8. Na stránce **nastavení jednotného přihlašování** proveďte následující kroky:
     
-    ![SAML povoleno](./media/work-com-tutorial/ic781026.png "SAML povoleno")
+    ![SAML – povoleno](./media/work-com-tutorial/ic781026.png "SAML – povoleno")
     
-    a. Vyberte **možnost SAML Povolená**.
+    a. Vyberte **povoleno SAML**.
     
-    b. Klepněte na tlačítko **Nový**.
+    b. Klikněte na **Nový**.
 
-9. V části **Nastavení jednotného přihlašování SAML** proveďte následující kroky:
+9. V části **nastavení jednotného přihlašování SAML** proveďte následující kroky:
     
-    ![Saml nastavení jednotného přihlášení](./media/work-com-tutorial/ic794114.png "Saml nastavení jednotného přihlášení")
+    ![Nastavení jednotného přihlašování SAML](./media/work-com-tutorial/ic794114.png "Nastavení jednotného přihlašování SAML")
     
-    a. Do textového pole **Název** zadejte název konfigurace.  
+    a. Do textového pole **název** zadejte název konfigurace.  
        
     > [!NOTE]
-    > Zadání matné hodnoty **pro název** automaticky naplní textové pole **Název rozhraní API.**
+    > Zadáním hodnoty pro **název** se automaticky naplní textové pole s **názvem rozhraní API** .
     
-    b. V **textovém** poli Vystavite na vložte hodnotu **identifikátoru Azure AD,** kterou jste zkopírovali z webu Azure Portal.
+    b. Do textového pole **vystavitele** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
     
-    c. Pokud chcete nahrát stažený certifikát z webu Azure Portal, klikněte na **Procházet**.
+    c. Pokud chcete stažený certifikát nahrát z Azure Portal, klikněte na **Procházet**.
     
-    d. Do textového pole **Id entity** zadejte . `https://salesforce-work.com`
+    d. Do textového pole **ID entity** zadejte `https://salesforce-work.com`.
     
-    e. Jako **typ identity SAML**vyberte **assertion obsahuje ID federace z objektu User**.
+    e. Jako **typ identity SAML**vyberte **kontrolní výraz obsahuje ID federace z objektu User**.
     
-    f. Jako **umístění identity SAML**je vyberte **Identita v elementu NameIdentfier příkazu Subject**.
+    f. Jako **umístění identity SAML**, vyberte **identita je v elementu NameIdentfier příkazu Subject**.
     
-    g. V textovém poli **Přihlašovací adresa URL zprostředkovatele identity** vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z webu Azure Portal.
+    g. Do textového pole **Adresa URL pro přihlášení zprostředkovatele identity** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    h. V textovém poli **URL odhlášení zprostředkovatele identity** vložte hodnotu **adresy URL odhlášení,** kterou jste zkopírovali z webu Azure Portal.
+    h. V poli **Adresa URL pro odhlášení zprostředkovatele identity** vložte hodnotu **URL pro odhlášení** , kterou jste zkopírovali z Azure Portal.
     
-    i. Jako **závazek požadavku iniciovaného poskytovatelem služeb**vyberte **příkaz HTTP Post**.
+    i. Jako **Zprostředkovatel služby inicioval vazbu žádosti**vyberte **http post**.
     
     j. Klikněte na **Uložit**.
 
-10. Na klasickém portálu Work.com v levém navigačním podokně **rozbalte** související oddíl kliknutím na Správa domény a potom kliknutím na **Moje doména** otevřete stránku **Moje doména.** 
+10. Na portálu Work.com Classic v levém navigačním podokně kliknutím na **Správa domény** rozbalte související část a potom kliknutím na **moje doména** otevřete stránku **moje doména** . 
     
     ![Moje doména](./media/work-com-tutorial/ic794115.png "Moje doména")
 
-11. Na stránce **Moje doména** klikněte v části **Branding přihlašovací stránky** na **Upravit**.
+11. Na stránce **moje doména** v části **branding přihlašovací stránky** klikněte na **Upravit**.
     
-    ![Přihlašovací stránka značky](./media/work-com-tutorial/ic767826.png "Přihlašovací stránka značky")
+    ![Branding přihlašovací stránky](./media/work-com-tutorial/ic767826.png "Branding přihlašovací stránky")
 
-12. Na stránce **Branding přihlašovací stránky** se v části Ověřovací **služba** zobrazí název **nastavení přihlašování saml.** Vyberte ji a klepněte na tlačítko **Uložit**.
+12. Na stránce **značky přihlašovací stránky** v části **ověřovací služba** se zobrazí název vašeho **nastavení jednotného přihlašování SAML** . Vyberte ji a pak klikněte na **Uložit**.
     
-    ![Přihlašovací stránka značky](./media/work-com-tutorial/ic784366.png "Přihlašovací stránka značky")
+    ![Branding přihlašovací stránky](./media/work-com-tutorial/ic784366.png "Branding přihlašovací stránky")
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Work.com.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k Work.com.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak **vyberte Work.com**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **Work.com**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Work.com**.
+2. V seznamu aplikace vyberte **Work.com**.
 
-    ![Odkaz Work.com v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz Work.com v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-workcom-test-user"></a>Vytvořit Work.com testovacího uživatele
+### <a name="create-workcom-test-user"></a>Vytvořit testovacího uživatele Work.com
 
-Aby se uživatelé služby Azure Active Directory mohli přihlásit, musí být zřízeni, aby Work.com. V případě Work.com zřizování je ruční úlohy.
+Aby se uživatelé mohli Azure Active Directory přihlásit, musí se zřídit až Work.com. V případě Work.com je zřizování ručním úkolem.
 
-### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Chcete-li konfigurovat zřizování uživatelů, proveďte následující kroky:
+### <a name="to-configure-user-provisioning-perform-the-following-steps"></a>Při konfiguraci zřizování uživatelů proveďte následující kroky:
 
-1. Přihlaste se k webu společnosti Work.com jako správce.
+1. Přihlaste se k webu Work.com společnosti jako správce.
 
-2. Přejděte na **instalační program**.
+2. Přejít na **Nastavení**.
    
-    ![Nastavení](./media/work-com-tutorial/IC794108.png "Nastavení")
+    ![Instalace a nastavení](./media/work-com-tutorial/IC794108.png "Nastavení")
 
-3. Přejděte na **spravovat uživatele \> uživatelů**.
+3. Přejít na **Správa \> **uživatelů.
    
     ![Správa uživatelů](./media/work-com-tutorial/IC784369.png "Správa uživatelů")
 
-4. Klepněte na **položku Nový uživatel**.
+4. Klikněte na **Nový uživatel**.
    
     ![Všichni uživatelé](./media/work-com-tutorial/IC794117.png "Všichni uživatelé")
 
-5. V části Úpravy uživatelů proveďte následující kroky v atributech platného účtu Azure AD, který chcete zřídit do souvisejících textových polí:
+5. V části pro úpravy uživatelů proveďte následující kroky, a to v atributu platného účtu Azure AD, který chcete zřídit do souvisejících textových polí:
    
-    ![Úpravy uživatele](./media/work-com-tutorial/ic794118.png "Úpravy uživatele")
+    ![Úprava uživatele](./media/work-com-tutorial/ic794118.png "Úprava uživatele")
    
-    a. Do textového pole **Křestní jméno** zadejte **křestní jméno** uživatele **Britta**.
+    a. Do textového pole **jméno a příjmení** zadejte **křestní jméno** uživatele **Britta**.
     
-    b. Do textového pole **Příjmení** zadejte **příjmení** uživatele **Simona**.
+    b. Do textového pole **příjmení** zadejte **jméno** uživatele **Simon**.
     
-    c. Do textového pole **Alias** zadejte **jméno** uživatele **BrittaS**.
+    c. Do textového pole **alias** zadejte **jméno** uživatele **BrittaS**.
     
-    d. Do textového pole **E-mail** zadejte **e-mailovou adresu** uživatele Brittasimon@contoso.com.
+    d. Do textového pole **e-mail** zadejte **e-mailovou adresu** uživatele Brittasimon@contoso.com.
     
-    e. Do textového pole **Uživatelské jméno** zadejte Brittasimon@contoso.comuživatelské jméno uživatele, jako se mi líbí .
+    e. Do textového pole **uživatelské jméno** zadejte uživatelské jméno jako Brittasimon@contoso.comuživatel.
     
-    f. Do textového pole **Nick Název** zadejte **přezdívku** uživatele **Simona**.
+    f. Do textového pole **Přezdívka jméno** zadejte **Přezdívka** uživatele **Simon**.
     
-    g. Vyberte **roli**, **uživatelskou licenci**a **profil**.
+    g. Vyberte **role**, **Uživatelská licence**a **profil**.
     
     h. Klikněte na **Uložit**.  
       
     > [!NOTE]
-    > Držitel účtu Azure AD obdrží e-mail včetně odkazu pro potvrzení účtu před tím, než se stane aktivním.
+    > Držitel účtu Azure AD obdrží e-mail s odkazem na potvrzení účtu, než se aktivuje.
     > 
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Work.com na přístupovém panelu, můžete by měl být automaticky přihlášeni k Work.com, pro které nastavíte přiřazovat. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Work.com, měli byste se automaticky přihlásit k Work.com, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

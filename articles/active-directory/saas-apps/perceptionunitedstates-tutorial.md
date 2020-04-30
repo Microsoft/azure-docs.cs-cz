@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s aplikací Perception United States (Non-UltiPro) | Dokumenty společnosti Microsoft'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi službou Azure Active Directory a vnímáním ve Spojených státech (Non-UltiPro).
+title: 'Kurz: Azure Active Directory integraci se vnímání USA (ne UltiPro) | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a vnímání USA (ne UltiPro).
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,222 +16,222 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: e9ba42f780c93486409077383750d0635637e99b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67094839"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Integrace služby Azure Active Directory s vnímáním Ve Spojených státech (Non-UltiPro)
+# <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Kurz: Azure Active Directory integrace se vnímání USA (ne UltiPro)
 
-V tomto kurzu se dozvíte, jak integrovat vnímání Spojené státy (Non-UltiPro) s Azure Active Directory (Azure AD).
-Integrace vnímání Spojených států (Non-UltiPro) s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat USA vnímání (jiný než UltiPro) s Azure Active Directory (Azure AD).
+Integrování příUSA příUltiProch) do Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k vnímání Spojené státy (Non-UltiPro).
-* Můžete povolit uživatelům, aby se automaticky přihlásili k vnímání Spojené státy (Non-UltiPro) (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup ke vnímání USA (ne UltiPro).
+* Uživatelům můžete povolit, aby se automaticky přihlásili ke vnímání USA (bez UltiPro) (jednotné přihlašování) se svými účty Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s vnímáním Spojené státy (Non-UltiPro), budete potřebovat následující položky:
+Ke konfiguraci integrace služby Azure AD s vnímání USA (ne UltiPro) potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební [verzi zde](https://azure.microsoft.com/pricing/free-trial/)
-* Vnímání Spojené státy (Non-UltiPro) jednotné přihlášení povoleno předplatné
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat měsíční zkušební verzi [tady](https://azure.microsoft.com/pricing/free-trial/) .
+* Předplatné s povoleným jedním přihlašováním USA (bez UltiPro)
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Vnímání Spojené státy (Non-UltiPro) podporuje **IDP** inicioval Jednotné přihlašované
+* Vnímání USA (non-UltiPro) podporuje **IDPy** iniciované jednotného přihlašování.
 
-## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Přidání vnímání Spojené státy (Non-UltiPro) z galerie
+## <a name="adding-perception-united-states-non-ultipro-from-the-gallery"></a>Přidání vnímání USA (bez UltiPro) z Galerie
 
-Chcete-li nakonfigurovat integraci vnímání Spojené státy (Non-UltiPro) do Azure AD, je třeba přidat vnímání Spojené státy (Non-UltiPro) z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci vnímání USA (non-UltiPro) do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat vnímání USA (non-UltiPro) z galerie.
 
-**Chcete-li přidat vnímání Spojené státy (Non-UltiPro) z galerie, proveďte následující kroky:**
+**Pokud chcete přidat vnímání USA (ne UltiPro) z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Vnímání Spojené státy (Non-UltiPro)**, z panelu výsledků vyberte **vnímání Spojených států (Non-UltiPro)** a klepnutím na tlačítko **Přidat** aplikaci přidejte.
+4. Do vyhledávacího pole zadejte **vnímání USA (UltiPro)**, vyberte **vnímání USA (ne UltiPro)** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-     ![Vnímání Spojené státy (Non-UltiPro) v seznamu výsledků](common/search-new-app.png)
+     ![USA vnímání (jiný než UltiPro) v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí aplikace Perception United States (Non-UltiPro) na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem ve vnímání Spojených států (Non-UltiPro).
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD se vnímáním USA (ne UltiPro) na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v vnímání USA (ne UltiPro).
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí aplikace Perception United States (Non-UltiPro), musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD se vnímáním USA (ne UltiPro), musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace vnímání Usa (Non-UltiPro) Jednotné přihlášení](#configure-perception-united-states-non-ultipro-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořit vnímání Spojené státy (Non-UltiPro) testovací uživatel](#create-perception-united-states-non-ultipro-test-user)** – mít protějšek Britta Simon ve vnímání Spojených států (Non-UltiPro), který je propojen s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurujte jednotné přihlašování USA vnímání (bez UltiPro)](#configure-perception-united-states-non-ultipro-single-sign-on)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte si testovacího uživatele UltiPro USA vnímání](#create-perception-united-states-non-ultipro-test-user)** , abyste měli protějšek Britta Simon v vnímání USA (UltiPro), která je propojená s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí aplikace Perception United States (Non-UltiPro), proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování služby Azure AD pomocí USA vnímání (ne UltiPro), proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **Vnímání Spojených států (Non-UltiPro)** vyberte **Jedno přihlášení**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce Příznaková integrace aplikace **USA (ne UltiPro)** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na stránce **Nastavit jednotné přihlašování pomocí saml** proveďte následující kroky:
+4. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte následující kroky:
 
-    ![Vnímání Usa (Non-UltiPro) Domény a adresy URL jednotné přihlašovací informace](common/idp-intiated.png)
+    ![Informace o jednotném přihlašování v doméně a adresách USA (UltiPro)](common/idp-intiated.png)
 
-    a. Do textového pole **Identifikátor** zadejte adresu URL:`https://perception.kanjoya.com/sp`
+    a. Do textového pole **identifikátor** zadejte adresu URL:`https://perception.kanjoya.com/sp`
 
-    b. Do textového pole **Odpovědět na adresu URL** zadejte adresu URL pomocí následujícího vzoru:`https://perception.kanjoya.com/sso?idp=<entity_id>`
+    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://perception.kanjoya.com/sso?idp=<entity_id>`
 
-    c. **Aplikace Perception United States (Non-UltiPro)** vyžaduje hodnotu **identifikátoru Azure AD** jako <entity_id>, kterou získáte z části **Nastavit vnímání Spojených států (Non-UltiPro),** která má být kódována. Chcete-li získat hodnotu kódované identifikátorem **http://www.url-encode-decode.com/** URI, použijte následující odkaz: .
+    c. Aplikace **vnímání USA (UltiPro)** vyžaduje, aby byla hodnota **identifikátoru Azure AD** jako <entity_id>, kterou získáte v části **nastavení příUltiProho vnímání USA (mimo)** , která bude kódována jako identifikátor URI. K získání hodnoty kódované identifikátorem URI použijte následující odkaz: **http://www.url-encode-decode.com/**.
 
-    d. Po získání uri kódované hodnoty kombinovat s **URL odpovědět,** jak je uvedeno níže-
+    d. Po získání hodnoty zakódované identifikátorem URI se bude kombinovat s **adresou URL odpovědi** , jak je uvedeno níže.
 
     `https://perception.kanjoya.com/sso?idp=<URI encooded entity_id>`
     
-    e. Vložte výše uvedenou hodnotu do textového pole **Adresa URL odpovědi.**
+    e. Do textového pole **Adresa URL odpovědi** vložte výše uvedenou hodnotu.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. V části **Nastavit vnímání Spojených států (Non-UltiPro)** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **nastavit vnímání USA (ne UltiPro)** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení   
+    c. Odhlašovací adresa URL   
 
-### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Konfigurace vnímání Spojené státy (Non-UltiPro) Jednotné přihlašování
+### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Konfigurovat jednotné přihlašování USA vnímání (bez UltiPro)
 
-1. V jiném okně prohlížeče se přihlaste na web společnosti Perception United States (Non-UltiPro) jako správce.
+1. V jiném okně prohlížeče se přihlaste k vašemu firemnímu USA (UltiPro) jako správce.
 
-2. Na hlavním panelu nástrojů klepněte na **položku Nastavení účtu**.
+2. Na hlavním panelu nástrojů klikněte na **Nastavení účtu**.
 
-    ![Vnímání Spojené státy (Non-UltiPro) uživatel](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
+    ![Uživatel vnímání USA (ne UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_user.png)
 
 3. Na stránce **Nastavení účtu** proveďte následující kroky:
 
-    ![Vnímání Spojené státy (Non-UltiPro) uživatel](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
+    ![Uživatel vnímání USA (ne UltiPro)](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_account.png)
 
-    a. Do textového pole **Název společnosti** zadejte název **společnosti**.
+    a. Do textového pole **název společnosti** zadejte název **společnosti**.
     
-    b. Do textového pole **Název účtu** zadejte název **účtu**.
+    b. Do textového pole **název účtu** zadejte název **účtu**.
 
-    c. Do **výchozího textového pole E-mail s odpovědí** zadejte platný **e-mail**.
+    c. Do textového pole **výchozí odpověď-e-mail** zadejte platný **e-mail**.
 
-    d. Vyberte **zprostředkovatele identity stezu jako** **SAML 2.0**.
+    d. Jako **SAML 2,0**vyberte **poskytovatele identity SSO** .
 
-4. Na stránce **Konfigurace přizpůsobování vlastního zabezpečení** proveďte následující kroky:
+4. Na stránce **Konfigurace jednotného přihlašování** proveďte následující kroky:
 
-    ![Vnímání Spojené státy (Non-UltiPro) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
+    ![USA vnímání (ne UltiPro) SSOConfig](./media/perceptionunitedstates-tutorial/tutorial_perceptionunitedstates_ssoconfig.png)
 
-    a. Vyberte **typ NÁZVU SAML** jako **e-mail**.
+    a. Jako **e-mail**vyberte **NameId typ SAML** .
 
-    b. Do textového pole **Název konfigurace služby SSO** zadejte název **konfigurace**.
+    b. Do textového pole **název konfigurace jednotného přihlašování** zadejte název vaší **Konfigurace**.
     
-    c. V textovém poli **Název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z webu Azure Portal. 
+    c. Do textového pole **název zprostředkovatele identity** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal. 
 
-    d. Do **textového pole Doména SAML**zadejte doménu jako @contoso.com.
+    d. Do **textového pole doména SAML**zadejte doménu, jako @contoso.comje.
 
-    e. Kliknutím na **Znovu nahrát** nahrajete soubor **XML metadat.**
+    e. Znovu klikněte na **nahrát** a nahrajte soubor **XML s metadaty** .
 
     f. Klikněte na **Aktualizovat**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** brittasimon@yourcompanydomain.extensionjméno typ pole . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte brittasimon@yourcompanydomain.extension. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlášení udělením přístupu k vnímání Spojené státy (Non-UltiPro).
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k vnímání USA (ne UltiPro).
 
-1. Na webu Azure Portal vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte Perception United **States (Non-UltiPro).**
+1. V Azure Portal vyberte možnost **podnikové aplikace**, vyberte možnost **všechny aplikace**a pak vyberte možnost **USA vnímání (ne UltiPro)**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **možnost Vnímání Spojených států (Non-UltiPro).**
+2. V seznamu aplikace vyberte možnost **vnímání USA (ne UltiPro)**.
 
-    ![Odkaz Vnímání Spojených států (Non-UltiPro) v seznamu aplikací](common/all-applications.png)
+    ![Odkaz na USA vnímání (jiný než UltiPro) v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-perception-united-states-non-ultipro-test-user"></a>Vytvořit vnímání Spojené státy (Non-UltiPro) testovací uživatel
+### <a name="create-perception-united-states-non-ultipro-test-user"></a>Vytvořit testovacího uživatele USA vnímání (bez UltiPro)
 
-V této části vytvoříte uživatele s názvem Britta Simon ve vnímání Spojené státy (Non-UltiPro). Práce s [vnímání Spojené státy (Non-UltiPro) tým podpory](https://www.ultimatesoftware.com/Contact/ContactUs) přidat uživatele v vnímání Spojené státy (Non-UltiPro) platformy.
+V této části vytvoříte uživatele s názvem Britta Simon v vnímání USA (ne UltiPro). Pomocí [týmu podpory vnímání USA (UltiPro)](https://www.ultimatesoftware.com/Contact/ContactUs) můžete přidávat uživatele na UltiProovou platformu pro vnímání USA.
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici vnímání Spojené státy (Non-UltiPro) na přístupovém panelu, měli byste být automaticky přihlášeni k vnímání Spojené státy (Non UltiPro), pro které nastavíte jednotné přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici USA vnímání (UltiPro), měli byste být automaticky přihlášeni ke vnímání USA (ne UltiPro), pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

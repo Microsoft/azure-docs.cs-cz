@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s procore sond | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a jednotném přihlašování Procore.
+title: 'Kurz: Integrace Azure Active Directory s Procore SSO | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Procore SSO.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,224 +17,224 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca6863a6b02e867afd732ce1662136051b8afec8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67093665"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Integrace služby Azure Active Directory s procore sontej so
+# <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Azure Active Directory integrace s jednotným přihlašováním
 
-V tomto kurzu se dozvíte, jak integrovat přihlašující zařízení Procore s Azure Active Directory (Azure AD).
-Integrace přihlašování Procore s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se dozvíte, jak integrovat základní jednotné přihlašování pomocí Azure Active Directory (Azure AD).
+Integrování hlavního jednotného přihlašování s Azure AD poskytuje následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k procore přihlašovat.
-* Můžete povolit uživatelům, aby se automaticky přihlásili k Jednotné přihlašování Procore (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete řídit v Azure AD, který má přístup k hlavnímu přihlášení SSO.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k základnímu přihlašování (jednotné přihlašování) k účtům Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD pomocí služby Procore SSO, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím Procore SSO budete potřebovat následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* Předplatné s povoleným jedním přihlášením procore Jednotné přihlašování
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* Předplatné Procore jednotného přihlašování s jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Procore SSO podporuje iniciované saso iniciované **IDP**
+* Základní jednotné přihlašování podporuje **IDP** .
 
-## <a name="adding-procore-sso-from-the-gallery"></a>Přidání seminsí Procore z galerie
+## <a name="adding-procore-sso-from-the-gallery"></a>Přidání hlavního jednotného přihlašování z Galerie
 
-Chcete-li nakonfigurovat integraci přihlašovaného zařízení Procore do služby Azure AD, je třeba přidat procore přiřazované ho z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci Procore jednotného přihlašování do Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat hlavní přihlášení SSO z galerie.
 
-**Chcete-li přidat přihlašovat procore z galerie, proveďte následující kroky:**
+**Pokud chcete přidat hlavní přihlášení SSO z Galerie, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **Procore SSO**, z panelu výsledků vyberte **Procore SSO** a pak klikněte na **tlačítko Přidat** a přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **jednotné přihlašování (SSO**), vyberte **jednotné přihlašování** z panelu výsledků a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Procore SSO v seznamu výsledků](common/search-new-app.png)
+    ![Základní jednotné přihlašování v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí jednotného přihlašování Procore na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Azure AD a souvisejícím uživatelem v jednotném přihlašování Procore.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s jednotným přihlašováním (SSO) na základě testovacího uživatele s názvem **Britta Simon**.
+Aby se jednotné přihlašování fungovalo, je potřeba zřídit odkazový vztah mezi uživatelem služby Azure AD a souvisejícím uživatelem v rámci hlavního přihlašování.
 
-Chcete-li konfigurovat a testovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Procore, musíte dokončit následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí jednotného přihlašování (SSO), musíte dokončit tyto stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace jednotného přihlašování Procore Jednotné přihlašování](#configure-procore-sso-single-sign-on)** – konfigurace nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte testovacího uživatele procore s přihlašování](#create-procore-sso-test-user)** – chcete-li mít protějšek Britta Simon v procore sondování, který je propojený s reprezentací Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Konfigurace jednotného přihlašování jednotného](#configure-procore-sso-single-sign-on)** přihlašování – pro konfiguraci nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte si uživatele se zkušebním základem jednotného přihlašování (SSO](#create-procore-sso-test-user)** ), který bude mít protějšek Britta Simon v proHlavním jednotném přihlašování, které je propojené s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování Procore, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí jednotného přihlašování (SSO), proveďte následující kroky:
 
-1. Na [portálu Azure](https://portal.azure.com/)na stránce integrace aplikací **jednotného přihlašování Procore** vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikace **jednotného přihlašování** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** uživatel nemusí provádět žádný krok, protože aplikace je již předem integrovaná s Azure.
+4. V **základní části Konfigurace SAML** nemusí uživatel provádět žádný krok, protože aplikace už je předem integrovaná s Azure.
 
-    ![Informace o jednotném přihlašování při přihlašování při řapíku Jednotného přihlašování procore jednotného přihlašování](common/preintegrated.png)
+    ![Základní informace o jednotném přihlašování k doméně a adresám URL jednotného přihlašování](common/preintegrated.png)
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si xml **metadat federace** z daných možností podle vašeho požadavku a uložte ho do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **XML federačních metadat** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/metadataxml.png)
+    ![Odkaz na stažení certifikátu](common/metadataxml.png)
 
-6. V části **Nastavit přihlašovací služby Procore** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **Nastavení Procore jednotného přihlašování** zkopírujte příslušné adresy URL podle vašich požadavků.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-procore-sso-single-sign-on"></a>Konfigurace jednotného přihlašování procore procore
+### <a name="configure-procore-sso-single-sign-on"></a>Konfigurace jednotného přihlašování jednotného přihlašování (SSO)
 
-1. Pokud chcete nakonfigurovat jednotné přihlašování na straně **Jednotného přihlašování Procore,** přihlaste se k webu společnosti procore jako správce.
+1. Pokud chcete nakonfigurovat jednotné přihlašování na straně **jednotného přihlašování (SSO** ), přihlaste se k místnímu webu společnosti jako správce.
 
-2. V rozevíracím seznamu nástrojů kliknutím na **Správce** otevřete stránku nastavení přirozeného zabezpečení.
+2. V rozevíracím seznamu nástrojů klikněte na **správce** a otevřete stránku nastavení jednotného přihlašování.
 
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/procore_tool_admin.png)
 
-3. Vložte hodnoty do polí, jak je popsáno níže-
+3. Vložte hodnoty do polí, jak je popsáno níže.
 
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/procore_setting_admin.png)  
 
-    a. V textovém poli **Adresa URL vydavatele jednotného přihlášení** vložte hodnotu **identifikátoru Azure AD,** který jste zkopírovali z portálu Azure.
+    a. Do textového pole **Adresa URL vystavitele jednotného přihlašování** vložte hodnotu **identifikátoru služby Azure AD** , který jste zkopírovali z Azure Portal.
 
-    b. Do pole **Cílová adresa URL přihlášení saml** vložte hodnotu **přihlašovací adresy URL,** kterou jste zkopírovali z portálu Azure.
+    b. Do pole **Adresa URL pro přihlášení k poskytovateli SAML** vložte hodnotu **adresy URL pro přihlášení** , kterou jste zkopírovali z Azure Portal.
 
-    c. Teď otevřete **xml metadat federací** stažený výše z portálu Azure a zkopírujte certifikát do značky s názvem **X509Certificate**. Vložte zkopírovanou hodnotu do pole **Certifikát jednotného přihlášení x509.**
+    c. Teď otevřete **soubor XML federačních metadat** stažený výše z Azure Portal a zkopírujte certifikát do značky s názvem **certifikátu x509**. Vložte zkopírovanou hodnotu do pole **certifikát x509 jednotného přihlašování** .
 
 4. Klikněte na **Save Changes** (Uložit změny).
 
-5. Po těchto nastaveních je třeba odeslat **název domény** (např. **contoso.com),** přes který se přihlašujete do Procore do [týmu podpory Procore](https://support.procore.com/) a oni aktivují federované sso pro tuto doménu.
+5. Po těchto nastaveních musíte odeslat **název domény** (třeba **contoso.com**), přes který se přihlašujete do základu [týmu podpory](https://support.procore.com/) , a aktivovat pro tuto doménu federované přihlašování.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD 
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. V poli **Uživatelské** `brittasimon@yourcompanydomain.extension`jméno typ pole . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k Jednotné přihlašování Procore.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k hlavnímu přihlášení SSO.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **Procore SSO**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **základní jednotné přihlašování**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **Procore SSO**.
+2. V seznamu aplikace vyberte **Procore SSO**.
 
-    ![Odkaz procore sso v seznamu aplikace](common/all-applications.png)
+    ![Základní odkaz SSO v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-procore-sso-test-user"></a>Vytvoření testovacího uživatele s přihlašovat k projádrovým testům
+### <a name="create-procore-sso-test-user"></a>Vytvořit uživatele se zkušebním základem jednotného přihlašování
 
-Postupujte podle níže uvedených kroků k vytvoření testovacího uživatele Procore na straně Procore SSO.
+Postupujte podle následujících kroků a vytvořte na straně jednotného přihlašování základní test uživatele.
 
-1. Přihlaste se k webu společnosti procore jako správce.    
+1. Přihlaste se k hlavnímu serveru společnosti jako správce.    
 
-2. V rozevíracím seznamu nástrojů kliknutím na **Adresář** otevřete stránku adresáře společnosti.
+2. V rozevírací nabídce panelu nástrojů klikněte na **adresář** a otevřete stránku adresáře společnosti.
 
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/Procore_sso_directory.png)
 
-3. Klikněte na **Přidat osobu** možnost otevřít formulář a zadejte provést následující možnosti -
+3. Klikněte na možnost **Přidat osobu** a otevřete formulář a zadejte příkaz provést následující možnosti –
 
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/Procore_user_add.png)
 
-    a. Do textového pole **Křestní jméno** zadejte křestní jméno uživatele jako **Britta**.
+    a. Do textového pole **jméno** zadejte jméno uživatele (například **Britta**).
 
-    b. Do textového pole **Příjmení** zadejte příjmení uživatele jako **Simon**.
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, například **Simon**.
 
-    c. Do textového pole **E-mailová adresa** BrittaSimon@contoso.comzadejte e-mailovou adresu uživatele jako .
+    c. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu uživatele jako BrittaSimon@contoso.com.
 
-    d. Vyberte **šablonu oprávnění** jako **Použít šablonu oprávnění později**.
+    d. Vyberte **šablonu oprávnění** **použít šablonu oprávnění později**.
 
     e. Klikněte na **Vytvořit**.
 
-4. Zkontrolujte a aktualizujte podrobnosti nově přidaného kontaktu.
+4. Zkontroluje a aktualizuje podrobnosti pro nově přidaný kontakt.
 
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Klikněte na **Uložit a odeslat pozvánku** (pokud je vyžadována pozvánka prostřednictvím e-mailu) nebo **Uložit** (Uložit přímo) pro dokončení registrace uživatele.
+5. Klikněte na **Uložit a poslat pozvánku** (Pokud se vyžaduje Pozvánka prostřednictvím e-mailu) nebo **uložte** (uložit přímo), abyste dokončili registraci uživatele.
     
     ![Konfigurace jednotného přihlašování](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování 
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Procore spři bystří na přístupovém panelu, můžete by měl být automaticky přihlášeni k procore semaforu, u kterého nastavíte přihlašující. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici Procore SSO na přístupovém panelu, měli byste se automaticky přihlásit k hlavnímu přihlášení SSO, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

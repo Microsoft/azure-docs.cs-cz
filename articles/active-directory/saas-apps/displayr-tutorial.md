@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s Displayr | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Displayr.
+title: 'Kurz: Azure Active Directory integrace s inplayem | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a aktérem.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,209 +17,209 @@ ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3cd1785595cf2f6b2401837780106f52fdc97e36
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67103993"
 ---
-# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: Displayr integrovat s Azure Active Directory
+# <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Kurz: integrace inplay s Azure Active Directory
 
-V tomto kurzu se dozvíte, jak integrovat Displayr s Azure Active Directory (Azure AD). Když integrujete Displayr s Azure AD, můžete:
+V tomto kurzu se dozvíte, jak integrovat inplay s Azure Active Directory (Azure AD). Když integrujete aktéra s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k Displayr.
-* Aby uživatelé mohli být automaticky přihlášeni k Displayr pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup ke službě DisplayName.
+* Umožněte uživatelům, aby se automaticky přihlásili k nástroji pro inplayi pomocí svých účtů Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Displayr jednotné přihlašování (SSO) povolené předplatné.
+* Předplatné s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje Displayr **SP** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. Inplay podporuje jednotné přihlašování (SSO) iniciované v **SP** .
 
-## <a name="adding-displayr-from-the-gallery"></a>Přidání Displayr z Galerie
+## <a name="adding-displayr-from-the-gallery"></a>Přidání aktéra z Galerie
 
-Konfigurace integrace Displayr do služby Azure AD, budete muset přidat Displayr z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci inplayu do služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat z Galerie aktéra.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **Displayr** do vyhledávacího pole.
-1. Vyberte **Displayr** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **DisplayName** .
+1. Vyberte položku **aktér** z panelu výsledků a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s Displayr pomocí testovacího uživatele volá **Britta Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v Displayr.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí nástroje DisplayName pomocí testovacího uživatele s názvem **Britta Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v inplay.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s Displayr, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí nástroje inplay, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace Displayr](#configure-displayr)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s Britta Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele Displayr](#create-displayr-test-user)**  mít protějšek Britta Simon Displayr, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Nakonfigurujte inplay](#configure-displayr)** , aby na straně aplikace nakonfiguroval nastavení jednotného přihlašování.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** , aby mohl Britta Simon používat jednotné přihlašování Azure AD.
+5. **[Vytvořit testovacího uživatele aktéra](#create-displayr-test-user)** , aby měl protějšek Britta Simon v aktérovi, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **Displayr** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavení jednotného přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce **inplay** Application Integration najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na **základní konfiguraci SAML** části, postupujte následovně:
+1. V části **základní konfigurace SAML** proveďte následující krok:
 
-    a. V **přihlašovací adresa URL** textové pole, zadejte adresu URL, pomocí následujícího vzorce: `https://<YOURDOMAIN>.displayr.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<YOURDOMAIN>.displayr.com`
 
-    b. V **identifikátor (Entity ID)** textové pole, zadejte adresu URL, pomocí následujícího vzorce:`<YOURDOMAIN>.displayr.com`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL pomocí následujícího vzoru:`<YOURDOMAIN>.displayr.com`
 
     >[!NOTE]
-    >Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty skutečné přihlašovací adresu URL a identifikátor. Kontakt [tým podpory Displayr klienta](mailto:support@displayr.com) k získání těchto hodnot. Můžete také odkazovat na tyto vzory se dají uvedené v části základní konfiguraci SAML na webu Azure Portal.
+    >Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným přihlašovacím jménem a identifikátorem URL. Pro získání těchto hodnot se obraťte na [tým podpory pro klienty](mailto:support@displayr.com) . Můžete se také podívat na vzory uvedené v části základní konfigurace SAML v Azure Portal.
 
-1. Na **nastavení jednotného přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** části, Najít **certifikát (Base64)** a vyberte **Stáhnout** stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 
-   ![Odkaz ke stažení certifikátu](common/certificatebase64.png)
+   ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. Displayr aplikace očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Na následujícím snímku obrazovky se zobrazí v seznamu atributů výchozí. Klikněte na tlačítko **upravit** ikonu otevřete dialogové okno atributy uživatele.
+1. Aplikace aktéra očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů. Kliknutím na tlačítko **Upravit** ikonu otevřete dialogové okno atributy uživatele.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho výše Displayr aplikace očekává, že několik dalších atributů musí být předány zpět odpověď SAML. V **atributy uživatele a deklarace identity** části na **deklarace skupiny (Preview)** dialogového okna, proveďte následující kroky:
+1. Kromě výše očekává aplikace inplay v odpovědi SAML několik atributů, které se mají vrátit zpátky. V dialogovém okně deklarace identity v části **atributy uživatele & deklarace** v dialogu **deklarace skupiny (Preview)** proveďte následující kroky:
 
-    a. Klikněte na tlačítko **pera** vedle **skupiny vrácené v deklaraci identity**.
+    a. Klikněte na **pero** vedle **skupin vrácených v deklaraci identity**.
 
     ![image](./media/displayr-tutorial/config04.png)
 
     ![image](./media/displayr-tutorial/config05.png)
 
-    b. Vyberte **všechny skupiny** ze seznamu přepínač.
+    b. V seznamu přepínačů vyberte **všechny skupiny** .
 
-    c. Vyberte **zdrojového atributu** z **ID skupiny**.
+    c. Vyberte **zdrojový atribut** **ID skupiny**.
 
-    d. Zkontrolujte **přizpůsobit název deklarace skupiny**.
+    d. Ověřte **přizpůsobení názvu deklarace identity skupiny**.
 
-    e. Zkontrolujte **generování skupin jako deklarací identity rolí**.
+    e. Ověřte **, že se skupiny emitují jako deklarace identity role**.
 
     f. Klikněte na **Uložit**.
 
-1. Na **nastavení Displayr** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení inplay** zkopírujte příslušné adresy URL na základě vašeho požadavku.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
-### <a name="configure-displayr"></a>Konfigurace Displayr
+### <a name="configure-displayr"></a>Konfigurovat aktéra
 
-1. K automatizaci konfigurace v rámci Displayr, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+1. Pokud chcete v nástroji pro automatizaci nakonfigurovat konfiguraci, je nutné nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení Displayr** nasměruje na Displayr aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do Displayr. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 6.
+2. Po přidání rozšíření do prohlížeče klikněte na **instalační program** , který vás přesměruje do aplikace inplay. Odtud zadejte přihlašovací údaje správce pro přihlášení k inplay. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-6.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-3. Pokud chcete nastavit Displayr ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti Displayr jako správce a proveďte následující kroky:
+3. Chcete-li nastavit, aby byl aktér ručně, otevřete nové okno webového prohlížeče a přihlaste se k webovému serveru služby inplay jako správce a proveďte následující kroky:
 
-4. Klikněte na **nastavení** přejděte na **účet**.
+4. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
     ![Konfigurace](./media/displayr-tutorial/config01.png)
 
-5. Přepnout na **nastavení** v horní nabídce a přejděte dolů na stránce pro kliknutí na **nakonfigurovat jednotné přihlašování na (SAML)** .
+5. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, kde kliknete na **Konfigurovat jednotné přihlašování (SAML)**.
 
     ![Konfigurace](./media/displayr-tutorial/config02.png)
 
-6. Na **jednotné přihlašování na (SAML)** stránce, proveďte následující kroky:
+6. Na stránce **jednotného přihlašování (SAML)** proveďte následující kroky:
 
     ![Konfigurace](./media/displayr-tutorial/config03.png)
 
-    a. Zkontrolujte, **povolit jednotné přihlašování na (SAML)** pole.
+    a. Zaškrtněte pole **Povolit jednotné přihlašování (SAML)** .
 
-    b. Zkopírujte skutečnou **identifikátor** hodnotu **základní konfiguraci SAML** část Azure AD a vložte ho do **vystavitele** textového pole.
+    b. Zkopírujte hodnotu skutečné **identifikátoru** z části **základní konfigurace SAML** služby Azure AD a vložte ji do textového pole **vystavitele** .
 
-    c. V **přihlašovací adresa URL** text vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **Adresa URL pro přihlášení** vložte hodnotu **adresy URL pro přihlášení**, kterou jste zkopírovali z Azure Portal.
 
-    d. V **odhlašovací adresa URL** textové pole, vložte hodnotu **odhlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    d. Do textového pole **odhlašovací adresa URL** vložte hodnotu URL pro **odhlášení**, kterou jste zkopírovali z Azure Portal.
 
-    e. V poznámkovém bloku otevřete certifikát (Base64), zkopírujte jeho obsah a vložte ho do **certifikát** textového pole.
+    e. V programu Poznámkový blok otevřete certifikát (Base64), zkopírujte jeho obsah a vložte ho do textového pole **certifikát** .
 
-    f. **Seskupit mapování** jsou volitelné.
+    f. **Mapování skupin** jsou volitelná.
 
     g. Klikněte na **Uložit**.  
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá Britta Simon.
+V této části vytvoříte testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `Britta Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `BrittaSimon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části se budou moci používat jednotné přihlašování Azure díky udělení přístupu k Displayr Britta Simon.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure udělením přístupu ke službě DisplayName.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **Displayr**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte položku **aktér**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelů položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-displayr-test-user"></a>Vytvoření Displayr testovacího uživatele
+### <a name="create-displayr-test-user"></a>Vytvořit testovacího uživatele aktéra
 
-Azure AD uživatelům umožnit přihlásit v k Displayr, že musí být poskytnuty do Displayr. Zřizování v Displayr, je ruční úlohy.
+Pokud chcete povolit uživatele Azure AD, přihlaste se k nástroji inplay, musí být zřízené do služby inplay. V inplay je zřizování ručním úkolem.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
-1. Přihlaste se k Displayr jako správce.
+1. Přihlaste se k nástroji inplay jako správce.
 
-2. Klikněte na **nastavení** přejděte na **účet**.
+2. Klikněte na **Nastavení** a potom přejděte na **účet**.
 
-    ![Konfigurace Displayr](./media/displayr-tutorial/config01.png)
+    ![Konfigurace pro inplay](./media/displayr-tutorial/config01.png)
 
-3. Přepnout na **nastavení** v horní nabídce a přejděte dolů na stránce dokud **uživatelé** části a potom klikněte na **nového uživatele**.
+3. V horní nabídce přepněte na **Nastavení** a posuňte se dolů na stránku, dokud **uživatel** neklikne na **Nový uživatel**.
 
-    ![Konfigurace Displayr](./media/displayr-tutorial/config07.png)
+    ![Konfigurace pro inplay](./media/displayr-tutorial/config07.png)
 
-4. Na **nového uživatele** stránce, proveďte následující kroky:
+4. Na stránce **Nový uživatel** proveďte následující kroky:
 
-    ![Konfigurace Displayr](./media/displayr-tutorial/config06.png)
+    ![Konfigurace pro inplay](./media/displayr-tutorial/config06.png)
 
-    a. V **název** textové pole, zadejte jméno uživatele, jako je **Brittasimon**.
+    a. Do textového pole **název** zadejte jméno uživatele, jako je **Brittasimon**.
 
-    b. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je `Brittasimon@contoso.com`.
+    b. Do textového pole **e-mailu** zadejte e-maily uživatele jako `Brittasimon@contoso.com`.
 
-    c. Vyberte vaše příslušné **členství ve skupině**.
+    c. Vyberte příslušné **členství ve skupině**.
 
     d. Klikněte na **Uložit**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice Displayr na přístupovém panelu, můžete by měl být automaticky přihlášeni k Displayr, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici vylektoru, měli byste být automaticky přihlášeni k inlektoru, pro který jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další prostředky
+## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

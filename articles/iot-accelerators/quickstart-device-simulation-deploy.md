@@ -1,5 +1,5 @@
 ---
-title: Vyzkoušejte a spusťte simulační řešení zařízení – Azure | Dokumenty společnosti Microsoft
+title: Vyzkoušejte a spusťte řešení pro simulaci zařízení – Azure | Microsoft Docs
 description: V tomto rychlém startu nasadíte Simulaci zařízení Azure IoT a spustíte simulaci.
 author: troyhopwood
 manager: timlt
@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
 ms.openlocfilehash: 68e0c3c89698bafbab65ca786231e0364900213a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "65467827"
 ---
 # <a name="quickstart-deploy-and-run-an-iot-device-simulation-in-azure"></a>Rychlý start: Nasazení a spuštění simulace zařízení IoT v Azure
@@ -22,7 +22,7 @@ V tomto rychlém startu se dozvíte, jak nasadit Simulaci zařízení Azure IoT 
 
 K dokončení tohoto rychlého startu potřebujete aktivní předplatné Azure.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="deploy-device-simulation"></a>Nasazení Simulace zařízení
 
@@ -44,7 +44,7 @@ Vyberte **Předplatné** a **Oblast**, které chcete při nasazování akcelerá
 
 Zaškrtněte políčko pro nasazení centra IoT pro použití s řešením simulace zařízení. Centrum IoT, které simulace využívá, můžete později kdykoli změnit.
 
-Kliknutím na **Vytvořit** začněte zřčovat řešení. Dokončení tohoto procesu trvá minimálně pět minut:
+Kliknutím na **vytvořit** zahajte zřizování řešení. Dokončení tohoto procesu trvá minimálně pět minut:
 
 ![Podrobnosti o řešení simulace zařízení](./media/quickstart-device-simulation-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Po dokončení procesu zřizování se můžete přihlásit k instanci Simulace 
 
 ![Otevření Simulace zařízení](./media/quickstart-device-simulation-deploy/choosenew.png)
 
-Kliknutím na **Přijmout** přijmete požadavek na oprávnění, zobrazí se řídicí panel řešení Simulace zařízení ve vašem prohlížeči.
+Kliknutím na **přijmout** přijměte žádost o oprávnění, řídicí panel řešení pro simulaci zařízení se zobrazí v prohlížeči.
 
 Při prvním otevření se zobrazí řídicí panel Simulace zařízení s příručkou **Začínáme**. Kliknutím na první dlaždici otevřete ukázkovou simulaci. Pokud zavřete příručku **Začínáme**, můžete **jednoduchou ukázkovou simulaci** otevřít kliknutím na příslušnou dlaždici na řídicím panelu:
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace Azure Active Directory s ExpenseIn | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ExpenseIn.
+title: 'Kurz: Azure Active Directory integrace s ExpenseIn | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a ExpenseIn.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,181 +17,181 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c09542013dff3a18965d1070216a938c26a144e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67102842"
 ---
-# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Kurz: ExpenseIn integrovat s Azure Active Directory
+# <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Kurz: integrace ExpenseIn s Azure Active Directory
 
 V tomto kurzu se dozvíte, jak integrovat ExpenseIn s Azure Active Directory (Azure AD). Když integrujete ExpenseIn s Azure AD, můžete:
 
-* Ovládací prvek ve službě Azure AD, který má přístup k ExpenseIn.
-* Aby uživatelé mohli být automaticky přihlášeni k ExpenseIn pomocí jejich účtů služby Azure AD.
-* Správa účtů v jednom centrálním místě – na webu Azure portal.
+* Řízení ve službě Azure AD, která má přístup k ExpenseIn.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k ExpenseIn svým účtům Azure AD.
+* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
-Další informace o integraci aplikací SaaS v Azure AD, najdete v článku [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Abyste mohli začít, potřebujete následující položky:
+Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* ExpenseIn jednotné přihlašování (SSO) povolené předplatné.
+* ExpenseIn odběr s povoleným jednotným přihlašováním (SSO).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
-V tomto kurzu nakonfigurovat a otestovat jednotné přihlašování služby Azure AD v testovacím prostředí. Podporuje ExpenseIn **SP a zprostředkovatele identity** jednotné přihlašování zahájené.
+V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí. ExpenseIn podporuje **aktualizace SP a IDP, které** iniciovaly jednotné přihlašování.
 
 ## <a name="adding-expensein-from-the-gallery"></a>Přidání ExpenseIn z Galerie
 
-Konfigurace integrace ExpenseIn do služby Azure AD, budete muset přidat ExpenseIn z Galerie na váš seznam spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci ExpenseIn do služby Azure AD, musíte přidat ExpenseIn z Galerie do svého seznamu spravovaných aplikací SaaS.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
-1. V levém navigačním podokně, vyberte **Azure Active Directory** služby.
-1. Přejděte do **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, **novou aplikaci**.
-1. V **přidat z Galerie** části, zadejte **ExpenseIn** do vyhledávacího pole.
-1. Vyberte **ExpenseIn** z výsledků panelu a pak přidat aplikaci. Počkejte několik sekund, zatímco aplikace se přidá do vašeho tenanta.
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
+1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
+1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** do vyhledávacího pole zadejte **ExpenseIn** .
+1. Na panelu výsledků vyberte **ExpenseIn** a pak aplikaci přidejte. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování služby Azure AD jednotného přihlašování
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-Konfigurace a otestování jednotného přihlašování k Azure AD s ExpenseIn pomocí testovacího uživatele volá **B.Simon**. Pro jednotné přihlašování pro práci budete muset vytvořit vztah odkazu mezi uživatele služby Azure AD a související uživatel v ExpenseIn.
+Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí ExpenseIn pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, je potřeba vytvořit propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v ExpenseIn.
 
-Nakonfigurovat a otestovat jednotné přihlašování služby Azure AD s ExpenseIn, proveďte následující stavebních bloků:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí ExpenseIn, dokončete následující stavební bloky:
 
-1. **[Konfigurace jednotného přihlašování k Azure AD](#configure-azure-ad-sso)**  aby uživatelé mohli tuto funkci používat.
-2. **[Konfigurace ExpenseIn](#configure-expensein)**  ke konfiguraci nastavení jednotného přihlašování na straně aplikace.
-3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  k otestování služby Azure AD jednotné přihlašování s B.Simon.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  umožňující B.Simon používat Azure AD jednotného přihlašování.
-5. **[Vytvořit testovacího uživatele ExpenseIn](#create-expensein-test-user)**  mít protějšek B.Simon ExpenseIn, který je propojený s Azure AD reprezentace uživatele.
-6. **[Otestovat jednotné přihlašování](#test-sso)**  ověřit, jestli funguje v konfiguraci.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+2. **[Nakonfigurujte ExpenseIn](#configure-expensein)** pro konfiguraci nastavení jednotného přihlašování na straně aplikace.
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD pomocí B. Simon.
+4. Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD, **[přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** .
+5. **[Vytvořte uživatele ExpenseIn test](#create-expensein-test-user)** , který bude mít protějšek B. Simon v ExpenseIn, který je propojený s reprezentací uživatele Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování k Azure AD
+### <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
-Použijte následující postup povolení jednotného přihlašování Azure AD na webu Azure Portal.
+Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [webu Azure portal](https://portal.azure.com/)na **ExpenseIn** stránky integrace aplikací, najdete **spravovat** a vyberte **jednotného přihlašování**.
-1. Na **vybrat jedinou metodu přihlašování** stránce **SAML**.
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránky, klikněte na ikonu úprav/pera **základní konfiguraci SAML** můžete upravit nastavení.
+1. V [Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **ExpenseIn** Najděte oddíl **Spravovat** a vyberte **jednotné přihlašování**.
+1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
 
-   ![Upravit konfiguraci základní SAML](common/edit-urls.png)
+   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. Na **základní konfiguraci SAML** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu, postupujte následovně:
+4. Pokud chcete nakonfigurovat aplikaci v režimu iniciované **IDP** , proveďte v **základní části Konfigurace SAML** následující krok:
 
-    V **adresy URL odpovědi** textové pole, zadejte některou z adresy URL:
+    Do textového pole **Adresa URL odpovědi** zadejte některou z těchto adres URL:
 
     | |
     |--|
     | `https://app.expensein.com/samlcallback` |
     | `https://mobileapi.expensein.com/identity/samlcallback` |
 
-5. Klikněte na tlačítko **nastavit další adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+5. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    V **přihlašovací adresa URL** textové pole, zadejte adresu URL:  `https://app.expensein.com/saml`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.expensein.com/saml`
 
-1. Na **nastavte si jednotné přihlašování pomocí SAML** stránku, **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a klikněte na tlačítko **Stáhnout** ke stažení **certifikát (Base64)** a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a kliknutím na tlačítko **Stáhnout** stáhněte **certifikát (Base64)** a uložte ho do počítače.
 
-   ![Odkaz ke stažení certifikátu](./media/expensein-tutorial/copy-metdataurl-certificate.png)
+   ![Odkaz na stažení certifikátu](./media/expensein-tutorial/copy-metdataurl-certificate.png)
 
-1. Na **nastavení ExpenseIn** tématu, zkopírujte příslušné adresy URL na základě vašich požadavků.
+1. V části **Nastavení ExpenseIn** zkopírujte na základě vašeho požadavku příslušné adresy URL.
 
-   ![Zkopírování adresy URL konfigurace](common/copy-configuration-urls.png)
+   ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="configure-expensein"></a>Konfigurace ExpenseIn
 
-1. K automatizaci konfigurace v rámci ExpenseIn, je potřeba nainstalovat **Moje aplikace zabezpečené přihlašování rozšíření prohlížeče** kliknutím **nainstalovat rozšíření**.
+1. Pokud chcete automatizovat konfiguraci v rámci ExpenseIn, je potřeba nainstalovat rozšíření **prohlížeče zabezpečeného přihlašování aplikace** kliknutím na **instalovat rozšíření**.
 
-    ![Moje aplikace rozšíření](common/install-myappssecure-extension.png)
+    ![Rozšíření moje aplikace](common/install-myappssecure-extension.png)
 
-2. Po přidání rozšíření do prohlížeče, klikněte na **nastavení ExpenseIn** nasměruje na ExpenseIn aplikace. Odtud zadejte přihlašovací údaje správce pro přihlášení do ExpenseIn. Rozšíření prohlížeče budou automaticky nakonfigurovat aplikaci za vás a automatizovat kroky 3 až 5.
+2. Po přidání rozšíření do prohlížeče klikněte na **ExpenseIn nastavení** a nasměrujte vás na aplikaci ExpenseIn. Odtud zadejte přihlašovací údaje správce, které se přihlásí k ExpenseIn. Rozšíření prohlížeče automaticky provede konfiguraci aplikace za vás a automatizujte kroky 3-5.
 
-    ![Nastavení konfigurace](common/setup-sso.png)
+    ![Konfigurace instalace](common/setup-sso.png)
 
-3. Pokud chcete nastavit ExpenseIn ručně, otevřete nové okno webového prohlížeče a přihlaste na webu společnosti ExpenseIn jako správce a proveďte následující kroky:
+3. Pokud chcete nastavit ExpenseIn ručně, otevřete nové okno webového prohlížeče a přihlaste se k webu ExpenseIn společnosti jako správce a proveďte následující kroky:
 
-4. Klikněte na **správce** přejděte do horní části stránky **Single Sign-On** a klikněte na tlačítko **přidat poskytovatele**.
+4. V horní části stránky klikněte na **správce** , přejděte do **jednotného přihlašování** a klikněte na **Přidat poskytovatele**.
 
      ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config01.png)
 
-5. Na **nového zprostředkovatele Identity** rozbalovací, proveďte následující kroky:
+5. V místní nabídce **nového zprostředkovatele identity** proveďte následující kroky:
 
     ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config02.png)
 
-    a. V **název zprostředkovatele** textové pole, zadejte název, jako je např: Azure.
+    a. Do textového pole **název poskytovatele** zadejte název, jako např.: Azure.
 
-    b. Vyberte **Ano** jako **povolit přihlašování Intitated poskytovatele**.
+    b. Vyberte **Ano** , pokud **povolíte přihlášení Intitated poskytovatele**.
 
-    c. V **cílové adrese Url** text vložte hodnotu **přihlašovací adresa URL**, který jste zkopírovali z portálu Azure portal.
+    c. Do textového pole **cílová adresa URL** vložte hodnotu **přihlašovací adresa URL**, kterou jste zkopírovali z Azure Portal.
 
-    d. V **vystavitele** text vložte hodnotu **Azure AD identifikátor**, který jste zkopírovali z portálu Azure portal.
+    d. Do textového pole **vystavitele** vložte hodnotu **identifikátoru Azure AD**, kterou jste zkopírovali z Azure Portal.
 
-    e. V poznámkovém bloku otevřete certifikát (Base64), zkopírujte jeho obsah a vložte ji **certifikát** textového pole.
+    e. V programu Poznámkový blok otevřete certifikát (Base64), zkopírujte jeho obsah a vložte ho do textového pole **certifikát** .
 
-    f. Klikněte na možnost **Vytvořit**.
+    f. Klikněte na **Vytvořit**.
 
-### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele na webu Azure Portal volá B.Simon.
+V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
-1. V levém podokně webu Azure Portal vyberte **Azure Active Directory**vyberte **uživatelé**a pak vyberte **všichni uživatelé**.
-1. Vyberte **nového uživatele** v horní části obrazovky.
-1. V **uživatele** vlastností, postupujte podle těchto kroků:
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V horní části obrazovky vyberte **Nový uživatel** .
+1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. V **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Vyberte **zobrazit heslo** zaškrtněte políčko a zapište si hodnotu, která se zobrazí **heslo** pole.
-   1. Klikněte na možnost **Vytvořit**.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Klikněte na **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte B.Simon k udělení přístupu k ExpenseIn použití Azure jednotného přihlašování.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup k ExpenseIn.
 
-1. Na webu Azure Portal, vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
-1. V seznamu aplikací vyberte **ExpenseIn**.
-1. Na stránce Přehled aplikace najít **spravovat** a vyberte **uživatelů a skupin**.
+1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. V seznamu aplikace vyberte **ExpenseIn**.
+1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
 
-   ![Odkaz "Uživatele a skupiny"](common/users-groups-blade.png)
+   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-1. Vyberte **přidat uživatele**a pak vyberte **uživatelů a skupin** v **přidat přiřazení** dialogového okna.
+1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
     ![Odkaz Přidat uživatele](common/add-assign-user.png)
 
-1. V **uživatelů a skupin** dialogového okna, vyberte **B.Simon** ze seznamu uživatelů, klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. Pokud očekáváte libovolná hodnota role v kontrolní výraz SAML v **vybrat roli** dialogového okna, vyberte vhodnou roli pro uživatele ze seznamu a klikněte **vyberte** tlačítko v dolní části obrazovky.
-1. V **přidat přiřazení** dialogového okna, klikněte na tlačítko **přiřadit** tlačítko.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-expensein-test-user"></a>Vytvoření ExpenseIn testovacího uživatele
+### <a name="create-expensein-test-user"></a>Vytvořit testovacího uživatele ExpenseIn
 
-Pokud chcete povolit Azure AD uživatelům umožní přihlásit k ExpenseIn, musí být poskytnuty do ExpenseIn. Zřizování v ExpenseIn, je ruční úlohy.
+Aby se uživatelé Azure AD mohli přihlašovat k ExpenseIn, musí se zřídit v ExpenseIn. V ExpenseIn je zřizování ručním úkolem.
 
-**K poskytnutí uživatelského účtu, postupujte následovně:**
+**Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
 1. Přihlaste se k ExpenseIn jako správce.
 
-2. Klikněte na **správce** přejděte do horní části stránky **uživatelé** a klikněte na tlačítko **nového uživatele**.
+2. V horní části stránky klikněte na **správce** a pak přejděte na **Uživatelé** a klikněte na **Nový uživatel**.
 
      ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config03.png)
 
-3. Na **podrobnosti** rozbalovací, proveďte následující kroky:
+3. V automaticky otevíraném okně **Podrobnosti** proveďte následující kroky:
 
     ![Konfigurace ExpenseIn](./media/expenseIn-tutorial/config04.png)
 
-    a. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **B**.
+    a. Do textového pole **jméno a příjmení** zadejte jméno uživatele jako **B**.
 
-    b. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
+    b. Do textového pole **příjmení** zadejte příjmení uživatele, jako je **Simon**.
 
-    c. V **e-mailu** textové pole, zadejte e-mailu uživatele, jako je `B.Simon@contoso.com`.
+    c. Do textového pole **e-mailu** zadejte e-maily uživatele jako `B.Simon@contoso.com`.
 
-    d. Klikněte na možnost **Vytvořit**.
+    d. Klikněte na **Vytvořit**.
 
 ### <a name="test-sso"></a>Test SSO
 
-Při výběru dlaždice ExpenseIn na přístupovém panelu, můžete by měl být automaticky přihlášeni k ExpenseIn, u kterého nastavíte jednotné přihlašování. Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu vyberete dlaždici ExpenseIn, měli byste se automaticky přihlásit k ExpenseIn, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
-- [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -1,13 +1,13 @@
 ---
 ms.openlocfilehash: defdb89f2a9cf3ec270b0f728f90ba07b83d707b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67174711"
 ---
-## <a name="set-up-the-session"></a>Nastavení relace
+## <a name="set-up-the-session"></a>Nastavte relaci.
 
-Vyvolat, `Start()` aby vaše relace ke zpracování dat prostředí.
+Vyvolá `Start()` se, pokud chcete, aby vaše relace mohla zpracovávat data prostředí.
 
-Chcete-li zpracovat události vyvolané vaší relace, připojte obslužnou rutinu události.
+Chcete-li zpracovávat události vyvolané vaší relací, připojte obslužnou rutinu události.

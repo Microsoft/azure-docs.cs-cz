@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Integrace služby Azure Active Directory s plány o výšce 10 000 stop | Dokumenty společnosti Microsoft'
-description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Službou Azure Active Directory a plány o výšce 10 000 stop.
+title: 'Kurz: Azure Active Directory integrace s 10 000ft plány | Microsoft Docs'
+description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a 10 000ft plány.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,188 +17,188 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441c9345f92974c387429baac768dbccb03fc995
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67107607"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Kurz: Integrace služby Azure Active Directory s plány o výšce 10 000 stop
+# <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Kurz: Azure Active Directory integrace s 10 000ft plány
 
-V tomto kurzu se dozvíte, jak integrovat plány o rozloze 10 000 stop s Azure Active Directory (Azure AD).
-Integrace 10 000 stop plánů s Azure AD vám poskytuje následující výhody:
+V tomto kurzu se naučíte, jak integrovat 10 000ft plánů pomocí Azure Active Directory (Azure AD).
+Integrace 10 000ft plánů pomocí Azure AD vám poskytne následující výhody:
 
-* Můžete řídit ve službě Azure AD, který má přístup k plánům 10 000 stop.
-* Můžete povolit uživatelům, aby se automaticky přihlásili k 10 000 ft plány (jednotné přihlášení) s jejich účty Azure AD.
-* Své účty můžete spravovat v jednom centrálním umístění – na portálu Azure.
+* Můžete kontrolovat v Azure AD, kteří mají přístup k 10 000ft plánům.
+* Uživatelům můžete povolit, aby se automaticky přihlásili k 10 000ft plánům (jednotné přihlašování) pomocí svých účtů Azure AD.
+* Účty můžete spravovat v jednom centrálním umístění – Azure Portal.
 
-Pokud se chcete dozvědět více podrobností o integraci aplikací SaaS s Azure AD, přečtěte [si, co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Pokud nemáte předplatné Azure, [vytvořte si bezplatný účet,](https://azure.microsoft.com/free/) než začnete.
+Pokud chcete získat další podrobnosti o integraci aplikace SaaS s Azure AD, přečtěte si téma [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li nakonfigurovat integraci Azure AD s plány 10 000 ft, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s využitím 10 000ft plánů potřebujete následující položky:
 
-* Předplatné Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/)
-* 10,000ft plány jednotné přihlášení povoleno předplatné
+* Předplatné služby Azure AD. Pokud nemáte prostředí Azure AD, můžete získat [bezplatný účet](https://azure.microsoft.com/free/) .
+* 10.000ft plánuje předplatné s povoleným jednotným přihlašováním
 
 ## <a name="scenario-description"></a>Popis scénáře
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* 10,000ft Plány podporují **SP** iniciované sso
-* 10 000 stop plány podporují zřizování uživatelů **just in time**
+* 10. plány 000ft podporují jednotné přihlašování (SSO) spouštěné v **SP**
+* 10 plánů 000ft podporují **jenom dobu** zřizování uživatelů
 
-## <a name="adding-10000ft-plans-from-the-gallery"></a>Přidání 10,000ft plány z galerie
+## <a name="adding-10000ft-plans-from-the-gallery"></a>Přidání 10 000ft plánů z Galerie
 
-Chcete-li nakonfigurovat integraci plánů 10 000 ft do Azure AD, musíte přidat plány o 10 000 stop z galerie do seznamu spravovaných aplikací SaaS.
+Pokud chcete nakonfigurovat integraci 10 000ft plánů do Azure AD, musíte do seznamu spravovaných aplikací pro SaaS přidat 10 plánů 000ft z galerie.
 
-**Chcete-li přidat plány o výšce 10 000 stop z galerie, proveďte následující kroky:**
+**Pokud chcete do galerie přidat plány 10 000ft, proveďte následující kroky:**
 
-1. Na **[portálu Azure](https://portal.azure.com)** klikněte na levém navigačním panelu na ikonu **Služby Azure Active Directory.**
+1. V **[Azure Portal](https://portal.azure.com)** na levém navigačním panelu klikněte na ikonu **Azure Active Directory** .
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png)
 
-2. Přejděte do **podnikových aplikací** a pak vyberte možnost **Všechny aplikace.**
+2. Přejděte na **podnikové aplikace** a vyberte možnost **všechny aplikace** .
 
-    ![Okno Aplikace Enterprise](common/enterprise-applications.png)
+    ![Okno podnikové aplikace](common/enterprise-applications.png)
 
-3. Chcete-li přidat novou aplikaci, klepněte na tlačítko **Nová aplikace** v horní části dialogového okna.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **Nová aplikace** v horní části dialogového okna.
 
     ![Tlačítko Nová aplikace](common/add-new-app.png)
 
-4. Do vyhledávacího pole zadejte **plány o výšce 10 000 stop**, z panelu výsledků vyberte **plány o výšce 10 000 stop** a klepnutím na tlačítko **Přidat** přidejte aplikaci.
+4. Do vyhledávacího pole zadejte **10, plány 000ft**, z panelu výsledek vyberte **10, plány 000ft** a potom kliknutím na tlačítko **Přidat** přidejte aplikaci.
 
-    ![Plány o výšce 10 000 stop v seznamu výsledků](common/search-new-app.png)
+    ![10 000ft plánů v seznamu výsledků](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a testování jednotného přihlašování Azure AD
 
-V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD pomocí plánů o výšce 10 000 stop na základě testovacího uživatele s názvem **Britta Simon**.
-Aby jednotné přihlašování fungovalo, musí být vytvořen vztah propojení mezi uživatelem Služby Azure AD a souvisejícím uživatelem v plánech o 10 000 stopách.
+V této části nakonfigurujete a otestujete jednotné přihlašování Azure AD s využitím 10 000ft plánů na základě testovacího uživatele s názvem **Britta Simon**.
+Aby jednotné přihlašování fungovalo, musí se zřídit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem v 10 000ft plánech.
 
-Chcete-li nakonfigurovat a otestovat jednotné přihlašování Azure AD s plány o 10 000 stop, musíte dokončit následující stavební bloky:
+Pokud chcete konfigurovat a testovat jednotné přihlašování Azure AD s využitím 10 000ft plánů, je nutné dokončit následující stavební bloky:
 
-1. **[Nakonfigurujte azure ad jednotné přihlašování](#configure-azure-ad-single-sign-on)** – aby vaši uživatelé mohli používat tuto funkci.
-2. **[Konfigurace 10000ft plány jednotné přihlášení](#configure-10000ft-plans-single-sign-on)** - pro konfiguraci nastavení jednotného přihlášení na straně aplikace.
-3. **[Vytvořte uživatele testu Azure AD](#create-an-azure-ad-test-user)** – k testování jednotného přihlášení Azure AD s Brittou Simonovou.
-4. **[Přiřaďte testovacímu uživateli Azure AD](#assign-the-azure-ad-test-user)** – chcete-li Britta Simon ové povolit použití jednotného přihlášení azure ad.
-5. **[Vytvořte 10000ft plány testovací ho uživatele](#create-10000ft-plans-test-user)** – mít protějšek Britta Simon v 10 000 ft plány, které je propojeny s reprezentaci Azure AD uživatele.
-6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** - chcete-li ověřit, zda konfigurace funguje.
+1. **[Nakonfigurujte jednotné přihlašování Azure AD](#configure-azure-ad-single-sign-on)** a Umožněte uživatelům používat tuto funkci.
+2. **[Nakonfigurovat jednotné přihlašování plánů 10000ft](#configure-10000ft-plans-single-sign-on)** a nakonfigurovat nastavení jednotného přihlašování na straně aplikace
+3. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí Britta Simon.
+4. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – pro povolení Britta Simon pro použití jednotného přihlašování Azure AD.
+5. **[Vytvořte testovacího uživatele 10000Ft plány](#create-10000ft-plans-test-user)** , abyste měli protějšek Britta Simon v 10, 000ft plány, které jsou propojené s reprezentací uživatele v Azure AD.
+6. **[Otestujte jednotné přihlašování](#test-single-sign-on)** – ověřte, jestli konfigurace funguje.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace jednotného přihlašování Azure AD
 
-V této části povolíte jednotné přihlašování Azure AD na webu Azure Portal.
+V této části povolíte jednotné přihlašování Azure AD v Azure Portal.
 
-Chcete-li nakonfigurovat jednotné přihlašování Azure AD pomocí plánů o 10 000 stop, proveďte následující kroky:
+Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí 10 000ft plánů, proveďte následující kroky:
 
-1. Na [webu Azure Portal](https://portal.azure.com/)na stránce integrace aplikací **Plány 10 000 stop** vyberte Jedno **přihlášení**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce pro integraci aplikací na **10 000Ft plány** vyberte **jednotné přihlašování**.
 
-    ![Konfigurace odkazu pro jednotné přihlášení](common/select-sso.png)
+    ![Konfigurovat odkaz jednotného přihlašování](common/select-sso.png)
 
-2. V **dialogovém okně Vybrat metodu jednotného přihlašování** vyberte režim **SAML/WS-Fed,** abyste povolili jednotné přihlašování.
+2. V dialogovém okně **Vyberte metodu jednotného přihlašování** vyberte možnost režim **SAML/WS** , čímž povolíte jednotné přihlašování.
 
-    ![Režim výběru jednotného přihlášení](common/select-saml-option.png)
+    ![Režim výběru jednotného přihlašování](common/select-saml-option.png)
 
-3. Na stránce **Nastavit jednotné přihlašování pomocí saml** kliknutím na ikonu **Upravit** otevřete dialogové okno Základní **konfigurace SAML.**
+3. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na **Upravit** ikona a otevře se základní dialogové okno **Konfigurace SAML** .
 
     ![Upravit základní konfiguraci SAML](common/edit-urls.png)
 
-4. V části **Základní konfigurace SAML** proveďte následující kroky:
+4. V části **základní konfigurace SAML** proveďte následující kroky:
 
-    ![10,000ft plány Domény a adresy URL jednotné přihlašovací informace](common/sp-identifier.png)
+    ![10.000ft plány a informace o jednotném přihlašování v doméně a adresách URL](common/sp-identifier.png)
 
-    a. Do textového pole **Přihlásit se na adresu URL** zadejte adresu URL:`https://app.10000ft.com`
+    a. Do textového pole **přihlašovací adresa URL** zadejte adresu URL:`https://app.10000ft.com`
 
-    b. Do textového pole **Identifikátor (ID entity)** zadejte adresu URL:`https://app.10000ft.com/saml/metadata`
+    b. Do textového pole **identifikátor (ID entity)** zadejte adresu URL:`https://app.10000ft.com/saml/metadata`
 
     > [!NOTE]
-    > Hodnota **identifikátoru** se liší, pokud máte vlastní doménu. Obraťte se [na tým podpory klienta s podporou plánů 10 000 stop](https://www.10000ft.com/plans/support) a získejte tuto hodnotu. Můžete také odkazovat na vzory uvedené v části **Základní konfigurace SAML** na webu Azure Portal.
+    > Hodnota **identifikátoru** se liší v případě, že máte vlastní doménu. Pokud chcete získat tuto hodnotu, obraťte se na [tým podpory 000Ft Plan](https://www.10000ft.com/plans/support) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-5. Na stránce **Nastavit jednotné přihlašování pomocí saml** klikněte v části **Podpisový certifikát SAML** na **Stáhnout** a stáhněte si **certifikát (Nezpracovaný)** z daných možností a uložte jej do počítače.
+5. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na **Stáhnout** a Stáhněte si **certifikát (RAW)** z daných možností podle vašich požadavků a uložte ho do svého počítače.
 
-    ![Odkaz ke stažení certifikátu](common/certificateraw.png)
+    ![Odkaz na stažení certifikátu](common/certificateraw.png)
 
-6. V části **Nastavit plány o výšce 10 000 stop** zkopírujte příslušnou adresu URL podle vašeho požadavku.
+6. V části **nastavení 10 plánů 000ft** zkopírujte příslušné adresy URL dle vašeho požadavku.
 
-    ![Kopírování konfiguračních adres URL](common/copy-configuration-urls.png)
+    ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
     a. Přihlašovací adresa URL
 
-    b. Identifikátor azure reklamy
+    b. Identifikátor Azure AD
 
-    c. Adresa URL odhlášení
+    c. Odhlašovací adresa URL
 
-### <a name="configure-10000ft-plans-single-sign-on"></a>Konfigurace jednoho přihlašování plánů 10000 ft
+### <a name="configure-10000ft-plans-single-sign-on"></a>Konfigurace jednotného přihlašování plánů 10000ft
 
-Chcete-li nakonfigurovat jednotné přihlašování na straně **plánů 10 000 stop,** musíte odeslat stažený **certifikát (Raw)** a příslušné zkopírované adresy URL z portálu Azure portal do [týmu podpory plánů 10 000 ft](https://www.10000ft.com/plans/support). Toto nastavení nastaví tak, aby bylo připojení s přizasazené k samovazbě SAML správně nastaveno na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na **000ftch plánech** , je třeba odeslat stažený **certifikát (RAW)** a příslušné zkopírované adresy URL z Azure Portal do [10, týmu podpory 000ft Plan](https://www.10000ft.com/plans/support). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-Cílem této části je vytvořit testovacího uživatele na webu Azure portal s názvem Britta Simon.
+Cílem této části je vytvořit testovacího uživatele v Azure Portal s názvem Britta Simon.
 
-1. Na webu Azure Portal v levém podokně vyberte **Azure Active Directory**, vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
+1. V Azure Portal v levém podokně vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
 
-    ![Odkazy "Uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
+    ![Odkazy "uživatelé a skupiny" a "Všichni uživatelé"](common/users.png)
 
-2. V horní části obrazovky vyberte **Nový uživatel.**
+2. V horní části obrazovky vyberte **Nový uživatel** .
 
-    ![Tlačítko nového uživatele](common/new-user.png)
+    ![Tlačítko pro nového uživatele](common/new-user.png)
 
-3. Ve vlastnostech User proveďte následující kroky.
+3. Ve vlastnostech uživatele proveďte následující kroky.
 
-    ![Dialogové okno Uživatel](common/user-properties.png)
+    ![Uživatelský dialog](common/user-properties.png)
 
-    a. Do pole **Název** zadejte **BrittaSimon**.
+    a. Do pole **název** zadejte **BrittaSimon**.
   
-    b. Do pole **Uživatelské** jméno `brittasimon@yourcompanydomain.extension`zadejte . Například BrittaSimon@contoso.com.
+    b. Do pole **uživatelské jméno** zadejte `brittasimon@yourcompanydomain.extension`. Například BrittaSimon@contoso.com.
 
-    c. Zaškrtněte **políčko Zobrazit heslo** a poznamenejte si hodnotu, která se zobrazí v poli Heslo.
+    c. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli heslo.
 
     d. Klikněte na **Vytvořit**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování udělením přístupu k 10 000 ft plány.
+V této části povolíte Britta Simon pro použití jednotného přihlašování pomocí Azure tím, že udělíte přístup k plánům s 10 000ft.
 
-1. Na portálu Azure vyberte **Podnikové aplikace**, vyberte **Všechny aplikace**a pak vyberte **plány o výšce 10 000 stop**.
+1. V Azure Portal vyberte **podnikové aplikace**, vyberte **všechny aplikace**a pak vyberte **10, plány 000ft**.
 
     ![Okno podnikových aplikací](common/enterprise-applications.png)
 
-2. V seznamu aplikací vyberte **plány o výšce 10 000 stop**.
+2. V seznamu aplikace vyberte **10, plány 000ft**.
 
-    ![Odkaz Plány 10 000 stop v seznamu Aplikace](common/all-applications.png)
+    ![Odkaz na 10 000ft plánů v seznamu aplikací](common/all-applications.png)
 
-3. V nabídce vlevo vyberte **Možnost Uživatelé a skupiny**.
+3. V nabídce na levé straně vyberte **Uživatelé a skupiny**.
 
-    ![Odkaz "Uživatelé a skupiny"](common/users-groups-blade.png)
+    ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
 
-4. Klikněte na tlačítko **Přidat uživatele** a v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny.**
+4. Klikněte na tlačítko **Přidat uživatele** a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Podokno Přidat přiřazení](common/add-assign-user.png)
+    ![Podokno přidat přiřazení](common/add-assign-user.png)
 
-5. V dialogovém okně **Uživatelé a skupiny** vyberte **brittu Simonovou** v seznamu Uživatelé a klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+5. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu Uživatelé položku **Britta Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-6. Pokud očekáváte libovolnou hodnotu role v kontrolním výrazu SAML, vyberte v dialogovém okně **Vybrat roli** příslušnou roli pro uživatele ze seznamu a klepněte na tlačítko **Vybrat** v dolní části obrazovky.
+6. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, pak v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 
-7. V dialogovém okně **Přidat přiřazení** klepněte na tlačítko **Přiřadit.**
+7. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
 
-### <a name="create-10000ft-plans-test-user"></a>Vytvořit 10000ft plány testovací ho uživatele
+### <a name="create-10000ft-plans-test-user"></a>Vytvořit testovacího uživatele pro 10000ft plány
 
-V této části je uživatel s názvem Britta Simon vytvořen v plánech 10,000ft. Plány 10 000 ft podporují zřizování uživatelů just-in-time, které je ve výchozím nastavení povoleno. V této části pro vás není žádná položka akce. Pokud uživatel ještě neexistuje v plánech o výšce 10 000 stop, vytvoří se po ověření nový uživatel.
+V této části se ve 10 000ft plánech vytvoří uživatel s názvem Britta Simon. 10 plánů 000ft podporuje zřizování uživatelů za běhu, což je ve výchozím nastavení povolené. V této části není žádná položka akce. Pokud uživatel ještě v 000ft plánech neexistuje, vytvoří se po ověření nový.
 
 > [!NOTE]
-> Pokud potřebujete vytvořit uživatele ručně, musíte kontaktovat [tým podpory klienta plánů 10 000 stop](https://www.10000ft.com/plans/support).
+> Pokud potřebujete ručně vytvořit uživatele, musíte se obrátit na [tým podpory s plánem 10, 000Ft Plan](https://www.10000ft.com/plans/support).
 
 ### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 
-V této části otestujete konfiguraci jednotného přihlášení Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Po kliknutí na dlaždici 10 000 ft plány na přístupovém panelu, měli byste být automaticky přihlášeni k 10 000 ft plány, které nastavíte přiřazovat k zámese. Další informace o přístupovém panelu naleznete [v tématu Úvod k přístupovému panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Po kliknutí na dlaždici 000ft plány na přístupovém panelu byste měli být automaticky přihlášeni k 000ft plánům, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam výukových programů o integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co je podmíněný přístup ve službě Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

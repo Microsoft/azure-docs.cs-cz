@@ -1,6 +1,6 @@
 ---
-title: Migrace existujících dat do účtu table api v Azure Cosmos DB
-description: Zjistěte, jak migrovat nebo importovat místní nebo cloudová data do účtu Azure Table API v Azure Cosmos DB.
+title: Migrace existujících dat na účet rozhraní API pro tabulky v Azure Cosmos DB
+description: Přečtěte si, jak migrovat nebo importovat místní nebo cloudová data do Azure rozhraní API pro tabulky účtu v Azure Cosmos DB.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -9,15 +9,15 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 5c828644cb03d83df38265719cd8afabc24cf739
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66242569"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny k importu dat pro použití s [rozhraním API tabulky](table-introduction.md)DB Azure Cosmos . Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat do rozhraní Table API služby Azure Cosmos DB použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. 
+V tomto kurzu najdete pokyny k importu dat pro použití s Azure Cosmos DB [rozhraní API pro tabulky](table-introduction.md). Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat do rozhraní Table API služby Azure Cosmos DB použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -28,7 +28,7 @@ Tento kurz se zabývá následujícími úkony:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Zvýšení propustnosti:** Doba trvání migrace dat závisí na velikosti propustnosti, kterou jste nastavili pro jednotlivé kontejnery nebo sadu kontejnerů. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
+* **Zvýšit propustnost:** Doba trvání migrace dat závisí na množství propustnosti, kterou jste nastavili pro jednotlivé kontejnery nebo na sadu kontejnerů. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
 * **Vytvoření prostředků služby Azure Cosmos DB:** Ještě před zahájením migrace dat vytvořte všechny tabulky na webu Azure Portal. Pokud provádíte migraci na účet služby Azure Cosmos DB, který má propustnost na úrovni databáze, nezapomeňte při vytváření tabulek Azure Cosmos DB zadat klíč oddílu.
 
@@ -66,11 +66,11 @@ Při definování služby Azure Table Storage nebo rozhraní Table API Preview j
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Pokud chcete zdrojový připojovací řetězec načíst při importu z úložiště Azure Table, otevřete portál Azure portal a klikněte na**klíče přístupu k****účtu účtů** >  **úložiště** > a potom pomocí tlačítka copy zkopírujte **připojovací řetězec**.
+Pokud chcete načíst zdrojový připojovací řetězec při importu z Azure Table Storage, otevřete Azure Portal a klikněte na**přístupové klíče****účtu** >  **úložiště** > a pak pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
 ![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/storage-table-access-key.png)
 
-Pokud chcete zdrojový připojovací řetězec načíst při importu z účtu Azure Cosmos DB Table API (preview), otevřete portál Azure, klikněte na**připojovací řetězec** **účtu** >  **Azure Cosmos DB** > a pomocí tlačítka copy zkopírujte **připojovací řetězec**.
+Pokud chcete při importu z účtu Azure Cosmos DB rozhraní API pro tabulky (Preview) načíst zdrojový připojovací řetězec, otevřete Azure Portal, klikněte na **Azure Cosmos DB** > **Account** > **připojovací řetězec** účtu a pomocí tlačítka Kopírovat zkopírujte **připojovací řetězec**.
 
 ![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/cosmos-connection-string.png)
 

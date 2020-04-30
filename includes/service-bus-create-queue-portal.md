@@ -9,17 +9,17 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: d1cf75d8e678bc5bd3e3036930eea42526194df1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175248"
 ---
-## <a name="create-a-queue-in-the-azure-portal"></a>Vytvoření fronty na webu Azure Portal
-1. Na stránce **Obor názvů služby Service Bus** vyberte **fronty** v levé navigační nabídce.
-1. Na stránce **Fronty** vyberte na panelu nástrojů **položku + Fronta.**
-1. Zadejte **název** fronty a ostatní hodnoty ponechte s jejich výchozími hodnotami.
+## <a name="create-a-queue-in-the-azure-portal"></a>Vytvoření fronty v Azure Portal
+1. Na stránce **Service Bus obor názvů** v levém navigačním panelu vyberte **fronty** .
+1. Na stránce **fronty** vyberte **+ fronta** na panelu nástrojů.
+1. Zadejte **název** fronty a nechte ostatní hodnoty výchozími hodnotami.
 1. Nyní vyberte **vytvořit**.
  
-    ![Fronty -> + Název > > -> -Create](./media/service-bus-create-queue-portal/create-queue3.png)
+    ![Fronty – > + Queue-> zadejte název – > vytvořit.](./media/service-bus-create-queue-portal/create-queue3.png)
 

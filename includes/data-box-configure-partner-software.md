@@ -5,26 +5,26 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67175673"
 ---
-Nakonfigurujte partnerský software pro připojení ke klientovi. Chcete-li se připojit k partnerskému softwaru, obvykle potřebujete následující informace (mohou se lišit), které jste shromáždili ze stránky **Připojit a kopírovat** místní webové uživatelské uživatelské prostředí v předchozím kroku:
+Nakonfigurujte partnerský software pro připojení ke klientovi. Pokud se chcete připojit k partnerskému softwaru, budete obvykle potřebovat následující informace (mohou se lišit), které jste shromáždili na stránce **připojit a kopírovat** místního webového uživatelského rozhraní v předchozím kroku:
 
 - Název účtu úložiště
 - Přístupový klíč
 - Koncový bod služby Blob service
  
-Chcete-li ověřit, zda je připojení úspěšně navázáno, připojte se pomocí Průzkumníka úložiště k externímu účtu úložiště. Pokud nemáte Průzkumníka úložiště, stáhněte si Průzkumníka úložiště.
+Pokud chcete ověřit, že se připojení úspěšně navázalo, připojte se k externímu účtu úložiště pomocí Průzkumník služby Storage. Pokud nemáte Průzkumník služby Storage, Stáhněte Průzkumník služby Storage.
 
-Pokud používáte Průzkumníka úložiště poprvé, je třeba provést následující kroky.
+Pokud Průzkumník služby Storage používáte poprvé, musíte provést následující kroky.
 
-1. Na horním panelu příkazů přejděte na **Upravit > cílový zásobník Azure**.
+1. V horním panelu příkazů přejdete na **upravit > cílový Azure Stack**.
 
-    ![Řídicí panel datové schránky](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
+    ![Řídicí panel Data Box](media/data-box-configure-partner-software/data-box-connect-via-rest-6.png)
 
-2. Změny se projeví až po restartování Průzkumníka úložiště.
+2. Restartujte Průzkumník služby Storage, aby se změny projevily.
 
-    ![Řídicí panel datové schránky](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
+    ![Řídicí panel Data Box](media/data-box-configure-partner-software/data-box-connect-via-rest-7.png)
