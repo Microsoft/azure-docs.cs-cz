@@ -1,6 +1,6 @@
 ---
-title: 'Úvodní příručka: Apache Hive v Azure HDInsight s Apache Zeppelin'
-description: V tomto rychlém startu se dozvíte, jak pomocí Apache Zeppelin spustit dotazy Apache Hive.
+title: 'Rychlý Start: Apache Hive ve službě Azure HDInsight s Apache Zeppelin'
+description: V tomto rychlém startu se dozvíte, jak používat Apache Zeppelin ke spouštění dotazů Apache Hive.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,53 +9,53 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79367920"
 ---
-# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Úvodní příručka: Spouštění dotazů Apache Hive v Azure HDInsight pomocí Apache Zeppelin
+# <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Rychlý Start: spuštění dotazů Apache Hive ve službě Azure HDInsight s Apache Zeppelin
 
-V tomto rychlém startu se dozvíte, jak pomocí Apache Zeppelin spouštět dotazy [Apache Hive](https://hive.apache.org/) v Azure HDInsight. Clustery interaktivních dotazů HDInsight zahrnují poznámkové bloky [Apache Zeppelin,](https://zeppelin.apache.org/) které můžete použít ke spuštění interaktivních dotazů Hive.
+V tomto rychlém startu se naučíte používat Apache Zeppelin ke spouštění dotazů [Apache Hive](https://hive.apache.org/) ve službě Azure HDInsight. Clustery HDInsight s interaktivním dotazem obsahují notebooky [Apache Zeppelin](https://zeppelin.apache.org/) , které můžete použít ke spouštění interaktivních dotazů na podregistry.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Cluster interaktivních dotazů HDInsight. Viz [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) a vytvoření clusteru HDInsight.  Nezapomeňte zvolit typ clusteru **interaktivních dotazů.**
+An HDInsight clusteru interaktivních dotazů. V tématu [Vytvoření clusteru](../hadoop/apache-hadoop-linux-tutorial-get-started.md) vytvořte cluster HDInsight.  Nezapomeňte zvolit typ clusteru **interaktivní dotaz** .
 
 ## <a name="create-an-apache-zeppelin-note"></a>Vytvoření poznámky Apache Zeppelin
 
-1. Nahraďte `CLUSTERNAME` název clusteru v `https://CLUSTERNAME.azurehdinsight.net/zeppelin`následující adrese URL . Poté zadejte adresu URL do webového prohlížeče.
+1. Nahraďte `CLUSTERNAME` názvem vašeho clusteru v následující adrese URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin`. Pak zadejte adresu URL do webového prohlížeče.
 
-2. Zadejte své přihlašovací uživatelské jméno a heslo pro přihlášení k clusteru. Na stránce Zeppelin můžete buď vytvořit novou poznámku, nebo otevřít existující poznámky. **HiveSample** obsahuje některé ukázkové hive dotazy.  
+2. Zadejte své uživatelské jméno a heslo pro přihlášení ke clusteru. Na stránce Zeppelin můžete buď vytvořit novou poznámku, nebo otevřít existující poznámky. **HiveSample** obsahuje několik ukázkových dotazů na podregistr.  
 
-    ![HDInsight Interaktivní dotaz zeppelin](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
+    ![Zeppelin interaktivní dotazy HDInsight](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin.png)
 
-3. Vyberte **Vytvořit novou poznámku**.
+3. Vyberte **vytvořit novou poznámku**.
 
-4. V dialogovém okně **Vytvořit novou poznámku** zadejte nebo vyberte následující hodnoty:
+4. V dialogovém okně **vytvořit novou poznámku** zadejte nebo vyberte následující hodnoty:
 
-    - Poznámka název: Zadejte název poznámky.
-    - Výchozí překladač: V rozevíracím seznamu vyberte **jdbc.**
+    - Poznámka název: zadejte název poznámky.
+    - Výchozí Interpret: v rozevíracím seznamu vyberte **JDBC** .
 
-5. Vyberte **Vytvořit poznámku**.
+5. Vyberte **vytvořit poznámku**.
 
-6. Do oddílu kódu zadejte následující dotaz Hive a stiskněte **Shift + Enter**:
+6. Do části Code (kód) zadejte následující dotaz na podregistr a stiskněte klávesu **SHIFT + ENTER**:
 
     ```hive
     %jdbc(hive)
     show tables
     ```
 
-    ![HDInsight Interaktivní dotaz zeppelin spustí dotaz](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
+    ![Dotaz Zeppelin běžící na HDInsight Interactive](./media/hdinsight-connect-hive-zeppelin/hdinsight-hive-zeppelin-query.png)
 
-    Příkaz **%jdbc(hive)** v prvním řádku informuje poznámkový blok, aby používal interpret JDBC Hive.
+    Příkaz **% JDBC (podregistr)** v prvním řádku instruuje Poznámkový blok, aby použil překladač podregistru JDBC.
 
-    Dotaz vrátí jednu tabulku Hive s názvem **hivesampletable**.
+    Dotaz vrátí jednu tabulku podregistru s názvem **hivesampletable**.
 
-    Následují dva další dotazy Hive, které můžete spustit proti **hivesampletable**:
+    Níže jsou uvedené dva další dotazy na podregistry, které můžete spustit proti **hivesampletable**:
 
     ```hive
     %jdbc(hive)
@@ -68,11 +68,11 @@ Cluster interaktivních dotazů HDInsight. Viz [Vytvoření clusteru](../hadoop/
     limit ${total_count=10}
     ```
 
-    Ve srovnání s tradiční Hive, výsledky dotazu vrátit musí být rychlejší.
+    V porovnání s tradičním podregistrem se výsledky dotazu vrátí rychleji.
 
 ### <a name="additional-examples"></a>Další příklady
 
-1. Vytvořte tabulku. Spusťte níže uvedený kód v notebooku Zeppelin:
+1. Vytvořte tabulku. V poznámkovém bloku Zeppelin spusťte následující kód:
 
     ```hql
     %jdbc(hive)
@@ -89,7 +89,7 @@ Cluster interaktivních dotazů HDInsight. Viz [Vytvoření clusteru](../hadoop/
     STORED AS TEXTFILE;
     ```
 
-1. Načtěte data do nové tabulky. Spusťte níže uvedený kód v notebooku Zeppelin:
+1. Načte data do nové tabulky. V poznámkovém bloku Zeppelin spusťte následující kód:
 
     ```hql
     %jdbc(hive)
@@ -98,7 +98,7 @@ Cluster interaktivních dotazů HDInsight. Viz [Vytvoření clusteru](../hadoop/
     INTO TABLE log4jLogs;
     ```
 
-1. Vložte jeden záznam. Spusťte níže uvedený kód v notebooku Zeppelin:
+1. Vložte jeden záznam. V poznámkovém bloku Zeppelin spusťte následující kód:
 
     ```hql
     %jdbc(hive)
@@ -106,17 +106,17 @@ Cluster interaktivních dotazů HDInsight. Viz [Vytvoření clusteru](../hadoop/
     VALUES ('A', 'B', 'C', 'D', 'E', 'F', 'G');
     ```
 
-Další syntaxi naleznete v [příručce jazyka Hive.](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)
+Další syntaxi najdete v [příručce k jazyku podregistru](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Po dokončení rychlého startu můžete cluster odstranit. S HDInsight, vaše data jsou uloženy ve službě Azure Storage, takže můžete bezpečně odstranit clusteru, když není v provozu. Účtuje se vám také cluster HDInsight, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster jsou mnohonásobně vyšší než poplatky za úložiště, má ekonomické smysl odstranit clustery, když nejsou používány.
+Po dokončení rychlého startu možná budete chtít cluster odstranit. Ve službě HDInsight jsou vaše data uložená v Azure Storage, takže můžete cluster bezpečně odstranit, pokud se nepoužívá. Účtují se vám také poplatky za cluster HDInsight, a to i v případě, že se už nepoužívá. Vzhledem k tomu, že se poplatky za cluster mnohokrát účtují rychleji než poplatky za úložiště, má ekonomický smysl odstraňovat clustery, když se nepoužívají.
 
-Pokud chcete odstranit cluster, přečtěte si informace [o odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového příkazu k Azure](../hdinsight-delete-cluster.md).
+Pokud chcete odstranit cluster, přečtěte si téma [odstranění clusteru HDInsight pomocí prohlížeče, PowerShellu nebo rozhraní příkazového řádku Azure](../hdinsight-delete-cluster.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili používat Apache Zeppelin ke spouštění dotazů Apache Hive v Azure HDInsight. Další informace o dotazech Hive, další článek vám ukáže, jak provádět dotazy s Visual Studio.
+V tomto rychlém startu jste zjistili, jak používat Apache Zeppelin ke spouštění dotazů Apache Hive ve službě Azure HDInsight. Další informace o dotazech na podregistr najdete v dalším článku, jak spustit dotazy pomocí sady Visual Studio.
 
 > [!div class="nextstepaction"]
-> [Připojení k Azure HDInsight a spouštění dotazů Apache Hive pomocí nástrojů data lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+> [Připojení ke službě Azure HDInsight a spouštění dotazů Apache Hive pomocí nástrojů Data Lake pro Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)

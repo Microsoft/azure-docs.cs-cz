@@ -1,6 +1,6 @@
 ---
 title: Azure Stream Analytics na hraničních zařízeních IoT
-description: Vytvářejte hraniční úlohy ve Službě Azure Stream Analytics a nasazujte je do zařízení s Azure IoT Edge.
+description: Vytvářejte hraniční úlohy v Azure Stream Analytics a nasaďte je do zařízení s Azure IoT Edge.
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -9,115 +9,115 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 8bb1bd018866bda9270b78507f0462b6c4d4ea17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79475888"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics na hraničních zařízeních IoT
  
 Azure Stream Analytics (ASA) na IoT Edge umožňuje vývojářům nasadit inteligentní funkce analýzy téměř v reálném čase blíže zařízením IoT, aby bylo možné odemknout plný potenciál dat generovaných zařízením. Služba Azure Stream Analytics je určená k zajištění nízké latence, odolnosti, efektivního využití šířky pásma a dodržování předpisů. Podniky teď můžou nasadit řídicí logiku v blízkosti průmyslových provozů jako doplněk analýzy velkých objemů dat prováděné v cloudu.  
 
-Azure Stream Analytics na IoT Edge běží v rámci [Azure IoT Edge.](https://azure.microsoft.com/campaigns/iot-edge/) Po vytvoření úlohy v ASA, můžete nasadit a spravovat pomocí služby IoT Hub.
+Azure Stream Analytics na IoT Edge běží v rámci [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/) architektury. Jakmile se úloha ve službě ASA vytvoří, můžete ji nasadit a spravovat pomocí IoT Hub.
 
 ## <a name="scenarios"></a>Scénáře
-![Diagram na vysoké úrovni IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
+![Diagram vysoké úrovně IoT Edge](media/stream-analytics-edge/ASAedge-highlevel-diagram.png)
 
-* **Příkaz a řízení s nízkou latencí**: Například výrobní bezpečnostní systémy musí reagovat na provozní data s velmi nízkou latencí. S ASA na IoT Edge, můžete analyzovat data senzorů v téměř reálném čase a vydávat příkazy při detekci anomálií zastavit počítač nebo aktivovat výstrahy.
-*   **Omezené připojení ke cloudu**: Kritické systémy mise, jako jsou zařízení pro vzdálené těžbu, připojená plavidla nebo pobřežní vrty, musí analyzovat data a reagovat na ně, i když je připojení ke cloudu přerušované. S ASA, vaše logika streamování běží nezávisle na připojení k síti a můžete si vybrat, co odešlete do cloudu pro další zpracování nebo úložiště.
-* **Omezená šířka pásma**: Objem dat vytvořených proudovými motory nebo připojenými automobily může být tak velký, že data musí být před odesláním do cloudu filtrována nebo předem zpracována. Pomocí ASA můžete filtrovat nebo agregovat data, která je potřeba odeslat do cloudu.
-* **Dodržování předpisů**: Dodržování předpisů může vyžadovat, aby některá data byla před odesláním do cloudu místně anonymizována nebo agregována.
+* **Příkaz a řízení s nízkou latencí**: například systémy zabezpečení výroby musí reagovat na provozní data s nízkou latencí. Pomocí ASA v IoT Edge můžete analyzovat data senzorů téměř v reálném čase a příkazy vydávat se při detekci anomálií za účelem zastavení počítače nebo spuštění výstrah.
+*   **Omezené připojení ke cloudu**: důležité systémy, jako je vzdálené řešení dolování, připojená plavidla nebo vrtné plavby, potřebují analyzovat a reagovat na data, i když je cloudové připojení přerušované. Pomocí ASA vaše logika streamování běží nezávisle na připojení k síti a vy můžete zvolit, co odesíláte do cloudu pro další zpracování nebo uložení.
+* **Omezená šířka pásma**: objem dat vytvářených stroji Jet nebo připojenými automobily může být velký, aby před odesláním do cloudu bylo nutné data filtrovat nebo před jejich zpracováním zpracovat. Pomocí ASA můžete filtrovat nebo agregovat data, která je třeba odeslat do cloudu.
+* **Dodržování předpisů**: dodržování předpisů může vyžadovat, aby některá data byla před odesláním do cloudu místně anonymní nebo agregovaná.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Hraniční úlohy v Azure Stream Analytics
-### <a name="what-is-an-edge-job"></a>Co je to "okraj" práce?
+### <a name="what-is-an-edge-job"></a>Co je to hraniční úloha?
 
-Úlohy ASA Edge se spouštějí v kontejnerech nasazených do [zařízení Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works). Skládají se ze dvou částí:
-1.  Cloudová část, která je zodpovědná za definici úlohy: uživatelé definují vstupy, výstup, dotaz a další nastavení (události mimo pořadí atd.) v cloudu.
-2.  Modul spuštěný na vašich zařízeních IoT. Obsahuje modul ASA a přijímá definici úlohy z cloudu. 
+Hraniční úlohy ASA se spouštějí v kontejnerech nasazených do [zařízení Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works). Skládají se ze dvou částí:
+1.  Cloudová součást, která zodpovídá za definici úlohy: uživatelé definují vstupy, výstupy, dotazy a další nastavení (události mimo pořadí atd.) v cloudu.
+2.  Modul spuštěný ve vašich zařízeních IoT. Obsahuje modul ASA a přijímá definici úlohy z cloudu. 
 
-ASA používá Službu IoT Hub k nasazení hraničních úloh do zařízení. Další informace o [nasazení IoT Edge naleznete zde](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+ASA používá IoT Hub k nasazení hraničních úloh do zařízení. Další informace o [nasazení IoT Edge najdete tady](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 ![Úloha Azure Stream Analytics Edge](media/stream-analytics-edge/stream-analytics-edge-job.png)
 
 
 ### <a name="installation-instructions"></a>Pokyny k instalaci
-Kroky vysoké úrovně jsou popsány v následující tabulce. Další podrobnosti jsou uvedeny v následujících částech.
+Kroky vysoké úrovně jsou popsány v následující tabulce. Další podrobnosti jsou uvedeny v následujících oddílech.
 
 |      |Krok   | Poznámky   |
 | ---   | ---   |  ---      |
-| 1   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště se používají k uložení definice úlohy, kde k nim mají přístup vaše zařízení IoT. <br>  Můžete znovu použít libovolný existující kontejner úložiště.     |
-| 2   | **Vytvoření úlohy asa okraj**   |  Vytvořte novou úlohu, vyberte **Edge** jako **hostitelské prostředí**. <br> Tyto úlohy se vytvářejí a spravují z cloudu a běží na vlastních zařízeních IoT Edge.     |
-| 3   | **Nastavení prostředí IoT Edge na vašich zařízeních**   | Pokyny pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
-| 4   | **Nasazení ASA na vašich zařízeních IoT Edge**   |  Definice úlohy ASA se exportuje do kontejneru úložiště vytvořeného dříve.       |
+| 1   | **Vytvoření kontejneru úložiště**   | Kontejnery úložiště slouží k uložení definice úlohy, kde k nim budou mít k dispozici zařízení IoT. <br>  Můžete znovu použít libovolný existující kontejner úložiště.     |
+| 2   | **Vytvoření hraniční úlohy ASA**   |  Vytvořte novou úlohu, vyberte možnost **Edge** jako **hostitelské prostředí**. <br> Tyto úlohy se vytvářejí/spravují z cloudu a spouštějí se na vlastních IoT Edge zařízeních.     |
+| 3   | **Nastavení IoT Edge prostředí na vašich zařízeních**   | Pokyny pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).          |
+| 4   | **Nasazení ASA na vašich zařízeních IoT Edge**   |  Definice úlohy ASA se exportuje do kontejneru úložiště, který jste vytvořili dříve.       |
 
-Pomocí [tohoto podrobného kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) můžete nasadit svou první úlohu ASA na IoT Edge. Následující video by vám mělo pomoci pochopit proces spuštění úlohy Stream Analytics na hraničním zařízení IoT:  
+Postup najdete v [tomto podrobném kurzu](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) nasazení první úlohy ASA na IoT Edge. Následující video by vám mělo porozumět procesu spuštění Stream Analytics úlohy na hraničním zařízení IoT:  
 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T157/player]
 
 #### <a name="create-a-storage-container"></a>Vytvoření kontejneru úložiště
-Kontejner úložiště je nutné pro export ASA kompilovaný dotaz a konfigurace úlohy. Slouží ke konfiguraci image asa dockeru s konkrétním dotazem. 
-1. Podle [těchto pokynů](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) vytvořte účet úložiště z webu Azure Portal. Můžete zachovat všechny výchozí možnosti pro použití tohoto účtu s ASA.
-2. V nově vytvořeném účtu úložiště vytvořte kontejner úložiště objektů blob:
-    1. Klikněte na **Objekty blobs**, pak **+ Kontejner**. 
-    2. Zadejte název a ponechte kontejner jako **soukromý**.
+Aby bylo možné exportovat kompilovaný dotaz ASA a konfiguraci úlohy, je vyžadován kontejner úložiště. Používá se ke konfiguraci obrázku programu ASA Docker s vaším konkrétním dotazem. 
+1. Při vytváření účtu úložiště z Azure Portal postupujte podle [těchto pokynů](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) . U všech výchozích možností můžete zachovat použití tohoto účtu s ASA.
+2. V nově vytvořeném účtu úložiště vytvořte kontejner úložiště objektů BLOB:
+    1. Klikněte na **objekty blob**, pak na **+ kontejner**. 
+    2. Zadejte název a zachovejte kontejner jako **soukromý**.
 
-#### <a name="create-an-asa-edge-job"></a>Vytvoření úlohy ASA Edge
+#### <a name="create-an-asa-edge-job"></a>Vytvoření hraniční úlohy ASA
 > [!Note]
-> Tento kurz se zaměřuje na vytváření úloh ASA pomocí portálu Azure. Můžete také [použít modul plug-in sady Visual Studio k vytvoření úlohy ASA Edge.](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+> Tento kurz se zaměřuje na vytvoření úlohy ASA pomocí Azure Portal. [Pomocí modulu plug-in sady Visual Studio můžete také vytvořit hraniční úlohu ASA](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs) .
 
-1. Na webu Azure Portal vytvořte novou úlohu Stream Analytics. [Přímý odkaz na vytvoření nové úlohy ASA zde](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
+1. Z Azure Portal vytvořte novou "Stream Analytics úlohu". [Sem zadejte přímý odkaz pro vytvoření nové úlohy ASA](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob).
 
-2. Na obrazovce vytvoření vyberte **Edge** jako **hostitelské prostředí** (viz následující obrázek)
+2. Na obrazovce vytváření vyberte možnost **Edge** jako **hostitelské prostředí** (viz následující obrázek).
 
-   ![Vytvoření úlohy Stream Analytics na hraně](media/stream-analytics-edge/create-asa-edge-job.png)
+   ![Vytvořit úlohu Stream Analytics na hraničních zařízeních](media/stream-analytics-edge/create-asa-edge-job.png)
 3. Definice úlohy
-    1. **Definujte vstupní proud (y).** Definujte jeden nebo více vstupních datových proudů pro svou úlohu.
-    2. Definujte referenční data (nepovinné).
-    3. **Definujte výstupní proud (výstupy).** Definujte jeden nebo několik výstupů datových proudů pro vaši úlohu. 
-    4. **Definujte dotaz**. Definujte dotaz ASA v cloudu pomocí vsazený editor. Kompilátor automaticky zkontroluje syntaxi povolenou pro okraj ASA. Dotaz můžete také otestovat nahráním ukázkových dat. 
+    1. **Definujte vstupní datový proud (y)**. Definujte jeden nebo několik vstupních datových proudů pro vaši úlohu.
+    2. Definujte referenční data (volitelné).
+    3. **Definovat výstupní datový proud (y)**. Definujte jeden nebo několik výstupních datových proudů pro vaši úlohu. 
+    4. **Definujte dotaz**. Pomocí vloženého editoru definujte dotaz ASA v cloudu. Kompilátor automaticky kontroluje syntaxi povolenou pro inedge ASA. Dotaz můžete také otestovat nahráním ukázkových dat. 
 
-4. Nastavte informace o kontejneru úložiště v nabídce **nastavení IoT Edge.**
+4. V nabídce **nastavení IoT Edge** nastavte informace kontejneru úložiště.
 
-5. Nastavení volitelných nastavení
+5. Nastavit volitelná nastavení
     1. **Řazení událostí**. Zásady mimo pořadí můžete nakonfigurovat na portálu. Dokumentace je k dispozici [zde](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics).
-    2. **Národní prostředí**. Nastavte formát internalizace.
+    2. **Národní prostředí**. Nastavte formát pro Provisioning.
 
 
 
 > [!Note]
-> Při vytvoření nasazení ASA exportuje definici úlohy do kontejneru úložiště. Tato definice úlohy zůstává stejná po dobu trvání nasazení. V důsledku toho pokud chcete aktualizovat úlohu spuštěnou na okraji, musíte upravit úlohu v ASA a pak vytvořit nové nasazení v centru IoT Hub.
+> Po vytvoření nasazení služba ASA Exportuje definici úlohy do kontejneru úložiště. Tato definice úlohy zůstává stejná i po dobu trvání nasazení. V takovém případě je třeba v případě, že chcete aktualizovat úlohu běžící na hraničních zařízeních, Upravit úlohu v ASA a pak vytvořit nové nasazení v IoT Hub.
 
 
-#### <a name="set-up-your-iot-edge-environment-on-your-devices"></a>Nastavení prostředí IoT Edge na svých zařízeních
-Hraniční úlohy se můžou nasazovat na zařízeních se systémem Azure IoT Edge.
-K tomu je třeba provést následující kroky:
-- Vytvořte aplikaci Lho.A.SoCenter.
-- Nainstalujte docker a ioT edge runtime na svých hraničních zařízeních.
-- Nastavte svá zařízení jako **zařízení IoT Edge** v IoT Hubu.
+#### <a name="set-up-your-iot-edge-environment-on-your-devices"></a>Nastavení IoT Edge prostředí na vašich zařízeních
+Hraniční úlohy je možné nasadit na zařízeních s Azure IoT Edge.
+V takovém případě je třeba provést následující kroky:
+- Vytvořte centrum IoT.
+- Nainstalujte do hraničních zařízení Docker a IoT Edge runtime.
+- Nastavte zařízení jako **IoT Edge zařízení** v IoT Hub.
 
-Tyto kroky jsou popsány v dokumentaci k IoT Edge pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).  
+Tyto kroky jsou popsané v dokumentaci k IoT Edge pro [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) nebo [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux).  
 
 
-####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Nasazení ASA na vašich zařízeních IoT Edge
-##### <a name="add-asa-to-your-deployment"></a>Přidání asa do vašeho nasazení
-- Na webu Azure Portal otevřete Službu IoT Hub, přejděte na **IoT Edge** a klikněte na zařízení, na které chcete pro toto nasazení cílit.
-- Vyberte **Nastavit moduly**, pak vyberte **+ Přidat** a zvolte Modul Azure **Stream Analytics**.
-- Vyberte předplatné a úlohu ASA Edge, kterou jste vytvořili. Klikněte na Uložit.
-![Přidání modulu ASA do nasazení](media/stream-analytics-edge/add-stream-analytics-module.png)
+####  <a name="deployment-asa-on-your-iot-edge-devices"></a>Nasazení ASA na vašich zařízeních s IoT Edge
+##### <a name="add-asa-to-your-deployment"></a>Přidat ASA do nasazení
+- V Azure Portal otevřete IoT Hub, přejděte na **IoT Edge** a klikněte na zařízení, které chcete pro toto nasazení cílit.
+- Vyberte **nastavit moduly**a pak vybrat **+ přidat** a zvolte **Azure Stream Analytics modul**.
+- Vyberte předplatné a hraniční úlohu ASA, kterou jste vytvořili. Klikněte na Uložit.
+![Přidat modul ASA do nasazení](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
-> Během tohoto kroku ASA vytvoří složku s názvem "EdgeJobs" v kontejneru úložiště (pokud již neexistuje). Pro každé nasazení je vytvořena nová podsložka ve složce "EdgeJobs".
-> Při nasazení úlohy do zařízení IoT Edge, ASA vytvoří sdílený přístupový podpis (SAS) pro soubor definice úlohy. Klíč SAS se bezpečně přenáší do zařízení IoT Edge pomocí dvojčete zařízení. Vypršení platnosti tohoto klíče je tři roky ode dne jeho vzniku. Při aktualizaci úlohy IoT Edge se změní SAS, ale verze image se nezmění. Po **aktualizaci**postupujte podle pracovního postupu nasazení a je do zařízení přihlášeno oznámení o aktualizaci.
+> Během tohoto kroku služba ASA vytvoří v kontejneru úložiště složku s názvem "EdgeJobs" (Pokud již neexistuje). Pro každé nasazení je ve složce EdgeJobs vytvořena nová podsložka.
+> Když nasadíte úlohu do zařízení IoT Edge, ASA vytvoří pro soubor definice úlohy sdílený přístupový podpis (SAS). Klíč SAS se bezpečně přenáší do zařízení IoT Edge pomocí vlákna zařízení. Vypršení platnosti tohoto klíče je tři roky od dne jeho vytvoření. Když aktualizujete úlohu IoT Edge, změní se SAS, ale verze image se nezmění. Po **aktualizaci**použijte pracovní postup nasazení a na zařízení se zaprotokoluje oznámení o aktualizaci.
 
 
-Další informace o nasazeníi IoT Edge najdete na [této stránce](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
+Další informace o nasazeních IoT Edge najdete na [této stránce](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 
 ##### <a name="configure-routes"></a>Konfigurace tras
-IoT Edge poskytuje způsob, jak deklarativně směrovat zprávy mezi moduly a mezi moduly a IoT Hub. Úplná syntaxe je popsána [zde](https://docs.microsoft.com/azure/iot-edge/module-composition).
+IoT Edge poskytuje způsob deklarativního směrování zpráv mezi moduly a mezi moduly a IoT Hub. Úplná syntaxe je popsána [zde](https://docs.microsoft.com/azure/iot-edge/module-composition).
 Názvy vstupů a výstupů vytvořených v úloze ASA lze použít jako koncové body pro směrování.  
 
 ###### <a name="example"></a>Příklad
@@ -132,108 +132,108 @@ Názvy vstupů a výstupů vytvořených v úloze ASA lze použít jako koncové
 }
 
 ```
-Tento příklad ukazuje trasy pro scénář popsaný na následujícím obrázku. Obsahuje hraniční úlohu nazvanou **" ASA**", se vstupem s názvem "**teplota**" a výstupem s názvem "**výstraha**".
+Tento příklad ukazuje trasy pro scénář popsaný na následujícím obrázku. Obsahuje hraniční úlohu s názvem "**ASA**" se vstupem "**teplota**" a výstup s názvem "**Alert**".
 ![Příklad diagramu směrování zpráv](media/stream-analytics-edge/edge-message-routing-example.png)
 
 Tento příklad definuje následující trasy:
-- Každá zpráva z **tempSensor** je odeslána do modulu s názvem **ASA** na vstup pojmenovanou **teplotu**,
-- Všechny výstupy **modulu ASA** jsou odesílány do IoT Hubu připojeného k tomuto zařízení ($upstream),
-- Všechny výstupy **ASA** modulu jsou odesílány do **řídicího** koncového bodu **tempSensor**.
+- Každá zpráva z **tempSensor** se pošle do modulu s názvem **ASA** na vstup s pojmenovanou **teplotou**,
+- Všechny výstupy modulu **ASA** se odesílají do IoT Hub připojeného k tomuto zařízení ($upstream),
+- Všechny výstupy modulu **ASA** jsou odesílány do **řídicího bodu ovládacího prvku** **tempSensor**.
 
 
 ## <a name="technical-information"></a>Technické informace
-### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuální omezení pro úlohy IoT Edge ve srovnání s úlohami v cloudu
-Cílem je mít parity mezi úlohami IoT Edge a cloudovými úlohami. Většina funkcí dotazovacího jazyka SQL jsou podporovány, povolení ke spuštění stejné logiky na cloudu i IoT Edge.
-Následující funkce však ještě nejsou podporovány pro hraniční úlohy:
-* Uživatelem definované funkce (UDF) v Jazyce JavaScript. UDF jsou k dispozici v [C# pro úlohy IoT Edge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (náhled).
-* Uživatelem definované agregace (UDA).
+### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuální omezení pro úlohy IoT Edge v porovnání s úlohami v cloudu
+Cílem je mít paritu mezi IoT Edge úlohami a cloudovým úlohami. Podporuje se většina funkcí jazyka SQL Query a umožňuje spouštět stejnou logiku jak v cloudu, tak i v IoT Edge.
+Pro úlohy Edge se zatím nepodporují následující funkce:
+* Uživatelsky definované funkce (UDF) v JavaScriptu. Systém souborů UDF je k dispozici v [jazyce C# pro IoT Edge úlohy](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (Preview).
+* Uživatelsky definované agregace (UDA).
 * Funkce Azure ML.
-* Použití více než 14 agregátů v jednom kroku.
-* Formát AVRO pro vstup/výstup. V současné době jsou podporovány pouze CSV a JSON.
+* Použití více než 14 agregací v jednom kroku.
+* Formát AVRO pro vstup a výstup. V současné době jsou podporovány pouze CSV a JSON.
 * Následující operátory SQL:
-    * ODDÍL PODLE
+    * ROZDĚLIT PODLE
     * GetMetadataPropertyValue
-* Zásady pozdního příjezdu
+* Zásady opožděného doručení
 
-### <a name="runtime-and-hardware-requirements"></a>Požadavky na běhanu a hardware
-Chcete-li spustit ASA na IoT Edge, potřebujete zařízení, která můžou spouštět [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/). 
+### <a name="runtime-and-hardware-requirements"></a>Požadavky na modul runtime a hardware
+Chcete-li spustit příkaz ASA na IoT Edge, potřebujete zařízení, která lze spustit [Azure IoT Edge](https://azure.microsoft.com/campaigns/iot-edge/). 
 
-ASA a Azure IoT Edge používají kontejnery **Dockeru** k poskytování přenosného řešení, které běží na více hostitelských operačních systémech (Windows, Linux).
+ASA a Azure IoT Edge používají kontejnery **Docker** k poskytnutí přenosného řešení, které běží na více hostitelských operačních systémech (Windows, Linux).
 
-ASA na IoT Edge je k dispozici jako windows a linuxové image, běžící na architekturách x86-64 nebo ARM (Advanced RISC Machines). 
+ASA v IoT Edge jsou k dispozici jako image Windows a Linux, které běží na architekturách X86-64 nebo ARM (Advanced RISC Machine). 
 
 
 ### <a name="input-and-output"></a>Vstup a výstup
-#### <a name="input-and-output-streams"></a>Vstupní a výstupní datové proudy
-Úlohy ASA Edge můžou získat vstupy a výstupy z jiných modulů spuštěných na zařízeních IoT Edge. Chcete-li se připojit z a k určitým modulům, můžete nastavit konfiguraci směrování v době nasazení. Další informace jsou popsány v dokumentaci ke [složení modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition).
+#### <a name="input-and-output-streams"></a>Vstupní a výstupní proudy
+Hraniční úlohy ASA mohou získat vstupy a výstupy z jiných modulů spuštěných v zařízeních IoT Edge. Pokud se chcete připojit z a ke konkrétním modulům, můžete nakonfigurovat konfiguraci směrování v době nasazení. Další informace jsou popsány v [dokumentaci k kompozici modulu IoT Edge](https://docs.microsoft.com/azure/iot-edge/module-composition).
 
-Pro vstupy i výstupy jsou podporovány formáty CSV a JSON.
+Pro vstupy i výstupy se podporují formáty CSV a JSON.
 
-Pro každý vstupní a výstupní datový proud, který vytvoříte v úloze ASA, se vytvoří odpovídající koncový bod ve vašem nasazeném modulu. Tyto koncové body lze použít v trasách nasazení.
+Pro každý vstupní a výstupní datový proud, který vytvoříte v úloze ASA, se v nasazeném modulu vytvoří odpovídající koncový bod. Tyto koncové body lze použít v cestách nasazení.
 
-V současné době jsou pouze podporované typy vstupu datového proudu a výstupu datového proudu Edge Hub. Referenční vstup podporuje typ souboru odkazu. Další výstupy lze dosáhnout pomocí cloudové úlohy po proudu. Například úloha Stream Analytics hostovaná v Edge odešle výstup do Edge Hubu, který pak může odesílat výstup do služby IoT Hub. Můžete použít druhou úlohu azure stream analytics hostovnou v cloudu se vstupem z IoT Hubu a výstupem do Power BI nebo jiného typu výstupu.
+V současné době jsou jedinými podporovanými typy výstupů streamu a výstupními datovými proudy hraniční centrum. Reference Input podporuje typ referenčního souboru. K dalším výstupům se dá dostat pomocí podřízené úlohy cloudu. Například úloha Stream Analytics hostovaná na Edge odesílá výstup do hraničního centra, které pak může odeslat výstup do IoT Hub. Můžete použít druhý cloud hostovaný Azure Stream Analytics úlohy se vstupem z IoT Hub a výstupem do Power BI nebo jiný typ výstupu.
 
 
 
-##### <a name="reference-data"></a>Referenční údaje
-Referenční data (označovaná také jako vyhledávací tabulka) je omezená datová sada, která je statická nebo pomalu se měnící povahy. Používá se k provedení vyhledávání nebo ke korelaci s datovým proudem. Chcete-li využít referenční data v úloze Azure Stream Analytics, budete obecně používat [referenční data PŘIPOJIT](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) v dotazu. Další informace naleznete [v tématu Použití referenčních dat pro vyhledávání v Stream Analytics](stream-analytics-use-reference-data.md).
+##### <a name="reference-data"></a>Referenční data
+Referenční data (označovaná také jako vyhledávací tabulka) jsou konečnou datovou sadu, která je statická nebo pomalá měnící se v podstatě. Slouží k vyhledávání nebo ke korelaci s datovým proudem. Pokud chcete používat referenční data v úloze Azure Stream Analytics, obecně se v dotazu použije [referenční datová připojení](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) . Další informace najdete v tématu [použití referenčních dat pro vyhledávání v Stream Analytics](stream-analytics-use-reference-data.md).
 
-Jsou podporována pouze místní referenční data. Když je úloha nasazena do zařízení IoT Edge, načte referenční data z cesty uživatelem definovaného souboru.
+Podporovaná jsou jenom místní referenční data. Při nasazení úlohy do IoT Edge zařízení načte referenční data z uživatelsky definované cesty k souboru.
 
-Vytvoření úlohy s referenčními daty na hraničním zařízení:
+Vytvoření úlohy s referenčními daty na hraničních zařízeních:
 
 1. Vytvořte nový vstup pro vaši úlohu.
 
-2. Jako **typ zdroje**zvolte **Referenční data** .
+2. Jako **typ zdroje**vyberte **referenční data** .
 
-3. Připravte si na zařízení referenční datový soubor. U kontejneru windows umístěte referenční datový soubor na místní jednotku a sdílejte místní jednotku s kontejnerem Dockeru. Pro linuxový kontejner vytvořte svazek Dockeru a naplňte datový soubor na svazku.
+3. V zařízení musí být připravený referenční datový soubor. V případě kontejneru Windows umístěte soubor referenčních dat na místní disk a sdílejte místní disk s kontejnerem Docker. V případě kontejneru pro Linux vytvořte svazek Docker a naplňte do něj datový soubor.
 
-4. Nastavte cestu k souboru. Pro operační systém Windows Host a kontejner `E:\<PathToFile>\v1.csv`Windows použijte absolutní cestu: . Pro kontejner operačního systému Windows Host a Linux nebo kontejner u operačního systému Linux a Linux použijte cestu ve svazku: `<VolumeName>/file1.txt`.
+4. Nastavte cestu k souboru. V případě hostitelského operačního systému Windows a kontejneru Windows použijte absolutní cestu `E:\<PathToFile>\v1.csv`:. V případě hostitelského operačního systému Windows a kontejneru Linux nebo kontejneru se systémem Linux a Linux použijte cestu ve svazku: `<VolumeName>/file1.txt`.
 
-![Nový vstup referenčních dat pro úlohu Azure Stream Analytics na IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
+![Nový vstup referenčních dat pro úlohu Azure Stream Analytics v IoT Edge](./media/stream-analytics-edge/Reference-Data-New-Input.png)
 
-Referenční data o aktualizaci IoT Edge se aktivují nasazením. Po aktivaci modulASA vybere aktualizovaná data bez zastavení spuštěné úlohy.
+Referenční data v IoT Edge aktualizaci spouští nasazení. Po aktivaci modul ASA vybere aktualizovaná data bez zastavení spuštěné úlohy.
 
-Referenční data lze aktualizovat dvěma způsoby:
-* Aktualizujte cestu referenčních dat v úloze ASA z webu Azure Portal.
+Existují dva způsoby, jak aktualizovat referenční data:
+* Aktualizujte cestu referenčních dat v úloze ASA z Azure Portal.
 * Aktualizujte nasazení IoT Edge.
 
-## <a name="license-and-third-party-notices"></a>Oznámení o licencích a třetích stranách
-* [Azure Stream Analytics na licenci IoT Edge](https://go.microsoft.com/fwlink/?linkid=862827). 
+## <a name="license-and-third-party-notices"></a>Licence a oznámení třetích stran
+* [Azure Stream Analytics na IoT Edge licence](https://go.microsoft.com/fwlink/?linkid=862827) 
 * [Oznámení třetích stran pro Azure Stream Analytics na IoT Edge](https://go.microsoft.com/fwlink/?linkid=862828).
 
-## <a name="azure-stream-analytics-module-image-information"></a>Informace o image modulu Azure Stream Analytics 
+## <a name="azure-stream-analytics-module-image-information"></a>Informace o imagi Azure Stream Analytics modulu 
 
-Tyto informace o verzi byly naposledy aktualizovány na 2019-06-27:
+Informace o této verzi byly naposledy aktualizovány v 2019-06-27:
 
 - Obrázek: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-amd64`
-   - základní obrázek: microsoft/dotnet:2.1.6-runtime-alpine3.7
-   - Platforma:
-      - architektura: amd64
-      - os: linux
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-Alpine 3.7
+   - platformy
+      - Architektura: amd64
+      - operační systém: Linux
   
 - Obrázek: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-linux-arm32v7`
-   - základní obrázek: microsoft/dotnet:2.1.6-runtime-bionic-arm32v7
-   - Platforma:
-      - architektura: rameno
-      - os: linux
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-Bionic-arm32v7
+   - platformy
+      - Architektura: ARM
+      - operační systém: Linux
   
 - Obrázek: `mcr.microsoft.com/azure-stream-analytics/azureiotedge:1.0.5-windows-amd64`
-   - základní obrázek: microsoft/dotnet:2.1.6-runtime-nanoserver-1809
-   - Platforma:
-      - architektura: amd64
-      - os: okna
+   - základní Image: Microsoft/dotNET: 2.1.6-runtime-nanoserver-1809
+   - platformy
+      - Architektura: amd64
+      - operační systém: Windows
       
       
 ## <a name="get-help"></a>Podpora
-Další pomoc našlápnete na [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Pokud potřebujete další pomoc, zkuste [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Další informace o Azure Iot Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [ASA na IoT Edge kurz](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Vývoj úloh Stream Analytics Edge pomocí nástrojů Visual Studia](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
-* [Implementace CI/CD pro Stream Analytics pomocí API](stream-analytics-cicd-api.md)
+* [Další informace o Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
+* [Kurz k ASA v IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Vývoj úloh Stream Analytics Edge pomocí nástrojů sady Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Implementace CI/CD pro Stream Analytics pomocí rozhraní API](stream-analytics-cicd-api.md)
 
 <!--Link references-->
 [stream.analytics.developer.guide]: ../stream-analytics-developer-guide.md

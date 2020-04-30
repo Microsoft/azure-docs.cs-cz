@@ -1,21 +1,21 @@
 ---
 title: Řešení potíží se službou Azure Cache for Redis na straně serveru
-description: Zjistěte, jak vyřešit běžné problémy na straně serveru s Azure Cache pro Redis, jako je tlak v paměti, vysoký procesor, dlouho běžící příkazy nebo omezení šířky pásma.
+description: Naučte se řešit běžné problémy na straně serveru s mezipamětí Azure pro Redis, jako je tlak paměti, vysoký procesor, dlouho běžící příkazy nebo omezení šířky pásma.
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: a68c27de304a0da6470745ee4abf69590d9bf78c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277931"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Řešení potíží se službou Azure Cache for Redis na straně serveru
 
-Tato část popisuje problémy s řešením potíží, ke kterým dochází z důvodu podmínky na Azure Cache pro Redis nebo virtuální chody, které ji hostují.
+Tato část popisuje problémy, ke kterým dochází z důvodu podmínky v mezipaměti Azure pro Redis nebo virtuálních počítačů, které ji hostují.
 
 - [Zatížení paměti na serveru Redis](#memory-pressure-on-redis-server)
 - [Vysoké využití procesoru nebo zatížení serveru](#high-cpu-usage-or-server-load)
@@ -23,60 +23,60 @@ Tato část popisuje problémy s řešením potíží, ke kterým dochází z d�
 - [Omezení šířky pásma na straně serveru](#server-side-bandwidth-limitation)
 
 > [!NOTE]
-> Několik kroků řešení potíží v této příručce obsahuje pokyny ke spuštění příkazů Redis a sledování různých metrik výkonu. Další informace a pokyny naleznete v článcích v části [Další informace.](#additional-information)
+> Několik kroků pro řešení potíží v této příručce obsahuje pokyny ke spouštění příkazů Redis a monitorování různých metrik výkonu. Další informace a pokyny najdete v článcích v části [Další informace](#additional-information) .
 >
 
 ## <a name="memory-pressure-on-redis-server"></a>Zatížení paměti na serveru Redis
 
-Tlak paměti na straně serveru vede ke všem druhům problémů s výkonem, které mohou zpozdit zpracování požadavků. Při zásahu tlaku v paměti může systém stránkovat data na disk. Tato _chyba stránky_ způsobí, že systém výrazně zpomalí. Existuje několik možných příčin tohoto tlaku paměti:
+Tlak paměti na straně serveru vede ke všem druhům problémů s výkonem, které mohou zpozdit zpracování požadavků. Když dojde k zatížení paměti, systém může data stránkovat na disk. Při této _chybě stránky_ dojde k výraznému zpomalení systému. Existuje několik možných příčin tohoto zatížení paměti:
 
-- Mezipaměť je naplněna daty, která se blíží maximální kapacitě.
-- Redis je vidět vysokou fragmentaci paměti. Tato fragmentace je nejčastěji způsobena ukládáním velkých objektů, protože Redis je optimalizován pro malé objekty.
+- Mezipaměť je vyplněna daty poblíž maximální kapacity.
+- Redis zobrazuje velkou fragmentaci paměti. Tato fragmentace je nejčastěji způsobena ukládáním velkých objektů, protože Redis je optimalizován pro malé objekty.
 
-Redis vystavuje dva statistiky prostřednictvím příkazu [INFO,](https://redis.io/commands/info) který vám pomůže identifikovat tento problém: "used_memory" a "used_memory_rss". Tyto [metriky](cache-how-to-monitor.md#view-metrics-with-azure-monitor) můžete zobrazit pomocí portálu.
+Redis zpřístupňuje dvě statistiky prostřednictvím příkazu [info](https://redis.io/commands/info) , který vám může přispět k identifikaci tohoto problému: "used_memory" a "used_memory_rss". [Tyto metriky můžete zobrazit](cache-how-to-monitor.md#view-metrics-with-azure-monitor) pomocí portálu.
 
-Existuje několik možných změn, které vám pomohou udržet využití paměti v pořádku:
+Existuje několik možných změn, které vám pomůžou zajistit, aby využití paměti bylo v pořádku:
 
-- [Nakonfigurujte zásady paměti](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a nastavte u klíčů dobu vypršení platnosti. Tato zásada nemusí být dostatečná, pokud máte fragmentaci.
-- [Nakonfigurujte hodnotu vyhrazenou pro maximální paměť,](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) která je dostatečně velká, aby kompenzovala fragmentaci paměti.
-- Rozdělte velké objekty uložené v mezipaměti na menší související objekty.
-- [Vytvořte upozornění](cache-how-to-monitor.md#alerts) na metriky, jako je použitá paměť, která má být včas upozorněna na potenciální dopady.
-- [Škálujte](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou paměti.
+- [Nakonfigurujte zásady paměti](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) a nastavte časy vypršení platnosti vašich klíčů. Pokud máte fragmentaci, nemusí tato zásada stačit.
+- [Nakonfigurujte maxmemory vyhrazenou hodnotu](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , která je dostatečně velká, aby bylo možné kompenzovat fragmentaci paměti.
+- Velké objekty uložené v mezipaměti rozdělte na menší související objekty.
+- [Vytvářejte výstrahy](cache-how-to-monitor.md#alerts) na metrikách, jako je použitá paměť, abyste byli brzy informováni o možných dopadech.
+- [Škálovat](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou paměti.
 
 ## <a name="high-cpu-usage-or-server-load"></a>Vysoké využití procesoru nebo zatížení serveru
 
-Vysoké zatížení serveru nebo využití procesoru znamená, že server nemůže zpracovat požadavky včas. Server může být pomalé reagovat a nemůže držet krok s požadavky sazby.
+Vysoké zatížení serveru nebo využití procesoru znamená, že server nemůže včas zpracovávat žádosti. Server může být pomalý a nemůže zachovávat sazby za žádosti.
 
-[Sledujte metriky,](cache-how-to-monitor.md#view-metrics-with-azure-monitor) jako je zatížení procesoru nebo serveru. Sledujte špičky v využití procesoru, které odpovídají časovým limitům.
+[Monitorujte metriky](cache-how-to-monitor.md#view-metrics-with-azure-monitor) , jako je například zatížení procesoru nebo serveru. Sledujte špičky využití procesoru, které odpovídají časovým limitům.
 
-Existuje několik změn, které můžete provést ke zmírnění vysoké zatížení serveru:
+Pro zmírnění vysokého zatížení serveru můžete provést několik změn:
 
-- Zjistěte, co způsobuje špičky procesoru, jako jsou [dlouhotrvající příkazy](#long-running-commands) uvedené níže nebo chyba stránky z důvodu vysokého tlaku paměti.
-- [Vytvořte výstrahy](cache-how-to-monitor.md#alerts) na metriky, jako je zatížení procesoru nebo serveru, abyste byli včas upozorněni na potenciální dopady.
+- Prozkoumejte, co způsobuje špičky procesoru, jako jsou například [dlouhotrvající příkazy](#long-running-commands) , které jsou uvedeny níže, nebo chyby stránky kvůli vysokému zatížení paměti.
+- [Vytvářejte upozornění](cache-how-to-monitor.md#alerts) na metriky, jako je například zatížení procesoru nebo serveru, abyste byli včas informováni o možných dopadech.
 - [Škálujte](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou procesoru.
 
 ## <a name="long-running-commands"></a>Dlouhotrvající příkazy
 
-Některé příkazy Redis jsou dražší než jiné. [Redis příkazy dokumentace](https://redis.io/commands) zobrazuje časovou složitost každého příkazu. Vzhledem k tomu, že zpracování příkazů Redis je jednovláknové, příkaz, který vyžaduje čas ke spuštění, zablokuje všechny ostatní, které po něm přijdou. Měli byste zkontrolovat příkazy, které vydáváte na server Redis, abyste pochopili jejich dopady na výkon. Například [příkaz KEYS](https://redis.io/commands/keys) se často používá bez vědomí, že se jedná o operaci O(N). Můžete se vyhnout klíče pomocí [funkce Procan](https://redis.io/commands/scan) ke snížení špičky procesoru.
+Některé příkazy Redis jsou dražší ke spouštění než jiné. V [dokumentaci k](https://redis.io/commands) příkazům Redis se zobrazuje složitost času jednotlivých příkazů. Vzhledem k tomu, že zpracování příkazu Redis je v jednom vlákně, příkaz, který trvá spuštění, zablokuje všechny ostatní, kteří jsou po ní. Měli byste zkontrolovat příkazy, které jste vystavili na server Redis, abyste pochopili dopad na výkon. Například příkaz [klíče](https://redis.io/commands/keys) se často používá bez vědomí, že se jedná O operaci o (N). KLÍČům se můžete vyhnout tak, že pomocí [kontroly](https://redis.io/commands/scan) omezíte špičky procesoru.
 
-Pomocí příkazu [SLOWLOG](https://redis.io/commands/slowlog) můžete měřit nákladné příkazy prováděné proti serveru.
+Pomocí příkazu [SLOWLOG](https://redis.io/commands/slowlog) můžete měřit náročné příkazy, které se spouštějí na serveru.
 
 ## <a name="server-side-bandwidth-limitation"></a>Omezení šířky pásma na straně serveru
 
-Různé velikosti mezipaměti mají různé kapacity šířky pásma sítě. Pokud server překročí dostupnou šířku pásma, nebudou data klientovi odeslána tak rychle. Požadavky klientů může časový modus out, protože server nelze nabízená data klientovi dostatečně rychle.
+Různé velikosti mezipaměti mají různé kapacity šířky pásma sítě. Pokud server překračuje dostupnou šířku pásma, data se do klienta odešlou rychleji. Žádosti klientů by mohly vynutit vypršení časového limitu, protože server nemůže doručovat data do klienta dostatečně rychle.
 
-Metriky "Čtení do mezipaměti" a "Zápis do mezipaměti" lze použít k zobrazení, kolik šířky pásma na straně serveru se používá. Tyto [metriky](cache-how-to-monitor.md#view-metrics-with-azure-monitor) můžete zobrazit na portálu.
+Metriky "čtení z mezipaměti" a "zápis do mezipaměti" lze použít k zobrazení, kolik šířky pásma na straně serveru se používá. [Tyto metriky můžete zobrazit](cache-how-to-monitor.md#view-metrics-with-azure-monitor) na portálu.
 
-Chcete-li zmírnit situace, kdy využití šířky pásma sítě se blíží maximální kapacitě:
+Omezení situací, kdy je využití šířky pásma sítě blízko maximální kapacity:
 
-- Změňte chování volání klienta, abyste snížili požadavky na síť.
-- [Vytvořte výstrahy](cache-how-to-monitor.md#alerts) na metriky, jako je čtení do mezipaměti nebo zápis do mezipaměti, abyste byli včas upozorněni na potenciální dopady.
+- Změňte chování volání klientů tak, aby se snížilo zatížení sítě.
+- [Vytvářejte výstrahy](cache-how-to-monitor.md#alerts) na metrikách, jako je čtení mezipaměti, nebo zápis do mezipaměti, abyste se mohli včas informovat o možných dopadech.
 - [Škálujte](cache-how-to-scale.md) na větší velikost mezipaměti s větší kapacitou šířky pásma sítě.
 
 ## <a name="additional-information"></a>Další informace
 
 - [Řešení potíží se službou Azure Cache for Redis na straně klienta](cache-troubleshoot-client.md)
-- [Jakou mezipaměť Azure pro Redis mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
-- [Jak mohu porovnat a otestovat výkon mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Jak monitorovat Azure Cache pro Redis](cache-how-to-monitor.md)
-- [Jak lze spustit příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)
+- [Jakou mezipaměť Azure pro nabídku a velikost Redis mám použít?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+- [Jak mohu srovnávací testy a testovat výkon své mezipaměti?](cache-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+- [Jak monitorovat Azure cache pro Redis](cache-how-to-monitor.md)
+- [Jak můžu spustit příkazy Redis?](cache-faq.md#how-can-i-run-redis-commands)

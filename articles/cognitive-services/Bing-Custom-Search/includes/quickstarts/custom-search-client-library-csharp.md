@@ -1,5 +1,5 @@
 ---
-title: Rychlý start klientské knihovny klienta Vlastní hledání služby Bing
+title: Rychlý Start klientské knihovny Vlastní vyhledávání Bingu C#
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,28 +9,28 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: ba80d1396b30b61bdfe4c121220429f5a7d994b0
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79486046"
 ---
-Začínáme s klientskou knihovnou vlastního vyhledávání Bingpro C#. Následujícím postupem nainstalujte balíček a vyzkoušejte ukázkový kód pro základní úkoly. Rozhraní API pro vlastní vyhledávání Bingu umožňuje vytvářet přizpůsobené vyhledávací prostředí bez reklam pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku lze nalézt na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
+Začněte s knihovnou klienta Vlastní vyhledávání Bingu pro C#. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy. Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet v přizpůsobených prostředích vyhledávání bez reklamy pro témata, která vás zajímají. Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 
-Pomocí klientské knihovny vlastního vyhledávání Bingu pro c# můžete:
-* Najděte výsledky hledání na webu z instance vlastního vyhledávání Bingu.
+Pomocí klientské knihovny Vlastní vyhledávání Bingu pro jazyk C#:
+* Vyhledá výsledky hledání na webu z vaší instance Vlastní vyhledávání Bingu.
 
-[Referenční dokumentace](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [Ukázky zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | [knihovny](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples) [(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | 
+[Ukázky dokumentace k](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet) | [balíčku zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch) | knihovny Referenční dokumentace[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) | [Samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Instance vlastního vyhledávání Bingu. Další informace najdete [v tématu Úvodní příručka: Vytvoření první instance vlastního vyhledávání Bingu.](../../quick-start.md)
-- [Jádro microsoftu .NET](https://www.microsoft.com/net/download/core)
-- Libovolná edice [Visual Studia 2017 nebo novější](https://www.visualstudio.com/downloads/)
+- Instance Vlastní vyhledávání Bingu. Další informace najdete v tématu [rychlý Start: Vytvoření první instance vlastní vyhledávání Bingu](../../quick-start.md) .
+- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
+- Libovolná edice sady [Visual Studio 2017 nebo novější](https://www.visualstudio.com/downloads/)
 - Pokud používáte Linux nebo MacOS, je možné tuto aplikaci spustit pomocí [Mono](https://www.mono-project.com/).
-- Balíček NuGet [pro vlastní vyhledávání Bingu.](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) 
-    - V **Průzkumníku řešení** v sadě Visual Studio klikněte pravým tlačítkem myši na projekt a v nabídce vyberte **Spravovat balíčky NuGet.** Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
+- Balíček NuGet [Vlastní vyhledávání Bingu](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) . 
+    - Z **Průzkumník řešení** v aplikaci Visual Studio klikněte pravým tlačítkem myši na projekt a v nabídce vyberte možnost **Spravovat balíčky NuGet** . Nainstalujte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. Při instalaci balíčku NuGet pro vlastní vyhledávání se nainstalují také následující sestavení:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure
         - Newtonsoft.Json
@@ -40,7 +40,7 @@ Pomocí klientské knihovny vlastního vyhledávání Bingu pro c# můžete:
 
 ## <a name="create-and-initialize-the-application"></a>Vytvoření a inicializace aplikace
 
-1. Vytvořte novou konzolovou aplikaci C# v sadě Visual Studio. Pak přidejte do projektu následující balíčky.
+1. Vytvořte novou konzolovou aplikaci v jazyce C# v aplikaci Visual Studio. Pak přidejte do projektu následující balíčky.
 
     ```csharp
     using System;
@@ -48,22 +48,22 @@ Pomocí klientské knihovny vlastního vyhledávání Bingu pro c# můžete:
     using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
     ```
 
-2. V hlavní metodě aplikace vytvořte instanci klienta hledání pomocí klíče rozhraní API.
+2. V metodě Main aplikace vytvořte instanci vyhledávacího klienta s klíčem rozhraní API.
 
     ```csharp
     var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-SUBSCRIPTION-KEY"));
     ```
 
-## <a name="send-the-search-request-and-receive-a-response"></a>Odeslání požadavku na vyhledávání a přijetí odpovědi
+## <a name="send-the-search-request-and-receive-a-response"></a>Odeslat žádost o vyhledávání a přijmout odpověď
     
-1. Odešlete vyhledávací dotaz pomocí `SearchAsync()` metody klienta a uložte odpověď. Nezapomeňte nahradit `YOUR-CUSTOM-CONFIG-ID` id konfigurace instance (ID najdete na [portálu vlastního vyhledávání Bingu).](https://www.customsearch.ai/) Tento příklad hledá "Xbox".
+1. Odešlete vyhledávací dotaz pomocí `SearchAsync()` metody klienta a uložte odpověď. Nezapomeňte nahradit `YOUR-CUSTOM-CONFIG-ID` ID konfigurace vaší instance (ID můžete najít na [portálu vlastní vyhledávání Bingu](https://www.customsearch.ai/)). Tento příklad vyhledá "Xbox".
 
     ```csharp
     // This will look up a single query (Xbox).
     var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
     ```
 
-2. Metoda `SearchAsync()` vrátí objekt `WebData`. Použijte objekt k iterátu přes všechny, `WebPages` které byly nalezeny. Tento kód vyhledá první výsledek hledání webových stránek a vypíše název (`Name`) a adresu URL (`URL`) webové stránky.
+2. Metoda `SearchAsync()` vrátí objekt `WebData`. Použijte objekt k iterování všech `WebPages` nalezených. Tento kód vyhledá první výsledek hledání webových stránek a vypíše název (`Name`) a adresu URL (`URL`) webové stránky.
 
     ```csharp
     if (webData?.WebPages?.Value?.Count > 0)
@@ -91,4 +91,4 @@ Pomocí klientské knihovny vlastního vyhledávání Bingu pro c# můžete:
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytvoření webové aplikace pro vlastní vyhledávání](../../tutorials/custom-search-web-page.md)
+> [Vytvoření vlastní vyhledávací webové aplikace](../../tutorials/custom-search-web-page.md)
