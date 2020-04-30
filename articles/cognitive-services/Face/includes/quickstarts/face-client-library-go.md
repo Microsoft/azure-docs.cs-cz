@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
 ms.openlocfilehash: a09b79992f669c296fe0a674179fde5f38e8fc8a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82149379"
 ---
 Začínáme s klientskou knihovnou pro práci na cestách. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
 ms.openlocfilehash: 2c3d316d0d2810cb2a25ffd3bc4e34cf3454c10d
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146865"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Karta tržiště virtuálního počítače
@@ -64,7 +64,7 @@ Následující tabulka popisuje účel a obsah těchto polí. Požadovaná pole 
 | **Image**                 | Obrázek snímku obrazovky, 533x324 pixel                                         |
 | *Videa*  |  |
 | **Název**                  | Název nebo název  <!-- TODO - max char length? -->                              |
-| **Propojit**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |
+| **Odkaz**                  | Adresa URL videa hostovaná na YouTube nebo Vimeo                                        |
 | **Miniatuře**             | 533x324 rastrový obrázek                                                               |
 |   |   |
 
