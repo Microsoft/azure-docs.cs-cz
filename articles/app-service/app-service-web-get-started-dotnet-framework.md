@@ -7,7 +7,7 @@ ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
 ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
 ms.locfileid: "81768878"
