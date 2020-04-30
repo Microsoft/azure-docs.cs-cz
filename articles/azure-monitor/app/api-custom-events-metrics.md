@@ -3,12 +3,12 @@ title: Application Insights rozhraní API pro vlastní události a metriky | Mic
 description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte do svého zařízení nebo do aplikace, webové stránky nebo služby pár řádků kódu.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 152bd117ec0ae76c2c85ead26ba5278aa71d582f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: d6cb2f5ab418e8d3b5935fef535565ccf55a3906
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509283"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81536943"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -60,7 +60,7 @@ Pro aplikace [ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-
 
 Pokud používáte AzureFunctions v2 + nebo Azure WebJobs v3 +, postupujte podle tohoto dokumentu:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
-*R #*
+*C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
@@ -89,7 +89,7 @@ TelemetryClient je bezpečný pro přístup z více vláken.
 
 Pro projekty ASP.NET a Java jsou příchozí požadavky HTTP automaticky zachyceny. Možná budete chtít vytvořit další instance TelemetryClient pro jiný modul aplikace. Například můžete mít jednu instanci TelemetryClient ve vaší třídě middleware pro hlášení událostí obchodní logiky. Můžete nastavit vlastnosti, jako je například UserId a DeviceId, a identifikovat počítač. Tyto informace jsou připojeny ke všem událostem, které instance odesílá.
 
-*R #*
+*C#*
 
 ```csharp
 TelemetryClient.Context.User.Id = "...";
@@ -119,7 +119,7 @@ Například v herní aplikaci můžete odeslat událost pokaždé, když uživat
 appInsights.trackEvent({name:"WinGame"});
 ```
 
-*R #*
+*C#*
 
 ```csharp
 telemetry.TrackEvent("WinGame");
@@ -151,7 +151,92 @@ Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnos
 
 ## <a name="getmetric"></a>Getmetric
 
-Chcete-li se dozvědět, jak efektivně použít volání getmetric () k zachycení místně předem agregovaných metrik pro aplikace .NET a .NET Core, přejděte do dokumentace ke službě [getmetric](../../azure-monitor/app/get-metric.md) .
+### <a name="examples"></a>Příklady
+
+*C#*
+
+```csharp
+namespace User.Namespace.Example01
+{
+    using System;
+    using Microsoft.ApplicationInsights;
+    using Microsoft.ApplicationInsights.DataContracts;
+
+    /// <summary>
+    /// Most simple cases are one-liners.
+    /// This is all possible without even importing an additional namespace.
+    /// </summary>
+
+    public class Sample01
+    {
+        /// <summary />
+        public static void Exec()
+        {
+            // *** SENDING METRICS ***
+
+            // Recall how you send custom telemetry with Application Insights in other cases, e.g. Events.
+            // The following will result in an EventTelemetry object to be sent to the cloud right away.
+            TelemetryClient client = new TelemetryClient();
+            client.TrackEvent("SomethingInterestingHappened");
+
+            // Metrics work very similar. However, the value is not sent right away.
+            // It is aggregated with other values for the same metric, and the resulting summary (aka "aggregate" is sent automatically every minute.
+            // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
+
+            client.GetMetric("CowsSold").TrackValue(42);
+
+            // *** MULTI-DIMENSIONAL METRICS ***
+
+            // The above example shows a zero-dimensional metric.
+            // Metrics can also be multi-dimensional.
+            // In the initial version we are supporting up to 2 dimensions, and we will add support for more in the future as needed.
+            // Here is an example for a one-dimensional metric:
+
+            Metric animalsSold = client.GetMetric("AnimalsSold", "Species");
+
+            animalsSold.TrackValue(42, "Pigs");
+            animalsSold.TrackValue(24, "Horses");
+
+            // The values for Pigs and Horses will be aggregated separately from each other and will result in two distinct aggregates.
+            // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
+            // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
+            // We discuss elsewhere how to change them.
+            // We use a common .NET pattern: TryXxx(..) to make sure that the limits are observed.
+            // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
+            // This is particularly useful if the data for a metric originates from user input, e.g. a file:
+
+            Tuple<int, string> countAndSpecies = ReadSpeciesFromUserInput();
+            int count = countAndSpecies.Item1;
+            string species = countAndSpecies.Item2;
+
+            if (!animalsSold.TrackValue(count, species))
+
+            {
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", SeverityLevel.Error);
+            }
+
+            // You can inspect a metric object to reason about its current state. For example:
+            int currentNumberOfSpecies = animalsSold.GetDimensionValues(1).Count;
+        }
+
+        private static void ResetDataStructure()
+        {
+            // Do stuff
+        }
+
+        private static Tuple<int, string> ReadSpeciesFromUserInput()
+        {
+            return Tuple.Create(18, "Cows");
+        }
+
+        private static int AddItemsToDataStructure()
+        {
+            // Do stuff
+            return 5;
+        }
+    }
+}
+```
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -178,7 +263,7 @@ Odeslání jedné hodnoty metriky:
 appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*R #*
+*C#*
 
 ```csharp
 var sample = new MetricTelemetry();
@@ -220,7 +305,7 @@ Data uživatelů a relací se odesílají jako vlastnosti spolu se zobrazeními 
 appInsights.trackPageView("tab1");
 ```
 
-*R #*
+*C#*
 
 ```csharp
 telemetry.TrackPageView("GameReviewPage");
@@ -313,7 +398,7 @@ Další informace o korelaci najdete [v tématu korelace telemetrie v Applicatio
 
 Při ručním sledování telemetrie je nejjednodušší způsob, jak zajistit korelace telemetrie pomocí tohoto modelu:
 
-*R #*
+*C#*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -363,7 +448,7 @@ Odeslat výjimky do Application Insights:
 
 Sestavy zahrnují trasování zásobníku.
 
-*R #*
+*C#*
 
 ```csharp
 try
@@ -458,7 +543,7 @@ V [adaptérech protokolů](../../azure-monitor/app/asp-net-trace-logs.md) .NET p
 
 V jazyce Java pro [standardní protokolovací nástroje, jako je Log4J, Logback](../../azure-monitor/app/java-trace-logs.md) k odesílání protokolů třetích stran na portál použít Application Insights Log4J nebo Logback.
 
-*R #*
+*C#*
 
 ```csharp
 telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
@@ -501,7 +586,7 @@ Výhodou TrackTrace je, že do zprávy můžete ukládat poměrně dlouhá data.
 
 Kromě toho můžete do zprávy přidat úroveň závažnosti. A podobně jako u jiné telemetrie můžete přidat hodnoty vlastností, které vám pomohou filtrovat nebo vyhledat různé sady trasování. Příklad:
 
-*R #*
+*C#*
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -530,7 +615,7 @@ Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnos
 
 Použijte volání TrackDependency ke sledování doby odezvy a míry úspěšnosti volání do externí části kódu. Výsledky se zobrazí v grafech závislostí na portálu. Následující fragment kódu je nutné přidat všude, kde je provedeno volání závislosti.
 
-*R #*
+*C#*
 
 ```csharp
 var success = false;
@@ -621,7 +706,7 @@ dependencies
 
 V normálním případě SDK odesílá data v pevných intervalech (obvykle 30 sekund) nebo vždy, když je vyrovnávací paměť plná (obvykle 500 položek). V některých případech ale možná budete chtít vyprázdnit vyrovnávací paměť – například pokud používáte sadu SDK v aplikaci, která se vypne.
 
-*R #*
+*C#*
 
  ```csharp
 telemetry.Flush();
@@ -727,7 +812,7 @@ appInsights.trackPageView
         );
 ```
 
-*R #*
+*C#*
 
 ```csharp
 // Set up some properties and metrics:
@@ -828,7 +913,7 @@ Všimněte si, že:
 
 V některých případech je třeba, aby bylo možné graf, jak dlouho trvá provedení akce. Můžete například chtít zjistit, jak dlouho uživatelé berou v úvahu volby ve hře. Pro tuto možnost lze použít parametr měření.
 
-*R #*
+*C#*
 
 ```csharp
 var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -871,7 +956,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 
 Pokud chcete nastavit výchozí hodnoty vlastností pro některé vlastní události, které zapíšete, můžete je nastavit v instanci TelemetryClient. Jsou připojeny ke každé položce telemetrie, která je odeslána z tohoto klienta.
 
-*R #*
+*C#*
 
 ```csharp
 using Microsoft.ApplicationInsights.DataContracts;
@@ -937,7 +1022,7 @@ Můžete napsat kód pro zpracování telemetrie před jejich odesláním ze sad
 
 Chcete-li *dynamicky zastavit a spustit* shromažďování a přenos telemetrie:
 
-*R #*
+*C#*
 
 ```csharp
 using  Microsoft.ApplicationInsights.Extensibility;
@@ -977,7 +1062,7 @@ Chcete-li zakázat tyto sběrače po inicializaci, použijte objekt konfigurace:
 
 Během ladění je vhodné, aby vaše telemetrie byly prostřednictvím kanálu urychleny, takže výsledky uvidíte okamžitě. Získáte také další zprávy, které vám pomohou trasovat případné problémy s telemetrie. Přepněte ho v produkčním prostředí, protože může zpomalit vaši aplikaci.
 
-*R #*
+*C#*
 
 ```csharp
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
@@ -1002,7 +1087,7 @@ applicationInsights.defaultClient.config.maxBatchSize = 0;
 
 ## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>Nastavení klíče instrumentace pro vybranou vlastní telemetrii
 
-*R #*
+*C#*
 
 ```csharp
 var telemetry = new TelemetryClient();
@@ -1016,7 +1101,7 @@ Abyste se vyhnuli smíchání telemetrie od vývojových, testovacích a produk�
 
 Místo získání klíče instrumentace z konfiguračního souboru ho můžete nastavit ve svém kódu. Nastavte klíč v inicializační metodě, jako je například global.aspx.cs ve službě ASP.NET:
 
-*R #*
+*C#*
 
 ```csharp
 protected void Application_Start()

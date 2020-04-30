@@ -1,6 +1,6 @@
 ---
-title: Povolení runtime integrace AAD pro Azure SSIS
-description: Tento článek popisuje, jak povolit ověřování Azure Active Directory se spravovanou identitou pro Azure Data Factory k vytvoření runtime integrace Azure-SSIS.
+title: Povolení AAD pro Azure SSIS Integration Runtime
+description: Tento článek popisuje, jak povolit Azure Active Directory ověřování pomocí spravované identity pro Azure Data Factory k vytvoření Azure-SSIS Integration Runtime.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -12,41 +12,41 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 5/14/2019
 ms.openlocfilehash: 77b49d8446c7882a155742e8455d77bd1ec110cb
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606192"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro Azure-SSIS Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek ukazuje, jak povolit ověřování azure active directory (Azure AD) se spravovanou identitou pro vaši Azure Data Factory (ADF) a použít ji místo konvenčních metod ověřování (jako je ověřování SQL) k:
+V tomto článku se dozvíte, jak povolit ověřování Azure Active Directory (Azure AD) se spravovanou identitou pro váš Azure Data Factory (ADF) a použít místo běžných metod ověřování (jako je ověřování SQL) pro:
 
-- Vytvořte runtime integrace Azure-SSIS (IR), který zase zřídí databázi katalogu SSIS (SSISDB) na serveru Azure SQL Database/spravované instanci vaším jménem.
+- Vytvořte Azure-SSIS Integration Runtime (IR), která umožní zřídit databázi katalogu SSIS (SSISDB) ve službě Azure SQL Database Server/Managed instance vaším jménem.
 
 - Připojte se k různým prostředkům Azure při spouštění balíčků SSIS na Azure-SSIS IR.
 
-Další informace o spravované identitě pro váš podavač Služby ADF najdete v tématu [Spravovaná identita pro datatoutu](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+Další informace o spravované identitě pro ADF najdete v tématu [spravovaná identita pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
->-  V tomto scénáři ověřování Azure AD se spravovanou identitou pro váš Podavač ADF se používá pouze při vytváření a následné spuštění operace vašeho SSIS Ir, který bude zase zřízení a připojení k SSISDB. Pro spuštění balíčku SSIS se vaše služba SSIS IR bude stále připojovat k SSISDB pomocí ověřování SQL s plně spravovanými účty, které jsou vytvořeny během zřizování SSISDB.
->-  Pokud jste už vytvořili Službu SSIS IR pomocí ověřování SQL, nemůžete ho v tuto chvíli překonfigurovat tak, aby používal ověřování Azure AD přes Prostředí PowerShell, ale můžete tak učinit prostřednictvím aplikace Azure Portal/ADF. 
+>-  V tomto scénáři se ověřování Azure AD se spravovanou identitou pro váš ADF používá jenom při vytváření a dalších počátečních operacích v SSIS IR, které se pak budou moct zřídit a připojit k SSISDB. V případě spouštění balíčků SSIS se vaše SSIS IR pořád připojí k SSISDB pomocí ověřování SQL s plně spravovanými účty, které se vytvoří během zřizování SSISDB.
+>-  Pokud jste už SSIS IR vytvořili pomocí ověřování SQL, nemůžete ho v tuto chvíli znovu nakonfigurovat tak, aby používalo ověřování Azure AD prostřednictvím PowerShellu, ale můžete to udělat prostřednictvím aplikace Azure Portal/ADF. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="enable-azure-ad-on-azure-sql-database"></a>Povolení Azure AD v Azure SQL Database
+## <a name="enable-azure-ad-on-azure-sql-database"></a>Povolit Azure AD v Azure SQL Database
 
-Server Azure SQL Database podporuje vytváření databáze s uživatelem Azure AD. Nejprve je potřeba vytvořit skupinu Azure AD se spravovanou identitou pro váš Podavač ADF jako člen. Dále je potřeba nastavit uživatele Azure AD jako správce služby Active Directory pro váš server Azure SQL Database a pak se k němu připojit ve službě SQL Server Management Studio (SSMS) pomocí tohoto uživatele. Nakonec je potřeba vytvořit obsaženého uživatele představujícího skupinu Azure AD, aby spravovanou identitu pro váš ADF mohl použít Azure-SSIS IR k vytvoření SSISDB vaším jménem.
+Azure SQL Database Server podporuje vytváření databází pomocí uživatele Azure AD. Nejdřív je potřeba vytvořit skupinu Azure AD se spravovanou identitou pro váš ADF jako člen. Dál je potřeba nastavit uživatele Azure AD jako správce služby Active Directory pro Azure SQL Database Server a pak se k němu připojit na SQL Server Management Studio (SSMS) pomocí tohoto uživatele. Nakonec je potřeba vytvořit obsaženého uživatele reprezentujícího skupinu Azure AD, takže spravovanou identitu pro ADF můžete použít Azure-SSIS IR k vytvoření SSISDB vaším jménem.
 
-### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Vytvoření skupiny Azure AD se spravovanou identitou pro váš Podavač ADF jako člena
+### <a name="create-an-azure-ad-group-with-the-managed-identity-for-your-adf-as-a-member"></a>Vytvoření skupiny Azure AD se spravovanou identitou pro ADF jako členem
 
-Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azure AD PowerShell.
+Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azure AD PowerShellu.
 
-1.  Nainstalujte modul [Azure AD PowerShell.](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)
+1.  Nainstalujte modul [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) .
 
-2.  Přihlaste `Connect-AzureAD`se pomocí , spusťte následující rutinu a vytvořte skupinu a uložte ji do proměnné:
+2.  Přihlaste `Connect-AzureAD`se pomocí, spuštěním následující rutiny vytvořte skupinu a uložte ji do proměnné:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -55,7 +55,7 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azu
                               -MailNickName "NotSet"
     ```
 
-    Výsledek vypadá jako následující příklad, který také zobrazuje hodnotu proměnné:
+    Výsledek vypadá jako v následujícím příkladu, který také zobrazuje hodnotu proměnné:
 
     ```powershell
     $Group
@@ -65,107 +65,107 @@ Můžete použít existující skupinu Azure AD nebo vytvořit novou pomocí Azu
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidejte do skupiny spravovanou identitu pro podavač ADF. Můžete sledovat článek [Spravovaná identita pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) získat hlavní ID spravovaného objektu identity (např. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nepoužívejte ID spravované identity aplikace pro tento účel).
+3.  Přidejte do skupiny spravovanou identitu svého ADF. Můžete postupovat podle článku [spravovaná identita pro Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) získat ID objektu spravované identity (např. 765AD4AB-XXXX-XXXX-XXXX-51ed985819dc, ale nepoužívat ID aplikace spravované identity pro tento účel).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
     ```
 
-    Členství ve skupině můžete také zkontrolovat později.
+    Členství ve skupině můžete také ověřit později.
 
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Konfigurace ověřování Azure AD pro databázový server Azure SQL
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-server"></a>Konfigurace ověřování Azure AD pro Azure SQL Database Server
 
-Ověřování [Azure AD pomocí SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) můžete konfigurovat a spravovat pomocí následujících kroků:
+ [Ověřování Azure AD pomocí SQL můžete nakonfigurovat a spravovat](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
 
-1.  Na webu Azure Portal vyberte všechny **služby** -> **SQL servery** z levé navigace.
+1.  V Azure Portal v levém navigačním panelu vyberte **všechny služby** -> **SQL servery** .
 
-2.  Vyberte svůj server Azure SQL Database, který chcete nakonfigurovat pomocí ověřování Azure AD.
+2.  Vyberte server Azure SQL Database, který se má nakonfigurovat s ověřováním Azure AD.
 
-3.  V části **Nastavení** v okně vyberte **položku Správce služby Active Directory**.
+3.  V části **Nastavení** v okně vyberte **Správce služby Active Directory**.
 
-4.  Na panelu příkazů vyberte **Nastavit správce**.
+4.  Na panelu příkazů vyberte **nastavit správce**.
 
-5.  Vyberte uživatelský účet Azure AD, který se má vytvořit jako správce serveru, a pak vyberte **Vybrat.**
+5.  Vyberte uživatelský účet Azure AD, který chcete nastavit jako správce serveru, a pak vyberte **Vybrat.**
 
 6.  Na panelu příkazů vyberte **Uložit.**
 
-### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Vytvoření obsaženého uživatele na serveru Azure SQL Database představujícískupinu Azure AD
+### <a name="create-a-contained-user-in-azure-sql-database-server-representing-the-azure-ad-group"></a>Vytvoření uživatele s omezením na serveru Azure SQL Database, který představuje skupinu Azure AD
 
 Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 1. Spusťte SSMS.
 
-2. V dialogovém okně **Připojit k serveru** zadejte název serveru Azure SQL Database do pole Název **serveru.**
+2. V dialogovém okně **připojit k serveru** zadejte do pole **název serveru** název serveru Azure SQL Database.
 
-3. V poli **Ověřování** vyberte **službu Active Directory – univerzální s podporou vícefaktorové ověřování** (můžete také použít další dva typy ověřování služby Active Directory, přečtěte si část [Konfigurace a správa ověřování Azure AD pomocí SQL).](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)
+3. V poli **ověřování** vyberte **Active Directory – univerzální s podporou vícefaktorového** ověřování (můžete také použít další dva typy ověřování služby Active Directory. Další informace najdete v tématu [Konfigurace a Správa ověřování Azure AD pomocí SQL](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure)).
 
-4. Do pole **Uživatelské jméno** zadejte název účtu Azure AD, který jste nastavili jako správce serveru, například testuser@xxxonline.com.
+4. Do pole **uživatelské jméno** zadejte název účtu Azure AD, který jste nastavili jako správce serveru, třeba testuser@xxxonline.com.
 
-5. vyberte **Připojit** a dokončete proces přihlášení.
+5. Vyberte **připojit** a dokončete proces přihlašování.
 
-6. V **Průzkumníkovi objektů**rozbalte složku **Databáze** -> **systémových databází.**
+6. V **Průzkumník objektů**rozbalte složku **databáze** -> **systémových databází** .
 
-7. Klepněte pravým tlačítkem myši na **hlavní** databázi a vyberte **nový dotaz**.
+7. Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz**.
 
-8. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit.**
+8. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
    ```sql
    CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
    ```
 
-   Příkaz by měl být úspěšně dokončen a vytvořit obsaženého uživatele, který bude představovat skupinu.
+   Příkaz by měl být úspěšně dokončen, vytvořením obsaženého uživatele, který bude představovat skupinu.
 
-9. Vymažte okno dotazu, zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit.**
+9. Zrušte zaškrtnutí okna dotazu, zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
    ```
 
-   Příkaz by měl být úspěšně dokončen a udělit obsaženému uživateli možnost vytvořit databázi (SSISDB).
+   Příkaz by měl úspěšně doplňovat a udělit tak uživateli možnost vytvořit databázi (SSISDB).
 
-10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete přepnout na použití ověřování Azure AD pro azure-SSIS IR pro přístup k němu, klikněte pravým tlačítkem myši na databázi **SSISDB** a vyberte **nový dotaz**.
+10. Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete použít ověřování Azure AD pro přístup k vašemu Azure-SSIS IR, klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
-11. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit.**
+11. V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
     ```sql
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
     ```
 
-    Příkaz by měl být úspěšně dokončen a vytvořit obsaženého uživatele, který bude představovat skupinu.
+    Příkaz by měl být úspěšně dokončen, vytvořením obsaženého uživatele, který bude představovat skupinu.
 
-12. Vymažte okno dotazu, zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit.**
+12. Zrušte zaškrtnutí okna dotazu, zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
     ```sql
     ALTER ROLE db_owner ADD MEMBER [SSISIrGroup]
     ```
 
-    Příkaz by měl být úspěšně dokončen a udělit obsaženému uživateli možnost přístupu k SSISDB.
+    Příkaz by měl úspěšně doplňovat a udělit tak uživateli možnost přístupu k SSISDB.
 
-## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Povolení Azure AD ve spravované instanci Azure SQL Database
+## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Povolení služby Azure AD v Azure SQL Database Managed instance
 
-Správa databáze Azure SQL Instance podporuje vytváření databáze se spravovanou identitou pro váš ADF přímo. Nemusíte se připojit ke spravované identitě pro váš Podavač ADF do skupiny Azure AD ani vytvořit obsaženého uživatele představujícího tuto skupinu ve spravované instanci.
+Azure SQL Database spravovaná instance podporuje přímé vytváření databází se spravovanou identitou pro ADF. Ke skupině služby Azure AD se nemusíte připojit ke spravované identitě svého ADF ani vytvořit obsaženého uživatele reprezentujícího tuto skupinu ve spravované instanci.
 
-### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurace ověřování Azure AD pro spravovanou instanci Azure SQL Database
+### <a name="configure-azure-ad-authentication-for-azure-sql-database-managed-instance"></a>Konfigurace ověřování Azure AD pro Azure SQL Database spravovanou instanci
 
-Postupujte podle pokynů v [části Zřízení správce služby Azure Active Directory pro spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+Postupujte podle kroků v části [zřízení správce Azure Active Directory pro vaši spravovanou instanci](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
-### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Přidání spravované identity pro váš Podavač ADF jako uživatele v azure SQL database spravované instanci
+### <a name="add-the-managed-identity-for-your-adf-as-a-user-in-azure-sql-database-managed-instance"></a>Přidejte spravovanou identitu svého ADF jako uživatele v Azure SQL Database Managed instance.
 
 Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 1.  Spusťte SSMS.
 
-2.  Připojte se ke spravované instanci pomocí účtu SQL Serveru, který je **správcem**. Toto je dočasné omezení, které se odebere, jakmile se objekty serveru Azure AD (přihlášení) pro spravanou instanci Azure SQL Database stane ga. Zobrazí se následující chyba, pokud se pokusíte použít účet správce Azure AD k vytvoření přihlášení: Msg 15247, Úroveň 16, Stav 1, Řádek 1 Uživatel nemá oprávnění k provedení této akce.
+2.  Připojte se ke svojí spravované instanci pomocí SQL Server účtu, který je **sysadmin**. Toto je dočasné omezení, které se odebere, jakmile se objekty zabezpečení serveru Azure AD (přihlášení) pro Azure SQL Database Managed instance změní na GA. Pokud se pokusíte vytvořit přihlášení pomocí účtu správce Azure AD, zobrazí se následující chyba: Msg 15247, úroveň 16, stav 1, řádek 1 uživatel nemá oprávnění k provedení této akce.
 
-3.  V **Průzkumníkovi objektů**rozbalte složku **Databáze** -> **systémových databází.**
+3.  V **Průzkumník objektů**rozbalte složku **databáze** -> **systémových databází** .
 
-4.  Klepněte pravým tlačítkem myši na **hlavní** databázi a vyberte **nový dotaz**.
+4.  Klikněte pravým tlačítkem na **Hlavní** databázi a vyberte **Nový dotaz**.
 
-5.  V okně dotazu spusťte následující skript T-SQL a přidejte spravovanou identitu pro adf jako uživatele
+5.  V okně dotazu spusťte následující skript T-SQL, který přidá spravovanou identitu pro váš ADF jako uživatel.
 
     ```sql
     CREATE LOGIN [{your ADF name}] FROM EXTERNAL PROVIDER
@@ -173,34 +173,34 @@ Pro tento další krok potřebujete [Microsoft SQL Server Management Studio](ht
     ALTER SERVER ROLE [securityadmin] ADD MEMBER [{your ADF name}]
     ```
     
-    Příkaz by měl být úspěšně dokončen a udělit spravované identitě pro váš ADF možnost vytvořit databázi (SSISDB).
+    Příkaz by měl úspěšně doplňovat a udělit spravované identitě pro váš ADF, aby bylo možné vytvořit databázi (SSISDB).
 
-6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete přepnout na použití ověřování Azure AD pro azure-SSIS IR pro přístup k němu, klikněte pravým tlačítkem myši na databázi **SSISDB** a vyberte **nový dotaz**.
+6.  Pokud byl váš SSISDB vytvořen pomocí ověřování SQL a chcete použít ověřování Azure AD pro přístup k vašemu Azure-SSIS IR, klikněte pravým tlačítkem na databázi **SSISDB** a vyberte **Nový dotaz**.
 
-7.  V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit.**
+7.  V okně dotazu zadejte následující příkaz T-SQL a na panelu nástrojů vyberte **Spustit** .
 
     ```sql
     CREATE USER [{your ADF name}] FOR LOGIN [{your ADF name}] WITH DEFAULT_SCHEMA = dbo
     ALTER ROLE db_owner ADD MEMBER [{your ADF name}]
     ```
 
-    Příkaz by měl být úspěšně dokončen a udělit spravované identitě pro váš ADF možnost přístupu k SSISDB.
+    Příkaz by měl úspěšně doplňovat a udělit spravované identitě ADF, aby přístup k SSISDB.
 
-## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Zřízení infračerveného systému Azure-SSIS v aplikaci Azure Portal/ADF
+## <a name="provision-azure-ssis-ir-in-azure-portaladf-app"></a>Zřízení Azure-SSIS IR v aplikaci Azure Portal/ADF
 
-Když zřídíte infračervený přenos Azure-SSIS v aplikaci Azure Portal/ADF, na stránce **Nastavení SQL** vyberte Použít **ověřování AAD se spravovanou identitou pro možnost ADF.** Následující snímek obrazovky ukazuje nastavení pro infračervený přenos s Serverazure SQL Database hosting SSISDB. Pro infračervený přenos se spravovanou instanci hostující SSISDB, **vrstvy databázové služby katalogu** a **povolit služby Azure přístup k** nastavení nejsou použitelné, zatímco ostatní nastavení jsou stejné.
+Při zřizování Azure-SSIS IR v aplikaci Azure Portal/ADF klikněte na stránce **nastavení SQL** na možnost **použít ověřování AAD se spravovanou identitou pro vaši možnost ADF** . Následující snímek obrazovky ukazuje nastavení pro technologii IR s Azure SQL Database hostitelským serverem SSISDB. Pro technologii IR se spravovanými instancemi hostující SSISDB se nedá použít **vrstva služby databáze katalogu** a **Povolení přístupu ke službám Azure** , zatímco další nastavení jsou stejná.
 
-Další informace o tom, jak vytvořit infračervený přenos Azure-SSIS, najdete [v tématu Vytvoření runtime integrace Azure-SSIS v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
+Další informace o tom, jak vytvořit Azure-SSIS IR, najdete [v tématu Vytvoření prostředí Azure-SSIS Integration runtime v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-![Nastavení pro runtime integrace Azure-SSIS](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
+![Nastavení pro prostředí Azure-SSIS Integration runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
-## <a name="provision-azure-ssis-ir-with-powershell"></a>Zřízení infračerveného počítače Azure-SSIS pomocí prostředí PowerShell
+## <a name="provision-azure-ssis-ir-with-powershell"></a>Zřízení Azure-SSIS IR pomocí prostředí PowerShell
 
-Pokud chcete zřídit infračervený přenos Azure-SSIS pomocí PowerShellu, postupujte takto:
+Pokud chcete zřídit Azure-SSIS IR pomocí PowerShellu, udělejte tyto věci:
 
-1.  Nainstalujte modul [Azure PowerShell.](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) 
+1.  Nainstalujte modul [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) .
 
-2.  Ve skriptu nenastavujte `CatalogAdminCredential` parametr. Příklad:
+2.  Ve vašem skriptu nenastavte `CatalogAdminCredential` parametr. Příklad:
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
@@ -221,12 +221,12 @@ Pokud chcete zřídit infračervený přenos Azure-SSIS pomocí PowerShellu, pos
                                                  -Name $AzureSSISName
     ```
 
-## <a name="run-ssis-packages-with-managed-identity-authentication"></a>Spuštění balíčků SSIS se spravovaným ověřováním identity
+## <a name="run-ssis-packages-with-managed-identity-authentication"></a>Spouštění balíčků SSIS pomocí spravovaného ověřování identity
 
-Když spustíte balíčky SSIS v zařízení Azure-SSIS IR, můžete se k připojení k různým prostředkům Azure použít spravované ověřování identity. V současné době jsme již podpořili ověřování spravovaných identit v následujících správcích připojení.
+Když na Azure-SSIS IR spustíte balíčky SSIS, můžete se pomocí spravovaného ověřování identity připojit k různým prostředkům Azure. V následujících správcích připojení už v současné době podporujeme ověřování spravované identity.
 
-- [Správce připojení technologie OLE DB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Správce připojení OLE DB](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [ADO.NET Správce připojení](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Správce připojení ADO.NET](https://docs.microsoft.com/sql/integration-services/connection-manager/ado-net-connection-manager#managed-identities-for-azure-resources-authentication)
 
-- [Správce připojení k úložišti Azure](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)
+- [Správce připojení Azure Storage](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication)

@@ -1,24 +1,24 @@
 ---
-title: Použití dynamických skupin se správou aktualizací Azure Automation
-description: Tento článek popisuje, jak dynamické skupiny pracují se správou aktualizací Azure Automation.
+title: Použití dynamických skupin s Azure Automation Update Management
+description: Tento článek popisuje, jak dynamické skupiny pracují s Azure Automation Update Management.
 services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.openlocfilehash: 29a72eb1fe7b8be18cd2160fc63160e408378585
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617445"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Managementem
 
-Správa aktualizací umožňuje cílit na dynamickou skupinu virtuálních počítačů Azure nebo virtuálních počítačích, které nejsou azure, pro nasazení aktualizací. Tyto skupiny, definované dotazy, jsou vyhodnocovány v době nasazení, takže není třeba upravovat nasazení přidat počítače.
+Update Management umožňuje cílit na dynamickou skupinu virtuálních počítačů Azure nebo mimo Azure pro nasazení aktualizací. Tyto skupiny definované dotazy jsou vyhodnocovány v době nasazení, takže není nutné upravovat nasazení, aby bylo možné přidat počítače.
 
 ## <a name="azure-machines"></a>Počítače Azure
 
-Dynamické skupiny nefungují s klasickými virtuálními virtuálními min. Při definování dotazu lze k naplnění dynamické skupiny společně použít následující položky:
+Dynamické skupiny nefungují s klasickými virtuálními počítači. Při definování dotazu lze společně použít následující položky k naplnění dynamické skupiny:
 
 * Předplatné
 * Skupiny prostředků
@@ -27,13 +27,13 @@ Dynamické skupiny nefungují s klasickými virtuálními virtuálními min. Př
 
 ![Vybrat skupiny](./media/automation-update-management/select-groups.png)
 
-Pokud chcete zobrazit náhled výsledků dynamické skupiny, klikněte na **Náhled**. Náhled zobrazuje členství ve skupině v aktuálním čase. V příkladu hledáme počítače, které mají `Role` značku pro skupinu **BackendServer**. Pokud více počítačů má tuto značku přidána, jsou přidány do jakékoli budoucí nasazení proti této skupině.
+Pokud chcete zobrazit náhled výsledků dynamické skupiny, klikněte na **Náhled**. Ve verzi Preview se zobrazuje členství ve skupině v aktuálním čase. V tomto příkladu hledáme počítače, které mají značku `Role` pro skupinu **BackendServer**. Pokud je tato značka přidána na více počítačů, přidají se do jakéhokoli budoucího nasazení v této skupině.
 
-![skupiny náhledů](./media/automation-update-management/preview-groups.png)
+![skupiny náhledu](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Počítače, které nejsou azure
+## <a name="non-azure-machines"></a>Počítače mimo Azure
 
-Pro počítače jiného výrobce Azure se k vytvoření dynamické skupiny používají uložená hledání, označovaná také jako skupiny počítačů. Informace o vytvoření uloženého hledání naleznete [v tématu Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření skupiny ji můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte náhled počítačů v uloženém hledání v té době.
+Pro počítače, které nejsou v Azure, se při vytváření dynamické skupiny používají taky uložená hledání, označovaná jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Vytvořenou skupinu můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
 
 ![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Tvůrce výrazů v toku dat mapování
-description: Vytváření výrazů pomocí Tvůrce výrazů v mapování datových toků v Azure Data Factory
+title: Tvůrce výrazů v mapování toku dat
+description: Vytváření výrazů pomocí Tvůrce výrazů v mapování toků dat v Azure Data Factory
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,23 +8,23 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605379"
 ---
-# <a name="build-expressions-in-mapping-data-flow"></a>Vytváření výrazů v toku dat mapování
+# <a name="build-expressions-in-mapping-data-flow"></a>Výrazy sestavení v mapování toku dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-V mapování toku dat je mnoho vlastností transformace zadáno jako výrazy. Tyto výrazy se skládají z hodnot sloupců, parametrů, funkcí, operátorů a literál, které jsou vyhodnocovány na datový typ Spark za běhu.
+V rámci mapování toku dat jsou jako výrazy zadány mnoho vlastností transformace. Tyto výrazy se skládají z hodnot sloupců, parametrů, funkcí, operátorů a literálů, které se vyhodnotí na datový typ Spark v době běhu.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
 
 ## <a name="open-expression-builder"></a>Otevřít Tvůrce výrazů
 
-Rozhraní pro úpravy výrazů v uživatelském prostředí Azure Data Factory se označuje jako Tvůrce výrazů. Při zadávání logiky výrazů používá Data Factory dokončování kódu [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) pro zvýraznění, kontrolu syntaxe a automatické dokončování.
+Rozhraní pro úpravu výrazů v uživatelském prostředí Azure Data Factory se říká tvůrci výrazů. Při zadávání logiky výrazů používá data Factory pro zvýraznění, kontrolu syntaxe a redokončování kód [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) .
 
 ![Tvůrce výrazů](media/data-flow/xpb1.png "Tvůrce výrazů")
 
@@ -32,39 +32,39 @@ V transformacích, jako je odvozený sloupec a filtr, kde jsou výrazy povinné,
 
 ![Modré pole výrazu](media/data-flow/expressionbox.png "Tvůrce výrazů")
 
-Když odkazujete na sloupce v odpovídající nebo skupinové podmínce, výraz může extrahovat hodnoty ze sloupců. Chcete-li vytvořit výraz, vyberte **Vypočítaný sloupec**.
+Když odkazujete na sloupce v rámci párové nebo skupinové podmínky, může výraz extrahovat hodnoty ze sloupců. Pokud chcete vytvořit výraz, vyberte **vypočítaný sloupec**.
 
 ![Možnost vypočítaného sloupce](media/data-flow/computedcolumn.png "Tvůrce výrazů")
 
-V případech, kdy výraz nebo hodnota literálu jsou platné vstupy, vyberte **Přidat dynamický obsah** k vytvoření výrazu, který vyhodnocuje na hodnotu literálu.
+V případech, kdy je výraz nebo hodnota literálu platnými vstupy, vyberte **Přidat dynamický obsah** k sestavení výrazu, který se vyhodnotí jako literální hodnota.
 
 ![Přidat možnost dynamického obsahu](media/data-flow/add-dynamic-content.png "Tvůrce výrazů")
 
-## <a name="expression-language-reference"></a>Odkaz na jazyk výrazu
+## <a name="expression-language-reference"></a>Reference k jazyku výrazu
 
-Mapování datových toků má vestavěné funkce a operátory, které lze použít ve výrazech. Seznam dostupných funkcí naleznete [v tématu Expression functions in the mapping data flow](data-flow-expression-functions.md).
+Mapování datových toků obsahuje integrované funkce a operátory, které lze použít ve výrazech. Seznam dostupných funkcí najdete v tématu [funkce výrazu v toku dat mapování](data-flow-expression-functions.md).
 
 ## <a name="column-names-with-special-characters"></a>Názvy sloupců se speciálními znaky
 
-Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, obklopte název složenými závorkami, abyste na ně odkazovali ve výrazu.
+Pokud máte názvy sloupců, které obsahují speciální znaky nebo mezery, uzavřete název do složených závorek, aby na ně odkazovaly ve výrazu.
 
 ```{[dbo].this_is my complex name$$$}```
 
 ## <a name="preview-expression-results"></a>Náhled výsledků výrazu
 
-Pokud je zapnutý [režim ladění,](concepts-data-flow-debug-mode.md) můžete pomocí živého clusteru Spark zobrazit probíhající náhled toho, co váš výraz vyhodnocuje. Při vytváření logiky můžete ladit výraz v reálném čase. 
+Pokud je [režim ladění](concepts-data-flow-debug-mode.md) zapnutý, můžete použít cluster Live Spark k zobrazení průběžného náhledu, na který se výraz vyhodnocuje. Při sestavování logiky můžete výraz ladit v reálném čase. 
 
-![Probíhající náhled](media/data-flow/exp4b.png "Náhled dat výrazu")
+![Průběžná verze Preview](media/data-flow/exp4b.png "Náhled dat výrazu")
 
-Vyberte **Aktualizovat,** chcete-li aktualizovat výsledky výrazu na živý vzorek zdroje.
+Vyberte **aktualizovat** a aktualizujte výsledky výrazu proti živé ukázce vašeho zdroje.
 
 ![Tlačítko Aktualizovat](media/data-flow/exp5.png "Náhled dat výrazu")
 
 ## <a name="string-interpolation"></a>Interpolace řetězců
 
-Pomocí uvozovek uzavřete text literálu spolu s výrazy. Můžete zahrnout funkce výrazu, sloupce a parametry. Interpolace řetězců je užitečná, aby se zabránilo rozsáhlému použití zřetězení řetězců, když jsou parametry zahrnuty v řetězcích dotazu. Chcete-li použít syntaxi výrazu, uzavřete ji do složených závorek,
+Použijte uvozovky k uzavření textu řetězcového literálu spolu s výrazy. Můžete zahrnout funkce výrazů, sloupce a parametry. Interpolace řetězců je užitečné, aby nedocházelo k rozsáhlému použití zřetězení řetězců, když jsou parametry zahrnuty v řetězcích dotazů. Chcete-li použít syntaxi výrazu, vložte ji do složených závorek,
 
-Některé příklady interpolace řetězce:
+Některé příklady interpolace řetězců:
 
 * ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
 
@@ -74,11 +74,11 @@ Některé příklady interpolace řetězce:
 
 ## <a name="comment-expressions"></a>Výrazy komentářů
 
-Přidejte komentáře k výrazům pomocí jednořádkové a víceřádkové syntaxe komentářů.
+Přidejte komentáře ke svým výrazům pomocí jednoduché a víceřádkové syntaxe komentáře.
 
-![Jednořádková a víceřádková syntaxe komentářů](media/data-flow/comments.png "Komentáře")
+![Syntaxe jednořádkového i víceřádkového komentáře](media/data-flow/comments.png "Komentáře")
 
-Následující příklady jsou platné komentáře:
+V následujících příkladech jsou platné komentáře:
 
 * ```/* This is my comment */```
 
@@ -87,15 +87,15 @@ Následující příklady jsou platné komentáře:
    
 * ```// This is a single line comment```
 
-Pokud vložíte komentář do horní části výrazu, zobrazí se v textovém poli transformace pro dokumentování transformačních výrazů.
+Pokud vložíte komentář na začátek výrazu, zobrazí se v textovém poli transformace, kde můžete zdokumentovat své výrazy transformace.
 
 ![Komentář v textovém poli transformace](media/data-flow/comments2.png "Komentáře")
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 
-Mnoho funkcí jazyka výrazu používá syntaxi regulárních výrazů. Při použití funkcí regulárního výrazu se\\Tvůrce výrazů pokusí interpretovat zpětné lomítko ( ) jako posloupnost znaků escape. Při použití zpětná lomítka v regulárním výrazu,\`buď uzavřete celý regulární výraz v backticks ( ) nebo použijte dvojité zpětné lomítko.
+Mnoho funkcí jazyka Expression používá syntaxi regulárního výrazu. Pokud používáte funkce regulárního výrazu, nástroj Tvůrce výrazů se pokusí interpretovat zpětné lomítko\\() jako řídicí znak sekvence. Použijete-li zpětná lomítka v regulárním výrazu, buď vložte celý regulární výraz do značek (\`) nebo použijte dvojité zpětné lomítko.
 
-Příklad, který používá zpětné zaškrtávací chod:
+Příklad, který používá přetržení:
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
@@ -107,33 +107,33 @@ Příklad, který používá dvojitá lomítka:
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="address-array-indexes"></a>Indexy pole adres
+## <a name="address-array-indexes"></a>Indexy polí adres
 
-S funkcemi výrazu, které vracejí pole, použijte závorky ([]) k adresování určitých indexů uvnitř, které vracejí objekty pole. Pole je založeno na jedničkách.
+Pomocí funkcí výrazů, které vracejí pole, použijte hranaté závorky ([]) k adresování konkrétních indexů uvnitř tohoto návratového objektu pole. Pole je založené na.
 
 ![Pole Tvůrce výrazů](media/data-flow/expb2.png "Náhled dat výrazu")
 
 ## <a name="keyboard-shortcuts"></a>Klávesové zkratky
 
-* Ctrl+K Ctrl+C: Komentář celý řádek.
-* Ctrl+K Ctrl+U: Odkomentujte.
-* F1: Poskytněte příkazy nápovědy editoru.
-* Alt + šipka dolů: Přesunout aktuální řádek dolů.
-* Alt + šipka nahoru: Přesunout aktuální řádek nahoru.
-* Ctrl+Mezerník: Zobrazit kontextovou nápovědu.
+* CTRL + K CTRL + C: komentovat celý řádek.
+* CTRL + K CTRL + U: zrušit komentář.
+* F1: Poskytněte příkazy Nápověda pro Editor.
+* Klávesa Alt + šipka dolů: přesunout aktuální řádek dolů
+* Alt + šipka nahoru klávesa: přesunout aktuální řádek nahoru
+* CTRL + MEZERNÍK: zobrazit kontextovou podporu.
 
-## <a name="convert-to-dates-or-timestamps"></a>Převod na kalendářní data nebo časová razítka
+## <a name="convert-to-dates-or-timestamps"></a>Převést na data nebo časová razítka
 
-Chcete-li do výstupu časového razítka zahrnout řetězcové literály, zalomte převod do aplikace ```toString()```.
+Chcete-li do výstupu časového razítka zahrnout řetězcové literály, ```toString()```zabalte převod do.
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Chcete-li převést milisekundy z epochy na datum nebo časové razítko, použijte `toTimestamp(<number of milliseconds>)`. Pokud čas přichází v sekundách, vynásobte 1000.
+Chcete-li převést milisekundy z epocha na datum nebo časové `toTimestamp(<number of milliseconds>)`razítko, použijte. Pokud se čas koná v sekundách, vynásobte 1 000.
 
 ```toTimestamp(1574127407*1000l)```
 
-Koncové "l" na konci předchozího výrazu znamená převod na dlouhý typ jako vložkovou syntaxi.
+Koncový znak "l" na konci předchozího výrazu znamená převod na dlouhý typ jako vloženou syntaxi.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Zahájení vytváření výrazů transformace dat](data-flow-expression-functions.md)
+[Začít sestavovat výrazy transformace dat](data-flow-expression-functions.md)
