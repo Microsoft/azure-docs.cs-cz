@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.custom: seodec18
 ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117518"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Použití šablon projektů sady Visual Studio ke skoku na zahájení dávkového řešení
@@ -41,7 +41,7 @@ Jak je znázorněno v následujícím diagramu, výpočetní úloha, která pou�
 
 ![Diagram znázorňující, jak klientský kód komunikuje se službou Batch][diagram01]
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Chcete-li použít šablony Batch, budete potřebovat následující:
 
 * Počítač s nainstalovanou sadou Visual Studio 2015. Šablony služby Batch se aktuálně podporují jenom pro Visual Studio 2015.

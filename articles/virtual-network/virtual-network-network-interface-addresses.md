@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 8ff958b7bab7be3124452c1206baf64d0f8ccb7a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142501"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Přidání, změna nebo odebrání IP adres pro síťové rozhraní Azure
@@ -64,7 +64,7 @@ K síťovému rozhraní můžete podle potřeby přidat tolik [privátních](#pr
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
+|CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>Změnit nastavení IP adresy
@@ -85,7 +85,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
+|CLI|[AZ Network nic IP-config Update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Odebrat IP adresy
@@ -101,7 +101,7 @@ Možná budete muset změnit metodu přiřazení adresy IPv4, změnit statickou 
 
 |Nástroj|Příkaz|
 |---|---|
-|Rozhraní příkazového řádku|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
+|CLI|[AZ Network nic IP-config DELETE](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>Konfigurace protokolu IP
@@ -130,7 +130,7 @@ Kromě konfigurace primárního protokolu IP může být k síťovému rozhraní
 
 [Konfiguraci protokolu IP](#ip-configurations)můžete přiřadit následující typy IP adres:
 
-### <a name="private"></a>Private
+### <a name="private"></a>Soukromé
 
 Privátní adresy [IPv4](#ipv4) nebo IPv6 umožňují virtuálnímu počítači komunikovat s ostatními prostředky ve virtuální síti nebo v jiných propojených sítích. 
 
@@ -171,7 +171,7 @@ Ve výchozím nastavení jsou přiřazovány dynamické privátní adresy IPv4 a
 - **Pouze veřejný**: Azure přiřadí adresu z rozsahu, který je jedinečný pro každou oblast Azure. Informace o tom, které rozsahy jsou přiřazeny ke každé oblasti, najdete v tématu [Microsoft Azure rozsahy IP adres datového centra](https://www.microsoft.com/download/details.aspx?id=41653). Adresa se může změnit, když je virtuální počítač zastavený (přidělení zrušeno), a pak se znovu spustí. Veřejné adrese IPv6 nelze přiřadit ke konfiguraci protokolu IP pomocí metody přiřazení.
 - **Pouze soukromý**: Azure si vyhrazuje první čtyři adresy v každém rozsahu adres podsítě a adresy nepřiřazují. Azure přiřadí prostředku další dostupnou adresu z rozsahu adres podsítě. Pokud je například rozsah adres podsítě 10.0.0.0/16 a adresy 10.0.0.0.4–10.0.0.14 už jsou přiřazené (.0–.3 jsou vyhrazené), Azure prostředku přiřadí adresu 10.0.0.15. Dynamická metoda přidělování je výchozí metoda. Jakmile jsou dynamické IP adresy přiřazené, uvolní se pouze v případě odstranění síťového rozhraní, jeho přiřazení k jiné podsíti ve stejné virtuální síti nebo změně metody přidělování na statickou a zadání jiné IP adresy. Když změníte metodu přidělování z dynamické na statickou, Azure ve výchozím nastavení jako statickou IP adresu přiřadí dříve dynamicky přiřazenou adresu. 
 
-### <a name="static"></a>Statická
+### <a name="static"></a>Static
 
 K konfiguraci protokolu IP můžete (volitelně) přiřadit veřejnou nebo soukromou statickou adresu IPv4 nebo IPv6. Další informace o tom, jak Azure přiřazuje statické veřejné adresy IPv4, najdete v tématu [veřejné IP adresy](virtual-network-public-ip-address.md).
 

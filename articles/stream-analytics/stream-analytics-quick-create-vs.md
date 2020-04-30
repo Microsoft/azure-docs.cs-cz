@@ -1,5 +1,5 @@
 ---
-title: Úvodní příručka – vytvoření úlohy Azure Stream Analytics pomocí Visual Studia
+title: Rychlý Start – vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 description: V tomto rychlém startu se dozvíte, jak začít vytvořením úlohy Stream Analytics, konfigurací vstupů a výstupů a definicí dotazu pomocí sady Visual Studio.
 author: mamccrea
 ms.author: mamccrea
@@ -7,20 +7,20 @@ ms.date: 06/11/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.openlocfilehash: 5e654fe5d31a225a855da8477e073ceeb1a68634
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81767236"
 ---
-# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Úvodní příručka: Vytvoření úlohy Azure Stream Analytics pomocí Visual Studia
+# <a name="quickstart-create-an-azure-stream-analytics-job-by-using-visual-studio"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí sady Visual Studio
 
-V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí Azure Stream Analytics Tools for Visual Studio. Ukázková úloha čte streamovaná data ze zařízení služby IoT Hub. Definujete úlohu, která vypočítá průměrnou teplotu při překročení 27° a zapíše výsledné výstupní události do nového souboru v úložišti objektů blob.
+V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analytics pomocí Azure Stream Analytics Tools for Visual Studio. Ukázková úloha načte streamovaná data z IoT Hubho zařízení. Nadefinujete úlohu, která vypočítá průměrnou teplotu při více než 27 ° a zapíše výsledné výstupní události do nového souboru v úložišti objektů BLOB.
 
 > [!NOTE]
-> Nástroje Visual Studio a Visual Studio Code nepodporují úlohy v oblastech Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod.
+> Sady Visual Studio a nástroje pro Visual Studio Code nepodporují úlohy v oblastech Čína – východ, Čína – sever, Německo – střed a Německo – severovýchod.
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="before-you-begin"></a>Před zahájením
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
 
@@ -32,11 +32,11 @@ V tomto rychlém startu se dozvíte, jak vytvořit a spustit úlohu Stream Analy
 
 ## <a name="prepare-the-input-data"></a>Příprava vstupních dat
 
-Před definováním úlohy Stream Analytics byste měli připravit data, která jsou později nakonfigurována jako vstup úlohy. Chcete-li připravit vstupní data vyžadovaná úlohou, proveďte následující kroky:
+Před definováním Stream Analytics úlohy byste měli připravit data, která jsou později nakonfigurovaná jako vstup úlohy. Chcete-li připravit vstupní data požadovaná úlohou, proveďte následující kroky:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
+2. Vyberte **vytvořit prostředek** > **Internet věcí** > **IoT Hub**.
 
 3. V podokně **IoT Hub** zadejte následující informace:
    
@@ -44,40 +44,40 @@ Před definováním úlohy Stream Analytics byste měli připravit data, která 
    |---------|---------|---------|
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít. |
    |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte **Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
-   |Region (Oblast)  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte geografickou polohu, kde můžete hostovat svůj IoT Hub. Použijte umístění, které je vašim uživatelům nejblíže. |
-   |Název centra IoT  | MyASAIoTHub  |   Vyberte název vašeho IoT Hubu.   |
+   |Oblast  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde můžete IoT Hub hostovat. Použijte umístění, které je nejblíže vašim uživatelům. |
+   |Název IoT Hub  | MyASAIoTHub  |   Vyberte název IoT Hub.   |
 
    ![Vytvořit IoT Hub](./media/stream-analytics-quick-create-vs/create-iot-hub.png)
 
-4. Vyberte **další: Nastavit velikost a měřítko**.
+4. Vyberte **Další: nastavit velikost a měřítko**.
 
-5. Zvolte si **Úroveň ceny a škálování**. Pro tento rychlý start vyberte úroveň **F1 – Free,** pokud je stále dostupná ve vašem předplatném. Pokud volná úroveň není k dispozici, zvolte nejnižší dostupnou úroveň. Další informace najdete v tématu [Ceny ioT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
+5. Zvolte si **Úroveň ceny a škálování**. Pro tento rychlý Start vyberte úroveň **F1** , pokud je stále k dispozici ve vašem předplatném. Pokud úroveň Free není k dispozici, vyberte nejnižší dostupnou úroveň. Další informace najdete v tématu [IoT Hub ceny](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-   ![Velikost a škálování ioT hubu](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
+   ![Velikost a škálování IoT Hub](./media/stream-analytics-quick-create-vs/iot-hub-size-and-scale.png)
 
-6. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte informace o centru IoT Hub a klepněte na **tlačítko Vytvořit**. Vytvoření ioT hubu může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
+6. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte informace o IoT Hub a klikněte na **vytvořit**. Vytvoření IoT Hub může trvat několik minut. Průběh můžete sledovat v podokně **Oznámení**.
 
-7. V navigační nabídce služby IoT Hub klikněte v části **Zařízení IoT**na **Přidat** . Přidejte **ID zařízení** a klepněte na tlačítko **Uložit**.
+7. V navigační nabídce IoT Hub klikněte na **Přidat** v části **zařízení IoT**. Přidejte **ID zařízení** a klikněte na **Uložit**.
 
-   ![Přidání zařízení do centra IoT Hub](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
+   ![Přidání zařízení do IoT Hub](./media/stream-analytics-quick-create-vs/add-device-iot-hub.png)
 
-8. Po vytvoření zařízení otevřete zařízení ze seznamu **zařízení IoT.** Zkopírujte **připojovací řetězec – primární klíč** a uložte jej do poznámkového bloku, který chcete použít později.
+8. Po vytvoření zařízení otevřete zařízení ze seznamu **zařízení IoT** . Zkopírujte **připojovací řetězec – primární klíč** a uložte ho do poznámkového bloku a použijte ho později.
 
-   ![Kopírování připojovacího řetězce zařízení centra IoT Hub](./media/stream-analytics-quick-create-vs/save-iot-device-connection-string.png)
+   ![Kopírovat připojovací řetězec IoT Hub zařízení](./media/stream-analytics-quick-create-vs/save-iot-device-connection-string.png)
 
-## <a name="create-blob-storage"></a>Vytvoření úložiště objektů blob
+## <a name="create-blob-storage"></a>Vytvoření úložiště objektů BLOB
 
-1. V levém horním rohu portálu Azure vyberte **Vytvořit** > **účet úložiště****prostředků** > .
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **Storage** > úložiště**účet**úložiště.
 
-2. V podokně **Vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Zvolte stejné umístění a skupinu prostředků jako službu IoT Hub, kterou jste vytvořili. Pak klikněte na **Zkontrolovat + vytvořit** a vytvořte účet.
+2. V podokně **vytvořit účet úložiště** zadejte název účtu úložiště, umístění a skupinu prostředků. Vyberte stejné umístění a skupinu prostředků jako IoT Hub, který jste vytvořili. Pak klikněte na tlačítko **zkontrolovat + vytvořit** a vytvořte účet.
 
    ![Vytvoření účtu úložiště](./media/stream-analytics-quick-create-portal/create-storage-account.png)
 
-3. Po vytvoření účtu úložiště vyberte dlaždici **Objektů blob** v podokně **Přehled.**
+3. Po vytvoření účtu úložiště vyberte dlaždici **objektů BLOB** v podokně **Přehled** .
 
    ![Přehled účtu úložiště](./media/stream-analytics-quick-create-portal/blob-storage.png)
 
-4. Na stránce **Služba objektu Blob** vyberte **Kontejner** a zadejte název kontejneru, například *kontejner1*. Ponechte **úroveň veřejného přístupu** jako **soukromou (bez anonymního přístupu)** a vyberte **OK**.
+4. Na stránce **BLOB Service** vyberte **kontejner** a zadejte název svého kontejneru, například *container1*. Ponechte **úroveň veřejného přístupu** jako **soukromou (bez anonymního přístupu)** a vyberte **OK**.
 
    ![Vytvoření kontejneru objektů blob](./media/stream-analytics-quick-create-portal/create-blob-container.png)
 
@@ -116,8 +116,8 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
    |Typ zdroje   |  Datový proud |  Zvolte odpovídající vstupní zdroj: datový proud nebo referenční data.   |
    |Zdroj  |  IoT Hub |  Vyberte odpovídající vstupní zdroj.   |
    |Prostředek  | Zvolit zdroj dat z aktuálního účtu | Zvolte, jestli chcete data zadat ručně, nebo vyberte existující účet.   |
-   |Předplatné  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, které má službu IoT Hub, kterou jste vytvořili.   |
-   |IoT Hub  |  MyASAIoTHub   |  Zvolte nebo zadejte název svého IoT Hubu. Názvy služby IoT Hub jsou automaticky rozpoznány, pokud jsou vytvořeny ve stejném předplatném.   |
+   |Předplatné  |  \<Vaše předplatné\>   | Vyberte předplatné Azure, které obsahuje IoT Hub, které jste vytvořili.   |
+   |IoT Hub  |  MyASAIoTHub   |  Vyberte nebo zadejte název IoT Hub. Názvy IoT Hub jsou automaticky zjištěny, pokud jsou vytvořeny ve stejném předplatném.   |
    
 3. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
 
@@ -166,11 +166,11 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
 
 ## <a name="run-the-iot-simulator"></a>Spuštění simulátoru IoT
 
-1. Otevřete [Raspberry Pi Azure IoT Online Simulator](https://azure-samples.github.io/raspberry-pi-web-simulator/) v novém kartě prohlížeče nebo v okně.
+1. Otevřete [online simulátor Azure IoT PI](https://azure-samples.github.io/raspberry-pi-web-simulator/) na nové kartě nebo v okně prohlížeče.
 
-2. Nahraďte zástupný symbol na lince 15 připojovacím řetězcem zařízení Azure IoT Hub, který jste uložili v předchozí části.
+2. Zástupný text na řádku 15 nahraďte připojovacím řetězcem zařízení Azure IoT Hub, který jste uložili v předchozí části.
 
-3. Klepněte na tlačítko **Spustit**. Výstup by měl zobrazovat data senzorů a zprávy, které jsou odesílány do vašeho ioT hubu.
+3. Klikněte na **Spustit**. Výstup by měl ukazovat data a zprávy snímače, které se odesílají do vašeho IoT Hub.
 
    ![Online simulátor Raspberry Pi Azure IoT](./media/stream-analytics-quick-create-portal/ras-pi-connection-string.png)
 
@@ -180,7 +180,7 @@ Všimněte si prvků obsažených v projektu Azure Stream Analytics.
 
    ![Spuštění úlohy Stream Analytics](./media/stream-analytics-quick-create-vs/start-stream-analytics-job-vs.png)
 
-2. Změňte **režim spuštění výstupu úlohy** na **JobStartTime** a vyberte **spustit**.
+2. Změňte **počáteční režim výstupu úlohy** na **JobStartTime** a vyberte **Spustit**.
 
    ![Konfigurace spuštění úlohy](./media/stream-analytics-quick-create-vs/stream-analytics-start-configuration.png)
 
@@ -204,7 +204,7 @@ Odstraňte skupinu prostředků, úlohu streamování a všechny související p
 
 V tomto rychlém startu jste pomocí sady Visual Studio nasadili jednoduchou úlohu Stream Analytics. Úlohy Stream Analytics můžete nasadit také pomocí webu [Azure Portal](stream-analytics-quick-create-portal.md) a [PowerShellu](stream-analytics-quick-create-powershell.md). 
 
-Další informace o nástrojích Azure Stream Analytics pro Visual Studio najdete v následujícím článku:
+Další informace o nástrojích Azure Stream Analytics Tools for Visual Studio najdete v následujícím článku:
 
 > [!div class="nextstepaction"]
-> [Zobrazení úloh Azure Stream Analytics pomocí Visual Studia](stream-analytics-vs-tools.md)
+> [Použití sady Visual Studio k zobrazení Azure Stream Analyticsch úloh](stream-analytics-vs-tools.md)
