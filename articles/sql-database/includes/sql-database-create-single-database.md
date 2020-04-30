@@ -7,89 +7,89 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: 563ac8748e9d4f8a254a151814491113b9c816e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685145"
 ---
-V tomto kroku vytvoříte server Azure SQL Database a jednu databázi, která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek portálu Azure nebo pomocí skriptu Azure CLI nebo PowerShellu v Prostředí Azure Cloud Shell.
+V tomto kroku vytvoříte Server Azure SQL Database a jedinou databázi, která používá ukázková data AdventureWorksLT. Databázi můžete vytvořit pomocí nabídek a obrazovek Azure Portal nebo pomocí skriptu Azure CLI nebo PowerShellu v Azure Cloud Shell.
 
-Všechny metody zahrnují nastavení pravidla brány firewall na úrovni serveru, které umožní veřejnou IP adresu počítače, který používáte pro přístup k serveru. Další informace o vytváření pravidel brány firewall serveru naleznete [v tématu Vytvoření brány firewall na úrovni serveru](../sql-database-server-level-firewall-rule.md). Můžete také nastavit pravidla brány firewall na úrovni databáze. Viz [Vytvoření pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). 
+Všechny metody zahrnují nastavení pravidla brány firewall na úrovni serveru, které umožní veřejnou IP adresu počítače, který používáte pro přístup k serveru. Další informace o vytváření pravidel brány firewall serveru najdete v tématu [Vytvoření brány firewall na úrovni serveru](../sql-database-server-level-firewall-rule.md). Můžete také nastavit pravidla brány firewall na úrovni databáze. Viz [Vytvoření pravidla brány firewall na úrovni databáze](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database). 
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Vytvoření skupiny prostředků, serveru SQL a jedné databáze na webu Azure Portal:
+Vytvoření skupiny prostředků, SQL serveru a izolované databáze v Azure Portal:
 
 1. Přihlaste se k [portálu](https://portal.azure.com).
-1. Na panelu Hledání vyhledejte a vyberte **Azure SQL**.
+1. Na panelu hledání vyhledejte a vyberte **Azure SQL**.
 1. Na stránce **Azure SQL** vyberte **Přidat**. 
    
-   ![Přidání do Azure SQL](../media/sql-database-single-database-get-started/sqldbportal.png)
+   ![Přidat do Azure SQL](../media/sql-database-single-database-get-started/sqldbportal.png)
    
-1. Na stránce **možnosti Vybrat nasazení SQL** vyberte dlaždici **databáze SQL** s **položkou Jedna databáze** v části Typ **prostředku**. Další informace o různých databázích můžete zobrazit výběrem **možnosti Zobrazit podrobnosti**.
+1. Na stránce **vybrat možnost nasazení SQL** vyberte dlaždici **databáze SQL** s izolovanou **databází** v části **typ prostředku**. Další informace o různých databázích můžete zobrazit výběrem možnosti **Zobrazit podrobnosti**.
 1. Vyberte **Vytvořit**.
    
    ![Vytvoření izolované databáze](../media/sql-database-single-database-get-started/create-single-database.png)
    
-1. Na kartě **Základy** formuláře **Vytvořit databázi SQL** vyberte v části **Podrobnosti projektu**správné **předplatné** Azure, pokud ještě není vybrané.
-1. V části **Skupina prostředků**vyberte **Vytvořit nový**, zadejte *myResourceGroup*a vyberte **OK**.
-1. V části **Podrobnosti databáze**zadejte **název databáze** do *databáze mySampleDatabase*.
-1. V **části Server**vyberte Vytvořit **nový**a vyplňte formulář Nový **server** následujícím způsobem:
-   - **Název serveru**: Zadejte *mysqlserver*a některé znaky pro jedinečnost.
-   - **Přihlášení správce serveru**: Zadejte *azureuser*.
-   - **Heslo**: Zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo.**
-   - **Umístění**: Rozevírací nabídky a zvolte umístění, například **(USA) – východ USA**.
+1. Na kartě **základy** ve formuláři **vytvořit databázi SQL** v části **Project Details (podrobnosti projektu**) vyberte správné **předplatné** Azure, pokud ještě není vybrané.
+1. V části **Skupina prostředků**vyberte **vytvořit novou**, zadejte *myResourceGroup*a vyberte **OK**.
+1. V části **Podrobnosti databáze**zadejte do **pole název databáze** *mySampleDatabase*.
+1. Pro možnost **Server**vyberte **vytvořit novou**a vyplňte formulář **nového serveru** následujícím způsobem:
+   - **Název serveru**: zadejte *MySQLServer*a některé znaky pro jedinečnost.
+   - **Přihlašovací jméno správce serveru**: zadejte *azureuser*.
+   - **Heslo**: zadejte heslo, které splňuje požadavky, a znovu ho zadejte do pole **Potvrdit heslo** .
+   - **Umístění**: rozevírací seznam a vyberte umístění, například **(US) východní USA**.
    
    Vyberte **OK**.
    
    ![Nový server](../media/sql-database-single-database-get-started/new-server.png)
    
-   Zaznamenejte přihlašovací jméno a heslo správce serveru, abyste se mohli přihlásit k serveru a databázím. Pokud zapomenete své přihlašovací jméno nebo heslo, můžete získat přihlašovací jméno nebo obnovit heslo na stránce **serveru SQL** po vytvoření databáze. Chcete-li otevřít stránku **serveru SQL,** vyberte název serveru na stránce **Přehled** databáze.
+   Poznamenejte si přihlašovací jméno a heslo správce serveru, abyste se mohli přihlásit k serveru a databázím. Pokud zapomenete přihlašovací jméno nebo heslo, můžete po vytvoření databáze získat přihlašovací jméno nebo resetovat heslo na stránce **SQL serveru** . Chcete-li otevřít stránku **systému SQL Server** , vyberte název serveru na stránce **Přehled** databáze.
    
-1. Pokud chcete v části **Compute + storage**změnit konfiguraci výchozích hodnot, vyberte Konfigurovat **databázi**.
+1. Pokud chcete překonfigurovat výchozí hodnoty, vyberte v části **COMPUTE + úložiště**možnost **Konfigurovat databázi**.
    
-   Na stránce **Konfigurovat** můžete volitelně:
-   - Změňte **výpočetní úroveň** z **zřízená** na **bezserveru**.
-   - Zkontrolujte a změňte nastavení **virtuálních jader** a **maximální velikosti dat**.
-   - Chcete-li změnit generování hardwaru, vyberte **změnit konfiguraci.**
+   Na stránce **Konfigurace** můžete volitelně:
+   - Změňte **výpočetní vrstvu** ze **zřízené** na bez **serveru**.
+   - Zkontrolujte a změňte nastavení pro **virtuální jádra** a **maximální velikost dat**.
+   - Vyberte **změnit konfiguraci** pro změnu generování hardwaru.
    
-   Po provedení jakýchkoli změn vyberte **Použít**.
+   Po provedení změn vyberte **použít**.
    
-1. Vyberte **Další: Vytváření sítí** v dolní části stránky.
+1. V dolní části stránky vyberte možnost **Další: sítě** .
    
-   ![Nová databáze SQL – základní karta](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
+   ![Nová databáze SQL – karta Basic](../media/sql-database-single-database-get-started/new-sql-database-basics.png)
    
-1. Na kartě **Síť** vyberte v části **Connectivity metodu** **možnost Veřejný koncový bod**. 
-1. V části **Pravidla brány firewall**nastavte přidat aktuální ip adresu **klienta** do **yes**.
+1. Na kartě **sítě** v části **způsob připojení**vyberte **veřejný koncový bod**. 
+1. V části **pravidla brány firewall**nastavte **Přidat aktuální IP adresu klienta** na **Ano**.
 1. Vyberte **Další: Další nastavení** v dolní části stránky.
    
-   ![Karta Síť](../media/sql-database-single-database-get-started/networking.png)
+   ![Karta sítě](../media/sql-database-single-database-get-started/networking.png)
    
-   Další informace o nastavení brány firewall najdete v [tématu Povolení přístupu ke službám a prostředkům Azure pro přístup k tomuto serveru](../sql-database-networkaccess-overview.md) a [přidání privátního koncového bodu](../../private-link/private-endpoint-overview.md).
+   Další informace o nastavení brány firewall najdete v tématu [Povolení služeb a prostředků Azure pro přístup k tomuto serveru](../sql-database-networkaccess-overview.md) a [Přidání privátního koncového bodu](../../private-link/private-endpoint-overview.md).
    
-1. Na kartě **Další nastavení** v části **Zdroj dat** v části **Použití existujících dat**vyberte **ukázku**.
-1. V dolní části stránky vyberte **Zkontrolovat + vytvořit.**
+1. Na kartě **Další nastavení** v části **zdroj dat** pro možnost **použít existující data**vyberte **Ukázka**.
+1. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
    
    ![Karta Další nastavení](../media/sql-database-single-database-get-started/additional-settings.png)
    
-1. Po kontrole nastavení vyberte **Vytvořit**.
+1. Po zkontrolování nastavení vyberte **vytvořit**.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pomocí rozhraní příkazového řádku Azure (Azure CLI) můžete vytvořit skupinu prostředků Azure, server SQL a jednu databázi. Pokud nechcete používat Azure Cloud Shell, [nainstalujte azure cli](/cli/azure/install-azure-cli) na vašem počítači.
+Pomocí rozhraní příkazového řádku Azure (Azure CLI) můžete vytvořit skupinu prostředků Azure, SQL Server a samostatnou databázi. Pokud nechcete používat Azure Cloud Shell, nainstalujte na svém počítači rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
-Pokud chcete spustit následující ukázku kódu v Prostředí Azure Cloud, vyberte **Vyzkoušet** v záhlaví ukázkového kódu. Když se cloudové prostředí otevře, vyberte **Kopírovat** v záhlaví ukázkového kódu a vložte ukázku kódu do okna Cloud Shell. V kódu `<Subscription ID>` nahraďte ID předplatného Azure `$startip` `$endip`a `0.0.0.0` pro a , nahraďte veřejnou IP adresou počítače, který používáte.
+Chcete-li spustit následující ukázku kódu v Azure Cloud Shell, vyberte možnost **vyzkoušet** v záhlaví ukázka kódu. Po otevření Cloud Shell v záhlaví ukázka kódu vyberte možnost **Kopírovat** a vložte ukázku kódu do okna Cloud Shell. V `<Subscription ID>` kódu NAHRAĎte ID předplatného Azure a `$startip` pro a `$endip`nahraďte `0.0.0.0` veřejnou IP adresou počítače, který používáte.
 
-Postupujte podle pokynů na obrazovce, abyste se přihlásili do Azure a spusťte kód. 
+Postupujte podle pokynů na obrazovce a přihlaste se k Azure a spusťte kód. 
 
-Azure Cloud Shell můžete taky použít z portálu Azure, když vyberete ikonu Cloud Shell na horním panelu. 
+Azure Cloud Shell můžete použít také z Azure Portal tak, že vyberete ikonu Cloud Shell na horním panelu. 
    
    ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
    
-Při prvním použití cloudového prostředí na portálu **vyberte** bash v **úvodním** dialogovém okně. Následné relace budou používat Azure CLI v prostředí Bash, nebo můžete vybrat **Bash** z ovládacího panelu cloudového prostředí. 
+Při prvním použití Cloud Shell na portálu vyberte v **uvítacím** dialogovém okně **bash** . Následné relace budou používat rozhraní příkazového řádku Azure CLI v prostředí bash nebo můžete vybrat **bash** z ovládacího panelu Cloud Shell. 
 
-Následující kód Azure CLI vytvoří skupinu prostředků Azure, SQL server, jednu databázi a pravidlo brány firewall pro přístup k serveru. Nezapomeňte zaznamenat vygenerované názvy skupin prostředků a serverů, abyste tyto prostředky mohli spravovat později.
+Následující kód Azure CLI vytvoří skupinu prostředků Azure, server SQL, izolovanou databázi a pravidlo brány firewall pro přístup k serveru. Ujistěte se, že jste vygenerovali vygenerovanou skupinu prostředků a názvy serverů, abyste tyto prostředky mohli spravovat později.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -145,35 +145,35 @@ az sql db create \
     --capacity 2 \
 ```
 
-Předchozí kód používá tyto příkazy Azure CLI:
+Předchozí kód používá tyto příkazy rozhraní příkazového řádku Azure CLI:
 
 | Příkaz | Popis |
 |---|---|
-| [az účet nastaven](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví odběr jako aktuální aktivní předplatné. | 
+| [AZ Account set](/cli/azure/account?view=azure-cli-latest#az-account-set) | Nastaví předplatné jako aktuální aktivní předplatné. | 
 | [az group create](/cli/azure/group#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří databázový server SQL, který hostuje jednotlivé databáze a elastické fondy. |
-| [Vytvoření pravidla brány firewall serveru az SQL Server](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Vytvoří pravidla brány firewall serveru. | 
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [AZ SQL Server Firewall-Rule Create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | Vytvoří pravidla brány firewall serveru. | 
 | [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest) | Vytvoří databázi. | 
 
-Další ukázky nastavení příkazového příkazu Azure k Azure v Azure najdete v [tématu ukázky nastavení příkazového příkazu k aplikaci Azure](../sql-database-cli-samples.md).
+Další Azure SQL Database ukázek rozhraní příkazového řádku Azure najdete v tématu [ukázky Azure CLI](../sql-database-cli-samples.md).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pomocí prostředí Windows PowerShell můžete vytvořit skupinu prostředků Azure, server SQL a jednu databázi. Pokud nechcete používat Azure Cloud Shell, [nainstalujte modul Azure PowerShell](/powershell/azure/install-az-ps).
+Pomocí Windows PowerShellu můžete vytvořit skupinu prostředků Azure, SQL Server a samostatnou databázi. Pokud nechcete použít Azure Cloud Shell, [nainstalujte modul Azure PowerShell](/powershell/azure/install-az-ps).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete spustit následující ukázku kódu v prostředí Azure Cloud Shell, vyberte **Vyzkoušet** v záhlaví kódu. Když se cloudové prostředí otevře, vyberte **Kopírovat** v záhlaví ukázkového kódu a vložte ukázku kódu do okna Cloud Shell. V kódu `<Subscription ID>` nahraďte ID předplatného Azure `$startIp` `$endIp`a `0.0.0.0` pro a , nahraďte veřejnou IP adresou počítače, který používáte. 
+Chcete-li spustit následující ukázku kódu v Azure Cloud Shell, vyberte možnost **vyzkoušet** v záhlaví kódu. Po otevření Cloud Shell v záhlaví ukázka kódu vyberte možnost **Kopírovat** a vložte ukázku kódu do okna Cloud Shell. V `<Subscription ID>` kódu NAHRAĎte ID předplatného Azure a `$startIp` pro a `$endIp`nahraďte `0.0.0.0` veřejnou IP adresou počítače, který používáte. 
 
-Postupujte podle pokynů na obrazovce, abyste se přihlásili do Azure a spusťte kód. 
+Postupujte podle pokynů na obrazovce a přihlaste se k Azure a spusťte kód. 
 
-Azure Cloud Shell můžete taky použít z portálu Azure, když vyberete ikonu Cloud Shell na horním panelu. 
+Azure Cloud Shell můžete z Azure Portal použít také tak, že na horním panelu vyberete ikonu Cloud Shell. 
    
    ![Azure Cloud Shell](../media/sql-database-single-database-get-started/cloudshell.png)
    
-Při prvním použití cloudového prostředí z portálu vyberte v **úvodním** dialogovém okně **možnost PowerShell.** Následující relace budou používat PowerShell, nebo ho můžete vybrat z ovládacího panelu Cloud Shell. 
+Při prvním použití Cloud Shell z portálu vyberte v **uvítacím** dialogovém okně **PowerShell** . Následné relace budou používat PowerShell, nebo je můžete vybrat z ovládacího panelu Cloud Shell. 
 
-Následující kód Prostředí PowerShell vytvoří skupinu prostředků Azure, SQL server, jednu databázi a pravidlo brány firewall pro přístup k serveru. Nezapomeňte zaznamenat vygenerované názvy skupin prostředků a serverů, abyste tyto prostředky mohli spravovat později.
+Následující kód PowerShellu vytvoří skupinu prostředků Azure, SQL Server, izolovanou databázi a pravidlo brány firewall pro přístup k serveru. Ujistěte se, že jste vygenerovali vygenerovanou skupinu prostředků a názvy serverů, abyste tyto prostředky mohli spravovat později.
 
    ```powershell-interactive
    # Set variables for your server and database
@@ -233,15 +233,15 @@ Následující kód Prostředí PowerShell vytvoří skupinu prostředků Azure,
    $database
    ```
 
-Předchozí kód používá tyto rutiny prostředí PowerShell:
+Předchozí kód používá tyto rutiny PowerShellu:
 
 | Příkaz | Poznámky |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
-| [Nový-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří databázový server SQL, který hostuje jednotlivé databáze a elastické fondy. |
-| [Nové pravidlo azsqlserverfirewallfirewall](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický server. | 
-| [Nová databáze AzSql](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří jednu databázi Azure SQL Database. | 
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Vytvoří server SQL Database hostující jednotlivé databáze a elastické fondy. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Vytvoří pravidlo brány firewall pro logický Server. | 
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Vytvoří Azure SQL Database jedinou databázi. | 
 
-Další ukázky Prostředí PowerShell azure SQL Database najdete v [tématu ukázky Prostředí Azure PowerShell](../sql-database-powershell-samples.md).
+Další Azure SQL Database ukázek PowerShellu najdete v tématu [Azure PowerShell Samples](../sql-database-powershell-samples.md).
 
 ---

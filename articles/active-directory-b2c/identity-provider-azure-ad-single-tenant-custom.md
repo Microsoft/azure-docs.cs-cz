@@ -1,7 +1,7 @@
 ---
 title: Nastavení přihlášení pomocí účtu Azure AD pomocí vlastních zásad
 titleSuffix: Azure AD B2C
-description: Nastavte přihlášení pomocí účtu Azure Active Directory ve službě Azure Active Directory B2C pomocí vlastních zásad.
+description: Nastavte přihlášení pomocí účtu Azure Active Directory v Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678092"
 ---
-# <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlášení pomocí účtu Azure Active Directory pomocí vlastních zásad ve službě Azure Active Directory B2C
+# <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavení přihlašování pomocí účtu Azure Active Directory s využitím vlastních zásad v Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele z organizace Azure Active Directory (Azure AD) pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C).
+V tomto článku se dozvíte, jak povolit přihlášení uživatelů z Azure Active Directory (Azure AD) pomocí [vlastních zásad](custom-policy-overview.md) v Azure Active Directory B2C (Azure AD B2C).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dokončete kroky v [části Začínáme s vlastními zásadami ve službě Azure Active Directory B2C](custom-policy-get-started.md).
+Proveďte kroky v části Začínáme [s vlastními zásadami v Azure Active Directory B2C](custom-policy-get-started.md).
 
 
 [!INCLUDE [active-directory-b2c-identity-provider-azure-ad](../../includes/active-directory-b2c-identity-provider-azure-ad.md)]
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 
-Musíte uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD B2C.
+Je potřeba uložit klíč aplikace, který jste vytvořili v tenantovi Azure AD B2C.
 
-1. Ujistěte se, že používáte adresář, který obsahuje vašeho klienta Azure AD B2C. V horní nabídce vyberte **filtr Directory + subscription** a pak zvolte adresář, který obsahuje vašeho klienta Azure AD B2C.
-1. V levém horním rohu portálu Azure zvolte **Všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Zásady**vyberte **rozhraní Identity Experience Framework**.
-1. Vyberte **klávesy zásad a** pak vyberte **Přidat**.
-1. V části `Manual` **Možnosti**zvolte .
-1. Zadejte **název** klíče zásady. Například, `ContosoAppSecret`.  Předpona `B2C_1A_` se při vytvoření automaticky přidá k názvu klíče, takže její odkaz ve formátu XML v následující části je *B2C_1A_ContosoAppSecret*.
-1. V **poli Tajné**zadejte tajný klíč klienta, který jste nahráli dříve.
-1. V případě použití `Signature` **klíče**vyberte .
+1. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD B2C. V horní nabídce vyberte **Filtr adresář + odběr** a pak zvolte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
+1. V části **zásady**vyberte **Architektura prostředí identity**.
+1. Vyberte **klíče zásad** a pak vyberte **Přidat**.
+1. Pro **Možnosti**vyberte `Manual`možnost.
+1. Zadejte **název** klíče zásad. Například, `ContosoAppSecret`.  Předpona `B2C_1A_` se automaticky přidá do názvu klíče při jeho vytvoření, takže jeho odkaz v XML v následující části je *B2C_1A_ContosoAppSecret*.
+1. Do **tajného klíče**zadejte tajný klíč klienta, který jste si poznamenali dříve.
+1. Pro **použití klíče**vyberte `Signature`.
 1. Vyberte **Vytvořit**.
 
-## <a name="add-a-claims-provider"></a>Přidání poskytovatele deklarací identity
+## <a name="add-a-claims-provider"></a>Přidat zprostředkovatele deklarací identity
 
-Pokud chcete, aby se uživatelé přihlašovali pomocí Azure AD, musíte definovat Azure AD jako poskytovatele deklarací identity, se kterým může Azure AD B2C komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
+Pokud chcete, aby se uživatelé přihlásili pomocí Azure AD, je třeba definovat Azure AD jako zprostředkovatele deklarací identity, se kterým Azure AD B2C může komunikovat prostřednictvím koncového bodu. Koncový bod poskytuje sadu deklarací, které používá Azure AD B2C k ověření, že konkrétní uživatel byl ověřen.
 
-Azure AD můžete definovat jako poskytovatele deklarací identity přidáním Azure AD do prvku **ClaimsProvider** v souboru rozšíření zásad.
+Službu Azure AD můžete definovat jako zprostředkovatele deklarací přidáním služby Azure AD do prvku **ClaimsProvider** v souboru rozšíření zásady.
 
-1. Otevřete soubor *TrustFrameworkExtensions.xml.*
-2. Najít **ClaimsProviders** element. Pokud neexistuje, přidejte jej pod kořenový prvek.
-3. Přidejte nového **Zprostředkovatele deklarací** identity takto:
+1. Otevřete soubor *TrustFrameworkExtensions. XML* .
+2. Vyhledejte element **ClaimsProviders** . Pokud neexistuje, přidejte jej pod kořenový element.
+3. Přidejte nový **ClaimsProvider** následujícím způsobem:
     ```xml
     <ClaimsProvider>
       <Domain>Contoso</Domain>
@@ -96,56 +96,56 @@ Azure AD můžete definovat jako poskytovatele deklarací identity přidáním A
     </ClaimsProvider>
     ```
 
-4. V rámci **ClaimsProvider** element, aktualizovat hodnotu **domény** na jedinečnou hodnotu, která lze odlišit od jiných poskytovatelů identity. Například `Contoso`. Na konec tohoto `.com` nastavení domény se nevložíte.
-5. V části **ClaimsProvider** aktualizujte hodnotu **pro DisplayName** na popisný název zprostředkovatele deklarací. Tato hodnota není aktuálně používána.
+4. V rámci elementu **ClaimsProvider** aktualizujte hodnotu pro **doménu** na jedinečnou hodnotu, která se dá použít k odlišení od jiných zprostředkovatelů identity. Například `Contoso`. Neumísťujete `.com` na konec tohoto nastavení domény.
+5. V rámci elementu **ClaimsProvider** aktualizujte hodnotu vlastnosti **DisplayName** na popisný název zprostředkovatele deklarací. Tato hodnota se aktuálně nepoužívá.
 
 ### <a name="update-the-technical-profile"></a>Aktualizace technického profilu
 
-Chcete-li získat token z koncového bodu Azure AD, musíte definovat protokoly, které by měl Azure AD B2C použít ke komunikaci s Azure AD. To se provádí uvnitř **prvku TechnicalProfile** **claimsprovider**.
+Pokud chcete získat token z koncového bodu Azure AD, musíte definovat protokoly, které Azure AD B2C by měly používat ke komunikaci se službou Azure AD. To se provádí v rámci **TechnicalProfile** elementu **ClaimsProvider**.
 
-1. Aktualizujte ID prvku **TechnicalProfile.** Toto ID se používá k označení tohoto technického profilu `OIDC-Contoso`z jiných částí zásady, například .
-1. Aktualizujte hodnotu pro **DisplayName**. Tato hodnota se zobrazí na přihlašovacím tlačítku na přihlašovací obrazovce.
+1. Aktualizujte ID elementu **TechnicalProfile** . Toto ID se používá k odkazování na tento technický profil z jiných částí zásad, například `OIDC-Contoso`.
+1. Aktualizujte hodnotu vlastnosti **DisplayName**. Tato hodnota se zobrazí na tlačítku pro přihlášení na přihlašovací obrazovce.
 1. Aktualizujte hodnotu pro **Popis**.
-1. Azure AD používá protokol OpenID Connect, takže **Protocol** se `OpenIdConnect`ujistěte, že hodnota protokolu je .
-1. Nastavte hodnotu **metadata** `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`na `tenant-name` , kde je název klienta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
+1. Azure AD používá protokol OpenID Connect, takže se ujistěte, že hodnota pro **protokol** je `OpenIdConnect`.
+1. Nastavte hodnotu **metadat** na `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`, kde `tenant-name` je název vašeho tenanta Azure AD. Například `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
 1. Nastavte **client_id** na ID aplikace z registrace aplikace.
-1. V části **CryptographicKeys**aktualizujte hodnotu **StorageReferenceId** na název klíče zásady, který jste vytvořili dříve. Například, `B2C_1A_ContosoAppSecret`.
+1. V části **CryptographicKeys**aktualizujte hodnotu **StorageReferenceId** na název klíče zásad, který jste vytvořili dříve. Například, `B2C_1A_ContosoAppSecret`.
 
-### <a name="upload-the-extension-file-for-verification"></a>Nahrát soubor rozšíření pro ověření
+### <a name="upload-the-extension-file-for-verification"></a>Nahrajte soubor rozšíření pro ověření.
 
-Teď jste nakonfigurovali zásady tak, aby Azure AD B2C ví, jak komunikovat s adresářem Azure AD. Zkuste nahrát soubor rozšíření zásad, abyste potvrdili, že zatím nemá žádné problémy.
+Teď jste nakonfigurovali zásady tak, aby Azure AD B2C vědět, jak komunikovat s adresářem služby Azure AD. Zkuste nahrát soubor s příponou zásady jenom tak, aby se ověřilo, že zatím nemá žádné problémy.
 
-1. Na stránce **Vlastní zásady** v tenantovi Azure AD B2C vyberte **Zásady nahrávání**.
-1. Povolte **Přepište zásadu, pokud existuje**, a potom vyhledejte soubor *TrustFrameworkExtensions.xml* a vyberte jej.
+1. Na stránce **vlastní zásady** ve vašem tenantovi Azure AD B2C vyberte **Odeslat zásadu**.
+1. Pokud existuje, zapněte **zásadu přepsat**a pak vyhledejte a vyberte soubor *TrustFrameworkExtensions. XML* .
 1. Klikněte na **Odeslat**.
 
 ## <a name="register-the-claims-provider"></a>Registrace zprostředkovatele deklarací identity
 
-V tomto okamžiku byl nastaven zprostředkovatel identity, ale ještě není k dispozici na žádné ze stránek pro přihlášení nebo přihlášení. Chcete-li ji zpřístupnit, vytvořte duplikát existující cesty uživatele šablony a pak ji upravte tak, aby měla také poskytovatele identity Azure AD:
+V tuto chvíli se poskytovatel identity nastavil, ale ještě není dostupný na žádném z přihlašovacích a přihlašovacích stránek. Aby byl k dispozici, vytvořte duplikát stávající cesty uživatele šablony a pak ho upravte, aby měl také poskytovatele identity Azure AD:
 
-1. Otevřete soubor *TrustFrameworkBase.xml* ze startovního balíčku.
-1. Vyhledejte a zkopírujte celý obsah prvku `Id="SignUpOrSignIn"` **UserJourney,** který obsahuje .
-1. Otevřete soubor *TrustFrameworkExtensions.xml* a vyhledejte element **UserJourneys.** Pokud prvek neexistuje, přidejte jeden.
-1. Vložte celý obsah **UserJourney** prvek, který jste zkopírovali jako podřízený **UserJourneys** element.
-1. Přejmenujte ID cesty uživatele. Například, `SignUpSignInContoso`.
+1. Otevřete soubor *TrustFrameworkBase. XML* z úvodní sady.
+1. Vyhledejte a zkopírujte celý obsah prvku **UserJourney** , který obsahuje `Id="SignUpOrSignIn"`.
+1. Otevřete *soubor TrustFrameworkExtensions. XML* a vyhledejte element **userjourney** . Pokud element neexistuje, přidejte jej.
+1. Vložte celý obsah elementu **UserJourney** , který jste zkopírovali jako podřízený prvek **userjourney** elementu.
+1. Přejmenujte ID cesty pro uživatele. Například, `SignUpSignInContoso`.
 
-### <a name="display-the-button"></a>Zobrazení tlačítka
+### <a name="display-the-button"></a>Zobrazit tlačítko
 
-**ClaimsProviderSelection** Prvek je obdobou tlačítko zprostředkovatele identity na stránce registrace nebo přihlášení. Pokud přidáte **ClaimsProviderSelection** prvek pro Azure AD, nové tlačítko se zobrazí, když uživatel přistane na stránce.
+Element **claimsproviderselection.** se podobá tlačítku poskytovatele identity na stránce pro registraci nebo přihlášení. Pokud přidáte element **claimsproviderselection.** pro Azure AD, zobrazí se nové tlačítko, když se uživatel na stránce zařadí.
 
-1. Najděte element **OrchestrationStep,** který zahrnuje `Order="1"` cestu uživatele, kterou jste vytvořili v *souboru TrustFrameworkExtensions.xml*.
-1. V části **ClaimsProviderSelections**přidejte následující prvek. Nastavte hodnotu **TargetClaimsExchangeId** na příslušnou hodnotu, například `ContosoExchange`:
+1. Vyhledejte element **OrchestrationStep** , který obsahuje `Order="1"` cestu uživatele, kterou jste vytvořili v *souboru TrustFrameworkExtensions. XML*.
+1. Pod **ClaimsProviderSelections**přidejte následující element. Nastavte hodnotu **TargetClaimsExchangeId** na odpovídající hodnotu, například `ContosoExchange`:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-### <a name="link-the-button-to-an-action"></a>Propojení tlačítka s akcí
+### <a name="link-the-button-to-an-action"></a>Propojit tlačítko s akcí
 
-Nyní, když máte tlačítko na místě, musíte jej propojit s akcí. Akce, v tomto případě je pro Azure AD B2C komunikovat s Azure AD přijímat token. Propojte tlačítko s akcí propojením technického profilu pro poskytovatele deklarací identity Azure AD:
+Teď, když máte tlačítko na místě, musíte ho propojit s akcí. Tato akce je v tomto případě určena pro Azure AD B2C ke komunikaci se službou Azure AD za účelem získání tokenu. Propojte tlačítko s akcí tak, že propojíte technický profil pro poskytovatele deklarací identity Azure AD:
 
-1. Najít **OrchestrationStep,** `Order="2"` který zahrnuje v cestě uživatele.
-1. Přidejte následující **claimsexchange** prvek ujistěte se, že používáte stejnou hodnotu pro **ID,** které jste použili pro **TargetClaimsExchangeId**:
+1. Najděte **OrchestrationStep** , který obsahuje `Order="2"` cestu k uživateli.
+1. Přidejte následující prvek **ClaimsExchange** a ujistěte se, že používáte stejnou hodnotu pro **ID** , které jste použili pro **TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
@@ -153,11 +153,11 @@ Nyní, když máte tlačítko na místě, musíte jej propojit s akcí. Akce, v 
 
     Aktualizujte hodnotu **TechnicalProfileReferenceId** na **ID** technického profilu, který jste vytvořili dříve. Například, `OIDC-Contoso`.
 
-1. Uložte soubor *TrustFrameworkExtensions.xml* a znovu jej nahrajte k ověření.
+1. Uložte soubor *TrustFrameworkExtensions. XML* a znovu ho nahrajte k ověření.
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Vytvoření aplikace Azure AD B2C
 
-Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistrujete ve vašem tenantovi B2C. V této části jsou uvedeny volitelné kroky, které můžete provést a vytvořit testovací aplikaci, pokud jste tak ještě neučinili.
+Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistrujete v tenantovi B2C. V této části jsou uvedeny volitelné kroky, které můžete provést, chcete-li vytvořit testovací aplikaci, pokud jste tak již neučinili.
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
@@ -165,20 +165,20 @@ Komunikace s Azure AD B2C probíhá prostřednictvím aplikace, kterou zaregistr
 
 Aktualizujte soubor předávající strany (RP), který iniciuje cestu uživatele, kterou jste vytvořili.
 
-1. Vytvořte kopii *souboru SignUpOrSignIn.xml* ve svém pracovním adresáři a přejmenujte ji. Přejmenujte jej například na *SignUpSignInContoso.xml*.
+1. Vytvořte kopii *SignUpOrSignIn. XML* v pracovním adresáři a přejmenujte ji. Přejmenujte ho například na *SignUpSignInContoso. XML*.
 1. Otevřete nový soubor a aktualizujte hodnotu atributu **PolicyId** pro **TrustFrameworkPolicy** s jedinečnou hodnotou. Například, `SignUpSignInContoso`.
-1. Aktualizujte hodnotu **PublicPolicyUri** pomocí identifikátoru URI pro zásadu. Například, `http://contoso.com/B2C_1A_signup_signin_contoso`.
-1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídalo ID cesty uživatele, kterou jste vytvořili dříve. Například *SignUpSignInContoso*.
-1. Uložte změny a nahrajte soubor.
-1. V části **Vlastní zásady**vyberte novou zásadu v seznamu.
-1. V rozevíracím souboru **Select aplikace** vyberte aplikaci Azure AD B2C, kterou jste vytvořili dříve. Například *testapp1*.
-1. Zkopírujte **koncový bod Spustit nyní** a otevřete jej v okně soukromého prohlížeče, například v anonymním režimu v prohlížeči Google Chrome nebo v okně InPrivate v prohlížeči Microsoft Edge. Otevření v okně soukromého prohlížeče umožňuje otestovat celou cestu uživatele tím, že nepoužíváte žádné aktuálně uložené přihlašovací údaje Azure AD.
-1. Vyberte přihlašovací tlačítko Azure AD, například *Contoso Employee*, a zadejte přihlašovací údaje pro uživatele ve vašem tenantovi organizace Azure AD. Budete vyzváni k autorizaci přihlášky a zadání informací pro svůj profil.
+1. Aktualizujte hodnotu **PUBLICPOLICYURI** identifikátorem URI pro zásadu. Například, `http://contoso.com/B2C_1A_signup_signin_contoso`.
+1. Aktualizujte hodnotu atributu **ReferenceId** v **DefaultUserJourney** tak, aby odpovídala ID cesty uživatele, kterou jste vytvořili dříve. Například *SignUpSignInContoso*.
+1. Uložte změny a odešlete soubor.
+1. V části **vlastní zásady**vyberte v seznamu novou zásadu.
+1. V rozevíracím seznamu **Vybrat aplikaci** vyberte aplikaci Azure AD B2C, kterou jste vytvořili dříve. Například *testapp1*.
+1. Zkopírujte **koncový bod spustit nyní** a otevřete ho v privátním okně prohlížeče, například v anonymním režimu v Google Chrome nebo v okně InPrivate na Microsoft Edge. Otevření v privátním okně prohlížeče vám umožní testovat celou cestu uživatele, protože nepoužívá žádná z aktuálně uložených přihlašovacích údajů Azure AD.
+1. Vyberte tlačítko pro přihlášení ke službě Azure AD, například *Zaměstnanec společnosti Contoso*, a potom zadejte přihlašovací údaje uživatele do svého tenanta organizace Azure AD. Zobrazí se výzva k autorizaci aplikace a zadání informací pro váš profil.
 
-Pokud je proces přihlášení úspěšný, váš prohlížeč `https://jwt.ms`je přesměrován na , který zobrazuje obsah tokenu vráceného Azure AD B2C.
+Pokud je proces přihlášení úspěšný, je váš prohlížeč přesměrován na `https://jwt.ms`, který zobrazuje obsah tokenu vrácený Azure AD B2C.
 
 ## <a name="next-steps"></a>Další kroky
 
-Při práci s vlastními zásadami může někdy potřebovat další informace při řešení potíží se zásadami během jejího vývoje.
+Při práci s vlastními zásadami můžete někdy potřebovat další informace při řešení potíží se zásadami během jejího vývoje.
 
-Chcete-li diagnostikovat problémy, můžete dočasně umístit zásady do "režimu pro vývojáře" a shromažďovat protokoly pomocí Azure Application Insights. Zjistěte, jak ve [službě Azure Active Directory B2C: Shromažďování protokolů](troubleshoot-with-application-insights.md).
+Abychom vám pomohli diagnostikovat problémy, můžete dočasně umístit zásady do režimu pro vývojáře a shromažďovat protokoly pomocí Application Insights Azure. Zjistěte, jak [Azure Active Directory B2C: shromažďování protokolů](troubleshoot-with-application-insights.md).

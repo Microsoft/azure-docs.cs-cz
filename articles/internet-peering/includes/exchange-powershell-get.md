@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 34a23ce76ed0e9285a686073e1cbeb95347f7b7d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678604"
 ---
-Chcete-li získat seznam partnerských stran, spusťte příkaz **Get-AzPeering.**
+Pokud chcete získat seznam partnerských vztahů, spusťte příkaz **Get-AzPeering** .
 
 ```powershell
 Get-AzPeering ResourceGroupName "PeeringResourceGroup" -Name "SeattleExchangePeering"
 ```
 
-Tento příklad odpovědi ukazuje, kdy bylo úspěšně dokončeno zřizování od konce na konec.
+Tato ukázková odezva ukazuje, kdy bylo úspěšné dokončení kompletního zřizování.
 
 ```powershell
     Name                     : SeattleExchangePeering

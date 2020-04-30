@@ -16,13 +16,13 @@ ms.date: 04/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2231d70e6c4368a7c896f9063b58cc97ee292f53
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81682593"
 ---
-# <a name="what-are-managed-identities-for-azure-resources"></a>Co jsou spravované identity pro prostředky Azure?
+# <a name="what-are-managed-identities-for-azure-resources"></a>Jaké jsou spravované identity prostředků Azure?
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -37,26 +37,26 @@ Funkce spravovaných identit prostředků Azure je bezplatnou součástí Azure 
 
 ## <a name="terminology"></a>Terminologie
 
-Následující termíny se používají v celé spravované identity pro sadu dokumentace prostředků Azure:
+V sadě dokumentace spravovaných identit pro prostředky Azure se používají následující výrazy:
 
-- **ID klienta** – jedinečný identifikátor generovaný službou Azure AD, který je vázán na instanční objekt aplikace a služby během počátečního zřizování.
-- **ID objektu** - ID objektu objektu instancí pro spravovanou identitu, který se používá k udělení přístupu k prostředku Azure na základě rolí.
-- **Azure Instance Metadata Service (IMDS)** – koncový bod REST přístupný všem virtuálním počítačům IaaS vytvořeným prostřednictvím Správce prostředků Azure. Koncový bod je k dispozici na známé nesměrovatelné IP adrese (169.254.169.254), ke které lze přistupovat pouze z virtuálního počítačů.
+- **ID klienta** – jedinečný identifikátor generovaný službou Azure AD, který je svázán s aplikací a instančním objektem během počátečního zřizování.
+- **ID objektu zabezpečení** – ID objektu instančního objektu pro spravovanou identitu, která se používá pro udělení přístupu na základě role k prostředku Azure.
+- **Azure instance metadata Service (IMDS)** – koncový bod REST přístupný všem virtuálním počítačům s IaaS vytvořeným prostřednictvím Azure Resource Manager. Koncový bod je k dispozici na dobře známé IP adrese bez směrování (169.254.169.254), ke kterým se dá získat přístup jenom z virtuálního počítače.
 
-## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Jak fungují spravované identity pro prostředky Azure?
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Jak fungují spravované identity prostředků Azure?
 
 Existují dva typy spravovaných identit:
 
 - **Spravovaná identita přiřazená systémem** se povoluje přímo v instanci služby Azure. Když je tato identita povolená, Azure vytvoří identitu pro instanci v tenantovi Azure AD důvěryhodném pro předplatné instance. Po vytvoření identity se přihlašovací údaje zřídí do instance. Životní cyklus identity přiřazené systémem je přímo spojený s instancí služby Azure, pro kterou je povolená. Pokud se instance odstraní, Azure automaticky vyčistí přihlašovací údaje a identitu v Azure AD.
 - **Spravovaná identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená.
 
-Interně spravované identity jsou instanční objekty zvláštního typu, které jsou uzamčeny pro jenom s prostředky Azure. Při odstranění spravované identity je automaticky odebrán odpovídající instanční objekt.
-Při vytvoření identity přiřazené uživatelem nebo při systémové přiřazené identitě také poskytovatel prostředků spravované identity (MSRP) vydá certifikát interně k této identitě. 
+Spravované identity jsou interně instančními objekty speciálního typu, které jsou uzamčené jenom pro použití s prostředky Azure. Po odstranění spravované identity se odpovídající objekt služby automaticky odebere.
+I když je vytvořena uživatelem přiřazená identita nebo identita přiřazená systémem, poskytovatel spravovaných prostředků identity (MSRP) vystaví certifikát pro danou identitu interně. 
 
 Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
 
-## <a name="credential-rotation"></a>Otočení pověření
-Střídání přihlašovacích údajů řídí poskytovatel prostředků, který je hostitelem prostředku Azure. Výchozí otočení pověření dochází každých 46 dní. Je na poskytovateli prostředků, aby zavolal nová pověření, aby mohl čekat déle než 46 dní.
+## <a name="credential-rotation"></a>Rotace přihlašovacích údajů
+Rotace přihlašovacích údajů se řídí poskytovatelem prostředků, který je hostitelem prostředku Azure. K výchozímu rotaci přihlašovacích údajů dojde každých 46 dní. Je až poskytovatele prostředků pro volání nových přihlašovacích údajů, takže poskytovatel prostředků může počkat déle než 46 dní.
 
 Následující diagram ukazuje fungování identit spravovaných služeb s virtuálními počítači Azure:
 
@@ -64,10 +64,10 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 |  Vlastnost    | Spravovaná identita přiřazená systémem | Spravovaná identita přiřazená uživatelem |
 |------|----------------------------------|--------------------------------|
-| Vytvoření |  Vytvořeno jako součást prostředku Azure (například virtuální počítač Azure nebo služba Azure App Service). | Vytvořeno jako samostatný prostředek Azure |
-| Životní cyklus | Sdílený životní cyklus s prostředků Azure, se kterým se vytvoří spravovaná identita. <br/> Při odstranění nadřazeného prostředku se odstraní také spravovaná identita. | Nezávislý životní cyklus. <br/> Musí být explicitně odstraněn. |
-| Sdílení mezi prostředky Azure | Nelze sdílet. <br/> Může být přidružena jenom k jednomu prostředku Azure. | Lze sdílet <br/> Stejná spravovaná identita přiřazená uživatelem může být přidružena k více než jednomu prostředku Azure. |
-| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na více prostředků a které mohou sdílet jednu identitu. <br/> Úlohy, které potřebují předběžnou autorizaci k zabezpečenému prostředku jako součást toku zřizování. <br/> Úlohy, kde jsou prostředky často recyklovány, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, kde více virtuálních počítačů potřebují přístup ke stejnému prostředku |
+| Vytvoření |  Vytvořené jako součást prostředku Azure (například virtuální počítač Azure nebo Azure App Service) | Vytvoří se jako samostatný prostředek Azure. |
+| Životní cyklus | Sdílený životní cyklus s prostředkem Azure, pomocí kterého se vytvořila spravovaná identita. <br/> Při odstranění nadřazeného prostředku se odstraní také spravovaná identita. | Nezávislé životní cykly. <br/> Je nutné explicitně odstranit. |
+| Sdílení napříč prostředky Azure | Nelze sdílet. <br/> Dá se přidružit jenom k jednomu prostředku Azure. | Může být sdíleno <br/> Stejná uživatelem přiřazená spravovaná identita může být přidružená k více než jednomu prostředku Azure. |
+| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na několika prostředcích a které můžou sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžnou autorizaci zabezpečeného prostředku jako součást toku zřizování. <br/> Úlohy, kde se prostředky recyklují často, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, ve kterém více virtuálních počítačů potřebuje přístup ke stejnému prostředku |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Jak funguje spravovaná identita přiřazená systémem s virtuálním počítačem Azure
 
@@ -75,11 +75,11 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 2. Azure Resource Manager pro identitu virtuálního počítače vytvoří instanční objekt v Azure AD. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro dané předplatné.
 
-3. Azure Resource Manager konfiguruje identitu na virtuálním počítači aktualizací koncového bodu identity služby Metadat instance Azure s ID klienta instancí a certifikátem.
+3. Azure Resource Manager konfiguruje identitu na virtuálním počítači tím, že aktualizuje koncový bod Azure Instance Metadata Service identity s ID a certifikátem klienta instančního objektu.
 
 4. Jakmile bude virtuální počítač mít identitu, s použitím informací o instančním objektu udělte virtuálnímu počítači přístup k prostředkům Azure. Pokud chcete volat Azure Resource Manager, přiřaďte k instančnímu objektu virtuálního počítače odpovídající roli pomocí řízení přístupu na základě role (RBAC) v Azure AD. Pokud chcete volat službu Key Vault, udělte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault.
 
-5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu služby Metadat instance Azure, který je přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu služby metadat instance Azure, který je přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
     - Parametr verze rozhraní API určuje verzi IMDS. Použijte api-version=2018-02-01 nebo novější.
 
@@ -93,14 +93,14 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 2. Azure Resource Manager vytvoří pro spravovanou identitu přiřazenou uživatelem v Azure AD instanční objekt. Instanční objekt se vytvoří v tenantovi Azure AD důvěryhodném pro dané předplatné.
 
-3. Azure Resource Manager obdrží požadavek na konfiguraci uživatelem přiřazené spravované identity na virtuálním počítači a aktualizuje koncový bod identity služby Metadat instance Azure pomocí uživatelem přiřazeného id klienta a certifikátu spravovaného objektu identity.
+3. Azure Resource Manager obdrží požadavek na konfiguraci spravované identity přiřazené uživatelem na virtuálním počítači a aktualizuje koncový bod Azure Instance Metadata Service identity s uživatelem přiřazeným ID a certifikátem klienta instančního objektu spravované identity.
 
 4. Jakmile vytvoříte spravovanou identitu přiřazenou uživatelem, použijte informace o instančním objektu a udělte identitě přístup k prostředkům Azure. Pokud chcete volat Azure Resource Manager, přiřaďte instančnímu objektu identity přiřazené uživatelem odpovídající roli. Použijte k tomu řízení přístupu na základě role (RBAC) v Azure AD. Pokud chcete volat službu Key Vault, udělte kódu přístup ke konkrétnímu tajnému kódu nebo klíči ve službě Key Vault.
 
    > [!Note]
    > Tento krok můžete provést také před krokem 3.
 
-5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu identity služby metadat instance Azure, který je přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
+5. Váš kód, který běží na virtuálním počítači, může požádat o token z koncového bodu Azure Instance Metadata Service identity přístupný jenom z virtuálního počítače:`http://169.254.169.254/metadata/identity/oauth2/token`
     - Parametr resource (prostředek) určuje službu, do které se token odešle. K ověření v Azure Resource Manageru použijte `resource=https://management.azure.com/`.
     - Parametr ID klienta určuje identitu, pro kterou se token požaduje. Tato hodnota je nutná k jednoznačnému určení v případě, že je na jednom virtuálním počítači více identit přiřazených uživatelem.
     - Parametr verze rozhraní API určuje verzi služby Azure Instance Metadata Service. Použijte `api-version=2018-02-01` nebo novější.
@@ -113,7 +113,7 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 Informace o použití spravovaných identit pro přístup k různým prostředkům Azure najdete v těchto kurzech.
 
 > [!NOTE]
-> Další informace o spravovaných identitách, včetně podrobných video návodů k několika podporovaným scénářům, najdete v kurzu [Implementace spravovaných identit pro prostředky Microsoft Azure.](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing)
+> Další informace o spravovaných identitách najdete v kurzu [implementace spravovaných identit pro Microsoft Azure zdrojů](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing) , včetně podrobných návodů k videu několika podporovaných scénářů.
 
 Informace o použití spravované identity ve virtuálním počítači s Windows:
 

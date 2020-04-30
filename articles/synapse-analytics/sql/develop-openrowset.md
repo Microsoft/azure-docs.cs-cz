@@ -1,6 +1,6 @@
 ---
-title: Jak používat OPENROWSET v SQL on-demand (preview)
-description: Tento článek popisuje syntaxi OPENROWSET v SQL on-demand (preview) a vysvětluje, jak používat argumenty.
+title: Jak používat OPENROWSET na vyžádání SQL (Preview)
+description: Tento článek popisuje syntaxi OPENROWSET v SQL na vyžádání (Preview) a vysvětluje, jak používat argumenty.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -10,19 +10,19 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6325d5555b01373b148dce69731ec64896d6e1fd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81680497"
 ---
-# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (preview)
+# <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
-Funkce OPENROWSET(BULK...) umožňuje přístup k souborům ve službě Azure Storage. V rámci prostředku SQL on-demand (preview) je poskytovatel hromadné sady řádků OPENROWSET přístupný voláním funkce OPENROWSET a zadáním možnosti BULK.  
+Funkce OPENROWSET (BULK...) umožňuje přístup k souborům v Azure Storage. V rámci prostředku SQL na vyžádání (Preview) je k dispozici zprostředkovatel hromadné sady řádků OPENROWSET voláním funkce OPENROWSET a určením hromadné možnosti.  
 
-Funkce OPENROWSET může být odkazována v klauzuli FROM dotazu, jako by to byl název tabulky OPENROWSET. Podporuje hromadné operace prostřednictvím integrovaného zprostředkovatele BULK, který umožňuje čtení a vrácení dat ze souboru jako sady řádků.
+Na funkci OPENROWSET lze odkazovat v klauzuli FROM dotazu, jako by šlo o název tabulky OPENROWSET. Podporuje hromadné operace prostřednictvím integrovaného HROMADNÉho poskytovatele, který umožňuje číst data ze souboru a vracet je jako sadu řádků.
 
-OPENROWSET není aktuálně podporován ve fondu SQL.
+OPENROWSET ve fondu SQL aktuálně není podporováno.
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -56,57 +56,57 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 
 Máte dvě možnosti pro vstupní soubory, které obsahují cílová data pro dotazování. Platné hodnoty jsou:
 
-- 'CSV' - Zahrnuje všechny oddělené textové soubory s oddělovači řádků/sloupců. Libovolný znak lze použít jako oddělovač polí, například TSV: FIELDTERMINATOR = karta.
+- ' CSV ' – obsahuje libovolný oddělený textový soubor s oddělovači řádků nebo sloupců. Libovolný znak lze použít jako oddělovač pole, například TSV: FIELDTERMINATOR = TAB.
 
-- 'PARKETy' - Binární soubor ve formátu parket 
+- ' PARQUET ' – binární soubor ve formátu Parquet 
 
-**"unstructured_data_path"**
+**unstructured_data_path**
 
 Unstructured_data_path, která vytváří cestu k datům, je strukturována takto:  
-"\<prefix\<>://\<storage_account_path>/ storage_path>"
+'\<prefix>://\<storage_account_path>/\<storage_path> '
  
  
- Níže najdete příslušné cesty účtu úložiště, které budou propojeny s konkrétním externím zdrojem dat. 
+ Níže najdete relevantní cesty k účtu úložiště, které budou propojit s vaším konkrétním externím zdrojem dat. 
 
 | Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | HTTPS  | \<storage_account>.blob.core.windows.net             |
-| Azure Data Lake Store Gen1 | HTTPS  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
-| Azure Data Lake Store Gen2 | HTTPS  | \<storage_account>.dfs.core.windows.net              |
+| Azure Blob Storage         | HTTPS  | \<storage_account>. blob.core.windows.net             |
+| Azure Data Lake Store Gen1 | HTTPS  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| Azure Data Lake Store Gen2 | HTTPS  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-"storage_path\<>"
+\<storage_path>
 
- Určuje cestu v úložišti, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, budou všechny soubory číst z tohoto konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
+ Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
  
- Zástupné znaky můžete použít k cílení na více souborů nebo složek. Použití více nepo sobě jdoucích zástupných znaků je povoleno.
-Níže je uveden příklad, který čte všechny soubory *csv* počínaje *plnění* ze všech složek *začínajících /csv/population*:  
+ Můžete použít zástupné znaky k zacílení na více souborů nebo složek. Je povoleno použití více zástupných znaků nejdoucích po sobě.
+Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* ze všech složek začínajících na */CSV/Population*:  
 `https://sqlondemandstorage.blob.core.windows.net/csv/population*/population*.csv`
 
-Pokud zadáte unstructured_data_path jako složku, dotaz NA vyžádání sql načte soubory z této složky. 
+Pokud zadáte unstructured_data_path jako složku, dotaz na vyžádání SQL načte soubory z této složky. 
 
 > [!NOTE]
-> Na rozdíl od Hadoop a PolyBase SQL na vyžádání nevrací podsložky. Také na rozdíl od Hadoop a PloyBase, SQL na vyžádání vrátí soubory, pro které název souboru začíná podtržení (_) nebo tečka (.).
+> Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Na rozdíl od Hadoop a PloyBase vrátí SQL na vyžádání soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
-V níže uvedeném příkladu, pokud unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/`, dotaz SQL na vyžádání vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěny v podsložce.
+Pokud je v následujícím příkladu unstructured_data_path =`https://mystorageaccount.dfs.core.windows.net/webdata/`, dotaz SQL na vyžádání vrátí řádky z Mojedata. txt a _hidden. txt. Nevrátí mydata2. txt a mydata3. txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-openrowset/folder-traversal.png)
 
 `[WITH ( {'column_name' 'column_type' [ 'column_ordinal'] }) ]`
 
-Klauzule WITH umožňuje zadat sloupce, které chcete číst ze souborů.
+Klauzule WITH umožňuje zadat sloupce, které chcete ze souborů číst.
 
-- Pro datové soubory CSV, chcete-li číst všechny sloupce, zadejte názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadová čísla k výběru sloupců z původních datových souborů podle počtu. Sloupce budou vázány pořitozovacím označením. 
+- V případě datových souborů CSV můžete načíst všechny sloupce a zadat názvy sloupců a jejich datové typy. Pokud chcete podmnožinu sloupců, použijte řadové číslovky a vyberte sloupce z původních datových souborů podle pořadového čísla. Sloupce budou vázány podle ordinálního označení. 
 
 > [!IMPORTANT]
 > Klauzule WITH je povinná pro soubory CSV.
-- Pro datové soubory parket zadejte názvy sloupců, které odpovídají názvům sloupců v původních datových souborech. Sloupce budou vázány názvem. Pokud je klauzule WITH vynechána, budou vráceny všechny sloupce ze souborů parket.
+- V případě datových souborů Parquet zadejte názvy sloupců, které odpovídají názvům sloupců v původních datových souborech. Sloupce budou vázány podle názvu. Pokud je klauzule WITH vynechána, budou vráceny všechny sloupce z Parquet souborů.
 
-column_name = Název výstupního sloupce. Pokud je zadán, tento název přepíše název sloupce ve zdrojovém souboru.
+column_name = název výstupního sloupce. Pokud je tento název zadán, přepíše název sloupce ve zdrojovém souboru.
 
-column_type = Datový typ pro výstupní sloupec. Implicitní převod datového typu proběhne zde.
+column_type = datový typ pro výstupní sloupec. Sem bude proveden převod implicitního datového typu.
 
-column_ordinal = Číslo sloupce ve zdrojovém souboru (zdrojových souborech). Tento argument je ignorován a soubory parket, protože vazba se provádí podle názvu. Následující příklad vrátí druhý sloupec pouze ze souboru CSV:
+column_ordinal = pořadové číslo sloupce ve zdrojových souborech. Tento argument se ignoruje u souborů Parquet, protože se vazba provádí podle názvu. Následující příklad vrátí druhý sloupec pouze ze souboru CSV:
 
 ```sql
 WITH (
@@ -119,31 +119,31 @@ WITH (
 
 **\<bulk_options>**
 
-FIELDTERMINATOR ='field_terminator'
+FIELDTERMINATOR = ' field_terminator '
 
-Určuje zakončení pole, které má být použito. Výchozí zakončení pole je čárka ("**,**").
+Určuje ukončovací znak pole, který se má použít. Výchozí ukončovací znak pole je čárka ("**,**").
 
-ROWTERMINATOR ='row_terminator''
+ROWTERMINATOR = ' row_terminator ' '
 
-Určuje zakončení řádku, které má být použito. Výchozí zakončení řádku je znak nového řádku, například \r\n.
+Určuje ukončovací znak řádku, který se má použít. Výchozí ukončovací znak řádku je znak nového řádku, například \r\n..
 
-ESCAPE_CHAR = 'char'
+ESCAPE_CHAR = char
 
-Určuje znak v souboru, který se používá k samotnému úniku, a všechny hodnoty oddělovače v souboru. Pokud je za řídicím znakem následována jiná hodnota než sama nebo některá z hodnot oddělovače, je při čtení hodnoty vynechán řídicí znak. 
+Určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován jinou hodnotou než samotnou nebo kteroukoli z hodnot oddělovače, je řídicí znak při čtení hodnoty vynechán. 
 
-Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je nebo není povolena fieldquote. Nebude použit k úniku citaci charakteru. Znak citace je uvozen s dvojitými uvozovkami v souladu s chováním CSV aplikace Excel.
+Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je FIELDQUOTE nebo není povolen. Nepoužije se k řídicímu znaku pro uvozovky. Znak quotování je řídicím znakem s dvojitými uvozovkami v zarovnání s chováním CSV v Excelu.
 
-FIRSTROW = 'first_row' 
+FIRSTROW = ' first_row ' 
 
-Určuje číslo prvního řádku, který se má načíst. Výchozí hodnota je 1. Označuje první řádek v zadaném datovém souboru. Čísla řádků jsou určena počítáním zakončení řádku. FIRSTROW je založen na 1.
+Určuje číslo prvního řádku, který se má načíst. Výchozí hodnota je 1. Určuje první řádek v zadaném datovém souboru. Čísla řádků se určují podle počtu zakončení řádků. FIRSTROW je založen na 1.
 
-FIELDQUOTE = 'field_quote' 
+FIELDQUOTE = ' field_quote ' 
 
-Určuje znak, který bude použit jako znak nabídky v souboru CSV. Pokud není zadán, bude použit znak nabídky ("). 
+Určuje znak, který bude použit jako znak uvozovky v souboru CSV. Pokud není zadaný, použije se znak uvozovky ("). 
 
 ## <a name="examples"></a>Příklady
 
-Následující příklad vrátí pouze dva sloupce s číselnými čísly 1 a 4 ze souborů populace*.csv. Vzhledem k tomu, že v souborech není žádný řádek záhlaví, začne číst z prvního řádku:
+Následující příklad vrátí pouze dva sloupce se řadovými čísly 1 a 4 ze souborů Population*. csv. Vzhledem k tomu, že v souborech není žádný řádek záhlaví, začíná čtení z prvního řádku:
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -171,7 +171,7 @@ WITH (
 
 
 
-Následující příklad vrátí všechny sloupce prvního řádku ze sady dat sčítání ve formátu Parkety bez zadání názvů sloupců a datových typů: 
+Následující příklad vrátí všechny sloupce prvního řádku ze skupiny vydaných dat ve formátu Parquet bez zadání názvů sloupců a datových typů: 
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -198,4 +198,4 @@ FROM
 
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky najdete na [rychlých startech](query-data-storage.md) nebo výsledky dotazu uložte do služby Azure Storage pomocí [cetasu](develop-tables-cetas.md).
+Další ukázky najdete v [rychlých startech](query-data-storage.md) nebo ukládání výsledků dotazu do Azure Storage pomocí [CETAS](develop-tables-cetas.md).

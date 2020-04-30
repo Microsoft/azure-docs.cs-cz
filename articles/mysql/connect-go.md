@@ -1,5 +1,5 @@
 ---
-title: Připojení pomocí go – databáze Azure pro MySQL
+title: Připojit pomocí Azure Database for MySQL přejít
 description: V tomto rychlém startu najdete několik vzorových kódů jazyka Go, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 3b9b18585aac4e31af05218ff732569912508ce9
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81681877"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí jazyka Go
@@ -60,7 +60,7 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a o
    ```
 
 ### <a name="apple-macos"></a>Apple macOS
-1. Stáhněte a nainstalujte Go podle pokynů k [instalaci,](https://golang.org/doc/install) které odpovídají vaší platformě. 
+1. Stáhněte a nainstalujte přejít podle pokynů k [instalaci](https://golang.org/doc/install) , které odpovídají vaší platformě. 
 2. Spusťte prostředí Bash.
 3. Ve svém domovském adresáři vytvořte složku pro projekt, například `mkdir -p ~/go/src/mysqlgo/`.
 4. Změňte adresář na tuto složku, například `cd ~/go/src/mysqlgo/`.
@@ -78,7 +78,7 @@ Nainstalujte na svém počítači jazyk [Go](https://golang.org/doc/install) a o
 ## <a name="get-connection-information"></a>Získání informací o připojení
 Získejte informace o připojení potřebné pro připojení ke službě Azure Database for MySQL. Potřebujete plně kvalifikovaný název serveru a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure](https://portal.azure.com/).
+1. Přihlaste se k [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo na webu Azure Portal klikněte na **Všechny prostředky** a vyhledejte vytvořený server (například **mydemoserver**).
 3. Klikněte na název serveru.
 4. Na panelu **Přehled** serveru si poznamenejte **Název serveru** a **Přihlašovací jméno správce serveru**. Pokud zapomenete své heslo, můžete ho na tomto panelu také resetovat.
@@ -86,7 +86,7 @@ Získejte informace o připojení potřebné pro připojení ke službě Azure D
    
 
 ## <a name="build-and-run-go-code"></a>Sestavení a spuštění kódu jazyka Go 
-1. K psaní kódu jazyka Go můžete použít jednoduchý textový editor, jako je Poznámkový blok v systému Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost bohatší interaktivní vývojové prostředí (IDE), zkuste [Gogland](https://www.jetbrains.com/go/) podle Jetbrains, [Visual Studio kód](https://code.visualstudio.com/) od společnosti Microsoft nebo [Atom](https://atom.io/).
+1. K psaní kódu jazyka Go můžete použít jednoduchý textový editor, jako je Poznámkový blok v systému Microsoft Windows, [vi](https://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) nebo [Nano](https://www.nano-editor.org/) v systému Ubuntu nebo TextEdit v systému macOS. Pokud dáváte přednost rozsáhlému interaktivnímu vývojovému prostředí (IDE), vyzkoušejte [gogland od](https://www.jetbrains.com/go/) pomocí Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) Microsoftu nebo [Atom](https://atom.io/).
 2. Kód jazyka Go z dalších částí vložte do textových souborů a tyto soubory uložte s příponou \*.go do složky vašeho projektu (například `%USERPROFILE%\go\src\mysqlgo\createtable.go` (cesta ve Windows) nebo `~/go/src/mysqlgo/createtable.go` (cesta v Linuxu)).
 3. Vyhledejte v kódu konstanty `HOST`, `DATABASE`, `USER` a `PASSWORD` a příklady hodnot nahraďte vlastními hodnotami. 
 4. Spusťte příkazový řádek nebo prostředí Bash. Změňte adresář na složku vašeho projektu. Například ve Windows pomocí příkazu `cd %USERPROFILE%\go\src\mysqlgo\`. V Linuxu pomocí příkazu `cd ~/go/src/mysqlgo/`.  Některá ze zmíněných integrovaných vývojových prostředí (IDE) nabízejí možnosti ladění a modulu runtime, které nevyžadují příkazy prostředí.

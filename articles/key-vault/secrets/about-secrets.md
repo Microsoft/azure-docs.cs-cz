@@ -1,6 +1,6 @@
 ---
-title: O tajných klíčech služby Azure Key Vault – Azure Key Vault
-description: Přehled rozhraní Azure Key Vault REST a podrobnosti o vývojáři tajných kódů.
+title: Informace o Azure Key Vault tajných klíčů – Azure Key Vault
+description: Přehled rozhraní REST Azure Key Vault a podrobností pro vývojáře pro tajné klíče.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,105 +11,105 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685437"
 ---
-# <a name="about-azure-key-vault-secrets"></a>O tajných klíči služby Azure Key Vault
+# <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
 
-Trezor klíčů poskytuje zabezpečené ukládání tajných klíčů, jako jsou hesla a připojovací řetězce databáze.
+Key Vault poskytuje zabezpečené úložiště tajných kódů, jako jsou hesla a databázové připojovací řetězce.
 
-Z pohledu vývojáře, key vault API přijmout a vrátit tajné hodnoty jako řetězce. Trezor klíčů interně ukládá a spravuje tajné klíče jako sekvence oktetů (8bitových bajtů) s maximální velikostí 25 kB. Služba Trezor klíčů neposkytuje sémantiku pro tajné klíče. Pouze přijímá data, šifruje je, ukládá a vrací tajný identifikátor ("id"). Identifikátor lze použít k načtení tajného klíče později.  
+Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty jako řetězce. Interně Key Vault ukládá a spravuje tajné klíče jako sekvence oktetů (8bitové bajty) a maximální velikost 25k bajtů. Služba Key Vault neposkytuje sémantiku tajných kódů. Přijímá pouze data, šifruje je, ukládá je a vrací tajný identifikátor (ID). Identifikátor lze použít k pozdějšímu načtení tajného klíče.  
 
 U vysoce citlivých dat by klienti měli zvážit další vrstvy ochrany dat. Příkladem může být šifrování dat pomocí samostatného ochranného klíče před uložením ve službě Key Vault.  
 
-Trezor klíčů také podporuje pole contentType pro tajné klíče. Klienti mohou určit typ obsahu tajného klíče, který vám pomůže při interpretaci tajných dat při jejich načtení. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako nápověda pro interpretaci tajných dat. Například implementace může ukládat hesla a certifikáty jako tajné klíče, pak použijte toto pole k rozlišení. Neexistují žádné předdefinované hodnoty.  
+Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou určit typ obsahu tajného kódu, který pomůže při interpretaci tajných dat při jejich načítání. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako pomocný parametr pro interpretaci tajných dat. Implementace může například ukládat hesla i certifikáty jako tajné klíče a pak je odlišit pomocí tohoto pole. Nejsou k dispozici žádné předdefinované hodnoty.  
 
 ## <a name="secret-attributes"></a>Tajné atributy
 
-Kromě tajných dat mohou být specifikovány následující atributy:  
+Kromě tajných dat lze zadat následující atributy:  
 
-- *exp*: IntDate, volitelné, výchozí hodnota je **navždy**. *Exp* (expirační čas) atribut identifikuje čas vypršení platnosti na nebo po kterém by neměla být načtena tajná data, s výjimkou [konkrétních situací](#date-time-controlled-operations). Toto pole slouží pouze pro **informační** účely, protože informuje uživatele služby trezoru klíčů, že konkrétní tajný klíč nesmí být použit. Jeho hodnota musí být číslo obsahující hodnotu IntDate.   
-- *nbf*: IntDate, volitelné, výchozí je **nyní**. Atribut *nbf* (ne dříve) určuje dobu, než by tajná data neměla být načtena, s výjimkou [konkrétních situací](#date-time-controlled-operations). Toto pole je pouze pro **informační** účely. Jeho hodnota musí být číslo obsahující hodnotu IntDate. 
-- *povoleno*: logická, volitelná, výchozí hodnota **je true**. Tento atribut určuje, zda lze načíst tajná data. Povolený atribut se používá ve spojení s *nbf* a *exp,* když dojde k operaci mezi *nbf* a *exp*, bude povolen pouze v případě, že je povoleno na **hodnotu true**. Operace mimo okno *nbf* a *exp* jsou automaticky zakázány, s výjimkou [konkrétních situací](#date-time-controlled-operations).  
+- *exp*: IntDate, volitelné, výchozí je **trvale**. Atribut *exp* (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům, protože informuje uživatele služby trezoru klíčů, že není možné použít konkrétní tajný klíč. Jeho hodnota musí být číslo obsahující hodnotu IntDate.   
+- *NBF*: IntDate, volitelné, výchozí nastavení je **teď**. Atribut *NBF* (nikoli dřív) určuje čas, před kterým by se neměla načíst tajná data, s výjimkou [zvláštních situací](#date-time-controlled-operations). Toto pole slouží pouze k **informativním** účelům. Jeho hodnota musí být číslo obsahující hodnotu IntDate. 
+- *povoleno*: logická hodnota, volitelná, výchozí hodnota je **true**. Tento atribut určuje, zda mohou být načtena tajná data. Atribut enabled se používá ve spojení s *NBF* a *exp* , pokud dojde k operaci mezi *NBF* a *exp*, ale bude povolená jenom v případě, že je povolená možnost nastavená na **hodnotu true**. Operace mimo okno *NBF* a *exp* se automaticky nepovolují, s výjimkou [zvláštních situací](#date-time-controlled-operations).  
 
-Existují další atributy jen pro čtení, které jsou zahrnuty v odpovědi, která obsahuje tajné atributy:  
+Existují další atributy jen pro čtení, které jsou zahrnuty v jakékoli odpovědi, která obsahuje tajné atributy:  
 
-- *vytvořeno*: IntDate, volitelné. Vytvořený atribut označuje, kdy byla tato verze tajného klíče vytvořena. Tato hodnota je null pro tajné klíče vytvořené před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
-- *aktualizováno*: IntDate, volitelné. Aktualizovaný atribut označuje, kdy byla tato verze tajného klíče aktualizována. Tato hodnota je null pro tajné klíče, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.
+- *Vytvořeno*: IntDate, volitelné. Vytvořený atribut označuje, kdy byla tato verze tajného kódu vytvořena. Tato hodnota je null pro tajné klíče vytvořené před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.  
+- *Aktualizováno*: IntDate, volitelné. Aktualizovaný atribut určuje, kdy byla tato verze tajného kódu aktualizována. Tato hodnota je null pro tajné kódy, které byly naposledy aktualizovány před přidáním tohoto atributu. Jeho hodnota musí být číslo obsahující hodnotu IntDate.
 
-### <a name="date-time-controlled-operations"></a>Řízené operace podle data a času
+### <a name="date-time-controlled-operations"></a>Operace kontrolovaného data a času
 
-Tajná operace **get** bude fungovat pro dosud neplatné a prošlé tajné kódy, mimo okno *nbf* / *exp.* Volání tajné **ho získat** operaci, pro dosud neplatné tajné, lze použít pro testovací účely. Načítání (**získání**ting) vypršela tajný klíč, lze použít pro operace obnovení.
+Operace **Get** tajného klíče bude fungovat pro tajné klíče, které ještě nejsou platné a jejichž platnost vypršela, a to mimo okno*exp* pro *NBF* / . Volání operace **Get** tajného klíče, pro neplatný tajný klíč, lze použít pro testovací účely. Načtení (**získání**nocení) tajného kódu, jehož platnost vypršela, lze použít pro operace obnovení.
 
 ## <a name="secret-access-control"></a>Řízení přístupu k tajným klíčům
 
-Řízení přístupu pro tajné klíče spravované v trezoru klíčů, je k dispozici na úrovni trezoru klíčů, který obsahuje tyto tajné klíče. Zásady řízení přístupu pro tajné klíče se liší od zásady řízení přístupu pro klíče ve stejném trezoru klíčů. Uživatelé mohou vytvořit jeden nebo více trezorů pro uložení tajných kódů a jsou povinni udržovat scénář odpovídající segmentace a správa tajných kódů.   
+Access Control pro tajné klíče spravované v Key Vault je k dispozici na úrovni Key Vault, které tyto tajné kódy obsahují. Zásada řízení přístupu tajných klíčů je odlišná od zásad řízení přístupu pro klíče ve stejné Key Vault. Uživatelé mohou vytvořit jeden nebo více trezorů pro blokování tajných kódů a jsou vyžadovány pro udržení vhodného segmentace a správy tajných kódů.   
 
-Následující oprávnění lze použít na základě hlavního povinného v položka řízení přístupu k tajným kódům v úložišti a úzce zrcadlit operace povolené na tajný objekt:  
+Následující oprávnění se dají použít, pro jednotlivé hlavní objekty, v položce řízení přístupu tajných klíčů v trezoru a při tom pozorně zrcadlit operace povolené u tajného objektu:  
 
-- Oprávnění pro operace správy tajných správě
-  - *get*: Přečtěte si tajemství  
-  - *Seznam*: Seznam tajných kódů nebo verzí tajného klíče uloženého v trezoru klíčů  
-  - *set*: Vytvoření tajného klíče  
-  - *odstranit*: Odstranění tajného klíče  
-  - *recover*: Obnovení odstraněného tajného klíče
-  - *Zálohování*: Zálohování tajného klíče v trezoru klíčů
-  - *Obnovení*: Obnovení zálohovaného tajného klíče do trezoru klíčů
+- Oprávnění pro operace správy tajných klíčů
+  - *získat*: čtení tajného klíče  
+  - *seznam*: výpis tajných kódů nebo verzí tajného kódu uloženého v Key Vault  
+  - *nastavit*: vytvořit tajný kód  
+  - *Odstranit*: odstranění tajného klíče  
+  - *obnovení*: obnovení odstraněných tajných klíčů
+  - *zálohování*: zálohování tajného klíče v trezoru klíčů
+  - *obnovení*: obnovení zálohovaného tajného klíče do trezoru klíčů
 
 - Oprávnění pro privilegované operace
-  - *vymazání*: Vymazání (trvalé odstranění) odstraněného tajného klíče
+  - *vyprázdnit*: vyprázdnit (trvale odstranit) odstraněný tajný kód
 
-Další informace o práci s tajnými kódy naleznete [v tématu Tajné operace v odkazu rozhraní REST ROZHRANÍ KEY Vault .](/rest/api/keyvault) Informace o vytváření oprávnění naleznete v [tématu Trezory – Vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a Úložiště – Aktualizovat [zásady přístupu](/rest/api/keyvault/vaults/updateaccesspolicy). 
+Další informace o práci s tajnými kódy naleznete [v tématu tajné operace v odkazu na Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
 ## <a name="secret-tags"></a>Tajné značky  
-Můžete zadat další metadata specifická pro aplikaci ve formě značek. Trezor klíčů podporuje až 15 značek, z nichž každá může mít název 256 znaků a hodnotu 256 znaků.  
+Můžete zadat další metadata specifická pro aplikaci ve formě značek. Key Vault podporuje až 15 značek, z nichž každá může mít 256 název znaku a 256 znaková hodnota.  
 
 >[!Note]
->Značky jsou čitelné volajícím, pokud mají *seznam* nebo *získat* oprávnění.
+>Značky mohou číst volající, pokud mají oprávnění *list* nebo *Get* .
 
 ## <a name="azure-storage-account-key-management"></a>Správa klíčů účtu Azure Storage
 
-Trezor klíčů může spravovat klíče účtů úložiště Azure:
+Key Vault můžou spravovat klíče účtu úložiště Azure:
 
-- Trezor klíčů může interně uvádět (synchronizovat) klíče pomocí účtu úložiště Azure. 
-- Trezor klíčů pravidelně generuje (otáčí) klíče.
-- Hodnoty klíče jsou nikdy vráceny v reakci na volajícího.
-- Trezor klíčů spravuje klíče účtů úložiště i klasických účtů úložiště.
+- Interně Key Vault možné vypsat (synchronizovat) klíče s účtem služby Azure Storage. 
+- Key Vault znovu vygeneruje (otáčí) klíče pravidelně.
+- Hodnoty klíče se nikdy nevrátí v reakci na volajícího.
+- Key Vault spravuje klíče účtů úložiště i klasických účtů úložiště.
 
-Další informace naleznete v tématu [Klíče účtů úložiště úložiště azure](../secrets/overview-storage-keys.md)key vault )
+Další informace najdete v tématu [Azure Key Vault klíče účtu úložiště](../secrets/overview-storage-keys.md)).
 
 ## <a name="storage-account-access-control"></a>Řízení přístupu k účtu úložiště
 
-Následující oprávnění lze použít při autorizaci uživatele nebo objektu zabezpečení aplikace k provádění operací s účtem spravovaného úložiště:  
+Následující oprávnění se dají použít při autorizaci objektu zabezpečení uživatele nebo aplikace k provádění operací na spravovaném účtu úložiště:  
 
-- Oprávnění pro účet spravovaného úložiště a operace s definicí SaS
-  - *získat*: Získá informace o účtu úložiště 
-  - *Seznam*: Seznam účtů úložiště spravovaných trezorem klíčů
-  - *aktualizace*: Aktualizace účtu úložiště
-  - *odstranění*: Odstranění účtu úložiště  
-  - *obnovení*: Obnovení odstraněného účtu úložiště
-  - *zálohování*: Zálohování účtu úložiště
-  - *obnovení*: Obnovení účtu zálohovaného úložiště do trezoru klíčů
-  - *set*: Vytvoření nebo aktualizace účtu úložiště
-  - *regeneratekey*: Regenerate a specified key value for a storage account Regeneratekey : Regenerate a specified key value for a storage account Regeneratekey : Regenerate a specified key value for a storage account Regenerate
-  - *getsas*: Získat informace o definici SAS pro účet úložiště
-  - *listsas*: Seznam definic SAS úložiště pro účet úložiště
-  - *deletesas*: Odstranění definice SAS z účtu úložiště
-  - *setsas*: Vytvoření nebo aktualizace nové definice/atributů SAS pro účet úložiště
+- Oprávnění pro spravovaný účet úložiště a operace definice SaS
+  - *Get*: načte informace o účtu úložiště. 
+  - *seznam*: výpis účtů úložiště spravovaných Key Vault
+  - *aktualizace*: aktualizace účtu úložiště
+  - *Odstranit*: odstranění účtu úložiště  
+  - *obnovení*: obnovení odstraněného účtu úložiště
+  - *zálohování*: zálohování účtu úložiště
+  - *obnovení*: obnovení účtu zálohovaného úložiště do Key Vault
+  - *Nastavení*: vytvoření nebo aktualizace účtu úložiště
+  - *RegenerateKey*: znovu vygenerujte zadanou hodnotu klíče pro účet úložiště.
+  - *getsas*: Získejte informace o definici SAS pro účet úložiště.
+  - *listsas*: Seznamte se s definicemi SAS úložiště pro účet úložiště.
+  - *deletesas*: odstranění definice SAS z účtu úložiště
+  - *setsas*: vytvoření nebo aktualizace nové definice nebo atributů SAS pro účet úložiště
 
 - Oprávnění pro privilegované operace
-  - *vymazání*: Vymazání (trvalé odstranění) účtu spravovaného úložiště
+  - *vyprázdnit*: vyprázdnit (trvale odstranit) spravovaný účet úložiště
 
-Další informace naleznete [v operacích účtu úložiště v odkazu rozhraní REST ROZHRANÍ KEY Vault REST .](/rest/api/keyvault) Informace o vytváření oprávnění naleznete v [tématu Trezory – Vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a Úložiště – Aktualizovat [zásady přístupu](/rest/api/keyvault/vaults/updateaccesspolicy).
+Další informace najdete v referenčních informacích o [operacích účtu úložiště v Key Vault REST API](/rest/api/keyvault). Informace o tom, jak vytvářet oprávnění, najdete v tématu [trezory – vytvoření nebo aktualizace](/rest/api/keyvault/vaults/createorupdate) a [trezory – zásady přístupu pro aktualizaci](/rest/api/keyvault/vaults/updateaccesspolicy).
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Informace o službě Key Vault](../general/overview.md)
-- [Klíče, tajné klíče a certifikáty](../general/about-keys-secrets-certificates.md)
+- [Informace o klíčích, tajných kódech a certifikátech](../general/about-keys-secrets-certificates.md)
 - [Informace o klíčích](../keys/about-keys.md)
 - [Informace o certifikátech](../certificates/about-certificates.md)
-- [Ověřování, požadavky a odpovědi](../general/authentication-requests-and-responses.md)
+- [Ověřování, žádosti a odpovědi](../general/authentication-requests-and-responses.md)
 - [Průvodce vývojáře pro Key Vault](../general/developers-guide.md)
