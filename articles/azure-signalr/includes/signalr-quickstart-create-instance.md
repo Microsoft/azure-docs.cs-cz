@@ -8,10 +8,10 @@ ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75392144"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Vytvoření instance služby Azure SignalR Service
@@ -34,10 +34,10 @@ Vaše aplikace se připojí k instanci služby SignalR Service v Azure.
     | **Umístění** | USA – západ | Zvolte [oblast](https://azure.microsoft.com/regions/) ve vaší blízkosti. |
     | **Cenová úroveň** | Free | Vyzkoušejte si službu Azure SignalR Service zdarma. |
     | **Počet jednotek** |  Neuvedeno | Počet jednotek určuje, kolik připojení může instance služby SignalR Service přijmout. To lze nakonfigurovat jen na úrovni Standard. |
-    | **Servisní režim** |  Bez serveru | Pro použití s Azure Functions nebo REST API. |
+    | **Režim služby** |  Bez serveru | Pro použití s Azure Functions nebo REST API. |
 
     ![Vytvoření služby SignalR Service](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)
 
 1. Pokud chcete začít nasazovat instanci služby SignalR Service, vyberte **Vytvořit**.
 
-1. Po nasazení instance ji otevřete na portálu a vyhledejte její stránku Nastavení. Změňte nastavení režimu služby na *Serverless* jenom v případě, že používáte službu Azure SignalR prostřednictvím vazby Azure Functions nebo rozhraní REST API. Nechte to v *klasické nebo* *výchozí* jinak.
+1. Po nasazení instance ho otevřete na portálu a najděte jeho stránku nastavení. Nastavte režim služby na možnost bez *serveru* jenom v případě, že používáte službu Azure Signal service prostřednictvím Azure Functions vazby nebo REST API. V opačném případě je ponechte v *klasickém* nebo *výchozím nastavení* .
