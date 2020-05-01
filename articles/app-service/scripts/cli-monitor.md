@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Sledování aplikace pomocí protokolů webového serveru'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak sledovat aplikaci pomocí protokolů webového serveru.
+title: 'CLI: monitorování aplikace pomocí protokolů webového serveru'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. V této ukázce se dozvíte, jak monitorovat aplikaci pomocí protokolů webového serveru.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 60abd47eaf176b6c802ebb8a20f74b5c1eb68f0a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057782"
 ---
-# <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>Monitorování aplikace služby App Service pomocí protokolů webového serveru pomocí azure cli
+# <a name="monitor-an-app-service-appwith-web-server-logs-using-azure-cli"></a>Monitorování aplikace App Service s využitím protokolů webového serveru pomocí Azure CLI
 
-Tento ukázkový skript vytvoří skupinu prostředků, plán služby App Service a aplikaci a nakonfiguruje aplikaci tak, aby povolovala protokoly webového serveru. Pak stáhne soubory protokolů ke kontrole.
+Tento ukázkový skript vytvoří skupinu prostředků, App Service plán a aplikaci, a nakonfiguruje aplikaci tak, aby povolovala protokoly webového serveru. Pak stáhne soubory protokolů ke kontrole.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,15 +34,15 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku m
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, aplikace App Service a všech souvisejících prostředků. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, App Service aplikace a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
-| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Konfiguruje, které protokoly aplikace App Service přetrvává. |
-| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Stáhne protokoly aplikace App Service do místního počítače. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
+| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Nakonfiguruje, které protokoly bude aplikace App Service dál trvat. |
+| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Stáhne protokoly App Service aplikace do místního počítače. |
 
 ## <a name="next-steps"></a>Další kroky
 

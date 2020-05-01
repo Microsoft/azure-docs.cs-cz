@@ -1,56 +1,56 @@
 ---
-title: Aktivační události a vazby ve funkcích Azure
-description: Naučte se používat aktivační události a vazby k připojení funkce Azure k online událostem a cloudovým službám.
+title: Aktivační události a vazby v Azure Functions
+description: Naučte se používat triggery a vazby k připojení funkce Azure k online událostem a cloudovým službám.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276501"
 ---
-# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions spouští a vázací koncepty
+# <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions triggery a koncepty vazeb
 
-V tomto článku se dozvíte koncepty na vysoké úrovni okolní funkce aktivační události a vazby.
+V tomto článku se seznámíte s koncepty a možnostmi triggerů funkcí a vazeb na nejvyšší úrovni.
 
-Aktivační události jsou příčinou spuštění funkce. Aktivační událost definuje, jak je funkce vyvolána a funkce musí mít přesně jednu aktivační událost. Aktivační události obsahují související data, která se často poskytují jako datová část funkce. 
+Aktivační události jsou tím, co způsobí spuštění funkce. Aktivační událost definuje způsob volání funkce a funkce musí mít právě jednu aktivační událost. Aktivační události obsahují související data, která se často poskytují jako datová část funkce. 
 
-Vazba na funkci je způsob deklarativně připojení jiného prostředku k funkci; vazby mohou být připojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb jsou k dispozici funkci jako parametry.
+Vazba na funkci je způsob deklarativního připojení jiného prostředku ke funkci; vazby mohou být propojeny jako *vstupní vazby*, *výstupní vazby*nebo obojí. Data z vazeb jsou k dispozici funkci jako parametry.
 
 Můžete kombinovat a párovat různé vazby tak, aby odpovídaly vašim potřebám. Vazby jsou volitelné a funkce může mít jednu nebo více vstupních nebo výstupních vazeb.
 
-Aktivační události a vazby umožňují vyhnout se pevnému kódování přístup u jiných služeb. Vaše funkce přijímá data (například obsah zprávy fronty) v parametrech funkce. Vy posíláte data (například k vytvoření zprávy fronty) pomocí návratové hodnoty funkce. 
+Triggery a vazby umožňují vyhnout se zakódujeme přístupu k jiným službám. Vaše funkce přijímá data (například obsah zprávy fronty) v parametrech funkce. Vy posíláte data (například k vytvoření zprávy fronty) pomocí návratové hodnoty funkce. 
 
-Zvažte následující příklady, jak můžete implementovat různé funkce.
+Vezměte v úvahu následující příklady, jak můžete implementovat různé funkce.
 
-| Příklad scénáře | Trigger | Vstupní vazba | Výstupní vazba |
+| Ukázkový scénář | Trigger | Vstupní vazba | Výstupní vazba |
 |-------------|---------|---------------|----------------|
-| Přijde nová zpráva fronty, která spustí funkci pro zápis do jiné fronty. | Fronty<sup>*</sup> | *Žádné* | Fronty<sup>*</sup> |
-|Naplánovaná úloha přečte obsah úložiště objektů blob a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Cosmos DB |
-|Event Grid se používá ke čtení obrázku z úložiště objektů Blob a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Úložiště objektů blob a databáze Cosmos | SendGrid |
-| Webový hák, který používá microsoft graph k aktualizaci listu aplikace Excel. | HTTP | *Žádné* | Microsoft Graph |
+| Dojde k doručení nové zprávy fronty, která spustí funkci pro zápis do jiné fronty. | Provedených<sup>*</sup> | *Žádné* | Provedených<sup>*</sup> |
+|Naplánovaná úloha načte Blob Storage obsah a vytvoří nový dokument Cosmos DB. | Časovač | Blob Storage | Databáze Cosmos |
+|Event Grid slouží ke čtení obrázku z Blob Storage a dokumentu z Cosmos DB k odeslání e-mailu. | Event Grid | Blob Storage a Cosmos DB | SendGrid |
+| Webhook, který používá Microsoft Graph k aktualizaci excelového listu. | HTTP | *Žádné* | Microsoft Graph |
 
 <sup>\*</sup>Představuje různé fronty.
 
-Tyto příklady nejsou určeny k vyčerpávající, ale jsou k dispozici pro ilustraci, jak můžete použít aktivační události a vazby společně.
+Tyto příklady nejsou určeny k vyčerpávajícímu, ale jsou k dispozici pro ilustraci, jak můžete použít triggery a vazby dohromady.
 
-###  <a name="trigger-and-binding-definitions"></a>Definice aktivačních událostí a vazeb
+###  <a name="trigger-and-binding-definitions"></a>Triggery a definice vazeb
 
-Aktivační události a vazby jsou definovány odlišně v závislosti na vývoji přístupu.
+Triggery a vazby jsou definovány odlišně v závislosti na vývoji přístupu.
 
-| Platforma | Aktivační události a vazby jsou konfigurovány... |
+| Platforma | Aktivační události a vazby jsou konfigurovány pomocí... |
 |-------------|--------------------------------------------|
-| Knihovna tříd C# | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;metody zdobení a parametry s c# atributy |
-| Všechny ostatní (včetně portálu Azure) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizace [function.json](./functions-reference.md) ([schéma](http://json.schemastore.org/function)) |
+| Knihovna tříd C# | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;upravení metody a parametry s atributy jazyka C# |
+| Všichni ostatní (včetně Azure Portal) | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aktualizuje se [Function. JSON](./functions-reference.md) ([schéma](http://json.schemastore.org/function)). |
 
-Portál poskytuje ui pro tuto konfiguraci, ale můžete upravit soubor přímo otevřením **rozšířeného editoru** k dispozici prostřednictvím **integrovat** kartu vaší funkce.
+Portál poskytuje uživatelské rozhraní pro tuto konfiguraci, ale můžete ho upravovat přímo otevřením **pokročilého editoru** dostupného prostřednictvím karty **integrace** vaší funkce.
 
-V rozhraní .NET definuje typ parametru datový typ pro vstupní data. Například slouží `string` k vazbě na text fronty aktivační události, bajtové pole číst jako binární a vlastní typ de-serializovat na objekt.
+V rozhraní .NET typ parametru definuje datový typ pro vstupní data. Například použijte `string` k vytvoření vazby na text triggeru fronty, bajtové pole pro čtení jako binární a vlastní typ pro deserializaci objektu.
 
-Pro jazyky, které jsou dynamicky zadávány, například JavaScript, použijte `dataType` vlastnost v souboru *function.json.* Chcete-li například číst obsah požadavku HTTP v `dataType` `binary`binárním formátu, nastavte na :
+Pro jazyky, které jsou dynamicky typované, jako je například JavaScript `dataType` , použijte vlastnost v souboru *Function. JSON* . Například pro čtení obsahu požadavku HTTP v binárním formátu nastavte `dataType` na: `binary`
 
 ```json
 {
@@ -61,33 +61,33 @@ Pro jazyky, které jsou dynamicky zadávány, například JavaScript, použijte 
 }
 ```
 
-Další možnosti `stream` `string`pro `dataType` jsou a .
+Další možnosti pro `dataType` jsou `stream` a `string`.
 
 ## <a name="binding-direction"></a>Směr vazby
 
-Všechny aktivační události a `direction` vazby mají vlastnost v souboru [function.json:](./functions-reference.md)
+Všechny aktivační události a vazby mají `direction` vlastnost v souboru [Function. JSON](./functions-reference.md) :
 
-- U spouštěčů je směr vždy`in`
-- Vstupní a výstupní `in` vazby používají a`out`
-- Některá vázání podporují `inout`zvláštní směr . Pokud používáte `inout`, pouze **rozšířený editor** je k dispozici prostřednictvím **integrovat** kartu na portálu.
+- Pro aktivační události je směr vždy`in`
+- Vstupní a výstupní vazby používají `in` a`out`
+- Některé vazby podporují zvláštní směr `inout`. Pokud použijete `inout`, je k dispozici pouze **Rozšířený editor** prostřednictvím karty **integrace** na portálu.
 
-Při použití [atributů v knihovně tříd](functions-dotnet-class-library.md) ke konfiguraci aktivačních událostí a vazeb, směr je k dispozici v konstruktoru atributu nebo odvozenz typu parametru.
+Použijete-li [atributy v knihovně tříd](functions-dotnet-class-library.md) ke konfiguraci triggerů a vazeb, je směr poskytován v konstruktoru atributu nebo odvozen z typu parametru.
 
-## <a name="supported-bindings"></a>Podporovaná vazby
+## <a name="supported-bindings"></a>Podporované vazby
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-Informace o tom, které vazby jsou ve verzi preview nebo jsou schváleny pro produkční použití, naleznete v [tématu Podporované jazyky](supported-languages.md).
+Informace o tom, které vazby jsou ve verzi Preview nebo které jsou schválené pro použití v produkčním prostředí, najdete v tématu [podporované jazyky](supported-languages.md).
 
-## <a name="resources"></a>Prostředky
-- [Vazby výrazy a vzory](./functions-bindings-expressions-patterns.md)
-- [Použití vrácené hodnoty funkce Azure](./functions-bindings-return-value.md)
-- [Jak zaregistrovat výraz vazby](./functions-bindings-register.md)
-- Testování:
+## <a name="resources"></a>Zdroje a prostředky
+- [Výrazy a vzory vazby](./functions-bindings-expressions-patterns.md)
+- [Použití návratové hodnoty funkce Azure Functions](./functions-bindings-return-value.md)
+- [Postup registrace výrazu vazby](./functions-bindings-register.md)
+- Zkouší
   - [Strategie testování kódu ve službě Azure Functions](functions-test-a-function.md)
   - [Ruční spuštění funkce neaktivované protokolem HTTP](functions-manually-run-non-http.md)
-- [Zpracování chyb vazby](./functions-bindings-errors.md)
+- [Zpracování chyb vazeb](./functions-bindings-errors.md)
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
-> [Registrace rozšíření vazby Azure Functions](./functions-bindings-register.md)
+> [Registrovat rozšíření vazby Azure Functions](./functions-bindings-register.md)
