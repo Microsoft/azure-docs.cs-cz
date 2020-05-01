@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Azure Cosmos DB Node.js pomocí rozhraní Gremlin API
+title: Sestavení aplikace Azure Cosmos DB Node. js pomocí rozhraní API pro Gremlin
 description: Obsahuje ukázku kódu Node.js, kterou můžete použít pro připojení a dotazování databáze Azure Cosmos.
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 06/05/2019
 ms.author: lbosq
 ms.openlocfilehash: e6456c79dbce1f8bb874ce4c88b932e592235a82
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244422"
 ---
-# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Úvodní příručka: Vytvoření aplikace Node.js pomocí účtu rozhraní API Azure Cosmos DB Gremlin
+# <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Rychlý Start: Vytvoření aplikace Node. js pomocí účtu Azure Cosmos DBho rozhraní Gremlin API
 
 > [!div class="op_single_selector"]
 > * [Konzola Gremlin](create-graph-gremlin-console.md)
@@ -26,11 +26,11 @@ ms.locfileid: "80244422"
 > * [PHP](create-graph-php.md)
 >  
 
-V tomto rychlém startu vytvoříte a spravujete účet rozhraní API Azure Cosmos DB Gremlin (graf) z webu Azure Portal a přidáte data pomocí aplikace Node.js naklonované z GitHubu. Azure Cosmos DB je vícemodelová databázová služba, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, hodnot klíče a grafů s možností globální distribuce a horizontálního škálování.
+V tomto rychlém startu vytvoříte a spravujete účet rozhraní API pro Azure Cosmos DB Gremlin (Graph) z Azure Portal a přidáte data pomocí aplikace Node. js naklonované z GitHubu. Azure Cosmos DB je databázová služba pro více modelů, která umožňuje rychle vytvářet a dotazovat databáze dokumentů, tabulek, klíčových hodnot a grafů s funkcemi globální distribuce a horizontálního škálování.
 
 ## <a name="prerequisites"></a>Požadavky
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). 
-- [Node.js 0.10.29+](https://nodejs.org/).
+- [Node. js 0.10.29 +](https://nodejs.org/).
 - [Git](https://git-scm.com/downloads).
 
 ## <a name="create-a-database-account"></a>Vytvoření účtu databáze
@@ -69,9 +69,9 @@ Teď naklonujeme aplikaci rozhraní Gremlin API z GitHubu, nastavíme připojov
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string). 
 
-Z souboru *app.js* jsou převzaty všechny následující úryvky.
+Všechny následující fragmenty kódu jsou pořízeny ze souboru *App. js* .
 
-Tato konzolová aplikace používá ovladač [Gremlin Node.js](https://www.npmjs.com/package/gremlin) s otevřeným zdrojovým kódem.
+Tato aplikace konzoly používá open source ovladač [Gremlin Node. js](https://www.npmjs.com/package/gremlin) .
 
 * Vytvoří se klient Gremlin.
 
@@ -94,7 +94,7 @@ Tato konzolová aplikace používá ovladač [Gremlin Node.js](https://www.npmjs
 
     ```
 
-  Všechny konfigurace jsou v *config.js*, které upravujeme v [následující části](#update-your-connection-string).
+  Konfigurace jsou všechny v *souboru config. js*, který upravujeme v [následující části](#update-your-connection-string).
 
 * Definuje se série funkcí pro provádění různých operací Gremlin. Toto je jedna z nich:
 
@@ -125,7 +125,7 @@ Tato konzolová aplikace používá ovladač [Gremlin Node.js](https://www.npmjs
     }
     ```
 
-* Na konci souboru jsou pak vyvolány všechny metody. Ta je provede jednu po druhé:
+* Na konci souboru jsou následně vyvolány všechny metody. Ta je provede jednu po druhé:
 
     ```javascript
     client.open()
@@ -148,15 +148,15 @@ Tato konzolová aplikace používá ovladač [Gremlin Node.js](https://www.npmjs
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 
-1. Otevřete soubor *config.js.* 
+1. Otevřete soubor *config. js* . 
 
-2. V *souboru config.js*vyplňte `config.endpoint` klíč hodnotou **Gremlin Endpoint** na stránce **Přehled** vašeho účtu Cosmos DB na portálu Azure. 
+2. V *souboru config. js*vyplňte `config.endpoint` klíč hodnotou **koncového bodu Gremlin** ze stránky **Přehled** účtu Cosmos DB v Azure Portal. 
 
     `config.endpoint = "https://<your_Gremlin_account_name>.gremlin.cosmosdb.azure.com:443/";`
 
-    ![Zobrazení a zkopírování přístupového klíče na webu Azure Portal, stránka Přehled](./media/create-graph-nodejs/gremlin-uri.png)
+    ![Zobrazení a zkopírování přístupového klíče na stránce Azure Portal, přehled](./media/create-graph-nodejs/gremlin-uri.png)
 
-3. V *souboru config.js*vyplňte hodnotu config.primaryKey hodnotou **Primární klíč** ze stránky **Klíče** vašeho účtu Cosmos DB na portálu Azure. 
+3. V *souboru config. js*vyplňte hodnotu config. PrimaryKey hodnotou **primárního klíče** ze stránky **klíče** Cosmos DB účtu v Azure Portal. 
 
     `config.primaryKey = "PRIMARYKEY";`
 
@@ -164,7 +164,7 @@ Tato konzolová aplikace používá ovladač [Gremlin Node.js](https://www.npmjs
 
 4. Zadejte název databáze a název grafu (kontejneru) pro hodnoty config.database a config.collection. 
 
-Tady je příklad toho, jak by měl vyplněný soubor *config.js* vypadat takto:
+Tady je příklad toho, jak by dokončený soubor *config. js* měl vypadat takto:
 
 ```javascript
 var config = {}
@@ -180,7 +180,7 @@ module.exports = config;
 
 ## <a name="run-the-console-app"></a>Spuštění aplikace konzoly
 
-1. Otevřete okno terminálu `cd` a změňte (pomocí příkazu) do instalačního adresáře souboru *package.json,* který je součástí projektu.
+1. Otevřete okno terminálu a změňte příkaz (prostřednictvím `cd` příkazu) na instalační adresář souboru *Package. JSON* , který je zahrnutý v projektu.
 
 2. Abyste nainstalovali požadované moduly npm, včetně `gremlin`, spusťte příkaz `npm install`.
 
@@ -206,7 +206,7 @@ Zkuste filtr otestovat provedením metody `g.V()` s hodnotami `.has('firstName',
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se dozvěděli, jak vytvořit účet Azure Cosmos DB, vytvořit graf pomocí Průzkumníka dat a spustit aplikaci Node.js pro přidání dat do grafu. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
+V tomto článku jste zjistili, jak vytvořit účet Azure Cosmos DB, vytvořit graf pomocí Průzkumník dat a spustit aplikaci Node. js, která přidá data do grafu. Teď můžete pomocí konzoly Gremlin vytvářet složitější dotazy a implementovat účinnou logiku procházení grafů. 
 
 > [!div class="nextstepaction"]
 > [Dotazování pomocí konzoly Gremlin](tutorial-query-graph.md)

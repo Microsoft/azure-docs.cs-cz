@@ -1,84 +1,84 @@
 ---
 title: Průběžné nasazování se službou Azure Functions
-description: K publikování funkcí použijte funkce průběžného nasazení služby Azure App Service.
+description: K publikování vašich funkcí použijte funkce průběžného nasazování Azure App Service.
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277021"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
 
-Funkce Azure můžete použít k nasazení kódu nepřetržitě pomocí [integrace správy zdrojového kódu](functions-deployment-technologies.md#source-control). Integrace správy zdrojového kódu umožňuje pracovní postup, ve kterém aktualizace kódu aktivuje nasazení do Azure. Pokud s Funkcemi Azure tečte, můžete začít na přehledu [funkcí Azure](functions-overview.md).
+Můžete použít Azure Functions pro průběžné nasazování kódu pomocí [integrace správy zdrojového](functions-deployment-technologies.md#source-control)kódu. Integrace správy zdrojového kódu umožňuje pracovní postup, ve kterém aktualizace kódu aktivuje nasazení do Azure. Pokud Azure Functions, začněte tím, že si prohlédnete [přehled Azure Functions](functions-overview.md).
 
-Průběžné nasazování je dobrou volbou pro projekty, kde integrujete více a časté příspěvky. Při použití průběžnénasazení, udržovat jeden zdroj pravdy pro váš kód, který umožňuje týmům snadno spolupracovat. Průběžné nasazování ve funkcích Azure můžete konfigurovat z následujících umístění zdrojového kódu:
+Průběžné nasazování je dobrou možností pro projekty, ve kterých můžete integrovat více a častých příspěvků. Při použití průběžného nasazování udržujete pro svůj kód jeden zdroj pravdy, který týmům umožňuje snadnou spolupráci. Průběžné nasazování můžete nakonfigurovat v Azure Functions z následujících umístění zdrojového kódu:
 
 * [Azure Repos](https://azure.microsoft.com/services/devops/repos/)
-* [GitHub](https://github.com)
+* [GitHubu](https://github.com)
 * [Bitbucket](https://bitbucket.org/)
 
-Jednotka nasazení pro funkce v Azure je aplikace funkce. Všechny funkce v aplikaci funkce jsou nasazeny ve stejnou dobu. Po povolení průběžného nasazení je přístup ke kódu funkcí na webu Azure Portal nakonfigurován jako *jen pro čtení,* protože zdroj pravdy je nastaven ý na jiné místo.
+Jednotka nasazení funkcí v Azure je aplikace Function App. Všechny funkce aplikace Function App jsou nasazeny současně. Po povolení průběžného nasazování je přístup k kódu funkce v Azure Portal nakonfigurován jako jen *pro čtení* , protože zdroj pravdy je nastaven na jiné místo.
 
-## <a name="requirements-for-continuous-deployment"></a>Požadavky na průběžné nasazení
+## <a name="requirements-for-continuous-deployment"></a>Požadavky pro průběžné nasazování
 
-Aby bylo nepřetržité nasazování úspěšné, musí být vaše adresářová struktura kompatibilní se základní strukturou složek, kterou azure functions očekává.
+Aby průběžné nasazování bylo úspěšné, musí být vaše adresářová struktura kompatibilní se základní strukturou složek, kterou Azure Functions očekává.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
 >[!NOTE]  
-> Průběžné nasazení ještě není podporováno pro linuxové aplikace spuštěné v plánu Spotřeba. 
+> Průběžné nasazování ještě není podporované pro aplikace pro Linux spuštěné v plánu spotřeby. 
 
 ## <a name="set-up-continuous-deployment"></a><a name="credentials"></a>Nastavení průběžného nasazování
 
-Chcete-li nakonfigurovat průběžné nasazení pro existující aplikaci funkcí, proveďte tyto kroky. Kroky ukazují integraci s úložištěm GitHub, ale podobné kroky platí pro Azure Repos nebo jiné úložiště zdrojového kódu.
+Pokud chcete nakonfigurovat průběžné nasazování pro existující aplikaci Function App, proveďte tyto kroky. Kroky ukazují integraci s úložištěm GitHub, ale podobný postup platí pro Azure Repos nebo jiné úložiště zdrojového kódu.
 
-1. V aplikaci funkce na [portálu Azure](https://portal.azure.com)vyberte Centrum pro nasazení **funkcí** > **platformy**.
+1. V aplikaci Function App v [Azure Portal](https://portal.azure.com)vyberte možnost**centrum nasazení** **funkcí** > platformy.
 
-    ![Otevřít Centrum nasazení](./media/functions-continuous-deployment/platform-features.png)
+    ![Otevřít centrum nasazení](./media/functions-continuous-deployment/platform-features.png)
 
-2. V **Centru nasazení**vyberte **GitHub**a pak vyberte **Autorizovat**. Pokud jste už GitHub autorizovali, vyberte **Pokračovat**. 
+2. V **centru nasazení**vyberte **GitHub**a potom vyberte **autorizovat**. Pokud jste už máte autorizovaný GitHub, vyberte **pokračovat**. 
 
-    ![Centrum nasazení služby Azure App Service](./media/functions-continuous-deployment/github.png)
+    ![Centrum nasazení Azure App Service](./media/functions-continuous-deployment/github.png)
 
-3. V GitHubu vyberte **tlačítko Autorizovat AzureAppService.** 
+3. V GitHubu vyberte tlačítko **autorizovat AzureAppService** . 
 
-    ![Autorizace služby Azure App Service](./media/functions-continuous-deployment/authorize.png)
+    ![Autorizovat Azure App Service](./media/functions-continuous-deployment/authorize.png)
     
-    V **Centru nasazení** na webu Azure Portal vyberte **Pokračovat**.
+    V části **centrum nasazení** v Azure Portal vyberte **pokračovat**.
 
 4. Vyberte jednoho z následujících poskytovatelů sestavení:
 
-    * **Služba sestavení služby App Service**: Nejlepší, když nepotřebujete sestavení nebo pokud potřebujete obecné sestavení.
-    * **Azure Pipelines (Preview)**: Nejlepší, když potřebujete větší kontrolu nad sestavením. Tento zprostředkovatel je aktuálně ve verzi Preview.
+    * **Služba sestavení App Service**: nejlepší, pokud nepotřebujete sestavení, nebo pokud potřebujete obecné sestavení.
+    * **Azure Pipelines (Preview)**: nejlepší, pokud potřebujete větší kontrolu nad sestavením. Tento zprostředkovatel je aktuálně ve verzi Preview.
 
-    ![Výběr zprostředkovatele sestavení](./media/functions-continuous-deployment/build.png)
+    ![Vybrat poskytovatele sestavení](./media/functions-continuous-deployment/build.png)
 
-5. Nakonfigurujte informace specifické pro zadanou možnost správy zdrojového kódu. Pro GitHub musíte zadat nebo vybrat hodnoty pro **Organizace**, **Úložiště**a **Branch**. Hodnoty jsou založeny na umístění kódu. Potom vyberte **Pokračovat**.
+5. Nakonfigurujte informace specifické pro zadanou možnost správy zdrojového kódu. V případě GitHubu je nutné zadat nebo vybrat hodnoty pro **organizaci**, **úložiště**a **větev**. Hodnoty jsou založené na umístění vašeho kódu. Pak vyberte **pokračovat**.
 
     ![Konfigurace GitHubu](./media/functions-continuous-deployment/github-specifics.png)
 
-6. Zkontrolujte všechny podrobnosti a pak vyberte **Dokončit,** abyste dokončili konfiguraci nasazení.
+6. Zkontrolujte všechny podrobnosti a pak vyberte **Dokončit** a dokončete konfiguraci nasazení.
 
     ![Souhrn](./media/functions-continuous-deployment/summary.png)
 
-Po dokončení procesu se do vaší aplikace nasadí veškerý kód ze zadaného zdroje. V tomto okamžiku změny ve zdroji nasazení aktivační nasazení těchto změn do aplikace funkce v Azure.
+Po dokončení procesu se do vaší aplikace nasadí veškerý kód ze zadaného zdroje. V tomto okamžiku změny ve zdroji nasazení aktivují nasazení těchto změn do aplikace Function App v Azure.
 
 ## <a name="deployment-scenarios"></a>Scénáře nasazení
 
 <a name="existing"></a>
 
-### <a name="move-existing-functions-to-continuous-deployment"></a>Přesunutí existujících funkcí do průběžného nasazení
+### <a name="move-existing-functions-to-continuous-deployment"></a>Přesunout existující funkce do průběžného nasazování
 
-Pokud jste už na [webu Azure Portal](https://portal.azure.com) napsali funkce a chcete si před přechodem na průběžné nasazení stáhnout obsah aplikace, přejděte na kartu **Přehled** aplikace s funkcí. Vyberte tlačítko **Stáhnout obsah aplikace.**
+Pokud jste už napsali funkce v [Azure Portal](https://portal.azure.com) a chcete před přechodem na průběžné nasazování stáhnout obsah vaší aplikace, přejděte na kartu **Přehled** aplikace Function App. Vyberte tlačítko **Stáhnout obsah aplikace** .
 
 ![Stažení obsahu aplikace](./media/functions-continuous-deployment/download.png)
 
 > [!NOTE]
-> Po konfiguraci průběžné integrace již nelze upravovat zdrojové soubory na portálu Functions.
+> Po konfiguraci průběžné integrace už nebudete moct zdrojové soubory upravovat na portálu Functions.
 
 ## <a name="next-steps"></a>Další kroky
 
