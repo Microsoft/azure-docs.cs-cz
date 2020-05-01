@@ -1,7 +1,7 @@
 ---
-title: 'Úvodní příručka: Použití klientské knihovny vizuálního vyhledávání Bingu'
+title: 'Rychlý Start: použití klientské knihovny Vizuální vyhledávání Bingu'
 titleSuffix: Azure Cognitive Services
-description: Rozhraní API pro vizuální vyhledávání nabízí klientské knihovny, které usnadňují integraci funkcí vyhledávání do vašich aplikací. Pomocí tohoto rychlého startu můžete začít odesílat požadavky na hledání a získat zpět výsledky.
+description: Rozhraní Vizuální vyhledávání API nabízí klientské knihovny, které usnadňují integraci vyhledávacích funkcí do vašich aplikací. V tomto rychlém startu můžete začít odesílat žádosti o vyhledávání a vracet výsledky.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 03/26/2020
 ms.author: aahi
 ms.openlocfilehash: e1d3a947df486cd347c17afae5d8dbce21878e09
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549992"
 ---
-# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Úvodní příručka: Použití klientské knihovny vizuálního vyhledávání Bingu
+# <a name="quickstart-use-the-bing-visual-search-client-library"></a>Rychlý Start: použití klientské knihovny Vizuální vyhledávání Bingu
 
 ::: zone pivot="programming-language-csharp"
 
