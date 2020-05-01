@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dd971cec33fa9f840a48e597fb3bed9a7965895
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160013"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612839"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -98,9 +98,12 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |prod.warmpath.msftcloudes.com|443|Přenosy agenta|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Aktivace Windows|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
 
 >[!IMPORTANT]
 >Ve většině případů doporučujeme místo adres URL používat značky služby, aby nedocházelo k problémům se službou. Odblokování těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají jenom virtuálním plochám a prostředkům virtuálních počítačů s Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
+>
+>Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény.
 
 Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
 
@@ -194,7 +197,9 @@ Dostupné možnosti automatizace a nasazení závisí na tom, který operační 
 
 ## <a name="next-steps"></a>Další kroky
 
-Chcete-li začít, budete muset vytvořit tenanta. Pokud se chcete dozvědět víc o tom, jak vytvořit tenanta, přejděte k kurzu Vytvoření tenanta.
+Pokud používáte verzi Windows Virtual Desktop pro 2019, můžete začít s naším kurzem na webu [Vytvoření tenanta ve Windows Virtual desktopu](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+
+Pokud používáte 2020 verze virtuálního počítače s Windows, budete muset místo toho vytvořit fond hostitelů. Přejděte k následujícímu kurzu, abyste mohli začít.
 
 > [!div class="nextstepaction"]
-> [Vytvoření klienta ve Windows Virtual Desktop](tenant-setup-azure-active-directory.md)
+> [Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md)

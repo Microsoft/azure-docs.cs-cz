@@ -4,14 +4,43 @@ description: Naučte se vytvořit funkci z příkazového řádku a pak publikov
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 547acb42be6a0c89dbc315031c46192b5c9a4a0d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5022ff7239a040a163d8d6a82864d0dee8e65f1e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732814"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610900"
 ---
-# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce v Azure, která reaguje na požadavky HTTP
+::: zone pivot="programming-language-csharp"  
+# <a name="quickstart-create-a-c-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure, která reaguje na požadavky HTTP
+
+V tomto článku pomocí nástrojů příkazového řádku vytvoříte funkci založenou na knihovně jazyka C#, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+# <a name="quickstart-create-a-javascript-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce JavaScriptu v Azure, která reaguje na požadavky HTTP
+
+V tomto článku vytvoříte pomocí nástrojů příkazového řádku funkci JavaScriptu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end
+::: zone pivot="programming-language-typescript"
+# <a name="quickstart-create-a-typescript-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce TypeScript v Azure, která reaguje na požadavky HTTP
+
+V tomto článku vytvoříte pomocí nástrojů příkazového řádku funkci TypeScript, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+# <a name="quickstart-create-a-powershell-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce PowerShellu v Azure, která reaguje na požadavky HTTP
+
+V tomto článku použijete nástroje příkazového řádku k vytvoření funkce PowerShellu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end  
+::: zone pivot="programming-language-python" 
+# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce Pythonu v Azure, která reaguje na požadavky HTTP
+
+V tomto článku pomocí nástrojů příkazového řádku vytvoříte funkci Pythonu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end  
+::: zone pivot="programming-language-java" 
+# <a name="quickstart-create-a-java-function-in-azure-that-responds-to-http-requests"></a>Rychlý Start: vytvoření funkce Java v Azure, která reaguje na požadavky HTTP
+
+V tomto článku použijete nástroje příkazového řádku k vytvoření funkce jazyka Java, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
+::: zone-end
 
 V tomto článku použijete nástroje příkazového řádku k vytvoření funkce, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
@@ -381,9 +410,16 @@ Pokud budete pokračovat k dalšímu kroku, [přidejte výstupní vazbu fronty A
 
 Jinak pomocí následujícího příkazu odstraňte skupinu prostředků a všechny její obsažené prostředky, abyste se vyhnuli vzniku dalších nákladů.
 
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
 ```azurecli
 az group delete --name AzureFunctionsQuickstart-rg
 ```
+::: zone-end
+::: zone pivot="programming-language-java"
+```azurecli
+az group delete --name java-functions-group
+```
+::: zone-end
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cc487e8def180735606aa010651dde40ef93908e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80082504"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594198"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Konfigurace koncových bodů sítě služby soubory Azure
 Soubory Azure poskytují dva hlavní typy koncových bodů pro přístup ke sdíleným složkám Azure: 
@@ -218,7 +218,7 @@ New-AzPrivateDnsRecordSet `
 Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfigurovali předávání DNS, jak je popsáno [zde](storage-files-networking-dns.md), můžete otestovat, že váš privátní koncový bod byl nastaven správně pomocí následujících příkazů:
 
 ```PowerShell
-$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.File) | `
+$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
 Resolve-DnsName -Name $storageAccountHostName
@@ -393,7 +393,7 @@ Pokud máte virtuální počítač ve vaší virtuální síti nebo jste nakonfi
 httpEndpoint=$(az storage account show \
         --resource-group $storageAccountResourceGroupName \
         --name $storageAccountName \
-        --query "primaryEndpoints.File" | \
+        --query "primaryEndpoints.file" | \
     tr -d '"')
 
 hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/")

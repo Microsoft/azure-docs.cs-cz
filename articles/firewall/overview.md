@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0bd89a2ffdc15e192e51660c58c1d66efa1284a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209124"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598449"
 ---
 # <a name="what-is-azure-firewall"></a>Co je brána Azure Firewall?
 
@@ -122,6 +122,7 @@ Pravidla síťového filtrování pro jiné protokoly než TCP/UDP (třeba ICMP)
 |DNAT se nepodporuje s povoleným vynuceným tunelovým propojením.|Brány firewall nasazené s povoleným vynuceným tunelovým propojením nemůžou podporovat příchozí přístup z Internetu kvůli asymetrickému směrování.|Jedná se o návrh z důvodu asymetrického směrování. Návratová cesta pro příchozí připojení prochází přes místní bránu firewall, která neviděla navázání připojení.
 |Odchozí pasivní FTP nefunguje pro brány firewall s více veřejnými IP adresami.|Pasivní FTP vytvoří různá připojení pro řídicí a datové kanály. Když brána firewall s více veřejnými IP adresami odesílá odchozí data, náhodně vybere jednu z jejích veřejných IP adres pro zdrojovou IP adresu. FTP se nezdařila, pokud datové a řídicí kanály používají jiné zdrojové IP adresy.|Naplánovala se explicitní konfigurace SNAT. V tuto situaci zvažte použití jediné IP adresy.|
 |V NetworkRuleHitu metriky chybí dimenze protokolu.|Metrika ApplicationRuleHit umožňuje protokol založený na filtrování, ale tato funkce chybí v odpovídající NetworkRuleHitové metrikě.|Probíhá šetření opravy.|
+|Pravidla překladu adres (NAT) s porty mezi 64000 a 65535 nejsou podporovaná.|Azure Firewall povoluje jakýkoli port v rozsahu 1-65535 v pravidlech sítě a aplikace, ale pravidla NAT podporují jenom porty v rozsahu 1-63999.|Toto je aktuální omezení.
 |Aktualizace konfigurace můžou v průměru trvat pět minut.|Aktualizace konfigurace Azure Firewall může v průměru trvat tři až pět minut a paralelní aktualizace nejsou podporované.|Probíhá šetření opravy.
 
 ## <a name="next-steps"></a>Další kroky

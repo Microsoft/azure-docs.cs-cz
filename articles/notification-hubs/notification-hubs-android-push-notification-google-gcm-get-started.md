@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: c938b6174226ef9ea1104c5e95968d6122e922cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7e442d85303485ca8800d4bcb31a9afde06d0e69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72386308"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82595014"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>Kurz: nabízená oznámení na zařízení s Androidem pomocí Azure Notification Hubs a Google Cloud Messaging (nepoužívané)
 
@@ -43,7 +43,7 @@ Vytvoříte prázdnou aplikaci pro Android, která přijímá nabízená oznáme
 > [!IMPORTANT]
 > Toto téma popisuje nabízená oznámení ve službě Google Cloud Messaging (GCM). Pokud používáte Firebase Cloud Messaging (FCM) od Googlu, přečtěte si článek [Odesílání nabízených oznámení do systému Android pomocí služeb Azure Notification Hubs a FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
-Hotový kód z tohoto kurzu si můžete stáhnout z Githubu [tady](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStarted).
+Hotový kód z tohoto kurzu si můžete stáhnout z Githubu [tady](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp).
 
 V tomto kurzu provedete následující akce:
 
@@ -746,4 +746,4 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-[portál Azure]: https://portal.azure.com
+[Portál Azure Portal]: https://portal.azure.com

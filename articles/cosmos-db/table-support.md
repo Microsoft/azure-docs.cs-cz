@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 82397e49e473b8660dfada54a0e05cafe0da4120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65cc378ab5b6fd7d2ed724f56a68bdf989ced48c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770671"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611717"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Vývoj pomocí rozhraní Table API služby Azure Cosmos DB a úložištěm tabulek Azure
 
@@ -34,7 +34,7 @@ Rozhraní Table API služby Azure Cosmos DB a úložiště tabulek Azure sdílej
 * [SDK pro Node. js](table-sdk-nodejs.md): tato sada Azure Storage SDK umožňuje připojení k účtům Azure Cosmos DB pomocí rozhraní API pro tabulky.
 
 
-Další informace o práci s rozhraním Table API jsou dostupné v článku s [častými dotazy o vývoji pomocí rozhraní Table API](faq.md#table).
+Další informace o práci s rozhraním Table API jsou dostupné v článku s [častými dotazy o vývoji pomocí rozhraní Table API](table-api-faq.md).
 
 ## <a name="developing-with-azure-table-storage"></a>Vývoj pomocí úložiště tabulek Azure
 

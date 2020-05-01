@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481411"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597718"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Kurz: Přidání místní aplikace pro vzdálený přístup prostřednictvím proxy aplikace v Azure Active Directory
 
@@ -47,10 +47,12 @@ Pokud chcete použít proxy aplikace, potřebujete Windows Server se systémem W
 Pro zajištění vysoké dostupnosti v produkčním prostředí doporučujeme mít více než jeden Windows Server. Pro tento kurz stačí jeden Windows Server.
 
 > [!IMPORTANT]
-> Pokud instalujete konektor na Windows Server 2019, existuje omezení HTTP2. Alternativním řešením pro použití konektoru v této verzi je přidání následujícího klíče registru a restartování serveru. Poznámka: Jedná se o klíč v registru pro všechny počítače. 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> Pokud instalujete konektor v systému Windows Server 2019, je nutné zakázat podporu protokolu HTTP2 v součásti WinHttp. V dřívějších verzích podporovaných operačních systémů je to ve výchozím nastavení zakázané. Přidáním následujícího klíče registru a restartováním serveru ho zakážete ve Windows serveru 2019. Všimněte si, že se jedná o klíč registru na úrovni počítače.
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>Doporučení pro server konektoru
 

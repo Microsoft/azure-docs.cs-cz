@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376644"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594759"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
 
@@ -85,7 +85,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
    a. V části s obecnými informacemi zaškrtněte políčko **GitHub project** (Projekt GitHub) a zadejte adresu URL vašeho projektu GitHub. Tato adresa je hostitelem aplikace Service Fabric v Javě, kterou chcete integrovat s postupy průběžného nasazování a integrace (CI/CD) Jenkinse (např. ``https://github.com/testaccount/dev_test``).
 
-   b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, které je hostitelem aplikace Service Fabric Java, kterou chcete integrovat s tokem CI/CD Jenkinse (například *https://github.com/testaccount/dev_test.git*). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
+   b. V části **Source Code Management** (Správa zdrojového kódu) vyberte **Git**. Zadejte adresu URL úložiště, které je hostitelem aplikace Service Fabric Java, kterou chcete integrovat s tokem CI/CD Jenkinse (například *`https://github.com/testaccount/dev_test.git`*). V této části můžete také zadat, jaká větev se má sestavit (například **/master**).
 
 1. Nakonfigurujte *GitHub* (který je hostitelem úložiště) tak, aby mohl komunikovat s Jenkinsem. Použijte k tomu následující postup:
 

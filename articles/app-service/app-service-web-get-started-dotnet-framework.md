@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81768878"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592383"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Framework v Azure
 
@@ -138,6 +138,8 @@ Název aplikace zadaný ve **App Service vytvořit novou** stránku se použív�
    ![Přehled App Service v Azure Portal](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
    Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace.
+
+[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

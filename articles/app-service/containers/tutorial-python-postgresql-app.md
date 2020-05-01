@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085752"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609778"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Kurz: nasazení webové aplikace v Pythonu (Django) s PostgreSQL v Azure App Service
 
@@ -133,7 +133,7 @@ Po dokončení příkazu Najděte výstupní řádky, které se nacházejí v `R
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> Pokud chcete zadat umístění serveru Postgres, uveďte argument `--location <location-name>`, kde `<location_name>` je jedna z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Pomocí [`az account list-locations`](/cli/azure/account#az-account-list-locations) příkazu můžete získat oblasti dostupné pro vaše předplatné.
+> `--location <location-name>`, lze nastavit na některou z [oblastí Azure](https://azure.microsoft.com/global-infrastructure/regions/). Pomocí [`az account list-locations`](/cli/azure/account#az-account-list-locations) příkazu můžete získat oblasti dostupné pro vaše předplatné. V produkčních aplikacích uložte svou databázi a aplikaci do stejného umístění.
 
 ## <a name="deploy-the-app-service-app"></a>Nasazení aplikace App Service
 
@@ -149,7 +149,7 @@ Ujistěte se, že jste zpátky v kořenovém adresáři`djangoapp`úložiště (
 Pomocí [`az webapp up`](/cli/azure/webapp#az-webapp-up) příkazu vytvořte aplikaci App Service, jak je znázorněno v následujícím příkladu. Nahraďte * \<název aplikace>* *jedinečným* názvem (koncovým bodem serveru je *https://\<App-Name>. azurewebsites.NET*). Povolené znaky pro * \<název aplikace>* jsou `A` - `Z`, `0` - `9`a `-`.
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ Po dokončení nasazení se zobrazí výstup JSON podobný následujícímu:
 Zkopírujte hodnotu * \<App-Resource-Group>*. Budete ho potřebovat ke konfiguraci aplikace později. 
 
 > [!TIP]
-> Stejný příkaz můžete použít později k nasazení změn a okamžitému povolení diagnostických protokolů pomocí:
+> Příslušná nastavení se uloží do skrytého adresáře *. Azure* v úložišti. Jednoduchý příkaz můžete použít později k opětovnému nasazení změn a okamžitému povolení diagnostických protokolů pomocí:
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 Vzorový kód je teď nasazený, ale aplikace se ještě nepřipojuje k databázi Postgres v Azure. Provedete to dál.
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 Chcete-li znovu nasadit změny, spusťte následující příkaz z kořenového adresáře úložiště:
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service zjistí, že aplikace existuje, a jenom nasadí kód.

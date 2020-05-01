@@ -6,12 +6,12 @@ ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 7f8d21cbccc1a6eec7f62ab5d129f3f0637b8d13
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 606758cf81d069124c67bc06c650b96d91262deb
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085123"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597871"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -104,6 +104,11 @@ Ve složce *Python-docs-Hello-World* , která obsahuje vzorový kód, spusťte n
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
+> [!CAUTION]
+> Pokud používáte **Azure-CLI verze 2.5.0** , existuje regrese v `az webapp up` tom, kde určité scénáře selžou, pokud není `-l <location-name>` tento parametr zahrnutý. Tento problém se [sleduje tady](https://github.com/Azure/azure-cli/issues/13257).  
+> 
+>Můžete zjistit, jakou verzi Azure-CLI používáte s `az --version` příkazem.
+>
 
 `--sku F1` Argument vytvoří webovou aplikaci na cenové úrovni Free. Tento argument vynecháte místo toho, abyste místo toho použili úroveň Premium, což stojí za hodinu.
 

@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048418"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610985"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurace aplikace OpenID/OAuth z Galerie aplikací Azure AD
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>Proces přidání aplikace OpenID z Galerie
 
-1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**. 
+1. V [Azure Portal](https://portal.azure.com)v levém podokně vyberte možnost **Azure Active Directory**.
 
     ![Tlačítko Azure Active Directory](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ Nejzákladnější tok přihlášení obsahuje následující kroky:
 
 ![Tok ověřování pomocí OpenID Connect](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>Víceklientské aplikace 
-Víceklientské aplikace je určena pro použití v mnoha organizacích, nikoli pouze v jedné organizaci. Jsou to obvykle aplikace typu software jako služba (SaaS) napsané nezávislým dodavatelem softwaru (ISV). 
+### <a name="multitenant-application"></a>Víceklientské aplikace
+Víceklientské aplikace je určena pro použití v mnoha organizacích, nikoli pouze v jedné organizaci. Jsou to obvykle aplikace typu software jako služba (SaaS) napsané nezávislým dodavatelem softwaru (ISV).
 
-Víceklientské aplikace je potřeba zřídit v každém adresáři, kde se budou používat. K jejich registraci vyžadují souhlas uživatele nebo správce. Tento postup souhlasu začíná, když je aplikace registrovaná v adresáři a má přístup k Graph API nebo možná jiné webové rozhraní API. Když se uživatel nebo správce z jiné organizace přihlásí k používání aplikace, zobrazí se dialogové okno s oprávněním, která aplikace potřebuje. 
+Víceklientské aplikace je potřeba zřídit v každém adresáři, kde se budou používat. K jejich registraci vyžadují souhlas uživatele nebo správce. Tento postup souhlasu začíná, když je aplikace registrovaná v adresáři a má přístup k Graph API nebo možná jiné webové rozhraní API. Když se uživatel nebo správce z jiné organizace přihlásí k používání aplikace, zobrazí se dialogové okno s oprávněním, která aplikace potřebuje.
 
 Uživatel nebo správce pak mohou aplikaci udělit souhlas. Souhlas poskytne aplikaci přístup k uvedeným datům a nakonec registruje aplikaci v adresáři.
 
 > [!NOTE]
 > Pokud aplikaci zpřístupníte uživatelům ve více adresářích, budete potřebovat mechanismus, který určí, na kterém tenantovi se nachází. Jedna aplikace pro jednoho tenanta potřebuje, aby pro uživatele vypadala jenom ve svém vlastním adresáři. Víceklientská aplikace potřebuje identifikovat konkrétního uživatele ze všech adresářů ve službě Azure AD.
-> 
-> K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může kterákoli klientská aplikace směrovat požadavky na přihlášení místo koncového bodu specifického pro tenanta. Tento koncový bod `https://login.microsoftonline.com/common` je pro všechny adresáře ve službě Azure AD. Může být `https://login.microsoftonline.com/contoso.onmicrosoft.com`koncový bod pro konkrétního tenanta. 
+>
+> K provedení této úlohy Azure AD poskytuje běžný koncový bod ověřování, ve kterém může kterákoli klientská aplikace směrovat požadavky na přihlášení místo koncového bodu specifického pro tenanta. Tento koncový bod `https://login.microsoftonline.com/common` je pro všechny adresáře ve službě Azure AD. Může být `https://login.microsoftonline.com/contoso.onmicrosoft.com`koncový bod pro konkrétního tenanta.
 >
 > Běžný koncový bod je důležité vzít v úvahu při vývoji aplikace. Budete potřebovat potřebnou logiku pro zpracování více tenantů během přihlašování, odhlašování a ověřování tokenu.
 
@@ -80,9 +81,9 @@ Ve výchozím nastavení Azure AD propaguje víceklientské aplikace. Snadno se 
 ## <a name="consent-framework"></a>Rámec pro udělení souhlasu
 
 Pomocí rozhraní pro vyjádření souhlasu Azure AD můžete vyvíjet víceklientské webové a nativní klientské aplikace. Tyto aplikace umožňují přihlášení pomocí uživatelských účtů z klienta služby Azure AD, které se liší od toho, kde je aplikace zaregistrovaná. Můžou taky potřebovat přístup k webovým rozhraním API, jako jsou:
-- Rozhraní Microsoft Graph API pro přístup k Azure AD, Intune a službám v Office 365. 
+- Rozhraní Microsoft Graph API pro přístup k Azure AD, Intune a službám v Office 365.
 - Další rozhraní API služeb Microsoftu.
-- Vaše vlastní webová rozhraní API. 
+- Vaše vlastní webová rozhraní API.
 
 Rozhraní je založeno na uživateli nebo správci, který poskytuje souhlas s aplikací, která je popsána v adresáři. Registrace může zahrnovat přístup k datům adresáře. Po přijetí souhlasu může klientská aplikace zavolat rozhraní API Microsoft Graph jménem uživatele a podle potřeby informace použít.
 
@@ -125,7 +126,7 @@ Následující kroky ukazují, jak funguje souhlas pro vývojáře aplikací a u
 
 3. Pokud uživatel ještě není ověřený, koncový bod Azure AD/Authorize vyzve k přihlášení.
 
-    ![Authentication](./media/openidoauth-tutorial/authentication.png)
+    ![Ověřování](./media/openidoauth-tutorial/authentication.png)
 
 4. Až se uživatel přihlásí, Azure AD určí, jestli se uživatel musí zobrazit na stránce souhlasu. Toto rozhodnutí je založené na tom, jestli uživatel (nebo správce organizace) už udělil souhlas s aplikací.
 
@@ -146,7 +147,7 @@ Jako správce můžete také vyjádřit souhlas s delegovanými oprávněními a
 
 Oprávnění pouze pro aplikace vždy vyžadují souhlas správce tenanta. Pokud vaše aplikace požaduje oprávnění pouze pro přístup k aplikacím a uživatel se pokusí přihlásit k aplikaci, zobrazí se chybová zpráva. Zpráva říká uživateli, že není možné vyjádřit souhlas.
 
-Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect. Tato žádost obsahuje parametr *prompt = admin_consent* řetězec dotazu. 
+Pokud vaše aplikace používá oprávnění, která vyžadují souhlas správce, musíte mít gesto, jako je tlačítko nebo odkaz, kde může správce zahájit akci. Požadavek, který vaše aplikace posílá pro tuto akci, je obvyklým požadavkem na autorizaci OAuth2/OpenID Connect. Tato žádost obsahuje parametr *prompt = admin_consent* řetězec dotazu.
 
 Po souhlasu správce a Vytvoření instančního objektu v tenantovi zákazníka nemusí později žádosti o přihlášení vyžadovat parametr *prompt = admin_consent* . Vzhledem k tomu, že správce rozhodl, že jsou požadovaná oprávnění přijatelná, žádné další uživatele v tenantovi nebudou vyzváni k jejich souhlasu od tohoto okamžiku.
 

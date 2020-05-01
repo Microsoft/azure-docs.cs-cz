@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
+ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421672"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608369"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Převod řeči na text (dílčí graf: grafy/speechToText)
 
@@ -40,3 +40,30 @@ Chcete-li potlačit graf "zastřešující", přidejte `speechToText.` předponu
 | `service.annotations` | Poznámky **k textovému** převodu pro metadata služby. Poznámky jsou páry klíč-hodnota. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | Určuje, zda je [Automatické škálování vodorovně pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) povoleno. Pokud `true`se `speech-to-text-autoscaler` bude nasadit do clusteru Kubernetes. | `true` |
 | `service.podDisruption.enabled` | Zda je povoleno [rozpočet přerušení pod](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Pokud `true`se `speech-to-text-poddisruptionbudget` bude nasadit do clusteru Kubernetes. | `true` |
+
+#### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Analýza mínění (dílčí graf: grafy/speechToText)
+
+Počínaje verzí v 2.2.0 kontejneru řeči a text se k analýze mínění používá následující parametry pomocí rozhraní API pro analýzu textu.
+
+|Parametr|Popis|Hodnoty|Výchozí|
+| --- | --- | --- | --- |
+|`textanalytics.enabled`| Zda je povolena služba **Analýza textu**| true nebo false| `false`|
+|`textanalytics.image.registry`| Registr **Text-Analytics** Docker image| platný registr imagí Docker| |
+|`textanalytics.image.repository`| Úložiště obrázků Docker **pro analýzu textu**| platné úložiště imagí Docker| |
+|`textanalytics.image.tag`| Značka obrázku Docker **pro analýzu textu**| platná značka image Docker| |
+|`textanalytics.image.pullSecrets`| Obrazová tajná zpráva pro vyžádání image Docker pro **analýzu textu**| platný název tajných kódů| |
+|`textanalytics.image.pullByHash`| Určuje, jestli si vybíráte image Docker pomocí algoritmu hash.  Pokud `yes`je `image.hash` třeba, musí mít také. Pokud `no`je nastaveno na hodnotu false (NEPRAVDA). Výchozí je `false`.| true nebo false| `false`|
+|`textanalytics.image.hash`| Hodnota hash obrázku Docker **pro analýzu textu** . Používejte ho jenom s `image.pullByHash:true`.| platná hodnota hash obrázku Docker | |
+|`textanalytics.image.args.eula`| Jeden z požadovaných argumentů kontejneru **Text-Analytics** , který indikuje, že jste přijali licenci. Hodnota této možnosti musí být: `accept`.| `accept`, pokud chcete použít kontejner | |
+|`textanalytics.image.args.billing`| Jeden z požadovaných argumentů kontejneru **Text-Analytics** , který určuje identifikátor URI koncového bodu fakturace. Hodnota identifikátoru URI fakturačního koncového bodu je k dispozici na stránce Přehled řeči Azure Portal.|platný identifikátor URI fakturačního koncového bodu||
+|`textanalytics.image.args.apikey`| Jeden z požadovaných argumentů kontejneru **Text-Analytics** , který se používá ke sledování fakturačních informací.| platný apikey||
+|`textanalytics.cpuRequest`| Požadovaný procesor pro kontejner **Text-Analytics**| int| `3000m`|
+|`textanalytics.cpuLimit`| Omezený procesor pro kontejner **Text-Analytics**| | `8000m`|
+|`textanalytics.memoryRequest`| Požadovaná paměť pro kontejner **Text-Analytics**| | `3Gi`|
+|`textanalytics.memoryLimit`| Omezená paměť pro kontejner **Text-Analytics**| | `8Gi`|
+|`textanalytics.service.sentimentURISuffix`| Přípona identifikátoru URI analýzy mínění je celý identifikátor URI ve formátu "`<service>`http://`<port>`/`<sentimentURISuffix>`:". | | `text/analytics/v3.0-preview/sentiment`|
+|`textanalytics.service.type`| Typ služby **Analýza textu** v Kubernetes. Viz [typy služeb Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/) | platný typ služby Kubernetes | `LoadBalancer` |
+|`textanalytics.service.port`| Port služby **Analýza textu**| int| `50085`|
+|`textanalytics.service.annotations`| Poznámky, které uživatelé mohou přidat do metadat služby **Text-Analytics** . Například:<br/> **anotac**<br/>`   `**některé/annotation1: hodnota1**<br/>`  `**některé/annotation2: hodnota2** | poznámky, jedna na každý řádek| |
+|`textanalytics.serivce.autoScaler.enabled`| Určuje, zda je povoleno [Automatické škálování vodorovně pod](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Pokud je povoleno `text-analytics-autoscaler` , bude nasazena v clusteru Kubernetes. | true nebo false| `true`|
+|`textanalytics.service.podDisruption.enabled`| Určuje, zda je povoleno [rozpočet pod přerušením](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Pokud je povoleno `text-analytics-poddisruptionbudget` , bude nasazena v clusteru Kubernetes.| true nebo false| `true`|

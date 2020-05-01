@@ -3,15 +3,15 @@ title: Zabezpečení vlastního serveru DNS pomocí vazby TLS/SSL
 description: Zabezpečte přístup HTTPS k vlastní doméně vytvořením vazby TLS/SSL s certifikátem. Vylepšete zabezpečení svého webu vynucením protokolu HTTPS nebo TLS 1,2.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811748"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597891"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Zabezpečení vlastního názvu DNS s vazbou TLS/SSL v Azure App Service
 
@@ -83,7 +83,7 @@ Pomocí následující tabulky můžete nakonfigurovat vazbu TLS v dialogu **vaz
 |-|-|
 | Vlastní doména | Název domény, pro kterou chcete přidat vazbu TLS/SSL. |
 | Kryptografický otisk privátního certifikátu | Certifikát, který se má vytvořit. |
-| Typ TLS/SSL | <ul><li>**[Sni SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – přidat lze více vazeb sni SSL. Tato možnost umožňuje více certifikátů TLS/SSL zabezpečit více domén na stejné IP adrese. Většina moderních prohlížečů (včetně aplikací Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (Další informace najdete v tématu [indikace názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – dá se přidat jenom jedna vazba IP SSL. Tato možnost povoluje pouze jeden certifikát TLS/SSL k zabezpečení vyhrazené veřejné IP adresy. Po nakonfigurování vazby použijte postup v části [přemapování záznamu pro IP SSL](#remap-a-record-for-ip-ssl).<br/>IP SSL se podporuje jenom v produkčních nebo izolovaných vrstvách. </li></ul> |
+| Typ TLS/SSL | <ul><li>**[Sni SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – přidat lze více vazeb sni SSL. Tato možnost umožňuje více certifikátů TLS/SSL zabezpečit více domén na stejné IP adrese. Většina moderních prohlížečů (včetně aplikací Internet Explorer, Chrome, Firefox a Opera) podporuje SNI (Další informace najdete v tématu [indikace názvu serveru](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – dá se přidat jenom jedna vazba IP SSL. Tato možnost povoluje pouze jeden certifikát TLS/SSL k zabezpečení vyhrazené veřejné IP adresy. Po nakonfigurování vazby postupujte podle kroků v části [přemapování záznamů pro IP SSL](#remap-records-for-ip-ssl).<br/>IP SSL se podporuje jenom na úrovni **Standard** nebo vyšší. </li></ul> |
 
 Po dokončení operace se stav TLS/SSL vlastní domény změní na **zabezpečeno**.
 
@@ -92,15 +92,17 @@ Po dokončení operace se stav TLS/SSL vlastní domény změní na **zabezpečen
 > [!NOTE]
 > **Zabezpečený** stav ve **vlastních doménách** znamená, že je zabezpečený certifikátem, ale App Service nekontroluje, jestli je certifikát podepsaný svým držitelem nebo pokud vypršela jeho platnost, což může taky způsobit, že se v prohlížečích zobrazí chyba nebo upozornění.
 
-## <a name="remap-a-record-for-ip-ssl"></a>Přemapování záznamu A pro IP SSL
+## <a name="remap-records-for-ip-ssl"></a>Přemapování záznamů pro IP SSL
 
 Pokud ve své aplikaci nepoužíváte IP SSL, přeskočte na [test HTTPS pro vaši vlastní doménu](#test-https).
 
-Ve výchozím nastavení vaše aplikace používá sdílenou veřejnou IP adresu. Když svážete certifikát s IP SSL, App Service vytvoří novou vyhrazenou IP adresu pro vaši aplikaci.
+K dispozici jsou dvě změny, které byste si měli udělat, možná:
 
-Pokud jste namapovali záznam A na svou aplikaci, aktualizujte svůj registr domény pomocí této nové vyhrazené IP adresy.
+- Ve výchozím nastavení vaše aplikace používá sdílenou veřejnou IP adresu. Když svážete certifikát s IP SSL, App Service vytvoří novou vyhrazenou IP adresu pro vaši aplikaci. Pokud jste namapovali záznam A na svou aplikaci, aktualizujte svůj registr domény pomocí této nové vyhrazené IP adresy.
 
-Stránka **vlastní doména** vaší aplikace se aktualizuje o novou vyhrazenou IP adresu. [Zkopírujte tuto IP adresu](app-service-web-tutorial-custom-domain.md#info) a pak [přemapujte záznam A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na tuto novou IP adresu.
+    Stránka **vlastní doména** vaší aplikace se aktualizuje o novou vyhrazenou IP adresu. [Zkopírujte tuto IP adresu](app-service-web-tutorial-custom-domain.md#info) a pak [přemapujte záznam A](app-service-web-tutorial-custom-domain.md#map-an-a-record) na tuto novou IP adresu.
+
+- Pokud máte vazbu sni SSL `<app-name>.azurewebsites.net`k, [přemapujte všechna mapování CNAME](app-service-web-tutorial-custom-domain.md#map-a-cname-record) tak, aby odkazovala na `sni.<app-name>.azurewebsites.net` místo toho `sni` (přidejte předponu).
 
 ## <a name="test-https"></a>Test HTTPS
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238864"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610679"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -65,11 +65,11 @@ Ve vašem zdrojovém prostředí potřebujete jeden vysoce dostupný místní po
 - **Hlavní cílový server**: hlavní cílový Server zpracovává replikační data během navrácení služeb po obnovení z Azure.
 
 
-Všechny tyto součásti jsou nainstalovány společně na jednom místním počítači, který je známý jako *konfigurační server*. Ve výchozím nastavení se pro zotavení po havárii VMware nastaví konfigurační server jako vysoce dostupný virtuální počítač VMware. Pokud to chcete provést, Stáhněte si připravenou šablonu Open Application Virtualization (VAJÍČK) a importujte ji do VMware a vytvořte virtuální počítač. 
+Všechny tyto součásti jsou nainstalovány společně na jednom místním počítači, který je známý jako *konfigurační server*. Ve výchozím nastavení se pro zotavení po havárii VMware nastaví konfigurační server jako vysoce dostupný virtuální počítač VMware. Pokud to chcete provést, Stáhněte si připravenou šablonu Open Application Virtualization (VAJÍČK) a importujte ji do VMware a vytvořte virtuální počítač.
 
 - Na portálu je k dispozici nejnovější verze konfiguračního serveru. Můžete ho také stáhnout přímo z [webu Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 - Pokud z nějakého důvodu nemůžete použít šablonu vajíček k nastavení virtuálního počítače, postupujte podle [těchto pokynů](physical-manage-configuration-server.md) a nastavte konfigurační server ručně.
-- Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. Systém Windows běžící na virtuálním počítači musí být aktivovaný pomocí požadované licence. 
+- Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. Systém Windows běžící na virtuálním počítači musí být aktivovaný pomocí požadované licence.
 
 
 ### <a name="download-the-vm-template"></a>Stažení šablony virtuálního počítače
@@ -77,7 +77,7 @@ Všechny tyto součásti jsou nainstalovány společně na jednom místním poč
 1. V trezoru pokračujte na **Příprava** > **zdroje**infrastruktury.
 2. V části **Připravit zdroj** vyberte **+ Konfigurační server**.
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
-4. Stáhněte šablonu OVF pro konfigurační server.
+4. Stáhněte si šablonu vajíček pro konfigurační server.
 
 
 
@@ -85,7 +85,7 @@ Všechny tyto součásti jsou nainstalovány společně na jednom místním poč
 
 
 1. Pomocí klientské konzoly VMware vSphere Client se přihlaste k VMware vCenter Serveru nebo hostiteli vSphere ESXi.
-2. V nabídce **soubor** vyberte **nasadit šablonu OVF** a spusťte **Průvodce nasazením šablony OVF**. 
+2. V nabídce **soubor** vyberte **nasadit šablonu OVF** a spusťte **Průvodce nasazením šablony OVF**.
 
      ![Šablona OVF](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ Pokud chcete přidat další síťovou kartu ke konfiguračnímu serveru, přide
 
 1. V inventáři konzole vSphere Client klikněte pravým tlačítkem na virtuální počítač a vyberte **Edit Settings** (Upravit nastavení).
 2. V části **Hardware** vyberte **Add** (Přidat) > **Ethernet Adapter** (Adaptér sítě Ethernet). Pak vyberte **Další**.
-3. Vyberte typ adaptéru a síť. 
+3. Vyberte typ adaptéru a síť.
 4. Vyberte **Connect at power on** (Připojit při spuštění), aby se po spuštění virtuálního počítače připojila virtuální síťová karta. Vyberte **Další** > **Dokončit**. Pak vyberte **OK**.
 
 
-## <a name="register-the-configuration-server"></a>Registrace konfiguračního serveru 
+## <a name="register-the-configuration-server"></a>Registrace konfiguračního serveru
 
 Po nastavení konfiguračního serveru ho zaregistrujete v trezoru.
 
@@ -179,7 +179,7 @@ Replikaci pro virtuální počítače povolíte takto:
 3. V části **Typ počítače** vyberte **Virtuální počítače**.
 4. V části **vCenter/vSphere Hypervisor** vyberte hostitele vSphere nebo server vCenter, který spravuje hostitele.
 5. Vyberte procesový server (standardně se instaluje na virtuální počítač konfiguračního serveru). Pak vyberte **OK**. Stav každého procesového serveru je uvedený podle doporučených omezení a dalších parametrů. Vyberte procesový Server v pořádku. Nelze zvolit [kritický](vmware-physical-azure-monitor-process-server.md#process-server-alerts) procesový Server. Můžete buď vyřešit chyby [, vyřešit](vmware-physical-azure-troubleshoot-process-server.md) je, **nebo** nastavit [procesový Server se škálováním na více](vmware-azure-set-up-process-server-scale.md)instancí.
-6. V části **Cíl** vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače, jejichž služby se převezmou při selhání. Používáme model nasazení Resource Manager. 
+6. V části **Cíl** vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače, jejichž služby se převezmou při selhání. Používáme model nasazení Resource Manager.
 7. Vyberte síť Azure a podsíť, ke kterým se připojí virtuální počítače Azure, když se vytvoří po převzetí služeb při selhání.
 8. Vyberte možnost **Nakonfigurovat pro vybrané počítače** a použijte tak nastavení sítě pro všechny virtuální počítače, na kterých jste povolili replikaci. Vyberte **Konfigurovat později** a vyberte síť Azure na jeden počítač.
 9. V **Virtual Machines** > **vyberte virtuální počítače**, vyberte všechny počítače, které chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**. Pokud si nejste schopni zobrazit nebo vybrat žádný konkrétní virtuální počítač, [Přečtěte si další informace](https://aka.ms/doc-plugin-VM-not-showing) o řešení tohoto problému.

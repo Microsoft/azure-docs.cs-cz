@@ -6,18 +6,16 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: d63c143ddbc702f7f3983a9ae5d6d5f2822d9fdc
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 343f74cce03a5ea70d036f5548e523e62b6d211e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560347"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592192"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Kurz: Komplexní ověřování a autorizace uživatelů v Azure App Service v Linuxu
 
-[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. V kurzu se používá aplikace ASP.NET Core s front-endem v Angular.js, ta ale slouží pouze jako příklad. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
-
-Tento kurz na ukázkové aplikaci ukazuje, jak zabezpečit samostatnou aplikaci (v části [Povolení ověřování a autorizace pro back-endové aplikace](#enable-authentication-and-authorization-for-back-end-app)).
+[App Service v systému Linux](app-service-linux-intro.md) poskytuje vysoce škálovatelnou službu s automatickými opravami pro hostování webů pomocí operačního systému Linux. Kromě toho App Service obsahuje integrovanou podporu [ověřování a autorizace uživatelů](../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json). V tomto kurzu se dozvíte, jak zabezpečit své aplikace pomocí s využitím ověřování a autorizace pomocí služby App Service. Jako příklad používá aplikaci ASP.NET Core s front-end v úhlu. js. Ověřování a autorizace pomocí služby App Service podporují moduly runtime všech jazyků a v tomto kurzu můžete zjistit, jak je použít ve vlastním upřednostňovaném jazyce.
 
 ![Jednoduché ověřování a autorizace](./media/tutorial-auth-aad/simple-auth.png)
 
@@ -237,6 +235,8 @@ Znovu vyberte **Azure Active Directory** a pak vyberte **aplikace Azure AD**.
 Zkopírujte **ID klienta** aplikace Azure AD do poznámkového bloku. Tuto hodnotu budete potřebovat později.
 
 ![Rozhraní ASP.NET Core API spuštěné v Azure App Service](./media/tutorial-auth-aad/get-application-id-back-end.png)
+
+Pokud zde zastavíte, máte samostatnou aplikaci, která je už zabezpečená App Service ověřováním a autorizací. V dalších částech se dozvíte, jak zabezpečit řešení Multi-App pomocí "toku" ověřeného uživatele z front-endu do back-endu. 
 
 ### <a name="enable-authentication-and-authorization-for-front-end-app"></a>Povolení ověřování a autorizace pro front-endovou aplikaci
 

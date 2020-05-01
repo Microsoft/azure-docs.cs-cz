@@ -3,14 +3,14 @@ title: Přehled
 description: Zjistěte, jak služba Azure App Service pomáhá nasazovat, hostovat a používat webové aplikace
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 01/04/2017
+ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535634"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597854"
 ---
 # <a name="app-service-overview"></a>Přehled služby App Service
 
@@ -25,6 +25,7 @@ Se službou App Service platíte jenom za výpočetní prostředky Azure, které
 Tady jsou některé klíčové funkce App Service:
 
 * **Více jazyků a rozhraní** – App Service má prvotřídní podporu pro ASP.NET, ASP.NET Core, Java, Ruby, Node. js, php nebo Python. Můžete také spouštět [PowerShell a další skripty nebo spustitelné soubory](webjobs-create.md) jako služby na pozadí.
+* **Spravované provozní prostředí** – App Service automaticky [opraví a udržuje operační systémy a jazykové architektury](overview-patch-os-runtime.md) za vás. Věnujte čas psaní skvělých aplikací a nechte si Azure starosti o této platformě.
 * **Optimalizace DevOps** – Můžete nastavit [kontinuální integraci a nasazování](deploy-continuous-deployment.md) pomocí služeb Azure DevOps, GitHub, BitBucket, Docker Hub nebo Azure Container Registry. Aktualizace lze podporovat prostřednictvím [testovacího a přípravného prostředí](deploy-staging-slots.md). Spravujte aplikace ve službě App Service pomocí prostředí [Azure PowerShell](/powershell/azureps-cmdlets-docs) nebo [multiplatformního rozhraní příkazového řádku (CLI)](/cli/azure/install-azure-cli).
 * **Globální škálování s vysokou dostupností:** Můžete ručně i automaticky škálovat pro [vertikální](manage-scale-up.md) nebo [horizontální](../monitoring-and-diagnostics/insights-how-to-scale.md) navýšení kapacity. Aplikace je možné hostovat kdekoli v globální infrastruktuře datacenter Microsoftu a smlouva [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pro App Service zaručuje vysokou dostupnost.
 * **Připojení k platformám SaaS a místním datům** – Můžete si vybírat z více než 50 [konektorů](../connectors/apis-list.md) pro podnikové systémy (například SAP), služby SaaS (například Salesforce) a internetové služby (například Facebook). Získejte přístup k místním datům pomocí [hybridních připojení](app-service-hybrid-connections.md) a [virtuálních sítí Azure](web-sites-integrate-with-vnet.md).

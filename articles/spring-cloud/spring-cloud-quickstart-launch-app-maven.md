@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
-ms.openlocfilehash: 4eddf34f4887f0e2bad08eb5700d83eaeae0ef7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: f374e0611b887e2a2c787569d9fe58bc1a5c84e9
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81687094"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594062"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Rychlý Start: spuštění aplikace pro jarní Cloud z Azure pomocí modulu plug-in Maven
 
@@ -121,6 +121,6 @@ V tomto rychlém startu jste nasadili jarní cloudovou aplikaci z úložiště M
 
 > [!div class="nextstepaction"]
 > [Příprava aplikace Azure jaře Cloud pro nasazení](spring-cloud-tutorial-prepare-app-deployment.md)
-> další[informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugin)
+> další[informace o modulech plug-in Maven pro Azure](https://github.com/microsoft/azure-maven-plugins)
 
 Další ukázky jsou k dispozici na GitHubu: [ukázky Azure pro jarní Cloud](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql).

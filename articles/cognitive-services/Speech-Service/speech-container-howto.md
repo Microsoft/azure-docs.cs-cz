@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879005"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610733"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Instalace a spuštění kontejnerů služby Speech (verze Preview)
 
@@ -28,7 +28,7 @@ Kontejnery řeči umožňují zákazníkům vytvořit architekturu aplikace pro 
 
 | Funkce | Funkce | Latest (Nejnovější) |
 |--|--|--|
-| Převod řeči na text | Transcribes v reálném čase nepřetržité audio nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.1.1 |
+| Převod řeči na text | Analyzuje mínění a transcribes nepřetržité zvukové nahrávky v reálném čase s využitím mezilehlého výsledku.  | 2.2.0 |
 | Custom Speech na text | Pomocí vlastního modelu z [Custom Speechového portálu](https://speech.microsoft.com/customspeech)transcribes hlasové nahrávky v reálném čase nebo zvukové nahrávky do textu s mezilehlé výsledky. | 2.1.1 |
 | Převod textu na řeč | Převede text na přirozený zvuk řeči pomocí prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
 | Vlastní převod textu na řeč | Pomocí vlastního modelu z [vlastního hlasového portálu](https://aka.ms/custom-voice-portal)převede převod textu na přirozený zvuk hlasu pomocí formátu prostého textu nebo jazyka SSML (Speech syntézy). | 1.3.0 |
@@ -164,7 +164,7 @@ Všechny značky s výjimkou `latest` jsou v následujícím formátu a rozlišu
 Následující značka je příkladem formátu:
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 Pro všechna podporovaná národní prostředí kontejneru **převodů řeči** na text se podívejte na [tagy pro obrázky typu převod řeči na text](../containers/container-image-tags.md#speech-to-text).
@@ -258,6 +258,33 @@ Tento příkaz:
 * Přiděluje 4 jádra procesoru a 4 gigabajty (GB) paměti.
 * Zveřejňuje port TCP 5000 a přiděluje pro kontejner pseudo TTY.
 * Po ukončení automaticky odstraní kontejner. Bitová kopie kontejneru je stále k dispozici na hostitelském počítači.
+
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Analýza mínění na výstup řeči na text 
+
+Počínaje v v 2.2.0 kontejneru převodu řeči na text můžete zavolat [rozhraní mínění Analysis V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) na výstup. K volání analýzy mínění budete potřebovat koncový bod prostředku rozhraní API pro analýzu textu. Příklad: 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+Pokud máte přístup ke koncovému bodu služby Text Analytics v cloudu, budete potřebovat klíč. Pokud používáte Analýza textu místně, možná ho nebudete muset zadávat.
+
+Klíč a koncový bod jsou předány do kontejneru řeči jako argumenty, jak je uvedeno v následujícím příkladu.
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+Tento příkaz:
+
+* Provede stejné kroky jako v příkazu výše.
+* Ukládá rozhraní API pro analýzu textu koncový bod a klíč pro posílání žádostí o analýzu mínění. 
+
 
 # <a name="custom-speech-to-text"></a>[Custom Speech na text](#tab/cstt)
 
@@ -380,6 +407,9 @@ Tento příkaz:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Dotazování koncového bodu předpovědi kontejneru
 
+> [!NOTE]
+> Pokud spouštíte více kontejnerů, použijte jedinečné číslo portu.
+
 | Containers | Adresa URL hostitele sady SDK | Protocol (Protokol) |
 |--|--|--|
 | Převod řeči na text a Custom Speech textu na text | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ Tento příkaz:
 Další informace o používání protokolů WSS a HTTPS najdete v tématu [zabezpečení kontejnerů](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>Analýza mínění
+
+Pokud jste zadali přihlašovací údaje rozhraní API pro analýzu textu [do kontejneru](#analyze-sentiment-on-the-speech-to-text-output), můžete použít sadu Speech SDK k posílání požadavků rozpoznávání řeči s analýzou mínění. Odezvy rozhraní API můžete nakonfigurovat tak, aby používaly buď *jednoduchý* nebo *podrobný* formát.
+
+# <a name="simple-format"></a>[Jednoduchý formát](#tab/simple-format)
+
+Chcete-li nakonfigurovat klienta řeči tak, aby používal jednoduchý formát `"Sentiment"` , přidejte jako hodnotu `Simple.Extensions`pro. Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji `speechcontext-phraseDetection.sentimentAnalysis.modelversion` v konfiguraci vlastností.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions`Vrátí výsledek mínění v kořenové vrstvě odpovědi.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[Podrobný formát](#tab/detailed-format)
+
+Chcete-li nakonfigurovat klienta řeči tak, aby používal podrobný formát `"Sentiment"` , přidejte jako hodnotu `Detailed.Extensions`pro `Detailed.Options`, nebo obojí. Pokud chcete zvolit konkrétní verzi modelu Analýza textu, nahraďte `'latest'` ji `speechcontext-phraseDetection.sentimentAnalysis.modelversion` v konfiguraci vlastností.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions`poskytuje výsledek mínění v kořenové vrstvě odpovědi. `Detailed.Options`poskytuje výsledek ve `NBest` vrstvě odpovědi. Dají se použít samostatně nebo společně.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+Pokud chcete zcela zakázat analýzu mínění, přidejte `false` hodnotu do. `sentimentanalysis.enabled`
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>Převod textu na řeč nebo vlastní převod textu na řeč
 

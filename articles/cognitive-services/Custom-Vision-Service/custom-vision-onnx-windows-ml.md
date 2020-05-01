@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Použití modelu ONNX s Windows ML – Custom Vision Service'
+title: Použití modelu ONNX s Windows ML – Custom Vision Service
 titleSuffix: Azure Cognitive Services
 description: Naučte se vytvořit aplikaci Windows UWP, která používá model ONNX exportovaný ze služby Azure Cognitive Services.
 services: cognitive-services
@@ -7,73 +7,56 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
-ms.topic: tutorial
-ms.date: 04/14/2020
+ms.topic: conceptual
+ms.date: 04/29/2020
 ms.author: pafarley
-ms.openlocfilehash: 0b59321bf04a8230342be706b88cd208c19d76ea
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81404177"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594291"
 ---
-# <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Kurz: Použití modelu ONNX ze služby Custom Vision s Windows ML (Preview)
+# <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Použití modelu ONNX z Custom Vision s Windows ML (Preview)
 
 Naučte se používat model ONNX exportovaný ze služby Custom Vision s Windows ML (Preview).
 
-Informace v tomto dokumentu ukazují, jak používat soubor ONNX exportovaný ze služby Custom Vision Service s Windows ML. K dispozici je ukázková aplikace Windows UWP. Součástí příkladu je také natrénovaný model podporující rozpoznávání. Dále je k dispozici postup, jak s touto ukázkou použít vlastní model.
-
-> [!div class="checklist"]
-> * Informace o ukázkové aplikaci
-> * Získání ukázkového kódu
-> * Spuštění ukázky
-> * Použití vlastního modelu
+V této příručce se dozvíte, jak použít soubor ONNX exportovaný z Custom Vision Service s Windows ML. Ukázkovou aplikaci UWP použijete s vlastním vyškolenou klasifikátorovou imagí.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Windows 10 verze 1809 nebo vyšší
-
 * Windows SDK pro Build 17763 nebo vyšší
-
 * Sadou Visual Studio 2017 verze 15.7 nebo novější s povolenou úlohou __vývoje pro Univerzální platformu Windows__
-
-* Povoleným vývojářským režimem Další informace najdete v dokumentu týkajícím se [povolení zařízení pro vývoj](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
+* V počítači je povolen vývojářský režim. Další informace najdete v tématu [Povolení vývoje zařízení](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
 
 ## <a name="about-the-example-app"></a>Informace o ukázkové aplikaci
 
-Aplikace je obecná aplikace Windows UWP (Univerzální platforma Windows). Umožňuje vybrat obrázek z počítače, který se pak odešle do modelu. Vedle obrázku se zobrazí značky a skóre vrácené modelem.
+Vložená aplikace je obecná aplikace Windows UWP. Umožňuje vybrat obrázek z počítače, který pak zpracovává místně uložený klasifikační model. Vedle obrázku se zobrazí značky a skóre vrácené modelem.
 
 ## <a name="get-the-example-code"></a>Získání ukázkového kódu
 
-Ukázková aplikace je k dispozici na adrese [https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample).
+Ukázková aplikace je k dispozici na [COGNITIVE Services ONNX Custom Vision ukázkové](https://github.com/Azure-Samples/cognitive-services-onnx-customvision-sample) úložiště na GitHubu. Naklonujte ho na místní počítač a otevřete *SampleOnnxEvaluationApp. sln* v aplikaci Visual Studio.
 
-## <a name="run-the-example"></a>Spuštění ukázky
+## <a name="test-the-application"></a>Testování aplikace
 
-1. Ke spuštění aplikace ze sady Visual Studio použijte klávesu `F5`. Může se zobrazit výzva k povolení vývojářského režimu. Další informace najdete v dokumentu týkajícím se [povolení zařízení pro vývoj](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development).
-
-1. Po spuštění aplikace pomocí tlačítka vyberte obrázek k vyhodnocení.
+1. Ke spuštění aplikace ze sady Visual Studio použijte klávesu `F5`. Může se zobrazit výzva k povolení vývojářského režimu.
+1. Po spuštění aplikace pomocí tlačítka vyberte obrázek k vyhodnocení. Výchozí ONNX model je vyškolen pro klasifikaci různých typů plankton.
 
 ## <a name="use-your-own-model"></a>Použití vlastního modelu
 
-Pokud chcete použít vlastní model, postupujte následovně:
+Pokud chcete použít vlastní model klasifikátoru obrázků, postupujte takto:
 
-1. [Vytvořte a natrénujte](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) klasifikátor pomocí služby Custom Vision. Pokud chcete model exportovat, vyberte __kompaktní__ doménu, jako je například doména **Obecná (kompaktní)**. Pokud chcete exportovat existující klasifikátor, vyberte ikonu ozubeného kolečka v pravém horním rohu a převeďte doménu na kompaktní. V __Nastavení__ zvolte kompaktní model a pak projekt uložte a natrénujte.  
-
-1. [Exportujte model](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model) tak, že přejdete na kartu výkon. Vyberte iteraci vyškolenou s kompaktní doménou. zobrazí se tlačítko Export. Vyberte *exportovat*, *ONNX*a pak *exportovat*. Jakmile bude soubor připravený, vyberte tlačítko *Stáhnout*.
-
-1. Umístěte soubor ONNX do složky __Assets__ vašeho projektu. 
-
-1. V Průzkumníku řešení klikněte pravým tlačítkem na složku Assets a vyberte __Přidat existující položku__. Vyberte soubor ONNX.
-
-1. V Průzkumníku řešení vyberte soubor ONNX ze složky Assets. Změňte následující vlastnosti souboru:
-
-    * __Obsah akce sestavení__ -> __Content__
-    * __Kopírovat do výstupního adresáře__ -> ,__Pokud je novější__
-
-1. Hodnotu proměnné `_onnxFileNames` změňte na název souboru ONNX. Upravte také hodnotu proměnné `ClassLabel` na počet popisků, které model obsahuje.
-
-1. Proveďte sestavení a spuštění.
-
+1. Vytvořte a natrénujte klasifikátor pomocí služby Custom Vision. Pokyny k tomu, jak to provést, najdete v tématu [Vytvoření a výuka třídění](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier). Použijte jednu z **kompaktních** domén, jako je například **General (Compact)**. 
+   * Pokud máte existující klasifikátor, který používá jinou doménu, můžete ho převést na **komprimaci** v nastavení projektu. Pak projekt znovu nahlaste, než budete pokračovat.
+1. Exportujte model. Přepněte na kartu výkon a vyberte iteraci, která byla vyškolena s **kompaktní** doménou. Vyberte tlačítko **exportovat** , které se zobrazí. Pak vyberte **ONNX**a pak **exportujte**. Jakmile bude soubor připravený, vyberte tlačítko **Stáhnout**. Další informace o možnostech exportu najdete v tématu [Export modelu](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-your-model).
+1. Otevřete stažený soubor *. zip* a extrahujte z něj soubor *model. Onnx* . Tento soubor obsahuje model třídění.
+1. V Průzkumník řešení v aplikaci Visual Studio klikněte pravým tlačítkem myši na složku **assets** a vyberte možnost __Přidat existující položku__. Vyberte soubor ONNX.
+1. V Průzkumník řešení klikněte pravým tlačítkem na soubor ONNX a vyberte **vlastnosti**. Změňte následující vlastnosti souboru:
+   * __Obsah akce sestavení__ -> __Content__
+   * __Kopírovat do výstupního adresáře__ -> ,__Pokud je novější__
+1. Pak otevřete _MainPage.XAML.cs_ a změňte hodnotu `_ourOnnxFileName` na název vašeho souboru ONNX.
+1. Použijte `F5` k sestavení a spuštění projektu.
 1. Klikněte na tlačítko a vyberte obrázek k vyhodnocení.
 
 ## <a name="next-steps"></a>Další kroky
@@ -85,4 +68,4 @@ Pokud chcete objevit další způsoby, jak exportovat a používat model služby
 * [Použití exportovaného modelu CoreML v aplikaci pro Swift iOS](https://go.microsoft.com/fwlink/?linkid=857726)
 * [Použití exportovaného modelu CoreML v aplikaci pro iOS s Xamarinem](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)
 
-Další informace o používání modelů ONNX s Windows ML najdete v dokumentu týkajícím se [integrace modelu do aplikace s Windows ML](/windows/ai/windows-ml/integrate-model).
+Další informace o používání modelů ONNX s Windows ML najdete v tématu [integrace modelu do vaší aplikace pomocí Windows ml](/windows/ai/windows-ml/integrate-model).

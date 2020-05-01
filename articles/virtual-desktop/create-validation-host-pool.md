@@ -8,14 +8,20 @@ ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f2b51213dfc6d7e55f76e78b92d12111f84736be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b74b7f0b79ad4064d7133a19316d6aec6bd5ba3a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79365385"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611564"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Kurz: Vytvoření fondu hostitelů pro ověření aktualizací služby
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/create-validation-host-pool-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Před nasazením fondů hostitelů do provozního prostředí důrazně doporučujeme vytvořit fond hostitelů ověřování. Aktualizace se používají jako první k ověření fondů hostitelů, takže můžete sledovat aktualizace služby, než je zavedete do produkčního prostředí. Bez hostitelského fondu pro ověřování nesmíte zjišťovat změny, které zavádějí chyby, což by mohlo vést k výpadkům uživatelů v produkčním prostředí.
 
@@ -26,53 +32,51 @@ Problémy v hostitelském fondu ověřování můžete ladit buď pomocí [diagn
 >[!NOTE]
 > Pro otestování všech budoucích aktualizací doporučujeme opustit fond hostitelů ověřování na místě.
 
-Než začnete, [Stáhněte a importujte modul PowerShell virtuálního klienta Windows](/powershell/windows-virtual-desktop/overview/), pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+>[!IMPORTANT]
+>Vydaná vydaná verze virtuálního 2020 počítače s Windows v současné době má potíže s povolením a zakázáním prostředí ověřování. Tento článek aktualizujeme, až problém vyřešíme.
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+## <a name="prerequisites"></a>Požadavky
+
+Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 
 ## <a name="create-your-host-pool"></a>Vytvoření fondu hostitelů
 
 Fond hostitelů můžete vytvořit podle pokynů uvedených v některém z těchto článků:
 - [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
 - [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
 
 ## <a name="define-your-host-pool-as-a-validation-host-pool"></a>Zadejte fond hostitelů jako fond pro ověření ověřování.
 
-Spusťte následující rutiny PowerShellu k definování nového fondu hostitelů jako fondu hostitelů ověření. Hodnoty v uvozovkách nahraďte hodnotami, které jsou relevantní pro vaši relaci:
+Spusťte následující rutiny PowerShellu k definování nového fondu hostitelů jako fondu hostitelů ověření. Hodnoty v závorkách nahraďte hodnotami, které jsou relevantní pro vaši relaci:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-Set-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool" -ValidationEnv $true
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -ValidationEnvironment:$true
 ```
 
-Spuštěním následující rutiny prostředí PowerShell potvrďte, že byla nastavena vlastnost ověření. Hodnoty v uvozovkách nahraďte hodnotami, které jsou relevantní pro vaši relaci.
+Spuštěním následující rutiny prostředí PowerShell potvrďte, že byla nastavena vlastnost ověření. Hodnoty v závorkách nahraďte hodnotami, které jsou relevantní pro vaši relaci.
 
 ```powershell
-Get-RdsHostPool -TenantName $myTenantName -Name "contosoHostPool"
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | Format-List
 ```
 
 Výsledky rutiny by měly vypadat podobně jako tento výstup:
 
-```
-    TenantName          : contoso 
-    TenantGroupName     : Default Tenant Group
-    HostPoolName        : contosoHostPool
+```powershell
+    HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
     Persistent          : False 
-    CustomRdpProperty    : use multimon:i:0;
+    CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
-    ValidationEnv       : True
-    Ring                :
+    ValidationEnvironment : True
 ```
 
 ## <a name="update-schedule"></a>Aktualizovat plán
 
 Aktualizace služby nastávají měsíčně. Pokud dojde k zásadním problémům, budou důležité aktualizace k dispozici při častější rychlosti.
+
+Pokud jsou k dispozici nějaké aktualizace služby, ujistěte se, že máte alespoň malou skupinu uživatelů, kteří si každý den přihlašujei a ověřují prostředí. Doporučujeme, abyste pravidelně navštívili náš [Web TechCommunity](https://techcommunity.microsoft.com/t5/forums/searchpage/tab/message?filter=location&q=wvdupdate&location=forum-board:WindowsVirtualDesktop&sort_by=-topicPostDate&collapse_discussion=true) a provedli jakékoli příspěvky s WVDUPdate, abyste mohli průběžně informovat o aktualizacích služby.
 
 ## <a name="next-steps"></a>Další kroky
 

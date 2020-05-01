@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061141"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594181"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 
@@ -50,9 +50,9 @@ Chcete-li prozkoumat ukázky Node. js, Stáhněte si [klientskou knihovnu pro ú
 
 Chcete-li prozkoumat ukázky jazyka C++, Stáhněte si [knihovnu klienta úložiště c++](https://www.nuget.org/packages/wastorage/) z NuGet.
 
-* [Začínáme s objekty blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
-* [Začínáme s tabulkami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
-* [Začínáme s frontami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
+* [Začínáme s objekty blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
+* [Začínáme s tabulkami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
+* [Začínáme s frontami](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -64,11 +64,11 @@ Pokud chcete prozkoumat ukázky Azure CLI, nejdřív [nainstalujte rozhraní př
 
 ## <a name="api-reference-and-source-code"></a>Reference k rozhraní API a zdrojový kód
 
-| Jazyk | API – referenční informace | Zdrojový kód |
+| Jazyk | referenční dokumentace k rozhraní API | Zdrojový kód |
 |----------|---------------|-------------|
 | .NET | [Reference ke klientské knihovně .NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu úložiště .NET](https://github.com/Azure/azure-storage-net) |
 | Java | [Reference ke klientské knihovně Java](https://docs.microsoft.com/java/api/overview/azure/storage) | [Zdrojový kód pro klientskou knihovnu pro úložiště Java](https://github.com/azure/azure-storage-java) |
-| Python | [Referenční dokumentace klientské knihovny Pythonu](https://azure-storage.readthedocs.io/) | [Zdrojový kód pro knihovnu klienta úložiště Python](https://github.com/Azure/azure-storage-p[ython]) |
+| Python | [Referenční dokumentace klientské knihovny Pythonu](https://azure-storage.readthedocs.io/) | [Zdrojový kód pro knihovnu klienta úložiště Python](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Reference ke klientské knihovně Node. js](https://azure.github.io/azure-storage-node) | [Zdrojový kód pro klientskou knihovnu pro úložiště Node. js](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ – Reference klientské knihovny](https://azure.github.io/azure-storage-cpp/) | [Zdrojový kód pro klientskou knihovnu úložiště C++](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Reference ke knihovně Azure CLI](/cli/azure/storage) | [Zdrojový kód pro klientskou knihovnu Azure CLI Storage](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)
