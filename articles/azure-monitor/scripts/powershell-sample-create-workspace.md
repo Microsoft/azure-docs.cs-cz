@@ -1,21 +1,21 @@
 ---
-title: Vytvoření pracovního prostoru Analýzy protokolů – Azure PowerShell
-description: Ukázka skriptu Azure PowerShell – vytvoření pracovního prostoru analýzy protokolů
+title: Vytvoření pracovního prostoru Log Analytics – Azure PowerShell
+description: Ukázka skriptu Azure PowerShell – vytvoření pracovního prostoru Log Analytics
 ms.subservice: logs
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2017
 ms.openlocfilehash: 62b02de5d1c08f6047052d71e3be420cceb1c5c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80054635"
 ---
-# <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Analýzy protokolů pomocí Prostředí PowerShell
+# <a name="create-a-log-analytics-workspace-with-powershell"></a>Vytvoření pracovního prostoru Log Analytics pomocí prostředí PowerShell
 
-Tento skript vás rychle zprovozní pomocí pracovního prostoru Azure Log Analytics, který je povinný, pokud chcete začít shromažďovat, analyzovat a dělat akce s daty.  
+Tento skript vám umožní rychle začít pracovat s pracovním prostorem Azure Log Analytics, který je nutný, pokud chcete začít shromažďovat, analyzovat a provádět akce s daty.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -29,12 +29,12 @@ Tento skript vás rychle zprovozní pomocí pracovního prostoru Azure Log Analy
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nového pracovního prostoru Log Analytics ve vašem předplatném. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript pomocí následujících příkazů vytvoří nový pracovní prostor Log Analytics v předplatném. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzOperationalInsightsPracovní prostor](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Získá informace o existujícím pracovním prostoru. |
-| [Nový-AzOperationalInsightsPracovní prostor](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |
+| [Get-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace) | Načte informace o existujícím pracovním prostoru. |
+| [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace) | Vytvoří pracovní prostor v zadané skupině prostředků a umístění. |
 
 
 ## <a name="next-steps"></a>Další kroky
