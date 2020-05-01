@@ -1,5 +1,5 @@
 ---
-title: Správa sdílených složek Azure pomocí Azure Storage Exploreru
+title: Správa sdílených složek Azure pomocí Průzkumník služby Azure Storage
 description: V tomto rychlém startu zjistíte, jak pomocí Průzkumníka služby Azure Storage spravovat službu Soubory Azure.
 author: roygara
 ms.service: storage
@@ -8,10 +8,10 @@ ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 0bf66baba1b665c92a11d7bda91dcaa3e355dd96
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75431826"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>Rychlý start: Vytváření a správa sdílených složek Azure pomocí Průzkumníka služby Azure Storage
@@ -19,7 +19,7 @@ Tato příručka vás provede základy práce se [sdílenými složkami Azure](s
 
 Průzkumník služby Azure Storage je oblíbený klientský nástroj, který je k dispozici pro Windows, macOS a Linux. Můžete ho použít ke správě sdílených složek Azure a dalších prostředků úložiště.
 
-Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) než začnete.
+Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 Tento postup vyžaduje nainstalovaného Průzkumníka služby Storage. Stáhnout ho a následně ho nainstalovat můžete ze stránky [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
@@ -49,7 +49,7 @@ Vytvoření první sdílené složky Azure v účtu úložiště `storageacct<ra
 
 3. Zadejte *myshare* jako název sdílené složky a potom stiskněte Enter.
 
-Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Úplné podrobnosti o pojmenování sdílených složek a souborů naleznete v [tématu Pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Názvy sdílených složek mohou obsahovat pouze malá písmena, číslice a spojovníky (nesmí ale spojovníkem začínat). Podrobné informace o pojmenovávání sdílených složek a souborů najdete v tématu [pojmenování a odkazování na sdílené složky, adresáře, soubory a metadata](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
 Po vytvoření sdílené složky se v pravém podokně otevře karta. 
 

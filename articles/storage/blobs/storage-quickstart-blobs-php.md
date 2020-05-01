@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68726393"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>Přenos objektů do a z úložiště objektů blob v Azure pomocí PHP
@@ -21,7 +21,7 @@ V tomto rychlém startu zjistíte, jak pomocí PHP nahrávat, stahovat a vypisov
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Ujistěte se, že máte nainstalovány následující další požadavky:
+Ujistěte se, že máte nainstalované následující další požadavky:
 
 * [PHP](https://php.net/downloads.php)
 * [Azure Storage SDK pro PHP](https://github.com/Azure/azure-storage-php)
@@ -29,7 +29,7 @@ Ujistěte se, že máte nainstalovány následující další požadavky:
 ## <a name="download-the-sample-application"></a>Stažení ukázkové aplikace
 [Ukázková aplikace](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git) použitá v tomto rychlém startu je základní aplikace PHP.  
 
-Pomocí [gitu](https://git-scm.com/) stáhněte kopii aplikace do vývojového prostředí. 
+Pomocí [Gitu](https://git-scm.com/) si stáhněte kopii aplikace do vývojového prostředí. 
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-blobs-php-quickstart.git
@@ -207,7 +207,7 @@ Prohlédněte si tyto další zdroje informací o vývoji v PHP s využitím úl
 V tomto rychlém startu jste zjistili, jak přenášet soubory mezi místním diskem a úložištěm objektů blob v Azure pomocí PHP. Další informace o práci s PHP najdete v našem Centru pro vývojáře PHP.
 
 > [!div class="nextstepaction"]
-> [Centrum vývojářů PHP](https://azure.microsoft.com/develop/php/)
+> [Středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/)
 
 
 Další informace o Průzkumníku služby Storage a objektech blob najdete v tématu [Správa prostředků úložiště objektů blob v Azure pomocí Průzkumníka služby Storage](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
