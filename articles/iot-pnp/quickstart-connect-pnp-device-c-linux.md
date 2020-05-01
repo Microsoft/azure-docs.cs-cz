@@ -1,6 +1,6 @@
 ---
-title: Připojení ukázkového kódu zařízení IoT Plug and Play Preview ke službě IoT Hub (Linux) | Dokumenty společnosti Microsoft
-description: Na Linuxu můžete vytvářet a spouštět ukázkový kód zařízení IoT Plug and Play Preview, který se připojuje k centru IoT. Pomocí rozhraní příkazového příkazu Azure zobrazte informace odeslané zařízením do centra.
+title: Připojte si ukázkový kód zařízení ve službě IoT technologie Plug and Play Preview k IoT Hub (Linux) | Microsoft Docs
+description: Sestavte a spouštějte ukázkový kód zařízení ve verzi IoT technologie Plug and Play v systému Linux, který se připojuje ke centru IoT. K zobrazení informací odesílaných zařízením do centra použijte rozhraní příkazového řádku Azure CLI.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/23/2019
@@ -9,34 +9,34 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 8134c0a97f6350cfa2cf616695c5990618455393
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75531245"
 ---
-# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Úvodní příručka: Připojení ukázkové aplikace zařízení IoT Plug and Play Preview spuštěné na Linuxu k IoT Hubu (C Linux)
+# <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-running-on-linux-to-iot-hub-c-linux"></a>Rychlý Start: připojení ukázkové aplikace IoT technologie Plug and Play ve verzi Preview, která běží na Linux, do IoT Hub (C Linux)
 
 [!INCLUDE [iot-pnp-quickstarts-2-selector.md](../../includes/iot-pnp-quickstarts-2-selector.md)]
 
-Tento rychlý start ukazuje, jak vytvořit ukázkovou aplikaci zařízení IoT Plug and Play v Linuxu, připojit ji k vašemu bub IoT a použít rozhraní příkazového příkazu K Azure k zobrazení informací, které odesílá do centra. Ukázková aplikace je napsaná v C a je součástí sady Azure IoT device SDK for C. Vývojář řešení můžete použít Azure CLI pochopit možnosti zařízení IoT Plug and Play bez nutnosti zobrazit kód zařízení.
+V tomto rychlém startu se dozvíte, jak vytvořit ukázkovou aplikaci IoT technologie Plug and Play zařízení v systému Linux, připojit ji ke službě IoT BUB a pomocí Azure CLI zobrazit informace, které odesílá do centra. Ukázková aplikace je napsaná v jazyce C a je obsažená v sadě SDK pro zařízení Azure IoT pro jazyk C. Vývojář řešení může pomocí Azure CLI porozumět možnostem zařízení technologie Plug and Play IoT, aniž by musel zobrazovat žádný kód zařízení.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tento rychlý start předpokládá, že používáte Ubuntu Linux. Kroky v tomto tutoriálu byly testovány pomocí Ubuntu 18.04.
+V tomto rychlém startu se předpokládá, že používáte Ubuntu Linux. Kroky v tomto kurzu byly testovány pomocí Ubuntu 18,04.
 
-Chcete-li dokončit tento rychlý start, je třeba nainstalovat následující software na místním počítači s Linuxem:
+K dokončení tohoto rychlého startu je potřeba na svém místním počítači se systémem Linux nainstalovat následující software:
 
-Nainstalujte **gcc**, **git**, **cmake** `apt-get` a všechny závislosti pomocí příkazu:
+Pomocí `apt-get` příkazu nainstalujte **RSZ**, **Git**, **cmake**a všechny závislosti:
 
 ```sh
 sudo apt-get update
 sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
 ```
 
-Ověřte, `cmake` zda je verze písmene a) vyšší než **2.8.12** a verze **GCC** je vyšší než **4.4.7**.
+Ověřte, že verze `cmake` nástroje je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
 
 ```sh
 cmake --version
@@ -47,9 +47,9 @@ gcc --version
 
 ## <a name="prepare-the-development-environment"></a>Příprava vývojového prostředí
 
-V tomto rychlém startu připravíte vývojové prostředí, které můžete použít ke klonování a sestavení sady Azure IoT Hub Device C SDK.
+V tomto rychlém startu připravíte vývojové prostředí, které můžete použít k klonování a sestavování sady Azure IoT Hub zařízení C SDK.
 
-Otevřete příkazový řádek v adresáři, který si vyberete. Spusťte následující příkaz pro klonování úložiště GitHub [Azure IoT C a knihovny](https://github.com/Azure/azure-iot-sdk-c) GitHub do tohoto umístění:
+Otevřete příkazový řádek v adresáři dle vašeho výběru. Spusťte následující příkaz, který naklonuje úložiště GitHub sady [Azure IoT C a knihovny](https://github.com/Azure/azure-iot-sdk-c) do tohoto umístění:
 
 ```bash
 git clone https://github.com/Azure/azure-iot-sdk-c --recursive -b public-preview
@@ -59,9 +59,9 @@ Buďte připravení na to, že může trvat i několik minut, než se tato opera
 
 ## <a name="build-the-code"></a>Sestavení kódu
 
-Pomocí sady SDK zařízení můžete vytvořit přiložený ukázkový kód. Aplikace, kterou vytvoříte, simuluje zařízení, které se připojuje k centru IoT. Aplikace odesílá telemetrii a vlastnosti a přijímá příkazy.
+Pomocí sady SDK pro zařízení sestavíte zahrnutý vzorový kód. Vytvořená aplikace simuluje zařízení, které se připojuje ke službě IoT Hub. Aplikace odesílá telemetrie a vlastnosti a přijímá příkazy.
 
-1. Vytvořte `cmake` podadresář v kořenové složce sady SDK zařízení a přejděte do této složky:
+1. `cmake` V kořenové složce sady SDK pro zařízení vytvořte podadresář a přejděte do této složky:
 
     ```bash
     cd azure-iot-sdk-c
@@ -69,7 +69,7 @@ Pomocí sady SDK zařízení můžete vytvořit přiložený ukázkový kód. Ap
     cd cmake
     ```
 
-1. Spusťte následující příkazy k vytvoření sady SDK zařízení a generovaného kódu se zakázaným inzerováním:
+1. Spusťte následující příkazy a Sestavte sadu SDK pro zařízení a vygenerovanou zástupné kódy:
 
     ```bash
     cmake ..
@@ -78,29 +78,29 @@ Pomocí sady SDK zařízení můžete vytvořit přiložený ukázkový kód. Ap
 
 ## <a name="update-your-model-repository"></a>Aktualizace úložiště modelu
 
-Před spuštěním ukázky přidejte model schopností zařízení a definice rozhraní do úložiště firemního modelu:
+Před spuštěním ukázky přidejte do úložiště podnikového modelu model funkce zařízení a definice rozhraní:
 
-1. Pokud ho máte, přihlaste se na [portál Azure Certified for IoT portal](https://preview.catalog.azureiotsolutions.com) pomocí pracovního nebo školního účtu Microsoftu nebo ID partnera Microsoftu.
+1. Přihlaste se na portál [Azure Certified for IoT Portal](https://preview.catalog.azureiotsolutions.com) pomocí pracovního nebo školního účtu Microsoft nebo svého ID partnera Microsoftu, pokud ho máte.
 
-1. Vyberte **úložiště společnosti** a potom **modely schopností**.
+1. Vyberte **úložiště společnosti** a pak **modely schopností**.
 
-1. Vyberte **Nový** a potom **nahrát**.
+1. Vyberte **Nový** a potom **Odeslat**.
 
-1. Vyberte `SampleDevice.capabilitymodel.json` soubor `digitaltwin_client/samples` ve složce v kořenové složce sady SDK zařízení. Vyberte **Otevřít** a pak **Uložit,** chcete-li soubor modelu nahrát do úložiště.
+1. Vyberte soubor `SampleDevice.capabilitymodel.json` ve `digitaltwin_client/samples` složce v kořenové složce sady SDK pro zařízení. Vyberte **otevřít** a pak **Uložit** a nahrajte soubor modelu do úložiště.
 
 1. Vyberte **úložiště společnosti** a potom **rozhraní**.
 
-1. Vyberte **Nový** a potom **nahrát**.
+1. Vyberte **Nový** a potom **Odeslat**.
 
-1. Vyberte `EnvironmentalSensor.interface.json` soubor `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` ve složce v kořenové složce sady SDK zařízení. Vyberte **Otevřít** a pak **Uložit,** chcete-li nahrát soubor rozhraní do úložiště.
+1. Vyberte soubor `EnvironmentalSensor.interface.json` ve `digitaltwin_client/samples/digitaltwin_sample_environmental_sensor` složce v kořenové složce sady SDK pro zařízení. Vyberte **otevřít** a pak **Uložit** a nahrajte soubor rozhraní do úložiště.
 
-1. Vyberte **úložiště společnosti** a potom **připojovací řetězce**. Poznamenejte si první _připojovací řetězec úložiště modelu společnosti_, jak jej použít později v tomto rychlém startu.
+1. Vyberte **úložiště společnosti** a pak **připojovací řetězce**. Poznamenejte si první _připojovací řetězec úložiště modelu společnosti_, jak ho použijete později v tomto rychlém startu.
 
 ## <a name="run-the-device-sample"></a>Spuštění ukázky zařízení
 
-Spusťte ukázkovou aplikaci v sadě SDK a simulujte zařízení IoT Plug and Play, které odesílá telemetrii do vašeho centra IoT Hub. Spuštění ukázkové aplikace:
+Spusťte v sadě SDK ukázkovou aplikaci, která simuluje zařízení IoT technologie Plug and Play, které odesílá telemetrii do služby IoT Hub. Spuštění ukázkové aplikace:
 
-1. Ze `cmake` složky přejděte do složky obsahující spustitelný soubor:
+1. Ve `cmake` složce přejděte do složky, která obsahuje spustitelný soubor:
 
     ```bash
     cd digitaltwin_client/samples/digitaltwin_sample_device
@@ -112,19 +112,19 @@ Spusťte ukázkovou aplikaci v sadě SDK a simulujte zařízení IoT Plug and Pl
     ./digitaltwin_sample_device "<YourDeviceConnectionString>"
     ```
 
-Zařízení je nyní připraveno přijímat příkazy a aktualizace vlastností a začalo odesílat telemetrická data do centra. Po nechat vzorek běží při dokončení dalších kroků.
+Zařízení je teď připravené přijmout příkazy a aktualizace vlastností a zahájilo posílání dat telemetrie do centra. Ponechte ukázku spuštěnou při dokončení dalších kroků.
 
-### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>Ověření kódu pomocí příkazového příkazu Konitolu Azure IoT
+### <a name="use-the-azure-iot-cli-to-validate-the-code"></a>Použití rozhraní příkazového řádku Azure IoT k ověření kódu
 
-Po spuštění ukázky klienta zařízení ověřte, že pracuje s rozhraním příkazového příkazového příkazu Kaviádu Azure.
+Po spuštění ukázky klienta zařízení ověřte, že funguje s rozhraním příkazového řádku Azure CLI.
 
-Pomocí následujícího příkazu zobrazíte telemetrii, kterou ukázkové zařízení odesílá. Možná budete muset počkat minutu nebo dvě, než se zobrazí všechny telemetrie ve výstupu:
+Pomocí následujícího příkazu můžete zobrazit telemetrii, kterou ukázkové zařízení odesílá. Před zobrazením jakékoli telemetrie ve výstupu možná budete muset počkat jednu nebo dvě minuty:
 
 ```azurecli-interactive
 az iot dt monitor-events --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Pomocí následujícího příkazu můžete zobrazit vlastnosti odeslané zařízením:
+K zobrazení vlastností odesílaných zařízením použijte následující příkaz:
 
 ```azurecli-interactive
 az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID> --interface sensor --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
@@ -133,7 +133,7 @@ az iot dt list-properties --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste se naučili, jak připojit zařízení IoT Plug and Play k centru IoT. Další informace o tom, jak vytvořit řešení, které spolupracuje s vašimi zařízeními IoT Plug and Play, najdete v tématu:
+V tomto rychlém startu jste se naučili připojit zařízení IoT technologie Plug and Play ke službě IoT Hub. Další informace o tom, jak vytvořit řešení, které komunikuje s technologie Plug and Play vašich zařízení IoT, najdete tady:
 
 > [!div class="nextstepaction"]
-> [Postup: Připojení k zařízení a interakce se zařízením](howto-develop-solution.md)
+> [Postupy: připojení k zařízení a práce s nimi](howto-develop-solution.md)

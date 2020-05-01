@@ -1,7 +1,7 @@
 ---
 title: 'Generování a export certifikátů pro P2S: PowerShell'
 titleSuffix: Azure VPN Gateway
-description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí PowerShellu ve Windows 10 nebo Windows Server 2016.
+description: Vytvořte kořenový certifikát podepsaný svým držitelem, exportujte veřejný klíč a vygenerujte klientské certifikáty pomocí prostředí PowerShell ve Windows 10 nebo Windows serveru 2016.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
 ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279335"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro point-to-site pomocí prostředí PowerShell
+# <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generování a export certifikátů pro Point-to-site pomocí PowerShellu
 
-Připojení typu Point-to-Site používají k ověření certifikáty. Tento článek ukazuje, jak vytvořit kořenový certifikát podepsaný svým držitelem a generovat klientské certifikáty pomocí PowerShellu ve Windows 10 nebo Windows Server 2016. Pokud hledáte různé pokyny k certifikátu, přečtěte si [informace o certifikátech – Linux](vpn-gateway-certificates-point-to-site-linux.md) nebo [Certificates - MakeCert](vpn-gateway-certificates-point-to-site-makecert.md).
+Připojení Point-to-site používají k ověřování certifikáty. V tomto článku se dozvíte, jak vytvořit kořenový certifikát podepsaný svým držitelem a jak vygenerovat klientské certifikáty pomocí prostředí PowerShell ve Windows 10 nebo Windows serveru 2016. Pokud hledáte jiné pokyny k certifikátu, přečtěte si téma [certifikáty-Linux](vpn-gateway-certificates-point-to-site-linux.md) nebo [certifikáty-Makecert](vpn-gateway-certificates-point-to-site-makecert.md).
 
-Kroky uvedené v tomto článku je nutné provést v počítači se systémem Windows 10 nebo Windows Server 2016. Rutiny prostředí PowerShell, které slouží ke generování certifikátů, jsou součástí operačního systému a nefungují v jiných verzích systému Windows. Počítač se systémem Windows 10 nebo Windows Server 2016 je potřeba pouze ke generování certifikátů. Jakmile jsou certifikáty vygenerovány, můžete je nahrát nebo nainstalovat do libovolného podporovaného klientského operačního systému.
+Kroky v tomto článku je nutné provést v počítači se systémem Windows 10 nebo Windows Server 2016. Rutiny PowerShellu, které použijete k vygenerování certifikátů, jsou součástí operačního systému a nefungují v ostatních verzích Windows. Počítač s Windows 10 nebo Windows serverem 2016 je potřeba jenom k vygenerování certifikátů. Po vygenerování certifikátů je můžete nahrát nebo nainstalovat na libovolný podporovaný klientský operační systém.
 
-Pokud nemáte přístup k počítači se systémem Windows 10 nebo Windows Server 2016, můžete ke generování certifikátů použít [makecert.](vpn-gateway-certificates-point-to-site-makecert.md) Certifikáty, které generujete pomocí obou metod, lze nainstalovat do libovolného [podporovaného](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientského operačního systému.
+Pokud nemáte přístup k počítači s Windows 10 nebo Windows Server 2016, můžete k vygenerování certifikátů použít [Makecert](vpn-gateway-certificates-point-to-site-makecert.md) . Certifikáty, které vygenerujete pomocí kterékoli z těchto metod, můžete nainstalovat na libovolný [podporovaný](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq) klientský operační systém.
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
 ## <a name="install-an-exported-client-certificate"></a><a name="install"></a>Instalace exportovaného klientského certifikátu
 
-Každý klient, který se připojuje k virtuální síti přes připojení P2S, vyžaduje, aby byl klientský certifikát nainstalován místně.
+Každý klient, který se připojuje k virtuální síti přes připojení P2S, vyžaduje místní instalaci klientského certifikátu.
 
-Informace o instalaci klientského certifikátu naleznete [v tématu Instalace klientského certifikátu pro připojení typu Point-to-Site](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Informace o instalaci klientského certifikátu najdete v tématu [instalace klientského certifikátu pro připojení typu Point-to-site](point-to-site-how-to-vpn-client-install-azure-cert.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokračujte v konfiguraci bodu na pracoviště.
+Pokračujte v konfiguraci Point-to-site.
 
-* Kroky modelu nasazení **Správce prostředků** [najdete v tématu Konfigurace P2S pomocí nativního ověřování certifikátu Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
-* Klasické **classic** kroky modelu nasazení najdete [v tématu Konfigurace připojení VPN bodu k lokalitě k virtuální síti (klasické).](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
+* Postup **správce prostředkůho** modelu nasazení najdete v tématu [Konfigurace P2S pomocí nativního ověřování certifikátů Azure](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
+* Postup pro model nasazení **Classic** najdete v tématu [Konfigurace připojení VPN typu Point-to-site k virtuální síti (Classic)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
