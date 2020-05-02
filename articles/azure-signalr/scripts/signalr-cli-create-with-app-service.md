@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby SignalR se službou App Service pomocí azure cli
-description: Pomocí azure cli vytvořit signalr služby s app service. Naučte se všechny příkazy příkazu příkazu příkazu pro službu Azure SignalR.
+title: Vytvoření služby signalizace pomocí služby App Service pomocí rozhraní příkazového řádku Azure
+description: Pomocí Azure CLI vytvořte službu signalizace s App Service. Seznamte se s příkazy rozhraní příkazového řádku pro službu Azure Signal.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158022"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Vytvoření služby SignalR s využitím služby App Service
