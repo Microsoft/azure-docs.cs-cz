@@ -697,6 +697,8 @@
               href: mongodb-feature-support-36.md
             - name: Podpora přenosového protokolu (3.2)
               href: mongodb-feature-support.md
+            - name: Nejčastější dotazy
+              href: mongodb-api-faq.md
         - name: Návody
           items:
             - name: Průvodce před migrací
@@ -763,6 +765,10 @@
           items:
             - name: 1. Dotazování dat
               href: tutorial-query-graph.md
+        - name: Koncepty
+          items:
+            - name: Nejčastější dotazy
+              href: gremlin-api-faq.md
         - name: Návody
           items:
             - name: Modelování dat grafů
@@ -844,6 +850,10 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
+        - name: Koncepty
+          items:
+            - name: Nejčastější dotazy
+              href: table-api-faq.md
         - name: Návody
           items:
             - name: Vytváření aplikací s využitím Table API

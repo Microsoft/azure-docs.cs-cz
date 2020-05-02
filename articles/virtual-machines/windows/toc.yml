@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Řada NVv4
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Nastavení ovladačů GPU
+            - name: Nastavení ovladačů NVIDIA GPU
               href: n-series-driver-setup.md
             - name: Nastavení ovladačů AMD GPU
               href: n-series-amd-driver-setup.md

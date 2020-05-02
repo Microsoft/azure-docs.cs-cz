@@ -109,7 +109,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: Nastavení ovladačů GPU
+            - name: Nastavení ovladačů NVIDIA GPU
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Vysokovýkonné výpočetní prostředí

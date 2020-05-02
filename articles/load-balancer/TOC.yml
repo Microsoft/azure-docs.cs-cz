@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
-    - name: Komponenty a omezení
-      href: concepts-limitations.md
+    - name: Komponenty
+      href: components.md
+    - name: Koncepty
+      href: concepts.md
+    - name: Typy
+      href: types.md
     - name: Monitorování stavu
       items:
         - name: Sondy stavu
@@ -133,6 +137,8 @@
       items:
         - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
           href: load-balancer-troubleshoot.md
+        - name: Řešení potíží s běžnými chybami nasazení
+          href: load-balancer-common-deployment-errors.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů
