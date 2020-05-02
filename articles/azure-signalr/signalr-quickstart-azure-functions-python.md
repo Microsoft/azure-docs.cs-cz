@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR Service rychlý start bez serveru - Python
+title: Rychlý Start bez serveru služby signálů Azure – Python
 description: Rychlé zprovoznění popisující vytvoření chatovací místnosti pomocí služby Azure SignalR Service a Azure Functions.
 author: anthonychu
 ms.service: signalr
@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75392155"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Úvodní příručka: Vytvoření chatovací místnosti pomocí Azure Functions and SignalR Service pomocí Pythonu
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí Pythonu
 
 Služba Azure SignalR Service umožňuje snadné přidávání funkcí v reálném čase do aplikací. Řešení Azure Functions představuje bezserverovou platformu, která umožňuje spouštět kód, aniž byste museli spravovat nějakou infrastrukturu. V tomto Rychlém zprovoznění se dozvíte, jak pomocí služby SignalR Service a Functions sestavit bezserverovou aplikaci pro chat v reálném čase.
 
@@ -24,9 +24,9 @@ Toto Rychlé zprovoznění je možné spustit v systémech macOS, Windows nebo L
 
 Budete potřebovat nainstalovaný editor kódu, jako je třeba [Visual Studio Code](https://code.visualstudio.com/).
 
-Nainstalujte [nástroje Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (verze 2.7.1505 nebo vyšší) a spusťte aplikace Python Azure Function místně.
+Pokud chcete spouštět aplikace funkcí v Pythonu pro Azure místně, nainstalujte [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (verze 2.7.1505 nebo novější).
 
-Funkce Azure vyžaduje [Python 3.6 nebo 3.7](https://www.python.org/downloads/).
+Azure Functions vyžaduje [Python 3,6 nebo 3,7](https://www.python.org/downloads/).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -50,9 +50,9 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
     ![Vytvoření služby SignalR Service](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. V editoru kódu otevřete složku *src/chat/python* v naklonovaném úložišti.
+1. V editoru kódu otevřete složku *Src/chat/Python* v klonovaném úložišti.
 
-1. Chcete-li místně vyvíjet a testovat funkce Pythonu, musíte pracovat v prostředí Pythonu 3.6 nebo 3.7. Spusťte následující příkazy a vytvořte `.venv`a aktivujte virtuální prostředí s názvem .
+1. Aby bylo možné místně vyvíjet a testovat funkce Pythonu, je nutné pracovat v prostředí Python 3,6 nebo 3,7. Spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv`.
 
     **Linux nebo macOS:**
 
@@ -61,7 +61,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     source .venv/bin/activate
     ```
 
-    **Windows:**
+    **Systému**
 
     ```powershell
     py -3.7 -m venv .venv
@@ -72,12 +72,12 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
-1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *function.json* definuje vazby, které se používají ve funkci a * \_ \_init\_\_.py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
+1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *Function. JSON* definuje vazby používané ve funkci a * \_ \_init\_\_. py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **messages** – přijímá zprávy chatu v textu požadavku a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.
 
-1. V terminálu s aktivovaným virtuálním prostředím se ujistěte, že jste ve složce *src/chat/python.* Nainstalujte potřebné balíčky Pythonu pomocí PIP.
+1. V terminálu s aktivovaným virtuálním prostředím se ujistěte, že jste ve složce *Src/chat/Python* . Pomocí PIP nainstalujte potřebné balíčky Pythonu.
 
     ```bash
     python -m pip install -r requirements.txt
@@ -89,7 +89,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
     func start
     ```
 
-    ![Spustit aplikaci funkcí](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
+    ![Spustit aplikaci Function App](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
@@ -97,7 +97,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili a spustili aplikaci bez serveru v reálném čase v kódu VS. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
+V tomto rychlém startu jste v VS Code vytvořili a spustili aplikaci bez serveru v reálném čase. Dále můžete získat více informací o postupu nasazení Azure Functions přes VS Code.
 
 > [!div class="nextstepaction"]
 > [Nasazení Azure Functions přes VS Code](/azure/javascript/tutorial-vscode-serverless-node-01)

@@ -1,6 +1,6 @@
 ---
-title: Registrace zařízení TPM do služby Azure Device Provisioning Service pomocí Pythonu
-description: Úvodní příručka – registrace zařízení TPM do služby Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby zřizování Pythonu. V tomto rychlém startu se používají jednotlivé registrace.
+title: Registrace zařízení TPM do služby Azure Device Provisioning pomocí Pythonu
+description: Rychlý Start – registrace zařízení TPM do Azure IoT Hub Device Provisioning Service (DPS) pomocí sady SDK služby zřizování pro Python V tomto rychlém startu se používají jednotlivé registrace.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -10,28 +10,28 @@ services: iot-dps
 ms.devlang: python
 ms.custom: mvc
 ms.openlocfilehash: c5fe0a577ead9d8c6408d4268d21465a7b762b6d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77920616"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Úvodní příručka: Registrace zařízení TPM do služby zřizování zařízení služby IoT Hub pomocí zřizovací služby Pythonu SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
-V tomto rychlém startu programově vytvoříte individuální registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování Pythonu pomocí ukázkové aplikace Pythonu.
+V tomto rychlém startu jste programově vytvořili jednotlivou registraci pro zařízení TPM ve službě Azure IoT Hub Device Provisioning Service pomocí sady SDK služby zřizování pro Python a pomohli vám ukázkovou aplikaci v Pythonu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Dokončení [nastavení služby Zřizování zařízení služby IoT Hub pomocí portálu Azure](./quick-setup-auto-provision.md).
+- Dokončení [nastavení IoT Hub Device Provisioning Service pomocí Azure Portal](./quick-setup-auto-provision.md).
 - Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Python 2.x nebo 3.x](https://www.python.org/downloads/). Tento rychlý start nainstaluje níže [zřizovací službu Pythonu.](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)
-- [Pip](https://pip.pypa.io/en/stable/installing/), pokud není součástí vaší distribuce Pythonu.
-- Klíč pro potvrzení. Použijte kroky v [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md) nebo použijte ověřovací klíč dodaný se sadou SDK, popsaný níže.
+- [Python 2.x nebo 3.x](https://www.python.org/downloads/). V tomto rychlém startu se nainstaluje [sada SDK služby zřizování pro Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) .
+- [PIP](https://pip.pypa.io/en/stable/installing/), pokud není součástí vaší distribuce Pythonu.
+- Ověřovací klíč Použijte postup v tématu [Vytvoření a zřízení simulovaného zařízení](quick-create-simulated-device.md) nebo použijte ověřovací klíč dodaný se sadou SDK, popsanou níže.
 
 > [!IMPORTANT]
-> Tento článek se vztahuje pouze na zastaralé V1 Python SDK. Klienti zařízení a služeb pro službu Zřizování zařízení služby IoT Hub ještě nejsou k dispozici ve V2. Tým je v současné době tvrdě pracuje, aby V2 funkce parity.
+> Tento článek platí jenom pro zastaralé sady SDK verze V1 Pythonu. Klienti zařízení a služeb pro IoT Hub Device Provisioning Service ještě nejsou ve verzi v2 k dispozici. V současné době je tým v práci, aby se do parity funkcí přineslo v2.
 
 <a id="prepareenvironment"></a>
 
@@ -39,7 +39,7 @@ V tomto rychlém startu programově vytvoříte individuální registraci pro za
 
 1. Stáhněte a nainstalujte [Python 2.x nebo 3.x](https://www.python.org/downloads/). Ujistěte se, že používáte 32bitovou, nebo 64bitovou instalaci podle požadavků vašeho nastavení. Po zobrazení výzvy v průběhu instalace nezapomeňte přidat Python do proměnných prostředí pro konkrétní platformu. 
 
-1. Pro [sdk zřizovací služby Pythonu](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)zvolte jednu z následujících možností:
+1. V [sadě SDK služby zřizování pro Python](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client)vyberte jednu z následujících možností:
 
     - Sestavení a kompilace sady **SDK služby Azure IoT pro Python**. Pomocí [těchto pokynů](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) sestavte balíčky Pythonu. Pokud používáte operační systém Windows, je k povolení používání nativních knihoven DLL z Pythonu potřeba nainstalovat také [balíček distribuovatelných součástí Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads).
 
@@ -113,15 +113,15 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud máte v plánu prozkoumat ukázku služby Java, nečistěte prostředky vytvořené v tomto rychlém startu. Pokud neplánujete pokračovat, odstraňte pomocí následujících kroků všechny prostředky vytvořené tímto rychlým startem.
+Pokud plánujete prozkoumat ukázku služby Java, neprovádějte čištění prostředků vytvořených v rámci tohoto rychlého startu. Pokud pokračovat nechcete, pomocí následujícího postupu odstraňte všechny prostředky vytvořené tímto rychlým startem.
 
 1. Zavřete na svém počítači okno výstupu ukázky v Pythonu.
 1. Pokud jste vytvořili simulované zařízení TPM, zavřete okno simulátoru TPM.
-1. Přejděte na azure portálu do **služby**Device Provisioning, vyberte Spravovat registrace a pak vyberte kartu **Individuální registrace.** Zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili pomocí tohoto rychlého startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
+1. V Azure Portal přejděte do vaší služby Device Provisioning, vyberte **spravovat registrace**a pak vyberte kartu **jednotlivé registrace** . zaškrtněte políčko vedle *ID registrace* pro položku registrace, kterou jste vytvořili v tomto rychlém startu, a stiskněte tlačítko **Odstranit** v horní části podokna.
 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto rychlém startu jste programově vytvořili individuální položku registrace pro zařízení TPM a volitelně jste ve vašem počítači vytvořili simulované zařízení TPM a zřídíte ho do vašeho centra IoT hub pomocí služby Azure IoT Hub Device Provisioning Service. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal.
+V tomto rychlém startu jste programově vytvořili jednotlivou položku registrace pro zařízení TPM a volitelně jste na svém počítači vytvořili simulované zařízení TPM a pomocí Azure IoT Hub Device Provisioning Service ho zřídili ve službě IoT Hub. Pokud se chcete se zřizováním zařízení seznámit podrobněji, pokračujte ke kurzu nastavení služby Device Provisioning na webu Azure Portal.
 
 > [!div class="nextstepaction"]
 > [Kurzy pro službu Azure IoT Hub Device Provisioning](./tutorial-set-up-cloud.md)
