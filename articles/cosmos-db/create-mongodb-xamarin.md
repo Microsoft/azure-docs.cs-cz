@@ -1,6 +1,6 @@
 ---
-title: Vytvoření aplikace Xamarin s rozhraním .NET a rozhraním API Azure Cosmos DB pro MongoDB
-description: Představuje ukázku kódu Xamarin, kterou můžete použít k připojení a dotazování s rozhraním API Služby Azure Cosmos DB pro MongoDB.
+title: Vytvoření aplikace Xamarin s rozhraním API .NET a Azure Cosmos DB pro MongoDB
+description: Představuje ukázku kódu Xamarin, kterou můžete použít k připojení a dotazování pomocí rozhraní API Azure Cosmos DB pro MongoDB.
 author: codemillmatt
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/16/2020
 ms.author: masoucou
 ms.openlocfilehash: 98b0ddf345ebd19e2cd974db3891e88c9f72530d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79481683"
 ---
-# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý start: Vytvoření aplikace Xamarin.Forms s rozhraním .NET SDK a rozhraním API služby Azure Cosmos DB pro MongoDB
+# <a name="quickstart-build-a-xamarinforms-app-with-net-sdk-and-azure-cosmos-dbs-api-for-mongodb"></a>Rychlý Start: Vytvoření aplikace Xamarin. Forms pomocí .NET SDK a rozhraní Azure Cosmos DB API pro MongoDB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-mongodb-dotnet.md)
@@ -28,13 +28,13 @@ ms.locfileid: "79481683"
 
 Azure Cosmos DB je globálně distribuovaná databázová služba Microsoftu pro více modelů. Můžete snadno vytvořit a dotazovat databáze dotazů, klíčů/hodnot a grafů, které tak můžou využívat výhody použitelnosti v celosvětovém měřítku a možností horizontálního škálování v jádru Azure Cosmos DB.
 
-Tento rychlý start ukazuje, jak vytvořit [účet Cosmos nakonfigurovaný pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md), databázi dokumentů a kolekci pomocí portálu Azure. Potom vytvoříte aplikaci Todo App Xamarin.Forms pomocí [ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/).
+Tento rychlý Start ukazuje, jak vytvořit [účet Cosmos nakonfigurovaný pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-introduction.md), databázi dokumentů a kolekci pomocí Azure Portal. Pak sestavíte aplikaci pro Xamarin. Forms aplikace TODO pomocí [ovladače MongoDB .NET](https://docs.mongodb.com/ecosystem/drivers/csharp/).
 
 ## <a name="prerequisites-to-run-the-sample-app"></a>Požadavky na spuštění ukázkové aplikace
 
 Pro spuštění ukázky budete potřebovat sadu [Visual Studio](https://www.visualstudio.com/downloads/) nebo [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/) a platný účet služby Azure Cosmos DB.
 
-Pokud ještě visual studio nemáte, stáhněte si [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) s vývojem Mobile s zatížením **.NET** nainstalovaným s nastavením.
+Pokud ještě nemáte Visual Studio, Stáhněte si [Visual studio 2019 Community Edition](https://www.visualstudio.com/downloads/) s úlohou **vývoj pro mobilní zařízení pomocí technologie .NET** nainstalovanou s instalačním programem.
 
 Pokud chcete raději pracovat na Macu, stáhněte si [Visual Studio pro Mac](https://visualstudio.microsoft.com/vs/mac/) a spusťte instalaci.
 
@@ -50,13 +50,13 @@ Ukázka popsaná v tom článku je kompatibilní s MongoDB.Driver verze 2.6.1.
 
 ## <a name="clone-the-sample-app"></a>Klonování ukázkové aplikace
 
-Nejprve si stáhněte ukázkovou aplikaci z GitHubu. Tato aplikace implementuje aplikaci seznamu úkolů s modelem úložiště dokumentů MongoDB.
+Nejdřív Stáhněte ukázkovou aplikaci z GitHubu. Tato aplikace implementuje aplikaci seznamu úkolů s modelem úložiště dokumentů MongoDB.
 
 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-1. V systému Windows otevřete příkazový řádek nebo na Macu otevřete terminál, vytvořte novou složku s názvem git-samples a zavřete okno.
+1. V systému Windows otevřete příkazový řádek nebo na Macu otevřete terminál, vytvořte novou složku s názvem Git-Samples a zavřete okno.
 
     ```batch
     md "C:\git-samples"
@@ -78,13 +78,13 @@ Nejprve si stáhněte ukázkovou aplikaci z GitHubu. Tato aplikace implementuje 
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started.git
     ```
 
-Pokud nechcete používat git, můžete [si také stáhnout projekt jako soubor ZIP](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip)
+Pokud nechcete použít Git, můžete [projekt také stáhnout jako soubor zip](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-xamarin-getting-started/archive/master.zip) .
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-string).
 
-Následující úryvky jsou převzaty `MongoService` z třídy, které se nacházejí na následující cestě: src/TaskList.Core/Services/MongoService.cs.
+Všechny následující fragmenty kódu jsou odebírány z `MongoService` třídy, které se nacházejí v následující cestě: src/Tasklist. Core/Services/MongoService. cs.
 
 * Inicializuje se klient Mongo.
     ```cs
@@ -134,7 +134,7 @@ Následující úryvky jsou převzaty `MongoService` z třídy, které se nachá
     }
     ```
 
-* Vytvořte úkol a vložte jej do kolekce.
+* Vytvořte úlohu a vložte ji do kolekce.
     ```cs
     public async Task CreateTask(MyTask task)
     {
@@ -142,7 +142,7 @@ Následující úryvky jsou převzaty `MongoService` z třídy, které se nachá
     }
     ```
 
-* Aktualizace úkolu v kolekci.
+* Aktualizuje úkol v kolekci.
     ```cs
     public async Task UpdateTask(MyTask task)
     {
@@ -150,7 +150,7 @@ Následující úryvky jsou převzaty `MongoService` z třídy, které se nachá
     }
     ```
 
-* Odstraňte úkol z kolekce.
+* Odstraní úlohu z kolekce.
     ```cs
     public async Task DeleteTask(MyTask task)
     {
@@ -170,10 +170,10 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 3. Z portálu si zkopírujte hodnotu **primárního připojovacího řetězce** (pomocí tlačítka pro kopírování) a nastavte ji jako hodnotu pole **ConnectionString** v souboru **APIKeys.cs**.
 
-4. Odebrat `&replicaSet=globaldb` z připojovacího řetězce. Pokud tuto hodnotu neodeberete z řetězce dotazu, zobrazí se chyba za běhu.
+4. Odeberte `&replicaSet=globaldb` z připojovacího řetězce. Pokud tuto hodnotu neodeberete z řetězce dotazu, zobrazí se chyba za běhu.
 
 > [!IMPORTANT]
-> Chcete-li `&replicaSet=globaldb` se vyhnout chybě za běhu, je nutné odebrat dvojici klíč/hodnota z řetězce dotazu připojovacího řetězce.
+> Aby nedošlo k `&replicaSet=globaldb` chybě modulu runtime, je nutné odebrat dvojici klíč/hodnota z řetězce dotazu připojovacího řetězce.
 
 Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné ke komunikaci s Azure Cosmos DB.
 
@@ -189,7 +189,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 6. Klikněte pravým tlačítkem na **TaskList.iOS** a vyberte **Nastavit jako spouštěný projekt**.
 7. Stisknutím klávesy F5 spusťte ladění aplikace.
 
-### <a name="visual-studio-for-mac"></a>Visual Studio pro Mac
+### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
 1. V závislosti na tom, na které platformě chcete aplikaci spustit, vyberte v rozevíracím seznamu platformy TaskList.iOS nebo TaskList.Android.
 2. Stisknutím cmd + Enter spusťte ladění aplikace.
@@ -207,4 +207,4 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 V tomto rychlém startu jste se seznámili s postupem vytvoření účtu služby Azure Cosmos DB a spuštění aplikace Xamarin.Forms pomocí rozhraní API pro MongoDB. Teď můžete do účtu databáze Cosmos importovat další data.
 
 > [!div class="nextstepaction"]
-> [Import dat do Azure Cosmos DB nakonfigurovaného pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
+> [Import dat do Azure Cosmos DB nakonfigurovaných pomocí rozhraní API Azure Cosmos DB pro MongoDB](mongodb-migrate.md)
