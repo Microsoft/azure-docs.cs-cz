@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Nasazení do pracovního slotu'
-description: Zjistěte, jak pomocí azure cli automatizovat nasazení a správu aplikace App Service. Tato ukázka ukazuje, jak nasadit kód do pracovního slotu.
+title: 'CLI: nasazení do přípravného slotu'
+description: Naučte se používat rozhraní příkazového řádku Azure k automatizaci nasazení a správy aplikace App Service. Tato ukázka ukazuje, jak nasadit kód do přípravného slotu.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
@@ -9,15 +9,15 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 0f535e902bc86ba3c098dd2238766a3bd547781f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057853"
 ---
-# <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Vytvoření aplikace služby App Service a nasazení kódu do testovacího prostředí pomocí azure cli
+# <a name="create-an-app-service-app-and-deploy-code-to-a-staging-environment-using-azure-cli"></a>Vytvoření aplikace App Service a nasazení kódu do přípravného prostředí pomocí Azure CLI
 
-Tento ukázkový skript vytvoří aplikaci ve službě App Service s dalším slotem nasazení s názvem "staging" a pak nasadí ukázkovou aplikaci do "pracovního" slotu.
+Tento ukázkový skript vytvoří aplikaci v App Service s dalším slotem nasazení s názvem "fázování" a pak nasadí ukázkovou aplikaci do slotu "fázování".
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,9 +40,9 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Vytvoří plán služby App Service. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci služby App Service. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří aplikaci App Service. |
 | [`az webapp deployment slot create`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az-webapp-deployment-slot-create) | Vytvoří slot nasazení. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží aplikaci služby App Service k úložišti Git nebo Mercurial. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Přidruží aplikaci App Service k úložišti Git nebo Mercurial. |
 | [`az webapp deployment slot swap`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az-webapp-deployment-slot-swap) | Přepne zadaný slot nasazení do produkčního prostředí. |
 
 ## <a name="next-steps"></a>Další kroky
