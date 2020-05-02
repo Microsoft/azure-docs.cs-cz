@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 05/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443053"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691026"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Kurz: zabezpečení virtuální sítě WAN pomocí správce Azure Firewall Preview 
 
@@ -38,27 +38,32 @@ V tomto kurzu se naučíte:
 
 Nejdřív vytvořte virtuální síť paprsků, kam můžete umístit své servery.
 
-### <a name="create-a-spoke-vnet-and-subnets"></a>Vytvoření virtuální sítě a podsítí paprsků
+### <a name="create-a-spoke-virtual-network-and-subnets"></a>Vytvoření virtuální sítě a podsítí paprsků
 
 1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
 2. V části **sítě**vyberte **virtuální síť**.
-4. Jako **název**zadejte **paprsek-01**.
-5. V části **Adresní prostor** zadejte **10.0.0.0/16**.
-6. V části **Předplatné** vyberte své předplatné.
-7. V poli **Skupina prostředků**vyberte **vytvořit novou**a jako název zadejte **FW-Manager** a vyberte **OK**.
-8. V **oblasti umístění**vyberte **(US) východní USA**.
-9. V části **podsíť**pro typ **název** **úlohy – SN**.
-10. V části **Rozsah adres** zadejte **10.0.1.0/24**.
-11. Přijměte ostatní výchozí nastavení a pak vyberte **vytvořit**.
+2. V části **Předplatné** vyberte své předplatné.
+1. V poli **Skupina prostředků**vyberte **vytvořit novou**a jako název zadejte **FW-Manager** a vyberte **OK**.
+2. Jako **název**zadejte **paprsek-01**.
+3. V **oblasti oblast**vyberte **(US) východní USA**.
+4. Vyberte **Další: IP adresy**.
+1. V poli **adresní prostor**přijměte výchozí **10.0.0.0/16**.
+3. V části **název podsítě**vyberte **výchozí**.
+4. Změňte název podsítě na **úlohu-SN**.
+5. Jako **Rozsah adres podsítě**zadejte **10.0.1.0/24**.
+6. Vyberte **Uložit**...
 
 Dále vytvořte podsíť pro server skoků.
 
-1. Na domovské stránce Azure Portal vyberte **skupiny** > prostředků**FW-Manager**.
-2. Vyberte virtuální síť **paprsku-01** .
-3. Vyberte **podsítě** > **a podsíť**.
-4. Jako **název**zadejte **skok-SN**.
-5. V části **Rozsah adres** zadejte **10.0.2.0/24**.
-6. Vyberte **OK**.
+1. Vyberte **Přidat podsíť**.
+4. Jako **název podsítě**zadejte **skok-SN**.
+5. Jako **Rozsah adres podsítě**zadejte **10.0.2.0/24**.
+6. Vyberte **Přidat**.
+
+Nyní vytvořte virtuální síť.
+
+1. Vyberte **Zkontrolovat a vytvořit**.
+2. Vyberte **Vytvořit**.
 
 ### <a name="create-the-secured-virtual-hub"></a>Vytvoření zabezpečeného virtuálního centra
 
@@ -66,36 +71,38 @@ Vytvořte zabezpečeného virtuálního centra pomocí Správce brány firewall.
 
 1. Na domovské stránce Azure Portal vyberte **všechny služby**.
 2. Do vyhledávacího pole zadejte **Správce brány** firewall a vyberte **Správce brány firewall**.
-3. Na stránce **Správce brány firewall** vyberte **vytvořit zabezpečené virtuální rozbočovač**.
-4. Na stránce **vytvořit nový zabezpečený virtuální rozbočovač** vyberte své předplatné a skupinu prostředků **nástroje FW-Manager** .
-5. V poli **název zabezpečeného virtuálního centra**zadejte příkaz **hub-01**.
-6. V **oblasti umístění**vyberte **východní USA**.
-7. Jako **adresní prostor centra**zadejte **10.1.0.0/16**.
-8. Pro nový název vWAN zadejte **vWAN-01**.
-9. Zrušte zaškrtnutí políčka **Zahrnout bránu VPN pro povolení důvěryhodných partnerů zabezpečení** .
-10. Vyberte **Další: Azure firewall**.
-11. Přijměte výchozí nastavení **povoleno** **Azure firewall** a pak vyberte **Další: důvěryhodný bezpečnostní partner**.
-12. Přijměte výchozí nastavení **zakázaný** **důvěryhodný partner zabezpečení** a vyberte **Další: zkontrolovat + vytvořit**.
-13. Vyberte **Vytvořit**. Nasazení bude trvat přibližně 30 minut.
+3. Na stránce **Správce brány firewall** vyberte **Zobrazit zabezpečená virtuální centra**.
+4. **Správce brány firewall | Na stránce zabezpečená virtuální** centra vyberte **vytvořit nové zabezpečené virtuální rozbočovače**.
+5. Jako **skupinu prostředků**vyberte **FW-Manager**.
+7. V **oblasti oblast**vyberte **východní USA**.
+1. V poli **název zabezpečeného virtuálního centra**zadejte příkaz **hub-01**.
+2. Jako **adresní prostor centra**zadejte **10.1.0.0/16**.
+3. Pro nový název vWAN zadejte **vWAN-01**.
+4. Zrušte zaškrtnutí políčka **Zahrnout bránu VPN pro povolení důvěryhodných partnerů zabezpečení** .
+5. Vyberte **Další: Azure firewall**.
+6. Přijměte výchozí nastavení **povoleno** **Azure firewall** a pak vyberte **Další: důvěryhodný bezpečnostní partner**.
+7. Přijměte výchozí nastavení **zakázaný** **důvěryhodný partner zabezpečení** a vyberte **Další: zkontrolovat + vytvořit**.
+8. Vyberte **Vytvořit**. Nasazení bude trvat přibližně 30 minut.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>Připojit střed a paprskový virtuální sítě
 
 Nyní můžete vytvořit partnerský vztah k rozbočovači a paprsku virtuální sítě.
 
-1. Vyberte skupinu prostředků **FW-Manager** a potom vyberte virtuální síť WAN **vwan-01** .
+1. Vyberte skupinu prostředků **FW-Manager** a potom vyberte virtuální síť WAN **Vwan-01** .
 2. V části **připojení**vyberte **připojení k virtuální síti**.
 3. Vyberte **Přidat připojení**.
 4. Jako **název připojení**zadejte **hub-paprsek**.
 5. V případě **rozbočovačů**vyberte možnost **hub-01**.
-6. V případě **virtuální sítě**vyberte **paprskový-01**.
-7. Vyberte **OK**.
+6. Jako **skupinu prostředků**vyberte **FW-Manager**.
+7. V případě **virtuální sítě**vyberte **paprskový-01**.
+8. Vyberte **OK**.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Vytvoření zásady brány firewall a zabezpečení centra
 
 Zásady brány firewall definují kolekce pravidel pro směrování provozu na jednom nebo několika zabezpečených virtuálních rozbočovačích. Vytvoříte zásadu brány firewall a pak zabezpečíte své centrum.
 
-1. Ve Správci brány firewall vyberte **vytvořit zásadu Azure firewall**.
-2. Vyberte své předplatné a pak vyberte skupinu prostředků **FW-Manager** .
+1. V nástroji Správce brány firewall vyberte **zobrazit Azure firewall zásady**.
+2. Vyberte **vytvořit Azure firewall zásady**.
 3. V části **Podrobnosti o zásadách**zadejte **název** **zásady typu-01** a v **oblasti** vyberte **východní USA**.
 4. Vyberte **Další: pravidla**.
 5. Na kartě **pravidla** vyberte **přidat kolekci pravidel**.
@@ -109,10 +116,11 @@ Zásady brány firewall definují kolekce pravidel pro směrování provozu na j
 13. Zajistěte, aby byl cílový typ " **plně kvalifikovaný název domény**".
 14. Pro **cíl**zadejte ** \*. Microsoft.com**.
 15. Vyberte **Přidat**.
-16. Vyberte **Další: zabezpečená virtuální rozbočovače**.
-17. Na kartě **Zabezpečená virtuální centra** vyberte **centrum – 01**.
-19. Vyberte **Zkontrolovat a vytvořit**.
-20. Vyberte **Vytvořit**.
+16. Vyberte **Další: rozbočovače**.
+17. Na kartě **centra** vyberte **přidružit virtuální rozbočovače**.
+18. Vyberte možnost **hub-01** a pak vyberte **Přidat**.
+1. Vyberte **Zkontrolovat a vytvořit**.
+2. Vyberte **Vytvořit**.
 
 To může trvat přibližně pět minut nebo i déle.
 
@@ -126,10 +134,9 @@ Nyní je nutné zajistit, aby byl síťový provoz směrován přes bránu firew
 4. V části **internetový provoz**, **provoz z virtuálních sítí**vyberte **Odeslat prostřednictvím Azure firewall**.
 5. V části **privátní přenos v Azure**zadejte **do virtuálních sítí**možnost **Odeslat prostřednictvím Azure firewall**.
 6. Vyberte **Upravit předpony IP adres**.
-7. Vyberte **přidat předponu IP adresy**.
 8. Jako adresu podsítě úloh zadejte **10.0.1.0/24** a vyberte **Save (Uložit**).
 9. V části **Nastavení**vyberte **připojení**.
-10. Vyberte připojení **hub-paprsek** a pak vyberte **zabezpečený internetový provoz** a pak vyberte **OK**.
+10. Ověřte, že připojení **hub-paprsek** zobrazuje **internetový provoz** jako **zabezpečený**.
 
 
 ## <a name="test-your-firewall"></a>Otestování brány firewall
@@ -147,12 +154,11 @@ Chcete-li otestovat pravidla brány firewall, budete muset nasadit několik serv
    |Skupina prostředků     |**FW – správce**|
    |Název virtuálního počítače     |**Skok – SRV**|
    |Oblast     |**VYLEPŠENÍ Východní USA)**|
-   |Uživatelské jméno správce     |**azureuser**|
+   |Uživatelské jméno správce     |Zadejte uživatelské jméno.|
    |Heslo     |Zadejte heslo.|
 
 4. V části **pravidla příchozího portu**pro **veřejné příchozí porty**vyberte **Povolit vybrané porty**.
 5. V případě **vyberte příchozí porty**vyberte **RDP (3389)**.
-
 6. Přijměte ostatní výchozí hodnoty a vyberte **Další: disky**.
 7. Přijměte výchozí nastavení disku a vyberte **Další: sítě**.
 8. Ujistěte se, že je pro virtuální síť vybraná možnost **paprske-01** a že podsíť **přeskočí SN**.

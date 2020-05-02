@@ -1,6 +1,6 @@
 ---
 title: Používání SQL na vyžádání (Preview)
-description: V tomto rychlém startu se dozvíte, jak snadné je dotazování různých typů souborů pomocí SQL na vyžádání (Preview).
+description: V tomto rychlém startu uvidíte a naučíte se, jak se snadno dotazovat na různé typy souborů pomocí SQL na vyžádání (Preview).
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: d49918fc67a45419e5c7ca123642c48e689a1496
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113778"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692173"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Rychlý Start: používání SQL na vyžádání
 
@@ -41,19 +41,18 @@ Parametry pro rychlý Start:
 
 ## <a name="first-time-setup"></a>Nastavení při prvním spuštění
 
-Před použitím ukázek:
+Než použijete ukázky:
 
 - Vytvoření databáze pro zobrazení (pro případ, že chcete použít zobrazení)
 - Vytvoření přihlašovacích údajů, které budou používat SQL na vyžádání pro přístup k souborům v úložišti
 
 ### <a name="create-database"></a>Vytvoření databáze
 
-Vytvořte si vlastní databázi pro demonstrační účely. Toto je databáze, ve které vytvoříte zobrazení. Tuto databázi použijte v ukázkových dotazech v tomto článku.
+Vytvořte si vlastní databázi pro demonstrační účely. Tuto databázi použijete k vytvoření zobrazení a k ukázkovým dotazům v tomto článku.
 
 > [!NOTE]
 > Databáze se používají jenom pro metadata zobrazení, ne pro skutečná data.
->
-> Poznamenejte si název databáze, který použijete pro pozdější použití v rychlém startu.
+>Poznamenejte si název databáze, který použijete pro pozdější použití v rychlém startu.
 
 Použijte následující dotaz, který se `mydbname` změní na libovolný název:
 
@@ -72,9 +71,9 @@ Pokud chcete spouštět dotazy pomocí SQL na vyžádání, vytvořte přihlašo
 >
 > SQL na vyžádání ve výchozím nastavení vždy používá předávací průchozí služba AAD.
 
-Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v tomto [odkazu](sql/develop-storage-files-storage-access-control.md).
+Další informace o tom, jak spravovat řízení přístupu k úložišti, najdete v článku[řízení přístupu k účtu úložiště pro SQL na vyžádání](sql/develop-storage-files-storage-access-control.md) .
 
-Spusťte následující fragment kódu k vytvoření přihlašovacích údajů použitých v ukázkách v této části:
+Spusťte následující fragment kódu pro vytvoření přihlašovacích údajů použitých v ukázkách v této části:
 
 ```sql
 -- create credentials for containers in our demo storage account
@@ -124,7 +123,7 @@ Další příklady najdete v tématu Postup [dotazování souboru CSV](sql/query
 Následující příklad ukazuje schopnosti automatického odvození schématu pro dotazování souborů Parquet. Vrátí počet řádků v září 2017 bez zadání schématu.
 
 > [!NOTE]
-> Při čtení souborů Parquet není nutné zadávat sloupce `OPENROWSET WITH` v klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a sváže sloupce podle názvu.
+> Při čtení souborů Parquet není nutné zadávat sloupce `OPENROWSET WITH` v klauzuli. V takovém případě SQL na vyžádání využívá metadata v souboru Parquet a váže sloupce podle názvu.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -135,7 +134,7 @@ FROM OPENROWSET
   ) AS nyc
 ```
 
-Přečtěte si další informace o [dotazování na soubory Parquet](sql/query-parquet-files.md)].
+Přečtěte si další informace o [dotazování souborů Parquet](sql/query-parquet-files.md).
 
 ## <a name="querying-json-files"></a>Dotazování na soubory JSON
 
@@ -183,11 +182,11 @@ WHERE
 ```
 
 > [!IMPORTANT]
-> Načetli jsme celý soubor JSON jako jeden řádek nebo sloupec, takže FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou nastavené na 0x0B, protože neočekáváme, že se v souboru nenajde.
+> Načítáme celý soubor JSON jako jeden řádek nebo sloupec. FIELDTERMINATOR, FIELDQUOTE a ROWTERMINATOR jsou nastaveny na 0x0B, protože neočekáváme, že ji v souboru nenajdeme.
 
 ## <a name="next-steps"></a>Další kroky
 
-Nyní jste připraveni začít s následujícími články pro rychlý Start:
+Nyní jste připraveni pokračovat v následujících článcích:
 
 - [Dotaz na jeden soubor CSV](sql/query-single-csv-file.md)
 - [Složky dotazů a více souborů CSV](sql/query-folders-multiple-csv-files.md)
@@ -198,7 +197,4 @@ Nyní jste připraveni začít s následujícími články pro rychlý Start:
 - [Vytváření a používání zobrazení](sql/create-use-views.md)
 - [Vytváření a používání externích tabulek](sql/create-use-external-tables.md)
 - [Uchovat výsledek dotazu do Azure Storage](sql/create-external-table-as-select.md)
-
-V dalším článku se dozvíte, jak zadat dotaz na jeden soubor CSV.
-> [!div class="nextstepaction"]
-> [Dotaz na jeden soubor CSV](sql/query-single-csv-file.md)
+- [Dotaz na jeden soubor CSV](sql/query-single-csv-file.md)

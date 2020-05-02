@@ -3,16 +3,16 @@ title: Ukázkové ovládací prvky podrobného plánu pro Azure Security test
 description: Mapování ovládacího prvku ukázka testu výkonnosti Azure Security test na Azure Policy.
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538730"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691305"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku Azure Security test details
 
-Následující článek podrobně popisuje, jak se ukázka Azure modrotisky Azure Security test Details mapuje na ovládací prvky srovnávacích testů zabezpečení Azure. Další informace o ovládacích prvcích najdete v článku [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/overview).
+Následující článek podrobně popisuje, jak se ukázka Azure modrotisky Azure Security test Details mapuje na ovládací prvky srovnávacích testů zabezpečení Azure. Další informace o ovládacích prvcích najdete v článku [Srovnávací test zabezpečení Azure](../../../../security/benchmarks/overview.md).
 
 Následující mapování jsou k ovládacím prvkům **benchmark zabezpečení Azure** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Namapované ovládací prvky jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ve ** \[verzi Preview\]: Auditovat doporučení Azure Security test a nasaďte specifická podpůrná iniciativa rozšíření virtuálních počítačů** .
 

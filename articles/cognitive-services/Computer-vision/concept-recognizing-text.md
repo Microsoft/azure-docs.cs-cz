@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220157"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690802"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
@@ -26,10 +26,10 @@ Počítačové zpracování obrazu poskytuje několik služeb, které zjišťuj�
 
 Rozhraní API pro čtení detekuje textový obsah v imagi pomocí našich nejnovějších modelů rozpoznávání a převede identifikovaný text na datový proud znaků, který je strojově čitelný. Je optimalizovaná pro textově náročné obrázky (například digitálně naskenované dokumenty) a pro image s velkým objemem vizuálního hluku. Určí, který model rozpoznávání se má použít pro jednotlivé řádky textu, a podporuje obrázky s tištěným i psaným textem. Rozhraní API pro čtení se spouští asynchronně, protože může trvat několik minut, než se výsledek vrátí.
 
-Operace čtení zachovává původní řádek seskupení rozpoznaných slov ve výstupu. Každý řádek obsahuje souřadnice ohraničujícího pole a každé slovo v řádku má také vlastní souřadnice. Pokud bylo slovo rozpoznáno s nízkou jistotou, budou tyto informace také předány. Další informace najdete v tématu Referenční dokumentace k [rozhraní Read API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) a [Read API Preview](https://go.microsoft.com/fwlink/?linkid=2118322) .
+Operace čtení zachovává původní řádek seskupení rozpoznaných slov ve výstupu. Každý řádek obsahuje souřadnice ohraničujícího pole a každé slovo v řádku má také vlastní souřadnice. Pokud bylo slovo rozpoznáno s nízkou jistotou, budou tyto informace také předány. Další informace najdete v tématu Referenční dokumentace k [rozhraní Read API v 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) nebo [Read API v 3.0 Preview](https://go.microsoft.com/fwlink/?linkid=2118322) .
 
 > [!NOTE]
-> Tato funkce je k dispozici pouze pro text v angličtině a španělštině (ve verzi Preview).
+> Tato funkce je k dispozici pouze pro text v angličtině a španělštině (v 3.0 Preview).
 
 ### <a name="image-requirements"></a>Požadavky image
 

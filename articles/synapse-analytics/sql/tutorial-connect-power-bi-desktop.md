@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769481"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692408"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Kurz: připojení SQL na vyžádání (Preview) k Power BI Desktop & vytvoření sestavy
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Kurz: použití SQL na vyžádání (Preview) s Power BI Desktop & vytvoření sestavy
 
 V tomto kurzu se naučíte:
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 >
 > - Vytvořit ukázkovou databázi
 > - Vytvořit zobrazení použité pro sestavu
-> - Připojení k aplikaci Power BI Desktop
+> - Připojení Power BI Desktop k SQL na vyžádání
 > - Vytvořit sestavu na základě zobrazení
 
 ## <a name="prerequisites"></a>Požadavky
@@ -130,11 +130,11 @@ Vytvořte sestavu pro Power BI Desktop pomocí následujících kroků:
 
     - Příklad pro AAD 
   
-    ![Klikněte na Přihlásit se.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![Klikněte na Přihlásit se.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - Příklad přihlašovacího jména SQL – zadejte své uživatelské jméno a heslo.
 
-    ![Použijte přihlášení SQL.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![Použijte přihlášení SQL.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. Vyberte zobrazení `usPopulationView`a pak vyberte **načíst**. 

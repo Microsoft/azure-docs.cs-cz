@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: f8525c883eb6b2c736e5fbf433464aa64ff42068
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae866c8be8d162213077e0488a19a556399384b2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101783"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692697"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rychlý Start: Vytvoření fondu Apache Spark (ve verzi Preview) ve službě Azure synapse Analytics pomocí nástrojů pro web
 
@@ -33,13 +33,13 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet před 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [Azure Portal](https:/portal.azure.com/)
+Přihlaste se k webu [Azure Portal](https:/portal.azure.com/).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="create-a-notebook"></a>Vytvoření poznámkového bloku
 
-Poznámkový blok je interaktivní prostředí, které podporuje různé programovací jazyky. Poznámkový blok umožňuje pracovat s daty, kombinovat kód s Markdownu, text a provádět jednoduché vizualizace.
+Poznámkový blok je interaktivní prostředí, které podporuje různé programovací jazyky. Poznámkový blok vám umožní pracovat s daty, kombinovat kód s Markdownu, textem a provádět jednoduché vizualizace.
 
 1. V zobrazení Azure Portal pracovního prostoru Azure synapse, který chcete použít, vyberte **Spustit synapse Studio**.
 2. Po spuštění synapse studia vyberte **vývoj**. Pak umístěte ukazatel myši na položku **poznámkových bloků** . Vyberte tři tečky (**...**).
@@ -48,7 +48,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
 4. V okně **vlastnosti** zadejte název poznámkového bloku.
 5. Na panelu nástrojů klikněte na **publikovat**.
-6. Pokud je v pracovním prostoru pouze jeden Apache Spark fond, je vybrán jako výchozí. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
+6. Pokud je ve vašem pracovním prostoru jenom jeden Apache Spark fond, pak je vybraný ve výchozím nastavení. Pomocí rozevíracího seznamu vyberte správný fond Apache Spark, pokud není vybraný žádný.
 7. Klikněte na **přidat kód**. Výchozí jazyk je `Pyspark`. Budete používat kombinaci Pyspark a Spark SQL, takže je výchozí volba velmi jemná.
 8. Dále vytvoříte jednoduchý objekt Spark dataframe pro manipulaci. V tomto případě jej vytvoříte z kódu. Existují tři řádky a tři sloupce:
 
@@ -89,7 +89,7 @@ Poznámkový blok je interaktivní prostředí, které podporuje různé program
 
 ## <a name="run-spark-sql-statements"></a>Spouštění příkazů Spark SQL
 
-Jazyk SQL (Structured Query Language) je nejběžnějším a široce používaným jazykem pro dotazování a definování dat. Spark SQL funguje jako rozšíření Apache Spark pro zpracování strukturovaných dat a používá známou syntaxi jazyka SQL.
+Jazyk SQL (Structured Query Language) (SQL) je nejběžnějším a široce používaným jazykem pro dotazování a definování dat. Spark SQL funguje jako rozšíření Apache Spark pro zpracování strukturovaných dat a používá známou syntaxi jazyka SQL.
 
 1. Vložte následující kód do prázdné buňky a spusťte kód. Příkaz vypíše tabulky ve fondu.
 
@@ -109,11 +109,11 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
     Kód vytvoří dvě výstupní buňky, jednu, která obsahuje výsledky dat druhé, což zobrazuje zobrazení úlohy.
 
-    Ve výchozím nastavení zobrazuje zobrazení výsledků mřížku, ale pod mřížkou je přepínač zobrazení, který umožňuje přepínání mezi zobrazeními mřížky a grafu.
+    Ve výchozím nastavení zobrazuje zobrazení výsledků mřížku. Ale pod mřížkou je přepínač zobrazení, který umožňuje přepínání mezi zobrazeními mřížky a grafu.
 
     ![Dotaz na výstup v Azure synapse Spark](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Dotaz na výstup v Azure synapse Spark")
 
-3. V přepínači **zobrazení** vyberte **graf** .
+3. V přepínači **zobrazení** vyberte možnost **graf**.
 4. Vyberte ikonu **Možnosti zobrazení** ze zcela pravé strany.
 5. V poli **typ grafu** vyberte "pruhový graf".
 6. V poli sloupce osy X vyberte "State" (stav).
@@ -133,7 +133,7 @@ Jazyk SQL (Structured Query Language) je nejběžnějším a široce používan�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Azure synapse ukládá vaše data v Azure Data Lake Storage. Pokud se instance Sparku nepoužívá, můžete ji bezpečně nechat vypnout. Účtuje se vám Apache Spark fond Azure synapse, pokud je spuštěný, i když se nepoužívá. Vzhledem k tomu, že se poplatky za fond mnohokrát účtují více než poplatky za úložiště, má ekonomický smysl, aby instance Sparku byly vypnuté, když se nepoužívají.
+Azure synapse ukládá vaše data v Azure Data Lake Storage. Můžete bezpečně dovolit, aby se instance Sparku ukončila, když se nepoužívá. Účtuje se vám Apache Spark fond Azure synapse, pokud je spuštěný, i když se nepoužívá. Poplatky za fond jsou mnohokrát vyšší než poplatky za úložiště. V takovém případě má ekonomický smysl nechat instance Sparku vypnuté, když se nepoužívají.
 
 Pokud chcete zajistit, aby se instance Spark vypnula, ukončete všechny připojené relace (poznámkové bloky). Fond se ukončí, když je dosaženo **času nečinnosti** zadaného ve fondu Apache Spark. Můžete také vybrat možnost **ukončit relaci** ze stavového řádku v dolní části poznámkového bloku.
 

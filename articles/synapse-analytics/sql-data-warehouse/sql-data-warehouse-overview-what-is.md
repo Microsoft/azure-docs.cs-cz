@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81416031"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690906"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Co je Azure synapse Analytics (dřív SQL DW)?
+
+> [!NOTE] 
+> Vyzkoušejte si nejnovější funkce Azure synapse, jako jsou pracovní prostory, Spark, SQL na vyžádání a integrované prostředí synapse Studio, a vyžádejte si [přístup k Azure synapse (ve verzi Preview pracovních prostorů)](https://aka.ms/synapsepreview). 
+>
+>Prozkoumejte [dokumentaci ke službě Azure synapse (pracovní prostory Preview)](../overview-what-is.md).
 
 Azure synapse je analytická služba, která přináší dohromady podnikové datové sklady a analýzu velkých objemů dat. Dává vám možnost dotazovat se na data podle toho, jak vám to vyhovuje, s využitím bezserverové architektury na vyžádání, nebo zřízených prostředků, a to ve velkém měřítku. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení.
 
@@ -30,10 +35,7 @@ Azure synapse má čtyři součásti:
 - Kanály synapse: integrace hybridních dat (Preview)
 - Studio: jednotné uživatelské prostředí.  (Preview)
 
-> [!NOTE]
-> Pokud chcete získat přístup k funkcím verze Preview služby Azure synapse, požádejte o přístup [tady](https://aka.ms/synapsepreview). Microsoft bude podle potřeby roztříděna všechny žádosti a bude co nejdříve reagovat.
->
-> Prohlédněte si [dokumentaci ke službě Azure synapse ve verzi Preview](../overview-what-is.md).
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Synapse fond SQL v Azure synapse
 

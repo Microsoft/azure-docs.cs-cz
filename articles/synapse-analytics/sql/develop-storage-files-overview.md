@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676675"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691879"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Dotazování souborů úložiště pomocí prostředků SQL na vyžádání (ve verzi Preview) v synapse SQL
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+Zajistěte, aby se pro optimální výkon používaly [příslušné odvozené datové typy](best-practices-sql-on-demand.md#check-inferred-data-types) . 
+
 ### <a name="filename-function"></a>Filename – funkce
 
-Tato funkce vrátí název souboru, ze kterého pochází řádek.
+Tato funkce vrátí název souboru, ze kterého pochází řádek. 
 
 Pokud chcete zadat dotaz na konkrétní soubory, přečtěte si oddíl filename v článku věnovaném [dotazům pro konkrétní soubory](query-specific-files.md#filename) .
+
+Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu vždy přetypování výsledku funkce filename na vhodný datový typ. Použijete-li datový typ znaků, ujistěte se, že je použita odpovídající délka.
 
 ### <a name="filepath-function"></a>FilePath – funkce
 
@@ -137,6 +141,8 @@ Tato funkce vrací úplnou cestu nebo část cesty:
 - Při volání s parametrem vrátí část cesty, která odpovídá zástupnému znaku na pozici zadané v parametru. Například hodnota parametru 1 vrátí část cesty, která odpovídá prvnímu zástupnému znaku.
 
 Další informace najdete v části FilePath v článku věnovaném [dotazům pro konkrétní soubory](query-specific-files.md#filepath) .
+
+Návratový typ dat je nvarchar (1024). Pro zajištění optimálního výkonu vždy přetypování výsledku funkce FilePath na vhodný datový typ. Použijete-li datový typ znaků, ujistěte se, že je použita odpovídající délka.
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Práce se složitými typy a vnořenými nebo opakovanými datovými strukturami
 

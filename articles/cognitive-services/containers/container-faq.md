@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876502"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690827"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Cognitive Services Containers (FAQ)
 
@@ -76,7 +76,11 @@ Kontejnery Cognitive Services v cloudech svrchovaného *nativně nepodporují.* 
 
 **Otázka: Jak mám spustit kontejnery Cognitive Services na zařízeních IoT?**
 
-Bez ohledu na to, jestli nemáte spolehlivé připojení k Internetu, nebo pokud chcete ušetřit náklady na šířku pásma. Nebo pokud mají požadavky na nízkou latenci nebo pracujete s citlivými daty, která je potřeba analyzovat na pracovišti, [Azure IoT Edge s kontejnery Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) poskytuje konzistenci s cloudem.
+**A:** Bez ohledu na to, jestli nemáte spolehlivé připojení k Internetu, nebo pokud chcete ušetřit náklady na šířku pásma. Nebo pokud mají požadavky na nízkou latenci nebo pracujete s citlivými daty, která je potřeba analyzovat na pracovišti, [Azure IoT Edge s kontejnery Cognitive Services](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) poskytuje konzistenci s cloudem.
+
+**Otázka: jsou tyto kontejnery kompatibilní s OpenShift?** 
+
+Netestujeme kontejnery pomocí OpenShift, ale obecně by Cognitive Services kontejnery měly běžet na jakékoli platformě podporující image Docker. Pokud používáte OpenShift, doporučujeme spouštět kontejnery jako `root-user`.
 
 **Otázka: Návody poskytovat zpětnou vazbu k produktu a doporučení funkcí?**
 

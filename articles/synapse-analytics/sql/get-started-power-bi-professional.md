@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a9db42bcd69d9a24a454c02c9bb0e2d339cb4860
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4bedcc1f7375cb83131b00be93c785069a7d3e7d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82185774"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692392"
 ---
 # <a name="connect-to-synapse-sql-with-power-bi-professional"></a>Připojení k synapse SQL pomocí Power BI Professional
 
@@ -70,10 +70,10 @@ DROP DATABASE IF EXISTS demo;
 
 ### <a name="create-credentials"></a>Vytvořit pověření
 
-Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Přihlašovací údaje bude používat služba SQL na vyžádání k přístupu k souborům v úložišti.
+Než budete moct spustit dotazy, musíme vytvořit přihlašovací údaje. Tento přihlašovací údaj bude používat služba SQL na vyžádání pro přístup k souborům v úložišti.
 
 > [!NOTE]
-> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když má SQL na vyžádání přístup k úložišti z různých oblastí, které mají úložiště a Azure synapse Workspace ve stejné oblasti, zajistíte lepší výkon.
+> Musíte vytvořit přihlašovací údaje pro přístup k účtu úložiště. I když může SQL na vyžádání získat přístup k úložišti z různých oblastí, úložiště a pracovní prostor Azure synapse ve stejné oblasti zajistí lepší výkon.
 
 **Fragment kódu při vytváření přihlašovacích údajů pro datové kontejnery pro sčítání**, spusťte:
 
@@ -92,7 +92,8 @@ GO
 
 ## <a name="creating-power-bi-desktop-report"></a>Vytváření sestavy Power BI Desktop
 
-Otevřete Power BI desktopová aplikace a vyberte možnost **získat data** .
+Otevřete Power BI desktopovou aplikaci a vyberte možnost **získat data** .
+
 ![Otevřete Power BI desktopovou aplikaci a vyberte získat data.](./media/get-started-power-bi-professional/step-0-open-powerbi.png)
 
 ### <a name="step-1---select-data-source"></a>Krok 1 – Výběr zdroje dat

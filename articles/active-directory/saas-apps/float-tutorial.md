@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206744"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690644"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Kurz: Azure Active Directory integraci jednotného přihlašování pomocí typu float
 
@@ -37,7 +37,7 @@ Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Předplatné s povoleným jednotným přihlašováním (SSO).
+* Předplatné typu float. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://app.float.com/join?).
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -92,7 +92,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     Do textového pole **přihlašovací adresa URL** zadejte adresu URL ve vzoru `https://<hostname>.float.com/login`.
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, obraťte se na [tým podpory klienta s plovoucí čárkou](mailto:support@float.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Nahraďte <hostname> názvem hostitele typu float. Pokud si nejste jistí, obraťte se na [tým podpory klienta s plovoucí čárkou](mailto:support@float.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Plovoucí aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -143,11 +143,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-float-sso"></a>Konfigurace plovoucího jednotného přihlašování
 
-Chcete-li nakonfigurovat jednotné přihlašování na **plovoucí** straně, je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal do [týmu podpory typu float](mailto:support@float.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Pokud chcete nakonfigurovat jednotné přihlašování na **plovoucí** straně, přejděte na oddíl plovoucí nastavení týmu a v modulu ověřování vyberte Konfigurovat. Do pole Adresa URL koncového bodu SAML 2,0 vložte adresu URL pro přihlášení Azure AD, do pole Adresa URL vystavitele zprostředkovatele identity vložte úplný text ze staženého **certifikátu (Base64)** a uložte ho do pole certifikát X. 509.
 
 ### <a name="create-float-test-user"></a>Vytvořit testovacího uživatele typu float
 
-V této části vytvoříte uživatele s názvem Britta Simon v float. Pokud chcete přidat uživatele na plovoucí platformě, pracujte s [týmem podpory typu float](mailto:support@float.com) . Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon v float. Přidejte uživatele z části osoby nebo hosta nastavení týmu a udělte jim oprávnění k přístupu. Než začnete používat jednotné přihlašování, je třeba vytvořit uživatele a přijmout pozvánku.
 
 ## <a name="test-sso"></a>Test SSO 
 

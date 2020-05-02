@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096329"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692429"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>Rychlý Start: použití synapse Studio (Preview)
 
@@ -56,7 +56,7 @@ Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů na panelu 
 
    ![Dotazování souborů na úložiště](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Spuštěním vygenerovaného dotazu nebo poznámkového bloku zobrazíte obsah souboru:
+3. Spuštěním vygenerovaného dotazu nebo poznámkového bloku zobrazíte obsah souboru.
 
    ![Zobrazit obsah souboru](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -64,7 +64,7 @@ Můžete vytvářet nové složky a nahrávat soubory pomocí odkazů na panelu 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Umožněte uživatelům Azure AD dotazování souborů [přiřazením **čtecího modulu dat objektů BLOB úložiště** nebo **přispěvatele dat objektů BLOB úložiště** na Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
+- Umožněte uživatelům Azure AD dotazování souborů přiřazením [ **čtecího modulu dat objektů BLOB úložiště** nebo **přispěvatele dat objektů BLOB úložiště** na Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
 - [Dotazování souborů na Azure Storage pomocí SQL na vyžádání](sql/on-demand-workspace-overview.md)
-- [Vytvořit fond Apache Spark](quickstart-create-apache-spark-pool.md)
+- [Vytvoření fondu Apache Spark pomocí Azure Portal](quickstart-create-apache-spark-pool.md)
 - [Vytvoření sestavy Power BI u souborů uložených v Azure Storage](sql/tutorial-connect-power-bi-desktop.md)
