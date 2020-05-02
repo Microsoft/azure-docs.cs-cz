@@ -1,14 +1,14 @@
 ---
 title: Příklady ovládacích prvků modelu CI Microsoft Azure Foundation srovnávacího testu
 description: Mapování doporučení pro ukázka srovnávacího testu služby CIS Microsoft Azure Foundation pro Azure Policy.
-ms.date: 11/04/2019
+ms.date: 05/01/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 735ab26e1f9432a87d5a0d927c64d44e680b0694
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656967"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688110"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -25,7 +25,7 @@ Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../..
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou monitorovat, kdy není u privilegovaných Azure Active Directory účtů povoleno ověřování Multi-Factor Authentication.
 
 - Pro účty s oprávněním vlastníka pro vaše předplatné by se měla povolit vícefaktorové ověřování.
-- Pro účty s oprávněním k zápisu do vašeho předplatného by se měla povolit vícefaktorové ověřování.
+- V rámci vašeho předplatného by měly být povolené účty s oprávněním k zápisu.
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1,2 Zajistěte, aby bylo pro všechny uživatele bez oprávnění povoleno vícefaktorové ověřování.
 
@@ -37,9 +37,9 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou monitorovat účty hostů, které by mohly být nutné odebrat.
 
-- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 - Z vašeho předplatného by se měly odebrat externí účty s oprávněním ke čtení.
 - Z vašeho předplatného byste měli odebrat externí účty s oprávněním k zápisu.
+- Z vašeho předplatného byste měli odebrat externí účty s oprávněním vlastníka.
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 zajistěte, aby nevytvářely žádné vlastní role vlastníka předplatného.
 
@@ -51,7 +51,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže monitorovat sítě a virtuální počítače, na kterých není povolená úroveň Security Center úrovně Standard.
 
- - Měla by se vybrat cenová úroveň Security Center Standard.
+- Měla by se vybrat cenová úroveň Security Center Standard.
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2,2 Zajistěte, aby se Automatické zřizování agenta monitorování nastavilo na zapnuto.
 
@@ -87,20 +87,14 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže chránit internetové virtuální počítače.
 
-- Pravidla skupiny zabezpečení sítě pro virtuální počítače s přístupem k Internetu by měla být zesílená.
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2,8 zajistěte, aby nastavení výchozí zásady ASC "monitorovat bránu firewall webových aplikací" nebylo zakázané.
-
-Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která pomáhá chránit virtuální počítače s webovými aplikacemi.
-
-- Pravidla skupin zabezpečení sítě pro webové aplikace v IaaS by se měla posílit.
+- Doporučení adaptivního posílení zabezpečení sítě by se měla použít na internetových virtuálních počítačích.
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2,9 zajistěte, aby nastavení výchozí zásady ASC "povolit bránu firewall nové generace (NGFW)" nebylo "zakázáno"
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které pomůžou chránit podsítě a virtuální počítače před hrozbami omezením přístupu. Zásady Security Center, na které odkazuje toto doporučení týkající se pravidla CIS Microsoft Azure Foundation, se nahradila dvěma novými doporučeními. Zásady, na které se odkazuje, řeší nová doporučení.
 
 - Podsítě by měly být přidružené ke skupině zabezpečení sítě.
-- Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.
+- Virtuální počítače s přístupem k Internetu by měly být chráněné pomocí skupin zabezpečení sítě
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2,10 zajistěte, aby nastavení výchozí zásady ASC "posouzení ohrožení zabezpečení" nebylo zakázané.
 
@@ -128,7 +122,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která pomáhá zajistit, aby bylo povoleno auditování SQL serveru.
 
-- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
+- Auditování na SQL serveru by mělo být povolené.
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2,15 zajistěte, aby nastavení výchozí zásady ASC "monitor SQL Encryption" nebylo zakázané.
 
@@ -182,7 +176,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která pomáhá zajistit, aby bylo povoleno auditování SQL serveru. 
 
-- Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
+- Auditování na SQL serveru by mělo být povolené.
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4,2 Ujistěte se, že je správně nastavená zásada ' AuditActionGroups ' v zásadách auditování pro systém SQL Server.
 
@@ -200,8 +194,8 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byla na serverech SQL a spravovaných instancích SQL povolena Pokročilá zabezpečení dat.
 
-- Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
+- Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 zajistěte, aby se typy detekce hrozeb nastavily na ALL.
 
@@ -214,15 +208,15 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit správné povolení pokročilých oznámení o zabezpečení dat.
 
-- Pokročilá nastavení zabezpečení dat pro spravovanou instanci SQL by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
 - Pokročilá nastavení zabezpečení dat pro SQL Server by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
+- Pokročilá nastavení zabezpečení dat pro spravovanou instanci SQL by měla obsahovat e-mailovou adresu pro příjem výstrah zabezpečení.
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4,7 zajistěte, aby byla povolená e-mailová služba a spolusprávci.
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit správné povolení pokročilých oznámení o zabezpečení dat.
 
-- E-mailová oznámení správcům a vlastníkům předplatného by se měla povolit v rozšířených nastaveních zabezpečení dat spravované instance SQL
 - E-mailová oznámení správcům a vlastníkům předplatného by měla být povolená v nastavení SQL Server Advanced Data Security
+- E-mailová oznámení správcům a vlastníkům předplatného by se měla povolit v rozšířených nastaveních zabezpečení dat spravované instance SQL
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 zajistěte, aby byl nakonfigurovaný správce Azure Active Directory.
 
@@ -240,8 +234,8 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby byla transparentní šifrování dat pro SQL servery a spravované instance SQL šifrované pomocí vlastního klíče.
 
-- Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
 - Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče
+- Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 zajistěte, aby se vynutilo připojení SSL u databázového serveru MySQL nastavené na povoleno.
 
@@ -315,11 +309,83 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 - Azure Monitor by měly shromažďovat protokoly aktivit ze všech oblastí
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>5.1.6 zajistěte, aby byl účet úložiště obsahující kontejner s protokoly aktivit šifrovaný pomocí BYOK (použijte vlastní klíč).
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby účty úložiště obsahující protokoly aktivit byly šifrovány pomocí BYOK.
+
+- Účet úložiště obsahující kontejner s protokoly aktivit musí být zašifrovaný pomocí BYOK.
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>5.1.7 zajistěte, aby protokolování pro Azure webtrezor bylo povolené.
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byly pro trezory klíčů povolené diagnostické protokoly.
 
 - Měly by být povolené diagnostické protokoly v Key Vault.
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 Zajistěte, aby existovalo upozornění protokolu aktivit pro vytvoření přiřazení zásady.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace zásad by mělo existovat upozornění protokolu aktivit.
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 Zajistěte, aby pro vytvoření nebo aktualizaci skupiny zabezpečení sítě existovalo upozornění protokolu aktivit.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 zajistěte, aby pro odstranění skupiny zabezpečení sítě existovalo upozornění protokolu aktivit.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>5.2.4 zajistěte, aby existovalo upozornění protokolu aktivit pro pravidlo vytvoření nebo aktualizace skupiny zabezpečení sítě.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>5.2.5 zajistěte, aby pro odstranění pravidla skupiny zabezpečení sítě existovalo upozornění protokolu aktivit.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>5.2.6 zajistěte, aby pro vytvoření nebo aktualizaci řešení zabezpečení existovalo upozornění protokolu aktivit.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace zabezpečení by mělo existovat upozornění protokolu aktivit.
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>5.2.7 zajistěte, aby pro odstranění řešení zabezpečení existovalo upozornění protokolu aktivit.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace zabezpečení by mělo existovat upozornění protokolu aktivit.
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 zajistěte, aby existovalo upozornění protokolu aktivit pro pravidlo vytvoření nebo aktualizace nebo odstranění SQL Serverho pravidla brány firewall.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace správy by měla existovat výstraha protokolu aktivit.
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>5.2.9 zajistěte, aby existovala výstraha protokolu aktivit pro aktualizaci zásad zabezpečení.
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že existují konkrétní výstrahy protokolu aktivit.
+
+- Pro konkrétní operace zabezpečení by mělo existovat upozornění protokolu aktivit.
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6,1 Zajistěte, aby byl přístup protokolu RDP omezen z Internetu
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že přístup přes protokol RDP bude omezený.
+
+- Přístup RDP z Internetu by měl být blokovaný.
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6,2 Zajistěte, aby přístup přes protokol SSH byl omezen z Internetu
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že přístup přes ssh bude omezený.
+
+- Přístup přes SSH z Internetu by měl být zablokovaný.
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6,5 zajistěte, aby byl Network Watcher povolený.
 
@@ -349,7 +415,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, že jsou nainstalovaná jenom schválená rozšíření virtuálních počítačů. Tato zásada vyžaduje pole parametrů, které určuje všechna schválená rozšíření virtuálních počítačů. Tato definice iniciativy zásad obsahuje navrhované výchozí hodnoty, které by zákazníci měli ověřit. 
 
- - Musí být nainstalovaná jenom schválená rozšíření virtuálních počítačů.
+- Musí být nainstalovaná jenom schválená rozšíření virtuálních počítačů.
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7,5 zajistěte, aby byly aplikovány nejnovější opravy operačního systému pro všechny Virtual Machines
 
@@ -373,7 +439,15 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby se řízení přístupu na základě role používalo ke spravovaným oprávněním v clusterech služby Kubernetes.
 
-- \[Preview\]: použití Access Control na základě rolí (RBAC) na služby Kubernetes Services
+- Pro služby Kubernetes by se měla použít Access Control na základě rolí (RBAC).
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9,1 Ujistěte se, že je App Service ověřování nastaveno na Azure App Service
+
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby se požadavky na App Service aplikace ověřily.
+
+- V aplikaci API by mělo být povolené ověřování.
+- Ve vaší aplikaci Function app by mělo být povolené ověřování.
+- Ve vaší webové aplikaci by mělo být povolené ověřování.
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Ujistěte se, že webová aplikace přesměruje veškerý provoz HTTP na HTTPS v Azure App Service
 
@@ -434,7 +508,7 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby webové aplikace používaly nejnovější verzi Java.
 
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace API.
-- Zajistěte, aby byla nejnovější verze Java, pokud se používá jako součást aplikace funtion.
+- Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást aplikace Function App.
 - Zajistěte, aby byl jazyk Java verze nejnovější, pokud se používá jako součást webové aplikace.
 
 ## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 Ujistěte se, že ' HTTP Version ' je nejnovější, pokud se používá ke spuštění webové aplikace
@@ -444,7 +518,6 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění aplikace API.
 - Ujistěte se, že hodnota HTTP Version je nejnovější, pokud se používá ke spuštění aplikace Function App.
 - Ujistěte se, že hodnota HTTP verze je nejnovější, pokud se používá ke spuštění webové aplikace.
-
 
 ## <a name="next-steps"></a>Další kroky
 

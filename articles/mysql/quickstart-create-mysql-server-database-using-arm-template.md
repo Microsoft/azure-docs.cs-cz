@@ -1,0 +1,221 @@
+---
+title: Vytvoření databáze Azure DB pro MySQL pomocí šablony ARM
+description: V tomto článku se dozvíte, jak vytvořit Azure Database for MySQL server s integrací virtuální sítě pomocí Azure Resource Manager šablony.
+services: azure-resource-manager
+author: mgblythe
+ms.service: mysql
+ms.topic: quickstart
+ms.custom: subject-armqs
+ms.author: mblythe
+ms.date: 04/27/2020
+ms.openlocfilehash: 7313d12509859514e41b30c4021f74f25a0e50b9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629949"
+---
+# <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-arm-template"></a>Rychlý Start: vytvoření serveru Azure Database for MySQL pomocí šablony ARM
+
+Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu se dozvíte, jak pomocí předdefinované šablony Azure Resource Manager (ARM) vytvořit Azure Database for MySQL server s integrací virtuální sítě. Server můžete vytvořit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo Azure PowerShell.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+## <a name="prerequisites"></a>Požadavky
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
+* Pokud chcete spustit kód místně, [Azure PowerShell](/powershell/azure/).
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+* Účet Azure s aktivním předplatným. [Vytvořte si ho zdarma](https://azure.microsoft.com/free/).
+* Pokud chcete spustit kód místně, [Azure CLI](/cli/azure/).
+
+---
+
+## <a name="create-an-azure-database-for-mysql-server"></a>Vytvoření serveru Azure Database for MySQL
+
+Server Azure Database for MySQL vytvoříte s definovanou sadou výpočetních prostředků a prostředků úložiště. Další informace najdete v tématu [Azure Database for MySQL cenové úrovně](concepts-pricing-tiers.md). Server vytvoříte v rámci [skupiny prostředků Azure](../azure-resource-manager/management/overview.md).
+
+### <a name="review-the-template"></a>Kontrola šablony
+
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/).
+
+:::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
+
+Šablona definuje pět prostředků Azure:
+
+* [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+* [**Microsoft. Network/virtualNetworks/podsítí**](/azure/templates/microsoft.network/virtualnetworks/subnets)
+* [**Microsoft. DBforMySQL/servery**](/azure/templates/microsoft.dbformysql/servers)
+* [**Microsoft. DBforMySQL/servery/virtualNetworkRules**](/azure/templates/microsoft.dbformysql/servers/virtualnetworkrules)
+* [**Microsoft. DBforMySQL/servery/firewallRules**](/azure/templates/microsoft.dbformysql/servers/firewallrules)
+
+Další příklady šablon Azure Database for MySQL najdete v [galerii šablon rychlý Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>Nasazení šablony
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Vyberte následující odkaz pro nasazení šablony Azure Database for MySQL serveru do Azure Portal:
+
+[![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-managed-mysql-with-vnet%2fazuredeploy.json)
+
+Na stránce **nasadit Azure Database for MySQL se sítí VNET** :
+
+1. V poli **Skupina prostředků**vyberte **vytvořit novou**, zadejte název nové skupiny prostředků a vyberte **OK**.
+
+2. Pokud jste vytvořili novou skupinu prostředků, vyberte **umístění** pro skupinu prostředků a nový server.
+
+3. Zadejte **název serveru**, **přihlašovací jméno správce**a **přihlašovací heslo správce**.
+
+    ![Nasazení Azure Database for MySQL s oknem VNet, šablonou Azure pro rychlý Start, Azure Portal](./media/quickstart-create-mysql-server-database-using-arm-template/deploy-azure-database-for-mysql-with-vnet.png)
+
+4. Pokud chcete, změňte další výchozí nastavení:
+
+    * **Předplatné**: předplatné Azure, které chcete použít pro server.
+    * **Kapacita SKU**: kapacita Vcore, která může být *2* (výchozí), *4*, *8*, *16*, *32*nebo *64*.
+    * **Název SKU**: Předpona úrovně SKU, rodina SKU a kapacita skladové položky, které jsou spojeny podtržítky, například *B_Gen5_1*, *GP_Gen5_2* (výchozí) nebo *MO_Gen5_32*.
+    * **Velikost SKU MB**: velikost úložiště pro Azure Database for MySQL server (standardně *5120*) v megabajtech.
+    * **Úroveň SKU**: vrstva nasazení, jako je například *Basic*, *GeneralPurpose* (výchozí), nebo *MemoryOptimized*.
+    * **Rodina SKU**: *COMPUTE GEN4 –* nebo *Gen5* (výchozí), která indikuje generování hardwaru pro nasazení serveru.
+    * **MySQL verze**: verze serveru MySQL, která se má nasadit, například *5,6* nebo *5,7* (výchozí nastavení).
+    * **Dny uchovávání záloh**: požadované období pro uchování geograficky redundantního zálohování ve dnech (výchozí *7*).
+    * **Geograficky redundantní zálohování**: *povoleno* nebo *zakázáno* (výchozí nastavení), v závislosti na geograficky se zotavení po havárii (GEO-Dr).
+    * **Virtual Network název**: název virtuální sítě (výchozí *azure_mysql_vnet*).
+    * **Název podsítě**: název podsítě (výchozí *azure_mysql_subnet*).
+    * **Virtual Network název pravidla**: název pravidla virtuální sítě, které povoluje podsíť (výchozí *AllowSubnet*).
+    * **Předpona adresy virtuální**sítě: Předpona adresy virtuální sítě (výchozí *10.0.0.0/16*).
+    * **Předpona podsítě**: Předpona adresy pro podsíť (výchozí *10.0.0.0/16*).
+
+5. Přečtěte si podmínky a ujednání a potom vyberte Souhlasím **s výše uvedenými podmínkami a ujednáními**.
+
+6. Vyberte **Koupit**.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+Pomocí následujícího interaktivního kódu vytvořte nový Azure Database for MySQL server pomocí šablony. Kód vás vyzve k zadání nového názvu serveru, názvu a umístění nové skupiny prostředků a jména a hesla účtu správce.
+
+Chcete-li spustit kód v Azure Cloud Shell, vyberte **vyzkoušet** v horním rohu libovolného bloku kódu.
+
+```azurepowershell-interactive
+$serverName = Read-Host -Prompt "Enter a name for the new Azure Database for MySQL server"
+$resourceGroupName = Read-Host -Prompt "Enter a name for the new resource group where the server will exist"
+$location = Read-Host -Prompt "Enter an Azure region (for example, centralus) for the resource group"
+$adminUser = Read-Host -Prompt "Enter the Azure Database for MySQL server's administrator account name"
+$adminPassword = Read-Host -Prompt "Enter the administrator password" -AsSecureString
+
+New-AzResourceGroup -Name $resourceGroupName -Location $location # Use this command when you need to create a new resource group for your deployment
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+    -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-managed-mysql-with-vnet/azuredeploy.json `
+    -serverName $serverName `
+    -administratorLogin $adminUser `
+    -administratorLoginPassword $adminPassword
+
+Read-Host -Prompt "Press [ENTER] to continue ..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+Pomocí následujícího interaktivního kódu vytvořte nový Azure Database for MySQL server pomocí šablony. Kód vás vyzve k zadání nového názvu serveru, názvu a umístění nové skupiny prostředků a jména a hesla účtu správce.
+
+Chcete-li spustit kód v Azure Cloud Shell, vyberte **vyzkoušet** v horním rohu libovolného bloku kódu.
+
+```azurecli-interactive
+echo "Enter a name for the new Azure Database for MySQL server:" &&
+read serverName &&
+echo "Enter a name for the new resource group where the server will exist:" &&
+read resourceGroupName &&
+echo "Enter an Azure region (for example, centralus) for the resource group:" &&
+read location &&
+echo "Enter the Azure Database for MySQL server's administrator account name:" &&
+read adminUser &&
+echo "Enter the administrator password:" &&
+read adminPassword &&
+params='serverName='$serverName' administratorLogin='$adminUser' administratorLoginPassword='$adminPassword &&
+az group create --name $resourceGroupName --location $location &&
+az deployment group create --resource-group $resourceGroupName --parameters $params --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-managed-mysql-with-vnet/azuredeploy.json &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
+## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+Pomocí těchto kroků můžete zobrazit přehled nového serveru Azure Database for MySQL:
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **Azure Database for MySQL servery**.
+
+2. V seznamu databáze vyberte nový server. Zobrazí se stránka s **přehledem** nového serveru Azure Database for MySQL.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+Chcete-li zobrazit podrobnosti o serveru Azure Database for MySQL, spusťte následující interaktivní kód. Bude nutné zadat název nového serveru.
+
+```azurepowershell-interactive
+$serverName = Read-Host -Prompt "Enter the name of your Azure Database for MySQL server"
+Get-AzResource -ResourceType "Microsoft.DBforMySQL/servers" -Name $serverName | ft
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+Chcete-li zobrazit podrobnosti o serveru Azure Database for MySQL, spusťte následující interaktivní kód. Budete muset zadat název a skupinu prostředků nového serveru.
+
+```azurecli-interactive
+echo "Enter your Azure Database for MySQL server name:" &&
+read serverName &&
+echo "Enter the resource group where the Azure Database for MySQL server exists:" &&
+read resourcegroupName &&
+az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/servers"
+```
+
+---
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, která odstraní prostředky ve skupině prostředků.
+
+# <a name="portal"></a>[Portál](#tab/azure-portal)
+
+1. V [Azure Portal](https://portal.azure.com)vyhledejte a vyberte **skupiny prostředků**.
+
+2. V seznamu Skupina prostředků vyberte název vaší skupiny prostředků.
+
+3. Na stránce **Přehled** vaší skupiny prostředků vyberte **Odstranit skupinu prostředků**.
+
+4. V potvrzovacím dialogovém okně zadejte název vaší skupiny prostředků a pak vyberte **Odstranit**.
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+Write-Host "Press [ENTER] to continue..."
+```
+
+# <a name="cli"></a>[CLI](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName &&
+echo "Press [ENTER] to continue ..."
+```
+
+---
+
+## <a name="next-steps"></a>Další kroky
+
+Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
+
+> [!div class="nextstepaction"]
+> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

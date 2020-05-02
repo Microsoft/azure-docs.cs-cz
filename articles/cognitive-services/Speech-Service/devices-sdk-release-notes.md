@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371624"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652722"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
 V následujících částech jsou uvedeny změny v posledních verzích.
+
+## <a name="speech-devices-sdk-1110"></a>Sada Speech 1.11.0 SDK pro zařízení:
+
+- Podpora pro [URBETTER DDK](http://www.urbetter.com/products_56/278.html).
+- Vydané binární soubory pro [mluvčí GGEC](https://aka.ms/sdsdk-download-speaker) , který se používá v našem [příkladu hlasového pomocníka](https://aka.ms/sdsdk-speaker).
+- Vydané binární soubory pro [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) a [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) pro maliny PI a podobná zařízení.
+- Byla aktualizována součást [sady Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) na verzi 1.11.0. Další informace najdete v [poznámkách k verzi](https://aka.ms/csspeech/whatsnew).
 
 ## <a name="speech-devices-sdk-190"></a>Sada Speech 1.9.0 SDK pro zařízení:
 

@@ -5,51 +5,42 @@ ms.topic: quickstart
 ms.date: 01/10/2020
 ms.custom: mvc, devcenter, seo
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 8954f75aba176d8222f8a82256e66131bdee8921
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610951"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628176"
 ---
-::: zone pivot="programming-language-csharp"  
-# <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce jazyka C# v Azure pomocí Visual Studio Code
+# <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí Visual Studio Code
 
-V tomto článku použijete Visual Studio Code k vytvoření funkce založené na knihovně jazyka C#, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+::: zone pivot="programming-language-csharp"  
+V tomto článku použijete Visual Studio Code k vytvoření funkce založené na knihovně jazyka C#, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"
-# <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce JavaScriptu v Azure pomocí Visual Studio Code
-
-V tomto článku použijete Visual Studio Code k vytvoření funkce JavaScriptu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+V tomto článku použijete Visual Studio Code k vytvoření funkce JavaScriptu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-# <a name="quickstart-create-a-typescript-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce TypeScript v Azure pomocí Visual Studio Code
-
-V tomto článku použijete Visual Studio Code k vytvoření funkce TypeScript, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+V tomto článku použijete Visual Studio Code k vytvoření funkce TypeScript, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
-# <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce PowerShellu v Azure pomocí Visual Studio Code
-
-V tomto článku použijete Visual Studio Code k vytvoření funkce PowerShellu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+V tomto článku použijete Visual Studio Code k vytvoření funkce PowerShellu, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end  
 ::: zone pivot="programming-language-python" 
-# <a name="quickstart-create-a-python-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce Pythonu v Azure pomocí Visual Studio Code
-
-V tomto článku použijete Visual Studio Code k vytvoření funkce jazyka Python, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+V tomto článku použijete Visual Studio Code k vytvoření funkce jazyka Python, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end  
 ::: zone pivot="programming-language-java" 
-# <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce Java v Azure pomocí Visual Studio Code
-
-V tomto článku použijete Visual Studio Code k vytvoření funkce jazyka Java, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
+V tomto článku použijete Visual Studio Code k vytvoření funkce jazyka Java, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru. 
 ::: zone-end
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-K dispozici je také verze tohoto článku [na bázi CLI](functions-create-first-azure-function-azure-cli.md) .
-::: zone-end  
+Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně. 
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
+K dispozici je také verze tohoto článku [na bázi CLI](functions-create-first-azure-function-azure-cli.md) .
+::: zone-end
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Pokud VS Code nejste preferovaným vývojářským nástrojem, podívejte se na naše podobné kurzy pro vývojáře v jazyce Java, které používají [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [GRADLE](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ nápad](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
+> Pokud Visual Studio Code nejste preferovaným vývojářským nástrojem, podívejte se na naše podobné kurzy pro vývojáře v jazyce Java, které využívají [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [GRADLE](/azure/azure-functions/functions-create-first-java-gradle) a [IntelliJ nápad](/azure/developer/java/toolkit-for-intellij/quickstart-functions).
 ::: zone-end  
 
 ## <a name="configure-your-environment"></a>Konfigurace prostředí

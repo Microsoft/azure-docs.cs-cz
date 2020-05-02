@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 87126d1beca97a905f0f3b09b565c12c37a4774d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203909"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628516"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -32,19 +32,11 @@ Pro zlepšení zabezpečení a správy vám Azure Red Hat OpenShift umožňuje i
 
 ## <a name="cluster-and-node"></a>Clustery a uzly
 
-Uzly Azure Red Hat OpenShift běží na virtuálních počítačích Azure. Můžete úložiště připojit k uzlům a podům, upgradovat komponenty clusteru a použít GPU.
-
-## <a name="virtual-networks-and-ingress"></a>Virtuální sítě a příchozí přenos dat
-
-[Virtuální síť clusteru můžete připojit k existující virtuální síti nebo vytvořit virtuální síť při vytváření clusteru](tutorial-create-cluster.md#create-a-virtual-network-containing-two-empty-subnets).
-
-## <a name="kubernetes-certification"></a>Certifikace Kubernetes
-
-Služba Azure Red Hat OpenShift byla CNCF certifikována jako Kubernetesá shoda.
+Uzly Azure Red Hat OpenShift běží na virtuálních počítačích Azure. Úložiště můžete připojit k uzlům a luskům a upgradovat součásti clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 
 Seznamte se s požadavky na Azure Red Hat OpenShift:
 
 > [!div class="nextstepaction"]
-> [Vytvoření a nastavení vývojového prostředí](howto-setup-environment.md)
+> [Vytvoření a nastavení vývojového prostředí](tutorial-create-cluster.md)

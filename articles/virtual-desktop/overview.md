@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612839"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628312"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -103,7 +103,7 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 >[!IMPORTANT]
 >Ve většině případů doporučujeme místo adres URL používat značky služby, aby nedocházelo k problémům se službou. Odblokování těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají jenom virtuálním plochám a prostředkům virtuálních počítačů s Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
 >
->Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény.
+>Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
 
 Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
 

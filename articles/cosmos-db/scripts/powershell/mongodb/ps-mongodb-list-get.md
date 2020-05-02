@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 686b140915e90adefa15084c2e8317404b91ed09
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 94c41df305abe3e1678efc1dc59d0c855c5cb069
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365891"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653001"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Vypíše a získá databáze a grafy pro Azure Cosmos DB MongoDB API.
 
@@ -40,8 +40,8 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
-| [Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Vypíše Cosmos DB databáze rozhraní API MongoDB v účtu nebo získá zadanou Cosmos DB databázi rozhraní API MogoDB v účtu. |
-| [Get-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Vypíše Cosmos DB kolekce rozhraní API MongoDB nebo získá zadanou Cosmos DB kolekci rozhraní API MongoDB v databázi. |
+| [Get-AzCosmosDBMongoDBDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabase) | Zobrazí v účtu databáze rozhraní API MongoDB nebo získá zadanou databázi MongoDB API. |
+| [Get-AzCosmosDBMongoDBCollection](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollection) | Vypíše kolekce rozhraní API MongoDB nebo načte zadanou kolekci rozhraní MongoDB API v databázi. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

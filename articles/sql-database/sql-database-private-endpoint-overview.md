@@ -3,24 +3,24 @@ title: Privátní propojení
 description: Přehled funkce privátního koncového bodu
 author: rohitnayakmsft
 ms.author: rohitna
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 4338c179fb8c0eebbb64ac5b33dc5dd8878d0794
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd717d653e57fbb8c540e4ef023011c64778a3b0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176715"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628993"
 ---
-# <a name="private-link-for-azure-sql-database-and-data-warehouse"></a>Privátní odkaz pro Azure SQL Database a datový sklad
+# <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz pro Azure SQL Database a Azure synapse Analytics
 
 Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../virtual-network/virtual-networks-overview.md) síti a podsíti. 
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database.
+> Tento článek se týká Azure SQL serveru a databází SQL Database a Azure synapse Analytics, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database.
 
 ## <a name="data-exfiltration-prevention"></a>Prevence exfiltrace dat
 
@@ -28,7 +28,7 @@ Exfiltrace dat v Azure SQL Database je v případě, že ověřený uživatel, j
 
 Vezměte v úvahu scénář s uživatelem, který je spuštěný SQL Server Management Studio (SSMS) ve virtuálním počítači Azure, který se připojuje k SQL Database. Tato SQL Database je v datovém centru Západní USA. Následující příklad ukazuje, jak omezit přístup k veřejným koncovým bodům na SQL Database pomocí řízení přístupu k síti.
 
-1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a řízení přístupu k síti datového skladu](sql-database-networkaccess-overview.md).
+1. Nastavením povolit službám Azure na **off**zakažte veškerý provoz služeb azure pro SQL Database prostřednictvím veřejného koncového bodu. Ujistěte se, že nejsou v pravidlech brány firewall na úrovni serveru a databáze povolená žádná IP adresa. Další informace najdete v tématu [Azure SQL Database a Azure synapse Analytics Network Access Controls](sql-database-networkaccess-overview.md).
 1. Povolte provoz do SQL Database jenom pomocí privátní IP adresy virtuálního počítače. Další informace najdete v článcích o [pravidlech brány firewall pro virtuální](sql-database-firewall-configure.md)počítače a [služby](sql-database-vnet-service-endpoint-rule-overview.md) .
 1. Na virtuálním počítači Azure upřesněte rozsah odchozího připojení pomocí [skupin zabezpečení sítě (skupin zabezpečení sítě)](../virtual-network/manage-network-security-group.md) a značek služeb následujícím způsobem.
     - Zadejte pravidlo NSG, které povolí provoz pro tag Service = SQL. WestUs – umožňuje připojení k SQL Database jenom v Západní USA
@@ -50,7 +50,7 @@ Pomocí privátního propojení můžou zákazníci povolit přístup mezi různ
 Soukromé koncové body lze vytvořit pomocí portálu, PowerShellu nebo rozhraní příkazového řádku Azure:
 - [Portál](../private-link/create-private-endpoint-portal.md)
 - [PowerShell](../private-link/create-private-endpoint-powershell.md)
-- [Rozhraní příkazového řádku](../private-link/create-private-endpoint-cli.md)
+- [CLI](../private-link/create-private-endpoint-cli.md)
 
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce SQL spravovat připojení privátního koncového bodu (PEC) k SQL Database.
@@ -142,7 +142,6 @@ Nmap done: 256 IP addresses (1 host up) scanned in 207.00 seconds
 
 Výsledkem je, že jedna IP adresa je nahoru. který odpovídá IP adrese privátního koncového bodu.
 
-
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Ověření připojení pomocí SQL Server Management Studio (SSMS)
 > [!NOTE]
 > Pro klienty použijte **plně kvalifikovaný název domény (FQDN)** serveru v připojovacích řetězcích. Jakékoli pokusy o přihlášení provedené přímo na IP adresu se nezdaří. Toto chování je záměrné, protože privátní koncový bod směruje provoz do brány SQL v oblasti a je nutné zadat plně kvalifikovaný název domény, aby přihlášení bylo úspěšné.
@@ -174,11 +173,9 @@ Pokud chcete navázat připojení z místního prostředí k SQL Database, vyber
 - [Okruh ExpressRoute](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)
 
 
-## <a name="connecting-from-an-azure-sql-data-warehouse-to-azure-storage-using-polybase"></a>Připojení z Azure SQL Data Warehouse k Azure Storage pomocí základu
+## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase"></a>Připojení ze služby Azure synapse Analytics k Azure Storage pomocí základu
 
-Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azure Storagech účtů. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom k sadě virtuálních sítí VNet přes soukromé koncové body, koncové body služby nebo brány firewall založené na protokolu IP, připojení ze základů účtu se přeruší. Pokud chcete povolit jak základní scénáře importu i exportu, tak i Azure SQL Data Warehouse připojení k Azure Storage, která jsou zabezpečená pro virtuální síť, postupujte podle kroků uvedených [tady](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
-
-
+Základ se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom k sadě virtuálních sítí VNet přes soukromé koncové body, koncové body služby nebo brány firewall založené na protokolu IP, připojení ze základů účtu se přeruší. Pokud chcete umožnit jak základní scénáře importu i exportu pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečená k virtuální síti, postupujte podle kroků uvedených [tady](sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 ## <a name="next-steps"></a>Další kroky
 

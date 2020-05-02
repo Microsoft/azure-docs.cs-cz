@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 166b9c2d6b20fbd6a71ba5df17e049838038617d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eaab34dbf91256f0e06465d97b91543237310f97
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365919"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652915"
 ---
 # <a name="list-and-get-tables-for-azure-cosmos-db---table-api"></a>Seznam a získání tabulek pro Azure Cosmos DB-rozhraní API pro tabulky
 
@@ -40,7 +40,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 |---|---|
 |**Azure Cosmos DB**| |
 | [Get-AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccount) | Zobrazí seznam Cosmos DB účtů nebo získá zadaný Cosmos DB účet. |
-| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Zobrazí seznam Cosmos DB rozhraní API pro tabulky tabulek v účtu nebo získá zadanou Cosmos DB rozhraní API pro tabulkyovou tabulku v účtu. |
+| [Get-AzCosmosDBTable](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbtable) | Zobrazí seznam rozhraní API pro tabulky tabulek v účtu nebo získá zadanou rozhraní API pro tabulky tabulku v účtu. |
 |**Skupiny prostředků Azure**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||

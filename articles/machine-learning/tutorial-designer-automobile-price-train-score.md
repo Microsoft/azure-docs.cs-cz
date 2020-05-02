@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47288c5da5b32a9f9640b1ee65c646885bf5cbab
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389422"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653237"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Kurz: předpověď ceny automobilu pomocí návrháře (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Pro celý kanál můžete nastavit **výchozí výpočetní cíl** , který vše
     Pokud už máte dostupný cíl výpočtů, můžete ho vybrat ke spuštění tohoto kanálu.
 
     > [!NOTE]
-    > Návrhář může spouštět experimenty pouze na Azure Machine Learning výpočetním cíli. Ostatní výpočetní cíle se nezobrazí.
+    > Návrhář může spustit školicí experimenty na Azure Machine Learning výpočetní a Azure Machine Learning cíle výpočetní instance. Ostatní výpočetní cíle se nezobrazí.
 
 1. Zadejte název výpočetního prostředku.
 
