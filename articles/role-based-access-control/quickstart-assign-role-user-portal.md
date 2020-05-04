@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: udělení přístupu uživatelů k prostředkům Azure pomocí RBAC a Azure Portal '
-description: V tomto kurzu se dozvíte, jak udělit uživateli přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) v Azure Portal.
+title: 'Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal – Azure RBAC'
+description: V tomto kurzu se dozvíte, jak udělit uživateli přístup k prostředkům Azure pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138089"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735840"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu udělíte uživateli přístup k vytváření a správě virtuálních počítačů ve skupině prostředků.
+[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu udělíte uživateli přístup k vytváření a správě virtuálních počítačů ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -58,7 +58,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-V RBAC se přístup uděluje vytvořením přiřazení role.
+Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role.
 
 1. V seznamu **skupin prostředků**klikněte na novou skupinu prostředků **RBAC-Resource-Group** .
 
@@ -88,7 +88,7 @@ V RBAC se přístup uděluje vytvořením přiřazení role.
 
 ## <a name="remove-access"></a>Odebrání přístupu
 
-V RBAC se přístup odebírá odebrání přiřazení role.
+Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role.
 
 1. V seznamu přiřazení rolí přidejte značku zaškrtnutí vedle uživatele s rolí Přispěvatel virtuálních počítačů.
 
@@ -115,4 +115,4 @@ V RBAC se přístup odebírá odebrání přiřazení role.
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure PowerShell](tutorial-role-assignments-user-powershell.md)

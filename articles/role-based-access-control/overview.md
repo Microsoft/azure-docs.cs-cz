@@ -1,6 +1,6 @@
 ---
-title: Co je řízení přístupu na základě role (RBAC) u prostředků Azure? | Dokumentace Microsoftu
-description: Získejte přehled řízení přístupu na základě role (RBAC) pro prostředky Azure. K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
+title: Co je řízení přístupu na základě role Azure (Azure RBAC)?
+description: Získejte přehled řízení přístupu na základě role v Azure (Azure RBAC). K řízení přístupu k prostředkům Azure použijte přiřazení rolí.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,31 +14,31 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d186fd2182603709921f876d0bc212762cb8586b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686473"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735857"
 ---
-# <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Co je řízení přístupu na základě role (RBAC) u prostředků Azure?
+# <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Co je řízení přístupu na základě role Azure (Azure RBAC)?
 
-Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role (RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
+Správa přístupu ke cloudovým prostředkům je velmi důležitou funkcí pro jakoukoli organizaci, která používá cloud. Řízení přístupu na základě role v Azure (Azure RBAC) pomáhá spravovat, kdo má přístup k prostředkům Azure, co s těmito prostředky může dělat a k jakým oblastem mají přístup.
 
-RBAC je autorizační systém založený na [Azure Resource Manager](../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
+Azure RBAC je autorizačním systémem postaveným na [Azure Resource Manager](../azure-resource-manager/management/overview.md) , který poskytuje jemně odstupňovanou správu přístupu k prostředkům Azure.
 
-## <a name="what-can-i-do-with-rbac"></a>Co mi RBAC umožňuje?
+## <a name="what-can-i-do-with-azure-rbac"></a>Co můžu dělat s Azure RBAC?
 
-Tady je několik příkladů toho, co vám RBAC umožňuje:
+Tady je několik příkladů toho, co můžete dělat s Azure RBAC:
 
 - Jednomu uživateli můžete povolit správu virtuálních počítačů v předplatném a jinému uživateli správu virtuálních sítí.
 - Skupině DBA můžete povolit správu databází SQL v předplatném.
 - Uživateli můžete povolit správu všech prostředků ve skupině prostředků, například virtuálních počítačů, webů a podsítí.
 - Aplikaci můžete povolit přístup ke všem prostředkům ve skupině prostředků.
 
-## <a name="how-rbac-works"></a>Jak RBAC funguje
+## <a name="how-azure-rbac-works"></a>Jak funguje Azure RBAC
 
-Způsob řízení přístupu k prostředkům pomocí RBAC spočívá ve vytvoření přiřazení rolí. Jedná se o klíčový koncept, který vám pomůže pochopit – jak se vynutila oprávnění. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
+Způsob řízení přístupu k prostředkům pomocí Azure RBAC je vytvoření přiřazení rolí. Jedná se o klíčový koncept, který vám pomůže pochopit – jak se vynutila oprávnění. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor.
 
 ### <a name="security-principal"></a>Objekt zabezpečení
 
@@ -64,9 +64,9 @@ Azure obsahuje několik [předdefinovaných rolí](built-in-roles.md), které m�
 - [Čtenář](built-in-roles.md#reader) – může zobrazit existující prostředky Azure.
 - [Správce uživatelských přístupů](built-in-roles.md#user-access-administrator) – může spravovat uživatelský přístup k prostředkům Azure.
 
-Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [role pro prostředky Azure](custom-roles.md).
+Zbývající předdefinované role umožňují správu konkrétních prostředků Azure. Role [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) například uživateli umožňuje vytvářet a spravovat virtuální počítače. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
 
-Azure obsahuje operace s daty, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
+Azure obsahuje operace s daty, které umožňují udělit přístup k datům v rámci objektu. Pokud má uživatel například přístup ke čtení dat u účtu úložiště, bude moci číst objekty blob nebo zprávy v rámci daného účtu úložiště. Další informace najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
 
 ### <a name="scope"></a>Rozsah
 
@@ -94,17 +94,17 @@ Přiřazení rolí můžete vytvořit pomocí portálu Azure Portal, Azure CLI, 
 
 ## <a name="multiple-role-assignments"></a>Přiřazení více rolí
 
-Co se stane, když máte více překrývajících se přiřazení rolí? RBAC je aditivní model, takže vaše skutečná oprávnění jsou součtem přiřazení rolí. Vezměte v úvahu následující příklad, kdy je uživateli udělena role Přispěvatel v oboru předplatného a role čtenář ve skupině prostředků. Součet oprávnění přispěvatele a oprávnění čtenářů je efektivně rolí přispěvatele pro skupinu prostředků. Proto v takovém případě přiřazení role čtenáře nemá žádný vliv.
+Co se stane, když máte více překrývajících se přiřazení rolí? Azure RBAC je doplňkovým modelem, takže vaše skutečná oprávnění jsou součtem přiřazení rolí. Vezměte v úvahu následující příklad, kdy je uživateli udělena role Přispěvatel v oboru předplatného a role čtenář ve skupině prostředků. Součet oprávnění přispěvatele a oprávnění čtenářů je efektivně rolí přispěvatele pro skupinu prostředků. Proto v takovém případě přiřazení role čtenáře nemá žádný vliv.
 
 ![Přiřazení více rolí](./media/overview/rbac-multiple-roles.png)
 
 ## <a name="deny-assignments"></a>Přiřazení zamítnutí
 
-Model RBAC původně umožňoval jen povolení, ne zamítnutí, teď ale omezeně podporuje také přiřazení zamítnutí. Podobně jako u přiřazení role *přiřazení zamítnutí* připojuje sadu akcí Odepřít pro uživatele, skupinu, instanční objekt nebo spravovanou identitu v konkrétním oboru pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povoleny*, zatímco přiřazení zamítnutí definuje sadu akcí, které nejsou *povoleny*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [Vysvětlení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md).
+Dřív se jednalo o model jenom pro povolování bez odepření, ale teď Azure RBAC podporuje přiřazení odepřít omezenému způsobu. Podobně jako u přiřazení role *přiřazení zamítnutí* připojuje sadu akcí Odepřít pro uživatele, skupinu, instanční objekt nebo spravovanou identitu v konkrétním oboru pro účely odepření přístupu. Přiřazení role definuje sadu akcí, které jsou *povoleny*, zatímco přiřazení zamítnutí definuje sadu akcí, které nejsou *povoleny*. Jinými slovy, přiřazení zamítnutí blokuje uživatelům možnost provádět určité akce i v případě, že přiřazení role jim přístup uděluje. Přiřazení zamítnutí mají přednost před přiřazením rolí. Další informace najdete v tématu [Vysvětlení přiřazení odmítnutí Azure](deny-assignments.md).
 
-## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak se v modelu RBAC určí, jestli má uživatel přístup k prostředku
+## <a name="how-azure-rbac-determines-if-a-user-has-access-to-a-resource"></a>Jak Azure RBAC určuje, jestli má uživatel přístup k prostředku
 
-V následující části popisujeme obecné kroky, které se v modelu RBAC používají k určení toho, zda budete mít v rovině správy přístup k prostředku. Tyto principy je užitečné chápat, pokud se snažíte vyřešit potíže s přístupem.
+Níže jsou uvedené kroky vysoké úrovně, které Azure RBAC používá k určení, jestli máte přístup k prostředku na rovině správy. Tyto principy je užitečné chápat, pokud se snažíte vyřešit potíže s přístupem.
 
 1. Uživatel (nebo instanční objekt služby) získá token pro Azure Resource Manager.
 
@@ -128,7 +128,7 @@ V následující části popisujeme obecné kroky, které se v modelu RBAC použ
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure pomocí Azure Portal](check-access.md)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
-- [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
+- [Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure](check-access.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
+- [Vysvětlení různých rolí](rbac-and-directory-admin-roles.md)
 - [Architektura pro přijetí do cloudu: Správa přístupu k prostředkům v Azure](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

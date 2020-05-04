@@ -3,12 +3,12 @@ title: Přehled stavu Azure | Microsoft Docs
 description: Globální pohled na stav služeb Azure
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898346"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732546"
 ---
 # <a name="azure-status-overview"></a>Přehled stavu Azure
 
@@ -24,9 +24,7 @@ Stavová stránka Azure se aktualizuje v reálném čase, protože se změní st
 
 ## <a name="azure-status-history"></a>Historie stavu Azure
 
-I když na stránce Stav Azure se vždy zobrazují nejnovější informace o stavu, můžete zobrazit starší události pomocí [stránky historie stavu Azure](https://status.azure.com/status/history/).
-
-Počínaje událostmi, které byly publikovány v listopadu 2019, stránka Historie stavu zobrazuje události až do 365 dnů v minulosti, včetně předběžné hlavní příčiny, zmírňování a dalších kroků pro Azure.
+I když na stránce Stav Azure se vždy zobrazují nejnovější informace o stavu, můžete zobrazit starší události pomocí [stránky historie stavu Azure](https://status.azure.com/status/history/). Stránka historie obsahuje všechny RCAsy pro incidenty, které nastaly 20. listopadu 2019 nebo novější a od tohoto data se dokončí, a poskytne vám 5. RCAs před 20. listopadu 2019 nejsou k dispozici.
 
 ## <a name="rss-feed"></a>Informační kanál RSS
 

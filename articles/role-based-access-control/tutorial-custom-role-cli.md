@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI'
-description: Začínáme s vytvářením vlastní role pro prostředky Azure pomocí Azure CLI v tomto kurzu.
+title: 'Kurz: Vytvoření vlastní role Azure pomocí Azure CLI – Azure RBAC'
+description: Začínáme s vytvářením vlastní role Azure pomocí Azure CLI a řízení přístupu na základě role Azure (Azure RBAC) v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: f1a6e72e1444a26b675379d9948217a7773c4a1c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3efe9670d03a754cc90689c4b66d0843de4e275f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79239865"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735500"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure CLI
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure CLI vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -61,7 +61,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít se šablonou J
 
 1. Otevřete soubor ReaderSupportRole.json v editoru a přidejte do něj následující JSON.
 
-    Informace o různých vlastnostech najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
+    Informace o různých vlastnostech najdete v tématu [vlastní role Azure](custom-roles.md).
 
     ```json
     {
@@ -269,4 +269,4 @@ Pokud chcete aktualizovat vlastní roli, aktualizujte soubor JSON a pak aktualiz
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních rolí pro prostředky Azure pomocí Azure CLI](custom-roles-cli.md)
+> [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI](custom-roles-cli.md)

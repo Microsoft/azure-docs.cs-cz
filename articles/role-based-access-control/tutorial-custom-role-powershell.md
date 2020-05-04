@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell'
-description: Začněte vytvářet vlastní role pro prostředky Azure pomocí Azure PowerShell v tomto kurzu.
+title: 'Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell – Azure RBAC'
+description: Seznámení s vytvářením vlastní role Azure pomocí Azure PowerShell a řízení přístupu na základě role Azure (Azure RBAC) v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138285"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735585"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. V tomto kurzu pomocí Azure PowerShellu vytvoříte vlastní roli Čtenář lístků podpory. Vlastní role uživateli umožňuje zobrazit vše v rovině správy předplatného a také otevřít lístky podpory.
 
 V tomto kurzu se naučíte:
 
@@ -73,7 +73,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
 
 1. V editoru otevřete soubor **ReaderSupportRole.json**.
 
-    Následuje ukázka výstupu JSON. Informace o různých vlastnostech najdete v tématu [Vlastní role](custom-roles.md).
+    Následuje ukázka výstupu JSON. Informace o různých vlastnostech najdete v tématu [vlastní role Azure](custom-roles.md).
 
     ```json
     {
@@ -277,4 +277,4 @@ Pokud chcete aktualizovat vlastní roli, můžete aktualizovat soubor JSON nebo 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Vytváření vlastních rolí pro prostředky Azure pomocí Azure PowerShellu](custom-roles-powershell.md)
+> [Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell](custom-roles-powershell.md)

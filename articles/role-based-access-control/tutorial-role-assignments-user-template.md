@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: udělení přístupu uživatelů k prostředkům Azure pomocí šablony RBAC a Správce prostředků'
-description: Naučte se, jak udělit uživateli přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) pomocí šablony Azure Resource Manager v tomto kurzu.
+title: 'Kurz: udělení přístupu uživatele k prostředkům Azure pomocí šablony Azure Resource Manager – Azure RBAC'
+description: Naučte se, jak udělit uživateli přístup k prostředkům Azure pomocí šablony Azure Resource Manager a řízení přístupu na základě role v Azure (Azure RBAC) v tomto kurzu.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f98b1e9c57cf9f624c5af3e59c8afd56d073dd28
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138205"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735466"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí šablony RBAC a Správce prostředků
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-an-azure-resource-manager-template"></a>Kurz: udělení přístupu uživatele k prostředkům Azure pomocí šablony Azure Resource Manager
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu vytvoříte skupinu prostředků a udělíte uživatelům přístup k vytváření a správě virtuálních počítačů ve skupině prostředků. Tento kurz se zaměřuje na proces nasazení šablony Správce prostředků pro udělení přístupu. Další informace o vývoji šablon Správce prostředků naleznete v [dokumentaci správce prostředků](/azure/azure-resource-manager/) a odkazu na [šablonu](/azure/templates/microsoft.authorization/allversions
+[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu vytvoříte skupinu prostředků a udělíte uživatelům přístup k vytváření a správě virtuálních počítačů ve skupině prostředků. Tento kurz se zaměřuje na proces nasazení šablony Správce prostředků pro udělení přístupu. Další informace o vývoji šablon Správce prostředků naleznete v [dokumentaci správce prostředků](/azure/azure-resource-manager/) a odkazu na [šablonu](/azure/templates/microsoft.authorization/allversions
 ).
 
 V tomto kurzu se naučíte:
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure PowerShell](tutorial-role-assignments-user-powershell.md)

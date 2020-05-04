@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – zobrazení přístupu uživatele k prostředkům Azure
-description: V tomto rychlém startu se dozvíte, jak zobrazit přístup určitého uživatele nebo jiného objektu zabezpečení k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure Portal.
+title: Rychlý Start – zobrazení přístupu uživatele k prostředkům Azure – Azure RBAC
+description: V tomto rychlém startu se dozvíte, jak zobrazit přístup k prostředkům uživatele nebo jiného objektu zabezpečení pomocí Azure Portal a řízení přístupu na základě role v Azure (Azure RBAC).
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74419620"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734157"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rychlý Start: zobrazení přístupu uživatele k prostředkům Azure
 
-V okně **řízení přístupu (IAM)** můžete v [řízení přístupu na základě role (RBAC)](overview.md) zobrazit přístup k prostředkům, ke kterým má uživatel nebo jiný objekt zabezpečení prostředky Azure. Někdy ale stačí pouze rychle zobrazit přístup pro jednoho uživatele nebo jiný objekt zabezpečení. Nejjednodušší způsob, jak to provést, je použití funkce **check Access** v Azure Portal.
+V okně řízení přístupu **(IAM)** můžete v [řízení přístupu na základě role v Azure (Azure RBAC)](overview.md) zobrazit přístup k prostředkům, které má uživatel nebo jiný objekt zabezpečení, a získat tak přístup k prostředkům Azure. Někdy ale stačí pouze rychle zobrazit přístup pro jednoho uživatele nebo jiný objekt zabezpečení. Nejjednodušší způsob, jak to provést, je použití funkce **check Access** v Azure Portal.
 
 ## <a name="view-role-assignments"></a>Zobrazit přiřazení rolí
 
@@ -54,4 +54,4 @@ V okně **řízení přístupu (IAM)** můžete v [řízení přístupu na zákl
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal](quickstart-assign-role-user-portal.md)
+> [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](quickstart-assign-role-user-portal.md)

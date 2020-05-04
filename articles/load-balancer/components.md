@@ -11,18 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 532dc313a673d28ffe4fc66060d6dcb491ce866c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691271"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733103"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer komponenty
 
-Azure Load Balancer obsahuje několik klíčových komponent pro jeho operaci.  
-
-Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím Azure Portal, Azure CLI, Azure PowerShell nebo šablon.
+Azure Load Balancer obsahuje několik klíčových komponent pro jeho operaci. Tyto komponenty můžete nakonfigurovat v předplatném prostřednictvím Azure Portal, Azure CLI, Azure PowerShell nebo šablon.
 
 ## <a name="frontend-ip-configurations"></a>Konfigurace IP adresy front-endu
 
@@ -32,6 +30,14 @@ IP adresa nástroje pro vyrovnávání zatížení. Je to kontaktní bod pro kli
 - **Privátní IP adresa**
 
 Výběr IP adresy určuje **typ** vytvořeného nástroje pro vyrovnávání zatížení. Výběr privátních IP adres vytvoří interní nástroj pro vyrovnávání zatížení. Výběr veřejné IP adresy vytvoří veřejný Nástroj pro vyrovnávání zatížení.
+
+|  | Veřejný Load Balancer  | Interní nástroj pro vyrovnávání zatížení |
+| ---------- | ---------- | ---------- |
+| Konfigurace IP adresy front-endu| Veřejná IP adresa | Privátní IP adresa|
+| Popis | Veřejný Nástroj pro vyrovnávání zatížení mapuje veřejnou IP adresu a port příchozího provozu na privátní IP adresu a port virtuálního počítače. Nástroj pro vyrovnávání zatížení mapuje jiný způsob provozování odezvy z virtuálního počítače. Pomocí pravidel vyrovnávání zatížení můžete distribuovat konkrétní typy provozu napříč několika virtuálními počítači nebo službami. Můžete například rozložit zatížení provozu webových požadavků mezi několik webových serverů.| Interní nástroj pro vyrovnávání zatížení distribuuje provoz do prostředků, které jsou uvnitř virtuální sítě. Azure omezuje přístup k IP adresám front-endu virtuální sítě s vyrovnáváním zatížení. Front-endové IP adresy a virtuální sítě se nikdy přímo nezveřejňují do internetového koncového bodu. Interní obchodní aplikace se spouštějí v Azure a přistupuje se k nim v rámci Azure nebo z místních prostředků. |
+| Podporované SKU | Basic, Standard | Basic, Standard |
+
+![Příklad vrstveného nástroje pro vyrovnávání zatížení](./media/load-balancer-overview/load-balancer.png)
 
 ## <a name="backend-pool"></a>Back-endový fond
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72035705"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732509"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s NetDocuments
 
@@ -137,49 +137,48 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 1. V jiném okně webového prohlížeče se přihlaste k webu NetDocuments společnosti jako správce.
 
-2. Přejít na **správce**.
+2. V pravém horním rohu vyberte jméno>**správce**.
 
-3. Klikněte na **Přidat a odebrat uživatele a skupiny**.
+3. Vyberte **Security Center**.
    
-    ![Úložiště](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![Úložiště](./media/netdocuments-tutorial/security-center.png "Security Center")
 
-4. Klikněte na **Konfigurovat rozšířené možnosti ověřování**.
+4. Vyberte **Rozšířené ověřování**.
     
-    ![Konfigurace rozšířených možností ověřování](./media/netdocuments-tutorial/ic795048.png "Konfigurace rozšířených možností ověřování")
+    ![Konfigurace rozšířených možností ověřování](./media/netdocuments-tutorial/advance-authentication.png "Konfigurace rozšířených možností ověřování")
 
-5. V dialogu **federované identity** proveďte následující kroky:
+5.  Na kartě **FEDEROVANÉ ID** proveďte následující kroky:   
    
-    ![Federated Identity](./media/netdocuments-tutorial/ic795049.png "Federated Identity")
+    ![Federated Identity](./media/netdocuments-tutorial/federated-id.png "Federated Identity")
    
     a. Jako **Typ serveru federované identity**vyberte **Active Directory Federation Services (AD FS)**.
-   
-    b. Klikněte na **zvolit soubor**a nahrajte stažený soubor metadat, který jste stáhli z Azure Portal.
-   
-    c. Klikněte na tlačítko **OK**.
+    
+    b.  Vyberte **zvolit soubor**a nahrajte stažený soubor metadat, který jste stáhli z Azure Portal.
+    
+    c.  Vyberte **Uložit**.
 
 ### <a name="create-netdocuments-test-user"></a>Vytvořit testovacího uživatele NetDocuments
 
-Aby se uživatelé Azure AD mohli přihlašovat k NetDocuments, musí se zřídit v NetDocuments.  
-V případě NetDocuments je zřizování ručním úkolem.
+Aby se uživatelé Azure AD mohli přihlašovat k NetDocuments, musí se zřídit v NetDocuments. V případě NetDocuments je zřizování ručním úkolem.
 
 **Chcete-li zřídit uživatelský účet, proveďte následující kroky:**
 
 1. Přihlaste se k webu **NetDocuments** společnosti jako správce.
 
-2. V nabídce v horní části klikněte na **správce**.
+2. V pravém horním rohu vyberte jméno>**správce**.
    
-    ![Správce](./media/netdocuments-tutorial/ic795051.png "Správce")
+    ![Správce](./media/netdocuments-tutorial/user-admin.png "Správce")
 
-3. Klikněte na **Přidat a odebrat uživatele a skupiny**.
+3. Vyberte **Uživatelé a skupiny**.
    
-    ![Úložiště](./media/netdocuments-tutorial/ic795047.png "Repository")
+    ![Úložiště](./media/netdocuments-tutorial/users-groups.png "Repository")
 
 4. Do textového pole **e-mailová adresa** zadejte e-mailovou adresu platného Azure Active Directory účtu, který chcete zřídit, a pak klikněte na **Přidat uživatele**.
    
-    ![E-mailová adresa](./media/netdocuments-tutorial/ic795053.png "E-mailová adresa")
+    ![E-mailová adresa](./media/netdocuments-tutorial/user-mail.png "E-mailová adresa")
    
-    >[!NOTE]
-    >Držitel účtu Azure Active Directory získá e-mail s odkazem na potvrzení účtu, než se aktivuje. K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů NetDocuments nebo rozhraní API poskytovaná NetDocuments.
+    > [!NOTE]
+    > Držitel účtu Azure Active Directory získá e-mail s odkazem na potvrzení účtu, než se aktivuje. K zřizování Azure Active Directorych uživatelských účtů můžete použít jakékoli jiné nástroje pro vytváření uživatelských účtů NetDocuments nebo rozhraní API poskytovaná NetDocuments.
 
 ## <a name="test-sso"></a>Test SSO 
 
@@ -196,4 +195,3 @@ Když na přístupovém panelu kliknete na dlaždici NetDocuments, měli byste s
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Vyzkoušejte si NetDocuments s Azure AD](https://aad.portal.azure.com/)
-

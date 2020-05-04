@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/22/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eba47dede77f6d8dd19bde99a94de3ff5900f99
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76760044"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732781"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Kurz: Integrace jednotného přihlašování (SSO) Azure AD pomocí NetSuite
 
@@ -91,14 +91,14 @@ Pokud chcete povolit jednotné přihlašování služby Azure AD v Azure Portal,
 
     ||
     |-|
-    | `https://<Account ID>.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
-    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Instance ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    * V části Konfigurace NetSuite se zobrazí **hodnota, která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace NetSuite. < `Account ID` ** V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
+    * V části Konfigurace NetSuite se zobrazí **hodnota, která je vysvětlena dále v kurzu v kroku 8 v části Konfigurace NetSuite. < `Instance ID` ** V tomto případě najdete konkrétní doménu (například system.na0.netsuite.com).
 
         ![Konfigurace jednotného přihlašování](./media/NetSuite-tutorial/domain-value.png)
 

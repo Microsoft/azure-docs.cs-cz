@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: udělení přístupu skupiny k prostředkům Azure pomocí RBAC a Azure PowerShell'
-description: Naučte se, jak udělit skupině přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC) a Azure PowerShell v tomto kurzu.
+title: 'Kurz: udělení přístupu skupině k prostředkům Azure pomocí Azure PowerShell – Azure RBAC'
+description: Naučte se, jak udělit skupině přístup k prostředkům Azure pomocí Azure PowerShell a řízení přístupu na základě role Azure (Azure RBAC) v tomto kurzu.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138243"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735517"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Kurz: udělení přístupu skupině k prostředkům Azure pomocí RBAC a Azure PowerShell
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Kurz: udělení přístupu skupině k prostředkům Azure pomocí Azure PowerShell
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
+[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) je způsob, jakým můžete spravovat přístup k prostředkům Azure. V tomto kurzu pomocí Azure PowerShellu udělíte skupině přístup k zobrazení všeho v předplatném a správě všeho ve skupině prostředků.
 
 V tomto kurzu se naučíte:
 
@@ -44,7 +44,7 @@ Pro absolvování tohoto kurzu potřebujete:
 
 ## <a name="role-assignments"></a>Přiřazení rolí
 
-V RBAC se přístup uděluje vytvořením přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Tady jsou dvě přiřazení rolí, která v tomto kurzu provedete:
+Když ve službě Azure RBAC udělíte přístup, vytvoříte přiřazení role. Přiřazení role se skládá ze tří prvků: objekt zabezpečení, definice role a obor. Tady jsou dvě přiřazení rolí, která v tomto kurzu provedete:
 
 | Objekt zabezpečení | Definice role | Rozsah |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ Pro přiřazení role potřebujete uživatele, skupinu nebo instanční objekt. 
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Pokud nemáte oprávnění k vytváření skupin, můžete vyzkoušet [kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure PowerShell](tutorial-role-assignments-user-powershell.md) místo toho.
+Pokud nemáte oprávnění k vytváření skupin, můžete vyzkoušet [kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure PowerShell](tutorial-role-assignments-user-powershell.md) místo toho.
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -294,4 +294,4 @@ Pokud chcete vyčistit prostředky vytvořené v tomto kurzu, odstraňte skupinu
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Správa přístupu k prostředkům Azure pomocí RBAC a Azure PowerShell](role-assignments-powershell.md)
+> [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)

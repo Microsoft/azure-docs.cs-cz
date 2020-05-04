@@ -4,12 +4,12 @@ description: Naučte se průběžně sestavovat, testovat a nasazovat šablony A
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084324"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731930"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Kurz: průběžná integrace šablon Azure Resource Manager s Azure Pipelines
 
@@ -57,7 +57,7 @@ Pokud nemáte účet GitHubu, přečtěte si téma [požadavky](#prerequisites).
 
 1. Vyberte **nové**a zelené tlačítko.
 1. Do **název úložiště**zadejte název úložiště.  Například **AzureRmPipeline-úložiště**. Nezapomeňte nahradit libovolný z **AzureRmPipeline** názvem vašeho projektu. V rámci tohoto kurzu můžete vybrat buď **veřejné** , nebo **soukromé** . A pak vyberte **vytvořit úložiště**.
-1. Zapište adresu URL. Adresa URL úložiště má následující formát: ** https://github.com/[YourAccountName]/[YourRepositoryName]**.
+1. Zapište adresu URL. Adresa URL úložiště má následující formát: **`https://github.com/[YourAccountName]/[YourRepositoryName]`**.
 
 Toto úložiště se označuje jako *vzdálené úložiště*. Každý z vývojářů stejného projektu může klonovat své vlastní *místní úložiště*a sloučit změny do vzdáleného úložiště.
 
@@ -104,7 +104,7 @@ Azuredeploy. JSON se přidal do místního úložiště. V dalším kroku nahraj
     ```
 
     Může se zobrazit upozornění na LF. Upozornění můžete ignorovat. **Hlavní** větev je hlavní.  Pro každou aktualizaci obvykle vytvoříte větev. Pro zjednodušení tohoto kurzu budete používat hlavní větev přímo.
-1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je ** https://github.com/[YourAccountName]/[YourGitHubRepository]**. V rámci složky se zobrazí složka **CreateWebApp** a tři soubory.
+1. Přejděte do úložiště GitHub z prohlížeče.  Adresa URL je **`https://github.com/[YourAccountName]/[YourGitHubRepository]`**. V rámci složky se zobrazí složka **CreateWebApp** a tři soubory.
 1. Vyberte **linkedStorageAccount. JSON** a otevřete šablonu.
 1. Vyberte tlačítko **nezpracované** . Adresa URL začíná na **raw.githubusercontent.com**.
 1. Zkopírujte adresu URL.  Tuto hodnotu musíte zadat při konfiguraci kanálu později v tomto kurzu.
