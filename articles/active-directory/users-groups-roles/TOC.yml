@@ -167,7 +167,7 @@
               href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
             - name: Přiřazení vlastních rolí v PowerShellu
               href: roles-assign-powershell.md
-            - name: Vlastní oprávnění
+            - name: Vlastní role/oprávnění
               href: roles-custom-available-permissions.md
             - name: Delegování oprávnění správce aplikace
               href: roles-delegate-app-roles.md

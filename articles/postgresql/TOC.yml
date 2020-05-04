@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Konfigurace SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Zálohování a obnovení
+              href: concepts-hyperscale-backup.md
         - name: Monitorování a ladění
           items:
             - name: Monitorování a ladění
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: Ověření šifrování dat
+              href: howto-data-encryption-validation.md
         - name: Restartování serveru
           items:
             - name: portál Azure

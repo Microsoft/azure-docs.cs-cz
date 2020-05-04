@@ -291,7 +291,7 @@
       items:
         - name: Všechny funkce
           href: template-functions.md
-        - name: Funkce pole a objektu
+        - name: Funkce pro práci s poli
           href: template-functions-array.md
         - name: Funkce porovnání
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: Numerické funkce
           href: template-functions-numeric.md
+        - name: Objektové funkce
+          href: template-functions-object.md
         - name: Funkce prostředků
           href: template-functions-resource.md
         - name: Funkce řetězců

@@ -262,9 +262,11 @@
       items:
         - name: Práce s výsledky
           href: search-pagination-page-layout.md
-        - name: Vyladění relevance (profily vyhodnocování)
+        - name: Vyhodnocení relevance
+          href: index-similarity-and-scoring.md
+        - name: Profily skórování
           href: index-add-scoring-profiles.md
-        - name: Vyladění relevance (algoritmus podobnosti)
+        - name: Algoritmus podobnosti
           href: index-ranking-similarity.md
     - name: Plánování
       items:

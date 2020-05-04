@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: Atributy profilu uživatele
       href: user-profile-attributes.md
+    - name: Relace SSO
+      href: session-overview.md
 - name: Návody
   items:
     - name: Integrace aplikací
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: Zprostředkovatel identity SAML
+                      href: saml-identity-provider-technical-profile.md
                     - name: Vydavatel tokenu SAML
                       href: saml-issuer-technical-profile.md
                     - name: Samopopisné

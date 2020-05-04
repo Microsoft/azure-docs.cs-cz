@@ -5,20 +5,21 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 12/19/2019
+ms.date: 04/24/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 4c50ca2449787d681d8b9571083a92077d95dcd8
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.openlocfilehash: 4a6d9ef04a33c84d68dff1429fb39a193a249280
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/09/2020
-ms.locfileid: "80986690"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204488"
 ---
 Tyto ukázky ukazují různé úlohy, které je možné provádět ve scénářích správy pro více tenantů.
 
 | **Šablona** | **Popis** |
 |---------|---------|
+| [create-keyvault-secret](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret) | Vytvoří službu Key Vault v tenantovi zákazníka a vytvoří zásady přístupu.
 | [cross-rg-deployment](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/cross-rg-deployment) | Nasadí účty úložiště do dvou různých skupin prostředků.|
 | [deploy-azure-mgmt-services](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-mgmt-services) | Vytvoření služeb pro správu Azure, jejich propojení a nasazení dalších řešení Ke kompletnímu nasazení použijte šablonu **rgWithAzureMgmt.json**. |
 | [deploy-azure-security-center](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/deploy-azure-security-center) | Povolení a konfigurace služby Azure Security Center v rámci cílového předplatného Azure |

@@ -42,6 +42,10 @@
       href: spring-cloud-quotas.md
     - name: Principy metrik v Azure Spring Cloudu
       href: spring-cloud-concept-metrics.md
+    - name: Ovládací prvky zabezpečení pro službu Azure Spring Cloud
+      href: spring-cloud-concept-security-controls.md
+    - name: Principy stavu aplikací v Azure Spring Cloudu
+      href: spring-cloud-concept-app-status.md
     - name: Plán pro zotavení po havárii
       href: disaster-recovery.md
 - name: Návody

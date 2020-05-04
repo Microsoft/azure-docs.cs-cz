@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Dokumentace ke službě Azure DevOps Projects
-summary: Azure DevOps Projects představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
+title: Dokumentace k Azure DevOps Starteru
+summary: Azure DevOps Starter představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu průběžné integrace (CI) a průběžného doručování (CD) do Azure.
 metadata:
-  title: Dokumentace ke službě Azure DevOps Projects
+  title: Dokumentace k Azure DevOps Starteru
   description: Přeneste váš stávající kód a úložiště Git nebo zvolte ukázkovou aplikaci pro vytvoření kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942460"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231458"
 landingContent:
-- title: Informace o Azure DevOps Projects
+- title: Informace o Azure DevOps Starteru
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je Azure DevOps Projects?
+    - text: Co je Azure DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: Video k vytvoření CI/CD s využitím DevOps Projects (8:53)
+    - text: Video k vytvoření CI/CD s využitím DevOps Starteru (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: Vytvoření kanálu CI/CD
   linkLists:

@@ -6,57 +6,67 @@
       href: intro-openshift.md
 - name: Kurzy
   items:
-    - name: Vytvoření a správa clusteru Azure Red Hat OpenShift
-      items:
-        - name: 1. Vytvoření clusteru Azure Red Hat OpenShift
-          href: tutorial-create-cluster.md
-        - name: 2. Škálování clusteru Azure Red Hat OpenShift
-          href: tutorial-scale-cluster.md
-        - name: 3. Odstranění clusteru Azure Red Hat OpenShift
-          href: tutorial-delete-cluster.md
-- name: Správa clusteru
-  items:
-    - name: Správa clusteru Azure Red Hat OpenShift
-      items:
-        - name: 1. Role správce clusteru Azure Red Hat OpenShift
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2. Správa omezení kontextu zabezpečení
-          href: cluster-administration-security-context-constraints.md
+    - name: 1. Vytvoření clusteru Azure Red Hat OpenShift 4
+      href: tutorial-create-cluster.md
+    - name: 2. Připojení ke clusteru Azure Red Hat OpenShift 4
+      href: tutorial-connect-cluster.md
+    - name: 3. Odstranění clusteru Azure Red Hat OpenShift 4
+      href: tutorial-delete-cluster.md
 - name: Návody
   expanded: true
   items:
-    - name: Nastavení vývojového prostředí Azure Red Hat OpenShift
-      href: howto-setup-environment.md
-      expanded: true
+    - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 4
+      href: create-private-cluster.md
+    - name: Konfigurace předávání DNS pro cluster Azure Red Hat OpenShift 4
+      href: dns-forwarding.md
+    - name: Konfigurace ověřování Active Directory pro cluster Azure Red Hat OpenShift 4
       items:
-        - name: Vytvoření tenanta Azure AD
-          href: howto-create-tenant.md
-        - name: Vytvoření uživatele a objektu aplikace Azure AD
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (Preview)
+        - name: Konfigurace ověřování Azure Active Directory (CLI)
+          href: configure-azure-ad-cli.md
+        - name: Konfigurace ověřování Azure Active Directory (portál)
+          href: configure-azure-ad-ui.md
+    - name: Monitorování a protokolování pro Azure Red Hat OpenShift 4
       items:
-        - name: Vytvoření clusteru Azure Red Hat OpenShift 4.3
-          href: howto-using-azure-redhat-openshift.md
-        - name: Nastavení Azure Monitoru pro Azure Red Hat OpenShift 4.3
-          href: howto-azure-monitor-v4.md
-    - name: Nasazení samostatného systému Prometheus v clusteru Azure Red Hat OpenShift
-      href: howto-deploy-prometheus.md
-    - name: Správa projektů v clusteru Azure Red Hat OpenShift
-      href: howto-manage-projects.md
-    - name: Vytvoření privátního clusteru Azure Red Hat OpenShift
-      href: howto-create-private-cluster.md
-    - name: Monitorování a protokolování
-      items:
-        - name: Azure Monitor pro kontejnery (Preview)
+        - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 4 (Preview)
           items:
-            - name: Konfigurace Azure Monitoru pro kontejnery
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: Deaktivace Azure Monitoru pro kontejnery
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: Spouštění privilegovaných kontejnerů v clusteru Azure Red Hat OpenShift
-      href: howto-run-privileged-containers.md
+            - name: Konfigurace Azure Monitoru pro kontejnery pro Azure Red Hat OpenShift 4 (Preview)
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: Nastavení vývojového prostředí Azure Red Hat OpenShift pro Azure Red Hat OpenShift 3.11
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: Vytvoření tenanta Azure AD
+              href: howto-create-tenant.md
+            - name: Vytvoření uživatele a objektu aplikace Azure AD
+              href: howto-aad-app-configuration.md
+        - name: Nasazení samostatného systému Prometheus v clusteru Azure Red Hat OpenShift 3.11
+          href: howto-deploy-prometheus.md
+        - name: Správa projektů v clusteru Azure Red Hat OpenShift 3.11
+          href: howto-manage-projects.md
+        - name: Vytvoření privátního clusteru Azure Red Hat OpenShift 3.11
+          href: howto-create-private-cluster.md
+        - name: Monitorování a protokolování pro Azure Red Hat OpenShift 3.11
+          items:
+            - name: Azure Monitor pro kontejnery v Azure Red Hat OpenShiftu 3.11 (Preview)
+              items:
+                - name: Konfigurace Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: Zakázání Azure Monitoru pro kontejnery v Azure Red Hat OpenShiftu 3.11
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: Spouštění privilegovaných kontejnerů v Azure Red Hat OpenShiftu 3.11
+          href: howto-run-privileged-containers.md
+        - name: Správa clusterů v Azure Red Hat OpenShiftu 3.11
+          items:
+            - name: 1. Role správce clusteru Azure Red Hat OpenShift 3.11
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2. Správa omezení kontextu zabezpečení v Azure Red Hat OpenShiftu 3.11
+              href: cluster-administration-security-context-constraints.md
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift
@@ -69,8 +79,10 @@
       href: openshift-faq.md
     - name: Řešení potíží
       href: troubleshoot.md
-    - name: Podporované prostředky
+    - name: Podporované prostředky pro Azure Red Hat OpenShift 3.11
       href: supported-resources.md
+    - name: Podporované prostředky pro Azure Red Hat OpenShift 4.3
+      href: support-policies-v4.md
     - name: Regionální dostupnost
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Dokumentace k Red Hat OpenShiftu

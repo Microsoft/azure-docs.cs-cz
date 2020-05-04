@@ -252,7 +252,7 @@
         - name: Zobrazení dat kontejnerů v reálném čase
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: Použití kontejnerů Windows Serveru (Preview)
+    - name: Použití kontejnerů s Windows Serverem
       items:
         - name: Vytvoření clusteru AKS
           href: windows-container-cli.md

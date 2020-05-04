@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Pokyny k omezování služby Azure Key Vault
       href: overview-throttling.md
+    - name: Dostupnost a redundance služby Azure Key Vault
+      href: disaster-recovery-guidance.md
     - name: Koncové body služby Azure Key Vault pro virtuální síť –⁠ Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: Návody
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: Použití obnovitelného odstranění v PowerShellu
           href: soft-delete-powershell.md
+    - name: Přesun Key Vaultu
+      items:
+        - name: Přesun Key Vaultu do jiné oblasti
+          href: keyvault-moveregion.md
     - name: Řešení potíží
       items:
         - name: Změna ID tenanta trezoru klíčů po přesunu předplatného

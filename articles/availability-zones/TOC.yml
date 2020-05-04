@@ -8,10 +8,12 @@
   items:
     - name: Vysoká dostupnost pro aplikace Azure
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Oblasti a zóny dostupnosti
+      href: az-overview.md
     - name: Dokumentace k zónám dostupnosti
       items:
-        - name: Co jsou zóny dostupnosti?
-          href: az-overview.md
+        - name: 'Oblasti, které podporují zóny dostupnosti'
+          href: az-region.md
         - name: Virtuální počítače
           items:
             - name: Vytvoření virtuálního počítače s Linuxem v zóně dostupnosti s využitím rozhraní příkazového řádku
