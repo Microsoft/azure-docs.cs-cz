@@ -40,8 +40,6 @@
       href: components.md
     - name: Koncepty
       href: concepts.md
-    - name: Typy
-      href: types.md
     - name: Monitorování stavu
       items:
         - name: Sondy stavu

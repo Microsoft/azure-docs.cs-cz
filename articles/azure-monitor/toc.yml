@@ -214,6 +214,7 @@
             - name: Webové stránky
               items:
                 - name: JavaScript na straně klienta
+                  displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: Sourcemap pro JavaScript
                   href: app/source-map-support.md
@@ -441,6 +442,11 @@
               href: app/custom-data-correlation.md
             - name: Připojovací řetězce
               href: app/sdk-connection-string.md
+            - name: Připojovací řetězce
+              href: app/sdk-connection-string.md
+            - name: GetMetric
+              displayname: 'get metric, custom metrics, metrics, TrackMetric'
+              href: app/get-metric.md
             - name: Speciální témata
               items:
                 - name: Hloubková diagnostika webových aplikací a služeb

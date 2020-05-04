@@ -9,13 +9,13 @@ metadata:
   ms.topic: hub-page
   author: twooley
   ms.author: twooley
-  ms.date: 04/07/2020
-  ms.openlocfilehash: 5f599c7cc608a5e6a6246ed82c8f7b48e427dd66
-  ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+  ms.date: 05/01/2020
+  ms.openlocfilehash: f4428556c33bc476b21932034fa43b020f9e779d
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80985333"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82735024"
 highlightedContent:
   items:
   - title: Seznámení se základními službami úložiště
@@ -144,6 +144,6 @@ additionalContent:
       - url: /azure/backup/quick-backup-vm-portal
         text: Zálohování virtuálních počítačů (Azure Backup)
       - url: /azure/backup/tutorial-backup-azure-files
-        text: Zálohování sdílených složek Azure (Preview)
+        text: Zálohování sdílených složek Azure
       - url: /azure/backup/
         text: Zobrazit víc >
