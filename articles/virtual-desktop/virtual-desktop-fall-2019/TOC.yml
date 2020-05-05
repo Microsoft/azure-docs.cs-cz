@@ -1,0 +1,104 @@
+- name: Vydání Windows Virtual Desktopu z podzimu 2019
+  href: ../index.yml
+- name: Přehled
+  items:
+    - name: Co je Windows Virtual Desktop?
+      href: ../overview.md
+    - name: Dokumentace k vydání z jara 2020
+      href: ../create-host-pools-azure-marketplace.md
+- name: Kurzy
+  items:
+    - name: 1. Vytvoření tenanta
+      href: tenant-setup-azure-active-directory.md
+    - name: 2. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
+      href: create-service-principal-role-powershell.md
+    - name: 3. Vytvoření fondu hostitelů s využitím Azure Marketplace
+      href: create-host-pools-azure-marketplace-2019.md
+    - name: 4. Správa skupin aplikací
+      href: manage-app-groups-2019.md
+    - name: 5. Vytvoření fondu hostitelů pro ověření aktualizací služeb
+      href: create-validation-host-pool-2019.md
+    - name: 6. Nastavení upozornění služeb
+      href: set-up-service-alerts-2019.md
+- name: Postupy
+  items:
+    - name: Připojení k prostředkům Windows Virtual Desktop
+      items:
+        - name: Připojení k webovému klientovi
+          href: connect-web-2019.md
+        - name: Práce s klientem Android
+          href: connect-android-2019.md
+        - name: Připojení s klientem macOS
+          href: connect-macos-2019.md
+        - name: Připojení s klientem iOS
+          href: connect-ios-2019.md
+    - name: Vytvoření fondu hostitelů a hostitelů relací
+      items:
+        - name: Šablona Azure Resource Manageru
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell-2019.md
+        - name: Nasazení virtuálního počítače s Windows 7
+          href: deploy-windows-7-virtual-machine.md
+        - name: Nasazení hostitele relace na bázi GPU
+          href: configure-vm-gpu-2019.md
+        - name: Rozšíření existujícího fondu hostitelů
+          href: expand-existing-host-pool-2019.md
+    - name: Konfigurace nastavení fondu hostitelů
+      items:
+        - name: Vlastnosti protokolu RDP
+          href: customize-rdp-properties-2019.md
+        - name: Typ přiřazení osobního desktopu
+          href: configure-host-pool-personal-desktop-assignment-type-2019.md
+    - name: Automatické škálování hostitelů relace
+      href: set-up-scaling-script.md
+    - name: Vlastní kanál
+      href: customize-feed-virtual-desktop-users-2019.md
+    - name: Nasazení nástroje pro správu
+      items:
+        - name: Šablona Azure Resource Manageru
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
+    - name: Použití diagnostiky služeb
+      items:
+        - name: Nasazení diagnostických nástrojů
+          href: deploy-diagnostics.md
+        - name: Použití diagnostiky s využitím Log Analytics
+          href: diagnostics-log-analytics-2019.md
+    - name: Publikování integrovaných aplikací
+      href: publish-apps-2019.md
+- name: Koncepty
+  items:
+    - name: Prostředí Windows Virtual Desktop
+      href: environment-setup-2019.md
+    - name: Delegovaný přístup ve Windows Virtual Desktop
+      href: delegated-access-virtual-desktop-2019.md
+    - name: Metody vyrovnávání zatížení fondu hostitelů
+      href: host-pool-load-balancing-2019.md
+    - name: Umístění dat
+      href: data-locations-2019.md
+- name: Řešení potíží
+  items:
+    - name: 'Přehled řešení potíží, zpětná vazba a podpora'
+      href: troubleshoot-set-up-overview-2019.md
+    - name: Identifikace a diagnostika problémů
+      href: diagnostics-role-service-2019.md
+    - name: Vytvoření tenanta a fondu hostitelů
+      href: troubleshoot-set-up-issues-2019.md
+    - name: Konfigurace virtuálního počítače hostitele relace
+      href: troubleshoot-vm-configuration-2019.md
+    - name: Řešení potíží s virtuálními počítači s Windows 7
+      href: troubleshoot-windows-7-vm.md
+    - name: Řešení potíží s nástroji pro správu
+      href: troubleshoot-management-tool.md
+    - name: Připojení služby Vzdálená plocha
+      href: troubleshoot-service-connection-2019.md
+    - name: PowerShell pro Windows Virtual Desktop
+      href: troubleshoot-powershell-2019.md
+- name: Referenční informace
+  items:
+    - name: PowerShell
+      href: /powershell/windows-virtual-desktop/overview
+    - name: REST API
+      href: /rest/api/virtual-desktop/

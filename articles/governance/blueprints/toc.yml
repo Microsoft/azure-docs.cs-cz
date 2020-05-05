@@ -17,6 +17,9 @@
     - name: Vytvoření podrobného plánu – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
+    - name: Vytvoření podrobného plánu – šablona ARM
+      displayName: 'assign, compliance, resource manager'
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
 - name: Kurzy
   items:
     - name: Vytvoření z ukázky podrobného plánu
@@ -32,9 +35,20 @@
       href: ./samples/index.md
     - name: Srovnávací test zabezpečení Azure
       items:
+        - name: Přehled
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/index.md
         - name: Mapování kontrol
           displayName: 'standards, azure, benchmark'
           href: ./samples/azure-security-benchmark/control-mapping.md
+        - name: Kroky pro nasazení
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/deploy.md
+    - name: Australian Government ISM PROTECTED
+      items:
+        - name: Mapování kontrol
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/control-mapping.md
     - name: Canada Federal PBMM
       items:
         - name: Přehled

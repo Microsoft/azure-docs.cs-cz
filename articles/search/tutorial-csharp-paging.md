@@ -1,21 +1,21 @@
 ---
 title: Kurz C# o stránkování výsledků hledání
 titleSuffix: Azure Cognitive Search
-description: Tento kurz znázorňuje stránkování výsledků hledání. Sestaví se v existujícím projektu hotelů s tlačítky pro stránkování pomocí prvního, následujícího, předchozího, posledního a číslovaného tlačítka. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
+description: Přidejte do výsledků hledání stránkování a navigační tlačítka a sestavte stávající projekt hotelů a přidejte tak tlačítka First, Next, Previous, Last a číslovaných tlačítek. Druhý stránkovací systém používá nekonečné posouvání, aktivované přesunutím svislého posuvníku na jeho dolní limit.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 9abfeb54be6e22885b8e973034a6d89df8272146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0dce3852d2b0489b373162fe754d745b01bd3074
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121520"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780568"
 ---
-# <a name="c-tutorial-search-results-pagination---azure-cognitive-search"></a>Kurz C#: stránkování výsledků hledání – Azure Kognitivní hledání
+# <a name="tutorial-add-paging-to-search-results-using-the-net-sdk"></a>Kurz: Přidání stránkování do výsledků hledání pomocí sady .NET SDK
 
 Naučte se implementovat dva různé systémy stránkování, první v závislosti na číslech stránek a druhá při nekonečné posouvání. Často se používají oba systémy stránkování a výběr pravého tlačítka závisí na uživatelském prostředí, které chcete s výsledky. Tento kurz sestaví stránkovací systémy do projektu vytvořeného v [C# kurzu: Vytvoření první aplikace – Azure kognitivní hledání](tutorial-csharp-create-first-app.md) kurzu.
 

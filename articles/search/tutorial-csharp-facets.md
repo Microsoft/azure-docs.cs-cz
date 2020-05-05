@@ -1,21 +1,21 @@
 ---
 title: Kurz C# použití omezujících vlastností k usnadnění navigace
 titleSuffix: Azure Cognitive Search
-description: Tento kurz sestaví projekt "stránkování výsledků hledání – Azure Kognitivní hledání" pro přidání navigace omezující vlastnosti. Zjistěte, jak lze pomocí omezující vlastnosti snadno zúžit hledání.
+description: Pokračujte z "výsledků stránkování", chcete-li přidat omezující navigaci. Zjistěte, jak lze pomocí omezující vlastnosti snadno zúžit hledání.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121568"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780585"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>Kurz v jazyce C#: použití omezujících vlastností k podpoře navigace – Azure Kognitivní hledání
+# <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Kurz: Přidání naomezující navigace pomocí sady .NET SDK
 
 Omezující vlastnosti se používají k podpoře navigace. poskytuje uživateli sadu odkazů, které se mají použít k zaměření hledání. Omezující vlastnosti jsou atributy dat (například kategorie nebo konkrétní funkce hotelu v našich ukázkových datech).
 

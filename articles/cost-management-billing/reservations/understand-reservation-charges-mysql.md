@@ -1,20 +1,17 @@
 ---
-title: Způsob uplatňování slev za rezervaci na Azure Database for MySQL
-description: Způsob uplatňování slev za rezervaci na Azure Database for MySQL
+title: Princip slev za rezervaci – Azure Database for MySQL
+description: Projděte si způsob uplatňování slev za rezervaci na servery Azure Database for MySQL.
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199309"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509427"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>Způsob uplatňování slev za rezervaci na Azure Database for MySQL
 
@@ -44,5 +41,6 @@ U ostatních příkladů předpokládejme, že si zakoupíte rezervovanou kapaci
 
 Vysvětlení a znázornění uplatňování rezervací Azure v sestavách fakturace využití najdete v tématu [Vysvětlení využití rezervací Azure](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea).
 
-## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás
+## <a name="next-steps"></a>Další kroky
+
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).

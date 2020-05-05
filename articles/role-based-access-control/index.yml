@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentace k RBAC pro prostředky Azure
-summary: Řízení přístupu na základě role (RBAC) je systém, který poskytuje detailní správu přístupu prostředků Azure. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
+title: Dokumentace ke službě Azure RBAC
+summary: Řízení přístupu na základě role v Azure (Azure RBAC) je systém, který poskytuje detailní správu přístupu prostředků Azure. Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
 metadata:
-  title: Dokumentace k řízení přístupu na základě role (RBAC) pro prostředky Azure
-  description: Přečtěte si víc o využití řízení přístupu na základě role (RBAC) ke správě toho, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
+  title: Dokumentace ke službě Azure RBAC
+  description: Přečtěte si víc o využití řízení přístupu na základě role v Azure (Azure RBAC) ke správě toho, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968316"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733477"
 landingContent:
-- title: Informace o prostředcích programu FastTrack for Azure
+- title: Informace o Azure RBAC
   linkLists:
   - linkListType: overview
     links:
-    - text: Co je RBAC?
+    - text: Co je Azure RBAC?
       url: overview.md
     - text: Vysvětlení různých rolí
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: Zabezpečení vašich prostředků Azure s využitím RBAC
+    - text: Zabezpečení prostředků Azure s využitím Azure RBAC
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: Správa přístupu
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Šablona
       url: role-assignments-template.md
-- title: Vytvoření vlastních rolí
+- title: Vytvoření nebo aktualizace vlastních rolí
   linkLists:
   - linkListType: overview
     links:
     - text: Vlastní role
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření vlastní role – portál
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: Vytvoření vlastní role – PowerShell

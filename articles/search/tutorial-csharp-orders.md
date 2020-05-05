@@ -1,21 +1,21 @@
 ---
 title: Kurz jazyka C# pro řazení výsledků
 titleSuffix: Azure Cognitive Search
-description: Tento kurz ukazuje, jak objednat výsledky hledání. Sestavuje se na předchozím projektu hotelů, objednává primární vlastnost, sekundární vlastnost a zahrnuje profil vyhodnocování pro přidání kritérií zvyšování.
+description: Tento kurz C# ukazuje, jak seřadit výsledky hledání. Sestavuje se v předchozím projektu hotelů, řadí se podle primární vlastnosti, sekundární vlastnosti a zahrnuje profil vyhodnocování pro přidání kritérií zvyšování.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121547"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780602"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>Kurz C#: seřazení výsledků – Azure Kognitivní hledání
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>Kurz: seřazení výsledků hledání pomocí sady .NET SDK
 
 Až do tohoto okamžiku v naší sérii kurzů se výsledky vrátí a zobrazí ve výchozím pořadí. Může to být pořadí, ve kterém jsou data umístěna, nebo pravděpodobně byl definován výchozí _profil vyhodnocování_ , který bude použit v případě, že nejsou zadány žádné parametry řazení. V tomto kurzu se naučíme, jak objednat výsledky založené na primární vlastnosti a potom pro výsledky, které mají stejnou primární vlastnost, jak tento výběr seřadit na sekundární vlastnost. Jako alternativu k řazení na základě numerických hodnot ukazuje konečný příklad, jak objednat na základě vlastního profilu vyhodnocování. Trochu provedeme také hlubší zobrazení _komplexních typů_.
 

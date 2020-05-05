@@ -1,9 +1,9 @@
-- name: Dokumentace k RBAC pro prostředky Azure
+- name: Dokumentace ke službě Azure RBAC
   href: index.yml
   items: null
 - name: Přehled
   items:
-    - name: Co je RBAC?
+    - name: Co je Azure RBAC?
       href: overview.md
     - name: Vysvětlení různých rolí
       href: rbac-and-directory-admin-roles.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Vytvoření vlastních rolí
+    - name: Vytvoření nebo aktualizace vlastních rolí
       items:
         - name: Přehled
           href: custom-roles.md
@@ -100,7 +100,7 @@
       href: built-in-roles.md
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
-    - name: Omezení RBAC
+    - name: Omezení Azure RBAC
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources

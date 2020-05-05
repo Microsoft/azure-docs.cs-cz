@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: indexování dat z databází SQL Azure v C # '
+title: Kurz C# – indexování dat SQL Azure
 titleSuffix: Azure Cognitive Search
 description: V tomto kurzu C# se připojte ke službě Azure SQL Database, extrahujte hledaná data a načtěte ji do indexu služby Azure Kognitivní hledání.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78193964"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780755"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Kurz: použití jazyka C# k indexování dat z databází SQL v Azure Kognitivní hledání
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Kurz: indexování dat SQL Azure pomocí sady .NET SDK
 
 Konfigurace [indexeru](search-indexer-overview.md) pro extrakci prohledávatelných dat ze služby Azure SQL Database a jejich odeslání do indexu vyhledávání v Azure kognitivní hledání. 
 

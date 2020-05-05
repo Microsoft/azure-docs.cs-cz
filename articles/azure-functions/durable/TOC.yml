@@ -10,7 +10,7 @@
       href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
     - name: Verze Durable Functions
       href: durable-functions-versions.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 'Vytvoření odolné funkce – C#'
@@ -31,7 +31,7 @@
       href: durable-functions-phone-verification.md
     - name: Publikování ve službě Event Grid
       href: durable-functions-event-publishing.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: /samples/browse/?products=azure-functions&term=durable
@@ -83,6 +83,8 @@
       href: durable-functions-http-api.md
     - name: .NET API
       href: /dotnet/api/microsoft.azure.webjobs.extensions.durabletask?view=azure-dotnet
+    - name: Node.js API
+      href: /javascript/api/durable-functions/?view=azure-node-latest
 - name: Návody
   items:
     - name: Vývoj

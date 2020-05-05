@@ -1,21 +1,21 @@
 ---
-title: Automatické dokončování a návrhy
+title: Kurz C# pro automatické dokončování a návrhy
 titleSuffix: Azure Cognitive Search
-description: Tento kurz předvádí automatické dokončování a návrhy jako způsob, jak shromažďovat vstup z hledaného termínu od uživatelů pomocí rozevíracího seznamu. Vytvoří se v existujícím projektu hotelů.
+description: Přidání automatického dokončování a návrhů ke shromáždění vstupu hledaného termínu od uživatelů pomocí rozevíracího seznamu Tento kurz sestaví na stávajícím projektu hotelů.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 6b74c3bbb811c122950fd969a8797e87f8f77f86
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641079"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780551"
 ---
-# <a name="c-tutorial-add-autocomplete-and-suggestions---azure-cognitive-search"></a>Kurz C#: přidání automatického dokončování a návrhů – Azure Kognitivní hledání
+# <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Kurz: přidání automatického dokončování a návrhů pomocí sady .NET SDK
 
 Naučte se implementovat automatické dokončování (dotazy typeahead a navrhované dokumenty), když uživatel začne psát do vyhledávacího pole. V tomto kurzu zobrazíme samostatně dokončené dotazy a výsledky návrhů a pak dohromady. Uživatel může zadat jenom dva nebo tři znaky, aby bylo možné najít všechny dostupné výsledky.
 

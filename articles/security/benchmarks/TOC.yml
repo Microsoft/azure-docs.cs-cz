@@ -1,10 +1,11 @@
-- name: Srovnávací testy zabezpečení Azure
+- name: Srovnávací test zabezpečení Azure
   href: index.yml
 - name: Úvod
   href: introduction.md
 - name: Zabezpečovací mechanismy
+  expanded: true
   items:
-    - name: Přehled mechanismů zabezpečení Azure
+    - name: Přehled zabezpečovacích mechanismů Azure
       href: overview.md
     - name: Zabezpečení sítě
       href: security-control-network-security.md
@@ -28,9 +29,9 @@
       href: security-control-incident-response.md
     - name: Penetrační testy a tzv. red team exercises
       href: security-control-penetration-tests-red-team-exercises.md
-- name: Standardní hodnoty zabezpečení
+- name: Standardní hodnoty zabezpečení pro Azure
   items:
-    - name: Přehled standardních hodnot zabezpečení Azure
+    - name: Přehled standardních hodnot zabezpečení pro Azure
       href: security-baselines-overview.md
     - name: Standardní hodnoty zabezpečení pro Azure Cache for Redis
       href: ../../azure-cache-for-redis/security-baseline.md

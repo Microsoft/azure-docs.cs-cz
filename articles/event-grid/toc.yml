@@ -149,6 +149,8 @@
           href: event-filtering.md
         - name: Doručování a opakované pokusy
           href: delivery-and-retry.md
+        - name: Doručení událostí webhooku
+          href: webhook-event-delivery.md
     - name: Zotavení po havárii
       items:
         - name: Geografické zotavení po havárii
@@ -161,6 +163,12 @@
           href: security-authorization.md
         - name: Zabezpečení sítě
           href: network-security.md
+    - name: Monitorování a odstraňování potíží
+      items:
+        - name: Diagnostické protokoly
+          href: null
+        - name: Metriky
+          href: metrics.md
 - name: Návody
   items:
     - name: Konfigurace privátních koncových bodů (Preview)
@@ -191,12 +199,16 @@
       href: how-to-event-domains.md
     - name: Implementace převzetí služeb při selhání na straně klienta
       href: custom-disaster-recovery.md
+    - name: Sledování asynchronních operací REST
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Řešení potíží
       items:
-        - name: Povolení diagnostických protokolů pro téma
+        - name: Povolení diagnostických protokolů
           href: enable-diagnostic-logs-topic.md
         - name: Řešení chyb
           href: troubleshoot-errors.md
+        - name: Řešení potíží s ověřováním předplatného
+          href: troubleshoot-subscription-validation.md
         - name: Monitorování doručování událostí
           href: monitor-event-delivery.md
 - name: Referenční informace

@@ -10,12 +10,12 @@ metadata:
   author: MaggiePucciEvans
   ms.author: evansma
   ms.date: 04/02/2020
-  ms.openlocfilehash: 0830e5d15b0a84697472ac65e0ca591d720d969e
-  ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+  ms.openlocfilehash: 26e42d557449706b640115732fb695842f106dff
+  ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/26/2020
-  ms.locfileid: "82160575"
+  ms.lasthandoff: 05/04/2020
+  ms.locfileid: "82778426"
 landingContent:
 - title: Práce na komerčním marketplace
   linkLists:
@@ -98,7 +98,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Generování sestav plateb
-      url: ./partner-center-portal/payout-summary.md
+      url: ./partner-center-portal/payout-summary-overview.md
     - text: Prahové hodnoty, způsoby a časové rámce plateb
       url: ./partner-center-portal/payment-thresholds-methods-timeframes.md
     - text: Nastavení platebního účtu a daňových formulářů

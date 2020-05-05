@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652722"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780908"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Poznámky k verzi: sada Speech SDK pro zařízení
 
@@ -23,6 +23,7 @@ V následujících částech jsou uvedeny změny v posledních verzích.
 
 ## <a name="speech-devices-sdk-1110"></a>Sada Speech 1.11.0 SDK pro zařízení:
 
+- Podpora [libovolného pole mikrofonu geometrií](how-to-devices-microphone-array-configuration.md) a nastavení pracovního úhlu prostřednictvím [konfiguračního souboru](https://aka.ms/sdsdk-micarray-json).
 - Podpora pro [URBETTER DDK](http://www.urbetter.com/products_56/278.html).
 - Vydané binární soubory pro [mluvčí GGEC](https://aka.ms/sdsdk-download-speaker) , který se používá v našem [příkladu hlasového pomocníka](https://aka.ms/sdsdk-speaker).
 - Vydané binární soubory pro [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) a [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) pro maliny PI a podobná zařízení.

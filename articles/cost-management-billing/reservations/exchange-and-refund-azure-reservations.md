@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 174ed17056bf49b541d55719f4058141e88e7ea5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200431"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192106"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Samoobslužné výměny a vrácení peněz za rezervace Azure
 
@@ -83,7 +83,7 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak spravovat rezervaci, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
+- Informace o tom, jak spravovat rezervace, najdete v tématu [Správa rezervací Azure](manage-reserved-vm-instance.md).
 - Další informace o rezervacích Azure najdete v následujících článcích:
     - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
     - [Správa rezervací v Azure](manage-reserved-vm-instance.md)

@@ -8,7 +8,7 @@
       href: api-management-features.md
     - name: Správa mikroslužeb nasazených v AKS
       href: api-management-kubernetes.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření instance – portál
@@ -35,11 +35,11 @@
       href: api-management-get-started-publish-versions.md
     - name: 9. Přizpůsobení vývojářského portálu
       href: api-management-howto-developer-portal-customize.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Zásady
       href: policy-samples.md
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: powershell-samples.md
 - name: Koncepty
   items:
@@ -101,10 +101,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Zřízení brány v místním prostředí
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Nasazení brány v místním prostředí do služby Azure Kubernetes Service
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Nasazení brány v místním prostředí v Kubernetes
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Nasazení brány v místním prostředí v Dockeru
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: Konfigurace vlastní domény pro bránu v místním prostředí
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: Mezipaměť
@@ -209,12 +211,20 @@
           href: api-management-transformation-policies.md
     - name: Správa v produkčním prostředí
       items:
+        - name: Export rozhraní API do prostředí Power Platform
+          href: export-api-power-platform.md
         - name: Správa skupin
           href: api-management-howto-create-groups.md
         - name: Načtení IP adres
           href: api-management-howto-ip-addresses.md
         - name: Protokolování událostí ve službě Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Protokolování žádostí s Azure Application Insights
+          href: api-management-howto-app-insights.md
+        - name: Konfigurace cloudových metrik a protokolů pro bránu v místním prostředí
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Konfigurace místních metrik a protokolů pro bránu v místním prostředí
+          href: how-to-configure-local-metrics-logs.md
         - name: Protokolování žádostí s Azure Application Insights
           href: api-management-howto-app-insights.md
         - name: Nastavení zotavení po havárii pomocí zálohování a obnovení
@@ -237,7 +247,7 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/?view=azps-2.6.0
     - name: REST
       href: /rest/api/apimanagement/

@@ -23,6 +23,9 @@
     - name: Nasazení s využitím několika adres
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Nasazení s využitím Zón dostupnosti
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: ukázky
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Nasazení s využitím rozhraní příkazového řádku Azure
       href: deploy-cli.md
-    - name: Nasazení pomocí šablony
-      href: deploy-template.md
     - name: Nasazení s využitím několika veřejných IP adres
       href: deploy-multi-public-ip-powershell.md
     - name: Nasazení s využitím Zón dostupnosti
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: Vytváření skupin IP adres
       href: create-ip-group.md
+    - name: Ochrana služby Windows Virtual Desktop
+      href: protect-windows-virtual-desktop.md
 - name: Referenční informace
   items:
     - name: Azure CLI

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz C#: indexování více zdrojů dat'
+title: Kurz C# – indexování více zdrojů dat Azure
 titleSuffix: Azure Cognitive Search
 description: Naučte se importovat data z více zdrojů dat do jednoho indexu služby Azure Kognitivní hledání pomocí indexerů. Tento kurz a vzorový kód jsou v jazyce C#.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271481"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780517"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Kurz: indexování dat z více zdrojů dat v jazyce C #
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Kurz: indexování z více zdrojů dat pomocí sady .NET SDK
 
 Azure Kognitivní hledání může importovat, analyzovat a indexovat data z několika zdrojů dat do jednoho indexu vyhledávání konsolidace. To podporuje situace, kdy jsou strukturovaná data agregována s méně strukturovanými nebo i prostými textovými daty z jiných zdrojů, jako jsou text, HTML nebo dokumenty JSON.
 

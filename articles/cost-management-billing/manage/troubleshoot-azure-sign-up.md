@@ -1,5 +1,5 @@
 ---
-title: Nepovedlo se zaregistrovat nový účet Azure
+title: Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 description: Řešení problému při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v centru účtů
 services: cost-management-billing
 author: v-miegge
@@ -9,20 +9,23 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641739"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133167"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
 Při pokusu o registraci nového účtu na portálu Microsoft Azure nebo v Centru účtů Azure může dojít k problému. Než problém začnete řešit, ověřte platnost následujících tvrzení:
 
 - Informace, které jste zadali pro profil účtu Azure (včetně kontaktní e-mailové adresy, adresy a telefonního čísla), jsou správné.
 - Údaje o platební kartě jsou správné.​
 - Ještě nemáte účet Microsoft se stejnými údaji.
+
+> [!NOTE]
+> Pokud už máte účet a hledáte pokyny pro řešení potíží s přihlašováním, přečtěte si téma [Řešení potíží s přihlášením k předplatnému Azure](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue).
 
 ## <a name="resolutions"></a>Řešení
 

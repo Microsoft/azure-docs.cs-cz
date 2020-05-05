@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: Přizpůsobení síťových konfigurací cílového virtuálního počítače Azure
               href: azure-to-azure-customize-networking.md
-            - name: Konfigurace nastavení proxy služby mobility
-              href: configure-mobility-service-proxy-settings.md
             - name: Nastavení mapování sítě a zachování IP adres po převzetí služeb při selhání
               href: azure-to-azure-network-mapping.md
             - name: Příklady zachování IP adres po převzetí služeb při selhání
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Nastavení zotavení po havárii virtuálních počítačů Azure po migraci do Azure
               href: azure-to-azure-replicate-after-migration.md
+            - name: Povolení zotavení po havárii mezi zónami
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Spravovat
           items:
             - name: Aktualizace služby Mobility pro virtuální počítače Azure
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: Nasazení služby Mobility
               items:
-                - name: Instalace služby Mobility
+                - name: Instalace a přehled služby Mobility
                   href: vmware-physical-mobility-service-overview.md
                 - name: Příprava na nabízenou instalaci
                   href: vmware-azure-install-mobility-service.md

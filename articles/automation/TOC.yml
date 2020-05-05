@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Z runbooku Automation
                   href: automation-onboard-solutions.md
-            - name: Zobrazení obsahu sledovaných souborů
+            - name: Správa řešení Change Tracking a Inventory
               href: change-tracking-file-contents.md
             - name: Správa shromažďování dat pro inventarizaci z virtuálních počítačů
               href: automation-vm-inventory.md

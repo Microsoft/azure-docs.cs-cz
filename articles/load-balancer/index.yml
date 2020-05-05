@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 12/05/2019
-  ms.openlocfilehash: d215bbfb80d634780ebfb7e33129c19f241d12a7
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "76263519"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82732984"
 landingContent:
 - title: Informace o Load Balanceru
   linkLists:
@@ -24,6 +24,10 @@ landingContent:
     links:
     - text: Co je nástroj pro vyrovnávání zatížení?
       url: load-balancer-overview.md
+    - text: Koncepce Load Balanceru
+      url: concepts.md
+    - text: Komponenty Load Balanceru
+      url: components.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
@@ -80,11 +84,13 @@ landingContent:
       url: load-balancer-standard-diagnostics.md
     - text: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
       url: load-balancer-troubleshoot.md
+    - text: Běžné chyby Azure Load Balanceru
+      url: load-balancer-common-deployment-errors.md
 - title: Referenční informace
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest

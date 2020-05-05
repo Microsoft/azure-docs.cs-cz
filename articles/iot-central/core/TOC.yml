@@ -131,14 +131,6 @@
               href: howto-show-hide-chat.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejnovější aktualizace (dotaz)
-      href: 'https://azure.microsoft.com/updates/?category=iot&query=azure%20iot%20central'
-    - name: Nejnovější aktualizace (nebo seznam)
-      items:
-        - name: Duben 2020
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
-        - name: Březen 2020
-          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
     - name: Možnosti pomoci a podpory
       href: /azure/iot-fundamentals/iot-support-help
     - name: Šablony oborových aplikací

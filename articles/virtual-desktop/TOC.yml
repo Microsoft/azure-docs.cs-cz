@@ -1,22 +1,20 @@
-- name: Windows Virtual Desktop
+- name: Vydání Windows Virtual Desktopu z jara 2020
   href: index.yml
 - name: Přehled
   items:
     - name: Co je Windows Virtual Desktop?
       href: overview.md
+    - name: Dokumentace k vydání z podzimu 2019
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Kurzy
   items:
-    - name: 1. Vytvoření klienta ve Windows Virtual Desktop
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. Vytvoření objektů služby a přiřazení rolí pomocí PowerShellu
-      href: create-service-principal-role-powershell.md
-    - name: 3. Vytvoření fondu hostitelů pomocí Azure Marketplace
+    - name: 1. Vytvoření fondu hostitelů s využitím webu Azure Portal
       href: create-host-pools-azure-marketplace.md
-    - name: 4. Správa skupin aplikací
+    - name: 2. Správa skupin aplikací
       href: manage-app-groups.md
-    - name: 5. Vytvoření fondu hostitelů pro ověření aktualizací služeb
+    - name: 3. Vytvoření fondu hostitelů pro ověření aktualizací služeb
       href: create-validation-host-pool.md
-    - name: 6. Nastavení upozornění služeb
+    - name: 4. Nastavení upozornění služeb
       href: set-up-service-alerts.md
 - name: Postupy
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: Připojení s klientem iOS
           href: connect-ios.md
+    - name: Instalace modulu PowerShellu
+      href: powershell-module.md
     - name: Vytvoření fondu hostitelů a hostitelů relací
       items:
-        - name: Šablona Azure Resource Manageru
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: Nasazení virtuálního počítače s Windows 7
-          href: deploy-windows-7-virtual-machine.md
         - name: Nasazení hostitele relace na bázi GPU
           href: configure-vm-gpu.md
         - name: Rozšíření existujícího fondu hostitelů
           href: expand-existing-host-pool.md
+        - name: Správa skupin aplikací s využitím PowerShellu
+          href: manage-app-groups-powershell.md
     - name: Vytvoření kontejneru profilů
       items:
         - name: Použití sdílené složky na bázi virtuálních počítačů
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: Instalace sady Office do hlavní image virtuálního pevného disku
           href: install-office-on-wvd-master-image.md
-    - name: Automatické škálování hostitelů relace
-      href: set-up-scaling-script.md
     - name: Vlastní kanál
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Nasazení nástroje pro správu
-      items:
-        - name: Šablona Azure Resource Manageru
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: Použití diagnostiky služeb
       items:
-        - name: Nasazení diagnostických nástrojů
-          href: deploy-diagnostics.md
         - name: Použití diagnostiky s využitím Log Analytics
           href: diagnostics-log-analytics.md
     - name: Publikování integrovaných aplikací
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: Konfigurace virtuálního počítače hostitele relace
       href: troubleshoot-vm-configuration.md
-    - name: Řešení potíží s virtuálními počítači s Windows 7 ve Windows Virtual Desktopu
-      href: troubleshoot-windows-7-vm.md
-    - name: Řešení potíží s nástrojem pro správu Windows Virtual Desktopu
-      href: troubleshoot-management-tool.md
     - name: Připojení služby Vzdálená plocha
       href: troubleshoot-service-connection.md
     - name: Potíže s klienty Vzdálené plochy
@@ -140,10 +124,6 @@
   items:
     - name: Podpora Linuxu
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: Podporovaná nastavení souboru RDP
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: Doprovodné materiály k sítím

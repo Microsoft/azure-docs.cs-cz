@@ -1,14 +1,14 @@
 ---
 title: Co je Azure Lighthouse?
 description: Azure Lighthouse umožňuje poskytovatelům služeb poskytovat spravované služby pro zákazníky s vyšším stupněm automatizace a efektivitou.
-ms.date: 04/23/2020
+ms.date: 04/30/2020
 ms.topic: overview
-ms.openlocfilehash: aea1451d995d135506fb93e3fc9e86f67227d5b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17e0535f50240c7ea239ae230dce90e397eadce9
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144263"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780806"
 ---
 # <a name="what-is-azure-lighthouse"></a>Co je Azure Lighthouse?
 
@@ -22,7 +22,7 @@ Azure Lighthouse pomáhá efektivně a efektivně sestavovat a doručovat spravo
 
 - **Správa ve velkém měřítku**: zapojení zákazníků a operace životního cyklu pro správu zákaznických prostředků jsou jednodušší a lépe škálovatelné.
 - **Lepší viditelnost a přesnost pro zákazníky**: zákazníci budou mít lepší přehled o vašich akcích a přesnou kontrolu nad oborem, který je delegovaný pro správu, včetně možnosti odebrat přístup kompletně, i když se vaše IP adresa zachová.
-- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Možnosti Azure Lighthouse, které zvolíte, se dají integrovat do stávajících pracovních postupů a aplikací. svůj dopad na zapojení zákazníků můžete sledovat tak, že [propojíte ID partnera](../billing/billing-partner-admin-link-started.md).
+- **Komplexní a sjednocené nástroje pro platformy**: naše prostředí nástrojů řeší scénáře poskytovatele služby Key, včetně několika modelů licencování, jako jsou EA, CSP a průběžné platby. Nové funkce fungují s existujícími nástroji a rozhraními API, licenčními modely a partnerskými programy, jako je například [program Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Azure Lighthouse se dá integrovat do stávajících pracovních postupů a aplikací a svůj dopad na zapojení zákazníků můžete sledovat [propojením ID partnera](../billing/billing-partner-admin-link-started.md).
 
 K používání Azure Lighthouse se nevztahují žádné další poplatky za správu prostředků Azure vašich zákazníků.
 
@@ -34,7 +34,6 @@ Azure Lighthouse nabízí několik způsobů, jak zjednodušit zapojení a sprá
 - **Nové prostředí Azure Portal**: informace o křížovém tenantovi najdete na stránce noví **moji zákazníci** v [Azure Portal](https://portal.azure.com). Odpovídající okno **poskytovatelé služeb** umožňuje vašim zákazníkům zobrazovat a spravovat přístup k poskytovateli služeb. Další informace najdete v tématech [zobrazení a Správa zákazníků](./how-to/view-manage-customers.md) a [zobrazení a Správa poskytovatelů služeb](how-to/view-manage-service-providers.md).
 - **Azure Resource Manager šablony**: snadnější provádění úloh správy, včetně připojování zákazníků pro správu delegovaných prostředků Azure. Další informace najdete v našem [úložišti ukázek](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) a připojení [zákazníka k delegované správě prostředků Azure](how-to/onboard-customer.md).
 - **Nabídky spravovaných služeb v Azure Marketplace**: nabízet vaše služby zákazníkům prostřednictvím soukromých nebo veřejných nabídek a automaticky je přinášet do správy delegovaných prostředků Azure, jako alternativu k připojování pomocí šablon Azure Resource Manager. Další informace najdete v tématu [Azure Marketplace nabídky spravovaných služeb](concepts/managed-services-offers.md).
-- **Spravované aplikace Azure**: balíčky a dodávání aplikací, které můžou zákazníci snadno nasadit a používat ve svých vlastních předplatných. Aplikace se nasadí do skupiny prostředků, ke které přistupujete z vašeho tenanta, což vám umožní spravovat službu jako součást celkového prostředí Azure Lighthouse. Další informace najdete v tématu [Přehled spravovaných aplikací Azure](../azure-resource-manager/managed-applications/overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 

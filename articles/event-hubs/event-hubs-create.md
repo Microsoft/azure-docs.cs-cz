@@ -7,14 +7,14 @@ author: spelluru
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/11/2020
+ms.date: 05/04/2020
 ms.author: spelluru
-ms.openlocfilehash: 5e80ab6d5ed0076e03f5378cbe975b15d0a28f47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c678965048a6437deb8cbf39f38f12dc116d39ab
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240993"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743991"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Rychlý start: Vytvoření centra událostí pomocí webu Azure Portal
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro ingestování událostí, která je schopná přijmout a zpracovat miliony událostí za sekundu. Služba Event Hubs dokáže zpracovávat a ukládat události, data nebo telemetrické údaje produkované distribuovaným softwarem a zařízeními. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání. Podrobnější přehled služby Event Hubs najdete v tématech [Přehled služby Event Hubs](event-hubs-about.md) a [Funkce služby Event Hubs](event-hubs-features.md).
@@ -58,21 +58,27 @@ Obor názvů služby Event Hubs poskytuje jedinečný kontejner oboru, na který
 
    ![Tlačítko Přidat](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Na stránce **vytvořit obor názvů** proveďte následující kroky:
-    1. Zadejte **název** oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
-    2. Vyberte **cenovou úroveň** (Basic nebo Standard).
-    3. Všimněte si, že možnost **Povolit Kafka** je automaticky povolená. Azure Event Hubs poskytuje koncový bod Kafka. Tento koncový bod umožňuje vašemu oboru názvů Event Hubs nativně rozumět protokolům a rozhraním API [Apache Kafka](https://kafka.apache.org/intro) zpráv. Díky této funkci můžete komunikovat s centry událostí stejně, jako byste používali témata Kafka, aniž byste museli měnit klienty protokolu nebo spouštět vlastní clustery. Event Hubs podporuje [Apache Kafka verze 1,0](https://kafka.apache.org/10/documentation.html) a novější.
-    4. Vyberte **předplatné** , ve kterém chcete vytvořit obor názvů.
-    5. Vyberte existující **skupinu prostředků** nebo vytvořte novou skupinu prostředků. 
-    4. Vyberte **umístění** pro obor názvů.
-    5. Vyberte **Vytvořit**. Možná budete muset několik minut počkat, než systém úplně zřídí prostředky.
+    1. Vyberte **předplatné** , ve kterém chcete vytvořit obor názvů.
+    2. Vyberte **skupinu prostředků** , kterou jste vytvořili v předchozím kroku. 
+    3. Zadejte **název** oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
+    4. Vyberte **umístění** pro obor názvů.    
+    5. Vyberte **cenovou úroveň** (Basic nebo Standard).  
+    6. Nastavení **jednotek propustnosti** nechte v takovém případě. Další informace o jednotkách propustnosti najdete v tématu [škálovatelnost Event Hubs](event-hubs-scalability.md#throughput-units) .  
+    5. V dolní části stránky vyberte **zkontrolovat + vytvořit** .
 
        ![Vytvoření oboru názvů centra událostí](./media/event-hubs-quickstart-portal/create-event-hub1.png)
-5. Aktualizujte stránku **Event Hubs** , aby se zobrazil obor názvů centra událostí. V upozorněních můžete zjistit stav vytváření centra událostí. 
+   6. Na stránce **Revize + vytvořit** zkontrolujte nastavení a vyberte **vytvořit**. Počkejte, než se nasazení dokončí. 
 
-    ![Vytvoření oboru názvů centra událostí](./media/event-hubs-quickstart-portal/event-hubs-refresh.png)
-6. Vyberte obor názvů. Na portálu se zobrazí domovská stránka **oboru názvů Event Hubs** . 
+       ![Zkontrolovat + vytvořit stránku](./media/event-hubs-quickstart-portal/review-create.png)
+   7. Na stránce **nasazení** vyberte **Přejít k prostředku** a přejděte na stránku pro váš obor názvů. 
 
-   ![Domovská stránka oboru názvů](./media/event-hubs-quickstart-portal/namespace-home-page.png)
+      ![Nasazení je hotové – přejít k prostředku](./media/event-hubs-quickstart-portal/deployment-complete.png)
+   8. Potvrďte, že se zobrazí stránka **Event Hubs obor názvů** podobná následujícímu příkladu: 
+
+       ![Domovská stránka oboru názvů](./media/event-hubs-quickstart-portal/namespace-home-page.png)       
+
+       > [!NOTE]
+       > Azure Event Hubs poskytuje koncový bod Kafka. Tento koncový bod umožňuje vašemu oboru názvů Event Hubs nativně rozumět protokolům a rozhraním API [Apache Kafka](https://kafka.apache.org/intro) zpráv. Díky této funkci můžete komunikovat s centry událostí stejně, jako byste používali témata Kafka, aniž byste museli měnit klienty protokolu nebo spouštět vlastní clustery. Event Hubs podporuje [Apache Kafka verze 1,0](https://kafka.apache.org/10/documentation.html) a novější. Další informace najdete v tématu [použití Event Hubs z Apache Kafkach aplikací](event-hubs-for-kafka-ecosystem-overview.md).
     
 ## <a name="create-an-event-hub"></a>Vytvoření centra událostí
 
@@ -88,8 +94,6 @@ Pokud chcete v rámci oboru názvů vytvořit centrum událostí, postupujte ná
 4. Stav vytvoření centra událostí můžete kontrolovat v části výstrahy. Až se centrum událostí vytvoří, zobrazí se v seznamu Center událostí, jak je znázorněno na následujícím obrázku:
 
     ![Centrum událostí se vytvořilo.](./media/event-hubs-quickstart-portal/event-hub-created.png)
-
-Blahopřejeme! Pomocí portálu jste vytvořili obor názvů služby Event Hubs a v něm centrum událostí. 
 
 ## <a name="next-steps"></a>Další kroky
 

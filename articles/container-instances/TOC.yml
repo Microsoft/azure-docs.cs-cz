@@ -13,6 +13,9 @@
       href: container-instances-quickstart-portal.md
     - name: Nasazení instance kontejneru – PowerShell
       href: container-instances-quickstart-powershell.md
+    - name: Nasazení instance kontejneru – šablona ARM
+      displayName: Resource Manager
+      href: container-instances-quickstart-template.md
 - name: Kurzy
   items:
     - name: Vytvoření a nasazení image kontejneru
@@ -51,6 +54,8 @@
       href: container-instances-orchestrator-relationship.md
     - name: Aspekty zabezpečení
       href: container-instances-image-security.md
+    - name: Virtuální síť
+      href: container-instances-virtual-network-concepts.md
 - name: Návody
   items:
     - name: Nasazení
@@ -77,8 +82,6 @@
           href: container-instances-start-command.md
         - name: Spuštění příkazu (exec)
           href: container-instances-exec.md
-        - name: Spuštění úlohy sestavení Jenkinse
-          href: container-instances-jenkins.md
         - name: Použití spravované identity (Preview)
           href: container-instances-managed-identity.md
         - name: Použití prostředků GPU (Preview)

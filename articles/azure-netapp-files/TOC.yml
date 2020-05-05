@@ -23,10 +23,10 @@
       items:
         - name: Aspekty výkonu pro Azure NetApp Files
           href: azure-netapp-files-performance-considerations.md
-        - name: Výsledky srovnávacích testů výkonnosti pro Azure NetApp Files
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Doporučení srovnávacích testů výkonnosti pro Azure NetApp Files
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Srovnávací testy výkonu pro Linux
+          href: performance-benchmarks-linux.md
         - name: Nejčastější dotazy k výkonu SMB
           href: azure-netapp-files-smb-performance.md
     - name: Model nákladů pro Azure NetApp Files
@@ -37,10 +37,12 @@
       items:
         - name: Architektury řešení s využitím Azure NetApp Files
           href: azure-netapp-files-solution-architectures.md
-        - name: Výhody použití Azure NetApp Files s Oracle Database
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: Konkrétní řešení
+          items:
+            - name: Výhody použití Azure NetApp Files s Oracle Database
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: Výhody použití Azure NetApp Files pro automatizaci elektronických návrhů
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: Nejčastější dotazy k Azure NetApp Files
       href: azure-netapp-files-faqs.md
 - name: Návody
