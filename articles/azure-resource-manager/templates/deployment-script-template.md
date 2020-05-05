@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: jgao
-ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188905"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610798"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
 Naučte se používat skripty pro nasazení v šablonách prostředků Azure. S názvem `Microsoft.Resources/deploymentScripts`nový typ prostředku můžou uživatelé spouštět skripty nasazení v nasazeních šablon a kontrolovat výsledky spuštění. Tyto skripty lze použít k provedení vlastních kroků, jako například:
 
 - Přidání uživatelů do adresáře
-- Vytvoření registrace aplikace
 - provádět operace roviny dat, například objekty blob kopírování nebo databáze počátečních dat
 - vyhledat a ověřit licenční klíč
 - Vytvoření certifikátu podepsaného svým držitelem
@@ -37,14 +36,14 @@ Výhody skriptu nasazení:
 Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozici Azure Container instance.  Přečtěte si téma [dostupnost prostředků pro Azure Container Instances v oblastech Azure](../../container-instances/container-instances-region-availability.md).
 
 > [!IMPORTANT]
-> Dva prostředky skriptu nasazení, účet úložiště a instance kontejneru, se vytvoří ve stejné skupině prostředků ke spuštění skriptu a odstraňování potíží. Tyto prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
+> K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Tyto dva automaticky vytvořené prostředky obvykle odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Další informace najdete v tématu [vyčištění prostředků skriptů nasazení](#clean-up-deployment-script-resources).
 
 ## <a name="prerequisites"></a>Požadavky
 
 - **Spravovaná identita přiřazená uživatelem s rolí přispěvatele do cílové skupiny prostředků**. Tato identita se používá ke spouštění skriptů nasazení. K provedení operací mimo skupinu prostředků je potřeba udělit další oprávnění. Například pokud chcete vytvořit novou skupinu prostředků, přiřaďte identitu k úrovni předplatného.
 
   > [!NOTE]
-  > Skriptovací stroj nasazení vytvoří účet úložiště a instanci kontejneru na pozadí.  Spravovaná identita přiřazená uživateli s rolí přispěvatele na úrovni předplatného je povinná, pokud předplatné nezaregistrovalo službu Azure Storage Account (Microsoft. Storage) a poskytovatele prostředků Azure Container instance (Microsoft. ContainerInstance).
+  > Služba skriptu vytvoří účet úložiště (Pokud nezadáte existující účet úložiště) a instanci kontejneru na pozadí.  Spravovaná identita přiřazená uživateli s rolí přispěvatele na úrovni předplatného je povinná, pokud předplatné nezaregistrovalo službu Azure Storage Account (Microsoft. Storage) a poskytovatele prostředků Azure Container instance (Microsoft. ContainerInstance).
 
   Pokud chcete vytvořit identitu, přečtěte si článek [Vytvoření spravované identity přiřazené uživatelem pomocí Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)nebo pomocí rozhraní příkazového [řádku Azure](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)nebo [pomocí Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md). ID identity budete potřebovat při nasazení šablony. Formát identity je:
 
@@ -54,7 +53,7 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
 
   Pomocí následujícího skriptu CLI nebo skriptu PowerShellu Získejte ID zadáním názvu skupiny prostředků a názvu identity.
 
-  # <a name="cli"></a>[CLI](#tab/CLI)
+  # <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
   ```azurecli-interactive
   echo "Enter the Resource Group name:" &&
@@ -64,7 +63,7 @@ Prostředek skriptu nasazení je k dispozici pouze v oblastech, kde je k dispozi
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[Prostředí](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +100,13 @@ Následující kód JSON je příklad.  Nejnovější schéma šablony najdete [
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ Podrobnosti hodnoty vlastnosti:
 - **Identita**: služba skriptu nasazení používá ke spouštění skriptů spravovanou identitu přiřazenou uživatelem. V současné době je podporována pouze spravovaná identita přiřazená uživatelem.
 - **druh**: zadejte typ skriptu. V současné době jsou podporovány skripty Azure PowerShell a Azure CLI. Hodnoty jsou **AzurePowerShell** a **Azure CLI**.
 - **forceUpdateTag**: Změna této hodnoty mezi nasazeními šablon vynutí opětovné spuštění skriptu nasazení. Použijte funkci newGuid () nebo utcNow (), která musí být nastavena jako výchozí hodnota parametru. Další informace najdete v tématu [spuštění skriptu více než jednou](#run-script-more-than-once).
+- **containerSettings**: Zadejte nastavení pro přizpůsobení instance kontejneru Azure.  **containerGroupName** je určen pro zadání názvu skupiny kontejnerů.  Pokud není zadaný, název skupiny se automaticky vygeneruje.
+- **storageAccountSettings**: Zadejte nastavení pro použití existujícího účtu úložiště. Pokud není zadaný, automaticky se vytvoří účet úložiště. Viz [použití existujícího účtu úložiště](#use-an-existing-storage-account).
 - **azPowerShellVersion**/**azCliVersion**: Zadejte verzi modulu, která se má použít. Seznam podporovaných verzí PowerShellu a rozhraní příkazového řádku najdete v tématu [požadavky](#prerequisites).
 - **argumenty**: zadejte hodnoty parametrů. Hodnoty jsou oddělené mezerami.
 - **environmentVariables**: Určete proměnné prostředí, které se mají předat skriptu. Další informace najdete v tématu [vývoj skriptů nasazení](#develop-deployment-scripts).
@@ -241,7 +249,7 @@ Výstupy skriptu nasazení musí být uloženy v umístění AZ_SCRIPTS_OUTPUT_P
 ### <a name="handle-non-terminating-errors"></a>Zpracování neukončujících chyb
 
 Pomocí proměnné [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Skriptovací stroj nasazení nenastavuje nebo nemění hodnotu.  Navzdory hodnotě nastavené pro $ErrorActionPreference skript nasazení nastaví stav zřizování prostředků na *neúspěšné* , když skript narazí na chybu.
+) ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Služba skriptu nenastavuje nebo nemění hodnotu.  Navzdory hodnotě nastavené pro $ErrorActionPreference skript nasazení nastaví stav zřizování prostředků na *neúspěšné* , když skript narazí na chybu.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
@@ -249,7 +257,7 @@ Nastavení proměnných prostředí (objekt EnvironmentVariable) ve vašich kont
 
 ## <a name="debug-deployment-scripts"></a>Ladit skripty nasazení
 
-Služba skriptu vytvoří [účet úložiště](../../storage/common/storage-account-overview.md) a [instanci kontejneru](../../container-instances/container-instances-overview.md) pro spuštění skriptu. Oba prostředky mají v názvech prostředků příponu **azscripts** .
+Služba skriptu vytvoří [účet úložiště](../../storage/common/storage-account-overview.md) (Pokud nezadáte existující účet úložiště) a [instanci kontejneru](../../container-instances/container-instances-overview.md) pro spuštění skriptu. Pokud tyto prostředky služba Script Service automaticky vytvoří, oba prostředky mají v názvech prostředků příponu **azscripts** .
 
 ![Názvy prostředků skriptů nasazení Správce prostředků šablon](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,17 +300,38 @@ Pokud chcete zobrazit prostředek deploymentScripts na portálu, vyberte **Zobra
 
 ![Správce prostředků skript nasazení šablony, zobrazit skryté typy, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>Použít existující účet úložiště
+
+K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Požadavky na používání existujícího účtu úložiště:
+
+- Podporované druhy účtů úložiště jsou: účty pro obecné účely v2, účty pro obecné účely V1 a účty úložiště. Další informace najdete v tématu [typy účtů úložiště](../../storage/common/storage-account-overview.md).
+- Pravidla firewallu účtu úložiště musí být vypnutá. Viz [Konfigurace bran firewall Azure Storage a virtuální sítě](../../storage/common/storage-network-security.md) .
+- Spravovaná identita přiřazená uživatelem skriptu pro nasazení musí mít oprávnění ke správě účtu úložiště, který zahrnuje čtení, vytváření a odstraňování sdílených složek.
+
+Chcete-li zadat existující účet úložiště, přidejte následující JSON do elementu Property elementu `Microsoft.Resources/deploymentScripts`:
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+Kompletní `Microsoft.Resources/deploymentScripts` ukázku definice najdete v tématu [ukázkové šablony](#sample-templates) .
+
+Když se použije existující účet úložiště, služba skriptu vytvoří sdílený soubor s jedinečným názvem. Informace o tom, jak služba skriptu vyčistí sdílenou složku, najdete v tématu [vyčištění prostředků skriptu nasazení](#clean-up-deployment-script-resources) .
+
 ## <a name="clean-up-deployment-script-resources"></a>Vyčistit prostředky skriptu nasazení
 
-Skript nasazení vytvoří účet úložiště a instanci kontejneru, která se používá ke spouštění skriptů nasazení a ukládání ladicích informací. Tyto dva prostředky se vytvoří ve stejné skupině prostředků jako zřízené prostředky a služba skriptu bude po vypršení platnosti skriptu smazána. Můžete řídit životní cyklus těchto prostředků.  Dokud je neodstraníte, budou se vám účtovat oba prostředky. Informace o cenách najdete v článku [Container Instances](https://azure.microsoft.com/pricing/details/container-instances/) ceny a ceny [Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Tyto dva automaticky vytvořené prostředky odstraní služba skriptu, když se spuštění skriptu nasazení dostane do stavu terminálu. Budou se vám účtovat prostředky, dokud se prostředky neodstraní. Informace o cenách najdete v článku [Container Instances](https://azure.microsoft.com/pricing/details/container-instances/) ceny a ceny [Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 Životní cyklus těchto prostředků je řízen následujícími vlastnostmi v šabloně:
 
-- **cleanupPreference**: vyčistěte předvolby, když se spuštění skriptu dostane do stavu terminálu.  Podporované hodnoty jsou:
+- **cleanupPreference**: vyčistěte předvolby, když se spuštění skriptu dostane do stavu terminálu. Podporované hodnoty jsou:
 
-  - **Always**: prostředky odstraňte, jakmile se spuštění skriptu dostane do stavu terminálu. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, skript systému by zkopíroval výsledky spuštění skriptu, například stdout, Outputs, návratová hodnota atd. do databáze před odstraněním prostředků.
-  - **Úspěch**: Odstraňte prostředky pouze v případě, že je provádění skriptu úspěšné. K vyhledání informací o ladění máte stále přístup k prostředkům.
-  - **Vypršení platnosti**: Odstraňte prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** . Tato vlastnost je aktuálně zakázána.
+  - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, skriptovací služby uchovávají výsledky spuštění skriptu, například stdout, výstupy, návratové hodnoty atd. před odstraněním prostředků.
+  - **Úspěch**: Odstraňte automaticky vytvořené prostředky pouze v případě, že je spuštění skriptu úspěšné. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku, jenom když je spuštění skriptu úspěšné. K vyhledání informací o ladění máte stále přístup k prostředkům.
+  - **Vypršení platnosti**: odstranit automaticky prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
 
 - **retentionInterval**: zadejte časový interval, po který se zachová prostředek skriptu, a potom vyprší platnost a odstraní se.
 

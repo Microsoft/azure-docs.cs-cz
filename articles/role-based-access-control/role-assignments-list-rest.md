@@ -1,6 +1,6 @@
 ---
-title: Seznam přiřazení rolí pomocí Azure RBAC a REST API
-description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a REST API.
+title: Vypsání přiřazení rolí Azure pomocí REST API – Azure RBAC
+description: Naučte se určit, k jakým prostředkům uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup pomocí REST API a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043c91e5c1ecd86951ac3f9423558a3ab369d506
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062160"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735670"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Seznam přiřazení rolí pomocí Azure RBAC a REST API
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>Vypsání přiřazení rolí Azure pomocí REST API
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí REST API.
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062160"
 
 ## <a name="list-role-assignments"></a>Zobrazení seznamu přiřazení rolí
 
-V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazení rolí. K vypsání přiřazení rolí použijte jedno ze [seznamu přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků zadáte obor a volitelný filtr.
+V Azure RBAC pro vypsání přístupu k seznamu získáte seznam přiřazení rolí. K vypsání přiřazení rolí použijte jedno ze [seznamu přiřazení rolí – seznam](/rest/api/authorization/roleassignments/list) rozhraní REST API. K upřesnění výsledků zadáte obor a volitelný filtr.
 
 1. Začněte s následujícím požadavkem:
 
@@ -63,5 +63,5 @@ V části RBAC pro vypsání přístupu k seznamu se zobrazí seznam přiřazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API](role-assignments-rest.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
 - [Reference k Azure REST API](/rest/api/azure/)

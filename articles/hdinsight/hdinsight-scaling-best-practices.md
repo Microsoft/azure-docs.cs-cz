@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189360"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592056"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Škálování clusterů Azure HDInsight
 
@@ -36,7 +36,7 @@ Microsoft poskytuje následující nástroje pro škálování clusterů:
 |[Modul AzureRM PowerShellu](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) | [`az hdinsight resize`](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) `--resource-group RESOURCEGROUP --name CLUSTERNAME --workernode-count NEWSIZE`|
 |[Rozhraní příkazového řádku Azure Classic](hdinsight-administer-use-command-line.md)|`azure hdinsight cluster resize CLUSTERNAME NEWSIZE` |
-|[portál Azure](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
+|[Azure Portal](https://portal.azure.com)|Otevřete podokno cluster HDInsight, v nabídce vlevo vyberte **Velikost clusteru** a pak v podokně velikost clusteru zadejte počet pracovních uzlů a vyberte Uložit.|  
 
 ![Možnost clusteru Azure Portal Scale](./media/hdinsight-scaling-best-practices/azure-portal-settings-nodes.png)
 
@@ -74,27 +74,38 @@ Dopad změny počtu datových uzlů se liší pro každý typ clusteru podporova
 
 * Apache Storm
 
-    Můžete hladce přidávat nebo odebírat datové uzly, když je spuštěná. Po úspěšném dokončení operace škálování ale budete muset topologii znovu vyvážit.
-
-    Nové Vyrovnávání je možné dosáhnout dvěma způsoby:
+    Můžete hladce přidávat nebo odebírat datové uzly, když je spuštěná. Po úspěšném dokončení operace škálování ale budete muset topologii znovu vyvážit. Nové vyrovnávání umožňuje, aby topologie znovu nastavila [Nastavení paralelismu](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) na základě nového počtu uzlů v clusteru. Chcete-li znovu vyrovnávat spuštěné topologie, použijte jednu z následujících možností:
 
   * Webové uživatelské rozhraní pro vyplavení
+
+    Pomocí následujícího postupu můžete znovu vyvážit topologii pomocí uživatelského rozhraní.
+
+    1. Otevřete `https://CLUSTERNAME.azurehdinsight.net/stormui` ve webovém prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru s více podsítěmi. Po zobrazení výzvy zadejte název správce clusteru HDInsight (správce) a heslo, které jste zadali při vytváření clusteru.
+
+    1. Vyberte topologii, kterou chcete znovu vyvážit, a pak vyberte tlačítko pro **vyvážení** . Zadejte zpoždění před provedením operace obnovení rovnováhy.
+
+        ![Rebilance škálování ve službě HDInsight](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * Nástroj rozhraní příkazového řádku (CLI)
 
-    Další informace najdete v [dokumentaci Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    Připojte se k serveru a použijte následující příkaz k opětovnému vyvážení topologie:
 
-    Webové uživatelské rozhraní pro zaplavení je k dispozici v clusteru HDInsight:
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![Rebilance škálování ve službě HDInsight](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    Můžete také zadat parametry pro přepsání pomocného parametru paralelismus původně poskytnuté topologie. Například kód níže překonfiguruje `mytopology` topologii na 5 pracovních procesů, 3 vykonavatele pro komponentu Blue-Spout a 10 prováděcích modulů pro komponentu žlutého šroubu.
 
-    Tady je příklad příkazu CLI pro rozložení topologie zatížení:
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    Po operaci škálování byste měli znovu vyrovnávat repliky oddílů. Další informace najdete v článku o [vysoké dostupnosti dat s Apache Kafka v dokumentu HDInsight](./kafka/apache-kafka-high-availability.md) .
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Jak bezpečně škálovat cluster
 
@@ -252,3 +263,8 @@ Servery oblastí se po dokončení operace škálování automaticky vyrovnávaj
 ## <a name="next-steps"></a>Další kroky
 
 * [Automatické škálování clusterů Azure HDInsight](hdinsight-autoscale-clusters.md)
+
+Konkrétní informace o škálování clusteru HDInsight najdete v těchto tématech:
+
+* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md#scale-clusters)

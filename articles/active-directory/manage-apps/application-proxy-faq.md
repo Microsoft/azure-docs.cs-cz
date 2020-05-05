@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990901"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583081"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Nejčastější dotazy k proxy aplikací služby Active Directory (Azure AD)
 
@@ -95,6 +95,10 @@ Pokud jsou servery konektorů a účet služby webové aplikace ve stejné domé
 
 Pokud jsou servery konektorů a účet služby webové aplikace v různých doménách, používá se delegování na základě prostředků. Oprávnění k delegování jsou nakonfigurovaná na cílovém webovém serveru a účtu služby webové aplikace. Tato metoda omezeného delegování je relativně nová. Tato metoda byla představena v systému Windows Server 2012, který podporuje delegování mezi doménami tím, že umožňuje vlastníkovi prostředků (webové služby) určit, které počítače a účty služeb se k němu mohou delegovat. Pro pomoc s touto konfigurací není k dispozici žádné uživatelské rozhraní, takže budete muset použít PowerShell.
 Další informace najdete v dokumentu White Paper [Principy omezeného delegování protokolu Kerberos pomocí proxy aplikace](https://aka.ms/kcdpaper).
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Funguje ověřování NTLM s Azure Proxy aplikací služby AD?
+
+Ověřování NTLM se nedá použít jako metoda předběžného ověřování nebo jednotného přihlašování. Ověřování NTLM se dá použít jenom v případě, že se dá vyjednávat přímo mezi klientem a publikovanou webovou aplikací. Použití ověřování NTLM obvykle způsobí zobrazení výzvy k přihlášení v prohlížeči.
 
 ## <a name="pass-through-authentication"></a>Předávací ověřování
 

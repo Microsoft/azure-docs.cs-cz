@@ -4,16 +4,16 @@ description: Tento článek poskytuje referenční informace pro příkaz AzCopy
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74033987"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780721"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -89,9 +89,13 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Možnosti
 
-**--Exclude-řetězec cesty**      Vyloučit tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF.
+**--Odstranit-snímky –** řetězec ve výchozím nastavení operace odstranění se nezdařila, pokud má objekt BLOB snímky. Zadejte include pro odebrání kořenového objektu BLOB a všech jeho snímků; případně můžete zadat pouze pro odebrání pouze snímků, ale zachovat kořenový objekt BLOB.
+
+**--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při odebrání. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty. Příklad: myFolder; myFolder/subDirName/File. PDF.
 
 **--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: *. jpg;*. PDF; přesný
+
+**--Force-if – jen pro čtení**    Při odstraňování souboru nebo složky Azure Files vynutíte odstranění, i když má stávající objekt nastaven atribut jen pro čtení.
 
 **-h,--** nápovědu pro odebrání
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--Trusted – řetězec Microsoft-přípony   | Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
 ## <a name="see-also"></a>Viz také
 
