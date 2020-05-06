@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560966"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790877"
 ---
 # <a name="what-is-azure-iot-central"></a>Co je Azure IoT Central?
 
-IoT Central je aplikační platforma IoT, která snižuje zatížení a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Volba sestavování pomocí IoT Central vám umožní soustředit se na čas, peníze a energii při transformaci vaší firmy na data IoT, nikoli jenom na údržbu a aktualizaci složitých a nepřetržitě vyvíjejících se infrastruktury IoT.
+IoT Central je platforma aplikací IoT, která snižuje nároky a náklady na vývoj, správu a údržbu řešení IoT na podnikové úrovni. Volba sestavování pomocí IoT Central vám umožní soustředit se na čas, peníze a energii při transformaci vaší firmy na data IoT, nikoli jenom na údržbu a aktualizaci složitých a nepřetržitě vyvíjejících se infrastruktury IoT.
 
 Webové uživatelské rozhraní umožňuje monitorovat podmínky zařízení, vytvářet pravidla a spravovat miliony zařízení a jejich data v průběhu svého životního cyklu. Kromě toho vám umožňuje reagovat na přehledy zařízení díky rozšíření IoT Intelligence do obchodních aplikací.
 
@@ -29,19 +29,6 @@ Tento článek popisuje, jak IoT Central:
 - Postup správy aplikace
 - Možnosti Azure IoT Edge v IoT Central.
 - Jak připojit zařízení s Azure IoT Edge modulem runtime do vaší aplikace
-
-## <a name="known-issues"></a>Známé problémy
-
-- Průběžný export dat nepodporuje formát Avro (nekompatibilní).
-- Pro injson není aktuálně podporováno.
-- Dlaždice mapy není momentálně podporovaná.
-- Úlohy nepodporují komplexní typy.
-- Typy schématu pole nejsou podporovány.
-- Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
-- IoT Central je v současné době k dispozici v místech USA, Evropa, Asie a Tichomoří, Austrálie, Spojené království a Japonsko.
-- Nemůžete použít šablonu **vlastní aplikace (starší verze)** v umístěních Spojeného království a Japonsko.
-- Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
-- Podpora pro [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) je ve verzi Preview a je podporovaná jenom ve vybraných oblastech.
 
 ## <a name="personas"></a>Osoby
 
@@ -152,7 +139,7 @@ Správci spravují přístup k vaší aplikaci pomocí [rolí a oprávnění už
 
 U všech řešení IoT navržených pro provoz ve velkém měřítku je důležité strukturovaný přístup ke správě zařízení. Nestačí, abyste svá zařízení připojili ke cloudu, je potřeba zajistit, aby byla vaše zařízení připojená a v pořádku. Operátor může pomocí následujících možností IoT Central spravovat zařízení během životního cyklu aplikace:
 
-### <a name="dashboards"></a>Řídicí panely 
+### <a name="dashboards"></a>Řídicí panely
 
 Vestavěné [řídicí panely](./howto-set-up-template.md#generate-default-views) poskytují přizpůsobitelné uživatelské rozhraní pro monitorování stavu a telemetrie zařízení. Začněte s předem vytvořeným řídicím panelem v [šabloně aplikace](howto-use-app-templates.md) nebo vytvořte vlastní řídicí panely přizpůsobené potřebám vašich operátorů. Řídicí panely můžete sdílet se všemi uživateli aplikace nebo je chránit jako soukromé.
 
@@ -193,6 +180,18 @@ Sestavujte řešení IoT, jako je:
 ## <a name="quotas"></a>Kvóty
 
 Každé předplatné Azure má výchozí kvóty, které by mohly mít vliv na rozsah vašeho řešení IoT. V současné době IoT Central omezuje počet aplikací, které můžete nasadit v rámci předplatného na 10. Pokud potřebujete tento limit zvýšit, obraťte se na [podporu Microsoftu](https://azure.microsoft.com/support/options/).
+
+## <a name="known-issues"></a>Známé problémy
+
+- Průběžný export dat nepodporuje formát Avro (nekompatibilní).
+- Pro injson není aktuálně podporováno.
+- Dlaždice mapy není momentálně podporovaná.
+- Typy schématu pole nejsou podporovány.
+- Podporovaná je jenom sada SDK zařízení C a sady SDK zařízení a služeb Node. js.
+- IoT Central je v současné době k dispozici v místech USA, Evropa, Asie a Tichomoří, Austrálie, Spojené království a Japonsko.
+- Nemůžete použít šablonu **vlastní aplikace (starší verze)** v umístěních Spojeného království a Japonsko.
+- Modely schopností zařízení musí mít všechna rozhraní definovaná vložené do stejného souboru.
+- Podpora pro [IoT technologie Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) je ve verzi Preview a je podporovaná jenom ve vybraných oblastech.
 
 ## <a name="next-steps"></a>Další kroky
 
