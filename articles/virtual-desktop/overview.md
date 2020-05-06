@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628312"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837392"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -109,13 +109,13 @@ Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít vi
 
 |Adresa|Odchozí port TCP|Účel|Značka služby|
 |---|---|---|---|
-|*.microsoftonline.com|443|Ověřování pro služby MS Online Services|Žádná|
-|*. events.data.microsoft.com|443|Služba telemetrie|Žádná|
-|www.msftconnecttest.com|443|Zjistí, jestli je operační systém připojený k Internetu.|Žádná|
-|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádná|
-|login.windows.net|443|Přihlášení do služeb MS Online Services, Office 365|Žádná|
-|*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádná|
-|*. digicert.com|443|Ověření odvolání certifikátu|Žádná|
+|*.microsoftonline.com|443|Ověřování pro služby MS Online Services|Žádné|
+|*. events.data.microsoft.com|443|Služba telemetrie|Žádné|
+|www.msftconnecttest.com|443|Zjistí, jestli je operační systém připojený k Internetu.|Žádné|
+|*. prod.do.dsp.mp.microsoft.com|443|Windows Update|Žádné|
+|login.windows.net|443|Přihlášení do služeb MS Online Services, Office 365|Žádné|
+|*. sfx.ms|443|Aktualizace klientského softwaru OneDrivu|Žádné|
+|*. digicert.com|443|Ověření odvolání certifikátu|Žádné|
 
 
 >[!NOTE]
@@ -157,13 +157,13 @@ Klienti vzdálené plochy musí mít přístup k následujícím adresám URL:
 
 |Adresa|Odchozí port TCP|Účel|Klient (y)|
 |---|---|---|---|
-|*. wvd.microsoft.com|443|Provoz služby|Všechny|
-|*.servicebus.windows.net|443|Řešení potíží s daty|Všechny|
-|go.microsoft.com|443|Microsoft odkazy fwlinks|Všechny|
-|aka.ms|443|Zkrácení adresy URL Microsoftu|Všechny|
-|docs.microsoft.com|443|Dokumentace|Všechny|
+|*. wvd.microsoft.com|443|Provoz služby|Vše|
+|*.servicebus.windows.net|443|Řešení potíží s daty|Vše|
+|go.microsoft.com|443|Microsoft odkazy fwlinks|Vše|
+|aka.ms|443|Zkrácení adresy URL Microsoftu|Vše|
+|docs.microsoft.com|443|Dokumentace|Vše|
 |privacy.microsoft.com|443|Prohlášení o ochraně osobních údajů
-|Všechny|
+|Vše|
 |query.prod.cms.rt.microsoft.com|443|Aktualizace klienta|Windows Desktop|
 
 >[!IMPORTANT]
@@ -184,16 +184,16 @@ Virtuální počítač s Windows nepodporuje image operačního systému x86 (32
 
 Dostupné možnosti automatizace a nasazení závisí na tom, který operační systém a jakou verzi si zvolíte, jak je znázorněno v následující tabulce: 
 
-|Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|Aktualizace agenta virtuálního počítače s Windows|
-|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
-|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|Automaticky|
-|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|Automaticky|
-|Windows 7 Enterprise|Ano|Ano|Ne|Ne|Ruční|
-|Windows Server 2019|Ano|Ano|Ne|Ne|Automaticky|
-|Windows Server 2016|Ano|Ano|Ano|Ano|Automaticky|
-|Windows Server 2012 R2|Ano|Ano|Ne|Ne|Automaticky|
+|Operační systém|Galerie imagí Azure|Ruční nasazení virtuálního počítače|Integrace šablon Azure Resource Manager|Zřizování fondů hostitelů na Azure Marketplace|
+|--------------------------------------|:------:|:------:|:------:|:------:|
+|Více relací Windows 10, verze 1903|Ano|Ano|Ano|Ano|
+|Více relací Windows 10, verze 1809|Ano|Ano|Ne|Ne|
+|Windows 10 Enterprise, verze 1903|Ano|Ano|Ano|Ano|
+|Windows 10 Enterprise, verze 1809|Ano|Ano|Ne|Ne|
+|Windows 7 Enterprise|Ano|Ano|Ne|Ne|
+|Windows Server 2019|Ano|Ano|Ne|Ne|
+|Windows Server 2016|Ano|Ano|Ano|Ano|
+|Windows Server 2012 R2|Ano|Ano|Ne|Ne|
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -202,4 +202,4 @@ Pokud používáte verzi Windows Virtual Desktop pro 2019, můžete začít s na
 Pokud používáte 2020 verze virtuálního počítače s Windows, budete muset místo toho vytvořit fond hostitelů. Přejděte k následujícímu kurzu, abyste mohli začít.
 
 > [!div class="nextstepaction"]
-> [Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md)
+> [Vytvoření fondu hostitelů s využitím webu Azure Portal](create-host-pools-azure-marketplace.md)

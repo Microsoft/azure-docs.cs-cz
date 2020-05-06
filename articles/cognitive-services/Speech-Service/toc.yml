@@ -426,6 +426,8 @@
               href: faq-voice-assistants.md
     - name: Vlastní klíčové slovo
       items:
+        - name: Přehled vlastních klíčových slov
+          href: custom-keyword-overview.md
         - name: Vlastní pokyny pro pojmenovávání klíčových slov
           href: speech-devices-sdk-kws-guidelines.md
         - name: Zjišťování vlastních klíčových slov
@@ -519,6 +521,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Podrobnosti k Roobo v2
           href: speech-devices-sdk-roobo-v2.md
+    - name: Návody
+      items:
+        - name: Jak nakonfigurovat pole mikrofonů
+          href: how-to-devices-microphone-array-configuration.md
     - name: Rychlý start
       items:
         - name: Použití sady Speech Devices SDK

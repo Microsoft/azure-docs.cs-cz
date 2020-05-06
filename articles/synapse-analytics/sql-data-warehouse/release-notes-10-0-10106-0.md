@@ -5,19 +5,19 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 3/26/2020
+ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509733"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837375"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Poznámky k verzi služby Azure synapse Analytics
 
@@ -31,7 +31,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 
 
 > [!NOTE]
-> Název produktu vrácený SELECT @@VERSION se změní z Microsoft Azure SQL Data Warehouse na Azure synapse Analytics. Než provedete změnu, pošleme vám Pokročilá oznámení. Tato změna je relevantní pro zákazníky, kteří analyzují název produktu z výsledku SELECT @@VERSION v kódu aplikace. Aby se zabránilo změnám kódu aplikace v důsledku přeručního přizpůsobení produktu, použijte prosím tyto příkazy k dotazování SERVERPROPERTY pro název a verzi databázového produktu: pro vrácení čísla verze XX. X. XXXXX. X (bez názvu produktu) použijte tento příkaz:
+> Název produktu vrácený funkcí SELECT @@VERSION se změní z Microsoft Azure SQL Data Warehouse na Microsoft Azure synapse Analytics. Než provedete změnu, pošleme vám Pokročilá oznámení. Tato změna je relevantní pro zákazníky, kteří analyzují název produktu z výsledku SELECT @@VERSION v kódu aplikace. Aby se zabránilo změnám kódu aplikace v důsledku přeručního přizpůsobení produktu, použijte prosím tyto příkazy k dotazování SERVERPROPERTY pro název a verzi databázového produktu: pro vrácení čísla verze XX. X. XXXXX. X (bez názvu produktu) použijte tento příkaz:
 >
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
@@ -48,13 +48,17 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 | Vylepšení služby | Podrobnosti |
 | --- | --- |
 |**Úroveň kompatibility databáze (Preview)**| V této verzi teď uživatelé můžou nastavit úroveň kompatibility databáze a získat tak chování jazyka Transact-SQL a zpracování dotazů konkrétní verze synapse modulu SQL. Další informace najdete v tématu věnovaném konfiguraci oboru [Sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a [příkazu ALTER DATABASE](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**Sp_describe_undeclared_parameters**| Umožňuje uživatelům zobrazit metadata o nedeklarovaných parametrech v dávce Transact-SQL. Další informace najdete v tématu [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).| <br/><br/><br/>
+
+| Vylepšení nástrojů                                         | Podrobnosti                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) -SQL Server Data Tools (SSDT)** | Tato verze zahrnuje následující vylepšení pro SSDT: </br> </br> – Zjišťování a klasifikace dat<br/> -COPY – příkaz <br/> – Tabulky s jedinečnými omezeními<br/> – Tabulky s seřazeným clusterovaným indexem columnstore<br/> <br/>Tato verze zahrnuje následující opravy pro SSDT: </br></br>  – Při změně datového typu sloupce distribuce vygeneruje skript aktualizace generovaný přes SSDT operaci CTAS a přejmenování namísto vyřazení a opětovného vytvoření tabulky. </br> |
 
 ## <a name="march-2020"></a>Březen 2020
 
 | Vylepšení nástrojů                                         | Podrobnosti                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) -SQL Server Data Tools (SSDT)** | Tato verze zahrnuje následující vylepšení a opravy pro SSDT: </br> </br> – Vyřešil se problém, kdy Změna tabulky, na kterou odkazuje materializované zobrazení (MV) způsobí, že se generují příkazy ALTER VIEW, které se pro MVs nepodporují.<br/><br/> -Implementace změny pro zajištění, že operace porovnání schématu selže, když jsou objekty zabezpečení na úrovni řádků přítomny v databázi nebo projektu. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro SSDT.  <br/><br/> -Průzkumník objektů systému SQL Server prahová hodnota časového limitu se zvýšila, aby se předešlo vypršení časových limitů při výpisu velkého počtu objektů v databázi.<br/><br/> – Optimalizováno způsob, jak Průzkumník objektů systému SQL Server načítá seznam databázových objektů, aby se snížila nestabilita a zvýšil výkon při naplňování Průzkumníka objektů |
+| **[Visual Studio 16,6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) -SQL Server Data Tools (SSDT)** | Tato verze zahrnuje následující vylepšení a opravy pro SSDT: </br> </br> – Vyřešil se problém, kdy Změna tabulky, na kterou odkazuje materializované zobrazení (MV) způsobí, že se generují příkazy ALTER VIEW, které se pro MVs nepodporují.<br/><br/> -Implementace změny pro zajištění, že operace porovnání schématu selže, když jsou objekty zabezpečení na úrovni řádků přítomny v databázi nebo projektu. Objekty zabezpečení na úrovni řádků nejsou aktuálně podporovány pro SSDT.  <br/><br/> -Průzkumník objektů systému SQL Server prahová hodnota časového limitu se zvýšila, aby se předešlo vypršení časových limitů při výpisu velkého počtu objektů v databázi.<br/><br/> – Optimalizováno způsob, jak Průzkumník objektů systému SQL Server načítá seznam databázových objektů, aby se snížila nestabilita a zvýšil výkon při naplňování Průzkumníka objektů |
 
 ## <a name="january-2020"></a>Leden 2020
 
@@ -141,7 +145,7 @@ V případě vylepšení nástrojů se ujistěte, že máte ve verzi poznámky k
 
 | Vylepšení dokumentace | Podrobnosti |
 | --- | --- |
-|Žádná | |
+|žádné | |
 | | |
 
 ## <a name="december-2018"></a>Prosinec 2018

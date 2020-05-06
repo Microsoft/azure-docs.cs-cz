@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276072"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836610"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -76,7 +76,7 @@ Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromá
     - ID (pokud existuje) uživatele, který vytváří požadavek
     - Kontext korelace (pokud existuje), kde je učiněn požadavek
 - **Informace o uživateli** (například umístění, síť, IP adresa)
-- **Informace o zařízení** (například prohlížeč, operační systém, verze, jazyk, řešení, model)
+- **Informace o zařízení** (například prohlížeč, operační systém, verze, jazyk, model)
 - **informace o relaci**,
 
 ### <a name="telemetry-initializers"></a>Inicializátory telemetrie
@@ -99,7 +99,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s `instrumentationKey`výjimkou.
 
-| Název | Výchozí | Popis |
+| Name | Výchozí | Popis |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |

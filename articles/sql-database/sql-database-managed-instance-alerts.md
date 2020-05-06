@@ -1,6 +1,6 @@
 ---
-title: Nastavení výstrah a oznámení pro spravovanou instanci (portál Azure)
-description: Na webu Azure Portal můžete vytvářet výstrahy spravované instance SQL, které můžou aktivovat oznámení nebo automatizaci, když jsou splněny zadané podmínky.
+title: Nastavení výstrah a oznámení pro spravovanou instanci (Azure Portal)
+description: Pomocí Azure Portal můžete vytvořit výstrahy spravované instance SQL, které můžou aktivovat oznámení nebo automatizaci při splnění podmínek, které zadáte.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -10,62 +10,143 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 04/02/2020
-ms.openlocfilehash: a332627d149a36ba5d5beb2626023e58a221f0d6
-ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
+ms.date: 05/04/2020
+ms.openlocfilehash: 0e7c4cde684f393fd98ada46393948c5a62efa2f
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80639195"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800796"
 ---
-# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Vytváření výstrah pro azure sql spravovanou instanci pomocí portálu Azure
+# <a name="create-alerts-for-azure-sql-managed-instance-using-the-azure-portal"></a>Vytvoření upozornění pro Azure SQL Managed instance pomocí Azure Portal
 
 ## <a name="overview"></a>Přehled
 
-Tento článek ukazuje, jak nastavit výstrahy pro databáze v azure SQL spravované instance databáze pomocí portálu Azure. Upozornění vám mohou poslat e-mail nebo zavolat webový háček, když některé metriky (například velikost úložiště instance nebo využití procesoru) dosáhnou prahové hodnoty. Tento článek také obsahuje osvědčené postupy pro nastavení období výstrah.
+V tomto článku se dozvíte, jak nastavit výstrahy pro databáze v databázi spravované instance Azure SQL pomocí Azure Portal. Výstrahy vás můžou poslat e-mailem, zavolat webovému Hooku, spustit Azure Functions, Runbook, zavolat externí systém pro lístky s ITSM kompatibilním, zavolat vám na telefon nebo poslat textovou zprávu, když některá metrika, jako je například velikost úložiště instance nebo využití procesoru, dosáhne předem definované prahové hodnoty. Tento článek také poskytuje osvědčené postupy pro nastavení dob upozornění.
 
-Můžete obdržet upozornění na základě metrik monitorování nebo událostí na vašich službách Azure.
+Můžete obdržet upozornění na základě metrik monitorování pro události nebo služby Azure.
 
-* **Hodnoty metriky** – výstraha se aktivuje, když hodnota zadané metriky překročí prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že aktivuje jak při prvním splnění podmínky, tak poté, když tato podmínka již není splněna.
-* **Události protokolu aktivit** – výstraha může aktivovat na *každé* události, nebo pouze v případě, že dojde k určitému počtu událostí.
+* **Hodnoty metrik** – výstraha se aktivuje, když hodnota zadané metriky překračuje prahovou hodnotu, kterou přiřadíte v obou směrech. To znamená, že se aktivuje při prvním splnění podmínky a následně v případě, že se už podmínka nesplní.
 
-Výstrahu můžete nakonfigurovat tak, aby při aktivaci spustila následující akce:
+Můžete nakonfigurovat výstrahu, která při triggeru provede následující akce:
 
-* Odeslání e-mailových oznámení správci služby a spolusprávcům
+* Posílání e-mailových oznámení správcům služeb a spolusprávcům
 * Odešlete e-mail na další e-maily, které zadáte.
+* Volání telefonního čísla pomocí hlasového výzvy
+* Poslat textovou zprávu na telefonní číslo
 * Volání webhooku
+* Volání funkce Azure Functions
+* Volání Runbooku Azure
+* Volání externího systému kompatibilního s ITSM pro lístky
 
-Můžete konfigurovat a získat informace o pravidlech výstrah pomocí
+Můžete nakonfigurovat a získat informace o pravidlech upozornění pomocí následujících rozhraní:
 
-* [portál Azure](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
-* [rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
+* [Rozhraní příkazového řádku (CLI)](../azure-monitor/platform/alerts-classic-portal.md)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy pro metriku pomocí portálu Azure
+## <a name="alerting-metrics-available-for-managed-instance"></a>Metriky výstrahy dostupné pro spravovanou instanci
 
-1. Na [portálu](https://portal.azure.com/)vyhledejte zdroj, který vás zajímá monitorování, a vyberte jej.
-2. V části Monitorování vyberte **Výstrahy.** Text a ikona se mohou u různých zdrojů mírně lišit.  
+> [!IMPORTANT]
+> Metriky výstrah jsou k dispozici pouze pro spravovanou instanci. Metriky výstrah pro jednotlivé databáze ve spravované instanci nejsou k dispozici. Telemetrie diagnostiky databáze je na druhé straně k dispozici ve formě [diagnostických protokolů](sql-database-metrics-diag-logging.md#diagnostic-telemetry-for-export-for-azure-sql-database). Výstrahy na diagnostické protokoly je možné nastavit z produktu [SQL Analytics](../azure-monitor/insights/azure-sql.md) pomocí [skriptů s výstrahami protokolu](../azure-monitor/insights/azure-sql.md#creating-alerts-for-managed-instances) pro spravovanou instanci.
 
-   ![Monitorování](media/sql-database-insights-alerts-portal/Alerts.png)
+Pro konfiguraci výstrah jsou k dispozici následující metriky spravované instance:
+
+| Metrika | Popis | Měrná jednotka \ možné hodnoty |
+| :--------- | --------------------- | ----------- |
+| Průměrné procento procesoru | Průměrné procento využití procesoru ve vybraném časovém období | 0-100 (procenta) |
+| Přečtené vstupně-výstupní bajty | Ve vybraném časovém období je přečtených vstupně-výstupních bajtů. | Bajty |
+| Zapsané vstupně-výstupní bajty | Vstupně-výstupní bajty zapsané ve vybraném časovém období | Bajty |
+| Počet požadavků v/v | Počet vstupně-výstupních požadavků ve vybraném časovém období | Číselné |
+| Rezervované místo v úložišti | Aktuální max. místo úložiště rezervované pro spravovanou instanci. Změny s operací škálování prostředků. | MB (MB) |
+| Využité místo úložiště | Prostor úložiště použitý ve vybraném období Změny s využitím úložiště databázemi a instancemi. | MB (MB) |
+| Počet virtuálních jader | Virtuální jádra zřízené pro spravovanou instanci. Změny s operací škálování prostředků. | 4-80 (virtuální jádra) |
+
+## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>Vytvoření pravidla výstrahy na metrikě s Azure Portal
+
+1. Na webu Azure [Portal](https://portal.azure.com/)Najděte SPRAVOVANOU instanci SQL, kterou zajímáte o monitorování, a vyberte ji.
+
+2. V části monitorování vyberte položku nabídky **metriky** .
+
+   ![Monitorování](media/sql-database-managed-instance-alerts/mi-alerting-menu-annotated.png)
   
-3. Výběrem tlačítka **Nové pravidlo výstrahy** otevřete stránku **Vytvořit pravidlo.**
-   ![Vytvořit pravidlo](media/sql-database-insights-alerts-portal/create-rule.png)
+3. V rozevírací nabídce vyberte jednu z metrik, pro kterou chcete nastavit upozornění (v tomto příkladu se zobrazuje využité místo pro úložiště).
 
-4. V části **Podmínka** klikněte na **Přidat**.
-   ![Definovat podmínku](media/sql-database-insights-alerts-portal/create-rule.png)
-5. Na stránce **Konfigurovat logiku signálu** vyberte signál.
-   ![Vybrat signál](media/sql-database-insights-alerts-portal/select-signal.png)
-6. Po výběru signálu, například **procenta procesoru**, se zobrazí stránka **Logika signálu Konfigurace.**
-   ![Konfigurace logiky signálů](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
-7. Na této stránce nakonfigurujte tento typ prahové hodnoty, operátor, typ agregace, prahovou hodnotu, rozlišovací schopnost agregace a četnost hodnocení. Potom klepněte na tlačítko **Hotovo**.
-8. V **pravidle Vytvořit**vyberte existující **skupinu akcí** nebo vytvořte novou skupinu. Skupina akcí umožňuje definovat akci, která má být provedena, když dojde k výstražné podmínce.
-  ![Definovat skupinu akcí](media/sql-database-insights-alerts-portal/action-group.png)
+4. Vyberte agregační období – průměr, minimum nebo maximum dosažené v daném časovém období (průměr, minimum nebo maximum). 
 
-9. Definujte název pravidla, zadejte volitelný popis, zvolte úroveň závažnosti pravidla, zvolte, zda chcete povolit pravidlo při vytváření pravidla, a pak klikněte na **Vytvořit výstrahu pravidla** a vytvořte výstrahu pravidla metriky.
+5. Vybrat **nové pravidlo výstrahy**
 
-Během 10 minut je výstraha aktivní a aktivuje se, jak bylo popsáno dříve.
+6. V podokně vytvořit pravidlo výstrahy klikněte na **název podmínky** (využité místo úložiště se zobrazí v příkladu).
+
+   ![Definovat podmínku](media/sql-database-managed-instance-alerts/mi-create-metrics-alert-smaller-annotated.png)
+
+7. V podokně Konfigurace logiky signálů definujte operátor, typ agregace a prahovou hodnotu.
+
+   * Možnosti typu operátoru jsou větší než, rovné a menší než (prahová hodnota).
+   * Možnosti typu agregace jsou minimální, maximální nebo průměr (v období členitosti agregace).
+   * Prahová hodnota je hodnota výstrahy, která bude vyhodnocena na základě kritérií operátora a agregace.
+   
+   ![Configure_signal_logic](media/sql-database-managed-instance-alerts/mi-configure-signal-logic-annotated.png)
+   
+   V příkladu zobrazeném na snímku obrazovky se používá hodnota 1840876 MB představující prahovou hodnotu 1,8 TB. V případě, že je operátor v příkladu nastaven na hodnotu větší než, bude výstraha vytvořena v případě, že spotřeba prostoru úložiště na spravované instanci projde více než 1,8 TB. Všimněte si, že prahová hodnota pro metriky prostorů úložiště musí být vyjádřená v MB.
+
+8. Nastavte interval hodnocení – členitost agregace v minutách a četnost vyhodnocování. Frekvence hodnocení Poznamenejte čas, po který bude systém výstrah pravidelně kontrolovat, zda byla podmínka prahová hodnota splněna.
+
+9. Vyberte skupina akcí. Zobrazí se podokno skupina akcí, ve kterém budete moci vybrat existující nebo vytvořit novou akci. Tato akce definuje, k čemu dojde při aktivaci výstrahy (například odeslání e-mailu, volání na telefonu, spuštění Webhooku, funkce Azure nebo sady Runbook).
+
+   ![Select_action_group](media/sql-database-managed-instance-alerts/mi-select-action-group-smaller-annotated.png)
+
+   * Pokud chcete vytvořit novou skupinu akcí, vyberte **+ vytvořit skupinu akcí** .
+
+      ![Create_action_group_alerts](media/sql-database-managed-instance-alerts/mi-create-alert-action-group-smaller-annotated.png)
+   
+   * Určete, jak chcete být upozorňováni: zadejte název skupiny akcí, krátký název, název akce a vyberte typ akce. Typ akce definuje, jestli budete upozorňováni e-mailem, textovou zprávou, hlasovým hovorem nebo pokud bude možné Webhook, funkci Azure Functions, Runbook se spustí, nebo se vytvoří lístek ITSM ve vašem kompatibilním systému.
+
+      ![Define_how_to_be_alerted](media/sql-database-managed-instance-alerts/mi-add-alerts-action-group-annotated.png)
+
+10. Vyplňte podrobnosti pravidla výstrahy pro vaše záznamy, vyberte typ závažnosti.
+
+      ![Rule_description](media/sql-database-managed-instance-alerts/mi-rule-details-complete-smaller-annotated.png)
+
+   * Vytvoření pravidla výstrahy dokončíte kliknutím na tlačítko **vytvořit pravidlo upozornění** .
+
+Nové pravidlo upozornění bude aktivní během několika minut a bude aktivováno na základě vašich nastavení.
+
+## <a name="verifying-alerts"></a>Ověřování výstrah
+
+> [!NOTE]
+> Pokud chcete potlačit výstrahy na vysokou úroveň, přečtěte si téma [potlačení výstrahy pomocí pravidel akcí](../azure-monitor/platform/alerts-action-rules.md#suppression-of-alerts).
+
+Po nastavení pravidla výstrahy ověřte, že jste spokojeni s triggerem výstrah a jeho frekvencí. Pro příklad, který se zobrazuje na této stránce pro nastavení výstrahy na využité místo, se může zobrazit e-mailová zpráva, jako je ta, kterou vidíte níže.
+
+   ![alert_example](media/sql-database-managed-instance-alerts/mi-email-alert-example-smaller-annotated.png)
+
+E-mail zobrazuje název výstrahy, podrobnosti prahové hodnoty a důvody, proč byla výstraha aktivována, což vám pomůže ověřit a vyřešit potíže s výstrahou. Pomocí tlačítka **Zobrazit v Azure Portal** můžete zobrazit upozornění přijatá prostřednictvím e-mailu v Azure Portal. 
+
+## <a name="view-suspend-activate-modify-and-delete-existing-alert-rules"></a>Zobrazit, pozastavit, aktivovat, upravit a odstranit existující pravidla upozornění
+
+> [!NOTE]
+> Existující výstrahy je potřeba spravovat z nabídky výstrahy z Azure Portalovém řídicím panelu. Existující výstrahy nejde změnit z okna prostředku spravované instance.
+
+Zobrazení, pozastavení, aktivace, úpravy a odstranění existujících výstrah:
+
+1. Vyhledejte výstrahy pomocí Azure Portalho vyhledávání. Klikněte na výstrahy.
+
+   ![find_alerts](media/sql-database-managed-instance-alerts/mi-manage-alerts-browse-smaller-annotated.png)
+
+   Případně můžete také kliknout na výstrahy na navigačním panelu Azure, pokud jste ji nakonfigurovali.
+
+2. V podokně výstrahy vyberte Spravovat pravidla výstrah.
+
+   ![modify_alerts](media/sql-database-managed-instance-alerts/mi-manage-alert-rules-smaller-annotated.png)
+
+   Zobrazí se seznam existujících výstrah. Vyberte jednotlivá pravidla výstrahy, která chcete spravovat. Existující aktivní pravidla je možné upravit a vyladit podle svých preferencí. Aktivní pravidla je také možné pozastavit bez odstranění. 
 
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o [konfiguraci webových háků v výstrahách](../azure-monitor/platform/alerts-webhooks.md).
+* Informace o Azure Monitor systému výstrah najdete v tématu [Přehled výstrah v Microsoft Azure](../azure-monitor/platform/alerts-overview.md)
+* Další informace o výstrahách metrik najdete [v tématu vysvětlení, jak fungují výstrahy metrik v Azure monitor](../azure-monitor/platform/alerts-metric-overview.md)
+* Další informace o konfiguraci Webhooku v upozorněních najdete v tématu [volání Webhooku s klasickými výstrahami metriky](../azure-monitor/platform/alerts-webhooks.md) .
+* Informace o konfiguraci a správě výstrah pomocí PowerShellu najdete v tématu [pravidla akcí](https://docs.microsoft.com/powershell/module/az.monitor/add-azmetricalertrulev2) .
+* Informace o konfiguraci a správě výstrah pomocí rozhraní API najdete v tématu [Azure Monitor REST API Reference](https://docs.microsoft.com/rest/api/monitor/) . 

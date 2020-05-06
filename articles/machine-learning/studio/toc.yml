@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: Spravovat
           href: manage-workspace.md
-        - name: Řešení potíží
-          href: troubleshooting-creating-ml-workspace.md
         - name: Nasazení pomocí architektury ARM
           href: deploy-with-resource-manager-template.md
     - name: Import trénovacích dat
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: Interpretace výsledků
               href: interpret-model-results.md
-            - name: Ladění
-              href: debug-models.md
         - name: Přeučování modelů
           items:
             - name: „Nové“ webové služby
@@ -96,19 +92,12 @@
           items:
             - name: Začínáme v R
               href: r-get-started.md
-            - name: Spouštění skriptů R
-              href: extend-your-experiment-with-r.md
             - name: Tvorba vlastních modulů R
               href: custom-r-modules.md
             - name: Spouštění skriptů Pythonu
               href: execute-python-scripts.md
     - name: Výběr algoritmu
-      items:
-        - name: Volba algoritmů
-          href: algorithm-choice.md
-        - name: Příklady algoritmů
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: Modely nasazení
       items:
         - name: Nasazení webové služby
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Použití doplňků Excelu
           href: excel-add-in-for-web-services.md
-    - name: Případy použití
-      items:
-        - name: Výpovědi zákazníků
-          href: azure-ml-customer-churn-scenario.md
-        - name: Analýza mínění
-          href: text-analytics-module-tutorial.md
-        - name: Migrace analýzy z Excelu do sady Studio (Classic)
-          href: use-case-excel-studio.md
     - name: Odstranění a export zákaznických dat
       items:
         - name: Data sady Studio (Classic)

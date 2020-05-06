@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461459"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838752"
 ---
 # <a name="expressroute-encryption"></a>Šifrování ExpressRoute
  
@@ -30,8 +30,8 @@ Ano. V případě konfigurace MACsec podporujeme jenom režim Pre-Shared Key. Zn
 Ne. Pokud je MACsec nakonfigurovaný a dojde k neshodě klíčů, ztratíte připojení k Microsoftu. Jinými slovy nebudeme vracet k nezašifrovanému připojení, které zveřejňuje vaše data. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Povolí MACsec na ExpressRoute přímé snížení výkonu sítě?
 K šifrování a dešifrování MACsec dochází v hardwaru na směrovačích, které používáme. Na naší straně není dopad na výkon. Měli byste si však u zařízení, která používáte, kontrolovat u dodavatele sítě a zjistit, zda má MACsec nějaké snížení výkonu.
-### <a name="which-cipher-suites-are-supported-for-encryption"></a>které šifrovací sady jsou podporované pro šifrování?
-Podporujeme AES128 a AES256.
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>Které šifrovací sady jsou podporované pro šifrování?
+Podporuje se jenom verze AES128 a AES256 pro [číslování rozšířených paketů](https://1.ieee802.org/security/802-1aebw/) . Kromě toho prosím na svém zařízení zakážete [identifikátor zabezpečeného kanálu (SCI)](https://en.wikipedia.org/wiki/IEEE_802.1AE) . 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Komplexní šifrování pomocí protokolu IPsec – Nejčastější dotazy
 IPsec je [Standard IETF](https://tools.ietf.org/html/rfc6071). Šifruje data na úrovni Internet Protocol (IP) nebo síťové vrstvy 3. Protokol IPsec můžete použít k šifrování komplexního připojení mezi vaší místní sítí a virtuální sítí (VNET) v Azure. Další informace najdete v dalších nejčastějších dotazech.

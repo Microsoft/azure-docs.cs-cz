@@ -1,21 +1,21 @@
 ---
-title: Seznam předdefinovaných definic zásad pro Azure Backup
-description: Vypíše Azure Policy předdefinované definice zásad pro Azure Backup. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 04/30/2020
+title: Předdefinované definice zásad pro Azure Backup
+description: Vypíše Azure Policy předdefinované definice zásad pro Azure Backup. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
+ms.date: 05/05/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 5fb96ff8b68166586fe89d7d3553a04bb00b766b
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 424cb4f17c657db5a239fb7dd19a71324283f18b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629844"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837786"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-backup"></a>Azure Policy předdefinované definice zásad pro Azure Backup
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Backup. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-backup"></a>Azure Backup
 

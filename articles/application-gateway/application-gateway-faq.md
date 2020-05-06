@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136630"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836661"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -329,42 +329,6 @@ U více směrování založených na doméně (hostitele) můžete vytvořit ví
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Můžu v heslu souboru. pfx použít speciální znaky?
 
 Ne, v heslech souboru. pfx použijte pouze alfanumerické znaky.
-
-## <a name="configuration---web-application-firewall-waf"></a>Konfigurace – Firewall webových aplikací (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>Nabízí SKU WAF všechny funkce, které jsou k dispozici ve standardní SKU?
-
-Ano. WAF podporuje všechny funkce v SKU Standard.
-
-### <a name="how-do-i-monitor-waf"></a>Návody monitorování WAF?
-
-Monitorujte WAF prostřednictvím diagnostického protokolování. Další informace najdete v tématu [protokolování diagnostiky a metriky pro Application Gateway](application-gateway-diagnostics.md).
-
-### <a name="does-detection-mode-block-traffic"></a>Blokuje režim detekce přenos dat?
-
-Ne. V režimu detekce se protokoluje pouze provoz, který aktivuje pravidlo WAF.
-
-### <a name="can-i-customize-waf-rules"></a>Můžu přizpůsobit pravidla WAF?
-
-Ano. Další informace najdete v tématu [přizpůsobení skupin pravidel a pravidel pro WAF](application-gateway-customize-waf-rules-portal.md).
-
-### <a name="what-rules-are-currently-available-for-waf"></a>Jaká pravidla jsou aktuálně k dispozici pro WAF?
-
-WAF v současné době podporuje počítačový [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)a [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Tato pravidla poskytují základní zabezpečení proti většině nejčastějších chyb zabezpečení, které otevřou projekt zabezpečení webových aplikací (OWASP): 
-
-* Ochrana před útoky prostřednictvím injektáže SQL.
-* Ochrana skriptování mezi weby
-* Ochrana před běžnými webovými útoky, jako je vkládání příkazů, podvržení požadavků HTTP, rozdělování odpovědí HTTP a útok na vzdálené zahrnutí souborů
-* Ochrana před narušením protokolu HTTP.
-* Ochrana před anomáliemi protokolu HTTP, jako například chybějící údaj user-agent hostitele nebo hlavičky Accept.
-* Ochrana před roboty, prohledávacími moduly a skenery.
-* Detekce běžných neobvyklých konfigurací aplikací (tj. Apache, IIS atd.)
-
-Další informace najdete v tématu [OWASP chyby zabezpečení nejvyšší úrovně 10](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
-
-### <a name="does-waf-support-ddos-protection"></a>Podporuje WAF ochranu DDoS?
-
-Ano. Můžete povolit DDoS Protection ve virtuální síti, ve které je nasazená Aplikační brána. Toto nastavení zajišťuje, že služba Azure DDoS Protection také chrání virtuální IP adresu služby Application Gateway.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfigurace – řadič pro příchozí přenosy pro AKS
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 7d8cf03342f51a7bc6584800cb9fff8d8238921e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459776"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801650"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption pro virtuální počítače se systémem Linux 
 
@@ -28,7 +28,7 @@ Pokud používáte [Azure Security Center](../../security-center/index.yml), bud
 > - Některá doporučení můžou zvýšit využití dat, sítě nebo výpočetních prostředků, což má za následek další licence nebo náklady na předplatné. Abyste mohli vytvářet prostředky v Azure v podporovaných oblastech, musíte mít platné aktivní předplatné Azure.
 > - V současné době generace 2 virtuální počítače nepodporují Azure Disk Encryption. Podrobnosti najdete v tématu [Podpora pro virtuální počítače 2. generace v Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) .
 
-Základní informace o Azure Disk Encryption pro Linux najdete během několika minut pomocí [virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače se systémem Linux pomocí Azure PowerShellu pro rychlý Start](disk-encryption-powershell-quickstart.md).
+Základní informace o nástroji Azure Disk Encryption pro Linux najdete během několika minut pomocí [virtuálního počítače se systémem Linux pomocí Azure CLI](disk-encryption-cli-quickstart.md) nebo [Vytvoření a šifrování virtuálního počítače se systémem linux pomocí nástroje Azure PowerShell rychlý Start](disk-encryption-powershell-quickstart.md).
 
 ## <a name="supported-vms-and-operating-systems"></a>Podporované virtuální počítače a operační systémy
 
@@ -56,29 +56,36 @@ Azure Disk Encryption je podporovaná u podmnožiny [distribucí systému Linux 
 
 Distribuce serverů pro Linux, které nejsou schváleny v Azure, nepodporují Azure Disk Encryption; z těch, které jsou schváleny, podporuje pouze následující distribuce a verze Azure Disk Encryption:
 
-| Distribuce systému Linux | Version | Typ svazku podporovaný pro šifrování|
-| --- | --- |--- |
-| Ubuntu | 18,04| Operační systém a datový disk |
-| Ubuntu | 16,04| Operační systém a datový disk |
-| Ubuntu | 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | Operační systém a datový disk |
-| RHEL | 7.7 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.6 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7,5 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.4 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.3 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 7.2 | Operační systém a datový disk (viz poznámka níže) |
-| RHEL | 6.8 | Datový disk (viz poznámka níže) |
-| RHEL | 6.7 | Datový disk (viz poznámka níže) |
-| CentOS | 7.7 | Operační systém a datový disk |
-| CentOS | 7.6 | Operační systém a datový disk |
-| CentOS | 7,5 | Operační systém a datový disk |
-| CentOS | 7.4 | Operační systém a datový disk |
-| CentOS | 7.3 | Operační systém a datový disk |
-| CentOS | 7.2 n | Operační systém a datový disk |
-| CentOS | 6.8 | Datový disk |
-| openSUSE | 42,3 | Datový disk |
-| SLES | 12. SP4 | Datový disk |
-| SLES | 12. SP3 | Datový disk |
+| Vydavatel | Nabídka | Skladová jednotka (SKU) | NÁZVEM | Typ svazku podporovaný pro šifrování |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18,04 – LTS | Kanonický: UbuntuServer: 18.04-LTS: nejnovější | Operační systém a datový disk |
+| Canonical | Ubuntu 18.04 | 18,04-DENNĚ – LTS | Kanonický: UbuntuServer: 18.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
+| Canonical | Ubuntu 16.04 | 16,04-DENNĚ – LTS | Kanonický: UbuntuServer: 16.04-DAILY-LTS: nejnovější | Operační systém a datový disk |
+| Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Kanonický: UbuntuServer: 14.04.5-LTS: nejnovější | Operační systém a datový disk |
+| Canonical | Ubuntu 14.04.5</br>[s vyladěným jádrem Azure se aktualizovala na 4,15 nebo novější.](disk-encryption-troubleshooting.md) | 14.04.5 – DENNĚ – LTS | Kanonický: UbuntuServer: 14.04.5-DAILY-LTS: nejnovější | Operační systém a datový disk |
+| RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,7 | 7 – RAW | RedHat: RHEL: 7-RAW: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7-LVM: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: nejnovější | Operační systém a datový disk (viz poznámka níže) |
+| RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: nejnovější | Datový disk (viz poznámka níže) |
+| RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: nejnovější | Datový disk (viz poznámka níže) |
+| OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7,7 | 7 – LVM | OpenLogic: CentOS: 7-LVM: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic: CentOS: 7.4: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7,3 | 7.3 | OpenLogic: CentOS: 7.3: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7.2 n | 7.2 n | OpenLogic: CentOS: 7.2 n: nejnovější | Operační systém a datový disk |
+| OpenLogic | CentOS 7,1 | 7.1 | OpenLogic: CentOS: 7.1: nejnovější | Pouze datový disk |
+| OpenLogic | CentOS 7,0 | 7.0 | OpenLogic: CentOS: 7.0: nejnovější | Pouze datový disk |
+| OpenLogic | CentOS 6,8 | 6.8 | OpenLogic: CentOS: 6.8: nejnovější | Pouze datový disk |
+| SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-přestupnost: 42.3: nejnovější | Pouze datový disk |
+| SUSE | SLES priorita 12 – SP4 | 12. SP4 | SUSE: SLES: 12-SP4: nejnovější | Pouze datový disk |
+| SUSE | SLES HPC 12 – SP3 | 12. SP3 | SUSE: SLES-HPC: 12-SP3: nejnovější | Pouze datový disk |
 
 > [!NOTE]
 > Nová implementace Azure Disk Encryption je podporovaná pro RHEL operační systém a datový disk pro Image RHEL7 s průběžnými platbami.  
