@@ -1,5 +1,5 @@
 ---
-title: Vlastní metriky v Azure Monitor
+title: Vlastní metriky v Azure Monitor (Preview)
 description: Seznamte se s vlastními metrikami v Azure Monitor a způsobu jejich modelování.
 author: ancav
 ms.author: ancav
@@ -7,17 +7,20 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204300"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837307"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Vlastní metriky v Azure Monitor
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
-Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Jsou však omezené. Je možné, že budete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro firmy, které poskytují hlubší přehledy.
-Tyto **vlastní** metriky je možné shromažďovat prostřednictvím telemetrie aplikací, agenta, který běží na vašich prostředcích Azure, nebo i mimo monitorovací systém a přímo odeslat Azure monitor. Po publikování do Azure Monitor můžete procházet, dotazovat a upozorňovat na vlastní metriky pro vaše prostředky a aplikace Azure vedle sebe se standardními metrikami, které vysílá Azure.
+Při nasazení prostředků a aplikací v Azure budete chtít začít shromažďovat telemetrii, abyste získali přehled o jejich výkonu a stavu. Azure zpřístupňuje některé metriky, které jsou dostupné v poli. Tyto metriky se nazývají [Standard nebo Platform](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported). Jsou však omezené. 
+
+Je možné, že budete chtít shromáždit některé vlastní ukazatele výkonu nebo metriky specifické pro firmy, které poskytují hlubší přehledy. Tyto **vlastní** metriky je možné shromažďovat prostřednictvím telemetrie aplikací, agenta, který běží na vašich prostředcích Azure, nebo i mimo monitorovací systém a přímo odeslat Azure monitor. Po publikování do Azure Monitor můžete procházet, dotazovat a upozorňovat na vlastní metriky pro vaše prostředky a aplikace Azure vedle sebe se standardními metrikami, které vysílá Azure.
+
+Azure Monitor vlastní metriky jsou aktuální ve verzi Public Preview. 
 
 ## <a name="methods-to-send-custom-metrics"></a>Metody pro posílání vlastních metrik
 
@@ -27,19 +30,15 @@ Vlastní metriky je možné odesílat Azure Monitor prostřednictvím několika 
 - Nainstalujte na virtuální počítač Azure Linux [agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) a odešlete metriky pomocí modulu plug-in Azure monitor Output.
 - Odešlete vlastní metriky [přímo do Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`.
 
-## <a name="pricing-model"></a>Cenový model
+## <a name="pricing-model-and-rentention"></a>Cenový model a uchovávání
 
-Neexistují žádné náklady na ingestování standardní metriky (metriky platforem) do úložiště metrik Azure Monitor. Vlastní metriky ingestované do úložiště metrik Azure Monitor se budou fakturovat po megabajtech s každou vlastní službou metriky, která se zapsala jako velikost 8 bajtů. Všechny přijaté metriky se uchovávají po dobu 90 dnů.
+Podrobnosti o tom, kdy se má povolit pro dotazy na vlastní metriky a metriky, najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Konkrétní podrobnosti o ceně pro všechny metriky, včetně vlastních metrik a dotazů metrik, jsou na této stránce k dispozici. V souhrnu se neúčtují žádné náklady na ingestování standardní metriky (metriky platforem) do úložiště metriky Azure Monitor, ale vlastní metriky budou při zadávání obecné dostupnosti účtovány náklady. Dotazy rozhraní API metriky se účtují náklady.
 
-Dotazy na metriky se účtují na základě počtu standardních volání API. Standardní volání rozhraní API je volání, které analyzuje 1 440 datových bodů (1 440 je také celkový počet datových bodů, které lze uložit na metriku za den). Pokud volání rozhraní API analyzuje více než 1 440 datových bodů, bude se počítat jako několik standardních volání rozhraní API. Pokud volání rozhraní API analyzuje méně než 1 440 datových bodů, bude se počítat jako méně než jedno volání rozhraní API. Počet standardních volání API se počítá každý den jako celkový počet datových bodů analyzovaných za den dělený 1 440.
-
-Konkrétní podrobnosti o cenách pro vlastní metriky a dotazy na metriky jsou k dispozici na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
+Vlastní metriky se uchovávají po [stejnou dobu jako metriky platforem](data-platform-metrics.md#retention-of-metrics). 
 
 > [!NOTE]  
-> Metriky odeslané do Azure Monitor prostřednictvím sady Application Insights SDK se budou účtovat jako ingestovaná data protokolu a účtují se další metriky jenom v případě, že je vybraná funkce Application Insights [Povolit upozorňování na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) . Přečtěte si další informace o [cenovém modelu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) a [cenách ve vaší oblasti](https://azure.microsoft.com/pricing/details/monitor/).
+> Metriky odesílané Azure Monitor prostřednictvím sady Application Insights SDK se účtují jako ingestovaná data protokolu. Účtují jenom další metriky jenom v případě, že je vybraná funkce Application Insights [Povolit upozorňování na vlastní dimenze metriky](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) . Toto zaškrtávací políčko odesílá data do databáze Azure Monitor metrik pomocí vlastních rozhraní API metrik, které umožňuje komplexnější výstrahy.  Přečtěte si další informace o [cenovém modelu Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model) a [cenách ve vaší oblasti](https://azure.microsoft.com/pricing/details/monitor/).
 
-> [!NOTE]  
-> Podrobnosti o tom, kdy se má povolit pro dotazy na vlastní metriky a metriky, najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . 
 
 ## <a name="how-to-send-custom-metrics"></a>Jak odesílat vlastní metriky
 
@@ -75,7 +74,7 @@ Každý datový bod odeslaný do Azure Monitor musí být označený pomocí ča
 ### <a name="namespace"></a>Obor názvů
 Obory názvů představují způsob kategorizace nebo seskupení podobných metrik dohromady. Pomocí oborů názvů můžete dosáhnout izolace mezi skupinami metrik, které mohou shromažďovat různé přehledy nebo ukazatele výkonu. Například můžete mít obor názvů s názvem **contosomemorymetrics** , který sleduje metriky využití paměti, které profilují vaši aplikaci. Jiný obor názvů s názvem **contosoapptransaction** může sledovat všechny metriky o transakcích uživatelů ve vaší aplikaci.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí

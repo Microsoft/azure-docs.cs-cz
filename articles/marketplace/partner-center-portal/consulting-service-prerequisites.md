@@ -1,18 +1,18 @@
 ---
-title: Požadavky na konzultační služby pro Azure a Dynamics 365 – Azure Marketplace
-description: Předpoklady pro nabídku konzultační služby Azure nebo Dynamics 365 v partnerském centru
+title: Požadavky na konzultační služby pro Azure a Dynamics 365
+description: Požadavky na nabídku služby Azure nebo Dynamics 365 pro konzultace na komerčním webu Microsoft Marketplace
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: mingshen
-ms.openlocfilehash: fca40e1beb3e3c7bf03682511447539be2702f93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af272968ec81671e38db0a6cc52b4baf51c94a80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80874683"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789636"
 ---
 # <a name="consulting-service-prerequisites"></a>Požadavky na konzultační služby
 
@@ -23,9 +23,9 @@ Informace o nabídce konzultační služby, včetně požadavků na tento typ na
 
 | Téma konzultační služby | Primární produkt, který se má vybrat v partnerském centru | Požadavek |
 |---------|---------|---------|
-| Produkty Azure | Azure | Nabídka musí vypsat alespoň jednu z následujících plně získaných kompetencí: <ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma</li><li>Analýza dat</li><li>Data Center</li><li>Datová platforma</li><li>DevOps|
-| Dynamics 365 Sales <br> Dynamics 365 marketing <br> Zákaznická služba Dynamics 365 <br> Služba pole Dynamics 365 <br> Lidské zdroje pro Dynamics 365 | Aplikace Customer Engagement | Musí se jednat o Gold nebo stříbrné certifikaci v rámci možnosti služby [Cloud Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro zapojení do služby Customer Engagement nebo mít nabídku pro prodej na primární produkt, ke které se vztahuje. |
-| Dynamics 365 – finance <br> Správa dodavatelských řetězců Dynamics 365 <br> Dynamics 365 – obchod <br> Lidské zdroje pro Dynamics 365 <br> Automatizace služby projektu Dynamics 365 | Finance a provozní aplikace | Musí se jednat o Gold nebo stříbrné certifikaci pro možnost Unified Operations [Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro sjednocení operací nebo musí mít k primárnímu produktu, ke kterému je služba přidružená nabídka pro spoluprodej. |
+| Produkty Azure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Azure | Nabídka musí vypsat alespoň jednu z následujících plně získaných kompetencí: <ul><li>Vývoj aplikací</li><li>Integrace aplikací</li><li>Správa životního cyklu aplikací</li><li>Cloudová platforma</li><li>Analýza dat</li><li>Data Center</li><li>Datová platforma</li><li>DevOps|
+| Dynamics 365 Sales<br/> Dynamics 365 marketing<br/> Zákaznická služba Dynamics 365<br/> Služba pole Dynamics 365<br/> Lidské zdroje pro Dynamics 365 | Aplikace Customer Engagement | Musí se jednat o Gold nebo stříbrné certifikaci v rámci možnosti služby [Cloud Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro zapojení do služby Customer Engagement nebo mít nabídku pro prodej na primární produkt, ke které se vztahuje. |
+| Dynamics 365 – finance<br/> Správa dodavatelských řetězců Dynamics 365<br/>Dynamics 365 – obchod<br/> Lidské zdroje pro Dynamics 365<br/>Automatizace služby projektu Dynamics 365 | Finance a provozní aplikace | Musí se jednat o Gold nebo stříbrné certifikaci pro možnost Unified Operations [Business Applications kompetence](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro sjednocení operací nebo musí mít k primárnímu produktu, ke kterému je služba přidružená nabídka pro spoluprodej. |
 | Dynamics 365 Customer Insights | Dynamics 365 Customer Insights | Musí mít aspoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/) s aspoň pěti mírami a pěti segmenty nebo musí mít nabídku pro prodej primárního produktu, ke kterému se služba vztahuje. |
 | Dynamics 365 Business Central | Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence pro plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency) a poskytovat aspoň tři zákazníky nebo publikovali obchodní centrální aplikaci v Microsoft AppSource nebo nabízejí nabídku pro prodej na primární produkt, ke kterému se vztahuje. |
 | Power BI | Power BI | Musí být uvedený na [Power BI prezentující partnerům](https://powerbi.microsoft.com/partner-showcase/), nebo mít nabídku pro prodej na primárním produktu, ke které se vztahuje služba.|
