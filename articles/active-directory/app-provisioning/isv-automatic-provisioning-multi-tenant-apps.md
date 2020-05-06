@@ -2,25 +2,21 @@
 title: Povolení automatického zřizování uživatelů pro aplikace s více klienty – Azure AD
 description: Průvodce pro nezávislé výrobce softwaru pro povolení automatického zřizování
 services: active-directory
-documentationcenter: azure
 author: BarbaraSelden
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
-ms.collection: active-directory
-ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3713b7a191c5c7c90e0e76bde25d1b1b3bf3700b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522389"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593586"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Povolení automatického zřizování uživatelů pro aplikaci s více klienty
 
