@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185978"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780041"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -22,7 +22,7 @@ Azure Functions očekává ve skriptu Pythonu funkci, která bude mít nestavovo
 
 Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody `name` pomocí vlastnosti definované v souboru *Function. JSON* . Například _funkce. JSON_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req`:
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 Na základě této definice může `__init__.py` soubor, který obsahuje kód funkce, vypadat jako v následujícím příkladu:
 
@@ -77,6 +77,7 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 Hlavní\_\_složka projektu (aplikace\_\_) může obsahovat následující soubory:
@@ -86,6 +87,7 @@ Hlavní\_\_složka projektu (aplikace\_\_) může obsahovat následující soubo
 * *Host. JSON*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [Host. JSON](functions-host-json.md).
 * *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
 * *. gitignore*: (nepovinný) deklaruje soubory, které jsou vyloučené z úložiště Git, jako je Local. Settings. JSON.
+* *Souboru Dockerfile*: (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
 
 Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (Function. JSON). 
 

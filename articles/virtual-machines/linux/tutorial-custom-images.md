@@ -1,146 +1,197 @@
 ---
 title: Kurz – vytváření vlastních imagí virtuálních počítačů pomocí Azure CLI
 description: V tomto kurzu zjistíte, jak pomocí Azure CLI vytvořit vlastní image virtuálního počítače v Azure.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460048"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792169"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Kurz: Vytvoření vlastní image virtuálního počítače Azure pomocí Azure CLI
 
 Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Zrušení zřízení a generalizace virtuálních počítačů
-> * Vytvoření vlastní image
-> * Vytvoření virtuálního počítače z vlastní image
-> * Výpis všech imagí v předplatném
-> * Odstranění image
+> * Vytvoření galerie sdílených imagí
+> * Vytvoření definice obrázku
+> * Vytvoření verze image
+> * Vytvoření virtuálního počítače z Image 
+> * Sdílení Galerie imagí
+
 
 V tomto kurzu se používá CLI v rámci [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), který se průběžně aktualizuje na nejnovější verzi. Chcete-li otevřít Cloud Shell, vyberte možnost **vyzkoušet** v horní části libovolného bloku kódu.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít Azure CLI verze 2.0.30 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.4.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI]( /cli/azure/install-azure-cli).
+
+## <a name="overview"></a>Přehled
+
+[Galerie sdílených imagí](shared-image-galleries.md) zjednodušuje sdílení vlastních imagí v rámci vaší organizace. Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. 
+
+Galerie sdílených imagí umožňuje sdílet vlastní image virtuálních počítačů s ostatními. Vyberte, které Image chcete sdílet, které oblasti mají být v nástroji dostupné a které chcete sdílet s. 
+
+Funkce Galerie sdílených imagí má více typů prostředků:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>Před zahájením
 
 Následující postup podrobně popisuje přeměnu existujícího virtuálního počítače na opětovně použitelnou vlastní image, pomocí které můžete vytvářet nové instance virtuálních počítačů.
 
-K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby může tento [ukázkový skript](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) vytvořit jednu za vás. V průběhu kurzu nahraďte na příslušných místech názvy skupiny prostředků a virtuálních počítačů.
+K dokončení příkladu v tomto kurzu potřebujete existující virtuální počítač. V případě potřeby se můžete podívat na úvodní seznam rozhraní příkazového [řádku](quick-create-cli.md) a vytvořit virtuální počítač pro použití v tomto kurzu. Při práci v kurzu nahraďte názvy prostředků tam, kde je to potřeba.
 
-## <a name="create-a-custom-image"></a>Vytvoření vlastní image
+## <a name="launch-azure-cloud-shell"></a>Spuštění služby Azure Cloud Shell
 
-Pokud chcete vytvořit image virtuálního počítače, musíte virtuální počítač připravit tak, že zrušíte jeho zřízení, uvolníte ho a pak označíte zdrojový virtuální počítač za generalizovaný. Jakmile bude virtuální počítač připravený, můžete vytvořit image.
+Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem. 
 
-### <a name="deprovision-the-vm"></a>Zrušení zřízení virtuálního počítače 
+Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče tak, že přejdete [https://shell.azure.com/powershell](https://shell.azure.com/powershell)na. Zkopírujte bloky kódu výběrem možnosti **Kopírovat**, vložte je do služby Cloud Shell a potom je spusťte stisknutím klávesy Enter.
 
-Zrušením zřízení dojde ke generalizaci virtuálního počítače tím, že se odeberou informace specifické pro počítač. Díky této generalizaci je možné z jedné image nasazovat více virtuálních počítačů. Během rušení zřízení se název hostitele resetuje na *localhost.localdomain*. Odstraní se také klíče hostitele SSH, konfigurace názvového serveru, kořenové heslo a zapůjčení DHCP uložená v mezipaměti.
+## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí 
 
-> [!WARNING]
-> Zrušení zřízení a označení virtuálního počítače jako zobecněného způsobí, že zdrojový virtuální počítač nebude použitelný a nemůže být restartován. 
+Galerie imagí je primární prostředek, který slouží k povolení sdílení obrázků. 
 
-Ke zrušení zřízení virtuálního počítače použijte agenta virtuálního počítače Azure (waagent). Agent virtuálního počítače Azure je nainstalovaný na virtuálním počítači a spravuje zřizování a interakci s kontrolerem prostředků infrastruktury Azure. Další informace najdete v [uživatelské příručce agenta Azure Linux](../extensions/agent-linux.md).
+Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.   Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
-Připojte se ke svému virtuálnímu počítači pomocí SSH a spusťte příkaz pro zrušení zřízení virtuálního počítače. Argument `+user` zajistí také odstranění posledního zřízeného uživatelského účtu a všech přidružených dat. Příklad IP adresy nahraďte veřejnou IP adresou vašeho virtuálního počítače.
+Pomocí [AZ SIG Create](/cli/azure/sig#az-sig-create)vytvořte galerii imagí. Následující příklad vytvoří skupinu prostředků s názvem Gallery s názvem *myGalleryRG* v *východní USA*a galerii s názvem *myGallery*.
 
-Připojte se k virtuálnímu počítači přes SSH.
-```bash
-ssh azureuser@52.174.34.95
-```
-Zrušte zřízení virtuálního počítače.
-
-```bash
-sudo waagent -deprovision+user -force
-```
-Ukončete relaci SSH.
-
-```bash
-exit
+```azurecli-interactive
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Uvolnění virtuálního počítače a jeho označení za generalizovaný
+## <a name="get-infornation-about-the-vm"></a>Získat Infornation o virtuálním počítači
 
-Abyste mohli vytvořit image, virtuální počítač musí být uvolněný. Uvolněte virtuální počítač pomocí příkazu [az vm deallocate](/cli//azure/vm). 
-   
+Seznam virtuálních počítačů, které jsou k dispozici, můžete zobrazit pomocí [seznamu AZ VM list](/cli/azure/vm#az-vm-list). 
+
+```azurecli-interactive
+az vm list --output table
+```
+
+Jakmile budete znát název virtuálního počítače a k čemu se v něm skupina prostředků, Získejte ID virtuálního počítače pomocí [AZ VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view). 
+
+```azurecli-interactive
+az vm get-instance-view -g MyResourceGroup -n MyVm --query id
+```
+
+Zkopírujte ID virtuálního počítače, který chcete použít později.
+
+## <a name="create-an-image-definition"></a>Vytvoření definice obrázku
+
+Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. 
+
+Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. 
+
+Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+
+Vytvořte definici obrázku v galerii pomocí [AZ SIG image-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create). 
+
+V tomto příkladu se definice image jmenuje *myImageDefinition*a je určena pro [specializovanou](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) image operačního systému Linux. 
+
 ```azurecli-interactive 
-az vm deallocate --resource-group myResourceGroup --name myVM
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
-Nakonec pomocí příkazu [az vm generalize](/cli//azure/vm) nastavte stav virtuálního počítače na generalizovaný, aby platforma Azure věděla, že byl virtuální počítač generalizovaný. Image můžete vytvořit pouze z generalizovaného počítače.
-   
+Zkopírujte ID definice obrázku z výstupu pro pozdější použití.
+
+## <a name="create-the-image-version"></a>Vytvoření verze image
+
+Z virtuálního počítače vytvořte verzi Image pomocí [AZ Image Gallery Create-Image-Version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+
+Povolené znaky pro verzi obrázku jsou čísla a tečky. Čísla musí být v rozsahu 32 celé číslo. Formát: *MajorVersion*. *Podverze.* *Oprava*.
+
+V tomto příkladu je verze naší image *1.0.0* a v oblasti *středozápadní USA* se vytvoří 2 repliky, 1 replika v *střed USA – jih* oblasti a 1 replika v oblasti *východní USA 2* s použitím redundantního úložiště v zóně. Oblasti replikace musí zahrnovat oblast, ve které je umístěný zdrojový virtuální počítač.
+
+`--managed-image` V tomto příkladu nahraďte hodnotu ID virtuálního počítače z předchozího kroku.
+
 ```azurecli-interactive 
-az vm generalize --resource-group myResourceGroup --name myVM
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
-### <a name="create-the-image"></a>Vytvoření image
+> [!NOTE]
+> Aby bylo možné použít stejnou spravovanou bitovou kopii k vytvoření jiné verze bitové kopie, je třeba počkat na dokončení sestavení a repliky verze image.
+>
+> Image můžete ukládat do úložiště `--storage-account-type  premium_lrs`Premiun přidáním nebo [redundantním úložištěm zóny](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) přidáním `--storage-account-type  standard_zrs` při vytváření verze image.
+>
 
-Teď můžete vytvořit image virtuálního počítače pomocí příkazu [az image create](/cli//azure/image). Následující příklad vytvoří image *myImage* z virtuálního počítače *myVM*.
-   
-```azurecli-interactive 
-az image create \
-    --resource-group myResourceGroup \
-    --name myImage \
-    --source myVM
-```
  
-## <a name="create-vms-from-the-image"></a>Vytvoření virtuálních počítačů z image
+## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Když teď máte image, můžete vytvořit jeden nebo více nových virtuálních počítačů pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač *myVMfromImage* z image *myImage*.
+Vytvořte virtuální počítač pomocí příkazového typu [AZ VM Create](/cli/azure/vm#az-vm-create) pomocí parametru--specializované, který označuje, že se jedná o specializovanou image. 
 
-```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVMfromImage \
-    --image myImage \
-    --admin-username azureuser \
-    --generate-ssh-keys
+Použijte ID definice image pro `--image` k vytvoření virtuálního počítače z nejnovější verze image, která je k dispozici. Virtuální počítač můžete vytvořit také z konkrétní verze zadáním ID verze image pro `--image`. 
+
+V tomto příkladu vytváříme virtuální počítač z nejnovější verze *myImageDefinition* image.
+
+```azurecli
+az group create --name myResourceGroup --location eastus
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+    --specialized
 ```
 
-Doporučujeme omezit počet souběžných nasazení na 20 virtuálních počítačů z jedné image. Pokud plánujete rozsáhlé souběžné nasazení více než 20 virtuálních počítačů ze stejné vlastní image, měli byste použít [sdílenou galerii imagí](shared-image-galleries.md) s více replikami imagí. 
+## <a name="share-the-gallery"></a>Sdílení galerie
 
-## <a name="image-management"></a>Správa imagí 
+Image můžete sdílet mezi předplatnými pomocí Access Control na základě rolí (RBAC). Image můžete sdílet v galerii, definici Image nebo imagi verze Leve. Každý uživatel, který má oprávnění ke čtení verze image, dokonce i přes odběry, bude moci nasadit virtuální počítač pomocí verze image.
 
-Tady je několik příkladů běžných úloh správy imagí a postup pro jejich provedení pomocí Azure CLI.
+Doporučujeme sdílet s ostatními uživateli na úrovni galerie. Chcete-li získat ID objektu galerie, použijte příkaz [AZ SIG show](/cli/azure/sig#az-sig-show).
 
-Výpis všech imagí podle názvu ve formátu tabulky.
-
-```azurecli-interactive 
-az image list \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
 ```
 
-Odstranění image. Tento příklad odstraní image *myOldImage* ze skupiny prostředků *myResourceGroup*.
+Pomocí ID objektu jako oboru společně s e-mailovou adresou a [AZ role Assignment vytvořit](/cli/azure/role/assignment#az-role-assignment-create) poskytněte uživateli přístup k galerii sdílených imagí. `<email-address>` Nahraďte `<gallery iD>` a vlastními informacemi.
 
-```azurecli-interactive 
-az image delete \
-    --name myOldImage \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
 ```
+
+Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí virtuálních počítačů Azure](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview). Jednoduše popište vlastní nastavení v šabloně a zpracuje se tím vytváření obrázků. 
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Zrušení zřízení a generalizace virtuálních počítačů
-> * Vytvoření vlastní image
-> * Vytvoření virtuálního počítače z vlastní image
-> * Výpis všech imagí v předplatném
-> * Odstranění image
+> * Vytvoření galerie sdílených imagí
+> * Vytvoření definice obrázku
+> * Vytvoření verze image
+> * Vytvoření virtuálního počítače z Image 
+> * Sdílení Galerie imagí
 
 Přejděte k dalšímu kurzu, kde se seznámíte s vysoce dostupnými virtuálními počítači.
 

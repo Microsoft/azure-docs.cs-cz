@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 752081d1fdbac025d9c2a9287d59738ca10bf609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 63d92962b2d41bcc4502d60ad80297a21c82e36a
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82181187"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837978"
 ---
-|Název |Popis |Vliv (s) |Version |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHubu |
 |---|---|---|---|---|
 |[Přidání značky do skupin prostředků](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |Přidá zadanou značku a hodnotu, pokud u kterékoli skupiny prostředků chybí Tato značka, která je vytvořena nebo aktualizována. Stávající skupiny prostředků je možné opravit aktivací úlohy nápravy. Pokud značka existuje s jinou hodnotou, nebude změněna. |upravíte |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[Přidání značky k prostředkům](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |Přidá zadanou značku a hodnotu, pokud některý z prostředků chybějící tato značka vytvoří nebo aktualizuje. Stávající prostředky je možné napravit aktivací úlohy nápravy. Pokud značka existuje s jinou hodnotou, nebude změněna. Značky ve skupinách prostředků se neupravují. |upravíte |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |

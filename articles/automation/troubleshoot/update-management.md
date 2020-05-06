@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678922"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790826"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>Řešení potíží s řešením Update Management
 
@@ -49,13 +49,13 @@ K této chybě může dojít z následujících důvodů:
 
 * Spusťte Poradce při potížích pro [Windows](update-agent-issues.md#troubleshoot-offline) nebo [Linux](update-agent-issues-linux.md#troubleshoot-offline), a to v závislosti na operačním systému.
 
-* Pokud chcete zjistit, které adresy a porty musí Update Management fungovat, přejít na [Plánování sítě](../automation-hybrid-runbook-worker.md#network-planning) .  
+* Pokud chcete zjistit, které adresy a porty musí Update Management fungovat, přejít na [konfiguraci sítě](../automation-hybrid-runbook-worker.md#network-planning) .  
 
-* V části [Plánování sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) zjistíte, které adresy a porty musí být povoleny, aby mohl agent Log Analytics fungovat.
+* V části [Konfigurace sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) zjistíte, které adresy a porty musí být povolené, aby mohl agent Log Analytics fungovat.
 
 * Vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače se nakonfigurují pro řešení. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne na portálu * * Update Management, budete muset nastavit konfiguraci oboru pro cílení na počítače. Další informace o konfiguraci oboru najdete v tématu [zprovoznění počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
-* Odeberte konfiguraci pracovního procesu podle kroků v části [odstranění procesu Hybrid Runbook Worker](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker). 
+* Odeberte konfiguraci pracovního procesu podle kroků v části [odebrání Hybrid Runbook Worker Windows](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) nebo [Odebrání Hybrid Runbook Worker pro Linux](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Scénář: nahrazená aktualizace byla označena jako chybějící v Update Management
 
@@ -448,7 +448,7 @@ Počítač už je zaregistrované do jiného pracovního prostoru pro Update Man
 ### <a name="resolution"></a>Řešení
 
 1. Postupujte podle kroků v části [počítače se nezobrazují na portálu v části Update Management](#nologs) , abyste se ujistili, že se počítač hlásí do správného pracovního prostoru.
-2. Odstraňte artefakty na počítači [odstraněním skupiny Hybrid Runbook](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)a pak to zkuste znovu.
+2. Odstraňte artefakty na počítači [odstraněním skupiny Hybrid Runbook](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)a pak to zkuste znovu.
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Scénář: počítač nemůže komunikovat se službou.
 

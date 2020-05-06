@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: Rozšíření prostředků
       href: tutorial-resource-onboarding.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Azure Policy pro přidružení

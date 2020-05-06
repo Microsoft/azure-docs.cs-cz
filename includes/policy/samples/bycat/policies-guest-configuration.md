@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ae37a41f31de068a0a62aa92c857bee99b27398c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 693a763e3ee1dcfe609a778725a18733fe44f990
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191082"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838109"
 ---
-|Název |Popis |Vliv (s) |Version |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHubu |
 |---|---|---|---|---|
 |[Požadavky na audit pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5fc23db3-dd4d-4c56-bcc7-43626243e601) |Tato definice umožňuje Azure Policy auditovat Azure Policy rozšíření Windows na virtuálních počítačích s Windows. Toto rozšíření je předpokladem pro zásady konfigurace hostů. Další informace o zásadách konfigurace hosta najdete na [https://aka.ms/gcpol](https://aka.ms/gcpol)stránce. |AuditIfNotExists, zakázáno |1.0.0 |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_PrerequisitePolicyWindows_Audit.json) |
 |[Auditovat virtuální počítače s Windows, na kterých není ochrana před zneužitím v programu Windows Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Ochrana před zneužitím v programu Windows Defender pomáhá chránit před malwarem, který využívá zneužití k nainfikování zařízení a dvojstránky. Ochrana před zneužitím se skládá z několika rizik, která se dají použít buď pro operační systém, nebo pro jednotlivé aplikace. Tato zásada vyžaduje rozšíření Azure Policy pro Windows. Podrobnosti najdete na adrese [https://aks.ms/gcpol](https://aks.ms/gcpol). |AuditIfNotExists, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |

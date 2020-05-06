@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329728"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582951"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Přiřazení popisků citlivosti skupinám Office 365 v Azure Active Directory (Preview)
 
@@ -112,10 +112,10 @@ Po povolení této funkce se "klasické" klasifikace pro skupiny zobrazí jenom 
 
 Možnost popisek citlivosti se zobrazí pouze pro skupiny, pokud jsou splněny všechny následující podmínky:
 
-1. Štítky jsou publikovány v centru dodržování předpisů Microsoft 365 pro tohoto tenanta.
+1. Štítky jsou publikované v centru dodržování předpisů v Microsoft 365 pro tuto organizaci Azure AD.
 1. Funkce je povolená, EnableMIPLabels je v PowerShellu nastavená na true.
 1. Skupina je skupina Office 365.
-1. Tenant má aktivní licenci Azure Active Directory Premium P1.
+1. Organizace má aktivní licenci Azure Active Directory Premium P1.
 1. Aktuálně přihlášený uživatel má dostatečná oprávnění k přiřazování popisků. Uživatel musí být buď globální správce, správce skupiny, nebo vlastník skupiny.
 
 Ujistěte se prosím, že jsou splněné všechny podmínky, aby bylo možné přiřadit popisky ke skupině.

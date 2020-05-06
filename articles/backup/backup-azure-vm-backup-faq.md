@@ -4,12 +4,12 @@ description: V tomto článku najdete odpovědi na běžné dotazy týkající s
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190091"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800647"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Nejčastější dotazy – zálohování virtuálních počítačů Azure
 
@@ -176,6 +176,14 @@ Virtuální počítač se zálohuje pomocí nastavení plánu a uchování v upr
 4. Obnovte zálohu.
 
 Virtuální počítač můžete obnovit z dostupných bodů obnovení, které byly vytvořeny před operací přesunutí.
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>Co se stane po přesunu virtuálního počítače do jiné skupiny prostředků?
+
+Po přesunutí virtuálního počítače do jiné skupiny prostředků se jedná o nový virtuální počítač, který je v Azure Backup.
+
+Po přesunutí virtuálního počítače do nové skupiny prostředků můžete virtuální počítač znovu chránit buď ve stejném trezoru, nebo v jiném trezoru. Vzhledem k tomu, že se jedná o nový virtuální počítač pro Azure Backup, bude se vám účtovat samostatně.
+
+V případě potřeby budou obnoveny body obnovení starého virtuálního počítače. Pokud tato zálohovaná data nepotřebujete, můžete zastavit ochranu původního virtuálního počítače pomocí odstranit data.
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Existuje omezení počtu virtuálních počítačů, které mohou být přidruženy ke stejné zásadě zálohování?
 

@@ -69,6 +69,8 @@
       href: powershell-samples.md
 - name: Koncepty
   items:
+    - name: Image
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Oblasti
@@ -457,17 +459,64 @@
         - name: Vytvoření upozornění protokolu
           href: ../../azure-monitor/platform/alerts-log.md
     - name: Použití imagí
+      displayName: 'SIG, AMI, image'
       items:
         - name: Galerie sdílených imagí
           items:
-            - name: Přehled
-              href: shared-image-galleries.md
             - name: Rozhraní příkazového řádku
-              href: shared-images.md
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-cli.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-cli.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-cli.md
+                - name: Registrace aplikace pro sdílení
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-powershell.md
+                - name: Vytvoření verze image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-powershell.md
             - name: Portál
-              href: shared-images-portal.md
-            - name: Registrace aplikace pro sdílení
-              href: share-images-across-tenants.md
+              items:
+                - name: 'Vytvoření galerie, image a virtuálního počítače'
+                  href: shared-images-portal.md
+            - name: Šablony Resource Manageru
+              items:
+                - name: Vytvoření služby Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Vytvoření definici image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Vytvoření verze image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Vytvoření virtuálního počítače z verze image
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
         - name: Image Builder (Preview)
@@ -544,9 +593,9 @@
         - name: Terraform
           items:
             - name: Instalace a konfigurace
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: Vytvoření kompletního virtuálního počítače
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Cloud-init
           items:
             - name: Přehled Cloud-init
@@ -564,14 +613,14 @@
             - name: Příprava existujícího virtuálního počítače pro cloud-init
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: Vytvoření serveru Jenkins
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: Škálování pomocí agentů virtuálních počítačů
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: Publikování artefaktů do Storage
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: Zabezpečení Jenkinse
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Spuštění kontejnerů

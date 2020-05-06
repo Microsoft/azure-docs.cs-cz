@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77167312"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559990"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -240,7 +240,7 @@ Při vyvolání funkce aktivované zahřívání nejsou k dispozici žádné dal
 ## <a name="trigger---limits"></a>Aktivační události – omezení
 
 * Aktivační událost zahřívání je dostupná jenom pro aplikace, které běží na [plánu Premium](./functions-premium-plan.md).
-* Aktivační událost zahřívání se volá jenom během operací s horizontálním škálováním, ne během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
+* Aktivační událost zahřívání je volána pouze během operací škálování na více instancí, nikoli během restartování nebo jiných neškálovatelných spuštění. Je nutné zajistit, aby vaše logika mohla načíst všechny nezbytné závislosti bez použití triggeru zahřívání. K tomu je dobrým vzorem opožděné načítání.
 * Aktivační událost zahřívání nejde vyvolat, když už je instance spuštěná.
 * Na aplikaci Function App může být jenom jedna funkce triggeru zahřívání.
 
