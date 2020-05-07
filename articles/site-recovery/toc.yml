@@ -11,6 +11,9 @@
   items:
     - name: Replikace virtuálního počítače Azure do jiné oblasti
       href: azure-to-azure-quickstart.md
+    - name: Vytvoření trezoru – šablona ARM
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: Kurzy
   items:
     - name: Zotavení po havárii virtuálního počítače Azure do Azure

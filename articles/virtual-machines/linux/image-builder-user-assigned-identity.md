@@ -4,16 +4,15 @@ description: Pomocí nástroje Azure image Builder můžete vytvořit image virt
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-manager: gwallace
-ms.openlocfilehash: 27f4073efc8647d331faa14afbda0e15f92b8d50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8e897d2736202f1fb6c5cb8a6497c5c886acef8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060749"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792424"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Vytvoření image a použití spravované identity přiřazené uživatelem pro přístup k souborům v Azure Storage 
 
