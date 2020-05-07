@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679514"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855347"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integrace správy zdrojového kódu ve Azure Automation – starší verze
 
@@ -60,7 +60,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
    * Proměnná **Microsoft. Azure. Automation. SourceControl. Connection** obsahuje hodnoty připojovacího řetězce, jak je znázorněno níže.  
 
-     | **Ukazatele** | **Osa** |
+     | **Ukazatele** | **Hodnota** |
      |:--- |:--- |
      | `Name`  |Microsoft. Azure. Automation. SourceControl. Connection |
      | `Type`  |Řetězec |
@@ -68,7 +68,7 @@ Pokud již máte účet GitHub a úložiště, které chcete propojit s Azure Au
 
    * Proměnná **Microsoft. Azure. Automation. SourceControl. OAuthToken**obsahuje zabezpečenou šifrovanou hodnotu vašeho OAuthToken.  
 
-     |**Ukazatele**            |**Osa** |
+     |**Ukazatele**            |**Hodnota** |
      |:---|:---|
      | `Name`  | `Microsoft.Azure.Automation.SourceControl.OAuthToken` |
      | `Type`  | `Unknown(Encrypted)` |
@@ -102,7 +102,7 @@ Vrácení se změnami Runbooku vám umožní nasdílet změny, které jste prove
    > [!NOTE]
    > Runbooky správy zdrojového kódu jsou speciální Runbooky pro automatizaci, které nemůžete zobrazit ani upravovat. I když se nezobrazují v seznamu sad Runbook, zobrazují se úlohy synchronizace v seznamu úloh.
 
-5. Název upravené sady Runbook se odešle jako vstupní parametr pro vrácenou sadu Runbook. [Podrobnosti o úloze můžete zobrazit](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) rozbalením sady Runbook na stránce synchronizace úložiště.  
+5. Název upravené sady Runbook se odešle jako vstupní parametr pro vrácenou sadu Runbook. [Podrobnosti o úloze můžete zobrazit](automation-runbook-execution.md#job-statuses) rozbalením sady Runbook na stránce synchronizace úložiště.  
 
     ![Okno zobrazující vstup pro úlohu synchronizace](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. Až se úloha dokončí, aktualizujte úložiště GitHub.  V úložišti by mělo být potvrzení se zprávou potvrzení: **aktualizovaný *název runbooku* v Azure Automation.**  

@@ -3,12 +3,12 @@ title: Uložení Helm grafů
 description: Naučte se ukládat Helm grafy pro aplikace Kubernetes pomocí úložišť v Azure Container Registry
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399379"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857610"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Vložení a vyžádání Helm grafů do služby Azure Container Registry
 
@@ -31,8 +31,8 @@ Pro hostování Helm grafů v Azure Container Registry můžete použít buď He
 ### <a name="additional-information"></a>Další informace
 
 * Pro většinu scénářů doporučujeme použít pracovní postup Helm 3 s nativními `helm chart` příkazy pro správu grafů jako artefakty OCI.
-* Můžete použít starší příkazy [AZ ACR Helm][az-acr-helm] Azure CLI a pracovní postup s klientem a grafy Helm 3. Některé příkazy, jako třeba, `az acr helm list` nejsou kompatibilní s Helm 3 grafy.
-* Od Helm 3 jsou podporovány příkazy [AZ ACR Helm][az-acr-helm] hlavně pro zajištění kompatibility s klientem Helm 2 a formátem grafu. Budoucí vývoj těchto příkazů není aktuálně plánován.
+* Od Helm 3 jsou podporovány příkazy [AZ ACR Helm][az-acr-helm] pro kompatibilitu s klientem Helm 2 a formátem grafu. Budoucí vývoj těchto příkazů není aktuálně plánován. Seznamte se s [plánem produktu](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga).
+* Grafy Helm 2 nelze zobrazit ani spravovat pomocí Azure Portal.
 
 ## <a name="use-the-helm-3-client"></a>Použití klienta Helm 3
 

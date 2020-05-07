@@ -3,12 +3,12 @@ title: Aktualizovat skupinu kontejnerů
 description: Naučte se aktualizovat spuštěné kontejnery ve vašich Azure Container Instancesch skupinách kontejnerů.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160098"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854449"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnerů ve službě Azure Container Instances
 
@@ -28,7 +28,7 @@ Aktualizace existující skupiny kontejnerů:
 * Nastavte další vlastnosti pomocí hodnot, které jste zadali dříve. Pokud nenastavíte hodnotu pro vlastnost, vrátí se výchozí hodnota.
 
 > [!TIP]
-> [Soubor YAML](/container-instances-container-groups.md#deployment) pomáhá udržovat konfiguraci nasazení skupiny kontejnerů a poskytuje výchozí bod pro nasazení aktualizované skupiny. Pokud jste k vytvoření skupiny použili jinou metodu, můžete tuto konfiguraci exportovat do YAML pomocí [AZ Container export][az-container-export], 
+> [Soubor YAML](container-instances-container-groups.md#deployment) pomáhá udržovat konfiguraci nasazení skupiny kontejnerů a poskytuje výchozí bod pro nasazení aktualizované skupiny. Pokud jste k vytvoření skupiny použili jinou metodu, můžete tuto konfiguraci exportovat do YAML pomocí [AZ Container export][az-container-export], 
 
 ### <a name="example"></a>Příklad
 

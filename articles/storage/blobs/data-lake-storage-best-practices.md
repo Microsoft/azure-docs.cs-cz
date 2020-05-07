@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72299672"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857877"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Osvědčené postupy pro používání Azure Data Lake Storage Gen2
 
 V tomto článku se seznámíte s osvědčenými postupy a pokyny pro práci s Azure Data Lake Storage Gen2. Tento článek poskytuje informace o zabezpečení, výkonu, odolnosti a monitorování pro Data Lake Storage Gen2. Před Data Lake Storage Gen2 práce s skutečně velkými objemy dat ve službách, jako je Azure HDInsight, byla složitá. Museli jste horizontálních oddílů data napříč několika účty BLOB Storage, aby bylo možné dosáhnout úložiště řádu petabajtů a optimálního výkonu v tomto rozsahu. Data Lake Storage Gen2 podporuje jednotlivé velikosti souborů tak vysoké jako 5 TB a většina pevných limitů pro výkon se odebrala. Existují však i některé okolnosti, které tento článek popisuje, abyste dosáhli nejlepšího výkonu s použitím Data Lake Storage Gen2.
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
 Azure Data Lake Storage Gen2 nabízí řízení přístupu POSIX pro uživatele, skupiny a instanční objekty služby Azure Active Directory (Azure AD). Tyto ovládací prvky přístupu můžou být nastavené na existující soubory a adresáře. Ovládací prvky přístupu lze také použít k vytvoření výchozích oprávnění, která lze automaticky použít pro nové soubory nebo adresáře. Další podrobnosti o Data Lake Storage Gen2ech ACL jsou k dispozici v [řízení přístupu v Azure Data Lake Storage Gen2](storage-data-lake-storage-access-control.md).
 
@@ -49,7 +49,7 @@ Při navrhování systému pomocí Data Lake Storage Gen2 nebo libovolné cloudo
 
 ### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
 
-Vysoká dostupnost (HA) a zotavení po havárii (DR) se někdy můžou kombinovat dohromady, i když každá z nich má mírně odlišnou strategii, zejména pokud se data nacházejí. Data Lake Storage Gen2 už v digestoři zpracovává replikaci 3x, která chrání před selháním lokalizovaných hardwarových zařízení. Kromě toho další možnosti replikace, jako je ZRS nebo GZRS (Preview), zlepšují HA, zatímco GRS & RA-GRS vylepšit DR. Při sestavování plánu pro HA potřebuje v případě přerušení služby přístup k nejnovějším datům co nejrychleji, a to tak, že přepnete na samostatnou replikovanou instanci lokálně nebo v nové oblasti.
+Vysoká dostupnost (HA) a zotavení po havárii (DR) se někdy můžou kombinovat dohromady, i když každá z nich má mírně odlišnou strategii, zejména pokud se data nacházejí. Data Lake Storage Gen2 už v digestoři zpracovává replikaci 3x, která chrání před selháním lokalizovaných hardwarových zařízení. Kromě toho další možnosti replikace, jako je ZRS nebo GZRS, zlepšují HA, zatímco GRS & RA-GRS vylepšit DR. Při sestavování plánu pro HA potřebuje v případě přerušení služby přístup k nejnovějším datům co nejrychleji, a to tak, že přepnete na samostatnou replikovanou instanci lokálně nebo v nové oblasti.
 
 V strategii zotavení po havárii se můžete připravit na nepravděpodobné události závažného selhání oblasti. je taky důležité replikovat data do jiné oblasti pomocí replikace GRS nebo RA-GRS. Také je nutné vzít v úvahu požadavky na hraniční případy, jako je například poškození dat, kde můžete chtít vytvořit periodické snímky, na které se bude vracet. V závislosti na důležitosti a velikosti dat zvažte použití rozdílových snímků s 1, 6 a 24 hodinovou odchylkou v závislosti na tolerancích rizik.
 

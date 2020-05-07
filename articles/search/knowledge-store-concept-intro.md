@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943000"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858794"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Seznámení s znalostními obchody v Azure Kognitivní hledání
 
@@ -25,6 +25,10 @@ Znalostní báze je funkce služby Azure Kognitivní hledání, která uchováv�
 Pokud jste v minulosti používali rozpoznávání vnímání, již víte, že *dovednosti* přesouvá dokument v rámci posloupnosti rozšíření. Výsledkem může být index vyhledávání nebo (novinka v této verzi Preview) projekce ve znalostní bázi Knowledge Store. Dva výstupy, vyhledávací index a znalostní obchod jsou produkty stejného kanálu. odvozeno ze stejných vstupů, ale vede výstup, který je strukturovaný, uložený a používá se velmi různými způsoby.
 
 Znalostní báze Knowledge Store je fyzicky [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview), buď úložiště tabulek Azure, Azure Blob Storage, nebo obojí. Libovolný nástroj nebo proces, který se může připojit k Azure Storage může využívat obsah znalostní báze Knowledge Store.
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
+
 
 ![Znalostní úložiště v diagramu kanálu](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "Znalostní úložiště v diagramu kanálu")
 
@@ -46,6 +50,10 @@ Ve výčtu jsou výhody znalostní báze Knowledge Store následující:
 > Novinka pro rozšíření AI a vnímání zkušeností? Azure Kognitivní hledání se integruje s funkcemi Cognitive Services Vision a Language pro extrakci a obohacení zdrojových dat pomocí optického rozpoznávání znaků (OCR) přes soubory obrázků, rozpoznávání entit a extrakce klíčových frází z textových souborů a dalších. Další informace najdete v tématu věnovaném [rozšíření AI v Azure kognitivní hledání](cognitive-search-concept-intro.md).
 
 ## <a name="physical-storage"></a>Fyzické úložiště
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
+
 
 Fyzický výraz úložiště znalostí je kloubem prostřednictvím `projections` elementu `knowledgeStore` definice v dovednosti. Projekce definuje strukturu výstupu tak, aby odpovídala zamýšlenému použití.
 
@@ -131,7 +139,7 @@ Jakmile rozšíření existují v úložišti, můžete použít jakýkoli nást
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>referenční dokumentace k rozhraní API
+## <a name="api-reference"></a>API – referenční informace
 
 REST API verze `2019-05-06-Preview` poskytuje znalostní bázi s dalšími definicemi na dovednosti. Kromě odkazu najdete informace o tom, jak volat rozhraní API, v tématu [Vytvoření úložiště znalostí pomocí služby post](knowledge-store-create-rest.md) .
 

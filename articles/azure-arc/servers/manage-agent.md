@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/14/2020
+ms.date: 04/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81308959"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581707"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Správa a údržba agenta připojeného počítače
 
@@ -261,3 +261,49 @@ Pokud plánujete ukončit správu počítače s podpůrnými službami v Azure, 
 1. Kliknutím na [Azure Portal](https://aka.ms/hybridmachineportal)otevřete položku Azure ARC pro servery (Preview).
 
 2. Vyberte počítač v seznamu, vyberte tři tečky (**...**) a pak vyberte **Odstranit**.
+
+## <a name="update-or-remove-proxy-settings"></a>Aktualizovat nebo odebrat nastavení proxy serveru
+
+Chcete-li nakonfigurovat agenta ke komunikaci se službou prostřednictvím proxy server nebo tuto konfiguraci po nasazení odebrat, nebo použijte k dokončení této úlohy jednu z následujících metod.
+
+### <a name="windows"></a>Windows
+
+Chcete-li nastavit proměnnou prostředí proxy server, spusťte následující příkaz:
+
+```powershell
+# If a proxy server is needed, execute these commands with the proxy URL and port.
+[Environment]::SetEnvironmentVariable("https_proxy","http://{proxy-url}:{proxy-port}","Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable is set.
+Restart-Service -Name himds
+```
+
+Chcete-li nakonfigurovat agenta tak, aby přestal komunikovat prostřednictvím proxy server, spusťte následující příkaz, který odebere proxy server proměnnou prostředí a restartuje službu agenta:
+
+```powershell
+[Environment]::SetEnvironmentVariable("https_proxy",$null,"Machine")
+$env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
+# For the changes to take effect, the agent service needs to be restarted after the proxy environment variable removed.
+Restart-Service -Name himds
+```
+
+### <a name="linux"></a>Linux
+
+Pokud chcete nastavit proxy server, spusťte následující příkaz z adresáře, do kterého jste stáhli instalační balíček agenta:
+
+```bash
+# Reconfigure the connected machine agent and set the proxy server.
+bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
+```
+
+Chcete-li nakonfigurovat agenta tak, aby přestal komunikovat prostřednictvím proxy server, odeberte konfiguraci proxy spuštěním následujícího příkazu:
+
+```bash
+sudo azcmagent_proxy remove
+```
+
+## <a name="next-steps"></a>Další kroky
+
+- Naučte se, jak spravovat počítač pomocí [Azure Policy](../../governance/policy/overview.md), jako je [Konfigurace hosta](../../governance/policy/concepts/guest-configuration.md)virtuálního počítače, ověření, že se počítač hlásí k očekávanému log Analyticsmu pracovnímu prostoru, povolit monitorování pomocí [Azure monitor s virtuálními počítači](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)a mnohem víc.
+
+- Přečtěte si další informace o [agentovi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md). Agent Log Analytics pro systém Windows a Linux je nutný, pokud chcete aktivně monitorovat operační systém a úlohy běžící v počítači, spravovat je pomocí runbooků nebo funkcí automatizace, jako je Update Management, nebo použít jiné služby Azure, jako je [Azure Security Center](../../security-center/security-center-intro.md).

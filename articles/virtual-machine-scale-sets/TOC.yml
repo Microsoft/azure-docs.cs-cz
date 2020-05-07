@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Správa domén selhání ve škálovacích sadách
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Image
+      href: shared-image-galleries.md
     - name: Velikosti a typy virtuálních počítačů
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: Vysvětlení ID instancí
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: Použití imagí
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Galerie sdílených imagí
+          items:
+            - name: PowerShell
+              items:
+                - name: Vytvoření galerie
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: Migrace ze spravované image
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: Kopírování z jiné galerie
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: Vytvoření škálovací sady
+                  items:
+                    - name: Specializovaná
+                      href: instance-specialized-image-version-powershell.md
+                    - name: Generalizovaná
+                      href: instance-generalized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: Rozhraní příkazového řádku
+              items:
+                - name: Vytvoření galerie
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: Migrace ze spravované image
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: Vytvoření škálovací sady
+                  items:
+                    - name: Specializovaná
+                      href: instance-specialized-image-version-cli.md
+                    - name: Generalizovaná
+                      href: instance-generalized-image-version-cli.md
+                - name: Aktualizace prostředků imagí
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: Vytvoření šablony
       items:
         - name: Další informace o šablonách škálovacích sad

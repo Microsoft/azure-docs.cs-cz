@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443603"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839109"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
@@ -24,7 +24,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Zdědit dělení** – Tato možnost Konfigurace výstupu SQL umožňuje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, zapisuje se do tabulky založené na disku a má [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie pro vaši práci. očekává se, že se zobrazí lepší propustnost. Tento oddíl již probíhá automaticky pro mnoho dalších [výstupů](stream-analytics-parallelization.md#partitions-in-sources-and-sinks). Uzamykání tabulek (byla TABLOCK) je také zakázáno pro hromadné vložení vytvořené s touto možností.
+- **Zdědit dělení** – Tato možnost Konfigurace výstupu SQL umožňuje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, zapisuje se do tabulky založené na disku a má [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie pro vaši práci. očekává se, že se zobrazí lepší propustnost. Tento oddíl již probíhá automaticky pro mnoho dalších [výstupů](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs). Uzamykání tabulek (byla TABLOCK) je také zakázáno pro hromadné vložení vytvořené s touto možností.
 
 > [!NOTE] 
 > Pokud je k dispozici více než 8 vstupních oddílů, nemusí být dědění vstupního schématu dělení vhodné. Tento horní limit byl pozorován v tabulce s jedním sloupcem identity a clusterovaným indexem. V takovém případě zvažte, jestli v dotazu použijete [do](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8, jestli chcete explicitně zadat počet modulů pro zápis výstupu. Na základě schématu a volby indexů se může vaše pozorování lišit.

@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 553ecc971235b5ba7d55a2dcb6963200919a3480
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332085"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853460"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Předpoklady pro zřizování cloudu Azure AD Connect
 Tento článek poskytuje pokyny k výběru a používání Azure Active Directory (Azure AD) připojení cloudového zřizování jako řešení identity.
@@ -47,6 +47,8 @@ Pro přípravu atributů adresáře pro synchronizaci spusťte [Nástroj IdFix](
 ### <a name="in-your-on-premises-environment"></a>V místním prostředí
 
 1. Identifikujte hostitelský server připojený k doméně, na kterém běží Windows Server 2012 R2 nebo novější, s minimálním počtem 4 GB paměti RAM a .NET 4.7.1 + runtime.
+
+1. Zásady spouštění PowerShellu na místním serveru musí být nastavené na undefined nebo RemoteSigned.
 
 1. Pokud je mezi vašimi servery a službou Azure AD brána firewall, nakonfigurujte následující položky:
    - Zajistěte, aby agenti mohli vytvářet *odchozí* požadavky do služby Azure AD prostřednictvím následujících portů:

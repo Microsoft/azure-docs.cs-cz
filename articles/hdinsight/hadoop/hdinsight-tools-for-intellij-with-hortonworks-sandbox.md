@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647828"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856146"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Používání nástrojů HDInsight pro IntelliJ s izolovaným prostorem Hortonworks
 
@@ -32,7 +32,7 @@ Než začnete tento článek, musíte mít následující položky:
 
 - [Java Developer Kit (JDK) verze 1,8 nebo novější](https://aka.ms/azure-jdks). Azure Toolkit for IntelliJ vyžaduje JDK.
 
-- [INTELLIJ myšlenku Community Edition](https://www.jetbrains.com/idea/download) s modulem plug-in [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) a modulem plug-in [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) . Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást Azure Toolkit for IntelliJ. 
+- [INTELLIJ myšlenku Community Edition](https://www.jetbrains.com/idea/download) s modulem plug-in [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) a modulem plug-in [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) . Nástroje HDInsight pro IntelliJ jsou k dispozici jako součást Azure Toolkit for IntelliJ.
 
 Instalace modulů plug-in:
 

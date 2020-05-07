@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 34ad2c38ebc79615603cf528625136b0f4784a0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 280c7bb39c5c920c92608e639bbe3cf7b0c2f006
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191069"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838097"
 ---
-|Název |Popis |Vliv (s) |Version |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHubu |
 |---|---|---|---|---|
 |[\[Omezený náhled\]: \[AKS\] nepovoluje privilegované kontejnery v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Tato zásada nepovoluje vytvoření privilegovaných kontejnerů v clusteru služby Azure Kubernetes. Zásady omezené verze Preview fungují jenom u registrovaných předplatných. Pokud se chcete zaregistrovat, přejděte [https://aka.ms/akspolicyonboarding](https://aka.ms/akspolicyonboarding)prosím na. Pokyny k použití této zásady najdete v [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |EnforceRegoPolicy, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json) |
 |[\[Omezený náhled\]: \[AKS\] vynutil příchozí přenosy HTTPS v AKS](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Tato zásada vynutila příchozí přenosy HTTPS v clusteru služby Azure Kubernetes. Zásady omezené verze Preview fungují jenom u registrovaných předplatných. Pokud se chcete zaregistrovat, přejděte [https://aka.ms/akspolicyonboarding](https://aka.ms/akspolicyonboarding)prosím na. Pokyny k použití této zásady najdete v [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |EnforceRegoPolicy, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json) |

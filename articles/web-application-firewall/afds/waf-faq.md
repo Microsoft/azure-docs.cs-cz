@@ -1,23 +1,23 @@
 ---
-title: Brána Firewall webových aplikací Azure – Nejčastější dotazy
+title: Brána Firewall webových aplikací Azure na službě Azure front-dveří – Nejčastější dotazy
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se firewallu webových aplikací v Azure front-dveřích.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: fefbb038cec0c061f1fd191a77164880372555a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314321"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837630"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Nejčastější dotazy k firewallu webových aplikací Azure na službě Azure front-dveří
 
-Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a funkcí firewallu webových aplikací v Azure (WAF). 
+Tento článek obsahuje odpovědi na běžné dotazy k firewallu webových aplikací Azure (WAF) ve funkcích a funkcích služby Azure front dveří. 
 
 ## <a name="what-is-azure-waf"></a>Co je Azure WAF?
 

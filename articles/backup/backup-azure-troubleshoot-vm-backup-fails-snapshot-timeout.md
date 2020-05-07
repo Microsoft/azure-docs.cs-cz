@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677413"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854630"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup Chyba: problémy s agentem nebo rozšířením
 
@@ -200,7 +200,7 @@ Pokud požadujete podrobné protokolování pro waagent, postupujte takto:
 
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM – možnosti konfigurace agenta nejsou nastavené (pro virtuální počítače se systémem Linux)
 
-Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. povolení** a **zřizování. Agent** by měl být nastaven na hodnotu **y** , aby fungovala záloha.
+Konfigurační soubor (/etc/waagent.conf) řídí akce waagent. Rozšíření možností konfiguračního souboru **. možnost Enable** by měla být nastavena na **y** a **zřizování. Agent** by měl být nastaven na hodnotu **automaticky** , aby mohla zálohování fungovat.
 Úplný seznam možností konfiguračního souboru agenta virtuálního počítače najdete v tématu.<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Stav snímku nelze načíst nebo nelze vytvořit snímek.
