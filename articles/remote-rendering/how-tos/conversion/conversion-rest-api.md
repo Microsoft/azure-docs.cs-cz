@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887040"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857803"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>Použití rozhraní REST API pro převod modelů
 
@@ -120,6 +120,7 @@ Stav průběžného převodu zahájeného pomocí jednoho z výše uvedených vo
 
 Vrátí dokument JSON s polem "status", které může obsahovat následující hodnoty:
 
+- Vytvářejí
 - Instalovanou
 - Nástup
 - Poruše

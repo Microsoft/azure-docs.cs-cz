@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ecfbc610bfa62f723e0a02b8cdeb52cd33fb5cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78197143"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853437"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -26,20 +26,20 @@ Azure Standard Load Balancer podporuje scénáře [zón dostupnosti](../availabi
 
 ## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>Zóny dostupnosti koncepty použité pro Load Balancer
 
-Prostředek Load Balancer sám o sobě není oblast. Členitost toho, co můžete nakonfigurovat, je omezené každou konfigurací front-endu, pravidla a definice fondu back-endu.
-V kontextu zón dostupnosti se chování a vlastnosti pravidla Load Balancer popisují jako redundantní nebo oblasti.  Redundantní zóna a oblast popisují zonality vlastnosti.  V souvislosti s Load Balancer se v zóně – redundantní vždy znamená, že *několik zón a oblastí* znamená izolaci služby do *jedné zóny*.
-Veřejné i interní Load Balancer podporují scénáře redundantních a oblastí a oba můžou směrovat provoz napříč zónami podle potřeby (*Vyrovnávání zatížení mezi zónami*). 
+Prostředek Load Balancer sám dědí konfiguraci zóny ze součástí IT: front-endové, pravidlo a definice fondu back-endu.
+V kontextu zón dostupnosti se chování a vlastnosti pravidla Load Balancer popisují jako redundantní nebo oblasti.  V souvislosti s Load Balancer se v zóně – redundantní vždy znamená, že *několik zón a oblastí* znamená izolaci služby do *jedné zóny*.
+Oba typy (veřejné, interní) Load Balancer podporují scénáře redundantní pro zóny a oblasti a obě můžou v případě potřeby směrovat provoz mezi zónami.
 
-### <a name="frontend"></a>Front-end
+## <a name="frontend"></a>Front-end
 
 Front-end Load Balancer je konfigurace IP adresy front-endu, která odkazuje buď na prostředek veřejné IP adresy, nebo na privátní IP adresu v rámci sítě virtuálního síťového prostředku.  Vytvoří koncový bod s vyrovnáváním zatížení, ve kterém je vaše služba vystavená.
 Prostředek Load Balancer může obsahovat pravidla s oblastmi a současně redundantními frontami typu zóna. Pokud je pro zónu zaručený prostředek veřejné IP adresy nebo privátní IP adresa, zonality (nebo nejeho absence) není proměnlivý.  Pokud chcete změnit nebo vynechat zonality veřejné IP adresy nebo front-endu privátních IP adres, musíte znovu vytvořit veřejnou IP adresu v příslušné zóně.  Zóny dostupnosti nemění omezení pro více front-endu, Projděte si [více front-endu pro Load Balancer](load-balancer-multivip-overview.md) , kde najdete podrobnosti o této možnosti.
 
-#### <a name="zone-redundant"></a>Zóna redundantní 
+### <a name="zone-redundant"></a>Zóna redundantní 
 
 V oblasti se zónami dostupnosti může být Standard Load Balancer front-endu zóny redundantní.  Redundantní zóna znamená, že všechny příchozí nebo odchozí toky jsou obsluhovány několika zónami dostupnosti v oblasti současně pomocí jediné IP adresy. Schémata redundance DNS se nevyžadují. Jedna IP adresa front-endu může překonat selhání zóny a dá se použít k přístupu ke všem (neovlivněným) členům fondu back-endu bez ohledu na zónu. Jedna nebo více zón dostupnosti můžou selhat a cesta k datům zůstane v pořádku, dokud jedna zóna v oblasti zůstane v dobrém stavu. Jedna IP adresa front-endu je souběžně obsluhována několika nezávislými nasazeními infrastruktury v několika zónách dostupnosti.  To neznamená hitless cestu k datům, ale všechny opakované pokusy nebo opětovné vytvoření budou úspěšné v jiných zónách, které neovlivní selhání zóny.   
 
-#### <a name="optional-zone-isolation"></a>Volitelná izolace zóny
+### <a name="zonal"></a>Zónové
 
 Můžete zvolit, aby front-end byl zaručen pro jednu zónu, která se nazývá *oblast front-endu*.  To znamená, že jakýkoliv příchozí nebo odchozí tok je obsluhován jedinou zónou v oblasti.  Vaše sdílená složka front-endu sepravila se stavem zóny.  Cesta k datům není ovlivněná chybami v jiných zónách, než kde byla zaručena. K vystavení IP adresy na jednu zónu dostupnosti můžete použít oblast front-endu.  
 
@@ -51,13 +51,7 @@ U veřejné Load Balancer front-endu přidejte parametr *Zones* do prostředku v
 
 U interního front-endu Load Balancer přidejte do konfigurace protokolu IP front-endu interní Load Balancer parametr *Zones* . Oblast front-end způsobí, že Load Balancer garantuje IP adresu v podsíti s konkrétní zónou.
 
-### <a name="cross-zone-load-balancing"></a>Vyrovnávání zatížení mezi zónami
-
-Vyrovnávání zatížení mezi zónami je schopnost Load Balancer získat přístup ke koncovému bodu back-endu v libovolné zóně a nezávisle na front-endu a zonality.  Jakékoli pravidlo vyrovnávání zatížení může cílit na instanci back-endu v jakékoli zóně dostupnosti nebo regionálních instancích.
-
-Musíte se postarat o vytvoření scénáře způsobem, který vyjádří zóny dostupnosti. Například je třeba zaručit nasazení virtuálních počítačů v rámci jedné nebo více zón a v oblasti front-endu a back-endu na stejné zóně.  Pokud jste provedli zóny pro různé oblasti dostupnosti jenom s využitím oblastí, bude scénář fungovat, ale nemusí mít jasný režim selhání s ohledem na zóny dostupnosti. 
-
-### <a name="backend"></a>Back-end
+## <a name="backend"></a>Back-end
 
 Load Balancer funguje s instancemi virtuálních počítačů.  Můžou to být samostatné, skupiny dostupnosti nebo sady škálování virtuálních počítačů.  Každá instance virtuálního počítače v jedné virtuální síti může být součástí fondu back-endu bez ohledu na to, jestli je nebo není zaručená zóna nebo která zóna byla zaručena.
 
@@ -65,13 +59,13 @@ Pokud chcete zařadit a zaručovat front-end a back-end s jedinou zónou, umíst
 
 Pokud chcete virtuálním počítačům vymezit více zón, jednoduše umístěte virtuální počítače z několika zón do stejného back-end fondu.  Při používání virtuálních počítačů Virtual Machine Scale Sets můžete do stejného back-endu umístit jednu nebo víc sad škálování virtuálního počítače.  Všechny tyto sady škálování virtuálních počítačů můžou být v jedné nebo několika zónách.
 
-### <a name="outbound-connections"></a>Odchozí připojení
+## <a name="outbound-connections"></a>Odchozí připojení
 
 Stejné vlastnosti – redundantní a ploché vlastnosti se vztahují na [odchozí připojení](load-balancer-outbound-connections.md).  Veřejná IP adresa redundantní v zóně používaná pro odchozí připojení je obsluhována všemi zónami. Veřejná IP adresa oblasti je dodávána pouze v zóně, ve které je zaručena.  Odchozí připojení port SNAT zachová selhání zóny a váš scénář bude i nadále poskytovat odchozí připojení SNAT, pokud to nebude mít vliv na selhání zóny.  To může vyžadovat přenos nebo pro připojení, která se mají znovu zřídit pro scénáře redundantní v zóně, pokud byl tok obsluhován ovlivněnou zónou.  Toky v jiných zónách, než jsou ovlivněné zóny, to neovlivní.
 
 Algoritmus předalokace portu SNAT je stejný jako u zóny dostupnosti nebo bez ní.
 
-### <a name="health-probes"></a>Sondy stavu
+## <a name="health-probes"></a>Sondy stavu
 
 Vaše existující definice sondy stavu zůstávají, protože jsou bez zón dostupnosti.  Rozšířili jsme ale model stavu na úrovni infrastruktury. 
 

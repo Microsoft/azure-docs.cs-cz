@@ -1,50 +1,54 @@
 ---
-title: Exportujte konfiguraci zřizování a vraťte se do známého funkčního stavu pro zotavení po havárii. | Microsoft Docs
+title: Exportujte konfiguraci zřizování a vraťte se do známého funkčního stavu pro zotavení po havárii.
 description: Naučte se exportovat vaši konfiguraci zřizování a vrátit se do známého stavu pro zotavení po havárii.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: app-provisioning
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051316"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593756"
 ---
-# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Exportujte konfiguraci zřizování a vraťte se do známého funkčního stavu.
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Postupy: Export konfigurace zřizování a návrat do známého funkčního stavu
+
+V tomto článku se dozvíte, jak:
+
+- Exportovat a importovat konfiguraci zřizování z Azure Portal
+- Export a import konfigurace zřizování pomocí rozhraní Microsoft Graph API
 
 ## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Exportovat a importovat konfiguraci zřizování z Azure Portal
 
-### <a name="how-can-i-export-my-provisioning-configuration"></a>Jak můžu Exportovat konfiguraci zřizování?
+### <a name="export-your-provisioning-configuration"></a>Exportujte konfiguraci zřizování.
+
 Export konfigurace:
+
 1. V [Azure Portal](https://portal.azure.com/)v levém navigačním panelu vyberte možnost **Azure Active Directory**.
-2. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace** a zvolte aplikaci.
-3. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů**a pak na **Zobrazit pokročilé možnosti**a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat. 
-5. Kliknutím na stáhnout na panelu příkazů v horní části stránky Stáhněte své schéma.
+1. V podokně **Azure Active Directory** vyberte možnost **podnikové aplikace** a zvolte aplikaci.
+1. V levém navigačním podokně vyberte **zřizování**. Na stránce konfigurace zřizování klikněte na **mapování atributů**a pak na **Zobrazit pokročilé možnosti**a nakonec **Zkontrolujte schéma**. Tím přejdete do editoru schémat.
+1. Kliknutím na stáhnout na panelu příkazů v horní části stránky Stáhněte své schéma.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Zotavení po havárii – vracení zpátky do známého funkčního stavu
-Export a uložení konfigurace vám umožní vrátit se zpátky k předchozí verzi vaší konfigurace. Doporučujeme vám Exportovat konfiguraci zřizování a uložit ji pro pozdější použití, kdykoli uděláte změnu mapování atributů nebo filtrování rozsahu. Vše, co potřebujete udělat, je otevřít soubor JSON, který jste stáhli v předchozích krocích. Zkopírujte celý obsah souboru JSON, nahraďte celý obsah datové části JSON v editoru schémat a pak ho uložte. Pokud je aktivní cyklus zřizování, bude dokončen a další cyklus bude používat aktualizované schéma. Dalším cyklem bude také počáteční cyklus, který znovu vyhodnotí každého uživatele a skupinu na základě nové konfigurace. Při návratu do předchozí konfigurace Vezměte v úvahu následující:
-* Uživatelé se znovu vyhodnotí a určí, jestli mají být v oboru. Pokud se změní rozsahy filtrů, uživatel není v oboru, protože už žádné další budou zakázané. I když se jedná o požadované chování ve většině případů, existují situace, kdy byste to měli chtít zabránit, a můžete použít funkci [Přeskočit z rozsahu odstranění](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) . 
-* Změna konfigurace zřizování restartuje službu a aktivuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
 
+Export a uložení konfigurace vám umožní vrátit se zpátky k předchozí verzi vaší konfigurace. Doporučujeme vám Exportovat konfiguraci zřizování a uložit ji pro pozdější použití, kdykoli uděláte změnu mapování atributů nebo filtrování rozsahu. Vše, co potřebujete udělat, je otevřít soubor JSON, který jste stáhli v předchozích krocích. Zkopírujte celý obsah souboru JSON, nahraďte celý obsah datové části JSON v editoru schémat a pak ho uložte. Pokud je aktivní cyklus zřizování, bude dokončen a další cyklus bude používat aktualizované schéma. Dalším cyklem bude také počáteční cyklus, který znovu vyhodnotí každého uživatele a skupinu na základě nové konfigurace. Při návratu do předchozí konfigurace Vezměte v úvahu následující:
+
+- Uživatelé se znovu vyhodnotí a určí, jestli mají být v oboru. Pokud se změní rozsahy filtrů, uživatel není v oboru, protože už žádné další budou zakázané. I když se jedná o požadované chování ve většině případů, existují situace, kdy byste to měli chtít zabránit, a můžete použít funkci [Přeskočit z rozsahu odstranění](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) . 
+- Změna konfigurace zřizování restartuje službu a aktivuje [počáteční cyklus](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Export a import konfigurace zřizování pomocí rozhraní Microsoft Graph API
-Pomocí rozhraní Microsoft Graph API a Průzkumníka Microsoft Graph můžete exportovat mapování atributů zřizování uživatelů a schéma do souboru JSON a naimportovat ho zpátky do Azure AD. Můžete také použít kroky zaznamenané tady a vytvořit zálohu konfigurace zřizování. 
+
+Pomocí rozhraní Microsoft Graph API a Průzkumníka Microsoft Graph můžete exportovat mapování atributů zřizování uživatelů a schéma do souboru JSON a naimportovat ho zpátky do Azure AD. Můžete také použít kroky zaznamenané tady a vytvořit zálohu konfigurace zřizování.
 
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Krok 1: načtení ID objektu zabezpečení zřizování App Service (ID objektu)
 
-1. Spusťte [Azure Portal](https://portal.azure.com)a přejděte do části vlastnosti vaší aplikace zřizování. Pokud například chcete exportovat pracovní *den do mapování aplikace pro zřizování uživatelů služby AD* , přejděte do části vlastnosti této aplikace. 
+1. Spusťte [Azure Portal](https://portal.azure.com)a přejděte do části vlastnosti vaší aplikace zřizování. Pokud například chcete exportovat pracovní *den do mapování aplikace pro zřizování uživatelů služby AD* , přejděte do části vlastnosti této aplikace.
 1. V části vlastnosti vaší aplikace pro zřizování Zkopírujte hodnotu identifikátoru GUID přidruženou k poli *ID objektu* . Tato hodnota se také označuje jako **ServicePrincipalId** vaší aplikace a bude se používat v operacích v Průzkumníkovi Microsoft Graph.
 
    ![ID objektu App Service Workday](./media/export-import-provisioning-configuration/wd_export_01.png)
@@ -99,4 +103,4 @@ Na kartě hlavičky žádosti přidejte atribut záhlaví Content-Type s hodnoto
 
    [![Hlavičky požadavku](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-Kliknutím na tlačítko spustit dotaz importujte nové schéma.
+Vyberte **Spustit dotaz** pro import nového schématu.

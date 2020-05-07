@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202555"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801480"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Vytvoření aplikace v Node. js v Azure
 
@@ -31,7 +31,7 @@ Po instalaci rozšíření se přihlaste ke svému účtu Azure. V řádku aktiv
 
 ![Přihlaste se k Azure](./media/quickstart-nodejs/sign-in.png)
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud se zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"**, může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraní API Azure. Pomocí `HTTP_PROXY` použijte `HTTPS_PROXY` `export`konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu.
 
@@ -134,7 +134,7 @@ V Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasa�
 
 Až se nasazení dokončí, vyberte **Procházet web** v příkazovém řádku a zobrazte svou čerstvou nasazenou webovou aplikaci.
 
-### <a name="troubleshooting"></a>Řešení potíží
+### <a name="troubleshooting"></a>Odstraňování potíží
 
 Pokud se zobrazí chyba **"nemáte oprávnění k zobrazení tohoto adresáře nebo stránky."**, aplikace se pravděpodobně nespustila správně. Přejděte k další části a podívejte se na výstup protokolu, který vyhledá a opraví chybu. Pokud ji nemůžete opravit, kontaktujte nás tak, že vyberete níže uvedené tlačítko **problému** . Rádi vám pomůžeme!
 
@@ -151,7 +151,7 @@ V této části se dozvíte, jak zobrazit (neboli "koncová") protokoly z běž�
 
 Najděte aplikaci v Průzkumníkovi **služby Azure App Service** , klikněte pravým tlačítkem na aplikaci a vyberte **Zobrazit protokoly streamování**.
 
-Po zobrazení výzvy vyberte možnost povolit protokolování a restartovat aplikaci. Po restartování aplikace se otevře okno VS Code výstup s připojením k datovému proudu protokolu.
+Otevře se okno VS Code výstup s připojením k datovému proudu protokolu.
 
 ![Zobrazit protokoly streamování](./media/quickstart-nodejs/view-logs.png)
 
