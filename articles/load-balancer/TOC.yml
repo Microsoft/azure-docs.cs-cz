@@ -4,6 +4,8 @@
   items:
     - name: Co je Azure Load Balancer?
       href: load-balancer-overview.md
+    - name: Nejčastější dotazy
+      href: load-balancer-faqs.md
 - name: Rychlý start
   items:
     - name: Vytvoření nástroje pro vyrovnávání zatížení – portál
@@ -40,6 +42,8 @@
       href: components.md
     - name: Koncepty
       href: concepts.md
+    - name: Skladové položky
+      href: skus.md
     - name: Monitorování stavu
       items:
         - name: Sondy stavu

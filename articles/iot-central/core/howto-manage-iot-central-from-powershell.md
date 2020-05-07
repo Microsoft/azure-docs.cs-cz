@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 42d853c9cf53c1c6921fbd1816ec2298c9c3583e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365533"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744981"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Správa řešení IoT Central z Azure PowerShellu
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -70,7 +70,7 @@ Skript nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplik
 |------------------|------------|
 |ResourceGroupName |Skupina prostředků, která obsahuje aplikaci. Tato skupina prostředků už musí existovat ve vašem předplatném. |
 |Umístění |Ve výchozím nastavení používá tato rutina umístění ze skupiny prostředků. V současné době můžete vytvořit aplikaci IoT Central v oblastech **Austrálie**, **Asie a Tichomoří**, **Evropa**, **USA**, **Spojené království**a **Japonsko** . |
-|Název              |Název aplikace v Azure Portal. |
+|Name              |Název aplikace v Azure Portal. |
 |Subdoména         |Subdoména v adrese URL aplikace V tomto příkladu je `https://mysubdomain.azureiotcentral.com`adresa URL aplikace. |
 |Skladová jednotka (SKU)               |V současné době můžete použít buď **ST1** nebo **ST2**. Viz [ceny za Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Šablona          | Šablona aplikace, která se má použít Další informace najdete v následující tabulce. |

@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537317"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801259"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -56,7 +56,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 **Počtu** | **Zobrazí**
 --- | ---
-**Datové disky virtuálních počítačů Azure** | Omezení 16 <br> Pokud se chcete zaregistrovat k privátní verzi Preview virtuálních počítačů s víc než 16 disky (až 32 disků), napište nám na AskAzureBackupTeam@microsoft.com.
+**Datové disky virtuálních počítačů Azure** | Omezení 16 <br> Pokud se chcete zaregistrovat do omezené verze Preview virtuálních počítačů s 16 disky (až 32 disků), napište nám naAskAzureBackupTeam@microsoft.com
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
 
 ### <a name="azure-vm-backup-options"></a>Možnosti zálohování virtuálních počítačů Azure
@@ -152,9 +152,9 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 | Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | Ne                                                           | –               |
-| SQL/SAP HANA          | Ne                                                           | –               |
-| BUŇK                    | Ne                                                           | –               |
+| Agent MARS/místní | No                                                           | –               |
+| SQL/SAP HANA          | No                                                           | –               |
+| BUŇK                    | No                                                           | –               |
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -1010,6 +1010,8 @@
         - name: Přehled zabezpečení
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Řízení přístupu
           items:
             - name: Přehled řízení přístupu

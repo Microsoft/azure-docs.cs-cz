@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113165"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786967"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -98,6 +98,9 @@ V tomto modelu se může každá větev, která je připojená k virtuálnímu r
 Větve se dají připojit ke službě Azure Virtual WAN pomocí okruhů ExpressRoute a připojení VPN typu Site-to-site. Větve můžete připojit k virtuálnímu rozbočovači WAN, který je v oblasti nejbližší k této větvi.
 
 Tato možnost umožňuje podnikům využít páteřní síť Azure pro připojení větví. I když je tato možnost k dispozici, měli byste zvážit výhody propojení větví přes Azure Virtual WAN vs. pomocí privátní sítě WAN.  
+
+> [!NOTE]
+> Zakázání připojení mezi větvemi ve virtuální síti WAN – virtuální síť WAN se dá nakonfigurovat tak, aby se zakázalo připojení mezi větvemi. Tento konfiguračním zablokuje šíření tras mezi sítěmi VPN (S2S a P2S) a připojenými weby Express Route. Tato konfigurace nebude mít vliv na směrování mezi virtuálními sítěmi a propogation a připojení VNet-to-VNet. Pokud chcete nakonfigurovat toto nastavení pomocí webu Azure Portal: v nabídce konfigurace virtuální sítě WAN vyberte nastavení: větev-do-větev – zakázáno. 
 
 ### <a name="remote-user-to-vnet-c"></a>Vzdálený uživatel – virtuální síť (c)
 

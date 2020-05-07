@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231658"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838820"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Podpora virtuálních počítačů 2. generace v Azure
 
@@ -38,6 +38,7 @@ Virtuální počítače 1. generace jsou podporovány všemi velikostmi virtuál
 * [Řada HB](../hb-series.md)
 * [Řada HC](../hc-series.md)
 * [Ls-series](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) a [Lsv2-Series](../lsv2-series.md)
+* [Řada M](../m-series.md)
 * [Mv2-Series](../mv2-series.md)<sup>1</sup>
 * Řady [NCv2-Series](../ncv2-series.md) a [NCv3-Series](../ncv3-series.md)
 * [Řada ND](../nd-series.md)
@@ -80,7 +81,7 @@ Azure v současné době nepodporuje některé funkce, které místní technolog
 | Funkce | 1. generace | 2. generace |
 |---------|--------------|--------------|
 | Boot             | PCAT                      | UEFI                               |
-| Řadiče disku | IDE – integrované vývojové prostředí                       | SCSI                               |
+| Řadiče disku | Integrované vývojové prostředí (IDE)                       | SCSI                               |
 | Velikost virtuálních počítačů         | Všechny velikosti virtuálních počítačů | Jenom virtuální počítače, které podporují Premium Storage |
 
 ### <a name="generation-1-vs-generation-2-capabilities"></a>Generace 1 vs. generace 2 – možnosti

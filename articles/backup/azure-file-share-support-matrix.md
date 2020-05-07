@@ -3,12 +3,12 @@ title: Matice podpory pro zálohování sdílených složek Azure
 description: Obsahuje souhrn nastavení podpory a omezení při zálohování sdílených složek Azure.
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: 3f154f92d8d094654301bc319003adc22299017b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: b5bfae9454464bc8d11cef3bd346861e13822046
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207985"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838565"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -18,9 +18,9 @@ ms.locfileid: "82207985"
 
 Zálohování sdílených složek Azure je dostupné v následujících zeměpisných oblastech:
 
-| Oblasti GA | Podporované oblasti, ale ne GA                                                      |
+| Oblasti GA | Podporované oblasti (jako součást verze Preview), ale zatím ne GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Austrálie – jihovýchod (pomocného mechanismu), Kanada – střed (CNC), Středozápadní USA (WCUS), Západní USA 2 (WUS 2), Indie – jih (INS), Střed USA – sever (NCUS), Japonsko – východ (JPE), Brazílie – jih (BRS), Jižní Východní Asie (moře), Švýcarsko – západ (SZW), Spojené arabské emiráty Central (ACL), Norsko – východ (NDOPORUČUJEME), Indie – západ (INW), Austrálie – střed                                                  |Austrálie – východ (AE), Kanada – východ (CE), Východní Asie (EA), Východní USA (EUS), Východní USA 2 (EUS2), Japonsko – západ (JPW), Indie – střed (INC), Korea – střed (KRC), Korea – jih (KRS), Severní Evropa (NE), Střed USA – jih (SCUS), Velká Británie – jih (UKS), Velká Británie – západ (UKW), Západní Evropa (WE), západní USA (WUS), US Gov – Arizona (UGA), US gov – Texas (UGT), US gov – Virginie (UGV), Jižní Afrika sever (SAN) , Spojené arabské emiráty severní (MOČOVINy), Francie – střed (FRC), Německo – sever (GN), Německo – středozápad (GWC), Jižní Afrika – západ (pily), Norsko – západ (NWW), Švýcarsko – sever (SZN), Střed USA (kapacitní jednotky)           |
+| Austrálie – jihovýchod (pomocného mechanismu), Kanada – střed (CNC), Středozápadní USA (WCUS), Západní USA 2 (WUS 2), Indie – jih (in), Střed USA – sever (NCUS), Japonsko – východ (JPE), Brazílie – jih (BRS), Jižní Východní Asie (moře), Švýcarsko – západ (SZW), Spojené arabské emiráty Central (UAC), Norsko – východ (nDoporučujeme), Indie – západ (INW), Austrálie – střed (ACL), Korea – střed (KRC), Japonsko – západ (JPW), Jižní Afrika Velká Británie – západ , Korea – jih (KRS), Německo – sever (GN), Norsko – západ (NWW), Jižní Afrika – západ (SZN), Německo – Středozápad (GWC) Švýcarsko – sever, Spojené arabské emiráty sever (MOČOVINa), Francie – střed (FRC), Indie – střed (INC), Kanada – východ (CNE), Východní Asie (EA), Austrálie – východ (AE), Střed USA (kapacitní jednotky), Západní USA (WUS)                                                  |  Východní USA (EUS), Východní USA 2 (EUS2), Severní Evropa (NE), Střed USA – jih (SCUS), Velká Británie – jih (UKS), Západní Evropa (My), US gov – Arizona (UGA), US Gov – Texas (UGT), US gov – Virginie (UGV)           |
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 

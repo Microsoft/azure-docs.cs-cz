@@ -10,6 +10,9 @@
     - name: Index
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: Koncepty
   items:
     - name: Správa delegovaných prostředků Azure
@@ -33,6 +36,9 @@
     - name: Azure Lighthouse v podnikových scénářích
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse a spravované aplikace Azure
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: Návody
   items:
     - name: Nasazení zákazníků do správy delegovaných prostředků Azure

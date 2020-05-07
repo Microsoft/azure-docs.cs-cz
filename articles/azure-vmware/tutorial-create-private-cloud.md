@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: f6dab0dd56adae8b98137354896412e447931c69
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740140"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838789"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
 
@@ -28,6 +28,16 @@ V tomto kurzu se naučíte:
 - Odpovídající práva správce a oprávnění k vytvoření privátního cloudu.
 - Ujistěte se, že máte nakonfigurované příslušné síťové služby, jak je popsáno v tématu [kurz: kontrolní seznam sítě](tutorial-network-checklist.md).
 
+## <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
+
+Aby bylo možné používat řešení Azure VMWare, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
+
+```azurecli-interactive
+az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+```
+
+Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
+
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -36,9 +46,9 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-portal) nebo pomocí [Azure CLI](#azure-cli).
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Azure Portal
 
-V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `vmcp`a v seznamu vyberte **VMCP-Private Cloud** . V okně **VMCP – privátní cloud** vyberte **vytvořit** .
+V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution`a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
 
 Na kartě **základy** zadejte hodnoty polí. V následující tabulce je uveden podrobný seznam vlastností.
 
@@ -70,14 +80,6 @@ Alternativně můžete pomocí rozhraní příkazového řádku Azure vytvořit 
 Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít k provedení kroků v tomto článku. Má předinstalované obecné nástroje Azure, které jsou nakonfigurované pro použití s vaším účtem.
 
 Pokud chcete otevřít Cloud Shell, vyberte položku **Vyzkoušet** v pravém horním rohu bloku kódu. Cloud Shell můžete spustit také na samostatné kartě prohlížeče na adrese https://shell.azure.com/bash. Vyberte **Kopírovat** pro zkopírování bloků kódu, vložení do Cloud Shell a stisknutím klávesy **ENTER** ji spusťte.
-
-#### <a name="register-the-resource-provider"></a>Registrace poskytovatele prostředků
-
-Aby bylo možné používat řešení Azure VMWare, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
-
-```azurecli-interactive
-az extension add --name vmware
-```
 
 #### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 

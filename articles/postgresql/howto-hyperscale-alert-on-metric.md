@@ -4,14 +4,15 @@ description: Tento článek popisuje, jak nakonfigurovat a přistupovat k výstr
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
-ms.openlocfilehash: 80c061f72ce827df8f8354a5881c032c6f874fe1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8bf887b8d86131e0b358056fc1744a8d144be3fc
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063146"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584110"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Použití Azure Portal k nastavení výstrah pro metriky pro Azure Database for PostgreSQL – Citus (škálování)
 
@@ -25,7 +26,7 @@ Můžete nakonfigurovat výstrahu, která provede následující akce při trigg
 * Zavolejte Webhook.
 
 Můžete nakonfigurovat a získat informace o pravidlech výstrah pomocí:
-* [portál Azure](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Rozhraní REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 

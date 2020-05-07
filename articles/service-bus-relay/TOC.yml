@@ -8,11 +8,11 @@
   items:
     - name: Hybridní připojení
       items:
-        - name: Odesílání a příjem zpráv – webové sokety .NET
+        - name: Odesílání a příjem zpráv – .NET WebSockets
           href: relay-hybrid-connections-dotnet-get-started.md
         - name: Odesílání a příjem zpráv – .NET HTTP
           href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-        - name: Odesílání a příjem zpráv – webové sokety .NET
+        - name: Odesílání a příjem zpráv – Node WebSockets
           href: relay-hybrid-connections-node-get-started.md
         - name: Odesílání a příjem zpráv – Node HTTP
           href: relay-hybrid-connections-http-requests-node-get-started.md
@@ -24,7 +24,7 @@
           href: service-bus-relay-tutorial.md
         - name: Zveřejnění místní služby WCF REST pro klienta mimo vaši síť
           href: service-bus-relay-rest-tutorial.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Hybridní připojení
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: Spravovat
+    - name: Správa a monitorování
       items:
         - name: Monitorování služby Azure Relay s využitím služby Azure Monitor
           href: relay-metrics-azure-monitor.md
+        - name: Nastavení diagnostických protokolů
+          href: diagnostic-logs.md
 - name: Referenční informace
   items:
     - name: .NET
@@ -87,7 +89,7 @@
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Ukázky
+    - name: ukázky
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

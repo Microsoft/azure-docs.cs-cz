@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 05/08/2018
-ms.openlocfilehash: 1f3a24afb2238c2448cb19b3889467a1b1819724
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 03fdbf6979db3249d1322a3025b48de81b953ae1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460541"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856212"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Team Analytics a prostředí AI založené na Data Science Virtual Machine 
 [Data Science Virtual Machine](overview.md) (DSVM) poskytuje bohatý prostředí na platformě Azure s předem připraveným softwarem pro umělou Intelligence (AI) a analýzou dat.
@@ -43,7 +43,7 @@ Tato série poskytuje pokyny a ukazatele pro každé z předchozích témat. Nez
 * [Řízení přístupu na základě role](https://docs.microsoft.com/azure/role-based-access-control/overview)
 * [Nastavení zásad a vynucení](../../governance/policy/overview.md)
 * [Antimalware](https://docs.microsoft.com/azure/security/fundamentals/antimalware)
-* [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview.md)
+* [Šifrování](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption-overview)
 * [Zjišťování a řízení dat](https://docs.microsoft.com/azure/data-catalog/)
 
 A konečně [cetrum architektury Azure](https://docs.microsoft.com/azure/architecture/) poskytuje detailní ucelenou architekturu a modely pro sestavování a správu cloudové infrastruktury pro analýzu.

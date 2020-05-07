@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d14f31741147ebe497efbf47b077e41c31b36b7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff2a55d9eb7b5c0787c5327ea34338a7efb90da0
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82653278"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836563"
 ---
-|Název |Popis |Vliv (s) |Version |GitHubu |
+|Name |Popis |Vliv (s) |Verze |GitHubu |
 |---|---|---|---|---|
 |[Auditovat virtuální počítače s Windows, na kterých není ochrana před zneužitím v programu Windows Defender](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |Ochrana před zneužitím v programu Windows Defender pomáhá chránit před malwarem, který využívá zneužití k nainfikování zařízení a dvojstránky. Ochrana před zneužitím se skládá z několika rizik, která se dají použít buď pro operační systém, nebo pro jednotlivé aplikace. Tato zásada vyžaduje rozšíření Azure Policy pro Windows. Podrobnosti najdete na adrese [https://aks.ms/gcpol](https://aks.ms/gcpol). |AuditIfNotExists, zakázáno |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
 |[Nakonfigurujte časové pásmo na počítačích s Windows.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Tato zásada vytvoří přiřazení konfigurace hosta pro nastavení zadaného časového pásma na virtuálních počítačích s Windows. |deployIfNotExists |1.0.0 – Preview |[Odkaz](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |
