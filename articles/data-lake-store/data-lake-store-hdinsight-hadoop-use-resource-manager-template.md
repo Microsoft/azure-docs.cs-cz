@@ -1,23 +1,17 @@
 ---
-title: Použití šablon Azure k vytvoření HDInsight s Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Použití šablon Azure Resource Manager k vytváření a používání clusterů HDInsight s Azure Data Lake Storage Gen1
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: Šablona – cluster HDInsight s Data Lake Storage Gen1
+description: Pomocí Azure Resource Manager šablon můžete vytvářet a používat clustery Azure HDInsight s Azure Data Lake Storage Gen1.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161372"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692025"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Vytvoření clusteru HDInsight s Azure Data Lake Storage Gen1 pomocí šablony Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "66161372"
 
 Naučte se, jak pomocí Azure PowerShell nakonfigurovat cluster HDInsight s Azure Data Lake Storage Gen1 **jako další úložiště**.
 
-U podporovaných typů clusterů se Data Lake Storage Gen1 dá použít jako výchozí úložiště nebo další účet úložiště. Pokud se Data Lake Storage Gen1 používá jako další úložiště, bude se výchozí účet úložiště pro clustery pořád naAzure Storage objekty BLOB (WASB) a soubory související s clusterem (například protokoly atd.) se zapisují do výchozího úložiště, zatímco data, která chcete zpracovat, můžou být uložená v účtu Data Lake Storage Gen1. Použití Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na výkon ani možnost čtení a zápisu do úložiště z clusteru.
+U podporovaných typů clusterů se Data Lake Storage Gen1 dá použít jako výchozí úložiště nebo jako další účet úložiště. Pokud se Data Lake Storage Gen1 používá jako další úložiště, bude se výchozí účet úložiště pro clustery pořád naAzure Storage objekty BLOB (WASB) a soubory související s clusterem (například protokoly atd.) se zapisují do výchozího úložiště, zatímco data, která chcete zpracovat, můžou být uložená v účtu Data Lake Storage Gen1. Použití Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na výkon ani možnost čtení a zápisu do úložiště z clusteru.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Použití Data Lake Storage Gen1 pro úložiště clusteru HDInsight
 
@@ -40,7 +34,7 @@ Tady jsou některé důležité informace pro používání služby HDInsight s 
 
 * Možnost vytvářet clustery HDInsight s přístupem k Data Lake Storage Gen1, protože další úložiště je k dispozici pro HDInsight verze 3,2, 3,4, 3,5 a 3,6.
 
-V tomto článku zřídíme cluster Hadoop s Data Lake Storage Gen1 jako další úložiště. Pokyny, jak vytvořit cluster Hadoop s Data Lake Storage Gen1 jako výchozí úložiště, najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
+V tomto článku zřídíme cluster Hadoop s Data Lake Storage Gen1 jako další úložiště. Pokyny k vytvoření clusteru Hadoop s Data Lake Storage Gen1 jako výchozího úložiště najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -88,7 +82,7 @@ Abyste měli jistotu, že jsou ukázková data dostupná z clusteru HDInsight, m
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Spuštění testovacích úloh v clusteru HDInsight pro použití Data Lake Storage Gen1
 Po nakonfigurování clusteru HDInsight můžete spustit testovací úlohy v clusteru, abyste otestovali, že cluster HDInsight má přístup k Data Lake Storage Gen1. Uděláte to tak, že spustíte ukázkovou úlohu podregistru, která vytvoří tabulku pomocí ukázkových dat, která jste předtím nahráli do svého účtu Data Lake Storage Gen1.
 
-V této části provedete SSH na cluster HDInsight Linux a spustíte ukázkový dotaz na podregistr. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části provedete SSH do clusteru HDInsight Linux a spustíte ukázkový dotaz na podregistr. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -124,7 +118,7 @@ Další informace o používání výstupu najdete v tématu [Použití SSH se s
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Přístup k Data Lake Storage Gen1 pomocí příkazů HDFS
 Jakmile nakonfigurujete cluster HDInsight pro použití Data Lake Storage Gen1, můžete k přístupu do Storu použít příkazy prostředí HDFS.
 
-V této části provedete SSH na cluster HDInsight Linux a spustíte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+V této části provedete SSH do clusteru HDInsight Linux a spustíte příkazy HDFS. Pokud používáte klienta se systémem Windows, doporučujeme použít výstup, **který je možné**stáhnout z [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 Další informace o používání výstupu najdete v tématu [Použití SSH se systémem Linux Hadoop ve službě HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
