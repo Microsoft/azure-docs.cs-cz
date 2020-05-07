@@ -1,6 +1,6 @@
 ---
-title: Předdefinované role Azure pro Azure RBAC
-description: Tento článek popisuje předdefinované role Azure pro řízení přístupu na základě role (RBAC) v Azure. Zobrazuje seznam akcí, NotActions, dataactions a NotDataActions.
+title: Předdefinované role Azure – Azure RBAC
+description: Tento článek popisuje předdefinované role Azure pro řízení přístupu na základě role (Azure RBAC). Zobrazuje seznam akcí, NotActions, dataactions a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,26 +11,26 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 78e5c219d83198f3bf4c329c33018caad2b0cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194920"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838735"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
-[Řízení přístupu na základě role (RBAC) v Azure](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
+[Řízení přístupu na základě role v Azure (Azure RBAC)](overview.md) má několik předdefinovaných rolí Azure, které můžete přiřadit uživatelům, skupinám, objektům služby a spravovaným identitám. Přiřazení rolí představují způsob, jakým ovládáte přístup k prostředkům Azure. Pokud předdefinované role nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní [vlastní role Azure](custom-roles.md).
 
-V tomto článku jsou uvedené předdefinované role pro prostředky Azure, které se vždycky vyvíjejí. K získání nejnovějších rolí použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud hledáte role správce pro Azure Active Directory (Azure AD), přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+V tomto článku jsou uvedené předdefinované role Azure, které se vždy vyvíjející. K získání nejnovějších rolí použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud hledáte role správce pro Azure Active Directory (Azure AD), přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-## <a name="all"></a>Všechny
+## <a name="all"></a>Vše
 
-Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Pokud `Actions`chcete zobrazit seznam,, a `NotActions` `DataActions` `NotDataActions` pro každou roli, vyberte název role. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí pro prostředky Azure](role-definitions.md).
+Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Pokud `Actions`chcete zobrazit seznam,, a `NotActions` `DataActions` `NotDataActions` pro každou roli, vyberte název role. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
@@ -81,7 +81,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Odesílatel zprávy s daty ve frontě úložiště](#storage-queue-data-message-sender) | Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Čtečka dat fronty úložiště](#storage-queue-data-reader) | Čtení a výpis Azure Storage front a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Čtečka dat Azure Maps (Preview)](#azure-maps-data-reader-preview) | Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Čtečka dat Azure Maps](#azure-maps-data-reader) | Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Přispěvatel Search Service](#search-service-contributor) | Umožňuje spravovat služby vyhledávání, ale ne přístup k nim. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Přispěvatel webového plánu](#web-plan-contributor) | Umožňuje spravovat webové plány pro weby, ale ne přístup k nim. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Přispěvatel webu](#website-contributor) | Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim. | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -147,10 +147,10 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Čtečka Sentinel Azure](#azure-sentinel-reader) | Čtečka Sentinel Azure | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Respondér služby Azure Sentinel](#azure-sentinel-responder) | Respondér služby Azure Sentinel | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Přispěvatel Key Vault](#key-vault-contributor) | Umožňuje spravovat trezory klíčů, ale ne přístup k nim. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Správce zabezpečení](#security-admin) | Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Správce zabezpečení](#security-admin) | Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Přispěvatel vyhodnocení zabezpečení](#security-assessment-contributor) | Umožňuje doručovat hodnocení do Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Správce zabezpečení (starší verze)](#security-manager-legacy) | Toto je starší role. Místo toho prosím použijte Správce zabezpečení. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Čtecí modul zabezpečení](#security-reader) | Může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Čtecí modul zabezpečení](#security-reader) | Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [Uživatel DevTest Labs](#devtest-labs-user) | Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve vašem Azure DevTest Labs. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Autor testovacího prostředí](#lab-creator) | Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci účtů Azure Lab. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
@@ -2543,7 +2543,7 @@ Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou p
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Čtečka dat Azure Maps (Preview)
+### <a name="azure-maps-data-reader"></a>Čtečka dat Azure Maps
 
 Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps.
 
@@ -2555,7 +2555,7 @@ Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Maps/Accounts/data/Read | Udělí datům přístup pro čtení účtu Maps. |
+> | Microsoft. Maps/Accounts/*/Read |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2572,12 +2572,12 @@ Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps.
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5710,7 +5710,7 @@ Umožňuje spravovat trezory klíčů, ale ne přístup k nim.
 
 ### <a name="security-admin"></a>Správce zabezpečení
 
-Může zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazit výstrahy a doporučení, zavřít výstrahy a doporučení.
+Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5868,7 +5868,7 @@ Toto je starší role. Místo toho prosím použijte Správce zabezpečení.
 
 ### <a name="security-reader"></a>Čtecí modul zabezpečení
 
-Může zobrazit doporučení a výstrahy, zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, ale nemůže provádět změny.
+Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6217,6 +6217,9 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 > | Microsoft. Insights/scheduledqueryrules/* |  |
 > | Microsoft. Insights/webtests/* | Vytváření a správa webových testů Insights |
 > | Microsoft. Insights/sešity/* |  |
+> | Microsoft. Insights/privateLinkScopes/* |  |
+> | Microsoft. Insights/privateLinkScopeOperationStatuses/* |  |
+> | Microsoft. OperationalInsights/pracovní prostory/zápis | Vytvoří nový pracovní prostor nebo vytvoří odkaz na existující pracovní prostor tím, že mu poskytne ID zákazníka z existujícího pracovního prostoru. |
 > | Microsoft. OperationalInsights/pracovní prostory/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení, zápis a odstranění. |
 > | Microsoft. OperationalInsights/pracovní prostory/savedSearches/* | Čtení, zápis a odstraňování uložených hledání Log Analytics. |
 > | Microsoft. OperationalInsights/pracovní prostory/hledání/akce | Spustí vyhledávací dotaz. |
@@ -6263,6 +6266,9 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",
