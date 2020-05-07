@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083523"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838718"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Osvědčené postupy pro výběr ID časové řady
 
@@ -27,6 +27,7 @@ Výběr vhodného ID časové řady je kritický. Výběr ID časové řady je n
 
 > [!IMPORTANT]
 > ID časových řad:
+>
 > * Vlastnost rozlišuje *velká a malá* písmena: písmena a znaky jsou používány v hledání, porovnávání, aktualizacích a při dělení.
 > * *Neproměnlivá* vlastnost: po vytvoření ji nelze změnit.
 
@@ -56,7 +57,7 @@ Následující scénáře popisují výběr více než jedné vlastnosti klíče
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>Příklad 2: ID časové řady se složeným klíčem
 
-* Vyžadujete, aby více vlastností bylo v rámci stejného loďstva prostředků jedinečné. 
+* Vyžadujete, aby více vlastností bylo v rámci stejného loďstva prostředků jedinečné.
 * Jste výrobcem inteligentních budov a nasadili snímače v každé místnosti. V každé místnosti jsou obvykle stejné hodnoty pro **sensorId**. Příklady jsou **sensor1**, **sensor2**a **sensor3**.
 * Vaše budova má překrývající se čísla podlah a místností napříč lokalitami ve vlastnosti **flrRm**. Tato čísla mají hodnoty jako **1a**, **2b**a **3a**.
 * Máte vlastnost, **umístění**, která obsahuje hodnoty, jako je například **Redmond**, **Barceloně**a **Tokio**. Chcete-li vytvořit jedinečnost, určete následující tři vlastnosti jako klíče ID časové řady: **sensorId**, **flrRm**a **Location**.
@@ -72,7 +73,7 @@ Příklad nezpracované události:
 }
 ```
 
-V Azure Portal pak můžete složený klíč zadat následujícím způsobem: 
+V Azure Portal pak můžete složený klíč zadat následujícím způsobem:
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

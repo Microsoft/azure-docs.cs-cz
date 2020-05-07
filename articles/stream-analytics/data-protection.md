@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299392"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857282"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Ochrana dat v Azure Stream Analytics 
 
@@ -52,7 +52,7 @@ Všechna privátní data, která jsou potřeba k uchování pomocí Stream Analy
 
 * Dotazy, které jste vytvořili, a jejich související konfigurace  
 
-* Uživatelem definované funkce 
+* Uživatelsky definované funkce 
 
 * Kontrolní body vyžadované modulem runtime Stream Analytics
 
@@ -61,6 +61,9 @@ Všechna privátní data, která jsou potřeba k uchování pomocí Stream Analy
 Ukládají se také podrobnosti o připojení vašich prostředků, které používá vaše úloha Stream Analytics. Zašifrujte svůj účet úložiště, abyste zabezpečili všechna vaše data. 
 
 Další informace o [nabídkách dodržování předpisů Microsoftu](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)vám pomůžou splnit vaše povinnosti dodržování předpisů v jakémkoli regulovaném odvětví nebo prostředí. 
+
+## <a name="known-issues"></a>Známé problémy
+K dispozici je známý problém, kdy úloha pomocí spravovaného klíče zákazníka spustí chyby při použití spravované identity k ověření pro jakékoli vstupy nebo výstupy. Oprava tohoto problému probíhá na a bude k dispozici v blízké budoucnosti. 
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 12/05/2019
-  ms.openlocfilehash: 46afc139f240b46b9512360e79411a5bc8b03ec4
-  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+  ms.openlocfilehash: 527b6a1c14d544a713e8eb3ef0ac1d3eeb340e93
+  ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/03/2020
-  ms.locfileid: "82732984"
+  ms.lasthandoff: 05/07/2020
+  ms.locfileid: "82883072"
 landingContent:
 - title: Informace o Load Balanceru
   linkLists:
@@ -94,3 +94,7 @@ landingContent:
       url: https://docs.microsoft.com/powershell/module/az.network/?view=azps-2.5.0#load_balancer
     - text: Azure CLI
       url: https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest
+    - text: Šablony ARM
+      url: https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers#quickstart-templates
+    - text: Nejčastější dotazy týkající se Load Balanceru
+      url: load-balancer-faqs.md

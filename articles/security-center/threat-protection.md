@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234073"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606887"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -34,7 +34,9 @@ Bez ohledu na to, jestli je výstraha vygenerovaná Security Center nebo přijat
 > [!TIP]
 > Pokud chcete povolit možnosti ochrany před hrozbami Security Center, musíte použít cenovou úroveň Standard u předplatného, které obsahuje příslušné úlohy.
 >
-> V současné době jsou v současnosti jedinou úlohou, kterou je možné povolit na úrovni prostředků, aby se chránily jednotlivé úlohy úložiště/SQL, je Security Center ochrana před hrozbami pro účty úložiště a PaaS servery SQL/MySQL/PG.
+> Ochranu před hrozbami pro **účty Azure Storage** můžete povolit na úrovni předplatného nebo na úrovni prostředků.
+> Ochranu před hrozbami pro **Azure SQL Database SQL servery** můžete povolit buď na úrovni předplatného, nebo na úrovni prostředků.
+> Ochranu před hrozbami pro **Azure Database for MariaDB/MySQL/PostgreSQL** můžete povolit jenom na úrovni prostředků.
 
 
 

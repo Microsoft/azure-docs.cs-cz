@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420870"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839058"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -39,7 +39,7 @@ Virtuální počítače Azure H-Series jsou navržené tak, aby poskytovaly výk
 
 ## <a name="rdma-capable-instances"></a>Instance s podporou RDMA
 
-Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr, A8 a c) funguje jako síťové rozhraní pro připojení vzdáleného přímého přístupu do paměti (RDMA). Vybráno [N-Series]https://docs.microsoft.com/azure/virtual-machines/nc-series) (velikosti určené pomocí r, například konfigurace NC24rs (NC24rs_v3, NC24rs_v2 a NC24r), jsou také podporující RDMA. Toto rozhraní je navíc ke standardním síťovým rozhraním Azure, které je dostupné v dalších velikostech virtuálních počítačů.
+Většina velikostí virtuálních počítačů HPC (HBv2, Get, HC, H16r, H16mr, A8 a c) funguje jako síťové rozhraní pro připojení vzdáleného přímého přístupu do paměti (RDMA). Vybrané velikosti [řady N-Series](https://docs.microsoft.com/azure/virtual-machines/nc-series) označené "r", jako jsou například konfigurace NC24rs (NC24rs_v3, NC24rs_v2 a NC24r), jsou také podporující technologii RDMA. Toto rozhraní je navíc ke standardním síťovým rozhraním Azure, které je dostupné v dalších velikostech virtuálních počítačů.
 
 Toto rozhraní umožňuje, aby instance s podporou RDMA komunikovaly přes síť InfiniBand (IB), která pracuje s sazbami HDR pro HBv2, EDR sazbami pro FDR, H16r a virtuálními počítači řady N-Series s podporou RDMA a s H16MR sazbami pro virtuální počítače A8 a c. Tyto možnosti RDMA můžou zvýšit škálovatelnost a výkon určitých aplikací MPI (Message Passing Interface). Další informace o rychlosti najdete v podrobnostech v tabulkách na této stránce.
 
@@ -92,7 +92,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 - **Virtuální počítače** – nasazení virtuálních počítačů HPC podporujících RDMA ve stejné sadě škálování nebo skupině dostupnosti (při použití modelu nasazení Azure Resource Manager). Pokud používáte model nasazení Classic, nasaďte virtuální počítače do stejné cloudové služby.
 
-- **Virtual Machine Scale Sets** – ve službě Virtual Machine Scale Sets (VMSS) Nezapomeňte toto nasazení omezit na jednu skupinu umístění. Například v šabloně Správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` Všimněte si, že maximální velikost VMSS, kterou `singlePlacementGroup` `true` je možné pomocí vlastnosti vymezit, je omezené na 100 virtuálních počítačů ve výchozím nastavení. Pokud vaše požadavky na škálování úlohy HPC jsou vyšší než 100 virtuálních počítačů v rámci jednoho tenanta VMSS, můžete požádat o zvýšení, [otevřít Online žádost o zákaznickou podporu](../azure-supportability/how-to-create-azure-support-request.md) bez poplatků.
+- **Virtual Machine Scale Sets** – ve virtuálním počítači škálované sadě (VMSS) nezapomeňte omezit nasazení na jednu skupinu umístění pro komunikaci InfiniBand v rámci VMSS. Například v šabloně Správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` Všimněte si, že maximální velikost VMSS, kterou `singlePlacementGroup` `true` je možné pomocí vlastnosti vymezit, je omezené na 100 virtuálních počítačů ve výchozím nastavení. Pokud vaše požadavky na škálování úlohy HPC jsou vyšší než 100 virtuálních počítačů v rámci jednoho tenanta VMSS, můžete požádat o zvýšení, [otevřít Online žádost o zákaznickou podporu](../azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Omezení počtu virtuálních počítačů v jednom VMSS se dá zvýšit na 300. Všimněte si, že při nasazování virtuálních počítačů pomocí skupin dostupnosti je maximální limit na 200 virtuálních počítačů na skupinu dostupnosti.
 
 - **MPI mezi virtuálními počítači** – Pokud se pro virtuální počítače (VM) vyžaduje RDMA (např. použití komunikace MPI), ujistěte se, že jsou virtuální počítače ve stejné sadě nebo skupině dostupnosti virtuálních počítačů.
 
@@ -129,6 +129,6 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si další informace o optimalizaci aplikace HPC pro Azure a některých příkladů v [úlohy HPC] (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- Další informace o optimalizaci aplikace HPC pro Azure a některých příkladů v [úlohách HPC](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 
 - Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
