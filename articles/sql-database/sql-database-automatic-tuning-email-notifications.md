@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f117f1518211680c4ea1f5ac51ecf0e44396a133
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768378"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856765"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
@@ -69,7 +69,7 @@ Dalším krokem je vytvoření Runbooku v Azure Automation, ve kterém se nachá
 Pomocí těchto kroků vytvořte novou Azure Automation sadu Runbook:
 
 1. Přihlaste se k účtu Azure Automation, který jste vytvořili v předchozím kroku.
-1. V podokně účet Automation klikněte na položku nabídky**Runbooky**na levé straně a vytvořte novou Azure Automation sadu Runbook pomocí skriptu PowerShellu. Další informace o vytváření runbooků automatizace najdete v tématu [Vytvoření nové sady Runbook](../automation/manage-runbooks.md#creating-a-runbook).
+1. V podokně účet Automation klikněte na položku nabídky**Runbooky**na levé straně a vytvořte novou Azure Automation sadu Runbook pomocí skriptu PowerShellu. Další informace o vytváření runbooků automatizace najdete v tématu [Vytvoření nové sady Runbook](../automation/manage-runbooks.md#create-a-runbook).
 1. Chcete-li přidat novou sadu Runbook, klikněte na položku nabídky "**+ Přidat sadu Runbook**" a pak klikněte na možnost**rychlé vytvoření – vytvořit nový Runbook**.
 1. V podokně Sada Runbook zadejte název Runbooku (pro účely tohoto příkladu se používá "**AutomaticTuningEmailAutomation**"), vyberte typ Runbooku jako **PowerShell** a napište popis této sady Runbook, abyste popsali její účel.
 1. Kliknutím na tlačítko **vytvořit** dokončete vytváření nového Runbooku.

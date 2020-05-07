@@ -1,21 +1,21 @@
 ---
 title: Data redundancy
 titleSuffix: Azure Storage
-description: Data v účtu Microsoft Azure Storage se replikují pro zajištění odolnosti a vysoké dostupnosti. Konfigurace redundance zahrnují místně redundantní úložiště (LRS), zónu – redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), geograficky redundantního úložiště (GZRS) (verze Preview) a geograficky redundantního úložiště s přístupem pro čtení (RA-GZRS) (verze Preview).
+description: Data v účtu Microsoft Azure Storage se replikují pro zajištění odolnosti a vysoké dostupnosti. Konfigurace redundance zahrnují místně redundantní úložiště (LRS), zónu – redundantní úložiště (ZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS), geograficky redundantní úložiště (GZRS) a geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 78f7c935e64276e7f4862dad966b99bff6bd246d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fff7c8865a59b916755a69a98448a1684da229
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81481943"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853326"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -38,7 +38,7 @@ Data v účtu Azure Storage jsou vždy replikována třikrát v primární oblas
 
 Místně redundantní úložiště (LRS) replikuje vaše data třikrát v jednom fyzickém umístění v primární oblasti. LRS poskytuje v průběhu daného roku alespoň 99,999999999% (11 devíti) odolnosti objektů.
 
-LRS je možnost redundance nejnižší ceny a nabízí minimální odolnost v porovnání s jinými možnostmi. LRS chrání vaše data proti racku serveru a selhání jednotky. Pokud ale v datovém centru dojde k havárii, jako je třeba požár nebo zahlcení, může dojít ke ztrátě nebo obnovení všech replik účtu úložiště pomocí LRS. Pro zmírnění tohoto rizika Společnost Microsoft doporučuje používat úložiště ZRS ( [Zone-redundantní](#zone-redundant-storage) úložiště), [geograficky redundantní úložiště](#geo-redundant-storage) (GRS) nebo [geograficky redundantní úložiště (verze Preview)](#geo-zone-redundant-storage-preview) (GZRS).
+LRS je možnost redundance nejnižší ceny a nabízí minimální odolnost v porovnání s jinými možnostmi. LRS chrání vaše data proti racku serveru a selhání jednotky. Pokud ale v datovém centru dojde k havárii, jako je třeba požár nebo zahlcení, může dojít ke ztrátě nebo obnovení všech replik účtu úložiště pomocí LRS. Pro zmírnění tohoto rizika Společnost Microsoft doporučuje používat úložiště ZRS ( [Zone-redundantní](#zone-redundant-storage) úložiště), [geograficky redundantní úložiště](#geo-redundant-storage) (GRS) nebo [geograficky redundantní úložiště](#geo-zone-redundant-storage) (GZRS).
 
 Požadavek na zápis do účtu úložiště, který používá LRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech tří replik.
 
@@ -55,7 +55,7 @@ Pomocí ZRS jsou vaše data stále přístupná pro operace čtení i zápisu i 
 
 Požadavek na zápis do účtu úložiště, který používá ZRS, proběhne synchronně. Operace zápisu se úspěšně vrátí až po zápisu dat do všech replik ve třech zónách dostupnosti.
 
-Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. ZRS poskytuje vynikající výkon, nízkou latenci a odolnost pro vaše data, pokud je dočasně nedostupná. ZRS sám o sobě však nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. V případě ochrany před místními katastrofami Microsoft doporučuje použití [geograficky redundantního úložiště](#geo-zone-redundant-storage-preview) (GZRS), které používá ZRS v primární oblasti a také geograficky replikuje vaše data do sekundární oblasti.
+Microsoft doporučuje používat ZRS v primární oblasti pro scénáře, které vyžadují konzistenci, odolnost a vysokou dostupnost. ZRS poskytuje vynikající výkon, nízkou latenci a odolnost pro vaše data, pokud je dočasně nedostupná. ZRS sám o sobě však nemusí chránit vaše data před regionální havárií, při které je trvale ovlivněno více zón. V případě ochrany před místními katastrofami Microsoft doporučuje použití [geograficky redundantního úložiště](#geo-zone-redundant-storage) (GZRS), které používá ZRS v primární oblasti a také geograficky replikuje vaše data do sekundární oblasti.
 
 Následující tabulka uvádí, které typy účtů úložiště podporují ZRS, ve kterých oblastech:
 
@@ -79,13 +79,13 @@ Při vytváření účtu úložiště vyberete primární oblast pro daný úče
 Azure Storage nabízí dvě možnosti pro kopírování dat do sekundární oblasti:
 
 - **Geograficky redundantní úložiště (GRS)** kopíruje data synchronně třikrát v jednom fyzickém umístění v primární oblasti pomocí LRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
-- **Geograficky redundantní úložiště (GZRS)** (Preview) kopíruje data synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí ZRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
+- **Geograficky redundantní úložiště (GZRS)** kopíruje data synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí ZRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
 
 Hlavním rozdílem mezi GRS a GZRS je způsob, jakým se data replikují v primární oblasti. V rámci sekundárního umístění jsou data vždy replikována třikrát třikrát pomocí LRS.
 
 Pomocí GRS nebo GZRS nejsou data v sekundárním umístění k dispozici pro přístup pro čtení nebo zápis, pokud nedojde k převzetí služeb při selhání sekundární oblastí. Pro přístup pro čtení k sekundárnímu umístění nakonfigurujte účet úložiště tak, aby používal geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS). Další informace najdete v tématu [přístup pro čtení k datům v sekundární oblasti](#read-access-to-data-in-the-secondary-region).
 
-Pokud primární oblast nebude k dispozici, můžete zvolit převzetí služeb při selhání sekundární oblastí (Preview). Po dokončení převzetí služeb při selhání se sekundární oblast přestanou primární oblastí a můžete znovu číst a zapisovat data. Další informace o zotavení po havárii a o tom, jak převzít služby při selhání do sekundární oblasti, najdete v tématu [zotavení po havárii a převzetí služeb při selhání účtu (Preview)](storage-disaster-recovery-guidance.md).
+Pokud primární oblast nebude k dispozici, můžete zvolit převzetí služeb při selhání sekundární oblastí. Po dokončení převzetí služeb při selhání se sekundární oblast přestanou primární oblastí a můžete znovu číst a zapisovat data. Další informace o zotavení po havárii a o tom, jak převzít služby při selhání do sekundární oblasti, najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](storage-disaster-recovery-guidance.md).
 
 > [!IMPORTANT]
 > Vzhledem k tomu, že data jsou replikována do sekundární oblasti asynchronně, selhání ovlivňující primární oblast může způsobit ztrátu dat, pokud nelze obnovit primární oblast. Interval mezi nejnovějšími zápisy do primární oblasti a posledním zápisem do sekundární oblasti se označuje jako cíl bodu obnovení (RPO). RPO označuje bod v čase, do kterého lze obnovit data. Azure Storage obvykle má RPO méně než 15 minut, ale v současné době není k dispozici žádná smlouva SLA, jak dlouho trvá replikace dat do sekundární oblasti.
@@ -96,32 +96,15 @@ Geograficky redundantní úložiště (GRS) kopíruje data synchronně třikrát
 
 Operace zápisu se nejdřív potvrdí do primárního umístění a replikuje se pomocí LRS. Aktualizace se pak asynchronně replikuje do sekundární oblasti. Když jsou data zapsána do sekundárního umístění, je také replikována v tomto umístění pomocí LRS.
 
-### <a name="geo-zone-redundant-storage-preview"></a>Geografické zóny – redundantní úložiště (Preview)
+### <a name="geo-zone-redundant-storage"></a>Geograficky zónově redundantní úložiště
 
-Geografická zóna – redundantní úložiště (GZRS) (Preview) kombinuje vysokou dostupnost poskytovanou redundancí napříč zónami dostupnosti s ochranou před místními výpadky, které nabízí geografická replikace. Data v účtu úložiště GZRS se zkopírují do tří [zón dostupnosti Azure](../../availability-zones/az-overview.md) v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních havárií. Microsoft doporučuje používat GZRS pro aplikace, které vyžadují maximální konzistenci, odolnost a dostupnost, vynikající výkon a odolnost proti zotavení po havárii.
+Geograficky redundantní úložiště (GZRS) kombinuje vysokou dostupnost poskytovanou redundancí napříč zónami dostupnosti s ochranou z regionálních výpadků poskytovaných geografickou replikací. Data v účtu úložiště GZRS se zkopírují do tří [zón dostupnosti Azure](../../availability-zones/az-overview.md) v primární oblasti a také se replikují do sekundární geografické oblasti pro ochranu z regionálních havárií. Microsoft doporučuje používat GZRS pro aplikace, které vyžadují maximální konzistenci, odolnost a dostupnost, vynikající výkon a odolnost proti zotavení po havárii.
 
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku.
 
-GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty.
+GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty. GZRS a RA-GZRS jsou dostupné ve všech oblastech Azure.
 
-GZRS a RA-GZRS jsou aktuálně k dispozici pro verzi Preview v následujících oblastech:
-
-- Jihovýchodní Asie
-- Evropa – sever
-- Evropa – západ
-- Japonsko – východ
-- Spojené království – jih
-- USA – východ
-- USA – východ 2
-- USA – střed
-- USA – západ 2
-
-Microsoft nadále povoluje GZRS a RA-GZRS v dalších oblastech Azure. Informace o podporovaných oblastech najdete na stránce [aktualizace služby Azure](https://azure.microsoft.com/updates/) .
-
-Informace o cenách verze Preview najdete v tématu ceny GZRS ve verzi Preview pro [objekty blob](https://azure.microsoft.com/pricing/details/storage/blobs), [soubory](https://azure.microsoft.com/pricing/details/storage/files/), [fronty](https://azure.microsoft.com/pricing/details/storage/queues/)a [tabulky](https://azure.microsoft.com/pricing/details/storage/tables/).
-
-> [!IMPORTANT]
-> Microsoft doporučuje použití funkcí verze Preview pro produkční úlohy.
+Informace o cenách najdete v podrobnostech o cenách [objektů BLOB](https://azure.microsoft.com/pricing/details/storage/blobs), [souborů](https://azure.microsoft.com/pricing/details/storage/files/), [front](https://azure.microsoft.com/pricing/details/storage/queues/)a [tabulek](https://azure.microsoft.com/pricing/details/storage/tables/).
 
 ## <a name="read-access-to-data-in-the-secondary-region"></a>Přístup pro čtení k datům v sekundární oblasti
 
@@ -129,7 +112,7 @@ Geograficky redundantní úložiště (s GRS nebo GZRS) replikuje vaše data do 
 
 ### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Návrh aplikací pro přístup pro čtení sekundárního
 
-Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. Sekundární oblast je vždy k dispozici pro přístup pro čtení, takže můžete otestovat aplikaci, abyste se ujistili, že se bude číst ze sekundárního v případě výpadku. Další informace o tom, jak navrhovat aplikace pro zajištění vysoké dostupnosti, najdete v tématu [navrhování vysoce dostupných aplikací pomocí geograficky redundantního úložiště s přístupem pro čtení](storage-designing-ha-apps-with-ragrs.md).
+Pokud je váš účet úložiště nakonfigurovaný pro přístup pro čtení do sekundární oblasti, můžete navrhovat aplikace pro bezproblémové přesunutí na čtení dat ze sekundární oblasti, pokud z nějakého důvodu dojde k nedostupnosti primární oblasti. Sekundární oblast je vždy k dispozici pro přístup pro čtení, takže můžete otestovat aplikaci, abyste se ujistili, že se bude číst ze sekundárního v případě výpadku. Další informace o tom, jak navrhovat aplikace pro zajištění vysoké dostupnosti, najdete v tématu [použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md).
 
 Když je povolený přístup pro čtení k sekundárnímu účtu, můžou se vaše data číst ze sekundárního koncového bodu i z primárního koncového bodu pro váš účet úložiště. Sekundární koncový bod připojí příponu *– sekundární* k názvu účtu. Pokud je `myaccount.blob.core.windows.net`například primárním koncovým bodem pro úložiště objektů blob, pak je `myaccount-secondary.blob.core.windows.net`sekundární koncový bod. Přístupové klíče účtu pro váš účet úložiště jsou u primárních i sekundárních koncových bodů stejné.
 
@@ -145,10 +128,10 @@ Můžete zadat dotaz na hodnotu vlastnosti **čas poslední synchronizace** pomo
 
 Následující tabulka ukazuje, jak jsou data odolná a k dispozici v daném scénáři v závislosti na tom, jaký typ redundance platí pro váš účet úložiště:
 
-| Scénář                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS (Preview)                              |
+| Scénář                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                  |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano                                  | Ano                                  |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano                                  | Ano                                  |
 | Dojde k výpadku v rámci oblasti                                                                                     | Ne                              | Ne                               | Ano                                  | Ano                                  |
 | Přístup pro čtení dat v sekundární oblasti, pokud primární oblast nebude k dispozici | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 | Procentuální hodnota odolnosti objektů v průběhu daného roku<sup>1</sup>                                          | alespoň 99,999999999% (11 9 's) | minimálně 99,9999999999% (12 9 's) | minimálně 99.99999999999999% (16 9) | minimálně 99.99999999999999% (16 9) |
@@ -160,7 +143,7 @@ Následující tabulka ukazuje, jak jsou data odolná a k dispozici v daném sc�
 
 <sup>2</sup> informace o typech účtů úložiště najdete v tématu [Přehled účtu úložiště](storage-account-overview.md).
 
-Všechna data pro všechny typy účtů úložiště a [všechny úrovně (včetně archivu)](../blobs/storage-blob-storage-tiers.md) se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory.
+Všechna data pro všechny typy účtů úložiště se zkopírují podle možnosti redundance pro účet úložiště. Zkopírují se objekty, mezi které patří objekty blob bloku, doplňovací objekty blob, objekty blob stránky, fronty, tabulky a soubory. Data na všech úrovních, včetně archivní úrovně, se zkopírují. Další informace o úrovních objektů BLOB najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](../blobs/storage-blob-storage-tiers.md).
 
 Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azure Storage ceny](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -175,5 +158,5 @@ Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantn
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)
-- [Návrh vysoce dostupných aplikací s využitím úložiště RA-GRS](../storage-designing-ha-apps-with-ragrs.md)
-- [Zotavení po havárii a převzetí služeb při selhání v účtu (Preview)](storage-disaster-recovery-guidance.md)
+- [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)
+- [Zotavení po havárii a převzetí služeb při selhání účtu úložiště](storage-disaster-recovery-guidance.md)

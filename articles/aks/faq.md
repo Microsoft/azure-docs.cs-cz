@@ -2,13 +2,13 @@
 title: Nejčastější dotazy ke službě Azure Kubernetes (AKS)
 description: Vyhledejte odpovědi na některé běžné dotazy ke službě Azure Kubernetes Service (AKS).
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/04/2020
+ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206599"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854237"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy ohledně služby Azure Kubernetes Service (AKS)
 
@@ -18,21 +18,20 @@ Tento článek popisuje časté otázky ke službě Azure Kubernetes Service (AK
 
 Úplný seznam dostupných oblastí najdete v tématu [AKS oblasti a dostupnost][aks-regions].
 
-## <a name="does-aks-support-node-autoscaling"></a>Podporuje AKS automatické škálování uzlu?
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>Je možné rozložit cluster AKS napříč různými oblastmi?
 
-Ano, schopnost automaticky škálovat uzly agentů vodorovně v AKS je v současnosti dostupná ve verzi Preview. Pokyny najdete [v tématu Automatické škálování clusteru pro splnění požadavků aplikace v AKS][aks-cluster-autoscaler] . Automatické škálování AKS je založené na [Kubernetes automatického škálování][auto-scaler].
+Ne. Clustery AKS jsou regionální prostředky a nemůžou zahrnovat oblasti. Pokyny k vytvoření architektury, která obsahuje více oblastí, najdete v tématu [osvědčené postupy pro provozní kontinuitu a zotavení po havárii][bcdr-bestpractices] .
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>Můžu AKS nasadit do existující virtuální sítě?
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>Je možné rozložit cluster AKS napříč zónami dostupnosti?
 
-Ano, cluster AKS můžete nasadit do existující virtuální sítě pomocí [funkce pokročilé sítě][aks-advanced-networking].
+Ano. Cluster AKS můžete nasadit v rámci jedné nebo více [zón dostupnosti][availability-zones] v [oblastech, které je podporují][az-regions].
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>Můžu omezit, kdo má přístup k serveru rozhraní Kubernetes API?
 
-Ano, můžete omezit přístup k serveru rozhraní Kubernetes API pomocí [rozsahů IP adres autorizovaných serverem API][api-server-authorized-ip-ranges].
+Ano. K dispozici jsou dvě možnosti omezení přístupu k serveru rozhraní API:
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>Můžu Server Kubernetes API zpřístupnit jenom v rámci své virtuální sítě?
-
-V tuto chvíli se ale plánuje. Průběh můžete sledovat v [úložišti GitHub AKS][private-clusters-github-issue].
+- Použijte [rozsahy povolených IP adres serveru API][api-server-authorized-ip-ranges] , pokud chcete zachovat veřejný koncový bod pro Server rozhraní API, ale omezte přístup na sadu důvěryhodných IP adres.
+- Pokud chcete omezit Server API tak, aby byl dostupný *jenom* v rámci vaší virtuální sítě, použijte [Privátní cluster][private-clusters] .
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>Můžu v jednom clusteru mít různé velikosti virtuálních počítačů?
 
@@ -118,7 +117,7 @@ Popisek: ```"admissions.enforcer/disabled": "true"``` nebo Poznámka:```"admissi
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Je Azure Key Vault integrována s AKS?
 
-AKS není aktuálně nativně integrována s Azure Key Vault. [Azure Key Vault FlexVolume for Kubernetes Project][keyvault-flexvolume] však umožňuje přímé začlenění z Kubernetes do Key Vault tajných kódů.
+AKS není aktuálně nativně integrována s Azure Key Vault. Nicméně [poskytovatel Azure Key Vault pro úložiště tajných klíčů][csi-driver] umožňuje přímou integraci z Kubernetes lusků do Key Vault tajných kódů.
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>Můžu na AKS spouštět kontejnery Windows serveru?
 
@@ -131,19 +130,6 @@ Podpora Windows serveru pro fond uzlů obsahuje některá omezení, která jsou 
 V rámci smlouvy o úrovni služeb (SLA) poskytovatel souhlasí s tím, že zákazníkovi vrátí náklady na službu, pokud není splněna publikovaná úroveň služby. Vzhledem k tomu, že je AKS zdarma, nejsou k dispozici žádné náklady, takže AKS nemá žádnou oficiální smlouvu SLA. AKS se ale snaží zachovat dostupnost minimálně 99,5% pro server Kubernetes API.
 
 Je důležité rozpoznat rozdíl mezi dostupností služby AKS, která odkazuje na dobu provozu Kubernetes řídicí roviny a dostupnost konkrétního zatížení, které běží na Azure Virtual Machines. I když rovina ovládacího prvku nemusí být k dispozici, pokud řídicí plocha není připravená, úlohy clusteru běžící na virtuálních počítačích Azure stále můžou fungovat. Vzhledem k tomu, že virtuální počítače Azure jsou placené prostředky, se účtují pomocí finanční smlouvy SLA. [Další podrobnosti](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) o smlouvě SLA pro virtuální počítače Azure a o tom, jak tuto dostupnost zvýšit, najdete tady: [zóny dostupnosti][availability-zones].
-
-## <a name="why-cant-i-set-maxpods-below-30"></a>Proč nemohu nastavit maxPods nižší než 30?
-
-V AKS můžete nastavit `maxPods` hodnotu při vytváření clusteru pomocí Azure CLI a Azure Resource Manager šablon. Kubenet i Azure CNI ale vyžadují *minimální hodnotu* (v době vytváření ověřený čas):
-
-| Sítě | Minimální | Maximum |
-| -- | :--: | :--: |
-| CNI Azure | 30 | 250 |
-| Kubenet | 30 | 110 |
-
-Vzhledem k tomu, že AKS je spravovaná služba, nasadíme a spravujeme doplňky a lusky jako součást clusteru. V minulosti mohli uživatelé definovat `maxPods` hodnotu nižší, než je hodnota, kterou spravované lusky vyžadují ke spuštění (například 30). AKS nyní vypočítá minimální počet lusků pomocí tohoto vzorce: ((maxPods nebo (maxPods * vm_count)) > spravovaného doplňku minimálních hodnot lusky.
-
-Uživatelé nemohou přepsat minimální `maxPods` ověření.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>Můžu u svých uzlů agentů AKS uplatnit slevy na rezervované platformy Azure?
 
@@ -181,7 +167,7 @@ Nejčastěji to je způsobeno tím, že uživatelé, kteří mají jednu nebo v�
 
 Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle neumožňuje zřídit LoadBalancers, připojení PVC atd.? 
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Můj cluster fungoval, ale náhle nedokáže zřídit LoadBalancers, připojení PVC atd.? 
 
 Potvrďte prosím, že váš instanční objekt nevypršel.  Viz: [AKS instanční objekt](https://docs.microsoft.com/azure/aks/kubernetes-service-principal) a [přihlašovací údaje pro AKS aktualizace](https://docs.microsoft.com/azure/aks/update-credentials).
 
@@ -219,12 +205,15 @@ I když AKS má mechanismy odolnosti k vyvýšení těchto konfigurací a obnove
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
-[hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
+[csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure

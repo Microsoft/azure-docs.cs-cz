@@ -1,14 +1,14 @@
 ---
 title: Správa přiřazení pomocí PowerShellu
 description: Naučte se spravovat přiřazení podrobných plánů pomocí oficiálního modulu PowerShellu pro Azure modrotisky, AZ. detail.
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677426"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863973"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Správa přiřazení pomocí PowerShellu
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>Příklad 2: použití definičního souboru přiřazení JSON
 
-Následující příklad vytvoří téměř stejné přiřazení jako [Příklad 1](#example-1-provide-parameters).
-Místo předání parametrů rutině v příkladu se zobrazuje použití definičního souboru přiřazení JSON a parametru **AssignmentFile** . Kromě toho je vlastnost **excludedPrincipals** nakonfigurována jako součást **zámků**. Pro **excludedPrincipals** není k dispozici parametr PowerShellu a vlastnost lze nakonfigurovat pouze její nastavením prostřednictvím definičního souboru přiřazení JSON.
+Následující příklad vytvoří téměř stejné přiřazení jako [Příklad 1](#example-1-provide-parameters). Místo předání parametrů rutině v příkladu se zobrazuje použití definičního souboru přiřazení JSON a parametru **AssignmentFile** . Kromě toho je vlastnost **excludedPrincipals** nakonfigurována jako součást **zámků**. Pro **excludedPrincipals** není k dispozici parametr PowerShellu a vlastnost lze nakonfigurovat pouze její nastavením prostřednictvím definičního souboru přiřazení JSON.
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Příklad kódu na konci
+## <a name="code-example"></a>Příklad kódu
 
 Když propojíte všechny kroky společně, následující příklad získá definici podrobného plánu a pak vytvoří, aktualizuje a odebere přiřazení podrobného plánu v rámci konkrétního `{subId}`předplatného reprezentovaného jako:
 

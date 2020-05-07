@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836610"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854979"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -145,7 +145,14 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 
 Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na základě stavu, ke kterým dochází v aplikacích s jednou stránkou. Pokud chcete povolit automatické sledování změn směrování pro jednu stránkovou aplikaci, můžete přidat `enableAutoRouteTracking: true` do konfigurace instalace.
 
-V současné době nabízíme samostatný [modul plug-in pro reakce](#react-extensions) , který můžete s touto sadou SDK inicializovat. Bude také plnit sledování změn směrování pro vás a shromažďovat [Další reakce na konkrétní telemetrii](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
+V současné době nabízíme samostatný [modul plug-in pro reakce](#react-extensions), který můžete inicializovat pomocí této sady SDK. Bude také plnit sledování změn směrování pro vás a shromažďovat [Další reakce na konkrétní telemetrii](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
+
+> [!NOTE]
+> Použijte `enableAutoRouteTracking: true` pouze v případě, že **nepoužíváte** modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
+
+## <a name="configuration-autotrackpagevisittime"></a>Konfigurace: autoTrackPageVisitTime
+
+Nastavením `autoTrackPageVisitTime: true`se sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) s názvem `PageVisitTime`. Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) jako metrika založená na protokolu.
 
 ## <a name="react-extensions"></a>Rozšíření reakce
 

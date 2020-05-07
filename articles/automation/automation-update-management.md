@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: c2c53993d9e71e7dab1f88b3b980273f62fedb63
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 24befd6e5d90c7c3fffd2049bae3bee392e6e0e0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787307"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855666"
 ---
 # <a name="update-management-in-azure-automation"></a>Update Management v Azure Automation
 
@@ -27,6 +27,9 @@ Update Management pro virtuální počítače můžete povolit pomocí následuj
 > Update Management vyžaduje propojení pracovního prostoru Log Analytics s vaším účtem Automation. Konečný seznam podporovaných oblastí najdete v tématu [mapování pracovních prostorů Azure](how-to/region-mappings.md). Mapování oblastí neovlivňují možnost spravovat virtuální počítače v samostatné oblasti z účtu Automation.
 
 K dispozici je [šablona Azure Resource Manager](automation-update-management-deploy-template.md) , která vám umožní nasadit Update Management do nového nebo existujícího účtu Automation a Log Analytics pracovní prostor ve vašem předplatném.
+
+> [!NOTE]
+> Počítač nakonfigurovaný s Update Management nemůžete použít ke spouštění vlastních skriptů z Azure Automation. Tento počítač může spustit pouze skript pro aktualizaci podepsaný společností Microsoft. 
 
 ## <a name="update-management-overview"></a>Přehled Update Managementu
 

@@ -8,19 +8,19 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: e83c7074d252083329537e205666374705a31873
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733576"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864194"
 ---
 # <a name="troubleshoot-shared-resources-in-azure-automation"></a>Řešení potíží se sdílenými prostředky v Azure Automation
 
-Tento článek popisuje řešení problémů, ke kterým může při použití [sdílených prostředků](../automation-intro.md#shared-resources) v Azure Automation běžet.
+Tento článek popisuje řešení problémů, které můžete mít při používání [sdílených prostředků](../automation-intro.md#shared-resources) v Azure Automation.
 
 >[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
+>Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. V současné době můžete stále používat modul AzureRM. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="modules"></a>Moduly
 
@@ -28,7 +28,7 @@ Tento článek popisuje řešení problémů, ke kterým může při použití [
 
 #### <a name="issue"></a>Problém
 
-Modul se zablokuje ve stavu importu při importu nebo aktualizaci Azure Automationch modulů.
+Modul se zablokuje ve stavu *importu* při importu nebo aktualizaci Azure Automationch modulů.
 
 #### <a name="cause"></a>Příčina
 
@@ -36,7 +36,7 @@ Vzhledem k tomu, že import modulů PowerShellu je složitý proces s více krok
 
 #### <a name="resolution"></a>Řešení
 
-Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný ve stavu import pomocí rutiny [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
+Chcete-li tento problém vyřešit, je nutné odebrat modul, který je zablokovaný pomocí rutiny [Remove-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) . Pak můžete modul znovu importovat.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -54,7 +54,7 @@ Azure modules are being updated
 
 #### <a name="cause"></a>Příčina
 
-Došlo k známému problému s aktualizací AzureRM modulů v účtu Automation, který je ve skupině prostředků s číselným názvem začínajícím na 0.
+Došlo k známému problému s aktualizací AzureRM modulů v účtu Automation. Konkrétně k problému dojde, pokud jsou moduly ve skupině prostředků s číselným názvem začínajícím 0.
 
 #### <a name="resolution"></a>Řešení
 
@@ -64,7 +64,7 @@ Pokud chcete aktualizovat AzureRM moduly v účtu Automation, musí být účet 
 
 #### <a name="issue"></a>Problém
 
-Modul se nepodaří importovat nebo se úspěšně importuje, ale neextrahují se žádné rutiny.
+Modul se nepodařilo importovat, nebo se úspěšně importuje, ale nejsou extrahovány žádné rutiny.
 
 #### <a name="cause"></a>Příčina
 
@@ -73,11 +73,11 @@ Některé běžné důvody, proč se modul nemusí úspěšně naimportovat do A
 * Struktura neodpovídá struktuře, která je potřebná pro automatizaci.
 * Modul závisí na jiném modulu, který nebyl nasazen do vašeho účtu Automation.
 * V modulu chybí závislosti ve složce.
-* Rutina [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a Vy jste nezadali úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
+* Rutina [New-AzAutomationModule](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) se používá k nahrání modulu a neposkytli jste úplnou cestu k úložišti, nebo jste modul nespustili pomocí veřejně přístupné adresy URL.
 
 #### <a name="resolution"></a>Řešení
 
-K vyřešení problému použijte kterékoli z těchto řešení.
+K vyřešení problému použijte kterékoli z těchto řešení:
 
 * Ujistěte se, že modul používá formát: název modulu. zip-> název modulu nebo číslo verze-> (Module. psm1, Module. psd1).
 * Otevřete soubor **. psd1** a podívejte se, jestli má modul nějaké závislosti. V takovém případě nahrajte tyto moduly do účtu Automation.
@@ -87,20 +87,20 @@ K vyřešení problému použijte kterékoli z těchto řešení.
 
 #### <a name="issue"></a>Problém
 
-Když při použití Runbooku [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) aktualizujete moduly Azure, proces aktualizace modulu se pozastaví.
+Pokud k aktualizaci modulů Azure používáte Runbook [Update-AzureModule. ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) , proces aktualizace modulu je pozastaven.
 
 #### <a name="cause"></a>Příčina
 
-Výchozí nastavení, které určuje, kolik modulů se aktualizuje současně, je 10 při použití **Update-AzureModule. ps1**. Proces aktualizace je náchylný k chybám, když se v jednom okamžiku aktualizuje příliš mnoho modulů.
+V této sadě Runbook se ve výchozím nastavení určí, kolik modulů je současně aktualizováno 10. Proces aktualizace je náchylný k chybám, když se v jednom okamžiku aktualizuje příliš mnoho modulů.
 
 #### <a name="resolution"></a>Řešení
 
-Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny moduly AzureRM nebo AZ. Doporučuje se importovat jenom konkrétní moduly, které potřebujete.
+Není běžné, že ve stejném účtu Automation jsou vyžadovány všechny moduly AzureRM nebo AZ. Měli byste importovat jenom konkrétní moduly, které potřebujete.
 
 > [!NOTE]
 > Vyhněte se `Az.Automation` importování `AzureRM.Automation` celého modulu nebo, který importuje všechny obsažené moduly.
 
-Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` parametr do skriptu **Update-AzureModules. ps1** a zadejte nižší hodnotu, než je výchozí hodnota 10. Pokud implementujete tuto logiku, doporučujeme začít s hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
+Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCount` parametr do skriptu **Update-AzureModules. ps1** a zadejte nižší hodnotu, než je výchozí hodnota 10. Pokud implementujete tuto logiku, zkuste začít hodnotou 3 nebo 5. `SimultaneousModuleImportJobCount`je parametr Runbooku sady **Update-AutomationAzureModulesForAccount** , který se používá k aktualizaci modulů Azure. Pokud provedete tuto úpravu, proces aktualizace se spustí déle, ale bude mít lepší šanci na jejich dokončení. Následující příklad ukazuje parametr a místo vložení do sady Runbook:
 
  ```powershell
          $Body = @"
@@ -125,7 +125,7 @@ Pokud se proces aktualizace pozastaví, přidejte `SimultaneousModuleImportJobCo
 
 #### <a name="issue"></a>Problém
 
-Když se pokusíte vytvořit nebo aktualizovat účet Spustit jako, zobrazí se chyba podobná této chybové zprávě:
+Když se pokusíte vytvořit nebo aktualizovat účet Spustit jako, zobrazí se chybová zpráva podobná následující:
 
 ```error
 You do not have permissions to create…
@@ -133,13 +133,13 @@ You do not have permissions to create…
 
 #### <a name="cause"></a>Příčina
 
-Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu Spustit jako, nebo zda je prostředek uzamčen na úrovni skupiny prostředků.
+Nemáte oprávnění, která potřebujete k vytvoření nebo aktualizaci účtu Spustit jako, nebo je prostředek uzamčen na úrovni skupiny prostředků.
 
 #### <a name="resolution"></a>Řešení
 
 Chcete-li vytvořit nebo aktualizovat účet Spustit jako, je nutné mít příslušná [oprávnění](../manage-runas-account.md#permissions) k různým prostředkům používaným účtem spustit jako. 
 
-Pokud k problému dochází z důvodu zámku, ověřte, že je možné zámek odebrat. Pak přejděte k prostředku, který je v Azure Portal uzamčený, klikněte pravým tlačítkem na zámek a pak klikněte na **Odstranit**.
+Pokud k problému dochází z důvodu zámku, ověřte, že je možné zámek odebrat. Pak přejděte k prostředku, který je v Azure Portal uzamčený, klikněte pravým tlačítkem na zámek a vyberte **Odstranit**.
 
 ### <a name="scenario-you-receive-the-error-unable-to-find-an-entry-point-named-getperadapterinfo-in-dll-iplpapidll-when-executing-a-runbook"></a><a name="iphelper"></a>Scénář: při provádění Runbooku se zobrazí chyba "v souboru DLL" iplpapi. dll "" nepovedlo se najít vstupní bod s názvem ' GetPerAdapterInfo '.
 
@@ -157,7 +157,7 @@ Tato chyba je pravděpodobně způsobena nesprávně nakonfigurovaným [účtem 
 
 #### <a name="resolution"></a>Řešení
 
-Ujistěte se, že je váš účet Spustit jako správně nakonfigurovaný. Pak ověřte, že v Runbooku máte správný kód pro ověření pomocí Azure. Následující příklad ukazuje fragment kódu pro ověření v Azure v sadě Runbook pomocí účtu Spustit jako.
+Ujistěte se, že je váš účet Spustit jako správně nakonfigurovaný. Pak ověřte, že v Runbooku máte správný kód pro ověření pomocí Azure. Následující příklad ukazuje fragment kódu pro ověření v Azure v Runbooku pomocí účtu Spustit jako.
 
 ```powershell
 $connection = Get-AutomationConnection -Name AzureRunAsConnection
@@ -167,8 +167,9 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nevidíte výše uvedený problém nebo nemůžete problém vyřešit, zkuste pro další podporu použít jeden z následujících kanálů:
+Pokud tento článek problém nevyřeší, zkuste další podporu vyzkoušet v jednom z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí. Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.
+

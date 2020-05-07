@@ -13,12 +13,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80881278"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853783"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Protokol SAML jednotného přihlašování
 
@@ -45,7 +45,7 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 | Parametr |  | Popis |
 | --- | --- | --- |
 | ID | Požaduje se | Azure AD používá tento atribut k naplnění `InResponseTo` atributu vrácené odpovědi. ID nesmí začínat číslicí, takže běžnou strategií je předřadit řetězec jako "ID" do řetězcové reprezentace identifikátoru GUID. Například `id6c1c178c166d486687be4aaf5e482730` je platný identifikátor. |
-| Version | Požaduje se | Tento parametr by měl být nastaven na **2,0**. |
+| Verze | Požaduje se | Tento parametr by měl být nastaven na **2,0**. |
 | IssueInstant | Požaduje se | Toto je řetězec DateTime s hodnotou UTC a [formátem Round-Trip ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu DateTime tohoto typu, ale nevyhodnotí ani nepoužije hodnotu. |
 | AssertionConsumerServiceUrl | Nepovinné | Je-li tento parametr zadán, musí `RedirectUri` odpovídat cloudové službě ve službě Azure AD. |
 | ForceAuthn | Nepovinné | Jedná se o logickou hodnotu. Pokud má hodnotu true, znamená to, že se uživatel bude nuceně znovu ověřovat, i když má platnou relaci se službou Azure AD. |
@@ -153,12 +153,12 @@ Až se požadované přihlášení úspěšně dokončí, Azure AD odešle odpov
 
 ### <a name="issuer"></a>Vystavitel
 
-Azure AD nastaví `Issuer` element na `https://login.microsoftonline.com/<TenantIDGUID>/` , kde \<TenantIDGUID> je ID tenanta tenanta Azure AD.
+Azure AD nastaví `Issuer` element na `https://sts.windows.net/<TenantIDGUID>/` , kde \<TenantIDGUID> je ID tenanta tenanta Azure AD.
 
 Například odpověď s prvkem vystavitele může vypadat jako v následujícím příkladu:
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>Status
@@ -191,7 +191,7 @@ Kromě `ID` `IssueInstant` a `Version`služba Azure AD nastavuje následující 
 To je nastavené `https://sts.windows.net/<TenantIDGUID>/`na \<místo, kde TenantIDGUID> je ID tenanta tenanta Azure AD.
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>Podpis

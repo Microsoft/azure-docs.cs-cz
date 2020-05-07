@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727109"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857406"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Psaní modulů plug-in pro Azure Media Player #
 
@@ -87,7 +87,7 @@ Inspiraci a další příklady vytváření modulů plug-in najdete v naší [ga
 
 ### <a name="plugin-gallery"></a>Galerie modulů plug-in ###
 
-[Galerie modulů plug-in](http//:aka.ms/ampplugins) má několik modulů plug-in, které už komunita přispěla k funkcím, jako jsou značky časových řádků, přiblížení, analýzy a další. Stránka poskytuje přístup k modulům plug-in a pokyny, jak je nastavit, a ukázku, která zobrazuje modul plug-in v akci. Pokud vytvoříte modul plug-in, který se domníváte, že byste si myslíte, že byste se měli v naší galerii začlenit, můžete ho kdykoli odeslat.
+[Galerie modulů plug-in](https://aka.ms/ampplugins) má několik modulů plug-in, které už komunita přispěla k funkcím, jako jsou značky časových řádků, přiblížení, analýzy a další. Stránka poskytuje přístup k modulům plug-in a pokyny, jak je nastavit, a ukázku, která zobrazuje modul plug-in v akci. Pokud vytvoříte modul plug-in, který se domníváte, že byste si myslíte, že byste se měli v naší galerii začlenit, můžete ho kdykoli odeslat.
 
 ## <a name="next-steps"></a>Další kroky ##
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120127"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853106"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -50,12 +50,11 @@ V **Azure Portal** v části **Azure Active Directory** > **zabezpečení** > **
 Týdenní e-mailová zpráva o Digest obsahuje souhrn nových detekcí rizik.  
 Obsahuje:
 
-- Ohrožení uživatelé
-- Podezřelé aktivity
-- Zjištěná ohrožení zabezpečení
+- Zjištěni noví rizikové uživatelé
+- Zjištěna nová riziková přihlášení (v reálném čase)
 - Odkazy na související sestavy v Identity Protection
 
-![Týdenní e-mail pro výtah](./media/howto-identity-protection-configure-notifications/400.png)
+![Týdenní e-mail pro výtah](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 Ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
 

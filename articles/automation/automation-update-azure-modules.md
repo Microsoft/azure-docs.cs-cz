@@ -5,16 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: bb73b3d644e96f9596f887faaf62eb15f01956ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f2ceda6e87ce16e910f3d215c1fabe81d522f32
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769674"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855560"
 ---
 # <a name="update-azure-powershell-modules-in-azure-automation"></a>Aktualizace Azure PowerShellch modulů v Azure Automation
 
-Pokud chcete aktualizovat moduly Azure v účtu Automation, musíte použít [sadu Runbook pro aktualizaci modulů Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), která je k dispozici jako open source. Pokud chcete začít používat sadu Runbook **Update-AutomationAzureModulesForAccount** , abyste mohli aktualizovat moduly Azure, Stáhněte si ho z části [Aktualizace Azure modules Runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) na GitHubu. Pak ho můžete importovat do svého účtu Automation nebo spustit jako skript. Informace o tom, jak importovat Runbook do svého účtu Automation, najdete v tématu [Import Runbooku](manage-runbooks.md#importing-a-runbook).
+Pokud chcete aktualizovat moduly Azure v účtu Automation, musíte použít [sadu Runbook pro aktualizaci modulů Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), která je k dispozici jako open source. Pokud chcete začít používat sadu Runbook **Update-AutomationAzureModulesForAccount** , abyste mohli aktualizovat moduly Azure, Stáhněte si ho z části [Aktualizace Azure modules Runbook úložiště](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) na GitHubu. Pak ho můžete importovat do svého účtu Automation nebo spustit jako skript. Informace o tom, jak importovat Runbook do svého účtu Automation, najdete v tématu [Import Runbooku](manage-runbooks.md#import-a-runbook).
 
 Nejběžnější moduly PowerShellu jsou ve výchozím nastavení k dispozici v každém účtu Automation. Tým Azure pravidelně aktualizuje moduly Azure. Proto pokud chcete, aby moduly v účtech Automation byly aktuální, měli byste použít sadu Runbook [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) .
 

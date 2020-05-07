@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461714"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857175"
 ---
 # <a name="design-secure-applications-on-azure"></a>Návrh zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při návrhu aplikací pro Cloud. Pojednává o školicích materiálech spolu s bezpečnostními otázkami a koncepty, které je potřeba vzít v úvahu během fází vývoje požadavků a návrhů na [životní cyklus Microsoft Security Development (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k návrhu bezpečnější aplikace.
@@ -222,11 +222,11 @@ Potřebuje vývojář softwaru práva správce domény? Má asistent pro správu
 Ujistěte se, že vaše aplikace v celém vzoru přístupu vynutila [nejnižší oprávnění](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) .
 
 > [!NOTE]
->  Pravidla nejnižší úrovně oprávnění musí platit pro software a osoby vytvářející software. Vývojáři softwaru můžou být velkým rizikem zabezpečení IT, pokud mají k disvelkému množství přístup. Důsledky můžou být závažné, pokud má vývojář škodlivý záměr nebo máte příliš velký přístup. Doporučujeme, abyste pro vývojáře v průběhu životního cyklu vývoje použili pravidla s minimálním oprávněním.
+> Pravidla nejnižší úrovně oprávnění musí platit pro software a osoby vytvářející software. Vývojáři softwaru můžou být velkým rizikem zabezpečení IT, pokud mají k disvelkému množství přístup. Důsledky můžou být závažné, pokud má vývojář škodlivý záměr nebo máte příliš velký přístup. Doporučujeme, abyste pro vývojáře v průběhu životního cyklu vývoje použili pravidla s minimálním oprávněním.
 
 #### <a name="implement-just-in-time-access"></a>Implementace přístupu za běhu
 
-Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby expozice oprávnění. Použít [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) k:
+Implementujte přístup za běhu (Just *-in-time* ) k dalšímu snížení doby expozice oprávnění. Použít [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) k:
 
 - Poskytněte uživatelům oprávnění, která potřebují pouze JIT.
 - Přiřaďte role pro zkrácenou dobu trvání a jistotu, že se oprávnění odvolají automaticky.

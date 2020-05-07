@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255402"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853495"
 ---
 # <a name="create-an-azure-storage-account"></a>Vytvoření účtu služby Azure Storage
 
@@ -30,7 +30,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Žádné.
+Žádné
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -67,7 +67,7 @@ Rozhraní příkazového řádku Azure můžete také nainstalovat a používat 
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Žádné.
+Žádné
 
 ---
 
@@ -152,8 +152,8 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Zónově redundantní úložiště (ZRS)     |Standard_ZRS         |
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
-|Geografická zóna – redundantní úložiště (GZRS) (Preview)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) (ve verzi Preview)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
+|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ Pokud chcete vytvořit účet úložiště pro obecné účely v2 s jinou možno
 |Zónově redundantní úložiště (ZRS)     |Standard_ZRS         |
 |Geograficky redundantní úložiště (GRS)     |Standard_GRS         |
 |Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)     |Standard_RAGRS         |
-|Geografická zóna – redundantní úložiště (GZRS) (Preview)    |Standard_GZRS         |
-|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) (ve verzi Preview)    |Standard_RAGZRS         |
+|Geograficky zónově redundantní úložiště (GZRS)    |Standard_GZRS         |
+|Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Šablona](#tab/template)
 
-Pomocí Azure PowerShellu nebo rozhraní příkazového řádku Azure můžete nasadit šablonu Správce prostředků a vytvořit účet úložiště. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Pokud chcete skripty spustit, vyberte **zkusit** na to, aby se otevřelo Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
+K nasazení Správce prostředků šablony pro vytvoření účtu úložiště můžete použít buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Šablona použitá v tomto článku s návody je od [Azure Resource Manager šablon pro rychlý Start](https://azure.microsoft.com/resources/templates/101-storage-account-create/). Chcete-li spustit skripty, vyberte příkaz **zkusit** pro otevření Azure Cloud Shell. Skript vložíte tak, že kliknete pravým tlačítkem na prostředí a pak vyberete **Vložit**.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
