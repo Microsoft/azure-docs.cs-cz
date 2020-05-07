@@ -139,7 +139,7 @@
         - name: Zřízení propustnosti u kontejnerů a databází
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Zřízení propustnosti – režim automatického škálování
+        - name: Zřízení propustnosti – automatické škálování
           href: provision-throughput-autoscale.md
         - name: Nejčastější dotazy k automatickému škálování
           href: autoscale-faq.md
@@ -916,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: Konfigurace zásad řešení konfliktů
           href: how-to-manage-conflicts.md
+        - name: Převod formátu tokenu relace
+          href: how-to-convert-session-token.md
     - name: Zřízená propustnost
       items:
         - name: Zřízení propustnosti pro kontejner
@@ -1062,7 +1064,7 @@
               href: monitor-server-side-latency.md
             - name: Monitorování využití jednotek žádostí
               href: monitor-request-unit-usage.md
-        - name: Použití diagnostických protokolů
+        - name: Použití protokolů Azure Monitoru
           items:
             - name: Monitorování s diagnostickými protokoly
               href: cosmosdb-monitor-resource-logs.md

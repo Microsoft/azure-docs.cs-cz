@@ -4,12 +4,12 @@ description: V tomto kurzu se dozvíte, jak škálovat Cluster Service Fabric v 
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251801"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788817"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Kurz: Škálování clusteru Service Fabric v Azure
 
@@ -84,7 +84,7 @@ Změna velikosti a zmenšení nebo horizontální škálování mění počet uz
 
 Pokud tedy aktualizujete hodnotu *nt1InstanceCount* , změníte počet uzlů v druhém typu uzlu.  Nezapomeňte, že nemůžete škálovat typ uzlu na více než 100 uzlů.  Neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů. Neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 
-Pokud provádíte horizontální [navýšení][durability] kapacity, při odebírání uzlů z, typu na bronzové úrovni trvanlivosti musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
+Pokud provádíte horizontální [navýšení][durability] kapacity, při odebírání uzlů z, typu na bronzové úrovni trvanlivosti musíte [ručně odebrat stav těchto uzlů](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Pro stříbro a zlatou úroveň odolnosti se tyto kroky provádí automaticky na platformě.
 
 ### <a name="deploy-the-updated-template"></a>Nasazení aktualizované šablony
 Uložte všechny změny v souborech *template. JSON* a *Parameters. JSON* .  Aktualizovanou šablonu nasadíte spuštěním následujícího příkazu:
