@@ -63,6 +63,8 @@
           href: ./ag/policy-overview.md
         - name: Přehled ochrany před roboty
           href: ./ag/bot-protection-overview.md
+        - name: Nejčastější dotazy
+          href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
         - name: Vlastní pravidla

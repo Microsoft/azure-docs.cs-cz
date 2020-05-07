@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810346"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837154"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Přeučování modelů s využitím návrháře služby Azure Machine Learning (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,13 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 ## <a name="prerequisites"></a>Požadavky
 
 * Pracovní prostor Azure Machine Learning s SKU Enterprise.
-* Datová sada, která je pro návrháře přístupná. Může to být jedna z následujících možností:
-   * Azure Machine Learning registrovaná datová sada
-    
-     **ani**
-   * Datový soubor uložený v úložišti dat Azure Machine Learning.
-   
-Informace o přístupu k datům pomocí návrháře najdete v článku [Jak importovat data do návrháře](how-to-designer-import-data.md).
+* Vyplňte část 1 této série s postupy, [Transformujte data v Návrháři](how-to-designer-transform-data.md).
 
 Tento článek také předpokládá, že máte základní znalosti o sestavování kanálů v návrháři. Úvod do průvodce najdete v tomto [kurzu](tutorial-designer-automobile-price-train-score.md). 
 
