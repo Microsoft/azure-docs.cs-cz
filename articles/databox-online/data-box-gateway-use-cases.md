@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022677"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562380"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Případy použití pro Azure Data Box Gateway
 
@@ -77,7 +77,7 @@ Tento hromadný přenos dokončí prvotní fázi osazení.
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Průběžný informační kanál s Data Box Gateway
 
-Pro průběžné přijímání Data Box Gateway použijte následující postup.
+Pro průběžné přijímání Data Box Gateway použijte následující postup. 
 
 1. Vytvořte cloudovou sdílenou složku na Data Box Gateway. Tato sdílená složka automaticky nahraje všechna data na účet Azure Storage. Přejděte na **sdílené složky** v prostředku data box Gateway a klikněte na **+ Přidat sdílenou složku**.
 

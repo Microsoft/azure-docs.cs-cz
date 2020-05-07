@@ -1,5 +1,5 @@
 ---
-title: Seznam funkcí přehrávače Azure Media Player
+title: Azure Media Player seznam funkcí
 description: Odkaz na funkci pro Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,64 +7,64 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e5595620a2f888b06ad5b35d2e8a008f23861463
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727226"
 ---
 # <a name="feature-list"></a>Seznam funkcí #
-Zde je seznam testovaných funkcí a nepodporovaných funkcí:
+Tady je seznam testovaných funkcí a nepodporované funkce:
 
-|                                         | Testovány | ČÁSTEČNĚ TESTOVÁNO | Nevyzkoušené | Nepodporovaný | POZNÁMKY                                                                                                                |
+|                                         | TESTOVAT | ČÁSTEČNĚ TESTOVÁNO | NETESTOVANÝMI | NEPLATNÉ | POZNÁMKY                                                                                                                |
 |:----------------------------------------|--------|------------------|----------|-------------|:---------------------------------------------------------------------------------------------------------------------|
 | Přehrávání                                |        |                  |          |             |                                                                                                                      |
-| Základní přehrávání na vyžádání                | ×      |                  |          |             | Podporuje jenom datové proudy z Azure Media Services                                                                      |
-| Základní živé přehrávání                     | ×      |                  |          |             | Podporuje jenom datové proudy z Azure Media Services                                                                      |
-| AES                                     | ×      |                  |          |             | Podporuje službu doručování klíčů mediálních služeb Azure                                                                   |
-| MultiDRM                               |        | ×                |          |             |                                                                                                                      |
-| PlayReady                               | ×      |                  |          |             | Podporuje službu doručování klíčů mediálních služeb Azure                                                                   |
-| Widevine                                |        | ×                |          |             | Podporuje Widevine PSSH boxy uvedené v manifestu                                                                    |
-| FairPlay                                |        | ×                |          |             | Podporuje službu doručování klíčů mediálních služeb Azure                                                                   |
-| Technici                                   |        |                  |          |             |                                                                                                                      |
+| Základní přehrávání na vyžádání                | ×      |                  |          |             | Podporuje pouze datové proudy z Azure Media Services                                                                      |
+| Základní přehrávání v reálném čase                     | ×      |                  |          |             | Podporuje pouze datové proudy z Azure Media Services                                                                      |
+| AES                                     | ×      |                  |          |             | Podporuje službu doručování klíčů Azure Media Services                                                                   |
+| Více DRM                               |        | ×                |          |             |                                                                                                                      |
+| PlayReady                               | ×      |                  |          |             | Podporuje službu doručování klíčů Azure Media Services                                                                   |
+| Widevine                                |        | ×                |          |             | Podporuje Widevine PSSH pole, která jsou popsaný v manifestu.                                                                    |
+| FairPlay                                |        | ×                |          |             | Podporuje službu doručování klíčů Azure Media Services                                                                   |
+| Technické pracovníky                                   |        |                  |          |             |                                                                                                                      |
 | MSE/EME (AzureHtml5JS)                  | ×      |                  |          |             |                                                                                                                      |
-| Flash Záložní (FlashSS)                | ×      |                  |          |             | Ne všechny funkce jsou k dispozici na této technologii.                                                                         |
-| Silverlight záložní SilverlightSS      | ×      |                  |          |             | Ne všechny funkce jsou k dispozici na této technologii.                                                                         |
-| Nativní HLS Pass-through (Html5)         |        | ×                |          |             | Ne všechny funkce jsou k dispozici na této technologii z důvodu omezení platformy.                                            |
+| Záložní verze Flash (Flash)                | ×      |                  |          |             | Ne všechny funkce jsou k dispozici na tomto Techu.                                                                         |
+| Silverlight – záložní Silverlight      | ×      |                  |          |             | Ne všechny funkce jsou k dispozici na tomto Techu.                                                                         |
+| HLS Passing Native (Html5)         |        | ×                |          |             | Ne všechny funkce jsou na tomto Techu dostupné kvůli omezením platforem.                                            |
 | Funkce                                |        |                  |          |             |                                                                                                                      |
 | Podpora rozhraní API                             | ×      |                  |          |             | Zobrazit seznam známých problémů                                                                                                |
-| Základní ui                                | ×      |                  |          |                                                                                                                                    |
-| Inicializace pomocí JavaScriptu       | ×      |                  |          |             |                                                                                                                      |
-| Inicializace pomocí značky videa        |        | ×                |          |             |                                                                                                                      |
-| Adresování segmentu – časově         | ×      |                  |          |             |                                                                                                                      |
-| Segmentové adresování – založené na indexu        |        |                  |          | ×           |                                                                                                                      |
-| Segmentové adresování – založené na bajtu         |        |                  |          | ×           |                                                                                                                      |
-| Vyzápis adres URL služby Azure Media Services       |        | ×                |          |             |                                                                                                                      |
-| Usnadnění přístupu - titulky a titulky  |        | ×                |          |             |  WebVTT podporován na vyžádání, live CEA 708 částečně testováno                                                       |
-| Usnadnění přístupu - klávesové zkratky                 | ×      |                  |          |             |                                                                                                                      |
-| Přístupnost – vysoký kontrast           |        | ×                |          |             |                                                                                                                      |
-| Usnadnění přístupu – fokus tabulátoru               |        | ×                |          |             |                                                                                                                      |
-| Zasílání zpráv při chybách                         |        | ×                |          |             | Chybové zprávy jsou mezi technikami nekonzistentní                                                                         |
-| Aktivační událost                        | ×      |                  |          |             |                                                                                                                      |
-| Diagnostika                             |        | ×                |          |             | Diagnostické informace jsou k dispozici jenom v technologii AzureHtml5JS a částečně dostupné v technologii SilverlightSS. |
-| Přizpůsobitelná technická objednávka                 |        | ×                |          |             |                                                                                                                      |
-| Heuristika - Základní                      | ×      |                  |          |             |                                                                                                                      |
-| Heuristika - Přizpůsobení              |        |                  | ×        |             | Přizpůsobení je k dispozici pouze v technologii AzureHtml5JS.                                                          |
-| Nespojitosti                         | ×      |                  |          |             |                                                                                                                      |
-| Vybrat bitovou rychlost                          | ×      |                  |          |             | Toto rozhraní API je k dispozici jenom na technikech AzureHtml5JS a FlashSS.                                                    |
-| Vícezvukový datový proud                      |        | ×                |          |             | Programový zvukový přepínač je podporovaný na technikách AzureHtml5JS a FlashSS a je k dispozici prostřednictvím výběru ui na AzureHtml5JS, FlashsS a nativním Html5 (v Safari).  Většina platforem vyžaduje pro přepínání zvukových proudů stejná soukromá data kodeku (stejný kodek, kanál, vzorkovací frekvence atd.). |
-| Lokalizace ui                         |        | ×                |          |             |                                                                                                                      |
-| Přehrávání ve více instancích                 |        |                  |          | ×           | Tento scénář může fungovat pro některé techniky, ale je v současné době nepodporované a netestované. Můžete také získat to do práce pomocí iframes |
-| Podpora reklam                             |        | x                |          |             | AMP podporuje vkládání lineárních reklam před polovinou a po rolování z prodejních a režijních a režijních reklam pro VOD v technologii AzureHtml5JS |
-| Analýzy                               |        | ×                |          |             | AMP poskytuje možnost naslouchat analýzám a diagnostickým událostem, aby bylo možné je odeslat do back-endu Analytics podle vašeho výběru.  Všechny události a vlastnosti nejsou k dispozici napříč technikami z důvodu omezení platformy.                                                                            |
-| Vlastní vzhledy                            |        |                  | ×        |             | V AMP a pomocí vlastního HTML a CSS přepněte ovládací prvky nastavení na false.           |
-| Hledat bar drhnutí                      |        |                  |          | ×           |                                                                                                                      |
-| Trik-Play                              |        |                  |          | ×           |                                                                                                                      |
-| Pouze zvuk                              |        |                  |          | ×           | Může fungovat v některých techniků pro adaptivní streamování, ale není aktuálně podporována a nefunguje v AzureHtml5JS. Progresivní přehrávání MP3 může pracovat s technologií HTML5, pokud ji platforma podporuje.                                                                                                        |
-| Pouze video                              |        |                  |          | ×           | Může fungovat v některých techniků pro adaptivní streamování, ale není aktuálně podporována a nefunguje v AzureHtml5JS.      |
-| Vícedobá prezentace               |        |                  |          | ×                                                                                                                                  |
+| Základní uživatelské rozhraní                                | ×      |                  |          |                                                                                                                                    |
+| Inicializace prostřednictvím JavaScriptu       | ×      |                  |          |             |                                                                                                                      |
+| Inicializace prostřednictvím značky videa        |        | ×                |          |             |                                                                                                                      |
+| Segment adresování – na základě času         | ×      |                  |          |             |                                                                                                                      |
+| Adresování segmentů – na základě indexu        |        |                  |          | ×           |                                                                                                                      |
+| Adresování segmentů – na základě bajtů         |        |                  |          | ×           |                                                                                                                      |
+| Azure Media Services přepisu adresy URL       |        | ×                |          |             |                                                                                                                      |
+| Přístupnost – titulky a titulky  |        | ×                |          |             |  Na na vyžádání je podporována WebVTT, Live CEA 708 – částečně testováno                                                       |
+| Přístupnost – klávesové zkratky                 | ×      |                  |          |             |                                                                                                                      |
+| Usnadnění – Vysoký kontrast           |        | ×                |          |             |                                                                                                                      |
+| Usnadnění – fokus karty               |        | ×                |          |             |                                                                                                                      |
+| Zasílání zpráv o chybách                         |        | ×                |          |             | Chybové zprávy nejsou v souladu s technickými pracovníky                                                                         |
+| Aktivace událostí                        | ×      |                  |          |             |                                                                                                                      |
+| Diagnostika                             |        | ×                |          |             | Diagnostické informace jsou k dispozici pouze na AzureHtml5JS Tech a částečně k dispozici na technickém programu Silverlight. |
+| Přizpůsobitelný technický způsob                 |        | ×                |          |             |                                                                                                                      |
+| Heuristické – základní                      | ×      |                  |          |             |                                                                                                                      |
+| Heuristiky – přizpůsobení              |        |                  | ×        |             | Vlastní nastavení je dostupné jenom u AzureHtml5JS tech.                                                          |
+| Nekontinuita                         | ×      |                  |          |             |                                                                                                                      |
+| Výběr přenosové rychlosti                          | ×      |                  |          |             | Toto rozhraní API je dostupné jenom na technikách AzureHtml5JS a Flash.                                                    |
+| Datový proud s více zvuky                      |        | ×                |          |             | Programový zvukový přepínač je podporován v AzureHtml5JS a technikách Flash a je dostupný prostřednictvím výběru uživatelského rozhraní v AzureHtml5JS, Flash a nativní Html5 (v Safari).  Většina platforem vyžaduje, aby se stejná privátní data kodeku přepnula na zvukové proudy (stejný kodek, kanál, vzorkovací frekvence atd.). |
+| Lokalizace uživatelského rozhraní                         |        | ×                |          |             |                                                                                                                      |
+| Přehrávání více instancí                 |        |                  |          | ×           | Tento scénář může fungovat i u některých techniků, ale v současné době není podporován a netestoval. Můžete to také využít k práci s použitím iFrames. |
+| Podpora reklam                             |        | x                |          |             | AMP podporuje vkládání předběžných a následných lineárních reklam z nevyhovujících serverů AD pro VOD v AzureHtml5JS tech |
+| Analýzy                               |        | ×                |          |             | AMP nabízí možnost naslouchat analýzám a diagnostickým událostem, aby se daly odeslat do back-endu Analytics dle vašeho výběru.  Všechny události a vlastnosti nejsou v rámci technických důvodů k dispozici v důsledku omezení platformy.                                                                            |
+| Vlastní vzhledy                            |        |                  | ×        |             | V AMP nastavte ovládací prvky na false a použijte vlastní HTML a CSS.           |
+| Hledání v pročištění řádků                      |        |                  |          | ×           |                                                                                                                      |
+| Zdvih – přehrání                              |        |                  |          | ×           |                                                                                                                      |
+| Jenom zvuk                              |        |                  |          | ×           | Může v některých technikách pracovat s adaptivním streamování, ale v současné době není podporovaná a nefunguje v AzureHtml5JS. Progresivní přehrávání ve formátu MP3 může spolupracovat s technikou HTML5, pokud ji platforma podporuje.                                                                                                        |
+| Jenom video                              |        |                  |          | ×           | Může v některých technikách pracovat s adaptivním streamování, ale v současné době není podporovaná a nefunguje v AzureHtml5JS.      |
+| Prezentace pro více období               |        |                  |          | ×                                                                                                                                  |
 | Více úhlů kamery                  |        |                  |          | ×           |                                                                                                                      |
-| Rychlost přehrávání                          |        | ×                |          |             | Rychlost přehrávání je podporována ve většině scénářů s výjimkou mobilního případu kvůli částečné chybě v Chromu                 |
+| Rychlost přehrávání                          |        | ×                |          |             | Rychlost přehrávání je podporovaná ve většině scénářů s výjimkou toho, že se jedná o částečnou chybu v Chrome.                 |
 
 ## <a name="next-steps"></a>Další kroky ##
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

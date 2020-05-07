@@ -1,6 +1,6 @@
 ---
-title: Monitorování připojení zařízení pomocí Azure IoT Central Explorer
-description: Sledujte zprávy zařízení a sledujte změny dvojčete zařízení prostřednictvím rozhraní CLI centrálního průzkumníka IoT.
+title: Monitorování připojení zařízení pomocí Azure IoT Central Exploreru
+description: Sledujte zprávy zařízení a sledujte změny v zařízeních přes rozhraní příkazového řádku IoT Central Explorer.
 author: viv-liu
 ms.author: viviali
 ms.date: 03/27/2020
@@ -9,40 +9,40 @@ ms.service: iot-central
 services: iot-central
 manager: corywink
 ms.openlocfilehash: 1a6106a45f5062850ceb12205528a05ed1d494be
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756663"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Monitorování připojení zařízení s využitím Azure CLI
 
 *Toto téma se týká vývojářů zařízení a tvůrců řešení.*
 
-Pomocí rozšíření Azure CLI IoT zobrazíte zprávy, které vaše zařízení odesílají do služby IoT Central, a sledujte změny v dvojčeti zařízení. Tento nástroj můžete použít k ladění a sledování připojení zařízení a diagnostikovat problémy se zprávami zařízení, které nedosahují cloudu nebo zařízení, která nereagují na změny dvojčat.
+Pomocí rozšíření Azure CLI IoT můžete zobrazit zprávy, které vaše zařízení odesílá IoT Central a sledujte změny v zařízení. Tento nástroj můžete použít k ladění a sledování připojení zařízení a diagnostikování problémů se zprávami zařízení, které nedosáhnou cloudu, nebo zařízení, která nereagují na zdvojené změny.
 
-[Další podrobnosti najdete v odkazu na rozšíření Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[Další podrobnosti najdete v referenčních informacích k rozšířením Azure CLI.](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Azure CLI nainstalován a je verze 2.0.7 nebo vyšší. Zkontrolujte verzi vašeho Azure CLI spuštěním `az --version`. Přečtěte si, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
-+ Pracovní nebo školní účet v Azure, který byl přidán jako uživatel v aplikaci IoT Central.
++ Rozhraní příkazového řádku Azure je nainstalované a má verzi 2.0.7 nebo vyšší. Ověřte verzi rozhraní příkazového řádku Azure spuštěním `az --version`. Informace o tom, jak nainstalovat a aktualizovat z [dokumentů Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
++ Pracovní nebo školní účet v Azure, který se přidal jako uživatel do aplikace IoT Central.
 
 ## <a name="install-the-iot-central-extension"></a>Instalace rozšíření IoT Central
 
-Spusťte následující příkaz z příkazového řádku a nainstalujte:
+Spusťte následující příkaz z příkazového řádku pro instalaci:
 
 ```azurecli
 az extension add --name azure-iot
 ```
 
-Zkontrolujte verzi rozšíření spuštěním:
+Ověřte verzi rozšíření spuštěním:
 
 ```azurecli
 az --version
 ```
 
-Měli byste vidět rozšíření azure-iot je 0.8.1 nebo vyšší. Pokud tomu tak není, spusťte:
+Měli byste vidět, že rozšíření Azure-IoT je 0.8.1 nebo novější. Pokud tomu tak není, spusťte příkaz:
 
 ```azurecli
 az extension update --name azure-iot
@@ -50,28 +50,28 @@ az extension update --name azure-iot
 
 ## <a name="using-the-extension"></a>Použití rozšíření
 
-Následující části popisují běžné příkazy a možnosti, `az iot central`které lze použít při spuštění . Chcete-li zobrazit úplnou sadu příkazů `--help` `az iot central` a možností, přejděte do některého z jeho podpříkazů nebo některý z jeho podpříkazů.
+Následující části popisují běžné příkazy a možnosti, které můžete použít při spuštění `az iot central`. Chcete-li zobrazit úplnou sadu příkazů a možností, `--help` předejte `az iot central` nebo libovolné dílčí příkazy.
 
 ### <a name="login"></a>Přihlásit
 
-Začněte přihlášením do příkazového příkazového příkazu Azure. 
+Začněte přihlášením k rozhraní příkazového řádku Azure CLI. 
 
 ```azurecli
 az login
 ```
 
-### <a name="get-the-application-id-of-your-iot-central-app"></a>Získání ID aplikace aplikace IoT Central
-V **nastavení správy/aplikace**zkopírujte **ID aplikace**. Tuto hodnotu použijete v pozdějších krocích.
+### <a name="get-the-application-id-of-your-iot-central-app"></a>Získání ID aplikace IoT Central aplikace
+V části **Správa/nastavení aplikace**zkopírujte **ID aplikace**. Tuto hodnotu použijete v pozdějších krocích.
 
-### <a name="monitor-messages"></a>Sledování zpráv
-Sledujte zprávy odesílané do aplikace IoT Central z vašich zařízení. Výstup obsahuje všechny hlavičky a poznámky.
+### <a name="monitor-messages"></a>Monitorovat zprávy
+Monitorujte zprávy, které se odesílají do vaší IoT Central aplikace z vašich zařízení. Výstup zahrnuje všechny hlavičky a poznámky.
 
 ```azurecli
 az iot central app monitor-events --app-id <app-id> --properties all
 ```
 
 ### <a name="view-device-properties"></a>Zobrazit vlastnosti zařízení
-Zobrazení aktuálních vlastností zařízení pro čtení a čtení a zápis pro dané zařízení.
+Zobrazí aktuální vlastnosti zařízení pro čtení a čtení a zápis pro dané zařízení.
 
 ```azurecli
 az iot central device-twin show --app-id <app-id> --device-id <device-id>
@@ -79,4 +79,4 @@ az iot central device-twin show --app-id <app-id> --device-id <device-id>
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud jste vývojář zařízení, dalším krokem je přečíst si o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md).
+Pokud jste vývojářem zařízení, navržený další krok si přečtěte informace o [připojení zařízení v Azure IoT Central](./concepts-get-connected.md).

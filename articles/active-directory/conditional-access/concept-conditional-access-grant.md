@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02ec8dace971cd4dc1407c9e8d20839504c9ecc3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331843"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583207"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -83,7 +83,6 @@ Toto nastavení platí pro následující aplikace pro iOS a Android:
 - Microsoft Kaizala
 - Spouštěč Microsoftu
 - Microsoft Office
-- Centrum systém Microsoft Office
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook

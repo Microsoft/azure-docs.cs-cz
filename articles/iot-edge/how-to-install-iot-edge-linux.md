@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/21/2020
 ms.author: kgremban
-ms.openlocfilehash: fb86ee9ce956917f8da44146e58a4775e0ba639f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 947f224426b3a70c39cbf94ee888c5c353b3993b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535897"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857332"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>Instalace modulu runtime Azure IoT Edge v systémech Linux založených na distribuci Debian
 
@@ -284,7 +284,7 @@ Kontrola protokolů démona:
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Spusťte automatizovanou kontrolu nejběžnějších chyb konfigurace a sítě:
+Spusťte [Nástroj pro řešení potíží](troubleshoot.md#run-the-check-command) , ve kterém zjistíte nejběžnější chyby konfigurace a sítě:
 
 ```bash
 sudo iotedge check

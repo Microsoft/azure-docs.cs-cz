@@ -1,6 +1,6 @@
 ---
-title: Ověření přístupu k Centru událostí Azure pomocí sdílených přístupových podpisů
-description: Tento článek ukazuje, jak ověřit přístup k prostředkům Centra událostí pomocí sdílených přístupových podpisů.
+title: Ověření přístupu k Azure Event Hubs se signaturami sdíleného přístupu
+description: V tomto článku se dozvíte, jak ověřit přístup k prostředkům Event Hubs pomocí sdílených přístupových podpisů.
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,73 +9,73 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.openlocfilehash: cde5992355d274410bb43b1e3e60fbba1afe4e44
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676357"
 ---
-# <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověření přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů (SAS)
-Sdílený přístupový podpis (SAS) umožňuje podrobnou kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Zde jsou některé ovládací prvky, které můžete nastavit v SAS: 
+# <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Ověřování přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů (SAS)
+Sdílený přístupový podpis (SAS) poskytuje podrobnější kontrolu nad typem přístupu, který udělíte klientům, kteří mají sdílený přístupový podpis. Tady jsou některé ovládací prvky, které můžete nastavit v SAS: 
 
-- Interval, ve kterém je platný SAS, včetně počáteční čas a čas vypršení platnosti.
-- Oprávnění udělená SAS. Například SAS pro obor názvů Event Hubs může udělit oprávnění k naslouchání, ale ne oprávnění k odeslání.
-- Data mohou do centra událostí odesílat pouze klienti, kteří představují platná pověření.
-- Klient se nemůže vydávat za jiného klienta.
-- Neautorizovaný klient může být blokován odesílání dat do centra událostí.
+- Interval, po který je SAS platný, včetně času zahájení a vypršení platnosti.
+- Oprávnění udělená SAS. Například SAS pro obor názvů Event Hubs může udělit oprávnění k naslouchání, ale ne oprávnění Odeslat.
+- Do centra událostí mohou odesílat data pouze klienti, kteří jsou přítomni platná pověření.
+- Klient nemůže zosobnit jiného klienta.
+- Neoprávněnému klientovi se může zablokovat odesílání dat do centra událostí.
 
-Tento článek popisuje ověřování přístupu k prostředkům Centra událostí pomocí SAS. Informace o **autorizaci přístupu** k prostředkům Centra událostí pomocí SAS naleznete v [tomto článku](authorize-access-shared-access-signature.md). 
+Tento článek popisuje ověření přístupu k prostředkům Event Hubs pomocí SAS. Další informace o **autorizaci** přístupu k prostředkům Event HUBS pomocí SAS najdete v [tomto článku](authorize-access-shared-access-signature.md). 
 
 > [!NOTE]
-> Společnost Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné jako osvědčený postup zabezpečení, spíše než pomocí sdílených přístupových podpisů, které mohou být snadněji ohroženy. Zatímco můžete i nadále používat sdílené přístupové podpisy (SAS) k udělení jemně odstupňovaného přístupu k prostředkům centra událostí, Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo se obávat zrušení ohroženého SAS.
+> Microsoft doporučuje používat přihlašovací údaje Azure AD, pokud je to možné, a ne používat sdílené přístupové podpisy, které můžou být snáze ohrožené. I když můžete nadále používat sdílené přístupové podpisy (SAS) pro udělení jemně odstupňovaného přístupu k prostředkům Event Hubs, Azure AD nabízí podobné možnosti bez nutnosti spravovat tokeny SAS nebo se starat o odvolání napadeného SAS.
 > 
-> Další informace o integraci Azure AD v Azure Event Hubs najdete v [tématu Autorizace přístupu k event hubům pomocí Azure AD](authorize-access-azure-active-directory.md). 
+> Další informace o integraci Azure AD v Azure Event Hubs najdete v tématu [autorizace přístupu k Event Hubs pomocí Azure AD](authorize-access-azure-active-directory.md). 
 
 
-## <a name="configuring-for-sas-authentication"></a>Konfigurace ověřování SAS
-Pravidlo autorizace sdíleného přístupu EventHubs můžete nakonfigurovat v oboru názvů Event Hubs nebo v entitě (instance centra událostí nebo téma Kafka v centru událostí). Konfigurace pravidla autorizace sdíleného přístupu pro skupinu spotřebitelů není aktuálně podporována, ale můžete použít pravidla nakonfigurovaná v oboru názvů nebo entitě k zabezpečení přístupu ke skupině spotřebitelů. 
+## <a name="configuring-for-sas-authentication"></a>Konfigurace pro ověřování SAS
+Autorizační pravidlo sdíleného přístupu EventHubs můžete nakonfigurovat pro obor názvů Event Hubs, nebo entitu (instance centra událostí nebo Kafka v centru událostí). Konfigurace autorizačního pravidla sdíleného přístupu není v současnosti podporovaná pro skupinu uživatelů, ale k zabezpečení přístupu ke skupině uživatelů můžete použít pravidla konfigurovaná pro obor názvů nebo entitu. 
 
-Následující obrázek znázorňuje, jak platí pravidla autorizace na ukázkové entity. 
+Následující obrázek ukazuje, jak se pravidla autorizace vztahují k ukázkovým entitám. 
 
-![Konfigurace pravidla autorizace](./media/authenticate-shared-access-signature/configure-sas-authorization-rule.png)
+![Konfigurovat autorizační pravidlo](./media/authenticate-shared-access-signature/configure-sas-authorization-rule.png)
 
-V tomto příkladu ukázkový obor názvů Event Hubs (ExampleNamespace) má dvě entity: eh1 a topic1. Autorizační pravidla jsou definována jak na úrovni entity, tak na úrovni oboru názvů.  
+V tomto příkladu má ukázkový Event Hubs obor názvů (ExampleNamespace) dvě entity: EH1 a topic1. Autorizační pravidla jsou definována na úrovni entity a také na úrovni oboru názvů.  
 
-Pravidla autorizace manageRuleNS, sendRuleNS a listenRuleNS platí pro jak instanci centra událostí eh1, tak pro téma t1. Pravidla autorizace listenRule-eh a sendRule-eh se vztahují pouze na instanci centra událostí eh1 a pravidlo autorizace sendRuleT platí pouze pro téma 1. 
+Autorizační pravidla manageRuleNS, sendRuleNS a listenRuleNS se vztahují na instanci centra událostí EH1 i pro téma T1. Autorizační pravidla listenRule-EH a sendRule-eh se vztahují pouze na instance centra událostí EH1 a pravidlo autorizace sendRuleT se vztahuje pouze na téma topic1. 
 
-Při použití pravidla autorizace sendRuleNS mohou klientské aplikace odesílat do eh1 i topic1. Při odesíláníRuleT autorizační pravidlo se používá, vynucuje podrobný přístup k topic1 pouze, a proto klientské aplikace pomocí tohoto pravidla pro přístup nyní nelze odeslat eh1, ale pouze topic1.
+Při použití autorizačního pravidla sendRuleNS můžou klientské aplikace posílat do EH1 i topic1. Při použití autorizačního pravidla sendRuleT vynutilo podrobný přístup pouze k topic1, takže klientské aplikace používající toto pravidlo pro přístup teď nemohou odesílat do EH1, ale pouze do topic1.
 
-## <a name="generate-a-shared-access-signature-token"></a>Generovat token sdíleného přístupového podpisu 
-Každý klient, který má přístup k názvu autorizačního pravidla a jednomu z jeho podpisových klíčů, může vygenerovat token SAS. Token je generován crafting řetězec v následujícím formátu:
+## <a name="generate-a-shared-access-signature-token"></a>Generování tokenu sdíleného přístupového podpisu 
+Každý klient, který má přístup k názvu autorizačního pravidla a jeden z jeho podpisových klíčů, může generovat token SAS. Token je vygenerován vytvořením řetězce v následujícím formátu:
 
-- `se`– Okamžik vypršení platnosti tokenu. Celé číslo odrážející sekundy od epochy 00:00:00 UTC 1.
-- `skn`– Název autorizačního pravidla, tedy název klíče SAS.
-- `sr`– Identifikátor URI prostředku, ke který se přistupuje.
-- `sig`– Podpis.
+- `se`– Okamžité vypršení platnosti tokenu Celé číslo odrážející sekundy od epocha 00:00:00 UTC dne 1. ledna 1970 (UNIX epocha) po vypršení platnosti tokenu
+- `skn`– Název autorizačního pravidla, které je název klíče SAS.
+- `sr`– Identifikátor URI přistupované prostředku.
+- `sig`Označení.
 
-Řetězec podpisu je algoritmus hash SHA-256 vypočítaný přes identifikátor URI prostředku (obor popsaný v předchozí části) a řetězcovou reprezentaci okamžité vypršení platnosti tokenu oddělené crlf.
+Řetězec signatury je hodnota hash SHA-256 vypočítaná přes identifikátor URI prostředku (rozsah jak je popsáno v předchozí části) a řetězcové vyjádření konce platnosti tokenu, které je oddělené znakem CRLF.
 
-Výpočthas vypadá podobně jako následující pseudo kód a vrátí hodnotu hash 256-bit/32 bajtů. 
+Výpočet hodnoty hash se podobá následujícímu pseudo kódu a vrací hodnotu hash s 256 bity a 32 bajty. 
 
 ```
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-Token obsahuje hodnoty bez hodnoty hash tak, aby příjemce můžete přepočítat hash se stejnými parametry, ověření, že vystavitel je držitelem platného podpisového klíče.
+Token obsahuje hodnoty, které nejsou hash, aby příjemce mohl znovu vypočítat hodnotu hash se stejnými parametry a ověřit, zda má Vystavitel k dispozici platný podpisový klíč.
 
-Identifikátor URI prostředku je úplný identifikátor URI prostředku služby Service Bus, ke kterému je nárokován přístup. Například http://<namespace><entityPath> .servicebus.windows.net/ `sb://<namespace>.servicebus.windows.net/<entityPath>;` nebo `http://contoso.servicebus.windows.net/eventhubs/eh1`tom je .
+Identifikátor URI prostředku je úplný identifikátor URI Service Bus prostředku, ke kterému je nárok na přístup. Například http://<namespace>. ServiceBus.Windows.NET/<entityPath> nebo `sb://<namespace>.servicebus.windows.net/<entityPath>;` to znamená. `http://contoso.servicebus.windows.net/eventhubs/eh1`
 
-Identifikátor URI musí být kódován procentuální.
+Identifikátor URI musí být kódovaný v procentech.
 
-Pravidlo autorizace sdíleného přístupu používané pro podepisování musí být nakonfigurováno na entitě určené tímto identifikátorem URI nebo u jedné z jejích hierarchických nadřazených položek. Například `http://contoso.servicebus.windows.net/eventhubs/eh1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
+Autorizační pravidlo sdíleného přístupu použité pro podepisování musí být nakonfigurováno pro entitu určenou tímto identifikátorem URI nebo jedním z jeho hierarchických nadřazených prvků. Například `http://contoso.servicebus.windows.net/eventhubs/eh1` nebo `http://contoso.servicebus.windows.net` v předchozím příkladu.
 
-Token SAS je platný pro všechny <resourceURI> prostředky s předponou s použitým v řetězci podpisu.
+Token SAS je platný pro všechny prostředky s předponou <resourceURI> použitou v řetězci signatury.
 
 > [!NOTE]
-> Vygenerujete přístupový token pro centra událostí pomocí zásad sdíleného přístupu. Další informace naleznete v [tématu Zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
+> Vygenerujete přístupový token pro Event Hubs pomocí zásad sdíleného přístupu. Další informace najdete v tématu [zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
 
-### <a name="generating-a-signaturetoken-from-a-policy"></a>Generování podpisu(tokenu) ze zásady 
-Následující část ukazuje generování tokenu SAS pomocí zásad y podpisu sdíleného přístupu,
+### <a name="generating-a-signaturetoken-from-a-policy"></a>Generování signatury (tokenu) ze zásady 
+V následující části se dozvíte, jak vygenerovat token SAS pomocí zásad sdíleného přístupového podpisu.
 
 #### <a name="nodejs"></a>NodeJS
 
@@ -95,7 +95,7 @@ function createSharedAccessToken(uri, saName, saKey) {
         encodeURIComponent(hash) + '&se=' + ttl + '&skn=' + saName; 
 ```
 
-#### <a name="java"></a>Java
+#### <a name="java"></a>Kompilátor
 
 ```java
 private static String GetSASToken(String resourceUri, String keyName, String key)
@@ -178,19 +178,19 @@ private static string createToken(string resourceUri, string keyName, string key
 }
 ```
 
-## <a name="authenticating-event-hubs-publishers-with-sas"></a>Ověřování vydavatelů event hubů pomocí SAS 
-Vydavatel události definuje virtuální koncový bod pro centrum událostí. Vydavatele lze použít pouze k odesílání zpráv do centra událostí a nepřijímat zprávy.
+## <a name="authenticating-event-hubs-publishers-with-sas"></a>Ověřování Event Hubs vydavatelů pomocí SAS 
+Vydavatel události definuje virtuální koncový bod pro centrum událostí. Vydavatel se dá použít jenom k posílání zpráv do centra událostí a nepřijímá zprávy.
 
-Centrum událostí obvykle zaměstnává jednoho vydavatele na klienta. Všechny zprávy, které jsou odesílány některému z vydavatelů centra událostí, jsou zařazeny do fronty v rámci tohoto centra událostí. Vydavatelé povolují jemně odstupňované řízení přístupu.
+Centrum událostí obvykle využívá jednoho vydavatele na každého klienta. Všechny zprávy, které jsou odeslány všem vydavatelům centra událostí, jsou zařazeny do fronty v rámci tohoto centra událostí. Vydavatelé umožňují jemně odstupňované řízení přístupu.
 
-Každému klientovi event hubů je přiřazen jedinečný token, který se nahraje do klienta. Tokeny jsou vytvořeny tak, že každý jedinečný token uděluje přístup k jinému jedinečnému vydavateli. Klient, který obsahuje token, může odeslat pouze jednomu vydavateli a žádnému jinému vydavateli. Pokud více klientů sdílí stejný token, každý z nich sdílí vydavatele.
+Každému klientovi Event Hubs je přiřazen jedinečný token, který se nahraje do klienta. Tokeny jsou vytvořeny tak, že každý jedinečný token udělí přístup jinému jedinečnému vydavateli. Klient, který obsahuje token, lze odeslat pouze jednomu vydavateli a žádnému vydavateli. Pokud stejný token sdílí více klientů, pak každý z nich sdílí vydavatele.
 
-Všechny tokeny jsou přiřazeny pomocí klíčů SAS. Obvykle jsou všechny tokeny podepsány stejným klíčem. Klienti nejsou vědomi klíče, který brání klientům ve výrobě tokenů. Klienti pracují na stejných tokenech, dokud nevyprší jejich platnost.
+Všechny tokeny jsou přiřazeny k klíčům SAS. Všechny tokeny jsou obvykle podepsány stejným klíčem. Klienti si nevědí, že se jedná o klíč, který brání klientům ze zpracovatelských tokenů. Klienti pracují se stejnými tokeny, dokud nevyprší jejich platnost.
 
-Chcete-li například definovat autorizační pravidla s rozsahem pouze na odesílání a publikování do centra událostí, musíte definovat pravidlo autorizace odesílání. To lze provést na úrovni oboru názvů nebo dát podrobnější rozsah pro konkrétní entitu (instance centra událostí nebo téma). Klient nebo aplikace, která je vymezena s takovým podrobným přístupem se nazývá vydavatel Centra událostí. Postup je následující:
+Pokud chcete například definovat autorizační pravidla s rozsahem, aby se odesílaly a publikují jenom Event Hubs, musíte definovat autorizační pravidlo pro odeslání. To se dá udělat na úrovni oboru názvů nebo podrobnější rozsah konkrétní entity (instance centra událostí nebo téma). Je volán klient nebo aplikace s tímto detailním přístupem, Event Hubs Vydavatel. Postup je následující:
 
-1. Vytvořte klíč SAS pro entitu, kterou chcete publikovat, abyste mu přiřadili obor **odeslání.** Další informace naleznete v [tématu Zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
-2. Vygenerujte token SAS s časem vypršení platnosti pro konkrétního vydavatele pomocí klíče generovaného v kroku 1.
+1. Vytvořte klíč SAS na entitě, kterou chcete publikovat, a přiřaďte obor pro **odeslání** . Další informace najdete v tématu [zásady autorizace sdíleného přístupu](authorize-access-shared-access-signature.md#shared-access-authorization-policies).
+2. Vygenerujte token SAS s časem vypršení platnosti konkrétního vydavatele pomocí klíče vygenerovaného v Krok 1.
 
     ```csharp
     var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
@@ -201,37 +201,37 @@ Chcete-li například definovat autorizační pravidla s rozsahem pouze na odes�
                 "sas-key",
                 TimeSpan.FromMinutes(30));
     ```
-3. Zadejte token klientovi vydavatele, který může odeslat pouze entitě a vydavateli, ke kterému token uděluje přístup.
+3. Poskytněte token pro klienta vydavatele, který může odeslat pouze entitě a vydavateli, ke kterému token udělí přístup.
 
-    Po vypršení platnosti tokenu klient ztratí přístup k odeslání nebo publikování do entity. 
+    Po vypršení platnosti tokenu ztratí klient svůj přístup k odeslání nebo publikování do entity. 
 
 
 > [!NOTE]
-> I když se to nedoporučuje, je možné vybavit zařízení tokeny, které udělují přístup k centru událostí nebo oboru názvů. Jakékoli zařízení, které obsahuje tento token můžete odesílat zprávy přímo do centra událostí. Kromě toho zařízení nemůže být na černé listině z odesílání do tohoto centra událostí.
+> I když se to nedoporučuje, je možné zařízení s tokeny, která udělují přístup k centru událostí nebo k oboru názvů, nabavit. Jakékoli zařízení, které obsahuje tento token, může odesílat zprávy přímo do tohoto centra událostí. Zařízení se navíc nedá od odeslání do tohoto centra událostí vyvažovat za zakázané.
 > 
-> Vždy se doporučuje poskytnout specifické a podrobné rozsahy.
+> Vždy doporučujeme zadat konkrétní a podrobné obory.
 
 > [!IMPORTANT]
-> Po vytvoření tokeny, každý klient je zřízena s vlastním jedinečnýtoken.
+> Po vytvoření tokenů se každý klient zřídí s vlastním jedinečným tokenem.
 >
-> Když klient odešle data do centra událostí, označí jeho požadavek tokenem. Chcete-li zabránit útočníkovi v odposlouchávání a krádeži tokenu, musí dojít ke komunikaci mezi klientem a centrem událostí prostředkem šifrovaného kanálu.
+> Když klient odešle data do centra událostí, označí svůj požadavek tokenem. Aby se zabránilo útočníkovi v odposlouchávání a krádeži tokenu, komunikace mezi klientem a centrem událostí musí probíhat přes zašifrovaný kanál.
 > 
-> Pokud útočník ukradne token, může se zosobnit klienta, jehož token byl odcizen. Zařazení na černou listinu vydavatele vykreslí tohoto klienta jako nepoužitelný, dokud neobdrží nový token, který používá jiného vydavatele.
+> Pokud je token odcizen útočníkem, může útočník zosobnit klienta, jehož token byl ukraden. Když je Vydavatel zakázaný, vykreslí ho jako nepoužitelný, dokud neobdrží nový token, který používá jiného vydavatele.
 
 
-## <a name="authenticating-event-hubs-consumers-with-sas"></a>Ověřování spotřebitelů event hubů pomocí SAS 
-K ověření back-endových aplikací, které spotřebovávají z dat generovaných výrobci event hubů, vyžaduje ověřování tokenů event hubů, aby jeho klienti měli buď práva **ke správě,** nebo oprávnění **pro naslouchání** přiřazená k oboru názvů Event Hubs nebo instancím nebo tématu centra událostí. Data se spotřebovávají z centra událostí pomocí skupin spotřebitelů. Zatímco zásady SAS poskytuje podrobný rozsah, tento obor je definován pouze na úrovni entity a nikoli na úrovni příjemce. Znamená to, že oprávnění definovaná na úrovni oboru názvů nebo instance centra událostí nebo na úrovni tématu budou použita pro skupiny spotřebitelů této entity.
+## <a name="authenticating-event-hubs-consumers-with-sas"></a>Ověřování Event Hubsch uživatelů pomocí SAS 
+K ověření back-endové aplikace, které využívají data generovaná Event Hubsmi výrobci, Event Hubs ověřování tokenu vyžaduje, aby klienti měli oprávnění ke **správě** nebo aby mohla mít oprávnění k **naslouchání** přiřazená ke svému oboru názvů Event Hubs nebo instanci centra událostí nebo téma. Data se spotřebují z Event Hubs pomocí skupin uživatelů. I když vám zásada SAS poskytuje podrobný rozsah, je tento obor definovaný jenom na úrovni entity a ne na úrovni spotřebitele. To znamená, že oprávnění definovaná na úrovni oboru názvů nebo instance centra událostí nebo na úrovni tématu se použijí na skupiny uživatelů dané entity.
 
 ## <a name="next-steps"></a>Další kroky
 Viz následující články:
 
-- [Autorizace pomocí SAS](authenticate-shared-access-signature.md)
-- [Autorizace pomocí řízení přístupu základu role (RBAC)](authenticate-shared-access-signature.md)
-- [Další informace o centrech událostí](event-hubs-about.md)
+- [Autorizovat pomocí SAS](authenticate-shared-access-signature.md)
+- [Autorizovat pomocí řízení přístupu na základě role (RBAC)](authenticate-shared-access-signature.md)
+- [Další informace o Event Hubs](event-hubs-about.md)
 
 Podívejte se na následující související články:
 
-- [Ověřování požadavků na Centra událostí Azure z aplikace pomocí Služby Azure Active Directory](authenticate-application.md)
-- [Ověření spravované identity pomocí Služby Azure Active Directory pro přístup k prostředkům centra událostí](authenticate-managed-identity.md)
-- [Autorizace přístupu k prostředkům Centra událostí pomocí Služby Azure Active Directory](authorize-access-azure-active-directory.md)
-- [Autorizace přístupu k prostředkům Centra událostí pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)
+- [Ověřování požadavků do Azure Event Hubs z aplikace pomocí Azure Active Directory](authenticate-application.md)
+- [Ověření spravované identity pomocí Azure Active Directory pro přístup k prostředkům Event Hubs](authenticate-managed-identity.md)
+- [Autorizace přístupu k prostředkům Event Hubs pomocí Azure Active Directory](authorize-access-azure-active-directory.md)
+- [Autorizace přístupu k prostředkům Event Hubs pomocí sdílených přístupových podpisů](authorize-access-shared-access-signature.md)

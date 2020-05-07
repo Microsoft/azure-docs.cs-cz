@@ -1,6 +1,6 @@
 ---
 title: zahrnout soubor
-description: zahrnout soubor pro průmysltaxonomie
+description: zahrnout soubor pro odvětví taxonomie
 documentationcenter: partner-center-commercial-marketplace
 author: qianw211
 ms.author: dsindona
@@ -10,31 +10,31 @@ ms.topic: include
 ms.date: 09/20/2019
 ms.custom: include file
 ms.openlocfilehash: 19fac46fae2ae938c4ed00967171067ec9f67435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80277249"
 ---
-Volitelně můžete vybrat až dvě odvětví a dvě vertikály v rámci každého odvětví. Tyto kategorie se používají pro zobrazení vaší nabídky, když se průmysl a vertikály používají ve vyhledávacích filtrech a používají se ve výkladní skříni.  Pokud vaše nabídka cílí na konkrétní odvětví a/nebo vertikální, nezapomeňte v popisu nabídky popsat, jak vaše nabídka podporuje vybraná odvětví nebo vertikály.  V opačném případě, pokud vaše nabídka není specifická pro dané odvětví, neprovádělte výběr a tuto část ponechte prázdnou.
+Volitelně můžete vybrat až dva obory a dvě svislá v rámci každého odvětví. Tyto kategorie slouží k zobrazení vaší nabídky, pokud se ve vyhledávacích filtrech používá obor a svislá a používají se v prezentace.  Pokud je vaše nabídka cílena na konkrétní obor a/nebo vertikálně, ujistěte se, jak vaše nabídka podporuje vybrané obory nebo svislé čáry v popisu nabídky.  V opačném případě, pokud vaše nabídka není specifická pro konkrétní obor, neprovádějte výběr a ponechte tuto část prázdnou.
 
 >[!NOTE]
->Vzhledem k tomu, že pracujeme na zavádění nových průmyslových odvětví a vertikál, abychom zlepšili zkušenosti s objevováním nabídek, některá odvětví nebo vertikály ještě nemusí být na výloze viditelné. Průmyslová odvětví a vertikály označené (*) budou k dispozici k budoucímu datu. Všechny publikované nabídky jsou zjistitelné prostřednictvím vyhledávání klíčových slov.
+>Vzhledem k tomu, že pracujeme na zavedení nových odvětví a vertikálních vylepšení prostředí pro vyhledávání nabídek, nemusí být některé obory nebo svislé prvky na prezentace ještě viditelné. Obory a svislé označení s příponou (*) budou k dispozici v budoucím datu. Všechny publikované nabídky jsou zjistitelné přes hledání klíčových slov.
 
-| **Odvětví**    | **Pododvětví**  | 
+| **Odvětví**    | **Subobory**  | 
 | :------------------- | :-------------------|
-| *Automobilový průmysl     | *Automobilový průmysl |
-| Zemědělství     | *Ostatní - Nesegmentované |
-| Distribuce    | *Velkoobchod <br> *Přeprava balíků & balíků |
-| Education     | *Vysokoškolské vzdělávání <br> *Primární & středoškolské vzdělání / K-12 <br> *Knihovny & muzea |
-| Finanční služby     | * Bankovní & kapitálové trhy <br> *Pojištění |
-| Státní správa    | * Obranné & intelligence (dříve se nazývá národní a veřejná bezpečnost) <br> *Veřejná bezpečnost & spravedlnost <br> *Civilní vláda |
-| Zdravotní péče (dříve se nazývá zdraví)   | * Zdravotní Plátce <br> *Poskytovatel zdravotní péče <br> *Léčiva |
-| Výrobní & zdroje (dříve se nazývá Výroba)   | * Chemické & agrochemické <br> *Diskrétní výroba <br> *Energie |
-| Maloobchodní & spotřebního zboží (dříve se nazývá maloobchod)  | *Spotřební zboží <br> *Maloobchodníci |
-| *Media & Communications (dříve se nazývá Média a zábava)  | *Mediální & zábava <br> *Telekomunikace |
-| Professional Services  | *Právní <br> *Profesionální služby pro partnery |
-| *Architektura & stavebnictví (dříve se nazývá Architecture Engineering)  | *Ostatní - Nesegmentované |
-| * Pohostinství & cestování  | *Hotely & volný čas <br> * Cestování & doprava <br> *Restaurace & stravovací služby |
-| *Ostatní odvětví veřejného sektoru  | *Lesnictví & rybolov <br> *Neziskové organizace |
-| *Nemovitosti  | *Ostatní - Nesegmentované |
+| * Automobilový     | * Automobilový |
+| Zemědělství     | * Jiné – nesegmentované |
+| Distribuce    | * Velkoobchod <br> * Zásilka balíčku & expedice |
+| Education     | * Vyšší vzdělávání <br> * Primární vzdělávání sekundárního &/K-12 <br> * Knihovny & muzeí |
+| Finanční služby     | * Bankovní & kapitálové trhy <br> * Pojištění |
+| Státní správa    | * Obrana & Intelligence (používá se pro volání národního a veřejného zabezpečení) <br> * Státní bezpečnost & spravedlnosti <br> * Civilní samospráva |
+| Zdravotní péče (používá se pro volání stavu)   | * Plátce stavu <br> * Poskytovatel stavu <br> * Farmaceutické výrobky |
+| Prostředky výrobního & (používá se pro volání výroby)   | * Chemický & Agrochemical <br> * Diskrétní výroba <br> * Energie |
+| Maloobchodní & spotřební zboží (používá se pro volání maloobchodního prodeje)  | * Spotřební zboží <br> * Maloobchodní prodejci |
+| * Media & komunikace (používá se pro volání médií a zábavy)  | * Media & Entertainment <br> * Telekomunikace |
+| Professional Services  | * Právní <br> * Partnerské služby partnerů |
+| * Architektura & konstrukce (používá se pro volání techniků architektury)  | * Jiné – nesegmentované |
+| * Pohostinství & cestování  | * Hotely & volný čas <br> * Cestovní & Transport <br> * Restaurace & potravinové služby |
+| * Ostatní odvětví veřejného sektoru  | * Lesní & rybolov <br> * Neziskové |
+| * Nemovitosti  | * Jiné – nesegmentované |

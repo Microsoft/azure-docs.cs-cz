@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ac1ed9ac25d65d0391175fc6d43b48048da74926
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101582"
 ---
 # <a name="security-controls-for-windows-virtual-machines"></a>Ovládací prvky zabezpečení pro Windows Virtual Machines
@@ -36,7 +36,7 @@ Tento článek popisuje ovládací prvky zabezpečení integrované do Windows V
 |---|---|--|
 | Podpora monitorování Azure (Log Analytics, App Insights atd.)| Ano | [Monitorujte a aktualizujte virtuální počítač s Windows v Azure](tutorial-monitoring.md). |
 | Protokolování a audit roviny řízení a správy| Ano |  |
-| Protokolování a audit roviny dat | Ne |  |
+| Protokolování a audit roviny dat | No |  |
 
 ## <a name="identity"></a>Identita
 

@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131418"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561024"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování pro Azure IoT Edge
 
@@ -100,6 +100,13 @@ V této části vytvoříte nový kanál sestavení. Nakonfigurujte, aby se kan�
    * **Výchozí platforma**: vyberte příslušnou platformu pro vaše moduly na základě vašeho cílového zařízení IoT Edge.
    * **Výstupní proměnné**: výstupní proměnné obsahují referenční název, který můžete použít ke konfiguraci cesty k souboru, ve kterém se soubor Deployment. JSON vygeneruje. Nastavte název odkazu na něco, co se zapamatovat jako **Edge**.
 
+
+   Tyto konfigurace používají úložiště a značku bitové kopie, které jsou definovány v `module.json` souboru pro pojmenování a označení image modulu. **Image modulu sestavení** také pomáhají nahradit proměnné stejnou hodnotou, kterou definujete v `module.json` souboru. V aplikaci Visual Studio nebo Visual Studio Code zadáváte skutečnou hodnotu v `.env` souboru. V Azure Pipelines nastavte hodnotu na kartě **proměnné kanálu** . Vyberte kartu **proměnné** a nakonfigurujte název a hodnotu následujícím způsobem:
+
+    * **ACR_ADDRESS**: vaše Azure Container Registry adresa. 
+
+    Pokud máte v projektu jiné proměnné, můžete na této kartě zadat název a hodnotu. **Image modulu sestavení** rozpoznává pouze proměnné, které jsou ve `${VARIABLE}` formátu. Ujistěte se, že ve svých `**/module.json` souborech používáte tento formát.
+    
 7. Vyberte druhý úkol **Azure IoT Edge** , který chcete upravit. Tato úloha vloží všechny image modulu do registru kontejneru, který jste vybrali.
 
    * **Zobrazovaný název**: zobrazovaný název se automaticky aktualizuje při změně pole akce.

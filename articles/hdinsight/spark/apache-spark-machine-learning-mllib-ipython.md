@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/16/2020
-ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531129"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559935"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
 
-Naučte se, jak pomocí Apache Spark [MLlib](https://spark.apache.org/mllib/) vytvořit aplikaci Machine Learning. Aplikace bude provádět prediktivní analýzu otevřené datové sady. Z vestavěných knihoven strojového učení Spark používá tento příklad *klasifikaci* prostřednictvím logistické regrese.
+Naučte se, jak pomocí Apache Spark MLlib vytvořit aplikaci Machine Learning. Aplikace bude provádět prediktivní analýzu otevřené datové sady. Z vestavěných knihoven strojového učení Spark používá tento příklad *klasifikaci* prostřednictvím logistické regrese.
 
 MLlib je základní knihovna Sparku, která poskytuje mnoho nástrojů užitečných pro úlohy strojového učení, jako je například:
 
@@ -180,7 +180,7 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
 
     ![Výstup dotazu SQL](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "Výstup dotazu SQL")
 
-3. Můžete také použít [matplotlib](https://en.wikipedia.org/wiki/Matplotlib), knihovnu, která slouží k vytváření vizualizace dat, k vytvoření grafu. Vzhledem k tomu, že je nutné vytvořit vykreslení z místně trvalého datového rámce **countResultsdf** , musí fragment kódu začínat `%%local` Magic. Tato akce zajistí, že se kód spustí místně na serveru Jupyter.
+3. Můžete také použít matplotlib, knihovnu, která slouží k vytváření vizualizace dat, k vytvoření grafu. Vzhledem k tomu, že je nutné vytvořit vykreslení z místně trvalého datového rámce **countResultsdf** , musí fragment kódu začínat `%%local` Magic. Tato akce zajistí, že se kód spustí místně na serveru Jupyter.
 
     ```PySpark
     %%local
@@ -362,28 +362,5 @@ Po dokončení spuštění aplikace byste měli Poznámkový blok vypnout a uvol
 ## <a name="next-steps"></a>Další kroky
 
 * [Přehled: Apache Spark v Azure HDInsight](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Scénáře
-
-* [Apache Spark s BI: interaktivní analýza dat pomocí Sparku ve službě HDInsight s nástroji BI](apache-spark-use-bi-tools.md)
-* [Apache Spark s Machine Learning: pomocí Sparku v HDInsight můžete analyzovat teplotu budovy pomocí dat TVK.](apache-spark-ipython-notebook-machine-learning.md)
 * [Analýza webového protokolu pomocí Apache Spark ve službě HDInsight](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Vytvoření a spouštění aplikací
-
-* [Vytvoření samostatné aplikace pomocí Scala](apache-spark-create-standalone-application.md)
-* [Vzdálené spouštění úloh na clusteru Apache Spark s využitím Apache Livy](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Nástroje a rozšíření
-
-* [Modul plug-in nástroje HDInsight pro IntelliJ IDEA pro vytvoření a odesílání aplikací Spark Scala](apache-spark-intellij-tool-plugin.md)
-* [Použití modulu plug-in nástrojů HDInsight pro IntelliJ NÁPADu při vzdáleném ladění aplikací Apache Spark](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Použití poznámkových bloků Apache Zeppelin s clusterem Apache Spark v HDInsight](apache-spark-zeppelin-notebook.md)
-* [Jádra dostupná pro Poznámkový blok Jupyter v clusteru Apache Spark pro HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Použijte externí balíčky s poznámkovými bloky Jupyter](apache-spark-jupyter-notebook-use-external-packages.md)
-* [Nainstalujte do počítače Jupyter a připojte ho ke clusteru HDInsight Spark](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Správa prostředků
-
-* [Správa prostředků v clusteru Apache Spark v Azure HDInsight](apache-spark-resource-manager.md)
-* [Sledování a ladění úloh spuštěných v clusteru serveru Apache Spark v HDInsight](apache-spark-job-debugging.md)
+* [Microsoft Cognitive Toolkit model hloubkového učení s využitím Azure HDInsight](apache-spark-microsoft-cognitive-toolkit.md)

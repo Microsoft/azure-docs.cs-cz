@@ -1,6 +1,6 @@
 ---
-title: Použití Akka Streams pro Apache Kafka - Azure Event Hubs| Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o tom, jak připojit Akka Streams do centra událostí Azure.
+title: Použití datových proudů Akka pro Apache Kafka – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak připojit Akka datové proudy k centru událostí Azure.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,28 +12,28 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: shvija
 ms.openlocfilehash: 0b96f1448fd223aae2dde77c5c05a8c9bd74ee9b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632841"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Použití Akka Streams se službou Event Hubs pro Apache Kafka
-Tento kurz ukazuje, jak připojit Akka Streams k centru událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1.0.](https://kafka.apache.org/10/documentation.html)
+V tomto kurzu se dozvíte, jak propojit Akka datové proudy s centrem událostí bez změny klientů protokolu nebo spuštění vlastních clusterů. Azure Event Hubs pro Kafka podporuje [Apache Kafka verze 1,0.](https://kafka.apache.org/10/documentation.html)
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Vytvoření oboru názvů služby Event Hubs
 > * Naklonování ukázkového projektu
-> * Spustit Akka Streams výrobce 
-> * Spustit akka streamy spotřebitele
+> * Spustit producenta streamování Akka 
+> * Spustit příjemce streamování Akka
 
 > [!NOTE]
-> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java)
+> Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) .
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpoklady:
+K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 * Přečtěte si článek [Event Hubs pro Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Předplatné Azure. Pokud ho nemáte, než začnete, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
@@ -47,26 +47,26 @@ Chcete-li dokončit tento kurz, ujistěte se, že máte následující předpokl
 
 ## <a name="create-an-event-hubs-namespace"></a>Vytvoření oboru názvů služby Event Hubs
 
-Obor názvů Event Hubs je vyžadován k odesílání nebo přijímání z libovolné služby Event Hubs. Podrobné informace najdete [v tématu Vytvoření centra událostí.](event-hubs-create.md) Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
+K odeslání nebo přijetí z jakékoli služby Event Hubs se vyžaduje Event Hubs obor názvů. Podrobné informace najdete v tématu [vytvoření centra událostí](event-hubs-create.md) . Nezapomeňte zkopírovat připojovací řetězec Event Hubs pro pozdější použití.
 
 ## <a name="clone-the-example-project"></a>Naklonování ukázkového projektu
 
-Teď, když máte připojovací řetězec Event Hubs, klonujte Azure Event Hubs `akka` pro úložiště Kafka a přejděte do podsložky:
+Teď, když máte Event Hubs připojovací řetězec, naklonujte Azure Event Hubs pro úložiště Kafka a přejděte do `akka` podsložky:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
 cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
-## <a name="run-akka-streams-producer"></a>Spustit Akka Streams výrobce
+## <a name="run-akka-streams-producer"></a>Spustit producenta streamování Akka
 
-Pomocí uvedeného příkladu výrobce Akka Streams odesílejte zprávy službě Event Hubs.
+Pomocí poskytnutého příkladu producenta Akka streamy odešlete zprávy službě Event Hubs.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Poskytnutí koncového bodu Kafka centra událostí
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="producer-applicationconf"></a>Výrobce application.conf
+#### <a name="producer-applicationconf"></a>Aplikace producenta. conf
 
-Aktualizujte `bootstrap.servers` `sasl.jaas.config` hodnoty `producer/src/main/resources/application.conf` a v aplikaci a nasměrujte producenta na koncový bod Event Hubs Kafka se správným ověřováním.
+Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `producer/src/main/resources/application.conf` nástroji a nasměrujte producent na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 akka.kafka.producer {
@@ -84,26 +84,26 @@ akka.kafka.producer {
 }
 ```
 
-### <a name="run-producer-from-the-command-line"></a>Spustit výrobce z příkazového řádku
+### <a name="run-producer-from-the-command-line"></a>Spustit producenta z příkazového řádku
 
-Chcete-li spustit výrobce z příkazového řádku, vygenerujte JAR a pak spustit z evnitř Maven (nebo generovat JAR pomocí Maven, pak spustit v Jazyce Java přidáním potřebné Kafka JAR (y) do třídy):
+Pokud chcete spustit producenta z příkazového řádku, vygenerujte JAR a pak ho spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním nezbytných Kafka JAR do cesty k cestě):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 ```
 
-Producent začne odesílat události do centra `test`událostí v tématu a vytiskne události stdout.
+Producent zahájí odesílání událostí do centra událostí v tématu `test`a vytiskne události do STDOUT.
 
-## <a name="run-akka-streams-consumer"></a>Spustit akka streamy spotřebitele
+## <a name="run-akka-streams-consumer"></a>Spustit příjemce streamování Akka
 
-Pomocí uvedeného spotřebitele příklad přijímat zprávy z centra událostí.
+Pomocí poskytnutého příkladu příjemce přijímají zprávy z centra událostí.
 
-### <a name="provide-an-event-hubs-kafka-endpoint"></a>Poskytnutí koncového bodu Kafka centra událostí
+### <a name="provide-an-event-hubs-kafka-endpoint"></a>Zadejte Event Hubs koncový bod Kafka.
 
-#### <a name="consumer-applicationconf"></a>Spotřebitelská aplikace.conf
+#### <a name="consumer-applicationconf"></a>Aplikace příjemce. conf
 
-Aktualizujte `bootstrap.servers` `sasl.jaas.config` hodnoty `consumer/src/main/resources/application.conf` a v aplikaci a nasměrujte spotřebitele na koncový bod Event Hubs Kafka se správným ověřováním.
+Aktualizujte `bootstrap.servers` hodnoty `sasl.jaas.config` a v `consumer/src/main/resources/application.conf` nástroji a nasměrujte uživatele na Event Hubs koncový bod Kafka se správným ověřením.
 
 ```xml
 akka.kafka.consumer {
@@ -124,25 +124,25 @@ akka.kafka.consumer {
 }
 ```
 
-### <a name="run-consumer-from-the-command-line"></a>Spuštění příjemce z příkazového řádku
+### <a name="run-consumer-from-the-command-line"></a>Spustit příjemce z příkazového řádku
 
-Chcete-li spustit příjemce z příkazového řádku, vygenerujte JAR a pak spustit z evnitř Maven (nebo generovat JAR pomocí Maven, pak spustit v jazyce Java přidáním potřebné Kafka JAR (y) do třídy):
+Pokud chcete spustit příjemce z příkazového řádku, vygenerujte JAR a pak spusťte z Maven (nebo vygenerujte JAR pomocí Maven a pak spusťte v jazyce Java přidáním potřebných Kafka JAR do cesty pro cestu):
 
 ```shell
 mvn clean package
 mvn exec:java -Dexec.mainClass="AkkaTestConsumer"
 ```
 
-Pokud centrum událostí obsahuje události (například pokud je spuštěn také váš výrobce), `test`pak spotřebitel začne přijímat události z tématu . 
+Pokud má centrum událostí události (například pokud je váš výrobce spuštěný), pak příjemce začne přijímat události z tématu `test`. 
 
-Podrobnější informace o Akka Streams vám najdete v [průvodci Akka Streams Kafka.](https://doc.akka.io/docs/akka-stream-kafka/current/home.html)
+Podrobnější informace o datových proudech Akka najdete v [příručce Akka Streams Kafka](https://doc.akka.io/docs/akka-stream-kafka/current/home.html) .
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o centru událostí pro Kafku najdete v následujících článcích:  
+Další informace o Event Hubs pro Kafka najdete v následujících článcích:  
 
 - [Zrcadlení zprostředkovatele Kafka v centru událostí](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Připojení Apache Sparku k centru událostí](event-hubs-kafka-spark-tutorial.md)
 - [Připojení Apache Flinku k centru událostí](event-hubs-kafka-flink-tutorial.md)
-- [Integrace aplikace Kafka Connect s centrem událostí](event-hubs-kafka-connect-tutorial.md)
+- [Integrace Kafka Connect do centra událostí](event-hubs-kafka-connect-tutorial.md)
 - [Prozkoumejte ukázky na našem GitHubu](https://github.com/Azure/azure-event-hubs-for-kafka)
-- [Průvodce vývojáři Apache Kafka pro Azure Event Hubs](apache-kafka-developer-guide.md)
+- [Apache Kafka příručka pro vývojáře pro Azure Event Hubs](apache-kafka-developer-guide.md)

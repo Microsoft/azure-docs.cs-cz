@@ -1,6 +1,6 @@
 ---
-title: Použití nástrojů Azure IoT pro VSCode k manažerovi zasílání zpráv v CENTRU IT
-description: Zjistěte, jak pomocí nástrojů Azure IoT pro kód Visual Studia monitorovat zařízení na cloudové zprávy a odesílat zprávy z cloudu na zařízení v Azure IoT Hub.
+title: Použití nástrojů Azure IoT pro VSCode k zasílání zpráv IT centra pro správu
+description: Naučte se používat nástroje Azure IoT pro Visual Studio Code k monitorování zpráv ze zařízení do cloudu a posílání cloudu na zprávy zařízení ve službě Azure IoT Hub.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -9,77 +9,77 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682500"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití nástrojů Azure IoT pro kód Visual Studia k odesílání a přijímání zpráv mezi zařízením a službou IoT Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a IoT Hub
 
-![Diagram koncového bodu](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
+![Komplexní diagram](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
 
-[Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) je užitečné rozšíření kódu Visual Studia, které usnadňuje správu ioT hubu a vývoj aplikací IoT. Tento článek se zaměřuje na použití nástrojů Azure IoT pro kód Visual Studia k odesílání a přijímání zpráv mezi zařízením a službou IoT hub.
+[Nástroje Azure IoT](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) jsou užitečnou příponou Visual Studio Code, která usnadňuje vývoj IoT Hub a správu aplikací IoT. Tento článek se zaměřuje na použití nástrojů Azure IoT pro Visual Studio Code k posílání a přijímání zpráv mezi zařízením a službou IoT Hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>Co se naučíte
 
-Dozvíte se, jak pomocí nástrojů Azure IoT pro kód Visual Studia monitorovat zprávy mezi zařízeními a odesílat zprávy z cloudu na zařízení. Zprávy mezi zařízeními a cloudem mohou být data ze senzorů, která vaše zařízení shromažďuje a pak odesílá do vašeho centra IoT Hub. Zprávy z cloudu na zařízení mohou být příkazy, které vaše služba IoT hub odesílá do vašeho zařízení, aby blikala LED dioda připojená k vašemu zařízení.
+Naučíte se používat nástroje Azure IoT pro Visual Studio Code k monitorování zpráv ze zařízení do cloudu a k posílání zpráv z cloudu na zařízení. Zprávy ze zařízení do cloudu můžou být senzorem dat, která vaše zařízení shromažďuje a odesílá do služby IoT Hub. Zprávy z cloudu na zařízení můžou být příkazy, které vaše centrum IoT odesílá do vašeho zařízení, aby se mohl rozsvítit indikátor, který je připojený k vašemu zařízení.
 
 ## <a name="what-you-will-do"></a>Co budete dělat
 
-* Pomocí nástrojů Azure IoT pro kód Visual Studia můžete monitorovat zprávy mezi zařízeními a cloudy.
+* Pomocí nástrojů Azure IoT pro Visual Studio Code můžete monitorovat zprávy ze zařízení do cloudu.
 
-* Pomocí nástrojů Azure IoT pro kód Visual Studia můžete odesílat zprávy z cloudu na zařízení.
+* Použití nástrojů Azure IoT pro Visual Studio Code k posílání zpráv z cloudu na zařízení.
 
 ## <a name="what-you-need"></a>Co potřebujete
 
 * Aktivní předplatné Azure.
 
-* Azure IoT hub v rámci vašeho předplatného.
+* Azure IoT Hub v rámci vašeho předplatného.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [Nástroje Azure IoT pro kód VS](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte a vložte tuto adresu URL do okna prohlížeče:`vscode:extension/vsciot-vscode.azure-iot-tools`
+* [Nástroje Azure IoT pro vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nebo zkopírujte a vložte tuto adresu URL do okna prohlížeče:`vscode:extension/vsciot-vscode.azure-iot-tools`
 
-## <a name="sign-in-to-access-your-iot-hub"></a>Přihlášení pro přístup k centru IoT hub
+## <a name="sign-in-to-access-your-iot-hub"></a>Přihlaste se, abyste měli přístup ke službě IoT Hub.
 
-1. V **zobrazení Exploreru** v kódu VS rozbalte oddíl **Zařízení Azure IoT Hub** v levém dolním rohu.
+1. V **Průzkumníkovi** zobrazení vs Code rozbalte v levém dolním rohu část **Azure IoT Hub Devices** .
 
-2. V místní nabídce klikněte na **Vybrat centrum IoT Hub.**
+2. V místní nabídce klikněte na **vybrat IoT Hub** .
 
-3. V pravém dolním rohu se zobrazí vyskakovací okno, které vám umožní poprvé se přihlásit do Azure.
+3. Automaticky otevírané okno se zobrazí v pravém dolním rohu, abyste se mohli poprvé přihlásit do Azure.
 
-4. Po přihlášení se zobrazí váš seznam předplatných Azure a pak vyberte Předplatné Azure a IoT Hub.
+4. Po přihlášení se zobrazí seznam předplatných Azure a pak vyberte předplatné Azure a IoT Hub.
 
-5. Seznam zařízení se zobrazí na kartě **Zařízení Služby Azure IoT Hub** během několika sekund.
+5. Seznam zařízení se během několika sekund zobrazí na kartě **zařízení Azure IoT Hub** .
 
    > [!Note]
-   > Nastavení můžete taky dokončit výběrem možnosti **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu). Zadejte připojovací řetězec zásad **iothubowner** pro službu IoT hub, ke kterému se vaše zařízení IoT připojuje v automaticky otevíranéokno.
+   > Nastavení můžete taky dokončit výběrem možnosti **Set IoT Hub Connection String** (Nastavení připojovacího řetězce IoT Hubu). Zadejte připojovací řetězec zásad **iothubowner** pro IoT Hub, ke kterému se vaše zařízení IoT připojuje v místním okně.
 
-## <a name="monitor-device-to-cloud-messages"></a>Sledování zpráv mezi zařízeními a cloudy
+## <a name="monitor-device-to-cloud-messages"></a>Monitorování zpráv ze zařízení do cloudu
 
-Chcete-li sledovat zprávy odeslané ze zařízení do centra IoT hub, postupujte takto:
+Pokud chcete monitorovat zprávy odesílané ze zařízení do služby IoT Hub, postupujte takto:
 
-1. Klikněte pravým tlačítkem myši na zařízení a vyberte **spustit sledování integrovaného koncového bodu událostí**.
+1. Klikněte pravým tlačítkem na své zařízení a vyberte **Spustit sledování integrovaný koncový bod události**.
 
-2. Monitorované zprávy se zobrazí v zobrazení **OUTPUT** > **Azure IoT Hub.**
+2. Monitorované zprávy se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
 
-3. Chcete-li sledování zastavit, klepněte pravým tlačítkem myši na zobrazení **VÝSTUP** a vyberte příkaz **Zastavit sledování předdefinovaného koncového bodu událostí**.
+3. Chcete-li ukončit monitorování, klikněte pravým tlačítkem myši na zobrazení **výstupu** a vyberte možnost **Zastavit sledování vestavěného koncového bodu události**.
 
 ## <a name="send-cloud-to-device-messages"></a>Odesílání zpráv z cloudu do zařízení
 
-Pokud chcete do zařízení poslat zprávu z centra IoT, postupujte takto:
+Pokud chcete poslat zprávu ze služby IoT Hub do svého zařízení, postupujte podle těchto kroků:
 
-1. Klikněte pravým tlačítkem myši na zařízení a vyberte **Odeslat zprávu C2D do zařízení**.
+1. Klikněte pravým tlačítkem na zařízení a vyberte **Odeslat zprávu C2D do zařízení**.
 
-2. Zadejte zprávu do vstupního pole.
+2. Do vstupního pole zadejte zprávu.
 
-3. Výsledky se zobrazí v zobrazení **SLUŽBY OUTPUT** > **Azure IoT Hub.**
+3. Výsledky se zobrazí ve **výstupu** > zobrazení**IoT Hub v Azure** .
 
 ## <a name="next-steps"></a>Další kroky
 
-Zjistili jste, jak monitorovat zprávy mezi zařízeními a cloudy a odesílat zprávy z cloudu na zařízení mezi zařízením IoT a službou Azure IoT Hub.
+Zjistili jste, jak monitorovat zprávy ze zařízení do cloudu a jak odesílat zprávy z cloudu na zařízení mezi zařízením IoT a službou Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

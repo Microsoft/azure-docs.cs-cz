@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024256"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582557"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Zjišťování domovské sféry pro Azure Active Directory přihlašovací stránky
 
@@ -28,7 +28,7 @@ Měníme naše chování při přihlašování Azure Active Directory (Azure AD)
 
 Historicky se zjišťování domovské sféry řídí doménou, která je poskytována při přihlášení, nebo zásadou zjišťování domovské sféry pro některé starší aplikace. Například v našem chování zjišťování mohl uživatel Azure Active Directory zadat své uživatelské jméno, ale pořád přijde na obrazovku pro shromažďování přihlašovacích údajů organizace. K tomu dojde, když uživatel správně zadá název domény organizace "contoso.com". Toto chování neumožňuje přizpůsobení prostředí pro jednotlivé uživatele.
 
-Pro podporu širší škály přihlašovacích údajů a zvýšení použitelnosti se teď v průběhu procesu přihlašování aktualizuje Azure Active Directory chování vyhledávání uživatelského jména. Nové chování usnadňuje inteligentní rozhodnutí čtením nastavení na úrovni tenanta a uživatele na základě uživatelského jména zadaného na přihlašovací stránce. Aby to bylo možné, Azure Active Directory zkontroluje, jestli uživatelské jméno, které je zadáno na přihlašovací stránce, existuje v zadané doméně, nebo přesměruje uživatele na zadání přihlašovacích údajů.
+Pro podporu širší škály přihlašovacích údajů a zvýšení použitelnosti se teď v průběhu procesu přihlašování aktualizuje Azure Active Directory chování vyhledávání uživatelského jména. Nové chování usnadňuje inteligentní rozhodnutí čtením nastavení na úrovni organizace a uživatele na základě uživatelského jména zadaného na přihlašovací stránce. Aby to bylo možné, Azure Active Directory zkontroluje, jestli uživatelské jméno, které je zadáno na přihlašovací stránce, existuje v zadané doméně, nebo přesměruje uživatele na zadání přihlašovacích údajů.
 
 Další výhodou této práce je vylepšené zasílání zpráv o chybách. Tady jsou některé příklady vylepšeného zasílání zpráv o chybách při přihlašování k aplikaci, která podporuje jenom Azure Active Directory uživatele.
 

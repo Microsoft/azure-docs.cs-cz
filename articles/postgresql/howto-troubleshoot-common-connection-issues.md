@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100205"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562215"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Řešení potíží s připojením pro Azure Database for PostgreSQL – jeden server
 
@@ -49,6 +49,7 @@ Pokud se aplikace trvale nepřipojí k Azure Database for PostgreSQL, obvykle se
 * Konfigurace brány firewall serveru: Ujistěte se, že je brána firewall serveru Azure Database for PostgreSQL nakonfigurovaná tak, aby povolovala připojení z vašeho klienta, včetně proxy serverů a bran.
 * Konfigurace brány firewall klienta: Brána firewall klienta musí umožňovat připojení k vašemu databázovému serveru. IP adresy a porty serveru, které se nedají povolit, a také názvy aplikací, jako je PostgreSQL v některých branách firewall.
 * Chyba uživatele: v připojovacím řetězci můžete mít chybné typové parametry připojení, jako je název serveru nebo chybějící * \@* přípona servername v uživatelském jménu.
+* Pokud se zobrazí chybová zpráva _Server není nakonfigurovaný tak, aby povoloval připojení IPv6_, počítejte s tím, že úroveň Basic nepodporuje koncové body služby virtuální sítě. Musíte odebrat koncový bod Microsoft. SQL z podsítě, která se pokouší připojit k základnímu serveru.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Postup řešení potíží s trvalým připojením
 

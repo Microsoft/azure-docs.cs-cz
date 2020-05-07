@@ -1,5 +1,5 @@
 ---
-title: Identita identity modulu Azure IoT Hub & dvojče modulu (portál a .NET)
+title: Vlákna & modulu identity modulu Azure IoT Hub (portál a .NET)
 description: Zjistěte, jak vytvořit identitu modulu a aktualizovat dvojče modulu pomocí portálu a .NET.
 author: robinsh
 manager: philmea
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: a3258de2ed7269ab50e6feca3c421d55de5a9d91
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759781"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-the-portal-and-net-device"></a>Začínáme s identitou modulu a dvojčetem modulu služby IoT Hub pomocí portálu a zařízení .NET
@@ -22,17 +22,17 @@ ms.locfileid: "81759781"
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. Zatímco identita zařízení Azure IoT Hub a dvojče zařízení umožňují back-endové aplikaci konfigurovat zařízení a poskytovat viditelnost podmínek zařízení, identita modulu a dvojče modulu poskytují tyto funkce pro jednotlivé součásti zařízení. Na schopných zařízeních s více komponentami, jako jsou zařízení založená na operačním systému nebo zařízení firmwaru, umožňují identity modulů a dvojčata modulů izolovanou konfiguraci a podmínky pro každou komponentu.
+> [Identity modulů a dvojčata modulů](iot-hub-devguide-module-twins.md) se podobají identitě zařízení a dvojčeti zařízení služby Azure IoT Hub, ale poskytují větší úroveň členitosti. I když se v Azure IoT Hub identita zařízení a zařízení dokončí v back-endové aplikaci pro konfiguraci zařízení a zajištění viditelnosti podmínek zařízení, identita modulu a funkční vlákna poskytují tyto možnosti pro jednotlivé součásti zařízení. V zařízeních s více součástmi, jako jsou zařízení s operačním systémem nebo zařízení firmwaru, identity modulů a vlákna modulu, umožňují pro jednotlivé komponenty izolovanou konfiguraci a podmínky.
 >
 
 V tomto kurzu se dozvíte:
 
 * Jak vytvořit identitu modulu na portálu.
 
-* Jak pomocí sady SDK zařízení .NET aktualizovat dvojče modulu ze zařízení.
+* Jak použít sadu SDK pro zařízení .NET k aktualizaci nepracovního modulu z vašeho zařízení.
 
 > [!NOTE]
-> Informace o sadách Azure IoT SDK, které můžete použít k sestavení obou aplikací pro spuštění na zařízeních a back-endu vašeho řešení, najdete v [tématu sady Azure IoT SDK](iot-hub-devguide-sdks.md).
+> Informace o sadách SDK Azure IoT, které můžete použít k vytváření aplikací pro spouštění na zařízeních a back-endu vašeho řešení, najdete v tématu sady [SDK služby Azure IoT](iot-hub-devguide-sdks.md).
 >
 
 ## <a name="prerequisites"></a>Požadavky
@@ -45,25 +45,25 @@ V tomto kurzu se dozvíte:
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-hub"></a>Registrace nového zařízení v rozbočovači
+## <a name="register-a-new-device-in-the-hub"></a>Registrace nového zařízení v centru
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-module-identity-in-the-portal"></a>Vytvoření identity modulu na portálu
 
-V rámci jedné identity zařízení můžete vytvořit až 20 identit modulů. Chcete-li přidat identitu, postupujte takto:
+V rámci jedné identity zařízení můžete vytvořit až 20 identit modulů. K přidání identity použijte následující postup:
 
-1. Pro zařízení, které jste vytvořili v předchozí části, zvolte **Přidat identitu modulu** a vytvořte svou první identitu modulu.
+1. Pro zařízení, které jste vytvořili v předchozí části, vyberte **Přidat identitu modulu** a vytvořte svou první identitu modulu.
 
 1. Zadejte název *myFirstModule*. Uložte identitu modulu.
 
-    ![Přidání identity modulu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
+    ![Přidat identitu modulu](./media/iot-hub-portal-csharp-module-twin-getstarted/add-module-identity.png)
 
-    V dolní části obrazovky se zobrazí nová identita modulu. Vyberte ji, chcete-li zobrazit podrobnosti o identitě modulu.
+    Vaše Nová identita modulu se zobrazí v dolní části obrazovky. Pokud si chcete zobrazit podrobnosti identity modulu, vyberte ji.
 
-    ![Zobrazit podrobnosti o identitě modulu](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
+    ![Viz podrobnosti o identitě modulu.](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-Uložit **řetězec Připojit - primární klíč**. Použijete jej v další části k nastavení modulu v zařízení.
+Uložte **řetězec připojení – primární klíč**. Použijete ho v další části k nastavení modulu na zařízení.
 
 ## <a name="update-the-module-twin-using-net-device-sdk"></a>Aktualizace dvojčete modulu pomocí sady SDK pro zařízení .NET
 
@@ -71,41 +71,41 @@ Uložit **řetězec Připojit - primární klíč**. Použijete jej v další č
 
 ### <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
-Chcete-li vytvořit aplikaci, která aktualizuje ohlášené vlastnosti dvojčete modulu, postupujte takto:
+Chcete-li vytvořit aplikaci, která aktualizuje nedokončené hlášené vlastnosti modulu, postupujte podle následujících kroků:
 
-1. V Sadě Visual Studio vyberte **Vytvořit nový projekt**, pak zvolte Console App **(.NET Framework)** a vyberte **Další**.
+1. V aplikaci Visual Studio vyberte **vytvořit nový projekt**, pak zvolte **Konzolová aplikace (.NET Framework)** a pak vyberte **Další**.
 
-1. V **části Konfigurace nového projektu**zadejte jako název projektu **funkci** *UpdateModuleTwinReportedProperties* . **Chcete-li pokračovat,** vyberte možnost Vytvořit.
+1. V části **Konfigurovat nový projekt**zadejte *UpdateModuleTwinReportedProperties* jako **název projektu**. Pokračujte výběrem **vytvořit** .
 
-    ![Konfigurace projektu visual studia](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
+    ![Konfigurace projektu sady Visual Studio](./media/iot-hub-portal-csharp-module-twin-getstarted/configure-twins-project.png)
 
-### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Instalace nejnovějšího zařízení SDK služby Azure IoT Hub .NET
+### <a name="install-the-latest-azure-iot-hub-net-device-sdk"></a>Nainstalovat nejnovější sadu SDK pro zařízení Azure IoT Hub .NET
 
-Identita modulu a dvojče modulu jsou ve verzi Public Preview. Je k dispozici pouze v předprodejních sadách SDK služby IoT Hub. Chcete-li jej nainstalovat, postupujte takto:
+Identita modulu a modul s dvojitou identitou jsou ve verzi Public Preview. Je k dispozici pouze v sadách IoT Hub předběžných vydání sady SDK pro zařízení. Pokud ho chcete nainstalovat, postupujte následovně:
 
-1. V sadě Visual Studio otevřete **nástroje, který** > **spravuje balíčky** > **NuGet pro řešení**.
+1. V > aplikaci Visual Studio otevřete **nástroje** > **Správce balíčků NuGet****Spravovat balíčky NuGet pro řešení**.
 
-1. Vyberte **Procházet**a pak vyberte **Zahrnout předběžnou verzi**. Vyhledejte *microsoft.azure.devices.client*. Vyberte nejnovější verzi a nainstalujte.
+1. Vyberte **Procházet**a pak vyberte **Zahrnout předprodejní verze**. Vyhledejte *Microsoft. Azure. Devices. Client*. Vyberte nejnovější verzi a nainstalujte.
 
-    ![Instalace azure iot hub .net služby SDK preview](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
+    ![Instalace sady SDK služby Azure IoT Hub .NET Preview](./media/iot-hub-csharp-csharp-module-twin-getstarted/install-sdk.png)
 
     Teď máte přístup ke všem funkcím modulu.
 
 ### <a name="get-your-module-connection-string"></a>Získání připojovacího řetězce modulu
 
-Potřebujete připojovací řetězec modulu pro konzolovou aplikaci. Postupujte následovně:
+Pro konzolovou aplikaci potřebujete připojovací řetězec modulu. Postupujte následovně:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Přejděte do svého centra IoT hub a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** byl úspěšně vytvořen.
+1. Přejděte do svého centra IoT a vyberte **zařízení IoT**. Otevřete **myFirstDevice** a uvidíte, že **myFirstModule** se úspěšně vytvořil.
 
-1. V části **Identity modulu**vyberte **příkaz myFirstModule** . V **části Podrobnosti identity modulu**zkopírujte **připojovací řetězec (primární klíč).**
+1. V části **identity modulu**vyberte **myFirstModule** . V části **Podrobnosti o identitě modulu**zkopírujte **připojovací řetězec (primární klíč)**.
 
     ![Podrobnosti o modulu na webu Azure Portal](./media/iot-hub-portal-csharp-module-twin-getstarted/module-identity-details.png)
 
-### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Vytvořit konzolovou aplikaci UpdateModuleTwinReportedProperties
+### <a name="create-updatemoduletwinreportedproperties-console-app"></a>Vytvoření aplikace konzoly UpdateModuleTwinReportedProperties
 
-Pokud chcete aplikaci vytvořit, postupujte takto:
+K vytvoření aplikace použijte následující postup:
 
 1. Do horní části souboru **Program.cs** přidejte následující příkazy `using`:
 
@@ -139,7 +139,7 @@ Pokud chcete aplikaci vytvořit, postupujte takto:
       }
   ```
 
-4. Nakonec nahraďte **Metodu Main** následujícím kódem:
+4. Nakonec nahraďte metodu **Main** následujícím kódem:
 
   ```csharp
   static void Main(string[] args)
@@ -180,7 +180,7 @@ Pokud chcete aplikaci vytvořit, postupujte takto:
   }
   ```
   
-  Tuto aplikaci můžete vytvořit a spustit pomocí **f5**.
+  Tuto aplikaci můžete sestavit a spustit pomocí **F5**.
 
 Tento vzorový kód ukazuje, jak načíst dvojče modulu a aktualizovat hlášené vlastnosti pomocí protokolu AMQP. Ve verzi Public Preview podporujeme operace s dvojčetem modulu pouze pomocí protokolu AMQP.
 

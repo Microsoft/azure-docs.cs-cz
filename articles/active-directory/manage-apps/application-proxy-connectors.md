@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406836"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583123"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -136,7 +136,7 @@ Další informace o optimalizaci sítě najdete v tématu [požadavky na topolog
 
 Konektory lze spustit na počítači, který není připojený k doméně. Pokud ale chcete jednotné přihlašování (SSO) k aplikacím, které používají integrované ověřování systému Windows (IWA), potřebujete počítač připojený k doméně. V takovém případě musí být počítače konektoru připojené k doméně, která může provést omezené delegování [protokolu Kerberos](https://web.mit.edu/kerberos) jménem uživatelů pro publikované aplikace.
 
-Konektory je také možné připojit k doménám nebo doménovým strukturám s částečným vztahem důvěryhodnosti nebo k řadičům domény jen pro čtení.
+Konektory je také možné připojit k doménám v doménových strukturách s částečným vztahem důvěryhodnosti nebo řadiči domény jen pro čtení.
 
 ## <a name="connector-deployments-on-hardened-environments"></a>Nasazení konektorů v zesílených prostředích
 

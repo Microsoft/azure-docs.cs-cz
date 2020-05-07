@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253062"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582704"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Přiřazení licencí uživatelům podle členství ve skupině v Azure Active Directory
 
 Tento článek vás provede přiřazením licencí k produktu skupině uživatelů a ověřením, že jsou správně licencované v Azure Active Directory (Azure AD).
 
-V tomto příkladu tenant obsahuje skupinu zabezpečení nazvanou **personální oddělení**. Tato skupina zahrnuje všechny členy oddělení lidských zdrojů (přibližně 1 000 uživatelů). Chcete přiřadit licence Office 365 Enterprise E3 celému oddělení. Podniková služba Yammer, která je součástí produktu, musí být dočasně zakázána, dokud bude oddělení připraveno ho začít používat. Chcete také nasadit licence Enterprise Mobility + Security do stejné skupiny uživatelů.
+V tomto příkladu organizace Azure AD obsahuje skupinu zabezpečení nazvanou **personální oddělení**. Tato skupina zahrnuje všechny členy oddělení lidských zdrojů (přibližně 1 000 uživatelů). Chcete přiřadit licence Office 365 Enterprise E3 celému oddělení. Podniková služba Yammer, která je součástí produktu, musí být dočasně zakázána, dokud bude oddělení připraveno ho začít používat. Chcete také nasadit licence Enterprise Mobility + Security do stejné skupiny uživatelů.
 
 > [!NOTE]
 > Některé služby Microsoft nejsou dostupné ve všech umístěních. Předtím, než může být licence přiřazena uživateli, musí správce zadat vlastnost umístění používání u uživatele.
@@ -37,7 +37,7 @@ V tomto příkladu tenant obsahuje skupinu zabezpečení nazvanou **personální
 
 1. Přihlaste se k [**centru pro správu Azure AD**](https://aad.portal.azure.com) pomocí účtu správce licencí. Aby bylo možné spravovat licence, musí být účet správcem licence, správcem uživatele nebo globálním správcem.
 
-1. Výběrem možnosti **licence** otevřete stránku, kde můžete zobrazit a spravovat všechny produkty pro vystavování licencí v tenantovi.
+1. Výběrem možnosti **licence** otevřete stránku, kde můžete zobrazit a spravovat všechny produkty pro vystavování licencí v organizaci.
 
 1. V části **všechny produkty**vyberte možnost Office 365 Enterprise E5 a Enterprise mobility + Security E3 výběrem názvů produktů. Pokud chcete spustit přiřazení, vyberte v horní části stránky **přiřadit** .
 

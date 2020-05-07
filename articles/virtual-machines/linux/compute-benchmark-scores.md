@@ -3,22 +3,75 @@ title: Skóre srovnávacích testů pro virtuální počítače Azure Linux
 description: Porovnejte skóre CoreMark výpočetních testů pro virtuální počítače Azure se systémem Linux.
 ms.service: virtual-machines-linux
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 04/29/2020
 ms.reviewer: davberg
-ms.openlocfilehash: 71413e9a1e0b368bf5d3ae26bbc97d7d78da9422
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afe1bddd5822b506dcf2c177fc308b717ddc2129
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969750"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580441"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Hodnocení srovnávacích testů pro virtuální počítače se systémem Linux
 Následující výsledky srovnávacích testů CoreMark ukazují výpočetní výkon pro vysoce výkonné virtuální počítače Azure seznamu se systémem Ubuntu. Pro [virtuální počítače s Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)jsou k dispozici také hodnocení srovnávacích testů.
 
+## <a name="standard_das_v4"></a>Standard_Das_v4
+(12/11/2019 2:28:52 PBI 5851281)
+
+|Velikost virtuálního počítače| Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
+|---| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+|Standard_D2as_v4| AMD EPYC 7452 32 – jádro procesoru | 2 | 1 | 7.8 | 29 726 | 693 | 2,33% | 42 |
+|Standard_D4as_v4| AMD EPYC 7452 32 – jádro procesoru | 4 | 1 | 15,7 | 59 224 | 1 595 | 2,69% | 42 |
+|Standard_D8as_v4| AMD EPYC 7452 32 – jádro procesoru | 8 | 1 | 31,4 | 116 412 | 3 613 | 3,10% | 42 |
+|Standard_D16as_v4| AMD EPYC 7452 32 – jádro procesoru | 16 | 2 | 62,9 | 229 489 | 7 209 | 3,14% | 35 |
+|Standard_D32as_v4| AMD EPYC 7452 32 – jádro procesoru | 32 | 4 | 125,9 | 461 916 | 6 746 | 1,46% | 35 |
+
+## <a name="standard_da_v4"></a>Standard_Da_v4
+(12/12/2019 12:01:48 PBI 5851281)
+
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Standard_D2a_v4 | AMD EPYC 7452 32 – jádro procesoru | 2 | 1 | 7.8 | 30 023 | 333 | 1,11% | 35 |
+| Standard_D4a_v4 | AMD EPYC 7452 32 – jádro procesoru | 4 | 1 | 15,7 | 59 685 | 1 141 | 1,91 % | 77 |
+| Standard_D8a_v4 | AMD EPYC 7452 32 – jádro procesoru | 8 | 1 | 31,4 | 118 346 | 1 130 | 0,95% | 42 |
+| Standard_D16a_v4 | AMD EPYC 7452 32 – jádro procesoru | 16 | 2 | 62,9 | 231 131 | 3 830 | 1,66% | 35 |
+| Standard_D32a_v4 | AMD EPYC 7452 32 – jádro procesoru | 32 | 4 | 125,9 | 457 266 | 10 208 | 2,23% | 35 |
+| Standard_D48a_v4 | AMD EPYC 7452 32 – jádro procesoru | 48 | 6 | 188,9 | 664 078 | 17 241 | 2,60% | 35 |
+| Standard_D64a_v4 | AMD EPYC 7452 32 – jádro procesoru | 64 | 8 | 251,9 | 863 911 | 24 818 | 2,87% | 35 |
+| Standard_D96a_v4 | AMD EPYC 7452 32 – jádro procesoru | 96 | 12 | 377,9 | 1 290 455 | 13 640 | 1,06% | 35 |
+
+## <a name="standard_eas_v4"></a>Standard_Eas_v4
+(12/11/2019 2:28:50 PBI 5851281)
+
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Standard_E2as_v4 | AMD EPYC 7452 32 – jádro procesoru | 2 | 1 | 15,7 | 29 217 | 654 | 2,24% | 42 |
+| Standard_E4as_v4 | AMD EPYC 7452 32 – jádro procesoru | 4 | 1 | 31,4 | 58 356 | 480 | 0,82% | 42 |
+| Standard_E8as_v4 | AMD EPYC 7452 32 – jádro procesoru | 8 | 1 | 62,9 | 115 943 | 3 526 | 3,04% | 35 |
+| Standard_E16as_v4 | AMD EPYC 7452 32 – jádro procesoru | 16 | 2 | 125,9 | 227 383 | 5 619 | 2,47% | 35 |
+| Standard_E32as_v4 | AMD EPYC 7452 32 – jádro procesoru | 32 | 4 | 251,9 | 454 609 | 12 746 | 2,80% | 35 |
+| Standard_E48as_v4 | AMD EPYC 7452 32 – jádro procesoru | 48 | 6 | 377,9 | 682 769 | 9 257 | 1,36% | 35 |
+| Standard_E64as_v4 | AMD EPYC 7452 32 – jádro procesoru | 64 | 8 | 503,9 | 881 311 | 28 357 | 3,22% | 35 |
+| Standard_E96as_v4 | AMD EPYC 7452 32 – jádro procesoru | 96 | 12 | 661,4 | 1 299 233 | 14 997 | 1,15% | 70 |
+
+##  <a name="standard_ea_v4"></a>Standard_Ea_v4
+(12/11/2019 2:29:06 PBI 5851281)
+
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Standard_E2a_v4 | AMD EPYC 7452 32 – jádro procesoru | 2 | 1 | 15,7 | 29 561 | 422 | 1,43% | 42 |
+| Standard_E4a_v4 | AMD EPYC 7452 32 – jádro procesoru | 4 | 1 | 31,4 | 58 303 | 1 280 | 2,20% | 42 |
+| Standard_E8a_v4 | AMD EPYC 7452 32 – jádro procesoru | 8 | 1 | 62,9 | 114 650 | 2 726 | 2,38% | 42 |
+| Standard_E16a_v4 | AMD EPYC 7452 32 – jádro procesoru | 16 | 2 | 125,9 | 226 947 | 4 661 | 2,05% | 35 |
+| Standard_E32a_v4 | AMD EPYC 7452 32 – jádro procesoru | 32 | 4 | 251,9 | 453 666 | 10 058 | 2,22% | 42 |
+| Standard_E48a_v4 | AMD EPYC 7452 32 – jádro procesoru | 48 | 6 | 377,9 | 665 200 | 18 714 | 2,81% | 35 |
+| Standard_E64a_v4 | AMD EPYC 7452 32 – jádro procesoru | 64 | 8 | 503,9 | 894 718 | 25 214 | 2,82% | 35 |
+| Standard_E96a_v4 | AMD EPYC 7452 32 – jádro procesoru | 96 | 12 | 661,4 | 1 298 074 | 15 948 | 1,23% | 35 |
+
 ## <a name="av2---general-compute"></a>Av2 – obecné výpočetní prostředky
 (3/15/2019 12:06:55 PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_A1_v2 | Intel (R) Xeon (R) CPU E5-2660 0 @ 2.20 GHz | 1 | 1 | 1.9 | 6 483 | 120 | 1,85% | 273 |
 | Standard_A1_v2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 1.9 | 6 059 | 208 | 3,43% | 217 |
@@ -42,12 +95,13 @@ Následující výsledky srovnávacích testů CoreMark ukazují výpočetní v�
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 8 | 1 | 62,9 | 49 838 | 633 | 1,27% | 182 |
 | Standard_A8m_v2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 62,9 | 49 123 | 2 483 | 5,05 % | 259 |
 
-Poznámka: virtuální počítače řady Av2-Series se dají nasadit na nejrůznější typy a procesory hardwaru (jak vidíte výše). Virtuální počítače řady Av2-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezená, aby nabízela poměrně konzistentní výkon procesoru pro běžící instanci bez ohledu na hardware, na kterém je nasazený. software, který využívá výhod konkrétních novějších optimalizací procesorů, ale může výrazně variace v různých typech procesorů.
+> [!NOTE]
+> Virtuální počítače řady Av2-Series se dají nasadit na nejrůznější typy a procesory hardwaru (jak vidíte výše). Virtuální počítače řady Av2-Series mají pro úlohy na vstupní úrovni, jako je vývoj a testování, nejvhodnější konfigurace výkonu a paměti procesoru. Velikost je omezená, aby nabízela poměrně konzistentní výkon procesoru pro běžící instanci bez ohledu na hardware, na kterém je nasazený. software, který využívá výhod konkrétních novějších optimalizací procesorů, ale může výrazně variace v různých typech procesorů.
 
 ## <a name="b---burstable"></a>B-Shluková
-(3/15/2019 12:27:08 PBI 3897709)
+(3/15/2019 12:27:08 PBI 3897709) (aktualizované 6/14/2019 7:09:29 PBI 4777081)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_B1ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 1.9 | 13 593 | 307 | 2,26% | 28 |
 | Standard_B1ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 069 | 495 | 3,52% | 672 |
@@ -61,15 +115,23 @@ Poznámka: virtuální počítače řady Av2-Series se dají nasadit na nejrůzn
 | Standard_B4ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 15,7 | 54 051 | 1 260 | 2,33% | 672 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 8 | 1 | 31,4 | 111 929 | 1 562 | 1,40% | 35 |
 | Standard_B8ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 8 | 1 | 31,4 | 109 537 | 1 354 | 1,24% | 665 |
+| Standard_B12ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 12 | 1 | 47,1 | 170 777 | 3 421 | 2,00% | 70 |
+| Standard_B12ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 12 | 1 | 47,1 | 166 676 | 1 368 | 0,82% | 70 |
+| Standard_B16ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 16 | 1 | 62,9 | 208 373 | 30 383 | 14,58% | 63 |
+| Standard_B16ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 16 | 1 | 62,9 | 223 203 | 1 232 | 0,55% | 70 |
+| Standard_B20ms | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 20 | 1 | 78,6 | 269 561 | 25 095 | 9,31% | 77 |
+| Standard_B20ms | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 20 | 1 | 78,6 | 274 007 | 3 669 | 1,34% | 70 |
 
-Poznámka: virtuální počítače řady B-Series jsou pro úlohy s požadavky na nejvyšší výkon. Instance virtuálních počítačů nashromáždí kredity při použití menšího směrného plánu. Když se na virtuálním počítači nashromáždil kredit, může se virtuální počítač nad rámec směrného plánu zvýšit až 100%, aby se splnily krátké požadavky na nárůst zatížení procesoru. Doba nárůstu závisí na dostupných kreditech, které jsou funkcí velikosti a času virtuálního počítače.  
 
-CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dostupných kreditů shlukování.  Výše uvedená čísla zpravidla představují nárůst výkonu virtuálního počítače a odráží, co se obvykle zobrazuje u krátkého, shluku, úloh (typických u řady B-Series).
+> [!NOTE]
+> Virtuální počítače řady B-Series jsou pro úlohy s požadavky na nejvyšší výkon. Instance virtuálních počítačů nashromáždí kredity při použití menšího směrného plánu. Když se na virtuálním počítači nashromáždil kredit, může se virtuální počítač nad rámec směrného plánu zvýšit až 100%, aby se splnily krátké požadavky na nárůst zatížení procesoru. Doba nárůstu závisí na dostupných kreditech, které jsou funkcí velikosti a času virtuálního počítače.  
+>
+> CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dostupných kreditů shlukování.  Výše uvedená čísla zpravidla představují nárůst výkonu virtuálního počítače a odráží, co se obvykle zobrazuje u krátkého, shluku, úloh (typických u řady B-Series).
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 – obecné COMPUTE a Premium Storage
 (3/12/2019 6:52:03 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 153 | 838 | 4,16% | 147 |
 | Standard_D2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 903 | 1 324 | 6,33% | 553 |
@@ -86,7 +148,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="dv3---general-compute"></a>Dv3 – obecné výpočetní prostředky
 (3/12/2019 6:54:27 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D2_v3 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 2 | 1 | 7.8 | 20 359 | 799 | 3,93% | 154 |
 | Standard_D2_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 7.8 | 20 737 | 1 422 | 6,86% | 546 |
@@ -103,7 +165,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="dsv2---storage-optimized"></a>DSv2 – optimalizované úložiště
 (3/15/2019 12:53:13 PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_DS1_v2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 3.4 | 14 642 | 600 | 4,10% | 259 |
 | Standard_DS1_v2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1 | 3.4 | 14 808 | 904 | 6,10% | 434 |
@@ -143,7 +205,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="dv2---general-compute"></a>Dv2 – obecné výpočetní prostředky
 (3/12/2019 6:53:48 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_D1_v2 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 3.4 | 14 730 | 663 | 4,50% | 385 |
 | Standard_D1_v2 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1 | 3.4 | 15 057 | 1 319 | 8,76% | 322 |
@@ -169,7 +231,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 – optimalizované pro paměť a Premium Storage
 (3/12/2019 7:17:33 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 15,7 | 20 957 | 1 200 | 5,73% | 672 |
 | Standard_E4s_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 31,4 | 40 420 | 1 993 | 4,93% | 672 |
@@ -191,14 +253,14 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3 a opt-Memory opt + Premium Storage (izolovaný režim)
 (4/11/2019 10:07:29 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64is_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 64 | 2 | 425,2 | 627 745 | 4 062 | 0,65% | 196 |
 
 ## <a name="ev3---memory-optimized"></a>Ev3 – optimalizované pro paměť
 (3/12/2019 6:52:13 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E2_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 2 | 1 | 15,7 | 21 171 | 1 772 | 8,37% | 693 |
 | Standard_E4_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 4 | 1 | 31,4 | 41 181 | 3 148 | 7,64% | 700 |
@@ -211,7 +273,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3 – optimalizované pro paměť (izolovaný režim)
 (3/12/2019 6:57:51 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_E64i_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 64 | 2 | 425,2 | 625 855 | 4 881 | 0,78% | 7 |
 | Standard_E64i_v3 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 64 | 2 | 425,2 | 629 151 | 9 756 | 1,55% | 217 |
@@ -219,7 +281,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 – COMPUTE + úložiště – optimalizované
 (3/12/2019 6:51:35 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F2s_v2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 2 | 1 | 3.9 | 28 219 | 1 843 | 6,53% | 700 |
 | Standard_F4s_v2 | Procesor Intel (R) Xeon (R) Platinum 8168 CPU @ 2.70 GHz | 4 | 1 | 7.8 | 53 911 | 1 002 | 1,86% | 707 |
@@ -232,7 +294,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="fs---compute-and-storage-optimized"></a>FS – COMPUTE a úložiště – optimalizované
 (3/15/2019 12:12:51 PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1s | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 552 | 504 | 3,46% | 350 |
 | Standard_F1s | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1 | 1.9 | 14 784 | 858 | 5,80% | 357 |
@@ -249,7 +311,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="f---compute-optimized"></a>Optimalizované pro F-COMPUTE
 (3/12/2019 6:53:59 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_F1 | Intel (R) Xeon (R) CPU E5-2673 V3 @ 2.40 GHz | 1 | 1 | 1.9 | 14 937 | 593 | 3,97% | 350 |
 | Standard_F1 | Intel (R) Xeon (R) CPU E5-2673 V4 @ 2.30 GHz | 1 | 1 | 1.9 | 15 460 | 1 326 | 8,58% | 350 |
@@ -266,7 +328,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="gs---storage-optimized"></a>GS – optimalizované úložiště
 (3/12/2019 10:22:33 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_GS1 | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 2 | 1 | 27,5 | 28 835 | 2 222 | 7,71% | 287 |
 | Standard_GS2 | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 4 | 1 | 55,0 | 55 568 | 3 139 | 5,65% | 287 |
@@ -281,7 +343,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="g---compute-optimized"></a>Optimalizováno G – COMPUTE
 (3/12/2019 10:23:51 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_G1 | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 2 | 1 | 27,5 | 32 808 | 2 679 | 8,17% | 287 |
 | Standard_G2 | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 4 | 1 | 55,0 | 62 907 | 4 465 | 7,10% | 287 |
@@ -292,7 +354,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="h---high-performance-compute-hpc"></a>H-High Performance COMPUTE (HPC)
 (3/12/2019 10:50:51 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_H8 | Intel (R) Xeon (R) CPU E5-2667 V3 @ 3.20 GHz | 8 | 1 | 55,0 | 149 859 | 734 | 0,49% | 175 |
 | Standard_H8m | Intel (R) Xeon (R) CPU E5-2667 V3 @ 3.20 GHz | 8 | 1 | 110,2 | 149 931 | 657 | 0,44% | 147 |
@@ -304,7 +366,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="lv2---storage-optimized"></a>Lv2 – optimalizované úložiště
 (3/14/2019 5:49:04 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L8s_v2 | AMD EPYC 7551 32 – jádro procesoru | 8 | 1 | 62,9 | 80 528 | 404 | 0,50% | 119 |
 | Standard_L16s_v2 | AMD EPYC 7551 32 – jádro procesoru | 16 | 2 | 125,9 | 154 829 | 3 708 | 2,40% | 119 |
@@ -315,7 +377,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="ls---storage-optimized"></a>LS – úložiště optimalizované
 (3/12/2019 10:22:29 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_L4s | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 4 | 1 | 31,4 | 56 488 | 2 916 | 5,16% | 287 |
 | Standard_L8s | Intel (R) Xeon (R) CPU E5-2698B V3 @ 2,00 GHz | 8 | 1 | 62,9 | 107 017 | 2 323 | 2,17% | 287 |
@@ -325,7 +387,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="m---memory-optimized"></a>M – optimalizované pro paměť
 (4/11/2019 7:30:39 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_M8 – 2 MS | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 2 | 1 | 215,2 | 22 605 | 29 | 0,13% | 42 |
 | Standard_M8 – 4ms | Intel (R) Xeon (R) CPU E7-8890 V3 @ 2.50 GHz | 4 | 1 | 215,2 | 44 488 | 183 | 0,41% | 42 |
@@ -356,7 +418,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3 – GPU zapnuto
 (3/21/2019 5:48:37 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v3 | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 6 | 1 | 110,2 | 106 929 | 353 | 0,33% | 49 |
 | Standard_NC12s_v3 | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 12 | 1 | 220,4 | 213 585 | 875 | 0,41% | 42 |
@@ -366,7 +428,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2 – GPU zapnuto
 (3/12/2019 11:19:19 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6s_v2 | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 6 | 1 | 110,2 | 107 115 | 321 | 0,30% | 63 |
 | Standard_NC12s_v2 | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 12 | 1 | 220,4 | 213 814 | 656 | 0,31% | 63 |
@@ -376,7 +438,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="nc---gpu-enabled"></a>NC – GPU zapnuto
 (3/12/2019 11:08:03 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NC6 | Intel (R) Xeon (R) CPU E5-2690 V3 @ 2.60 GHz | 6 | 1 | 55,0 | 102 211 | 658 | 0,64% | 259 |
 | Standard_NC12 | Intel (R) Xeon (R) CPU E5-2690 V3 @ 2.60 GHz | 12 | 1 | 110,2 | 203 523 | 2 293 | 1,13 % | 259 |
@@ -386,7 +448,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="nds--gpu-enabled"></a>NDs – GPU zapnuto
 (3/12/2019 11:19:10 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_ND6s | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 6 | 1 | 110,2 | 107 095 | 353 | 0,33% | 63 |
 | Standard_ND12s | Intel (R) Xeon (R) CPU E5-2690 V4 @ 2.60 GHz | 12 | 1 | 220,4 | 212 298 | 3 457 | 1,63% | 63 |
@@ -396,7 +458,7 @@ CoreMark je krátký běžící test, který se obvykle dokončuje v rámci dost
 ## <a name="nv---gpu-enabled"></a>NV – GPU – povoleno
 (3/12/2019 11:08:13 PM PBI 3897709)
 
-| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | StdDev | StdDev | #Runs |
+| Velikost virtuálního počítače | Procesor | Virtuální procesory | Uzly NUMA | Paměť (GiB) | Průměrné skóre | STD dev | Standardní vývoj% | #Runs |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Standard_NV6 | Intel (R) Xeon (R) CPU E5-2690 V3 @ 2.60 GHz | 6 | 1 | 55,0 | 101 728 | 2 094 | 2,06% | 259 |
 | Standard_NV12 | Intel (R) Xeon (R) CPU E5-2690 V3 @ 2.60 GHz | 12 | 1 | 110,2 | 203 903 | 1 724 | 0,85% | 252 |

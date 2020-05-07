@@ -1,6 +1,6 @@
 ---
-title: Brána protokolu Azure IoT | Dokumenty společnosti Microsoft
-description: Jak používat bránu protokolu Azure IoT k rozšíření funkcí služby IoT Hub a podpory protokolů, aby se zařízení mohla připojit k vašemu rozbočovači pomocí protokolů, které služba IoT Hub nepodporuje nativně.
+title: Brána protokolu Azure IoT | Microsoft Docs
+description: Jak používat bránu protokolu Azure IoT k rozšiřování funkcí IoT Hub a podpory protokolů, aby se zařízení mohla připojit k vašemu rozbočovači pomocí protokolů, které IoT Hub nativně nepodporují.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -12,40 +12,40 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: bfd000e2b69f052e25f0ea6cd286b0ca3aef7519
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759703"
 ---
-# <a name="support-additional-protocols-for-iot-hub"></a>Podpora dalších protokolů pro službu IoT Hub
+# <a name="support-additional-protocols-for-iot-hub"></a>Podpora dalších protokolů pro IoT Hub
 
-Azure IoT Hub nativně podporuje komunikaci přes protokoly MQTT, AMQP a HTTPS. V některých případech nemusí být zařízení nebo brány v terénu schopny používat jeden z těchto standardních protokolů a vyžadovat přizpůsobení protokolu. V takových případech můžete použít vlastní bránu. Vlastní brána umožňuje přizpůsobení protokolu pro koncové body služby IoT Hub přemostěním provozu do a z IoT Hub. Bránu [protokolu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) můžete použít jako vlastní bránu k povolení přizpůsobení protokolu pro Službu IoT Hub.
+Azure IoT Hub nativně podporuje komunikaci přes protokoly MQTT, AMQP a HTTPS. V některých případech nemusí být zařízení nebo brány polí schopné použít jeden z těchto standardních protokolů a vyžadují úpravu protokolu. V takových případech můžete použít vlastní bránu. Vlastní brána umožňuje úpravu protokolu pro koncové body IoT Hub přemostěním provozu do a z IoT Hub. [Bránu protokolu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) můžete použít jako vlastní bránu k povolení přizpůsobení protokolu pro IoT Hub.
 
 ## <a name="azure-iot-protocol-gateway"></a>Brána protokolu Azure IoT
 
-Brána protokolu Azure IoT je rámec pro přizpůsobení protokolu, který je určený pro vysokorychlostní obousměrnou komunikaci zařízení s IoT Hub. Brána protokolu je předávací součást, která přijímá připojení zařízení přes určitý protokol. Přepne provoz do ioT hubu přes AMQP 1.0.
+Brána protokolu Azure IoT je architektura pro úpravu protokolu, která je navržená pro komunikaci obousměrného zařízení s IoT Hub. Brána protokolu je průchozí komponenta, která přijímá připojení zařízení přes konkrétní protokol. Přemostění provozu do IoT Hub přes AMQP 1,0.
 
-Bránu protokolu v Azure můžete nasadit vysoce škálovatelným způsobem pomocí Azure Service Fabric, role pracovních míst Azure Cloud Services nebo virtuálnípočítače Windows. Kromě toho lze bránu protokolu nasadit v místních prostředích, jako jsou brány polí.
+Bránu protokolu můžete v Azure nasadit vysoce škálovatelným způsobem pomocí Service Fabric Azure, rolí pracovního procesu Azure Cloud Services nebo Windows Virtual Machines. Kromě toho je možné bránu protokolu nasadit v místních prostředích, jako jsou například brány polí.
 
-Brána protokolu Azure IoT obsahuje adaptér protokolu MQTT, který umožňuje v případě potřeby přizpůsobit chování protokolu MQTT. Vzhledem k tomu, že služba IoT Hub poskytuje integrovanou podporu pro protokol MQTT v3.1.1, měli byste zvážit použití adaptéru protokolu MQTT pouze v případě, že jsou vyžadována přizpůsobení protokolu nebo specifické požadavky na další funkce.
+Brána protokolu Azure IoT zahrnuje adaptér protokolu MQTT, který v případě potřeby umožňuje přizpůsobit chování protokolu MQTT. Vzhledem k tomu, že IoT Hub poskytuje integrovanou podporu protokolu MQTT v 3.1.1, měli byste zvážit použití adaptéru protokolu MQTT, pokud jsou potřeba vlastní nastavení protokolu nebo specifické požadavky pro další funkce.
 
-Adaptér MQTT také demonstruje programovací model pro vytváření adaptérů protokolu pro jiné protokoly. Kromě toho programovací model brány protokolu Azure IoT umožňuje připojit vlastní součásti pro specializované zpracování, jako je vlastní ověřování, transformace zpráv, komprese/dekomprese nebo šifrování/dešifrování provozu mezi zařízeními a IoT Hub.
+Adaptér MQTT také ukazuje programovací model pro vytváření adaptérů protokolu pro jiné protokoly. Kromě toho programovací model brány protokolu Azure IoT umožňuje připojit vlastní součásti pro specializované zpracování, jako je vlastní ověřování, transformace zpráv, komprese/dekomprese nebo šifrování a dešifrování provozu mezi zařízeními a IoT Hub.
 
-Pro flexibilitu jsou brána protokolu Azure IoT a implementace MQTT k dispozici v open source softwarovém projektu. Open source projekt můžete použít k přidání podpory pro různé protokoly a verze protokolů nebo přizpůsobit implementaci pro váš scénář. 
+V případě flexibility jsou v rámci open source softwarového projektu brány a implementace protokolu Azure IoT a MQTT k dispozici. Můžete použít Open source projekt k přidání podpory pro různé protokoly a verze protokolu nebo přizpůsobení implementace pro váš scénář. 
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o bráně protokolu Azure IoT a o tom, jak ji používat a nasazovat jako součást řešení IoT, najdete v tématu:
+Další informace o bráně protokolu Azure IoT a o tom, jak ji použít a nasadit jako součást řešení IoT, najdete v těchto tématech:
 
 * [Úložiště brány protokolu Azure IoT na GitHubu](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 
-* [Průvodce vývojářem brány protokolu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+* [Příručka pro vývojáře k bráně protokolu Azure IoT](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-Další informace o plánování nasazení služby IoT Hub najdete v tématu:
+Další informace o plánování nasazení IoT Hub najdete v tématech:
 
-* [Porovnat s centry událostí](iot-hub-compare-event-hubs.md)
+* [Porovnat s Event Hubs](iot-hub-compare-event-hubs.md)
 
 * [Škálování, vysoká dostupnost a zotavení po havárii](iot-hub-scaling.md)
 
-* [Průvodce vývojáři ioT Hubu](iot-hub-devguide.md)
+* [IoT Hub příručka pro vývojáře](iot-hub-devguide.md)

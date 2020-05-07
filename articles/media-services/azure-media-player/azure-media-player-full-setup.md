@@ -1,5 +1,5 @@
 ---
-title: Úplné nastavení přehrávače médií Azure
+title: Azure Media Player úplnou instalaci
 description: Přečtěte si, jak nastavit Azure Media Player.
 author: IngridAtMicrosoft
 ms.author: inhenkel
@@ -7,36 +7,36 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.openlocfilehash: d4c2dc58ca341db7ba17dbaf6a5ce7c009983379
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727239"
 ---
-# <a name="azure-media-player-full-setup"></a>Úplné nastavení programu Azure Media Player #
+# <a name="azure-media-player-full-setup"></a>Kompletní nastavení Azure Media Playeru #
 
-Azure Media Player se snadno nastavuje. Získání základního přehrávání mediálního obsahu přímo z vašeho účtu Azure Media Services trvá jen několik okamžiků. [Ukázky](https://github.com/Azure-Samples/azure-media-player-samples) jsou také k dispozici v adresáři ukázky vydání.
+Nastavení Azure Media Player je snadné. Získání základního přehrávání mediálního obsahu přímo z vašeho účtu Azure Media Services trvá jenom chvíli. [Ukázky](https://github.com/Azure-Samples/azure-media-player-samples) jsou k dispozici také v adresáři Samples této verze.
 
 
-## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Krok 1: Zahrnout JavaScript a CSS soubory v hlavě vaší stránky ##
+## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Krok 1: zahrnutí souborů JavaScriptu a CSS do hlavičky stránky ##
 
-Pomocí programu Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje, aby javascript před značku `<body>` koncového `<head>`těla místo , ale Azure Media Player obsahuje 'HTML5 Shiv', který musí být v hlavě pro starší verze IE respektovat video tag jako platný prvek.
+Pomocí Azure Media Player máte přístup ke skriptům z hostované verze CDN. Často se doporučuje vložit JavaScript před značku `<body>` konce těla místo `<head>`, ale Azure Media Player obsahuje "HTML5 Shiv", který musí být v hlavě pro starší verze IE, aby se jako platný element mohla přicházet k označení videa.
 
 > [!NOTE]
-> Pokud už používáte html5 shiv jako [Modernizr,](http://modernizr.com/) můžete zahrnout JavaScript Přehrávače médií Azure Media kdekoli. Nicméně ujistěte se, že vaše verze Modernizr obsahuje nůž pro video.
+> Pokud již používáte HTML5 Shiv jako [modernizr](http://modernizr.com/) , můžete Azure Media Player JavaScriptu umístit kamkoli. Ujistěte se však, že vaše verze modernizr zahrnuje Shiv pro video.
 
 ### <a name="cdn-version"></a>Verze CDN ###
     <link href="//amp.azure.net/libs/amp/latest/skins/amp-default/azuremediaplayer.min.css" rel="stylesheet">
     <script src= "//amp.azure.net/libs/amp/latest/azuremediaplayer.min.js"></script>
 
 > [!IMPORTANT]
-> **Neměli** `latest` byste používat verzi v produkčním prostředí, protože to může změnit na vyžádání. Nahraďte `latest` ji verzí programu Azure Media Player. Například nahraďte . `latest` `2.1.1` Verze programu Azure Media Player lze dotazovat [zde](azure-media-player-changelog.md).
+> Tuto `latest` verzi byste **neměli používat v** produkčním prostředí, protože se tato verze může změnit na vyžádání. Nahraďte `latest` verzí Azure Media Player. Například Nahraďte parametr `latest` `2.1.1`. Z [tohoto místa](azure-media-player-changelog.md)se dá dotazovat na Azure Media Player verze.
 
 > [!NOTE]
-> Od `1.2.0` vydání již není nutné zahrnout umístění záložních techniků (automaticky převezme umístění z relativní cesty souboru azuremediaplayer.min.js). Umístění záložních techniků můžete upravit přidáním následujícího `<head>` skriptu do výše uvedených skriptů.
+> Od `1.2.0` verze už není potřeba, aby zahrnovala umístění pro záložní technické pracovníky (umístění se automaticky vybírá z relativní cesty k souboru azuremediaplayer. min. js). Umístění záložních techniků můžete upravit přidáním následujícího skriptu do `<head>` výše uvedených skriptů.
 
 > [!NOTE]
-> Vzhledem k povaze pluginů Flash a Silverlight by soubory swf a xap měly být hostovány na doméně bez citlivých informací nebo dat - o to se automaticky postaráte s hostovnou verzí Azure CDN.
+> Vzhledem k povaze modulů plug-in Flash a Silverlight by se soubory SWF a XAP měly hostovat v doméně bez citlivých informací nebo dat – to se automaticky stará o Azure CDN hostované verze.
 
 ```javascript
     <script>
@@ -47,19 +47,19 @@ Pomocí programu Azure Media Player máte přístup ke skriptům z hostované ve
 
 ## <a name="step-2-add-an-html5-video-tag-to-your-page"></a>Krok 2: Přidání značky videa HTML5 na stránku ##
 
-Pomocí Programu Azure Media Player můžete k vložení videa použít značku videa HTML5. Azure Media Player pak značku přečte a bude fungovat ve všech prohlížečích, ne jen ve všech prohlížečích, které podporují video HTML5. Kromě základních značek potřebuje Azure Media Player pár kousků navíc.
+Pomocí Azure Media Player můžete použít značku videa HTML5 pro vložení videa. Azure Media Player pak přečte značku a zpřístupní ji ve všech prohlížečích, nikoli jenom těch, které podporují video HTML5. Kromě základních značek Azure Media Player potřebuje několik dalších částí.
 
-1. Atribut `<data-setup>` na `<video>` Azure Media Player automaticky nastavit video, když je stránka připravena a přečtěte si všechny (ve formátu JSON) z atributu.
-1. Atribut: `id` By měl být použit a jedinečný pro každé video na stejné stránce.
-1. Atribut `class` obsahuje dvě třídy:
-    - `azuremediaplayer`Aplikuje styly, které jsou vyžadovány pro funkce práva nastavení Azure Media Player
-    - `amp-default-skin`Použije výchozí vzhled na ovládací prvky HTML5.
-1. Obsahuje `<source>` dva požadované atributy
-    - `src`atribut může obsahovat **.ism/manifest* soubor z Azure Media Services je přidán, Azure Media Player automaticky přidá adresy URL pro DASH, SMOOTH a HLS do přehrávače
-    - `type`atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *".ism/manifest"* je *"application/vnd.ms-sstr+xml"*
-1. *Volitelný* `<data-setup>` atribut na `<source>` Azure Media Player říká, pokud existují nějaké jedinečné zásady doručování pro datový proud z Azure Media Services, včetně, ale bez omezení na typ šifrování (AES nebo PlayReady, Widevine nebo FairPlay) a token.
+1. `<data-setup>` Atribut na Azure Media Player `<video>` informuje o tom, že se video automaticky nastaví, když je stránka připravená, a z atributu si přečte všechny (ve formátu JSON).
+1. `id` Atribut: by měl být použit a jedinečný pro každé video na stejné stránce.
+1. `class` Atribut obsahuje dvě třídy:
+    - `azuremediaplayer`použije styly, které jsou vyžadovány pro Azure Media Player funkce uživatelského rozhraní.
+    - `amp-default-skin`použije výchozí vzhled pro ovládací prvky HTML5.
+1. `<source>` Obsahuje dva povinné atributy.
+    - `src`atribut může obsahovat soubor **. ISM/manifest* z Azure Media Services je přidána Azure Media Player automaticky přidá adresy URL pro pomlčky, vyhlazení a HLS do přehrávače.
+    - `type`atribut je požadovaný typ MIME datového proudu. Typ MIME přidružený k *". ISM/manifest"* je *"application/vnd. MS-sstr + XML"*
+1. *Volitelný* `<data-setup>` atribut na stránce `<source>` oznamuje Azure Media Player, jestli existují jedinečné zásady doručování pro datový proud z Azure Media Services, včetně, ale ne omezení na typ šifrování (AES nebo PlayReady, Widevine nebo FairPlay) a token.
 
-Zahrnout/vyloučit atributy, nastavení, zdroje a stopy přesně tak, jak byste to udělali u videa HTML5.
+Zahrňte nebo vylučte atributy, nastavení, zdroje a stopy přesně tak, jak byste chtěli pro video HTML5.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" poster="poster.jpg" data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"], "nativeControlsForTouch": false}'>
@@ -70,11 +70,11 @@ Zahrnout/vyloučit atributy, nastavení, zdroje a stopy přesně tak, jak byste 
     </video>
 ```
 
-Ve výchozím nastavení je velké tlačítko přehrávání umístěno v levém horním rohu, takže nezakrývá zajímavé části plakátu. Pokud dáváte přednost vystředění velkého tlačítka `amp-big-play-centered` `class` přehrávání, `<video>` můžete k prvku přidat další.
+Ve výchozím nastavení se velké tlačítko pro přehrávání nachází v levém horním rohu, takže se nezabývá zajímavou částí plakátu. Pokud budete chtít vycentrovat velké tlačítko pro přehrávání, můžete do svého `amp-big-play-centered` `class` `<video>` prvku přidat další.
 
 ### <a name="alternative-setup-for-dynamically-loaded-html"></a>Alternativní nastavení pro dynamicky načtený kód HTML ###
 
-Pokud vaše webová stránka nebo aplikace načte značku videa dynamicky (ajax, appendChild atd.), takže nemusí existovat při načtení stránky, budete chtít ručně nastavit přehrávač namísto spoléhání se na atribut nastavení dat. Chcete-li to provést, nejprve odeberte atribut nastavení dat ze značky, aby nedošlo k záměně při inicializování přehrávače. Dále spusťte následující JavaScript po načtení JavaScriptu programu Azure Media Player a po načtení značky videa do režimu do m.
+Pokud vaše webová stránka nebo aplikace načte značku videa dynamicky (AJAX, appendChild atd.), takže když se stránka načte, budete chtít ručně nastavit přehrávač místo toho, aby se musel spoléhat na atribut data-Setup. K tomu je třeba nejprve odebrat atribut pro nastavení dat ze značky, aby při inicializaci přehrávače nedošlo k nejasnostem. Dále spusťte následující JavaScript po načtení Azure Media Player JavaScript a poté, co byla značka videa načtena do modelu DOM.
 
 ```javascript
     var myPlayer = amp('vid1', { /* Options */
@@ -99,13 +99,13 @@ Pokud vaše webová stránka nebo aplikace načte značku videa dynamicky (ajax,
     }]);
 ```
 
-Prvním argumentem `amp` ve funkci je ID značky videa. Nahraďte ho svým vlastním.
+První argument `amp` funkce je ID značky videa. Nahraďte ji vlastními.
 
-Druhý argument je options objekt. To vám umožní nastavit další možnosti, jako můžete s atributem nastavení dat.
+Druhý argument je objekt Options. Umožňuje nastavit další možnosti, jako je například s použitím atributu data-Setup.
 
-Třetí argument je 'ready' zpětné volání. Po inicializování programu Azure Media Player bude tuto funkci volat. V ready callback , 'this' objekt odkazuje na instanci přehrávače.
+Třetí argument je zpětné volání "připraveno". Jakmile se Azure Media Player inicializuje, zavolá tuto funkci. V připraveném zpětném volání odkazuje objekt this na instanci přehrávače.
 
-Namísto použití ID prvku můžete také předat odkaz na samotný prvek.
+Namísto použití ID elementu můžete také předat odkaz na samotný element.
 
 ```javascript
 
@@ -117,4 +117,4 @@ Namísto použití ID prvku můžete také předat odkaz na samotný prvek.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)
