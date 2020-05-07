@@ -1,24 +1,24 @@
 ---
-title: Konfigurace potenciálních zákazníků z nabídky Microsoftu pro komerční tržiště
-description: Nakonfigurujete zájemce zákazníků na komerčním webu Microsoft Marketplace.
+title: Správa zájemců z komerčního tržiště Microsoftu
+description: Přečtěte si o generování a přijímání potenciálních zákazníků od vašich Microsoft AppSource a Azure Marketplace nabídek.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131096"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837324"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Potenciální zákazníci vaší nabídky na marketplace
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>Potenciální zákazníci z komerční nabídky na webu Marketplace
 
-Potenciální zákazníci zajímá nebo nasazují vaše nabídky z Microsoft [AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Po publikování vaší nabídky na webu Marketplace obdržíte potenciální zákazníky. Tento článek vysvětluje:
+Potenciální zákazníci zajímá nebo nasazují vaše nabídky z [Microsoft AppSource](https://appsource.microsoft.com) a [Azure Marketplace](https://azuremarketplace.microsoft.com). Po publikování vaší nabídky na komerčním webu Marketplace můžete dostávat potenciální zákazníky. V tomto článku se dozvíte o následujících konceptech řízení vedoucích:
 
-* Jak vaše nabídka Marketplace vygeneruje zájemce zákazníků, aby se zajistilo, že nebudete mít žádné obchodní příležitosti. 
+* Jak vaše nabídka komerčního tržiště vygeneruje zájemce pro zákazníky, aby se zajistilo, že nebudete mít k 
 * Jak připojit systém pro řízení vztahů se zákazníky (CRM) k vaší nabídce, abyste mohli spravovat potenciální zákazníky v jednom centrálním umístění.
 * Data o zájemci vám pošleme, abyste se mohli podívat na zákazníky, kteří se na vás dostali.
 
@@ -56,7 +56,7 @@ Každý zájemce, kterého obdržíte během procesu pořízení zákazníka, m�
 
 Možné hodnoty:
 
-- **"Ins"**: představuje *instalaci*. Tato akce je Azure Marketplace nebo AppSource, když zákazník koupí váš produkt.
+- **"Ins"**: představuje *instalaci*. Tato akce je Azure Marketplace nebo AppSource, když zákazník získá svůj produkt.
 - **"PLT"**: zastupuje *zkušební verzi, která se zavedla pro partnery*. Tato akce se provádí v AppSource, když zákazník vybere možnost **kontakt mi** .
 - **"DNC"**: představuje *nekontaktování*. Tato akce se nachází v AppSource, když se partner, který byl křížově uvedený na stránce aplikace, vyžádá, aby kontaktoval. Sdílíme oznámení, že tento zákazník byl ve vaší aplikaci křížově uveden, ale není potřeba ho kontaktovat.
 - **"Vytvořit"**: Tato akce je pouze uvnitř Azure Portal a je generována, když zákazník koupí vaši nabídku na svůj účet.
@@ -92,7 +92,7 @@ Informace o zákazníkovi se odesílají prostřednictvím několika polí. Nás
 - **Následná**akce: Nezapomeňte pokračovat. Očekává se, že typická transakce vyžaduje 5 až 12 následných volání.
 - **Nurture**: nurture vašich zájemců, abyste vám pomohli dosáhnout vyššího ziskového rozpětí.
 
-## <a name="leads-frequently-asked-questions"></a>Nejčastější dotazy k zájemcům
+## <a name="common-questions-about-lead-management"></a>Běžné otázky týkající se správy potenciálních zákazníků
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Kde můžu získat pomoc při nastavování cíle realizace?
 
@@ -133,7 +133,7 @@ Azure Blob Storage už není podporovaný jako cíl pro realizace, takže nebude
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Dostal jsem e-mail z komerčního tržiště, ale proč nemůžu v mém CRM najít potenciálního zákazníka?
 
-Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme z domény. edu předávat osobní identifikovatelné osobní údaje. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://partner.microsoft.com/support/v2/?stage=1).
+Je možné, že e-mailová doména koncového uživatele pochází z. edu. Z důvodů ochrany osobních údajů nemusíme předávat osobní údaje z domény. edu. Odešlete lístek podpory prostřednictvím [odborné pomoci a podpory pro partnerským centru](https://partner.microsoft.com/support/v2/?stage=1).
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Jak si můžu zobrazit potenciální zákazníky?
 
@@ -149,7 +149,7 @@ Zkontroluje, jestli je formulář Web-to-zájemce povinným polem na základě s
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Došlo k potížím s cílem mého zájemce a vynechali nějaké zájemce. Můžu se mi poslat do e-mailu?
 
-V důsledku zásad identifikovatelné osobní údaje nemůžeme sdílet informace o potenciálních osobách prostřednictvím nezabezpečeného e-mailu.
+V důsledku zásad osobních informací nemůžeme sdílet informace o potenciálních osobách prostřednictvím nezabezpečeného e-mailu.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Nakonfigurovali jsem tabulku Azure jako cíl pro realizace. Do jaké míry budou náklady?
 

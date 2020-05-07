@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935485"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801718"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Začněte</a></span><span class="has-padding-small">rychle řešit potíže pomocí našeho virtuálního agenta a spusťte <b>automatizovanou diagnostiku.</b> </span> Prohlášení o <sub>zásadách ochrany osobních údajů</sub> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <div align="right"></div></a></span></p>
 Tato stránka poskytuje informace pro řešení běžných otázek Azure Load Balancer Basic a Standard. Další informace o Standard Load Balancer najdete v tématu [Standard Load Balancer Overview](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
 
 Když je připojení Load Balancer nedostupné, nejběžnější příznaky jsou následující: 
@@ -124,7 +124,7 @@ Pokud se vaše aplikace hostovaná na virtuálním počítači back-endu Load Ba
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Příčina 4: přístup k internímu Load Balancer front-endu z virtuálního počítače fondu back-endu Load Balancer
 
-Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Takový scénář se nepodporuje. Přečtěte si [omezení](concepts-limitations.md#limitations) pro podrobnou diskuzi.
+Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a jeden z back-end účastníka se snaží získat přístup k internímu front-endu Load Balancer, můžou se selhání vyskytnout, když se tok namapuje na původní virtuální počítač. Takový scénář se nepodporuje. Přečtěte si [omezení](concepts.md#limitations) pro podrobnou diskuzi.
 
 **Řešení** Existuje několik způsobů, jak tento scénář odblokovat, včetně použití proxy serveru. Vyhodnoťte Application Gateway nebo jiné proxy servery třetích stran (například Nginx nebo HAProxy). Další informace o Application Gateway najdete v tématu [přehled Application Gateway](../application-gateway/application-gateway-introduction.md)
 

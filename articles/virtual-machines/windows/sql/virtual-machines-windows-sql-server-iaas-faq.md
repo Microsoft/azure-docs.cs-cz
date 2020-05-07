@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 0d6d69b82e80ff9bc33e49302cf59766b9c2e8d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e1f61641eed0584ecb5bb33f1a510c7df6e60e3
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270821"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839075"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Nejčastější dotazy týkající se SQL Serveru na virtuálních počítačích s Windows v Azure
 
@@ -52,8 +52,12 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 1. **Je možné nasadit starší obrázek SQL Server, který není viditelný v Azure Portal?**
 
    Ano, pomocí prostředí PowerShell. Další informace o nasazení SQL Server virtuálních počítačů pomocí prostředí PowerShell najdete v tématu [jak zřídit SQL Server virtuálních počítačů pomocí Azure PowerShell](virtual-machines-windows-ps-sql-create.md).
+   
+1. **Je možné vytvořit zobecněnou image Azure SQL Server Marketplace na mém virtuálním počítači s SQL Server a použít ji k nasazení virtuálních počítačů?**
 
-1. **Jak můžu zobecnit SQL Server na virtuálním počítači Azure a použít ho k nasazení nových virtuálních počítačů?**
+   Ano, ale abyste mohli spravovat SQL Server virtuální počítač na portálu a využívat funkce, jako jsou automatické opravy a automatické zálohování, musíte [každý SQL Server virtuální počítač zaregistrovat pomocí poskytovatele prostředků SQL Server virtuálního počítače](virtual-machines-windows-sql-register-with-resource-provider.md) . Při registraci u poskytovatele prostředků budete taky muset zadat typ licence pro každý virtuální počítač SQL Server.
+
+1. **Návody zobecnit SQL Server na virtuálním počítači Azure a použít ho k nasazení nových virtuálních počítačů?**
 
    Můžete nasadit virtuální počítač s Windows serverem (bez nainstalovaného SQL Server) a pomocí procesu [SQL sysprepu](/sql/database-engine/install-windows/install-sql-server-using-sysprep?view=sql-server-ver15) zobecnit SQL Server na virtuálním počítači Azure (Windows) s SQL Server instalačním médiem. Zákazníci, kteří mají [program Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot%3aprimaryr3) , mohou získat instalační média z [centra](https://www.microsoft.com/Licensing/servicecenter/default.aspx)multilicenčního programu. Zákazníci, kteří nemají Software Assurance, mohou použít instalační médium z webu Marketplace SQL Server image virtuálního počítače, který má požadovanou edici.
 
@@ -63,7 +67,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
    `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Setup\SysPrepExternal\Specialize`
 
    > [!NOTE]
-   > Pro splnění požadavků na dodržování předpisů a používání volitelných funkcí, jako jsou automatické opravy a automatické zálohování, doporučujeme, aby se všechny SQL Server virtuální počítače Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, [zaregistrovaly u poskytovatele služby SQL VM rekurze](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) . Také vám umožní [zadat typ licence](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) pro každý virtuální počítač SQL Server.
+   > SQL Server na virtuálních počítačích Azure, včetně těch, které se nasazují z vlastních zobecněných imagí, by mělo být [zaregistrované u poskytovatele prostředků virtuálního počítače SQL](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-register-with-resource-provider?tabs=azure-cli%2Cbash) , aby splnil požadavky na dodržování předpisů a využili volitelné funkce, jako jsou automatické opravy a automatické zálohování. Poskytovatel prostředků taky umožňuje [zadat typ licence](/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-ahb?tabs=azure-portal) pro každý virtuální počítač SQL Server.
 
 1. **Můžu pomocí vlastního virtuálního pevného disku nasadit SQL Server virtuální počítač?**
 
@@ -92,7 +96,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
-   Ano. Můžete snadno přepnout image galerie s průběžnými platbami (PAYG) a využít tak vlastní licenci (BYOL) tím, že povolíte [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/faq/).  Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač](virtual-machines-windows-sql-ahb.md). V současné době je toto zařízení k dispozici pouze pro zákazníky s veřejným cloudem.
+   Ano. Můžete snadno přepnout image galerie s průběžnými platbami (PAYG) a využít tak vlastní licenci (BYOL) tím, že povolíte [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/faq/).  Další informace najdete v tématu [Změna licenčního modelu pro SQL Server virtuální počítač](virtual-machines-windows-sql-ahb.md). V současné době je tato služba dostupná jenom pro zákazníky s veřejnými a Azure Governmentými cloudy.
 
 1. **Způsobí přepnutí modelů licencování výpadek SQL Serveru?**
 
@@ -154,10 +158,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Je možné zaregistrovat SQL Server virtuální počítače nasazené svým držitelem pomocí SQL Server poskytovatele prostředků virtuálního počítače?**
 
-    Ano. Pokud jste nasadili SQL Server z vlastního média a nainstalovali jste rozšíření SQL IaaS, můžete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, abyste získali výhody správy poskytované rozšířením SQL IaaS. Nemůžete ale převést SQL Server virtuální počítač nasazený svým držitelem na průběžné platby.
-
-
-   
+    Ano. Pokud jste nasadili SQL Server z vlastního média a nainstalovali jste rozšíření SQL IaaS, můžete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, abyste získali výhody správy poskytované rozšířením SQL IaaS.    
 
 
 ## <a name="administration"></a>Správa

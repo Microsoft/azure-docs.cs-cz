@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: hromadný prováděcí modul Java API, SDK & prostředků'
 description: Seznamte se se všemi o rozhraních API pro hromadné prováděcí moduly Java a sadě SDK, včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB hromadného prováděcího modulu Java SDK.
-author: tknandu
+author: milismsft
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
-ms.author: ramkris
-ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: adrianmi
+ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981320"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836440"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu Java: informace o stažení
 
@@ -39,4 +39,27 @@ ms.locfileid: "80981320"
 | **Dokumentace k rozhraní API**| [Referenční dokumentace k rozhraní Java API](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Začínáme**|[Začínáme s knihovnou hromadných prováděcích knihoven Java SDK](bulk-executor-java.md)|
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+
+## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="2100"></a><a name="2.10.0"/>2.10.0
+
+* Opravte pro DocumentAnalyzer. Java, aby byly správně extrahovány hodnoty klíčů vnořeného oddílu z formátu JSON.
+
+### <a name="294"></a><a name="2.9.4"/>2.9.4
+
+* Přidejte funkce do operací BulkDelete a zkuste to znovu při konkrétních selháních a taky vraťte seznam selhání pro uživatele, který by se mohl opakovat.
+
+### <a name="293"></a><a name="2.9.3"/>2.9.3
+
+* Aktualizace pro Cosmos SDK verze 2.4.7.
+
+### <a name="292"></a><a name="2.9.2"/>2.9.2
+
+* Opravte pro ' mergeAll ' pro pokračování na ' ID ' a hodnotu klíče oddílu tak, aby všechny vlastnosti dokumentu s opravou, které jsou umístěny po ' ID ' a hodnota klíče oddílu, se přidaly do seznamu aktualizovaných položek.
+
+### <a name="291"></a><a name="2.9.1"/>2.9.1
+
+* Umožňuje aktualizovat počáteční stupeň souběžnosti na 1 a přidaných protokolů ladění pro minibatch.
+
 

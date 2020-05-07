@@ -1,25 +1,25 @@
 ---
-title: Seznam předdefinovaných definic zásad pro Azure ARC pro servery
-description: Uvádí Azure Policy předdefinované definice zásad pro Azure ARC pro servery. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 04/30/2020
+title: Předdefinované definice zásad pro Azure ARC pro servery
+description: Uvádí Azure Policy předdefinované definice zásad pro Azure ARC pro servery. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
+ms.date: 05/05/2020
 ms.topic: sample
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
 ms.custom: subject-policy-samples
-ms.openlocfilehash: de68d0705c5eee041897327445d0304f63c3c570
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 3b9f14eed44130929d3707598f2a82300f8d5a6c
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653285"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836562"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-arc-for-servers"></a>Azure Policy předdefinované definice zásad pro Azure ARC pro servery
 
 Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro Azure ARC pro servery. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-arc-for-servers"></a>Azure Arc pro servery
 

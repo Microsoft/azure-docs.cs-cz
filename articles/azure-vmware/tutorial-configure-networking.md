@@ -3,12 +3,12 @@ title: Kurz – konfigurace sítě pro privátní cloud VMWare v Azure
 description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení privátního cloudu v Azure.
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: e8278eb3ab5e99d330e34fd9739ed2bc49aa7f08
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 41043b98a6e270d8d9f4373de7876b3fcae86747
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740210"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837613"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMWare v Azure
 
@@ -24,7 +24,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k webu [Azure Portal](https://rc.portal.azure.com).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
@@ -68,7 +68,7 @@ Na kartě základy stránky **vytvořit bránu virtuální sítě** zadejte hodn
 | **Předplatné** | Tato hodnota se už naplní předplatným, ke kterému patří skupina prostředků. |
 | **Skupina prostředků** | Tato hodnota je pro aktuální skupinu prostředků již vyplněna. Mělo by se jednat o skupinu prostředků, kterou jste vytvořili v předchozím testu. |
 | **Název** | Zadejte jedinečný název pro bránu virtuální sítě. |
-| **Oblast** | Vyberte zeměpisnou polohu brány virtuální sítě. |
+| **Věřitel** | Vyberte zeměpisnou polohu brány virtuální sítě. |
 | **Typ brány** | Vyberte **ExpressRoute**. |
 | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
 | **SKLADOVÉ** | Ponechte výchozí hodnotu: **Standard**. |

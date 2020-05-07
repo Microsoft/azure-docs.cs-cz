@@ -9,17 +9,17 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 02/25/2020
-ms.openlocfilehash: cbef6029b93f134f95ee54aa87ce0dd65bcdf50d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8761a8f6daf0e15a00dc989e77339fea9536b330
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77623994"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801276"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Node. js pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [JavaScript](search-get-started-nodejs.md)
-> * [R #](search-get-started-dotnet.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Portál](search-get-started-portal.md)
 > * [PowerShell](search-create-index-rest-api.md)
 > * [Python](search-get-started-python.md)
@@ -439,7 +439,7 @@ Nakonec zadejte a zavolejte hlavní asynchronní `run` funkci. Tato funkce volá
 const run = async () => {
     try {
         const cfg = getAzureConfiguration();
-        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName));
+        const client = new AzureSearchClient(cfg.get("serviceName"), cfg.get("adminKey"), cfg.get("queryKey"), cfg.get("indexName"));
         
         const exists = await client.indexExistsAsync();
         await exists ? client.deleteIndexAsync() : Promise.resolve();
