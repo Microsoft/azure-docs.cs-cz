@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.subservice: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: 3a5fb354ab32dd560a94875dd84d891ce0b9d68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2d1600a688af09515b069a3161d724bb8882596a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82081740"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791166"
 ---
 # <a name="quickstart-create-and-encrypt-a-windows-virtual-machine-with-the-azure-portal"></a>Rychlý Start: vytvoření a šifrování virtuálního počítače s Windows pomocí Azure Portal
 
@@ -34,8 +34,18 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V poli **oblast**vyberte stejnou oblast, kterou jste použili při vytváření trezoru klíčů (například *východní USA*).
 1. Ujistěte se, že je **Velikost** *standardní D2s V3*.
 1. V části **účet správce**vyberte **heslo**. Zadejte uživatelské jméno a heslo.
-    ![Obrazovka pro vytvoření zdroje dat](../media/disk-encryption/portal-qs-windows-vm-creation.png)
-1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a pak klikněte na tlačítko OK ![vytvořit novou zdrojovou obrazovku.](../media/disk-encryption/portal-qs-vm-creation-storage.png)
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-windows-vm-creation.png" alt-text="Obrazovka pro vytvoření zdroje dat":::
+
+    > [!WARNING]
+    > Karta "disky" obsahuje pole "typ šifrování" v části **Možnosti disku**. Toto pole slouží k zadání možností šifrování pro [Managed disks](managed-disks-overview.md) + CMK, ne pro Azure Disk Encryption. 
+    >
+    > Aby nedocházelo k nejasnostem, doporučujeme při dokončení tohoto kurzu úplně přeskočit kartu *disky* . 
+
+1. Vyberte kartu Správa a ověřte, že máte účet úložiště diagnostiky. Pokud nemáte žádné účty úložiště, vyberte vytvořit nový, zadejte název nového účtu a vyberte OK.
+
+    :::image type="content" source="../media/disk-encryption/portal-qs-vm-creation-storage.png" alt-text="Obrazovka pro vytvoření zdroje dat":::
+
 1. Klikněte na zkontrolovat + vytvořit.
 1. Na stránce **Vytvoření virtuálního počítače** se zobrazí podrobnosti o virtuálním počítači, který se chystáte vytvořit. Až budete připraveni, vyberte **Vytvořit**.
 
@@ -47,19 +57,19 @@ Nasazení virtuálního počítače bude několik minut trvat. Po dokončení na
 1. Na levém bočním panelu vyberte **disky**.
 1. Na obrazovce disky vyberte **šifrování**. 
 
-    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-disks-to-encryption.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-disks-to-encryption.png" alt-text="Výběr disků a šifrování":::
 
 1. Na obrazovce šifrování v části **disky k šifrování**vyberte **operační systém a datové disky**.
 1. V části **nastavení šifrování**zvolte **Vybrat Trezor klíčů a klíč pro šifrování**.
 1. Na obrazovce **Vybrat klíč z Azure Key Vault** vyberte **vytvořit novou**.
 
-    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-keyvault-create.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-create.png" alt-text="Výběr disků a šifrování":::
 
 1. Na obrazovce **Vytvoření trezoru klíčů** se ujistěte, že skupina prostředků je stejná jako ta, kterou jste použili k vytvoření virtuálního počítače.
 1. Zadejte název trezoru klíčů.  Každý Trezor klíčů v Azure musí mít jedinečný název.
 1. Na kartě **zásady přístupu** zaškrtněte políčko **Azure Disk Encryption pro šifrování svazku** .
 
-    ![Výběr disků a šifrování](../media/disk-encryption/portal-qs-keyvault-enable.png)
+    :::image type="content" source="../media/disk-encryption/portal-qs-keyvault-enable.png" alt-text="Výběr disků a šifrování":::
 
 1. Vyberte **Zkontrolovat a vytvořit**.  
 1. Po úspěšném ověření trezoru klíčů vyberte **vytvořit**. Tím se vrátíte na Azure Key Vault obrazovce na **klíč pro výběr** .

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676729"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792203"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse Analytics (Preview)
 
@@ -41,9 +41,9 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
     | Nastavení | Navrhovaná hodnota | Popis |
     | :------ | :-------------- | :---------- |
     | **Předplatné** | *Vaše předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
-    | **Skupina prostředků** | *Libovolná skupina prostředků* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
+    | **Skupina prostředků** | *Libovolná skupina prostředků* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Název pracovního prostoru** | mysampleworkspace | Určuje název pracovního prostoru, který se bude používat taky pro koncové body připojení.|
-    | **Oblast** | USA – východ 2 | Určuje umístění pracovního prostoru.|
+    | **Věřitel** | USA – východ 2 | Určuje umístění pracovního prostoru.|
     | **Data Lake Storage Gen2** | Zohledňují`storage account name` </br> Systém souborů:`root file system to use` | Určuje název ADLS Gen2 účtu úložiště, který se má použít jako primární úložiště, a systém souborů, který se má použít.|
     ||||
 

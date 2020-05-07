@@ -1,35 +1,29 @@
 ---
-title: Azure Data Lake Storage Gen1 pokyny k ladění výkonu Sparku | Microsoft Docs
-description: Pokyny k ladění výkonu Spark Azure Data Lake Storage Gen1
-services: data-lake-store
-documentationcenter: ''
+title: Optimalizace výkonu – Spark s Azure Data Lake Storage Gen1
+description: Přečtěte si pokyny k ladění výkonu pro Spark v Azure HDInsight a Azure Data Lake Storage Gen1.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: dc92e7d2fcc911aeb6d92b91dd2d430af3c502ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 665fd3bf29f0ec4d2196bd29be300ee909364e31
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61436507"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691101"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro Spark ve službě HDInsight a Azure Data Lake Storage Gen1
 
-Při ladění výkonu Sparku je potřeba vzít v úvahu počet aplikací, které budou v clusteru spuštěny.  Ve výchozím nastavení můžete spouštět 4 aplikace souběžně na vašem clusteru HDI (Poznámka: výchozí nastavení se může změnit).  Můžete se rozhodnout použít méně aplikací, abyste mohli přepsat výchozí nastavení a používat pro tyto aplikace více clusterů.  
+Při ladění výkonu Sparku je potřeba vzít v úvahu počet aplikací, které budou v clusteru spuštěny. Ve výchozím nastavení můžete spouštět čtyři aplikace souběžně na clusteru HDI (Poznámka: výchozí nastavení se může změnit). Můžete se rozhodnout použít méně aplikací, abyste mohli přepsat výchozí nastavení a používat pro tyto aplikace více clusterů.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet Azure Data Lake Storage Gen1**. Pokyny, jak ho vytvořit, najdete v tématu Začínáme [s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) .
 * **Cluster Azure HDInsight** s přístupem k účtu Data Lake Storage Gen1. Další informace najdete v tématu [Vytvoření clusteru HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ujistěte se, že jste pro cluster povolili vzdálenou plochu.
-* **Spuštění clusteru Spark na data Lake Storage Gen1**.  Další informace najdete v tématu [použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* **Pokyny k ladění výkonu na data Lake Storage Gen1**.  Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) . 
+* **Spuštění clusteru Spark na data Lake Storage Gen1**. Další informace najdete v tématu [použití clusteru HDInsight Spark k analýze dat v Data Lake Storage Gen1](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
+* **Pokyny k ladění výkonu na data Lake Storage Gen1**. Obecné koncepty výkonu najdete v tématu [Data Lake Storage Gen1 pokyny k ladění výkonu](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance) . 
 
 ## <a name="parameters"></a>Parametry
 
@@ -39,75 +33,75 @@ Když spouštíte úlohy Sparku, tady jsou nejdůležitější nastavení, kter�
 
 * **Vykonavatel – paměť** – množství paměti přidělené každému vykonavateli.
 
-* **Vykonavatel – jader** – počet jader přidělených každému vykonavateli.                     
+* **Vykonavatel – jader** – počet jader přidělených každému vykonavateli.
 
-**Počet – vykonavatelé** Počet – vykonavatelé nastaví maximální počet úloh, které mohou běžet paralelně.  Skutečný počet úloh, které lze spustit paralelně, je svázán s prostředky paměti a CPU dostupnými ve vašem clusteru.
+**Počet – vykonavatelé** Počet – vykonavatelé nastaví maximální počet úloh, které mohou běžet paralelně. Skutečný počet úloh, které lze spustit paralelně, je svázán s prostředky paměti a CPU dostupnými ve vašem clusteru.
 
-**Prováděcí modul – paměť** Toto je množství paměti, které je přiděleno každému vykonavateli.  Paměť potřebná pro každý prováděcí modul závisí na úloze.  U složitých operací musí být paměť vyšší.  U jednoduchých operací, jako je čtení a zápis, budou požadavky na paměť nižší.  Velikost paměti pro každý prováděcí modul se dá zobrazit v Ambari.  V Ambari přejděte na Spark a zobrazte kartu konfigurace.  
+**Prováděcí modul – paměť** Toto je množství paměti, které je přiděleno každému vykonavateli. Paměť potřebná pro každý prováděcí modul závisí na úloze. U složitých operací musí být paměť vyšší. U jednoduchých operací, jako je čtení a zápis, budou požadavky na paměť nižší. Velikost paměti pro každý prováděcí modul se dá zobrazit v Ambari. V Ambari přejděte na Spark a zobrazte kartu **Konfigurace** .
 
-**Prováděcí modul – jádra** Tím se nastaví množství jader používaných na vykonavatele, které určuje počet paralelních vláken, která se dají spustit na vykonavatele.  Například pokud exekutor-cores = 2, pak každý prováděcí modul může v vykonavateli spustit 2 Paralelní úlohy.  Potřebná jádra vykonavatele budou závislá na úloze.  Vstupně-výstupní úlohy v/v nevyžadují velké množství paměti na každý úkol, takže každý prováděcí modul může zpracovávat více paralelních úkolů.
+**Prováděcí modul – jádra** Tím se nastaví množství jader používaných na vykonavatele, které určuje počet paralelních vláken, která se dají spustit na vykonavatele. Například pokud exekutor-cores = 2, pak každý prováděcí modul může v vykonavateli spustit 2 Paralelní úlohy. Potřebná jádra vykonavatele budou závislá na úloze. Vstupně-výstupní úlohy v/v nevyžadují velké množství paměti na každý úkol, takže každý prováděcí modul může zpracovávat více paralelních úkolů.
 
-Ve výchozím nastavení jsou pro každý fyzický jádro při spuštění Sparku ve službě HDInsight definovány dva jádra virtuálních PŘÍZe.  Toto číslo poskytuje dobré vyvážení souběžnosti a množství kontextu přepínání z více vláken.  
+Ve výchozím nastavení jsou pro každý fyzický jádro při spuštění Sparku ve službě HDInsight definovány dva jádra virtuálních PŘÍZe. Toto číslo poskytuje dobré vyvážení souběžnosti a množství kontextu přepínání z více vláken.
 
 ## <a name="guidance"></a>Doprovodné materiály
 
-Při spouštění analytických úloh Sparku pro práci s daty v Data Lake Storage Gen1 doporučujeme použít nejnovější verzi HDInsight, abyste získali nejlepší výkon pomocí Data Lake Storage Gen1. Když je úloha náročnější na vstupně-výstupní operace, můžete nakonfigurovat některé parametry, aby se zlepšil výkon.  Data Lake Storage Gen1 je vysoce škálovatelná úložná platforma, která dokáže zvládnout vysokou propustnost.  Pokud se úloha skládá hlavně z čtení nebo zápisů, zvýšení souběžnosti vstupu/výstupu do a z Data Lake Storage Gen1 může zvýšit výkon.
+Při spouštění analytických úloh Sparku pro práci s daty v Data Lake Storage Gen1 doporučujeme použít nejnovější verzi HDInsight, abyste získali nejlepší výkon pomocí Data Lake Storage Gen1. Když je úloha náročnější na vstupně-výstupní operace, můžete nakonfigurovat některé parametry, aby se zlepšil výkon. Data Lake Storage Gen1 je vysoce škálovatelná úložná platforma, která dokáže zvládnout vysokou propustnost. Pokud se úloha skládá hlavně z čtení nebo zápisů, zvýšení souběžnosti vstupu/výstupu do a z Data Lake Storage Gen1 může zvýšit výkon.
 
 Existuje několik obecných způsobů, jak zvýšit souběžnost pro úlohy náročné na vstupně-výstupní operace.
 
-**Krok 1: určení, kolik aplikací je v clusteru spuštěno** – měli byste zjistit, kolik aplikací běží na clusteru, včetně aktuálního.  Výchozí hodnoty pro každé nastavení Sparku předpokládá, že je souběžně spuštěných 4 aplikací.  Proto budete mít k dispozici pouze 25% clusteru pro každou aplikaci.  Chcete-li získat lepší výkon, můžete přepsat výchozí hodnoty změnou počtu prováděcích modulů.  
+**Krok 1: určení, kolik aplikací je v clusteru spuštěno** – měli byste zjistit, kolik aplikací běží na clusteru, včetně aktuálního. Výchozí hodnoty pro každé nastavení Sparku předpokládá, že je souběžně spuštěných 4 aplikací. Proto budete mít k dispozici pouze 25% clusteru pro každou aplikaci. Chcete-li získat lepší výkon, můžete přepsat výchozí hodnoty změnou počtu prováděcích modulů.
 
-**Krok 2: nastavení prováděcího modulu-paměti** – první věc, kterou je třeba nastavit, je vykonavatelská paměť.  Paměť bude závislá na úloze, kterou budete spouštět.  Souběžnost můžete zvýšit souběžnost přidělením méně paměti na vykonavatel.  Pokud se vám při spuštění úlohy zobrazí nedostatek paměti, měli byste zvýšit hodnotu tohoto parametru.  Jednou z možností je získat více paměti pomocí clusteru s větším množstvím paměti nebo zvýšením velikosti clusteru.  Víc paměti umožní použít víc prováděcích modulů, což znamená víc souběžnosti.
+**Krok 2: nastavení prováděcího modulu-paměti** – první věc, kterou je třeba nastavit, je vykonavatelská paměť. Paměť bude závislá na úloze, kterou budete spouštět. Souběžnost můžete zvýšit souběžnost přidělením méně paměti na vykonavatel. Pokud se vám při spuštění úlohy zobrazí nedostatek paměti, měli byste zvýšit hodnotu tohoto parametru. Jednou z možností je získat více paměti pomocí clusteru s větším množstvím paměti nebo zvýšením velikosti clusteru. Víc paměti umožní použít víc prováděcích modulů, což znamená víc souběžnosti.
 
-**Krok 3: nastavení prováděcích jader** – pro úlohy náročné na vstupně-výstupní operace, které nemají složitou operaci, je dobré začít s vysokým počtem jader vykonavatelů, aby se zvýšil počet paralelních úloh na vykonavatele.  Nastavování prováděcích jader na 4 je dobrým startem.   
+**Krok 3: nastavení prováděcích jader** – pro úlohy náročné na vstupně-výstupní operace, které nemají složitou operaci, je dobré začít s vysokým počtem jader vykonavatelů, aby se zvýšil počet paralelních úloh na vykonavatele. Nastavování prováděcích jader na 4 je dobrým startem.
 
     executor-cores = 4
-Zvýšení počtu prováděcích jader vám poskytne více paralelismu, abyste mohli experimentovat s různými prováděcími jádry.  Pro úlohy, které mají složitější operace, byste měli snížit počet jader na vykonavatele.  Pokud je jádro prováděče nastavené na vyšší než 4, může být uvolňování paměti neefektivní a snižuje výkon.
+Zvýšení počtu prováděcích jader vám poskytne více paralelismu, abyste mohli experimentovat s různými prováděcími jádry. Pro úlohy, které mají složitější operace, byste měli snížit počet jader na vykonavatele. Pokud je jádro prováděče nastavené na vyšší než 4, může být uvolňování paměti neefektivní a snižuje výkon.
 
-**Krok 4: určení množství paměti příze v clusteru** – tyto informace jsou k dispozici v Ambari.  Přejděte na PŘÍZe a zobrazte kartu konfigurace.  V tomto okně se zobrazí paměť PŘÍZe.  
-Všimněte si, že když jste v okně, můžete také zobrazit výchozí velikost kontejneru PŘÍZ.  Velikost kontejneru PŘÍZe je stejná jako hodnota parametru paměti na vykonavatele.
+**Krok 4: určení množství paměti příze v clusteru** – tyto informace jsou k dispozici v Ambari. Přejděte na PŘÍZe a zobrazte kartu Contigs. V tomto okně se zobrazí paměť PŘÍZe.
+Všimněte si, že když jste v okně, můžete také zobrazit výchozí velikost kontejneru PŘÍZ. Velikost kontejneru PŘÍZe je stejná jako hodnota parametru paměti na vykonavatele.
 
     Total YARN memory = nodes * YARN memory per node
 **Krok 5: výpočet počtu prováděcích modulů**
 
-**Vypočítat omezení paměti** – parametr počet-prováděcích modulů je omezený buď pamětí, nebo procesorem.  Omezení paměti je určeno množstvím dostupné paměti PŘÍZe vaší aplikace.  Měli byste využít celkovou paměť PŘÍZe a rozdělit ji pomocí prováděcího modulu-paměť.  Omezení musí být pro počet aplikací ve větším měřítku, takže rozdělujeme podle počtu aplikací.
+**Vypočítat omezení paměti** – parametr počet-prováděcích modulů je omezený buď pamětí, nebo procesorem. Omezení paměti je určeno množstvím dostupné paměti PŘÍZe vaší aplikace. Vezměte v úvahu celkovou paměť PŘÍZe a vydělte ji pomocí prováděcího modulu – paměť. Omezení musí být pro počet aplikací ve větším měřítku, takže rozdělujeme podle počtu aplikací.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
-**Vypočítat omezení procesoru** – omezení CPU se vypočítává jako celkový počet virtuálních jader dělený počtem jader na vykonavatele.  Pro každý fyzický jádro je k dispozici 2 virtuální jádra.  Podobně jako u omezení paměti jsme vyděleni počtem aplikací.
+    Memory constraint = (total YARN memory / executor memory) / # of apps
+**Vypočítat omezení procesoru** – omezení CPU se vypočítává jako celkový počet virtuálních jader dělený počtem jader na vykonavatele. Pro každý fyzický jádro je k dispozici 2 virtuální jádra. Podobně jako u omezení paměti jsme vyděleni počtem aplikací.
 
     virtual cores = (nodes in cluster * # of physical cores in node * 2)
     CPU constraint = (total virtual cores / # of cores per executor) / # of apps
 **Nastavit počet prováděcích** modulů – parametr NUM-prováděče se určí tak, že se vyberou minimálně omezení paměti a omezení CPU. 
 
-    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)   
-Nastavení většího počtu prováděcích modulů nemusí nutně zvyšovat výkon.  Měli byste zvážit, že přidáním dalších prováděcích modulů přidáte další režii pro každý další prováděcí modul, což může způsobit snížení výkonu.  Počet – vykonavatelé jsou vázány prostředky clusteru.    
+    num-executors = Min (total virtual Cores / # of cores per executor, available YARN memory / executor-memory)
+Nastavení většího počtu prováděcích modulů nemusí nutně zvyšovat výkon. Měli byste zvážit, že přidáním dalších prováděcích modulů přidáte další režii pro každý další prováděcí modul, což může způsobit snížení výkonu. Počet – vykonavatelé jsou vázány prostředky clusteru.
 
 ## <a name="example-calculation"></a>Příklad výpočtu
 
-Řekněme, že aktuálně máte cluster tvořený 8 D4v2 uzly, na kterých běží 2 aplikace, včetně toho, který budete spouštět.  
+Řekněme, že aktuálně máte cluster tvořený 8 D4v2 uzly, na kterých běží dvě aplikace, včetně toho, který budete spouštět.
 
-**Krok 1: určení, kolik aplikací běží ve vašem clusteru** – víte, že máte ve svém clusteru 2 aplikace, včetně toho, který budete spouštět.  
+**Krok 1: určení, kolik aplikací běží ve vašem clusteru** – víte, že máte ve svém clusteru dvě aplikace, včetně toho, který budete spouštět.
 
-**Krok 2: nastavení prováděcího modulu-paměti** – pro účely tohoto příkladu určíme, že 6 GB prováděcích paměti bude stačit pro úlohy náročné na vstupně-výstupní operace.  
+**Krok 2: nastavení prováděcího modulu-paměti** – pro účely tohoto příkladu určíme, že 6 GB prováděcích paměti bude stačit pro úlohy náročné na vstupně-výstupní operace.
 
     executor-memory = 6GB
-**Krok 3: nastavení prováděcích jader** – vzhledem k tomu, že se jedná o náročnou vstupně-výstupní úlohu, můžeme nastavit počet jader pro každý prováděcí modul na 4.  Nastavení jader na jeden prováděcí modul na větší než 4 může způsobit problémy uvolňování paměti.  
+**Krok 3: nastavení prováděcích jader** – vzhledem k tomu, že se jedná o náročnou vstupně-výstupní úlohu, můžeme nastavit počet jader pro každý prováděcí modul na čtyři. Nastavení jader na vykonavatel na více než čtyři mohou způsobit problémy uvolňování paměti.
 
     executor-cores = 4
-**Krok 4: určení množství paměti příze v clusteru** – navigujte na Ambari a zjistěte, že každý D4V2 má 25 GB paměti příze.  Vzhledem k tomu, že existují 8 uzlů, je dostupná paměť PŘÍZe vynásobena 8.
+**Krok 4: určení množství paměti příze v clusteru** – navigujte na Ambari a zjistěte, že každý D4V2 má 25 GB paměti příze. Vzhledem k tomu, že existují 8 uzlů, je dostupná paměť PŘÍZe vynásobena 8.
 
     Total YARN memory = nodes * YARN memory* per node
-    Total YARN memory = 8 nodes * 25GB = 200GB
-**Krok 5: výpočet počtu prováděcích** modulů – parametr počet-prováděcích modulů se určuje tak, že se vyberou minimálně omezení paměti a omezení procesoru dělené počtem aplikací spuštěných ve Sparku.    
+    Total YARN memory = 8 nodes * 25 GB = 200 GB
+**Krok 5: výpočet počtu prováděcích** modulů – parametr počet-prováděcích modulů se určuje tak, že se vyberou minimálně omezení paměti a omezení procesoru dělené počtem aplikací spuštěných ve Sparku.
 
 **Vypočítat omezení paměti** – omezení paměti je vypočítáno jako celková paměť příze dělená pamětí na vykonavatele.
 
-    Memory constraint = (total YARN memory / executor memory) / # of apps   
-    Memory constraint = (200GB / 6GB) / 2   
+    Memory constraint = (total YARN memory / executor memory) / # of apps 
+    Memory constraint = (200 GB / 6 GB) / 2
     Memory constraint = 16 (rounded)
 **Vypočítat omezení procesoru** – omezení CPU se vypočítá jako celkový počet jader příze dělený počtem jader na vykonavatele.
     
-    YARN cores = nodes in cluster * # of cores per node * 2   
+    YARN cores = nodes in cluster * # of cores per node * 2
     YARN cores = 8 nodes * 8 cores per D14 * 2 = 128
     CPU constraint = (total YARN cores / # of cores per executor) / # of apps
     CPU constraint = (128 / 4) / 2
@@ -116,5 +110,4 @@ Nastavení většího počtu prováděcích modulů nemusí nutně zvyšovat vý
 
     num-executors = Min (memory constraint, CPU constraint)
     num-executors = Min (16, 16)
-    num-executors = 16    
-
+    num-executors = 16
