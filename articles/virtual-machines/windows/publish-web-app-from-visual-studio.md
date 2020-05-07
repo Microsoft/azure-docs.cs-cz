@@ -10,21 +10,21 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: abf0570ee9f01a2378e8c0370cfc3ba5fecc7406
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82098227"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583362"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Publikování webové aplikace v ASP.NET ve virtuálním počítači Azure ze sady Visual Studio
 
 Tento dokument popisuje, jak publikovat webovou aplikaci v ASP.NET na virtuálním počítači Azure pomocí funkce publikování **Microsoft Azure Virtual Machines** v aplikaci Visual Studio 2019.  
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Aby bylo možné použít Visual Studio k publikování projektu ASP.NET na virtuálním počítači Azure, musí být virtuální počítač správně nastavený.
 
-- Počítač musí být nakonfigurovaný tak, aby spouštěl webovou aplikaci v ASP.NET a nainstaloval nástroj WebDeploy.
+- Počítač musí být nakonfigurovaný tak, aby spouštěl webovou aplikaci v ASP.NET a nainstaloval nástroj WebDeploy. Další informace najdete v tématu [Vytvoření virtuálního počítače s ASP.NET pomocí nástroje WebDeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md).
 
 - Virtuální počítač musí mít nakonfigurovaný název DNS. Další informace najdete v tématu [Vytvoření plně kvalifikovaného názvu domény v Azure Portal pro virtuální počítač s Windows](portal-create-fqdn.md).
 

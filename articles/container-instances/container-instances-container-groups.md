@@ -4,12 +4,12 @@ description: Přečtěte si o skupinách kontejnerů v Azure Container Instances
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115648"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583837"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Skupiny kontejnerů ve službě Azure Container Instances
 
@@ -69,7 +69,7 @@ V tomto scénáři můžete pro instanci kontejneru nastavit limit prostředků 
 
 ## <a name="networking"></a>Sítě
 
-Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů na této IP adrese a popisek DNS s plně kvalifikovaným názvem domény (FQDN). Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. Vzhledem k tomu, že kontejnery v rámci skupiny sdílejí obor názvů portu, mapování portů se nepodporuje. Po odstranění skupiny kontejnerů se uvolní IP adresa a plně kvalifikovaný název domény skupiny kontejnerů. 
+Skupiny kontejnerů můžou sdílet externí IP adresu, jeden nebo víc portů na této IP adrese a popisek DNS s plně kvalifikovaným názvem domény (FQDN). Chcete-li povolit externím klientům, aby dosáhli kontejneru v rámci skupiny, je nutné vystavit port na IP adrese a v kontejneru. IP adresa a plně kvalifikovaný název domény skupiny kontejnerů se uvolní při odstranění skupiny kontejnerů. 
 
 V rámci skupiny kontejnerů se instance kontejnerů můžou vzájemně kontaktovat přes localhost na jakémkoli portu, a to i v případě, že se tyto porty nezveřejňují externě na IP adrese skupiny nebo z kontejneru.
 
@@ -118,7 +118,7 @@ Přečtěte si, jak nasadit skupinu kontejnerů s více kontejnery pomocí šabl
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

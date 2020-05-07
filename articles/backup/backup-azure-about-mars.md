@@ -4,12 +4,12 @@ description: Zjistěte, jak agent MARS podporuje scénáře zálohování.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673294"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611479"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>O agentovi Microsoft Azure Recovery Services (MARS)
 
@@ -39,19 +39,21 @@ Agent MARS podporuje následující scénáře obnovení:
 
 ## <a name="backup-process"></a>Proces zálohování
 
-1. Z Azure Portal vytvořte [trezor Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)a v části cíle zálohování vyberte soubory, složky a stav systému.
+1. Z Azure Portal vytvořte [trezor Recovery Services](install-mars-agent.md#create-a-recovery-services-vault)a v části **cíle zálohování**vyberte soubory, složky a stav systému.
 2. [Stáhněte si přihlašovací údaje úložiště Recovery Services a instalátor agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent) do místního počítače.
 
-    Chcete-li chránit místní počítač, vyberte možnost zálohování, zvolte možnost soubory, složky a stav systému a poté Stáhněte agenta MARS.
-
-3. Příprava infrastruktury:
-
-    a. Spusťte instalační program a [nainstalujte agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent).
-
-    b. K registraci počítače do trezoru Recovery Services použijte své stažené přihlašovací údaje trezoru.
-4. V konzole agenta na klientovi [nakonfigurujte zálohu](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy). Zadejte zásady uchovávání dat záloh, aby se začaly chránit.
+3. [nainstalujte agenta](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent) a použijte stažené přihlašovací údaje trezoru k registraci počítače do trezoru Recovery Services.
+4. V konzole agenta na klientovi [nakonfigurujte zálohování](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy) tak, aby určovalo, co se má zálohovat (plán), jak dlouho se zálohy mají uchovávat v Azure (zásady uchovávání informací), a začněte chránit.
 
 ![Diagram agenta Azure Backup](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>Další informace
+
+- **Prvotní zálohování** (první zálohování) se spouští podle nastavení zálohování.  Agent MARS používá službu Stínová kopie svazku k provedení snímků vybraných pro zálohování v čase. Agent k zachycení snímku používá pouze operaci zapisovače systému Windows. Nepoužívá žádné aplikace pro zápis služby VSS a nezachycuje snímky konzistentní vzhledem k aplikacím. Po pořízení snímku pomocí VSS vytvoří agent MARS virtuální pevný disk (VHD) ve složce mezipaměti, kterou jste zadali při konfiguraci zálohování. Agent také ukládá kontrolní součty pro každý blok dat.
+
+- **Přírůstkové zálohování** (následné zálohy) se spouští podle plánu, který zadáte. Během přírůstkového zálohování se identifikují změněné soubory a vytvoří se nový virtuální pevný disk. Virtuální pevný disk je komprimovaný a zašifrovaný a pak se pošle do trezoru. Po dokončení přírůstkového zálohování se nový virtuální pevný disk sloučí s virtuálním pevným diskem vytvořeným po počáteční replikaci. Tento sloučený virtuální pevný disk poskytuje nejnovější stav, který se má použít pro porovnání probíhajícího zálohování.
+
+- Agent MARS může spustit úlohu zálohování v **optimalizovaném režimu** pomocí deníku změn USN (Update Sequence Number) nebo v **neoptimalizovaném režimu** tak, že kontroluje změny v adresářích nebo souborech prostřednictvím kontroly celého svazku. Neoptimalizovaný režim je pomalejší, protože agent musí kontrolovat všechny soubory na svazku a porovnat je s metadaty, aby určil změněné soubory.  **Prvotní zálohování** se vždy spustí v neoptimalizovaném režimu. Pokud předchozí zálohování selhalo, spustí se další naplánovaná úloha zálohování v neoptimalizovaném režimu.
 
 ### <a name="additional-scenarios"></a>Další scénáře
 

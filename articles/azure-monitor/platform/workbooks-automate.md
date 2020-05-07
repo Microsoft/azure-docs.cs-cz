@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658400"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731729"
 ---
 # <a name="programmatically-manage-workbooks"></a>Správa sešitů prostřednictvím kódu programu
 
-Vlastníci prostředků mají možnost vytvářet a spravovat své sešity prostřednictvím šablon Správce prostředků. 
+Vlastníci prostředků mají možnost vytvářet a spravovat své sešity prostřednictvím šablon Správce prostředků.
 
 To může být užitečné ve scénářích, jako jsou:
 * Nasazení analytických sestav specifických pro organizace nebo domén spolu s nasazeními prostředků. Například můžete nasadit sešity výkonu a selhání specifické pro organizaci pro vaše nové aplikace nebo virtuální počítače.
@@ -26,7 +26,98 @@ To může být užitečné ve scénářích, jako jsou:
 
 Sešit se vytvoří v požadované skupině sub/Resource-Group a s obsahem zadaným v šablonách Správce prostředků.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Šablona Azure Resource Manager pro nasazení sešitů
+Existují dva typy prostředků sešitu, které lze spravovat prostřednictvím kódu programu:
+* [Šablony sešitu](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [Instance sešitu](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>Šablona Azure Resource Manager pro nasazení šablony sešitu
+
+1. Otevřete sešit, který chcete nasadit programově.
+2. Kliknutím na položku panelu nástrojů pro _Úpravy_ přepněte sešit do režimu úprav.
+3. Otevřete _Rozšířený editor_ pomocí _</>_ tlačítka na panelu nástrojů.
+4. Ujistěte se, že jste na kartě _Šablona Galerie_ .
+
+    ![Karta šablony galerie](./media/workbooks-automate/gallery-template.png)
+1. Zkopírujte kód JSON v šabloně galerie do schránky.
+2. Níže je příklad šablony Azure Resource Manager, která nasadí šablonu sešitu do Azure Monitor Galerie sešitů. Vložte JSON, který jste zkopírovali místo `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`. Odkaz na Azure Resource Manager šablonu, která vytvoří šablonu sešitu, najdete [tady](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template).
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. V `galleries` objektu vyplňte pomocí vašich hodnot `name` klíče `category` a. Další informace o [parametrech](#parameters) najdete v další části.
+2. Tuto šablonu Azure Resource Manager nasaďte buď pomocí [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), [rozhraní příkazového řádku](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), [PowerShellu](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)atd.
+3. Otevřete Azure Portal a přejděte do galerie sešitů zvolené v šabloně Azure Resource Manager. V ukázkové šabloně přejděte do galerie Azure Monitorového sešitu:
+    1. Otevřete Azure Portal a přejděte do Azure Monitor
+    2. Otevřít `Workbooks` z obsahu
+    3. Najděte šablonu v galerii v kategorii `Deployed Templates` (bude jednou z fialových položek).
+
+### <a name="parameters"></a>Parametry
+
+|Parametry                |Vysvětlení                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Název prostředku šablony sešitu v Azure Resource Manager.                                  |
+|`type`                    | Vždy Microsoft. Insights/workbooktemplates                                                            |
+| `location`               | Umístění Azure, ve kterém se sešit vytvoří                                               |
+| `apiVersion`             | 2019-10-17 Preview                                                                                     |
+| `type`                   | Vždy Microsoft. Insights/workbooktemplates                                                            |
+| `galleries`              | Sada galerií, ve kterých se má zobrazit tato šablona sešitu                                                |
+| `gallery.name`           | Popisný název šablony sešitu v galerii.                                             |
+| `gallery.category`       | Skupina v galerii, do které se umístí šablona                                                     |
+| `gallery.order`          | Číslo, které určuje pořadí zobrazení šablony v rámci kategorie v galerii. Nižší pořadí znamená vyšší prioritu. |
+| `gallery.resourceType`   | Typ prostředku odpovídající galerii. Obvykle se jedná o řetězec typu prostředku, který odpovídá prostředku (například Microsoft. operationalinsights/Workspaces). |
+|`gallery.type`            | Označuje se jako typ sešitu tento jedinečný klíč, který rozlišuje galerii v rámci určitého typu prostředku. Application Insights například mají typy `workbook` a `tsg` odpovídají různým galeriím sešitů. |
+
+### <a name="galleries"></a>Galerie
+
+| Galerie                                        | Typ prostředku                                      | Typ sešitu |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Sešity v Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
+| Přehledy virtuálních počítačů v Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
+| Sešity v pracovním prostoru Log Analytics           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Sešity v Application Insights              | `microsoft.insights/component`                     | `workbook`    |
+| Průvodci odstraňováním potíží v Application Insights | `microsoft.insights/component`                     | `tsg`         |
+| Využití v Application Insights                  | `microsoft.insights/component`                     | `usage`       |
+| Sešity ve službě Kubernetes                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| Sešity ve skupinách prostředků                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Sešity v Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| Přehledy virtuálních počítačů ve virtuálních počítačích                | `microsoft.compute/virtualmachines`                | `insights`    |
+| Přehledy virtuálních počítačů v sadě Virtual Machine Scale Sets                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Šablona Azure Resource Manager pro nasazení instance sešitu
+
 1. Otevřete sešit, který chcete nasadit programově.
 2. Kliknutím na položku panelu nástrojů pro _Úpravy_ přepněte sešit do režimu úprav.
 3. Otevřete _Rozšířený editor_ pomocí _</>_ tlačítka na panelu nástrojů.
@@ -124,4 +215,3 @@ Z technického důvodu Tento mechanismus nelze použít k vytvoření instancí 
 ## <a name="next-steps"></a>Další kroky
 
 Prozkoumejte, jak se používají sešity k napájení nových [Azure monitor pro prostředí úložiště](../insights/storage-insights-overview.md).
-

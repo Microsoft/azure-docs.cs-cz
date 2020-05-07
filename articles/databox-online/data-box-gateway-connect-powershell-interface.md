@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 6c9f3455a07001a8d1b9b8a1e84f2af3392b5690
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2413e53e9613aaa1140b083cb24fe709eb1b067d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260212"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561783"
 ---
 # <a name="manage-an-azure-data-box-gateway-device-via-windows-powershell"></a>Správa zařízení Azure Data Box Gateway přes Windows PowerShell
 
 Azure Data Box Gateway řešení umožňuje odesílat data přes síť do Azure. Tento článek popisuje některé úlohy konfigurace a správy pro vaše zařízení Data Box Gateway. Ke správě zařízení můžete použít rozhraní Azure Portal, místní webové uživatelské rozhraní nebo prostředí Windows PowerShell.
 
-Tento článek se zaměřuje na úlohy, které provedete pomocí prostředí PowerShell.
+Tento článek se zaměřuje na úlohy, které provedete pomocí prostředí PowerShell. 
 
 Tento článek obsahuje následující postupy:
 

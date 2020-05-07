@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165857"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690691"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Správa uživatelů pomocí mých zaměstnanců (Preview)
 
@@ -26,9 +26,28 @@ Moji zaměstnanci vám umožňují delegovat na označení autority, jako je man
 
 Před konfigurací pracovníků pro vaši organizaci doporučujeme projít si tuto dokumentaci a také [dokumentaci pro uživatele](../user-help/my-staff-team-manager.md) , abyste měli přehled o funkcích a dopadu této funkce na uživatele. Dokumentaci pro uživatele můžete využít ke školení a přípravě uživatelů na nové prostředí a k zajištění úspěšného zavedení.
 
+Ověřování pomocí serveru SMS pro uživatele je funkce verze Public Preview služby Azure Active Directory. Další informace o verzích Preview najdete v tématu [doplňujících podmínek použití pro Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verze Preview.
+
 ## <a name="how-my-staff-works"></a>Jak funguje Moji zaměstnanci
 
 Moji zaměstnanci vycházejí z jednotek pro správu (Austrálie), což je kontejner prostředků, které se dají použít k omezení rozsahu administrativního řízení přiřazení role. V části Moji zaměstnanci se k definování podmnožiny uživatelů organizace, jako je například obchod nebo oddělení, používá Austrálie. Potom může být například správce týmu přiřazen k roli, jejíž obor je jeden nebo více jednotek Austrálie. V následujícím příkladu byla uživateli udělena role Správce ověřování a tři jednotky Austrálie jsou oborem role. Další informace o jednotkách správy najdete v tématu [Správa jednotek pro správu v Azure Active Directory](directory-administrative-units.md).
+
+## <a name="before-you-begin"></a>Před zahájením
+
+K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
+
+* Aktivní předplatné Azure.
+
+  * Pokud nemáte předplatné Azure, [vytvořte účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Tenant Azure Active Directory přidružený k vašemu předplatnému.
+
+  * V případě potřeby [vytvořte tenanta Azure Active Directory](../fundamentals/sign-up-organization.md) nebo [přidružte předplatné Azure k vašemu účtu](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+* Aby bylo možné povolit ověřování pomocí serveru SMS, potřebujete oprávnění *globálního správce* v TENANTOVI Azure AD.
+* Každý uživatel, který je povolený v zásadě metody ověřování pomocí textové zprávy, musí mít licenci, a to i v případě, že ho nepoužívají. Každý povolený uživatel musí mít jednu z následujících licencí Azure AD nebo Microsoft 365:
+
+  * [Azure AD Premium P1 nebo P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 (M365) F1 nebo F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise mobility + Security (EMS) E3 nebo E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) nebo [Microsoft 365 (M365) E3 nebo E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Jak povolit Moji zaměstnanci
 
@@ -47,7 +66,7 @@ Portál My personál můžete chránit pomocí zásad podmíněného přístupu 
 
 Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného přístupu Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/). Pokud chcete, aby se zásady podmíněného přístupu používaly pro moje pracovníky, musíte ručně vytvořit instanční objekt služby my personál pomocí PowerShellu.
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Použití zásad podmíněného přístupu u mých zaměstnanců
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Použití zásad podmíněného přístupu u mých zaměstnanců
 
 1. Nainstalujte [rutiny Microsoft Graph beta prostředí PowerShell](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Spusťte následující příkazy:
@@ -62,13 +81,6 @@ Důrazně doporučujeme chránit své pracovníky pomocí [zásad podmíněného
 ## <a name="using-my-staff"></a>Používání mých zaměstnanců
 
 Když uživatel přejde na Moji zaměstnanci, zobrazí se názvy [jednotek pro správu](directory-administrative-units.md) , se kterými mají oprávnění správce. V [dokumentaci pro uživatele mých zaměstnanců](../user-help/my-staff-team-manager.md)používáme termín "umístění", ve kterém se odkazuje na jednotky pro správu. Pokud oprávnění správce nemají obor AU, vztahují se oprávnění na celou organizaci. Po povolení mých zaměstnanců můžou uživatelé, kteří mají povolený a přiřazenou roli správce, k němu přistupovat prostřednictvím [https://mystaff.microsoft.com](https://mystaff.microsoft.com). Můžou vybrat AU a zobrazit uživatele v této jednotce AU a vybrat uživatele, který otevře jeho profil.
-
-## <a name="licenses"></a>Licence
-
-Každý uživatel, který je povolený v části Moji zaměstnanci, musí mít licenci, i když nepoužívají portál My personál. Každý povolený uživatel musí mít jednu z následujících licencí Azure AD nebo Microsoft 365:
-
-- Azure AD Premium P1 nebo P2
-- Microsoft 365 F1 nebo F3
 
 ## <a name="reset-a-users-password"></a>Resetování hesla uživatele
 
@@ -106,7 +118,7 @@ Chcete-li spravovat telefonní číslo uživatele, je nutné přiřadit jednu z 
 - [Správce privilegovaného ověřování](directory-assign-admin-roles.md#privileged-authentication-administrator)
 - [Globální správce](directory-assign-admin-roles.md#global-administrator--company-administrator)
 
-## <a name="search"></a>Search
+## <a name="search"></a>Vyhledávání
 
 V organizaci můžete hledat oddělení Austrálie a uživatele ve vaší organizaci pomocí panelu hledání v části Moji zaměstnanci. Můžete vyhledávat ve všech centrech a uživatelích ve vaší organizaci, ale můžete provádět změny jenom pro uživatele, kteří jsou ve AU, přes který jste měli oprávnění správce.
 

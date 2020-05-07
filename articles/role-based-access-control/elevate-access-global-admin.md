@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641357"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733651"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu
 
@@ -47,7 +47,7 @@ Tento přístup se zvýšeným oprávněním byste měli odebrat, jakmile proved
 
 ![Zvýšení přístupu](./media/elevate-access-global-admin/elevate-access.png)
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Zvýšení přístupu pro globálního správce
 
@@ -84,7 +84,7 @@ Pomocí těchto kroků můžete zvýšit přístup pro globálního správce pom
 
 1. Proveďte změny, které potřebujete k zajištění přístupu se zvýšenými oprávněními.
 
-    Informace o přiřazování rolí najdete v tématu [Správa přístupu pomocí RBAC a Azure Portal](role-assignments-portal.md). Pokud používáte Azure AD Privileged Identity Management (PIM), přečtěte si téma [zjišťování prostředků Azure pro správu v PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) nebo [přiřazení rolí prostředků Azure v PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Informace o přiřazování rolí najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md). Pokud používáte Azure AD Privileged Identity Management (PIM), přečtěte si téma [zjišťování prostředků Azure pro správu v PIM](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) nebo [přiřazení rolí prostředků Azure v PIM](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 ### <a name="remove-elevated-access"></a>Odebrat vyšší úroveň přístupu
 
@@ -321,5 +321,5 @@ Když zavoláte `elevateAccess`, vytvoříte přiřazení role sami, takže odvo
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vysvětlení různých rolí v Azure](rbac-and-directory-admin-roles.md)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a REST API](role-assignments-rest.md)
+- [Vysvětlení různých rolí](rbac-and-directory-admin-roles.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)

@@ -1,16 +1,14 @@
 ---
 title: Nastavení certifikátu šifrování v clusterech Windows
 description: Naučte se, jak nastavit šifrovací certifikát a šifrovat tajné klíče v clusterech Windows.
-author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
-ms.author: vturecek
-ms.openlocfilehash: d563b338169ab26649b42c73f5fb7ed2fe8c0312
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb4909d62a2627c368f24dab572b25c6f1df30ec
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460184"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583292"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech Windows
 V tomto článku se dozvíte, jak nastavit šifrovací certifikát a použít ho k šifrování tajných klíčů v clusterech Windows. Clustery se systémem Linux najdete v tématech [Nastavení šifrovacího certifikátu a šifrování tajných klíčů v clusterech se systémem Linux.][secret-management-linux-specific-link]

@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67175467"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561782"
 ---
 1. [Připojte se k rozhraní PowerShell](#connect-to-the-powershell-interface).
 2. `Get-HcsApplianceInfo` Informace pro vaše zařízení získáte pomocí.
@@ -49,7 +49,7 @@ ms.locfileid: "67175467"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | Popisný název zařízení nakonfigurovaný prostřednictvím místního webového uživatelského rozhraní během nasazování zařízení. Výchozím popisným názvem je sériové číslo zařízení.  |   |
     | SerialNumber                   | Sériové číslo zařízení je jedinečné číslo přiřazené v továrně.                                                                             |   |
-    | Model                          | Model pro Data Box Edge nebo Data Box Gateway zařízení. Model je virtuální pro Data Box Gateway a fyzický pro Data Box Edge.                   |   |
+    | Model                          | Model pro Azure Stack Edge nebo Data Box Gateway zařízení. Model je fyzický pro Azure Stack Edge a Virtual pro Data Box Gateway.                   |   |
     | FriendlySoftwareVersion        | Popisný řetězec, který odpovídá verzi softwaru zařízení. V systému, ve kterém je spuštěný náhled, by se měla používat popisná verze softwaru Data Box Edge 1902. |   |
     | HcsVersion                     | Verze softwaru klientovi HCS spuštěná na vašem zařízení. Například verze softwaru klientovi HCS, která odpovídá Data Box Edge 1902, je 1.4.771.324.            |   |
     | LocalCapacityInMb              | Celková místní kapacita zařízení v megabajtech.                                                                                                        |   |

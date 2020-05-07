@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252360"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744566"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -21,7 +21,7 @@ Odstranění záloh chráněné položky je významnou operací, kterou je třeb
 
 Ale v některých případech se tato možnost nevyžaduje. Trezor služby Azure Recovery Services nelze odstranit, pokud v něm existují zálohované položky, a to i obnovitelné odstranění. Může to představovat problém, pokud je potřeba trezor okamžitě odstranit. Například: operace nasazení často vyčistí vytvořené prostředky ve stejném pracovním postupu. Nasazení může vytvořit trezor, nakonfigurovat zálohování pro položku, provést test obnovení a pak pokračovat v odstraňování zálohovaných položek a trezoru. Pokud odstranění trezoru selže, může dojít k selhání celého nasazení. Vypnutí obnovitelného odstranění je jediným způsobem, jak zaručit okamžité odstranění.
 
-Zákazník si proto musí pečlivě vybrat, jestli se má v závislosti na scénáři zakázat obnovitelné odstraňování konkrétního trezoru. Další informace najdete v článku o [obnovitelném odstranění](backup-azure-security-feature-cloud.md#soft-delete).
+Zákazník si proto musí pečlivě vybrat, jestli se má v závislosti na scénáři zakázat obnovitelné odstraňování konkrétního trezoru. Další informace najdete v článku o [obnovitelném odstranění](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Načíst stav obnovitelného odstranění pomocí REST API
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Úspěšná odpověď pro operaci GET je uvedená níže:
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +83,7 @@ K vytvoření textu žádosti se použijí tyto společné definice.
 
 Další podrobnosti najdete [v dokumentaci k REST API](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Název  |Požaduje se  |Typ  |Popis  |
+|Name  |Požaduje se  |Typ  |Popis  |
 |---------|---------|---------|---------|
 |značk     |         |   Řetězec      |  Volitelné eTag       |
 |location     |  true       |Řetězec         |   Umístění prostředku      |
@@ -107,7 +107,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 
-|Název  |Typ  |Popis  |
+|Name  |Typ  |Popis  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

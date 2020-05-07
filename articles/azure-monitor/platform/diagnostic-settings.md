@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: edb34b1456efae4d06465cfa2e64e546f621c6da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbef0244f30a7cf14f8fea4c6a445cf0de662dc4
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681182"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82737891"
 ---
 # <a name="create-diagnostic-setting-to-collect-resource-logs-and-metrics-in-azure"></a>Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure
 
@@ -31,7 +31,13 @@ Každý prostředek Azure vyžaduje vlastní nastavení diagnostiky, které defi
 Jedno diagnostické nastavení může definovat více než jedno z cílů. Pokud chcete odesílat data do více než jednoho konkrétního cílového typu (například dvou různých Log Analytics pracovních prostorů), vytvořte více nastavení. Každý prostředek může mít až 5 nastavení diagnostiky.
 
 > [!NOTE]
-> [Metriky platformy](metrics-supported.md) se shromažďují automaticky, aby se [Azure monitor metriky](data-platform-metrics.md). Nastavení diagnostiky lze použít ke shromáždění metrik pro určité služby Azure do protokolů Azure Monitor k analýze s ostatními daty monitorování pomocí [dotazů protokolu](../log-query/log-query-overview.md).
+> [Metriky platformy](metrics-supported.md) se shromažďují automaticky, aby se [Azure monitor metriky](data-platform-metrics.md). Nastavení diagnostiky lze použít ke shromáždění metrik pro určité služby Azure do protokolů Azure Monitor pro analýzu s ostatními daty monitorování pomocí [dotazů protokolu](../log-query/log-query-overview.md) s určitými omezeními. 
+>  
+>  
+> Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí. *Například*: metrika ' IOReadBytes ' na blockchain lze prozkoumat a vytvořit graf na úrovni jednotlivých uzlů. Při exportu pomocí nastavení diagnostiky ale vyexportovaná metrika představuje všechny bajty čtení pro všechny uzly. Kromě interních omezení nejsou všechny metriky exportovatelné do Azure Monitor protokolů/Log Analytics. Další informace najdete v [seznamu exportovatelné metriky](metrics-supported-export-diagnostic-settings.md). 
+>  
+>  
+> Pokud chcete získat tato omezení pro konkrétní metriky, doporučujeme je ručně extrahovat pomocí [metrik REST API](https://docs.microsoft.com/rest/api/monitor/metrics/list) a importovat je do protokolů Azure monitor pomocí [rozhraní API pro Azure monitor kolektor dat](data-collector-api.md).  
 
 ## <a name="destinations"></a>Cíle
 
@@ -41,7 +47,7 @@ Protokoly a metriky platformy je možné odeslat do cílových umístění v ná
 |:---|:---|
 | [Pracovní prostor služby Log Analytics](resource-logs-collect-workspace.md) | Shromažďování protokolů a metrik do pracovního prostoru Log Analytics umožňuje jejich analýzu s dalšími daty monitorování shromážděnými pomocí Azure Monitor pomocí výkonných dotazů protokolu a také k využití dalších Azure Monitorch funkcí, jako jsou výstrahy a vizualizace. |
 | [Centra událostí](resource-logs-stream-event-hubs.md) | Odesílání protokolů a metrik do Event Hubs umožňuje streamování dat do externích systémů, jako jsou systémů Siem třetích stran a další řešení Log Analytics. |
-| [Účet služby Azure Storage](resource-logs-collect-storage.md) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
+| [Účet úložiště Azure](resource-logs-collect-storage.md) | Archivace protokolů a metrik do účtu služby Azure Storage je užitečná pro audit, statickou analýzu nebo zálohování. V porovnání s protokoly Azure Monitor a pracovním prostorem Log Analytics je úložiště Azure levnější a protokoly se můžou uchovávat po neomezenou dobu. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Vytvořit nastavení diagnostiky v Azure Portal
 
@@ -78,9 +84,8 @@ Nastavení diagnostiky můžete nakonfigurovat v Azure Portal, a to buď z nabí
      - **AllMetrics** směruje metriky platforem prostředku do úložiště protokolů Azure, ale ve formuláři protokolu. Tyto metriky jsou obvykle odesílány pouze do databáze časových řad Azure Monitor metriky. Posílání do úložiště protokolů Azure Monitor (které lze prohledávat prostřednictvím Log Analytics) k jejich integraci do dotazů, které hledají v jiných protokolech. Tato možnost nemusí být k dispozici pro všechny typy prostředků. Pokud je tato podpora podporovaná, [Azure monitor podporované metriky](metrics-supported.md) uvádí, jaké metriky se shromažďují pro typy prostředků.
 
        > [!NOTE]
-       > Odesílání vícedimenzionálních metrik přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
-       >
-       > *Například*: metrika ' IOReadBytes ' na blockchain lze prozkoumat a vytvořit graf na úrovni jednotlivých uzlů. Při exportu pomocí nastavení diagnostiky ale vyexportovaná metrika představuje všechny bajty čtení pro všechny uzly.
+       > V části limitatation pro metriky směrování můžete Azure Monitor protokoly výše v tomto článku.  
+
 
      - V **protokolech** jsou uvedeny různé kategorie, které jsou k dispozici v závislosti na typu prostředku. Podívejte se na všechny kategorie, které byste chtěli směrovat do cílového umístění.
 

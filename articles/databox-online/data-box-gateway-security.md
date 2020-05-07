@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69900601"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562470"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway zabezpečení a ochrana dat
 
@@ -39,7 +39,7 @@ Služba Data Box Gateway je služba pro správu, která je hostovaná v Azure. S
 
 Zařízení Data Box Gateway je virtuální zařízení, které je zřízené v hypervisoru místního systému, který zadáte. Zařízení pomáhá posílat data do Azure. Vaše zařízení:
 
-- Pro přístup ke službě Data Box Edge/Data Box Gateway potřebuje aktivační klíč.
+- Pro přístup ke službě Azure Stack Edge/Data Box Gateway potřebuje aktivační klíč.
 - Je chráněna za všech okolností heslem zařízení.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
@@ -65,7 +65,7 @@ Můžete:
 - [Změňte heslo](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)pomocí místního webového uživatelského rozhraní. Pokud změníte heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu tak, aby k nim nevznikly problémy s přihlášením.
 
 
-## <a name="protect-your-data"></a>Ochrana vašich dat
+## <a name="protect-your-data"></a>Ochrana dat
 
 Tato část popisuje funkce zabezpečení Data Box Gateway, které chrání při přenosu a uložená data.
 

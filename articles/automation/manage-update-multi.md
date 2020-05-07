@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676448"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731964"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Správa aktualizací pro několik virtuálních počítačů Azure
 
@@ -21,7 +21,7 @@ Pomocí Azure Automation Update Management můžete spravovat aktualizace a opra
 - Naplánovat instalaci požadovaných aktualizací
 - Zkontrolujte výsledky nasazení a ověřte, zda byly aktualizace úspěšně aplikovány na všechny virtuální počítače, pro které je povoleno Update Management.
 
-Další informace o požadavcích na systém pro Update Management najdete v tématu [Update Management požadavky klienta](automation-update-management.md#clients).
+Další informace o požadavcích na systém pro Update Management najdete v tématu [Update Management požadavky klienta](automation-update-management.md#client-requirements).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -81,7 +81,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | Agenti systému Windows |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů Windows a pak inicializuje instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Update Management shromažďuje informace o aktualizacích systému od agentů systému Linux a následně inicializuje instalaci požadovaných aktualizací v podporovaných distribucích. |
 | Skupina pro správu Operations Manageru |Ano |Update Management shromažďuje informace o aktualizacích systému z agentů v připojené skupině pro správu. |
-| Účet služby Azure Storage |Ne |Azure Storage neobsahují informace o aktualizacích systému. |
+| Účet služby Azure Storage |No |Azure Storage neobsahují informace o aktualizacích systému. |
 
 ### <a name="collection-frequency"></a>Četnost shromažďování dat
 

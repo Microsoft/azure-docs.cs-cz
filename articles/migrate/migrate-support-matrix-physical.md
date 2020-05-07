@@ -3,12 +3,12 @@ title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f21ec149aa6f85c0a1f33e91dacf9de48ff72bbb
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538150"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744521"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -34,16 +34,18 @@ Chcete-li vyhodnotit fyzické servery, vytvořte projekt Azure Migrate a přidej
 | **Podpora**                | **Zobrazí**               
 | :-------------------       | :------------------- |
 | **Nasazení fyzického serveru**       | Fyzický server může být samostatný nebo nasazený v clusteru. |
-| **Oprávnění**           | **Windows:** Na všech serverech Windows, které chcete zjišťovat, potřebujete místní účet nebo uživatelský účet domény. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené plochy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
-| **Operační systém** | Všechny operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) podporované Azure, s výjimkou systémů Windows Server 2003 a SUSE Linux.|
+| **Oprávnění**           | **Windows:** Musíte být správcem domény nebo místním správcem na všech serverech Windows, které chcete zjišťovat. Uživatelský účet by měl být přidán do těchto skupin: Uživatelé vzdálené správy, sledování výkonu a uživatelé protokolu výkonu. <br/><br/> **Linux:** Na serverech se systémem Linux, které chcete zjistit, potřebujete kořenový účet. |
+| **Operační systém** | Všechny serverové operační systémy [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) a [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) podporované Azure, s výjimkou systémů Windows Server 2003 a SUSE Linux.<br/><br/> Klientské operační systémy Windows 10 a Windows 8. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
 
-Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení pro fyzické servery může běžet na VIRTUÁLNÍm počítači nebo na fyzickém počítači. Zařízení se nastavuje pomocí skriptu PowerShellu, který stáhnete z Azure Portal.
+Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zjišťování a hodnocení. Zařízení pro fyzické servery může běžet na VIRTUÁLNÍm počítači nebo na fyzickém počítači. 
 
 - Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---physical) pro fyzické servery.
 - Přečtěte si o adresách URL, které zařízení potřebuje k přístupu ve [veřejných](migrate-appliance.md#public-cloud-urls) a [státních](migrate-appliance.md#government-cloud-urls) cloudech.
+- Zařízení se nastavuje pomocí [skriptu PowerShellu](how-to-set-up-appliance-physical.md) , který stáhnete z Azure Portal.
+V Azure Government nasaďte zařízení [pomocí tohoto skriptu](deploy-appliance-script-government.md).
 
 ## <a name="port-access"></a>Přístup k portu
 

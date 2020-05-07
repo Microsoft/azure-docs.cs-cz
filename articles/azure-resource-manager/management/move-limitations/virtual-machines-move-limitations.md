@@ -3,12 +3,12 @@ title: Přesun virtuálních počítačů Azure do nového předplatného nebo s
 description: K přesunutí virtuálních počítačů do nové skupiny prostředků nebo předplatného použijte Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160115"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744640"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Pokyny pro přesunutí virtuálních počítačů
 
@@ -29,7 +29,7 @@ Následující scénáře se zatím nepodporují:
 
 Chcete-li přesunout virtuální počítače nakonfigurované s Azure Backup, je nutné odstranit body obnovení z trezoru.
 
-Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../../backup/backup-azure-security-feature-cloud.md) , nemůžete virtuální počítač přesunout, pokud jsou tyto body obnovení zachované. Buď [zakažte obnovitelné odstranění](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete) nebo počkejte 14 dní po odstranění bodů obnovení.
+Pokud je pro virtuální počítač povolené [obnovitelné odstranění](../../../backup/backup-azure-security-feature-cloud.md) , nemůžete virtuální počítač přesunout, pokud jsou tyto body obnovení zachované. Buď [zakažte obnovitelné odstranění](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) nebo počkejte 14 dní po odstranění bodů obnovení.
 
 ### <a name="portal"></a>Portál
 

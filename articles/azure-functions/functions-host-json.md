@@ -2,13 +2,13 @@
 title: Reference Host. JSON pro Azure Functions 2. x
 description: Referenční dokumentace pro soubor Azure Functions Host. JSON s modulem runtime v2
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758850"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690891"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Reference Host. JSON pro Azure Functions 2. x a novější 
 
@@ -24,6 +24,8 @@ Soubor metadat *Host. JSON* obsahuje možnosti globální konfigurace, které ma
 Další možnosti konfigurace aplikace Function App jsou spravované v [nastavení aplikace](functions-app-settings.md) (pro nasazené aplikace) nebo v souboru [Local. Settings. JSON](functions-run-local.md#local-settings-file) (pro místní vývoj).
 
 Konfigurace v Host. JSON související s vazbami se aplikují rovnoměrně na každou funkci aplikace Function App. 
+
+Můžete také [přepsat nebo použít nastavení pro každé prostředí](#override-hostjson-values) pomocí nastavení aplikace.
 
 ## <a name="sample-hostjson-file"></a>Ukázkový soubor host. JSON
 
@@ -386,6 +388,23 @@ Sada [sdílených adresářů kódu](functions-reference-csharp.md#watched-direc
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>Přepsat hodnoty Host. JSON
+
+Můžou nastat případy, kdy chcete nakonfigurovat nebo změnit konkrétní nastavení v souboru Host. JSON pro konkrétní prostředí, aniž byste museli měnit samotný soubor host. JSON.  Můžete přepsat konkrétní hodnoty Host. JSON. vytvoří se ekvivalentní hodnota jako nastavení aplikace. Pokud modul runtime najde ve formátu `AzureFunctionsJobHost__path__to__setting`nastavení aplikace, přepíše ekvivalentní nastavení Host. JSON umístěný `path.to.setting` v kódu JSON. Pokud je vyjádřena jako nastavení aplikace, tečka (`.`) použitá k označení hierarchie JSON je nahrazena dvojitým podtržítkem (`__`). 
+
+Řekněme například, že jste chtěli zakázat vzorkování Application Insight při místním spuštění. Pokud jste změnili soubor Local Host. JSON tak, aby se Application Insights zakázal, může se tato změna během nasazování zobrazit v produkční aplikaci. Bezpečnějším způsobem je vytvořit `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` v `local.settings.json` souboru nastavení aplikace. Můžete to zobrazit v následujícím `local.settings.json` souboru, který není publikovaný:
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

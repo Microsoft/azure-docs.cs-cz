@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436959"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597942"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -79,6 +79,14 @@ Následující části obsahují odkazy na články, které vysvětlují použit
 ### <a name="secure-the-vault"></a>Zabezpečení trezoru
 
 - [Zabezpečení cloudových zálohovaných dat v Recovery Services trezorech](backup-azure-security-feature.md)
+
+## <a name="azure-advisor"></a>Azure Advisor
+
+[Azure Advisor](https://docs.microsoft.com/azure/advisor/) je přizpůsobený cloudový poradce, který pomáhá optimalizovat používání Azure. Analyzuje využití Azure a poskytuje včasné doporučení, které vám pomůžou optimalizovat a zabezpečit vaše nasazení. Poskytuje doporučení ve čtyřech kategoriích: vysoká dostupnost, zabezpečení, výkon a náklady.
+
+Azure Advisor poskytuje hodinová [doporučení](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) pro virtuální počítače, které nejsou zálohované, takže nikdy nebudete zálohovat důležité virtuální počítače. Doporučení můžete také ovládat tím, že je odkládáte.  Můžete kliknout na doporučení a povolit zálohování na virtuálních počítačích v řádku zadáním trezoru (kde se budou ukládat zálohy) a zásad zálohování (plán zálohování a uchovávání záložních kopií).
+
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>Další kroky
 

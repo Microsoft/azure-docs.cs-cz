@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265438"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561297"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Použití webu Azure Portal ke správě sdílených složek ve službě Azure Data Box Gateway 
 
@@ -37,7 +37,7 @@ V tomto článku získáte informace o těchto tématech:
 Pokud chcete sdílenou složku vytvořit, proveďte na webu Azure Portal následující kroky.
 
 1. Na webu Azure Portal přejděte k prostředku Data Box Gateway a pak přejděte na **Přehled**. Na panelu příkazů klikněte na **+ Přidat sdílenou složku**.
-2. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky.
+2. V části **Přidat sdílenou složku** zadejte nastavení sdílené složky. Zadejte jedinečný název sdílené složky. 
 
     ![Kliknutím přidat sdílenou složku](media/data-box-gateway-manage-shares/add-share-1.png)
 

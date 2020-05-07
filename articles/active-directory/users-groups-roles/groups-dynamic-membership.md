@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114743"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582905"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -31,7 +31,7 @@ Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodno
 - Nemůžete vytvořit skupinu zařízení na základě atributů vlastníků zařízení. Pravidla členství v zařízeních můžou odkazovat jenom na atributy zařízení.
 
 > [!NOTE]
-> Tato funkce vyžaduje licenci Azure AD Premium P1 pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin. Nemusíte přiřazovat licence uživatelům, aby byli členy dynamických skupin, ale musíte mít minimální počet licencí v tenantovi pro pokrytí všech takových uživatelů. Pokud byste například měli celkem 1 000 jedinečných uživatelů ve všech dynamických skupinách ve vašem tenantovi, budete potřebovat minimálně 1 000 licencí pro Azure AD Premium P1, aby splňovaly licenční požadavek.
+> Tato funkce vyžaduje licenci Azure AD Premium P1 pro každého jedinečného uživatele, který je členem jedné nebo více dynamických skupin. Nemusíte přiřazovat licence uživatelům, aby byli členy dynamických skupin, ale musíte mít minimální počet licencí v organizaci Azure AD, abyste pokryli všechny takové uživatele. Pokud byste například měli celkem 1 000 jedinečných uživatelů ve všech dynamických skupinách ve vaší organizaci, budete potřebovat alespoň 1 000 licencí Azure AD Premium P1, aby splnily požadavky na licenci.
 > Pro zařízení, která jsou členem dynamické skupiny zařízení, není nutná žádná licence.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 Následující tipy vám pomůžou pravidlo používat správně.
 
 - **ID správce** je ID objektu správce. Najdete ho v **profilu**správce.
-- Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vašem tenantovi. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
+- Aby pravidlo fungovalo, ujistěte se, že je vlastnost **Manager** nastavena správně pro uživatele ve vaší organizaci. Aktuální hodnotu můžete ověřit v **profilu**uživatele.
 - Toto pravidlo podporuje pouze přímé sestavy vedoucího správce. Jinými slovy, nemůžete vytvořit skupinu s přímými sestavami manažera *a* jejich sestavami.
 - Toto pravidlo nelze kombinovat s jinými pravidly členství.
 
 ### <a name="create-an-all-users-rule"></a>Vytvoří pravidlo pro všechny uživatele.
 
-Můžete vytvořit skupinu obsahující všechny uživatele v rámci tenanta pomocí pravidla členství. Když se uživatelé v budoucnu přidávají nebo odebírají z tenanta, členství ve skupině se automaticky upraví.
+Můžete vytvořit skupinu obsahující všechny uživatele v rámci organizace s použitím pravidla členství. Když se uživatelé v budoucnu přidají nebo odeberou z organizace, členství ve skupině se upraví automaticky.
 
 Pravidlo "Všichni uživatelé" je tvořeno pomocí jednoduchého výrazu s použitím operátoru-ne a hodnoty null. Toto pravidlo přidá uživatele typu Guest B2B i členské uživatele do skupiny.
 
 ```
 user.objectId -ne null
 ```
-Pokud chcete, aby skupina vyloučila uživatele typu Host a zahrnovala pouze členy vašeho tenanta, můžete použít následující syntaxi:
+Pokud chcete, aby skupina vyloučila uživatele typu Host a zahrnovala pouze členy vaší organizace, můžete použít následující syntaxi:
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ Pokud chcete, aby skupina vyloučila uživatele typu Host a zahrnovala pouze čl
 
 ### <a name="create-an-all-devices-rule"></a>Vytvořit pravidlo pro všechna zařízení
 
-Můžete vytvořit skupinu obsahující všechna zařízení v rámci tenanta pomocí pravidla členství. Když se zařízení v budoucnu přidají nebo odeberou z tenanta, členství ve skupině se automaticky upraví.
+Můžete vytvořit skupinu obsahující všechna zařízení v organizaci pomocí pravidla členství. Když se zařízení v budoucnu přidají nebo odeberou z organizace, členství ve skupině se automaticky upraví.
 
 Pravidlo všechna zařízení je vytvořené pomocí jednoho výrazu s použitím operátoru-ne a hodnoty null:
 

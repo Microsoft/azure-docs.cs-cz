@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111588"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610084"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Povolení vzdáleného přístupu k Power BI Mobile s využitím proxy aplikací služby Azure AD
 
-Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.  
+Tento článek popisuje, jak pomocí služby Azure Proxy aplikací služby AD povolit, aby se mobilní aplikace Power BI připojovala Server sestav Power BI (PBIRS) a SQL Server Reporting Services (SSRS) 2016 a novější. Prostřednictvím této integrace můžou uživatelé mimo podnikovou síť přistupovat ke svým Power BIm sestavám z Power BI mobilní aplikace a chránit pomocí ověřování Azure AD. Tato ochrana zahrnuje [výhody zabezpečení](application-proxy-security.md#security-benefits) , jako je podmíněný přístup a Multi-Factor Authentication.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Tento článek předpokládá, že jste již nasadili služby sestav a [povolili proxy aplikace](application-proxy-add-on-premises-application.md).
 
-- Povolení proxy aplikací vyžaduje, abyste nainstalovali konektor na Windows Server a dokončili [požadavky](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , aby konektor mohl komunikovat se službami Azure AD.  
+- Povolení proxy aplikací vyžaduje, abyste nainstalovali konektor na Windows Server a dokončili [požadavky](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , aby konektor mohl komunikovat se službami Azure AD.
 - Při publikování Power BI doporučujeme použít stejné interní a externí domény. Další informace o vlastních doménách najdete v tématu [práce s vlastními doménami v proxy aplikace](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain).
 - Tato integrace je k dispozici pro Power BI Mobile aplikace pro **iOS a Android** .
 
@@ -68,7 +68,7 @@ Nakonfigurujte KCD, aby služba Azure Proxy aplikací služby AD mohla delegovat
 Pokud chcete nakonfigurovat KCD, opakujte následující kroky pro každý počítač konektoru:
 
 1. Přihlaste se k řadiči domény jako správce domény a pak otevřete položku **Uživatelé a počítače služby Active Directory**.
-2. Vyhledejte počítač, na kterém konektor běží.  
+2. Vyhledejte počítač, na kterém konektor běží.
 3. Dvakrát klikněte na počítač a pak vyberte kartu **delegování** .
 4. Nastavení delegování nastavte na **Důvěřovat tomuto počítači pro delegování pouze určeným službám**. Pak vyberte **použít libovolný protokol pro ověřování**.
 5. Vyberte **Přidat**a pak vyberte **Uživatelé nebo počítače**.
@@ -95,7 +95,7 @@ Teď jste připraveni nakonfigurovat Azure Proxy aplikací služby AD.
 
    b. V případě **režimu jednotného přihlašování**vyberte **integrované ověřování systému Windows**.
 
-   c. Nastavte **vnitřní hlavní název aplikace** na hodnotu, kterou jste nastavili dříve.  
+   c. Nastavte **vnitřní hlavní název aplikace** na hodnotu, kterou jste nastavili dříve.
 
    d. Vyberte **delegovanou identitu přihlášení** , kterou má konektor použít jménem uživatelů. Další informace najdete v tématu [práce s různými místními a cloudovou identitou](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
@@ -105,7 +105,7 @@ Pokud chcete dokončit nastavování aplikace, přejděte do části **Uživatel
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Krok 3: Úprava identifikátoru URI odpovědi pro aplikaci
 
-Předtím, než se může mobilní aplikace Power BI připojit a získat přístup ke službám sestav, musíte nakonfigurovat registraci aplikace, která byla vytvořena automaticky v kroku 2. 
+Předtím, než se může mobilní aplikace Power BI připojit a získat přístup ke službám sestav, musíte nakonfigurovat registraci aplikace, která byla vytvořena automaticky v kroku 2.
 
 1. Na stránce **přehled** Azure Active Directory vyberte možnost **Registrace aplikací**.
 2. Na kartě **všechny aplikace** vyhledejte aplikaci, kterou jste vytvořili v kroku 2.
@@ -117,11 +117,11 @@ Předtím, než se může mobilní aplikace Power BI připojit a získat příst
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    Při konfiguraci aplikace pro Power BI Mobile **Android**přidejte následující identifikátory URI pro přesměrování typu Public Client (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ Microsoft Intune můžete použít ke správě klientských aplikací, které po
 1. Přejít na **Azure Active Directory** a pak na **Registrace aplikací**.
 2. Vyberte aplikaci nakonfigurovanou v kroku 3 při registraci nativní klientské aplikace.
 3. Na stránce aplikace vyberte **oprávnění rozhraní API**.
-4. Klikněte na **Přidat oprávnění**. 
+4. Klikněte na **Přidat oprávnění**.
 5. V části **rozhraní API, které používá moje organizace**, vyhledejte "Správa mobilních aplikací Microsoftu" a vyberte ji.
 6. Přidání oprávnění **DeviceManagementManagedApps.** zápisu do aplikace
 7. Kliknutím na **udělit souhlas správce** udělte přístup k aplikaci.

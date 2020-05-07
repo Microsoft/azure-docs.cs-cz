@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Naučte se, jak nainstalovat a nakonfigurovat řadič příchozího přenosu NGINX, který používá šifrování pro automatické generování certifikátů TLS v clusteru Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 01/29/2020
-ms.openlocfilehash: c0c0e885f7802c35b5fa33dfa0f81565d730f32a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 59f1b63a5c72ed5583b88af9e42bf5337f358b47
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207186"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561892"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Vytvoření kontroleru příchozího přenosu HTTPS ve službě Azure Kubernetes (AKS)
 
@@ -32,7 +32,7 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 
 Tento článek také předpokládá, že máte [vlastní doménu][custom-domain] s [zónou DNS][dns-zone] ve stejné skupině prostředků jako cluster AKS.
 
-Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat, správce certifikátů a ukázkové webové aplikace. Ujistěte se, že používáte nejnovější verzi Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
+Tento článek používá [Helm 3][helm] k instalaci kontroleru Nginx příchozího přenosu dat a správce certifikátů. Ujistěte se, že používáte nejnovější verzi Helm. Pokyny k upgradu najdete v [dokumentaci k instalaci Helm][helm-install]. Další informace o konfiguraci a použití Helm najdete v tématu [install Applications with Helm in Azure Kubernetes Service (AKS)][use-helm].
 
 Tento článek také vyžaduje, abyste spustili Azure CLI verze 2.0.64 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -171,25 +171,89 @@ kubectl apply -f cluster-issuer.yaml
 
 Je nakonfigurovaný kontroler příchozího přenosu dat a řešení správy certifikátů. Teď spustíme dvě ukázkové aplikace v clusteru AKS. V tomto příkladu se Helm používá k nasazení dvou instancí jednoduché aplikace *Hello World* .
 
-Než budete moct nainstalovat ukázkové grafy Helm, přidejte do svého prostředí Helm úložiště ukázek Azure.
+Pokud chcete zobrazit kontroler příchozího přenosu v akci, spusťte dvě ukázkové aplikace v clusteru AKS. V tomto příkladu můžete použít `kubectl apply` k nasazení dvou instancí jednoduché aplikace *Hello World* .
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+Vytvořte soubor *AKS-HelloWorld-One. yaml* a zkopírujte do něj následující příklad YAML:
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-one
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-one
+    spec:
+      containers:
+      - name: aks-helloworld-one
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-one
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-one
 ```
 
-Pomocí grafu *Azure-Samples/AKS-HelloWorld* Helm vytvořte ukázkovou aplikaci s názvem *AKS-HelloWorld* .
+Vytvořte soubor *AKS-HelloWorld-dva soubory. yaml* a zkopírujte následující příklad YAML:
 
-```console
-helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
 ```
 
-Vytvořte druhou instanci ukázkové aplikace s názvem *AKS-HelloWorld-Two*. Zadejte nový název a jedinečný název služby, aby byly tyto dvě aplikace vizuálně odlišeny pomocí *--set*.
+Spusťte dvě ukázkové aplikace pomocí `kubectl apply`:
 
 ```console
-helm install aks-helloworld-two azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="aks-helloworld-two"
+kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>Vytvoření trasy příchozího přenosu dat
@@ -197,6 +261,9 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
 Obě aplikace jsou teď spuštěné v clusteru Kubernetes. Jsou však konfigurovány se službou typu `ClusterIP` a nejsou přístupné z Internetu. Pokud je chcete zpřístupnit veřejnosti, vytvořte Kubernetes prostředek příchozího přenosu dat. Prostředek příchozího přenosu dat konfiguruje pravidla, která směrují provoz do jedné z těchto dvou aplikací.
 
 V následujícím příkladu provoz na adresu *Hello-World – příchozí. MY_CUSTOM_DOMAIN* je směrován do služby *AKS-HelloWorld* . Provoz na adresu *Hello-World – příchozí. Služba MY_CUSTOM_DOMAIN/Hello-World-Two* je směrována do služby *AKS-HelloWorld-dvě* . Provoz do *Hello-World – příchozí. MY_CUSTOM_DOMAIN/static* je směrován do služby s názvem *AKS-HelloWorld* pro statické prostředky.
+
+> [!NOTE]
+> Pokud jste nakonfigurovali plně kvalifikovaný název domény pro IP adresu kontroleru příchozího přenosu dat místo vlastní domény, použijte místo *Hello-World-to plně kvalifikovaný název domény. MY_CUSTOM_DOMAIN*. Pokud je například plně kvalifikovaný název domény *demo-AKS-Ingress.eastus.cloudapp.Azure.com*, nahraďte *Hello-World-příchozí. MY_CUSTOM_DOMAIN* s *demo-AKS-Ingress.eastus.cloudapp.Azure.com* v `hello-world-ingress.yaml`.
 
 Pomocí níže uvedeného příkladu `hello-world-ingress.yaml` YAML vytvořte soubor s názvem. Aktualizujte *hostitele* a *hostitele* na název DNS, který jste vytvořili v předchozím kroku.
 
@@ -219,7 +286,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /(.*)
       - backend:
@@ -245,7 +312,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /static(/|$)(.*)
 ```
@@ -285,12 +352,6 @@ Chcete-li odstranit celý vzorový obor názvů, `kubectl delete` použijte př�
 kubectl delete namespace ingress-basic
 ```
 
-Pak odeberte úložiště Helm pro aplikaci AKS Hello World:
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>Odstranit prostředky jednotlivě
 
 Další možností je podrobnější přístup k odstranění jednotlivých vytvořených prostředků. Nejdřív odeberte prostředky vystavitele clusteru:
@@ -299,33 +360,30 @@ Další možností je podrobnější přístup k odstranění jednotlivých vytv
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Seznam vydaných verzí Helm `helm list` pomocí příkazu. Vyhledejte grafy s názvem *Nginx-* příchozí a *AKS-HelloWorld*, jak je znázorněno v následujícím příkladu výstupu:
+Seznam vydaných verzí Helm `helm list` pomocí příkazu. Vyhledejte grafy s názvem *Nginx* a *CERT-Manager*, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
-aks-helloworld          ingress-basic   1               2020-01-15 10:24:32.054871 -0600 CST    deployed        aks-helloworld-0.1.0               
-aks-helloworld-two      ingress-basic   1               2020-01-15 10:24:37.671667 -0600 CST    deployed        aks-helloworld-0.1.0               
 cert-manager            ingress-basic   1               2020-01-15 10:23:36.515514 -0600 CST    deployed        cert-manager-v0.13.0    v0.13.0    
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
-Odstraňte vydané verze `helm delete` příkazem. Následující příklad odstraní nasazení NGINX příchozího přenosu dat a dvě ukázkové aplikace Hello World AKS.
+Odinstalujte verze pomocí `helm uninstall` příkazu. Následující příklad odinstaluje nasazení NGINX příchozího přenosu dat a správce certifikátů.
 
 ```
-$ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
+$ helm uninstall cert-manager nginx --namespace ingress-basic
 
-release "aks-helloworld" uninstalled
-release "aks-helloworld-two" uninstalled
 release "cert-manager" uninstalled
 release "nginx" uninstalled
 ```
 
-Pak odeberte úložiště Helm pro aplikaci AKS Hello World:
+Dále odeberte dvě ukázkové aplikace:
 
 ```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 Odebrat trasu příchozího přenosu dat směrovaného do ukázkových aplikací:

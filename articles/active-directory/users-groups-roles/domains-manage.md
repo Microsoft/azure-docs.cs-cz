@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559229"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582964"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 
@@ -41,7 +41,7 @@ Při vytvoření adresáře se jako primární název domény použije i počát
 
 Můžete změnit primární název domény pro váš adresář tak, aby byla ověřená vlastní doména, která není federované. Změna primární domény pro váš adresář nemění uživatelské jméno pro žádné existující uživatele.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Přidání vlastních názvů domén do tenanta Azure AD
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Přidání vlastních názvů domén do vaší organizace Azure AD
 
 Můžete přidat až 900 názvů spravovaných domén. Pokud konfigurujete všechny domény pro federaci s místní službou Active Directory, můžete do každého adresáře přidat až 450 názvů domén.
 
@@ -72,7 +72,7 @@ Název domény můžete **ForceDelete** v [centru pro správu Azure AD](https://
 Chcete-li volat **ForceDelete** v Azure Portal, je nutné zajistit, aby bylo méně než 1000 odkazů na název domény a všechny odkazy, kde Exchange je služba zřizování, musí být aktualizována nebo odebrána v centru pro [správu serveru Exchange](https://outlook.office365.com/ecp/). To zahrnuje skupiny zabezpečení s povoleným e-mailem Exchange a distribuované seznamy. Další informace najdete v tématu [Odebrání skupin zabezpečení s povolenými e-maily](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Operace **ForceDelete** se taky nezdaří, pokud je splněná některá z následujících podmínek:
 
 * Zakoupili jste doménu prostřednictvím služby předplatného Office 365 pro domény.
-* Jste partnerskou správou jménem jiného zákazníka.
+* Jste partnerskou správou jménem jiné organizace pro zákazníky.
 
 V rámci operace **ForceDelete** se provádí následující akce:
 

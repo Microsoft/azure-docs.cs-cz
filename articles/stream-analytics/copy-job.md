@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75771491"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612261"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Kopírování nebo zálohování úloh Azure Stream Analytics
 
-Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomocí Visual Studio Code nebo sady Visual Studio. 
+Nasazené Azure Stream Analytics úlohy můžete kopírovat nebo zálohovat pomocí Visual Studio Code nebo sady Visual Studio. Zkopírování úlohy do jiné oblasti nekopíruje poslední výstupní čas. Proto nemůžete použít, pokud se při spuštění zkopírované úlohy používá možnost [**naposledy zastaveno**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options) .
 
 ## <a name="before-you-begin"></a>Před zahájením
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).

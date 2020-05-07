@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188507"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900438"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>Nastavte přihlášení pomocí účtu Amazon pomocí vlastních zásad v Azure Active Directory B2C
 
@@ -29,17 +29,16 @@ V tomto článku se dozvíte, jak povolit přihlášení uživatelům z účtu A
 - Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get-started.md).
 - Pokud ještě nemáte účet Amazon, vytvořte ho na adrese [https://www.amazon.com/](https://www.amazon.com/).
 
-## <a name="register-the-application"></a>Registrace aplikace
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Vytvoření aplikace v konzole pro vývojáře Amazon
 
-Pokud chcete povolit přihlášení uživatelům z účtu Amazon, musíte vytvořit aplikaci Amazon.
+Pokud chcete použít účet Amazon jako federovaného poskytovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci ve svých [vývojářských službách a technologiích Amazon](https://developer.amazon.com). Pokud ještě nemáte účet Amazon, můžete se zaregistrovat v [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Přihlaste se k [centru pro vývojáře Amazon](https://login.amazon.com/) pomocí svých přihlašovacích údajů k účtu Amazon.
-2. Pokud jste to ještě neudělali, klikněte na **zaregistrovat**, postupujte podle kroků registrace pro vývojáře a přijměte zásadu.
-3. Vyberte **Registrovat novou aplikaci**.
-4. Zadejte **název**, **Popis**a **adresu URL pro oznámení o ochraně osobních údajů**a potom klikněte na **Uložit**. Oznámení o ochraně osobních údajů je stránka, kterou spravujete, která poskytuje uživatelům informace o ochraně osobních údajů.
-5. V části **Nastavení webu** ZKOPÍRUJTE hodnoty **ID klienta**. Pokud chcete získat tajný klíč klienta a pak ho zkopírovat, vyberte **Zobrazit tajný kód** . K nakonfigurování účtu Amazon jako poskytovatele identity ve vašem tenantovi potřebujete obě tyto služby. **Tajný kód klienta** je důležité bezpečnostní pověření.
-6. V části **Nastavení webu** vyberte **Upravit**a potom zadejte `https://your-tenant-name.b2clogin.com` **Povolené zdroje JavaScriptu** a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **povolené návratové adresy URL**. Nahraďte `your-tenant-name` názvem vašeho tenanta. Při zadávání názvu tenanta používejte všechna malá písmena, a to i v případě, že je tenant v Azure AD B2C definovaný velkými písmeny.
-7. Klikněte na **Uložit**.
+> [!NOTE]  
+> V **kroku 8** níže použijte následující adresy URL, které `your-tenant-name` nahradíte názvem svého tenanta. Při zadávání názvu tenanta používejte malá písmena, i když je tenant definovaný velkými písmeny v Azure AD B2C.
+> - U **povolených zdrojů**zadejte`https://your-tenant-name.b2clogin.com` 
+> - Pro **povolené návratové adresy URL**zadejte`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="create-a-policy-key"></a>Vytvoření klíče zásad
 

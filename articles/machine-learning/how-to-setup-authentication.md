@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283534"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611836"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,7 +126,7 @@ Následuje zjednodušený příklad výstupu JSON z příkazu. Poznamenejte si `
 }
 ```
 
-Dále pomocí následujícího příkazu přiřaďte k pracovnímu prostoru Machine Learning přístup k hlavnímu objektu služby. Budete potřebovat název vašeho pracovního prostoru a jeho název skupiny prostředků pro parametry `-w` a `-g` v uvedeném pořadí. Pro `--user` parametr použijte `objectId` hodnotu z předchozího kroku. `--role` Parametr vám umožní nastavit roli přístupu pro instanční objekt a obecně budete používat buď **vlastníka** , nebo **přispěvatele**. Oba mají přístup pro zápis ke stávajícím prostředkům, jako jsou výpočetní clustery a úložiště dat, ale můžou tyto prostředky zřídit jenom **vlastník** . 
+Dále pomocí následujícího příkazu přiřaďte k pracovnímu prostoru Machine Learning přístup k hlavnímu objektu služby. Budete potřebovat název vašeho pracovního prostoru a jeho název skupiny prostředků pro parametry `-w` a `-g` v uvedeném pořadí. Pro `--user` parametr použijte `objectId` hodnotu z předchozího kroku. `--role` Parametr vám umožní nastavit roli přístupu pro instanční objekt a obecně budete používat buď **vlastníka** , nebo **přispěvatele**. Oba mají přístup pro zápis ke stávajícím prostředkům, jako jsou výpočetní clustery a úložiště dat, ale můžou tyto prostředky zřídit jenom **vlastník** .
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 `sp` Proměnná nyní obsahuje objekt ověřování, který používáte přímo v sadě SDK. Obecně je vhodné ukládat ID/tajné klíče použité výše v proměnných prostředí, jak je znázorněno v následujícím kódu.
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ Pro automatizované pracovní postupy, které běží v Pythonu a používají p
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Ověřování REST API Azure Machine Learning
 
-Instanční objekt vytvořený v krocích výše se dá použít taky k ověření [REST API](https://docs.microsoft.com/rest/api/azureml/)Azure Machine Learning. Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu a Node. js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0. 
+Instanční objekt vytvořený v krocích výše se dá použít taky k ověření [REST API](https://docs.microsoft.com/rest/api/azureml/)Azure Machine Learning. Použijete [tok udělení přihlašovacích údajů klienta](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)Azure Active Directory, který umožňuje volání mezi službami pro ověřování bez periferních procesů v automatizovaných pracovních postupech. Příklady jsou implementovány pomocí [knihovny ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) v Pythonu a Node. js, ale můžete také použít jakoukoli Open Source knihovnu, která podporuje OpenID Connect 1,0.
 
 > [!NOTE]
 > MSAL. js je novější knihovna než ADAL, ale ověřování pomocí služby nemůžete použít s přihlašovacími údaji klienta v MSAL. js, protože se primárně jedná o knihovnu na straně klienta určenou pro interaktivní nebo uživatelské ověřování vázané na konkrétního uživatele. Pro vytváření automatizovaných pracovních postupů s REST API doporučujeme použít ADAL, jak vidíte níže.
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 Proměnná `tokenResponse` je objekt, který obsahuje token a přidružená metadata, jako je například čas vypršení platnosti. Tokeny jsou platné 1 hodiny a lze je aktualizovat opětovným spuštěním stejného volání pro načtení nového tokenu. Následuje ukázková odpověď.
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ Proměnná `tokenResponse` je objekt, který obsahuje token a přidružená meta
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 Pomocí `accessToken` vlastnosti načtěte ověřovací token. Příklady použití tokenu k volání rozhraní API najdete v [dokumentaci k REST API](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) .
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 Pomocí následujících kroků vygenerujte ověřovací token pomocí Pythonu. Ve svém prostředí spusťte `pip install adal`. Pak použijte své `tenantId`služby, `clientId`a `clientSecret` z instančního objektu, který jste vytvořili v předchozích krocích, jako hodnoty pro příslušné proměnné v následujícím skriptu.
 
@@ -242,13 +243,13 @@ Proměnná `token_response` je slovník, který obsahuje token a přidružená m
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > Po `refresh_by` čase tokenu budete muset požádat o nový token. Pokud potřebujete aktualizovat tokeny mimo sadu Python SDK, jednu z možností je použít REST API s ověřováním instančního objektu pro pravidelné volání, jak je `service.get_token()` popsáno výše.
 >
-> Důrazně doporučujeme vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. 
+> Důrazně doporučujeme vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes.
 >
-> K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, i když je váš cluster v jiné oblasti než pracovní prostor. Výsledkem je, že ověřování Azure AD není k dispozici, dokud nebude oblast pracovního prostoru znovu dostupná. 
+> K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, i když je váš cluster v jiné oblasti než pracovní prostor. Výsledkem je, že ověřování Azure AD není k dispozici, dokud nebude oblast pracovního prostoru znovu dostupná.
 >
 > Čím větší vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 

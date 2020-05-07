@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266283"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582776"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Scénáře, omezení a známé problémy, které používají skupiny pro správu licencování v Azure Active Directory
 
@@ -100,7 +100,7 @@ Zpočátku uživatel zdědí licenci pouze ze skupiny *E3 Basic Services* , kter
 
 ## <a name="managing-new-services-added-to-products"></a>Správa nových služeb přidaných do produktů
 
-Když Microsoft přidá novou službu do plánu licence na produkt, bude ve výchozím nastavení povolená ve všech skupinách, ke kterým jste přiřadili licenci na produkt. Uživatelům ve vašem tenantovi, kteří se přihlásí k odběru oznámení o změnách produktu, budou dostávat e-maily předem s oznámením o nadcházejících dodaných službách.
+Když Microsoft přidá novou službu do plánu licence na produkt, bude ve výchozím nastavení povolená ve všech skupinách, ke kterým jste přiřadili licenci na produkt. Uživatelům ve vaší organizaci, kteří se přihlásí k odběru oznámení o změnách produktu, obdrží e-maily předem upozornění na nadcházející doplňky služby.
 
 Jako správce můžete zkontrolovat všechny skupiny ovlivněné změnou a provedením akce, jako je například zakázání nové služby v každé skupině. Pokud jste například vytvořili skupiny zaměřené jenom na konkrétní služby pro nasazení, můžete tyto skupiny znovu navštívit a zajistit, aby byly všechny nově přidané služby zakázané.
 
@@ -108,7 +108,7 @@ Tady je příklad toho, co může tento proces vypadat takto:
 
 1. Původně jste přiřadili produkt *Office 365 Enterprise E5* do několika skupin. Jedna z těchto skupin, označovaná jako *O365 E5-Exchange* , byla navržena tak, aby pro své členy povolovala pouze službu *Exchange Online (plán 2)* .
 
-2. Obdrželi jste oznámení od společnosti Microsoft, že produkt E5 bude rozšířen o novou *Microsoft Stream*služby. Jakmile bude služba k dispozici ve vašem tenantovi, můžete provést následující akce:
+2. Obdrželi jste oznámení od společnosti Microsoft, že produkt E5 bude rozšířen o novou *Microsoft Stream*služby. Jakmile bude služba k dispozici ve vaší organizaci, můžete provést následující akce:
 
 3. V okně [**Azure Active Directory > licence > všechny produkty**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) vyberte možnost *Office 365 Enterprise E5*a potom vyberte **licencované skupiny** , abyste zobrazili seznam všech skupin s tímto produktem.
 
@@ -128,9 +128,9 @@ Tady je příklad toho, co může tento proces vypadat takto:
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>Použití PowerShellu k zobrazení zděděných a přímých licencí
 Ke kontrole, jestli mají uživatelé přiřazenou licenci přímo nebo zděděné ze skupiny, můžete použít skript prostředí PowerShell.
 
-1. Spusťte `connect-msolservice` rutinu pro ověření a připojení k vašemu tenantovi.
+1. Spusťte `connect-msolservice` rutinu pro ověření a připojení k vaší organizaci.
 
-2. `Get-MsolAccountSku`dá se použít ke zjištění všech zřízených licencí produktu v tenantovi.
+2. `Get-MsolAccountSku`dá se použít ke zjištění všech zřízených licencí produktu v organizaci Azure AD.
 
    ![Snímek obrazovky s rutinou Get-MsolAccountSku Zjistěte](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

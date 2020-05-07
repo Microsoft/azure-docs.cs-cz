@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36c7bb426a329a54f333b76e028b884204543014
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834174"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582976"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Přebírat nespravovaný adresář jako správce v Azure Active Directory
 
@@ -34,15 +34,15 @@ Během procesu převzetí správce můžete vlastnictví prokázat způsobem pop
 
 ## <a name="internal-admin-takeover"></a>Převzetí interního správce
 
-Některé produkty, které zahrnují SharePoint a OneDrive, jako je například Office 365, nepodporují externí převzetí. Pokud se jedná o váš scénář, nebo pokud jste správce a chcete převzít nespravovaného nebo "stínového" tenanta vytvořeného uživateli, kteří použili samoobslužné registrace, můžete to provést pomocí interního převzetí služeb správce.
+Některé produkty, které zahrnují SharePoint a OneDrive, jako je například Office 365, nepodporují externí převzetí. Pokud se jedná o váš scénář, nebo pokud jste správcem a chcete převzít nespravovanou nebo "stínovou" organizaci Azure AD, kterou vytvořili uživatelé, kteří použili samoobslužné registrace, můžete to udělat pomocí interního převzetí služeb správce.
 
-1. Vytvořte uživatelský kontext v nespravovaném tenantovi pomocí registrace Power BI. Pro pohodlí například tyto kroky předpokládají tuto cestu.
+1. Vytvořte uživatelský kontext v nespravované organizaci pomocí registrace Power BI. Pro pohodlí například tyto kroky předpokládají tuto cestu.
 
 2. Otevřete [Power BI web](https://powerbi.com) a vyberte **začít zdarma**. Zadejte uživatelský účet, který používá název domény pro organizaci. například `admin@fourthcoffee.xyz`. Po zadání v ověřovacím kódu si v e-mailu ověřte potvrzovací kód.
 
 3. V e-mailu s potvrzením od Power BI vyberte **Ano, to jsem já**.
 
-4. Přihlaste se k [centru pro správu Microsoft 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Zobrazí se zpráva, která vám dává pokyn, abyste se **stali správcem** názvu domény, který už byl ověřený v nespravovaném tenantovi. Vyberte možnost **Ano, chci být správcem**.
+4. Přihlaste se k [centru pro správu Microsoft 365](https://portal.office.com/admintakeover) pomocí uživatelského účtu Power BI. Zobrazí se zpráva, která vám dává pokyn, abyste se **stali správcem** názvu domény, který už byl ověřený v nespravované organizaci. Vyberte možnost **Ano, chci být správcem**.
   
    ![první snímek obrazovky, který se stane správcem](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -50,35 +50,35 @@ Některé produkty, které zahrnují SharePoint a OneDrive, jako je například 
   
    ![Přidat záznam TXT pro název domény](./media/domains-admin-takeover/become-admin-txt-record.png)
 
-Při ověřování záznamů TXT DNS v registrátoru názvu domény můžete spravovat tenanta Azure AD.
+Při ověřování záznamů TXT DNS ve vašem registrátoru názvů domén můžete spravovat organizaci Azure AD.
 
-Po dokončení předchozích kroků jste nyní globálním správcem čtvrtého tenanta v sadě Office 365. Pokud chcete název domény integrovat s ostatními službami Azure, můžete ho odebrat ze sady Office 365 a přidat ho do jiného spravovaného tenanta v Azure.
+Po dokončení předchozích kroků teď jste globálním správcem čtvrté kávy v sadě Office 365. Pokud chcete název domény integrovat s ostatními službami Azure, můžete ho odebrat ze sady Office 365 a přidat ho do jiné spravované organizace v Azure.
 
-### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>Přidání názvu domény do spravovaného tenanta ve službě Azure AD
+### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Přidání názvu domény do spravované organizace ve službě Azure AD
 
 1. Otevřete [Centrum pro správu Microsoft 365](https://admin.microsoft.com).
 2. Vyberte kartu **Uživatelé** a vytvořte nový uživatelský účet s názvem, jako je například *Uživatel\@fourthcoffeexyz.onmicrosoft.com* , který nepoužívá vlastní název domény. 
-3. Ujistěte se, že nový uživatelský účet má pro tenanta Azure AD oprávnění globálního správce.
+3. Ujistěte se, že nový uživatelský účet má pro organizaci Azure AD oprávnění globálního správce.
 4. Otevřete kartu **domény** v centru pro správu Microsoft 365, vyberte název domény a vyberte **Odebrat**. 
   
    ![odebrat název domény z Office 365](./media/domains-admin-takeover/remove-domain-from-o365.png)
   
 5. Pokud máte v sadě Office 365 nějaké uživatele nebo skupiny, které odkazují na odebraný název domény, musí být přejmenovány do domény. onmicrosoft.com. Pokud vynutíte odstranění názvu domény, všichni uživatelé budou automaticky přejmenováni v tomto příkladu *na\@fourthcoffeexyz.onmicrosoft.com uživatele*.
   
-6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem TENANTA Azure AD.
+6. Přihlaste se k [centru pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) pomocí účtu, který je globálním správcem pro organizaci Azure AD.
   
 7. Vyberte **vlastní názvy domén**a pak přidejte název domény. Aby bylo možné ověřit vlastnictví názvu domény, budete muset zadat záznamy TXT DNS. 
   
    ![Doména ověřena jako přidaná do Azure AD](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   
 > [!NOTE]
-> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v tenantovi Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je *například\@uživatel fourthcoffeexyz.onmicrosoft.com* *, nikoli\@User fourthcoffee. xyz*.
+> Všichni uživatelé Power BI nebo služby Azure Rights Management, kteří mají licence přiřazené v organizaci Office 365, musí uložit své řídicí panely, pokud je název domény odebraný. Musí se přihlásit pomocí uživatelského jména, jako je *například\@uživatel fourthcoffeexyz.onmicrosoft.com* *, nikoli\@User fourthcoffee. xyz*.
 
 ## <a name="external-admin-takeover"></a>Převzetí externích správců
 
-Pokud už klienta spravujete se službami Azure nebo Office 365, nemůžete přidat vlastní název domény, pokud už je ověřený v jiném tenantovi služby Azure AD. Nicméně ze spravovaného tenanta v Azure AD můžete převzít nespravovaného tenanta jako převzetí externím správcem. Obecný postup najdete v článku [Přidání vlastní domény do Azure AD](../fundamentals/add-custom-domain.md).
+Pokud jste už organizaci se službami Azure nebo Office 365 spravovali, nemůžete přidat vlastní název domény, pokud už je ověřený v jiné organizaci Azure AD. Ze spravované organizace ve službě Azure AD se ale můžete přebírat nespravovanou organizaci jako převzetí externích správců. Obecný postup najdete v článku [Přidání vlastní domény do Azure AD](../fundamentals/add-custom-domain.md).
 
-Když ověříte vlastnictví názvu domény, Azure AD odstraní název domény z nespravovaného tenanta a přesune ho do stávajícího tenanta. Převzetí externích správců nespravovaného adresáře vyžaduje stejný proces ověření TXT DNS jako interní převzetí správce. Rozdíl je v tom, že se v rámci názvu domény přesunuly taky následující:
+Když ověříte vlastnictví názvu domény, Azure AD Odebere název domény z nespravované organizace a přesune ji do vaší stávající organizace. Převzetí externích správců nespravovaného adresáře vyžaduje stejný proces ověření TXT DNS jako interní převzetí správce. Rozdíl je v tom, že se v rámci názvu domény přesunuly taky následující:
 
 - Uživatelé
 - Předplatná
@@ -100,13 +100,13 @@ Mezi podporované plány služby patří:
 
 Převzetí externích správců se nepodporuje u žádné služby, která obsahuje plány služeb, které zahrnují SharePoint, OneDrive nebo Skype pro firmy. například prostřednictvím bezplatného předplatného Office. 
 
-Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravovaného tenanta a jeho ověření v požadovaném tenantovi. 
+Volitelně můžete použít [možnost **ForceTakeover** ](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option) pro odebrání názvu domény z nespravované organizace a její ověření v požadované organizaci. 
 
 #### <a name="more-information-about-rms-for-individuals"></a>Další informace o RMS pro jednotlivce
 
-U [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaný tenant ve stejné oblasti jako tenant, který vlastníte, automaticky se vytvoří [Azure Information Protection klíč tenanta](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se také přesouvají s názvem domény.
+V případě [služby RMS pro jednotlivce](/azure/information-protection/rms-for-individuals)platí, že pokud je nespravovaná organizace ve stejné oblasti jako organizace, kterou vlastníte, automaticky se vytvoří [Azure Information Protection klíč organizace](/azure/information-protection/plan-implement-tenant-key) a [výchozí šablony ochrany](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) se také přesouvají s názvem domény.
 
-Klíč a šablony nejsou přesunuty, pokud se nespravovaný tenant nachází v jiné oblasti. Například pokud je nespravovaný klient v Evropě a organizace, kterou vlastníte, je v Severní Amerika.
+Klíč a šablony nejsou přesunuty, pokud je nespravovaná organizace v jiné oblasti. Například pokud je nespravovaná organizace v Evropě a organizace, kterou vlastníte, je v Severní Amerika.
 
 I když je služba RMS pro jednotlivce navržená tak, aby podporovala ověřování Azure AD pro otevření chráněného obsahu, nebrání uživatelům také v ochraně obsahu. Pokud uživatelé prováděli ochranu obsahu pomocí předplatného služby RMS pro jednotlivce a klíč a šablony nebyly přesunuty, nebude tento obsah po převzetí domény přístupný.
 
@@ -115,12 +115,12 @@ Tyto rutiny se zobrazují v [příkladu PowerShellu](#powershell-example).
 
 rutiny | Využití
 ------- | -------
-`connect-msolservice` | Po zobrazení výzvy se přihlaste ke spravovanému tenantovi.
-`get-msoldomain` | Zobrazuje názvy domén přidružené k aktuálnímu tenantovi.
-`new-msoldomain –name <domainname>` | Přidá název domény do tenanta jako Neověřeno (zatím se neprovede žádné ověření DNS).
-`get-msoldomain` | Název domény je teď zahrnutý v seznamu názvů domén přidružených ke spravovanému tenantovi, ale je uvedený jako **neověřený**.
+`connect-msolservice` | Po zobrazení výzvy se přihlaste ke svojí spravované organizaci.
+`get-msoldomain` | Zobrazuje názvy domén přidružené k aktuální organizaci.
+`new-msoldomain –name <domainname>` | Přidá název domény do organizace jako Neověřeno (zatím se neprovede žádné ověření DNS).
+`get-msoldomain` | Název domény je teď zahrnutý v seznamu názvů domén přidružených ke spravované organizaci, ale je uvedený jako **Neověřeno**.
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | Poskytuje informace, které se vloží do nového záznamu TXT DNS pro doménu (MS = xxxxx). K ověření se nemusí okamžitě docházet, protože nějaký čas může rozšířit záznam TXT, takže Počkejte pár minut, než se pustíte do úvahy možnosti **-ForceTakeover** . 
-`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud se název domény stále neověřuje, můžete pokračovat s možností **-ForceTakeover** . Ověřuje, že byl vytvořen záznam TXT a je odpojený od procesu převzetí.<li>Možnost **-ForceTakeover** by se měla přidat do rutiny jenom v případě, že je vynuceno převzetí externích správců, například když má nespravovaný tenant služby Office 365 blokující převzetí.
+`confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>Pokud se název domény stále neověřuje, můžete pokračovat s možností **-ForceTakeover** . Ověřuje, že byl vytvořen záznam TXT a je odpojený od procesu převzetí.<li>Možnost **-ForceTakeover** by měla být přidána do rutiny pouze v případě, že je vynuceno převzetí externích správců, například když má nespravovaná organizace služby Office 365 blokující převzetí.
 `get-msoldomain` | Seznam domén nyní zobrazuje název domény jako **ověřený**.
 
 > [!NOTE]

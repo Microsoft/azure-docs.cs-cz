@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547894"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738044"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -194,10 +194,10 @@ Do replikační skupiny můžete replikovat 16 virtuálních počítačů dohrom
 Vzhledem k tomu, že konzistence s více virtuálními počítači je náročné na procesor, může to mít vliv na výkon úloh Používejte konzistenci s více virtuálními počítači jenom v případě, že počítače používají stejnou úlohu a potřebujete konzistenci napříč několika počítači. Pokud máte například dvě instance SQL Server a dva webové servery v aplikaci, měli byste mít konzistenci s více virtuálními počítači pouze pro instance SQL Server.
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Můžete přidat už replikující virtuální počítač do replikační skupiny?
-
 Virtuální počítač můžete přidat do nové replikační skupiny během povolování replikace. Virtuální počítač můžete také přidat do existující replikační skupiny při povolování replikace. Nemůžete ale přidat už repliku virtuálního počítače do nové replikační skupiny nebo existující replikační skupiny.
-
+ 
 ## <a name="failover"></a>Převzetí služeb při selhání
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Jak je zajištěna kapacita v cílové oblasti pro virtuální počítače Azure?
 
@@ -285,7 +285,7 @@ Záleží na situaci. Pokud virtuální počítač oblasti zdroje existuje, sync
 
 Po obnovení bude navrácení služeb po obnovení trvat přibližně stejnou dobu, než převezme služby při selhání z primární oblasti do sekundární oblasti.
 
-## <a name="capacity"></a><a name="capacity"></a>Klíčivost
+## <a name="capacity"></a><a name="capacity"></a>Kapacita
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Jak je zajištěna kapacita v cílové oblasti pro virtuální počítače Azure?
 

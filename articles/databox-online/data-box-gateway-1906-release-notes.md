@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f4633a3fcafcb2b3151270715036e7940eb1c91
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71099483"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561843"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Poznámky k verzi pro Azure Data Box Edge a Azure Data Box Gateway 1906
 
-Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 1906 pro Azure Data Box Edge a Azure Data Box Gateway.
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 1906 pro Azure Data Box Edge a Azure Data Box Gateway. 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
@@ -31,8 +31,8 @@ Tato verze odpovídá verzím softwaru:
 
 ## <a name="whats-new"></a>Co je nového
 
-- **Oprava chyb v pracovním postupu správy klíčů pro obnovení** – v předchozí verzi došlo k chybě, vzhledem k tomu, že obnovovací klíč nebyl použit. Tato chyba je opravena v této verzi. Důrazně doporučujeme použít tuto aktualizaci, protože obnovovací klíč vám umožní obnovit data v zařízení v případě, že se zařízení nespustí. Další informace najdete v tématu Jak [Uložit obnovovací klíč při nasazení data box Edge nebo data box Gateway](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
-- **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – bylo provedeno spouštění 1905 vydání, protokolování a upozornění souvisejících s FPGA. Tato možnost bude i nadále požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](data-box-edge-deploy-configure-compute-advanced.md).
+- **Oprava chyb v pracovním postupu správy klíčů pro obnovení** – v předchozí verzi došlo k chybě, vzhledem k tomu, že obnovovací klíč nebyl použit. Tato chyba je opravena v této verzi. Důrazně doporučujeme použít tuto aktualizaci, protože obnovovací klíč vám umožní obnovit data v zařízení v případě, že se zařízení nespustí. Další informace najdete v tématu Jak [Uložit obnovovací klíč při nasazení data box Edge nebo data box Gateway](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device).
+- **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – bylo provedeno spouštění 1905 vydání, protokolování a upozornění souvisejících s FPGA. Tato možnost bude i nadále požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](azure-stack-edge-deploy-configure-compute-advanced.md).
 
 ## <a name="known-issues-in-ga-release"></a>Známé problémy ve verzi GA
 
@@ -42,4 +42,4 @@ Pro tuto verzi se neuvedly žádné nové problémy. Všechny uvedené verze př
 ## <a name="next-steps"></a>Další kroky
 
 - [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Příprava k nasazení služby Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [Příprava k nasazení služby Azure Data Box Edge](azure-stack-edge-deploy-prep.md)
