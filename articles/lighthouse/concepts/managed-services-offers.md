@@ -1,24 +1,24 @@
 ---
-title: Nabídky spravované služby v Azure Marketplace
+title: Nabídky spravovaných služeb na Azure Marketplace
 description: Spravovaná služba umožňuje poskytovatelům služeb prodávat nabídky správy prostředků zákazníkům v Azure Marketplace.
-ms.date: 03/30/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 13e1825ae6eb50b1b376e3bd3de908a545fbe023
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 975c9ab98229626a513404b2092b266a9e284279
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144900"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792288"
 ---
-# <a name="managed-service-offers-in-azure-marketplace"></a>Nabídky spravované služby v Azure Marketplace
+# <a name="managed-service-offers-in-azure-marketplace"></a>Nabídky spravovaných služeb na Azure Marketplace
 
-Tento článek popisuje typ nabídky **spravované služby** v [Azure Marketplace](https://azuremarketplace.microsoft.com). Nabídky spravované služby umožňují zákazníkům nabízet služby správy prostředků pomocí [delegované správy prostředků Azure](azure-delegated-resource-management.md). Tyto nabídky můžete zpřístupnit všem potenciálním zákazníkům nebo pouze jednomu nebo více konkrétním zákazníkům. Vzhledem k tomu, že se zákazníci fakturují přímo na náklady související s těmito spravovanými službami, neúčtují žádné poplatky za vás Microsoft.
+Tento článek popisuje typ nabídky **spravované služby** v [Azure Marketplace](https://azuremarketplace.microsoft.com). Nabídky spravované služby umožňují zákazníkům nabízet služby správy prostředků prostřednictvím [delegované správy prostředků Azure](azure-delegated-resource-management.md). Tyto nabídky můžete zpřístupnit všem potenciálním zákazníkům nebo pouze jednomu nebo více konkrétním zákazníkům. Vzhledem k tomu, že se zákazníci fakturují přímo na náklady související s těmito spravovanými službami, neúčtují žádné poplatky za vás Microsoft.
 
 ## <a name="understand-managed-service-offers"></a>Vysvětlení nabídek spravovaných služeb
 
 Spravovaná služba nabízí zjednodušení procesu připojování zákazníků pro správu delegovaných prostředků Azure. Když zákazník koupí nabídku v Azure Marketplace, bude moct určit, které předplatné nebo skupiny prostředků by se měly připojit.
 
-Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci tenanta vaší organizace, a to podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje uživatele, skupiny a instanční objekty služby Azure AD, které budou mít přístup k zákaznickým prostředkům pomocí delegované správy prostředků Azure, spolu s rolemi, které definují jejich úroveň přístupu. Když pro skupinu Azure AD přiřadíte oprávnění místo řady individuálních účtů uživatelů nebo aplikací, můžete přidat nebo odebrat jednotlivé uživatele, když se vaše požadavky na přístup změní.
+Potom budou uživatelé ve vaší organizaci moci pracovat na těchto prostředcích v rámci tenanta vaší organizace, a to podle přístupu, který jste definovali při vytváření nabídky. To se provádí pomocí manifestu, který určuje Azure Active Directory (Azure AD) uživatelů, skupin a instančních objektů, které budou mít přístup k zákaznickým prostředkům, spolu s rolemi, které definují jejich úroveň přístupu. Když pro skupinu Azure AD přiřadíte oprávnění místo řady individuálních účtů uživatelů nebo aplikací, můžete přidat nebo odebrat jednotlivé uživatele, když se vaše požadavky na přístup změní.
 
 ## <a name="public-and-private-offers"></a>Veřejné a soukromé nabídky
 

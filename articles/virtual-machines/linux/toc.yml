@@ -702,8 +702,6 @@
           href: disks-shared-enable.md
         - name: Nahrání virtuálního pevného disku na disk – CLI
           href: disks-upload-vhd-to-managed-disk-cli.md
-        - name: Změna velikosti disku OS s oddílem GPT
-          href: resize-os-disk-gpt-partition.md
         - name: Změna velikosti disku
           href: expand-disks.md
         - name: Použití Průzkumníku služby Storage ke správě disků

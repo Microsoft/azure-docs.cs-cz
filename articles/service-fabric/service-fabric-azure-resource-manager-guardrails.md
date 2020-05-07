@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368578"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790911"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Při nasazování clusteru Service Fabric jsou zavedeny guardrails, což způsobí selhání nasazení Azure Resource Manager v případě neplatné konfigurace clusteru. V následujících částech najdete přehled běžných potíží s konfigurací clusteru a kroky potřebné k tomu, abyste tyto problémy zmírnili. 
@@ -79,7 +79,7 @@ Byla zjištěna operace odebrání uzlu počáteční hodnoty a bude odmítnuta.
 Ujistěte se, že váš typ primárního uzlu má dostatek Virtual Machines pro spolehlivost určenou v clusteru. Virtuální počítač nebudete moct odebrat, pokud by se sada škálování virtuálního počítače nastavila pod minimálním počtem uzlů pro danou úroveň spolehlivosti.
 * Pokud je úroveň spolehlivosti správně zadaná, ujistěte se, že je v primárním uzlu typu podle potřeby pro úroveň spolehlivosti k dispozici dostatek uzlů. 
 * Pokud je úroveň spolehlivosti nesprávná, zahajte změnu v prostředku Service Fabric tak, aby se před zahájením operací s škálováním sady virtuálních počítačů snížila úroveň spolehlivosti, a počkejte, než se dokončí.
-* Pokud je úroveň spolehlivosti bronzová, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) , abyste mohli cluster řádně škálovat.
+* Pokud je úroveň spolehlivosti bronzová, postupujte podle těchto [kroků](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a proveďte řádné škálování clusteru.
 
 ## <a name="next-steps"></a>Další kroky
 * Vytvoření clusteru na virtuálních počítačích nebo počítačích se systémem Windows Server: [Service Fabric vytvoření clusteru pro Windows Server](service-fabric-cluster-creation-for-windows-server.md)

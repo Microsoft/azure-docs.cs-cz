@@ -21,7 +21,7 @@ ms.locfileid: "82791574"
 Image se dají použít ke spuštění nasazení a zajištění konzistence napříč několika virtuálními počítači. V tomto kurzu vytvoříte vlastní specializovanou image virtuálního počítače Azure pomocí PowerShellu a uložíte ji do galerie sdílených imagí. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření virtuálního počítače z Image 
@@ -214,7 +214,7 @@ Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí
 V tomto kurzu jste vytvořili specializovanou image virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření virtuálního počítače z Image 

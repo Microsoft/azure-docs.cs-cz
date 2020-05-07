@@ -140,6 +140,8 @@
                   href: ./../scripts/virtual-machines-windows-cli-sample-create-vm-oms.md
 - name: Koncepty
   items:
+    - name: Image
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Oblasti
@@ -524,19 +526,64 @@
         - name: Získat metriky využití s rozhraním REST
           href: ../linux/metrics-vm-usage-rest.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Použití imagí
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Sdílené image
+        - name: Vytváření a sdílení imagí
           items:
-            - name: Přehled
-              href: shared-image-galleries.md
             - name: PowerShell
-              href: shared-images.md
-            - name: Portál
-              href: shared-images-portal.md
+              items:
+                - name: Vytvoření galerie
+                  href: ../shared-images-powershell.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-powershell.md
             - name: Rozhraní příkazového řádku
-              href: ../linux/shared-images.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Registrace aplikace pro sdílení
-              href: share-images-across-tenants.md
+              items:
+                - name: Vytvoření galerie
+                  href: ../linux/shared-images.md
+                - name: Vytvoření image
+                  items:
+                    - name: Z virtuálního počítače
+                      href: ../image-version-vm-cli.md
+                    - name: Migrace ze spravované image
+                      href: ../image-version-managed-image-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                    - name: Kopírování z jiné galerie
+                      href: ../image-version-another-gallery-cli.md
+                - name: Vytvoření virtuálního počítače
+                  items:
+                    - name: Generalizovaná
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Aktualizace prostředků imagí
+                  href: ../update-image-resources-cli.md
+            - name: Portál
+              items:
+                - name: 'Vytvoření galerie, image a virtuálního počítače'
+                  href: shared-images-portal.md
+            - name: Šablony Resource Manageru
+              items:
+                - name: Vytvoření služby Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Vytvoření definici image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Vytvoření verze image v Shared Image Gallery
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Vytvoření virtuálního počítače z verze image
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Řešení potíží se sdílenými imagemi
               href: troubleshooting-shared-images.md
         - name: Image Builder (Preview)

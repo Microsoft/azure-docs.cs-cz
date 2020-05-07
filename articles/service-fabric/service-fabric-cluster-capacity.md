@@ -4,12 +4,12 @@ description: Service Fabric požadavky na plánování kapacity clusteru. NodeTy
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258912"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793053"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric požadavky na plánování kapacity clusteru
 Důležitým krokem každého produkčního nasazení je plánování kapacity. Tady je několik položek, které je třeba vzít v úvahu jako součást tohoto procesu.
@@ -104,7 +104,7 @@ Použijte stříbro nebo zlatou odolnost pro všechny typy uzlů, které hostuj�
 
 - Udržujte minimální počet pěti uzlů pro všechny sady škálování virtuálních počítačů, které mají povolenou úroveň odolnosti Gold nebo stříbrné.
 - Každá sada škálování virtuálního počítače s úrovní odolnosti stříbrného nebo zlata musí být v Service Fabricm clusteru namapována na vlastní typ uzlu. Mapování několika sad Virtual Machine Scale Sets na jeden typ uzlu zabráníte správnému fungování koordinace mezi Service Fabricm clusterem a infrastrukturou Azure.
-- Neodstraňujte náhodné instance virtuálních počítačů, vždy použijte funkci horizontálního navýšení kapacity sady virtuálních počítačů. Odstranění náhodných instancí virtuálních počítačů může mít za následek vytvoření nerovnováhy v instanci virtuálního počítače napříč UD a FD. Tato nerovnováha by mohla negativně ovlivnit schopnost systémů správně vyrovnávat zatížení mezi instancemi služby nebo replikami služeb.
+- Neodstraňujte náhodné instance virtuálních počítačů, ve funkci vždy používejte škálování Virtual Machine Scale-Scale. Odstranění náhodných instancí virtuálních počítačů může mít za následek vytvoření nerovnováhy v instanci virtuálního počítače napříč UD a FD. Tato nerovnováha by mohla negativně ovlivnit schopnost systémů správně vyrovnávat zatížení mezi instancemi služby nebo replikami služeb.
 - Pokud používáte automatické škálování, nastavte pravidla tak, aby se škálovat (odebírání instancí virtuálních počítačů) prováděla pouze v jednom uzlu. Horizontální navýšení kapacity více než jedné instance není bezpečné.
 - Při odstraňování nebo rušení přidělování virtuálních počítačů u primárního typu uzlu byste nikdy neměli snížit počet přidělených virtuálních počítačů pod tím, co vyžaduje úroveň spolehlivosti. Tyto operace budou v rámci škálované sady s úrovní odolnosti stříbrného nebo zlata zablokované na neomezenou dobu.
 

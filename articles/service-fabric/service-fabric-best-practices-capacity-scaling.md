@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258990"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791863"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Plánování kapacity a škálování pro Azure Service Fabric
 
@@ -68,13 +68,13 @@ V případě deklarovaných vlastností uzlu a omezení umístění proveďte v 
 1. Z PowerShellu spusťte `Disable-ServiceFabricNode` s záměrem `RemoveNode` zakázat uzel, který se chystáte odebrat. Odeberte typ uzlu, který má nejvyšší číslo. Pokud máte například cluster se šesti uzly, odeberte instanci virtuálního počítače "MyNodeType_5".
 2. Spusťte `Get-ServiceFabricNode` , abyste se ujistili, že uzel byl přepnut do stavu zakázáno. V takovém případě počkejte, dokud nebude uzel zakázán. U každého uzlu to může trvat několik hodin. Nepokračujte, dokud uzel nepřejde do stavu zakázáno.
 3. Snižte počet virtuálních počítačů podle jednoho z těchto typů uzlů. Nejvyšší instance virtuálního počítače se teď odebere.
-4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy nezmenšujte počet instancí v primárních typech uzlů, které jsou menší než to, co zaručuje úroveň spolehlivosti. Seznam doporučených instancí najdete v tématu [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) .
+4. Opakujte kroky 1 až 3 podle potřeby, ale nikdy nepoužívejte škálování v počtu instancí v primárních uzlech, které jsou menší než to, co zaručuje úroveň spolehlivosti. Seznam doporučených instancí najdete v tématu [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) .
 5. Jakmile se všechny virtuální počítače odešlou (zobrazují se jako "nižší"), zobrazí se chybový stav topologie Fabric:/System/InfrastructureService/[název uzlu]. Pak můžete prostředek clusteru aktualizovat a odebrat typ uzlu. Můžete buď použít nasazení šablony ARM, nebo upravit prostředek clusteru prostřednictvím [Azure Resource Manageru](https://resources.azure.com). Tím se spustí upgrade clusteru, který odebere službu Fabric:/System/InfrastructureService/[typ uzlu], která je v chybovém stavu.
  6. I když můžete volitelně odstranit VMScaleSet, pořád se uzly zobrazí jako "nižší" v Service Fabric Explorer zobrazení. Posledním krokem je vyčištění pomocí `Remove-ServiceFabricNodeState` příkazu.
 
 ## <a name="horizontal-scaling"></a>Horizontální škálování
 
-Horizontální škálování můžete provádět buď [ručně](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down) , nebo [programově](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling).
+Horizontální škálování můžete provádět buď [ručně](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out) , nebo [programově](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling).
 
 > [!NOTE]
 > Pokud měníte velikost typu uzlu, který má odolnost stříbra nebo Gold, škálování bude pomalé.
@@ -103,7 +103,7 @@ Ruční horizontální navýšení kapacity aktualizujte tak, že aktualizujete 
 
 Škálování v nástroji vyžaduje větší pozornost než horizontální navýšení kapacity. Například:
 
-* Service Fabric systémové služby se spouštějí ve vašem clusteru jako primární typ uzlu. Nikdy nepínejte nebo zmenšujte počet instancí tohoto typu uzlu tak, aby bylo méně instancí, než jaká je zaručená úroveň spolehlivosti. 
+* Service Fabric systémové služby se spouštějí ve vašem clusteru jako primární typ uzlu. Nikdy nestavte ani nezmenšujte počet instancí tohoto typu uzlu tak, aby bylo méně instancí, než kolik zaručuje úroveň spolehlivosti. 
 * Pro stavovou službu potřebujete určitý počet uzlů, které jsou vždycky v provozu a udržují stav služby. Minimálně potřebujete určitý počet uzlů, který se rovná počtu cílových sad replik oddílu nebo služby.
 
 K ručnímu škálování použijte následující postup:
@@ -111,7 +111,7 @@ K ručnímu škálování použijte následující postup:
 1. Z PowerShellu spusťte `Disable-ServiceFabricNode` s záměrem `RemoveNode` zakázat uzel, který se chystáte odebrat. Odeberte typ uzlu, který má nejvyšší číslo. Pokud máte například cluster se šesti uzly, odeberte instanci virtuálního počítače "MyNodeType_5".
 2. Spusťte `Get-ServiceFabricNode` , abyste se ujistili, že uzel byl přepnut do stavu zakázáno. V takovém případě počkejte, dokud nebude uzel zakázán. U každého uzlu to může trvat několik hodin. Nepokračujte, dokud uzel nepřejde do stavu zakázáno.
 3. Snižte počet virtuálních počítačů podle jednoho z těchto typů uzlů. Nejvyšší instance virtuálního počítače se teď odebere.
-4. Opakujte kroky 1 až 3 podle potřeby, dokud nezřídíte kapacitu, kterou požadujete. Neprovádějte horizontální navýšení kapacity počtu instancí v primárních uzlech, aby byla menší než to, co zaručuje úroveň spolehlivosti. Seznam doporučených instancí najdete v tématu [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) .
+4. Opakujte kroky 1 až 3 podle potřeby, dokud nezřídíte kapacitu, kterou požadujete. Neprovádějte škálování v počtu instancí v primárních uzlech tak, aby byla menší než to, co zaručuje úroveň spolehlivosti. Seznam doporučených instancí najdete v tématu [plánování kapacity clusteru Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity) .
 
 Pokud chcete ručně škálovat, aktualizujte kapacitu ve vlastnosti SKU požadovaného prostředku [sady škálování virtuálního počítače](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile) .
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> Při horizontálním navýšení kapacity clusteru uvidíte, že odebraný uzel/instanci virtuálního počítače se ve Service Fabric Explorer ve stavu není v pořádku zobrazovat. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer). Můžete:
+> Při škálování v clusteru uvidíte, že odebraný uzel/instance virtuálního počítače se v Service Fabric Explorer zobrazí ve stavu není v pořádku. Vysvětlení tohoto chování najdete v tématu chování, [které můžete sledovat v Service Fabric Explorer](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer). Můžete:
 > * Zavolejte [příkaz Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) s odpovídajícím názvem uzlu.
 > * Nasaďte do clusteru [aplikaci pomocníka automatického škálování Service Fabric](https://github.com/Azure/service-fabric-autoscale-helper/) . Tato aplikace zajišťuje, aby se nezaškrtnuté uzly s horizontálním škálováním z Service Fabric Explorer.
 

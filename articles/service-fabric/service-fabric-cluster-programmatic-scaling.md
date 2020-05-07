@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458286"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787103"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Škálování Service Fabric clusteru prostřednictvím kódu programu 
 
-Clustery Service Fabric spuštěné v Azure jsou postavené na službě Virtual Machine Scale Sets.  [Škálování clusteru](./service-fabric-cluster-scale-up-down.md) popisuje, jak lze Service Fabric clustery škálovat ručně nebo pomocí pravidel automatického škálování. Tento článek popisuje, jak spravovat přihlašovací údaje a škálovat cluster s využitím sady Azure COMPUTE SDK Fluent, což je pokročilejší scénář. Přehled najdete v tématu [programové metody pro koordinaci operací škálování Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Clustery Service Fabric spuštěné v Azure jsou postavené na službě Virtual Machine Scale Sets.  [Škálování clusteru](./service-fabric-cluster-scale-in-out.md) popisuje, jak lze Service Fabric clustery škálovat ručně nebo pomocí pravidel automatického škálování. Tento článek popisuje, jak spravovat přihlašovací údaje a škálovat cluster s využitím sady Azure COMPUTE SDK Fluent, což je pokročilejší scénář. Přehled najdete v tématu [programové metody pro koordinaci operací škálování Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 Pokud chcete začít s implementací vlastní logiky automatického škálování, Seznamte se s následujícími koncepty a užitečnými rozhraními API:
 
-- [Ruční škálování nebo pravidla automatického škálování](./service-fabric-cluster-scale-up-down.md)
+- [Ruční škálování nebo pravidla automatického škálování](./service-fabric-cluster-scale-in-out.md)
 - [Fluent knihovny pro správu Azure pro .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (užitečné pro interakci s podkladovou sadou virtuálních počítačů Service Fabricového clusteru)
 - [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (užitečné pro interakci s clusterem Service Fabric a jeho uzly)

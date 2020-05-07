@@ -3,12 +3,12 @@ title: Upgrade verze Azure Service Fabric v clusteru
 description: Upgradujte Service Fabric kód nebo konfiguraci, která spouští Cluster Service Fabric, včetně nastavení režimu aktualizace clusteru, upgradu certifikátů, přidávání portů aplikací, provádění oprav operačního systému a tak dále. Co můžete očekávat při provádění upgradů?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451805"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789596"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Upgrade verze Service Fabric v clusteru
 
@@ -110,7 +110,7 @@ Output:
 
 ## <a name="next-steps"></a>Další kroky
 * Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
-* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
+* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-in-out.md) .
 * Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 
 <!--Image references-->

@@ -3,12 +3,12 @@ title: Matice podpory pro zotavení po havárii VMware/fyzický v Azure Site Rec
 description: Shrnuje podporu pro zotavení po havárii virtuálních počítačů VMware a fyzického serveru do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: eb78f6073d2bcb7289f13d5c994cff8c13f9a6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185791"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801786"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure
 
@@ -128,7 +128,9 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 
 **Vydat** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 a 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Podporují se všechny jádra SUSE 15 a 15. </br></br> 4.12.14-5.5 – Azure na 4.12.14 – 8.22 – Azure
+SUSE Linux Enterprise Server 15 a 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) . </br></br> 4.12.14-5.5 – Azure na 4.12.14 – 8.22 – Azure
+
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Systémy souborů Linux/hostované úložiště
 
@@ -183,34 +185,34 @@ Adresa Vyhrazená IP adresa | Ano
 IPv4 | Ano
 Zachovat zdrojovou IP adresu | Ano
 Koncové body služby virtuální sítě Azure<br/> | Ano
-Urychlení sítě | Ne
+Urychlení sítě | No
 
 ## <a name="storage"></a>Storage
 **Komponenta** | **Doložen**
 --- | ---
 Dynamický disk | Disk s operačním systémem musí být základní disk. <br/><br/>Datové disky můžou být dynamické disky.
-Konfigurace disku Docker | Ne
+Konfigurace disku Docker | No
 Hostitelský systém souborů NFS | Ano pro VMware<br/><br/> Ne pro fyzické servery
 SÍŤ SAN hostitele (iSCSI/FC) | Ano
 Síti vSAN hostitele | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 Funkce Multipath (MPIO) hostitele | Ano, Testováno pomocí Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON
 Virtuální svazky hostitele (VVols) | Ano pro VMware<br/><br/> Není k dispozici pro fyzické servery
 VMDK nebo server typu Host | Ano
-Disk sdíleného clusteru Host/Server | Ne
-Zašifrovaný disk hosta/Server | Ne
-Host/Server NFS NFS | Ne
+Disk sdíleného clusteru Host/Server | No
+Zašifrovaný disk hosta/Server | No
+Host/Server NFS NFS | No
 ISCSI Host/Server | Migrace – Ano<br/>V případě zotavení po havárii – technologie iSCSI navrácení služeb po obnovení jako připojeného disku k virtuálnímu počítači.
-Host/server SMB 3,0 | Ne
+Host/server SMB 3,0 | No
 Host/Server – RDM | Ano<br/><br/> Není k dispozici pro fyzické servery
 Disk hosta/Server > 1 TB | Ano, disk musí být větší než 1024 MB.<br/><br/>Až 8 192 GB při replikaci do spravovaných disků (9,26 verze a vyšší)<br></br> Až 4 095 GB při replikaci do účtů úložiště
-Disk hosta/Server s velikostí logického sektoru 4K a 4k | Ne
-Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | Ne
+Disk hosta/Server s velikostí logického sektoru 4K a 4k | No
+Disk hosta/serveru s velikostí logického sektoru 4K a 512-byte | No
 Svazek typu Host/Server s prokládaným diskem >4 TB | Ano
 Správa logických svazků (LVM)| Silné zřizování – Ano <br></br> Dynamické zajišťování – ne
-Host/Server – prostory úložiště | Ne
-Host/Server – Hot přidat/odebrat disk | Ne
+Host/Server – prostory úložiště | No
+Host/Server – Hot přidat/odebrat disk | No
 Host/Server – vyloučit disk | Ano
-Funkce Multipath Host/Server (MPIO) | Ne
+Funkce Multipath Host/Server (MPIO) | No
 Oddíly GPT/Server GPT | Z [kumulativní aktualizace 37](https://support.microsoft.com/help/4508614/) (verze 9,25 služby mobility) (verze) a vyšší je podporované pět oddílů. Dříve byly podporovány předchozí čtyři.
 ReFS | Odolný systém souborů je podporován se službou mobility verze 9,23 nebo vyšší.
 Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 nebo novější, SLES 12 SP4 a RHEL 8,0 s agentem mobility verze 9,30 a vyšší<br/> -Typ spouštění zabezpečeného rozhraní UEFI není podporován.
@@ -219,9 +221,9 @@ Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 ne
 
 |**Typ replikace**   |**Doložen**  |
 |---------|---------|
-|Přenosy dat se sníženou zátěží (ODX)    |       Ne  |
-|Offline osazení        |   Ne      |
-| Azure Data Box | Ne
+|Přenosy dat se sníženou zátěží (ODX)    |       No  |
+|Offline osazení        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Úložiště Azure
 
@@ -230,13 +232,13 @@ Spuštění hosta/serveru EFI/UEFI | – Podporováno pro Windows Server 2012 ne
 (Locally redundant storage) Místně redundantní úložiště | Ano
 Geograficky redundantní úložiště | Ano
 Geograficky redundantní úložiště s přístupem pro čtení | Ano
-Studené úložiště | Ne
-Horké úložiště| Ne
-Objekty blob bloku | Ne
+Studené úložiště | No
+Horké úložiště| No
+Objekty blob bloku | No
 Šifrování v Rest (SSE)| Ano
 Šifrování v klidovém případě (CMK)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Premium Storage | Ano
-Služba import/export | Ne
+Služba import/export | No
 Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurováno na cílovém účtu úložiště nebo úložiště mezipaměti (používá se k ukládání dat replikace).
 Účty úložiště pro obecné účely v2 (horká a studená úroveň) | Ano (cena za transakce je podstatně vyšší pro V2 v porovnání s V1)
 
@@ -245,7 +247,7 @@ Azure Storage brány firewall pro virtuální sítě | Ano.<br/> Nakonfigurován
 **Funkce** | **Doložen**
 --- | ---
 Skupiny dostupnosti | Ano
-Zóny dostupnosti | Ne
+Zóny dostupnosti | No
 ZDROJ | Ano
 Spravované disky | Ano
 
@@ -301,10 +303,10 @@ Maximální četnost změn dat za den s podporou procesového serveru | 2 TB
 
 **Akce** | **Doložen**
 --- | ---
-Přesunout trezor mezi skupinami prostředků | Ne
-Přesun trezoru v rámci předplatných a mezi nimi | Ne
-Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | Ne
-Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | Ne
+Přesunout trezor mezi skupinami prostředků | No
+Přesun trezoru v rámci předplatných a mezi nimi | No
+Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč skupinami prostředků | No
+Přesuňte úložiště, síť, virtuální počítače Azure v rámci i napříč předplatnými. | No
 
 
 ## <a name="obtain-latest-components"></a>Získat nejnovější součásti

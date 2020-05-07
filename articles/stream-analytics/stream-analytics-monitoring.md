@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431656"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611887"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Pochopení Stream Analytics monitorování úloh a postup monitorování dotazů
 
@@ -37,7 +37,7 @@ Okno se zobrazí, jak je znázorněno na následujícím obrázku:
 | Žádosti o funkce      | Počet volání funkce Azure Machine Learning (Pokud je k dispozici). |
 | Chyby při deserializaci vstupu       | Počet vstupních událostí, které nebylo možné deserializovat.  |
 | Bajty vstupních událostí      | Množství dat přijatých úlohou Stream Analytics v bajtech Tato možnost slouží k ověření, zda jsou události odesílány do vstupního zdroje. |
-| Události vstupu           | Počet záznamů odkonstruovaných ze vstupních událostí. Tento počet neobsahuje příchozí události, jejichž výsledkem jsou chyby deserializace. |
+| Události vstupu           | Počet záznamů odkonstruovaných ze vstupních událostí. Tento počet neobsahuje příchozí události, jejichž výsledkem jsou chyby deserializace. Stejné události lze ingestovat Stream Analytics ve scénářích, jako jsou interní obnovy a autojoin. Proto se doporučuje neočekávat vstupní události a metriky výstupních událostí, aby se shodovaly, pokud má vaše úloha jednoduchý dotaz Pass through. |
 | Přijaté vstupní zdroje       | Počet zpráv přijatých úlohou. V případě centra událostí je zpráva jedním EventDataem. V případě objektu BLOB je zpráva jedním objektem BLOB. Všimněte si, že vstupní zdroje jsou počítány před deserializací. Pokud dojde k chybám deserializace, mohou být vstupní zdroje větší než vstupní události. V opačném případě může být menší nebo rovno vstupním událostem, protože každá zpráva může obsahovat více událostí. |
 | Zpožděné vstupní události      | Události, které dorazily později než nakonfigurované okno tolerance zpožděného doručení. Přečtěte si další informace o [Azure Stream Analyticsch důležitých informací o pořadí událostí](stream-analytics-out-of-order-and-late-events.md) . |
 | Události mimo pořadí    | Počet událostí, které byly přijaty mimo pořadí, které byly buď vyřazeny nebo předány upravenému časovému razítku, na základě zásad řazení událostí. To může být ovlivněno konfigurací nastavení okna mimo pořadí tolerance. |

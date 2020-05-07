@@ -3,12 +3,12 @@ title: Definování více instancí vlastnosti
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81391342"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583410"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
 
@@ -16,7 +16,7 @@ V tomto článku se dozvíte, jak vytvořit více než jednu instanci vlastnosti
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [proměnnými](copy-variables.md)a [výstupy](copy-outputs.md).
 
-## <a name="property-iteration"></a>Iterace vlastnosti
+## <a name="syntax"></a>Syntaxe
 
 Element Copy má následující obecný formát:
 
@@ -35,6 +35,21 @@ Do pole **název**zadejte název vlastnosti prostředku, kterou chcete vytvořit
 Vlastnost **Count** určuje počet iterací, které chcete pro vlastnost.
 
 Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** .
+
+## <a name="copy-limits"></a>Omezení kopírování
+
+Počet nemůže být větší než 800.
+
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s poslední verzí rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API, může to být nula. Konkrétně je nutné použít:
+
+* Azure PowerShell **2,6** nebo novější
+* Azure CLI **2.0.74** nebo novější
+* REST API verze **2019-05-10** nebo novější
+* [Odkazovaná nasazení](linked-templates.md) musí pro typ prostředku nasazení používat rozhraní API verze **2019-05-10** nebo novější.
+
+Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
+
+## <a name="property-iteration"></a>Iterace vlastnosti
 
 Následující příklad ukazuje, jak použít `copy` vlastnost datadisks na virtuálním počítači:
 
@@ -232,12 +247,6 @@ Můžete použít iteraci prostředků a vlastností společně. Odkázat na ite
   }
 }
 ```
-
-## <a name="copy-limits"></a>Omezení kopírování
-
-Počet nemůže být větší než 800.
-
-Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novějším, Azure CLI 2.0.74 nebo novějším nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
 
 ## <a name="example-templates"></a>Příklady šablon
 

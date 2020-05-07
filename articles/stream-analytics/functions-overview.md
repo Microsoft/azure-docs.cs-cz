@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133484"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598364"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Uživatelsky definované funkce v Azure Stream Analytics
 
@@ -47,6 +47,9 @@ Azure Stream Analytics neuchovává záznam o všech voláních funkcí a vráce
 
 Jakékoli chyby za běhu se považují za závažné a jsou provedené prostřednictvím protokolů aktivit a prostředků. Doporučuje se, aby vaše funkce zpracovává všechny výjimky a chyby a vrátila platný výsledek dotazu. Tím zabráníte tomu, aby se vaše úloha přečetla do [stavu selhání](job-states.md).  
 
+## <a name="exception-handling"></a>Ošetření výjimek
+
+Jakákoli výjimka při zpracování dat se považuje za závažnou chybu při využívání dat v Azure Stream Analytics. Uživatelsky definované funkce mají vyšší potenciál k vyvolání výjimek a způsobují zastavení zpracování. Chcete-li se tomuto problému vyhnout, použijte blok *try-catch* v jazyce JavaScript nebo C# k zachycení výjimek během provádění kódu. Zachycené výjimky mohou být protokolovány a zpracovány, aniž by došlo k selhání systému. Doporučujeme vždy zabalit vlastní kód do bloku *try-catch* , aby nedošlo k vyvolání neočekávaných výjimek pro výpočetní modul.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -54,4 +57,3 @@ Jakékoli chyby za běhu se považují za závažné a jsou provedené prostřed
 * [Azure Stream Analytics uživatelsky definovaných agregací jazyka JavaScript](stream-analytics-javascript-user-defined-aggregates.md)
 * [Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics](stream-analytics-edge-csharp-udf-methods.md)
 * [Integrace Azure Stream Analytics s Azure Machine Learning](machine-learning-udf.md)
-

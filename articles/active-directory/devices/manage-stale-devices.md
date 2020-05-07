@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672305"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788871"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Postupy: Správa zastaralých zařízení v Azure AD
 
@@ -176,7 +176,7 @@ Další informace o různých typech najdete v [přehledu správy zařízení](o
 
 Všechna ověřování, kdy se zařízení používá k ověřování vůči službě Azure AD, budou odepřena. Obvyklými příklady jsou:
 
-- **Zařízení hybridně připojená k Azure AD** – uživatelé mohou zařízení používat pro přihlášení k místní doméně. Nemají ale přístup k prostředkům Azure AD, jako je Office 365.
+- **Hybridní zařízení připojené k Azure AD** – uživatelé můžou být schopni použít zařízení k přihlášení do své místní domény. Nemají ale přístup k prostředkům Azure AD, jako je Office 365.
 - **Zařízení připojená k Azure AD** – uživatelé nemůžou používat zařízení k přihlášení. 
 - **Mobilní zařízení** – uživatel nemá přístup k prostředkům Azure AD, jako je Office 365. 
 

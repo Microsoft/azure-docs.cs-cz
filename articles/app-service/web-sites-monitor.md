@@ -4,15 +4,15 @@ description: Naučte se monitorovat aplikace v Azure App Service pomocí Azure P
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181218"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738095"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Monitorování aplikací v Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) poskytuje integrované funkce monitorování pro webové aplikace, mobilní aplikace a aplikace API v [Azure Portal](https://portal.azure.com).
@@ -49,7 +49,7 @@ Pokud aplikace překročí kvótu *CPU (krátký)*, *CPU (den)* nebo *šířky p
 
 ![chybová zpráva 403][http403]
 
-Pokud dojde k překročení kvóty paměti aplikace, aplikace se restartuje.
+Pokud dojde k překročení kvóty paměti aplikace, aplikace se dočasně zastaví.
 
 Pokud je překročena kvóta systému souborů, jakákoli operace zápisu se nezdařila. Selhání operací zápisu zahrnuje všechny zápisy do protokolů.
 
@@ -131,8 +131,7 @@ K dispozici jsou dvě metriky, které odrážejí využití CPU:
 **Procento využití procesoru**: užitečné pro aplikace hostované v plánech Basic, Standard a Premium, protože je možné je škálovat. Procento využití procesoru je dobrým označením celkového využití napříč všemi instancemi.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Členitost metrik a zásady uchovávání informací
-
-Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou. Metriky se uchovávají po dobu 90 dnů.
+Metriky pro aplikaci a plán služby App Service jsou protokolovány a agregovány službou a uchovávají se v [souladu s těmito pravidly](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Monitorování kvót a metrik v Azure Portal
 Pokud chcete zkontrolovat stav různých kvót a metrik, které mají vliv na aplikaci, použijte [Azure Portal](https://portal.azure.com).

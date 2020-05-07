@@ -4,12 +4,12 @@ description: Přehled důvodů, proč je vytváření cloudových aplikací s p�
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75750615"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792864"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Proč používat při sestavování aplikací přístup k mikroslužbám
 
@@ -35,7 +35,7 @@ Během období klienta/serveru se můžeme zaměřit na vytváření vrstvených
 
 Existují výhody přístupu k návrhu monolitické. Aplikace monolitické jsou často jednodušší pro navrhování a volání mezi komponentami je rychlejší, protože tato volání často využívají meziprocesovou komunikaci (IPC). Všichni také testuje jeden produkt, který představuje efektivnější využití lidských zdrojů. Nevýhodou je to, že existuje těsné propojení mezi vrstvenými vrstvami a nemůžete škálovat jednotlivé součásti. Pokud potřebujete provést opravy nebo upgrady, musíte počkat, až uživatelé dokončí testování. Je těžší je agilní.
 
-Mikroslužby řeší tyto downsides a podrobněji se rovnají s předchozími obchodními požadavky. Ale zároveň mají i výhody i závazky. Výhodou mikroslužeb je, že každý z nich obvykle zapouzdřuje jednodušší obchodní funkce, které můžete škálovat směrem nahoru nebo dolů, testovat, nasazovat a spravovat nezávisle. Jednou z důležitých výhod přístupu k mikroslužbám je, že týmy jsou v rámci podnikových scénářů více zaměřené než technologie. Menší týmy vyvíjejí mikroslužby založené na scénáři zákazníka a využívají libovolné technologie, které chtějí použít.
+Mikroslužby řeší tyto downsides a podrobněji se rovnají s předchozími obchodními požadavky. Ale zároveň mají i výhody i závazky. Výhodou mikroslužeb je, že každý z nich obvykle zapouzdřuje zjednodušené obchodní funkce, které můžete škálovat nebo v, testovat, nasazovat a spravovat nezávisle. Jednou z důležitých výhod přístupu k mikroslužbám je, že týmy jsou v rámci podnikových scénářů více zaměřené než technologie. Menší týmy vyvíjejí mikroslužby založené na scénáři zákazníka a využívají libovolné technologie, které chtějí použít.
 
 Jinými slovy organizace nemusí standardizovat technickou správu aplikací mikroslužeb. Jednotlivé týmy, které vlastní služby, umožňují jejich smysl na základě odborných znalostí v týmu nebo podle toho, co je nejvhodnější k vyřešení problému. V praxi je vhodnější sada doporučených technologií, jako je konkrétní NoSQL úložiště nebo architektura webové aplikace.
 

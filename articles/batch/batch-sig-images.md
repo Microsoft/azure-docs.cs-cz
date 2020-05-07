@@ -3,12 +3,12 @@ title: Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 description: Vytvořte fond služby Batch pomocí Galerie sdílených imagí a zřiďte vlastní image pro výpočetní uzly, které obsahují software a data, která pro vaši aplikaci potřebujete. Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 45f721dbdf11e0a6f58da71c644acf687dfadd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116515"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743578"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 
@@ -77,7 +77,7 @@ Snímek je plná kopie VHD, která je jen pro čtení. Pokud chcete vytvořit sn
 
 Pokud chcete vytvořit spravovanou image ze snímku, použijte nástroje příkazového řádku Azure, jako je příkaz [AZ image Create](/cli/azure/image) . Vytvořte bitovou kopii zadáním snímku disku s operačním systémem a volitelně jednoho nebo více snímků datových disků.
 
-### <a name="create-a-shared-image-gallery"></a>Vytvoření galerie sdílených imagí
+### <a name="create-a-shared-image-gallery"></a>Vytvoření služby Shared Image Gallery
 
 Po úspěšném vytvoření spravované image musíte vytvořit sdílenou galerii imagí, abyste mohli vlastní image zpřístupnit. Informace o tom, jak vytvořit sdílenou galerii imagí pro vaše image, najdete v tématu [Vytvoření sdílené Galerie imagí pomocí Azure CLI](../virtual-machines/linux/shared-images.md) nebo [vytvoření galerie sdílených imagí pomocí Azure Portal](../virtual-machines/linux/shared-images-portal.md).
 
@@ -128,6 +128,71 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     }
     ...
 }
+```
+
+## <a name="create-a-pool-from-a-shared-image-using-python"></a>Vytvoření fondu ze sdílené Image pomocí Pythonu
+
+Můžete také vytvořit fond ze sdílené Image pomocí sady Python SDK: 
+
+```python
+# Import the required modules from the
+# Azure Batch Client Library for Python
+import azure.batch as batch
+import azure.batch.models as batchmodels
+from azure.common.credentials import ServicePrincipalCredentials
+
+# Specify Batch account and service principal account credentials
+account = "{batch-account-name}"
+batch_url = "{batch-account-url}"
+ad_client_id = "{sp-client-id}"
+ad_tenant = "{tenant-id}"
+ad_secret = "{sp-secret}"
+
+# Pool settings
+pool_id = "LinuxNodesSamplePoolPython"
+vm_size = "STANDARD_D2_V3"
+node_count = 1
+
+# Initialize the Batch client with Azure AD authentication
+creds = ServicePrincipalCredentials(
+    client_id=ad_client_id,
+    secret=ad_secret,
+    tenant=ad_tenant,
+    resource="https://batch.core.windows.net/"
+)
+client = batch.BatchServiceClient(creds, batch_url)
+
+# Configure the start task for the pool
+start_task = batchmodels.StartTask(
+    command_line="printenv AZ_BATCH_NODE_STARTUP_DIR"
+)
+start_task.run_elevated = True
+
+# Create an ImageReference which specifies the image from
+# Shared Image Gallery to install on the nodes.
+ir = batchmodels.ImageReference(
+    virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
+)
+
+# Create the VirtualMachineConfiguration, specifying
+# the VM image reference and the Batch node agent to
+# be installed on the node.
+vmc = batchmodels.VirtualMachineConfiguration(
+    image_reference=ir,
+    node_agent_sku_id="batch.node.ubuntu 18.04"
+)
+
+# Create the unbound pool
+new_pool = batchmodels.PoolAddParameter(
+    id=pool_id,
+    vm_size=vm_size,
+    target_dedicated_nodes=node_count,
+    virtual_machine_configuration=vmc,
+    start_task=start_task
+)
+
+# Create pool in the Batch service
+client.pool.add(new_pool)
 ```
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Vytvoření fondu ze sdílené Image pomocí Azure Portal

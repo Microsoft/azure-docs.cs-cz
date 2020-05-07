@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376932"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791812"
 ---
 # <a name="monitoring-the-cluster"></a>Monitorování clusteru
 
@@ -74,7 +74,7 @@ Pokud potřebujete požádat o pomoc s clusterem Azure Service Fabric, obraťte 
 
 ## <a name="measuring-performance"></a>Měření výkonu
 
-Měření výkonu clusteru vám pomůže pochopit, jak je možné zvládnout zatížení a měřit rozhodnutí v souvislosti s škálováním clusteru (Další informace o škálování clusteru [v Azure](service-fabric-cluster-scale-up-down.md)nebo [v](service-fabric-cluster-windows-server-add-remove-nodes.md)místním prostředí). Údaje o výkonu jsou také užitečné při porovnání s akcemi, které jste si vyučinili, nebo při analýze protokolů v budoucnu. 
+Měření výkonu clusteru vám pomůže pochopit, jak je možné zvládnout zatížení a měřit rozhodnutí v souvislosti s škálováním clusteru (Další informace o škálování clusteru [v Azure](service-fabric-cluster-scale-in-out.md)nebo [v](service-fabric-cluster-windows-server-add-remove-nodes.md)místním prostředí). Údaje o výkonu jsou také užitečné při porovnání s akcemi, které jste si vyučinili, nebo při analýze protokolů v budoucnu. 
 
 Seznam čítačů výkonu, které se mají shromáždit při použití Service Fabric, najdete [v tématu čítače výkonu v Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 

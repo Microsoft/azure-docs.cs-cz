@@ -1,23 +1,23 @@
 ---
-title: Azure Data Box Gateway přístup k zařízení, napájení a režim připojení
-description: Popisuje, jak spravovat přístup, režim napájení a režim připojení pro zařízení Azure Data Box Gateway, které pomáhá přenést data do Azure.
+title: Přístup k zařízení Azure Stack Edge, napájení a režim připojení | Microsoft Docs
+description: Popisuje, jak spravovat přístup, režim napájení a režim připojení pro Azure Stack hraniční zařízení, které pomáhá přenést data do Azure.
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: gateway
+ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
 ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561328"
+ms.locfileid: "82569612"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Správa režimu přístupu, napájení a připojení pro Azure Data Box Gateway
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge
 
-Tento článek popisuje, jak spravovat režim přístupu, napájení a připojení k vašemu Azure Data Box Gateway. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal. 
+Tento článek popisuje, jak spravovat přístup, režim napájení a režim připojení pro Azure Stack hraničních zařízeních. Tyto operace se provádějí prostřednictvím místního webového uživatelského rozhraní nebo Azure Portal.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -26,9 +26,10 @@ V tomto článku získáte informace o těchto tématech:
 > * Správa režimu připojení
 > * Správa napájení
 
+
 ## <a name="manage-device-access"></a>Správa přístupu k zařízení
 
-Přístup k vašemu Data Box Gateway zařízení je řízen pomocí hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
+Přístup k vašemu Azure Stack hraničnímu zařízení se řídí použitím hesla zařízení. Heslo můžete změnit prostřednictvím místního webového uživatelského rozhraní. Můžete také resetovat heslo zařízení v Azure Portal.
 
 ### <a name="change-device-password"></a>Změna hesla zařízení
 
@@ -37,9 +38,9 @@ Pokud chcete změnit heslo zařízení, postupujte podle těchto kroků v místn
 1. V místním webovém uživatelském rozhraní přejděte do části **údržba > Změna hesla**.
 2. Zadejte aktuální heslo a pak nové heslo. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Potvrďte nové heslo.
 
-    ![Změna hesla](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
+    ![Změna hesla](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. Klikněte na **změnit heslo**.
+3. Vyberte **změnit heslo**.
  
 ### <a name="reset-device-password"></a>Resetování hesla zařízení
 
@@ -47,25 +48,25 @@ Pracovní postup Resetování nevyžaduje, aby uživatel nahrál staré heslo a 
 
 1. V Azure Portal najdete v části **přehled > resetování hesla správce**.
 
-    ![Resetování hesla](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Resetování hesla](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
- 
-2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Klikněte na **resetovat**.
 
-    ![Resetování hesla](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+2. Zadejte nové heslo a potvrďte ho. Zadané heslo musí mít 8 až 16 znaků. Heslo musí obsahovat 3 z následujících znaků: velká písmena, malá písmena, číslice a speciální znaky. Vyberte **Resetovat**.
+
+    ![Resetování hesla](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>Správa přístup k prostředků
 
-Pokud chcete vytvořit Azure Stack hraničních, Data Box Gateway, IoT Hub a Azure Storage prostředků, potřebujete oprávnění jako přispěvatel nebo vyšší na úrovni skupiny prostředků. Budete také potřebovat registrovat odpovídající poskytovatele prostředků. Pro všechny operace, které zahrnují aktivační klíč a přihlašovací údaje, se vyžadují taky oprávnění Azure Active Directory Graph API. Tyto oddíly jsou popsány v následujících částech.
+Pokud chcete vytvořit Azure Stack hraničních, Data Box Gateway, IoT Hub a Azure Storage prostředků, potřebujete oprávnění jako přispěvatel nebo vyšší na úrovni skupiny prostředků. Budete také potřebovat registrovat odpovídající poskytovatele prostředků. Pro všechny operace, které zahrnují aktivační klíč a přihlašovací údaje, se taky vyžadují oprávnění k rozhraní Microsoft Graph API. Tyto oddíly jsou popsány v následujících částech. 
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>Správa oprávnění rozhraní API Microsoft Graph
 
-Při generování aktivačního klíče pro Azure Stack hraniční zařízení nebo při provádění operací, které vyžadují přihlašovací údaje, potřebujete oprávnění Microsoft Graph API. Operace, které vyžadují přihlašovací údaje, můžou být:
+Při generování aktivačního klíče pro Azure Stack hraniční zařízení nebo při provádění operací, které vyžadují přihlašovací údaje, potřebujete oprávnění Azure Active Directory Graph API. Operace, které vyžadují přihlašovací údaje, můžou být:
 
 -  Vytváří se sdílená složka s přidruženým účtem úložiště.
 -  Vytváří se uživatel, který má přístup ke sdíleným složkám na zařízení.
 
-Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects`. Nemůžete být uživatel typu Host, protože k `Read all directory objects`němu nemají oprávnění. Pokud jste Host, pak operace, jako je například generace aktivačního klíče, vytváření sdílené složky na zařízení Azure Stack hraničního zařízení, neproběhne veškerá Chyba při vytváření uživatele.
+Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects`. Nemůžete být uživatel typu Host, protože k `Read all directory objects`němu nemají oprávnění. Pokud jste Host, pak operace, jako je například generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
 Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -98,9 +99,11 @@ Další informace o tom, jak zaregistrovat poskytovatele prostředků, najdete v
 
 ## <a name="manage-connectivity-mode"></a>Správa režimu připojení
 
-Kromě výchozího normálního režimu může být zařízení také spuštěné v částečně odpojeném nebo odpojeném režimu. Každý z těchto režimů je popsaný níže:
+Kromě výchozího režimu s plným připojením může být zařízení také spuštěné v částečně připojeném nebo plně odpojeném režimu. Každý z těchto režimů je popsaný níže:
 
-- **Částečně odpojeno** – v tomto režimu nemůže zařízení nahrávat žádná data do sdílených složek, ale dá se spravovat prostřednictvím Azure Portal.
+- **Plně připojeno** – jedná se o normální výchozí režim, ve kterém zařízení funguje. V tomto režimu je povolené nahrávání do cloudu i stahování dat. Ke správě zařízení můžete použít Azure Portal nebo místní webové uživatelské rozhraní.
+
+- **Částečně odpojeno** – v tomto režimu nemůže zařízení nahrávat ani stahovat žádná sdílená data, ale dá se spravovat prostřednictvím Azure Portal.
 
     Tento režim se obvykle používá, pokud je v měřené satelitní síti a cílem je minimalizovat spotřebu šířky pásma sítě. Minimální spotřeba sítě může stále nastat pro operace monitorování zařízení.
 
@@ -111,25 +114,24 @@ Kromě výchozího normálního režimu může být zařízení také spuštěn�
 Chcete-li změnit režim zařízení, postupujte podle následujících kroků:
 
 1. V místním webovém uživatelském rozhraní vašeho zařízení přejít na **konfigurace > nastavení cloudu**.
-2. Zakažte **nahrávání a stahování cloudu**.
-3. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
+2. V rozevíracím seznamu vyberte režim, ve kterém má být zařízení provozováno. Můžete vybrat z **úplně připojeného**, **částečně připojeného**a **úplného odpojení**. Pokud chcete zařízení spustit v režimu částečně odpojeno, povolte **správu Azure Portal**.
 
-    ![Režim připojení](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-1.png)
+    ![Režim připojení](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
-4. Pokud chcete zařízení spustit v odpojeném režimu, zakažte **správu Azure Portal**. Zařízení se teď dá spravovat jenom přes místní webové uživatelské rozhraní.
-
-    ![Režim připojení](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
-
 ## <a name="manage-power"></a>Správa napájení
 
-Virtuální zařízení můžete vypnout nebo restartovat pomocí místního webového uživatelského rozhraní. Doporučujeme před restartováním přepnout sdílené složky na hostiteli a potom na zařízení do offline režimu. Tato akce minimalizuje jakoukoli možnost poškození dat.
+Můžete vypnout nebo restartovat fyzické zařízení pomocí místního webového uživatelského rozhraní. Doporučujeme, abyste před restartováním převedli sdílené složky na datovém serveru a pak na zařízení. Tato akce minimalizuje jakoukoli možnost poškození dat.
 
 1. V místním webovém uživatelském rozhraní přejdete do části **údržba > nastavení napájení**.
-2. V závislosti na tom, co máte v úmyslu udělat, klikněte na **vypnout** nebo **restartovat** .
+2. V závislosti na tom, co máte v úmyslu udělat, vyberte **vypnout** nebo **restartovat** .
 
-    ![Nastavení napájení](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
+    ![Nastavení napájení](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. Po zobrazení výzvy k potvrzení klikněte na **Ano** a pokračujte.
+3. Po zobrazení výzvy k potvrzení vyberte **Ano** a pokračujte.
 
 > [!NOTE]
-> Pokud vypnete virtuální zařízení, budete muset spustit zařízení prostřednictvím správy hypervisoru.
+> Pokud vypnete fyzické zařízení, budete muset zapnout tlačítko napájení v zařízení, abyste ho zapnuli.
+
+## <a name="next-steps"></a>Další kroky
+
+- Naučte se [Spravovat sdílené složky](azure-stack-edge-manage-shares.md).

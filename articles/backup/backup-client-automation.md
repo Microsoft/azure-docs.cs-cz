@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193016"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597973"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 Zálohovaná data odesílaná do Azure Backup jsou šifrovaná za účelem ochrany důvěrnosti dat. Šifrovací heslo je "heslo", které dešifruje data v době obnovení.
 
-Musíte vygenerovat bezpečnostní kód PIN, a to tak, že vyberete **vytvořit**, v části **Nastavení** > **vlastnosti** > **zabezpečení kód PIN** v Azure Portal **Recovery Services trezoru** . Pak tuto akci použijte jako `generatedPIN` v příkazu:
+Musíte vygenerovat bezpečnostní kód PIN, a to tak, že vyberete **vytvořit**, v části **Nastavení** > **vlastnosti** > **zabezpečení kód PIN** v Azure Portal **Recovery Services trezoru** . 
+
+>[!NOTE]
+> Bezpečnostní kód PIN se dá vygenerovat jenom pomocí Azure Portal.
+
+Pak tuto akci použijte jako `generatedPIN` v příkazu:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

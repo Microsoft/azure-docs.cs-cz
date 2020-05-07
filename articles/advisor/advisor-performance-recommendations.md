@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 description: Využijte poradce k optimalizaci výkonu nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443059"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787936"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -28,6 +28,10 @@ Advisor nabízí konzistentní a konsolidované zobrazení doporučení pro vše
 > Aby bylo možné získat doporučení, musí mít databáze přibližně týden využití a v tomto týdnu musí být konzistentní aktivita. SQL Database Advisor se dá snadněji optimalizovat pro konzistentní vzory dotazů, než pro náhodné nárůsty aktivity.
 
 Další informace o SQL Database Advisor najdete v tématu [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>Vyšší spolehlivost a výkon díky upgradu klientské knihovny služby Storage na nejnovější verzi
+
+Nejnovější verze sady SDK a klientské knihovny služby Storage obsahuje opravy chyb nahlášených zákazníky a aktivně zjištěných v rámci procesu kontroly kvality. Nejnovější verze kromě nových funkcí přináší i optimalizaci spolehlivosti a výkonu, která může zlepšit celkové zkušenosti s používáním služby Azure Storage. Poradce vám poskytne doporučení a kroky pro upgrade na nejnovější verzi sady SDK, pokud používáte starou verzi. Doporučení jsou pro podporované jazyky – C++ a .NET.
 
 ## <a name="improve-app-service-performance-and-reliability"></a>Zlepšení výkonu a spolehlivosti App Service
 
@@ -73,6 +77,26 @@ Migrujte model nasazení účtu úložiště na Azure Resource Manager (Správce
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Návrh účtů úložiště, aby nedošlo k překročení maximálního limitu předplatného
 
 Oblast Azure může podporovat maximálně 250 účtů úložiště na jedno předplatné. Po dosažení tohoto limitu nebudete moct vytvořit žádné další účty úložiště v této kombinaci oblasti nebo předplatného. Advisor zkontroluje vaše předplatná a doporučení pro plochu, abyste mohli navrhovat méně účtů úložiště pro všechny, které jsou blízko dosažení maximálního limitu.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Zvažte zvýšení velikosti SKU brány virtuální sítě na adresu vysoká P2S využití.
+
+Každá SKU brány může podporovat jenom zadaný počet souběžných připojení P2S. Pokud se počet připojení blíží limitu brány, může dojít k selhání dalších pokusů o připojení. Zvýšení velikosti brány vám umožní podporovat více souběžných uživatelů P2S. Advisor poskytuje doporučení a kroky, které je potřeba provést.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Zvažte zvýšení velikosti SKU brány virtuální sítě na řešení vysokého výkonu procesoru.
+
+V případě vysokého zatížení může Brána sítě VPN vyřadit pakety z důvodu vysokého využití procesoru. Měli byste zvážit upgrade VPN Gateway SKU, protože vaše síť VPN byla konzistentně spuštěna v. Zvětšením velikosti brány VPN se zajistí, že připojení nebudou vyřazena z důvodu vysokého využití procesoru. Doporučení provdes Advisoru k proaktivnímu řešení tohoto problému. 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Zvýšit velikost dávky při načítání pro maximalizaci propustnosti zatížení, komprimace dat a výkonu dotazů
+
+Služba Advisor dokáže zjistit, že můžete zvýšit výkon a propustnost zatížení tím, že zvýšíte velikost dávky při načítání do vaší databáze. Můžete zvážit použití příkazu COPY. Pokud nemůžete použít příkaz COPY, zvažte zvýšení velikosti dávky při použití nástrojů načítání nástrojů, jako je SQLBulkCopy API nebo BCP – dobré pravidlo pro palec je velikost dávky mezi 100 tisíc a 1 milionem řádků. Tím se zvýší propustnost zatížení, komprese dat a výkon dotazů.
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Společně umístit účet úložiště ve stejné oblasti, aby se minimalizovala latence při načítání
+
+Poradce dokáže zjistit, že načítáte z oblasti, která se liší od vašeho fondu SQL. Měli byste zvážit načtení z účtu úložiště, který je ve stejné oblasti jako váš fond SQL, abyste minimalizovali latenci při načítání dat. To vám pomůže minimalizovat latenci a zvýšit výkon zatížení.
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>Zjistila se Nepodporovaná verze Kubernetes.
+
+Poradce dokáže zjistit, jestli je zjištěna nepodporovaná verze Kubernetes. Doporučení vám pomůže zajistit, aby cluster Kubernetes běžel s podporovanou verzí.
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Optimalizujte výkon svých serverů Azure MySQL, Azure PostgreSQL a Azure MariaDB 
 

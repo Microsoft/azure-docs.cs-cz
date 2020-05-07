@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885748"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583251"
 ---
 # <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
 
-Aby se zajistila vyšší úroveň zabezpečení, Notification Hubs zakáže podporu pro TLS verze 1,0 a 1,1 v 31. dubna 2020 (rozšířené od 30. dubna 2020). Tyto starší protokoly poskytují slabou kryptografii a jsou zranitelné z útoků TOUCHDOWN a POODLE. Aplikace nasazené na zařízení s Androidem verze 5 nebo novějším nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněné, protože tyto operační systémy podporují protokol TLS 1,2 a klient a server vyjednávají nejvyšší vzájemně podporovanou verzi protokolu při připojení.
+Aby se zajistila vyšší úroveň zabezpečení, Notification Hubs zakáže podporu TLS verze 1,0 a 1,1 **31. prosince 2020** (rozšířené od 30. dubna 2020). Tyto starší protokoly poskytují slabou kryptografii a jsou zranitelné z útoků TOUCHDOWN a POODLE. Aplikace nasazené na zařízení s Androidem verze 5 nebo novějším nebo iOS verze 5 nebo vyšší nejsou touto změnou ovlivněné, protože tyto operační systémy podporují protokol TLS 1,2 a klient a server vyjednávají nejvyšší vzájemně podporovanou verzi protokolu při připojení.
 
 Doporučujeme zkontrolovat všechny aplikace, které používají Azure Notification Hubs, a zajistit tak, aby používaly nejvhodnější knihovny a zásobníky TLS, které podporují protokol TLS 1,2.
 

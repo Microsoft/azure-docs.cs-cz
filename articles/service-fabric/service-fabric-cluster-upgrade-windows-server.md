@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5921fc9038e53f34e23f6fd97111c71b29699dc5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598098"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793138"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Upgrade verze Service Fabric, která běží na vašem clusteru 
 
@@ -162,7 +162,7 @@ Podrobnosti o využití najdete v příkazu PowerShellu [Start-ServiceFabricClus
 ## <a name="next-steps"></a>Další kroky
 * [Upgrade konfigurace samostatného clusteru](service-fabric-cluster-config-upgrade-windows-server.md)
 * Přizpůsobení některých [Service Fabric nastavení clusteru](service-fabric-cluster-fabric-settings.md).
-* Horizontální navýšení [kapacity clusteru a jejich škálování](service-fabric-cluster-scale-up-down.md).
+* Horizontální navýšení [kapacity clusteru a jejich škálování](service-fabric-cluster-scale-in-out.md).
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

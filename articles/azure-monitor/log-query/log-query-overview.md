@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670113"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591648"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Přehled dotazů protokolu v Azure Monitor
 Dotazy protokolu umožňují plně využít hodnoty dat shromažďovaných v [protokolech Azure monitor](../platform/data-platform-logs.md). Výkonný dotazovací jazyk umožňuje spojit data z více tabulek, agregovat velké sady dat a provádět komplexní operace s minimálním kódem. Prakticky všechny dotazy mohou být zodpovězeny a analýzou provedeny, pokud jsou shromážděna podpůrná data a rozumíte tomu, jak vytvořit správný dotaz.
@@ -81,7 +81,7 @@ Log Analytics je primárním nástrojem v Azure Portal pro zápis dotazů protok
 Můžete začít Log Analytics z několika míst v Azure Portal. Rozsah dat, která jsou k dispozici pro Log Analytics, je určen podle toho, jak je spustíte. Další podrobnosti najdete v [oboru dotazů](scope.md) .
 
 - Z nabídky **Azure monitor** nebo z nabídky **pracovní prostory Log Analytics** vyberte **protokoly** .
-- Na stránce **Přehled** aplikace Application Insights vyberte **Analytics** .
+- Na stránce **Přehled** aplikace Application Insights vyberte **protokoly** .
 - V nabídce prostředku Azure vyberte **protokoly** .
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

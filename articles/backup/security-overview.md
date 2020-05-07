@@ -3,12 +3,12 @@ title: Přehled funkcí zabezpečení
 description: Seznamte se s možnostmi zabezpečení v Azure Backup, které vám pomůžou chránit data záloh a splňovat požadavky vaší firmy na zabezpečení.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585821"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743645"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Přehled funkcí zabezpečení v Azure Backup
 
@@ -16,9 +16,9 @@ Jedním z nejdůležitějších kroků, které můžete provést při ochraně d
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Správa a řízení identit a přístupu uživatelů
 
-Azure Backup vám umožní spravovat jemně odstupňovaný přístup pomocí [Access Control na základě role (RBAC) založené na rolích Azure](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
+Účty úložiště používané trezory služby Recovery Services jsou izolované a uživatelé k nim nemají k dispozici žádné škodlivé účely. Přístup je povolený jenom prostřednictvím operací správy Azure Backup, jako je například obnovení. Azure Backup vám umožní řídit spravované operace prostřednictvím jemně odstupňovaného přístupu pomocí [Access Control na základě role (RBAC) založené na rolích Azure](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault). RBAC umožňuje oddělení povinností v rámci týmu a udělení přístupu pouze k uživatelům potřebným ke své práci.
 
-Azure Backup poskytuje tři předdefinované role pro řízení operací správy zálohování:
+Azure Backup poskytuje tři [předdefinované role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) pro řízení operací správy zálohování:
 
 * Přispěvatel záloh – pro vytváření a správu záloh s výjimkou odstranění Recovery Services trezoru a poskytnutí přístupu jiným uživatelům
 * Operátor zálohování – všechno, co Přispěvatel s výjimkou odebrání zálohování a správy zásad zálohování
@@ -47,13 +47,13 @@ Pomocí [privátních koncových bodů](https://docs.microsoft.com/azure/private
 
 Šifrování chrání vaše data a pomáhá splnit závazky zabezpečení a dodržování předpisů vaší organizace. V rámci Azure jsou data přenášená mezi službou Azure Storage a trezorem chráněná protokolem HTTPS. Tato data zůstávají v páteřní síti Azure.
 
-* Zálohovaná data se automaticky šifrují pomocí klíčů spravovaných Microsoftem. Pomocí [zákaznických klíčů](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) uložených v Azure Key Vault můžete také zašifrovat zálohované virtuální počítače se spravovanými disky v úložišti Recovery Services. K povolení tohoto šifrování nemusíte provádět žádnou explicitní akci. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
+* Zálohovaná data se automaticky šifrují pomocí klíčů spravovaných Microsoftem. Pomocí [zákaznických klíčů](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) uložených v Azure Key Vault můžete také zašifrovat zálohované virtuální počítače se spravovanými disky v úložišti Recovery Services. K povolení tohoto šifrování nemusíte provádět žádnou explicitní akci. Platí pro všechny úlohy, které se zálohují do vašeho trezoru Recovery Services.
 
 * Azure Backup podporuje zálohování a obnovení virtuálních počítačů Azure, které mají svoje disky s operačním systémem nebo daty šifrované pomocí Azure Disk Encryption (ADE). [Přečtěte si další informace o šifrovaných virtuálních počítačích Azure a Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>Ochrana zálohovaných dat před neúmyslnými odstraněními
 
-Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po jejím odstranění. Pokud uživatel odstraní zálohu virtuálního počítače pomocí obnovitelného odstranění, uchovávají se data zálohy po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka. [Přečtěte si další informace o obnovitelném odstranění](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete).
+Azure Backup poskytuje funkce zabezpečení, které vám pomůžou chránit zálohovaná data i po jejím odstranění. Pokud uživatel odstraní zálohu virtuálního počítače pomocí obnovitelného odstranění, uchovávají se data zálohy po dobu 14 dalších dnů, což umožňuje obnovení této zálohované položky bez ztráty dat. Další 14 dní uchovávání zálohovaných dat ve stavu "obnovitelné odstranění" neúčtují žádné náklady na zákazníka. [Přečtěte si další informace o obnovitelném odstranění](backup-azure-security-feature-cloud.md).
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Monitorování a výstrahy podezřelé aktivity
 

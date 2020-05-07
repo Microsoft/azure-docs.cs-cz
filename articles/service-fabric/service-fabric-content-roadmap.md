@@ -3,12 +3,12 @@ title: Další informace o Azure Service Fabric
 description: Přečtěte si o základních konceptech a hlavních oblastech Azure Service Fabric. Poskytuje rozšířený přehled Service Fabric a vytváření mikroslužeb.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458144"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791846"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Chcete se dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má ale velkou oblast povrchu, ale máme spoustu informací.  Tento článek obsahuje stručný přehled Service Fabric a popisuje základní koncepty, programovací modely, životní cyklus aplikací, testování, clustery a monitorování stavu. Přečtěte si [Přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) Úvod do Service Fabric, jak se dá použít k vytváření mikroslužeb. Tento článek neobsahuje úplný seznam obsahu, ale obsahuje odkaz na přehled a zahájení práce pro každou oblast Service Fabric. 
@@ -75,7 +75,7 @@ Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy.
 ### <a name="reliable-actors"></a>Reliable Actors
 Technologie [Reliable Actors](service-fabric-reliable-actors-introduction.md) , která je postavená na Reliable Services, je rozhraní aplikace, které implementuje vzor virtuálního objektu actor na základě vzoru návrhu objektu actor. Rozhraní Reliable actor používá nezávislé jednotky COMPUTE a State s jedním vláknovým spouštěním nazvaným Actors. Rozhraní Reliable Actors poskytuje vestavěnou komunikaci pro objekty actor a trvalá nastavení trvalých stavů a škálování na více systémů.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>Jádro ASP.NET
 Service Fabric se integruje s [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) jako první třída programovací model pro vytváření webových aplikací a aplikací API.  ASP.NET Core lze použít dvěma různými způsoby v Service Fabric:
 
 - Hostuje se jako spustitelný soubor hosta. Používá se hlavně ke spouštění existujících aplikací ASP.NET Core v Service Fabric bez jakýchkoli změn kódu.
@@ -136,7 +136,7 @@ Scénáře zabezpečení clusteru jsou tyto:
 Další informace najdete v článku [zabezpečení clusteru](service-fabric-cluster-security.md).
 
 ### <a name="scaling"></a>Škálování
-Pokud do clusteru přidáte nové uzly, Service Fabric znovu vyrovnává repliky oddílů a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech. Clustery v Azure můžete škálovat buď [ručně](service-fabric-cluster-scale-up-down.md) , nebo [prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md). Samostatné clustery je možné škálovat [ručně](service-fabric-cluster-windows-server-add-remove-nodes.md).
+Pokud do clusteru přidáte nové uzly, Service Fabric znovu vyrovnává repliky oddílů a instance napříč rostoucím počtem uzlů. Celkový výkon aplikace vylepšuje a kolizí pro přístup k snížení velikosti paměti. Pokud se uzly v clusteru nepoužívají efektivně, můžete snížit počet uzlů v clusteru. Service Fabric znovu vyrovnává repliky oddílů a instance napříč sníženým počtem uzlů, aby bylo možné lépe využívat hardware na jednotlivých uzlech. Clustery v Azure můžete škálovat buď [ručně](service-fabric-cluster-scale-in-out.md) , nebo [prostřednictvím kódu programu](service-fabric-cluster-programmatic-scaling.md). Samostatné clustery je možné škálovat [ručně](service-fabric-cluster-windows-server-add-remove-nodes.md).
 
 ### <a name="cluster-upgrades"></a>Upgrady clusteru
 Nové verze modulu runtime Service Fabric jsou pravidelně vydávány. Proveďte za běhu nebo prostředků infrastruktury, upgrady v clusteru, abyste vždy používali [podporovanou verzi](service-fabric-support.md). Kromě upgradů prostředků infrastruktury můžete také aktualizovat konfiguraci clusteru, jako jsou certifikáty nebo porty aplikací.

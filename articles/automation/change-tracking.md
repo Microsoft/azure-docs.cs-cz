@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509057"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787171"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>Přehled Change Tracking a inventáře
 
@@ -23,10 +23,15 @@ Tento článek vás seznámí s Change Tracking a inventarizací v Azure Automat
 - Služby společnosti Microsoft
 - Procesy démon systému Linux
 
-Change Tracking a inventář získává data ze služby Azure Monitor v cloudu. Azure odesílá změny nainstalovaného softwaru, služeb Microsoftu, registru a souborů Windows a démonů pro Linux na monitorovaných serverech, aby se Azure Monitor ke zpracování. Cloudová služba používá logiku pro přijatá data, zaznamenává je a zpřístupňuje je. 
-
 > [!NOTE]
 > Pokud chcete sledovat změny vlastností Azure Resource Manager, přečtěte si téma [historie změn](../governance/resource-graph/how-to/get-resource-changes.md)grafu prostředků Azure.
+
+Change Tracking a inventář získává data z Azure Monitor. Virtuální počítače připojené k pracovním prostorům Log Analytics používají Log Analytics agenti ke shromažďování dat o změnách nainstalovaného softwaru, služeb společnosti Microsoft, registru a souborů systému Windows a všech démonech systému Linux na monitorovaných serverech. Když jsou data k dispozici, agenti ji odesílají Azure Monitor ke zpracování. Azure Monitor používá logiku pro přijatá data, zaznamenává je a zpřístupňuje je. 
+
+Funkce Change Tracking a inventáře umožňuje v Azure Automation funkční oblasti sledování změn i inventarizace. Vzhledem k tomu, že obě oblasti používají stejný agent Log Analytics, proces pro přidání virtuálního počítače je stejný v oblasti v oblasti funkčnosti. 
+
+> [!NOTE]
+> Pokud chcete používat funkci Change Tracking a inventáře, musíte najít všechny své virtuální počítače ve stejném předplatném a oblasti účtu Automation.
 
 Change Tracking a inventář aktuálně nepodporují následující položky:
 
@@ -38,7 +43,7 @@ Change Tracking a inventář aktuálně nepodporují následující položky:
 Další omezení:
 
 * Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
-* Pokud shromáždíte více než 2500 souborů v cyklu shromažďování, může dojít ke snížení výkonu řešení.
+* Pokud shromáždíte více než 2500 souborů v cyklu shromažďování, může dojít ke snížení výkonu u sledování změn a výkonu inventáře.
 * Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
 * Pokud upravíte konfiguraci v době, kdy je počítač vypnutý, může počítač publikovat změny patřící do předchozí konfigurace.
 
@@ -49,33 +54,7 @@ Change Tracking a inventarizace v současné době dochází k následujícím p
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Change Tracking a inventář a agenti Azure Monitor Log Analytics jsou podporováni v operačních systémech Windows i Linux.
-
-### <a name="windows-operating-systems"></a>Operační systémy Windows
-
-Verze operačního systému Windows, který je podporovaný oficiálně, je Windows Server 2008 R2 nebo novější.
-
-### <a name="linux-operating-systems"></a>Operační systémy Linux
-
-Distribuce systému Linux popsaná níže jsou pro agenta Log Analytics pro Linux oficiálně podporovány. Agent pro Linux se ale může spustit i v jiných distribucích, které nejsou uvedené. Pokud není uvedeno jinak, všechny dílčí verze jsou podporovány pro každou hlavní verzi uvedenou v seznamu.
-
-#### <a name="64-bit-linux-operating-systems"></a>64 – 64bitové operační systémy Linux
-
-* CentOS 6 a 7
-* Amazon Linux 2017,09
-* Oracle Linux 6 a 7
-* Red Hat Enterprise Linux Server 6 a 7
-* Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS a 18,04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32 – 64bitové operační systémy Linux
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 a 9
-* Ubuntu Linux 14,04 LTS a 16,04 LTS
+Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Verze operačního systému Windows, které jsou podporované oficiálně, jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Podporuje se taky řada operačních systémů Linux. Viz [Přehled agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
 ## <a name="network-requirements"></a>Síťové požadavky
 
@@ -83,14 +62,14 @@ Change Tracking a inventář konkrétně vyžadují síťové adresy uvedené v 
 
 |Veřejný partnerský vztah Azure  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *. azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>Change Tracking a uživatelské rozhraní inventáře
 
-Pomocí Change Tracking a inventáře v Azure Portal můžete zobrazit souhrnné informace o změnách monitorovaných počítačů. Tato funkce je k dispozici výběrem možnosti **sledování změn** ve **správě konfigurace** v účtu Automation. 
+Pomocí Change Tracking a inventáře v Azure Portal můžete zobrazit souhrnné informace o změnách monitorovaných počítačů. Tato funkce je k dispozici tak, že vyberete jednu z možností pro přidání virtuálních počítačů pro **změnu sledování** nebo **inventarizaci** ve **správě konfigurace** v účtu Automation.  
 
 ![Řídicí panel Change Tracking](./media/change-tracking/change-tracking-dash01.png)
 
@@ -186,7 +165,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 |Služby|250|
 |Procesy démon|250|
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc. Tato hodnota je pouze aproximace a podléhá změnám v závislosti na vašem prostředí. Doporučujeme vám monitorovat prostředí, abyste viděli přesné využití, které máte.
+Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Pomocí funkce a odhadovaných nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat můžete použít k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).  
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 
