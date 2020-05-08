@@ -1,14 +1,14 @@
 ---
 title: 'Rychlý Start: vytvoření podrobného plánu pomocí PowerShellu'
 description: V tomto rychlém startu použijete Azure modrotisky k vytváření, definování a nasazování artefaktů pomocí PowerShellu.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: quickstart
-ms.openlocfilehash: 53fcf53bdcc3b5fcd1c6ec07a7d8ab45b39955b6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79feafa48d5d180949b8a23163f2ee9b686e6076
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80676593"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864109"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Rychlý Start: definování a přiřazení Azure Blueprint s využitím PowerShellu
 
