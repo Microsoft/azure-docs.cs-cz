@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606074"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584020"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Plánované spouštění a zastavování prostředí Azure-SSIS Integration Runtime
 
@@ -353,7 +353,7 @@ V následující části najdete postup vytvoření Runbooku PowerShellu. Skript
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Vytvořit plány pro Runbook pro spuštění/zastavení Azure-SSIS IR
 
-V předchozí části jste vytvořili Azure Automation sadu Runbook, která může buď spustit nebo zastavit Azure-SSIS IR. V této části vytvoříte dva plány pro sadu Runbook. Při konfiguraci prvního plánu zadáte **operaci** **začátek** pro. Podobně při konfiguraci druhého **nastavování operace zastavit** pro **operaci**. Podrobné pokyny k vytvoření plánů najdete v článku [o vytvoření plánu](../automation/shared-resources/schedules.md#creating-a-schedule) .
+V předchozí části jste vytvořili Azure Automation sadu Runbook, která může buď spustit nebo zastavit Azure-SSIS IR. V této části vytvoříte dva plány pro sadu Runbook. Při konfiguraci prvního plánu zadáte **operaci** **začátek** pro. Podobně při konfiguraci druhého **nastavování operace zastavit** pro **operaci**. Podrobné pokyny k vytvoření plánů najdete v článku [o vytvoření plánu](../automation/shared-resources/schedules.md#create-a-schedule) .
 
 1. V okně **Runbook** vyberte **plány**a na panelu nástrojů vyberte **+ Přidat plán** . 
 

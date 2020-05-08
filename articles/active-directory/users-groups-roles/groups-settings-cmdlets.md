@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048144"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582789"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 
@@ -160,7 +160,7 @@ Tady jsou nastavení definovaná ve skupině. Unified SettingsTemplate. Pokud ne
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Výchozí: false | Logická hodnota označující, zda uživatel typu Host může být vlastníkem skupin. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, jestli uživatel typu Host může mít přístup k obsahu skupin Office 365.  Toto nastavení nevyžaduje licenci Azure Active Directory Premium P1.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Typ: Řetězec<li>Výchozí: "" | Adresa URL odkazu na pokyny pro použití hostů |
-|  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře. <br>Toto nastavení může být přepsáno a lze ho nastavit jen pro čtení, pokud je *EnableMIPLabels* nastaveno na *hodnotu true* a zásada hosta je přidružena k popisku citlivosti přiřazenému ke skupině.<br>Pokud je nastavení AllowToAddGuests na úrovni tenanta nastaveno na false, všechna nastavení AllowToAddGuests na úrovni skupiny se ignorují. Pokud chcete povolit přístup hosta jenom pro několik skupin, musíte nastavit AllowToAddGuests na úrovni tenanta a pak ho selektivně zakázat pro konkrétní skupiny. |
+|  <ul><li>AllowToAddGuests<li>Typ: Boolean<li>Výchozí: true | Logická hodnota označující, zda je povoleno přidávání hostů do tohoto adresáře. <br>Toto nastavení může být přepsáno a lze ho nastavit jen pro čtení, pokud je *EnableMIPLabels* nastaveno na *hodnotu true* a zásada hosta je přidružena k popisku citlivosti přiřazenému ke skupině.<br>Pokud je nastavení AllowToAddGuests na úrovni organizace nastaveno na false, všechna nastavení AllowToAddGuests na úrovni skupiny se ignorují. Pokud chcete povolit přístup hosta jenom pro několik skupin, musíte nastavit AllowToAddGuests na hodnotu true na úrovni organizace a pak ho selektivně zakázat pro konkrétní skupiny. |
 |  <ul><li>ClassificationList<li>Typ: Řetězec<li>Výchozí: "" | Seznam platných hodnot klasifikace oddělený čárkami, které se dají použít pro skupiny Office 365 <br>Toto nastavení se nevztahuje na EnableMIPLabels = = true.|
 |  <ul><li>EnableMIPLabels<li>Typ: Boolean<li>Výchozí: false |Příznak označující, zda lze popisky citlivosti publikované v centru dodržování předpisů Microsoft 365 použít pro skupiny Office 365. Další informace najdete v tématu [přiřazení popisků citlivosti pro skupiny Office 365](groups-assign-sensitivity-labels.md). |
 

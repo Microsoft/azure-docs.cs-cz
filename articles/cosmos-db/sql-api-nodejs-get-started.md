@@ -8,13 +8,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/20/2020
 ms.author: dech
-Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 212dd243842a8bdacc8a77241f456795ef508d9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef493b6b21eb0ba0ad6d22a21e4e205a9fecacb6
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81731691"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858068"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Kurz: Vytvoření konzolové aplikace Node. js pomocí sady JavaScript SDK pro správu Azure Cosmos DB dat rozhraní SQL API
 

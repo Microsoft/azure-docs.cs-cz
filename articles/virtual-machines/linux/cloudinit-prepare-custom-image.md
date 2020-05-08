@@ -3,15 +3,16 @@ title: Příprava image virtuálního počítače Azure pro použití s cloudem 
 description: Příprava existující image virtuálního počítače Azure pro nasazení pomocí Cloud-init
 author: danis
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: fef41f4dc90c03e3efbe4c8a75e495c26eec64b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41368b311708d5ead36d589cf9c320787e596ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066821"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792305"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače Azure pro Linux pro použití s cloudovým inicializací
 V tomto článku se dozvíte, jak převést existující virtuální počítač Azure a připravit ho na opětovné nasazení a začít používat Cloud-init. Výsledná image se dá použít k nasazení nového virtuálního počítače nebo sady škálování virtuálních počítačů – jednu z nich pak můžete v době nasazení dále upravit pomocí Cloud-init.  Tyto skripty Cloud-init se spouštějí při prvním spuštění, jakmile se prostředky zřídí v Azure. Další informace o tom, jak nativně funguje Cloud-init v Azure a podporované distribuce Linux, najdete v článku [Přehled Cloud-init](using-cloud-init.md) .

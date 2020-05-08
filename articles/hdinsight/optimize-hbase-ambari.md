@@ -102,5 +102,5 @@ Využití vyrovnávací paměti pro místní přidělování setSize paměťové
 * [Správa clusterů HDInsight pomocí webového uživatelského rozhraní Apache Ambari](hdinsight-hadoop-manage-ambari.md)
 * [REST API Apache Ambari](hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Optimalizace clusterů](./hdinsight-changing-configs-via-ambari.md)
-* [Optimalizovat Apache Hive](./optimize-hive-ambari.md)
-* [Optimalizace vepřového sádla Apache](./optimize-pig-ambari.md)
+* [Optimalizace Apache Hivu](./optimize-hive-ambari.md)
+* [Optimalizace Apache Pigu](./optimize-pig-ambari.md)

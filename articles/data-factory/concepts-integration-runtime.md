@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418374"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890742"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -128,6 +128,10 @@ Umístění prostředí IR určuje umístění výpočetního prostředí back-e
 
 ### <a name="azure-ir-location"></a>Umístění prostředí Azure IR
 
+Můžete nastavit určité umístění Azure IR. v takovém případě se spuštění nebo odeslání aktivity provede v konkrétní oblasti.
+
+Pokud se rozhodnete použít Azure IR automaticky vyřešit, což je výchozí nastavení,
+
 - V případě aktivity kopírování bude ADF vysílat automatické rozpoznávání umístění úložiště dat jímky a pak bude používat IR v obou oblastech, pokud je k dispozici, nebo co nejblíže ve stejné geografické oblasti. Pokud oblast úložiště dat jímky není zjistitelná, použije se jako alternativa možnost IR v oblasti Datové továrny.
 
   Například máte vytvořenou továrnu v Východní USA, 
@@ -135,7 +139,8 @@ Umístění prostředí IR určuje umístění výpočetního prostředí back-e
   - Při kopírování dat do objektu blob Azure v Západní USA, pokud se ADF úspěšně zjistilo, že je objekt BLOB v Západní USA, aktivita kopírování se spustí v prostředí IR v Západní USA; Pokud se detekce oblasti nezdařila, aktivita kopírování se spustí v prostředí IR v Východní USA.
   - Při kopírování dat do Salesforce, u kterých není oblast zjistitelná, se aktivita kopírování spustí na IR v Východní USA.
 
-- V případě aktivity kopírování se ADF snaží automaticky zjistit vaši jímku a zdrojové úložiště dat a vybrat tak nejlepší umístění, buď ve stejné oblasti (Pokud je k dispozici), nebo co nejblíže stejné geografické oblasti, nebo pokud není možné zjistit, že jako alternativu používáte oblast datové továrny.
+  >[!TIP] 
+  >Pokud máte přísné požadavky na dodržování předpisů pro data a potřebujete zajistit, aby data neopustila určité území, můžete prostředí Azure IR explicitně vytvořit v určité oblasti a odkázat propojenou službu na toto prostředí IR pomocí vlastnosti ConnectVia. Například pokud chcete kopírovat data z objektu blob v oblasti Velká Británie – jih do služby SQL Data Warehouse v oblasti Velká Británie – jih a chcete zajistit, aby data neopustila Velkou Británii, vytvořte prostředí Azure IR v oblasti Velká Británie – jih a připojte obě propojené služby k tomuto prostředí IR.
 
 - Pro provádění aktivit vyhledávání/GetMetadata/Delete (označuje se také jako aktivity kanálu), deoprava transformačních aktivit (označované také jako externí aktivity) a vytváření operací (testovací připojení, seznam složek a seznam tabulek, náhled dat), ADF používá v oblasti Datové továrny IR.
 

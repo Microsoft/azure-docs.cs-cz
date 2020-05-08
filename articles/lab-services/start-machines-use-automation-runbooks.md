@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580591"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Spouštění virtuálních počítačů v testovacím prostředí pomocí Azure Automationch runbooků
 Funkce [autostart](devtest-lab-set-lab-policy.md#set-autostart) v DevTest Labs vám umožní nakonfigurovat, aby se virtuální počítače spouštěly automaticky v zadaném čase. Tato funkce ale nepodporuje, aby se počítače spouštěly v určitém pořadí. Existuje několik scénářů, kdy by tento typ automatizace mohl být užitečný.  Jedním z nich je, že virtuální počítač s JumpBox v testovacím prostředí je potřeba nejdřív spustit, ale před ostatními virtuálními počítači, protože JumpBox se používá jako přístupový bod k ostatním virtuálním počítačům.  V tomto článku se dozvíte, jak nastavit účet Azure Automation pomocí Runbooku PowerShellu, který spustí skript. Skript používá značky na virtuálních počítačích v testovacím prostředí, aby bylo možné řídit pořadí spouštění bez nutnosti změny skriptu.
@@ -31,7 +31,7 @@ Vytvořte účet Azure Automation podle pokynů v [tomto článku](../automation
 ## <a name="add-a-runbook"></a>Přidat Runbook
 Pokud teď chcete přidat Runbook do účtu Automation, v levé nabídce vyberte **Runbooky** . V nabídce vyberte **Přidat Runbook** a podle pokynů [vytvořte powershellový Runbook](../automation/automation-first-runbook-textual-powershell.md).
 
-## <a name="powershell-script"></a>Skript PowerShellu
+## <a name="powershell-script"></a>Skript prostředí PowerShell
 Následující skript převezme název předplatného, název testovacího prostředí jako parametry. Tok skriptu je získat všechny virtuální počítače v testovacím prostředí a pak analyzovat informace o značce a vytvořit seznam názvů virtuálních počítačů a jejich pořadí spouštění. Skript projde virtuálními počítači v uvedeném pořadí a spustí virtuální počítače. Pokud je v konkrétním pořadovém čísle více virtuálních počítačů, spouští se asynchronně pomocí úloh prostředí PowerShell. Pro virtuální počítače, které nemají značku, nastavte počáteční hodnotu jako poslední (10), ve výchozím nastavení se spustí jako poslední.  Pokud testovací prostředí nechce, aby se virtuální počítač spouštěl správně, nastavte značku na hodnotu 11 a bude ignorována.
 
 ```powershell
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Vytvořit plán
-Aby se tento skript spouštěl každý den, vytvořte v účtu Automation [plán](../automation/shared-resources/schedules.md#creating-a-schedule) . Po vytvoření plánu [ho připojte k sadě Runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Aby se tento skript spouštěl každý den, vytvořte v účtu Automation [plán](../automation/shared-resources/schedules.md#create-a-schedule) . Po vytvoření plánu [ho připojte k sadě Runbook](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook). 
 
 V rozsáhlých situacích, kdy existuje více předplatných s více cvičeními, uložte informace o parametrech do souboru pro jinou laboratoř a předejte soubor do skriptu místo jednotlivých parametrů. Skript by musel být upraven, ale základní spuštění bude stejné. I když tato ukázka používá Azure Automation ke spuštění skriptu PowerShellu, existují další možnosti, jako je použití úlohy v kanálu sestavení nebo vydání.
 

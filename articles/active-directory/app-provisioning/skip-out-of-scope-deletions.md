@@ -1,26 +1,22 @@
 ---
-title: Přeskočit odstranění mimo obor uživatelů | Microsoft Docs
+title: Přeskočit odstranění přidaných uživatelů oboru
 description: Přečtěte si, jak potlačit výchozí chování při zrušení zřizování z oboru uživatelů.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1668c022a0f067a381ba09b397c7d38c99ad074
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: 5f17886736efb87cf44bc54c82ccca794482a093
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522445"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593263"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Přeskočit odstranění uživatelských účtů, které přesahují rozsah
 

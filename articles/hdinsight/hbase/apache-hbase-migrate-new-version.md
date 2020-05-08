@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646502"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792628"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrace clusteru Apache HBA na novou verzi
 
@@ -220,4 +220,4 @@ Další informace o [Apache HBA](https://hbase.apache.org/) a upgradu clusterů 
 * [Upgrade clusteru HDInsight na novější verzi](../hdinsight-upgrade-cluster.md)
 * [Monitorování a Správa Azure HDInsight pomocí webového uživatelského rozhraní Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop součásti a verze](../hdinsight-component-versioning.md)
-* [Optimalizace konfigurací pomocí Apache Ambari](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [Optimalizace Apache HBase](../optimize-hbase-ambari.md)

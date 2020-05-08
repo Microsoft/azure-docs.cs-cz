@@ -5,23 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8972b1b2bfaac12baee1ea823429749ed70461
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66226018"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792747"
 ---
-## <a name="using-rbac-to-share-images"></a>Použití RBAC ke sdílení imagí
-
-Image můžete sdílet mezi předplatnými pomocí Access Control na základě rolí (RBAC). Každý uživatel, který má oprávnění ke čtení verze bitové kopie, dokonce i v rámci předplatných, bude moci nasadit virtuální počítač pomocí verze image.
-
-Další informace o tom, jak sdílet prostředky pomocí RBAC, najdete v tématu [Správa přístupu pomocí RBAC a Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
-
-
 ## <a name="list-information"></a>Informace o seznamu
 
 Získejte informace o umístění, stavu a dalších informacích o dostupných galeriích imagí pomocí [AZ SIG list](/cli/azure/sig#az-sig-list).

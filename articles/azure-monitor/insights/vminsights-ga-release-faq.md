@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283884"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581360"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor pro virtuální počítače všeobecně dostupné (GA) nejčastější dotazy
 V této obecné dostupnosti se Nejčastější dotazy týkají změn, které byly provedeny ve čtvrtletí 2019 a Q1 2020, jak jsme připraveni na GA.
@@ -44,7 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Co mám dělat s čítači výkonu v pracovním prostoru při instalaci řešení VMInsights?
 
-Předchozí metoda povolení Azure Monitor pro virtuální počítače použití čítačů výkonu v pracovním prostoru. Aktuální verze uchovává tato data v tabulce s názvem `InsightsMetrics`. Pokud už je nepotřebujete, můžete tento výkon countersin do svého pracovního prostoru vypnout. 
+Předchozí metoda povolení Azure Monitor pro virtuální počítače použití čítačů výkonu v pracovním prostoru. Aktuální verze uchovává tato data v tabulce s názvem `InsightsMetrics`. Tyto čítače výkonu můžete v pracovním prostoru zakázat, pokud je už nepotřebujete používat. 
 
 >[!NOTE]
 >Pokud máte pravidla výstrah, která odkazují na tyto čítače v `Perf` tabulce, je nutné je aktualizovat, aby odkazovala na nová data uložená `InsightsMetrics` v tabulce. Příklady dotazů protokolu, které můžete použít, najdete v naší dokumentaci k této tabulce.

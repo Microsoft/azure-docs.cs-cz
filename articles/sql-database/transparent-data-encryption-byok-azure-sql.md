@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: d72a1057c359127eb70f0a82fbf2637409535dce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe85fed9268e1a4248ef373d577c89e58c01eba5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131169"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792033"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 
@@ -93,7 +93,7 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 ### <a name="recommendations-when-configuring-akv"></a>Doporučení při konfiguraci integrace
 
-- Přidružte k nejvyšší 500 Pro obecné účely nebo 200 databází Pro důležité obchodní informace v rámci jednoho předplatného jako Trezor klíčů, abyste zajistili vysokou dostupnost, když server přistupuje k ochraně TDE v trezoru klíčů. Tyto údaje vycházejí ze zkušeností a popsaných v [omezeních služby trezoru klíčů](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits). Cílem je, aby se zabránilo problémům po převzetí služeb při selhání serveru, protože se aktivuje tolik operací s klíčem na trezoru, protože jsou databáze na tomto serveru.
+- Přidružte k nejvyšší 500 Pro obecné účely nebo 200 databází Pro důležité obchodní informace v rámci jednoho předplatného jako Trezor klíčů, abyste zajistili vysokou dostupnost, když server přistupuje k ochraně TDE v trezoru klíčů. Tyto údaje vycházejí ze zkušeností a popsaných v [omezeních služby trezoru klíčů](https://docs.microsoft.com/azure/key-vault/general/service-limits). Cílem je, aby se zabránilo problémům po převzetí služeb při selhání serveru, protože se aktivuje tolik operací s klíčem na trezoru, protože jsou databáze na tomto serveru.
 
 - Nastavte zámek prostředků v trezoru klíčů, abyste mohli řídit, kdo může odstranit tento důležitý prostředek a zabránit náhodnému nebo neoprávněnému odstranění. Přečtěte si další informace o [zámkech prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 

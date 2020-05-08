@@ -1,29 +1,29 @@
 ---
-title: Vytvoření technického prostředku virtuálního počítače Azure
-description: Tento článek popisuje kroky a požadavky pro konfiguraci nabídky kontejneru na Azure Marketplace.
+title: Technické koncepty pro Azure Container nabídky – komerční tržiště Microsoftu
+description: Technický zdroj a pokyny, které vám pomůžou s konfigurací nabídky kontejneru na Azure Marketplace.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730626"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791880"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>Vytvoření technického prostředku virtuálního počítače Azure
+# <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
 
 > [!IMPORTANT]
 > Přesouváme správu nabídek vašich kontejnerů Azure z portál partnerů cloudu do partnerského centra. Dokud nebudou vaše nabídky migrovány, postupujte podle pokynů v části [Příprava vašich technických prostředků kontejneru](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) pro portál partnerů cloudu ke správě nabídek.
 
-Tento článek popisuje kroky a požadavky pro konfiguraci nabídky kontejneru na Azure Marketplace.
+Tento článek poskytuje technické prostředky a doporučení, které vám pomůžou vytvořit kontejnerovou nabídku na Azure Marketplace.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Informace o rychlých startech, kurzech a ukázkách najdete v tématu [Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
+Informace o rychlých startech, kurzech a ukázkách najdete v [dokumentaci k Azure Container Instances](https://docs.microsoft.com/azure/container-instances).
 
 ## <a name="fundamental-technical-knowledge"></a>Základní technické poznatky
 
@@ -61,6 +61,6 @@ Další informace najdete v následujících kurzech:
 - [Kurz: vytvoření image kontejneru pro nasazení do Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [Kurz: sestavování a nasazování imagí kontejneru v cloudu s využitím Azure Container Registrych úkolů](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
 - [Vytvořte nabídku kontejneru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).

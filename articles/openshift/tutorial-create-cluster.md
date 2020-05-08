@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509716"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858831"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Kurz: Vytvoření clusteru Azure Red Hat OpenShift 4
 
@@ -66,11 +66,17 @@ aro                                1.0.0
 
 Tajný kód pro stažení Red Hat umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem. Tento krok je nepovinný, ale doporučuje se.
 
-Získání tajného kódu pro vyžádání obsahu získáte https://cloud.redhat.com/openshift/install/azure/aro-provisioned tak, že přejdete na *Stáhnout tajný kód pro vyžádání*obsahu.
+1. **[Přejděte na portál Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) a přihlaste se.**
 
-Budete se muset přihlásit k účtu Red Hat nebo vytvořit nový účet Red Hat pomocí podnikového e-mailu a přijmout podmínky a ujednání.
+   Budete se muset přihlásit k účtu Red Hat nebo vytvořit nový účet Red Hat pomocí podnikového e-mailu a přijmout podmínky a ujednání.
+
+2. **Klikněte na Stáhnout tajný klíč pro vyžádání.**
 
 Uložte si uložený `pull-secret.txt` soubor na bezpečném místě, bude se používat při každém vytváření clusteru.
+
+Při spuštění `az aro create` příkazu můžete na svůj tajný kód pro `--pull-secret @pull-secret.txt` vyžádání obsahu odkazovat pomocí parametru. Spusťte `az aro create` z adresáře, kam jste uložili `pull-secret.txt` soubor. V opačném `@pull-secret.txt` případě `@<path-to-my-pull-secret-file>`nahraďte parametrem.
+
+Pokud kopírujete tajný kód pro vyžádání obsahu nebo na něj odkazujete v jiných skriptech, měl by váš tajný klíč pro vyžádání formátu obsahovat platný řetězec JSON.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Vytvoření virtuální sítě obsahující dvě prázdné podsítě
 
@@ -174,7 +180,10 @@ V dalším kroku vytvoříte virtuální síť obsahující dvě prázdné pods�
 
 ## <a name="create-the-cluster"></a>Vytvoření clusteru
 
-Spuštěním následujícího příkazu vytvořte cluster. Volitelně můžete předat tajný klíč pro vyžádání obsahu, který umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem. Přejděte do [Správce clusteru Red Hat OpenShift](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) a kliknutím na **Kopírovat tajný kód pro vyžádání**přístupu na svůj tajný klíč.
+Spuštěním následujícího příkazu vytvořte cluster. Volitelně můžete [předat tajný klíč pro vyžádání Red Hat](#get-a-red-hat-pull-secret-optional) , který umožňuje vašemu clusteru přístup k registrům kontejnerů Red Hat spolu s dalším obsahem.
+
+>[!NOTE]
+> Pokud kopírujete a vkládáte příkazy a použijete některý z volitelných parametrů, nezapomeňte odstranit počáteční hashtagy a text na konci komentáře. Také uzavřete argument na předchozím řádku příkazu s koncovým zpětným lomítkem.
 
 ```azurecli-interactive
 az aro create \
@@ -184,10 +193,10 @@ az aro create \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
   # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
->[!NOTE]
-> Vytvoření clusteru obvykle trvá přibližně 35 minut.
+
+Po provedení `az aro create` příkazu bude normálně trvat přibližně 35 minut, než se cluster vytvoří.
 
 >[!IMPORTANT]
 > Pokud se rozhodnete zadat vlastní doménu, například **foo.example.com**, konzola OpenShift bude k dispozici na adrese URL `https://console-openshift-console.apps.foo.example.com`, jako je místo v předdefinované doméně. `https://console-openshift-console.apps.<random>.<location>.aroapp.io`

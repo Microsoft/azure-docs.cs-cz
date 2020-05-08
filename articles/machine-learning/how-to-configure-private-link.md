@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411202"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891374"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Konfigurace privátního odkazu Azure pro pracovní prostor Azure Machine Learning (Preview)
 
@@ -118,7 +118,7 @@ Informace o tom, jak vložit účet úložiště ve virtuální síti, najdete v
 
 Pokud chcete zabezpečit Azure Key Vault používané vaším pracovním prostorem, můžete ho buď umístit do virtuální sítě, nebo pro něj Povolit privátní propojení.
 
-Informace o vložení trezoru klíčů ve virtuální síti najdete v tématu [použití instance trezoru klíčů v pracovním prostoru](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
+Informace o vložení trezoru klíčů ve virtuální síti najdete v tématu [použití instance trezoru klíčů v pracovním prostoru](how-to-enable-virtual-network.md#key-vault-instance).
 
 Informace o povolení privátního odkazu pro Trezor klíčů najdete v tématu věnovaném [integraci Key Vault s privátním odkazem Azure](/azure/key-vault/private-link-service).
 
@@ -131,7 +131,7 @@ Pokud chcete zabezpečit službu Azure Kubernetes, kterou používá váš praco
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-Informace o zabezpečení Azure Container Registry v rámci virtuální sítě najdete v tématu [použití Azure Container Registry](how-to-enable-virtual-network.md#use-azure-container-registry).
+Informace o zabezpečení Azure Container Registry v rámci virtuální sítě najdete v tématu [použití Azure Container Registry](how-to-enable-virtual-network.md#azure-container-registry).
 
 > [!IMPORTANT]
 > Pokud pro váš pracovní prostor Azure Machine Learning používáte privátní odkaz a Azure Container Registry pro svůj pracovní prostor ve virtuální síti, musíte použít také následující šablonu Azure Resource Manager. Tato šablona umožňuje vašemu pracovnímu prostoru komunikovat s ACR prostřednictvím privátního odkazu.

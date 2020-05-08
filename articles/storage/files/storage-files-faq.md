@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5aee3a19e33204da00483d0f4ee3f6ee97e8a07d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b4d3be9fbacee82f36f1238c5d9b4598c95b5df2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856266"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888819"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -170,7 +170,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
     - Pomocí sdílených přístupových podpisů (SAS) můžete vygenerovat tokeny, které mají určitá oprávnění a které jsou platné po zadaný časový interval. Můžete například vygenerovat token s přístupem jen pro čtení ke konkrétnímu souboru, který má vypršení platnosti 10 minut. Každý, kdo má token, zatímco je token platný, má k tomuto souboru přístup jen pro čtení po dobu 10 minut. Klíče sdíleného přístupového podpisu se podporují jenom přes REST API nebo v klientských knihovnách. Sdílenou složku Azure je nutné připojit přes protokol SMB pomocí klíčů účtu úložiště.
 
-    - Azure File Sync zachovává a replikuje všechny volitelné seznamy řízení přístupu (DACL) a seznamy DACL (ať už jsou založené na službě Active Directory nebo místní) na všechny koncové body serveru, na které se synchronizuje. Vzhledem k tomu, že se Windows Server už může ověřit pomocí služby Active Directory, Azure File Sync je efektivní možnost zarážky, dokud se nedosáhne plné podpory ověřování založeného na službě Active Directory a podpory seznamu ACL.
+    - Azure File Sync zachovává a replikuje všechny volitelné seznamy řízení přístupu (DACL) a seznamy DACL (ať už jsou založené na službě Active Directory nebo místní) na všechny koncové body serveru, na které se synchronizuje. 
     
     V případě, že chcete mít k dispozici komplexní reprezentace všech protokolů podporovaných v Azure Storage Services, můžete použít odkaz pro [autorizaci Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) . 
 

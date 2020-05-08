@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397310"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559974"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Zobrazení a načtení událostí protokolu aktivit Azure
 
@@ -71,7 +71,7 @@ Další informace o historii změn najdete v tématu [získání změn prostřed
 Pomocí rutiny [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) načtěte protokol aktivit z PowerShellu. Níže jsou uvedeny některé běžné příklady.
 
 > [!NOTE]
-> `Get-AzLog`poskytuje jenom 15 dní historie. Použijte parametr **-MaxEvents** k dotazování posledních N událostí mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDK. Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
+> `Get-AzLog`poskytuje jenom 15 dní historie. Použijte parametr **-MaxRecord** k dotazování posledních N událostí mimo 15 dní. Pro přístup k událostem starším než 15 dní použijte REST API nebo SDK. Pokud neuvedete **čas_spuštění**, výchozí hodnota je **čas_ukončení** minus jedna hodina. Pokud nezahrnete do pole **čas_ukončení**, výchozí hodnota je aktuální čas. Všechny časy jsou v UTC.
 
 
 Získat položky protokolu vytvořené po určitém datu a čase:
@@ -107,11 +107,11 @@ Get-AzLog -Caller 'myname@company.com'
 Získat poslední 1000 události:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 
-## <a name="cli"></a>CLI
+## <a name="cli"></a>Rozhraní příkazového řádku
 Pomocí [AZ monitor Activity-log](cli-samples.md#view-activity-log-for-a-subscription) načtěte protokol aktivit z CLI. Níže jsou uvedeny některé běžné příklady.
 
 

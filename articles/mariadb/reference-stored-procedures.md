@@ -1,48 +1,48 @@
 ---
-title: Uložené procedury správy – databáze Azure pro MariaDB
-description: Zjistěte, které uložené procedury v Azure Database for MariaDB jsou užitečné, které vám pomůžou nakonfigurovat replikaci datového připojení, nastavit časové pásmo a zabít dotazy.
+title: Uložené procedury správy – Azure Database for MariaDB
+description: Seznamte se s uloženými procedurami v Azure Database for MariaDB, které vám pomůžou při konfiguraci replikace dat, nastavení časového pásma a dezaktivačních dotazů.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 2f6d1e20db64cb0c2a64771ea26b971b22031fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529986"
 ---
-# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Uložené procedury azure databáze pro správu MariaDB
+# <a name="azure-database-for-mariadb-management-stored-procedures"></a>Uložené procedury správy Azure Database for MariaDB
 
-Uložené procedury jsou k dispozici na azure database pro mariadb servery pomoci spravovat server MariaDB. To zahrnuje správu připojení serveru, dotazy a nastavení replikace dat.  
+Uložené procedury jsou k dispozici na Azure Database for MariaDB serverech, které vám pomůžou se správou serveru MariaDB. To zahrnuje správu připojení, dotazů a nastavení Replikace vstupních dat serveru.  
 
-## <a name="data-in-replication-stored-procedures"></a>Uložené procedury replikace dat
+## <a name="data-in-replication-stored-procedures"></a>Replikace vstupních dat uložené procedury
 
 Replikace vstupních dat umožňuje synchronizovat data ze serveru MariaDB spuštěného v místním prostředí, na virtuálních počítačích nebo v databázových službách hostovaných jinými poskytovateli cloudových služeb do služby Azure Database for MariaDB.
 
-Následující uložené procedury se používají k nastavení nebo odebrání replikace dat mezi předlohou a replikou.
+Následující uložené procedury se používají k nastavení nebo odebrání Replikace vstupních dat mezi hlavním serverem a replikou.
 
 |**Název uložené procedury**|**Vstupní parametry**|**Výstupní parametry**|**Poznámka k použití**|
 |-----|-----|-----|-----|
-|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|Není dostupné.|Chcete-li přenášet data v režimu SSL, přejděte v kontextu certifikátu certifikační autority do parametru master_ssl_ca. </br><br>Chcete-li přenést data bez protokolu SSL, přejděte prázdný řetězec do parametru master_ssl_ca.|
-|*mysql.az_replication _start*|Není dostupné.|Není dostupné.|Spustí replikaci.|
-|*mysql.az_replication _stop*|Není dostupné.|Není dostupné.|Zastaví replikaci.|
-|*mysql.az_replication _remove_master*|Není dostupné.|Není dostupné.|Odebere vztah replikace mezi předlohou a replikou.|
-|*mysql.az_replication_skip_counter*|Není dostupné.|Není dostupné.|Přeskočí jednu chybu replikace.|
+|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|–|Chcete-li přenést data s režimem SSL, předejte kontext certifikátu certifikační autority do parametru master_ssl_ca. </br><br>Chcete-li přenést data bez protokolu SSL, předejte do parametru master_ssl_ca prázdný řetězec.|
+|*MySQL. az_replication _start*|–|–|Spustí replikaci.|
+|*MySQL. az_replication _stop*|–|–|Zastaví replikaci.|
+|*MySQL. az_replication _remove_master*|–|–|Odebere vztah replikace mezi hlavním serverem a replikou.|
+|*MySQL. az_replication_skip_counter*|–|–|Přeskočí jednu chybu replikace.|
 
-Pokud chcete nastavit replikaci dat mezi hlavním a replikou v databázi Azure pro MariaDB, přečtěte [si, jak nakonfigurovat replikaci dat](howto-data-in-replication.md).
+Chcete-li nastavit Replikace vstupních dat mezi hlavním serverem a replikou v Azure Database for MariaDB, přečtěte si téma [Postup konfigurace replikace vstupních dat](howto-data-in-replication.md).
 
-## <a name="other-stored-procedures"></a>Další uložené procedury
+## <a name="other-stored-procedures"></a>Jiné uložené procedury
 
-Následující uložené procedury jsou k dispozici v Azure Database pro MariaDB pro správu serveru.
+Následující uložené procedury jsou k dispozici v Azure Database for MariaDB ke správě serveru.
 
 |**Název uložené procedury**|**Vstupní parametry**|**Výstupní parametry**|**Poznámka k použití**|
 |-----|-----|-----|-----|
-|*mysql.az_kill*|processlist_id|Není dostupné.|Odpovídá [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu. Ukončí připojení spojené s poskytnutým processlist_id po ukončení libovolného příkazu, který je spuštěn.|
-|*mysql.az_kill_query*|processlist_id|Není dostupné.|Odpovídá [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu. Ukončí příkaz, který právě provádí připojení. Nechává spojení živé.|
-|*mysql.az_load_timezone*|Není dostupné.|Není dostupné.|Načte tabulky časových `time_zone` pásem, aby parametr mohl být nastaven na pojmenované hodnoty (např. "US/Pacifik").|
+|*MySQL. az_kill*|processlist_id|–|Ekvivalent [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí připojení přidružené k poskytnutému processlist_id po ukončení všech příkazů, které připojení provádí.|
+|*MySQL. az_kill_query*|processlist_id|–|Ekvivalent [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) příkazu Ukončí příkaz, který připojení právě provádí. Ponechá připojení aktivní.|
+|*MySQL. az_load_timezone*|–|–|Načte tabulky časového pásma, které umožňují `time_zone` nastavit parametr na pojmenované hodnoty (např. "US/Tichomoří").|
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si, jak nastavit [replikaci dat](howto-data-in-replication.md)
-- Naučte se používat [tabulky časových pásem](howto-server-parameters.md#working-with-the-time-zone-parameter)
+- Naučte se nastavit [replikace vstupních dat](howto-data-in-replication.md)
+- Naučte se používat [tabulky časových pásem](howto-server-parameters.md#working-with-the-time-zone-parameter) .

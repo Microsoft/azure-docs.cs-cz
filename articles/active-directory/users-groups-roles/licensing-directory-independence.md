@@ -1,7 +1,7 @@
 ---
 title: Charakteristiky interakce s více klienty – Azure AD | Microsoft Docs
-description: Principy Azure Active Directorych tenantů jako zcela nezávislých organizací
-services: active-tenant
+description: Porozumění nezávislosti mezi daty vašich Azure Active Directorych organizací
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878115"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582739"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Pochopení způsobu interakce více Azure Active Directorych organizací
 
-V Azure Active Directory (Azure AD) je každý tenant plně nezávislá organizace: partner, který je logicky nezávislý na ostatních organizacích Azure AD, které spravujete. Tato nezávislost mezi organizacemi zahrnuje nezávislost prostředků, nezávislost správy a nezávislost synchronizace. Mezi organizacemi neexistuje žádný vztah nadřazený-podřízený.
+V Azure Active Directory (Azure AD) je každá organizace Azure AD plně nezávislá: partner, který je logicky nezávislý na ostatních organizacích Azure AD, které spravujete. Tato nezávislost mezi organizacemi zahrnuje nezávislost prostředků, nezávislost správy a nezávislost synchronizace. Mezi organizacemi neexistuje žádný vztah nadřazený-podřízený.
 
 ## <a name="resource-independence"></a>Nezávislost prostředků
 

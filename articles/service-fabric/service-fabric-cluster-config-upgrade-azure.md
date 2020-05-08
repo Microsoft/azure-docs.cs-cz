@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 476a2d910b916ea29132b108478d06f756454813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2973428354f101b5b546128b08bf67587923a8e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75463286"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793070"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Upgrade konfigurace clusteru v Azure 
 
@@ -53,4 +53,4 @@ Nastavení clusteru můžete také přizpůsobit jedním z následujících způ
 
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si o [nastaveních clusteru Service Fabric](service-fabric-cluster-fabric-settings.md).
-* Přečtěte si, jak [škálovat cluster na úrovni a](service-fabric-cluster-scale-up-down.md).
+* Přečtěte si, jak [škálovat cluster na úrovni a](service-fabric-cluster-scale-in-out.md).

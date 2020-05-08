@@ -3,14 +3,14 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509580"
+ms.locfileid: "82581201"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
@@ -106,7 +106,7 @@ Chcete-li zobrazit náhled změn před nasazením šablony `-Whatif` , přidejte
 * `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
 
-Nebo můžete použít parametr `-Confirm` Switch k zobrazení náhledu změn a zobrazit výzvu k pokračování v nasazení.
+Pomocí parametru `-Confirm` Switch můžete zobrazit náhled změn a zobrazit výzvu k pokračování v nasazení.
 
 * `New-AzResourceGroupDeployment -Confirm`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Confirm`a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
@@ -123,10 +123,10 @@ Chcete-li zobrazit náhled změn před nasazením `what-if` šablony, použijte 
 * `az deployment group what-if`pro nasazení skupin prostředků
 * `az deployment sub what-if`pro nasazení na úrovni předplatného
 
-Nebo můžete použít `--confirm-with-what-if` parametr k zobrazení náhledu změn a zobrazit výzvu k pokračování v nasazení.
+Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c`) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení.
 
-* `az deployment group create --confirm-with-what-if`pro nasazení skupin prostředků
-* `az deployment sub create --confirm-with-what-if`pro nasazení na úrovni předplatného
+* `az deployment group create --confirm-with-what-if`nebo `-c` pro nasazení skupin prostředků
+* `az deployment sub create --confirm-with-what-if`nebo `-c` pro nasazení na úrovni předplatného
 
 Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt JSON, který můžete programově kontrolovat změny, použijte:
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 Operace citlivosti podporuje použití [režimu nasazení](deployment-modes.md). Při nastavení na režim úplné se odstraní prostředky, které nejsou v šabloně. Následující příklad nasadí [šablonu, která nemá definované žádné prostředky](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) v režimu úplného zobrazení.
 
-Chcete-li zobrazit náhled změn před nasazením šablony `-Confirm` , použijte parametr Switch s příkazem nasazení. Pokud se změní podle očekávání, potvrďte, že chcete nasazení dokončit.
+Chcete-li zobrazit náhled změn před nasazením šablony, použijte parametr potvrdit přepínač s příkazem nasazení. Pokud jsou změny podle očekávání, potvrďte, že chcete nasazení dokončit.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

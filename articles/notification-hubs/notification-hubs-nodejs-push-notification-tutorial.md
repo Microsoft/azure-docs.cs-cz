@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71213190"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592005"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Posílání nabízených oznámení pomocí Notification Hubs Azure a Node. js
 
@@ -133,7 +133,7 @@ Stejně jako u aplikací pro Android popsaných `ApnsService` výše, objekt `se
 - **Datová část** , JSON zprávy nebo datová část řetězce.
 - **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části najdete v části **datová část oznámení** v dokumentu [Průvodce programováním místních a nabízených oznámení](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) .
+Další informace o formátu datové části najdete v části **obsah oznámení** v [příručce UserNotifications](https://developer.apple.com/documentation/usernotifications).
 
 Následující kód používá `ApnsService` instanci zveřejněnou `NotificationHubService` pro odeslání zprávy upozornění všem klientům:
 

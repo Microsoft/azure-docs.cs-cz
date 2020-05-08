@@ -1,22 +1,22 @@
 ---
-title: Řídicí panel Marketplace Insights v komerčních prostředcích Marketplace na partnerském centru
-description: Získejte přístup ke shrnutí Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníka v AppSource a Azure Marketplace prodejní místa.
+title: Přehledy Marketplace – Microsoft Commercial Marketplace
+description: Získejte přístup k souhrnným webovým analýzám Marketplace, které vám umožní měřit zapojení zákazníka v Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251703"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857919"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel Marketplace Insights v komerčních obchodech Marketplace
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>Řídicí panel přehledů Marketplace v partnerském centru
 
-Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na webu Marketplace prodejní místa: AppSource a Azure Marketplace.
+Tento článek poskytuje informace o řídicím panelu přehledů Marketplace v partnerském centru. Tento řídicí panel zobrazuje souhrn Web Analytics pro Marketplace, který umožňuje vydavatelům měřit zapojení zákazníků na příslušné stránky s podrobnostmi o produktu, které jsou uvedené na webu Marketplace prodejní místa: Microsoft AppSource a Azure Marketplace.
 
 ## <a name="marketplace-insights-dashboard"></a>Řídicí panel přehledů Marketplace
 

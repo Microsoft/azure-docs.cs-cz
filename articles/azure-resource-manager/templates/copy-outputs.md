@@ -3,12 +3,12 @@ title: Definovat více instancí výstupní hodnoty
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování více časů při vracení hodnoty z nasazení.
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617828"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583424"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Výstupní iterace v šablonách ARM
 
@@ -16,7 +16,7 @@ V tomto článku se dozvíte, jak vytvořit více než jednu hodnotu pro výstup
 
 Můžete také použít kopírování s [prostředky](copy-resources.md), [vlastnosti v prostředku](copy-properties.md)a [proměnné](copy-variables.md).
 
-## <a name="outputs-iteration"></a>Iterace výstupu
+## <a name="syntax"></a>Syntaxe
 
 Element Copy má následující obecný formát:
 
@@ -30,6 +30,21 @@ Element Copy má následující obecný formát:
 Vlastnost **Count** určuje počet iterací, které chcete pro výstupní hodnotu.
 
 Vlastnost **input** určuje vlastnosti, které chcete opakovat. Vytvoříte pole prvků vytvořené z hodnoty vlastnosti **input** . Může se jednat o jedinou vlastnost (například řetězec) nebo o objekt s několika vlastnostmi.
+
+## <a name="copy-limits"></a>Omezení kopírování
+
+Počet nemůže být větší než 800.
+
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s poslední verzí rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API, může to být nula. Konkrétně je nutné použít:
+
+* Azure PowerShell **2,6** nebo novější
+* Azure CLI **2.0.74** nebo novější
+* REST API verze **2019-05-10** nebo novější
+* [Odkazovaná nasazení](linked-templates.md) musí pro typ prostředku nasazení používat rozhraní API verze **2019-05-10** nebo novější.
+
+Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
+
+## <a name="outputs-iteration"></a>Iterace výstupu
 
 Následující příklad vytvoří proměnný počet účtů úložiště a vrátí koncový bod pro každý účet úložiště:
 

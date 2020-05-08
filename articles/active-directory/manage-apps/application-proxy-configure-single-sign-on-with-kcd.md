@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5948fba67d3f071d77192f9ad89bc696fdc0c3cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 521982a5cf09e0da9c52bca2fe367432a1d29e57
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253452"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583138"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování k aplikacím pomocí proxy aplikací
 
@@ -100,11 +100,13 @@ Konfigurace služby Active Directory se liší v závislosti na tom, jestli je k
 
 ## <a name="sso-for-non-windows-apps"></a>Jednotné přihlašování pro aplikace, které nejsou v systému Windows
 
-Tok delegování protokolu Kerberos ve službě Azure Proxy aplikací služby AD se spustí, když Azure AD ověří uživatele v cloudu. Jakmile požadavek dorazí do místního prostředí, konektor Azure Proxy aplikací služby AD vydá jménem uživatele lístek protokolu Kerberos, který bude spolupracovat s místní službou Active Directory. Tento proces se označuje jako omezené delegování pomocí protokolu Kerberos (KCD). V další fázi se do aplikace back-end pošle požadavek pomocí tohoto lístku Kerberos. 
+Tok delegování protokolu Kerberos ve službě Azure Proxy aplikací služby AD se spustí, když Azure AD ověří uživatele v cloudu. Jakmile požadavek dorazí do místního prostředí, konektor Azure Proxy aplikací služby AD vydá jménem uživatele lístek protokolu Kerberos, který bude spolupracovat s místní službou Active Directory. Tento proces se označuje jako omezené delegování pomocí protokolu Kerberos (KCD). 
 
-K dispozici je několik protokolů, které definují způsob odeslání takových požadavků. Většina serverů jiných než Windows očekává vyjednávání s SPNEGO. Tento protokol je podporován v Azure Proxy aplikací služby AD, ale je ve výchozím nastavení zakázán. Server lze nakonfigurovat pro SPNEGO nebo standardní KCD, ale ne pro obojí.
+V další fázi se do aplikace back-end pošle požadavek pomocí tohoto lístku Kerberos. 
 
-Pokud nakonfigurujete počítač konektoru pro SPNEGO, ujistěte se, že jsou všechny ostatní konektory v této skupině konektorů nakonfigurované také pomocí nástroje SPNEGO. Aplikace, které očekávají standardní KCD, by se měly směrovat přes jiné konektory, které nejsou nakonfigurované pro SPNEGO.
+Existuje několik mechanismů definujících způsob odeslání lístku protokolu Kerberos v takových požadavcích. Většina serverů s jiným systémem než Windows očekává, že ji obdrží ve formě tokenu SPNEGO. Tento mechanismus je podporovaný v Azure Proxy aplikací služby AD, ale ve výchozím nastavení je zakázaný. Konektor se dá nakonfigurovat pro SPNEGO nebo standardní token protokolu Kerberos, ale ne pro obojí.
+
+Pokud nakonfigurujete počítač konektoru pro SPNEGO, ujistěte se, že jsou všechny ostatní konektory v této skupině konektorů nakonfigurované také pomocí nástroje SPNEGO. Aplikace, které očekávají standardní token protokolu Kerberos, by se měly směrovat přes jiné konektory, které nejsou nakonfigurované pro SPNEGO.
  
 
 Povolení SPNEGO:

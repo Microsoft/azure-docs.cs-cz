@@ -1,33 +1,37 @@
 ---
-title: Reference k atributu SAP SuccessFactors | Microsoft Docs
+title: Reference k atributu SAP SuccessFactors
 description: Informace o tom, které atributy z SuccessFactors jsou podporované SuccessFactors zřizováním na základě lidských zdrojů
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522352"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593180"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>Reference k atributu SAP SuccessFactors
 
+V tomto článku najdete informace o:
+
+- [Podporované entity a atributy SuccessFactors](#supported-successfactors-entities-and-attributes)
+- [Výchozí mapování atributů](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>Podporované entity a atributy SuccessFactors
 
-Následující tabulka zachycuje seznam atributů SuccessFactors podporovaných následujícími dvěma zřizovacími aplikacemi: 
-* [SuccessFactors se zřizování uživatelů služby Active Directory](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors se zřizování uživatelů Azure AD](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+Následující tabulka zachycuje seznam atributů SuccessFactors podporovaných následujícími dvěma zřizovacími aplikacemi:
+
+- [SuccessFactors se zřizování uživatelů služby Active Directory](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors se zřizování uživatelů Azure AD](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors – entita                  | SuccessFactors – atribut     | Typ operace |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ Následující tabulka zachycuje seznam atributů SuccessFactors podporovaných 
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Čtení           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Čtení           |
 
-
 ## <a name="default-attribute-mapping"></a>Výchozí mapování atributů
 
 Následující tabulka uvádí výchozí mapování atributů mezi SuccessFactors atributy uvedenými výše a atributy AD/Azure AD. V okně mapování aplikace zřizování Azure AD můžete toto výchozí mapování upravit tak, aby obsahovalo atributy ze seznamu výše. 
@@ -138,4 +141,3 @@ Následující tabulka uvádí výchozí mapování atributů mezi SuccessFactor
 | 18 | Umístění\.EmpJob                       | officeLocationAddress    | streetAddress                           | Není k dispozici                                                                                           |
 | 19 | Umístění\.EmpJob                       | officeLocationZipCode    | Ovládacím                              | Není k dispozici                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Pokud activeEmploymentsCount = 0, zakažte Account\..                                           |
-

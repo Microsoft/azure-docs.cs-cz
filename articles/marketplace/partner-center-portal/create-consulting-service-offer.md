@@ -1,27 +1,27 @@
 ---
-title: Vytvoření nabídky konzultační služby v partnerském centru – Azure Marketplace
-description: Naučte se publikovat konzultační nabídku služby buď Azure Marketplace nebo AppSource pomocí partnerského centra.
+title: Vytvoření nabídky konzultační služby – Microsoft Commercial Marketplace
+description: Naučte se publikovat konzultační nabídku služby buď Microsoft AppSource nebo Azure Marketplace pomocí partnerského centra.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869796"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791897"
 ---
-# <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultační služby
+# <a name="create-a-consulting-service-offer"></a>Vytvoření nabídky konzultačních služeb
 
 > [!IMPORTANT]
 > Přesouváme správu nabídek konzultačních služeb od portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v [nabídce konzultační služby Azure a Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) , kde najdete portál partnerů cloudu ke správě nabídek.
 
-Tento článek popisuje, jak publikovat konzultační nabídku služby na [Azure Marketplace](https://azuremarketplace.microsoft.com/) nebo [AppSource](https://appsource.microsoft.com/). Seznamte se s nabídkami konzultačních služeb založenými na Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power platformou v AppSource. Seznamte se s nabídkami konzultačních služeb na základě Microsoft Azure Azure Marketplace.
+Tento článek popisuje, jak publikovat konzultační nabídku služby buď [Microsoft AppSource](https://appsource.microsoft.com/) , nebo [Azure Marketplace](https://azuremarketplace.microsoft.com/). Seznamte se s nabídkami konzultačních služeb založenými na Microsoft [Dynamics 365](https://dynamics.microsoft.com/) a Power platformou v AppSource. Seznamte se s nabídkami konzultačních služeb na základě Microsoft Azure Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
-Pokud chcete vytvořit nabídku konzultační služby v rámci Azure Marketplace nebo AppSource konzultačních služeb, musíte nejdřív [mít v partnerském centru účet vydavatele](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)a váš účet musí být zaregistrovaný v programu komerčního tržiště. Před vytvořením nabídky si přečtěte předpoklady v části [požadavky na konzultační služby](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
+Před vytvořením nabídky si přečtěte předpoklady v části [požadavky na konzultační služby](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites).
 
 ## <a name="publishing-benefits"></a>Výhody publikování
 
@@ -34,33 +34,31 @@ Výhody publikování na komerčním webu Marketplace:
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-Po splnění požadavků popsaných výše postupujte podle těchto kroků a vytvořte nabídku konzultační služby.
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka** > **konzultační služba**.
 
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com)a v horní nabídce vyberte **řídicí panel** .
-2. V levém panelu navigace vyberte **komerční Marketplace**a pak vyberte **Přehled**.
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-consulting-service.png)
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="Znázorňuje nabídku pro komerční tržiště.":::
+>[!NOTE]
+>Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
-3. Vyberte **+ Nová nabídka**a pak vyberte **konzultační službu**.
+## <a name="new-offer"></a>Nová nabídka
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="Znázorňuje tlačítko pro vytvoření nové nabídky.":::
+Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
-4. Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+- Toto ID je viditelné pro zákazníky na webové adrese nabídky Marketplace.
+- Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-    - Toto ID je viditelné pro zákazníky na webové adrese nabídky Marketplace.
-    - Používejte jenom malá písmena, číslice, pomlčky a podtržítka, ale ne mezery. Délka je omezena na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, adresa URL nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-    - ID nabídky může&#39;změnit po výběru **vytvořit**.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
-5. Zadejte **alias nabídky**. Toto je název, který se používá k odkazování na nabídku v partnerském centru.
+- Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
+- Po zvolení možnost **vytvořit**se alias nabídky nedá změnit.
 
-    - Tento název není&#39;v Marketplace použit. &#39;se liší od názvu nabídky a dalších hodnot, které se zobrazují zákazníkům. Toto pole můžete použít k přiřazení názvu nabídky, která je užitečnější pro interní identifikaci této nabídky. nezobrazuje se zákazníkům.
-    - Alias nabídky může&#39;změnit po výběru **vytvořit**.
-
-Po zadání těchto dvou hodnot vyberte **vytvořit** a pokračujte na stránku **nastavení nabídky** .
+Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-setup"></a>Nastavení nabídky
-
-Po zadání ID nabídky a aliasu nabídky vytvoří partnerský centrum nabídku konceptu a zobrazí stránku **nastavení nabídky** . Pomocí těchto kroků můžete nastavit nabídku.
 
 ### <a name="connect-lead-management"></a>Připojit řízení zájemců
 
@@ -73,20 +71,20 @@ Když publikujete nabídku na webu Marketplace s partnerským centrem, _musíte_
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > Pokud váš systém CRM není&#39;výše uveden, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
+    > Pokud váš systém CRM není uvedený výše, použijte [koncový bod](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) nebo HTTPS k uložení zákaznických dat a pak EXPORTUJTE data do systému CRM.
 
 2. Připojte svoji nabídku k cíli realizace při publikování v partnerském centru.
-3. Potvrďte, že je správně nakonfigurované připojení k cíli realizace. Po publikování v partnerském centru&#39;me ověřit připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
-4. Ujistěte se, že připojení k cíli realizace zůstane aktualizované, takže&#39;nepřijdete o žádné zájemce.
+3. Potvrďte, že je správně nakonfigurované připojení k cíli realizace. Po publikování v partnerském centru ověříme připojení a pošleme vám testovacího vedoucího. I když náhled nabídky před tím, než začne fungovat, můžete také otestovat své zájemce tím, že se pokusíte nabídku koupit v prostředí verze Preview.
+4. Ujistěte se, že připojení k cíli realizace zůstane aktualizované, takže nepřijdete o žádné zájemce.
 
 Tady jsou některé další zdroje informací o vedoucím řízení:
 
 - [Přehled řízení vedoucích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
 
-Než budete pokračovat k další části, můžete vybrat možnost **Uložit koncept** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -95,35 +93,35 @@ Tato stránka umožňuje nastavit primární produkt, který vaše konzultační
 1. Z rozevíracího seznamu vyberte **primární produkt** .
 2. Z rozevíracího seznamu vyberte **typ konzultační služby** :
 
-    - **Posouzení** : hodnocení prostředí&#39;s zákazníky k určení použitelnosti řešení a zajištění odhadu nákladů a časování.
-    - **Přehled** : Úvod do řešení nebo poradenské služby za účelem vystavení zájmu zákazníků pomocí platforem, ukázek a příkladů zákazníků.
-    - **Implementace** : kompletní instalace, která má za následek plně funkční řešení. Omezení na řešení, která je možné implementovat ve dvou nebo méně týdnech.
-    - **Ověření koncepce** : implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníků.
-    - **Workshop** : interaktivní zapojení na místní&#39;zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka&#39;s.
+    - **Posouzení**: vyhodnocení prostředí zákazníka za účelem určení použitelnosti řešení a zajištění odhadu nákladů a časování.
+    - **Přehled**: Úvod do řešení nebo poradenské služby za účelem vystavení zájmu zákazníků pomocí platforem, ukázek a příkladů zákazníků.
+    - **Implementace**: kompletní instalace, která má za následek plně funkční řešení. Omezení na řešení, která je možné implementovat ve dvou nebo méně týdnech.
+    - **Ověření koncepce**: implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníků.
+    - **Workshop**: interaktivní zapojení v místním prostředí zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky založené na datech a prostředí zákazníka.
 
-1. Pokud jste vybrali primární produkt **Azure**, vyberte až tři **oblasti řešení**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Pokud nefungovala&#39;vyberte Azure, tento krok přeskočte.
+1. Pokud jste vybrali primární produkt **Azure**, vyberte až tři **oblasti řešení**. To usnadňuje zákazníkům v Azure Marketplace najít vaši nabídku. Pokud jste nezvolili Azure, přeskočte tento krok.
 2. Pokud jste vybrali _jiný_ produkt než Azure, vyberte až tři produkty, které jsou k **dispozici**. To usnadňuje zákazníkům v AppSource najít vaši nabídku. Podrobnosti najdete v tématu [Microsoft AppSource konzultačních pokynů pro výpisy služby](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
 3. Vyberte až šest **odvětví** , na které se vaše nabídka vztahuje. To zákazníkům usnadní nalezení vaší nabídky.
-4. Přidejte až tři **kompetence** , které vaše společnost získala, aby se zobrazila v seznamu nabídek konzultačních služeb. Vyžaduje se aspoň jedna kompetence, s výjimkou služeb Azure expert MSP&#39;s a Azure Networking MSP&#39;s.
+4. Přidejte až tři **kompetence** , které vaše společnost získala, aby se zobrazila v seznamu nabídek konzultačních služeb. Vyžaduje se aspoň jedna kompetence s výjimkou služeb Azure expert účastníci programu MSP a Azure Networking účastníci programu MSP.
 
-Než budete pokračovat k další části seznamu nabídek, vyberte **Uložit koncept** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="offer-listing"></a>Seznam nabídek
 
-Zde&#39;vše definovat nabídky, které se zobrazují na webu Marketplace. To zahrnuje název nabídky, popis, obrázky a tak dále. Při konfiguraci této nabídky postupujte podle pokynů na [stránce Zásady podrobné zásady pro Microsoft&#39;s](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) .
+Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To zahrnuje název nabídky, popis, obrázky a tak dále. Při konfiguraci této nabídky nezapomeňte postupovat podle zásad, které jsou podrobné na [stránce Zásady certifikace komerčního tržiště](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) .
 
 > [!NOTE]
-> Podrobnosti o nabídce&#39;t musí být v angličtině, pokud popis nabídky začíná frází, &quot;Tato aplikace je k dispozici pouze v [jazyk bez angličtiny]. &quot;&#39;taky také v pořádku, aby poskytovala užitečný odkaz na obsah nabídky v jazyce, který se&#39;liší od toho, který se používá v podrobnostech o seznamu nabídek.
+> Podrobnosti nabídky nejsou v angličtině, pokud popis nabídky začíná frází, &quot;Tato aplikace je k dispozici pouze v [jazyk bez angličtiny]. &quot; Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
 Název:
 
 - Dá se použít jako ochranná známka (a může obsahovat symboly ochranné známky nebo autorských práv).
-- Může&#39;být delší než 50 znaků.
-- Může&#39;t zahrnovat emoji.
+- Nemůže být delší než 50 znaků.
+- Nejde zahrnout emoji.
 
 ### <a name="search-results-summary"></a>Souhrn výsledků hledání
 
@@ -147,12 +145,16 @@ Zde jsou některé tipy pro psaní popisu:
   - Typ uživatele, který je z nabídky výhodou
   - Zákazník potřebuje nebo vydá adresy nabídky.
 - Pamatujte, že ve výsledcích hledání se může zobrazit několik prvních vět.
-- &#39;se nespoléhá na funkce a funkce pro prodej vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
+- Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
 - Zkuste použít slovníky specifické pro konkrétní obor nebo na základě výhod.
 
-Abychom mohli podrobnější popis, použijte Editor formátovaného textu k formátování popisu. Editor formátovaného textu umožňuje přidat čísla, odrážky, tučné písmo, kurzívu a odsazení, aby bylo možné tento popis čitelnější.
+Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="Ukazuje Editor formátovaného textu pro zápis popisu nabídky." border="false":::
+![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
+
+| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
+| --- | --- | --- |
+| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
 
 ### <a name="keywords"></a>Klíčová slova
 
@@ -164,7 +166,7 @@ Nastavte očekávanou dobu trvání této zapojení se zákazníkem.
 
 ### <a name="contact-information"></a>Kontaktní informace
 
-Musíte zadat jméno, e-mail a telefonní číslo pro **primární** a **sekundární kontakt**. Tyto informace&#39;zákazníkům nevidí. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
+Musíte zadat jméno, e-mail a telefonní číslo pro **primární** a **sekundární kontakt**. Tyto informace se zákazníkům nezobrazují. Je k dispozici pro společnost Microsoft a může být poskytnuta partnerům Cloud Solution Provider (CSP).
 
 ### <a name="supporting-documents"></a>Podpůrné dokumenty
 
@@ -179,7 +181,7 @@ Poskytněte loga a obrázky, které se mají použít s vaší nabídkou. Všech
 
 #### <a name="store-logos"></a>Ukládat loga
 
-Poskytněte v každé z následujících velikostí pixelů soubory. png vaší nabídky&#39;s:
+Zadejte soubory PNG pro logo vaší nabídky v každé z následujících velikostí pixelů:
 
 - **Malé (48 x 48)**
 - **Velký (216 x 216)**
@@ -188,13 +190,13 @@ Všechna loga jsou povinná a používají se na různých místech v seznamu Ma
 
 #### <a name="screenshots-optional"></a>Snímky obrazovky (volitelné)
 
-Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Každá velikost musí být 1280 × 720 pixelů a ve formátu. png.
+Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Každá velikost musí být 1280 × 720 pixelů a ve formátu PNG.
 
 #### <a name="videos-optional"></a>Videa (volitelné)
 
-Přidejte až čtyři videa, která předvádí vaši nabídku. Zadejte video&#39;název, jeho webová adresa (URL) a miniaturu. png obrázku na 1280 × 720 pixelů velikosti.
+Přidejte až čtyři videa, která předvádí vaši nabídku. Zadejte název videa, jeho webovou adresu (URL) a miniaturu obrázku PNG o velikosti videa na 1280 × 720 pixelů.
 
-Než budete pokračovat k další části, ceníku a dostupnosti, vyberte **Uložit koncept** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="pricing-and-availability"></a>Ceny a dostupnost
 
@@ -209,7 +211,7 @@ Tady můžete definovat prvky, jako jsou ceny, trhy a privátní klíč.
     > Konzultační nabídky služby jsou jenom pro výpis. K jakékoli transakci dojde přímo mimo komerční web Marketplace.
 
 4. V případě placené nabídky zadejte **cenu a měnu** a zda je cena **pevná** nebo **Odhadovaná**. Je-li odhadované, je nutné zadat v popisu, jaké faktory budou mít vliv na cenu.
-5. Vyberte **Uložit koncept**.
+5. Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="review-and-publish"></a>Kontrola a publikování
 
