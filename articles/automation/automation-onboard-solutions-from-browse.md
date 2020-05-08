@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537011"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731913"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení řešení Update Management, Change Tracking a inventáře na několika virtuálních počítačích
 
@@ -129,7 +129,7 @@ Při připojování více počítačů můžou existovat počítače, které uka
 
 **Příčina:** Řešení není podporováno pro všechny distribuce systému Linux nebo všechny verze systému Windows.
 
-**Řešení:** Přečtěte si [seznam podporovaných klientů](automation-update-management.md#clients) pro řešení.
+**Řešení:** Přečtěte si [seznam podporovaných klientů](automation-update-management.md#supported-client-types).
 
 ### <a name="classic-vms-cannot-be-enabled"></a>Klasické virtuální počítače se nedají povolit.
 

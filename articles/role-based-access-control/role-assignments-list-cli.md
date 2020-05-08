@@ -1,6 +1,6 @@
 ---
-title: Vypsání přiřazení rolí pomocí Azure RBAC a Azure CLI
-description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a Azure CLI.
+title: Vypsání přiřazení rolí Azure pomocí Azure CLI – Azure RBAC
+description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání Azure CLI a řízení přístupu na základě role Azure (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385057"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735738"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>Vypsání přiřazení rolí pomocí Azure RBAC a Azure CLI
+# <a name="list-azure-role-assignments-using-azure-cli"></a>Vypsání přiřazení rolí Azure pomocí Azure CLI
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí rozhraní příkazového řádku Azure CLI.
 
@@ -144,4 +144,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI](role-assignments-cli.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI](role-assignments-cli.md)

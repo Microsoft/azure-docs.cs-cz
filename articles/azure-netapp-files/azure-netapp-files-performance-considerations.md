@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67454136"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691318"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Aspekty výkonu pro Azure NetApp Files
 
@@ -34,8 +34,6 @@ Typickými aspekty výkonu úložiště, včetně kombinace čtení a zápisu, v
 Maximální empirická propustnost, která byla pozorována při testování, je 4 500 MiB/s.  V úrovni Premium Storage zřídí kvóta 70,31 TiB limit propustnosti, který je dostatečně vysoký pro dosažení této úrovně výkonu.  
 
 Pokud se chystáte přidělit objemové kvóty na více než 70,31 TiB, může být ke svazku přiřazená další kvóta pro ukládání dalších dat. Přidaná kvóta ale nebude mít za následek další zvýšení skutečné propustnosti.  
-
-Další informace najdete v tématu [srovnávací testy výkonu pro Azure NetApp Files](azure-netapp-files-performance-benchmarks.md) .
 
 ## <a name="overprovisioning-the-volume-quota"></a>Přezřizování kvóty svazků
 
@@ -64,4 +62,4 @@ Pokud jsou vaše požadavky na výkon dočasná, nebo pokud jste zvýšili náro
 ## <a name="next-steps"></a>Další kroky
 
 - [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
-- [Srovnávací testy výkonu pro Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)
+- [Srovnávací testy výkonu pro Linux](performance-benchmarks-linux.md)

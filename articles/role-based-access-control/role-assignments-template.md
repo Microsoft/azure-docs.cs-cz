@@ -1,6 +1,6 @@
 ---
-title: Přidání přiřazení rolí se šablonami RBAC a Azure Resource Manager
-description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) Azure a šablon Azure Resource Manager.
+title: Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager – Azure RBAC
+description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí šablon Azure Resource Manager a řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77138288"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735619"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Přidání přiřazení rolí pomocí Azure RBAC a Azure Resource Manager šablon
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Přidání přiřazení rolí Azure pomocí šablon Azure Resource Manager
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Kromě používání Azure PowerShell nebo rozhraní příkazového řádku Azure CLI můžete role přiřadit pomocí [šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md). Šablony mohou být užitečné, pokud potřebujete nasadit prostředky konzistentně a opakovaně. Tento článek popisuje, jak přiřadit role pomocí šablon.
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
-Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
+Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
 
 ### <a name="resource-group-without-parameters"></a>Skupina prostředků (bez parametrů)
 
@@ -364,4 +364,4 @@ Následuje příklad přiřazení role přispěvatele k novému instančnímu ob
 - [Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Pochopení struktury a syntaxe šablon Azure Resource Manager](../azure-resource-manager/templates/template-syntax.md)
 - [Vytvoření skupin prostředků a prostředků na úrovni předplatného](../azure-resource-manager/templates/deploy-to-subscription.md)
-- [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Šablony rychlého zprovoznění pro Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

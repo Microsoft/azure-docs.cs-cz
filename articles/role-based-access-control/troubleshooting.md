@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 6baa83037d51e850a9f3535be3cc365e7c35e0a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131440"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735555"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -57,7 +57,7 @@ $ras.Count
 
 - Pokud potřebujete postup, jak vytvořit vlastní roli, přečtěte si kurzy k vlastním rolím pomocí [Azure Portal](custom-roles-portal.md) (aktuálně ve verzi Preview), [Azure PowerShell](tutorial-custom-role-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](tutorial-custom-role-cli.md).
 - Pokud nemůžete aktualizovat existující vlastní roli, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s `Microsoft.Authorization/roleDefinition/write` oprávněním, jako je [vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator).
-- Pokud nemůžete odstranit vlastní roli a získat chybovou zprávu "existují existující přiřazení rolí odkazujících na roli" (kód: RoleDefinitionHasAssignments) ", pak stále existují přiřazení rolí s vlastní rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
+- Pokud se vám nedaří odstranit vlastní roli a zobrazuje se chybová zpráva Na roli odkazují stávající přiřazení rolí (kód: RoleDefinitionHasAssignments), znamená to, že vlastní roli stále používají některá přiřazení rolí. Odeberte tato přiřazení rolí a zkuste vlastní roli odstranit znovu.
 - Pokud se při pokusu o vytvoření nové vlastní role zobrazí chybová zpráva Došlo k překročení limitu definic rolí. Při pokusu o vytvoření nové vlastní role se nedají vytvářet žádné další definice rolí (kód: RoleDefinitionLimitExceeded). Odstraňte všechny vlastní role, které se nepoužívají. Azure podporuje v adresáři až **5000** vlastních rolí. (Pro Azure Německo a Azure Čína 21Vianet je limit 2000 vlastních rolí.)
 - Pokud se zobrazí chybová zpráva podobná "klient má oprávnění k provedení akce" Microsoft. Authorization/roleDefinitions/Write "v oboru"/Subscriptions/{SubscriptionId} ", ale propojený odběr nebyl nalezen" při pokusu o aktualizaci vlastní role ověřte, zda byly v adresáři odstraněny nejméně jeden přizpůsobený [Rozsah](role-definitions.md#assignablescopes) . Pokud se obor odstranil, vytvořte lístek podpory, protože v současné době není k dispozici žádné samoobslužné řešení.
 
@@ -76,20 +76,29 @@ $ras.Count
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémy se správci služeb nebo spolusprávci
 
-- Pokud máte problémy se správcem služeb nebo spolusprávci, přečtěte si téma [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md) a [rolí správce pro klasický odběr, role Azure a role správce Azure AD](rbac-and-directory-admin-roles.md).
+- Pokud máte problémy se správcem a spolusprávci služeb, přečtěte si téma [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md) a [rolí klasických správců předplatného, role Azure a role Azure AD](rbac-and-directory-admin-roles.md).
 
 ## <a name="access-denied-or-permission-errors"></a>Odepřený přístup nebo chyby oprávnění
 
-- Pokud se zobrazí chyba oprávnění "klient s ID objektu nemá autorizaci k provedení akce nad rozsahem (kód: AuthorizationFailed)" při pokusu o vytvoření prostředku ověřte, zda jste aktuálně přihlášeni pomocí uživatele, kterému je přiřazena role s oprávněním k zápisu do prostředku ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění jednotlivých předdefinovaných rolí najdete v tématu [Předdefinované role pro prostředky Azure](built-in-roles.md).
+- Pokud při pokusu o vytvoření prostředku dojde k chybě oprávnění Klient s ID objektu nemá oprávnění k provedení akce v oboru (kód: AuthorizationFailed), zkontrolujte, že jste přihlášeni jako uživatel s přiřazenou rolí s oprávněním k zápisu pro prostředek ve vybraném oboru. Pokud například chcete spravovat virtuální počítače ve skupině prostředků, měli byste mít roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) pro danou skupinu prostředků (nebo nadřazený obor). Seznam oprávnění pro jednotlivé předdefinované role najdete v tématu [předdefinované role Azure](built-in-roles.md).
 - Pokud se zobrazí chyba oprávnění "nemáte oprávnění k vytvoření žádosti o podporu" při pokusu o vytvoření nebo aktualizaci lístku podpory, ověřte, že jste aktuálně přihlášeni jako uživatel, kterému je přiřazena role s `Microsoft.Support/supportTickets/write` oprávněním, jako je například [Přispěvatel žádostí o podporu](built-in-roles.md#support-request-contributor).
 
-## <a name="role-assignments-with-unknown-security-principal"></a>Přiřazení rolí s neznámým objektem zabezpečení
+## <a name="role-assignments-with-identity-not-found"></a>Přiřazení rolí s identitou se nenašlo.
 
-Pokud přiřadíte roli objektu zabezpečení (uživatele, skupiny, instančnímu objektu nebo spravované identitě) a později odstraníte tento objekt zabezpečení bez odebrání přiřazení role, bude typ objektu zabezpečení pro přiřazení role uveden jako **Neznámý**. Následující snímek obrazovky ukazuje příklad na webu Azure Portal. Hlavní název zabezpečení je uvedený jako **identita se odstranila** a **Identita už neexistuje**. 
+V seznamu přiřazení rolí pro Azure Portal můžete všimnout, že je objekt zabezpečení (uživatel, skupina, instanční objekt nebo spravovaná identita) uvedený jako **Identita nenalezena** s **neznámým** typem.
 
 ![Skupina prostředků webové aplikace](./media/troubleshooting/unknown-security-principal.png)
 
-Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, zobrazí se prázdná `DisplayName` a je `ObjectType` nastavená na neznámý. Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu:
+Identita se nemusí najít ze dvou důvodů:
+
+- Při vytváření přiřazení role jste nedávno pozvaní uživatele.
+- Odstranili jste objekt zabezpečení, který měl přiřazení role.
+
+Pokud jste při vytváření přiřazení role nedávno pozvali uživatele, tento objekt zabezpečení může být stále v procesu replikace napříč různými oblastmi. Pokud ano, počkejte chvíli a aktualizujte seznam přiřazení rolí.
+
+Nicméně pokud tento objekt zabezpečení není nedávno pozvaníný uživatel, může se jednat o odstraněný objekt zabezpečení. Pokud přiřadíte roli objektu zabezpečení a později odstraníte tento objekt zabezpečení bez prvotního odebrání přiřazení role, bude objekt zabezpečení uveden jako **Identita nebyl nalezen** a je **neznámého** typu.
+
+Pokud toto přiřazení role vypíšete pomocí Azure PowerShell, může se zobrazit prázdná `DisplayName` a je `ObjectType` nastavená na **Neznámý**. Například [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -103,7 +112,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, zobrazí se `principalName`prázdná. Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu:
+Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, může se `principalName`zobrazit prázdná. Například [AZ role Assignment list](/cli/azure/role/assignment#az-role-assignment-list) vrátí přiřazení role, které je podobné následujícímu výstupu:
 
 ```
 {
@@ -119,9 +128,9 @@ Podobně platí, že pokud toto přiřazení role vypíšete pomocí Azure CLI, 
 }
 ```
 
-Nejedná se o problém s ponechání těchto přiřazení rolí, ale můžete je odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
+Nejedná se o problém s ponechání těchto přiřazení rolí, kde byl odstraněn objekt zabezpečení. Pokud chcete, můžete tato přiřazení role odebrat pomocí kroků, které jsou podobné jiným přiřazením rolí. Informace o tom, jak odebrat přiřazení rolí, najdete v tématu [Azure Portal](role-assignments-portal.md#remove-a-role-assignment), [Azure POWERSHELL](role-assignments-powershell.md#remove-a-role-assignment)nebo [Azure CLI](role-assignments-cli.md#remove-a-role-assignment) .
 
-Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". V následujícím příkladu vidíte příklad chybové zprávy:
+Pokud se v prostředí PowerShell pokusíte odstranit přiřazení rolí pomocí ID objektu a definice role a na základě parametrů se shoduje více než jedno přiřazení role, zobrazí se chybová zpráva: "zadané informace nejsou namapovány na přiřazení role". Následující výstup ukazuje příklad chybové zprávy:
 
 ```
 PS C:\> Remove-AzRoleAssignment -ObjectId 33333333-3333-3333-3333-333333333333 -RoleDefinitionName "Storage Blob Data Contributor"
@@ -217,5 +226,5 @@ Některé funkce [Azure Functions](../azure-functions/functions-overview.md) vy�
 ## <a name="next-steps"></a>Další kroky
 
 - [Řešení potíží pro uživatele typu Host](role-assignments-external-users.md#troubleshoot)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](role-assignments-portal.md)
-- [Zobrazení protokolů aktivit pro změny RBAC v prostředcích Azure](change-history-report.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)
+- [Zobrazení protokolů aktivit pro změny v Azure RBAC](change-history-report.md)

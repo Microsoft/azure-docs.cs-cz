@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6817ac4ebc272747776eab8b11dba62f318e4ed
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80582253"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690721"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -21,7 +21,7 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která odesílá zprávu Service Bus fronty:
 
@@ -227,7 +227,7 @@ Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následujíc�
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte rozhraní [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -287,7 +287,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu. Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma.|
-|**accessRights**|**Přístup**|Přístupová práva k připojovacímu řetězci Dostupné hodnoty jsou `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má oprávnění **Spravovat** . Pokud použijete připojovací řetězec, který nemá oprávnění **Spravovat** , nastavte `accessRights` na "naslouchání". V opačném případě může modul runtime Functions selhat při pokusu o provedení operací, které vyžadují oprávnění ke správě. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
+|**accessRights** (jenom V1)|**Přístup**|Přístupová práva k připojovacímu řetězci Dostupné hodnoty jsou `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má oprávnění **Spravovat** . Pokud použijete připojovací řetězec, který nemá oprávnění **Spravovat** , nastavte `accessRights` na "naslouchání". V opačném případě může modul runtime Functions selhat při pokusu o provedení operací, které vyžadují oprávnění ke správě. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -295,7 +295,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 V Azure Functions 1. x modul runtime vytvoří frontu, pokud neexistuje a že jste nastavili `accessRights` na `manage`. V funkcích Functions verze 2. x a vyšší již musí fronta nebo téma existovat; Pokud zadáte frontu nebo téma, které neexistují, funkce se nezdaří. 
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Pro výstupní vazbu použijte následující typy parametrů:
 
@@ -366,9 +366,9 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
         "serviceBus": {
             "prefetchCount": 100,
             "messageHandlerOptions": {
-                "autoComplete": false,
+                "autoComplete": true,
                 "maxConcurrentCalls": 32,
-                "maxAutoRenewDuration": "00:55:00"
+                "maxAutoRenewDuration": "00:05:00"
             },
             "sessionHandlerOptions": {
                 "autoComplete": false,
@@ -380,13 +380,15 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
     }
 }
 ```
+Pokud jste `isSessionsEnabled` nastavili `true`na, `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili `false`na, `messageHandlerOptions` bude dodržena.
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|
-|Zobrazovat|true|Určuje, zda má aktivační událost zprávu hned označit jako dokončenou (automatické dokončování), nebo počkat na úspěšné ukončení funkce, aby bylo volání dokončeno.|
-|maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo iniciovat čerpadlo zpráv. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně. Pokud chcete modul runtime nasměrovat tak, aby zpracovával jenom jednu frontu nebo zprávu o `maxConcurrentCalls` tématu, nastavte na hodnotu 1. |
+|Zobrazovat|true|Určuje, zda má být aktivační událost automaticky volána po zpracování, nebo pokud kód funkce bude ručně volána možnost Dokončit.|
+|maxConcurrentCalls|16|Maximální počet souběžných volání zpětného volání, které by mělo pumpa zpráv iniciovat na úrovni instance. Ve výchozím nastavení aplikace runtime Functions zpracovává více zpráv souběžně.|
+|maxConcurrentSessions|2000|Maximální počet relací, které mohou být zpracovány souběžně podle škálované instance.|
 
 ## <a name="next-steps"></a>Další kroky
 

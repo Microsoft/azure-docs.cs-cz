@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838789"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928546"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
 
@@ -19,7 +19,7 @@ Protože možnost AVS vám neumožní spravovat privátní cloud s vaším míst
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření privátního cloudu služby AVS
+> * Vytvoření privátního cloudu AVS
 > * Ověření nasazení privátního cloudu
 
 ## <a name="prerequisites"></a>Požadavky
@@ -46,7 +46,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 Privátní cloud služby AVS můžete vytvořit pomocí [Azure Portal](#azure-portal) nebo pomocí [Azure CLI](#azure-cli).
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>portál Azure
 
 V Azure Portal vyberte **+ vytvořit nový prostředek**. Do textového pole **Hledat na Marketplace** zadejte `Azure VMware Solution`a ze seznamu vyberte **Řešení Azure VMware** . V okně **Řešení Azure VMware** vyberte **vytvořit** .
 
@@ -58,7 +58,7 @@ Na kartě **základy** zadejte hodnoty polí. V následující tabulce je uveden
 | **Skupina prostředků** | Skupina prostředků pro prostředky privátního cloudu. |
 | **Umístění** | Vyberte umístění, jako je například **východní USA**.|
 | **Název prostředku** | Název vašeho privátního cloudu služby AVS |
-| **SKLADOVÉ** | Vyberte odpovídající SKU, dostupné hodnoty: |
+| **SKLADOVÉ** | Vyberte hodnotu následující SKU: AV36 |
 | **Dvou** | Toto je počet hostitelů, které se mají přidat do clusteru privátního cloudu. Výchozí hodnota je 3. Tuto hodnotu je možné vyhodnotit nebo snížit po nasazení.  |
 | **heslo správce vCenter** | Zadejte heslo správce cloudu. |
 | **Heslo správce NSX-T** | Zadejte heslo správce NSX-T. |
@@ -126,7 +126,7 @@ Provedete to tak, že v Azure Portal přejdete do svého privátního cloudu a v
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvoření privátního cloudu služby AVS
+> * Vytvoření privátního cloudu AVS
 > * Ověření nasazení privátního cloudu
 
 Přejděte k dalšímu kurzu, kde se dozvíte, jak vytvořit virtuální síť pro použití s privátním cloudem v rámci nastavení místní správy pro clustery privátních cloudů.

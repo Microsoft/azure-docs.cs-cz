@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure PowerShell
-description: Naučte se, jak vypisovat, vytvářet, aktualizovat nebo odstraňovat vlastní role pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure pomocí Azure PowerShell.
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell – Azure RBAC
+description: Přečtěte si, jak pomocí Azure PowerShell a řízení přístupu založeného na rolích Azure (Azure RBAC) zobrazit, vytvořit, aktualizovat nebo odstranit vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3c72e04ff7a08fecc2ef352a5879898c4c6d41c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffb53bff4e70fbeb80e518fe13aaeaa8b396cfac
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062275"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734803"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-powershell"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure PowerShell
+# <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure PowerShell
 
 > [!IMPORTANT]
 > Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí Azure PowerShell vypisovat, vytvářet, aktualizovat nebo odstraňovat vlastní role.
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí Azure PowerShell vypisovat, vytvářet, aktualizovat nebo odstraňovat vlastní role.
 
-Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md).
+Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -401,6 +401,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Vlastní role pro prostředky Azure](custom-roles.md)
+- [Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Vlastní role Azure](custom-roles.md)
 - [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)

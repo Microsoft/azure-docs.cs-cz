@@ -4,12 +4,12 @@ description: Naučte se definovat vlastní výstupní trasu ve službě Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676511"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733494"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy (Preview)
 
@@ -73,7 +73,7 @@ Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastaven�
 
 Pokud `userDefinedRouting` je nastavená, AKS nebude automaticky konfigurovat výstupní cesty. Tento **uživatel**by měl provést následující:
 
-Cluster musí být nasazený do existující virtuální sítě s nakonfigurovanou podsítí. V podsíti s odchozím připojením musí existovat platná uživatelsky definovaná trasa (UDR).
+Cluster AKS musí být nasazený do existující virtuální sítě s nakonfigurovanou podsítí. Při použití standardní architektury nástroje pro vyrovnávání zatížení (SLB) musíte nastavit explicitní výstup. To vyžaduje odeslání požadavků na výstup do zařízení, například brány firewall, brány, Prem nebo, aby bylo možné provést výstup pomocí veřejné IP adresy přiřazené ke standardnímu nástroji pro vyrovnávání zatížení nebo ke konkrétnímu uzlu.
 
 Poskytovatel prostředků AKS nasadí standardní nástroj pro vyrovnávání zatížení (SLB). Nástroj pro vyrovnávání zatížení není nakonfigurovaný s žádným pravidlem a [neúčtuje poplatek, dokud se pravidlo neuloží](https://azure.microsoft.com/pricing/details/load-balancer/). AKS nebude **automaticky zřizovat** veřejnou IP adresu pro front-end služby SLB. AKS nebude **automaticky konfigurovat** back-end fond nástroje pro vyrovnávání zatížení.
 
