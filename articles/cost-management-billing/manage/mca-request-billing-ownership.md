@@ -5,20 +5,20 @@ author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/01/2020
 ms.author: banders
-ms.openlocfilehash: 10f1052f9acf9bf91c1d7fb0b64a1d3285487cf3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3aaf2a949d5b3e6670e7885adea4579ac2802428
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200723"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692326"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Získání vlastnictví fakturace předplatných Azure od ostatních účtů
 
 Převzetí vlastnictví předplatných Azure může být vhodné, pokud stávající vlastník fakturace odchází ze společnosti, nebo pokud chcete předplatná hradit ze svého fakturačního účtu. Po převzetí vlastnictví se odpovědnosti spojené s fakturací předplatných převedou na váš účet.
 
-Tento článek se týká fakturačního účtu za smlouvu se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-for-access).
+Tento článek se týká fakturačních účtů smluv se zákazníkem Microsoftu. [Ověřte si, jestli máte přístup ke smlouvě se zákazníkem Microsoftu](#check-for-access).
 
 Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem oddílu faktur** nebo **přispěvatelem oddílu faktur**. Podrobnosti najdete v části [Role a úlohy související s oddíly faktur](understand-mca-roles.md#invoice-section-roles-and-tasks).
 
@@ -26,7 +26,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako vlastník nebo přispěvatel oddílu faktury pro fakturační účet spojený se smlouvou se zákazníkem Microsoftu.
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -74,7 +74,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-2. Vyhledejte položku **Správa nákladů a fakturace**.
+2. Vyhledejte **Cost Management a fakturace**.
 
     ![Snímek obrazovky znázorňující hledání položky Správa nákladů a fakturace na webu Azure Portal](./media/mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
@@ -98,7 +98,7 @@ Pokud chcete požádat o vlastnictví fakturace, musíte být **vlastníkem odd�
 
    |Sloupec|Definice|
    |---------|---------|
-   |Datum žádosti|Datum, kdy byla žádost o převod odeslána|
+   |Datum žádosti|Datum odeslání žádosti o převod|
    |Příjemce|E-mailová adresa uživatele, kterému jste odeslali žádost o převod vlastnictví fakturace|
    |Datum vypršení platnosti|Datum, kdy platnost žádosti vyprší|
    |Status|Stav žádosti o převod|
@@ -159,7 +159,7 @@ O vlastnictví fakturace můžete požádat pro níže uvedené typy předplatn�
 
 V této části najdete doplňkové informace o převodu předplatných.
 
-### <a name="no-service-downtime"></a>Žádné výpadky služeb
+### <a name="no-service-downtime"></a>Žádné výpadky služby
 
 Služby Azure v předplatném poběží i nadále bez přerušení. Dochází jen ke změně fakturačního vztahu pro předplatná Azure, která uživatel vybere.
 
@@ -177,7 +177,7 @@ Produkty na Azure Marketplace se převádí společně s příslušnými předpl
 
 ### <a name="azure-reservations-transfer"></a>Přenos rezervací Azure
 
-Rezervace Azure se s předplatným automaticky nepřevádí. Pokud je chcete přesunout, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Pokud převádíte předplatná smlouvy Enterprise (EA), rezervace Azure se automaticky nepřesouvají s předplatnými. Pokud je chcete přesunout, [obraťte se na podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="access-to-azure-services"></a>Přístup ke službám Azure
 

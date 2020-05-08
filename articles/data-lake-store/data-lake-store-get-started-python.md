@@ -1,23 +1,17 @@
 ---
-title: 'Python: operace správy účtů v Azure Data Lake Storage Gen1 | Microsoft Docs'
-description: Naučte se používat sadu Python SDK pro práci s operacemi správy účtů Azure Data Lake Storage Gen1.
-services: data-lake-store
-documentationcenter: ''
+title: Správa účtu Azure Data Lake Storage Gen1 pomocí Pythonu
+description: Naučte se používat sadu Python SDK pro operace správy účtu Azure Data Lake Storage Gen1.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c27c4b6d906a0892735697a8e90f87da6edf9c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76290610"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692106"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace správy účtů na Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]

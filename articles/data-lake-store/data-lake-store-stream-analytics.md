@@ -1,23 +1,17 @@
 ---
-title: Streamování dat z Stream Analytics do Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Použití Azure Stream Analytics ke streamování dat do Azure Data Lake Storage Gen1
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: Streamování dat z Stream Analytics do Data Lake Storage Gen1 – Azure
+description: Použijte Azure Stream Analytics ke streamování dat do Azure Data Lake Storage Gen1.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60194851"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690985"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamování dat z Azure Storage Blob do Azure Data Lake Storage Gen1 pomocí Azure Stream Analytics
 V tomto článku se naučíte, jak používat Azure Data Lake Storage Gen1 jako výstup pro Azure Stream Analytics úlohu. Tento článek ukazuje jednoduchý scénář, který čte data z Azure Storage objektů BLOB (Input) a zapisuje data do Data Lake Storage Gen1 (výstup).
@@ -29,12 +23,12 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Účet Azure Storage**. Pomocí kontejneru objektů BLOB z tohoto účtu můžete zadat data pro úlohu Stream Analytics. Pro účely tohoto kurzu Předpokládejme, že máte účet úložiště s názvem **storageforasa** a kontejner v rámci účtu s názvem **storageforasacontainer**. Po vytvoření kontejneru nahrajte do něj Ukázkový datový soubor. 
   
-* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md). Předpokládejme, že máte účet Data Lake Storage Gen1 s názvem **myadlsg1**. 
+* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). Předpokládejme, že máte účet Data Lake Storage Gen1 s názvem **myadlsg1**. 
 
 ## <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
 Začnete vytvořením úlohy Stream Analytics, která zahrnuje vstupní zdroj a výstupní cíl. Pro tento kurz se zdrojem je kontejner objektů BLOB v Azure a cíl je Data Lake Storage Gen1.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 
 2. V levém podokně klikněte na **Stream Analytics úlohy**a pak klikněte na **Přidat**.
 

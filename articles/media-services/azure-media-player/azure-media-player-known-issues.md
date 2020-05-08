@@ -1,17 +1,17 @@
 ---
-title: Známé problémy přehrávače médií Azure
-description: Aktuální verze má následující známé problémy.
+title: Azure Media Player známé problémy
+description: Aktuální verze obsahuje následující známé problémy.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81727213"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692260"
 ---
 # <a name="known-issues"></a>Známé problémy #
 
@@ -19,96 +19,97 @@ Aktuální verze má následující známé problémy:
 
 ## <a name="azure-media-player"></a>Přehrávač médií Azure ##
 
-- Nesprávně nakonfigurované kodéry mohou způsobit problémy s přehráváním
-- Datové proudy s časovými razítky větší minež2^53 mohou mít problémy s přehráváním.
-  - Zmírnění: Použijte 90-kHz video a 44,1-kHz audio časové osy
-- Žádné automatické přehrávání na mobilních zařízeních bez interakce s uživatelem. Je to blokováno platformou.
-- Hledání blízkých nespojitostí může způsobit selhání přehrávání.
-- Stažení velkých prezentací může způsobit uzamčení ui.
-- Po ukončení prezentace nelze automaticky znovu přehrát stejný zdroj.
-  - Chcete-li přehrát zdroj po jeho ukončení, je nutné jej znovu nastavit.
-- Prázdné manifesty mohou způsobit problémy s přehrávačem.
-  - K tomuto problému může dojít při spuštění živého datového proudu a není dostatek bloky jsou nalezeny v manifestu.
-- Pozice přehrávání možná mimo panel hledání ui.
-- Řazení událostí není konzistentní u všech techniků.
-- Vlastnost s vyrovnávací pamětí není konzistentní mezi techniky.
-- nativeControlsForTouch musí být false (výchozí), aby se zabránilo "Objekt nepodporuje vlastnost nebo metodu 'setControls'"
-- Plakáty musí být nyní absolutní urls
-- Při použití režimu vysokého kontrastu zařízení se v ui mohou vyskytnout drobné estetické problémy.
-- Adresy URL obsahující %nebo "+" v plně dekódovaném řetězci mohou mít problémy s nastavením zdroje
+- Nesprávně nakonfigurované kodéry můžou způsobovat problémy s přehráváním.
+- Datové proudy s časovými razítky většími než 2 ^ 53 můžou mít problémy s přehráváním.
+  - Omezení rizik: použití videa 90 – kHz a 44,1-kHz audio s časovými měřítky
+- Bez zásahu uživatele není automatické přehrávání na mobilních zařízeních. Je blokováno platformou.
+- Hledání v blízkosti výpadků může způsobit selhání přehrávání.
+- Stažení velkých prezentací může způsobit zamrznutí uživatelského rozhraní.
+- Po ukončení prezentace nelze automaticky přehrát stejný zdroj.
+  - Pro přehrání zdroje po jeho ukončení je nutné znovu nastavit zdroj.
+- Prázdné manifesty můžou způsobovat problémy s přehrávačem.
+  - K tomuto problému může dojít při spuštění živého datového proudu a není-li v manifestu nalezen dostatek bloků dat.
+- Pozice přehrávání je možná mimo rozhraní SeekBar uživatelského rozhraní.
+- Řazení událostí není konzistentní napříč všemi technickými pracovníky.
+- Vlastnost uložená do vyrovnávací paměti není mezi technickými pracovníky konzistentní.
+- nativeControlsForTouch musí mít hodnotu false (výchozí), aby se zabránilo tomu, že objekt nepodporuje vlastnost nebo metodu setControls.
+- Plakáty musí nyní obsahovat absolutní adresy URL.
+- K menšímu estetickému problému může dojít v uživatelském rozhraní při použití režimu vysokého kontrastu zařízení.
+- Adresy URL obsahující "%" nebo "+" v plně dekódování řetězce mohou mít problémy s nastavením zdroje
 
-## <a name="ad-insertion"></a>Vkládání reklam ##
+## <a name="ad-insertion"></a>Vložení reklamy ##
 
-- Reklamy mohou mít problémy s vkládáním (na vyžádání nebo živě), když je v prohlížeči nainstalován blokátor reklam
-- Mobilní zařízení mohou mít problémy s přehráváním reklam.
+- Reklamy můžou mít vložené problémy (na vyžádání nebo živé), když se v prohlížeči nainstaluje blokování reklam.
+- Mobilní zařízení můžou mít problémy s přehráváním reklam.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
-- V okně DVR živého obsahu bude po dokončení obsahu časová osa nadále růst, dokud se nepokusí te se dostat do oblasti nebo nedosáhnete konce prezentace.
-- Živé prezentace ve Firefoxu s povolenou MSE mají některé problémy
-- Datové zdroje, které jsou zvukové nebo video, se nepřehrávají ani prostřednictvím technologie AzureHtml5JS.
-  - Pokud chcete přehrávat datové zdroje bez zvuku nebo videa, můžete tak učinit vložením prázdného zvuku nebo videa pomocí [nástroje Průzkumník Avismu Pro Mediální služby Azure](https://aka.ms/amse)
-    - Návod, jak vložit tichý zvuk, naleznete [zde](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)
+- Když se obsah dokončí, v okně DVR živého obsahu se bude časová osa dál zvětšovat, dokud se nevrátí do oblasti nebo dokud nedosáhne konce prezentace.
+- Živé prezentace v prohlížeči Firefox se zapnutým programem MSE mají problémy
 
-## <a name="flash"></a>Flash ##
+- Prostředky, které jsou jenom zvuk, se nebudou přehrávat přes AzureHtml5JS tech.
+  - Pokud se chcete vrátit zpět k prostředkům bez zvuku, můžete to udělat tak, že vložíte prázdný zvuk pomocí [nástroje Azure Media Services Explorer](https://aka.ms/amse) .
+  - Pokyny pro vložení tichého zvuku najdete [tady](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) .
 
-- Obsah AES se nepřehrává ve verzi Flash 30.0.0.134 kvůli chybě v logice ukládání do mezipaměti společnosti Adobe. Společnost Adobe problém opravila a vydala v článku 30.0.0.154
-- Selhání technologií a http (například 404 síťových timeoutů) bude obnovení přehrávači trvat déle než ostatní technici.
-- Klikněte na video oblasti s flashSS tech nebude hrát / pozastavit přehrávač.
-- Pokud má uživatel nainstalovaný Flash, ale nedává oprávnění k jeho načtení na webu, může dojít k nekonečnému odstřeďování. Je to proto, že hráč si myslí, že plugin je nainstalován a k dispozici, a to si myslí, že plugin běží obsah. JavaScript kód byl odeslán, ale nastavení prohlížeče zablokovaly plugin od spuštění, dokud uživatel přijme výzvu k povolení plugin. K tomu může dojít ve všech prohlížečích.  
+## <a name="flash"></a>Blikající ##
+
+- Obsah AES se nehraje ve verzi Flash 30.0.0.134 z důvodu chyby v logice mezipaměti Adobe. Společnost Adobe vyřešila problém a uvolnila ho v 30.0.0.154
+- Chyby Tech a http (například 404 vypršení časových limitů sítě), přehrávač bude trvat déle než jiné technické pracovníky.
+- Kliknutím na oblast videa s bleskem nehrajete nebo nezastavíte přehrávač.
+- Pokud má uživatel nainstalovaný Flash, ale nemá oprávnění ho načíst na webu, může dojít k nekonečnému odstřeďování. Je to proto, že hráč považuje modul plug-in za nainstalovaný a dostupný a předpokládá, že modul plug-in spouští obsah. Kód jazyka JavaScript byl odeslán, ale nastavení prohlížeče zablokovalo spuštění modulu plug-in, dokud uživatel nepřijme výzvu, aby povolil modul plug-in. Tato situace může nastat ve všech prohlížečích.  
 
 ## <a name="silverlight"></a>Silverlight ##
 
 - Chybějící funkce
-- Selhání technologií a http (například 404 síťových timeoutů) bude obnovení přehrávači trvat déle než ostatní technici.
-- Safari a Firefox na Mac přehrávání s `"http://` Silverlight vyžaduje explicitně definování nebo `https://` pro zdroj.
-- Pokud rozhraní API chybí pro tuto technologii, obecně vrátí null.
-- Pokud má uživatel nainstalovaný Flash, ale nedává oprávnění k jeho načtení na webu, může dojít k nekonečnému odstřeďování. Je to proto, že hráč si myslí, že plugin je nainstalován a k dispozici, a to si myslí, že plugin běží obsah. JavaScript kód byl odeslán, ale nastavení prohlížeče zablokovaly plugin od spuštění, dokud uživatel přijme výzvu k povolení plugin. K tomu může dojít ve všech prohlížečích.  
+- Chyby Tech a http (například 404 vypršení časových limitů sítě), přehrávač bude trvat déle než jiné technické pracovníky.
+- Prohlížeč Safari a Firefox při přehrávání Mac pomocí programu Silverlight vyžaduje `"http://` explicitní `https://` definování nebo pro zdroj.
+- Pokud pro tento technologický technologický objekt chybí rozhraní API, bude obecně vracet hodnotu null.
+- Pokud má uživatel nainstalovaný Flash, ale nemá oprávnění ho načíst na webu, může dojít k nekonečnému odstřeďování. Je to proto, že hráč považuje modul plug-in za nainstalovaný a dostupný a předpokládá, že modul plug-in spouští obsah. Kód jazyka JavaScript byl odeslán, ale nastavení prohlížeče zablokovalo spuštění modulu plug-in, dokud uživatel nepřijme výzvu, aby povolil modul plug-in. Tato situace může nastat ve všech prohlížečích.  
 
 ## <a name="native-html5"></a>Nativní HTML5 ##
 
-- Html5 tech je pouze odesílání canplaythrough událost pro první soubor zdroje.
-- Tato technologie podporuje pouze to, co prohlížeč implementoval.  Některé funkce mohou v této technologii chybět.  
-- Pokud rozhraní API chybí pro tuto technologii, obecně vrátí null.
-- Existují problémy s titulky a titulky na této technologii. Mohou nebo nemusí být k dispozici nebo viditelné na této technologii.
-- S omezenou šířku pásma v HLS / Html5 tech scénář má za následek přehrávání zvuku bez videa.
+- Technologie Html5 tech posílá pouze událost canplaythrough pro první sadu zdrojů.
+- Tento techer podporuje jenom to, co prohlížeč implementuje.  V této technické části můžou chybět některé funkce.  
+- Pokud pro tento technologický technologický objekt chybí rozhraní API, bude obecně vracet hodnotu null.
+- Existují problémy s titulky a titulky na tomto Techu. Tyto pracovníky můžou nebo nemusí být k dispozici ani zobrazitelné na této technické nabídce.
+- Výsledkem omezené šířky pásma ve HLS/technickém scénáři Html5 je přehrávání zvuku bez videa.
 
 ### <a name="microsoft"></a>Microsoft ###
 
-- Přehrávání iE8 v současné době nefunguje z důvodu nekompatibility s ECMAScript 5
-- V aplikaci IE a některých verzích edge nelze zadat celou obrazovku tabulátorem na tlačítko a jeho výběrem nebo pomocí klávesové zkratky F/f.
+- Přehrávání IE8 aktuálně nefunguje v důsledku nekompatibility s ECMAScript 5.
+- V IE a některých verzích hraničních zařízení nemůže být celá obrazovka vložená pomocí klávesy tabulátorem k tlačítku a výběrem nebo pomocí klávesové zkratky F/f.
 
 ## <a name="google"></a>Google ##
 
-- Více profilů kódování ve stejném manifestu má v Chromu některé problémy s přehráváním a nedoporučuje se.
-- Chrome nemůže přehrávat HE-AAC s AzureHtml5JS. Sledujte podrobnosti o [sledovači chyb](https://bugs.chromium.org/p/chromium/issues/detail?id=534301).
-- Od prohlížeče Chrome v58 musí být obsah widevine načten / přehrán zpět pomocí protokolu https:// jinak přehrávání selže.
+- Několik profilů kódování ve stejném manifestu má některé problémy s přehráváním v Chrome a nedoporučuje se.
+- Chrome nemůže přehrát HE-AAC pomocí AzureHtml5JS. Sledujte podrobnosti o [sledování chyb](https://bugs.chromium.org/p/chromium/issues/detail?id=534301).
+- Pro Chrome v58 se musí obsah Widevine načíst nebo přehrát prostřednictvím protokolu https://. jinak přehrávání selže.
 
 ## <a name="mozilla"></a>Mozilla ##
 
-- Přepínač zvukového datového proudu vyžaduje, aby zvukové proudy měly při používání AzureHtml5JS stejná soukromá data kodeku. Firefox platforma vyžaduje toto.
+- Přepínač zvukového streamu vyžaduje, aby při použití AzureHtml5JS používaly zvukové streamy se stejnými soukromými daty. Platforma Firefox to vyžaduje.
 
 ## <a name="apple"></a>Apple ##
 
-- Safari na Macu často umožňuje režim Spořiče energie ve výchozím nastavení s nastavením "Stop plug-ins pro úsporu energie", který blokuje pluginy jako Flash a Silverlight, když se domnívají, že není ve prospěch uživatele. Tento blok neblokuje plugin existuje, pouze schopnosti. Vzhledem k výchozí techOrder, to může způsobit problémy při pokusu o přehrávání
-  - Zmírnění rizika 1: Pokud je přehrávač videa "vpředu a uprostřed" (hranice 3000 x 3000 pixelů začínající v levém horním rohu dokumentu), měl by se stále přehrávat.
-  - Zmírnění 2: Změna techOrder pro Safari být ["azureHtml5JS", "html5"]. Toto zmírnění má důsledky tím, že nedostává všechny funkce, které jsou k dispozici v technologii FlashSS.
-- Obsah PlayReady přes Silverlight může mít problémy s přehráváním v Safari.
-- AES a omezený obsah tokenu se nepřehrává pomocí iOS a starších zařízení Android.
-  - K dosažení tohoto scénáře musí být do služby přidán proxy server.
-- Výchozí vzhled pro iOS Phone se promítá.
-- Přehrávání iPhone se vždy odehrává v nativním přehrávači na celou obrazovku.
-  - Funkce, včetně titulků, nemusí v tomto neinline přehrávání přetrvávat.
-- Po ukončení živé prezentace zařízení se systémem iOS prezentaci řádně neukončí.
-- iOS neumožňuje funkce DVR.
-- Přepínač zvukového datového proudu iOS lze provést pouze v případě, že nativní přehrávač iOS uI a vyžaduje zvukové proudy, které mají stejná soukromá data kodeku
-- Starší verze Safari mohou mít potenciálně problémy s přehráváním živých přenosů.
+- Prohlížeč Safari v systému Mac ve výchozím nastavení často povoluje režim napájení pomocí nastavení "zastavit moduly plug-in, aby ušetřil napájení", které blokuje moduly plug-in, jako je Flash a Silverlight, pokud se domnívají, že se uživateli nelíbí. Tento blok neblokuje existující, jenom možnosti modulu plug-in. S ohledem na výchozí techOrder to může způsobit problémy při pokusu o přehrání.
+  - Zmírnění 1: Pokud je přehrávač videa "front a Center" (v rámci hranice 3000 x 3000 pixelů, který začíná v levém horním rohu dokumentu), měl by se pořád přehrávat.
+  - Zmírnění 2: Změňte techOrder pro Safari na ["azureHtml5JS", "HTML5"]. Toto zmírnění má za následek nezískání všech funkcí, které jsou k dispozici na technické stránce Flash.
+- Obsah PlayReady prostřednictvím Silverlight může mít problémy, které se přehrávají v Safari.
+- Obsah AES a omezeného tokenu se nehraje pomocí zařízení se systémem iOS a starším.
+  - Aby bylo možné dosáhnout tohoto scénáře, musí být do vaší služby přidán proxy server.
+- Výchozí vzhled pro telefon iOS se zobrazuje prostřednictvím.
+- přehrávání iPhonu se vždycky objevuje v celoobrazovkovém režimu na celé obrazovce.
+  - Funkce, včetně titulků, se nemusí uchovávat v tomto nevloženém přehrávání.
+- Když živá prezentace skončí, zařízení se systémem iOS nebudou prezentace správně ukončena.
+- iOS nepovoluje možnost DVR.
+- přepínač zvukového streamu iOS se dá udělat jenom v případě, že je v nativním uživatelském rozhraní iOS a vyžaduje, aby zvukové proudy měly stejné privátní údaje.
+- Starší verze prohlížeče Safari můžou mít problémy s přehráváním živých streamů.
 
-## <a name="older-android"></a>Starší Android ##
+## <a name="older-android"></a>Starší verze Androidu ##
 
-- AES a omezený obsah tokenu se nepřehrává pomocí iOS a starších zařízení Android.
-  - K dosažení tohoto scénáře musí být do služby přidán proxy server.
+- Obsah AES a omezeného tokenu se nehraje pomocí zařízení se systémem iOS a starším.
+  - Aby bylo možné dosáhnout tohoto scénáře, musí být do vaší služby přidán proxy server.
 
 ## <a name="next-steps"></a>Další kroky ##
 
-- [Rychlý start přehrávače médií Azure](azure-media-player-quickstart.md)
+- [Rychlý Start Azure Media Player](azure-media-player-quickstart.md)

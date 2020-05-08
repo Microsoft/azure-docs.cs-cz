@@ -1,23 +1,17 @@
 ---
-title: Pokyny pro ladění výkonu Azure Data Lake Storage Gen1é zaplavování Microsoft Docs
-description: Pokyny pro ladění výkonu Azure Data Lake Storage Gen1
-services: data-lake-store
-documentationcenter: ''
+title: Optimalizace výkonu – vyplavení pomocí Azure Data Lake Storage Gen1
+description: Přečtěte si pokyny k ladění výkonu pro cluster s více podmnožinami v Azure Data Lake Storage Gen1.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61436473"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691650"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Pokyny k ladění výkonu pro zaplavení v HDInsight a Azure Data Lake Storage Gen1
 
@@ -42,7 +36,7 @@ Můžete zvýšit výkon tím, že zvýšíte souběžnost vstupně-výstupních
 
 Například v clusteru se čtyřmi virtuálními počítači a 4 pracovními procesy, 32 Spout vykonavatelé a 32 úlohy Spout 256 a prováděcí moduly a úlohy 512, zvažte následující:
 
-Každý správce, který je pracovním uzlem, má jeden proces JVM (work Java Virtual Machine). Tento proces JVM spravuje 4 vlákna Spout a vlákna 64. V každém vlákně se úlohy spouštějí postupně. V předchozí konfiguraci každé vlákno Spout má 1 úlohu a každé vlákno šroubu má 2 úlohy.
+Každý správce, který je pracovním uzlem, má jeden proces JVM (work Java Virtual Machine). Tento proces JVM spravuje 4 vlákna Spout a vlákna 64. V každém vlákně se úlohy spouštějí postupně. V předchozí konfiguraci má každé vlákno Spout jeden úkol a každé vlákno šroubu má dvě úlohy.
 
 V rámci zaplavování jsou zde různé komponenty a jejich vliv na úroveň paralelismu, které máte:
 * Hlavní uzel (s názvem Nimbus v zaplavě) slouží k odesílání a správě úloh. Tyto uzly nemají žádný vliv na stupeň paralelismu.
@@ -59,15 +53,15 @@ Při práci s Data Lake Storage Gen1 dosáhnete nejlepšího výkonu, pokud prov
 
 ### <a name="example-topology"></a>Ukázková topologie
 
-Předpokládejme, že máte cluster s 8 uzly pracovního procesu s D13v2 virtuálním počítačem Azure. Tento virtuální počítač má 8 jader, takže mezi uzly 8 pracovních procesů máte 64 celkem jader.
+Předpokládejme, že máte k dispozici osm clusterů pracovních uzlů s virtuálním počítačem s D13v2 Azure. Tento virtuální počítač má osm jader, takže mezi osmi pracovními uzly máte 64 celkem jader.
 
-Řekněme, že provedeme 8 vláken na jádro. S 64 jádry to znamená, že chceme instance vykonavatele 512 Total (tzn. Threads). V takovém případě řekněme, že začneme s jedním JVM na jeden virtuální počítač a hlavně pomocí souběžnosti vláken v rámci JVM dosáhnout souběžnosti. To znamená, že potřebujeme 8 pracovních úkolů (jeden pro každý virtuální počítač Azure) a prováděcí moduly 512. Vzhledem k této konfiguraci se nevyužívá k tomu, že se proces rozšíří pracovní procesy rovnoměrně za pracovní uzly (označované také jako uzly vedoucího procesu), přičemž každý pracovní uzel 1 JVM. V rámci vedoucích se v rámci nadřízených procesů pokusí distribuovat vykonavatele rovnoměrně mezi vedoucími, přičemž každý nadřízený (to znamená JVM) 8 vláken každé z nich.
+Řekněme, že pro každé jádro provedeme osm vláken šroubů. S 64 jádry to znamená, že chceme instance vykonavatele 512 Total (tzn. Threads). V takovém případě řekněme, že začneme s jedním JVM na jeden virtuální počítač a hlavně pomocí souběžnosti vláken v rámci JVM dosáhnout souběžnosti. To znamená, že potřebujeme osm úloh pracovních procesů (jeden pro každý virtuální počítač Azure) a prováděcí moduly 512. Vzhledem k této konfiguraci se nevyužívá k tomu, že se proces rozšíří pracovní procesy rovnoměrně za pracovní uzly (označované také jako uzly vedoucího procesu), čímž se každý pracovní uzel jednou JVM. V rámci vedoucích se v rámci nadřízených procesů pokusí distribuovat vykonavatele rovnoměrně mezi vedoucími, přičemž každý nadřízený (to znamená JVM) osm vláken každé z nich.
 
 ## <a name="tune-additional-parameters"></a>Ladění dalších parametrů
 Po použití základní topologie můžete zvážit, zda chcete upravit některý z parametrů:
 * **Počet JVMs na pracovní uzel** Pokud máte rozsáhlou datovou strukturu (například vyhledávací tabulku), kterou hostuje paměť, každý JVM vyžaduje samostatnou kopii. Případně můžete datovou strukturu použít napříč mnoha vlákny, pokud máte méně JVMs. V případě vstupně-výstupních operací šroubu se počet JVMs neprovádí jako rozdíl mezi počtem vláken přidaných mezi tyto JVMs. Pro zjednodušení je dobré mít jeden JVM na pracovní proces. V závislosti na tom, co vaše šroub dělá nebo jaké zpracování aplikace potřebujete, ale možná budete muset změnit toto číslo.
 * **Počet prováděcích modulů Spout** Vzhledem k tomu, že předchozí příklad používá šrouby pro zápis do Data Lake Storage Gen1, počet spoutů není přímo relevantní pro výkon šroubu. V závislosti na množství zpracování nebo vstupně-výstupních operacích v Spout je ale vhodné vyladit spoutů pro nejlepší výkon. Ujistěte se, že máte dostatek spoutů, aby bylo možné podržet šrouby obsazené. Výstupní sazby spoutů by měly odpovídat propustnosti šrouby. Skutečná konfigurace závisí na Spout.
-* **Počet úkolů.** Každý šroub se spouští jako jedno vlákno. Další úkoly na šroub neposkytují žádnou další souběžnost. V takovém případě je v případě, že váš proces potvrzování řazené kolekce členů používá velký podíl času spuštění vaší služby, jediný čas, kdy je výhoda výhodná. Před odesláním potvrzení ze šroubu je vhodné seskupit mnoho řazených kolekcí členů do většího připojení. Ve většině případů ale více úkolů neposkytuje žádné další výhody.
+* **Počet úkolů.** Každý šroub se spouští jako jedno vlákno. Další úkoly na šroub neposkytují žádnou další souběžnost. V takovém případě je v případě, že váš proces potvrzování řazené kolekce členů používá velký podíl času spuštění vaší služby, jediný čas, kdy je výhoda výhodná. Před odesláním potvrzení ze svého šroubu je dobré seskupit mnoho řazených kolekcí členů do většího připojení. Ve většině případů ale více úkolů neposkytuje žádné další výhody.
 * **Místní nebo náhodné seskupení.** Pokud je toto nastavení povoleno, budou řazeny do šrouby v rámci stejného pracovního procesu. Tím se sníží komunikace mezi procesy a síťové hovory. Tento postup je doporučený pro většinu topologií.
 
 Tento základní scénář je dobrým výchozím bodem. Otestujte vlastními daty a selepšit předchozí parametry, abyste dosáhli optimálního výkonu.
@@ -76,7 +70,7 @@ Tento základní scénář je dobrým výchozím bodem. Otestujte vlastními dat
 
 K ladění Spout můžete upravit následující nastavení.
 
-- **Časový limit řazené kolekce členů: topologie. Message. Timeout. sekund** Toto nastavení určuje dobu, po kterou je zpráva dokončena, a příjem potvrzení, než se bude považovat za neúspěšné.
+- **Časový limit řazené kolekce členů: topologie. Message. Timeout. sekund** Toto nastavení určuje dobu, po kterou se zpráva dokončí, a před tím, než se považuje za neúspěšnou, obdržení potvrzení.
 
 - **Maximální velikost paměti na pracovní proces: Work. childopts**. Toto nastavení umožňuje určit další parametry příkazového řádku pro pracovníky Java. Nejčastěji používané nastavení je XmX, které určuje maximální velikost paměti přidělené haldě JVM.
 
@@ -85,7 +79,7 @@ K ladění Spout můžete upravit následující nastavení.
   Dobrým výpočtem je odhad velikosti každé řazené kolekce členů. Pak Zjistěte, kolik paměti jedno vlákno spouto. Celková paměť přidělená vláknu, dělená touto hodnotou, by měla poskytnout horní mez pro parametr Max Spout Pending.
 
 ## <a name="tune-the-bolt"></a>Optimalizace šroubu
-Při psaní do Data Lake Storage Gen1 nastavte zásady synchronizace velikosti (vyrovnávací paměť na straně klienta) na 4 MB. Vyprázdnit nebo HSync () se pak provede jenom v případě, že je velikost vyrovnávací paměti v této hodnotě. Ovladač Data Lake Storage Gen1 na virtuálním počítači pracovního procesu automaticky provádí ukládání do vyrovnávací paměti, pokud explicitně neprovedete HSync ().
+Při psaní do Data Lake Storage Gen1 nastavte zásady synchronizace velikosti (vyrovnávací paměť na straně klienta) na 4 MB. Vyprázdnit nebo HSync () se pak provede jenom v případě, že je velikost vyrovnávací paměti na této hodnotě. Ovladač Data Lake Storage Gen1 na virtuálním počítači pracovního procesu automaticky provádí ukládání do vyrovnávací paměti, pokud explicitně neprovedete HSync ().
 
 Výchozí hodnota Data Lake Storage Gen1 pro zaplavování má parametr zásad synchronizace velikosti (fileBufferSize), který se dá použít k vyladění tohoto parametru.
 
@@ -95,7 +89,7 @@ V případě topologií náročných na vstupně-výstupní operace je vhodné, 
 
 V systému se Spout nachází v řazené kolekci členů, dokud není explicitně potvrzeno šroubem. Pokud je v rámci pole řazená kolekce členů, ale ještě nebyla potvrzena, Spout nemusí být trvale Data Lake Storage Gen1 back-endu. Po potvrzení řazené kolekce členů může Spout zaručit trvalost a pak může odstranit zdrojová data z jakéhokoli zdroje, ze kterého čte.  
 
-Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako jeden zápis na 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
+Pro nejlepší výkon na Data Lake Storage Gen1 mít vyrovnávací paměť šroubů 4 MB dat řazené kolekce členů. Pak zapište do Data Lake Storage Gen1 back-endu jako jeden zápis o velikosti 4 MB. Po úspěšném zapsání dat do úložiště (voláním hflush ()) může šroub potvrdit data zpět do Spout. To je to, co tady je uvedený příklad. Je také přijatelné, aby obsahoval větší počet řazených kolekcí členů před provedením volání hflush () a potvrzenými řazenými kolekcemi členů. To ale zvyšuje počet řazených kolekcí členů v letu, že Spout potřebuje držet, a zvyšuje tak množství paměti vyžadované na JVM.
 
 > [!NOTE]
 > Aplikace mohou mít požadavek na potvrzení řazených kolekcí členů častěji (u velikostí dat menších než 4 MB) pro jiné účely bez výkonu. To však může ovlivnit propustnost vstupně-výstupních operací do back-endu úložiště. Pečlivě navážíte tyto kompromisy proti vstupně-výstupnímu výkonu šroubů.
@@ -104,14 +98,14 @@ Pokud příchozí míra řazených kolekcí členů není vysoká, takže vyrovn
 * Snížení počtu šroubů, aby bylo možné vyplnit méně vyrovnávacích pamětí.
 * Se zásadami založenými na čase nebo na základě počtu, kde se hflush () aktivuje při každém vyprázdnění x nebo každých y milisekund, a řazené kolekce členů se potvrzují zpátky.
 
-Všimněte si, že propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr Topology. Message. timeout_secs, aby řazené kolekce členů nevypršel časový limit při získávání nebo zpracování vyrovnávací paměti.
+Propustnost v tomto případě je nižší, ale s pomalou mírou událostí, maximální propustnost není největším cílem. Tato omezení pomáhají snížit celkovou dobu, kterou bude trvat, než se řazená kolekce členů dotéká do obchodu. Tato situace může nastat, pokud chcete, aby kanál v reálném čase byl i s nízkou rychlostí událostí. Všimněte si také, že pokud je vaše příchozí míra řazené kolekce členů nízká, měli byste upravit parametr Topology. Message. timeout_secs, aby řazené kolekce členů nevypršel časový limit při získávání nebo zpracování vyrovnávací paměti.
 
 ## <a name="monitor-your-topology-in-storm"></a>Monitorování topologie v prostředí s více podsady  
 I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském rozhraní. Tady jsou hlavní parametry, které se mají najít:
 
 * **Celková latence spuštění procesu.** Toto je průměrná doba, kterou bude jedna řazená kolekce členů vygenerována Spout, zpracována šroubem a potvrzena.
 
-* **Celková latence procesu šroubů** Jedná se o průměrnou dobu trvání řazené kolekce členů na šroubu, dokud neobdrží potvrzení.
+* **Celková latence procesu šroubů** Jedná se o průměrný čas strávený řazenou kolekcí členů na šroubu, dokud neobdrží potvrzení.
 
 * **Celková latence spuštění šroubu** Toto je průměrný čas strávený šroubem v metodě Execute.
 

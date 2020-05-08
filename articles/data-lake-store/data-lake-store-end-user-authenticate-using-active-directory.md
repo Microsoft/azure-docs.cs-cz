@@ -1,29 +1,25 @@
 ---
-title: 'Ověřování koncových uživatelů: Azure Data Lake Storage Gen1 s Azure Active Directory | Microsoft Docs'
+title: Ověřování koncových uživatelů – Data Lake Storage Gen1 s využitím Azure AD
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.custom: has-adal-ref
+ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66234057"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688243"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 pomocí Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [Ověřování služba-služba](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-> 
-> 
+>
+>
 
 Azure Data Lake Storage Gen1 používá pro ověřování Azure Active Directory. Před vytvořením aplikace, která funguje s Data Lake Storage Gen1 nebo Azure Data Lake Analytics, se musíte rozhodnout, jak aplikaci ověřit pomocí Azure Active Directory (Azure AD). K dispozici jsou dvě hlavní možnosti:
 
@@ -38,11 +34,11 @@ Tento článek pojednává o tom, jak vytvořit **nativní aplikaci Azure AD pro
 * Předplatné Azure. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 * ID vašeho předplatného. Můžete ho načíst z Azure Portal. Například je k dispozici v okně Data Lake Storage Gen1 účet.
-  
+
     ![Získat ID předplatného](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Název domény služby Azure AD. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. Na snímku obrazovky níže je název domény **contoso.onmicrosoft.com**a identifikátor GUID v závorkách je ID tenanta. 
-  
+* Název domény služby Azure AD. Můžete ho načíst tak, že najedete myší v pravém horním rohu Azure Portal. Na snímku obrazovky níže je název domény **contoso.onmicrosoft.com**a identifikátor GUID v závorkách je ID tenanta.
+
     ![Získat doménu AAD](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 * Vaše ID tenanta Azure. Pokyny k načtení ID tenanta najdete v tématu [získání ID tenanta](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
@@ -53,12 +49,12 @@ Tento mechanismus ověřování je doporučený postup, pokud chcete, aby se kon
 Výsledkem přihlášení koncového uživatele je, že aplikace má přístup k přístupovému tokenu a obnovovacímu tokenu. Přístupový token se připojí ke všem žádostem provedeným na Data Lake Storage Gen1 nebo Data Lake Analytics a ve výchozím nastavení platí pro jednu hodinu. Obnovovací token lze použít k získání nového přístupového tokenu a ve výchozím nastavení je platný až pro dva týdny. Pro přihlášení koncového uživatele můžete použít dva různé přístupy.
 
 ### <a name="using-the-oauth-20-pop-up"></a>Použití automaticky otevíraného okna OAuth 2,0
-Vaše aplikace může aktivovat automaticky otevírané okno pro autorizaci OAuth 2,0, ve kterém může koncový uživatel zadat své přihlašovací údaje. Toto automaticky otevírané okno funguje v případě potřeby i s procesem Azure AD Authentication (2FA). 
+Vaše aplikace může aktivovat automaticky otevírané okno pro autorizaci OAuth 2,0, ve kterém může koncový uživatel zadat své přihlašovací údaje. Toto automaticky otevírané okno funguje v případě potřeby i s procesem Azure AD Authentication (2FA).
 
 > [!NOTE]
 > Tato metoda není ještě podporovaná v knihovně ADAL (Azure AD Authentication Library) pro Python nebo Java.
-> 
-> 
+>
+>
 
 ### <a name="directly-passing-in-user-credentials"></a>Přímé předání přihlašovacích údajů uživatele
 Vaše aplikace může přímo poskytnout přihlašovací údaje uživatele do služby Azure AD. Tato metoda funguje jenom s uživatelskými účty ID organizace. není kompatibilní s uživatelskými účty osobní/"Live ID", včetně účtů končících @outlook.com nebo. @live.com Tato metoda navíc není kompatibilní s uživatelskými účty, které vyžadují dvojúrovňové ověřování Azure AD (2FA).
@@ -106,7 +102,7 @@ Pro načtení identifikátoru URI přesměrování proveďte následující krok
 3. V okně **Přidat přístup přes rozhraní API** klikněte na **Vybrat rozhraní API**, klikněte na **Azure Data Lake**a pak klikněte na **Vybrat**.
 
     ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
- 
+
 4.  V okně **Přidat přístup přes rozhraní API** klikněte na **vybrat oprávnění**. Zaškrtnutím políčka udělíte **úplný přístup k Data Lake Store**a potom klikněte na **Vybrat**.
 
     ![ID klienta](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
@@ -114,7 +110,7 @@ Pro načtení identifikátoru URI přesměrování proveďte následující krok
     Klikněte na **Done** (Hotovo).
 
 5. Zopakováním posledních dvou kroků udělíte taky oprávnění pro **Windows Azure rozhraní API pro správu služeb** .
-   
+
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste vytvořili nativní aplikaci Azure AD a shromáždili jste potřebné informace v klientských aplikacích, které vytváříte pomocí sady .NET SDK, sady Java SDK, REST API atd. Nyní můžete přejít k následujícím článkům, které se seznámí s postupem použití webové aplikace Azure AD k prvnímu ověření pomocí Data Lake Storage Gen1 a následnému provádění dalších operací na Storu.
 
@@ -122,4 +118,3 @@ V tomto článku jste vytvořili nativní aplikaci Azure AD a shromáždili jste
 * [Ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 * [Ověřování koncových uživatelů pomocí Data Lake Storage Gen1 s využitím Pythonu](data-lake-store-end-user-authenticate-python.md)
 * [Ověřování koncových uživatelů s Data Lake Storage Gen1 pomocí REST API](data-lake-store-end-user-authenticate-rest-api.md)
-

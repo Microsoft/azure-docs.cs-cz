@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637776"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732032"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor nejčastějších dotazech
 
@@ -226,7 +226,7 @@ Plán organizace se zaúčtuje za každý den, kdy každý uzel webového server
 
 [Přečtěte si Cenový tarif](https://azure.microsoft.com/pricing/details/application-insights/).
 
-### <a name="how-much-does-it-cost"></a>Jaké jsou náklady?
+### <a name="how-much-does-it-cost"></a>Kolik to stojí?
 
 * Otevřete **stránku využití a odhadované náklady** v prostředku Application Insights. K dispozici je graf nedávného využití. Pokud chcete, můžete nastavit limit datového svazku.
 * Otevřete okno [fakturace Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) , ve kterém se zobrazí vaše účty napříč všemi prostředky.
@@ -254,6 +254,10 @@ Přečtěte si [poznámky k verzi](app/release-notes.md) pro sadu SDK odpovídaj
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Jak můžu změnit, na který prostředek Azure můj projekt odesílá data?
 V Průzkumník řešení klikněte pravým tlačítkem `ApplicationInsights.config` myši a vyberte možnost **aktualizovat Application Insights**. Data můžete odeslat do existujícího nebo nového prostředku v Azure. Průvodce aktualizací změní klíč instrumentace v souboru ApplicationInsights. config, který určuje, kde sada SDK serveru odesílá vaše data. Pokud nevyberete možnost Aktualizovat vše, změní se také klíč, ve kterém se zobrazí na webových stránkách.
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Můžu v nasazeních Azure Resource Manager použít `providers('Microsoft.Insights', 'components').apiVersions[0]` ?
+
+Tuto metodu nedoporučujeme používat pro naplnění verze rozhraní API. Nejnovější verze může představovat verze Preview, které mohou obsahovat zásadní změny. I s novějšími verzemi bez verze Preview nejsou verze rozhraní API vždycky zpětně kompatibilní se stávajícími šablonami, nebo v některých případech nemusí být verze rozhraní API k dispozici pro všechny odběry.
 
 ### <a name="what-is-status-monitor"></a>Co je Monitorování stavu?
 
@@ -412,7 +416,7 @@ Nezáleží na tom, kde je váš prostředek Application Insights hostovaný. Z�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Můžu na portálu Application Insights odeslat telemetrii?
 
-Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](app/api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app/platforms.md). Tyto sady SDK zpracovávají ukládání do vyrovnávací paměti, kompresi, omezování, opakování a tak dále. [Schéma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) příjmu a [protokol koncového bodu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) jsou ale veřejné.
+Doporučujeme používat naše sady SDK a používat [rozhraní API SDK](app/api-custom-events-metrics.md). Existují varianty sady SDK pro různé [platformy](app/platforms.md). Tyto sady SDK zpracovávají ukládání do vyrovnávací paměti, kompresi, omezování, opakování a tak dále. [Schéma](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) příjmu a [protokol koncového bodu](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) jsou ale veřejné.
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Můžu monitorovat intranetový webový server?
 

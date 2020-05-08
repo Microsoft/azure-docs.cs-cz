@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137658"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692450"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 
@@ -24,6 +24,11 @@ Kromě dat, která obsahují, podporují objekty blob vlastnosti systému a uži
 - **Vlastnosti systému**: systémové vlastnosti existují v každém prostředku úložiště objektů BLOB. Některé z nich je možné číst nebo nastavovat, zatímco jiné jsou jen pro čtení. V rámci pokrývá některé vlastnosti systému odpovídají určitým standardním hlavičkám HTTP. Klientská knihovna Azure Storage pro .NET uchovává tyto vlastnosti za vás.
 
 - **Uživatelsky definovaná metadata**: uživatelsky definovaná metadata se skládají z jedné nebo více párů název-hodnota, které zadáte pro prostředek BLOB Storage. Metadata můžete použít k ukládání dalších hodnot s prostředkem. Hodnoty metadat jsou pouze pro vaše vlastní účely a neovlivňují způsob, jakým se prostředek chová.
+
+> [!NOTE]
+> Značky indexu objektů BLOB také poskytují možnost ukládat libovolné uživatelsky definované atributy klíč/hodnota společně s prostředkem úložiště objektů BLOB. I když se podobá metadatům, jsou automaticky indexovány a vytvořeny pouze značky indexu objektů BLOB pomocí nativní služby BLOB Service. Metadata nelze nativně indexovat a dotazovat, pokud nevyužíváte samostatnou službu, například Azure Search.
+>
+> Další informace o této funkci najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 Načítání metadat a hodnot vlastností prostředku BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody `FetchAttributes` nebo `FetchAttributesAsync` . Výjimkou z tohoto pravidla je, že `Exists` metody `ExistsAsync` a volají odpovídající `FetchAttributes` metodu v rámci pokrývání. Při volání jedné z těchto metod není nutné volat `FetchAttributes`současně.
 

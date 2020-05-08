@@ -9,12 +9,12 @@ ms.custom: subject-moving-resources
 ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606805"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690491"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>Přesunutí oboru názvů Azure Event Hubs do jiné oblasti
 Existují různé scénáře, ve kterých byste chtěli přesunout existující Event Hubs obor názvů z jedné oblasti do druhé. Například můžete chtít vytvořit obor názvů se stejnou konfigurací pro testování. V rámci [Plánování zotavení po havárii](event-hubs-geo-dr.md#setup-and-failover-flow)možná budete chtít vytvořit také sekundární obor názvů v jiné oblasti.
@@ -27,7 +27,7 @@ Existují různé scénáře, ve kterých byste chtěli přesunout existující 
 - Zajistěte, aby služby a funkce používané vaším účtem byly podporovány v cílové oblasti.
 - V případě funkcí verze Preview se ujistěte, že je vaše předplatné na seznamu povolených pro cílovou oblast.
 - Pokud jste povolili **funkci zachycení** pro centra událostí v oboru názvů, přesuňte účty [Azure Storage nebo Azure Data Lake Store gen 2](../storage/common/storage-account-move.md) nebo [Azure Data Lake Store 1.1](../data-lake-store/data-lake-store-migration-cross-region.md) . teprve potom přesuňte obor názvů Event Hubs. Můžete také přesunout skupinu prostředků, která obsahuje obory názvů úložiště i Event Hubs do jiné oblasti, a to pomocí následujících kroků, které jsou podobné těm, které jsou popsané v tomto článku. 
-- Pokud je obor názvů Event Hubs v **clusteru Event Hubs**, vytvořte před provedením kroků v tomto článku [vyhrazený cluster](event-hubs-dedicated-cluster-create-portal.md) v **cílové oblasti** . 
+- Pokud je obor názvů Event Hubs v **clusteru Event Hubs**, vytvořte před provedením kroků v tomto článku [vyhrazený cluster](event-hubs-dedicated-cluster-create-portal.md) v **cílové oblasti** . Pomocí šablony pro rychlé zprovoznění [na GitHubu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/) můžete také vytvořit cluster Event Hubs. V šabloně odeberte část s oborem názvů JSON, aby se vytvořil pouze cluster. 
 
 ## <a name="prepare"></a>Příprava
 Začněte tím, že vyexportujete šablonu Správce prostředků. Tato šablona obsahuje nastavení, která popisují váš obor názvů Event Hubs.

@@ -1,10 +1,11 @@
 ---
-title: 'Kurz: zřizování uživatelů pro LucidChart – Azure AD'
-description: Naučte se konfigurovat Azure Active Directory pro automatické zřízení a zrušení zřízení uživatelských účtů pro LucidChart.
+title: 'Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů pomocí Azure Active Directory | Microsoft Docs'
+description: Přečtěte si, jak automaticky zřídit a zrušit zřízení uživatelských účtů z Azure AD až po Lucidchart.
 services: active-directory
 documentationcenter: ''
-author: ArvindHarinder1
-manager: CelesteDG
+author: zchia
+writer: zchia
+manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -12,88 +13,161 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d946c6e257c7676178f9bc3c234f66ba6fe622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 01/13/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77057324"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690548"
 ---
-# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace LucidChart pro Automatické zřizování uživatelů
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Kurz: Konfigurace Lucidchart pro Automatické zřizování uživatelů
 
-Cílem tohoto kurzu je Ukázat kroky, které musíte v LucidChart a Azure AD použít k automatickému zřízení a zrušení zřízení uživatelských účtů z Azure AD až LucidChart. 
+Tento kurz popisuje kroky, které je třeba provést v Lucidchart i Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny, které se [Lucidchart](https://www.lucidchart.com/user/117598685#/subscriptionLevel) pomocí služby zřizování Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md). 
+
+
+## <a name="capabilities-supported"></a>Podporované funkce
+> [!div class="checklist"]
+> * Vytváření uživatelů v Lucidchart
+> * Odebrat uživatele v Lucidchart, když už nevyžadují přístup
+> * Udržování uživatelských atributů synchronizovaných mezi Azure AD a Lucidchart
+> * Zřizování skupin a členství ve skupinách v Lucidchart
+> * [Jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial) k Lucidchart (doporučeno)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář popsaný v tomto kurzu předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu předpokládá, že už máte následující požadavky:
 
-* Tenant Azure Active Directory
-* Tenant LucidChart s [plánem Enterprise](https://www.lucidchart.com/user/117598685#/subscriptionLevel) nebo lepším povoleným
-* Uživatelský účet v LucidChart s oprávněními správce
+* [Tenant Azure AD](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Uživatelský účet ve službě Azure AD s [oprávněním](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) ke konfiguraci zřizování (například správce aplikace, správce cloudové aplikace, vlastník aplikace nebo globální správce). 
+* LucidChart tenant s [plánem Enterprise](https://www.lucidchart.com/user/117598685#/subscriptionLevel) nebo lepším povolením.
+* Uživatelský účet v LucidChart s oprávněními správce.
 
-## <a name="assigning-users-to-lucidchart"></a>Přiřazování uživatelů k LucidChart
+## <a name="step-1-plan-your-provisioning-deployment"></a>Krok 1. Plánování nasazení zřizování
+1. Přečtěte si [, jak služba zřizování funguje](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+2. Určete, kdo bude v [oboru pro zřizování](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Určete, jaká data se mají [mapovat mezi Azure AD a Lucidchart](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory používá koncept nazvaný "přiřazení" k určení uživatelů, kteří mají získat přístup k vybraným aplikacím. V kontextu automatického zřizování uživatelských účtů se synchronizují jenom uživatelé a skupiny přiřazené k aplikaci v Azure AD.
+## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>Krok 2. Konfigurace Lucidchart pro podporu zřizování pomocí Azure AD
 
-Než nakonfigurujete a povolíte službu zřizování, musíte se rozhodnout, co uživatelé a skupiny ve službě Azure AD reprezentují uživatelé, kteří potřebují přístup k aplikaci LucidChart. Po rozhodnutí můžete tyto uživatele přiřadit do aplikace LucidChart podle pokynů uvedených tady:
+1. Přihlaste se ke [konzole pro správu Lucidchart](https://www.lucidchart.com). Přejděte do **týmové > integrace aplikací**.
 
-[Přiřazení uživatele nebo skupiny k podnikové aplikaci](../manage-apps/assign-user-or-group-access-portal.md)
+      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/team1.png)
 
-### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Důležité tipy pro přiřazení uživatelů k LucidChart
+2. Přejděte na **SCIM**.
 
-* Doporučuje se, abyste k testování konfigurace zřizování přiřadili jednoho uživatele Azure AD LucidChart. Další uživatele a skupiny můžete přiřadit později.
+      ![Lucidchart SCIM](./media/lucidchart-provisioning-tutorial/scim.png)
 
-* Když přiřadíte uživatele k LucidChart, musíte vybrat buď roli **uživatele** , nebo jinou platnou roli specifickou pro aplikaci (Pokud je dostupná) v dialogovém okně přiřazení. **Výchozí přístupová** role nefunguje pro zřizování a tito uživatelé se přeskočí.
+3. Posuňte se dolů a zobrazte **token nosiče** a **základní adresu URL Lucidchart**. Zkopírujte a uložte **token nosiče**. Tato hodnota se zadá do pole **tajný token** * na kartě zřizování aplikace LucidChart ve Azure Portal. 
 
-## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurace zřizování uživatelů na LucidChart
+      ![Token Lucidchart](./media/lucidchart-provisioning-tutorial/token.png)
 
-V této části se seznámíte s připojením k rozhraní API pro zřizování uživatelských účtů ve službě Azure AD a konfigurací služby zřizování k vytváření, aktualizaci a zakázání přiřazených uživatelských účtů v LucidChart na základě přiřazení uživatelů a skupin ve službě Azure AD.
+## <a name="step-3-add-lucidchart-from-the-azure-ad-application-gallery"></a>Krok 3. Přidání Lucidchart z Galerie aplikací Azure AD
 
-> [!TIP]
-> Můžete se také rozhodnout povolit jednotné přihlašování založené na SAML pro LucidChart, a to podle pokynů uvedených v tématu [Azure Portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatickém zřizování, i když se tyto dvě funkce navzájem doplňují.
+Přidejte Lucidchart z Galerie aplikací Azure AD a začněte spravovat zřizování pro Lucidchart. Pokud jste dříve nastavili Lucidchart pro jednotné přihlašování, můžete použít stejnou aplikaci. Doporučuje se ale při počátečním testování integrace vytvořit samostatnou aplikaci. Další informace o přidání aplikace z Galerie [najdete tady](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app). 
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurace automatického zřizování uživatelských účtů na LucidChart ve službě Azure AD
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Krok 4. Definujte, kdo bude v oboru pro zřizování. 
 
-1. V [Azure Portal](https://portal.azure.com)přejděte do části **Azure Active Directory > Enterprise Apps > všechny aplikace** .
+Služba zřizování Azure AD umožňuje obor, který se zřídí na základě přiřazení do aplikace, nebo na základě atributů uživatele nebo skupiny. Pokud se rozhodnete určit rozsah, který se zřídí pro vaši aplikaci na základě přiřazení, můžete k přiřazení uživatelů a skupin k aplikaci použít následující [postup](../manage-apps/assign-user-or-group-access-portal.md) . Pokud se rozhodnete obor, který se zřídí výhradně na základě atributů uživatele nebo skupiny, můžete použít filtr oboru, jak je popsáno [zde](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
 
-2. Pokud jste už nakonfigurovali LucidChart pro jednotné přihlašování, vyhledejte vaši instanci LucidChart pomocí vyhledávacího pole. V opačném případě vyberte **Přidat** a vyhledejte **LucidChart** v galerii aplikací. Ve výsledcích hledání vyberte LucidChart a přidejte je do seznamu aplikací.
+* Při přiřazování uživatelů a skupin k Lucidchart je nutné vybrat jinou roli než **výchozí přístup**. Uživatelé s výchozí rolí přístupu se z zřizování vylučují a v protokolech zřizování se označí jako neefektivně. Pokud je jedinou rolí dostupnou v aplikaci výchozí role přístupu, můžete [aktualizovat manifest aplikace](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) a přidat další role. 
 
-3. Vyberte svou instanci LucidChart a pak vyberte kartu **zřizování** .
+* Začněte malým. Než se pustíte do všech uživatelů, testujte je s malou sadou uživatelů a skupin. Pokud je obor pro zřizování nastavený na přiřazené uživatele a skupiny, můžete to řídit přiřazením jednoho nebo dvou uživatelů nebo skupin k aplikaci. Pokud je obor nastavený na všechny uživatele a skupiny, můžete zadat [Filtr oboru založený na atributech](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-lucidchart"></a>Krok 5. Konfigurace automatického zřizování uživatelů na Lucidchart 
+
+V této části se seznámíte s postupem konfigurace služby zřizování Azure AD k vytváření, aktualizaci a zakázání uživatelů nebo skupin v TestApp na základě přiřazení uživatelů nebo skupin ve službě Azure AD.
+
+### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro Lucidchart ve službě Azure AD:
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+
+    ![Okno podnikových aplikací](common/enterprise-applications.png)
+
+2. V seznamu aplikace vyberte **Lucidchart**.
+
+    ![Odkaz Lucidchart v seznamu aplikací](common/all-applications.png)
+
+3. Vyberte kartu **zřizování** .
+
+    ![Karta zřizování](common/provisioning.png)
 
 4. Nastavte **režim zřizování** na **automaticky**.
 
-    ![Zřizování LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![Karta zřizování](common/provisioning-automatic.png)
 
-5. V části **přihlašovací údaje správce** zadejte **tajný token** generovaný účtem LucidChart (token najdete pod účtem: > **SCIM**pro integraci **týmových** > **aplikací**).
+5. V části **přihlašovací údaje správce** zadejte hodnotu **tokenu nosiče** , která byla dříve načtena v poli **tajného tokenu** . Klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k Lucidchart. Pokud se připojení nepovede, ujistěte se, že má váš účet Lucidchart oprávnění správce, a zkuste to znovu.
 
-    ![Zřizování LucidChart](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+      ![zřizování](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
-6. V Azure Portal klikněte na **Test připojení** a ujistěte se, že se služba Azure AD může připojit k vaší aplikaci LucidChart. Pokud se připojení nepovede, ujistěte se, že má váš účet LucidChart oprávnění správce, a zkuste krok 5 znovu.
+6. V poli **e-mail s oznámením** zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování a zaškrtněte políčko **Odeslat e-mailové oznámení, když dojde k chybě** .
 
-7. Zadejte e-mailovou adresu osoby nebo skupiny, které by měly dostávat oznámení o chybách zřizování v poli **e-mail s oznámením** , a zaškrtněte políčko Odeslat e-mailové oznámení, když dojde k chybě.
+    ![E-mail s oznámením](common/provisioning-notification-email.png)
 
-8. Klikněte na **Uložit**.
+7. Vyberte **Uložit**.
 
-9. V části mapování vyberte **synchronizovat Azure Active Directory uživatelé LucidChart**.
+8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé Lucidchart**.
 
-10. V části **mapování atributů** zkontrolujte atributy uživatelů synchronizované z Azure AD do LucidChart. Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v LucidChart pro operace aktualizace. Kliknutím na tlačítko Uložit potvrďte změny.
+9. Zkontrolujte atributy uživatele synchronizované z Azure AD do Lucidchart v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v Lucidchart pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní Lucidchart API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-11. Pokud chcete povolit službu Azure AD Provisioning pro LucidChart, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+   |Atribut|Typ|
+   |---|---|
+   |userName|Řetězec|
+   |e-maily [typ EQ "Work"]. Value|Řetězec|
+   |aktivně|Logická hodnota|
+   |název. křestní jméno|Řetězec|
+   |název. rodina|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: divize|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: costCenter|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Organization|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: employeeNumber|Řetězec|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: User: Manager|Referenční informace|
+   |urn: IETF: parametry: SCIM: schémata: přípona: Lucidchart: 1.0: User: hodnoty CanEdit|Logická hodnota|
 
-12. Klikněte na **Uložit**.
+10. V části **mapování** vyberte **synchronizovat Azure Active Directory skupiny do Lucidchart**.
 
-Tato operace spustí počáteční synchronizaci všech uživatelů nebo skupin přiřazených LucidChart v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než další synchronizace, ke kterým dochází přibližně každých 40 minut, pokud je služba spuštěná. V části **Podrobnosti o synchronizaci** můžete sledovat průběh a postupovat podle odkazů na zřizování protokolů aktivit, které popisují všechny akce prováděné službou zřizování.
+11. Zkontrolujte atributy skupiny synchronizované z Azure AD do Lucidchart v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování skupin v Lucidchart pro operace aktualizace. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
-Další informace o tom, jak číst protokoly zřizování Azure AD, najdete v tématu [vytváření sestav o automatickém zřizování uživatelských účtů](../app-provisioning/check-status-user-account-provisioning.md).
+      |Atribut|Typ|
+      |---|---|
+      |displayName|Řetězec|
+      |členy|Referenční informace|
 
-## <a name="additional-resources"></a>Další zdroje
+12. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-* [Správa zřizování uživatelských účtů pro podnikové aplikace](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+13. Pokud chcete povolit službu Azure AD Provisioning pro Lucidchart, změňte **stav zřizování** na **zapnuto** v části **Nastavení** .
+
+    ![Zapnutý stav zřizování](common/provisioning-toggle-on.png)
+
+14. Definujte uživatele nebo skupiny, které chcete zřídit pro Lucidchart, výběrem požadovaných hodnot v **oboru** v části **Nastavení** .
+
+    ![Rozsah zřizování](common/provisioning-scope.png)
+
+15. Až budete připraveni zřídit, klikněte na **Uložit**.
+
+    ![Ukládá se konfigurace zřizování.](common/provisioning-configuration-save.png)
+
+Tato operace spustí počáteční cyklus synchronizace všech uživatelů a skupin definovaných v **oboru** v části **Nastavení** . Počáteční cyklus trvá déle než u dalších cyklů, ke kterým dojde přibližně každých 40 minut, pokud je služba zřizování Azure AD spuštěná. 
+
+## <a name="step-6-monitor-your-deployment"></a>Krok 6. Monitorování nasazení
+Jakmile nakonfigurujete zřizování, použijte k monitorování nasazení tyto prostředky:
+
+1. Pomocí [protokolů zřizování](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) určete, kteří uživatelé se úspěšně zřídili nebo neúspěšně nastavili.
+2. Podívejte se na [indikátor průběhu](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) , kde se zobrazí stav cyklu zřizování a jak se má dokončit.
+3. Pokud se zdá, že konfigurace zřizování je ve stavu není v pořádku, bude aplikace přejít do karantény. Další informace o stavech karantény najdete [tady](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="change-log"></a>Protokol změn
+
+* 04/30/2020 – pro uživatele byla přidána podpora pro atribut Enterprise Extension a Custom Attribute "hodnoty CanEdit".
+
+## <a name="additional-resources"></a>Další materiály a zdroje informací
+
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../app-provisioning/check-status-user-account-provisioning.md)
+* [Přečtěte si, jak zkontrolovat protokoly a získat sestavy pro aktivitu zřizování.](../manage-apps/check-status-user-account-provisioning.md)

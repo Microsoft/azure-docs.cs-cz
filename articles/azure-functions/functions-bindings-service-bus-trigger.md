@@ -6,22 +6,22 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273569"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690704"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Aktivační událost Azure Service Bus pro Azure Functions
 
-Pokud chcete reagovat na zprávy z fronty nebo tématu Service Bus, použijte Trigger Service Bus.
+Pokud chcete reagovat na zprávy z fronty nebo tématu Service Bus, použijte Trigger Service Bus. Počínaje verzí rozšíření 3.1.0 můžete aktivovat ve frontě nebo tématu s povolenou relací.
 
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](functions-bindings-service-bus-output.md).
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která čte [metadata zprávy](#message-metadata) a protokoluje zprávy fronty Service Bus:
 
@@ -203,7 +203,7 @@ Funkce Java se můžou aktivovat i při přidání zprávy do tématu Service Bu
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 V [knihovnách tříd C#](functions-dotnet-class-library.md)pomocí následujících atributů nakonfigurujte aktivační událost Service Bus:
 
@@ -222,7 +222,7 @@ V [knihovnách tříd C#](functions-dotnet-class-library.md)pomocí následujíc
   }
   ```
 
-  `Connection` Vlastnost můžete nastavit tak, aby určovala název nastavení aplikace, které obsahuje Service Bus připojovacího řetězce, který se má použít, jak je znázorněno v následujícím příkladu:
+  Vzhledem k `Connection` tomu, že vlastnost není definována, funkce vyhledá nastavení `AzureWebJobsServiceBus`aplikace s názvem, což je výchozí název připojovacího řetězce Service Bus. `Connection` Vlastnost můžete také nastavit tak, aby určovala název nastavení aplikace, které obsahuje Service Bus připojovacího řetězce, který se má použít, jak je znázorněno v následujícím příkladu:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -304,7 +304,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Pro zprávu o frontě nebo tématu jsou k dispozici následující typy parametrů:
 
@@ -354,21 +354,24 @@ Modul runtime Functions obdrží zprávu v [režimu PeekLock](../service-bus-mes
 
 ## <a name="message-metadata"></a>Metadata zprávy
 
-Aktivační událost Service Bus poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Tyto vlastnosti jsou členy třídy [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) .
+Aktivační událost Service Bus poskytuje několik [vlastností metadat](./functions-bindings-expressions-patterns.md#trigger-metadata). Tyto vlastnosti lze použít jako součást výrazů vazby v jiných vazbách nebo jako parametry v kódu. Tyto vlastnosti jsou členy třídy [zpráv](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) .
 
 |Vlastnost|Typ|Popis|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|Počet doručení.|
-|`DeadLetterSource`|`string`|Zdroj nedoručených zpráv.|
-|`ExpiresAtUtc`|`DateTime`|Čas vypršení platnosti ve standardu UTC.|
-|`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
-|`MessageId`|`string`|Uživatelem definovaná hodnota, kterou Service Bus může použít k identifikaci duplicitních zpráv, pokud je povoleno.|
 |`ContentType`|`string`|Identifikátor typu obsahu využitý odesílatelem a příjemcem pro logiku specifickou pro aplikaci.|
-|`ReplyTo`|`string`|Odpověď na adresu fronty|
-|`SequenceNumber`|`Int64`|Jedinečné číslo přiřazené zprávě Service Bus.|
-|`To`|`string`|Adresa pro odeslání.|
-|`Label`|`string`|Popisek specifický pro aplikaci.|
 |`CorrelationId`|`string`|ID korelace.|
+|`DeadLetterSource`|`string`|Zdroj nedoručených zpráv.|
+|`DeliveryCount`|`Int32`|Počet doručení.|
+|`EnqueuedTimeUtc`|`DateTime`|Čas zařazení do fronty ve standardu UTC.|
+|`ExpiresAtUtc`|`DateTime`|Čas vypršení platnosti ve standardu UTC.|
+|`Label`|`string`|Popisek specifický pro aplikaci.|
+|`MessageId`|`string`|Uživatelem definovaná hodnota, kterou Service Bus může použít k identifikaci duplicitních zpráv, pokud je povoleno.|
+|`MessageReceiver`|`MessageReceiver`|Service Bus příjemce zprávy. Dá se použít k opuštění, dokončení nebo nedoručené zprávě.|
+|`MessageSession`|`MessageSession`|Přijímač zpráv určený speciálně pro fronty a témata s povolenými relacemi.|
+|`ReplyTo`|`string`|Odpověď na adresu fronty|
+|`SequenceNumber`|`long`|Jedinečné číslo přiřazené zprávě Service Bus.|
+|`To`|`string`|Adresa pro odeslání.|
+|`UserProperties`|`IDictionary<string, object>`|Vlastnosti nastavené odesílatelem|
 
 Podívejte se na [Příklady kódu](#example) , které používají tyto vlastnosti dříve v tomto článku.
 
