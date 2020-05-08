@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209022"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928593"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
@@ -36,57 +36,58 @@ Vaše aplikace nemusí měnit adresu URL připojení. Při pokusu o překlad pom
 
 Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následující tabulce:
 
-|Typ prostředku privátního propojení   |Vytváření  |Název zóny  |
-|---------|---------|---------|
-|SQL DB (Microsoft. SQL/servery)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure synapse Analytics (Microsoft. SQL/servery)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
-|Účet úložiště (Microsoft. Storage/storageAccounts)    |  BLOB (objekt blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Účet úložiště (Microsoft. Storage/storageAccounts)    |    Tabulka (tabulka, table_secondary)      |   privatelink.table.core.windows.net       |
-|Účet úložiště (Microsoft. Storage/storageAccounts)    |    Queue (Queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Účet úložiště (Microsoft. Storage/storageAccounts)   |    Soubor (soubor, file_secondary)      |    privatelink.file.core.windows.net      |
-|Účet úložiště (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake Gen2 systému souborů (Microsoft. Storage/storageAccounts)  |  Data Lake Gen2 systému souborů (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL – jeden server (Microsoft. DBforPostgreSQL/servery)|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL (Microsoft. DBforMySQL/servery)|mysqlServer|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (trezor a trezory Microsoft.|Trezor|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)    | managedCluster | {GUID}. privatelink. {region}. azmk8s. IO|
-|Azure Search (Microsoft. Search/searchServices)|searchService|privatelink.search.windows.net|   
-|Azure Container Registry (Microsoft. ContainerRegistry/Registry) | registry | privatelink.azurecr.io |
-|Konfigurace aplikace Azure (Microsoft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|
-|Azure Backup (Microsoft. RecoveryServices/trezory)| Trezor |privatelink. {region}. Backup. windowsazure. com|
-|Centrum událostí Azure (Microsoft. EventHub/obory názvů)| namespace |privatelink.servicebus.windows.net|
-|Azure Service Bus (Microsoft. ServiceBus/obory názvů) | namespace |privatelink.servicebus.windows.net|
-|Azure Relay (Microsoft. Relay/obory názvů) | namespace |privatelink.servicebus.windows.net|
-|Azure Event Grid (Microsoft. EventGrid/témata)     | téma | výklad. {region}. privatelink. eventgrid. Azure. NET|
-|Azure Event Grid (Microsoft. EventGrid/domény) | doména | Domain. {region}. privatelink. eventgrid. Azure. NET |
-|Azure WebApps (Microsoft. Web/weby)    | webovém | privatelink.azurewebsites.net |
-|Azure Machine Learning (Microsoft. MachineLearningServices/pracovní prostory)    | Pracovní prostor | privatelink.api.azureml.ms |
+| Typ prostředku/podprostředek privátního propojení |Název Privátní DNS zóny | Název veřejné zóny DNS |
+|---|---|---|---|
+| SQL DB (Microsoft. SQL/servery)/SQL Server | privatelink.database.windows.net | database.windows.net |
+| Azure synapse Analytics (Microsoft. SQL/servery)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Účet úložiště (Microsoft. Storage/storageAccounts)/BLOB (BLOB, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
+| Účet úložiště (Microsoft. Storage/storageAccounts)/Table (tabulka, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
+| Účet úložiště (Microsoft. Storage/storageAccounts)/Queue (fronta, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
+| Účet úložiště (Microsoft. Storage/storageAccounts)/soubor (soubor, file_secondary) | privatelink.file.core.windows.net | file.core.windows.net |
+| Účet úložiště (Microsoft. Storage/storageAccounts)/Web (web, web_secondary) | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake systému souborů Gen2 (Microsoft. Storage/storageAccounts)/Data Lake systému souborů Gen2 (DFS, dfs_secondary) | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/Table | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| Azure Database for PostgreSQL – jeden server (Microsoft. DBforPostgreSQL/servery)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| Azure Database for MySQL (Microsoft. DBforMySQL/servery)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault (Microsoft. webrecovery/trezory)/trezor | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)/managedCluster | privatelink. {region}. azmk8s. IO | {region}. azmk8s. IO |
+| Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure Container Registry (Microsoft. ContainerRegistry/registrys)/registr | privatelink.azurecr.io | azurecr.io |
+| Konfigurace aplikace Azure (Microsoft. AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure Backup (Microsoft. RecoveryServices/trezory)/trezor | privatelink. {region}. Backup. windowsazure. com | {region}. Backup. windowsazure. com |
+| Centrum událostí Azure (Microsoft. EventHub/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Service Bus (Microsoft. ServiceBus/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Relay (Microsoft. Relay/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Event Grid (Microsoft. EventGrid/témata)/téma | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure Event Grid (Microsoft. EventGrid/domény)/doména | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure WebApps (Microsoft. Web/weby)/Web | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Machine Learning (Microsoft. MachineLearningServices/pracovní prostory)/pracovní prostor | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>Scénáře konfigurace DNS
 
-Plně kvalifikovaný název domény služeb řeší veřejnou IP adresu, musíte změnit konfiguraci DNS a vyřešit tak soukromou IP adresu privátního koncového bodu.
+Plně kvalifikovaný název domény služby se automaticky přeloží na veřejnou IP adresu, takže aby bylo možné přeložit na privátní IP adresu privátního koncového bodu, musíte odpovídajícím způsobem změnit konfiguraci DNS.
 
 Služba DNS je důležitou součástí, která aplikaci správně funguje, a to tak, že ji převedete správným způsobem na IP adresu privátního koncového bodu.
 
 V závislosti na vašich preferencích jsou k dispozici následující scénáře pro integraci překladu DNS:
 
-- [Virtual Network úlohy bez vlastního serveru DNS](#virtual-network-workloads-without-custom-dns-server)
+- [Úlohy virtuální sítě bez vlastního serveru DNS](#virtual-network-workloads-without-custom-dns-server)
+- [Místní úlohy pomocí služby DNS pro přeposílání](#on-premises-workloads-using-a-dns-forwarder)
 
-
-## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtual Network úlohy bez vlastního serveru DNS
+## <a name="virtual-network-workloads-without-custom-dns-server"></a>Úlohy virtuální sítě bez vlastního serveru DNS
 
 Tato konfigurace je vhodná pro úlohy virtuální sítě bez vlastního serveru DNS. V tomto scénáři se klient dotazuje na IP adresu privátního koncového bodu do Azure poskytnuté DNS [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). Azure DNS bude zodpovědná za překlad DNS privátních zón DNS.
 
 
- > [!NOTE]
+> [!NOTE]
 > Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database. Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
 
 Ke správné konfiguraci byste potřebovali tyto prostředky:
@@ -99,16 +100,60 @@ Ke správné konfiguraci byste potřebovali tyto prostředky:
 
 Následující diagram znázorňuje sekvenci překladu názvů DNS z úloh virtuální sítě pomocí privátní zóny DNS.
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Jedna virtuální síť a služba DNS poskytovaná Azure":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Jedna virtuální síť a DNS poskytovaná službou Azure":::
 
 Tento model se dá rozšířit na několik partnerských virtuálních sítí, které jsou přidružené ke stejnému privátnímu koncovému bodu. To se dá udělat [přidáním nových odkazů virtuální sítě](../dns/private-dns-virtual-network-links.md) do privátní zóny DNS pro všechny partnerské virtuální sítě.
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  Pro tuto konfiguraci se vyžaduje jedna privátní zóna DNS. vytvořením několika zón se stejným názvem pro různé virtuální sítě by bylo potřeba ruční operace sloučení záznamů DNS.
 
 V tomto scénáři je síť [centra & paprsků se sítěmi rozbočovače](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) , které sdílí společný privátní koncový bod a všechny virtuální sítě paprsků jsou propojené se stejnou privátní zónou DNS. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="centrum a paprsky s DNS poskytovanou službou Azure":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Centrum a Paprskový s DNS poskytovanou službou Azure":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Místní úlohy pomocí služby DNS pro přeposílání
+ 
+Aby bylo možné v místních úlohách přeložit plně kvalifikovaný název domény privátního koncového bodu na soukromou IP adresu, je nutné použít službu DNS pro překládání, aby se vyřešila adresa [veřejné zóny DNS](#azure-services-dns-zone-configuration) služby Azure nasazená v Azure.
+
+
+Následující scénář je vhodný pro místní síť, která má službu DNS pro přeposílání v Azure, což je zodpovědný za řešení všech dotazů DNS prostřednictvím služby pro překládání na úrovni serveru poskytované službou Azure [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) . 
+
+> [!NOTE]
+> Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database.Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
+
+Ke správné konfiguraci byste potřebovali tyto prostředky:
+
+- Místní síť
+- Virtuální síť [připojená k místní](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) síti
+- Služba přeposílání DNS nasazená v Azure 
+- Zóny privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md) s [typem záznamu](../dns/dns-zones-records.md#record-types)
+- Informace o privátním koncovém bodu (název záznamu a privátní IP adresa)
+
+Následující obrázek znázorňuje sekvenci překladu názvů DNS z místní sítě, která používá službu pro přeposílání DNS nasazenou v Azure, kde se řešení provádí v privátní zóně DNS propojené s virtuální sítí.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="Místně pomocí Azure DNS":::
+
+Tato konfigurace se dá prodloužit na místní síť, která už je na svém místě řešení DNS. 
+Místní řešení DNS je potřeba nakonfigurovat tak, aby přesměrovalo provoz DNS do Azure DNS prostřednictvím [podmíněného](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) dosazování, které se odkazuje na službu DNS pro přeposílání v Azure.
+
+> [!NOTE]
+> Tento scénář používá doporučenou zónu Privátní DNS služby Azure SQL Database.Pro ostatní služby můžete model upravit pomocí následujícího odkazu na [konfiguraci zóny DNS služeb Azure](#azure-services-dns-zone-configuration).
+
+Ke správné konfiguraci byste potřebovali tyto prostředky:
+
+
+- V místní síti s vlastním řešením DNS 
+- Virtuální síť [připojená k místní](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) síti
+- Služba přeposílání DNS nasazená v Azure
+- Zóny privátní DNS [privatelink.Database.Windows.NET](../dns/private-dns-privatednszone.md)  s [typem záznamu](../dns/dns-zones-records.md#record-types)
+- Informace o privátním koncovém bodu (název záznamu a privátní IP adresa)
+
+Následující diagram znázorňuje sekvenci překladu názvů DNS z místní sítě, která podmíněně přechází do Azure provoz DNS, kde se řešení provádí v privátní zóně DNS propojené s virtuální sítí.
+
+> [!IMPORTANT]
+> Podmíněné přesměrování je nutné provést v rámci [veřejné zóny](#azure-services-dns-zone-configuration) DNS ex: `database.windows.net` místo **privatelink**. Database.Windows.NET.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="Místní přesměrování na Azure DNS":::
 
 
 ## <a name="next-steps"></a>Další kroky

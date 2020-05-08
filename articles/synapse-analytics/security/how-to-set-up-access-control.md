@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606011"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692635"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -165,9 +165,22 @@ Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Někter�
 | Správa hub/propojených služeb | ANO | ANO | ANO |
 | Spravovat centrum/Access Control (přiřadit uživatele k rolím pracovního prostoru synapse) | ANO | NO | NO |
 | Správa modulů runtime v centru/Integrcích | ANO | ANO | ANO |
+| Použití centra monitorování | ANO | ANO | ANO |
+| Monitorování centra/orchestrace/spuštění kanálu  | ANO | NO | NO |
+| Monitorování centra/orchestrace/spuštění triggeru  | ANO | NO | NO |
+| Monitorování centra/orchestrace/prostředí Integration runtime  | ANO | ANO | ANO |
+| Monitorovat centra/aktivity/aplikace Spark | ANO | ANO | NO  |
+| Monitorovat centra/aktivity/požadavky SQL | ANO | NO | ANO |
+| Monitorování hub/aktivit/fondů Spark | ANO | ANO | NO  |
+| Monitorování centra/triggerů | ANO | NO | NO |
+| Správa hub/propojených služeb | ANO | ANO | ANO |
+| Spravovat centrum/Access Control (přiřadit uživatele k rolím pracovního prostoru synapse) | ANO | NO | NO |
+| Správa modulů runtime v centru/Integrcích | ANO | ANO | ANO |
+
 
 > [!NOTE]
-> [1] přístup k datům v kontejnerech závisí na řízení přístupu v ADLSGen2 [2] v tabulkách a tabulkách Spark ukládá data do ADLSGen2 a přístup vyžaduje příslušná oprávnění pro ADLSGen2.
+> [1] přístup k datům v kontejnerech závisí na řízení přístupu v ADLSGen2. </br>
+> [2] SQL z tabulek a tabulek Spark ukládají svá data v ADLSGen2 a přístup vyžaduje příslušná oprávnění pro ADLSGen2.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73838836"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930246"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Položení otázky, na kterou lze odpovědět pomocí dat
 ## <a name="video-3-data-science-for-beginners-series"></a>Video 3: řada pro datové vědy pro začátečníky
@@ -92,4 +92,4 @@ Nezapomeňte se podívat na další videa v oblasti "data vědy pro začátečn�
 
 ## <a name="next-steps"></a>Další kroky
 * [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
-* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

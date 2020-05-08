@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864568"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983495"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -23,7 +23,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 **portál Azure** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
-**Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
+**CLI** | Aktuálně se nepodporuje.
 
 
 ## <a name="resource-support"></a>Podpora prostředků
@@ -114,7 +114,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Ubuntu pro virtuální počítače Azure
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 14,04 LTS | 9,32| 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 14,04 LTS | 9,31 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
@@ -134,7 +134,7 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra Debian pro virtuální počítače Azure
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 Debian 7 | 9.28,9.29,9.30,9.31 | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
@@ -143,7 +143,7 @@ Debian 8 | 9,28 | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
@@ -152,7 +152,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Podporují se vše
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Podporované SUSE Linux Enterprise Server 15 verzí jádra pro virtuální počítače Azure
 
-**Vydat** | **Verze služby mobility** | **Verze jádra** |
+**Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 8.22 – Azure |
 
@@ -215,9 +215,9 @@ Studené a horké úložiště | Nepodporuje se | Disky virtuálních počítač
 Prostory úložiště | Podporuje se |
 Šifrování v klidovém prostředí (SSE) | Podporuje se | Pro účty úložiště je výchozí nastavení SSE.
 Šifrování v klidovém umístění (CMK) | Podporuje se | U spravovaných disků se podporuje jak software, tak klíče HSM.
-Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. |
-Azure Disk Encryption (ADE) pro Linux OS | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. |
-Horké přidání    | Podporuje se | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky.
+Azure Disk Encryption (ADE) pro operační systém Windows | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. |
+Azure Disk Encryption (ADE) pro Linux OS | Podporováno pro virtuální počítače se spravovanými disky. | Virtuální počítače používající nespravované disky se nepodporují. <br/><br/> Klíče chráněné HSM nejsou podporovány. <br/><br/> Šifrování jednotlivých svazků na jednom disku se nepodporuje. |
+Horké přidání    | Podporuje se | Povolení replikace pro datový disk, který přidáte do replikovaného virtuálního počítače Azure, se podporuje pro virtuální počítače, které používají spravované disky. <br/><br/> Do virtuálního počítače Azure se dá po jednom okamžiku připojit jenom jeden disk. Paralelní přidávání více disků není podporováno. |
 Odstranit disk z provozu    | Nepodporuje se | Pokud na virtuálním počítači odeberete datový disk, budete muset zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
 Vyloučení disku | Podpora. Ke konfiguraci je nutné použít [PowerShell](azure-to-azure-exclude-disks.md) . |    Dočasné disky jsou ve výchozím nastavení vyloučené.
 Prostory úložiště – přímé  | Podporováno pro body obnovení konzistentní vzhledem k selhání. Body obnovení konzistentní vzhledem k aplikacím se nepodporují. |

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684733"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983597"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -150,6 +150,8 @@ Předem nainstalované balíčky jsou:
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> Pokud váš kanál obsahuje více modulů skriptu Pythonu pro spouštění a potřebujete stejné balíčky, které nejsou v seznamu předem nainstalované, nainstalujte balíčky do každého modulu. 
 
 ## <a name="upload-files"></a>Nahrání souborů
 **Skript spouštějící Python** podporuje nahrávání souborů pomocí [Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-).
@@ -218,7 +220,7 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
 5. Do textového pole **skript Pythonu** zadejte nebo vložte platný skript Pythonu.
 
     > [!NOTE]
-    > Při psaní skriptu Buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, jako je například použití nedeklarovaného objektu nebo neimportovaného modulu. V seznamu předem nainstalovaných modulů také věnujte další pozornost. Pokud chcete importovat moduly, které nejsou v seznamu, nainstalujte odpovídající balíčky do skriptu, například
+    > Při psaní skriptu Buďte velmi opatrní a ujistěte se, že nedochází k žádné chybě syntaxe, jako je například použití nedeklarovaných objektů nebo neimportovaných modulů. Také věnujte zvláštní pozornost seznamu předem nainstalovaných modulů. Pokud chcete importovat moduly, které nejsou v seznamu, nainstalujte odpovídající balíčky do skriptu, například
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

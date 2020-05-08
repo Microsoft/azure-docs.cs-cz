@@ -1,6 +1,6 @@
 ---
-title: Vypíše přiřazení zamítnutí pro prostředky Azure s REST API.
-description: Přečtěte si, jak vypsat přiřazení zamítnutí pro uživatele, skupiny a aplikace pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure a REST API.
+title: Vypsat přiřazení odmítnutí Azure pomocí REST API – Azure RBAC
+description: Přečtěte si, jak vypsat přiřazení odmítnutí Azure pro uživatele, skupiny a aplikace pomocí REST API a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063016"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733866"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Vypsat přiřazení zamítnutí pro prostředky Azure pomocí REST API
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>Výpis přiřazení odmítnutí Azure pomocí REST API
 
-[Odmítnutí přiřazení](deny-assignments.md) zablokuje uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazením role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí REST API.
+[Přiřazení Azure Deny](deny-assignments.md) zablokují uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazení role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí REST API.
 
 > [!NOTE]
-> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [zamítnutí](deny-assignments.md)přiřazení.
+> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [přiřazení odmítnutí Azure](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
-- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí pro prostředky Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Vypsat jedno přiřazení zamítnutí
 
@@ -91,7 +91,7 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>Vypsat přiřazení zamítnutí v kořenovém oboru (/)
 
-1. Zvyšte přístup k vašemu přístupu, jak je popsáno v tématu [zvýšení přístupu pro globálního správce v Azure Active Directory](elevate-access-global-admin.md).
+1. Zvyšte přístup tak, jak je popsáno v tématu [zvýšení přístupu ke správě všech předplatných Azure a skupin pro správu](elevate-access-global-admin.md).
 
 1. Použijte následující žádost:
 
@@ -111,6 +111,6 @@ Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následuj
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Pochopení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md)
-- [Zvýšení úrovně přístupu pro globálního správce v Azure Active Directory](elevate-access-global-admin.md)
+- [Pochopení přiřazení Azure Deny](deny-assignments.md)
+- [Zvýšení úrovně přístupu pro správu všech předplatných Azure a skupin pro správu](elevate-access-global-admin.md)
 - [Reference k Azure REST API](/rest/api/azure/)

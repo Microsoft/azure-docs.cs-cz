@@ -4,12 +4,12 @@ description: Sledování vlastních operací pomocí sady Azure Application Insi
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276098"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690863"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Sledování vlastních operací pomocí sady Application Insights .NET SDK
 
@@ -38,7 +38,7 @@ Pojďme se podívat, jak se tyto operace daly sledovat.
 Na nejvyšší úrovni je úkolem vytvořit `RequestTelemetry` a nastavit známé vlastnosti. Po dokončení operace můžete sledovat telemetrii. Následující příklad znázorňuje tuto úlohu.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Požadavek HTTP v samoobslužné aplikaci Owin
-V tomto příkladu je kontext trasování šířený podle [protokolu HTTP pro korelaci](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Měli byste očekávat, že dostanete hlavičky popsané tady.
+V tomto příkladu je kontext trasování šířený podle [protokolu HTTP pro korelaci](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md). Měli byste očekávat, že dostanete hlavičky popsané tady.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 Protokol HTTP pro korelaci také deklaruje `Correlation-Context` hlavičku. Pro zjednodušení je však tady vynecháno.
 
 ## <a name="queue-instrumentation"></a>Instrumentace fronty
-I když existuje [kontext trasování W3C](https://www.w3.org/TR/trace-context/) a [protokol HTTP, aby korelace](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vyhověla podrobnostem korelace s požadavkem http, každý protokol fronty musí definovat, jak se budou stejné podrobnosti předávat společně se zprávou fronty. Některé protokoly front (například AMQP) umožňují předat další metadata a jiné (takové Azure Storage fronty) vyžadují, aby byl kontext kódovaný do datové části zprávy.
+I když existuje [kontext trasování W3C](https://www.w3.org/TR/trace-context/) a [protokol HTTP, aby korelace](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) vyhověla podrobnostem korelace s požadavkem http, každý protokol fronty musí definovat, jak se budou stejné podrobnosti předávat společně se zprávou fronty. Některé protokoly front (například AMQP) umožňují předat další metadata a jiné (takové Azure Storage fronty) vyžadují, aby byl kontext kódovaný do datové části zprávy.
 
 > [!NOTE]
 > * **Pro fronty se ještě nepodporuje trasování mezi komponentami** . Pokud váš producent a zákazník odesílají telemetrii do různých prostředků Application Insights, prostředí pro diagnostiku transakcí a mapa aplikací v případě protokolu HTTP zobrazí kompletní a mapový postup. V případě front to ještě není podporováno. 
@@ -346,7 +346,7 @@ Při odstraňování zprávy instrumentace se ujistěte, že jste nastavili iden
 
 ### <a name="dependency-types"></a>Typy závislostí
 
-Application Insights používá typ závislosti k cusomize prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](/azure/azure-monitor/app/transaction-diagnostics):
+Application Insights používá typ závislosti k přizpůsobení prostředí uživatelského rozhraní. Pro fronty rozpoznává následující typy `DependencyTelemetry` , které zlepšují [prostředí diagnostiky transakcí](/azure/azure-monitor/app/transaction-diagnostics):
 - `Azure queue`pro Azure Storage fronty
 - `Azure Event Hubs`pro Azure Event Hubs
 - `Azure Service Bus`pro Azure Service Bus
@@ -482,4 +482,4 @@ Každá operace Application Insights (požadavek nebo závislost) zahrnuje `Acti
 - Seznamte se s [datovým modelem](../../azure-monitor/app/data-model.md) pro Application Insights typy a datový model.
 - Vykázat vlastní [události a metriky](../../azure-monitor/app/api-custom-events-metrics.md) na Application Insights.
 - Podívejte se na standardní [konfiguraci](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) pro kolekci vlastností kontextu.
-- Podívejte se na [uživatelskou příručku System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde zjistíte, jak korelace telemetrie.
+- Podívejte se na [uživatelskou příručku System. Diagnostics. Activity](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , kde zjistíte, jak korelace telemetrie.

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129846"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983359"
 ---
 # <a name="evaluate-model-module"></a>Vyhodnotit modul modelu
 
@@ -34,9 +34,13 @@ Tento modul použijte k měření přesnosti trained model. Poskytnete datovou s
 
 
 ## <a name="how-to-use-evaluate-model"></a>Jak používat model vyhodnocení
-1. Připojte výstup skóre výsledné **sady** [modelu skóre](./score-model.md) k levému vstupnímu portu **vyhodnocení modelu**. 
+1. Připojte výstup skóre výsledné **sady** výsledků [modelu skóre](./score-model.md) nebo výstup výsledné sady [dat ke clusterům](./assign-data-to-clusters.md) k levému vstupnímu portu pro **vyhodnocení modelu**. 
+  > [!NOTE] 
+  > Pokud k výběru části vstupní datové sady používáte moduly, jako je "vybrat sloupce v sadě dat", zajistěte, aby byl pro výpočet metriky, jako je AUC, přesnost pro binární klasifikaci nebo detekci anomálií k dispozici sloupec s popiskem skóre
+  > Pro výpočet metriky pro klasifikaci a regresi ve více třídách existuje skutečný sloupec popisku, sloupec označené skóre.
+  > Sloupec ' přiřazení ', sloupce ' DistancesToClusterCenter ne. X (X je těžiště index, v rozsahu od 0,..., počet centroids-1) existuje pro výpočet metrik pro clusteringu.
 
-2. Volitelné Připojte výstup skóre výsledné **sady** [modelu skóre](./score-model.md) pro druhý model na **pravého** vstupu **modelu vyhodnocení**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
+2. Volitelné Připojte výstup výsledné **sady** dat [modelu skóre](./score-model.md) nebo výstup výsledné sady výsledků do clusterů pro druhý model ke **správnému** vstupnímu portu pro **vyhodnocení modelu**. Můžete snadno porovnat výsledky dvou různých modelů se stejnými daty. Dva vstupní algoritmy by měly být stejného typu algoritmu. Nebo můžete porovnat skóre ze dvou různých spuštění přes stejná data s různými parametry.
 
     > [!NOTE]
     > Typ algoritmu odkazuje na třídu "klasifikace dvou tříd", "klasifikace s více třídami", "regrese", "clusteringu" pod "Machine Learning algoritmy". 

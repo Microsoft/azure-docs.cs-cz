@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978709"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930450"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizovat prostředek
 
@@ -44,7 +44,7 @@ Prediktivní modely v experimentech s hodnocením Azure ML v průběhu času mus
 1. Vytvořte experiment v [Azure Machine Learning Studio (Classic)](https://studio.azureml.net).
 2. Pokud jste s modelem spokojeni, použijte Azure Machine Learning Studio (Classic) k publikování webových služeb pro **školicí experiment** i bodování/**prediktivní experiment**.
 
-Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Machine Learning programově](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
+Následující tabulka popisuje webové služby použité v tomto příkladu.  Podrobnosti najdete v tématu [přeučení modelů Machine Learning Studio (Classic)](../../machine-learning/studio/retrain-machine-learning-model.md) .
 
 - **Školení webové služby** – přijímá školicí data a vytváří školené modely. Výstupem rekurze je soubor. ilearner v úložišti objektů BLOB v Azure. **Výchozím koncovým bodem** se automaticky vytvoří při publikování experimentu školení jako webové služby. Můžete vytvořit další koncové body, ale v příkladu se používá pouze výchozí koncový bod.
 - **Webová služba bodování** – přijímá příklady neoznačených dat a zpřístupňuje předpovědi. Výstup předpovědi může mít různé formuláře, jako je například soubor. csv nebo řádky ve službě Azure SQL Database v závislosti na konfiguraci experimentu. Výchozí koncový bod je automaticky vytvořen při publikování prediktivního experimentu jako webové služby. 

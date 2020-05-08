@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef355361516264db95a333dde8a117819ca1a661
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203688"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594963"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
@@ -135,7 +135,7 @@ Zákazníci mohou získat přístup k metrikám CPU nebo paměti na úrovni uzlu
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Jaká je výchozí konfigurace plánovače pro ARO společnosti?
 
-Služba ARO používá výchozí Plánovač, který je dodáván v OpenShift. V ARO společnosti se nepodporují několik dalších mechanismů. Další podrobnosti najdete v dokumentaci k [výchozímu plánovači](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) a v [dokumentaci k hlavnímu plánovači](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json) .
+Služba ARO používá výchozí Plánovač, který je dodáván v OpenShift. V ARO společnosti se nepodporují několik dalších mechanismů. Další podrobnosti najdete v dokumentaci k [výchozímu plánovači](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) a v [dokumentaci k hlavnímu plánovači](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json) .
 
 Rozšířené nebo vlastní plánování nejsou aktuálně podporovány. Další podrobnosti najdete v [dokumentaci plánování](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) .
 

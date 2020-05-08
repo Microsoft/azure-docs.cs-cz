@@ -7,16 +7,16 @@ manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/05/2020
+ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633687"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607741"
 ---
 # <a name="synapse-sql-recommendations"></a>Doporučení SQL synapse
 
@@ -24,7 +24,7 @@ Tento článek popisuje doporučení SQL synapse, která jsou poskytována prost
 
 SQL Analytics poskytuje doporučení k zajištění konzistentního optimalizace úloh datového skladu pro výkon. Doporučení jsou úzce integrovaná s [Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , aby vám poskytovala osvědčené postupy přímo v rámci [Azure Portal](https://aka.ms/Azureadvisor). SQL Analytics shromažďuje doporučení telemetrie a povrchů pro aktivní úlohy na denní tempo. Podporované scénáře doporučení jsou popsány níže spolu s postupem použití doporučených akcí.
 
-Můžete [si vyzkoušet doporučení](https://aka.ms/Azureadvisor) ještě dnes! Tato funkce je momentálně platná jenom pro Gen2 datové sklady.
+Můžete [si vyzkoušet doporučení](https://aka.ms/Azureadvisor) ještě dnes! 
 
 ## <a name="data-skew"></a>Zkosit data
 
@@ -51,14 +51,22 @@ V případě doporučení pro replikovanou tabulku detekuje Advisor kandidáty n
 
 Advisor průběžně využívá heuristiky založené na úlohách, jako je četnost přístupů k tabulkám, počet vrácených řádků v průměru a prahové hodnoty velikosti datového skladu a aktivity, abyste zajistili, že se vygenerují vysoce kvalitní doporučení.
 
-Níže jsou popsány heuristicky založené na úlohách, které můžete najít v Azure Portal pro každé z doporučení replikované tabulky:
+V následující části jsou popsány heuristicky založené na úlohách, které můžete najít v Azure Portal pro každé z doporučení replikované tabulky:
 
 - Průměrný počet řádků vrácených z tabulky pro každý přístup k tabulce za posledních sedm dní
 - Časté čtení bez aktualizace – označuje, že se tabulka během posledních sedmi dnů neaktualizovala při zobrazení aktivity přístupu.
 - Poměr pro čtení a aktualizaci – poměr mezi časté, k němuž byla tabulka přístupná, když se aktualizuje za posledních sedm dní
-- Activity – měří míru využití na základě aktivity přístupu. Tím se porovná aktivita přístupu k tabulce vzhledem k průměrné aktivitě přístupu k tabulce v rámci datového skladu za posledních sedm dní.
+- Activity – měří míru využití na základě aktivity přístupu. Tato aktivita porovnává aktivitu přístupu k tabulce vzhledem k průměrné aktivitě přístupu k tabulce v rámci datového skladu za posledních sedm dní.
 
 V současné době se u clusterovaných indexů columnstore zobrazí jenom čtyři kandidáty replikované tabulky s upřednostněním nejvyšší aktivity.
 
 > [!IMPORTANT]
-> Doporučení replikované tabulky není úplného ověření a nebere v úvahu operace přesunu dat. Pracujeme na tom, abychom tento postup používali jako heuristickou, ale mezitím byste po použití doporučení měli vždy ověřit své zatížení. Pokud si sqldwadvisor@service.microsoft.com vyžádáte doporučení pro replikovanou tabulku, která způsobí, že se vaše úloha vrátí do služby, kontaktujte prosím Další informace o replikovaných tabulkách najdete v následující [dokumentaci](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+> Doporučení replikované tabulky není úplného ověření a nebere v úvahu operace přesunu dat. Pracujeme na tom, abychom tento postup používali jako heuristickou, ale mezitím byste po použití doporučení měli vždy ověřit své zatížení. Další informace o replikovaných tabulkách najdete v následující [dokumentaci](design-guidance-for-replicated-tables.md#what-is-a-replicated-table).
+
+
+## <a name="adaptive-gen2-cache-utilization"></a>Adaptivní (Gen2) využití mezipaměti
+Pokud máte velkou pracovní sadu, můžete zaznamenat procento přístupů do mezipaměti a vysoké využití mezipaměti. V tomto scénáři byste měli škálovat až ke zvýšení kapacity mezipaměti a opětovnému spuštění úloh. Další informace najdete v následující [dokumentaci](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-how-to-monitor-cache). 
+
+## <a name="tempdb-contention"></a>Obsah databáze tempdb
+
+Výkon dotazů se může snížit, když dojde k vysokému obsahu databáze tempdb.  K obsahu tempdb může dojít prostřednictvím uživatelsky definovaných dočasných tabulek nebo v případě velkého množství přesunu dat. V tomto scénáři můžete škálovat pro další přidělení databáze tempdb a [konfiguraci tříd prostředků a správy úloh](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management) , aby bylo možné získat větší množství paměti pro vaše dotazy. 

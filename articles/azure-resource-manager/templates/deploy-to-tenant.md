@@ -3,12 +3,12 @@ title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460258"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930059"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
@@ -19,6 +19,7 @@ V případě, že vaše organizace bude vyspělá, možná budete muset v tenant
 Na úrovni tenanta můžete nasadit následující typy prostředků:
 
 * [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin pro správu nebo předplatných.
+* managementGroups
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ Pro nasazení klientů existují při použití funkcí šablon důležité důl
 * K získání ID prostředku pro prostředky, které jsou nasazeny na úrovni tenanta, použijte funkci [tenantResourceId ()](template-functions-resource.md#tenantresourceid) .
 
   Pokud například chcete získat ID prostředku pro definici zásady, použijte:
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   ID vráceného prostředku má následující formát:
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

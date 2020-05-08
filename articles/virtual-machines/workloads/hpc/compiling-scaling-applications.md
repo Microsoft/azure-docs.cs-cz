@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67707840"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594793"
 ---
 # <a name="scaling-hpc-applications"></a>Škálování aplikací HPC
 
@@ -37,7 +37,7 @@ Clang je kompilátor jazyka C, C++ a objektiv-C, který zpracovává předzpraco
 
 ### <a name="flang"></a>FLANG
 
-Kompilátor FLANG je nedávno přidaný do sady AOCC (přidáno v dubnu 2018) a je aktuálně v předběžném vydání pro vývojáře ke stažení a testování. V závislosti na programu Fortran 2008 rozšiřuje verze GitHubu verzi FLANG (https://github.com/flangcompiler/flang). Kompilátor FLANG podporuje všechny možnosti kompilátoru Clang a další počet možností kompilátoru specifických pro FLANG.
+Kompilátor FLANG je nedávno přidaný do sady AOCC (přidáno v dubnu 2018) a je aktuálně v předběžném vydání pro vývojáře ke stažení a testování. V závislosti na programu Fortran 2008 rozšiřuje verze GitHubu verzi FLANG (https://github.com/flang-compiler/flang). Kompilátor FLANG podporuje všechny možnosti kompilátoru Clang a další počet možností kompilátoru specifických pro FLANG.
 
 ### <a name="dragonegg"></a>DragonEgg
 

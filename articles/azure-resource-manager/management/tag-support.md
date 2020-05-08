@@ -3,12 +3,12 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255022"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609285"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
 Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -324,7 +324,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | b2cDirectories | Ano | Ne |
+> | b2cDirectories | Ano | No |
 > | b2ctenants | Ne | Ne |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -701,7 +701,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ReservationTransactions | Ne | Ne |
 > | Značky | Ne | Ne |
 > | tenantů | Ne | Ne |
-> | Výrazy | Ne | Ne |
+> | Terminologie | Ne | Ne |
 > | UsageDetails | Ne | Ne |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -825,7 +825,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | pracovní prostory | Ano | Ne |
+> | pracovní prostory | Ano | No |
 > | pracovní prostory/dbWorkspaces | Ne | Ne |
 > | pracovní prostory/storageEncryption | Ne | Ne |
 > | pracovní prostory/virtualNetworkPeerings | Ne | Ne |
@@ -847,11 +847,11 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Objekty DataFactory | Ano | Ne |
+> | Objekty DataFactory | Ano | No |
 > | DataFactory/diagnosticSettings | Ne | Ne |
 > | DataFactory/metricDefinitions | Ne | Ne |
 > | dataFactorySchema | Ne | Ne |
-> | továrny | Ano | Ne |
+> | továrny | Ano | No |
 > | továrny/integrationRuntimes | Ne | Ne |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
@@ -1466,10 +1466,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Ano | Ne |
+> | netAppAccounts | Ano | No |
 > | netAppAccounts / accountBackups | Ne | Ne |
-> | netAppAccounts / capacityPools | Ano | Ne |
-> | netAppAccounts/capacityPools/svazky | Ano | Ne |
+> | netAppAccounts / capacityPools | Ano | No |
+> | netAppAccounts/capacityPools/svazky | Ano | No |
 > | netAppAccounts/capacityPools/svazky/snímky | Ne | Ne |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -1481,8 +1481,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | applicationGatewayWebApplicationFirewallPolicies | Ano | Ano |
 > | applicationSecurityGroups | Ano | Ano |
 > | azureFirewallFqdnTags | Ne | Ne |
-> | azureFirewalls | Ano | Ne |
-> | bastionHosts | Ano | Ne |
+> | azureFirewalls | Ano | No |
+> | bastionHosts | Ano | No |
 > | bgpServiceCommunities | Ne | Ne |
 > | připojení | Ano | Ano |
 > | ddosCustomPolicies | Ano | Ano |
@@ -1508,7 +1508,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | expressRouteServiceProviders | Ne | Ne |
 > | firewallPolicies | Ano | Ano |
 > | frontdoors | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) | Ano |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) | Ne |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) | No |
 > | frontdoorWebApplicationFirewallPolicies | Ano, ale omezeno (viz [Poznámka níže](#frontdoor)) | Ano |
 > | getDnsResourceReference | Ne | Ne |
 > | internalNotify | Ne | Ne |
@@ -1520,10 +1520,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | networkProfiles | Ano | Ano |
 > | networkSecurityGroups | Ano | Ano |
 > | networkWatchers | Ano | Ano |
-> | networkWatchers / connectionMonitors | Ano | Ne |
+> | networkWatchers / connectionMonitors | Ano | No |
 > | networkWatchers / flowLogs | Ne | Ne |
-> | networkWatchers/čočky | Ano | Ne |
-> | networkWatchers / pingMeshes | Ano | Ne |
+> | networkWatchers/čočky | Ano | No |
+> | networkWatchers / pingMeshes | Ano | No |
 > | p2sVpnGateways | Ano | Ano |
 > | privateDnsOperationStatuses | Ne | Ne |
 > | privateDnsZones | Ano | Ano |
@@ -1551,8 +1551,9 @@ Přejít na obor názvů poskytovatele prostředků:
 > | virtualHubs | Ano | Ano |
 > | virtualNetworkGateways | Ano | Ano |
 > | virtualNetworks | Ano | Ano |
+> | virtualNetworks/podsítě | Ne | Ne |
 > | virtualNetworkTaps | Ano | Ano |
-> | virtualWans | Ano | Ne |
+> | virtualWans | Ano | No |
 > | vpnGateways | Ano | Ano |
 > | vpnSites | Ano | Ano |
 > | webApplicationFirewallPolicies | Ano | Ano |
@@ -1575,8 +1576,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | obsažené | Ano | Ne |
-> | obory názvů/notificationHubs | Ano | Ne |
+> | obsažené | Ano | No |
+> | obory názvů/notificationHubs | Ano | No |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
@@ -1743,15 +1744,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | nasazení | Ano | Ne |
+> | nasazení | Ano | No |
 > | nasazení/operace | Ne | Ne |
 > | deploymentScripts | Ano | Ano |
 > | deploymentScripts/protokoly | Ne | Ne |
 > | odkazy | Ne | Ne |
 > | notifyResourceJobs | Ne | Ne |
 > | dodavateli | Ne | Ne |
-> | resourceGroups | Ano | Ne |
-> | odběru | Ano | Ne |
+> | resourceGroups | Ano | No |
+> | odběru | Ano | No |
 > | tenantů | Ne | Ne |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
@@ -2085,10 +2086,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Podporuje značky | Značka v sestavě nákladů |
 > | ------------- | ----------- | ----------- |
-> | Environment | Ano | Ne |
+> | Environment | Ano | No |
 > | prostředí/accessPolicies | Ne | Ne |
-> | prostředí/EventSources | Ano | Ne |
-> | prostředí/referenceDataSets | Ano | Ne |
+> | prostředí/EventSources | Ano | No |
+> | prostředí/referenceDataSets | Ano | No |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/22/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 069d2a153e307ed94032ce1d980f26521969fc56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508307"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930518"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>Povolit Azure Multi-Factor Authentication pro virtuální počítače s Windows
 
@@ -39,19 +39,24 @@ Tady je přehled toho, co budete potřebovat k zahájení práce:
 V této části se dozvíte, jak vytvořit zásadu podmíněného přístupu, která při připojování k virtuálnímu počítači s Windows vyžaduje vícefaktorové ověřování.
 
 1. Přihlaste se k **Azure Portal** jako globální správce, správce zabezpečení nebo správce podmíněného přístupu.
-1. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
-1. Vyberte **nové zásady**.
-1. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
-1. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
-   1. V části **Zahrnout**vyberte **Vybrat uživatele a skupiny** > **Uživatelé a skupiny** > vyberte skupinu vytvořenou ve fázi požadavků.
-   1. Vyberte **Done** (Hotovo).
-1. V části **cloudové aplikace nebo akce** > **Include**vyberte **vybrat aplikace**.
-   1. Zvolte **virtuální počítač s Windows** a **Klient virtuální plochy Windows**a vyberte **Vybrat** a pak **Hotovo**.
-   ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise-selected.png)
-1. V části **řízení** > přístupu**udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a pak **Vyberte**.
-1. V části > **relace** **řízení přístupu**vyberte **četnost přihlášení**, nastavte hodnotu na **1** a jednotku na **hodiny**a pak **Vyberte**.
-1. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
-1. Vyberte **vytvořit** a povolte tak zásady.
+2. Vyhledejte **Azure Active Directory** > **Security** > **podmíněný přístup**zabezpečení.
+3. Vyberte **nové zásady**.
+4. Zadejte název zásady. Pro názvy svých zásad doporučujeme organizacím vytvořit smysluplný Standard.
+5. V části **Přiřazení** vyberte **Uživatelé a skupiny**.
+   - V části **Zahrnout**vyberte **Vybrat uživatele a skupiny** > **Uživatelé a skupiny** > vyberte skupinu vytvořenou ve fázi požadavků.
+   - Vyberte **Done** (Hotovo).
+6. V části **cloudové aplikace nebo akce** > **Include**vyberte **vybrat aplikace**.
+   - Zvolte **virtuální počítač s Windows** (ID aplikace 9cdead84-a844-4324-93f2-b2e6bb768d07), pak **Vyberte**a pak **Hotovo**.
+   
+     ![Snímek obrazovky se stránkou cloudové aplikace nebo akce Klientské aplikace virtuálních počítačů a virtuálních počítačů s Windows jsou zvýrazněné červeně.](media/cloud-apps-enterprise.png)
+
+     >[!NOTE]
+     >Pokud chcete najít ID aplikace, kterou chcete vybrat, přejděte na **podnikové aplikace** a v rozevírací nabídce Typ aplikace vyberte **aplikace Microsoftu** .
+
+7. V části **řízení** > přístupu**udělení**přístupu vyberte **udělit přístup**, **vyžadovat vícefaktorové ověřování**a pak **Vyberte**.
+8. V části > **relace** **řízení přístupu**vyberte **četnost přihlášení**, nastavte hodnotu na **1** a jednotku na **hodiny**a pak vyberte **Vybrat**.
+9. Potvrďte nastavení a nastavte **možnost povolit zásadu** na **zapnuto**.
+10. Vyberte **vytvořit** a povolte tak zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

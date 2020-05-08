@@ -3,16 +3,16 @@ title: Aktualizovat skupinu kontejnerů
 description: Naučte se aktualizovat spuštěné kontejnery ve vašich Azure Container Instancesch skupinách kontejnerů.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854449"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928716"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Aktualizace kontejnerů ve službě Azure Container Instances
 
-Během normálního provozu instancí kontejnerů může být nutné aktualizovat běžící kontejnery ve [skupině kontejnerů](container-instances-container-groups.md). Například můžete chtít aktualizovat vlastnost, jako je například verze image, název DNS nebo proměnná prostředí, nebo aktualizovat vlastnost v kontejneru, u kterého došlo k chybě aplikace.
+Během normálního provozu instancí kontejnerů může být nutné aktualizovat běžící kontejnery ve [skupině kontejnerů](./container-instances-container-groups.md). Například můžete chtít aktualizovat vlastnost, jako je například verze image, název DNS nebo proměnná prostředí, nebo aktualizovat vlastnost v kontejneru, u kterého došlo k chybě aplikace.
 
 Aktualizujte kontejnery ve spuštěné skupině kontejnerů tak, že znovu nasadíte stávající skupinu s aspoň jednou upravenou vlastností. Když aktualizujete skupinu kontejnerů, všechny spuštěné kontejnery ve skupině se restartují místně, obvykle na stejném podkladovém hostiteli kontejneru.
 
@@ -28,7 +28,7 @@ Aktualizace existující skupiny kontejnerů:
 * Nastavte další vlastnosti pomocí hodnot, které jste zadali dříve. Pokud nenastavíte hodnotu pro vlastnost, vrátí se výchozí hodnota.
 
 > [!TIP]
-> [Soubor YAML](container-instances-container-groups.md#deployment) pomáhá udržovat konfiguraci nasazení skupiny kontejnerů a poskytuje výchozí bod pro nasazení aktualizované skupiny. Pokud jste k vytvoření skupiny použili jinou metodu, můžete tuto konfiguraci exportovat do YAML pomocí [AZ Container export][az-container-export], 
+> [Soubor YAML](./container-instances-container-groups.md#deployment) pomáhá udržovat konfiguraci nasazení skupiny kontejnerů a poskytuje výchozí bod pro nasazení aktualizované skupiny. Pokud jste k vytvoření skupiny použili jinou metodu, můžete tuto konfiguraci exportovat do YAML pomocí [AZ Container export][az-container-export], 
 
 ### <a name="example"></a>Příklad
 
@@ -80,7 +80,7 @@ Když skupinu kontejnerů odstraníte a znovu vytvoříte, nebude se znovu nasaz
 
 V tomto článku je uvedeno několik případů, kde je **Skupina kontejnerů**. Každý kontejner ve Azure Container Instances je nasazený ve skupině kontejnerů a skupiny kontejnerů můžou obsahovat více než jeden kontejner.
 
-[Skupiny kontejnerů ve službě Azure Container Instances](container-instances-container-groups.md)
+[Skupiny kontejnerů ve službě Azure Container Instances](./container-instances-container-groups.md)
 
 [Nasazení skupiny více kontejnerů](container-instances-multi-container-group.md)
 

@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943440"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690511"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -168,7 +168,7 @@ V následujících příkladech můžete vytvořit, aktualizovat, propojit a ods
 
 Pokud se nic nevrátí, znamená to, že ve vašem tenantovi nejsou vytvořené žádné zásady.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Příklad: nastavení zásad HRD pro aplikaci 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>Příklad: nastavení zásad HRD pro aplikaci 
 
 V tomto příkladu vytvoříte zásadu, která je přiřazena k aplikaci buď: 
 - Automaticky zrychluje uživatele na AD FS přihlašovací obrazovku, když se přihlásí k aplikaci, když je ve vašem tenantovi jedna doména. 
@@ -251,7 +251,7 @@ Poznamenejte si **identifikátor** objektu zásad, pro který chcete vypsat při
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Příklad: odebrání zásad HRD pro aplikaci
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>Příklad: odebrání zásad HRD z aplikace
 #### <a name="step-1-get-the-objectid"></a>Krok 1: získání ObjectID
 Použijte předchozí příklad k získání **ID objectID** zásady a k objektu služby Application Service, ze kterého ho chcete odebrat. 
 

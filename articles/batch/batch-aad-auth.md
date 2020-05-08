@@ -3,12 +3,13 @@ title: Ověřování služby Azure Batch Services pomocí Azure Active Directory
 description: Služba Batch podporuje službu Azure AD k ověřování ze služby Batch. Přečtěte si, jak ověřit jedním ze dvou způsobů.
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116175"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608468"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Ověřování řešení služby Batch ve službě Active Directory
 
@@ -35,9 +36,9 @@ K ověřování ve službě Azure AD použijete tento koncový bod společně s 
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> Koncový bod specifický pro tenanta se vyžaduje při ověřování pomocí instančního objektu. 
-> 
+> [!NOTE]
+> Koncový bod specifický pro tenanta se vyžaduje při ověřování pomocí instančního objektu.
+>
 > Koncový bod specifický pro klienta je při ověřování pomocí integrovaného ověřování volitelný, ale doporučuje se. Můžete ale použít i společný koncový bod Azure AD. Společný koncový bod poskytuje obecné rozhraní pro shromažďování přihlašovacích údajů, když není k dispozici konkrétní tenant. Běžný koncový bod je `https://login.microsoftonline.com/common`.
 >
 >
@@ -126,7 +127,7 @@ K ověřování pomocí instančního objektu je potřeba přiřadit k aplikaci 
 1. V části **Nastavení** účtu Batch vyberte možnost **Access Control (IAM)**.
 1. Vyberte kartu **přiřazení rolí** .
 1. Vyberte **Přidat přiřazení role**.
-1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).  
+1. V rozevíracím seznamu **role** vyberte roli *Přispěvatel* nebo *Čtenář* pro vaši aplikaci. Další informace o těchto rolích najdete v tématu [Začínáme s Access Control na základě rolí v Azure Portal](../role-based-access-control/overview.md).
 1. Do pole **Vybrat** zadejte název vaší aplikace. V seznamu vyberte svou aplikaci a pak vyberte **Uložit**.
 
 Vaše aplikace by se teď měla zobrazit v nastavení řízení přístupu s přiřazenou rolí RBAC.
@@ -209,7 +210,7 @@ ID tenanta identifikuje tenanta Azure AD, který poskytuje služby ověřování
 Příklady kódů v této části ukazují, jak provádět ověřování pomocí služby Azure AD pomocí integrovaného ověřování a s instančním objektem. Většina těchto příkladů kódu používá rozhraní .NET, ale koncepty jsou podobné pro jiné jazyky.
 
 > [!NOTE]
-> Platnost ověřovacího tokenu Azure AD vyprší za jednu hodinu. Při použití dlouhodobého objektu **BatchClient** doporučujeme, abyste při každém požadavku načetli token z knihovny ADAL a zajistili jste tak, že budete mít vždy platný token. 
+> Platnost ověřovacího tokenu Azure AD vyprší za jednu hodinu. Při použití dlouhodobého objektu **BatchClient** doporučujeme, abyste při každém požadavku načetli token z knihovny ADAL a zajistili jste tak, že budete mít vždy platný token.
 >
 >
 > Pokud to chcete dosáhnout v rozhraní .NET, napište metodu, která načte token z Azure AD, a předejte tuto metodu do objektu **BatchTokenCredentials** jako delegáta. Metoda Delegate je volána pro každý požadavek na službu Batch, aby bylo zajištěno, že bude poskytnut platný token. Ve výchozím nastavení knihovny ADAL ukládá tokeny do mezipaměti, takže nový token se načte z Azure AD jenom v případě potřeby. Další informace o tokenech v Azure AD najdete v tématu [scénáře ověřování pro Azure AD][aad_auth_scenarios].
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ Odkazování na koncový bod Azure AD v kódu, včetně ID tenanta. Při použit
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-Odkaz na koncový bod prostředku služby Batch:  
+Odkaz na koncový bod prostředku služby Batch:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ Při použití instančního objektu musíte zadat ID tenanta. Pokud chcete nač
 TENANT_ID = "<tenant-id>"
 ```
 
-Odkaz na koncový bod prostředku služby Batch:  
+Odkaz na koncový bod prostředku služby Batch:
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"

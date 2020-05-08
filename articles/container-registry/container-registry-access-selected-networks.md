@@ -1,0 +1,100 @@
+---
+title: Konfigurace pravidel brány firewall pro služby
+description: Nakonfigurujte pravidla protokolu IP pro povolení přístupu ke službě Azure Container Registry z vybraných veřejných IP adres nebo rozsahů adres.
+ms.topic: article
+ms.date: 05/04/2020
+ms.openlocfilehash: f6459061ca486b4bf229409e6ec1ed1bd808a474
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82984613"
+---
+# <a name="configure-public-ip-network-rules"></a>Konfigurace pravidel sítě veřejných IP adres
+
+Služba Azure Container Registry ve výchozím nastavení přijímá připojení přes Internet z hostitelů v libovolné síti. V tomto článku se dozvíte, jak nakonfigurovat registr kontejneru tak, aby povoloval přístup jenom pro konkrétní veřejné IP adresy nebo rozsahy adres. K dispozici jsou ekvivalentní kroky pomocí Azure CLI a Azure Portal.
+
+V rámci veřejného koncového bodu registru jsou nakonfigurovaná pravidla sítě IP. Pravidla sítě IP se nevztahují na privátní koncové body konfigurované pomocí [privátního propojení](container-registry-private-link.md) .
+
+Konfigurace pravidel přístupu k IP adres je dostupná na úrovni služby **Premium** Container Registry Service. Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně](container-registry-skus.md).
+
+## <a name="access-from-selected-public-network---cli"></a>Přístup z vybrané veřejné sítě – rozhraní příkazového řádku
+
+### <a name="change-default-network-access-to-registry"></a>Změna výchozího přístupu k síti do registru
+
+Chcete-li omezit přístup k vybrané veřejné síti, nejprve změňte výchozí akci na odepřít přístup. Název registru nahraďte následujícím příkazem [AZ ACR Update][az-acr-update] :
+
+```azurecli
+az acr update --name myContainerRegistry --default-action Deny
+```
+
+### <a name="add-network-rule-to-registry"></a>Přidat síťové pravidlo do registru
+
+Pomocí příkazu [AZ ACR Network-Rule Add][az-acr-network-rule-add] přidejte do registru síťové pravidlo, které umožňuje přístup z veřejné IP adresy nebo rozsahu. Například nahraďte název registru kontejneru a veřejnou IP adresu virtuálního počítače ve virtuální síti.
+
+```azurecli
+az acr network-rule add \
+  --name mycontainerregistry \
+  --ip-address <public-IP-address>
+```
+
+> [!NOTE]
+> Po přidání pravidla trvá několik minut, než se pravidlo projeví.
+
+## <a name="access-from-selected-public-network---portal"></a>Přístup z vybrané veřejné sítě – portál
+
+1. Na portálu přejděte do registru kontejneru.
+1. V části **Nastavení**vyberte **sítě**.
+1. Na kartě **veřejný přístup** vyberte možnost povolíte veřejný přístup z **vybraných sítí**.
+1. V části **Brána firewall**zadejte veřejnou IP adresu, třeba veřejnou IP adresu virtuálního počítače ve virtuální síti. Případně zadejte rozsah adres v zápisu CIDR, který obsahuje IP adresu virtuálního počítače.
+1. Vyberte **Uložit**.
+
+![Konfigurace pravidla brány firewall pro Registry kontejneru][acr-access-selected-networks]
+
+> [!NOTE]
+> Po přidání pravidla trvá několik minut, než se pravidlo projeví.
+
+> [!TIP]
+> Volitelně můžete povolit přístup k registru z místního klientského počítače nebo rozsahu IP adres. K povolení tohoto přístupu potřebujete veřejnou IPv4 adresu tohoto počítače. Tuto adresu najdete tak, že v internetovém prohlížeči vyhledáte "to je moje IP adresa". Aktuální IPv4 adresa klienta se také zobrazí automaticky při konfiguraci nastavení brány firewall na stránce **síť** na portálu.
+
+## <a name="disable-public-network-access"></a>Zakázat přístup k veřejné síti
+
+Chcete-li omezit provoz na virtuální sítě pomocí [privátního propojení](container-registry-private-link.md), zakažte v registru veřejný koncový bod. Zakázání veřejného koncového bodu přepíše všechny konfigurace brány firewall.
+
+### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
+
+1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
+1. Na kartě **veřejný přístup** vyberte v části **povolený veřejný přístup**možnost **zakázáno**. Potom vyberte **Uložit**.
+
+![Zakázat veřejný přístup][acr-access-disabled]
+
+## <a name="restore-default-registry-access"></a>Obnovit výchozí přístup k registru
+
+Pokud chcete obnovit registr tak, aby byl ve výchozím nastavení povolený přístup, aktualizujte výchozí akci. 
+
+### <a name="restore-default-registry-access---portal"></a>Obnovit výchozí přístup k registru – portál
+
+1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
+1. V části **Brána firewall**vyberte rozsah adres a pak vyberte ikonu Odstranit.
+1. Na kartě **veřejný přístup** vyberte v části **povolený veřejný přístup**možnost **všechny sítě**. Potom vyberte **Uložit**.
+
+![Veřejný přístup ze všech sítí][acr-access-all-networks]
+
+## <a name="next-steps"></a>Další kroky
+
+* Pokud chcete omezit přístup k registru pomocí privátního koncového bodu ve virtuální síti, přečtěte si téma [konfigurace privátního odkazu Azure pro službu Azure Container Registry](container-registry-private-link.md).
+* Pokud potřebujete nastavit pravidla přístupu k registru z za bránou firewall klienta, přečtěte si téma [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](container-registry-firewall-access-rules.md).
+
+[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-network-rule-add]: /cli/azure/acr/network-rule/#az-acr-network-rule-add
+[az-acr-network-rule-remove]: /cli/azure/acr/network-rule/#az-acr-network-rule-remove
+[az-acr-network-rule-list]: /cli/azure/acr/network-rule/#az-acr-network-rule-list
+[az-acr-run]: /cli/azure/acr#az-acr-run
+[az-acr-update]: /cli/azure/acr#az-acr-update
+[quickstart-portal]: container-registry-get-started-portal.md
+[quickstart-cli]: container-registry-get-started-azure-cli.md
+[azure-portal]: https://portal.azure.com
+
+[acr-access-selected-networks]: ./media/container-registry-access-selected-networks/acr-access-selected-networks.png
+[acr-access-disabled]: ./media/container-registry-access-selected-networks/acr-access-disabled.png
+[acr-access-all-networks]: ./media/container-registry-access-selected-networks/acr-access-all-networks.png

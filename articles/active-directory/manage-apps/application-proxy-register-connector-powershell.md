@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756207"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609965"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Vytvoření skriptu bezobslužné instalace pro konektor Azure Proxy aplikací služby AD
 
@@ -36,14 +36,14 @@ Tato funkce je užitečná v případě, že chcete:
 
 Aby [konektor proxy aplikací](application-proxy-connectors.md) fungoval, musí být zaregistrovaný v adresáři služby Azure AD pomocí správce aplikace a hesla. Tyto informace se obvykle zadávají při instalaci konektoru v automaticky otevíraném dialogovém okně, ale k automatizaci tohoto procesu můžete použít PowerShell.
 
-Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé Zaregistrujte konektor u služby Azure AD. 
+Existují dva kroky pro bezobslužnou instalaci. Nejdřív nainstalujte konektor. Za druhé Zaregistrujte konektor u služby Azure AD.
 
 ## <a name="install-the-connector"></a>Instalace konektoru
 K instalaci konektoru bez jeho registrace použijte následující postup:
 
 1. Otevřete příkazový řádek.
 2. Spusťte následující příkaz, ve kterém parametr/q znamená tichou instalaci. Tichá instalace vás nevyzve, abyste přijali Licenční smlouvu s koncovým uživatelem.
-   
+
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 ## <a name="register-the-connector-with-azure-ad"></a>Registrace konektoru ve službě Azure AD
@@ -54,13 +54,13 @@ Existují dvě metody, které můžete použít k registraci konektoru:
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Zaregistrujte konektor pomocí objektu přihlašovacích údajů prostředí Windows PowerShell.
 1. Vytvořte objekt `$cred` přihlašovacích údajů prostředí Windows PowerShell, který obsahuje uživatelské jméno a heslo pro váš adresář. Spusťte následující příkaz a nahraďte * \<uživatelské\> jméno* a * \<heslo\>*:
-   
+
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 2. Přejít na **C:\Program Files\Microsoft AAD App proxy Connector** a spusťte následující skript pomocí `$cred` objektu, který jste vytvořili:
-   
+
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>Registrace konektoru pomocí vytvořeného tokenu offline
@@ -128,38 +128,38 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         $AADPoshPath = (Get-InstalledModule -Name AzureAD).InstalledLocation
         # Set Location for ADAL Helper Library
         $ADALPath = $(Get-ChildItem -Path $($AADPoshPath) -Filter Microsoft.IdentityModel.Clients.ActiveDirectory.dll -Recurse ).FullName | Select-Object -Last 1
-        
+
         # Add ADAL Helper Library
         Add-Type -Path $ADALPath
-        
+
         #region constants
-        
+
         # The AAD authentication endpoint uri
-        [uri]$AadAuthenticationEndpoint = "https://login.microsoftonline.com/common/oauth2/token?api-version=1.0/" 
-        
+        [uri]$AadAuthenticationEndpoint = "https://login.microsoftonline.com/common/oauth2/token?api-version=1.0/"
+
         # The application ID of the connector in AAD
         [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
-        
+
         # The reply address of the connector application in AAD
-        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
-        
+        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob"
+
         # The AppIdUri of the registration service in AAD
         [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
-        
+
         #endregion
-        
+
         #region GetAuthenticationToken
-        
+
         # Set AuthN context
         $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $AadAuthenticationEndpoint
-        
+
         # Build platform parameters
         $promptBehavior = [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Always
         $platformParam = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList $promptBehavior
-        
+
         # Do AuthN and get token
         $authResult = $authContext.AcquireTokenAsync($RegistrationServiceAppIdUri.AbsoluteUri, $ConnectorAppId, $ConnectorRedirectAddress, $platformParam).Result
-        
+
         # Check AuthN result
         If (($authResult) -and ($authResult.AccessToken) -and ($authResult.TenantId) ) {
         $token = $authResult.AccessToken
@@ -168,7 +168,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
         Else {
         Write-Output "Authentication result, token or tenant id returned are null"
         }
-        
+
         #endregion
 
 2. Jakmile máte token, vytvořte SecureString pomocí tokenu:
@@ -179,9 +179,7 @@ Existují dvě metody, které můžete použít k registraci konektoru:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 * [Publikování aplikací s použitím vlastního názvu domény](application-proxy-configure-custom-domain.md)
 * [Povolení jednoduchého přihlášení](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Řešení potíží s proxy aplikace](application-proxy-troubleshoot.md)
-
-

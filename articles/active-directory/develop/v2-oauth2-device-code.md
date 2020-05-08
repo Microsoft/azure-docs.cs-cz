@@ -3,7 +3,7 @@ title: Tok kódu zařízení OAuth 2,0 | Azure
 titleSuffix: Microsoft identity platform
 description: Přihlaste se uživatelům bez prohlížeče. Pomocí udělení autorizace pro zařízení Sestavte integrované postupy ověřování a bez prohlížeče.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868488"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689766"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft Identity Platform a tok udělení autorizace zařízení OAuth 2,0
 

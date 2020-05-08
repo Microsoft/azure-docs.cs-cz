@@ -5,54 +5,71 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b390c0beb20b7557294c18f889a0f41023513e2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c003af296b10037505e6d6006b6bfc788e641dc3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246955"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731453"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
-Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů může obsahovat skupinu aplikací, se kterou můžou uživatelé interaktivně pracovat, jako by na fyzickém počítači.
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Fondy hostitelů jsou kolekce jednoho nebo více identických virtuálních počítačů v prostředích klienta virtuálních počítačů s Windows. Každý fond hostitelů je možné přidružit k několika skupinám RemoteApp, jedné skupině aplikací klasické pracovní plochy a několika hostitelům relací.
+
+## <a name="prerequisites"></a>Požadavky
+
+V tomto článku se předpokládá, že už jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu](powershell-module.md).
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>Vytvoření fondu hostitelů pomocí klienta PowerShellu
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali.
-
-Spuštěním následující rutiny se přihlaste do prostředí virtuálních počítačů s Windows.
+Spuštěním následující rutiny se přihlaste do prostředí virtuálních počítačů s Windows:
 
 ```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
 ```
 
-Potom spuštěním této rutiny vytvořte nový fond hostitelů ve vašem tenantovi virtuálních klientů s Windows:
-
-```powershell
-New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
-```
+Tato rutina vytvoří fond hostitelů, pracovní prostor a skupinu desktopových aplikací. Kromě toho zaregistruje skupinu desktopových aplikací do pracovního prostoru. Pomocí této rutiny můžete vytvořit pouze pracovní prostor, ale v této rutině nebudete používat existující pracovní prostor. 
 
 Spusťte další rutinu pro vytvoření registračního tokenu pro autorizaci hostitele relace pro připojení k fondu hostitelů a jeho uložení do nového souboru na místním počítači. Pomocí parametru-ExpirationHours můžete určit, jak dlouho je registrační token platný.
 
+>[!NOTE]
+>Datum vypršení platnosti tokenu nemůže být menší než hodina a ne více než jeden měsíc. Pokud nastavíte *-ExpirationTime* mimo tento limit, rutina nevytvoří token.
+
 ```powershell
-New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token | Out-File -FilePath <PathToRegFile>
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
+```
+
+Pokud například chcete vytvořit token, jehož platnost vyprší během dvou hodin, spusťte tuto rutinu: 
+
+```powershell
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) 
 ```
 
 Potom spuštěním této rutiny přidejte Azure Active Directory uživatele do výchozí skupiny desktopových aplikací pro fond hostitelů.
 
 ```powershell
-Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName "Desktop Application Group" -UserPrincipalName <userupn>
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
-Rutina **Add-RdsAppGroupUser** nepodporuje přidávání skupin zabezpečení a do skupiny aplikací přičítá pouze jednoho uživatele. Pokud chcete do skupiny aplikací přidat více uživatelů, spusťte rutinu znovu s příslušnými hlavními názvy uživatelů.
+Spuštěním této další rutiny přidáte Azure Active Directory skupiny uživatelů do výchozí skupiny desktopových aplikací pro fond hostitelů:
+
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+“-DAG”> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
+```
 
 Spuštěním následující rutiny exportujte registrační token do proměnné, kterou použijete později v části [registrace virtuálních počítačů do fondu hostitelů virtuálních počítačů s Windows](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool).
 
 ```powershell
-$token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
+$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> 
 ```
 
 ## <a name="create-virtual-machines-for-the-host-pool"></a>Vytváření virtuálních počítačů pro fond hostitelů
@@ -66,7 +83,7 @@ Virtuální počítač můžete vytvořit několika způsoby:
 - [Vytvoření virtuálního počítače z nespravované image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-user-image-data-disks)
 
 >[!NOTE]
->Pokud nasazujete virtuální počítač s operačním systémem Windows 7 jako hostitelský operační systém, proces vytvoření a nasazení bude trochu jiný. Další podrobnosti najdete v tématu [nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows](deploy-windows-7-virtual-machine.md).
+>Pokud nasazujete virtuální počítač s operačním systémem Windows 7 jako hostitelský operační systém, proces vytvoření a nasazení bude trochu jiný. Další podrobnosti najdete v tématu [nasazení virtuálního počítače s Windows 7 na virtuálním počítači s Windows](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md).
 
 Po vytvoření virtuálních počítačů hostitele relace [použijte licenci Windows pro virtuální počítač hostitele relace](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) , aby se spouštěly vaše virtuální počítače s Windows nebo Windows serverem bez placení na jinou licenci. 
 
@@ -97,15 +114,13 @@ Pokud chcete zaregistrovat agenty virtuálních počítačů s Windows, udělejt
 1. [Připojte se k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) pomocí přihlašovacích údajů, které jste zadali při vytváření virtuálního počítače.
 2. Stáhněte a nainstalujte agenta virtuálního počítače s Windows.
    - Stáhněte si [agenta pro virtuální počítače s Windows](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování**a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
    - Spusťte instalační program. Když instalační program požaduje registrační token, zadejte hodnotu, kterou jste získali z rutiny **Export-RdsRegistrationInfo** .
 3. Stáhněte a nainstalujte si zaváděcí program pro Windows Virtual Desktop agent.
    - Stáhněte si [zaváděcí program pro Windows Virtual Desktop agent](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH).
-   - Klikněte pravým tlačítkem na stažený instalační program, vyberte **vlastnosti**, vyberte **odblokování**a pak vyberte **OK**. To umožní vašemu systému důvěřovat instalačnímu programu.
    - Spusťte instalační program.
 
 >[!IMPORTANT]
->Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md).
+>Pro lepší zabezpečení prostředí virtuálních počítačů s Windows v Azure doporučujeme na svých virtuálních počítačích neotevírat port 3389 pro příchozí spojení. Virtuální počítač s Windows nevyžaduje pro přístup k virtuálním počítačům fondu hostitelů otevřený příchozí port 3389. Pokud musíte pro účely řešení potíží otevřít port 3389, doporučujeme použít [přístup k virtuálnímu počítači za běhu](../security-center/security-center-just-in-time.md). Doporučujeme také nepřiřazovat virtuální počítače k veřejné IP adrese.
 
 ## <a name="next-steps"></a>Další kroky
 

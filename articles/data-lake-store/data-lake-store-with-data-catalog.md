@@ -1,23 +1,17 @@
 ---
-title: Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog | Microsoft Docs
-description: Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Integrace Data Lake Storage Gen1 s Azure Data Catalog
+description: Naučte se, jak registrovat data z Azure Data Lake Storage Gen1 v Azure Data Catalog, aby bylo možné zjistit data ve vaší organizaci.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 66191a52c6ef1f3d19afd2a47356487b07e9eff4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60196489"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692336"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zaregistrujte data z Azure Data Lake Storage Gen1 Azure Data Catalog
 V tomto článku se naučíte, jak integrovat Azure Data Lake Storage Gen1 s Azure Data Catalog k tomu, aby byla data zjistitelná v rámci organizace tím, že je integruje s Data Catalog. Další informace o katalogu dat najdete v tématu [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Pro pochopení scénářů, ve kterých můžete použít Data Catalog, přečtěte si téma [Azure Data Catalog běžných scénářů](../data-catalog/data-catalog-common-scenarios.md).
@@ -27,7 +21,7 @@ Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Povolte pro data Lake Storage Gen1 předplatné Azure** . Viz [pokyny](data-lake-store-get-started-portal.md).
-* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure Portal](data-lake-store-get-started-portal.md). Pro tento kurz vytvořte účet Data Lake Storage Gen1 s názvem **datacatalogstore**.
+* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Storage Gen1 pomocí Azure Portal](data-lake-store-get-started-portal.md). Pro tento kurz vytvořte účet Data Lake Storage Gen1 s názvem **datacatalogstore**.
 
     Po vytvoření účtu nahrajte do něj ukázkovou datovou sadu. V tomto kurzu nám Nahrajte všechny soubory. csv ve složce **AmbulanceData** v [úložišti Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Pro nahrání dat do kontejneru objektů blob můžete použít různé klienty, například [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 * **Azure Data Catalog**. Vaše organizace už musí mít vytvořený Azure Data Catalog pro vaši organizaci. Pro každou organizaci je povolený jenom jeden katalog.

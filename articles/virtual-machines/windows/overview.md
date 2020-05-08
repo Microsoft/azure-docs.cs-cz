@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e304841d09913aac59f5e6ba082d3e76ec791e81
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81869352"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930433"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -67,7 +67,7 @@ Vaše předplatné má nastavené výchozí [kvóty](../../azure-resource-manage
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
 Virtuální počítače používají [virtuální pevné disky (VHD)](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) k ukládání jejich operačního systému (OS) a dat. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
 
-Azure poskytuje mnoho [imagí na webu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
+Azure poskytuje mnoho [imagí na webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
 Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 
@@ -97,9 +97,9 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 | [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
 | [Účet úložiště](../../storage/common/storage-create-storage-account.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
 | [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Ne |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
 | [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
-| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Ne |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
+| [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
 ## <a name="next-steps"></a>Další kroky
 
