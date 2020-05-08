@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 64e0de153aa33bac17c2bed75b211ddca1bbd28c
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
-ms.translationtype: HT
+ms.openlocfilehash: 77af321b74a47306a7202c1fddf6e81edc0ee02a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884394"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926064"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -227,6 +227,9 @@ Pokud se chcete zaregistrovat v prostředí PowerShell, zavolejte příkaz [Get-
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
+    
+# Refresh the Azure Storage provider namespace
+Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -251,9 +254,6 @@ Pokud chcete zjistit stav vaší registrace pomocí PowerShellu, zavolejte pří
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-
-# Refresh the Azure Storage provider namespace
-Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)

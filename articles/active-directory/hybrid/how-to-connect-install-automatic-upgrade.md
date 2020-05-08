@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2019
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60349814"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926472"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -99,7 +99,6 @@ Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné v�
 | UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |
 | UpgradeNotSupportedNonMsolAccount |[Účet služba AD DS Connector](reference-connect-accounts-permissions.md#ad-ds-connector-account) už není výchozím MSOL_m účtem. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect jste zvolili možnost *Nekonfigurovat* při výběru metody přihlašování. |
-| UpgradeNotSupportedPtaSignInMethod | Jako metodu přihlašování jste vybrali předávací ověřování. |
 | UpgradeNotSupportedStagingModeEnabled |Server je nastavený jako [pracovní režim](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Povolili jste funkci [zpětného zápisu uživatelů](how-to-connect-preview.md#user-writeback) . |
 

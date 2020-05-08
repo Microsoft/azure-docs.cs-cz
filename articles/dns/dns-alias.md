@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295492"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926226"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Přehled záznamů aliasů Azure DNS
 
@@ -66,7 +66,7 @@ Například contoso.com a webová\.contoso.com mohou odkazovat na stejný profil
 
 Stejně jako profil Traffic Manager můžete také záznamy aliasů použít k ukázání vrcholu zóny DNS na koncové body Azure CDN. To je užitečné při vytváření statických webů s využitím služby Azure Storage a Azure CDN. Pak můžete k webu přejít bez předplatného "www" na název DNS.
 
-Například pokud je váš statický web pojmenován `www.contoso.com, your users can access your site using contoso.com` bez nutnosti předřadit službu WWW do názvu DNS.
+Pokud se například váš statický web jmenuje `www.contoso.com`, můžou vaši uživatelé přistupovat k webu pomocí `contoso.com` bez nutnosti předřadit službu WWW do názvu DNS.
 
 Jak bylo popsáno dříve, záznamy CNAME nejsou podporovány ve vrcholu zóny. Proto nemůžete použít záznam CNAME k nasměrování contoso.com na koncový bod CDN. Místo toho můžete použít záznam aliasu k ukázání vrcholu zóny na koncový bod CDN přímo.
 

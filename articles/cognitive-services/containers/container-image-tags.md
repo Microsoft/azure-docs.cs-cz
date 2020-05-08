@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878761"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925996"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Značky image kontejneru Azure Cognitive Services
 
@@ -106,6 +106,7 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku            | Poznámky |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
 | `2.0.2-amd64-preview` |       |
@@ -131,6 +132,46 @@ Tato image kontejneru má k dispozici následující značky:
 | Značky obrázku                  | Poznámky                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Obrázek kontejneru s `en-US` národním prostředím |
+| `2.2.0-amd64-ar-ae-preview` | Obrázek kontejneru s `ar-AE` národním prostředím |
+| `2.2.0-amd64-ar-eg-preview` | Obrázek kontejneru s `ar-EG` národním prostředím |
+| `2.2.0-amd64-ar-kw-preview` | Obrázek kontejneru s `ar-KW` národním prostředím |
+| `2.2.0-amd64-ar-qa-preview` | Obrázek kontejneru s `ar-QA` národním prostředím |
+| `2.2.0-amd64-ar-sa-preview` | Obrázek kontejneru s `ar-SA` národním prostředím |
+| `2.2.0-amd64-ca-es-preview` | Obrázek kontejneru s `ca-ES` národním prostředím |
+| `2.2.0-amd64-da-dk-preview` | Obrázek kontejneru s `da-DK` národním prostředím |
+| `2.2.0-amd64-de-de-preview` | Obrázek kontejneru s `de-DE` národním prostředím |
+| `2.2.0-amd64-en-au-preview` | Obrázek kontejneru s `en-AU` národním prostředím |
+| `2.2.0-amd64-en-ca-preview` | Obrázek kontejneru s `en-CA` národním prostředím |
+| `2.2.0-amd64-en-gb-preview` | Obrázek kontejneru s `en-GB` národním prostředím |
+| `2.2.0-amd64-en-in-preview` | Obrázek kontejneru s `en-IN` národním prostředím |
+| `2.2.0-amd64-en-nz-preview` | Obrázek kontejneru s `en-NZ` národním prostředím |
+| `2.2.0-amd64-en-us-preview` | Obrázek kontejneru s `en-US` národním prostředím |
+| `2.2.0-amd64-es-es-preview` | Obrázek kontejneru s `es-ES` národním prostředím |
+| `2.2.0-amd64-es-mx-preview` | Obrázek kontejneru s `es-MX` národním prostředím |
+| `2.2.0-amd64-fi-fi-preview` | Obrázek kontejneru s `fi-FI` národním prostředím |
+| `2.2.0-amd64-fr-ca-preview` | Obrázek kontejneru s `fr-CA` národním prostředím |
+| `2.2.0-amd64-fr-fr-preview` | Obrázek kontejneru s `fr-FR` národním prostředím |
+| `2.2.0-amd64-gu-in-preview` | Obrázek kontejneru s `gu-IN` národním prostředím |
+| `2.2.0-amd64-hi-in-preview` | Obrázek kontejneru s `hi-IN` národním prostředím |
+| `2.2.0-amd64-it-it-preview` | Obrázek kontejneru s `it-IT` národním prostředím |
+| `2.2.0-amd64-ja-jp-preview` | Obrázek kontejneru s `ja-JP` národním prostředím |
+| `2.2.0-amd64-ko-kr-preview` | Obrázek kontejneru s `ko-KR` národním prostředím |
+| `2.2.0-amd64-mr-in-preview` | Obrázek kontejneru s `mr-IN` národním prostředím |
+| `2.2.0-amd64-nb-no-preview` | Obrázek kontejneru s `nb-NO` národním prostředím |
+| `2.2.0-amd64-nl-nl-preview` | Obrázek kontejneru s `nl-NL` národním prostředím |
+| `2.2.0-amd64-pl-pl-preview` | Obrázek kontejneru s `pl-PL` národním prostředím |
+| `2.2.0-amd64-pt-br-preview` | Obrázek kontejneru s `pt-BR` národním prostředím |
+| `2.2.0-amd64-pt-pt-preview` | Obrázek kontejneru s `pt-PT` národním prostředím |
+| `2.2.0-amd64-ru-ru-preview` | Obrázek kontejneru s `ru-RU` národním prostředím |
+| `2.2.0-amd64-sv-se-preview` | Obrázek kontejneru s `sv-SE` národním prostředím |
+| `2.2.0-amd64-ta-in-preview` | Obrázek kontejneru s `ta-IN` národním prostředím |
+| `2.2.0-amd64-te-in-preview` | Obrázek kontejneru s `te-IN` národním prostředím |
+| `2.2.0-amd64-th-th-preview` | Obrázek kontejneru s `th-TH` národním prostředím |
+| `2.2.0-amd64-tr-tr-preview` | Obrázek kontejneru s `tr-TR` národním prostředím |
+| `2.2.0-amd64-zh-cn-preview` | Obrázek kontejneru s `zh-CN` národním prostředím |
+| `2.2.0-amd64-zh-hk-preview` | Obrázek kontejneru s `zh-HK` národním prostředím |
+| `2.2.0-amd64-zh-tw-preview` | Obrázek kontejneru s `zh-TW` národním prostředím |
+| `2.1.1-amd64-en-us-preview` | Obrázek kontejneru s `en-US` národním prostředím |
 | `2.1.1-amd64-ar-ae-preview` | Obrázek kontejneru s `ar-AE` národním prostředím |
 | `2.1.1-amd64-ar-eg-preview` | Obrázek kontejneru s `ar-EG` národním prostředím |
 | `2.1.1-amd64-ar-kw-preview` | Obrázek kontejneru s `ar-KW` národním prostředím |

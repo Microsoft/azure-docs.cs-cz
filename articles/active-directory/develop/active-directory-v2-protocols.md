@@ -1,5 +1,6 @@
 ---
-title: Protokoly OAuth 2,0 a OpenID Connect – Microsoft Identity Platform | Azure
+title: Protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform | Azure
+titleSuffix: Microsoft identity platform
 description: Průvodce pro protokoly OAuth 2,0 a OpenID Connect, které podporuje koncový bod Microsoft Identity Platform.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690271"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926812"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform
+# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>Protokoly OAuth 2,0 a OpenID Connect na platformě Microsoft Identity Platform
 
-Koncový bod Microsoft Identity Platform pro identity jako službu s oborovými standardními protokoly OpenID Connect a OAuth 2,0. I když je služba kompatibilní se standardy, můžou být mezi dvěma implementacemi těchto protokolů malé rozdíly. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesláním a zpracováním požadavků HTTP nebo použitím open source knihovny od třetí strany, nikoli pomocí některé z našich [Open Source knihoven](reference-v2-libraries.md).
+Koncový bod Microsoft Identity Platform pro identitu jako službu s oborovými standardními protokoly OpenID Connect (OIDC) a OAuth 2,0. I když je služba kompatibilní se standardy, můžou být mezi dvěma implementacemi těchto protokolů malé rozdíly. Informace zde budou užitečné, pokud se rozhodnete napsat kód přímým odesíláním a zpracováním požadavků HTTP nebo použitím open source knihovny od jiného výrobce namísto použití jedné z našich [Open Source knihoven](reference-v2-libraries.md).
 
 ## <a name="the-basics"></a>Základy
 
@@ -69,13 +70,13 @@ Pokud se chcete dozvědět, jak s těmito koncovými body pracovat, vyberte v č
 
 ## <a name="tokens"></a>Tokeny
 
-Implementace OAuth 2,0 a OpenID Connect pro Microsoft Identity Platform využívá rozsáhlou použití nosných tokenů, včetně nosných tokenů reprezentovaných jako JWTs. Nosný token je jednoduchý token zabezpečení, který uděluje přístup k chráněnému prostředku "nosičem". V tomto smyslu je "nosičem" kterákoli strana, která může token prezentovat. I když se strana musí nejdřív ověřit s platformou Microsoft identity, aby získala nosný token, pokud se požadované kroky neberou k zabezpečení tokenu v přenosech a úložištích, může se zachytit a použít neúmyslná strana. I když některé tokeny zabezpečení mají integrovaný mechanismus pro zabránění neoprávněným stranám v jejich použití, tokeny nosiče nemají tento mechanismus a musí se přenášet do zabezpečeného kanálu, jako je protokol HTTPS (Transport Layer Security). Pokud se přenáší nosný token, může se jednat o zneužití útoku prostředníkem k získání tokenu a jeho použití pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí i při ukládání nebo ukládání tokenů nosiče do mezipaměti pro pozdější použití. Vždycky Ujistěte se, že vaše aplikace zabezpečeně přenáší a ukládá tokeny nosiče. Další informace o zabezpečení u nosných tokenů najdete v [části RFC 6750 oddílu 5](https://tools.ietf.org/html/rfc6750).
+Implementace OAuth 2,0 a OpenID Connect pro Microsoft Identity Platform využívá rozsáhlé použití nosných tokenů, včetně nosných tokenů reprezentovaných jako JWTs (webové tokeny JSON). Nosný token je jednoduchý token zabezpečení, který uděluje přístup k chráněnému prostředku "nosičem". V tomto smyslu je "nosičem" kterákoli strana, která může token prezentovat. I když se strana musí nejdřív ověřit s platformou Microsoft identity, aby získala nosný token, pokud se požadované kroky neberou k zabezpečení tokenu v přenosech a úložištích, může se zachytit a použít neúmyslná strana. I když některé tokeny zabezpečení mají integrovaný mechanismus pro zabránění neoprávněným stranám v jejich použití, tokeny nosiče nemají tento mechanismus a musí se přenášet do zabezpečeného kanálu, jako je protokol HTTPS (Transport Layer Security). Pokud se přenáší nosný token, může se jednat o zneužití útoku prostředníkem k získání tokenu a jeho použití pro neoprávněný přístup k chráněnému prostředku. Stejné zásady zabezpečení platí i při ukládání nebo ukládání tokenů nosiče do mezipaměti pro pozdější použití. Vždycky Ujistěte se, že vaše aplikace zabezpečeně přenáší a ukládá tokeny nosiče. Další informace o zabezpečení u nosných tokenů najdete v [části RFC 6750 oddílu 5](https://tools.ietf.org/html/rfc6750).
 
 Další podrobnosti o různých typech tokenů použitých na koncovém bodu platformy Microsoft Identity Platform jsou k dispozici v referenčních informacích k [tokenu koncového bodu platformy Microsoft Identity](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
 
-Pokud jste připraveni zobrazit některé ukázkové požadavky, začněte s jedním z následujících kurzů. Každé z nich odpovídá konkrétnímu scénáři ověřování. Pokud potřebujete vám určit, který z nich je pro vás ten správný, podívejte [se na typy aplikací, které můžete vytvořit pomocí platformy Microsoft Identity](v2-app-types.md).
+Pokud jste připraveni zobrazit některé ukázkové požadavky, začněte s jedním z následujících kurzů. Každé z nich odpovídá konkrétnímu scénáři ověřování. Pokud potřebujete pomáhat s určením, který z nich je pro vás ten správný, podívejte [se na typy aplikací, které můžete vytvořit s platformou Microsoft Identity](v2-app-types.md).
 
 * [Sestavování mobilní a nativní aplikace s OAuth 2,0](v2-oauth2-auth-code-flow.md)
 * [Sestavování webových aplikací pomocí OpenID Connect](v2-protocols-oidc.md)

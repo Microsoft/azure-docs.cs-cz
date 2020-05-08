@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7235e95e5b33fb931411a51796a8dbec96c46355
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a0947a5e2b57f728023b0f923428814b3e439ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417653"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626679"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformační funkce v toku dat tahání
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Tahání data flow v Azure Data Factory umožňuje provádět přípravu agilních dat a tahání v cloudovém měřítku bez kódu. Tahání data Flow se integruje s [Power Query online](https://docs.microsoft.com/powerquery-m/power-query-m-reference) a zpřístupňuje Power Query M funkcí pro data tahání prostřednictvím spuštění Sparku. 
 

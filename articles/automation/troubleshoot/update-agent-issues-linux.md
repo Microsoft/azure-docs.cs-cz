@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836627"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927968"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Řešení potíží s agentem aktualizace pro Linux
 
-Je možné, že se Váš počítač v řešení Azure Automation Update Management nezobrazuje jako připravený (v pořádku). V Update Management můžete zjistit příčinu problému tím, že zkontrolujete stav agenta Hybrid Runbook Worker. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure v [offline scénáři](#troubleshoot-offline). 
+Může to mít spoustu důvodů, proč se Váš počítač v Update Management nezobrazuje jako připravený (v pořádku). Chcete-li zjistit základní problém, můžete ověřit stav agenta Hybrid Runbook Worker pro Linux. Níže jsou uvedené tři stavy připravenosti pro počítač:
 
-Počítač může být ve třech stavech připravenosti:
-
-* **Připraveno**: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než jednou hodinou.
-* **Odpojeno**: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před jednou hodinou.
-* **Nenakonfigurováno**: Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
+* Připraveno: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než jednou hodinou.
+* Odpojeno: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před jednou hodinou.
+* Nenakonfigurováno: Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
 
 > [!NOTE]
 > Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
 
+Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure v [offline scénáři](#troubleshoot-offline). 
+
+> [!NOTE]
+> Skript Poradce při potížích aktuálně nesměruje provoz prostřednictvím proxy server, pokud je nakonfigurovaný.
+
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
-V případě počítačů Azure vyberte odkaz **Poradce při potížích** pod sloupcem **připravenost agenta aktualizace** na portálu a otevřete stránku **Poradce při potížích s aktualizací agenta** . V případě počítačů mimo Azure se v tomto článku zobrazí odkaz. Informace o řešení potíží s počítačem mimo Azure najdete v pokynech v části věnované řešení potíží v režimu offline.
+V případě počítačů Azure vyberte odkaz **Poradce při potížích** pod sloupcem **připravenost agenta aktualizace** na portálu a otevřete stránku Poradce při potížích s aktualizací agenta. V případě počítačů mimo Azure se v tomto článku zobrazí odkaz. Informace o řešení potíží s počítačem mimo Azure najdete v pokynech v části věnované řešení potíží v režimu offline.
 
 ![Stránka seznamu virtuálních počítačů](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > Kontroly vyžadují, aby byl virtuální počítač spuštěný. Pokud virtuální počítač není spuštěný, **spustí se virtuální počítač** .
 
-Na stránce **Poradce při potížích s agentem aktualizace** vyberte **Spustit kontroly** a spusťte Poradce při potížích. Poradce při potížích používá [příkaz run](../../virtual-machines/linux/run-command.md) ke spuštění skriptu na počítači za účelem ověření závislostí. Po dokončení Poradce při potížích vrátí výsledek kontrol.
+Na stránce Poradce při potížích s agentem aktualizace vyberte **Spustit kontroly** a spusťte Poradce při potížích. Poradce při potížích používá [příkaz run](../../virtual-machines/linux/run-command.md) ke spuštění skriptu na počítači za účelem ověření závislostí. Po dokončení Poradce při potížích vrátí výsledek kontrol.
 
 ![Stránka Poradce při potížích](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -84,6 +87,9 @@ Tato kontrolu ověří, zda má Log Analytics Agent pro Linux balíček Hybrid R
 ### <a name="hybrid-runbook-worker-status"></a>Stav Hybrid Runbook Worker
 
 Tato kontrolu zajišťuje, že Hybrid Runbook Worker v počítači běží. V případě, že Hybrid Runbook Worker pracuje správně, by měly být k dispozici následující procesy. Další informace najdete v tématu [Poradce při potížích s agentem Log Analytics pro Linux](hybrid-runbook-worker.md#oms-agent-not-running).
+
+> [!NOTE]
+> Pokud Hybrid Runbook Worker neběží a koncový bod operací se nezdařil, aktualizace může selhat. Update Management stáhne balíčky hybridního pracovního procesu z koncového bodu operací.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
