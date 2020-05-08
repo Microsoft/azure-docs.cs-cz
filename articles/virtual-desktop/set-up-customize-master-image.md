@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: aba444e618a6ee2c6808b7f6d9d706fdf18fe546
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: fc6eb22f81279003a5355993db231ffec8e31b7d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209039"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611955"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Příprava a přizpůsobení hlavní image VHD
 
@@ -203,7 +203,7 @@ V následujících pokynech se dozvíte, jak nahrát hlavní bitovou kopii do ú
 
 Teď, když máte image, můžete vytvořit nebo aktualizovat fondy hostitelů. Další informace o tom, jak vytvořit a aktualizovat fondy hostitelů, najdete v následujících článcích:
 
-- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](create-host-pools-arm-template.md)
+- [Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)
 - [Kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](create-host-pools-azure-marketplace.md)
 - [Vytvoření fondu hostitelů pomocí PowerShellu](create-host-pools-powershell.md)
 - [Vytvoření kontejneru profilů pro fond hostitelů s využitím sdílené složky](create-host-pools-user-profile.md)
