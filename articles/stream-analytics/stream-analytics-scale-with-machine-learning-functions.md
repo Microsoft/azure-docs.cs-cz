@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067001"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929039"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Škálování Stream Analytics úlohy pomocí funkcí Azure Machine Learning Studio (Classic)
 
@@ -58,7 +58,7 @@ Obecně platí, že ***b*** pro velikost dávky, ***L*** pro latenci webové slu
 
 Ve webové službě Machine Learning můžete také nakonfigurovat maximální počet souběžných volání. Doporučuje se nastavit tento parametr na maximální hodnotu (v současné době 200).
 
-Další informace o tomto nastavení najdete v článku o [škálování pro Machine Learning webové služby](../machine-learning/studio/scaling-webservice.md).
+Další informace o tomto nastavení najdete v článku o [škálování pro Machine Learning webové služby](../machine-learning/studio/create-endpoint.md).
 
 ## <a name="example--sentiment-analysis"></a>Příklad – Analýza mínění
 Následující příklad obsahuje úlohu Stream Analytics s funkcí analýzy mínění Machine Learning, jak je popsáno v [kurzu Stream Analytics Machine Learning Integration](stream-analytics-machine-learning-integration-tutorial.md).

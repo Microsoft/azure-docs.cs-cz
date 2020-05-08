@@ -1,18 +1,18 @@
 ---
-title: Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače | Azure Marketplace
-description: Tento článek vysvětluje, jak získat identifikátor URI sdíleného přístupového podpisu (SAS) pro každý virtuální pevný disk (VHD).
+title: Identifikátor URI sdíleného přístupového podpisu pro image virtuálních počítačů – Azure Marketplace
+description: Vygenerujte identifikátor URI sdíleného přístupového podpisu (SAS) pro vaše virtuální pevné disky (VHD) v Azure Marketplace.
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732642"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857940"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>Získat identifikátor URI sdíleného přístupového podpisu pro vaši image virtuálního počítače
 

@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79078436"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872064"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Chcete-li tuto chybu vyřešit, uložte soubory experimentů do úložiště dat
 Popis&nbsp;experimentu|Řešení omezení úložiště
 ---|---
 Méně než 2000 souborů & nemůže používat úložiště dat| Přepsat omezení velikosti snímku pomocí <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> To může trvat několik minut v závislosti na počtu a velikosti souborů.
-Musí používat konkrétní adresář skriptu.| Vytvořte `.amlignore` soubor pro vyloučení souborů ze snímku experimentu, který není součástí zdrojového kódu. Přidejte do `.amlignore` souboru názvy souborů a umístěte je do stejného adresáře jako školicí skript. `.amlignore` Soubor používá stejnou [syntaxi a vzory](https://git-scm.com/docs/gitignore) jako `.gitignore` soubor.
+Musí používat konkrétní adresář skriptu.| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 Kanál|Pro každý krok použijte jiný podadresář
 Poznámkové bloky Jupyter| Vytvořte `.amlignore` soubor nebo přesuňte svůj Poznámkový blok do nového, prázdného podadresáře a spusťte svůj kód znovu.
 
