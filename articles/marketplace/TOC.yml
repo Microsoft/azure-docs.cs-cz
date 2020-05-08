@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: 'Office 365, Dynamics 365 a Power BI'
               href: ./appsource-offer-publishing-guide.md
-            - name: Povolení uvedení na AppSource a Marketplace s využitím Azure Active Directory
+            - name: Povolení ověřování nabídek s využitím Azure AD
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: Integrovaná řešení
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: Osvědčené postupy nabídky
               href: ./gtm-offer-listing-best-practices.md
-            - name: Jak získat doporučení
+            - name: Získání doporučení
               href: ./gtm-how-to-get-featured.md
             - name: Ověření obsahu na Marketplace
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: Podpora pro komerční marketplace
           href: ./support-azure-marketplace.md
           items:
-            - name: Nejčastější dotazy k Marketplace
+            - name: Nejčastější dotazy ke komerčnímu marketplace
               href: ./marketplace-faq-publisher-guide.md
             - name: Geografická dostupnost a měny
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: Wikiweb nápovědy
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: Nabídka modulu IoT Edge
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Požadavky
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: Vytvoření nabídky modulu IoT Edge
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: Karta nastavení nabídky
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: Karta Skladové položky
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Karta Marketplace
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: Karta Podpora
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: Vytvoření technických prostředků modulu IoT Edge
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: Publikování nabídky modulu IoT Edge
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: Aktualizace stávající nabídky
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Nabídka aplikací Power BI
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Požadavky
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Vytvoření nabídky aplikací Power BI
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: Karta nastavení nabídky
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: Karta Technické informace
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: Karta podrobností o prodejních místech
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: Karta Kontakty
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Vytvoření technických prostředků aplikace Power BI
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Publikování nabídky aplikací Power BI
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: Aktualizace stávající nabídky
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: Nabídka aplikace SaaS
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Nabídka virtuálních počítačů
@@ -449,6 +409,8 @@
           items:
             - name: Vytvoření nabídky aplikací Azure
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Fakturace aplikací Azure na základě měření
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: Zpracování zpětné vazby
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Rozhraní API pro onboarding
@@ -493,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: Nabídky modulů IoT Edge
           items:
-            - name: Příprava technických prostředků modulu IoT Edge
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: Vytvoření nabídky modulu IoT Edge
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: Příprava technických prostředků modulu IoT Edge
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: Nabídky spravované služby
           items:
             - name: Vytvoření nabídky spravované služby
@@ -515,11 +477,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: Fakturace SaaS podle objemu dat
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Rozhraní API služeb měření na marketplace – nejčastější dotazy
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Rozhraní API služeb měření na marketplace
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: Rozhraní API naplnění SaaS
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +503,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Služba měření na marketplace
+          items:
+            - name: Strategie ověřování
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Rozhraní API služeb měření na marketplace
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Rozhraní API služeb měření na marketplace – nejčastější dotazy
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Otestování nabídky
           href: ./partner-center-portal/test-drive.md
         - name: Možnost společného prodeje
@@ -589,11 +554,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: Nastavení platebního účtu a daňových formulářů
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: Podrobnosti fakturace
-          href: ./partner-center-portal/billing-details.md
         - name: 'Prahové hodnoty, způsoby a časové rámce plateb'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Přehled plateb
+        - name: Souhrnný přehled plateb
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: Přehledy plateb
           href: ./partner-center-portal/payout-summary.md
+        - name: Podrobnosti zásad plateb
+          href: ./partner-center-portal/payout-policy-details.md
         - name: Podrobné informace o daních
           href: ./partner-center-portal/tax-details-paid-transactions.md

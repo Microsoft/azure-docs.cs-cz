@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572358"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871314"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -173,7 +173,7 @@ Virtuální počítač Azure se statickou veřejnou IP adresou se dá použít j
 > [!IMPORTANT]
 > Ujistěte se, že je veřejná IP adresa virtuálního počítače nakonfigurovaná jako statická.
 >
->Další informace o konfiguraci Azure Automation hybridních pracovních procesů najdete v tématu [Automatizace prostředků ve vašem datovém centru nebo cloudu pomocí Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>Další informace o konfiguraci Azure Automation hybridních pracovních procesů najdete v tématu [instalace Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
 Po nakonfigurování Hybrid Worker vytvořte Webhook, jak je popsáno v části věnované [použití s Data Factory](#consume-with-data-factory).  Jediným rozdílem je, že při konfiguraci Webhooku vyberte možnost **Spustit při** > **Hybrid Worker** .
 

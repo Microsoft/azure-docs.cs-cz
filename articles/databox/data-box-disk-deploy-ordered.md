@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81398705"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858635"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Kurz: seřazení Azure Data Box Disk
 
@@ -102,7 +102,7 @@ Pro objednání Data Box Disk proveďte následující kroky.
 
     ![Zadání podrobností objednávky](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. Na kartě **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení. 
+14. Na kartě **Dodací adresa** zadejte jméno a příjmení, název a poštovní adresu společnosti a platné telefonní číslo. Klikněte na **Ověřit adresu**. Služba ověří, zda je dodací adresa pro službu dostupná. Pokud je pro zadanou dodací adresu služba k dispozici, obdržíte o tom oznámení. Zákazníci, kteří používají službu v Japonsku, Singapuru, Koreji a Západní Evropa mají možnost při umisťování objednávky vybrat samostatně spravovanou expedici. Po úspěšném dokončení objednávky obdržíte e-mail s pokyny, jak zařízení vybrat z určeného datacentra Azure.
 
     ![Zadání dodací adresy](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 15. Na kartě **Podrobnosti o oznámení** zadejte e-mailové adresy. Na tyto e-mailové adresy vám služba bude posílat e-mailová oznámení o všech aktualizacích stavu objednávky. 

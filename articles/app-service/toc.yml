@@ -63,6 +63,9 @@
       href: samples-powershell.md
     - name: Šablony Resource Manageru
       href: samples-resource-manager-templates.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Plány služby App Service

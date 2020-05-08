@@ -1,41 +1,44 @@
 ---
-title: Průvodce publikováním nabídky šablon řešení Azure Applications | Azure Marketplace
-description: Tento článek popisuje požadavky pro publikování šablony řešení v Azure Marketplace.
+title: Příručka pro publikování pro šablony řešení Azure Applications – Azure Marketplace
+description: Tento článek popisuje požadavky na publikování šablon řešení na Azure Marketplace.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 6533fa930716552c91fffd13b196bdbf78158816
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f62b3478c5c711423913b5918886b43b79ac691d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084851"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858324"
 ---
-# <a name="azure-applications-solution-template-offer-publishing-requirements"></a>Aplikace Azure: Šablona řešení nabídky požadavků na publikování
+# <a name="publishing-guide-for-azure-applications-solution-template-offers"></a>Průvodce publikováním pro nabídky šablon řešení pro aplikace Azure
 
-Tento článek popisuje požadavky pro typ nabídky šablony řešení, což je jeden ze způsobů, jak publikovat nabídku aplikací Azure v Azure Marketplace. Typ nabídky šablony řešení vyžaduje [šablonu Azure Resource Manager (šablona ARM)](../azure-resource-manager/templates/overview.md) k automatickému nasazení vaší infrastruktury řešení.
+Tento článek popisuje požadavky pro publikování nabídek šablon řešení, což je jeden ze způsobů publikování nabídek aplikací Azure v Azure Marketplace. Typ nabídky šablony řešení vyžaduje [šablonu Azure Resource Manager (šablona ARM)](../azure-resource-manager/templates/overview.md) k automatickému nasazení vaší infrastruktury řešení.
 
-Pokud jsou potřeba následující podmínky, použijte typ nabídky šablona řešení Azure Application.
+Použijte typ nabídky *Šablona řešení* Azure Application v následujících podmínkách:
 
-- Vaše řešení vyžaduje další automatizaci nasazení a konfigurace po jednom virtuálním počítači, jako je například kombinace virtuálních počítačů, sítí a úložných prostředků.
-- Zákazník bude spravovat řešení sami.
+- Vaše řešení vyžaduje další automatizaci nasazení a konfigurace než jeden virtuální počítač (VM), jako je například kombinace virtuálních počítačů, sítí a prostředků úložiště.
+- Vaši zákazníci budou spravovat řešení sami.
 
-Volání akce, které se uživateli zobrazí pro tento typ nabídky je "získat nyní".
+Volání akce, které zákazník uvidí pro tento typ nabídky, je *teď získat*.
 
 ## <a name="requirements-for-solution-template-offers"></a>Požadavky pro nabídky šablony řešení
 
 | **Požadavky** | **Zobrazí**  |
 | ---------------  | -----------  |
-|Fakturace a měření    |  Nabídky šablon řešení nejsou nabídky Transact, ale dají se použít k nasazení placených nabídek virtuálních počítačů, které se účtují prostřednictvím komerčního tržiště Microsoftu. Prostředky, které se nasazují v šabloně ARM řešení, se zřídí v předplatném Azure zákazníka. Virtuální počítače s průběžnými platbami (PAYGO) se budou pomocí zákaznického předplatného Azure účtovat u zákazníka prostřednictvím Microsoftu.<br/> V případě používání vlastní licence (BYOL), zatímco společnost Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, budete poplatky za licence k softwaru účtovat přímo zákazníkovi.   |
-|Virtuální pevný disk kompatibilní s Azure (VHD)  |   Virtuální počítače musí být postavené na Windows nebo Linux. Další informace naleznete v tématu: <ul> <li>[Vytvoření nabídky aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md)(pro virtuální pevné disky Windows)</li><li>[Distribuce systému Linux schválená v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (pro virtuální pevné disky se systémem Linux).</li></ul> |
-| Přidělení zákaznického využití | U všech šablon řešení publikovaných na Azure Marketplace se vyžaduje povolení přidělení zákaznického využití. Další informace o tom, kdo vydaný zákazník využíváním a jak ho povolit, najdete v tématu věnovaném [přidělení zákaznického využívání Azure partnerovi](./azure-partner-customer-usage-attribution.md).  |
-| Použití spravovaných disků | [Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) je výchozí možností pro trvalé disky virtuálních počítačů s IaaS v Azure. Je nutné použít Managed Disks v šablonách řešení. <br> <br> 1. postupujte podle [pokynů](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments) a [ukázek](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md) pro použití Managed disks v šablonách Azure ARM k aktualizaci šablon řešení. <br> <br> 2. podle níže uvedených pokynů importujte základní virtuální pevný disk Managed Disks do účtu úložiště, aby se virtuální pevný disk publikoval jako image na webu Marketplace: <br> <ul> <li> [Prostředí](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [CLI](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul> |
+|Fakturace a měření    |  Nabídky šablony řešení nejsou nabídky transakcí, ale dají se použít k nasazení placených nabídek virtuálních počítačů, které se účtují prostřednictvím komerčního tržiště Microsoftu. Prostředky, které jsou nasazené šablonou ARM řešení, se nastavují v předplatném Azure zákazníka. Virtuální počítače s průběžnými platbami se účtují u zákazníka prostřednictvím Microsoftu a účtují se prostřednictvím předplatného Azure zákazníka.<br/> V případě fakturace s využitím vlastní licence (BYOL), i když Microsoft účtuje náklady na infrastrukturu, které se účtují v rámci předplatného zákazníka, vyúčtujete poplatky za licence na software přímo pro zákazníka.   |
+|Virtuální pevný disk kompatibilní s Azure (VHD)  |   Virtuální počítače musí být postavené na Windows nebo Linux. Další informace naleznete v tématu: <ul> <li>[Vytvořte nabídku aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md) (pro virtuální pevné disky Windows).</li><li>[Distribuce systému Linux schválená v Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (pro virtuální pevné disky se systémem Linux).</li></ul> |
+| Přisuzování využití ze strany zákazníků | U všech šablon řešení, které jsou publikovány na Azure Marketplace, je nutné povolit přidělení zákaznického využití. Další informace o přidaných zákaznických využití a o tom, jak ji povolit, najdete v tématu věnovaném [přidělení zákaznického využívání Azure partnerovi](./azure-partner-customer-usage-attribution.md).  |
+| Použití spravovaných disků | [Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) je výchozí možností pro trvalé disky virtuálních počítačů infrastruktury jako služby (IaaS) v Azure. Spravované disky je nutné použít v šablonách řešení. <ul><li>Pokud chcete aktualizovat šablony řešení, postupujte podle pokynů v části [použití spravovaných disků v šablonách Azure Resource Manager](https://docs.microsoft.com/azure/virtual-machines/windows/using-managed-disks-template-deployments)a použijte uvedené [ukázky](https://github.com/Azure/azure-quickstart-templates).<br><br> </li><li>Pokud chcete publikovat VHD jako image v Azure Marketplace, importujte základní virtuální pevný disk spravovaných disků do účtu úložiště pomocí některé z následujících metod:<ul><li>[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd?toc=%2fpowershell%2fmodule%2ftoc.json) </li> <li> [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-vhd?toc=%2fcli%2fmodule%2ftoc.json) </li> </ul></ul> |
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud jste to ještě neudělali, [Přečtěte](https://azuremarketplace.microsoft.com/sell) si o Azure Marketplace.
+Pokud jste to ještě neudělali, přečtěte si, jak [rozšířit cloudovou firmu pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
+
+Registrace a zahájení práce v partnerském centru:
+
 - [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
-- Pokud chcete získat další informace, [vytvořte nabídku aplikace Azure](./partner-center-portal/create-new-azure-apps-offer.md) .
+- Další informace najdete v tématu [Vytvoření nabídky aplikací Azure](./partner-center-portal/create-new-azure-apps-offer.md) .

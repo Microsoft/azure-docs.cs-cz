@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/30/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837392"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929821"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Co je Windows Virtual Desktop? 
 
@@ -67,8 +67,8 @@ Plánujeme přidat podporu pro následující operačních systémech, takže se
 
 |Operační systém|Požadovaná licence|
 |---|---|
-|Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F3, Business<br>Windows E3, E5, a3, A5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Business<br>Windows E3, E5, a3, A5|
+|Windows 10 Enterprise s více relacemi nebo Windows 10 Enterprise|Microsoft 365 E3, E5, a3, A5, F3, Business Premium<br>Windows E3, E5, a3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, A5, F3, Business Premium<br>Windows E3, E5, a3, A5|
 |Windows Server 2012 R2, 2016, 2019|Licence CAL pro klientský přístup (CAL) se Software Assurance|
 
 K podpoře virtuálního klienta Windows potřebuje vaše infrastruktura tyto věci:
@@ -101,9 +101,9 @@ Virtuální počítače Azure, které vytvoříte pro virtuální počítače s 
 |wvdportalstorageblob.blob.core.windows.net|443|Podpora Azure Portal|AzureCloud|
 
 >[!IMPORTANT]
->Ve většině případů doporučujeme místo adres URL používat značky služby, aby nedocházelo k problémům se službou. Odblokování těchto adres URL je nezbytné pro spolehlivé nasazení virtuálních počítačů s Windows. Blokování přístupu k těmto adresám URL není podporováno a bude mít vliv na funkčnost služby. Tyto adresy URL odpovídají jenom virtuálním plochám a prostředkům virtuálních počítačů s Windows a nezahrnují adresy URL pro jiné služby, jako je Azure Active Directory.
->
 >Virtuální počítač s Windows teď podporuje značku plně kvalifikovaného názvu domény. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](../firewall/protect-windows-virtual-desktop.md)v systému Windows.
+>
+>Pro předcházení problémům se službou doporučujeme použít místo adres URL značky plně kvalifikovaného názvu domény nebo značky služby. Uvedené adresy URL a značky odpovídají pouze webům a prostředkům virtuálních ploch systému Windows. Neobsahují adresy URL pro jiné služby, například Azure Active Directory.
 
 Následující tabulka uvádí volitelné adresy URL, ke kterým můžou mít virtuální počítače Azure přístup:
 

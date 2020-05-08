@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456407"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872463"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Rychlý Start: použití vlastních příkazů s vlastním hlasem (Preview)
 
@@ -35,7 +35,8 @@ V tomto článku vybereme vlastní výstupní hlas pro aplikaci, kterou jsme vyt
 > ![Ukázky vět s parametry](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Vlastní hlasy lze vytvořit na stránce vlastní hlasový projekt. Vyberte odkaz **řeč Studio** a začněte **vlastním hlasem** .
+> - Pro **veřejné hlasy**jsou **typy neuronové** dostupné jenom pro konkrétní oblasti. Pokud chcete ověřit dostupnost, přečtěte si téma [standardní a neuronové hlasy podle oblasti nebo koncového bodu](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
+> - **Vlastní hlasy**si můžete vytvořit na stránce vlastní hlasového projektu. Viz Začínáme [s vlastním hlasem](./how-to-custom-voice.md).
 
 Aplikace teď bude ve vybraném hlasu reagovat místo na výchozí hlas.
 

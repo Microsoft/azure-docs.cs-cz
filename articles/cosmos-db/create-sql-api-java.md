@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/31/2019
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 489f241453436190213b99cb4e7be0688a8b6237
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1d818957daa53efc856a345a4886e814fdaab6f3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240174"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858141"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API
 
@@ -81,6 +81,9 @@ git clone https://github.com/Azure-Samples/azure-cosmos-java-getting-started.git
 
 Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Jinak můžete přeskočit přímo k části [Spuštění aplikace](#run-the-app). 
 
+
+# <a name="sync-api"></a>[Rozhraní API pro synchronizaci](#tab/sync)
+
 ### <a name="managing-database-resources-using-the-synchronous-sync-api"></a>Správa databázových prostředků pomocí synchronního (synchronizačního) rozhraní API
 
 * Inicializace klienta `CosmosClient`. `CosmosClient` Poskytuje logickou reprezentaci na straně klienta pro službu Azure Cosmos Database. Tento klient slouží ke konfiguraci a provádění požadavků na službu.
@@ -106,6 +109,8 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 * Dotazy SQL přes JSON se provádějí pomocí `queryItems` metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/sync/SyncMain.java?name=QueryItems)]
+
+# <a name="async-api"></a>[Asynchronní rozhraní API](#tab/async)
 
 ### <a name="managing-database-resources-using-the-asynchronous-async-api"></a>Správa databázových prostředků pomocí asynchronního (asynchronního) rozhraní API
 
@@ -134,6 +139,8 @@ Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí pros
 * Stejně jako u rozhraní API pro synchronizaci jsou dotazy SQL přes JSON prováděny pomocí `queryItems` metody.
 
     [!code-java[](~/azure-cosmosdb-java-v4-getting-started/src/main/java/com/azure/cosmos/sample/async/AsyncMain.java?name=QueryItems)]
+
+---
 
 ## <a name="run-the-app"></a>Spuštění aplikace
 

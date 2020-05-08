@@ -6,27 +6,32 @@
       href: data-lake-analytics-overview.md
 - name: Začínáme
   items:
-    - name: Azure Portal
+    - name: portál Azure
       href: data-lake-analytics-get-started-portal.md
     - name: Visual Studio
       href: data-lake-analytics-data-lake-tools-get-started.md
     - name: Visual Studio Code
       href: data-lake-analytics-data-lake-tools-for-vscode.md
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: data-lake-analytics-get-started-powershell.md
     - name: Azure CLI
       href: data-lake-analytics-get-started-cli.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Postup
   items:
     - name: Správa služby Data Lake Analytics
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: data-lake-analytics-manage-use-portal.md
         - name: Příkazový řádek
           items:
             - name: Azure CLI
               href: data-lake-analytics-manage-use-cli.md
-            - name: Azure Powershell
+            - name: Azure PowerShell
               href: data-lake-analytics-manage-use-powershell.md
         - name: Sady SDK
           items:
@@ -134,7 +139,7 @@
           href: dotnet-upgrade-troubleshoot.md
 - name: Referenční informace
   items:
-    - name: Azure Powershell
+    - name: Azure PowerShell
       href: /powershell/module/az.datalakeanalytics
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datalake.analytics

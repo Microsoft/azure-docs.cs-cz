@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337078"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858680"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -26,7 +26,7 @@ Azure Storage nabízí následující typy replikace:
 - Místně redundantní úložiště (LRS)
 - Zónově redundantní úložiště (ZRS)
 - Geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)
-- Geograficky redundantní úložiště (GZRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS) (verze Preview)
+- Geograficky redundantní úložiště (GZRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)
 
 Přehled každé z těchto možností najdete v tématu [Azure Storage redundance](storage-redundancy.md).
 
@@ -46,7 +46,7 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 <sup>1</sup> dojde k jednorázovému výstupnímu poplatku.
 
 > [!CAUTION]
-> Pokud jste provedli [převzetí služeb při selhání účtu](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) (RA-) GRS nebo (RA-) GZRS, je nakonfigurované tak, aby bylo místně redundantní v nové primární oblasti. Migrace za provozu na ZRS nebo GZRS pro tyto účty LRS se nepodporuje. Budete muset provést [Ruční migraci](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs).
+> Pokud jste provedli [převzetí služeb při selhání u účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet se po převzetí služeb při selhání místně redundantní v nové primární oblasti. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. Budete muset provést [Ruční migraci](#perform-a-manual-migration-to-zrs) na ZRS nebo GZRS.
 
 ## <a name="change-the-replication-setting"></a>Změna nastavení replikace
 
@@ -64,7 +64,7 @@ Pokud chcete pro svůj účet úložiště v Azure Portal změnit možnost redun
 
 ![Snímek obrazovky, který ukazuje, jak změnit možnost replikace na portálu](media/redundancy-migration/change-replication-option.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pokud chcete změnit možnost redundance pro svůj účet úložiště pomocí PowerShellu, zavolejte příkaz [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) a zadejte `-SkuName` parametr:
 
@@ -162,7 +162,7 @@ Pokud chcete upgradovat na ZRS v Azure Portal, přejděte do nastavení **Konfig
 
 ![Upgrade ZRS Classic na ZRS na portálu](media/redundancy-migration/portal-zrs-classic-upgrade.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Pokud chcete upgradovat na ZRS pomocí PowerShellu, zavolejte tento příkaz:
 
@@ -195,4 +195,4 @@ Při migraci účtu úložiště z GRS do LRS se neúčtují žádné další n�
 
 - [Azure Storage redundance](storage-redundancy.md)
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
-- [Návrh vysoce dostupných aplikací s využitím geograficky redundantního úložiště s přístupem pro čtení](storage-designing-ha-apps-with-ragrs.md)
+- [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)

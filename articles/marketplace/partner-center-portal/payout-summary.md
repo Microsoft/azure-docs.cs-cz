@@ -1,178 +1,246 @@
 ---
-title: Shrnutí výběrů na komerčním webu Marketplace | Azure Marketplace
-description: Ve shrnutí výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
-author: dsindona
-ms.author: dsindona
+title: Sestavy výběrů – komerční tržiště Microsoftu
+description: V sestavách výběr se zobrazí podrobnosti o peníze, které jste získali s vaší nabídkou, včetně objemu platby a o tom, kdy budete platit.
+author: mingshen
+ms.author: mingshen
 ms.service: marketplace
-ms.topic: guide
-ms.date: 12/10/2019
-ms.openlocfilehash: 5a930dfb38007349155581424d03ee7b3e7a6b46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.subservice: partnercenter-marketplace-publisher
+ms.topic: conceptual
+ms.date: 04/24/2020
+ms.openlocfilehash: 0380330c2cfd4b0a72dcc158a0d6e051d5547b31
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730207"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857012"
 ---
-# <a name="payout-reporting"></a>Generování sestav plateb
+# <a name="payout-summaries"></a>Přehledy plateb
 
-[**Souhrn výběrů**](https://docs.microsoft.com/windows/uwp/publish/payout-summary) vám ukáže podrobnosti o peníze, které jste získali od Microsoftu. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
+Souhrn výběrů vám ukáže podrobnosti o peníze, které jste získali od Microsoftu. Také vám umožní zjistit, kdy obdržíte platby a kolik vám bude placeno.
 
-Pokud prodáváte nabídky v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v **souhrnu výběrů**. Další informace týkající se Azure Marketplace platby najdete v článku [zásady pro účast Microsoft Azure Marketplace](https://go.microsoft.com/fwlink/p/?LinkId=722436) a [Microsoft Azure Marketplace smlouvu vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560).
+Pokud prodáváte produkty v Azure Marketplace, zobrazí se také informace o úspěšných výběrech v souhrnu výběrů. Podrobnosti najdete v tématu [zásady pro účast Microsoft Azure Marketplace](https://docs.microsoft.com/legal/marketplace/participation-policy) a [smlouvu Microsoft Azure Marketplace vydavatele](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt).
 
 > [!NOTE]
-> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete na této stránce a Projděte si [smlouvu o Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560).
+> Aby bylo možné výsledek vyhodnotit, vaše výtěžek musí dosáhnout [prahové hodnoty pro platbu](payment-thresholds-methods-timeframes.md) $50. Podrobnosti o prahové hodnotě platby najdete na této stránce a Projděte si smlouvu pro vývojáře aplikací.
 
-- [Role a oprávnění pro přístup k sestavě výběr](#roles-and-permission-to-access-the-payout-report)
-- [Výběr sestavy: rozdíl mezi portál partnerů cloudu a Partnerským centrem](#payout-report-difference-between-cloud-partner-portal-and-partner-center)
-- [Typy zákazníků](#customer-types)
-- [Vztah mezi výběrem a využitím](#corelation-between-payout-and-usage)
-- [Stažení Historie transakcí](#transaction-history-download-export)
-- [Otázky a podpora fakturace](#billing-questions-and-support)
+> [!NOTE]
+> Pokud hledáte podporu týkající se vydaných výběrů, včetně konfigurace účtů pro výběr, chybějících výběrů, podržení výběrů nebo cokoli jiného, obraťte se [na podporu.](https://developer.microsoft.com/windows/support)
 
-## <a name="roles-and-permission-to-access-the-payout-report"></a>Role a oprávnění pro přístup k sestavě výběr
+## <a name="access-the-payout-summary-pages"></a>Přístup k souhrnným stránkám výběrů
 
-| Sestavy/stránky    | Vlastník účtu    | Manager  | Vývojář | Obchodní Přispěvatel |  Přispěvatel pro finance | Obchodník |
-|------------------|------------------|----------|-----------|----|----|-----|
-| Sestava pořízení (včetně dat téměř v reálném čase) | Může zobrazit | Může zobrazit | Bez přístupu | Bez přístupu | Může zobrazit | Bez přístupu |
-| Sestava nebo odpovědi zpětné vazby | Může zobrazit a odeslat názor. | Může zobrazit a odeslat názor. | Může zobrazit a odeslat názor. | Bez přístupu | Bez přístupu | Může zobrazit a odeslat názor. |
-| Sestava stavu (včetně dat téměř v reálném čase) | Může zobrazit | Může zobrazit | Může zobrazit | Může zobrazit | Bez přístupu | Bez přístupu |
-| Sestava využití | Může zobrazit | Může zobrazit | Může zobrazit | Může zobrazit | Bez přístupu | Bez přístupu |
-| Účet pro výběr | Může aktualizovat | Bez přístupu | Bez přístupu | Bez přístupu | Může aktualizovat | Bez přístupu |
-| Daňový profil | Může aktualizovat | Bez přístupu | Bez přístupu | Bez přístupu | Může aktualizovat | Bez přístupu |
-| Přehled plateb | Může zobrazit | Bez přístupu | Bez přístupu | Bez přístupu | Může zobrazit | Bez přístupu |
+Chcete-li otevřít jednu ze stránek souhrnu výběr:
 
-## <a name="payout-report-difference-between-cloud-partner-portal-and-partner-center"></a>Výběr sestavy: rozdíl mezi portál partnerů cloudu a Partnerským centrem
+1. V pravém horním rohu vyberte ikonu výběr.
+2. Vyberte historii transakcí, platby nebo exportovat data.
 
-| | Portál Cloud Partner | Partnerské centrum |
-|---------|---------|---------|
-| Odkazy | [https://cloudpartner.azure.com/](https://cloudpartner.azure.com) | [https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory](https://partner.microsoft.com/dashboard/payouts/reports/transactionhistory)ani[https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments](https://partner.microsoft.com/dashboard/payouts/reports/incentivepayments) |
-| Navigace | Vytváření sestav ve výběrech poskytovaných ve výběrech Insights | Sestavy výběrů poskytované v partnerském centru – ikona výběr |
-| Rozsah | <ul> <li>Transakce pro položku na řádku je viditelná, pro probíhající shromažďování, shromažďování a platby. </li> <li>Vytváření sestav – zobrazí všechny položky řádků po vytvoření objednávky nákupu, včetně probíhajícího shromažďování a fakturace probíhá, a stavu kolekce a položek řádků, které ještě nejsou způsobilé k placení. </li> </ul> | <ul> <li>Zobrazuje položky řádku, jakmile se považují za oprávněné tržby.</li> <li>Zákazníci se nejprve účtují do Microsoftu a potom prodejci uvidí, že sestava výběru začíná.</li> <li>Sestava výběru nebude zobrazovat probíhající shromažďování a probíhá fakturace.  </li> </ul>  |
-| Transakce není připravená na výběr. | Probíhá fakturace | Další odhadovaná platba: stav vyvýběru je v nezpracovaném stavu.  |
-| Stav výběr |  | Nezpracované <br> Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. <br> <br> Nadcházející <br> Platební objednávka – vygenerované interní recenze, které čekají na vyřízení, než se zpracuje platba <br> <br> Odeslané <br> Platba byla odeslána do vaší banky. |
+## <a name="transaction-history-page"></a>Stránka historie transakcí
 
-## <a name="customer-types"></a>Typy zákazníků
+Na této stránce se zobrazí všechny vaše tržby, včetně data, typu a příjmu každého z nich. Můžete vybrat časové období, které chcete zobrazit, a můžete také filtrovat podle ID registrace, programu, ID platby, typu trvání, páky a stavu. Data jsou k dispozici pro aktuální fiskální rok (1. června 30) a předchozí dva fiskální roky.
 
-### <a name="enterprise-agreement"></a>Smlouva Enterprise
+Chcete-li zobrazit další podrobnosti o objektu k dispozici, vyberte šipku dolů na pravé straně stránky. Tím se zobrazí páčka, objem výnosů a produkt. Pokud některá z těchto dat není k dispozici, ale potřebujete k ní přístup, obraťte se na [podporu](https://developer.microsoft.com/windows/support). Pokud je procento výsledkem úpravy a nikoli transakcí, pole produktu se nezobrazí.
 
-Zákazníkům, kteří nemají smlouva Enterprise v místě, se účtují měsíčně pro licence na tržiště pro software Marketplace. Zákazníci s smlouva Enterprise se účtují měsíčně prostřednictvím faktury, která se prezentuje čtvrtletně.
+Chcete-li na této stránce Exportovat data transakcí, použijte stránku **exportovat data** .
 
-### <a name="credit-cards-and-monthly-invoice"></a>Kreditní karty a měsíční faktury
+## <a name="payments-page"></a>Stránka platby
 
-Zákazníci můžou také platit pomocí platební karty a faktury za měsíc. V takovém případě se licenční poplatky za software účtují měsíčně.
+Součty na této stránce reprezentují všechny programy, které se účastníte. Můžete filtrovat podle ID účastníka, programu, ID platby a typu úhrady. Částky jsou uvedeny v amerických dolarech. Placená hodnota se také zobrazí v poli platit pro měnu.
 
-### <a name="csp-and-direct-pay-users"></a>Uživatelé CSP a přímé platby
+| Oblast                   | Popis                                                                                |
+|------------------------|---------------------------------------------------------------------------------------------|
+| Celkem placené letos   | Celková částka za tento rok, ve Spojených dolarech, pro všechny vaše programy       |
+| Další odhadovaná platba | Jedna další platba přichází vám (i v případě, že už brzy někdo přijde), v amerických dolarech. |
+| Poslední platba           | Částka (v amerických dolarech), název programu a program vaší poslední platby           |
+| Platby podle zdroje     | Množství plateb (v amerických dolarech) reprezentované programem za posledních 12 měsíců           |
+| Platby               | Vyberte **placené** nebo **nevyřízené** a pak podle potřeby seřaďte. Další podrobnosti o konkrétním **zobrazení**výběru platby. Pokud si chcete stáhnout kopii příkazu platební platby, vyberte **Stáhnout**. Vzhledem k tomu, že se zobrazí data historie transakcí, může se stát, že se nezobrazuje související tržby hned po dobu 24 hodin. |
+|||
 
-Například pokud zákazník nakupuje pomocí platební karty.
+Pokud chcete exportovat všechna data na této stránce, vyberte **exportovat** a postupujte podle pokynů na stránce Exportovat data.
 
-## <a name="corelation-between-payout-and-usage"></a>Vztah mezi výběrem a využitím
+## <a name="transaction-history-page"></a>Stránka historie transakcí
 
-|Popis    |    Datum  | Objednávky/použití  | Výplata |
-|----------|----------|-----------|-------------|
-|Období objednávky   | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Využívání** <br> <ul> <li>CustomerId </li> <li>Jméno zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> |  |
-|Termín ukončení (měsíc)   | 30. srpna 2019 | | |
-|Datum fakturace | Září 1, 2019 | | |
-|Datum platby zákazníka | Září 1, 2019 | | |
-|V úschově období (jenom kreditní karty, 30 dní) | Září 1, 2019 – září 30, 2019 | | **Pořadí atributů korelace:** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Využívání** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Jméno zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nezpracované |
-|Začátek období shromažďování | Září 1, 2019 | | |
-|Konec období shromažďování (maximum, 30 dní) | Září 30, 2019 | | |
-|Výběr data výpočtu (měsíčně na 15.) | Říjen 1, 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li>Jméno zákazníka</li> </ul> <br> **Využívání** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Jméno zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Nadcházející |
-|Datum vyvýběru | 15. října 2019 | | **Korelační atributy** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Využívání** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Jméno zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav výběr:** Platba odeslána |
+Na této stránce se zobrazí všechny vaše tržby, včetně data, typu a příjmu každého z nich. Můžete vybrat časové období, které chcete zobrazit, a můžete filtrovat podle ID registrace, programu, ID platby, typu trvání, páky a stavu. Data jsou k dispozici pro aktuální fiskální rok (1. června 30) a předchozí dva fiskální roky.
 
-### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Smlouva Enterprise (čtvrtletní/měsíční zákazníci)
+Chcete-li zobrazit další podrobnosti o objektu k dispozici, vyberte šipku dolů na pravé straně stránky. Tím se zobrazí páčka, objem výnosů a produkt. Pokud některá z těchto dat není k dispozici, ale potřebujete k ní přístup, obraťte se na [podporu](https://developer.microsoft.com/windows/support). Pokud je procento výsledkem úpravy a nikoli transakcí, pole produktu se nezobrazí.
 
-| Popis |    Datum  | Využití | Výplata |
-|----------|----------|---------|-----------|
-|Období objednávky | 15. srpna 2019 – srpna 30, 2019 | **Pořadí atributů korelace** <br> <ul> <li>OrderId</li> <li>CustomerId</li> </ul> <br> **Sestava využití** <br> <ul> <li>CustomerId </li> <li>Jméno zákazníka</li> <li>(UsageReference) PurchaseRecordId/LineItemId</li> <li> Odhadované rozšířené náklady <br> Odhadovaný výběr (PC) </li> </ul> | |
-|Termín ukončení (čtvrtletí) | Září 30, 2019 | | |
-|Datum fakturace | 15. října 2019 | | |
-|V úschově období (jenom kreditní karty, 30 dní) | neuvedeno | | |
-|Začátek období shromažďování | 15. října 2019 | | |
-|Pouze kreditní karty, 30 dní | 1. listopadu 2019 – 30. listopadu 2019 | | |
-|Konec období shromažďování (maximum, 90 dní) | 15. ledna 2020 | | |
-|Datum platby zákazníka | 30. prosince 2019 | | |
-|Výpočet výběr | 15. ledna 2020 | | |
-|Datum vyvýběru | 15. února 2020 | | **Pro zákazníky s čtvrtletním základem** <br> <br> **Sestava objednávek** <br> <ul><li>AssetId</li> <li>ID zákazníka</li> <li> Jméno zákazníka</li> </ul> <br> **Využívání** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Jméno zákazníka</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Stav Vyvýběru:** odesláno |
+Pokud chcete na této stránce Exportovat data transakcí, vyberte **exportovat** a postupujte podle pokynů na stránce Exportovat data. Soubory exportované ze stránky historie transakcí zobrazují data v měně transakce, výnosy v transakčních měnách i v amerických dolarech a placené hodnoty v hodnotě Pay to Currency.
 
-## <a name="transaction-history-download-export"></a>Export stažení Historie transakcí
+## <a name="payment-status"></a>Stav platby
 
-Tato možnost nabízí stažení každé položky řádku k přijetí, kterou vidíte na stránce Historie transakcí, typu, datu, přidruženém množství transakce, zákazníkovi, produktu a dalších transakčních detailech vztahujících se k programu pobídek.
+| Stav vystavení           | Důvod                                                                                                                                      | Je vyžadována akce partnera?                                   |
+|--------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------|
+| Nezpracované              | Zisk má nárok na platbu. Zůstane v tomto stavu pro období chlazení, jak je definováno v Průvodci programu pro program k Pobídkě. | No                                                         |
+| Nadcházející                 | Platební objednávka vygenerovala nevyřízené interní recenze před zpracováním platby.                                                               | No                                                         |
+| Nevyřízená daňová faktura      | Vaše daňová faktura je neúplná nebo neplatná.                                                                                                  | Abyste mohli platit, musíte si nejdřív aktualizovat svou daňovou fakturu. |
+| Zamítnuto během revize   | Platba byla během revize odmítnuta.                                                                                                     | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
+| Failed                   | Platba se nezdařila z důvodu chyby systému Microsoft.                                                                                         | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
+| Probíhá              | Platba probíhá.                                                                                                                 | No                                                         |
+| Nesprávná platba        | Recouping platby probíhá.                                                                                                       | No                                                         |
+| Odesláno                     | Platba byla odeslána do vaší banky.                                                                                                     | No                                                         |
+| Opětovného zpracování             | V platbě došlo k systémové chybě společnosti Microsoft a probíhá její zpracování.                                                                  | No                                                         |
+| Reversed                 | Platba byla stornována vaší bankou a bude odeslána znovu v dalším platebním cyklu.                                                     | No                                                         |
+| Daňová faktura odmítnuta     | Vaše daňová faktura byla během revize odmítnuta. Všechny probíhající platby budou pozastaveny, dokud se nedokončí kontrola daňové faktury.                 | Podrobnosti získáte od [podpory Microsoftu](https://developer.microsoft.com/windows/support) .                      |
+| Daňová faktura pod kontrolou | Vaše daňové faktury se přezkoumávají. Po schválení daňové faktury se vaše platba uvolní.                                   | No                                                         |
+| Rejected                 | Platba byla odmítnuta vaší bankou.                                                                                                      | Podrobnosti získáte od své banky.                             |
+|||
 
-| Název sloupce     | Popis    |
-|-------------|-------------------------------|
-| earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       |
-| participantId                  | Primární identita partnera v rámci programu                                                                            |
-| participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          |
-| účastník                | Název partnerského partnera                                                                                                              |
-| partnerCountryCode             | Umístění/země pro partnerský partner                                                                                                  |
-| programName                    | Motivace/uložení názvu programu                                                                                                             |
-| transactionId                  | Jedinečný identifikátor pro transakci                                                                                                    |
-| transactionCurrency            | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu partnerského umístění)                                     |
-| transactionDate                | Datum transakce Užitečné pro programy, kde mnoho transakcí přispívá k jednomu z nich                                           |
-| transactionExchangeRate        | Směnný kurz použitý k zobrazení odpovídající částky transakce v USD                                                                 |
-| transactionAmount              | Částka transakce v původní měně transakce na základě toho, které z nich se vygenerovaly                                              |
-| transactionAmountUSD           | Částka transakce v USD                                                                                                                |
-| páka                          | Označuje obchodní pravidlo pro vyloučení.                                                                                                  |
-| earningRate                    | Míra motivace uplatňovaná na částku transakce pro vygenerování výnosu                                                                      |
-| quantity                       | Liší se v závislosti na programu. Indikuje fakturované množství transakčních programů.                                                            |
-| quantityType                   | Indikuje typ množství, například fakturované množství, MAU.                                                                                     |
-| earningType                    | Uvádí, zda se jedná o poplatek, slevu, Coop, prodej atd.                                                                                          |
-| earningAmount                  | Peněžní částka v původní transakční měně                                                                                      |
-| earningAmountUSD               | Množství využité v USD                                                                                                                    |
-| earningDate                    | Datum přijetí                                                                                                                      |
-| calculationDate                | Datum výpočtu v systému                                                                                            |
-| earningExchangeRate            | Směnný kurz použitý k zobrazení odpovídajících částek v USD                                                                                  |
-| exchangeRateDate               | Datum směnného kurzu použité k výpočtu EarningAmount USD                                                                                   |
-| paymentAmountWOTax             | Celková částka (bez daně) v platbě k měně pro jenom odeslané platby                                                                 |
-| paymentCurrency                | Platíte do měny zvolené partnerem v platebním profilu. Zobrazuje se jenom pro odeslané platby.                                                   |
-| paymentExchangeRate            | Směnný kurz používaný k výpočtu paymentAmountWOTax v měně platby pomocí ExchangeRateDate                                            |
-| paymentId            | Jedinečný identifikátor pro platbu Toto číslo je viditelné ve výpisu bank.                                            |
-| paymentStatus            | Stav platby                                            |
-| paymentStatusDescription            | Popisný popis stavu platby                                            |
-| customerId                     | Bude vždy prázdné                                                                                                                     |
-| customerName                   | Bude vždy prázdné                                                                                                                     |
-| partNumber                     | Bude vždy prázdné                                                                                                                     |
-| NázevVýrobku                    | Název produktu propojený s transakcí                                                                                                       |
-| productId                      | Jedinečný identifikátor produktu                                                                                                                |
-| parentProductId                | Jedinečný identifikátor nadřazeného produktu Poznámka: Pokud pro transakci není k dispozici nadřazený produkt, pak ID nadřazeného produktu = ID produktu. |
-| parentProductName              | Název nadřazeného produktu Poznámka: Pokud pro transakci není k dispozici nadřazený produkt, pak název nadřazeného produktu = název produktu.   |
-| productType                    | Typ produktu (například aplikace, doplněk, hra atd.)                                                                                        |
-| invoiceNumber                  | Číslo faktury (platí jenom pro EA)                                                                                                  |
-| resellerId                     | Identifikátor prodejce                                                                                                                      |
-| proprodejce                   | Jméno prodejce                                                                                                                            |
-| transactionType                | Typ transakce (například nákup, refundace, reverzní, vrácení peněz atd.)                                                               |
-| localProviderSeller            | Místní poskytovatel/prodejce záznamu                                                                                                          |
-| taxRemitted                    | Množství poplatků za daň (prodej, použití nebo DPH/GST).                                                                                   |
-| taxRemitModel                  | Strana odpovědná za přebírání daní (prodej, použití nebo DPH/GST daně).                                                                    |
-| storeFee                       | Množství, které Microsoft zachovává jako poplatek za zpřístupnění aplikace nebo doplňku ve Storu.                                            |
-| transactionPaymentMethod       | Platební nástroj zákazníka, který se používá pro transakci (například karta, fakturaci mobilního dopravce, PayPal atd.)                                |
-| tpan                           | Indikuje síť AD třetí strany.                                                                                                     |
-| customerCountry                | Země zákazníka                                                                                                                         |
-| customerCity                   | Město zákazníka                                                                                                                            |
-| customerState                  | Stav zákazníka                                                                                                                           |
-| customerZip                    | PSČ zákazníka, PSČ                                                                                                                 |
-| TenantID                       |                                                                                                                                          |
-| externalReferenceId            | Jedinečný identifikátor programu                                                                                                        |
-| externalReferenceIdLabel       | Popisek jedinečného identifikátoru                                                                                                                  |
-| transactionCountryCode       | Kód země, ve kterém se transakce stala                                                                                                                  |
-| taxCountry       | Prodáno do země zákazníka                                                                                                                  |
-| taxState       | Prodal stav zákazníka                                                                                                                  |
-| taxCity       | Prodáváno zákazníkovi město                                                                                                                  |
-| taxZipCode       | Prodáno do PSČ zákazníka                                                                                                                  |
-| LicensingProgramName       |                                                                                                                   |
-| Kód programu       | Řetězec, který se má mapovat s názvem programu                                                                                                                   |
-| earningAmountInLastPaymentCurrency       | Peněžní částka v poslední platební měně (pole bude prázdné, pokud se nezaplatily žádné předchozí platby)                                                                                                                   |
-| lastPaymentCurrency       | Poslední platební měna (pole bude prázdné, pokud se nevyplatila žádná předchozí platba)                                                                                                                   |
-| AssetId       | Jedinečný identifikátor objednávek zákazníků pro vaši službu Marketplace  Představuje položky transakčního nákupu v řádku. Může existovat více prostředků.                                                                                                                   |
-| OrderId       | má vztah k faktuře zákazníka.                                                                                                                   |
-| LineItemId       | jednotlivý řádek na faktuře zákazníka                                                                                                                   |
-| Země zákazníka       | Název země, kterou zadal zákazník.  To může být jiné než země v předplatném Azure zákazníka.                                                                                                                   |
-| Zákaznická EmailAddress       | E-mailová adresa poskytnutá koncovým zákazníkem  Může se lišit od e-mailové adresy v předplatném Azure zákazníka.                                                                                                                   |
-| SkuId       | ID skladové položky, jak je definováno během publikování. Nabídka může mít mnoho SKU, ale SKU může být přidruženo pouze k jedné nabídce.                                                                                                                   |
+## <a name="export-data-page"></a>Stránka pro export dat
 
->[!Note]
->Všechny sestavy a přehledy pro možnost publikování v režimu Transact jsou k dispozici prostřednictvím oddílu Insights v části portál partnerů cloudu nebo analýza v partnerském centru.
+Pomocí těchto pokynů exportujte data.
 
-## <a name="billing-questions-and-support"></a>Otázky a podpora fakturace
+Stránka exportovat data se neaktualizuje sama na sebe. Je možné, že budete muset stránku aktualizovat ručně, aby se zobrazila nejnovější data.
 
-Pokud potřebujete pomoc s fakturací na otázky, kontaktujte prosím [podporu komerčního vydavatele na webu Marketplace](https://partner.microsoft.com/support/v2/?stage=1).
+Výsledkem vašeho filtru může být chyba, že **není k dispozici žádná data** . To pravděpodobně znamená, že jste opustili výchozí časové období, které jste vybrali po dobu tří měsíců, a pak si vybrali ID platby z vybírání, které je mimo tuto dobu. Rozbalte své časové období a zkuste to znovu.
+
+## <a name="payments"></a>Platby
+
+![Exportovat platby](./media/pc-export-payments.png)
+
+Tato možnost nabízí stažení plateb, které jste obdrželi v bance, pro daný program, přidruženou daň a agregovanou částku. Tato sestava se používá pro mnoho programů partnerského centra, takže některé sloupce mohou být pro vaši sestavu nerelevantní. Tyto sloupce jsou označeny níže.
+
+| Název sloupce              | Popis                                                                                                                               |
+|--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------  |
+| participantID            | Primární identita partnera v rámci programu                                                                             |
+| participantIDType        | Obvykle ID programu pro pobídkové programy a ID prodejce pro aplikace ze Storu                                                                |
+| účastník          | Název partnerského partnera                                                                                                               |
+| programName              | Motivace/uložení názvu programu                                                                                                              |
+| vytvořené                   | Množství realizované v měně za tento program/participantID                                                                       |
+| earnedUSD                | Množství získané pro ID programu/účastníka v USD                                                                                      |
+| withheldTax              | Množství sražené daně v měně za program/participantID                                                               |
+| salesTax                 | Celková částka DPH v platbě za program/participantID (platí jenom pro motivační program)                   |
+| serviceFeeTax            | Celková částka serviceFeeTax v platbě k měně pro program/participantID (platí pro programy pro Store a Azure Marketplace) |
+| totalPayment             | Celková platba v místní měně s výjimkou srážkové daně a zahrnutí DPH (Pokud je k dispozici) pro program/participantID   |
+| currencyCode             | Plaťte podle kódu měny                                                                                                                      |
+| paymentMethod            | Metoda použitá pro placení partnera, například přenos elektronické banky, dobropis                                                     |
+| paymentID                | Jedinečný identifikátor pro platbu Toto číslo je obvykle viditelné v bankovním výpisu (platí pouze pro platby SAP).              |
+| paymentStatus            | Stav platby                                                                                                                            |
+| paymentStatusDescription | Popisný popis stavu platby                                                                                                    |
+| paymentDate              | Platba data byla odeslána od společnosti Microsoft.                                                                                                      |
+|||
+
+## <a name="transaction-history"></a>Historie transakcí
+
+![Exportovat historii transakcí](./media/pc-export-transaction.png)
+
+Tato možnost poskytuje stažení každé položky řádku pro přijetí dat, která se zobrazí na stránce Historie transakcí, typ, datum, přidružená částka transakce, zákazník, produkt a další transakční údaje, které se vztahují k vašim programům.
+
+| Název sloupce                    | Popis                                                                                                                              | Použitelnost pro motivaci/uložení/Azure Marketplace           |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------|
+| earningId                      | Jedinečný identifikátor pro každý z nich                                                                                                       | Vše                                                            |
+| participantId                  | Primární identita partnera v rámci programu                                                                            | Vše                                                            |
+| participantIdType              | Převážně ID programu pro pobídkové programy a prodejce, pokud je to pro aplikace ze Storu a Azure Marketplace                                          | Vše                                                            |
+| účastník                | Název partnerského partnera                                                                                                              | Vše                                                            |
+| partnerCountryCode             | Umístění/země pro partnerský partner                                                                                                  | Vše                                                            |
+| programName                    | Motivace/uložení názvu programu                                                                                                             | Vše                                                            |
+| transactionId                  | Jedinečný identifikátor pro transakci                                                                                                    | Vše                                                            |
+| transactionCurrency            | Měna, ve které došlo k původní transakci zákazníka (nejedná se o měnu umístění partnera)                                     | Vše                                                            |
+| transactionDate                | Datum transakce Užitečné pro programy, kde mnoho transakcí přispívá k jednomu z nich                                           | Vše                                                            |
+| transactionExchangeRate        | Datum směnného kurzu použité k zobrazení odpovídající částky transakce v USD                                                                 | Vše                                                            |
+| transactionAmount              | Částka transakce v původní měně transakce na základě toho, které z nich se vygenerovaly                                              | Vše                                                            |
+| transactionAmountUSD           | Částka transakce v USD                                                                                                                | Vše                                                            |
+| páka                          | Označuje obchodní pravidlo pro vyloučení.                                                                                                  | Vše                                                            |
+| earningRate                    | Míra motivace uplatňovaná na částku transakce pro vygenerování výnosu                                                                      | Vše                                                            |
+| quantity                       | Liší se v závislosti na programu. Indikuje fakturované množství transakčních programů.                                                            | Vše                                                            |
+| quantityType                   | Indikuje typ množství, například fakturované množství, MAU                                                                             | Vše                                                            |
+| earningType                    | Indikuje, že se jedná o poplatek, Rabat, co-op, prodej atd.                                                                                          | Vše                                                            |
+| earningAmount                  | Peněžní částka v původní transakční měně                                                                                      | Vše                                                            |
+| earningAmountUSD               | Množství využité v USD                                                                                                                    | Vše                                                            |
+| earningDate                    | Datum přijetí                                                                                                                      | Vše                                                            |
+| calculationDate                | Datum výpočtu v systému                                                                                            | Vše                                                            |
+| earningExchangeRate            | Směnný kurz použitý k zobrazení odpovídajících částek v USD                                                                                  | Vše                                                            |
+| exchangeRateDate               | Datum směnného kurzu použité k výpočtu EarningAmount USD                                                                                   | Vše                                                            |
+| paymentAmountWOTax             | Celková částka (bez daně) v platbě k měně pro jenom odeslané platby                                                                 | Vše                                                            |
+| paymentCurrency                | Platíte do měny zvolené partnerem v platebním profilu. Zobrazuje se jenom pro odeslané platby.                                                   | Vše                                                            |
+| paymentExchangeRate            | Směnný kurz používaný k výpočtu paymentAmountWOTax v měně platby pomocí ExchangeRateDate                                            | Vše                                                            |
+| claimId                        | Jedinečný identifikátor pro deklaraci identity                                                                                                              | Motivace – jenom některé programy                                |
+| planId                         | Jedinečný identifikátor pro plán                                                                                                               | Motivace – jenom některé programy                                |
+| paymentId                      | Jedinečný identifikátor pro platbu Toto číslo je obvykle viditelné ve výpisu bank.                                                 | Pouze platby SAP                                              |
+| paymentStatus                  | Stav platby                                                                                                                           | Vše                                                            |
+| paymentStatusDescription       | Popisný popis stavu platby                                                                                                   | Vše                                                            |
+| customerId                     | Bude vždy prázdné                                                                                                                     | Pouze pobídkové programy (výjimka: OEM) a Azure Marketplace |
+| customerName                   | Bude vždy prázdné                                                                                                                     | Pouze pobídkové programy (výjimka: OEM) a Azure Marketplace |
+| partNumber                     | Bude vždy prázdné                                                                                                                     | Některé aplikace a Azure Marketplace pro motivaci a ukládání        |
+| NázevVýrobku                    | Název produktu propojený s transakcí                                                                                                       | Vše                                                            |
+| productId                      | Jedinečný identifikátor produktu                                                                                                                | Uložení a Azure Marketplace                                    |
+| parentProductId                | Jedinečný identifikátor nadřazeného produktu Pokud pro transakci není k dispozici nadřazený produkt, pak ID nadřazeného produktu = ID produktu. | Uložení a Azure Marketplace                                    |
+| parentProductName              | Název nadřazeného produktu Pokud pro transakci není k dispozici nadřazený produkt, pak název nadřazeného produktu = název produktu.   | Uložení a Azure Marketplace                                    |
+| productType                    | Typ produktu, jako je aplikace, doplněk nebo hra                                                                                        | Uložení a Azure Marketplace                                    |
+| invoiceNumber                  | Číslo faktury (platí jenom pro EA)                                                                                                  | Motivace a Azure Marketplace – pouze některé programy           |
+| subscriptionId                 | Identifikátor předplatného přidružený k zákazníkovi                                                                                         | Motivace – jenom některé programy                                 |
+| subscriptionStartDate          | Počáteční datum odběru                                                                                                                  | Motivace – jenom některé programy                                 |
+| subscriptionEndDate            | Datum ukončení předplatného                                                                                                                    | Motivace – jenom některé programy                                 |
+| resellerId                     | Identifikátor prodejce                                                                                                                      | Motivace – jenom některé programy                                 |
+| proprodejce                   | Jméno prodejce                                                                                                                            | Motivace – jenom některé programy                                 |
+| distributorId                  | Identifikátor distributora                                                                                                                   | Motivace – jenom některé programy                                 |
+| Distributor                | Název distributora                                                                                                                         | Motivace – jenom některé programy                                 |
+| agreementNumber                | Číslo smlouvy                                                                                                                         | Motivace – jenom některé programy                                 |
+| agreementStartDate             | Počáteční datum smlouvy                                                                                                                     | Motivace – jenom některé programy                                 |
+| agreementEndDate               | Koncové datum smlouvy                                                                                                                       | Motivace – jenom některé programy                                 |
+| workload                       | Úloha                                                                                                                                 | Motivace – jenom některé programy                                 |
+| transactionType                | Typ transakce, například nákup, refundace, Storno nebo vrácení peněz                                                               | Uložení a Azure Marketplace                                    |
+| localProviderSeller            | Místní poskytovatel/prodejce záznamu                                                                                                          | Jenom úložiště                                                     |
+| taxRemitted                    | Množství poplatků za daň (prodej, použití nebo DPH/GST)                                                                                   | Uložení a Azure Marketplace                                    |
+| taxRemitModel                  | Strana odpovědná za přebírání daní (prodej, použití nebo DPH/GST daně)                                                                    | Jenom úložiště                                                     |
+| storeFee                       | Množství, které Microsoft zachovává jako poplatek za zpřístupnění aplikace nebo doplňku ve Storu                                           | Jenom úložiště                                                     |
+| transactionPaymentMethod       | Platební nástroj zákazníka, který se používá pro transakci, jako je karta, fakturace mobilních dopravců nebo PayPal                                | Uložení a Azure Marketplace                                    |
+| tpan                           | Indikuje síť AD třetí strany.                                                                                                     | Store – pouze inzeráty                                               |
+| customerCountry                | Země zákazníka                                                                                                                         | Uložení a Azure Marketplace                                    |
+| customerCity                   | Město zákazníka                                                                                                                            | Uložení a Azure Marketplace                                    |
+| customerState                  | Stav zákazníka                                                                                                                           | Uložení a Azure Marketplace                                    |
+| customerZip                    | PSČ zákazníka, PSČ                                                                                                                 | Uložení a Azure Marketplace                                    |
+| purchaseTypeCode               | Bude vždy prázdné                                                                                                                     | Pobídkový program – CRI                                        |
+| purchaseOrderType              | Bude vždy prázdné                                                                                                                     | Pobídkový program – CRI                                        |
+| purchaseOrderCoverageStartDate | Bude vždy prázdné                                                                                                                     | Pobídkový program – CRI                                        |
+| purchaseOrderCoverageEndDate   | Bude vždy prázdné                                                                                                                     | Pobídkový program – CRI                                        |
+| programOfferingLevel           |                                                                                                                                          | Pobídkový program – CRI                                        |
+| TenantID                       |                                                                                                                                          | Motivační program                                             |
+| externalReferenceId            | Jedinečný identifikátor programu                                                                                                        | Programy přímých plateb (motivace a obchod)                      |
+| externalReferenceIdLabel       | Popisek jedinečného identifikátoru                                                                                                                  | Programy přímých plateb (motivace a obchod)                      |
+|||
+
+## <a name="historical-statements"></a>Historické příkazy
+
+![Exportovat historické příkazy](./media/pc-export-statements.png)
+
+Historie transakcí od 1. července 1 2019 se zpracovává samostatně. Příkazy budou používat následující pole místo aktuálních.
+
+> [!NOTE]
+> Starší historie transakcí obsahuje sloupec s názvem "vyhrazeno", který odpovídá sloupci "příjmy" v moderní historii, s tím rozdílem, že vylučuje všechny příjmy se stavem = "odeslání platby".
+
+> [!NOTE]
+> Filtry, jako jsou 3M, 6 min nebo 12M, se nebudou vztahovat na oddíl **historická prohlášení** .
+
+| Název pole              | Popis                                                                                                                                                             |
+|-------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Zdroj výnosů          | Zdroj výnosů na základě toho, kde transakce proběhla, například Microsoft Store, úložiště Windows Phone, Windows Store 8 nebo inzerce                  |
+| ID objednávky                | Jedinečný identifikátor objednávky Toto ID umožňuje identifikovat nákupní transakce s příslušnými transakcemi, které nepatří do nákupních transakcí, jako jsou refundace nebo vratek. Obě budou mít stejné ID objednávky. V případě rozděleného za poplatek, u kterého bylo použito více způsobů platby pro jeden nákup, vám také umožní propojit transakce nákupu. |
+| ID transakce          | Jedinečný identifikátor transakce.                                                                                                                                          |
+| Datum a čas transakce   | Datum a čas, kdy došlo k transakci (UTC).                                                                                                                       |
+| ID nadřazeného produktu       | Jedinečný identifikátor nadřazeného produktu Pokud pro transakci není k dispozici nadřazený produkt, pak ID nadřazeného produktu = ID produktu.                                |
+| ID produktu              | Jedinečný identifikátor produktu                                                                                                                                              |
+| Název nadřazeného produktu     | Název nadřazeného produktu Pokud pro transakci není k dispozici nadřazený produkt, pak název nadřazeného produktu = název produktu.                                  |
+| Název produktu            | Název produktu                                                                                                                                                    |
+| Typ produktu            | Typ produktu, jako je aplikace, doplněk nebo hra                                                                                                                       |
+| Množství                | Když je zdroj výnosů Microsoft Store pro firmy, množství představuje počet zakoupených licencí. U všech ostatních zdrojů příjmů bude množství vždy 1. I v případě, že jedna transakce je rozdělena na dvě řádkové položky, protože byly použity dvě různé metody platby, zobrazí se v každé položce řádku množství 1. |
+| Transaction Type (Typ transakce)        | Typ transakce, například nákup, refundace, Storno nebo vrácení peněz                                                                                              |
+| Způsob platby          | Platební nástroj zákazníka, který se používá pro transakci, jako je karta, fakturace mobilních dopravců nebo PayPal                                                               |
+| Země nebo oblast        | Země nebo oblast, kde se transakce stala                                                                                                                          |
+| Místní poskytovatel/prodejce | Místní poskytovatel/prodejce záznamu                                                                                                                                        |
+| Transakční měna    | Měna transakce                                                                                                                                            |
+| Částka transakce      | Množství transakce                                                                                                                                              |
+| DPH poukázané            | Množství poplatků za daň (prodej, použití nebo DPH/GST)                                                                                                                  |
+| Čisté příjmy            | Množství transakce méně se propoukázané.                                                                                                                                   |
+| Poplatek za Store               | Procento čistých příjmů uchovávaných Microsoftem jako poplatek za zpřístupnění aplikace nebo doplňku ve Storu                                                      |
+| Výsledek aplikace            | Čisté příjmy minus poplatek za Store                                                                                                                                       |
+| Odmítnuté daně          | Množství srážky daně z příjmu (zahrnuté do **rezervovaného** souboru CSV)                                                                                                |
+| Platba                 | Aplikace pokračuje bez jakýchkoli příslušných srážkových daní za příjem (částka uvedená v transakční měně). Nezahrnuto do **rezervovaného** souboru CSV.                               |
+| Míra FX                 | Směnný kurz, který se používá k převodu transakční měny na platební měnu                                                                                         |
+| Platební měna        | Měna, ve které se platby provedly                                                                                                                                       |
+| Převedená platba       | Částka platby převedená na platební měnu pomocí míry FX                                                                                                         |
+| Model daňové úhrady         | Strana odpovědná za přebírání daní (prodej, použití nebo DPH/GST daně)                                                                                                   |
+| Datum a čas nároku   | Datum a čas, kdy transakce pokračuje v nároku na výběr (UTC). Když je vytvořen výběr, zahrnuje transakci transakce s datem a časem nároku před datem vytvoření výběr (zahrnuto pouze do **rezervovaného** souboru CSV). |
+| Poplatky                 | Zobrazuje rozpis všech podrobností o poplatcích, které jsou agregované ve sloupci částka transakce (zahrnuté jenom pro Azure Marketplace; nezahrnuté do **rezervovaného** souboru CSV). |
+|||
+
+## <a name="next-step"></a>Další krok
+
+- [Podrobnosti zásad plateb](./payout-policy-details.md)

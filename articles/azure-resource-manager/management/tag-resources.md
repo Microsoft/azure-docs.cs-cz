@@ -2,13 +2,13 @@
 title: Označení prostředků, skupin prostředků a předplatných pro logickou organizaci
 description: Ukazuje, jak použít značky k uspořádání prostředků Azure k fakturaci a správě.
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255120"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864483"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Použití značek k uspořádání prostředků Azure a hierarchie správy
 
@@ -591,7 +591,9 @@ Na značky se vztahují následující omezení:
 * Názvy značek nesmí obsahovat tyto znaky: `<`, `>`, `%`, `&`, `\`, `?`,`/`
 
    > [!NOTE]
-   > V současné době Azure DNS zóny a služby Traffic Manageru nedovolují použití mezer ve značce.
+   > V současné době Azure DNS zóny a služby Traffic Manager také nedovolují použití mezer ve značce.
+   >
+   > Přední dveře Azure nepodporují použití `#` v názvu značky.
 
 ## <a name="next-steps"></a>Další kroky
 

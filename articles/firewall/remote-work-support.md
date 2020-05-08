@@ -5,24 +5,26 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: 5abe9344b0512433c48df50335cce5cf1e3e3547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289638"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863412"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Podpora vzdálené práce Azure Firewall
 
-Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností v cloudu. 
+Azure Firewall je spravovaná cloudová služba zabezpečení sítě, která chrání vaše prostředky virtuální sítě Azure. Jedná se o plně stavovou bránu firewall jako službu s integrovanou vysokou dostupností a neomezenou škálovatelností v cloudu.
 
-## <a name="firewall-rules"></a>Pravidla brány firewall
+## <a name="virtual-desktop-infrastructure-vdi-deployment-support"></a>Podpora nasazení infrastruktury virtuálních klientských počítačů (VDI)
 
-Pomocí Azure Firewall můžete zabezpečit příchozí přístup protokolu RDP (Virtual Desktop Infrastructure) ke službě Azure Virtual Network pomocí [pravidel Azure firewall DNAT](rule-processing.md). Virtuální počítač s Windows (WVD) nevyžaduje, abyste otevřeli žádný příchozí přístup k vaší virtuální síti. Musíte ale pro virtuální počítače s WVD, které běží ve vaší virtuální síti, poskytnout sadu odchozích síťových připojení. Další informace najdete v tématu [co je to virtuální počítač s Windows?](../virtual-desktop/overview.md#requirements)
+Práce z domácích zásad vyžaduje mnoho organizací IT, aby bylo možné řešit zásadní změny kapacity, sítě, zabezpečení a zásad správného řízení. Zaměstnanci nejsou chráněni pomocí vrstvených zásad zabezpečení přidružených k místním službám při práci z domova. Nasazení infrastruktury virtuálních klientských počítačů (VDI) v Azure může organizacím rychle reagovat na toto měnící se prostředí. Ale potřebujete způsob, jak chránit příchozí a odchozí internetový přístup k těmto nasazením VDI a z nich. K ochraně nasazení infrastruktury virtuálních klientských počítačů můžete použít Azure Firewall [pravidla DNAT](rule-processing.md) spolu s funkcemi filtrování na základě analýzy [hrozeb](threat-intel.md) .
 
-Tento odchozí přístup můžete nakonfigurovat pomocí Azure Firewall pravidel aplikací. Další informace najdete v tématu [kurz: nasazení a konfigurace Azure firewall pomocí Azure Portal](tutorial-firewall-deploy-portal.md).
+## <a name="azure-windows-virtual-desktop-support"></a>Podpora virtuálních počítačů Azure s Windows
+
+Windows Virtual Desktop je komplexní služba pro desktopovou a aplikační virtualizaci běžící v Azure. Je to jediná infrastruktura virtuálních klientských počítačů (VDI), která nabízí zjednodušenou správu, Windows 10 s více relacemi, optimalizace pro Office 365 ProPlus a podporu pro prostředí vzdálené plochy (RDS). Stolní počítače a aplikace Windows můžete v Azure nasadit a škálovat v řádu minut a získat integrované funkce zabezpečení a dodržování předpisů. Virtuální počítač s Windows nevyžaduje, abyste otevřeli žádný příchozí přístup k vaší virtuální síti. Je ale potřeba, abyste povolili sadu odchozích síťových připojení pro virtuální počítače virtuálních počítačů s Windows, které běží ve vaší virtuální síti. Další informace najdete v tématu [použití Azure firewall k ochraně nasazení virtuálních ploch](protect-windows-virtual-desktop.md)v systému Windows.
 
 ## <a name="next-steps"></a>Další kroky
 
