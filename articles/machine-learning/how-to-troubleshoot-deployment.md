@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399681"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929243"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
 
@@ -24,12 +24,12 @@ Naučte se, jak obejít nebo vyřešit běžné chyby nasazení Docker pomocí A
 
 Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
 
-Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr. V tomto případě naše služba vytvoří základní image Docker za vás během fáze nasazení a všechny požadované modely připojte v jednom volání. Základní úlohy nasazení:
+Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](how-to-use-environments.md) jako vstupní parametr. V tomto případě naše služba vytvoří základní image Docker za vás během fáze nasazení a všechny požadované modely připojte v jednom volání. Základní úlohy nasazení:
 
 1. Zaregistrujte model v registru modelu pracovního prostoru.
 
 2. Definovat odvozenou konfiguraci:
-    1. Vytvořte objekt [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
+    1. Vytvořte objekt [prostředí](how-to-use-environments.md) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
     2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
 
 3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
@@ -50,7 +50,7 @@ Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-mod
 
 Pokud narazíte na problém, je první věc, kterou je potřeba udělat, rozdělte úlohu nasazení (popsanou výše) do jednotlivých kroků k izolaci problému.
 
-Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) jako vstupní parametr, váš kód může být rozdělen na tři hlavní kroky:
+Za předpokladu, že používáte novou/doporučenou metodu nasazení prostřednictvím rozhraní API [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) s objektem [prostředí](how-to-use-environments.md) jako vstupní parametr, váš kód může být rozdělen na tři hlavní kroky:
 
 1. Zaregistrujte model. Zde je ukázkový kód:
 

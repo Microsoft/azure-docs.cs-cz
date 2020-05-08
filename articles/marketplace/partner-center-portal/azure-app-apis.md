@@ -1,20 +1,20 @@
 ---
-title: Připojování rozhraní API pro aplikace Azure na komerčním webu Marketplace
-description: Požadavky na rozhraní API pro aplikace Azure na komerčním webu Marketplace na partnerském centru Microsoftu.
+title: Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure na komerčním webu Microsoft Marketplace
+description: Seznamte se s požadavky na používání rozhraní API pro odesílání v partnerském centru pro aplikace Azure na komerčním webu Marketplace v partnerském centru Microsoftu.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279755"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744898"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>Rozhraní API pro připojování aplikací Azure do partnerského centra
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>Rozhraní API pro odeslání partnerského centra pro zprovoznění aplikací Azure v partnerském centru
 
 *Rozhraní API pro odeslání prostřednictvím služby partner Center* slouží k programovému dotazování, vytváření odesílání pro a publikování nabídek Azure.  Toto rozhraní API je užitečné v případě, že váš účet spravuje mnoho nabídek a chcete automatizovat a optimalizovat proces odeslání pro tyto nabídky.
 
@@ -70,3 +70,8 @@ V případě *tenant_id* hodnoty v parametrech `POST URI` a *client_id* a *clien
 Po získání přístupového tokenu Azure AD můžete volat metody v rozhraní API pro odesílání v partnerském centru. Pokud chcete vytvořit nebo aktualizovat odesílání, obvykle v určitém pořadí zavoláte do rozhraní API pro odesílání v partnerském centru více metod. Informace o jednotlivých scénářích a syntaxi jednotlivých metod najdete v tématu rozhraní API pro přijímání ingestování.
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>Další kroky
+
+* Naučte se vytvořit [technický Asset virtuálního počítače Azure](create-azure-container-technical-assets.md)
+* Naučte se Hoe vytvořit [nabídku kontejneru Azure](create-azure-container-offer.md)

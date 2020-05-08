@@ -1,0 +1,42 @@
+- name: Azure VMware Solution (AVS)
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Informace o řešení Azure VMware Solution (AVS)
+      href: introduction.md
+- name: Kurzy
+  items:
+    - name: 1. Plánování sítě
+      href: tutorial-network-checklist.md
+    - name: 2. Vytvoření privátního cloudu AVS
+      href: tutorial-create-private-cloud.md
+    - name: 3. Konfigurace sítí
+      href: tutorial-configure-networking.md
+    - name: 4. Přístup k privátnímu cloudu
+      href: tutorial-access-private-cloud.md
+    - name: 5. Škálování privátního cloudu
+      href: tutorial-scale-private-cloud.md
+- name: Koncepty
+  items:
+    - name: Privátní cloudy a clustery
+      href: concepts-private-clouds-clusters.md
+    - name: Sítě a propojení privátních cloudů
+      href: concepts-networking.md
+    - name: Úložiště v privátních cloudech
+      href: concepts-storage.md
+    - name: Přístup a identita pro privátní cloud
+      href: concepts-identity.md
+    - name: Upgrady privátních cloudů
+      href: concepts-upgrades.md
+- name: Návody
+  items:
+    - name: Správa DHCP
+      href: manage-dhcp.md
+    - name: Zotavení po havárii
+      href: disaster-recovery.md
+- name: Referenční informace
+  items: null
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: faq.md

@@ -1,0 +1,36 @@
+### YamlMime:Landing
+title: Dokumentace k řešení Azure VMware Solution (AVS)
+summary: Další informace o využití řešení Azure VMware Solution (AVS) k nasazení privátního cloudu VMware do Azure
+metadata:
+  title: Dokumentace k řešení Azure VMware Solution (AVS)
+  description: Další informace o využití řešení Azure VMware Solution (AVS) k nasazení privátního cloudu VMware do Azure
+  ms.service: azure-vmware
+  ms.topic: landing-page
+  author: dikamath
+  ms.author: dikamath
+  ms.date: 05/04/2020
+  ms.openlocfilehash: 2ae8f6bc5257dc4d7383516201912c504c4d6038
+  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/04/2020
+  ms.locfileid: "82739446"
+landingContent:
+- title: Informace o řešení Azure VMware Solution (AVS)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co je Azure VMware Solution (AVS)?
+      url: introduction.md
+  - linkListType: get-started
+    links:
+    - text: Kontrolní seznam sítě
+      url: tutorial-network-checklist.md
+  - linkListType: tutorial
+    links:
+    - text: Vytvoření privátního cloudu AVS
+      url: tutorial-create-private-cloud.md
+    - text: Konfigurace sítí
+      url: tutorial-configure-networking.md
+    - text: Přístup k privátnímu cloudu
+      url: tutorial-access-private-cloud.md

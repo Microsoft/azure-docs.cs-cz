@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383036"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929294"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Přehled Azure HDInsight 4,0
 
@@ -93,8 +93,12 @@ Neexistuje žádná podporovaná cesta upgradu z předchozích verzí HDInsight 
 * HDInsight 4,0 nepodporuje Apache Storm.
 * Zobrazení podregistru už není dostupné v HDInsight 4,0.
 * Překladač prostředí v Apache Zeppelin se nepodporuje v clusterech Spark a interaktivních dotazech.
-* V clusteru Spark-LLAP není možné *zakázat* LLAP. Můžete vypnout jenom LLAP.
-* Azure Data Lake Storage Gen2 v clusteru Spark nemůžou ukládat poznámkové bloky Jupyter.
+* V clusteru Spark-LLAP není možné *zakázat* LLAP. LLAP můžete jenom vypnout.
+* Azure Data Lake Storage Gen2 nemůže v clusteru Spark ukládat poznámkové bloky Jupyter.
+* Apache prasete se ve výchozím nastavení spouští ve tez, ale můžete ho změnit na MapReduce.
+* Integrace Spark SQL Ranger pro zabezpečení řádků a sloupců je zastaralá.
+* Spark 2,4 a Kafka 2,1 jsou dostupné v HDInsight 4,0, takže Spark 2,3 a Kafka 1,1 se už nepodporují. V HDInsight 4,0 doporučujeme používat Spark 2,4 & Kafka 2,3 a novější.
+
 
 ## <a name="next-steps"></a>Další kroky
 

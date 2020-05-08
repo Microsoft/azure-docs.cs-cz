@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395787"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731896"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-K odstranění pracovního prostoru Log Analytics musíte mít oprávnění ' Log Analytics Přispěvatel '.<br>
-Pokud se zobrazí chybová zpráva "*Tento název pracovního prostoru se už používá*při vytváření pracovního prostoru, může to být od:
+K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
+Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
 * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.
-* Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a okamžitě odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
+* Pracovní prostor se odstranil za posledních 14 dní a jeho název se zachová rezervovaný pro období obnovitelného odstranění. Chcete-li přepsat obnovitelné odstranění a trvale odstranit pracovní prostor a vytvořit nový pracovní prostor se stejným názvem, postupujte podle následujících kroků a obnovte nejprve pracovní prostor a proveďte trvalé odstranění:<br>
    1. [Obnovte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) pracovní prostor.
    2. [Trvale odstraňte](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) pracovní prostor.
    3. Vytvoří nový pracovní prostor s použitím stejného názvu pracovního prostoru.
-
 
 ## <a name="permanent-workspace-delete"></a>Odstranění trvalého pracovního prostoru
 Metoda obnovitelného odstranění se nemusí vejít do některých scénářů, jako je například vývoj a testování, kde je třeba opakovat nasazení se stejným nastavením a názvem pracovního prostoru. V takových případech můžete pracovní prostor trvale odstranit a "přepsat" období obnovitelného odstranění. Operace odstranění trvalého pracovního prostoru uvolní název pracovního prostoru a nový pracovní prostor můžete vytvořit pomocí stejného názvu.
@@ -96,12 +95,7 @@ Kde ' eyJ0eXAiOiJKV1Qi... ' představuje úplný autorizační token.
 
 Pokud máte oprávnění přispěvatele u předplatného a skupiny prostředků, ve které byl pracovní prostor přidružený před operací obnovitelného odstranění, můžete ho obnovit během období obnovitelného odstranění, včetně jeho dat, konfigurace a připojených agentů. Po období obnovitelného odstranění je pracovní prostor neobnovitelná a přiřazený k trvalému odstranění. Názvy odstraněných pracovních prostorů se během období obnovitelného odstranění uchovávají a nedají se použít při pokusu o vytvoření nového pracovního prostoru.  
 
-Pracovní prostor můžete obnovit tak, že ho znovu vytvoříte pomocí následujících metod Create v pracovním prostoru: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) nebo [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , pokud jsou vyplněny následující vlastnosti s podrobnostmi o odstraněných pracovních prostorů:
-
-* ID předplatného
-* Název skupiny prostředků
-* Název pracovního prostoru
-* Oblast
+Pracovní prostor můžete obnovit vytvořením pracovního prostoru s podrobnostmi o odstraněném pracovním prostoru, včetně *ID předplatného*, *názvu skupiny prostředků*, *názvu pracovního prostoru* a *oblasti*. Pokud se vaše skupina prostředků odstranila a neexistuje, vytvořte skupinu prostředků se stejným názvem, která se použila před odstraněním, a pak vytvořte pracovní prostor pomocí kterékoli z těchto metod: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [powershellu](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) nebo [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: df24a2dc6e9bd058a2f8b1355b8760653ed3128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e0beb9a35b7888787d018b5e3b9c4ceea7e1c9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365519"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744536"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Správa IoT Central z Azure CLI
 
@@ -42,7 +42,7 @@ az extension add --name azure-iot
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
 
-Pomocí příkazu [AZ iotcentral App Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
+Pomocí příkazu [AZ IoT Central App Create](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-create) vytvořte aplikaci IoT Central ve vašem předplatném Azure. Příklad:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -52,14 +52,14 @@ az group create --location "East US" \
 
 ```azurecli-interactive
 # Create an IoT Central application
-az iotcentral app create \
+az iot central app create \
   --resource-group "MyIoTCentralResourceGroup" \
   --name "myiotcentralapp" --subdomain "mysubdomain" \
-  --sku ST1 --template "iotc-pnp-preview@1.0.0" \
+  --sku ST1 --template "iotc-pnp-preview" \
   --display-name "My Custom Display Name"
 ```
 
-Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplikaci. Následující tabulka popisuje parametry používané pomocí příkazu **AZ iotcentral App Create** :
+Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA pro aplikaci. Následující tabulka popisuje parametry používané pomocí příkazu **AZ IoT Central App Create** :
 
 | Parametr         | Popis |
 | ----------------- | ----------- |
@@ -75,24 +75,24 @@ Tyto příkazy nejprve vytvoří skupinu prostředků v oblasti východní USA p
 
 ## <a name="view-your-applications"></a>Zobrazení vašich aplikací
 
-Pomocí příkazu [AZ iotcentral App list](/cli/azure/iotcentral/app#az-iotcentral-app-list) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
+Pomocí příkazu [AZ IoT Central App list](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-list) můžete zobrazit seznam aplikací IoT Central a zobrazovat metadata.
 
 ## <a name="modify-an-application"></a>Úprava aplikace
 
-Pomocí příkazu [AZ iotcentral App Update](/cli/azure/iotcentral/app#az-iotcentral-app-update) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
+Pomocí příkazu [AZ IoT Central App Update](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-update) aktualizujte metadata aplikace IoT Central. Například pro změnu zobrazovaného názvu vaší aplikace:
 
 ```azurecli-interactive
-az iotcentral app update --name myiotcentralapp \
+az iot central app update --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup \
   --set displayName="My new display name"
 ```
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
 
-Pomocí příkazu [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) odstraňte aplikaci IoT Central. Příklad:
+Pomocí příkazu [AZ IoT Central App Delete](/cli/azure/iot/central/app?view=azure-cli-latest#az-iot-central-app-delete) odstraňte aplikaci IoT Central. Příklad:
 
 ```azurecli-interactive
-az iotcentral app delete --name myiotcentralapp \
+az iot central app delete --name myiotcentralapp \
   --resource-group MyIoTCentralResourceGroup
 ```
 

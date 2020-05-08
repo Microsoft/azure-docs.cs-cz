@@ -7,18 +7,20 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131258"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983070"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Řešení potíží s firewallem webových aplikací (WAF) pro Azure Application Gateway
 
 Existuje několik věcí, které můžete provést v případě, že požadavky, které by měly projít Firewall webových aplikací (WAF), jsou blokované.
 
 Nejdřív se ujistěte, že jste si přečetli [Přehled WAF](ag-overview.md) a [konfigurační dokumenty WAF](application-gateway-waf-configuration.md) . Také se ujistěte, že jste povolili [monitorování WAF](../../application-gateway/application-gateway-diagnostics.md) tyto články vysvětlují, jak funguje funkce WAF, jak pravidlo WAF nastavuje práci a jak získat přístup k protokolům WAF.
+
+OWASP RuleSets jsou navržené tak, aby byly velmi přísné, a vyladěny tak, aby vyhovovaly konkrétním potřebám aplikace nebo organizace pomocí WAF. Je zcela normální a ve skutečnosti se v mnoha případech očekává, že se mají vytvářet vyloučení, vlastní pravidla a dokonce i zakázat pravidla, která mohou způsobovat problémy nebo falešně pozitivní. Zásady vázané na lokalitu a pro identifikátor URI umožňují, aby tyto změny byly ovlivněny pouze na konkrétní lokality nebo identifikátory URI, takže jakékoli změny by neměly mít vliv na jiné lokality, které nemusí být spuštěny se stejnými problémy. 
 
 ## <a name="understanding-waf-logs"></a>Principy protokolů WAF
 

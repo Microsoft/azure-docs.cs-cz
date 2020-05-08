@@ -1,24 +1,23 @@
 ---
-title: Automatické škálování na virtuálních počítačích, Cloud Services a Web Apps
-description: Automatické škálování v Microsoft Azure. Platí pro Virtual Machines, sady škálování virtuálních počítačů, Cloud Services a Web Apps.
+title: Automatické škálování v Microsoft Azure
+description: Automatické škálování v Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08b39fce046ea9dee02ddf6ffe34971b81c3b5b7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114145"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928699"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Přehled automatického škálování ve službách Microsoft Azure Virtual Machines, Cloud Services a Web Apps
+# <a name="overview-of-autoscale-in-microsoft-azure"></a>Přehled automatického škálování v Microsoft Azure
 Tento článek popisuje, co Microsoft Azure automatické škálování, jeho výhody a jak ho začít používat.  
 
-Automatické škálování Azure Monitor platí jenom pro služby [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)a [API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
+Automatické škálování Azure Monitor platí jenom pro [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management služby](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)a [clustery Azure Průzkumník dat](https://docs.microsoft.com/azure/data-explorer/).
 
 > [!NOTE]
 > Azure má dvě metody automatického škálování. Starší verze automatického škálování se vztahuje na Virtual Machines (skupiny dostupnosti). Tato funkce má omezené podpory a doporučujeme migrovat na sady škálování virtuálních počítačů pro rychlejší a spolehlivější podporu automatického škálování. Tento článek obsahuje odkaz na použití starší technologie.  
->
 >
 
 ## <a name="what-is-autoscale"></a>Co je automatické škálování?
@@ -87,12 +86,11 @@ Automatické škálování se škáluje pouze vodorovně, což znamená zvýšen
 
 Naopak svislé škálování se liší. Udržuje stejný počet virtuálních počítačů, ale zpřístupňuje virtuální počítače více ("nahoru") nebo méně ("nižší"). Výkon se měří v paměti, rychlosti procesoru, místo na disku atd.  Vertikální škálování má větší omezení. Závisí na dostupnosti většího hardwaru, který rychle narazí na horní limit a může se lišit podle oblasti. Vertikální škálování také obvykle vyžaduje, aby se virtuální počítač zastavil a restartoval.
 
-
 ## <a name="methods-of-access"></a>Metody přístupu
 Automatické škálování můžete nastavit přes
 
 * [portál Azure](../../azure-monitor/platform/autoscale-get-started.md)
-* [Prostředí](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
+* [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Rozhraní příkazového řádku (CLI) pro různé platformy](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Rozhraní REST API služby Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
@@ -106,7 +104,9 @@ Automatické škálování můžete nastavit přes
 | Virtual Machines: Linux Scale Sets |[Škálování virtuálních počítačů na úrovni systému Linux](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: příklad Windows |[Rozšířená konfigurace automatického škálování pomocí šablon Správce prostředků pro VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | Služba API Management|[Automatické škálování instance služby Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
-
+| Clustery Azure Průzkumník dat|[Správa škálování clusterů Azure Průzkumník dat, aby se vešly měnící se požadavky](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
+| Azure App Service |[Horizontální navýšení kapacity aplikace v Azure App Service](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
+| Logic Apps |[Přidává se kapacita ISE (Integration Service Environment).](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
 ## <a name="next-steps"></a>Další kroky
 Další informace o automatickém škálování najdete v předchozích návodech k automatickému škálování nebo na těchto zdrojích informací:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393103"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930569"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozí připojení v Azure
 
@@ -40,7 +40,7 @@ Existuje několik [odchozích scénářů](#scenarios). Tyto scénáře můžete
 
 Azure Load Balancer a související prostředky jsou explicitně definovány při použití [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  Azure v současné době poskytuje tři různé metody pro zajištění odchozího připojení pro Azure Resource Manager prostředky. 
 
-| SKU | Scénář | Metoda | Protokoly IP | Popis |
+| Skladové položky | Scénář | Metoda | Protokoly IP | Popis |
 | --- | --- | --- | --- | --- |
 | Standardní, základní | [1. virtuální počítač s veřejnou IP adresou na úrovni instance (s Load Balancer nebo bez něj)](#ilpip) | SNAT, maskování portů se nepoužívá. | TCP, UDP, ICMP, ESP | Azure používá veřejnou IP adresu přiřazenou ke konfiguraci protokolu IP síťové karty instance. Instance má k dispozici všechny dočasné porty. Při použití Standard Load Balancer se [odchozí pravidla](load-balancer-outbound-rules-overview.md) nepodporují, pokud je k virtuálnímu počítači přiřazená veřejná IP adresa. |
 | Standardní, základní | [2. veřejné Load Balancer přidružené k virtuálnímu počítači (bez veřejné IP adresy v instanci)](#lb) | SNAT s maskou portů (PAT) pomocí Load Balancer front-endu | TCP, UDP |Azure sdílí veřejnou IP adresu veřejných Load Balancer front-endu s více privátními IP adresami. Azure používá dočasné porty front-endu na PAT. K explicitnímu definování odchozího připojení byste měli použít [pravidla odchozí](load-balancer-outbound-rules-overview.md) . |
@@ -119,7 +119,7 @@ Při použití [Standard Load Balancer s zóny dostupnosti](load-balancer-standa
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Maskování portů SNAT (PAT)
 
-Pokud je k instancím virtuálních počítačů přidružen prostředek veřejné Load Balancer, bude se každý zdroj odchozího připojení přepsán. Zdroj se přepíše z privátního adresního prostoru privátních IP adres virtuální sítě na front-endové veřejné IP adresy nástroje pro vyrovnávání zatížení. Ve veřejném adresním prostoru IP adres musí být pět záznamů toku (zdrojová IP adresa, zdrojový port, transportní protokol IP, cílová IP adresa, cílový port) jedinečný.  Maskování portů SNAT se dá použít buď s protokolem IP TCP nebo UDP.
+Pokud je k instancím virtuálních počítačů, které nemají vyhrazené veřejné IP adresy, přidružen prostředek veřejné Load Balancer, je nutné přepsán každý zdroj odchozího připojení. Zdroj se přepíše z privátního adresního prostoru privátních IP adres virtuální sítě na front-endové veřejné IP adresy nástroje pro vyrovnávání zatížení. Ve veřejném adresním prostoru IP adres musí být pět záznamů toku (zdrojová IP adresa, zdrojový port, transportní protokol IP, cílová IP adresa, cílový port) jedinečný. Maskování portů SNAT se dá použít buď s protokolem IP TCP nebo UDP.
 
 Dočasné porty (porty SNAT) se používají k dosažení tohoto toho po přepsání privátní zdrojové IP adresy, protože více toků pochází z jedné veřejné IP adresy. Algoritmus SNAT maskování portů přiděluje porty SNAT odlišně pro UDP a TCP.
 
@@ -147,7 +147,7 @@ V případě vzorů pro zmírnění podmínek, které běžně vedou k vyčerpá
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Předběžné přidělení portu SNAT pro maskování portů SNAT (PAT)
 
-Azure používá algoritmus k určení počtu předem přidělených portů SNAT na základě velikosti back-endu při použití maskování portů SNAT ([Pat](#pat)). Porty SNAT jsou dočasné porty, které jsou k dispozici pro konkrétní zdrojovou adresu veřejné IP adresy.
+Azure používá algoritmus k určení počtu předem přidělených portů SNAT na základě velikosti back-endu při použití maskování portů SNAT ([Pat](#pat)). Porty SNAT jsou dočasné porty, které jsou k dispozici pro konkrétní zdrojovou adresu veřejné IP adresy. Pro každou veřejnou IP adresu přidruženou k nástroji pro vyrovnávání zatížení jsou porty 64 000 dostupné jako porty SNAT pro každý transportní protokol IP.
 
 Stejný počet portů SNAT se má předběžně přidělit pro UDP a TCP a spotřebovat nezávisle na IP přenosový protokol.  Použití portu SNAT se ale liší v závislosti na tom, jestli je tok UDP nebo TCP.
 
@@ -193,11 +193,14 @@ Přidělení portů SNAT jsou specifická pro protokol IP (TCP a UDP se uchováv
 Tato část je určená k omezení vyčerpání SNAT a k tomu může dojít při odchozích připojeních v Azure.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>Správa vyčerpání portů SNAT (PAT)
-[Dočasné porty](#preallocatedports) používané pro [Pat](#pat) jsou prostředek exhaustible, jak je popsáno na [samostatném virtuálním počítači bez veřejné IP adresy](#defaultsnat) a [virtuálního počítače s vyrovnáváním zatížení bez veřejné IP adresy](#lb). Pomocí [tohoto](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) průvodce můžete monitorovat využití dočasných portů a porovnat je s vaším aktuálním přidělením, abyste zjistili riziko nebo potvrzení exhuastion SNAT.
+[Dočasné porty](#preallocatedports) používané pro [Pat](#pat) jsou prostředek exhaustible, jak je popsáno na [samostatném virtuálním počítači bez veřejné IP adresy](#defaultsnat) a [virtuálního počítače s vyrovnáváním zatížení bez veřejné IP adresy](#lb). Pomocí [tohoto](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) průvodce můžete monitorovat využití dočasných portů a porovnat je s vaším aktuálním přidělením, abyste zjistili riziko nebo potvrzení vyčerpání SNAT.
 
 Pokud víte, že zahajujete mnoho odchozích připojení TCP nebo UDP ke stejné cílové IP adrese a portu, a zjistíte, že se nezdařila odchozí připojení nebo pokud se vám doporučuje podpora, že vyčerpáte porty SNAT (předběžně přidělené [dočasné porty](#preallocatedports) používané [Pat](#pat)), máte několik obecných možností zmírnění. Projděte si tyto možnosti a rozhodněte, co je k dispozici a co nejlépe vyhovuje vašemu scénáři. Je možné, že jeden nebo více může pomáhat při správě tohoto scénáře.
 
 Pokud se vám nedaří pochopit chování odchozího připojení, můžete použít statistiku protokolu IP stack (netstat). Nebo může být užitečné sledovat chování připojení pomocí zachycení paketů. Tato zachytávání paketů můžete provést v hostovaném operačním systému vaší instance nebo použít [Network Watcher pro zachytávání paketů](../network-watcher/network-watcher-packet-capture-manage-portal.md). 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>Ruční přidělení portů SNAT pro maximalizaci portů SNAT na virtuální počítač
+Jak je definováno na předem [přidělených portech](#preallocatedports), nástroj pro vyrovnávání zatížení automaticky přidělí porty na základě počtu virtuálních počítačů v back-endu. Ve výchozím nastavení se to provede uvážlivě, aby se zajistila škálovatelnost. Pokud znáte maximální počet virtuálních počítačů, které budete mít v back-endu, můžete porty SNAT přidělit ručně tak, že je nakonfigurujete v každém odchozím pravidle. Pokud například víte, že budete mít maximálně 10 virtuálních počítačů, můžete k jednomu virtuálnímu počítači přidělit porty 6 400 SNAT a nikoli výchozí 1 024. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Úprava aplikace pro opětovné použití připojení 
 Můžete snížit poptávku za dočasné porty, které se používají pro SNAT, a to tak, že znovu použijete připojení ve vaší aplikaci. To platí hlavně pro protokoly jako HTTP/1.1, kde je výchozí nastavení opětovného použití připojení. A další protokoly, které používají protokol HTTP jako jejich přenos (například REST), můžou mít výhodu. 

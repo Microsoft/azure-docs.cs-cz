@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738044"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983274"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -100,6 +100,10 @@ Ne, Site Recovery nevyžaduje připojení k Internetu. Ale vyžaduje přístup k
 Ano, můžete replikovat aplikaci a zachovat konfiguraci zotavení po havárii v samostatné skupině prostředků.
 
 Pokud má vaše aplikace například aplikaci, databázi a web jednotlivých vrstev v samostatné skupině prostředků, je nutné vybrat [Průvodce replikací](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) třikrát pro ochranu všech vrstev. Site Recovery budou tyto tři vrstvy replikovat do tří různých skupin prostředků.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Můžu přesouvat účty úložiště mezi skupinami prostředků?
+
+Ne, jedná se o nepodporovaný scénář. Pokud ale omylem přesunete účty úložiště do jiné skupiny prostředků a odstraníte původní skupinu prostředků, můžete vytvořit novou skupinu prostředků se stejným názvem jako starou skupinu prostředků a potom účet úložiště přesunout do této skupiny prostředků.
 
 ## <a name="replication-policy"></a>Zásady replikace
 

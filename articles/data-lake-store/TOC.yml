@@ -22,6 +22,11 @@
       href: data-lake-store-get-started-powershell.md
     - name: Použití Azure CLI
       href: data-lake-store-get-started-cli-2.0.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Postup
   items:
     - name: Načtení a přesun dat

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684710"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983563"
 ---
 # <a name="execute-r-script"></a>Spouštění skriptů R
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> Pokud váš kanál obsahuje více modulů spuštění skriptu R a potřebujete stejné balíčky, které nejsou v seznamu předem nainstalované, nainstalujte balíčky do každého modulu. 
 
 ## <a name="installing-r-packages"></a>Instalace balíčků R
 K instalaci dalších balíčků R použijte `install.packages()` metodu. Balíčky se nainstalují pro každý modul **spuštění skriptu r** a nesdílí se mezi jinými moduly **spouštění skriptu jazyka r** .
@@ -140,7 +142,7 @@ Datové sady uložené v návrháři se při načtení s tímto modulem automati
 1. Do textového pole **skript jazyka r** zadejte nebo vložte platný skript r.
 
     > [!NOTE]
-    > Při psaní skriptu Buďte velmi opatrní a zajistěte, aby nedošlo k žádné chybě syntaxe, jako je například použití nedeklarované proměnné nebo neimportovaného modulu nebo funkce. Také věnujte další pozornost předem nainstalovanému seznamu balíčků na konci tohoto dokumentu. Pokud chcete používat balíčky, které nejsou uvedené, nainstalujte je do svého skriptu, jako je třeba.`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > Při psaní skriptu Buďte velmi opatrní a zajistěte, aby nedošlo k žádné chybě syntaxe, jako je například použití nedeklarovaných proměnných nebo neimportované moduly nebo funkce. Navíc věnujte další pozornost předem nainstalovanému seznamu balíčků na konci tohoto dokumentu. Pokud chcete používat balíčky, které nejsou uvedené, nainstalujte je do svého skriptu, jako je třeba.`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > Funkce závislé na knihovně X11, jako je "View", nejsou podporovány, protože knihovna X11 není předem nainstalována.
@@ -327,7 +329,7 @@ Aktuální seznam předem nainstalovaných balíčků R dostupných k použití:
 
 |              |            | 
 |--------------|------------| 
-| Balíček      | Version    | 
+| Balíček      | Verze    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

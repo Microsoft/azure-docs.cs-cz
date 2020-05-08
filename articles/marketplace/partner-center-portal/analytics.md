@@ -1,20 +1,20 @@
 ---
-title: Analýzy pro komerční tržiště v partnerském centru
-description: Přehled o přístupu k analytickým sestavám za účelem monitorování prodeje, vyhodnocení výkonu a optimalizace nabídek na webu Marketplace.
+title: Analýzy pro komerční tržiště Microsoftu v partnerském centru
+description: Naučte se, jak získat přístup k analytickým sestavám a monitorovat prodej, hodnotit výkon a optimalizovat nabídky Marketplace v partnerském centru Microsoftu.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262277"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744911"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>Analýzy pro komerční tržiště v partnerském centru
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>Přístup k analytickým sestavám pro komerční tržiště v partnerském centru
 
 Naučte se, jak získat přístup k analytickým sestavám v partnerském centru Microsoftu, abyste mohli monitorovat prodej, hodnotit výkon a optimalizovat vaše nabídky na webu Marketplace. Jako partner můžete monitorovat své nabídky pomocí vizualizací dat a grafů, které podporuje partnerský partner, a najít způsoby, jak maximalizovat své tržby. Vylepšené analytické nástroje umožňují pracovat na výsledcích výkonu a udržovat lepší vztahy se zákazníky a prodejci.
 

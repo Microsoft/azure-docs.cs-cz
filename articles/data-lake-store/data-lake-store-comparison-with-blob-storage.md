@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 porovnání s Azure Storage Blob | Microsoft Docs
-description: Azure Data Lake Storage Gen1 porovnání s Azure Storage Blob
-services: data-lake-store
-documentationcenter: ''
+title: Porovnání Azure Data Lake Storage Gen1 s úložištěm objektů BLOB
+description: Poskytuje souhrn rozdílů mezi Azure Data Lake Storage Gen1 a úložištěm objektů BLOB v Azure.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438722"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691729"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnávání Azure Data Lake Storage Gen1 a Azure Blob Storage
 
