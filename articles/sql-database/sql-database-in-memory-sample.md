@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff4647682f5f4d688f3b581b96715e01976a387
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528218"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891154"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 
@@ -182,7 +182,7 @@ Na virtuálním počítači nebo na jakémkoli zvoleném hostiteli nainstalujte 
 Další informace naleznete v tématu:
 - Diskuze OSTRESS. exe v [ukázkové databázi pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx).
 - [Ukázková databáze pro OLTP v paměti](https://msdn.microsoft.com/library/mt465764.aspx)
-- [Blog pro instalaci OSTRESS. exe](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx).
+- [Blog pro instalaci OSTRESS. exe](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 
 
@@ -389,7 +389,7 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 - [Monitorování úložiště OLTP v paměti](sql-database-in-memory-oltp-monitoring.md) pro OLTP v paměti
 
 
-## <a name="additional-resources"></a>Další zdroje
+## <a name="additional-resources"></a>Další materiály a zdroje informací
 
 #### <a name="deeper-information"></a>Hlubší informace
 

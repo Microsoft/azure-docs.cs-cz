@@ -13,70 +13,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a017f9485ec847c0a2c045e4c511b6a68db0cb2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537776"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889919"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>Aktualizace na dynamické balíčky dodržování předpisů na řídicím panelu dodržování předpisů
+# <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Přizpůsobení sady standardů na řídicím panelu dodržování předpisů
 
 Azure Security Center průběžně porovnává konfiguraci vašich prostředků s požadavky v oborových normách, nařízeních a srovnávacích testech. **Řídicí panel dodržování předpisů** poskytuje přehledy o stav dodržování předpisů na základě toho, jak splňujete konkrétní kontrolu a požadavky na dodržování předpisů.
 
-Jedním z standardů, pro které můžete sledovat stav dodržování předpisů, je [Azure CIS 1.1.0](https://www.cisecurity.org/benchmark/azure/) (ve verzi "CIS Microsoft Azure Foundation test Version 1.1.0"). 
 
-Reprezentace Azure CIS, která se zpočátku zobrazuje na řídicím panelu dodržování předpisů, spoléhá na statickou sadu pravidel, která je součástí Security Center.
+## <a name="overview-of-compliance-packages"></a>Přehled balíčků dodržování předpisů
 
-Díky funkci **dynamické balíčky pro dodržování předpisů** Security Center v průběhu času automaticky zlepšuje pokrytí oborových standardů. Balíčky dodržování předpisů jsou v podstatě iniciativy definované v Azure Policy. Dají se přiřadit k vybranému oboru (předplatné, skupina pro správu atd.). Pokud chcete zobrazit data o dodržování předpisů namapovaná jako posouzení na řídicím panelu, přidejte do skupiny pro správu nebo předplatného ze zásad zabezpečení balíček pro dodržování předpisů. Přidáním balíčku pro dodržování předpisů se efektivně přiřadí iniciativa dodržování předpisů pro vybraný obor. Tímto způsobem můžete na řídicím panelu sledovat nově publikované legislativní iniciativy jako standardy dodržování předpisů. Když společnost Microsoft vydává nový obsah pro iniciativu (nové zásady, které se mapují na více ovládacích prvků standardně), zobrazí se na řídicím panelu automaticky tento další obsah.
+Oborové standardy, regulativní normy a srovnávací testy jsou v Security Center jako *balíčky dodržování předpisů*.  Každý balíček je iniciativou určenou v Azure Policy. Pokud chcete zobrazit data o dodržování předpisů namapovaná jako posouzení na řídicím panelu, přidejte do skupiny pro správu nebo předplatného na stránce **zásady zabezpečení** balíček pro dodržování předpisů. (Další informace o Azure Policy a iniciativách při [práci se zásadami zabezpečení](tutorial-security-policy.md).)
 
-Balíček dynamické kompatibility pro Azure CIS test, **Azure CIS 1.1.0 (novinka)**, vylepšuje původní *statickou* verzi:
+Pokud jste vybrali standardní nebo srovnávací test na vybraný rozsah, Standard se zobrazí na řídicím panelu dodržování předpisů, kde jsou všechna přidružená data o dodržování předpisů namapovaná jako posouzení. Můžete si také stáhnout souhrnné sestavy pro všechny standardy, které byly zaregistrované.
 
-* Zahrnutí dalších zásad
-* Automatická aktualizace s novým pokrytím při jeho přidání 
+Microsoft také sleduje zákonné standardy a automaticky zlepšuje jejich pokrytí v některých balíčcích v průběhu času. Když společnost Microsoft vydává nový obsah pro iniciativu (nové zásady, které se mapují na více ovládacích prvků standardně), zobrazí se na řídicím panelu automaticky tento další obsah.
 
-Aktualizujte na nový dynamický balíček, jak je popsáno níže.
+> [!TIP]
+> Jeden standard, který se v průběhu času vylepšuje od Microsoftu [Microsoft Azure](https://www.cisecurity.org/benchmark/azure/), je **Azure CIS 1.1.0 (novinka)** Tuto možnost budete muset přidat na řídicí panel vedle položky "Azure CIS 1.1.0", která je ve výchozím nastavení nakonfigurovaná v každém Security Center prostředí. Tento balíček spoléhá na statickou sadu pravidel. Novější balíček zahrnuje další zásady a automaticky se aktualizuje v průběhu času. Aktualizujte na nový dynamický balíček, jak je popsáno níže.
 
-## <a name="adding-a-dynamic-compliance-package"></a>Přidání dynamického balíčku pro dodržování předpisů
 
-Následující postup vysvětluje, jak přidat dynamický balíček pro monitorování dodržování předpisů pomocí testu výkonnosti Azure CIS v 1.1.0.   
+## <a name="available-packages"></a>Dostupné balíčky
 
-### <a name="update-to-the-azure-cis-110-new-dynamic-compliance-package"></a>Aktualizace na Azure SNS 1.1.0 (nový) dynamický balíček pro dodržování předpisů 
+Můžete přidat standardy, jako je NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK oficiální a Velká Británie NHS, Kanada – federální PBMM a Azure CIS 1.1.0 (nový) – ucelená reprezentace 1.1.0 pro Azure CIS. 
 
-1. Otevřete stránku **zásady zabezpečení** . Tato stránka zobrazuje počet skupin pro správu, předplatných, pracovních prostorů a struktury skupin pro správu.
+Kromě toho můžete přidat **srovnávací testy zabezpečení Azure**, které jsou specifické pro Azure, a to v souladu s osvědčenými postupy zabezpečení a dodržování předpisů, které jsou založené na běžných architekturách dodržování předpisů. (Další[informace o srovnávacích testech zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/introduction).)
 
-1. Vyberte předplatné nebo skupinu pro správu, pro které chcete spravovat dodržování legislativních předpisů stav. Doporučujeme vybrat nejvyšší rozsah, pro který je standard použitelný, aby se data o dodržování předpisů agreguje a sledovala pro všechny vnořené prostředky. 
+Další standardy budou na řídicím panelu podporovány, jakmile budou k dispozici. 
 
-1. V části oborový & regulativních standardů uvidíte, že Azure CIS 1.1.0 se dá aktualizovat pro nový obsah. Klikněte na **aktualizovat hned**. 
 
-1. Volitelně můžete kliknutím na **Přidat další standardy** otevřít stránku **Přidat standardy dodržování předpisů** . Tady můžete vyhledávat ručně pro **Azure CIS 1.1.0 (nové)** a dynamické balíčky pro jiné standardy dodržování předpisů, jako je **NIST SP 800-53 R4**, **SWIFT CSP CSCF-V2020**, **UKO a UK NHS**a **Kanada PBMM**.
-    
+## <a name="adding-a-regulatory-standard-to-your-dashboard"></a>Přidání regulativního standardu na řídicí panel
+
+Následující postup vysvětluje, jak přidat balíček, abyste mohli monitorovat vaše dodržování předpisů s jedním z podporovaných regulativních standardů.
+
+> [!NOTE]
+> Pouze uživatelé, kteří jsou vlastníkem nebo přispěvatel zásad, mají potřebná oprávnění k přidání standardů dodržování předpisů. 
+
+1. Z bočního panelu Security Center vyberte **dodržování předpisů** pro otevření řídicího panelu dodržování předpisů regulativním předpisem. Tady vidíte standardy dodržování předpisů, které jsou aktuálně přiřazené k aktuálně vybraným předplatným.   
+
+1. V horní části stránky vyberte **Spravovat zásady dodržování předpisů**. Zobrazí se stránka Správa zásad.
+
+1. Vyberte předplatné nebo skupinu pro správu, pro které chcete spravovat dodržování legislativních předpisů stav. 
+
     > [!TIP]
-    > Pouze uživatelé, kteří jsou vlastníkem nebo přispěvatel zásad, mají potřebná oprávnění k přidání standardů dodržování předpisů. 
+    > Doporučujeme vybrat nejvyšší rozsah, pro který je standard použitelný, aby se data o dodržování předpisů agreguje a sledovala pro všechny vnořené prostředky. 
 
-    ![Přidání regulativních balíčků do řídicího panelu dodržování předpisů pro Azure Security Center](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
+1. Pokud chcete přidat standardy týkající se vaší organizace, klikněte na **Přidat další standardy**. 
 
+1. Na stránce **Přidat standardy dodržování předpisů** můžete vyhledat balíčky pro libovolnou z dostupných standardů. K dispozici jsou tyto standardy:
 
-1. Z bočního panelu Security Center vyberte **dodržování předpisů** pro otevření řídicího panelu dodržování předpisů regulativním předpisem. 
-    * Azure CIS 1.1.0 (nové) se teď zobrazí v seznamu oborových & regulativních standardů. 
-    * Původní *statické* zobrazení dodržování předpisů ve službě Azure CIS 1.1.0 zůstane zároveň současně. V budoucnu může být automaticky odebrána.
+    - **Srovnávací test zabezpečení Azure**
+    - **NIST SP 800-53 R4**
+    - **SWIFT CSP CSCF-v2020**
+    - **UKO a Velká Británie NHS**
+    - **PBMMa Kanady**
+    
+    ![Přidání regulativních balíčků do řídicího panelu dodržování předpisů pro Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. Z bočního panelu Security Center vyberte znovu **dodržování předpisů** , abyste se mohli vrátit na řídicí panel dodržování předpisů.
+    * Vaše nové standardní zobrazení se zobrazí v seznamu oborových & regulativních standardů. 
+    * Pokud jste přidali **Azure CIS 1.1.0 (nové)**, zůstane současně i nadále původní *statické* zobrazení dodržování předpisů Azure CIS 1.1.0. V budoucnu může být automaticky odebrána.
 
     > [!NOTE]
     > Může trvat několik hodin, než se nově přidaný Standard zobrazí na řídicím panelu dodržování předpisů.
 
-
-    [![Řídicí panel dodržování předpisů, který ukazuje starou a novou službu Azure SNS](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
-
+    [![Řídicí panel dodržování předpisů, který ukazuje starou a novou službu Azure SNS](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark-small.png)](media/update-regulatory-compliance-packages/regulatory-compliance-dashboard-with-benchmark.png#lightbox)
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste se naučili:
-
-* Postup **upgradu standardů** zobrazených na řídicím panelu dodržování předpisů pro nové *dynamické* balíčky
-* Postup **Přidání balíčků dodržování předpisů** pro monitorování dodržování předpisů pomocí dalších standardů. 
+V tomto článku jste zjistili, jak **Přidat balíčky dodržování předpisů** , abyste mohli monitorovat dodržování předpisů pomocí dalších standardů. 
 
 Další související materiály najdete v následujících článcích: 
 
+- [Srovnávací test zabezpečení Azure](https://docs.microsoft.com/azure/security/benchmarks/introduction)
 - [Řídicí panel dodržování legislativních předpisů služby Security Center](security-center-compliance-dashboard.md)
 - [Práce se zásadami zabezpečení](tutorial-security-policy.md)
-- [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – Přečtěte si, jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.

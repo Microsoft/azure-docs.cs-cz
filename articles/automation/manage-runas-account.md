@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113302"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608673"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Správa účtů Azure Automation spustit jako
 
@@ -475,7 +475,7 @@ Některé položky konfigurace potřebné pro účet Spustit jako nebo pro klasi
 * Účet Spustit jako odebraný z role Přispěvatel
 * Instanční objekt nebo aplikace v Azure AD
 
-U takových instancí s neplatnými konfigurace účet Automation zjistí změny a zobrazí stav `Incomplete` v podokně vlastností účty Spustit jako pro daný účet.
+U takových instancí s *neúplnými* konfigurace účet Automation zjistí změny a v podokně vlastností účty Spustit jako pro tento účet zobrazí stav nedokončeno.
 
 ![Nedokončená konfigurace účtu Spustit jako](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 

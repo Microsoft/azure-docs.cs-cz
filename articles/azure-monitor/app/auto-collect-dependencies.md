@@ -2,16 +2,15 @@
 title: Azure Application Insights – Automatická kolekce závislostí | Microsoft Docs
 description: Application Insights automatické shromažďování a vizualizace závislostí
 ms.topic: reference
-author: nikmd23
-ms.author: nimolnar
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/06/2020
+ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665812"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891600"
 ---
 # <a name="dependency-auto-collection"></a>Automatické shromažďování závislostí
 
@@ -24,14 +23,19 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 | ASP.NET WebForms | 4.5 + |
 | ASP.NET MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| Jádro ASP.NET | 1.1 + |
 | <b>Komunikační knihovny</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
+| [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 – nejnovější stabilní verze. (Viz poznámka níže)
 | [Klientská sada SDK pro EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [Klientská sada SDK pro ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>Klienti úložiště</b>|  |
 | ADO.NET | 4.5 + |
+
+> [!NOTE]
+> Došlo k [známému problému](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347) se staršími verzemi Microsoft. data. SqlClient. Pro zmírnění tohoto problému doporučujeme používat 1.1.0 nebo novější. Entity Framework Core nemusí nutně dodávat nejnovější stabilní verzi Microsoft. data. SqlClient, proto doporučujeme potvrdit, že máte aspoň 1.1.0, abyste se tomuto problému vyhnuli.   
+
 
 ## <a name="java"></a>Java
 | Aplikační servery | Verze |
@@ -80,7 +84,7 @@ Níže je uveden aktuálně podporovaný seznam volání závislostí, která js
 
 | Komunikační knihovny | Verze |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Všechny |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Vše |
 
 ## <a name="next-steps"></a>Další kroky
 

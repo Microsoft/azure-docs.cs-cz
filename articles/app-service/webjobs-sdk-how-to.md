@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758887"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734990"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak použít sadu Azure WebJobs SDK k událostmi řízenému zpracování na pozadí
 
@@ -829,7 +829,7 @@ Každý protokol vytvořený `ILogger` instancí má přidruženou `Category` a.
 |Upozornění     | 3 |
 |Chyba       | 4 |
 |Kritická    | 5 |
-|Žádná        | 6 |
+|Žádné        | 6 |
 
 Jednotlivé kategorie můžete filtrovat nezávisle na konkrétním [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Můžete například chtít zobrazit všechny protokoly pro zpracování triggerů objektů blob, ale jenom `Error` a vyšší pro všechno ostatní.
 
@@ -956,9 +956,9 @@ Ve verzi 3. *x*, už nemusíte [`TelemetryClient`] při zastavení hostitele vyp
 
 #### <a name="version-2x"></a>Verze 2. *x*
 
-Ve verzi 2. *x*, která [`TelemetryClient`] je vytvořena interně poskytovatelem Application Insights pro sadu WebJobs SDK [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)používá. Pokud Application Insights koncový bod není k dispozici nebo omezuje příchozí požadavky, tento kanál [uloží požadavky v systému souborů webové aplikace a znovu je odešle](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Ve verzi 2. *x*, která [`TelemetryClient`] je vytvořena interně poskytovatelem Application Insights pro sadu WebJobs SDK [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll)používá. Pokud Application Insights koncový bod není k dispozici nebo omezuje příchozí požadavky, tento kanál [uloží požadavky v systému souborů webové aplikace a znovu je odešle](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-[`TelemetryClient`] Je vytvořen třídou, která implementuje `ITelemetryClientFactory`. Ve výchozím nastavení je to [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+[`TelemetryClient`] Je vytvořen třídou, která implementuje `ITelemetryClientFactory`. Ve výchozím nastavení je to [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/).
 
 Chcete-li změnit jakoukoli část kanálu Application Insights, můžete zadat vlastní `ITelemetryClientFactory`a hostitel bude třídu používat k sestavení. [`TelemetryClient`] Například přepsání `DefaultTelemetryClientFactory` tohoto kódu pro úpravu vlastnosti `ServerTelemetryChannel`:
 

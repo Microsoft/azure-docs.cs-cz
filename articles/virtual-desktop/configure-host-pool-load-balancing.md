@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d8670994791e360f5e3b30b90b4bea5d55464b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128304"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612431"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
 
@@ -22,34 +22,65 @@ Konfigurace metody vyrovnávání zatížení pro fond hostitelů vám umožní 
 >[!NOTE]
 > To se nevztahuje na fond hostitelů trvalé plochy, protože uživatelé mají vždycky mapování 1:1 na hostitele relace v rámci fondu hostitelů.
 
+## <a name="prerequisites"></a>Požadavky
+
+V tomto článku se předpokládá, že jste postupovali podle pokynů v tématu [nastavení modulu PowerShellu pro virtuální plochu](powershell-module.md) pro stažení a instalaci modulu PowerShell a přihlásíte se ke svému účtu Azure.
+
 ## <a name="configure-breadth-first-load-balancing"></a>Konfigurace šířky – první vyrovnávání zatížení
 
 Šířka – první vyrovnávání zatížení je výchozí konfigurace pro nové netrvalé fondy hostitelů. Šířka – první vyrovnávání zatížení distribuuje nové uživatelské relace napříč všemi dostupnými hostiteli relací ve fondu hostitelů. Při konfiguraci škály vyrovnávání zatížení můžete nastavit maximální počet relací na hostitele relace ve fondu hostitelů.
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
 Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení po prvním použití bez úprav maximálního limitu relací, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+```
+
+Až to uděláte, ujistěte se, že jste nastavili metodu vyrovnávání zatížení první, spusťte následující rutinu: 
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+
+Name             : hostpoolname 
+LoadBalancerType : BreadthFirst
 ```
 
 Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení a používal nový limit maximálního počtu relací, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Set-RdsHostPool <tenantname> <hostpoolname> -BreadthFirstLoadBalancer -MaxSessionLimit ###
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' -MaxSessionLimit ###
 ```
 
 ## <a name="configure-depth-first-load-balancing"></a>Konfigurace hloubky – první vyrovnávání zatížení
 
-Hloubka při prvním vyrovnávání zatížení distribuuje nové uživatelské relace k dostupnému hostiteli relace s největším počtem připojení, ale nedosáhla maximální prahové hodnoty limitu relací. Při konfiguraci vyrovnávání zatížení prvního rozsahu **musíte** nastavit maximální počet relací na hostitele relace ve fondu hostitelů.
+Hloubka při prvním vyrovnávání zatížení distribuuje nové uživatelské relace k dostupnému hostiteli relace s největším počtem připojení, ale nedosáhla maximální prahové hodnoty limitu relací. Při konfiguraci vyrovnávání zatížení prvního rozsahu musíte nastavit maximální počet relací na hostitele relace ve fondu hostitelů.
 
 Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení první hloubky, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Set-RdsHostPool <tenantname> <hostpoolname> -DepthFirstLoadBalancer -MaxSessionLimit ###
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
 ```
+
+Pokud se chcete ujistit, že se nastavení aktualizovalo, spusťte tuto rutinu:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+
+Name             : hostpoolname
+LoadBalancerType : DepthFirst
+MaxSessionLimit  : 6
+```
+
+## <a name="configure-load-balancing-with-the-azure-portal"></a>Konfigurace vyrovnávání zatížení pomocí Azure Portal
+
+Vyrovnávání zatížení můžete také nakonfigurovat pomocí Azure Portal.
+
+Konfigurace vyrovnávání zatížení:
+
+1. Přihlaste se k https://portal.azure.comAzure Portal na. 
+2. Vyhledejte a v části služby vyberte **virtuální plochu Windows** . 
+3. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů**.
+4. Vyberte název fondu hostitelů, který chcete upravit.
+5. Vyberte **Vlastnosti**.
+6. Do pole zadejte **maximální časový limit relace** a v rozevírací nabídce vyberte **algoritmus vyrovnávání zatížení** , který chcete pro tento fond hostitelů.
+7. Vyberte **Uložit**. To platí pro nové nastavení vyrovnávání zatížení.

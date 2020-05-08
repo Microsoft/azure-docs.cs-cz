@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/22/2020
+ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417240"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890620"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -46,7 +46,7 @@ Konkrétně tento konektor SAP HANA podporuje:
 - Paralelní kopírování ze zdroje SAP HANA. Podrobnosti najdete v části [paralelní kopírování z SAP HANA](#parallel-copy-from-sap-hana) .
 
 > [!TIP]
-> Chcete-li kopírovat data **do** SAP HANA úložiště dat, použijte obecný konektor ODBC. Viz část [SAP HANA jímka](connector-odbc.md#sap-hana-sink) s podrobnostmi. Všimněte si, že propojené služby konektoru SAP HANA Connector a konektor ODBC mají jiný typ, takže se nedá znovu použít.
+> Chcete-li kopírovat data **do** SAP HANA úložiště dat, použijte obecný konektor ODBC. Podrobnosti najdete v části [SAP HANA jímka](#sap-hana-sink) . Všimněte si, že propojené služby konektoru SAP HANA Connector a konektor ODBC mají jiný typ, takže se nedá znovu použít.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,8 +69,8 @@ Pro SAP HANA propojenou službu jsou podporovány následující vlastnosti:
 |:--- |:--- |:--- |
 | type | Vlastnost Type musí být nastavená na: **SapHana** . | Ano |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k SAP HANA pomocí **základního ověřování** nebo **ověřování systému Windows**. Přečtěte si následující ukázky.<br>V připojovacím řetězci je server/port povinný (výchozí port je 30015) a uživatelské jméno a heslo je při použití základního ověřování povinné. Další upřesňující nastavení najdete v tématu [SAP HANA vlastnosti připojení ODBC](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>) .<br/>Můžete také do Azure Key Vault umístit heslo a načíst konfiguraci hesla z připojovacího řetězce. Další podrobnosti najdete [v článku uložení přihlašovacích údajů v Azure Key Vault](store-credentials-in-key-vault.md) článku. | Ano |
-| userName | Při použití ověřování systému Windows zadejte uživatelské jméno. Příklad: `user@domain.com` | Ne |
-| heslo | Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
+| userName | Při použití ověřování systému Windows zadejte uživatelské jméno. Příklad: `user@domain.com` | No |
+| heslo | Zadejte heslo pro uživatelský účet. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | No |
 | connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
 
 **Příklad: použití základního ověřování**
@@ -298,6 +298,34 @@ Při kopírování dat z SAP HANA se z SAP HANA datových typů používají ná
 | VARCHAR            | Řetězec                         |
 | ČASOVÉ razítko          | DateTime                       |
 | VARBINARY          | Byte []                         |
+
+### <a name="sap-hana-sink"></a>SAP HANA jímka
+
+V současné době není konektor SAP HANA podporován jako jímka, zatímco můžete použít obecný konektor ODBC s ovladačem SAP HANA k zápisu dat do SAP HANA. 
+
+Postupujte podle [požadavků](#prerequisites) pro nastavení Integration runtime v místním prostředí a nejprve nainstalujte SAP HANA ovladač ODBC. Vytvořte propojenou službu ODBC pro připojení k vašemu SAP HANA úložiště dat, jak je znázorněno v následujícím příkladu, a odpovídajícím způsobem Vytvořte datovou sadu a jímku aktivity kopírování s rozhraním ODBC. Další informace najdete v článku [konektor ODBC](connector-odbc.md) .
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

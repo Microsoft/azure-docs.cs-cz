@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667404"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901359"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Řešení potíží s replikací v zotavení po havárii virtuálního počítače Azure
 
@@ -41,7 +41,7 @@ Pokud vyberete událost, měli byste vidět přesné informace o disku:
 
 Následující tabulka obsahuje omezení služby Azure Site Recovery. Tato omezení vycházejí z našich testů, ale nemůžou pokrýt všechny možné kombinace vstupně-výstupních operací aplikace (v/v). Skutečné výsledky se můžou lišit v závislosti na kombinaci vstupně-výstupních operací vaší aplikace.
 
-Je potřeba vzít v úvahu dvě omezení: četnost změn dat na disk a data na virtuální počítač. Pojďme se podívat na disk Premium P20 v následující tabulce. Pro jeden virtuální počítač může Site Recovery zpracovávat 5 MB/s změn na disk s maximálně pěti takovými disky. Site Recovery má limit 25 MB/s celkového počtu změn na virtuální počítač.
+Je potřeba vzít v úvahu dvě omezení: četnost změn dat na disk a data na virtuální počítač. Pojďme se podívat na disk Premium P20 v následující tabulce. Pro jeden virtuální počítač může Site Recovery zpracovávat 5 MB/s změn na disk s maximálně pěti takovými disky. Site Recovery má limit 54 MB/s z celkové změny na virtuální počítač.
 
 **Cíl úložiště replikace** | **Průměrná velikost vstupně-výstupních operací pro zdrojový disk** |**Průměrná četnost změn dat na zdrojovém disku** | **Celková četnost změn dat za den pro zdrojový datový disk**
 ---|---|---|---
