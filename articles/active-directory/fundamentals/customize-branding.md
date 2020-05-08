@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049798"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982033"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Přidání brandingu na přihlašovací stránku Azure Active Directory vaší organizace
 Použijte logo vaší organizace a vlastní barevná schémata k zajištění konzistentního vzhledu na přihlašovacích stránkách Azure Active Directory (Azure AD). Přihlašovací stránky se zobrazí, když se uživatelé přihlásí k webovým aplikacím vaší organizace, jako je například Office 365, který jako zprostředkovatele identity používá službu Azure AD.
@@ -52,9 +52,9 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
 
         - **Language.** Jazyk se automaticky nastaví jako výchozí a nedá se změnit.
         
-        - **Obrázek pozadí přihlašovací stránky** Vyberte soubor obrázku. png nebo. jpg, který se zobrazí jako pozadí pro přihlašovací stránky. 
+        - **Obrázek pozadí přihlašovací stránky** Vyberte soubor obrázku. png nebo. jpg, který se zobrazí jako pozadí pro přihlašovací stránky. Obrázek bude ukotven do středu prohlížeče a bude se škálovat na velikost zobrazitelného prostoru. Nemůžete vybrat obrázek, který je větší než velikost 1080 pixelů nebo má velikost souboru větší než 300 KB.
         
-            Velikost obrázku nemůže být větší než 1080 pixelů a velikost souboru musí být menší než 300 KB.
+            Doporučuje se používat obrázky bez fokusu se silným předmětem, např. neprůhledné prázdné pole se zobrazuje uprostřed obrazovky a může krýt jakoukoli část obrázku v závislosti na rozměrech zobrazitelného prostoru.
 
         - **Logo banner.** Po zadání uživatelského jména a na stránce portálu **Moje aplikace** vyberte verzi vašeho loga. png nebo. jpg, která se zobrazí na přihlašovací stránce.
             
@@ -62,7 +62,7 @@ Vaše vlastní branding se okamžitě nezobrazí, když uživatelé přejdou na 
 
         - **Nápověda k uživatelskému jménu** Zadejte text nápovědy, který se zobrazí uživatelům, pokud zapomene své uživatelské jméno. Tento text musí být v kódování Unicode, bez odkazů nebo kódu a nesmí překročit 64 znaků. Pokud se hosté přihlásí do vaší aplikace, Doporučujeme nepřidávat Tento pomocný parametr.
 
-        - **Text přihlašovací stránky** Zadejte text, který se zobrazí v dolní části přihlašovací stránky. Tento text můžete použít k sdělování dalších informací, jako je telefonní číslo na oddělení technické podpory nebo právní prohlášení. Tento text musí být Unicode a nesmí přesáhnout 256 znaků. Také navrhujeme, aby neobsahoval odkazy nebo značky HTML.
+        - **Text přihlašovací stránky** Zadejte text, který se zobrazí v dolní části přihlašovací stránky. Tento text můžete použít k sdělování dalších informací, jako je telefonní číslo na oddělení technické podpory nebo právní prohlášení. Tento text musí být Unicode a nesmí přesáhnout 256 znaků.
 
     - **Upřesnit nastavení**
             

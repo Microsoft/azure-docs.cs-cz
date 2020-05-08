@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733164"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982724"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty
 
@@ -36,7 +36,7 @@ Certifikační autorita (CA) je krátká, jedná se o entitu, která vydává di
 
 ### <a name="root-ca-certificate"></a>Certifikát kořenové certifikační autority
 
-Certifikát kořenové certifikační autority je kořenem vztahu důvěryhodnosti celého procesu. V produkčních scénářích se tento certifikát certifikační autority obvykle kupuje od důvěryhodné Komerční certifikační autority, jako je Baltimore, VeriSign nebo DigiCert. Pokud máte úplnou kontrolu nad zařízeními, která se připojují k zařízením IoT Edge, je možné použít certifikační autoritu na úrovni podniku. V obou případech se v rámci centra IoT Edge nahoru zobrazí celý řetěz certifikátů, takže zařízení IoT na listech musí důvěřovat kořenovému certifikátu. Certifikát kořenové certifikační autority můžete uložit buď do úložiště Důvěryhodné kořenové certifikační autority, nebo zadat podrobnosti certifikátu v kódu aplikace.
+Certifikát kořenové certifikační autority je kořenem vztahu důvěryhodnosti celého procesu. V produkčních scénářích se tento certifikát certifikační autority obvykle kupuje od důvěryhodné Komerční certifikační autority, jako je Baltimore, VeriSign nebo DigiCert. Pokud máte úplnou kontrolu nad zařízeními, která se připojují k zařízením IoT Edge, je možné použít certifikační autoritu na úrovni podniku. V obou případech se do něj zavede celý řetěz certifikátů z centra IoT Edge, aby se na listovém zařízení IoT musely důvěřovat kořenovému certifikátu. Certifikát kořenové certifikační autority můžete uložit buď do úložiště Důvěryhodné kořenové certifikační autority, nebo zadat podrobnosti certifikátu v kódu aplikace.
 
 ### <a name="intermediate-certificates"></a>Zprostředkující certifikáty
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c003af296b10037505e6d6006b6bfc788e641dc3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 474eb4f5247aeb77edce0ebfde1611bf2deef493
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731453"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930399"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Vytvoření fondu hostitelů pomocí PowerShellu
 
@@ -37,7 +37,7 @@ Spuštěním následující rutiny se přihlaste do prostředí virtuálních po
 New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
 ```
 
-Tato rutina vytvoří fond hostitelů, pracovní prostor a skupinu desktopových aplikací. Kromě toho zaregistruje skupinu desktopových aplikací do pracovního prostoru. Pomocí této rutiny můžete vytvořit pouze pracovní prostor, ale v této rutině nebudete používat existující pracovní prostor. 
+Tato rutina vytvoří fond hostitelů, pracovní prostor a skupinu desktopových aplikací. Kromě toho zaregistruje skupinu desktopových aplikací do pracovního prostoru. Můžete buď vytvořit pracovní prostor pomocí této rutiny, nebo použít existující pracovní prostor. 
 
 Spusťte další rutinu pro vytvoření registračního tokenu pro autorizaci hostitele relace pro připojení k fondu hostitelů a jeho uložení do nového souboru na místním počítači. Pomocí parametru-ExpirationHours můžete určit, jak dlouho je registrační token platný.
 

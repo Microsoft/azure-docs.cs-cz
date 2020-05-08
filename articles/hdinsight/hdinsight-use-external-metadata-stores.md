@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313945"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929328"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -41,6 +41,8 @@ Ve výchozím nastavení HDInsight vytvoří metastore s každým typem clusteru
 * Výchozí metastore používá základní Azure SQL DB, který má pět jednotek DTU (databázová jednotka).
 Tento výchozí metastore se obvykle používá pro relativně jednoduché úlohy. Úlohy, které nevyžadují více clusterů a nepotřebují metadata zachovaná nad rámec životního cyklu clusteru.
 
+* Pro produkční úlohy doporučujeme migrovat na externí metastore. Další podrobnosti najdete v níže uvedené části.
+
 ## <a name="custom-metastore"></a>Vlastní metastore
 
 HDInsight podporuje také vlastní metaúložiště, které se doporučují pro produkční clustery:
@@ -64,6 +66,8 @@ HDInsight podporuje také vlastní metaúložiště, které se doporučují pro 
 Vytvořte nebo existující Azure SQL Database před nastavením vlastního metastore Hive pro cluster HDInsight.  Další informace najdete v tématu [rychlý Start: vytvoření izolované databáze ve službě Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
 Při vytváření clusteru se musí služba HDInsight připojit k externímu metastore a ověřit vaše přihlašovací údaje. Nakonfigurujte Azure SQL Database pravidla brány firewall tak, aby umožňovala službám a prostředkům Azure přístup k serveru. Tuto možnost povolte v Azure Portal výběrem možnosti **nastavit bránu firewall serveru**. Pak vyberte **žádné** **pod položkou** **Odepřít přístup k veřejné síti**a v části povolit přístup k tomuto serveru pro Azure SQL Database Server nebo databázi pomocí **služeb a prostředků Azure** . Další informace najdete v tématu [Vytvoření a Správa pravidel brány firewall protokolu IP](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
+
+Privátní koncové body pro úložiště SQL nejsou podporovány.
 
 ![tlačítko nastavit bránu firewall serveru](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -94,6 +98,8 @@ Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. 
 * Pokud sdílíte metastore napříč několika clustery, ujistěte se, že všechny clustery mají stejnou verzi HDInsight. Různé verze podregistru používají různá schémata metastore Database. Nemůžete například sdílet metastore mezi podregistrem 2,1 a clustery s verzemi v registru 3,1.
 
 * Spark a podregistr v HDInsight 4,0 používají nezávislé katalogy pro přístup k SparkSQL nebo tabulkám podregistru. Tabulka vytvořená Sparkem v katalogu Spark. Tabulka vytvořená podregistrem v katalogu podregistru Toto chování se liší od HDInsight 3,6, ve kterém se společný katalog pro podregistr a Spark sdílí. Integrace podregistru a Sparku v HDInsight 4,0 spoléhá na umožní (podregistr Warehouse Connector). UMOŽNÍ funguje jako most mezi Sparkem a podregistrem. [Seznamte se s konektorem skladiště pro podregistr](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* Pokud chcete metastore sdílet mezi podregistrem a Sparkem, můžete v HDInsight 4,0 změnit vlastnost metastore. Catalog. default na podregistr v clusteru Spark. Tuto vlastnost najdete v Ambari Advanced spark2-podregistr-site-override. Je důležité si uvědomit, že sdílení metastore funguje jenom pro externí tabulky podregistru, takže pokud máte interní/spravované tabulky podregistru nebo tabulky s kyselým obsahem, nebude to fungovat.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 

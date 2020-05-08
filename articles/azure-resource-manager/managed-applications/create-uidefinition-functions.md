@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248447"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980809"
 ---
 # <a name="createuidefinition-functions"></a>Funkce CreateUiDefinition
 Tato část obsahuje signatury všech podporovaných funkcí CreateUiDefinition.
 
-Chcete-li použít funkci, uzavřete deklaraci do hranatých závorek. Příklad:
+Chcete-li použít funkci, uzavřete vyvolání do hranatých závorek. Příklad:
 
 ```json
 "[function()]"
@@ -431,7 +431,7 @@ Následující příklad vrátí `true`:
 "[greaterOrEquals(2, 2)]"
 ```
 
-### <a name="and"></a>a
+### <a name="and"></a>and
 Vrátí `true` , zda jsou všechny parametry vyhodnoceny `true`. Tato funkce podporuje dva nebo více parametrů pouze typu Boolean.
 
 Následující příklad vrátí `true`:
@@ -446,7 +446,7 @@ Následující příklad vrátí `false`:
 "[and(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="or"></a>– nebo –
+### <a name="or"></a>or
 Vrátí `true` , `true`zda je alespoň jeden z parametrů vyhodnocen jako. Tato funkce podporuje dva nebo více parametrů pouze typu Boolean.
 
 Následující příklad vrátí `true`:
@@ -485,6 +485,45 @@ Přepokládejme `element1` a `element2` nejsou definovány. Následující pří
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
 
+Tato funkce je užitečná hlavně v kontextu volitelného vyvolání, ke kterému dochází kvůli akci uživatele po načtení stránky. Příkladem je, že omezení umístěná v jednom poli v uživatelském rozhraní závisí na aktuálně vybrané hodnotě jiného, **zpočátku neviditelného** pole. V takovém případě `coalesce()` lze použít k povolení syntakticky platné v době načítání stránky a přitom mít požadovaný efekt při interakci uživatele s polem.
+
+Vezměte v `DropDown`úvahu, který uživateli umožňuje vybrat z několika různých typů databází:
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+Chcete-li nastavit podmínku pro akci jiného pole na aktuální zvolené hodnotě tohoto pole, použijte `coalesce()`, jak je znázorněno zde:
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+To je nezbytné, protože `databaseType` zpočátku není viditelné, a proto nemá hodnotu. To způsobí, že se celý výraz nevyhodnotí správně.
+
 ## <a name="conversion-functions"></a>Převodní funkce
 Tyto funkce lze použít pro převod hodnot mezi datovými typy JSON a kódování.
 
@@ -518,7 +557,7 @@ Následující příklad vrátí `2.9`:
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>řetězec
+### <a name="string"></a>odkazy řetězců
 Převede parametr na řetězec. Tato funkce podporuje parametry všech datových typů JSON.
 
 Následující příklad vrátí `"1"`:

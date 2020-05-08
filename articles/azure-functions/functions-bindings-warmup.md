@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559990"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982237"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Aktivační událost Azure Functions zahřívání
 
@@ -38,7 +38,7 @@ Všimněte si, že Trigger zahřívání je volán pouze během operací škálo
 
 ## <a name="trigger---example"></a>Aktivační procedura – příklad
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která se spustí na každé nové instanci při přidání do aplikace. Atribut návratové hodnoty není povinný.
 
@@ -132,7 +132,6 @@ Tady je kód JavaScriptu:
 ```javascript
 module.exports = async function (context, warmupContext) {
     context.log('Function App instance is warm 🌞🌞🌞');
-    context.done();
 };
 ```
 
@@ -188,7 +187,7 @@ public void run( ExecutionContext context) {
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)je `WarmupTrigger` atribut k dispozici pro konfiguraci funkce.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Tento příklad ukazuje, jak použít atribut [zahřívání](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) .
 
