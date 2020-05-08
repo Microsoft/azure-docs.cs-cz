@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 9b39cbab71808aaf09f7dc38b3be77f6f35ab598
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872346"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982679"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
@@ -33,7 +33,7 @@ Typy nabídek Azure Marketplace jsou uvedeny v následující tabulce.
 | [**Virtuální počítače**](./marketplace-virtual-machines.md) | Typ nabídky virtuálního počítače použijte, když nasadíte virtuální zařízení do předplatného přidruženého k vašemu zákazníkovi. |
 | [**Šablony řešení**](./marketplace-solution-templates.md) | Použijte typ nabídky šablona řešení (označovaný také jako aplikace Azure), pokud vaše řešení vyžaduje další automatizaci nasazení a konfigurace nad rámec jednoho virtuálního počítače. Šablony řešení můžou využívat mnoho různých druhů prostředků Azure, mimo jiné jenom virtuální počítače.  |
 | [**Spravované aplikace**](./marketplace-managed-apps.md) | Použití aplikace Azure: typ nabídky spravované aplikace, pokud jsou potřeba následující podmínky: <br> <ul> <li> K nasazení řešení založeného na předplatném pro zákazníka můžete použít buď virtuální počítač, nebo celé řešení založené na IaaS. </li> <li>Vy nebo váš zákazník požadujete, aby bylo řešení spravované partnerem. </li> <ul> |
-| [**Aplikace SaaS**](./marketplace-saas-applications-technical-publishing-guide.md) | Pomocí typu nabídky aplikace SaaS můžete zákazníkům povolit, aby si koupili vaše technické řešení založené na SaaS jako předplatné. |
+| [**Aplikace SaaS**](./partner-center-portal/create-new-saas-offer.md) | Pomocí typu nabídky aplikace SaaS můžete zákazníkům povolit, aby si koupili vaše technické řešení založené na SaaS jako předplatné. |
 | [**Nabídky kontejnerů**](./marketplace-containers.md) | Typ nabídky kontejneru použijte, pokud je vaše řešení image kontejneru Docker zřízená jako Kubernetes Azure Container Service. |
 | [**Moduly Azure IoT Edge**](./iot-edge-module.md) | Azure IoT Edge moduly jsou nejmenší výpočetní jednotky spravované IoT Edge a můžou obsahovat služby Microsoftu (například Azure Stream Analytics), služby třetích stran nebo vlastní kód specifický pro řešení. |
 | [**Konzultační služby**](./consulting-services.md) | Konzultační služby usnadňují propojení zákazníků se službami pro podporu a rozšiřování jejich používání služeb Azure, Dynamics 365 nebo Power Suite.|

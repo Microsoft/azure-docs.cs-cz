@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858680"
+ms.locfileid: "82871364"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Změna způsobu replikace účtu úložiště
 
@@ -40,10 +40,11 @@ Následující tabulka poskytuje přehled toho, jak přepínat mezi jednotlivým
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>... z LRS</b> | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . | Provedení ruční migrace <br /><br />Vyžádání migrace za provozu | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na GRS/RA-GRS a pak požádejte o migraci za provozu<sup>1</sup> . |
 | <b>... z GRS/RA – GRS</b> | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – | Provedení ruční migrace <br /><br /> NEBO <br /><br /> Nejprve přepněte na LRS a pak požádejte o migraci za provozu. | Provedení ruční migrace <br /><br /> Vyžádání migrace za provozu |
-| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1</sup> . |
+| <b>... z ZRS</b> | Provedení ruční migrace | Provedení ruční migrace | – | Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku můžete změnit nastavení replikace<sup>1, 2</sup> . |
 | <b>... z GZRS/RA – GZRS</b> | Provedení ruční migrace | Provedení ruční migrace | Nastavení replikace změníte pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku. | – |
 
-<sup>1</sup> dojde k jednorázovému výstupnímu poplatku.
+<sup>1</sup> dojde k jednorázovému výstupnímu poplatku.<br />
+<sup>2</sup> převod z ZRS na GZRS/RA-GZRS nebo naopak není podporován v následujících oblastech: USA – východ 2, USA – východ, Evropa – západ.
 
 > [!CAUTION]
 > Pokud jste provedli [převzetí služeb při selhání u účtu](storage-disaster-recovery-guidance.md) (RA-) GRS nebo (RA-) GZRS, účet se po převzetí služeb při selhání místně redundantní v nové primární oblasti. Migrace za provozu na ZRS nebo GZRS pro účet LRS, který vyplývají z převzetí služeb při selhání, se nepodporuje. Budete muset provést [Ruční migraci](#perform-a-manual-migration-to-zrs) na ZRS nebo GZRS.

@@ -4,20 +4,20 @@ description: Je užitečné, abyste mohli nakonfigurovat uživatelský účet, p
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111738"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980282"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
+
 > [!NOTE] 
 > Uživatelské účty popsané v tomto článku se liší od uživatelských účtů používaných pro protokol RDP (Remote Desktop Protocol) (RDP) nebo Secure Shell (SSH) z bezpečnostních důvodů. 
 >
 > Pokud se chcete připojit k uzlu s konfigurací virtuálního počítače se systémem Linux přes SSH, přečtěte si téma [použití vzdálené plochy k virtuálnímu počítači se systémem Linux v Azure](../virtual-machines/virtual-machines-linux-use-remote-desktop.md). Informace o připojení k uzlům se systémem Windows prostřednictvím protokolu RDP najdete v tématu [připojení k virtuálnímu počítači s Windows serverem](../virtual-machines/windows/connect-logon.md).<br /><br />
 > Pokud se chcete připojit k uzlu, na kterém je spuštěná konfigurace cloudové služby prostřednictvím protokolu RDP, přečtěte si téma [povolení připojení ke vzdálené ploše pro roli ve službě Azure Cloud Services](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md).
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Spouštění úloh v rámci uživatelských účtů ve Batch
 
 Úkol v Azure Batch vždy běží v rámci uživatelského účtu. Ve výchozím nastavení se úlohy spouštějí pod standardními uživatelskými účty bez oprávnění správce. Tato výchozí nastavení uživatelského účtu jsou obvykle dostačující. V některých scénářích ale je užitečné, abyste mohli nakonfigurovat uživatelský účet, pod kterým chcete úlohu spustit. Tento článek pojednává o typech uživatelských účtů a o tom, jak je můžete nakonfigurovat pro váš scénář.
 

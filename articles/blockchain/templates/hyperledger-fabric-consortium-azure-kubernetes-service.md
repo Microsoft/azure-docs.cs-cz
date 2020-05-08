@@ -4,12 +4,12 @@ description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastr
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476436"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980217"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -42,7 +42,7 @@ Pokud chcete vytvořit síť prostředků infrastruktury hlavní knihy v Azure, 
   - **CA infrastruktury Fabric**: na pod, kde je SPUŠTĚNÁ certifikační autorita infrastruktury.
 - **PostgreSQL**: instance PostgreSQL je nasazená za účelem zachování identit certifikační autority infrastruktury.
 
-- **Azure Key trezor**: instance trezoru klíčů je nasazená za účelem uložení přihlašovacích údajů certifikační autority infrastruktury a kořenových certifikátů poskytovaných zákazníkem, který se používá v případě opakování nasazení šablony. je to zpracování mechanismu šablony.
+- **Azure Key trezor**: instance trezoru klíčů je nasazená za účelem uložení přihlašovacích údajů certifikační autority infrastruktury a kořenových certifikátů poskytovaných zákazníkem, který se používá v případě opakování nasazení šablony pro zpracování mechanismu šablony.
 - **Spravovaný disk Azure**: Azure Managed disk pro hlavní knihu a databázi státních stavů partnerského uzlu jsou pro trvalé úložiště.
 - **Veřejná IP adresa**: koncový bod veřejné IP adresy clusteru AKS nasazený pro propojení s clusterem.
 
@@ -54,7 +54,6 @@ Nastavte blockchain síť prostředků infrastruktury hlavní knihy pomocí nás
 
 - [Nasazení organizace v řádu nebo v partnerském vztahu](#deploy-the-ordererpeer-organization)
 - [Sestavení konsorcia](#build-the-consortium)
-- [Spouštění nativních operací HLF](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>Nasazení organizace v řádu nebo v partnerském vztahu
 
@@ -78,7 +77,7 @@ Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Az
     ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Zadejte následující podrobnosti:
-    - **Název organizace**: název organizace prostředků infrastruktury, která se vyžaduje pro různé operace roviny dat. Název organizace musí být pro každé nasazení jedinečný. 
+    - **Název organizace**: název organizace prostředků infrastruktury, která se vyžaduje pro různé operace roviny dat. Název organizace musí být pro každé nasazení jedinečný.
     - **Součást sítě prostředků infrastruktury**: vyberte buď řazení služby nebo partnerské uzly na základě součásti sítě blockchain, kterou chcete nastavit.
     - **Počet uzlů** – následující dva typy uzlů:
         - Služba objednávání – vyberte počet uzlů pro zajištění odolnosti proti chybám v síti. Podporovaným počtem uzlů pro pořadí je jenom 3, 5 a 7.
@@ -87,7 +86,7 @@ Pokud chcete začít s nasazením síťových součástí HLF, přejděte na [Az
     - **Uživatelské jméno prostředků infrastruktury**: zadejte uživatelské jméno, které se používá pro ověřování certifikační autority infrastruktury.
     - **Heslo certifikační autority prostředků infrastruktury**: zadejte heslo pro ověřování certifikační autority infrastruktury.
     - **Potvrzení hesla**: potvrďte heslo certifikační autority infrastruktury.
-    - **Certifikáty**: Pokud chcete k inicializaci CA prostředků infrastruktury použít vlastní kořenové certifikáty, pak zvolte možnost nahrát kořenový certifikát pro certifikační autoritu infrastruktury, jinak ve výchozím nastavení certifikační autorita infrastruktury vytvoří certifikáty podepsané svým držitelem.
+    - **Certifikáty**: Pokud chcete k inicializaci certifikační autority prostředků infrastruktury použít vlastní kořenové certifikáty, zvolte možnost nahrát kořenový certifikát pro certifikační autoritu infrastruktury, jinak ve výchozím nastavení certifikační autorita infrastruktury vytvoří certifikáty podepsané svým držitelem.
     - **Kořenový certifikát**: Nahrajte kořenový certifikát (veřejný klíč), ve kterém se musí inicializovat certifikační autorita infrastruktury. Certifikáty ve formátu. pem jsou podporovány, certifikáty by měly být platné v časovém pásmu UTC.
     - **Privátní klíč kořenového certifikátu**: Nahrajte privátní klíč kořenového certifikátu. Pokud máte certifikát. pem, který má kombinaci veřejného i privátního klíče, nahrajte ho i tady.
 
@@ -116,48 +115,82 @@ Nasazení obvykle trvá 10-12 minut, se může lišit v závislosti na velikosti
 
 ## <a name="build-the-consortium"></a>Sestavení konsorcia
 
-Chcete-li vytvořit blockchain Consortium po nasazení služby řazení a partnerských uzlů, je nutné provést následující kroky v pořadí. **Sestavte síťový** skript (Byn.sh), který vám pomůže nastavit konsorcium, vytvořit kanál a nainstalovat chaincode.
+Chcete-li vytvořit blockchain Consortium po nasazení služby řazení a partnerských uzlů, je nutné provést následující kroky v pořadí. Skript Azure HLF (azhlf), který vám pomůže s nastavením konsorcia, vytváření kanálů a chaincode operací.
 
 > [!NOTE]
-> Sestavování vašeho síťového skriptu (Byn) je výhradně k použití pro scénáře demo/DevTest. Pro nastavení produkčních stupňů doporučujeme používat nativní rozhraní HLF API.
+> Ve skriptu se nachází aktualizace. Tato aktualizace má poskytnout více funkcí skriptu Azure HLF. Pokud chcete odkazovat na starý skript, [Přečtěte si zde](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md). Tento skript je kompatibilní s prostředky infrastruktury hlavní knihy ve službě Azure Kubernetes Service Template verze 2.0.0 a vyšší. Chcete-li zjistit verzi nasazení, postupujte podle kroků v tématu [řešení potíží](#troubleshoot).
 
-Všechny příkazy ke spuštění skriptu Byn můžete provádět prostřednictvím rozhraní příkazového řádku (CLI) Azure bash. K webové verzi prostředí Azure Shell se můžete přihlásit prostřednictvím ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) možnost v pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI.
+> [!NOTE]
+> K dispozici jste skript Azure HLF (azhlf), který vám pomůžeme jenom o scénářích demo/DevTest. Kanál a konsorcium vytvořené tímto skriptem mají základní zásady HLF, které zjednodušují scénář demo/DevTest. V případě produkčního nastavení doporučujeme aktualizovat zásady kanálu/konsorcia HLF v souladu s požadavky vaší organizace na dodržování předpisů pomocí nativních rozhraní HLF API.
+
+
+Všechny příkazy ke spuštění skriptu Azure HLF můžete provést prostřednictvím příkazového řádku Azure bash. Rozhraní (CLI). K webové verzi prostředí Azure Shell se můžete přihlásit prostřednictvím  ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) možnost v pravém horním rohu Azure Portal. Do příkazového řádku zadejte bash a přejděte do bash CLI.
 
 Další informace najdete v tématu [Azure Shell](https://docs.microsoft.com/azure/cloud-shell/overview) .
 
 ![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Stáhněte si soubor byn.sh a Fabric-admin. yaml.
+Následující obrázek ukazuje podrobný postup pro sestavování konsorcia mezi organizací a rovnocennou organizací. Podrobné příkazy pro provedení těchto kroků jsou zachyceny v následujících částech.
+
+![Šablona prostředků infrastruktury hlavní knihy v Azure Kubernetes Service](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+Při počátečním nastavení klientské aplikace postupujte podle následujících příkazů: 
+
+1.  [Stáhnout klientské soubory aplikace](#download-client-application-files)
+2.  [Nastavení proměnných prostředí](#setup-environment-variables)
+3.  [Importovat profil připojení k organizaci, uživatele s oprávněními správce a MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+
+Po dokončení počátečního nastavení můžete pomocí klientské aplikace dosáhnout níže uvedených operací:  
+
+- [Příkazy správy kanálů](#channel-management-commands)
+- [Příkazy správy konsorcia](#consortium-management-commands)
+- [Příkazy správy Chaincode](#chaincode-management-commands)
+
+### <a name="download-client-application-files"></a>Stáhnout klientské soubory aplikace
+
+Prvním instalačním programem je stažení souborů klientské aplikace. Spuštěním následujícího příkazu stáhnete všechny požadované soubory a balíčky:
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
-```
-**V prostředí Azure CLI bash shell nastavte níže uvedené proměnné prostředí**:
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 
-Nastavení informací o kanálu a informací o organizaci v pořadí
+```
+Tyto příkazy naklonují kód klientské aplikace Azure HLF z veřejného úložiště GitHub následovaný načtením všech závislých balíčků npm. Po úspěšném provedení příkazu uvidíte složku node_modules v aktuálním adresáři. Všechny požadované balíčky jsou načteny do složky node_modules.
+
+
+### <a name="setup-environment-variables"></a>Nastavení proměnných prostředí
+
+> [!NOTE]
+> Všechny proměnné prostředí následují po konvenci vytváření názvů prostředků Azure.
+
+
+**Nastavte níže uvedené proměnné prostředí pro klienta organizace v objednávce.**
+
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-Nastavit informace o partnerské organizaci
+**Nastavte níže uvedené proměnné prostředí pro klienta partnerské organizace.**
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-Vytvořte jednu sdílenou složku Azure pro sdílení různých veřejných certifikátů mezi partnerskými organizacemi a mezi nimi.
+> [!NOTE]
+> Na základě počtu partnerských organizace ve vaší konsorciu může být nutné opakovat rovnocenné příkazy a odpovídajícím způsobem nastavit proměnnou prostředí.
+
+**Nastavte následující proměnné prostředí pro nastavení účtu Azure Storage.**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +198,223 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+Pro vytváření účtů Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořený účet úložiště Azure, přeskočte tyto kroky.
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+Při vytváření sdílené složky v účtu úložiště Azure postupujte podle následujících kroků. Pokud už máte vytvořenou sdílenou složku, přeskočte tyto kroky.
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
+```
+
+Postup generování připojovacího řetězce sdílené složky Azure podle následujících kroků
+
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
-```
-**Příkazy správy kanálů**
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
 
-Pokud chcete vytvořit nový kanál, přejít na AKS cluster a příkaz pro změnu pořadí organizace
+```
+
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>Importovat profil připojení k organizaci, identitu uživatele správce a MSP
+
+Níže uvedené příkazy načítají profil připojení organizace, identitu uživatele správce a MSP z clusteru Azure Kubernetes a ukládají tyto identity v místním úložišti klientské aplikace, tj. v adresáři azhlfTool/Stores.
+
+Pro organizaci v řádu Order:
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
-**Příkazy správy konsorcia**
-
-V uvedeném pořadí proveďte níže uvedené příkazy pro přidání partnerské organizace do kanálu a konsorcia.
-
-1. Přejít na cluster AKS peer Organization a nahrajte jeho poskytování členské služby (MSP) na File Storage Azure.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-2. Přejít na cluster AKS organizace pro objednávky a přidat partnerské organizace v kanálu a v konsorciu
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-3. Pokud se chcete připojit k uzlům rovnocenného uzlu v kanálu, vraťte se k partnerské organizaci a vydání příkazu.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-Podobně pro přidání dalších partnerských organizací do kanálu aktualizujte proměnné prostředí peer AKS podle požadované partnerské organizace a proveďte kroky 1 až 3.
-
-**Příkazy správy Chaincode**
-
-Spusťte následující příkaz, který provede operaci související s chaincode. Tyto příkazy provádějí všechny operace v ukázce chaincode. Tato ukázková chaincode má dvě proměnné "a" a "b". Při vytváření instance chaincode je "a" inicializována s 1000 a "b" je inicializována s 2000. Při každém vyvolání chaincode je 10 jednotek převedeno z "a" na "b". Operace dotazu na chaincode zobrazuje světový stav proměnné "a".
-
-Spusťte následující příkazy spuštěné v clusteru AKS organizace partnera.
+Pro organizaci v partnerském vztahu:
 
 ```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-```
-**Příkazy operace Chaincode**
-
-```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-## <a name="run-native-hlf-operations"></a>Spouštění nativních operací HLF
-
-Abychom zákazníkům pomohla začít s prováděním nativních příkazů hlavní knihy v HLF síti v AKS. Ukázková aplikace je k dispozici, aby k provádění operací HLF používala NodeJS SDK pro Fabric. K dispozici jsou tyto příkazy pro vytvoření nové identity uživatele a instalaci vlastních chaincode.
-
-### <a name="before-you-begin"></a>Před zahájením
-
-Při počátečním nastavení aplikace postupujte podle následujících příkazů:
-
-- Stažení souborů aplikace
-- Vygenerovat profil připojení a profil správce
-- Importovat identitu uživatele správce
-
-Po dokončení počátečního nastavení můžete pomocí sady SDK dosáhnout níže uvedených operací:
-
-- Generování identity uživatele
-- Operace Chaincode
-
-Výše uvedené příkazy lze spustit z Azure Cloud Shell.
-
-### <a name="download-application-files"></a>Stažení souborů aplikace
-
-Prvním nastavením pro spuštěnou aplikaci je stažení všech souborů aplikace do složky.
-
-**Vytvořte složku aplikace a zadejte ji do složky**:
-
-```bash
-mkdir app
-cd app
-```
-Spuštěním následujícího příkazu stáhnete všechny požadované soubory a balíčky:
-
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-Načtení všech balíčků v tomto příkazu trvá déle. Po úspěšném provedení příkazu uvidíte `node_modules` složku v aktuálním adresáři. Do `node_modules` složky se načtou všechny požadované balíčky.
-
-### <a name="generate-connection-profile-and-admin-profile"></a>Vygenerovat profil připojení a profil správce
-
-Vytvořit `profile` adresář uvnitř `app` složky
-
-```bash
-cd app
-mkdir ./profile
-```
-Nastavení těchto proměnných prostředí ve službě Azure Cloud Shell
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-Spustit níže uvedeným příkazem vygenerujete profil připojení a profil správce organizace.
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-Vytvoří profil připojení a správce `profile` organizace ve složce profilu s názvem `<orgname>-ccp.json` a `<orgname>-admin.json` v uvedeném pořadí.
-
-Podobně vygenerujte profil připojení a profil správce pro každého z objednávek a partnerských organizací.
-
-
-### <a name="import-admin-user-identity"></a>Importovat identitu uživatele správce
-
-Posledním krokem je naimportování identity uživatele správce organizace do peněženky.
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-Výše uvedený příkaz spustí importAdmin. js k importu identity uživatele správce do peněženky. Skript přečte identitu správce z profilu `<orgname>-admin.json` správce a naimportuje je do peněženky pro provádění operací HLF.
-
-Skripty používají k ukládání identit kapesní systém souborů. V profilu připojení se vytvoří kapesní na základě cesty zadané v poli ". peněženka". Ve výchozím nastavení je pole ". peněženka" inicializováno s `<orgname>`", což znamená `<orgname>` , že se v aktuálním adresáři vytvoří složka s názvem, do které budou uloženy identity. Pokud chcete vytvořit peněženku na nějaké jiné cestě, před spuštěním možnosti registrovat uživatele správce a jakékoli jiné operace HLF upravte v profilu připojení pole "kapesní".
-
-Podobně importujte identitu uživatele správce pro každou organizaci.
-
-Další informace o argumentech předaných v příkazu najdete v nápovědě k příkazům.
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>Generování identity uživatele
-
-Vygenerujte nové identity uživatelů pro HLF organizaci pod příkazy provedenými níže v daném pořadí.
+### <a name="channel-management-commands"></a>Příkazy správy kanálů
 
 > [!NOTE]
-> Než začnete s kroky generování identity uživatele, zajistěte, aby se počáteční nastavení aplikace dokončilo.
+> Než začnete s jakoukoli operací kanálu, ujistěte se, že je původní nastavení klientské aplikace hotové.  
 
-Nastavení níže uvedených proměnných prostředí ve službě Azure Cloud Shell
+Následují dva příkazy správy kanálů:
+
+1. [Vytvořit kanál – příkaz](#create-channel-command)
+2. [Nastavení příkazu kotvních partnerských uzlů](#setting-anchor-peers-command)
+
+
+#### <a name="create-channel-command"></a>Vytvořit kanál – příkaz
+
+Z klienta organizace s objednávkou, vystavení příkazu pro vytvoření nového kanálu. Tento příkaz vytvoří kanál, který v něm má pouze organizaci s přířazením.  
 
 ```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
-Registrace a registrace nového uživatele
+#### <a name="setting-anchor-peers-command"></a>Nastavení příkazu kotvních partnerských uzlů
+Z klienta partnerské organizace, vystavení níže příkaz pro nastavení partnerských partnerských vztahů pro organizaci partnerského vztahu na zadaném kanálu.
 
-Chcete-li zaregistrovat a zapsat nového uživatele, spusťte následující příkaz, který spustí registerUser. js. Uloží vygenerovanou identitu uživatele v kapesním okně.
+>[!NOTE]
+> Před spuštěním tohoto příkazu zajistěte, aby se v kanálu přidala partnerská organizace pomocí příkazů pro správu konsorcia.
 
 ```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-> [!NOTE]
-> Identita uživatele správce se používá k vydání příkazu Register pro nového uživatele. Proto je před provedením tohoto příkazu nutné mít identitu uživatele správce v kapesním prostředí. V opačném případě se tento příkaz nezdaří.
+`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Například:
 
-Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
+  - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
+  - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
+
+### <a name="consortium-management-commands"></a>Příkazy správy konsorcia
+
+>[!NOTE]
+> Před zahájením jakékoli operace konsorcia se ujistěte, že je provedena počáteční instalace klientské aplikace.  
+
+V uvedeném pořadí proveďte následující příkazy, aby se do kanálu a konsorcia přidala organizace typu peer.
+1.  Z klienta partnerské organizace nahrajte organizaci partnera MSP v Azure Storage.
+
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  Z klienta organizace pro objednávky Stáhněte si ze služby Azure Storage partnerský partner MSP a pak vydejte příkaz pro přidání partnerské organizace v kanálu/konsorcium.
+
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
+
+3.  Z klienta organizace pro objednávky nahrajte na Azure Storage profil pro připojení k objednávce, aby se partnerské organizace mohla připojit k uzlům s použitím tohoto profilu připojení.
+
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
+
+4.  Z klienta partnerské organizace, profilu připojení k nástroji pro změnu pořadí stahování z Azure Storage a následným vydáním příkazu pro přidání partnerských uzlů do kanálu
+
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
+
+Podobně pro přidání dalších partnerských organizací do kanálu aktualizujte proměnné partnerského prostředí podle požadované partnerské organizace a proveďte kroky 1 až 4.
+
+
+### <a name="chaincode-management-commands"></a>Příkazy správy Chaincode
+
+>[!NOTE]
+> Před zahájením jakékoli operace chaincode zajistěte, aby byla provedena počáteční instalace klientské aplikace.  
+
+**Nastavení níže určených proměnných prostředí chaincode**
 
 ```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>Operace Chaincode
-
-
-> [!NOTE]
-> Před zahájením jakékoli operace chaincode zajistěte, aby se počáteční nastavení aplikace dokončilo.
-
-V Azure Cloud shellu nastavte pod chaincode konkrétní proměnné prostředí:
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-Níže uvedené operace chaincode lze provést:
-
-- Nainstalovat chaincode
-- Vytvoření instance chaincode
-- Vyvolat chaincode
-- Chaincode dotazu
-
-### <a name="install-chaincode"></a>Nainstalovat chaincode
-
-Spusťte následující příkaz pro instalaci chaincode v partnerské organizaci.
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-Nainstaluje chaincode ve všech partnerských uzlech sady organizace v `ORGNAME` sadě proměnných prostředí. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte příkazy samostatně pro každou organizaci v partnerském vztahu.
-
-Postupujte podle následujících kroků:
-
-- Nastavte `ORGNAME` příkaz `<peerOrg1Name>` a vystavení `installCC` .
-- Nastavte `ORGNAME` příkaz `<peerOrg2Name>` a vystavení `installCC` .
-
-  Proveďte pro každou z partnerských organizací.
-
-Další informace o argumentech předaných v příkazu najdete v nápovědě k příkazům.
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>Vytvoření instance chaincode
+Níže uvedené operace chaincode lze provést:  
 
-Spuštěním následujícího příkazu vytvořte instanci chaincode na partnerském uzlu.
+- [Nainstalovat chaincode](#install-chaincode)  
+- [Vytvoření instance chaincode](#instantiate-chaincode)  
+- [Vyvolat chaincode](#invoke-chaincode)
+- [Chaincode dotazu](#query-chaincode)
+
+
+### <a name="install-chaincode"></a>Nainstalovat chaincode  
+
+Spusťte následující příkaz pro instalaci chaincode v partnerské organizaci.  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-Dodejte název funkce vytvoření instance a seznam argumentů oddělených `<instantiateFunc>` čárkou `<instantiateFuncArgs>` v uvedeném pořadí. Například v [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)pro vytvoření instance chaincode `<instantiateFunc>` sady na `"Init"` a `<instantiateFuncArgs>` na prázdný řetězec. `""`
+Nainstaluje chaincode do všech partnerských uzlů nastavených v proměnné prostředí ORGNAME v partnerském uzlu. Pokud máte ve vašem kanálu dvě nebo více partnerských organizací a chcete na všechny z nich nainstalovat chaincode, spusťte tento příkaz samostatně pro každou organizaci partnera.  
+
+Postupujte podle následujících kroků:  
+
+1.  Nastavte `ORGNAME` a `USER_IDENTITY` jako na peerOrg1 a problémový `./azhlf chaincode install` příkaz.  
+2.  Nastavte `ORGNAME` a `USER_IDENTITY` jako na peerOrg2 a problémový `./azhlf chaincode install` příkaz.  
+
+### <a name="instantiate-chaincode"></a>Vytvoření instance chaincode  
+
+Z klientské aplikace peere spusťte pod příkazem vytvoření instance chaincode na kanálu.  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+```
+Název funkce instance a seznam argumentů, které jsou odděleny mezerou `<instantiateFuncArgs>` , v a v `<instantiateFunc>` uvedeném pořadí. Například v chaincode_example02. přejít chaincode, pokud chcete vytvořit instanci chaincode sady `<instantiateFunc>` na `init`a `<instantiateFuncArgs>` na "a" "2000" "b" "1000".
 
 > [!NOTE]
-> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu.
-> Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.
+> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.  
 
-Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
+
+### <a name="invoke-chaincode"></a>Vyvolat chaincode  
+
+Z klienta partnerské organizace spusťte následující příkaz, který vyvolá funkci chaincode:  
 
 ```bash
-npm run instantiateCC -- -h
-
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-### <a name="invoke-chaincode"></a>Vyvolat chaincode
+Předejte vyvolat název funkce a seznam argumentů oddělených mezerou `<invokeFuncArgs>` v v `<invokeFunction>` uvedeném pořadí. Pokračování s chaincode_example02. přejít chaincode, aby se provedla operace vyvolání `<invokeFunction>` sady `invoke` na `<invokeFuncArgs>` a na "a" b "" 10 ".  
 
-Spusťte následující příkaz, který vyvolá funkci chaincode:
+>[!NOTE]
+> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je celosvětový stav aktualizován na všech partnerských uzlech všech partnerských organizací v kanálu.  
+
+
+### <a name="query-chaincode"></a>Chaincode dotazu  
+
+Příkaz spustit pod příkazem pro dotaz na chaincode:  
 
 ```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
-
+./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Předejte vyvolat název funkce a seznam argumentů oddělených čárkou `<invokeFuncArgs>` v a v `<invokeFunction>` uvedeném pořadí. Pokračováním v příkladu fabcar chaincode můžete vyvolat funkci initLedger nastavenou `<invokeFunction>` na `"initLedger"` a `<invokeFuncArgs>` na `""`.
+Předejte název funkce dotazu a seznam argumentů oddělených `<queryFunction>` mezerami `<queryFuncArgs>` v uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě `<queryFunction>`  `query` nastavenou `<queryArgs>` na a na "a".  
 
-> [!NOTE]
-> Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu.
-> Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je celosvětový stav aktualizován na všech partnerských uzlech všech partnerských organizací v kanálu.
+## <a name="troubleshoot"></a>Řešení potíží
 
-Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
+**Ověření verze spuštěné šablony**
+
+Spusťte následující příkazy a vyhledejte verzi nasazení šablony.
+
+Nastavte níže uvedené proměnné prostředí podle skupiny prostředků, ve které byla šablona nasazena.
 
 ```bash
-npm run invokeCC -- -h
 
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
 ```
-
-### <a name="query-chaincode"></a>Chaincode dotazu
-
-Příkaz spustit pod příkazem pro dotaz na chaincode:
-
+Spusťte následující příkaz pro tisk verze šablony.
 ```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-Předejte název funkce dotazu a seznam argumentů oddělených `<queryFunction>` čárkou `<queryFuncArgs>` v uvedeném pořadí. `fabcar` Znovu se chaincode jako reference pro dotazování všech automobilů v celém světě nastaveném `<queryFunction>` na `"queryAllCars"` a `<queryArgs>` na. `""`
-
-Další podrobnosti o argumentech předaných příkazem najdete v nápovědě k příkazům.
-
-```bash
-npm run queryCC -- -h
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```

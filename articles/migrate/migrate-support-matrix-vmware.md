@@ -2,17 +2,17 @@
 title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/04/2020
+ms.openlocfilehash: d378ece1eda906a30ec33e2cf27ad59df473b5c7
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81532200"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779905"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
-Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocení virtuálních počítačů VMware pro migraci do Azure pomocí Azure Migrate: vyhodnocování serveru] (migrace-služby-přehled. MD # Azure-Migration-Server-Assessment-nástroj). Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-vmware-migration.md).
+Tento článek shrnuje požadavky a požadavky na podporu při vyhodnocení virtuálních počítačů VMware pro migraci do Azure pomocí nástroje [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool. Pokud chcete migrovat virtuální počítače VMware do Azure, přečtěte si [matici podpora migrace](migrate-support-matrix-vmware-migration.md).
 
 K vyhodnocení virtuálních počítačů VMware vytvoříte Azure Migrate projekt a potom do projektu přidáte Nástroj pro vyhodnocení serveru. Po přidání nástroje nasadíte [zařízení Azure Migrate](migrate-appliance.md). Zařízení nepřetržitě zjišťuje místní počítače a odesílá do Azure metadata počítače a data o výkonu. Po dokončení zjišťování shromáždíte zjištěné počítače do skupin a spustíte posouzení pro skupinu.
 
@@ -39,7 +39,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 **přihlašovací údaje pro vCenter** | Zjišťování aplikací vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.
 **Přihlašovací údaje virtuálního počítače** | Zjišťování aplikací aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
 **Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware. <br/> Verze nástrojů VMware musí být pozdější než 10.2.0.
-**Prostředí** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.
+**PowerShell** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete zjišťovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 **Omezení** | Pro zjišťování aplikací můžete na každém zařízení Azure Migrate zjistit až 10000 virtuálních počítačů.
 
@@ -62,7 +62,7 @@ Azure Migrate používá [zařízení Azure Migrate](migrate-appliance.md) ke zj
 
 - Přečtěte si informace o [požadavcích na zařízení](migrate-appliance.md#appliance---vmware) pro VMware.
 - Přečtěte si o adresách URL, které zařízení potřebuje k přístupu ve [veřejných](migrate-appliance.md#public-cloud-urls) a [státních](migrate-appliance.md#government-cloud-urls) cloudech.
-- V Azure Government musíte zařízení nasadit pomocí skriptu.
+- V Azure Government musíte zařízení nasadit [pomocí skriptu](deploy-appliance-script-government.md).
 
 
 ## <a name="port-access"></a>Přístup k portu
@@ -73,6 +73,23 @@ Náplně | Příchozí připojení na portu TCP 3389 umožňující připojení 
 Server vCenter | Příchozí připojení na portu TCP 443, aby zařízení mohla shromažďovat metadata o konfiguraci a výkonu pro posouzení. <br/><br/> Ve výchozím nastavení se zařízení připojuje ke vCenter na portu 443. Pokud Server vCenter naslouchá na jiném portu, můžete změnit port při nastavení zjišťování.
 Hostitelé ESXi (zjišťování aplikací/analýza závislostí bez agenta) | Pokud chcete provádět [zjišťování aplikací](how-to-discover-applications.md) nebo [analýzu závislostí bez agenta](concepts-dependency-visualization.md#agentless-analysis), zařízení se připojí k hostitelům ESXi na portu TCP 443, aby bylo možné zjišťovat aplikace a spouštět vizualizaci závislostí bez agentů na virtuálních počítačích.
 
+## <a name="application-discovery"></a>Zjišťování aplikací
+
+Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikace, role a funkce běžící na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou pro vaše místní úlohy. 
+
+**Podpora** | **Zobrazí**
+--- | ---
+**Podporované počítače** | Zjišťování aplikací se v současné době podporuje jenom pro virtuální počítače VMware.
+**Rozpoznávání** | Zjišťování aplikací je bez agenta. Používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
+**Podpora virtuálních počítačů** | Zjišťování aplikací je podporováno pro všechny verze systému Windows a Linux.
+**přihlašovací údaje pro vCenter** | Zjišťování aplikací vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >.
+**Přihlašovací údaje virtuálního počítače** | Zjišťování aplikací aktuálně podporuje použití jednoho pověření pro všechny servery se systémem Windows a jedno přihlašovací údaje pro všechny servery se systémem Linux.<br/><br/> Vytvoříte uživatelský účet hosta pro virtuální počítače s Windows a běžný/normální uživatelský účet (bez přístupu sudo) pro všechny virtuální počítače se systémem Linux.
+**Nástroje VMware** | Na virtuálních počítačích, které chcete zjistit, musí být nainstalované a spuštěné nástroje VMware. <br/> Verze nástrojů VMware musí být pozdější než 10.2.0.
+**PowerShell** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo novější.
+**Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete zjišťovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
+**Omezení** | Pro zjišťování aplikací můžete na každém zařízení Azure Migrate zjistit až 10000 virtuálních počítačů.
+
+
 ## <a name="agentless-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí bez agentů
 
 [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí bez agentů. 
@@ -82,13 +99,13 @@ Hostitelé ESXi (zjišťování aplikací/analýza závislostí bez agenta) | Po
 **Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMWare.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
 **Podpora virtuálních počítačů** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
 **Virtuální počítače s Windows** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bitů).
-**Účet systému Windows** |  Pro analýzu závislostí potřebuje zařízení Azure Migrate pro přístup k virtuálním počítačům s Windows místní účet nebo účet správce domény.
+**Účet systému Windows** |  Pro analýzu závislostí potřebuje zařízení Azure Migrate účet správce domény nebo účet místního správce pro přístup k virtuálním počítačům s Windows.
 **Virtuální počítače s Linuxem** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Účet Linux** | Pro analýzu závislostí se v počítačích se systémem Linux Azure Migrate zařízení vyžaduje uživatelský účet s oprávněním root.<br/><br/> V alternativním případě uživatelský účet potřebuje tato oprávnění pro soubory/bin/netstat a/bin/ls: CAP_DAC_READ_SEARCH a CAP_SYS_PTRACE.
 **Vyžadovaná agenti** | Na počítačích, které chcete analyzovat, není vyžadován žádný agent.
 **Nástroje VMware** | Na každém virtuálním počítači, který chcete analyzovat, se musí nainstalovat a spustit nástroje VMware (novější než 10,2).
 **vCenter Server přihlašovací údaje** | Vizualizace závislosti vyžaduje účet vCenter Server s přístupem jen pro čtení a oprávnění povolená pro operace hosta Virtual Machines >. 
-**Prostředí** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo vyšší.
+**PowerShell** | Virtuální počítače musí mít nainstalované prostředí PowerShell verze 2,0 nebo vyšší.
 **Přístup k portu** | Na hostitelích ESXi, na kterých běží virtuální počítače, které chcete analyzovat, musí být zařízení Azure Migrate schopné připojit se k portu TCP 443.
 
 

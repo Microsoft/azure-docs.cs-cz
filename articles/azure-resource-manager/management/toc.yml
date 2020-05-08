@@ -4,6 +4,11 @@
   items:
     - name: Co je Resource Manager?
       href: overview.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Omezení služeb a předplatných
