@@ -250,7 +250,7 @@
         - name: Klientská knihovna
           items:
             - name: azure-eventhub verze 5
-              href: /python/api/overview/azure/eventhub/client
+              href: /python/api/azure-eventhub/?view=azure-python
             - name: azure-eventhub verze 1
               href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: Knihovna správy

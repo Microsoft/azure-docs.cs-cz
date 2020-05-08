@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870219"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611394"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy ke škálovacím sadám virtuálních počítačů Azure
 
@@ -45,11 +45,13 @@ Vytvořte a zaznamenejte image virtuálního počítače a pak ji použijte jako
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
 
-Virtuální počítače se ze škálovací sady odebírají rovnoměrně napříč aktualizačními doménami a doménami selhání, aby se maximalizovala dostupnost. Nejprve se odeberou virtuální počítače s nejvyšším ID.
+Ve výchozím nastavení se virtuální počítače ze sady škálování rovnoměrně odeberou v rámci zón dostupnosti (Pokud je sada škálování nasazená v konfiguraci oblastí) a domény selhání, aby se maximalizovala dostupnost. Nejprve se odeberou virtuální počítače s nejvyšším ID.
+
+Pořadí odebrání virtuálního počítače můžete změnit zadáním [zásad škálování](virtual-machine-scale-sets-scale-in-policy.md) na úrovni pro sadu škálování.
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>A co když pak zvýším kapacitu z 15 na 18?
 
-Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. ID instance virtuálního počítače se přírůstkově zvýší oproti předchozí nejvyšší hodnotě (např. 20, 21, 22). Virtuální počítače se vyvažují mezi doménami selhání a aktualizačními doménami.
+Pokud zvýšíte kapacitu na 18, vytvoří se 3 nové virtuální počítače. ID instance virtuálního počítače se přírůstkově zvýší oproti předchozí nejvyšší hodnotě (např. 20, 21, 22). Virtuální počítače jsou vyvážené napříč doménami selhání.
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Pokud ve škálovací sadě používám několik rozšíření, je možné vynucovat určitou posloupnost provádění?
 
@@ -223,7 +225,7 @@ Veřejné klíče SSH můžete zadat jako prostý text při vytváření virtuá
 
 název elementu linuxConfiguration | Požaduje se | Typ | Popis
 --- | --- | --- | ---
-protokoly | Ne | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
+protokoly | No | Kolekce | Určuje konfiguraci klíče SSH pro operační systém Linux.
 cesta | Ano | Řetězec | Určuje cestu k souboru pro Linux, kde se mají najít klíče SSH nebo certifikát.
 keyData | Ano | Řetězec | Určuje veřejný klíč SSH kódovaný ve formátu base64.
 
@@ -335,13 +337,13 @@ Další informace najdete na webu [Centrum zabezpečení Microsoft](https://www.
 
 Ano. V šablonách rychlého startu Azure pro [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) a [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)se můžete podívat na příklady šablon MSI.
 
-## <a name="deleting"></a>Odstraňuje 
+## <a name="deleting"></a>Odstraňuje
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Budou při odstraňování instancí dodrženy zámky nastavené na instancích sady škálování virtuálních počítačů?
 
-Na webu Azure Portal máte možnost Odstranit jednotlivou instanci nebo hromadné odstranění tím, že vyberete více instancí. Pokud se pokusíte odstranit jednu instanci, která má zámek, je dodržen zámek a nebudete moci instanci odstranit. Pokud ale hromadně vyberete víc instancí a kterákoli z těchto instancí má zámek, zámky se nerespektují a všechny vybrané instance se odstraní. 
- 
-V Azure CLI máte možnost jenom odstranit jednotlivou instanci. Pokud se pokusíte odstranit jednu instanci, která má zámek, bude zachován zámek a tuto instanci nebudete moci odstranit. 
+Na webu Azure Portal máte možnost Odstranit jednotlivou instanci nebo hromadné odstranění tím, že vyberete více instancí. Pokud se pokusíte odstranit jednu instanci, která má zámek, je dodržen zámek a nebudete moci instanci odstranit. Pokud ale hromadně vyberete víc instancí a kterákoli z těchto instancí má zámek, zámky se nerespektují a všechny vybrané instance se odstraní.
+
+V Azure CLI máte možnost jenom odstranit jednotlivou instanci. Pokud se pokusíte odstranit jednu instanci, která má zámek, bude zachován zámek a tuto instanci nebudete moci odstranit.
 
 ## <a name="extensions"></a>Rozšíření
 

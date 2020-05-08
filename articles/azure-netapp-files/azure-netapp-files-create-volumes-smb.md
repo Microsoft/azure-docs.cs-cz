@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668005"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625517"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -222,6 +222,23 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
     Svazek, který jste vytvořili, se zobrazí na stránce svazky. 
  
     Svazek dědí atributy předplatného, skupiny prostředků a umístění z fondu kapacity. Stav nasazení svazku můžete monitorovat na kartě Oznámení.
+
+## <a name="control-access-to-an-smb-volume"></a>Řízení přístupu ke svazku SMB  
+
+Přístup ke svazku SMB je spravovaný prostřednictvím oprávnění.  
+
+### <a name="share-permissions"></a>Oprávnění ke sdílení  
+
+Ve výchozím nastavení má nový svazek oprávnění ke sdílení **všech uživatelů a úplné řízení** . Členové skupiny Domain Admins mohou změnit oprávnění ke sdílení pomocí správy počítače v účtu počítače, který se používá pro Azure NetApp Files svazek.
+
+![Oprávnění k nastavení](../media/azure-netapp-files/smb-mount-path.png) 
+![sdílené složky pro cestu pro připojení SMB](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>Oprávnění k souborům a složkám NTFS  
+
+Oprávnění pro soubor nebo složku můžete nastavit pomocí karty **zabezpečení** vlastností objektu v klientovi Windows SMB.
+ 
+![Nastavení oprávnění k souborům a složkám](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>Další kroky  
 

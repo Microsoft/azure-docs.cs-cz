@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c1ffb4b1c0018cf56771d3fea56fe56d151bae3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295366"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612924"
 ---
 # <a name="connect-with-the-android-client"></a>Práce s klientem Android
 
 > Platí pro: Android 4,1 a novější, Chromebooks s ChromeOS 53 a novějším.
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-android-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > Možnost přístupu k prostředkům virtuálního počítače s Windows z klienta pro Android je aktuálně dostupná ve verzi Preview.
@@ -36,7 +42,7 @@ Přihlášení k odběru informačního kanálu:
 
 1. V centru připojení klepněte **+** na a pak klepněte na **kanál vzdáleného prostředku**.
 2. Do pole **Adresa URL informačního kanálu** zadejte adresu URL informačního kanálu. Adresa URL informačního kanálu může být buď adresa URL, nebo e-mailová adresa.
-   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl, normálně <https://rdweb.wvd.microsoft.com>.
+   - Pokud použijete adresu URL, použijte tu, kterou vám správce poskytl, normálně <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>.
    - Pokud chcete používat e-mail, zadejte svou e-mailovou adresu. Pokud váš správce nakonfiguroval server tímto způsobem, bude klient hledat adresu URL přidruženou k vaší e-mailové adrese.
 3. Klepněte na **Další**.
 4. Po zobrazení výzvy zadejte své přihlašovací údaje.

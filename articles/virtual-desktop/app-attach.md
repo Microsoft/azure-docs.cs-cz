@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128317"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612465"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
 > [!IMPORTANT]
 > Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostředí virtuálních počítačů s Windows.
 
@@ -28,7 +28,7 @@ V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostřed�
 Než začnete, je potřeba nakonfigurovat připojení aplikace MSIX:
 
 - Přístup k portálu Windows Insider pro získání verze Windows 10 s podporou aplikace MSIX připojit rozhraní API.
-- Funkční nasazení virtuálních počítačů s Windows. Informace najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).
+- Funkční nasazení virtuálních počítačů s Windows. Informace najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 - Nástroj pro zabalení MSIX
 - Sdílená síťová složka v rámci nasazení virtuálního počítače s Windows, kde bude uložený balíček MSIX
 

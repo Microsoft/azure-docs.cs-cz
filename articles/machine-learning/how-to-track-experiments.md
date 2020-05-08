@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcd5668fa2c6e1840eed13a9ee0cbd30d8d8a25a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296961"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983240"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Následující metriky je možné přidat ke spuštění během školení experi
 |Seznamy|Slouží<br>`run.log_list(name, value, description='')`<br><br>Příklad:<br>Run. log_list ("přesností"; [0,6; 0,7; 0,87]) | Protokoluje seznam hodnot pro běh se zadaným názvem.|
 |Řádek|Slouží<br>`run.log_row(name, description=None, **kwargs)`<br>Příklad:<br>Run. log_row ("Y over X", X = 1, Y = 0.4) | Pomocí *log_row* se vytvoří metrika s více sloupci, jak je popsáno v tématu kwargs. Každý pojmenovaný parametr vygeneruje sloupec se zadanou hodnotou.  *log_row* může být jednou volána k zaznamenání libovolné řazené kolekce členů nebo vícekrát ve smyčce, aby vygenerovala úplnou tabulku.|
 |Table|Slouží<br>`run.log_table(name, value, description='')`<br><br>Příklad:<br>Run. log_table ("Y over X"; {"X": [1; 2; 3]; "Y": [0,6, 0,7, 0,89]}) | Zaprotokoluje objekt Dictionary do běhu s daným názvem. |
-|Obrázky|Slouží<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plot=plt)` | Zaprotokoluje obrázek do záznamu spuštění. Použijte log_image k zaznamenání souboru obrázku nebo vykreslení matplotlib do běhu.  Tyto obrázky budou viditelné a srovnatelné v záznamu spuštění.|
+|Image|Slouží<br>`run.log_image(name, path=None, plot=None)`<br><br>Příklad:<br>`run.log_image("ROC", plot=plt)` | Zaprotokoluje obrázek do záznamu spuštění. K přihlášení použijte log_image. Soubor obrázku PNG nebo matplotlib vykreslení pro běh.  Tyto obrázky budou viditelné a srovnatelné v záznamu spuštění.|
 |Označení běhu|Slouží<br>`run.tag(key, value=None)`<br><br>Příklad:<br>Run. Tag ("Selected"; "Yes") | Označte běh pomocí klíče řetězce a volitelné řetězcové hodnoty.|
 |Odeslat soubor nebo adresář|Slouží<br>`run.upload_file(name, path_or_stream)`<br> <br> Příklad:<br>Run. upload_file ("best_model. pkl", "./model.pkl") | Nahrajte soubor na záznam spuštění. Spustí automaticky zachytávání souboru v zadaném výstupním adresáři, který pro většinu typů spuštění nastaví jako výchozí hodnotu "./Outputs".  Použijte upload_file jenom v případě, že je potřeba nahrát další soubory, nebo není zadaný výstupní adresář. Doporučujeme přidat `outputs` k názvu, aby se nahrál do adresáře výstupy. Můžete zobrazit seznam všech souborů, které jsou přidruženy k tomuto záznamu spuštění voláním`run.get_file_names()`|
 

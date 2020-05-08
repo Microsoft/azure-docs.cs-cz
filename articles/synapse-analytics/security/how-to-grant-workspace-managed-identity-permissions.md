@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428014"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983291"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Udělení oprávnění pro spravovanou identitu pracovního prostoru (Preview)
 
-V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k fondům SQL v pracovním prostoru a účtu úložiště ADLS Gen2 prostřednictvím Azure Portal.
+V tomto článku se naučíte, jak udělit oprávnění ke spravované identitě v pracovním prostoru Azure synapse. Oprávnění zase umožňují přístup k fondům SQL v pracovním prostoru a ADLS Gen2 účtu úložiště prostřednictvím Azure Portal.
 
 >[!NOTE]
 >Tato identita spravovaná pracovním prostorem se bude v ostatních částech tohoto dokumentu označovat jako spravovaná identita.
@@ -29,25 +29,25 @@ Když vytváříte pracovní prostor Azure synapse, vyberte **zabezpečení a s�
 
 ![ŘÍZENÍ oprávnění pro fondy SQL](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Udělení oprávnění ke spravovaným identitám účtu úložiště ADLS Gen2
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Udělení oprávnění spravovaných identit ADLS Gen2 účtu úložiště
 
 K vytvoření pracovního prostoru Azure synapse se vyžaduje účet úložiště ADLS Gen2. Aby bylo možné úspěšně spustit fondy Spark v pracovním prostoru Azure synapse, musí mít spravovaná identita Azure synapse na tomto účtu úložiště roli *Přispěvatel dat objektů BLOB úložiště* . Orchestrace kanálu ve službě Azure synapse také přináší výhody této role.
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>Udělení oprávnění spravované identitě během vytváření pracovního prostoru
 
-Služba Azure synapse se pokusí udělit roli Přispěvatel dat objektů BLOB úložiště spravované identitě po vytvoření pracovního prostoru Azure synapse pomocí Azure Portal. Podrobnosti účtu úložiště ADLS Gen2 můžete zadat na kartě **základy** .
+Služba Azure synapse se pokusí udělit roli Přispěvatel dat objektů BLOB úložiště spravované identitě po vytvoření pracovního prostoru Azure synapse pomocí Azure Portal. Podrobnosti o ADLS Gen2 účtu úložiště zadáte na kartě **základy** .
 
 ![Karta základy v toku vytváření pracovního prostoru](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-V poli **název účtu** a **název systému souborů**vyberte účet úložiště adls Gen2 a systém souborů.
+V poli **název účtu** a **název systému souborů**vyberte adls Gen2 účet úložiště a systém souborů.
 
-![Poskytnutí podrobností účtu úložiště ADLS Gen2](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
+![Poskytnutí podrobností o ADLS Gen2 účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-Pokud je Autor pracovního prostoru také **vlastníkem** účtu úložiště adls Gen2, pak Azure synapse přiřadí roli *Přispěvatel dat objektů BLOB úložiště* ke spravované identitě. Pod podrobnostmi účtu úložiště, které jste zadali, se zobrazí následující zpráva.
+Pokud je Autor pracovního prostoru také **vlastníkem** adls Gen2 účtu úložiště, pak Azure synapse přiřadí roli *Přispěvatel dat objektů BLOB úložiště* ke spravované identitě. Pod podrobnostmi účtu úložiště, které jste zadali, se zobrazí následující zpráva.
 
 ![Úspěšné přiřazení přispěvatele dat objektu BLOB úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-Pokud není tvůrce pracovního prostoru vlastníkem účtu úložiště ADLS Gen2, pak Azure synapse nepřiřazuje roli *Přispěvatel dat objektů BLOB úložiště* ke spravované identitě. Zpráva zobrazená pod podrobnostmi účtu úložiště upozorní autora pracovního prostoru, že nemají dostatečná oprávnění pro udělení role *Přispěvatel dat objektu BLOB úložiště* spravované identitě.
+Pokud není tvůrce pracovního prostoru vlastníkem ADLS Gen2 účtu úložiště, pak Azure synapse nepřiřazuje roli *Přispěvatel dat objektů BLOB úložiště* ke spravované identitě. Zpráva zobrazená pod podrobnostmi účtu úložiště upozorní autora pracovního prostoru, že nemají dostatečná oprávnění pro udělení role *Přispěvatel dat objektu BLOB úložiště* spravované identitě.
 
 ![Neúspěšné přiřazení přispěvatele dat objektu BLOB úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
@@ -57,19 +57,19 @@ V případě stavů zpráv nemůžete vytvořit fondy Spark, pokud není *Přisp
 
 Pokud při vytváření pracovního prostoru nepřiřadíte *přispěvateli dat objektů BLOB úložiště* ke spravované identitě, pak **vlastník** účtu úložiště adls Gen2 ručně přiřadí tuto roli k identitě. Následující kroky vám pomůžou provést ruční přiřazení.
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Krok 1: přejděte do účtu úložiště ADLS Gen2 v Azure Portal
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>Krok 1: přechod na účet úložiště ADLS Gen2 v Azure Portal
 
-V Azure Portal otevřete účet úložiště Gen2 ADLS a v levém navigačním panelu vyberte **Přehled** . Roli *Přispěvatel dat objektů BLOB úložiště* budete muset přiřadit jenom na úrovni kontejneru nebo systému souborů. Vyberte **kontejnery**.  
-![ADLS Gen2 – přehled účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+V Azure Portal otevřete ADLS Gen2 účet úložiště a v levém navigačním panelu vyberte **Přehled** . Roli *Přispěvatel dat objektů BLOB úložiště* budete muset přiřadit jenom na úrovni kontejneru nebo systému souborů. Vyberte **kontejnery**.  
+![Přehled ADLS Gen2 účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>Krok 2: Výběr kontejneru
 
 Spravovaná identita by měla mít přístup k datům do kontejneru (systému souborů), který byl poskytnut při vytvoření pracovního prostoru. Tento kontejner nebo systém souborů najdete v Azure Portal. Otevřete v Azure Portal pracovní prostor Azure synapse a na levém navigačním panelu vyberte kartu **Přehled** .
-![Kontejner účtu úložiště ADLS Gen2](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
+![ADLS Gen2 kontejner účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
 
 
 Vyberte stejný kontejner nebo systém souborů pro udělení role *Přispěvatel dat objektů BLOB úložiště* spravované identitě.
-![ADLS Gen2 – výběr kontejneru účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![ADLS Gen2 výběru kontejneru účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>Krok 3: přechod na řízení přístupu
 
@@ -114,7 +114,7 @@ Vyberte **Access Control (IAM)** a pak vyberte **přiřazení rolí**.
 ![Ověřit přiřazení role](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 Vaše spravovaná identita by se měla zobrazit v části **Přispěvatel dat objektů BLOB úložiště** s přiřazenou rolí *Přispěvatel dat objektu BLOB služby Storage* . 
-![ADLS Gen2 – výběr kontejneru účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![ADLS Gen2 výběru kontejneru účtu úložiště](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>Další kroky
 

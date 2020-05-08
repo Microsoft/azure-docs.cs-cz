@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 074a28af8c80c109dbe97306900e8f00618e435a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5512aa1a2538d3336bbcc4f65cad671d52b711a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411683"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610662"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -209,7 +209,7 @@ Jedná se o aktuální omezení úrovně služby škálování na úrovni služe
 | Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | MI | Služba Azure SQL Database Managed instance se v současné době nepodporuje u databází s podporou škálování na více instancí. |
 | Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
-| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BACPAC nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.).|
+| Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) a [AZ SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)a z [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
 | Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci. |
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7490eef7b6203b6bb2623efa4518c7bee5400fb3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521016"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610764"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkce & nástroje pro Azure Cloud Shell
 
@@ -69,10 +69,10 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 ## <a name="tools"></a>Nástroje
 
-|Kategorie   |Název   |
+|Kategorie   |Name   |
 |---|---|
 |Nástroje pro Linux            |bash<br> zsh<br> SH<br> tmux<br> dig<br>               |
-|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [Azure Classic CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy#writing-your-first-azcopy-command)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Nástroje Azure            |[Azure CLI](https://github.com/Azure/azure-cli) a [Azure Classic CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)<br> [Azure Functions CLI](https://github.com/Azure/azure-functions-core-tools)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Editory textu           |kód (Editor Cloud Shell)<br> vim<br> nano<br> emacs    |
 |Správa zdrojového kódu         |git                    |
 |Nástroje pro sestavení            |značka<br> maven<br> npm<br> PIP         |
@@ -82,7 +82,7 @@ Cloud Shell zahrnuje předem nakonfigurované ověřování pro open source nás
 
 ## <a name="language-support"></a>Podpora jazyků
 
-|Jazyk   |Version   |
+|Jazyk   |Verze   |
 |---|---|
 |.NET Core  |2.2.402       |
 |Přejít         |1.9        |

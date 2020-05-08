@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: c77849b2285283a34e6adf84dc3845a4076407af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597932"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82616082"
 ---
 ## <a name="attack-scenario"></a>Scénář útoku
 
@@ -29,9 +29,16 @@ Když si uživatel požádá o přístup k virtuálnímu počítači, Security C
  > Pokud je žádost o přístup JIT schválená pro virtuální počítač za Azure Firewall, Security Center automaticky změní obě pravidla zásad NSG i brány firewall. V době, kterou jste zadali, budou pravidla umožňovat příchozí provoz na vybrané porty a požadované zdrojové IP adresy nebo rozsahy. Po uplynutí této doby Security Center obnoví v předchozích stavech pravidla brány firewall a NSG.
 
 
+## <a name="roles-that-can-read-jit-policies"></a>Role, které můžou číst zásady JIT
+
+Role **Čtenář** a **SecurityReader** můžou číst jak zásady.
+
 ## <a name="permissions-needed-to-configure-and-use-jit"></a>Oprávnění potřebná ke konfiguraci a použití JIT
+
+Pokud chcete vytvořit vlastní role, které mohou pracovat s JIT, budete potřebovat následující podrobnosti:
 
 | Umožnění uživateli: | Oprávnění k nastavení|
 | --- | --- |
 | Konfigurace nebo úprava zásad JIT pro virtuální počítač | *Přiřaďte k roli tyto akce:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> V oboru předplatného nebo skupiny prostředků virtuálního počítače: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |Vyžádat přístup JIT k virtuálnímu počítači | *Přiřaďte uživatele k těmto akcím:*  <ul><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>V oboru předplatného nebo skupiny prostředků, která je přidružená k virtuálnímu počítači:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  V oboru předplatného nebo skupiny prostředků nebo virtuálního počítače:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
+|Čtení zásad JIT| *Přiřaďte uživatele k těmto akcím:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|

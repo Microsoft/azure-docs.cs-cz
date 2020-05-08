@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257738"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983308"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Správa učebných cvičení v Azure Lab Services 
 Tento článek popisuje, jak vytvořit a odstranit testovací prostředí pro učebnu. Také se dozvíte, jak zobrazit všechny vývojové laboratoře v účtu testovacího prostředí. 
@@ -104,9 +104,10 @@ Pokud chcete nastavit testovací prostředí v učebně v účtu testovacího pr
 | Krátkodobé používání | 2 | 3,5 GB | Tato velikost je nejvhodnější pro příkazový řádek, otevírá webový prohlížeč, webové servery s nízkým provozem, malé až střední databáze. |
 | Střednědobé používání | 4 | 7 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. | 
 | Střední (vnořená virtualizace) | 4 | 16 GB | Tato velikost se nejlépe hodí pro relační databáze, ukládání do mezipaměti v paměti a analýzy. Tato velikost také podporuje vnořenou virtualizaci. <p>Tato velikost se dá použít ve scénářích, kdy každý student potřebuje víc virtuálních počítačů. Učitelé můžou pomocí vnořené virtualizace nastavit v rámci virtuálního počítače několik vnořených virtuálních počítačů s malou velikostí. </p> |
-| Dlouhodobé používání | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. Tato velikost také podporuje vnořenou virtualizaci. |  
-| Malý grafický procesor (vizualizace) | 6 | 56 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
 | Malý grafický procesor (COMPUTE) | 6 | 56 GB | Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a sítě, jako jsou umělá studia a aplikace s hloubkovým učením. | 
+| Malý grafický procesor (vizualizace) | 6 | 56 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
+| Dlouhodobé používání | 8 | 16 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. |
+| Velký (vnořená virtualizace) | 8 | 32 GB | Tato velikost je nejvhodnější pro aplikace, které vyžadují rychlejší procesory, lepší výkon místních disků, velké databáze a velké mezipaměti paměti. Tato velikost také podporuje vnořenou virtualizaci. |  
 | Střední GPU (vizualizace) | 12 | 112 GB | Tato velikost se nejlépe hodí pro vzdálenou vizualizaci, streamování, hraní her a kódování pomocí platforem, jako je OpenGL a DirectX. | 
 
 > [!NOTE]

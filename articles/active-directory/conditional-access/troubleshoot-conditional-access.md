@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 03/13/2020
+ms.date: 04/30/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337438"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610500"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Řešení potíží s přihlašováním pomocí podmíněného přístupu
 
@@ -55,8 +55,11 @@ Pokud chcete zjistit, které zásady nebo zásady podmíněného přístupu se n
    1. Informace na kartě **Poradce při potížích a podpoře** můžou mít jasný důvod, proč se nezdařilo přihlášení jako zařízení, které nevyhovělo požadavkům na dodržování předpisů.
    1. Pokud chcete prozkoumat další postup, přejděte k podrobnostem o konfiguraci zásad kliknutím na **název zásady**. Kliknutím na **název zásady** zobrazíte uživatelské rozhraní konfigurace zásad pro vybranou zásadu pro kontrolu a úpravy.
    1. Podrobnosti **o uživateli** a **zařízení** klienta, které byly použity pro vyhodnocení zásad podmíněného přístupu, jsou k dispozici také na kartách **základní informace**, **umístění**, **informace o zařízení**, **Podrobnosti o ověřování**a další karty **podrobností** události přihlášení.
+   1. Když vyberete tři tečky na pravé straně zásady, zobrazí se podrobnosti o zásadách. To správcům poskytuje další informace o tom, proč se zásada úspěšně použila.
 
    ![Karta pro podmíněný přístup události přihlášení](./media/troubleshoot-conditional-access/image5.png)
+
+   ![Podrobnosti zásady (Preview)](./media/troubleshoot-conditional-access/policy-details.png)
 
 Pokud informace v události nestačí pro pochopení výsledků přihlášení nebo úpravou zásad za účelem získání požadovaných výsledků, může být otevřen incident podpory. Přejděte na kartu pro **odstraňování potíží a podporu** přihlašovací události a vyberte **vytvořit novou žádost o podporu**.
 

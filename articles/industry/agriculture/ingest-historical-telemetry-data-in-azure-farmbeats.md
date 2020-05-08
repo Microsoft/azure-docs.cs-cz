@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136902"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613264"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Ingestování historických telemetrických dat
 
@@ -58,7 +59,7 @@ Postupujte následovně:
 5. Přejít do domovského adresáře.
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. Spusťte následující příkaz. Tím se stáhne skript do domovského adresáře.
@@ -73,7 +74,7 @@ Postupujte následovně:
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ Postupujte následovně:
 - /**DeviceModel**: DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, což je buď brána, nebo uzel.
 - /**Zařízení**: zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné.
 - /**SensorModel**: SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a měření snímače, například okolní teplota a tlak.
-- /**Senzor**: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.  
+- /**Senzor**: senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 
 
 |        DeviceModel   |  Návrhy   |
@@ -101,16 +102,16 @@ Postupujte následovně:
 |          Výrobce            |         Název výrobce    |
 |  ProductCode                    |  Kód produktu nebo číslo modelu zařízení Například EnviroMonitor # 6800.  |
 |            Porty          |     Název portu a typ, který je digitální nebo analogový.
-|     Název                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
+|     Name                 |  Název, který identifikuje prostředek. Například název modelu nebo název produktu.
       Popis     | Poskytněte smysluplný popis modelu.
 |    Vlastnosti          |    Další vlastnosti od výrobce.   |
 |    **Zařízení**             |                      |
 |   DeviceModelId     |     ID přidruženého modelu zařízení  |
 |  HardwareId          | Jedinečné ID zařízení, například adresa MAC.
 |  ReportingInterval        |   Interval generování sestav v sekundách.
-|  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).   
+|  Umístění            |  Zeměpisná šířka zařízení (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).
 |ParentDeviceId       |    ID nadřazeného zařízení, ke kterému je připojeno toto zařízení Například uzel, který je připojen k bráně. Uzel má jako bránu parentDeviceId.  |
-|    Název            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
+|    Name            | Název, který identifikuje prostředek. Partneři zařízení musí poslat název, který je konzistentní s názvem zařízení na straně partnera. Pokud je název partnerského zařízení definovaný uživatelem, je potřeba rozšířit stejný uživatelsky definovaný název na FarmBeats.|
 |     Popis       |      Zadejte smysluplný popis. |
 |     Vlastnosti    |  Další vlastnosti od výrobce.
 |     **SensorModel**        |          |
@@ -122,7 +123,7 @@ Postupujte následovně:
 |    Typ > SensorMeasures    |Typ měření dat telemetrie senzorů. Systémem definované typy jsou AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, dusičnan, O2, PH, fosforečnan, PointInTime, draselný, přítlak, RainGauge, RelativeHumidity, slanost, SoilMoisture, SoilTemperature, SolarRadiation, TimeDuration, UVRadiation, UVIndex, WindDirection, WindRun, WindSpeed, evapotranspiration,,, nominální hodnota. Pokud chcete přidat další informace, podívejte se na rozhraní/ExtendedType API.|
 |        Jednotka > SensorMeasures              | Jednotka dat telemetrie snímačů. Jednotky definované systémem jsou jednotky jednotek, Celsia, Fahrenheita, Kelviny, Rankine, Pascal, rtuť, PSI, milimetr, centimetry, měřič, palce, nohy, kilometry, KiloMeter, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, stupeň, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, MilliLiter, litr, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour,/ExtendedType,,,|
 |    SensorMeasures > AggregationType    |  Hodnoty mohou být None, Average, maximum, minima nebo StandardDeviation.  |
-|          Název            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
+|          Name            | Název, který identifikuje prostředek. Například název modelu nebo název produktu.  |
 |    Popis        | Poskytněte smysluplný popis modelu.|
 |   Vlastnosti       |  Další vlastnosti od výrobce.|
 |    **Elektrické**      |          |
@@ -131,7 +132,7 @@ Postupujte následovně:
 | Umístění          |  Zeměpisná šířka (-90 až + 90), zeměpisná délka (-180 až 180) a zvýšení úrovně (v metrech).|
 |   Název > portu        |  Název a typ portu, ke kterému je senzor připojen na zařízení. Tento název musí být stejný jako definovaný v modelu zařízení.|
 |    DeviceID  |    ID zařízení, ke kterému je senzor připojen. |
-| Název            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
+| Name            |   Název, který identifikuje prostředek. Například název senzoru nebo název produktu a číslo modelu nebo kód produktu.|
 |    Popis      | Zadejte smysluplný popis.|
 |    Vlastnosti        |Další vlastnosti od výrobce.|
 
@@ -139,7 +140,7 @@ Další informace o objektech naleznete v [Swagger](https://aka.ms/FarmBeatsData
 
 ### <a name="api-request-to-create-metadata"></a>Požadavek rozhraní API na vytvoření metadat
 
-Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, to znamená DataHub adresa URL (https://\<yourdatahub>. azurewebsites.NET).  
+Chcete-li vytvořit požadavek rozhraní API, můžete zkombinovat metodu HTTP (POST), adresu URL služby API a identifikátor URI k prostředku, který se má dotazovat, odeslat data do, vytvořit nebo odstranit žádost. Pak přidáte jednu nebo více hlaviček požadavku HTTP. Adresa URL služby API je koncový bod rozhraní API, to znamená DataHub adresa URL (https://\<yourdatahub>. azurewebsites.NET).
 
 ### <a name="authentication"></a>Authentication
 
@@ -297,10 +298,10 @@ Elektrické
 Následující vzorový požadavek vytvoří zařízení. Tento požadavek má jako datovou část vstupní JSON s textem žádosti.
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 

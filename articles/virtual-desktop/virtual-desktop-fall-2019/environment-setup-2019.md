@@ -5,25 +5,26 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.openlocfilehash: d666f7e3e43b5429423a5356aa00e074ed020869
 ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612363"
+ms.locfileid: "82615328"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Prostředí Windows Virtual Desktop
 
 >[!IMPORTANT]
->Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/environment-setup-2019.md).
->
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>Tento obsah se vztahuje na verzi 2019, která nepodporuje Azure Resource Manager objektů virtuálních klientů Windows. Pokud se snažíte spravovat Azure Resource Manager objekty virtuálních klientů Windows, které byly zavedeny v aktualizaci jarní 2020, přečtěte si [Tento článek](../environment-setup.md).
 
 Virtuální plocha Windows je služba, která uživatelům poskytuje snadný a zabezpečený přístup ke svým virtualizovaným plochám a aplikacím RemoteApp. V tomto tématu se dozvíte další informace o obecné struktuře prostředí virtuálních počítačů s Windows.
+
+## <a name="tenants"></a>Tenanti
+
+Tenant virtuálních klientů Windows je primárním rozhraním pro správu prostředí virtuálních počítačů s Windows. Každý tenant virtuálních klientů s Windows musí být přidružený k Azure Active Directory, která obsahuje uživatele, kteří se přihlásí k prostředí. Z tenanta virtuálních klientů Windows můžete začít vytvářet fondy hostitelů pro spouštění úloh vašich uživatelů.
 
 ## <a name="host-pools"></a>Fondy hostitelů
 
@@ -47,12 +48,12 @@ Ve výchozím nastavení se při každém vytvoření fondu hostitelů automatic
 
 Pokud chcete publikovat prostředky uživatelům, musíte je přiřadit ke skupinám aplikací. Při přiřazování uživatelů ke skupinám aplikací Vezměte v úvahu následující věci:
 
-- Uživatel může být přiřazený ke skupině desktopové aplikace i k skupině aplikací RemoteApp ve stejném fondu hostitelů. Uživatelé ale můžou pro každou relaci spustit jenom jeden typ skupiny aplikací. Uživatelé nemohou současně spustit oba typy skupin aplikací v jedné relaci.
+- Uživatele nejde přiřadit ke skupině desktopové aplikace a skupině aplikací RemoteApp ve stejném fondu hostitelů.
 - Uživatel může být přiřazený k několika skupinám aplikací v rámci stejného fondu hostitelů a jejich informační kanál bude akumulací obou skupin aplikací.
 
-## <a name="workspaces"></a>Pracovní prostory
+## <a name="tenant-groups"></a>Skupiny tenantů
 
-Pracovní prostor je logické seskupení skupin aplikací ve virtuálním počítači s Windows. Každá skupina aplikací virtuálních klientů Windows musí být přidružena k pracovnímu prostoru pro uživatele, aby viděli vzdálené aplikace a počítače, které jsou do nich publikovány.  
+Ve virtuálním počítači s Windows je tenant virtuálních klientů Windows, kde se většina nastavení a konfigurace stane. Tenant virtuálních klientů Windows obsahuje fondy hostitelů, skupiny aplikací a přiřazení uživatelů skupiny aplikací. Mohou však nastat situace, kdy potřebujete spravovat více tenantů virtuálních klientů Windows najednou, zejména pokud jste poskytovatel cloudových služeb (CSP) nebo hostující partner. V těchto situacích můžete použít vlastní skupinu tenantů virtuálních počítačů s Windows k umístění každého tenanta virtuálních klientů Windows v zákaznících a centrálně spravovat přístup. Pokud ale jenom spravujete jediného tenanta virtuálních klientů s Windows, koncept skupiny tenantů se nepoužije a můžete dál provozovat a spravovat tenanta, který existuje ve výchozí skupině tenantů.
 
 ## <a name="end-users"></a>Koncoví uživatelé
 
@@ -60,14 +61,11 @@ Po přiřazení uživatelů ke skupinám aplikací se mohou připojit k nasazen�
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o delegovaném přístupu a přiřazování rolí uživatelům při [delegovaném přístupu na virtuálním počítači s Windows](delegated-access-virtual-desktop.md).
+Přečtěte si další informace o delegovaném přístupu a přiřazování rolí uživatelům při [delegovaném přístupu na virtuálním počítači s Windows](delegated-access-virtual-desktop-2019.md).
 
-Informace o tom, jak nastavit fond hostitelů pro virtuální počítače s Windows, najdete v tématu [Vytvoření fondu hostitelů pomocí Azure Portal](create-host-pools-azure-marketplace.md).
+Informace o tom, jak nastavit tenanta pro virtuální počítače s Windows, najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](tenant-setup-azure-active-directory.md).
 
 Informace o tom, jak se připojit k virtuálnímu počítači s Windows, najdete v jednom z následujících článků:
 
-- [Připojení se systémem Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
-- [Připojení pomocí webového prohlížeče](connect-web.md)
-- [Práce s klientem Android](connect-android.md)
-- [Připojení s klientem macOS](connect-macos.md)
-- [Připojení s klientem iOS](connect-ios.md)
+- [Připojení z Windows 10 nebo Windows 7](../connect-windows-7-and-10.md)
+- [Připojení z webového prohlížeče](connect-web-2019.md)

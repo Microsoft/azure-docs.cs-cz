@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254232"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612448"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Použít licenci Windows na virtuální počítače hostitele relace
 
@@ -23,7 +23,7 @@ Licencování virtuálních klientských počítačů s Windows umožňuje použ
 
 Existuje několik způsobů, jak použít licenci pro virtuální počítače s Windows:
 - Fond hostitelů a jeho hostitele virtuálních počítačů můžete vytvořit pomocí [nabídky Azure Marketplace](./create-host-pools-azure-marketplace.md). Virtuální počítače vytvořené tímto způsobem mají automaticky použitu licenci.
-- Pomocí [šablony Azure Resource Manager GitHubu](./create-host-pools-arm-template.md)můžete vytvořit fond hostitelů a jeho virtuální počítače hostitele relace. Virtuální počítače vytvořené tímto způsobem mají automaticky použitu licenci.
+- Pomocí [šablony Azure Resource Manager GitHubu](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)můžete vytvořit fond hostitelů a jeho virtuální počítače hostitele relace. Virtuální počítače vytvořené tímto způsobem mají automaticky použitu licenci.
 - Licenci můžete použít pro existující virtuální počítač hostitele relace. Pokud to chcete provést, postupujte podle pokynů v části [Vytvoření fondu hostitelů s prostředím PowerShell](./create-host-pools-powershell.md) pro vytvoření fondu hostitelů a přidružených virtuálních počítačů a pak se vraťte k tomuto článku a Naučte se, jak tuto licenci použít.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Použití licence Windows na virtuální počítač hostitele relace

@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546337"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598466"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrace na granulární řízení přístupu na základě rolí pro konfigurace clusteru
 
@@ -28,10 +28,10 @@ Zavádíme taky novou roli [operátora clusteru HDInsight](https://docs.microsof
 
 | Role                                  | Měsíci                                                                                       | Po přechodu dál       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Čtenář                                | – Přístup pro čtení, včetně tajných klíčů                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů |           |   |   |
+| Čtenář                                | – Přístup pro čtení, včetně tajných klíčů.                                                                   | – Přístup pro čtení, **s výjimkou** tajných klíčů |           |   |   |
 | Operátor clusteru HDInsight<br>(Nová role) | –                                                                                              | – Přístup pro čtení a zápis, včetně tajných klíčů         |   |   |
-| Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů<br>– Vytvářejte a spravujte všechny typy prostředků Azure.     | Beze změny |
-| Vlastník                                 | – Přístup pro čtení a zápis včetně tajných klíčů<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům | Beze změny |
+| Přispěvatel                           | – Přístup pro čtení a zápis, včetně tajných klíčů.<br>– Vytvářejte a spravujte všechny typy prostředků Azure.<br>-Spouštění akcí skriptu.     | Beze změny |
+| Vlastník                                 | – Přístup pro čtení a zápis včetně tajných klíčů.<br>– Úplný přístup ke všem prostředkům<br>– Delegovat přístup jiným uživatelům.<br>-Spouštění akcí skriptu. | Beze změny |
 
 Informace o tom, jak přidat přiřazení role operátora clusteru HDInsight uživateli, aby jim udělil přístup pro čtení a zápis k tajným klíčům clusteru, najdete v níže uvedené části [Přidání přiřazení role operátora clusteru HDInsight uživateli](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 

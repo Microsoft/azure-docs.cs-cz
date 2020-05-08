@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 4baa06ad0011b06da50fd7a83aaa3e87db62c6ac
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ae94a5c8d7e9ff93098e85535aea3699206b9e03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417516"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626953"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -86,11 +86,11 @@ Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz 
 
 ## <a name="charges-covered-by-reservation"></a>Poplatky, na které se rezervace vztahuje
 
-- **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů. Nevztahuje se na další poplatky za software, Windows, sítě nebo úložiště.
+- **Rezervovaná instance virtuálního počítače** – Rezervace se vztahuje jenom na náklady na výpočetní funkce virtuálních počítačů a cloudových služeb. Nevztahuje se na další poplatky za software, Windows, sítě nebo úložiště.
 - **Rezervovaná kapacita služby Azure Storage** – Rezervace pokrývá kapacitu úložiště pro účty úložiště úrovně Standard ve službách Blob Storage nebo Azure Data Lake Storage Gen2. Rezervace se nevztahuje na šířku pásma ani rychlost transakcí.
 - **Rezervovaná kapacita služby Azure Cosmos DB** – Rezervace se vztahuje na propustnost zřízenou pro vaše prostředky. Nevztahuje se na poplatky za úložiště a sítě.
 - **Rezervované virtuální jádro služby SQL Database** – Rezervace se vztahuje jenom na náklady na výpočetní funkce. Licence SQL se účtuje samostatně.
-- **SQL Data Warehouse** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby SQL Data Warehouse.
+- **Azure Synapse Analytics** – Rezervace se vztahuje na využití cDWU. Nevztahuje se na poplatky za úložiště nebo sítě související s využitím služby Azure Synapse Analytics.
 - **Azure Databricks** – Rezervace se vztahuje pouze na využití DBU. Další poplatky, například za výpočetní prostředky, úložiště a sítě, se účtují zvlášť.
 - **Poplatek za kolek služby App Service** – Rezervace se vztahuje na využití kolku. Nevztahuje se na pracovní procesy, takže všechny další prostředky přidružené ke kolku se účtují samostatně.
 - **Azure Database for MySQL** – Rezervace se vztahuje pouze na náklady na výpočetní prostředky. Rezervace se nevztahuje na poplatky za software, sítě ani úložiště související s databázovým serverem MySQL.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303218"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612754"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání se službou Premium na virtuálních počítačích Azure
 
@@ -47,7 +47,7 @@ Měli byste mít také obecné porozumění těmto technologiím:
 > [!IMPORTANT]
 > V současné době se SQL Server instance clusterů s podporou převzetí služeb při selhání na virtuálních počítačích Azure podporují jenom s [režimem zjednodušené správy](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) [rozšíření agenta SQL Server IaaS](virtual-machines-windows-sql-server-agent-extension.md). Pokud chcete přejít z režimu úplného rozšíření na odlehčený, odstraňte prostředek **virtuálního počítače SQL** pro odpovídající virtuální počítače a pak je zaregistrujte u poskytovatele prostředků virtuálního počítače SQL ve zjednodušeném režimu. Při odstraňování prostředku **virtuálního počítače SQL** pomocí Azure Portal **zrušte zaškrtnutí políčka u správného virtuálního počítače**. Úplné rozšíření podporuje funkce, jako je automatické zálohování, opravy a Správa portálu. Po přeinstalaci agenta v režimu zjednodušené správy nebudou tyto funkce fungovat pro virtuální počítače SQL.
 
-Soubory úrovně Premium poskytují IOPS a celou kapacitu, která bude vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v zvažte [SQL Server instance clusterů s podporou převzetí služeb při selhání pomocí prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md)na základě spravovaných disků Premium nebo Ultra disks.  
+Soubory úrovně Premium poskytují vstupně-výstupní operace za sekundu a propustnost, které budou vyhovovat potřebám řady úloh. Pro úlohy náročné na v/v zvažte [SQL Server instance clusterů s podporou převzetí služeb při selhání pomocí prostory úložiště s přímým přístupem](virtual-machines-windows-portal-sql-create-failover-cluster.md)na základě spravovaných disků Premium nebo Ultra disks.  
 
 Zkontrolujte aktivitu IOPS vašeho prostředí a ověřte, že sdílené složky Premium budou před zahájením nasazení nebo migrace vyžadovat, aby počet IOPS za sekundu poskytoval. Pomocí čítačů disku nástroje sledování výkonu systému Windows monitorujte celkový počet vstupně-výstupních operací za sekundu a propustnost (za sekundu bajtů disku/s), které se vyžadují pro soubory SQL Server dat, protokolů a dočasné databáze.
 

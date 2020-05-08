@@ -5,27 +5,31 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4a0f193437353bac1f5998b50b9d7b4d43bedefa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66b76fcdd9729b2a92ea2d561c740dbe148e0bbe
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128060"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611547"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů
 
-Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP můžete přizpůsobit ve virtuální ploše Windows pomocí parametru **-CustomRdpProperty** v rutině **set-RdsHostPool** .
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů a přesměrování zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb. Vlastnosti protokolu RDP na virtuálním počítači s Windows můžete přizpůsobit buď pomocí Azure Portal, nebo pomocí parametru *-CustomRdpProperty* v rutině **Update-AzWvdHostPool** .
 
 Úplný seznam podporovaných vlastností a jejich výchozích hodnot najdete v tématu [podporované nastavení souboru RDP](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+## <a name="prerequisites"></a>Požadavky
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Než začnete, postupujte podle pokynů v části [nastavení modulu Azure Virtual Desktop PowerShell](powershell-module.md) a nastavte modul prostředí PowerShell a přihlaste se k Azure.
 
 ## <a name="default-rdp-properties"></a>Výchozí vlastnosti protokolu RDP
 
@@ -39,40 +43,97 @@ Publikované soubory RDP ve výchozím nastavení obsahují následující vlast
 
 Tato výchozí nastavení se přepíšou všemi vlastními vlastnostmi, které definujete pro fond hostitelů.
 
+## <a name="configure-rdp-properties-in-the-azure-portal"></a>Konfigurace vlastností protokolu RDP v Azure Portal
+
+Konfigurace vlastností protokolu RDP v Azure Portal:
+
+1. Přihlaste se k <https://portal.azure.com>Azure na adrese.
+2. Do panelu hledání zadejte **virtuální klient Windows** .
+3. V části služby vyberte **virtuální klient Windows**.
+4. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů** v nabídce na levé straně obrazovky.
+5. Vyberte **název hostitelského fondu** , který chcete aktualizovat.
+6. V nabídce na levé straně obrazovky vyberte **vlastnosti** .
+7. Vyberte **Nastavení RDP** a začněte upravovat vlastnosti RDP.
+8. Až budete hotovi, vyberte **Uložit** a uložte provedené změny.
+
+Pokud je nastavení, které chcete upravit, v nabídce nastavení protokolu RDP nevidíte, budete ho muset ručně upravit spuštěním rutin v prostředí PowerShell. V dalších částech se dozvíte, jak ručně upravit vlastní vlastnosti protokolu RDP v prostředí PowerShell.
+
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Přidat nebo upravit jednu vlastní vlastnost RDP
 
 Pokud chcete přidat nebo upravit jednu vlastní vlastnost RDP, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty <property>
 ```
 
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/singlecustomrdpproperty.png)
+Pokud chcete zjistit, jestli rutina, kterou jste právě spustili, aktualizovala vlastnost, spusťte tuto rutinu:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
+
+Name              : <hostpoolname>
+CustomRdpProperty : <customRDPpropertystring>
+```
+
+Pokud jste například kontrolovali vlastnost "audiocapturemode" ve fondu hostitelů s názvem 0301HP, zadáte tuto rutinu:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty
+
+Name              : 0301HP
+CustomRdpProperty : audiocapturemode:i:1;
+```
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Přidat nebo upravit více vlastních vlastností protokolu RDP
 
 Chcete-li přidat nebo upravit více vlastních vlastností protokolu RDP, spusťte následující rutiny prostředí PowerShell zadáním vlastních vlastností protokolu RDP jako řetězce odděleného středníkem:
 
 ```powershell
-$properties="<property1>;<property2>;<property3>"
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
+$properties="<property1>;<property2>;<property3>" 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties 
 ```
 
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/multiplecustomrdpproperty.png)
+Pomocí následující rutiny můžete ověřit, zda byla vlastnost RDP přidána:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+
+Name              : <hostpoolname>
+CustomRdpProperty : <customRDPpropertystring>
+```
+
+Na základě našeho dřívějšího příkladu rutiny, pokud nastavíte více vlastností protokolu RDP v 0301HP fondu hostitelů, rutina by vypadala takto:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty 
+
+Name              : 0301HP 
+CustomRdpProperty : audiocapturemode:i:1;audiomode:i:0;
+```
 
 ## <a name="reset-all-custom-rdp-properties"></a>Resetovat všechny vlastní vlastnosti protokolu RDP
 
 Jednotlivé vlastní vlastnosti protokolu RDP můžete obnovit na výchozí hodnoty podle pokynů v tématu [Přidání nebo úprava jedné vlastní vlastnosti protokolu RDP](#add-or-edit-a-single-custom-rdp-property), nebo můžete obnovit všechny vlastní vlastnosti protokolu RDP pro fond hostitelů spuštěním následující rutiny prostředí PowerShell:
 
 ```powershell
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
 
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/resetcustomrdpproperty.png)
+Abyste se ujistili, že jste úspěšně odebrali nastavení, zadejte tuto rutinu:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+
+Name              : <hostpoolname> 
+CustomRdpProperty : <CustomRDPpropertystring>
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-Teď, když jste přizpůsobili vlastnosti protokolu RDP pro daný fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat je jako součást uživatelské relace. Tyto další dva postupy se dozvíte, jak se připojit k relaci pomocí klienta podle vašeho výběru:
+Teď, když jste přizpůsobili vlastnosti protokolu RDP pro daný fond hostitelů, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat je jako součást uživatelské relace. Tyto další návody vám posdělí, jak se připojit k relaci pomocí klienta podle vašeho výběru:
 
 - [Připojení s desktopovým klientem Windows](connect-windows-7-and-10.md)
 - [Připojení k webovému klientovi](connect-web.md)
+- [Práce s klientem Android](connect-android.md)
+- [Připojení s klientem macOS](connect-macos.md)
+- [Připojení s klientem iOS](connect-ios.md)
