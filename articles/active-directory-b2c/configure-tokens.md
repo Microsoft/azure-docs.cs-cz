@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189613"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926183"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurace tokenů v Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tok
 
 [Vytvořte uživatelský tok](tutorial-create-user-flows.md) , který uživatelům umožní přihlásit se k aplikaci a přihlásit se k ní.
 
-## <a name="configure-token-lifetime"></a>Konfigurace životnosti tokenů
+## <a name="configure-jwt-token-lifetime"></a>Konfigurace životnosti tokenu JWT
 
 Životnost tokenu můžete nakonfigurovat pro libovolný tok uživatele.
 
@@ -41,7 +41,7 @@ V tomto článku se dozvíte, jak nakonfigurovat [životnost a kompatibilitu tok
 
 8. Klikněte na **Uložit**.
 
-## <a name="configure-token-compatibility"></a>Konfigurace kompatibility tokenů
+## <a name="configure-jwt-token-compatibility"></a>Konfigurace kompatibility tokenů JWT
 
 1. Vyberte **toky uživatelů (zásady)**.
 2. Otevřete uživatelský tok, který jste vytvořili dříve.

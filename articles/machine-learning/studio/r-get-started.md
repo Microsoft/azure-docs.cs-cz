@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209498"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982186"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Začínáme s Azure Machine Learning Studio (Classic) v R
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-Tento kurz vám pomůže začít s rozšířením Azure Machine Learning Studio (Classic) pomocí programovacího jazyka R. Pomocí tohoto kurzu pro programování v R můžete vytvořit, otestovat a spustit kód R v rámci studia (Classic). Při práci v kurzu vytvoříte kompletní řešení předpovědi pomocí jazyka R v aplikaci Studio (Classic).  
+V tomto kurzu se naučíte, jak pomocí ML Studio (Classic) vytvořit, otestovat a spustit kód R. Na konci budete mít kompletní řešení předpovědi.  
 
-Azure Machine Learning Studio (Classic) obsahuje mnoho výkonného strojového učení a modulů manipulace s daty. Výkonný jazyk R je popsaný jako lingua franca analýzy. Happily, analýzy a manipulace s daty v studiu (Classic) se dají rozšířit pomocí R. Tato kombinace nabízí škálovatelnost a snadné nasazení studia (Classic) s flexibilitou a hloubkovou analýzou jazyka R.
+> [!div class="checklist"]
+> * Vytvořte kód pro čištění a transformaci dat.
+> * Analyzujte korelace mezi několika proměnnými v naší datové sadě.
+> * Vytvořte sezónní model předpovědi časových řad pro produkci mléka.
 
-### <a name="forecasting-and-the-dataset"></a>Prognózování a datová sada
 
-Prognózování je široce zaměstnaná a poměrně užitečná analytická metoda. Běžný používá rozsah z předpovědi prodej sezónních položek a určení optimálních úrovní inventáře k předvídání makroekonomických proměnných. Prognózy se obvykle provádějí s modely časových řad.
+Azure Machine Learning Studio (Classic) obsahuje mnoho výkonného strojového učení a modulů manipulace s daty. A s programovacím jazykem R poskytuje tato kombinace škálovatelnost a snadné nasazení studia (Classic) s flexibilitou a hloubkovou analýzou jazyka R.
 
-Data časové řady jsou data, ve kterých mají hodnoty časový index. Časový index může být pravidelný, například každý měsíc nebo každou minutu nebo nepravidelně. Model časových řad je založený na datech časových řad. Programovací jazyk R obsahuje flexibilní rozhraní a rozsáhlou analýzu pro data časových řad.
+Prognózování je široce zaměstnaná a poměrně užitečná analytická metoda. Běžný používá rozsah z předpovědi prodej sezónních položek a určení optimálních úrovní inventáře k předvídání makroekonomických proměnných. Prognózy se obvykle provádějí s modely časových řad. Data časové řady jsou data, ve kterých mají hodnoty časový index. Časový index může být pravidelný, například každý měsíc nebo každou minutu nebo nepravidelně. Model časových řad je založený na datech časových řad. Programovací jazyk R obsahuje flexibilní rozhraní a rozsáhlou analýzu pro data časových řad.
 
-V této příručce budeme pracovat s daty o cenách v Kalifornii a produkci pro mléčné výrobky. Tato data zahrnují měsíční informace o produkci několika mléčných produktů a cenu mléčného tuku, srovnávacího zboží.
+## <a name="get-the-data"></a>Získání dat
+
+V tomto kurzu použijete produkci dojnic a data o cenách v Kalifornii, což zahrnuje měsíční informace o produkci několika mléčných produktů a cenu mléčného tuku, srovnávací komodita.
 
 Data použitá v tomto článku spolu se skripty jazyka R lze stáhnout z [MachineLearningSamples-poznámkových bloků/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples). Data v souboru `cadairydata.csv` byla původně syntetizovaná z informací, které jsou k dispozici na University [https://dairymarkets.com](https://dairymarkets.com)of Wisconsin v.
 
-### <a name="organization"></a>Organizace
 
-Až se naučíte vytvářet, testovat a spouštět analýzy a kód R manipulace s daty v prostředí Azure Machine Learning Studio (Classic), budeme postupovat několika kroky.  
-
-* Nejprve se podíváme na základy používání jazyka R v prostředí Azure Machine Learning Studio (Classic).
-* Následně jsme provedli diskusi o různých aspektech vstupně-výstupních operací pro data, kód R a grafiku v prostředí Azure Machine Learning Studio (Classic).
-* Pak vytvoříme první část našeho řešení předpovědi vytvořením kódu pro čištění a transformaci dat.
-* Naše data jsou připravená k analýze korelace mezi několika proměnnými v naší datové sadě.
-* Nakonec vytvoříme model předpovědi pro sezónní časovou řadu pro produkci mléka.
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Interakce s jazykem R v Machine Learning Studio (Classic)
 
@@ -143,7 +139,7 @@ V této části se dozvíte, jak získat data do a z modulu [spuštění skriptu
 
 Úplný kód této části je v [MachineLearningSamples-poznámkách/studiu-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Načíst a ověřit data v Machine Learning Studio (Classic)
+### <a name="load-and-check-data"></a>Načíst a ověřit data 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Načíst datovou sadu
 

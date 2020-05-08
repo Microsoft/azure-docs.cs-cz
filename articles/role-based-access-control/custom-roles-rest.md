@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí REST API
-description: Přečtěte si, jak vypsat, vytvořit, aktualizovat nebo odstranit vlastní role pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure pomocí REST API.
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí REST API – Azure RBAC
+description: Přečtěte si, jak pomocí REST API a řízení přístupu na základě role Azure (Azure RBAC) získat informace o tom, jak vytvářet, aktualizovat nebo odstraňovat vlastní role Azure.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062194"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734089"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí REST API
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Pomocí REST API vytvořit nebo aktualizovat vlastní role Azure
 
 > [!IMPORTANT]
 > Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí REST API vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí REST API vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
@@ -189,7 +189,7 @@ Pokud chcete vytvořit vlastní roli, použijte [Definice rolí – vytvořit ne
 
 1. Do `notActions` vlastnosti přidejte operace, které jsou vyloučeny z povolených `actions`.
 
-1. Ve vlastnostech `roleName` a `description` zadejte jedinečný název role a popis. Další informace o vlastnostech naleznete v tématu [Custom Roles](custom-roles.md).
+1. Ve vlastnostech `roleName` a `description` zadejte jedinečný název role a popis. Další informace o vlastnostech najdete v tématu [vlastní role Azure](custom-roles.md).
 
     V následujícím příkladu vidíte příklad textu žádosti:
 
@@ -340,6 +340,6 @@ Pokud chcete odstranit vlastní roli, použijte [Definice rolí – odstranit](/
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vlastní role pro prostředky Azure](custom-roles.md)
-- [Správa přístupu k prostředkům Azure pomocí RBAC a REST API](role-assignments-rest.md)
+- [Vlastní role Azure](custom-roles.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí REST API](role-assignments-rest.md)
 - [Reference k Azure REST API](/rest/api/azure/)

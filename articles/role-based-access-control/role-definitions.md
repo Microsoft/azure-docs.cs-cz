@@ -1,6 +1,6 @@
 ---
-title: Pochopení definic rolí v RBAC pro prostředky Azure | Microsoft Docs
-description: Seznamte se s definicemi rolí v řízení přístupu na základě role (RBAC) pro detailní řízení přístupu k prostředkům Azure.
+title: Vysvětlení definic rolí Azure – Azure RBAC
+description: Přečtěte si o definicích rolí Azure v řízení přístupu na základě role Azure (Azure RBAC) pro detailní řízení přístupu k prostředkům Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641378"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735534"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>Pochopení definic rolí pro prostředky Azure
+# <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
 
-Pokud se snažíte pochopit, jak role funguje, nebo pokud vytváříte vlastní [roli pro prostředky Azure](custom-roles.md), je vhodné pochopit, jak jsou role definované. Tento článek popisuje podrobné informace o definicích rolí a obsahuje několik příkladů.
+Pokud se snažíte pochopit, jak funguje role Azure, nebo pokud vytváříte vlastní [vlastní roli Azure](custom-roles.md), je užitečné pochopit, jak jsou role definované. Tento článek popisuje podrobné informace o definicích rolí a obsahuje několik příkladů.
 
 ## <a name="role-definition"></a>Definice role
 
@@ -170,11 +170,11 @@ Oprávnění Bob jsou omezená jenom na `Actions` a `DataActions` zadaná v roli
 
 Další informace o zabezpečení správy a roviny dat pro úložiště najdete v [Průvodci zabezpečením Azure Storage](../storage/blobs/security-recommendations.md).
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jaké nástroje podporují používání RBAC pro operace s daty?
+### <a name="what-tools-support-using-azure-roles-for-data-operations"></a>Jaké nástroje podporují používání rolí Azure pro operace s daty?
 
 Chcete-li zobrazit a pracovat s datovými operacemi, je nutné mít správné verze nástrojů nebo sad SDK:
 
-| Nástroj  | Version  |
+| Nástroj  | Verze  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
@@ -245,10 +245,10 @@ Předdefinované role jsou `AssignableScopes` nastaveny na kořenový obor (`"/"
 > | Skupina pro správu a předplatné | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | Všechny obory (platí jenom pro předdefinované role) | `"/"` |
 
-Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní role pro prostředky Azure](custom-roles.md).
+Informace o `AssignableScopes` vlastních rolích najdete v tématu [vlastní role Azure](custom-roles.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Předdefinované role pro prostředky Azure](built-in-roles.md)
-* [Vlastní role pro prostředky Azure](custom-roles.md)
+* [Předdefinované role Azure](built-in-roles.md)
+* [Vlastní role Azure](custom-roles.md)
 * [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)

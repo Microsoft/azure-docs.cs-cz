@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769807"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983631"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Vysvětlení modelů ML & předpovědi v Pythonu pomocí balíčku pro interpretaci
 
@@ -85,7 +85,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                  classes=classes)
     ```
 
-    – nebo –
+    or
 
     ```python
 
@@ -111,7 +111,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                classes=classes)
     ```
 
-    – nebo –
+    or
 
     ```python
     from interpret.ext.blackbox import PFIExplainer
@@ -238,10 +238,10 @@ Následující příklad ukazuje, jak lze použít `ExplanationClient` třídu p
 * Pomocí `ExplanationClient` ve vzdáleném spuštění nahrajte kontext interpretace.
 * Stáhněte kontext později v místním prostředí.
 
-1. Instalace `azureml-interpret` a `azureml-interpret-contrib` balíčky.
+1. Instalace `azureml-interpret` a `azureml-contrib-interpret` balíčky.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. Vytvořte školicí skript v místním Jupyter poznámkovém bloku. Například, `train_explain.py`.
 

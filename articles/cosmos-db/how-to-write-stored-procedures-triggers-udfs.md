@@ -1,17 +1,17 @@
 ---
 title: Zápis uložených procedur, triggerů a UDF v Azure Cosmos DB
 description: Naučte se definovat uložené procedury, triggery a uživatelsky definované funkce v Azure Cosmos DB
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441738"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982288"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup zápisu uložených procedur, triggerů a uživatelsky definovaných funkcí v Azure Cosmos DB
 
@@ -21,15 +21,12 @@ Chcete-li volat uloženou proceduru, Trigger a uživatelsky definovanou funkci, 
 
 > [!NOTE]
 > U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
-
 > [!Tip]
 > Cosmos podporuje nasazování kontejnerů s uloženými procedurami, triggery a uživatelsky definovanými funkcemi. Další informace najdete v tématu [vytvoření kontejneru Azure Cosmos DB s využitím funkce na straně serveru.](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Postup zápisu uložených procedur
 
 Uložené procedury se napíší pomocí JavaScriptu, můžou vytvářet, aktualizovat, číst, dotazovat a odstraňovat položky v rámci kontejneru Azure Cosmos. Uložené procedury jsou registrovány na kolekci a mohou pracovat v jakémkoli dokumentu nebo v příloze v této kolekci.
-
-**Případě**
 
 Tady je jednoduchá uložená procedura, která vrací odpověď "Hello World".
 
@@ -51,7 +48,7 @@ Po zapsání musí být uložená procedura registrována s kolekcí. Další in
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Vytvoření položky pomocí uložené procedury
 
-Když vytvoříte položku pomocí uložené procedury, položka se vloží do kontejneru Azure Cosmos a vrátí se ID nově vytvořené položky. Vytvoření položky je asynchronní operace a závisí na funkcích zpětného volání JavaScriptu. Funkce zpětného volání má dva parametry – jeden pro objekt Error pro případ, že operace se nezdařila, a další pro návratovou hodnotu; v tomto případě vytvořený objekt. Uvnitř zpětného volání můžete buď zpracovat výjimku, nebo vyvolat chybu. V případě, že zpětné volání není k dispozici a dojde k chybě, Azure Cosmos DB runtime vyvolá chybu. 
+Když vytvoříte položku pomocí uložené procedury, položka se vloží do kontejneru Azure Cosmos a vrátí se ID nově vytvořené položky. Vytvoření položky je asynchronní operace a závisí na funkcích zpětného volání JavaScriptu. Funkce zpětného volání má dva parametry – jeden pro objekt Error pro případ, že operace se nezdařila, a další pro návratovou hodnotu; v tomto případě vytvořený objekt. Uvnitř zpětného volání můžete buď zpracovat výjimku, nebo vyvolat chybu. V případě, že zpětné volání není k dispozici a dojde k chybě, Azure Cosmos DB runtime vyvolá chybu.
 
 Uložená procedura také obsahuje parametr pro nastavení popisu, jedná se o logickou hodnotu. Pokud je parametr nastaven na hodnotu true a popis chybí, uložená procedura vyvolá výjimku. V opačném případě bude zbývající uložená procedura nadále běžet.
 
@@ -73,7 +70,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Pole jako vstupní parametry pro uložené procedury 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Pole jako vstupní parametry pro uložené procedury
 
 Při definování uložené procedury v Azure Portal jsou vstupní parametry vždy odeslány jako řetězec do uložené procedury. I v případě, že předáte pole řetězců jako vstup, pole je převedeno na řetězec a odesláno do uložené procedury. Chcete-li tento problém obejít, můžete definovat funkci v rámci uložené procedury k analýze řetězce jako pole. Následující kód ukazuje, jak analyzovat vstupní parametr řetězce jako pole:
 
@@ -102,12 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -115,10 +112,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -208,6 +205,56 @@ function bulkImport(items) {
             tryCreate(items[count], callback);
         }
     }
+}
+```
+
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>Asynchronní operátor await s uloženými procedurami
+
+Následující příklad představuje uloženou proceduru, která používá Async-await s příslibů pomocí pomocné funkce. Dotazy na uloženou proceduru pro položku a nahradí ji.
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
 }
 ```
 

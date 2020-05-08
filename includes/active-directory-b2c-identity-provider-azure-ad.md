@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678050"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925396"
 ---
 ## <a name="register-an-azure-ad-app"></a>Registrace aplikace Azure AD
 
@@ -36,7 +36,7 @@ Pokud chcete povolit přihlášení pro uživatele z konkrétní organizace Azur
 
 ### <a name="configuring-optional-claims"></a>Konfigurace volitelných deklarací identity
 
-Pokud chcete získat deklarace identity `family_name` a `given_name` ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](/active-directory/develop/active-directory-optional-claims.md).
+Pokud chcete získat deklarace identity `family_name` a `given_name` ze služby Azure AD, můžete nakonfigurovat volitelné deklarace identity pro aplikaci v uživatelském rozhraní Azure Portal nebo manifestu aplikace. Další informace najdete v tématu [jak poskytnout volitelné deklarace identity vaší aplikaci Azure AD](/azure/active-directory/develop/active-directory-optional-claims).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyhledejte a vyberte **Azure Active Directory**.
 1. V části **Spravovat** vyberte **Registrace aplikací**.

@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160541"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789840"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Správa zájemců pro komerční tržiště
 
-
 Zákazníci jsou centrem jakékoli dobré firmy. V transformaci dnešního nákupu produktů se pracovníky marketingu musí soustředit na přímé připojení k zákazníkům a vytváření relací. Z tohoto důvodu je generování vysoce kvalitních potenciálních zákazníků důležitým nástrojem pro váš prodejní cyklus. Po výpisu vaší nabídky v [partnerském centru](https://partner.microsoft.com/)jsou k dispozici nástroje, které vám umožní programově získat kontaktní informace zákazníka hned, co zákazník vyjádří zájem, nebo nasadí váš produkt na webu Marketplace. 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>Co jsou zájemci na webu Marketplace?
 
 Zájemci pocházejí od zákazníků, kteří si zajímá nebo nasazují vaše produkty z Marketplace. Bez ohledu na to, jestli je váš produkt uvedený na Azure Marketplace nebo AppSource, budete moct dostávat zájemce ze strany zákazníků, jakmile je správně nastavil (a) z vašeho CRM do vašich seznamů v partnerském centru. 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>Jak připojit systém CRM k partnerskému centru
 
@@ -48,7 +44,7 @@ Po správném nakonfigurování cíle potenciálního zákazníka a jeho publiko
 
 Po dokončení technického nastavení byste měli tyto zájemce začlenit do svého aktuálního & marketingové strategie a provozní procesy. Uvažujete o tom, abychom lépe porozuměli celkovému procesu prodeje a chtěli byste úzce spolupracovat s vámi na poskytování vysoce kvalitních zájemců a dostatečného množství dat, aby bylo možné to úspěšně provést. Uvítáme vaše názory na to, jak můžeme optimalizovat a zdokonalovat zájemce, abychom vám poslali další data, abychom těmto zákazníkům pomohli zajistit úspěch. Dejte nám vědět, pokud máte zájem o poskytování zpětné vazby a návrhů, které umožní vašemu prodejnímu týmu větší úspěšnost s zájemci na webu Marketplace.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Běžné chyby konfigurace potenciálních zákazníků během publikování v partnerském centru
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Běžné chyby konfigurace potenciálních zákazníků během publikování v partnerském centru
 
 **Nepovedlo se uložit zájemce do Dynamics CRM. Ověřte nastavení účtu Dynamics CRM. LastCRMError: nepovedlo se přihlásit k Dynamics CRM, LastCRMException:** 
 

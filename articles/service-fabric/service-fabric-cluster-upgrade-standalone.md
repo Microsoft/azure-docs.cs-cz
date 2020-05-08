@@ -3,12 +3,12 @@ title: Upgrade samostatného clusteru Azure Service Fabric
 description: Přečtěte si informace o upgradu verze nebo konfigurace samostatného clusteru Azure Service Fabric.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451830"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790639"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Upgrade a aktualizace samostatného clusteru Service Fabric
 
@@ -38,7 +38,7 @@ Aplikace orchestrace oprav (POA) je Service Fabric aplikace, která automatizuje
 
 ## <a name="next-steps"></a>Další kroky
 * Informace o tom, jak přizpůsobit některá [nastavení prostředků infrastruktury Service Fabric pro clustery](service-fabric-cluster-fabric-settings.md)
-* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-up-down.md) .
+* Přečtěte si, jak [škálovat cluster na úrovni a ven](service-fabric-cluster-scale-in-out.md) .
 * Další informace o [upgradech aplikací](service-fabric-application-upgrade.md)
 
 <!--Image references-->

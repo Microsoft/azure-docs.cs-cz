@@ -3,12 +3,12 @@ title: Referenční informace o chybě pro kontroly stavu
 description: Kódy chyb a možná řešení problémů nalezené spuštěním příkazu AZ ACR check-Health Diagnostic v Azure Container Registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289137"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978310"
 ---
 # <a name="health-check-error-reference"></a>Informace o chybě kontroly stavu
 
@@ -58,7 +58,7 @@ Tato chyba znamená, že DNS pro daný přihlašovací server registru byl testo
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403 zakázaným stavem protokolu HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně kvůli konfiguraci virtuální sítě. Chcete-li zobrazit aktuálně konfigurovaná pravidla brány firewall `az acr show --query networkRuleSet --name <registry>`, spusťte příkaz.
+Tato chyba znamená, že koncový bod výzvy pro daný registr odpověděl s 403 zakázaným stavem protokolu HTTP. Tato chyba znamená, že uživatelé nemají přístup k registru, pravděpodobně kvůli konfiguraci virtuální sítě nebo protože přístup k veřejnému koncovému bodu registru není povolen. Chcete-li zobrazit aktuálně konfigurovaná pravidla brány firewall `az acr show --query networkRuleSet --name <registry>`, spusťte příkaz.
 
 *Potenciální řešení*: odebrat pravidla virtuální sítě nebo přidat aktuální IP adresu klienta do seznamu povolených.
 

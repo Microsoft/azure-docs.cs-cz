@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pro externí uživatele pomocí RBAC a Azure Portal
-description: Přečtěte si, jak udělit přístup k prostředkům Azure pro uživatele, kteří jsou externí pro organizaci, pomocí řízení přístupu na základě role (RBAC) na úrovni Azure.
+title: Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele pomocí Azure Portal – Azure RBAC
+description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele mimo organizaci pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245639"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735755"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pro externí uživatele typu Host pomocí Azure RBAC a Azure Portal
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal
 
-[Řízení přístupu na základě role (RBAC) v Azure](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít RBAC a udělit pouze oprávnění, která uživatelé v prostředí potřebují.
+[Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) umožňuje lepší správu zabezpečení pro velké organizace a malé a středně velké firmy pracující s externími spolupracovníky, dodavateli nebo prodejci, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale ne nutně k celé infrastruktuře nebo k žádným oborům souvisejícím s fakturací. Funkce v [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) můžete využít ke spolupráci s externími uživateli typu Host a můžete použít Azure RBAC k udělení pouze oprávnění, která uživatelé v prostředí potřebují.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,7 +69,7 @@ Další informace o procesu pozvánky najdete v tématu [Azure Active Directory 
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Přidání přiřazení role pro uživatele typu Host
 
-Pokud chcete udělit přístup, přiřaďte roli ve RBAC. Chcete-li přidat přiřazení role pro uživatele typu Host, postupujte [stejným způsobem](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity. Postupujte podle těchto kroků a přidejte přiřazení role pro uživatele typu Host v různých oborech.
+V Azure RBAC pro udělení přístupu přiřadíte roli. Chcete-li přidat přiřazení role pro uživatele typu Host, postupujte [stejným způsobem](role-assignments-portal.md#add-a-role-assignment) jako u člena, skupiny, instančního objektu nebo spravované identity. Postupujte podle těchto kroků a přidejte přiřazení role pro uživatele typu Host v různých oborech.
 
 1. Na webu Azure Portal klikněte na **Všechny služby**.
 

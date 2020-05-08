@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457293"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778460"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Podmíněný přístup: cloudové aplikace nebo akce
 
@@ -71,7 +71,7 @@ Správci můžou k těmto cloudovým aplikacím od Microsoftu přiřazovat zása
 
 Office 365 poskytuje cloudové služby pro produktivitu a spolupráci, jako je Exchange, SharePoint a Microsoft Teams. Cloudové služby Office 365 jsou integrovány, aby bylo zajištěno hladké a spolupracující prostředí. Tato integrace může při vytváření zásad způsobit nejasnost, protože některé aplikace, jako je například Microsoft teams, mají závislosti na jiných, jako je SharePoint nebo Exchange.
 
-Aplikace Office 365 (Preview) umožňuje zaměřit se na tyto služby najednou. Místo cílení na jednotlivé cloudové aplikace doporučujeme použít novou aplikaci Office 365 (Preview). Cílení na tuto skupinu aplikací pomáhá zabránit problémům, ke kterým může dojít kvůli nekonzistentním zásadám a závislostem.
+Aplikace Office 365 (Preview) umožňuje zaměřit se na tyto služby najednou. Doporučujeme používat novou aplikaci Office 365 (Preview) místo cílení na jednotlivé cloudové aplikace, abyste se vyhnuli problémům se [závislostmi služby](service-dependencies.md). Cílení na tuto skupinu aplikací pomáhá zabránit problémům, ke kterým může dojít kvůli nekonzistentním zásadám a závislostem.
 
 Správci se můžou rozhodnout vyloučit konkrétní aplikace ze zásad, pokud si chtějí zahrnout aplikaci Office 365 (Preview) a vyloučit konkrétní aplikace podle jejich výběru v zásadách.
 

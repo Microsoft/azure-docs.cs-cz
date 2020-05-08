@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a4c02369f44255dfa472202215496378d41f8c6c
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735721"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983019"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Vypsání přiřazení rolí Azure pomocí Azure Portal
 
@@ -32,7 +32,9 @@ ms.locfileid: "82735721"
 
 Nejjednodušší způsob, jak zobrazit role přiřazené uživateli nebo skupině v rámci předplatného, je použít podokno **prostředky Azure** .
 
-1. V Azure Portal klikněte na **všechny služby** a pak vyberte **Uživatelé** nebo **skupiny**.
+1. V Azure Portal v nabídce Azure Portal vyberte **všechny služby** .
+
+1. Vyberte **Azure Active Directory** a pak vyberte **Uživatelé** nebo **skupiny**.
 
 1. Klikněte na uživatele nebo skupinu, pro kterou chcete zobrazit seznam přiřazení rolí.
 

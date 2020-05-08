@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal (Preview) – Azure RBAC
-description: Naučte se vytvářet vlastní role Azure pro řízení přístupu na základě role Azure (Azure RBAC) pomocí Azure Portal. Zahrnuje to, jak vypisovat, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal – Azure RBAC
+description: Naučte se vytvářet vlastní role Azure pomocí Azure Portal a řízení přístupu na základě role v Azure (Azure RBAC). Zahrnuje to, jak vypisovat, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,23 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77674867"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734175"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure Portal (Preview)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Pomocí Azure Portal vytvořit nebo aktualizovat vlastní role Azure
 
-> [!IMPORTANT]
-> Vlastní role Azure pomocí Azure Portal jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
-> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak vytvořit vlastní role pomocí Azure Portal (aktuálně ve verzi Preview).
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní vlastní role Azure. Stejně jako předdefinované role můžete uživatelům, skupinám a instančním objektům přiřadit vlastní role v oborech předplatného a skupiny prostředků. Vlastní role se ukládají v adresáři Azure Active Directory (Azure AD) a můžou se sdílet mezi předplatnými. Každý adresář může mít až 5000 vlastních rolí. Vlastní role se dají vytvořit pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Tento článek popisuje, jak pomocí Azure Portal vytvořit vlastní role.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,7 +72,7 @@ Pokud budete chtít, můžete podle těchto kroků začít vlastní roli úplně
 
 1. V Azure Portal otevřete předplatné nebo skupinu prostředků, ve které chcete přiřadit vlastní roli, a pak otevřete **řízení přístupu (IAM)**.
 
-1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli (Preview)**.
+1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli**.
 
     ![Přidat vlastní nabídku role](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Pokud dáváte přednost, můžete v souboru JSON zadat většinu vlastních hod
     }
     ```
 
-1. V souboru JSON zadejte hodnoty pro různé vlastnosti. Tady je příklad s přidanými hodnotami. Informace o různých vlastnostech naleznete v tématu [Principy definic rolí](role-definitions.md).
+1. V souboru JSON zadejte hodnoty pro různé vlastnosti. Tady je příklad s přidanými hodnotami. Informace o různých vlastnostech najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
 
     ```json
     {
@@ -141,7 +136,7 @@ Pokud dáváte přednost, můžete v souboru JSON zadat většinu vlastních hod
     
 1. V Azure Portal otevřete stránku **řízení přístupu (IAM)** .
 
-1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli (Preview)**.
+1. Klikněte na **Přidat** a pak klikněte na **Přidat vlastní roli**.
 
     ![Přidat vlastní nabídku role](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Pokud oprávnění vyloučíte, přidá se jako `NotActions` nebo. `NotDataActio
 
 ## <a name="step-5-assignable-scopes"></a>Krok 5: přiřazení oborů
 
-Na kartě **přiřadit obory** určete, kde má být vaše vlastní role k dispozici pro přiřazení, jako je například předplatné nebo skupina prostředků. V závislosti na tom, jak se rozhodnete začít, může tato karta obsahovat seznam rozsahů, ve kterých jste otevřeli stránku řízení přístupu (IAM). Nastavení přiřaditelné oboru ke kořenovému oboru ("/") není podporováno. Pro tuto verzi Preview nemůžete přidat skupinu pro správu jako obor s přiřazením.
+Na kartě **přiřadit obory** určete, kde má být vaše vlastní role k dispozici pro přiřazení, jako je například předplatné nebo skupina prostředků. V závislosti na tom, jak se rozhodnete začít, může tato karta obsahovat seznam rozsahů, ve kterých jste otevřeli stránku řízení přístupu (IAM). Nastavení přiřaditelné oboru ke kořenovému oboru ("/") není podporováno. V současné době nemůžete přidat skupinu pro správu jako přiřazovatelné obory.
 
 1. Kliknutím na **Přidat přidružitelné obory** otevřete podokno přidat přiřazovatelné obory.
 
@@ -352,6 +347,6 @@ Pomocí těchto kroků můžete zobrazit vlastní role.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření vlastní role pomocí Azure PowerShellu](tutorial-custom-role-powershell.md)
-- [Vlastní role v Azure](custom-roles.md)
+- [Kurz: Vytvoření vlastní role Azure pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Vlastní role Azure](custom-roles.md)
 - [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)

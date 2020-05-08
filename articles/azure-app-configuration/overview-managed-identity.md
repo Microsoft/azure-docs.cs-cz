@@ -1,18 +1,18 @@
 ---
 title: Konfigurace spravovaných identit pomocí Azure App Configuration
 description: Zjistěte, jak spravované identity fungují v konfiguraci aplikací Azure a jak nakonfigurovat spravovanou identitu.
-author: jpconnock
+author: barbkess
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: jeconnoc
+ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
-ms.openlocfilehash: fe66466395a100221e6a3cdebdef870bdf195afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77623033"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981217"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Jak používat spravované identity pro konfiguraci aplikací Azure
 
