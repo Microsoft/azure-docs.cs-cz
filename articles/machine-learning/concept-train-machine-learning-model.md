@@ -1,5 +1,5 @@
 ---
-title: Metody školení modelu
+title: Sestavování &ch výukových modelů
 titleSuffix: Azure Machine Learning
 description: Seznamte se s různými metodami, které můžete použít k proškolování modelu pomocí Azure Machine Learning. Odhady poskytují snadný způsob, jak pracovat s oblíbenými rozhraními, jako jsou Scikit-učení, TensorFlow, Keras, PyTorch a chainer. Machine Learning kanály usnadňují plánování bezobslužného spouštění, používání heterogenních výpočetních prostředí a používání částí pracovního postupu. A konfigurace spuštění poskytují podrobnou kontrolu nad výpočetními cíli, na kterých běží školicí proces.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129773"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792339"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Výuka modelů pomocí Azure Machine Learning
 

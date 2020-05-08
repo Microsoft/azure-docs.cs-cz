@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182731"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791761"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kvóty služby Azure Cosmos DB
 
@@ -138,9 +138,9 @@ Cosmos DB používá pro autorizaci HMAC. K prostředkům, jako jsou kontejnery,
 
 Cosmos DB podporuje provádění triggerů během zápisu. Služba podporuje maximálně jednu aktivační událost a jednu operaci post-Trigger na operaci zápisu. 
 
-## <a name="autoscale-mode-limits"></a>Omezení režimu automatického škálování
+## <a name="limits-for-autoscale-provisioned-throughput"></a>Omezení pro zřízenou propustnost automatického škálování
 
-Omezení propustnosti a úložiště v režimu automatického škálování najdete v článku věnovaném [automatickému škálování](provision-throughput-autoscale.md#autoscale-limits) .
+Omezení propustnosti a úložiště pomocí automatického škálování najdete v článku věnovaném [automatickému škálování](provision-throughput-autoscale.md#autoscale-limits) .
 
 ## <a name="sql-query-limits"></a>Omezení dotazu SQL
 

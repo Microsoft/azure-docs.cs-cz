@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587171"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744747"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
@@ -44,7 +44,7 @@ Kromě vyhrazených rolí RBAC v Azure jsou k dispozici role RBAC Azure a Log An
 > Role Log Analytics taky udělují přístup pro čtení napříč všemi prostředky Azure, ale přiřazují jenom oprávnění k zápisu do prostředků Log Analytics.
 
 
-Například uživatel, který je přiřazený ke **službě Azure Sentinel Reader** a **přispěvatelům Azure** (ne **přispěvateli Azure Sentinel**), bude moct upravovat data ve službě Azure Sentinel, i když mají jenom oprávnění ke **čtení pomocí ověřovacích** dat. Proto pokud chcete udělit oprávnění pouze v rámci Azure Sentinel, měli byste pečlivě odebrat předchozí oprávnění tohoto uživatele, abyste se ujistili, že jste nenarušili žádnou potřebnou roli oprávnění pro jiný prostředek.
+Například uživatel, který je přiřazený ke **službě Azure Sentinel Reader** a **přispěvatelům Azure** (ne **přispěvateli Azure Sentinel**), bude moct upravovat data ve službě Azure Sentinel, i když mají jenom oprávnění ke **čtení pomocí ověřovacích** dat. Proto pokud chcete uživateli udělit oprávnění pouze v rámci Azure Sentinel, měli byste pečlivě odebrat předchozí oprávnění tohoto uživatele a ujistit se, že jste nenarušili žádnou potřebnou roli oprávnění pro jiný prostředek.
 
 > [!NOTE]
 >- Sentinel Azure používá playbooky pro automatickou reakci na hrozby. Playbooky využívá Azure Logic Apps a jsou samostatným prostředkem Azure. Můžete chtít přiřadit konkrétní členy týmu operací zabezpečení s možností použití Logic Apps pro operace orchestrace, automatizace a odezva zabezpečení (společnosti). Roli [Přispěvatel aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-contributor) nebo [operátora aplikace logiky](../role-based-access-control/built-in-roles.md#logic-app-operator) můžete použít k přiřazení explicitního oprávnění pro použití playbooky.

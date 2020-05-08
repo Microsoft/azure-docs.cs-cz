@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274572"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791999"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Příklad: Vytvoření vlastní dovednosti pro rozpoznávání formulářů
 
@@ -164,8 +164,8 @@ Pokud chcete tuto dovednost použít v kanálu Kognitivní hledání, budete mus
 
 V této příručce jste vytvořili vlastní dovednost ze služby pro rozpoznávání formulářů Azure. Další informace o vlastních dovednostech najdete v následujících zdrojích. 
 
-* [Azure Search schopnosti napájení: úložiště vlastních dovedností](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure Search schopnosti napájení: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)
 * [Definování dovedností](cognitive-search-defining-skillset.md)
-* [Vytvoření dovednosti (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [Vytvoření dovednosti (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [Obohacená pole mapy](cognitive-search-output-field-mapping.md)

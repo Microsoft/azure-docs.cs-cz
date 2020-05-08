@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586384"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791676"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Správa nákladů s využitím služby Azure Budgets
 
@@ -273,7 +273,7 @@ Dále nakonfigurujete prostředí **Postman** a vytvoříte rozpočet zavolání
 1. Nastavte **hodnotu** na token, který jste vytvořili pomocí projektu ArmClient na konci poslední části.
 1. V prostředí Postman vyberte kartu **Body** (Text zprávy).
 1. Vyberte možnost **nezpracovaného** tlačítka.
-1. Do textového pole vložte níže uvedenou definici ukázkového rozpočtu, ale v adrese URL i v textu požadavku musíte nahradit parametry **subscriptionID**, **budgetname**, a **actiongroupname** za ID předplatného, jedinečný název rozpočtu a název skupiny akcí, kterou jste vytvořili:
+1. Do textového pole vložte níže uvedenou definici ukázkového rozpočtu, ale v adrese URL i v textu požadavku musíte za parametry `subscriptionID`, `resourcegroupname` a `actiongroupname` nahradit ID předplatného, jedinečný název skupiny prostředků a název skupiny akcí, kterou jste vytvořili:
 
     ```
         {

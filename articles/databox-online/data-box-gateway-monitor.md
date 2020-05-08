@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 886bff3f57f101229c04e91cfa4cf85051f8b1c6
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60754951"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561101"
 ---
 # <a name="monitor-your-azure-data-box-gateway"></a>Monitorování Azure Data Box Gateway
 
-Tento článek popisuje, jak monitorovat Azure Data Box Gateway. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky.
+Tento článek popisuje, jak monitorovat Azure Data Box Gateway. Pokud chcete monitorovat své zařízení, můžete použít Azure Portal nebo místní webové uživatelské rozhraní. Pomocí Azure Portal můžete zobrazit události zařízení, konfigurovat a spravovat výstrahy a zobrazovat metriky. 
 
 V tomto článku získáte informace o těchto tématech:
 

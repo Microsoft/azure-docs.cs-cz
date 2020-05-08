@@ -4,12 +4,12 @@ description: Přečtěte si, jak škálovat nebo snížit kapacitu clusterů Azu
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258691"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793172"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Škálování clusterů Azure Service Fabric
 Cluster Service Fabric je sada virtuálních nebo fyzických počítačů připojených k síti, do kterých se vaše mikroslužby nasazují a spravují. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery můžou obsahovat potenciálně tisíce uzlů. Po vytvoření clusteru Service Fabric můžete škálovat cluster vodorovně (změnit počet uzlů) nebo vertikálně (změnit prostředky uzlů).  Cluster můžete škálovat kdykoli, a to i v případě, že úlohy běží v clusteru.  I když se cluster škáluje, vaše aplikace se automaticky škálují.
@@ -29,13 +29,13 @@ Při škálování clusteru Azure mějte na paměti následující pokyny:
 - neprimární typy uzlů, na kterých běží stavová provozní zatížení, by měly mít vždycky pět nebo více uzlů.
 - neprimární typy uzlů, na kterých běží Bezstavová provozní zatížení, by měly mít vždycky dva nebo více uzlů.
 - Každý typ uzlu [úrovně trvanlivosti](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Gold nebo stříbrného by měl mít vždy pět nebo více uzlů.
-- Neodstraňujte náhodné instance virtuálních počítačů/uzly z typu uzlu, vždy použijte funkci škálování sady virtuálních počítačů. Odstranění náhodných instancí virtuálních počítačů může negativně ovlivnit schopnost systémů správně vyrovnávat zatížení.
+- Neodstraňujte náhodné instance virtuálních počítačů nebo uzly z typu uzlu, vždy použijte funkci škálování sady virtuálních počítačů s měřítkem. Odstranění náhodných instancí virtuálních počítačů může negativně ovlivnit schopnost systémů správně vyrovnávat zatížení.
 - Pokud používáte pravidla automatického škálování, nastavte pravidla tak, aby se škálování (odebírání instancí virtuálních počítačů) provádělo vždy v jednom uzlu. Horizontální navýšení kapacity více než jedné instance není bezpečné.
 
-Vzhledem k tomu, že typy uzlů Service Fabric v clusteru tvoří služby Virtual Machine Scale Sets v back-endu, můžete [nastavit pravidla automatického škálování nebo ručně škálovat](service-fabric-cluster-scale-up-down.md) jednotlivé typy uzlů nebo sady škálování virtuálních počítačů.
+Vzhledem k tomu, že typy uzlů Service Fabric v clusteru tvoří služby Virtual Machine Scale Sets v back-endu, můžete [nastavit pravidla automatického škálování nebo ručně škálovat](service-fabric-cluster-scale-in-out.md) jednotlivé typy uzlů nebo sady škálování virtuálních počítačů.
 
 ### <a name="programmatic-scaling"></a>Programové škálování
-V mnoha scénářích je vhodné škálovat [cluster ručně nebo s pravidly automatického škálování](service-fabric-cluster-scale-up-down.md) jsou dobrá řešení. U pokročilejších scénářů ale nemusí být správně vyhovující. K potenciálním nevýhodám těchto přístupů patří:
+V mnoha scénářích je vhodné škálovat [cluster ručně nebo s pravidly automatického škálování](service-fabric-cluster-scale-in-out.md) jsou dobrá řešení. U pokročilejších scénářů ale nemusí být správně vyhovující. K potenciálním nevýhodám těchto přístupů patří:
 
 - Ruční škálování vyžaduje, abyste se přihlásili a explicitně vyžadovali operace škálování. Pokud se operace škálování vyžadují často nebo v nepředvídatelných časech, tento přístup nemusí být dobrým řešením.
 - Když pravidla automatického škálování odeberou instanci ze sady škálování virtuálních počítačů, automaticky neodstraní znalosti tohoto uzlu z přidruženého clusteru Service Fabric, pokud typ uzlu nemá úroveň odolnosti stříbrného nebo zlata. Vzhledem k tomu, že pravidla automatického škálování fungují na úrovni sady škálování (místo na úrovni Service Fabric), pravidla automatického škálování můžou odebrat Service Fabric uzlů, aniž by je bylo možné řádně vypnout. Tento hrubé uzel po dokončení operací škálování ponechá stav "Ghost" Service Fabric uzlu. Jednotlivec (nebo služba) by musel pravidelně vyčistit odebraný stav uzlu v clusteru Service Fabric.

@@ -1,24 +1,24 @@
 ---
-title: Konfigurace vedoucích Microsoftu pro komerční tržiště pomocí tabulky Azure
-description: Naučte se používat tabulku Azure ke správě potenciálních zákazníků z Microsoft AppSource a Azure Marketplace.
+title: Správa zájemců pomocí služby Azure Table Storage – komerční tržiště Microsoftu
+description: Naučte se používat službu Azure Table Storage ke konfiguraci zájemců pro Microsoft AppSource a Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131131"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791013"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>Konfigurace správy potenciálních zákazníků pomocí tabulky Azure
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Použití služby Azure Table Storage ke správě zájemců komerčních webů na webu Marketplace
 
-Pokud se v partnerském centru nepodporuje Podniková správa vztahů se zákazníky (CRM), aby přijímala Microsoft AppSource a Azure Marketplace potenciální zákazníky, můžete k těmto zájemcům využít tabulku Azure. Pak můžete exportovat data a importovat je do systému CRM. Pokyny v tomto článku vás provedou procesem vytvoření účtu Azure Storage a tabulky Azure v rámci tohoto účtu. Kromě toho můžete vytvořit nový tok pomocí Power Automata k odeslání e-mailového oznámení, když vaše nabídka dostane zájemce.
+Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketplace potenciálních zákazníků nepodporovaný systém pro řízení vztahů se zákazníky (CRM), můžete tyto zájemce zpracovat pomocí služby Azure Table Storage. Pak můžete exportovat data a importovat je do systému CRM. Tento článek vysvětluje, jak vytvořit účet služby Azure Storage a tabulku pod tímto účtem. Kromě toho můžete vytvořit nový tok pomocí Power Automata k odeslání e-mailového oznámení, když vaše nabídka dostane zájemce.
 
-## <a name="configure-an-azure-table"></a>Konfigurace tabulky Azure
+## <a name="configure-an-azure-storage-account"></a>Konfigurace účtu úložiště Azure
 
 1. Pokud nemáte účet Azure, můžete si [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
 1. Po aktivním účtu Azure se přihlaste k [Azure Portal](https://portal.azure.com).
@@ -32,7 +32,11 @@ Pokud se v partnerském centru nepodporuje Podniková správa vztahů se zákazn
 
         Další informace o účtech úložiště najdete v [kurzu rychlý Start](https://docs.microsoft.com/azure/storage/). Další informace o cenách služby Storage najdete v tématu [ceny služby Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Počkejte, než se zřídí účet úložiště. Tento proces obvykle trvá několik minut. Pak na **domovské** stránce Azure Portal přístup k účtu úložiště výběrem možnosti **Zobrazit všechny vaše prostředky**. Můžete také vybrat **všechny prostředky** z levého řádku nabídky Azure Portal.
+1. Počkejte, než se zřídí účet úložiště. Tento proces obvykle trvá několik minut. 
+
+## <a name="create-a-table-in-your-storage-account"></a>Vytvoření tabulky v účtu úložiště
+
+1. Na **domovské** stránce Azure Portal vyberte **Zobrazit všechny prostředky** pro přístup k účtu úložiště. Můžete také vybrat **všechny prostředky** z levého řádku nabídky Azure Portal.
 
     ![Přístup k účtu služby Azure Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ Pokud se v partnerském centru nepodporuje Podniková správa vztahů se zákazn
 
     Data v tabulce úložiště můžete zobrazit pomocí [Průzkumník služby Azure Storage](https://archive.codeplex.com/?p=azurestorageexplorer) nebo jakéhokoli jiného nástroje. Data můžete také exportovat v tabulce Azure. 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>Volitelné Použití Power Automate s tabulkou Azure 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Volitelné Použití Power Automate k získání oznámení o potenciálních zákazníků
 
-K automatizaci oznámení pokaždé, když se do tabulky Azure přidá zájemce, můžete použít [Power](https://docs.microsoft.com/flow/) automat. Pokud účet nemáte, můžete si [zaregistrovat bezplatný účet](https://flow.microsoft.com/).
+K automatizaci oznámení pokaždé, když se do tabulky Azure Storage přidáte zájemce, můžete použít [Power](https://docs.microsoft.com/flow/) automat. Pokud účet nemáte, můžete si [zaregistrovat bezplatný účet](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Příklad oznámení zájemce
 
-Tento příklad slouží jako Průvodce vytvořením jednoduchého toku, který automaticky pošle e-mailové oznámení při přidání nového zájemce do tabulky Azure. V tomto příkladu se nastaví opakování pro odeslání informací o vedoucích každé hodiny, pokud se aktualizuje tabulka úložiště.
+Tento příklad vytvoří tok, který automaticky pošle e-mailové oznámení při přidání nového zájemce do úložiště tabulek Azure. V tomto příkladu se nastaví opakování pro odeslání informací o vedoucích každé hodiny, pokud se aktualizuje tabulka úložiště.
 
 1. Přihlaste se ke svému účtu Power automat.
 1. Na levém panelu vyberte **Moje toky**.
@@ -89,21 +93,21 @@ Tento příklad slouží jako Průvodce vytvořením jednoduchého toku, který 
    >[!TIP] 
    >Tok můžete kdykoli zkontrolovat, abyste ověřili, jestli je každý krok správně nakonfigurovaný. Pokud chcete tok kontrolovat, vyberte v řádku nabídek **Flow** možnost **Kontrola toku** .
 
-   V další sadě kroků se připojíte ke své tabulce Azure a nastavíte logiku zpracování pro zpracování nových potenciálních zákazníků.
+   V další sadě kroků se připojíte k tabulce a nastavíte logiku zpracování pro zpracování nových potenciálních zákazníků.
 
-1. Po kroku 8 vyberte **+ Nový krok**. Pak v okně **Zvolte akci** vyhledejte **entity Get** .
+1. Vyberte **+ Nový krok**. Pak v okně **Zvolte akci** vyhledejte **entity Get** .
 1. V části **Akce**vyberte **získat entity (Azure Table Storage)**.
 1. V okně **Azure Table Storage** zadejte informace do následujících polí a vyberte **vytvořit**:
 
-    * **Název připojení**: zadejte smysluplný název pro připojení, které jste navázáni mezi tímto tokem a tabulkou Azure.
-    * **Název účtu úložiště**: zadejte název účtu úložiště pro tabulku Azure. Tento název najdete na stránce **přístupové klíče** účtu úložiště.
-    * **Klíč sdíleného úložiště**: zadejte hodnotu klíče pro váš účet úložiště pro tabulku Azure. Tuto hodnotu najdete na stránce **přístupové klíče** účtu úložiště.
+    * **Název připojení**: zadejte smysluplný název pro připojení, které jste navázáni mezi tímto tokem a tabulkou.
+    * **Název účtu úložiště**: zadejte název účtu úložiště pro tabulku. Tento název najdete na stránce **přístupové klíče** účtu úložiště.
+    * **Klíč sdíleného úložiště**: zadejte hodnotu klíče pro váš účet úložiště pro vaši tabulku. Tuto hodnotu najdete na stránce **přístupové klíče** účtu úložiště.
 
       ![Okno Azure Table Storage](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    Po výběru položky **vytvořit**se zobrazí okno **získat entity** . Tady vyberte **Zobrazit upřesňující možnosti**a zadejte informace pro následující pole:
 
-   * **Tabulka**: vyberte název úložiště Azure Table (z kroku 6 pokynů v části Konfigurace tabulky Azure). Následující obrázek ukazuje výzvu, když je pro tento příklad vybrána tabulka "marketplaceleads".
+   * **Tabulka**: vyberte název tabulky (z části [vytvořit tabulku](#create-a-table-in-your-storage-account)). Následující obrázek ukazuje výzvu, když je pro tento příklad vybrána tabulka "marketplaceleads".
 
      ![Získat okno s entitami](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ Pokud neobdržíte žádná e-mailová oznámení o potenciálních zákaznící
 Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle těchto kroků.
 
 1. Pro vaši nabídku přejdete na stránku **nastavení nabídek** .
+
 1. V části **Správa zájemců** vyberte **připojit** .
-1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce**možnost **tabulka Azure** . Vložte do připojovacího řetězce z účtu služby Azure Storage, který jste vytvořili pomocí předchozích kroků v poli **připojovací řetězec účtu úložiště** .
+     ![Správa potenciálních zákazníků](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. V místním okně **Podrobnosti připojení** vyberte pro **cíl zájemce**možnost **tabulka Azure** . 
+     ![Řízení vedoucích, podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. Vložte do připojovacího řetězce z účtu služby Azure Storage, který jste vytvořili pomocí předchozích kroků v poli **připojovací řetězec účtu úložiště** .
+     ![Správa zájemců, účet úložiště podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **Kontaktní e-mail**: Zadejte e-maily pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
+
 1. Vyberte **OK**.
 
 Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, klikněte na tlačítko **ověřit** . V případě úspěchu budete mít vedoucího testu v cíli realizace.
@@ -188,10 +201,3 @@ Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, kliknět
 >Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.
 
 Po vygenerování zájemců pošle společnost Microsoft zájemce do tabulky Azure. Pokud jste nakonfigurovali tok, pošle se e-mail na e-mailovou adresu, kterou jste nakonfigurovali.
-
-![Správa potenciálních zákazníků](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![Řízení vedoucích, podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![Správa zájemců, účet úložiště podrobnosti o připojení](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

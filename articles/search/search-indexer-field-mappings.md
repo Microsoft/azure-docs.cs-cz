@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116260"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791914"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mapování polí a transformace pomocí indexerů Azure Kognitivní hledání
 
@@ -28,7 +28,7 @@ Některé situace, kdy je vhodné mapování polí:
 * Je potřeba kódovat nebo dekódovat data v kódování Base64. Mapování polí podporují několik **funkcí mapování**, včetně funkcí pro kódování a dekódování base64.
 
 > [!NOTE]
-> Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](https://docs.microsoft.com/zure/data-factory/).
+> Mapování polí v indexerech je jednoduchý způsob, jak mapovat datová pole k indexovaným polím, a to s určitou možností pro převod dat s lehkým zatížením. Složitější data mohou vyžadovat předběžné zpracování, aby bylo možné je znovu natvarovat do formuláře, který je přispívající k indexování. Jedna z možností, kterou můžete zvážit, je [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Nastavení mapování polí
 
@@ -188,7 +188,7 @@ Následující tabulka porovnává různá kódování Base64 řetězce `00>00?0
 | Base64 s odsazením | `MDA+MDA/MDA=` | Používejte znaky bezpečné pro URL a odstraňte odsazení. | Použití standardních znaků Base64 a přidání odsazení |
 | Base64 bez odsazení | `MDA+MDA/MDA` | Použít znaky bezpečné pro URL | Použití standardních znaků base64 |
 | Zabezpečená adresa URL – Base64 s odsazením | `MDA-MDA_MDA=` | Odebrat odsazení | Přidat odsazení |
-| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádná | Žádná |
+| Zabezpečená adresa URL – bez odsazení kódu base64 | `MDA-MDA_MDA` | Žádné | Žádné |
 
 <a name="extractTokenAtPositionFunction"></a>
 

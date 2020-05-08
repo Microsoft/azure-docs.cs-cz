@@ -1,54 +1,54 @@
 ---
-title: Zabezpečení – databáze Azure pro MariaDB
-description: Přehled funkcí zabezpečení v Azure Database pro MariaDB.
+title: Zabezpečení – Azure Database for MariaDB
+description: Přehled funkcí zabezpečení v Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8f41fe1005e96b428337bc73b9d468962a079596
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79527822"
 ---
 # <a name="security-in-azure-database-for-mariadb"></a>Zabezpečení ve službě Azure Database for MariaDB
 
-Existuje několik vrstev zabezpečení, které jsou k dispozici k ochraně dat v databázi Azure pro server MariaDB. Tento článek popisuje tyto možnosti zabezpečení.
+K ochraně dat na vašem serveru Azure Database for MariaDB je k dispozici několik vrstev zabezpečení. Tento článek popisuje tyto možnosti zabezpečení.
 
 ## <a name="information-protection-and-encryption"></a>Ochrana informací a šifrování
 
-### <a name="in-transit"></a>V tranzitu
-Azure Database for MariaDB zabezpečuje vaše data šifrováním dat při přenosu pomocí zabezpečení transportní vrstvy. Šifrování (SSL/TLS) je vynuceno ve výchozím nastavení.
+### <a name="in-transit"></a>Při přenosu
+Azure Database for MariaDB zabezpečuje vaše data šifrováním přenášených dat pomocí Transport Layer Security. Šifrování (SSL/TLS) se ve výchozím nastavení vynutilo.
 
-### <a name="at-rest"></a>V klidu
-Služba Azure Database for MariaDB používá kryptografický modul ověřený fips 140-2 pro šifrování dat v klidovém stavu. Data, včetně záloh, jsou šifrována na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá 256bitovou šifru AES, která je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
+### <a name="at-rest"></a>V klidovém případě
+Služba Azure Database for MariaDB používá šifrovací modul ověřený 140-2 Standard FIPS pro šifrování úložiště neaktivních dat. Data včetně záloh se šifrují na disku, s výjimkou dočasných souborů vytvořených při spouštění dotazů. Služba používá algoritmus AES 256-bit, který je součástí šifrování úložiště Azure, a klíče jsou spravované systémem. Šifrování úložiště je vždycky aktivní a není možné ho zakázat.
 
 
 ## <a name="network-security"></a>Zabezpečení sítě
-Připojení k databázi Azure pro server MariaDB jsou nejprve směrovány prostřednictvím místní brány. Brána má veřejně přístupnou IP adresu, zatímco IP adresy serveru jsou chráněny. Další informace o bráně naleznete v [článku architektury připojení](concepts-connectivity-architecture.md).  
+Připojení k serveru Azure Database for MariaDB jsou nejprve směrována prostřednictvím místní brány. Brána má veřejně přístupnou IP adresu, zatímco IP adresy serveru jsou chráněné. Další informace o bráně najdete v [článku architektura připojení](concepts-connectivity-architecture.md).  
 
-Nově vytvořená databáze Azure pro server MariaDB má bránu firewall, která blokuje všechna externí připojení. Přestože se dostanou k bráně, není jim povoleno připojit se k serveru. 
+Nově vytvořený Azure Database for MariaDB Server má bránu firewall, která blokuje všechna externí připojení. I když dosáhnou brány, není jim dovoleno se připojit k serveru. 
 
-### <a name="ip-firewall-rules"></a>Pravidla brány firewall IP
-Pravidla brány firewall IP udělují přístup k serverům na základě původní adresy IP každého požadavku. Další informace najdete v [přehledu pravidel brány firewall.](concepts-firewall-rules.md)
+### <a name="ip-firewall-rules"></a>Pravidla brány firewall protokolu IP
+Pravidla brány firewall protokolu IP udělují přístup k serverům na základě zdrojové IP adresy jednotlivých požadavků. Další informace najdete v tématu [Přehled pravidel brány firewall](concepts-firewall-rules.md) .
 
 ### <a name="virtual-network-firewall-rules"></a>Pravidla brány firewall virtuální sítě
-Koncové body virtuální síťové služby rozšiřují připojení virtuální sítě přes páteřní síť Azure. Pomocí pravidel virtuální sítě můžete povolit azure databáze pro mariadb server povolit připojení z vybraných podsítí ve virtuální síti. Další informace naleznete v přehledu [koncového bodu služby virtuální sítě](concepts-data-access-security-vnet.md).
+Koncové body služby virtuální sítě prodlužují připojení k virtuální síti přes páteřní síť Azure. Pomocí pravidel virtuální sítě můžete povolit serveru Azure Database for MariaDB, aby bylo možné povolit připojení z vybraných podsítí ve virtuální síti. Další informace najdete v tématu [Přehled koncového bodu služby virtuální sítě](concepts-data-access-security-vnet.md).
 
 
 ## <a name="access-management"></a>Správa přístupu
 
-Při vytváření databáze Azure pro server MariaDB zadáte pověření pro uživatele správce. Tento správce lze použít k vytvoření dalších uživatelů MariaDB.
+Při vytváření Azure Database for MariaDBho serveru poskytnete přihlašovací údaje pro uživatele správce. Tento správce se dá použít k vytvoření dalších uživatelů MariaDB.
 
 
-## <a name="threat-protection"></a>Ochrana před hrozbami
+## <a name="threat-protection"></a>Ochrana před internetovými útoky
 
-Můžete se přihlásit k [rozšířené ochraně před hrozbami,](concepts-data-access-and-security-threat-protection.md) která detekuje neobvyklé aktivity indikující neobvyklé a potenciálně škodlivé pokusy o přístup k serverům nebo jejich zneužití.
+Můžete se rozhodnout pro [rozšířenou ochranu před internetovými útoky](concepts-data-access-and-security-threat-protection.md) , která detekuje neobvyklé aktivity indikující neobvyklé a potenciálně nebezpečné pokusy o přístup k serverům nebo jejich zneužití.
 
 [Protokolování auditu](concepts-audit-logs.md) je k dispozici ke sledování aktivity ve vašich databázích. 
 
 
 ## <a name="next-steps"></a>Další kroky
-- Povolení pravidel brány firewall pro [IP adresy](concepts-firewall-rules.md) nebo [virtuální sítě](concepts-data-access-security-vnet.md)
+- Povolit pravidla brány firewall pro [IP adresy](concepts-firewall-rules.md) nebo [virtuální sítě](concepts-data-access-security-vnet.md)

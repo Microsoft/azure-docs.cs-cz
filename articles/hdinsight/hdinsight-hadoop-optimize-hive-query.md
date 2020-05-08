@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390302"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791489"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimalizace dotazů Apache Hivu v Azure HDInsightu
 
@@ -198,5 +198,6 @@ Existuje více metod optimalizace, které je možné zvážit, například:
 V tomto článku jste se seznámili s několika běžnými metodami optimalizace dotazů na podregistr. Další informace najdete v následujících článcích:
 
 * [Použití Apache Hive ve službě HDInsight](hadoop/hdinsight-use-hive.md)
+* [Optimalizace Apache Hivu](./optimize-hive-ambari.md)
 * [Analýza dat zpoždění letů pomocí interaktivního dotazu ve službě HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analýza dat Twitteru pomocí Apache Hive ve službě HDInsight](hdinsight-analyze-twitter-data-linux.md)

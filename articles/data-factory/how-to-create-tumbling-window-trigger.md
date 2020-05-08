@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 97c8f8a5bb2111264e9459a7d2128c1ab7c2503d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7b01fb83ebd0c494f3f0f06a28dbf4e98c0b2d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414431"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592073"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Vytvoření aktivační události, která spustí kanál v přeskakujícím okně
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -102,13 +102,16 @@ Následující tabulka poskytuje podrobný přehled hlavních elementů JSON, kt
 | **interval** | Kladné celé číslo označující interval pro hodnotu **frequency**, která určuje, jak často se má aktivační událost spouštět. Pokud má například **interval** hodnotu 3 a **frekvence** je "hodina", aktivační událost se opakuje každé 3 hodiny. <br/>**Poznámka**: minimální interval okna je 5 minut. | Integer | Kladné celé číslo. | Ano |
 | **startTime**| První výskyt, který může být v minulosti. První interval triggeru je (**čas_spuštění**, **startTime** + **interval**čas_spuštění). | DateTime | Hodnota DateTime | Ano |
 | **endTime**| Poslední výskyt, který může být v minulosti. | DateTime | Hodnota DateTime | Ano |
-| **způsobené** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Časový interval<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | Ne |
+| **způsobené** | Doba, po kterou se má zpozdit začátek zpracování dat okna. Spuštění kanálu se spustí po očekávaném čase spuštění a **prodlevě**. **Prodleva** definuje, jak dlouho bude aktivační událost před aktivací nového běhu čekat po uplynutí doby platnosti. **Zpoždění** nezmění okno **čas_spuštění**. Například hodnota **zpoždění** 00:10:00 implikuje zpoždění 10 minut. | Časový interval<br/>(hh: mm: SS)  | Hodnota TimeSpan, kde výchozí hodnota je 00:00:00. | No |
 | **maxConcurrency** | Počet souběžných spuštění triggerů, které jsou aktivovány pro Windows, která jsou připravena. Například pro zálohování na celou hodinu běží u včerejších výsledků v 24 oknech. Pokud **maxConcurrency** = 10, aktivační události se aktivují jenom pro prvních 10 oken (00:00-01:00-09:00-10:00). Po dokončení prvních 10 aktivovaných spuštění kanálu se triggery spustí pro následující 10 Windows (10:00-11:00-19:00-20:00). Pokud budete pokračovat v tomto příkladu **maxConcurrency** = 10, pokud je k dispozici 10 Windows, je k dispozici 10 celkových spuštění kanálu. Pokud je k dispozici pouze 1 okno, je k dispozici pouze 1 spuštění kanálu. | Integer | Celé číslo od 1 do 50. | Ano |
-| **retryPolicy: počet** | Počet opakování před spuštěním kanálu je označený jako "neúspěšné".  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádné opakování). | Ne |
-| **retryPolicy: intervalInSeconds** | Prodleva mezi pokusy o opakování zadané v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | Ne |
-| **dependsOn: typ** | Typ TumblingWindowTriggerReference. Vyžaduje se, pokud je nastavená závislost. | Řetězec |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | Ne |
-| **dependsOn: velikost** | Velikost bubnového okna závislosti. | Časový interval<br/>(hh: mm: SS)  | Kladná hodnota TimeSpan, kde výchozí je velikost okna podřízené triggeru  | Ne |
+| **retryPolicy: počet** | Počet opakování před spuštěním kanálu je označený jako "neúspěšné".  | Integer | Celé číslo, kde výchozí hodnota je 0 (žádné opakování). | No |
+| **retryPolicy: intervalInSeconds** | Prodleva mezi pokusy o opakování zadané v sekundách. | Integer | Počet sekund, kde výchozí hodnota je 30. | No |
+| **dependsOn: typ** | Typ TumblingWindowTriggerReference. Vyžaduje se, pokud je nastavená závislost. | Řetězec |  "TumblingWindowTriggerDependencyReference", "SelfDependencyTumblingWindowTriggerReference" | No |
+| **dependsOn: velikost** | Velikost bubnového okna závislosti. | Časový interval<br/>(hh: mm: SS)  | Kladná hodnota TimeSpan, kde výchozí je velikost okna podřízené triggeru  | No |
 | **dependsOn: posun** | Posun triggeru závislosti. | Časový interval<br/>(hh: mm: SS) |  Hodnota TimeSpan, která musí být záporná v závislosti na sobě. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Samostatná závislost: Ano<br/>Jiné: ne  |
+
+> [!NOTE]
+> Po publikování triggeru bubnového okna nelze upravit **interval** a **četnost** úprav.
 
 ### <a name="windowstart-and-windowend-system-variables"></a>Systémové proměnné WindowStart a WindowEnd
 

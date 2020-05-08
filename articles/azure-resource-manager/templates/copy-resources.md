@@ -2,13 +2,13 @@
 title: Nasazení více instancí prostředků
 description: K nasazení typu prostředku mnohokrát použijte operaci kopírování a pole v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153314"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583383"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Iterace prostředků v šablonách ARM
 
@@ -18,7 +18,7 @@ Můžete také použít příkaz Kopírovat s [vlastnostmi](copy-properties.md),
 
 Pokud potřebujete určit, jestli je prostředek nasazený vůbec, viz [Podmínka elementu](conditional-resource-deployment.md).
 
-## <a name="resource-iteration"></a>Iterace prostředku
+## <a name="syntax"></a>Syntaxe
 
 Element Copy má následující obecný formát:
 
@@ -34,6 +34,23 @@ Element Copy má následující obecný formát:
 Vlastnost **Name** je libovolná hodnota, která identifikuje smyčku. Vlastnost **Count** určuje počet iterací, které chcete pro daný typ prostředku.
 
 Vlastnosti **Mode** a **BatchSize** můžete použít k určení, jestli se prostředky nasazují paralelně nebo v sekvenci. Tyto vlastnosti jsou popsány v [sériové nebo paralelní](#serial-or-parallel).
+
+## <a name="copy-limits"></a>Omezení kopírování
+
+Počet nemůže být větší než 800.
+
+Počet nemůže být záporné číslo. Pokud nasadíte šablonu s poslední verzí rozhraní příkazového řádku Azure CLI, PowerShellu nebo REST API, může to být nula. Konkrétně je nutné použít:
+
+* Azure PowerShell **2,6** nebo novější
+* Azure CLI **2.0.74** nebo novější
+* REST API verze **2019-05-10** nebo novější
+* [Odkazovaná nasazení](linked-templates.md) musí pro typ prostředku nasazení používat rozhraní API verze **2019-05-10** nebo novější.
+
+Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
+
+Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
+
+## <a name="resource-iteration"></a>Iterace prostředku
 
 Následující příklad vytvoří počet účtů úložiště, které jsou zadány v parametru **storageCount** .
 
@@ -257,14 +274,6 @@ Následující příklad ukazuje implementaci:
   ...
 }]
 ```
-
-## <a name="copy-limits"></a>Omezení kopírování
-
-Počet nemůže být větší než 800.
-
-Počet nemůže být záporné číslo. Pokud nasadíte šablonu s Azure PowerShell 2,6 nebo novějším, Azure CLI 2.0.74 nebo novějším nebo REST API verze **2019-05-10** nebo novější, můžete nastavit počet na nula. Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST API pro počet nepodporují nulu.
-
-Pomocí [úplného nasazení režimu](deployment-modes.md) s kopírováním buďte opatrní. Pokud znovu nasadíte v režimu úplného nasazení do skupiny prostředků, všechny prostředky, které nejsou zadané v šabloně po vyřešení smyčky kopírování, se odstraní.
 
 ## <a name="example-templates"></a>Příklady šablon
 

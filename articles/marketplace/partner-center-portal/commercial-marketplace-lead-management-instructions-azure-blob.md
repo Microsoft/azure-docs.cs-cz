@@ -1,32 +1,36 @@
 ---
-title: Tabulka Azure v programu pro komerční tržiště | Azure Marketplace
-description: Konfigurace správy zájemců pro Azure Blob
+title: Správa zájemců pomocí Azure Blob Storage – Microsoft Commercial Marketplace
+description: Naučte se používat Azure Blob ke konfiguraci zájemců pro Microsoft AppSource a Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285244"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792713"
 ---
-# <a name="lead-management-instructions-for-azure-blob"></a>Pokyny pro správu informací o službě Azure Blob
+# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Použití úložiště objektů BLOB v Azure ke správě zájemců z komerčního tržiště
 
 >[!Caution]
->Možnost Azure Blob pro zpracování zájemců z nabídky na webu Marketplace je zastaralá. Pokud teď máte nabídku publikovanou s konfigurací správy zájemců pro Azure Blob, nebudete už dostávat zákazníky od zákazníků. Aktualizujte prosím konfiguraci správy zájemců na kteroukoli z dalších možností správy vedoucích zákazníků. Seznamte se s dalšími možnostmi na [úvodní stránce vedoucího řízení](./commercial-marketplace-get-customer-leads.md).
+>Podpora komerčního tržiště pro úložiště objektů BLOB v Azure je zastaralá a už není možnost zpracovávat zájemce z vaší nabídky. Pokud teď máte nabídku komerčního tržiště se správou potenciálních zákazníků nakonfigurovanou pro Azure Blob, nebudete už dostávat potenciální zákazníky. Aktualizujte prosím konfiguraci správy zájemců na kteroukoli z dalších možností správy vedoucích zákazníků. Seznamte se s dalšími možnostmi na [úvodní stránce vedoucího řízení](./commercial-marketplace-get-customer-leads.md).
 
-Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech potenciálních zákazníků nepodporovaný systém pro správu vztahů se zákazníky (CRM), můžete tyto zájemce zpracovat pomocí objektu blob Azure. Pak můžete exportovat data a importovat je do systému CRM. Pokyny v tomto článku vám poskytnou postup vytvoření účtu Azure Storage a Azure Blob pod tímto účtem. Kromě toho můžete vytvořit nový tok pomocí Microsoft Flow k odeslání e-mailového oznámení, když vaše nabídka dostane zájemce.
+ Pokud se v partnerském centru pro příjem Microsoft AppSource a Azure Marketplace potenciálních zákazníků nepodporuje váš systém správy vztahů se zákazníky (CRM), můžete použít službu Azure Blob Storage. Pak můžete exportovat data a importovat je do systému CRM. Pokyny v tomto článku vás provedou procesem vytvoření účtu Azure Storage a objektu BLOB pod tímto účtem. Navíc můžete vytvořit nový tok pomocí Power Automata k odeslání e-mailového oznámení, když vaše nabídka dostane zájemce.
 
+>[!NOTE]
+>Konektor Power automat používaný v těchto pokynech vyžaduje placené předplatné k automatizaci. Než budete postupovat podle pokynů v tomto článku, ujistěte se, že tento účet máte.
 
-## <a name="how-to-configure-azure-blob"></a>Jak nakonfigurovat Azure Blob
+## <a name="configure-azure-blob-storage"></a>Konfigurace služby Azure Blob Storage
 
 1. Pokud nemáte účet Azure, můžete si [vytvořit bezplatný zkušební účet](https://azure.microsoft.com/pricing/free-trial/).
-1. Po aktivním účtu Azure se přihlaste k [Azure Portal](https://portal.azure.com).
-1. V Azure Portal vytvořte pomocí následujícího postupu účet úložiště.  
+
+2. Po aktivním účtu Azure se přihlaste k [Azure Portal](https://portal.azure.com).
+
+3. V Azure Portal vytvořte pomocí následujícího postupu účet úložiště.  
     1. V levém panelu nabídek vyberte **+ vytvořit prostředek** .  **Nové** podokno (okno) se zobrazí vpravo.
     2. V podokně **Nový** vyberte **úložiště** .  Na pravé straně se zobrazí **vybraný** seznam.
     3. Vyberte **účet úložiště** pro zahájení vytváření účtu.  Postupujte podle pokynů v článku [Vytvoření účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
@@ -65,7 +69,7 @@ Pokud se v partnerském centru pro příjem Azure Marketplacech a AppSourcech po
 
     ![Nový kontejner](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>Konfigurace nabídky pro odeslání zájemců do objektu blob Azure
+## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>Konfigurace nabídky pro odesílání zájemců do úložiště objektů BLOB v Azure
 
 Až budete připraveni ke konfiguraci informací o správě zájemce pro vaši nabídku na portálu pro publikování, postupujte podle následujících kroků:
 

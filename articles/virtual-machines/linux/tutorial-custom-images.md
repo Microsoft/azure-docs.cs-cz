@@ -22,7 +22,7 @@ ms.locfileid: "82792169"
 Vlastní image jsou podobné imagím z marketplace, ale vytváříte je sami. Vlastní image se dají použít ke spouštění konfigurací, jako jsou předběžné načítání aplikací, konfigurace aplikací a další konfigurace operačního systému. V tomto kurzu vytvoříte vlastní image virtuálního počítače Azure. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření virtuálního počítače z Image 
@@ -187,7 +187,7 @@ Azure také nabízí službu, která je založená na balíčku, [tvůrci imagí
 V tomto kurzu jste vytvořili vlastní image virtuálního počítače. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Vytvoření galerie sdílených imagí
+> * Vytvoření služby Shared Image Gallery
 > * Vytvoření definice obrázku
 > * Vytvoření verze image
 > * Vytvoření virtuálního počítače z Image 

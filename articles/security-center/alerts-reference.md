@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b96547b841c26f12aff2db781ce55c49ef9cde4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081604"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790622"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -294,7 +294,7 @@ Pod tabulkami upozornění je Tabulka popisující Azure Security Center dezakti
 |**Přístup z uzlu pro ukončení mandátu do účtu úložiště**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. Možnou příčinou může být útočník, který získal účet úložiště pomocí systému pro práci, nebo legitimního uživatele, který získal účet úložiště pomocí systému.|Zjišťování/využívání|Vysoká|
 |**Přístup z neobvyklého umístění do účtu úložiště**|Indikuje, že došlo ke změně vzoru přístupu k účtu Azure Storage. Někdo k tomuto účtu přistupoval z IP adresy považované za neznámou, pokud je v porovnání s poslední aktivitou. Buď útočník získal přístup k účtu, nebo byl oprávněný uživatel připojen z nového nebo neobvyklého zeměpisného umístění. Příkladem druhé z nich je Vzdálená údržba z nové aplikace nebo vývojáře.|Využívání|Nízká|
 |**Anonymní přístup k účtu úložiště**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB.|Využívání|Vysoká|
-|**Potenciální malware nahraný do účtu úložiště**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB oprávněným uživatelem.|LateralMovement|Vysoká|
+|**Potenciální malware nahraný do účtu úložiště**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Tato výstraha je analýzou reputace hodnot hash vycházející z výkonu analýzy hrozeb Microsoftu, která zahrnuje hodnoty hash pro viry, trojské koně, spyware a ransomwarem. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB legitimním uživatelem. Další informace o možnostech logiky hrozeb Microsoftu:https://go.microsoft.com/fwlink/?linkid=2128684 |LateralMovement|Vysoká|
 |**Neobvyklá kontrola přístupu v účtu úložiště**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|Střednědobé používání|
 |**Neobvyklé množství dat extrahovaných z účtu úložiště**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB.|Exfiltrace|Střednědobé používání|
 |**Neobvyklá aplikace, ke kterým se získal účet úložiště**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k vašemu účtu úložiště pomocí nové aplikace.|Využívání|Střednědobé používání|

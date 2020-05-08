@@ -1,17 +1,17 @@
 ---
+title: Podrobnosti o daních pro komerční tržiště Microsoftu
 Description: Pokud chcete pochopit finanční požadavky na výběr ceny, důsledky výběru a finanční zodpovědnost, přečtěte si v následujících tabulkách země a oblasti distribuce.
-title: Podrobnosti o dani | Azure Marketplace
-ms.date: 2/13/2020
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285159"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793019"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Podrobnosti o daních pro komerční vydavatele na webu Marketplace
 
@@ -23,10 +23,6 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 > [!IMPORTANT]
 > Daňová zodpovědnost za země/oblasti a okolnosti prodejce (jak je popsáno [níže](#reseller-countriesregions)) se zabývá příslušnou [smlouvou Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560), a to bez ohledu na informace v tabulce níže.
 > Všimněte si, že sloupec **násobitele výběrů** se vztahuje pouze na vydavatele. Daňové tarify uvedené v tomto sloupci se mohou kdykoli změnit a společnost Microsoft nemůže zaručit, že sazby v tabulkách níže budou vždy přesné.
-
-
-
- 
 
 | Země                   | Daňová úhrada pro výběr ceny                                                                                                             | Nenásobit výběr                    | Daňová zodpovědnost |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
@@ -262,19 +258,18 @@ Chcete-li porozumět finančním hlediskům pro výběr ceny a daňové zodpově
 | Zambie                           | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 | Zimbabwe                         | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně.                                                                   | Cena minus za Store                 | Vydavatel          |
 
-Následující platí pouze pro Azure Marketplace vydavatelů bez ohledu na cokoli, co je uvedeno výše: 
+Následující platí pouze pro Azure Marketplace vydavatelů bez ohledu na cokoli, co je uvedeno výše:
 
-| Země                   | Daňová úhrada pro výběr ceny                                                                                                             | Správa daní                    | 
+| Země                   | Daňová úhrada pro výběr ceny                                                                                                             | Správa daní                    |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Austrálie (pro nákupy provedené prostřednictvím všech scénářů nákupu zákazníků kromě smlouva Enterprise) | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Microsoft |
 | Austrálie (jenom pro nákupy provedené prostřednictvím smlouva Enterprise scénáři nákupu zákazníka) | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Vydavatel |
-| Brazílie | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Vydavatel **(viz země/oblasti prodejce)** |
-| Mexiko | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Vydavatel **(viz země/oblasti prodejce)** |
+| Brazílie | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Vydavatel (**Viz země/oblasti prodejce**) |
+| Mexiko | Vybraná cena představuje konečnou prodejní cenu a zahrnuje všechny příslušné daně. | Vydavatel (**Viz země/oblasti prodejce**) |
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Smíšené země nebo oblasti pro převod pro vydavatele
 
-
-Někteří finanční partneři Microsoftu mohou shromažďovat a hradit prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, pokud jsou k dispozici pro získání vašich aplikací nebo produktů v aplikaci prostřednictvím Storu v zemích nebo oblastech uvedených níže. V [sestavách](payout-summary.md#transaction-history-download-export) , které společnost Microsoft zpřístupňuje, budete identifikovat transakce, pro které má fakturační partner shromažďovat prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, které se vztahují na pořízení vašich aplikací nebo produktů v aplikaci prostřednictvím Storu. S výjimkou transakcí popsaných v těchto výkazech nebude společnost Microsoft ani její poskytovatelé fakturačních služeb odvádět žádné daně z prodeje, použití, zboží a služeb, přidané hodnoty nebo podobné daně vztahující se na platby Zákazníků za vaše Aplikace či Produkty z aplikace (IAP) v těchto zemích. Na vaší straně leží zodpovědnost za kontrolu všech vám předložených výkazů a za stanovení a vyrovnání všech závazků z nich plynoucích ohledně registrace, výběru a úhrady daní vztahujících se na transakce zahrnující vaše Aplikace či Produkty z aplikace (IAP).
+Někteří finanční partneři Microsoftu mohou shromažďovat a hradit prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, pokud jsou k dispozici pro získání vašich aplikací nebo produktů v aplikaci prostřednictvím Storu v zemích nebo oblastech uvedených níže. V [sestavách](payout-summary-overview.md#transaction-history-download-export) , které společnost Microsoft zpřístupňuje, budete identifikovat transakce, pro které má fakturační partner shromažďovat prodej, použití, zboží a služby, přidané hodnoty nebo podobné daně, které se vztahují na pořízení vašich aplikací nebo produktů v aplikaci prostřednictvím Storu. S výjimkou transakcí popsaných v těchto výkazech nebude společnost Microsoft ani její poskytovatelé fakturačních služeb odvádět žádné daně z prodeje, použití, zboží a služeb, přidané hodnoty nebo podobné daně vztahující se na platby Zákazníků za vaše Aplikace či Produkty z aplikace (IAP) v těchto zemích. Na vaší straně leží zodpovědnost za kontrolu všech vám předložených výkazů a za stanovení a vyrovnání všech závazků z nich plynoucích ohledně registrace, výběru a úhrady daní vztahujících se na transakce zahrnující vaše Aplikace či Produkty z aplikace (IAP).
 
 | Smíšené země/oblasti pro úhrady |
 |------------------------------------|
@@ -285,16 +280,13 @@ Někteří finanční partneři Microsoftu mohou shromažďovat a hradit prodej,
 
 V některých zemích nebo oblastech společnost Microsoft slouží jako prodejce, nikoli Váš agent, při vytváření aplikací a produktů v aplikacích, které jsou ve Storu dostupné. Další podrobnosti o podmínkách a ujednáních pro země nebo oblasti prodejce najdete v tématu smlouva o [Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560).
 
-Následující platí pouze pro Azure Marketplace vydavatelé: 
+Následující platí pouze pro Azure Marketplace vydavatelé:
 
 |                    Země/oblasti prodejce                                                                          |
 |------------------------------------------------------------------------------------------------------------------------|
 | Brazílie (pro nákupy provedené prostřednictvím všech scénářů nákupu zákazníků s výjimkou CSP) |
 | Mexiko (jenom pro nákupy provedené prostřednictvím smlouva Enterprise scénáři nákupu zákazníka) |
 
+## <a name="next-steps"></a>Další kroky
 
- 
-
-
-
-
+[Nastavení platebního účtu a daňových formulářů](set-up-your-payout-account-tax-forms.md)

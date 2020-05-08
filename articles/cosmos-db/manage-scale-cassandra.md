@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 94cdeff36553268d691fc968036c5264e77fddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188803"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791251"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Elastické škálování účtu Azure Cosmos DB rozhraní API Cassandra
 
@@ -58,9 +58,9 @@ Systém lze škálovat dynamicky pomocí kódu spuštěním příkazu [ALTER CQL
 
 Výhodou tohoto přístupu je, že vám umožní reagovat na požadavky na škálování dynamicky a vlastním způsobem, který odpovídá vaší aplikaci. S tímto přístupem můžete dál využívat ceny a sazby Standard RU/s. Pokud jsou požadavky na škálování vašeho systému hlavně předvídatelné (přibližně 70% nebo více), může být použití sady SDK s CQL cenově výhodnější metodou automatického škálování než použití automatického škálování. Nevýhodou tohoto přístupu je, že může být poměrně složitá implementace opakování, zatímco omezení rychlosti může zvýšit latenci.
 
-## <a name="use-autoscale"></a><a id="use-autoscale"></a>Použití automatického škálování
+## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>Použít zřízenou propustnost automatického škálování
 
-Kromě ručního nebo programového způsobu zřizování propustnosti můžete také nakonfigurovat kontejnery Azure Cosmos v režimu automatického škálování. Režim automatického škálování automaticky a okamžitě se škáluje podle potřeb spotřeby v zadaných rozsahech RU bez narušení SLA. Další informace najdete v článku [Vytvoření kontejnerů a databází Azure Cosmos v článku věnovaném režimu automatického škálování](provision-throughput-autoscale.md) .
+Kromě standardního (ručního) nebo programového způsobu zřizování propustnosti můžete nakonfigurovat také kontejnery Azure Cosmos v propustnosti zřízené pomocí automatického škálování. Automatické škálování automaticky a okamžitě se škáluje podle potřeb spotřeby v zadaném rozsahu RU bez narušení SLA. Další informace najdete v článku [Vytvoření kontejnerů a databází Azure Cosmos v tématu věnovaném automatickému škálování](provision-throughput-autoscale.md) .
 
 Výhodou tohoto přístupu je, že je nejjednodušší způsob, jak spravovat požadavky na škálování ve vašem systému. Garantuje, že neuplatní omezení četnosti **v rámci konfigurovaných rozsahů ru**. Nevýhodou je, že pokud jsou v systému předvídatelné požadavky na škálování, může být automatické škálování méně nákladově efektivním způsobem, jakým je potřeba zpracovat požadavky na škálování, než na základě výše uvedených přístupů na úrovni ovládacího prvku Bespoke nebo úrovně SDK.
 

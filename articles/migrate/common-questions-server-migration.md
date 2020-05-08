@@ -1,14 +1,14 @@
 ---
-title: Nejčastější dotazy k migraci Azure Migrate serveru
+title: Běžné otázky týkající se migrace Azure Migrate serveru
 description: Získejte odpovědi na běžné otázky týkající se použití migrace serveru Azure Migrate k migraci počítačů.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146038"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744325"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Migrace Azure Migrate serveru: běžné otázky
 
@@ -86,6 +86,10 @@ Můžete omezit pomocí NetQosPolicy. Příklad:
 AppNamePrefix, který se má použít v NetQosPolicy, je "GatewayWindowsService. exe". Můžete vytvořit zásadu na zařízení Azure Migrate, abyste omezili provoz replikace ze zařízení tím, že vytvoříte zásadu, jako je tato:
  
 New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1 MB
+
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Můžu migrovat virtuální počítače, které už jsou replikované do Azure? 
+
+Pokud se virtuální počítače už do Azure replikují jiným způsobem, nemůžete tyto počítače migrovat jako virtuální počítače pomocí migrace serveru Azure Migrate. Alternativním řešením je, že virtuální počítače můžete považovat za fyzické servery a migrovat je v souladu s [podporovanou migrací fyzického serveru](migrate-support-matrix-physical-migration.md).
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Kdy můžu migrovat počítače jako fyzické servery?
 

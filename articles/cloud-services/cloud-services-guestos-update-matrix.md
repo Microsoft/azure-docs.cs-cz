@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 4/22/2020
+ms.date: 5/4/2020
 ms.author: yohaddad
-ms.openlocfilehash: 83ecbf05ab892e0673b31df893f66b03373957b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19a442126fe2f090851236eb41cb6995df857c77
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101497"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791540"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Verze hostovaného operačního systému Azure a tabulka kompatibility SDK
 Poskytuje aktuální informace o nejnovějších vydáních hostovaného operačního systému Azure pro Cloud Services. Tyto informace vám pomohou naplánovat cestu upgradu před zakázáním hostovaného operačního systému. Pokud vaše role nakonfigurujete tak, aby používaly *Automatické* aktualizace HOSTOVANÉHO operačního systému, jak je popsáno v tématu [aktualizace nastavení operačního systému hosta v Azure][Azure Guest OS Update Settings], není důležité tuto stránku číst.
@@ -41,6 +41,9 @@ Poskytuje aktuální informace o nejnovějších vydáních hostovaného operač
 Nevíte, jak aktualizovat hostovaný operační systém? Podívejte se na [Toto][cloud updates] .
 
 ## <a name="news-updates"></a>Aktualizace zpráv
+
+###### <a name="may-4-2020"></a>**4. května 2020**
+Hostovaný operační systém v dubnu byl uvolněn. 
 
 ###### <a name="april-2-2020"></a>**2. dubna 2020**
 Hostovaný operační systém v březnu byl uvolněn. 
@@ -125,8 +128,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-6.18 _202004-01  |  4. května 2020  |  Post 6,20  |  
 |  WA-HOST-OS-6.17 _202003-01  |  2. dubna 2020  |  Post 6,19  |  
-|  WA-HOST-OS-6.16 _202002-01  |  5. března 2020  |  Post 6,18  |  
+|~~WA-HOST-OS-6.16 _202002-01~~|  5. března 2020  |  4. května 2020  |  
 |~~WA-HOST-OS-6.15 _202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-6.14 _201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-6.13 _201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
@@ -155,8 +159,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-5.42 _202004-01  |  4. května 2020  |  Post 5,44  |  
 |  WA-HOST-OS-5.41 _202003-01  |  2. dubna 2020  |  Post 5,43  |  
-|  WA-HOST-OS-5.40 _202002-01  |  5. března 2020  |  Post 5,42  |  
+|~~WA-HOST-OS-5.40 _202002-01~~|  5. března 2020  |  4. května 2020  |  
 |~~WA-HOST-OS-5.39 _202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-5.38 _201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-5.37 _201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
@@ -182,8 +187,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-4.77 _202004-01  |  4. května 2020  |  Post 4,79  |  
 |  WA-HOST-OS-4.76 _202003-01  |  2. dubna 2020  |  Post 4,78  |  
-|  WA-HOST-OS-4.75 _202002-01  |  5. března 2020  |  Post 4,77  |  
+|~~WA-HOST-OS-4.75 _202002-01~~|  5. března 2020  |  4. května 2020  |  
 |~~WA-HOST-OS-4.74 _202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-4.73 _201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-4.72 _201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
@@ -209,8 +215,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-3.84 _202004-01  |  4. května 2020  |  Post 3,86  |  
 |  WA-HOST-OS-3.83 _202003-01  |  2. dubna 2020  |  Post 3,85  |  
-|  WA-HOST-OS-3.82 _202002-01  |  5. března 2020  |  Post 3,84  |  
+|~~WA-HOST-OS-3.82 _202002-01~~|  5. března 2020  |  4. května 2020  |  
 |~~WA-HOST-OS-3.81 _202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-3.80 _201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-3.79 _201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  
@@ -236,8 +243,9 @@ Hostovaný operační systém v září vydal.
 
 | Konfigurační řetězec | Datum vydání | Zakázat datum |
 | --- | --- | --- |
+|  WA-HOST-OS-2.97 _202004-01  |  4. května 2020  |  Post 2,99  |  
 |  WA-HOST-OS-2.96 _202003-01  |  2. dubna 2020  |  Post 2,98  |  
-|  WA-HOST-OS-2.95 _202002-01  |  5. března 2020  |  Post 2,97  |  
+|~~WA-HOST-OS-2.95 _202002-01~~|  5. března 2020  |  4. května 2020  |  
 |~~WA-HOST-OS-2.94 _202001-01~~|  24. ledna 2020  |  2. dubna 2020  |  
 |~~WA-HOST-OS-2.93 _201912-01~~| 8. ledna 2020 | 5. března 2020 |  
 |~~WA-HOST-OS-2.92 _201911-01~~| 5. prosince 2019 | 24. ledna 2020 |  

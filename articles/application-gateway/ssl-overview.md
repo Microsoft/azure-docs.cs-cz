@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 286c9329be38055808571d8d32c724d27a61cbf3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311848"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855874"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
 
@@ -28,6 +28,10 @@ Application Gateway podporuje ukončení protokolu TLS v bráně, po kterém pro
 - **Správa certifikátů** – certifikáty je potřeba koupit a nainstalovat jenom na aplikační bránu, ne na všechny back-endové servery. Tím ušetříte čas i peníze.
 
 Ke konfiguraci ukončení protokolu TLS se vyžaduje, aby se certifikát TLS/SSL přidal do naslouchacího procesu, aby služba Application Gateway mohla odvodit symetrický klíč podle specifikace protokolu TLS/SSL. Symetrický klíč se pak použije k šifrování a dešifrování provozu odeslaného do brány. Certifikát TLS/SSL musí být ve formátu PFX (Personal Information Exchange). Tento formát souboru umožňuje exportovat privátní klíč, který služba Application Gateway vyžaduje k provádění šifrování a dešifrování provozu.
+
+> [!IMPORTANT] 
+> Upozorňujeme, že certifikát na naslouchací službě vyžaduje nahrání celého řetězu certifikátů. 
+
 
 > [!NOTE] 
 >

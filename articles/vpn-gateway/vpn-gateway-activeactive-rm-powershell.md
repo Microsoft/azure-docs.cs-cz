@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 436428c8f4a30706ab16ddace2d491287e620646
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244638"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559835"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Konfigurace připojení VPN S2S typu aktivní-aktivní pomocí bran Azure VPN
 
@@ -36,9 +36,7 @@ Pokud už máte bránu sítě VPN, můžete:
 Dohromady je můžete kombinovat a vytvořit tak složitější a vysoce dostupnou síťovou topologii, která vyhovuje vašim potřebám.
 
 > [!IMPORTANT]
-> Režim aktivní-aktivní používá jenom tyto SKU: 
->   * VpnGw1, VpnGw2, VpnGw3
->   * HighPerformance (pro staré starší verze SKU)
+> Režim aktivní-aktivní je k dispozici pro všechny SKU kromě úrovně Basic.
 
 ## <a name="part-1---create-and-configure-active-active-vpn-gateways"></a><a name ="aagateway"></a>Část 1 – Vytvoření a Konfigurace bran VPN typu aktivní-aktivní
 Následující postup nastaví vaši bránu Azure VPN v režimech aktivní-aktivní. Klíčové rozdíly mezi branami aktivní-aktivní a aktivní-pohotovostní:

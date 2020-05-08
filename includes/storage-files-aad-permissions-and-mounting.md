@@ -35,7 +35,7 @@ Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure m�
 
 Obecně doporučujeme použít oprávnění na úrovni sdílené složky pro správu přístupu na vysokou úroveň do skupiny AD reprezentující skupinu uživatelů a identit a pak využít oprávnění NTFS pro detailní řízení přístupu na úrovni adresářů a souborů. 
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>portál Azure
 K přiřazení role RBAC k identitě Azure AD použijte [Azure Portal](https://portal.azure.com)použijte následující postup:
 
 1. V Azure Portal přejdete do sdílené složky nebo [vytvoříte sdílenou složku](../articles/storage/files/storage-how-to-create-file-share.md).

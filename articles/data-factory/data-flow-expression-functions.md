@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: d0669a89527cabd23b81a0948e8cf9962dcd1e9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 52f389e00d63f3659dfe79487b31ec9c3fab1ced
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232049"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580690"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Výrazy transformace dat v toku mapování dat
 
@@ -26,10 +26,10 @@ V Data Factory pomocí jazyka výrazů funkce mapování toku dat nakonfigurujte
 ___
 ### <code>abs</code>
 <code><b>abs(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
-Absolutní hodnota čísla
+Absolutní hodnota čísla  
 * ``abs(-20) -> 20``  
 * ``abs(10) -> 10``  
-___
+___   
 ### <code>acos</code>
 <code><b>acos(<i>&lt;value1&gt;</i> : number) => double</b></code><br/><br/>
 Vypočítá hodnotu inverzní kosinus.* ``acos(1) -> 0.0``  
@@ -116,7 +116,7 @@ Shromáždí všechny hodnoty výrazu v agregované skupině do pole. Struktury 
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.
+Načte všechny výstupní sloupce pro datový proud. Jako druhý argument můžete předat volitelný název datového proudu.  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
 ___
@@ -156,8 +156,8 @@ Vypočítá hodnotu hash CRC32 sady sloupců různých primitivních DataTypes d
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Získá aktuální datum spuštění této úlohy. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html)
-* ``currentDate() == toDate('2250-12-31') -> false`` * ``currentDate('PST')  == toDate('2250-12-31') -> false``  
+Získá aktuální datum spuštění této úlohy. Můžete předat volitelné časové pásmo ve formátu "GMT", "PST", "UTC", "Amerika/Kajmanské". Místní časové pásmo se používá jako výchozí. Pro dostupné formáty se podívejte na SimpleDateFormat Java. ["https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html) * ``currentDate() == toDate('2250-12-31') -> false``  
+* ``currentDate('PST')  == toDate('2250-12-31') -> false``  
 * ``currentDate('America/New_York')  == toDate('2250-12-31') -> false``  
 ___
 ### <code>currentTimestamp</code>
@@ -278,9 +278,11 @@ Na základě podmínky platí jedna nebo druhá hodnota. Pokud není uvedeno jin
 ___
 ### <code>iifNull</code>
 <code><b>iifNull(<i>&lt;value1&gt;</i> : any, [<i>&lt;value2&gt;</i> : any], ...) => any</b></code><br/><br/>
-Zkontroluje, zda hodnota není NULL a vrátí hodnotu else, jinak vrátí jinou hodnotu. Testuje všechny vstupy, dokud nenajde první hodnotu, která není null.* ``iifNull(10, 20) -> 10``  
+Kontroluje, zda je první parametr null. Pokud není null, je vrácen první parametr. Pokud má hodnotu null, je vrácen druhý parametr. Pokud jsou zadány tři parametry, chování je stejné jako funkce IIF (isNull (hodnota1), hodnota2, hodnota3) a třetí parametr je vrácen, pokud první hodnota není null.  
+* ``iifNull(10, 20) -> 10``  
 * ``iifNull(null, 20, 40) -> 20``  
-* ``iifNull('bojjus', 'bo', 'dumbo') -> 'dumbo'``  
+* ``iifNull('azure', 'data', 'factory') -> 'factory'``  
+* ``iifNull(null, 'data', 'factory') -> 'data'``  
 ___
 ### <code>in</code>
 <code><b>in(<i>&lt;array of items&gt;</i> : array, <i>&lt;item to find&gt;</i> : any) => boolean</b></code><br/><br/>
@@ -373,7 +375,7 @@ ___
 ### <code>like</code>
 <code><b>like(<i>&lt;string&gt;</i> : string, <i>&lt;pattern match&gt;</i> : string) => boolean</b></code><br/><br/>
 Vzor je řetězec, který se bude shodovat s doslova. Výjimky jsou následující speciální symboly: _ odpovídá jakémukoli jednomu znaku ve vstupu (podobně jako. v regulárních výrazech POSIX)% odpovídá nule nebo více znakům ve vstupu (podobně jako. * v regulárních výrazech POSIX).
-Řídicí znak je ' '. Pokud řídicí znak před speciálním symbolem nebo jiným řídicím znakem, je následující znak porovnán. Řídicí znak není v žádném jiném znaku neplatný.
+Řídicí znak je ' '. Pokud řídicí znak před speciálním symbolem nebo jiným řídicím znakem, je následující znak porovnán. Řídicí znak není v žádném jiném znaku neplatný.  
 * ``like('icecream', 'ice%') -> true``  
 ___
 ### <code>locate</code>
@@ -504,7 +506,7 @@ Logický operátor OR Stejné jako | |* ``or(true, false) -> true``
 ___
 ### <code>pMod</code>
 <code><b>pMod(<i>&lt;value1&gt;</i> : any, <i>&lt;value2&gt;</i> : any) => any</b></code><br/><br/>
-Kladné zbytky páru čísel.
+Kladné zbytky páru čísel.  
 * ``pmod(-20, 8) -> 4``  
 ___
 ### <code>partitionId</code>
@@ -944,7 +946,7 @@ Na základě kritérií získá neposunutou odchylku sloupce.* ``varianceSampleI
 ##Funkce okna: následující funkce jsou dostupné jenom v transformaci oken.___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>
-Funkce CumeDist vypočítá pozici hodnoty relativně ke všem hodnotám v oddílu. Výsledkem je počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu dělený celkovým počtem řádků v oddílu okna. Všechny hodnoty propojení v řazení se vyhodnotí na stejnou pozici.
+Funkce CumeDist vypočítá pozici hodnoty relativně ke všem hodnotám v oddílu. Výsledkem je počet řádků předcházejících nebo rovných aktuálnímu řádku v pořadí oddílu dělený celkovým počtem řádků v oddílu okna. Všechny hodnoty propojení v řazení se vyhodnotí na stejnou pozici.  
 * ``cumeDist()``  
 ___
 ### <code>denseRank</code>
@@ -963,7 +965,7 @@ Získá hodnotu prvního parametru vyhodnoceného n řádků za aktuálním řá
 ___
 ### <code>nTile</code>
 <code><b>nTile([<i>&lt;value1&gt;</i> : integer]) => integer</b></code><br/><br/>
-Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše. `n` Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).
+Funkce NTile rozdělí řádky pro každý oddíl okna do `n` intervalů v rozsahu od 1 do nejvýše. `n` Hodnoty plechovky se budou lišit o nejvýše 1. Pokud počet řádků v oddílu není rovnoměrně rozdělen do počtu intervalů, pak jsou zbývající hodnoty distribuovány po jednotlivých kontejnerech počínaje prvním intervalem. Funkce NTile je užitečná pro výpočet tertiles, Kvartily, deciles a dalších běžných souhrnných statistik. Funkce vypočítá dvě proměnné během inicializace: velikost regulárního intervalu bude mít přidán jeden řádek navíc. Obě proměnné jsou založené na velikosti aktuálního oddílu. Během procesu výpočtu funkce udržuje sledovat aktuální číslo řádku, aktuální číslo sady a číslo řádku, na kterém se bude interval měnit (bucketThreshold). Když číslo aktuálního řádku dosáhne prahové hodnoty intervalu, hodnota intervalu se zvýší o jednu a prahová hodnota se zvýší o velikost intervalu (plus jeden další, pokud je aktuální kontejner doplněn).  
 * ``nTile()``  
 * ``nTile(numOfBuckets)``  
 ___

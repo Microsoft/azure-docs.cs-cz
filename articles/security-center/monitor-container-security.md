@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919528"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744732"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>Monitorování zabezpečení kontejnerů
 
@@ -131,7 +131,9 @@ Chcete-li zobrazit doporučení zabezpečení Azure Security Center pro hostitel
 
     [![Akce Log Analytics](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Selepšit parametry dotazu a vyberte **Spustit** , když jste si jisti, že je připravený pro hostitele. 
+1. V případě potřeby selepšit parametry dotazu.
+
+1. Pokud jste si jisti, že je příkaz vhodný a připravený pro hostitele, vyberte **Spustit**.
 
 
 

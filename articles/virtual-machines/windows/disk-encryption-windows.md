@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085639"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790894"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Scénáře služby Azure Disk Encryption na virtuálních počítačích s Windows
 
-Azure Disk Encryption pro virtuální počítače s Windows používá funkce BitLocker systému Windows k zajištění úplného šifrování disku s operačním systémem a datovým diskem. Kromě toho poskytuje šifrování disku s dočasnými prostředky, pokud je parametr VolumeType vše.
+Azure Disk Encryption pro virtuální počítače s Windows používá funkce BitLocker systému Windows k zajištění úplného šifrování disku s operačním systémem a datovým diskem. Kromě toho poskytuje šifrování dočasného disku, pokud je VolumeType parametr.
 
 Azure Disk Encryption je [integrována s Azure Key Vault](disk-encryption-key-vault.md) , která vám pomůžou řídit a spravovat klíče a tajné kódy disku. Přehled služby najdete v tématu [Azure Disk Encryption pro virtuální počítače s Windows](disk-encryption-overview.md).
 

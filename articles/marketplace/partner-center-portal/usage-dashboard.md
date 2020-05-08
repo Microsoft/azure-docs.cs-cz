@@ -1,31 +1,31 @@
 ---
-title: Řídicí panel využití v komerčních prostředcích Marketplace na partnerském centru
-description: Přečtěte si, jak získat přístup ke všem VIRTUÁLNÍm počítačům nabízí metriky fakturace využití a měření.
+title: Řídicí panel využití v Microsoft Commercial Marketplace Analytics
+description: Přečtěte si, jak získat přístup ke všem VIRTUÁLNÍm počítačům nabízí metriky fakturace využití a měření. V partnerském centru v části komerční web Marketplace přejdete na řídicí panel využití.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262175"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793002"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel využití v komerčních obchodech Marketplace
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Řídicí panel využití v Microsoft Commercial Marketplace Analytics
 
 Tento článek poskytuje informace o řídicím panelu využití v partnerském centru. Tento řídicí panel zobrazuje všechny virtuální počítače, které nabízí metriky využití a měření fakturace na dvou oddělených kartách: využití virtuálních počítačů a využití účtované fakturace.
 
-Pokud chcete získat přístup k řídicímu panelu využití, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v rámci komerčního tržiště.
+Pokud chcete získat přístup k řídicímu panelu využití, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** v rámci **komerčního tržiště**.
 
 >[!NOTE]
 > Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Řídicí panel využití
 
-Řídicí panel využití představuje metriky pro všechny virtuální počítače (VM) nabízí využití a měření využití fakturace. Najdete je na dvou oddělených kartách: využití virtuálních počítačů a využití účtované fakturace.
+Řídicí panel využití představuje metriky pro všechny virtuální počítače (VM) nabízí využití a měření využití fakturace. Tyto metriky se nacházejí na dvou oddělených kartách: využití virtuálních počítačů a využití účtované fakturace.
 
 Na kartě využití virtuálního počítače jsou k dispozici grafické reprezentace následujících položek:
 
@@ -46,7 +46,7 @@ Na kartě využití virtuálního počítače jsou k dispozici grafické repreze
 Tabulka Souhrn využití zobrazuje hodiny používání zákazníka pro všechny nabídky, které si zakoupili.
 
 - Normalizované hodiny používání jsou definovány jako hodiny využití normalizované na účet pro počet jader virtuálních počítačů ([počet jader virtuálních počítačů] × [hodiny nezpracovaného využití]). Virtuální počítače označené jako "SHAREDCORE" používají 1/6 (nebo 0,1666) jako násobitel [počet jader virtuálních počítačů].
-- Nezpracované hodiny využití jsou definovány jako doba, po kterou byly virtuální počítače spuštěny v hodinách.
+- Hodiny hrubého využití se definují jako počet spuštěných virtuálních počítačů v řádu hodin.
 - Procentuální hodnota představuje změnu nárůstu využití pro vybraný rozsah dat ([využití za poslední měsíc – první měsíc použití])/první měsíc použití).
 - Zelené trojúhelníky ukazující nahoru znamenají změnu růstu.
 - Červený trojúhelník ukazující dolů znamená změnu negativního nárůstu vzhledem k předchozímu měsíci.
@@ -58,13 +58,13 @@ Tabulka Souhrn využití zobrazuje hodiny používání zákazníka pro všechny
 
 ### <a name="usage-by-offers"></a>Využití podle nabídek
 
-- **Normalizované využití pomocí** výsečového grafu zobrazuje rozpis normalizovaných hodin využití nabídek podle vybraného rozsahu kalendářních dat. V grafu se zobrazí horní 5 nabídek, zatímco zbytek je seskupený do kategorie zbývající vše.
+- **Normalizované využití pomocí** výsečového grafu zobrazuje rozpis normalizovaných hodin využití nabídek podle vybraného rozsahu kalendářních dat. V grafu se zobrazí pět nejlepších nabídek, zatímco zbytek je seskupený do kategorie **zbývající vše** .
 - Pruhový graf znázorňuje trend růstu od měsíců po měsících pro vybraný rozsah dat. Sloupce měsíc představují hodiny využití z nabídek s nejvyšším hodinou využití pro příslušný měsíc. Spojnicový graf znázorňuje trend procenta nárůstu vykreslený na sekundární ose Y.
 - Pomocí posuvníku v horní části grafu se posunete doprava doleva podél osy x nebo se zaměřte na konkrétní datové body.
 
 ### <a name="usage-trend-by-offers-and-skus"></a>Trend využití podle nabídek a SKU
 
-Tento graf znázorňuje trend normalizovaného využití pro vybrané SKU nabídky. Tabulek výsledků nabídky zobrazuje nejvyšší 50 nabídky s nejvyšším využitím a jsou seřazené podle hodin využití. Tabulek výsledků SKU zobrazuje prvních 50 SKU s nejvyšším využitím pro vybranou nabídku.
+Tento graf znázorňuje trend normalizovaného využití pro vybrané SKU nabídky. Tabulek výsledků nabídky zobrazuje nejvyšší 50 nabídky s nejvyšším využitím, seřazené podle hodin využití. Tabulek výsledků SKU zobrazuje prvních 50 SKU s nejvyšším využitím pro vybranou nabídku.
 
 ### <a name="usage-by-offer-type"></a>Využití podle typu nabídky
 
@@ -101,7 +101,7 @@ Tabulek výsledků zobrazuje nejvyšší 50 velikosti virtuálních počítačů
 
 - **Typy nabídek** a **názvy nabídek** jsou uvedeny pouze pro nabídky, které jste získali během vybraného rozsahu dat. Názvy nabídek v seznamu se zobrazí pro typy nabídek, které jsou vybrány ze seznamu.
 - Výchozí výběr je "All" pro každou z možností filtrování, s výjimkou **typu použití**. Výchozí volbou pro **typ využití** je normalizované využití. Chcete-li zobrazit nezpracované využití v grafech, vyberte možnost "hrubá spotřeba".
-- Použité filtry zobrazují výběry počtu pro výběry filtru, které byly provedeny. Použité filtry nejsou zobrazeny pro výchozí výběry.
+- Použité filtry zobrazují výběr počtu pro výběry filtru, které byly provedeny. Použité filtry nejsou zobrazeny pro výchozí výběry.
 
 > [!NOTE]
 > Podrobná definice každého pole v mřížce "detailní objednávka data", filtry stránky a všechny možné výběry jsou definovány v části slovník dat v článku [Nejčastější dotazy a terminologie](link needed) .
@@ -123,5 +123,5 @@ Karta **využití měřené fakturace** prezentuje informace o použití pro typ
 - Informace o vašich objednávkách v grafickém formátu a ve formátu ke stažení najdete v tématu věnovaném [řídicímu panelu objednávky v rámci komerčních tržišť](./orders-dashboard.md).
 - Podrobné informace o vašich zákaznících, včetně trendů růstu, najdete [v tématu řídicí panel zákazníka v analytickém obchodě na komerčním webu](./customer-dashboard.md).
 - Seznam vašich žádostí o stažení za posledních 30 dní najdete [v tématu řídicí panel ke stažení v komerčních obchodech na webu Marketplace](./downloads-dashboard.md).
-- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Azure Marketplace a AppSource, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
+- Chcete-li zobrazit konsolidované zobrazení zpětné vazby od zákazníků pro nabídky Microsoft AppSource a Azure Marketplace, přečtěte si téma [hodnocení a recenze řídicího panelu na komerčních analýzách na webu Marketplace](./ratings-reviews.md).
 - Nejčastější dotazy týkající se komerčních analýz na webu Marketplace a ucelený slovník datových podmínek najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).

@@ -3,46 +3,45 @@ title: Seznam aktualizací použitých v hostovaném operačním systému Azure 
 description: Seznam aktualizací použitých na verze hostovaného operačního systému
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/17/2020
-ms.author: raiye
-ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.author: yohaddad
+ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617698"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791557"
 ---
 # <a name="azure-guest-os"></a>Hostovaný operační systém Azure
 V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Security Response Center (MSRC) použité v hostovaném operačním systému Azure. V tomto článku zjistíte, jestli se konkrétní aktualizace vztahuje na hostovaný operační systém, který používáte. Aktualizace vždy předávají pro konkrétní [rodinu][family-explain] , ve které byly zavedeny.
 
 ## <a name="april-2020-guest-os"></a>Hostovaný operační systém od dubna 2020
 
->[!NOTE]
->Hostovaný operační systém v dubnu se v tuto chvíli zavádí na virtuální počítače cloudové služby, které jsou nakonfigurované pro automatické aktualizace. Po dokončení zavedení bude tato verze zpřístupněna k ruční aktualizaci prostřednictvím Azure Portal a konfiguračních souborů. Následující opravy jsou součástí hostovaného operačního systému v dubnu. Tento seznam se může změnit.
 
 | Product Category (Kategorie produktu) | Nadřazený článek znalostní báze Knowledge Base | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum prvního zavedení |
 | --- | --- | --- | --- | --- |
-|  Rel. 20-04  |  [4550965]  |  Zabezpečení Windows  | 2,97 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4550905]  |  Internet Explorer  | 2,97, 3,84, 4,77 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4550971]  |  Zabezpečení Windows  | 3,84 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4550970]  |  Zabezpečení Windows  | 4,77 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4550929]  |  Nejnovější kumulativní aktualizace (LCU)  | 5,42 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4549949]  |  Nejnovější kumulativní aktualizace (LCU)  | 6,18 | Dubna 14 2020 |
-|  Rel. 20-04  |  [4540688]  |  Měsíční souhrn  | 2,97 | 10. března 2020 |
-|  Rel. 20-04  |  [4550735]  |  Aktualizace servisního zásobníku  | 2,97 | 10. března 2020 |
-|  Rel. 20-04  |  [4540726]  |  Aktualizace servisního zásobníku  | 3,84 | 10. března 2020 |
-|  Rel. 20-04  |  [4541510]  |  Měsíční souhrn  | 3,84 | 10. března 2020 |
-|  Rel. 20-04  |  [4541509]  |  Měsíční souhrn  | 4,77 | 10. března 2020 |
-|  Rel. 20-04  |  [4540725]  |  Aktualizace servisního zásobníku  | 4,77 | 10. března 2020 |
-|  Rel. 20-04  |  [4540723]  |  Aktualizace servisního zásobníku  | 5,42 | 10. března 2020 |
-|  Rel. 20-04  |  [4539571]  |  Aktualizace servisního zásobníku  | 6,18 | 10. března 2020 |
+|  Rel. 20-04   |  [4550965]  |  Zabezpečení Windows   |  [2,97]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550905]  |  Internet Explorer   |  [2,97], [3,84], [4,77]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550971]  |  Zabezpečení Windows   |  [3,84]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550970]  |  Zabezpečení Windows   |  [4,77]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4550929]  |  Nejnovější kumulativní aktualizace (LCU)   |  [5,42]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4549949]  |  Nejnovější kumulativní aktualizace (LCU)   |  [6,18]  |  Dubna 14 2020  |
+|  Rel. 20-04   |  [4540688]  |  Měsíční souhrn   |  [2,97]  |  10. března 2020  |
+|  Rel. 20-04   |  [4550735]  |  Aktualizace servisního zásobníku   |  [2,97]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540726]  |  Aktualizace servisního zásobníku   |  [3,84]  |  10. března 2020  |
+|  Rel. 20-04   |  [4541510]  |  Měsíční souhrn   |  [3,84]  |  10. března 2020  |
+|  Rel. 20-04   |  [4541509]  |  Měsíční souhrn   |  [4,77]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540725]  |  Aktualizace servisního zásobníku   |  [4,77]  |  10. března 2020  |
+|  Rel. 20-04   |  [4540723]  |  Aktualizace servisního zásobníku   |  [5,42]  |  10. března 2020  |
+|  Rel. 20-04   |  [4539571]  |  Aktualizace servisního zásobníku   |  [6,18]  |  10. března 2020  |
+
 
 [4550965]: https://support.microsoft.com/kb/4550965
 [4550905]: https://support.microsoft.com/kb/4550905
@@ -58,6 +57,11 @@ V následujících tabulkách jsou uvedeny aktualizace služby Microsoft Securit
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
+[2,97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3,84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5,42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6,18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>Hostovaný operační systém od března 2020

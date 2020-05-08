@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416078"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791455"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Nejčastější dotazy k Azure synapse Analytics (dříve SQL DW)
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416078"
 
 Otázka: Co je Azure Synapse?
 
-A. Azure synapse je bezlimitní analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Poskytuje vám volnost v dotazování na data podle vašich podmínek, a to s využitím neserverových nebo zřízených prostředků se škálováním na vyžádání. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby okamžitého BI a strojového učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je analytická služba, která přináší dohromady datové sklady a analýzu velkých objemů dat. Azure synapse přináší tyto dvě světů společně s jednotným prostředím pro ingestování, přípravu, správu a poskytování dat pro potřeby BI a strojového učení. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Co se stalo s Azure SQL Data Warehouse?
 
-A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse a automaticky využívat výhod nových funkcí, které jsou ve verzi Preview. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
+A. Azure synapse je vyvíjejí se Azure SQL Data Warehouse (SQL DW). Provedli jsme stejný oborový datový sklad na celou novou úroveň výkonu a schopností. Můžete dál spouštět stávající úlohy datového skladu v produkčním prostředí s využitím Azure synapse. Další informace najdete v tématu [co je Azure synapse Analytics](sql-data-warehouse-overview-what-is.md).
 
 Otázka: Co je synapse fond SQL?
 
@@ -43,8 +43,7 @@ A. Azure synapse nabízí několik řešení pro ochranu dat, jako je TDE a audi
 
 Otázka: Kde můžu zjistit, jaké právní nebo obchodní standardy Azure synapse dodržuje předpisy?
 
-A. Navštivte stránku [dodržování předpisů Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings) , kde najdete různé nabídky dodržování předpisů podle produktů, jako je SOC a ISO.
-Nejdřív vyberte podle názvu dodržování předpisů. Pak rozbalte Azure v části věnované cloudovým službám Microsoftu v oboru na pravé straně stránky a podívejte se, jaké služby jsou v Azure synapse kompatibilní.
+A. Navštivte stránku [dodržování předpisů Microsoftu](https://www.microsoft.com/trustcenter/compliance/complianceofferings) , kde najdete různé nabídky dodržování předpisů podle produktů, jako je SOC a ISO. Nejdřív vyberte podle názvu dodržování předpisů. Pak rozbalte Azure v části věnované cloudovým službám Microsoftu v oboru na pravé straně stránky a podívejte se, jaké služby jsou v Azure synapse kompatibilní.
 
 Otázka: Můžu se Power BI připojit?
 

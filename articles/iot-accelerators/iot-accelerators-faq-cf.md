@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313590"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792373"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Nejčastější dotazy k akcelerátoru řešení propojené továrny
 
@@ -111,7 +111,7 @@ Simulace samo registruje následující zařízení:
 * Publisher. Rio. corp. contoso
 * Publisher. Seattle. corp. contoso
 
-Pomocí nástroje [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) můžete zjistit, která zařízení jsou zaregistrovaná ve službě IoT Hub, které vaše řešení používá. Chcete-li použít Průzkumníka zařízení, potřebujete připojovací řetězec pro Centrum IoT v nasazení. Pokud chcete používat rozšíření IoT pro Azure CLI, budete potřebovat název IoT Hub.
+Pomocí nástroje [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) nebo [rozšíření IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) můžete zjistit, která zařízení jsou zaregistrovaná ve službě IoT Hub, které vaše řešení používá. Chcete-li použít Průzkumníka zařízení, potřebujete připojovací řetězec pro Centrum IoT v nasazení. Pokud chcete používat rozšíření IoT pro Azure CLI, budete potřebovat název IoT Hub.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak mohu získat data protokolu z komponent simulace?
 
@@ -125,7 +125,7 @@ Případně se přihlaste k virtuálnímu počítači přes SSH a zkontrolujte s
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Jak se dá ověřit, jestli simulace odesílá data do cloudu?
 
-Pomocí příkazu [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) nebo [sledování rozšíření Azure IoT CLI – události](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Pomocí příkazu monitorovat rozšíření Azure [IoT Explorer](https://github.com/Azure/azure-iot-explorer) nebo [Azure IoT CLI – události](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) můžete zkontrolovat data odesílaná do IoT Hub z určitých zařízení. Chcete-li použít tyto nástroje, musíte znát připojovací řetězec pro Centrum IoT v nasazení. Přečtěte si téma [návody zjištění připojovacího řetězce centra IoT, kterou používá moje řešení?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Zkontrolujte data odesílaná v jednom ze zařízení vydavatele:
 

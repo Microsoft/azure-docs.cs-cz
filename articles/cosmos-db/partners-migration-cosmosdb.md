@@ -6,52 +6,48 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988171"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791727"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL migrace a partneři pro vývoj aplikací
 
 Z NoSQL migrace do vývoje aplikací si můžete vybrat z nejrůznějších partnerů a nástrojů integrátoru s nástroji, které podporují vaše Azure Cosmos DB řešení. 
 
-## <a name="migration-tools"></a>Nástroje pro migraci
-
-|**Partner**  |**Možnosti & zkušeností**  |**Podporované země/oblasti**  |**Kontakt**  |
-|---------|---------|---------|---------|
-|![Striim][2]    |  [Přesunout data v reálném čase do Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/) z nejrůznějších zdrojů dat. <br/> Striim zjednodušuje shromažďování dat v reálném čase a pohyb dat z nejrůznějších místních zdrojů, včetně podnikového dokumentu a relačních databází, senzorů a souborů protokolu do Azure Cosmos DB. |   USA   |  [Web](https://www.striim.com/)       |
-
 ## <a name="systems-integrator-partners"></a>Systems integrátor – partneři
 
-|**Partner**  |**Možnosti & zkušeností**  |**Podporované země/oblasti**  |**Kontakt**  |
-|---------|---------|---------|---------|
-| ![10thMagnitude][13] | Migrace NoSQL; Vývoj nových aplikací | USA | [Web](https://www.10thmagnitude.com/)|
-|![Altoros Development LLC][3]    |  Migrace NoSQL, <br/> Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací |   USA, Norsko, Finsko, Bělorusko, Argentina |  [Web](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   Migrace NoSQL, <br/> Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací      |    USA     |  [Web](https://www.attunix.com/)       |
-| ![Avanade][26] | Vývoj nových aplikací <br/> Inovace aplikací (existující aplikace) | Rakousko, Německo, Švýcarsko, Itálie, Norsko, Španělsko, Spojené království | [Web](https://www.avanade.com/)
-|![Architekti společnosti BlueMetal][5]     |  Migrace NoSQL, <br/> Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací       |    Severní Amerika, Asie a Tichomoří     |  [Web](https://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  Migrace NoSQL, <br/> Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací       |    USA     |  [Web](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | Migrace NoSQL; Inovace aplikací (existující aplikace); Vývoj nových aplikací | USA, Francie, Spojené království, Nizozemsko, Finsko  | [Web](https://www.capgemini.com/) | 
-|![Coeo][7]     |   Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací |    UK     |  [Web](https://www.coeo.com/)       |
-| ![Společnost Cognizant][15] | Migrace NoSQL |USA, Kanada, Spojené království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko | [Web](https://www.cognizant.com/)|
-|![Infosys][8]     |  Migrace NoSQL       |    Globální     |  [Web](https://www.infosys.com/)       |
-| ![Lagash][16] | Migrace NoSQL, <br/> Vývoj nových aplikací | Argentina, Chile, Kolumbie, Mexiko| [Web](https://www.lagash.com/)|
-| ![Lambda3 informatikou][17] | Migrace NoSQL, <br/> Vývoj nových aplikací | Brazílie| [Web](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     Vývoj aplikací (nové aplikace)    |    USA     |  [Web](https://www.nealanalytics.com/)       |
-|![Software s antivirovým softwarem][10]    |   Migrace NoSQL      |   USA      |  [Web](https://www.pragmaticworks.com/)       |
-| ![Globální řadič Ricoh][18] | Migrace NoSQL, <br/> Inovace aplikací (existující aplikace)| UK  | [Web](https://www.ricoh.com/)|
-| ![Technologie SNP][19] | Migrace NoSQL| USA | [Web](https://www.snp.com/)|
-| ![Solidsoft odpověď][20] | Migrace NoSQL | Chorvatsko, Švédsko, Dánsko, Irsko, Bulharsko, Slovinsko, Kypr, Malta, Litva, Česká republika, Island a Švýcarsko a Lichtenštejnsko| [Web](https://www.reply.com/solidsoft-reply/)|
-| ![Technologie bodu španělštiny][21] | Migrace NoSQL| Irsko| [Web](https://www.spanishpoint.ie/)|
-| ![Syone][22] | Migrace NoSQL| Portugalsko| [Web](https://www.syone.com/)|
-|![Tallan][11]    |  Migrace NoSQL, <br/> Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací       |    USA     |  [Web](https://www.tallan.com/)       |
-| ![TCS][23] | Inovace aplikací (existující aplikace), <br/> Vývoj nových aplikací | USA, Spojené království, Francie, Malajsie, Dánsko, Norsko, Švédsko| [Web](https://www.tcs.com/)|
-|![VTeamLabs][12]    | Migrace NoSQL       |  USA      | [Web](https://www.vteamlabs.com/)       |
-| ![Bílé kachny][24] |Migrace NoSQL, <br/> Vývoj nových aplikací | Německo | [Web](https://whiteducksoftware.com/)|
-| ![Rozbalit][25] | Vývoj nových aplikací | Portugalsko, Velká Británie| [Web](https://www.xpand-it.com/)|
-
+|**Partner**  |**Možnosti & zkušeností**  |**Podporované země/oblasti**  |
+|---------|---------|---------|
+|[Striim](https://www.striim.com/)    |  Průběžné přesuny dat v reálném čase, migrace dat|   USA   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT, Retail (Inventory), Operational Analytics (Spark), architektura bez serveru, vývoj aplikací | USA |
+|[Altoros Development LLC](https://www.altoros.com/)  |  IoT, maloobchodní prodej (inventář), architektury bez serveru NoSQL migrace, vývoj aplikací|   USA |
+|[Avanade](https://www.avanade.com/) | IoT, Retail (inventarizace), architektura bez serveru, vývoj aplikací | Rakousko, Německo, Švýcarsko, Itálie, Norsko, Španělsko, Spojené království a Kanada |
+|[Accenture](https://www.accenture.com/) | IoT, Retail (inventarizace), architektura bez serveru, vývoj aplikací |Globální|
+|[Společnosti BlueMetal](https://www.bluemetal.com/)     |  IoT, maloobchodní prodej (inventář), provozní analýza pro Enterprise & SMC, anotace obrázku AI, řízení prostředků, migrace NoSQL, vývoj aplikací     |    Severní Amerika, Asie a Tichomoří     |
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT, přizpůsobení, maloobchodní (inventář), Operational Analytics (Spark), architektura bez serveru, vývoj aplikací|    USA     |  
+| [Capgemini](https://www.capgemini.com/) | Maloobchodní (inventář), IoT, Operational Analytics (Spark), vývoj aplikací | USA, Francie, Spojené království, Nizozemsko, Finsko  |
+| [Společnost Cognizant](https://www.cognizant.com/) | IoT, přizpůsobení, maloobchodní (inventář), Operational Analytics (Spark), vývoj aplikací |USA, Kanada, Spojené království, Dánsko, Nizozemsko, Švýcarsko, Austrálie, Japonsko |
+|[Infosys](https://www.infosys.com/)     | Vývoj aplikací      |    USA    |  
+| [Systémy Lagash](https://www.lagash.com/) | IoT, architektura bez serveru, vývoj aplikací | Argentina, Chile, Kolumbie, Mexiko|
+| [Lambda3 informatikou](https://www.lambda3.com.br/) | Přizpůsobení v reálném čase, maloobchodní inventář, vývoj aplikací | Brazílie|
+|[Neal Analytics](https://www.nealanalytics.com/)    |     Individuální nastavení, maloobchodní (inventář), Operational Analytics (Spark), vývoj aplikací  |    USA     |  
+|[Software s antivirovým softwarem](https://www.pragmaticworks.com/)    |   Migrace NoSQL      |   USA      |
+| [Digitální služby Ricoh](https://www.ricoh.com/) | IoT, přizpůsobení v reálném čase, maloobchodní inventář, migrace NoSQL | UK  |
+|[Technologie SNP](https://www.snp.com/) | Migrace NoSQL| USA |
+| [Solidsoft odpověď](https://www.reply.com/solidsoft-reply/) | Migrace NoSQL | Chorvatsko, Švédsko, Dánsko, Irsko, Bulharsko, Slovinsko, Kypr, Malta, Lotyšsko, Česká republika, Island, Švýcarsko a Lichtenštejnsko|
+| [Technologie bodu španělštiny](https://www.spanishpoint.ie/) | Migrace NoSQL| Irsko|
+| [Syone](https://www.syone.com/) | Migrace NoSQL| Portugalsko|
+|[Tallan](https://www.tallan.com/)    |  Vývoj aplikací      |    USA     |
+| [TCS](https://www.tcs.com/) | Vývoj aplikací | USA, Velká Británie, Francie, Malajsie, Dánsko, Norsko, Švédsko|
+|[VTeamLabs](https://www.vteamlabs.com/)    | Individuální nastavení, maloobchodní prodej (inventář), IoT, hry, Operational Analytics (Spark), architektura bez serveru, migrace NoSQL, vývoj aplikací       |  USA      |  
+| [Bílé kachny GmbH](https://whiteducksoftware.com/) |Nový vývoj aplikací, back-end aplikace, úložiště pro data založená na dokumentech| Německo |
+| [Rozbalit](https://www.xpand-it.com/) | Vývoj nových aplikací | Portugalsko, Velká Británie|
+| [Hanu](https://hanu.com/) | IoT, vývoj aplikací | USA|
+| [Software pro incycle](https://www.incyclesoftware.com/) | Migrace NoSQL, architektura bez serveru, vývoj aplikací| USA|
+| [Orion](https://www.orioninc.com/) | Individuální nastavení, maloobchodní (inventář), Operational Analytics (Spark), IoT, vývoj aplikací| USA, Kanada|
 
 ## <a name="next-steps"></a>Další kroky
 

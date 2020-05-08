@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 9e867a544de8904274286cb68fc047f3f4b93e0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183309"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791744"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Kroky před migrací pro migraci dat z MongoDB Azure Cosmos DB do rozhraní API pro MongoDB
 
@@ -30,7 +30,7 @@ Pokud jste už dokončili výše uvedené požadavky na migraci, můžete [migro
 
 Níže jsou uvedené specifické charakteristiky rozhraní API Azure Cosmos DB pro MongoDB:
 
-- **Model kapacity**: kapacita databáze na Azure Cosmos dB vychází z modelu založeného na propustnosti. Tento model je založen na [jednotkách žádosti za sekundu](request-units.md), což je jednotka, která představuje počet operací databáze, které mohou být provedeny na základě kolekce za sekundu. Tato kapacita se dá přidělit na [úrovni databáze nebo kolekce](set-throughput.md)a dá se zřídit podle modelu přidělení nebo pomocí [modelu automatického škálování](provision-throughput-autoscale.md).
+- **Model kapacity**: kapacita databáze na Azure Cosmos dB vychází z modelu založeného na propustnosti. Tento model je založen na [jednotkách žádosti za sekundu](request-units.md), což je jednotka, která představuje počet operací databáze, které mohou být provedeny na základě kolekce za sekundu. Tato kapacita se dá přidělit na [úrovni databáze nebo kolekce](set-throughput.md)a dá se zřídit podle modelu přidělení nebo pomocí [zřízené propustnosti automatického škálování](provision-throughput-autoscale.md).
 
 - **Jednotky žádosti**: každá databázová operace má v Azure Cosmos DB náklady na přidružené jednotky žádosti (ru). Po spuštění se toto odečte od úrovně dostupné jednotky žádosti v dané druhé. Pokud požadavek vyžaduje více ru než aktuálně přidělený RU/s, existují dvě možnosti, jak tento problém vyřešit – Zvyšte množství ru nebo počkejte na další sekundu a pak zkuste operaci zopakovat.
 

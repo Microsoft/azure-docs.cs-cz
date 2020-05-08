@@ -1,23 +1,22 @@
 ---
-title: Registrace aplikace SaaS | Azure Marketplace
-description: Vysvětluje, jak zaregistrovat aplikaci SaaS pomocí Azure Portal.
+title: Registrace aplikace v SaaS – Azure Marketplace
+description: Naučte se používat Azure Portal k registraci aplikace SaaS a získání tokenu zabezpečení Azure Active Directory.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275709"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792951"
 ---
 # <a name="register-a-saas-application"></a>Registrace aplikace SaaS
 
 Tento článek vysvětluje, jak zaregistrovat aplikaci SaaS pomocí Microsoft [Azure Portal](https://portal.azure.com/).  Po úspěšné registraci se zobrazí token zabezpečení Azure Active Directory (Azure AD), který můžete použít pro přístup k rozhraním API pro plnění SaaS.  Další informace o Azure AD najdete v tématu [co je ověřování?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
 
 ## <a name="service-to-service-authentication-flow"></a>Tok ověřování služby – služba
 
@@ -26,7 +25,6 @@ Následující diagram znázorňuje tok předplatného pro nového zákazníka a
 ![Tok rozhraní API nabídky SaaS](./media/saas-offer-publish-api-flow-v1.png)
 
 Azure neposkytuje žádná omezení pro ověřování, které služba SaaS zpřístupňuje koncovým uživatelům. Ověřování s rozhraními API pro plnění SaaS se ale provádí pomocí tokenu zabezpečení Azure AD, který se obvykle získá registrací aplikace SaaS prostřednictvím Azure Portal. 
-
 
 ## <a name="register-an-azure-ad-secured-app"></a>Registrace aplikace zabezpečené službou Azure AD
 
@@ -55,7 +53,6 @@ Všechny aplikace, které chtějí využívat možnosti Azure AD, musí být nej
 
 >[!Note]
 >Ve výchozím nastavení je nově registrovaná aplikace nakonfigurovaná tak, aby umožňovala pouze uživatelům ze stejného tenanta přihlašovat se k vaší aplikaci.
-
 
 ## <a name="using-the-azure-ad-security-token"></a>Použití tokenu zabezpečení Azure AD
 
@@ -123,7 +120,6 @@ Vzorový token odpovědi:
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>Další kroky
 
