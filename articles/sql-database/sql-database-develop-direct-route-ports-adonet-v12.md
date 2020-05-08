@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34e9b40b0b6989edacd72eb23d357e2a84b6f8d8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73828060"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891084"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Porty nad 1433 pro ADO.NET 4.5
 
@@ -72,9 +72,9 @@ Tato část vysvětluje monikery, které odkazují na verze produktu. Obsahuje t
 
 ## <a name="related-links"></a>Související odkazy
 
-* ADO.NET 4,6 bylo vydáno 20. července 2015. Oznámení na blogu od týmu .NET je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx).
-* ADO.NET 4,5 byla vydána 15. srpna 2012. Oznámení na blogu od týmu .NET je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx).
-  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [zde](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx).
+* ADO.NET 4,6 bylo vydáno 20. července 2015. Oznámení na blogu od týmu .NET je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-6/).
+* ADO.NET 4,5 byla vydána 15. srpna 2012. Oznámení na blogu od týmu .NET je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/).
+  * Blogový příspěvek o ADO.NET 4.5.1 je k dispozici [zde](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/).
 
 * Microsoft® ODBC Driver 17 pro SQL Server® – Windows, Linux & macOShttps://www.microsoft.com/download/details.aspx?id=56567
 
