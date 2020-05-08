@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: asudbring
   ms.author: allensu
-  ms.date: 12/05/2019
-  ms.openlocfilehash: 527b6a1c14d544a713e8eb3ef0ac1d3eeb340e93
-  ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+  ms.date: 05/07/2020
+  ms.openlocfilehash: 73d36c795ca4be905ac6e9bab31cfe00374bfa13
+  ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/07/2020
-  ms.locfileid: "82883072"
+  ms.lasthandoff: 05/08/2020
+  ms.locfileid: "82930620"
 landingContent:
 - title: Informace o Load Balanceru
   linkLists:
@@ -28,11 +28,13 @@ landingContent:
       url: concepts.md
     - text: Komponenty Load Balanceru
       url: components.md
+    - text: Skladové položky Load Balanceru
+      url: skus.md
 - title: Začínáme
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Vytvoření služby Standard Load pro vyrovnávání zatížení virtuálních počítačů
+    - text: Vytvoření služby Load Balanceru pro vyrovnávání zatížení virtuálních počítačů
       url: quickstart-load-balancer-standard-public-portal.md
   - linkListType: tutorial
     links:
@@ -54,25 +56,27 @@ landingContent:
       url: load-balancer-multivip-overview.md
   - linkListType: how-to-guide
     links:
-    - text: Konfigurace vyrovnávání zatížení a pravidel odchozích přenosů ve službě Standard Load Balancer pomocí rozhraní příkazového řádku Azure
+    - text: Konfigurace vyrovnávání zatížení a pravidel odchozích přenosů v Load Balanceru (Azure CLI)
       url: configure-load-balancer-outbound-cli.md
-    - text: Vytvoření internetového nástroje pro vyrovnávání zatížení s protokolem IPv6 s využitím PowerShellu
+    - text: Vytvoření internetového nástroje pro vyrovnávání zatížení s protokolem IPv6 (PowerShell)
       url: load-balancer-ipv6-internet-ps.md
     - text: Konfigurace distribučního režimu
       url: load-balancer-distribution-mode.md
+    - text: Upgrade z úrovně Basic na Standard
+      url: upgrade-basic-standard.md
 - title: Nasazení
   linkLists:
   - linkListType: concept
     links:
     - text: Load Balancer úrovně Standard a zóny dostupnosti
       url: load-balancer-standard-availability-zones.md
-    - text: Load Balancer s resetováním při nečinnosti TCP (Public Preview)
+    - text: Load Balancer s resetováním při nečinnosti TCP
       url: load-balancer-tcp-reset.md
   - linkListType: how-to-guide
     links:
-    - text: Vytvoření služby Standard Load Balancer se zónově redundantním front-endem
+    - text: Vytvoření Load Balanceru se zónově redundantním front-endem
       url: load-balancer-get-started-internet-az-portal.md
-    - text: Vytvoření služby Standard Load Balancer se zónovým front-endem
+    - text: Vytvoření Load Balanceru se zónovým front-endem
       url: load-balancer-get-started-internet-availability-zones-zonal-portal.md
     - text: Vyrovnávání zatížení pro několik konfigurací IP adres
       url: load-balancer-multiple-ip.md

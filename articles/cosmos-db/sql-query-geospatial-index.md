@@ -4,14 +4,14 @@ description: Indexace prostorových dat pomocí Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137899"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839197"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Indexování geoprostorových dat pomocí Azure Cosmos DB
 
@@ -28,11 +28,17 @@ Pokud zadáte zásadu indexování, která zahrnuje prostorový index pro/* (vš
 
 ## <a name="modifying-geospatial-data-type"></a>Úprava geoprostorového datového typu
 
-V kontejneru `geospatialConfig` určuje, jak budou geoprostorové údaje indexovány. Měli byste zadat jeden `geospatialConfig` pro každý kontejner: Geografie nebo geometrie. Pokud není zadaný, `geospatialConfig` použije se jako výchozí zeměpisný datový typ. Když upravíte `geospatialConfig`, všechna existující geoprostorové data v kontejneru se Přeindexují.
+V kontejneru Určuje **geoprostorové nastavení** , jak budou prostorová data indexována. Zadejte jednu **geoprostorové konfiguraci** na kontejner: Geografie nebo geometrie.
 
-> [!NOTE]
-> Azure Cosmos DB aktuálně podporuje úpravy geospatialConfig v sadě .NET SDK pouze ve verzích 3,6 a vyšších.
->
+V Azure Portal můžete přepínat mezi **zeměpisným** a **geometrickým** typem prostoru. Před přepnutím na prostorový typ je důležité vytvořit [platnou zásadu indexování prostorových geometrie s ohraničujícím polem](#geometry-data-indexing-examples) .
+
+Tady je postup nastavení **geoprostorové konfigurace** v **Průzkumník dat** v rámci Azure Portal:
+
+![Nastavení geoprostorové konfigurace](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+Můžete také upravit `geospatialConfig` v sadě .NET SDK pro úpravu **geoprostorové konfigurace**:
+
+Pokud není zadaný, `geospatialConfig` použije se jako výchozí zeměpisný datový typ. Když upravíte `geospatialConfig`, všechna existující geoprostorové data v kontejneru se Přeindexují.
 
 Tady je příklad pro úpravu geoprostorového datového typu na `geometry` nastavením `geospatialConfig` vlastnosti a přidání **boundingBox**:
 
@@ -112,7 +118,7 @@ Ohraničovací rámeček se skládá z následujících vlastností:
 
 Ohraničovací rámeček je povinný, protože geometrická data zabírají rovinu, která může být nekonečná. Prostorové indexy ale vyžadují omezené místo. Pro **zeměpisný** datový typ je zemina hranice a není nutné nastavovat ohraničovací rámeček.
 
-Měli byste vytvořit ohraničující rámeček, který obsahuje všechny (nebo většinu) vašich dat. Prostorové indexy budou moci využívat pouze operace vypočítané na objektech, které jsou zcela uvnitř ohraničujícího pole. Ohraničovací rámeček by neměl být významně větší, než je potřeba, protože to negativně ovlivní výkon dotazů.
+Vytvořte ohraničující rámeček, který obsahuje všechny (nebo většinu) vašich dat. Prostorové indexy budou moci využívat pouze operace vypočítané na objektech, které jsou zcela uvnitř ohraničujícího pole. Zvětšení rámečku, než je potřeba, bude mít negativní dopad na výkon dotazů.
 
 Tady je příklad zásady indexování, **která indexuje** data s **geospatialConfig** nastavenou `geometry`na:
 

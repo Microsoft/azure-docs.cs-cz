@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980285"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858748"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrana souborového serveru pomocí Azure Site Recovery 
 
@@ -30,7 +30,7 @@ Cílem otevřeného a distribuovaného systému sdílení souborů je poskytovat
 Replikace systému souborů DFS využívá kompresní algoritmus známý jako RDC (Remote Differential Compression), který umožňuje efektivní aktualizaci souborů přes síť s omezenou šířkou pásma. Tento algoritmus detekuje vkládání, odebírání a změny uspořádání dat v souborech. Replikace systému souborů DFS může replikovat pouze změněné bloky aktualizovaných souborů. Existují také prostředí souborových serverů, ve kterých se v době mimo špičku provádějí denní zálohy, které vyhovují potřebám zotavení po havárii. Replikace systému souborů DFS není implementovaná.
 
 Následující diagram znázorňuje prostředí souborového serveru s implementovanou replikací systému souborů DFS.
-                
+        
 ![Architektura replikace systému souborů DFS](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 V předchozím diagramu se na replikaci souborů napříč skupinou replikace aktivně podílí několik souborových serverů označovaných jako členové. Obsah v replikované složce je dostupný pro všechny klienty, kteří odesílají požadavky do jakéhokoli člena, a to i v případě, že některý ze členů přejde do offline režimu.
@@ -57,19 +57,19 @@ Následující diagram vám pomůže určit, jakou strategii použít pro vaše 
 |Prostředí  |Doporučení  |Body ke zvážení |
 |---------|---------|---------|
 |Prostředí souborového serveru s replikací systému souborů DFS nebo bez|   [Replikace pomocí Site Recovery](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery nepodporuje clustery sdílených disků ani úložiště připojené k síti (NAS). Pokud se ve vašem prostředí používají tyto konfigurace, využijte podle potřeby některý z ostatních přístupů. <br> Site Recovery nepodporuje protokol SMB 3.0. Replikovaný virtuální počítač začlení změny pouze tehdy, když se provedené změny souborů aktualizují v původním umístění souborů.<br>  Site Recovery nabízí téměř synchronní proces replikace dat, takže v případě neplánovaného scénáře převzetí služeb při selhání může dojít ke ztrátě dat a může dojít k problémům s neshodou USN.
-|Prostředí souborového serveru s replikací systému souborů DFS     |  [Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      Replikace systému souborů DFS dobře funguje v prostředích s extrémně omezenou šířkou pásma. Tento přístup vyžaduje virtuální počítač Azure, který je neustále spuštěný. Při plánování budete muset vzít v úvahu náklady na tento virtuální počítač.         |
+|Prostředí souborového serveru s replikací systému souborů DFS     |  [Rozšíření replikace systému souborů DFS na virtuální počítač Azure IaaS](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |    Replikace systému souborů DFS dobře funguje v prostředích s extrémně omezenou šířkou pásma. Tento přístup vyžaduje virtuální počítač Azure, který je neustále spuštěný. Při plánování budete muset vzít v úvahu náklady na tento virtuální počítač.         |
 |Virtuální počítač Azure IaaS     |     Synchronizace souborů    |     Pokud ve scénáři zotavení po havárii využíváte Synchronizaci souborů, během převzetí služeb při selhání musíte ručně zajistit, aby byly sdílené složky transparentním způsobem přístupné pro klientský počítač. Synchronizace souborů vyžaduje, aby na klientském počítači byl otevřený port 445.     |
 
 
 ### <a name="site-recovery-support"></a>Podpora Site Recovery
 Vzhledem k tomu, že je replikace Site Recovery nezávislá na aplikaci, očekává se, že tato doporučení budou platit v následujících scénářích.
 
-| Zdroj    |Do sekundární lokality    |Do Azure
+| Zdroj  |Do sekundární lokality  |Do Azure
 |---------|---------|---------|
-|Azure| -|Ano|
-|Hyper-V|   Ano |Ano
-|VMware |Ano|   Ano
-|Fyzický server|   Ano |Ano
+|Azure|  -|Ano|
+|Hyper-V|  Ano  |Ano
+|VMware  |Ano|  Ano
+|Fyzický server|  Ano  |Ano
  
 
 > [!IMPORTANT]
@@ -97,7 +97,7 @@ Službu Soubory Azure je možné použít k úplnému nahrazení nebo doplnění
 
 Následující kroky stručně popisují, jak používat Synchronizaci souborů:
 
-1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení, v případě havárie získáte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [zotavení po havárii a vynucené převzetí služeb při selhání (Preview) v Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení, v případě havárie získáte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Vytvořte sdílenou složku](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. Na svém souborovém serveru Azure [spusťte Synchronizaci souborů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
 4. Vytvořte skupinu synchronizace. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Skupina synchronizace musí obsahovat alespoň jeden koncový bod cloudu, který představuje sdílenou složku Azure. Skupina synchronizace musí obsahovat také jeden koncový bod serveru, který představuje cestu na serveru Windows.
@@ -146,7 +146,7 @@ Integrace Synchronizace souborů se Site Recovery:
 
 Podle následujícího postupu použijte Synchronizaci souborů:
 
-1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení (doporučeno), v případě havárie máte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [zotavení po havárii a vynucené převzetí služeb při selhání (Preview) v Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)..
+1. [Vytvořte účet úložiště v Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Pokud jste pro své účty úložiště zvolili geograficky redundantní úložiště jen pro čtení (doporučeno), v případě havárie máte ke svým datům přístup pro čtení ze sekundární oblasti. Další informace najdete v tématu [převzetí služeb při selhání při zotavení po havárii a účtu úložiště](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Vytvořte sdílenou složku](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. Na místní souborový server [nasaďte Synchronizaci souborů](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
 4. Vytvořte skupinu synchronizace. Koncové body v rámci skupiny synchronizace se mezi sebou synchronizují. Skupina synchronizace musí obsahovat alespoň jeden koncový bod cloudu, který představuje sdílenou složku Azure. Skupina synchronizace musí obsahovat také jeden koncový bod serveru, který představuje cestu na místním serveru Windows.

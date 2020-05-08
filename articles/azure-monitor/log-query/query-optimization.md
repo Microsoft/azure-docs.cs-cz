@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411436"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864245"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimalizace dotazů protokolu v Azure Monitor
 Protokoly Azure Monitor používají k ukládání dat protokolu službu [Azure Průzkumník dat (ADX)](/azure/data-explorer/) a spouštějí dotazy k analýze těchto dat. Vytváří, spravuje a udržuje clustery ADX za vás a optimalizuje je pro vaši úlohu analýzy protokolů. Když spustíte dotaz, bude optimalizován a směrován do příslušného clusteru ADX, který ukládá data pracovního prostoru. Protokoly Azure Monitor a Azure Průzkumník dat využívají řadu automatických mechanismů optimalizace dotazů. I když automatické optimalizace poskytují výrazné zvýšení, jsou v některých případech, kdy můžete výrazně vylepšit výkon dotazů. V tomto článku se dozvíte o požadavcích na výkon a o některých technikech jejich řešení.
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Použití efektivních příkazů agregace a dimmentions v sumarizaci a připojení
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Použití efektivních příkazů agregace a dimenzí v souhrnu a spojování
 
 Zatímco některé agregační příkazy jako [Max ()](/azure/kusto/query/max-aggfunction), [Sum ()](/azure/kusto/query/sum-aggfunction), [Count ()](/azure/kusto/query/count-aggfunction)a [AVG ()](/azure/kusto/query/avg-aggfunction) mají nízký dopad na procesor z důvodu jejich logiky, jiné jsou složitější a zahrnují heuristické a odhady, které umožňují jejich efektivní spouštění. Například [DCount ()](/azure/kusto/query/dcount-aggfunction) používá HyperLogLog algoritmus k poskytnutí přibližného odhadu pro jedinečný počet velkých sad dat, aniž by bylo nutné skutečně počítat každou hodnotu; funkce percentilu jsou podobné aproximace pomocí nejbližšího algoritmu percentilu. Několik příkazů zahrnuje volitelné parametry, které snižují jejich dopad. Například funkce [makeset ()](/azure/kusto/query/makeset-aggfunction) má volitelný parametr pro definování maximální velikosti sady, která VÝZNAMNĚ ovlivňuje procesor a paměť.
 

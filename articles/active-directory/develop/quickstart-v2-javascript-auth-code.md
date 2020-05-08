@@ -13,12 +13,12 @@ ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ROBOTS: NOINDEX
-ms.openlocfilehash: d362db3a51848603c78d663c5b628192ff028d02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9663c11508b0478a67f528cb301d705a3125e4f6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209529"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871526"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu v JavaScriptu pomocí toku kódu ověřování 
 
@@ -112,7 +112,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 
 > [!div renderon="portal" class="sxs-lookup"]
 > > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
+> > :::no-loc text="Enter_the_Supported_Account_Info_Here":::
 
 > [!div renderon="docs"]
 >
@@ -178,7 +178,8 @@ Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/do
 Knihovna MSAL. js podepisuje uživatele a žádá o tokeny, které se používají pro přístup k rozhraní API, které je chráněno platformou Microsoft identity. Soubor *index. html* v ukázce obsahuje odkaz na knihovnu:
 
 ```html
-<script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
+"sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 > [!TIP]
 > Předchozí verzi můžete nahradit nejnovější vydanou verzí ve [verzích MSAL. js](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases).
@@ -186,7 +187,7 @@ Knihovna MSAL. js podepisuje uživatele a žádá o tokeny, které se používaj
 Případně, pokud máte nainstalovanou aplikaci Node. js, můžete si stáhnout nejnovější verzi pomocí Správce balíčků Node. js (npm):
 
 ```batch
-npm install msal
+npm install @azure/msal-browser
 ```
 
 ## <a name="next-steps"></a>Další kroky

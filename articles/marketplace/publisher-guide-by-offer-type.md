@@ -1,5 +1,5 @@
 ---
-title: Microsoft Commercial Marketplace – příručka pro publikování podle typu nabídky
+title: Průvodce publikováním podle typu nabídky – komerční tržiště Microsoftu
 description: Tento článek popisuje typy nabídek, které jsou k dispozici na komerčním webu Microsoft Marketplace.
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419285"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872346"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Průvodce publikováním podle typu nabídky
 
-Jakmile se [rozhodnete pro možnost publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), budete připraveni vybrat typ nabídky, který se bude používat k prezentaci vaší nabídky.
+Tento článek popisuje typy nabídek, které jsou k dispozici na komerčním webu Marketplace. *Typ nabídky* definuje strukturu nabídky, která zahrnuje metadata, artefakty a další obsah, který se používá k prezentaci nabídky na webu Marketplace.
 
- *Typ nabídky* definuje strukturu nabídky, která zahrnuje metadata, artefakty a další obsah, který se používá k prezentaci nabídky na webu Marketplace.
+Předtím, než budete moci vytvořit nabídku, a poté, co se [rozhodnete pro možnost publikování](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type), je nutné zvolit typ nabídky, který bude použit k prezentaci vaší nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
 
-Než budete moci vytvořit nabídku, je nutné vybrat typ nabídky. Typ nabídky bude odpovídat typu řešení, aplikace nebo nabídky služeb, které chcete publikovat, a také jeho zarovnání na produkty a služby společnosti Microsoft.
-
-Jeden typ nabídky se dá nakonfigurovat jinak, aby se povolily různé možnosti publikování, volání, zřizování nebo ceny. Možnost publikování a konfigurace typu nabídky také odpovídají nárokům na nabídku a technické požadavky.
+Jeden typ nabídky se dá nakonfigurovat různými způsoby, aby se povolily různé možnosti publikování, volání, zřizování nebo ceny. Možnost publikování a konfigurace typu nabídky také odpovídají nárokům na nabídku a technické požadavky.
 
 Před vytvořením vaší nabídky si nezapomeňte projít požadavky na nárok na prezentace a typ nabídky a technické požadavky na publikování.
 

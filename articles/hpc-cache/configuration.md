@@ -4,14 +4,14 @@ description: Vysvětluje, jak nakonfigurovat další nastavení pro mezipaměť,
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195056"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871411"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurovat další nastavení mezipaměti HPC Azure
 
@@ -42,13 +42,15 @@ Další informace o nastaveních jednotky MTU ve službě Azure Virtual Network 
 ## <a name="configure-root-squash"></a>Konfigurace kořenového "squash
 <!-- linked from troubleshoot -->
 
-Nastavení **Povolit kořen "squash** určuje, jak mezipaměť prostředí Azure HPC umožňuje přístup ke kořenu. Kořenový "squash pomáhá zabránit přístupu na úrovni root od neautorizovaných klientů.
+Nastavení **Povolit kořen "squash** určuje, jak mezipaměť HPC Azure zpracovává požadavky od kořenového uživatele na klientských počítačích.
 
-Toto nastavení umožňuje uživatelům řídit přístup rootového přístupu na úrovni mezipaměti, což vám může přispět k náhradě pro požadované ``no_root_squash`` nastavení pro systémy NAS používané jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
+Pokud je povolená možnost root "squash, budou se uživatelé z klienta při odesílání požadavků přes mezipaměť HPC Azure automaticky mapovat na uživatele" Nikdo ". Zabrání taky klientským žádostem o použití bitů oprávnění set-UID.
+
+Pokud je kořenový "squash zakázaný, požadavek od uživatele root Client (UID 0) se předá do systému úložiště NFS back-end jako kořen. Tato konfigurace může umožňovat nevhodný přístup k souborům.
+
+Nastavení kořenového "squash pro mezipaměť může přispět k vynulování ``no_root_squash`` požadavků na povinná nastavení v systémech NAS, které se používají jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
 
 Výchozí nastavení je **Ano**. (Mezipaměti vytvořené před dubna 2020 mohou mít výchozí nastavení **ne**.)
-
-Když je tato funkce povolená, zabrání také použití bitů oprávnění set-UID v požadavcích klienta na mezipaměť.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>Zobrazení snímků pro cíle služby Blob Storage
 

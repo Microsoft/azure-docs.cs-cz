@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426319"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598143"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics (Preview)
 
@@ -42,17 +42,29 @@ Existují tři způsoby, jak implementovat UDF:
 Formát libovolného balíčku UDF má cestu `/UserCustomCode/CLR/*`. Knihovny DLL (Dynamic Link Library) a prostředky se zkopírují `/UserCustomCode/CLR/*` do složky, která pomáhá izolovat knihovny DLL uživatelů ze systémových a Azure Stream Analytics knihoven DLL. Tato cesta k balíčku se používá pro všechny funkce bez ohledu na metodu použitou k jejich využití.
 
 ## <a name="supported-types-and-mapping"></a>Podporované typy a mapování
+Pro Azure Stream Analytics hodnoty, které se mají použít v jazyce C#, je nutné je zařadit z jednoho prostředí do druhého. Zařazování se stane pro všechny vstupní parametry UDF. Každý typ Azure Stream Analytics má odpovídající typ v jazyce C# zobrazený v následující tabulce:
 
-|**Typ UDF (C#)**  |**Typ Azure Stream Analytics**  |
+|**Typ Azure Stream Analytics** |**Typ C#** |
+|---------|---------|
+|bigint | long |
+|float | double |
+|nvarchar (max) | řetězec |
+|datetime | DateTime |
+|Záznam | Řetězec\<slovníku,> objektů |
+|Pole | >\<objektu Array |
+
+Totéž platí i v případě, že je potřeba zařadit data z C# do Azure Stream Analytics, což se stane výstupní hodnotou UDF. Následující tabulka uvádí podporované typy:
+
+|**Typ C#**  |**Typ Azure Stream Analytics**  |
 |---------|---------|
 |long  |  bigint   |
-|double  |  double   |
+|double  |  float   |
 |řetězec  |  nvarchar (max)   |
-|data a času.  |  data a času.   |
-|struct   |  IRecord   |
-|objekt  |  IRecord   |
-|>\<objektu Array  |  IArray   |
-|<řetězec slovníku,> objektů  |  IRecord   |
+|DateTime  |  data a času.   |
+|struct   |  Záznam   |
+|objekt  |  Záznam   |
+|>\<objektu Array  |  Pole   |
+|Řetězec\<slovníku,> objektů  |  Záznam   |
 
 ## <a name="codebehind"></a>CodeBehind
 Ve **skriptu. aSQL** CodeBehind můžete napsat uživatelsky definované funkce. Nástroje Visual Studio budou automaticky kompilovat soubor CodeBehind do souboru sestavení. Sestavení jsou zabalena jako soubor zip a při odeslání vaší úlohy do Azure se nahrají do svého účtu úložiště. Informace o tom, jak psát C# UDF pomocí CodeBehind, najdete v kurzu [pro úlohy v jazyce C# UDF pro Stream Analytics Edge](stream-analytics-edge-csharp-udf.md) . 

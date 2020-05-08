@@ -1,14 +1,14 @@
 ---
 title: Ukázka testu výkonnosti modelu CI Microsoft Azure Foundation
 description: Nasaďte kroky pro ukázku srovnávacího plánu CIS Microsoft Azure Foundation, včetně podrobností parametrů artefaktu podrobného plánu.
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544526"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864466"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Nasaďte ukázku srovnávacího plánu pro CIS Microsoft Azure Foundation
 
@@ -93,8 +93,8 @@ Následující tabulka uvádí seznam parametrů artefaktu podrobného plánu:
 
 |Název artefaktu|Typ artefaktu|Název parametru|Popis|
 |-|-|-|-|
-|\[Verze\]Preview: auditovat Microsoft Azure základy 1.1.0 Foundation a nasazovat specifická podpůrná rozšíření virtuálních počítačů|Přiřazení zásad|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
-|\[Verze\]Preview: auditovat Microsoft Azure základy 1.1.0 Foundation a nasazovat specifická podpůrná rozšíření virtuálních počítačů|Přiřazení zásad|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
+|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam oblastí, kde by měla být povolena Network Watcher|Seznam oblastí oddělených středníkem Úplný seznam oblastí zobrazíte pomocí Get-AzLocation. Např.: eastus; eastus2|
+|1.1.0 doporučení týkající se testování služby Microsoft Azure CIS a nasazení specifických podpůrných rozšíření virtuálních počítačů|Přiřazení zásad|Seznam rozšíření virtuálních počítačů, která jsou schválena pro použití|Seznam přípon oddělený středníkem. Pokud chcete zobrazit úplný seznam rozšíření virtuálních počítačů, použijte příkaz Get-AzVMExtensionImage. Např.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>Další kroky
 

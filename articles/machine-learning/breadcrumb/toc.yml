@@ -19,7 +19,7 @@
       items:
         - name: Služba
           tocHref: /azure/open-datasets/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: Otevřené datové sady
               tocHref: /azure/open-datasets/
@@ -34,7 +34,7 @@
       items:
         - name: Služba
           tocHref: /azure/iot-edge/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: IoT Edge
               tocHref: /azure/iot-edge/
@@ -49,7 +49,7 @@
       items:
         - name: Služba
           tocHref: /azure/architecture/data-guide/technology-choices/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: Průvodce architekturou dat
               tocHref: /azure/architecture/data-guide/
@@ -64,7 +64,7 @@
       items:
         - name: Služba
           tocHref: /azure/devops/pipelines/
-          topicHref: /azure/machine-learning/service/index
+          topicHref: /azure/machine-learning/index
           items:
             - name: Kanály
               tocHref: /azure/devops/pipelines/languages/

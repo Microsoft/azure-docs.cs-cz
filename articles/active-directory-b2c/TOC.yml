@@ -226,7 +226,9 @@
         - name: Tokeny a správa relací
           items:
             - name: Přizpůsobení tokenů
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: Konfigurace chování relace
+              href: session-behavior-custom-policy.md
         - name: Předávací externí token IdP
           href: idp-pass-through-custom.md
         - name: Adaptivní prostředí

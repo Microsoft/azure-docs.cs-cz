@@ -5,16 +5,59 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 03/05/2020
-ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/06/2020
+ms.openlocfilehash: 8701acc6ac10dd9d31df99bb04dd030d156250e2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80802600"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871399"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Co je nového v dokumentaci k Azure Monitor?
 Tento článek obsahuje seznam Azure Monitorch článků, které jsou buď nové, nebo byly významně aktualizované. Bude aktualizován první týden v měsíci, aby zahrnoval aktualizace článků z předchozího měsíce.
+
+## <a name="april-2020"></a>Duben 2020
+
+### <a name="general"></a>Obecné
+- Azure Monitor oddílem přidaných uživatelem [spravovaný klíč](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.md) na asynchronních operacích
+- [Správa pracovních prostorů Log Analytics v](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access.md) oddílech s aktualizovanými vlastními protokoly Azure monitor.
+
+### <a name="alerts"></a>Výstrahy
+- [Pravidla akcí pro výstrahy Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) – přidané video
+- [Přehled upozorňování a monitorování oznámení v Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview.md) – přidané video
+
+### <a name="application-insights"></a>Application Insights
+- [Mapa aplikace v Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-map.md) – přidala se konfigurace názvů cloudových rolí pro agenta Java.
+- [Reference k rozhraní API agenta Azure Application Insights .NET](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference.md) – konsolidovaná Reference k rozhraní API.
+- [IP adresy, které používá Application Insights a Log Analytics](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses.md) -aktualizované IP adresy pro rozhraní API pro App Insights a Log Analytics, Webhooky skupin akcí, Azure USA státní správy.
+- [Monitorování aplikací Java kdekoli](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config.md) – nový článek
+- [Monitorování aplikací v jazyce Java v jakémkoli prostředí](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent.md) – nový článek
+- [Monitorovat aplikace Java spuštěné v jakémkoli prostředí](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments.md) – nový článek
+- [Monitorovat aplikace Java běžící na místním](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises.md) a novém článku
+- [Odebrání Application Insights v aplikaci Visual Studio](https://docs.microsoft.com/azure/azure-monitor/app/remove-application-insights.md) – nový článek
+- [Vzorkování telemetrie v Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/sampling) – oprava v ukázce s pevnou sazbou v Pythonu.
+
+### <a name="containers"></a>Containers
+- [Konfigurace Azure Red Hat OpenShift v4. x s Azure monitor for Containers](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat4-setup) – nový článek
+- [Ruční oprava problémů s synchronizací ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow) – nový článek
+- [Postup zastavení monitorování clusteru Azure a Red Hat OpenShift v4](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v4) – nový článek
+- [Postup zastavení monitorování clusteru Azure Red Hat OpenShift V3](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v3) – nový článek
+- [Postup zastavení monitorování hybridního Kubernetes clusteru](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid) – nový článek
+
+### <a name="insights"></a>Insights
+- [Monitorování trezorů klíčů Azure pomocí Azure monitor pro trezory klíčů (Preview)](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) – nový článek
+
+### <a name="logs"></a>Protokoly
+- [Omezení služby Azure monitor](https://docs.microsoft.com/azure/azure-monitor/service-limits) – přidaná uživatelská omezení uživatelských dotazů.
+- [Správa využití a nákladů na protokoly Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage) – pro clustery se přidávají poplatky za protokoly. Přidaný dotaz Kusto, který umožňuje zákazníkům se staršími cenovými úrovněmi na základě počtu uzlů určit, jestli se mají přesunout na úroveň rezervace za GB nebo kapacitu.
+
+### <a name="metrics"></a>Metriky
+- [Pokročilé funkce](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) oddílu agregace služby Azure Průzkumník metrik – přidáno
+
+### <a name="workbooks"></a>Workbooks
+- [Azure monitor sešity a šablony Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-automate) – přidala se šablona Resource Manageru pro nasazení šablony sešitu.
+
+
 
 ## <a name="march-2020"></a>Březen 2020
 

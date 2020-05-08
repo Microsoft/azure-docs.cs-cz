@@ -1,22 +1,22 @@
 ---
-title: Rozhraní API služby měření softwaru Marketplace – Nejčastější dotazy | Azure Marketplace
-description: Vygeneruje použití nabídky SaaS v Azure Marketplace.
+title: Rozhraní API služby měření – Nejčastější dotazy – komerční tržiště Microsoftu
+description: Nejčastější dotazy týkající se rozhraní API služby měření pro SaaS nabízí v Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 6e5b691a41ef283449f9eeeb90e9d01a91616146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/13/2020
+ms.openlocfilehash: eb27089777baaaa7a29e020318fbc7635792af2d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275777"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857899"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Rozhraní API služeb měření na marketplace – nejčastější dotazy
 
-Jakmile se uživatel Azure přihlásí k odběru služby SaaS, která zahrnuje účtované podle objemu dat, budete sledovat spotřebu pro každou fakturační dimenzi, kterou zákazník používá. Pokud spotřeba překročí zahrnuté množství nastavené pro termín vybraný zákazníkem, služba vygeneruje události využití společnosti Microsoft.
+Když se uživatel Azure přihlásí k odběru služby SaaS, která zahrnuje účtované podle objemu dat, budete sledovat spotřebu pro každou fakturační dimenzi, kterou zákazník používá. Pokud spotřeba překročí zahrnuté množství nastavené pro termín vybraný zákazníkem, služba vygeneruje události využití společnosti Microsoft.
 
 ## <a name="emit-usage-events"></a>Generování událostí využití
 
@@ -35,7 +35,7 @@ V ideálním případě se očekává, že vygenerujete využití každou hodinu
 
 V ideálním případě se událost využití generuje každou hodinu pro události, ke kterým došlo během poslední hodiny. Očekává se ale zpoždění. Maximální povolené zpoždění je 24 hodin, po kterém nebudou události využití přijaty.
 
-Pokud například událost využití nastane 1. den, budete k vygenerování události využití přidružené k této události mít až 1 ODP. To znamená, že v případě, že využití systému vygeneruje čas mimo provoz, může dojít k obnovení a odeslání události využití v intervalu hodin, ve kterém bylo použití provedeno, bez ztráty přesnosti.
+Pokud například událost využití nastane 1. den, budete k vygenerování události využití přidružené k této události mít až 1 ODP. Pokud systém emituje využití v čase mimo špičku, obnoví a pak odešle událost využití v intervalu hodin, ve kterém se využití stalo, bez ztráty přesnosti.
 
 ### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>Co se stane, když do jedné hodiny odešlete více než jednu událost použití?
 
@@ -49,6 +49,12 @@ Jakákoli událost využití vygenerovaná na platformu Marketplace nebude po od
 
 Ano, při volání `GET /saas/subscriptions` rozhraní API obsahuje seznam všech předplatných SaaS. Pole stav v reakci pro každé předplatné SaaS zachycuje, jestli je předplatné aktivní, nebo se odhlásí. Volání funkce list Subscriptions vrátí maximálně 100 odběrů v čase.
 
+### <a name="what-happens-if-the-marketplace-metering-service-has-an-outage"></a>Co se stane, když dojde k výpadku služby měření na webu Marketplace?
+
+Pokud nezávislý výrobce softwaru pošle vlastní měřič a zobrazí chybu, měl by ISV počkat a pak to zkuste znovu.
+
+Pokud s tím budou dál problémy, odešlete tento vlastní měřič znovu o příští hodinu (celkové množství). Pokračovat v tomto procesu, dokud nebude přijata odpověď bez chyby.
+
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v tématu [rozhraní API služby měření softwaru Marketplace](./marketplace-metering-service-apis.md) .
+- Další informace najdete v tématu [rozhraní API služby pro měření z Marketplace](./marketplace-metering-service-apis.md).

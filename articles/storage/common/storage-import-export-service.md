@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282439"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872432"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co je služba Azure import/export?
 
@@ -41,7 +41,7 @@ Služba import/export používá následující komponenty:
 * **Nástroj WAImportExport**: Jedná se o nástroj příkazového řádku, který provede následující akce:
   * Připraví diskové jednotky, které jsou dodávány pro import.
   * Usnadňuje kopírování dat na jednotku.
-  * Šifruje data na jednotce pomocí AES 128-bit BitLockeru. K ochraně klíče BitLockeru můžete použít ochranu pomocí externího klíče.
+  * Šifruje data na jednotce pomocí AES 256-bit BitLockeru. K ochraně klíče BitLockeru můžete použít ochranu pomocí externího klíče.
   * Vygeneruje soubory deníku jednotky používané při vytváření importu.
   * Pomáhá identifikovat počet jednotek potřebných pro úlohy exportu.
 
@@ -129,9 +129,9 @@ Služba Azure import/export podporuje kopírování dat do a ze všech účtů �
 |USA – středojih     | Japonsko – západ        |Jižní Korea – střed         | Německo – střed        |
 |USA – středozápad     |  Japonsko – východ       | USA (Gov) – Virginia        | Německo – severovýchod        |
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 
-Data na jednotce jsou šifrovaná pomocí šifrování AES 128-bit nástroj BitLocker Drive Encryption. Toto šifrování chrání vaše data během přenosu.
+Data na jednotce jsou šifrovaná pomocí šifrování AES 256-bit nástroj BitLocker Drive Encryption. Toto šifrování chrání vaše data během přenosu.
 
 Pro úlohy importu se jednotky šifrují dvěma způsoby.  
 

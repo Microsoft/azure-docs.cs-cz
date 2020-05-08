@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 04/30/2020
-ms.openlocfilehash: 92856f48cb915dd91f132a61e83a2da776db5170
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: MT
+ms.openlocfilehash: 28e27da28b789163e57cefc719044c868ba2e933
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629907"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854531"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-a-resource-manager-template"></a>Rychlý Start: nasazení instance kontejneru v Azure pomocí šablony Správce prostředků
 
@@ -25,7 +25,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné.
+Žádné
 
 ## <a name="create-a-container-instance"></a>Vytvoření instance kontejneru
 
@@ -103,4 +103,4 @@ V tomto rychlém startu jste vytvořili službu Azure Container instance z veře
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)

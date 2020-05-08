@@ -3,20 +3,20 @@ title: Použití emulátoru Azurite pro vývoj místních Azure Storage
 description: Azurite Open Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování vašich aplikací Azure Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/31/2019
+ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76029921"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872564"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Použití emulátoru Azurite pro místní Azure Storage vývoj a testování (Preview)
 
-Azurite verze 3,2 Open-Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování objektů blob Azure a aplikací úložiště ve frontě. Až budete spokojeni s tím, jak vaše aplikace pracuje místně, přepněte se na použití účtu Azure Storage v cloudu. Emulátor poskytuje podporu pro různé platformy v systémech Windows, Linux a MacOS. Azurite V3 podporuje rozhraní API implementovaná službou Azure Blob service.
+Azurite verze 3,2 Open-Source emulátor (Preview) poskytuje bezplatné místní prostředí pro testování objektů blob Azure a aplikací úložiště ve frontě. Až budete spokojeni s tím, jak vaše aplikace pracuje místně, přepněte se na použití účtu Azure Storage v cloudu. Emulátor poskytuje podporu pro různé platformy v systémech Windows, Linux a macOS. Azurite V3 podporuje rozhraní API implementovaná službou Azure Blob service.
 
 Azurite je budoucí platforma emulátoru úložiště. Azurite nahrazuje [emulátor Azure Storage](storage-use-emulator.md). Azurite se bude dál aktualizovat, aby podporovala nejnovější verze rozhraní Azure Storage API.
 
@@ -33,39 +33,44 @@ V Visual Studio Code Vyberte podokno **rozšíření** a vyhledejte *Azurite* na
 
 ![Tržiště rozšíření Visual Studio Code](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-Případně přejděte na [vs Code na trh rozšíření](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) v prohlížeči. Kliknutím na tlačítko **nainstalovat** otevřete Visual Studio Code a přejdete přímo na stránku rozšíření Azurite.
+V prohlížeči můžete také přejít na [trh rozšíření Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) . Kliknutím na tlačítko **nainstalovat** otevřete Visual Studio Code a přejdete přímo na stránku rozšíření Azurite.
 
-Azurite můžete rychle spustit nebo zavřít kliknutím na **[Azurite BLOB Service]** nebo **[Azurite Queue Service]** na stavovém řádku vs Code nebo na paletě příkazů vs Code vydávat následující příkazy. Chcete-li otevřít paletu příkazů, stiskněte klávesu **F1** v vs Code.
+Azurite můžete rychle spustit nebo zavřít na stavovém řádku Visual Studio Code. Klikněte na **[Azurite BLOB Service]** nebo **[služba Azurite Queue]**.
 
-Rozšíření podporuje následující příkazy Visual Studio Code:
+Rozšíření podporuje následující příkazy Visual Studio Code. Chcete-li otevřít paletu příkazů, stiskněte klávesu F1 v Visual Studio Code. 
 
-   * **Azurite: Start** – spustí všechny služby Azurite.
-   * **Azurite: zavřít** a zavřít všechny služby Azurite
-   * **Azurite: vyčištění** a resetování všech průniku dat Azurite Services
-   * **Azurite: spuštění služby BLOB** -spuštění služby BLOB Service
-   * **Azurite: zavření služby BLOB** – ukončení služby BLOB Service
-   * **Azurite: vyčistit službu BLOB** Service – vyčistit službu BLOB Service
-   * **Azurite: Start Service** – služba front spuštění
-   * **Azurite: Close Service** – služba front ukončení
-   * **Azurite: služba vyčištění fronty** – služba fronty vyčištění
+   - **Azurite: vyčištění** a resetování všech průniku dat Azurite Services
+   - **Azurite: vyčistit službu BLOB** Service – vyčistit službu BLOB Service
+   - **Azurite: služba vyčištění fronty** – služba fronty vyčištění
+   - **Azurite: zavřít** a zavřít všechny služby Azurite
+   - **Azurite: zavření služby BLOB** – ukončení služby BLOB Service
+   - **Azurite: Close Service** – služba front ukončení
+   - **Azurite: Start** – spustí všechny služby Azurite.
+   - **Azurite: spuštění služby BLOB** -spuštění služby BLOB Service
+   - **Azurite: Start Service** – služba front spuštění
 
-Pokud chcete nakonfigurovat Azurite v rámci Visual Studio Code, vyberte podokno rozšíření. Vyberte ikonu **Správa** (ozubeného kolečka) pro **Azurite**. Vyberte **Konfigurovat nastavení rozšíření**.
+Pokud chcete nakonfigurovat Azurite v rámci Visual Studio Code, vyberte podokno rozšíření. Vyberte ikonu **Správa** (ozubeného kolečka) pro **Azurite**. Vyberte **nastavení rozšíření**.
 
-![Azurite konfigurovat nastavení rozšíření](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azurites konfigurovat nastavení rozšíření](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 Podporovaná jsou následující nastavení:
 
-   * **Azurite: Host objektu BLOB** – koncový bod naslouchací služby BLOB Service. Výchozí nastavení je 127.0.0.1.
-   * **Azurite: port objektu BLOB** – port naslouchání BLOB Service. Výchozí port je 10000.
-   * **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false** (nepravda).
-   * **Azurite: Location** – cesta k umístění pracovního prostoru. Výchozí je Visual Studio Code pracovní složka.
-   * **Azurite: Queue Host** – koncový bod naslouchací služby služba front. Výchozí nastavení je 127.0.0.1.
-   * **Azurite: port fronty** – port naslouchání služba front. Výchozí port je 10001.
-   * **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false** (nepravda).
+   - **Azurite: Host objektu BLOB** – koncový bod naslouchací služby BLOB Service. Výchozí nastavení je 127.0.0.1.
+   - **Azurite: port objektu BLOB** – port naslouchání BLOB Service. Výchozí port je 10000.
+   - **Azurite: CERT** -PATH-cesta k místně důvěryhodnému souboru certifikátu PEM nebo PFX pro povolení režimu https.
+   - **Azurite: Debug** – výstup protokolu ladění do kanálu Azurite. Výchozí hodnota je **false** (nepravda).
+   - **Azurite: klíčová** cesta k souboru důvěryhodného PEM klíče, který je vyžadován při **Azurite: CERT** odkazuje na soubor PEM.
+   - **Azurite: Location** – cesta k umístění pracovního prostoru. Výchozí je Visual Studio Code pracovní složka.
+   - **Azurite: volný** režim – povolení volného režimu, který ignoruje nepodporované hlavičky a parametry.
+   - **Azurite: OAuth** – volitelná úroveň OAuth.
+   - **Azurite: PWD** -Password pro soubor PFX. Požadováno v případě, že **Azurite: CERT** odkazuje na soubor PFX.
+   - **Azurite: Queue Host** – koncový bod naslouchací služby služba front. Výchozí nastavení je 127.0.0.1.
+   - **Azurite: port fronty** – port naslouchání služba front. Výchozí port je 10001.
+   - **Azurite: bezobslužný** bezobslužný režim zakáže protokol přístupu. Výchozí hodnota je **false** (nepravda).
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalace a spuštění Azurite pomocí NPM
 
-Tato metoda instalace vyžaduje, abyste nainstalovali [Node. js verze 8,0 nebo novější](https://nodejs.org) . **npm** je nástroj pro správu balíčků, který je součástí každé instalace Node. js. Po instalaci Node. js spusťte následující příkaz **npm** k instalaci Azurite.
+Tato metoda instalace vyžaduje, abyste nainstalovali [Node. js verze 8,0 nebo novější](https://nodejs.org) . Správce balíčků Node (npm) je nástroj pro správu balíčků, který je součástí každé instalace Node. js. Po instalaci Node. js spusťte následující `npm` příkaz pro instalaci Azurite.
 
 ```console
 npm install -g azurite
@@ -86,7 +91,8 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Následující příkaz spustí image Docker Azurite. `-p 10000:10000` Parametr přesměrovává požadavky z portu hostitelského počítače 10000 na instanci Docker.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Zadejte umístění pracovního prostoru**:
@@ -94,33 +100,18 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 V následujícím příkladu `-v c:/azurite:/data` parametr určuje *c:/Azurite* jako umístění trvalého data Azurite. Adresář, *c:/Azurite*, musí být vytvořen před spuštěním příkazu Docker.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Spustit pouze službu BLOB Service**
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
-**Nastavit všechny parametry Azurite**:
-
-Tento příklad ukazuje, jak nastavit všechny parametry příkazového řádku. Všechny níže uvedené parametry by měly být umístěny na jednom příkazovém řádku.
-
-```console
-docker run -p 8888:8888
-           -p 9999:9999
-           -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
-           -l /workspace
-           -d /workspace/debug.log
-           --blobPort 8888
-           --blobHost 0.0.0.0
-           --queuePort 9999
-           --queueHost 0.0.0.0
-```
-
-Další informace o konfiguraci Azurite při spuštění najdete v tématu [Možnosti příkazového řádku](#command-line-options) .
+Další informace o konfiguraci Azurite při spuštění najdete v tématu [Možnosti příkazového řádku](#command-line-options).
 
 ## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Klonování, sestavování a spouštění Azurite z úložiště GitHub
 
@@ -143,32 +134,32 @@ Po instalaci a sestavování Azurite najdete informace v tématu [spuštění Az
 ## <a name="run-azurite-from-a-command-line"></a>Spuštění Azurite z příkazového řádku
 
 > [!NOTE]
-> Azurite nelze spustit z příkazového řádku, pokud jste nainstalovali pouze rozšíření Visual Studio Code. Místo toho použijte VS Code paletu příkazů. Další informace najdete v tématu [instalace a spuštění rozšíření Azurite Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
+> Azurite nelze spustit z příkazového řádku, pokud jste nainstalovali pouze rozšíření Visual Studio Code. Místo toho použijte Visual Studio Code paletu příkazů. Další informace najdete v tématu [instalace a spuštění rozšíření Azurite Visual Studio Code](#install-and-run-the-azurite-visual-studio-code-extension).
 
-Pokud chcete začít hned s příkazovým řádkem, vytvořte adresář s názvem **c:\azurite**a potom spusťte Azurite spuštěním následujícího příkazu:
+Pokud chcete začít hned s příkazovým řádkem, vytvořte adresář s názvem *c:\azurite*a potom spusťte Azurite spuštěním následujícího příkazu:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adresáře **c:\azurite**. Pokud je možnost **--Location** vynechána, použije se aktuální pracovní adresář.
+Tento příkaz oznamuje Azurite, aby ukládal všechna data do konkrétního adresáře *c:\azurite*. Pokud je `--location` Tato možnost vynechána, použije se aktuální pracovní adresář.
 
 ## <a name="command-line-options"></a>Možnosti příkazového řádku
 
-Tato část podrobně popisuje přepínače příkazového řádku, které jsou k dispozici při spuštění Azurite. Všechny přepínače příkazového řádku jsou volitelné.
+Tato část podrobně popisuje přepínače příkazového řádku, které jsou k dispozici při spuštění Azurite.
+
+### <a name="help"></a>Nápověda
+
+**Volitelné** – získat nápovědu příkazového řádku pomocí přepínače `-h` nebo. `--help`
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
-    [-d | --debug <log file path>] [-l | --location <workspace path>]
-    [--queueHost <IP address>] [--queuePort <port address>]
-    [-s | --silent] [-h | --help]
+azurite -h
+azurite --help
 ```
-
-Parametr **-d** je zkratka pro **--Debug**, **-l** přepínač, který je zkratkou **pro--** Silent, **-s** je zkratka pro **--Silent**a **-h** je zkratka pro- **-help**.
 
 ### <a name="blob-listening-host"></a>Přijímající hostitel objektu BLOB
 
-**Volitelné** Ve výchozím nastavení bude Azurite naslouchat na adresu 127.0.0.1 jako místní server. Použijte přepínač **--blobHost** a nastavte adresu na vaše požadavky.
+**Volitelné** – ve výchozím nastavení bude Azurite naslouchat serveru 127.0.0.1 jako místní server. Pomocí `--blobHost` přepínače nastavte adresu podle vašich požadavků.
 
 Přijímat žádosti jenom v místním počítači:
 
@@ -187,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>Konfigurace portu naslouchání objektem BLOB
 
-**Volitelné** Ve výchozím nastavení bude Azurite naslouchat Blob service na portu 10000. Použijte přepínač **--blobPort** k určení portu pro naslouchání, který požadujete.
+**Volitelné** – ve výchozím nastavení bude Azurite naslouchat BLOB Service na portu 10000. Pomocí `--blobPort` přepínače zadejte port pro naslouchání, který požadujete.
 
 > [!NOTE]
 > Po použití přizpůsobeného portu musíte aktualizovat připojovací řetězec nebo odpovídající konfiguraci v Azure Storagech nástrojích nebo sadách SDK.
@@ -208,7 +199,7 @@ Používaný port se zobrazí při spuštění Azurite.
 
 ### <a name="queue-listening-host"></a>Hostitel naslouchání front
 
-**Volitelné** Ve výchozím nastavení bude Azurite naslouchat na adresu 127.0.0.1 jako místní server. Použijte přepínač **--queueHost** a nastavte adresu na vaše požadavky.
+**Volitelné** – ve výchozím nastavení bude Azurite naslouchat serveru 127.0.0.1 jako místní server. Pomocí `--queueHost` přepínače nastavte adresu podle vašich požadavků.
 
 Přijímat žádosti jenom v místním počítači:
 
@@ -227,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>Konfigurace portu naslouchání frontou
 
-**Volitelné** Ve výchozím nastavení bude Azurite naslouchat Služba front na portu 10001. Použijte přepínač **--queuePort** k určení portu pro naslouchání, který požadujete.
+**Volitelné** – ve výchozím nastavení bude Azurite naslouchat služba front na portu 10001. Pomocí `--queuePort` přepínače zadejte port pro naslouchání, který požadujete.
 
 > [!NOTE]
 > Po použití přizpůsobeného portu musíte aktualizovat připojovací řetězec nebo odpovídající konfiguraci v Azure Storagech nástrojích nebo sadách SDK.
@@ -248,79 +239,90 @@ Používaný port se zobrazí při spuštění Azurite.
 
 ### <a name="workspace-path"></a>Cesta k pracovnímu prostoru
 
-**Volitelné** Azurite ukládá data na místní disk během provádění. Použijte přepínač **--Location** a zadejte cestu jako umístění pracovního prostoru. Ve výchozím nastavení se použije aktuální pracovní adresář procesu.
-
-```console
-azurite --location c:\azurite
-```
+**Volitelné** – Azurite ukládá data na místní disk během provádění. Pomocí přepínače `-l` nebo `--location` zadejte cestu k umístění pracovního prostoru. Ve výchozím nastavení se použije aktuální pracovní adresář procesu. Poznamenejte si malé písmeno l.
 
 ```console
 azurite -l c:\azurite
+azurite --location c:\azurite
 ```
 
 ### <a name="access-log"></a>Přístup k protokolu
 
-**Volitelné** Ve výchozím nastavení se protokol přístupu zobrazuje v okně konzoly. Zakažte zobrazování protokolu přístupu pomocí přepínače **--Silent** .
-
-```console
-azurite --silent
-```
+**Volitelné** – ve výchozím nastavení se protokol přístupu zobrazí v okně konzoly. Zakažte zobrazování protokolu přístupu pomocí přepínače `-s` nebo. `--silent`
 
 ```console
 azurite -s
+azurite --silent
 ```
-
 ### <a name="debug-log"></a>Protokol ladění
 
-**Volitelné** Protokol ladění obsahuje podrobné informace o každém trasování zásobníku požadavků a výjimek. Povolte protokol ladění zadáním platné cesty místního souboru pro přepínač **--Debug** .
-
-```console
-azurite --debug path/debug.log
-```
+**Volitelné** – protokol ladění obsahuje podrobné informace o každém trasování zásobníku požadavků a výjimek. Povolte protokol ladění zadáním platné místní cesty k souboru `-d` nebo `--debug` přepínači.
 
 ```console
 azurite -d path/debug.log
+azurite --debug path/debug.log
 ```
 
 ### <a name="loose-mode"></a>Volný režim
 
-**Volitelné** Ve výchozím nastavení používá Azurite striktní režim pro blokování nepodporovaných hlaviček a parametrů požadavků. Zakáže striktní režim pomocí přepínače **--** dispozice.
-
-```console
-azurite --loose
-```
-
-Všimněte si kapitálového přepínače "L":
+**Volitelné** – ve výchozím nastavení Azurite použije striktní režim pro blokování nepodporovaných hlaviček a parametrů požadavků. Zakažte striktní režim pomocí přepínače `-L` nebo `--loose` . Všimněte si, že se jedná o velké písmeno L.
 
 ```console
 azurite -L
+azurite --loose
 ```
+### <a name="version"></a>Verze
+
+**Volitelné** – zobrazí se číslo nainstalované verze Azurite pomocí přepínače `-v` nebo. `--version`
+
+```console
+azurite -v
+azurite --version
+```
+
+### <a name="certificate-configuration-https"></a>Konfigurace certifikátu (HTTPS)
+
+**Volitelné** – ve výchozím nastavení používá AZURITE protokol HTTP. Režim HTTPS povolíte tak, že zadáte cestu k souboru certifikátu aplikace PEM (Privacy Enhanced mail) nebo [Personal Information Exchange (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) na `--cert` přepínač.
+
+Když `--cert` je k dispozici soubor PEM, je nutné zadat odpovídající `--key` přepínač.
+
+```console
+azurite --cert path/server.pem --key path/key.pem
+```
+
+Když `--cert` je k dispozici soubor PFX, je nutné zadat odpovídající `--pwd` přepínač.
+
+```console
+azurite --cert path/server.pfx --pwd pfxpassword
+```
+
+Podrobné informace o vytváření souborů PEM a PFX najdete v tématu [nastavení protokolu HTTPS](https://github.com/Azure/Azurite/blob/master/README.md#https-setup).
+
+### <a name="oauth-configuration"></a>Konfigurace OAuth
+
+**Volitelné** – povolte ověřování OAuth pro Azurite pomocí `--oauth` přepínače.
+
+```console
+azurite --oauth basic --cert path/server.pem --key path/key.pem
+```
+
+> [!NOTE]
+> OAuth vyžaduje koncový bod HTTPS. Zajistěte, aby byl protokol `--cert` https povolený přepínačem spolu s `--oauth` přepínačem.
+
+Azurite podporuje základní ověřování zadáním `basic` parametru pro `--oauth` přepínač. Azurite provede základní ověřování, jako je ověřování příchozího tokenu nosiče, kontrola vystavitele, cílové skupiny a vypršení platnosti. Azurite nekontroluje podpis nebo oprávnění tokenu.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Autorizace pro nástroje a sady SDK
 
-Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Vyžaduje se ověření. Azurite podporuje autorizaci pomocí sdílených klíčů a podpisů sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
+Připojte se k Azurite z Azure Storage sady SDK nebo nástrojů, jako je [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/), pomocí jakékoli strategie ověřování. Vyžaduje se ověření. Azurite podporuje autorizaci pomocí OAuth, sdíleného klíče a signatury sdíleného přístupu (SAS). Azurite také podporuje anonymní přístup k veřejným kontejnerům.
+
+Pokud používáte sady SDK Azure, spusťte Azurite s `--oauth basic and --cert --key/--pwd` možnostmi.
 
 ### <a name="well-known-storage-account-and-key"></a>Dobře známý účet úložiště a klíč
 
-Pomocí Azurite můžete použít následující název účtu a klíč. Jedná se o stejný dobře známý účet a klíč, který používá starší emulátor úložiště Azure.
+Azurite přijímá stejný dobře známý účet a klíč, který používá starší emulátor úložiště Azure.
 
-* Název účtu:`devstoreaccount1`
-* Klíč účtu:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
-
-> [!NOTE]
-> Kromě ověřování SharedKey Azurite podporuje ověřování SAS účtů a služeb. Anonymní přístup je k dispozici také v případě, že je kontejner nastaven tak, aby povoloval veřejný přístup.
-
-### <a name="connection-string"></a>Připojovací řetězec
-
-Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakonfigurovat připojovací řetězec v konfiguračním souboru vaší aplikace, který odkazuje na zástupce *UseDevelopmentStorage = true*. Tady je příklad připojovacího řetězce v souboru *App. config* :
-
-```xml
-<appSettings>
-  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-</appSettings>
-```
-
-Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
+- Název účtu:`devstoreaccount1`
+- Klíč účtu:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Vlastní účty úložiště a klíče
 
@@ -332,10 +334,18 @@ Použijte například vlastní účet úložiště, který má jeden klíč:
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
+```bash
+export AZURITE_ACCOUNTS="account1:key1"
+```
+
 Nebo použijte více účtů úložiště se dvěma klíči:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+```bash
+export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
 Azurite ve výchozím nastavení aktualizuje vlastní názvy účtů a klíče z proměnné prostředí. Pomocí této funkce můžete klíč účtu dynamicky otočit nebo přidat nové účty úložiště, aniž byste museli restartovat Azurite.
@@ -343,15 +353,159 @@ Azurite ve výchozím nastavení aktualizuje vlastní názvy účtů a klíče z
 > [!NOTE]
 > Výchozí `devstoreaccount1` účet úložiště je při nastavování vlastních účtů úložiště zakázaný.
 
-> [!NOTE]
-> Aktualizujte připojovací řetězec odpovídajícím způsobem při použití vlastních názvů účtů a klíčů.
+### <a name="connection-strings"></a>Připojovací řetězce
 
-> [!NOTE]
-> Pomocí `export` klíčového slova můžete nastavit proměnné prostředí v prostředí Linux, a `set` to pomocí systému Windows.
+Nejjednodušší způsob, jak se připojit k Azurite z vaší aplikace, je nakonfigurovat připojovací řetězec v konfiguračním souboru vaší aplikace, který odkazuje na zástupce *UseDevelopmentStorage = true*. Tady je příklad připojovacího řetězce v souboru *App. config* :
 
-### <a name="storage-explorer"></a>Storage Explorer
+```xml
+<appSettings>
+  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+</appSettings>
+```
 
-V Průzkumník služby Azure Storage se připojte k Azurite kliknutím na ikonu **Přidat účet** a pak vyberte **připojit k místnímu emulátoru** a klikněte na **připojit**.
+#### <a name="http-connection-strings"></a>Připojovací řetězce HTTP
+
+Následujícím připojovacím řetězcům můžete předat sady SDK nebo nástroje [Azure](https://aka.ms/azsdk) , jako je Azure CLI 2,0 nebo Průzkumník služby Storage.
+
+Úplný připojovací řetězec je:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+Pokud se chcete připojit pouze ke službě BLOB Service, připojovací řetězec:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+
+Pokud se chcete připojit pouze ke službě Queue, připojovací řetězec:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+#### <a name="https-connection-strings"></a>Připojovací řetězce HTTPS
+
+Úplný připojovací řetězec HTTPS:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Pokud chcete použít jenom službu BLOB Service, je připojovací řetězec HTTPS:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;`
+
+Aby bylo možné používat pouze službu Queue, je připojovací řetězec HTTPS:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Pokud jste použili `dotnet dev-certs` k vygenerování certifikátu podepsaného svým držitelem, použijte následující připojovací řetězec.
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
+
+Aktualizujte připojovací řetězec při použití [vlastních účtů a klíčů úložiště](#custom-storage-accounts-and-keys).
+
+Další informace najdete v tématu [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md).
+
+### <a name="azure-sdks"></a>Sady Azure SDK
+
+Pokud chcete používat Azurite se sadami [SDK Azure](https://aka.ms/azsdk), použijte možnosti OAuth a https:
+
+```console
+azurite --oauth basic --cert certname.pem --key certname-key.pem
+```
+
+#### <a name="azure-blob-storage"></a>Azure Blob Storage
+
+Pak můžete vytvořit instanci objektu BlobContainerClient, BlobServiceClient nebo BlobClient.
+
+```csharp
+// With container URL and DefaultAzureCredential
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new BlobContainerClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "container-name"
+  );
+
+// With account name and key
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+#### <a name="azure-queue-storage"></a>Azure Queue Storage
+
+Můžete také vytvořit instanci QueueClient nebo QueueServiceClient.
+
+```csharp
+// With queue URL and DefaultAzureCredential
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new QueueClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "queue-name"
+  );
+
+// With account name and key
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
+K zobrazení dat uložených v Azurite můžete použít Průzkumník služby Storage.
+
+#### <a name="connect-to-azurite-using-http"></a>Připojení k Azurite pomocí protokolu HTTP
+
+V Průzkumník služby Storage se připojte k Azurite pomocí následujících kroků:
+
+ 1. Vyberte ikonu **Přidat účet** .
+ 1. Vybrat **připojit k místnímu emulátoru**
+ 1. Vybrat **Další**
+ 1. Znovu vybrat **Další**
+ 1. Vyberte **připojit**
+
+#### <a name="connect-to-azurite-using-https"></a>Připojení k Azurite pomocí protokolu HTTPS
+
+Ve výchozím nastavení Průzkumník služby Storage neotevře koncový bod HTTPS, který používá certifikát podepsaný svým držitelem. Pokud používáte Azurite s protokolem HTTPS, pravděpodobně budete používat certifikát podepsaný svým držitelem. V Průzkumník služby Storage importujte certifikáty SSL přes dialogové okno **Upravit** -> certifikáty**SSL** -> **importovat certifikáty** .
+
+##### <a name="import-certificate-to-storage-explorer"></a>Importovat certifikát do Průzkumník služby Storage
+
+1. Najděte certifikát na místním počítači.
+1. V Průzkumník služby Storage pokračujte v **úpravách** -> **certifikátů** -> SSL**Import certifikátů** a import certifikátu.
+
+Pokud certifikát neimportujete, zobrazí se chyba:
+
+`unable to verify the first certificate` nebo `self signed certificate in chain`
+
+##### <a name="add-azurite-via-https-connection-string"></a>Přidat Azurite prostřednictvím připojovacího řetězce HTTPS
+
+Pomocí těchto kroků přidejte Azurite HTTPS do Průzkumník služby Storage:
+
+1. Výběr **přepínače Průzkumník**
+1. Vyberte **místní & připojené** .
+1. Klikněte pravým tlačítkem na **účty úložiště** a vyberte **připojit k Azure Storage**.
+1. Vyberte **Použít připojovací řetězec**
+1. Vyberte **Další**.
+1. Do pole **Zobrazovaný název** zadejte hodnotu.
+1. Zadejte [připojovací řetězec https](#https-connection-strings) z předchozí části tohoto dokumentu.
+1. Vybrat **Další**
+1. Vyberte **připojit**
+
+## <a name="workspace-structure"></a>Struktura pracovního prostoru
+
+Při inicializaci Azurite se můžou v umístění pracovního prostoru vytvořit následující soubory a složky.
+
+- `__blobstorage__`– Adresář obsahující Azurite BLOB Service trvalá binární data
+- `__queuestorage__`-Adresář, který obsahuje zadržená binární data služby front Azurite
+- `__azurite_db_blob__.json`– Azurite soubor metadat služby BLOB Service
+- `__azurite_db_blob_extent__.json`– Azurite soubor metadat rozsahu služby BLOB Service
+- `__azurite_db_queue__.json`– Soubor metadat služby Azurite Queue
+- `__azurite_db_queue_extent__.json`– Soubor metadat rozsahu služby fronty Azurite
+
+Pokud chcete Azurite vyčistit, odstraňte výše uvedené soubory a složky a restartujte emulátor.
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>Rozdíly mezi Azurite a Azure Storage
 
@@ -379,7 +533,7 @@ Pro přístup k objektu BLOB v Azurite je možné použít následující adresu
 
 ### <a name="scaling-and-performance"></a>Škálování a výkon
 
-Azurite není škálovatelná služba úložiště a nepodporuje velký počet souběžných klientů. Není zajištěna žádná záruka na výkon. Azurite je určena pro účely vývoje a testování.
+Azurite nepodporuje velké počty připojených klientů. Není zajištěna žádná záruka na výkon. Azurite je určena pro účely vývoje a testování.
 
 ### <a name="error-handling"></a>Zpracování chyb
 
@@ -387,7 +541,7 @@ Azurite je zarovnán s Azure Storage logikou zpracování chyb, ale existují ro
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite podporuje geograficky redundantní replikaci s přístupem pro čtení (RA-GRS). Pro prostředky úložiště přejděte k sekundárnímu umístění připojením **– sekundární** k názvu účtu. Například následující adresa může být použita pro přístup k objektu BLOB pomocí sekundárního souboru jen pro čtení v Azurite:
+Azurite podporuje geograficky redundantní replikaci s přístupem pro čtení (RA-GRS). Pro prostředky úložiště přejděte k sekundárnímu umístění připojením `-secondary` k názvu účtu. Například následující adresa může být použita pro přístup k objektu BLOB pomocí sekundárního souboru jen pro čtení v Azurite:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
@@ -397,5 +551,5 @@ Příspěvky a návrhy pro Azurite jsou Vítá vás. Přejít na stránku [proje
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Použijte emulátor úložiště Azure pro vývoj a testování](storage-use-emulator.md) dokumentů staršího emulátoru úložiště Azure, který nahrazuje Azurite.
-* [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec úložiště Azure.
+- [Použijte emulátor úložiště Azure pro vývoj a testování](storage-use-emulator.md) dokumentů staršího emulátoru úložiště Azure, který nahrazuje Azurite.
+- [Konfigurace připojovacích řetězců Azure Storage](storage-configure-connection-string.md) vysvětluje, jak sestavit platný připojovací řetězec úložiště Azure.

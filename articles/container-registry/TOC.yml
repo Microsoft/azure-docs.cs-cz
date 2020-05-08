@@ -32,6 +32,11 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3. Aktualizace webové aplikace
               href: container-registry-tutorial-deploy-update.md
+    - name: ukázky
+      items:
+        - name: Integrované služby Azure Policy
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
     - name: Koncepty
       expanded: false
       items:
@@ -82,10 +87,12 @@
               href: container-registry-webhook.md
         - name: Zabezpečení a ověřování
           items:
-            - name: Omezení přístupu s využitím virtuální sítě (Preview)
-              href: container-registry-vnet.md
             - name: Integrace s Azure Private Linkem (Preview)
               href: container-registry-private-link.md
+            - name: Omezení přístupu s využitím virtuální sítě (Preview)
+              href: container-registry-vnet.md
+            - name: Šifrování s využitím klíče spravovaného zákazníkem
+              href: container-registry-customer-managed-keys.md
             - name: Přístup za bránou firewall
               href: container-registry-firewall-access-rules.md
             - name: Authentication
@@ -110,8 +117,6 @@
               href: container-registry-content-trust.md
             - name: Kontrola imagí s využitím služby Security Center
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-            - name: Šifrování dat registru (Preview)
-              href: container-registry-customer-managed-keys.md
         - name: Registry a další služby Azure
           expanded: false
           items:
@@ -189,8 +194,6 @@
               href: container-registry-tasks-authentication-key-vault.md
         - name: Rychlé spuštění úlohy s využitím šablony Resource Manageru
           href: container-registry-task-run-template.md
-        - name: Spouštění úloh ve vyhrazeném fondu agentů (Preview)
-          href: container-registry-tasks-agent-pools.md
         - name: Sestavení image s využitím Buildpacks (Preview)
           href: container-registry-tasks-pack-build.md
         - name: Zobrazení protokolů úkolů

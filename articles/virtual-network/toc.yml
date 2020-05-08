@@ -35,8 +35,9 @@
       href: powershell-samples.md
     - name: Šablony Resource Manageru
       href: template-samples.md
-    - name: Šablony Azure Policy
-      href: policy-samples.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Kontinuita podnikových procesů
@@ -390,7 +391,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.network
     - name: .NET
-      href: /api/overview/azure/virtual-network
+      href: /dotnet/api/overview/azure/virtual-network
     - name: Java
       href: /java/api/
     - name: Node.js
