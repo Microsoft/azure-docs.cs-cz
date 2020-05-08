@@ -1,23 +1,21 @@
 ---
 title: Zabezpečená komunikace služby Azure Service Fabric reverzní proxy
 description: Nakonfigurujte reverzní proxy tak, aby umožňoval zabezpečenou koncovou komunikaci v aplikaci Azure Service Fabric.
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617116"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858526"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení k zabezpečené službě pomocí reverzního proxy serveru
 
 V tomto článku se dozvíte, jak vytvořit zabezpečené připojení mezi reverzním proxy serverem a službami a tím i koncovým zabezpečeným kanálem. Další informace o reverzním proxy serveru najdete [v tématu reverzní proxy v Azure Service Fabric](service-fabric-reverseproxy.md)
 
-Připojení k zabezpečeným službám se podporuje jenom v případě, že je reverzní proxy nakonfigurované pro naslouchání na HTTPS. V tomto článku se předpokládá, že se jedná o tento případ.
-Postup konfigurace reverzního proxy serveru v Service Fabric najdete v tématu [Nastavení reverzního proxy serveru v Azure Service Fabric](service-fabric-reverseproxy-setup.md) .
+> [!IMPORTANT]
+> Připojení k zabezpečeným službám se podporuje jenom v případě, že je reverzní proxy nakonfigurované pro naslouchání na HTTPS. V tomto článku se předpokládá, že se jedná o tento případ. Postup konfigurace reverzního proxy serveru v Service Fabric najdete v tématu [Nastavení reverzního proxy serveru v Azure Service Fabric](service-fabric-reverseproxy-setup.md) .
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Zabezpečené vytváření připojení mezi reverzním proxy serverem a službami 
 
@@ -180,10 +178,10 @@ Toto je výchozí chování.
 
 2. Pokud je **ForwardClientCertificate** nastaveno na **hodnotu true**, reverzní proxy požádá o certifikát klienta během své metody handshake TLS s klientem.
 Pak přepošle data certifikátu klienta ve vlastní hlavičce HTTP s názvem **X-Client-Certificate**. Hodnota hlavičky je formátovací řetězec PEM kódovaný v kódování Base64 certifikátu klienta. Služba může po kontrole dat certifikátu úspěšně nebo neúspěšně požádat o příslušný stavový kód.
-Pokud klient neprezentuje certifikát, reverzní proxy přepošle prázdnou hlavičku a umožní, aby služba zavedla případ.
+Pokud klient neprezentuje certifikát, reverzní proxy předává prázdnou hlavičku a umožňuje, aby služba zavedla případ.
 
 > [!NOTE]
-> Reverzní proxy je pouhým serverem pro přeposílání. Neprovede žádné ověření certifikátu klienta.
+> Reverzní proxy funguje jenom jako předávací služba. Neprovede žádné ověření certifikátu klienta.
 
 
 ## <a name="next-steps"></a>Další kroky

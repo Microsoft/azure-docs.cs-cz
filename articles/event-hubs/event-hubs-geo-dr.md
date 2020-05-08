@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 61318fbccdf92c6502aa8b2236d8b234cec67668
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209141"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858285"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geografická zotavení po havárii 
 
@@ -60,7 +60,7 @@ Podporovány jsou následující kombinace primárních a sekundárních oborů 
 | Standard | Standard | Ano | 
 | Standard | Vyhrazená | Ano | 
 | Vyhrazená | Vyhrazená | Ano | 
-| Vyhrazená | Standard | Ne | 
+| Vyhrazená | Standard | No | 
 
 > [!NOTE]
 > Obory názvů, které jsou ve stejném vyhrazeném clusteru, nelze spárovat. Obory názvů, které jsou v samostatných clusterech, můžete spárovat. 
@@ -138,7 +138,7 @@ Zóny dostupnosti můžete povolit jenom pro nové obory názvů pomocí Azure P
 ## <a name="next-steps"></a>Další kroky
 
 * [Ukázka na GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) vás provede jednoduchým pracovním postupem, který vytvoří geografickou spárování a zahájí převzetí služeb při selhání ve scénáři zotavení po havárii.
-* [Odkazy na REST API](/rest/api/eventhub/disasterrecoveryconfigs) popisují rozhraní API pro konfiguraci obnovení geografického zotavení po havárii.
+* [Odkazy na REST API](/rest/api/eventhub/) popisují rozhraní API pro konfiguraci obnovení geografického zotavení po havárii.
 
 Další informace o službě Event Hubs naleznete pod těmito odkazy:
 

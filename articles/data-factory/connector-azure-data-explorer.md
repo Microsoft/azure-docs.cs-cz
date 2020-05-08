@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2020
-ms.openlocfilehash: 12bf807f5866567508b644105f377cfde1494250
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ba8c35fc1802f7ef3ac54c693c8106bbc40cc185
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410768"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560162"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Průzkumník dat pomocí Azure Data Factory
 
@@ -149,8 +149,8 @@ Pokud chcete kopírovat data z Azure Průzkumník dat, nastavte vlastnost **typ*
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na: **AzureDataExplorerSource** . | Ano |
 | query | Požadavek jen pro čtení zadaný ve [formátu KQL](/azure/kusto/query/) Použijte vlastní dotaz KQL jako referenci. | Ano |
-| queryTimeout | Doba čekání před vypršením časového limitu požadavku na dotaz Výchozí hodnota je 10 minut (00:10:00); maximální povolená hodnota je 1 hodina (01:00:00). | Ne |
-| Zkrácení | Označuje, zda se má zkrátit vrácená sada výsledků. Ve výchozím nastavení se výsledek zkrátí po 500 000 záznamech nebo 64 megabajtů (MB). Pro zajištění správného chování aktivity se důrazně doporučuje zkrátit. |Ne |
+| queryTimeout | Doba čekání před vypršením časového limitu požadavku na dotaz Výchozí hodnota je 10 minut (00:10:00); maximální povolená hodnota je 1 hodina (01:00:00). | No |
+| Zkrácení | Označuje, zda se má zkrátit vrácená sada výsledků. Ve výchozím nastavení se výsledek zkrátí po 500 000 záznamech nebo 64 megabajtů (MB). Pro zajištění správného chování aktivity se důrazně doporučuje zkrátit. |No |
 
 >[!NOTE]
 >Ve výchozím nastavení má Azure Průzkumník dat source omezení velikosti 500 000 záznamů nebo 64 MB. Chcete-li načíst všechny záznamy bez zkrácení, můžete zadat `set notruncation;` na začátku dotazu. Další informace najdete v tématu [omezení dotazů](https://docs.microsoft.com/azure/kusto/concepts/querylimits).
@@ -195,8 +195,8 @@ Pokud chcete kopírovat data do Azure Průzkumník dat, nastavte vlastnost typ v
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost **Type** jímky aktivity kopírování musí být nastavená na: **AzureDataExplorerSink**. | Ano |
-| ingestionMappingName | Název předem vytvořeného [mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce Kusto Pokud chcete namapovat sloupce ze zdrojového do služby Azure Průzkumník dat (to platí pro [všechna podporovaná zdrojová úložiště a formáty](copy-activity-overview.md#supported-data-stores-and-formats), včetně formátů CSV/JSON/Avro), můžete použít [mapování sloupce](copy-activity-schema-and-type-mapping.md) aktivita kopírování (implicitně podle názvu nebo explicitně jako nakonfigurovaná) a mapování Azure Průzkumník dat. | Ne |
-| additionalProperties | Kontejner objektů A dat, který se dá použít k zadání jakékoli vlastnosti ingestování, které už nejsou nastavené jímkou Průzkumník dat služby Azure. Konkrétně to může být užitečné při zadávání značek přijímání. Další informace najdete v [dokumentu Azure Data prozkoumání příjmu dat](https://kusto.azurewebsites.net/docs/management/data-ingestion/index.html). | Ne |
+| ingestionMappingName | Název předem vytvořeného [mapování](/azure/kusto/management/mappings#csv-mapping) v tabulce Kusto Pokud chcete namapovat sloupce ze zdrojového do služby Azure Průzkumník dat (to platí pro [všechna podporovaná zdrojová úložiště a formáty](copy-activity-overview.md#supported-data-stores-and-formats), včetně formátů CSV/JSON/Avro), můžete použít [mapování sloupce](copy-activity-schema-and-type-mapping.md) aktivita kopírování (implicitně podle názvu nebo explicitně jako nakonfigurovaná) a mapování Azure Průzkumník dat. | No |
+| additionalProperties | Kontejner objektů A dat, který se dá použít k zadání jakékoli vlastnosti ingestování, které už nejsou nastavené jímkou Průzkumník dat služby Azure. Konkrétně to může být užitečné při zadávání značek přijímání. Další informace najdete v [dokumentu Azure Data prozkoumání příjmu dat](https://docs.microsoft.com/azure/data-explorer/ingestion-properties). | No |
 
 **Případě**
 

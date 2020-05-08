@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262872"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592039"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Částečné vyhledávání a vzory s použitím speciálních znaků (zástupné znaky, regulární výrazy, vzory)
 
@@ -24,7 +24,7 @@ ms.locfileid: "81262872"
 Řešením je vyvolat analyzátor, který v případě potřeby zachová úplný řetězec, včetně mezer a speciálních znaků, takže se můžete porovnávat na částečné výrazy a vzory. Vytvoření dalšího pole pro nedotčený řetězec a použití analyzátoru pro zachování obsahu je základem řešení.
 
 > [!TIP]
-> Znáte rozhraní API pro post a REST? [Stáhněte si kolekci příklady dotazů](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) pro dotaz na částečné výrazy a speciální znaky popsané v tomto článku.
+> Znáte rozhraní API pro post a REST? [Stáhněte si kolekci příklady dotazů](https://github.com/Azure-Samples/azure-search-postman-samples/) pro dotaz na částečné výrazy a speciální znaky popsané v tomto článku.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Co je částečné vyhledávání v Azure Kognitivní hledání
 

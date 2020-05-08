@@ -1,26 +1,24 @@
 ---
-title: Nejčastější dotazy a terminologie pro analýzy komerčního tržiště v partnerském centru
-description: Naučte se řešit Nejčastější dotazy týkající se komerčních analýz na webu Marketplace. Zahrnuje slovník dat pro terminologii analýzy.
+title: Nejčastější dotazy k komerčním obchodům na webu Marketplace & terminologie – partnerský partner
+description: Získejte odpovědi na nejčastější dotazy týkající se komerčních analýz na webu Marketplace v partnerském centru. Tento článek obsahuje slovník dat pro terminologii analýzy.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251822"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791472"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Terminologie a běžné otázky ke komerčním analýzám na webu Marketplace
 
 Tento článek se zabývá nejčastějšími dotazy týkajícími se analytických zpráv v partnerském centru a také poskytuje slovník analytických terminologie.
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
-
-V této části najdete odpovědi na nejčastější dotazy týkající se **dosud nedostupných analýz** ve zprávách v partnerském centru.
+## <a name="common-questions"></a>Časté dotazy
 
 **Nedaří se mi zobrazit data analýz v partnerském centru. Po přístupu na tyto stránky se zobrazí zpráva níže. Proč je to?**
 

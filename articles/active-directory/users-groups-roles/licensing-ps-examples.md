@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484855"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582668"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Příklady PowerShellu a grafu pro licencování na základě skupin ve službě Azure AD
 
@@ -29,7 +29,7 @@ Plná funkčnost pro licencování na základě skupin je dostupná prostřednic
 > Než začnete používat rutiny, ujistěte se, že jste nejdřív připojili k vaší organizaci spuštěním `Connect-MsolService`  rutiny.
 
 > [!WARNING]
-> Tento kód je k dispozici jako příklad pro demonstrační účely. Pokud máte v úmyslu použít ho ve svém prostředí, zvažte jeho první testování v malém měřítku nebo v samostatném testovacím tenantovi. Možná budete muset upravit kód tak, aby splňoval konkrétní potřeby vašeho prostředí.
+> Tento kód je k dispozici jako příklad pro demonstrační účely. Pokud máte v úmyslu použít ho ve svém prostředí, zvažte jeho první testování v malém měřítku nebo v samostatné testovací organizaci. Možná budete muset upravit kód tak, aby splňoval konkrétní potřeby vašeho prostředí.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Zobrazení licencí k produktu přiřazených ke skupině
 
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Získat všechny uživatele s chybami licencí v celém tenantovi
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>Získat všechny uživatele s chybami licencí v celé organizaci
 
 Pomocí následujícího skriptu můžete získat všechny uživatele, kteří mají chyby licencí z jedné nebo více skupin. Skript vytiskne jeden řádek na uživatele, na základě chyby licence, což vám umožní jasně identifikovat zdroj každé chyby.
 
 > [!NOTE]
-> Tento skript vytvoří výčet všech uživatelů v tenantovi, které nemusí být optimální pro velké klienty.
+> Tento skript vytvoří výčet všech uživatelů v organizaci, které nemusí být pro velké organizace optimální.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,10 +364,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Tento skript provádí tyto funkce na všech uživatelích v tenantovi pomocí ID SKU jako vstupu. v tomto příkladu vás zajímáme o licenci pro *Enterprise mobility + Security*, která v našem tenantovi je zastoupena s ID *Contoso:*
+Tento skript provádí tyto funkce na všech uživatelích v organizaci, přičemž jako vstup v tomto příkladu používá ID SKU, máme proto licenci k *Enterprise mobility + Security*, která v naší organizaci je zastoupena s ID *Contoso:*
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned

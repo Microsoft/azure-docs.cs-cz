@@ -1,6 +1,6 @@
 ---
-title: Použití stávajících přehrávačů k přehrávání obsahu – Azure | Dokumenty společnosti Microsoft
-description: V tomto článku jsou uvedeny existující přehrávače, které můžete použít k přehrávání obsahu.
+title: Přehrávání obsahu pomocí stávajících hráčů – Azure | Microsoft Docs
+description: Tento článek obsahuje seznam existujících přehrávačů, které můžete použít k přehrávání obsahu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686921"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
-Azure Media Services podporuje mnoho populárních formátů streamování, jako je plynulé streamování, živé streamování HTTP a MPEG-Dash. Toto téma odkazuje na stávající přehrávače, které můžete použít k testování datových proudů.
+Azure Media Services podporuje spoustu oblíbených formátů streamování, například Smooth Streaming, HTTP Live Streaming a MPEG-pomlčky. Toto téma ukazuje na existující přehrávače, které můžete použít k otestování vašich datových proudů.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Přehrávač obsahu Mediálních služeb portálu Azure
-Portál **Azure** poskytuje přehrávač obsahu, který můžete použít k testování videa.
+### <a name="the-azure-portal-media-services-content-player"></a>Přehrávač obsahu Azure Portal Media Services
+**Azure** Portal poskytuje přehrávač obsahu, který můžete použít k otestování videa.
 
-Klikněte na požadované video (ujistěte se, že bylo [publikováno)](media-services-portal-publish.md)a klikněte na tlačítko **Přehrát** v dolní části portálu.
+Klikněte na požadované video (Ujistěte se, že je [publikované](media-services-portal-publish.md)) a klikněte na tlačítko **Přehrát** v dolní části portálu.
 
 Musí být splněny určité předpoklady:
 
@@ -37,30 +37,30 @@ Musí být splněny určité předpoklady:
 
 ### <a name="azure-media-player"></a>Přehrávač médií Azure
 
-Pomocí [programu Azure Media Player](https://aka.ms/azuremediaplayer) můžete přehrávat obsah (jasný nebo chráněný) v některém z následujících formátů:
+Použijte [Azure Media Player](https://aka.ms/azuremediaplayer) k přehrávání obsahu (Clear nebo Protected) v některém z následujících formátů:
 
 * Technologie Smooth Streaming
 * MPEG DASH
 * HLS
 * Progresivní MP4
 
-### <a name="flash-player"></a>Flash Player
+### <a name="flash-player"></a>Přehrávač Flash
 
-#### <a name="playready-with-token"></a>PlayReady s žetonem
+#### <a name="playready-with-token"></a>PlayReady s tokenem
 
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>Dash hráči
+### <a name="dash-players"></a>PŘERUŠOVANé přehrávače
 
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Ostatní
-Chcete-li otestovat adresy URL HLS, můžete také použít:
+K testování adres URL HLS můžete také použít:
 
-* **Safari** na iOS zařízení nebo
-* **3ivx HLS Player** na Windows.
+* **Safari** na zařízení s iOS nebo
+* **3ivx HLS Player** ve Windows
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

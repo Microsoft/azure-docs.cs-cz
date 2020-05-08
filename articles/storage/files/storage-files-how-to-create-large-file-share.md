@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537674"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858580"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -26,8 +26,9 @@ Když v účtu úložiště povolíte velké sdílené složky, sdílené složk
 
 ## <a name="restrictions"></a>Omezení
 
-V současné době můžete použít jenom místně redundantní úložiště (LRS) nebo úložiště ZRS (zóna – redundantní úložiště) na účtech s povolenými velkými sdílenými soubory. Nemůžete použít geograficky redundantní úložiště (GZRS), geograficky redundantní úložiště (GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GRS).
-Povolení velkých sdílených složek na účtu je nevratný proces. Když ho povolíte, nebudete moct účet převést na GZRS, GRS nebo RA-GRS.
+V současné době můžete použít jenom místně redundantní úložiště (LRS) nebo úložiště ZRS (zóna – redundantní úložiště) na účtech s povolenými velkými sdílenými soubory. Nemůžete použít geograficky redundantní úložiště (GZRS), geograficky redundantní úložiště (GRS), geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS).
+
+Povolení velkých sdílených složek na účtu je nevratný proces. Když ho povolíte, nebudete moct účet převést na GZRS, GRS, RA-GRS nebo RA-GZRS.
 
 ## <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 
@@ -68,7 +69,7 @@ Nejdřív [nainstalujte nejnovější verzi rozhraní příkazového řádku Azu
 Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourResourceGroup>`, a `<yourDesiredRegion>` informacemi.
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ Nejdřív [nainstalujte nejnovější verzi PowerShellu](https://docs.microsoft.
 Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourResourceGroup>`, a `<yourDesiredRegion>` informacemi.
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Povolení sdílení velkých souborů v existujícím účtu
 
-U stávajících účtů můžete také povolit velké sdílené složky. Pokud povolíte velké sdílené složky, nebudete se moct převést na GZRS, GRS nebo RA-GRS. Povolení velkých sdílených složek je na tomto účtu úložiště nevratné.
+U stávajících účtů můžete také povolit velké sdílené složky. Pokud povolíte velké sdílené složky, nebudete se moct převést na GZRS, GRS, RA-GRS ani RA-GZRS. Povolení velkých sdílených složek je na tomto účtu úložiště nevratné.
 
 ### <a name="portal"></a>Portál
 

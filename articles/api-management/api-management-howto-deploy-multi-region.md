@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203144"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790475"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Postup při nasazení instance služby Azure API Management do několika oblastí Azure
 
 Azure API Management podporuje nasazení ve více oblastech, což umožňuje vydavatelům rozhraní API distribuovat jednu službu Azure API Management napříč libovolným počtem podporovaných oblastí Azure. Funkce více oblastí pomáhá snižovat latenci požadavku vnímanou uživateli geograficky distribuovaného rozhraní API a vylepšuje dostupnost služby v případě, že jedna oblast přejde do režimu offline.
 
-Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][unit] v jedné oblasti Azure, primární oblasti. Do primárních nebo sekundárních oblastí lze přidat další oblasti. Komponenta API Management Gateway je nasazená do všech vybraných primárních a sekundárních oblastí. Příchozí požadavky rozhraní API se automaticky přesměrují do nejbližší oblasti. Pokud se oblast přepne do režimu offline, požadavky rozhraní API se automaticky přesměrují kolem neúspěšné oblasti do nejbližší nejbližší brány.
+Nová služba Azure API Management zpočátku obsahuje jenom jednu [jednotku][unit] v jedné oblasti Azure, primární oblasti. Další jednotky lze přidat do primární nebo sekundární oblasti. Komponenta API Management Gateway je nasazená do všech vybraných primárních a sekundárních oblastí. Příchozí požadavky rozhraní API se automaticky přesměrují do nejbližší oblasti. Pokud se oblast přepne do režimu offline, požadavky rozhraní API se automaticky přesměrují kolem neúspěšné oblasti do nejbližší nejbližší brány.
 
 > [!NOTE]
 > Do všech oblastí je nasazená jenom součást brány API Management. Komponenta správy služby a portál pro vývojáře se hostují jenom v primární oblasti. Proto se v případě výpadku primární oblasti přístup k portálu pro vývojáře a možnosti změny konfigurace (např. Přidání rozhraní API, použití zásad) ztratí, dokud se primární oblast znovu nevrátí do režimu online. I když je primární oblast offline dostupná, sekundární oblasti budou dál obsluhovat přenosy rozhraní API, a to pomocí nejnovější konfigurace, která je pro ně dostupná.

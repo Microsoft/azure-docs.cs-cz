@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74269453"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591681"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Výpis prostředků Azure Storage v C++
 
@@ -62,7 +62,7 @@ Odpověď pro segmentované operace výpisu zahrnuje:
 * *_segment*, která obsahuje sadu výsledků vrácených pro jedno volání rozhraní API výpisu.
 * *continuation_token*, která je předána dalšímu volání, aby se zobrazila další stránka výsledků. Pokud neexistují žádné další výsledky k vrácení, token pokračování má hodnotu null.
 
-Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázkách](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
+Například typické volání pro výpis všech objektů BLOB v kontejneru může vypadat jako následující fragment kódu. Kód je k dispozici v našich [ukázkách](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp):
 
 ```cpp
 // List blobs in the blob container

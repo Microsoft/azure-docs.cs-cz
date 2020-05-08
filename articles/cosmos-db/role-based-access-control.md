@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445089"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583736"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Řízení přístupu na základě role ve službě Azure Cosmos DB
 
@@ -61,6 +61,12 @@ Poskytovatel prostředků Cosmos se může uzamknout, aby se zabránilo jakýmko
         }
     }
 }
+```
+Pokud exportujete stávající šablonu Správce prostředků a aktualizujete ji pomocí této vlastnosti, může to zcela nahradit funkčnost šablony. Takže pokud nejsou zahrnuty všechny hodnoty, budou nastaveny na výchozí. Dalším způsobem, jak zakázat přístup k zápisu metadat založených na klíčích, je použití rozhraní příkazového řádku Azure CLI, jak je znázorněno v následujícím příkazu:
+
+```cli
+az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+
 ```
 
 ## <a name="next-steps"></a>Další kroky

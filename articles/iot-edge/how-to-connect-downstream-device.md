@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3113f01341d2a1ec6160cfea3eb9d12d18b8495c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687170"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583312"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Připojení podřízeného zařízení k bráně služby Azure IoT Edge
 
@@ -185,9 +185,9 @@ V této části se seznámíte s ukázkovou aplikací pro připojení klienta za
 
 Tato část zavádí ukázkovou aplikaci pro připojení klienta zařízení Azure IoT Python k bráně IoT Edge.
 
-1. Získejte ukázku pro **send_message** ze [sady Azure IoT SDK pro zařízení pro Python Samples](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
-2. Ujistěte se, že jste buď spuštěni v kontejneru IoT Edge, nebo ve scénáři ladění, kde jsou `EdgeHubConnectionString` nastaveny `EdgeModuleCACertificateFile` proměnné prostředí a.
-3. Pokyny, jak spustit ukázku na vašem zařízení, najdete v dokumentaci k sadě SDK.
+1. Získejte ukázku pro **send_message_downstream** ze [sady Azure IoT SDK pro zařízení pro Python Samples](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios).
+2. Nastavte proměnné `IOTHUB_DEVICE_CONNECTION_STRING` prostředí `IOTEDGE_ROOT_CA_CERT_PATH` a, jak je uvedeno v komentářích ke skriptům Pythonu.
+3. Další pokyny ke spuštění ukázky na zařízení najdete v dokumentaci k sadě SDK.
 
 ## <a name="test-the-gateway-connection"></a>Test připojení brány
 

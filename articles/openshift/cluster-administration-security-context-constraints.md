@@ -1,5 +1,5 @@
 ---
-title: Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift | Dokumenty společnosti Microsoft
+title: Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift | Microsoft Docs
 description: Omezení kontextu zabezpečení pro správce clusteru Azure Red Hat OpenShift
 services: container-service
 author: troy0820
@@ -8,19 +8,19 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
 ms.openlocfilehash: 24163adcec889e9eedc2362ff1f01f00257a98f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063179"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Správa omezení kontextu zabezpečení v Azure Red Hat OpenShift 
 
-Omezení kontextu zabezpečení (SCC) umožňují správcům clusteru řídit oprávnění pro pody. Další informace o tomto typu rozhraní API naleznete v [dokumentaci k architektuře pro řadiče SCC](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). Scc můžete spravovat ve vaší instanci jako normální objekty rozhraní API pomocí rozhraní se knám.
+Omezení kontextu zabezpečení (SCCs) umožňují správcům clusterů řídit oprávnění pro lusky. Další informace o tomto typu rozhraní API najdete v [dokumentaci k architektuře pro SCCs](https://docs.openshift.com/container-platform/3.11/architecture/additional_concepts/authorization.html). SCCs v instanci můžete spravovat jako normální objekty rozhraní API pomocí rozhraní příkazového řádku (CLI).
 
-## <a name="list-security-context-constraints"></a>Omezení kontextu zabezpečení seznamu
+## <a name="list-security-context-constraints"></a>Vypsat omezení kontextu zabezpečení
 
-Chcete-li získat aktuální seznam sc, použijte tento příkaz: 
+Pokud chcete získat aktuální seznam SCCs, použijte tento příkaz: 
 
 ```bash
 $ oc get scc
@@ -35,9 +35,9 @@ privileged         true      [*]       RunAsAny    RunAsAny           RunAsAny  
 restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs   RunAsAny    <none>     false            [configMap downwardAPI emptyDir persistentVolumeClaim secret]
 ```
 
-## <a name="examine-an-object-for-security-context-constraints"></a>Zkontrolujte, zda objekt nehledá omezení kontextu zabezpečení
+## <a name="examine-an-object-for-security-context-constraints"></a>Kontrola objektu pro omezení kontextu zabezpečení
 
-Chcete-li prozkoumat konkrétní `oc get` `oc describe`SCC, použijte , nebo `oc edit`.  Chcete-li například zkontrolovat **omezený** SCC, použijte tento příkaz:
+Chcete-li prostudovat konkrétní SCC `oc get`, `oc describe`použijte, `oc edit`nebo.  Chcete-li například prostudovat **omezené** SCC, použijte tento příkaz:
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052395"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858537"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: přeložit
 
@@ -202,7 +202,7 @@ Níže jsou uvedené možné stavové kódy HTTP, které požadavek vrátí.
   <th>Popis</th>
   <tr>
     <td>200</td>
-    <td>Úspěch</td>
+    <td>Úspěch.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -454,6 +454,14 @@ Odpověď:
 
 ### <a name="obtain-alignment-information"></a>Získat informace o zarovnání
 
+Zarovnání je vráceno jako řetězcová hodnota v následujícím formátu pro každé slovo zdroje. Informace pro každé slovo jsou oddělené mezerou, včetně jazyků neoddělených mezerami (skripty), jako je například čínština:
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+Příklad řetězce zarovnání: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+
+Jinými slovy, dvojtečka odděluje počáteční a koncový index, pomlčku odděluje jazyky a mezeru odděluje slova. Jedno slovo může být zarovnáno s nula, jedním nebo více slovy v jiném jazyce a zarovnaná slova mohou být nesouvislá. Pokud nejsou k dispozici žádné informace o zarovnání, element zarovnání bude prázdný. Metoda v takovém případě nevrátí žádnou chybu.
+
 Chcete-li získat informace o `includeAlignment=true` zarovnání, zadejte v řetězci dotazu.
 
 ```curl
@@ -483,9 +491,10 @@ Získání informací o zarovnání je experimentální funkce, kterou jsme povo
 
 * Zarovnání není pro text ve formátu HTML k dispozici, tj., textType = HTML.
 * Zarovnání se vrátí jenom pro podmnožinu párů jazyků:
-  - z angličtiny do jakéhokoli jiného jazyka;
-  - z jakéhokoli jiného jazyka až po angličtinu, s výjimkou čínského zjednodušené čínštiny, tradiční čínštiny a lotyšské angličtiny;
+  - Angličtina do/z jakéhokoli jiného jazyka s výjimkou čínské tradiční, kantonština (tradiční) nebo Srbština (cyrilice).
   - z japonštiny do korejštiny nebo z korejštiny do japonštiny.
+  - z japonštiny do zjednodušené čínštiny a zjednodušené čínštiny do japonštiny. 
+  - z čínského zjednodušené čínštiny a tradiční čínštiny do zjednodušené čínštiny. 
 * Pokud je větu zarovnaným překladem, nebudete přicházet. Příkladem překonzervovaného překladu je "Toto je test", "Miluji vás" a dalšími větami s vysokou frekvencí.
 * Zarovnání není k dispozici, pokud použijete některý z přístupů, abyste zabránili překladu, jak je popsáno [zde](../prevent-translation.md) .
 
@@ -515,7 +524,7 @@ Odpověď:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Přeložit pomocí dynamického slovníku
 
-Pokud už znáte překlad, který chcete použít pro slovo nebo frázi, můžete ho v rámci žádosti dodat jako značku. Dynamický slovník je bezpečný jenom pro složená podstatná jména, jako jsou správné názvy a názvy produktů.
+Pokud už znáte překlad, který chcete použít pro slovo nebo frázi, můžete ho v rámci žádosti dodat jako značku. Dynamický slovník je bezpečný jenom pro správná podstatná jména, jako jsou osobní jména a názvy produktů.
 
 Značka, která se má dodat, používá následující syntaxi.
 

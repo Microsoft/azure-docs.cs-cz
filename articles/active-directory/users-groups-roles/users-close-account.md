@@ -1,5 +1,5 @@
 ---
-title: Zavřít pracovní nebo školní účet v nespravovaném adresáři služby Azure AD
+title: Uzavření pracovního nebo školního účtu v nespravované organizaci Azure AD
 description: Jak zavřít svůj pracovní nebo školní účet v nespravovaném Azure Active Directory.
 services: active-directory
 author: rolyon
@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73815721"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582534"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Zavřete svůj pracovní nebo školní účet v nespravovaném adresáři.
+# <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Zavřete svůj pracovní nebo školní účet v nespravované organizaci Azure AD.
 
-Pokud jste uživatelem v nespravovaném Azure Active Directory (Azure AD) a už nepotřebujete používat aplikace z této organizace ani nemusíte spravovat žádné přidružení, můžete účet kdykoli zavřít. Nespravovaný adresář nemá globálního správce. Uživatelé v nespravovaném adresáři můžou svoje účty zavřít sami, aniž by museli kontaktovat správce.
+Pokud jste uživatel v nespravované organizaci Azure Active Directory (Azure AD) a už nepotřebujete používat aplikace z této organizace ani nemusíte spravovat žádné přidružení, můžete účet kdykoli zavřít. Nespravovaná organizace nemá globálního správce. Uživatelé v nespravované organizaci můžou svoje účty zavřít sami, aniž by museli kontaktovat správce.
 
-Uživatelé v nespravovaném adresáři se často vytvářejí při registraci samoobslužné služby. Příkladem může být informační pracovník v organizaci, který si zaregistruje bezplatnou službu. Další informace o samoobslužném přihlášení najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md).
+Uživatelé v nespravované organizaci se často vytvářejí při registraci samoobslužných služeb. Příkladem může být informační pracovník v organizaci, který si zaregistruje bezplatnou službu. Další informace o samoobslužném přihlášení najdete v tématu [co je samoobslužná registrace pro Azure Active Directory?](directory-self-service-signup.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ Uživatelé v nespravovaném adresáři se často vytvářejí při registraci s
 
 Než budete moct účet zavřít, zkontrolujte, že máte následující položky:
 
-* Ujistěte se, že jste uživatelem nespravovaný adresář služby Azure AD. Pokud patříte do spravovaného adresáře, účet nemůžete zavřít. Pokud patříte do spravovaného adresáře a chcete účet zavřít, musíte se obrátit na správce. Informace o tom, jak určit, zda patříte do nespravovaného adresáře, najdete v tématu [odstranění uživatele z nespravovaného tenanta](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Ujistěte se, že jste uživatelem nespravované organizace Azure AD. Pokud patříte do spravované organizace, účet nemůžete zavřít. Pokud patříte do spravované organizace a chcete účet zavřít, musíte se obrátit na správce. Informace o tom, jak určit, zda patříte do nespravované organizace, najdete v tématu [odstranění uživatele z nespravovaného tenanta](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
 * Uložte všechna data, která chcete zachovat. Informace o tom, jak odeslat žádost o export, najdete v tématu [přístup k systémem generovaným protokolům a jejich export pro nespravované klienty](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 

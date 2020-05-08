@@ -1,18 +1,18 @@
 ---
-title: Správa zájemců pro Dynamics 365 Customer Engagement | Azure Marketplace
-description: Nakonfigurujte správu zájemců pro zákaznickou zapojení Dynamics 365.
+title: Správa zájemců pro Dynamics 365 Customer Engagement – Microsoft Commercial Marketplace
+description: Naučte se, jak nastavit zapojení zákazníků Dynamics 365 pro správu zájemců z Microsoft AppSource a Azure Marketplace.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131059"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790996"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurace správy zájemců pro Dynamics 365 Customer Engagement
 
@@ -23,12 +23,12 @@ Tento článek popisuje, jak nastavit zákaznickou zapojení Dynamics 365 (dří
 
 ## <a name="prerequisites"></a>Požadavky
 
-K dokončení kroků v tomto článku jsou nutná následující oprávnění uživatele. Musíte:
+K dokončení kroků v tomto článku jsou nutná následující uživatelská oprávnění:
 
-* Aby bylo možné nainstalovat řešení a postupovat podle těchto pokynů, přihlaste se k instanci služby Dynamics 365 Customer Engagement jako správce.
-* Správce tenanta vytvoří nový účet služby pro službu zájemce, který se používá k odesílání zájemců z komerčních nabídek na webu Marketplace.
-* Mít přístup k portálu pro správu sady Office 365.
-* Mít přístup k Azure Portal.
+* Oprávnění správce vaší instance služby Customer Engagement pro Dynamics 365, aby bylo možné nainstalovat řešení.
+* Oprávnění správce tenanta pro vytvoření nového účtu služby pro službu zájemce, který slouží k odesílání zájemců z komerčních nabídek Marketplace.
+* Přístup k portálu pro správu sady Office 365.
+* Přístup k Azure Portal.
 
 ## <a name="install-the-solution"></a>Instalace řešení
 

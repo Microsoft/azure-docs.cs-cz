@@ -1,478 +1,343 @@
 ---
-title: Microsoft Commercial Marketplace – Nejčastější dotazy
-description: Odpovědi na běžné dotazy týkající se Azure Marketplace a Microsoft AppSource
+title: Microsoft Publisher – Nejčastější dotazy
+description: Získejte odpovědi na nejčastější dotazy týkající se Azure Marketplace a Microsoft AppSource.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 05/04/2020
 ms.author: dsindona
-ms.openlocfilehash: 1cd536f4a7c3751e2b85f40e582c1eb1c5bf2c74
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 38d1a15f471d353595f57b86df5137257eaf63a5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160507"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857625"
 ---
-# <a name="microsoft-commercial-marketplace-faqs"></a>Nejčastější dotazy ke komerčnímu marketplace Microsoftu
+# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
-Odpovědi na běžné dotazy týkající se komerčního tržiště
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se komerčního tržiště Microsoftu.
 
-## <a name="faq-for-customers"></a>Nejčastější dotazy pro zákazníky
+## <a name="general"></a>Obecné
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co potřebujete znát na komerčním webu Marketplace
+### <a name="what-is-microsoft-commercial-marketplace"></a>Co je komerční tržiště Microsoftu?
 
-**Co je Azure Marketplace?**
+Komerční tržiště spojuje obchodní a státní úřady s řešeními vytvořenými našimi partnery. Naši partneři vytvářejí a spravují nabídky v partnerském centru a zákazníci můžou vyhledat a koupit řešení prostřednictvím prostředí v rámci produktu, jako jsou Microsoft AppSource, Azure Marketplace, prodejci v programu Cloud Solution Provider a naši prodejní týmy prostřednictvím programu společného prodeje.
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) poskytuje přístup a informace o řešeních a službách, které jsou dostupné od Microsoftu a našich partnerů. Zákazníci můžou vyhledat, vyzkoušet nebo koupit cloudová softwarová řešení postavená na systému nebo pro Azure. Náš katalog 8000 a výpisů poskytuje stavební bloky pro Azure, jako jsou Virtual Machines (virtuální počítače), rozhraní API, aplikace Azure, šablony řešení a spravované aplikace, aplikace SaaS, kontejnery a konzultační služby.
+Pokud se chcete dozvědět víc, podívejte se na [centrum komerčních tržišť Microsoftu](https://partner.microsoft.com/asset/collection/commercial-marketplace#/).
 
-**Kteří zákazníci Azure Marketplace?**
+### <a name="whats-the-difference-between-microsoft-appsource-and-azure-marketplace"></a>Jaký je rozdíl mezi Microsoft AppSource a Azure Marketplace?
 
-Azure Marketplace je navržená pro odborníky v oblasti IT a vývojáře v cloudu, kteří mají zájem o komerční software a služby IT.
+AppSource zahrnuje obchodní a Oborová řešení, jako jsou aplikace, které se integrují do Microsoft 365, Dynamics 365 a služeb Power Platform.
 
-**Jaké typy produktů jsou aktuálně k dispozici v Azure Marketplace?**
+Azure Marketplace zahrnují IT a Vývojářská řešení, která jsou založená na Azure nebo používaná v rámci předplatných Azure.
 
-Azure Marketplace nabízí technická řešení a služby od Microsoftu a partnerů postavených na rozšiřování produktů a služeb Azure. Katalog řešení zahrnuje několik kategorií, včetně:
+Pokud se chcete dozvědět víc, podívejte se do [příručky nákupčí](https://aka.ms/MarketplaceBuyerGuide).
 
-* základní operační systémy
-* databáze
-* security
-* identity
-* sítě
-* Blockchain
-* Vývojářské nástroje
+### <a name="why-should-i-make-my-software-or-services-available-in-the-microsoft-commercial-marketplace"></a>Proč by měl být software nebo služby dostupný na komerčním webu Microsoft Marketplace?
 
-### <a name="azure-marketplace-for-customers"></a>Azure Marketplace pro zákazníky
+Komerční tržiště je výchozím bodem pro spolupráci na trhu a s prodejními kanály a na webu Marketplace. Weby a prostředí v produktu poskytují vašim produktům přehled o milionech zákazníků, kteří hledají řešení, jako máte vy. Ještě nemusíte vytvářet ani kupovat možnosti obchodování. 
 
-**Návody začít pracovat v Azure Marketplace?**
+Obchod na komerčním webu je k dispozici v oblastech 141, a to na základě jednotlivých plánů. 
 
-Můžete najít nejrůznější podnikové aplikace a řešení, které jsou certifikované a optimalizované pro běh v Azure, a to návštěvou [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps). K Azure Marketplace lze také přistupovat prostřednictvím [Azure Portal] při [**vytváření prostředku**](https://portal.azure.com/#create/hub).
+Platbu za daň spravujeme v mnoha zemích a poskytujeme přístup k naší globální síti pro prodejce. Můžete použít zákaznickou smlouvu Microsoftu nebo smlouva Enterprise k prodeji organizacím, aniž byste museli vytvářet novou nákupní relaci.
 
-**Jaké jsou klíčové výhody Azure Marketplace?**
+Pokud se chcete dozvědět víc, podívejte se na video při [prodeji přes web Marketplace](https://partner.microsoft.com/asset/detail/why-sell-through-marketplace).
 
-Díky Azure Marketplace můžou zákazníci zjišťovat technické aplikace sestavené pro nebo postavené na Azure. Kombinuje Microsoft Azure trh řešení a služeb s jednou sjednocenou platformou ke zjišťování, zkoušení, nákupu a nasazování řešení jenom několika kliknutími.
+### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Existuje poplatek za výpis pro komerční tržiště Microsoftu?
 
-**Návody koupit produkty z Azure Marketplace?**
+Ne, v našem komerčním tržišti nejsou žádné náklady na publikování nabídek. Budeme udržovat malé procento prodeje, jako poplatek za transakce a investovat ho do programu na webu Marketplace, inovace platforem a komerční operace na webu Marketplace.
 
-Nabídky Azure Marketplace lze zakoupit prostřednictvím:
+### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Návody se zaregistrovat jako Vydavatel na komerčním webu Microsoft Marketplace?
 
-* [Web založený na prezentace](https://azuremarketplace.microsoft.com/marketplace/apps)
-* [portál Azure](https://portal.azure.com) <br> 
->[!Note]
->Vyžaduje účet Azure. Pokud ho ještě nemáte, budete přesměrováni na stránku **Vítá vás Azure** , abyste ho mohli vytvořit.  
-* [Rozhraní příkazového řádku Azure (CLI)](/cli/azure/?view=azure-cli-latest)
+Aby bylo možné vytvořit nabídky na komerčním webu Marketplace, musí být vaše organizace partnerem Microsoftu a souhlasím se smlouvou o partnerovi Microsoftu a přijmout smlouvu vydavatele.
 
->[!Note]
->Předplacené kredity a další formy peněžního závazku se nedají použít k placení licenčních poplatků za software, ale dají se použít k placení poplatků za využití Azure. Výjimky jsou uvedené v rámci [peněžního závazku Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/).
+Pokud se chcete přihlásit k komerčnímu vydavateli na webu Marketplace, jděte do [partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv).
 
-**Můžu si vybrat oblasti Azure pro nasazení Azure Marketplace nákupu?**
+### <a name="how-can-customers-engage-with-my-offers-in-the-commercial-marketplace"></a>Jak můžou zákazníci začít používat moje nabídky na komerčním webu Marketplace?
 
-Zákazník má možnost nasazení do libovolné oblasti datového centra Azure, kterou jim povoluje. Pro optimalizaci výkonu a řízení rozpočtu doporučujeme vybrat umístění datových center, která jsou nejblíže vašim službám.
+Způsoby použití vaší komerční nabídky na webu Marketplace závisí na tom, jak vytváříte nabídky.
 
-**Pokud Azure Marketplace nákup omylem odstraníte, můžu akci *vrátit zpět* ?**
+- Pro řešení, která poskytujete automaticky, ať už jsou placené, vlastní licence (BYOL) nebo bezplatné, se zákazníkům doporučuje *hned ho získat*.
+- Nabídky, které podporují testovací jednotku (demo), požadují od zákazníka *testování jednotky*. 
+- Software jako služba (SaaS) nabízí *bezplatnou zkušební verzi*, která poskytuje zkušební verzi mimo naše komerční tržiště.
+- Jednoduché výpisy umožňují zákazníkovi požádat o *kontaktování*.
 
-Ne, odstranění je finální. Pokud se předplatné omylem odstraní, můžete ho znovu koupit. Dojde ke ztrátě všech nevyužitých funkcí nebo předplacených služeb.
+### <a name="how-do-i-create-offers-for-the-commercial-marketplace"></a>Návody vytvořit nabídky pro komerční tržiště?
 
-**Zobrazuje se mi upozornění, když se pokusím odstranit Azure Marketplace nákup, který používá jedna z mých aplikací?**
+Po registraci a přijetí smlouvy vydavatele budete mít přístup na stránku komerčního tržiště v partnerském centru. Tady je místo, kde můžete vytvářet a spravovat nabídky a kde se zobrazují analytické sestavy. U Microsoft 365ch aplikací musíte také aktivovat program Office Store v rámci partnerského centra.
 
-Ne, Azure neposkytuje žádné upozornění při odstraňování nákupu, a to i v případě, že se právě používá nebo je na něm závislá aplikace.
+Další informace najdete v tématu [Vítejte na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/) a [monetizovat doplňku pro Office 365 prostřednictvím komerčního tržiště Microsoftu](https://docs.microsoft.com/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace).
 
-**Pokud má Azure Marketplace nákup nějaké závislosti na jiných prostředcích, jako je například web Azure, musím je spravovat?**
+### <a name="how-do-i-get-support-assistance-for-the-commercial-marketplace"></a>Návody získat pomoc s pracovníky na komerčním webu Marketplace?
 
-Závislosti nejsou automaticky spravovány pro nabídky Azure Marketplace. Před jeho použitím pečlivě zkontrolujte popis Azure Marketplace koupit, abyste zjistili, jestli je před nasazením řešení potřeba provést nějaké závislosti.
+Pokud chcete kontaktovat tým podpory pro vydavatele na webu Marketplace, můžete [Odeslat lístek podpory](https://partner.microsoft.com/support/v2/?stage=1) v rámci partnerského centra. 
 
-**Můžu z Azure Cloud Solution Provider koupit řešení Azure Marketplace?**
+Pokud se chcete dozvědět o osvědčených postupech a sdílet informace, můžete se také [připojit k našemu komunitnímu fóru komunity](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222) .
 
-Pokud má Vydavatel nakonfigurovanou nabídku, která bude k dispozici prostřednictvím kanálu CSP (Cloud Solution Provider), partneři poskytovatele řešení cloudu mají možnost řešení znovu prodávat.
+### <a name="what-analytics-are-available-to-my-organization-from-the-commercial-marketplace"></a>Jaké analýzy jsou k dispozici pro moji organizaci z komerčního tržiště?
 
-**Které země a oblasti se podporují pro nákup aplikací a služeb prodávaných/zřízených prostřednictvím Azure Marketplace?**
+Poskytujeme vytváření sestav o vašich nabídkách v rámci našeho komerčního tržiště. Pokud chcete získat přístup k datům na zákaznících, objednávkách, zapojení do Storu a další, přejděte na [Web Analytics pro komerční tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/analytics).
 
-Zákazníci Azure mají k dispozici Azure Marketplace v zemích nebo oblastech uvedených v [zásadách pro účast](/legal/marketplace/participation-policy).
+### <a name="what-is-microsofts-relationship-with-my-customers"></a>Co je vztah Microsoftu k mým zákazníkům?
 
-**Jaké měny podporuje Azure Marketplace?**
+Komerční tržiště funguje pomocí modelu agentury. Zákazník si s námi podepíše nákupní smlouvu prostřednictvím smlouvy Microsoft Cloud nebo smlouva Enterprise (EA). Zodpovídáme za fakturaci, kolekce, platby daně v příslušných oblastech a výběr vydavatele. Jako vydavatel nastavíte cenu, nastavíte podmínek použití a zadáte technickou podporu.
 
-Transakce se dají provádět v následujících 17 měnách: AUD, BRL, CAD, CHF, DKK, EUR, GBP, výše, JPY, KRW, NOK, NZD, RUB, SEK, TWD, USD, RMB.
+### <a name="what-terms-of-use-options-are-available-with-the-commercial-marketplace"></a>Jaké možnosti použití jsou k dispozici na komerčním webu Marketplace?
 
-### <a name="deploying-a-solution-from-azure-marketplace"></a>Nasazení řešení z Azure Marketplace
+Jako vydavatel nastavíte podmínky použití pro vaše softwarové řešení, které zákazníci musí přijmout jako součást toku nákupu. Abychom zjednodušili a urychlili věci, poskytujeme standardní kontrakt, který si můžete vybrat, abyste je mohli zahrnout do svých podmínek a ujednání. To umožňuje zákazníkům jednorázově kontrolovat standardní kontrakt, získat schválení od právních a nákupních týmů a pak se zaměřit na změny jednotlivých nabídek.
 
-**Nasadil (a) jsem Azure Marketplace virtuální počítač k předplatnému a teď chci migrovat předplatné z jednoho účtu Azure na jiný. Je tato služba aktuálně podporovaná?**
+Můžete vytvořit změny, které platí pro všechny zákazníky, nebo můžete provést změny specifické pro určité zákazníky. Můžete také plně přizpůsobit podmínky a ujednání, které lze zadat do textového pole nebo hostovat na webu, který se zobrazí jako webová adresa.
 
-Pokud chcete migrovat předplatné Azure, včetně Azure Marketplace virtuálních počítačů a služeb, odstraňte nebo zrušte předchozí předplatné Azure před přidružením k novému účtu Azure. Po dokončení migrace se výsledné poplatky za použití účtují pomocí nového zaregistrovaného způsobu platby.
+Další informace najdete v tématu [standardní smlouva o komerčním tržišti společnosti Microsoft](https://docs.microsoft.com/azure/marketplace/standard-contract).
 
-**Chci migrovat předplatné Azure Marketplace virtuálních počítačů do mých smlouva Enterprise. Je tato služba aktuálně podporovaná?**
+### <a name="is-azure-marketplace-available-in-azure-government"></a>Je Azure Marketplace k dispozici v Azure Government?
 
-Pokud chcete migrovat odběr virtuálního počítače Azure Marketplace do smlouva Enterprise, zastavte nebo zrušte předchozí předplatné před migrací. Po dokončení migrace vašeho účtu Azure a přidružených předplatných si můžete Azure Marketplace virtuální počítač nebo službu koupit znovu.  Výsledné poplatky za využití se účtují čtvrtletně pod vaším smlouva Enterprise.
+Ano, Azure Government Marketplace je k dispozici v rámci Azure Government oblastí a podporuje virtuální počítače Azure a nabídky aplikací Azure. K dispozici je zaškrtávací políčko pro zpřístupnění nabídek na webu Azure Government Marketplace během standardního procesu publikování.
 
-### <a name="pricing-and-payment"></a>Ceny a platby
+### <a name="what-permissions-do-i-need-in-partner-center-to-manage-my-offers"></a>Jaká oprávnění potřebuji v partnerském centru, abyste mohli spravovat moje nabídky?
 
-**Jak se účtují Azure Marketplace předplatných?**
+Existují čtyři relevantní role, které řídí přístup k partnerskému centru.
 
-Ceny se liší v závislosti na typu produktů a specifikacích vydavatele. Licenční poplatky za software a náklady na využití Azure se účtují samostatně prostřednictvím předplatného Azure.
+- *Manager*: poskytuje oprávnění ke správě uživatelů partnerského centra v adresáři a k vytváření a aktualizaci nabídek.
+- *Vývojář*: umožňuje uživateli vytvářet a aktualizovat nabídky.
+- *Finanční Přispěvatel*: poskytuje oprávnění k zobrazení generování sestav výběr.
+- *Vlastník*: lze nastavit účet výběr a daňový profil. Uživatel, který přijal smlouvu vydavatele, se ve výchozím nastavení nastaví jako vlastník.
 
-*Neseskupené:*
+Pro vytváření nových uživatelských účtů nebo pozvaní účtů hostů v podkladovém adresáři jsou nutná oprávnění *globálního správce* Azure Active Directory (Azure AD). Partnerský centrum používá Azure AD na model identity a instance Azure AD organizace je často spravovaná a řízená IT týmy IT nebo zabezpečením.
 
-+ *Model BYOL (Přineste si vlastní licenci)*: když získáváte softwarovou licenci přímo od vydavatele nebo prodejce, neexistují žádné další poplatky související se softwarem nebo poplatky.
+Další informace najdete v tématu [přiřazení rolí uživatelů a oprávnění](https://docs.microsoft.com/partner-center/permissions-overview).
 
-*Připojené balíčky*
+### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Potřebují zákazníci předplatné pro Microsoft Azure Cloud Services?
 
-Předplatné Azure je součástí ceny za řešení nezávislých výrobců softwaru (ISV) vydavatele.
+V závislosti na modelu doručování produktu může být potřeba předplatné Azure Cloud Services. Řešení, která se používají přímo v předplatném Azure, Microsoft 365 aplikace nebo aplikace Dynamics 365, budou vyžadovat, aby zákazníci měli existující předplatné. Nabídky zakoupené v Azure Marketplace vyžadují předplatné Azure, protože předplatné se používá jako účetní mechanismus.
 
-*Platné*
+### <a name="whos-responsible-for-supporting-customers"></a>Kdo je zodpovědný za podporu zákazníků?
 
-+ *Zdarma:* SKU zdarma. Pro licenční poplatky za software nebo použití nabídky se neplatí žádné poplatky.
+Komerční vydavatelé na webu Marketplace zodpovídají za podporu svého softwaru a společnost Microsoft zodpovídá za podporu prostředí pro nákup, fakturaci, platby a správu předplatného.
 
-+ *Bezplatná zkušební verze softwaru:* Nabídka, která je po omezené době zdarma. Za licenční poplatky za software vydavatele se za použití během zkušebního období neúčtují žádné poplatky. Po vypršení platnosti se automaticky převede na placené nabídky na základě standardních sazeb vydaných vydavatelem.
+### <a name="whats-the-process-of-validating-the-end-to-end-purchase-and-setup-flow"></a>Jaký je proces ověřování kompletního nákupu a toku nastavení?
 
-+ *Založené na používání:* Sazby se účtují nebo účtují na základě rozsahu využití nabídky. U Virtual Machinesch imagí se účtuje za hodinové poplatky. Pro vývojářské služby a rozhraní API se účtuje podle jednotky měření, jak je definuje nabídka.
+Během procesu publikování máte přístup k verzi Preview vaší nabídky. Přístup je omezen na uživatele, které zadáte na kartě **Preview** , a nabídku nemůže zobrazit nikdo jiný. Můžete si koupit verzi Preview a otestovat proces, ale v závislosti na nastavení vaší nabídky se vám bude účtovat celá částka.
 
-+ *Paušální poplatek:* Předplatná SaaS se můžou účtovat jako paušální poplatky, které se účtují měsíčně nebo ročně. To může zahrnovat i další fakturační dimenze, které se účtují podle spotřeby (například šířky pásma, e-mailů nebo lístků). 
+Abychom mohli dokončit nákup za velmi nízkou cenu, doporučujeme publikovat si soukromý plán, který si můžete zobrazit sami, a za cenu, kterou můžete přijmout jako náklady na testování. Je podporovaná cena $0,00, ale neodráží celé prostředí, jako je placené předplatné, takže doporučujeme nastavit cenu na $1,00.
 
-+ *Podle uživatele:* U předplatných SaaS se dá účtovat podle jednotlivých uživatelů, kteří se účtují měsíčně nebo ročně. 
+### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>Co dělají zákazníci z komerčního tržiště a co s nimi mám dělat?
 
-Podrobnosti o cenách konkrétní nabídky najdete na stránce s podrobnostmi řešení na [https://azure.microsoft.com/pricing/](https://azure.microsoft.com/pricing/) nebo v části [Azure Portal].
+Když zákazníci použijí vaše nabídky na Microsoft AppSource a Azure Marketplace prodejní místa, zachytí se informace. Jakmile si zákazníci dokáže dostatek zájmů, vytvoří se zájemce a příležitost se pošle do systému podle vašeho výběru. Vydavatelé, kteří mají k naší komerčnímu tržišti přístup, často využívají zájemce, vyvíjí vztahy a zajímají zájem o obchody.
 
-> [!Note]
-> S výjimkou měsíčních poplatků se poplatky za využití Azure vztahují na všechny cenové modely, pokud není uvedeno jinak.
+Další informace najdete v tématu [zájemci zákazníků z vaší nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads).
 
-**Jak mám poskytnout licenční klíč k softwaru pro BYOL řešení Marketplace a jaké role Azure Marketplace hrát?**
+### <a name="why-arent-my-changes-reflected-in-the-offer-on-microsoft-appsource-or-azure-marketplace"></a>Proč se moje změny neprojevily v nabídce Microsoft AppSource nebo Azure Marketplace?
 
-Získání a vynucování licenčních přihlašovacích údajů pro řešení BYOL je zodpovědností vydavatele. V případě nabídek virtuálních počítačů se získání licenčního klíče obvykle objevuje v aplikaci vydavatele po spuštění aplikace. Při použití nabídky virtuálního počítače nasazené pomocí šablony řešení Azure Application je možné šablonu Správce prostředků nakonfigurovat tak, aby se uživateli zobrazila výzva k zadání celé řady vstupů včetně licenčních přihlašovacích údajů.
+Změny provedené v partnerském centru se aktualizují v systémech a na komerčních Marketplace až po opětovném publikování této nabídky. Ujistěte se, že jste po změnách odeslali nabídku k publikování.
 
-Jedná se o nejběžnější možnosti pro typ nabídky:
+## <a name="channels"></a>Kanály
 
-*Nabídka virtuálních počítačů:*
+### <a name="where-can-customers-find-my-commercial-marketplace-offers"></a>Kde můžou zákazníci najít své nabídky komerčních Marketplace?
 
-+ *Možnost 1:* Získání licenčního klíče obvykle probíhá v aplikaci vydavatele po spuštění aplikace.
+Nabídky se zákazníkům prezentují prostřednictvím prostředí v rámci produktu, webů, prodejců a prodejních týmů Microsoftu na základě toho, jak jste je nakonfigurovali, a kontextu akcí zákazníků. Pokud se váš software používá přímo v Azure, Microsoft 365, Dynamics 365 nebo ve službě Power Platform, zákazníci ho můžou najít v rámci produktu. Microsoft AppSource a Azure Marketplace jsou rozděleny podle typů a cílových skupin nabídek a prodejci mají přístup k vaší nabídce pouze v případě, že jste se přihlásili k programu Cloud Solution Provider (CSP).
 
-+ *Možnost 2:* Po nasazení nabídky virtuálního počítače ve vybraném předplatném se tento licenční klíč zadal koncovým uživatelem (prostřednictvím příkazového řádku/webového rozhraní poskytovaného nabídkou). Licence může být klíč nebo soubor, který určuje Vydavatel.
+### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Je možné, že se moje nabídka zobrazuje jak v Microsoft AppSource, tak v Azure Marketplace?
 
-*Aplikace Azure (šablona řešení a spravované aplikace):*
+Microsoft AppSource je cílem pro obchodní a Oborová řešení a Azure Marketplace je navržená pro IT a Vývojářská řešení. Nabídky jsou dostupné v každém z prodejní místa založených na kategoriích a oborech, které jste vybrali během vytváření nabídky. V vzácných případech, kdy je nabídka relevantní pro uživatele obou prodejní místa, může se zobrazit v obou.
 
-+ *Možnost 1:* Šablonu Správce prostředků lze nakonfigurovat tak, aby se zobrazila výzva k zadání rozsahu vstupů včetně licenčních přihlašovacích údajů. To se dá udělat jako soubor s licencí (nahrávání souborů) nebo klíč (vstup textového pole) před nasazením nabídky v předplatném koncových uživatelů.
+### <a name="what-is-the-cloud-solution-provider-program"></a>Co je program Cloud Solution Provider?
 
-+ *Možnost 2:* Licenční klíč můžete zadat prostřednictvím příkazového řádku nebo webového rozhraní poskytnutého nabídkou.  Tato možnost se provádí po nasazení nabídky Azure Apps ve vybraném předplatném. Licence může být klíč nebo soubor, který určuje Vydavatel.
+Naše globální síť prodejců zahrnuje desítky tisíc organizací, které se účastní programu Cloud Solution Provider. Program CSP umožňuje organizacím znovu prodávat naše produkty a nabídky z komerčního tržiště a poskytnou jim nástroje, aby to provedli úspěšně.
 
-**Jaké druhy zkušebních verzí se podporují?**
+Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
 
-Vydavatelé můžou přidat jeden bezplatný měsíc pro placené nabídky SaaS a jeden nebo tři bezplatné měsíce spotřeby pro image virtuálních počítačů. Bezplatné zkušební nabídky jsou výpisy s voláním akce k zahájení zkušební verze. Tím se zákazník zavede na web definovaný vydavatelem k nastavení zkušebního prostředí. Zkušební verze je také možné přidat k placeným nabídkám, kde je první měsíc zdarma. 
+### <a name="how-can-i-find-resellers-to-establish-partnerships"></a>Jak najdu prodejce k navázání partnerství?
 
-**Potřebuji v souboru k nasazení platebního nástroje (například platební karty) k nasazení nabídek úrovně Free nebo Přineste si vlastní licenci (BYOL)?**
+Pomocí [adresáře poskytovatele řešení](https://www.microsoft.com/solution-providers/home)můžete vyhledat naše partnery podle umístění, produktů, služeb, dovedností, odvětví nebo názvu organizace.
 
-Ne. Pro nasazení nabídek úrovně Free nebo BYOL se nevyžaduje platební nástroj. Nabídky bezplatné zkušební verze ale vyžadují platební nástroj. Do vybraného předplatného Azure se nasadí výpisy, které obsahují tlačítka **získat nyní** nebo **bezplatné zkušební verze softwaru** .  Tyto výpisy se účtují pomocí registrované platební metody vybraného účtu. Poplatky za využití Azure se účtují odděleně od licenčních poplatků za software.
+### <a name="can-i-limit-the-resellers-who-are-allowed-to-sell-my-offer"></a>Je možné omezit prodejce, kteří mají povolený prodej moje nabídky?
 
-**Pokud mají dotazy týkající se cen nabídek prodávaných na Azure Marketplace, který provádí nepřímý kontaktní zákazník smlouva Enterprise (EA)?**
+Ano, můžete zpřístupnit nabídky všem prodejcům v programu Cloud Solution Provider nebo jenom uživatelům, které zadáte.
 
-Nepřímí zákazníci smlouva Enterprise (EA) musí kontaktovat své Licensing Solution Provider (LSP) pro všechny Azure Marketplace otázky týkající se cen.
+Další informace najdete v tématu [Poskytovatelé cloudových řešení](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers).
 
-**Můžu řídit přístup zaměstnanců do Azure Marketplace a nákupních oprávnění?**
+### <a name="how-can-i-pay-margin-to-resellers"></a>Jak mám platit marži prodejcům?
 
-Ano, pro zákazníky smlouva Enterprise (EA) může správce registrace vypnout oprávnění koupit pro všechny účty v registraci a znovu ho převést na dostatečně dlouhou dobu, aby si mohl koupit.
+Komerční tržiště nemůže určovat marži pro prodejce nebo je platit přímo a automaticky. Můžete ale vytvářet smlouvy, soutěže z prodeje nebo marže mimo komerční systémy Marketplace.
 
-**Jaké způsoby platby se podporují pro nákupy na komerčním webu Marketplace?**
+### <a name="how-does-geographic-availability-work-with-resellers"></a>Jak geografická dostupnost spolupracuje s prodejci?
 
-Zákazníci si můžou koupit nabídky z komerčního tržiště pomocí kreditních karet. Pokud máte existující předplatné Azure, nákupy z Azure Marketplace použijí metodu platby nakonfigurovanou v účtu a budou se zobrazovat na stejné faktuře jako položka samostatného řádku. Některé nabídky využívají peněžní závazek Azure, ale většina nákupů z komerčního obchodu na webu Marketplace nevykreslí smlouva Enterprise závazky, i když se spotřeba infrastruktury Azure.
+Dostupnost nabídek a plánů se definuje na základě fakturačních míst zákazníků. Prodejci nejdřív vyberte zákazníky, na které se prodávají, a pak vyberte svoji nabídku. Pokud je zákazník v nepodporovaném umístění, vaše nabídka nebude k dispozici.
 
-**Můžu ve svém účtu použít prostředky peněžních závazků nebo kredity předplatného Azure k dispozici pro Azure Marketplace nabídky?**
+## <a name="billing-capabilities"></a>Možnosti fakturace
 
-Konkrétní Azure Marketplace nabídky můžou využívat kredity nebo prostředky peněžních závazků předplatného Azure. Úplný seznam produktů zapojených do tohoto programu najdete v tématu [Peněžní závazek Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/). Tyto nabídky nezahrnují možnosti BYOL nebo BYOS. Všechny ostatní Azure Marketplace nabídky nemůžou používat kredity nebo peněžní závazky předplatného Azure, jako je například bezplatný kredit zkušebních verzí v rámci Azure, měsíční kredity MSDN, kredity z propagačních akcí Azure, zůstatky peněžních závazků a jakékoli jiné bezplatné kredity poskytované z Azure.
+### <a name="whats-the-difference-between-transaction-and-monetization"></a>Jaký je rozdíl mezi transakcí a finanční zhodnocení?
 
-**Vztahují se na nákupy Azure Marketplace multilicenční slevy?**
+- Transakce je Výměna peněz za zboží. Nabídka se považuje za transakční na komerčním webu Marketplace, pokud má cenu a zákazníkovi ji hradí prostřednictvím našich fakturování a kolekcí. 
+- Finanční zhodnocení je schopnost účtovat peníze za vaše duševní vlastnictví, ke kterému může dojít v rámci naší obchodní platformy nebo mimo ni. Například vaše aplikace Teams-Your-License (BYOL) Teams můžete můžou finančně zhodnocovat s transakční službou s podporou transakcí SaaS.
 
-Ne. Vydavatel, který vlastní řešení v Azure Marketplace může nastavit ceny.  Standardní multilicenční slevy společnosti Microsoft se nevztahují na nákupy Azure Marketplace.
+### <a name="what-offer-types-are-transacted-through-microsoft"></a>Jaké typy nabídek jsou zpracovávány prostřednictvím Microsoftu?
 
-**Kde se můžu podívat na podrobnosti předplatného Azure Marketplace a informace o fakturaci?**
+Pro některé modely doručování *teď můžete využít* nabídky Microsoftu. V současné době se podporuje u následujících modelů doručení:
+- Image virtuálních počítačů
+- Aplikace Azure (spravované aplikace)
+- Aplikace SaaS
 
-MOSP – zákazníci s [předplatným Microsoft Online](https://azure.microsoft.com/support/legal/subscription-agreement/?country=us&language=en) (Web Direct) můžou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části cost management + fakturace oddílu [Azure Portal].
+### <a name="what-billing-models-are-supported-in-the-commercial-marketplace"></a>Jaké modely fakturace jsou podporovány na komerčním webu Marketplace?
 
-Zákazníci smlouva Enterprise (EA) mohou zobrazit podrobnosti o nákupu na webu Marketplace na kartě faktury v části Cost Management + fakturace oddílu [Azure Portal].
+- Image virtuálních počítačů se účtují na základě hodinového využití a cena se nastaví za hodinu.
+- Spravované aplikace se účtují na základě volitelného měsíčního měsíčního poplatku a účtované fakturace a všech nákladů na využití imagí virtuálních počítačů, které aplikace používá.
+- Aplikace SaaS se účtují na základě paušální sazby, uživatele nebo vlastního měření na měsíční nebo roční základ.
 
-Partneři poskytovatele Cloud Solution Provider (CSP) můžou zobrazit podrobnosti o nákupu na webu Marketplace pro každého zákazníka v partnerském centru na kartě Historie objednávek po výběru společnosti v zobrazení zákazníků.
+### <a name="can-i-monetize-offer-types-that-are-not-transactable"></a>Můžu monetizovat nabídky, které se nedají dělat v transakčním režimu?
 
-**Návody zrušit Azure Marketplace doplněk k virtuálnímu počítači Azure?**
+I když ne všechny typy nabídek nejsou v transakčním režimu, můžete stále oslovit miliony zákazníků a monetizovat své duševní vlastnictví. Přidáním kontroly licencí v rámci řešení můžete shromažďovat platby za licence. Prodejní licence se dají dělat prostřednictvím Microsoftu nebo samostatně.
 
-Vzhledem k tomu, že doplněk je přidružený k virtuálnímu počítači Azure (VM), chcete-li zrušit Azure Marketplace nákup, nejprve virtuální počítač zastavte tím, že ho odstraníte. Zastavuje se tak veškeré využití předplatného a účtuje se Azure Marketplace nákupu.
+### <a name="can-i-offer-a-software-trial-through-the-commercial-marketplace"></a>Je možné nabízet zkušební verzi softwaru prostřednictvím komerčního tržiště?
 
-**Jak často se mi účtují nákupy Azure Marketplace?**
+Ano a nabízíme několik způsobů, jak nabízet bezplatné zkušební verze:
 
-Všechny Azure Marketplace nabídky, které se neodečtou z peněžního závazku, se účtují měsíčně v nedoplatkech. Roční předplatná SaaS se účtují za služby na celé roky.
+- Upřednostňovanou metodou je přidat bezplatnou dobu na začátku placené nabídky SaaS (jeden měsíc) a nabídky imagí virtuálních počítačů (jeden nebo tři měsíce). Zákazníkovi se zobrazí poplatek $0,00 a po skončení zkušebního období se předplatné automaticky změní na placené. Termín smlouvy pak začíná v tomto okamžiku.
+- Můžete vytvořit seznam nabídek SaaS, který převezme zákazníka na webovou adresu dle vašeho výběru a spustí si zkušební verzi mimo komerční web Marketplace. Některé typy nabídek podporují *testovací mechaniku* , která vám umožní poskytnout zákazníkovi ukázku.
 
-MOSP – zákazníci v [programu Microsoft Online Subscription](https://azure.microsoft.com/support/legal/subscription-agreement/) (Web Direct) se účtují měsíčně na stejné platební kartě, která je v souboru pro svůj profil předplatného Azure. Roční předplatná SaaS se účtují za služby na celé roky.
+### <a name="who-pays-for-the-underlying-azure-consumption"></a>Kdo platí za základní využití Azure?
 
-**Jak můžu přesunout Azure Marketplace nákupy z předplatného MOSP na moje přímé předplatné smlouva Enterprise (EA)?**
+Pokud se řešení používá přímo v předplatném Azure zákazníka, zodpovídá za to, že zákazník platíte náklady na Azure. Pokud se řešení používá v předplatném Azure, například v případě aplikací SaaS, zodpovídáte za náklady na Azure. Měli byste se k tomuto účtu přihlédnout v ceně předplatného SaaS zákazníka.
 
-Většina předplatných Microsoftu se dá snadno převést na smlouva Enterprise Azure Marketplace nákupy v rámci těchto předplatných ale nemůžou.
+### <a name="can-i-sell-professional-services-through-the-commercial-marketplace"></a>Můžu prodávat profesionální služby prostřednictvím komerčního tržiště?
 
-Pokud chcete migrovat další služby zakoupené z Azure Marketplace do předplatného EA, nejdřív aplikace zrušte v rámci stávajícího předplatného MOSP a tyto aplikace znovu zakoupíte v rámci předplatného EA. Díky tomu můžete odeslat žádost o kredit na refundaci během potenciálního měsíce překrývajících se pokrytí mezi předplatnými služby Marketplace – vytvořte [lístek podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+Software, který je založený na nebo sestavený pro naše cloudové služby, se dá pomocí komerčního tržiště vyřizovat prostřednictvím obchodu. Profesionální služby ještě nejsou transakční.
 
-**Jaký je rozdíl mezi *cenou*, *cenou za software*a *celkovou cenou* ve struktuře nákladů pro nabídky virtuálního počítače v Azure Marketplace?**
+## <a name="purchasing"></a>Nákup
 
-*Cena* se týká nákladů na virtuální počítač Azure za účelem spuštění softwaru. *Cena za software* se vztahuje na cenu softwaru vydavatele na webu Marketplace spuštěného na virtuálním počítači Azure. *Celková cena* označuje celkové náklady na virtuální počítač Azure a software vydavatele na webu Marketplace běžící na virtuálním počítači Azure.
+### <a name="whats-required-to-purchase-solutions-from-microsoft-appsource-or-azure-marketplace"></a>Co je potřeba k nákupu řešení z Microsoft AppSource nebo Azure Marketplace?
 
-**Návody zjistit, kolik z mého Azure Marketplace nákupu jsem používal?**
+Azure Marketplace vyžaduje, aby zákazníci měli ID Azure Active Directory a aktivní předplatné Azure. Pokud není splněná ani jedna z požadavků, je zákazník požádán o jejich vytvoření v toku nákupu.
 
-Odhadované informace o využití najdete v části [Azure Portal]. Tyto informace o odhadovaném využití nemusí zahrnovat nedávné aktivity a můžou vycházet z projekcí odvozených z minulé spotřeby. Ve verzi Public Preview nemusí být tato funkce dostupná pro všechny nákupy a může se lišit podle typu produktu.
+Microsoft AppSource vyžaduje, aby zákazníci měli ID Azure Active Directory. Pokud ID neexistuje, zákazník se vyzve k jeho vytvoření v toku nákupu.
 
-### <a name="customer-support"></a>Zákaznická podpora
+### <a name="what-payment-methods-are-supported-with-the-commercial-marketplace"></a>Jaké způsoby platby jsou podporovány na komerčním webu Marketplace?
 
-**Koho se mám obrátit na Obecné problémy s podporou Azure Marketplace?**
+Microsoft AppSource podporuje platby platebními kartami. Azure Marketplace podporuje platby platebními kartami nebo jejich fakturaci. Nabídky zakoupené prostřednictvím Azure Marketplace se automaticky přidají do služby Azure Fakturovatelné zákazníkům a účtují se podle způsobu platby přidruženého ke svým předplatným.
 
-Pro obecnou aplikační podporu související s využitím nebo řešením potíží kontaktujte vydavatele aplikace přímo.
+### <a name="can-customers-apply-azure-credits-or-sponsorship-toward-purchases"></a>Můžou zákazníci použít kredity Azure nebo sponzorství k nákupům?
 
-V případě problémů s fakturací a předplatnými Azure Marketplace nákupu se obraťte na [podporu Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Žádná, předplacená nebo sponzorovaná útrata Azure se nedá použít k nákupu partnerských řešení od Azure Marketplace.
 
-**Na koho se mám obrátit, když potřebuji technickou podporu k řešení zakoupenému na Azure Marketplace?**
+### <a name="what-azure-subscription-permissions-are-required-to-complete-a-purchase"></a>Jaká oprávnění předplatného Azure potřebujete k dokončení nákupu?
 
-Kontaktujte poskytovatele vydavatelů pro veškerou technickou podporu produktu. Kontaktní údaje vydavatele nebo odkaz na web podpory najdete na stránce s podrobnostmi řešení na Azure Marketplace.
+Uživatelský účet musí mít oprávnění *vlastníka* nebo *přispěvatele* v předplatném Azure.
 
-**Koho se mám obrátit na podporu fakturace/otázky týkající se řešení třetích stran zakoupeného z webu Marketplace?**
+### <a name="in-what-countries-can-customers-purchase-from-microsoft-appsource-and-azure-marketplace"></a>V jakých zemích můžou zákazníci nakupovat z Microsoft AppSource a Azure Marketplace?
 
-Kontaktujte podpora Microsoftu [podporu Azure](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
+Zákazníci mohou získat řešení z komerčního tržiště v 141 místech po celém světě.
 
-**Na koho se mám obrátit, když mám dotazy ohledně cen nebo podmínek pro Partnerská řešení prodávaná na Azure Marketplace?**
+Pokud si chcete prohlédnout seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
 
-Kontaktujte poskytovatele vydavatelů pro veškerou technickou podporu produktu. Kontaktní údaje vydavatele nebo odkaz na web podpory najdete na stránce s podrobnostmi řešení na Azure Marketplace.
+### <a name="what-currencies-are-supported-with-the-commercial-marketplace"></a>Jaké měny podporuje komerční tržiště?
 
-**Pokud jsem nespokojeni, můžu si koupit?**
+Transakce lze zpracovat v následujících 17 měnách:
+- AUD
+- BRL
+- CAD
+- CHF
+- DKK
+- EUR
+- GBP
+- INR
+- JPY
+- KRW
+- NOK
+- NZD
+- RMB
+- RUB
+- SEK
+- TWD
+- USD
 
-Nákupy vytvořené z [Azure Marketplace](https://azuremarketplace.microsoft.com/) nejde vrátit, ale můžete je zrušit nebo odstranit. Nabídky na základě spotřeby se účtují podle využití, takže když se stav zastaví, účtují se i poplatky. Předplatné se zruší a nebude se účtovat po aktuálním fakturačním období. Pokud se předplatné zruší krátce po nákupu (24 hodin po dobu měsíčně a 14 dní pro roční), poskytne se plná náhrada.
+Pokud si chcete prohlédnout seznam měn, Projděte si [geografickou dostupnost a podporu měny pro komerční web Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
-Zákazníci musí přímo kontaktovat vydavatele ohledně všech technických problémů souvisejících se službou na webu Marketplace nebo nákupem. Kontaktní údaje vydavatele nebo odkaz na web podpory najdete na stránce s podrobnostmi řešení na Azure Marketplace.
+### <a name="can-customers-change-subscriptions-or-license-volumes-mid-term"></a>Můžou zákazníci změnit předplatné nebo objemy licencí v polovině období?
 
-**Jak se při zvýšení střední doby zpracovávají přidané licence?**
+Zákazníci mohou kdykoli zvýšit nebo snížit počet uživatelů pro odběry SaaS pro jednotlivé uživatele. Smlouvy o licenčním předplatném zůstanou stejné bez ohledu na to, které svazky nebo plány upgradují. Změny plánu jsou také podporovány pro existující odběry prostřednictvím rozhraní API (Application Programming Interface). Vydavatelé můžou pomocí volání rozhraní API změnit plán předplatného zákazníka. Nezávislé výrobce softwaru (ISV) doporučujeme, aby v rámci řešení SaaS pro situace s upgradem a downgradem bral v úvahu uživatelské prostředí zákazníka.
 
-Licence přidané do stávajícího předplatného se pro zbytek doby trvání předplatného vyhodnotily poměrně.
+Pokud se plán změní pro existující předplatné, termín zůstane beze změny a náklady se poměrně přebírají v závislosti na době trvání zbývajícího období.
 
-**Jak se vychází z odebrání licencí v polovině období?**
+### <a name="what-could-block-a-customer-from-completing-a-purchase"></a>Co by mohlo zabránit zákazníkovi v dokončení nákupu?
 
-Zrušené licence budou podléhat zásadám refundace, které se v těchto nejčastějších dotazech našly.  Všechny zrušené licence se okamžitě odeberou z vašeho účtu a už se nebudou používat k použití.
+Pro Microsoft AppSource zákazník musí mít platební kartu s fakturační adresou ve stejné zemi jako její instance Azure AD a správce Azure AD pro zákazníka musí zajistit, aby systém nebránil ověřování Microsoft AppSource.
 
-**Podporují se refundace pro nabídky založené na spotřebě?**
+Pro Azure Marketplace musí mít zákazník aktivní předplatné Azure a uživatelský účet s oprávněním *vlastníka* nebo *přispěvatele* v tomto předplatném. Správce Azure pro zákazníka musí zajistit, aby Azure Policy nekoliduje s použitou nabídkou a aby se Správa nákladů nemohla zakázat Azure Marketplace.
 
-Jakékoli poplatky založené na spotřebě – bez ohledu na to, jestli se jedná o hodinové virtuální počítače nebo vlastní měřiče, se nevracejí prostřednictvím zrušení. Jakmile se spotřeba dokončí, poplatky se zpracují na základě Commerce platforme Microsoftu a veškeré spory služby, kde se požaduje refundace, se budou zpracovávat mimo systémy Microsoftu mezi vydavatelem a zákazníkem přímo. Nabídky, které podporují paušální sazbu a účtované náklady, se řídí standardními zásadami refundace za paušální sazby.
+## <a name="collection-and-payouts"></a>Kolekce a výběry
 
-**Je možné změnit plány na střední období?**
+### <a name="when-are-customers-billed-for-their-purchases-in-the-commercial-marketplace"></a>Kdy se zákazníkům fakturují nákupy na komerčním webu Marketplace?
 
-Ne, přechod mezi měsíční a roční není možný.
+Zákazníci se obvykle účtují měsíčně za všechny nákupy v předchozím fakturačním cyklu. Nabídky na základě spotřeby s časovými plány fakturace, jako jsou image virtuálních počítačů, aplikace SaaS a spravované aplikace, se účtují po jejich použití. Plány založené na předplatném se účtují na začátku období.
 
-**Může zákazník koupit dva plány ze stejné nabídky?**
+### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Jak často budu dostávat výběry pro prodej prostřednictvím komerčního tržiště?
 
-Ano, zákazník může současně vlastnit dva plány ze stejné nabídky.
+Výběry se vyskytují měsíčně. Kolekce zpracované za předchozí měsíc jsou vypláceny najednou a prodej musí mít minimální kombinovanou hodnotu $50,00.
 
-**Liší se zásady vracení a naplánování změn podle prezentace?**
+Předplatné a nákupy kreditních karet se účtují měsíčně a faktury na zákaznickou smlouvu Microsoftu nebo smlouva Enterprise můžou být méně časté. Od okamžiku, kdy se zákazníkům fakturují, přidělíme jim za 30 dní platbu. Po přijetí platby se transakce kreditních karet dostanou do 30 dnů v úschově období.
 
-Ne, obchodní zásady jsou konzistentně v rámci komerčního tržiště. Pokud si je partner v cloudovém řešení poskytne programu, může partner pro své zákazníky vymáhat jiné zásady.
+Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
 
+### <a name="in-what-countriesregions-are-taxes-managed-on-my-behalf"></a>V jakých zemích nebo oblastech jsou daně spravovány mým jménem?
 
-## <a name="faq-for-publishers"></a>Nejčastější dotazy pro vydavatele
+Zákazníci můžou najít řešení z našeho komerčního tržiště po celém světě a spravovat daně v mnoha umístěních. 
 
-### <a name="what-you-need-to-know-about-the-commercial-marketplace"></a>Co potřebujete znát na komerčním webu Marketplace
+Pokud si chcete projít úplný seznam umístění, přečtěte si [informace o zdanění pro komerční vydavatele na webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/tax-details-paid-transactions).
 
-**Co je Azure Marketplace?**
+### <a name="where-can-i-find-payout-reporting-for-the-commercial-marketplace"></a>Kde najdu sestavy výběrů pro komerční tržiště?
 
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) je online aplikace a služby Marketplace. Zákazníci (převážně IT specialisté a vývojáři) můžou zjišťovat a kupovat cloudová softwarová řešení vytvořená v nástroji nebo pro Azure. Jeho katalog obsahuje více než 8 000 výpisů, jako jsou například stavební bloky Azure jako Virtual Machines (virtuální počítače), rozhraní API, šablony řešení, SaaS aplikace a konzultační nabídky služeb.
+V rámci partnerského centra může uživatel s oprávněním *vlastníka* nebo *finančního přispěvatele* zobrazit sestavy výběrů. Tito uživatelé mají přístup k sestavám vpravo nahoře tím, že si vyberete ikonu ukazující ruku.
 
-Azure Marketplace je výchozím bodem pro všechny společné aktivity Microsoftu pro uvedení na trh.  Zaměřujeme se na pomoc pro partnery, kteří dosáhnou více zákazníků. Můžete publikovat nové výpisy a také Azure Marketplace použít k provádění kampaní pro vytváření reklamních a vyžádaných aplikací a provádět v Microsoftu společné prodejní a marketingové aktivity.
+Další informace najdete v tématu [vytváření sestav pro výběr](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-summary).
 
-**Kteří zákazníci Azure Marketplace?**
+### <a name="how-do-i-configure-my-payout-method-and-destination"></a>Návody nakonfigurovat metodu a cíl pro výběr?
 
-Azure Marketplace je navržená pro odborníky v oblasti IT a cloudové vývojáře, které mají zájem o komerční software a služby IT.
+S partnerským centrem může uživatel s oprávněním *vlastníka* nastavit účet výběr a daňové formuláře. Uživatelé to můžou udělat tak, že v pravém horním rohu vyberete tlačítko **Nastavení** (ikona ozubeného kolečka).
 
-### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
+Další informace najdete na webu [Výběr účtu a daňové formuláře](https://docs.microsoft.com/azure/marketplace/partner-center-portal/set-up-your-payout-account-tax-forms).
 
-**Proč mám svou aplikaci publikovat na Azure Marketplace a jak to přináší?**
+### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Jsou vracené a refundace podporované na komerčním webu Marketplace?
 
-Azure Marketplace poskytuje pro partnery Microsoftu trh, který umožňuje propagovat a prodávat produkty a služby zákazníkům Azure. Vydavatelé okamžitě získají přístup k 140 celosvětovým trhům, našim 300 000 + partnerům a síti Azure pro podnikové zákazníky.  Marketplace zahrnuje více než 90% společností Fortune 500 a mnoho špičkových vývojářů na světě. Noví partneři v Azure Marketplace automaticky nabízejí sadu [výhod pro uvedení na trh bez jakýchkoli nákladů](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) , které vám pomohou zvýšit povědomí o nabídkách na webu Azure Marketplace.
+Zákazníci můžou v rámci určeného časového období zrušit odběry, aby mohli získat refundaci. Nabídky, které se účtují podle využití po použití řešení, nejsou způsobilé k refundaci.
 
-**Jaký je rozdílový faktor mezi Azure Marketplace a AppSource?**
+## <a name="resources"></a>Zdroje a prostředky
 
-Partneři Microsoftu můžou zvolit, kam se mají publikovat na základě cílové cílové skupiny.
+### <a name="where-can-i-find-more-information-about-the-commercial-marketplace"></a>Kde můžu najít další informace o komerčním tržišti?
 
-Microsoft poskytuje dvě odlišná cloudová tržiště prodejní místa-Azure Marketplace a AppSource. Tyto prodejní místa umožňují zákazníkům vyhledat, vyzkoušet a koupit cloudové aplikace a služby. Každý prezentace slouží jako jedinečné potřeby zákazníků a umožňuje partnerům Microsoftu cílit svá řešení nebo služby na základě cílové cílové skupiny.
+Tady je několik zdrojů, které vám pomohou začít:
 
-Vyberte [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps) pro cílení na odborníky na IT a vývojáře nebo na technické uživatele.
+- [Úvod do komerčního tržiště Microsoftu](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [Centrum partnerů Microsoftu pro komerční web Marketplace](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
+- [Vítá vás komerční marketplace](https://docs.microsoft.com/azure/marketplace/)
 
-Vyberte [AppSource](https://appsource.microsoft.com/) a Zaměřte se na obchodní majitele a vlastníky obchodních rozhodnutí.
+### <a name="how-can-i-engage-with-microsoft-and-other-partners"></a>Jak se můžu zapojit do Microsoftu a dalších partnerů?
 
-Další podrobnosti a výhody Azure Marketplace a AppSource najdete v [příručce pro vydavatele](marketplace-publishers-guide.md) .
+Doporučujeme tyto prostředky:
 
-**Musím být členem Microsoft Partner Network (MPN), abyste mohli zobrazit své aplikace a služby v Azure Marketplace?**
+- Pokud se chcete připojit k komunitě partnerů Microsoftu, přečtěte si téma [Microsoft AppSource a Azure Marketplace](https://www.microsoftpartnercommunity.com/t5/Microsoft-AppSource-and-Azure/bd-p/2222).
+- Přečtěte si o [programu Microsoft Web Marketplace Insiders](https://crmnamvoc1runtime.crm.dynamics.com/cbdbd59b-ab3d-47bf-8a1c-7452f8e49970/marketplaceinsiders)a připojte se k němu.
 
-Ano, pro publikování v Azure Marketplace se vyžaduje MPN. Začněte tím, že přejdete na [Microsoft Partner Network](https://partner.microsoft.com/membership) .
+### <a name="where-can-i-learn-more-about-partner-center"></a>Kde se mohu dozvědět více o partnerském centru?
 
-**Jaké je kritérium publikování řešení v Azure Marketplace?**
+- [Dokumentace k partnerskému centru](https://docs.microsoft.com/partner-center/)
+- [Vítá vás komerční marketplace](https://docs.microsoft.com/azure/marketplace/)
 
-Pro publikování v Azure Marketplace musí partneři prokázat, že aplikace běží na nebo rozšiřuje Azure. Vydavatelé vyžadují, aby zákazníkům poskytovali [smlouva SLA](https://azure.microsoft.com/support/legal/sla/), [Zásady ochrany osobních údajů](https://privacy.microsoft.com/privacystatement)a telefonickou a online podporu. Různé úlohy mají další požadavky. Další pokyny najdete v části [zásady pro účast v Azure Marketplace](./marketplace-participation-policy.md) a v příručce pro [vydavatele](marketplace-publishers-guide.md) .
+### <a name="where-can-i-learn-more-about-the-microsoft-admin-center"></a>Kde se mohu dozvědět více o centru pro správu Microsoftu?
 
-**Je k publikování v Azure Marketplace účtován poplatek?**
+Informace o centru pro správu Microsoftu najdete v tématu [Správa předplatných aplikací třetích stran ve vaší organizaci](https://docs.microsoft.com/microsoft-365/commerce/manage-saas-apps?view=o365-worldwide).
 
-Při nahrávání seznamu, zkušební verze nebo BYOL (Přineste si vlastní licenci) prostřednictvím Azure Marketplace se neúčtují žádné poplatky za publikování.
+### <a name="where-can-i-learn-more-about-azure-billing"></a>Kde se dozvím Další informace o fakturaci Azure?
 
-**Účtují se za nákupy prostřednictvím Azure Marketplace nějaké poplatky za transakce?**
+- [Dokumentace ke Cost Managementu a fakturaci Azure](https://docs.microsoft.com/azure/cost-management-billing/)
+- [Vysvětlení poplatků za Azure Marketplace na faktuře za Azure](https://docs.microsoft.com/azure/cost-management-billing/understand/understand-azure-marketplace-charges)
+- [Převod předplatného Azure na platbu faktury](https://docs.microsoft.com/azure/cost-management-billing/manage/pay-by-invoice)
 
-Po zakoupení licence k řešení prostřednictvím Azure Marketplace se výnosy za softwarovou licenci rozdělí mezi vydavatele a Microsoft.  To se provádí v souladu s podmínkami a ujednáními v rámci [smlouvy vydavatele na webu Marketplace](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt). Kromě toho řešení s BYOL (Přineste si vlastní licenci) neúčtují poplatky za transakce.
+### <a name="where-can-i-learn-about-azure-government-and-the-azure-government-marketplace"></a>Kde můžu získat informace o Azure Government a na webu Azure Government Marketplace?
 
-**Co je standardní smlouva?**
-
-Společnost Microsoft nabízí standardní smlouvy, které může vydavatel vybrat k využití, aby měli zákazníci zjednodušený postup pro poskytování a právní kontroly.
-
-**Kde najdu pokyny pro integraci aplikace s Azure Active Directory (AAD)?**
-
-Microsoft ověřuje všechny uživatele na webu Marketplace pomocí AAD.  Můžete se přímo zřídit do zkušební verze bez nutnosti dalšího přihlašovacího kroku.  Například ověřený uživatel klikne na seznamu zkušební verze na webu Marketplace a přesměruje na zkušební prostředí.
-
-Pokud potřebujete další informace a chcete začít s povolením zkušební verze pomocí AAD, přejděte k [části Azure Active Directory v příručce pro vydavatele](enable-appsource-marketplace-using-azure-ad.md).
-
-**Návody začít s registrací centra pro vývoj?**
-
-Chcete-li začít, vydavatelé by měli ověřit, že [účet vývojářského centra](deprecated/register-dev-center.md) ještě není zaregistrovaný (aby se zabránilo duplikaci). Po potvrzení se další krok zaregistrujete tak, že se [přihlásíte](https://account.microsoft.com/account/) pomocí účet Microsoft, které se přidruží k účtu vývojáře.
-
-Pokud ještě nemáte účet Microsoft, můžete [vytvořit účet](https://signup.live.com/) (například contoso_marketplace@live.com).
-
-**Proč je vyžadován účet centra pro vývojáře?**
-
-Účet centra vývojářů je nutný k tomu, aby Microsoft mohl fakturovat zákazníky jménem vydavatele pro typy výpisů v transakcích. Registrace účtu na webu Dev Center umožňuje Microsoftu ověřit informace o legální, daňové a bankovní službě. Další informace najdete v tématu věnovaném [registraci ve vývojářském centru](./partner-center-portal/create-account.md).
-
-**Co jsou to zájemce a proč jsou důležité pro mě jako Vydavatel na webu Marketplace?**
-
-Zájemci jsou zákazníci, kteří nasazují vaše produkty z webu Marketplace. Bez ohledu na to, jestli je váš produkt uvedený [Azure Marketplace](https://azuremarketplace.microsoft.com) nebo [AppSource](https://appsource.microsoft.com), můžete dostávat zájemce od zákazníků, kteří mají zájem o váš produkt.  V nabídce můžete nastavit cíl pro zájemce. Další informace najdete v článku [Staňte se vydavatelem Cloud Marketplace](./partner-center-portal/create-account.md).
-
-**Kde můžu získat pomoc při nastavování cíle realizace?**
-
-Další informace najdete v tématu [partner Center – získat zájemce pro zákazníky](./partner-center-portal/commercial-marketplace-get-customer-leads.md) nebo odeslat lístek podpory prostřednictvím [pomoci a podpory](https://partner.microsoft.com/support/v2/?stage=1) tak, že vyberete typ nabídky a správu potenciálních zákazníků.
-
-**Je nutné nakonfigurovat cíl zájemce pro publikování nabídky na webu Marketplace?**
-
-Ano, pokud publikujete **kontaktní zprávu**, **aplikaci SaaS**nebo nabídku **konzultačních služeb** , je nutné nakonfigurovat cíl zájemce.
-
-**Jak si můžu ověřit, jestli je správně nastavená konfigurace potenciálního zákazníka?**
-
-Po dokončení nabídky a nastavení cíle realizace se seznam může řádně publikovat v [partnerském centru](https://partner.microsoft.com/). Předtím, než se výpis začne pracovat, můžete ověřit, zda konfigurace vedoucího souboru funguje správně.  Poslat test – zájemce v rámci nabídky, který je konfigurovaný pro cíl zájemce
-
-**Které země nebo oblasti jsou Azure Marketplace k dispozici pro vydavatele, kteří prodávají?**
-
-Vydavatelé založené na následujících zemích nebo oblastech můžou v současnosti prodávat v Azure Marketplace: Afghánistán, Albánie, Alžírsko, Angola, Antigua a Barbuda, Argentina, Arménie, Austrálie, Rakousko, Ázerbájdžán, Bahrajn, Bangladéš, Bělorusko Belgie, Benin, Bolívie, Bosna a Hercegovina, Botswana, Brazílie, Bulharsko, Burkina Faso, Burundi, Kambodža, Kamerun, Kypr, Středoafrická republika, Čad, Chile, Kolumbie, Kypr, Kongo, Kongo, Albánská republika, Chorvatsko, Kypr, Kypr, Kypr, Kypr Etiopie, ostrovy Fidži, Finsko, Francie, Gruzie, Německo, Jamajka, Řecko, Guatemala, Guinea, Haiti, Honduras, Hongkong, Irsko, Island, Indie, Indonésie, Irák, Irsko, Indie, Jamajka, Jamajka, Japonsko, Japonsko, Jordánsko, Kazachstán, Keňa, Korea (jih), Kuvajt, Laos, Lotyšsko, Libanon, Indie, Indie, Indie, Indie, Maďarsko, Indie, Indie, Indie, Lotyšsko, Malta, Malta, Mexiko, Lotyšsko, Malta, Mongolsko, Jižní Hora , Maroko, Mosambik, Nepál, Nizozemsko, Nový Zéland, Nikaragua, Niger, Nigérie, Norsko, Omán, Rumunsko, Panama, Paraguay, Peru, Filipíny, Polsko, Portugalsko, Niger, Rwanda, Saudská Arábie, Senegal, Srbsko, Sierra Leone, Singapur, Slovensko, Slovinsko, Somálsko, Jižní Afrika, Španělsko, Srí Lanka, Švédsko, Švýcarsko, Tádžikistán, Indie, Indie, Turkmenistán, Srbsko, Indie, Uganda, Ukrajina, Spojené království – Togo, Turecko, Srbsko, Srbsko, Srbsko, Zambie a Zimbabwe. USA
-
-**Návody odstranit výpis z Azure Marketplace?**
-
-*Aplikace & Azure pro virtuální počítače:*
-
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/).
-1. Vyberte nabídku na kartě **všechny nabídky** .
-1. V podokně na levé straně obrazovky vyberte kartu **SKU** .
-1. Vyberte SKLADOVOU položku k odstranění a klikněte na tlačítko **Odstranit** pro danou skladovou jednotku.
-1. [Znovu publikujte](./partner-center-portal/update-existing-offer.md#review-and-publish-an-updated-offer) nabídku Azure Marketplace.
-
-Další informace najdete v tématu [aktualizace nabídky](./partner-center-portal/update-existing-offer.md).
-
-*Web Apps (aplikace SaaS, doplňky) & konzultačních služeb:*
-
-1. V partnerském centru vyberte ikonu otazníku a potom klikněte na tlačítko **Podpora**.
-1. Přejděte do části <https://go.microsoft.com/fwlink/?linkid=844975> (Soubor > Nový > Jiné).
-1. Na stránce Podpora vyberte typ nabídky.
-1. Vyberte možnost **Odebrat** publikovanou nabídku.
-1. Vytvořte lístek incidentu.
-1. Poskytoval.
-
-*Aplikace O365:*
-
-1.    Přihlaste <https://sellerdashboard.microsoft.com> se ke svému vývojářskému účtu.
-1.    Odvolat doplněk.
-
-    > [!NOTE]
-    > Aplikace zmizí ze stávajícího výpisu po 90 dnech.
-
-**Proč se moje změny neprojevily v nabídce?**
-
-Změny provedené v partnerském centru se v systému aktualizují až po opětovném publikování této nabídky. Ujistěte se prosím, že jste po změnách odeslali nabídku k publikování.
-
-### <a name="benefits-and-go-to-market-gtm-resources"></a>Výhody a prostředky pro uvedení na trh (GTM)
-
-**Jaké jsou některé výhody pro uvedení na trh poskytované vydavatelům uvedeným na Azure Marketplace?**
-
-Azure Marketplace je výchozím bodem pro společné aktivity uvádění na trh s Microsoftem a ke stažení do partnerství připravenému pro spoluprodejní účast. Všechny nové výpisy v Azure Marketplace automaticky nabízejí sadu výhod pro [uvedení na trh bez jakýchkoli nákladů](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , které vám pomůžou s tím, že se zákazníkům Microsoftu budou pomáhat s vědomím nabídek. Po publikování nabídky se tým Microsoftu GTM kontaktuje a začne doručovat vaše výhody.
-
-Další informace o našich výhodách GTM a možnostech, jak rozšiřovat své podnikání na webu Marketplace, najdete na webu [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) .
-
-**Kde jsou Azure Marketplace řešení povýšená v rámci webových vlastností Microsoftu?**
-
-Řešení Azure Marketplace jsou k dispozici na webu Microsoft [Azure Portal] a [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). Vývojáři cloudu a IT profesionálové, kteří používají Azure, mají při každém přihlášení expozici partnerským řešením. Podmnožina partnerských řešení se taky prezentuje a otáčí na stránce [Azure Marketplace domovskou](https://azuremarketplace.microsoft.com/marketplace) [stránku a řešení Azure](https://azure.microsoft.com/solutions/).
-
-### <a name="billing-and-payments"></a>Fakturace a platby
-
-**Návody dostávat platbu za Azure Marketplace prodej?**
-
-Všechny platby od Microsoftu se zpracovávají prostřednictvím služby PayPal nebo elektronického převodu peněžních prostředků (EFT) měsíčně. Platba se uskuteční do dvou měsíců od data, kdy zákazník službu použil, ale přesné časování závisí na platebním nástroji zákazníka. Na zákazníky s kreditními kartami se vztahuje v úschově lhůta na 45 dní.
-
-**Pro řešení založená na virtuálním počítači zakoupená při fakturaci na základě využití, když zákazník změní velikost nebo downsizes základního virtuálního počítače, se vám bude účtovat cena za licence na software?**
-
-Ano, nová cena se účtuje hned.  Změny cen se projeví, když zákazník změní velikost virtuálního počítače a v tabulce s cenami určí různé ceny, které jsou založené na velikosti virtuálního počítače.
-
-**Jsou k dispozici fakturace podle uzlů pro Azure Marketplace?**
-
-Azure Marketplace v současné době nepodporuje účtování podle uzlů s Virtual Machines. Vydavatelé stále můžou určit fakturační sazbu za uzel pomocí fakturačních sazeb Microsoft VM.  Při výpočtu se určí počet virtuálních počítačů podle počtu využitých hodin a sazeb za hodinu.
-
-**Na koho se mám obrátit s dotazy ohledně fakturace nebo správy nabídek?**
-
-Zaprotokolujte lístek pomocí [Podpora Microsoftu](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635).
-
-### <a name="publisher-support"></a>Podpora vydavatele
-
-**Koho se mám obrátit na Obecné problémy s podporou Azure Marketplace?**
-
-V případě obecné aplikační podpory týkající se použitelnosti nebo řešení potíží kontaktujte [podporu partnerského centra](https://support.microsoft.com/getsupport?wf=0&tenant=ClassicCommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&ccsid=636565784998876007).
-
-V případě problémů s fakturací a předplatnými Azure Marketplace nákupu se obraťte na [podporu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
-
-**Na koho se mám obrátit s dotazy ohledně publikování nebo správy nabídek?**
-
-Projděte si [příručku pro vydavatele komerčního webu Marketplace](marketplace-publishers-guide.md) , kde najdete aktuální prostředky a dokumentaci k nejčastějším dotazům. Navíc můžete protokolovat lístek pomocí [Podpora Microsoftu v partnerském centru](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953).
-
-### <a name="azure-marketplace-for-publishers"></a>Azure Marketplace pro vydavatele
-
-**Návody definovat geografickou dostupnost, která umožňuje prodej v různých zemích nebo oblastech?**
-
-1.  V partnerském centru přejděte na SKU, do kterého chcete přidat nové země nebo oblasti.  V **podrobnostech SKU**přejděte k položce **dostupnost země/oblasti** a klikněte na **Vybrat oblasti**.
-
-    ![Vybrat oblasti](media/marketplace-publishers-guide/FAQ-choose-geo.png)
-
-1.  Seznam se automaticky otevře se všemi dostupnými zeměmi nebo oblastmi, na které se budou prodávat.  Klikněte na zaškrtávací políčko vedle každé země nebo oblasti, pro kterou chcete zpřístupnit tuto SKU. Klikněte na tlačítko **OK**.
-
-    ![Vybrat seznam zemí/oblastí](media/marketplace-publishers-guide/FAQ-select-countries.png)
-
-1.  Nakonec, aby se změny projevily na živé nabídce, klikněte na **publikovat**.  
-
-    > [!Note]
-    > Změny se projeví po dobu 24 hodin.
-
-<!---    ![Publish offer](media/marketplace-publishers-guide/FAQ-publish-offer.png) -->
-
-**Jak může vydavatel změnit geografickou dostupnost stávající nabídky?**
-
-Publisher může upravit existující nabídku, vybrat nové země nebo oblasti a použít funkci stažení/nahrání tabulky k nastavení cen.
-
-**V jakých zemích nebo oblastech můžou zákazníci zakoupit Azure Marketplace nabídky?**
-
-Azure Marketplace podporuje 141 nákupů od geografických oblastí, jak jsou definovány fakturační adresou zákazníka. Seznam zemí nebo oblastí najdete v tématu [zásady pro účast](/legal/marketplace/participation-policy) .
-
-**Jaké měny podporuje Azure Marketplace?**
-
-Transakce se dají provádět v následujících 17 měnách: AUD, BRL, CAD, CHF, DKK, EUR, GBP, výše, JPY, KRW, NOK, NZD, RUB, SEK, TWD a USD.
-
-### <a name="pricing-and-payment"></a>Ceny a platby
-
-**Jaký je rozdíl mezi úrovní Free a bezplatnou zkušební verzí softwaru?**
-
-Nabídka předplatného úrovně Free je trvale zadarmo.  Bezplatná zkušební verze softwaru (vyzkoušejte si ji teď) je placené předplatné, zdarma jenom po omezené časové období.
-
-**Jaký je proces ověření koncového nákupu a toku zřizování?**
-
-Během procesu publikování budete mít k dispozici přístup k verzi Preview vaší nabídky. Přístup je omezen na uživatele, které jste zadali na kartě Preview, a jedná se o živou nabídku, která není viditelná pro někoho jiného. Můžete si tento proces koupit a otestovat. bude se vám ale účtovat celá částka podle konfigurace vaší nabídky.
-
-Aby bylo možné dokončit nákup za velmi nízkou cenu, Microsoft navrhne publikování privátního plánu, který nastaví za cenu, kterou můžete přijmout jako náklady na testování. Je podporována nula, ale neodráží celé prostředí, jako je placené předplatné.
-
-**Bude společnost Microsoft poskytovat refundaci mimo standardní zásady?**
-
-Ano, na základě žádosti prostřednictvím lístku podpory Microsoft zpracuje kredity pro zákazníka, pokud to považujete za vhodné.
-
-## <a name="next-steps"></a>Další kroky
-
-Navštivte stránku [Příručka pro vydavatele komerčního webu Marketplace](/azure/marketplace/marketplace-publishers-guide) .
+- [Azure Government](https://azure.microsoft.com/global-infrastructure/government)
+- [Centrum zabezpečení Microsoftu](https://www.microsoft.com/trust-center)
+- [Dokumentace k Azure Government](https://docs.microsoft.com/azure/azure-government/)
+- [Azure Government Marketplace](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-marketplace)
+- [Azure Government dodržování předpisů](https://docs.microsoft.com/azure/azure-government/documentation-government-plan-compliance)

@@ -1,63 +1,63 @@
 ---
-title: Správa replik čtení – Azure CLI, REST API – Azure Database for MySQL
-description: Zjistěte, jak nastavit a spravovat repliky čtení v Azure Database for MySQL pomocí rozhraní API Azure nebo rozhraní REST API.
+title: Správa replik čtení – Azure CLI, REST API-Azure Database for MySQL
+description: Naučte se, jak nastavit a spravovat repliky pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure CLI nebo REST API.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ed57003c7a9a5a1a9d87aa2e8934af8c48b1d819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063334"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Jak vytvořit a spravovat repliky čtení v Azure Database for MySQL pomocí rozhraní API Azure a rozhraní REST API
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Vytvoření a Správa replik pro čtení v Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API
 
-V tomto článku se dozvíte, jak vytvořit a spravovat repliky čtení ve službě Azure Database for MySQL pomocí rozhraní API Azure a rozhraní REST API. Další informace o replikách pro čtení naleznete v [přehledu](concepts-read-replicas.md).
+V tomto článku se naučíte, jak vytvářet a spravovat repliky pro čtení ve službě Azure Database for MySQL pomocí rozhraní příkazového řádku Azure a REST API. Další informace o replikách pro čtení najdete v tématu [Přehled](concepts-read-replicas.md).
 
 ## <a name="azure-cli"></a>Azure CLI
-Můžete vytvářet a spravovat repliky čtení pomocí azure CLI.
+Repliky pro čtení můžete vytvořit a spravovat pomocí rozhraní příkazového řádku Azure CLI.
 
 ### <a name="prerequisites"></a>Požadavky
 
 - [Instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- [Databáze Azure pro mysql server,](quickstart-create-mysql-server-database-using-azure-portal.md) který se bude používat jako hlavní server. 
+- [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md) , který se bude používat jako hlavní server. 
 
 > [!IMPORTANT]
-> Funkce repliky pro čtení je k dispozici jenom pro Azure Database pro servery MySQL v cenových úrovních s obecnou dostupností nebo optimalizací pro paměť. Ujistěte se, že hlavní server je v jedné z těchto cenových úrovní.
+> Funkce replika čtení je k dispozici pouze pro Azure Database for MySQL servery v cenové úrovni optimalizované pro Pro obecné účely nebo paměť. Ujistěte se, že je hlavní server v jedné z těchto cenových úrovní.
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 
-Server replik pro čtení lze vytvořit pomocí následujícího příkazu:
+Server repliky pro čtení se dá vytvořit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
 ```
 
-Příkaz `az mysql server replica create` vyžaduje následující parametry:
+`az mysql server replica create` Příkaz vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, pro kterou bude vytvořen replikovací server.  |
-| jméno | mydemoreplicaserver | Název nového serveru repliky, který je vytvořen. |
-| source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze který má být replikován. |
+| resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
+| jméno | mydemoreplicaserver | Název nového serveru repliky, který se vytvoří. |
+| source-server | mydemoserver | Název nebo ID existujícího hlavního serveru, ze kterého se má replikovat. |
 
-Chcete-li vytvořit repliku pro `--location` čtení mezi oblastmi, použijte parametr. Příklad cli níže vytvoří repliku v západní USA.
+Chcete-li vytvořit repliku čtení ve více oblastech `--location` , použijte parametr. Níže uvedený příklad rozhraní příkazového řádku vytvoří repliku v Západní USA.
 
 ```azurecli-interactive
 az mysql server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 > [!NOTE]
-> Další informace o oblastech, ve kterých můžete vytvořit repliku, naleznete v [článku koncepty replik pro čtení](concepts-read-replicas.md). 
+> Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
 
 > [!NOTE]
-> Repliky pro čtení jsou vytvořeny se stejnou konfigurací serveru jako předloha. Konfiguraci serveru repliklze změnit po jeho vytvoření. Doporučuje se, aby konfigurace serveru repliky byla udržována na stejných nebo vyšších hodnotách než hlavní server, aby byla replika schopna držet krok s předlohou.
+> Repliky čtení se vytvářejí se stejnou konfigurací serveru jako hlavní. Konfiguraci serveru repliky je možné po vytvoření změnit. Doporučuje se udržovat konfiguraci serveru repliky ve stejné nebo větší hodnotě než hlavní, aby bylo zajištěno, že je replika schopná s hlavní hodnotou.
 
 
-### <a name="list-replicas-for-a-master-server"></a>Seznam replik pro hlavní server
+### <a name="list-replicas-for-a-master-server"></a>Vypíše repliky pro hlavní server.
 
 Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následující příkaz: 
 
@@ -65,34 +65,34 @@ Chcete-li zobrazit všechny repliky pro daný hlavní server, spusťte následuj
 az mysql server replica list --server-name mydemoserver --resource-group myresourcegroup
 ```
 
-Příkaz `az mysql server replica list` vyžaduje následující parametry:
+`az mysql server replica list` Příkaz vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, pro kterou bude vytvořen replikovací server.  |
+| resource-group |  myresourcegroup |  Skupina prostředků, do které se vytvoří server repliky.  |
 | název-serveru | mydemoserver | Název nebo ID hlavního serveru. |
 
-### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na replikační server
+### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
 
 > [!IMPORTANT]
-> Zastavení replikace na server je nevratné. Jakmile je replikace zastavena mezi předlohou a replikou, nelze ji vrátit zpět. Replika server se pak stane samostatný server a nyní podporuje čtení i zápisy. Tento server nelze znovu přeměnit na repliku.
+> Zastavení replikace na serveru je nevratné. Po zastavení replikace mezi hlavním serverem a replikou nelze vrátit zpět. Server repliky se pak stal samostatným serverem a teď podporuje čtení i zápis. Tento server nelze znovu vytvořit do repliky.
 
-Replikaci na server replik y pro čtení lze zastavit pomocí následujícího příkazu:
+Replikaci na server repliky pro čtení lze zastavit pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az mysql server replica stop --name mydemoreplicaserver --resource-group myresourcegroup
 ```
 
-Příkaz `az mysql server replica stop` vyžaduje následující parametry:
+`az mysql server replica stop` Příkaz vyžaduje následující parametry:
 
 | Nastavení | Příklad hodnoty | Popis  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Skupina prostředků, kde existuje replika server.  |
-| jméno | mydemoreplicaserver | Název repliky serveru zastavit replikace na. |
+| resource-group |  myresourcegroup |  Skupina prostředků, ve které existuje server repliky.  |
+| jméno | mydemoreplicaserver | Název serveru repliky, na kterém má být replikace zastavena. |
 
-### <a name="delete-a-replica-server"></a>Odstranění repliky serveru
+### <a name="delete-a-replica-server"></a>Odstranění serveru repliky
 
-Odstranění serveru repliky pro čtení lze provést spuštěním příkazu **[delete az mysql server.](/cli/azure/mysql/server)**
+Odstranění serveru repliky pro čtení se dá udělat spuštěním příkazu **[AZ MySQL server Delete](/cli/azure/mysql/server)** .
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -103,7 +103,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoreplicaserv
 > [!IMPORTANT]
 > Odstraněním hlavního serveru se zastaví replikace na všechny servery replik a odstraní se samotný hlavní server. Ze serverů replik se stanou samostatné servery, které teď podporují čtení i zápis.
 
-Chcete-li odstranit hlavní server, můžete spustit příkaz **[az mysql server delete.](/cli/azure/mysql/server)**
+Pokud chcete odstranit hlavní server, můžete spustit příkaz **[AZ MySQL server Delete](/cli/azure/mysql/server)** .
 
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
@@ -111,10 +111,10 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 
 
 ## <a name="rest-api"></a>REST API
-Můžete vytvářet a spravovat repliky čtení pomocí [rozhraní Azure REST API](/rest/api/azure/).
+Repliky pro čtení můžete vytvářet a spravovat pomocí [REST API Azure](/rest/api/azure/).
 
 ### <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
-Repliku pro čtení můžete vytvořit pomocí [rozhraní CREATE API](/rest/api/mysql/servers/create):
+Repliku pro čtení můžete vytvořit pomocí [rozhraní API pro vytvoření](/rest/api/mysql/servers/create):
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
@@ -131,27 +131,27 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!NOTE]
-> Další informace o oblastech, ve kterých můžete vytvořit repliku, naleznete v [článku koncepty replik pro čtení](concepts-read-replicas.md). 
+> Další informace o tom, které oblasti můžete vytvořit repliku v, najdete v [článku věnovaném konceptům pro čtení replik](concepts-read-replicas.md). 
 
-Pokud jste nenastavili `azure.replication_support` parametr **replika** na serveru pro obecné účely nebo optimalizované pro paměť a restartovali server, zobrazí se chyba. Před vytvořením repliky proveďte tyto dva kroky.
+Pokud jste nenastavili `azure.replication_support` parametr na **repliku** na pro obecné účely nebo paměťově optimalizovaném hlavním serveru a server restartovali, zobrazí se chyba. Před vytvořením repliky tyto dva kroky proveďte.
 
-Replika je vytvořena pomocí stejného nastavení výpočetních prostředků a úložiště jako předloha. Po vytvoření repliky lze změnit několik nastavení nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a záložní retenční období. Cenovou úroveň lze také změnit nezávisle, s výjimkou úrovně Basic nebo z ní.
+Replika se vytvoří pomocí stejného nastavení výpočtů a úložiště jako hlavní. Po vytvoření repliky se dá několik nastavení měnit nezávisle na hlavním serveru: generování výpočetních prostředků, virtuální jádra, úložiště a doba uchovávání záloh. Cenová úroveň se dá změnit také nezávisle, s výjimkou nebo z úrovně Basic.
 
 
 > [!IMPORTANT]
-> Před aktualizací nastavení hlavního serveru na novou hodnotu aktualizujte nastavení repliky na stejnou nebo vyšší hodnotu. Tato akce pomáhá replika držet krok s všechny změny provedené v předloze.
+> Než bude nastavení hlavního serveru aktualizováno na novou hodnotu, aktualizujte nastavení repliky na hodnotu rovná se nebo větší. Tato akce pomůže replice uchovávat všechny změny provedené v hlavní větvi.
 
-### <a name="list-replicas"></a>Seznam replik
+### <a name="list-replicas"></a>Vypsat repliky
 Seznam replik hlavního serveru můžete zobrazit pomocí [rozhraní API seznamu replik](/rest/api/mysql/replicas/listbyserver):
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
-### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na replikační server
+### <a name="stop-replication-to-a-replica-server"></a>Zastavení replikace na server repliky
 Replikaci mezi hlavním serverem a replikou pro čtení můžete zastavit pomocí [rozhraní API pro aktualizaci](/rest/api/mysql/servers/update).
 
-Po zastavení replikace na hlavní server a repliku pro čtení ji nelze vrátit zpět. Replika pro čtení se stane samostatným serverem, který podporuje čtení i zápisy. Samostatný server nelze znovu vytvořit v replice.
+Po zastavení replikace na hlavní server a repliku pro čtení ji nejde vrátit zpět. Replika čtení se stal samostatným serverem, který podporuje čtení i zápis. Samostatný server se nedá znovu vytvořit do repliky.
 
 ```http
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}?api-version=2017-12-01
@@ -165,10 +165,10 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>Odstranění hlavního serveru nebo repliky serveru
-Chcete-li odstranit hlavní nebo replikový server, použijte [rozhraní DELETE API](/rest/api/mysql/servers/delete):
+### <a name="delete-a-master-or-replica-server"></a>Odstranění hlavního serveru nebo serveru repliky
+K odstranění hlavního serveru nebo serveru repliky použijte [rozhraní API pro odstranění](/rest/api/mysql/servers/delete):
 
-Při odstranění hlavního serveru je zastavena replikace všech replik čtení. Čtení repliky stát samostatné servery, které nyní podporují čtení i zápisy.
+Při odstranění hlavního serveru se zastaví replikace do všech replik čtení. Repliky čtení se stanou samostatnými servery, které nyní podporují čtení i zápis.
 
 ```http
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}?api-version=2017-12-01
@@ -177,4 +177,4 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [čtení replik](concepts-read-replicas.md)
+- Další informace o [replikách pro čtení](concepts-read-replicas.md)

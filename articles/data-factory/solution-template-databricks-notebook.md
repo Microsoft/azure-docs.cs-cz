@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414852"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857643"
 ---
 # <a name="transformation-with-azure-databricks"></a>Transformace se službou Azure Databricks
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 V tomto kurzu vytvoříte kompletní kanál obsahující **ověřování**, **kopírování dat**a aktivity **poznámkových bloků** v Azure Data Factory.
 
@@ -153,6 +153,9 @@ V novém kanálu je většina nastavení nakonfigurovaná automaticky s výchoz�
 1. Ověřte, že **parametry kanálu** odpovídají čemu uvedené na následujícím snímku obrazovky: ![parametry kanálu](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Připojte se k vašim datovým sadám.
+
+    >[!NOTE]
+    >V níže uvedených datových sadách se cesta k souboru automaticky zadala v šabloně. Pokud potřebujete nějaké změny, nezapomeňte zadat cestu pro **kontejner** i **adresář** v případě jakékoli chyby připojení.
 
    - **SourceAvailabilityDataset** – Chcete-li ověřit, zda jsou zdrojová data k dispozici.
 
