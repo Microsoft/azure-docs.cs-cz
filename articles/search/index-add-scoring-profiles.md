@@ -3,34 +3,29 @@ title: Zvýšení pořadí vyhledávání pomocí profilů vyhodnocování
 titleSuffix: Azure Cognitive Search
 description: Zvyšte skóre pořadí hledání pro Azure Kognitivní hledání výsledky přidáním profilů vyhodnocování.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231097"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890180"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Přidání profilů vyhodnocování do indexu služby Azure Cognitive Search
 
 *Bodování* počítá skóre hledání pro každou položku v sadě výsledků seřazené podle pořadí. Každé položce v sadě výsledků hledání je přiřazeno skóre hledání, seřazené od nejvyšší po nejnižší.
 
  Azure Kognitivní hledání používá k výpočtu počátečního skóre výchozí bodování, ale tento výpočet můžete přizpůsobit pomocí *profilu vyhodnocování*. Profily vyhodnocování poskytují větší kontrolu nad hodnocením položek ve výsledcích vyhledávání. Například můžete chtít zvýšit množství položek na základě jejich potenciálních výnosů, zvýšit úroveň nových položek nebo možná zvýšit množství položek, které byly v inventáři příliš dlouho.  
+
+ Následující segment videa se rychle přepošle na to, jak profily vyhodnocování fungují v Azure Kognitivní hledání.
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>Definice profil bodování
 
  Profil vyhodnocování je součástí definice indexu, která se skládá z vážených polí, funkcí a parametrů.  
 

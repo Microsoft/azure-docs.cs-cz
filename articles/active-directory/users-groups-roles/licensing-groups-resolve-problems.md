@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025700"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582692"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikace a řešení problémů s přiřazením licencí pro skupinu v Azure Active Directory
 
@@ -100,7 +100,7 @@ Chcete-li tento problém vyřešit, odeberte z licencované skupiny uživatele z
 
 ## <a name="duplicate-proxy-addresses"></a>Duplicitní proxy adresy
 
-Pokud používáte Exchange Online, někteří uživatelé ve vašem tenantovi můžou být nesprávně nakonfigurováni se stejnou hodnotou adresy proxy serveru. Když se licencování na základě skupiny pokusí k tomuto uživateli přiřadit licenci, dojde k chybě a zobrazí se zpráva "adresa proxy se už používá".
+Pokud používáte Exchange Online, někteří uživatelé ve vaší organizaci můžou být nesprávně nakonfigurováni se stejnou hodnotou adresy proxy serveru. Když se licencování na základě skupiny pokusí k tomuto uživateli přiřadit licenci, dojde k chybě a zobrazí se zpráva "adresa proxy se už používá".
 
 > [!TIP]
 > Pokud chcete zjistit, jestli je k dispozici duplicitní proxy adresa, spusťte následující rutinu prostředí PowerShell v systému Exchange Online:

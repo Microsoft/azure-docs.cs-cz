@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165786"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872202"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Připojení Update Management řešení pomocí šablony Azure Resource Manager
 
@@ -26,6 +26,9 @@ K povolení řešení Azure Automation Update Management ve vaší skupině pros
 Šablona neautomatizuje připojování jednoho nebo více virtuálních počítačů Azure nebo mimo Azure.
 
 Pokud už máte pracovní prostor Log Analytics a účet Automation je nasazený v podporované oblasti v rámci vašeho předplatného, nejsou propojené. Pracovní prostor ještě nemá nasazené řešení Update Management. Pomocí této šablony se úspěšně vytvoří odkaz a nasadí se Update Management řešení. 
+
+>[!NOTE]
+>Přihlášený uživatel **nxautomation** jako součást Update Management v systému Linux provede pouze podepsané Runbooky.
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).

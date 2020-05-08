@@ -1,5 +1,5 @@
 ---
-title: Přehled vytváření aplikací Power BI – Azure Marketplace
+title: Přehled vytváření aplikací Power BI – Microsoft AppSource
 description: Tento článek popisuje kroky vysoké úrovně pro publikování Power BI aplikace do Microsoft AppSource. K dispozici jsou také technické a obchodní požadavky, které vaše aplikace Power BI musí splňovat, aby bylo možné je publikovat na komerčním webu Marketplace.
 author: anbene
 ms.author: mingshen
@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c40ea07fc4224052aa2474ebd61ef7838ba2cedf
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732678"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837834"
 ---
 # <a name="power-bi-app-creation-overview"></a>Přehled vytváření aplikací Power BI
-
-> [!IMPORTANT]
-> Přesouváme správu nabídek Power BI aplikací z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v tématu [Power BI nabídka aplikace](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) , kde portál partnerů cloudu ke správě nabídek použijte.
 
 Tento článek vysvětluje, jak publikovat aplikaci Power BI do Microsoft [AppSource](https://appsource.microsoft.com/). Balíček aplikace Power BI přizpůsobitelné obsahu, včetně datových sad, sestav a řídicích panelů. Tuto aplikaci pak můžete použít s jinými Power BI platformami pomocí AppSource, provádět úpravy a přizpůsobení, které vývojář povoluje, a propojit ho s vašimi vlastními daty.
 
@@ -32,14 +29,14 @@ Výhody publikování na komerčním webu Marketplace:
 
 ## <a name="overview"></a>Přehled
 
-:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="přehled kroků pro publikování Power BI aplikace" border="false":::
+:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="Přehled kroků pro publikování Power BI aplikace" border="false":::
 
 Toto jsou klíčové kroky pro publikování:
 
 1. Vytvořte aplikaci v Power BI. Zobrazí se odkaz pro instalaci balíčku, který je hlavním technickým prostředkem pro tuto nabídku. Před vytvořením nabídky v partnerském centru odešlete testovací balíček do předprodukčního prostředí. Podrobnosti najdete v tématu [co jsou aplikace Power BI?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
 2. Přidejte marketingové materiály, jako je například oficiální název, popis a loga.
 3. Zahrňte právní a podpůrné dokumenty nabídky, jako jsou podmínek použití, zásady ochrany osobních údajů, zásady podpory a uživatelská pomoc.
-4. Vytvoření nabídky: pomocí partnerského centra můžete upravit podrobnosti, včetně popisu nabídky, marketingových materiálů, právních informací, informací o podpoře a specifikace assetu.
+4. Vytvoření nabídky – pomocí partnerského centra můžete upravit podrobnosti, včetně popisu nabídky, marketingových materiálů, právních informací, informací o podpoře a specifikace assetu.
 5. Odešlete ji k publikování.
 6. Monitorujte proces v partnerském centru, kde AppSource týmu testuje, ověřuje a osvědčuje vaši aplikaci.
 7. Po certifikaci si aplikaci přečtěte v testovacím prostředí a uvolněte ji. Tato možnost zobrazí seznam na AppSource (bude to živě).
@@ -79,6 +76,6 @@ Mezi obchodní požadavky patří procedurální, smluvní a právní závazky. 
 - Poskytněte obsah, který splňuje kritéria pro uvedení vaší nabídky na AppSource. Další informace najdete v tématu [seznam aplikací pro AppSource? Tady je postup](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
 - Odsouhlaste se a postupujte podle [prohlášení Microsoftu o zásadách ochrany osobních údajů](https://privacy.microsoft.com/privacystatement).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-step"></a>Další krok
 
 - [Vytvoření nabídky aplikace Power BI v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

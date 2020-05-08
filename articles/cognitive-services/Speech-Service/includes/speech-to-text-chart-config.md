@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 05/05/2020
 ms.author: trbye
-ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 85c4e0641e1989ddea6c8aa8b8a8895a966a5ddb
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608369"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82875991"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Převod řeči na text (dílčí graf: grafy/speechToText)
 
@@ -43,7 +43,7 @@ Chcete-li potlačit graf "zastřešující", přidejte `speechToText.` předponu
 
 #### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Analýza mínění (dílčí graf: grafy/speechToText)
 
-Počínaje verzí v 2.2.0 kontejneru řeči a text se k analýze mínění používá následující parametry pomocí rozhraní API pro analýzu textu.
+Počínaje verzí v 2.2.0 kontejneru převodů textu na text a v 0.2.0 grafu Helm se k analýze mínění používá následující parametry pomocí rozhraní API pro analýzu textu.
 
 |Parametr|Popis|Hodnoty|Výchozí|
 | --- | --- | --- | --- |

@@ -1,24 +1,22 @@
 ---
-title: Podpora komerčního tržiště | Azure Marketplace
-description: Informace o podpoře a odkazy na Azure Marketplace a AppSource
+title: Podpora komerčního tržiště Microsoftu – Azure Marketplace
+description: Informace o podpoře a odkazy na Azure Marketplace a AppSource v partnerském centru
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159911"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871548"
 ---
-# <a name="support-for-the-marketplace"></a>Podpora pro Marketplace
+# <a name="support-for-microsoft-commercial-marketplace"></a>Podpora komerčního tržiště Microsoftu
 
-Tady je seznam možností podpory pro Marketplace.  
-
-Navíc můžete získat spoustu vašich otázek na webu Marketplace v komunitním [fóru C + AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
+Máte dotazy týkající se zahájení práce s vydavatelem komerčního obchodu Microsoft Marketplace? Tady je seznam možností podpory pro komerční tržiště. Kromě následujících zdrojů můžete také získat spoustu vašich otázek na webu Marketplace v komunitním [fóru C + AI](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
 ## <a name="onboarding"></a>Onboarding
 

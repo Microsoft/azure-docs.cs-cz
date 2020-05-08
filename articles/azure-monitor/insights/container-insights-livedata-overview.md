@@ -3,12 +3,12 @@ title: Zobrazit živá data (Preview) s Azure Monitor pro kontejnery | Microsoft
 description: Tento článek popisuje zobrazení Kubernetes protokolů, událostí a metrik v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216540"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872109"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Jak zobrazit protokoly Kubernetes, události a metriky pod v reálném čase
 
@@ -26,7 +26,7 @@ Nápovědu k nastavení funkce živá data (Preview) najdete v naší [příruč
 
 ## <a name="live-data-preview-functionality-overview"></a>Přehled funkcí živých dat (Preview)
 
-### <a name="search"></a>Search
+### <a name="search"></a>Vyhledávání
 
 ![Příklad filtru podokna konzoly živé dat](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
@@ -42,7 +42,7 @@ Chcete-li pozastavit automatické posouvání a ovládat chování podokna, což
 >Při řešení problému doporučujeme pozastavit nebo pozastavit automatické posouvání po krátkou dobu. Tyto požadavky mohou mít vliv na dostupnost a omezování rozhraní Kubernetes API v clusteru. 
 
 >[!IMPORTANT]
->Během operace této funkce nejsou trvale uloženy žádná data. Všechny informace zaznamenané během relace se odstraní, když zavřete prohlížeč nebo z něj opustíte. Data zůstávají jenom pro vizualizaci v pěti minutách okna funkce metriky. odstraní se také všechny metriky starší než pět minut. Dotazy na vyrovnávací paměti dynamických dat (Preview) v rámci rozumného limitu využití paměti (v tomto případě musí být konkrétnější, co je pro vás účelné). 
+>Během operace této funkce nejsou trvale uloženy žádná data. Všechny informace zaznamenané během relace se odstraní, když zavřete prohlížeč nebo z něj opustíte. Data zůstávají jenom pro vizualizaci v pěti minutách okna funkce metriky. odstraní se také všechny metriky starší než pět minut. Dynamická data (Preview) vyrovnávací paměti se dotazují v rozumném limitu využití paměti.
 
 ## <a name="view-logs"></a>Zobrazení protokolů
 

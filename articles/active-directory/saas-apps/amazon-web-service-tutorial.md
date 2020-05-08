@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40fd8217285643aa7d706d194d7f78ba0634dd32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4af0390ab7ef8f84860d1d62fa86b8ec87a42210
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048963"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s Amazon Web Services (AWS)
 
@@ -110,6 +110,18 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 1. Pokud konfigurujete více než jednu instanci, zadejte hodnotu identifikátoru. Od druhé instance a dále použijte následující formát, včetně **#** znaménka k zadání jedinečné hodnoty hlavního názvu služby (SPN).
 
     `https://signin.aws.amazon.com/saml#2`
+
+1. AWS aplikace očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
+
+    ![image](common/default-attributes.png)
+
+1. Kromě toho očekává aplikace AWS několik dalších atributů, které se vrátí zpátky v odpovědi SAML, které jsou uvedené níže. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+    
+    | Name  | Zdrojový atribut  | Obor názvů |
+    | --------------- | --------------- | --------------- |
+    | RoleSessionName | User. userPrincipalName | https://aws.amazon.com/SAML/Attributes |
+    | Role            | User. assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | SessionDuration             | "zadejte hodnotu v rozmezí 900 sekund (15 minut) až 43200 sekund (12 hodin)" |  https://aws.amazon.com/SAML/Attributes |
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** Najděte **XML metadata federace** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do svého počítače.
 

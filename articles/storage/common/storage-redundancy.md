@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4fff7c8865a59b916755a69a98448a1684da229
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853326"
+ms.locfileid: "82872009"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -103,6 +103,18 @@ Geograficky redundantní úložiště (GZRS) kombinuje vysokou dostupnost poskyt
 S účtem úložiště GZRS můžete dál číst a zapisovat data, pokud se zóna dostupnosti stane nedostupnou nebo nejde obnovit. Kromě toho jsou vaše data také odolná v případě kompletního oblasti výpadku nebo havárie, ve které není primární oblast obnovitelné. GZRS je navržený tak, aby poskytoval alespoň 99.99999999999999% (16 9) odolnosti objektů v průběhu daného roku.
 
 GZRS a RA-GZRS podporují jenom účty úložiště pro obecné účely verze 2. Další informace o typech účtů úložiště najdete v tématu [Přehled účtu Azure Storage](storage-account-overview.md). GZRS a RA-GZRS podporují objekty blob bloku, objekty blob stránky (s výjimkou disků VHD), soubory, tabulky a fronty. GZRS a RA-GZRS jsou dostupné ve všech oblastech Azure.
+
+GZRS a RA-GZRS jsou podporovány v následujících oblastech:
+
+- Jihovýchodní Asie
+- Evropa – sever
+- Evropa – západ
+- Japonsko – východ
+- Spojené království – jih
+- USA – střed
+- USA – východ
+- USA – východ 2
+- USA – západ 2
 
 Informace o cenách najdete v podrobnostech o cenách [objektů BLOB](https://azure.microsoft.com/pricing/details/storage/blobs), [souborů](https://azure.microsoft.com/pricing/details/storage/files/), [front](https://azure.microsoft.com/pricing/details/storage/queues/)a [tabulek](https://azure.microsoft.com/pricing/details/storage/tables/).
 

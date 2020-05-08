@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260934"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871257"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak protokolovat události do Azure Event Hubs v Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Event Hubs slouží jako "přední dveře" pro kanál událostí a jakmile se data shromažďují do centra událostí, je možné je transformovat a ukládat pomocí libovolného zprostředkovatele analýz v reálném čase nebo adaptérů pro dávkování/ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -34,9 +34,9 @@ Teď, když máte centrum událostí, je dalším krokem konfigurace [protokolov
 
 API Management protokolovacích nástrojů se konfigurují pomocí [REST API API Management](https://aka.ms/apimapi). Podrobné příklady požadavků najdete v tématu [Vytvoření protokolovacích](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)nástrojů.
 
-## <a name="configure-log-to-eventhubs-policies"></a>Konfigurace zásad přihlášení k eventhubs
+## <a name="configure-log-to-eventhub-policies"></a>Konfigurace zásad přihlášení k protokolu eventhub
 
-Po nakonfigurování protokolovacího nástroje v API Management můžete nakonfigurovat zásady přihlášení k eventhubs, které budou protokolovat požadované události. Zásady log-to-eventhubs se dají použít v oddílu příchozí zásady nebo v části odchozí zásady.
+Po nakonfigurování protokolovacího nástroje v API Management můžete nakonfigurovat zásadu přihlášení k protokolu, aby protokoloval požadované události. Zásady protokolů k protokolu eventhub se dají použít v oddílu příchozí zásady nebo v části odchozí zásady.
 
 1. Přejděte k vaší instanci APIM.
 2. Vyberte kartu Rozhraní API.
@@ -49,15 +49,32 @@ Po nakonfigurování protokolovacího nástroje v API Management můžete nakonf
 9. V okně na pravé straně vyberte Upřesnit protokol **zásad** > **do centra EventHub**. Tím se vloží `log-to-eventhub` šablona prohlášení o zásadách.
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-Nahraďte `logger-id` hodnotou, kterou jste použili `{new logger name}` v adrese URL k vytvoření protokolovacího nástroje v předchozím kroku.
+Nahraďte `logger-id` hodnotou, kterou jste použili `{loggerId}` pro v adrese URL požadavku k vytvoření protokolovacího nástroje v předchozím kroku.
 
-Můžete použít libovolný výraz, který vrátí řetězec jako hodnotu `log-to-eventhub` prvku. V tomto příkladu se protokoluje řetězec obsahující datum a čas, název služby, ID žádosti, IP adresu žádosti a název operace.
+Můžete použít libovolný výraz, který vrátí řetězec jako hodnotu `log-to-eventhub` prvku. V tomto příkladu se protokoluje řetězec ve formátu JSON, který obsahuje datum a čas, název služby, ID žádosti, IP adresu požadavku a název operace.
 
 Kliknutím na **Uložit** uložte aktualizovanou konfiguraci zásad. Jakmile je zásada uložena, je zásada aktivní a události budou protokolovány do určeného centra událostí.
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>Náhled Event Hubs přihlášení pomocí Azure Stream Analytics
+
+Můžete zobrazit náhled Event Hubs přihlášení pomocí [Azure Stream Analytics dotazů](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics). 
+
+1. V Azure Portal přejděte do centra událostí, do kterého protokolovací nástroj odesílá události. 
+2. V části **funkce**vyberte kartu **data procesu** .
+3. Na kartě **Povolit přehledy v reálném čase z událostí** vyberte **prozkoumat**.
+4. Měli byste být schopni zobrazit náhled protokolu na kartě **Náhled vstupu** . Pokud zobrazená data nejsou aktuální, vyberte **aktualizovat** , aby se zobrazily nejnovější události.
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o Azure Event Hubs

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422596"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901264"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -60,10 +60,10 @@ Identifikátor objectId pro aplikace odpovídá přidruženému objektu služby.
 
 Existují dva způsoby, jak získat identifikátor objectId pro aplikaci.  Prvním je registrace aplikace pomocí Azure Active Directory. Pokud to chcete provést, postupujte podle kroků v rychlém startu [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). Po dokončení registrace bude identifikátor objectID uveden jako "aplikace (klienta)".
 
-Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI použijte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) .
+Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI můžete použít příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) a zadat jedinečný název služby pro příznak-n ve formátu http://<moje jedinečný název-služba-zásady>.
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 Identifikátor objectId bude uveden ve výstupu jako `clientID`.
@@ -72,7 +72,7 @@ Pomocí Azure PowerShell použijte rutinu [New-AzADServicePrincipal](/powershell
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 Identifikátor objectId bude uveden ve výstupu jako `Id` (ne `ApplicationId`).

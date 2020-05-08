@@ -13,16 +13,16 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154589"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889992"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Nové prostředí pro registraci aplikací Azure Portal
 
-Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal přináší mnoho vylepšení. Pokud jste obeznámeni s prostředím portál pro registraci aplikací (apps.dev.microsoft.com) pro registraci nebo správu sblížených aplikací, které se označují jako staré, pomůže vám tato výuková příručka začít používat nové prostředí.
+Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) v Azure Portal přináší mnoho vylepšení. Pokud znáte portál pro registraci aplikací (apps.dev.microsoft.com) pro registraci nebo správu aplikací, které se tady označují jako "staré prostředí", tato příručka vám pomůže začít používat nové prostředí.
 
 ## <a name="whats-not-changing"></a>Co se nemění?
 
@@ -37,7 +37,7 @@ Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid
 
 ## <a name="key-changes"></a>Změny klíčů
 
--   Ve starém prostředí byly aplikace ve výchozím nastavení registrované jako sblížené aplikace, které podporují všechny účty organizace (víceklientské) a také osobní účty Microsoft. Tato možnost se nedá změnit starým prostředím, takže je obtížné vytvářet aplikace, které podporují jenom účty organizace (ve víceklientské nebo jediném tenantovi).
+-   Ve starém prostředí byly aplikace standardně registrované jako *sblížené* aplikace – aplikace, které podporují všechny účty organizace (víceklientské) a také osobní účty Microsoft. Tato možnost se nedá změnit starým prostředím, takže je obtížné vytvářet aplikace, které podporují jenom účty organizace (ve víceklientské nebo jediném tenantovi).
     Nové prostředí umožňuje registrovat aplikace podporující všechny tyto možnosti. [Přečtěte si další informace o typech aplikací](active-directory-v2-registration-portal.md).
 
 -   Pokud je vaše osobní účet Microsoft také v tenantovi služby Azure AD, zobrazí se v novém prostředí tři karty – všechny aplikace v tenantovi, vlastněné aplikace v tenantovi i aplikace z vašeho osobního účtu. Pokud se tedy domníváte, že aplikace zaregistrované ve vašich osobních účet Microsoft chybí, podívejte se na kartu **aplikace na osobním účtu** .
@@ -52,28 +52,23 @@ Nové prostředí [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid
 
 ## <a name="new-app-registration"></a>Registrace nové aplikace
 
-Ve starém prostředí se k registraci sblížené aplikace, kterou jste zadali jenom jako název, vyžaduje. Vytvořené aplikace byly zaregistrovány jako sblížené aplikace, které podporují všechny adresáře organizace (víceklientské) a také osobní účty Microsoft.  Tato možnost se nedá změnit starým prostředím, takže je obtížné vytvářet aplikace, které podporují jenom účty organizace (ve víceklientské nebo jediném tenantovi). [Další informace o podporovaných typech účtů](v2-supported-account-types.md)
+Ve starém prostředí můžete zaregistrovat aplikaci, kterou jste zadali jenom k zadání názvu. Vytvořené aplikace byly zaregistrované jako *sblížené* aplikace – aplikace podporující všechny adresáře organizace (víceklientské) a také osobní účty Microsoft.  Tato možnost se nedá změnit starým prostředím, takže je obtížné vytvářet aplikace, které podporují jenom účty organizace (jeden nebo víc tenantů). [Další informace o podporovaných typech účtů](v2-supported-account-types.md)
 
 V novém prostředí musíte zadat název aplikace a vybrat podporované typy účtů. Volitelně můžete zadat identifikátor URI pro přesměrování.
 Pokud zadáte identifikátor URI pro přesměrování, budete muset určit, jestli je to Web/Public (nativní/mobilní a Desktop). Další informace o tom, jak zaregistrovat aplikaci s využitím nových možností registrace aplikací, najdete v [tomto rychlém](quickstart-register-app.md)startu.
 
 ## <a name="app-management-page"></a>Stránka správy aplikací
 
-Původní prostředí obsahovalo jednu stránku správy aplikací pro sblížené aplikace s následujícími oddíly: vlastnosti, tajné klíče aplikace, platformy, vlastníci, Microsoft Graph oprávnění, profil a rozšířené možnosti.
+Původní prostředí obsahovalo jednu stránku správy aplikací pro aplikace s následujícími oddíly: vlastnosti, tajné klíče aplikace, platformy, vlastníci, Microsoft Graph oprávnění, profil a rozšířené možnosti.
 
-Nové prostředí v Azure Portal představuje tyto funkce na samostatných stránkách. Můžete najít ekvivalentní funkce:
+Nové prostředí v Azure Portal prezentuje tyto funkce na samostatných stránkách. Můžete najít ekvivalentní funkce:
 
--   Vlastnosti – název a ID aplikace se nachází na stránce Přehled.
-
--   Tajné klíče aplikace se nachází na stránce certifikáty & tajných kódů
-
--   Konfigurace platforem na stránce ověřování
-
--   Oprávnění Microsoft Graph se nachází na stránce oprávnění rozhraní API spolu s dalšími oprávněními.
-
--   Profil je na stránce brandingu.
-
--   Rozšířená možnost – Podpora sady Live SDK je na stránce ověřování.
+- Vlastnosti – název a ID aplikace se nachází na stránce Přehled.
+- Tajné klíče aplikace se nachází na stránce certifikáty & tajných kódů
+- Konfigurace platforem na stránce ověřování
+- Oprávnění Microsoft Graph se nachází na stránce oprávnění rozhraní API spolu s dalšími oprávněními.
+- Profil je na stránce brandingu.
+- Rozšířená možnost – Podpora sady Live SDK je na stránce ověřování.
 
 ## <a name="application-secretscertificates--secrets"></a>Tajné klíče aplikace/certifikáty & tajné klíče
 
@@ -111,7 +106,7 @@ K dispozici je nové uživatelské rozhraní pro vlastnosti, které se dřív da
 
 -   Obory definované tímto rozhraním API (oauth2Permissions) a autorizované klientské aplikace (preAuthorizedApplications) je možné konfigurovat prostřednictvím stránky vystavení rozhraní API. Další informace o tom, jak nakonfigurovat aplikaci jako webové rozhraní API a jak zveřejnit oprávnění nebo obory, najdete v [tomto rychlém](quickstart-configure-app-expose-web-apis.md)startu.
 
--   Doména vydavatele (která se uživatelům zobrazí v okně [s výzvou\'k vyjádření souhlasu s aplikací](application-consent-experience.md)) najdete na stránce s informacemi o značce. Další informace o tom, jak nakonfigurovat doménu vydavatele, najdete v [tomto postupu](howto-configure-publisher-domain.md).
+-   Doména vydavatele (která se zobrazí uživatelům v [příkazovém řádku s\'informacemi o souhlasu s aplikací](application-consent-experience.md)), najdete na stránce branding. Další informace o tom, jak nakonfigurovat doménu vydavatele, najdete v [tomto postupu](howto-configure-publisher-domain.md).
 
 ## <a name="limitations"></a>Omezení
 
@@ -125,3 +120,7 @@ Nové prostředí má následující omezení:
 
    > [!NOTE]
    > Pokud jste osobní účet Microsoft uživatele v tenantovi Azure AD a správce tenanta má omezený přístup k Azure Portal, můžete získat přístup odepřený. Pokud však provedete zástupcem zadáním Registrace aplikací na panelu hledání nebo připnete ho, budete mít přístup k novému prostředí.
+
+## <a name="next-steps"></a>Další kroky
+
+Pokud chcete začít s novým prostředím pro registraci aplikací, přečtěte si téma [rychlý Start: registrace aplikace s platformou Microsoft Identity](quickstart-register-app.md).

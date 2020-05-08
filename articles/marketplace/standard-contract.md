@@ -1,22 +1,22 @@
 ---
-title: Smlouva Standard | Azure Marketplace
-description: Smlouva standard pro Azure Marketplace a AppSource
+title: Smlouva standard pro komerční tržiště Microsoftu
+description: Smlouva standard pro Azure Marketplace a AppSource v partnerském centru
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681451"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871430"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Smlouva standard pro komerční tržiště Microsoftu
 
-Pro zjednodušení procesu nákupu pro zákazníky a omezení právní složitosti pro dodavatele softwaru nabízí společnost Microsoft standardní smlouvu pro komerční tržiště Microsoftu, která usnadňuje transakce na webu Marketplace. Místo toho, aby si mohli vlastní podmínky a ujednání, můžou si komerční vydavatelé na webu Marketplace vybrat svůj software v rámci standardní smlouvy, kteří zákazníci potřebují Vet a přijmout jenom jednou. Standardní kontrakt najdete tady: [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178).
+Microsoft nabízí standardní smlouvu pro komerční tržiště Microsoftu. To pomáhá zjednodušit proces nákupu pro zákazníky, snížit právní složitost pro dodavatele softwaru a usnadnit transakce na webu Marketplace. Místo toho, abyste mohli vlastní podmínky a ujednání, jako vydavatel komerčního tržiště, si můžete vybrat, abyste si software nabídli v rámci [standardní smlouvy](https://go.microsoft.com/fwlink/?linkid=2041178), které zákazníci potřebují Vet a přijímat jenom jednou.
 
 Podmínky a ujednání pro nabídku jsou definovány při vytváření nabídky v partnerském centru. Místo poskytování vlastních podmínek a ujednání můžete zvolit, že se má používat standardní smlouva pro komerční tržiště Microsoftu.
 
@@ -40,7 +40,7 @@ Standardní smlouvu na komerční tržišti společnosti Microsoft můžete vyu�
 
 ## <a name="customer-experience"></a>Prostředí pro zákazníky
 
-Během zjišťování na Azure Marketplace nebo AppSource budou zákazníci moci zobrazit podmínky spojené s nabídkou jako standardní smlouvu pro komerční tržiště Microsoftu a všechny univerzální změny.
+Během zjišťování v Azure Marketplace nebo AppSource budou zákazníci moci zobrazit podmínky spojené s nabídkou jako standardní smlouvu pro komerční tržiště Microsoftu a všechny univerzální změny.
 
 ![Azure Portal možnosti zjišťování zákazníků.](media/marketplace-publishers-guide/azure-discovery-process.png)
 

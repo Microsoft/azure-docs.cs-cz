@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509512"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872416"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojte se k Azure IoT Central
 
@@ -95,6 +95,14 @@ Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdř
 
 Vygenerujte na svých zařízeních listový certifikát X. 509 pomocí nahraného kořenového nebo zprostředkujícího certifikátu. Jako `CNAME` hodnotu v listových certifikátech použijte **ID zařízení** . Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
 
+#### <a name="sample-device-code"></a>Ukázkový kód zařízení
+
+Následující ukázka v [sadě Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ukazuje, jakým způsobem klient zařízení Node. js používá pro registraci v aplikaci IoT Central listový certifikát X. 509 a DPS:
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+Ekvivalentní ukázku jazyka C najdete v tématu [prov_dev_client_sample. C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) v [sadě SDK pro zřizování zařízení Azure IoT c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md).
+
 ### <a name="for-testing-purposes-only"></a>Pouze pro účely testování
 
 Pro účely testování můžete pomocí následujících nástrojů generovat certifikáty root, zprostředkujícího a zařízení:
@@ -106,11 +114,6 @@ Pro účely testování můžete pomocí následujících nástrojů generovat c
   - Uložte certifikáty jako soubory. cer a nahrajte je do vaší aplikace IoT Central.
   - K vygenerování ověřovacího certifikátu použijte ověřovací kód z aplikace IoT Central.
   - Vytvořte listové certifikáty pro vaše zařízení pomocí ID zařízení jako parametru nástroje.
-
-### <a name="further-reference"></a>Další reference
-
-- [Ukázková implementace pro RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Ukázkový klient zařízení v jazyce C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Připojit bez registrace zařízení
 

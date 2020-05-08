@@ -2,7 +2,7 @@
 title: Přizpůsobení úloh analýzy kódu zabezpečení společnosti Microsoft
 titleSuffix: Azure
 description: Tento článek popisuje přizpůsobení úloh v rozšíření Microsoft Security Code Analysis.
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499987"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871895"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurace a přizpůsobení úloh sestavení
 
@@ -82,7 +82,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 
 Další informace o argumentech příkazového řádku BinSkim, pravidlech podle ID nebo ukončovacích kódech najdete v [uživatelské příručce k BinSkim](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech BinSkime YAML](yaml-configuration.md#binskim-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech BINSKIM YAML](yaml-configuration.md#binskim-task) .
 
 ## <a name="credential-scanner-task"></a>Úloha pro kontrolu přihlašovacích údajů
 
@@ -91,7 +91,8 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 ![Konfigurace úlohy sestavení pro kontrolu přihlašovacích údajů](./media/security-tools/3-taskdetails.png)
 
 Mezi dostupné možnosti patří:
-
+  - **Zobrazovaný název**: název úlohy Azure DevOps. Výchozí hodnota je spustit skener přihlašovacích údajů
+  - **Hlavní verze nástroje**: dostupné hodnoty zahrnují **CredScan v2**, **CredScan v1**. Doporučujeme, aby zákazníci používali verzi **CredScan v2** .
   - **Výstupní formát**: dostupné hodnoty zahrnují **TSV**, **CSV**, **SARIF**a **Fast**.
   - **Verze nástroje**: Doporučujeme vybrat možnost **nejnovější**.
   - **Složka pro skenování**: složka úložiště, která se má zkontrolovat.
@@ -105,7 +106,7 @@ Mezi dostupné možnosti patří:
   - **Možnosti ovládacích prvků** > **spouštějící tuto úlohu**: Určuje, kdy se úloha spustí. Pokud chcete zadat složitější podmínky, vyberte **vlastní podmínky** .
   - **Version (verze**): verze úlohy buildu v rámci služby Azure DevOps. Tato možnost se často nepoužívá.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech YAML pro kontrolu přihlašovacích údajů](yaml-configuration.md#credential-scanner-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [přihlašovacích údajích k YAML možností skeneru přihlašovacích údajů](yaml-configuration.md#credential-scanner-task) .
 
 ## <a name="microsoft-security-risk-detection-task"></a>Úloha zjišťování rizik zabezpečení společnosti Microsoft
 
@@ -135,7 +136,7 @@ Podrobnosti o konfiguraci této úlohy jsou uvedené v následujícím seznamu. 
        - **Testovací ovladač lze přejmenovat**: zaškrtněte toto políčko, pokud se spustitelný soubor testovacího ovladače dá přejmenovat a pořád funguje správně.
        - **Fuzzy aplikace běží jako jeden proces operačního systému**: Toto políčko zaškrtněte, pokud testovací ovladač běží v rámci jednoho procesu operačního systému. Pokud testovací ovladač setrvá další procesy, vymažte ho.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v [možnostech YAML zjišťování rizik zabezpečení Microsoftu](yaml-configuration.md#microsoft-security-risk-detection-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našem [YAML možností zjišťování rizik zabezpečení Microsoftu](yaml-configuration.md#microsoft-security-risk-detection-task) .
 
 ## <a name="roslyn-analyzers-task"></a>Úloha analyzátorů Roslyn
 
@@ -172,7 +173,7 @@ Další zdroje pro úlohu analyzátorů Roslyn najdete v [části analyzátory z
 
 Balíček analyzátoru nainstalovaný a používaný touto úlohou sestavení můžete najít na stránce NuGet [Microsoft. CodeAnalysis. FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech YAML analyzátorů Roslyn](yaml-configuration.md#roslyn-analyzers-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech Roslyn Analyzer YAML](yaml-configuration.md#roslyn-analyzers-task) .
 
 ## <a name="tslint-task"></a>TSLint – úloha
 
@@ -181,7 +182,7 @@ Další informace o TSLint najdete v [úložišti GitHub TSLint](https://github.
 >[!NOTE] 
 >Jak si můžete být vědomi, Domovská stránka [úložiště GitHub TSLint](https://github.com/palantir/tslint) říká, že TSLint bude v průběhu 2019 zastaralá. Microsoft zkoumá [ESLint](https://github.com/eslint/eslint) jako alternativní úkol.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech TSLinte YAML](yaml-configuration.md#tslint-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech TSLINT YAML](yaml-configuration.md#tslint-task) .
 
 ## <a name="publish-security-analysis-logs-task"></a>Úloha publikování protokolů analýzy zabezpečení
 
@@ -193,7 +194,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 - **Typ artefaktu**: v závislosti na vašem výběru můžete protokoly publikovat do Azure DevOps Server nebo do sdíleného souboru, který je přístupný agentovi sestavení.
 - **Nástroje**: můžete si vybrat, že zachováte protokoly pro konkrétní nástroje, nebo můžete vybrat **všechny nástroje** pro zachování všech protokolů.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v [možnostech publikování v protokolech zabezpečení publikování YAML](yaml-configuration.md#publish-security-analysis-logs-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech publikování protokolů zabezpečení YAML](yaml-configuration.md#publish-security-analysis-logs-task) .
 
 ## <a name="security-report-task"></a>Úloha sestavy zabezpečení
 
@@ -206,7 +207,7 @@ Podrobnosti o konfiguraci sestavy zabezpečení jsou uvedeny na následujícím 
 - **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
 - **Základní složka protokolů**: můžete přizpůsobit složku základních protokolů, kde budou nalezeny protokoly. Tato možnost se obvykle nepoužívá.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech YAMLe sestavy zabezpečení](yaml-configuration.md#security-report-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v naší [YAML možnosti sestavy zabezpečení](yaml-configuration.md#security-report-task) .
 
 ## <a name="post-analysis-task"></a>Úkol po analýze
 
@@ -218,7 +219,7 @@ Podrobnosti o konfiguraci úlohy jsou uvedené na následujícím snímku obrazo
 - **Sestava**: Volitelně můžete napsat výsledky, které způsobují přerušení sestavení. Výsledky se zapisují do okna konzoly Azure DevOps a do souboru protokolu.
 - **Rozšířené možnosti**: Pokud pro jeden z vybraných nástrojů neexistují žádné protokoly, můžete si vybrat, jestli se má zaznamenat upozornění nebo chyba. Pokud dojde k chybě, úloha se nezdařila.
 
-Informace o konfiguraci YAML pro tuto úlohu najdete v našich možnostech pro [YAML po analýze](yaml-configuration.md#post-analysis-task) .
+Informace o konfiguraci YAML pro tuto úlohu najdete v našich [možnostech YAML po analýze](yaml-configuration.md#post-analysis-task) .
 
 ## <a name="next-steps"></a>Další kroky
 

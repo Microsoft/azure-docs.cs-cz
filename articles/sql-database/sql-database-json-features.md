@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
-ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 968da0154f5a2587531e7594956a069f11c110d2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687761"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890964"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Začínáme s funkcemi JSON v Azure SQL Database
 Azure SQL Database umožňuje analyzovat a dotazovat data reprezentovaná ve formátu JavaScript Object Notation [(JSON)](https://www.json.org/) a exportovat relační data jako text JSON. V Azure SQL Database jsou k dispozici následující scénáře JSON:
@@ -192,5 +192,5 @@ Informace o tom, jak do své aplikace integrovat JSON, najdete v těchto zdrojí
 * [Dokumentace MSDN](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Video pro kanál 9](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 
-Další informace o různých scénářích pro integraci formátu JSON do vaší aplikace najdete v ukázkách v tomto [videu kanálu 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo v článku Najděte scénář, který odpovídá případu použití v [příspěvcích blogu JSON](https://blogs.msdn.com/b/sqlserverstorageengine/archive/tags/json/).
+Další informace o různých scénářích pro integraci formátu JSON do vaší aplikace najdete v ukázkách v tomto [videu kanálu 9](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/JSON-as-a-bridge-betwen-NoSQL-and-relational-worlds) nebo v článku Najděte scénář, který odpovídá případu použití v [příspěvcích blogu JSON](https://docs.microsoft.com/archive/blogs/sqlserverstorageengine/json-in-sql-server-use-cases).
 

@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
-ms.date: 03/05/2020
-ms.openlocfilehash: e0482bac9569a834adf3e1cdef2b3f702980eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 05/07/2020
+ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78328659"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891352"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
 
@@ -40,7 +40,35 @@ Machine Learning Designer poskytuje komplexní portfolio algoritmů, jako je nap
 
 Spolu s pokyny Azure Machine Learning v listu tahák Algorithm si pamatujte na jiné požadavky při výběru algoritmu strojového učení pro vaše řešení. Níže jsou uvedené další faktory, které je potřeba vzít v úvahu, jako je přesnost, doba školení, linearita, počet parametrů a počet funkcí.
 
-## <a name="additional-requirements-for-a-data-science-scenario"></a>Další požadavky na scénář pro datové vědy
+## <a name="comparison-of-machine-learning-algorithms"></a>Porovnání algoritmů strojového učení
+
+Některé výukové algoritmy vedou konkrétní předpoklady ke struktuře dat nebo k požadovaným výsledkům. Pokud zjistíte, které vyhovuje vašim potřebám, může vám dodávat užitečnější výsledky, přesnější předpovědi nebo rychlejší školicí časy.
+
+Následující tabulka shrnuje některé nejdůležitější charakteristiky algoritmů ze skupin klasifikace, regrese a clusteringu:
+
+| **Algoritmus** | **Údajů** | **Doba trénování** | **Linearita** | **Parametry** | **Poznámky** |
+| --- |:---:|:---:|:---:|:---:| --- |
+| **Rodina klasifikace** | | | | | |
+| [Logistická regrese dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré  |Světl |Ano |4 | |
+| [Rozhodovací doménová struktura se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |No |5 |Zobrazuje pomalejší časy vyhodnocování. Navrhněte, že nepracuje s 1-versus-all Multiclass z důvodu pomalejších časů bodování způsobených uzamykáním běhounů při hromadění předpovědi stromu. |
+| [Zvýšení rozhodovacího stromu se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |No |6 |Velké nároky na paměť |
+| [Neuronové síť se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Střední |No |8 | |
+| [Průměrná hodnota Perceptron se dvěma třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Dobré |Střední |Ano |4 | |
+| [Vektorový počítač podpory dvou tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Dobré |Světl |Ano |5 |Vhodné pro velké sady funkcí |
+| [Mikrotřída logistické regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Světl |Ano |4 | |
+| [Více tříd – rozhodovací doménová struktura](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |No |5 |Zobrazuje pomalejší časy vyhodnocování. |
+| [Více tříd pro rozhodovací strom s více třídami](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |No |6 | Má za následek zlepšení přesnosti s malým rizikem méně pokrytí |
+| [Neuronové síť pro více tříd](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Dobré |Střední |No |8 | |
+| [Jedna a více tříd – All](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Zobrazí vlastnosti vybrané metody dvě třídy. |
+| **Řada regrese** | | | | | |
+| [Lineární regrese](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Světl |Ano |4 | |
+| [Regrese rozhodovací doménové struktury](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Vynikající |Střední |No |5 | |
+| [Zvýšila se regrese rozhodovacího stromu.](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |No |6 |Velké nároky na paměť |
+| [Regrese sítě neuronové](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Dobré |Střední |No |8 | |
+| **Řada clusteringu** | | | | | |
+| [K-znamená clustering](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Vynikající |Střední |Ano |8 |Algoritmus clusteringu |
+
+## <a name="requirements-for-a-data-science-scenario"></a>Požadavky na scénář pro datové vědy
 
 Jakmile víte, co chcete s daty udělat, musíte určit další požadavky pro vaše řešení. 
 
@@ -117,7 +145,6 @@ Velký počet funkcí může zpomalitovat některé algoritmy učení, takže š
 Výběr funkcí odkazuje na proces použití statistických testů na vstupy v zadaném výstupu. Cílem je určit, které sloupce mají více prediktivní výstup. [Modul výběru funkce založený na filtrech](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/filter-based-feature-selection?WT.mc_id=docs-article-lazzeri) v Návrháři Machine Learning poskytuje několik algoritmů výběru funkcí, ze kterých si můžete vybrat. Modul zahrnuje metody korelace, jako je korelace Pearsonova a hodnoty chí-kvadrát.
 
 Můžete také použít [modul důležitost funkcí permutace](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/permutation-feature-importance?WT.mc_id=docs-article-lazzeri) k výpočtu sady výsledků důležitosti funkce pro datovou sadu. Pak můžete využít tyto výsledky, abyste mohli určit nejlepší funkce pro použití v modelu.
-
 
 ## <a name="next-steps"></a>Další kroky
 

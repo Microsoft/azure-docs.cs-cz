@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: aa7cbd9b213d35becd65d9335312c0468760d655
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73606153"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872048"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Co jsou otevřené datové sady Azure a jak je můžete použít?
 
@@ -24,6 +24,8 @@ Datové sady zahrnují data z veřejných domén pro počasí, sčítání, svá
 
 ## <a name="curated-prepared-datasets"></a>Zpracované, připravené datové sady
 Spravované otevřené veřejné datové sady v Azure Open DataSets jsou optimalizované pro využití v pracovních postupech služby Machine Learning. 
+
+Všechny datové sady, které jsou k dispozici, zobrazíte tak, že přejdete do [katalogu Open DataSets v Azure](https://azure.microsoft.com/services/open-datasets/catalog/).
 
 Odborníci přes data často tráví většinu času, který čistí a připravují data pro pokročilé analýzy. Otevřené datové sady se zkopírují do cloudu Azure a předzpracované za účelem úspory času. V pravidelných intervalech jsou data načítána ze zdrojů, například prostřednictvím připojení FTP k národním oceán a správě atmosféry (NOAA). V dalším kroku se data analyzují do strukturovaného formátu a pak se rozšiřují podle potřeby s funkcemi, jako je například PSČ nebo umístění nejbližších povětrnostních stanic.
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756262"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901504"
 ---
 # <a name="service-bus-management-libraries"></a>Knihovny pro správu služby Service Bus
 
@@ -40,7 +40,7 @@ Pokud chcete začít používat Service Bus knihovny pro správu, musíte se ov�
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure PowerShellu](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [Vytvoření instančního objektu pro přístup k prostředkům pomocí Azure CLI](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId`a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít oprávnění **vlastníka** .
+Tyto kurzy vám poskytnou `AppId` (ID klienta), `TenantId`a `ClientSecret` (ověřovací klíč), které se používají k ověřování pomocí knihoven pro správu. Pro skupinu prostředků, na které chcete spustit, musíte mít minimálně [**Azure Service Bus oprávnění vlastníka dat**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner) nebo [**přispěvatele**](/azure/role-based-access-control/built-in-roles#contributor) .
 
 ## <a name="programming-pattern"></a>Programovací model
 

@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292488"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871505"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Nastavení zotavení po havárii pro virtuální počítače Azure
 
@@ -170,8 +170,8 @@ Pokud má zdrojový virtuální počítač povolenou službu Azure Disk Encrypti
    1. **Trezory klíčů šifrovacího**klíče: ve výchozím nastavení Site Recovery vytvoří nový trezor klíčů v cílové oblasti. Název má `asr` příponu a je založen na šifrovacích klíčích klíče zdrojového virtuálního počítače. Pokud Trezor klíčů vytvořený pomocí Site Recovery již existuje, bude znovu použit.
 1. Vyberte **přizpůsobit** a vyberte vlastní trezory klíčů.
 
-> [!NOTE]
-> Služba Azure Site Recovery aktuálně podporuje jenom virtuální počítače Azure s operačními systémy Windows a [povolené pro šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) .
+>[!NOTE]
+> Site Recovery v současné době podporuje ADE s a bez Azure Active Directory (AAD) pro virtuální počítače s operačními systémy Windows. Pro operační systémy Linux podporujeme pouze ADE bez AAD. Pro počítače s ADE 1,1 (bez AAD) Navíc musí virtuální počítače používat spravované disky. Virtuální počítače s nespravovanými disky se nepodporují. Pokud přepnete z ADE 0,1 (s AAD) na 1,1, budete muset po povolení 1,1 zakázat replikaci a povolit replikaci pro virtuální počítač.
 
 ### <a name="track-replication-status"></a>Sledování stavu replikace
 

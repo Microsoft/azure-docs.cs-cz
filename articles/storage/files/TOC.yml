@@ -35,6 +35,10 @@
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Snímky sdílených složek Azure
       href: storage-snapshots-files.md
+    - name: Data redundancy
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Zotavení po havárii a převzetí služeb při selhání
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Škálovatelnost a cíle výkonnosti
       href: storage-files-scale-targets.md
     - name: Autorizace a ověřování na základě identit
@@ -114,10 +118,18 @@
           href: storage-sync-files-server-endpoint.md
         - name: Správa úložiště v nezávislých cloudech Azure
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Změna způsobu replikace dat
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Zahájení převzetí služeb při selhání účtu
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Správa redundance dat
+          items:
+            - name: Změna způsobu replikace dat
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Návrh aplikací s vysokou dostupností
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Správa zotavení po havárii
+          items:
+            - name: Kontrola vlastnosti Čas poslední synchronizace
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Zahájení převzetí služeb při selhání účtu
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Monitorování
       items:
         - name: Sledování služby Synchronizace souborů Azure
@@ -188,8 +200,6 @@
           href: storage-sync-files-troubleshoot.md
         - name: Řešení potíží s odstraňováním služby Azure Files
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
-        - name: Obnovení odstraněného účtu úložiště
-          href: storage-how-to-recover-deleted-account.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell (Storage)

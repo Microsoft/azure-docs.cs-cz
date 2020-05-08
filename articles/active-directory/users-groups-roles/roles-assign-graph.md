@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3632f8a360df8837569104232b7380fdc8383953
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c93c8e354c7c02c6a085c2baa8fd664faaf1f64
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559143"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582628"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Přiřaďte vlastní role správců pomocí rozhraní Microsoft Graph API v Azure Active Directory 
 
@@ -26,7 +26,7 @@ Můžete automatizovat způsob přiřazování rolí uživatelským účtům pom
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Připojte se k tenantovi Azure AD pomocí účtu globálního správce nebo správce privilegovaných identit k přiřazení nebo odebrání rolí.
+Připojte se ke svojí organizaci Azure AD pomocí účtu globálního správce nebo správce privilegovaných identit k přiřazení nebo odebrání rolí.
 
 ## <a name="post-operations-on-roleassignment"></a>Operace POST na RoleAssignment
 

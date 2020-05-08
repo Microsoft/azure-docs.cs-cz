@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037628"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872623"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +82,7 @@ Modul může obsahovat sadu parametrů, pomocí kterých je možné konfigurovat
 
 ![Vlastnosti modulu](./media/concept-designer/properties.png)
 
-Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](algorithm-module-reference/module-reference.md) .
+Další nápovědu k dispozici v knihovně strojového učení, najdete v tématu [Přehled modulu & algoritmu](algorithm-module-reference/module-reference.md). Nápovědu k výběru algoritmu najdete v [tahákm listu s algoritmem Azure Machine Learning](algorithm-cheat-sheet.md).
 
 ## <a name="compute-resources"></a><a name="compute"></a>Výpočetní prostředky
 
@@ -91,9 +91,10 @@ Pomocí výpočetních prostředků z pracovního prostoru můžete spustit kan�
 | Cílový výpočetní objekt | Školení | Nasazení |
 | ---- |:----:|:----:|
 | Azure Machine Learning COMPUTE | ✓ | |
+| Azure Machine Learning výpočetní instance | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studio (Classic)](https://ml.azure.com).
+Cíle výpočetní služby jsou připojeny k vašemu [pracovnímu prostoru Azure Machine Learning](concept-workspace.md). Výpočetní cíle můžete spravovat ve vašem pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
 ## <a name="deploy"></a>Nasazení
 

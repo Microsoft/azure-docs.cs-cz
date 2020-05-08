@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158443"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871940"
 ---
 # <a name="configure-rules"></a>Konfigurace pravidel
-
-
 
 *Tento článek je pro operátory, tvůrce a správce.*
 
@@ -36,6 +34,12 @@ Podmínky určují, na čem se pravidla spouštějí. Když v současné době p
 Na následujícím snímku obrazovky se podmínky kontrolují, když je teplota větší než 70&deg; F a vlhkost je menší než 10. Pokud jsou oba tyto příkazy pravdivé, pravidlo se vyhodnotí jako true a aktivuje akci.
 
 ![Podmínky](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>Použití vlastnosti Cloud v poli hodnota
+
+Můžete odkazovat na vlastnost cloudu ze šablony zařízení v poli **hodnota** pro podmínku. Vlastnost cloudu a hodnota telemetrie musí mít podobné typy. Například pokud je **teplota** dvojitá, pak se jako možnosti v rozevíracím seznamu **hodnota** zobrazí jenom vlastnosti cloudu typu Double.
+
+Pokud zvolíte hodnotu telemetrie typ události, rozevírací seznam **hodnota** obsahuje možnost **Any**. Možnost **Any** znamená, že se pravidlo aktivuje, když vaše aplikace obdrží událost daného typu bez ohledu na datovou část.
 
 ## <a name="use-aggregate-windowing"></a>Použít agregované okno
 

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610798"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872333"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -304,8 +304,8 @@ Pokud chcete zobrazit prostředek deploymentScripts na portálu, vyberte **Zobra
 
 K provádění skriptů a odstraňování potíží je potřeba účet úložiště a instance kontejneru. Máte možnost zadat existující účet úložiště, jinak se služba skriptu automaticky vytvoří účet úložiště spolu s instancí kontejneru. Požadavky na používání existujícího účtu úložiště:
 
-- Podporované druhy účtů úložiště jsou: účty pro obecné účely v2, účty pro obecné účely V1 a účty úložiště. Další informace najdete v tématu [typy účtů úložiště](../../storage/common/storage-account-overview.md).
-- Pravidla firewallu účtu úložiště musí být vypnutá. Viz [Konfigurace bran firewall Azure Storage a virtuální sítě](../../storage/common/storage-network-security.md) .
+- Podporované druhy účtů úložiště jsou: obecné účely v2, obecné účely V1 a účty úložiště. SKU úrovně Premium podporuje jenom úložiště. Další informace najdete v tématu [typy účtů úložiště](../../storage/common/storage-account-overview.md).
+- Pravidla brány firewall účtu úložiště ještě nejsou podporovaná. Další informace najdete v tématu [Konfigurace virtuálních sítí a bran firewall Azure Storage](../../storage/common/storage-network-security.md).
 - Spravovaná identita přiřazená uživatelem skriptu pro nasazení musí mít oprávnění ke správě účtu úložiště, který zahrnuje čtení, vytváření a odstraňování sdílených složek.
 
 Chcete-li zadat existující účet úložiště, přidejte následující JSON do elementu Property elementu `Microsoft.Resources/deploymentScripts`:
@@ -316,6 +316,16 @@ Chcete-li zadat existující účet úložiště, přidejte následující JSON 
   "storageAccountKey": "myKey"
 },
 ```
+
+- **storageAccountName**: zadejte název účtu úložiště.
+- **storageAccountKey "**: zadejte jeden z klíčů účtu úložiště. K načtení klíče lze [`listKeys()`](./template-functions-resource.md#listkeys) použít funkci. Příklad:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
 
 Kompletní `Microsoft.Resources/deploymentScripts` ukázku definice najdete v tématu [ukázkové šablony](#sample-templates) .
 
@@ -336,7 +346,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 - **retentionInterval**: zadejte časový interval, po který se zachová prostředek skriptu, a potom vyprší platnost a odstraní se.
 
 > [!NOTE]
-> Pro jiné účely se nedoporučuje používat prostředky skriptu nasazení.
+> Pro jiné účely se nedoporučuje používat účet úložiště a instanci kontejneru vygenerované službou skriptu. Tyto dva prostředky mohou být odstraněny v závislosti na životním cyklu skriptu.
 
 ## <a name="run-script-more-than-once"></a>Spustit skript více než jednou
 

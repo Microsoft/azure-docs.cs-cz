@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536883"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883328"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Změna podpory kanálu v Azure Blob Storage (Preview)
 
@@ -61,17 +61,17 @@ Při povolování kanálu změn je potřeba mít na paměti několik věcí.
 
 Povolte na svém účtu úložiště změnu kanálu pomocí Azure Portal:
 
-1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště. 
+1. V [Azure Portal](https://portal.azure.com/)vyberte svůj účet úložiště.
 
 2. Přejděte do možnosti **Ochrana dat** v části **BLOB Service**.
 
-3. Klikněte na **Povolit** v části **objekt pro změny objektů BLOB** .
+3. Klikněte na možnost **povoleno** v části **objekt pro změnu datového kanálu**.
 
-4. Kliknutím na tlačítko **Uložit** potvrďte nastavení ochrany dat.
+4. Klikněte na tlačítko **Uložit** a potvrďte nastavení **ochrany dat** .
 
-![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
+    ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
-### <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Povolit kanál změn pomocí prostředí PowerShell:
 

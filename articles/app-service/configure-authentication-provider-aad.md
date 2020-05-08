@@ -4,13 +4,13 @@ description: Naučte se nakonfigurovat Azure Active Directory ověřování jako
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 913aac7755e6c4f9a4b42d45933728fcc8840bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190006"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609897"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurace App Service nebo Azure Functions aplikace pro použití přihlášení Azure AD
 
@@ -33,7 +33,7 @@ Při nastavování aplikace a ověřování použijte tyto osvědčené postupy:
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurace pomocí expresního nastavení
 
 > [!NOTE]
-> Možnost **Express** není pro cloudy státní správy k dispozici. 
+> Možnost **Express** není pro cloudy státní správy k dispozici.
 
 1. V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci.
 2. V levém navigačním panelu vyberte **ověřování/autorizace** > **na**.
@@ -45,9 +45,9 @@ Při nastavování aplikace a ověřování použijte tyto osvědčené postupy:
    2. Vyberte existující registraci aplikace a klikněte na **OK**.
 
 3. Výběrem **OK** zaregistrujete aplikaci App Service do Azure Active Directory. Vytvoří se nová registrace aplikace.
-   
+
     ![Expresní nastavení v Azure Active Directory](./media/configure-authentication-provider-aad/express-settings.png)
-   
+
 4. Volitelné Ve výchozím nastavení App Service poskytuje ověřování, ale neomezuje autorizovaný přístup k obsahu a rozhraním API vašeho webu. Musíte autorizovat uživatele v kódu vaší aplikace. Pokud chcete omezit přístup k aplikacím jenom na uživatele ověřené nástrojem Azure Active Directory, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**. Když nastavíte tuto funkci, aplikace vyžaduje ověření všech požadavků. Také přesměruje všechna neověřená na Azure Active Directory pro ověřování.
 
     > [!CAUTION]
@@ -75,7 +75,7 @@ Proveďte následující kroky:
 1. Přihlaste se k [Azure Portal], vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. Poznamenejte si **adresu URL**vaší aplikace. Použijete ho ke konfiguraci registrace aplikace Azure Active Directory.
 1. Vyberte **Azure Active Directory** > **Registrace aplikací** > **novou registraci**.
 1. Na stránce **zaregistrovat aplikaci** zadejte **název** registrace vaší aplikace.
-1. V **identifikátoru URI přesměrování**vyberte **Web** a `<app-url>/.auth/login/aad/callback`zadejte. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
+1. V **identifikátoru URI přesměrování**vyberte **Web** a `<app-url>/.auth/login/aad/callback`zadejte. Například, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Vyberte **Vytvořit**.
 1. Po vytvoření registrace aplikace zkopírujte **ID aplikace (klienta)** a **ID adresáře (tenant)** pro pozdější použití.
 1. Vyberte **Ověřování**. V části **implicitní udělení**povolte **tokeny ID** , aby bylo možné přihlašovat OpenID připojit uživatele z App Service.
@@ -87,14 +87,14 @@ Proveďte následující kroky:
 
 1. Vyberte **Přidat obor**.
    1. Do **název oboru**zadejte *user_impersonation*.
-   1. Do textových polí zadejte název oboru souhlasu a popis, který mají uživatelé vidět na stránce s souhlasem. Zadejte například *přístup k aplikaci*. 
+   1. Do textových polí zadejte název oboru souhlasu a popis, který mají uživatelé vidět na stránce s souhlasem. Zadejte například *přístup k aplikaci*.
    1. Vyberte **Přidat obor**.
 1. Volitelné Pokud chcete vytvořit tajný klíč klienta, vyberte **certifikáty & tajné klíče** > **nový tajný klíč** > klienta**Přidat**. Zkopírujte hodnotu tajného klíče klienta zobrazenou na stránce. Znovu se nezobrazí.
 1. Volitelné Pokud chcete přidat víc **adres URL odpovědi**, vyberte **ověřování**.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Povolení Azure Active Directory v aplikaci App Service
 
-1. V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci. 
+1. V [Azure Portal]vyhledejte a vyberte **App Services**a pak vyberte svou aplikaci.
 1. V levém podokně v části **Nastavení**vyberte **ověřování/autorizace** > **pro**.
 1. Volitelné Ve výchozím nastavení App Service ověřování umožňuje neověřený přístup k vaší aplikaci. Pokud chcete vyhovět ověřování uživatele, nastavte **akci, která se má provést, když se žádost neověřuje** , aby se **přihlásila pomocí Azure Active Directory**.
 1. V části **Zprostředkovatelé ověřování**vyberte **Azure Active Directory**.

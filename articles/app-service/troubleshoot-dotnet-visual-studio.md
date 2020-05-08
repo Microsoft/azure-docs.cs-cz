@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280050"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891054"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -614,7 +614,7 @@ Viděli jste, jak Visual Studio usnadňuje zobrazení protokolů vytvořených A
 Další informace o řešení potíží s aplikacemi v Azure App Service najdete v následujících zdrojích informací:
 
 * [Jak monitorovat aplikace](web-sites-monitor.md)
-* [Zkoumání nevracení paměti v Azure App Service pomocí Visual Studio 2013](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Příspěvek na blogu k Microsoft ALM o funkcích sady Visual Studio pro analýzu problémů se správou paměti
+* [Zkoumání nevracení paměti v Azure App Service pomocí Visual Studio 2013](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/). Příspěvek na blogu k Microsoft ALM o funkcích sady Visual Studio pro analýzu problémů se správou paměti
 * [Azure App Service online nástroje, které byste měli znát](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Příspěvek na blogu od Amit Apple.
 
 Chcete-li získat nápovědu k určité otázce týkající se řešení potíží, spusťte vlákno v jednom z následujících fór:
@@ -678,7 +678,7 @@ Další informace o analýze protokolů webového serveru najdete v následujíc
   Nástroj pro zobrazení dat v protokolech webového serveru (soubory*protokolu* ).
 * [Řešení potíží s výkonem služby IIS nebo chyb aplikací pomocí LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Úvod do nástroje analyzátoru protokolů, který můžete použít k analýze protokolů webového serveru.
-* [Blogové příspěvky od Robert blog o použití LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Blogové příspěvky od Robert blog o použití LogParser](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [Stavový kód HTTP ve službě IIS 7,0, IIS 7,5 a IIS 8,0](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>Analýza protokolů pro trasování neúspěšných požadavků

@@ -4,15 +4,15 @@ description: Tento článek popisuje, jak zálohovat a obnovit metadata modelu a
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145452"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871291"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -24,7 +24,7 @@ Zálohování databází tabelárních modelů v Azure Analysis Services je v po
 > 
 
 > [!NOTE]
-> Pokud je účet úložiště v jiné oblasti, musí být nastavení brány firewall nakonfigurovaná tak, aby povolovala přístup ze **všech sítí**. Nastavení brány firewall nakonfigurované pro vybrané sítě s povolenými IP adresami a povolit výjimku důvěryhodné služby společnosti Microsoft se nepodporuje.
+> Pokud je účet úložiště v jiné oblasti, nakonfigurujte nastavení brány firewall účtu úložiště tak, aby povolovala přístup z **vybraných sítí**. V poli **Rozsah adres**brány firewall zadejte rozsah IP adres pro oblast, ve které je Server Analysis Services. Konfigurace nastavení brány firewall účtu úložiště tak, aby povolovala přístup ze všech sítí, ale výběr vybraných sítí a určení rozsahu IP adres jsou preferované. Další informace najdete v tématu [Nejčastější dotazy k síťovému připojení](analysis-services-network-faq.md#backup-and-restore).
 
 Zálohy se ukládají s příponou. ABF. Pro tabulkové modely v paměti jsou uložená data modelů i metadata. Pro tabelární modely DirectQuery jsou uložena pouze metadata modelu. Zálohy se můžou komprimovat a šifrovat v závislosti na možnostech, které zvolíte.
 
@@ -107,5 +107,5 @@ Použijte rutinu [Restore-ASDatabase](https://docs.microsoft.com/powershell/modu
 ## <a name="related-information"></a>Související informace
 
 [Účty služby Azure Storage](../storage/common/storage-create-storage-account.md)  
-[Vysoká dostupnost](analysis-services-bcdr.md)     
-[Správa Azure Analysis Services](analysis-services-manage.md)
+[Vysoká dostupnost](analysis-services-bcdr.md)      
+[Nejčastější dotazy k Analysis Services připojení k síti](analysis-services-network-faq.md)

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c74ec73eb06c43110747d87e6fecd12183527759
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586698"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872542"
 ---
 # <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Kurz – ukázka komplexní asynchronní aplikace Java SQL API pomocí kanálu změn
 
@@ -53,7 +53,7 @@ Otevřete terminál v adresáři úložiště. Sestavte aplikaci spuštěním
 mvn clean package
 ```
 
-## <a name="walkthrough"></a>Názorný postup
+## <a name="walkthrough"></a>Návod
 
 1. Při první kontrole byste měli mít účet Azure Cosmos DB. V prohlížeči otevřete **portál Azure** , přejděte na účet Azure Cosmos DB a v levém podokně přejděte na **Průzkumník dat**.
 
@@ -89,8 +89,8 @@ mvn clean package
 
     Stiskněte klávesu ENTER. Nyní následující blok kódu provede a inicializuje procesor změn kanálu v jiném vlákně: 
 
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
 
-    **Java SDK 4,0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -103,7 +103,8 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-    **Java SDK 3.7.0**
+   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
+
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -115,6 +116,7 @@ mvn clean package
 
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
     ```
+   ---
 
     ```"SampleHost_1"```je název pracovníka procesoru změny kanálu. ```changeFeedProcessorInstance.start()```je to, co se ve skutečnosti spustí procesor Change feed.
 
@@ -124,7 +126,8 @@ mvn clean package
 
 1. V terminálu znovu stiskněte klávesu ENTER. Tím se spustí 10 dokumentů, které se budou vkládat do **InventoryContainer**. Každé vložení dokumentu se zobrazí v kanálu změn jako JSON; Následující kód zpětného volání zpracovává tyto události zrcadlením dokumentů JSON do materializované zobrazení:
 
-    **Java SDK 4,0**
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -150,7 +153,8 @@ mvn clean package
     }
     ```
 
-    **Java SDK 3.7.0**
+   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -175,6 +179,7 @@ mvn clean package
         typeContainer.upsertItem(document).subscribe();
     }    
     ```
+   ---
 
 1. Povolí spuštění kódu 5 – 10sec. Pak se vraťte na portál Azure Portal Průzkumník dat a přejděte k **položkám > InventoryContainer**. Měli byste vidět, že se položky vkládají do kontejneru inventáře; Poznamenejte si klíč oddílu```id```().
 
@@ -190,7 +195,8 @@ mvn clean package
 
     Stiskněte znovu Enter pro volání funkce ```deleteDocument()``` v ukázkovém kódu. Tato funkce, která je zobrazena níže, upsertuje novou verzi dokumentu s ```/ttl == 5```hodnotou, která nastaví hodnotu TTL (Time to Live) do 5sec. 
     
-    **Java SDK 4,0**
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+
     ```java
     public static void deleteDocument() {
 
@@ -217,8 +223,8 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
+   # <a name="java-sdk-370"></a>[Java SDK 3.7.0](#tab/v3sdk)
 
-    **Java SDK 3.7.0**
     ```java
     public static void deleteDocument() {
 
@@ -245,6 +251,7 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
+   ---
 
     Kanál ```feedPollDelay``` změn je nastaven na 100 MS; Proto kanál změn reaguje na tuto aktualizaci skoro okamžitě a volání ```updateInventoryTypeMaterializedView()``` uvedená výše. Toto poslední volání funkce bude Upsert nový dokument s hodnotou TTL 5sec do **InventoryContainer-pktype**.
 

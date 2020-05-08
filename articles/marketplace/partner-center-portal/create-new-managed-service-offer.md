@@ -1,5 +1,5 @@
 ---
-title: Vytvoření nové nabídky spravované služby na komerčním webu Marketplace
+title: Vytvoření nabídky spravované služby na komerčním webu Microsoft Marketplace
 description: Postup vytvoření nové nabídky spravované služby pro výpis v Azure Marketplace pomocí portálu komerčního tržiště v partnerském centru.
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b2e12a94f5751e31f482c913c71b4731b1cf6c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147914"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871905"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Vytvořit novou nabídku spravované služby
+# <a name="create-a-managed-service-offer"></a>Vytvoření nabídky spravované služby
 
-> [!IMPORTANT]
-> Přesouváme správu nabídek spravované služby z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v tématu [publikování spravované služby a Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) ke správě nabídek v portál partnerů cloudu.
+Spravovaná služba nabízí podporu pro [Lighthouse scénáře Azure](../../lighthouse/overview.md) . Když zákazník přijme nabídku spravované služby, může se připojit k prostředkům pro [správu delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md). Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
-Spravovaná služba nabízí podporu pro [Lighthouse scénáře Azure](../../lighthouse/overview.md) . Když zákazník přijme nabídku spravované služby, může se připojit k prostředkům pro [správu delegovaných prostředků Azure](../../lighthouse/concepts/azure-delegated-resource-management.md).
-
-Pokud chcete začít vytvářet nabídky spravovaných služeb, ujistěte se, že jste nejdřív [vytvořili účet partnerského centra](./create-account.md) a otevřete [řídicí panel komerčního tržiště](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), kde je vybraná stránka s **přehledem** . Abyste mohli publikovat nabídku spravované služby, musíte mít [úroveň kompetence cloudové platformy stříbrné nebo Gold](https://partner.microsoft.com/membership/cloud-platform-competency) nebo být [odborníkem na službu Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .
-
-![Řídicí panel komerčního tržiště v partnerském centru](./media/new-offer-overview.png)
-
->[!Note]
-> Po publikování nabídky se úpravy nabídky provedené v partnerském centru aktualizují jenom v systému a po opětovném publikování se uloží i přední. Po provedení změn Prosím zajistěte odeslání nabídky k publikování.
+Abyste mohli publikovat nabídku spravované služby, musíte mít [úroveň kompetence cloudové platformy stříbrné nebo Gold](https://partner.microsoft.com/membership/cloud-platform-competency) nebo být [odborníkem na službu Azure expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) .
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-Vyberte tlačítko **+ Nová nabídka** a pak vyberte položku nabídky **spravovaná služba** . Zobrazí se dialogové okno **Nová nabídka** .
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka** > **spravovaná služba**.
 
-### <a name="offer-id-and-alias"></a>ID nabídky a alias
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-managed-service.png)
 
-- **ID nabídky**: jedinečný identifikátor pro každou nabídku ve vašem účtu. Toto ID se bude zobrazovat zákazníkům v adrese URL nabídky Marketplace. Toto ID může obsahovat jenom malé alfanumerické znaky (včetně spojovníků a podtržítka, ale bez mezer), omezené na 50 znaků a po výběru **vytvořit**se nedá změnit.  Pokud například zadáte *příkaz Test-Offer-1* , adresa URL nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+>[!NOTE]
+>Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
-- **Alias nabídky**: název, který se používá k odkazování na nabídku v partnerském centru. Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazí. Tuto hodnotu nelze změnit po výběru možnost **vytvořit**.
+## <a name="new-offer"></a>Nová nabídka
 
-Jakmile zadáte **ID nabídky** a **alias nabídky**, vyberte **vytvořit**. Pak budete moci pracovat na všech různých částech vaší nabídky.
+Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
+
+* Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
+* Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* ID nabídky nelze změnit po výběru možnost **vytvořit**.
+
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+
+* Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
+* Po zvolení možnost **vytvořit**se nedá změnit alias th nabídky.
+
+Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-setup"></a>Nastavení nabídky
-
-Na stránce **nastavení nabídky** se zobrazí výzva k zadání následujících informací. Nezapomeňte po dokončení těchto polí vybrat **Uložit** .
 
 ## <a name="connect-lead-management"></a>Připojit řízení zájemců
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Všimněte si, že pro [zásady certifikace spravovaných služeb](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)se vyžaduje **cíl zájemce** . Tím se v systému CRM vytvoří záznam pokaždé, když zákazník nasadí vaši nabídku.
+Pro [zásady certifikace spravovaných služeb](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)se vyžaduje **cíl zájemce** . Tím se v systému CRM vytvoří záznam pokaždé, když zákazník nasadí vaši nabídku.
 
 Další informace najdete v tématu [Přehled správy potenciálních zákazníků](./commercial-marketplace-get-customer-leads.md).
 
-Před přechodem k další části nezapomeňte stránku **Uložit** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="properties"></a>Vlastnosti
 
-Stránka **vlastnosti** umožňuje definovat kategorie používané k seskupení vaší nabídky na webu Marketplace a právní smlouvy, které podporují vaši nabídku. Po dokončení této stránky vyberte **Uložit** .
+Tato stránka vám umožní definovat kategorie používané k seskupení vaší nabídky na webu Marketplace a právní smlouvy podporující vaši nabídku.
 
 ### <a name="category"></a>Kategorie
 
@@ -67,14 +71,16 @@ Vyberte minimálně jednu a maximálně pět kategorií, které budou použity k
 
 V poli **podmínky a ujednání** zadejte vlastní právní podmínky. Můžete taky zadat adresu URL, kde se můžou vaše podmínky a ujednání najít. Zákazníci budou muset tyto podmínky přijmout, aby mohli svoji nabídku vyzkoušet.
 
+Než budete pokračovat, vyberte **Uložit koncept** .
+
 ## <a name="offer-listing"></a>Seznam nabídek
 
-Stránka **seznam nabídek** vám umožní definovat podrobnosti o Marketplace (název nabídky, popis, obrázky atd.) pro vaši nabídku.
+Tato stránka umožňuje definovat podrobnosti o Marketplace (například název nabídky, popis a obrázky) pro vaši nabídku.
 
 > [!NOTE]
-> Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky, podmínky použití atd.) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
+> Obsah seznamu nabídek (například popis, dokumenty, snímky obrazovky a podmínky použití) nemusí být v angličtině, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Je také přijatelné poskytnout *užitečnou adresu URL pro odkaz* k poskytnutí obsahu v jiném jazyce, než který je použit v obsahu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název seznamu nabídek. Toto pole se předem vyplní textem, který jste zadali jako **alias nabídky** při vytváření nabídky, ale tuto hodnotu můžete změnit. Tento název může být ochranných známek (a může obsahovat symboly ochranných známek a autorských práv). Název nesmí být delší než 50 znaků a nesmí obsahovat žádné emoji.
 
@@ -100,23 +106,13 @@ Pár tipů pro psaní popisu:
 - Nespoléhá se na funkce a funkce k prodeji vašeho produktu. Místo toho se zaměřte na hodnotu, kterou doručujete.  
 - Používejte co nejvíc slovníků specifických pro konkrétní obor nebo využití s výhodami.
 
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k formátování popisu.
+Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
 
-![Použití editoru textu ve formátu RTF](./media/text-editor2.png)
+![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
 
-Pomocí následujících pokynů můžete použít Editor formátovaného textu:
-
-- Chcete-li změnit formát obsahu, zvýrazněte text, který chcete formátovat, a vyberte styl textu, jak je znázorněno níže:
-
-     ![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png)
-
-- Chcete-li do textu přidat seznam s odrážkami nebo číslovaného seznamu, použijte následující možnosti:
-
-     ![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png)
-
-- Chcete-li přidat nebo odebrat odsazení textu, použijte následující možnosti:
-
-     ![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png)
+| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
+| --- | --- | --- |
+| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>Odkaz zásady ochrany osobních údajů
 
@@ -138,12 +134,19 @@ Pokud máte weby podpory pro **globální zákazníky Azure** a/nebo **Azure Gov
 
 V této části můžete zadat loga a obrázky, které se použijí při zobrazení vaší nabídky zákazníkovi. Všechny obrázky musí být ve formátu. png.
 
->[!Note]
+>[!NOTE]
 >Pokud máte problém s nahráváním souborů, ujistěte se, že vaše místní síť neblokuje https://upload.xboxlive.com službu používanou partnerským centrem.
 
 #### <a name="marketplace-logos"></a>Loga Marketplace
 
-Vyžadují se čtyři velikosti loga: **malá (40x40)**, **střední (90x90)**, **Velká (115x115)** a **roztažitelné (255x115)**. Postupujte podle těchto pokynů pro vaše loga:
+Poskytněte logo vaší nabídky ve velikosti čtyř pixelů:
+
+- **Malé** (40 x 40)
+- **Střední** (90 × 90)
+- **Velký** (115 x 115)
+- **Roztažitelné** (255 × 115)
+
+Postupujte podle těchto pokynů pro vaše loga:
 
 - Design Azure má jednoduchou paletu barev. Omezte počet primárních a sekundárních barev ve vašem logu.
 - Barvami motivů na portálu jsou bílá a černá. Nepoužívejte tyto barvy jako barvu pozadí pro vaše logo. Použijte barvu, která vaše logo na portálu zvýrazní. Doporučujeme použít jednoduché primární barvy.
@@ -164,6 +167,8 @@ Volitelně můžete přidat až pět videí, která předvádí vaši nabídku. 
 
 - [Osvědčené postupy pro výpisy nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+Než budete pokračovat, vyberte **Uložit koncept** .
+
 ## <a name="preview"></a>Preview
 
 Před publikováním vaší nabídky v širší nabídce na webu Marketplace je nejprve nutné ji zpřístupnit pro skupinu s omezeným počtem verzí Preview. To vám umožní potvrdit, jak se nabídka zobrazuje v Azure Marketplace před tím, než ji zpřístupní zákazníkům. V této verzi Preview budou moci vaše nabídka Zobrazit i technické týmy společnosti Microsoft.
@@ -171,6 +176,8 @@ Před publikováním vaší nabídky v širší nabídce na webu Marketplace je 
 Cílovou skupinu verze Preview můžete definovat zadáním ID předplatných Azure v části **Preview pro cílovou skupinu** . Můžete zadat až 10 ID předplatných ručně nebo nahrát soubor. csv s až 100 ID předplatných.
 
 Zákazníci, kteří jsou přidruženi k těmto předplatným, budou moci zobrazit nabídku v Azure Marketplace ještě předtím, než budou živá. Nezapomeňte sem zahrnout vlastní odběry, abyste mohli zobrazit náhled vaší nabídky.
+
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ## <a name="plan-overview"></a>Přehled plánu
 
@@ -237,18 +244,20 @@ Pro každou **autorizaci**musíte zadat následující. Pak můžete vybrat **+ 
 
 Až dokončíte všechny oddíly pro svůj plán, můžete vybrat **+ vytvořit nový plán** tolikrát, kolik potřebujete k vytváření dalších plánů. Jakmile budete mít hotovo, vyberte **Uložit**.
 
+Než budete pokračovat, vyberte **Uložit koncept** .
+
 ## <a name="publish"></a>Publikování
 
 ### <a name="submit-offer-to-preview"></a>Odeslat nabídku do verze Preview
 
-Až dokončíte všechny požadované části nabídky, vyberte **publikovat** v pravém horním rohu portálu. Budete přesměrováni na stránku **Revize a publikování** .
+Až dokončíte všechny požadované části nabídky, vyberte v pravém horním rohu portálu možnost **zkontrolovat a publikovat** .
 
 Pokud tuto nabídku publikujete poprvé, můžete:
 
 - Podívejte se na téma stav dokončení pro jednotlivé části nabídky.
-  - *Nespuštěno* – znamená, že se oddíl nedotkl a je potřeba ho dokončit.
-  - *Nedokončeno* – znamená, že oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
-  - *Complete* – znamená, že část je dokončena, byla zadána všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
+  - **Nezahájeno** – oddíl se nedotkl a musí se dokončit.
+  - **Nedokončeno** – oddíl obsahuje chyby, které je potřeba opravit, nebo vyžaduje, aby se poskytly další informace. Vraťte se k oddílům a aktualizujte je.
+  - **Complete** – oddíl je kompletní, jsou k dispozici všechna požadovaná data a nejsou k dispozici žádné chyby. Aby bylo možné nabídku odeslat, musí být všechny oddíly nabídky v úplném stavu.
 - V části **poznámky k certifikaci** poskytněte certifikačnímu týmu pokyny k testování, aby se zajistilo správné testování vaší aplikace, a to spolu s případnými doplňkovými poznámkami, které jsou užitečné pro porozumění vaší aplikaci.
 - Kliknutím na **Odeslat**nabídku pro publikování odešlete. Až budete mít k dispozici verzi Preview, pošleme vám e-mail, který vám pomůže zkontrolovat a schválit. Vraťte se do partnerského centra a výběrem možnosti **Přejít do živé** nabídky publikujte vaši nabídku na veřejném (nebo v případě soukromé nabídky pro soukromou cílovou skupinu).
 

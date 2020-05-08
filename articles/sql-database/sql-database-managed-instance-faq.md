@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364160"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598483"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k SQL Database Managed Instances (FAQ)
 
@@ -94,7 +94,13 @@ Automatizované online přepínání mezi generacemi hardwaru je možné, pokud 
 
 Tato operace je dlouhotrvající, protože nová spravovaná instance se zřídí na pozadí a databáze automaticky přenesené mezi starou a novou instancí s rychlým převzetím služeb při selhání na konci procesu. 
 
+**Co když ve stejné oblasti nejsou podporovaná hardwarová generování?**
+
 Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarového generování je možná, ale je nutné ji provést ručně. To vyžaduje zřízení nové instance v oblasti, kde je k dispozici potřebná generace hardwaru, a ruční zálohování a obnovení dat mezi starou a novou instancí.
+
+**Co dělat v případě, že pro provádění operace aktualizace nejsou k dispozici dostatek IP adres?**
+
+V případě, že v podsíti, ve které je zřízena vaše spravovaná instance, není k dispozici dostatek IP adres, budete muset vytvořit novou podsíť a novou spravovanou instanci v ní. Také doporučujeme, aby se nová podsíť vytvořila s více IP adresami alocated, takže budoucí operace aktualizace se vyhne podobné situaci (pro velikost podsítě Propper, podívejte [se, jak určit velikost podsítě virtuální](sql-database-managed-instance-determine-size-vnet-subnet.md)sítě. Po zřízení nové instance můžete ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést obnovení mezi instancemi [v rámci časového okamžiku](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell). 
 
 
 ## <a name="tune-performance"></a>Ladění výkonu

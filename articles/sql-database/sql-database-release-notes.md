@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201308"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801684"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -78,30 +78,35 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 
 |Problém  |Datum zjištění  |Status  |Datum vyřešení  |
 |---------|---------|---------|---------|
-|[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci](#permissions-on-resource-group-not-applied-to-managed-instance)|Únor 2020|Má alternativní řešení||
-|[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má alternativní řešení||
-|[Role agenta SQL potřebují explicitní oprávnění EXECUTE pro přihlášení jiná než sysadmin.](#in-memory-oltp-memory-limits-are-not-applied)|DEC 2019|Má alternativní řešení||
+|[Agent přestane reagovat při úpravách, zakázání nebo povolení stávajících úloh.](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Květen 2020|Automaticky zmírňované| |
+|[Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci](#permissions-on-resource-group-not-applied-to-managed-instance)|Únor 2020|Má alternativní řešení| |
+|[Omezení ručního převzetí služeb při selhání prostřednictvím portálu pro skupiny převzetí služeb](#limitation-of-manual-failover-via-portal-for-failover-groups)|Leden 2020|Má alternativní řešení| |
+|[Role agenta SQL potřebují explicitní oprávnění EXECUTE pro přihlášení jiná než sysadmin.](#in-memory-oltp-memory-limits-are-not-applied)|DEC 2019|Má alternativní řešení| |
 |[Úlohy agenta SQL je možné přerušit restartováním procesu agenta.](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|DEC 2019|Vyřešeno|Březen 2020|
-|[Přihlášení AAD a uživatelé nejsou v SSDT podporované.](#aad-logins-and-users-are-not-supported-in-ssdt)|Listopadu 2019|Žádné alternativní řešení||
-|[Limity OLTP paměti v paměti se nepoužívají.](#in-memory-oltp-memory-limits-are-not-applied)|Říjen 2019|Má alternativní řešení||
-|[Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Říjen 2019|Má alternativní řešení||
-|[Probíhající obnovení databáze blokuje změnu úrovně služby a operací vytváření instancí.](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|SEP 2019|Má alternativní řešení||
-|[Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|SEP 2019|Má alternativní řešení||
-|[Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Srpna 2019|Má alternativní řešení||
-|[Impersonification typů přihlášení Azure AD se nepodporuje.](#impersonification-of-azure-ad-login-types-is-not-supported)|Července 2019|Žádné alternativní řešení||
-|[@queryparametr není v sp_send_db_mail podporován.](#-parameter-not-supported-in-sp_send_db_mail)|Duben 2019|Žádné alternativní řešení||
-|[Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.](#transactional-replication-must-be-reconfigured-after-geo-failover)|Březen 2019|Žádné alternativní řešení||
-|[Během operace obnovení se používá dočasná databáze.](#temporary-database-is-used-during-restore-operation)||Má alternativní řešení||
-|[Struktura a obsah TEMPDB se znovu vytvoří.](#tempdb-structure-and-content-is-re-created)||Žádné alternativní řešení||
-|[Překročení úložného prostoru s malými databázovými soubory](#exceeding-storage-space-with-small-database-files)||Má alternativní řešení||
-|[Hodnoty GUID, které se zobrazují místo názvů databází](#guid-values-shown-instead-of-database-names)||Má alternativní řešení||
-|[Protokoly chyb nejsou trvalé](#error-logs-arent-persisted)||Žádné alternativní řešení||
+|[Přihlášení AAD a uživatelé nejsou v SSDT podporované.](#aad-logins-and-users-are-not-supported-in-ssdt)|Listopadu 2019|Žádné alternativní řešení| |
+|[Limity OLTP paměti v paměti se nepoužívají.](#in-memory-oltp-memory-limits-are-not-applied)|Říjen 2019|Má alternativní řešení| |
+|[Při pokusu o odebrání neprázdného souboru se vrátila chybná chyba.](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|Říjen 2019|Má alternativní řešení| |
+|[Probíhající obnovení databáze blokuje změnu úrovně služby a operací vytváření instancí.](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|SEP 2019|Má alternativní řešení| |
+|[Po převzetí služeb při selhání může být potřeba změnit správce prostředků u Pro důležité obchodní informace úrovně služeb](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|SEP 2019|Má alternativní řešení| |
+|[Dialogová okna mezidatabázového Service Broker se musí po upgradu na úrovni služby znovu inicializovat.](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|Srpna 2019|Má alternativní řešení| |
+|[Impersonification typů přihlášení Azure AD se nepodporuje.](#impersonification-of-azure-ad-login-types-is-not-supported)|Července 2019|Žádné alternativní řešení| |
+|[@queryparametr není v sp_send_db_mail podporován.](#-parameter-not-supported-in-sp_send_db_mail)|Duben 2019|Žádné alternativní řešení| |
+|[Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.](#transactional-replication-must-be-reconfigured-after-geo-failover)|Březen 2019|Žádné alternativní řešení| |
+|[Během operace obnovení se používá dočasná databáze.](#temporary-database-is-used-during-restore-operation)||Má alternativní řešení| |
+|[Struktura a obsah TEMPDB se znovu vytvoří.](#tempdb-structure-and-content-is-re-created)||Žádné alternativní řešení| |
+|[Překročení úložného prostoru s malými databázovými soubory](#exceeding-storage-space-with-small-database-files)||Má alternativní řešení| |
+|[Hodnoty GUID, které se zobrazují místo názvů databází](#guid-values-shown-instead-of-database-names)||Má alternativní řešení| |
+|[Protokoly chyb nejsou trvalé](#error-logs-arent-persisted)||Žádné alternativní řešení| |
 |[Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Má alternativní řešení|Březen 2020|
-|[Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Má alternativní řešení||
-|Po obnovení databáze z Azure Blob Storage konzistence databáze nebyla ověřena pomocí příkazu DBCC CHECKDB.||Vyřešeno|Listopadu 2019|
-|Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.||Vyřešeno|Říjen 2019|
-|Databázová pošta funkce s externími poštovními servery (ne Azure) pomocí zabezpečeného připojení||Vyřešeno|Říjen 2019|
-|Obsažené databáze nejsou ve spravované instanci podporované.||Vyřešeno|Srpna 2019|
+|[Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Má alternativní řešení| |
+|Po obnovení databáze z Azure Blob Storage konzistence databáze nebyla ověřena pomocí příkazu DBCC CHECKDB.| |Vyřešeno|Listopadu 2019|
+|Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.| |Vyřešeno|Říjen 2019|
+|Databázová pošta funkce s externími poštovními servery (ne Azure) pomocí zabezpečeného připojení| |Vyřešeno|Říjen 2019|
+|Obsažené databáze nejsou ve spravované instanci podporované.| |Vyřešeno|Srpna 2019|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Agent přestane reagovat při úpravách, zakázání nebo povolení stávajících úloh.
+
+V některých případech úpravy existující úlohy, zakázání nebo povolení může způsobit, že agent přestane reagovat. Problém se automaticky sníží při detekci, která má za následek restartování procesu agenta.
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Oprávnění pro skupinu prostředků neplatí pro spravovanou instanci
 

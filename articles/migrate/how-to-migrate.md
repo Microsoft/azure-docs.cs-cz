@@ -1,32 +1,21 @@
 ---
 title: Přidání nástrojů pro migraci do Azure Migrate
 description: Naučte se přidávat nástroje pro migraci do Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185964"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901471"
 ---
 # <a name="add-migration-tools"></a>Přidání nástrojů pro migraci
 
 Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](migrate-overview.md).
 
-Azure Migrate poskytuje centrum nástrojů pro posouzení a migraci do Azure. Zahrnuje nativní nástroje, nástroje poskytované jinými službami Azure a nabídky nezávislého výrobce softwaru (ISV) třetích stran.
-
-Pokud chcete přidat nástroj pro migraci, který ještě nevytvořil projekt Azure Migrate, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
-
-
-
-## <a name="selecting-an-isv-tool"></a>Výběr nástroje ISV
-
-Pokud zvolíte [Nástroj ISV](migrate-services-overview.md#isv-integration) pro migraci, můžete začít získáním licence nebo registrací bezplatné zkušební verze v souladu se zásadami ISV. V každém nástroji je k dispozici možnost připojit se k Azure Migrate. Nasaďte nástroj a podle pokynů a dokumentace k nástroji připojte pracovní prostor nástroje s Azure Migrate. 
+- Pokud chcete přidat nástroj pro migraci, který ještě nevytvořil projekt Azure Migrate, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
+- Pokud jste přidali nástroj ISV pro migraci, [postupujte podle kroků](prepare-isv-movere.md)a připravte se na práci s nástrojem.
 
 ## <a name="select-a-migration-scenario"></a>Výběr scénáře migrace
 

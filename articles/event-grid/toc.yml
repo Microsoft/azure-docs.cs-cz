@@ -8,8 +8,6 @@
       href: overview.md
     - name: Porovnání služeb zasílání zpráv
       href: compare-messaging-services.md
-    - name: Úroveň Premium vs. Basic
-      href: premium-basic-tiers.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -166,23 +164,15 @@
     - name: Monitorování a odstraňování potíží
       items:
         - name: Diagnostické protokoly
-          href: null
+          href: diagnostic-logs.md
         - name: Metriky
           href: metrics.md
 - name: Návody
   items:
-    - name: Konfigurace privátních koncových bodů (Preview)
-      href: configure-private-endpoints.md
-    - name: Konfigurace brány firewall protokolu IP (Preview)
-      href: configure-firewall.md
-    - name: Aktualizace cenové úrovně
-      href: update-tier.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
     - name: Příjem událostí v koncovém bodu HTTP
       href: receive-events.md
-    - name: Zabezpečený webhook s AAD
-      href: secure-webhook-delivery.md
     - name: Nedoručené zprávy a opakovaný pokus
       href: manage-event-delivery.md
     - name: Události filtru
@@ -201,6 +191,14 @@
       href: custom-disaster-recovery.md
     - name: Sledování asynchronních operací REST
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Zabezpečení
+      items:
+        - name: Konfigurace privátních koncových bodů (Preview)
+          href: configure-private-endpoints.md
+        - name: Konfigurace brány firewall protokolu IP (Preview)
+          href: configure-firewall.md
+        - name: Zabezpečený webhook s AAD
+          href: secure-webhook-delivery.md
     - name: Řešení potíží
       items:
         - name: Povolení diagnostických protokolů
