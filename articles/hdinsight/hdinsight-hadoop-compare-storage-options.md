@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: bfbe311d9768923eee8c1b0cc4f3b4ec1a7ad69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186301"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610696"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Porovnání možností úložiště pro použití s clustery Azure HDInsight
 
 Při vytváření clusterů HDInsight si můžete vybrat mezi několika různými službami Azure Storage:
 
 * [Azure Storage](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen1.md)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
 
 Tento článek obsahuje přehled těchto typů úložišť a jejich jedinečných funkcí.
 
@@ -32,9 +32,9 @@ Následující tabulka shrnuje Azure Storage služby, které jsou podporovány v
 | Služba úložiště | Typ účtu | Typ oboru názvů | Podporované služby | Podporované úrovně výkonu | Podporované úrovně přístupu | Verze HDInsight | Typ clusteru |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Obecné účely v2 | Hierarchický (systém souborů) | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše kromě Spark 2,1 a 2,2|
-|Azure Storage| Obecné účely v2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Všechny |
-|Azure Storage| Obecné účely v1 | Objekt | Objekt blob | Standard | – | Všechny | Všechny |
-|Azure Storage| Blob Storage * * | Objekt | Objekt blob bloku | Standard | Horká, studená, archivní | Všechny | Všechny |
+|Azure Storage| Obecné účely v2 | Objekt | Objekt blob | Standard | Horká, studená, archivní | 3.6 + | Vše |
+|Azure Storage| Obecné účely v1 | Objekt | Objekt blob | Standard | – | Vše | Vše |
+|Azure Storage| Blob Storage * * | Objekt | Objekt blob bloku | Standard | Horká, studená, archivní | Vše | Vše |
 |Azure Data Lake Storage Gen1| – | Hierarchický (systém souborů) | – | – | – | jenom 3,6 | Všechny kromě adaptérů HBA |
 
 * * Pro clustery HDInsight může být pouze sekundární účty úložiště typu BlobStorage a objekt blob stránky není podporovanou možností úložiště.
@@ -48,15 +48,15 @@ Clustery můžete vytvářet pomocí kombinací služeb pro primární a volitel
 | Verze HDInsight | Primární úložiště | Sekundární úložiště | Podporuje se |
 |---|---|---|---|
 | 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
-| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | Ne |
+| 3,6 & 4,0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen2 | No |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Data Lake Storage Gen2 | Ano |
 | 3,6 & 4,0 | Data Lake Storage Gen2 * | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
-| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | Ne |
+| 3,6 & 4,0 | Data Lake Storage Gen2 | Data Lake Storage Gen1 | No |
 | 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | Ano |
 | 3,6 | Data Lake Storage Gen1 | Pro obecné účely V1, Pro obecné účely v2, BlobStorage (objekty blob bloku) | Ano |
-| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | Ne |
-| 4.0 | Data Lake Storage Gen1 | Všechny | Ne |
-| 4.0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | Ne |
+| 3,6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | No |
+| 4.0 | Data Lake Storage Gen1 | Všechny | No |
+| 4.0 | Pro obecné účely V1, Pro obecné účely v2 | Data Lake Storage Gen1 | No |
 
 * = Může to být jeden nebo několik Data Lake Storage Gen2 účtů, pokud všechna nastavení používají stejnou spravovanou identitu pro přístup k clusteru.
 

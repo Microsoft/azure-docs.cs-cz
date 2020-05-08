@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/03/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cada61f8fa1dfd163062ce22527f41e65291b3f8
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127586"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607244"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Tento článek použijte k řešení problémů, které máte při konfiguraci virtuálních počítačů hostitele relace virtuálních počítačů (VM) Windows.
 
@@ -28,7 +34,7 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 Pokud máte problémy s připojením virtuálních počítačů k doméně, postupujte podle těchto pokynů.
 
 - Připojte se k VIRTUÁLNÍmu počítači ručně pomocí procesu [připojení virtuálního počítače s Windows serverem ke spravované doméně](../active-directory-domain-services/join-windows-vm.md) nebo pomocí [šablony připojení k doméně](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
-- Zkuste na virtuálním počítači testovat název domény z příkazového řádku.
+- Zkuste ověřit název domény z příkazového řádku na virtuálním počítači pomocí příkazu VMM.
 - Projděte si seznam chybových zpráv připojení k doméně při [řešení potíží s chybovými zprávami k doméně](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
 ### <a name="error-incorrect-credentials"></a>Chyba: nesprávné přihlašovací údaje
@@ -77,7 +83,7 @@ Pokud máte problémy s připojením virtuálních počítačů k doméně, post
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Agent virtuálního počítače Windows a spouštěcí zavaděč virtuálních počítačů s Windows nejsou nainstalované.
 
-Doporučený způsob, jak zřídit virtuální počítače, je pomocí Azure Resource Manager **vytvořit a zřídit šablonu fondu hostitelů virtuálních počítačů s Windows** . Šablona automaticky nainstaluje agenta virtuální plochy Windows a zaváděcí program Windows Virtual Desktop agent.
+Doporučený způsob, jak zřídit virtuální počítače, je použití šablony pro vytváření Azure Portal. Šablona automaticky nainstaluje agenta virtuální plochy Windows a zaváděcí program Windows Virtual Desktop agent.
 
 Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány a zda chcete zkontrolovat chybové zprávy.
 
@@ -96,8 +102,8 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 **Oprava 2:** Potvrďte položky v následujícím seznamu.
 
 - Ujistěte se, že účet nemá MFA.
-- Ověřte, že je název tenanta přesný a že tenant existuje ve virtuálním počítači Windows.
-- Potvrďte, že má účet alespoň oprávnění Přispěvatel VP.
+- Potvrďte, že je název fondu hostitelů přesný a fond hostitelů existuje ve virtuálním počítači Windows.
+- Potvrďte, že má účet alespoň oprávnění Přispěvatel pro předplatné Azure nebo skupinu prostředků.
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Chyba: ověření se nezdařilo, chyba v C:\Windows\Temp\ScriptLog.log
 
@@ -106,16 +112,16 @@ Postupujte podle těchto pokynů a ověřte, zda jsou součásti nainstalovány 
 **Oprava:** Potvrďte položky v následujícím seznamu.
 
 - Ručně zaregistrujte virtuální počítače pomocí služby Virtual Desktop systému Windows.
-- Potvrzení, že účet použitý pro připojení k virtuálnímu počítači s Windows má oprávnění k vytváření fondů hostitelů v tenantovi.
+- Potvrzení, že účet použitý k připojení k virtuálnímu počítači s Windows má oprávnění k vytváření fondů hostitelů v rámci předplatného Azure nebo skupiny prostředků.
 - Potvrďte, že účet nemá MFA.
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Agent virtuálního počítače s Windows se neregistruje ve službě Virtual Desktop systému Windows.
 
-Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na virtuálních počítačích hostitele relace (buď ručně, nebo prostřednictvím šablony Azure Resource Manager a prostředí PowerShell DSC), poskytuje registrační token. Následující část popisuje problémy týkající se odstraňování potíží vztahujících se k agentovi virtuálních počítačů s Windows a k tokenu.
+Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na virtuálních počítačích hostitele relace (buď ručně, nebo prostřednictvím šablony Azure Resource Manager a prostředí PowerShell DSC), poskytuje registrační token. Následující část popisuje řešení potíží, které se vztahují k agentovi virtuálního počítače s Windows a tokenu.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: stav uložený v rutině Get-RdsSessionHost zobrazuje stav jako nedostupný.
+### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Chyba: stav uložený v rutině Get-AzWvdSessionHost zobrazuje stav jako nedostupný.
 
-![Rutina Get-RdsSessionHost zobrazuje stav jako nedostupné.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![Rutina Get-AzWvdSessionHost zobrazuje stav jako nedostupné.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **Příčina:** Agent se nemůže sám aktualizovat na novou verzi.
 
@@ -128,17 +134,17 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 5. Dokončete Průvodce instalací nástroje.
 6. Otevřete Správce úloh a spusťte službu RDAgentBootLoader.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Chyba: položka registru agenta virtuálního počítače s Windows je v registru zaregistrovaná. zobrazuje se hodnota 0.
+## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Chyba: položka registru agenta virtuálního počítače s Windows je v registru zaregistrovaná. zobrazuje se hodnota 0.
 
 **Příčina:** Registrační token vypršel nebo byl vygenerován s hodnotou vypršení platnosti 999999.
 
 **Oprava:** Pomocí těchto pokynů opravíte chybu registru agenta.
 
-1. Pokud už existuje registrační token, odeberte ho pomocí Remove-RDSRegistrationInfo.
-2. Vygenerujte nový token pomocí RDS-NewRegistrationInfo.
-3. Potvrďte, že parametr-ExpriationHours je nastavený na 72 (maximální hodnota je 99999).
+1. Pokud už existuje registrační token, odeberte ho pomocí Remove-AzWvdRegistrationInfo. 
+2. Spuštěním rutiny **New-AzWvdRegistrationInfo** Vygenerujte nový token. 
+3. Potvrďte, že parametr *-ExpriationTime* je nastavený na 3 dny.
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Chyba: Agent virtuálních počítačů s Windows neoznamuje prezenční signál při spuštění Get-RdsSessionHost.
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Chyba: Agent virtuálních počítačů s Windows neoznamuje prezenční signál při spuštění Get-AzWvdSessionHost.
 
 **Příčina 1:** Služba RDAgentBootLoader byla zastavena.
 
@@ -180,7 +186,7 @@ Souběžná sada virtuálních počítačů s Windows je automaticky nainstalov�
 
 Existují tři hlavní způsoby, jak je souběžný zásobník nainstalovaný nebo povolený na virtuálních počítačích fondu hostitelů relace:
 
-- Pomocí Azure Resource Manager **vytvořit a zřídit novou šablonu fondu hostitelů virtuálních počítačů s Windows**
+- Se šablonou pro vytváření Azure Portal
 - Podle zahrnutí a povolení na hlavní imagi
 - Instalace nebo povolení ručně na každém virtuálním počítači (nebo s rozšířeními/PowerShellem)
 
@@ -209,13 +215,7 @@ Projděte si níže uvedené položky registru a potvrďte, že jejich hodnoty s
 **Oprava:** Při instalaci souběžného zásobníku na virtuálním počítači hostitele relace postupujte podle těchto pokynů.
 
 1. Pomocí protokol RDP (Remote Desktop Protocol) (RDP) se přímo do virtuálního počítače hostitele relace dostanou jako místní správce.
-2. Pokud jste to ještě neudělali, Stáhněte a importujte [modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, a pak spusťte tuto rutinu, abyste se mohli přihlásit ke svému účtu:
-
-    ```powershell
-    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-    ```
-
-3. Nainstalujte souběžný zásobník pomocí části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
+2. Nainstalujte souběžný zásobník pomocí části [Vytvoření fondu hostitelů pomocí prostředí PowerShell](create-host-pools-powershell.md).
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>Jak opravit souběžný zásobník virtuálních počítačů s Windows, který nefunguje správně
 
@@ -339,7 +339,7 @@ Znovu nasaďte hostitelský operační systém pomocí nejnovější verze image
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
-- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení potíží při vytváření fondu hostitelů v prostředí virtuálních ploch Windows najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 - Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .

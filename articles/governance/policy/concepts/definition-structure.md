@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d4a86f4d9f74cf17229467f19a3afa8bebcf40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187762"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613298"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -73,14 +73,14 @@ Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md
 
 **Režim** určuje, které typy prostředků se budou vyhodnocovat pro zásady. Podporované režimy:
 
-- `all`: vyhodnotit skupiny prostředků a všechny typy prostředků
+- `all`: vyhodnotit skupiny prostředků, předplatná a všechny typy prostředků
 - `indexed`: vyhodnotit jenom typy prostředků, které podporují značky a umístění.
 
 Například prostředek `Microsoft.Network/routeTables` podporuje značky a umístění a je vyhodnocován v obou režimech. Prostředek `Microsoft.Network/routeTables/routes` ale nemůže být tagovaný a není vyhodnocený `Indexed` v režimu.
 
 Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny definice zásad vytvořené prostřednictvím portálu používají `all` režim. Pokud používáte PowerShell nebo Azure CLI, můžete zadat parametr **Mode** ručně. Pokud definice zásady neobsahuje hodnotu **režimu** , použije se výchozí hodnota `all` v Azure PowerShell a `null` v rozhraní příkazového řádku Azure CLI. `null` Režim je stejný jako při použití `indexed` k podpoře zpětné kompatibility.
 
-`indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků**. Zásady, které vynutily umístění nebo značky ve skupině prostředků **mode** , by `all` měly nastavit režim na `Microsoft.Resources/subscriptions/resourceGroups` a konkrétně cílit na typ. Příklad najdete v tématu [vymáhání značek skupin prostředků](../samples/enforce-tag-rg.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
+`indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Zásady, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly `Microsoft.Resources/subscriptions/resourceGroups` nastavit `Microsoft.Resources/subscriptions` **režim** na `all` a konkrétně cílit na typ nebo. Příklad najdete v tématu [vymáhání značek skupin prostředků](../samples/enforce-tag-rg.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Režimy poskytovatele prostředků (Preview)
 

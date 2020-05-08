@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e7d61516b0b7fb9bab9aa0444a123ac932aaa56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509172"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744687"
 ---
 # <a name="m-series"></a>Řada M
 
-Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Velikosti řady M-Series jsou podporované v procesorech&reg; Intel&reg; Xeon E7-8890 V3 @ 2.50 GHz a Intel&reg; Xeon&reg; Platinum 8280M 2.7 GHz (Cascade Lake).
+Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Velikosti řady M-Series se podporují na procesorech&reg; Intel&reg; Xeon E7-8890 V3 @ 2.50 GHz a Intel&reg; Xeon&reg; Platinum 8280M (Cascade Lake).
 
 Funkce virtuálního počítače řady M-Series&reg; s technologií Intel Hyper-Threading.
 

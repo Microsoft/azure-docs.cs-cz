@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380811"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612278"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Ověřování a autorizace pro rozhraní API služby Azure Time Series Insights
 
@@ -93,7 +93,7 @@ V rámci **kroku 3**oddělení aplikace a přihlašovací údaje uživatele vám
 
    1. Token se pak může předat v `Authorization` hlavičce, když aplikace volá rozhraní Time Series Insights API.
 
-* Alternativně se mohou vývojáři rozhodnout k ověřování pomocí MSAL. Přečtěte si o [migraci na MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) a další informace najdete v článku [Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí jazyka C#](time-series-insights-manage-reference-data-csharp.md) . 
+* Alternativně se mohou vývojáři rozhodnout k ověřování pomocí MSAL. Přečtěte si o [migraci na MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) a další informace najdete v článku [Správa referenčních dat GA pro Azure Time Series Insights prostředí pomocí jazyka C#](time-series-insights-manage-reference-data-csharp.md) .
 
 ## <a name="common-headers-and-parameters"></a>Společné hlavičky a parametry
 
@@ -104,7 +104,7 @@ Tato část popisuje společné hlavičky a parametry požadavků protokolu HTTP
 
 ### <a name="authentication"></a>Authentication
 
-Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#). 
+Aby bylo možné provádět ověřené dotazy proti [Time Series Insights rozhraní REST API](https://docs.microsoft.com/rest/api/time-series-insights/), musí se v [autorizační hlavičce](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) předávat platný token OAuth 2,0 s použitím klienta REST podle vašeho výběru (post, JavaScript, C#).
 
 > [!TIP]
 > Přečtěte si [ukázkovou vizualizaci hostované Azure Time Series Insights klientské sady SDK](https://tsiclientsample.azurewebsites.net/) a Naučte se ověřovat pomocí rozhraní api pro Time Series Insights programově pomocí [klientské sady SDK pro JavaScript](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) spolu s grafy a grafy.
@@ -115,7 +115,7 @@ Požadované hlavičky požadavku jsou popsány níže.
 
 | Požadovaná hlavička žádosti | Popis |
 | --- | --- |
-| Autorizace | Chcete-li provést ověření pomocí Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. | 
+| Autorizace | Chcete-li provést ověření pomocí Time Series Insights, musí být do **autorizační** hlavičky předána platný nosný token OAuth 2,0. |
 
 > [!IMPORTANT]
 > Token se musí vystavit přesně `https://api.timeseries.azure.com/` prostředku (označuje se také jako "cílová skupina" tokenu).
@@ -154,7 +154,7 @@ Požadované parametry řetězce dotazu adresy URL závisí na verzi rozhraní A
 
 Volitelné parametry řetězce dotazu adresy URL zahrnují nastavení časového limitu pro dobu provádění požadavku HTTP.
 
-| Volitelný parametr dotazu | Popis | Version |
+| Volitelný parametr dotazu | Popis | Verze |
 | --- |  --- | --- |
 | `timeout=<timeout>` | Časový limit pro provedení požadavku HTTP na straně serveru. Dá se použít jenom pro [události Get prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) a rozhraní API pro [agregace prostředí](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) . Hodnota časového limitu by měla být ve formátu trvání ISO 8601 `"PT20S"` , například a měla by být `1-30 s`v rozsahu. Výchozí hodnota je `30 s`. | GA |
 | `storeType=<storeType>` | Pro prostředí ve verzi Preview s povoleným teplým úložištěm se dotaz dá spustit `WarmStore` buď `ColdStore`na nebo. Tento parametr v dotazu definuje, na kterém úložišti se má dotaz spustit. Pokud není definován, dotaz se spustí v chladírenském skladu. Pro dotazování na záložní úložiště musí být **storeType** nastavené na `WarmStore`. Pokud není definován, dotaz se spustí pro chladírenský sklad. | Preview |
