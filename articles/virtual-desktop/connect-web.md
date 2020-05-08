@@ -8,14 +8,20 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8023c0927c05d3952bd9f3a51e99e85154552fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 70fd29944d31682de5a6a34f76fdf27e3ff7d3ff
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656364"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607839"
 ---
 # <a name="connect-with-the-web-client"></a>Připojení k webovému klientovi
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/connect-web-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Webový klient umožňuje přístup k prostředkům virtuálního počítače s Windows z webového prohlížeče bez procesu instalace.
 
@@ -36,7 +42,7 @@ I když by měl prohlížeč podporující technologii HTML5 fungovat, oficiáln
 
 ## <a name="access-remote-resources-feed"></a>Přístup ke vzdáleným prostředkům kanálu
 
-V prohlížeči přejděte do [webového klienta virtuální plochy Windows](https://rdweb.wvd.microsoft.com/webclient) a přihlaste se pomocí svého uživatelského účtu.
+V prohlížeči přejděte do [webového klienta virtuální plochy Windows](https://rdweb.wvd.microsoft.com/arm/webclient) a přihlaste se pomocí svého uživatelského účtu.
 
 >[!NOTE]
 >Pokud jste se už přihlásili pomocí jiného účtu Azure Active Directory, než který chcete použít pro virtuální plochu Windows, měli byste se buď odhlásit, nebo použít soukromé okno prohlížeče.

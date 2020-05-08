@@ -1,27 +1,25 @@
 ---
-title: Referenční dokumentace atributu Workday | Microsoft Docs
+title: Referenční informace k atributu Workday
 description: Informace o tom, které atributy z SuccessFactors jsou podporované SuccessFactors zřizováním na základě lidských zdrojů
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112877"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593059"
 ---
 # <a name="workday-attribute-reference"></a>Referenční informace k atributu Workday
+
 V této části najdete seznam atributů, které můžete načíst z Workday pomocí dotazů XPATH. V závislosti na verzi rozhraní API webových služeb Workday, kterou plánujete použít, se podívejte na příslušnou část. 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>Hodnoty XPATH pro webové služby Workday (WWS) API v 21.1
@@ -29,7 +27,7 @@ V této části najdete seznam atributů, které můžete načíst z Workday pom
 
 Následující tabulka zachycuje seznam atributů Workday a odpovídající výrazy XPATH, které se dodávají z boxu pomocí konektoru pro příchozí zřizování aplikace v Workday. 
 
-| \# | Název                                  | Výraz rozhraní API pro Workday                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Name                                  | Výraz rozhraní API pro Workday                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktivní                                | nečinnost: pracovní proces/přenos\_dat pracovního procesu/meziprocesu: data o\_zaměstnání\_/přenosová data/meziprocesy\_: aktivní/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | oboustranný: pracovní proces/přenos\_dat pracovního procesu/podprocesu\_: data o\_zaměstnání/přenosová data\_:\_umístění\_dat/přenos: data\_z souhrnu firemních\_dat\_/\[@wd:Typepřenosová data\_/\_přenosová\]data: řádek adresy = ' řádek adresy 2 '/text\(\)                                                                                                                                                                                                                             |
@@ -117,7 +115,7 @@ Následující tabulka zachycuje seznam atributů Workday a odpovídající výr
 Pokud používáte rozhraní API WWS v 30.0 a vyšší, než zapnete úlohu zřizování, aktualizujte prosím **výrazy rozhraní API XPath** v části **mapování atributů – > upřesnit možnosti – > upravit seznam atributů pro Workday** , aby používal níže uvedené hodnoty. Pokud chcete nakonfigurovat další XPATH, přečtěte si část [kurz: Správa konfigurace](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration). 
 
 
-| \# | Název                                  | Výraz rozhraní XPATH pro cestu pracovního dne                                                                                                                                                                                                                                                                                                                                                |
+| \# | Name                                  | Výraz rozhraní XPATH pro cestu pracovního dne                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktivní                                | nečinnost: pracovní proces/přenos\_dat pracovního procesu/meziprocesu: data o\_zaměstnání\_/přenosová data/meziprocesy\_: aktivní/text\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | oboustranný: Work//WD:\_Work data/přenosová\_data/přenosová data\_/\_\[@wd:Primary\_podprocesy:\]úloha pracovní úlohy\_pracovního procesu = 1\_:\_umístění\_dat/mezipřenosová\_data: data o souhrnu\_firemních dat/přenosová data/přenosová data: řádek\[@wd:Type\_adresy = ' řádek\_\_adresy 2 '\]/text\(\)                                                                                                                                                            |

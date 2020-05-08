@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415981"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598160"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>Správa aplikací logiky v Azure Portal
 
@@ -145,6 +145,10 @@ Odstranění vaší aplikace logiky má vliv na instance pracovního postupu v t
 * Všechny probíhající a probíhající běhy pokračují, dokud se nedokončí. V závislosti na počtu těchto spuštění může tento proces nějakou dobu trvat.
 
 * Modul Logic Apps nevytvoří ani nespustí nové instance pracovního postupu.
+
+> [!NOTE]
+> Pokud odstraníte a znovu vytvoříte podřízenou aplikaci logiky, musíte znovu uložit nadřazenou aplikaci logiky. Znovu vytvořená podřízená aplikace bude mít odlišná metadata.
+> Pokud neuložíte znovu nadřazenou aplikaci logiky po opětovném vytvoření podřízené aplikace, vaše volání podřízené aplikace logiky se nezdaří s chybou "Neautorizováno". Toto chování se vztahuje na aplikace logiky nadřazeného a podřízeného objektu, například na ty, které používají artefakty v integračních účtech nebo volají službu Azure Functions.
 
 <a name="delete-single-logic-app"></a>
 

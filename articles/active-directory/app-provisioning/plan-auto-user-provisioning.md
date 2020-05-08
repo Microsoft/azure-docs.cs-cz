@@ -10,14 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/17/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d2f284fddfc49632e467adbf5877856b40a81dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 4f391a2fce669c2684ac5001e3659247adfeb4f6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522406"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593535"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Naplánování nasazení automatického zřizování uživatelů
 
@@ -27,7 +26,7 @@ Azure Active Directory (Azure AD) Automatické zřizování uživatelů zjednodu
 
 Další informace najdete v tématu [Automatizace zřizování a rušení uživatelů při SaaS aplikací pomocí Azure Active Directory](../app-provisioning/user-provisioning.md) pro lepší pochopení funkčnosti.
 
-## <a name="learn"></a>Informace
+## <a name="learn"></a>Learn
 
 Zřizování uživatelů vytvoří základ pro průběžné řízení identit a vylepšuje kvalitu obchodních procesů, které spoléhají na data autoritativní identity.
 
@@ -51,7 +50,7 @@ Služba Azure AD poskytuje samoobslužnou integraci jakékoli aplikace pomocí �
 
 Pro aplikace, které chcete automaticky zřídit, budete potřebovat příslušné licence. Prodiskutujte s vlastníky aplikace bez ohledu na to, zda uživatelé přiřazení k aplikaci mají správné licence na své aplikační role. Pokud Azure AD spravuje Automatické zřizování na základě rolí, musí se role přiřazené v Azure AD zarovnat k licencím na aplikace. Nesprávné licence vlastněné v aplikaci mohou vést k chybám během zřizování nebo aktualizace uživatele.
 
-### <a name="terms"></a>Výrazy
+### <a name="terms"></a>Terminologie
 
 Tento článek používá následující výrazy:
 

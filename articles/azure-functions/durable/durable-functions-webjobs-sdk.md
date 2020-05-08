@@ -4,12 +4,12 @@ description: Naučte se, jak kódovat a nakonfigurovat Durable Functions pro spo
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232742"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733409"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Jak spustit Durable Functions jako WebJobs
 
@@ -19,7 +19,7 @@ Ve výchozím nastavení používá Durable Functions k hostování orchestrací
 
 Ve verzi 3. x sady WebJobs SDK je hostitel implementací `IHost`a ve verzi 2. x použijete `JobHost` objekt.
 
-Ukázka řetězení Durable Functions je k dispozici v sadě WebJobs SDK 2. x: Stáhněte nebo naklonujte [úložiště Durable Functions](https://github.com/azure/azure-functions-durable-extension/)a pokračujte do složky *\\Samples\\webjobssdk Chaining* .
+Ukázka řetězení Durable Functions je k dispozici v sadě WebJobs SDK 2. x: Stáhněte nebo naklonujte [úložiště Durable Functions](https://github.com/azure/azure-functions-durable-extension/)a zarezervujte větev *v1* a pokračujte na složku *\\Samples webjobssdk\\Chaining* .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -184,7 +184,7 @@ while (true)
 
 Máte Durable Functions nastavené tak, aby se spouštěla jako webová úloha, a teď už rozumíte tomu, jak se to bude lišit od spuštění Durable Functions jako samostatné Azure Functions. V tomto okamžiku může být užitečné, když vidíte, že funguje ve vzorku.
 
-Tato část poskytuje přehled o tom, jak spustit [vzorový projekt](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining). Podrobné pokyny, které vysvětlují, jak spustit projekt sady WebJobs v místním počítači a jak ho nasadit do úlohy Azure WebJob, najdete v tématu Začínáme [se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Tato část poskytuje přehled o tom, jak spustit [vzorový projekt](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining). Podrobné pokyny, které vysvětlují, jak spustit projekt sady WebJobs v místním počítači a jak ho nasadit do úlohy Azure WebJob, najdete v tématu Začínáme [se sadou WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Spuštění v místním prostředí
 

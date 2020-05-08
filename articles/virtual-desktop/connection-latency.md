@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128192"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607397"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Určení latence připojení uživatele ve virtuální ploše Windows
 
@@ -29,4 +29,4 @@ Virtuální plocha Windows používá Traffic Manager Azure, která kontroluje u
 
 - Pokud chcete zjistit nejlepší umístění pro optimální latenci, přečtěte si [Nástroj Estimator pro Windows Virtual Desktop Experience](https://azure.microsoft.com/services/virtual-desktop/assessment/).
 - Cenové tarify najdete v tématu [ceny pro virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-desktop/).
-- Pokud chcete začít s nasazením virtuálního počítače s Windows, přečtěte si [náš kurz](tenant-setup-azure-active-directory.md).
+- Pokud chcete začít s nasazením virtuálního počítače s Windows, přečtěte si [náš kurz](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

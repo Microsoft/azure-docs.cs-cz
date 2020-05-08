@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049731"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610441"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Řešení potíží s připojením služby Azure AD
 Tento článek vysvětluje, jak funguje konektivita mezi Azure AD Connect a Azure AD a jak řešit problémy s připojením. Tyto problémy se pravděpodobně zobrazují v prostředí s proxy server.
@@ -31,7 +32,7 @@ Azure AD Connect používá moderní ověřování (pomocí knihovny ADAL) pro o
 
 V tomto článku se dozvíte, jak se Fabrikam připojuje k Azure AD prostřednictvím jeho proxy serveru. Proxy server má název fabrikamproxy a používá port 8080.
 
-Nejdřív je potřeba zajistit, aby byl soubor [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.  
+Nejdřív je potřeba zajistit, aby byl soubor [**Machine. config**](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Průvodce instalací používá dva různé kontexty zabezpečení. Na stránce 
 Následující problémy jsou nejběžnější chyby, se kterými se setkáte v Průvodci instalací nástroje.
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>Průvodce instalací nebyl správně nakonfigurován.
-Tato chyba se zobrazí, pokud se samotný průvodce nemůže připojit k proxy serveru.  
+Tato chyba se zobrazí, pokud se samotný průvodce nemůže připojit k proxy serveru.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * Pokud se zobrazí tato chyba, zkontrolujte, jestli je soubor [Machine. config](how-to-connect-install-prerequisites.md#connectivity) správně nakonfigurovaný.
 * Pokud to vypadá správně, postupujte podle kroků v tématu [ověření připojení proxy serveru](#verify-proxy-connectivity) a zjistěte, jestli se problém vyskytuje i mimo průvodce.
 
 ### <a name="a-microsoft-account-is-used"></a>Používá se účet Microsoft.
-Pokud místo **školy nebo účtu organizace** použijete **účet Microsoft** , zobrazí se obecná chyba.  
+Pokud místo **školy nebo účtu organizace** použijete **účet Microsoft** , zobrazí se obecná chyba.
 ![Používá se účet Microsoft.](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>Koncový bod MFA není dostupný.
-Tato chyba se zobrazí, pokud **https://secure.aadcdn.microsoftonline-p.com** koncový bod není dostupný a váš globální správce má povolený MFA.  
+Tato chyba se zobrazí, pokud **https://secure.aadcdn.microsoftonline-p.com** koncový bod není dostupný a váš globální správce má povolený MFA.
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * Pokud se zobrazí tato chyba, ověřte, že se do proxy serveru přidal koncový bod **Secure.aadcdn.microsoftonline-p.com** .
 
 ### <a name="the-password-cannot-be-verified"></a>Heslo nelze ověřit.
-Pokud se Průvodce instalací úspěšně připojí k Azure AD, ale samotné heslo se nedá ověřit, zobrazí se tato chyba:  
-![Chybné heslo](./media/tshoot-connect-connectivity/badpassword.png)
+Pokud se Průvodce instalací úspěšně připojí k Azure AD, ale samotné heslo se nedá ověřit, zobrazí se toto: ![chybné heslo.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Je heslo dočasné heslo a musí se změnit? Je vlastně správné heslo? Zkuste se přihlásit k `https://login.microsoftonline.com` (na jiném počítači, než je server Azure AD Connect), a ověřte, že je účet použitelný.
 
@@ -186,7 +186,7 @@ Ověřování bylo úspěšné, ale v Azure AD PowerShellu je problém s ověře
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>Je potřeba role globálního správce služby Azure AD.
-Uživatel byl úspěšně ověřen. Uživatel ale nemá přiřazenou roli globálního správce. Tímto [způsobem můžete uživateli přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) . 
+Uživatel byl úspěšně ověřen. Uživatel ale nemá přiřazenou roli globálního správce. Tímto [způsobem můžete uživateli přiřadit roli globálního správce](../users-groups-roles/directory-assign-admin-roles.md) .
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Zobrazuje se v Průvodci instalací jako Neočekávaná chyba. K tomu může doj
 ## <a name="troubleshooting-steps-for-previous-releases"></a>Postup řešení potíží pro předchozí verze.
 V případě verzí začínajících číslem buildu 1.1.105.0 (vydáno 2016) bylo vyřazení Pomocník pro přihlášení. Tato část a tato konfigurace by se už neměla vyžadovat, ale je zachovaná jako referenční.
 
-Aby pomocník jednotného přihlašování fungoval, musí být nakonfigurováno WinHTTP. Tuto konfiguraci můžete provést pomocí [**příkazu netsh**](how-to-connect-install-prerequisites.md#connectivity).  
+Aby pomocník jednotného přihlašování fungoval, musí být nakonfigurováno WinHTTP. Tuto konfiguraci můžete provést pomocí [**příkazu netsh**](how-to-connect-install-prerequisites.md#connectivity).
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>Pomocník pro přihlášení není správně nakonfigurovaný.

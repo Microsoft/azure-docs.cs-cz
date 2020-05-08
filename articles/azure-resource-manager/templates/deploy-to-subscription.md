@@ -2,13 +2,13 @@
 title: Nasazení prostředků do předplatného
 description: Popisuje postup vytvoření skupiny prostředků v Azure Resource Manager šabloně. Také ukazuje, jak nasadit prostředky v oboru předplatného Azure.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605008"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610815"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Vytvoření skupin prostředků a prostředků na úrovni předplatného
 
@@ -20,6 +20,7 @@ Pokud chcete nasadit šablony na úrovni předplatného, použijte rozhraní př
 
 Na úrovni předplatného můžete nasadit následující typy prostředků:
 
+* [podrobné plány](/azure/templates/microsoft.blueprint/blueprints)
 * [projektů](/azure/templates/microsoft.consumption/budgets)
 * [nasazení](/azure/templates/microsoft.resources/deployments) – pro vnořené šablony, které se nasazují do skupin prostředků.
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ Následující příklad vytvoří skupinu prostředků a nasadí účet úloži
 }
 ```
 
-## <a name="create-policies"></a>Vytvoření zásad
+## <a name="azure-policy"></a>Azure Policy
 
-### <a name="assign-policy"></a>Přiřadit zásady
+### <a name="assign-policy-definition"></a>Přiřazení definice zásady
 
-Následující příklad přiřadí existující definici zásady k předplatnému. Pokud zásady přebírají parametry, poskytněte je jako objekt. Pokud zásada nepřijímá parametry, použijte výchozí prázdný objekt.
+Následující příklad přiřadí existující definici zásady k předplatnému. Pokud definice zásad přijímá parametry, poskytněte je jako objekt. Pokud definice zásady nepřijímá parametry, použijte výchozí prázdný objekt.
 
 ```json
 {
@@ -285,7 +286,7 @@ Následující příklad přiřadí existující definici zásady k předplatné
 Pokud chcete tuto šablonu nasadit pomocí Azure CLI, použijte:
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>Definování a přiřazení zásad
+### <a name="create-and-assign-policy-definitions"></a>Vytvoření a přiřazení definic zásad
 
-Můžete [definovat](../../governance/policy/concepts/definition-structure.md) a přiřadit zásady ve stejné šabloně.
+Definici zásady můžete [definovat](../../governance/policy/concepts/definition-structure.md) a přiřadit ve stejné šabloně.
 
 ```json
 {
@@ -357,7 +358,7 @@ Můžete [definovat](../../governance/policy/concepts/definition-structure.md) a
 }
 ```
 
-Pokud chcete ve svém předplatném vytvořit definici zásady a použít ji v předplatném, použijte následující příkaz CLI:
+Pokud chcete vytvořit definici zásady v rámci vašeho předplatného a přiřadit ji k předplatnému, použijte následující příkaz CLI:
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure Blueprint
+
+### <a name="create-blueprint-definition"></a>Vytvořit definici podrobného plánu
+
+Definici podrobného plánu můžete [vytvořit](../../governance/blueprints/tutorials/create-from-sample.md) ze šablony.
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+Pokud chcete ve svém předplatném vytvořit definici podrobného plánu, použijte následující příkaz rozhraní příkazového řádku:
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+Pokud chcete tuto šablonu nasadit pomocí PowerShellu, použijte:
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Ukázky šablon

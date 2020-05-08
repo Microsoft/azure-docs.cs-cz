@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74026545"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582729"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Řešení potíží se skupinami a řešení problémů
 
@@ -43,7 +43,7 @@ Zakázání vytváření skupin pro uživatele, kteří nejsou správci, v Power
    ```
 
 <br/>**Při pokusu o vytvoření dynamické skupiny v prostředí PowerShell se mi zobrazila chyba maximálního počtu povolených skupin**<br/>
-Pokud se v PowerShellu zobrazí zpráva, že _bylo dosaženo maximálního počtu povolených skupin pro dynamické zásady skupiny_, znamená to, že jste dosáhli maximálního limitu pro dynamické skupiny ve vašem tenantovi. Maximální počet dynamických skupin na tenanta je 5 000.
+Pokud se v PowerShellu zobrazí zpráva, že se _dosáhlo maximálního počtu povolených skupin zásad dynamické skupiny_, znamená to, že jste dosáhli maximálního limitu pro dynamické skupiny ve vaší organizaci. Maximální počet dynamických skupin na organizaci je 5 000.
 
 Pokud chcete vytvořit nové dynamické skupiny, musíte nejdřív odstranit některé existující dynamické skupiny. Neexistuje žádný způsob, jak tento limit navýšit.
 
@@ -53,7 +53,7 @@ Pokud chcete vytvořit nové dynamické skupiny, musíte nejdřív odstranit ně
 1. Ověřte hodnoty atributů uživatele nebo zařízení v pravidle. Ujistěte se, že existují uživatelé, kteří pravidlo splní. U zařízení zkontrolujte vlastnosti zařízení a zajistěte, aby synchronizované atributy obsahovaly očekávané hodnoty.<br/>
 2. Zkontrolujte stav zpracování členství a potvrďte, zda je dokončeno. [Stav zpracování členství](groups-create-rule.md#check-processing-status-for-a-rule) a datum poslední aktualizace můžete ověřit na stránce **Přehled** pro danou skupinu.
 
-Pokud vše vypadá dobře, počkejte prosím nějakou dobu, než se skupina naplní. V závislosti na velikosti tenanta může první naplnění skupiny nebo její naplnění po změně pravidel trvat až 24 hodin.
+Pokud vše vypadá dobře, počkejte prosím nějakou dobu, než se skupina naplní. V závislosti na velikosti vaší organizace Azure AD může tato skupina trvat až 24 hodin, než se poprvé naplní nebo se změní pravidlo.
 
 **Nakonfiguroval (a) jsem pravidlo, ale teď se odeberou stávající členové pravidla**<br/>Toto chování je očekávané. Existující členové skupiny se odeberou, když je pravidlo povolené nebo se změní. Uživatelé, kteří se vrátili z vyhodnocení pravidla, se přidají do skupiny jako členové.
 

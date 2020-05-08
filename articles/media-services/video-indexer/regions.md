@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382745"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594946"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Oblasti Azure, ve kterých Video Indexer existuje
 
@@ -23,7 +23,7 @@ Rozhraní Video Indexer API obsahují parametr **Location** , který byste měli
 
 ## <a name="locations"></a>Umístění
 
-Parametru **Location** se musí jako jeho hodnota přidávat název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste jako hodnotu vložit *"zkušební"* . Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](/cli/azure)spustit následující řádek:
+`location` Parametr musí mít jako svou hodnotu název kódu oblasti Azure. Pokud používáte Video Indexer v režimu náhledu, měli byste ho umístit `"trial"` jako hodnotu. `trial`je výchozí hodnota pro `location` parametr. Jinak, pokud chcete získat název kódu oblasti Azure, ve které je váš účet, a na to, že se má vaše volání směrovat, můžete v [Azure CLI](/cli/azure)spustit následující řádek:
 
 ```azurecli-interactive
 az account list-locations

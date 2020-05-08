@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72244635"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607822"
 ---
-# <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: ověřování | Hrozeb 
+# <a name="security-frame-authentication--mitigations"></a>Rámec zabezpečení: ověřování | Hrozeb
 
 | Produkt/služba | Článek |
 | --------------- | ------- |
@@ -44,8 +45,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -55,8 +56,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -66,8 +67,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -77,8 +78,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -88,8 +89,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -99,8 +100,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -110,8 +111,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webová aplikace |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -121,8 +122,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | databáze |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | OnPrem |
 | **Atributy**              | SQL verze – vše |
 | **Odkazy**              | [SQL Server – výběr režimu ověřování](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | databáze |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | SQL Azure |
 | **Atributy**              | SQL verze – V12 |
 | **Odkazy**              | [Připojení k SQL Database pomocí ověřování Azure Active Directory](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,8 +144,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | databáze |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Zásady hesla SQL Server](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -154,8 +155,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | databáze | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | databáze |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | OnPrem, SQL Azure |
 | **Atributy**              | SQL verze – MSSQL2012, verze SQL – V12 |
 | **Odkazy**              | [Osvědčené postupy zabezpečení s databázemi s omezením](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,8 +166,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure Event Hub | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure Event Hub |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Přehled ověřování a modelu zabezpečení Event Hubs](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -176,8 +177,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Hranice důvěry Azure | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Hranice důvěry Azure |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Co je Azure Multi-Factor Authentication?](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -187,8 +188,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Service Fabric hranice důvěryhodnosti |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure  |
 | **Odkazy**              | [Service Fabric scénáře zabezpečení clusteru](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Service Fabric hranice důvěryhodnosti |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure, prostředí – samostatné |
 | **Odkazy**              | [Service Fabric zabezpečení certifikátu klienta na uzel](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security), [Připojte se k zabezpečenému clusteru pomocí klientského certifikátu](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) . |
@@ -209,8 +210,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Service Fabric hranice důvěryhodnosti |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure |
 | **Odkazy**              | [Scénáře zabezpečení clusteru – doporučení pro zabezpečení](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Service Fabric hranice důvěryhodnosti | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Service Fabric hranice důvěryhodnosti |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Prostředí – Azure |
 | **Odkazy**              | [Certifikáty X. 509 a Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,8 +232,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Server identit | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Server identit |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [IdentityServer3 – velký obrázek](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -242,8 +243,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Server identit | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Server identit |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Nasazení serveru identity – ukládání do mezipaměti](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -253,8 +254,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Hranice důvěryhodnosti počítače | 
-| **Fáze SDL**               | Nasazení |  
+| **Komponenta**               | Hranice důvěryhodnosti počítače |
+| **Fáze SDL**               | Nasazení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -264,8 +265,8 @@ ms.locfileid: "72244635"
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | WCF | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | WCF |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | – |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -304,8 +305,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | WCF | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | WCF |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | .NET Framework 3 |
 | **Atributy**              | Typ přihlašovacích údajů klienta – žádné |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | WCF | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | WCF |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné, .NET Framework 3 |
 | **Atributy**              | Typ přihlašovacích údajů klienta – žádné |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,8 +337,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Webové rozhraní API | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Webové rozhraní API |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Ověřování a autorizace ve webovém rozhraní api ASP.NET](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api), [služby externích ověřování s webovým rozhraním API ASP.NET (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -347,8 +348,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure AD | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure AD |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Scénáře ověřování pro Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/), [Azure Active Directory ukázky kódu](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/) [Azure Active Directory příručka pro vývojáře](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -358,8 +359,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure AD | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure AD |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Moderní ověřování pomocí Azure Active Directory pro webové aplikace s](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) [využitím Redis jako mezipaměti tokenů ADAL](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -369,8 +370,8 @@ Nakonfigurujte službu MSMQ tak, aby pro každou příchozí nebo odchozí zprá
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure AD | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure AD |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [Moderní ověřování pomocí Azure Active Directory pro webové aplikace](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -430,8 +431,8 @@ Počítejte s tím, že pokud chcete otestovat efektivitu této konfigurace, př
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure AD | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure AD |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -441,8 +442,8 @@ Počítejte s tím, že pokud chcete otestovat efektivitu této konfigurace, př
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Brána pole IoT | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Brána pole IoT |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | –  |
 | **Odkazy**              | –  |
@@ -452,11 +453,11 @@ Počítejte s tím, že pokud chcete otestovat efektivitu této konfigurace, př
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Cloudová brána IoT | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Cloudová brána IoT |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Generic, C#, Node. JS,  |
 | **Atributy**              | Není k dispozici, volba brány – Azure IoT Hub |
-| **Odkazy**              | Není k dispozici, [Azure IoT Hub s .NET](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [Začínáme se službou IoT Hub a Node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [zabezpečení IoT pomocí SAS a certifikátů](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [úložiště Git](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **Odkazy**              | Není k dispozici, [Azure IoT Hub s .NET](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/), [Začínáme se službou IoT Hub a Node js](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted), [zabezpečení IoT pomocí SAS a certifikátů](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/), [úložiště Git](https://github.com/Azure/azure-iot-sdks/) |
 | **Uvedené** | <ul><li>**Obecné:** Ověřte zařízení pomocí protokolu TLS (Transport Layer Security) nebo IPSec. Infrastruktura by měla podporovat použití předsdíleného klíče (PSK) na zařízeních, která nemůžou zpracovávat úplný asymetrický kryptografii. Využijte Azure AD, OAuth.</li><li>**Jazyk C#:** Při vytváření instance DeviceClient ve výchozím nastavení vytvoří metoda Create instanci DeviceClient, která k komunikaci s IoT Hub používá protokol AMQP. Pokud chcete používat protokol HTTPS, použijte přepis metody Create, který umožňuje určit protokol. Pokud používáte protokol HTTPS, měli byste do svého projektu přidat také `Microsoft.AspNet.WebApi.Client` balíček NuGet, aby zahrnoval `System.Net.Http.Formatting` obor názvů.</li></ul>|
 
 ### <a name="example"></a>Příklad
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* Připojit pomocí tokenu SAS: 
+* Připojit pomocí tokenu SAS:
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>Certifikáty
 * Vygenerujte certifikát podepsaný svým vlastníkem pomocí libovolného nástroje, jako je třeba OpenSSL, a vygenerujte soubory. CERT a. Key pro uložení certifikátu a klíč v uvedeném pořadí.
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Cloudová brána IoT  | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Cloudová brána IoT  |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | Volba brány – Azure IoT Hub |
 | **Odkazy**              | [Tokeny zabezpečení Azure IoT Hub](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure Storage | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure Storage |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | StorageType – objekt BLOB |
 | **Odkazy**              | [Správa anonymního přístupu pro čtení kontejnerů a objektů BLOB](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/), [podpisů sdíleného přístupu, část 1: Principy modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,8 +575,8 @@ await deviceClient.SendEventAsync(message);
 
 | Nadpis                   | Podrobnosti      |
 | ----------------------- | ------------ |
-| **Komponenta**               | Azure Storage | 
-| **Fáze SDL**               | Sestavení |  
+| **Komponenta**               | Azure Storage |
+| **Fáze SDL**               | Sestavení |
 | **Použitelné technologie** | Obecné |
 | **Atributy**              | – |
 | **Odkazy**              | [Signatury sdíleného přístupu, část 1: Princip modelu SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/), [podpisů sdíleného přístupu, část 2: vytvoření a použití SAS s úložištěm BLOB](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/), [Postup delegování přístupu k objektům ve vašem účtu pomocí sdílených přístupových podpisů a zásad uložených přístupu](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087389"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580677"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Případy použití ve verzi Preview pro Azure Time Series Insights
 
@@ -42,13 +42,13 @@ Okamžitě Prozkoumejte a analyzujte miliardy událostí a zjistěte anomálie a
 
 Většina zákazníků souhlasí s tím, že minimální doba potřebná k získání přehledu je jednou z největší funkcí Time Series Insights:
 
-* Time Series Insights nevyžaduje žádnou přípravu dat předem. 
-* Umožňuje vám rychle se připojit k miliardám událostí ve službě Azure IoT Hub nebo instancích Azure Event Hubs v řádu minut. 
+* Time Series Insights nevyžaduje žádnou přípravu dat předem.
+* Umožňuje vám rychle se připojit k miliardám událostí ve službě Azure IoT Hub nebo instancích Azure Event Hubs v řádu minut.
 * Po připojení můžete vizualizovat a analyzovat miliardy událostí a odhalit anomálie a zjišťovat skryté trendy ve vašich datech.
 
 Time Series Insights je intuitivní a snadno se používá. S daty můžete pracovat, aniž byste museli psát jediný řádek kódu. K dispozici není také žádný nový jazyk, který byste si museli učit, i když Time Series Insights poskytuje podrobný dotazovací jazyk založený na textu pro pokročilé uživatele, kteří znají SQL. Nabízí také průzkum vybrat a kliknout pro ně.
 
-Zákazníci můžou využít rychlost a rychle diagnostikovat problémy související s assety. Můžou provádět analýzu DevOps a získat tak hlavní příčinu chyby v řešení IoT. Můžou také označovat oblasti, které je potřeba označit k dalšímu šetření v rámci svých iniciativ v oblasti datových věd. 
+Zákazníci můžou využít rychlost a rychle diagnostikovat problémy související s assety. Můžou provádět analýzu DevOps a získat tak hlavní příčinu chyby v řešení IoT. Můžou také označovat oblasti, které je potřeba označit k dalšímu šetření v rámci svých iniciativ v oblasti datových věd.
 
 Existují tři základní způsoby, jak pracovat s daty uloženými v Time Series Insights:
 

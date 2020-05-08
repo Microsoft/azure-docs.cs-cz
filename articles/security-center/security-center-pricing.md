@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: f4379a5149fff020eb532f0e17cc1c37fbdcd694
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232423"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612788"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Upgradovat na úroveň Standard pro rozšířené zabezpečení
 
@@ -49,9 +49,12 @@ Postup získání úrovně Standard:
 [![Ceny Security Center](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
-> Pokud chcete povolit všechny Security Center funkce včetně pokročilých funkcí ochrany před internetovými útoky, musíte použít cenovou úroveň Standard na předplatné, které obsahuje příslušné úlohy. Konfigurace cen pro pracovní prostor nepovoluje přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a zjišťování sítě pro prostředky Azure. 
+> Pokud chcete povolit všechny Security Center funkce včetně funkcí ochrany před hrozbami, musíte použít cenovou úroveň Standard na předplatné, které obsahuje příslušné úlohy. Konfigurace cen pro pracovní prostor nepovoluje přístup k virtuálnímu počítači za běhu, adaptivní řízení aplikací a zjišťování sítě pro prostředky Azure. 
 >
-> V současné době jsou v současnosti jedinou úlohou, kterou je možné povolit na úrovni prostředků, aby se chránily jednotlivé úlohy úložiště/SQL, je Security Center ochrana před hrozbami pro účty úložiště a PaaS servery SQL/MySQL/PG.
+> Ochranu před hrozbami pro **účty Azure Storage** můžete povolit na úrovni předplatného nebo na úrovni prostředků.
+> Ochranu před hrozbami pro **Azure SQL Database SQL servery** můžete povolit buď na úrovni předplatného, nebo na úrovni prostředků.
+> Ochranu před hrozbami pro **Azure Database for MariaDB/MySQL/PostgreSQL** můžete povolit jenom na úrovni prostředků.
+
 
 ## <a name="why-upgrade-to-standard"></a>Proč upgradovat na úroveň Standard?
 Security Center nabízí vylepšené zabezpečení a ochranu před hrozbami pro úlohy hybridního cloudu, včetně:

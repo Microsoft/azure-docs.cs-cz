@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314755"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610968"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Kompletní řešení potíží pomocí metrik a protokolování služby Azure Storage, nástrojů AzCopy a Message Analyzer
 
@@ -161,7 +161,7 @@ Analyzátor zpráv obsahuje prostředky pro Azure Storage, které vám pomůžou
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Stažení a instalace analyzátoru zpráv a Azure Storage prostředků
 
-1. Stáhněte [analyzátor zpráv](https://www.microsoft.com/download/details.aspx?id=44226) z webu Microsoft Download Center a spusťte instalační program.
+1. Stáhněte si [analyzátor zpráv](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
 2. Spusťte analyzátor zpráv.
 3. V nabídce **nástroje** vyberte **Správce prostředků**. V dialogovém okně **Správce prostředků** vyberte **položky ke stažení**a pak filtrujte **Azure Storage**. Zobrazí se Azure Storage prostředky, jak je znázorněno na obrázku níže.
 4. Kliknutím na **synchronizovat všechny zobrazené položky** nainstalujete Azure Storage assety. Dostupné prostředky zahrnují:
@@ -311,14 +311,14 @@ Teď, když jste obeznámeni s tím, že k analýze dat protokolů používáte 
 | Neočekávaná zpoždění při doručování zpráv ve frontě |AzureStorageClientDotNetV4. Description obsahuje "opakování neúspěšné operace". |Klient |
 | Zvýšení HTTP v PercentThrottlingError |HTTP. Response. StatusCode = = 500 &#124;&#124; HTTP. Response. StatusCode = = 503 |Síť |
 | Zvýšení v PercentTimeoutError |HTTP. Response. StatusCode = = 500 |Síť |
-| Zvýšení v PercentTimeoutError (vše) |* StatusCode = = 500 |Všechny |
+| Zvýšení v PercentTimeoutError (vše) |* StatusCode = = 500 |Vše |
 | Zvýšení v PercentNetworkError |AzureStorageClientDotNetV4. EventLogEntry. Level < 2 |Klient |
 | Zprávy HTTP 403 (Zakázáno) |HTTP. Response. StatusCode = = 403 |Síť |
 | Zprávy HTTP 404 (Nenalezeno) |HTTP. Response. StatusCode = = 404 |Síť |
-| 404 (vše) |* StatusCode = = 404 |Všechny |
+| 404 (vše) |* StatusCode = = 404 |Vše |
 | Problém s autorizací sdíleného přístupového podpisu (SAS) |AzureStorageLog. stavem žádosti = = "SASAuthorizationError" |Síť |
 | Zprávy HTTP 409 (Konflikt) |HTTP. Response. StatusCode = = 409 |Síť |
-| 409 (vše) |* StatusCode = = 409 |Všechny |
+| 409 (vše) |* StatusCode = = 409 |Vše |
 | Nízké PercentSuccess nebo položky protokolu analýzy mají operace se stavem transakce ClientOtherErrors. |AzureStorageLog. stavem žádosti = = "ClientOtherError" |Server |
 | Upozornění Nagle |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) a (AzureStorageLog. RequestPacketSize <1460) a (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |Server |
 | Časový rozsah v protokolech serveru a sítě |#Timestamp >= 2014-10-20T16:36:38 a #Timestamp <= 2014-10-20T16:36:39 |Server, síť |
@@ -329,7 +329,7 @@ Teď, když jste obeznámeni s tím, že k analýze dat protokolů používáte 
 Další informace o řešení potíží se všemi koncovými scénáři v Azure Storage najdete v těchto zdrojích informací:
 
 * [Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md)
-* [Analýza úložiště](https://msdn.microsoft.com/library/azure/hh343270.aspx)
+* [Storage Analytics](https://msdn.microsoft.com/library/azure/hh343270.aspx)
 * [Monitorování účtu úložiště na webu Azure Portal](storage-monitor-storage-account.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
 * [Provozní příručka nástroje Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)

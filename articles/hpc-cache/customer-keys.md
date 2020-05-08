@@ -4,14 +4,14 @@ description: Použití Azure Key Vault s mezipamětí Azure HPC k řízení př�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195073"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597735"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Použití šifrovacích klíčů spravovaných zákazníkem pro mezipaměť HPC Azure
 
@@ -20,11 +20,7 @@ Azure Key Vault můžete použít k řízení vlastnictví klíčů používaný
 > [!NOTE]
 > Všechna data uložená v Azure, včetně na discích mezipaměti, jsou v klidovém stavu zašifrovaná pomocí klíčů spravovaných Microsoftem. Pokud chcete spravovat klíče používané k šifrování vašich dat, stačí postupovat podle kroků v tomto článku.
 
-Tato funkce je dostupná jenom v těchto oblastech Azure:
-
-* USA – východ
-* USA – středojih
-* USA – západ 2
+Tato funkce je dostupná jenom v některých oblastech Azure, kde je dostupná mezipaměť prostředí Azure HPC. Podrobnosti najdete v seznamu [dostupnosti oblastí](hpc-cache-overview.md#region-availability) .
 
 Existují tři kroky pro povolení šifrování klíče spravovaného zákazníkem pro mezipaměť prostředí Azure HPC:
 
@@ -71,7 +67,7 @@ V okamžiku vytvoření mezipaměti musíte zadat trezor, klíč a verzi klíče
 Podrobnosti najdete v [dokumentaci k Azure Key Vault](../key-vault/key-vault-overview.md) .
 
 > [!NOTE]
-> Azure Key Vault musí používat stejné předplatné a musí být ve stejné oblasti jako mezipaměť prostředí Azure HPC. Použijte jednu z podporovaných oblastí uvedených na začátku tohoto článku.
+> Azure Key Vault musí používat stejné předplatné a musí být ve stejné oblasti jako mezipaměť prostředí Azure HPC. Ujistěte se, že oblast, kterou zvolíte, [podporuje funkci klíčů spravovaných zákazníkem](hpc-cache-overview.md#region-availability).
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. vytvoření mezipaměti s povolenými klíči spravovanými zákazníky
 

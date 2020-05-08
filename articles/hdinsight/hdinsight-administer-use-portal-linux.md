@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/23/2020
-ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232883"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598494"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal
 
@@ -111,7 +111,7 @@ Na [domovské stránce clusteru](#homePage)v části **Nastavení** vyberte **vl
 |DATUM VYTVOŘENÍ|Datum, kdy byl cluster nasazen.|
 |OPERAČNÍ SYSTÉM|Buď **Windows** , nebo **Linux**.|
 |TYP|Hadoop, HBA, vyplavení, Spark.|
-|Version|Viz [verze HDInsight](hdinsight-component-versioning.md).|
+|Verze|Viz [verze HDInsight](hdinsight-component-versioning.md).|
 |Minimální verze protokolu TLS|Verze TLS.|
 |PŘEDPLATNÉ|Název předplatného|
 |VÝCHOZÍ ZDROJ DAT|Výchozí systém souborů clusteru.|
@@ -219,13 +219,19 @@ Heslo se změní na všech uzlech v clusteru.
 4. Na stránce **akce skriptu** vyberte **Odeslat novou**.
 5. Na stránce **Odeslat akci skriptu** zadejte následující informace:
 
+> [!NOTE]
+> Hesla SSH nesmí obsahovat tyto znaky:
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | Pole | Hodnota |
    | --- | --- |
    | Typ skriptu | Z rozevíracího seznamu vyberte **-vlastní** .|
-   | Název |Změna přihlašovacích údajů SSH |
+   | Name |Změna přihlašovacích údajů SSH |
    | Identifikátor URI skriptu bash |Identifikátor URI souboru changecredentials.sh |
    | Typ (typy) uzlů: (Head, work, Nimbus, nadřízený nebo Zookeeper.) |✓ pro všechny typy uzlů v seznamu |
-   | Parametry |Zadejte uživatelské jméno SSH a pak nové heslo. Mezi uživatelským jménem a heslem by měla být jedna mezera. Následující znaky nejsou v heslech SSH podporovány: ' ' '/\ <% ~ | $ &
+   | Parametry |Zadejte uživatelské jméno SSH a pak nové heslo. Mezi uživatelským jménem a heslem by měla být jedna mezera. |
    | Zachovat tuto akci se skripty... |Nechte toto pole nezaškrtnuté. |
 
 6. Vyberte **vytvořit** pro použití skriptu. Po dokončení skriptu se můžete připojit ke clusteru pomocí protokolu SSH s novými přihlašovacími údaji.

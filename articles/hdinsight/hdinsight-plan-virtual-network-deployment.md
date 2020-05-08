@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182425"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786610"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Plánování virtuální sítě pro Azure HDInsight
 
@@ -44,7 +44,7 @@ V následující části najdete otázky, které je potřeba zodpovědět při p
 
 * Chcete omezit nebo přesměrovat příchozí nebo odchozí provoz do HDInsight?
 
-    HDInsight musí mít neomezenou komunikaci s konkrétními IP adresami v datovém centru Azure. K dispozici je také několik portů, které musí být povoleny prostřednictvím brány firewall pro komunikaci s klienty. Další informace najdete v části [řízení síťového provozu](#networktraffic) .
+    HDInsight musí mít neomezenou komunikaci s konkrétními IP adresami v datovém centru Azure. K dispozici je také několik portů, které musí být povoleny prostřednictvím brány firewall pro komunikaci s klienty. Další informace najdete v tématu [řízení síťového provozu](./control-network-traffic.md).
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>Přidání HDInsight do existující virtuální sítě
 
@@ -201,57 +201,9 @@ Pokud se chcete připojit k Apache Ambari a dalším webovým stránkám prostř
 
 2. Chcete-li určit uzel a port, na kterém je služba k dispozici, přečtěte si [porty používané službou Hadoop v dokumentu HDInsight](./hdinsight-hadoop-port-settings-for-services.md) .
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>Řízení síťového provozu
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Techniky řízení příchozího a odchozího provozu do clusterů HDInsight
-
-Síťový provoz ve virtuálních sítích Azure je možné řídit pomocí následujících metod:
-
-* **Skupiny zabezpečení sítě** (NSG) umožňují filtrovat příchozí a odchozí provoz do sítě. Další informace najdete v dokumentu [filtrování provozu sítě s použitím skupin zabezpečení sítě](../virtual-network/security-overview.md) .
-
-* **Síťová virtuální zařízení** (síťové virtuální zařízení) se dají použít jenom u odchozích přenosů. Síťová virtuální zařízení replikuje funkce zařízení, jako jsou brány firewall a směrovače. Další informace najdete v dokumentu [Síťová zařízení](https://azure.microsoft.com/solutions/network-appliances) .
-
-Jako spravovaná služba HDInsight vyžaduje neomezený přístup k stavům HDInsight a službám pro správu obou pro příchozí i odchozí provoz z virtuální sítě. Při použití skupin zabezpečení sítě je potřeba zajistit, že tyto služby můžou dál komunikovat s clusterem HDInsight.
-
-![Diagram entit HDInsight vytvořených ve vlastní virtuální síti Azure](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>HDInsight se skupinami zabezpečení sítě
-
-Pokud plánujete používat **skupiny zabezpečení sítě** k řízení síťového provozu, proveďte před instalací HDInsight tyto akce:
-
-1. Identifikujte oblast Azure, kterou plánujete použít pro HDInsight.
-
-2. Identifikujte značky služeb, které služba HDInsight pro vaši oblast vyžaduje. Další informace najdete v tématu [značky služby skupiny zabezpečení sítě (NSG) pro Azure HDInsight](hdinsight-service-tags.md).
-
-3. Vytvořte nebo upravte skupiny zabezpečení sítě pro podsíť, do které plánujete nainstalovat HDInsight.
-
-    * __Skupiny zabezpečení sítě__: povolí __příchozí__ provoz na portu __443__ z IP adres. Tím se zajistí, že se služby HDInsight Management budou moci spojit s clusterem mimo virtuální síť.
-
-Další informace o skupinách zabezpečení sítě najdete v tématu [Přehled skupin zabezpečení sítě](../virtual-network/security-overview.md).
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>Řízení odchozího provozu z clusterů HDInsight
-
-Další informace o řízení odchozího provozu z clusterů HDInsight najdete v tématu [Konfigurace omezení odchozích síťových přenosů pro clustery Azure HDInsight](hdinsight-restrict-outbound-traffic.md).
-
-#### <a name="forced-tunneling-to-on-premises"></a>Vynucené tunelové propojení do místního prostředí
-
-Vynucené tunelování je uživatelem definovaná konfigurace směrování, kdy se veškerý provoz z podsítě připravuje na určitou síť nebo umístění, jako je například vaše místní síť. HDInsight nepodporuje __not__ vynucené tunelování provozu do místních sítí.
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>Požadované IP adresy
-
-Pokud ke kontrole provozu používáte skupiny zabezpečení sítě nebo trasy definované uživatelem, přečtěte si téma [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md).
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a>Požadované porty
-
-Pokud máte v úmyslu používat **bránu firewall** a přistupovat ke clusteru mimo jiné na určitých portech, budete možná muset na těchto portech, které jsou potřeba pro váš scénář, zapnout provoz. Ve výchozím nastavení se nevyžaduje žádný zvláštní seznam povolených portů, pokud provoz správy Azure, který je vysvětlen v předchozí části, má povolený přístup ke clusteru na portu 443.
-
-Seznam portů pro konkrétní služby najdete v tématu [porty používané službou Apache Hadoop Services na dokumentu HDInsight](hdinsight-hadoop-port-settings-for-services.md) .
-
-Další informace o pravidlech brány firewall pro virtuální zařízení najdete v dokumentu [scénář virtuální zařízení](../virtual-network/virtual-network-scenario-udr-gw-nva.md) .
-
 ## <a name="load-balancing"></a>Vyrovnávání zatížení
 
-Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení je na [základní úrovni SKU](../load-balancer/concepts-limitations.md#skus), která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
+Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnávání zatížení. Typ tohoto nástroje pro vyrovnávání zatížení je na [základní úrovni SKU](../load-balancer/skus.md), která má určitá omezení. Jedním z těchto omezení je, že pokud máte dvě virtuální sítě v různých oblastech, nemůžete se připojit k základním nástrojům pro vyrovnávání zatížení. Další informace najdete v tématu [Nejčastější dotazy k virtuálním sítím VNet: omezení globálního partnerského vztahu virtuálních sítí](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -260,3 +212,4 @@ Při vytváření clusteru HDInsight se vytvoří taky Nástroj pro vyrovnáván
 * Další informace o virtuálních sítích Azure najdete v tématu [Přehled azure Virtual Network](../virtual-network/virtual-networks-overview.md).
 * Další informace o skupinách zabezpečení sítě najdete v tématu [skupiny zabezpečení sítě](../virtual-network/security-overview.md).
 * Další informace o trasách definovaných uživatelem najdete v tématu [trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
+* Další informace o řízení provozu najdete v tématu [řízení síťového provozu](./control-network-traffic.md).

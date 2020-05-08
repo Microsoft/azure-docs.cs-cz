@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257203"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594612"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Ladění a řešení potíží v Návrháři Azure Machine Learning (Preview)
 
-Tato část poskytuje přehled o řešení potíží s kanály v návrháři.
-Pro kanály vytvořené v Návrháři můžete najít **soubory protokolu** na stránce vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.
+Tato část poskytuje přehled o řešení potíží s kanály v návrháři. Pro kanály vytvořené v Návrháři můžete soubor **70_driver_log** najít na stránce pro vytváření obsahu nebo na stránce s podrobnostmi o spuštění kanálu.
 
-### <a name="access-logs-from-the-authoring-page"></a>Přístup k protokolům ze stránky pro vytváření obsahu
+### <a name="get-logs-from-the-authoring-page"></a>Získat protokoly ze stránky pro vytváření obsahu
 
-Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu, můžete najít soubory protokolů vygenerované pro každý modul.
+Když odešlete spuštění kanálu a zůstanete na stránce vytváření obsahu, můžete najít soubory protokolu vygenerované pro každý modul, když se každý modul dokončí.
 
-1. Vyberte libovolný modul na plátně pro tvorbu obsahu.
+1. Vyberte modul, který se dokončil na plátně pro tvorbu.
 1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
-1. Vyberte soubor `70_driver_log.txt`protokolu.
+1. Rozbalte pravé podokno a vyberte soubor **70_driver_log. txt** pro zobrazení souboru v prohlížeči. Protokoly také můžete stahovat místně.
 
-    ![Vytváření protokolů modulu stránky](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Rozšířené podokno výstup v Návrháři](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Přístup k protokolům z spuštění kanálu
+### <a name="get-logs-from-pipeline-runs"></a>Získání protokolů z spuštění kanálu
 
-Soubory protokolu konkrétních spuštění můžete také najít na stránce s podrobnostmi o spuštění kanálu v částech **kanály** nebo **experimenty** .
+Soubory protokolů pro konkrétní spuštění můžete najít na stránce s podrobnostmi o spuštění kanálu, kterou najdete v části **kanály** nebo **experimenty** v nástroji Studio.
 
 1. Vyberte běh kanálu vytvořený v návrháři.
-    ![Stránka spuštění kanálu](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. V podokně náhledu vyberte libovolný modul.
+
+    ![Stránka spuštění kanálu](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. Vyberte modul v podokně náhledu.
 1. V pravém podokně modulu otevřete kartu **výstupy + protokoly** .
-1. Vyberte soubor `70_driver_log.txt`protokolu.
+1. Rozbalením pravého podokna zobrazíte soubor **70_driver_log. txt** v prohlížeči nebo vyberte soubor pro místní stažení protokolů.
+
+> [!IMPORTANT]
+> Chcete-li aktualizovat kanál na stránce s podrobnostmi o spuštění kanálu, je nutné **naklonovat** spuštění kanálu do nové konceptu kanálu. Spuštění kanálu je snímek kanálu. Je podobný souboru protokolu a nedá se změnit. 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Ladění a řešení potíží v Application Insights
 Další informace o použití knihovny Pythonu OpenCensus tímto způsobem najdete v této příručce: [ladění a řešení potíží s kanály strojového učení v Application Insights](how-to-debug-pipelines-application-insights.md)

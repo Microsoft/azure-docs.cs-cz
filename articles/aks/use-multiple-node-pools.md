@@ -4,12 +4,12 @@ description: Naučte se vytvářet a spravovat fondy více uzlů pro cluster ve 
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259081"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610917"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Vytvoření a Správa fondů více uzlů pro cluster ve službě Azure Kubernetes (AKS)
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 Aktualizace clusteru AKS může trvat několik minut v závislosti na nastaveních fondu uzlů a operacích, které definujete v šabloně Správce prostředků.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Přiřazení veřejné IP adresy na uzel pro fond uzlů (Preview)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Přiřazení veřejné IP adresy na uzel pro vaše fondy uzlů (Preview)
 
 > [!WARNING]
-> V rámci verze Preview přiřazení veřejné IP adresy na uzel nejde použít s *Standard Load BALANCER SKU v AKS* , protože pravidla nástroje pro vyrovnávání zatížení jsou v konfliktu s ZŘIZOVÁNÍM virtuálních počítačů. V důsledku tohoto omezení nejsou fondy agentů Windows podporovány touto funkcí verze Preview. I když je ve verzi Preview, musíte použít *základní Load BALANCER SKU* , pokud potřebujete přiřadit veřejnou IP adresu na uzel.
+> Abyste mohli používat funkci veřejné IP adresy na uzel, musíte nainstalovat rozšíření CLI Preview 0.4.43 nebo novější.
 
 AKS uzly nevyžadují pro komunikaci své vlastní veřejné IP adresy. Scénáře ale můžou vyžadovat, aby uzly ve fondu uzlů přijímaly vlastní vyhrazené veřejné IP adresy. Běžným scénářem je použití herních úloh, kde konzola potřebuje vytvořit přímé připojení k virtuálnímu počítači v cloudu, aby se minimalizovaly segmenty směrování. Tento scénář je možné dosáhnout v AKS registrací pro funkci verze Preview, veřejné IP adresy uzlu (Preview).
 
-Zaregistrujte se na funkci veřejné IP adresy uzlu vyvoláním následujícího příkazu rozhraní příkazového řádku Azure.
+K instalaci a aktualizaci nejnovějšího rozšíření AKS-Preview použijte následující příkazy rozhraní příkazového řádku Azure:
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+Zaregistrujte funkci veřejné IP adresy uzlu pomocí následujícího příkazu Azure CLI:
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+Registrace funkce může trvat několik minut.  Stav můžete zjistit pomocí následujícího příkazu:
 
-Po úspěšné registraci nasaďte šablonu Azure Resource Manager podle [výše](#manage-node-pools-using-a-resource-manager-template) uvedených pokynů a přidejte vlastnost `enableNodePublicIP` Boolean do agentPoolProfiles. Nastavte hodnotu na `true` jako výchozí nastavení, `false` Pokud není zadaná. 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-Tato vlastnost je vlastnost pouze pro dobu vytvoření a vyžaduje minimální verzi rozhraní API 2019-06-01. Tato možnost se dá použít pro fondy uzlů pro Linux i Windows.
+Po úspěšné registraci vytvořte novou skupinu prostředků.
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+Vytvořte nový cluster AKS a připojte veřejnou IP adresu pro vaše uzly. Každý uzel ve fondu uzlů obdrží jedinečnou veřejnou IP adresu. Můžete to ověřit tak, že prohlížíte instance sady škálování virtuálních počítačů.
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+Pro existující clustery AKS můžete také přidat nový fond uzlů a pro své uzly připojit veřejnou IP adresu.
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> Během období Preview Azure Instance Metadata Service v současné době nepodporuje načítání veřejných IP adres pro SKU virtuálních počítačů úrovně Standard. Z důvodu tohoto omezení nemůžete použít příkazy kubectl k zobrazení veřejných IP adres přiřazených k uzlům. IP adresy se ale přiřazují a fungují tak, jak mají. Veřejné IP adresy pro vaše uzly jsou připojené k instancím ve vaší sadě škálování virtuálních počítačů.
+
+Veřejné IP adresy pro uzly můžete vyhledat různými způsoby:
+
+* Použití příkazu příkazového řádku Azure [AZ VMSS list-instance-Public-IP][az-list-ips]
+* Použijte [Příkazy PowerShellu nebo bash][vmss-commands]. 
+* Veřejné IP adresy můžete zobrazit také v Azure Portal zobrazením instancí v sadě škálování virtuálního počítače.
+
+> [!Important]
+> [Skupina prostředků uzlu][node-resource-group] obsahuje uzly a jejich veřejné IP adresy. Použijte skupinu prostředků uzlu při provádění příkazů k vyhledání veřejných IP adres pro vaše uzly.
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -753,6 +796,12 @@ Pokud chcete samotný cluster odstranit, odstraňte skupinu prostředků AKS pom
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+Můžete také odstranit další cluster, který jste vytvořili pro veřejnou IP adresu pro fondy uzlů.
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>Další kroky
@@ -795,3 +844,7 @@ Informace o vytváření a používání fondů uzlů kontejnerů Windows server
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

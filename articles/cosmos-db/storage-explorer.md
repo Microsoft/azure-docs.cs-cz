@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411675"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608026"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Práce s daty s využitím Průzkumníka služby Azure Storage
 
@@ -30,9 +30,9 @@ Nainstalujte nejnovější části Průzkumníka služby Azure Storage: [Průzku
 ## <a name="connect-to-an-azure-subscription"></a>Připojení k předplatnému Azure
 
 1. Po instalaci **Průzkumník služby Azure Storage**klikněte na ikonu **modulu plug-in** na levé straně, jak je znázorněno na následujícím obrázku:
-       
+
    ![Ikona modulu plug-in](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. Vyberte **Přidat účet Azure** a pak klikněte na **Přihlásit**.
 
    ![Připojení k předplatnému Azure](./media/storage-explorer/connect-to-azure-subscription.png)
@@ -100,27 +100,27 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 * Účet, databázi nebo kolekci Azure Cosmos DB můžete také přidat do seznamu **Rychlý přístup**.
 * Možnost **Hledat odsud** umožňuje hledat klíčová slova v zadané cestě.
 
-    ![Hledat odsud](./media/storage-explorer/search-from-here.png) 
+    ![Hledat odsud](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>Správa databází a kolekcí
-#### <a name="create-a-database"></a>Vytvoření databáze 
+#### <a name="create-a-database"></a>Vytvoření databáze
 -   Klikněte pravým tlačítkem na účet služby Azure Cosmos DB, zvolte **Vytvořit databázi**, zadejte název databáze a stisknutím klávesy **Enter** dokončete vytváření.
-       
-    ![Vytvoření databáze](./media/storage-explorer/create-database.png) 
+
+    ![Vytvoření databáze](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>Odstranění databáze
 - Klikněte pravým tlačítkem na databázi, klikněte na **Odstranit databázi** a v automaticky otevíraném okně klikněte na **Ano**. Uzel databáze se odstraní a účet služby Azure Cosmos DB se automaticky aktualizuje.
 
-    ![Odstranění databáze 1](./media/storage-explorer/delete-database1.png)  
+    ![Odstranění databáze 1](./media/storage-explorer/delete-database1.png)
 
-    ![Odstranění databáze 2](./media/storage-explorer/delete-database2.png) 
+    ![Odstranění databáze 2](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>Vytvoření kolekce
-1. Klikněte pravým tlačítkem na databázi, zvolte možnost **vytvořit kolekci**a zadejte následující informace, jako je **ID kolekce**, **kapacita úložiště**atd. Dokončete kliknutím na **OK** . 
+1. Klikněte pravým tlačítkem na databázi, zvolte možnost **vytvořit kolekci**a zadejte následující informace, jako je **ID kolekce**, **kapacita úložiště**atd. Dokončete kliknutím na **OK** .
 
     ![Vytvoření kolekce 1](./media/storage-explorer/create-collection.png)
 
-    ![Vytvoření kolekce 2](./media/storage-explorer/create-collection2.png) 
+    ![Vytvoření kolekce 2](./media/storage-explorer/create-collection2.png)
 
 2. Vyberte **Neomezená**, abyste mohli zadat klíč oddílu, a kliknutím na **OK** vytváření dokončete.
 
@@ -129,11 +129,11 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
     ![Klíč oddílu](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>Odstranění kolekce
-- Klikněte pravým tlačítkem na kolekci, klikněte na **Odstranit kolekci** a v automaticky otevíraném okně pak klikněte na **Ano**. 
+- Klikněte pravým tlačítkem na kolekci, klikněte na **Odstranit kolekci** a v automaticky otevíraném okně pak klikněte na **Ano**.
 
     Uzel kolekce se odstraní a databáze se automaticky aktualizuje.
 
-    ![Odstranění kolekce](./media/storage-explorer/delete-collection.png) 
+    ![Odstranění kolekce](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>Správa dokumentů
 
@@ -155,8 +155,8 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
 ### <a name="graph-management"></a>Správa grafů
 
 #### <a name="create-and-modify-vertex"></a>Vytvoření a úprava vrcholu
-1. Pokud chcete vytvořit nový vrchol, v levém okně otevřete **Graph**, klikněte na **Nový vrchol**, upravte obsah a pak klikněte na **OK**.    
-2. Pokud chcete upravit existující vrchol, klikněte na ikonu pera v pravém podokně.   
+1. Pokud chcete vytvořit nový vrchol, v levém okně otevřete **Graph**, klikněte na **Nový vrchol**, upravte obsah a pak klikněte na **OK**.
+2. Pokud chcete upravit existující vrchol, klikněte na ikonu pera v pravém podokně.
 
     ![Graph](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ Po kliknutí pravým tlačítkem na předplatné v podokně Průzkumníka může
     ![Dotaz na tabulku](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Správa uložených procedur, triggerů a funkcí definovaných uživatelem
-* Pokud chcete vytvořit uloženou proceduru, v levém stromu klikněte pravým tlačítkem na **Uložená procedura**, zvolte **Vytvořit uloženou proceduru**, v levém okně zadejte název, v pravém okně zadejte skripty uložené procedury a pak klikněte na **Vytvořit**. 
+* Pokud chcete vytvořit uloženou proceduru, v levém stromu klikněte pravým tlačítkem na **Uložená procedura**, zvolte **Vytvořit uloženou proceduru**, v levém okně zadejte název, v pravém okně zadejte skripty uložené procedury a pak klikněte na **Vytvořit**.
 * Můžete také upravovat existující uložené procedury tak, že na ně dvakrát kliknete, provedete aktualizaci a pak kliknutím na **Aktualizovat** uložíte změny nebo je kliknutím na **Zahodit** zrušíte.
 
     ![Uložená procedura](./media/storage-explorer/stored-procedure.png)
@@ -248,7 +248,7 @@ Pokud se vám po úspěšném přihlášení nedaří načíst vaše předplatn�
 
 ![konzola](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>Ověřovací stránka se nezobrazuje 
+#### <a name="unable-to-see-the-authentication-page"></a>Ověřovací stránka se nezobrazuje
 
 Pokud se vám nezobrazuje ověřovací stránka:
 
@@ -273,7 +273,7 @@ Pokud nemůžete odebrat účet nebo pokud odkaz na opětovné ověření nic ne
 
 ### <a name="httphttps-proxy-issue"></a>Problém s proxy HTTP/HTTPS
 
-Při konfiguraci proxy HTTP/HTTPS v Průzkumníku služby Azure Storage nemůžete v levém stromu vypsat uzly služby Azure Cosmos DB. Jedná se o známý problém, který bude opravený v další vydané verzi. Prozatím můžete jako alternativní řešení použít Průzkumníka dat služby Azure Cosmos DB na webu Azure Portal. 
+Při konfiguraci proxy HTTP/HTTPS v Průzkumníku služby Azure Storage nemůžete v levém stromu vypsat uzly služby Azure Cosmos DB. Jedná se o známý problém, který bude opravený v další vydané verzi. Prozatím můžete jako alternativní řešení použít Průzkumníka dat služby Azure Cosmos DB na webu Azure Portal.
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>Problém s uzlem Vývoj v uzlu Místní a připojené
 
@@ -289,7 +289,7 @@ Pokud se po připojení účtu služby Azure Cosmos DB v uzlu Místní a připoj
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Chyba rozbalení uzlu služby Azure Cosmos DB
 
-Při pokusu o rozbalení uzlů v levém stromu se může zobrazit následující chyba. 
+Při pokusu o rozbalení uzlů v levém stromu se může zobrazit následující chyba.
 
 ![Chyba rozbalení](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ Pokud žádná z řešení nefunguje za vás, pošlete e-mail pro Azure Cosmos D
 
 * Podívejte se na následující video a zjistěte, jak používat službu Azure Cosmos DB v Průzkumníku služby Azure Storage: [Použití služby Azure Cosmos DB v Průzkumníku služby Azure Storage](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be).
 * Další informace o Průzkumníku služby Storage a připojení dalších služeb najdete v tématu [Začínáme s Průzkumníkem služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-

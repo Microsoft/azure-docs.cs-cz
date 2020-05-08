@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406977"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611326"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -72,9 +72,9 @@ Tady je Ukázková chybová odpověď:
 | `temporarily_unavailable` | Server je dočasně zaneprázdněný pro zpracování žádosti. | Opakujte požadavek. Klientská aplikace může vysvětlit uživateli, že jeho odpověď je zpožděna z důvodu dočasné podmínky. |
 
 ## <a name="lookup-current-error-code-information"></a>Vyhledat aktuální informace o kódu chyby
-Chybové kódy a zprávy mohou být změněny.  Nejaktuálnější informace najdete na `https://login.microsoftonline.com/error` stránce, kde najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.  
+Chybové kódy a zprávy mohou být změněny.  Nejaktuálnější informace najdete na [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) stránce, kde najdete popis chyb AADSTS, opravy a některá navrhovaná řešení.  
 
-Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdržíte kód chyby "AADSTS16000", proveďte hledání `https://login.microsoftonline.com/error` "16000".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: `https://login.microsoftonline.com/error?code=16000`.
+Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdržíte kód chyby "AADSTS16000", proveďte hledání [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000".  Můžete také přímo propojit s konkrétní chybou přidáním čísla kódu chyby k adrese URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 
@@ -189,6 +189,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS65001 | DelegationDoesNotExist – uživatel nebo správce nesouhlasí s používáním aplikace s ID X. odešlete interaktivní žádost o autorizaci pro tohoto uživatele a prostředek. |
 | AADSTS65004 | UserDeclinedConsent – uživatel odmítl udělit souhlas s přístupem k aplikaci. Požádejte uživatele, aby se zkusil znovu přihlásit a udělil aplikaci souhlas.|
 | AADSTS65005 | MisconfiguredApplication – seznam přístupu k prostředkům požadovaných aplikací neobsahuje aplikace, které prostředek zjistitelný, nebo klientská aplikace požadovala přístup k prostředku, který nebyl zadaný v požadovaném seznamu přístupu k prostředkům nebo služba Graph vrátila chybný požadavek nebo prostředek nebyl nalezen. Pokud aplikace podporuje SAML, možná jste nakonfigurovali aplikaci s nesprávným identifikátorem (entita). Vyzkoušejte řešení uvedené pro SAML pomocí následujícího odkazu:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | Aplikace potřebuje přístup ke službě `(\"{name}\")` , ke které se vaše `\"{organization}\"` organizace nepřipojila nebo nepovolila. Požádejte správce IT, aby zkontroloval konfiguraci vašich předplatných služeb. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – ověření se nezdařilo. Obnovovací token není platný. K chybě mohlo dojít z následujících důvodů:<ul><li>Hlavička vazby tokenu je prázdná.</li><li>Hodnota hash vazby tokenu se neshoduje.</li></ul> |
 | AADSTS70001 | UnauthorizedClient – aplikace je zakázaná. |
@@ -206,6 +207,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS75001 | BindingSerializationError – při vytváření vazby zprávy SAML došlo k chybě. |
 | AADSTS75003 | UnsupportedBindingError – aplikace vrátila chybu související s nepodporovanou vazbou (odpověď protokolu SAML se nedá poslat přes jiné vazby než HTTP POST). |
 | AADSTS75005 | Saml2MessageInvalid – Azure AD nepodporuje požadavek SAML odeslaný aplikací pro jednotné přihlašování. |
+| AADSTS7500514 | Podporovaný typ odpovědi SAML nebyl nalezen. Podporované typy odpovědí jsou "Response" (v oboru názvů XML ' urn: Oasis: names: TC: SAML: 2.0: Protocol ') nebo ' assertion ' (v oboru názvů XML ' urn: Oasis: název: TC: SAML: 2.0: assertion '). Chyba aplikace – vývojář tuto chybu zpracuje.|
 | AADSTS75008 | RequestDeniedError – žádost z aplikace byla zamítnuta, protože žádost SAML měla neočekávaný cíl. |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims – metoda ověřování, o kterou se uživatel s touto službou ověřil, se neshoduje s požadovanou metodou ověřování. |
 | AADSTS75016 | Požadavek na ověření Saml2AuthenticationRequestInvalidNameIDPolicy-typu Saml2 má neplatný NameIdPolicy. |
@@ -311,6 +313,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS700020 | InteractionRequired – udělení přístupu vyžaduje interakci. |
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota oboru vstupních parametrů není platná, protože obsahuje více než jeden prostředek. |
 | AADSTS700023 | InvalidResourcelessScope – zadaná hodnota oboru vstupních parametrů není platná, pokud požaduje přístupový token. |
+| AADSTS7000215 | Je zadaný neplatný tajný klíč klienta. Chyba vývojáře – aplikace se pokouší přihlásit bez správných parametrů ověřování.|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided – platnost zadaných tajných klíčů klienta vypršela. Přejděte na web Azure Portal a vytvořte nové klíče pro vaši aplikaci, nebo zvažte použití přihlašovacích údajů k certifikátu pro zvýšení zabezpečení:https://aka.ms/certCreds |
 | AADSTS700005 | Autorizační kód poskytnutý InvalidGrantRedeemAgainstWrongTenant je určený pro použití s jiným klientem, tedy odmítnutý. Autorizační kód OAuth2 se musí uplatnit u stejného tenanta, kterého se získal pro (/běžné nebo/{tenant-ID} podle potřeby). |
 | AADSTS1000000 | UserNotBoundError – rozhraní API pro vázání vyžaduje, aby uživatel Azure AD ověřil i s externím IDP, ke kterému ještě nedošlo. |

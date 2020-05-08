@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233393"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594317"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Transformace vyhledávání v toku dat mapování
 
@@ -33,7 +33,7 @@ Transformace vyhledávání se podobá levému vnějšímu spojení. Všechny ř
 
 **Porovnává více řádků:** Pokud je povoleno, bude řádek s více shodami v primárním datovém proudu vracet více řádků. V opačném případě bude vrácen pouze jeden řádek na základě podmínky ' shoda na '.
 
-**Shoda na:** Jsou povoleny pouze ty, pokud je povolena možnost rozlišovat více řádků. Vyberte, jestli se má shoda na žádném řádku, první shodě nebo poslední shodě. Každý řádek se doporučuje, protože se spustí nejrychlejší. Pokud vyberete první řádek nebo poslední řádek, budete muset zadat podmínky řazení.
+**Shoda na:** Není vybráno pouze, pokud není vybrána možnost rozlišovat více řádků. Vyberte, jestli se má shoda na žádném řádku, první shodě nebo poslední shodě. Každý řádek se doporučuje, protože se spustí nejrychlejší. Pokud vyberete první řádek nebo poslední řádek, budete muset zadat podmínky řazení.
 
 **Podmínky vyhledávání:** Vyberte sloupce, na kterých se má shoda. Pokud je splněna podmínka rovnosti, řádky budou považovány za shodné. Najeďte myší a vyberte vypočítaný sloupec a extrahujte hodnotu pomocí [jazyka výrazu toku dat](data-flow-expression-functions.md).
 

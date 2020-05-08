@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879067"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598534"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Co je Azure SQL Database spravovaná instance?
 
@@ -63,7 +63,7 @@ Klíčové funkce spravovaných instancí jsou uvedené v následující tabulce
 | Počet datových souborů (řádků) na databázi | Několik |
 | Počet souborů protokolu (protokol) na databázi | 1 |
 | Nasazení VNet-Azure Resource Manager | Ano |
-| Model nasazení sítě VNet – klasický | Ne |
+| Model nasazení sítě VNet – klasický | No |
 | Podpora portálu | Ano|
 | Integrovaná integrační služba (SSIS) | No-SSIS je součástí [Azure Data Factory PaaS](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
 | Integrovaná služba Analysis Service (SSAS) | No-SSAS je samostatný [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -167,19 +167,31 @@ V následující tabulce najdete souhrn operací a typických celkových dob trv
 
 \*\*\*12 hodin je aktuální konfigurace, která se může v budoucnu změnit, takže na ni nemusíte nic udělat. Pokud potřebujete virtuální cluster odstranit dřív (například pro vydání podsítě), přečtěte si téma [odstranění podsítě po odstranění spravované instance Azure SQL Database](sql-database-managed-instance-delete-virtual-cluster.md).
 
-### <a name="instance-availability-during-management"></a>Dostupnost instance během správy
+### <a name="instance-availability-during-management-operations"></a>Dostupnost instance během operací správy
 
-Spravované instance nejsou k dispozici klientským aplikacím během operací nasazení a odstranění.
+Spravovaná instance není během operací nasazení a odstranění dostupná pro klientské aplikace.
 
-Spravované instance jsou během operací aktualizace k dispozici, ale při převzetí služeb při selhání dochází k krátkému výpadku, ke kterému dochází na konci aktualizací, které obvykle trvají až 10 sekund. Výjimkou je aktualizace rezervovaného prostoru úložiště v Pro obecné účely úrovni služby, která neumožňuje převzetí služeb při selhání, ani neovlivňuje dostupnost instance.
-
-> [!IMPORTANT]
-> Doba trvání převzetí služeb při selhání se může výrazně lišit v případě dlouhotrvajících transakcí, ke kterým dochází v databázích z důvodu [dlouhotrvající doby obnovení](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process). Proto se nedoporučuje škálovat výpočetní výkon nebo úložiště Azure SQL Database spravované instance nebo změnit úroveň služby současně s dlouhotrvajícími transakcemi (import dat, úlohy zpracování dat, opětovné sestavení indexu atd.). Převzetí služeb při selhání databáze, které bude provedeno na konci operace, zruší probíhající transakce a výsledkem bude prodloužený čas obnovení.
+Spravovaná instance je k dispozici během operací aktualizace s výjimkou krátkého výpadku způsobeného převzetím služeb při selhání, ke kterému dochází na konci aktualizace. Obvykle trvá až 10 sekund i v případě přerušených dlouhotrvajících transakcí díky [urychlenému obnovení databáze](sql-database-accelerated-database-recovery.md).
 
 > [!TIP]
 > Aktualizace vyhrazeného prostoru úložiště v Pro obecné účely úrovni služby nenese převzetí služeb při selhání ani neovlivní dostupnost instance.
 
-[Urychlené obnovení databáze](sql-database-accelerated-database-recovery.md) není aktuálně k dispozici pro Azure SQL Database spravované instance. Po povolení bude tato funkce významně snižovat proměnlivost doby převzetí služeb při selhání, a to i v případě dlouhotrvajících transakcí.
+> [!IMPORTANT]
+> Nedoporučujeme škálovat výpočetní výkon nebo úložiště Azure SQL Database spravované instance nebo změnit úroveň služby současně s dlouhotrvajícími transakcemi (import dat, úlohy zpracování dat, opětovné sestavení indexu atd.). Převzetí služeb při selhání databáze, které bude provedeno na konci operace zruší všechny probíhající transakce.
+
+
+### <a name="management-operations-cross-impact"></a>Operace správy – mezi důsledky
+
+Operace správy spravované instance můžou ovlivnit jiné operace správy instancí umístěných uvnitř stejného virtuálního clusteru. To zahrnuje následující:
+
+- **Dlouhodobě běžící operace obnovení** ve virtuálním clusteru budou zablokovány při vytváření jiné instance nebo při operaci škálování ve stejné podsíti.<br/>**Příklad:** Pokud existuje dlouho běžící operace obnovení a ve stejné podsíti je požadavek na vytvoření nebo škálování, bude dokončení této žádosti trvat déle, protože bude čekat na dokončení operace obnovení, než bude pokračovat.
+    
+- **Následná operace vytvoření nebo škálování instance** se zablokuje při vytváření dříve iniciované instance nebo při změně velikosti instance, která iniciovala změnu velikosti virtuálního clusteru.<br/>**Příklad:** Pokud ve stejné podsíti ve stejném virtuálním clusteru existuje víc požadavků na vytvoření a/nebo škálování a jedna z nich zahájí změnu velikosti virtuálního clusteru, všechny požadavky, které se odeslaly 5 + minut po dokončení změny velikosti virtuálního clusteru, se budou muset čekat, než se obnoví jejich změna.
+
+- **Operace vytvoření nebo škálování odeslané v intervalu 5 minut** budou v dávce a provedeny paralelně.<br/>**Příklad:** Pro všechny operace odeslané v intervalu 5 minut se provede jenom jedna změna velikosti virtuálního clusteru (měří se od okamžiku provedení první žádosti o operaci). Pokud se po odeslání prvního požadavku pošle více než 5 minut, počká se na dokončení změny ve virtuálním clusteru, než se spustí spuštění.
+
+> [!IMPORTANT]
+> Operace správy, které jsou zablokovány kvůli jiné probíhající operaci, budou automaticky obnoveny, jakmile budou splněny podmínky pro pokračování. Není nutná žádná akce uživatele pro obnovení dočasné pozastavené operace správy.
 
 ### <a name="canceling-management-operations"></a>Rušení operací správy
 
@@ -187,14 +199,14 @@ Následující tabulka shrnuje možnosti zrušení konkrétních operací správ
 
 Kategorie  |Operace  |Zrušitelný  |Odhadovaná doba trvání zrušení  |
 |---------|---------|---------|---------|
-|Nasazení |Vytvoření instance |Ne |  |
-|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |Ne |  |
+|Nasazení |Vytvoření instance |No |  |
+|Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro obecné účely) |No |  |
 |Aktualizace |Horizontální navýšení kapacity úložiště instance (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro obecné účely) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance COMPUTE (virtuální jádra) pro škálování směrem nahoru a dolů (Pro důležité obchodní informace) |Ano |90% dokončených operací za 5 minut |
 |Aktualizace |Instance instance služby instance (Pro obecné účely až Pro důležité obchodní informace a naopak) |Ano |90% dokončených operací za 5 minut |
-|Odstranit |Odstranění instance |Ne |  |
-|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |Ne |  |
+|Odstranit |Odstranění instance |No |  |
+|Odstranit |Odstranění virtuálního clusteru (jako operace iniciované uživatelem) |No |  |
 
 Chcete-li zrušit operaci správy, přejděte do okna Přehled a klikněte na oznamovací políčko probíhající operace. Na pravé straně se zobrazí obrazovka s probíhající operací a zobrazí se tlačítko pro zrušení operace. Po prvním kliknutí se zobrazí výzva, abyste znovu klikněte na tlačítko a potvrďte, že chcete operaci zrušit.
 
