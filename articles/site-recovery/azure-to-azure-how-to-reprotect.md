@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137514"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738061"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Opětovné zapnutí ochrany virtuálních počítačů Azure v primární oblasti
 
@@ -95,6 +95,10 @@ Následující podmínky určují, kolik dat se replikuje:
 |Zdrojová oblast má 1 virtuální počítač s 1 TB Premium diskem.<br/>Používá se jenom 20 GB dat a zbytek disku je prázdný.<br/>Typ disku je Premium s propustností 200 MB/s.<br/>Počáteční data na disku hned po převzetí služeb při selhání byly 15 GB. Po převzetí služeb při selhání se změnila 5 GB dat. Celková naplněná data jsou tedy 20 GB.| Přibližná doba: 30-45 minut.<br/>Vzhledem k tomu, že data naplněná na disku jsou menší než 10% velikosti disku, provádíme kompletní počáteční replikaci.<br/>Rychlost přenosu je přibližně 16% propustnosti nebo 32MBps. Proto se doba přenosu aplikuje na změny 20 GB, což je 20 GB/32 MB/s, přibližně 11 minut.<br/>Site Recovery k automatickému škálování vyžaduje určitý čas režie, přibližně 20-30 minut. |
 
 Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty.
+
+Když je virtuální počítač znovu chráněn z oblasti zotavení po havárii do primární oblasti, neodstraníme primární virtuální počítač Erstwhile a přidružené síťové karty (y).
+
+Pokud je virtuální počítač po převzetí služeb při selhání zpátky do primární oblasti (tj. Pokud je virtuální počítač znovu chráněný z primární oblasti na oblast zotavení po havárii), odstraní se cílový virtuální počítač a přidružené síťové karty. 
 
 Když je virtuální počítač znovu chráněn z oblasti zotavení po havárii do primární oblasti, neodstraníme primární virtuální počítač Erstwhile a přidružené síťové karty (y).
 

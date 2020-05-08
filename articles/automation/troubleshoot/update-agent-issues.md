@@ -9,25 +9,28 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 25f3734a2a12ddf87862cc1d127f88f175225e07
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900293"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927883"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Řešení potíží s agentem Windows Update
 
-Může to mít spoustu důvodů, proč se Váš počítač v Update Management nezobrazuje jako připravený (v pořádku). V Update Management můžete zjistit příčinu problému tím, že zkontrolujete stav agenta Hybrid Runbook Worker. Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure ve [scénáři offline](#troubleshoot-offline).
+Může to mít spoustu důvodů, proč se Váš počítač v Update Management nezobrazuje jako připravený (v pořádku). Chcete-li zjistit základní problém, můžete ověřit stav agenta Windows Hybrid Runbook Worker. Níže jsou uvedené tři stavy připravenosti pro počítač:
 
-Níže jsou uvedené tři stavy připravenosti pro počítač:
-
-* Připraveno: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než 1 hodinou.
-* Odpojeno: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před 1 hodinou.
+* Připraveno: Hybrid Runbook Worker se nasadí a poslední se zobrazila před méně než jednou hodinou.
+* Odpojeno: Hybrid Runbook Worker se nasazuje a naposledy se zobrazilo před jednou hodinou.
 * Nenakonfigurováno: Hybrid Runbook Worker se nenašlo nebo nedokončilo registraci.
 
 > [!NOTE]
 > Mezi zobrazením Azure Portal a aktuálním stavem počítače může být mírné zpoždění.
+
+Tento článek popisuje, jak spustit Poradce při potížích pro počítače Azure z Azure Portal a počítačů mimo Azure ve [scénáři offline](#troubleshoot-offline). Poradce při potížích teď obsahuje kontroly Windows Server Update Services (WSUS) a pro klíče pro autostažení a instalaci.
+
+> [!NOTE]
+> Skript Poradce při potížích aktuálně nesměruje provoz prostřednictvím proxy server, pokud je nakonfigurovaný.
 
 ## <a name="start-the-troubleshooter"></a>Spustit Poradce při potížích
 
