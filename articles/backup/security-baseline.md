@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195668"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744062"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Základní plán zabezpečení Azure pro zálohování
 
@@ -460,7 +460,7 @@ Společnost Microsoft spravuje základní infrastrukturu pro Azure Backup a impl
 
 **Pokyny**: provoz zálohování ze serverů do trezoru Recovery Services se přenáší přes zabezpečené připojení HTTPS a zašifruje se pomocí standard AES (Advanced Encryption Standard) (AES) 256, když je uložený v trezoru.
 
-- [Vysvětlení šifrování v klidovém Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Vysvětlení šifrování v klidovém Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -508,7 +508,7 @@ Azure Backup poskytuje tři předdefinované role pro řízení operací správy
 
 Při zálohování s agentem MARS nebo pomocí Recovery Services trezoru zašifrovaného s klíčem spravovaným zákazníkem je k dispozici pouze přístup k šifrovacímu klíči. Společnost Microsoft nikdy neudržuje kopii a nemá přístup k tomuto klíči. Pokud je klíč nesprávně umístěn, Microsoft nemůže obnovit zálohovaná data.
 
-- [Vysvětlení šifrování v klidovém umístění pro Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [Vysvětlení šifrování v klidovém umístění pro Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Monitorování Azure Security Center**: nelze použít
 
@@ -902,7 +902,7 @@ Zálohujte spravované klíče zákazníka v rámci Azure Key Vault.
 
 - [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [Pochopení šifrování v Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [Pochopení šifrování v Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Monitorování Azure Security Center**: nelze použít
 

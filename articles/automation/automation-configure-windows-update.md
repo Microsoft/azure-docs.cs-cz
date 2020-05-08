@@ -3,14 +3,14 @@ title: Konfigurace nastavení web Windows Update pro práci s Azure Update Manag
 description: Tento článek popisuje nastavení web Windows Update, která konfigurujete pro práci s Azure Update Management.
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279023"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779446"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Konfigurace nastavení web Windows Update pro Update Management
 
@@ -22,6 +22,8 @@ Azure Update Management spoléhá na [klienta web Windows Update](https://docs.m
 - Přímá úprava registru
 
 Update Management respektuje mnoho nastavení určených k řízení web Windows Update klienta. Pokud použijete nastavení k povolení aktualizací jiných než Windows, Update Management tyto aktualizace taky spravovat. Pokud chcete povolit stahování aktualizací před tím, než dojde k nasazení aktualizace, může být nasazení aktualizace rychlejší, efektivnější a méně pravděpodobně větší než časový interval pro správu a údržbu.
+
+Další doporučení týkající se nastavení služby WSUS v předplatném Azure a bezpečném udržování virtuálních počítačů s Windows najdete v přehledu [Plánování nasazení pro aktualizaci virtuálních počítačů s Windows v Azure pomocí služby WSUS](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/).
 
 ## <a name="pre-download-updates"></a>Předběžné stažení aktualizací
 

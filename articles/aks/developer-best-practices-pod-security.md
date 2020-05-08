@@ -1,18 +1,17 @@
 ---
-title: Doporučené postupy zabezpečení
-titleSuffix: Azure Kubernetes Service
+title: Osvědčené postupy pro vývojáře – pod zabezpečením ve službě Azure Kubernetes Services (AKS)
 description: Seznamte se s osvědčenými postupy pro vývojáře při zabezpečení lusků ve službě Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804380"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779059"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení pod zabezpečením ve službě Azure Kubernetes Service (AKS)
 
@@ -75,7 +74,7 @@ Chcete-li omezit riziko zpřístupnění přihlašovacích údajů v kódu aplik
 Následující [přidružené open source projekty AKS][aks-associated-projects] vám umožňují automaticky ověřovat lusky nebo požadovat přihlašovací údaje a klíče z digitálního trezoru:
 
 * Spravované identity pro prostředky Azure a
-* Ovladač Azure Key Vault FlexVol
+* [Ovladač Azure Key Vault pro úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 Technická podpora Azure nepodporuje přidružené open source projekty v AKS. Jsou k dispozici za účelem shromažďování názorů a chyb od naší komunity. Tyto projekty se nedoporučují pro použití v produkčním prostředí.
 
@@ -89,28 +88,28 @@ Pomocí spravované identity nemusí kód vaší aplikace zahrnovat přihlašova
 
 Další informace o identitách pod najdete v tématu [Konfigurace clusteru AKS, který se použije pod spravovanými identitami a s vašimi aplikacemi][aad-pod-identity] .
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Použití Azure Key Vault s FlexVol
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Použití Azure Key Vault s úložištěm tajných kódů – ovladač CSI
 
-Spravované identity pod fungují skvěle pro ověřování proti podpoře služeb Azure. Pro vaše vlastní služby nebo aplikace bez spravovaných identit pro prostředky Azure se i nadále ověřujete pomocí přihlašovacích údajů nebo klíčů. K uložení těchto přihlašovacích údajů se dá použít digitální trezor.
+Použití projektu identity pod umožňuje ověřování v rámci podpory služeb Azure. Pro vaše vlastní služby nebo aplikace bez spravovaných identit pro prostředky Azure se můžete i nadále ověřovat pomocí přihlašovacích údajů nebo klíčů. K uložení obsahu tajného klíče se dá použít digitální trezor.
 
-Když aplikace potřebuje přihlašovací údaje, komunikují s digitálním trezorem, načtou nejnovější přihlašovací údaje a pak se připojí k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Azure Key Vault pomocí spravované identity se zobrazuje v následujícím diagramu:
+Když aplikace potřebuje přihlašovací údaje, komunikují s digitálním trezorem, načtou nejnovější tajný obsah a pak se připojí k požadované službě. Azure Key Vault může být tento digitální trezor. Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Azure Key Vault pomocí spravované identity se zobrazuje v následujícím diagramu:
 
-![Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Zjednodušený pracovní postup pro načtení přihlašovacích údajů z Key Vault pomocí spravované identity pod](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-Pomocí Key Vault ukládáte a pravidelně otáčíte tajné klíče, jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí FlexVolume. Ovladač FlexVolume umožňuje, aby cluster AKS nativně načítal přihlašovací údaje od Key Vault a bezpečně poskytoval pouze žadatelům pod. Pokud chcete nasadit ovladač Key Vault FlexVol do uzlů AKS, spolupracujte se svým operátorem clusteru. Pomocí spravované identity pod ní můžete požádat o přístup k Key Vault a načíst přihlašovací údaje, které potřebujete prostřednictvím ovladače FlexVolume.
+Pomocí Key Vault ukládáte a pravidelně otáčíte tajné klíče, jako jsou přihlašovací údaje, klíče účtu úložiště nebo certifikáty. Azure Key Vault můžete integrovat s clusterem AKS pomocí [zprostředkovatele Azure Key Vault pro ovladač pro úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage). Ovladač CSI úložiště tajných kódů umožňuje, aby cluster AKS nativně načetl obsah tajných kódů z Key Vault a bezpečně poskytoval pouze žadatelům nacházející se pod ním. Spolupracujte se svým operátorem clusteru, abyste nasadili ovladač do AKS pracovních uzlů pro úložiště tajných klíčů. Pomocí spravované identity pod ní můžete požádat o přístup k Key Vault a načíst obsah v tajnosti potřebný prostřednictvím ovladače v úložišti tajných kódů.
 
-Azure Key Vault s FlexVol jsou určené pro použití s aplikacemi a službami běžícími v systémech Linux a uzlech.
+Azure Key Vault s úložištěm tajných kódů – ovladač CSI se dá použít pro uzly Linux a lusky, které vyžadují verzi Kubernetes 1,16 nebo vyšší. Pro uzly Windows a lusky je vyžadována verze Kubernetes 1,18 nebo vyšší.
 
 ## <a name="next-steps"></a>Další kroky
 
 Tento článek se zaměřuje na zabezpečení lusků. Chcete-li implementovat některé z těchto oblastí, přečtěte si následující články:
 
 * [Použití spravovaných identit pro prostředky Azure s AKS][aad-pod-identity]
-* [Integrace Azure Key Vault s AKS][aks-keyvault-flexvol]
+* [Integrace Azure Key Vault s AKS][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

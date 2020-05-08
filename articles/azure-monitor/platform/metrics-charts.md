@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 8d15c217f2e65877ea3baa18f6ba847492bc7fa1
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: e6ff33b6a23cb85649a8811a8bef27ab455ab9e6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509818"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980894"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Pokročilé funkce Průzkumníku metrik Azure
 
@@ -137,9 +137,6 @@ Po nakonfigurování grafů jsou čáry grafu automaticky přiřazeny barevně z
 Chcete-li změnit barvu čáry grafu, klikněte na barevný pruh v legendě, která odpovídá grafu. Otevře se dialogové okno pro výběr barvy. Použijte výběr barvy ke konfiguraci barvy čáry.
 
 Až budou barvy grafu nakonfigurované, zůstanou při připnutí grafu na řídicí panel. V následující části se dozvíte, jak připnout graf.
-
-> [!NOTE]
-> Kvůli omezením pro náš plán vydaných verzí a publikování se změna barev čar grafu dočasně vyžaduje při spuštění Azure Portal [https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)speciální parametr **? Feature. ColorPicker = true** . Toto omezení bude brzy odebráno. 
 
 ![obrázek metriky](./media/metrics-charts/018.png)
 

@@ -1,88 +1,88 @@
 ---
-title: Kódy států a provincií spoluprodej | Azure Marketplace
-description: Tyto kódy států a provincií použijte při poskytování kontaktních údajů na stránce spoluprodeje nabídky.
+title: Kódy států a provincie v Azure Marketplaceech ve společném prodeji
+description: Po poskytnutí kontaktních údajů na stránce pro spoluprodej na vaší nabídce v Azure Marketplace Získejte kódy provincie k dispozici.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619357"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744710"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Kódy států a provincií spoluprodej
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Kódy států a provincie v Azure Marketplaceech ve společném prodeji
 
-Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo provincii při [poskytování kontaktních údajů na stránce spoluprodeje vaší nabídky](commercial-marketplace-co-sell.md#contacts).
+V tomto článku jsou uvedeny dostupné kódy států a provincie při poskytování kontaktních údajů na stránce pro spoluprodej vaší nabídky. Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo provincii při [poskytování kontaktních údajů na stránce pro spoluprodej vaší nabídky](commercial-marketplace-co-sell.md#contacts).
 
-## <a name="us-states-and-territories"></a>Státy a území USA
+## <a name="us-states-and-territories"></a>Státy a oblasti USA
 
-|   Název státu a území          |   kód    |
+|   Název státu a oblasti          |   kód    |
 |-------------------------------------|-----------|
-| Alabama                             | USA-AL     |
-| Alaska                              | US-AK     |
-| Arizona                             | US-AZ     |
-| Arkansas                            | US-AR     |
-| California                          | US-CA     |
-| Colorado                            | US-CO     |
-| Connecticut                         | US-ČT     |
+| Alabama                             | US-AL     |
+| Alaska                              | US – AK     |
+| Arizona                             | US – AZ     |
+| Arkansas                            | SPOJENÉ STÁTY – AR     |
+| California                          | US – CA     |
+| Colorado                            | US – CO     |
+| Connecticut                         | US-CT     |
 | Delaware                            | US-DE     |
-| Florida                             | USA-FL     |
+| Florida                             | US-FL     |
 | Gruzie                             | US-GA     |
-| Hawaii                              | US-HI     |
+| Hawaii                              | US – HI     |
 | Idaho                               | US-ID     |
 | Illinois                            | US-IL     |
-| Indiana                             | US-IN     |
-| Iowa                                | US-IA     |
-| Kansas                              | US-KS     |
-| Kentucky                            | US-KY     |
-| Louisiana                           | USA-LA     |
-| Maine                               | US-ME     |
+| Indiana                             | US     |
+| Iowa                                | US – IA     |
+| Kansas                              | US – KS     |
+| Kentucky                            | US – KY     |
+| Louisiana                           | US-LA     |
+| Maine                               | US     |
 | Maryland                            | US-MD     |
 | Massachusetts                       | US-MA     |
-| Michigan                            | USA-MI     |
+| Michigan                            | US – MI     |
 | Minnesota                           | US-MN     |
 | Mississippi                         | US-MS     |
-| Missouri                            | US-MO     |
+| Missouri                            | US – MO     |
 | Montana                             | US-MT     |
-| Nebraska                            | USA-NE     |
+| Nebraska                            | US-NE     |
 | Nevada                              | US-NV     |
-| New Hampshire                       | US-NH     |
-| New Jersey                          | USA-NJ     |
+| New Hampshire                       | US – NH     |
+| New Jersey                          | US – NEWARKU     |
 | New Mexico                          | US-NM     |
-| New York                            | USA-NY     |
-| North Carolina                      | USA-NC     |
-| North Dakota                        | US-ND     |
-| Ohio                                | US-OH     |
-| Oklahoma                            | US-OK     |
-| Oregon                              | USA-NEBO     |
+| New York                            | US-NY     |
+| North Carolina                      | US-NC     |
+| North Dakota                        | US – ND     |
+| Ohio                                | US – NE     |
+| Oklahoma                            | US – OK     |
+| Oregon                              | US-NEBO     |
 | Pennsylvania                        | US-PA     |
 | Rhode Island                        | US-RI     |
-| South Carolina                      | US-SC     |
+| South Carolina                      | US – SC     |
 | South Dakota                        | US-SD     |
 | Tennessee                           | US-TN     |
 | Texas                               | US-TX     |
 | Utah                                | US-UT     |
 | Vermont                             | US-VT     |
 | Virginia                            | US-VA     |
-| Washington                          | US-WA     |
-| West Virginia                       | US-WV     |
+| Washington                          | US – WA     |
+| West Virginia                       | US – WV     |
 | Wisconsin                           | US-WI     |
-| Wyoming                             | US-WY     |
-| District of Columbia                | USA –Dc     |
-| Americká Samoa                      | US-AS     |
+| Wyoming                             | US – WY     |
+| District of Columbia                | US-DC     |
+| Americká Samoa                      | US – JAKO     |
 | Guam                                | US-GU     |
 | Severní Mariany            | US-MP     |
 | Portoriko                         | US-PR     |
-| Spojené státy menší odlehlé ostrovy | US-UM    |
+| USA menší odlehlé ostrovy | SPOJENÉ STÁTY – UM    |
 | Americké Panenské ostrovy                 | US-VI    |
 
-## <a name="canadian-provinces-and-territories"></a>Kanadské provincie a území
+## <a name="canadian-provinces-and-territories"></a>Kanadská provincie a oblasti
 
-|   Název provincie a území       |   kód    |
+|   Název okresu a oblasti       |   kód    |
 |-------------------------------------|-----------|
 | Alberta                             |  CA-AB    |
 | British Columbia                    |  CA-BC    |
@@ -99,9 +99,9 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 | Yukon                               |  CA-YT    |
 
 
-## <a name="australian-states-and-territories"></a>Australské státy a území
+## <a name="australian-states-and-territories"></a>Australské země a oblasti
 
-|   Název státu a území          |   kód    |
+|   Název státu a oblasti          |   kód    |
 |-------------------------------------|-----------|
 | New South Wales                     |  AU-NSW   |
 | Queensland                          |  AU-QLD   |
@@ -115,4 +115,4 @@ Pokud je to možné, použijte tyto kódy k poskytnutí informací o stavu nebo 
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [možnosti spoluprodeje v Partnerském centru](./commercial-marketplace-co-sell.md).
+- Přečtěte si informace o [možnosti společného prodeje v partnerském centru](./commercial-marketplace-co-sell.md).
