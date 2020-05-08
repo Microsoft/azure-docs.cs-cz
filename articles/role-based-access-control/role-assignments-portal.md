@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí s RBAC a Azure Portal
-description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a Azure Portal.
+title: Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal – Azure RBAC
+description: Přečtěte si, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí Azure Portal a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246354"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735687"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí Azure Portal.
 
@@ -143,7 +143,7 @@ Pokud v Azure RBAC odeberete přístup z prostředku Azure, odeberete přiřazen
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal](role-assignments-list-portal.md)
-- [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí RBAC a Azure Portal](quickstart-assign-role-user-portal.md)
-- [Řešení potíží s RBAC pro prostředky Azure](troubleshooting.md)
+- [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)
+- [Kurz: udělení přístupu uživatele k prostředkům Azure pomocí Azure Portal](quickstart-assign-role-user-portal.md)
+- [Řešení potíží s Azure RBAC](troubleshooting.md)
 - [Uspořádání prostředků pomocí skupin pro správu Azure](../governance/management-groups/overview.md)

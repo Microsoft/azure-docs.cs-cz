@@ -12,12 +12,12 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112197"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981982"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -47,6 +47,17 @@ Pro automatický upgrade nebudou zpřístupněny všechny verze Azure AD Connect
 >Pokud jste povolili Azure AD Connect pro synchronizaci, brzy automaticky zahájíte přijímání oznámení o stavu, která vás upozorní na nadcházející vyřazení, pokud používáte některou ze starších verzí.
 >
 >Další informace o tom, jak upgradovat Azure AD Connect na nejnovější verzi najdete v [tomto článku](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) .
+
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>Stav verze
+05/07/2020: vydáno ke stažení
+
+### <a name="fixed-issues"></a>Oprava potíží
+- Opravili jsme problém, kdy se v uživatelském rozhraní Průvodce nesprávně vybraly nevybrané domény.
+- Opravili jsme problém v modulu ADSyncConfig PowerShellu, kde vyvolání příkazu DSACLS, který se používá ve všech rutinách oprávnění set-ADSync *, by způsobilo jednu z následujících chyb:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -105,6 +116,7 @@ Toto sestavení opravy hotfix řeší problém se 1.5.18.0 Build, pokud máte po
 - Opravili jsme problém s vytvořením účtu synchronizace Azure Active Directory, kde povolení rozšíření adresáře nebo KOSMETICE může selhat, protože účet se před pokusem o použití nerozšířil napříč všemi replikami služby. 
 - Opravili jsme chybu v nástroji pro kompresi chyb synchronizace, který nezpracovává správně náhradní znaky. 
 - Opravili jsme chybu v rámci automatického upgradu, která opustila Server ve službě Scheduler Suspended State. 
+- Opravili jsme chybu na stránce filtrování domény nebo organizační jednotky, která by odebrala profily spuštění domény tím, že se jenom částečně rozšíří stromové struktury domény, aniž by se musely provádět žádné změny.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Stav verze
@@ -554,7 +566,7 @@ Pomocí následujících změn oprávnění v místní službě AD Zablokujte p�
 *   Odebere všechny položky ACE u konkrétního objektu s výjimkou položek ACE specifických pro sebe. Chceme, aby výchozí oprávnění zůstala beze změny, když se dostane do sebe.
 *   Přiřaďte tato konkrétní oprávnění:
 
-Typ     | Název                          | Access               | Platí pro
+Typ     | Name                          | Access               | Platí pro
 ---------|-------------------------------|----------------------|--------------|
 Povolit    | SYSTEM                        | Úplné řízení         | Tento objekt  |
 Povolit    | Enterprise Admins             | Úplné řízení         | Tento objekt  |

@@ -1,6 +1,6 @@
 ---
-title: Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell
-description: Naučte se určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání řízení přístupu na základě role (RBAC) Azure a Azure PowerShell.
+title: Vypsání přiřazení rolí Azure pomocí Azure PowerShell – Azure RBAC
+description: Naučte se, jak určit, které prostředky uživatelé, skupiny, instanční objekty nebo spravované identity mají přístup k používání Azure PowerShell a řízení přístupu na základě role v Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1bdf703ac29ce11749de70fa0ef5972ee284401b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75931156"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735704"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Seznam přiřazení rolí pomocí Azure RBAC a Azure PowerShell
+# <a name="list-azure-role-assignments-using-azure-powershell"></a>Vypsání přiřazení rolí Azure pomocí Azure PowerShell
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Tento článek popisuje, jak zobrazit seznam přiřazení rolí pomocí Azure PowerShell.
 
@@ -168,4 +168,4 @@ Get-AzRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure PowerShell](role-assignments-powershell.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure PowerShell](role-assignments-powershell.md)

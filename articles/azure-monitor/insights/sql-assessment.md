@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662480"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871242"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimalizujte prostředí SQL pomocí řešení pro kontrolu stavu SQL Server v Azure Monitor
 
@@ -34,8 +34,8 @@ Po přidání řešení a dokončení posouzení se souhrnné informace pro obla
 ## <a name="prerequisites"></a>Požadavky
 
 * Řešení kontroly stavu SQL vyžaduje, aby na každém počítači s nainstalovanou Microsoft Monitoring Agent (MMA) byla nainstalovaná podporovaná verze .NET Framework 4.6.2.  MMA agent používá System Center 2016-Operations Manager a Operations Manager 2012 R2 a Azure Monitor.  
-* Řešení podporuje SQL Server verze 2012, 2014 a 2016.
-* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu SQL z webu Azure Marketplace v Azure Portal.  Abyste mohli řešení nainstalovat, musíte být správce nebo přispěvatel v rámci předplatného Azure.
+* Řešení podporuje SQL Server verze 2012, 2014, 2016, 2017 a 2019.
+* Pracovní prostor Log Analytics pro přidání řešení kontroly stavu SQL z webu Azure Marketplace v Azure Portal. Abyste mohli řešení nainstalovat, musíte být správce nebo přispěvatel v rámci předplatného Azure.
 
   > [!NOTE]
   > Po přidání řešení se soubor AdvisorAssessment. exe přidá na servery s agenty. Konfigurační data se čtou a pak se odesílají do Azure Monitor v cloudu ke zpracování. Na přijatá data se aplikuje logika a cloudová služba data zaznamená.

@@ -1,6 +1,6 @@
 ---
-title: Seznam definic rolí v Azure RBAC pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API | Microsoft Docs
-description: Přečtěte si, jak vypsat předdefinované a vlastní role v Azure RBAC pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API.
+title: Seznam definic rolí Azure – Azure RBAC
+description: Přečtěte si, jak vypsat předdefinované a vlastní role Azure pomocí Azure Portal, Azure PowerShell, Azure CLI nebo REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062985"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891261"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Seznam definic rolí v Azure RBAC
+# <a name="list-azure-role-definitions"></a>Vypsat definice rolí Azure
 
-Definice role je kolekce oprávnění, která se dají provést, jako je čtení, zápis a odstranění. Obvykle se nazývá jenom role. [Řízení přístupu na základě role (RBAC) v Azure](overview.md) má víc než 120 [integrovaných rolí](built-in-roles.md) , nebo můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit seznam integrovaných a vlastních rolí, které můžete použít k udělení přístupu k prostředkům Azure.
+Definice role je kolekce oprávnění, která se dají provést, jako je čtení, zápis a odstranění. Obvykle se nazývá jenom role. [Řízení přístupu na základě role Azure (Azure RBAC)](overview.md) má více než 120 [integrovaných rolí](built-in-roles.md) , nebo můžete vytvořit vlastní role. Tento článek popisuje, jak vytvořit seznam integrovaných a vlastních rolí, které můžete použít k udělení přístupu k prostředkům Azure.
 
 Seznam rolí správce pro Azure Active Directory najdete v tématu [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
@@ -344,6 +344,55 @@ K vypsání definic rolí použijte REST API [seznam definice rolí](/rest/api/a
     > | `$filter=atScopeAndBelow()` | Vypisuje definice rolí pro zadaný obor a všechny podobory. |
     > | `$filter=type+eq+'{type}'` | Vypisuje definice rolí zadaného typu. Typ role může být `CustomRole` nebo. `BuiltInRole` |
 
+Následující požadavek vypíše vlastní definice rolí v oboru předplatného:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+Následující příklad ukazuje příklad výstupu:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>Seznam definice role
 
 Chcete-li zobrazit podrobnosti o konkrétní roli, použijte [Definice rolí – získat](/rest/api/authorization/roledefinitions/get) nebo [Definice rolí – získat podle ID](/rest/api/authorization/roledefinitions/getbyid) REST API.
@@ -372,9 +421,45 @@ Chcete-li zobrazit podrobnosti o konkrétní roli, použijte [Definice rolí –
      
 1. Nahraďte *{roleDefinitionId}* identifikátorem definice role.
 
+Následující požadavek vypíše definici role [čtenáře](built-in-roles.md#reader) :
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+Následující příklad ukazuje příklad výstupu:
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>Další kroky
 
-- [Předdefinované role pro prostředky Azure](built-in-roles.md)
-- [Vlastní role pro prostředky Azure](custom-roles.md)
-- [Seznam přiřazení rolí pomocí Azure RBAC a Azure Portal](role-assignments-list-portal.md)
-- [Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure Portal](role-assignments-portal.md)
+- [Předdefinované role Azure](built-in-roles.md)
+- [Vlastní role Azure](custom-roles.md)
+- [Vypsání přiřazení rolí Azure pomocí Azure Portal](role-assignments-list-portal.md)
+- [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md)

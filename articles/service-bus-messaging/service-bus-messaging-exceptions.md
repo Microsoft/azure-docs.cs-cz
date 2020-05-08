@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80880784"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739343"
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus výjimky zasílání zpráv
 Tento článek obsahuje seznam výjimek rozhraní .NET generovaných rozhraními API .NET Framework. 
@@ -46,8 +46,6 @@ V následující tabulce jsou uvedeny typy výjimek zasílání zpráv a jejich 
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |Došlo k pokusu o přijetí zprávy s určitým pořadovým číslem. Tato zpráva se nenašla. |Ujistěte se, že zpráva již nebyla přijata. Zkontrolujte frontu nedoručených zpráv a podívejte se, zda byla zpráva deadlettered. |Nemůžete to zkusit znovu. |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |Klient nemůže navázat připojení k Service Bus. |Ujistěte se, že je zadaný název hostitele správný a že je hostitel dosažitelný. |Zkuste to znovu, pokud dojde k problémům s přerušovaným připojením. |
 | [Výjimka serverbusyexception](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |Služba v tuto chvíli nemůže zpracovat požadavek. |Klient může na určitou dobu počkat a pak operaci zopakovat. |Klient může po určitém intervalu opakovat pokus. Pokud výsledkem opakování dojde k jiné výjimce, ověřte chování této výjimky znovu. |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |Platnost tokenu zámku přidruženého ke zprávě vypršela nebo se token zámku nenašel. |Vyřadit zprávu. |Nemůžete to zkusit znovu. |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |Zámek přidružený k této relaci je ztracený. |Přerušit objekt [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) . |Nemůžete to zkusit znovu. |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |Obecná výjimka zasílání zpráv, která může být vyvolána v následujících případech:<p>Byl proveden pokus o vytvoření [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) pomocí názvu nebo cesty, která patří k jinému typu entity (například téma).</p><p>Byl proveden pokus o odeslání zprávy, která je větší než 256 KB. </p>U serveru nebo služby došlo k chybě během zpracování žádosti. Podrobnosti najdete ve zprávě výjimky. Obvykle se jedná o přechodnou výjimku.</p><p>Požadavek se ukončil, protože entita je omezená. Kód chyby: 50001, 50002, 50008. </p> | Zkontrolujte kód a zajistěte, aby se pro tělo zprávy používaly pouze serializovatelné objekty (nebo použijte vlastní serializátor). <p>Vyhledejte v dokumentaci podporované typy hodnot vlastností a používejte pouze podporované typy.</p><p> Ověřte vlastnost- [přechodný](/dotnet/api/microsoft.servicebus.messaging.messagingexception) . Pokud je to **pravda**, můžete operaci zopakovat. </p>| Pokud je výjimka způsobena omezením, počkejte několik sekund a operaci opakujte. Chování při opakování není definované a nemusí pomáhat v dalších scénářích.|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |Pokusí se vytvořit entitu s názvem, který už používá jiná entita v daném oboru názvů služby. |Odstraňte existující entitu nebo vyberte jiný název entity, která se má vytvořit. |Nemůžete to zkusit znovu. |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |Entita zasílání zpráv dosáhla maximální povolené velikosti nebo byl překročen maximální počet připojení k oboru názvů. |Přiřadíte místo v entitě příjem zpráv z entity nebo jejích podfront. Viz [QuotaExceededException](#quotaexceededexception). |Pokud se zprávy během této doby odstranily, může to zkusit znovu. |
@@ -102,6 +100,96 @@ Měli byste zaškrtnout hodnotu vlastnosti [Třída ServicePointManager. Default
 
 ### <a name="queues-and-topics"></a>Fronty a témata
 V případě front a témat je časový limit zadán buď ve vlastnosti [MessagingFactorySettings. OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) jako součást připojovacího řetězce, nebo prostřednictvím [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder). Chybová zpráva se může lišit, ale vždy obsahuje hodnotu časového limitu zadanou pro aktuální operaci. 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>Příčina
+
+**MessageLockLostException** se vyvolá při přijetí zprávy pomocí režimu přijetí [PeekLock](message-transfers-locks-settlement.md#peeklock) a zámek, který uchovává klient, vyprší na straně služby.
+
+Zámek zprávy může vypršet z různých důvodů – 
+
+  * Platnost časovače zámku vypršela před tím, než byla obnovena klientskou aplikací.
+  * Klientská aplikace získala zámek, uložila ho do trvalého úložiště a pak se restartovala. Po restartu se klientská aplikace vyhledá ve zprávách o letu a pokusila se je dokončit.
+
+### <a name="resolution"></a>Řešení
+
+V případě **MessageLockLostException**nemůže klientská aplikace nadále zprávu zpracovat. Klientská aplikace může volitelně zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
+
+Vzhledem k tomu, že zámek zprávy vypršel, by se mohl vrátit do fronty (nebo předplatného) a může je zpracovat další klientská aplikace, která volá příjem.
+
+Pokud **MaxDeliveryCount** překročí, může se zpráva přesunout do **DeadLetterQueue**.
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>Příčina
+
+**SessionLockLostException** je vyvolána, když je relace přijata, a zámek, který uchovává klient, vyprší na straně služby.
+
+Zámek relace může vypršet z různých důvodů – 
+
+  * Platnost časovače zámku vypršela před tím, než byla obnovena klientskou aplikací.
+  * Klientská aplikace získala zámek, uložila ho do trvalého úložiště a pak se restartovala. Po restartu se klientská aplikace vyhledala v podletových relacích a pokusila se zpracovat zprávy v těchto relacích.
+
+### <a name="resolution"></a>Řešení
+
+V případě **SessionLockLostException**nemůže klientská aplikace nadále zpracovávat zprávy v relaci. Klientská aplikace může zvážit protokolování výjimky pro účely analýzy, ale klient *musí* zprávu vyřadit.
+
+Vzhledem k tomu, že zámek relace vypršel, vrátí se zpátky do fronty (nebo předplatného) a může být uzamčený další klientskou aplikací, která relaci přijme. Vzhledem k tomu, že zámek relace je uchováván v jediné klientské aplikaci v daném okamžiku, je zaručeno zpracování v daném pořadí.
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>Příčina
+
+V následujících případech je vyvolána výjimka **SocketException** -
+   * Pokus o připojení se nezdaří, protože hostitel po uplynutí určité doby neodpověděl správně (kód chyby TCP 10060).
+   * Navázání připojení selhalo, protože se nepovedlo odpovědět připojenému hostiteli.
+   * Při zpracování zprávy došlo k chybě nebo časový limit je překročen vzdáleným hostitelem.
+   * Problém související se síťovými prostředky
+
+### <a name="resolution"></a>Řešení
+
+Chyby **SocketException** označují, že virtuální počítač hostující aplikace není schopen převést název `<mynamespace>.servicebus.windows.net` na odpovídající IP adresu. 
+
+Zkontrolujte, zda je příkaz v mapování na IP adresu úspěšný, v části.
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+který by měl poskytnout výstup níže
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+Pokud se výše uvedený název **nepřekladuje** na IP adresu a alias oboru názvů, zkontrolujte, který správce sítě další prozkoumat. Překlad názvů se provádí prostřednictvím serveru DNS obvykle prostřednictvím prostředku v síti zákazníka. Pokud se překlad DNS provádí Azure DNS kontaktujte prosím podporu Azure.
+
+Pokud překlad názvů **funguje podle očekávání**, ověřte, jestli [tady](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues) jsou povolené připojení k Azure Service Bus.
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>Příčina
+
+**MessagingException** je obecná výjimka, která může být vyvolána z různých důvodů. Níže jsou uvedeny některé z důvodů.
+
+   * Došlo k pokusu o vytvoření **QueueClient** na **téma** nebo v **předplatném**.
+   * Velikost odeslané zprávy je větší než limit dané úrovně. Přečtěte si další informace o [kvótách Service Bus a omezeních](service-bus-quotas.md).
+   * Konkrétní požadavek na rovinu dat (odeslání, přijetí, dokončení, opuštění) byl ukončen z důvodu omezení.
+   * Přechodné problémy způsobily kvůli upgradům a restartům služby.
+
+> [!NOTE]
+> Výše uvedený seznam výjimek není vyčerpávající.
+
+### <a name="resolution"></a>Řešení
+
+Postup řešení závisí na tom, co způsobilo vyvolání **MessagingException** .
+
+   * V případě **přechodného problému** (kde je v ***přechodném*** případě je nastaveno na ***hodnotu true***) nebo pro **problémy s omezením**je možné operaci vyřešit opakováním operace. Pro tuto operaci je možné využít výchozí zásady opakování v sadě SDK.
+   * V případě jiných problémů se v podrobnostech výjimky označují problémy a postup řešení je možné odvodit ze stejného.
 
 ## <a name="next-steps"></a>Další kroky
 Kompletní referenční informace k rozhraní .NET API pro Service Bus najdete v [referenčních informacích k rozhraní Azure .NET API](/dotnet/api/overview/azure/service-bus).

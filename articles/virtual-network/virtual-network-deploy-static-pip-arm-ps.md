@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 1d340aadc20110e6aa4bfb05b1cf794fd6a286b2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7b1e7471f7850f71596317c7e2c38db367bfd3a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146175"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790078"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí PowerShellu
 
@@ -47,7 +47,7 @@ Následující kroky můžete provést z místního počítače nebo pomocí Azu
      -AllocationMethod "Static"
    ```
 
-   Pokud veřejná IP adresa musí být standardní SKU, musíte [vytvořit veřejnou IP adresu](virtual-network-public-ip-address.md#create-a-public-ip-address), [vytvořit síťové rozhraní](virtual-network-network-interface.md#create-a-network-interface), [přiřadit veřejnou IP adresu síťovému rozhraní](virtual-network-network-interface-addresses.md#add-ip-addresses)a pak v samostatných krocích [vytvořit virtuální počítač se síťovým rozhraním](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
+   Pokud veřejná IP adresa musí být standardní SKU, musíte [vytvořit veřejnou IP adresu](virtual-network-public-ip-address.md#create-a-public-ip-address), [vytvořit síťové rozhraní](virtual-network-network-interface.md#create-a-network-interface), [přiřadit veřejnou IP adresu síťovému rozhraní](virtual-network-network-interface-addresses.md#add-ip-addresses)a pak v samostatných krocích [vytvořit virtuální počítač se síťovým rozhraním](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm). Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická adresa s [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 

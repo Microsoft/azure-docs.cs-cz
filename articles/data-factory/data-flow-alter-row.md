@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
-ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891380"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982645"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>Změna transformace řádku v toku dat mapování
 
@@ -61,13 +61,15 @@ Transformace jímky vyžaduje buď jeden klíč, nebo sérii klíčů pro identi
 
 Datové toky ADF podporují sloučení pro Azure SQL Database a synapse (datový sklad) s možností Upsert.
 
-Můžete ale použít scénáře, ve kterých vaše cílové schéma databáze využilo vlastnost identity klíčových sloupců. ADF vyžaduje, abyste identifikovali klíče, které použijete, aby odpovídaly hodnotám řádků pro aktualizace a upsertuje. Pokud ale cílový sloupec má nastavenou vlastnost identity a používáte zásady Upsert, cílová databáze vám neumožní zapisovat do tohoto sloupce.
+Můžete ale použít scénáře, ve kterých vaše cílové schéma databáze využilo vlastnost identity klíčových sloupců. ADF vyžaduje, abyste identifikovali klíče, které použijete, aby odpovídaly hodnotám řádků pro aktualizace a upsertuje. Pokud ale cílový sloupec má nastavenou vlastnost identity a používáte zásady Upsert, cílová databáze vám neumožní zapisovat do tohoto sloupce. V případě, že se pokusíte Upsert do distribučního sloupce distribuované tabulky, můžete také spustit chyby.
 
-Máte dvě možnosti:
+Zde jsou způsoby, jak tuto situaci opravit:
 
-1. Použijte možnost SQL pre-Processing transformaci jímky: ```SET IDENTITY_INSERT tbl_content ON```. Pak ho vypněte pomocí vlastnosti SQL po zpracování: ```SET IDENTITY_INSERT tbl_content OFF```.
+1. Přejděte do nastavení transformace jímky a nastavte "Přeskočit zápis klíčových sloupců". Tato akce poskytne ADF bez zápisu sloupce, který jste vybrali jako hodnotu klíče pro vaše mapování.
 
-2. Místo použití Upsert přepněte logiku a oddělte podmínky aktualizace z podmínek vložení pomocí podmíněné transformace rozdělení. Tímto způsobem můžete nastavit mapování pro cestu aktualizace tak, aby bylo ignorováno mapování klíčových sloupců.
+2. Pokud tento klíčový sloupec není sloupec, který je příčinou problému pro sloupce identity, můžete použít možnost SQL pro transformaci jímky před zpracováním: ```SET IDENTITY_INSERT tbl_content ON```. Pak ho vypněte pomocí vlastnosti SQL po zpracování: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Pro případ identity i pro distribuční sloupec můžete logiku z Upsert přepnout na použití samostatné podmínky aktualizace a samostatné podmínky vložení pomocí podmíněné transformace rozdělení. Tímto způsobem můžete nastavit mapování pro cestu aktualizace tak, aby bylo ignorováno mapování klíčových sloupců.
 
 ## <a name="data-flow-script"></a>Skript toku dat
 
