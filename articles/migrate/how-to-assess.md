@@ -1,31 +1,21 @@
 ---
 title: Přidat nástroje pro posouzení do Azure Migrate
 description: Naučte se přidávat nástroje pro posouzení do Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185912"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901065"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
-Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate](migrate-overview.md).
+Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate](migrate-overview.md). 
 
-Azure Migrate poskytuje centrum nástrojů pro posouzení a migraci do Azure. Zahrnuje nástroje Azure Migrate a také další nabídky nástrojů a nezávislých výrobců softwaru (ISV).
-
-Pokud chcete přidat nástroj pro vyhodnocení a ještě nemáte Azure Migrate projekt, postupujte podle pokynů v tomto [článku](how-to-add-tool-first-time.md).
-
-## <a name="select-a-tool"></a>Vybrat nástroj
-
-Pokud zvolíte nástroj bez Azure Migrate pro posouzení, Začněte získáním licence nebo registrací bezplatné zkušební verze v souladu se zásadami nástroje. Nástroje mají možnost připojit se k Azure Migrate. Pokud chcete nástroj připojit k Azure Migrate, postupujte podle pokynů a dokumentace. [Přečtěte si další informace](migrate-services-overview.md) o nástrojích.
-
+- Pokud chcete přidat nástroj pro posouzení a ještě nemáte Azure Migrate projekt, postupujte podle tohoto [článku](how-to-add-tool-first-time.md).-
+- Pokud jste přidali nástroj ISV nebo pracovníka pro posouzení, [postupujte podle kroků](prepare-isv-movere.md)a připravte se na práci s nástrojem.
 
 ## <a name="select-an-assessment-scenario"></a>Výběr scénáře posouzení
 

@@ -7,15 +7,15 @@ ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.topic: article
 ms.workload: infrastructure
-ms.date: 11/06/2019
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 74c87d589f1c50551ac5685fe0fa126a82bffbde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28cdc96020d085c6f44c8b6818aa76dd7eb29891
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758428"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788979"
 ---
 # <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Vytvoření galerie sdílených imagí Azure pomocí portálu
 
@@ -27,21 +27,13 @@ Galerie je prostředek nejvyšší úrovně, který poskytuje úplné řízení 
 
 Funkce Galerie sdílených imagí má více typů prostředků. V tomto článku budeme používat nebo sestavovat tyto:
 
-| Prostředek | Popis|
-|----------|------------|
-| **Spravovaná image** | Základní image, která se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z [zobecněných](shared-image-galleries.md#generalized-and-specialized-images) virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
-| **Snímek** | Kopie VHD, která se dá použít k vytvoření **Image verze** Snímky se dají považovat ze [specializovaného](shared-image-galleries.md#generalized-and-specialized-images) virtuálního počítače (který se nezobecněný) pak použít samostatně, nebo se snímky datových disků, aby se vytvořila specializovaná verze image.
-| **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
-| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich použití v rámci vaší organizace. Můžete zahrnout informace, jako je například to, zda je obrázek zobecněný nebo specializovaný, operační systém, minimální a maximální požadavky na paměť a poznámky k verzi. Je definicí typu obrázku. |
-| **Verze image** | **Verze image** je to, co použijete k vytvoření virtuálního počítače při použití galerie. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Podobně jako u spravované image při použití **verze image** k vytvoření virtuálního počítače se verze image používá k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát. |
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 <br>
 
-> [!IMPORTANT]
-> Specializované obrázky jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Známá omezení verze Preview** Virtuální počítače se dají vytvářet jenom z specializovaných imagí pomocí portálu nebo rozhraní API. Pro verzi Preview není podporována podpora rozhraní příkazového řádku nebo PowerShellu.
+
+
 
 
 ## <a name="before-you-begin"></a>Před zahájením
@@ -81,9 +73,9 @@ Pokud chcete odstranit jednotlivé prostředky, je nutné je odstranit v opačn�
 
 Pomocí šablon můžete také vytvořit prostředek Galerie sdílených imagí. K dispozici je několik šablon rychlého startu Azure: 
 
-- [Vytvoření galerie sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Vytvoření definice obrázku v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Vytvoření verze image v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Vytvoření služby Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Vytvoření definici image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 Další informace o galeriích sdílených imagí najdete v [přehledu](shared-image-galleries.md). Pokud narazíte na problémy, přečtěte si téma [řešení potíží s galeriemi sdílených imagí](troubleshooting-shared-images.md).

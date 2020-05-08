@@ -3,12 +3,12 @@ title: Přesunout podporu operace podle typu prostředku
 description: Zobrazuje seznam typů prostředků Azure, které se dají přesunout do nové skupiny prostředků nebo předplatného.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804788"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900980"
 ---
 # <a name="move-operation-support-for-resources"></a>Podpora operace přesunutí pro prostředky
 Tento článek uvádí, jestli typ prostředku Azure podporuje operaci přesunu. Poskytuje taky informace o zvláštních podmínkách, které je potřeba vzít v úvahu při přesunu prostředku.
@@ -418,8 +418,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | domainnames | Ano | Ne |
-> | virtualmachines | Ano | Ne |
+> | domainnames | Ano | No |
+> | virtualmachines | Ano | No |
 
 > [!IMPORTANT]
 > Viz [pokyny k přesunu klasického nasazení](./move-limitations/classic-model-move-limitations.md). Klasické prostředky nasazení se dají přesouvat mezi předplatnými s operací specifickou pro tento scénář.
@@ -441,7 +441,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Ano | Ne |
+> | storageaccounts | Ano | No |
 
 > [!IMPORTANT]
 > Viz [pokyny k přesunu klasického nasazení](./move-limitations/classic-model-move-limitations.md). Klasické prostředky nasazení se dají přesouvat mezi předplatnými s operací specifickou pro tento scénář.
@@ -771,10 +771,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Ne | Ne |
-> | Labs | Ano | Ne |
+> | Labs | Ano | No |
 > | laboratoře/prostředí | Ano | Ano |
 > | Labs/servicerunners | Ano | Ano |
-> | Labs/VirtualMachines | Ano | Ne |
+> | Labs/VirtualMachines | Ano | No |
 > | časových | Ano | Ano |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
@@ -1025,8 +1025,8 @@ Přejít na obor názvů poskytovatele prostředků:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Ne | Ne |
 > | integrationaccounts | Ano | Ano |
-> | integrationserviceenvironments | Ano | Ne |
-> | integrationserviceenvironments/Inspirujte | Ano | Ne |
+> | integrationserviceenvironments | Ano | No |
+> | integrationserviceenvironments/Inspirujte | Ano | No |
 > | isolatedenvironments | Ne | Ne |
 > | Zpracovávaný | Ano | Ano |
 
@@ -1036,7 +1036,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Ne | Ne |
-> | WebServices | Ano | Ne |
+> | WebServices | Ano | No |
 > | pracovní prostory | Ano | Ano |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -1197,10 +1197,10 @@ Přejít na obor názvů poskytovatele prostředků:
 > | networkinterfaces | Ano | Ano |
 > | networkprofiles | Ne | Ne |
 > | networksecuritygroups | Ano | Ano |
-> | networkwatchers | Ano | Ne |
-> | networkwatchers / connectionmonitors | Ano | Ne |
-> | networkwatchers / flowlogs | Ano | Ne |
-> | networkwatchers / pingmeshes | Ano | Ne |
+> | networkwatchers | Ano | No |
+> | networkwatchers / connectionmonitors | Ano | No |
+> | networkwatchers / flowlogs | Ano | No |
+> | networkwatchers / pingmeshes | Ano | No |
 > | p2svpngateways | Ne | Ne |
 > | privatednszones | Ano | Ano |
 > | privatednszones / virtualnetworklinks | Ano | Ano |
@@ -1253,6 +1253,9 @@ Přejít na obor názvů poskytovatele prostředků:
 
 > [!IMPORTANT]
 > Ujistěte se, že přesun do nového předplatného nepřekračuje [kvóty předplatného](azure-subscription-service-limits.md#azure-monitor-limits).
+
+> [!IMPORTANT]
+> Pracovní prostory, které mají propojený účet Automation, nejde přesunout. Než začnete s přesunem, nezapomeňte zrušit propojení jakýchkoli účtů Automation.   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
@@ -1396,7 +1399,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | aplikace | Ano | Ne |
+> | aplikace | Ano | No |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -1523,6 +1526,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
 > | instancepools | Ne | Ne |
+> | polohy | Ano | Ano |
 > | managedinstances | Ne | Ne |
 > | managedinstances/databáze | Ne | Ne |
 > | servery | Ano | Ano |
@@ -1709,7 +1713,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Skupina prostředků | Předplatné |
 > | ------------- | ----------- | ---------- |
-> | certifikáty | Ne | Ano |
+> | certifikáty | No | Ano |
 > | connectiongateways | Ano | Ano |
 > | připojení | Ano | Ano |
 > | customapis | Ano | Ano |

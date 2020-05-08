@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398186"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780109"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Jaké jsou výpočetní cíle v Azure Machine Learning? 
 
@@ -57,7 +57,7 @@ Můžete vytvořit Azure Machine Learning výpočetních instancí (Preview) neb
 
 Výpočetní clustery můžete vytvořit také pomocí [rozšíření služby Machine Learning pro rozhraní příkazového řádku Azure CLI](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training).
 
-Po vytvoření těchto výpočetních prostředků se tento pracovní prostor automaticky dojedná na rozdíl od jiných druhů výpočetních cílů.
+Když se tyto výpočetní prostředky vytvoří automaticky, na rozdíl od jiných druhů výpočetních cílů.
 
 ### <a name="compute-clusters"></a>Výpočetní clustery
 
@@ -68,7 +68,33 @@ Můžete použít výpočetní clustery Azure Machine Learning pro školení a p
 * Automatická správa clusteru a plánování úloh 
 * Podpora pro prostředky CPU a GPU
 
+### <a name="supported-vm-series-and-sizes"></a>Podporované řady a velikosti virtuálních počítačů
 
+Když v Azure Machine Learning vyberete velikost uzlu spravovaného výpočetního prostředku, můžete si vybrat z výběru velikostí virtuálních počítačů dostupných v Azure. Azure nabízí řadu velikostí pro Linux a Windows pro různé úlohy. Další informace o různých [typech a velikostech virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)najdete tady.
+
+Pro výběr velikosti virtuálního počítače je k dispozici několik výjimek a omezení:
+* Některé řady virtuálních počítačů nejsou v Azure Machine Learning podporovány.
+* Některé řady virtuálních počítačů jsou omezené. Pokud chcete použít řadu s omezeným přístupem, obraťte se na podporu a požádejte o zvýšení kvóty pro řadu. Informace o tom, jak kontaktovat podporu, najdete v tématu [Možnosti podpory Azure](https://azure.microsoft.com/support/options/) .
+
+Další informace o podporovaných řadách a omezeních najdete v následující tabulce. 
+
+| **Podporovaná řada virtuálních počítačů**  | **Omezení** |
+|------------|------------|
+| D | Žádné |
+| Dv2 | Žádné |  
+| DSv2 | Žádné |  
+| FSv2 | Žádné |  
+| M | Vyžaduje schválení |
+| NC | Žádné |    
+| NCsv2 | Vyžaduje schválení |
+| NCsv3 | Vyžaduje schválení |  
+| NDs | Vyžaduje schválení |
+| NDv2 | Vyžaduje schválení |
+| NV | Žádné |
+| NVv3 | Vyžaduje schválení | 
+
+
+I když Azure Machine Learning podporuje tyto řady virtuálních počítačů, nemusí být k dispozici ve všech oblastech Azure. Řadu virtuálních počítačů, které jsou k dispozici, najdete tady: [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## <a name="unmanaged-compute"></a>Nespravované výpočetní prostředky
 

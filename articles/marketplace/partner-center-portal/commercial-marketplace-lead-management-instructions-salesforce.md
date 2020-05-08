@@ -1,22 +1,22 @@
 ---
-title: Konfigurace správy zájemců pro Salesforce | Azure Marketplace
-description: Nakonfigurujte správu zájemců na Salesforce pro zákazníky Azure Marketplace.
+title: Správa zájemců v Salesforce – Microsoft Commercial Marketplace
+description: Naučte se používat Salesforce ke konfiguraci zájemců pro Microsoft AppSource a Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: e0fbb09370e198772b4fc485b3c0fe8a56da4226
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 7d64b8914fa0b109dfc662a97a7f84d94e3491ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133635"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789704"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>Konfigurace správy zájemců pro Salesforce
 
-Tento článek popisuje, jak nastavit systém Salesforce pro zpracování zájemců z komerční nabídky na webu Marketplace.
+Tento článek popisuje, jak nastavit systém Salesforce pro zpracování potenciálních zákazníků z nabídek v Microsoft AppSource a Azure Marketplace.
 
 > [!NOTE]
 > Azure Marketplace nepodporuje předem vyplněné seznamy, jako je například seznam hodnot pro pole **země** . Než budete pokračovat, ujistěte se, že nejsou nastavené žádné seznamy. Případně můžete pro příjem zájemců nakonfigurovat [koncový bod HTTPS](./commercial-marketplace-lead-management-instructions-https.md) nebo [tabulku Azure](./commercial-marketplace-lead-management-instructions-azure-table.md) .
@@ -24,7 +24,9 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování zájem
 ## <a name="set-up-your-salesforce-system"></a>Nastavení systému Salesforce
 
 1. Přihlaste se k Salesforce.
-1. Pokud používáte možnosti osvětlení Salesforce:
+1. Přejděte k nastavení **webu-vedoucí** . 
+    
+    Pokud používáte možnosti osvětlení Salesforce
     1. Na domovské stránce Salesforce vyberte **Nastavení** .
 
        ![Nastavení Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-1.png)
@@ -33,7 +35,7 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování zájem
 
         ![Web Salesforce – zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-2.png)
 
-1. Pokud používáte rozhraní Salesforce Classic:
+    Pokud používáte rozhraní Salesforce Classic:
 
     1. Na domovské stránce Salesforce vyberte **Nastavení** .
 
@@ -43,7 +45,7 @@ Tento článek popisuje, jak nastavit systém Salesforce pro zpracování zájem
 
         ![Klasický Web-to-vedoucí pro Salesforce](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-classic-web-to-lead.png)
 
-Ostatní pokyny jsou stejné bez ohledu na to, jaké prostředí Salesforce používáte.
+   Zbývající kroky jsou pro obě prostředí Salesforce stejné.
 
 1. Na stránce **Nastavení webu na základě potenciálního zákazníka** vyberte tlačítko **vytvořit formulář na webu pro** pořízení.
 1. Při **instalaci z webu na potenciálního zákazníka**vyberte **vytvořit webový formulář pro**vyřízení.
@@ -64,22 +66,23 @@ Ostatní pokyny jsou stejné bez ohledu na to, jaké prostředí Salesforce pou�
 
 Až budete připraveni ke konfiguraci informací o správě zájemců pro vaši nabídku na portálu pro publikování, postupujte podle těchto kroků.
 
-1. Pro vaši nabídku přejdete na stránku **nastavení nabídek** .
-1. V části **Správa zájemců** vyberte **připojit** .
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+
+1. Vyberte svou nabídku a pak navštivte kartu **nastavení nabídky** .
+
+1. V části **Správa zájemců** vyberte **připojit**. 
 
     ![Tlačítko připojit k části Správa zájemců](./media/commercial-marketplace-lead-management-instructions-salesforce/lead-management-connect.png)
 
 1. V automaticky otevíraném okně **Podrobnosti připojení** vyberte **Salesforce** pro **cíl zájemce** a vložte `oid` hodnotu z formuláře z webu do zájemce, který jste vytvořili v poli **identifikátor organizace** .
 
+    ![Místní okno s podrobnostmi o připojení ověření e-mailového pole kontaktu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)
+
 1. V části **kontaktní e-mail**zadejte e-mailové adresy pro lidi ve vaší společnosti, kteří by měli dostávat e-mailová oznámení při přijetí nového zájemce. Více e-mailů můžete zadat tak, že je oddělíte středníkem.
 
 1. Vyberte **OK**.
 
-Chcete-li se ujistit, že jste úspěšně připojeni k cíli zájemce, klikněte na tlačítko **ověřit** . V případě úspěchu budete mít vedoucího testu v cíli realizace.
+Abyste se ujistili, že jste se úspěšně připojili k cíli zájemce, vyberte **ověřit**. V případě úspěchu budete mít vedoucího testu v cíli realizace.
 
 >[!NOTE]
 >Musíte dokončit konfiguraci zbytku nabídky a publikovat ji předtím, než budete moct získat zájemce pro tuto nabídku.
-
-![Místní okno s podrobnostmi připojení zvolit cíl zájemce](./media/commercial-marketplace-lead-management-instructions-salesforce/choose-lead-destination.png)
-
-![Místní okno s podrobnostmi o připojení ověření e-mailového pole kontaktu](./media/commercial-marketplace-lead-management-instructions-salesforce/salesforce-connection-details.png)

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/04/2020
 ms.author: b-juche
-ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054465"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791404"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>Delegování podsítě do Azure NetApp Files 
 
@@ -28,7 +28,8 @@ Je nutné delegovat podsíť na Azure NetApp Files.   Při vytváření svazku j
 ## <a name="considerations"></a>Požadavky
 * Průvodce pro vytvoření nové podsítě je ve výchozím nastavení maska sítě/24, která poskytuje 251 dostupných IP adres. Pro službu je dostačující použití masky sítě/28, která poskytuje 16 použitelných IP adres.
 * V každé službě Azure Virtual Network (VNet) je možné delegovat Azure NetApp Files jenom jednu podsíť.   
-   Azure umožňuje vytvořit více delegovaných podsítí ve virtuální síti.  Pokud ale použijete víc než jednu delegovanou podsíť, všechny pokusy o vytvoření nového svazku selžou.
+   Azure umožňuje vytvořit více delegovaných podsítí ve virtuální síti.  Pokud ale použijete víc než jednu delegovanou podsíť, všechny pokusy o vytvoření nového svazku selžou.  
+   Ve virtuální síti může být jenom jedna delegovaná podsíť. Účet NetApp může nasazovat svazky do více virtuální sítě, z nichž každá má vlastní delegovanou podsíť.  
 * V delegované podsíti nelze určit skupinu zabezpečení sítě ani koncový bod služby. Tím dojde k selhání delegování podsítě.
 * Přístup k svazku z globálně partnerské virtuální sítě se momentálně nepodporuje.
 * Vytváření [uživatelem definovaných vlastních tras](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes) na podsítích virtuálních počítačů s předponou adresy (cíl) do podsítě delegované pro Azure NetApp Files není podporováno. Tím dojde k ovlivnění připojení virtuálního počítače.

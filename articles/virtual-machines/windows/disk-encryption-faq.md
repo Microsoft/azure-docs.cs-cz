@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082590"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901285"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače s Windows
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Co je Azure Disk Encryption pro virtuální počítače s Windows?
 
-Azure Disk Encryption pro virtuální počítače s Windows používá funkci BitLocker systému Windows k zajištění úplného šifrování disku disku s operačním systémem a datových disků. Kromě toho poskytuje šifrování disku s dočasnými prostředky, pokud [je parametr VolumeType vše](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  Tok obsahu se zašifruje z virtuálního počítače do back-endu úložiště. A díky tomu poskytuje komplexní šifrování pomocí klíče spravovaného zákazníkem.
+Azure Disk Encryption pro virtuální počítače s Windows používá funkci BitLocker systému Windows k zajištění úplného šifrování disku disku s operačním systémem a datových disků. Kromě toho poskytuje šifrování dočasného disku, pokud [je VolumeType parametr](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  Tok obsahu se zašifruje z virtuálního počítače do back-endu úložiště. A díky tomu poskytuje komplexní šifrování pomocí klíče spravovaného zákazníkem.
  
 Viz [podporované virtuální počítače a operační systémy](disk-encryption-overview.md#supported-vms-and-operating-systems).
  
@@ -61,7 +61,7 @@ Ne, Azure Disk Encryption pouze šifruje připojené svazky.
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Jak se Azure Disk Encryption liší od šifrování na straně serveru pomocí klíče spravovaného zákazníkem a kdy použít každé řešení?
 
-Azure Disk Encryption poskytuje komplexní šifrování pro disk s operačním systémem, datové disky a dočasný disk prostředku s klíčem spravovaným zákazníkem.
+Azure Disk Encryption poskytuje komplexní šifrování pro disk s operačním systémem, datové disky a dočasný disk s klíčem spravovaným zákazníkem.
 
 - Pokud vaše požadavky zahrnují šifrování všech výše uvedených a kompletních šifrování, použijte Azure Disk Encryption. 
 - Pokud vaše požadavky zahrnují šifrování jenom uložených dat s klíčem spravovaným zákazníkem, pak použijte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md). Pomocí klíčů spravovaných zákazníkem nelze zašifrovat disk s použitím Azure Disk Encryption i úložiště na straně serveru.
@@ -120,7 +120,7 @@ K nakonfigurování Azure Disk Encryption použijte nejnovější verzi sady Azu
 
 Azure Disk Encryption vybere metodu šifrování v BitLockeru na základě verze Windows následujícím způsobem:
 
-| Verze systému Windows                 | Version | Metoda šifrování        |
+| Verze systému Windows                 | Verze | Metoda šifrování        |
 |----------------------------------|--------|--------------------------|
 | Windows Server 2012, Windows 10 nebo novější  | >= 1511 |XTS-AES 256 – bit           |
 | Windows Server 2012, Windows 8, 8,1, 10 | < 1511 |AES 256 bit *              |
@@ -129,9 +129,6 @@ Azure Disk Encryption vybere metodu šifrování v BitLockeru na základě verze
 \*V systému Windows 2012 a novějších není podporován bit AES 256 s difuzorem.
 
 Pokud chcete zjistit verzi operačního systému Windows, spusťte na virtuálním počítači nástroj winver.
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Pokud používám EncryptFormatAll a zadáváte všechny typy svazků, smaže se data na datových jednotkách, které jsme už zašifrovali?
-Ne, data nebudou smazána z datových jednotek, které jsou již šifrovány pomocí Azure Disk Encryption. Podobně jako v případě, že EncryptFormatAll neprovádí znovu šifrování jednotky operačního systému, nebude znovu šifrovat již šifrovanou datovou jednotku. 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Můžu zálohovat a obnovit zašifrovaný virtuální počítač? 
 

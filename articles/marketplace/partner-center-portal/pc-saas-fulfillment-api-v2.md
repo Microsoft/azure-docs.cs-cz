@@ -1,22 +1,22 @@
 ---
-title: Rozhraní API pro plnění SaaS v2 | Azure Marketplace
-description: Tento článek vysvětluje, jak vytvořit a spravovat nabídku SaaS pro AppSource a Azure Marketplace s použitím přidružených rozhraní API pro splnění verze v2.
+title: Rozhraní API pro splnění SaaS v2 na komerčním webu Microsoft Marketplace
+description: Naučte se vytvářet a spravovat SaaS nabídku na Microsoft AppSource a Azure Marketplace pomocí rozhraní API pro splnění verze 2.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275760"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854190"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>Rozhraní API pro dodávky SaaS verze 2 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Rozhraní API pro splnění SaaS verze 2 na komerčním webu Microsoft Marketplace
 
-Tento článek podrobně popisuje rozhraní API, které umožňuje partnerům prodávat své aplikace SaaS na webu AppSource Marketplace a v Azure Marketplace. Tato rozhraní API jsou požadavkem pro SaaS nabídky AppSource a Azure Marketplace.
+Tento článek podrobně popisuje rozhraní API pro splnění, která umožňují partnerům prodávat své SaaS aplikace v Microsoft AppSource a Azure Marketplace. Tato rozhraní API se vyžadují pro transakční SaaS nabídky.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Správa životního cyklu předplatného SaaS
 
@@ -70,7 +70,7 @@ Tento stav indikuje, že platba zákazníka nebyla přijata. Podle zásad poskyt
 Předplatná dosáhnou tohoto stavu v reakci na výslovný požadavek zákazníka nebo na nedoplatky poplatků. Od partnera se očekává, že se data zákazníka uchovávají pro obnovení na vyžádání po určitý počet dnů a pak se odstraní. 
 
 
-## <a name="api-reference"></a>referenční dokumentace k rozhraní API
+## <a name="api-reference"></a>API – referenční informace
 
 Tato část popisuje *rozhraní API* pro SaaS odběr a *rozhraní Operations API*.  Hodnota `api-version` parametru pro rozhraní API verze 2 je `2018-08-31`.  
 

@@ -1,42 +1,41 @@
 ---
 title: zahrnout soubor
 description: zahrnout soubor
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80117120"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789028"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
 - Spravovaná globální replikace imagí.
 - Správa verzí a seskupování imagí pro snadnější správu.
 - Vysoce dostupné obrázky s účty zóny redundantního úložiště (ZRS) v oblastech, které podporují Zóny dostupnosti. ZRS nabízí lepší odolnost proti chybám v rámci oblast.
+- Podpora úložiště úrovně Premium (Premium_LRS).
 - Sdílení mezi předplatnými a dokonce i mezi klienty služby Active Directory (AD), a to pomocí RBAC.
 - Škálování nasazení pomocí replik imagí v jednotlivých oblastech.
 
 Pomocí Galerie sdílených imagí můžete své image sdílet s různými uživateli, instančními objekty nebo skupinami služby AD v rámci vaší organizace. Sdílené Image je možné replikovat do několika oblastí, pro rychlejší škálování vašich nasazení.
 
-Spravovaná Image je kopie celého virtuálního počítače (včetně všech připojených datových disků) nebo jenom disku s operačním systémem v závislosti na tom, jak bitovou kopii vytvořit. Při vytváření virtuálního počítače z image se k vytvoření disků pro nový virtuální počítač použije kopie VHD v imagi. Spravovaná bitová kopie zůstává v úložišti a je možné ji znovu použít a znovu vytvořit nové virtuální počítače.
+Image je kopie celého virtuálního počítače (včetně všech připojených datových disků) nebo jenom disku s operačním systémem v závislosti na tom, jak je vytvořená. Při vytváření virtuálního počítače z image se k vytvoření disků pro nový virtuální počítač použije kopie VHD v imagi. Bitová kopie zůstává v úložišti a je možné ji znovu použít a znovu vytvořit nové virtuální počítače.
 
-Pokud máte velký počet spravovaných imagí, které potřebujete udržovat a chtějí je zpřístupnit v celé firmě, můžete použít galerii sdílených imagí jako úložiště, které usnadňuje sdílení imagí. 
+Pokud máte velké množství imagí, které potřebujete zachovat, a chcete je zpřístupnit napříč vaší společností, můžete jako úložiště použít galerii sdílených imagí. 
 
 Funkce Galerie sdílených imagí má více typů prostředků:
 
 | Prostředek | Popis|
 |----------|------------|
-| **Spravovaná image** | Základní image, která se dá použít samostatně nebo použít k vytvoření **verze image** v galerii imagí. Spravované image se vytvářejí z [zobecněných](#generalized-and-specialized-images) virtuálních počítačů. Spravovaná bitová kopie je speciální typ VHD, který se dá použít k vytvoření více virtuálních počítačů a dá se teď použít k vytváření verzí sdílených imagí. |
-| **Snímek** | Kopie VHD, která se dá použít k vytvoření **Image verze** Snímky se dají považovat ze [specializovaného](#generalized-and-specialized-images) virtuálního počítače (který se nezobecněný) pak použít samostatně, nebo se snímky datových disků, aby se vytvořila specializovaná verze image.
+| **Zdroj obrázku** | Toto je prostředek, který se dá použít k vytvoření **verze image** v galerii imagí. Zdrojem imagí může být existující virtuální počítač Azure, který je [zobecněný nebo specializovaný](#generalized-and-specialized-images), spravovaná bitová kopie, snímek nebo verze image v jiné galerii imagí. |
 | **Galerie imagí** | Podobně jako u Azure Marketplace je **Galerie imagí** úložiště pro správu a sdílení imagí, ale Vy řídíte, kdo má přístup. |
-| **Definice obrázku** | Image jsou definované v rámci Galerie a obsahují informace o imagi a požadavcích na jejich použití v rámci vaší organizace. Můžete zahrnout informace, jako je například to, zda je obrázek zobecněný nebo specializovaný, operační systém, minimální a maximální požadavky na paměť a poznámky k verzi. Je definicí typu obrázku. |
+| **Definice obrázku** | Definice imagí se vytvářejí v rámci Galerie a obsahují informace o imagi a požadavcích na jejich interní používání. To zahrnuje, zda se jedná o obrázek Windows nebo Linux, poznámky k verzi a minimální a maximální požadavky na paměť. Je definicí typu obrázku. |
 | **Verze image** | **Verze image** je to, co použijete k vytvoření virtuálního počítače při použití galerie. V případě potřeby můžete mít v prostředí k dispozici více verzí bitové kopie. Podobně jako u spravované image při použití **verze image** k vytvoření virtuálního počítače se verze image používá k vytvoření nových disků pro virtuální počítač. Verze bitové kopie lze použít několikrát. |
 
 <br>
@@ -45,7 +44,7 @@ Funkce Galerie sdílených imagí má více typů prostředků:
 
 ## <a name="image-definitions"></a>Definice obrázků
 
-Definice obrázků jsou logické seskupení pro verze image. Definice image obsahuje informace o tom, proč se image vytvořila, jaký operační systém je k dispozici, a informace o použití bitové kopie. Definice obrázku je jako plán pro všechny podrobnosti o vytváření konkrétní image. Virtuální počítač nebudete nasazovat z definice image, ale z verze image vytvořené z definice.
+Definice obrázků jsou logické seskupení pro verze image. Definice image obsahuje informace o tom, proč se image vytvořila, jaký operační systém je k dispozici, a další informace o použití image. Definice obrázku je jako plán pro všechny podrobnosti o vytváření konkrétní image. Virtuální počítač nebudete nasazovat z definice image, ale z verzí imagí vytvořených z definice.
 
 Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
@@ -68,23 +67,18 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 * Značka – při vytváření definice obrázku můžete přidat značky. Další informace o značkách najdete v tématu [použití značek k uspořádání prostředků](../articles/azure-resource-manager/management/tag-resources.md) .
 * Minimální a maximální doporučení pro vCPU a paměť – Pokud má vaše image doporučení vCPU a paměti, můžete tyto informace připojit k definici image.
 * Nepovolené typy disků – můžete zadat informace o požadavcích na úložiště pro váš virtuální počítač. Pokud například bitová kopie není vhodná pro disky se standardním pevným diskem, přidáte je do seznamu zakázat.
+* Technologie Hyper-V – můžete určit, jestli se image vytvořila z virtuálního pevného disku Hyper-V s 1. nebo 2. generace.
 
 ## <a name="generalized-and-specialized-images"></a>Generalizované a specializované image
 
 Galerie sdílených imagí podporuje dva stavy operačních systémů. Image obvykle vyžadují, aby byl virtuální počítač použitý k vytvoření image zobecněný předtím, než Image převezme. Generalizace je proces, který z virtuálního počítače odebere informace specifické pro počítač a uživatele. V systému Windows se používá také nástroj Sysprep. Pro Linux můžete použít [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user` parametry.
 
-Specializované virtuální počítače neprošly procesem odebrání informací a účtů specifických pro konkrétní počítač. Virtuální počítače vytvořené z specializovaných imagí navíc `osProfile` k nim přidruženy nejsou. To znamená, že speciální obrázky budou mít určitá omezení.
+Specializované virtuální počítače neprošly procesem odebrání informací a účtů specifických pro konkrétní počítač. Virtuální počítače vytvořené z specializovaných imagí navíc `osProfile` k nim přidruženy nejsou. To znamená, že speciální obrázky budou mít kromě některých výhod nějaká omezení.
 
+- Virtuální počítače a sady škálování vytvořené z specializovaných imagí můžou být spuštěné rychleji. Vzhledem k tomu, že jsou vytvořeny ze zdroje, který již byl při prvním spuštění spuštěn, jsou virtuální počítače vytvořené z těchto imagí rychlejší.
 - Účty, které se dají použít k přihlášení k virtuálnímu počítači, se dají použít taky na jakémkoli virtuálním počítači vytvořeném pomocí specializované image, která se vytvoří z tohoto virtuálního počítače.
 - Virtuální počítače budou mít **název počítače** , ze kterého se image povedla. Měli byste změnit název počítače, aby se předešlo kolizím.
 - `osProfile` Je způsob, jakým se do virtuálního počítače předávají nějaké citlivé `secrets`informace pomocí. To může způsobovat problémy s využitím trezoru klíčů, WinRM a dalších `secrets` funkcí, `osProfile`které používají. V některých případech můžete tato omezení obejít pomocí identit spravované služby (MSI).
-
-> [!IMPORTANT]
-> Specializované obrázky jsou momentálně ve verzi Public Preview.
-> Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Známá omezení verze Preview** Virtuální počítače se dají vytvářet jenom z specializovaných imagí pomocí portálu nebo rozhraní API. Pro verzi Preview není podporována podpora rozhraní příkazového řádku nebo PowerShellu.
-
 
 ## <a name="regional-support"></a>Místní podpora
 
@@ -113,6 +107,7 @@ Pro nasazení prostředků pomocí galerií sdílených imagí existují omezen�
 - Galerie sdílených imagí 100 na jedno předplatné, podle jednotlivých oblastí
 - 1 000 definice imagí pro každé předplatné v jednotlivých oblastech
 - verze image 10 000 na jedno předplatné v jednotlivých oblastech
+- 10 replik verzí imagí na jedno předplatné v jednotlivých oblastech
 - Všechny disky připojené k imagi musí být menší nebo rovny 1 TB.
 
 Další informace najdete v tématu o tom, jak kontrolovat [využití prostředků proti omezením](https://docs.microsoft.com/azure/networking/check-usage-against-limits) , v příkladech, jak kontrolovat aktuální využití.
@@ -195,9 +190,9 @@ Následující sady SDK podporují vytváření galerií sdílených imagí:
 
 Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dispozici je několik šablon rychlého startu Azure: 
 
-- [Vytvoření galerie sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Vytvoření definice obrázku v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Vytvoření verze image v galerii sdílených imagí](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Vytvoření služby Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Vytvoření definici image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Vytvoření verze image v Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [Vytvoření virtuálního počítače z verze image](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
@@ -217,31 +212,32 @@ Prostředek Galerie sdílených imagí můžete vytvořit pomocí šablon. K dis
 * [Jaké jsou poplatky za používání Galerie sdílených imagí?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Jakou verzi rozhraní API mám použít k vytvoření sdílené image a její definice a verze image?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Jakou verzi rozhraní API mám použít k vytvoření sdíleného virtuálního počítače nebo sady škálování virtuálního počítače z verze image?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Můžu aktualizovat sadu škálování virtuálních počítačů vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Jak můžu zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných?
 
 Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte přístup v Azure Portal, postupujte podle následujících kroků:
 
 1. Otevřete [Azure Portal](https://portal.azure.com).
-1. Přejít na **všechny prostředky**.
+1. Posuňte se dolů na stránku a vyberte **všechny prostředky**.
 1. Vyberte všechna předplatná, pod kterými chcete zobrazit seznam všech prostředků.
-1. Vyhledejte prostředky typu **privátní Galerie**.
- 
-   Chcete-li zobrazit definice obrázků a verze imagí, měli byste také vybrat možnost **Zobrazit skryté typy**.
- 
-   Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte oprávnění, použijte následující příkaz v rozhraní příkazového řádku Azure CLI:
+1. Vyhledejte prostředky pro galerii typu **sdílená image**.
+  
+Pokud chcete zobrazit seznam všech prostředků Galerie sdílených imagí v rámci předplatných, ke kterým máte oprávnění, použijte následující příkaz v rozhraní příkazového řádku Azure CLI:
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) nebo [PowerShellu](../articles/virtual-machines/update-image-resources-powershell.md).
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
 Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
- Scénář 1: Pokud máte spravovanou image ve stejném předplatném jako váš podpis, můžete z ní vytvořit definici image a image.
+ Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 
- Scénář 2: Pokud máte nespravovanou bitovou kopii ve stejném předplatném jako váš SIG, můžete z ní vytvořit spravovanou image a pak z ní vytvořit definici image a image. 
+ Scénář 2: Pokud máte nespravovanou bitovou kopii, můžete z ní vytvořit spravovanou image a pak z ní vytvořit definici image a její verzi. 
 
  Scénář 3: Pokud máte v místním systému souborů virtuální pevný disk, budete muset virtuální pevný disk nahrát do spravované image a pak z něj můžete vytvořit definici image a verzi image.
 
@@ -250,11 +246,17 @@ Ano. Existují tři scénáře založené na typech imagí, které máte pravdě
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Můžu vytvořit verzi image z specializovaného disku?
 
-Ano, podpora specializovaných disků jako imagí je ve verzi Preview. Virtuální počítač můžete vytvořit jenom z specializované Image pomocí portálu ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) nebo [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) a rozhraní API. Pro verzi Preview neexistuje žádná podpora prostředí PowerShell.
+Ano, podpora specializovaných disků jako imagí je ve verzi Preview. Virtuální počítač můžete vytvořit jenom z specializované Image pomocí portálu, PowerShellu nebo rozhraní API. 
+
+
+Použijte [PowerShell k vytvoření image specializovaného virtuálního počítače](../articles/virtual-machines/image-version-vm-powershell.md).
+
+Pomocí portálu vytvořte [Windows](../articles/virtual-machines/linux/shared-images-portal.md) nebo [Linux] (... /articles/Virtual-Machines/Linux/Shared-images-Portal.MD) obrázek. 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Můžu po vytvoření přesunout prostředek Galerie sdílených imagí do jiného předplatného?
 
-Ne, prostředek Galerie sdílených imagí nemůžete přesunout do jiného předplatného. Verze image v galerii ale budete moct replikovat do jiných oblastí podle potřeby.
+Ne, prostředek Galerie sdílených imagí nemůžete přesunout do jiného předplatného. Můžete replikovat verze imagí v galerii do jiných oblastí nebo zkopírovat image z jiné galerie pomocí [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-another-gallery-powershell.md).
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Můžu replikovat verze imagí napříč cloudy, jako je Azure Čína 21Vianet nebo Azure Německo nebo cloud Azure Government?
 
@@ -308,3 +310,7 @@ Pro práci s galeriemi sdílených imagí, definicemi obrázků a verzemi imagí
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Jakou verzi rozhraní API mám použít k vytvoření sdíleného virtuálního počítače nebo sady škálování virtuálního počítače z verze image?
 
 Pro nasazení virtuálních počítačů a virtuálních počítačů pomocí verze image doporučujeme použít rozhraní API verze 2018-04-01 nebo vyšší.
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Můžu aktualizovat sadu škálování virtuálního počítače vytvořenou pomocí spravované image pro použití imagí Galerie sdílených imagí?
+
+Ano, můžete aktualizovat odkaz na obrázek sady škálování ze spravované image na Image Galerie sdílených imagí, pokud typ operačního systému, generaci technologie Hyper-V a rozložení datových disků odpovídají mezi obrázky. 

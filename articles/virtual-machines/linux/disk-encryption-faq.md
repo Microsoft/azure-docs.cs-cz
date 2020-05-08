@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460133"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786984"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Nejčastější dotazy k Azure Disk Encryption pro virtuální počítače se systémem Linux
 
@@ -21,7 +21,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Co je Azure Disk Encryption pro virtuální počítače se systémem Linux?
 
-Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkci dm-crypt systému Linux k poskytnutí úplného šifrování disku disku s operačním systémem * a datových disků. Kromě toho poskytuje při použití [funkce EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)šifrování disku s dočasným prostředkem. Tok obsahu se zašifruje z virtuálního počítače do back-endu úložiště. A díky tomu poskytuje komplexní šifrování pomocí klíče spravovaného zákazníkem.
+Azure Disk Encryption pro virtuální počítače se systémem Linux používá funkci dm-crypt systému Linux k poskytnutí úplného šifrování disku disku s operačním systémem * a datových disků. Kromě toho poskytuje šifrování dočasného disku při použití [funkce EncryptFormatAll](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms). Tok obsahu se zašifruje z virtuálního počítače do back-endu úložiště. A díky tomu poskytuje komplexní šifrování pomocí klíče spravovaného zákazníkem.
  
 Viz [podporované virtuální počítače a operační systémy](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
@@ -61,7 +61,7 @@ Ne, Azure Disk Encryption pouze šifruje připojené svazky.
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Jak se Azure Disk Encryption liší od šifrování na straně serveru pomocí klíče spravovaného zákazníkem a kdy použít každé řešení?
 
-Azure Disk Encryption poskytuje komplexní šifrování pro disk s operačním systémem, datové disky a dočasný disk prostředku s klíčem spravovaným zákazníkem.
+Azure Disk Encryption poskytuje komplexní šifrování pro disk s operačním systémem, datové disky a dočasný disk pomocí klíče spravovaného zákazníkem.
 - Pokud vaše požadavky zahrnují šifrování všech výše uvedených a kompletních šifrování, použijte Azure Disk Encryption. 
 - Pokud vaše požadavky zahrnují šifrování jenom uložených dat s klíčem spravovaným zákazníkem, pak použijte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md). Pomocí klíčů spravovaných zákazníkem nelze zašifrovat disk s použitím Azure Disk Encryption a úložiště na straně serveru. 
 - Pokud distribuce Linux není uvedený v části [podporované operační systémy pro Azure Disk Encryption](disk-encryption-overview.md#supported-operating-systems) nebo pokud používáte scénář, který je v [nepodporovaných scénářích pro Windows](disk-encryption-linux.md#unsupported-scenarios), zvažte [šifrování na straně serveru pomocí klíčů spravovaných zákazníkem](disk-encryption.md).

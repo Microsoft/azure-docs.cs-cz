@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87f746108599928d3e1b4a022abc1b3a3779ef29
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583321"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853555"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrace virtuálních počítačů Hyper-V do Azure 
 
@@ -56,7 +56,7 @@ Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
 
 Přidejte nástroj Azure Migrate: Server pro migraci.
 
-- Pokud jste postupovali podle druhého kurzu a [vyhodnotili virtuální počítače VMware](/tutorial-assess-hyper-v.md), již jste nastavili Azure Migrate projekt a můžete si tento nástroj přidat ještě před a teď ho přidat.
+- Pokud jste postupovali podle druhého kurzu a [vyhodnotili virtuální počítače VMware](tutorial-assess-hyper-v.md), již jste nastavili Azure Migrate projekt a můžete si tento nástroj přidat ještě před a teď ho přidat.
 - Pokud jste nesledovali druhý kurz[, postupujte podle těchto pokynů](how-to-add-tool-first-time.md) a nastavte projekt Azure Migrate. Při vytváření projektu přidáte Azure Migrate: Nástroj pro migraci serveru.
 
 Pokud máte projekt nastavený, přidejte nástroj následujícím způsobem:

@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 78c8750de7189bad33e9bbc766a3d7543a646f6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: a8a5914b51b56fbe8b4b7b7ba331f58ec451f975
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159349"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731879"
 ---
 # <a name="prepay-for-azure-database-for-mysql-compute-resources-with-reserved-capacity"></a>Platba za Azure Database for MySQL výpočetních prostředků s rezervovanou kapacitou
 
@@ -19,7 +19,7 @@ Azure Database for MySQL nyní pomáhá ušetřit peníze tím, že se předplat
 
 Nemusíte přiřadit rezervaci konkrétním Azure Database for MySQLm serverům. Již běžící Azure Database for MySQL, nebo nově nasazené, budou automaticky využívat výhod rezervovaných cen. Když si koupíte rezervaci, platíte za výpočetní náklady po dobu jednoho nebo tří let. Jakmile si koupíte rezervaci, poplatky za výpočetní výkon Azure Database for MySQL se už nebudou účtovat podle tarifů průběžných plateb. Rezervace nepokrývá software, sítě ani poplatky za úložiště spojené s databázovým serverem MySQL. Na konci rezervovaného období vyprší platnost fakturačního přínosu a Azure Database for MySQL se účtují podle ceny za průběžné platby. Rezervace se neobnoví automaticky. Informace o cenách najdete v [nabídce Azure Database for MySQL rezervované kapacity](https://azure.microsoft.com/pricing/details/mysql/). </br>
 
-V [Azure Portal](https://portal.azure.com/)si můžete koupit Azure Database for MySQL rezervovanou kapacitu. Zakoupení rezervované kapacity:
+V [Azure Portal](https://portal.azure.com/)si můžete koupit Azure Database for MySQL rezervovanou kapacitu. Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](../cost-management-billing/reservations/monthly-payments-reservations.md). Zakoupení rezervované kapacity:
 
 * Musíte být v roli vlastníka alespoň u jednoho podnikového nebo individuálního předplatného s tarify průběžných plateb.
 * U předplatných se smlouvou Enterprise musí být na webu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Nebo, pokud je toto nastavení zakázané, musíte být správce EA v předplatném.
@@ -38,7 +38,7 @@ Předpokládejme například, že máte spuštěný jeden pro obecné účely, G
 ## <a name="buy-azure-database-for-mysql-reserved-capacity"></a>Koupit Azure Database for MySQL rezervovanou kapacitu
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **všechny** > **rezervace**služeb.
+2. Vyberte **Všechny služby** > **Rezervace**.
 3. Vyberte **Přidat** a potom v podokně rezervace nákupu vyberte **Azure Database for MySQL** a Zakupte novou rezervaci pro databáze MySQL.
 4. Vyplňte požadovaná pole. Stávající nebo nové databáze, které odpovídají atributům, které vyberete, mají nárok na získání rezervované slevy kapacity. Skutečný počet serverů Azure Database for MySQL, které získávají slevu, závisí na zvoleném rozsahu a množství.
 
@@ -60,7 +60,7 @@ V následující tabulce jsou popsána povinná pole.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Zrušení, výměna nebo refundace rezervací
 
-Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu věnovaném [výměnám samoobslužných služeb a refundacím pro Azure reservations](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
+Rezervace je možné s určitými omezeními zrušit, vyměnit nebo refundovat. Další informace najdete v tématu [Samoobslužné výměny a vrácení peněz za rezervace Azure](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
 ## <a name="vcore-size-flexibility"></a>flexibilita velikosti vCore
 

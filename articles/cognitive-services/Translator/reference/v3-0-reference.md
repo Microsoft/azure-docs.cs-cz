@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80619146"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857312"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text API v 3.0
 
@@ -147,7 +147,7 @@ Ověřovací token je platný po dobu 10 minut. Token by se měl znovu použít 
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
 
-Služba Translator je teď dostupná s funkcemi Virtual Network v omezených oblastech`WestUS2`( `EastUS`, `SouthCentralUS`, `WestUS`, `Central US EUAP`, `global`,). Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
+Služba Translator je teď dostupná s funkcemi Virtual Network v omezených oblastech`WestUS2`( `EastUS`, `SouthCentralUS`, `WestUS`, `CentralUSEUAP`, `global`,). Pokud chcete povolit Virtual Network, přečtěte si téma [Konfigurace virtuálních sítí Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal). 
 
 Po zapnutí této možnosti je nutné použít vlastní koncový bod pro volání rozhraní API pro překladatele. Nemůžete použít globální koncový bod překladatele (api.cognitive.microsofttranslator.com) a nemůžete ho ověřit pomocí přístupového tokenu.
 

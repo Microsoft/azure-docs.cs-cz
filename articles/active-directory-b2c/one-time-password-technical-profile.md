@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332780"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900381"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -73,12 +73,12 @@ Následující nastavení lze použít ke konfiguraci režimu generování kódu
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60`; Maximum: `1200`; Výchozí: `600`. |
-| CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
-| CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
-| NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
+| CodeExpirationInSeconds | No | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60`; Maximum: `1200`; Výchozí: `600`. |
+| CodeLength | No | Délka kódu. Výchozí hodnota je `6`. |
+| CharacterSet | No | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
+| NumRetryAttempts | No | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
 | Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode`. |
-| ReuseSameCode | Ne | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
+| ReuseSameCode | No | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
 
 ### <a name="example"></a>Příklad
 
@@ -141,10 +141,11 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
-| UserMessageIfMaxRetryAttempted | Ne | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
-| UserMessageIfInvalidCode | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
-|UserMessageIfSessionConflict|Ne| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
+| UserMessageIfSessionDoesNotExist | No | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
+| UserMessageIfMaxRetryAttempted | No | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
+| UserMessageIfInvalidCode | No | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
+| UserMessageIfVerificationFailedRetryAllowed | No | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
+|UserMessageIfSessionConflict|No| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
 
 ### <a name="example"></a>Příklad
 

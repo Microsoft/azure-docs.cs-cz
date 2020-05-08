@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 032b49631c6adb30d4b25f8b82d35dab49ffd3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81757669"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857314"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Příprava virtuálního počítače se SLES nebo openSUSE pro Azure
 
@@ -39,7 +39,7 @@ Jako alternativu k vytváření vlastního virtuálního pevného disku SUSE tak
 4. Aktualizujte systém pomocí nejnovějších oprav:
    
         # sudo zypper update
-5. Nainstalujte agenta Azure Linux z úložiště SLES:
+5. Instalace agenta Azure Linux z úložiště SLES (SLE11-Public-Cloud-Module):
    
         # sudo zypper install python-azure-agent
 6. V chkconfig ověřte, zda je waagent nastaven na zapnuto, a pokud ne, povolte ho pro automatické spuštění:

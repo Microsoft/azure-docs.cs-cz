@@ -3,17 +3,26 @@ title: Přidání nástroje pro vyhodnocení/migraci do Azure Migrate
 description: Popisuje, jak vytvořit projekt Azure Migrate a přidat nástroj pro vyhodnocení/migraci.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537725"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901199"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>První přidání nástroje pro vyhodnocení/migraci
 
 Tento článek popisuje, jak poprvé přidat nástroj pro vyhodnocení nebo migraci do projektu [Azure Migrate](migrate-overview.md) .  
 Azure Migrate poskytuje centrální centrum pro sledování zjišťování, hodnocení a migrace vašich místních aplikací a úloh a virtuálních a veřejných cloudových virtuálních počítačů do Azure. Centrum poskytuje Azure Migrate nástroje pro posuzování a migraci a také další [nabídky](migrate-services-overview.md#isv-integration) nástrojů a nezávislí výrobci softwaru (ISV). 
+
+## <a name="check-permissions-to-create-project"></a>Ověřit oprávnění pro vytvoření projektu
+
+Pokud jste ještě nevytvořili Azure Migrate projekt, ověřte, jestli máte správná oprávnění.
+
+1. V Azure Portal otevřete předplatné a vyberte **řízení přístupu (IAM)**.
+2. V části kontrolovat přístup Najděte příslušný účet a kliknutím na něj Zobrazte oprávnění. Měli byste mít oprávnění Přispěvatel nebo Owner.
+    - Pokud jste právě vytvořili bezplatný účet Azure, jste vlastníkem svého předplatného.
+    - Pokud nejste vlastníkem předplatného, pracujte s vlastníkem a přiřaďte roli.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Vytvoření projektu a přidání nástroje
 
@@ -66,4 +75,6 @@ V některých případech může být nutné vytvořit další Azure Migrate pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si, jak přidat další nástroje pro [posouzení](how-to-assess.md) a [migraci](how-to-migrate.md) . 
+- Začínáme s [Azure Migrate: posouzení serveru](migrate-services-overview.md#azure-migrate-server-assessment-tool)nebo [Azure Migrate: Migrace serveru](migrate-services-overview.md#azure-migrate-server-migration-tool).
+- Pokud jste přidali nástroj ISV nebo stěhovací, [Projděte si kroky](prepare-isv-movere.md) pro přípravu na propojení nástroje s Azure Migrate.
+- Přečtěte si, jak přidat další nástroje pro [posouzení](how-to-assess.md) a [migraci](how-to-migrate.md) . 

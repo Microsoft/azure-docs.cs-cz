@@ -1,44 +1,41 @@
 ---
-title: Řídicí panel hodnocení a přezkoumání v komerčních prostředcích Marketplace na partnerském centru
-description: Přečtěte si, jak získat přístup k konsolidovanému zobrazení zpětné vazby zákazníků pro vaše nabídky na Azure Marketplace a AppSource.
+title: Hodnocení & přezkoumání řídicího panelu Analytics v partnerském centru
+description: Přečtěte si, jak získat přístup k konsolidovanému zobrazení zpětné vazby zákazníků pro vaše nabídky na Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262413"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792917"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Řídicí panel hodnocení a přezkoumání v komerčních obchodech na webu Marketplace
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Hodnocení & přezkoumání řídicího panelu Analytics v partnerském centru
 
-Tento článek poskytuje informace o hodnoceních řídicího panelu kontroly & v partnerském centru. Tento řídicí panel zobrazuje konsolidované zobrazení zpětné vazby od zákazníků pro nabídky na Azure Marketplace a AppSource.
+Tento článek poskytuje informace o hodnoceních řídicího panelu kontroly & v partnerském centru. Tento řídicí panel zobrazuje konsolidované zobrazení zpětné vazby od zákazníků pro nabídky na Microsoft AppSource a Azure Marketplace. V případě, že zákazníci na webu Marketplace procházejí, hledají a kupují nabídky, můžou pro nabídky, které získali, vynechávat hodnocení a recenze.
 
-Pokud chcete získat přístup k **hodnocení & řídicím panelu** kontroly v Datacenter Datacenter Analytics, otevřete řídicí panel **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** na komerčním webu Marketplace.
+- Zákazníci mohou odeslat nové hodnocení nebo zkontrolovat a aktualizovat nebo odstranit existující hodnocení nebo ověřit, že byla odeslána. Zákazníci mohou měnit pouze hodnocení a recenze, které vlastní.  
+- Recenze se účtují na kartě recenze na stránce zobrazení produktu v nabídce v Azure Marketplace nebo AppSource. Zákazníci můžou své jméno nebo příspěvek zadat anonymně.  
 
 >[!NOTE]
 > Podrobné definice terminologie analýz najdete v tématu [Nejčastější dotazy a terminologie pro komerční analýzy na webu Marketplace](./faq-terminology.md).
 
-## <a name="ratings--reviews"></a>Hodnocení & recenze
+## <a name="access-the-dashboard"></a>Přístup k řídicímu panelu
 
-V případě, že zákazníci na webu Marketplace procházejí, hledají a kupují nabídky, můžou pro nabídky, které získali, vynechávat hodnocení a recenze.
+Na [řídicím panelu komerčního tržiště](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) v partnerském centru rozbalte část **[analyzovat](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** a vyberte **hodnocení & recenze**.
 
-- Zákazníci mohou odeslat nové hodnocení nebo zkontrolovat a aktualizovat nebo odstranit existující hodnocení nebo ověřit, že byla odeslána. Zákazníci mohou měnit pouze hodnocení a recenze, které vlastní.  
-- Recenze se účtují na kartě recenze na stránce zobrazení produktu v nabídce na webu Azure Marketplace nebo v AppSource. Zákazníci můžou své jméno nebo příspěvek zadat anonymně.  
-
-**Hodnocení & kontrole řídicího panelu** zobrazuje trendy a přehledy této aktivity od zákazníků. Můžete zobrazit grafické znázornění následujících položek:
+Řídicí panel zobrazuje grafické znázornění následující aktivity zákazníka:
 
 - Hodnocení & recenze  
 - Revidovat komentáře
 
-**Karty prezentace na webu Marketplace** umožňují vydavatelům zobrazit své metriky nabídky samostatně na AppSource kartách & Azure Marketplace. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku v rozevíracím seznamu nabídky.
+Pomocí karet **prezentace na webu Marketplace** můžete zobrazit nabídku Microsoft AppSource a Azure Marketplace metriky samostatně. Chcete-li zobrazit konkrétní metriky nabídky, vyberte nabídku v rozevíracím seznamu nabídky.
 
-
-### <a name="ratings-and-reviews-summary"></a>Shrnutí hodnocení a recenzí
+### <a name="ratings--reviews-summary"></a>Shrnutí hodnocení & recenze
 
 V části hodnocení & Recenze – Souhrn zobrazuje níže uvedené metriky pro vybraný rozsah dat:
 

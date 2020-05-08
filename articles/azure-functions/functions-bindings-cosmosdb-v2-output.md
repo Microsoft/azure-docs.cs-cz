@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
-ms.openlocfilehash: 636903c20e07f11a2fd919654cfaa62037171f20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 743bd21a4fd974654760402a639c661fe086d2d5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277762"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735007"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x"></a>Azure Cosmos DB výstupní vazba pro Azure Functions 2. x
 
@@ -20,7 +20,7 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
 Tato část obsahuje následující příklady:
 
@@ -525,9 +525,9 @@ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/func
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[R #](#tab/csharp)
 
-V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/master/WebJobs.Extensions.CosmosDB/CosmosDBAttribute.cs) .
+V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [CosmosDB](https://github.com/Azure/azure-webjobs-sdk-extensions/tree/dev/test/WebJobs.Extensions.CosmosDB.Tests) .
 
 Konstruktor atributu přebírá název databáze a název kolekce. Informace o těchto nastaveních a dalších vlastnostech, které lze konfigurovat, naleznete v tématu [Output-Configuration](#configuration). Tady je příklad `CosmosDB` atributu v signatuře metody:
 
@@ -569,7 +569,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**direction**     | neuvedeno | Musí být nastaven na `out`hodnotu.         |
 |**Jméno**     | neuvedeno | Název parametru vazby, který představuje dokument ve funkci.  |
 |**Databáze** | **DatabaseName**|Databáze obsahující kolekci, ve které je dokument vytvořen.     |
-|**collectionName** |**CollectionName**  | Název kolekce, ve které je dokument vytvořen. |
+|**collectionName** |**Název kolekce**  | Název kolekce, ve které je dokument vytvořen. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Logická hodnota určující, zda je kolekce vytvořena, pokud neexistuje. Výchozí hodnota je *false* , protože nové kolekce jsou vytvořeny s rezervovanou propustností, která má vliv na náklady. Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
 |**partitionKey**|**PartitionKey** |Pokud `CreateIfNotExists` je hodnota true, definuje cestu klíče oddílu pro vytvořenou kolekci.|
 |**collectionThroughput**|**CollectionThroughput**| Pokud `CreateIfNotExists` je hodnota true, definuje [propustnost](../cosmos-db/set-throughput.md) vytvořené kolekce.|

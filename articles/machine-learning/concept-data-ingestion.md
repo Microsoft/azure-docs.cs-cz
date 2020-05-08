@@ -1,5 +1,5 @@
 ---
-title: Možnosti přijímání dat
+title: Automatizace & pro přijímání dat
 titleSuffix: Azure Machine Learning
 description: Přečtěte si o možnostech příjmu dat pro školení vašich modelů strojového učení.
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086888"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789857"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Přijímání dat v Azure Machine Learning
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Možnosti přijímání dat pro pracovní postupy Azure Machine Learning
 
-V tomto článku se seznámíte s odborníky a nevýhody následujících možností ingestování dat, které jsou dostupné v Azure Machine Learning. 
+V tomto článku se seznámíte s možnostmi specialisty a nevýhody přijímání dat dostupných v Azure Machine Learning. 
 
-1. [Azure Data Factory](#use-azure-data-factory) kanály
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+Vybírejte z těchto možností:
++ [Azure Data Factory](#azure-data-factory) kanály, konkrétně sestavené k extrakci, načítání a transformaci dat
+
++ [Azure Machine Learning Python SDK](#azure-machine-learning-python-sdk), který poskytuje vlastní řešení kódu pro základní úlohy ingestování dat.
+
++ kombinace obou
 
 Přijímání dat je proces, při kterém se nestrukturovaná data extrahují z jednoho nebo několika zdrojů a pak se připravují pro školení modelů strojového učení. Také je časově náročná, zejména pokud je to možné, a pokud máte velké množství dat z více zdrojů. Automatizace tohoto úsilí uvolní prostředky a zajišťuje, aby vaše modely používaly nejnovější a použitelné údaje.
 
-Azure Data Factory (ADF) je speciálně sestavená tak, aby mohl extrahovat, načítat a transformovat data, ale sada Python SDK umožňuje vyvíjet vlastní řešení pro zpracování základních úloh ingestování dat. Pokud ani tak není, co potřebujete, můžete také pomocí ADF a sady Python SDK vytvořit celkový pracovní postup příjmu dat, který vyhovuje vašim potřebám. 
-
-## <a name="use-azure-data-factory"></a>Použití Azure Data Factory
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) nabízí nativní podporu pro monitorování zdrojů dat a triggery pro kanály přijímání dat.  
 
@@ -55,7 +57,7 @@ Tyto kroky a následující diagram znázorňují pracovní postup pro přijím�
     
 Naučte se, jak vytvořit kanál pro příjem dat pro Machine Learning s využitím [Azure Data Factory](how-to-data-ingest-adf.md).
 
-## <a name="use-the-python-sdk"></a>Použití sady Python SDK 
+## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
 Pomocí [sady Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml)můžete do kroku [Azure Machine Learningého kanálu](how-to-create-your-first-pipeline.md) začlenit úkoly přijímání dat.
 
@@ -73,5 +75,7 @@ V následujícím diagramu se Azure Machine Learning kanál skládá ze dvou kro
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak vytvořit kanál pro příjem dat pro Machine Learning s využitím [Azure Data Factory](how-to-data-ingest-adf.md)
-* Naučte se automatizovat a spravovat vývojové cykly při přijímání kanálů příjmu dat pomocí [Azure Pipelines](how-to-cicd-data-ingestion.md).
+Projděte si následující články s postupy:
+* [Vytvoření kanálu přijímání dat pomocí Azure Data Factory](how-to-data-ingest-adf.md)
+
+* [Automatizujte a spravujte kanály přijímání dat pomocí Azure Pipelines](how-to-cicd-data-ingestion.md).

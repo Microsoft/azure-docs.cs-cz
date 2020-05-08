@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
+ms.date: 05/04/2020
 tags: connectors
-ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8137bea37c25554d814e237380ba5c57c5b24d57
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656301"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900959"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -22,10 +22,13 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 * Aktivuje pracovní postup, když dojde k externí události Webhooku.
 * Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
 
+Aktivační událost žádosti podporuje [Azure Active Directory otevřené ověřování](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) pro autorizaci příchozích volání do vaší aplikace logiky. Další informace o povolení tohoto ověřování najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – povolení ověřování Azure AD OAuth](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
+
 > [!NOTE]
-> Aktivační událost žádosti podporuje pro příchozí volání *pouze* zabezpečení TLS (Transport Layer Security) 1,2. Odchozí hovory pokračují v podpoře TLS 1,0, 1,1 a 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
+> Aktivační událost žádosti podporuje pro příchozí volání *pouze* zabezpečení TLS (Transport Layer Security) 1,2. Odchozí hovory podporují TLS 1,0, 1,1 a 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
 >
-> Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. V případě příchozích volání jsou zde podporované šifrovací sady:
+> Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. 
+> V případě příchozích volání jsou zde podporované šifrovací sady:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
@@ -46,7 +49,7 @@ Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované 
 
 ## <a name="add-request-trigger"></a>Přidat aktivační událost žádosti
 
-Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
+Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
@@ -61,7 +64,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -159,8 +162,8 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -177,13 +180,17 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu minutu. Za předpokladu, že pracovní postup aplikace logiky obsahuje akci odpovědi, pokud aplikace logiky nevrátí odpověď po uplynutí této doby, aplikace logiky `504 GATEWAY TIMEOUT` vrátí volajícímu. V opačném případě, pokud vaše aplikace logiky neobsahuje akci odpovědi, aplikace logiky okamžitě `202 ACCEPTED` vrátí odpověď volajícímu.
 
-1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**. 
+1. Až budete hotovi, uložte aplikaci logiky. Na panelu nástrojů návrháře vyberte **Uložit**.
 
    Tento krok vygeneruje adresu URL, která se má použít pro odeslání žádosti, která spouští aplikaci logiky. Tuto adresu URL můžete zkopírovat tak, že vyberete ikonu kopírování vedle adresy URL.
 
    ![Adresa URL pro použití aktivace aplikace logiky](./media/connectors-native-reqres/generated-url.png)
 
-1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL. Například můžete použít nástroj, jako je například [post](https://www.getpostman.com/).
+1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL.
+
+   Můžete například použít nástroj, jako je například [post](https://www.getpostman.com/) , k odeslání HTTP POST. Pokud jste [povolili Azure Active Directory otevřete ověřování](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth) (Azure AD OAuth) pro autorizaci příchozích volání triggeru žádosti, zavolejte Trigger pomocí [adresy URL sdíleného přístupového podpisu (SAS)](../logic-apps/logic-apps-securing-a-logic-app.md#sas) nebo pomocí ověřovacího tokenu, ale nemůžete použít obojí. Ověřovací token musí určovat `Bearer` typ v autorizační hlavičce. Další informace najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – přístup k aktivačním událostem založeným na požadavku](../logic-apps/logic-apps-securing-a-logic-app.md#secure-triggers).
+
+Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v těchto tématech: [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [volání, Trigger nebo vnoření pracovních postupů pomocí koncových bodů HTTP v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 ### <a name="trigger-outputs"></a>Výstupy triggeru
 
@@ -247,8 +254,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom za jednu 
    | Název vlastnosti | Název vlastnosti JSON | Požaduje se | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | Ne | Tělo odpovědi |
+   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | No | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

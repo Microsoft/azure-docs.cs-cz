@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209481"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856894"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -84,7 +84,7 @@ Obecně platí, že funkce služby soubory Azure a interoperabilita s ostatními
     - Soubory úrovně Premium se účtují pomocí zřízeného fakturačního modelu, což znamená, že platíte za to, kolik úložiště místo toho vyžádáte. 
     - Standardní sdílené složky se účtují s využitím modelu průběžných plateb, který zahrnuje základní náklady na úložiště pro množství úložiště, které skutečně spotřebováváte, a další náklady na transakci na základě toho, jak sdílenou složku používáte. Se standardními sdílenými složkami se vaše vyúčtování zvýší, pokud používáte (čtení/zápis/připojení) sdílené složky Azure.
 - **Možnosti redundance**
-    - Soubory úrovně Premium jsou dostupné jenom pro místně redundantní úložiště (LRS) a zónu redundantního úložiště (ZRS). 
+    - Soubory úrovně Premium jsou dostupné jenom pro místně redundantní úložiště (LRS) a zónu redundantního úložiště (ZRS).
     - Standardní sdílené složky jsou k dispozici pro místně redundantní, geograficky redundantní (GRS) a redundantní úložiště geografických zón (GZRS).
 - **Maximální velikost sdílené složky**
     - Ke sdílení souborů Premium se dá zřídit až 100 TiB, aniž by se musela provádět žádná další práce.
