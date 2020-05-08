@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722131"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890856"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Sledování Event Grid doručování zpráv 
 
@@ -27,18 +27,21 @@ Pro informace o doručení a opakování události [Event Grid doručování zpr
 
 Portál zobrazuje metriky pro stav doručování zpráv událostí.
 
-Pro témata jsou metriky:
+Témata najdete tady:
 
 * **Publikování bylo úspěšné**: událost se úspěšně odeslala do tématu a zpracovala se s odpovědí 2xx.
 * **Publikování se nezdařilo**: událost byla odeslána do tématu, ale odmítnuta s kódem chyby.
 * **Nespárovaná**: událost byla úspěšně publikována do tématu, ale není shodná s odběrem události. Událost byla vyřazena.
 
-U předplatných jsou metriky:
+V případě předplatných jsou zde uvedeny některé metriky:
 
 * **Doručení bylo úspěšné**: událost byla úspěšně doručena koncovému bodu předplatného a obdržela odpověď 2xx.
-* **Doručení se nezdařilo**: událost byla odeslána do koncového bodu předplatného, ale byla přijata odpověď 4xx nebo 5xx.
+* **Doručení se nezdařilo**: pokaždé, když se služba pokusí o doručení, a obslužná rutina události nevrátí úspěšný 2xx kód, zvýší se hodnota čítače **doručení se nezdařilo** . Pokud se pokusíte o doručení stejné události víckrát a selhání, čítač **neúspěšných doručení** se zvýší pro každou chybu.
 * **Události, jejichž platnost vypršela**: událost nebyla doručena a byly odeslány všechny pokusy o opakování. Událost byla vyřazena.
 * **Spárované události**: událost v tématu se shodovala s odběrem události.
+
+    > [!NOTE]
+    > Úplný seznam metrik najdete v tématu [metriky podporované Azure Event Grid](metrics.md).
 
 ## <a name="event-subscription-status"></a>Stav odběru události
 

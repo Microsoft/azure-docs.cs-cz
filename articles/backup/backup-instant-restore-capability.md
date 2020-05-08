@@ -4,12 +4,12 @@ description: Možnosti a nejčastější dotazy ke službě Azure Instant Restor
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc29d1ac4c2e4c22ce6e6f8356927e768dc274e3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705424"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597650"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Zlepšení výkonu zálohování a obnovení pomocí funkce Azure Backup pro okamžité obnovení
 
@@ -24,7 +24,7 @@ Nový model pro okamžité obnovení nabízí následující vylepšení funkcí
 * Podporuje velikosti disků až do 32 TB. Změna velikosti disků se Azure Backup nedoporučuje.
 * Podporuje SSD úrovně Standard disky spolu s HDD úrovně Standard disky a SSD úrovně Premium disky.
 * Možnost při obnovení použít pro původní účty úložiště (na disk) nespravované virtuální počítače Tato možnost je k dispozici i v případě, že virtuální počítač obsahuje disky distribuované mezi účty úložiště. Zrychluje operace obnovení pro širokou škálu konfigurací virtuálních počítačů.
-* Pro zálohování virtuálních počítačů, které používají Prémiové úložiště, s okamžitým obnovením doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
+* Pro zálohování virtuálních počítačů, které používají nespravované disky Premium v účtech úložiště s okamžitým obnovením, doporučujeme přidělit *50%* volného místa celkového přiděleného prostoru úložiště, který se vyžaduje **jenom** pro první zálohování. 50% volného místa není požadavkem na zálohování po dokončení prvního zálohování.
 
 ## <a name="whats-new-in-this-feature"></a>Co je nového v této funkci
 

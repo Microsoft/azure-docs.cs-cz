@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133864"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888880"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Protokoly prostředků pro Firewall webových aplikací Azure
 
@@ -305,7 +305,7 @@ Publikovali jsme Správce prostředků šablonu, která nainstaluje a spustí ob
 ## <a name="next-steps"></a>Další kroky
 
 * Vizualizujte protokoly čítačů a událostí pomocí [Azure monitor protokolů](../../azure-monitor/insights/azure-networking-analytics.md).
-* [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) Blogový příspěvek.
+* [Vizualizujte si protokol aktivit Azure pomocí Power BI](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) Blogový příspěvek.
 * Umožňuje [Zobrazit a analyzovat protokoly aktivit Azure v Power BI a další](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) Blogový příspěvek.
 
 [1]: ../media/web-application-firewall-logs/figure1.png

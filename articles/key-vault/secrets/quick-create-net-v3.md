@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: bdc686284711fb39e6cedb18aea4d1f5c9d1d318
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 37debf076fcaa4f4b62af93dbdb667fb699b0568
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81425004"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901368"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Rychlý Start: Klientská knihovna Azure Key Vault pro .NET (sada SDK V3)
 
@@ -38,7 +38,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [.NET Core 2,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* [.NET Core 3,1 SDK nebo novější](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Rozhraní příkazového [řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest) nebo [Azure PowerShell](/powershell/azure/overview)
 
 V tomto rychlém startu se `dotnet`předpokládá, že používáte příkazy [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)a Windows v terminálu Windows (například [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)nebo [Azure Cloud Shell](https://shell.azure.com/)).
@@ -99,12 +99,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Nejjednodušší způsob, jak ověřit cloudovou aplikaci .NET, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . V zájmu zjednodušení ale v tomto rychlém startu se vytvoří Konzolová aplikace .NET. Ověřování desktopové aplikace pomocí Azure vyžaduje použití instančního objektu a zásad řízení přístupu.
+Nejjednodušší způsob, jak ověřit cloudovou aplikaci .NET, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . 
+
+V zájmu zjednodušení ale v tomto rychlém startu se vytvoří Konzolová aplikace .NET, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš Princip služby vyžaduje jedinečný název ve formátu http://<moje jedinečný-Service-State-Name>.
 
 Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Tato operace vrátí řadu párů klíč/hodnota. 

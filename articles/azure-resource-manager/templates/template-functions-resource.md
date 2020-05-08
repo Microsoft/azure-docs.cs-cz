@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 4038d95942805ae26b5e82d5b766a80a92ae11bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 508933cbea3e21fdec63907cef73102866732bb1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231301"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891009"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -39,7 +39,7 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 | resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -116,7 +116,7 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
 | apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
-| functionValues |Ne |objekt | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
+| functionValues |No |objekt | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
@@ -168,9 +168,9 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
 | Microsoft. EventGrid/domény | [Klíče listkey](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
 | Microsoft. EventGrid/témata | [Klíče listkey](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
-| Microsoft. EventHub/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft. EventHub/obory názvů/eventhubs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft. EventHub/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
+| Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
+| Microsoft. EventHub/obory názvů/eventhubs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
 | Microsoft. ImportExport/Jobs | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
 | Microsoft. Kusto/clustery/databáze | [ListPrincipals](/rest/api/azurerekusto/databases/listprincipals) |
 | Microsoft. LabServices/uživatelé | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
@@ -361,7 +361,7 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
-| resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
+| resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -436,8 +436,8 @@ Vrátí objekt představující běhový stav prostředku.
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
-| apiVersion |Ne |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
-| Kompletní |Ne |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
+| apiVersion |No |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
+| Kompletní |No |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'`, vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
 
 ### <a name="return-value"></a>Návratová hodnota
 
@@ -748,11 +748,11 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
-| resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
+| subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
+| resourceGroupName |No |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -886,7 +886,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | sameRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
@@ -944,10 +944,10 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
+| subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -1028,7 +1028,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 |:--- |:--- |:--- |:--- |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 

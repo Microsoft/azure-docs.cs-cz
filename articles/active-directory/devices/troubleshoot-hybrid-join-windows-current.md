@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331772"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611309"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>Řešení potíží s hybridními Azure Active Directory připojenými zařízeními
 
 Obsah tohoto článku se vztahuje na zařízení s Windows 10 nebo Windows Server 2016.
 
@@ -30,13 +31,13 @@ V tomto článku se předpokládá, že jste [nakonfigurovali zařízení se hyb
 - [Podnikový roaming nastavení](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello pro firmy](../active-directory-azureadjoin-passport-deployment.md)
 
-Tento dokument poskytuje pokyny k odstraňování potíží, které vám pomohou vyřešit potenciální problémy. 
+Tento dokument poskytuje pokyny k odstraňování potíží, které vám pomohou vyřešit potenciální problémy.
 
 V případě systémů Windows 10 a Windows Server 2016 se v programu Hybrid Azure Active Directory JOIN podpora Windows 10 listopadu 2015 Update a vyšší.
 
 ## <a name="troubleshoot-join-failures"></a>Řešení chyb připojení
 
-### <a name="step-1-retrieve-the-join-status"></a>Krok 1: načtení stavu připojení 
+### <a name="step-1-retrieve-the-join-status"></a>Krok 1: načtení stavu připojení
 
 **Načtení stavu připojení:**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>Krok 2: vyhodnocení stavu připojení 
+### <a name="step-2-evaluate-the-join-status"></a>Krok 2: vyhodnocení stavu připojení
 
 Zkontrolujte následující pole a ujistěte se, že mají očekávané hodnoty:
 
-#### <a name="domainjoined--yes"></a>DomainJoined: Ano  
+#### <a name="domainjoined--yes"></a>DomainJoined: Ano
 
-Toto pole indikuje, jestli je zařízení připojené k místní službě Active Directory, nebo ne. Pokud je hodnota **ne**, zařízení nemůže provést hybridní připojení k Azure AD.  
+Toto pole indikuje, jestli je zařízení připojené k místní službě Active Directory, nebo ne. Pokud je hodnota **ne**, zařízení nemůže provést hybridní připojení k Azure AD.
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined: ne  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined: ne
 
 Toto pole indikuje, jestli je zařízení zaregistrované ve službě Azure AD jako osobní zařízení (označené jako *připojené k pracovišti*). Tato hodnota by neměla **být pro počítač** připojený k doméně, který je taky připojený k hybridní službě Azure AD. Pokud je hodnota **Ano**, přidal se pracovní nebo školní účet před dokončením připojení k hybridní službě Azure AD. V takovém případě se účet ignoruje při použití aktualizace výročí Windows 10 (1607).
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined: Ano
 
 Toto pole indikuje, jestli je zařízení připojené. Pokud se jedná o zařízení připojené k Azure AD nebo k hybridnímu zařízení připojenému k Azure AD, bude tato hodnota **Ano** .
-Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené. 
+Pokud je hodnota **ne**, připojení ke službě Azure AD ještě není dokončené.
 
 Další kroky k odstraňování potíží můžete pokračovat v dalších krocích.
 
@@ -155,7 +156,7 @@ Možné příčiny selhání:
    - V doménové struktuře služby Active Directory je vyžadován platný objekt SCP, ke kterému patří zařízení, které odkazuje na ověřený název domény ve službě Azure AD.
    - Podrobnosti najdete v části [Konfigurace spojovacího bodu služby](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join).
 - Nepovedlo se připojit a načíst metadata zjišťování z koncového bodu zjišťování.
-   - Zařízení by mělo mít přístup `https://enterpriseregistration.windows.net`v kontextu systému, aby bylo možné zjistit koncové body registrace a autorizace. 
+   - Zařízení by mělo mít přístup `https://enterpriseregistration.windows.net`v kontextu systému, aby bylo možné zjistit koncové body registrace a autorizace.
    - Pokud místní prostředí vyžaduje odchozí proxy server, správce IT musí zajistit, aby počítačový účet zařízení mohl zjišťovat a tiše ověřit u odchozího proxy serveru.
 - Nepovedlo se připojit ke koncovému bodu sféry uživatele a provádět zjišťování sféry. (Jenom Windows 10 verze 1809 a novější)
    - Zařízení by mělo mít přístup `https://login.microsoftonline.com`v kontextu systému, aby bylo možné provést zjišťování sféry pro ověřenou doménu a určit typ domény (spravované/federované).
@@ -173,7 +174,7 @@ Možné příčiny selhání:
    - Důvod: při provádění zjišťování vypršel časový limit operace.
    - Řešení: Ujistěte se `https://enterpriseregistration.windows.net` , že je přístupná v kontextu systému. Další informace najdete v části požadavky na [připojení k síti](hybrid-azuread-join-managed-domains.md#prerequisites).
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** (0x801c0021/-2145648611)
-   - Důvod: selhání zjišťování obecných sfér. Nepovedlo se určit typ domény (spravované nebo federované) ze služby STS. 
+   - Důvod: selhání zjišťování obecných sfér. Nepovedlo se určit typ domény (spravované nebo federované) ze služby STS.
    - Řešení: Najděte níže uvedenou dílčí chybu a prozkoumejte ji.
 
 **Kódy běžných chyb:**
@@ -260,7 +261,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** (0xcaa90017/-894894057)
    - Důvod: ověřovací protokol není WS-Trust.
-   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust. 
+   - Řešení: místní zprostředkovatel identity musí podporovat WS-Trust.
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** (0xcaa9002c/-894894036)
    - Důvod: místní služba FS (Federation Service) nevrátila odpověď XML.
    - Řešení: Zajistěte, aby koncový bod MEX vrátil platný kód XML. Zajistěte, aby proxy nenarušil a vracel odpovědi, které nejsou ve formátu XML.
@@ -278,7 +279,7 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
    - Řešení: zkuste to po nějaké době znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** (0xcaa82f8f/-894947441)
    - Důvod: protokol TLS (Transport Layer Security), dříve označovaný jako SSL (Secure Sockets Layer) (SSL), nemohl být ověřený serverem.
-   - Řešení: Podívejte se na časový posun klienta. Zkuste to za chvíli znovu nebo se pokuste připojit z alternativního umístění stabilní sítě. 
+   - Řešení: Podívejte se na časový posun klienta. Zkuste to za chvíli znovu nebo se pokuste připojit z alternativního umístění stabilní sítě.
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** (0xcaa82efd/-894947587)
    - Důvod: pokus o připojení `https://login.microsoftonline.com` se nezdařil.
    - Řešení: Ověřte síťové připojení k `https://login.microsoftonline.com`.
@@ -293,11 +294,11 @@ Použijte protokoly Prohlížeč událostí k vyhledání kódu chyby, kódu chy
    - Řešení: Podívejte se na nastavení federačního serveru. Vyhledejte kód chyby serveru v protokolech ověřování.
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** (0xcaa90006/-894894074)
    - Důvod: při pokusu o získání přístupového tokenu z koncového bodu tokenu byla přijata chyba.
-   - Řešení: vyhledejte základní chybu v protokolu ADAL. 
+   - Řešení: vyhledejte základní chybu v protokolu ADAL.
 - **ERROR_ADAL_OPERATION_PENDING** (0xcaa1002d/-895418323)
    - Důvod: Obecná chyba ADAL
    - Řešení: Vyhledejte kód chyby nebo kód chyby serveru z protokolů ověřování.
-    
+
 #### <a name="join-phase"></a>Spojovací fáze
 
 Důvody pro selhání:
@@ -337,7 +338,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
    - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "DirectoryError"
    - Řešení: možné příčiny a řešení najdete v kódu chyby serveru.
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** (0x801c0002/-2145648638)
-   - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "AuthenticationError" a ErrorSubCode není "DeviceNotFound". 
+   - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "AuthenticationError" a ErrorSubCode není "DeviceNotFound".
    - Řešení: možné příčiny a řešení najdete v kódu chyby serveru.
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** (0x801c0006/-2145648634)
    - Důvod: byla přijata chybová odpověď z DRS s kódem chyby: "DirectoryError"
@@ -349,7 +350,7 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
    - Důvod: operace čipu TPM se nezdařila nebo byla neplatná.
    - Řešení: pravděpodobně kvůli chybné imagi nástroje Sysprep. Ujistěte se, že počítač, ze kterého byla vytvořená image nástroje Sysprep, není připojený k Azure AD, připojili jste k hybridní službě Azure AD nebo zaregistrovali Azure AD.
 - **TPM_E_PCP_INTERNAL_ERROR** (0x80290407/-2144795641)
-   - Důvod: Obecná chyba čipu TPM. 
+   - Důvod: Obecná chyba čipu TPM.
    - Řešení: zakáže čip TPM v zařízeních s touto chybou. Windows 10 verze 1809 a vyšší automaticky detekuje selhání čipu TPM a dokončuje připojení k hybridní službě Azure AD bez použití čipu TPM.
 - **TPM_E_NOTFIPS** (0x80280036/-2144862154)
    - Důvod: čip TPM v režimu FIPS se momentálně nepodporuje.
@@ -386,28 +387,32 @@ Pomocí protokolů Prohlížeč událostí vyhledejte fázi a kód chyby připoj
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>Krok 5: shromáždění protokolů a kontaktování podpora Microsoftu
 
-Získejte veřejné skripty tady: [ https://1drv.ms/u/s! AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+Stáhnout soubor auth. zip z[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. Otevřete příkazový řádek správce a spusťte `start_ngc_tracing_public.cmd`příkaz.
-2. Proveďte kroky pro reprodukování problému.
-3. Zastavte skript protokolování spuštěním příkazu `stop_ngc_tracing_public.cmd`.
-4. Soubory zip a odesílají protokoly `%SYSTEMDRIVE%\TraceDJPP\*` pro účely analýzy.
+1. Rozbalte soubory a přejmenujte zahrnuté soubory **Start-auth. txt** a **stop-auth. txt** na **Start-auth. cmd** a **stop-auth. cmd**.
+1. Z příkazového řádku se zvýšenými oprávněními spusťte **Start-auth. cmd**.
+1. Přepínač přepnout účet použijte k přepnutí na jinou relaci s problémem uživatele.
+1. Reprodukujte problém.
+1. Přepínač přepnout účet můžete použít k přepnutí zpět do relace správce s trasováním.
+1. Z příkazového řádku se zvýšenými oprávněními spusťte **stop-auth. cmd**.
+1. Zip a odešlete složku **Authlogs** ze složky, ze které byly spouštěny skripty.
 
 ## <a name="troubleshoot-post-join-issues"></a>Řešení problémů po připojení
 
-### <a name="retrieve-the-join-status"></a>Načtení stavu připojení 
+### <a name="retrieve-the-join-status"></a>Načtení stavu připojení
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet: YES a AzureADPrt: YES
-  
-Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure AD při přihlášení k zařízení. Pokud jsou hodnoty **ne**, může to být způsobeno:
+
+Tato pole označují, jestli se uživatel úspěšně ověřil do služby Azure AD při přihlášení k zařízení.
+Pokud jsou hodnoty **ne**, může to být způsobeno:
 
 - Chybný klíč úložiště v čipu TPM přidruženého k zařízení při registraci (při spuštění se zvýšenými oprávněními zkontrolujte KeySignTest).
 - Alternativní ID přihlášení
 - Proxy server HTTP se nenašel.
 
 ## <a name="known-issues"></a>Známé problémy
-- V části nastavení-> účty – > přístup do práce nebo do školy můžou zařízení připojená k hybridní službě Azure AD zobrazovat dva různé účty, jednu pro Azure AD a jednu pro místní službu AD, když jsou připojeni k mobilním hotspotům nebo externím sítím Wi-Fi. Toto je jenom problém s uživatelským rozhraním a nemá žádný vliv na funkčnost. 
- 
+- V části nastavení-> účty – > přístup do práce nebo do školy můžou zařízení připojená k hybridní službě Azure AD zobrazovat dva různé účty, jednu pro Azure AD a jednu pro místní službu AD, když jsou připojeni k mobilním hotspotům nebo externím sítím Wi-Fi. Toto je jenom problém s uživatelským rozhraním a nemá žádný vliv na funkčnost.
+
 ## <a name="next-steps"></a>Další kroky
 
 Pokračování [v řešení potíží pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)

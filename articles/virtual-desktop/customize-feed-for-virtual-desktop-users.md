@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128078"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612890"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Přizpůsobení kanálu pro uživatele Windows Virtual Desktopu
 
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Informační kanál můžete přizpůsobit tak, aby se prostředky RemoteApp a Vzdálená plocha zobrazovaly rozpoznatelným způsobem pro vaše uživatele.
 
-Nejdřív [Stáhněte a importujte modul PowerShellu virtuálního počítače s Windows](/powershell/windows-virtual-desktop/overview/) , který chcete použít v relaci PowerShellu, pokud jste to ještě neudělali. Potom spuštěním následující rutiny se přihlaste ke svému účtu:
+## <a name="prerequisites"></a>Požadavky
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+V tomto článku se předpokládá, že jste už stáhli a nainstalovali modul PowerShellu pro virtuální počítače s Windows. Pokud jste to neudělali, postupujte podle pokynů v části [nastavení modulu PowerShell](powershell-module.md).
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>Přizpůsobení zobrazovaného názvu pro aplikaci RemoteApp
 
@@ -32,16 +36,55 @@ Zobrazované jméno publikované aplikace RemoteApp můžete změnit nastavením
 Pokud chcete načíst seznam publikovaných vzdálených aplikací RemoteApp pro skupinu aplikací, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/get-rdsremoteapp.png)
 
-Chcete-li přiřadit popisný název k vzdálené aplikaci RemoteApp, spusťte následující rutinu prostředí PowerShell:
+Chcete-li přiřadit popisný název k vzdálené aplikaci RemoteApp, spusťte následující rutinu s požadovanými parametry:
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](media/set-rdsremoteapp.png)
+
+Řekněme například, že jste načetli aktuální aplikace pomocí následující ukázkové rutiny:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+Výstup by vypadal takto:
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+Chcete-li aktualizovat popisný název, spusťte tuto rutinu:
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+Pokud chcete potvrdit, že jste úspěšně aktualizovali popisný název, spusťte tuto rutinu:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+Rutina by vám měla poskytnout následující výstup:
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Přizpůsobení zobrazovaného názvu pro vzdálenou plochu
 
@@ -50,20 +93,39 @@ Zobrazované jméno publikované vzdálené plochy můžete změnit nastavením 
 Pokud chcete načíst prostředek vzdálené plochy, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![Snímek obrazovky rutiny PowerShellu Get-RDSRemoteApp se zvýrazněným názvem a FriendlyName.](media/get-rdsremotedesktop.png)
 
 Chcete-li přiřadit popisný název k prostředku vzdálené plochy, spusťte následující rutinu prostředí PowerShell:
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Snímek obrazovky rutiny PowerShellu set-RDSRemoteApp s názvem a novým výrazem FriendlyName](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>Přizpůsobení zobrazovaného názvu v Azure Portal
+
+Zobrazované jméno publikované vzdálené plochy můžete změnit nastavením popisného názvu pomocí Azure Portal. 
+
+1. Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>. 
+
+2. Vyhledejte **virtuální počítač s Windows**.
+
+3. V části služby vyberte **virtuální klient Windows**. 
+
+4. Na stránce virtuální počítač s Windows na levé straně obrazovky vyberte **skupiny aplikací** a potom vyberte název skupiny aplikací, kterou chcete upravit. 
+
+5. V nabídce na levé straně obrazovky vyberte **aplikace** .
+
+6. Vyberte aplikaci, kterou chcete aktualizovat, a pak zadejte nový **Zobrazovaný název**. 
+
+7. Vyberte **Uložit**. Aplikace, kterou jste upravili, by nyní měla zobrazit aktualizovaný název.
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když jste přizpůsobili informační kanál pro uživatele, se můžete přihlásit k klientovi virtuální plochy Windows a otestovat ho. Provedete to tak, že přejdete do části s postupy pro připojení k virtuálnímu počítači s Windows:
     
- * [Připojení z Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
- * [Připojení z webového prohlížeče](connect-web.md) 
+ * [Připojení se systémem Windows 10 nebo Windows 7](connect-windows-7-and-10.md)
+ * [Připojení k webovému klientovi](connect-web.md) 
+ * [Práce s klientem Android](connect-android.md)
+ * [Připojení s klientem iOS](connect-ios.md)
+ * [Připojení s klientem macOS](connect-macos.md)

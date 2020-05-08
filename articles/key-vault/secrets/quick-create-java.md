@@ -7,12 +7,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 7e0d05ce97def0a255e6ac9909544b04fb13bb37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3e6901d41cc14ab3ea27f7c8cd9bbc4c98608a6
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81425025"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901337"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Rychlý Start: Azure Key Vault Klientská knihovna pro Java
 
@@ -114,12 +114,14 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Nejjednodušší způsob, jak ověřit cloudovou aplikaci, je spravovaná identita. Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu.
+Nejjednodušší způsob, jak ověřit cloudovou aplikaci, je spravovaná identita. Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) .
+
+V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Váš Princip služby vyžaduje jedinečný název ve formátu http://<moje jedinečný-Service-State-Name>.
 
 Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
 ```azurecli
-az ad sp create-for-rbac -n "http://mySP" --sdk-auth
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name>" --sdk-auth
 ```
 
 Tato operace vrátí řadu párů klíč/hodnota. 

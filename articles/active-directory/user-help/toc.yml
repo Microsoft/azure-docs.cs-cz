@@ -46,6 +46,8 @@
           href: user-help-auth-app-add-account-manual.md
     - name: Přihlášení pomocí aplikace Microsoft Authenticator
       href: user-help-auth-app-sign-in.md
+    - name: Omezení Androidu v Číně
+      href: auth-app-android-china.md
     - name: Zálohování a obnovení vašich účtů
       href: user-help-auth-app-backup-recovery.md
     - name: Nejčastější dotazy

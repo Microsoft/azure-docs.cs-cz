@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c171c1bab99e4e3748267308745ee66631ed08d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451665"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888962"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Ochrana citlivých dat a ukládání šifrovacích klíčů v Azure Key Vault
 
@@ -57,7 +57,7 @@ Teď, když je nakonfigurovaná klientská aplikace a máte ID aplikace, je čas
 
 Trezor klíčů můžete rychle vytvořit spuštěním následujícího skriptu. Podrobné vysvětlení těchto příkazů a další informace o vytváření a konfiguraci trezoru klíčů najdete v tématu [co je Azure Key Vault?](../key-vault/general/overview.md).
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
@@ -621,4 +621,4 @@ Po vytvoření databáze, která používá Always Encrypted, je vhodné provés
 - [Transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server šifrování](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Průvodce Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-- [Blog Always Encrypted](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [Blog Always Encrypted](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

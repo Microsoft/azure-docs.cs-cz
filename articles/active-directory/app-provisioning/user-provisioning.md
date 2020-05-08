@@ -1,28 +1,24 @@
 ---
-title: Automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD | Microsoft Docs
+title: Automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD
 description: Představte si, jak můžete pomocí Azure AD automaticky zřídit, zrušit zřízení a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS třetích stran.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: mimart
-ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e828fd9c2561007c332db67bfd0b20dda9b845f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 1e72d885858b543999090a4a0521845d556802fd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454529"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593110"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure Active Directory
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure AD
 
 V Azure Active Directory (Azure AD) pojem **zřizování aplikací** označuje automatické vytváření identit uživatelů a rolí v cloudových aplikacích ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Mezi běžné scénáře patří zřizování uživatelů Azure AD v aplikacích, jako jsou [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)a další.
 
