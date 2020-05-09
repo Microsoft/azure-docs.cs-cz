@@ -3,12 +3,12 @@ title: Zlepšení dostupnosti aplikace pomocí Azure Advisor
 description: Pomocí Azure Advisor můžete zlepšit vysokou dostupnost nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443109"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788021"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti aplikace pomocí Azure Advisor
 
@@ -28,6 +28,10 @@ Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva 
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Zvýšení spolehlivosti dat s využitím spravovaných disků
 
 Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí buď účty úložiště nebo jednotky škálování úložiště, nejsou odolné vůči selhání jednotek škálování s jedním úložištěm během výpadků. Poradce tyto skupiny dostupnosti rozpozná a doporučí migraci do Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Známý problém s verzí image síťového virtuálního zařízení kontrolního bodu
+
+Advisor může zjistit, jestli virtuální počítač může používat verzi image kontrolního bodu, u které se v případě operace údržby platformy ztratilo síťové připojení. Doporučení Advisor vám pomůže upgradovat na novější verzi image, která tento problém řeší. Tím zajistíte kontinuitu podnikových aplikací prostřednictvím lepšího síťového připojení.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Zajištění odolnosti proti chybám služby Application Gateway
 
@@ -83,7 +87,7 @@ Azure Advisor určí Azure Cosmos DB účty, které používají starší verze 
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Upgrade sady Azure Cosmos DB Java SDK na nejnovější verzi z Mavenu
 
-Azure Advisor určí Azure Cosmos DB účty, které používají starší verze sady Java SDK, a doporučuje upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor určí Azure Cosmos DB účty, které používají starší verze sady Java SDK, a doporučuje upgradovat na nejnovější verzi z Maven, kde najdete nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o Cosmos DB Java SDK](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Upgrade konektoru Azure Cosmos DB Spark na nejnovější verzi z Mavenu
 
