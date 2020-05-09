@@ -6,17 +6,20 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: c439ff8df95d759e96d2fc82356bda8551507e8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: d02ceda9dc2c6a822d45c2a31fe91a976610292b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084936"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610849"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Připojování nebo odpojování svazku pro virtuální počítače s Windows nebo Linuxem 
 
 V případě potřeby můžete připojit nebo odpojit svazek pro virtuální počítače se systémem Windows nebo Linux.  Pokyny k připojení pro virtuální počítače se systémem Linux jsou k dispozici na Azure NetApp Files.  
+
+> [!IMPORTANT] 
+> Aby bylo možné získat přístup ke svazku systému souborů NFS, musíte mít aspoň jednu zásadu exportu.
 
 1. Klikněte na okno **svazky** a potom vyberte svazek, ke kterému se chcete připojit. 
 2. Klikněte na **připojit pokyny** z vybraného svazku a pak podle pokynů připojte svazek. 

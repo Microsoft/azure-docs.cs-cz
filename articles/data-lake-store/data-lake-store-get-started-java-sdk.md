@@ -1,23 +1,17 @@
 ---
-title: 'Java SDK: operace systému souborů v Azure Data Lake Storage Gen1 | Microsoft Docs'
-description: Pomocí Azure Data Lake Storage Gen1 Java SDK provádět operace se systémem souborů v Data Lake Storage Gen1, jako je například vytváření složek atd.
-services: data-lake-store
-documentationcenter: ''
+title: Java SDK – operace systému souborů ve službě Data Lake Storage Gen1 – Azure
+description: Pomocí sady Java SDK pro Azure Data Lake Storage Gen1 provádět operace systému souborů v Data Lake Storage Gen1, například vytváření složek a nahrávání a stahování datových souborů.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60877460"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691781"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí sady Java SDK
 > [!div class="op_single_selector"]
@@ -58,7 +52,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
           </dependency>
         </dependencies>
    
-    První závislost je použít sadu Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [slf4j](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
+    První závislost je použít sadu Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) z úložiště Maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada Data Lake Storage Gen1 SDK používá [SLF4J](https://www.slf4j.org/) protokolování, které vám umožní vybírat z mnoha oblíbených protokolovacích rozhraní, jako je log4j, protokolování Java, Logback atd., nebo bez protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](https://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -73,7 +67,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 * Pro ověřování koncového uživatele pro vaši aplikaci, přečtěte si téma [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí jazyka Java](data-lake-store-end-user-authenticate-java-sdk.md).
 * Pro ověřování služby pro vaši aplikaci, přečtěte si téma [ověřování služba-služba s Data Lake Storage Gen1 pomocí jazyka Java](data-lake-store-service-to-service-authenticate-java.md).

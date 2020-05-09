@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662515"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691117"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Monitorování služby úložiště pomocí Azure Monitor pro úložiště (Preview)
 
@@ -67,7 +67,7 @@ Dlaždice počítadla v rozevíracích seznamech shrnuje celkový počet účtů
 Vyberte hodnotu v poli **dostupnost**sloupců, **latence e2e**, **latence serveru**a typ a **chyby transakce** , které vás přesměrují na sestavu přizpůsobenou konkrétnímu typu metriky úložiště, který odpovídá sloupci vybranému pro tento účet úložiště. Další informace o sešitech pro jednotlivé kategorie najdete v části [podrobné sešity úložiště](#detailed-storage-workbooks) níže. 
 
 >[!NOTE]
->Podrobnosti o tom, které chyby lze v sestavě zobrazit, naleznete v tématu [schéma typu odpovědi](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) a hledání typů odpovědí, jako je například **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. V závislosti na vybraných účtech úložiště platí, že pokud je nahlášeno více než tři typy chyb, jsou všechny ostatní chyby zastoupeny v kategorii **jiné**.
+>Podrobnosti o tom, které chyby lze v sestavě zobrazit, naleznete v tématu [schéma typu odpovědi](../../storage/common/monitor-storage-reference.md#metrics-dimensions) a hledání typů odpovědí, jako je například **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. V závislosti na vybraných účtech úložiště platí, že pokud je nahlášeno více než tři typy chyb, jsou všechny ostatní chyby zastoupeny v kategorii **jiné**.
 
 Výchozí prahová hodnota **dostupnosti** je:
 
@@ -226,7 +226,7 @@ V tomto příkladu pracujeme se sešitem kapacity účtu úložiště a demonstr
 
 7. Na panelu příkazů vyberte **Uložit jako** a uložte kopii sešitu s vlastními úpravami a potom kliknutím na **hotové úpravy** vraťte do režimu čtení.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Odstraňování potíží
 
 Tato část vám pomůže s diagnostikou a řešením potíží s některými běžnými problémy, se kterými se můžete setkat při používání Azure Monitor pro úložiště (Preview). K vyhledání informací týkajících se konkrétního problému použijte níže uvedený seznam.
 

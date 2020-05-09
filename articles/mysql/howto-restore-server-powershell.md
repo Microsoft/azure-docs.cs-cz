@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230844"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609058"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>Postup zálohování a obnovení serveru v Azure Database for MySQL pomocí prostředí PowerShell
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Postup zálohování a obnovení serveru Azure Database for MySQL pomocí prostředí PowerShell
 
 Azure Database for MySQL servery se pravidelně zálohují, aby se povolily funkce obnovení. Pomocí této funkce můžete obnovit server a všechny jeho databáze k dřívějšímu bodu v čase na novém serveru.
 
@@ -77,7 +77,7 @@ Sada parametrů **PointInTimeRestore** `Restore-AzMySqlServer` rutiny vyžaduje 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Skupina prostředků, ve které existuje zdrojový server.  |
-| Název | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
+| Name | mydemoserver-restored | Název nového serveru, který se vytvoří příkazem restore. |
 | RestorePointInTime | 2020-03-13T13:59:00Z | Vyberte bod v čase, který chcete obnovit. Tato datum a čas musí být v rámci doby uchovávání záloh zdrojového serveru. Použijte formát data a času ISO8601. Můžete například použít vlastní místní časové pásmo, například **2020-03-13T05:59:00-08:00**. Můžete také použít formát Zulu UTC, například **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | K obnovení použijte režim bodu v čase. |
 
@@ -119,7 +119,7 @@ Sada **GeoRestore** parametrů pro dopředné obnovení `Restore-AzMySqlServer` 
 | Nastavení | Navrhovaná hodnota | Popis  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | Název skupiny prostředků, do které nový server patří|
-|Název | mydemoserver – geograficky obnovené | Název nového serveru. |
+|Name | mydemoserver – geograficky obnovené | Název nového serveru. |
 |Umístění | eastus | Umístění nového serveru. |
 |UseGeoRestore | `<SwitchParameter>` | K obnovení použijte geografický režim. |
 
@@ -131,6 +131,5 @@ Nový server vytvořený během obnovy nemá koncové body služby virtuální s
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [zálohování](concepts-backup.md) služby
-- Další informace o [replikách](concepts-read-replicas.md)
-- Další informace o možnostech [kontinuity podnikových aplikací](concepts-business-continuity.md)
+> [!div class="nextstepaction"]
+> [Přizpůsobení parametrů Azure Database for MySQL serveru pomocí PowerShellu](howto-configure-server-parameters-using-powershell.md)

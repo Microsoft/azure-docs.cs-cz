@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265399"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561045"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Poznámky k verzi pro obecné dostupnosti Azure Data Box Edge/Azure Data Box Gateway
 
 ## <a name="overview"></a>Přehled
 
-Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání obecné dostupnosti (GA) pro Azure Data Box Edge a Azure Data Box Gateway.
+Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání obecné dostupnosti (GA) pro Azure Data Box Edge a Azure Data Box Gateway. 
 
 Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
 
@@ -50,4 +50,4 @@ Následující tabulka poskytuje souhrn známých problémů Data Box Gateway vy
 ## <a name="next-steps"></a>Další kroky
 
 - [Příprava na nasazení Azure Data box Gateway](data-box-gateway-deploy-prep.md).
-- [Příprava na nasazení Azure Data box Edge](data-box-edge-deploy-prep.md).
+- [Příprava na nasazení Azure Data box Edge](azure-stack-edge-deploy-prep.md).

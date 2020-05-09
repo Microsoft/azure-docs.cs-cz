@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 00cde5255f9c9a2baa7c7042ae2a8f73448da0ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f55ebb3270fdd97a1fdbbf5a56f9703c08933f9f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679989"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855339"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -21,7 +21,7 @@ Předzálohovací a pozálohovací skripty jsou Runbooky, které se mají spusti
 
 ## <a name="pre-script-and-post-script-requirements"></a>Požadavky na předchozí skript a pozálohovací skript
 
-Aby se sada Runbook použila jako předzálohovací nebo pozálohovací skript, musíte ji naimportovat do svého účtu Automation a [sadu Runbook publikovat](manage-runbooks.md#publishing-a-runbook).
+Aby se sada Runbook použila jako předzálohovací nebo pozálohovací skript, musíte ji naimportovat do svého účtu Automation a [sadu Runbook publikovat](manage-runbooks.md#publish-a-runbook).
 
 ## <a name="pre-script-and-post-script-parameters"></a>Parametry před skriptem a po skriptu
 
