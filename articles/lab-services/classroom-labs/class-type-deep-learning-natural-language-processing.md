@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dab5f3dcdfb6ddabbd94960dcf8a8bf2bce98af
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257755"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890774"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Nastavení testovacího prostředí zaměřeného na obsáhlý Learning při zpracování v přirozeném jazyce pomocí Azure Lab Services
 V tomto článku se dozvíte, jak nastavit testovací prostředí zaměřené na obsáhlý Learning při zpracování přirozeného jazyka (NLP) pomocí Azure Lab Services. Zpracování přirozeného jazyka (NLP) je forma umělé Intelligence (AI), která umožňuje počítačům s překlady, rozpoznáváním řeči a dalšími možnostmi porozumění jazyku.  
@@ -40,7 +40,7 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 | ------------ | ------------------ |
 | Velikost virtuálního počítače (VM) | Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
 | Image virtuálního počítače | [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Tento obrázek poskytuje architektury a nástroje pro hloubkové učení pro Machine Learning a datové vědy. Úplný seznam nainstalovaných nástrojů na tomto obrázku si můžete prohlédnout v následujícím článku: [co je součástí DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Povolit připojení ke vzdálené ploše | Aby. <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se k jejich Virtual Machines (VM) pomocí vzdálené plochy (RDP).</p><p>**Důležité**: RDP je už nainstalované a nakonfigurované na image data Science Virtual Machine pro Linux. V důsledku toho se můžou učitelé a studenti připojit k virtuálním počítačům přes RDP bez jakýchkoli dalších kroků. Pokud se navíc potřebujete připojit k grafické ploše, již tato image má na virtuálním počítači nainstalovaný [X2Go Server](https://wiki.x2go.org/doku.php/doc:newtox2go) . Studenti musí nainstalovat klienta X2Go na své místní počítače a musí používat klienta pro připojení. Další informace najdete v následujících příručkách: <ul><li>[Přístup k Data Science Virtual Machine pro Linux](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Připojení k virtuálnímu počítači šablony pro instalaci balíčků RDP a GUI](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Povolit připojení ke vzdálené ploše | <p>Povolením tohoto nastavení umožníte učitelům a studentům připojit se k jejich Virtual Machines (VM) pomocí vzdálené plochy (RDP).</p><p>**Důležité**: Pokud povolíte toto nastavení, otevře se jenom port **RDP** na počítačích se systémem Linux. Pokud je už v imagi virtuálního počítače nainstalovaný a nakonfigurovaný protokol RDP, můžete se k virtuálním počítačům připojit pomocí protokolu RDP bez jakýchkoli dalších kroků. <p>Pokud není v imagi virtuálního počítače nainstalovaný a nakonfigurovaný RDP, budete se muset poprvé připojit k počítači se systémem Linux a nainstalovat balíčky RDP a GUI, abyste se vy a studenti mohli připojit k počítači se systémem Linux pomocí protokolu RDP později. Další informace najdete v tématu [instalace a konfigurace vzdálené plochy pro připojení k virtuálnímu počítači se systémem Linux v Azure](../../virtual-machines/linux/use-remote-desktop.md). Potom obrázek publikujete, aby se studenti mohli připojit k virtuálním počítačům s Linuxem pro studenty.  |
 
 Image Data Science Virtual Machine pro Linux poskytuje nezbytné architektury a nástroje pro hloubkové učení, které jsou potřebné pro tento typ třídy. V důsledku toho je po vytvoření šablony nutné tento postup ještě Neupravovat. Dá se publikovat pro studenty, kteří ho budou používat. Vyberte tlačítko **publikovat** na stránce šablony a publikujte šablonu do testovacího prostředí.  
 

@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/08/2020
+ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856992"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891205"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Plánování a Správa nákladů na Azure Machine Learning
 
@@ -63,7 +63,7 @@ Zobrazení nákladů v grafech a tabulkách pro různé časové intervaly. Něk
 
 Pro Machine Learning se nezobrazí samostatná oblast služby.  Místo toho uvidíte různé prostředky, které jste přidali do vašich Machine Learning pracovních prostorů.
 
-## <a name="use-amlcompute"></a>Použití AmlCompute
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Použití Azure Machine Learning Compute Cluster (AmlCompute)
 
 S neustále se měnícími se daty potřebujete rychlé a zjednodušené školení modelů a rekurze, aby bylo možné zajistit správné modely. Průběžné školení však přináší náklady, zejména pro modely obsáhlého učení na GPU. 
 
@@ -138,5 +138,7 @@ Azure Machine Learning COMPUTE podporuje rezervované instance, které jsou v po
 
 ## <a name="next-steps"></a>Další kroky
 
-* Přečtěte si další informace o správě nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
-* Přečtěte si další informace o [Azure Machine Learning COMPUTE](how-to-set-up-training-targets.md#amlcompute).
+Další informace:
+* [Správa a zvýšení kvót prostředků](how-to-manage-quotas.md)
+* [Správa nákladů pomocí [analýzy nákladů](../cost-management-billing/costs/quick-acm-cost-analysis.md).
+* [Azure Machine Learning výpočetní](how-to-set-up-training-targets.md#amlcompute)prostředky.

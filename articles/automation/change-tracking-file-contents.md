@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509127"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779293"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
 Když přidáte nový soubor nebo klíč registru, který se má sledovat, Azure Automation ho povolí pro funkci [Change Tracking a inventáře](change-tracking.md) . Tento článek obsahuje postupy pro práci s touto funkcí.
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>Povolit kompletní řešení Change Tracking a inventáře
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>Povolení úplné funkce Change Tracking a inventáře
 
-Pokud jste povolili [Azure Security Center Monitoring integrity souborů (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), můžete použít úplné řešení Change Tracking a inventáře, jak je popsáno níže. Vaše nastavení tento proces neodstraní.
+Pokud jste povolili [Azure Security Center Monitoring integrity souborů (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), můžete použít úplnou funkci Change Tracking a inventáře, jak je popsáno níže. Vaše nastavení tento proces neodstraní.
 
 > [!NOTE]
-> Povolení úplného řešení Change Tracking a inventáře může způsobit další poplatky. Podívejte se na téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
+> Povolení úplných funkcí Change Tracking a inventáře může způsobit další poplatky. Podívejte se na téma [ceny služby Automation](https://azure.microsoft.com/pricing/details/automation/).
 
 1. Odstraňte řešení monitorování tak, že přejdete do pracovního prostoru a vyhledáte ho v [seznamu nainstalovaných řešení monitorování](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Kliknutím na název řešení otevřete jeho stránku Shrnutí a pak klikněte na **Odstranit**, jak je popsáno v části [Odebrání řešení monitorování](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution).
-3. Pokud chcete řešení znovu povolit, přejděte do účtu Automation a v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ).
+3. Pokud chcete znovu povolit Change Tracking a inventáře, přejděte do účtu Automation a v části **Správa konfigurace**vyberte **Change Tracking (sledování změn** ).
 4. Vyberte pracovní prostor Log Analytics a účet Automation, potvrďte nastavení pracovního prostoru a klikněte na **Povolit**.
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Zprovoznění počítačů do Change Tracking a inventáře

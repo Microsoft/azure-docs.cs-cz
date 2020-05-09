@@ -972,10 +972,14 @@
               href: sql-api-query-metrics.md
             - name: Tipy ke zvýšení výkonu pro .NET SDK
               href: performance-tips.md
-            - name: Tipy ke zvýšení výkonu pro Java SDK
-              href: performance-tips-java.md
-            - name: Tipy ke zvýšení výkonu pro Async Java SDK
-              href: performance-tips-async-java.md
+            - name: Tipy ke zvýšení výkonu pro Java SDK v4
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: Tipy ke zvýšení výkonu pro starší verze Java SDK
+              items:
+                - name: Sada Async Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: Sada Sync Java SDK v2
+                  href: performance-tips-java.md
             - name: Test výkonu – ukázková aplikace
               href: performance-testing.md
         - name: Nákladově efektivní čtení a zápisy
@@ -984,8 +988,12 @@
       items:
         - name: Řešení potíží s výkonem dotazů
           href: troubleshoot-query-performance.md
-        - name: Řešení potíží se sadou Java Async SDK
-          href: troubleshoot-java-async-sdk.md
+        - name: Řešení potíží se sadou Java SDK v4
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: Řešení potíží se staršími verzemi sad Java SDK
+          items:
+            - name: Sada Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
         - name: Řešení potíží se sadou .NET SDK
           href: troubleshoot-dot-net-sdk.md
     - name: Kanál změn

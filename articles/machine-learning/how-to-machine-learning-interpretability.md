@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631398"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982883"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
 |Technika interpretace|Popis|Typ|
 |--|--|--------------------|
-|1. SHAP se stromovým vysvětlením| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
-|2. SHAP, podrobný vysvětlující| Na základě vysvětlení z [SHAP](https://github.com/slundberg/shap)je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|
-|3. SHAP, vysvětlený lineární| Lineární [SHAPý](https://github.com/slundberg/shap)vysvětlení vypočítá SHAP hodnoty pro **lineární model**, volitelně také účetní pro korelace mezi funkcemi.|Specifické pro model|
-|4. SHAP – vysvětlení jádra| [SHAP](https://github.com/slundberg/shap)vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro **libovolný model**.|Model – nezávislá|
-|5. podobná vysvětlení (globální náhrada)| Nevhodnější je vycházet z nápadu pro školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) pro napodobování Blackbox modelů. Globální náhradní model je vnitřně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi **model černého pole** . Vědečtí data mohou interpretovat náhradní model, aby vykreslili závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).|Model – nezávislá|
-|6. permutace – vysvětlení důležitosti funkce (PFI)| Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce. PFI může vysvětlit celkové chování **jakéhokoli podkladového modelu** , ale nevysvětluje jednotlivé předpovědi. |Model – nezávislá|
+|SHAP stromové struktury| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
+|SHAP hluboký vysvětlující| Na základě vysvětlení z SHAP je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|
+|SHAP lineární vysvětlující| Lineární SHAPý vysvětlení vypočítá SHAP hodnoty pro **lineární model**, volitelně také účetní pro korelace mezi funkcemi.|Specifické pro model|
+|Vysvětlující SHAP jádra| SHAP vysvětlení jádra používá speciálně váženou místní lineární regresi k odhadování hodnot SHAP pro **libovolný model**.|Model – nezávislá|
+|Napodobit vysvětlení (globální náhrada)| Nevhodnější je vycházet z nápadu pro školení [globálních náhradních modelů](https://christophm.github.io/interpretable-ml-book/global.html) pro napodobování Blackbox modelů. Globální náhradní model je vnitřně interpretováný model, který je vyškolen na to, aby co nejpřesněji předpovědi **model černého pole** . Vědečtí data mohou interpretovat náhradní model, aby vykreslili závěry o modelu černého pole. Jako svůj náhradní model můžete použít jeden z následujících způsobů, které lze interpretovat: LightGBM (LGBMExplainableModel), lineární regrese (LinearExplainableModel), stochastického Gradientový model klesání na základě standardu (SGDExplainableModel) a rozhodovací strom (DecisionTreeExplainableModel).|Model – nezávislá|
+|Vysvětlení důležitosti funkce permutace (PFI)| Funkce permutace je důležitou metodou pro vysvětlení modelů klasifikace a regrese, které jsou nechte inspirovat pomocí [náhodných strukturních struktur Breiman](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (viz oddíl 10). Na nejvyšší úrovni je způsob, jakým funguje, náhodným pohybem dat pro celou datovou sadu a výpočtem množství metriky výkonu pro důležité změny. Čím větší je tato změna, tím důležitější je funkce. PFI může vysvětlit celkové chování **jakéhokoli podkladového modelu** , ale nevysvětluje jednotlivé předpovědi. |Model – nezávislá|
 
 
 
 
-Kromě metod interpretace popsaných výše podporujeme jiný [vysvětlující SHAP](https://github.com/slundberg/shap), který se nazývá `TabularExplainer`. V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
+Kromě metod interpretace popsaných výše podporujeme jiný vysvětlující SHAP, který se nazývá `TabularExplainer`. V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
 
 * TreeExplainer pro všechny modely založené na stromové struktuře
 * DeepExplainer pro modely DNN
@@ -120,4 +120,6 @@ Vysvětlení můžete spustit vzdáleně na Azure Machine Learning COMPUTE a pro
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .
+- Přečtěte si téma [postup](how-to-machine-learning-interpretability-aml.md) pro povolení interpretace u modelů v místním prostředí i na Azure Machine Learning vzdálených výpočetních prostředků. 
+- Další scénáře najdete v [ukázkových poznámkových blocích](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 
+- Pokud se zajímáte o výklad pro textové scénáře, přečtěte si téma [interpretace textu](https://github.com/interpretml/interpret-text), související Open Source úložiště pro [interpretaci komunit](https://github.com/interpretml/interpret-community/)pro techniky interpretace pro NLP. `azureml.interpret`balíček v současné době nepodporuje tyto techniky, ale můžete začít s [ukázkovým poznámkovým blokem při klasifikaci textu](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb).

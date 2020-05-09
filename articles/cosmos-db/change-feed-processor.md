@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 4/29/2020
+ms.date: 05/06/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594147"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982373"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Procesor kanálu změn ve službě Azure Cosmos DB
 
@@ -89,7 +89,7 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 
 Účtují se vám poplatky za ru spotřebované, protože přesun dat do kontejnerů Cosmos a z nich vždycky spotřebovává ru. Účtují se vám poplatky za ru spotřebované kontejnerem zapůjčení.
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Sada Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Ukázky použití na GitHubu](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
@@ -100,6 +100,7 @@ Procesor změn kanálu se navíc může dynamicky upravovat na kontejnery škál
 Teď můžete pokračovat a získat další informace o procesoru Change feed v následujících článcích:
 
 * [Přehled kanálu změn](change-feed.md)
+* [Model vyžádání změny kanálu změn](change-feed-pull-model.md)
 * [Postup migrace z knihovny Change feed Processor](how-to-migrate-from-change-feed-library.md)
 * [Použití estimátoru pro kanálu změn](how-to-use-change-feed-estimator.md)
 * [Počáteční čas procesoru kanálu změn](how-to-configure-change-feed-start-time.md)
