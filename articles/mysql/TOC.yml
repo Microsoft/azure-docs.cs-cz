@@ -68,6 +68,9 @@
       href: sample-scripts-azure-cli.md
     - name: Sdružování připojení v Javě
       href: sample-scripts-java-connection-pooling.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Databáze a servery

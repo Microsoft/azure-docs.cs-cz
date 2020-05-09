@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274759"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739360"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Zdroje dat o výkonu pro Windows a Linux v Azure Monitor
 Čítače výkonu ve Windows a Linux poskytují přehled o výkonu hardwarových komponent, operačních systémů a aplikací.  Azure Monitor může shromažďovat čítače výkonu v častých intervalech pro analýzu téměř v reálném čase (NRT) Kromě agregace dat výkonu pro dlouhodobé analýzy a generování sestav.
@@ -175,7 +175,7 @@ Následuje výchozí konfigurace pro metriky výkonu.
     </source>
 
 ## <a name="data-collection"></a>Shromažďování dat
-Azure Monitor shromažďuje všechny zadané čítače výkonu v zadaném vzorkovacím intervalu u všech agentů, u kterých je nainstalovaný tento čítač.  Data nejsou agregovaná a nezpracovaná data jsou k dispozici ve všech zobrazeních dotazů protokolu po dobu určenou vaším předplatným.
+Azure Monitor shromažďuje všechny zadané čítače výkonu v zadaném vzorkovacím intervalu u všech agentů, u kterých je nainstalovaný tento čítač.  Data nejsou agregovaná a nezpracovaná data jsou k dispozici ve všech zobrazeních dotazu protokolu po dobu určenou v pracovním prostoru Log Analytics.
 
 ## <a name="performance-record-properties"></a>Vlastnosti záznamu výkonu
 Záznamy o výkonu mají typ **výkonu** a mají vlastnosti v následující tabulce.

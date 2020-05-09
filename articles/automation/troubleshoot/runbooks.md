@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08325c8163073c083e927f84fecbde9a9d104572
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652798"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855087"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Řešení chyb Runbooku
 
@@ -49,7 +49,7 @@ Když při spuštění sady Runbook v Azure Automation dojde k chybám, můžete
     * [Obnovte Webhook](../automation-webhooks.md#renew-a-webhook) , pokud se pokoušíte použít Webhook, jehož platnost vypršela, aby se Runbook spustil.
     * [Zkontrolujte stav úlohy](../automation-runbook-execution.md#job-statuses) a určete aktuální stavy Runbooku a některé možné příčiny problému.
     * [Přidejte do Runbooku další výstup](../automation-runbook-output-and-messages.md#message-streams) , abyste mohli zjistit, co se stane, než se Runbook pozastaví.
-    * [Zpracujte všechny výjimky](../automation-runbook-execution.md#handling-exceptions) , které jsou vyvolány vaší úlohou.
+    * [Zpracujte všechny výjimky](../automation-runbook-execution.md#exceptions) , které jsou vyvolány vaší úlohou.
 
 1. Tento krok proveďte, pokud úloha sady Runbook nebo prostředí na Hybrid Runbook Worker nereaguje.
 
@@ -234,7 +234,7 @@ Sada Runbook při spuštění nepoužívá správný kontext.
 
 ### <a name="resolution"></a>Řešení
 
-Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li zajistit, aby byl kontext předplatného předán do sad Runbook, je nutné, aby sada `Start-AzureRmAutomationRunbook` Runbook klienta předávala kontext rutině v `AzureRmContext` parametru. Použijte `Disable-AzureRmContextAutosave` rutinu s `Scope` parametrem nastaveným `Process` na, abyste zajistili, že zadané přihlašovací údaje se použijí jenom pro aktuální Runbook. Další informace najdete v tématu [práce s více předplatnými](../automation-runbook-execution.md#working-with-multiple-subscriptions).
+Kontext předplatného může být ztracen, když sada Runbook vyvolá více sad Runbook. Chcete-li zajistit, aby byl kontext předplatného předán do sad Runbook, je nutné, aby sada `Start-AzureRmAutomationRunbook` Runbook klienta předávala kontext rutině v `AzureRmContext` parametru. Použijte `Disable-AzureRmContextAutosave` rutinu s `Scope` parametrem nastaveným `Process` na, abyste zajistili, že zadané přihlašovací údaje se použijí jenom pro aktuální Runbook. Další informace najdete v tématu [předplatná](../automation-runbook-execution.md#subscriptions).
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -634,7 +634,7 @@ K tomuto problému může dojít, protože sandboxy Azure brání přístupu ke 
 
 ### <a name="resolution"></a>Řešení
 
-Podrobnosti o použití izolovaných prostorů Azure najdete v tématu [Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md#where-to-run-your-runbooks).
+Podrobnosti o použití izolovaných prostorů Azure najdete v tématu [prostředí pro spuštění sady Runbook](../automation-runbook-execution.md#runbook-execution-environment).
 
 ## <a name="scenario-invalid-forbidden-status-code-when-using-key-vault-inside-a-runbook"></a>Scénář: neplatný stavový kód zakázané při použití Key Vault v Runbooku
 
