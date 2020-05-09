@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681856"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792611"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -98,6 +98,10 @@ Pokud vám tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa p
 
 ### <a name="common-client-side-issues"></a>Běžné problémy na straně klienta
 
+**Model překračuje limity vybraného virtuálního počítače, konkrétně maximální počet mnohoúhelníků:**
+
+Podívejte se na určitá [omezení velikosti virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
+
 **Model není v frustum zobrazení:**
 
 V mnoha případech se model zobrazuje správně, ale je umístěný mimo frustum kamery. Běžným důvodem je to, že model byl exportován s mnohem mimo špičku, takže ho ořízne daleko ořezovou rovinou kamery. Pomáhá při programovém dotazování ohraničujícího rámečku modelu a vizualizaci pole pomocí Unity jako pole řádku nebo vytištění jeho hodnot do protokolu ladění.
@@ -139,8 +143,20 @@ Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a pro
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Kód Unity používající rozhraní API pro vzdálené vykreslování není zkompilován
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Při kompilaci pro Editor Unity použít ladění
+
 Přepněte *typ sestavení* řešení Unity pro **ladění**. Při testování ARR v editoru Unity je tato definice `UNITY_EDITOR` dostupná pouze v sestavení ladění. Všimněte si, že se nevztahují k typu sestavení používanému pro [nasazené aplikace](../quickstarts/deploy-to-hololens.md), kde byste měli preferovat sestavení Release.
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Selhání kompilace při kompilování vzorků Unity pro HoloLens 2
+
+Při pokusu o kompilaci ukázek Unity (rychlý Start, ShowCaseApp,..) pro HoloLens 2 jsme zjistili spurious chyby. Stížnosti sady Visual Studio nebudou moct kopírovat některé soubory, i když jsou tam. Pokud se tento problém bude opakovat:
+* Odeberte všechny dočasné soubory Unity z projektu a zkuste to znovu.
+* Zajistěte, aby se projekty nacházely v adresáři na disku s dostatečně krátkým umístěním, protože se krok kopírování někdy zdá být v potížích s dlouhými názvy souborů.
+* Pokud to nemůžete, může to být tím, že společnost Microsoft má vliv na krok kopírování. Chcete-li nastavit výjimku, spusťte tento příkaz registru z příkazového řádku (vyžaduje oprávnění správce):
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>Nestabilní hologramy
 
 V případě, že se vygenerované objekty budou pohybovat spolu s pohyby hlav, může docházet k potížím s fází LSR ( *opožděné reprojekce* ). Pokyny k tomu, jak se tyto situace týkají, najdete v části o [reprojekci v pozdní fázi](../overview/features/late-stage-reprojection.md) .

@@ -1,21 +1,25 @@
 ---
-title: Zachycení image virtuálního počítače se systémem Linux pomocí Azure CLI
-description: Zachycení image virtuálního počítače Azure, který se použije pro Hromadná nasazení pomocí Azure CLI.
+title: Zachycení spravované image virtuálního počítače se systémem Linux pomocí Azure CLI
+description: Zachyťte spravovanou bitovou kopii virtuálního počítače Azure, který se použije pro Hromadná nasazení pomocí Azure CLI.
 author: cynthn
-ms.service: virtual-machines-linux
-ms.topic: article
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 77f6244651551763f5460432655d66267775a256
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 70282879b64054d48d904b5ada9284f844448851
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250397"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792679"
 ---
-# <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vytvoření image virtuálního počítače nebo virtuálního pevného disku
+# <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Postup vytvoření spravované image virtuálního počítače nebo virtuálního pevného disku
 
-Pokud chcete vytvořit víc kopií virtuálního počítače pro použití v Azure, Zachyťte image virtuálního počítače nebo virtuálního pevného disku s operačním systémem. Pokud chcete vytvořit image pro nasazení, budete muset odebrat informace o osobním účtu. V následujících krocích zrušíte zřízení existujícího virtuálního počítače, zrušíte jeho přidělení a vytvoříte image. Tuto image můžete použít k vytvoření virtuálních počítačů napříč všemi skupinami prostředků v rámci vašeho předplatného.
+Pokud chcete vytvořit více kopií virtuálního počítače pro použití v Azure pro vývoj a testování, Zachyťte spravovanou bitovou kopii virtuálního počítače nebo virtuálního pevného disku s operačním systémem. Pokud chcete vytvářet, ukládat a sdílet image ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](../shared-images-cli.md).
+
+Chcete-li vytvořit spravovanou bitovou kopii, bude nutné odebrat informace o osobním účtu. V následujících krocích zrušíte zřízení existujícího virtuálního počítače, zrušíte jeho přidělení a vytvoříte image. Tuto image můžete použít k vytvoření virtuálních počítačů napříč všemi skupinami prostředků v rámci vašeho předplatného.
 
 Pokud chcete vytvořit kopii stávajícího virtuálního počítače se systémem Linux pro zálohování nebo ladění nebo nahrát specializovaný virtuální pevný disk se systémem Linux z místního virtuálního počítače, přečtěte si téma [nahrání a vytvoření virtuálního počítače se systémem Linux z vlastní image disku](upload-vhd.md).  
 
@@ -131,11 +135,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Z image zdrojového virtuálního počítače můžete vytvořit víc virtuálních počítačů. Chcete-li provést změny v imagi: 
-
-- Vytvořte virtuální počítač z image.
-- Proveďte jakékoli aktualizace nebo změny konfigurace.
-- Postupujte podle kroků znovu, abyste zrušili zřízení, zrušení přidělení, generalizaci a vytvoření bitové kopie.
-- Použijte tuto novou bitovou kopii pro budoucí nasazení. Původní bitovou kopii můžete odstranit.
-
-Další informace o správě virtuálních počítačů pomocí rozhraní příkazového řádku najdete v tématu [Azure CLI](/cli/azure).
+Pokud chcete vytvářet, ukládat a sdílet image ve velkém měřítku, přečtěte si téma [Galerie sdílených imagí](shared-images.md).

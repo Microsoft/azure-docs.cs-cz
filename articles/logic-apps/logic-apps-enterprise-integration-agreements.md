@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790740"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612329"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Vytváření a Správa smluv o obchodních partnerech v Azure Logic Apps
 
@@ -68,6 +68,14 @@ V hlavní nabídce Azure vyberte **všechny služby**. Do vyhledávacího pole z
    | **Nastavení příjmu** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner obdrží všechny příchozí zprávy od hostovaného partnera v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
    | **Nastavení odesílání** | Různé | Různé | Tyto vlastnosti určují, jak hostující partner odesílá všechny odchozí zprávy partnerovi hosta v rámci smlouvy. Další informace najdete v příslušném typu smlouvy: <p>- [Nastavení zprávy AS2](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [Nastavení zprávy EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [Nastavení zprávy X12](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > Řešení smlouvy závisí na shodě s těmito položkami, které jsou definovány v partnerovi a příchozí zprávě:
+   >
+   > * Kvalifikátor a identifikátor odesílatele
+   > * Kvalifikátor a identifikátor přijímače
+   >
+   > Pokud se tyto hodnoty pro vašeho partnera změní, ujistěte se, že jste smlouvu aktualizovali.
 
 1. Až budete s vytvářením smlouvy hotovi, klikněte na stránce **Přidat** na **tlačítko OK**a vraťte se k účtu pro integraci.
 

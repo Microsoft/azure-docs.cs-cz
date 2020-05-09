@@ -1,6 +1,6 @@
 ---
-title: Koncové body služby Virtuální síť – Centra událostí Azure | Dokumenty společnosti Microsoft
-description: Tento článek obsahuje informace o tom, jak přidat koncový bod služby Microsoft.EventHub do virtuální sítě.
+title: Koncové body služby Virtual Network – Azure Event Hubs | Microsoft Docs
+description: Tento článek poskytuje informace o tom, jak přidat koncový bod služby Microsoft. EventHub do virtuální sítě.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -12,78 +12,78 @@ ms.custom: seodec18
 ms.date: 11/26/2019
 ms.author: shvija
 ms.openlocfilehash: 91b08d6130da640adc28a3b7d85bd33f0e876caf
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390284"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtuální síť s Azure Event Hubs
+# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Použití koncových bodů služby Virtual Network s využitím Azure Event Hubs
 
-Integrace event hubů s [koncovými body služby Virtuální síť (Virtuální síť)][vnet-sep] umožňuje zabezpečený přístup k možnostem zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou vázané na virtuální sítě, přičemž cesta síťového provozu je zabezpečena na obou koncích.
+Integrace Event Hubs s [koncovými body služby Virtual Network (VNET)][vnet-sep] umožňuje zabezpečenému přístupu k funkcím zasílání zpráv z úloh, jako jsou virtuální počítače, které jsou svázané s virtuálními sítěmi, a cestu síťového provozu, která je zabezpečená na obou koncích.
 
-Po nakonfigurované matné síti na vázaný na alespoň jeden koncový bod služby podsítě virtuální sítě nepřijímá obor názvů příslušných center událostí provoz odkudkoli, ale autorizované podsítě ve virtuálních sítích. Z hlediska virtuální sítě vazba oboru názvů Event Hubs na koncový bod služby konfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv. 
+Po navázání vazby na alespoň jeden koncový bod služby virtuální sítě musí příslušný obor názvů Event Hubs nadále přijímat provoz z libovolného místa, ale z nich budou ověřeny podsítě ve virtuálních sítích. Z perspektivy virtuální sítě naváže obor názvů Event Hubs na koncový bod služby a nakonfiguruje izolovaný síťový tunel z podsítě virtuální sítě do služby zasílání zpráv. 
 
-Výsledkem je soukromý a izolovaný vztah mezi úlohami vázanými na podsíť a příslušným oborem názvů Event Hubs, a to navzdory tomu, že pozorovatelná síťová adresa koncového bodu služby zasílání zpráv je ve veřejném rozsahu IP adres. Existuje výjimka z tohoto chování. Povolení koncového bodu služby ve `denyall` výchozím nastavení umožňuje pravidlo v [bráně firewall IP](event-hubs-ip-filtering.md) přidružené k virtuální síti. Do brány firewall IP můžete přidat konkrétní ip adresy, které umožní přístup k veřejnému koncovému bodu Centra událostí. 
+Výsledkem je privátní a izolovaný vztah mezi úlohami vázanými na podsíť a odpovídajícím oborem názvů Event Hubs, a to i přes pozorovatelnou síťovou adresu koncového bodu služby zasílání zpráv ve veřejném rozsahu IP adres. K tomuto chování existuje výjimka. Povolení koncového bodu služby ve výchozím nastavení povolí `denyall` pravidlo v [bráně firewall protokolu IP](event-hubs-ip-filtering.md) přidružené k virtuální síti. Můžete přidat konkrétní IP adresy v bráně firewall protokolu IP a povolit tak přístup ke veřejnému koncovému bodu centra událostí. 
 
 >[!WARNING]
-> Implementace integrace virtuálních sítí může zabránit interakci jiných služeb Azure s centry událostí.
+> Implementace integrace virtuálních sítí může ostatním službám Azure zabránit v interakci s Event Hubs.
 >
-> Důvěryhodné služby společnosti Microsoft nejsou podporovány při implementaci virtuálních sítí.
+> Důvěryhodné služby společnosti Microsoft nejsou podporovány, pokud jsou implementovány virtuální sítě.
 >
-> Běžné scénáře Azure, které nefungují s virtuálními sítěmi (všimněte si, že seznam **není** vyčerpávající) -
+> Běžné scénáře Azure, které nefungují s virtuálními sítěmi (Všimněte si, že seznam **není vyčerpávající)** –
 > - Azure Monitor (nastavení diagnostiky)
 > - Azure Stream Analytics
 > - Integrace s Azure Event Grid
-> - Trasy rozbočovače Azure IoT Hub
-> - Průzkumník zařízení Azure IoT
+> - Trasy k Azure IoT Hub
+> - Device Explorer Azure IoT
 >
-> Následující služby společnosti Microsoft musí být ve virtuální síti
+> Následující služby společnosti Microsoft musí být ve virtuální síti.
 > - Azure Web Apps
 > - Azure Functions
 
 
 > [!IMPORTANT]
-> Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních event hubů. Není podporována v **základní** vrstvě.
+> Virtuální sítě jsou podporovány ve **standardních** a **vyhrazených** úrovních Event Hubs. Na úrovni **Basic** se nepodporuje.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Pokročilé scénáře zabezpečení povolené integrací virtuální sítě 
 
-Řešení, která vyžadují těsné a rozčleněné zabezpečení a kde podsítě virtuálních sítí poskytují segmentaci mezi rozčleněné služby, stále potřebují komunikační cesty mezi službami, které jsou v těchto oddílech.
+Řešení, která vyžadují těsné a compartmentalized zabezpečení a kde podsítě virtuální sítě poskytují segmentaci mezi službami compartmentalized, stále potřebují komunikační cesty mezi službami, které se nacházejí v těchto oddílech.
 
-Jakákoli okamžitá trasa IP mezi oddíly, včetně těch, které přenášejí protokol HTTPS přes Protokol TCP/IP, s sebou nese riziko zneužití zranitelných míst ze síťové vrstvy. Služby zasílání zpráv poskytují izolované komunikační cesty, kde jsou zprávy dokonce zapsány na disk při přechodu mezi stranami. Úlohy ve dvou odlišných virtuálních sítích, které jsou vázány na stejnou instanci Event Hubs, mohou efektivně a spolehlivě komunikovat prostřednictvím zpráv, zatímco je zachována integrita hranice izolace sítě.
+Veškerá okamžitá trasa IP mezi oddíly, včetně těch, které přenáší HTTPS přes protokol TCP/IP, přináší riziko zneužití chyb zabezpečení z síťové vrstvy. Služby zasílání zpráv poskytují izolované komunikační cesty, ve kterých se při přechodu mezi stranami na disk zapisují i zprávy. Úlohy ve dvou různých virtuálních sítích, které jsou vázané na stejnou instanci Event Hubs, mohou komunikovat efektivně a spolehlivě prostřednictvím zpráv, zatímco příslušná integrita hranice izolace sítě zůstane zachovaná.
  
-To znamená, že vaše cloudová řešení citlivá na zabezpečení nejen získají přístup k špičkovým spolehlivým a škálovatelným funkcím zasílání zpráv azure, ale teď můžou pomocí zasílání zpráv vytvářet komunikační cesty mezi zabezpečenými oddíly řešení, které jsou ze své podstaty bezpečnější než to, čeho je dosažitelné v jakémkoli režimu komunikace peer-to-peer, včetně protokolu HTTPS a dalších protokolů soketu zabezpečených protokoly TLS.
+To znamená, že vaše cloudová řešení citlivá na zabezpečení nezískají přístup k špičkovým spolehlivým a škálovatelným funkcím asynchronního zasílání zpráv, ale teď můžou pomocí zasílání zpráv vytvářet cesty pro komunikaci mezi oddíly zabezpečeného řešení, které jsou z vlastního hlediska bezpečnější než ty, které jsou dosažitelné pro libovolný režim komunikace peer-to-peer, včetně protokolu HTTPS a dalších protokolů soketu zabezpečen
 
-## <a name="bind-event-hubs-to-virtual-networks"></a>Vazba rozbočovačů událostí s virtuálními sítěmi
+## <a name="bind-event-hubs-to-virtual-networks"></a>Navázání centra událostí k virtuálním sítím
 
-**Pravidla virtuální sítě** jsou funkce zabezpečení brány firewall, která řídí, zda váš obor názvů Centra událostí Azure přijímá připojení z určité podsítě virtuální sítě.
+**Pravidla virtuální sítě** jsou funkcí zabezpečení brány firewall, která určuje, jestli váš obor názvů Azure Event Hubs akceptuje připojení z konkrétní podsítě virtuální sítě.
 
-Vazba oboru názvů Event Hubs do virtuální sítě je dvoustupňový proces. Nejprve je potřeba vytvořit **koncový bod virtuální síťové služby** v podsíti virtuální sítě a povolit jej pro **Microsoft.EventHub,** jak je vysvětleno v článku [přehledu koncového bodu služby.][vnet-sep] Po přidání koncového bodu služby svážete obor názvů Event Hubs s **pravidlem virtuální sítě**.
+Vytvoření vazby oboru názvů Event Hubs k virtuální síti je proces se dvěma kroky. Nejdřív je potřeba vytvořit **koncový bod služby virtuální sítě** v podsíti virtuální sítě a povolit ho pro **Microsoft. EventHub** , jak je vysvětleno v článku [Přehled koncového bodu služby][vnet-sep] . Po přidání koncového bodu služby navážete obor názvů Event Hubs s **pravidlem virtuální sítě**.
 
-Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs s podsítí virtuální sítě. Zatímco pravidlo existuje, všem úlohám vázaným na podsíť je udělen přístup k oboru názvů Event Hubs. Centrum událostí sám nikdy nevytvoří odchozí připojení, není nutné získat přístup, a proto je nikdy udělen přístup k podsíti povolením tohoto pravidla.
+Pravidlo virtuální sítě je přidružení oboru názvů Event Hubs k podsíti virtuální sítě. I když toto pravidlo existuje, budou mít všechny úlohy vázané na podsíť přístup k oboru názvů Event Hubs. Event Hubs sám o sobě nenavazuje odchozí připojení, nemusí získat přístup, a proto nikdy neudělí přístup k podsíti tím, že toto pravidlo povolí.
 
 ## <a name="use-azure-portal"></a>Použití webu Azure Portal
-Tato část ukazuje, jak pomocí portálu Azure k přidání koncového bodu služby virtuální sítě. Chcete-li omezit přístup, je třeba integrovat koncový bod služby virtuální sítě pro tento obor názvů Event Hubs.
+V této části se dozvíte, jak pomocí Azure Portal přidat koncový bod služby virtuální sítě. Chcete-li omezit přístup, je nutné integrovat koncový bod služby virtuální sítě pro tento Event Hubs obor názvů.
 
-1. Přejděte do **oboru názvů Centra událostí** na webu Azure [Portal](https://portal.azure.com).
-2. V levé nabídce vyberte **možnost Síť.** Pokud vyberete možnost **Všechny sítě,** centrum událostí přijme připojení z libovolné adresy IP. Toto nastavení je ekvivalentní pravidlu, které přijímá rozsah adres IP 0.0.0.0/0. 
+1. V [Azure Portal](https://portal.azure.com)přejděte do **oboru názvů Event Hubs** .
+2. V nabídce vlevo vyberte možnost **sítě** . Pokud vyberete možnost **všechny sítě** , centrum událostí akceptuje připojení z libovolné IP adresy. Toto nastavení odpovídá pravidlu, které přijímá rozsah IP adres 0.0.0.0/0. 
 
-    ![Brána firewall – byla vybrána možnost Všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. Chcete-li restrct přístup k určitým sítím, vyberte možnost **Vybrané sítě** v horní části stránky.
-2. V části **Virtuální síť** na stránce vyberte **+Přidat existující virtuální síť***. Vyberte **+ Vytvořit novou virtuální síť,** pokud chcete vytvořit novou virtuální síť. 
+    ![Firewall – vybraná možnost všechny sítě](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+1. Pokud chcete restrct přístup k určitým sítím, vyberte možnost **vybrané sítě** v horní části stránky.
+2. V části **Virtual Network** stránky vyberte možnost * * + Přidat existující virtuální síť * * *. Pokud chcete vytvořit novou virtuální síť, vyberte **+ vytvořit novou virtuální síť** . 
 
-    ![přidání existující virtuální sítě](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
-3. Vyberte virtuální síť ze seznamu virtuálních sítí a vyberte **podsíť**. Před přidáním virtuální sítě do seznamu je třeba povolit koncový bod služby. Pokud koncový bod služby není povolen, portál vás vyzve k jeho povolení.
+    ![Přidat existující virtuální síť](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
+3. V seznamu virtuálních sítí vyberte virtuální síť a pak vyberte **podsíť**. Před přidáním virtuální sítě do seznamu musíte povolit koncový bod služby. Pokud koncový bod služby není povolený, portál vás vyzve, abyste ho povolili.
    
    ![vybrat podsíť](./media/event-hubs-tutorial-vnet-and-firewalls/select-subnet.png)
 
-4. Po povolení koncového bodu služby pro podsíť pro **Microsoft.EventHub**by se měla zobrazit následující úspěšná zpráva. Chcete-li přidat síť, vyberte **přidat** v dolní části stránky. 
+4. Po povolení koncového bodu služby pro podsíť pro **Microsoft. EventHub**by se měla zobrazit následující úspěšná zpráva. V dolní části stránky vyberte **Přidat** a přidejte síť. 
 
-    ![vybrat podsíť a povolit koncový bod](./media/event-hubs-tutorial-vnet-and-firewalls/subnet-service-endpoint-enabled.png)
+    ![Vyberte podsíť a povolte koncový bod.](./media/event-hubs-tutorial-vnet-and-firewalls/subnet-service-endpoint-enabled.png)
 
     > [!NOTE]
-    > Pokud koncový bod služby nemůžete povolit, můžete ignorovat chybějící koncový bod služby virtuální sítě pomocí šablony Správce prostředků. Tato funkce není na portálu k dispozici.
-6. **Chcete-li** uložit nastavení, vyberte uložit na panelu nástrojů možnost Uložit. Počkejte několik minut, než se potvrzení zobrazí na portálu oznámení.
+    > Pokud nemůžete povolit koncový bod služby, můžete chybějící koncový bod služby virtuální sítě ignorovat pomocí šablony Správce prostředků. Tato funkce není na portálu k dispozici.
+6. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. Počkejte několik minut, než se potvrzení zobrazí v oznámeních na portálu.
 
     ![Uložit síť](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
@@ -94,15 +94,15 @@ Následující šablona Správce prostředků umožňuje přidání pravidla vir
 
 Parametry šablony:
 
-* **namespaceName**: Obor názvů Event Hubs.
-* **vnetRuleName**: Název pravidla virtuální sítě, které má být vytvořeno.
-* **virtualNetworkingSubnetId**: Plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
+* **obor názvů**: Event Hubs obor názvů.
+* **vnetRuleName**: název pro pravidlo Virtual Network, které se má vytvořit.
+* **virtualNetworkingSubnetId**: plně kvalifikovaná cesta správce prostředků pro podsíť virtuální sítě; například `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` pro výchozí podsíť virtuální sítě.
 
 > [!NOTE]
-> Zatímco neexistují žádná pravidla odepřít možné, šablona Azure Resource Manager má výchozí akce nastavena na **"Povolit",** která neomezuje připojení.
-> Při vytváření pravidel virtuální sítě nebo brány firewall musíme změnit ***"defaultAction"***
+> I když nejsou možná žádná pravidla odepření, má šablona Azure Resource Manager výchozí akci nastavenou na **Povolit** , což neomezuje připojení.
+> Při vytváření pravidel pro Virtual Network nebo brány firewall je nutné změnit ***"defaultAction"*** .
 > 
-> Z
+> Výsledkem
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -211,14 +211,14 @@ Parametry šablony:
   }
 ```
 
-Chcete-li šablonu nasadit, postupujte podle pokynů pro [Správce prostředků Azure][lnk-deploy].
+Pokud chcete nasadit šablonu, postupujte podle pokynů [Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o virtuálních sítích najdete v následujících odkazech:
 
-- [Koncové body virtuální síťové služby Azure][vnet-sep]
-- [Filtrování IP adres centra Azure][ip-filtering]
+- [Koncové body služby virtuální sítě Azure][vnet-sep]
+- [Filtrování IP Event Hubs Azure][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md

@@ -1,18 +1,18 @@
 ---
 title: Uzel clusteru nemá volné místo na disku v Azure HDInsight.
 description: Řešení potíží s Apache Hadoop problémy s místem na disku uzlu clusteru ve službě Azure HDInsight.
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 08/05/2019
-ms.openlocfilehash: fbfd82473b68f5032d19834ac809191d498a5a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 04/30/2020
+ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894125"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628533"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scénář: uzel clusteru má nedostatek místa na disku ve službě Azure HDInsight.
 
@@ -36,7 +36,17 @@ Mezipaměť aplikace Apache nitě mohla spotřebovat veškeré dostupné místo 
 
 1. Chcete-li tento problém zmírnit, ukončete aplikaci, která bude vydávat místo na disku využité touto aplikací.
 
-1. Chcete-li tento problém vyřešit, optimalizujte svou aplikaci.
+1. Pokud k problému dochází často na pracovních uzlech, můžete ladit nastavení místní mezipaměti PŘÍZ v clusteru.
+
+    Otevřete uživatelské rozhraní Ambari, přejděte do části nitě--> config – > Upřesnit.  
+    Přidejte následující 2 vlastnosti do vlastního oddílu YARN-site. XML a uložte:
+
+    ```
+    yarn.nodemanager.localizer.cache.target-size-mb=2048
+    yarn.nodemanager.localizer.cache.cleanup.interval-ms=300000
+    ```
+
+1. Pokud výše uvedené nejsou trvale vyřešeny, optimalizujte svoji aplikaci.
 
 ## <a name="next-steps"></a>Další kroky
 

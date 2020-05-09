@@ -3,13 +3,13 @@ title: Použití fondů systémových uzlů ve službě Azure Kubernetes Service
 description: Naučte se vytvářet a spravovat fondy systémových uzlů ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259064"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790554"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Správa fondů systémových uzlů ve službě Azure Kubernetes Service (AKS)
 
@@ -29,6 +29,8 @@ Při vytváření a správě clusterů AKS, které podporují fondy systémovýc
 * Podívejte se [na téma kvóty, omezení velikosti virtuálních počítačů a dostupnost oblasti ve službě Azure Kubernetes Service (AKS)][quotas-skus-regions].
 * Cluster AKS musí být sestavený s virtuálním počítačem Scale Sets jako typ virtuálního počítače.
 * Název fondu uzlů může obsahovat jenom malé alfanumerické znaky a musí začínat malým písmenem. U fondů uzlů se systémem Linux musí být délka v rozmezí od 1 do 12 znaků. U fondů uzlů Windows musí mít délka 1 až 6 znaků.
+* Pro nastavení režimu fondu uzlů musí být použita verze rozhraní API 2020-03-01 nebo vyšší.
+* Režim fondu uzlů je povinná vlastnost, která musí být explicitně nastavena při použití šablon ARM nebo přímých volání rozhraní API.
 
 ## <a name="system-and-user-node-pools"></a>Fondy systémových a uživatelských uzlů
 
@@ -175,4 +177,4 @@ V tomto článku jste zjistili, jak vytvářet a spravovat fondy systémových u
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

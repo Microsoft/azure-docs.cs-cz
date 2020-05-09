@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: brendm
-ms.openlocfilehash: bb23afff2b4b449897d8e420934d038938d20205
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f88857ea66f65ff90705bc1d1e3fb745cc33709
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256754"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982747"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Principy metrik pro jarní cloud Azure
 
@@ -88,45 +88,71 @@ V následujících tabulkách jsou uvedeny dostupné metriky a podrobnosti.
 
 ### <a name="error"></a>Chyba
 >[!div class="mx-tdCol2BreakAll"]
->| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Globální chyba Tomcat | Tomcat. Global. Error | Počet | Počet chyb, které se vyskytují u zpracovaných požadavků |
+>| TomcatErrorCount<br><br>Globální chyba Tomcat (zastaralé) | Tomcat. Global. Error | Počet | Počet chyb, které se vyskytují u zpracovaných požadavků |
+>| Tomcat. Global. Error | Tomcat. Global. Error | Počet | Počet chyb, které se vyskytují u zpracovaných požadavků |
 
 ### <a name="performance"></a>Výkon
 >[!div class="mx-tdCol2BreakAll"]
->| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->|Procento využití procesoru v systému | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
->| Procento využití procesoru aplikací | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
->| Přiřazená paměť aplikace | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
->| Využitá paměť aplikace | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
->| Maximální velikost paměti aplikace | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
->| Maximální velikost dostupných starých dat generace | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
->| Stará velikost dat generace | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
->| Zvýšit úroveň na starou velikost dat generace | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
->| Zvýšení úrovně na velikost dat malé generace | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
->| Počet pozastavení GC | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
->| Celkový čas pozastavení GC | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
+>| SystemCpuUsagePercentage<br><br>Procento využití procesoru v systému (zastaralé) | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
+>| System. CPU. Usage | System. CPU. Usage | Procento | Poslední využití procesoru pro celý systém. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že všechny procesory byly během neaktivního časového období nečinné, zatímco hodnota 1,0 znamená, že všechny procesory aktivně 100 běžely v nedávných obdobích během nedodržení% času.|
+>| AppCpuUsagePercentage<br><br>Procento využití procesoru aplikací (zastaralé) | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
+>| Process. CPU. Usage | Procento využití procesoru aplikací | Procento | Poslední využití procesoru pro proces prostředí Java Virtual Machine. Tato hodnota je v intervalu [0,0, 1.0] dvojitá. Hodnota 0,0 znamená, že žádný z procesorů neběžel v nedávných časových obdobích vlákna z procesu JVM, zatímco hodnota 1,0 znamená, že všechny procesory aktivně spouštějí vlákna z JVM 100% času během nedávných období. Vlákna z JVM zahrnují vlákna aplikace a také interní vlákna JVM.|
+>| AppMemoryCommitted<br><br>Přiřazená paměť aplikace (zastaralé)) | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
+>| JVM. Memory. potvrzený | JVM. Memory. potvrzený | Bajty | Představuje velikost paměti, která je zaručena k dispozici pro použití v JVM. JVM může uvolnit paměť do systému a potvrzení může být menší než init. potvrzená bude vždycky větší nebo rovna hodnotě použité. |
+>| AppMemoryUsed <br><br>Využitá paměť aplikace (zastaralé) | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
+>| JVM. Memory .Ed – použito | JVM. Memory .Ed – použito | Bajty | Představuje velikost aktuálně využité paměti v bajtech. |
+>| AppMemoryMax<br><br>Maximální velikost paměti aplikace (zastaralé) | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
+>| JVM. Memory. max | JVM. Memory. max | Bajty | Představuje maximální velikost paměti, kterou lze použít pro správu paměti. Velikost využité a potvrzené paměti bude vždy menší než nebo rovna hodnotě Max, pokud je definována hodnota max. Přidělení paměti může selhat, pokud se pokusí zvětšit využitou paměť tak, aby se použila > potvrzená i v případě, že použitá <= Max by byla pravdivá (například když je systém ve virtuální paměti nedostatek). |
+>| MaxOldGenMemoryPoolBytes<br><br>Maximální velikost dostupných starých dat generace (zastaralé) | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
+>| JVM. GC. max. data. Size | JVM. GC. max. data. Size | Bajty | Využití paměti ve špičce starého fondu paměti generace od spuštění virtuálního počítače Java. |
+>| OldGenMemoryPoolBytes<br><br>Stará velikost dat generace (zastaralé) | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
+>| JVM. GC. Live. data. Size | JVM. GC. Live. data. Size | Bajty | Velikost staré generace fondu paměti po úplném GC. |
+>| OldGenPromotedBytes<br><br>Zvýšit úroveň na starou velikost dat generace (zastaralé) | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
+>| JVM. GC. Memory. propagovaný | JVM. GC. Memory. propagovaný | Bajty | Počet kladných zvýšení velikosti staré paměti generace před GC na po GC. |
+>| YoungGenPromotedBytes<br><br>Zvýšení úrovně velikosti dat pro mladé generace (zastaralé) | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
+>| JVM. GC. Memory. alokovaný | JVM. GC. Memory. alokovaný | Bajty | Zvýšeno na zvýšení velikosti fondu paměti pro mladé generaci po jednom GC do dalšího. |
+>| GCPauseTotalCount<br><br>Počet pozastavení GC (zastaralé) | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
+>| JVM. GC. Pause. Total. Count | JVM. GC. Pause (celkový počet) | Počet | Celkový počet GC po zahájení této JMV, včetně mladého a starého GC. |
+>| GCPauseTotalTime<br><br>Celkový čas pozastavení GC (zastaralé) | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
+>| JVM. GC. Pause. Total. time | JVM. GC. Pause (celkem-Time) | Milisekund | Celkový čas GC spotřebovaný po spuštění tohoto JMVu, včetně mladého a starého GC. |
+>| Tomcat. Threads. config. max | Tomcat. Threads. config. max | Počet | Maximální počet vláken konfigurace Tomcat |
+>| Tomcat. Threads. Current | Tomcat. Threads. Current | Počet | Počet aktuálních vláken Tomcat |
+>| Tomcat. Global. Request. prům. time | Tomcat. Global. Request. prům. time | Milisekund | Průměrná doba požadavku Tomcat |
 
-### <a name="request"></a>Request
+
+### <a name="request"></a>Žádost
 >[!div class="mx-tdCol2BreakAll"]
->| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Celkový počet odeslaných bajtů Tomcat | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
->| Celkový počet přijatých bajtů Tomcat | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
->| Celkový čas žádosti Tomcat | Tomcat. Global. Request (celkem-Time) | Milisekund | Celková doba, jakou Tomcat webový server zpracovává žádosti |
->| Celkový počet žádostí Tomcat | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
->| Maximální čas požadavku Tomcat | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
+>| TomcatSentBytes<br><br>Celkový počet odeslaných bajtů Tomcat (zastaralé) | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
+>| Tomcat. Global. odesláno | Tomcat. Global. odesláno | Bajty | Množství odeslaného webového serveru datového Tomcat |
+>| TomcatReceivedBytes<br><br>Celkový počet přijatých bajtů Tomcat (zastaralé) | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
+>| Tomcat. Global. Received | Tomcat. Global. Received | Bajty | Množství přijatého webového serveru datového Tomcat |
+>| TomcatRequestTotalTime<br><br>Celkový čas žádosti Tomcat (zastaralé) | Tomcat. Global. Request (celkem-Time) | Milisekund | Celková doba, jakou Tomcat webový server zpracovává žádosti |
+>| TomcatRequestTotalCount<br><br>Celkový počet žádostí Tomcat (zastaralé) | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
+>| Tomcat. Global. Request. Total. Count | Tomcat. Global. Request (celkový počet) | Počet | Celkový počet zpracovaných požadavků Tomcat webového serveru |
+>| TomcatRequestMaxTime<br><br>Maximální čas požadavku Tomcat (zastaralé) | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
+>| Tomcat. Global. Request. max | Tomcat. Global. Request. max | Milisekund | Maximální doba, po kterou webový server Tomcat zpracuje požadavek |
 
 ### <a name="session"></a>Relace
 >[!div class="mx-tdCol2BreakAll"]
->| Název | Název metriky pružinového válce | Jednotka | Podrobnosti |
+>| Name | Název metriky pružinového válce | Jednotka | Podrobnosti |
 >|----|----|----|------------|
->| Maximální počet aktivních relací Tomcat | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
->| Maximální doba běhu relace Tomcat | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s vypršenou platností |
->| Počet vytvořených relací Tomcat | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
->| Počet vypršení relace Tomcat | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
->| Počet odmítnutých relací Tomcat | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
+>| TomcatSessionActiveMaxCount<br><br>Maximální počet aktivních relací Tomcat (zastaralé) | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
+>| Tomcat. Sessions. Active. max | Tomcat. Sessions. Active. max | Počet | Maximální počet relací, které byly aktivní ve stejnou dobu |
+>| TomcatSessionAliveMaxTime<br><br>Maximální doba připojení relace Tomcat (zastaralé) | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s vypršenou platností |
+>| Tomcat. Sessions. Alive. max | Tomcat. Sessions. Alive. max | Milisekund | Nejdelší čas (v sekundách), po který vypršela relace s vypršenou platností |
+>| TomcatSessionCreatedCount<br><br>Počet vytvořených relací Tomcat (zastaralé) | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
+>| Tomcat. Sessions. Created | Tomcat. Sessions. Created | Počet | Počet relací, které byly vytvořeny |
+>| TomcatSessionExpiredCount<br><br>Počet neplatných relací Tomcat (zastaralé) | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
+>| Tomcat. Sessions. vypršela platnost | Tomcat. Sessions. vypršela platnost | Počet | Počet relací, jejichž platnost vypršela |
+>| TomcatSessionRejectedCount<br><br>Počet odmítnutých relací Tomcat (zastaralé) | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
+>| Tomcat. Sessions. odmítnuto | Tomcat. Sessions. odmítnuto | Počet | Počet relací, které nebyly vytvořeny, protože bylo dosaženo maximálního počtu aktivních relací. |
+>| Tomcat. Sessions. Active. Current | Tomcat. Sessions. Active. Current | Počet | Počet aktivních relací Tomcat |
 
 ## <a name="see-also"></a>Viz také
 * [Začínáme s Průzkumníkem metrik Azure](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)

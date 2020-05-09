@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944132"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610237"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Konfigurace vlastního názvu domény v Azure App Service s integrací Traffic Manager
 
@@ -66,12 +66,18 @@ Když je vaše aplikace App Service v podporované cenové úrovni, zobrazí se 
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-I když se konkrétní poskytovatelé domény liší, namapujete se *z* vlastního názvu domény (například **contoso.com**) *na* název domény Traffic Manager (**contoso.trafficmanager.NET**), který je integrovaný do vaší aplikace.
+I když se konkrétní poskytovatelé domény liší, namapujete *from* se z [nekořenového názvu domény](#what-about-root-domains) (například **www.contoso.com**) Traffic Manager *na* název domény (**contoso.trafficmanager.NET**), který je integrovaný do vaší aplikace. 
 
 > [!NOTE]
 > Pokud se záznam už používá a vy k němu potřebujete na něj navazovat vazby, můžete vytvořit další záznam CNAME. Pokud třeba chcete do aplikace bez přerušení navazovat vazby **webové\.contoso.com** , vytvořte záznam CNAME z **awverify. www** do **contoso.trafficmanager.NET**. Pak můžete do aplikace přidat "\.www contoso.com", aniž byste museli měnit "www" záznam CNAME. Další informace najdete v tématu [migrace aktivního názvu DNS na Azure App Service](manage-custom-dns-migrate-domain.md).
 
 Až dokončíte přidávání nebo úpravu záznamů DNS u svého poskytovatele domény, uložte změny.
+
+### <a name="what-about-root-domains"></a>Co jsou kořenové domény?
+
+Vzhledem k tomu, že Traffic Manager podporuje pouze vlastní mapování domén se záznamy CNAME a protože standardy DNS nepodporují záznamy CNAME pro mapování kořenových domén (například **contoso.com**), Traffic Manager nepodporuje mapování na kořenové domény. Pokud chcete tento problém obejít, použijte přesměrování adresy URL z na úrovni aplikace. V ASP.NET Core například můžete použít [přepis adresy URL](/aspnet/core/fundamentals/url-rewriting). Pak použijte Traffic Manager k vyrovnávání zatížení subdomény (**www.contoso.com**).
+
+V případě scénářů s vysokou dostupností můžete nainstalovat instalaci DNS odolnou proti chybám bez Traffic Manager vytvořením několika *záznamů* , které odkazují z kořenové domény na IP adresu každé kopie aplikace. Pak [namapujte stejnou kořenovou doménu na všechny kopie aplikace](app-service-web-tutorial-custom-domain.md#map-an-a-record). Vzhledem k tomu, že stejný název domény nejde namapovat na dvě různé aplikace ve stejné oblasti, Tato instalace funguje jenom v případě, že se vaše aplikace kopírují v různých oblastech.
 
 ## <a name="enable-custom-domain"></a>Povolit vlastní doménu
 Po rozšíření záznamů pro název domény pomocí prohlížeče ověřte, že se vlastní název domény přeloží na vaši aplikaci App Service.
