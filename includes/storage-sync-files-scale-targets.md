@@ -21,12 +21,12 @@ ms.locfileid: "74796175"
 | Skupiny synchronizace na službu synchronizace úložiště | skupiny synchronizace 100 | Ano |
 | Registrované servery na službu synchronizace úložiště | servery 99 | Ano |
 | Cloudové koncové body na skupinu synchronizace | 1 koncový bod cloudu | Ano |
-| Koncové body serveru na skupinu synchronizace | koncové body serveru 50 | Ne |
+| Koncové body serveru na skupinu synchronizace | koncové body serveru 50 | No |
 | Koncové body serveru na server | 30 koncových bodů serveru | Ano |
-| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 100 000 000 | Ne |
+| Objekty systému souborů (adresáře a soubory) na skupinu synchronizace | objekty 100 000 000 | No |
 | Maximální počet objektů systému souborů (adresářů a souborů) v adresáři | objekty 5 000 000 | Ano |
 | Maximální velikost popisovače zabezpečení objektů (adresářů a souborů) | 64 KiB | Ano |
-| Velikost souboru | 100 GiB | Ne |
+| Velikost souboru | 100 GiB | No |
 | Minimální velikost souboru, který se má převrstvený | V9: na základě velikosti clusteru systému souborů (velikost clusteru systému souborů Double). Pokud je například velikost clusteru systému souborů 4kb, minimální velikost souboru bude 8 KB.<br> V8 a starší verze: 64 KiB  | Ano |
 
 > [!Note]  
