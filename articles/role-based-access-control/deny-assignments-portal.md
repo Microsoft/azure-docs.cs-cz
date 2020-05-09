@@ -1,6 +1,6 @@
 ---
-title: Vypíše přiřazení zamítnutí pro prostředky Azure s Azure Portal.
-description: Naučte se, jak zobrazit seznam uživatelů, skupin, instančních objektů a spravovaných identit, kterým byl odepřen přístup ke konkrétním akcím prostředků Azure v určitých oborech pomocí Azure Portal.
+title: Vypsat přiřazení odmítnutí Azure pomocí Azure Portal – Azure RBAC
+description: Naučte se, jak zobrazit seznam uživatelů, skupin, instančních objektů a spravovaných identit, kterým byl odepřen přístup ke konkrétním akcím prostředků Azure v konkrétních oborech pomocí Azure Portal a řízení přístupu na základě role Azure (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137427"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734106"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Vypsat přiřazení zamítnutí pro prostředky Azure pomocí Azure Portal
+# <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Výpis přiřazení odmítnutí Azure pomocí Azure Portal
 
-[Odmítnutí přiřazení](deny-assignments.md) zablokuje uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazením role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí Azure Portal.
+[Přiřazení Azure Deny](deny-assignments.md) zablokují uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazení role udělí přístup. Tento článek popisuje, jak vypsat přiřazení zamítnutí pomocí Azure Portal.
 
 > [!NOTE]
-> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [zamítnutí](deny-assignments.md)přiřazení.
+> Nemůžete přímo vytvořit vlastní přiřazení zamítnutí. Informace o tom, jak se vytvářejí přiřazení odepřít, najdete v tématu [přiřazení odmítnutí Azure](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li získat informace o přiřazení zamítnutí, je nutné mít následující:
 
-- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí pro prostředky Azure](built-in-roles.md).
+- `Microsoft.Authorization/denyAssignments/read`oprávnění, které je součástí většiny [předdefinovaných rolí Azure](built-in-roles.md).
 
 ## <a name="list-deny-assignments"></a>Zobrazení seznamu zamítnutých přiřazení
 
@@ -109,5 +109,5 @@ Pomocí následujícího postupu můžete zobrazit další podrobnosti o přiřa
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Pochopení přiřazení zamítnutí pro prostředky Azure](deny-assignments.md)
-* [Vypsat přiřazení zamítnutí pro prostředky Azure pomocí Azure PowerShell](deny-assignments-powershell.md)
+* [Pochopení přiřazení Azure Deny](deny-assignments.md)
+* [Výpis přiřazení odmítnutí Azure pomocí Azure PowerShell](deny-assignments-powershell.md)

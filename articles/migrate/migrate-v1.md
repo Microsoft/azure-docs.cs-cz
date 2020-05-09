@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c9cea52e04a991e6e3ac64426f0443939f8aaa3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b02560d1e7b7c34a4d87dbdc468a85362aca4f7
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77914377"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993813"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Práce s předchozí verzí Azure Migrate
 
@@ -88,7 +88,7 @@ Připravenost neznámá | Azure Migrate nemůžou identifikovat připravenost Az
 Připravenost přihlíží k několika vlastnostem virtuálních počítačů, aby bylo možné zjistit, jestli virtuální počítač může běžet v Azure.
 
 
-**Vlastnost** | **Zobrazí** | **Připravenosti**
+**Majetek** | **Zobrazí** | **Připravenosti**
 --- | --- | ---
 **Typ spouštění** | Systém BIOS je podporován. Rozhraní UEFI se nepodporuje. | Podmíněně připravený, pokud je typ spouštění UEFI.
 **Cores** | Počítače Core <= maximální počet jader (128) podporovaných virtuálním počítačem Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate bere v úvahu využité jádra.<br/>Pokud je v nastavení hodnocení určen faktor komfortu, je počet využitých jader vynásoben faktorem pohodlí.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je omezení menší nebo rovno.
@@ -216,7 +216,7 @@ Po nakonfigurování pracovního prostoru můžete stáhnout a nainstalovat agen
 4. Zkopírujte ID a klíč pracovního prostoru. Budete je potřebovat při instalaci MMA na místním počítači.
 
 > [!NOTE]
-> K automatizaci instalace agentů můžete použít nástroj pro nasazení, jako je například Configuration Manager nebo partnerský nástroj, například [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), který poskytuje řešení nasazení agenta pro Azure Migrate.
+> K automatizaci instalace agentů můžete použít nástroj pro nasazení, jako je například Configuration Manager nebo partnerský nástroj, například [Intigua](https://www.intigua.com/intigua-for-azure-migration), který poskytuje řešení nasazení agenta pro Azure Migrate.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Instalace agenta MMA na počítač s Windows

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: qiohu
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+zone_pivot_groups: programming-languages-speech-services-nomore-variant
+ms.openlocfilehash: 07ca4c519a04910e7e126d3481afb17d2b5dc350
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80235972"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977681"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Určení zdrojového jazyka pro převod řeči na text
 
@@ -142,7 +142,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
 ## <a name="how-to-specify-source-language-in-javascript"></a>Jak určit zdrojový jazyk v JavaScriptu
 
@@ -163,6 +163,9 @@ Pokud používáte vlastní model pro rozpoznávání, můžete koncový bod zad
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
+::: zone-end
+
+::: zone pivot="programming-language-objectivec"
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Určení zdrojového jazyka v cíli – C
 

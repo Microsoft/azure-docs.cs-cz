@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083bad1aa9abd2cb8efe3520b0acecc9ab00853c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770732"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983869"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure synapse Analytics (pracovní prostor ve verzi Preview)
 
@@ -94,9 +94,9 @@ Odpověď: tok dat umožňuje inženýrům dat vyvíjet grafické logiky pro tra
 
 O: ucelené prostředí jednotného přihlašování je důležitým ověřovacím procesem v synapse Analytics. Správa a předání identity prostřednictvím úplné integrace AAD je nutné.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>Otázka: Návody získat přístup k souborům a složkám v ADLSg2
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>Otázka: Návody získat přístup k souborům a složkám v ADLS Gen2
 
-Odpověď: přístup k souborům a složkám je aktuálně spravován prostřednictvím ADLSg2. Další informace najdete v tématu [Data Lake řízení přístupu k úložišti](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Odpověď: přístup k souborům a složkám je aktuálně spravován prostřednictvím ADLS Gen2. Další informace najdete v tématu [Data Lake řízení přístupu k úložišti](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>Otázka: je možné použít business intelligence nástroje třetích stran pro přístup ke službě Azure synapse Analytics
 

@@ -5,46 +5,40 @@ services: cdn
 author: SyntaxC4
 ms.service: azure-cdn
 ms.topic: include
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: cfowler
 ms.custom: include file
-ms.openlocfilehash: 8aa6cb3f10b86a6821cd93190ecc2135508739cb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d73a8d743a948cbd94a3af81fe2e77c45c0eeb67
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67593979"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996292"
 ---
 ## <a name="create-a-new-cdn-profile"></a>Vytvoření nového profilu CDN
 
 Profil CDN představuje kontejner pro koncové body CDN a určuje cenovou úroveň.
 
-1. V levém horním rohu portálu Azure Portal vyberte **Vytvořit prostředek**. 
-    
-    Otevře se podokno **Nový**.
+1. V Azure Portal vyberte **vytvořit prostředek** (vlevo nahoře). Otevře se podokno **Nový**.
    
-2. Vyberte **Web + mobilní zařízení** a potom vyberte **CDN**.
+1. Vyhledejte a vyberte **CDN**a pak vyberte **vytvořit**:
    
     ![Výběr prostředku CDN](./media/cdn-create-profile/cdn-new-resource.png)
 
     Zobrazí se podokno **profil CDN** .
 
-3. K nastavení profilu CDN použijte hodnoty z následující tabulky:
+1. Zadejte následující hodnoty:
    
     | Nastavení  | Hodnota |
     | -------- | ----- |
-    | **Název** | Jako název profilu zadejte *my-cdn-profile-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. |
+    | **Název** | Jako název profilu zadejte *CDN-Profile-123* . Tento název musí být globálně jedinečný; Pokud se už používá, zadejte jiný název. |
     | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure. |
-    | **Skupina prostředků** | Vyberte **Vytvořit nový** a jako název skupiny prostředků zadejte *my-resource-group-123*. Pokud už se používá, můžete zadat jiný název nebo můžete vybrat **Použít existující** a v rozevíracím seznamu zvolit **my-resource-group-123**. | 
-    | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte **USA – střed**. |
-    | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
+    | **Skupina prostředků** | Vyberte **vytvořit novou** a jako název skupiny prostředků zadejte *CDNQuickstart-RG* , nebo vyberte **použít existující** a zvolte *CDNQuickstart-RG* , pokud už tuto skupinu máte. | 
+    | **Umístění skupiny prostředků** | V rozevíracím seznamu vyberte umístění v blízkosti. |
+    | **Cenová úroveň** | V rozevíracím seznamu vyberte **Standardní možnost Akamai** . (Čas nasazení pro úroveň Akamai je přibližně jedna minuta. Vrstva Microsoft trvá přibližně 10 minut a vrstvy Verizon trvá přibližně 90 minut.) |
     | **Vytvořte teď nový koncový bod CDN** | Tuto možnost ponechejte nevybranou. |  
    
     ![Nový profil CDN](./media/cdn-create-profile/cdn-new-profile.png)
 
-4. Vyberte **Připnout na řídicí panel** a uložte vytvořený profil na řídicí panel.
-    
-5. Vyberte **Vytvořit** a vytvořte profil. 
-
-    Profily **Azure CDN Standard od Microsoftu** se obvykle dokončí do dvou hodin. 
+1. Vyberte **Vytvořit** a vytvořte profil.
 

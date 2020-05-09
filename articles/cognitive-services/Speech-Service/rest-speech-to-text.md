@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
-ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131288"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978616"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -45,14 +45,14 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 > [!NOTE]
 > Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
 
-## <a name="query-parameters"></a>Parametry dotazu
+## <a name="query-parameters"></a>Parametry dotazů
 
 Tyto parametry mohou být zahrnuty do řetězce dotazu žádosti REST.
 
 | Parametr | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `language` | Identifikuje mluvený jazyk, který se rozpozná. Viz [podporované jazyky](language-support.md#speech-to-text). | Požaduje se |
-| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText` `Offset`, a `Duration`. Podrobné odpovědi obsahují více výsledků s hodnotami spolehlivosti a čtyřmi různými reprezentacemi. Výchozí hodnota je `simple`. | Nepovinné |
+| `format` | Určuje formát výsledku. Přijaté hodnoty jsou `simple` a `detailed`. Jednoduché výsledky zahrnují `RecognitionStatus`, `DisplayText` `Offset`, a `Duration`. Podrobné odpovědi obsahují čtyři různé reprezentace zobrazovaného textu. Výchozí hodnota je `simple`. | Nepovinné |
 | `profanity` | Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné jsou `masked`hodnoty, které nahradí vulgární znaky hvězdičkami, `removed`, které odstraní všechny vulgární výrazy z výsledku, nebo `raw`, které obsahují vulgární výrazy ve výsledku. Výchozí hodnota je `masked`. | Nepovinné |
 | `pronunciationScoreParams` | Určuje parametry pro zobrazení skóre výslovnosti ve výsledcích rozpoznávání, které vyhodnocuje kvalitu výslovnosti vstupu řeči s indikátory přesnosti, Fluency, úplností atd. Tento parametr je JSON kódovaný v kódování Base64 obsahující několik podrobných parametrů. Jak tento parametr sestavit, najdete v tématu věnovaném [parametrům vyhodnocení výslovnosti](#pronunciation-assessment-parameters) . | Nepovinné |
 | `cid` | Při použití [portálu Custom Speech](how-to-custom-speech.md) k vytváření vlastních modelů můžete na stránce **nasazení** použít vlastní modely přes **ID koncového bodu** . Jako argument pro parametr řetězce `cid` dotazu použijte **ID koncového bodu** . | Nepovinné |
@@ -74,10 +74,10 @@ Tato tabulka obsahuje seznam požadovaných a volitelných hlaviček pro žádos
 
 V těle požadavku HTTP `POST` se pošle zvuk. Musí být v jednom z formátů v této tabulce:
 
-| Formát | Kodek | Rychlostí | Vzorkovací frekvence  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16bitový  | 16 kHz, mono |
-| OGG    | OPUS  | 16bitový  | 16 kHz, mono |
+| Formát | Kodek | Přenosová rychlost | Vzorkovací frekvence  |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 KB/s | 16 kHz, mono |
+| OGG    | OPUS  | 256 KPBS | 16 kHz, mono |
 
 >[!NOTE]
 >Výše uvedené formáty jsou podporovány prostřednictvím REST API a WebSocket ve službě Speech. [Sada Speech SDK](speech-sdk.md) aktuálně podporuje formát WAV pomocí kodeku PCM i [dalších formátů](how-to-use-codec-compressed-audio-input-streams.md).
@@ -200,9 +200,10 @@ Výsledky se poskytují jako JSON. Tento `simple` formát zahrnuje tato pole nej
 > [!NOTE]
 > Pokud zvuk obsahuje pouze vulgární výrazy a parametr `profanity` dotazu je nastaven na `remove`hodnotu, služba nevrátí výsledek řeči.
 
-`detailed` Formát zahrnuje stejná data jako `simple` formát spolu se `NBest`seznamem alternativních interpretů stejného výsledku rozpoznávání. Tyto výsledky jsou seřazené z nejpravděpodobnějšího nejnižší pravděpodobně. První položka je stejná jako u hlavního výsledku rozpoznávání.  Při použití `detailed` formátu `DisplayText` je k dispozici jako `Display` u každého výsledku v `NBest` seznamu.
+`detailed` Formát obsahuje další formy rozpoznaných výsledků.
+Při použití `detailed` formátu `DisplayText` je k dispozici jako `Display` u každého výsledku v `NBest` seznamu.
 
-Každý objekt v `NBest` seznamu obsahuje:
+Objekt v `NBest` seznamu může zahrnovat:
 
 | Parametr | Popis |
 |-----------|-------------|
@@ -244,13 +245,6 @@ Typická odpověď pro `detailed` rozpoznávání:
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }
