@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73903672"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788980"
 ---
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure 
-
-Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
-
-> [!NOTE]
-> Pokud jste v rámci verze Preview zaregistrovali použití Galerie sdílených imagí, možná budete muset `Microsoft.Compute` poskytovatele znovu zaregistrovat. Otevřete [Cloud Shell](https://shell.azure.com/bash) a zadejte:`az provider register -n Microsoft.Compute`
-
 ## <a name="create-an-image-gallery"></a>Vytvoření galerie imagí
 
 Galerie imagí je primární prostředek, který slouží k povolení sdílení obrázků. Povolenými znaky pro název galerie jsou velká a malá písmena, číslice, tečky a tečky. Název galerie nesmí obsahovat pomlčky.  Názvy galerií musí být v rámci vašeho předplatného jedinečné. 
 
 Následující příklad vytvoří galerii s názvem *myGallery* ve skupině prostředků *myGalleryRG* .
 
-1. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.
+1. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 1. Do vyhledávacího pole použijte **galerii Shared Image** a v části výsledky vyberte **sdílená Galerie imagí** .
-1. Na stránce **Galerie sdílených imagí** klikněte na **vytvořit**.
-1. Vyberte správné předplatné.
+1. Na stránce **Galerie sdílených imagí** klikněte na **Přidat**.
+1. Na stránce **vytvořit sdílenou galerii imagí** vyberte správné předplatné.
 1. V části **Skupina prostředků**vyberte **vytvořit novou** a jako název zadejte *myGalleryRG* .
 1. Do pole **název**zadejte *myGallery* pro název galerie.
 1. Pro **oblast**ponechte výchozí hodnotu.
 1. Můžete zadat krátký popis galerie, jako je *Moje galerie obrázků pro testování.* a pak klikněte na tlačítko **zkontrolovat + vytvořit**.
 1. Po úspěšném ověření vyberte **vytvořit**.
 1. Po dokončení nasazení vyberte **Přejít k prostředku**.
-   
+
+
 ## <a name="create-an-image-definition"></a>Vytvoření definice obrázku 
 
 Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě informací o verzích imagí, které jsou v nich vytvořeny. Názvy definic obrázků mohou být tvořeny velkými a malými písmeny, číslicemi, tečkami, pomlčkami a tečkami. Další informace o hodnotách, které můžete zadat pro definici obrázku, najdete v tématu [definice imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
@@ -46,8 +40,9 @@ Definice obrázků vytvoří logické seskupení obrázků. Slouží ke správě
 Vytvořte definici image galerie v galerii. V tomto příkladu má image galerie název *myImageDefinition*.
 
 1. Na stránce pro novou galerii imagí vyberte v horní části stránky **Přidat novou definici obrázku** . 
+1. V **galerii přidat novou definici obrázku do sdílené bitové kopie**vyberte v části **oblast**možnost *východní USA*.
 1. Jako **název definice obrázku**zadejte *myImageDefinition*.
-1. V části **operační systém**vyberte správnou možnost v závislosti na vašem ZDROJovém virtuálním počítači.
+1. V části **operační systém**vyberte správnou možnost v závislosti na vašem ZDROJovém virtuálním počítači.  
 1. V případě **generování virtuálních počítačů**vyberte možnost na základě vašeho zdrojového virtuálního počítače. Ve většině případů to bude 1. *generace*. Další informace najdete v tématu [Podpora pro virtuální počítače 2. generace](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 1. V části **stav operačního systému**vyberte možnost v závislosti na vašem ZDROJovém virtuálním počítači. Další informace naleznete v tématu [generalizovaná a specializovaná](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
 1. Pro **vydavatele**zadejte *myPublisher*. 
