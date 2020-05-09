@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí s RBAC a REST API
-description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) v Azure a REST API.
+title: Přidání nebo odebrání přiřazení rolí Azure pomocí REST API – Azure RBAC
+description: Přečtěte si, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí REST API a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,17 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9beda6589c03f1b14fc9756af86a9ce0711894c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063000"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891296"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a REST API
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí REST API
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí REST API.
 
@@ -34,7 +34,7 @@ Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující
 
 ## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
-Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidání přiřazení role použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definici role a obor. K volání tohoto rozhraní API musíte mít přístup k této `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
+Když v Azure RBAC udělíte přístup, přidáte přiřazení role. K přidání přiřazení role použijte [přiřazení rolí – vytvořit](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definici role a obor. K volání tohoto rozhraní API musíte mít přístup k této `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 
 1. Použijte REST API [Definice rolí – seznam](/rest/api/authorization/roledefinitions/list) , nebo se podívejte na [předdefinované role](built-in-roles.md) , abyste získali identifikátor definice role, kterou chcete přiřadit.
 
@@ -43,7 +43,7 @@ Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidán�
 1. Začněte s následujícím požadavkem a textem:
 
     ```http
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
     ```json
@@ -67,7 +67,7 @@ Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidán�
 
     V předchozím příkladu je Microsoft. Web poskytovatelem prostředků, který odkazuje na instanci App Service. Podobně můžete použít jiné poskytovatele prostředků a zadat obor. Další informace najdete v tématech [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) a podporované [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md).  
 
-1. Nahraďte *{roleAssignmentName}* identifikátorem GUID přiřazení role.
+1. Nahraďte *{roleAssignmentId}* identifikátorem GUID přiřazení role.
 
 1. V textu žádosti nahraďte *{Scope}* oborem pro přiřazení role.
 
@@ -83,16 +83,50 @@ Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC. K přidán�
 
 1. Nahraďte *{principalId}* identifikátorem objektu uživatele, skupiny nebo instančního objektu, ke kterému se má přiřadit role.
 
+Následující požadavek a tělo přiřadí roli [čtečky zálohování](built-in-roles.md#backup-reader) uživateli v oboru předplatného:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+    "principalId": "{objectId1}"
+  }
+}
+```
+
+Následující příklad ukazuje příklad výstupu:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:23.7679147Z",
+        "updatedOn": "2020-05-06T23:55:23.7679147Z",
+        "createdBy": null,
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
+
 ## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
 
-V RBAC se přístup odebírá odebrání přiřazení role. K odebrání přiřazení role použijte [přiřazení rolí – odstranit](/rest/api/authorization/roleassignments/delete) REST API. K volání tohoto rozhraní API musíte mít přístup k této `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
+Pokud chcete v Azure RBAC odebrat přístup, odeberte přiřazení role. K odebrání přiřazení role použijte [přiřazení rolí – odstranit](/rest/api/authorization/roleassignments/delete) REST API. K volání tohoto rozhraní API musíte mít přístup k této `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí má přístup k této operaci udělen pouze [vlastník](built-in-roles.md#owner) a [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator) .
 
 1. Získejte identifikátor přiřazení role (GUID). Tento identifikátor se vrátí při prvním vytvoření přiřazení role nebo ho můžete získat pomocí seznamu přiřazení rolí.
 
 1. Začněte s následujícím požadavkem:
 
     ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
 1. V rámci identifikátoru URI nahraďte *{Scope}* oborem pro odebrání přiřazení role.
@@ -105,11 +139,36 @@ V RBAC se přístup odebírá odebrání přiřazení role. K odebrání přiřa
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Skupina prostředků |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Prostředek |
 
-1. Nahraďte *{roleAssignmentName}* identifikátorem GUID přiřazení role.
+1. Nahraďte *{roleAssignmentId}* identifikátorem GUID přiřazení role.
+
+Následující požadavek Odstraní zadané přiřazení role v oboru předplatného:
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+Následující příklad ukazuje příklad výstupu:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:24.5379478Z",
+        "updatedOn": "2020-05-06T23:55:24.5379478Z",
+        "createdBy": "{createdByObjectId1}",
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Seznam přiřazení rolí pomocí Azure RBAC a REST API](role-assignments-list-rest.md)
+- [Vypsání přiřazení rolí Azure pomocí REST API](role-assignments-list-rest.md)
 - [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/templates/deploy-rest.md)
 - [Reference k Azure REST API](/rest/api/azure/)
-- [Vytváření vlastních rolí pro prostředky Azure pomocí REST API](custom-roles-rest.md)
+- [Pomocí REST API vytvořit nebo aktualizovat vlastní role Azure](custom-roles-rest.md)

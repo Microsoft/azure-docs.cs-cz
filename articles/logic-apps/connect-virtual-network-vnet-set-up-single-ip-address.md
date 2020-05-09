@@ -3,19 +3,19 @@ title: Nastavení veřejné odchozí IP adresy pro ISEs
 description: Naučte se nastavit jednu veřejnou odchozí IP adresu pro prostředí ISEs (Integration Service Environment) v Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191515"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927135"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Nastavte jednu IP adresu pro jedno nebo více prostředí integrační služby v Azure Logic Apps
 
-Při práci s Azure Logic Apps můžete nastavit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky, které potřebují přístup k prostředkům ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Pokud máte více instancí ISE, které potřebují přístup k jiným koncovým bodům s omezeními IP adres, nasaďte [Azure firewall](../firewall/overview.md) nebo [síťové virtuální zařízení](../virtual-network/virtual-networks-overview.md#filter-network-traffic) do své virtuální sítě a přesměrujte odchozí přenosy přes tuto bránu firewall nebo síťové virtuální zařízení. Pak můžete všechny instance ISE ve vaší virtuální síti používat pro komunikaci s cílovými systémy jednu, veřejnou, statickou a předvídatelná IP adresu. Tímto způsobem není nutné nastavovat další otevřená brána firewall v těchto cílových systémech pro každý ISE.
+Při práci s Azure Logic Apps můžete nastavit [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) pro hostování aplikací logiky, které potřebují přístup k prostředkům ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Pokud máte více instancí ISE, které potřebují přístup k jiným koncovým bodům s omezeními IP adres, nasaďte [Azure firewall](../firewall/overview.md) nebo [síťové virtuální zařízení](../virtual-network/virtual-networks-overview.md#filter-network-traffic) do své virtuální sítě a přesměrujte odchozí přenosy přes tuto bránu firewall nebo síťové virtuální zařízení. Pak můžete všechny instance ISE ve vaší virtuální síti používat jednu, veřejnou, statickou a předvídatelná IP adresu ke komunikaci s cílovými systémy, které chcete. Tímto způsobem nemusíte pro každý ISE nastavovat další otevřená brána firewall v cílových systémech.
 
 V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím Azure Firewall, ale můžete použít podobné koncepty síťového virtuálního zařízení, jako je například brána firewall jiného výrobce z Azure Marketplace. I když se toto téma zaměřuje na nastavení více instancí ISE, můžete tento přístup použít i pro jeden ISE, když váš scénář vyžaduje omezení počtu IP adres, které potřebují přístup. Zvažte, jestli další náklady na zařízení s bránou firewall nebo virtuální sítí jsou pro váš scénář smysluplné. Přečtěte si další informace o [cenách Azure firewall](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
@@ -52,10 +52,12 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    | Vlastnost | Hodnota | Popis |
    |----------|-------|-------------|
    | **Název trasy** | <*jedinečný název směrování*> | Jedinečný název trasy v tabulce směrování |
-   | **Předpona adresy** | <*Cílová adresa*> | Adresa cílového systému, kam chcete přejít na provoz. Ujistěte se, že pro tuto adresu používáte [zápis CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . |
+   | **Předpona adresy** | <*Cílová adresa*> | Předpona adresy pro cílový systém, ve kterém chcete odchozí provoz přejít. Ujistěte se, že pro tuto adresu používáte [zápis CIDR (Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) . V tomto příkladu je tato předpona adresy určena pro server SFTP, který je popsaný v části [Nastavení síťového pravidla](#set-up-network-rule). |
    | **Typ dalšího segmentu** | **Virtuální zařízení** | [Typ směrování](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) používaný odchozím provozem |
    | **Adresa dalšího segmentu** | <*Brána firewall – privátní IP adresa*> | Privátní IP adresa pro bránu firewall |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>Nastavit síťové pravidlo
 
@@ -65,7 +67,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
 
 1. V kolekci přidejte pravidlo, které povoluje provoz do cílového systému.
 
-   Předpokládejme například, že máte aplikaci logiky, která běží na ISE a potřebuje komunikovat se systémem SFTP. Vytvoříte kolekci síťových pravidel s názvem `LogicApp_ISE_SFTP_Outbound`, která obsahuje síťové pravidlo s názvem. `ISE_SFTP_Outbound` Toto pravidlo povoluje přenos z IP adresy jakékoli podsítě, ve které vaše ISE běží ve vaší virtuální síti, do cílového systému SFTP pomocí privátní IP adresy brány firewall.
+   Předpokládejme například, že máte aplikaci logiky, která běží na ISE a potřebuje komunikovat se serverem SFTP. Vytvoříte kolekci síťových pravidel s názvem `LogicApp_ISE_SFTP_Outbound`, která obsahuje síťové pravidlo s názvem. `ISE_SFTP_Outbound` Toto pravidlo povoluje přenos z IP adresy jakékoli podsítě, ve které vaše ISE běží ve vaší virtuální síti, do cílového serveru SFTP pomocí privátní IP adresy brány firewall.
 
    ![Nastavit síťové pravidlo pro bránu firewall](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +87,7 @@ V tomto tématu se dozvíte, jak směrovat odchozí přenosy prostřednictvím A
    | **Název** | <*síťové pravidlo – název*> | Název síťového pravidla |
    | **Protokol** | <*připojení – protokoly*> | Protokoly připojení, které se mají použít. Pokud například používáte pravidla NSG, vyberte **TCP** i **UDP**, nejen **TCP**. |
    | **Zdrojové adresy** | <*ISE – adresy podsítí*> | IP adresy podsítě, kde vaše ISE běží a kam pochází přenos z vaší aplikace logiky |
-   | **Cílové adresy** | <*cíl-IP adresa*> | IP adresa pro cílový systém, kde chcete přejít do provozu |
+   | **Cílové adresy** | <*cíl-IP adresa*> | IP adresa pro cílový systém, kde chcete odchozí provoz přejít. V tomto příkladu je tato IP adresa pro server SFTP. |
    | **Cílové porty** | <*cíl – porty*> | Všechny porty, které cílový systém používá pro příchozí komunikaci |
    |||
 

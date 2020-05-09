@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/28/2020
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 676b54e1d22712ac41534b67206e6d6931bcc9b9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fbadfb63b9f575053feca87bda2c3ad2e64e91eb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229693"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926030"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro vystavitele tokenů JWT v Azure Active Directory B2C vlastní zásady
 
@@ -33,7 +33,7 @@ Následující příklad ukazuje technický profil pro `JwtIssuer`:
 ```XML
 <TechnicalProfile Id="JwtIssuer">
   <DisplayName>JWT Issuer</DisplayName>
-  <Protocol Name="None" />
+  <Protocol Name="OpenIdConnect" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
   <Metadata>
     <Item Key="client_id">{service:te}</Item>
@@ -57,15 +57,15 @@ Prvky **InputClaims**, **OutputClaims**a **PersistClaims** jsou prázdné nebo c
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | Ano | Deklarace identity, která se má použít jako deklarace identity uživatele v rámci autorizačních kódů OAuth2 a obnovovacích tokenů. Ve výchozím nastavení byste ji měli nastavit na `objectId`, pokud nezadáte jiný typ deklarace identity SubjectNamingInfo. |
-| SendTokenResponseBodyWithJsonNumbers | Ne | Vždy nastavte na `true`. Pro formát starší verze, kde jsou číselné hodnoty zadány jako řetězce místo čísel JSON, `false`nastavte na. Tento atribut je vyžadován pro klienty, kteří mají závislost na předchozí implementaci, která vrátila tyto vlastnosti jako řetězce. |
-| token_lifetime_secs | Ne | Doba života přístupového tokenu. Doba života nosného tokenu OAuth 2,0, který se používá k získání přístupu k chráněnému prostředku. Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je 86 400 sekund (24 hodin). |
-| id_token_lifetime_secs | Ne | Životnost tokenu ID Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je sekund 86 400 (24 hodin). |
-| refresh_token_lifetime_secs | Ne | Aktualizujte životnosti tokenů. Maximální časový interval, po kterém se dá obnovovací token použít k získání nového přístupového tokenu, pokud by vaše aplikace získala obor offline_access. Výchozí hodnota je 120, 9 600 sekund (14 dní). Minimální (včetně) je 86 400 sekund (24 hodin). Maximální (včetně) je 7 776 000 sekund (90 dní). |
-| rolling_refresh_token_lifetime_secs | Ne | Doba životnosti posuvných oken obnovovacího tokenu Po uplynutí tohoto časového období se uživatel nuceně znovu ověří bez ohledu na dobu platnosti nejnovějšího obnovovacího tokenu, který aplikace získala. Pokud nechcete vymáhat dobu trvání klouzavého okna, nastavte hodnotu allow_infinite_rolling_refresh_token na `true`. Výchozí hodnota je 7 776 000 sekund (90 dní). Minimální (včetně) je 86 400 sekund (24 hodin). Maximální (včetně) je 31 536 000 sekund (365 dní). |
-| allow_infinite_rolling_refresh_token | Ne | Je-li `true`nastavena na hodnotu, doba vypršení platnosti posuvných oken aktualizačního tokenu vypršela. |
-| IssuanceClaimPattern | Ne | Řídí deklaraci identity vystavitele (ISS). Jedna z hodnot:<ul><li>AuthorityAndTenantGuid – deklarace ISS zahrnuje název domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, a identifikátor vašeho tenanta https:/login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.\/</li><li>AuthorityWithTfp – deklarace ISS zahrnuje název domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, identifikátor vašeho tenanta a název zásady předávající strany. https:\//Login.microsoftonline.com/TFP/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-Sign-in/v2.0/</li></ul> Výchozí hodnota: AuthorityAndTenantGuid |
-| AuthenticationContextReferenceClaimPattern | Ne | Řídí hodnotu `acr` deklarace identity.<ul><li>Žádné – Azure AD B2C nevydá deklaraci identity ACR</li><li>PolicyId – `acr` deklarace obsahuje název zásady.</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady pro vztahy důvěryhodnosti) a ACR (Referenční dokumentace kontextu ověřování). Doporučuje se nastavení této hodnoty na TFP, aby se hodnota nastavila, zajistěte `Key="AuthenticationContextReferenceClaimPattern"` , aby existovala hodnota `None` `<Item>` s hodnotou a. Do zásady předávající strany přidejte `<OutputClaims>` položku a přidejte tento element. `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` Také se ujistěte, že vaše zásada obsahuje typ deklarace identity.`<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
-|RefreshTokenUserJourneyId| Ne | Identifikátor cesty uživatele, který by měl být proveden během aktualizace požadavku POST [přístupového tokenu](authorization-code-flow.md#4-refresh-the-token) do `/token` koncového bodu. |
+| SendTokenResponseBodyWithJsonNumbers | No | Vždy nastavte na `true`. Pro formát starší verze, kde jsou číselné hodnoty zadány jako řetězce místo čísel JSON, `false`nastavte na. Tento atribut je vyžadován pro klienty, kteří mají závislost na předchozí implementaci, která vrátila tyto vlastnosti jako řetězce. |
+| token_lifetime_secs | No | Doba života přístupového tokenu. Doba života nosného tokenu OAuth 2,0, který se používá k získání přístupu k chráněnému prostředku. Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je 86 400 sekund (24 hodin). |
+| id_token_lifetime_secs | No | Životnost tokenu ID Výchozí hodnota je 3 600 sekund (1 hodina). Minimální (včetně) je 300 sekund (5 minut). Maximální (včetně) je sekund 86 400 (24 hodin). |
+| refresh_token_lifetime_secs | No | Aktualizujte životnosti tokenů. Maximální časový interval, po kterém se dá obnovovací token použít k získání nového přístupového tokenu, pokud by vaše aplikace získala obor offline_access. Výchozí hodnota je 120, 9 600 sekund (14 dní). Minimální (včetně) je 86 400 sekund (24 hodin). Maximální (včetně) je 7 776 000 sekund (90 dní). |
+| rolling_refresh_token_lifetime_secs | No | Doba životnosti posuvných oken obnovovacího tokenu Po uplynutí tohoto časového období se uživatel nuceně znovu ověří bez ohledu na dobu platnosti nejnovějšího obnovovacího tokenu, který aplikace získala. Pokud nechcete vymáhat dobu trvání klouzavého okna, nastavte hodnotu allow_infinite_rolling_refresh_token na `true`. Výchozí hodnota je 7 776 000 sekund (90 dní). Minimální (včetně) je 86 400 sekund (24 hodin). Maximální (včetně) je 31 536 000 sekund (365 dní). |
+| allow_infinite_rolling_refresh_token | No | Je-li `true`nastavena na hodnotu, doba vypršení platnosti posuvných oken aktualizačního tokenu vypršela. |
+| IssuanceClaimPattern | No | Řídí deklaraci identity vystavitele (ISS). Jedna z hodnot:<ul><li>AuthorityAndTenantGuid – deklarace ISS zahrnuje název domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, a identifikátor vašeho tenanta https:/login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.\/</li><li>AuthorityWithTfp – deklarace ISS zahrnuje název domény, například `login.microsoftonline` nebo `tenant-name.b2clogin.com`, identifikátor vašeho tenanta a název zásady předávající strany. https:\//Login.microsoftonline.com/TFP/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-Sign-in/v2.0/</li></ul> Výchozí hodnota: AuthorityAndTenantGuid |
+| AuthenticationContextReferenceClaimPattern | No | Řídí hodnotu `acr` deklarace identity.<ul><li>Žádné – Azure AD B2C nevydá deklaraci identity ACR</li><li>PolicyId – `acr` deklarace obsahuje název zásady.</li></ul>Možnosti pro nastavení této hodnoty jsou TFP (zásady pro vztahy důvěryhodnosti) a ACR (Referenční dokumentace kontextu ověřování). Doporučuje se nastavení této hodnoty na TFP, aby se hodnota nastavila, zajistěte `Key="AuthenticationContextReferenceClaimPattern"` , aby existovala hodnota `None` `<Item>` s hodnotou a. Do zásady předávající strany přidejte `<OutputClaims>` položku a přidejte tento element. `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />` Také se ujistěte, že vaše zásada obsahuje typ deklarace identity.`<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
+|RefreshTokenUserJourneyId| No | Identifikátor cesty uživatele, který by měl být proveden během aktualizace požadavku POST [přístupového tokenu](authorization-code-flow.md#4-refresh-the-token) do `/token` koncového bodu. |
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 38c0d7d93d00d31a8efa508a635b471a73da0419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d8a10f81cd9a73b9b77e68f15f7bc7c98d60ac0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80123287"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891039"
 ---
 V odkazech v této části najdete další informace o službách, které nabízejí partneři. Pokud vaše pobočka zařízení není uvedená v následující části, obraťte se na svého poskytovatele firemního zařízení. Můžou nás kontaktovat odesláním e-mailu azurevirtualwan@microsoft.comna adresu.
 
@@ -29,6 +29,7 @@ V odkazech v této části najdete další informace o službách, které nabíz
 |[Palo Alto Networks](https://researchcenter.paloaltonetworks.com/2018/09/azure-vwan-integration/) |* |
 |[Riverbed Technology](https://www.riverbed.com/go/steelconnect-azurewan.html)|* |
 |[Stříbrná špička]( https://www.silver-peak.com/silver-peak-expands-integration-with-microsoft-cloud-services)|[Průvodce integrací virtuální sítě WAN v EdgeConnect a Microsoft Azure](https://www.silver-peak.com/documentation/edgeconnect-and-azure-vwan-integration-guide)|
+|[Velocloud – VMWare]( https://wan.velocloud.com/rs/098-RBR-178/images/sdwan-654-connect-azure-vwan-so-0819.pdf)|[Průvodce nasazením Azure Virtual WAN Velocloud](https://kb.vmware.com/s/article/79000)|
 | [Naopak](https://www.versa-networks.com/partners/microsoft-azure-virtual-WAN) | [Konfigurace odrážky SD-WAN a Microsoft Azure vWAN (k dispozici pro registrované zákazníky)](https://docs.versa-networks.com/Versa_Director/Versa_Director_Configuration/Integrate_Director_and_Azure_Virtual_WAN) |
 
 *\*Přímý odkaz není dostupný. Obraťte se prosím na kontaktní společnost a požádejte o podporu.*

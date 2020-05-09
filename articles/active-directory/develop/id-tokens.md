@@ -1,5 +1,6 @@
 ---
-title: Referenční informace o tokenu ID platformy Microsoft Identity Platform
+title: Tokeny Microsoft Identity Platform ID | Azure
+titleSuffix: Microsoft identity platform
 description: Naučte se, jak používat id_tokens vydávané koncovými body Azure AD v 1.0 a Microsoft Identity Platform (v 2.0).
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690188"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926710"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokeny ID platformy Microsoft identity
 
-`id_tokens`jsou odesílány do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) . Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele.
+`id_tokens`jsou odesílány do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) (OIDC). Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele.
 
 ## <a name="using-the-id_token"></a>Použití id_token
 
@@ -30,7 +31,7 @@ Tokeny ID by se měly použít k ověření, že uživatel je vyhodnocený a zí
 
 ## <a name="claims-in-an-id_token"></a>Deklarace identity v id_token
 
-`id_tokens`pro identitu Microsoft je [JWTs](https://tools.ietf.org/html/rfc7519), což znamená, že se skládají z části záhlaví, datové části a podpisu. Hlavičku a podpis můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli, který požaduje váš klient. S výjimkou případů, kdy je uvedeno jinak, jsou všechny deklarace uvedené zde zobrazeny v tokenech v 1.0 i v 2.0.
+`id_tokens`pro identitu Microsoft jsou [JWTs](https://tools.ietf.org/html/rfc7519) (webové tokeny JSON), což znamená, že se skládají z části záhlaví, datové části a podpisu. Hlavičku a podpis můžete použít k ověření pravosti tokenu, zatímco datová část obsahuje informace o uživateli, který požaduje váš klient. S výjimkou případů, kdy je uvedeno jinak, jsou všechny deklarace JWT uvedené zde uvedeny v tokenech v 1.0 i v 2.0.
 
 ### <a name="v10"></a>v1.0
 
@@ -52,14 +53,14 @@ Zobrazit ukázkový token v 2.0 v [JWT.MS](https://jwt.ms/#id_token=eyJ0eXAiOiJK
 
 |Deklarovat | Formát | Popis |
 |-----|--------|-------------|
-|`typ` | Řetězec – vždycky "JWT" | Označuje, že token je JWT.|
-|`alg` | Řetězec | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
-|`kid` | Řetězec | Kryptografický otisk veřejného klíče, který se používá k podepsání tohoto tokenu. Vygenerováno v 1.0 i v 2.0 `id_tokens`. |
-|`x5t` | Řetězec | Stejné (používá se a hodnota) jako `kid`. Toto je však starší deklarace identity vygenerované pouze v 1.0 `id_tokens` pro účely kompatibility. |
+|`typ` | Řetězec – vždycky "JWT" | Označuje, že token je token JWT.|
+|`alg` | String | Určuje algoritmus, který se použil k podepsání tokenu. Příklad: "RS256" |
+|`kid` | String | Kryptografický otisk veřejného klíče, který se používá k podepsání tohoto tokenu. Vygenerováno v 1.0 i v 2.0 `id_tokens`. |
+|`x5t` | String | Stejné (používá se a hodnota) jako `kid`. Toto je však starší deklarace identity vygenerované pouze v 1.0 `id_tokens` pro účely kompatibility. |
 
 ### <a name="payload-claims"></a>Deklarace datové části
 
-V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nastavení ve většině id_tokens (s výjimkou popsaných případů).  Vaše aplikace ale může použít [volitelné deklarace identity](active-directory-optional-claims.md) k vyžádání dalších deklarací v id_token.  Ty můžou být v rozsahu `groups` od deklarace identity až po informace o jménu uživatele.
+V tomto seznamu jsou uvedeny deklarace identity JWT, které jsou ve výchozím nastavení ve většině id_tokens (s výjimkou popsaných případů).  Vaše aplikace ale může použít [volitelné deklarace identity](active-directory-optional-claims.md) k vyžádání dalších deklarací JWT v id_token.  Ty můžou být v rozsahu `groups` od deklarace identity až po informace o jménu uživatele.
 
 |Deklarovat | Formát | Popis |
 |-----|--------|-------------|
@@ -69,39 +70,39 @@ V tomto seznamu jsou uvedeny deklarace identity, které jsou ve výchozím nasta
 |`idp`|Řetězec, obvykle identifikátor URI služby STS | Zaznamenává zprostředkovatele identity, který ověřil subjekt tokenu. Tato hodnota je shodná s hodnotou deklarace vystavitele, pokud uživatelský účet, který není ve stejném tenantovi jako host pro vystavitele, například. Pokud tato deklarace identity není k dispozici, znamená to, `iss` že se místo toho dá použít hodnota.  Pro osobní účty používané v organizačním kontextu (například osobní účet, který je pozván na tenanta Azure AD) může být `idp` deklarace identity Live.com nebo identifikátor URI STS obsahující klienta `9188040d-6c67-4c5b-b112-36a304b66dad`účet Microsoft. |
 |`nbf` |  int, časové razítko systému UNIX | Deklarace "NBF" (ne dřív) určuje dobu, po jejímž uplynutí nesmí být požadavek JWT přijat ke zpracování.|
 |`exp` |  int, časové razítko systému UNIX | Deklarace "EXP" (čas vypršení platnosti) identifikuje dobu vypršení platnosti nebo po jejímž uplynutí může být požadavek JWT přijat ke zpracování.  Je důležité si uvědomit, že prostředek může před touto dobou odmítat token, a to například v případě, že se vyžaduje změna v ověřování nebo že bylo zjištěno odvolání tokenu. |
-| `c_hash`| Řetězec |Hodnota hash kódu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí autorizačního kódu OAuth 2,0. Dá se použít k ověření pravosti autorizačního kódu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
-|`at_hash`| Řetězec |Hodnota hash přístupového tokenu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí přístupového tokenu OAuth 2,0. Dá se použít k ověření pravosti přístupového tokenu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
+| `c_hash`| String |Hodnota hash kódu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí autorizačního kódu OAuth 2,0. Dá se použít k ověření pravosti autorizačního kódu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
+|`at_hash`| String |Hodnota hash přístupového tokenu je obsažena v tokenech ID pouze v případě, že je token ID vydán pomocí přístupového tokenu OAuth 2,0. Dá se použít k ověření pravosti přístupového tokenu. Podrobnosti o tom, jak provést toto ověření, najdete v tématu [specifikace OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html). |
 |`aio` | Neprůhledný řetězec | Interní deklarace, kterou používá služba Azure AD k záznamu dat pro opakované použití tokenu By měla být ignorována.|
-|`preferred_username` | Řetězec | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci. Pro `profile` příjem této deklarace je vyžadován rozsah.|
-|`email` | Řetězec | `email` Deklarace identity je ve výchozím nastavení k dispozici pro účty hosta, které mají e-mailovou adresu.  Vaše aplikace může požádat o e-mailovou deklaraci identity pro spravované uživatele (ze stejného tenanta jako prostředku) `email` , a to pomocí [volitelné deklarace identity](active-directory-optional-claims.md).  V koncovém bodě verze 2.0 může aplikace požádat o obor `email` OpenID Connect – nemusíte požadovat žádnou volitelnou deklaraci identity a obor pro získání deklarace identity.  Deklarace e-mailu podporuje pouze adresovatelné pošty z informací o profilu uživatele. |
-|`name` | Řetězec | `name` Deklarace identity poskytuje lidský čitelný údaj, který identifikuje předmět tokenu. Hodnota není zaručena, že je jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. Pro `profile` příjem této deklarace je vyžadován rozsah. |
-|`nonce`| Řetězec | Hodnota nonce odpovídá parametru zahrnutému v původní žádosti/Authorize do IDP. Pokud se neshodují, vaše aplikace by měla token odmítnout. |
+|`preferred_username` | String | Primární uživatelské jméno, které představuje uživatele. Může to být e-mailová adresa, telefonní číslo nebo obecné uživatelské jméno bez zadaného formátu. Jeho hodnota je proměnlivá a může se v průběhu času měnit. Protože je proměnlivá, nesmí se tato hodnota použít k rozhodování o autorizaci. Pro `profile` příjem této deklarace je vyžadován rozsah.|
+|`email` | String | `email` Deklarace identity je ve výchozím nastavení k dispozici pro účty hosta, které mají e-mailovou adresu.  Vaše aplikace může požádat o e-mailovou deklaraci identity pro spravované uživatele (ze stejného tenanta jako prostředku) `email` , a to pomocí [volitelné deklarace identity](active-directory-optional-claims.md).  V koncovém bodě verze 2.0 může aplikace požádat o obor `email` OpenID Connect – nemusíte požadovat žádnou volitelnou deklaraci identity a obor pro získání deklarace identity.  Deklarace e-mailu podporuje pouze adresovatelné pošty z informací o profilu uživatele. |
+|`name` | String | `name` Deklarace identity poskytuje lidský čitelný údaj, který identifikuje předmět tokenu. Hodnota není zaručena, že je jedinečná, je proměnlivá a je navržena tak, aby se používala pouze pro účely zobrazení. Pro `profile` příjem této deklarace je vyžadován rozsah. |
+|`nonce`| String | Hodnota nonce odpovídá parametru zahrnutému v původní žádosti/Authorize do IDP. Pokud se neshodují, vaše aplikace by měla token odmítnout. |
 |`oid` | Řetězec, identifikátor GUID | Neproměnlivý identifikátor pro objekt v systému Microsoft identity, v tomto případě uživatelský účet. Toto ID jednoznačně identifikuje uživatele napříč aplikacemi – dvě různé aplikace přihlášené ke stejnému uživateli získají stejnou hodnotu v `oid` deklaraci identity. Microsoft Graph bude toto ID vracet jako `id` vlastnost pro daný uživatelský účet. Vzhledem k `oid` tomu, že umožňuje více aplikacím korelovat uživatele, `profile` je pro příjem této deklarace vyžadován rozsah. Všimněte si, že pokud jeden uživatel existuje ve více klientech, bude uživatel v každém tenantovi obsahovat jiné ID objektu – považují se za jiné účty, i když se uživatel do každého účtu přihlašuje pomocí stejných přihlašovacích údajů. `oid` Deklarace identity je GUID a nedá se znovu použít. |
 |`roles`| Pole řetězců | Sada rolí, které byly přiřazeny uživateli, který se přihlašuje. |
 |`rh` | Neprůhledný řetězec |Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`sub` | Řetězec, identifikátor GUID | Objekt zabezpečení, o kterém token vyhodnotí informace, jako je například uživatel aplikace Tato hodnota je neměnná a nelze ji znovu přiřadit ani použít znovu. Subjekt je párový identifikátor, který je jedinečný pro konkrétní ID aplikace. Pokud se jeden uživatel přihlásí ke dvěma různým aplikacím pomocí dvou různých ID klientů, budou tyto aplikace pro deklaraci deklarace subjektu dostávat dvě odlišné hodnoty. To může nebo nemusí být žádoucí v závislosti na vaší architektuře a požadavcích na ochranu osobních údajů. |
 |`tid` | Řetězec, identifikátor GUID | Identifikátor GUID, který představuje tenanta Azure AD, ze kterého je uživatel. V případě pracovních a školních účtů je identifikátor GUID neměnné ID klienta organizace, do které uživatel patří. U osobních účtů je `9188040d-6c67-4c5b-b112-36a304b66dad`tato hodnota. Pro `profile` příjem této deklarace je vyžadován rozsah. |
-|`unique_name` | Řetězec | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota je v jakémkoli daném bodu v čase jedinečná, ale když je možné znovu použít e-maily a jiné identifikátory, tato hodnota se může znovu zobrazit na jiných účtech a měla by se proto použít jenom pro účely zobrazení. Vydány jenom v 1.0 `id_tokens`. |
+|`unique_name` | String | Poskytuje lidsky čitelnou hodnotu, která identifikuje subjekt tokenu. Tato hodnota je v jakémkoli daném bodu v čase jedinečná, ale když je možné znovu použít e-maily a jiné identifikátory, tato hodnota se může znovu zobrazit na jiných účtech a měla by se proto použít jenom pro účely zobrazení. Vydány jenom v 1.0 `id_tokens`. |
 |`uti` | Neprůhledný řetězec | Interní deklarace identity, kterou Azure používá k opětovnému ověření tokenů. By měla být ignorována. |
 |`ver` | Řetězec, buď 1,0 nebo 2,0 | Určuje verzi id_token. |
 
-
 > [!NOTE]
-> Id_token V1 a v2 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) se vyvinula během let. V současné době máme dva různé koncové body oAuth pro aplikace AzureAD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v2 nebo jako staré, což se označuje jako v1. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v2 je novější, kde se snažíme migrovat všechny funkce koncového bodu V1 a doporučit novým vývojářům použití koncového bodu v2. 
+> Id_token V1 a v2 mají rozdíly v množství informací, které budou prováděny podle výše uvedených příkladů. Verze v podstatě určuje koncový bod platformy Azure AD, ze kterého byl vydán. [Implementace Azure AD OAuth](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) se vyvinula během let. V současné době máme dva různé koncové body oAuth pro aplikace AzureAD. Můžete použít libovolný z nových koncových bodů, které jsou zařazeny do kategorie v2 nebo jako staré, což se označuje jako v1. Koncové body OAuth obou z nich jsou odlišné. Koncový bod v2 je novější, kde se snažíme migrovat všechny funkce koncového bodu V1 a doporučit novým vývojářům použití koncového bodu v2.
+>
 > - V1: Azure Active Directory koncové body:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2: koncové body platformy Microsoft identity:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Ověřování id_token
 
-Ověřování `id_token` je podobné jako při [ověřování přístupového tokenu](access-tokens.md#validating-tokens) – váš klient by měl ověřit, jestli se token vrátil zpátky, a že se nepoškodil. Vzhledem `id_tokens` k tomu, že je vždy token JWT, existuje mnoho knihoven, aby bylo možné tyto tokeny ověřit – doporučujeme místo toho použít jednu z nich.
+Ověřování `id_token` je podobné jako při [ověřování přístupového tokenu](access-tokens.md#validating-tokens) – váš klient by měl ověřit, jestli se token vrátil zpátky, a že se nepoškodil. Vzhledem `id_tokens` k tomu, že jsou vždy token JWT, existuje mnoho knihoven, aby bylo možné tyto tokeny ověřit – doporučujeme místo toho použít jednu z nich.
 
-Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřování přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu tokenu by se měly v id_token ověřit následující deklarace identity (můžou to udělat i vaše knihovna ověření tokenu):
+Postup ručního ověření tokenu najdete v podrobnostech v tématu [ověřování přístupového tokenu](access-tokens.md#validating-tokens). Po ověření podpisu tokenu by se měly v id_token ověřit následující deklarace identity JWT (můžou to udělat i vaše knihovna ověřování tokenů):
 
-* Časová razítka `iat`: `nbf`časová `exp` razítka, a musí všechny přecházet před aktuálním časem nebo po něm. 
+* Časová razítka `iat`: `nbf`časová `exp` razítka, a musí všechny přecházet před aktuálním časem nebo po něm.
 * Cílová skupina: `aud` deklarace identity by měla odpovídat ID aplikace pro vaši aplikaci.
 * Hodnota nonce: `nonce` deklarace v datové části se musí shodovat s parametrem nonce předaným do koncového bodu/Authorize během počátečního požadavku.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Další informace o [přístupových tokenech](access-tokens.md)
-* Přizpůsobte deklarace identity ve vašem id_token pomocí [volitelných deklarací identity](active-directory-optional-claims.md).
+* Přizpůsobte deklarace JWT ve vašem id_token pomocí [volitelných deklarací identity](active-directory-optional-claims.md).
