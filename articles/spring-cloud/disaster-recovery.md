@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279141"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792322"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Zotavení po havárii v cloudu Azure jaře
 
@@ -32,3 +32,32 @@ Zajištění vysoké dostupnosti a ochrany před haváriemi vyžaduje, abyste na
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) poskytuje vyrovnávání zatížení provozu založené na službě DNS a může distribuovat síťový provoz napříč několika oblastmi.  Využijte Azure Traffic Manager k přímému nasměrování zákazníků do nejbližší instance služby Azure jaře Cloud Service.  Abyste dosáhli nejlepšího výkonu a redundance, přesměrujte veškerý provoz aplikací prostřednictvím Azure Traffic Manager před odesláním do vaší jarní cloudové služby Azure.
 
 Pokud máte ve více oblastech aplikace pro jarní cloudy Azure, použijte Azure Traffic Manager k řízení toku provozu do aplikací v jednotlivých oblastech.  Pro každou službu pomocí IP adresy služby Definujte koncový bod Azure Traffic Manager. Zákazníci by se měli připojit k názvu DNS Azure Traffic Manager, který odkazuje na jarní cloudovou službu Azure.  Azure Traffic Manager vyrovnává zatížení napříč definovanými koncovými body.  Pokud dojde k výpadku datového centra, Azure Traffic Manager přesměruje provoz z této oblasti na svůj pár a zajišťuje kontinuitu služeb.
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Vytvoření Azure Traffic Manager pro jarní cloud Azure
+
+1. Vytvořte si jarní cloud Azure ve dvou různých oblastech.
+Budete potřebovat dvě instance služby jarního cloudu Azure nasazené ve dvou různých oblastech (Východní USA a Západní Evropa). Pokud chcete vytvořit dvě instance služby, spusťte stávající cloudovou aplikaci Azure na základě Azure Portal. Každá z nich bude sloužit jako primární a koncový bod převzetí služeb při selhání pro provoz. 
+
+**Dvě informace o instancích služby:**
+
+| Název služby | Umístění | Aplikace |
+|--|--|--|
+| Služba – ukázka-a | USA – východ | Brána/ověřování-služba/účet-služba |
+| Service-Sample-b | Západní Evropa | Brána/ověřování-služba/účet-služba |
+
+2. Pokud chcete nastavit vlastní doménu pro tyto dvě existující instance služby, nastavte vlastní doménu pro službu dodržovat [vlastní doménový dokument](spring-cloud-tutorial-custom-domain.md) . Po úspěšném vytvoření se obě instance služby sváže s vlastní doménou: bcdr-test.contoso.com
+
+3. Vytvoření Traffic Manageru a dvou koncových bodů: [vytvořte profil Traffic Manager pomocí Azure Portal](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+
+Tady je profil Traffic Manageru:
+* Traffic Manager název DNS:http://asc-bcdr.trafficmanager.net
+* Profily koncového bodu: 
+
+| Profil | Typ | Cíl | Priorita | Vlastní nastavení hlaviček |
+|--|--|--|--|--|
+| Koncový bod A profil | Externí koncový bod | service-sample-a.asc-test.net | 1 | Hostitel: bcdr-test.contoso.com |
+| Profil koncového bodu B | Externí koncový bod | service-sample-b.asc-test.net | 2 | Hostitel: bcdr-test.contoso.com |
+
+4. Vytvořte záznam CNAME v zóně DNS: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+
+5. Nyní je prostředí zcela nastaveno. Zákazníci by měli být schopni získat přístup k aplikaci prostřednictvím: bcdr-test.contoso.com
