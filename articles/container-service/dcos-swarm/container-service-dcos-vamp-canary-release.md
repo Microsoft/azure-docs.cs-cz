@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189104"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734820"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>ZASTARALÉ Využitím vampu v clusteru s Azure Container Service DC/OS vydaných verzí mikroslužeb
 
@@ -129,7 +129,7 @@ Teď, když je využitím vampu v provozu, nasaďte službu z podrobného plánu
 
 V nejjednodušším tvaru popisuje [využitím vampu podrobný plán](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) koncových bodů (bran), clusterů a služeb, které se mají nasadit. Využitím vampu využívá clustery k seskupení různých variant stejné služby do logických skupin pro účely zkušebního vydání nebo testování A/B.  
 
-Tento scénář používá ukázkovou aplikaci monolitické s názvem [**Sava**](https://github.com/magneticio/sava), která je ve verzi 1,0. Monolitu je zabalen v kontejneru Docker, který je v Docker Hub v magneticio/Sava: 1.0.0. Aplikace normálně běží na portu 8080, ale v tomto případě ji chcete zpřístupnit v rámci portu 9050. K nasazení aplikace prostřednictvím využitím vampu použijte jednoduchý podrobný plán.
+Tento scénář používá ukázkovou aplikaci monolitické s názvem [**Sava**](https://github.com/magneticio/sava-product), která je ve verzi 1,0. Monolitu je zabalen v kontejneru Docker, který je v Docker Hub v magneticio/Sava: 1.0.0. Aplikace normálně běží na portu 8080, ale v tomto případě ji chcete zpřístupnit v rámci portu 9050. K nasazení aplikace prostřednictvím využitím vampu použijte jednoduchý podrobný plán.
 
 1. Přejít na **nasazení**.
 

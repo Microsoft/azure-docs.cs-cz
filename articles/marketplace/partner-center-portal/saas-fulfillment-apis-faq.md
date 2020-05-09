@@ -1,26 +1,26 @@
 ---
-title: Rozhraní API pro plnění SaaS – Nejčastější dotazy | Azure Marketplace
-description: Zjišťování a nákup prostředí pro zákazníky SaaS nabídky ve Azure Marketplace.
+title: Nejčastější dotazy k rozhraní API pro plnění SaaS – Microsoft Commercial Marketplace
+description: Seznamte se s několika požadavky na integraci pro komerční tržiště Microsoftu, aby se zákazníci Azure mohli přihlásit k odběru SaaS nabídek.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 6d3a84341d5221950da20f39456461dafc5d2e75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a1ba6f393eba257fcbe2757b8b4bced00bef8fe
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275692"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792900"
 ---
-# <a name="saas-fulfillment-apis---faq"></a>Rozhraní API pro naplnění SaaS – nejčastější dotazy
+# <a name="common-questions-about-saas-fulfillment-apis"></a>Běžné otázky k rozhraní API pro plnění SaaS
 
-V seznamu jsou uvedené požadavky na integraci s Azure Marketplace, které umožní zákazníkům Azure přihlásit se k odběru nabídky SaaS.
+Tento článek popisuje několik požadavků na integraci pro komerční tržiště Microsoftu, které umožní zákazníkům Azure přihlásit se k odběru SaaS nabídek.
 
 ## <a name="discovery-experience"></a>Prostředí zjišťování
 
-Po publikování nabídky můžou uživatelé Azure zjistit nabídku SaaS v Azure Marketplace. Vaši zákazníci budou moct filtrovat nabídky na základě typu produktu (SaaS) a zjišťovat služby SaaS, které vás zajímají.
+Po publikování nabídky SaaS ji uživatelé Azure můžou zjistit v Azure Marketplace. Vaši zákazníci mohou filtrovat nabídky na základě typu produktu (SaaS) a zjišťovat služby SaaS, které vás zajímají.
 
 ## <a name="purchase-experience"></a>Možnosti nákupu
 
@@ -30,7 +30,7 @@ Jakmile se uživatel zajímá o konkrétní SaaS službu, uživatel se k němu m
 
 To znamená, že uživatel může zobrazit podmínky použití a prohlášení o zásadách ochrany osobních údajů, které jsou přidružené ke službě SaaS, a vyjádřit souhlas s tím, jak platíte za fakturační podmínky nastavené vámi a vydavatelem nabídky SaaS na faktuře Microsoftu. Uživatelé můžou použít svůj existující platební profil v Azure k placení za spotřebu služby SaaS.
 
-To je užitečné z mnoha důvodů. Zákazníci teď můžou vyhledat a přihlásit se k odběru na jednom místě pomocí Microsoft Cloud platformy jako důvěryhodného zdroje, aniž by museli VET každého softwaru ISV, který chce použít. Zákazníci můžou také použít svůj existující platební profil, aniž by museli explicitně platit jednotlivé nezávislé software společnosti.
+Tato možnost je výhodná pro několik způsobů. Zákazníci teď můžou vyhledat a přihlásit se k odběru na jednom místě pomocí Microsoft Cloud platformy jako důvěryhodného zdroje, aniž by museli VET každého softwaru ISV, který chce použít. Zákazníci můžou také použít svůj existující platební profil, aniž by museli explicitně platit jednotlivé nezávislé software společnosti.
 
 ### <a name="is-the-user-charged-automatically-when-the-offer-is-subscribed"></a>Účtuje se uživateli automaticky při přihlášení k odběru nabídky?
 
@@ -38,15 +38,15 @@ Při přihlášení k odběru nabídky SaaS se uživatel dohodl za spotřebu slu
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>Jak se dozvíte, když se uživatel přihlásí k odběru vaší nabídky SaaS?
 
-Po přihlášení k odběru nabídky může uživatel Azure vyhledat a spravovat všechny své nabídky v Azure. Ve výchozím nastavení je stav nově předplaceného SaaS nabídky **"zřizování", čeká na vyřízení**. V tomto stavu se uživateli Azure zobrazí výzva s akcí **konfigurovat účet**, aby bylo možné přejít ke svému prostředí správy předplatného SaaS ve Azure Portal.
+Po přihlášení k odběru nabídky může uživatel Azure vyhledat a spravovat všechny své nabídky v Azure. Ve výchozím nastavení se stav nově přihlášené nabídky SaaS zobrazuje jako **zřizování a čeká na vyřízení**. V tomto stavu se uživateli Azure zobrazí výzva s akcí **Konfigurace účtu**, aby bylo možné přejít ke svému prostředí pro správu předplatného SaaS ve Azure Portal.
 
-Když uživatel klikne na **"konfigurovat účet"**, budou přesměrováni na web služby SaaS. Adresa URL, na kterou se přechází, je poskytnuta vydavatelem v době publikování nabídky. Tato stránka je označována jako úvodní stránka vydavatele. Uživatelé Azure by měli být schopni se přihlásit k cílové stránce SaaS na základě svých stávajících přihlašovacích údajů služby AAD v Azure.
+Když uživatel vybere **konfigurovat účet**, přesměruje se na web služby SaaS. Vydavatel nakonfiguroval adresu URL v době publikování nabídky. Tato stránka je označována jako úvodní stránka vydavatele. Uživatelé Azure se přihlásí k cílové stránce SaaS na základě svých stávajících přihlašovacích údajů služby AAD v Azure.
 
-Když se uživatel Azure přesměruje na cílovou stránku, přidá se do adresy URL dotazu token. Tento token je krátký a platný po dobu 24 hodin. Pak můžete zjistit přítomnost tohoto tokenu a zavolat rozhraní API Microsoftu a získat tak další kontext přidružený k tokenu.
+Když se uživatel Azure přesměruje na cílovou stránku, přidá se do adresy URL dotazu token. Tento token je krátkodobě a platný po dobu 24 hodin. Pak můžete zjistit přítomnost tohoto tokenu a zavolat rozhraní API Microsoftu a získat tak další kontext přidružený k tokenu.
 
 ![Tok zákaznického předplatného](media/saas-metering-service-integration-flow-a.png)
 
-V dokumentu [rozhraní API pro plnění SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) najdete další informace o kontraktu rozhraní API pro zpracování scénářů Transact-in v životním cyklu nabídky SaaS.
+Další informace o kontraktu rozhraní API pro zpracování scénářů Transact-in v životním cyklu nabídky SaaS najdete v tématu [rozhraní API pro doplňování SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2).
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>Jak poznáte nabídku SaaS, ke které se uživatel přihlašuje v Azure?
 
@@ -56,7 +56,7 @@ Odpověď na `Resolve` rozhraní API obsahuje informace o nabídce a plánu při
 
 * Uživatel Azure může změnit plán přidružený k předplatnému SaaS přímo v prostředí SaaS nebo prostřednictvím platformy Microsoft.
 
-* Převody lze kdykoli provést v rámci fakturačního cyklu. Je nutné potvrdit jakýkoli převod, který bude platit až po potvrzení.
+* Převody lze kdykoli provést v rámci fakturačního cyklu. Zobrazí se výzva, abyste potvrdili případné převody, které začnou platit po potvrzení.
 
 * Předem placené tarify (**měsíční** nebo **roční**) jsou ohodnocené poměrně. Všechna nadlimitní využití vygenerovaná v době převodu se budou účtovat v další faktuře. Nové překročení limitů bude vygenerováno na základě nového plánu.
 
@@ -85,4 +85,4 @@ Následující sekvence zachycuje tok, když uživatel Azure zruší odběr slu�
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace najdete v tématu [rozhraní API služby měření softwaru Marketplace](./marketplace-metering-service-apis.md) .
+[Rozhraní API služeb měření na marketplace](./marketplace-metering-service-apis.md)

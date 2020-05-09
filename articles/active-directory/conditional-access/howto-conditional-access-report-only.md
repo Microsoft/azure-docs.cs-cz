@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295119"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690372"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy (Preview)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Konfigurace zásad podmíněného přístupu v režimu pouze sestavy
 
 Konfigurace zásad podmíněného přístupu v režimu pouze pro sestavy:
 
@@ -42,7 +42,7 @@ Zobrazení výsledku zásad pouze pro sestavy pro konkrétní přihlášení:
 1. Přihlaste se k **Azure Portal** jako čtenář sestav, čtecí modul zabezpečení, správce zabezpečení nebo globální správce.
 1. Přejděte k **Azure Active Directory** > **přihlášení**.
 1. Vyberte přihlášení nebo přidejte filtry pro zúžení výsledků.
-1. V zásuvce **podrobností** vyberte kartu **pouze sestava (Preview)** a zobrazte zásady vyhodnocené během přihlašování.
+1. V zásuvce **podrobností** vyberte kartu **pouze sestava** a zobrazte tak zásady vyhodnocené během přihlašování.
 
 > [!NOTE]
 > Když stahujete protokoly přihlášení, vyberte formát JSON, který bude obsahovat data o výsledku podmíněného přístupu pouze sestavy.
@@ -62,7 +62,7 @@ Po integraci protokolů služby Azure AD s Azure Monitor můžete sledovat dopad
 
 1. Přihlaste se k **Azure Portal** jako správce zabezpečení nebo globální správce.
 1. Vyhledejte **Azure Active Directory** > **sešity**.
-1. Vyberte **přehledy podmíněného přístupu (Preview)**.
+1. Vyberte **přehledy podmíněného přístupu**.
 1. V rozevíracím seznamu **zásady podmíněného přístupu** vyberte jednu nebo víc zásad. Ve výchozím nastavení jsou vybrány všechny povolené zásady.
 1. Vyberte časový rozsah (Pokud časový rozsah překračuje dostupnou datovou sadu, sestava zobrazí všechna dostupná data). Jakmile nastavíte **zásady podmíněného přístupu** a parametry **časového rozsahu** , sestava se načte.
    1. Volitelně můžete vyhledat jednotlivé **uživatele** nebo **aplikace** a zúžit tak rozsah sestavy.

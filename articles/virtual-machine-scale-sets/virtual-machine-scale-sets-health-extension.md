@@ -5,17 +5,17 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273728"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864364"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Použití rozšíření Stav aplikace se škálovacími sadami virtuálních počítačů
-Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení.
+Monitorování stavu vaší aplikace je důležitým signálem pro správu a upgrade nasazení. Azure Virtual Machine Scale Sets poskytují podporu pro průběžné [upgrady](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) včetně [automatických upgradů BITOVÝCH kopií operačního systému](virtual-machine-scale-sets-automatic-upgrade.md), které jsou závislé na monitorování stavu jednotlivých instancí při upgradu vašeho nasazení. Pomocí rozšíření Health můžete také monitorovat stav aplikací každé instance v sadě škálování a provádět opravy instancí pomocí [automatických oprav instancí](virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 Tento článek popisuje, jak můžete pomocí rozšíření pro stav aplikace monitorovat stav aplikací nasazených ve službě Virtual Machine Scale Sets.
 
@@ -31,7 +31,7 @@ Jelikož rozšíření hlásí stav z virtuálního počítače, dá se použít
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Přípona vyžaduje minimálně požadavek TCP nebo http s přiřazeným portem nebo cestou k požadavku.
+Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Přípona vyžaduje minimálně požadavek TCP, http nebo HTTPS s přiřazeným portem nebo cestou k požadavku.
 
 ```json
 {
@@ -55,20 +55,20 @@ Následující JSON zobrazuje schéma pro rozšíření pro stav aplikace. Pří
 
 ### <a name="property-values"></a>Hodnoty vlastností
 
-| Název | Hodnota/příklad | Typ dat
+| Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | date |
+| apiVersion | `2018-10-01` | datum |
 | vydavatel | `Microsoft.ManagedServices` | řetězec |
 | type | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | řetězec |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Nastavení
 
-| Název | Hodnota/příklad | Typ dat
+| Name | Hodnota/příklad | Typ dat
 | ---- | ---- | ----
-| protokol | `http` nebo `tcp` | řetězec |
-| port | Volitelné, pokud je `http`protokol povinný, pokud je protokol`tcp` | int |
-| requestPath | Povinné, pokud je `http`protokol nepovolený, když je protokol`tcp` | řetězec |
+| protokol | `http`nebo `https` nebo`tcp` | řetězec |
+| port | Volitelné, pokud je `http` protokol `https`nebo, povinné, pokud je protokol`tcp` | int |
+| requestPath | Povinné, pokud je `http` protokol `https`nebo, není povoleno, pokud je protokol`tcp` | řetězec |
 
 ## <a name="deploy-the-application-health-extension"></a>Nasazení rozšíření stavu aplikace
 Rozšíření pro stav aplikace můžete nasadit do sady škálování, jak je popsáno níže v následujících příkladech.

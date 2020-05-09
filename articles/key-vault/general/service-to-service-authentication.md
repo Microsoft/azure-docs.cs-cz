@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686197"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857082"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Ověřování služba-služba pro Azure Key Vault pomocí .NET
 
@@ -272,7 +272,7 @@ Pomocí Azure CLI nastavte výchozí předplatné na jeden, který má účet, k
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>Neoprávněný přístup, přístup odepřen, zakázaný nebo podobná chyba
 
-Použitý objekt zabezpečení nemá přístup k prostředku, ke kterému se pokouší získat přístup. Udělte vašemu uživatelskému účtu nebo přispěvateli služby MSI pro App Service přístup k prostředku. Tato možnost závisí na tom, jestli je ukázka spuštěná na místním počítači nebo nasazená v Azure do vašeho App Service. Některé prostředky, jako jsou například trezory klíčů, mají také vlastní [zásady přístupu](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies) , které můžete použít k udělení přístupu k objektům zabezpečení, jako jsou uživatelé, aplikace a skupiny.
+Použitý objekt zabezpečení nemá přístup k prostředku, ke kterému se pokouší získat přístup. Udělte vašemu uživatelskému účtu nebo přispěvateli služby MSI pro App Service přístup k prostředku. Tato možnost závisí na tom, jestli je ukázka spuštěná na místním počítači nebo nasazená v Azure do vašeho App Service. Některé prostředky, jako jsou například trezory klíčů, mají také vlastní [zásady přístupu](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) , které můžete použít k udělení přístupu k objektům zabezpečení, jako jsou uživatelé, aplikace a skupiny.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Běžné problémy při nasazení na Azure App Service
 

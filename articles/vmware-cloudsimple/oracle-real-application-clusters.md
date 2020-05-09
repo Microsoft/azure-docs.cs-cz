@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868079"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793036"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizace privátního cloudu CloudSimple pro instalaci Oracle RAC
 
@@ -46,10 +46,10 @@ V následujícím příkladu se používají disky definované v následující 
 
 | Disk                                      | Účel                                       | Sdílený disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operační systém                                        | Disk operačním systému                         | Ne          |
-| MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | Ne          |
-| DATABÁZE                                  | Umístění instalace pro software Oracle Database | Ne          |
-| ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | Ne          |
+| Operační systém                                        | Disk operačním systému                         | No          |
+| MŘÍŽKY                                      | Umístění instalace pro software Oracle Grid     | No          |
+| DATABÁZE                                  | Umístění instalace pro software Oracle Database | No          |
+| ORAHOME                                   | Základní umístění pro binární soubory Oracle Database    | No          |
 | DATA1, DATA2, DATA3, DATA4                | Disk, kde jsou uloženy soubory databáze Oracle   | Ano         |
 | REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Disky protokolu opětovného provedení                                | Ano         |
 | OCR1, OCR2, OCR3, OCR4, OCR5              | Hlasovací disky                                  | Ano         |
@@ -244,7 +244,7 @@ Opakujte kroky 2 – 7 pro všechny nové disky požadované pro soubory protoko
 Pravidla spřažení z virtuálního počítače na hostitele zajistí, že virtuální počítač běží na požadovaném hostiteli.  Můžete definovat pravidla na vCenter, aby se zajistilo, že se virtuální počítač Oracle spustí na hostiteli s odpovídajícími prostředky a splňuje všechny konkrétní požadavky na licencování.
 
 1. Na portálu CloudSimple povýšit [oprávnění](escalate-private-cloud-privileges.md) uživatele cloudowner.
-2. [Přihlaste se ke klientovi vSphere](https://docs.azure.cloudsimple.com/vsphere-access) vašeho privátního cloudu.
+2. Přihlaste se ke klientovi vSphere vašeho privátního cloudu.
 3. V klientovi vSphere vyberte cluster, ve kterém jsou nasazené virtuální počítače Oracle, a klikněte na **Konfigurovat**.
 4. V části konfigurovat vyberte **skupiny VM/hostitelů**.
 5. Klikněte **+** na.

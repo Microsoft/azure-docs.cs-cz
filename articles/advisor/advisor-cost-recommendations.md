@@ -3,12 +3,12 @@ title: Snížení nákladů na službu pomocí Azure Advisor
 description: Využijte Azure Advisor k optimalizaci nákladů na nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259692"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788089"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Snížení nákladů na službu pomocí Azure Advisor
 
@@ -49,6 +49,9 @@ Pokud chcete ušetřit 60 % nákladů, doporučujeme uložit snímky ve službě
 
 ## <a name="utilize-lifecycle-management"></a>Využití správy životního cyklu
 Azure Advisor bude využívat inteligentní informace týkající se počtu objektů úložiště objektů BLOB v Azure, celkové velikosti a transakcí, které zjistí, jestli je jeden nebo více účtů úložiště nejvhodnější pro zajištění správy životního cyklu na úrovni dat. Zobrazí se výzva k vytvoření pravidel pro správu životního cyklu, která budou automaticky vrstvit vaše data na studená nebo Archivovaná pro optimalizaci nákladů na úložiště a zachování vašich dat v úložišti objektů BLOB v Azure kvůli kompatibilitě aplikací.
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>Vytvoření doporučení pro dočasný disk s operačním systémem
+S [dočasným diskem s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)získají zákazníci tyto výhody: úspory nákladů na úložiště pro disk s operačním systémem. Získejte nižší latenci čtení a zápisu na disk s operačním systémem. Rychlejší operace obnovení bitové kopie virtuálního počítače nastavením operačního systému (a dočasného disku) do původního stavu. Je víc pro použití dočasného disku s operačním systémem pro krátkodobé IaaS virtuální počítače nebo virtuální počítače s bezstavovým zatížením. Poradce má doporučení pro prostředky, které můžou využívat výhody s dočasným diskem s operačním systémem. 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Přístup k cenovým doporučením v Azure Advisor
 

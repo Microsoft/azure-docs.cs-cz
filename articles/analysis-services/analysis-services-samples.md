@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2b5b95349b8a84cc8294dbcf9ab80eff8c7b86b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b06a7ee41a69e32f44c44cdec0da6a47ec4b284
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78247846"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731862"
 ---
 # <a name="azure-analysis-services-samples"></a>Ukázky Azure Analysis Services
 
@@ -34,7 +34,7 @@ Azure synapse Analytics (SQL Data Warehouse) poskytuje ukázkovou databázi Adve
 
 Tyto ukázkové databáze na GitHubu je možné použít k vytváření a testování vlastních modelů. 
 
-[Ukázkové databáze Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks2014)
+[Ukázkové databáze Adventure Works](https://github.com/Microsoft/sql-server-samples/releases/tag/adventureworks)
 
 [Ukázkové databáze World World dovozců](https://github.com/Microsoft/sql-server-samples/releases/tag/wide-world-importers-v1.0)
 
