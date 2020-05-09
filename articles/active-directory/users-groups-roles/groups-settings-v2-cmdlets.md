@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233120"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739309"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Rutiny Azure Active Directory verze 2 pro správu skupin
 
@@ -52,6 +52,10 @@ Chcete-li ověřit, zda je modul připravený k použití, použijte následují
 
 Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu Azure AD najdete v online referenční dokumentaci pro [Azure Active Directory PowerShell verze 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
+> [!NOTE]
+> Rutiny Azure AD PowerShell nefungují s novým PowerShellem 7, protože jsou založené na .NET Core. Víme, že právě probíhá aktualizace. Počínaje teď doporučujeme použít modul Windows PowerShell 5. x, který se použije pro operace Azure AD PowerShellu. 
+
+
 ## <a name="connect-to-the-directory"></a>Připojit k adresáři
 
 Než budete moct začít spravovat skupiny pomocí rutin Azure AD PowerShellu, musíte připojit relaci PowerShellu k adresáři, který chcete spravovat. Použijte následující příkaz:
@@ -63,8 +67,8 @@ Než budete moct začít spravovat skupiny pomocí rutin Azure AD PowerShellu, m
 Rutina vás vyzve k zadání přihlašovacích údajů, které chcete použít pro přístup k adresáři. V tomto příkladu používáme karen@drumkit.onmicrosoft.com pro přístup k demonstračnímu adresáři. Rutina vrátí potvrzení pro zobrazení relace, která byla úspěšně připojena k vašemu adresáři:
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 

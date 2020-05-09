@@ -1,20 +1,20 @@
 ---
-title: Migrace účtu z portál partnerů cloudu do partnerského centra – komerční tržiště pro Azure
-description: Postup migrace účtu z CPP na partnerské Centrum – komerční tržiště pro Azure
+title: Migrace účtů z portál partnerů cloudu na Microsoft Commercial Marketplace
+description: Naučte se migrovat účet z portál partnerů cloudu do partnerského centra na komerčním webu Microsoft Marketplace pro Azure.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024417"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743532"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migrace účtu z portálu partnerů cloudu do partnerského centra
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>Postup migrace účtu z portál partnerů cloudu do partnerského centra
 
 Pokud máte existující účet portál partnerů cloudu (CPP), musí být vaše nastavení účtu migrována do partnerského centra.
 
