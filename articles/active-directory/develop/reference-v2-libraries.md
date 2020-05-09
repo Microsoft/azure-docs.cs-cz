@@ -12,12 +12,12 @@ ms.date: 07/25/2019
 ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 22e2ee0e3596bc996482a090af7509db4c415e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e1480ad58390ea8c424bc6032940b4c743210e3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883487"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982054"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Knihovny ověřování platformy Microsoft identity
 
@@ -52,7 +52,7 @@ Použijte knihovny ověřování klientů k získání tokenu pro volání chrá
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | ![JavaScript](media/sample-v2-code/logo_js.png) | MSAL.js  | [NPM](https://www.npmjs.com/package/msal) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/README.md) |  [Jednostránková aplikace](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/) | [Koncepční dokumentace](msal-overview.md)| [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
 ![Angular](media/sample-v2-code/logo_angular.png) | MSALý úhlový | [NPM](https://www.npmjs.com/package/@azure/msal-angular) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | [Úhlové SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-angular/) | [Koncepční dokumentace](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)
-| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UWP](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Desktopová aplikace](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Koncepční dokumentace](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
+| ![.NET Framework](media/sample-v2-code/logo_NET.png) ![UPW](media/sample-v2-code/logo_windows.png) ![Xamarin](media/sample-v2-code/logo_xamarin.png) | MSAL.NET  |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [Desktopová aplikace](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) | [MSAL.NET](https://docs.microsoft.com/dotnet/api/microsoft.identity.client?view=azure-dotnet-preview) |[Koncepční dokumentace](msal-overview.md) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)
 | ![Python](media/sample-v2-code/logo_python.png) | MSAL Python | [PyPI](https://pypi.org/project/msal) | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-python) | [Ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-python/tree/dev/sample) | [ReadTheDocs](https://msal-python.rtfd.io/) | [Komunity](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Roadmap)
 | ![Java](media/sample-v2-code/logo_java.png) | MSAL v Javě | [Maven](https://mvnrepository.com/artifact/com.microsoft.azure/msal4j) | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-java) | [Ukázky](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples) | [Referenční informace](https://javadoc.io/doc/com.microsoft.azure/msal4j/latest/index.html) | [Komunity](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki) | [Plán](https://github.com/AzureAD/microsoft-authentication-library-for-java/wiki)
 | iOS & macOS | MSAL iOS a macOS | [GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) |[GitHubu](https://github.com/AzureAD/microsoft-authentication-library-for-objc) | [aplikace pro iOS](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc), [aplikace MacOS](https://github.com/Azure-Samples/ms-identity-macOS-swift-objc) | [Referenční informace](https://azuread.github.io/microsoft-authentication-library-for-objc/index.html)  | [Koncepční dokumentace](msal-overview.md) | |
@@ -88,6 +88,7 @@ Další informace najdete v tématu [scénáře podle podporovaných platforem a
 | Platforma | Název knihovny | Testovaná verze | Zdrojový kód | Ukázka |
 |:---:|:---:|:---:|:---:|:---:|
 |![JavaScript](media/sample-v2-code/logo_js.png)|[Hello. js](https://adodson.com/hello.js/) | 1.13.5 verze |[Hello. js](https://github.com/MrSwitch/hello.js) |[OVĚŘOVÁNÍ](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+|![Vue](media/sample-v2-code/logo_vue.png)|[Vue MSAL](https://github.com/mvertopoulos/vue-msal) | 3.0.3 verze |[Vue – msal](https://github.com/mvertopoulos/vue-msal) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Zapisovatelný Java](https://github.com/scribejava/scribejava) | [3.2.0 verze](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/) | |
 | ![Java](media/sample-v2-code/logo_java.png) | [Knihovna Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | [3.0.2 verze](https://github.com/GluuFederation/oxAuth/releases/tag/3.0.2) | [Knihovna Gluu OpenID Connect](https://github.com/GluuFederation/oxAuth) | |
 | ![Python](media/sample-v2-code/logo_python.png) | [Požadavky – OAuthlib](https://github.com/requests/requests-oauthlib) | [1.2.0 verze](https://github.com/requests/requests-oauthlib/releases/tag/v1.2.0) | [Požadavky – OAuthlib](https://github.com/requests/requests-oauthlib) | |

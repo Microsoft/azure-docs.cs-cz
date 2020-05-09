@@ -7,14 +7,20 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae3f8b1cfe224f0a948eb16bd6ee5120b19dde1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767042"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612074"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurace akcelerace GPU (Graphics Processing Unit) pro virtuální počítače s Windows
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/configure-vm-gpu-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Virtuální počítač s Windows podporuje vykreslování a kódování GPU pro lepší výkon a škálovatelnost aplikace. Akcelerace GPU je zvláště důležitá pro aplikace náročné na grafiku.
 
@@ -26,7 +32,7 @@ Azure nabízí řadu [velikostí virtuálních počítačů](/azure/virtual-mach
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Vytvoření fondu hostitelů, zřízení virtuálního počítače a konfigurace skupiny aplikací
 
-Vytvořte nový fond hostitelů pomocí virtuálního počítače zvolené velikosti. Pokyny najdete v tématu [kurz: Vytvoření fondu hostitelů pomocí Azure Marketplace](/azure/virtual-desktop/create-host-pools-azure-marketplace).
+Vytvořte nový fond hostitelů pomocí virtuálního počítače zvolené velikosti. Pokyny najdete v tématu [kurz: Vytvoření fondu hostitelů pomocí Azure Portal](/azure/virtual-desktop/create-host-pools-azure-marketplace).
 
 Virtuální počítač s Windows podporuje vykreslování a kódování GPU v následujících operačních systémech:
 
@@ -39,7 +45,7 @@ Musíte taky nakonfigurovat skupinu aplikací nebo použít výchozí skupinu de
 
 Pokud chcete využít výhod schopností GPU virtuálních počítačů Azure N-Series na virtuálním počítači s Windows, musíte nainstalovat příslušné ovladače grafiky. Podle pokynů v části [podporované operační systémy a ovladače](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) nainstalujte ovladače od příslušného dodavatele grafiky, a to buď ručně, nebo pomocí rozšíření virtuálního počítače Azure.
 
-Pro virtuální počítače s Windows se podporují jenom ovladače distribuované pomocí Azure. Další pro virtuální počítače Azure s grafickými procesory NVIDIA podporují se jenom [ovladače NVIDIA gridu](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) pro virtuální počítače s Windows.
+Pro virtuální počítače s Windows se podporují jenom ovladače distribuované pomocí Azure. U virtuálních počítačů Azure s grafickými procesory NVIDIA se navíc podporují jenom [ovladače NVIDIA gridu](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) pro virtuální počítače s Windows.
 
 Po instalaci ovladače se vyžaduje restartování virtuálního počítače. Pomocí kroků pro ověření výše uvedených pokynů potvrďte, že ovladače grafiky byly úspěšně nainstalovány.
 

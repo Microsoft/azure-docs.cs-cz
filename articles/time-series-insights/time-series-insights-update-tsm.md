@@ -8,21 +8,22 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 648578563a0e53d3ed5bda6ab47f85c3c6a2a24e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1487cbb7885711beca969604316fd151defb114a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476650"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580596"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Model časové řady v Azure Time Series Insights Preview
 
 Tento článek popisuje model časových řad, možnosti a způsob, jak začít sestavovat a aktualizovat vlastní modely v prostředí Azure Time Series Insights Preview.
 
 > [!TIP]
->  * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
+>
+> * Příklad modelu živé časové řady najdete v [ukázkovém prostředí farmy společnosti Contoso Wind](https://insights.timeseries.azure.com/preview/samples) .
 > * Přečtěte si informace o tom, jak přejít k uživatelskému rozhraní modelu časové řady v [Průzkumníkovi služby Azure Time Series Insights Preview](time-series-insights-update-explorer.md) .
 > * Naučte se [pracovat s modelem časových řad](time-series-insights-update-how-to-tsm.md) pomocí Time Series Insights webovým průzkumníkem.
 
@@ -51,9 +52,9 @@ Tato omezení ukázala důležitost nástrojů agregace inteligentních dat a vi
 
 [![Příklad vytváření grafů pro inteligentní troubu v modelu časové řady](media/v2-update-tsm/time-series-model-smart-oven.png)](media/v2-update-tsm/time-series-model-smart-oven.png#lightbox)
 
-* Model časové řady hraje důležitou roli v dotazech a navigaci, protože contextualizes data tím, že umožňuje vykreslovat porovnávání v různých časových intervalech a mezi typy snímačů a zařízení. (**A**) 
+* Model časové řady hraje důležitou roli v dotazech a navigaci, protože contextualizes data tím, že umožňuje vykreslovat porovnávání v různých časových intervalech a mezi typy snímačů a zařízení. (**A**)
 * Data jsou dále kontextové, protože data trvalá v modelu časové řady zachovávají výpočty dotazů na časové řady jako proměnné a znovu je používají v době dotazu.
-* Model časové řady organizuje a agreguje data pro lepší vizualizaci a možnosti správy. (**B**) 
+* Model časové řady organizuje a agreguje data pro lepší vizualizaci a možnosti správy. (**B**)
 
 ### <a name="key-capabilities"></a>Klíčové funkce
 
@@ -290,7 +291,7 @@ Time Series Insights typy mohou mít mnoho proměnných, které určují vzorce 
 
 Každá proměnná může být jeden ze tří *typů*: *Číselná*, *kategorií*a *Aggregate*.
 
-* **Číselné** typy fungují se souvislými hodnotami. 
+* **Číselné** typy fungují se souvislými hodnotami.
 * **Kategorií** druhy pracují s definovanou sadou diskrétních hodnot.
 * **Agregované** hodnoty spojují více proměnných jednoho druhu (buď všechny číselné, nebo všechny kategorií).
 

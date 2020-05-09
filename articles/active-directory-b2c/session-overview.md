@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230909"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927033"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C relace
 
@@ -99,22 +99,20 @@ Po žádosti o odhlášení Azure AD B2C:
    - SAML – Pokud metadata zprostředkovatele identity obsahují `SingleLogoutService` umístění.
 1. Volitelně můžete odhlásit z jiných aplikací. Další informace najdete v části věnované [jednotnému odhlašování](#single-sign-out) .
 
-> [!NOTE]
-> Odhlášení vymaže stav jednotného přihlašování uživatele s Azure AD B2C, ale nemusí uživatele podepsat z relace sociální identity Provider. Pokud uživatel vybere stejného poskytovatele identity během následného přihlášení, může se znovu ověřit bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.
+Odhlášení vymaže stav jednotného přihlašování uživatele s Azure AD B2C, ale nemusí uživatele podepsat z relace sociální identity Provider. Pokud uživatel vybere stejného poskytovatele identity během následného přihlášení, může se znovu ověřit bez zadání přihlašovacích údajů. Pokud se uživatel chce z aplikace odhlásit, neznamená to nutně, že se chce odhlásit z účtu Facebook. Pokud se ale použijí místní účty, relace uživatele se ukončí správně.
 
-### <a name="single-sign-out"></a>Jednotné odhlašování
+### <a name="single-sign-out"></a>Jednotné odhlašování 
+
+
+> [!NOTE]
+> Tato funkce je omezená na [vlastní zásady](custom-policy-overview.md).
 
 Když uživatele přesměrujete na koncový bod Azure AD B2Cho odhlašování (pro protokoly OAuth2 i SAML), Azure AD B2C vymaže relaci uživatele z prohlížeče. Uživatel se však může stále přihlašovat k jiným aplikacím, které používají Azure AD B2C pro ověřování. Pokud chcete těmto aplikacím povolit, aby si vypnuli uživatele současně, Azure AD B2C odešle požadavek HTTP GET na `LogoutUrl` zaregistrované všechny aplikace, ke kterým je uživatel aktuálně přihlášený.
 
-Aplikace musí na tuto žádost reagovat vymazáním jakékoli relace, která uživatele identifikuje a vrátí `200` odpověď. Pokud chcete v aplikaci podporovat jednotné přihlašování, musíte implementovat `LogoutUrl` v kódu vaší aplikace. Můžete nastavit `LogoutUrl` z Azure Portal:
 
-1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Kliknutím na svůj účet v pravém horním rohu stránky vyberte svůj aktivní adresář B2C.
-1. V levém navigačním panelu zvolte možnost **Azure AD B2C**, vyberte možnost **Registrace aplikací**a pak vyberte svou aplikaci.
-1. Vyberte **Nastavení**, vyberte **vlastnosti**a pak vyhledejte textové pole **odhlašovací adresa URL** . 
-
+Aplikace musí na tuto žádost reagovat vymazáním jakékoli relace, která uživatele identifikuje a vrátí `200` odpověď. Pokud chcete v aplikaci podporovat jednotné přihlašování, musíte implementovat `LogoutUrl` v kódu vaší aplikace. 
 
 ## <a name="next-steps"></a>Další kroky
 
 - Naučte se [Konfigurovat chování relace v toku uživatele](session-behavior.md).
-- Naučte se [Konfigurovat chování relace ve vlastních zásadách](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso).
+- Naučte se [Konfigurovat chování relace ve vlastních zásadách](session-behavior-custom-policy.md).

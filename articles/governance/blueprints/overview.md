@@ -1,18 +1,18 @@
 ---
 title: Přehled Azure Blueprints
 description: Pochopte, jak služba Azure Modrotiskys umožňuje vytvářet, definovat a nasazovat artefakty v prostředí Azure.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677415"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864500"
 ---
 # <a name="what-is-azure-blueprints"></a>Co je Azure Blueprints?
 
-Stejně jako technický nákres či podrobný plán (anglicky „blueprint“) umožňuje technikovi nebo architektovi načrtnout parametry návrhu projektu, služba Azure Blueprints umožňuje cloudovým architektům a centrálním oddělením IT definovat opakovatelnou sadu prostředků Azure, která implementuje a dodržuje standardy, vzory a požadavky organizace. Azure Blueprints vývojářským týmům umožňuje rychle vytvářet nová prostředí s důvěrou, že je vytvářejí v souladu s předpisy organizace, a s využitím sady předdefinovaných komponent – třeba síťových – ke zrychlení vývoje a distribuce.
+Stejně jako technický nákres či podrobný plán (anglicky „blueprint“) umožňuje technikovi nebo architektovi načrtnout parametry návrhu projektu, služba Azure Blueprints umožňuje cloudovým architektům a centrálním oddělením IT definovat opakovatelnou sadu prostředků Azure, která implementuje a dodržuje standardy, vzory a požadavky organizace. Plány Azure umožňují vývojovým týmům rychle sestavit a vytvořit nová prostředí s důvěryhodným sestavou v souladu se sadou integrovaných komponent, jako jsou třeba síťové služby, a urychlit tak vývoj a doručování.
 
 Podrobné plány představují deklarativní způsob, jak orchestrovat nasazení různých šablon prostředků a dalších artefaktů jako:
 
@@ -21,12 +21,11 @@ Podrobné plány představují deklarativní způsob, jak orchestrovat nasazení
 - Šablony Azure Resource Manageru
 - Skupiny prostředků
 
-Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cosmos DB](../../cosmos-db/introduction.md).
-Objekty podrobného plánu se replikují do několika oblastí Azure. Tato replikace zajišťuje nízkou latenci, vysokou dostupnost a konzistentní přístup k vašim objektům podrobného plánu, bez ohledu na to, do jaké oblasti modrotisky Azure nasadí vaše prostředky.
+Služba Azure Blueprints využívá globálně distribuovanou službu [Azure Cosmos DB](../../cosmos-db/introduction.md). Objekty podrobného plánu se replikují do několika oblastí Azure. Tato replikace zajišťuje nízkou latenci, vysokou dostupnost a konzistentní přístup k vašim objektům podrobného plánu, bez ohledu na to, do jaké oblasti modrotisky Azure nasadí vaše prostředky.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>V čem se liší od šablon Resource Manageru
 
-Účelem této služby je pomáhat s _nastavením prostředí_. Toto nastavení často sestává ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon Resource Manageru. Podrobný plán (anglicky „blueprint“) je balíček, který všechny tyto typy _artefaktů_ spojuje a umožní vám balíček sestavit a vytvořit jeho verzi – včetně prostřednictvím kanálu CI/CD. Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
+Účelem této služby je pomáhat s _nastavením prostředí_. Toto nastavení často sestává ze sady skupin prostředků, zásad, přiřazení rolí a nasazení šablon Resource Manageru. Podrobný plán je balíček pro každý z těchto typů _artefaktů_ a umožňuje vytváření a verzi balíčku, včetně kanálu CI/CD. Nakonec se každý přiřadí k předplatnému v rámci jedné operace, kterou je možné auditovat a sledovat.
 
 Skoro všechno, co chcete zahrnout do nasazení v Azure modrotisky, se dá udělat pomocí šablony Správce prostředků. Šablona Resource Manageru je ale dokument, který v Azure nativně neexistuje – každá je uložená místně nebo ve správě zdrojového kódu. Šablona se používá pro nasazení jednoho nebo více prostředků Azure, ale po nasazení těchto prostředků neexistuje s šablonou žádné aktivní propojení ani relace.
 
@@ -124,10 +123,10 @@ Pro určitá pole existují následující omezení:
 
 |Objekt|Pole|Povolené znaky|Max. Délka|
 |-|-|-|-|
-|Podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
-|Podrobného plánu|Version|písmena, číslice, spojovníky a tečky|20|
-|Přiřazení podrobného plánu|Název|písmena, číslice, spojovníky a tečky|90|
-|Artefakt podrobného plánu|Název|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
+|Podrobného plánu|Verze|písmena, číslice, spojovníky a tečky|20|
+|Přiřazení podrobného plánu|Name|písmena, číslice, spojovníky a tečky|90|
+|Artefakt podrobného plánu|Name|písmena, číslice, spojovníky a tečky|48|
 
 ## <a name="video-overview"></a>Přehled videí
 

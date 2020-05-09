@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156773"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872481"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Rychlý Start: připojení k aplikaci Custom Commands pomocí sady Speech SDK (Preview)
 
@@ -24,19 +24,20 @@ Po vytvoření hostované vlastní aplikace s příkazy můžete začít mluvit 
 V tomto článku:
 
 - Publikování vlastní aplikace příkazů a získání identifikátoru aplikace (ID aplikace)
-- Vytvoření klientské aplikace pomocí sady Speech SDK, která vám umožní komunikovat s aplikacemi pro vlastní příkazy
+- Vytvoření klientské aplikace Univerzální platforma Windows (UWP) pomocí sady Speech SDK, která vám umožní komunikovat s vlastními aplikacemi příkazů
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto článku je nutná vlastní aplikace příkazů. Pokud jste ještě nevytvořili aplikaci Custom Commands, můžete to udělat v těchto předchozích rychlých startech:
-
-- [Rychlý Start: Vytvoření vlastního příkazu (Preview)](./quickstart-custom-speech-commands-create-new.md)
-- [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [Rychlý Start: Vytvoření vlastního příkazu (Preview)](./quickstart-custom-speech-commands-create-new.md)
+> * [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
 
 Budete také potřebovat:
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Klíč předplatného Azure pro hlasové služby. [Získejte ho zdarma](get-started.md) nebo ho vytvořte na [Azure Portal](https://portal.azure.com)
+> * [Povolení vývoje zařízení](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>Volitelné: rychlý začátek
 
@@ -44,12 +45,13 @@ Tento rychlý Start popisuje, krok za krokem, jak vytvořit klientskou aplikaci 
 
 ## <a name="step-1-publish-custom-commands-application"></a>Krok 1: publikování aplikace Custom Commands
 
-1. Otevřete [dříve vytvořenou aplikaci Custom Commands](./quickstart-custom-speech-commands-create-new.md) a vyberte **publikovat** .
+1. Otevřete [dříve vytvořenou aplikaci Custom Commands (Preview)](./quickstart-custom-speech-commands-create-new.md) a vyberte **publikovat** .
 
    > [!div class="mx-imgBorder"]
    > ![Publikování aplikace](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Zkopírujte ID aplikace z oznámení o publikování pro pozdější použití.
+1. Zkopírujte klíč prostředku pro rozpoznávání řeči pro pozdější použití.
 
 ## <a name="step-2-create-a-visual-studio-project"></a>Krok 2: vytvoření projektu sady Visual Studio
 
@@ -129,7 +131,7 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 
 1. V **Průzkumník řešení**otevřete zdrojový soubor `MainPage.xaml.cs` kódu na pozadí (seskupeno pod `MainPage.xaml`).
 
-1. Obsah souboru nahraďte následujícím kódem:
+1. Obsah souboru nahraďte následujícím kódem: 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
        }
    }
    ```
+    > [!NOTE]
+    > Pokud se zobrazí chyba: typ Object je definovaný v sestavení, na které se neodkazuje.
+    > 1. Napravo od klienta vaše řešení.
+    > 1. Zvolte možnost **Spravovat balíčky NuGet pro řešení**, vyberte **aktualizace** . 
+    > 1. Pokud se v seznamu aktualizace zobrazí **Microsoft. NETCore. UniversalWindowsPlatform** , aktualizujte **Microsoft. NETCore. UniversalWindowsPlatform** na nejnovější verzi.
 
 1. Do těla metody přidejte následující kód`InitializeDialogServiceConnector`
 
@@ -419,3 +426,6 @@ Přidejte zdroj kódu na pozadí následujícím způsobem:
 > [!div class="nextstepaction"]
 > [Postupy: plnění příkazů v klientovi pomocí sady Speech SDK (Preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [Postupy: Přidání ověření do vlastních parametrů příkazu (Preview)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>Ukázkový zdrojový kód
+Podívejte se na naše ukázkové kódy klienta na [GitHub-VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant) .

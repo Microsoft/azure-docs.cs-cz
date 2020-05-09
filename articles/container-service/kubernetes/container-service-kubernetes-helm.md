@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271087"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735415"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>ZASTARALÉ Nasazení kontejnerů v clusteru Kubernetes pomocí Helm
 
@@ -34,7 +34,7 @@ Helm má dvě komponenty:
 
 * [Instalace a konfigurace `kubectl` ](../container-service-connect.md) v místním počítači
 
-* [Instalace Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) na místní počítač
+* [Instalace Helm](https://helm.sh/docs/intro/quickstart/) na místní počítač
 
 ## <a name="helm-basics"></a>Základy Helm 
 
@@ -149,5 +149,5 @@ Nyní můžete použít standardní příkazy SQL pro vytváření databází, t
  
 ## <a name="next-steps"></a>Další kroky
 
-* Další informace o správě Kubernetes grafů najdete v [dokumentaci k Helm](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Další informace o správě Kubernetes grafů najdete v [dokumentaci k Helm](https://helm.sh/docs/). 
 

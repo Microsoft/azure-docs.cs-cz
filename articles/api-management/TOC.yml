@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: Zabezpečení
       items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
         - name: Integrované ovládací prvky zabezpečení
           href: api-management-security-controls.md
     - name: Předplatná
