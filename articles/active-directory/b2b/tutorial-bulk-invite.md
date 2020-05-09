@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 04/13/2020
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ef9172ca5d0961bb6de1949a61199ce1d6c1bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f0f88b310bc00881e66ee8e8b5f2d40616d60315
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603428"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926905"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>Kurz: Hromadné pozvání uživatelů spolupráce B2B služby Azure AD
 
@@ -29,6 +29,27 @@ Pokud k práci se svými externími partnery používáte spolupráci B2B služb
 
 Pokud nemáte Azure Active Directory, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
+## <a name="understand-the-csv-template"></a>Princip šablony sdíleného svazku clusteru
+
+Stáhněte a vyplňte šablonu sdíleného svazku clusteru hromadného nahrání, která vám pomůžou úspěšně pozvat uživatele hosta Azure AD do hromadného pozvání. Šablona sdíleného svazku clusteru, kterou stáhnete, může vypadat jako v tomto příkladu:
+
+![Tabulka pro nahrávání a volání s vysvětlením účelu a hodnot pro každý řádek a sloupec](media/tutorial-bulk-invite/understand-template.png)
+
+### <a name="csv-template-structure"></a>Struktura šablony CSV
+
+Řádky ve stažené šabloně CSV jsou následující:
+
+- **Číslo verze**: první řádek obsahující číslo verze musí být zahrnut do souboru CSV pro nahrávání.
+- **Záhlaví sloupců**: formát záhlaví sloupců je &lt; *název* &gt; položky [PropertyName] &lt; *povinný nebo prázdný*&gt;. Například, `Email address to invite [inviteeEmail] Required`. Některé starší verze šablony mohou mít drobné variace.
+- **Řádek příklady**: v šabloně jsme zahrnuli řádek příkladů přípustných hodnot pro každý sloupec. Řádek příklady musíte odebrat a nahradit ho vlastními položkami.
+
+### <a name="additional-guidance"></a>Další doprovodné materiály
+
+- První dva řádky šablony nahrávání se nesmí odebrat ani změnit, jinak se nahrávání nedá zpracovat.
+- Požadované sloupce jsou uvedeny jako první.
+- Nedoporučujeme přidávat do šablony nové sloupce. Všechny další sloupce, které přidáte, se ignorují a nezpracovávají.
+- Doporučujeme si stáhnout nejnovější verzi šablony CSV, jak je to možné.
+
 ## <a name="prerequisites"></a>Požadavky
 
 Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozvánky odeslat. Účty se nesmí nacházet ve vaší organizaci. Můžete použít libovolný typ účtu, včetně sociálních účtů jako jsou adresy gmail.com nebo outlook.com.
@@ -38,11 +59,11 @@ Potřebujete alespoň dva testovací e-mailové účty, na které můžete pozv�
 1. Přihlaste se k Azure Portal pomocí účtu, který je správcem uživatele v organizaci.
 2. V navigačním podokně vyberte **Azure Active Directory**.
 3. V části **Spravovat**vyberte **Uživatelé** > **hromadné pozvánky**.
-4. Na stránce **hromadně pozvat uživatele** vyberte **Stáhnout** a získejte platný soubor. csv s vlastnostmi pozvánky.
+4. Na stránce **hromadně pozvat uživatele** vyberte **Stáhnout** a získejte platnou šablonu. csv s vlastnostmi pozvánky.
 
     ![Tlačítko pro stažení hromadného pozvání](media/tutorial-bulk-invite/bulk-invite-button.png)
 
-5. Otevřete soubor. csv a přidejte řádek pro každého uživatele typu Host. Požadované hodnoty jsou:
+5. Otevřete šablonu. csv a přidejte řádek pro každého uživatele typu Host. Požadované hodnoty jsou:
 
    * **E-mailová adresa pro pozvání** – uživatel, který dostane pozvánku
 

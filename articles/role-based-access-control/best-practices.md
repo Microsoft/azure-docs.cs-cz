@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726771"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735330"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Osvědčené postupy pro službu Azure RBAC
 
@@ -26,13 +26,13 @@ Tento článek popisuje některé osvědčené postupy pro použití řízení p
 
 ## <a name="only-grant-the-access-users-need"></a>Udělte jenom uživatelům přístup, kteří potřebují.
 
-Pomocí Azure RBAC můžete oddělit povinnosti v rámci svého týmu a udělit jenom přístup uživatelům, kteří potřebují k provádění svých úloh. Místo toho, abyste všem uživatelům udělili neomezená oprávnění v předplatném nebo prostředcích Azure, můžete povolit pouze určité akce v určitém oboru.
+Pomocí Azure RBAC můžete oddělit povinnosti v rámci týmu a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce. Místo toho, abyste všem uživatelům udělili neomezená oprávnění v předplatném nebo prostředcích Azure, můžete povolit pouze určité akce v určitém oboru.
 
-Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Následující diagram ukazuje navrhovaný způsob používání RBAC.
+Osvědčeným postupem při plánování strategie řízení přístupu je udělit uživatelům nejnižší úroveň oprávnění, kterou k práci potřebují. Následující diagram znázorňuje navrhovaný vzor pro používání Azure RBAC.
 
-![RBAC a nejnižší úroveň oprávnění](./media/best-practices/rbac-least-privilege.png)
+![Azure RBAC a nejnižší oprávnění](./media/best-practices/rbac-least-privilege.png)
 
-Informace o tom, jak přidat přiřazení rolí, najdete v tématu [Přidání nebo odebrání přiřazení rolí](role-assignments-portal.md).
+Informace o tom, jak přidat přiřazení rolí, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Omezení počtu vlastníků předplatného
 
