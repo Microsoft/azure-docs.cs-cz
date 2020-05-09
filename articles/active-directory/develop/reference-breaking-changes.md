@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535957"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871537"
 ---
 # <a name="whats-new-for-authentication"></a>Co je nového pro ověřování?
 
@@ -37,13 +37,31 @@ Systém ověřování mění a přidává funkce průběžně pro zlepšení dod
 
 V tuto chvíli není naplánováno žádné.  Níže najdete informace o změnách, které se nacházejí v produktu nebo přicházejí do produkčního prostředí.
 
+## <a name="may-2020"></a>Květen 2020
+
+### <a name="azure-government-endpoints-are-changing"></a>Mění se Azure Government koncové body.
+
+**Datum začátku platnosti**: 5. června 2020 (dokončuje se) 
+
+**Ovlivněné koncové body**: vše
+
+**Ovlivněný protokol**: všechny toky
+
+Od 1. června 2018 se oficiální autorita Azure Active Directory (AAD) pro Azure Government `https://login-us.microsoftonline.com` změnila `https://login.microsoftonline.us`z na. Tato změna se taky aplikuje na Microsoft 365e vysoké a DoD, které Azure Government AAD i služby. Pokud vlastníte aplikaci v rámci tenanta státní správy USA, je nutné aplikaci aktualizovat, aby se uživatelé v `.us` koncovém bodě mohli podepisovat.  
+
+Od 5. května Azure AD zahájí vynucování změny koncového bodu a zablokuje uživatelům státní správy, aby se přihlásili k aplikacím hostovaným v`microsoftonline.com`klientech státní správy USA pomocí veřejného koncového bodu ().  Ovlivněné aplikace začnou vidět chybu `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`. Tato chyba označuje, že se aplikace pokouší přihlásit se k veřejnému koncovému bodu veřejného cloudu na uživatele státní správy USA. Pokud je vaše aplikace ve veřejném cloudu a je určená pro podporu pro státní správu USA, budete muset [aplikaci aktualizovat, aby se podporovala explicitně](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). To může vyžadovat vytvoření nové registrace aplikace v cloudu pro státní správu USA. 
+
+Vynucování této změny se provádí postupným zavedením na základě toho, jak často se uživatelé z cloudu pro státní správu USA přihlásí k aplikaci – aplikace, které se přihlašují uživatelům z oblasti státní správy USA zřídka, uvidí vynucování jako první a aplikace, které často používají uživatelé státní správy USA, budou platit jako poslední. Očekáváme, že se vynucení dokončí napříč všemi aplikacemi v červnu 2020. 
+
+Další podrobnosti najdete v [příspěvku na blogu Azure Government na této migraci](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/). 
+
 ## <a name="march-2020"></a>Březen 2020
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>Hesla uživatelů budou omezena na 256 znaků.
 
 **Datum účinnosti**: 13. března 2020
 
-**Ovlivněné koncové body**: v 1.0 i v 2.0
+**Ovlivněné koncové body**: vše
 
 **Ovlivněný protokol**: všechny toky uživatelů.
 
