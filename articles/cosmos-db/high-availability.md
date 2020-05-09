@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0a67360ab840b7897c85a382dfc3965bd27f6a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81688059"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609217"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Zajištění vysoké dostupnosti pomocí Azure Cosmos DB
 
@@ -99,6 +99,10 @@ Tato funkce je k dispozici v následujících oblastech Azure:
 - USA – západ 2
 
 - Austrálie – východ
+
+- Japonsko – východ
+
+- Severní Evropa
 
 > [!NOTE]
 > Povolení Zóny dostupnosti pro jednu oblast účtu Azure Cosmos bude mít za následek poplatky, které se rovnají přidání další oblasti do svého účtu. Podrobnosti o cenách najdete na stránce s [cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) a s [náklady na více oblastí v Azure Cosmos DB](optimize-cost-regions.md) článcích.
