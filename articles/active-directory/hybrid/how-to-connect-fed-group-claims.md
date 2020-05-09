@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408398"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854138"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory (Public Preview)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurace deklarací identity skupin pro aplikace s Azure Active Directory
 
 Azure Active Directory může poskytnout informace o členství skupiny uživatelů v tokenech pro použití v aplikacích.  Podporovány jsou dva hlavní vzory:
 
-- Skupiny identifikované podle jejich atributu identifikátoru objektu Azure Active Directory (všeobecně dostupné)
-- Skupiny identifikované atributy sAMAccountName nebo GroupSID pro synchronizované skupiny a uživatele služby Active Directory (Public Preview)
+- Skupiny identifikované pomocí atributu identifikátoru objektu Azure Active Directory (OID)
+- Skupiny identifikované atributy sAMAccountName nebo GroupSID pro synchronizované skupiny a uživatele služby Active Directory (AD)
 
 > [!IMPORTANT]
-> Pro tuto funkci verze Preview si pamatujte na řadu aspektů:
+> Existuje několik aspektů, které je potřeba poznamenat pro tuto funkci:
 >
 >- Podpora pro použití atributů sAMAccountName a identifikátoru zabezpečení (SID) synchronizovaných z místního prostředí je navržená tak, aby umožňovala přesun stávajících aplikací od AD FS a dalších zprostředkovatelů identity. Skupiny spravované ve službě Azure AD neobsahují atributy potřebné k vygenerování těchto deklarací.
 >- Ve větších organizacích může počet skupin, kterých je uživatel členem, překročit limit, který Azure Active Directory do tokenu přidat. 150 skupiny pro tokeny SAML a 200 pro token JWT. To může vést k nepředvídatelným výsledkům. Pokud mají vaši uživatelé velký počet členství ve skupinách, doporučujeme použít možnost k omezení skupin vysílaných v deklaracích na příslušné skupiny pro danou aplikaci.  

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607194"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929209"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Rozšíření existujícího fondu hostitelů s novými hostiteli relací
 
@@ -58,7 +58,7 @@ Rozšíření fondu hostitelů přidáním virtuálních počítačů:
 
 7. Vyberte skupinu prostředků, ve které chcete vytvořit virtuální počítače, a pak vyberte oblast. Můžete zvolit aktuální oblast, kterou používáte, nebo novou oblast.
    
-8. Zadejte nový celkový počet hostitelů relací, které mají být **počet virtuálních počítačů**. Pokud například rozšíříte fond hostitelů z pěti hostitelů relace na osm, zadejte **8**. 
+8. Zadejte počet hostitelů relací, které chcete přidat do fondu hostitelů, do **počtu virtuálních počítačů**. Pokud například rozšíříte fond hostitelů o pět hostitelů, zadejte **5**.
    
     >[!NOTE]
     >Velikost ani bitovou kopii virtuálních počítačů nemůžete upravit, protože je důležité zajistit, aby všechny virtuální počítače ve fondu hostitelů měly stejnou velikost.

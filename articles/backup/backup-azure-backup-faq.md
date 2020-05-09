@@ -3,12 +3,12 @@ title: Odpovědi na časté dotazy
 description: 'Odpovědi na běžné dotazy týkající se funkcí služby Azure Backup, včetně trezorů služby Recovery Services, co může zálohovat, jak to funguje, šifrování a omezení. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156051"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801701"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Nejčastější dotazy
 
@@ -107,7 +107,7 @@ Windows 8 nebo novější | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 nebo novější | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Virtuální počítač Azure | 16 datových disků<br/> Pokud se chcete zaregistrovat k privátní verzi Preview virtuálních počítačů s víc než 16 disky (až 32 disků), napište nám na AskAzureBackupTeam@microsoft.com. <br><br> Datový disk až 32 TB
+Virtuální počítač Azure | 16 datových disků<br/> Pokud se chcete zaregistrovat do omezené verze Preview virtuálních počítačů s 16 disky (až 32 disků), napište nám naAskAzureBackupTeam@microsoft.com <br><br> Datový disk až 32 TB
 
 ### <a name="how-is-the-data-source-size-determined"></a>Jak se určuje velikost zdroje dat?
 

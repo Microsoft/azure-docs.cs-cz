@@ -1,6 +1,6 @@
 ---
-title: Kurz – konfigurace kumulovaných nasazení pro Azure Linux Virtual Machines
-description: V tomto kurzu se dozvíte, jak nastavit kanál průběžného nasazování (CD), který postupně aktualizuje skupinu Azure Linux Virtual Machines pomocí postupné strategie nasazení.
+title: Kurz – konfigurace kumulovaných nasazení pro virtuální počítače Azure Linux
+description: V tomto kurzu se naučíte nastavit kanál průběžného nasazování (CD). Tento kanál postupně aktualizuje skupinu virtuálních počítačů Azure Linux pomocí strategie postupné implementace.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,75 +12,86 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: 75888b1ebbda33891296fe0b54c5d204955e32a3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 28f093bc464a45862d3b253d628b7ae03810f81a
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113475"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871234"
 ---
-# <a name="tutorial---configure-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace postupné strategie nasazení pro Azure Linux Virtual Machines
+# <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Kurz – konfigurace strategie kumulativního nasazení pro virtuální počítače Azure Linux
 
-Azure DevOps je integrovaná služba Azure, která automatizuje každou část procesu DevOps s průběžnou integrací a průběžným doručováním pro libovolný prostředek Azure.
-Ať už vaše aplikace používá virtuální počítače, webové aplikace, Kubernetes nebo jakýkoli jiný prostředek, můžete implementovat infrastrukturu jako kód, průběžnou integraci, průběžné testování, průběžné doručování a nepřetržité monitorování s využitím Azure a Azure DevOps.  
+Azure DevOps je integrovaná služba Azure, která automatizuje každou část procesu DevOps pro libovolný prostředek Azure. Ať už vaše aplikace používá virtuální počítače, webové aplikace, Kubernetes nebo jakýkoli jiný prostředek, můžete implementovat infrastrukturu jako kód (IaaC), průběžnou integraci, průběžné testování, průběžné doručování a nepřetržité monitorování s využitím Azure a Azure DevOps.
 
-![AzDevOps_portalView](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png) 
+![Azure Portal s Azure DevOps vybraný v části služby](media/tutorial-devops-azure-pipelines-classic/azdevops-view.png)
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastruktura jako služba (IaaS) – konfigurace CI/CD
 
-## <a name="iaas---configure-cicd"></a>IaaS – konfigurace CI/CD 
-Azure Pipelines poskytuje kompletní, plně vybavenou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů. Kanál průběžného doručování pro virtuální počítač Azure můžete nakonfigurovat přímo z Azure Portal. Tento dokument obsahuje kroky spojené s nastavením kanálu CI/CD pro zavedení nasazení na více počítačů z Azure Portal. Můžete se také podívat na jiné strategie, jako je [Kanárské](https://aka.ms/AA7jdrz) a [modrá-zelená](https://aka.ms/AA83fwu), které jsou podporované předem z Azure Portal. 
+Azure Pipelines poskytuje plnohodnotnou sadu nástrojů pro automatizaci CI/CD pro nasazení do virtuálních počítačů. Kanál nepřetržitého doručování pro virtuální počítač Azure můžete nakonfigurovat z Azure Portal.
 
+Tento článek popisuje, jak nastavit kanál CI/CD pro zavedení nasazení na více počítačů z Azure Portal. Azure Portal také podporuje jiné strategie, jako je například [Kanárské](https://aka.ms/AA7jdrz) and [Blue-zelená](https://aka.ms/AA83fwu).
 
-**Konfigurovat CI/CD na Virtual Machines**
+### <a name="configure-cicd-on-virtual-machines"></a>Konfigurace CI/CD na virtuálních počítačích
 
-Virtuální počítače se dají přidat jako cíle do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) a můžou se zaměřit na více než počítačovou aktualizaci. Po nasazení poskytuje **Historie nasazení** v rámci skupiny nasazení možnost sledovatelnost z virtuálního počítače do kanálu a pak na potvrzení. 
- 
+Virtuální počítače můžete přidat jako cíle do [skupiny nasazení](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). Pak je můžete směrovat na aktualizace pro více počítačů. Po nasazení na počítače můžete zobrazit **historii nasazení** v rámci skupiny nasazení. Toto zobrazení umožňuje trasovat z virtuálního počítače do kanálu a pak na potvrzení.
 
-**Postupná nasazení**: postupné nasazení nahrazuje instance předchozí verze aplikace s instancemi nové verze aplikace v pevné sadě počítačů (kumulovaná sada) v každé iteraci. Podíváme se, jak můžete nakonfigurovat postupnou aktualizaci virtuálních počítačů.  
-Můžete nakonfigurovat kumulativní aktualizace pro vaše "**virtuální počítače**" v rámci Azure Portal pomocí možnosti průběžné doručování. 
+### <a name="rolling-deployments"></a>Postupné nasazení
 
-Tady je podrobný návod. 
-1. Přihlaste se ke svému Azure Portal a přejděte k virtuálnímu počítači. 
-2. V levém podokně virtuální počítač přejděte do nabídky **průběžné doručování** . Pak klikněte na **Konfigurovat**. 
+V každé iteraci nahrazuje postupné nasazení instance předchozí verze aplikace. Nahrazuje je instancemi nové verze v pevně dané sadě počítačů (hromadná sada). Následující návod ukazuje, jak nakonfigurovat postupnou aktualizaci virtuálních počítačů.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. Na panelu Konfigurace klikněte na "DevOps organizace Azure" a vyberte existující účet, nebo ho vytvořte. Pak vyberte projekt, pod kterým chcete kanál nakonfigurovat.  
+Pomocí možnosti průběžné doručování můžete ve Azure Portal nakonfigurovat kumulativní aktualizace na své virtuální počítače. Tady je podrobný návod:
 
+1. Přihlaste se k Azure Portal a přejděte k virtuálnímu počítači.
+1. V levém podokně nastavení virtuálního počítače vyberte **průběžné doručování**. Pak vyberte **Konfigurovat**.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. Skupina nasazení je logická sada cílových počítačů nasazení, které reprezentují fyzická prostředí; například "dev", "test", "UAT" a "produkční". Můžete vytvořit novou skupinu nasazení nebo vybrat existující skupinu nasazení. 
-5. Vyberte kanál sestavení, který publikuje balíček, který se má nasadit do virtuálního počítače. Všimněte si, že publikovaný balíček by měl mít skript nasazení _Deploy. ps1_ nebo _Deploy.sh_ ve `deployscripts` složce v kořenovém adresáři balíčku. Tento skript nasazení se spustí v kanálu Azure DevOps v době běhu.
-6. Vyberte strategii nasazení dle vašeho výběru. V takovém případě umožňuje vybrat možnost ' válcování '.
-7. Volitelně můžete označit počítač pomocí role. Například "Web", "DB" atd. To vám pomůže cílit jenom na virtuální počítače, které mají konkrétní roli.
-8. Kliknutím na tlačítko **OK** v dialogovém okně nakonfigurujte kanál průběžného doručování. 
-9. Po dokončení budete mít pro nasazení do virtuálního počítače nakonfigurovaný kanál průběžného doručování.  
+   ![Podokno nepřetržité doručování pomocí tlačítka konfigurovat](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
+1. Na panelu konfigurace vyberte možnost **organizace Azure DevOps** a zvolte existující účet, nebo vytvořte nový. Pak vyberte projekt, pod kterým chcete kanál nakonfigurovat.  
 
-   ![AzDevOps_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
-10. Uvidíte, že probíhá nasazení na virtuální počítač. Kliknutím na odkaz můžete přejít na kanál. Kliknutím na **Release-1** Zobrazte nasazení. Případně můžete kliknout na **Upravit** a upravit definici kanálu vydání. 
-11. Pokud máte několik virtuálních počítačů, které se mají nakonfigurovat, opakujte kroky 2-4 pro přidání dalších virtuálních počítačů do skupiny nasazení. Všimněte si, že pokud vyberete skupinu nasazení, pro kterou už existuje běh kanálu, virtuální počítač se přidá do skupiny nasazení bez vytváření nových kanálů. 
-12. Po dokončení klikněte na definici kanálu, přejděte k organizaci Azure DevOps a klikněte na **Upravit** kanál vydání. 
-   ![AzDevOps_edit_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
-13. Klikněte na úlohu propojit **1, 1 úloha** ve fázi **vývoje** . Klikněte na fázi **nasazení** .
-   ![AzDevOps_deploymentGroup](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
-14. V podokně Konfigurace na pravé straně můžete určit počet počítačů, které chcete paralelně nasadit v každé iteraci. V případě, že chcete nasadit na více počítačů najednou, můžete ho zadat pomocí posuvníku z podmínek v procentech.  
+   ![Panel nepřetržitého doručování](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-15. Úloha spustit skript pro nasazení ve výchozím nastavení spustí skript nasazení _Deploy. ps1_ nebo _Deploy.sh_ ve složce deployscripts v kořenovém adresáři publikovaného balíčku.  
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. Skupina nasazení je logická sada cílových počítačů nasazení, které reprezentují fyzická prostředí. Příklady jsou dev, test, UAT a produkce. Můžete vytvořit novou skupinu pro nasazení nebo vybrat některou z existujících.
+1. Vyberte kanál sestavení, který publikuje balíček, který se má nasadit do virtuálního počítače. Publikovaný balíček by měl mít skript nasazení s názvem Deploy. ps1 nebo deploy.sh ve složce deployscripts v kořenové složce balíčku. Kanál spustí tento skript nasazení.
+1. V **strategii nasazení**vyberte možnost **válcování**.
+1. Volitelně můžete označit každý počítač jeho rolí. Příklady jsou značky "Web" a "DB". Tyto značky vám pomůžou cílit jenom na virtuální počítače, které mají konkrétní roli.
+1. Vyberte **OK** a nakonfigurujte kanál průběžného doručování.
+1. Po dokončení konfigurace máte k dispozici kanál nepřetržitého doručování, který je nakonfigurován pro nasazení na virtuální počítač.  
+
+   ![Panel nepřetržitého doručování znázorňující historii nasazení](media/tutorial-devops-azure-pipelines-classic/azure-devops-deployment-history.png)
+
+1. Zobrazí se podrobnosti o nasazení pro virtuální počítač. Můžete vybrat odkaz pro přechod na kanál, **Release-1** pro zobrazení nasazení nebo **Upravit** pro úpravu definice kanálu vydání.
+
+1. Pokud konfigurujete více virtuálních počítačů, opakujte kroky 2 až 4 pro další virtuální počítače, které chcete přidat do skupiny nasazení. Pokud vyberete skupinu nasazení, která už má spuštění kanálu, virtuální počítače se přidají jenom do skupiny nasazení. Nevytvoří se žádné nové kanály.
+1. Po dokončení konfigurace vyberte definici kanálu, přejděte k organizaci Azure DevOps a vyberte **Upravit** pro kanál verze.
+
+   ![Úprava postupného kanálu](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline.png)
+
+1. Vyberte **1 úlohu, 1 úloha** ve fázi **vývoje** . Vyberte fázi **nasazení** .
+
+   ![Postup při zavádění úloh kanálu pomocí vybrané úlohy nasazení](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling-pipeline-tasks.png)
+
+1. V podokně Konfigurace úplně vpravo můžete zadat počet počítačů, které chcete paralelně nasadit v každé iteraci. Pokud chcete nasadit na více počítačů najednou, můžete pomocí posuvníku určit počet počítačů jako procenta.  
+
+1. Úloha spustit skript pro nasazení ve výchozím nastavení spustí skript nasazení Deploy. ps1 nebo deploy.sh. Skript se nachází ve složce deployscripts v kořenové složce publikovaného balíčku.
+
+   ![Podokno artefakty zobrazující deploy.sh ve složce deployscripts](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Další strategie nasazení
 
 - [Konfigurovat strategii pro Kanárské nasazení](https://aka.ms/AA7jdrz)
 - [Konfigurace strategie nasazení Blue-zelená](https://aka.ms/AA83fwu)
 
+## <a name="azure-devops-projects"></a>Azure DevOps Projects
+
+Můžete snadno začít pracovat s Azure. Pomocí Azure DevOps Projects spusťte svou aplikaci v jakékoli službě Azure ve třech krocích, a to tak, že vyberete:
+
+- Jazyk aplikace
+- Modul runtime
+- Služba Azure
  
-## <a name="azure-devops-project"></a>Projekt Azure DevOps 
-Začněte pracovat s Azure snadněji než kdykoli dřív.
+[Další informace](https://azure.microsoft.com/features/devops-projects/).
  
-Pomocí DevOps Projects spusťte aplikaci v jakékoli službě Azure v rámci pouhých tří kroků: Vyberte jazyk aplikace, modul runtime a službu Azure.
- 
-[Další informace](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>Další materiály a zdroje informací 
-- [Nasazení do Azure Virtual Machines pomocí projektu DevOps](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+## <a name="additional-resources"></a>Další zdroje
+
+- [Nasazení na virtuální počítače Azure pomocí Azure DevOps Projects](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Implementace průběžného nasazování vaší aplikace do sady škálování virtuálních počítačů Azure](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

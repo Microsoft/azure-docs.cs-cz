@@ -11,12 +11,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 03/24/2020
-  ms.openlocfilehash: 2df970e3aa36f69dc6f2d990ee307db6536a8ac9
-  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.openlocfilehash: 8bb9c305a67ca1d87de31188d8455e210a414a42
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/26/2020
-  ms.locfileid: "80282031"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82234158"
 highlightedContent:
   items:
   - title: Přehled zásad správného řízení
@@ -84,7 +84,7 @@ productDirectory:
     - url: ../cost-management-billing/index.yml
       text: Zobrazit víc >
 tools:
-  title: ukázky
+  title: Ukázky
   summary: Definice zásad, podrobné plány dodržování předpisů, dotazy na prostředky a další
   items:
   - title: Azure Policy
@@ -107,7 +107,7 @@ additionalContent:
       links:
       - text: Azure CLI
         url: /cli/azure/account/management-group
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: /powershell/module/az.resources/#resources
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/overview/azure/managementgroups
@@ -119,13 +119,13 @@ additionalContent:
       links:
       - text: Azure CLI
         url: /cli/azure/policy
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: /powershell/module/az.resources/#policies
         note: (zásady)
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: /powershell/module/az.policyinsights#policy_insights
         note: (Policy Insights)
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
         note: (konfigurace hosta)
       - text: REST
@@ -165,9 +165,9 @@ additionalContent:
       links:
       - text: Funkce podrobného plánu
         url: ./blueprints/reference/blueprint-functions.md
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: /powershell/module/az.blueprint/#blueprint
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: https://www.powershellgallery.com/packages/Az.Blueprint
         note: (modul PS Gallery)
       - text: Sada Azure SDK pro .NET
@@ -178,11 +178,8 @@ additionalContent:
       links:
       - text: Azure CLI
         url: /cli/azure/ext/resource-graph/graph
-      - text: Azure PowerShell
+      - text: Azure Powershell
         url: /powershell/module/az.resourcegraph/
-      - text: Azure PowerShell
-        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
-        note: (modul PS Gallery)
       - text: Sada Azure SDK pro .NET
         url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
       - text: Sada Azure SDK pro .NET
@@ -204,6 +201,8 @@ additionalContent:
         note: (Gem)
       - text: REST
         url: /rest/api/azure-resourcegraph/
+      - text: Šablony Resource Manageru
+        url: /azure/templates/microsoft.resourcegraph/allversions
     - title: Cost Management
       links:
       - text: REST

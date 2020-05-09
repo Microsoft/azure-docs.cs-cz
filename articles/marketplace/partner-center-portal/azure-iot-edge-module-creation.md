@@ -1,36 +1,30 @@
 ---
-title: Vytvoření nabídky modulu Azure IoT Edge s partnerským centrem – Azure Marketplace
-description: Naučte se, jak vytvořit nabídku modulu IoT Edge v Azure Marketplace pomocí partnerského centra.
+title: Vytvoření nabídky modulu Azure IoT Edge s partnerským centrem v Azure Marketplace
+description: Naučte se vytvářet, konfigurovat a publikovat nabídku IoT Edge modulu v Azure Marketplace pomocí partnerského centra.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869150"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857669"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>Vytvoření nabídky modulu IoT Edge
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>Vytvoření, konfigurace a publikování nabídky modulu IoT Edge v Azure Marketplace
 
-> [!IMPORTANT]
-> Přesouváme správu nabídek IoT Edge modulů z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v tématu [IoT Edge přehled nabídky modul – přehled](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) pro portál partnerů cloudu ke správě nabídek.
-
-Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet věcí (IoT) Edge pro Azure Marketplace.
-
-Než budete moct vytvořit nabídku modulu IoT Edge, musíte mít účet komerčního obchodu Marketplace v partnerském centru. Pokud jste ho ještě nevytvořili, přečtěte si téma [Vytvoření účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Tento článek popisuje, jak vytvořit a publikovat nabídku modulu Internet věcí (IoT) Edge pro Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-1. Přihlaste se do Partnerského centra.
-2. V navigační nabídce vlevo vyberte **obchodní Marketplace** > **Přehled**.
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka** > **IoT Edge modul**.
 
-    ![Znázorňuje levou navigační nabídku.](./media/cs-menu-overview.png)
-
-3. Vyberte **+ Nový nabídka** > **IoT Edge modul**. Zobrazí se dialogové okno **Nová nabídka** .
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
@@ -41,14 +35,14 @@ Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve 
 
 - Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- ID nabídky nelze změnit po výběru možnost vytvořit.
+- ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-Zadejte **alias nabídky**. Toto je název, který se používá k odkazování na nabídku v partnerském centru.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 - Po výběru **vytvořit**se tato možnost nedá změnit.
 
-Po zadání těchto dvou hodnot vyberte **vytvořit** a potom pokračujte na další stránku Přehled nabídky.
+Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-overview"></a>Přehled nabídky
 
@@ -86,10 +80,10 @@ Tady jsou některé další zdroje informací o vedoucím řízení:
 
 - [Přehled řízení vedoucích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken).
 
-Než budete pokračovat k další části, můžete vybrat možnost **Uložit koncept** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -132,7 +126,7 @@ Tady definujete podrobnosti nabídky, které se zobrazí na webu Marketplace. To
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 

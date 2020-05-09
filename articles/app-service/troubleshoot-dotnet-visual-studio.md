@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891054"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926846"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s aplikací v Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -634,7 +634,7 @@ Další informace o vzdáleném ladění pro aplikace App Service a WebJobs najd
 * [Úvod do vzdáleného ladění v Azure App Service část 3 – prostředí s více instancemi a GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Ladění webových úloh (video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Pokud vaše aplikace používá webové rozhraní API Azure nebo Mobile Services back-endu a potřebujete je ladit, přečtěte si téma [ladění .NET back-endu v aplikaci Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx).
+Pokud vaše aplikace používá webové rozhraní API Azure nebo Mobile Services back-endu a potřebujete je ladit, přečtěte si téma [ladění .NET back-endu v aplikaci Visual Studio](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio).
 
 ### <a name="tracing-in-aspnet-applications"></a>Trasování v aplikacích ASP.NET
 K dispozici nejsou žádná důkladná a aktuální Úvod k ASP.NET trasování na internetu. Nejlepší z nich je začít se starými úvodními materiály vytvořenými pro webové formuláře, protože MVC zatím neexistovalo a doplňují je s novějšími blogových příspěvků, které se zaměřují na konkrétní problémy. V některých dobrých místech ke spuštění jsou následující zdroje:
@@ -647,7 +647,7 @@ K dispozici nejsou žádná důkladná a aktuální Úvod k ASP.NET trasování 
   Informace o posluchačích trasování, ale nezmiňuje [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
 * [Návod: Integrace trasování ASP.NET pomocí trasování System. Diagnostics](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Tento článek je také starý, ale obsahuje několik dalších informací, které úvodní článek nezabývá.
-* [Trasování v zobrazeních ASP.NET MVC Razor](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [Trasování v zobrazeních ASP.NET MVC Razor](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   Kromě trasování v zobrazeních Razor vystavení také vysvětluje, jak vytvořit filtr chyb, aby bylo možné protokolovat všechny neošetřené výjimky v aplikaci MVC. Informace o tom, jak protokolovat všechny neošetřené výjimky v aplikaci webových formulářů, naleznete v příkladu Global. asax v části [kompletní příklad pro obslužné rutiny chyb](/previous-versions/bb397417(v=vs.140)) na webu MSDN. V MVC nebo webových formulářích, pokud chcete zaznamenat určité výjimky, ale nechat výchozí nastavení architektury platit pro ně, můžete zachytit a znovu vyvolat jako v následujícím příkladu:
 
     ```csharp

@@ -5,20 +5,30 @@ services: automation
 ms.subservice: update-management
 ms.date: 11/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 29a72eb1fe7b8be18cd2160fc63160e408378585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf4c156d2bf9c205bd7545a96b5314dd43b2d02c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617445"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690779"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Použití dynamických skupin s Update Managementem
 
-Update Management umožňuje cílit na dynamickou skupinu virtuálních počítačů Azure nebo mimo Azure pro nasazení aktualizací. Tyto skupiny definované dotazy jsou vyhodnocovány v době nasazení, takže není nutné upravovat nasazení, aby bylo možné přidat počítače.
+Update Management umožňuje cílit na dynamickou skupinu virtuálních počítačů Azure nebo mimo Azure pro nasazení aktualizací. Použití dynamické skupiny vám umožní upravit nasazení a aktualizovat počítače.
 
-## <a name="azure-machines"></a>Počítače Azure
+> [!NOTE]
+> Dynamické skupiny nefungují s klasickými virtuálními počítači.
 
-Dynamické skupiny nefungují s klasickými virtuálními počítači. Při definování dotazu lze společně použít následující položky k naplnění dynamické skupiny:
+V Azure Portal můžete definovat dynamické skupiny pro počítače Azure nebo mimo Azure ze **správy aktualizací** . Viz [Správa aktualizací pro několik virtuálních počítačů Azure](manage-update-multi.md).
+
+Dynamická skupina je definována dotazem, který Azure Automation vyhodnocuje v době nasazení. I když dotaz dynamické skupiny načte velký počet počítačů, Azure Automation může najednou zpracovat maximálně 1000 počítačů. Viz [Limity, kvóty a omezení předplatného a služeb Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#update-management). 
+
+> [!NOTE]
+> Pokud očekáváte, že aktualizujete více než 1000 počítačů, doporučujeme rozdělit aktualizace mezi více plánů aktualizací. 
+
+## <a name="define-dynamic-groups-for-azure-machines"></a>Definování dynamických skupin pro počítače Azure
+
+Při definování dynamického dotazu skupiny pro počítače Azure můžete použít následující položky k naplnění dynamické skupiny:
 
 * Předplatné
 * Skupiny prostředků
@@ -27,13 +37,13 @@ Dynamické skupiny nefungují s klasickými virtuálními počítači. Při defi
 
 ![Vybrat skupiny](./media/automation-update-management/select-groups.png)
 
-Pokud chcete zobrazit náhled výsledků dynamické skupiny, klikněte na **Náhled**. Ve verzi Preview se zobrazuje členství ve skupině v aktuálním čase. V tomto příkladu hledáme počítače, které mají značku `Role` pro skupinu **BackendServer**. Pokud je tato značka přidána na více počítačů, přidají se do jakéhokoli budoucího nasazení v této skupině.
+Pokud chcete zobrazit náhled výsledků dotazu dynamické skupiny, klikněte na **Náhled**. Ve verzi Preview se zobrazuje členství ve skupině v aktuálním čase. V tomto příkladu hledáme počítače, které mají značku `Role` pro skupinu **BackendServer**. Pokud je tato značka přidána na více počítačů, přidají se do jakéhokoli budoucího nasazení v této skupině.
 
 ![skupiny náhledu](./media/automation-update-management/preview-groups.png)
 
-## <a name="non-azure-machines"></a>Počítače mimo Azure
+## <a name="define-dynamic-groups-for-non-azure-machines"></a>Definování dynamických skupin pro počítače mimo Azure
 
-Pro počítače, které nejsou v Azure, se při vytváření dynamické skupiny používají taky uložená hledání, označovaná jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Vytvořenou skupinu můžete vybrat ze seznamu uložených hledání. Kliknutím na **Náhled** zobrazíte v daném čase počítače v uloženém hledání.
+Dynamická skupina pro počítače mimo Azure používá uložená hledání, označované taky jako skupiny počítačů. Informace o tom, jak vytvořit uložené hledání, najdete v tématu [Vytvoření skupiny počítačů](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Po vytvoření uloženého hledání ho můžete vybrat ze seznamu uložených hledání ve **správě aktualizací** v Azure Portal. Kliknutím na **Náhled** zobrazíte v uložených hledáních počítače.
 
 ![Vybrat skupiny](./media/automation-update-management/select-groups-2.png)
 
