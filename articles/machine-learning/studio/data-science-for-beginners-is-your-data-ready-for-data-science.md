@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8eb9c5a182c17815d4efcf171cc99b1e9f5bc89e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73837804"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930161"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Jsou data připravená pro vědecké zkoumání?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: řada pro datové vědy pro začátečníky
@@ -104,4 +104,4 @@ Nezapomeňte se podívat na další čtyři videa v *oblasti datové vědy pro z
 
 ## <a name="next-steps"></a>Další kroky
 * [Vyzkoušejte si první experiment pro datové vědy s Machine Learning Studio (Classic)](create-experiment.md)
-* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Seznámení s Machine Learningem Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

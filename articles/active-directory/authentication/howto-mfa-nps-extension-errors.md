@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653713"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611377"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>řešení chybových zpráv z rozšíření NPS pro Azure Multi-Factor Authentication
 
@@ -66,9 +67,9 @@ Pokud dojde k chybám s rozšířením NPS pro Azure Multi-Factor Authentication
 
 V některých případech mohou uživatelé obdržet zprávu od Multi-Factor Authentication, protože žádost o ověření se nezdařila. Tyto chyby nejsou v produktu konfigurace, ale jedná se o úmyslné výstrahy s vysvětlením, proč byla žádost o ověření zamítnuta.
 
-| Kód chyby | Chybová zpráva | Doporučené kroky | 
+| Kód chyby | Chybová zpráva | Doporučené kroky |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Nesprávný kód entered\OATH kódu | Uživatel zadal nesprávný kód. Zkuste to znovu tak, že si vyžádáte nový kód nebo se znovu přihlásíte. | 
+| **OathCodeIncorrect** | Nesprávný kód entered\OATH kódu | Uživatel zadal nesprávný kód. Zkuste to znovu tak, že si vyžádáte nový kód nebo se znovu přihlásíte. |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Bylo dosaženo maximálního povoleného opakování kódu. | Uživatel nedokázal ověřit výzvu příliš mnohokrát. V závislosti na nastavení může být potřeba odblokovat ho správce hned teď.  |
 | **SMSAuthFailedWrongCodeEntered** | Chybné zadání kódu/textová zpráva hesla není správná. | Uživatel zadal nesprávný kód. Zkuste to znovu tak, že si vyžádáte nový kód nebo se znovu přihlásíte. |
 

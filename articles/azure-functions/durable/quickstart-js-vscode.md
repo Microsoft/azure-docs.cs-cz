@@ -3,20 +3,18 @@ title: Vytvoření první trvalé funkce v Azure pomocí JavaScriptu
 description: Vytvořte a publikujte funkci trvalosti Azure pomocí Visual Studio Code.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257644"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889677"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Vytvoření první odolné funkce v JavaScriptu
 
 *Durable Functions* je rozšíření [Azure Functions](../functions-overview.md) , které umožňuje psát stavové funkce v prostředí bez serveru. Toto rozšíření za vás spravuje stav, kontrolní body a restartování.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 V tomto článku se naučíte, jak používat rozšíření Visual Studio Code Azure Functions k místnímu vytvoření a otestování trvalé funkce "Hello World".  Tato funkce provede orchestraci a zřetězení volání dalších funkcí. Kód funkce potom publikujete do Azure.
 
@@ -44,7 +42,7 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 
 1. V Visual Studio Code stisknutím klávesy F1 (nebo Ctrl/Cmd + Shift + P) otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create New Project...`.
 
-    ![Funkce Create](media/quickstart-js-vscode/functions-create-project.png)
+    ![Vytvoření funkce](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Zvolte prázdné umístění složky pro váš projekt a zvolte **možnost vybrat**.
 
@@ -61,7 +59,7 @@ V případě potřeby Visual Studio Code nainstaluje Azure Functions Core Tools.
 
 V kořenové složce se vytvoří také soubor Package. JSON.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Povolit režim kompatibility Azure Functions v2
+### <a name="enable-compatibility-mode"></a>Povolit režim kompatibility
 
 V současné době Durable Functions JavaScriptu vyžadovat, aby byl povolen režim kompatibility Azure Functions v2.
 
@@ -165,7 +163,7 @@ Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na
     | Vyberte účet úložiště. | Vytvoření nového účtu úložiště |  |
     | Zadejte název nového účtu úložiště. | *jedinečný název* | Název účtu úložiště, který se má vytvořit |
     | Výběr skupiny prostředků | *jedinečný název* | Název skupiny prostředků, která se má vytvořit |
-    | Výběr umístění | *věřitel* | Vyberte oblast, kterou chcete zavřít. |
+    | Výběr umístění | *.* | Vyberte oblast, kterou chcete zavřít. |
 
 1. Na panelu **Terminál** zkopírujte adresu URL koncového bodu vaší funkce aktivované protokolem HTTP.
 
@@ -204,7 +202,7 @@ Po ověření správného fungování funkce na místním počítači je na čas
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Povolit režim kompatibility Azure Functions v2
+### <a name="enable-compatibility-mode"></a>Povolit režim kompatibility
 
 V aplikaci v Azure musí být povolená stejná kompatibilita Azure Functions v2, kterou jste povolili místně.
 

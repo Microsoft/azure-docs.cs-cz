@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: d378ece1eda906a30ec33e2cf27ad59df473b5c7
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
-ms.translationtype: HT
+ms.openlocfilehash: a0d05c56670c54aca25232a86b5a0e89d2f0bcfd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779905"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983648"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -53,7 +53,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 **vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5 nebo 6,7.
 **Oprávnění (posouzení)** | vCenter Server účet jen pro čtení.
 **Oprávnění (zjišťování aplikací)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolená pro **virtuální počítače > operace hostů**.
-**Oprávnění (Vizualizace závislostí)** | Účet serveru Center s přístupem jen pro čtení a oprávnění povolených pro**operace hosta** **virtuálních počítačů** > .
+**Oprávnění (Vizualizace závislostí)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolených pro**operace hosta** **virtuálních počítačů** > .
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Požadavky zařízení Azure Migrate
