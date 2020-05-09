@@ -4,26 +4,26 @@ description: Výjimky brány firewall serveru vyžadované Application Insights
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/23/2020
-ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105841"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652743"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP adresy, které používá Application Insights a Log Analytics
 Služba [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) používá několik IP adres. Pokud je aplikace, kterou sledujete, hostovaná za bránou firewall, může být potřeba tyto adresy znát.
 
 > [!NOTE]
 > I když jsou tyto adresy statické, je možné, že je budete muset kdykoli změnit. Veškerý provoz Application Insights představuje odchozí provoz s výjimkou monitorování dostupnosti a webhooků, které vyžadují pravidla brány firewall pro příchozí připojení.
-> 
-> 
 
 > [!TIP]
-> Přihlaste se k odběru této stránky jako informačního kanálu RSS přidáním https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom do oblíbeného čtecího modulu RSS/Atom, abyste se dostali k oznámení o nejnovějších změnách.
-> 
-> 
+> Pokud používáte skupiny zabezpečení sítě Azure, můžete ke správě přístupu použít [značky síťové služby](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+) Azure. Pokud spravujete přístup pro hybridní a místní prostředky, můžete si stáhnout stejné seznamy IP adres jako [soubory JSON](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , které se aktualizují každý týden:. Chcete-li pokrýt všechny výjimky v tomto článku, musíte použít značky služby: ' Action ', ' ApplicationInsightsAvailability ', ' AzureMonitor '.
+
+Alternativně se můžete přihlásit k odběru této stránky jako informační kanál RSS přidáním https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom do oblíbeného čtecího modulu RSS/Atom, abyste se dostali k oznámení o nejnovějších změnách.
+
 
 ## <a name="outgoing-ports"></a>Odchozí porty
 Musíte otevřít některé Odchozí porty v bráně firewall serveru, aby sada SDK Application Insights a/nebo Monitorování stavu mohla odesílat data na portál:
@@ -178,6 +178,13 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
+Azure US Government (Not needed if you are an Azure Public cloud customer)
+
+20.140.48.160/27
+20.140.56.160/27
+20.140.64.160/27
+20.140.72.160/27
+52.127.49.96/27
 ```  
 
 ## <a name="application-insights--log-analytics-apis"></a>Rozhraní API pro Application Insights & Log Analytics
@@ -220,11 +227,11 @@ Poznámka: doména *. loganalytics.io je vlastněna týmem Log Analytics.
 | CDN SDK pro Application Insights JS | az416426.vo.msecnd.net | dynamic | 80,443 |
 | Application Insights Java SDK | aijavasdk.blob.core.windows.net | dynamic | 80,443 |
 
-## <a name="alert-webhooks"></a>Webhooky výstrahy
+## <a name="action-group-webhooks"></a>Webhooky skupiny akcí
 
 | Účel | IP adresa | Porty
 | --- | --- | --- |
-| Zobrazení výstrah | 23.96.11.4 | 443 |
+| Zobrazení výstrah | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
 ## <a name="profiler"></a>Profiler
 
