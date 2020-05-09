@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730387"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583679"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Vysvětlení a volání přímých metod ze služby IoT Hub
 
@@ -83,11 +83,19 @@ Hodnota poskytnutá jako `connectTimeoutInSeconds` v požadavku je doba, po kter
 
 #### <a name="example"></a>Příklad
 
-Příklad barebone pomocí `curl`. viz níže. 
+Tento příklad vám umožní bezpečně iniciovat požadavek na vyvolání přímé metody v zařízení IoT, které je zaregistrované ve službě Azure IoT Hub.
+
+Začněte tím, že pomocí [rozšíření Microsoft Azure IoT pro Azure CLI](https://github.com/Azure/azure-iot-cli-extension) vytvoříte SharedAccessSignature. 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+Potom nahraďte hlavičku autorizace nově `iothubName`vytvořeným SharedAccessSignature a pak změňte parametry, `deviceId` `methodName` a `payload` tak, aby odpovídaly vaší implementaci v níže uvedeném příkazu `curl` příkladu.  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,6 +108,14 @@ curl -X POST \
 }'
 ```
 
+Spusťte upravený příkaz pro vyvolání zadané přímé metody. Úspěšné požadavky vrátí stavový kód HTTP 200.
+
+> [!NOTE]
+> Výše uvedený příklad ukazuje vyvolání přímé metody v zařízení.  Pokud chcete vyvolat přímou metodu v modulu IoT Edge, je nutné upravit požadavek adresy URL, jak je uvedeno níže:
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>Odpověď
 
 Back-endové aplikace obdrží odpověď, která se skládá z následujících položek:

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430348"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583767"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Vytvoření privátního koncového bodu pomocí Azure PowerShell
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení. 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
 1. Ve vzdálené ploše myVM otevřete PowerShell.
-2. Zadejte `nslookup myserver.database.windows.net`. 
+2. Zadejte `nslookup myserver.database.windows.net`. Nezapomeňte nahradit `myserver` názvem SQL serveru.
 
     Zobrazí se zpráva podobná této:
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. Nainstalovat SQL Server Management Studio
-4. V připojení k serveru zadejte nebo vyberte tyto informace: nastavení typu hodnoty serveru vyberte možnost databázový stroj.
-      Název serveru vyberte myserver.database.windows.net uživatelské jméno zadejte uživatelské jméno zadané během vytváření.
-      Heslo zadejte heslo, které jste zadali při vytváření.
-      Zapamatování hesla vyberte Ano.
-5. Vyberte Connect (Připojit).
-6. Procházet databáze z levé nabídky 
-7. Volitelně Vytvoření nebo dotazování informací z MyDatabase
+    
+3. Nainstalujte SQL Server Management Studio.
+4. V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
+
+    | Nastavení | Hodnota |
+    | --- | --- |
+    | Typ serveru | Databázový stroj |
+    | Název serveru | myserver.database.windows.net |
+    | Uživatelské jméno | Zadejte uživatelské jméno, které jste zadali při vytváření. |
+    | Heslo | Zadejte heslo, které jste zadali při vytváření. |
+    | Zapamatovat heslo | Ano |
+    
+5. Vyberte **Connect** (Připojit).
+6. V nabídce vlevo vyberte **databáze** . 
+7. Volitelně Vytvoření nebo dotazování informací z MyDatabase.
 8. Zavřete připojení ke vzdálené ploše pro *myVM*. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 

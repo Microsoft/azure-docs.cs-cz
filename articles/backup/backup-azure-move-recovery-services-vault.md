@@ -4,12 +4,12 @@ description: Pokyny, jak přesunout trezor služby Recovery Services napříč p
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.openlocfilehash: 3cfd442d49de2661d68de3c4e4b3575119504eb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93c3f2db6500023755796d50e71d44a427a2ce82
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804414"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597990"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Přesunutí trezoru Recovery Services napříč předplatnými Azure a skupinami prostředků
 
@@ -37,7 +37,7 @@ Francie – střed, Francie – jih, Německo – severovýchod, Německo – st
 - Postup přesunutí virtuálního počítače se spravovanými disky najdete v tomto [článku](https://azure.microsoft.com/blog/move-managed-disks-and-vms-now-available/).
 - Možnosti přesunutí prostředků nasazených přes klasický model se liší v závislosti na tom, zda přesouváte prostředky v rámci předplatného nebo do nového předplatného. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 - Zásady zálohování definované pro trezor se uchovávají po přesunu trezoru mezi předplatnými nebo do nové skupiny prostředků.
-- Přesun trezorů se soubory Azure, Azure File Sync nebo SQL ve virtuálních počítačích IaaS napříč předplatnými a skupinami prostředků se nepodporuje.
+- Trezor můžete přesunout pouze v případě, že virtuální počítače Azure jsou jedinou zálohované položky v trezoru.
 - Pokud přesunete trezor obsahující data záloh virtuálních počítačů v rámci předplatných, musíte virtuální počítače přesunout do stejného předplatného, a pokud chcete pokračovat v zálohování, použijte stejný název cílové skupiny prostředků virtuálního počítače (stejně jako ve starém předplatném).
 
 > [!NOTE]

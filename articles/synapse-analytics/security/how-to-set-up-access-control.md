@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692635"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983206"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Zabezpečení pracovního prostoru synapse (Preview)
 
@@ -145,7 +145,7 @@ Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Někter�
 | Otevřít synapse Studio | ANO | ANO | ANO |
 | Zobrazit centrum domů | ANO | ANO | ANO |
 | Zobrazit centrum dat | ANO | ANO | ANO |
-| Datové centrum/zobrazení propojených účtů ADLSGen2 a kontejnerů | ANO [1] | ANO [1] | ANO [1] |
+| Data hub/viz propojené ADLS Gen2 účty a kontejnery | ANO [1] | ANO [1] | ANO [1] |
 | Data hub/viz databáze | ANO | ANO | ANO |
 | Data hub/zobrazit objekty v databázích | ANO | ANO | ANO |
 | Data hub/přístup k datům v databázích fondů SQL | ANO   | NO   | ANO   |
@@ -179,8 +179,8 @@ Synapse Studio se bude chovat odlišně na základě rolí uživatelů. Někter�
 
 
 > [!NOTE]
-> [1] přístup k datům v kontejnerech závisí na řízení přístupu v ADLSGen2. </br>
-> [2] SQL z tabulek a tabulek Spark ukládají svá data v ADLSGen2 a přístup vyžaduje příslušná oprávnění pro ADLSGen2.
+> [1] přístup k datům v kontejnerech závisí na řízení přístupu v ADLS Gen2. </br>
+> [2] SQL z tabulek a tabulek Spark ukládá data do ADLS Gen2 a přístup vyžaduje příslušná oprávnění pro ADLS Gen2.
 
 ## <a name="next-steps"></a>Další kroky
 
