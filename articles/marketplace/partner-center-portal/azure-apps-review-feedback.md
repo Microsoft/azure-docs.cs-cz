@@ -1,20 +1,20 @@
 ---
-title: Zpracování zpětné vazby revize pro nabídky aplikací Azure na komerčním webu Marketplace
-description: Jak zpracovávat zpětnou vazbu k nabídce aplikací Azure pro výpis nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) pomocí portálu pro komerční tržiště v partnerském centru Microsoftu.
+title: Zpracování zpětné vazby na revizi nabídky aplikací Azure na komerčním webu Microsoft Marketplace
+description: Jak zpracovávat zpětnou vazbu k nabídce aplikací Azure, která nabízí seznam nebo prodej v Azure Marketplace, AppSource nebo prostřednictvím programu Cloud Solution Provider (CSP) prostřednictvím portálu pro komerční tržiště v partnerském centru Microsoftu.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279789"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744874"
 ---
-# <a name="handling-review-feedback"></a>Zpracování zpětné vazby
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Zpracovává se zpětná vazba revize pro aplikace Azure před publikováním v Azure Marketplace
 
 Tento článek vysvětluje, jak získat přístup k prostředí Azure DevOps, které používá tým pro kontrolu Microsoft Azure Marketplace. V případě, že se v rámci nabídky aplikace Azure v rámci **Revize Microsoftu** nacházejí kritické problémy, můžete se přihlásit k tomuto systému a zobrazit podrobné informace o těchto problémech (zpětná vazba). Po vyřešení všech těchto problémů je nutné znovu odeslat nabídku, abyste mohli pokračovat v jejím publikování na Azure Marketplace. Následující obrázek znázorňuje, jak se tento proces zpětné vazby týká procesu publikování.
 

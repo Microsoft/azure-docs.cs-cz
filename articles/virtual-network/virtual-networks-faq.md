@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244807"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791982"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Azure Virtual Network
 
@@ -88,7 +88,7 @@ Ano. Můžete vytvořit směrovací tabulku a přidružit ji k podsíti. Další
 Ne. Vícesměrové vysílání a všesměrové vysílání nejsou podporovány.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Jaké protokoly můžu v virtuální sítě použít?
-V virtuální sítě můžete používat protokoly TCP/IP protokolu TCP, UDP a ICMP. V rámci virtuální sítě se podporuje jednosměrové vysílání s výjimkou protokolu DHCP (Dynamic Host Configuration Protocol) prostřednictvím jednosměrového vysílání (zdrojový port UDP/68/cílový port UDP/67). Vícesměrové vysílání, všesměrové vysílání, zapouzdřené pakety IP-in-IP a pakety GRE (Generic Routing Encapsulation) jsou v rámci virtuální sítě blokované. 
+V virtuální sítě můžete používat protokoly TCP/IP protokolu TCP, UDP a ICMP. Jednosměrové vysílání se podporuje v rámci virtuální sítě, s výjimkou protokolu DHCP (Dynamic Host Configuration Protocol) prostřednictvím jednosměrového vysílání (zdrojový port UDP/68/cílový port UDP/67) a zdrojového portu UDP 65330, který je vyhrazený pro hostitele. Vícesměrové vysílání, všesměrové vysílání, zapouzdřené pakety IP-in-IP a pakety GRE (Generic Routing Encapsulation) jsou v rámci virtuální sítě blokované. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Můžu v rámci virtuální sítě testovat svůj výchozí směrovač?
 Ne.

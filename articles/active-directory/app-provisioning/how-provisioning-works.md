@@ -2,31 +2,27 @@
 title: Pochopte, jak zřizování Azure AD funguje | Microsoft Docs
 description: Pochopení způsobu, jakým funguje zřizování Azure AD
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884881"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593722"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
 Automatické zřizování se týká vytváření identit uživatelů a rolí v cloudových aplikacích, ke kterým uživatelé potřebují přístup. Kromě vytváření identit uživatelů zahrnuje Automatické zřizování také údržbu a odebírání identit uživatelů při změně stavu nebo rolí. Než začnete s nasazením, přečtěte si tento článek, kde najdete informace o tom, jak zřizování Azure AD funguje a jak získat doporučení pro konfiguraci. 
 
-**Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k systému pro správu identit mezi doménami (SCIM) 2,0 koncovým bodem rozhraní API pro správu uživatelů poskytovaným dodavatelem aplikace. Tento koncový bod SCIM umožňuje službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role. Kanál, který se používá pro zřizování mezi Azure AD a aplikací, je zašifrovaný pomocí šifrování HTTPS TLS.
+**Služba zřizování Azure AD** zřídí uživatele k SaaS aplikací a dalších systémů připojením k systému pro správu identit mezi doménami (SCIM) 2,0 koncovým bodem rozhraní API pro správu uživatelů poskytovaným dodavatelem aplikace. Tento koncový bod SCIM umožňuje službě Azure AD programově vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace může služba zřizování také vytvářet, aktualizovat a odebírat další objekty související s identitou, jako jsou například skupiny a role. Kanál použitý ke zřízení služby Azure AD a aplikace je zašifrovaný pomocí šifrování HTTPS TLS 1,2.
 
 
 ![Azure AD Provisioning](./media/how-provisioning-works/provisioning0.PNG)

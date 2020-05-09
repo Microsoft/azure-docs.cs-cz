@@ -206,7 +206,11 @@
         - name: Plug-in IoT Edge pro Jenkinse
           href: how-to-devops-plugins.md
     - name: Řešení potíží
-      href: troubleshoot.md
+      items:
+        - name: Standardní postup diagnostiky
+          href: troubleshoot.md
+        - name: Řešení běžných chyb
+          href: troubleshoot-common-errors.md
 - name: Zdroje a prostředky
   items:
     - name: Možnosti pomoci a podpory

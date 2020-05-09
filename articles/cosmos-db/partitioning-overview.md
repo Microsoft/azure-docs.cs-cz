@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 1a760b4cedad5e43a2ef9f186162675aaf6d5ea5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: a9368e67abf3c45981cf1f85fe46a2a2799a6877
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234175"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864330"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Pokud je ale váš kontejner malý, pravděpodobně nemáte dostatek fyzických 
 Pokud by váš kontejner mohl růst na více než několik fyzických oddílů, měli byste si vybrat klíč oddílu, který minimalizuje dotazy mezi oddíly. Váš kontejner bude vyžadovat více než několik fyzických oddílů, pokud je splněna jedna z následujících podmínek:
 
 * Váš kontejner bude mít zajištěné více než 30 000 RU.
-* Kontejner bude obsahovat více než 100 GB dat.
+* Váš kontejner bude uchovávat více než 100 GB dat.
 
 ## <a name="using-item-id-as-the-partition-key"></a>Použití ID položky jako klíče oddílu
 

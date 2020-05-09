@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: cdbaeb5a97beba342bc471e75d1b07be0d0141ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03804229221c2b1deb94f6c32a5be9defd304ff6
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921407"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628278"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Řešení potíží s nasazením virtuálního počítače s Windows v Azure
 
@@ -82,13 +82,13 @@ Možnost vytvářet předplatná na základě nabídky Enterprise pro vývoj/tes
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Chybí moje ovladače pro virtuální počítač s Windows N-Series.
 
-Ovladače pro virtuální počítače s Windows jsou umístěné [tady](../windows/n-series-driver-setup.md).
+Pokyny k instalaci ovladačů pro virtuální počítače s Windows najdete [tady](../sizes-gpu.md#supported-operating-systems-and-drivers).
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nemůžu najít instanci GPU v mém virtuálním počítači řady N-Series
 
-Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series s Windows serverem 2016 nebo Windows Serverem 2012 R2, musíte na každý virtuální počítač po nasazení nainstalovat ovladače grafiky NVIDIA. Informace o nastavení ovladače jsou k dispozici pro [virtuální počítače s Windows](../windows/n-series-driver-setup.md) a [virtuální počítače Linux](../linux/n-series-driver-setup.md).
+Pokud chcete využívat možnosti GPU pro virtuální počítače řady Azure N-Series, musíte nainstalovat ovladače grafiky na každý virtuální počítač po nasazení. Informace o nastavení ovladače jsou k dispozici [zde](../sizes-gpu.md#supported-operating-systems-and-drivers).
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Jsou virtuální počítače řady N-Series dostupné v mojí oblasti?
+## <a name="are-n-series-vms-available-in-my-region"></a>Jsou virtuální počítače řady N-Series dostupné v mojí oblasti?
 
 Dostupnost můžete ověřit z [tabulky dostupné podle oblastí](https://azure.microsoft.com/regions/services)a na ceny [zde](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series).
 

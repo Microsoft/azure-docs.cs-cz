@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984533"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793087"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatického škálování
 Automatické škálování je další možností Service Fabric dynamicky škálovat vaše služby na základě zatížení, které služby hlásí, nebo na základě využití prostředků. Automatické škálování dává velkou flexibilitu a umožňuje zřídit další instance nebo oddíly vaší služby na vyžádání. Celý proces automatického škálování je automatizovaný a transparentní a po nastavení zásad na službě není potřeba provádět operace ručního škálování na úrovni služby. Automatické škálování je možné zapnout buď při vytvoření služby, nebo kdykoli pomocí aktualizace služby.
@@ -130,7 +130,7 @@ Stejné jako u mechanismu, který používá škálování přidáváním nebo o
 * _Minimální počet instancí_ definuje dolní limit pro škálování. Pokud počet oddílů služby dosáhne tohoto limitu, služba nebude škálovat bez ohledu na zatížení.
 
 > [!WARNING] 
-> Pokud se pro stavové služby používá AddRemoveIncrementalNamedPartitionScalingMechanism, Service Fabric bude přidávat nebo odebírat oddíly **bez oznámení nebo upozornění**. Při aktivaci mechanismu škálování se neprovede změna rozdělení dat do oddílů. V případě operace horizontálního navýšení kapacity budou nové oddíly prázdné a v případě operace horizontálního navýšení kapacity se **oddíl odstraní společně se všemi daty, která obsahuje**.
+> Pokud se pro stavové služby používá AddRemoveIncrementalNamedPartitionScalingMechanism, Service Fabric bude přidávat nebo odebírat oddíly **bez oznámení nebo upozornění**. Při aktivaci mechanismu škálování se neprovede změna rozdělení dat do oddílů. V případě operace horizontálního navýšení kapacity budou nové oddíly prázdné a v případě škálování v provozu **bude oddíl odstraněn společně se všemi daty, která obsahuje**.
 
 ## <a name="setting-auto-scaling-policy"></a>Nastavují se zásady automatického škálování.
 

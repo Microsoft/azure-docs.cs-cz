@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778477"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981769"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Jaké jsou závislosti služby v Azure Active Directory podmíněný přístup? 
 
 Pomocí zásad podmíněného přístupu můžete zadat požadavky na přístup k webům a službám. Vaše požadavky na přístup například můžou zahrnovat vyžadování vícefaktorového ověřování (MFA) nebo [spravovaných zařízení](require-managed-devices.md). 
 
 Když přímo přistupujete k webu nebo službě, je možné, že dopad souvisejících zásad se obvykle snadno vyhodnocuje. Například pokud máte zásadu, která vyžaduje službu Multi-Factor Authentication (MFA) pro SharePoint Online, vynutí se pro každé přihlášení k webovému portálu služby SharePoint MFA. Není však vždy přímo předáván k vyhodnocení dopadu zásady, protože existují cloudové aplikace se závislostmi na jiné cloudové aplikace. Týmy Microsoft můžou například poskytnout přístup k prostředkům v SharePointu Online. Takže při přístupu k Microsoft Teams v našem scénáři se vztahují i na zásady ověřování serveru SharePoint. 
+
+> [!TIP]
+> Použití aplikace [office 365 (Preview)](concept-conditional-access-cloud-apps.md#office-365-preview) bude cílit na všechny aplikace Office, aby se předešlo problémům se závislostmi služeb v sadě Office.
 
 ## <a name="policy-enforcement"></a>Vynucování zásad 
 
