@@ -2,20 +2,20 @@
 title: Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 description: Doporučení a osvědčené postupy, které byste měli znát při práci s SQL na vyžádání (Preview).
 services: synapse-analytics
-author: mlee3gsd
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429067"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692150"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Osvědčené postupy pro SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -50,11 +50,73 @@ Pokud je to možné, můžete připravit soubory pro lepší výkon:
 - Je lepší mít soubory stejné velikosti pro jednu cestu OPENROWSET nebo externí umístění tabulky.
 - Rozdělení dat do oddílů ukládáním oddílů do různých složek nebo názvů souborů – Pokud [chcete cílit na konkrétní oddíly, ověřte použití funkcí filename a FilePath](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
+## <a name="push-wildcards-to-lower-levels-in-path"></a>Vložení zástupných znaků na nižší úrovně v cestě
+
+V cestě můžete použít zástupné znaky k [dotazování více souborů a složek](develop-storage-files-overview.md#query-multiple-files-or-folders). SQL on-demand vypíše soubory ve vašem účtu úložiště počínaje prvním * pomocí rozhraní API úložiště a eliminuje soubory, které se neshodují s určenou cestou. Zmenšení počátečního seznamu souborů může zvýšit výkon, pokud existuje mnoho souborů, které odpovídají zadané cestě k prvnímu zástupnému znaku.
+
+## <a name="use-appropriate-data-types"></a>Použití vhodných datových typů
+
+Datové typy použité v dotazu mají vliv na výkon. Můžete získat lepší výkon, pokud: 
+
+- Použijte nejmenší velikost dat, která bude vyhovovat největší možné hodnotě.
+  - Pokud je maximální délka znakové hodnoty 30 znaků, použijte datový typ znak o délce 30.
+  - Pokud jsou všechny hodnoty sloupce znaků pevné velikosti, použijte char nebo nchar. V opačném případě použijte varchar nebo nvarchar.
+  - Pokud je maximální hodnota sloupce celé číslo 500, použijte typ smallint, protože se jedná o nejmenší datový typ, který může být přizpůsoben této hodnotě. [Zde](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)můžete najít rozsahy datových typů typu Integer.
+- Pokud je to možné, použijte typ varchar a char místo typu nvarchar a nchar.
+- Pokud je to možné, použijte datové typy založené na celých číslech. Řazení, spojování a seskupování podle operací se provádí rychleji na základě celých čísel než u dat znaků.
+- Pokud používáte odvození schématu, podívejte se na odvozený [datový typ](#check-inferred-data-types).
+
+## <a name="check-inferred-data-types"></a>Kontrolovat odvozené datové typy
+
+[Odvození schématu](query-parquet-files.md#automatic-schema-inference) vám pomůže rychle napsat dotazy a prozkoumat data bez znalosti schématu souborů. Tato pohodlí se dodává na úkor odvozených datových typů, které jsou větší než ve skutečnosti. K tomu dojde v případě, že ve zdrojových souborech není dostatek informací, aby bylo zajištěno, že bude použit vhodný datový typ. Například soubory Parquet neobsahují metadata o maximální délce sloupce znaků a SQL na vyžádání odvodí jako varchar (8000). 
+
+Můžete kontrolovat výsledné datové typy dotazu pomocí [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15).
+
+Následující příklad ukazuje, jak lze optimalizovat odvozené datové typy. Procedura slouží k zobrazení odvozených datových typů. 
+```sql  
+EXEC sp_describe_first_result_set N'
+    SELECT
+        vendor_id, pickup_datetime, passenger_count
+    FROM 
+        OPENROWSET(
+            BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*'',
+            FORMAT=''PARQUET''
+        ) AS nyc';
+```
+
+Zde je sada výsledků.
+
+|is_hidden|column_ordinal|jméno|system_type_name|max_length|
+|----------------|---------------------|----------|--------------------|-------------------||
+|0|1|vendor_id|varchar (8000)|8000|
+|0|2|pickup_datetime|datetime2 (7)|8|
+|0|3|passenger_count|int|4|
+
+Jakmile budeme znát odvozené datové typy pro dotaz, můžeme určit vhodné datové typy:
+
+```sql  
+SELECT
+    vendor_id, pickup_datetime, passenger_count
+FROM 
+    OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        FORMAT='PARQUET'
+    ) 
+    WITH (
+        vendor_id varchar(4), -- we used length of 4 instead of inferred 8000
+        pickup_datetime datetime2,
+        passenger_count int
+    ) AS nyc;
+```
+
 ## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Použití funkcí FileInfo a FilePath k cílení na konkrétní oddíly
 
 Data jsou často organizována v oddílech. SQL na vyžádání můžete dát zadat dotaz na konkrétní složky a soubory. Tato funkce omezí počet souborů a množství dat, které musí dotaz číst a zpracovat. Přidaný bonus znamená, že dosáhnete lepšího výkonu.
 
 Další informace najdete v tématu funkce [filename](develop-storage-files-overview.md#filename-function) a [FilePath](develop-storage-files-overview.md#filepath-function) a příklady, jak [zadávat dotazy na konkrétní soubory](query-specific-files.md).
+
+> [!TIP]
+> Vždy přetypujte výsledek FilePath a funkce FileInfo na příslušné datové typy. Pokud používáte znakové datové typy, ujistěte se, že je použita odpovídající délka.
 
 Pokud vaše uložená data nejsou rozdělená na oddíly, zvažte jejich dělení, aby bylo možné použít tyto funkce k optimalizaci dotazů, které cílí na tyto soubory. Při [dotazování na dělené tabulky Spark](develop-storage-files-spark-tables.md) z SQL na vyžádání bude dotaz automaticky cílit jenom na potřebné soubory.
 

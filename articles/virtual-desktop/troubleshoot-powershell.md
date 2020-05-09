@@ -1,21 +1,27 @@
 ---
 title: Prostředí PowerShell pro virtuální počítače s Windows – Azure
-description: Řešení potíží s PowerShellem při nastavování prostředí klienta virtuální plochy Windows
+description: Řešení potíží s PowerShellem při nastavování prostředí virtuálních počítačů s Windows
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/08/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3fb5436c2b5c30c5336385792d0597bdcea2b538
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127467"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612006"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
+
+>[!IMPORTANT]
+>Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md).
+>
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Pomocí tohoto článku můžete vyřešit chyby a problémy při používání PowerShellu s virtuálním počítačem s Windows. Další informace o PowerShellu služby Vzdálená plocha najdete v tématu [prostředí PowerShell pro virtuální počítače s Windows](/powershell/module/windowsvirtualdesktop/).
 
@@ -27,71 +33,57 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 Tato část obsahuje seznam příkazů PowerShellu, které se obvykle používají při nastavování virtuální plochy Windows, a poskytuje možnosti pro řešení problémů, ke kterým může dojít při jejich používání.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Chyba: příkaz Add-RdsAppGroupUser--zadaná hodnota UserPrincipalName je již přiřazena ke skupině aplikací RemoteApp v zadaném fondu hostitelů.
+### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Chyba: New-AzRoleAssignment: poskytnuté informace nejsou namapovány na ID objektu služby AD.
 
-```Powershell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
+```powershell
+AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
-**Příčina:** Použité uživatelské jméno již bylo přiřazeno do skupiny aplikací jiného typu. Uživatele nelze přiřadit ke vzdálené ploše a skupině vzdálených aplikací v rámci stejného fondu hostitelů relace.
+**Příčina:** Uživatele zadaného parametrem *-SignInName* nelze nalézt v Azure Active Directory vázaných na prostředí virtuálních počítačů s Windows. 
 
-**Oprava:** Pokud uživatel potřebuje obě vzdálené aplikace i Vzdálená plocha, vytvořte různé fondy hostitelů nebo udělte uživatelům přístup ke vzdálené ploše. Tím umožníte použití jakékoli aplikace na virtuálním počítači hostitele relace.
+**Oprava:** Ujistěte se, že máte následující věci.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Chyba: příkaz Add-RdsAppGroupUser – zadaná hodnota UserPrincipalName neexistuje v Azure Active Directory přidružená k tenantovi vzdálené plochy.
+- Uživatel by měl být synchronizovaný Azure Active Directory.
+- Uživatel by neměl být vázaný na obchod B2C (Business-to-Consumer) ani B2B (Business-to-Business).
+- Prostředí virtuálních počítačů s Windows by mělo být vázané na správné Azure Active Directory.
 
-```PowerShell
-Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
-```
+### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>Chyba: New-AzRoleAssignment: "klient s ID objektu nemá autorizaci k provedení akce nad oborem (kód: AuthorizationFailed).
 
-**Příčina:** Uživatele zadaného parametrem-UserPrincipalName nelze nalézt v Azure Active Directory vázaných na klienta virtuální plochy systému Windows.
+**Příčina 1:** Účet, který používáte, nemá oprávnění vlastníka k tomuto předplatnému. 
 
-**Oprava:** Potvrďte položky v následujícím seznamu.
+**Oprava 1:** Uživatel s oprávněním vlastníka musí spustit přiřazení role. Případně musí být uživatel přiřazen k roli správce přístupu uživatele, aby mohl přiřadit uživatele ke skupině aplikací.
 
-- Uživatel je synchronizován na Azure Active Directory.
-- Uživatel není spojený s obchodem s B2C (Business to Consumer) ani B2B (Business-to-Business).
-- Tenant virtuálních počítačů s Windows je vázaný na správnou Azure Active Directory.
-
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--User není autorizován pro dotazování služby správy
-
-```PowerShell
-Get-RdsDiagnosticActivities -ActivityId <ActivityId>
-```
-
-**Příčina:** -parametr tenant
-
-**Oprava:** Vydejte příkaz Get-RdsDiagnosticActivities s- \<tenant tenant>.
-
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: Get-RdsDiagnosticActivities--uživatel nemá oprávnění pro dotaz na službu správy.
-
-```PowerShell
-Get-RdsDiagnosticActivities -Deployment -username <username>
-```
-
-**Příčina:** Přepínač-Deployment
-
-**Oprava:** – přepínač nasazení může být používán pouze správci nasazení. Tito správci jsou obvykle členy týmu vzdálené plochy služby Vzdálená plocha nebo Windows. Nahraďte přepínač-Deployment parametrem-tenant \<>.
-
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: New-RdsRoleAssignment--uživatel nemá oprávnění pro dotaz na službu správy.
-
-**Příčina 1:** Použitý účet nemá oprávnění vlastníka služby Vzdálená plocha pro tenanta.
-
-**Oprava 1:** Uživatel s oprávněním vlastníka vzdálené plochy musí provést přiřazení role.
-
-**Příčina 2:** Použitý účet má oprávnění vlastníka vzdálené plochy, ale není součástí Azure Active Directory klienta nebo nemá oprávnění k dotazování Azure Active Directory, kde se uživatel nachází.
+**Příčina 2:** Použitý účet má oprávnění vlastníka, ale není součástí Azure Active Directory prostředí nebo nemá oprávnění k dotazování Azure Active Directory, kde se uživatel nachází.
 
 **Oprava 2:** Uživatel s oprávněním služby Active Directory musí provést přiřazení role.
 
->[!Note]
->Příkaz New-RdsRoleAssignment nemůže udělit oprávnění uživateli, který neexistuje v Azure Active Directory (AD).
+### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Chyba: New-AzWvdHostPool--umístění není k dispozici pro typ prostředku.
+
+```powershell
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+```
+
+Příčina: virtuální plocha Windows podporuje výběr umístění fondů hostitelů, skupin aplikací a pracovních prostorů k ukládání metadat služby v určitých umístěních. Možnosti jsou omezeny na místo, kde je tato funkce k dispozici. Tato chyba znamená, že tato funkce není k dispozici v umístění, které jste zvolili.
+
+Oprava: v chybové zprávě se zveřejní seznam podporovaných oblastí. Místo toho použijte jednu z podporovaných oblastí.
+
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Chyba: příkaz New-AzWvdApplicationGroup musí být ve stejném umístění jako fond hostitelů.
+
+```powershell
+New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
+```
+
+**Příčina:** Došlo k neshodě umístění. Všechny fondy hostitelů, skupiny aplikací a pracovní prostory mají umístění pro ukládání metadat služby. Všechny objekty, které vytvoříte, se musí nacházet ve stejném umístění. Pokud je například fond hostitelů v `eastus`nástroji, musíte také vytvořit skupiny aplikací v `eastus`nástroji. Pokud vytváříte pracovní prostor pro registraci těchto skupin aplikací do, musí být tento pracovní prostor také `eastus` v.
+
+**Oprava:** Načtěte umístění, ve kterém byl fond hostitelů vytvořen, a potom přiřaďte skupinu aplikací, kterou vytváříte, do stejného umístění.
 
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled řešení potíží s virtuálním počítačem s Windows a cvičeními eskalace najdete v tématu [věnovaném řešení potíží s přehledem, zpětnou vazbou a podporou](troubleshoot-set-up-overview.md).
-- Pokud chcete řešit problémy při vytváření tenanta a fondu hostitelů v prostředí virtuálních počítačů s Windows, přečtěte si téma [vytváření fondů klientů a hostitelů](troubleshoot-set-up-issues.md).
+- Informace o řešení potíží při nastavování prostředí virtuálních počítačů s Windows a fondů hostitelů najdete v tématu [Vytvoření fondu prostředí a hostitele](troubleshoot-set-up-issues.md).
 - Informace o řešení problémů při konfiguraci virtuálního počítače na virtuálním počítači s Windows najdete v tématu [Konfigurace virtuálního počítače hostitele relace](troubleshoot-vm-configuration.md).
 - Informace o řešení potíží s klientskými připojeními k virtuální ploše Windows najdete v tématu [připojení ke službě Virtual Desktop systému Windows](troubleshoot-service-connection.md).
 - Řešení potíží s klienty vzdálené plochy najdete v tématu [řešení potíží s klientem vzdálené plochy](troubleshoot-client.md) .
 - Další informace o této službě najdete v tématu [prostředí virtuálních počítačů s Windows](environment-setup.md).
-- Kurz řešení potíží najdete v tématu [kurz: řešení potíží s nasazením správce prostředků šablon](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
 - Další informace o akcích auditování najdete v tématu věnovaném [operacím auditu správce prostředků](../azure-resource-manager/management/view-activity-logs.md).
 - Další informace o akcích k určení chyb během nasazení najdete v tématu [Zobrazení operací nasazení](../azure-resource-manager/templates/deployment-history.md).

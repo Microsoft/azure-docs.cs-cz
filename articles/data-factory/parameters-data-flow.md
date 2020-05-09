@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 82660cdb4ab6523bae7608fe3b071f20cb3603f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419166"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780367"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrizace mapování toků dat
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Mapování toků dat v Azure Data Factory podporuje použití parametrů. Parametry můžete definovat uvnitř definice toku dat, kterou pak můžete použít v celém výrazu. Hodnoty parametrů lze nastavit pomocí kanálu volání prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
+Mapování toků dat v Azure Data Factory podporuje použití parametrů. Definujte parametry uvnitř definice toku dat a používejte je v rámci svých výrazů. Hodnoty parametrů jsou nastaveny prostřednictvím volajícího kanálu prostřednictvím aktivity spustit tok dat. Máte tři možnosti, jak nastavit hodnoty ve výrazech aktivity toku dat:
 
 * Nastavení dynamické hodnoty pomocí jazyka Expression Flow řízení kanálu
 * Nastavení dynamické hodnoty pomocí jazyka výrazu data Flow
@@ -42,34 +42,71 @@ Další parametry můžete rychle přidat tak, že vyberete **Nový parametr** a
 
 ![Výraz parametru toku dat](media/data-flow/new-parameter-expression.png "Výraz parametru toku dat")
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>Předání názvu sloupce jako parametru
-
-Běžným vzorem je předat název sloupce jako hodnotu parametru. Chcete-li odkazovat na sloupec přidružený k parametru, použijte `byName()` funkci. Nezapomeňte přetypovat sloupec na příslušný typ pomocí funkce přetypování, jako je například `toString()`.
-
-Například pokud jste chtěli namapovat sloupec řetězců na základě parametru `columnName`, můžete přidat transformaci odvozeného sloupce EQUAL. `toString(byName($columnName))`
-
-![Předání názvu sloupce jako parametru](media/data-flow/parameterize-column-name.png "Předání názvu sloupce jako paramete")
-
 ## <a name="assign-parameter-values-from-a-pipeline"></a>Přiřazení hodnot parametrů z kanálu
 
 Jakmile vytvoříte tok dat s parametry, můžete ho spustit z kanálu s aktivitou spustit tok dat. Po přidání aktivity na plátno kanálu se zobrazí dostupné parametry toku dat na kartě **parametry** aktivity.
 
+Při přiřazování hodnot parametrů můžete použít jazyk [výrazu kanálu](control-flow-expression-language-functions.md) nebo [Jazyk výrazu datového toku](data-flow-expression-functions.md) , který je založený na typech Spark. Každý tok dat mapování může obsahovat libovolnou kombinaci parametrů výrazu kanálu a toku dat.
+
 ![Nastavení parametru toku dat](media/data-flow/parameter-assign.png "Nastavení parametru toku dat")
 
-Pokud je datovým typem parametru řetězec, po kliknutí na textové pole pro nastavení hodnot parametrů se můžete rozhodnout, že zadáte buď kanál, nebo výraz toku dat. Pokud zvolíte možnost výraz kanálu, zobrazí se panel výrazu kanálu. Nezapomeňte zahrnout funkce kanálu do syntaxe řetězcové interpolace pomocí `'@{<expression>}'`, například:
+### <a name="pipeline-expression-parameters"></a>Parametry výrazu kanálu
 
-```'@{pipeline().RunId}'```
+Parametry výrazu kanálu umožňují odkazovat systémové proměnné, funkce, parametry kanálu a proměnné podobně jako jiné aktivity kanálu. Když kliknete na **kanál – výraz**, otevře se vedlejší navigace, která vám umožní zadat výraz pomocí Tvůrce výrazů.
 
-Pokud váš parametr není typu řetězec, bude vždy zobrazen Tvůrce výrazů toku dat. Zde můžete zadat libovolný výraz nebo hodnoty literálu, které chcete, aby odpovídaly datovému typu parametru. Níže jsou uvedeny příklady výrazu toku dat a literálového řetězce v Tvůrci výrazů:
+![Nastavení parametru toku dat](media/data-flow/parameter-pipeline.png "Nastavení parametru toku dat")
 
-* ```toInteger(Role)```
-* ```'this is my static literal string'```
+V případě, že se na něj odkazuje, vyhodnocují se parametry kanálu a pak se jejich hodnota používá v jazyce výrazu toku dat. Typ výrazu kanálu nemusí odpovídat typu parametru toku dat. 
 
-Každý tok dat mapování může obsahovat libovolnou kombinaci parametrů výrazu kanálu a toku dat. 
+#### <a name="string-literals-vs-expressions"></a>Řetězcové literály vs – výrazy
 
-![Ukázka ukazatelů toku dat](media/data-flow/parameter-example.png "Ukázka ukazatelů toku dat")
+Při přiřazování parametru výrazu kanálu typu String budou přidány výchozí uvozovky a hodnota bude vyhodnocena jako literál. Chcete-li načíst hodnotu parametru jako výraz toku dat, zaškrtněte políčko výrazu vedle parametru.
+
+![Nastavení parametru toku dat](media/data-flow/string-parameter.png "Nastavení parametru toku dat")
+
+Pokud parametr `stringParam` toku dat odkazuje na parametr kanálu s hodnotou `upper(column1)`. 
+
+- Pokud je výraz zaškrtnutý `$stringParam` , vyhodnotí se hodnota Sloupec1 vše velkými písmeny.
+- Pokud výraz není zaškrtnuto (výchozí chování), `$stringParam` vyhodnotí se`'upper(column1)'`
+
+#### <a name="passing-in-timestamps"></a>Předávání do časových razítek
+
+V jazyce výrazu kanálu jsou systémové proměnné, jako například `pipeline().TriggerTime` , a funkce `utcNow()` jako návratová časová razítka ve formátu yyyy-mm-\'DD\'T hh: mm: ss. SSSSSSZ'. Chcete-li je převést na parametry toku dat typu timestamp, použijte interpolaci řetězce k zahrnutí požadovaného časového razítka `toTimestamp()` do funkce. Chcete-li například převést dobu triggeru kanálu na parametr toku dat, můžete použít `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')`. 
+
+![Nastavení parametru toku dat](media/data-flow/parameter-timestamp.png "Nastavení parametru toku dat")
+
+> [!NOTE]
+> Toky dat můžou podporovat jenom až 3 milisekundové číslice. `left()` Funkce se používá pro oříznutí dalších číslic.
+
+#### <a name="pipeline-parameter-example"></a>Příklad parametru kanálu
+
+Řekněme, že máte parametr `intParam` typu Integer, který odkazuje na parametr kanálu typu String,. `@pipeline.parameters.pipelineParam` 
+
+![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-2.png "Nastavení parametru toku dat")
+
+`@pipeline.parameters.pipelineParam`je přiřazena hodnota `abs(1)` za běhu.
+
+![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-4.png "Nastavení parametru toku dat")
+
+Pokud `$intParam` je odkazováno ve výrazu, jako je například odvozený sloupec, vyhodnotí `abs(1)` se vrátí zpět. `1` 
+
+![Nastavení parametru toku dat](media/data-flow/parameter-pipeline-3.png "Nastavení parametru toku dat")
+
+### <a name="data-flow-expression-parameters"></a>Parametry výrazu toku dat
+
+Vyberete-li **výraz tok dat** , otevře se Tvůrce výrazů toku dat. V rámci toku dat budete moci odkazovat na funkce, jiné parametry a jakýkoli definovaný sloupec schématu. Tento výraz bude vyhodnocen tak, jak je odkazováno.
+
+> [!NOTE]
+> Pokud předáte neplatný výraz nebo odkazujete na sloupec schématu, který v této transformaci neexistuje, bude parametr vyhodnocen jako null.
 
 
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Předání názvu sloupce jako parametru
+
+Běžným vzorem je předat název sloupce jako hodnotu parametru. Pokud je sloupec definován ve schématu toku dat, můžete na něj odkazovat přímo jako řetězcový výraz. Pokud sloupec není definován ve schématu, použijte `byName()` funkci. Nezapomeňte přetypovat sloupec na příslušný typ pomocí funkce přetypování, jako je například `toString()`.
+
+Například pokud jste chtěli namapovat sloupec řetězců na základě parametru `columnName`, můžete přidat transformaci odvozeného sloupce EQUAL. `toString(byName($columnName))`
+
+![Předání názvu sloupce jako parametru](media/data-flow/parameterize-column-name.png "Předání názvu sloupce jako parametru")
 
 ## <a name="next-steps"></a>Další kroky
 * [Spustit aktivitu toku dat](control-flow-execute-data-flow-activity.md)

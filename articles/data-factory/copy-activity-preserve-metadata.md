@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414155"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891752"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Zachování metadat a seznamů ACL pomocí aktivity kopírování v Azure Data Factory
 
@@ -32,6 +32,8 @@ Aktivita kopírování podporuje zachování následujících atributů během k
 
 - **Všechna zadaná metadata zákazníka** 
 - A následující **pět integrovaných systémových vlastností úložiště**: `contentType`, `contentLanguage` (s výjimkou Amazon S3), `contentEncoding`, `contentDisposition`,. `cacheControl`
+
+**Zpracování rozdílů v metadatech:** Amazon S3 a Azure Storage v klíčích metadat určených zákazníky povoluje různé sady znaků. Pokud se rozhodnete zachovat metadata pomocí příkazu copy aktivit, ADF automaticky nahradí neplatné znaky podtržítkem (_).
 
 Když kopírujete soubory tak, jak jsou z Amazon S3/Azure Data Lake Storage Gen2/Azure Blob pro Azure Data Lake Storage Gen2/Azure Blob s binárním formátem, najdete možnost **zachování** na kartě**Nastavení** **aktivity** > kopírování pro vytváření aktivit nebo na stránce **Nastavení** v nástroji kopírování dat.
 

@@ -3,14 +3,14 @@ title: Nastavení přípravného prostředí
 description: Naučte se nasazovat aplikace do neprodukčního slotu a autoswap do produkčního prostředí. Zvyšte spolehlivost a Eliminujte výpadky aplikací z nasazení.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300839"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597908"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Nastavení přípravných prostředí ve službě Azure App Service
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ Aby bylo možné povolit více slotů nasazení, musí být aplikace spuštěná
    
     ![Název slotu nasazení](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Pracovní slot má stránku správy stejně jako jakoukoli jinou aplikaci App Service. Můžete změnit konfiguraci slotu. Název slotu se zobrazí v horní části stránky a upozorní vás, že prohlížíte slot nasazení.
+    Pracovní slot má stránku správy stejně jako jakoukoli jinou aplikaci App Service. Můžete změnit konfiguraci slotu. Pokud chcete připomenout, že jste si prohlíželi slot nasazení, název aplikace se zobrazí jako ** \<název aplikace>/\<slot-název>** a typ aplikace je **App Service (slot)**. Slot se taky dá ve vaší skupině prostředků zobrazit jako samostatná aplikace se stejnými označeními.
 
 6. Vyberte adresu URL aplikace na stránce prostředku slotu. Slot nasazení má svůj vlastní název hostitele a zároveň je to živá aplikace. Pokud chcete omezit veřejný přístup k slotu nasazení, přečtěte si téma [Azure App Service omezení IP adres](app-service-ip-restrictions.md).
 
-Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](app-service-deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště. 
+Nový slot pro nasazení nemá žádný obsah, i když naklonujte nastavení z jiné patice. Můžete například [publikovat na tuto pozici v Gitu](app-service-deploy-local-git.md). Do slotu se dá nasadit z jiné větve úložiště nebo z jiného úložiště.
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ Ve výchozím nastavení mají nové sloty pravidlo směrování `0%`, zobrazen�
 
 ## <a name="delete-a-slot"></a>Odstranění slotu
 
-Vyhledejte a vyberte svou aplikaci. Vyberte **Deployment slots** > *slot\<pro nasazení a odstraňte>*  >  **Přehled**. Na panelu příkazů vyberte **Odstranit** .  
+Vyhledejte a vyberte svou aplikaci. Vyberte **Deployment slots** > *slot\<pro nasazení a odstraňte>*  >  **Přehled**. Typ aplikace se zobrazuje jako **App Service (slot)** , abyste se přihlásili, že prohlížíte slot pro nasazení. Na panelu příkazů vyberte **Odstranit** .  
 
 ![Odstranění slotu nasazení](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

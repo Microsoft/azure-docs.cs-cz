@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418792"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870033"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Vytvoření závislosti aktivační události pro přeskakující okno
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418792"
 Tento článek popisuje kroky pro vytvoření závislosti pro aktivační událost bubnového okna. Obecné informace o aktivačních událostech pro bubny v okně najdete v tématu [Vytvoření aktivační události pro bubnové okno](how-to-create-tumbling-window-trigger.md).
 
 Pokud chcete vytvořit řetěz závislostí a ujistit se, že se Trigger spustí až po úspěšném provedení jiného triggeru v datové továrně, použijte tuto pokročilou funkci a vytvořte si bubnovou závislost okna.
+
+Ukázku, jak vytvořit závislé kanály v Azure Data Factory pomocí triggeru bubnového okna, najdete v následujícím videu:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Vytvoření závislosti v uživatelském rozhraní Data Factory
 
@@ -79,14 +83,17 @@ Následující tabulka uvádí seznam atributů potřebných k definování záv
 |---|---|---|---|
 | type  | V tomto rozevíracím seznamu se zobrazí všechny existující triggery bubnového okna. Vyberte aktivační událost, u které se má provést závislost.  | TumblingWindowTriggerDependencyReference nebo SelfDependencyTumblingWindowTriggerReference | Ano |
 | posun | Posun triggeru závislosti. Zadejte hodnotu ve formátu časového rozsahu a jsou povoleny záporné i kladné posuny. Tato vlastnost je povinná, pokud je Trigger závislý sám na sobě a ve všech ostatních případech je nepovinný. Samostatná závislost by měla být vždy záporný posun. Pokud není zadána žádná hodnota, bude okno stejné jako Trigger sám. | Časový interval<br/>(hh: mm: SS) | Samostatná závislost: Ano<br/>Jiné: ne |
-| velikost | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | Ne  |
+| velikost | Velikost bubnového okna závislosti Zadejte kladnou hodnotu TimeSpan. Tato vlastnost je nepovinná. | Časový interval<br/>(hh: mm: SS) | No  |
 
 > [!NOTE]
-> Aktivační událost bubnového okna může záviset na maximálním počtu dvou dalších triggerů.
+> Aktivační událost bubnového okna může záviset na maximálně pět dalších triggerů.
 
 ## <a name="tumbling-window-self-dependency-properties"></a>Vlastnosti samoobslužné závislosti bubnového okna
 
-Ve scénářích, kdy by aktivační událost neměla pokračovat k dalšímu oknu, dokud se předchozí okno úspěšně nedokončí, sestavte samostatnou závislost. Trigger samoobslužné závislosti, který je závislý na úspěšnosti předchozích spuštění v rámci předchozího HR, bude mít následující vlastnosti:
+Ve scénářích, kdy Trigger by neměl pokračovat k dalšímu oknu, dokud se předchozí okno úspěšně nedokončí, sestavte samostatnou závislost. Trigger samoobslužné závislosti závislý na úspěšnosti předchozích spuštění během předchozí hodiny budou mít vlastnosti, které jsou uvedeny v následujícím kódu.
+
+> [!NOTE]
+> Pokud se vaše aktivované kanály spoléhá na výstup kanálů v dřív aktivovaných oknech, doporučujeme použít jenom vlastní ovládací okno s triggerem. Pokud chcete omezit spuštění paralelní triggeru, nastavte souběžnost triggeru maximimum.
 
 ```json
 {
@@ -147,10 +154,6 @@ Každodenní úloha zpracování telemetrie v závislosti na dalších denních 
 Denní úloha bez mezer ve výstupních streamech úlohy:
 
 ![Příklad samostatné závislosti](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Příklad samostatné závislosti")
-
-Ukázku, jak vytvořit závislé kanály v Azure Data Factory pomocí triggeru bubnového okna, najdete v následujícím videu:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Monitorování závislostí
 

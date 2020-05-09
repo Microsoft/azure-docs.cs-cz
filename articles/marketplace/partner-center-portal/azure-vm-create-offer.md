@@ -1,25 +1,25 @@
 ---
-title: Vytvoření nabídky virtuálních počítačů Azure – Azure Marketplace
-description: Naučte se, jak vytvořit nabídku virtuálních počítačů na komerčním webu Marketplace.
+title: Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
+description: Naučte se, jak vytvořit nabídku virtuálního počítače v Azure Marketplace s požadovanými SKU.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: d598f741c5add58a89aa2b7aa01802a7e35f9a19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869063"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745009"
 ---
-# <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálních počítačů Azure
+# <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Vytvoření nabídky virtuálního počítače Azure v Azure Marketplace
 
 > [!IMPORTANT]
 > Přesouváme správu nabídek virtuálních počítačů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, pokračujte podle pokynů v tématu [Vytvoření nabídky virtuálních počítačů](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-offer) v portál partnerů cloudu ke správě nabídek.
 
-Tento článek popisuje, jak vytvořit a publikovat nabídku virtuálních počítačů Azure pro [Azure Marketplace](https://azuremarketplace.microsoft.com/). Řeší virtuální počítače se systémem Windows i Linux, které obsahují operační systém, virtuální pevný disk (VHD) a až 16 datových disků.
+Tento článek popisuje, jak vytvořit a publikovat nabídku virtuálních počítačů Azure pro [Azure Marketplace](https://azuremarketplace.microsoft.com/). Řeší virtuální počítače se systémem Windows i Linux, které obsahují operační systém, virtuální pevný disk (VHD) a až 16 datových disků. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="introduction"></a>Úvod
 
@@ -37,7 +37,7 @@ Publikování do Azure Marketplace má následující výhody:
 Pokud jste to ještě neudělali, Projděte si [příručku pro publikování nabídek virtuálních počítačů](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) a materiál tohoto virtuálního počítače Azure:
 
 - Průvodci rychlým startem
-  - [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
+  - [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
   - [Šablony Azure pro rychlý Start pro GitHub](https://github.com/azure/azure-quickstart-templates)
 - Kurzy
   - [Virtuální počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
@@ -58,17 +58,18 @@ Váš technický tým by měl pochopit tyto technologie Microsoftu:
 - [Návrh a architekt aplikací Azure](https://azure.microsoft.com/solutions/architecture/)
 - Praktické znalosti o sítích [azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/), [Azure Storage](https://azure.microsoft.com/services/?filter=storage#storage)a [Azure](https://azure.microsoft.com/services/?filter=networking#networking)
 
-## <a name="create-an-azure-virtual-machine-offer"></a>Vytvoření nabídky virtuálních počítačů Azure
+## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-Než budete moct vytvořit nabídku virtuálních počítačů Azure, musíte mít účet komerčního tržiště v partnerském centru. Pokud jste ho ještě nevytvořili, přečtěte si téma [Vytvoření účtu komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
+3. Na stránce Přehled vyberte **+ Nová nabídka** > **virtuální počítač Azure**.
 
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home)a potom v horní nabídce vyberte možnost **řídicí panel**.
-2. V levém panelu navigace vyberte **komerční Marketplace**a pak **Přehled**.
-3. Na stránce **Přehled** vyberte **+ Nová nabídka**a pak na **virtuální počítač Azure**. Zobrazí se dialogové okno **Nová nabídka** .
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-vm.png)
 
-    ![Ukazuje stránku s přehledem v partnerském centru s vybraným tlačítkem nové nabídky a virtuálními nabídkami virtuálních počítačů Azure.](media/avm-create7.png)
+> [!NOTE]
+> Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
 
-## <a name="offer-id-and-alias"></a>ID nabídky a alias
+## <a name="new-offer"></a>Nová nabídka
 
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
@@ -76,7 +77,9 @@ Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve 
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1** , bude webová adresa nabídky `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru. Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
+
+- Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 
 Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
@@ -84,15 +87,15 @@ Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ### <a name="test-drive"></a>Testovací jednotka
 
-Nastavte ukázku (testovací jednotku), která zákazníkům umožní vyzkoušet si vaši nabídku před nákupem. Chcete-li vytvořit ukázkové prostředí, které zákazníkům umožňuje vyzkoušet si vaši nabídku po určitou dobu, přečtěte si téma [testování nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/test-drive).
+Testovací jednotka je skvělým způsobem, jak předvést vaši nabídku potenciálním zákazníkům tím, že jim nabídne možnost vyzkoušet si předplatné před nákupem. Výsledkem je zvýšená konverze a generace vysoce kvalifikovaných potenciálních zákazníků. [Přečtěte si další informace o testovacích jednotkách](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive).
 
-Chcete-li povolit testovací jednotku, zaškrtněte políčko **Povolit testovací jednotku** . Chcete-li odebrat testovací verzi z nabídky, zrušte zaškrtnutí tohoto políčka.
+Pokud chcete pro pevný časový úsek povolit testovací jednotku, zaškrtněte políčko **Povolit testovací jednotku** . Chcete-li odebrat testovací verzi z nabídky, zrušte zaškrtnutí tohoto políčka.
 
 Další zdroje testovacích jednotek:
 
 - [Technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [Přehled testovacích jednotek](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (Ujistěte se, že je blokování automaticky otevíraných oken vypnuté).
+- [Přehled testovacích jednotek](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) PDF (Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 
 ### <a name="lead-management"></a>Správa potenciálních zákazníků
 
@@ -174,7 +177,7 @@ Tato stránka umožňuje definovat nabídky, jako je název nabídky, popis, odk
 
 ### <a name="marketplace-details"></a>Podrobnosti Marketplace
 
-#### <a name="name"></a>Název
+#### <a name="name"></a>Name
 
 Název, který sem zadáte, se zákazníkům zobrazí jako název vašeho seznamu nabídek. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -213,9 +216,13 @@ Zde jsou některé tipy pro psaní popisu:
 - Nespoléhá se na funkce a funkce k prodeji vaší nabídky. Místo toho se zaměřte na hodnotu, kterou nabízí vaše nabídka.
 - Použijte slova specifická pro konkrétní odvětví nebo na základě výhod.
 
-Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k formátování popisu. Editor formátovaného textu umožňuje přidat čísla, odrážky, tučné písmo, kurzívu a odsazení, aby bylo možné tento popis čitelnější.
+Chcete-li podrobnější popis nabídky, použijte Editor formátovaného textu k použití formátování.
 
-![Znázorňuje stránku s přehledem v partnerském centru s vybraným tlačítkem Nová nabídka a konzultační služby.](media/power-bi-rich-text-editor.png)
+![Použití editoru textu ve formátu RTF](./media/rich-text-editor.png)
+
+| <center>Změnit formát textu | <center>Přidat odrážky nebo číslování | <center>Přidat nebo odebrat odsazení textu |
+| --- | --- | --- |
+| <center>![Změna formátu textu pomocí editoru formátovaného textu](./media/text-editor3.png) |  <center>![Přidávání seznamů pomocí editoru formátovaného textu](./media/text-editor4.png) |  <center>![Použití editoru formátovaného textu k odsazení](./media/text-editor5.png) |
 
 #### <a name="privacy-policy-link"></a>Odkaz zásady ochrany osobních údajů
 
@@ -239,7 +246,7 @@ Poskytněte web podpory, kde se zákazníci můžou připojit k vašemu týmu po
 
 Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, když vaši zákazníci otevřou lístek podpory. Tato akce nebude uvedena na webu Marketplace.
 
-- Název
+- Name
 - E-mailu
 - Telefon
 
@@ -247,7 +254,7 @@ Poskytněte kontaktní informace partnerům Microsoftu, kteří se použijí, kd
 
 Poskytněte kontaktní informace Microsoftu pro použití v případě problémů s vaší nabídkou, včetně problémů s certifikací. Tato akce nebude uvedena na webu Marketplace.
 
-- Název
+- Name
 - E-mailu
 - Telefon
 
@@ -271,11 +278,11 @@ Všechny čtyři loga jsou povinná a používají se na různých místech v se
 
 #### <a name="screenshots"></a>Snímky obrazovek
 
-Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Velikost každého snímku obrazovky musí být 1280 × 720 pixelů a ve formátu PNG. K popisu snímku obrazovky je také nutné přidat popisek.
+Přidejte až pět snímků obrazovky, které ukazují, jak vaše nabídka funguje. Velikost každého snímku obrazovky musí být 1280 × 720 pixelů a ve formátu PNG. Každý snímek obrazovky musí obsahovat titulek.
 
 #### <a name="videos"></a>Videa
 
-Přidejte až pět videí, která předvádí vaši nabídku. Ty by se měly hostovat na externí službě video. Zadejte název každého videa, webovou adresu a miniaturu obrázku PNG o velikosti videa na 1280 × 720 pixelů.
+Přidejte až pět videí, která předvádí vaši nabídku. Ty by se měly hostovat na externí službě video. Zadejte název, webovou adresu a miniaturu videa v obrazovém formátu PNG na 1280 x 720 pixelů.
 
 Další materiály k seznamům Marketplace najdete v tématu [osvědčené postupy pro výpisy nabídky na webu Marketplace](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
 
@@ -331,7 +338,7 @@ Vyberte **Vytvořit**.
 
 Nastavte na nejvyšší úrovni konfiguraci pro typ plánu bez ohledu na to, jestli znovu používá technickou konfiguraci z jiného plánu, a ve kterých oblastech Azure by měl být plán k dispozici. Vaše výběry určují, která pole se zobrazí na jiných kartách pro stejný plán.
 
-#### <a name="reuse-technical-configuration"></a>Znovu použít technickou konfiguraci
+#### <a name="re-use-technical-configuration"></a>Znovu použít technickou konfiguraci
 
 Pokud máte více než jeden plán stejného typu a jsou mezi nimi identické balíčky, můžete vybrat tento plán, který znovu **použije technickou konfiguraci z jiného plánu**. Tato možnost umožňuje vybrat jeden z dalších plánů stejného typu pro tuto nabídku a znovu použít jeho technickou konfiguraci.
 
@@ -342,7 +349,7 @@ Pokud máte více než jeden plán stejného typu a jsou mezi nimi identické ba
 
 Váš plán se musí zpřístupnit aspoň v jedné oblasti Azure.
 
-Vyberte **globální možnost Azure** a zpřístupněte svůj plán zákazníkům ve všech veřejných oblastech Azure, které mají integraci komerčního tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
+Vyberte **globální možnost Azure** a zpřístupněte svůj plán zákazníkům ve všech globálních oblastech Azure, které mají integraci komerčního tržiště. Podrobnosti najdete v tématu [geografická dostupnost a podpora měny](https://docs.microsoft.com/azure/marketplace/marketplace-geo-availability-currencies).
 
 Vyberte možnost **Azure Government** pro zpřístupnění vašeho plánu v oblasti [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) . Tato oblast nabízí řízený přístup pro zákazníky ze federální, státní, místní nebo samosprávnéové entity USA a také pro partnery, kteří jim mají nárok na jejich obsluhu. Jako vydavatel zodpovídáte za řízení dodržování předpisů, míry zabezpečení a osvědčené postupy. Azure Government používá fyzicky izolovaná datová centra a sítě (jenom v USA).
 
@@ -353,7 +360,7 @@ Před publikováním [Azure Government](https://docs.microsoft.com/azure/azure-g
 
 #### <a name="azure-government-certifications"></a>Azure Government certifikace
 
-Tato možnost se zobrazí jenom v případě, že jste v **oblastech Azure**vybrali **Azure Government** .
+Tato možnost se zobrazí jenom v případě, že jste vybrali **Azure Government**.
 
 Služba Azure Government Services zpracovává data, která se vztahují na určité předpisy a požadavky státní správy. Příklad: FedRAMP, NIST 800,171 (DIB), ITAR, finanční úřad 1075, DoD – L4 a CJIS. Pro zajištění povědomí o certifikaci pro tyto programy můžete poskytnout až 100 odkazů, které je popisují. Můžou to být buď odkazy na váš výpis v programu, nebo odkazy na popisy dodržování předpisů s nimi na vašich vlastních webech. Tyto odkazy jsou viditelné pouze pro Azure Government zákazníky.
 
@@ -361,7 +368,7 @@ Než budete pokračovat, vyberte **Uložit koncept** .
 
 ### <a name="plan-listing"></a>Výpis plánu
 
-Tady nakonfigurujete podrobnosti o výpisu plánu. Tato karta zobrazuje konkrétní informace, které se můžou mezi plány v rámci stejné nabídky lišit.
+Tady můžete nakonfigurovat podrobnosti o seznamu plánu. Tato karta zobrazuje konkrétní informace, které se můžou mezi plány v rámci stejné nabídky lišit.
 
 #### <a name="plan-name"></a>Název plánu
 
@@ -488,9 +495,9 @@ Chcete-li povolit testovací jednotku, zaškrtněte políčko Povolit testovací
 
 Další zdroje testovacích jednotek:
 
-- Technické osvědčené postupy
-- Marketingové osvědčené postupy
-- Přehled testovacích jednotek (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté).
+- [Marketingové osvědčené postupy](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [Technické osvědčené postupy](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [Přehled](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF; Ujistěte se, že je blokování automaticky otevíraných oken vypnuté)
 
 Než budete pokračovat, vyberte **Uložit koncept** .
 
