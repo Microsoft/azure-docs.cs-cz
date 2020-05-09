@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409074"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927390"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualizace modelů Azure Machine Learning pomocí aktivity aktualizace prostředků
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>Aktualizace modelů ML Studio (Classic) v pomocí aktivity aktualizovat prostředek
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Tento článek doplňuje hlavní článek o integraci Azure Data Factory Azure Machine Learning: [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
+Tento článek doplňuje hlavní článek o integraci Azure Data Factory-ML Studio (Classic): [vytváření prediktivních kanálů pomocí Azure Machine Learning a Azure Data Factory](transform-data-using-machine-learning.md). Pokud jste to ještě neudělali, přečtěte si hlavní článek před čtením tohoto článku.
 
 ## <a name="overview"></a>Přehled
-V rámci procesu zprovozňování Azure Machine Learning modelů je váš model vyškolený a uložený. Pak ho použijete k vytvoření prediktivní webové služby. Webovou službu je pak možné spotřebovat na webech, řídicích panelech a mobilních aplikacích.
+V rámci procesu zprovozňování ML Studio (klasického modelu) je váš model vyškolený a uložený. Pak ho použijete k vytvoření prediktivní webové služby. Webovou službu je pak možné spotřebovat na webech, řídicích panelech a mobilních aplikacích.
 
-Modely, které vytvoříte pomocí Machine Learning, nejsou obvykle statické. Jakmile budou nová data k dispozici nebo když spotřebitel rozhraní API má svá vlastní data, model musí být znovu provlakované. Podrobnosti o tom, jak můžete přeškolit model v Azure Machine Learning, najdete v tématu [přeučení Machine Learningho modelu](../machine-learning/machine-learning-retrain-machine-learning-model.md) .
+Modely, které vytvoříte pomocí Machine Learning, nejsou obvykle statické. Jakmile budou nová data k dispozici nebo když spotřebitel rozhraní API má svá vlastní data, model musí být znovu provlakované. 
 
 Rekurze se může vyskytnout často. S aktivitou spuštění služby Batch a aktualizací aktivity prostředku můžete zprovoznění Azure Machine Learning model přeškolení a aktualizovat prediktivní webovou službu pomocí Data Factory.
 
@@ -35,9 +35,9 @@ Následující obrázek znázorňuje vztah mezi školicími a prediktivními web
 
 ![Webové služby](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Aktivita Azure Machine Learning aktualizace prostředku
+## <a name="ml-studio-classic-update-resource-activity"></a>Aktivita aktualizace prostředku ML Studio (Classic)
 
-Následující fragment kódu JSON definuje aktivitu spuštění Azure Machine Learning dávky.
+Následující fragment kódu JSON definuje aktivitu spuštění dávky ML Studio (Classic).
 
 ```json
 {
@@ -62,7 +62,7 @@ Následující fragment kódu JSON definuje aktivitu spuštění Azure Machine L
 | Vlastnost                      | Popis                              | Požaduje se |
 | :---------------------------- | :--------------------------------------- | :------- |
 | jméno                          | Název aktivity v kanálu     | Ano      |
-| description                   | Text popisující, co aktivita dělá.  | Ne       |
+| description                   | Text popisující, co aktivita dělá.  | No       |
 | type                          | U Azure Machine Learning aktivita aktualizace prostředku je typ aktivity **povinná**. | Ano      |
 | linkedServiceName             | Azure Machine Learning propojená služba, která obsahuje vlastnost updateResourceEndpoint. | Ano      |
 | trainedModelName              | Název modulu trained model v experimentu webové služby, který se má aktualizovat | Ano      |

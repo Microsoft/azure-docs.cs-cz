@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: Vytvoření vlastní role – rozhraní příkazového řádku
       href: tutorial-custom-role-cli.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Osvědčené postupy

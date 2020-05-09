@@ -60,6 +60,9 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Jeden server

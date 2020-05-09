@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176596"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792067"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Základní hodnoty zabezpečení Azure pro Azure Storage
 
@@ -82,7 +82,7 @@ Všimněte si, že pokud máte k účtu úložiště připojené privátní konc
 
 **Pokyny**: Network Watcher Capture paketů umožňuje vytvořit relace zachycení pro sledování provozu mezi účtem úložiště a virtuálním počítačem. K dispozici jsou filtry pro relaci zachycení, aby bylo možné zachytit pouze požadovaný provoz. Zachytávání paketů pomáhá diagnostikovat anomálie sítě, jak proaktivní, tak i proaktivní. Mezi další použití patří shromažďování statistik sítě, získávání informací o neoprávněných vniknutích k síti, ladění komunikace mezi klientem a serverem a mnoho dalšího. Schopnost vzdáleně aktivovat zachycení paketů, usnadňuje zatížení ručního zachycení paketů na požadovaném virtuálním počítači, který šetří cenné časy. 
 
-- [Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [Správa zachytávání paketů pomocí Azure Network Watcher pomocí portálu](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -240,7 +240,7 @@ Také pro svůj účet Azure Storage povolit rozšířenou ochranu před interne
 
 - [Upozornění na data protokolu Log Analytics](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response)
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 **Monitorování Azure Security Center**: Ano
 
@@ -428,7 +428,7 @@ Jedním z efektivních způsobů, jak snížit riziko přístupu k nepodezřelé
 
 Vytvořte nastavení diagnostiky pro Azure Active Directory uživatelských účtů a odešlete protokoly auditu a protokoly přihlášení do pracovního prostoru Log Analytics. Požadované výstrahy můžete nakonfigurovat v pracovním prostoru Log Analytics. Pokud chcete monitorovat selhání ověřování u účtů Azure Storage, můžete vytvořit upozornění, která vás upozorní, když se dosáhne určitých prahových hodnot pro metriky prostředků úložiště. Kromě toho použijte Azure Monitor k upozornění na anonymní přístup k účtům úložiště pomocí podmínky anonymního ověřování.
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Jak integrovat protokoly aktivit Azure do Azure Monitor](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
 
@@ -574,7 +574,7 @@ Kromě toho můžete pomocí zásad koncového bodu služby virtuální sítě v
 
 - [Vytvoření upozornění pro události protokolu aktivit Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log)
 
-- [Protokolování Analýzy úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
+- [Protokolování analýz služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging)
 
 - [Jak nakonfigurovat výstrahy metrik pro účty Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account)
 
@@ -887,7 +887,7 @@ Použijte doporučení z Azure Security Center jako standardní hodnoty konfigur
 
 Kromě toho pravidelně otáčejte klíče účtu úložiště, abyste omezili dopad ztráty nebo zveřejnění klíčů účtu úložiště.
 
-- [Azure Storage šifrování dat v klidovém umístění](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Šifrování služby Azure Storage pro neaktivní uložená data](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 - [Správa přístupových klíčů účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 

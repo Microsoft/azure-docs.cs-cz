@@ -2,25 +2,20 @@
 title: Zřizování aplikací s filtry oborů | Microsoft Docs
 description: Naučte se používat filtry oborů, abyste zabránili tomu, aby objekty v aplikacích, které podporují automatizované zřizování uživatelů, nebyly zřízené, pokud objekt nesplňuje vaše podnikové požadavky.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138531"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593740"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.

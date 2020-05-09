@@ -1,7 +1,7 @@
 ---
-title: Použití Azure Machine Learning za bránou firewall
+title: Použít bránu firewall
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning za Azure Firewall bezpečně použít. Přečtěte si o hostitelích, které musíte přes bránu firewall umožňovat, aby Azure Machine Learning správně fungovaly.
+description: Řízení přístupu k pracovním prostorům Azure Machine Learning pomocí bran Azure firewall. Přečtěte si o hostitelích, které musíte přes bránu firewall umožňovat, aby Azure Machine Learning správně fungovaly.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 2c5fe9d46ef408775cc4b99d4820a652a91683c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196319"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981961"
 ---
-# <a name="use-azure-machine-learning-workspace-behind-azure-firewall"></a>Použití Azure Machine Learning pracovního prostoru za Azure Firewall
+# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Použít pracovní prostor za Azure Firewall Azure Machine Learning
 
-Tento článek obsahuje informace o konfiguraci Azure Firewall pro použití s Azure Machine Learning.
+V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro použití s pracovním prostorem Azure Machine Learning.
 
 Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem.
 

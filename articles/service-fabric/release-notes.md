@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729600"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891731"
 ---
 # <a name="service-fabric-releases"></a>Verze Service Fabric
 
@@ -27,7 +27,7 @@ V tomto článku najdete další informace o nejnovějších vydáních a aktual
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 Z důvodu aktuální COVID krize a zvážení výzev, které čelí naši zákazníci, provedeme 7,1 k dispozici, ale nebude automaticky upgradovat clustery nastavené tak, aby přijímaly automatické upgrady. Automatické upgrady se pozastavuje až do dalšího upozornění, aby zákazníci mohli použít upgrady, které jsou pro ně nejvhodnější, aby se předešlo neočekávaným výpadkům.
 
-Pomocí [portálu Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) nebo [nasazení Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)budete moct aktualizovat na 7,1.
+Pomocí [Azure Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) nebo prostřednictvím [Azure Resource Manager nasazení](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)budete moct aktualizovat na 7,1.
 
 Service Fabric clusterů s povolenými automatickými upgrady začnou aktualizace 7,1 automaticky dostávat po obnovení standardního postupu zavedení. Před zahájením standardního zavedení na [webu Service Fabric odborné komunity](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)budeme poskytovat další oznámení.
 Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,5 [do 7,1.](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) 
@@ -36,8 +36,8 @@ Také jsme publikovali aktualizace na konci data podpory pro hlavní verze od 6,
 Jsme rádi, že oznamujeme další vydání Service Fabric. Tato verze je nahraná s využitím klíčových funkcí a vylepšení. Některé klíčové funkce jsou zvýrazněné níže:
 ## <a name="key-announcements"></a>Oznámení klíčů
 - **Obecná dostupnost** [ **Service Fabric spravovaných identit pro Service Fabric aplikace**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
-- [**Podpora pro Ubuntu 1804**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**Verze Preview: VMSS Nedočasných disků s operačním systémem**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: dočasné disky s operačním systémem se vytvářejí na místním virtuálním počítači a neukládají se do vzdáleného Azure Storage. Doporučuje se pro všechny Service Fabric typy uzlů (primární a sekundární), protože jsou v porovnání s tradičními trvalými disky s operačním systémem a s dočasnými disky operačního systému:
+- [**Podpora pro Ubuntu 18,04**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**Verze Preview: podpora virtuálních počítačů s dočasným operačním systémem pro škálování virtuálního počítače**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: dočasné disky s operačním systémem se vytvářejí na místním virtuálním počítači a neukládají se do vzdáleného Azure Storage. Doporučuje se pro všechny Service Fabric typy uzlů (primární a sekundární), protože jsou v porovnání s tradičními trvalými disky s operačním systémem a s dočasnými disky operačního systému:
       -  Snížit latenci čtení/zápisu na disk s operačním systémem
       -  Povolení rychlejšího resetování nebo opětovného nastavování operací správy uzlů v imagi
       -  Snižte celkové náklady (disky jsou bezplatné a neúčtují se žádné další náklady na úložiště).
@@ -54,14 +54,14 @@ Jsme rádi, že oznamujeme další vydání Service Fabric. Tato verze je nahran
 - **[Automatické zjišťování a vyrovnávání podclusterů](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**: k subclusterování dochází, když služby s různým omezením umístění mají společnou [metriku zatížení](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics). Pokud se zatížení různých sad uzlů výrazně liší, Cluster Service Fabric Správce prostředků se domnívá, že cluster je nevyvážený, a to i v případě, že má nejlepší možný zůstatek z důvodu omezení umístění. V důsledku toho se pokusí cluster znovu vyvážit, což může způsobit zbytečné přesuny služeb (vzhledem k tomu, že nerovnováha není možné podstatně zlepšit). Od této verze se Správce prostředků clusteru pokusí automaticky detekovat tyto typy konfigurací a porozumět tomu, kdy se nerovnováha dá opravit prostřednictvím přesunu, a když místo toho by měla opustit pouze takové věci, protože není možné provést žádné podstatné zlepšení.  
 - [**Různé náklady na přesun pro sekundární repliky**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost): zavedli jsme novou hodnotu pro přesunutí VeryHigh, která v některých scénářích poskytuje větší flexibilitu, která definuje, jestli se mají pro sekundární repliky použít samostatné náklady na přesun.
 - Pro kontejnerové aplikace je povolen mechanismus [**živého testování**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage ) . Funkce sonda živého testu oznamuje živý kontejnerové aplikace a pokud neodpoví včas, bude mít za následek restartování.
-- [**Spustit do až do dokončení pro služby**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
+- [**Spustit pro služby pro doplňování**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
 
 ### <a name="image-store-improvements"></a>Vylepšení Image Store
  - Service Fabric 7,1 používá **vlastní přenos k zabezpečení přenosu souborů mezi uzly ve výchozím nastavení**. Závislost na sdílené složce SMB je odebrána z verze 7,1. Zabezpečené sdílené složky protokolu SMB jsou pořád existující v uzlech, které obsahují Image Store replice služby pro výběr zákazníka, aby se odhlásily od výchozího nastavení a aby je bylo možné upgradovat a downgradovat na starou verzi.
        
  ### <a name="reliable-collections-improvements"></a>Vylepšení spolehlivých kolekcí
 
-- [**Pouze v úložišti jenom pro stavové služby, které používají spolehlivé kolekce**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): volatile Reliable Collections umožňuje uchovat data na disk a zajistit tak odolnost proti výpadkům ve velkém rozsahu, dá se použít pro úlohy, jako je replikovaná mezipaměť, například v případě, kdy je možné tolerovat příležitostné ztráty dat. V závislosti na [omezeních a omezeních stálých spolehlivých kolekcí](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)doporučujeme tuto úlohu pro úlohy, které nepotřebují persistenci, pro služby, které zpracovávají vzácná výpadky při ztrátě kvora.
+- [**Pouze v úložišti jenom pro stavové služby, které používají spolehlivé kolekce**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections): volatile Reliable Collections umožňuje uchovat data na disk a zajistit tak odolnost proti výpadkům ve velkém rozsahu, dá se použít pro úlohy jako replikovanou mezipaměť, například v případě, kdy je možné tolerovat příležitostné ztráty dat. V závislosti na [omezeních a omezeních stálých spolehlivých kolekcí](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)doporučujeme tuto úlohu pro úlohy, které nepotřebují persistenci, pro služby, které zpracovávají vzácná výpadky při ztrátě kvora.
 - [**Verze Preview: Service Fabric Průzkumník služby Backup**](https://github.com/microsoft/service-fabric-backup-explorer): pro snadnější správu zálohování spolehlivých kolekcí pro Service Fabric stavové aplikace Service Fabric Průzkumník zálohování umožňuje uživatelům
     - Audit a kontrola obsahu spolehlivých kolekcí,
     - Aktualizuje aktuální stav na konzistentní zobrazení.
@@ -71,7 +71,7 @@ Jsme rádi, že oznamujeme další vydání Service Fabric. Tato verze je nahran
 ### <a name="service-fabric-71-releases"></a>Verze Service Fabric 7,1
 | Datum vydání | Vydat | Další informace |
 |---|---|---|
-| 20. dubna 2020 | [Azure Service Fabric 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+| 20. dubna 2020 | [Azure Service Fabric 7,1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7,0
@@ -89,7 +89,7 @@ Toto je nejnovější vydaná verze Service Fabric a je načtená s klíčovými
   
 - [**Omezení prostředků pro uživatelské služby**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): uživatelé můžou nastavit omezení prostředků pro uživatelské služby na uzlu, aby se předešlo scénářům, jako je vyčerpání prostředků Service Fabric systémových služeb. 
   
-- [**Velmi vysoké náklady na přesun služeb**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) pro typ repliky. Repliky s velmi vysokými náklady na přesun budou přesunuty pouze v případě porušení omezení v clusteru, které nelze opravit jiným způsobem. Další informace o tom, kdy je využití "velmi vysoké" nákladů na přesunutí přijatelné a další okolnosti, najdete v dokumentaci.
+- [**Velmi vysoké náklady na přesun služeb**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) pro typ repliky. Repliky s velmi vysokými náklady na přesun budou přesunuty pouze v případě porušení omezení v clusteru, které nelze opravit jiným způsobem. Další informace o tom, kdy je využití "velmi vysoké" nákladů na přesunutí přijatelné a další okolnosti, najdete v odkazovaném dokumentu.
   
 -  **Další bezpečnostní kontroly clusteru**: v této verzi jsme představili konfigurovatelnou kontrolu bezpečnosti kvora uzlů pro počáteční uzly. To vám umožní přizpůsobit, kolik počátečních uzlů musí být k dispozici během životního cyklu clusteru a scénářů správy. Operace, které by mohly převzít cluster pod konfigurovanou hodnotou, jsou zablokované. Dnes výchozí hodnota je vždy kvorum počátečních uzlů, například pokud máte 7 počátečních uzlů, operace, která by poznamenala méně než 5 počátečních uzlů, bude ve výchozím nastavení blokována. V důsledku této změny byste mohli nastavit minimální bezpečnou hodnotu 6, která by v jednom okamžiku umožňovala snížit pouze jeden uzel počáteční hodnoty.
    
@@ -105,10 +105,10 @@ Kromě toho tato verze obsahuje další nové funkce, opravy chyb a vylepšení 
 
 | Datum vydání | Vydat | Další informace |
 |---|---|---|
-| 18. listopadu 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
-| 30. ledna 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
-| 6. února 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
-| 2. března 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
+| 18. listopadu 2019 | [Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+| 30. ledna 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-second-refresh-release/ba-p/1137690)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU2-releasenotes.md)|
+| 6. února 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-third-refresh-release/ba-p/1156508)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU3-releasenotes.md)|
+| 2. března 2020 | [Vydání aktualizace pro Azure Service Fabric 7,0](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-0-fourth-refresh-release/ba-p/1205414)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-70CU4-releasenotes.md)
 
 ### <a name="service-fabric-65"></a>Service Fabric 6,5
 
@@ -143,10 +143,10 @@ Další podrobnosti najdete v [poznámkách k verzi pro Service Fabric 6,5](http
 
 | Datum vydání | Vydat | Další informace |
 |---|---|---|
-| 11. června 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
-| 2. července 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
-| 29. července 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
-| Srpna 23, 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Zpráva k vydání verze](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
+| 11. června 2019 | [Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/06/11/azure-service-fabric-6-5-release/)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65.pdf)|
+| 2. července 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://blogs.msdn.microsoft.com/azureservicefabric/2019/07/04/azure-service-fabric-6-5-refresh-release/)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU1.pdf)  |
+| 29. července 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Second-Refresh-Release/ba-p/800523)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU2.pdf)  |
+| Srpna 23, 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Third-Refresh-Release/ba-p/818599)  | [Poznámky k verzi](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU3.pdf)  |
 | 14. října 2019 | [Vydání aktualizace pro Azure Service Fabric 6,5](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Azure-Service-Fabric-6-5-Fifth-Refresh-Release/ba-p/913296)  | [Poznámky k verzi] (https://github.com/microsoft/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_65CU5.md  |
 
 
@@ -156,10 +156,10 @@ Další podrobnosti najdete v [poznámkách k verzi pro Service Fabric 6,5](http
 
 | Datum vydání | Vydat | Další informace |
 |---|---|---|
-| 30. listopadu 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
-| 12. prosince 2018 | [Azure Service Fabric 6,4 aktualizace pro clustery Windows ve verzi](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
-| 4. února 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/02/04/azure-service-fabric-6-4-refresh-release/) | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
-| 4. března 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/03/12/azure-service-fabric-6-4-refresh-release-2/) | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
-| 8. dubna 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/04/08/azure-service-fabric-6-4-refresh-release-5/) | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
-| 2. května 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/02/azure-service-fabric-6-4-refresh-release-3/) | [Zpráva k vydání verze](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
+| 30. listopadu 2018 | [Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2018/11/30/azure-service-fabric-6-4-release/)  | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2018/12/Service-Fabric-6.4-Release.pdf)|
+| 12. prosince 2018 | [Azure Service Fabric 6,4 aktualizace pro clustery Windows ve verzi](https://blogs.msdn.microsoft.com/azureservicefabric/2018/12/12/azure-service-fabric-6-4-refresh-for-windows-clusters/)  | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2018/12/Links.pdf)  |
+| 4. února 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/02/04/azure-service-fabric-6-4-refresh-release/) | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2019/02/Service-Fabric-6.4CU3-Release-Notes.pdf) |
+| 4. března 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/03/12/azure-service-fabric-6-4-refresh-release-2/) | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2019/03/Service-Fabric-6.4CU4-Release-Notes.pdf)
+| 8. dubna 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/04/08/azure-service-fabric-6-4-refresh-release-5/) | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2019/04/Service-Fabric-6.4CU5-ReleaseNotes3.pdf)
+| 2. května 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/02/azure-service-fabric-6-4-refresh-release-3/) | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2019/05/Service-Fabric-64CU6-Release-Notes-V2.pdf)
 | 28. května 2019 | [Vydání aktualizace pro Azure Service Fabric 6,4](https://blogs.msdn.microsoft.com/azureservicefabric/2019/05/28/azure-service-fabric-6-4-refresh-release-4/) | [Poznámky k verzi](https://msdnshared.blob.core.windows.net/media/2019/05/Service_Fabric_64CU7_Release_Notes1.pdf)

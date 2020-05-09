@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632178"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856071"
 ---
 # <a name="application-gateway-configuration-overview"></a>Přehled konfigurace Application Gateway
 
@@ -101,18 +101,18 @@ V tomto scénáři použijte skupin zabezpečení sítě v podsíti Application 
 
    Můžete vytvořit UDR pro odeslání provozu 0.0.0.0/0 přímo na Internet. 
 
-  **Scénář 3**: udr pro Azure Kubernetes Service kubenet
+  **Scénář 3**: udr pro Azure Kubernetes Service s kubenet
 
-  Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a Application Gateway řadič příchozího přenosu dat (AGIC), musíte nastavit směrovací tabulku, aby bylo možné směrovat provoz odesílaná do lusků do správného uzlu. To nebude nutné v případě, že použijete Azure CNI. 
+  Pokud používáte kubenet se službou Azure Kubernetes Service (AKS) a Application Gateway řadič příchozího přenosu dat (AGIC), budete potřebovat směrovací tabulku, aby bylo možné provoz odeslaný do lusků z Application Gateway směrovat do správného uzlu. To nebude nutné v případě, že použijete Azure CNI. 
 
-   Chcete-li nastavit směrovací tabulku, aby mohla aplikace kubenet fungovat, použijte následující postup:
+  Chcete-li pomocí směrovací tabulky kubenet pracovat, postupujte podle následujících kroků:
 
-  1. Vytvořte prostředek směrovací tabulky v Azure. 
-  2. Až se vytvoří, přejdete na stránku **trasy** . 
-  3. Přidat novou trasu:
+  1. Přejít do skupiny prostředků vytvořené pomocí AKS (název skupiny prostředků by měl začínat na "MC_")
+  2. V této skupině prostředků Najděte směrovací tabulku vytvořenou AKS. Směrovací tabulka by měla naplnit následující informace:
      - Předpona adresy by měla být rozsahem IP adres lusků, které chcete oslovit v AKS. 
-     - Typ dalšího segmentu směrování by měl být **virtuální zařízení**. 
-     - Adresa dalšího směrování by měla být IP adresa uzlu hostujícího lusky v rámci rozsahu IP adres definovaného v poli Předpona adresy. 
+     - Typ dalšího segmentu směrování by měl být virtuální zařízení. 
+     - Adresa dalšího směrování by měla být IP adresa uzlu hostujícího lusky.
+  3. Přidruží tuto směrovací tabulku k podsíti Application Gateway. 
     
   **V2 – nepodporované scénáře**
 

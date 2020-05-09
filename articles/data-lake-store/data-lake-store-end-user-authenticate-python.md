@@ -1,22 +1,18 @@
 ---
-title: 'Ověřování koncových uživatelů: Python s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Microsoft Docs'
+title: Ověřování koncových uživatelů – Python s Data Lake Storage Gen1 – Azure
 description: Naučte se, jak dosáhnout ověřování koncovými uživateli pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí Pythonu.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265594"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691794"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1 s využitím Pythonu
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79265594"
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [Pomocí Pythonu](data-lake-store-end-user-authenticate-python.md)
 > * [Pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 V tomto článku se dozvíte, jak pomocí sady Python SDK provádět ověřování koncových uživatelů pomocí Azure Data Lake Storage Gen1. Ověřování koncových uživatelů lze dále rozdělit do dvou kategorií:
 
@@ -98,7 +94,7 @@ Pomocí následujícího fragmentu kódu se pomocí služby Azure AD prokáže o
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ Toto použijte k ověření pomocí služby Azure AD pro operace systému soubor
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Ověřování koncových uživatelů bez vícefaktorového ověřování
 
 Tato je zastaralá. Další informace najdete v tématu [ověřování Azure pomocí Python SDK](/azure/python/python-sdk-azure-authenticate).
-   
+
 ## <a name="next-steps"></a>Další kroky
 V tomto článku jste zjistili, jak používat ověřování koncovými uživateli k ověřování pomocí Azure Data Lake Storage Gen1 pomocí Pythonu. Nyní se můžete podívat na následující články, které vás seznámí s postupem použití Pythonu pro práci s Azure Data Lake Storage Gen1.
 
 * [Operace správy účtů na Data Lake Storage Gen1 s využitím Pythonu](data-lake-store-get-started-python.md)
 * [Operace s daty při Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md)
-
