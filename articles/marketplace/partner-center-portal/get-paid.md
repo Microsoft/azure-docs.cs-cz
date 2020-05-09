@@ -1,19 +1,20 @@
 ---
-title: Platba na komerční tržiště | Azure Marketplace
-description: Přečtěte si, jak přijímat platby za tržby na komerčním webu Marketplace.
+title: Platba na komerční tržiště Microsoftu
+description: Přečtěte si, jak přijímat platby za vaše tržby na komerčním webu Microsoft Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275828"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780493"
 ---
-# <a name="getting-paid"></a>Vyplacení
+# <a name="getting-paid-in-commercial-marketplace"></a>Platba na komerční Marketplace
+
 Zde jsou některé důležité informace o tom, jak přijímat platby za vaše nabídky, doplňky a příjmy za reklamu.
 
 > [!IMPORTANT]
@@ -40,18 +41,17 @@ Každá cenová úroveň má odpovídající hodnotu v každé z měn nabízený
 
 Máte také možnost zadat cenu z volné formy, kterou zvolíte v místní měně konkrétního trhu. Když to uděláte, cena se neupraví (i když se změní míra převodu), Pokud neodešlete aktualizaci s novou cenou. 
 
-Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo přidané hodnoty, kterou musí vaši zákazníci platit. Další informace najdete v tématu [daňové detaily pro placené nabídky](tax-details-paid-transactions.md) .
+Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo přidané hodnoty, kterou musí vaši zákazníci platit. Podrobnosti najdete v tématu [daňové detaily pro placené nabídky](tax-details-paid-transactions.md).
 
 
 ## <a name="payout-reporting"></a>Generování sestav plateb
 
-K podrobnostem o svých platebních údajích a ke stažení sestav můžete získat informace v **přehledu výběrů** [partnerského centra](https://partner.microsoft.com/dashboard). Pokud chcete získat další informace o zde zobrazených informacích a o tom, jak kategorizovat peníze, které získáte, podívejte se na [Souhrn výběr](payout-summary.md).
+K podrobnostem o svých platebních údajích a ke stažení sestav můžete získat informace v **přehledu výběrů** [partnerského centra](https://partner.microsoft.com/dashboard). Podrobnosti o zde zobrazených informacích a způsobu kategorizace peníze, které získáte, najdete v tématu [Přehled souhrnu výběrů](payout-summary-overview.md).
 
 
-## <a name="payout-timeframe"></a>Rámec výběr
+## <a name="payout-time-frame"></a>Časový rámec výběr
 
-Platby se účtují měsíčně (za předpokladu, že byla splněna platná prahová hodnota platby a neuvedli jste svůj výběr, jak je popsáno níže). Obvykle budeme v daném měsíci zasílat platbu za 15. den tohoto měsíce. Všimněte si, že platby obvykle mezi 3 až 10 dalšími pracovními dny dosáhnou, abyste dosáhli svého účtu na výběr. Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](payment-thresholds-methods-timeframes.md).
-
+Platby se účtují měsíčně (za předpokladu, že byla splněna platná prahová hodnota platby a neuvedli jste svůj výběr, jak je popsáno níže). Obvykle budeme v daném měsíci zasílat platbu za 15. den tohoto měsíce. Všimněte si, že platby obvykle mezi 3 až 10 dalšími pracovními dny dosáhnou, abyste dosáhli svého účtu na výběr. Podrobnosti najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](payment-thresholds-methods-timeframes.md).
 
 ##  <a name="payout-hold-status"></a>Stav blokování ve výběr
 
@@ -63,12 +63,3 @@ Jakmile nastavíte stav blokování vyčerpání na **zapnuto**, všechny výbě
 
 > [!NOTE]
 > Váš **Výběr** se vztahuje na každý program zvlášť (Microsoft Store, inzerce, Azure Marketplace atd.). Pokud chcete uchovávat platby na všech svých programech, musíte uchovávat platby jednotlivě v každém programu.
-
-
- 
-
- 
-
-
-
-

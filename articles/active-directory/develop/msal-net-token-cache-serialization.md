@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1aa7de4290d0050b9d6b1c8b048f9e5a2836790f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abc4836b5e8729eec45a0eb2cd8b5fa7be6b1ce4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127986"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890564"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serializace mezipaměti tokenů v MSAL.NET
 Po [získání tokenu](msal-acquire-cache-tokens.md)je uložen do mezipaměti v rámci knihovny Microsoft Authentication Library (MSAL).  Kód aplikace by se měl pokusit získat token z mezipaměti před získáním tokenu jinou metodou.  Tento článek popisuje výchozí a vlastní serializaci mezipaměti tokenů v MSAL.NET.
@@ -51,7 +51,7 @@ V serializaci mezipaměti tokenu se používají následující třídy a rozhra
 
 Strategie se liší v závislosti na tom, jestli píšete serializaci mezipaměti tokenů pro [veřejnou klientskou aplikaci](msal-client-applications.md) (Desktop) nebo [důvěrnou klientskou aplikaci](msal-client-applications.md)(Web App/Web API, démon App).
 
-### <a name="token-cache-for-a-public-client"></a>Mezipaměť tokenů pro veřejného klienta 
+### <a name="token-cache-for-a-public-client"></a>Mezipaměť tokenů pro veřejného klienta
 
 Vzhledem k tomu, že MSAL.NET v2. x máte několik možností, jak serializovat mezipaměť tokenů veřejného klienta. Mezipaměť můžete serializovat jenom ve formátu MSAL.NET (sjednocené mezipaměť formátu je společná napříč MSAL a platformami).  Můžete také podporovat serializaci mezipaměti na [starší](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) verzi knihovny ADAL v3.
 
@@ -124,7 +124,7 @@ $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{A
  }
 ```
 
-Náhled serializátoru založený na souboru mezipaměti s tokeny kvality produktu pro veřejné klientské aplikace (pro desktopové aplikace běžící v systémech Windows, Mac a Linux) je k dispozici v open source knihovně [Microsoft. identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . Můžete ji zahrnout do svých aplikací z následujícího balíčku NuGet: [Microsoft. identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+Serializátor založený na souborové mezipaměti tokenu kvality produktu pro veřejné klientské aplikace (pro desktopové aplikace běžící na Windows, Mac a Linux) je k dispozici v open source knihovně [Microsoft. identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) . Můžete ji zahrnout do svých aplikací z následujícího balíčku NuGet: [Microsoft. identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Serializace mezipaměti s duálním tokenem (MSAL Unified cache a ADAL V3)
 
@@ -273,14 +273,63 @@ namespace CommonCacheMsalV3
 
 V případě webových aplikací nebo webových rozhraní API může mezipaměť využít relaci, Redis Cache nebo databázi.
 
-Ve webových aplikacích nebo webových rozhraních API ponechte jednu mezipaměť tokenů na účet.  Pro webové aplikace by měla být mezipaměť tokenů nastavená ID účtu.  Pro webová rozhraní API by měl být účet nastaven pomocí hash tokenu, který se používá k volání rozhraní API. MSAL.NET poskytuje serializaci mezipaměti vlastního tokenu v .NET Framework a podplatformách .NET Core. Události jsou vyvolány, když je mezipaměť k dispozici, aplikace mohou zvolit, zda má být mezipaměť serializována nebo deserializována. V tajných klientských aplikacích, které zpracovávají uživatele (webové aplikace, které přihlásily uživatele, volají webová rozhraní API a webová rozhraní API volající webová rozhraní API) může existovat mnoho uživatelů a uživatelé se zpracovávají paralelně. Z důvodu zabezpečení a výkonu doporučujeme, abyste měli v úmyslu serializovat jednu mezipaměť na uživatele. Události serializace počítají klíč mezipaměti na základě identity zpracovávaného uživatele a serializace/deserializace mezipaměti tokenu pro tohoto uživatele.
+Ve webových aplikacích nebo webových rozhraních API ponechte jednu mezipaměť tokenů na účet.  Pro webové aplikace by měla být mezipaměť tokenů nastavená ID účtu.  Pro webová rozhraní API by měl být účet nastaven pomocí hash tokenu, který se používá k volání rozhraní API. MSAL.NET poskytuje serializaci mezipaměti vlastního tokenu v .NET Framework a podplatformách .NET Core. Události jsou vyvolány, když je mezipaměť k dispozici, aplikace mohou zvolit, zda má být mezipaměť serializována nebo deserializována. V tajných klientských aplikacích, které zpracovávají uživatele (webové aplikace, které přihlásily uživatele, volají webová rozhraní API a webová rozhraní API volající webová rozhraní API) může existovat mnoho uživatelů a uživatelé se zpracovávají paralelně. Z důvodu zabezpečení a výkonu doporučujeme, abyste měli v úmyslu serializovat jednu mezipaměť na uživatele. Události serializace počítají klíč mezipaměti v závislosti na identitě zpracovaného uživatele a serializaci/deserializaci mezipaměti tokenů pro daného uživatele.
 
-Příklady použití mezipamětí tokenů pro webové aplikace a webová rozhraní API jsou k dispozici v [kurzu ASP.NET Core webové aplikace](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). U implementací se podívejte na složku [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) v knihovně [Microsoft-Authentication-for-dotnet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) (ve složce [Microsoft. identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) . 
+Knihovna [Microsoft. identity. Web](https://github.com/AzureAD/microsoft-identity-web) obsahuje verzi Preview balíčku NuGet [Microsoft. identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) obsahující serializaci mezipaměti tokenů:
+
+
+| Metoda rozšíření | Microsoft. identity. Web – dílčí obor názvů | Popis  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | V serializaci mezipaměti tokenů paměti. Tato implementace je skvělé v ukázkách. Je to také dobré v produkčních aplikacích, pokud nezáleží na tom, jestli se při restartování webové aplikace ztratí mezipaměť tokenu. `AddInMemoryTokenCaches`přebírá volitelný parametr typu `MsalMemoryTokenCacheOptions` , který umožňuje zadat dobu, po jejímž uplynutí vyprší platnost položky mezipaměti, pokud se nepoužije.
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | Mezipaměť tokenů je svázána s uživatelskou relací. Tato možnost není ideální, pokud token ID obsahuje mnoho deklarací identity, protože soubor cookie by byl příliš velký.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | Mezipaměť tokenu je adaptér s implementací ASP.NET Core `IDistributedCache` , takže můžete vybrat mezi distribuovanou mezipamětí, mezipamětí Redis, distribuovaným NCacheem nebo mezipamětí SQL Server. Podrobnosti o `IDistributedCache` implementacích naleznete v tématu https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache.
+
+Jednoduchý případ s použitím mezipaměti v paměti:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+
+Příklady možných distribuovaných mezipamětí:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+Jejich použití je vybrané v [kurzu ASP.NET Core webové aplikace](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) v [mezipaměti tokenu fáze 2-2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache).
 
 ## <a name="next-steps"></a>Další kroky
+
 Následující ukázky ilustrují serializaci mezipaměti tokenů.
 
 | Ukázka | Platforma | Popis|
 | ------ | -------- | ----------- |
 |[Active-Directory-dotnet-Desktop-MSGraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | Plocha (WPF) | Aplikace Windows Desktop .NET (WPF), která volá rozhraní Microsoft Graph API. ![Topologie](media/msal-net-token-cache-serialization/topology.png)|
-|[Active-Directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Plocha (konzola) | Sada řešení pro Visual Studio, která ilustruje migraci aplikací Azure AD v 1.0 (pomocí ADAL.NET) do aplikací Azure AD v 2.0, ale také pojmenovaných aplikací (pomocí MSAL.NET), konkrétně při [migraci mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|
+|[Active-Directory-dotnet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2) | Plocha (konzola) | Sada řešení sady Visual Studio, která ilustruje migraci aplikací Azure AD v 1.0 (pomocí ADAL.NET) do aplikací Microsoft Identity Platform (pomocí MSAL.NET). Zejména viz [migrace mezipaměti tokenů](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2/blob/master/TokenCacheMigration/README.md)|

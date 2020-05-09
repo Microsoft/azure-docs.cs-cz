@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272458"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594093"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informace o používání HDInsightu v Linuxu
 
@@ -95,21 +95,21 @@ Příklady dat a souborů JAR najdete v systém souborů DFS (Distributed File S
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage a Data Lake Storage
 
-Ve většině distribucí Hadoop jsou data uložená v HDFS, která se na počítačích v clusteru zálohuje na základě místního úložiště. Použití místního úložiště může být nákladné pro cloudové řešení, ve kterém se za výpočetní prostředky účtují každou hodinu nebo za minutu.
+Ve většině distribucí Hadoop jsou data uložená v HDFS. HDFS je zajištěno místním úložištěm v počítačích v clusteru. Použití místního úložiště může být nákladné pro cloudové řešení, ve kterém se za výpočetní prostředky účtují každou hodinu nebo za minutu.
 
-Při použití HDInsight se datové soubory ukládají v cloudu v cloudu s využitím Azure Blob Storage a případně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
+Při použití HDInsight se datové soubory ukládají v cloudu s možností adaptivního a odolného v cloudu s využitím Azure Blob Storage a volitelně Azure Data Lake Storage. Tyto služby poskytují následující výhody:
 
 * Levné dlouhodobé úložiště.
 * Přístupnost z externích služeb, jako jsou weby, odesílání souborů/stahování nástrojů, různé jazykové sady SDK a webové prohlížeče.
-* Velká kapacita souborů a velké škálovatelné úložiště.
+* Velká kapacita souborů a velké adaptivní úložiště.
 
 Další informace najdete v tématu [Principy objektů BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
-Pokud používáte Azure Storage nebo Data Lake Storage, nemusíte pro přístup k datům dělat nic zvláštního. Například následující příkaz vypíše soubory ve `/example/data` složce bez ohledu na to, zda jsou uloženy v Azure Storage nebo data Lake Storage:
+Pokud používáte Azure Storage nebo Data Lake Storage, nemusíte pro přístup k datům dělat nic zvláštního. Například následující příkaz vypíše soubory ve `/example/data` složce, ať jsou uloženy v Azure Storage nebo data Lake Storage:
 
     hdfs dfs -ls /example/data
 
-V HDInsight se prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Storage) odpojí od výpočetních prostředků. Proto můžete vytvořit clustery HDInsight, abyste mohli provádět výpočty podle potřeby, a později odstranit cluster, až se práce dokončí, a přitom trvale uchovávat datové soubory v cloudovém úložišti, dokud budete potřebovat.
+V HDInsight se prostředky úložiště dat (Azure Blob Storage a Azure Data Lake Storage) odpojí od výpočetních prostředků. Clustery HDInsight můžete vytvořit pro výpočty podle potřeby a později odstranit cluster po dokončení práce. Průběžně udržujeme vaše datové soubory bezpečně v cloudovém úložišti, pokud potřebujete.
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>Identifikátor URI a schéma
 
@@ -210,46 +210,11 @@ Pokud používáte __Azure Data Lake Storage__, přečtěte si následující od
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>Škálování clusteru
 
-Funkce škálování clusteru umožňuje dynamicky měnit počet datových uzlů používaných clusterem. V případě, že se v clusteru spouštějí jiné úlohy nebo procesy, můžete provádět operace škálování.  Viz také [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md)
-
-Různé typy clusterů jsou ovlivněny škálováním následujícím způsobem:
-
-* **Hadoop**: při horizontálním navýšení kapacity počtu uzlů v clusteru se některé služby v clusteru restartují. Operace škálování můžou způsobit, že úlohy spuštěné nebo čekají na selhání při dokončení operace škálování. Po dokončení operace můžete úlohy znovu odeslat.
-* **HBA**: regionální servery se po dokončení operace škálování automaticky vyrovnávají během několika minut. K ručnímu vyrovnávání regionálních serverů použijte následující postup:
-
-    1. Připojte se ke clusteru HDInsight pomocí SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-    2. K zahájení prostředí HBA použijte následující:
-
-            hbase shell
-
-    3. Po načtení prostředí HBA použijte následující příkaz k ručnímu vyvážení místních serverů:
-
-            balancer
-
-* Zatížení **: po**provedení operace škálování byste měli znovu vyrovnávat všechny běžící topologie. Nové vyrovnávání umožňuje, aby topologie znovu nastavila nastavení paralelismu na základě nového počtu uzlů v clusteru. Chcete-li znovu vyrovnávat spuštěné topologie, použijte jednu z následujících možností:
-
-    * **SSH**: Připojte se k serveru a použijte následující příkaz k opětovnému vyrovnávání topologie:
-
-            storm rebalance TOPOLOGYNAME
-
-        Můžete také zadat parametry pro přepsání pomocného parametru paralelismus původně poskytnuté topologie. Například `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` změní konfiguraci topologie na 5 pracovních procesů, 3 vykonavatelé pro komponentu Blue-Spout a 10 prováděcích modulů pro komponentu žlutého šroubu.
-
-    * **Uživatelské rozhraní**pro vyrovnávání zatížení: pomocí následujících kroků můžete znovu vyvážit topologii pomocí uživatelského rozhraní.
-
-        1. Otevřete `https://CLUSTERNAME.azurehdinsight.net/stormui` ve webovém prohlížeči, kde `CLUSTERNAME` je název vašeho clusteru s více podsítěmi. Po zobrazení výzvy zadejte název správce clusteru HDInsight (správce) a heslo, které jste zadali při vytváření clusteru.
-        2. Vyberte topologii, kterou chcete znovu vyvážit, a pak vyberte tlačítko pro **vyvážení** . Zadejte zpoždění před provedením operace obnovení rovnováhy.
-
-* **Kafka**: po provedení operace škálování byste měli znovu vyrovnávat repliky oddílů. Další informace najdete v článku o [vysoké dostupnosti dat s Apache Kafka v dokumentu HDInsight](./kafka/apache-kafka-high-availability.md) .
-
-Konkrétní informace o škálování clusteru HDInsight najdete v těchto tématech:
-
-* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí Azure Portal](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Správa clusterů Apache Hadoop ve službě HDInsight pomocí rozhraní příkazového řádku Azure](hdinsight-administer-use-command-line.md#scale-clusters)
+Funkce škálování clusteru umožňuje dynamicky měnit počet datových uzlů používaných clusterem. Operace škálování můžete provádět i v případě, že jsou spuštěné jiné úlohy nebo procesy v clusteru.  Viz [škálování clusterů HDInsight](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Návody nainstalovat odstín (nebo jinou komponentu Hadoop)?
 
-HDInsight je spravovaná služba. Pokud Azure zjistí problém s clusterem, může odstranit uzel, který selhal, a vytvořit uzel, který ho nahradí. Pokud ručně nainstalujete na cluster nějaké věci, nebudou při této operaci trvalé. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akci skriptu lze použít k provedení následujících změn:
+HDInsight je spravovaná služba. Pokud Azure zjistí problém s clusterem, může odstranit uzel, který selhal, a vytvořit uzel, který ho nahradí. Když ručně nainstalujete na cluster nějaké věci, nebudou při této operaci trvalé. Místo toho použijte [akce skriptu HDInsight](hdinsight-hadoop-customize-cluster-linux.md). Akci skriptu lze použít k provedení následujících změn:
 
 * Instalace a konfigurace služby nebo webu.
 * Nainstalujte a nakonfigurujte komponentu, která vyžaduje změny konfigurace na více uzlech v clusteru.
@@ -258,7 +223,7 @@ Akce skriptů jsou skripty bash. Skripty se spouští během vytváření cluste
 
 ### <a name="jar-files"></a>Soubory jar
 
-Některé technologie Hadoop jsou k dispozici v samostatných souborech jar, které obsahují funkce používané jako součást MapReduce úlohy, nebo z prasete nebo podregistru. Často nevyžadují žádné nastavení a dají se do clusteru nahrát po vytvoření a použití přímo. Pokud chcete zajistit, aby součást předržela přebitovou kopii clusteru, můžete uložit soubor JAR do výchozího úložiště pro váš cluster (WASB nebo ADL).
+Některé technologie Hadoop poskytují samostatně obsažené soubory jar. Tyto soubory obsahují funkce používané jako součást úlohy MapReduce nebo z prasete nebo z podregistru. Často nevyžadují žádné nastavení a dají se do clusteru nahrát po vytvoření a použití přímo. Pokud chcete zajistit, aby součást předržela přebitovou kopii clusteru, uložte soubor JAR do výchozího úložiště clusteru.
 
 Například pokud chcete použít nejnovější verzi [Apache DataFu](https://datafu.incubator.apache.org/), můžete si stáhnout jar obsahující projekt a nahrát ho do clusteru HDInsight. Pak postupujte podle pokynů v dokumentaci k DataFu, jak ji použít z prasete nebo z podregistru.
 

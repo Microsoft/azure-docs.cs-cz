@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   href: v1-overview.md
-- name: Ukázky
+- name: ukázky
   href: sample-v1-code.md
 - name: Koncepty
   items:
@@ -22,7 +22,7 @@
           href: native-app.md
         - name: Proces démon nebo serverová aplikace
           href: service-to-service.md
-    - name: Ověřování
+    - name: Authentication
       items:
         - name: Základy ověřování
           href: v1-authentication-scenarios.md
@@ -83,7 +83,7 @@
       href: ../develop/authentication-national-cloud.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
 - name: Návody
   items:
-    - name: Ověřování
+    - name: Authentication
       items:
         - name: Konfigurace jednotného přihlašování
           displayName: SSO
@@ -158,7 +158,7 @@
     - name: Použití rozhraní Microsoft Graph API
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: AD FS pro vývojáře
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers'
+      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
 - name: Odkazy
   items:
     - name: Knihovny ověřování

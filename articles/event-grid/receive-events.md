@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60803822"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629588"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
-Tento článek popisuje, jak [ověřit koncový bod HTTP](security-authentication.md#webhook-event-delivery) pro příjem událostí z odběru události a pak přijímat a deserializovat události. Tento článek používá funkci Azure pro demonstrační účely, ale stejné koncepty platí bez ohledu na to, kde je aplikace hostovaná.
+Tento článek popisuje, jak [ověřit koncový bod HTTP](webhook-event-delivery.md) pro příjem událostí z odběru události a pak přijímat a deserializovat události. Tento článek používá funkci Azure pro demonstrační účely, ale stejné koncepty platí bez ohledu na to, kde je aplikace hostovaná.
 
 > [!NOTE]
 > **Důrazně** doporučujeme použít [aktivační událost Event Grid](../azure-functions/functions-bindings-event-grid.md) při aktivaci funkce Azure pomocí Event Grid. Použití obecného triggeru Webhooku je tady demonstrované.
@@ -50,7 +50,7 @@ Klikněte na odkaz Zobrazit soubory v Azure Function (napravo od pravého podokn
 
 ## <a name="endpoint-validation"></a>Ověření koncového bodu
 
-První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` událostí. Pokaždé, když se někdo přihlašuje k události, Event Grid pošle událost ověření koncovému bodu `validationCode` s datovou částí. Koncový bod je nutný k tomu, aby vrátil zpátky v těle odpovědi, aby [prokázal, že koncový bod je platný a vlastní](security-authentication.md#webhook-event-delivery). Pokud používáte [trigger Event Grid](../azure-functions/functions-bindings-event-grid.md) místo funkce aktivované webhookem, bude se vám za vás zajišťovat ověření koncového bodu. Pokud používáte službu rozhraní API třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), možná nebudete moci programově zobrazovat kód pro ověření. Pro tyto služby můžete odběr ověřit ručně pomocí adresy URL pro ověření, která je odeslána v události ověření předplatného. Zkopírujte tuto adresu URL do `validationUrl` vlastnosti a odešlete požadavek GET buď pomocí klienta REST nebo webového prohlížeče.
+První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` událostí. Pokaždé, když se někdo přihlašuje k události, Event Grid pošle událost ověření koncovému bodu `validationCode` s datovou částí. Koncový bod je nutný k tomu, aby vrátil zpátky v těle odpovědi, aby [prokázal, že koncový bod je platný a vlastní](webhook-event-delivery.md). Pokud používáte [trigger Event Grid](../azure-functions/functions-bindings-event-grid.md) místo funkce aktivované webhookem, bude se vám za vás zajišťovat ověření koncového bodu. Pokud používáte službu rozhraní API třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), možná nebudete moci programově zobrazovat kód pro ověření. Pro tyto služby můžete odběr ověřit ručně pomocí adresy URL pro ověření, která je odeslána v události ověření předplatného. Zkopírujte tuto adresu URL do `validationUrl` vlastnosti a odešlete požadavek GET buď pomocí klienta REST nebo webového prohlížeče.
 
 V jazyce C# `DeserializeEventGridEvents()` funkce deserializace události Event Grid. Deserializace data události do příslušného typu, například StorageBlobCreatedEventData. Použijte `Microsoft.Azure.EventGrid.EventTypes` třídu pro získání podporovaných typů a názvů událostí.
 

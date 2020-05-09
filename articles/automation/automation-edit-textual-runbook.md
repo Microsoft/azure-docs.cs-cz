@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406023"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855791"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Úpravy textových runbooků v Azure Automation
 
@@ -22,7 +22,7 @@ Textový editor v Azure Automation lze použít k úpravě runbooků [PowerShell
 
 Textový Editor obsahuje funkci pro vložení kódu pro rutiny, prostředky a podřízené Runbooky do sady Runbook. Místo psaní v kódu si můžete vybrat ze seznamu dostupných prostředků a editor vloží příslušný kód do Runbooku.
 
-Každá sada Runbook v Azure Automation má dvě verze, koncept a Publikováno. Upravíte koncept verze Runbooku a pak ho publikujete, aby se mohl spustit. Publikovaná verze se nedá upravit. Další informace najdete v tématu [publikování Runbooku](manage-runbooks.md#publishing-a-runbook).
+Každá sada Runbook v Azure Automation má dvě verze, koncept a Publikováno. Upravíte koncept verze Runbooku a pak ho publikujete, aby se mohl spustit. Publikovaná verze se nedá upravit. Další informace najdete v tématu [publikování Runbooku](manage-runbooks.md#publish-a-runbook).
 
 Tento článek poskytuje podrobné pokyny pro provádění různých funkcí v tomto editoru. Neplatí to pro [grafické Runbooky](automation-runbook-types.md#graphical-runbooks). Pokud chcete s těmito sadami Runbook pracovat, přečtěte si téma [vytváření grafiky v Azure Automation](automation-graphical-authoring-intro.md).
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Změna obsahu Runbooku pomocí Windows PowerShellu
 
-Následující vzorové příkazy ukazují, jak nahradit stávající obsah Runbooku obsahem souboru skriptu. Jedná se o stejný vzorový postup jako v [nástroji pro import Runbooku ze souboru skriptu v prostředí Windows PowerShell](manage-runbooks.md#importing-a-runbook).
+Následující vzorové příkazy ukazují, jak nahradit stávající obsah Runbooku obsahem souboru skriptu. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

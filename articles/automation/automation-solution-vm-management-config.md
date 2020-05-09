@@ -1,20 +1,20 @@
 ---
-title: Azure Automation nakonfigurovat spouštění a zastavování virtuálních počítačů během nepracovních řešení
+title: Azure Automation konfigurace řešení Start/Stop VMs during off-hours
 description: Tento článek popisuje, jak nakonfigurovat řešení Start/Stop VMs during off-hours pro podporu různých případů nebo scénářů použití.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9842a736cf922e0490f2b0c8acb1d2e5833f3d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604763"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864262"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Jak nakonfigurovat spouštění a zastavování virtuálních počítačů v době mimo špičku
+# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Jak nakonfigurovat řešení Start/Stop VMs during off-hours
 
-Pomocí řešení pro **spouštění a zastavování virtuálních počítačů v době mimo špičku** můžete:
+Pomocí řešení **Start/Stop VMS during off-hours** můžete:
 
 - [Naplánujte spouštění a zastavování virtuálních počítačů](#schedule).
 - Naplánování spouštění a zastavování virtuálních počítačů ve vzestupném pořadí [pomocí značek Azure](#tags) (není podporováno pro klasické virtuální počítače).
@@ -125,7 +125,7 @@ Když spustíte **AutoStop_CreateAlert_Parent** Runbook, ověří, jestli existu
 
 ### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>Zaměření na akci autostop na seznam virtuálních počítačů
 
-1. Vytvořte nový [plán](shared-resources/schedules.md#creating-a-schedule) a propojte ho s **AutoStop_CreateAlert_Parent** sadou Runbook a přidejte do `VMList` parametru seznam názvů virtuálních počítačů oddělených čárkami.
+1. Vytvořte nový [plán](shared-resources/schedules.md#create-a-schedule) a propojte ho s **AutoStop_CreateAlert_Parent** sadou Runbook a přidejte do `VMList` parametru seznam názvů virtuálních počítačů oddělených čárkami.
 
 2. Případně, pokud chcete některé virtuální počítače z automatického vypnutí vyloučit, můžete do `External_ExcludeVMNames` proměnné přidat čárkami oddělený seznam názvů virtuálních počítačů.
 

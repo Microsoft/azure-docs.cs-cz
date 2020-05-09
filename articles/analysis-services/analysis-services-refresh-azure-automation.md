@@ -4,14 +4,14 @@ description: Tento článek popisuje, jak model kódu aktualizuje pro Azure Anal
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871314"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926557"
 ---
 # <a name="refresh-with-azure-automation"></a>Aktualizace pomocí Azure Automation
 
@@ -21,7 +21,7 @@ V příkladu v tomto článku se používají [moduly prostředí PowerShell SQL
 
 Ukázková sada Runbook PowerShellu, která demonstruje aktualizaci modelu, je k dispozici dále v tomto článku.  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Všechna volání musí být ověřena pomocí platného tokenu Azure Active Directory (OAuth 2).  V příkladu v tomto článku se k ověření Azure Analysis Services použije instanční objekt (SPN).
 
@@ -60,7 +60,7 @@ Objekt služby, který vytvoříte, musí mít na serveru oprávnění správce 
 
     ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Zadejte podrobnosti přihlašovacích údajů.  Do pole **uživatelské jméno**zadejte název **SPN**pro **heslo**, zadejte **tajný kód hlavního názvu**služby (SPN).
+2. Zadejte podrobnosti přihlašovacích údajů. Do pole **uživatelské jméno**zadejte ID aplikace instančního objektu (AppID) a potom zadejte do pole **heslo**tajný klíč instančního objektu.
 
     ![Vytvořit přihlašovací údaj](./media/analysis-services-refresh-azure-automation/7.png)
 
@@ -226,5 +226,5 @@ else
 
 ## <a name="next-steps"></a>Další kroky
 
-[ukázky](analysis-services-samples.md)  
+[Ukázky](analysis-services-samples.md)  
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)
