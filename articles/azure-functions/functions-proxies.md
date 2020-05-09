@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74849186"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562062"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Práce s Proxy služby Azure Functions
 
@@ -184,8 +184,8 @@ Proxy přečtou všechny řetězce ze souboru JSON pomocí znaku \ jako řídic�
 Objekt requestOverrides definuje změny provedené v žádosti při volání prostředku back-endu. Objekt je definován následujícími vlastnostmi:
 
 * **back-end. Request. Method**: metoda HTTP, která se používá k volání back-endu.
-* **back-end. Request. QueryString. ParameterName\>: parametr řetězce dotazu, který lze nastavit pro volání do back- \<** Endu. Nahraďte * \<ParameterName\> * názvem parametru, který chcete nastavit. Všimněte si, že pokud je zadán prázdný řetězec, je parametr stále zahrnut do back-endu žádosti.
-* **back-end. Request. Headers. \<Záhlaví: záhlaví, které lze nastavit pro volání do back-\>** Endu. Nahraďte * \<hlavičkou\> * názvem záhlaví, které chcete nastavit. Pokud zadáte prázdný řetězec, hlavička není obsažena v požadavku back-endu.
+* **back-end. Request. QueryString. ParameterName\>: parametr řetězce dotazu, který lze nastavit pro volání do back- \<** Endu. Nahraďte * \<ParameterName\> * názvem parametru, který chcete nastavit. Všimněte si, že je-li k dispozici prázdný řetězec, je parametr stále obsažen v požadavku back-endu.
+* **back-end. Request. Headers. \<Záhlaví: záhlaví, které lze nastavit pro volání do back-\>** Endu. Nahraďte * \<hlavičkou\> * názvem záhlaví, které chcete nastavit. Všimněte si, že je-li k dispozici prázdný řetězec, je parametr stále obsažen v požadavku back-endu.
 
 Hodnoty můžou odkazovat na nastavení aplikace a parametry z původní žádosti klienta.
 

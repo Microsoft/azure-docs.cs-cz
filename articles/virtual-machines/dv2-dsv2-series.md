@@ -1,6 +1,6 @@
 ---
-title: Dv2 a Dsv2-series – virtuální počítače Azure
-description: Specifikace pro virtuální chody řady Dv2 a Dsv2.
+title: Dv2 a Dsv2-Series – Azure Virtual Machines
+description: Specifikace pro virtuální počítače s Dv2 a Dsv2-Series.
 services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 808b14f118e842cb9e52d110075f92ba25a343c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164419"
 ---
 # <a name="dv2-and-dsv2-series"></a>Řada Dv2 a DSv2
 
-Dv2 a Dsv2-series, pokračování původní řady D, jsou vybaveny výkonnějším procesorem a optimální konfigurací cpu-to-memory, což je vhodná pro většinu produkčních úloh. Řada Dv2 je o 35 % rychlejší než řada D. Dv2-série běží na Intel® Xeon® 8171M 2.1GHz (Skylake), Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell), nebo Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) procesory s Intel Turbo Boost Technology 2.0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+Dv2 a Dsv2-Series, následná na originální D-Series, má výkonnější procesor a optimální konfiguraci procesoru na paměť, která je vhodná pro většinu produkčních úloh. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Dv2-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake), Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo 2,0. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
 ## <a name="dv2-series"></a>Dv2-series
 
-Velikosti řady Dv2 běží na procesorech Intel® Xeon® 8171M 2.1GHz (Skylake) nebo Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) nebo Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) s technologií Intel Turbo Boost 2.0.
+Velikosti řady Dv2-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake) nebo na procesorech Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo zvyšovat 2,0.
 
 ACU: 210–250
 
-Úložiště Premium: Není podporováno
+Premium Storage: nepodporováno
 
-Ukládání do mezipaměti úložiště Premium: Není podporováno
+Ukládání Premium Storage do mezipaměti: nepodporováno
 
-Migrace za provozu: Podporováno
+Migrace za provozu: podporováno
 
-Aktualizace pro zachování paměti: Podporováno
+Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/Read MBps/Write MB/B/b/s | Max. datových disků | Propustnost: VOPS | Maximální počet síťových připojení/očekávaná šířka pásma sítě (Mb/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Maximální propustnost dočasného úložiště: IOPS/čtení MB/s/zápis MB/s | Max. datových disků | Propustnost: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_D1_v2 | 1  | 3,5 | 50  | 3 000 / 46 / 23    | 4  | 4×500  | 2/750   |
 | Standard_D2_v2 | 2  | 7   | 100 | 6 000 / 93 / 46    | 8  | 8×500  | 2/1500  |
@@ -42,19 +42,19 @@ Aktualizace pro zachování paměti: Podporováno
 
 ## <a name="dsv2-series"></a>DSv2-series
 
-Velikosti řady DSv2 běží na procesorech Intel® Xeon® 8171M 2.1GHz (Skylake) nebo Intel® Xeon® E5-2673 v4 2.3 GHz (Broadwell) nebo Intel® Xeon® E5-2673 v3 2.4 GHz (Haswell) s technologií Intel Turbo Boost 2.0 a používají prémiové úložiště.
+Velikosti řady DSv2-Series běží na procesorech Intel® Xeon® 8171M 2.1 GHz (Skylake) nebo Intel® Xeon® E5-2673 V4 2,3 GHz (Broadwell) nebo Intel® Xeon® E5-2673 V3 2,4 GHz (Haswell) s technologií Intel Turbo 2,0 a používat Premium Storage.
 
 ACU: 210–250
 
-Úložiště Premium: Podporováno
+Premium Storage: podporováno
 
-Ukládání do mezipaměti úložiště Premium: Podporováno
+Ukládání Premium Storage do mezipaměti: podporováno
 
-Migrace za provozu: Podporováno
+Migrace za provozu: podporováno
 
-Aktualizace pro zachování paměti: Podporováno
+Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a protemplovaná propustnost úložiště: IOPS/MBps (velikost mezipaměti v GiB) | Maximální propustnost disku bez mezipaměti: IOPS/MBps | Maximální počet síťových připojení/očekávaná šířka pásma sítě (Mb/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_DS1_v2 | 1  | 3,5 | 7   | 4  | 4000/32 (43)    | 3200/48   | 2/750   |
 | Standard_DS2_v2 | 2  | 7   | 14  | 8  | 8000/64 (86)    | 6400/96   | 2/1500  |
@@ -75,4 +75,4 @@ Aktualizace pro zachování paměti: Podporováno
 
 ## <a name="next-steps"></a>Další kroky
 
-Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám můžou pomoct porovnat výpočetní výkon napříč virtuálními jednotkami Azure.
+Přečtěte si další informace o tom, jak [výpočetní jednotky Azure (ACU)](acu.md) vám pomůžou porovnat výpočetní výkon napříč SKU Azure.
