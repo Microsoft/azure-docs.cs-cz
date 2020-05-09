@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270889"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607380"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -23,7 +23,7 @@ Kontejnery profilů FSLogix můžete vytvářet pomocí [Azure NetApp Files](htt
 
 V této příručce se dozvíte, jak nastavit účet Azure NetApp Files a vytvořit kontejnery profilů FSLogix ve virtuálním počítači s Windows.
 
-V tomto článku se předpokládá, že už máte [fondy hostitelů](create-host-pools-azure-marketplace.md) nastavené a seskupené do jednoho nebo víc tenantů v prostředí virtuálních počítačů s Windows. Informace o tom, jak nastavit klienty, najdete v tématu [Vytvoření tenanta v rámci virtuálního počítače s Windows](tenant-setup-azure-active-directory.md) a [našeho příspěvku na blogu pro technickou komunitu](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+V tomto článku se předpokládá, že už máte [fondy hostitelů](create-host-pools-azure-marketplace.md) nastavené a seskupené do jednoho nebo víc tenantů v prostředí virtuálních počítačů s Windows. Informace o tom, jak nastavit klienty, najdete v tématu [Vytvoření tenanta v rámci virtuálního počítače s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) a [našeho příspěvku na blogu pro technickou komunitu](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
 Pokyny v této příručce jsou určené konkrétně pro uživatele s virtuálními počítači s Windows. Pokud hledáte obecnější informace o tom, jak nastavit Azure NetApp Files a vytvořit kontejnery profilů FSLogix mimo virtuální počítač s Windows, přečtěte si téma [nastavení Azure NetApp Files a vytvoření svazku NFS v rychlém](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)startu.
 
@@ -210,7 +210,7 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Ujistěte se, že uživatelé mají přístup ke sdílené složce Azure NetApp.
 
-1. Otevřete internetový prohlížeč a pokračujte na <https://rdweb.wvd.microsoft.com/webclient/index.html>.
+1. Otevřete internetový prohlížeč a pokračujte na <https://rdweb.wvd.microsoft.com/arm/webclient>.
 
 2. Přihlaste se pomocí přihlašovacích údajů uživatele přiřazeného ke skupině Vzdálená plocha.
 

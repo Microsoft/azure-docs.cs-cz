@@ -4,14 +4,14 @@ description: Naučte se spravovat Azure Cosmos DB prostředky pomocí šablon Az
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247381"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745033"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Správa účtu služby Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB pomocí 
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Šablona Azure Resource Manager
 
-Tato šablona Azure Resource Manager vytvoří účet Azure Cosmos pro rozhraní SQL API nakonfigurovaný se dvěma oblastmi a možnostmi pro výběr úrovně konzistence, automatického převzetí služeb při selhání a více hlavních serverů. Pokud chcete tuto šablonu nasadit, klikněte na stránce Readme na nasadit do Azure a [vytvořte účet Azure Cosmos](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql) .
+Další informace najdete v tématu [Vytvoření účtu Azure Cosmos DB s využitím šablon Azure Resource Manager](manage-sql-with-resource-manager.md)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Přidání oblastí do účtu databáze nebo jejich odebrání
 

@@ -1,50 +1,50 @@
 ---
-title: Nejčastější dotazy k režimu automatického škálování v Azure Cosmos DB
+title: Nejčastější dotazy k zřízené propustnosti automatického škálování v Azure Cosmos DB
 description: Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování pro Azure Cosmos DB databází a kontejnerů
 author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 413e9c71850b047172859c681cdbb422b7def032
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa4c2708f34a377a17914c7e6e5abdd709cbb5b1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196462"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791778"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se zajištěné propustnosti automatického škálování v Azure Cosmos DB
 
-Díky zřízené propustnosti v režimu automatického škálování Azure Cosmos DB bude automaticky spravovat a škálovat RU/s vašeho kontejneru nebo databáze na základě využití. Tento článek obsahuje odpovědi na nejčastější dotazy týkající se automatického škálování.
+Díky zajištění propustnosti s automatickým škálováním Azure Cosmos DB bude automaticky spravovat a škálovat RU/s vašeho kontejneru nebo databáze na základě využití. Tento článek obsahuje odpovědi na nejčastější dotazy týkající se automatického škálování.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="is-autoscale-mode-supported-for-all-apis"></a>Podporuje se režim automatického škálování pro všechna rozhraní API?
-Ano, režim automatického škálování se podporuje pro všechna rozhraní API: Core (SQL), Gremlin, Table, Cassandra a API pro MongoDB.
+### <a name="is-autoscale-supported-for-all-apis"></a>Podporuje se automatické škálování pro všechna rozhraní API?
+Ano, automatické škálování se podporuje pro všechna rozhraní API: Core (SQL), Gremlin, Table, Cassandra a API pro MongoDB.
 
-### <a name="is-autoscale-mode-supported-for-multi-master-accounts"></a>Podporuje se režim automatického škálování pro účty s více hlavními servery?
-Ano, režim automatického škálování je podporován pro účty s více hlavními servery. Maximální RU/s jsou dostupné v každé oblasti, která se přidá k účtu Cosmos. 
+### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Podporuje se automatické škálování pro účty s více hlavními servery?
+Ano, automatické škálování je podporováno pro účty s více hlavními servery. Maximální RU/s jsou dostupné v každé oblasti, která se přidá k účtu Cosmos. 
 
-### <a name="what-is-the-pricing-for-autoscale"></a>Jaké jsou ceny pro automatické škálování?
+### <a name="what-is-the-pricing-for-autoscale-"></a>Jaké jsou ceny pro automatické škálování?
 Podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/cosmos-db/) Azure Cosmos DB. 
 
 ### <a name="how-do-i-enable-autoscale-for-my-containers-or-databases"></a>Návody povolit automatické škálování pro moje kontejnery nebo databáze?
-Režim automatického škálování je možné povolit pro nové kontejnery a databáze vytvořené pomocí Azure Portal. 
+Automatické škálování je možné povolit pro nové kontejnery a databáze vytvořené pomocí Azure Portal.
 
-### <a name="is-there-cli-or-sdk-support-to-create-containers-or-databases-with-autoscale-mode"></a>Je k dispozici podpora CLI nebo sady SDK pro vytváření kontejnerů nebo databází pomocí režimu automatického škálování?
-V současné době můžete vytvořit pouze prostředky s režimem automatického škálování z Azure Portal. Podpora rozhraní příkazového řádku a sady SDK ještě není dostupná.
+### <a name="is-there-cli-or-sdk-support-to-create-containers-or-databases-with-autoscale-provisioned-throughput"></a>Je k dispozici podpora CLI nebo sady SDK pro vytváření kontejnerů nebo databází pomocí zřízené propustnosti automatického škálování?
+V současné době můžete vytvářet pouze prostředky s dořízenou propustností automatického škálování z Azure Portal. Podpora rozhraní příkazového řádku a sady SDK ještě není dostupná.
 
 ### <a name="can-i-enable-autoscale-on-an-existing-container-or-a-database"></a>Můžu povolit automatické škálování u existujícího kontejneru nebo databáze?
-V současné době můžete při vytváření nových kontejnerů a databází povolit automatické škálování. Podpora pro povolení režimu automatického škálování u existujících kontejnerů a databází ještě není k dispozici. Existující kontejnery můžete migrovat do nového kontejneru pomocí [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) nebo [změnit informační kanál](change-feed.md). 
+V současné době můžete při vytváření nových kontejnerů a databází povolit automatické škálování. Podpora pro povolení automatického škálování u existujících kontejnerů a databází ještě není dostupná. Existující kontejnery můžete migrovat do nového kontejneru pomocí [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) nebo [změnit informační kanál](change-feed.md). 
 
-### <a name="can-i-turn-off-autoscale-mode-on-a-container-or-database"></a>Můžu zapnout režim automatického škálování u kontejneru nebo databáze?
-Ano, automatické škálování můžete vypnout přepnutím na možnost ruční pro zřízenou propustnost. Když jste v aktuální verzi přepnuli z režimu automatického škálování do ručního režimu, nemůžete znovu povolit automatické škálování pro stejný prostředek. 
+### <a name="can-i-turn-off-autoscale-on-a-container-or-database"></a>Můžu automatické škálování vypnout u kontejneru nebo databáze?
+Ano, automatické škálování můžete vypnout tak, že pro zřízenou propustnost přepnete na standardní (ruční) možnost. V aktuální verzi po přepnutí z automatického škálování na standardní zřízenou propustnost nemůžete znovu povolit automatické škálování pro stejný prostředek. 
 
-### <a name="is-autoscale-mode-supported-for-shared-throughput-databases"></a>Podporuje se režim automatického škálování pro databáze sdílených propustností?
-Ano, režim automatického škálování je podporován pro databáze sdílené propustnosti. Pokud chcete tuto funkci povolit, vyberte režim automatického škálování a při vytváření databáze možnost **zřízení propustnosti** . 
+### <a name="is-autoscale-supported-for-shared-throughput-databases"></a>Podporuje se automatické škálování pro sdílené databáze propustnosti?
+Ano, automatické škálování se podporuje pro databáze sdílené propustnosti. Pokud chcete tuto funkci povolit, vyberte při vytváření databáze možnost automatického škálování a možnost **zřízení propustnosti** . 
 
 ### <a name="what-is-the-number-of-allowed-collections-per-shared-throughput-database-when-autoscale-is-enabled"></a>Jaký je počet povolených kolekcí na sdílenou databázi propustnosti, pokud je povoleno automatické škálování?
-U sdílených databází propustnosti s povoleným režimem automatického škálování je počet povolených kolekcí: MIN (25, max. RU/s databáze/1000). Pokud je například maximální propustnost databáze 20 000 RU/s, může mít databáze minimální (25, 20 000 RU/s/1000) = 20 kolekcí. 
+U sdílených databází propustnosti s povoleným autoškálováním je počet povolených kolekcí: MIN (25, max. RU/s databáze/1000). Pokud je například maximální propustnost databáze 20 000 RU/s, může mít databáze minimální (25, 20 000 RU/s/1000) = 20 kolekcí. 
 
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Jaké je omezení úložiště přidružené k jednotlivým možnostem maximálního RU/s?  
@@ -54,13 +54,13 @@ Limit úložiště v GB pro každé maximum RU/s je: max. RU/s databáze nebo ko
 Pokud dojde k překročení limitu úložiště přidruženého k maximální propustnosti databáze nebo kontejneru, Azure Cosmos DB automaticky zvýší maximální propustnost na další nejvyšší úroveň, která může podporovat tuto úroveň úložiště. Předpokládejme například, že databáze nebo kontejner se zřídí s možností 4000 RU/s maximální propustnost, která má limit úložiště 50 GB. Pokud se úložiště prostředků zvyšuje na 100 GB, maximální RU/s databáze nebo kontejneru se automaticky zvýší na 20 000 RU/s, což může podporovat až 200 GB. 
 
 ### <a name="how-quickly-will-autoscale-up-and-down-based-on-spikes-in-traffic"></a>Jak rychle bude automatické horizontální navýšení a snížení kapacity na základě Špičk v provozu?
-V režimu automatického škálování můžete okamžitě škálovat nebo snížit velikost RU/s v rozsahu minimální a maximální RU/s na základě příchozího provozu. Fakturace se provádí při 1 hodinové členitosti, kde se vám za konkrétní hodinu účtuje nejvyšší RU/s.
+Díky automatickému škálování můžete okamžitě škálovat nebo snížit rozsah RU/s v rozsahu minimální a maximálního RU/s, a to na základě příchozího provozu. Fakturace se provádí při 1 hodinové členitosti, kde se vám za konkrétní hodinu účtuje nejvyšší RU/s.
 
-### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autoscale-mode"></a>Můžu pro režim automatického škálování zadat vlastní hodnotu maximální propustnosti (RU/s)?
+### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autoscale"></a>Můžu zadat vlastní hodnotu maximální propustnosti (RU/s) pro automatické škálování?
 V současné době můžete vybrat [čtyři možnosti](provision-throughput-autoscale.md#autoscale-limits) pro maximální propustnost (ru/s).
 
 ### <a name="can-i-increase-the-max-rus-move-to-a-higher-tier-on-the-database-or-container"></a>Můžu u databáze nebo kontejneru zvýšit maximum RU/s (přesunout na vyšší úroveň)? 
-Ano. V možnosti **škálování & nastavení** pro váš kontejner nebo možnost **škálování** pro vaši databázi můžete pro režim automatického ŠKÁLOVÁNÍ vybrat vyšší maximální ru/s. Toto je asynchronní operace škálování, která může trvat delší dobu (obvykle 4-6 hodin, v závislosti na vybraném RU/s), protože služba zřídí více prostředků pro podporu vyšší škály. 
+Ano. V možnosti **škálování & nastavení** pro váš kontejner nebo možnost **škálování** pro vaši databázi můžete pro automatické ŠKÁLOVÁNÍ vybrat vyšší maximální ru/s. Toto je asynchronní operace škálování, která může trvat delší dobu (obvykle 4-6 hodin, v závislosti na vybraném RU/s), protože služba zřídí více prostředků pro podporu vyšší škály. 
 
 ### <a name="can-i-reduce-the-max-rus-move-to-a-lower-tier-on-the-database-or-container"></a>Můžu snížit maximální RU/s (přesunout na nižší úroveň) v databázi nebo kontejneru?
 Ano. Pokud je aktuální úložiště databáze nebo kontejneru pod limitem úložiště přidruženým k úrovni maximálního RU/s, na kterou chcete horizontální [navýšení](#what-is-the-storage-limit-associated-with-each-max-rus-option) kapacity, můžete snížit maximální ru/s na tuto úroveň. Pokud jste například vybrali 20 000 RU/s jako maximální RU/s, můžete snížit kapacitu maximálního RU/s na 4000 RU/s, pokud máte méně než 50 GB úložiště (limit úložiště přidružený ke 4000 RU/s).
@@ -86,5 +86,5 @@ Pokud například vyberete možnost maximální propustnost 20 000 RU/s a máte 
 ## <a name="next-steps"></a>Další kroky
 
 * Naučte se, jak [Povolit automatické škálování v kontejneru nebo databázi Azure Cosmos](provision-throughput-autoscale.md#create-db-container-autoscale).
-* Přečtěte si o [výhodách zřízené propustnosti v režimu automatického škálování](provision-throughput-autoscale.md#autoscale-benefits).
+* Přečtěte si o [výhodách zřízené propustnosti pomocí automatického škálování ](provision-throughput-autoscale.md#autoscale-benefits).
 * Další informace o [logických a fyzických oddílech](partition-data.md).

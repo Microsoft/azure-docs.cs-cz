@@ -3,16 +3,16 @@ title: Faktury za smlouvu Azure Enterprise
 description: V tomto článku je vysvětlená správa faktury za Azure Enterprise a její další použití.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/06/2020
+ms.date: 05/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: d8d189d2ee67e3f98fec5d7d4cd295879e8689c9
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.openlocfilehash: 6f654e0b043cfc9f5a90fb84156269fecfbff5bf
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80743887"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691198"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Faktury za smlouvu Azure Enterprise
 

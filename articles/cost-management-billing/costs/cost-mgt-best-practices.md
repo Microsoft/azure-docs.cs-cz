@@ -3,17 +3,17 @@ title: Optimalizace investic do cloudu se službou Azure Cost Management
 description: Tento článek vám pomůže maximalizovat hodnotu svých investic do cloudu, snížit náklady a vyhodnotit způsob utrácení peněz.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874581"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791608"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -104,6 +104,12 @@ Další informace o různých možnostech najdete v tématu o [možnostech náku
 
 - Možnosti předběžných peněžních závazků
 - Přístup k nižším cenám Azure
+
+#### <a name="azure-in-csp"></a>[Azure v CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- Partneři CSP jsou primárním kontaktem pro potřeby svých zákazníků a středem vztahů se zákazníky
+- Partneři CSP zřizují nové zákazníky, objednávají předplatná, spravují předplatná a provádí úlohy správy jménem svých zákazníků
+- Partneři CSP dodávají služby a jedinečná řešení v sadě nebo prodávají Azure a současně mají pod kontrolou ceny, podmínky a fakturaci
 
 ## <a name="estimate-the-cost-of-your-solution"></a>Odhad nákladů na řešení
 

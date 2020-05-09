@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605482"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838582"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Image Red Hat Enterprise Linux (RHEL) dostupné v Azure
 Azure nabízí celou řadu imagí RHEL pro různé případy použití.
@@ -27,6 +27,9 @@ Azure nabízí celou řadu imagí RHEL pro různé případy použití.
 
 ## <a name="list-of-rhel-images"></a>Seznam imagí RHEL
 Toto je seznam imagí RHEL dostupných v Azure. Pokud není uvedeno jinak, všechny image jsou LVM rozdělené a připojené k běžným RHEL úložištím (ne EUS, ne E4S). Pro obecné použití jsou aktuálně k dispozici následující Image:
+
+> [!NOTE]
+> Nezpracované obrázky se už nevytvářejí ve prospěch LVM imagí. LVM nabízí několik výhod oproti staršímu schématu oddílu RAW (bez LVM), včetně významně flexibilnějších možností změny velikosti oddílů.
 
 Nabídka| Skladová jednotka (SKU) | Dělení | Zřizování | Poznámky
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | ZÍSKÁNÍ    | Linuxový agent |
 |             | 7.6      | ZÍSKÁNÍ    | Linuxový agent | Připojeno k úložištím EUS ve výchozím nastavení jako květen 2019.
 |             | 76 – Gen2  | ZÍSKÁNÍ    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
 |             | 7.7      | LVM    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 77 – Gen2  | LVM    | Linuxový agent | Ve výchozím nastavení připojené k úložištím EUS.
+|             | 7.8      | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,8)
+|             | 78 – Gen2  | LVM    | Linuxový agent | Připojeno k pravidelným úložištím (EUS není k dispozici pro RHEL 7,8)
 |             | 8 – LVM    | LVM    | Linuxový agent | RHEL 8. x řady imagí. Připojeno k pravidelným úložištím.
 |             | 8. LVM – Gen2| LVM    | Linuxový agent | Hyper-V Generation 2 – RHEL 8. x řada imagí. Připojeno k pravidelným úložištím.
 |             | 8        | LVM    | Linuxový agent | Image RHEL 8,0

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77580647"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891556"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
@@ -154,11 +154,6 @@ Jako druhou možnost si můžete [aktivovat výhody pro předplatitele MSDN](htt
 
 Vyhledávací moduly jsou běžnými prostředky načítání informací v mobilních aplikacích, na webu a ve firemních úložištích dat. Azure Kognitivní hledání poskytuje nástroje pro vytváření vyhledávacího prostředí podobného těm na velkých komerčních webech.
 
-V tomto 9minutovém videu od manažera programu Liama Cavanagha se dozvíte, jak může být integrace vyhledávacího modulu přínosná pro vaši aplikaci. Krátké ukázky zahrnují klíčové funkce v Azure Kognitivní hledání a to, jak vypadá typický pracovní postup. 
+V tomto 15 minutovém videu Luis program Správce programů Cabrera zavádí Azure Kognitivní hledání. 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ První 3 minuty pojednávají o klíčových funkcích a případech použití.
-+ 3 a 4 minuta popisuje zřizování služby. 
-+ 4 až 6 minuta popisuje průvodce importem dat, který se použije k vytvoření indexu pomocí předdefinované datové sady nemovitostí.
-+ 6 až 9 minuta popisuje Průzkumníka služby Search a různé dotazy.
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

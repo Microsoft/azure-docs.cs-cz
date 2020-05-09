@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189377"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863429"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurace odchozího síťového provozu pro clustery Azure HDInsight pomocí brány firewall
 
@@ -69,13 +69,13 @@ Vytvořte kolekci pravidel aplikace, která umožňuje clusteru odesílat a při
 
     **Oddíl značek plně kvalifikovaného názvu domény**
 
-    | Název | Zdrojová adresa | FQDN – značka | Poznámky |
+    | Name | Zdrojová adresa | FQDN – značka | Poznámky |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate a HDInsight | Vyžadováno pro služby HDI Services |
 
     **Oddíl cílové plně kvalifikované názvy domén**
 
-    | Název | Zdrojové adresy | `Protocol:Port` | Cílové plně kvalifikované názvy domén | Poznámky |
+    | Name | Zdrojové adresy | `Protocol:Port` | Cílové plně kvalifikované názvy domén | Poznámky |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Povoluje aktivitu přihlášení systému Windows. |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Povoluje aktivitu přihlášení systému Windows. |
@@ -103,7 +103,7 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Část IP adresy**
 
-    | Název | Protocol (Protokol) | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
+    | Name | Protocol (Protokol) | Zdrojové adresy | Cílové adresy | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Časová služba |
     | Rule_2 | Všechny | * | DC_IP_Address_1 DC_IP_Address_2 | * | Pokud používáte Balíček zabezpečení podniku (ESP), pak v části IP adresy přidejte síťové pravidlo, které umožňuje komunikaci s clustery AAD-DS pro ESP. IP adresy řadičů domény najdete v části AAD-DS na portálu. |
@@ -112,7 +112,7 @@ Vytvořte Síťová pravidla pro správnou konfiguraci clusteru HDInsight.
 
     **Oddíl Service Tags**
 
-    | Název | Protocol (Protokol) | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
+    | Name | Protocol (Protokol) | Zdrojové adresy | Značky služeb | Cílové porty | Poznámky |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Nakonfigurujte pravidlo sítě v části značky služby pro SQL, které vám umožní protokolovat a auditovat provoz SQL. Pokud jste nenakonfigurovali koncové body služby pro SQL Server v podsíti HDInsight, která bude bránu firewall obejít. |
 
@@ -188,61 +188,7 @@ Po úspěšném nastavení brány firewall můžete pomocí interního koncovéh
 
 Pokud chcete použít veřejný koncový bod`https://CLUSTERNAME.azurehdinsight.net`() nebo koncový bod`CLUSTERNAME-ssh.azurehdinsight.net`SSH (), ujistěte se, že máte správné trasy v tabulce směrování a NSG pravidla, abyste se vyhnuli problému s asymetrickým směrováním [.](../firewall/integrate-lb.md) Konkrétně v takovém případě musíte povolit IP adresu klienta v příchozích pravidlech NSG a také ji přidat do tabulky směrování definované uživatelem s další segmenty směrování `internet`. Pokud není směrování správně nastavené, zobrazí se chyba časového limitu.
 
-## <a name="configure-another-network-virtual-appliance"></a>Konfigurace jiného síťového virtuálního zařízení
-
-> [!Important]
-> Následující informace jsou požadovány **pouze** v případě, že chcete nakonfigurovat síťové virtuální zařízení (síťové virtuální zařízení) jiné než Azure firewall.
-
-Předchozí pokyny vám pomůžou nakonfigurovat Azure Firewall pro omezení odchozího provozu z clusteru HDInsight. Azure Firewall se automaticky nakonfiguruje tak, aby povolovala provoz pro spoustu běžných důležitých scénářů. Použití jiného síťového virtuálního zařízení bude vyžadovat, abyste nakonfigurovali řadu dalších funkcí. Při konfiguraci síťového virtuálního zařízení mějte na paměti následující faktory:
-
-* Služby podporující koncový bod služby by měly být nakonfigurované s koncovými body služby.
-* Závislosti IP adres jsou pro přenos bez HTTP/S (provoz TCP i UDP).
-* Koncové názvy koncových bodů HTTP/HTTPS můžete umístit do zařízení síťové virtuální zařízení.
-* Koncové body HTTP/HTTPS se zástupnými znaky jsou závislosti, které se můžou lišit podle počtu kvalifikátorů.
-* Přiřaďte směrovací tabulku, kterou vytvoříte ve své podsíti HDInsight.
-
-### <a name="service-endpoint-capable-dependencies"></a>Závislosti podporující koncový bod služby
-
-| **Služba** |
-|---|
-| Azure SQL |
-| Azure Storage |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>Závislosti IP adres
-
-| **Služba** | **Zobrazí** |
-|---|---|
-| \*: 123 | Kontroluje se čas NTP. Provoz se kontroluje na více koncových bodech na portu 123. |
-| [Zde](hdinsight-management-ip-addresses.md) publikované IP adresy | Tyto IP adresy jsou službou HDInsight. |
-| Privátní IP adresy AAD-DS pro clustery ESP |
-| \*: 16800 pro aktivaci Windows služby správy klíčů |
-| \*12000 pro Log Analytics |
-
-#### <a name="fqdn-httphttps-dependencies"></a>Závislosti HTTP/HTTPS v plně kvalifikovaném názvu domény
-
-> [!Important]
-> Následující seznam obsahuje jenom několik nejdůležitějších plně kvalifikovaných názvů domén. Další plně kvalifikované názvy domény (většinou Azure Storage a Azure Service Bus) můžete získat pro konfiguraci síťové virtuální zařízení [v tomto souboru](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
-
-| **Služba**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>Další kroky
 
 * [Architektura virtuální sítě Azure HDInsight](hdinsight-virtual-network-architecture.md)
+* [Konfigurace síťového virtuálního zařízení](./network-virtual-appliance.md)

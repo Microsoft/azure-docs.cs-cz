@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188391"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891320"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -105,29 +105,9 @@ Azure Machine Learning vytvoří další aplikaci (název začíná `aml-` nebo 
 
 Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky. Výpočetní prostředky (cíle výpočtů) se používají ke školení a nasazení modelů. Tyto výpočetní cíle můžete vytvořit ve virtuální síti. Můžete například použít Azure Data Science Virtual Machine k vytvoření výukového modelu a nasazení modelu do AKS.  
 
-Další informace najdete v tématu [Jak spustit experimenty a odvozování ve virtuální síti](how-to-enable-virtual-network.md).
+Další informace najdete v tématu [postup bezpečného spuštění experimentů a odvození v izolované virtuální síti](how-to-enable-virtual-network.md).
 
 Můžete také povolit privátní propojení Azure pro váš pracovní prostor. Privátní odkaz vám umožní omezit komunikaci do svého pracovního prostoru z Virtual Network Azure. Další informace najdete v tématu [Postup konfigurace privátního propojení](how-to-configure-private-link.md).
-
-> [!TIP]
-> Můžete kombinovat virtuální síť a privátní propojení a chránit tak komunikaci mezi vaším pracovním prostorem a dalšími prostředky Azure. Některé kombinace ale vyžadují pracovní prostor Enterprise Edition. Následující tabulka vám pomůže pochopit, jaké scénáře vyžaduje Enterprise Edition:
->
-> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
-> | ----- |:-----:|:-----:| 
-> | Žádná virtuální síť ani privátní odkaz | ✔ | ✔ |
-> | Pracovní prostor bez privátního odkazu Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
-> | Pracovní prostor bez privátního odkazu Další prostředky s privátním odkazem | ✔ | |
-> | Pracovní prostor s privátním odkazem. Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
-> | Pracovní prostor a jakýkoliv jiný prostředek s privátním odkazem | ✔ | |
-> | Pracovní prostor s privátním odkazem. Další prostředky bez privátního propojení nebo virtuální sítě | ✔ | ✔ |
-> | Azure Container Registry ve virtuální síti | ✔ | |
-> | Klíče spravované zákazníkem pro pracovní prostor | ✔ | |
-> 
-
-> [!WARNING]
-> V pracovním prostoru, kde je povolený privátní odkaz, se nepodporuje Azure Machine Learning výpočetních instancí Preview.
-> 
-> Azure Machine Learning nepodporuje použití služby Azure Kubernetes s povoleným privátním odkazem. Místo toho můžete použít službu Azure Kubernetes ve virtuální síti. Další informace najdete v tématu [zabezpečení experimentů s Azure ml a odvozování úloh v rámci Azure Virtual Network](how-to-enable-virtual-network.md).
 
 ## <a name="data-encryption"></a>Šifrování dat
 
@@ -265,7 +245,7 @@ Každý pracovní prostor má přidruženou spravovanou identitu přiřazenou sy
 
 Společnost Microsoft může shromažďovat neuživatelem identifikovatelné informace, jako jsou názvy prostředků (například název datové sady nebo název experimentu Machine Learning), nebo proměnné prostředí úloh pro účely diagnostiky. Všechna taková data se ukládají pomocí klíčů spravovaných Microsoftem v úložišti hostovaném v předplatných vlastněných společností Microsoft a [na základě standardních zásad ochrany osobních údajů společnosti Microsoft a standardů pro zpracování dat](https://privacy.microsoft.com/privacystatement).
 
-Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA. Podobně při pojmenování [RunId](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)se vyhněte zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné pro podpora Microsoftu inženýry.
+Microsoft také doporučuje do proměnných prostředí ukládat citlivé informace (třeba klíčová tajná klíče účtu). Proměnné prostředí jsou protokolovány, šifrovány a uloženy v USA. Podobně při pojmenování [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)Vyhněte zahrnutí citlivých informací, jako jsou uživatelská jména nebo tajné názvy projektů. Tyto informace se mohou zobrazit v protokolech telemetrie, které jsou přístupné pro podpora Microsoftu inženýry.
 
 Shromážděná diagnostická data můžete odhlásit tím, že při zřizování `hbi_workspace` pracovního prostoru `TRUE` nastavíte parametr na. Tato funkce se podporuje při použití šablon aplikace AzureML Python SDK, CLI, REST API nebo Azure Resource Manager.
 

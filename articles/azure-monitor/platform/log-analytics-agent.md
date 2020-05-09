@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: e85e41796d0fc4fb9ac72b4032de3143b26d890f
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871053"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982203"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
@@ -174,7 +174,6 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 |*.oms.opinsights.azure.com |Port 443 |Příchozí a odchozí|Ano |  
 |*.blob.core.windows.net |Port 443 |Příchozí a odchozí|Ano |
 |*.azure-automation.net |Port 443 |Příchozí a odchozí|Ano |
-|*.azure.com |Port 443|Příchozí a odchozí|Ano |
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 

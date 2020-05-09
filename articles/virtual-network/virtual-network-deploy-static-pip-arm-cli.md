@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e3e37347c8c23ccc9746bbb98ef6a822743848b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76043406"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790282"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure CLI
 
@@ -50,7 +50,7 @@ Následující kroky můžete provést z místního počítače nebo pomocí Azu
      --public-ip-address-allocation static
    ```
 
-   Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
+   Pokud veřejná IP adresa musí být standardní SKU, přidejte `--public-ip-sku Standard` k předchozímu příkazu. Přečtěte si další informace o [SKU veřejných IP adres](virtual-network-ip-addresses-overview-arm.md#sku). Pokud bude virtuální počítač přidán do fondu back-end veřejné Azure Load Balancer, musí SKU veřejné IP adresy virtuálního počítače odpovídat SKU veřejné IP adresy nástroje pro vyrovnávání zatížení. Podrobnosti najdete v tématu [Azure Load Balancer](../load-balancer/skus.md).
 
 4. Zobrazte přiřazenou veřejnou IP adresu a potvrďte, že byla vytvořená jako statická, základní adresa SKU, pomocí [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
 

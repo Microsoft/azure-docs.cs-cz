@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461680"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731691"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -266,9 +266,9 @@ Traffic Manager poskytuje řadu metod směrování provozu, které vyhovují rů
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zajišťuje vysokou dostupnost a výkon sítě pro vaše aplikace. Jedná se o nástroj pro vyrovnávání zatížení vrstvy 4 (TCP, UDP), který distribuuje příchozí provoz mezi zdravými instancemi služeb definovaných v sadě s vyrovnáváním zatížení. Azure Load Balancer lze nakonfigurovat na:
 
--   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [internetové vyrovnávání zatížení](../../load-balancer/concepts-limitations.md#publicloadbalancer).
+-   Vyrovnávání zatížení příchozího internetového provozu do virtuálních počítačů. Tato konfigurace se označuje jako [veřejné vyrovnávání zatížení](../../load-balancer/components.md#frontend-ip-configurations).
 
--   Vyrovnávání zatížení mezi virtuálními počítači ve virtuální síti, mezi virtuálními počítači v cloudových službách nebo mezi místními počítači a virtuálními počítači ve virtuální síti mezi pracovišti. Tato konfigurace se označuje jako [interní vyrovnávání zatížení](../../load-balancer/concepts-limitations.md#internalloadbalancer).
+-   Vyrovnávání zatížení mezi virtuálními počítači ve virtuální síti, mezi virtuálními počítači v cloudových službách nebo mezi místními počítači a virtuálními počítači ve virtuální síti mezi pracovišti. Tato konfigurace se označuje jako [interní vyrovnávání zatížení](../../load-balancer/components.md#frontend-ip-configurations).
 
 - Přeposlání externího provozu na konkrétní virtuální počítač
 

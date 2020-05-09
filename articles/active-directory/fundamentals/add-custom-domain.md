@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262149"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734735"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Přidání vlastního názvu domény pomocí portálu Azure Active Directory
 
@@ -37,7 +37,7 @@ Vytvořte nový adresář podle kroků uvedených v části [Vytvoření nového
 >[!IMPORTANT]
 >Osoba, která vytvořila tenanta, je automaticky globálním správcem tohoto tenanta. Globální správce může do tenanta přidat další správce.
 
-Další informace o rolích předplatného najdete v tématu [role Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles).
+Další informace o rolích předplatného najdete v tématu [role Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
 >[!TIP]
 > Pokud máte v úmyslu federovat místní službu Windows Server AD pomocí služby Azure AD, musíte při spuštění nástroje Azure AD Connect k synchronizaci adresářů vybrat **plán pro konfiguraci této domény pro jednotné přihlašování s místní službou Active Directory** .

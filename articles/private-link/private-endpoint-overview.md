@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: a4117acb2fada5c4422e177e9e6b84d7a0a51b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129320"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744395"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -24,7 +24,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 
 |Vlastnost  |Popis |
 |---------|---------|
-|Název    |    Jedinečný název v rámci skupiny prostředků.      |
+|Name    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
 |Prostředek privátního propojení    |   Prostředek privátního propojení pro připojení pomocí ID prostředku nebo aliasu ze seznamu dostupných typů. Pro veškerý provoz odeslaný do tohoto prostředku se vygeneruje jedinečný identifikátor sítě.       |
 |Cílový podprostředek   |      Prostředek, který se má připojit. Každý typ prostředku privátního propojení má různé možnosti pro výběr na základě předvolby.    |
@@ -35,7 +35,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
 Tady jsou některé klíčové podrobnosti o privátních koncových bodech: 
 - Privátní koncový bod umožňuje připojení mezi spotřebiteli ze stejné virtuální sítě, v oblasti partnerských virtuální sítě, globálně vázaných virtuální sítě a místně pomocí [VPN](https://azure.microsoft.com/services/vpn-gateway/) nebo [Express Route](https://azure.microsoft.com/services/expressroute/) and Services využívajících soukromé odkazy.
  
-- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní. Rozhraní je přiřazena privátní IP adresa z podsítě, která je mapována na službu privátního propojení.
+- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní je přiřazena privátní IP adresa z podsítě, která je mapována na prostředek privátního propojení.
  
 - Privátní koncový bod musí být nasazený ve stejné oblasti jako virtuální síť. 
  

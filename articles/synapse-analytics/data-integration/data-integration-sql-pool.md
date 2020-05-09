@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430562"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982696"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Ingestování dat do fondu SQL
 
@@ -39,7 +39,7 @@ V Azure synapse Analytics je propojená služba, kde můžete definovat informac
 
 ## <a name="create-pipeline"></a>Vytvoření kanálu
 
-Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen 2 do fondu SQL.
+Kanál obsahuje logický tok pro spuštění sady aktivit. V této části vytvoříte kanál s aktivitou kopírování, která ingestuje data z ADLS Gen2 do fondu SQL.
 
 1. Přejděte na kartu **Orchestration** . klikněte na ikonu plus vedle záhlaví kanály a vyberte **kanál**.
 1. V části **přesunout a transformovat** v podokně aktivity přetáhněte **Kopírovat data** na plátno kanálu.

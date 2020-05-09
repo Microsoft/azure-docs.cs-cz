@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246120"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594878"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure
 
@@ -452,7 +452,7 @@ V rámci zjednodušení nasazení a konfigurace používáme v tomto článku š
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Požadovaný
 Než začnete, ujistěte se, že splňujete požadavky popsané v následujících částech. Nezapomeňte také zkontrolovat všechny prostředky uvedené v části [Resources (prostředky][sap-ha-guide-2] ).
 
-V tomto článku používáme šablony Azure Resource Manager pro [NetWeaver SAP pro SAP](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Užitečný přehled šablon najdete v tématu [šablony SAP Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+V tomto článku používáme šablony Azure Resource Manager pro [NetWeaver SAP pro SAP](https://github.com/Azure/azure-quickstart-templates/). Užitečný přehled šablon najdete v tématu [šablony SAP Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Prostředky
 Tyto články zahrnují nasazení SAP v Azure:
@@ -677,8 +677,8 @@ _**Obrázek 10:** Architektura architektury s vysokou dostupností SAP s vyhraze
 
 Tady je postup, kde můžete získat šablony Azure Resource Manager pro ukázkový scénář, který popisujeme v tomto článku:
 
-* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/)  
+* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/)
 
 Příprava infrastruktury pro architekturu šablony 1:
 
@@ -768,8 +768,8 @@ Tuto šablonu Azure Resource Manager pro SAP můžete použít k jednoduššímu
 
 Tady je místo, kde můžete získat Azure Resource Manager šablony pro tento scénář nasazení:
 
-* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/)  
+* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Příprava infrastruktury na šablonu architektury 3
@@ -1016,7 +1016,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte ** < *SID*>-disascs** > **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Název
+   * Name
    * Port
    * Back-end port
 

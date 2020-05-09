@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s účtem služby Automation
+title: Řešení potíží s Azure Automationm účtem
 description: Naučte se řešit problémy a řešit potíže s účtem Azure.
 services: automation
 author: mgoedtel
@@ -8,16 +8,16 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 7b5e7171ac679384966e9dce79425cd1fa881c53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a7defdaa9b4b0f0b3580a3ac6b1a0487434a97c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679385"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864126"
 ---
-# <a name="troubleshoot-the-automation-account"></a>Řešení potíží s účtem Automation
+# <a name="troubleshoot-an-azure-automation-account"></a>Řešení potíží s účtem Azure Automation
 
-Tento článek popisuje řešení problémů, se kterými se můžete setkat při použití účtu Automation. V následujících částech jsou vysvětlené konkrétní chybové zprávy a možná řešení pro každé z nich. Obecné informace o účtech Automation najdete v tématu [Vytvoření účtu Azure](../automation-quickstart-create-account.md).
+Tento článek popisuje řešení problémů, se kterými se můžete setkat při použití účtu Azure Automation. Obecné informace o účtech Automation najdete v tématu [Vytvoření účtu Azure](../automation-quickstart-create-account.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Scénář: nejde zaregistrovat poskytovatele prostředků služby Automation pro předplatná.
 
@@ -39,7 +39,7 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 1. V prohlížeči přejdete na [Azure Portal](https://portal.azure.com).
 
-2. Přejděte na **odběry** a vyberte své předplatné ze stránky předplatná.   
+2. Přejít na **předplatná**a vybrat své předplatné.   
 
 3. V části **Nastavení**vyberte **poskytovatelé prostředků**.
 
@@ -49,8 +49,8 @@ Chcete-li zaregistrovat poskytovatele prostředků služby Automation, postupujt
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud nevidíte výše uvedený problém nebo nemůžete problém vyřešit, zkuste pro další podporu použít jeden z následujících kanálů:
+Pokud tento článek problém nevyřeší, zkuste další podporu vyzkoušet v jednom z následujících kanálů:
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [fór Azure](https://azure.microsoft.com/support/forums/).
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport)k, oficiální Microsoft Azure účet pro zlepšení zkušeností zákazníků tím, že propojíte komunitu Azure se správnými zdroji: odpověďmi, podporou a odborníky.
-* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+* Připojte se [@AzureSupport](https://twitter.com/azuresupport)pomocí. Jedná se o oficiální Microsoft Azure účet pro připojení komunity Azure ke správným zdrojům: odpovědi, podpora a odborníky.
+* Zasouborové incidenty podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/)a vyberte **získat podporu**.

@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254119"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890150"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Podobnost a bodování v Azure Kognitivní hledání
 
@@ -59,16 +59,9 @@ Azure Kognitivní hledání podporuje dva různé algoritmy řazení podobných 
 
 Prozatím můžete určit, který algoritmus řazení podobnosti byste chtěli použít. Další informace najdete v tématu o [algoritmu řazení](index-ranking-similarity.md).
 
-## <a name="watch-this-video"></a>Podívejte se na toto video
+Následující segment videa se rychle přepošle na vysvětlení algoritmů hodnocení používaných v Azure Kognitivní hledání. Pro další pozadí si můžete přehrát celé video.
 
-V tomto 16bitovém videu Raouf Merouche software inženýr vysvětluje proces indexování, dotazování a vytváření profilů vyhodnocování. Poskytuje vám dobrou představu o tom, co v digestoři probíhá při indexování a načítání dokumentů.
-
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2-3 minut pokrývá indexování: zpracování textu a lexikální analýzu.
-+ 3-4 minut pokrývá indexování: obrácené indexy.
-+ dotazování na 4-6 minut: načítání a hodnocení.
-+ 7-16 minut pokrývá profily vyhodnocování.
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>Viz také
 
