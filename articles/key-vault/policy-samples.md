@@ -1,24 +1,24 @@
 ---
-title: Seznam předdefinovaných definic zásad pro Key Vault
-description: Vypíše Azure Policy předdefinované definice zásad pro Key Vault. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
+title: Předdefinované definice zásad pro Key Vault
+description: Vypíše Azure Policy předdefinované definice zásad pro Key Vault. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
 ms.date: 04/30/2020
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f78f8a28ef0ea37a5d9021dcd6a82c0303161b15
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7304fe906a13da096f48dfc3fb8aa7ff4a6a5a08
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966446"
+ms.locfileid: "82983104"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-key-vault"></a>Azure Policy předdefinované definice zásad pro Key Vault
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Key Vault. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="key-vault-service"></a>Key Vault (služba)
 

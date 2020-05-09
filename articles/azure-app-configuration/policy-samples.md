@@ -1,24 +1,24 @@
 ---
-title: Seznam předdefinovaných definic zásad pro konfiguraci aplikací Azure
-description: Seznam Azure Policy integrovaných definic zásad pro konfiguraci aplikací Azure. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
+title: Předdefinované definice zásad pro Azure App Configuration
+description: Seznam Azure Policy integrovaných definic zásad pro konfiguraci aplikací Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
 ms.date: 05/01/2020
 ms.topic: sample
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 23d05e7610a6ab93931b9e8ea19210b3d5d8a4bc
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 947b78a45843ce142a4373efe9f29d976bffbc6f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966229"
+ms.locfileid: "82981013"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-app-configuration"></a>Azure Policy předdefinované definice zásad pro konfiguraci aplikací Azure
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro konfiguraci aplikací Azure. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-app-configuration"></a>Azure App Configuration
 

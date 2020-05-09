@@ -3,12 +3,12 @@ title: Kurz – nasazení clusteru vSphere v Azure
 description: Naučte se nasadit cluster vSphere v Azure pomocí řešení Azure VMWare (AVS).
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 6a192454367f2e6ca071e9cfe0a9f1a94868cbdb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928546"
+ms.locfileid: "82977691"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Kurz: nasazení privátního cloudu služby AVS v Azure
 
@@ -33,7 +33,7 @@ V tomto kurzu se naučíte:
 Aby bylo možné používat řešení Azure VMWare, musíte nejdřív zaregistrovat poskytovatele prostředků. Následující příklad registruje poskytovatele prostředků v rámci vašeho předplatného.
 
 ```azurecli-interactive
-az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+az provider register -n Microsoft.AVS --subscription <your subscription ID>
 ```
 
 Další způsoby registrace poskytovatele prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md).
