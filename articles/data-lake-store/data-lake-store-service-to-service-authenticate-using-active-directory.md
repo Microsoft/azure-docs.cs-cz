@@ -1,22 +1,17 @@
 ---
-title: 'Ověřování služba-služba: Azure Data Lake Storage Gen1 s Azure Active Directory | Microsoft Docs'
-description: Naučte se, jak dosáhnout ověřování služby-služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
+title: Ověřování služba-Služba – Data Lake Storage Gen1 – Azure
+description: Naučte se, jak dosáhnout ověřování služby-služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory.
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241374"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688186"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Ověřování služba-služba pomocí Azure Data Lake Storage Gen1 s využitím Azure Active Directory
 > [!div class="op_single_selector"]
@@ -73,7 +68,7 @@ Když se programově přihlašujete, budete potřebovat ID vaší aplikace. Poku
     ![Přiřazení oprávnění ke skupině](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Přiřazení oprávnění ke skupině")
    
     Další informace o oprávněních v Data Lake Storage Gen1 a o výchozích nebo přístupových seznamech řízení přístupu najdete [v tématu Access Control v Data Lake Storage Gen1](data-lake-store-access-control.md).
-7. V okně **Přidat vlastní přístup** klikněte na **OK**. Nově přidaná skupina s přidruženými oprávněními je uvedena v okně **přístup** .
+7. V okně **Přidat vlastní přístup** klikněte na **OK**. Nově přidané skupiny s přidruženými oprávněními jsou uvedeny v okně **přístup** .
    
     ![Přiřazení oprávnění ke skupině](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Přiřazení oprávnění ke skupině")
 

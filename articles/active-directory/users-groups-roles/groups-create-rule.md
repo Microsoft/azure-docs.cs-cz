@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266374"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582912"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Vytvoření nebo aktualizace dynamické skupiny v Azure Active Directory
 
@@ -46,7 +46,7 @@ Příklady syntaxe, podporovaných vlastností, operátorů a hodnot pravidla č
 
 ## <a name="to-create-a-group-membership-rule"></a>Vytvoření pravidla členství ve skupině
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v tenantovi.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, Správce služby Intune nebo Správce uživatelů v organizaci Azure AD.
 1. Vyhledejte a vyberte **skupiny**.
 1. Vyberte možnost **všechny skupiny**a vyberte možnost **Nová skupina**.
 
@@ -66,7 +66,7 @@ Pokud pravidlo, které jste zadali, není platné, zobrazí se v oznámení Azur
 
 ## <a name="to-update-an-existing-rule"></a>Aktualizace existujícího pravidla
 
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, správce skupin, správce Intune nebo Správce uživatelů v tenantovi.
+1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který se nachází v roli globální správce, správce skupin, správce Intune nebo Správce uživatelů v organizaci Azure AD.
 1. Vyberte **skupiny** > **všechny skupiny**.
 1. Vyberte skupinu a otevřete její profil.
 1. Na stránce profil pro skupinu vyberte **dynamická pravidla členství**. Tvůrce pravidel podporuje až pět výrazů. Chcete-li přidat více než pět výrazů, je nutné použít textové pole.
@@ -102,7 +102,7 @@ Pro stav **Poslední aktualizace členství** se můžou zobrazit tyto stavové 
 - **Probíhá: aktuálně**probíhá aktualizace.
 - **Neznámé**: čas poslední aktualizace se nedá načíst. Tato skupina může být nová.
 
-Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud žádné nedokončené dynamické aktualizace členství nelze zpracovat pro všechny skupiny v rámci tenanta po dobu delší než 24 hodin, zobrazí se v horní části **všech skupin**výstraha.
+Pokud při zpracovávání pravidla členství pro určitou skupinu dojde k chybě, zobrazí se v horní části **stránky přehled** pro danou skupinu výstraha. Pokud se pro všechny skupiny v organizaci po dobu delší než 24 hodin nedají zpracovat žádné nedokončené dynamické aktualizace členství, zobrazí se v horní části **všech skupin**výstraha.
 
 ![zpracování upozornění na chybové zprávy](./media/groups-create-rule/processing-error.png)
 

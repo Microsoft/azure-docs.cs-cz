@@ -1,10 +1,10 @@
 ---
 title: Řízení přístupu k síti
-description: Přehled řízení přístupu k síti pro Azure SQL Database a datový sklad pro správu přístupu a konfiguraci jedné nebo sdružené databáze.
+description: Přehled řízení přístupu k síti pro Azure SQL Database a Azure synapse Analytics pro správu přístupu a konfiguraci jedné nebo sdružené databáze.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414419"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629571"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database a řízení přístupu k síti v datovém skladu
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti
 
 > [!NOTE]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
+> Tento článek se týká Azure SQL serveru a databází SQL Database a Azure synapse Analytics, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse Analytics.
 
 > [!IMPORTANT]
 > Tento článek se *nevztahuje na* **Azure SQL Database spravovanou instanci**. Další informace o konfiguraci sítě najdete v tématu [připojení ke spravované instanci](sql-database-managed-instance-connect-app.md) .
@@ -56,7 +56,7 @@ Toto nastavení můžete také změnit přes podokno brány firewall po vytvoře
 
 Když je tato možnost nastavená na **on** Azure SQL Server, umožňuje komunikaci ze všech prostředků v rámci hranice Azure, která může nebo nemusí být součástí vašeho předplatného.
 
-V mnoha případech je nastavení **on** přísnější než to, co nejvíc zákazníci chtějí. Můžou chtít nastavit toto nastavení na **vypnuto** a nahradit ho více omezujícími pravidly FIREWALLU protokolu IP nebo Virtual Network pravidly brány firewall. To má vliv na následující funkce, které běží na virtuálních počítačích v Azure, které nejsou součástí vaší virtuální sítě, a proto se k SQL Database připojí přes IP adresu Azure.
+V mnoha případech je nastavení **on** přísnější než to, co nejvíc zákazníci chtějí. Můžou chtít nastavit toto nastavení na **vypnuto** a nahradit ho více omezujícími pravidly FIREWALLU protokolu IP nebo Virtual Network pravidly brány firewall. To má vliv na následující funkce, které běží na virtuálních počítačích v Azure, které nejsou součástí vaší virtuální sítě, a proto se k SQL Database připojit prostřednictvím IP adresy Azure.
 
 ### <a name="import-export-service"></a>Import služby export
 Služba import exportu nefunguje **, když**je **povolený přístup ke službám Azure** . Problém ale můžete obejít [tak, že ručně spustíte SqlPackage. exe z virtuálního počítače Azure nebo exportujete](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) přímo do kódu pomocí rozhraní DACFx API.

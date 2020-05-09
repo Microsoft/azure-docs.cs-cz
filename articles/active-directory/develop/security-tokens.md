@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584282"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926574"
 ---
 # <a name="security-tokens"></a>Tokeny zabezpečení
 
 Centralizovaný poskytovatel identity je zvláště užitečný pro aplikace, které mají uživatele na celém světě, kteří se nemusí nutně přihlašovat ze sítě Enterprise. Platforma Microsoft Identity Platform ověřuje uživatele a poskytuje tokeny zabezpečení, jako je [přístupový token](developer-glossary.md#access-token), [obnovovací token](developer-glossary.md#refresh-token)a [token ID](developer-glossary.md#id-token), které umožňují [klientské aplikaci](developer-glossary.md#client-application) přístup k chráněným prostředkům na [serveru prostředků](developer-glossary.md#resource-server).
 
-**Přístupové tokeny** jsou token zabezpečení, který je vydaný [autorizačním serverem](developer-glossary.md#authorization-server) jako součást toku [OAuth 2,0](active-directory-v2-protocols.md) . Obsahuje informace o uživateli a aplikaci, pro kterou je token určen. který se dá použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům. Další informace o tom, jak Microsoft Identity Platform vydává přístup k tokenům, najdete v tématu [přístupové tokeny](access-tokens.md).
+**Přístupový token** je token zabezpečení, který je vydaný [autorizačním serverem](developer-glossary.md#authorization-server) jako součást toku [OAuth 2,0](active-directory-v2-protocols.md) . Obsahuje informace o uživateli a aplikaci, pro kterou je token určen. který se dá použít pro přístup k webovým rozhraním API a dalším chráněným prostředkům. Další informace o tom, jak Microsoft Identity Platform vydává přístup k tokenům, najdete v tématu [přístupové tokeny](access-tokens.md).
 
-Přístupové tokeny jsou platné jenom po krátkou dobu, takže autorizační servery někdy vydávají **obnovovací** tokeny současně s vystavením přístupového tokenu. V případě potřeby může klientská aplikace vyměňovat Tento obnovovací token pro nový přístupový token. Další informace o tom, jak platforma Microsoft Identity Platform používá k odvolání oprávnění obnovovací tokeny, najdete v tématu [odvolání tokenu](access-tokens.md#token-revocation).
+Přístupové tokeny jsou platné jenom po krátkou dobu, takže autorizační servery někdy vystaví **obnovovací token** ve stejnou dobu, kdy se přístupový token vydá. V případě potřeby může klientská aplikace vyměňovat Tento obnovovací token pro nový přístupový token. Další informace o tom, jak platforma Microsoft Identity Platform používá k odvolání oprávnění obnovovací tokeny, najdete v tématu [odvolání tokenu](access-tokens.md#token-revocation).
 
 **Tokeny ID** se odesílají do klientské aplikace jako součást toku [OpenID Connect](v2-protocols-oidc.md) . Je možné je odeslat podél sebe nebo místo přístupového tokenu a klient je používá k ověření uživatele. Další informace o tom, jak Microsoft Identity Platform vydává tokeny ID, najdete v tématu [tokeny ID](id-tokens.md).
+
+> [!NOTE]
+> Tento článek popisuje tokeny zabezpečení pro protokoly OAuth2 a OpenID Connect. Mnoho podnikových aplikací používá SAML k ověřování uživatelů. Informace o kontrolních výrazech SAML najdete v referenčních informacích k [tokenům SAML Azure AD](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Ověřování tokenů zabezpečení
 
@@ -45,7 +48,7 @@ Přístupové tokeny se předávají webovému rozhraní API jako nosný token v
 
 Microsoft Identity Platform implementuje tokeny zabezpečení jako **webové tokeny JSON (JWTs)** , které obsahují **deklarace identity**.
 
-[Deklarace identity](developer-glossary.md#claim) poskytuje kontrolní výrazy týkající se jedné entity, jako je například klientská aplikace nebo [vlastník prostředku](developer-glossary.md#resource-owner), k jiné entitě, jako je například server prostředků.
+[Deklarace identity](developer-glossary.md#claim) poskytuje kontrolní výrazy týkající se jedné entity, jako je například klientská aplikace nebo [vlastník prostředku](developer-glossary.md#resource-owner), k jiné entitě, jako je například server prostředků. Deklarace identity může být také označována jako deklarace JWT nebo deklarace JSON Web Token.
 
 Deklarace identity jsou páry název-hodnota, které přenášejí fakta týkající se předmětu tokenu. Deklarace identity může například obsahovat fakta o objektu zabezpečení, který byl ověřen autorizačním serverem. Deklarace identity přítomné v daném tokenu závisí na mnoha věcí, včetně typu tokenu, typu přihlašovacího údaje použitého k ověření předmětu, konfigurace aplikace atd.
 

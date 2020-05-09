@@ -1,33 +1,33 @@
 ---
-title: Vytvoření nabídky kontejneru Azure v partnerském centru – Azure Marketplace
-description: Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace.
+title: Vytvoření nabídky kontejneru Azure – Azure Marketplace
+description: Tento článek vysvětluje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 3170849955485c0d098ed9f39c22332456e46fe4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81867369"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791931"
 ---
-# <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejnerů Azure
+# <a name="create-an-azure-container-offer"></a>Vytvoření nabídky kontejneru Azure
 
 > [!IMPORTANT]
 > Přesouváme správu nabídek vašich kontejnerů Azure z portál partnerů cloudu do partnerského centra. Dokud se vaše nabídky nemigrují, postupujte podle pokynů v části [kontejnery](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) , které vám portál partnerů cloudu spravovat vaše nabídky.
 
-Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace. Než začnete, [vytvořte v partnerském centru účet komerčního tržiště](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account).
+Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azure Marketplace. Než začnete, [Vytvořte si účet komerčního tržiště v partnerském centru](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , pokud jste to ještě neudělali. Ujistěte se, že je váš účet zaregistrovaný v programu komerčního tržiště.
 
 ## <a name="create-a-new-offer"></a>Vytvoření nové nabídky
 
-1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home)a potom v horní nabídce vyberte možnost **řídicí panel**.
-2. V nabídce vlevo vyberte **komerční Marketplace**a pak **Přehled**.
-3. Na stránce **Přehled** vyberte **+ Nová nabídka**a pak na **kontejner Azure**. Zobrazí se dialogové okno **Nová nabídka** .
+1. Přihlaste se k [partnerskému centru](https://partner.microsoft.com/dashboard/home).
+2. V nabídce vlevo – navigace vyberte **obchodní Marketplace** > **Přehled**.
+3. Na stránce Přehled vyberte **+ Nový nabídka** > **Azure Container**.
 
-:::image type="content" source="media/azure-create-container-offer-images/azure-create-new-container.png" alt-text="Znázornění stránky přehledu v partnerském centru. Nové tlačítko nabídky a nabídka konzultační služby jsou zvýrazněné.":::
+    ![Znázorňuje levou navigační nabídku.](./media/new-offer-azure-container.png)
 
 > [!TIP]
 > Po publikování nabídky se úpravy provedené v partnerském centru zobrazí pouze v prodejní místa po opětovném publikování nabídky. Nezapomeňte po provedení změn vždy znovu publikovat.
@@ -36,16 +36,16 @@ Tento článek popisuje, jak vytvořit a publikovat nabídku kontejneru pro Azur
 
 Zadejte **ID nabídky**. Toto je jedinečný identifikátor každé nabídky ve vašem účtu.
 
-- Toto ID uvidí zákazníci na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
+- Toto ID je viditelné pro zákazníky na webové adrese pro nabídku webu Marketplace a šablony Azure Resource Manager, pokud jsou k dispozici.
 - Použijte při tom jenom malá písmena a číslice. Může zahrnovat pomlčky a podtržítka, ale ne mezery a je omezen na 50 znaků. Pokud například zadáte **příkaz Test-nabídky-1**, Webová adresa nabídky bude `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 - ID nabídky nelze změnit po výběru možnost **vytvořit**.
 
-**Zadejte** **alias nabídky**. Toto je název, který se používá k odkazování na nabídku v partnerském centru.
+Zadejte **alias nabídky**. Toto je název, který se používá pro nabídku v partnerském centru.
 
 - Tento název se na webu Marketplace nepoužívá a liší se od názvu nabídky a dalších hodnot, které se zákazníkům zobrazují.
 - Po výběru **vytvořit**se tato možnost nedá změnit.
 
-Než budete pokračovat, vyberte **vytvořit** .
+Vyberte **vytvořit** pro vygenerování nabídky a pokračování.
 
 ## <a name="offer-overview"></a>Přehled nabídky
 
@@ -64,7 +64,7 @@ Pomocí těchto kroků můžete nastavit nabídku.
 
 ### <a name="connect-lead-management--optional"></a>Připojení řízení vedoucích – nepovinné
 
-Při publikování vaší nabídky na webu Marketplace pomocí partnerského centra se můžete připojit k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt.
+Při publikování vaší nabídky na komerční tržišti s partnerským centrem se můžete připojit k systému pro správu vztahů se zákazníky (CRM). To vám umožní získat kontaktní údaje zákazníka, jakmile někdo vyjádří zájem nebo použije váš produkt.
 
 1. **Vyberte cíl zájemce, u kterého chceme poslat zákaznickou zájem**. Partnerské centrum podporuje následující systémy CRM:
 
@@ -83,10 +83,10 @@ Tady jsou některé další zdroje informací o vedoucím řízení:
 
 - [Přehled řízení vedoucích](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Nejčastější dotazy ke správě potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Běžné chyby konfigurace potenciálních zákazníků](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - [Přehled řízení vedoucích](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (Ujistěte se, že je vypnutý blokování automaticky otevíraných oken)
 
-Než budete pokračovat k další části, můžete vybrat možnost **Uložit koncept** .
+Než budete pokračovat, vyberte **Uložit koncept** .
 
 ### <a name="properties"></a>Vlastnosti
 
@@ -129,7 +129,7 @@ Tato stránka umožňuje definovat podrobnosti nabídky, které se zobrazí na k
 > [!NOTE]
 > Podrobnosti nabídky nejsou v anglickém jazyce nutné, pokud popis nabídky začíná frází "Tato aplikace je k dispozici pouze v [jazykovém jazyce, který není v angličtině]." Také je v pořádku poskytnutí užitečného odkazu na nabídku obsahu v jazyce, který se liší od toho, který se používá v podrobnostech seznamu nabídky.
 
-### <a name="name"></a>Název
+### <a name="name"></a>Name
 
 Název, který zde zadáte, se zobrazí jako název vaší nabídky. Toto pole je předem vyplněno textem, který jste zadali do pole **alias nabídky** při vytváření nabídky. Tento název můžete později změnit.
 
@@ -434,4 +434,4 @@ Pokud chcete svou nabídku publikovat na veřejném (nebo v případě soukromé
 
 ## <a name="next-step"></a>Další krok
 
-- [Aktualizace stávající nabídky na komerčním marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [Aktualizace stávající nabídky na komerčním webu Marketplace](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

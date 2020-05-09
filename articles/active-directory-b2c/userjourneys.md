@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78227001"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559597"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,9 +64,9 @@ Element **OrchestrationStep** obsahuje následující atributy:
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | `Order` | Ano | Pořadí kroků orchestrace. |
-| `Type` | Ano | Typ kroku orchestrace Možné hodnoty: <ul><li>**Claimsproviderselection.** – určuje, že krok orchestrace prezentuje různým zprostředkovatelům deklarací identity uživateli možnost výběru jednoho.</li><li>**CombinedSignInAndSignUp** – určuje, že krok orchestrace prezentuje kombinované přihlášení ke zprostředkovateli sociálních sítí a přihlašovací stránku místního účtu.</li><li>**ClaimsExchange** – určuje, že krok orchestrace vyměňuje deklarace identity se zprostředkovatelem deklarací identity.</li><li>**Getclaims** – určuje, že krok orchestrace čte vstupní deklarace identity.</li><li>**SendClaims** – určuje, že krok orchestrace odesílá deklarace identity předávající straně s tokenem vystaveným vystavitelem deklarací identity.</li></ul> |
-| ContentDefinitionReferenceId | Ne | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto kroku orchestrace. Identifikátor odkazu definice obsahu je obvykle definován v technickém profilu s vlastním uplatněním. Existují však případy, kdy Azure AD B2C musí zobrazit něco bez technického profilu. Existují dva příklady – Pokud je typ kroku orchestrace jedna z následujících: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`Azure AD B2C nutné zobrazit výběr poskytovatele identity bez technického profilu. |
-| CpimIssuerTechnicalProfileReferenceId | Ne | Typ kroku orchestrace je `SendClaims`. Tato vlastnost definuje identifikátor technického profilu zprostředkovatele deklarací, který vydává token pro předávající stranu.  Pokud chybí, není vytvořen token předávající strany. |
+| `Type` | Ano | Typ kroku orchestrace Možné hodnoty: <ul><li>**Claimsproviderselection.** – určuje, že krok orchestrace prezentuje různým zprostředkovatelům deklarací identity uživateli možnost výběru jednoho.</li><li>**CombinedSignInAndSignUp** – určuje, že krok orchestrace prezentuje kombinované přihlášení ke zprostředkovateli sociálních sítí a přihlašovací stránku místního účtu.</li><li>**ClaimsExchange** – určuje, že krok orchestrace vyměňuje deklarace identity se zprostředkovatelem deklarací identity.</li><li>**Getclaims** – určuje, že krok orchestrace by měl zpracovat data deklarace identity odesílaná do Azure AD B2C od předávající strany prostřednictvím `InputClaims` její konfigurace.</li><li>**SendClaims** – určuje, že krok orchestrace odesílá deklarace identity předávající straně s tokenem vystaveným vystavitelem deklarací identity.</li></ul> |
+| ContentDefinitionReferenceId | No | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto kroku orchestrace. Identifikátor odkazu definice obsahu je obvykle definován v technickém profilu s vlastním uplatněním. Existují však případy, kdy Azure AD B2C musí zobrazit něco bez technického profilu. Existují dva příklady – Pokud je typ kroku orchestrace jedna z následujících: `ClaimsProviderSelection` nebo `CombinedSignInAndSignUp`Azure AD B2C nutné zobrazit výběr poskytovatele identity bez technického profilu. |
+| CpimIssuerTechnicalProfileReferenceId | No | Typ kroku orchestrace je `SendClaims`. Tato vlastnost definuje identifikátor technického profilu zprostředkovatele deklarací, který vydává token pro předávající stranu.  Pokud chybí, není vytvořen token předávající strany. |
 
 
 Element **OrchestrationStep** může obsahovat následující prvky:
@@ -172,14 +172,14 @@ Element **ClaimsProviderSelections** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| DisplayOption| Ne | Řídí chování případu, kde je k dispozici jeden výběr zprostředkovatele deklarací identity. Možné hodnoty: `DoNotShowSingleProvider` (výchozí) – uživatel je okamžitě přesměrován na federovaného zprostředkovatele identity. Nebo `ShowSingleProvider` Azure AD B2C prezentují přihlašovací stránku s jedním vybraným zprostředkovatelem identity. Chcete-li použít tento atribut, musí být `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` [verze definice obsahu](page-layout.md) a vyšší.|
+| DisplayOption| No | Řídí chování případu, kde je k dispozici jeden výběr zprostředkovatele deklarací identity. Možné hodnoty: `DoNotShowSingleProvider` (výchozí) – uživatel je okamžitě přesměrován na federovaného zprostředkovatele identity. Nebo `ShowSingleProvider` Azure AD B2C prezentují přihlašovací stránku s jedním vybraným zprostředkovatelem identity. Chcete-li použít tento atribut, musí být `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` [verze definice obsahu](page-layout.md) a vyšší.|
 
 Element **claimsproviderselection.** obsahuje následující atributy:
 
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v dalším kroku orchestrace výběru zprostředkovatele deklarací. Tento atribut nebo atribut ValidationClaimsExchangeId musí být zadán, ale ne oba. |
-| ValidationClaimsExchangeId | Ne | Identifikátor výměny deklarací identity, který se spustí v aktuálním kroku Orchestration pro ověření výběru zprostředkovatele deklarací identity. Tento atribut nebo atribut TargetClaimsExchangeId musí být zadán, ale ne oba. |
+| TargetClaimsExchangeId | No | Identifikátor výměny deklarací identity, který se spustí v dalším kroku orchestrace výběru zprostředkovatele deklarací. Tento atribut nebo atribut ValidationClaimsExchangeId musí být zadán, ale ne oba. |
+| ValidationClaimsExchangeId | No | Identifikátor výměny deklarací identity, který se spustí v aktuálním kroku Orchestration pro ověření výběru zprostředkovatele deklarací identity. Tento atribut nebo atribut TargetClaimsExchangeId musí být zadán, ale ne oba. |
 
 ### <a name="claimsproviderselection-example"></a>Příklad Claimsproviderselection.
 

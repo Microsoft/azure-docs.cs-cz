@@ -1,6 +1,6 @@
 ---
-title: Pochopení přiřazení zamítnutí pro prostředky Azure
-description: Přečtěte si o přiřazení zamítnutých v řízení přístupu na základě role (RBAC) pro prostředky Azure.
+title: Pochopení přiřazení Azure Deny – Azure RBAC
+description: Přečtěte si o přiřazeních odmítnutí Azure v řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/26/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: db249ccde1026cd468a1c30942891119482697ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372486"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733767"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Pochopení přiřazení zamítnutí pro prostředky Azure
+# <a name="understand-azure-deny-assignments"></a>Pochopení přiřazení Azure Deny
 
 Podobně jako u přiřazení role *přiřazení zamítnutí* připojuje sadu akcí Odepřít pro uživatele, skupinu nebo instanční objekt v konkrétním oboru pro účely odepření přístupu. Odmítnutí přiřazení zablokuje uživatelům, aby prováděli konkrétní akce prostředku Azure i v případě, že jim přiřazením role udělí přístup.
 
@@ -57,18 +57,18 @@ Přiřazení odepřít následují podobný vzor jako přiřazení rolí, ale ta
 > | Vlastnost | Požaduje se | Typ | Popis |
 > | --- | --- | --- | --- |
 > | `DenyAssignmentName` | Ano | Řetězec | Zobrazovaný název přiřazení zamítnutí. Názvy musí být pro daný obor jedinečné. |
-> | `Description` | Ne | Řetězec | Popis přiřazení zamítnutí. |
+> | `Description` | No | Řetězec | Popis přiřazení zamítnutí. |
 > | `Permissions.Actions` | Aspoň jedna akce nebo jedna akce. | Řetězec [] | Pole řetězců, které určují operace správy, na které přiřazení zamítnutí blokuje přístup. |
-> | `Permissions.NotActions` | Ne | Řetězec [] | Pole řetězců, které určují operace správy, které mají být vyloučeny z přiřazení zamítnutí. |
+> | `Permissions.NotActions` | No | Řetězec [] | Pole řetězců, které určují operace správy, které mají být vyloučeny z přiřazení zamítnutí. |
 > | `Permissions.DataActions` | Aspoň jedna akce nebo jedna akce. | Řetězec [] | Pole řetězců, které určují datové operace, na které přiřazení zamítnutí blokuje přístup. |
-> | `Permissions.NotDataActions` | Ne | Řetězec [] | Pole řetězců, které určují datové operace, které mají být vyloučeny z přiřazení zamítnutí. |
-> | `Scope` | Ne | Řetězec | Řetězec, který určuje rozsah, pro který se přiřazení odepřít. |
-> | `DoNotApplyToChildScopes` | Ne | Logická hodnota | Určuje, zda se přiřazení odepřít vztahuje na podřízené obory. Výchozí hodnota je false. |
+> | `Permissions.NotDataActions` | No | Řetězec [] | Pole řetězců, které určují datové operace, které mají být vyloučeny z přiřazení zamítnutí. |
+> | `Scope` | No | Řetězec | Řetězec, který určuje rozsah, pro který se přiřazení odepřít. |
+> | `DoNotApplyToChildScopes` | No | Logická hodnota | Určuje, zda se přiřazení odepřít vztahuje na podřízené obory. Výchozí hodnota je false. |
 > | `Principals[i].Id` | Ano | Řetězec [] | Pole ID objektu zabezpečení služby Azure AD (uživatel, skupina, instanční objekt nebo spravovaná identita), na které se vztahuje přiřazení zamítnutí. Nastavte na prázdný identifikátor GUID `00000000-0000-0000-0000-000000000000` , který bude představovat všechny objekty zabezpečení. |
-> | `Principals[i].Type` | Ne | Řetězec [] | Pole typů objektů reprezentovaných objekty zabezpečení [i]. ID. nastaveno na hodnotu `SystemDefined` , která představuje všechny objekty zabezpečení. |
-> | `ExcludePrincipals[i].Id` | Ne | Řetězec [] | Pole ID objektu zabezpečení služby Azure AD (uživatel, skupina, instanční objekt nebo spravovaná identita), na které se nevztahují přiřazení zamítnutí. |
-> | `ExcludePrincipals[i].Type` | Ne | Řetězec [] | Pole typů objektů reprezentovaných ExcludePrincipals [i]. ID. |
-> | `IsSystemProtected` | Ne | Logická hodnota | Určuje, jestli toto přiřazení zamítnutí vytvořila Azure a nedá se upravit ani odstranit. V současné době jsou všechna přiřazení zamítnutá systémem chráněná. |
+> | `Principals[i].Type` | No | Řetězec [] | Pole typů objektů reprezentovaných objekty zabezpečení [i]. ID. nastaveno na hodnotu `SystemDefined` , která představuje všechny objekty zabezpečení. |
+> | `ExcludePrincipals[i].Id` | No | Řetězec [] | Pole ID objektu zabezpečení služby Azure AD (uživatel, skupina, instanční objekt nebo spravovaná identita), na které se nevztahují přiřazení zamítnutí. |
+> | `ExcludePrincipals[i].Type` | No | Řetězec [] | Pole typů objektů reprezentovaných ExcludePrincipals [i]. ID. |
+> | `IsSystemProtected` | No | Logická hodnota | Určuje, jestli toto přiřazení zamítnutí vytvořila Azure a nedá se upravit ani odstranit. V současné době jsou všechna přiřazení zamítnutá systémem chráněná. |
 
 ## <a name="the-all-principals-principal"></a>Všechny objekty zabezpečení
 
@@ -90,4 +90,4 @@ Všechny objekty zabezpečení mohou být kombinovány `ExcludePrincipals` s cí
 ## <a name="next-steps"></a>Další kroky
 
 * [Kurz: ochrana nových prostředků pomocí zámků prostředků Azure modrotisky](../governance/blueprints/tutorials/protect-new-resources.md)
-* [Vypsat přiřazení zamítnutí pro prostředky Azure pomocí Azure Portal](deny-assignments-portal.md)
+* [Výpis přiřazení odmítnutí Azure pomocí Azure Portal](deny-assignments-portal.md)

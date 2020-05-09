@@ -7,16 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: ec96189185a06c1fcbd95eed6216ade47f3089c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79214647"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594232"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
-V tomto dokumentu se dozvíte, jak migrovat úlohy Apache Hive a LLAP v HDInsight 3,6 do HDInsight 4,0. HDInsight 4,0 poskytuje novější podregistr a LLAP funkce, jako například materializovaná zobrazení a ukládání výsledků dotazu do mezipaměti. Při migraci úloh do HDInsight 4,0 můžete použít spoustu nových funkcí podregistru 3, které nejsou k dispozici ve službě HDInsight 3,6.
+Tento dokument ukazuje, jak migrovat úlohy Apache Hive a LLAP v HDInsight 3,6 do HDInsight 4,0. HDInsight 4,0 poskytuje novější podregistr a LLAP funkce, jako například materializovaná zobrazení a ukládání výsledků dotazu do mezipaměti. Při migraci úloh do HDInsight 4,0 můžete použít spoustu nových funkcí podregistru 3, které nejsou k dispozici ve službě HDInsight 3,6.
 
 Tento článek se zabývá následujícími tématy:
 
@@ -25,106 +25,26 @@ Tento článek se zabývá následujícími tématy:
 * Zachování zásad zabezpečení podregistru napříč verzemi HDInsight
 * Provádění dotazů a ladění z HDInsight 3,6 na HDInsight 4,0
 
-Jednou z výhod podregistru je schopnost exportovat metadata do externí databáze (označované jako metastore podregistru). **Podregistr metastore** zodpovídá za ukládání statistik tabulky, včetně umístění úložiště tabulky, názvů sloupců a informací o indexu tabulky. Schéma databáze metastore se mezi verzemi podregistru liší. Doporučeným způsobem, jak bezpečně upgradovat metastore Hive, je vytvořit kopii a upgradovat kopii místo aktuálního provozního prostředí.
+Jednou z výhod podregistru je schopnost exportovat metadata do externí databáze (označované jako metastore podregistru). **Podregistr metastore** zodpovídá za ukládání statistik tabulky, včetně umístění úložiště tabulky, názvů sloupců a informací o indexu tabulky. HDInsight 3,6 a HDInsight 4,0 vyžadují různá schémata metastore a nemůžou sdílet jeden metastore. Doporučeným způsobem, jak bezpečně upgradovat metastore Hive, je upgradovat kopii místo originálu v aktuálním provozním prostředí. Tento dokument vyžaduje, aby měl původní a nový cluster přístup ke stejnému účtu úložiště. Proto nepokrývá migraci dat do jiné oblasti.
 
-## <a name="copy-metastore"></a>Kopírovat metastore
+## <a name="migrate-from-external-metastore"></a>Migrace z externích metastore
 
-HDInsight 3,6 a HDInsight 4,0 vyžadují různá schémata metastore a nemůžou sdílet jeden metastore.
+### <a name="1-run-major-compaction-on-acid-tables-in-hdinsight-36"></a>1. spuštění hlavní komprimace v tabulkách KYSELosti ve službě HDInsight 3,6
 
-### <a name="external-metastore"></a>Externí metastore
+Tabulky kyselin HDInsight 3,6 a HDInsight 4,0 rozumějí rozdíly v KYSELosti odlišně. Jediná akce požadovaná před migrací je spuštění hlavní komprimace proti každé tabulce KYSELosti v clusteru 3,6. Podrobnosti o komprimaci najdete v [příručce k jazyku pro podregistr](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) .
 
+### <a name="2-copy-sql-database"></a>2. kopírování SQL Database
 Vytvořte novou kopii vašich externích metastore. Pokud používáte externí metastore, je jedním z bezpečných a snadných způsobů, jak vytvořit kopii metastore, je [obnovit databázi](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) s jiným názvem pomocí funkce SQL Database obnovení.  Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
 
-### <a name="internal-metastore"></a>Interní metastore
+### <a name="3-upgrade-metastore-schema"></a>3. upgrade schématu metastore
+Po dokončení **kopírování** metastore spusťte skript upgradu schématu v [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) v existujícím clusteru HDInsight 3,6 a upgradujte nový metastore na schéma pro podregistr 3. (Tento krok nevyžaduje připojení nového metastore ke clusteru.) To umožňuje připojení databáze jako HDInsight 4,0 metastore.
 
-Pokud používáte interní metastore, můžete pomocí dotazů exportovat definice objektů v metastore Hive a importovat je do nové databáze.
-
-Po dokončení tohoto skriptu se předpokládá, že původní cluster se už nebude používat pro přístup ke kterékoli z tabulek nebo databází, na které se odkazuje ve skriptu.
-
-> [!NOTE]
-> V případě tabulek pro KYSELost se vytvoří nová kopie dat pod tabulkou.
-
-1. Připojte se ke clusteru HDInsight pomocí [klienta Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
-1. Připojte se k HiveServer2 pomocí [klienta Beeline](../hadoop/apache-hadoop-use-hive-beeline.md) z otevřené relace SSH zadáním následujícího příkazu:
-
-    ```hiveql
-    for d in `beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show databases;"`; 
-    do
-        echo "Scanning Database: $d"
-        echo "create database if not exists $d; use $d;" >> alltables.hql; 
-        for t in `beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show tables;"`;
-        do
-            echo "Copying Table: $t"
-            ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;"`;
-
-            echo "$ddl;" >> alltables.hql;
-            lowerddl=$(echo $ddl | awk '{print tolower($0)}')
-            if [[ $lowerddl == *"'transactional'='true'"* ]]; then
-                if [[ $lowerddl == *"partitioned by"* ]]; then
-                    # partitioned
-                    raw_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "CREATE TABLE .*" | cut -d"(" -f2- | cut -f1 -d")" | sed 's/`//g');
-                    ptn_cols=$(beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table $t;" | tr '\n' ' ' | grep -io "PARTITIONED BY .*" | cut -f1 -d")" | cut -d"(" -f2- | sed 's/`//g');
-                    final_cols=$(echo "(" $raw_cols "," $ptn_cols ")")
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t $final_cols TBLPROPERTIES ('transactional'='false');";
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    parsed_ptn_cols=$(echo $ptn_cols| sed 's/ [a-z]*,/,/g' | sed '$s/\w*$//g');
-                    echo "create table flattened_$t $final_cols;" >> alltables.hql;
-                    echo "load data inpath '$dir' into table flattened_$t;" >> alltables.hql;
-                    echo "insert into $t partition($parsed_ptn_cols) select * from flattened_$t;" >> alltables.hql;
-                    echo "drop table flattened_$t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                else
-                    # not partitioned
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "create external table ext_$t like $t TBLPROPERTIES ('transactional'='false');";
-                    staging_ddl=`beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "show create table ext_$t;"`;
-                    dir=$(echo $staging_ddl | grep -io " LOCATION .*" | grep -m1 -o "'.*" | sed "s/'[^-]*//2g" | cut -c2-);
-
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "insert into ext_$t select * from $t;";
-                    echo "load data inpath '$dir' into table $t;" >> alltables.hql;
-                    beeline -u "jdbc:hive2://localhost:10001/$d;transportMode=http" --showHeader=false --silent=true --outputformat=tsv2 -e "drop table ext_$t";
-                fi
-            fi
-            echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t;" >> alltables.hql;
-        done;
-    done
-    ```
-
-    Tento příkaz vygeneruje soubor s názvem **alltables. HQL**.
-
-1. Ukončete relaci SSH. Pak zadejte příkaz SCP pro stažení **alltables. HQL** lokálně.
-
-    ```bash
-    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
-    ```
-
-1. Nahrajte **alltables. HQL** do *nového* clusteru HDInsight.
-
-    ```bash
-    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
-    ```
-
-1. Pak se pomocí SSH připojte k *novému* clusteru HDInsight. Z relace SSH spusťte následující kód:
-
-    ```bash
-    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -i alltables.hql
-    ```
-
-
-## <a name="upgrade-metastore"></a>Upgradovat metastore
-
-Po dokončení **kopírování** metastore spusťte skript upgradu schématu v [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) v existujícím clusteru HDInsight 3,6 a upgradujte nový metastore na schéma pro podregistr 3. To umožňuje připojení databáze jako HDInsight 4,0 metastore.
-
-Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` odpovídajícími hodnotami **kopírovaných** metastore Hive oddělených mezerami. Při zadávání názvu SQL serveru nezahrnujte ". database.windows.net".
+Použijte hodnoty v tabulce níže. Nahraďte `SQLSERVERNAME DATABASENAME USERNAME PASSWORD` odpovídajícími hodnotami pro metastore Hive **kopie**oddělené mezerami. Při zadávání názvu SQL serveru nezahrnujte ". database.windows.net".
 
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název|Upgrade podregistru|
+|Name|Upgrade podregistru|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/launch-schema-upgrade.sh`|
 |Typ (typy) uzlů|Head|
 |Parametry|SQLSERVER HESLO K UŽIVATELSKÉMU JMÉNU \ DATABASENAME|
@@ -138,54 +58,124 @@ Upgrade můžete ověřit spuštěním následujícího dotazu SQL na databázi:
 select * from dbo.version
 ```
 
-## <a name="migrate-hive-tables-to-hdinsight-40"></a>Migrace tabulek podregistru do HDInsight 4,0
+### <a name="4-deploy-a-new-hdinsight-40-cluster"></a>4. nasazení nového clusteru HDInsight 4,0
 
-Po dokončení předchozí sady kroků pro migraci metastore do prostředí HDInsight 4,0 budou tabulky a databáze zaznamenané v metastore viditelné v rámci clusteru HDInsight 4,0 spuštěním `show tables` nebo `show databases` z clusteru. Informace o spuštění dotazů v clusterech HDInsight 4,0 najdete v tématu [provádění dotazů napříč verzemi HDInsight](#query-execution-across-hdinsight-versions) .
+1. Zadejte upgradované metastore jako metastore Hive nového clusteru.
 
-Skutečná data z tabulek však nejsou přístupná, dokud cluster nemá přístup k potřebným účtům úložiště. Abyste se ujistili, že cluster HDInsight 4,0 má přístup ke stejným datům jako starý cluster HDInsight 3,6, proveďte následující kroky:
+1. Skutečná data z tabulek však nejsou přístupná, dokud cluster nemá přístup k potřebným účtům úložiště.
+Ujistěte se, že účty úložiště tabulek podregistru v clusteru HDInsight 3,6 jsou určené jako primární nebo sekundární účty úložiště nového clusteru HDInsight 4,0.
+Další informace o přidávání účtů úložiště do clusterů HDInsight najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](../hdinsight-hadoop-add-storage.md).
 
-1. Určete účet úložiště Azure pro tabulku nebo databázi.
+### <a name="5-complete-migration-with-a-post-upgrade-tool-in-hdinsight-40"></a>5. dokončení migrace pomocí nástroje po upgradu ve službě HDInsight 4,0
 
-1. Pokud je už cluster HDInsight 4,0 spuštěný, připojte účet Azure Storage ke clusteru přes Ambari. Pokud jste ještě nevytvořili cluster HDInsight 4,0, ujistěte se, že je účet úložiště Azure zadaný jako primární nebo sekundární účet úložiště clusteru. Další informace o přidávání účtů úložiště do clusterů HDInsight najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](../hdinsight-hadoop-add-storage.md).
-
-## <a name="deploy-new-hdinsight-40-and-connect-to-the-new-metastore"></a>Nasazení nové HDInsight 4,0 a připojení k novému metastore
-
-Po dokončení upgradu schématu nasaďte nový cluster HDInsight 4,0 a propojte upgradovanou metastore. Pokud jste už nasadili 4,0, nastavte ho tak, abyste se mohli připojit k metastore z Ambari.
-
-## <a name="run-schema-migration-script-from-hdinsight-40"></a>Spuštění skriptu migrace schématu z HDInsight 4,0
-
-Tabulky jsou v HDInsight 3,6 a HDInsight 4,0 zpracovávané jinak. Z tohoto důvodu nemůžete sdílet stejné tabulky pro clustery s různými verzemi. Pokud chcete použít HDInsight 3,6 ve stejnou dobu jako HDInsight 4,0, musíte mít samostatné kopie dat pro každou verzi.
-
-Zatížení vašeho podregistru může zahrnovat kombinaci KYSELých a nekyselých tabulek. Jeden klíčový rozdíl mezi podregistrem v HDInsight 3,6 (podregistr 2) a podregistr v HDInsight 4,0 (podregistr 3) je dodržování předpisů pro tabulky v KYSELINě. Ve službě HDInsight 3,6, povolení dodržování předpisů v podregistru vyžaduje další konfiguraci, ale ve výchozím nastavení jsou v tabulkách HDInsight 4,0 kompatibilní s KYSELINou. Jediná akce nutná před migrací je spuštění hlavní komprimace proti tabulce kyselin v clusteru 3,6. V zobrazení podregistru nebo v Beeline spusťte následující dotaz:
-
-```sql
-alter table myacidtable compact 'major';
-```
-
-Tato komprimace je povinná, protože tabulky v HDInsight 3,6 a HDInsight 4,0 porozumět rozdílům v KYSELosti odlišně. Při komprimaci se vynutila čistá břidlica, která zaručuje konzistenci. Část 4 [dokumentace k migraci podregistru](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.3.0/bk_ambari-upgrade-major/content/prepare_hive_for_upgrade.html) obsahuje pokyny pro hromadné komprimaci tabulek pro kyselinu HDInsight 3,6.
-
-Po dokončení kroků migrace a komprimace metastore můžete aktuální datový sklad migrovat. Po dokončení migrace datového skladu pro podregistr bude mít datový sklad HDInsight 4,0 následující vlastnosti:
+Ve výchozím nastavení musí být spravované tabulky v HDInsight 4,0 standardně kompatibilní s KYSELINou. Po dokončení migrace metastore spusťte nástroj po upgradu a zpřístupněte dříve nekompatibilní tabulky, které nejsou v KYSELINě kompatibilní s clusterem HDInsight 4,0. Tento nástroj bude platit následující převod:
 
 |3,6 |4.0 |
 |---|---|
 |Externí tabulky|Externí tabulky|
-|Netransakční spravované tabulky|Externí tabulky|
-|Transakční spravované tabulky|Spravované tabulky|
+|Spravované tabulky bez KYSELosti|Externí tabulky s vlastností external. Table. vyprázdnění = true|
+|Tabulky spravované KYSELINou|Tabulky spravované KYSELINou|
 
-Před provedením migrace možná budete muset upravit vlastnosti datového skladu. Například pokud očekáváte, že k některé tabulce budou mít přistup třetí strana (například cluster HDInsight 3,6), musí být tato tabulka po dokončení migrace externě externí. Ve službě HDInsight 4,0 jsou všechny spravované tabulky transakční. Proto jsou spravované tabulky v HDInsight 4,0 k dispozici pouze clusterům HDInsight 4,0.
-
-Po správném nastavení vlastností tabulky spusťte nástroj pro migraci datového skladu z jednoho z hlavních clusteru pomocí prostředí SSH:
+Spusťte nástroj po upgradu podregistru z clusteru HDInsight 4,0 pomocí prostředí SSH:
 
 1. Připojte se ke clusteru hlavnímu uzlu pomocí SSH. Pokyny najdete v tématu [připojení ke službě HDInsight pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) .
 1. Spusťte prostředí přihlášení jako uživatel podregistru spuštěním`sudo su - hive`
-1. Pomocí příkazu `ls /usr/hdp`určete verzi zásobníku datové platformy. Tím se zobrazí řetězec verze, který byste měli použít v příkazu Next.
-1. Z prostředí spusťte následující příkaz. Nahraďte `STACK_VERSION` řetězcem verze z předchozího kroku:
+1. Z prostředí spusťte následující příkaz.
 
-```bash
-/usr/hdp/STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
-```
+    ```bash
+    STACK_VERSION=$(hdp-select status hive-server2 | awk '{ print $3; }')
+    /usr/hdp/$STACK_VERSION/hive/bin/hive --config /etc/hive/conf --service  strictmanagedmigration --hiveconf hive.strict.managed.tables=true -m automatic --modifyManagedTables
+    ```
 
-Po dokončení nástroje pro migraci bude váš sklad podregistru připravený pro HDInsight 4,0.
+Po dokončení nástroje bude Sklad v podregistru připraven pro HDInsight 4,0.
+
+## <a name="migrate-from-internal-metastore"></a>Migrace z interního metastore
+
+Pokud cluster HDInsight 3,6 používá interní metastore Hive, postupujte podle následujících kroků a spusťte skript, který generuje dotazy na podregistr pro export definic objektů z metastore.
+
+Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
+
+> [!NOTE]
+>
+> * V případě tabulek pro KYSELost se vytvoří nová kopie dat pod tabulkou.
+>
+> * Tento skript podporuje migraci databází podregistru, tabulek a oddílů pouze. Očekává se, že se zkopírují další objekty metadat, jako jsou zobrazení, UDF a omezení tabulek.
+>
+> * Po dokončení tohoto skriptu se předpokládá, že původní cluster se už nebude používat pro přístup ke kterékoli z tabulek nebo databází, na které se odkazuje ve skriptu.
+>
+> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Například:
+>
+>    ```SQL
+>    create table tablename_backup like tablename;
+>    insert overwrite table tablename_backup select * from tablename;
+>    create external table tablename_tmp like tablename;
+>    insert overwrite table tablename_tmp select * from tablename;
+>    alter table tablename_tmp set tblproperties('external.table.purge'='true');
+>    drop table tablename;
+>    alter table tablename_tmp rename to tablename;
+>    ```
+
+1. Připojte se ke clusteru HDInsight 3,6 pomocí [klienta Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+
+1. Z otevřené relace SSH stáhněte následující soubor skriptu, který vygeneruje soubor s názvem **alltables. HQL**.
+
+    ```bash
+    wget https://hdiconfigactions.blob.core.windows.net/hivemetastoreschemaupgrade/exporthive_hdi_3_6.sh
+    chmod 755 exporthive_hdi_3_6.sh
+    ```
+
+    * Pro běžný cluster HDInsight bez protokolu ESP stačí provést `exporthive_hdi_3_6.sh`příkaz.
+
+    * Pro cluster s protokolem ESP, kinit a upravte argumenty na Beeline: spusťte následující příkaz definující uživatele a doménu pro uživatele Azure AD s úplnými oprávněními pro podregistr.
+
+        ```bash
+        USER="USER"  # replace USER
+        DOMAIN="DOMAIN"  # replace DOMAIN
+        DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+        kinit "$USER@$DOMAIN_UPPER"
+        ```
+
+        ```bash
+        hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+        BEE_CMD="beeline -u 'jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http' -n "$USER@$DOMAIN" --showHeader=false --silent=true --outputformat=tsv2 -e"
+        ./exporthive_hdi_3_6.sh "$BEE_CMD"
+        ```
+
+1. Ukončete relaci SSH. Pak zadejte příkaz SCP pro stažení **alltables. HQL** lokálně.
+
+    ```bash
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:alltables.hql c:/hdi
+    ```
+
+1. Nahrajte **alltables. HQL** do *nového* clusteru HDInsight.
+
+    ```bash
+    scp c:/hdi/alltables.hql sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/home/sshuser/
+    ```
+
+1. Pak pomocí SSH se připojte k *novému* clusteru HDInsight 4,0. Spusťte následující kód z relace SSH do tohoto clusteru:
+
+    Bez protokolu ESP:
+
+    ```bash
+    beeline -u "jdbc:hive2://localhost:10001/;transportMode=http" -f alltables.hql
+    ```
+
+    S protokolem ESP:
+
+    ```bash
+    USER="USER"  # replace USER
+    DOMAIN="DOMAIN"  # replace DOMAIN
+    DOMAIN_UPPER=$(printf "%s" "$DOMAIN" | awk '{ print toupper($0) }')
+    kinit "$USER@$DOMAIN_UPPER"
+    ```
+
+    ```bash
+    hn0=$(grep hn0- /etc/hosts | xargs | cut -d' ' -f4)
+    beeline -u "jdbc:hive2://$hn0:10001/default;principal=hive/_HOST@$DOMAIN_UPPER;auth-kerberos;transportMode=http" -n "$USER@$DOMAIN" -f alltables.hql
+    ```
+
+Nástroj po upgradu pro externí migraci metastore se tady netýká, protože spravované tabulky bez KYSELosti ze služby HDInsight 3,6 se převádějí na tabulky spravované na základě kyseliny v HDInsight 4,0.
 
 > [!Important]  
 > Spravované tabulky v HDInsight 4,0 (včetně tabulek migrovaných z 3,6) nemají být dostupné pro jiné služby nebo aplikace, včetně clusterů HDInsight 3,6.
@@ -227,7 +217,7 @@ V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se
 |Vlastnost | Hodnota |
 |---|---|
 |Typ skriptu|– Vlastní|
-|Název|DAS|
+|Name|DAS|
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typ (typy) uzlů|Head|
 
