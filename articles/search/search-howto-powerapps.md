@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
 ms.date: 04/25/2020
-ms.openlocfilehash: e4afa3c122fa6e21b29b6ad52a386096b20aa055
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2a2e292390b2f060bf31d739605d7506203a5619
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184385"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901403"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>Kurz: dotazování indexu Kognitivní hledání z Power Apps
 
@@ -82,7 +82,7 @@ Konektor v Power Apps je připojení ke zdroji dat. V tomto kroku vytvoříte vl
 
        :::image type="content" source="./media/search-howto-powerapps/1-8-1-import-from-sample.png" alt-text="Importování z ukázky" border="true":::
 
-1. Kliknutím na **importovat** můžete žádost automaticky vyplnit. Nastavení metadat parametru dokončíte kliknutím na **...** symbol vedle každého parametru. Po aktualizaci každého parametru se kliknutím na tlačítko **zpět** vraťte na stránku žádosti.
+1. Kliknutím na **importovat** můžete žádost automaticky vyplnit. Nastavení metadat parametru dokončíte kliknutím na symbol **...** vedle každého parametru. Po aktualizaci každého parametru se kliknutím na tlačítko **zpět** vraťte na stránku žádosti.
 
    :::image type="content" source="./media/search-howto-powerapps/1-8-2-import-from-sample.png" alt-text="Import z ukázkového dialogu" border="true":::
 

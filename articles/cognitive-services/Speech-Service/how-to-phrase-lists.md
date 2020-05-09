@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.author: trbye
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 5a21358edae4c61f35993770c22634da9ac83633
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: dapine
+zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
+ms.openlocfilehash: d6418a863e8af75e4f2f063d9e6151e19a0e7e6e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81401969"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82977579"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Seznamy frází pro převod řeči na text
 
@@ -77,7 +77,7 @@ phrase_list_grammar.addPhrase("Move to Ted")
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
 ```JavaScript
 var phraseListGrammar = SpeechSDK.PhraseListGrammar.fromRecognizer(reco);
@@ -125,7 +125,7 @@ phrase_list_grammar.clear()
 
 ::: zone-end
 
-::: zone pivot="programming-language-more"
+::: zone pivot="programming-language-javascript"
 
 ```JavaScript
 phraseListGrammar.clear();

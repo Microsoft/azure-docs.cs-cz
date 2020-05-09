@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: Integrované ovládací prvky zabezpečení
           href: service-bus-relay-security-controls.md
+        - name: Zabezpečení sítě
+          href: network-security.md
     - name: Protokol pro hybridní připojení
       href: relay-hybrid-connections-protocol.md
 - name: Postup
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Node
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Zabezpečení
+      items:
+        - name: Konfigurace brány firewall protokolu IP (Preview)
+          href: ip-firewall-virtual-networks.md
+        - name: Konfigurace privátních koncových bodů (Preview)
+          href: private-link-service.md
     - name: Správa a monitorování
       items:
         - name: Monitorování služby Azure Relay s využitím služby Azure Monitor

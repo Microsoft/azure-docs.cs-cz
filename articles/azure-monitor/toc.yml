@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: Upozornění protokolu aktivit
           href: platform/activity-log-alerts.md
-        - name: Analýza změn
-          href: app/change-analysis.md
     - name: Vizualizace dat
       href: visualizations.md
     - name: Integrace partnerů
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Streamování dat do Event Hubs
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: Analýza změn
+          href: app/change-analysis.md
     - name: Monitorování virtuálních počítačů a hostovaný operační systém
       items:
         - name: Monitorování virtuálních počítačů Azure
