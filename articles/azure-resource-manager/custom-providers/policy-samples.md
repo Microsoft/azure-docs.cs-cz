@@ -1,23 +1,23 @@
 ---
-title: Seznam předdefinovaných definic zásad pro vlastní poskytovatele prostředků Azure
-description: Uvádí Azure Policy předdefinované definice zásad pro vlastní poskytovatele prostředků Azure. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 04/30/2020
+title: Předdefinované definice zásad pro vlastní poskytovatele prostředků Azure
+description: Uvádí Azure Policy předdefinované definice zásad pro vlastní poskytovatele prostředků Azure. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
+ms.date: 05/05/2020
 ms.topic: sample
 author: jjbfour
 ms.author: jobreen
 ms.custom: subject-policy-samples
-ms.openlocfilehash: d65ff8d46a014dc1cd61edbc89afeec33e1a575a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 71e4f16ab90a8188419ee5a8ff297b768c9c7d97
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783413"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836971"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-custom-resource-providers"></a>Azure Policy předdefinované definice zásad pro vlastní poskytovatele prostředků Azure
 
 Tato stránka je indexem [Azure Policy](../../governance/policy/overview.md) integrovaných definic zásad pro vlastní poskytovatele prostředků Azure. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-custom-resource-providers"></a>Vlastní poskytovatelé prostředků Azure
 

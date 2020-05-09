@@ -1,20 +1,20 @@
 ---
-title: Dotazování protokolů z řešení spustit nebo zastavit virtuální počítače
-description: Tento článek popisuje, jak pomocí Azure Monitor dotazovat data protokolu generovaná řešením spustit/zastavit virtuální počítače.
+title: Dotazování protokolů z Start/Stop VMs during off-hours
+description: Tento článek popisuje, jak z Azure Monitor dotazovat data protokolu generovaná Start/Stop VMs during off-hoursm řešením.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604724"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864228"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Dotazování protokolů z řešení spustit nebo zastavit virtuální počítače
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Dotazování protokolů z Start/Stop VMs during off-hours
 
-Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tato data jsou k dispozici pro [dotazy](../azure-monitor/log-query/log-query-overview.md) v Azure monitor.
+Azure Automation přepošle dva typy záznamů do propojeného pracovního prostoru Log Analytics: protokoly úloh a datové proudy úloh. Tento článek kontroluje data, která jsou k dispozici pro [dotazy](../azure-monitor/log-query/log-query-overview.md) v Azure monitor.
 
 ## <a name="job-logs"></a>Protokoly úloh
 

@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192829"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608247"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra pro Azure Cosmos DB
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Jaké jsou některé klíčové rozdíly mezi Apache Cassandra a rozhraní API Cassandra?
+Tento článek popisuje rozdíly mezi funkcemi Apache Cassandra a rozhraní API Cassandra v Azure Cosmos DB. Obsahuje také odpovědi na nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB.
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Klíčové rozdíly mezi Apache Cassandra a rozhraní API Cassandra
 
 - Apache Cassandra doporučuje pro velikost klíče oddílu omezení 100 MB. Rozhraní API Cassandra pro Azure Cosmos DB umožňuje až 20 GB na oddíl.
 - Apache Cassandra umožňuje zakázat trvalá potvrzení změn. Můžete přeskočit zápis do protokolu potvrzení a přejít přímo na memtables. To může způsobit ztrátu dat v případě, že se uzel přestane vyprázdnit, než se memtables SSTables na disk. Azure Cosmos DB vždy provádí trvalá potvrzení, aby se zabránilo ztrátě dat.
