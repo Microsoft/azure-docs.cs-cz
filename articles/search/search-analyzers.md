@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460714"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891229"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Analyzátory pro zpracování textu v Azure Kognitivní hledání
 
 *Analyzátor* je součást [fulltextového vyhledávacího stroje](search-lucene-query-architecture.md) zodpovědného za zpracování textu v řetězcích dotazů a indexovaných dokumentech. Různé analyzátory zpracovávají text různými způsoby v závislosti na scénáři. Analyzátory jazyka zpracovávají text pomocí lingvistických pravidel, aby se zlepšila kvalita hledání, zatímco jiné analyzátory provádějí více základních úloh, jako je například převod znaků na malá písmena. 
+
+Následující segment videa se rychle přepošle na vysvětlení způsobu, jakým zpracování textu funguje v Azure Kognitivní hledání.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 Nejčastěji se používají analyzátory jazyka a ke každému prohledávatelné poli v indexu služby Azure kognitivní hledání je přiřazen výchozí analyzátor jazyka. Následující transformace jazyka jsou typické při analýze textu:
 

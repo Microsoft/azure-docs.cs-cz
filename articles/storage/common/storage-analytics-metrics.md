@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268402"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692738"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriky Azure Storage Analytics (klasické)
 
@@ -23,7 +23,7 @@ Analýza úložiště může ukládat metriky, které zahrnují agregovanou stat
 
 > [!NOTE]
 > Pro služby blob, Queue, Table a File jsou k dispozici Analýza úložiště metriky.
-> Metriky Analýza úložiště jsou teď klasickými metrikami. Microsoft doporučuje použití [metrik úložiště v Azure monitor](storage-metrics-in-azure-monitor.md) místo analýza úložištěch metrik.
+> Metriky Analýza úložiště jsou teď klasickými metrikami. Microsoft doporučuje použití [metrik úložiště v Azure monitor](monitor-storage.md) místo analýza úložištěch metrik.
 
 ## <a name="transaction-metrics"></a>Transakční metriky  
  Robustní sada dat je zaznamenána v hodinovém nebo minutovém intervalu pro každou službu úložiště a požadovanou operaci rozhraní API, včetně příchozích a odchozích dat, dostupnosti, chyb a procentuálních požadavků na požadavky zařazených do kategorií. Úplný seznam podrobností o transakcích najdete v tématu [schéma tabulky analýza úložiště metrik](/rest/api/storageservices/storage-analytics-metrics-table-schema) .  

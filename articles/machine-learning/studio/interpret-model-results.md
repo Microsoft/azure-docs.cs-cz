@@ -8,21 +8,18 @@ ms.subservice: studio
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218073"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982016"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Interpretace výsledků modelu v Azure Machine Learning Studio (Classic)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Toto téma vysvětluje, jak vizualizovat a interpretovat výsledky předpovědi v Azure Machine Learning Studio (Classic). Po vyškolení modelu a provedení předpovědi nad ním ("skóre modelu") potřebujete pochopit a interpretovat výsledek předpovědi.
-
-
 
 Existují čtyři hlavní druhy modelů strojového učení v Azure Machine Learning Studio (Classic):
 
@@ -37,11 +34,11 @@ Moduly používané pro předpověď nad těmito modely jsou:
 * Modul [přiřazení k][assign-to-clusters] clusterům pro clustering
 * [Skóre Matchbox doporučuje][score-matchbox-recommender] pro systémy doporučení
 
-Tento dokument vysvětluje, jak interpretovat výsledky předpovědi pro každý z těchto modulů. Přehled těchto modulů najdete v tématu [Jak zvolit parametry pro optimalizaci algoritmů v Azure Machine Learning Studio (Classic)](algorithm-parameters-optimize.md).
+Naučte se, jak [zvolit parametry pro optimalizaci algoritmů v ml Studio (Classic)](algorithm-parameters-optimize.md).
 
-Toto téma řeší výklad předpovědi, ale ne vyhodnocení modelu. Další informace o tom, jak vyhodnotit model, naleznete [v tématu How to Evaluate Performance model in Azure Machine Learning Studio (Classic)](evaluate-model-performance.md).
+Informace o tom, jak vyhodnotit modely, najdete v tématu [jak vyhodnotit výkon modelu](evaluate-model-performance.md).
 
-Pokud Azure Machine Learning Studio (Classic) a potřebujete pomoc s vytvořením jednoduchého experimentu, přečtěte si téma [Vytvoření jednoduchého experimentu v Azure Machine Learning Studio (Classic)](create-experiment.md).
+Pokud se ML Studio (Classic) nezačínáte, [Naučte se vytvářet jednoduchý experiment](create-experiment.md).
 
 ## <a name="classification"></a>Classification
 Existují dvě podkategorie problémů s klasifikací:

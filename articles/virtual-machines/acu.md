@@ -13,16 +13,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535693"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629095"
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
 
-Koncept výpočetní jednotky Azure (ACU) poskytuje způsob, jak porovnat výpočetní výkon (CPU) napříč SKU Azure. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon. Jednotka ACU je aktuálně stanovená tak, že malý virtuální počítač (Standard_A1) má 100 ACU a ostatní jednotky SKU jsou pak ohodnoceny podle relativního výsledku standardního srovnávacího testu.
+Koncept výpočetní jednotky Azure (ACU) poskytuje způsob, jak porovnat výpočetní výkon (CPU) napříč SKU Azure. To vám umožní snadno zjistit, jaká jednotka SKU nejlépe vyhoví vašim požadavkům na výkon. ACU je v současné době standardizovaná na malém (Standard_A1) virtuálním počítači, který se 100, a všechny ostatní SKU pak reprezentují, kolik rychlejší může SKU spustit standardní srovnávací síť.
+
+* ACUs pomocí technologie Intel® Turbo Zvyšte frekvenci procesoru a získáte zvýšení výkonu.  Množství zvýšení výkonu se může lišit v závislosti na velikosti virtuálního počítače, zatížení a dalších úlohách, které běží na stejném hostiteli.
+
+* * ACUs pomocí technologie AMD® zvýšit frekvenci procesoru a zvýšit výkon.  Množství zvýšení výkonu se může lišit v závislosti na velikosti virtuálního počítače, zatížení a dalších úlohách, které běží na stejném hostiteli.
+
+Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 
 > [!IMPORTANT]
 > ACU je jenom informativní údaj. Výsledek v případě konkrétních úloh může být odlišný.
@@ -55,10 +61,6 @@ Koncept výpočetní jednotky Azure (ACU) poskytuje způsob, jak porovnat výpo�
 | [L4S úrovně – L32s úrovně](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
 | [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
-
-* ACUs pomocí technologie Intel® Turbo Zvyšte frekvenci procesoru a získáte zvýšení výkonu.  Množství zvýšení výkonu se může lišit v závislosti na velikosti virtuálního počítače, zatížení a dalších úlohách, které běží na stejném hostiteli.
-* * ACUs pomocí technologie AMD® zvýšit frekvenci procesoru a zvýšit výkon.  Množství zvýšení výkonu se může lišit v závislosti na velikosti virtuálního počítače, zatížení a dalších úlohách, které běží na stejném hostiteli.
-Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 
 Tady jsou odkazy na Další informace o různých velikostech:
 
