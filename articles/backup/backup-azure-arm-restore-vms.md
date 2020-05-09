@@ -4,12 +4,12 @@ description: Obnovení virtuálního počítače Azure z bodu obnovení pomocí 
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 687406676320f93bab22e34ca95951035187718d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a170755673c05448d1bb86af993cad929664949
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182884"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597769"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Postup obnovení dat virtuálního počítače Azure v Azure Portal
 
@@ -136,7 +136,7 @@ Jako jednu z [možností obnovení](#restore-options)můžete stávající disk 
 
 Jedna z [možností obnovení](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)(crr) umožňuje obnovení virtuálních počítačů Azure v sekundární oblasti, která je spárována se službou Azure.
 
-Při připojování k funkci ve verzi Preview si přečtěte [část než začnete](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore).
+Pokud chcete připojit funkci během verze Preview, přečtěte si [část než začnete](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-cross-region-restore).
 
 Pokud chcete zjistit, jestli je CRR povolený, postupujte podle pokynů v tématu [Konfigurace obnovení mezi oblastmi](backup-create-rs-vault.md#configure-cross-region-restore) .
 
@@ -190,7 +190,7 @@ K dispozici je řada běžných scénářů, ve kterých může být nutné obno
 **Úplné obnovení** | Hlavním rozdílem mezi virtuálními počítači Azure a místními hypervisory je, že v Azure není k dispozici žádná konzola virtuálních počítačů. Pro určité scénáře se vyžaduje konzola, jako je třeba obnovení pomocí zálohování typu úplného obnovení systému (BMR). Obnovení virtuálního počítače z trezoru je ale úplná náhrada pro BMR.
 **Obnovení virtuálních počítačů se speciálními síťovými konfiguracemi** | Mezi speciální síťové konfigurace patří virtuální počítače s využitím interního nebo externího vyrovnávání zatížení, použití více síťových adaptérů nebo více rezervovaných IP adres. Tyto virtuální počítače obnovíte pomocí [možnosti obnovit disk](#restore-disks). Tato možnost vytvoří kopii VHD do zadaného účtu úložiště a pak můžete vytvořit virtuální počítač s [interním](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/) nebo [externím](/azure/load-balancer/quickstart-create-standard-load-balancer-powershell) nástrojem pro vyrovnávání zatížení, [několika síťovými kartami](../virtual-machines/windows/multiple-nics.md)nebo [více rezervovanými IP adresami](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)v souladu s vaší konfigurací.
 **Skupina zabezpečení sítě (NSG) na síťové kartě nebo podsíti** | Zálohování virtuálních počítačů Azure podporuje zálohování a obnovení NSG informací na úrovni virtuální sítě, podsítě a síťové karty.
-**Virtuální počítače připojené k zóně** | Azure Backup podporuje zálohování a obnovení připnutých virtuálních počítačů v zóně. [Další informace](https://azure.microsoft.com/global-infrastructure/availability-zones/)
+**Virtuální počítače připojené k zóně** | Pokud budete zálohovat virtuální počítač Azure, který je připnuté do zóny (s Azure Backup), můžete ho obnovit ve stejné zóně, kde byla připnutá. [Další informace](https://docs.microsoft.com/azure/availability-zones/az-overview)
 
 ## <a name="track-the-restore-operation"></a>Sledovat operaci obnovení
 
@@ -218,7 +218,7 @@ Po obnovení virtuálního počítače je potřeba poznamenat si několik věcí
 - Pokud má zálohovaný virtuální počítač statickou IP adresu, obnovený virtuální počítač bude mít dynamickou IP adresu, aby se předešlo konfliktu. [Do obnoveného virtuálního počítače můžete přidat STATICKOU IP adresu](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkinterfaceipconfig?view=azps-3.5.0#description).
 - Obnovený virtuální počítač nemá skupinu dostupnosti. Pokud použijete možnost obnovit disk, můžete [zadat skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) při vytváření virtuálního počítače z disku pomocí zadané šablony nebo PowerShellu.
 - Pokud používáte distribuci Linux založenou na cloudu, jako je například Ubuntu, z důvodu zabezpečení je heslo po obnovení zablokované. K [resetování hesla](../virtual-machines/linux/reset-password.md)použijte rozšíření VMAccess na OBNOVENém virtuálním počítači. V těchto distribucích doporučujeme používat klíče SSH, takže po obnovení nemusíte heslo resetovat.
-- Pokud nemůžete získat přístup k virtuálnímu počítači po obnovení z důvodu přerušeného vztahu k virtuálnímu počítači s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:
+- Pokud nemůžete získat přístup k virtuálnímu počítači po obnovení z důvodu, že virtuální počítač má porušený vztah s řadičem domény, postupujte podle následujících kroků a zajistěte si virtuální počítač:
   - Připojte disk s operačním systémem jako datový disk k obnovenému virtuálnímu počítači.
   - Ručně nainstalujte agenta virtuálního počítače, pokud se zjistí, že agent Azure přestane reagovat pomocí tohoto [odkazu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/install-vm-agent-offline).
   - Povolení přístupu k virtuálnímu počítači z příkazového řádku na virtuálním počítači přes sériovou konzolu

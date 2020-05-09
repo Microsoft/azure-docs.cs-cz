@@ -10,12 +10,12 @@ ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 59103f7a8841985f463e085b54d5c8461b797778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c3657a5b55303429d7825bd317c6f9eeb8c06c5
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476028"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583278"
 ---
 # <a name="index-of-built-in-security-controls-articles-for-azure-services"></a>Index "integrovaných kontrolních mechanismů zabezpečení" v článcích pro služby Azure
 
@@ -33,6 +33,7 @@ Integrované články týkající se řízení zabezpečení jsou k dispozici pr
 - [Azure Service Bus zasílání zpráv](../../service-bus-messaging/service-bus-messaging-security-controls.md)
 - [Azure Service Bus Relay](../../service-bus-relay/service-bus-relay-security-controls.md)
 - [Azure Service Fabric](../../service-fabric/service-fabric-security-controls.md)
+- [Azure Spring Cloud](../../spring-cloud/spring-cloud-concept-security-controls.md)
 - [Azure SQL Database](../../sql-database/sql-database-security-controls.md)
 - [Azure Virtual Machine Scale Sets](../../virtual-machine-scale-sets/virtual-machine-scale-sets-security-controls.md)
 - [Linux Virtual Machines](../../virtual-machines/linux/virtual-machines-linux-security-controls.md)

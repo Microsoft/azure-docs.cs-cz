@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733102"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854621"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamování dat monitorování Azure do centra událostí
 Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro aplikace a služby v Azure, v jiných cloudech a v místním prostředí. Kromě použití Azure Monitor k analýze těchto dat a jejich využití v různých scénářích monitorování ho možná budete muset poslat ostatním nástrojům pro monitorování ve vašem prostředí. Nejúčinnější metodou pro streamování dat monitorování do externích nástrojů ve většině případů je použití [Azure Event Hubs](/azure/event-hubs/). Tento článek obsahuje stručný popis toho, jak můžete streamovat data monitorování z různých zdrojů do centra událostí a odkazy na podrobné pokyny.
@@ -23,7 +23,7 @@ Azure Monitor poskytuje kompletní řešení monitorování zásobníku pro apli
 Předtím, než nakonfigurujete streamování pro libovolný zdroj dat, je potřeba [vytvořit obor názvů Event Hubs a centrum událostí](../../event-hubs/event-hubs-create.md). Tento obor názvů a centrum událostí slouží jako cíl pro všechna data monitorování. Event Hubs obor názvů je logické seskupení Center událostí, která sdílejí stejné zásady přístupu, podobně jako účet úložiště má jednotlivé objekty BLOB v rámci tohoto účtu úložiště. Vezměte v úvahu následující podrobnosti o oboru názvů centra událostí a centrech událostí, které používáte pro streamování dat monitorování:
 
 * Počet jednotek propustnosti umožňuje zvýšit míru propustnosti pro centra událostí. Obvykle je nutná pouze jedna jednotka propustnosti. Pokud potřebujete horizontální navýšení kapacity při zvyšování využití protokolu, můžete ručně zvýšit počet jednotek propustnosti pro obor názvů nebo povolit automatické inflace.
-* Počet oddílů vám umožní paralelizovat spotřebu napříč mnoha spotřebiteli. Jeden oddíl může podporovat až 20MBps nebo přibližně 20 000 zpráv za sekundu. V závislosti na nástroji, který data spotřebovává, může nebo nemusí podporovat využívání více oddílů. Pokud si nejste jistí, jestli si nejste jisti počtem oddílů, které je potřeba nastavit, je vhodné začít čtyři oddíly.
+* Počet oddílů vám umožní paralelizovat spotřebu napříč mnoha spotřebiteli. Jeden oddíl může podporovat až 20MBps nebo přibližně 20 000 zpráv za sekundu. V závislosti na nástroji, který data spotřebovává, může nebo nemusí podporovat využívání více oddílů. Pokud si nejste jistí, kolik oddílů se má nastavit, je vhodné začít se čtyřmi oddíly.
 * V centru událostí nastavili uchovávání zpráv na alespoň 7 dní. Pokud váš spotřebováváný nástroj přestane trvat déle než jeden den, zajistí to, aby se nástroj mohl vystavit tam, kde byl pro události až do 7 dnů starý.
 * Pro centrum událostí byste měli použít výchozí skupinu uživatelů. Není nutné vytvářet další skupiny uživatelů ani používat samostatnou skupinu uživatelů, pokud neplánujete, aby se stejná data ze stejného centra událostí využila dvěma různými nástroji.
 * V případě protokolu aktivit Azure vybíráte obor názvů Event Hubs a Azure Monitor vytvoří centrum událostí v oboru názvů s názvem _Insights-logs-Operational-logs_. U jiných typů protokolů můžete zvolit existující centrum událostí nebo Azure Monitor vytvořit centrum událostí podle kategorií protokolů.
@@ -50,12 +50,12 @@ Směrování dat monitorování do centra událostí pomocí Azure Monitor vám 
 
 | Nástroj | Hostovaná v Azure | Popis |
 |:---|:---| :---|
-|  IBM QRadar | Ne | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
-| Splunk | Ne | [Doplněk Azure monitor pro Splunk](https://splunkbase.splunk.com/app/3534/) je open source projekt dostupný v Splunkbase. Dokumentace je k dispozici na adrese [Azure monitor addon pro Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |
-| SumoLogic | Ne | Pokyny k nastavení SumoLogic pro využívání dat z centra událostí jsou k dispozici v tématu [shromáždění protokolů pro aplikaci Azure audit z centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | Ne | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
-| Server syslogu | Ne | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | Ne| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
+|  IBM QRadar | No | Protokol Microsoft Azure DSM a Microsoft Azure centra událostí je k dispozici ke stažení na [webu podpory IBM](https://www.ibm.com/support). Další informace o integraci s Azure najdete v části [QRADAR DSM Configuration](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0). |
+| Splunk | No | [Doplněk Azure monitor pro Splunk](https://splunkbase.splunk.com/app/3534/) je open source projekt dostupný v Splunkbase. Dokumentace je k dispozici na adrese [Azure monitor addon pro Splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Pokud do instance Splunk nemůžete nainstalovat doplněk, pokud například používáte proxy server nebo běží v cloudu Splunk, můžete tyto události pře do kolektoru událostí Splunk HTTP pomocí [funkce Azure Functions pro Splunk](https://github.com/Microsoft/AzureFunctionforSplunkVS), která se aktivuje novými zprávami v centru událostí. |
+| SumoLogic | No | Pokyny k nastavení SumoLogic pro využívání dat z centra událostí jsou k dispozici v tématu [shromáždění protokolů pro aplikaci Azure audit z centra událostí](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | No | ArcSight Azure Event hub Smart Connector je k dispozici jako součást [kolekce inteligentních konektorů ArcSight](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852). |
+| Server syslogu | No | Pokud chcete streamovat data Azure Monitor přímo na server syslog, můžete použít [řešení založené na funkci Azure Functions](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | No| Pokyny k nastavení LogRhythm pro shromažďování protokolů z centra událostí jsou k dispozici [zde](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/). 
 |Logz.io | Ano | Další informace najdete v tématu [Začínáme s monitorováním a protokolováním pomocí LOGZ.IO pro aplikace Java běžící v Azure](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) .
 
 
