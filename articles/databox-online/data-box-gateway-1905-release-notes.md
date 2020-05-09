@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67078609"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561862"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Poznámky k verzi pro Azure Data Box Edge a Azure Data Box Gateway 1905
 
@@ -21,7 +21,7 @@ ms.locfileid: "67078609"
 
 Následující poznámky k verzi identifikují kritické otevřené problémy a vyřešené problémy pro vydání 1905 pro Azure Data Box Edge a Azure Data Box Gateway.
 
-Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi.
+Poznámky k verzi se průběžně aktualizují a při zjištění kritických problémů vyžadujících alternativní řešení se přidají. Před nasazením Data Box Edge/Data Box Gateway pečlivě zkontrolujte informace obsažené v poznámkách k verzi. 
 
 Tato verze odpovídá verzím softwaru:
 
@@ -33,7 +33,7 @@ Tato verze odpovídá verzím softwaru:
 
 ## <a name="whats-new"></a>Co je nového
 
-- **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – v této verzi jsme udělali vylepšení protokolování a upozornění související s FPGA. Toto je požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](data-box-edge-deploy-configure-compute-advanced.md).
+- **Vylepšení protokolování v poli programovatelné brány pole (FPGA)** – v této verzi jsme udělali vylepšení protokolování a upozornění související s FPGA. Toto je požadovaná aktualizace pro Data Box Edge, pokud používáte funkci Edge COMPUTE s FPGA. Další informace najdete v tématu Jak [transformovat data pomocí hraničních výpočtů na data box Edge](azure-stack-edge-deploy-configure-compute-advanced.md).
 
 ## <a name="known-issues-in-ga-release"></a>Známé problémy ve verzi GA
 
@@ -43,4 +43,4 @@ Pro tuto verzi se neuvedly žádné nové problémy. Všechny uvedené verze př
 ## <a name="next-steps"></a>Další kroky
 
 - [Příprava k nasazení služby Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [Příprava k nasazení služby Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [Příprava k nasazení služby Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

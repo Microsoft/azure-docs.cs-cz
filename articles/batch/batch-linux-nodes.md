@@ -6,7 +6,7 @@ ms.date: 06/01/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7abdab248a6f19ec4d57018d65f883fdc838da21
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116787"
@@ -38,7 +38,7 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | Vydavatel |Canonical |
 | Nabídka |UbuntuServer |
 | Skladová jednotka (SKU) |18,04 – LTS |
-| Version |nejnovější |
+| Verze |nejnovější |
 
 > [!TIP]
 > Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).
