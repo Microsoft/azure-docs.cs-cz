@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583219"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996035"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -47,7 +47,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 `speak`je kořenový prvek a je **vyžadován** pro všechny dokumenty SSML. `speak` Element obsahuje důležité informace, jako je verze, jazyk a definice slovníku označení.
 
-**Syntaktick**
+**Syntaxe**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="string"></speak>
@@ -65,7 +65,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 `voice` Element je povinný. Slouží k určení hlasu, který se používá pro převod textu na řeč.
 
-**Syntaktick**
+**Syntaxe**
 
 ```xml
 <voice name="string">
@@ -79,7 +79,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 |-----------|-------------|---------------------|
 | `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Požaduje se |
 
-**Případě**
+**Příklad**
 
 > [!NOTE]
 > V tomto příkladu se `en-US-AriaRUS` používá hlas. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
@@ -173,7 +173,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -199,7 +199,7 @@ V současné době jsou pro tyto hlasy neuronové podporovány úpravy stylu spe
 
 Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl není podporován, služba vrátí řeč ve výchozím stylu neutrálního mluveného slova.
 
-**Syntaktick**
+**Syntaxe**
 
 ```xml
 <mstts:express-as style="string"></mstts:express-as>
@@ -225,7 +225,7 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="assistant"`       | Vyjadřuje teplý a odlehčený tón pro digitální asistenty    |
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |
 
-**Případě**
+**Příklad**
 
 Tento fragment SSML ukazuje, `<mstts:express-as>` jak se prvek používá ke změně stylu speakování na `cheerful`.
 
@@ -247,7 +247,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 > [!NOTE]
 > Pomocí tohoto prvku můžete přepsat výchozí chování převodu textu na řeč (TTS) pro slovo nebo frázi v případě, že syntetizované rozpoznávání řeči pro toto slovo nebo frázi nepřirozeně zvuk. Nastavte `strength` na `none` , aby nedocházelo k přerušení Prozodický předěl, které je automaticky vložené službou pro převod textu na řeč.
 
-**Syntaktick**
+**Syntaxe**
 
 ```xml
 <break strength="string" />
@@ -258,7 +258,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 | Atribut | Popis | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>Žádná</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Nepovinné |
+| `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Nepovinné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a.`500` | Nepovinné |
 
 | Obsahem                      | Popis |
@@ -270,7 +270,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | silnější                        | 1000 MS     |
 | x – silné                      | 1250 MS     |
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -288,14 +288,14 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 `s` Element může obsahovat text a `audio`následující prvky:, `break`, `phoneme`, `prosody`, `say-as`, `mstts:express-as`a. `sub`
 
-**Syntaktick**
+**Syntaxe**
 
 ```XML
 <p></p>
 <s></s>
 ```
 
-**Případě**
+**Příklad**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -318,7 +318,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, číslicemi nebo znaky, někdy v kombinaci. Každý telefon popisuje jedinečný zvuk řeči. To je na rozdíl od abecedy latinky, kde jakékoli písmeno může představovat více mluvených zvuků. Vezměte v úvahu různé výslovnosti písmena "c" ve slově "Candy" a "pozastaveno", nebo na rozdíl od kombinace písmen "th" v slovech "věc" a "ty".
 
-**Syntaktick**
+**Syntaxe**
 
 ```XML
 <phoneme alphabet="string" ph="string"></phoneme>
@@ -359,9 +359,12 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>Vylepšení výslovnosti pomocí vlastního lexikonu
 
-Někdy TTS nemůže přesně vyslovit slovo, například společnost nebo cizí název. Vývojáři mohou definovat čtení těchto entit v SSML pomocí `phoneme` značek and `sub` nebo definovat čtení více entit odkazem na vlastní soubor lexikonu pomocí `lexicon` značky.
+Někdy může služba převod textu na řeč přesně vyslovit slovo. Například název společnosti nebo zdravotní podmínky. Vývojáři mohou definovat způsob, jakým jsou jednotlivé entity čteny `phoneme` v `sub` SSML pomocí značek a. Pokud však potřebujete definovat způsob čtení více entit, můžete vytvořit vlastní lexikon pomocí `lexicon` značky.
 
-**Syntaktick**
+> [!NOTE]
+> Vlastní lexikon aktuálně podporuje kódování UTF-8. 
+
+**Syntaxe**
 
 ```XML
 <lexicon uri="string"/>
@@ -375,14 +378,10 @@ Někdy TTS nemůže přesně vyslovit slovo, například společnost nebo cizí 
 
 **Využívání**
 
-Krok 1: definování vlastního slovníku 
-
-Můžete definovat čtení entit seznamem vlastních položek lexikonu, které jsou uloženy jako soubor. XML nebo. jiných pracovních prostorů.
-
-**Případě**
+Chcete-li definovat způsob čtení více entit, můžete vytvořit vlastní lexikon, který je uložen jako soubor. XML nebo. jiných pracovních prostorů. Následuje ukázkový soubor. XML.
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,26 +399,46 @@ Můžete definovat čtení entit seznamem vlastních položek lexikonu, které j
 </lexicon>
 ```
 
-Každý `lexeme` prvek je lexikonová položka. `grapheme`obsahuje text popisující orthograph `lexeme`. Formulář pro čtení se dá zadat jako `alias`. V `phoneme` elementu se mohl zadat telefonní řetězec.
+`lexicon` Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` `grapheme` prvek obsahuje nejméně jeden element a jeden nebo více `grapheme`elementů `alias`, a `phoneme` . `grapheme` Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a> `alias` Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme` Element poskytuje text popisující způsob, `lexeme` jakým je vyslovení.
 
-`lexicon` Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` `grapheme` prvek obsahuje nejméně jeden element a jeden nebo více `grapheme`elementů `alais`, a `phoneme` . `grapheme` Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a> `alias` Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme` Element poskytuje text popisující způsob, `lexeme` jakým je vyslovení.
+Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost pro, nejdřív zadejte `alias`a přidružte k. `phoneme` `alias` Příklad:
 
-Další informace o vlastním souboru lexikonu naleznete na webu W3C na stránce [specifikace výslovnosti (jiných pracovních prostorů) verze 1,0](https://www.w3.org/TR/pronunciation-lexicon/) .
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-Krok 2: nahrání souboru vlastního slovníku vytvořeného v kroku 1 online můžete ho uložit kdekoli a doporučujeme ho uložit do Microsoft Azure, například [BLOB Storage Azure](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+> [!IMPORTANT]
+> `phoneme` Element nemůže obsahovat prázdné znaky při použití IPA.
 
-Krok 3: Přečtěte si vlastní soubor lexikonu v SSML
+Další informace o souboru s vlastním souborem lexikonu naleznete v tématu [jiných pracovních prostorů (výslovnost lexikon Specification) verze 1,0](https://www.w3.org/TR/pronunciation-lexicon/).
+
+Potom publikujte svůj vlastní soubor lexikonu. I když nemáme omezení, kde je možné tento soubor uložit, doporučujeme použít [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal).
+
+Po publikování vlastního slovníku ho můžete odkázat z SSML.
+
+> [!NOTE]
+> `lexicon` Element musí být uvnitř `voice` elementu.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-"BTW" bude číst jako "způsobem". "Neškodné" se budou číst pomocí zadaného IPA "bɛ ˈ ni ː nji".  
+
+Při použití tohoto vlastního slovníku se "BTW" přečte jako "způsobem". "Neškodné" se budou číst pomocí poskytnutého IPAu "bɛ ˈ ni ː nji".  
 
 **Omezení**
 - Velikost souboru: maximální limit velikosti souboru lexikonu je 100 KB, pokud je tato velikost mimo tuto velikost, požadavek na Shrnutí se nezdaří.
@@ -427,12 +446,14 @@ Could you help leave a message to Robert Benigni for me?
 
 **Fonetické sady pro hlasové služby**
 
-V ukázce výše používáme mezinárodní fonetickou abecedu, která se označuje také jako IPA telefonická sada. Doporučujeme, aby vývojáři používali IPA, protože se jedná o mezinárodní standard. Vzhledem k tomu, že se IPA nepamatuje, Služba rozpoznávání řeči definuje fonetický sadu pro sedm jazyků (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`a `zh-TW`).
+V ukázce výše používáme mezinárodní fonetickou abecedu, která se označuje také jako IPA telefonická sada. Doporučujeme, aby vývojáři používali IPA, protože se jedná o mezinárodní standard. U některých IPA znaků mají při reprezentaci s kódováním Unicode ve verzi "složené" a "rozložené" verze. Vlastní lexikon podporuje pouze rozložené znakové sady Unicode.
+
+Vzhledem k tomu, že se IPA nepamatuje, Služba rozpoznávání řeči definuje fonetický sadu pro sedm jazyků (`en-US`, `fr-FR`, `de-DE`, `es-ES`, `ja-JP`, `zh-CN`a `zh-TW`).
 
 Můžete použít `sapi` jako hodnotu pro `alphabet` atribut s vlastními lexikony, jak je znázorněno níže:
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -458,7 +479,7 @@ Další informace o fonetické abecedě hlasové služby pro rozpoznávání ře
 
 Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci široké škály lišit, překladač řeči interpretuje přiřazené hodnoty jako návrh toho, co by měly být aktuální hodnoty Prozodický předěl vybraného hlasu. Služba převod textu na řeč omezuje nebo nahrazuje hodnoty, které nejsou podporovány. Příklady nepodporovaných hodnot jsou výškou 1 MHz nebo 120.
 
-**Syntaktick**
+**Syntaxe**
 
 ```XML
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
@@ -479,7 +500,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni slova nebo věty. 
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -495,7 +516,7 @@ Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni s
 
 Změny svazku lze použít na standardní hlasy na úrovni slova nebo na úrovni věty. Změny svazku se dají použít jenom na hlasy neuronové na úrovni věty.
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -511,7 +532,7 @@ Změny svazku lze použít na standardní hlasy na úrovni slova nebo na úrovni
 
 Změny v rozteči je možné použít u standardních hlasů na úrovni slova nebo věty. Vzhledem k tomu, že změny v sklonu se dají použít jenom na hlasy neuronové na úrovni věty.
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -526,7 +547,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 > [!IMPORTANT]
 > U hlasů neuronové se teď podporují změny profilování sklonu.
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -541,7 +562,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 `say-as`je volitelný prvek, který určuje typ obsahu (například číslo nebo datum) textu elementu. V této části najdete pokyny k vyslovení textu v modulu Shrnutí řeči.
 
-**Syntaktick**
+**Syntaxe**
 
 ```XML
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
@@ -575,7 +596,7 @@ Níže jsou podporované typy obsahu pro atributy `interpret-as` a. `format` Atr
 
 `say-as` Element může obsahovat pouze text.
 
-**Případě**
+**Příklad**
 
 Modul Shrnutí řeči připraví následující příklad jako "první požadavek byl v říjnu Nineteenth 20 10 s počátečním příchodem na 12 35 odp."
  
@@ -603,7 +624,7 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 * Celková celková doba pro všechny textové a zvukové soubory v jedné odpovědi nesmí překročit 90 (90) sekund.
 * MP3 nesmí obsahovat žádné informace specifické pro zákazníka nebo jiné citlivé informace.
 
-**Syntaktick**
+**Syntaxe**
 
 ```xml
 <audio src="string"/></audio>
@@ -615,7 +636,7 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Určuje umístění nebo adresu URL zvukového souboru. | Požadováno při použití prvku zvuk v dokumentu SSML. |
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -639,7 +660,7 @@ Pokud je zadaný zvuk na pozadí kratší než převod textu na řeč nebo zesla
 
 V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete však v rámci `audio` `voice` elementu doplnit značky přidáním dalšího zvuku do dokumentu SSML.
 
-**Syntaktick**
+**Syntaxe**
 
 ```XML
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
@@ -654,7 +675,7 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 | `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Nepovinné |
 | `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0`, což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Nepovinné |
 
-**Případě**
+**Příklad**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">

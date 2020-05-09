@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204552"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82997684"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Musí mít uživatel k používání Azure Virtual WAN rozbočovač a paprsek se zařízeními SD-WAN/VPN?
 
@@ -49,7 +49,7 @@ Existují dvě možnosti, jak přidat servery DNS pro klienty P2S.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Pro uživatele VPN (Point-to-site) – kolik klientů se podporuje?
 
-Každá Brána VPN P2S pro uživatele má dvě instance a každá instance podporuje až určitých uživatelů při změně jednotky škálování. Jednotka škálování 1-3 podporuje připojení 500, škálování jednotka 4-6 podporuje 1000 připojení, jednotka škálování 7-12 podporuje 5000 připojení a jednotky škálování 13-20 podporuje připojení až 10 000. Například umožňuje, aby uživatel vybírá 1 jednotku škálování. Každá jednotka škálování by znamenala, že je nasazená brána aktivní-aktivní a každá z instancí (v tomto případě 2) by podporovala připojení až 500. Vzhledem k tomu, že můžete získat připojení 500 × 2 na bránu, neznamená to, že pro tuto jednotku škálování naplánujete 1000 namísto 500, protože při překročení doporučeného počtu připojení může dojít k přerušení připojení k dodatečnému 500.
+Každá Brána VPN P2S pro uživatele má dvě instance a každá instance podporuje až určitých uživatelů při změně jednotky škálování. Jednotka škálování 1-3 podporuje připojení 500, škálování jednotka 4-6 podporuje 1000 připojení, jednotka škálování 7-12 podporuje 5000 připojení a jednotky škálování 13-20 podporuje připojení až 10 000. Například umožňuje, aby uživatel vybírá 1 jednotku škálování. Každá jednotka škálování by znamenala, že je nasazená brána aktivní-aktivní a každá z instancí (v tomto případě 2) by podporovala připojení až 500. Vzhledem k tomu, že můžete získat připojení 500 × 2 na bránu, neznamená to, že pro tuto jednotku škálování naplánujete 1000 namísto 500, protože při překročení doporučeného počtu připojení může dojít k přerušení připojení k dodatečnému 500. Nezapomeňte také naplánovat prostoje v případě, že se rozhodnete horizontální navýšení nebo snížení kapacity na jednotce škálování nebo změnit konfiguraci Point-to-site v bráně VPN.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Jaký je rozdíl mezi bránou virtuální sítě Azure (VPN Gateway) a bránou VPN Azure Virtual WAN?
 

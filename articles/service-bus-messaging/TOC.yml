@@ -72,6 +72,9 @@
   items:
     - name: Ukázky služby Service Bus
       href: service-bus-samples.md
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Zasílání zpráv úrovně Premium
