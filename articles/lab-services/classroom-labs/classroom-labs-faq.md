@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691815"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983903"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Laboratoře učebny v Azure Lab Services – nejčastější dotazy (FAQ)
 Získejte odpovědi na některé nejčastější dotazy týkající se učebn Labs v Azure Lab Services. 
@@ -67,7 +67,7 @@ Ne. k virtuálnímu počítači v testovacím prostředí učebny není možné 
 Do testovacího prostředí učebny můžete přidat až 400 uživatelů. 
 
 ## <a name="blog-post"></a>Příspěvek na blogu
-Přihlaste se k odběru [blogu Azure Lab Services](https://azure.microsoft.com/blog/tag/azure-lab-services/).
+Přihlaste se k odběru [blogu Azure Lab Services](https://aka.ms/azlabs-blog).
 
 ## <a name="update-notifications"></a>Aktualizovat oznámení
 Přihlaste se k odběru [aktualizací testovacích služeb](https://azure.microsoft.com/updates/?product=lab-services) a udržujte si informace o nových funkcích v testovacích službách.

@@ -1,24 +1,24 @@
 ---
-title: Seznam předdefinovaných definic zásad pro Azure Stream Analytics
-description: Vypíše Azure Policy předdefinované definice zásad pro Azure Stream Analytics. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
+title: Předdefinované definice zásad pro Azure Stream Analytics
+description: Vypíše Azure Policy předdefinované definice zásad pro Azure Stream Analytics. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
 ms.date: 05/01/2020
 ms.topic: sample
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 36ebb65d4d7bebf7ebfd1db059735456ef82f7e3
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 476610256f34bf565426c1454c89a880a09db342
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966271"
+ms.locfileid: "82983512"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-stream-analytics"></a>Azure Policy předdefinované definice zásad pro Azure Stream Analytics
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Stream Analytics. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 

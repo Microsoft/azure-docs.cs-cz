@@ -1,24 +1,24 @@
 ---
-title: Seznam předdefinovaných definic zásad pro Azure Database for MySQL
-description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for MySQL. Tyto vestavěné moduly poskytují běžné přístupy ke správě prostředků Azure.
+title: Předdefinované definice zásad pro Azure Database for MySQL
+description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for MySQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
 ms.date: 05/01/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 59d39a4a10d310c1c4b028aad25c6e3d39f204e5
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 9ea67e236f2ecfe906202e375e89bfb586865ab3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966355"
+ms.locfileid: "82982849"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-mysql"></a>Azure Policy předdefinované definice zásad pro Azure Database for MySQL
 
 Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure Database for MySQL. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md).
 
-Název každého z vestavěných odkazů na definici zásady v Azure Portal. Pomocí odkazu ve **zdrojovém** sloupci zobrazíte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Použijte odkaz ve sloupci **GitHub** k zobrazení zdroje v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
 
 ## <a name="azure-database-for-mysql"></a>Azure Database for MySQL
 
