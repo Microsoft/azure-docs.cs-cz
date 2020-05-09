@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/31/2020
+ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68fe7da136d744e1efa76a89061afe6995a75051
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 920755e128f10a79a056d47813b1b65d8633c937
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133261"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628738"
 ---
 # <a name="troubleshoot-input-connections"></a>Řešení potíží se vstupními připojeními
 
@@ -51,9 +51,18 @@ V případech, kdy je datová část zprávy větší než 32 KB nebo v binárn�
 
 Osvědčeným postupem použití Event Hubs je použití více skupin uživatelů pro škálovatelnost úloh. Počet čtenářů v Stream Analytics úlohy pro konkrétní vstup ovlivňuje počet čtenářů v jedné skupině příjemců. Přesný počet přijímačů je založený na podrobnostech o interní implementaci logiky topologie se škálováním na více instancí a nezveřejňuje se externě. Počet čtenářů se může změnit při spuštění úlohy nebo během upgradování úlohy.
 
-Při překročení maximálního počtu přijímačů se zobrazí tato chyba: 
+Pokud počet přijímačů překročí maximum, zobrazí se následující chybové zprávy. Chybová zpráva obsahuje seznam existujících připojení provedených do centra událostí v rámci skupiny příjemců. Tato značka `AzureStreamAnalytics` označuje, že připojení ze služby Azure Streaming Service.
 
-`The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.`
+```
+The streaming job failed: Stream Analytics job has validation errors: Job will exceed the maximum amount of Event Hub Receivers.
+
+The following information may be helpful in identifying the connected receivers: Exceeded the maximum number of allowed receivers per partition in a consumer group which is 5. List of connected receivers – 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1, 
+AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
+```
 
 > [!NOTE]
 > Když se během upgradu úlohy změní počet čtenářů, do protokolů auditu se zapisují přechodná upozornění. Stream Analytics úlohy se automaticky Obnovují z těchto přechodných problémů.

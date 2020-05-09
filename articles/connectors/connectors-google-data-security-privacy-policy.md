@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 590ad6a52d768c7e59d8d97691e146205e43cadd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181935"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628704"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Zásady zabezpečení a ochrany osobních údajů pro konektory Google v Azure Logic Apps
 
@@ -34,7 +34,7 @@ Pokud máte Logic Apps, které používají konektor Gmail, obdržíte e-mail s 
 
 V rámci této zásady platí, že když použijete účet příjemce Gmail, můžete použít konektor Gmail jenom s konkrétními službami, které se můžou změnit. Naše technické týmy pokračují v práci s Google a přidává další služby do tohoto seznamu. V současnosti se tady nacházejí triggery, akce a konektory, které jsou v rámci služby Gmail standardně schválené a které můžete použít ve stejném pracovním postupu aplikace logiky pomocí konektoru Gmail, když použijete účet uživatele Gmail:
 
-* Logic Apps integrovaných triggerů a akcí: Batch, Control, datové operace, datum a čas, plochý soubor, HTTP, kapalina, požadavky, plán, proměnné a XML
+* Logic Apps integrovaných triggerů a akcí: Batch, Control, datové operace, datum a čas, plochý soubor, kapalina, požadavek, plán, proměnné a XML
 
 * Služby Google: Gmail, Kalendář Google, Kontakty Google, disk Google, tabulky Google a úkoly Google
 

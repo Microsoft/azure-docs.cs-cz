@@ -3,12 +3,12 @@ title: Prostředky, role a řízení přístupu v Azure Application Insights | M
 description: Vlastníci, přispěvatelé a čtenáři přehledů vaší organizace.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473128"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628227"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Prostředky, role a řízení přístupu v Application Insights
 
@@ -40,11 +40,6 @@ Nejprve některé definice:
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Řízení přístupu ve skupině prostředků
 
 Je důležité pochopit, že kromě prostředku, který jste vytvořili pro vaši aplikaci, existují také samostatné skryté prostředky pro výstrahy a webové testy. Jsou připojené ke stejné [skupině prostředků](#resource-group) jako prostředek Application Insights. Do této služby můžete také umístit další služby Azure, jako jsou weby nebo úložiště.
-
-Pro řízení přístupu k těmto prostředkům se proto doporučuje:
-
-* Řízení přístupu na úrovni **skupiny prostředků nebo předplatného** .
-* Přiřaďte uživatelům roli **Přispěvatel komponent Application Insights** . To jim umožní upravovat webové testy, výstrahy a Application Insights prostředky, aniž by museli mít přístup k žádným jiným službám ve skupině.
 
 ## <a name="to-provide-access-to-another-user"></a>Poskytnutí přístupu jinému uživateli
 

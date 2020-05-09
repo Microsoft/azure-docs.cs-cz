@@ -1,28 +1,27 @@
 ---
 title: Pravidla brány firewall protokolu IP
-description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi SQL nebo bránu SQL Data Warehouse firewall. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
+description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro SQL Database nebo bránu Azure synapse Analytics firewall. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606097"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629231"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database a Azure SQL Data Warehouse pravidla brány firewall protokolu IP
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Pravidla firewallu pro Azure SQL Database a Azure synapse Analytics
 
 > [!NOTE]
-> Tento článek se týká serverů SQL Azure a databází Azure SQL Database i Azure SQL Data Warehouse na serveru Azure SQL. Pro zjednodušení *SQL Database* se používá pro odkazování na SQL Database a SQL Data Warehouse.
+> Tento článek se týká serverů SQL Azure a databází Azure SQL Database a Azure synapse Analytics na SQL serveru Azure. Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse.
 
 > [!IMPORTANT]
 > Tento článek se *nevztahuje na* *Azure SQL Database spravovanou instanci*. Informace o konfiguraci sítě najdete v tématu [připojení aplikace k Azure SQL Database Managed instance](sql-database-managed-instance-connect-app.md).
@@ -30,7 +29,7 @@ ms.locfileid: "81606097"
 Když vytvoříte nový server SQL Azure s názvem *MySQLServer*, brána firewall SQL Database blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je dostupný na *MySQLServer.Database.Windows.NET*).
 
 > [!IMPORTANT]
-> SQL Data Warehouse podporuje jenom pravidla brány firewall protokolu IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze.
+> Azure synapse podporuje jenom pravidla brány firewall protokolu IP na úrovni serveru. Nepodporuje pravidla brány firewall protokolu IP na úrovni databáze.
 
 ## <a name="how-the-firewall-works"></a>Jak funguje brána firewall
 Pokusy o připojení z Internetu a Azure musí projít přes bránu firewall, aby se dostaly na SQL Server nebo SQL Database, jak ukazuje následující diagram.
@@ -253,7 +252,7 @@ Pokud se přístup ke službě SQL Database nechová podle očekávání, vezmě
 
 - **Přihlašovací jméno není autorizováno nebo bylo použito nesprávné heslo:**
 
-  Pokud přihlášení nemá oprávnění k serveru SQL Database nebo není správné heslo, připojení k serveru je odepřené. Vytvořením nastavení brány *firewall budou klienti* moct zkusit se připojit k vašemu serveru. Klient musí stále zadat potřebná zabezpečovací pověření. Další informace o přípravě přihlášení najdete v tématu [řízení a udělení přístupu k databázi SQL Database a SQL Data Warehouse](sql-database-manage-logins.md).
+  Pokud přihlášení nemá oprávnění k serveru SQL Database nebo není správné heslo, připojení k serveru je odepřené. Vytvořením nastavení brány *firewall budou klienti* moct zkusit se připojit k vašemu serveru. Klient musí stále zadat potřebná zabezpečovací pověření. Další informace o přípravě přihlášení najdete v tématu [řízení a udělení přístupu k databázi SQL Database a Azure synapse](sql-database-manage-logins.md).
 
 - **Dynamická IP adresa:**
 

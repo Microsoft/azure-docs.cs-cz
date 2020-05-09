@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780506"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629197"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Postup migrace databáze SQLite na Azure SQL Database bez serveru
-Pro mnoho lidí poskytuje program SQLite své první zkušenosti s databázemi a programováním SQL. Zahrnutím do mnoha operačních systémů a oblíbených aplikací se bude posazovat jedna z nejoblíbenějších nasazených a využitých databázových strojů na světě. A vzhledem k tomu, že je pravděpodobný, že první databázový stroj používá mnoho lidí, může často končit jako centrální součást projektů nebo aplikací. V takových případech, kdy projekt nebo aplikace přesáhne počáteční implementaci SQLite, mohou vývojáři potřebovat migrovat svá data do spolehlivého a centralizovaného úložiště dat.
+Pro mnoho lidí poskytuje program SQLite své první zkušenosti s databázemi a programováním SQL. Zahrnutím do mnoha operačních systémů a oblíbených aplikací se ponese jeden z nejoblíbenějších nasazených a používaných databázových strojů na světě. A vzhledem k tomu, že je pravděpodobný, že první databázový stroj používá mnoho lidí, může často končit jako centrální součást projektů nebo aplikací. V takových případech, kdy projekt nebo aplikace přesáhne počáteční implementaci SQLite, mohou vývojáři potřebovat migrovat svá data do spolehlivého a centralizovaného úložiště dat.
 
 Azure SQL Database bez serveru je výpočetní vrstva pro izolované databáze, která automaticky škáluje výpočetní výkon na základě požadavků na zatížení a účtuje množství výpočetních operací za sekundu. Výpočetní vrstva bez serveru taky automaticky pozastaví databáze během neaktivních období, kdy se účtují jenom úložiště, a automaticky obnoví databáze při návratu aktivity.
 

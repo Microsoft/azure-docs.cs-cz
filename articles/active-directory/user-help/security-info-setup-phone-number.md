@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
-ms.openlocfilehash: e85be9140aabe5b66e63d3ccdd4a3ea907a1d6fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63774f2f6b600b1f60aefea84e1d5ea0abd63cbb
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062400"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628380"
 ---
 # <a name="set-up-a-phone-number-as-your-verification-method"></a>Nastavení telefonního čísla jako metody ověřování
 
@@ -53,7 +53,7 @@ V závislosti na nastaveních vaší organizace možná budete moct používat t
 
 ### <a name="to-set-up-phone-calls"></a>Nastavení telefonních hovorů
 
-1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myprofile.microsoft.com/ pak přejít na stránku.
+1. Přihlaste se ke svému pracovnímu nebo školnímu účtu a https://myaccount.microsoft.com/ pak přejít na stránku.
 
     ![Stránka můj profil zobrazující odkazy na zvýrazněné informace o zabezpečení](media/security-info/securityinfo-myprofile-page.png)
 

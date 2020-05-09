@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756835"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627768"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Nejčastější dotazy k aplikaci Microsoft Authenticator
 
@@ -27,8 +27,9 @@ Aplikace Microsoft Authenticator nahradila Azure Authenticator aplikaci a při p
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-| Otázka | Řešení |
-| -------- | -------- |
+| Otázka | Odpověď |
+| -------- | ------ |
+| Registruje se zařízení, které souhlasíte s tím, že společnosti nebo službě poskytnete přístup k zařízení? | Registrace zařízení umožňuje vašemu zařízení přístup ke službám vaší organizace a neumožňuje vaší organizaci přístup k vašemu zařízení. |
 | Můžu na Microsoft Authenticator pro Android pořizovat snímky obrazovky? | Od Microsoft Authenticator Android Release 6.2003.1704 ve výchozím nastavení, když se povede snímek obrazovky, jsou všechny kódy jednorázového hesla skryté, aby lépe chránily uživatele. Pokud by si uživatel mohl na snímcích obrazovky zobrazit svoje kódy jednorázového hesla nebo povolit ostatním aplikacím zachytit obrazovku ověřovatele, může to udělat tak, že v ověřovací aplikaci povolí nastavení "zachycení obrazovky" a pak aplikaci znovu spustíte. |
 | Jaká data uchovává úložiště ověřovatelů a jak je můžu odstranit? | Aplikace Microsoft Authenticator shromažďuje tři typy informací:<ul><li>Informace o účtu, které poskytnete při přidávání účtu. Tato data můžete odebrat odebráním účtu.</li><li>Data diagnostického protokolu, která zůstávají jenom v aplikaci, dokud nevyberete možnost **Odeslat protokoly** pro odeslání protokolů do Microsoftu v nabídce **help** aplikace. Tyto soubory protokolu obsahují osobní údaje, jako jsou vaše e-mailové adresy alain@contoso.com(například), servery nebo IP adresy a data zařízení (například název zařízení a verze operačního systému), s osobními údaji, které jsou omezené na informace nezbytné k řešení problémů s aplikacemi. Tyto soubory protokolů můžete v aplikaci kdykoli zobrazit, aby se zobrazily shromažďované informace. Pokud soubory protokolu odešlete, technici aplikace pro ověřování je můžou použít k řešení problémů hlášených zákazníky.</li><li>Data o využití, která nejsou osobně identifikovatelná, například Začínáme přidat účet nebo úspěšně přidaný účet, nebo schválená oznámení Tato data představují nedílnou součást našich rozhodnutí a pomáhají zjistit, jaké funkce jsou pro vás důležité a kde je potřeba zajistit zlepšení formou aktualizací pro aplikace. Když jste jako uživatel aplikace, přečtěte si oznámení o této kolekci dat při prvním spuštění aplikace a dozvíte se, že je lze vypnout na stránce **Nastavení** aplikace. Toto nastavení můžete kdykoli povolit nebo zakázat.</li></ul> |
 | Jaké jsou kódy v aplikaci pro? | Po otevření aplikace Microsoft Authenticator se vaše přidané účty zobrazí jako dlaždice.<li>Na zařízení se systémem iOS budou mít vaše pracovní nebo školní účty a vaše osobní účty Microsoft v zobrazení celé obrazovky daného účtu šest – nebo osm číslic, které se zobrazí po klepnutí na dlaždici účtu.<br><br>![Obrazovka účty v aplikaci](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>U ostatních účtů na zařízení s iOS a u všech účtů na zařízení s Androidem se na stránce účty v aplikaci zobrazí šest nebo osm číslic. Tyto kódy použijete jako ověření, které jste řekli vy. Po přihlášení pomocí uživatelského jména a hesla zadáte ověřovací kód, který je přidružený k tomuto účtu. Pokud se například Katy přihlašujete k účtu contoso a používáte zařízení s iOS, klepněte na dlaždici účtu a pak ověřte svoji identitu pomocí ověřovacího kódu. Pokud se přihlašujete k účtu Outlooku Katy, provedete stejný postup.<br><br>![Po klepnutí na dlaždici účtu v aplikaci](./media/user-help-auth-app-faq/katy-signin.png)<br><br>Po klepnutí na dlaždici účtu contoso Katy uvidí ověřovací kód v zobrazení na celé obrazovce a do 895823 se dokončí přihlášení.<br><br>![obrazovka ověřovacího kódu v aplikaci](./media/user-help-auth-app-faq/verification-code.png) |

@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408985"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626867"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Co jsou toky dat tahání?
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Organizace musí provést přípravu a tahání dat, aby bylo možné přesně analyzovat složitá data, která se budou dál rozšiřovat každý den. Příprava dat je povinná, aby organizace mohli používat data v různých obchodních procesech a zkrátit čas na hodnotu.
 
@@ -44,7 +44,7 @@ Vizuálně naskenujte vaše data způsobem bez kódu, abyste mohli odebrat jaké
 
 | Konektor | Formát dat | Typ ověřování |
 | -- | -- | --|
-| [Blob Storage Azure](connector-azure-blob-storage.md) | CSV, Parquet | Klíč účtu |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV, Parquet | Klíč účtu |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Instanční objekt |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV, Parquet | Klíč účtu, instanční objekt |
 | [Azure SQL Database](connector-azure-sql-database.md) | - | Ověřování pomocí SQL |

@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414395"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651800"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Použití koncových bodů a pravidel služby virtuální sítě pro databázové servery
 
-*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro vaše izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze v [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s vaším Azure SQL Database a SQL Data Warehouse.
+*Pravidla virtuální sítě* jsou jedna funkce zabezpečení brány firewall, která určuje, jestli databázový server pro vaše izolované databáze a elastický fond v Azure [SQL Database](sql-database-technical-overview.md) nebo pro vaše databáze ve [službě Azure synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) přijímá komunikaci, která se odesílají z konkrétních podsítí ve virtuálních sítích. Tento článek vysvětluje, proč je funkce pravidla virtuální sítě někdy nejlepší volbou pro bezpečné povolení komunikace s Azure SQL Database a Azure synapse Analytics.
 
 > [!IMPORTANT]
-> Tento článek se týká Azure SQL serveru a databází SQL Database i SQL Data Warehouse, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
+> Tento článek se týká Azure SQL serveru a databází SQL Database a Azure synapse Analytics, které jsou vytvořené na Azure SQL serveru. Pro zjednodušení se SQL Database používá při odkazování na SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* nasazení **spravované instance** v Azure SQL Database, protože k němu není přidružen koncový bod služby.
 
 Aby bylo možné vytvořit pravidlo virtuální sítě, musí být nejprve [koncovým bodem služby virtuální sítě][vm-virtual-network-service-endpoints-overview-649d] pro pravidlo, na které se má odkazovat.
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad použití koncových bodů služby virtuální sítě se službou Azure Storage
 
-Azure Storage implementoval stejnou funkci, která umožňuje omezit připojení k účtu Azure Storage. Pokud se rozhodnete tuto funkci použít s účtem Azure Storage, který používá Azure SQL Server, můžete nastavovat problémy. Dál je seznam a diskuzi o funkcích Azure SQL Database a Azure SQL Data Warehouse, na které má vliv.
+Azure Storage implementoval stejnou funkci, která umožňuje omezit připojení k účtu Azure Storage. Pokud se rozhodnete tuto funkci použít s účtem Azure Storage, který používá Azure SQL Server, můžete nastavovat problémy. Dál je seznam a diskuze o funkcích Azure SQL Database a službě Azure synapse Analytics, na které se to týká.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Základ Azure SQL Data Warehouse
+### <a name="azure-synapse-analytics-polybase"></a>Základ analýzy Azure synapse Analytics
 
-Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azure Storagech účtů. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom na sadu virtuálních sítí VNet, dojde k přerušení připojení od základu k účtu. Pokud chcete povolit jak základní scénáře importu i exportu, tak pomocí Azure SQL Data Warehouse připojení k Azure Storage, která je zabezpečená pro virtuální síť, postupujte podle kroků uvedených níže:
+Základ se běžně používá k načtení dat do služby Azure synapse Analytics z účtů Azure Storage. Pokud účet Azure Storage, ze kterého načítáte data, omezuje přístup jenom na sadu virtuálních sítí VNet, dojde k přerušení připojení od základu k účtu. Pokud chcete povolit jak základní scénáře importu i exportu, tak pomocí služby Azure synapse Analytics, která se připojuje k Azure Storage zabezpečená virtuální síti, postupujte podle kroků uvedených níže:
 
 #### <a name="prerequisites"></a>Požadavky
 
@@ -122,7 +122,7 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
 
 #### <a name="steps"></a>Kroky
 
-1. V PowerShellu **Zaregistrujte Azure SQL Server** hostování vaší instance Azure SQL Data Warehouse pomocí Azure Active Directory (AAD):
+1. V PowerShellu **Zaregistrujte azure SQL Server** hostování vaší instance Azure synapse Analytics pomocí Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ Základ se běžně používá k načtení dat do Azure SQL Data Warehouse z Azu
    > [!NOTE]
    > - Pokud máte účet úložiště pro obecné účely v1 nebo blob, musíte **nejdřív upgradovat na verzi v2** pomocí této [příručky](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
    > - Známé problémy s Azure Data Lake Storage Gen2 najdete v tomto [Průvodci](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
-
-1. V části účet úložiště přejděte na **Access Control (IAM)** a klikněte na **Přidat přiřazení role**. Přiřazení role RBAC **Přispěvatel dat objektů BLOB úložiště** k vašemu Azure SQL Server hostování Azure SQL Data Warehouse, které jste zaregistrovali v Azure Active Directory (AAD) jako v kroku č. 1.
+    
+1. V části účet úložiště přejděte na **Access Control (IAM)** a vyberte **Přidat přiřazení role**. V rozevíracím seznamu vyberte roli RBAC **Přispěvatel dat objektů BLOB úložiště** . Pro **přiřazení přístupu k** výběru **uživatele, skupiny nebo instančního objektu služby Azure AD**. Do pole **Vyberte**zadejte název serveru Azure SQL Server (logický server služby Azure synapse Analytics Data Warehouse), který jste zaregistrovali v Azure Active Directory (AAD) jako v kroku 1. Použijte pouze název serveru, který není plně kvalifikovaný název DNS (**servername** bez. Database.Windows.NET).
 
    > [!NOTE]
-   > Tento krok mohou provádět pouze členové s oprávněním vlastníka. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Tento krok můžou provést jenom členové s oprávněním vlastníka v účtu úložiště. Informace o různých předdefinovaných rolích pro prostředky Azure najdete v tomto [Průvodci](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **Základní připojení k účtu Azure Storage:**
 

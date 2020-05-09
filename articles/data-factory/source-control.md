@@ -10,35 +10,40 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/09/2019
-ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604589"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629316"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Správa zdrojového kódu v Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Prostředí uživatelského rozhraní Azure Data Factory (UX) má k dispozici dvě prostředí pro tvorbu vizuálů:
+Ve výchozím nastavení Azure Data Factory autoři uživatelského rozhraní (UX) přímo na službu Data Factory. Toto prostředí má následující omezení:
 
-- Přímý autor pomocí Data Factory služby
-- Vytváření Azure Repos integrace Gitu nebo GitHubu
+- Služba Data Factory nezahrnuje úložiště pro ukládání entit JSON pro vaše změny. Jediným způsobem, jak změny uložit, je prostřednictvím tlačítka **publikovat vše** a všechny změny se publikují přímo ve službě Data Factory.
+- Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
+
+Aby se zajistilo lepší prostředí pro vytváření, Azure Data Factory vám umožní nakonfigurovat úložiště Git buď pomocí Azure Repos, nebo GitHubu. Git je systém správy verzí, který umožňuje snazší sledování změn a spolupráci. V tomto kurzu se dozvíte, jak nakonfigurovat a pracovat v úložišti Git společně s důrazem na osvědčené postupy a Průvodce odstraňováním potíží.
 
 > [!NOTE]
-> V cloudu Azure Government se podporuje jenom vytváření obsahu přímo s Data Factory službou.
+> Integrace Azure Data Factory Git není dostupná v cloudu Azure Government.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Přímý autor pomocí Data Factory služby
+## <a name="advantages-of-git-integration"></a>Výhody integrace Gitu
 
-Při vytváření přímo ve službě Data Factory je jediným způsobem, jak uložit změny, prostřednictvím tlačítka **publikovat vše** . Po kliknutí budou všechny změny, které jste provedli, publikovány přímo ve službě Data Factory. 
+Níže je uveden seznam některých výhod integrace Gitu do prostředí pro vytváření obsahu:
 
-![Režim publikování](media/author-visually/data-factory-publish.png)
-
-Vytváření přímo pomocí služby Data Factory má následující omezení:
-
-- Služba Data Factory nezahrnuje úložiště pro ukládání entit JSON pro vaše změny.
-- Služba Data Factory není optimalizovaná pro spolupráci nebo správu verzí.
+-   **Správa zdrojového kódu:** Vzhledem k tomu, že se vaše úlohy datové továrny stanou rozhodující, byste měli svůj objekt pro vytváření integrovat do Gitu a využít přitom několik výhod správy zdrojového kódu, jako jsou tyto:
+    -   Schopnost sledovat nebo auditovat změny.
+    -   Možnost vrátit změny, které zavedly chyby.
+-   **Částečné uložení:** Při vytváření ve službě Data Factory nemůžete uložit změny jako koncept a všechny publikace musí předat ověření Data Factory. Bez ohledu na to, jestli vaše kanály nejsou dokončené nebo pokud nechcete přijít o změny v případě havárie počítače, integrace Git umožňuje přírůstkové změny prostředků služby Data Factory bez ohledu na stav, ve kterém se nacházejí. Konfigurace úložiště Git vám umožní uložit změny, takže budete moct publikovat jenom v případě, že jste své změny sami otestovali.
+-   **Spolupráce a řízení:** Pokud máte více členů týmu přispívajících ke stejné továrně, můžete chtít, aby vaše ostatními týmu vzájemně spolupracovaly prostřednictvím procesu revize kódu. Můžete také nastavit továrnu tak, že ne každý přispěvatel má stejné oprávnění. Někteří členové týmu můžou povolit změny jenom přes Git a jenom někteří lidé v týmu můžou publikovat změny v továrně.
+-   **Lepší CI/CD:**  Pokud nasazujete do více prostředí s [nepřetržitým procesem doručování](continuous-integration-deployment.md), integrace Git usnadňuje určité akce. Mezi tyto akce patří:
+    -   Nakonfigurujte svůj kanál pro vydávání verzí tak, aby se automaticky aktivoval, jakmile se ve vašem vývojovém objektu pro vývoj provádí nějaké změny.
+    -   Přizpůsobení vlastností ve vaší továrně, které jsou k dispozici jako parametry v šabloně Správce prostředků. Může být užitečné zachovat jenom požadovanou sadu vlastností jako parametry a mít vše dalšího pevně kódovaného kódu.
+-   **Lepší výkon:** Průměrná továrna s integrací Git se za víc než jedním vytvářením ve službě Data Factory načítá víckrát. Zlepšení výkonu je způsobeno tím, že se prostředky stahují prostřednictvím Gitu.
 
 > [!NOTE]
 > Při konfiguraci úložiště Git je v uživatelském prostředí Azure Data Factory zakázáno vytváření obsahu přímo pomocí služby Data Factory. Změny se dají provádět přímo v rámci služby prostřednictvím PowerShellu nebo sady SDK.
@@ -78,7 +83,7 @@ Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště
 | **Azure Repos organizace** | Název vaší Azure Repos organizace Název vaší Azure Repos organizace najdete na adrese `https://{organization name}.visualstudio.com`. K vašemu [Azure Repos organizaci](https://www.visualstudio.com/team-services/git/) se můžete přihlásit, abyste měli přístup k profilu sady Visual Studio a viděli vaše úložiště a projekty. | `<your organization name>` |
 | **Názevprojektu** | Název projektu Azure Repos. Název projektu Azure Repos můžete najít na adrese `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **Úložiště** | Váš Azure Repos název úložiště kódu. Azure Repos projekty obsahují úložiště Git pro správu zdrojového kódu při zvětšování projektu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už je v projektu. | `<your Azure Repos code repository name>` |
-| **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
+| **Větev pro spolupráci** | Vaše větev Azure Repos spolupráci, která se používá k publikování. Ve výchozím nastavení je `master`to. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch name>` |
 | **Kořenová složka** | Kořenová složka ve větvi Azure Repos spolupráci. | `<your root folder name>` |
 | **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z **plátna pro vytváření** uživatelského rozhraní, do úložiště Git Azure Repos. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
 | **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
@@ -88,7 +93,7 @@ Podokno konfigurace zobrazuje následující Azure Repos nastavení úložiště
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Použít jiného tenanta Azure Active Directory
 
-Úložiště Git v Azure Repos můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jiného tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+Azure Repos úložiště Git se může nacházet v jiném tenantovi Azure Active Directory. Pokud chcete zadat jiného tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
 
 ### <a name="use-your-personal-microsoft-account"></a>Použití osobních účet Microsoft
 
@@ -138,14 +143,14 @@ Obě metody otevřou podokno konfigurace nastavení úložiště.
 
 V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub:
 
-| **Nastavení** | **Popis**  | **Osa**  |
+| **Nastavení** | **Popis**  | **Hodnota**  |
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště kódu Azure Repos. | GitHubu |
 | **Použití GitHubu Enterprise** | Zaškrtávací políčko pro výběr GitHubu Enterprise | nevybráno (výchozí) |
-| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: https://github.mydomain.com. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
+| **Adresa URL GitHubu Enterprise** | Kořenová adresa URL pro GitHub Enterprise (musí být HTTPS pro místní server GitHub Enterprise). Například: `https://github.mydomain.com`. Požadováno jenom v případě, že je vybraná **možnost použít GitHub Enterprise** | `<your GitHub enterprise url>` |                                                           
 | **Účet GitHub** | Název vašeho účtu GitHubu. Tento název najdete v názvu https:\//GitHub.com/{account}/{repository Name}. Když přejdete na tuto stránku, zobrazí se výzva k zadání přihlašovacích údajů GitHubu OAuth do svého účtu GitHubu. | `<your GitHub account name>` |
 | **Název úložiště**  | Název vašeho úložiště kódu GitHubu Účty GitHubu obsahují úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, které už máte ve svém účtu. | `<your repository name>` |
-| **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení je to hlavní. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
+| **Větev pro spolupráci** | Vaše větev pro spolupráci GitHubu, která se používá k publikování. Ve výchozím nastavení se jedná o hlavní server. Toto nastavení změňte pro případ, že chcete publikovat prostředky z jiné větve. | `<your collaboration branch>` |
 | **Kořenová složka** | Kořenová složka ve větvi spolupráce na GitHubu. |`<your root folder name>` |
 | **Importovat stávající prostředky Data Factory do úložiště** | Určuje, jestli se mají importovat stávající prostředky služby Data Factory z plátna pro vytváření uživatelského rozhraní do úložiště GitHubu. Zaškrtněte políčko pro import prostředků datové továrny do přidruženého úložiště Git ve formátu JSON. Tato akce exportuje jednotlivé prostředky jednotlivě (tj. propojené služby a datové sady jsou exportovány do samostatných JSON). Pokud toto políčko není zaškrtnuté, existující prostředky se neimportují. | Vybráno (výchozí) |
 | **Vytvořit větev pro import prostředku** | Určuje, do které větve se importují prostředky služby Data Factory (kanály, datové sady, propojené služby atd.). Prostředky můžete importovat do jedné z následujících větví: a. Spolupráci b. Vytvořte novou c. Použít existující |  |
@@ -159,18 +164,6 @@ V podokně Konfigurace se zobrazí následující nastavení úložiště GitHub
 - Integrace GitHubu s nástroji Data Factoryho vizuálního vytváření funguje jenom v všeobecně dostupné verzi Data Factory.
 
 - Z jedné větve GitHubu lze načíst maximálně 1 000 entit na typ prostředku (například kanály a datové sady). Pokud je dosaženo tohoto limitu, navrhne se rozdělení prostředků do samostatných továrn. Azure DevOps Git toto omezení nemá.
-
-## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
-
-Pokud chcete přepnout na jiné úložiště Git, klikněte na ikonu **Nastavení úložiště Git** v pravém horním rohu stránky přehled Data Factory. Pokud ikonu nevidíte, vymažte místní mezipaměť prohlížeče. Výběrem ikony odeberte přidružení s aktuálním úložištěm.
-
-![Ikona Git](media/author-visually/remove-repo.png)
-
-Jakmile se zobrazí podokno nastavení úložiště, vyberte **Odebrat Git**. Zadejte název datové továrny a kliknutím na **Potvrdit** odeberte úložiště Git přidružené k vaší datové továrně.
-
-![Odebere přidružení k aktuálnímu úložišti Git.](media/author-visually/remove-repo2.png)
-
-Po odebrání přidružení s aktuálním úložištěm můžete nakonfigurovat nastavení Gitu tak, aby používalo jiné úložiště, a pak do nového úložiště importovat existující Data Factory prostředky. 
 
 ## <a name="version-control"></a>Správa verzí
 
@@ -188,7 +181,7 @@ Až budete připraveni sloučit změny z větve funkcí do vaší větve pro spo
 
 ### <a name="configure-publishing-settings"></a>Konfigurovat nastavení publikování
 
-Konfigurace větve publikovat – to znamená, že větev, ve které Správce prostředků šablony jsou uloženy – přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Data Factory přečte tento soubor, vyhledá pole `publishBranch`a vytvoří novou větev (Pokud ještě neexistuje) s poskytnutou hodnotou. Pak uloží všechny šablony Správce prostředků do zadaného umístění. Příklad:
+Ve výchozím nastavení služba Data Factory generuje šablony Správce prostředků publikovaných objektů pro vytváření a ukládá je do větve s `adf_public`názvem. Chcete-li nakonfigurovat vlastní větev publikování, přidejte `publish_config.json` soubor do kořenové složky ve větvi pro spolupráci. Při publikování tento soubor přečte ADF, vyhledá pole `publishBranch`a uloží všechny správce prostředků šablony do zadaného umístění. Pokud větev neexistuje, vytvoří se data Factory automaticky. A příklad toho, jak tento soubor vypadá:
 
 ```json
 {
@@ -196,7 +189,7 @@ Konfigurace větve publikovat – to znamená, že větev, ve které Správce pr
 }
 ```
 
-Když zadáte novou větev publikování, Data Factory neodstraní předchozí větev publikování. Pokud chcete odebrat předchozí větev publikování, odstraňte ji ručně.
+Azure Data Factory může mít současně jen jednu větev publikování. Když zadáte novou větev publikování, Data Factory neodstraní předchozí větev publikování. Pokud chcete odebrat předchozí větev publikování, odstraňte ji ručně.
 
 > [!NOTE]
 > Při načtení objektu pro `publish_config.json` vytváření načte data Factory jenom soubor. Pokud už máte v portálu načtenou továrnu, aktualizujte prohlížeč, aby se změny projevily.
@@ -214,17 +207,6 @@ Otevře se boční podokno, kde ověříte, že je větev publikování a nedoko
 > [!IMPORTANT]
 > Hlavní větev není zástupcem toho, co je ve službě Data Factory nasazené. Hlavní větev *musí* být publikovaná ručně ve službě Data Factory.
 
-## <a name="advantages-of-git-integration"></a>Výhody integrace Gitu
-
--   **Správa zdrojového kódu**. Vzhledem k tomu, že se vaše úlohy datové továrny stanou rozhodující, byste měli svůj objekt pro vytváření integrovat do Gitu a využít přitom několik výhod správy zdrojového kódu, jako jsou tyto:
-    -   Schopnost sledovat nebo auditovat změny.
-    -   Možnost vrátit změny, které zavedly chyby.
--   **Částečně ukládá**. Při provádění velkého množství změn ve vaší továrně budete vědět, že v běžném PROVOZNÍm režimu nemůžete uložit změny jako koncept, protože nejste připraveni, nebo nechcete přijít o změny pro případ, že dojde k chybě počítače. S integrací Gitu můžete pokračovat v ukládání změn přírůstkově a publikovat do továrny jenom v případě, že jste připraveni. Git funguje jako pracovní místo pro vaši práci, dokud neotestujete své změny do vaší spokojenosti.
--   **Spolupráce a řízení**. Pokud máte více členů týmu, kteří se účastní stejného objektu pro vytváření, možná budete chtít, aby vaše ostatními týmu vzájemně spolupracovaly prostřednictvím procesu revize kódu. Můžete také nastavit továrnu tak, že ne každý přispěvatel do továrny má oprávnění k nasazení do továrny. Členové týmu mohou provádět změny pouze přes Git, ale pouze někteří lidé v týmu mohou publikovat změny v továrně.
--   **Zobrazení rozdílů**. V režimu Git se zobrazí Skvělé rozdíly v datové části, která se chystá publikovat do továrny. V tomto rozdílovém zobrazení se zobrazí všechny prostředky a entity, které se od posledního publikování do vaší továrny změnily nebo přidaly nebo odstranily. Na základě těchto rozdílů můžete buď pokračovat v publikování, nebo se vrátit zpět a ověřit změny a pak se později vrátit.
--   **Lepší CI/CD**. Pokud používáte režim Git, můžete nakonfigurovat svůj kanál pro vydávání verzí tak, aby se automaticky aktivoval, jakmile se ve vývojářské továrně provede nějaké změny. Také se dostanete k přizpůsobení vlastností ve vaší továrně, které jsou k dispozici jako parametry v šabloně Správce prostředků. Může být užitečné zachovat jenom požadovanou sadu vlastností jako parametry a mít vše dalšího pevně kódovaného kódu.
--   **Lepší výkon**. Průměrná továrna se v režimu Git zrychlí rychleji než v normálním ŽIVÉm režimu, protože se tyto prostředky stahují přes Git.
-
 ## <a name="best-practices-for-git-integration"></a>Osvědčené postupy pro integraci Git
 
 ### <a name="permissions"></a>Oprávnění
@@ -238,9 +220,9 @@ Doporučuje se nepovoluje přímá vrácení se změnami do větve pro spoluprá
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Používání hesel z Azure Key Vault
 
-Doporučuje se použít Azure Key Vault k uložení připojovacích řetězců nebo hesel pro Data Factory propojené služby. Z bezpečnostních důvodů neuložíme v Gitu žádné tajné informace, takže jakékoli změny propojených služeb se hned publikují do služby Azure Data Factory.
+Doporučuje se použít Azure Key Vault k uložení připojovacích řetězců nebo hesel nebo ověřování spravované identity pro Data Factory propojených služeb. Z bezpečnostních důvodů Data Factory neukládá tajné klíče do Gitu. Jakékoli změny propojených služeb obsahujících tajné klíče, jako jsou hesla, se okamžitě publikují do služby Azure Data Factory.
 
-Použití Key Vault také usnadňuje průběžnou integraci a nasazování, protože tyto tajné klíče nebude nutné zadávat během Správce prostředkůho nasazení šablony.
+Použití Key Vault nebo ověřování MSI také usnadňuje průběžnou integraci a nasazování, protože nebudete muset zadávat tyto tajné klíče během nasazování šablon Správce prostředků.
 
 ## <a name="troubleshooting-git-integration"></a>Řešení potíží s integrací Gitu
 
@@ -253,15 +235,25 @@ Pokud větev publikování není synchronizovaná s hlavní větví a obsahuje z
 1. Vytvoření žádosti o přijetí změn, která sloučí změny do větve pro spolupráci 
 
 Níže jsou uvedeny některé příklady situací, které mohou způsobit zastaralou větev publikování:
-- Uživatel má více větví. V jedné větvi funkce odstranila propojenou službu, která není integrace přidružená (neintegrace propojené služby se publikují hned bez ohledu na to, jestli jsou v Gitu nebo ne), a nikdy nesloučí větev funkcí do brnach pro spolupráci.
+- Uživatel má více větví. V jedné větvi funkce odstranila propojenou službu, která není integrace přidružená (neintegrace propojené služby se publikují hned bez ohledu na to, jestli jsou v Gitu nebo ne), a nikdy nesloučí větev funkcí do větve pro spolupráci.
 - Uživatel změnil datovou továrnu pomocí sady SDK nebo PowerShellu.
 - Uživatel přesunul všechny prostředky do nové větve a pokusil se o publikování poprvé. Propojené služby by se měly vytvářet ručně při importu prostředků.
-- Uživatel nahraje propojenou službu, která není integrace, nebo Integration Runtime JSON ručně. Odkazují na tento prostředek z jiného prostředku, jako je datová sada, propojená služba nebo kanál. Propojená služba, která není integrace vytvořená prostřednictvím uživatelského rozhraní, se publikuje hned, protože přihlašovací údaje musí být šifrované. Pokud nahrajete datovou sadu odkazující na tuto propojenou službu a pokusíte se ji publikovat, bude ji uživatelské prostředí umožňovat, protože existuje v prostředí Git. Bude odmítnuta v době publikování, protože ve službě Data Factory neexistuje.
+- Uživatel nahraje propojenou službu bez integrace nebo Integration Runtime JSON ručně. Odkazují na tento prostředek z jiného prostředku, jako je datová sada, propojená služba nebo kanál. Propojená služba, která není integrace vytvořená prostřednictvím uživatelského rozhraní, se publikuje hned, protože přihlašovací údaje musí být šifrované. Pokud nahrajete datovou sadu odkazující na tuto propojenou službu a pokusíte se ji publikovat, bude ji uživatelské prostředí umožňovat, protože existuje v prostředí Git. Bude odmítnuta v době publikování, protože ve službě Data Factory neexistuje.
 
-## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
-Vyberte **zpětnou vazbu** pro komentář k funkcím nebo upozorněte společnost Microsoft na problémy s nástrojem:
+## <a name="switch-to-a-different-git-repository"></a>Přepnout na jiné úložiště Git
 
-![Váš názor](media/author-visually/provide-feedback.png)
+Pokud chcete přepnout na jiné úložiště Git, klikněte na ikonu **Nastavení úložiště Git** v pravém horním rohu stránky přehled Data Factory. Pokud ikonu nevidíte, vymažte místní mezipaměť prohlížeče. Výběrem ikony odeberte přidružení s aktuálním úložištěm.
+
+![Ikona Git](media/author-visually/remove-repo.png)
+
+Jakmile se zobrazí podokno nastavení úložiště, vyberte **Odebrat Git**. Zadejte název datové továrny a kliknutím na **Potvrdit** odeberte úložiště Git přidružené k vaší datové továrně.
+
+![Odebere přidružení k aktuálnímu úložišti Git.](media/author-visually/remove-repo2.png)
+
+Po odebrání přidružení s aktuálním úložištěm můžete nakonfigurovat nastavení Gitu tak, aby používalo jiné úložiště, a pak do nového úložiště importovat existující Data Factory prostředky.
+
+> [!IMPORTANT]
+> Odebráním konfigurace git z datové továrny se neodstraňují cokoli z úložiště. Objekt pro vytváření bude obsahovat všechny publikované prostředky. Můžete pokračovat v úpravě továrny přímo na službu.
 
 ## <a name="next-steps"></a>Další kroky
 

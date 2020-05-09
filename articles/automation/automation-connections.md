@@ -5,58 +5,64 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: 39a41a60f4cabe995ebd458c4b906438d1e31bde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: b00dd226306ed639757666cc4f826b0d7a0e5711
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097111"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651828"
 ---
 # <a name="manage-connections-in-azure-automation"></a>Správa připojení v Azure Automation
 
-Asset připojení Automation obsahuje informace potřebné pro připojení k externí službě nebo aplikaci z Runbooku nebo konfigurace DSC. Kromě informací o připojení, jako je například adresa URL nebo port, může obsahovat i informace vyžadované pro ověřování, jako je uživatelské jméno a heslo. Hodnota připojení udržuje všechny vlastnosti pro připojení k určité aplikaci v jednom prostředku, a to na rozdíl od vytvoření více proměnných. Uživatel může upravit hodnoty připojení na jednom místě a název připojení k sadě Runbook nebo konfiguraci DSC můžete předat v jednom parametru. K vlastnostem připojení lze v sadě Runbook nebo v konfiguraci DSC přidružit `Get-AutomationConnection` aktivitu.
+Azure Automation prostředek připojení obsahuje níže uvedené informace. Tyto informace jsou vyžadovány pro připojení k externí službě nebo aplikaci z Runbooku nebo konfigurace DSC. 
 
-Když vytvoříte připojení, musíte zadat typ připojení. Typ připojení je šablona, která definuje sadu vlastností. Připojení definuje hodnoty pro každou vlastnost definovanou v jejím typu připojení. Typy připojení se přidají do Azure Automation v integračních modulech nebo vytvořené pomocí [rozhraní API Azure Automation](/previous-versions/azure/reference/mt163818(v=azure.100)) , pokud modul Integration Module zahrnuje typ připojení a importuje ho do svého účtu Automation. V opačném případě je nutné vytvořit soubor metadat k určení typu připojení Automation. Další informace o tomto tématu najdete v tématu věnovaném [modulům Integration](automation-integration-modules.md).
+* Informace potřebné pro ověřování, například uživatelské jméno a heslo
+* Informace o připojení, jako je adresa URL nebo port
+
+Prostředek připojení uchovává všechny vlastnosti pro připojení ke konkrétní aplikaci, takže není nutné vytvářet více proměnných. Hodnoty pro připojení můžete upravit na jednom místě a název připojení k sadě Runbook nebo konfiguraci DSC můžete předat v jednom parametru. Sada Runbook nebo konfigurace přistupuje k vlastnostem připojení pomocí interní `Get-AutomationConnection` rutiny.
+
+Když vytvoříte připojení, musíte zadat typ připojení. Typ připojení je šablona, která definuje sadu vlastností. Typ připojení můžete přidat k Azure Automation pomocí integračního modulu se souborem metadat. Je také možné vytvořit typ připojení pomocí [rozhraní Azure Automation API](/previous-versions/azure/reference/mt163818(v=azure.100)) , pokud modul Integration Module zahrnuje typ připojení a je importován do svého účtu Automation. 
 
 >[!NOTE]
->Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Tento klíč je uložený v Key Vault spravovaném systémem. Před uložením zabezpečeného prostředku se klíč načte z Key Vault a pak se použije k zašifrování assetu. Tento proces je spravovaný pomocí Azure Automation.
+>Zabezpečené prostředky v Azure Automation zahrnují přihlašovací údaje, certifikáty, připojení a šifrované proměnné. Tyto prostředky jsou zašifrované a uložené v Azure Automation pomocí jedinečného klíče, který se generuje pro každý účet Automation. Azure Automation ukládá klíč do Key Vault spravovaném systémem. Před uložením zabezpečeného assetu Automation načte klíč z Key Vault a pak ho použije k zašifrování prostředku. 
 
 >[!NOTE]
 >Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="connection-types"></a>Typy připojení
 
-Existují tři typy integrovaných připojení, která jsou k dispozici v Azure Automation:
+Azure Automation zpřístupní následující předdefinované typy připojení:
 
-* **Azure** – toto připojení se dá použít ke správě klasických prostředků.
-* **AzureClassicCertificate** – toto připojení používá účet **AzureClassicRunAs** .
-* **AzureServicePrincipal** – toto připojení používá účet **AzureRunAs** .
+* `Azure`– Představuje připojení používané ke správě klasických prostředků.
+* `AzureServicePrincipal`– Představuje připojení, které používá účet Spustit jako pro Azure.
+* `AzureClassicCertificate`– Představuje připojení používané účtem Azure spustit jako pro Classic.
 
 Ve většině případů nemusíte vytvářet prostředek připojení, protože se vytvoří při vytváření [účtu Spustit jako](manage-runas-account.md).
 
-## <a name="windows-powershell-cmdlets"></a>Rutiny prostředí Windows PowerShell
+## <a name="powershell-cmdlets-to-access-connections"></a>Rutiny prostředí PowerShell pro přístup k připojením
 
-Rutiny v následující tabulce se používají k vytváření a správě připojení automatizace pomocí Windows PowerShellu. Dodávají se jako součást [modulu Azure PowerShell](/powershell/azure/overview), který je k dispozici pro použití v sadách Automation a konfiguracích DSC.
+Rutiny v následující tabulce vytvářejí a spravují připojení automatizace pomocí PowerShellu. Dodávají se jako součást [AZ moduls](shared-resources/modules.md#az-modules).
 
 |Rutina|Popis|
 |---|---|
-|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Načte připojení. Obsahuje zatřiďovací tabulku s hodnotami polí připojení.|
+|[Get-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationconnection?view=azps-3.7.0)|Načte informace o připojení.|
 |[New-AzAutomationConnection](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationconnection?view=azps-3.7.0)|Vytvoří nové připojení.|
 |[Remove-AzAutomationConnection](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationConnection?view=azps-3.7.0)|Odebere existující připojení.|
 |[Set-AzAutomationConnectionFieldValue](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationConnectionFieldValue?view=azps-3.7.0)|Nastaví hodnotu konkrétního pole pro existující připojení.|
 
-## <a name="activities"></a>Aktivity
+## <a name="internal-cmdlets-to-access-connections"></a>Interní rutiny pro přístup k připojením
 
-Aktivity v následující tabulce se používají pro přístup k připojením v sadě Runbook nebo konfiguraci DSC.
+Interní rutina v následující tabulce se používá pro přístup k připojením ve vašich sadách Runbook a konfiguracích DSC. Tato rutina se dodává s globálním `Orchestrator.AssetManagement.Cmdlets`modulem. Další informace najdete v tématu [interní rutiny](shared-resources/modules.md#internal-cmdlets).
 
-|Aktivity|Popis|
+|Interní rutina|Popis|
 |---|---|
-|`Get-AutomationConnection` | Načte připojení, které se má použít. Vrátí tabulku hash s vlastnostmi připojení.|
+|`Get-AutomationConnection` | Načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](https://go.microsoft.com/fwlink/?LinkID=324844). Tuto zatřiďovací tabulku pak můžete použít s příslušnými příkazy v konfiguraci sady Runbook nebo DSC.|
 
 >[!NOTE]
->Vyhněte se použití proměnných `Name` s parametrem `Get-AutomationConnection`. Použití tohoto parametru může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety připojení v době návrhu.
+>Vyhněte se použití proměnných `Name` s parametrem `Get-AutomationConnection`. Použití proměnných v tomto případě může zkomplikovat zjišťování závislostí mezi sadami Runbook a konfigurací DSC a assety připojení v době návrhu.
 
-## <a name="python-2-functions"></a>Python 2 – funkce
+## <a name="python-2-functions-to-access-connections"></a>Funkce Python 2 pro přístup k připojením
 
 Funkce v následující tabulce slouží k přístupu k připojením v sadě Runbook Python 2.
 
@@ -67,19 +73,20 @@ Funkce v následující tabulce slouží k přístupu k připojením v sadě Run
 > [!NOTE]
 > Aby bylo možné získat `automationassets` přístup k funkcím assetu, musíte importovat modul v horní části Runbooku sady Python.
 
-## <a name="creating-a-new-connection"></a>Vytváří se nové připojení.
+## <a name="create-a-new-connection"></a>Vytvoření nového připojení
 
 ### <a name="create-a-new-connection-with-the-azure-portal"></a>Vytvoření nového připojení pomocí Azure Portal
 
-1. V účtu Automation kliknutím na část **aktiva** otevřete okno **assety** .
-2. Kliknutím na část **připojení** otevřete okno **připojení** .
-3. V horní části okna klikněte na **Přidat připojení** .
-4. V rozevíracím seznamu **typ** vyberte typ připojení, které chcete vytvořit. Ve formuláři se zobrazí vlastnosti daného konkrétního typu.
-5. Vyplňte formulář a kliknutím na **vytvořit** uložte nové připojení.
+Vytvoření nového připojení v Azure Portal:
+
+1. V účtu Automation klikněte na **připojení** v části **sdílené prostředky**.
+2. Klikněte na **+ Přidat připojení** na stránce připojení.
+4. V poli **typ** v podokně nové připojení vyberte typ připojení, které chcete vytvořit. Vaše volby jsou `Azure`, `AzureServicePrincipal`a `AzureClassicCertificate`. 
+5. Ve formuláři se zobrazí vlastnosti typu připojení, který jste zvolili. Vyplňte formulář a kliknutím na **vytvořit** uložte nové připojení.
 
 ### <a name="create-a-new-connection-with-windows-powershell"></a>Vytvoření nového připojení pomocí prostředí Windows PowerShell
 
-Pomocí `New-AzAutomationConnection` rutiny vytvořte nové připojení pomocí prostředí Windows PowerShell. Tato rutina má parametr s `ConnectionFieldValues` názvem, který očekává [zatřiďovací tabulku](https://technet.microsoft.com/library/hh847780.aspx) definující hodnoty pro každou z vlastností definovaných typem připojení.
+Pomocí `New-AzAutomationConnection` rutiny vytvořte nové připojení pomocí prostředí Windows PowerShell. Tato rutina má `ConnectionFieldValues` parametr, který očekává zatřiďovací tabulku definující hodnoty pro každou z vlastností definovaných typem připojení.
 
 Následující příklady příkazů můžete použít jako alternativu k vytvoření účtu Spustit jako z portálu pro vytvoření nového prostředku připojení.
 
@@ -89,35 +96,59 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues
 ```
 
-Když vytváříte účet Automation, ve výchozím nastavení zahrnuje několik globálních modulů společně s typem `AzureServicePrincipal` připojení pro vytvoření prostředku `AzureRunAsConnection` připojení. Pokud se pokusíte vytvořit nový prostředek připojení pro připojení ke službě nebo aplikaci s jinou metodou ověřování, operace se nezdařila, protože typ připojení ještě není ve vašem účtu Automation definován. Další informace o vytvoření vlastního typu připojení pro vlastní modul [Galerie prostředí PowerShell](https://www.powershellgallery.com) najdete v tématu věnovaném [modulům Integration](automation-integration-modules.md).
+Když vytváříte účet Automation, ve výchozím nastavení zahrnuje několik globálních modulů společně s typem `AzureServicePrincipal` připojení pro vytvoření prostředku `AzureRunAsConnection` připojení. Pokud se pokusíte vytvořit nový prostředek připojení pro připojení ke službě nebo aplikaci s jinou metodou ověřování, operace se nezdařila, protože typ připojení ještě není ve vašem účtu Automation definován. Další informace o vytvoření vlastního typu připojení pro vlastní modul najdete v tématu [Přidání typu připojení](#add-a-connection-type).
 
-## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Použití připojení v sadě Runbook nebo konfiguraci DSC
+## <a name="add-a-connection-type"></a>Přidat typ připojení
 
-Načtěte připojení v sadě Runbook nebo konfiguraci DSC pomocí `Get-AutomationConnection` rutiny. `Get-AzAutomationConnection` Aktivitu nelze použít. Tato aktivita načte hodnoty různých polí v připojení a vrátí je jako [zatřiďovací tabulku](https://go.microsoft.com/fwlink/?LinkID=324844). Tato zatřiďovací tabulka se pak dá použít s příslušnými příkazy v sadě Runbook nebo konfiguraci DSC.
+Pokud se vaše sada Runbook nebo konfigurace DSC připojuje k externí službě, musíte definovat typ připojení ve [vlastním modulu](shared-resources/modules.md#custom-modules) s názvem Integration Module. Tento modul obsahuje soubor metadat, který určuje vlastnosti typu připojení a má název ** &lt;Module&gt;-Automation. JSON**umístěný ve složce modulu komprimovaného souboru **. zip** . Tento soubor obsahuje pole připojení, která jsou nutná pro připojení k systému nebo službě, kterou modul představuje. Pomocí tohoto souboru můžete pro typ připojení nastavit názvy polí, typy dat, stav šifrování a volitelný stav. 
 
-### <a name="textual-runbook-sample"></a>Ukázka textové sady Runbook
+V následujícím příkladu je šablona ve formátu souboru **. JSON** , která definuje vlastnosti uživatelského jména a hesla pro vlastní typ připojení s názvem `MyModuleConnection`:
 
-Následující vzorové příkazy ukazují, jak používat účet Spustit jako zmíněný dříve, k ověření pomocí Azure Resource Manager prostředků v Runbooku. Používá prostředek připojení představující účet Spustit jako, který odkazuje na instanční objekt založený na certifikátech, nikoli na přihlašovací údaje.
+```json
+{
+   "ConnectionFields": [
+   {
+      "IsEncrypted":  false,
+      "IsOptional":  true,
+      "Name":  "Username",
+      "TypeName":  "System.String"
+   },
+   {
+      "IsEncrypted":  true,
+      "IsOptional":  false,
+      "Name":  "Password",
+      "TypeName":  "System.String"
+   }
+   ],
+   "ConnectionTypeName":  "MyModuleConnection",
+   "IntegrationModuleName":  "MyModule"
+}
+```
+
+## <a name="get-a-connection-in-a-runbook-or-dsc-configuration"></a>Získání připojení v sadě Runbook nebo konfiguraci DSC
+
+Načtěte připojení v sadě Runbook nebo konfiguraci DSC pomocí interní `Get-AutomationConnection` rutiny. Tato rutina je preferována `Get-AzAutomationConnection` prostřednictvím rutiny, protože načítá hodnoty připojení místo informací o připojení. 
+
+### <a name="textual-runbook-example"></a>Příklad textového Runbooku
+
+Následující příklad ukazuje, jak použít účet Spustit jako k ověření pomocí Azure Resource Manager prostředků v Runbooku. Používá prostředek připojení představující účet Spustit jako, který odkazuje na objekt služby založený na certifikátu.
 
 ```powershell
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection
 Connect-AzAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
-> [!NOTE]
-> Pro negrafické Runbooky PowerShellu `Add-AzAccount` a `Add-AzureRMAccount` jsou aliasy pro [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Tyto rutiny můžete použít nebo můžete [své moduly](automation-update-azure-modules.md) v účtu Automation aktualizovat na nejnovější verze. Vaše moduly možná budete muset aktualizovat i v případě, že jste právě vytvořili nový účet Automation.
+### <a name="graphical-runbook-examples"></a>Příklady grafického Runbooku
 
-### <a name="graphical-runbook-samples"></a>Ukázky grafického Runbooku
-
-`Get-AutomationConnection` Aktivitu přidáte do grafického Runbooku kliknutím pravým tlačítkem myši na připojení v podokně Knihovna v grafickém editoru a vybráním možnosti **Přidat na plátno**.
+Do grafického Runbooku můžete přidat aktivitu pro `Get-AutomationConnection` interní rutinu. Klikněte pravým tlačítkem na připojení v podokně Knihovna v grafickém editoru a vyberte **Přidat na plátno**.
 
 ![Přidat na plátno](media/automation-connections/connection-add-canvas.png)
 
-Následující obrázek ukazuje příklad použití připojení v grafickém Runbooku. Toto je stejný příklad, jak je uvedený výše pro ověřování pomocí účtu Spustit jako s textovým Runbooku. Tento příklad používá `Constant value` datovou sadu pro `Get RunAs Connection` aktivitu, která pro ověřování používá objekt připojení. [Odkaz na kanál](automation-graphical-authoring-intro.md#links-and-workflow) se tady používá, protože `ServicePrincipalCertificate` sada parametrů očekává jeden objekt.
+Následující obrázek ukazuje příklad použití objektu připojení v grafickém Runbooku. Tento příklad používá `Constant value` datovou sadu pro `Get RunAs Connection` aktivitu, která používá objekt připojení pro ověřování. [Odkaz na kanál](automation-graphical-authoring-intro.md#links-and-workflow) se tady používá, protože `ServicePrincipalCertificate` sada parametrů očekává jeden objekt.
 
 ![získat připojení](media/automation-connections/automation-get-connection-object.png)
 
-### <a name="python-2-runbook-sample"></a>Ukázka sady Runbook Python 2
+### <a name="python-2-runbook-example"></a>Příklad Runbooku s Pythonem 2
 
 Následující příklad ukazuje, jak ověřit pomocí připojení spustit jako v sadě Runbook Python 2.
 
@@ -164,7 +195,6 @@ azure_credential = get_automation_runas_credential(runas_connection)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Projděte si [odkazy v tématu vytváření grafického obsahu](automation-graphical-authoring-intro.md#links-and-workflow) , abyste pochopili, jak směrovat a řídit tok logiky ve vašich sadách Runbook.
-* Referenční informace k rutinám PowerShellu najdete v tématu [AZ. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
-).
-- Další informace Azure Automation o používání modulů PowerShellu a osvědčených postupů pro vytváření vlastních modulů PowerShellu pro práci jako integračních modulů v Azure Automation najdete v tématu věnovaném [modulům Integration](automation-integration-modules.md).
+* Další informace o rutinách používaných pro přístup k připojení najdete v tématu [Správa modulů v Azure Automation](shared-resources/modules.md).
+* Obecné informace o sadách Runbook naleznete [v tématu Spuštění Runbooku v Azure Automation](automation-runbook-execution.md).
+* Podrobnosti o konfiguracích DSC najdete v tématu [Přehled konfigurace stavu](automation-dsc-overview.md).

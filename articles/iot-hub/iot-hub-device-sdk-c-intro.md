@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731305"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629350"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Sada SDK pro zařízení Azure IoT pro jazyk C
 
@@ -88,7 +88,7 @@ Nástroj Průzkumník zařízení používá ke zpracování různých funkcí v
 
 Pokud nejste obeznámeni s nástrojem Průzkumník zařízení, následující postup popisuje, jak ho použít k přidání zařízení a získání připojovacího řetězce zařízení.
 
-1. Chcete-li nainstalovat Nástroj Průzkumník zařízení, přečtěte si téma [jak použít Device Explorer pro IoT Hub zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+1. Chcete-li nainstalovat Nástroj Průzkumník zařízení, přečtěte si téma [jak použít Device Explorer pro IoT Hub zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/).
 
 1. Po spuštění programu se zobrazí toto rozhraní:
 
