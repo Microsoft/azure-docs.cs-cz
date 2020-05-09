@@ -3,12 +3,12 @@ title: Application Insights rozhraní API pro vlastní události a metriky | Mic
 description: Pokud chcete sledovat využití a diagnostikovat problémy, vložte do svého zařízení nebo do aplikace, webové stránky nebo služby pár řádků kódu.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 152bd117ec0ae76c2c85ead26ba5278aa71d582f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509283"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927934"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API služby Application Insights pro vlastní události a metriky
 
@@ -149,7 +149,7 @@ Telemetrii je k dispozici v `customEvents` tabulce v [Application Insights Analy
 
 Pokud je [vzorkování](../../azure-monitor/app/sampling.md) v provozu, vlastnost vlastnost ItemCount zobrazí hodnotu větší než 1. Například vlastnost ItemCount = = 10 znamená, že u 10 volání trackEvent () proces vzorkování přenáší pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, měli byste proto použít kód jako `customEvents | summarize sum(itemCount)`.
 
-## <a name="getmetric"></a>Getmetric
+## <a name="getmetric"></a>GetMetric
 
 Chcete-li se dozvědět, jak efektivně použít volání getmetric () k zachycení místně předem agregovaných metrik pro aplikace .NET a .NET Core, přejděte do dokumentace ke službě [getmetric](../../azure-monitor/app/get-metric.md) .
 
@@ -649,7 +649,7 @@ V ideálním případě by měla být metoda flush () použita v aktivity vypnut
 
 ## <a name="authenticated-users"></a>Skupina Authenticated Users
 
-Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) identifikováni pomocí souborů cookie. Uživatel se může při přístupu k vaší aplikaci z jiného počítače nebo prohlížeče počítat více než jednou, nebo pokud odstraní soubory cookie.
+Ve webové aplikaci jsou uživatelé (ve výchozím nastavení) [identifikováni pomocí souborů cookie](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool). Uživatel se může při přístupu k vaší aplikaci z jiného počítače nebo prohlížeče počítat více než jednou, nebo pokud odstraní soubory cookie.
 
 Pokud se uživatelé přihlásí do vaší aplikace, můžete získat přesnější počet nastavením ID ověřeného uživatele v kódu prohlížeče:
 
@@ -1111,7 +1111,7 @@ Informace o tom, jak dlouho se data uchovávají, najdete v tématu [uchováván
 
 * *Jaké výjimky mohou Track_ () volání throw?*
 
-    Žádné. Nemusíte je zabalit do klauzulí try-catch. Pokud sada SDK zjistí problémy, protokoluje zprávy ve výstupu konzoly ladění a--pokud se zprávy objeví v diagnostickém vyhledávání.
+    Žádné Nemusíte je zabalit do klauzulí try-catch. Pokud sada SDK zjistí problémy, protokoluje zprávy ve výstupu konzoly ladění a--pokud se zprávy objeví v diagnostickém vyhledávání.
 * *Existuje REST API získat data z portálu?*
 
     Ano, [rozhraní API pro přístup k datům](https://dev.applicationinsights.io/). Mezi další způsoby, jak extrahovat data, patří [Export z analýzy do Power BI](../../azure-monitor/app/export-power-bi.md ) a [průběžný export](../../azure-monitor/app/export-telemetry.md).

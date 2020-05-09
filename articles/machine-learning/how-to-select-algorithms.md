@@ -10,12 +10,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891352"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927577"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Jak vybrat algoritmy pro Azure Machine Learning
 
@@ -148,6 +148,6 @@ Můžete také použít [modul důležitost funkcí permutace](https://docs.micr
 
 ## <a name="next-steps"></a>Další kroky
 
- - [Další informace o Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [Další informace o Azure Machine Learning designeru](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - Popisy všech algoritmů strojového učení, které jsou dostupné v Azure Machine Learning designeru, najdete v tématu [algoritmus Machine Learning designeru a Reference k modulům](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri) .
- - Informace o tom, jak prozkoumat vztah mezi hlubokou výukou, Machine Learningem a AI, najdete v článku o [podrobném učení vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
+ - Informace o tom, jak prozkoumat vztah mezi hlubokou výukou, Machine Learningem a AI, najdete v článku o [podrobném učení vs. Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri)
