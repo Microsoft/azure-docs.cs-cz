@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729989"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996934"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Čtení zpráv ze zařízení do cloudu z integrovaného koncového bodu
 
@@ -51,7 +51,7 @@ Pokud používáte Event Hubs sady SDK nebo integrace produktů, které nevědí
 
 V portálu obsahuje pole koncový bod kompatibilní s centrem událostí úplný Event Hubs připojovací řetězec, který vypadá nějak takto: **koncový bod = Sb://abcd1234namespace.ServiceBus.Windows.NET/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-ehub-abcd-1234-123456**. Pokud sada SDK, kterou používáte, vyžaduje jiné hodnoty, pak by byla:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | ---- | ----- |
 | Koncový bod | sb://abcd1234namespace.servicebus.windows.net/ |
 | Název hostitele | abcd1234namespace.servicebus.windows.net |
@@ -61,12 +61,12 @@ Pak můžete použít všechny zásady sdíleného přístupu, které mají opr�
 
 Sady SDK, které můžete použít pro připojení k integrovanému koncovému bodu kompatibilnímu s centrem událostí, který IoT Hub zpřístupňuje zahrnutí:
 
-| Jazyk | Sada SDK | Příklad | Poznámky |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) | Používá informace kompatibilní s Event Hubs. |
- Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) | Používá informace kompatibilní s Event Hubs. |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Rychlý start](quickstart-send-telemetry-node.md) | Používá připojovací řetězec IoT Hub. |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Používá připojovací řetězec IoT Hub. |
+| Jazyk | Sada SDK | Příklad |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Rychlý start](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Rychlý start](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Rychlý start](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 Integrace produktů, které můžete použít s integrovaným koncovým bodem kompatibilním s centrem událostí, který IoT Hub zpřístupňuje zahrnutí:
 

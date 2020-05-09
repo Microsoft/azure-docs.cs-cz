@@ -1,27 +1,29 @@
 ---
-title: Azure Marketplace a AppSource konzultační služby
-description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro nové poradenské nabídky – služby v Azure Marketplace a AppSource.
+title: Microsoft AppSource a Azure Marketplace konzultační služby
+description: Tento článek popisuje kritéria způsobilosti a požadavky na publikování pro nové konzultační nabídky – služby v Microsoft AppSource a Azure Marketplace.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 8085d83ea98d4d236e73142fbf3eda5c49caadcd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e5f22a681a9a5cbed4eceea2f70faa1cb21c07bc
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160626"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994845"
 ---
-# <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Konzultační služby pro Azure Marketplace a AppSource
-Azure Marketplace a AppSource konzultační služby nabízejí partnerům pro Microsoft System-integrátor výhody připojení svých zákazníků ke službám, které podporují a rozšiřuje jejich používání Azure. Tyto konzultační služby zákazníkům pomohou vyhodnocovat, hodnotit a nasazovat obchodní řešení, která jsou podrobněji jejich obchodním cílům a cílům.  
+# <a name="consulting-services-for-microsoft-appsource-and-azure-marketplace"></a>Konzultační služby pro Microsoft AppSource a Azure Marketplace
 
-Konzultační nabídky služby jsou zapojení specifické pro zákazníky. Vydavatelé mají možnost určit typ výpisu, rozsah, dobu trvání a cenovou strukturu (pevná cena nebo volná). Nabídky mají definované agendu pro dodávky zákazníkovi. Zájemci jsou přijímáni prostřednictvím oznámení v systémech CRM partnerů a partneři usilují o reakci na zákazníky během 48 hodin. 
+Microsoft AppSource a Azure Marketplace konzultační služby poskytují partnerům pro Microsoft System-integrátor výhody připojení svých zákazníků ke službám, které podporují a rozšiřuje jejich používání Azure. Tyto konzultační služby zákazníkům pomohou vyhodnocovat, hodnotit a nasazovat obchodní řešení, která jsou podrobněji jejich obchodním cílům a cílům.  
 
-## <a name="compare-consulting-services-in-azure-marketplace-and-appsource-storefronts"></a>Porovnání konzultačních služeb v Azure Marketplace a AppSource prodejní místa
-Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace nabízí specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
+Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydavatelé mají možnost určit typ výpisu, rozsah, dobu trvání a cenovou strukturu (pevná cena nebo volná). Nabídky mají definované agendu pro dodávky zákazníkovi. Zájemci jsou přijímáni prostřednictvím oznámení v systémech CRM partnerů a partneři usilují o reakci na zákazníky během 48 hodin.
+
+## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
+
+Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
 
 |         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
@@ -30,6 +32,7 @@ Prodejní místa na webu Marketplace jsou zarovnané na cílové skupiny a cloud
 |Možnosti publikování      |Kontaktujte mě, zkušební verzi, transakční službu nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
 |Prostředí v produktu      |portál Azure|Dynamics 365, Office 365, klientské aplikace Office| 
 |Ostatní      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics 365 a Power BI|
+||
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 
@@ -56,28 +59,28 @@ V případě Azure Marketplace jsou způsobilé kompetence uvedené v následuj�
 |Cloudová platforma a infrastruktura     |   Cloudová platforma, datové centrum      |
 |Vývoj aplikací a ISV     |  Vývoj aplikací, integrace aplikací, DevOps       |
 |Správa dat a analýzy    |  Data Analytics, datová platforma       |
-
+||
 
 V případě AppSource jsou způsobilé kompetence uvedené v následující tabulce:
 
 |Primární produkt |Požadavek na způsobilost |
 |---------|---------|
-| Dynamics 365 Sales <br> Dynamics 365 marketing <br> Zákaznická služba Dynamics 365 <br> Služba pole Dynamics 365 <br> Lidské zdroje pro Dynamics 365 |   V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost zapojení zákazníka musí být certifikováno Gold nebo stříbrné.    | 
-| Dynamics 365 – finance <br> Správa dodavatelských řetězců Dynamics 365 <br> Dynamics 365 – obchod <br> Lidské zdroje pro Dynamics 365 <br> Automatizace služby projektu Dynamics 365 |  V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost sjednocení operací musí být certifikováno Gold nebo stříbrné.       |
+| Dynamics 365 Sales<br>Dynamics 365 marketing<br>Zákaznická služba Dynamics 365<br>Služba pole Dynamics 365<br>Lidské zdroje pro Dynamics 365 |   V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost zapojení zákazníka musí být certifikováno Gold nebo stříbrné.    | 
+| Dynamics 365 – finance<br>Správa dodavatelských řetězců Dynamics 365<br>Dynamics 365 – obchod<br>Lidské zdroje pro Dynamics 365<br>Automatizace služby projektu Dynamics 365 |  V [cloudu Business Applications kompetenci](https://partner.microsoft.com/membership/cloud-business-applications-competency) pro možnost sjednocení operací musí být certifikováno Gold nebo stříbrné.       |
 | Dynamics 365 Customer Insights | Musí mít alespoň jednu úspěšnou implementaci v produkčním prostředí [Dynamics 365 Customer Insights](https://dynamics.microsoft.com/ai/customer-insights/)s aspoň pěti mírami a pěti segmenty. |
-| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky. <br> <br> Nebo <br> <br> V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
+| Dynamics 365 Business Central | Musí se jednat o Gold nebo stříbrné certifikaci v rámci [kompetence plánování podnikových zdrojů](https://partner.microsoft.com/membership/enterprise-resource-planning-competency)a musí se jednat o poskytovatele Cloud Solution Provider minimálně pro tři obchodní centrální zákazníky.<br><br>or <br><br>V AppSource musí být publikována [aplikace Business Central](https://appsource.microsoft.com/). |
 | Power BI | Musí být uvedený na [Power BI prezentující Partnerská](https://powerbi.microsoft.com/partner-showcase/?term=&country=&industry=&department=).|
-|Power Apps | Musí mít nárok na pokročilé výhody v [programu pro partnerství Power Apps](https://aka.ms/PowerAppsPartner). |
+|Power Apps | Musí mít nárok na pokročilé výhody v [programu Power Apps pro partnerství](https://aka.ms/PowerAppsPartner) (PDF). |
+||
 
 Další zdroje informací a podpora:
 
 * [Microsoft cloudation](https://partner.microsoft.com/campaigns/ced-nomination-form/)Center: dokončete formu partnerského plánování pro prostředí s asistencí pro cloudový program pro připojení k odborníkovi na cloudový program, který může vyjadřují Microsoft Partner Network výhod a slouží jako vodítko pro dosažení kompetence.  
 * [Staňte se Power BI partnerem](https://powerbi.microsoft.com/become-a-partner/): odešlete žádost, která vám ukáže seznam Power BI prezentace.
 
+Další informace o kompetencích najdete na stránce [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies) .
 
-Další informace o kompetencích najdete na stránce [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies) . 
-
-Partneři na základě systému mohou v následujících 21 zemích nebo oblastech odeslat konzultační nabídky – služby:
+Partneři se systémovým integrátorem mohou odesílat konzultační nabídky pro následující 21 zemí nebo oblastí:
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -87,7 +90,7 @@ Partneři na základě systému mohou v následujících 21 zemích nebo oblaste
 |  Nový Zéland  |  Norsko  |  Polsko  | Jižní Afrika |
 |  Španělsko  | Švédsko  | Švýcarsko  |  Spojené státy  |
 | Spojené království  |
-
+||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Zaregistrujte se na konzultační služby na komerčním webu Marketplace.
 
@@ -95,11 +98,10 @@ Začněte tím, že [zaregistrujete](https://partner.microsoft.com/dashboard/acc
 
 <!---
 **What to expect after registration**
-The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions. 
+The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions.
 
 >[!Note]
->Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types. 
-
+>Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types.
 --->
 
 ## <a name="prepare-your-publishing-artifacts"></a>Příprava publikovaných artefaktů
@@ -108,9 +110,9 @@ Před registrací můžete začít shromažďovat a připravovat obsah, který v
 |Nastavení pro nové vydavatele  |
 |---------|
 |ID MPN     |
-|Loga společnosti (48 &#215; 48, 216 &#215; 216)     |
+|Loga společnosti (48 x 48, 216 × 216 pixelů)     |
 |Cíl zájemce     |
-
+||
 
 |Nastavení pro nové nabídky  |
 |---------|
@@ -120,80 +122,77 @@ Před registrací můžete začít shromažďovat a připravovat obsah, který v
 |Trvání zapojení     |
 |Příslušné obory, kategorie a klíčová slova pro hledání     |
 |Video s přehledem produktu    |
-|Snímky obrazovky (maximálně 5, 1280 &#215; 720)     |
+|Snímky obrazovky (maximálně 5, 1280 × 720 pixelů)     |
 |Marketingové dokumenty (maximálně 3)     |
-
+||
 
 ## <a name="the-publishing-process"></a>Proces publikování
-Uvedení vaší konzultační nabídky – služba na Azure Marketplace a AppSource zahrnuje tyto fáze:
 
-1. **Seznam**: Začněte s vytvořením konceptu nového seznamu nabídek Přihlaste se k účtu [partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) . V rozevíracím seznamu vyberte možnost **Nová nabídka**a pak vyberte **konzultační služby**. Zadejte svůj artefakt a publikujte svůj výpis.
-2. **Ověření**: vaše žádost se zkontroluje, aby splňovala kritéria způsobilosti. Potom vám pošleme pokyny k uvedení vaší nabídky konzultačních služeb. 
-3. **Odeslat**: zadejte požadované informace, které jsou uvedeny v pokynech. Veškerý obsah a podpůrný materiál musí být odeslán v angličtině. 
-4. **Přezkoumání**: náš marketingový a redakční tým kontroluje vaše odeslání a optimalizuje je pro čtení, gramatiku a efektivitu. 
-5. **Příprava**: vaše odeslání je připravené pro vaši kontrolu. 
-6. **Publikování**: když jste vy a Microsoft spokojeni s připraveným obsahem, váš výpis je připravený na tržišti. Datum přechodu do živého výpisu závisí na zemi nebo oblasti zadané v nabídce. Pokud je katalog pro vybranou zemi nebo oblast již v Azure Marketplace nebo AppSource aktivní, váš výpis se zobrazí během několika hodin. V opačném případě se výpis zobrazí, jakmile bude katalog aktivní.
+Uvedení vaší konzultační nabídky – služba na Microsoft AppSource a Azure Marketplace zahrnuje tyto fáze:
 
+1. **Seznam** – začněte s vytvářením konceptů nového seznamu nabídek přihlašováním k účtu [partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) . V rozevíracím seznamu vyberte možnost **Nová nabídka**a pak vyberte **konzultační služby**. Zadejte svůj artefakt a publikujte svůj výpis.
+2. **Ověření** – vaše žádost se zkontroluje, aby splňovala kritéria způsobilosti. Potom vám pošleme pokyny k uvedení nabídky konzultačních služeb.
+3. **Odeslat** – zadejte požadované informace, které jsou uvedeny v pokynech. Veškerý obsah a podpůrný materiál musí být odeslán v angličtině.
+4. **Recenze** – náš marketingový a redakční tým kontroluje vaše odeslání a optimalizuje je pro čtení, gramatiku a efektivitu.
+5. **Příprava** – vaše odeslání je připravené pro vaši kontrolu.
+6. **Publikování** – když jste vy a Microsoft spokojení s připraveným obsahem, je váš výpis připravený na Marketplace v reálném čase. Datum přechodu do živého výpisu závisí na zemi nebo oblasti, která je zadána v nabídce. Pokud je katalog pro vybranou zemi nebo oblast již v Azure Marketplace nebo AppSource aktivní, váš výpis se zobrazí během několika hodin. V opačném případě se výpis zobrazí, jakmile bude katalog aktivní.
 
+Nabídky musí mít alespoň jeden z následujících pěti typů služeb:
 
-Nabídky musí mít alespoň jeden z následujících pěti typů služeb: 
-
-* **Posouzení**: vyhodnocení prostředí zákazníka za účelem určení použitelnosti řešení a zajištění odhadu nákladů a časování. 
-* **Přehled**: Úvod do řešení nebo poradenské služby za účelem vystavení zájmu zákazníků pomocí platforem, ukázek a příkladů zákazníků. 
-* **Implementace**: kompletní instalace, která má za následek plně funkční řešení. Doporučujeme, abyste je omezili na řešení, která je možné implementovat ve dvou nebo méně týdnech. 
-* **Ověření koncepce**: implementace omezeného rozsahu, která určuje, jestli řešení splňuje požadavky zákazníků. 
-* **Workshop**: interaktivní zapojení, které se provádí na místních místech zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky, které jsou postavené na datech a prostředí zákazníka. 
+* **Posouzení** – vyhodnocení prostředí zákazníka pro určení použitelnosti řešení a zajištění odhadu nákladů a časování.
+* **Přehled** – Úvod do řešení nebo poradenské služby za účelem vystavení zájmu zákazníků pomocí platforem, ukázek a příkladů zákazníků.
+* **Implementace** – kompletní instalace, která má za následek plně funkční řešení. Doporučujeme, abyste je omezili na řešení, která je možné implementovat ve dvou nebo méně týdnech.
+* **Ověření konceptu** – implementace s omezeným rozsahem k určení, zda řešení splňuje požadavky zákazníků.
+* **Workshop** – interaktivní zapojení, které se provádí na místních místech zákazníka. Může zahrnovat školení, stručné hodnocení, posouzení nebo ukázky, které jsou postavené na datech a prostředí zákazníka.
 
 > [!NOTE]
-> Typ služby *přehledové* služby musí být nabídnutý *osobně*. Další čtyři poradenské služby můžete nabízet jedním ze dvou způsobů:
-> * **In person**: pracoviště v umístění zákazníka nebo partnera.
-> * **Prakticky**: prostřednictvím konferencí, webových konferencí nebo vzdálených implementací.
+> Typ služby *přehledové* služby musí být zadaný *osobně*. Další čtyři poradenské služby můžete zadat jedním ze dvou způsobů:
+> * **In person** – pracoviště v umístění zákazníka nebo v zařízení partnera.
+> * **Prakticky** – prostřednictvím konferencí, webových konferencí nebo vzdálených implementací.
 
 Po nakonfigurování výše uvedených požadovaných prvků ověří tým revize obsahu, že je popis vaší nabídky informativní a dokončený pro cílovou skupinu. 
 
-#### <a name="the-listing-title"></a>Název výpisu
+### <a name="the-listing-title"></a>Název výpisu
 
 Pole název má limit 50 znaků a musí přenášet dobu trvání a typ služby nabídky k maximalizaci optimalizace vyhledávacích vyhledávačů (SEO). Požadovaný formát je *Název: typ trvání*.
 
 Příklady:
-
 
 |Ukázkový název  |Správný formát  |
 |---------|---------|
 |Začínáme s využitím Azure IoT v výrobě    |   Výrobní IoT: posouzení dvou dnů      |
 |Workshop na inteligentních informačních oznámeních        |  Inteligentní informační zprávy: 1 – týden Workshop       |
 |  Ověření koncepce migrace SQL Server    | Migrace SQL: 3 – týden – ověření konceptu        |
+||
 
-#### <a name="the-listing-summary-and-description"></a>Souhrn a popis výpisu
+### <a name="the-listing-summary-and-description"></a>Souhrn a popis výpisu
 
 Jakmile tým přezkoumání obsahu zkontroluje popisy vaší nabídky a nabídne souhrny, uplatní následující kritéria:
 
 |Typ nabídky  |Požaduje se |Doporučené  |
 |---------|---------|---------|
 |**Posouzení**    |   Zahrňte podrobný agendu pro posouzení na více dní nebo více týdnů a vyjadřují, co může zákazník očekávat.      |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
-|**Briefingu**    |   Vyjadřují, co může zákazník očekávat. Pamatujte si, že *přehledy* musí být nabízeny osobně. Pokud poskytujete virtuální službu, vyberte jiný typ nabídky.    |  Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.       |
+|**Briefingu**    |   Vyjadřují, co může zákazník očekávat. Pamatujte si, že je třeba poskytnout *přehlednou* osobu. Pokud poskytujete virtuální službu, vyberte jiný typ nabídky.    |  Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.       |
 |**Implementace**    |  Zahrňte detailní agendu pro implementace na více dní nebo více týdnů a vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení.       |    Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.     |
 |**Ověření konceptu**    |    Vyjadřují, jaké technické změny, technické artefakty nebo jiné artefakty může zákazník očekávat jako výsledek zapojení.     | Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.        |
 |**Dílně**    |   V závislosti na době trvání vaší nabídky uveďte podrobné agendy denně, týdně nebo měsíčně. Vyjadřují studijní cíle nebo jiné dodávky vaší dílny.     |   Optimalizujte souhrn své nabídky pomocí vašich hlavních klíčových slov SEO.      |
+||
 
-V rámci partnerského centra můžete do svého seznamu přidat formátování pomocí [Markdownu](/contribute/markdown-reference), zjednodušeného návrhového jazyka, který pomáhá přidat k vašemu seznamu dokonalý vzhled. 
+V rámci partnerského centra můžete do svého seznamu přidat formátování pomocí [Markdownu](/contribute/markdown-reference), zjednodušeného návrhového jazyka, který pomáhá přidat k vašemu seznamu dokonalý vzhled.
 
-> [!TIP]
-> Tady jsou některé příklady tipů Markdownu:
-> * V případě formátování *kurzívou* Přidejte hvězdičku\*() bez mezer na začátku a konci slova nebo řady slov (například typ \*Content * pro formátování slova jako *obsahu*).
-> * Vložit zalomení řádku za dvojtečkou (:) k uvedení seznamu s odrážkami nebo číslovaného seznamu.
-> * Chcete-li vytvořit seznam s odrážkami, zadejte\*hvězdičku () následovanou mezerou pro každou položku s odrážkou (například \*[prostor] první slovo obsahu).
-> * Chcete-li vytvořit nadpisy, zadejte jeden nebo více\#křížových znaků () následovaný mezerou (například # # # [space] agenda/dodávky).
-> * Přidejte zalomení řádku za každý nadpis.
-> * Pro formátování **tučného písma** přidejte dvojitou hvězdičku (\*\*) bez mezer na začátku a konci slova nebo řady slov (například zadejte \* \*\* \* obsah pro formátování slova jako **obsahu**). 
-> * Naformátujte *Souhrn své nabídky* kurzívou.
-
+Zde jsou některé tipy pro Markdownu:
+* V případě formátování *kurzívou* Přidejte hvězdičku\*() bez mezer na začátku a konci slova nebo řady slov (například typ \*Content * pro formátování slova jako *obsahu*). Naformátujte *Souhrn své nabídky* kurzívou.
+* Vložit zalomení řádku za dvojtečkou (:) k uvedení seznamu s odrážkami nebo číslovaného seznamu.
+* Chcete-li vytvořit seznam s odrážkami, zadejte\*hvězdičku () následovanou mezerou pro každou položku s odrážkou (například \*[prostor] první slovo obsahu).
+* Chcete-li vytvořit nadpisy, zadejte jeden nebo více\#křížových znaků () následovaný mezerou (například # # # [space] agenda/dodávky).
+* Přidejte zalomení řádku za každý nadpis.
+* Pro formátování **tučného písma** přidejte dvojitou hvězdičku (\*\*) bez mezer na začátku a konci slova nebo řady slov (například zadejte \* \*\* \* obsah pro formátování slova jako **obsahu**).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste to ještě neudělali, přečtěte si, jak [rozšířit cloudovou firmu pomocí Azure Marketplace](https://azuremarketplace.microsoft.com/sell).
 
-Registrace a zahájení práce v partnerském centru: 
+Registrace a zahájení práce v partnerském centru:
 
-- [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
-- Další informace najdete v tématu [Vytvoření konzultační nabídky služby](./partner-center-portal/create-consulting-service-offer.md) .
+* [Přihlaste se do partnerského centra](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vytvořte nebo dokončete vaši nabídku.
+* Další informace najdete v tématu [Vytvoření konzultační nabídky služby](./partner-center-portal/create-consulting-service-offer.md) .

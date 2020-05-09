@@ -15,12 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735555"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996596"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Řešení potíží s Azure RBAC
 
@@ -28,7 +28,7 @@ Tento článek obsahuje odpovědi na některé běžné dotazy týkající se ř
 
 ## <a name="azure-role-assignments-limit"></a>Omezení přiřazení rolí Azure
 
-Azure podporuje až **2 000** přiřazení rolí na jedno předplatné. Pokud se zobrazí chybová zpráva "při pokusu o přiřazení role nemůžete vytvořit další přiřazení rolí (Code: RoleAssignmentLimitExceeded)", zkuste snížit počet přiřazení rolí v předplatném.
+Azure podporuje až **2 000** přiřazení rolí na jedno předplatné. Toto omezení zahrnuje přiřazení rolí v rámci předplatného, skupiny prostředků a oborů prostředků. Pokud se zobrazí chybová zpráva "při pokusu o přiřazení role nemůžete vytvořit další přiřazení rolí (Code: RoleAssignmentLimitExceeded)", zkuste snížit počet přiřazení rolí v předplatném.
 
 > [!NOTE]
 > Limit přiřazení role **2000** na předplatné je pevně stanoven a nelze ho zvýšit.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392123"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996125"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Zajištění průběžného nasazování virtuálních počítačů pomocí konfigurace stavu služby Automation a čokolády
 
@@ -21,9 +21,6 @@ Azure Automation je spravovaná služba v Microsoft Azure, která umožňuje aut
 Tento článek ukazuje, jak nastavit průběžné nasazování (CD) pro počítač se systémem Windows. Technika snadno rozšíříte tak, aby obsahovala tolik počítačů s Windows, kolik je potřeba v roli, například web, a přejít z něj na další role.
 
 ![Průběžné nasazování pro virtuální počítače s IaaS](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí [postupu aktualizace modulů Azure PowerShell v Azure Automation](automation-update-azure-modules.md).
 
 ## <a name="at-a-high-level"></a>Na vysoké úrovni
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598143"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994492"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Vývoj .NET Standard uživatelsky definovaných funkcí pro úlohy Azure Stream Analytics (Preview)
 
@@ -51,7 +51,7 @@ Pro Azure Stream Analytics hodnoty, které se mají použít v jazyce C#, je nut
 |nvarchar (max) | řetězec |
 |datetime | DateTime |
 |Záznam | Řetězec\<slovníku,> objektů |
-|Pole | >\<objektu Array |
+|Pole | Objekt [] |
 
 Totéž platí i v případě, že je potřeba zařadit data z C# do Azure Stream Analytics, což se stane výstupní hodnotou UDF. Následující tabulka uvádí podporované typy:
 
@@ -62,8 +62,8 @@ Totéž platí i v případě, že je potřeba zařadit data z C# do Azure Strea
 |řetězec  |  nvarchar (max)   |
 |DateTime  |  data a času.   |
 |struct   |  Záznam   |
-|objekt  |  Záznam   |
-|>\<objektu Array  |  Pole   |
+|odkazy objektů  |  Záznam   |
+|Objekt []  |  Pole   |
 |Řetězec\<slovníku,> objektů  |  Záznam   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -140,6 +140,43 @@ Rozbalte část **Konfigurace kódu definovaného uživatelem** a vyplňte do ko
    |Kontejner nastavení vlastního úložiště kódu|< kontejneru úložiště >|
    |Zdroj sestavení vlastního kódu|Existující balíčky sestavení z cloudu|
    |Zdroj sestavení vlastního kódu|UserCustomCode. zip|
+
+## <a name="user-logging"></a>Protokolování uživatele
+Mechanismus protokolování umožňuje zachytit vlastní informace, když je úloha spuštěná. Data protokolu můžete použít k ladění nebo vyhodnocení správnosti vlastního kódu v reálném čase.
+
+`StreamingContext` Třída umožňuje publikovat diagnostické informace pomocí `StreamingDiagnostics.WriteError` funkce. Následující kód ukazuje rozhraní vystavené Azure Stream Analytics.
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext`se předává jako vstupní parametr metodě UDF a dá se použít v rámci systému souborů UDF k publikování informací o vlastním protokolu. V následujícím příkladu `MyUdfMethod` definuje **datový** vstup, který je poskytován dotazem, a vstupní **kontext** jako modul `StreamingContext`, který je poskytován modulem runtime. 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+`StreamingContext` Hodnotu není nutné předat dotazem SQL. Azure Stream Analytics poskytuje kontextový objekt automaticky, pokud je přítomný vstupní parametr. Použití se `MyUdfMethod` nemění, jak je znázorněno v následujícím dotazu:
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+Ke zprávám protokolu můžete přistupovat prostřednictvím [diagnostických protokolů](data-errors.md).
 
 ## <a name="limitations"></a>Omezení
 Systém UDF Preview má nyní následující omezení:

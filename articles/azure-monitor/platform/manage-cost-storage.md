@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/07/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854759"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993764"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Správa využití a nákladů pomocí protokolů Azure Monitor
 
@@ -72,9 +72,9 @@ Do faktury Azure se přidají poplatky za Log Analytics. Podrobnosti o fakturaci
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Zobrazení využití Log Analytics na faktuře Azure 
 
-Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Přidání filtru podle typu prostředku (do Microsoft. operationalinsights/Workspace for Log Analytics) vám umožní sledovat vaše výdaje.
+Azure poskytuje skvělou užitečnou funkci centra [Azure cost management + fakturace](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) . Například funkce "cost Analysis" umožňuje zobrazit vaše výdaje na prostředky Azure. Nejdřív přidejte filtr podle "typ prostředku" (do Microsoft. operationalinsights/Workspace pro Log Analytics a Microsoft. operationalinsights/Workspace for Log Analytics clusters) vám umožní sledovat výdaje na Log Analytics. Pak u možnosti "seskupit podle" vyberte kategorii měřičů "nebo" měřič ".  Všimněte si, že jiné služby, například Azure Security Center a Sentinel Azure, účtují své využití také pomocí Log Analytics prostředků pracovního prostoru. Chcete-li zobrazit mapování na název služby, můžete místo grafu vybrat zobrazení tabulky. 
 
-Lepší porozumění vašemu využití můžete získat [stažením vašeho využití z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure (např. Log Analytics pracovní prostor) za den. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít při prvním filtrování ve sloupci měřiče měření, abyste zobrazili přehledy "Insights and Analytics" (používané některými staršími cenovými úrovněmi) a "Log Analytics" a pak přidali filtr do sloupce "ID instance", který je "obsahuje pracovní prostor". Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
+Lepší porozumění vašemu využití můžete získat [stažením vašeho využití z Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). Ve stažených tabulkách vidíte využití podle prostředku Azure (např. Log Analytics pracovní prostor) za den. V této excelové tabulce můžete využití vašich Log Analytics pracovních prostorů najít prvním filtrováním ve sloupci měřiče měření, ve kterém se zobrazí "Log Analytics", "přehledy a analýzy (používané některými staršími cenovými úrovněmi) a" Azure Monitor "(používané cenovými úrovněmi rezervací kapacity) a pak přidání filtru do sloupce" ID instance ", který je" obsahuje pracovní prostor "nebo" obsahuje cluster "(druhý k zahrnutí Log Analytics využití clusteru). Využití se zobrazí ve sloupci "spotřebované množství" a jednotka pro každou položku je zobrazena ve sloupci Měrná jednotka.  K dispozici jsou další podrobnosti, které vám pomůžou [pochopit Microsoft Azureovou fakturaci](https://docs.microsoft.com/azure/billing/billing-understand-your-bill). 
 
 ## <a name="changing-pricing-tier"></a>Změna cenové úrovně
 
@@ -108,7 +108,7 @@ Další podrobnosti o omezeních cenové úrovně jsou k dispozici [zde](https:/
 
 ## <a name="change-the-data-retention-period"></a>Změna doby uchovávání dat
 
-Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protokolu uchovávána ve vašem pracovním prostoru. Uchovávání dat je možné nakonfigurovat z 30 na 730 dní (2 roky) pro všechny pracovní prostory, pokud nepoužíváte starší verzi bezplatné cenové úrovně. 
+Následující postup popisuje, jak nakonfigurovat, jak dlouho budou data protokolu uchovávána ve vašem pracovním prostoru. Uchovávání dat je možné nakonfigurovat z 30 na 730 dní (2 roky) pro všechny pracovní prostory, pokud nepoužíváte starší verzi bezplatné cenové úrovně. [Přečtěte si další informace](https://azure.microsoft.com/pricing/details/monitor/) o cenách pro delší dobu uchovávání dat. 
 
 ### <a name="default-retention"></a>Výchozí uchování
 
@@ -253,7 +253,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Tyto `union withsource = tt *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Tento dotaz nahrazuje starý způsob, jak zadávat dotazy na informace o počítačích s datovým typem využití.  
+> Tyto `union *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , zadejte dotaz na datový typ použití (viz níže).
 
 ## <a name="understanding-ingested-data-volume"></a>Principy ingestných objemů dat
 
@@ -322,7 +322,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by  computerName | sort by Bytes nulls last
 ```
 
-`_IsBillable` [Vlastnost](log-standard-properties.md#_isbillable) určuje, jestli se za ingestovaná data účtují poplatky.
+`_IsBillable` [Vlastnost](log-standard-properties.md#_isbillable) určuje, jestli se za ingestovaná data účtují poplatky. 
 
 Chcete-li zobrazit **počet** fakturovaných událostí zpracovaných na počítač, použijte 
 
@@ -333,6 +333,10 @@ union withsource = tt *
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | summarize eventCount = count() by computerName  | sort by eventCount nulls last
 ```
+
+> [!TIP]
+> Tyto `union  *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky **na počítač** , pak na něj zadejte dotaz na datový typ použití.
+
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Objem dat podle prostředku Azure, skupiny prostředků nebo předplatného
 
@@ -357,6 +361,9 @@ union withsource = tt *
 ```
 
 Změnou `subscriptionId` na `resourceGroup` se zobrazí fakturovatelný příjmový objem dat skupinou prostředků Azure. 
+
+> [!TIP]
+> Tyto `union  *` dotazy můžete použít zřídka, protože kontroly napříč datovými typy jsou [náročné na prostředky](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) , které je potřeba provést. Pokud nepotřebujete výsledky v rámci předplatného, skupiny prostředků nebo názvu prostředku, pak dotaz na datový typ použití.
 
 > [!WARNING]
 > Některá pole datového typu použití, ale stále ve schématu, jsou zastaralá a jejich hodnoty se už neplní. Jedná se o **počítač** a pole související s ingestování (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** a **AverageProcessingTimeMs**).
@@ -454,24 +461,34 @@ Pro zobrazení počtu různých uzlů automatizace použijte dotaz:
 
 Rozhodnutí o tom, jestli jsou pracovní prostory s přístupem k starší verzi na úrovni **jednotlivých uzlů** v této úrovni nebo v aktuální úrovni **rezervace kapacity** pro průběžné **platby** často pro zákazníky obtížné vyhodnotit.  To zahrnuje porozumění vzájemnému poměru mezi pevnými náklady na uzel na základě cenové úrovně jednotlivých uzlů a jeho zahrnutým přidělením dat 500 MB/uzel/den a náklady spojené s příjmem dat na úrovni průběžných plateb (za GB). 
 
-K usnadnění tohoto posouzení se dá použít následující dotaz k vytvoření doporučení pro optimální cenovou úroveň na základě vzorů používání pracovního prostoru.  Tento dotaz prohlíží monitorované uzly a data ingestovaná do pracovního prostoru za posledních 7 dnů. každý den vyhodnocuje, která cenová úroveň byla optimální. Pokud chcete použít dotaz, musíte určit, jestli pracovní prostor používá Azure Security Center nastavením `workspaceHasSecurityCenter` na `true` nebo `false`, a pak (volitelně) aktualizovat na uzel a za GB ceny, které vaše organizace přijme. 
+K usnadnění tohoto posouzení se dá použít následující dotaz k vytvoření doporučení pro optimální cenovou úroveň na základě vzorů používání pracovního prostoru.  Tento dotaz prohlíží monitorované uzly a data ingestovaná do pracovního prostoru za posledních 7 dnů. každý den vyhodnocuje, která cenová úroveň byla optimální. Chcete-li použít dotaz, je nutné zadat
+
+1. zda pracovní prostor používá Azure Security Center nastavením `workspaceHasSecurityCenter` na `true` nebo, `false` 
+2. Aktualizujte ceny, pokud máte specifické slevy a
+3. Zadejte počet dní, po který se má vyhledat a analyzovat `daysToEvaluate`. To je užitečné v případě, že dotaz trvá příliš dlouho, než se podíváme na 7 dní dat. 
+
+Tady je dotaz doporučení cenové úrovně:
 
 ```kusto
 // Set these parameters before running query
 let workspaceHasSecurityCenter = true;  // Specify if the workspace has Azure Security Center
 let PerNodePrice = 15.; // Enter your montly price per monitored nodes
-let PerGBPrice = 2.30; // Enter your price per GB 
+let PerNodeOveragePrice = 2.30; // Enter your price per GB for data overage in the Per Node pricing tier
+let PerGBPrice = 2.30; // Enter your price per GB in the Pay-as-you-go pricing tier
+let daysToEvaluate = 7; // Enter number of previous days look at (reduce if the query is taking too long)
 // ---------------------------------------
 let SecurityDataTypes=dynamic(["SecurityAlert", "SecurityBaseline", "SecurityBaselineSummary", "SecurityDetection", "SecurityEvent", "WindowsFirewall", "MaliciousIPCommunication", "LinuxAuditLog", "SysmonEvent", "ProtectionStatus", "WindowsEvent", "Update", "UpdateSummary"]);
+let StartDate = startofday(datetime_add("Day",-1*daysToEvaluate,now()));
+let EndDate = startofday(now());
 union withsource = tt * 
-| where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+| where TimeGenerated >= StartDate and TimeGenerated < EndDate
 | extend computerName = tolower(tostring(split(Computer, '.')[0]))
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
 | join kind=leftouter (
     Heartbeat 
-    | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where Computer != ""
     | summarize ASCnodesPerHour = dcount(Computer) by bin(TimeGenerated, 1h) 
     | extend ASCnodesPerHour = iff(workspaceHasSecurityCenter, ASCnodesPerHour, 0)
@@ -479,8 +496,7 @@ union withsource = tt *
 ) on day
 | join (
     Usage 
-    | where TimeGenerated > ago(8d)
-    | where StartTime >= startofday(now(-7d)) and EndTime < startofday(now())
+    | where TimeGenerated >= StartDate and TimeGenerated < EndDate
     | where IsBillable == true
     | extend NonSecurityData = iff(DataType !in (SecurityDataTypes), Quantity, 0.)
     | extend SecurityData = iff(DataType in (SecurityDataTypes), Quantity, 0.)
@@ -493,15 +509,18 @@ union withsource = tt *
 | extend OverageGB = iff(workspaceHasSecurityCenter, 
              max_of(DataGB - 0.5*nodesPerDay - 0.5*ASCnodesPerDay, 0.), 
              max_of(DataGB - 0.5*nodesPerDay, 0.))
-| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerGBPrice
+| extend PerNodeDailyCost = nodesPerDay * PerNodePrice / 31. + OverageGB * PerNodeOveragePrice
 | extend Recommendation = iff(PerNodeDailyCost < PerGBDailyCost, "Per Node tier", 
              iff(NonSecurityDataGB > 85., "Capacity Reservation tier", "Pay-as-you-go (Per GB) tier"))
 | project day, nodesPerDay, ASCnodesPerDay, NonSecurityDataGB, SecurityDataGB, OverageGB, AvgGbPerNode, PerGBDailyCost, PerNodeDailyCost, Recommendation | sort by day asc
-| project day, Recommendation // Comment this line to see details
+//| project day, Recommendation // Comment this line to see details
 | sort by day asc
 ```
 
 Tento dotaz nepředstavuje přesnou replikaci toho, jak se vypočítává využití, ale ve většině případů bude fungovat s doporučeními cenové úrovně.  
+
+> [!NOTE]
+> Pokud chcete použít nároky, které pocházejí z nákupu sady OMS E1 Suite, OMS E2 Suite nebo doplňku OMS pro System Center, vyberte cenovou úroveň Log Analytics pro *jednotlivé uzly* .
 
 ## <a name="create-an-alert-when-data-collection-is-high"></a>Vytvořit výstrahu, když je shromažďování dat vysoké
 

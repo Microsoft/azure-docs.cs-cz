@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: b1c72c2f606ab653d7e3f1d81f7278571e8e4978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 834ff39b0ffd8ee38156e468008c332971b742d0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136528"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996482"
 ---
 # <a name="control-updates-with-maintenance-control-and-azure-powershell"></a>Řízení aktualizací pomocí řízení údržby a Azure PowerShell
 
@@ -20,11 +20,17 @@ ms.locfileid: "82136528"
  
 ## <a name="enable-the-powershell-module"></a>Povolit modul prostředí PowerShell
 
-Ujistěte se `PowerShellGet` , že je aktuální.
+Ujistěte se `PowerShellGet` , že je aktuální.    
 
-```azurepowershell-interactive
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
+```azurepowershell-interactive  
+Install-Module -Name PowerShellGet -Repository PSGallery -Force 
+``` 
+
+Nainstalujte modul `Az.Maintenance` prostředí PowerShell.     
+
+```azurepowershell-interactive  
+Install-Module -Name Az.Maintenance
+``` 
 
 Pokud instalujete místně, ujistěte se, že jste otevřeli příkazový řádek PowerShellu jako správce.
 

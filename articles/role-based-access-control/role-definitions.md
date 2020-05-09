@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/17/2020
+ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 3dc2834af501d3ecc2ff44c2511916447f27cfae
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735534"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996616"
 ---
 # <a name="understand-azure-role-definitions"></a>Vysvětlení definic rolí Azure
 
@@ -28,7 +28,9 @@ Pokud se snažíte pochopit, jak funguje role Azure, nebo pokud vytváříte vla
 
 ## <a name="role-definition"></a>Definice role
 
-*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může také obsahovat seznam operací, které není možné provádět, nebo operací souvisejících s podkladovými daty. Definice role má následující vlastnosti:
+*Definice role* je kolekce oprávnění. Někdy jí jednoduše říká *role*. Definice role poskytuje seznam operací, které je možné provádět, například čtení, zápis a odstranění. Může taky vypsat operace, které jsou vyloučené z povolených operací nebo operací souvisejících s podkladovým datům.
+
+V následujícím příkladu vidíte příklad vlastností v definici role při zobrazení pomocí Azure PowerShell:
 
 ```
 Name
@@ -42,17 +44,33 @@ NotDataActions []
 AssignableScopes []
 ```
 
+V následujícím příkladu vidíte příklad vlastností v definici role při zobrazení pomocí Azure Portal, rozhraní příkazového řádku Azure nebo REST API:
+
+```
+roleName
+name
+type
+description
+actions []
+notActions []
+dataActions []
+notDataActions []
+assignableScopes []
+```
+
+Následující tabulka popisuje, co znamenají vlastnosti role.
+
 | Vlastnost | Popis |
 | --- | --- |
-| `Name` | Zobrazovaný název role. |
-| `Id` | Jedinečné ID role |
-| `IsCustom` | Označuje, zda se jedná o vlastní roli. Nastavte na `true` pro vlastní role. |
-| `Description` | Popis role |
-| `Actions` | Pole řetězců, které určuje operace správy, které může role provést. |
-| `NotActions` | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions`. |
-| `DataActions` | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. |
-| `NotDataActions` | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions`. |
-| `AssignableScopes` | Pole řetězců, které určuje rozsahy, které je role k dispozici pro přiřazení. |
+| `Name`</br>`roleName` | Zobrazovaný název role. |
+| `Id`</br>`name` | Jedinečné ID role |
+| `IsCustom`</br>`roleType` | Označuje, zda se jedná o vlastní roli. Nastavte na `true` nebo `CustomRole` pro vlastní role. Nastavte na `false` nebo `BuiltInRole` pro předdefinované role. |
+| `Description`</br>`description` | Popis role |
+| `Actions`</br>`actions` | Pole řetězců, které určuje operace správy, které může role provést. |
+| `NotActions`</br>`notActions` | Pole řetězců, které určují operace správy, které jsou vyloučeny z povolených `Actions`. |
+| `DataActions`</br>`dataActions` | Pole řetězců, které určuje datové operace, které může role provádět na vašich datech v rámci daného objektu. |
+| `NotDataActions`</br>`notDataActions` | Pole řetězců, které určují operace s daty, které jsou vyloučeny z povolených `DataActions`. |
+| `AssignableScopes`</br>`assignableScopes` | Pole řetězců, které určuje rozsahy, které je role k dispozici pro přiřazení. |
 
 ### <a name="operations-format"></a>Formát operací
 
@@ -72,7 +90,9 @@ Operace jsou zadány s řetězci, které mají následující formát:
 
 ### <a name="role-definition-example"></a>Příklad definice role
 
-Tady je definice role [Přispěvatel](built-in-roles.md#contributor) ve formátu JSON. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [Contributor](built-in-roles.md#contributor) (Přispěvatel) se prostřednictvím `NotActions` odebere schopnost role spravovat přístup k prostředkům a také přiřazovat přístup k prostředkům.
+Tady je definice role [Přispěvatel](built-in-roles.md#contributor) , jak se zobrazuje Azure PowerShell a Azure CLI. Zástupný znak operace (`*`) ve sloupci `Actions` označuje, že objekt zabezpečení přiřazený k této roli může provádět všechny akce – neboli (jinými slovy) může spravovat vše. Zahrnuje to i akce definované v budoucnosti v souvislosti s tím, jak Azure přidává nové typy prostředků. Operace ve sloupci `NotActions` se odčítají od operací ve sloupci `Actions`. V případě role [Contributor](built-in-roles.md#contributor) (Přispěvatel) se prostřednictvím `NotActions` odebere schopnost role spravovat přístup k prostředkům a také přiřazovat přístup k prostředkům.
+
+Role přispěvatele, jak se zobrazuje v Azure PowerShell:
 
 ```json
 {
@@ -86,13 +106,47 @@ Tady je definice role [Přispěvatel](built-in-roles.md#contributor) ve formátu
   "NotActions": [
     "Microsoft.Authorization/*/Delete",
     "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
+    "Microsoft.Authorization/elevateAccess/Action",
+    "Microsoft.Blueprint/blueprintAssignments/write",
+    "Microsoft.Blueprint/blueprintAssignments/delete"
   ],
   "DataActions": [],
   "NotDataActions": [],
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Role přispěvatele, jak se zobrazuje v Azure CLI:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage everything except access to resources.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
+  "permissions": [
+    {
+      "actions": [
+        "*"
+      ],
+      "notActions": [
+        "Microsoft.Authorization/*/Delete",
+        "Microsoft.Authorization/*/Write",
+        "Microsoft.Authorization/elevateAccess/Action",
+        "Microsoft.Blueprint/blueprintAssignments/write",
+        "Microsoft.Blueprint/blueprintAssignments/delete"
+      ],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -116,6 +170,8 @@ V rámci podpory datových operací byly do definice role přidány nové vlastn
 
 Tady je definice role [čtečky dat objektů BLOB úložiště](built-in-roles.md#storage-blob-data-reader) , která zahrnuje operace ve vlastnostech `Actions` a `DataActions` . Tato role umožňuje číst kontejner objektů BLOB a také podkladová data objektů BLOB.
 
+Role čtečky dat objektů BLOB úložiště, jak se zobrazuje v Azure PowerShell:
+
 ```json
 {
   "Name": "Storage Blob Data Reader",
@@ -123,7 +179,8 @@ Tady je definice role [čtečky dat objektů BLOB úložiště](built-in-roles.m
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
   "Actions": [
-    "Microsoft.Storage/storageAccounts/blobServices/containers/read"
+    "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
   ],
   "NotActions": [],
   "DataActions": [
@@ -133,6 +190,35 @@ Tady je definice role [čtečky dat objektů BLOB úložiště](built-in-roles.m
   "AssignableScopes": [
     "/"
   ]
+}
+```
+
+Role čtečky dat objektů BLOB úložiště, jak se zobrazuje v Azure CLI:
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows for read access to Azure Storage blob containers and data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "name": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action"
+      ],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Storage Blob Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
 }
 ```
 
@@ -159,9 +245,11 @@ Přispěvatel dat objektu BLOB služby Storage
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/write`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Akce dataactions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/move/action`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
 Vzhledem k tomu, že Alice`*`má akci zástupných znaků v oboru předplatného, dědí jejich oprávnění, aby mohla provádět všechny akce správy. Alice může číst, zapisovat a odstraňovat kontejnery. Alice ale nemůže provádět operace s daty, aniž by bylo nutné provést další kroky. Ve výchozím nastavení například Alice nemůže číst objekty blob uvnitř kontejneru. Pro čtení objektů BLOB by Alice musela načíst přístupové klíče úložiště a používat je pro přístup k objektům blob.

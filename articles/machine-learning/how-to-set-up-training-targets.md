@@ -11,17 +11,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0ac0352fbca73aca7cc8c19a851dad9149af14a1
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872103"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996451"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Nastavení a použití výpočetních cílů pro školení modelů 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílovým výpočetním objektem může být místní počítač nebo cloudový prostředek, například Výpočetní prostředky služby Machine Learning, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
+Pomocí Azure Machine Learning můžete model vyškolit na nejrůznějších materiálech nebo prostředích, které se souhrnně označují jako [__výpočetní cíle__](concept-azure-machine-learning-architecture.md#compute-targets). Cílem výpočetní služby může být místní počítač nebo cloudový prostředek, jako je Azure Machine Learning COMPUTE, Azure HDInsight nebo vzdálený virtuální počítač.  Můžete také vytvořit výpočetní cíle pro nasazení modelu, jak je popsáno v [části "kde a jak nasadit vaše modely"](how-to-deploy-and-where.md).
 
 Výpočetní cíl můžete vytvořit a spravovat pomocí rozšíření Azure Machine Learning SDK, Azure Machine Learning Studio, Azure CLI nebo Azure Machine Learning VS Code. Pokud máte výpočetní cíle vytvořené prostřednictvím jiné služby (například cluster HDInsight), můžete je použít tak, že je připojíte k pracovnímu prostoru Azure Machine Learning.
  
@@ -36,7 +36,7 @@ V tomto článku se dozvíte, jak používat různé výpočetní cíle pro ško
 
 ## <a name="compute-targets-for-training"></a>Výpočetní cíle pro školení
 
-Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Typický životní cyklus vývoje modelu začíná vývojem a experimentováním s malým množstvím dat. V této fázi doporučujeme použít místní prostředí. Například váš místní počítač nebo cloudový virtuální počítač. Při horizontálním navýšení kapacity pro větší datové sady nebo při distribuovaném školení doporučujeme pomocí Azure Machine Learning COMPUTE vytvořit cluster s jedním nebo několika uzly, který při každém odeslání běhu provede automatické škálování. Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit, jak je popsáno níže:
+Azure Machine Learning má různou podporu napříč různými výpočetními cíli. Typický životní cyklus vývoje modelu začíná vývojem a experimentováním s malým množstvím dat. V této fázi doporučujeme použít místní prostředí. Například váš místní počítač nebo cloudový virtuální počítač. Při horizontálním navýšení kapacity nebo provádění distribuovaných školení doporučujeme pomocí Azure Machine Learning COMPUTE vytvořit cluster s jedním nebo několika uzly, který při každém odeslání běhu provede automatické škálování. Můžete také připojit vlastní výpočetní prostředek, i když se podpora různých scénářů může lišit, jak je popsáno níže:
 
 [!INCLUDE [aml-compute-target-train](../../includes/aml-compute-target-train.md)]
 
@@ -64,7 +64,7 @@ Další informace najdete v tématu o [modelech vlak ml pomocí odhady](how-to-t
 
 Pomocí kanálů ML můžete optimalizovat svůj pracovní postup Díky jednoduchosti, rychlosti, přenositelnosti a opakovanému použití. Při sestavování kanálů pomocí Azure Machine Learning se můžete soustředit na vaše odbornosti, strojové učení, nikoli na infrastrukturu a automatizaci.
 
-Kanály ML jsou vytvořené z více **kroků**, které jsou v kanálu odlišné výpočetní jednotky. Každý krok může běžet nezávisle a používat izolované výpočetní prostředky. Díky tomu může více pracovníků dat pracovat na stejném kanálu současně bez navýšení výpočetních prostředků a také usnadňuje používání různých výpočetních typů/velikostí pro jednotlivé kroky.
+Kanály ML jsou vytvořené z více **kroků**, které jsou v kanálu odlišné výpočetní jednotky. Každý krok může běžet nezávisle a používat izolované výpočetní prostředky. Tento přístup umožňuje více pracovníkům dat pracovat na stejném kanálu současně bez navýšení výpočetních prostředků a také usnadňuje používání různých výpočetních typů/velikostí pro jednotlivé kroky.
 
 > [!TIP]
 > Kanály ML můžou při výuce modelů použít rutinu Run Configuration nebo odhady.
@@ -100,10 +100,11 @@ Azure Machine Learning COMPUTE můžete použít k distribuci školicích proces
 Azure Machine Learning COMPUTE má výchozí omezení, například počet jader, které se dají přidělit. Další informace najdete v tématu [Správa a vyžádání kvót pro prostředky Azure](https://docs.microsoft.com/azure/machine-learning/how-to-manage-quotas).
 
 > [!TIP]
-> Clustery můžou obecně škálovat uzly až 100, pokud máte dostatečnou kvótu pro požadovaný počet jader. Ve výchozím nastavení jsou clustery nastavené s povolenou komunikací mezi uzly mezi uzly clusteru za účelem podpory MPI úloh. Své clustery ale můžete škálovat na tisíce uzlů pouhým vyvoláním [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)a žádostí o seznam povolených předplatných nebo pracovního prostoru nebo konkrétního clusteru pro zakazování komunikace mezi uzly. 
->
+> Clustery můžou obecně škálovat až 100 uzlů, pokud máte dostatečnou kvótu pro požadovaný počet jader. Ve výchozím nastavení jsou clustery nastavené s povolenou komunikací mezi uzly mezi uzly clusteru za účelem podpory MPI úloh. Své clustery ale můžete škálovat na tisíce uzlů pouhým vyvoláním [lístku podpory](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)a žádostí o seznam povolených předplatných nebo pracovního prostoru nebo konkrétního clusteru pro zakazování komunikace mezi uzly. 
 
-Azure Machine Learning výpočetní prostředí je možné znovu použít v rámci spuštění. Výpočetní prostředky je možné sdílet s ostatními uživateli v pracovním prostoru a jsou mezi nimi zachované, automaticky škálovat uzly nahoru nebo dolů na základě počtu odeslaných běhů a max_nodes nastavených v clusteru.
+Azure Machine Learning výpočetní prostředí je možné znovu použít v rámci spuštění. Výpočetní prostředky je možné sdílet s ostatními uživateli v pracovním prostoru a jsou mezi nimi zachované, automaticky škálovat uzly nahoru nebo dolů na základě počtu odeslaných běhů a max_nodes nastavených v clusteru. Nastavení min_nodes řídí minimální dostupné uzly.
+
+[!INCLUDE [min-nodes-note](../../includes/machine-learning-min-nodes.md)]
 
 1. **Vytvoření a připojení**: Chcete-li v Pythonu vytvořit trvalý Azure Machine Learning výpočetní prostředek, zadejte vlastnosti **vm_size** a **max_nodes** . Azure Machine Learning pak pro ostatní vlastnosti používá inteligentní výchozí hodnoty. Výpočetní výkon se při použití vymění až na nula uzlů.   Vyhrazené virtuální počítače se vytvářejí ke spouštění vašich úloh podle potřeby.
     
@@ -483,7 +484,7 @@ az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configur
 
 Všimněte si oddílu *argumenty* v RunConfig a *prostoru parametrů* v souboru Hyperdrive config. Obsahují argumenty příkazového řádku, které se mají předat skriptu pro školení. Hodnota v RunConfig zůstává pro každou iteraci stejná, zatímco rozsah v HyperDrive config se prochází. Nezadávejte v obou souborech stejný argument.
 
-Další podrobnosti o těchto ```az ml``` příkazech CLI a kompletní sadě argumentů najdete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
+Další podrobnosti o těchto ```az ml``` příkazech rozhraní příkazového řádku najdete v [referenční dokumentaci](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

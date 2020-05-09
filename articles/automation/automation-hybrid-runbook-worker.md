@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0b36651a40267ec3ea8bfe7285c5f6c5d5c31562
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c02a61366b05fa2750c581a1dedefb0d6239dada
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871657"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994765"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Přehled funkce Hybrid Runbook Worker
 
@@ -42,7 +42,7 @@ Proces instalace Hybrid Runbook Worker závisí na operačním systému. Násled
 
 Doporučeným způsobem instalace je použití sady Runbook Azure Automation k úplnému automatizaci procesu konfigurace počítače se systémem Windows. Druhou metodou je postupovat podle podrobných pokynů k ruční instalaci a konfiguraci role. Pro počítače se systémem Linux spustíte skript Pythonu, který nainstaluje agenta do počítače.
 
-## <a name="network-configuration"></a><a name="network-planning"></a>Konfigurace sítě
+## <a name="network-planning"></a><a name="network-planning"></a>Plánování sítě
 
 Aby bylo možné Hybrid Runbook Worker připojit k Azure Automation a zaregistrovat se v ní, musí mít přístup k číslu portu a adresám URL popsaným v této části. Pracovní proces musí mít také přístup k [portům a adresám URL vyžadovaným pro Log Analytics agenta](../azure-monitor/platform/agent-windows.md) pro připojení k pracovnímu prostoru Azure monitor Log Analytics.
 
@@ -61,7 +61,7 @@ Doporučujeme používat adresy uvedené při definování [výjimek](automation
 
 Pokud máte účet Automation, který je definovaný pro konkrétní oblast, můžete Hybrid Runbook Worker komunikaci omezit na příslušné oblastní datové centrum. Následující tabulka uvádí záznam DNS pro každou oblast.
 
-| **Věřitel** | **Záznam DNS** |
+| **Oblast** | **Záznam DNS** |
 | --- | --- |
 | Austrálie – střed |ac-jobruntimedata-prod-su1.azure-automation.net</br>ac-agentservice-prod-1.azure-automation.net |
 | Austrálie – východ |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |

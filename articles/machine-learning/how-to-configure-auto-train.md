@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186925"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993698"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Pro vzdálená spuštění musí být školicí data dostupná ze vzdáleného v
 * snadné přenos dat ze statických souborů nebo zdrojů URL do vašeho pracovního prostoru
 * zpřístupnění dat pro školicí skripty při spuštění na cloudových výpočetních prostředcích
 
-Podívejte se [na](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) příklad použití `Dataset` třídy pro připojení dat k cíli služby Compute.
+Podívejte se [na](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) příklad použití `Dataset` třídy pro připojení dat k cíli služby Compute.
 
 ## <a name="train-and-validation-data"></a>Data o školeních a ověřováních
 

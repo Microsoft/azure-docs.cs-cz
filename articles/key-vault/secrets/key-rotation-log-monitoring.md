@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430250"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995991"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení Azure Key Vault s použitím rotace a auditování klíčů
 
@@ -85,23 +85,35 @@ Nejdřív musíte aplikaci zaregistrovat pomocí Azure Active Directory. Pak sd�
 > [!NOTE]
 > Vaše aplikace musí být vytvořená na stejném Azure Active Directory tenant jako Trezor klíčů.
 
-1. Otevřete **Azure Active Directory**.
-2. Vyberte **Registrace aplikací**. 
-3. Vyberte **Registrace nové aplikace** a přidejte tak aplikaci do Azure Active Directory.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účtu Microsoft.
+1. Pokud vám váš účet poskytne přístup k více než jednomu klientovi, vyberte svůj účet v pravém horním rohu. Nastavte relaci portálu na klienta služby Azure AD, kterého chcete.
+1. Vyhledejte a vyberte **Azure Active Directory**. V části **Spravovat** vyberte **Registrace aplikací**.
+1. Vyberte **Nová registrace**.
+1. V **registrování aplikace**zadejte smysluplný název aplikace, který se zobrazí uživatelům.
+1. Určete, kdo může používat aplikaci následujícím způsobem:
 
-    ![Otevřete aplikace v Azure Active Directory](../media/keyvault-keyrotation/azure-ad-application.png)
+    | Podporované typy účtu | Popis |
+    |-------------------------|-------------|
+    | **Účty jen v tomto organizačním adresáři** | Tuto možnost vyberte, pokud vytváříte obchodní aplikaci. Tato možnost není dostupná, pokud neprovádíte registraci aplikace v adresáři.<br><br>Tato možnost se mapuje pouze na účty Azure AD s jedním tenantem.<br><br>Tato možnost je výchozí, pokud neprovádíte registraci aplikace mimo adresář. V případech, kdy je aplikace zaregistrovaná mimo adresář, jsou výchozí možností účty Azure AD s více tenanty a osobní účty Microsoft. |
+    | **Účty v libovolném organizačním adresáři** | Tuto možnost vyberte, pokud chcete cílit na všechny zákazníky z řad firem a vzdělávacích institucí.<br><br>Tato možnost se mapuje pouze na účty Azure AD s více tenanty.<br><br>Pokud jste aplikaci zaregistrovali jako jenom pro jednoho tenanta Azure AD, můžete ji aktualizovat na Azure AD multi-tenant a zpátky na jeden tenant prostřednictvím **ověřovací** stránky. |
+    | **Účty v libovolném organizačním adresáři a osobní účty Microsoft** | Tuto možnost vyberte, pokud chcete cílit na co nejširší okruh zákazníků.<br><br>Tato možnost se mapuje na účty Azure AD s více tenanty a osobní účty Microsoft.<br><br>Pokud jste aplikaci zaregistrovali jako víceklientské a osobní účty Microsoft Azure AD, nemůžete toto nastavení změnit v uživatelském rozhraní. Místo toho musíte ke změně podporovaných typů účtu použít editor manifestu aplikace. |
 
-4. V části **vytvořit**ponechte typ aplikace jako **webovou aplikaci nebo rozhraní API** a zadejte název vaší aplikace. Poskytněte aplikaci **přihlašovací adresu URL**. Tato adresa URL může být libovolná, kterou potřebujete pro tuto ukázku.
+1. V části **identifikátor URI přesměrování (volitelné)** vyberte typ aplikace, kterou vytváříte: **Web** nebo **veřejný klient (mobilní & Desktop)**. Pak zadejte identifikátor URI pro přesměrování nebo adresu URL odpovědi pro vaši aplikaci.
 
-    ![Vytvořit registraci aplikace](../media/keyvault-keyrotation/create-app.png)
+    * V případě webových aplikací zadejte základní adresu URL vaší aplikace. Například `https://localhost:31544` může být adresa URL pro webovou aplikaci spuštěnou na místním počítači. Uživatelé by se pomocí této adresy URL přihlašovali k webové klientské aplikaci.
+    * V případě veřejných klientských aplikací zadejte identifikátor URI, který Azure AD použije k vrácení odpovědí týkajících se tokenu. Zadejte konkrétní hodnotu pro vaši aplikaci, například `myapp://auth`.
 
-5. Po přidání aplikace do Azure Active Directory se otevře stránka aplikace. Vyberte **Nastavení**a pak vyberte **vlastnosti**. Zkopírujte hodnotu **ID aplikace** . Budete ho potřebovat v pozdějších krocích.
+1. Až budete hotovi, vyberte **Zaregistrovat**.
 
-Dále vygenerujte klíč pro vaši aplikaci, aby mohl pracovat s Azure Active Directory. Pokud chcete vytvořit klíč, v části **Nastavení**vyberte **klíče** . Poznamenejte si nově vygenerovaný klíč pro vaši aplikaci Azure Active Directory. Budete je potřebovat později. Po opuštění této části nebude klíč k dispozici. 
+    ![Zobrazuje obrazovku pro registraci nové aplikace v Azure Portal](../media/new-app-registration.png)
 
-![Azure Active Directory klíče aplikace](../media/keyvault-keyrotation/create-key.png)
+Azure AD přiřadí vaší aplikaci jedinečnou aplikaci nebo klienta s ID. Portál otevře stránku s **přehledem** vaší aplikace. Poznamenejte si hodnotu **ID aplikace (klienta)** .
 
-Před vytvořením volání z vaší aplikace do trezoru klíčů je nutné sdělit Trezor klíčů o vaší aplikaci a její oprávnění. Následující příkaz používá název trezoru a ID aplikace z vaší aplikace Azure Active Directory, aby aplikace **získala** přístup k vašemu trezoru klíčů.
+Pokud chcete do aplikace přidat funkce, můžete vybrat další možnosti konfigurace, včetně brandingu, certifikátů a tajných klíčů, oprávnění k rozhraní API a dalších.
+
+![Příklad stránky s přehledem nově registrované aplikace](../media//new-app-overview-page-expanded.png)
+
+Před vytvořením volání z vaší aplikace do trezoru klíčů je nutné sdělit Trezor klíčů o vaší aplikaci a její oprávnění. Následující příkaz používá název trezoru a **ID aplikace (klienta)** z vaší aplikace Azure Active Directory, aby aplikace **získala** přístup k vašemu trezoru klíčů.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
