@@ -2,19 +2,19 @@
 title: Application Insights Azure pro ASP.NET Core aplikace | Microsoft Docs
 description: Monitorujte ASP.NET Core webové aplikace pro účely dostupnosti, výkonu a využití.
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145262"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652775"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights pro ASP.NET Core aplikace
 
 Tento článek popisuje, jak povolit Application Insights pro [ASP.NET Core](https://docs.microsoft.com/aspnet/core) aplikaci. Po dokončení pokynů v tomto článku bude Application Insights shromažďovat požadavky, závislosti, výjimky, čítače výkonu, prezenční signály a protokoly z vaší aplikace ASP.NET Core.
 
-Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , která se `netcoreapp2.2`zaměřuje na. Tyto pokyny můžete použít pro všechny ASP.NET Core aplikace.
+Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , která se `netcoreapp3.0`zaměřuje na. Tyto pokyny můžete použít pro všechny ASP.NET Core aplikace.
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
@@ -28,7 +28,7 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 * **IDE**: Visual Studio, vs Code nebo příkazový řádek.
 
 > [!NOTE]
-> Pokud používáte ASP.NET Core 3. X společně s Application Insights, použijte prosím verzi [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo vyšší. Toto je jediná verze, která podporuje ASP.NET Core 3. X.
+> ASP.NET Core 3. X vyžaduje [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) nebo novější.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,7 +109,9 @@ Příklad, který budeme používat, je [aplikace MVC](https://docs.microsoft.co
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    Obvykle `APPINSIGHTS_INSTRUMENTATIONKEY` Určuje klíč instrumentace pro aplikace nasazené do Azure Web Apps.
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`se obvykle používá v [Azure Web Apps](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net), ale dá se použít i na všech místech, kde je tato sada SDK podporovaná. (Pokud provádíte monitorování webové aplikace bez kódu, je tento formát vyžadován, pokud nepoužíváte připojovací řetězce.)
+
+    Místo nastavování klíčů instrumentace teď můžete také použít [připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net).
 
     > [!NOTE]
     > Klíč instrumentace zadaný v kódu služby WINS přes proměnnou `APPINSIGHTS_INSTRUMENTATIONKEY`prostředí, která je službou WINS nad jinými možnostmi.
@@ -209,7 +211,7 @@ public void ConfigureServices(IServiceCollection services)
 |EnableAzureInstanceMetadataTelemetryModule   |  Povolit/zakázat`AzureInstanceMetadataTelemetryModule` | true
 |EnableQuickPulseMetricStream | Povolit nebo zakázat funkci LiveMetrics | true
 |EnableAdaptiveSampling | Povolit/zakázat adaptivní vzorkování | true
-|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartBeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
+|EnableHeartbeat | Povolí nebo zakáže funkci prezenčních signálů, které pravidelně (ve výchozím nastavení 15 minut) pošle vlastní metriku s názvem HeartbeatState s informacemi o modulu runtime, jako je verze .NET, informace o prostředí Azure, pokud jsou k dispozici atd. | true
 |AddAutoCollectedMetricExtractor | Povolí nebo zakáže extraktor AutoCollectedMetrics, což je TelemetryProcessor, který posílá předem agregované metriky o požadavcích a závislostech, než proběhne vzorkování. | true
 |RequestCollectionOptions.TrackExceptions | Povolí nebo zakáže vytváření sestav neošetřené sledování výjimek v modulu shromažďování požadavků. | false v NETSTANDARD 2.0 (protože výjimky jsou sledovány pomocí ApplicationInsightsLoggerProvider), v opačném případě true.
 

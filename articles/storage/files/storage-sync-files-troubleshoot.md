@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 11942a08d46f4b46dc5478fca4b64796b9ce0a7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176120"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801312"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Pomocí Azure File Sync můžete centralizovat sdílené složky ve vaší organizaci ve službě soubory Azure a zároveň udržet flexibilitu, výkon a kompatibilitu místního souborového serveru. Synchronizace souborů Azure transformuje Windows Server na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít libovolný protokol, který je dostupný na Windows serveru, včetně SMB, NFS a FTPS. Můžete mít tolik mezipamětí, kolik potřebujete po celém světě.
@@ -357,7 +357,7 @@ Následující tabulka obsahuje všechny znaky Unicode, které Azure File Sync j
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (desetinné číslo)** | -2147023673 | 
 | **Text chyby** | ERROR_CANCELLED |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 Relace synchronizace mohou selhat z různých důvodů, včetně restartování nebo aktualizace serveru, snímků služby VSS atd. I když se tato chyba zdá, že vyžaduje následnou instalaci, je bezpečné tuto chybu ignorovat, pokud netrvá v průběhu několika hodin.
 
@@ -379,7 +379,7 @@ Relace synchronizace mohou selhat z různých důvodů, včetně restartování 
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (desetinné číslo)** | -2134376372 |
 | **Text chyby** | ECS_E_USER_REQUEST_THROTTLED |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
 
@@ -390,7 +390,7 @@ Není vyžadována žádná akce; Server se znovu pokusí. Pokud tato chyba trv�
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (desetinné číslo)** | -2134364043 |
 | **Text chyby** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový bod cloudu) obnoví pomocí Azure Backup, synchronizace se zablokuje, dokud se zjišťování změn nedokončí ve sdílené složce Azure. Detekce změn se spustí okamžitě po dokončení obnovení a délka jejího trvání závisí na počtu souborů ve sdílené složce.
 
@@ -401,7 +401,7 @@ Nevyžaduje se žádná akce. Když se soubor nebo sdílená složka (koncový b
 | **HRESULT** | 0x80041295 |
 | **HRESULT (desetinné číslo)** | -2147216747 |
 | **Text chyby** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě obvykle dochází v případě, že aplikace zálohování vytvoří snímek VSS a databáze synchronizace se uvolní. Pokud tato chyba trvá několik hodin, vytvořte žádost o podporu.
 
@@ -570,7 +570,7 @@ K této chybě dochází v případě, že je sdílená složka Azure nepřístu
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (desetinné číslo)** | -2134375911 |
 | **Text chyby** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 Tato chyba se obvykle vyřeší sama a může k ní dojít v následujících případech:
 
@@ -704,7 +704,7 @@ K této chybě dochází kvůli zaplnění svazku. K této chybě obvykle dochá
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (desetinné číslo)** | -2134364145 |
 | **Text chyby** | ECS_E_REPLICA_NOT_READY |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě dochází, protože koncový bod cloudu byl vytvořen s obsahem již existujícím ve sdílené složce Azure. Než povolíte, aby koncový bod serveru mohl pokračovat v počáteční synchronizaci, Azure File Sync musí zkontrolovat sdílenou složku Azure pro veškerý obsah.
 
@@ -761,7 +761,7 @@ K této chybě dochází, protože načtená verze ovladače filtru vrstvení cl
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (desetinné číslo)** | -2134376373 |
 | **Text chyby** | ECS_E_SERVICE_UNAVAILABLE |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azure. Tato chyba se automaticky vyřeší, jakmile bude služba Synchronizace souborů Azure opět dostupná.
 
@@ -772,7 +772,7 @@ K této chybě dochází kvůli nedostupnosti služby Synchronizace souborů Azu
 | **HRESULT** | 0x80131500 |
 | **HRESULT (desetinné číslo)** | -2146233088 |
 | **Text chyby** | COR_E_EXCEPTION |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě dochází, protože synchronizace selhala kvůli výjimce. Pokud chyba trvá několik hodin, vytvořte prosím žádost o podporu.
 
@@ -794,7 +794,7 @@ K této chybě dochází, protože došlo k převzetí služeb účtu úložišt
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (desetinné číslo)** | -2134375922 |
 | **Text chyby** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě dochází kvůli internímu problému s databází synchronizace. Tato chyba se automaticky vyřeší při opakování synchronizace. Pokud tato chyba trvá déle, vytvořte žádost o podporu a budeme vás kontaktovat, abychom vám pomohli tento problém vyřešit.
 
@@ -807,12 +807,9 @@ K této chybě dochází kvůli internímu problému s databází synchronizace.
 | **Text chyby** | ECS_E_INVALID_AAD_TENANT |
 | **Požadována náprava** | Ano |
 
-K této chybě dochází, protože Synchronizace souborů Azure v současné době nepodporuje přesun předplatného do jiného tenanta Azure Active Directory.
+Ujistěte se, že máte nejnovějšího agenta Azure File Sync. Od agenta v10 za účelem Azure File Sync podporuje přesun předplatného na jiného tenanta Azure Active Directory.
  
-Při řešení tohoto problému použijte některou z následujících možností:
-
-- **Možnost 1 (doporučeno)**: přesunout předplatné zpátky na původní Azure Active Directory tenanta
-- **Možnost 2**: odstraňte a znovu vytvořte aktuální skupinu synchronizace. Pokud na koncovém bodu serveru bylo povolené vrstvení cloudu, odstraňte skupinu synchronizace, provedením kroků popsaných v [části věnované vrstvení cloudu]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) odstraňte osamocené vrstvené soubory a teprve pak znovu vytvořte skupiny synchronizace. 
+Až budete mít nejnovější verzi agenta, musíte aplikaci Microsoft. StorageSync udělit přístup k účtu úložiště ( [Zkontrolujte, jestli Azure File Sync má přístup k účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)).
 
 <a id="-2134364010"></a>**Synchronizace se nezdařila z důvodu nekonfigurace výjimky brány firewall a virtuální sítě**  
 
@@ -881,7 +878,7 @@ K této chybě dochází, protože Azure File Sync nepodporuje přesměrování 
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (desetinné číslo)** | -2134364027 |
 | **Text chyby** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Požadována náprava** | Ne |
+| **Požadována náprava** | No |
 
 K této chybě dojde, když operace přijímání dat překročí časový limit. Tuto chybu je možné ignorovat, pokud probíhá synchronizace (AppliedItemCount je větší než 0). Přečtěte si téma [návody sledování průběhu aktuální relace synchronizace?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -1248,7 +1245,25 @@ Pokud narazíte na problémy s Azure File Sync na serveru, začněte provedením
 3. Ověřte, že jsou spuštěné ovladače filtru Azure File Sync (StorageSync. sys a StorageSyncGuard. sys):
     - Na příkazovém řádku se zvýšenými oprávněními `fltmc`spusťte příkaz. Ověřte, že jsou uvedené ovladače filtru systému souborů StorageSync. sys a StorageSyncGuard. sys.
 
-Pokud se problém nevyřeší, spusťte nástroj AFSDiag:
+Pokud se problém nevyřeší, spusťte nástroj AFSDiag a odešlete jeho výstup souboru. zip do technické podpory, který je přiřazený k vašemu případu pro další diagnostiku.
+
+Pro agenta verze V11 a novější:
+
+1. Otevřete okno PowerShellu se zvýšenými oprávněními a potom spusťte následující příkazy (po každém z nich stiskněte ENTER):
+
+    > [!NOTE]
+    >AFSDiag vytvoří před shromažďováním protokolů výstupní adresář a dočasnou složku, která je v něm vytvořená, a po provedení odstraní složku Temp. Zadejte umístění výstupu, které neobsahuje data.
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. Reprodukujte problém. Až skončíte, zadejte **D**.
+3. Soubor. zip, který obsahuje protokoly a trasovací soubory, je uložen do výstupního adresáře, který jste zadali. 
+
+Pro agenta verze V10 za účelem a starší:
 1. Vytvořte adresář, do kterého se uloží výstup AFSDiag (například C:\Output).
     > [!NOTE]
     >AFSDiag odstraní veškerý obsah ve výstupním adresáři před shromažďováním protokolů. Zadejte umístění výstupu, které neobsahuje data.

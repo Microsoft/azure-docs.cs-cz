@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204215"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929277"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>10 věcí, které můžete dělat na Windows Data Science Virtual Machine
 
@@ -68,7 +68,7 @@ Jupyter Notebook poskytuje integrované vývojové prostředí (IDE) založené 
 
 Jupyter Notebook spustíte tak, že v nabídce **Start** nebo na ploše vyberete ikonu **Jupyter notebook** . V příkazovém řádku DSVM můžete také spustit příkaz ```jupyter notebook``` z adresáře, ve kterém máte existující poznámkové bloky nebo kde chcete vytvořit nové poznámkové bloky.  
 
-Po spuštění Jupyter byste měli vidět adresář, který obsahuje několik ukázkových poznámkových bloků, které jsou předem zabaleny do DSVM. Nyní můžete:
+Po spuštění Jupyter přejděte do `/notebooks` adresáře, kde najdete ukázkové poznámkové bloky, které jsou předem zabaleny do DSVM. Nyní můžete:
 
 * Vyberte Poznámkový blok pro zobrazení kódu.
 * Spusťte každou buňku výběrem SHIFT + ENTER.
@@ -142,7 +142,7 @@ Modely R vytvořené na Data Science Virtual Machine nebo jinde můžete nasadit
 
 Použijte následující proceduru a fragmenty kódu k nastavení, sestavení, publikování a využívání modelu jako webové služby v Azure Machine Learning.
 
-#### <a name="set-up"></a>Nastavit
+#### <a name="set-up"></a>Nastavení
 
 Vytvořte soubor Settings. JSON v adresáři s názvem ```.azureml``` v domovském adresáři. Zadejte parametry z pracovního prostoru Azure Machine Learning.
 

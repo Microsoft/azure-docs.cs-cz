@@ -44,6 +44,11 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Správa zálohovaných databází SAP HANA – CLI
           href: tutorial-sap-hana-manage-cli.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Koncepty
   items:
     - name: Matice podpory
@@ -342,10 +347,18 @@
           href: security-overview.md
         - name: Řízení přístupu na základě rolí
           href: backup-rbac-rs-vault.md
-        - name: Zabezpečení pro cloudové úlohy
-          href: backup-azure-security-feature-cloud.md
+        - name: Obnovitelné odstranění
+          items:
+            - name: Přehled
+              href: backup-azure-security-feature-cloud.md
+            - name: Pro virtuální počítače
+              href: soft-delete-virtual-machines.md
+            - name: Pro SQL Server a SAP HANA na virtuálních počítačích Azure
+              href: soft-delete-sql-saphana-in-azure-vm.md
         - name: Zabezpečení pro hybridní zálohy
           href: backup-azure-security-feature.md
+        - name: Šifrování
+          href: backup-encryption.md
         - name: Integrované ovládací prvky zabezpečení
           href: backup-security-controls.md
         - name: Standardní hodnoty zabezpečení
