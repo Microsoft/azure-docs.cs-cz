@@ -1,14 +1,14 @@
 ---
 title: Podporované typy prostředků Správce prostředků
 description: Poskytněte seznam Správce prostředků typů prostředků, které podporuje Azure Resource Graph, a historii změn.
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.topic: reference
-ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141901"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594249"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Odkaz na typ tabulky a prostředku Azure Resource graphu
 
@@ -62,6 +62,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. appconfiguration/configurationstores
 - Microsoft. appplatform/pružina
 - Microsoft. Archive/Collections
+- Microsoft. Attestation/attestationproviders
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/Configurations
 - Microsoft. Automation/automationaccounts/Runbooky
@@ -75,6 +76,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. azuredata/sqlinstances
 - Microsoft. azuredata/sqlserverregistrations
 - Microsoft. azurestack/registrací
+- Microsoft. azurestackhci/clustery
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
@@ -146,6 +148,7 @@ Azure Resource Graph podporuje následující **typy prostředků** [Azure Resou
 - Microsoft. datacihly/pracovní prostory
 - Microsoft. datacatalog/katalogy
 - Microsoft. datacatalog/datacatalogs
+- Microsoft. služby Datadog/monitoruje
 - Microsoft. DataFactory/DataFactory
 - Microsoft. DataFactory/továrny
 - Microsoft. datalakeanalytics/účty

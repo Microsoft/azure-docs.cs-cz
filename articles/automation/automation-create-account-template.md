@@ -7,25 +7,25 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165820"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927854"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
+# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
 
-Pomocí [Azure Resource Manager šablon](../azure-resource-manager/templates/template-syntax.md) můžete vytvořit účet Azure Automation ve skupině prostředků. Tento článek poskytuje ukázkovou šablonu, která automatizuje následující:
+Pomocí [Azure Resource Manager šablon](../azure-resource-manager/templates/template-syntax.md) můžete vytvořit účet Azure Automation ve skupině prostředků. Tento článek poskytuje ukázkovou šablonu, která:
 
-* Vytváření pracovního prostoru Azure Monitor Log Analytics
-* Vytvoření účtu Azure Automation.
+* Automatizuje vytváření Azure Monitorho pracovního prostoru Log Analytics.
+* Automatizuje vytváření Azure Automation účtu.
 * Propojí účet Automation s pracovním prostorem Log Analytics.
 
-Šablona neautomatizuje připojování jednoho nebo více virtuálních počítačů s Azure nebo mimo Azure ani řešení. 
+Šablona neautomatizuje připojování virtuálních počítačů nebo řešení Azure bez Azure. 
 
 >[!NOTE]
->Vytvoření účtu Automation spustit jako není při použití šablony Azure Resource Manager podporováno. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtu Spustit jako](manage-runas-account.md).
+>Vytvoření účtu Automation spustit jako není podporované, když používáte šablonu Azure Resource Manager. Pokud chcete vytvořit účet Spustit jako ručně z portálu nebo pomocí PowerShellu, přečtěte si téma [Správa účtů spustit jako](manage-runas-account.md).
 
 ## <a name="api-versions"></a>Verze rozhraní API
 
@@ -36,40 +36,40 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 | Pracovní prostor | pracovní prostory | 2017-03-15 – Preview |
 | Účet Automation | automation | 2015-10-31 | 
 
-## <a name="before-using-the-template"></a>Před použitím šablony
+## <a name="before-you-use-the-template"></a>Před použitím šablony
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek Azure PowerShell AZ Module. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure. Při použití Azure PowerShell nasazení používá [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento článek Azure PowerShell AZ Module. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable Az`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte prostředí PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure. S prostředím PowerShell používá nasazení rutina [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment).
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít spuštěnou verzi Azure CLI 2.1.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pomocí Azure CLI toto nasazení používá příkaz [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi 2.1.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Pomocí Azure CLI toto nasazení používá příkaz [AZ Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create). 
 
 Šablona JSON je nakonfigurovaná tak, aby vás vyzvala k těmto akcím:
 
 * Název pracovního prostoru
-* Oblast, ve které se má vytvořit pracovní prostor
-* Název účtu Automation
-* Oblast, ve které se má účet vytvořit
+* Oblast, ve které se má pracovní prostor vytvořit.
+* Název účtu Automation.
+* Oblast, ve které se má účet vytvořit.
 
 Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro Log Analytics pracovní prostor:
 
-* SKU – výchozí hodnota pro novou cenovou úroveň za GB vydanou v cenovém modelu z dubna 2018
-* uchovávání dat – výchozí hodnota je 30 dní.
-* rezervace kapacity – výchozí hodnota je 100 GB.
+* Výchozí hodnota *SKU* je cenová úroveň na GB vydaná v cenovém modelu z dubna 2018.
+* *Doba uchovávání dat* je nastavena na 30 dní.
+* *capacityReservationLevel* má výchozí hodnotu 100 GB.
 
 >[!WARNING]
->Pokud vytváříte nebo konfigurujete pracovní prostor Log Analytics v předplatném, které se přihlásilo k novému cenovému modelu od dubna 2018, bude jediná platná Log Analytics cenová úroveň **PerGB2018**.
+>Pokud chcete vytvořit nebo nakonfigurovat pracovní prostor Log Analytics v předplatném, které se zavedlo do cenového modelu z dubna 2018, bude jediná platná Log Analytics cenová úroveň *PerGB2018*.
 >
 
 Šablona JSON určuje výchozí hodnotu pro ostatní parametry, které by pravděpodobně byly použity jako standardní konfigurace ve vašem prostředí. Šablonu můžete uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 
-Pokud se Azure Automation a Azure Monitor, je důležité pochopit následující podrobnosti o konfiguraci, aby se předešlo chybám při pokusu o vytvoření, konfiguraci a používání Log Analyticsho pracovního prostoru propojeného s vaším novým účtem služby Automation.
+Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste porozuměli následujícím podrobnostem o konfiguraci. Můžou vám zabránit chybám při pokusu o vytvoření, konfiguraci a používání pracovního prostoru Log Analytics propojeného s vaším novým účtem Automation. 
 
 * Přečtěte si [Další podrobnosti](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) , abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchování a úroveň rezervace kapacity.
 
-* Vzhledem k tomu, že jsou podporovány pouze některé oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného, zkontrolujte [mapování pracovních prostorů](how-to/region-mappings.md) a určete podporované oblasti jako vložené nebo v souboru parametrů.
+* Zkontrolujte [mapování pracovních prostorů](how-to/region-mappings.md) a určete podporované oblasti v inline nebo v souboru parametrů. Pro propojení Log Analyticsho pracovního prostoru a účtu Automation v rámci předplatného se podporují jenom některé oblasti.
 
-* Pokud Azure Monitor protokoly a ještě nemáte nasazený pracovní prostor, měli byste si projít průvodce [návrhem pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md) , kde najdete informace o řízení přístupu a pochopení strategií implementace návrhu, které doporučujeme pro vaši organizaci.
+* Pokud jste s protokoly Azure Monitor a ještě nemáte nasazený pracovní prostor, měli byste si projít pokyny k [návrhu pracovního prostoru](../azure-monitor/platform/design-logs-deployment.md). Pomůže vám se dozvědět o řízení přístupu a porozumět strategiích implementace návrhu, které doporučujeme pro vaši organizaci.
 
-## <a name="deploy-template"></a>Nasazení šablony
+## <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Zkopírujte a vložte do souboru následující syntaxi JSON:
 
@@ -96,7 +96,7 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
             ],
             "defaultValue": "pergb2018",
             "metadata": {
-                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
             }
         },
         "dataRetention": {
@@ -105,14 +105,14 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
+                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
             }
         },
         "immediatePurgeDataOn30Days": {
             "type": "bool",
             "defaultValue": "[bool('false')]",
             "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
             }
         },
         "location": {
@@ -139,7 +139,7 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
             },
             "sampleGraphicalRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "sampleGraphicalRunbookContentUri": {
                 "type": "String",
@@ -151,7 +151,7 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
             },
             "samplePowerShellRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePowerShellRunbookContentUri": {
                 "type": "String",
@@ -163,7 +163,7 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
             },
             "samplePython2RunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePython2RunbookContentUri": {
                 "type": "String",
@@ -290,9 +290,9 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
 
 3. Uložte tento soubor jako deployAzAutomationAccttemplate. JSON do místní složky.
 
-4. Jste připraveni k nasazení této šablony. Můžete použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI. Po zobrazení výzvy k zadání pracovního prostoru a názvu účtu Automation zadejte název, který bude globálně jedinečný v rámci všech předplatných Azure.
+4. Jste připraveni k nasazení této šablony. Můžete použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI. Po zobrazení výzvy k zadání pracovního prostoru a názvu účtu Automation zadejte globálně jedinečný název ve všech vašich předplatných Azure.
 
-    **Prostředí**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployAzAutomationAccttemplate.json
@@ -304,10 +304,14 @@ Pokud se Azure Automation a Azure Monitor, je důležité pochopit následujíc�
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    Dokončení nasazení může trvat několik minut. Po dokončení se zobrazí zpráva podobná následující, která obsahuje výsledek:
+    Dokončení nasazení může trvat několik minut. V takovém případě se zobrazí zpráva podobná následující, která obsahuje výsledek.
 
     ![Příklad výsledku po dokončení nasazení](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 Teď, když máte účet Automation, můžete vytvářet Runbooky a automatizovat ruční procesy.
+
+* Pokud chcete začít pracovat s Runbooky PowerShellu, přečtěte si téma [Vytvoření Runbooku PowerShellu](automation-first-runbook-textual-powershell.md).
+* Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu, najdete v tématu [Vytvoření Runbooku pracovního postupu PowerShellu](automation-first-runbook-textual.md).
+* Chcete-li začít s Runbooky Python 2, přečtěte si téma [Vytvoření Runbooku v Pythonu](automation-first-runbook-textual-python2.md).

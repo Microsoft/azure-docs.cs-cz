@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254362"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731573"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -29,7 +29,7 @@ Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-man
 Proto Traffic Manager neposkytuje koncový bod nebo IP adresu, ke kterým se klienti připojují. Pokud chcete pro vaši službu statickou IP adresu, musí být nakonfigurovaná ve službě, ne v Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Jaké typy přenosů se dají směrovat pomocí Traffic Manager?
-Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager koncový bod může být libovolná internetová služba hostovaná v nebo mimo Azure. Proto Traffic Manager můžou směrovat provoz, který pochází z veřejného Internetu, do sady koncových bodů, které jsou taky na internetu. Pokud máte koncové body, které jsou uvnitř privátní sítě (například interní verze [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)), nebo pokud chcete, aby uživatelé prováděli žádosti DNS z těchto interních sítí, nebudete moci použít Traffic Manager ke směrování tohoto provozu.
+Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager koncový bod může být libovolná internetová služba hostovaná v nebo mimo Azure. Proto Traffic Manager můžou směrovat provoz, který pochází z veřejného Internetu, do sady koncových bodů, které jsou taky na internetu. Pokud máte koncové body, které jsou uvnitř privátní sítě (například interní verze [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)), nebo pokud chcete, aby uživatelé prováděli žádosti DNS z těchto interních sítí, nebudete moci použít Traffic Manager ke směrování tohoto provozu.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Podporuje Traffic Manager "rychlé" relace?
 

@@ -3,17 +3,17 @@ title: Správa životního cyklu Azure Storage
 description: Naučte se vytvářet pravidla zásad životního cyklu pro přechod dat o splatnosti z horké na studenou a archivní úroveň.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598302"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692127"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Správa životního cyklu úložiště objektů blob v Azure
 
@@ -24,7 +24,7 @@ Zásady správy životního cyklu vám umožňují:
 - Pokud chcete optimalizovat výkon a náklady, převeďte objekty blob na studenou vrstvu úložiště (horkou, horkou pro archivaci nebo studenou).
 - Odstranění objektů blob na konci jejich životního cyklu
 - Definujte pravidla, která se spustí jednou denně na úrovni účtu úložiště.
-- Použití pravidel na kontejnery nebo podmnožinu objektů BLOB (použití předpon jako filtrů)
+- Použití pravidel u kontejnerů nebo podmnožiny objektů BLOB (použití předpon názvů nebo [značek indexu objektů BLOB](storage-manage-find-blobs.md) jako filtrů)
 
 Vezměte v úvahu scénář, kdy data budou často přístupná v počátečních fázích životního cyklu, ale pouze občas po dvou týdnech. Po prvním měsíci se k datové sadě používá zřídka. V tomto scénáři je horké úložiště nejlépe v počátečních fázích. Studená úložiště jsou nejvhodnější pro příležitostné přístupy. Archivní úložiště je nejlepší možností po stáří dat za měsíc. Nastavením vrstev úložiště v závislosti na stáří dat můžete navrhnout nejlevnější možnosti úložiště podle vašich potřeb. Pro dosažení tohoto přechodu jsou k dispozici pravidla zásad správy životního cyklu pro přesun dat o splatnosti do úrovní chladiče.
 
@@ -128,7 +128,7 @@ Existují dva způsoby, jak přidat zásadu prostřednictvím Azure Portal.
 
 6. Další informace o tomto příkladu JSON najdete v částech [zásady](#policy) a [pravidla](#rules) .
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 K přidání zásad do účtu úložiště se dá použít následující skript PowerShellu. `$rgname` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště.
 
@@ -292,7 +292,11 @@ Filtry zahrnují:
 | Název filtru | Typ filtru | Poznámky | Je povinné |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Pole předdefinovaných hodnot výčtu. | Aktuální verze podporuje `blockBlob`. | Ano |
-| prefixMatch | Pole řetězců pro předpony, které mají být shodné. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly `https://myaccount.blob.core.windows.net/container1/foo/...` v rámci pravidla, prefixMatch je `container1/foo`. | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | Ne |
+| prefixMatch | Pole řetězců, pro které mají být předpony spárovány. Každé pravidlo může definovat až 10 předpon. Řetězec předpony musí začínat názvem kontejneru. Například pokud chcete, aby se všechny objekty blob shodovaly `https://myaccount.blob.core.windows.net/container1/foo/...` v rámci pravidla, prefixMatch je `container1/foo`. | Pokud prefixMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště.  | No |
+| blobIndexMatch | Pole hodnot slovníku sestávající z klíče značek indexu objektu BLOB a podmínky hodnoty, které mají být porovnány. Každé pravidlo může definovat až 10 stavových značek indexu objektu BLOB. Například pokud chcete, aby se všechny objekty blob shodovaly `Project = Contoso` s `https://myaccount.blob.core.windows.net/` v rámci pro pravidlo, je `{"name": "Project","op": "==","value": "Contoso"}`blobIndexMatch. | Pokud blobIndexMatch nedefinujete, pravidlo se použije na všechny objekty BLOB v účtu úložiště. | No |
+
+> [!NOTE]
+> Index objektu BLOB je ve verzi Public Preview a je dostupný v oblastech **Francie – střed** a Francie – **jih** . Další informace o této funkci spolu se známými problémy a omezeních najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
 ### <a name="rule-actions"></a>Akce pravidla
 
@@ -405,6 +409,42 @@ U některých dat se očekává, že vyprší platnost dnů nebo měsíců po vy
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>Odstranění dat pomocí značek indexu objektu BLOB
+Některá data by měla být vyhodnocena pouze v případě, že jsou výslovně označeny k odstranění. Můžete nakonfigurovat zásady správy životního cyklu tak, aby prošly daty, která jsou označená atributy klíč/hodnota indexu objektu BLOB. Následující příklad ukazuje zásadu, která odstraní všechny objekty blob bloku s `Project = Contoso`příznakem. Další informace o indexu objektů BLOB najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>Odstranit staré snímky
 
 Pro data, která se pravidelně upravují a přibývají k nim přistupovaly během své životnosti, se snímky často používají ke sledování starších verzí dat. Můžete vytvořit zásadu, která odstraní staré snímky na základě stáří snímku. Stáří snímku je určeno vyhodnocením času vytvoření snímku. Toto pravidlo zásad odstraní snímky objektů blob bloku v `activedata` rámci kontejneru, které jsou 90 dní nebo starší po vytvoření snímku.
@@ -448,3 +488,7 @@ Když se objekt BLOB přesune z jedné úrovně přístupu na jiný, čas posled
 Přečtěte si, jak obnovit data po náhodném odstranění:
 
 - [Obnovitelné odstranění objektů blob služby Azure Storage](../blobs/storage-blob-soft-delete.md)
+
+Naučte se spravovat a vyhledávat data pomocí indexu objektů BLOB:
+
+- [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB](storage-manage-find-blobs.md)

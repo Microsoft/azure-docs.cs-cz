@@ -1,32 +1,34 @@
 ---
-title: Azure Event Grid – povolení diagnostických protokolů pro téma
+title: Azure Event Grid – povolení diagnostických protokolů pro témata nebo domény
 description: Tento článek poskytuje podrobné pokyny k povolení diagnostických protokolů pro téma Azure Event Grid.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: how-to
-ms.date: 01/30/2020
+ms.date: 04/27/2020
 ms.author: spelluru
-ms.openlocfilehash: a32d26629bb9efed4a4f1f49eee2f0534e1873a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13a2168c854475b841b0ebc52bb678c7ca22a1bb
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76960500"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626458"
 ---
-#  <a name="diagnostic-logs-for-an-azure-event-grid-topic"></a>Diagnostické protokoly pro téma Azure Event Grid
-Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly selhání publikování a doručení v jednom z následujících umístění: účet Azure Storage, centrum událostí nebo pracovní prostor Log Analytics. Tento článek poskytuje podrobné pokyny k povolení diagnostických protokolů pro téma Event gridu.
+#  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Povolení diagnostických protokolů pro témata nebo domény služby Azure Event Grid
+Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit protokoly **selhání publikování a doručení** v účtu úložiště, v centru událostí nebo v pracovním prostoru Log Analytics. Tento článek poskytuje podrobné pokyny, jak povolit tato nastavení v Event Grid tématu.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Téma zřízené Event gridu
-- Zřízené cíle pro zachytávání diagnostických protokolů. Může to být jeden z následujících cílů:
+- Zřízené cíle pro zachytávání diagnostických protokolů. Může to být jeden z následujících cílů ve stejném umístění jako téma Event Grid:
     - Účet služby Azure Storage
     - Centrum událostí
     - Pracovní prostor služby Log Analytics
 
-
 ## <a name="steps-for-enabling-diagnostic-logs-for-a-topic"></a>Postup povolení diagnostických protokolů pro téma
+
+> [!NOTE]
+> Následující postup poskytuje podrobné pokyny pro povolení diagnostických protokolů pro téma. Postup povolení diagnostických protokolů pro doménu je velmi podobný. V kroku 2 Přejděte do **domény** Event grid v Azure Portal.  
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Přejděte do tématu Event gridu, pro které chcete povolit nastavení diagnostického protokolu. 
@@ -35,8 +37,8 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
     
     ![Tlačítko Přidat nastavení diagnostiky](./media/enable-diagnostic-logs-topic/diagnostic-settings-add.png)
 5. Zadejte **název** pro nastavení diagnostiky. 
-
-    ![Nastavení diagnostiky – název](./media/enable-diagnostic-logs-topic/diagnostic-settings-name.png)     
+7. V části **protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures** . 
+    ![Vybrat selhání](./media/enable-diagnostic-logs-topic/log-failures.png)
 6. Povolte jedno nebo více cílových umístění pro zaznamenávání protokolů a pak je nakonfigurujte výběrem předchozího vytvořeného prostředku zachycení. 
     - Pokud vyberete možnost **archivovat do účtu úložiště**, vyberte **účet úložiště – konfigurovat**a potom vyberte účet úložiště ve vašem předplatném Azure. 
 
@@ -45,13 +47,32 @@ Nastavení diagnostiky umožňuje Event Grid uživatelům zachytit a zobrazit pr
         ![Streamování do centra událostí](./media/enable-diagnostic-logs-topic/archive-event-hub.png)
     - Pokud vyberete možnost **Odeslat do Log Analytics**, vyberte pracovní prostor Log Analytics.
         ![Odeslání do Log Analytics](./media/enable-diagnostic-logs-topic/send-log-analytics.png)
-7. V části **protokol** vyberte možnosti **DeliveryFailures** a **PublishFailures** . 
-    ![Vybrat selhání](./media/enable-diagnostic-logs-topic/log-failures.png)
-8. Vyberte **Uložit**. V pravém horním rohu vyberte **X** , aby se stránka zavřela. 
+8. Vyberte **Uložit**. Pak v pravém horním rohu vyberte **X** , aby se stránka zavřela. 
 9. Teď se vraťte na stránku **nastavení diagnostiky** a ověřte, že se v tabulce **nastavení diagnostiky** zobrazila nová položka. 
     ![Nastavení diagnostiky v seznamu](./media/enable-diagnostic-logs-topic/diagnostic-setting-list.png)
 
      Můžete také povolit shromažďování všech metrik pro téma. 
 
+## <a name="view-diagnostic-logs-in-azure-storage"></a>Zobrazit diagnostické protokoly v Azure Storage 
+
+1. Jakmile povolíte účet úložiště jako cíl zachycení a Event Grid začne vysílat protokoly diagnostiky, měli byste vidět nové kontejnery s názvem **Insights-logs-deliveryfailures** and **Insights-logs-publishfailures** v účtu úložiště. 
+
+    ![Úložiště – kontejnery pro diagnostické protokoly](./media/enable-diagnostic-logs-topic/storage-containers.png)
+2. Při procházení jednoho z kontejnerů skončíte s objektem BLOB ve formátu JSON. Soubor obsahuje položky protokolu pro buď selhání doručení, nebo selhání publikování. Navigační cesta představuje **ResourceID** tématu Event gridu a časové razítko (minuty), jako při vygenerování položek protokolu. Soubor BLOB/JSON, který je ke stažení ke stažení, je v konečném souladu se schématem popsaným v následující části. 
+
+    [![Soubor JSON v úložišti](./media/enable-diagnostic-logs-topic/select-json.png)](./media/enable-diagnostic-logs-topic/select-json.png)
+3. Obsah v souboru JSON byste měli vidět podobně jako v následujícím příkladu: 
+
+    ```json
+    {
+        "time": "2019-11-01T00:17:13.4389048Z",
+        "resourceId": "/SUBSCRIPTIONS/SAMPLE-SUBSCTIPTION-ID /RESOURCEGROUPS/SAMPLE-RESOURCEGROUP-NAME/PROVIDERS/MICROSOFT.EVENTGRID/TOPICS/SAMPLE-TOPIC-NAME ",
+        "eventSubscriptionName": "SAMPLEDESTINATION",
+        "category": "DeliveryFailures",
+        "operationName": "Deliver",
+        "message": "Message:outcome=NotFound, latencyInMs=2635, systemId=17284f7c-0044-46fb-84b7-59fda5776017, state=FilteredFailingDelivery, deliveryTime=11/1/2019 12:17:10 AM, deliveryCount=0, probationCount=0, deliverySchema=EventGridEvent, eventSubscriptionDeliverySchema=EventGridEvent, fields=InputEvent, EventSubscriptionId, DeliveryTime, State, Id, DeliverySchema, LastDeliveryAttemptTime, SystemId, fieldCount=, requestExpiration=1/1/0001 12:00:00 AM, delivered=False publishTime=11/1/2019 12:17:10 AM, eventTime=11/1/2019 12:17:09 AM, eventType=Type, deliveryTime=11/1/2019 12:17:10 AM, filteringState=FilteredWithRpc, inputSchema=EventGridEvent, publisher=DIAGNOSTICLOGSTEST-EASTUS.EASTUS-1.EVENTGRID.AZURE.NET, size=363, fields=Id, PublishTime, SerializedBody, EventType, Topic, Subject, FilteringHashCode, SystemId, Publisher, FilteringTopic, TopicCategory, DataVersion, MetadataVersion, InputSchema, EventTime, fieldCount=15, url=sb://diagnosticlogstesting-eastus.servicebus.windows.net/, deliveryResponse=NotFound: The messaging entity 'sb://diagnosticlogstesting-eastus.servicebus.windows.net/eh-diagnosticlogstest' could not be found. TrackingId:c98c5af6-11f0-400b-8f56-c605662fb849_G14, SystemTracker:diagnosticlogstesting-eastus.servicebus.windows.net:eh-diagnosticlogstest, Timestamp:2019-11-01T00:17:13, referenceId: ac141738a9a54451b12b4cc31a10dedc_G14:"
+    }
+    ```
+
 ## <a name="next-steps"></a>Další kroky
-Pokud potřebujete další pomoc, vystavte svůj problém ve [fóru Stack Overflow](https://stackoverflow.com/questions/tagged/azure-eventgrid) nebo otevřete [lístek podpory](https://azure.microsoft.com/support/options/). 
+Schéma protokolu a další koncepční informace o diagnostických protokolech pro témata a domény najdete v tématu [diagnostické protokoly](diagnostic-logs.md).

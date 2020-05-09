@@ -1,23 +1,24 @@
 ---
-title: Tok autorizačního kódu OAuth – platforma Microsoftu identity | Azure
+title: Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0 | Azure
+titleSuffix: Microsoft identity platform
 description: Sestavujte webové aplikace pomocí implementace ověřovacího protokolu OAuth 2,0 od Microsoft Identity Platform.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: fcd80c052edf659f93f97800da3112c1f11309cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29720b338326a29e65af1b6564cb0b59a976c62c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868496"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926438"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform a tok autorizačního kódu OAuth 2,0
 
@@ -25,17 +26,17 @@ Udělení autorizačního kódu OAuth 2,0 se dá použít v aplikacích, které 
 
 Tento článek popisuje, jak programovat přímo s protokolem ve vaší aplikaci.  Pokud je to možné, doporučujeme místo toho použít podporované knihovny Microsoft Authentication Library (MSAL) k [získání tokenů a volání zabezpečených webových rozhraní API](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Podívejte se také na [ukázkové aplikace, které používají MSAL](sample-v2-code.md).
 
-Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [webových aplikací](v2-app-types.md#web-apps) a [nativně nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tok umožňuje aplikacím bezpečně získat access_tokens, které se dají použít k přístupu k prostředkům zabezpečeným koncovým bodem platformy Microsoft identity.
+Tok autorizačního kódu OAuth 2,0 je popsaný v [části 4,1 specifikace oauth 2,0](https://tools.ietf.org/html/rfc6749). Používá se k ověřování a autorizaci ve většině typů aplikací, včetně [webových aplikací](v2-app-types.md#web-apps) a [nativně nainstalovaných aplikací](v2-app-types.md#mobile-and-native-apps). Tento tok OAuth umožňuje aplikacím bezpečně získat access_tokens, které se dají použít k přístupu k prostředkům zabezpečeným koncovým bodem platformy Microsoft identity.
 
 ## <a name="protocol-diagram"></a>Diagram protokolu
 
-V nejvyšší úrovni vypadá celý tok ověřování pro nativní nebo mobilní aplikace podobným způsobem:
+V nejvyšší úrovni vypadá celý tok ověřování OAuth2 pro nativní nebo mobilní aplikace podobným způsobem:
 
 ![Tok kódu ověřování OAuth](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
 ## <a name="request-an-authorization-code"></a>Vyžádání autorizačního kódu
 
-Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje od uživatele oprávnění `openid`, `offline_access`a `https://graph.microsoft.com/mail.read ` .  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All`. Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od správce společnosti.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
+Tok autorizačního kódu začíná klientem, který uživatele přesměruje na `/authorize` koncový bod. V této žádosti klient požaduje oprávnění `openid`, `offline_access`a `https://graph.microsoft.com/mail.read ` od uživatele.  Některá oprávnění jsou omezená na správce, například zápis dat do adresáře organizace pomocí `Directory.ReadWrite.All`. Pokud vaše aplikace požaduje přístup k některé z těchto oprávnění od uživatele organizace, obdrží chybová zpráva s oznámením, že nemají oprávnění k souhlasu s oprávněními vaší aplikace. Chcete-li požádat o přístup k oborům s omezeným oprávněním správce, měli byste je požádat přímo od správce společnosti.  Další informace najdete v tématu [oprávnění s omezeným oprávněním pro správu](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -148,7 +149,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | Požadovaný   | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v první nožkě. Rozsahy musí být z jednoho prostředku, společně s OIDC obory (`profile`, `openid`, `email`). Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
 | `code`          | Požadovaný  | Authorization_code, kterou jste získali v první nožkě toku. |
 | `redirect_uri`  | Požadovaný  | Stejná redirect_uri hodnota, která byla použita k získání authorization_code. |
-| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru.  Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. Další informace získáte kliknutím [sem](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Nepoužívejte tajný klíč aplikace v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru.  Tajný klíč klienta musí být před odesláním zakódovaný na adrese URL. Další informace naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | optional  | Stejný code_verifier, který byl použit k získání authorization_code. Vyžaduje se, pokud se v žádosti o udělení autorizačního kódu použil PKCE. Další informace najdete v [dokumentu RFC PKCE](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Úspěšná odpověď
@@ -260,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | Požadovaný    | Musí být `refresh_token` pro tuto nožku toku autorizačního kódu. |
 | `scope`         | Požadovaný    | Mezerou oddělený seznam oborů. Rozsahy požadované v této nožkě musí být stejné jako podmnožina oborů požadovaných v původní nožkě authorization_code žádosti. Pokud obory zadané v tomto požadavku vynásobí více prostředků serveru, pak koncový bod platformy Microsoft Identity vrátí token pro prostředek zadaný v prvním oboru. Podrobnější vysvětlení oborů najdete v tématu [oprávnění, souhlas a obory](v2-permissions-and-consent.md). |
 | `refresh_token` | Požadovaný    | Refresh_token, kterou jste získali v druhé nožkě toku. |
-| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Neměl by se používat v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru. Tento tajný klíč musí být kódovaný pomocí adresy URL, další informace získáte kliknutím [sem](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | vyžadováno pro webové aplikace | Tajný klíč aplikace, který jste vytvořili na portálu pro registraci aplikací pro vaši aplikaci. Neměl by se používat v nativní aplikaci, protože client_secrets nemůže být spolehlivě uložená na zařízeních. Vyžaduje se pro webové aplikace a webová rozhraní API, které mají možnost bezpečně ukládat client_secret na straně serveru. Tento tajný klíč musí být kódovaný pomocí adresy URL. Další informace naleznete v tématu [Obecná specifikace syntaxe identifikátoru URI](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Úspěšná odpověď
 

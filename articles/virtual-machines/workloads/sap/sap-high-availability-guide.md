@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65037ec0cc8b10b176622a7047beb7d912c7f701
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a881f1cbc93d4774e25833a5c57b4727cc2e4be
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617548"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594827"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Vysoká dostupnost Azure Virtual Machines pro SAP NetWeaver
 
@@ -397,9 +397,9 @@ _**Obrázek 10:** Architektura architektury s vysokou dostupností SAP s vyhraze
 
 Tady je postup, kde můžete získat šablony Azure Resource Manager pro ukázkový scénář, který popisujeme v tomto článku:
 
-* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace Image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/)
 * [Vlastní image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 Příprava infrastruktury pro architekturu šablony 1:
@@ -490,9 +490,9 @@ Tuto šablonu Azure Resource Manager pro SAP můžete použít k jednoduššímu
 
 Tady je místo, kde můžete získat Azure Resource Manager šablony pro tento scénář nasazení:
 
-* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Obrázek Azure Marketplace](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace Image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Vlastní image](https://github.com/Azure/azure-quickstart-templates/)
 * [Vlastní image pomocí Managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
@@ -740,7 +740,7 @@ Pokud chcete pro instance SAP ASCS nebo SCS používat odlišná čísla, musít
 1. V Azure Portal vyberte ** < *SID*>-disascs** > **pravidla vyrovnávání zatížení pro vyrovnávání**zatížení.
 2. Pro všechna pravidla vyrovnávání zatížení, která patří do instance SAP ASCS nebo SCS, změňte tyto hodnoty:
 
-   * Název
+   * Name
    * Port
    * Back-end port
 

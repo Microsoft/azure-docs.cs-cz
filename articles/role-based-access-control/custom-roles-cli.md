@@ -1,6 +1,6 @@
 ---
-title: Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure CLI | Microsoft Docs
-description: Přečtěte si, jak vypsat, vytvořit, aktualizovat nebo odstranit vlastní role pomocí řízení přístupu na základě role (RBAC) pro prostředky Azure pomocí Azure CLI.
+title: Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI – Azure RBAC
+description: Naučte se, jak pomocí rozhraní příkazového řádku Azure a řízení přístupu na základě role Azure (Azure RBAC) zobrazit seznam, vytvořit, aktualizovat nebo odstranit vlastní role Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062228"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734837"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí pro prostředky Azure pomocí Azure CLI
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI
 
 > [!IMPORTANT]
 > Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučuje se pro úlohy v produkčním prostředí. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Pokud [předdefinované role pro prostředky Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí Azure CLI vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
+Pokud [předdefinované role Azure](built-in-roles.md) nevyhovují konkrétním potřebám vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak pomocí Azure CLI vypsat, vytvořit, aktualizovat nebo odstranit vlastní role.
 
-Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
+Podrobný návod, jak vytvořit vlastní roli, najdete v tématu [kurz: Vytvoření vlastní role Azure pomocí Azure CLI](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kurz: Vytvoření vlastní role pro prostředky Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
-- [Vlastní role pro prostředky Azure](custom-roles.md)
+- [Kurz: Vytvoření vlastní role Azure pomocí Azure CLI](tutorial-custom-role-cli.md)
+- [Vlastní role Azure](custom-roles.md)
 - [Azure Resource Manager operace poskytovatele prostředků](resource-provider-operations.md)
