@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652807"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995306"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Řešení potíží s konfigurací stavu Azure Automation
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Řešení potíží s konfigurací Azure Automation stavů
 
 Tento článek poskytuje informace o řešení problémů, které vznikají při kompilaci nebo nasazování konfigurací v konfiguraci stavu Azure Automation.
-
->[!NOTE]
->Tento článek je aktualizovaný a využívá nový modul Az Azure PowerShellu. Můžete dál využívat modul AzureRM, který bude dostávat opravy chyb nejméně do prosince 2020. Další informace o kompatibilitě nového modulu Az a modulu AzureRM najdete v tématu [Seznámení s novým modulem Az Azure PowerShellu](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Pokyny k instalaci nástroje AZ Module Hybrid Runbook Worker najdete v tématu [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Pro váš účet Automation můžete aktualizovat moduly na nejnovější verzi pomocí postupu v tématu [Postup aktualizace Azure PowerShell modulů v Azure Automation](../automation-update-azure-modules.md).
 
 ## <a name="diagnose-an-issue"></a>Diagnostika problému
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Příčina
 
-Příčinou tohoto problému je chybný nebo prošlý certifikát. Viz [vypršení platnosti certifikátu a jeho registrace](../automation-dsc-onboarding.md#re-registering-a-node).
+Příčinou tohoto problému je chybný nebo prošlý certifikát. Viz [opětovné registrace uzlu](../automation-dsc-onboarding.md#re-register-a-node).
 
 Tento problém může být taky způsoben konfigurací proxy serveru, který neumožňuje přístup k ***. Azure-Automation.NET**. Další informace najdete v tématu [Konfigurace privátních sítí](../automation-dsc-overview.md#network-planning). 
 
@@ -239,11 +236,11 @@ V konfiguraci jste použili přihlašovací údaje, ale nezadali jste pro `Confi
 
 Nezapomeňte předat správné `ConfigurationData` nastavení `PSDscAllowPlainTextPassword` na hodnotu true pro každou konfiguraci uzlu uvedenou v konfiguraci. Viz [kompilace konfigurací DSC v konfiguraci stavu Azure Automation](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scénář: Chyba při zpracování rozšíření při připojování z rozšíření DSC
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Scénář: Chyba při zpracování rozšíření při povolování počítače z rozšíření DSC
 
 ### <a name="issue"></a>Problém
 
-Při připojování pomocí rozšíření DSC dojde k chybě, která obsahuje chybu:
+Když počítač povolíte pomocí rozšíření DSC, dojde k chybě, která obsahuje chybu:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ K této chybě obvykle dochází v případě, že se k uzlu přiřadí název k
 ### <a name="resolution"></a>Řešení
 
 * Ujistěte se, že přiřazujete uzel s názvem, který přesně odpovídá názvu ve službě.
-* Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, který má za následek připojování uzlu, ale nepřiřazuje konfiguraci uzlu.
+* Můžete zvolit, že nebudete zahrnovat název konfigurace uzlu, což má za následek povolení uzlu, ale nepřiřazuje konfiguraci uzlu.
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Scénář: při registraci uzlu pomocí prostředí PowerShell došlo k chybě jedna nebo víc chyb.
 
@@ -274,10 +271,10 @@ K této chybě dochází, když se pokusíte zaregistrovat uzel v samostatném p
 
 ### <a name="resolution"></a>Řešení
 
-Považovat uzel mezi předplatnými, jako by byl definován pro samostatný Cloud nebo místně. Zaregistrujte uzel pomocí jedné z těchto možností připojování:
+Považovat uzel mezi předplatnými, jako by byl definován pro samostatný Cloud nebo místně. Zaregistrujte uzel pomocí jedné z těchto možností pro povolení počítačů:
 
-* Windows: [fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure/AWS](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux: [fyzické nebo virtuální počítače se systémem Linux v místním prostředí nebo v jiném cloudu než Azure](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [fyzické nebo virtuální počítače s Windows v místním prostředí nebo v jiném cloudu než Azure/AWS](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines).
+* Linux: [fyzické nebo virtuální počítače se systémem Linux v místním prostředí nebo v jiném cloudu než Azure](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines).
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Scénář: chybová zpráva zřizování se nezdařilo.
 

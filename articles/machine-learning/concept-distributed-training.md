@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385542"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995024"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Distribuované školení pomocí Azure Machine Learning
 
 V tomto článku se dozvíte o distribuovaném školení a o tom, jak ho Azure Machine Learning podporuje pro modely hloubkového učení. 
 
-V distribuovaném školení úlohy pro vývoj modelu je rozdělené a sdílené mezi více mini procesory nazývaných pracovní uzly. Tyto pracovní uzly pracují paralelně a urychlují školení modelů. Distribuované školení se dá použít pro tradiční modely ML, ale je vhodnější pro úlohy náročné na výpočetní a časově náročné, jako je [obsáhlý Learning](concept-deep-learning-vs-machine-learning.md) pro školení neuronovéch sítí.
+V distribuovaném školení úlohy pro vývoj modelu je rozdělené a sdílené mezi více mini procesory nazývaných pracovní uzly. Tyto pracovní uzly pracují paralelně a urychlují školení modelů. Distribuované školení se dá použít pro tradiční modely ML, ale je vhodnější pro úlohy náročné na výpočetní a časově náročné, jako je [obsáhlý Learning](concept-deep-learning-vs-machine-learning.md) pro školení neuronovéch sítí. 
 
 ## <a name="deep-learning-and-distributed-training"></a>Obsáhlý Learning a distribuované školení 
 
@@ -36,7 +36,9 @@ V případě modelů ML, které nevyžadují distribuované školení, najdete i
 
 Data paralelismus je nejjednodušší implementace dvou distribuovaných školicích postupů a je pro většinu případů použití dostačující.
 
-V tomto přístupu jsou data rozdělená na oddíly, kde počet oddílů se rovná celkovému počtu dostupných uzlů ve výpočetním clusteru. Model je zkopírován do každého z těchto pracovních uzlů a každý pracovní proces funguje na vlastní podmnožině dat. Mějte na paměti, že každý uzel musí mít kapacitu pro podporu modelu, který je právě vyškolený, což je model, který je zcela přizpůsoben na každý uzel.
+V tomto přístupu jsou data rozdělená na oddíly, kde počet oddílů se rovná celkovému počtu dostupných uzlů ve výpočetním clusteru. Model je zkopírován do každého z těchto pracovních uzlů a každý pracovní proces funguje na vlastní podmnožině dat. Mějte na paměti, že každý uzel musí mít kapacitu pro podporu modelu, který je právě vyškolený, což je model, který je zcela přizpůsoben na každý uzel. Následující diagram poskytuje vizuální ukázku tohoto přístupu.
+
+![Data-paralelismus – koncept – diagram](./media/concept-distributed-training/distributed-training.svg)
 
 Každý uzel nezávisle vypočítá chyby mezi jeho předpovědi a ukázkami, které jsou označeny jako výstupy. V takovém případě každý uzel aktualizuje svůj model na základě chyb a musí sdělit všechny jeho změny v ostatních uzlech za účelem aktualizace odpovídajících modelů. To znamená, že pracovní uzly musí synchronizovat parametry modelu nebo přechody na konci dávkového výpočtu, aby bylo zajištěno, že budou školení konzistentního modelu. 
 

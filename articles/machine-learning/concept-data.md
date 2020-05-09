@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.openlocfilehash: 614cc866529cd4ead8a6ea798526d59aff13d4d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e41d00a31a0065e2923259cbb0bb36986cbb2ec8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144474"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995071"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 
@@ -73,7 +73,7 @@ Datové sady je možné vytvořit z místních souborů, veřejných adres URL, 
 Podporujeme 2 typy datových sad: 
 + [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) představuje data v tabulkovém formátu tak, že analyzuje zadaný soubor nebo seznam souborů. Můžete načíst TabularDataset do datového rámce PANDAS nebo Spark pro další manipulaci a čištění. Úplný seznam formátů dat, ze kterých můžete vytvořit TabularDatasets, najdete v tématu [Třída TabularDatasetFactory](https://aka.ms/tabulardataset-api-reference).
 
-+ [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Do cíle výpočetního prostředí můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) , na které odkazují datové sady.
++ [Datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) souborů odkazuje na jeden nebo více souborů v úložišti dat nebo veřejných adresách URL. Do cíle výpočetního prostředí můžete [Stáhnout nebo připojit soubory](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) , na které odkazují datové sady.
 
 Další možnosti datových sad najdete v následující dokumentaci:
 
