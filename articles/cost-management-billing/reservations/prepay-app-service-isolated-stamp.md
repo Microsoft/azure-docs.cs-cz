@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6d91b455501e2deec4f5ea36e48fafd17144b2c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199411"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628142"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Úspora nákladů na poplatky za kolek služby Azure App Service v izolovaném prostředí pomocí rezervované kapacity
 
@@ -41,7 +41,7 @@ Rezervace s kolkem pro Windows si kupte, pokud máte na kolku jeden nebo více p
 Rezervovanou kapacitu izolovaného kolku si můžete koupit na webu [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Za rezervaci se platí [předem nebo prostřednictvím měsíčních plateb](monthly-payments-reservations.md). Pokud si chcete koupit rezervovanou kapacitu, musíte mít roli vlastníka alespoň u jednoho předplatného se smlouvou Enterprise nebo u individuálního předplatného se sazbami pro průběžné platby.
 
 - U předplatných se smlouvou Enterprise musí být na portálu [EA Portal](https://ea.azure.com/) povolená možnost **Přidat rezervované instance**. Pokud je toto nastavení zakázané, musíte být správcem EA.
-- U programu CSP (Cloud Solution Provider) můžou rezervovanou kapacitu služby SQL Data Warehouse zakoupit jenom agenti správy nebo agenti prodeje.
+- U programu CSP (Cloud Solution Provider) můžou rezervovanou kapacitu služby Azure Synapse Analytics zakoupit jenom agenti správy nebo agenti prodeje.
 
 **Postup při nákupu:**
 

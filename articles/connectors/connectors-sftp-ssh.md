@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393640"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927441"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Monitorování, vytváření a Správa souborů SFTP pomocí SSH a Azure Logic Apps
 
@@ -34,7 +34,7 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 * Protokol SFTP – akce SSH, které podporují [dělení na bloky dat](../logic-apps/logic-apps-handle-large-messages.md) , můžou zpracovávat soubory o velikosti až 1 GB, zatímco akce SFTP-SSH, které nepodporují dělení na bloky dat, můžou zpracovávat soubory až do 50 MB. I když je výchozí velikost bloku 15 MB, může se tato velikost dynamicky měnit, počínaje 5 MB a postupně zvyšovat až 50 MB, a to na základě faktorů, jako je latence sítě, doba odezvy serveru a tak dále.
 
   > [!NOTE]
-  > V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+  > Pro aplikace logiky v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)vyžaduje ISE verze tohoto konektoru, aby místo toho používala [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
   Toto adaptivní chování můžete přepsat při [zadání velikosti konstantního bloku](#change-chunk-size) , která se má použít místo toho. Tato velikost může být v rozsahu od 5 MB do 50 MB. Předpokládejme například, že máte soubor 45 MB a síť, která může podporovat tuto velikost souboru bez latence. Adaptivní dělení výsledků v několika voláních, a ne v jednom volání. Pokud chcete snížit počet volání, můžete zkusit nastavit velikost bloku dat 50 MB. V různých scénářích platí, že pokud vaše aplikace logiky čeká na vypršení časového limitu, například při použití 15 MB bloků dat, můžete zkusit zmenšit velikost na 5 MB.
 
@@ -42,7 +42,7 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
 
   | Akce | Podpora bloků dat | Přepsat podporu velikosti bloku |
   |--------|------------------|-----------------------------|
-  | **Kopírovat soubor** | Ne | Neuvedeno |
+  | **Kopírovat soubor** | No | Neuvedeno |
   | **Vytvořit soubor** | Ano | Ano |
   | **Vytvořit složku** | Neuvedeno | Neuvedeno |
   | **Odstranit dlaždici** | Neuvedeno | Neuvedeno |
@@ -53,7 +53,7 @@ Rozdíly mezi konektorem SFTP-SSH a konektorem SFTP najdete v části [porovnán
   | **Získat metadata souboru pomocí cesty** | Neuvedeno | Neuvedeno |
   | **Zobrazit seznam souborů ve složce** | Neuvedeno | Neuvedeno |
   | **Přejmenovat soubor** | Neuvedeno | Neuvedeno |
-  | **Aktualizovat soubor** | Ne | Neuvedeno |
+  | **Aktualizovat soubor** | No | Neuvedeno |
   ||||
 
 * Protokol SFTP – triggery SSH nepodporují bloky zpráv. Při vyžádání obsahu souboru triggery vyberou pouze soubory, které jsou 15 MB nebo menší. Pokud chcete získat soubory větší než 15 MB, použijte tento vzor:
@@ -248,7 +248,7 @@ Pokud se soubor nemůžete vyhnout nebo chcete-li ho odložit, můžete přesko�
 Další technické podrobnosti o této spojnici, jako jsou triggery, akce a omezení, jak je popsáno v souboru Swagger konektoru, najdete na [referenční stránce konektoru](https://docs.microsoft.com/connectors/sftpwithssh/).
 
 > [!NOTE]
-> V případě Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-Label používá místo toho [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
+> Pro Logic Apps v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)Tato verze konektoru ISE-labeling vyžaduje, aby místo toho používala [omezení zpráv ISE](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062332"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628329"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Nastavte bezpečnostní klíč jako metodu ověřování.
 
@@ -63,7 +63,7 @@ Předtím, než budete moci zaregistrovat klíč zabezpečení, musí být spln�
 
 Abyste se mohli přihlásit ke svému pracovnímu nebo školnímu účtu pomocí klíče, musíte si vytvořit svůj bezpečnostní klíč a dát mu jedinečný kód PIN. K vašemu účtu můžete mít zaregistrovaných až 10 klíčů. 
 
-1. Pokud jste to ještě neudělali https://myprofile.microsoft.com , klikněte na stránku **můj profil** a přihlaste se.
+1. Pokud jste to ještě neudělali https://myaccount.microsoft.com , klikněte na stránku **můj profil** a přihlaste se.
 
 2. Vyberte **informace o zabezpečení**, vyberte **Přidat metodu**a pak v rozevíracím seznamu **Přidat metodu** vyberte **klíč zabezpečení** .
 

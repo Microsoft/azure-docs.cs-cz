@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786967"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928274"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globální přenosová architektura sítě a virtuální síť WAN
 
@@ -114,6 +114,15 @@ Cesta vzdáleného uživatele k větvi umožňuje vzdáleným uživatelům, kte�
 
 Průjezd VNet-to-VNet umožňuje, aby se virtuální sítě vzájemně připojovaly, aby bylo možné propojit vícevrstvé aplikace, které jsou implementované v rámci více virtuální sítě. Volitelně můžete vzájemně propojit virtuální sítě prostřednictvím partnerského vztahu virtuálních sítí a to může být vhodné pro některé scénáře, kdy není nutné přenos prostřednictvím centra VWAN.
 
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Vynucené tunelování a výchozí trasa ve službě Azure Virtual WAN
+
+Vynucené tunelování se dá povolit tak, že v virtuální síti WAN nakonfigurujeme možnost Povolit výchozí trasu pro připojení VPN, ExpressRoute nebo Virtual Network.
+
+Virtuální rozbočovač šíří naučenou výchozí trasu k síti VPN/ExpressRoute připojení typu Site-to-site, pokud je možnost Povolit výchozí příznak povoleno u připojení. 
+
+Tento příznak se zobrazí, když uživatel upraví připojení k virtuální síti, připojení k síti VPN nebo připojení ExpressRoute. Ve výchozím nastavení je tento příznak zakázán, pokud je lokalita nebo okruh ExpressRoute připojen k rozbočovači. Ve výchozím nastavení je povolená, když se přidá připojení k virtuální síti, které virtuální síť připojí k virtuálnímu rozbočovači. Výchozí trasa nepochází do virtuálního centra WAN. Výchozí trasa je šířena v případě, že ji již služba Virtual WAN hub vyvolala v důsledku nasazení brány firewall v centru nebo v případě, že je povoleno vynucené tunelování na jiném připojeném serveru.
+
 ## <a name="security-and-policy-control"></a><a name="security"></a>Zabezpečení a řízení zásad
 
 Rozbočovače Azure Virtual WAN propojování všech koncových bodů sítě v rámci hybridní sítě a potenciálně uvidí veškerý tranzitní síťový provoz. Virtuální rozbočovače WAN je možné převést na zabezpečená virtuální centra tím, že nasadíte Azure Firewall do Center VWAN a povolíte cloudové zabezpečení, přístup a řízení zásad. Orchestrace bran Azure firewall ve virtuálních sítích WAN může provádět Azure Firewall Manager.
@@ -140,6 +149,24 @@ Zabezpečený přenos typu VNet-to-Internet nebo třetí strany umožňuje virtu
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Služba zabezpečení z více stran na Internet nebo pro službu zabezpečení třetí strany (j)
 Zabezpečený přenos z pobočky na Internet nebo z jiného dodavatele umožňuje větvím připojit se k Internetu nebo k podporovaným bezpečnostním službám třetích stran prostřednictvím Azure Firewall ve virtuálním centru WAN.
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Návody povolit výchozí trasu (0.0.0.0/0) v zabezpečeném virtuálním centru
+
+Azure Firewall nasazené ve virtuálním centru sítě WAN (zabezpečený virtuální rozbočovač) se dá nakonfigurovat jako výchozí směrovač pro Internet nebo důvěryhodného poskytovatele zabezpečení pro všechny větve (připojené přes VPN nebo Express Route), paprskový virtuální sítě a uživatele (připojené přes P2S VPN). Tato konfigurace se musí provádět pomocí správce Azure Firewall.  Pokud chcete nakonfigurovat veškerý provoz z větví (včetně uživatelů) a také virtuální sítě do Internetu prostřednictvím Azure Firewall, přečtěte si téma směrování provozu do vašeho rozbočovače. 
+
+Jedná se o konfiguraci dvou kroků:
+
+1. Nakonfigurujte směrování internetového provozu pomocí zabezpečené nabídky nastavení tras virtuálního rozbočovače. Nakonfigurujte virtuální sítě a větve, které mohou odesílat přenosy na Internet přes bránu firewall.
+
+2. Nakonfigurujte, která připojení (virtuální síť a větev) můžou směrovat provoz na Internet (0.0.0.0/0) prostřednictvím Azure FW v centru nebo důvěryhodném poskytovateli zabezpečení. Tento krok zajistí, aby se výchozí trasa rozšířila na vybrané větve a virtuální sítě připojené k virtuální síti WAN prostřednictvím připojení. 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>Vynucení tunelového přenosu do místní brány firewall v zabezpečeném virtuálním centru
+
+Pokud se už virtuálním rozbočovačem z jedné z větví (lokalit VPN nebo ER) objevila výchozí trasa (přes BGP), bude tato výchozí trasa přepsaná výchozí trasou získanou z nastavení Azure Firewall Manageru. V takovém případě budou všechny přenosy, které vstupují do centra z virtuální sítě a větví určených k Internetu, směrovány na Azure Firewall nebo důvěryhodného poskytovatele zabezpečení.
+
+> [!NOTE]
+> V současné době není k dispozici možnost vybrat místní bránu firewall nebo Azure Firewall (a důvěryhodného poskytovatele zabezpečení) pro internetový vázaný provoz pocházející z virtuální sítě, větví nebo uživatelů. Výchozí trasa získaná z nastavení Azure Firewall Manageru je vždy upřednostňována nad výchozí trasou získanou z jedné z větví.
+
 
 ## <a name="next-steps"></a>Další kroky
 
