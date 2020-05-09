@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801684"
+ms.locfileid: "82838480"
 ---
 # <a name="sql-database-release-notes"></a>Poznámky k verzi SQL Database
 
@@ -93,12 +93,12 @@ V modelu nasazení Managed instance v rámci H1 2019 jsou povoleny následujíc�
 |[@queryparametr není v sp_send_db_mail podporován.](#-parameter-not-supported-in-sp_send_db_mail)|Duben 2019|Žádné alternativní řešení| |
 |[Po geografickém převzetí služeb při selhání je potřeba znovu nakonfigurovat transakční replikaci.](#transactional-replication-must-be-reconfigured-after-geo-failover)|Březen 2019|Žádné alternativní řešení| |
 |[Během operace obnovení se používá dočasná databáze.](#temporary-database-is-used-during-restore-operation)||Má alternativní řešení| |
-|[Struktura a obsah TEMPDB se znovu vytvoří.](#tempdb-structure-and-content-is-re-created)||Žádné alternativní řešení| |
-|[Překročení úložného prostoru s malými databázovými soubory](#exceeding-storage-space-with-small-database-files)||Má alternativní řešení| |
-|[Hodnoty GUID, které se zobrazují místo názvů databází](#guid-values-shown-instead-of-database-names)||Má alternativní řešení| |
+|[Struktura a obsah TEMPDB se znovu vytvoří.](#tempdb-structure-and-content-is-re-created)| |Žádné alternativní řešení| |
+|[Překročení úložného prostoru s malými databázovými soubory](#exceeding-storage-space-with-small-database-files)| |Má alternativní řešení| |
+|[Hodnoty GUID, které se zobrazují místo názvů databází](#guid-values-shown-instead-of-database-names) ||Má alternativní řešení| |
 |[Protokoly chyb nejsou trvalé](#error-logs-arent-persisted)||Žádné alternativní řešení| |
-|[Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Má alternativní řešení|Březen 2020|
-|[Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Má alternativní řešení| |
+|[Moduly CLR a propojené servery někdy nemůžou odkazovat na místní IP adresu.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |Má alternativní řešení| |
+|[Obor transakce ve dvou databázích v rámci stejné instance není podporovaný.](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |Vyřešeno|Březen 2020|
 |Po obnovení databáze z Azure Blob Storage konzistence databáze nebyla ověřena pomocí příkazu DBCC CHECKDB.| |Vyřešeno|Listopadu 2019|
 |Obnovení databáze v čase z Pro důležité obchodní informace úrovně do Pro obecné účely úrovně nebude úspěšné, pokud zdrojová databáze obsahuje objekty OLTP v paměti.| |Vyřešeno|Říjen 2019|
 |Databázová pošta funkce s externími poštovními servery (ne Azure) pomocí zabezpečeného připojení| |Vyřešeno|Říjen 2019|

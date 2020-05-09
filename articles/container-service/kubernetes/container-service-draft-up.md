@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271133"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731759"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>ZASTARALÉ Použití konceptu s Azure Container Service a Azure Container Registry k sestavení a nasazení aplikace do Kubernetes
 
@@ -102,7 +102,7 @@ Když teď máte cluster, můžete importovat přihlašovací údaje pomocí př
 
 
 1. Stáhněte si koncept pro vaše prostředí https://github.com/Azure/draft/releases a nainstalujte ho do své cesty, aby se příkaz mohl použít.
-2. Stáhněte si Helm pro vaše prostředí https://github.com/kubernetes/helm/releases a [nainstalujte ho do vaší cesty, aby se příkaz mohl použít](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+2. Stáhněte si Helm pro vaše prostředí https://github.com/kubernetes/helm/releases a [nainstalujte ho do vaší cesty, aby se příkaz mohl použít](https://helm.sh/docs/intro/quickstart#install-helm).
 3. Nakonfigurujte Draft pro použití vašeho registru a vytvoření subdomény pro každý diagram Helmu, který vytvoří. Ke konfiguraci nástroje Draft potřebujete:
    - Název služby Azure Container Registry (v tomto příkladu `draftacsdemo`).
    - Klíč registru nebo heslo získané příkazem `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.

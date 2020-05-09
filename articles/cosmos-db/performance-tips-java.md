@@ -1,28 +1,35 @@
 ---
-title: Tipy pro výkon Azure Cosmos DB Java
-description: Seznamte se s možnostmi konfigurace klientů pro zlepšení výkonu databáze Azure Cosmos
-author: SnehaGunda
+title: Tipy ke zvýšení výkonu pro Azure Cosmos DB synchronizaci Java SDK v2
+description: Seznamte se s možnostmi konfigurace klientů pro zlepšení výkonu služby Azure Cosmos Database pro synchronizaci sady Java SDK v2
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548781"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982509"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a Javu
+# <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB synchronizaci Java SDK v2
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Sada Async Java SDK v2](performance-tips-async-java.md)
+> * [Sada Sync Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která bez problémů škáluje zaručenou latenci a propustnost. Nemusíte dělat zásadní změny architektury nebo psát složitý kód pro škálování databáze pomocí Azure Cosmos DB. Vertikální navýšení a snížení kapacity je stejně snadné jako při provádění jediného volání rozhraní API. Další informace najdete v tématu [jak zřídit propustnost kontejneru](how-to-provision-container-throughput.md) nebo [jak zřídit propustnost databáze](how-to-provision-database-throughput.md). Vzhledem k tomu, že k Azure Cosmos DB je k dispozici prostřednictvím síťových volání, existují optimalizace na straně klienta, které můžete využít k dosažení špičkového výkonu při použití [sady SQL Java SDK](documentdb-sdk-java.md).
+> [!IMPORTANT]  
+> Nejedná *se o* nejnovější sadu Java SDK pro Azure Cosmos DB. Zvažte použití Azure Cosmos DB Java SDK v4 pro váš projekt. Chcete-li provést upgrade, postupujte podle pokynů v příručce [k migraci na Azure Cosmos DB Java SDK v4](migrate-java-v4-sdk.md) a v příručce pro předaný [objekt actor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) . 
+> 
+> Tyto tipy k výkonu jsou pro Azure Cosmos DB synchronizaci pouze s Java SDK v2. Další informace najdete v [poznámkách k vydání verze](sql-api-sdk-java.md) Java SDK v2 a Azure Cosmos DB v [úložišti Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) .
+>
+
+Azure Cosmos DB je rychlá a flexibilní distribuovaná databáze, která bez problémů škáluje zaručenou latenci a propustnost. Nemusíte dělat zásadní změny architektury nebo psát složitý kód pro škálování databáze pomocí Azure Cosmos DB. Vertikální navýšení a snížení kapacity je stejně snadné jako při provádění jediného volání rozhraní API. Další informace najdete v tématu [jak zřídit propustnost kontejneru](how-to-provision-container-throughput.md) nebo [jak zřídit propustnost databáze](how-to-provision-database-throughput.md). Vzhledem k tomu, že k Azure Cosmos DB je k dispozici prostřednictvím síťových volání, jsou k dispozici optimalizace na straně klienta, které vám při použití [Azure Cosmos DB synchronizaci sady Java SDK v2](documentdb-sdk-java.md)umožní dosáhnout špičkového výkonu.
 
 Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v úvahu následující možnosti:
 
@@ -38,9 +45,11 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
       Režim brány je podporován na všech platformách sady SDK a je nastaven jako výchozí.  Pokud vaše aplikace běží v podnikové síti s přísnými omezeními brány firewall, je nejlepší volbou brána, protože používá standardní port HTTPS a jeden koncový bod. Kompromis mezi výkonem je ale v tom, že režim brány zahrnuje další směrování sítě při každém čtení nebo zápisu dat do Azure Cosmos DB. Z tohoto důvodu nabízí režim DirectHttps lepší výkon kvůli menšímu počtu směrování sítě. 
 
-      Java SDK používá jako transportní protokol HTTPS. Protokol HTTPS používá pro počáteční ověřování a šifrování provozu protokol TLS. Při použití sady Java SDK je nutné otevřít pouze port HTTPS 443. 
+      Azure Cosmos DB Synchronization Java SDK v2 používá jako transportní protokol HTTPS. Protokol HTTPS používá pro počáteční ověřování a šifrování provozu protokol TLS. Při použití Azure Cosmos DB synchronizaci Java SDK v2 musí být otevřený jenom port HTTPS 443. 
 
       ConnectionMode se konfiguruje během vytváření instance DocumentClient s parametrem ConnectionPolicy. 
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-connectionpolicy"></a>Synchronizace sady Java SDK v2 (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
       ```Java
       public ConnectionPolicy getConnectionPolicy() {
@@ -74,11 +83,11 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
    <a id="max-connection"></a>
 3. **Při použití režimu brány zvýšit MaxPoolSize na hostitele**
 
-    Azure Cosmos DB požadavky se při použití režimu brány převezmou přes HTTPS/REST a řídí se výchozí limit počtu připojení na název hostitele nebo IP adresa. Je možné, že budete muset nastavit MaxPoolSize na vyšší hodnotu (200-1000), aby Klientská knihovna mohla využívat více souběžných připojení k Azure Cosmos DB. V sadě Java SDK je výchozí hodnota pro [ConnectionPolicy. getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 100. Hodnotu můžete změnit pomocí [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) .
+    Azure Cosmos DB požadavky se při použití režimu brány převezmou přes HTTPS/REST a řídí se výchozí limit počtu připojení na název hostitele nebo IP adresa. Je možné, že budete muset nastavit MaxPoolSize na vyšší hodnotu (200-1000), aby Klientská knihovna mohla využívat více souběžných připojení k Azure Cosmos DB. V Azure Cosmos DB synchronizace Java SDK v2 je výchozí hodnota pro [ConnectionPolicy. getMaxPoolSize](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.getmaxpoolsize) 100. Hodnotu můžete změnit pomocí [setMaxPoolSize]( https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.connectionpolicy.setmaxpoolsize) .
 
 4. **Ladění paralelních dotazů pro dělené kolekce**
 
-    Azure Cosmos DB SQL Java SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
+    Azure Cosmos DB Sync Java SDK verze 1.9.0 a vyšší podporují paralelní dotazy, které umožňují paralelní dotazování rozdělené kolekce. Další informace najdete v tématu [ukázky kódu](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) týkající se práce se sadami SDK. Paralelní dotazy jsou navržené tak, aby se zlepšila latence a propustnost dotazů v rámci svého sériového protějšku.
 
     (a) ***ladění setMaxDegreeOfParallelism\: *** paralelních dotazů funguje souběžným dotazováním více oddílů. Data z jednotlivých dělených kolekcí se ale v souvislosti s dotazem načítají sériově. Proto použijte [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) k nastavení počtu oddílů, které mají maximální šanci dosáhnout nejvíce výkonného dotazu. za předpokladu, že všechny ostatní systémové podmínky zůstanou stejné. Pokud neznáte počet oddílů, můžete použít setMaxDegreeOfParallelism k nastavení vysokého čísla a systém zvolí minimální (počet oddílů, uživatelem zadaný vstup) jako maximální stupeň paralelismu. 
 
@@ -90,7 +99,7 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
 
 5. **Implementace omezení rychlosti v intervalech getRetryAfterInMilliseconds**
 
-    Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti na omezení pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy. Podpora zásad opakování je součástí verze 1.8.0 a vyšší sady [Java SDK](documentdb-sdk-java.md). Další informace najdete v tématu [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
+    Během testování výkonu byste měli zvýšit zatížení až do omezení malých sazeb požadavků. V případě omezení by se klientská aplikace měla omezení rychlosti na omezení pro interval opakování zadaný serverem. Respektování omezení rychlosti zajistí, že strávíte minimální dobu čekání mezi opakovanými pokusy. Podpora zásad opakování je obsažená ve verzi 1.8.0 a vyšší než [Azure Cosmos DB Sync Java SDK](documentdb-sdk-java.md). Další informace najdete v tématu [getRetryAfterInMilliseconds](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.documentclientexception.getretryafterinmilliseconds).
 
 6. **Horizontální navýšení kapacity klienta – zatížení**
 
@@ -113,7 +122,10 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
  
 1. **Vyloučit nepoužívané cesty z indexování pro rychlejší zápis**
 
-    Pomocí cest indexování ([setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) a [setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)) můžete určit, které cesty dokumentů zahrnout nebo vyloučit z indexování. Azure Cosmos DB Použití cest indexování může nabízet lepší výkon zápisu a nižší indexové úložiště pro scénáře, ve kterých jsou vzory dotazů předem známé, protože náklady na indexování jsou přímo ve vztahu k počtu indexovaných jedinečných cest.  Například následující kód ukazuje, jak vyloučit celý oddíl dokumentů (označuje se také jako podstrom) z indexování pomocí zástupného znaku "*".
+    Pomocí cest indexování ([setIncludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setincludedpaths) a [setExcludedPaths](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.indexingpolicy.setexcludedpaths)) můžete určit, které cesty dokumentů zahrnout nebo vyloučit z indexování. Azure Cosmos DB Použití cest indexování může nabízet lepší výkon zápisu a nižší indexové úložiště pro scénáře, ve kterých jsou vzory dotazů předem známé, protože náklady na indexování jsou přímo ve vztahu k počtu indexovaných jedinečných cest.  Například následující kód ukazuje, jak vyloučit celý oddíl (podstrom) dokumentů z indexování pomocí zástupného znaku "*".
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-indexing"></a>Synchronizace sady Java SDK v2 (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
@@ -139,6 +151,9 @@ Takže pokud si vyžádáte "Jak můžu vylepšit výkon databáze?" Vezměte v 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
     Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte záhlaví [x-MS-Request-poplatek](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) (nebo ekvivalentní vlastnost RequestCharge v [\<ResourceResponse T>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) nebo [FeedResponse\<t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) k měření počtu jednotek žádostí spotřebovaných těmito operacemi.
+
+
+    ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Synchronizace sady Java SDK v2 (Maven com. Microsoft. Azure:: Azure-DocumentDB)
 
     ```Java
     ResourceResponse<Document> response = client.createDocument(collectionLink, documentDefinition, null, false);

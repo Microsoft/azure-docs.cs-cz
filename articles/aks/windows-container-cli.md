@@ -3,13 +3,13 @@ title: Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernete
 description: Naučte se rychle vytvořit cluster Kubernetes a nasadit aplikaci v kontejneru Windows serveru ve službě Azure Kubernetes Service (AKS) pomocí rozhraní příkazového řádku Azure CLI.
 services: container-service
 ms.topic: article
-ms.date: 04/14/2020
-ms.openlocfilehash: 8b4d7fff6bb03e31976c28ba67c1db0e68d7cc8f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/06/2020
+ms.openlocfilehash: 28925961ea3b99f939ac650d54b5dcece2551f59
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854418"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926608"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Vytvoření kontejneru Windows serveru v clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
@@ -22,18 +22,6 @@ V tomto článku se předpokládá základní znalost konceptů Kubernetes. Dal�
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-
-### <a name="install-aks-preview-cli-extension"></a>Nainstalovat rozšíření CLI AKS-Preview
-
-Pokud chcete používat kontejnery Windows serveru, potřebujete rozšíření CLI *AKS-Preview* verze 0.4.12 nebo vyšší. Nainstalujte rozšíření Azure CLI *AKS-Preview* pomocí příkazu [AZ Extension Add][az-extension-add] a potom zkontrolujte všechny dostupné aktualizace pomocí příkazu [AZ Extension Update][az-extension-update] ::
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ### <a name="limitations"></a>Omezení
 
@@ -92,9 +80,6 @@ az aks create \
     --enable-addons monitoring \
     --kubernetes-version 1.16.7 \
     --generate-ssh-keys \
-    --enable-vmss \
-    --vm-set-type VirtualMachineScaleSets \
-    --load-balancer-sku standard \
     --network-plugin azure
 ```
 

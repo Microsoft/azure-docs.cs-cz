@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685437"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930467"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informace o Azure Key Vault tajných klíčích
 
@@ -26,6 +26,10 @@ Z pohledu vývojáře Key Vault rozhraní API akceptuje a vrací tajné hodnoty 
 U vysoce citlivých dat by klienti měli zvážit další vrstvy ochrany dat. Příkladem může být šifrování dat pomocí samostatného ochranného klíče před uložením ve službě Key Vault.  
 
 Key Vault také podporuje pole contentType pro tajné klíče. Klienti můžou určit typ obsahu tajného kódu, který pomůže při interpretaci tajných dat při jejich načítání. Maximální délka tohoto pole je 255 znaků. Neexistují žádné předem definované hodnoty. Navrhované použití je jako pomocný parametr pro interpretaci tajných dat. Implementace může například ukládat hesla i certifikáty jako tajné klíče a pak je odlišit pomocí tohoto pole. Nejsou k dispozici žádné předdefinované hodnoty.  
+
+## <a name="encryption"></a>Šifrování
+
+Všechny tajné klíče ve vašem Key Vault jsou uložené zašifrované. Toto šifrování je transparentní a nevyžaduje od uživatele žádnou akci. Služba Azure Key Vault šifrování tajných kódů při jejich přidávání a dešifruje automaticky při jejich čtení. Šifrovací klíč je pro každý Trezor klíčů jedinečný.
 
 ## <a name="secret-attributes"></a>Tajné atributy
 

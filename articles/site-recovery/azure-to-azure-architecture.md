@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294119"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983325"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -55,8 +55,7 @@ Když pro virtuální počítač povolíte replikaci, Site Recovery vám nabídn
 Cílové prostředky můžete spravovat následujícím způsobem:
 
 - Při povolování replikace můžete změnit cílová nastavení.
-- Po dokončení replikace můžete změnit cílová nastavení. Výjimkou je typ dostupnosti (jediná instance, sada nebo zóna). Pokud chcete toto nastavení změnit, musíte zakázat replikaci, upravit nastavení a pak znovu povolit.
-
+- Po dokončení replikace můžete změnit cílová nastavení. Počítejte s tím, že výchozí SKU pro virtuální počítač cílové oblasti je stejný jako SKU zdrojového virtuálního počítače (nebo další nejlepší dostupná skladová jednotka v porovnání s SKU zdrojového virtuálního počítače). Podobně jako u jiných prostředků, jako je cílová skupina prostředků, název cíle a další, je možné po replikaci aktualizovat také SKLADOVOU položku virtuálního počítače cílové oblasti. Prostředek, který nejde aktualizovat, je typ dostupnosti (jedna instance, sada nebo zóna). Pokud chcete toto nastavení změnit, musíte zakázat replikaci, upravit nastavení a pak znovu povolit. 
 
 
 ## <a name="replication-policy"></a>Zásady replikace 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/30/2020
-ms.openlocfilehash: 664178c058265961b4d660874359c1b238b100ab
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901313"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929328"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsightu
 
@@ -98,6 +98,8 @@ Cluster můžete kdykoli nasměrovat na dříve vytvořenou Azure SQL Database. 
 * Pokud sdílíte metastore napříč několika clustery, ujistěte se, že všechny clustery mají stejnou verzi HDInsight. Různé verze podregistru používají různá schémata metastore Database. Nemůžete například sdílet metastore mezi podregistrem 2,1 a clustery s verzemi v registru 3,1.
 
 * Spark a podregistr v HDInsight 4,0 používají nezávislé katalogy pro přístup k SparkSQL nebo tabulkám podregistru. Tabulka vytvořená Sparkem v katalogu Spark. Tabulka vytvořená podregistrem v katalogu podregistru Toto chování se liší od HDInsight 3,6, ve kterém se společný katalog pro podregistr a Spark sdílí. Integrace podregistru a Sparku v HDInsight 4,0 spoléhá na umožní (podregistr Warehouse Connector). UMOŽNÍ funguje jako most mezi Sparkem a podregistrem. [Seznamte se s konektorem skladiště pro podregistr](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* Pokud chcete metastore sdílet mezi podregistrem a Sparkem, můžete v HDInsight 4,0 změnit vlastnost metastore. Catalog. default na podregistr v clusteru Spark. Tuto vlastnost najdete v Ambari Advanced spark2-podregistr-site-override. Je důležité si uvědomit, že sdílení metastore funguje jenom pro externí tabulky podregistru, takže pokud máte interní/spravované tabulky podregistru nebo tabulky s kyselým obsahem, nebude to fungovat.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metastore
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74687773"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891095"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Oprava chyby nedostatku paměti Apache Hive ve službě Azure HDInsight
 
@@ -101,7 +101,7 @@ Naše technické podpory a technické týmy společně nalezly jeden z problém�
 </property>
 ```
 
-Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
+Je pravděpodobnější, že připojení k mapě je příčinou chyby nedostatku paměti v haldě Java. Jak je vysvětleno v blogu v příspěvku [nastavení paměti Hadoop příze ve službě HDInsight](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight), když se tez prováděcí modul používá ke skutečnému využití prostoru haldy, patří do kontejneru TEZ. Podívejte se na následující obrázek popisující paměť kontejneru TEZ.
 
 ![Paměťový diagram kontejneru tez: chyba nedostatek paměti v podregistru](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 

@@ -2,43 +2,94 @@
 title: Indexování velkých datových sad pomocí předdefinovaných indexerů
 titleSuffix: Azure Cognitive Search
 description: Strategie pro velké indexování dat nebo výpočetně náročné indexování prostřednictvím dávkového režimu, rezdrojů a technik pro plánované, paralelní a distribuované indexování.
-manager: nitinme
-author: HeidiSteen
-ms.author: heidist
+manager: liamca
+author: dereklegenzoff
+ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 4ad5e961e390b60784355ff3bc72aca4a2f73e11
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77190958"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925979"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
+
+Azure Kognitivní hledání podporuje [dva základní přístupy](search-what-is-data-import.md) k importu dat do indexu vyhledávání: *vkládání* dat do indexu prostřednictvím kódu programu nebo nasměrování služby [Azure kognitivní hledání indexerem](search-indexer-overview.md) na podporovaný zdroj dat, který se v datech *vyžádá* .
 
 Vzhledem k nárůstu nebo zpracování objemů dat se můžete setkat s tím, že jednoduché nebo výchozí strategie indexování už nejsou praktické. Pro Azure Kognitivní hledání je k dispozici několik přístupů k větším datovým sadám, od způsobu struktury požadavků na nahrání dat, k používání indexerem specifického pro plánované a distribuované úlohy.
 
 Stejné techniky platí i pro dlouhotrvající procesy. Konkrétně postup, který je popsaný v [paralelním indexování](#parallel-indexing) , je užitečný pro výpočetně náročné indexování, jako je například analýza obrázku nebo zpracování přirozeného jazyka v [kanálu rozšíření AI](cognitive-search-concept-intro.md).
 
-Následující části Prozkoumejte tři techniky pro indexování velkých objemů dat.
+V následujících částech najdete techniky pro indexování velkých objemů dat pomocí rozhraní push API i indexerů.
 
-## <a name="option-1-pass-multiple-documents"></a>Možnost 1: předání více dokumentů
+## <a name="push-api"></a>Rozhraní API pro vložení
 
-Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte metodu [Add documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
+Když zadáte data do indexu, je k dispozici několik klíčových důležitých informací, které mají vliv na rychlost indexování rozhraní API push. Tyto faktory jsou popsány v následující části. 
 
-Dávkové indexování je implementováno pro jednotlivé požadavky pomocí REST nebo .NET nebo prostřednictvím indexerů. Několik indexerů pracuje v různých omezeních. Indexování objektů BLOB v Azure nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. U indexerů založených na [REST API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit `BatchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
+Kromě informací v tomto článku můžete také využít výhod ukázek kódu v [kurzu optimalizace indexování](tutorial-optimize-indexing-push-api.md) , kde se dozvíte víc.
+
+### <a name="service-tier-and-number-of-partitionsreplicas"></a>Úroveň služby a počet oddílů/replik
+
+Při přidávání oddílů nebo zvýšení úrovně služby vyhledávání dojde ke zvýšení rychlosti indexování.
+
+Přidání dalších replik může také zvýšit rychlost indexování, ale není zaručeno. Na druhé straně další repliky zvyšují objem dotazů, které vaše služba vyhledávání může zpracovat. Repliky představují také klíčovou komponentu pro získání [smlouvy SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+
+Než začnete přidávat oddíly a repliky nebo upgradovat na vyšší úroveň, vezměte v úvahu peněžní náklady a čas přidělení. Přidávání oddílů může významně zvýšit rychlost indexování, ale přidání nebo odebrání může trvat až 15 minut až několik hodin. Další informace najdete v dokumentaci k [Nastavení kapacity](search-capacity-planning.md).
+
+### <a name="index-schema"></a>Schéma indexu
+
+Schéma indexu hraje důležitou roli při indexování dat. Při přidávání polí a přidávání dalších vlastností do těchto polí (například *prohledávatelné*, *plošky*nebo *filtrovatelné*) snižte rychlost indexování.
+
+Obecně doporučujeme, abyste do polí přidávali jenom další vlastnosti, pokud je máte v úmyslu použít.
 
 > [!NOTE]
 > Aby se zachovala velikost dokumentu, vyhněte se přidávání nequeryablech dat do indexu. Image a další binární data se nedají přímo prohledávat a v indexu by se neměly ukládat. Pro integraci nequeryablech dat do výsledků hledání byste měli definovat pole bez možností vyhledávání, které ukládá odkaz na adresu URL do daného prostředku.
 
-## <a name="option-2-add-resources"></a>Možnost 2: Přidání prostředků
+### <a name="batch-size"></a>Velikost dávky
 
-Služby, které jsou zřízené na jedné ze [standardních cenových úrovní](search-sku-tier.md) , často využívají kapacitu pro úložiště i úlohy (dotazy nebo indexování), což [zvyšuje počet a velikost replik](search-capacity-planning.md) , které představují zjevné řešení pro využívání větších datových sad. Pro dosažení nejlepších výsledků budete potřebovat oba prostředky: oddíly pro úložiště a repliky pro práci s přijímáním dat.
+Jedním z nejjednodušších mechanismů indexování větší sady dat je odeslání více dokumentů nebo záznamů v jednom požadavku. Pokud je celá datová část kratší než 16 MB, může požadavek zpracovat až 1000 dokumentů v operaci hromadného nahrávání. Tato omezení platí bez ohledu na to, zda používáte metodu [Add documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) nebo [index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) v sadě .NET SDK. Pro obě rozhraní API byste měli v těle každého požadavku zabalit 1000 dokumentů.
 
-Zvýšení počtu replik a oddílů jsou Fakturovatelné události, které zvyšují vaše náklady, ale pokud průběžně neprovádíte indexování v rámci maximálního zatížení, můžete přidat škálování po dobu trvání procesu indexování a potom po dokončení indexování upravit úrovně prostředků směrem dolů.
+Použití dávek k indexování dokumentů významně vylepšuje výkon při indexování. Stanovení optimální velikosti dávky pro vaše data je klíčovou součástí Optimalizace rychlosti indexování. Optimální velikost dávky ovlivňují tyto dva primární faktory:
++ Schéma indexu
++ Velikost dat
 
-## <a name="option-3-use-indexers"></a>Možnost 3: použití indexerů
+Vzhledem k tomu, že optimální velikost dávky závisí na vašem indexu a datech, nejlepším přístupem je testování různých velikostí dávek a určení toho, jaké jsou výsledky nejrychlejší indexování pro váš scénář. V tomto [kurzu](tutorial-optimize-indexing-push-api.md) najdete vzorový kód pro testování velikosti dávek pomocí sady .NET SDK. 
+
+### <a name="number-of-threadsworkers"></a>Počet vláken/pracovníků
+
+Abyste plně využili výhod indexování Kognitivní hledání Azure, budete pravděpodobně muset použít více vláken k posílání požadavků dávkového indexování do služby současně.  
+
+Optimální počet vláken určuje:
+
++ Úroveň služby vyhledávání
++ Počet oddílů
++ Velikost vašich dávek
++ Schéma indexu
+
+Tuto ukázku a test můžete upravit pomocí různých počtů vláken, abyste zjistili optimální počet vláken pro váš scénář. Pokud ale máte několik souběžně běžících vláken, měli byste být schopni využít většinu zisků z hlediska efektivity. 
+
+> [!NOTE]
+> Když zvýšíte úroveň služby vyhledávání nebo zvětšíte oddíly, měli byste také zvýšit počet souběžných vláken.
+
+Při navýšení požadavků na službu vyhledávání dojde v případě, že se zobrazí [stavové kódy http](https://docs.microsoft.com/rest/api/searchservice/http-status-codes) indikující, že požadavek nebyl zcela úspěšný. Při indexování jsou dva běžné stavové kódy HTTP:
+
++ **služba 503 není k dispozici** – Tato chyba znamená, že systém je zatížen velkým zatížením a váš požadavek nejde v tuto chvíli zpracovat.
++ **207 s více stavy** – Tato chyba znamená, že některé dokumenty byly úspěšně dokončeny, ale nejméně jedna se nezdařila.
+
+### <a name="retry-strategy"></a>Strategie opakování 
+
+Pokud dojde k selhání, žádosti by se měly opakovat pomocí [exponenciální strategie omezení rychlosti opakování](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/implement-retries-exponential-backoff).
+
+Sada .NET SDK pro Azure Kognitivní hledání automaticky opakuje 503s a další neúspěšné požadavky, ale budete muset implementovat vlastní logiku a zkusit to znovu 207s. K implementaci strategie opakování můžete také použít Open Source nástroje, jako je [Polly](https://github.com/App-vNext/Polly) .
+
+### <a name="network-data-transfer-speeds"></a>Rychlosti přenosu dat v síti
+
+Rychlost přenosu dat v síti může být omezujícím faktorem při indexování dat. Indexování dat z prostředí Azure je snadný způsob, jak urychlit indexování.
+
+## <a name="indexers"></a>Indexery
 
 [Indexery](search-indexer-overview.md) se používají k procházení podporovaných zdrojů dat Azure pro prohledávatelný obsah. I když není specificky určená pro indexování ve velkém měřítku, je k dispozici několik možností indexeru, které jsou zvláště užitečné při používání větších datových sad:
 
@@ -48,6 +99,12 @@ Zvýšení počtu replik a oddílů jsou Fakturovatelné události, které zvyš
 
 > [!NOTE]
 > Indexery jsou specifické pro zdroj dat. použití přístupu indexeru je možné realizovat jenom pro vybrané zdroje dat v Azure: [SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [BLOB Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Cosmos DB](search-howto-index-cosmosdb.md).
+
+### <a name="batch-size"></a>Velikost dávky
+
+Podobně jako u rozhraní push API umožňují indexerům nakonfigurovat počet položek na dávku. U indexerů založených na [REST API vytvořit indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)můžete nastavit `batchSize` argument pro přizpůsobení tohoto nastavení tak, aby lépe odpovídal charakteristikám vašich dat. 
+
+Výchozí velikosti dávek jsou specifické pro zdroj dat. Azure SQL Database a Azure Cosmos DB mají výchozí velikost dávky 1000. Indexování objektů blob Azure naopak nastavuje velikost dávky na 10 dokumentů v rozpoznávání větší průměrné velikosti dokumentu. 
 
 ### <a name="scheduled-indexing"></a>Naplánované indexování
 
