@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755116"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582644"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrace připojení k účtu LinkedIn v Azure Active Directory
 
@@ -30,8 +30,8 @@ Uživatelům ve vaší organizaci můžete dovolit přístup k jejich připojen�
 > Výjimky:
 >
 > * Toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud pro státní správu USA, Microsoft Cloud Německo nebo Azure a Office 365 provozovaný společností 21Vianet v Číně.
-> * Nastavení je ve výchozím nastavení vypnuté pro klienty zřízené v Německu. Všimněte si, že toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud Německo.
-> * Nastavení je ve výchozím nastavení vypnuté pro klienty zřízené ve Francii.
+> * Toto nastavení je ve výchozím nastavení vypnuté pro organizace Azure AD zřízené v Německu. Všimněte si, že toto nastavení není k dispozici pro zákazníky, kteří používají Microsoft Cloud Německo.
+> * Toto nastavení je ve výchozím nastavení vypnuté pro organizace zřízené ve Francii.
 >
 > Jakmile budou připojení k účtu LinkedInu pro vaši organizaci povolená, připojení k účtům budou fungovat až po jejich souhlasu s aplikacemi, které přistupují k firemním datům. Informace o nastavení souhlasu uživatele najdete v tématu [Postup odebrání přístupu uživatele k aplikaci](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 

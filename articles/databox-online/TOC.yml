@@ -31,7 +31,7 @@
           href: data-box-gateway-use-cases.md
     - name: Postup
       items:
-        - name: Spravovat
+        - name: Správa
           items:
             - name: Sdílené složky
               href: data-box-gateway-manage-shares.md
@@ -48,7 +48,7 @@
         - name: Řešení potíží
           href: data-box-gateway-troubleshoot.md
         - name: Kontaktovat podporu Microsoftu
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
     - name: "Poznámky k\_verzi"
       items:
         - name: 1911 – aktuální
@@ -64,59 +64,59 @@
     - name: Přehled
       items:
         - name: Co je Azure Stack Edge?
-          href: data-box-edge-overview.md
+          href: azure-stack-edge-overview.md
     - name: Kurzy
       items:
         - name: 1. Příprava
-          href: data-box-edge-deploy-prep.md
+          href: azure-stack-edge-deploy-prep.md
         - name: 2. Instalace
-          href: data-box-edge-deploy-install.md
+          href: azure-stack-edge-deploy-install.md
         - name: '3. Připojení, nastavení, aktivace'
-          href: data-box-edge-deploy-connect-setup-activate.md
+          href: azure-stack-edge-deploy-connect-setup-activate.md
         - name: 4. Přidání a připojení
-          href: data-box-edge-deploy-add-shares.md
+          href: azure-stack-edge-deploy-add-shares.md
         - name: 5A. Konfigurace výpočetních funkcí (jednoduchá)
-          href: data-box-edge-deploy-configure-compute.md
+          href: azure-stack-edge-deploy-configure-compute.md
         - name: 5B. Konfigurace výpočetních funkcí (pokročilá)
-          href: data-box-edge-deploy-configure-compute-advanced.md
+          href: azure-stack-edge-deploy-configure-compute-advanced.md
     - name: Koncepty
       items:
         - name: Kontrola požadavků
-          href: data-box-edge-system-requirements.md
+          href: azure-stack-edge-system-requirements.md
         - name: Pochopení limitů
-          href: data-box-edge-limits.md
+          href: azure-stack-edge-limits.md
         - name: Přehled zabezpečení
-          href: data-box-edge-security.md
+          href: azure-stack-edge-security.md
         - name: Kontrola specifikací
-          href: data-box-edge-technical-specifications-compliance.md
+          href: azure-stack-edge-technical-specifications-compliance.md
     - name: Postup
       items:
         - name: 'Vývoj modulu jazyka C#'
-          href: data-box-edge-create-iot-edge-module.md
-        - name: Spravovat
+          href: azure-stack-edge-create-iot-edge-module.md
+        - name: Správa
           items:
             - name: Výpočetní funkce Edge
-              href: data-box-edge-manage-compute.md
+              href: azure-stack-edge-manage-compute.md
             - name: Síť výpočetních funkcí Edge
-              href: data-box-edge-extend-compute-access-modules.md
+              href: azure-stack-edge-extend-compute-access-modules.md
             - name: Sdílené složky
-              href: data-box-edge-manage-shares.md
+              href: azure-stack-edge-manage-shares.md
             - name: Uživatelé
-              href: data-box-edge-manage-users.md
+              href: azure-stack-edge-manage-users.md
             - name: Plány služby Bandwidth
-              href: data-box-edge-manage-bandwidth-schedules.md
+              href: azure-stack-edge-manage-bandwidth-schedules.md
             - name: 'Výkon, přístup, možnosti připojení'
-              href: data-box-edge-manage-access-power-connectivity-mode.md
+              href: azure-stack-edge-manage-access-power-connectivity-mode.md
             - name: Přes PowerShell
-              href: data-box-edge-connect-powershell-interface.md
+              href: azure-stack-edge-connect-powershell-interface.md
         - name: Řešení potíží
-          href: data-box-edge-troubleshoot.md
+          href: azure-stack-edge-troubleshoot.md
         - name: Kontaktovat podporu Microsoftu
-          href: data-box-edge-contact-microsoft-support.md
+          href: azure-stack-edge-contact-microsoft-support.md
         - name: Monitorování
-          href: data-box-edge-monitor.md
+          href: azure-stack-edge-monitor.md
         - name: Vrácení nebo výměna zařízení
-          href: data-box-edge-return-device.md
+          href: azure-stack-edge-return-device.md
     - name: "Poznámky k\_verzi"
       items:
         - name: 1911 – aktuální
@@ -127,7 +127,7 @@
           href: data-box-gateway-1905-release-notes.md
         - name: Všeobecná dostupnost (GA)
           href: data-box-gateway-release-notes.md
-- name: Zdroje a prostředky
+- name: Zdroje
   items:
     - name: 'Ukázky modulů Azure Stack Edge v C# (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/'

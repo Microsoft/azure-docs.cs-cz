@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f4f6de807628704051cdddf74bcefbed678f8fcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457888"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889499"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurace linuxové aplikace v jazyce Java pro Azure App Service
 
@@ -25,7 +25,7 @@ Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v jazyce
 
 ## <a name="deploying-your-app"></a>Nasazení aplikace
 
-K nasazení souborů. jar i. War můžete použít [modul plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . Nasazení s oblíbenými mikroprostředími se podporuje taky [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) nebo [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
+K nasazení souborů. jar i. War můžete použít [modul plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . Nasazení s oblíbenými mikroprostředími se podporuje taky [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) nebo [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse).
 
 V opačném případě vaše metoda nasazení bude záviset na typu archivu:
 
@@ -561,21 +561,25 @@ Pokud chcete používat Tomcat s Redis, musíte aplikaci nakonfigurovat tak, aby
 
 8. Aktualizujte `azure-webapp-maven-plugin` konfiguraci v souboru *pom. XML* vaší aplikace tak, aby odkazovala na informace o účtu Redis. Tento soubor používá proměnné prostředí, které jste předtím nastavili, aby byly informace o svém účtu ze zdrojových souborů.
 
-    V případě potřeby změňte `1.7.0` na aktuální verzi [modulu plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
+    V případě potřeby změňte `1.9.1` na aktuální verzi [modulu plug-in Maven pro Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme).
 
     ```xml
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.7.0</version>
-        <configuration>
-
+        <version>1.9.1</version>
+        <configuration>            
             <!-- Web App information -->
+            <schemaVersion>v2</schemaVersion>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appServicePlanName>${WEBAPP_PLAN_NAME}-${REGION}</appServicePlanName>
             <appName>${WEBAPP_NAME}-${REGION}</appName>
-            <region>${REGION}</region>
-            <linuxRuntime>tomcat 9.0-jre8</linuxRuntime>
+            <region>${REGION}</region>            
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 9.0</webContainer>
+            </runtime>
 
             <appSettings>
                 <property>

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970608"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792594"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Povolení Azure Disk Encryption s Azure AD na virtuálních počítačích se systémem Linux (předchozí verze)
 
@@ -158,7 +158,7 @@ Následující tabulka uvádí Správce prostředků parametry šablony pro exis
 ## <a name="use-the-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>Použití funkce EncryptFormatAll pro datové disky na virtuálních počítačích se systémem Linux IaaS
 Parametr EncryptFormatAll zkracuje dobu, po kterou jsou datové disky platformy Linux šifrovány. Oddíly, které splňují určitá kritéria, jsou formátovány (s jejich aktuálním systémem souborů). Pak se znovu připojí k umístění, kde byly před provedením příkazu. Pokud chcete vyloučit datový disk, který splňuje kritéria, můžete ho odpojit před spuštěním příkazu.
 
- Po spuštění tohoto příkazu se naformátují všechny dříve připojené jednotky. Pak se vrstva šifrování spustí v horní části jednotky, která je právě prázdná. Když je vybraná tato možnost, bude se taky šifrovat dočasný disk prostředku připojený k virtuálnímu počítači. Pokud dojde k resetování dočasné jednotky, přeformátujte a znovu Zašifrujte pro virtuální počítač pomocí řešení Azure Disk Encryption při další příležitosti.
+ Po spuštění tohoto příkazu se naformátují všechny dříve připojené jednotky. Pak se vrstva šifrování spustí v horní části jednotky, která je právě prázdná. Když je vybraná tato možnost, bude taky zašifrovaný dočasný disk připojený k virtuálnímu počítači. Pokud dojde k resetování dočasné jednotky, přeformátujte a znovu Zašifrujte pro virtuální počítač pomocí řešení Azure Disk Encryption při další příležitosti.
 
 >[!WARNING]
 > EncryptFormatAll by neměl být použit, pokud jsou potřebná data na datových svazcích virtuálního počítače. Můžete vyloučit disky ze šifrování odpojováním. Vyzkoušejte nejprve parametr EncryptFormatAll na testovacím virtuálním počítači, abyste pochopili parametr funkce a jeho nevýznam před tím, než ho zkusíte na provozním virtuálním počítači. Možnost EncryptFormatAll formátuje datový disk, takže všechna data, která na něm jsou, budou ztracena. Než budete pokračovat, ověřte, že všechny disky, které chcete vyloučit, jsou správně odpojeny. </br></br>

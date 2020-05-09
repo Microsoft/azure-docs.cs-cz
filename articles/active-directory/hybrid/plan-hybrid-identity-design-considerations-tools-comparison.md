@@ -16,21 +16,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811094"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Hybridní identita: Porovnání nástrojů pro integraci adresáře
 V průběhu let se nástroje pro integraci adresáře rozšířily a vyvinuly.  
 
 
-- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29) a [MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) jsou stále podporovány a primárně umožňují synchronizaci mezi místními systémy.   [Konektor FIM Windows Azure AD je](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN) podporovaný ve FIM i MIM, ale nedoporučuje se pro nová nasazení – zákazníci s místními zdroji, jako jsou Poznámky nebo SAP HCM, by měli používat MIM k naplnění služby Active Directory Domain Services (AD DS) a pak také použít synchronizaci Azure AD Connect nebo azure ad connect cloud zřizování k synchronizaci ze služby AD DS do Služby Azure AD.
-- [Azure AD Connect Synchronizace](how-to-connect-sync-whatis.md) zahrnuje součásti a funkce dříve vydané v DirSync a Azure AD Sync, pro synchronizaci mezi doménovými strukturami služby AD DS a Azure AD.  
-- [Azure AD Connect cloud zřizování](../cloud-provisioning/what-is-cloud-provisioning.md) je nový agent Microsoft pro synchronizaci ze služby AD DS do Azure AD, užitečné pro scénáře, jako je fúze a akvizice, kde jsou doménové struktury ad získané společnosti izolované od doménové struktury ad mateřské společnosti.
+- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29) a [MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) jsou pořád podporované a primárně umožňují synchronizaci mezi místními systémy.   [Konektor FIM Windows Azure AD](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN) se podporuje v zařízeních FIM a MIM, ale nedoporučuje se pro nová nasazení – zákazníci s místními zdroji, jako jsou poznámky nebo SAP HCM, by měli použít MIM k naplnění Active Directory Domain Services (služba AD DS) a pak taky použít buď Azure AD Connect synchronizace nebo Azure AD Connect zřízení cloudu pro synchronizaci z služba AD DS do Azure AD.
+- [Azure AD Connect synchronizace](how-to-connect-sync-whatis.md) zahrnuje součásti a funkce dříve vydané v DirSync a Azure AD Sync pro synchronizaci mezi služba AD DS doménovou strukturou a službou Azure AD.  
+- [Azure AD Connect zřizování cloudu](../cloud-provisioning/what-is-cloud-provisioning.md) je novým agentem Microsoftu pro synchronizaci z služba AD DS do Azure AD, který je vhodný pro scénáře, jako je například fúze a akvizice, kde jsou doménové struktury služby AD získanou společností izolované od nadřazených doménových struktur služby AD.
 
-Další informace o rozdílech mezi synchronizací Azure AD Connect a zřizováním cloudu Azure AD Connect najdete v článku [Co je zřizování cloudu Azure AD Connect?](../cloud-provisioning/what-is-cloud-provisioning.md)
+Další informace o rozdílech mezi Azure AD Connect synchronizace a Azure AD Connect zřizování cloudu najdete v článku [co je Azure AD Connect zřizování cloudu?](../cloud-provisioning/what-is-cloud-provisioning.md)
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

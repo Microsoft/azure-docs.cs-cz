@@ -1,5 +1,5 @@
 ---
-title: Správci předplatného Azure Classic | Microsoft Docs
+title: Správci předplatného Azure Classic
 description: Popisuje, jak přidat nebo změnit role spolusprávce Azure a správce služeb a jak zobrazit správce účtu.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243481"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734854"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Správci předplatného Azure Classic
 
-Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služby a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/management/deployment-models.md).
+Microsoft doporučuje spravovat přístup k prostředkům Azure pomocí řízení přístupu na základě role Azure (RBAC). Pokud však stále používáte model nasazení Classic, budete muset použít klasickou roli Správce předplatného: Správce služby a spolusprávce. Další informace najdete v tématu [Azure Resource Manager vs. Classic Deployment](../azure-resource-manager/management/deployment-models.md).
 
 Tento článek popisuje, jak přidat nebo změnit role spolusprávce a správců služeb a jak zobrazit správce účtu.
 
@@ -71,9 +71,9 @@ Uživatelům typu Host, kterým byla přiřazena role spolusprávce, se může u
 
 Očekáváte, že uživatel B může spravovat všechno. Důvodem tohoto rozdílu je to, že se účet Microsoft do předplatného přidal jako uživatel typu Host, a ne jako uživatel s členem. Uživatelé typu Host mají ve srovnání s členskými uživateli různá výchozí oprávnění ve službě Azure AD. Například členské uživatelé mohou číst jiné uživatele v Azure AD a uživatelé typu Host nemůžou. Členové členů můžou registrovat nové instanční objekty ve službě Azure AD a uživatelé typu Host nemůžou.
 
-Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role správce služby Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Další informace o tom, jak udělit přístup pro uživatele typu Host, najdete v tématu [Správa přístupu k prostředkům Azure pro externí uživatele typu Host pomocí RBAC](role-assignments-external-users.md).
+Pokud uživatel typu Host potřebuje, aby mohl provádět tyto úlohy, je možné řešení přiřadit konkrétní role Azure AD, které uživatel typu Host potřebuje. Například v předchozím scénáři můžete přiřadit roli [čtenáři adresáře](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) pro čtení dalších uživatelů a přiřazení role [vývojáře aplikace](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) , aby bylo možné vytvářet instanční objekty. Další informace o členech a uživatelích typu Host a jejich oprávněních najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Další informace o tom, jak udělit přístup pro uživatele typu Host, najdete v tématu [Přidání nebo odebrání přiřazení rolí Azure pro externí uživatele typu Host pomocí Azure Portal](role-assignments-external-users.md).
 
-Všimněte si, že [předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md) se liší od [rolí správce Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Předdefinované role neudělují žádnému přístupu ke službě Azure AD. Další informace najdete v tématu [pochopení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md).
+Všimněte si, že [předdefinované role Azure](../role-based-access-control/built-in-roles.md) se liší od [rolí Azure AD](../active-directory/users-groups-roles/directory-assign-admin-roles.md). Předdefinované role neudělují žádnému přístupu ke službě Azure AD. Další informace najdete v tématu [pochopení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 Informace, které porovnávají uživatele členů a uživatele typu Host, najdete v tématu [co jsou výchozí oprávnění uživatele v Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
 
@@ -126,7 +126,7 @@ V každém předplatném Azure může být jen jeden správce služby. Změna sp
 | Účet správce účtu | Může změnit správce služby na jiný účet Microsoft? | Můžete změnit správce služby na účet Azure AD ve stejném adresáři? | Může změnit správce služby na účet Azure AD v jiném adresáři? |
 | --- | --- | --- | --- |
 | Účet Microsoft | Ano | Ne | Ne |
-| Účet Azure AD | Ano | Ano | Ne |
+| Účet Azure AD | Ano | Ano | No |
 
 Pokud je správcem účtu účet Azure AD, můžete změnit správce služby na účet Azure AD ve stejném adresáři, ale ne v jiném adresáři. Například abby@contoso.com může změnit správce služby na bob@contoso.com, ale nemůže změnit správce služby na john@notcontoso.com , pokud john@notcontoso.com nemá přítomnost v adresáři contoso.com.
 
@@ -150,6 +150,6 @@ Pomocí těchto kroků zobrazíte správce účtu.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Vysvětlení různých rolí v Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Správa přístupu k prostředkům Azure pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md)
+* [Vysvětlení různých rolí](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Přidání nebo odebrání přiřazení rolí Azure pomocí Azure Portal](../role-based-access-control/role-assignments-portal.md)
 * [Přidání nebo změna správců předplatného Azure](../cost-management-billing/manage/add-change-subscription-administrator.md)
