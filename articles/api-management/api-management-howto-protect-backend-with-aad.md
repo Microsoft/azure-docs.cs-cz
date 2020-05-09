@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804363"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778970"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrana rozhraní API pomocí OAuth 2.0 s využitím služeb Azure Active Directory a API Management
 
@@ -79,7 +79,7 @@ Každá klientská aplikace, která volá rozhraní API, musí být registrovan�
     - V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, jako je například *klientská aplikace*. 
     - V části **podporované typy účtů** vyberte **účty v jakémkoli adresáři organizace (libovolný adresář služby Azure AD – víceklientské tenant)**. 
 
-1. V části **identifikátor URI pro přesměrování** vyberte `Web` a zadejte adresu URL `https://contoso5.portal.azure-api.net/signin`.
+1. V části **identifikátor URI pro přesměrování** vyberte `Web` a nechte pole Adresa URL pro teď prázdné.
 
 1. Výběrem možnosti **Registrovat** aplikaci vytvořte. 
 
@@ -149,9 +149,9 @@ V tomto příkladu je konzole pro vývojáře klientská aplikace. Následujíc�
 
 1. Vyberte **Vytvořit**.
 
-1. Vraťte se do svého klienta – aplikace a vyberte **ověřování**.
+1. Vraťte se k registraci klienta a aplikace v Azure Active Directory a vyberte **ověřování**.
 
-1. V části **identifikátory URI pro přesměrování**vyberte typ jako **Web**, do pole **identifikátor URI pro přesměrování**vložte **redirect_url** a pak ho uložte.
+1. V části **konfigurace platformy** klikněte na **Přidat platformu**a vyberte typ jako **Web**, do pole **identifikátor URI pro přesměrování**vložte **redirect_url** a pak klikněte na tlačítko **Konfigurovat** tlačítko pro uložení.
 
 Teď, když jste nakonfigurovali autorizační Server OAuth 2,0, může konzola pro vývojáře získat přístupové tokeny ze služby Azure AD. 
 

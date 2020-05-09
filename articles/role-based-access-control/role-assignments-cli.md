@@ -1,6 +1,6 @@
 ---
-title: Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI
-description: Zjistěte, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí řízení přístupu na základě role (RBAC) Azure a Azure CLI.
+title: Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI – Azure RBAC
+description: Naučte se, jak udělit přístup k prostředkům Azure pro uživatele, skupiny, instanční objekty nebo spravované identity pomocí Azure CLI a řízení přístupu na základě role Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b32df50715d5e7276861e0696df1bd6ceb3f684e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245665"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735772"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-cli"></a>Přidání nebo odebrání přiřazení rolí pomocí Azure RBAC a Azure CLI
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Tento článek popisuje, jak přiřadit role pomocí Azure CLI.
 
@@ -62,7 +62,7 @@ az ad sp list --display-name "{name}" --query [].objectId --output tsv
 
 ## <a name="add-a-role-assignment"></a>Přidat přiřazení role
 
-Pokud chcete udělit přístup, přidejte přiřazení role ve RBAC.
+Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
 
 ### <a name="user-at-a-resource-group-scope"></a>Uživatel v oboru skupiny prostředků
 
@@ -97,7 +97,7 @@ Pokud chcete přidat přiřazení role pomocí jedinečného ID role místo náz
 az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
 ```
 
-Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k uživateli *patlong\@contoso.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) nebo informace [o předdefinovaných rolích pro prostředky Azure](built-in-roles.md).
+Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k uživateli *patlong\@contoso.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) nebo zobrazit [předdefinované role Azure](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -187,7 +187,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 
 ## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
 
-Pokud chcete odebrat přístup, odeberte přiřazení role v RBAC pomocí funkce [AZ role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete):
+Chcete-li v Azure RBAC odebrat přístup, odeberte přiřazení role pomocí funkce [AZ role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
@@ -213,5 +213,5 @@ az role assignment delete --assignee alain@example.com --role "Billing Reader" -
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vypsání přiřazení rolí pomocí Azure RBAC a Azure CLI](role-assignments-list-cli.md)
+- [Vypsání přiřazení rolí Azure pomocí Azure CLI](role-assignments-list-cli.md)
 - [Použití rozhraní příkazového řádku Azure ke správě prostředků a skupin prostředků Azure](../azure-resource-manager/cli-azure-resource-manager.md)

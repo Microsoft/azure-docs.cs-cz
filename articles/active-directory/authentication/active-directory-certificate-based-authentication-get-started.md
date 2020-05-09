@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654342"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610645"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním pomocí certifikátů v Azure Active Directory
 
@@ -45,7 +46,7 @@ Chcete-li nakonfigurovat ověřování na základě certifikátu, musí být spl
 - Klientský certifikát pro ověření klienta musí být vystavený klientovi.
 
 >[!IMPORTANT]
->Maximální velikost seznamu CRL pro Azure Active Directory pro úspěšné stažení a ukládání do mezipaměti je 20MB a doba potřebná ke stažení seznamu odvolaných certifikátů nesmí přesáhnout 10 sekund.  Pokud Azure Active Directory nemůže stáhnout seznam CRL, ověřování na základě certifikátů pomocí certifikátů vydaných příslušnou certifikační autoritou se nezdaří. Osvědčené postupy pro zajištění, že se soubory CRL nacházejí v rámci omezení velikosti, je zachování životnosti certifikátů v rámci přiměřených limitů a vyčištění certifikátů s vypršenou platností. 
+>Maximální velikost seznamu CRL pro Azure Active Directory pro úspěšné stažení a ukládání do mezipaměti je 20MB a doba potřebná ke stažení seznamu odvolaných certifikátů nesmí přesáhnout 10 sekund.  Pokud Azure Active Directory nemůže stáhnout seznam CRL, ověřování na základě certifikátů pomocí certifikátů vydaných příslušnou certifikační autoritou se nezdaří. Osvědčené postupy pro zajištění, že se soubory CRL nacházejí v rámci omezení velikosti, je zachování životnosti certifikátů v rámci přiměřených limitů a vyčištění certifikátů s vypršenou platností.
 
 ## <a name="step-1-select-your-device-platform"></a>Krok 1: vyberte platformu zařízení
 

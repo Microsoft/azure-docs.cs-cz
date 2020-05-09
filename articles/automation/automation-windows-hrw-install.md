@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/10/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53dfe07ebd4925c96290db140b6e613c38eef564
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 163650a05bf47e6cb8a8832bb85477740d88b0cd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617342"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787358"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Hybrid Runbook Worker Windows
 
@@ -51,15 +51,15 @@ Minimální požadavky pro Windows Hybrid Runbook Worker jsou:
 
 Další požadavky na síť pro Hybrid Runbook Worker najdete v tématu [Konfigurace sítě](automation-hybrid-runbook-worker.md#network-planning).
 
-### <a name="server-onboarding-for-management-with-automation-dsc"></a>Připojování serveru pro správu pomocí Automatizace DSC
+### <a name="server-onboarding-for-management-with-state-configuration-dsc"></a>Připojování serveru pro správu s konfigurací stavu (DSC)
 
-Informace o připojování serverů pro správu s DSC najdete v tématu [připojování počítačů pro správu pomocí Azure Automation DSC](automation-dsc-onboarding.md).
+Informace o připojování serverů pro správu s konfigurací stavu (DSC) najdete v tématu [zprovoznění počítačů pro správu podle konfigurace stavu (DSC)](automation-dsc-onboarding.md).
 
-Povolením [řešení Update Management](../operations-management-suite/oms-solution-update-management.md) se automaticky nakonfiguruje jakýkoli počítač se systémem Windows, který je připojený k vašemu pracovnímu prostoru Log Analytics jako Hybrid Runbook Worker pro podporu runbooků obsažených v řešení. Tento pracovní proces ale není zaregistrovaný u žádné Hybrid Runbook Worker skupiny, které už jsou ve vašem účtu Automation definované.
+Povolením [Update Management](automation-update-management.md) se automaticky nakonfiguruje jakýkoli počítač s Windows, který je připojený k vašemu pracovnímu prostoru Log Analytics jako Hybrid Runbook Worker pro podporu aktualizací sady Runbook. Tento pracovní proces ale není zaregistrovaný u žádné Hybrid Runbook Worker skupiny, které už jsou ve vašem účtu Automation definované.
 
 ### <a name="addition-of-the-computer-to-a-hybrid-runbook-worker-group"></a>Přidání počítače do skupiny Hybrid Runbook Worker
 
-Pracovní počítač můžete přidat do skupiny Hybrid Runbook Worker v účtu Automation. Všimněte si, že musíte podporovat Runbooky automatizace, pokud používáte stejný účet pro řešení i pro členství ve skupině Hybrid Runbook Worker. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
+Pracovní počítač můžete přidat do skupiny Hybrid Runbook Worker v účtu Automation. Všimněte si, že je potřeba podporovat Runbooky Automation, pokud používáte stejný účet pro funkci Azure Automation i pro členství v Hybrid Runbook Worker skupině. Tuto funkci jsme do funkce Hybrid Runbook Worker přidali ve verzi 7.2.12024.0.
 
 ## <a name="automated-deployment"></a>Automatizované nasazení
 
@@ -81,7 +81,7 @@ Stáhněte si skript **New-OnPremiseHybridWorker. ps1** z [Galerie prostředí P
 | `WorkspaceName` | Nepovinné | Název Log Analytics pracovního prostoru. Pokud nemáte pracovní prostor Log Analytics, skript ho vytvoří a nakonfiguruje. |
 
 > [!NOTE]
-> Při povolování řešení Azure Automation podporuje jenom určité oblasti pro propojení Log Analyticsho pracovního prostoru a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
+> Při povolování funkcí Azure Automation podporuje jenom určité oblasti pro propojení pracovního prostoru Log Analytics a účtu Automation. Seznam podporovaných dvojic mapování najdete v tématu [mapování oblastí pro účet Automation a Log Analytics pracovní prostor](how-to/region-mappings.md).
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>Krok 2 – otevření prostředí příkazového řádku Windows PowerShellu
 
@@ -115,9 +115,9 @@ Na cílovém počítači proveďte první dva kroky pro vaše prostředí automa
 
 Pokud ještě nemáte pracovní prostor Log Analytics, přečtěte si [pokyny k návrhu protokolu Azure monitor](../azure-monitor/platform/design-logs-deployment.md) před vytvořením pracovního prostoru.
 
-### <a name="step-2---add-the-automation-solution-to-the-log-analytics-workspace"></a>Krok 2 – Přidání řešení automatizace do pracovního prostoru Log Analytics
+### <a name="step-2---add-an-azure-automation-feature-to-the-log-analytics-workspace"></a>Krok 2 – Přidání funkce Azure Automation do pracovního prostoru Log Analytics
 
-Řešení automatizace přidává funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Když přidáte řešení do svého pracovního prostoru Log Analytics, automaticky se přehraje do počítače agenta komponenty pracovních procesů, které nainstalujete, jak je popsáno v dalším kroku.
+Funkce automatizace přidává funkce pro Azure Automation, včetně podpory Hybrid Runbook Worker. Když přidáte řešení do svého pracovního prostoru Log Analytics, automaticky se přehraje do počítače agenta komponenty pracovního procesu, které nainstalujete, jak je popsáno v dalším kroku.
 
 Pokud chcete přidat řešení automatizace do svého pracovního prostoru, spusťte následující rutinu prostředí PowerShell.
 
@@ -177,13 +177,38 @@ Informace požadované pro tuto rutinu můžete získat ze stránky Správa klí
 
 Runbooky můžou používat jakékoli aktivity a rutiny definované v modulech nainstalovaných ve vašem Azure Automationovém prostředí. Protože tyto moduly nejsou automaticky nasazeny do místních počítačů, je nutné je nainstalovat ručně. Výjimkou je modul Azure. Tento modul se instaluje ve výchozím nastavení a poskytuje přístup k rutinám pro všechny služby a aktivity Azure pro Azure Automation.
 
-Vzhledem k tomu, že primárním účelem funkce Hybrid Runbook Worker je Správa místních prostředků, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména `PowerShellGet` modul. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
+Vzhledem k tomu, že primárním účelem Hybrid Runbook Worker je spravovat místní prostředky, pravděpodobně budete muset nainstalovat moduly, které tyto prostředky podporují, zejména `PowerShellGet` modul. Informace o instalaci modulů prostředí Windows PowerShell najdete v tématu [Windows PowerShell](https://docs.microsoft.com/powershell/scripting/developer/windows-powershell).
 
 Moduly, které jsou nainstalovány, musí být v umístění, na `PSModulePath` které odkazuje proměnná prostředí, aby je hybridní pracovní proces mohl automaticky importovat. Další informace najdete v tématu [Instalace modulů v PSModulePath](https://docs.microsoft.com/powershell/scripting/developer/module/installing-a-powershell-module?view=powershell-7).
+
+## <a name="remove-the-hybrid-runbook-worker-from-an-on-premises-windows-computer"></a><a name="remove-windows-hybrid-runbook-worker"></a>Odebrání Hybrid Runbook Worker z místního počítače s Windows
+
+1. V Azure Portal přejdete do svého účtu Automation.
+2. V části **Nastavení účtu**vyberte **klíče** a poznamenejte si hodnoty **adresy URL** a **primárního přístupového klíče**.
+
+3. Otevřete relaci PowerShellu v režimu správce a spusťte následující příkaz s hodnotami adresy URL a primárního přístupového klíče. Použijte `Verbose` parametr pro podrobný protokol procesu odebrání. K odebrání zastaralých počítačů ze skupiny Hybrid Worker Použijte volitelný `machineName` parametr.
+
+```powershell-interactive
+Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
+```
+
+## <a name="remove-a-hybrid-worker-group"></a>Odebrání skupiny Hybrid Worker
+
+Chcete-li odebrat skupinu Hybrid Runbook Worker, musíte nejprve odebrat Hybrid Runbook Worker z každého počítače, který je členem skupiny. Pak odeberte skupinu pomocí následujících kroků:
+
+1. Otevřete účet Automation v Azure Portal.
+2. V části **Automatizace procesu**vyberte **skupiny hybridních pracovních procesů** . Vyberte skupinu, kterou chcete odstranit. Zobrazí se stránka Vlastnosti této skupiny.
+
+   ![Stránka Vlastnosti](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
+
+3. Na stránce vlastnosti vybrané skupiny vyberte **Odstranit**. Zobrazí se zpráva s výzvou k potvrzení této akce. Pokud jste si jisti, že chcete pokračovat, vyberte **Ano** .
+
+   ![Potvrzovací zpráva](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
+
+   Dokončení tohoto procesu může trvat několik sekund. Průběh zpracování můžete sledovat prostřednictvím možnosti nabídky **Oznámení**.
 
 ## <a name="next-steps"></a>Další kroky
 
 * Informace o tom, jak konfigurovat Runbooky pro automatizaci procesů v místním datovém centru nebo v jiném cloudovém prostředí, najdete v tématu [spouštění Runbooků na Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
-* Pokyny k odebrání procesů Hybrid Runbook Worker najdete v tématu [odebrání Azure Automationch procesů Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).
-* Informace o řešení potíží s vašimi procesy Hybrid Runbook Worker najdete v tématu [řešení potíží s Windows Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows).
-* Další kroky pro řešení potíží se správou aktualizací najdete v tématu [Update Management: řešení potíží](troubleshoot/update-management.md).
+* Informace o řešení potíží s procesy Hybrid Runbook Worker najdete v tématu [řešení potíží s Windows Hybrid Runbook Worker](troubleshoot/hybrid-runbook-worker.md#windows).
+

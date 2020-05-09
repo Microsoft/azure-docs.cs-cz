@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760183"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629384"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Přístup k úložištím dat a sdíleným složkám s využitím ověřování systému Windows z balíčků SSIS v Azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ověřování systému Windows můžete použít pro přístup k úložištím dat, jako jsou servery SQL, sdílené složky, soubory Azure atd. z balíčků SSIS běžících na vašem Azure-SSIS Integration Runtime (IR) v Azure Data Factory (ADF). Vaše úložiště dat můžou být místní, hostovaná na Azure Virtual Machines (virtuální počítače) nebo spuštěná v Azure jako spravované služby. Pokud jsou místní, musíte se připojit k Azure-SSIS IR k Virtual Network (Microsoft Azure Virtual Network) připojenému k vaší místní síti, viz téma [join Azure-SSIS IR to Microsoft Azure Virtual Network](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Existují čtyři metody přístupu k úložištím dat s ověřováním systému Windows z balíčků SSIS běžících na vašem Azure-SSIS IR:
 

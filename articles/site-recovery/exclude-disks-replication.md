@@ -3,12 +3,12 @@ title: Vyloučení disků z replikace pomocí Azure Site Recovery
 description: Postup vyloučení disků z replikace do Azure pomocí Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281844"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900286"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Vyloučení disků z zotavení po havárii
 
@@ -26,7 +26,7 @@ Z replikace můžete vyloučit disky, které jsou shrnuté v tabulce.
 
 **Z Azure do Azure** | **Z VMware do Azure** | **Z Hyper-V do Azure** 
 --- | --- | ---
-Ano (pomocí PowerShellu) | Ano | Ano 
+Ano | Ano | Ano 
 
 ## <a name="exclude-limitations"></a>Vyloučit omezení
 
@@ -35,7 +35,7 @@ Ano (pomocí PowerShellu) | Ano | Ano
 **Typy disků** | Z replikace můžete vyloučit základní disky.<br/><br/> Nemůžete vyloučit disky operačního systému ani dynamické disky. Dočasné disky jsou ve výchozím nastavení vyloučené. | Z replikace můžete vyloučit základní disky.<br/><br/> Nemůžete vyloučit disky operačního systému ani dynamické disky. | Z replikace můžete vyloučit základní disky.<br/><br/> Nemůžete vyloučit disky operačního systému. Doporučujeme, abyste nevylučovali dynamické disky. Site Recovery nemůže zjistit, které VHS je na virtuálním počítači hosta základní nebo dynamické. Pokud se nevylučují všechny závislé disky dynamických svazků, bude chráněný dynamický disk na virtuálním počítači s podporou převzetí služeb při selhání diskem, který není přístupný, a data na tomto disku nejsou dostupná.
 **Replikace disku** | Nemůžete vyloučit disk, který se replikuje.<br/><br/> Zakažte a znovu povolte replikaci pro virtuální počítač. |  Nemůžete vyloučit disk, který se replikuje. |  Nemůžete vyloučit disk, který se replikuje.
 **Služba mobility (VMware)** | Není relevantní | Disky můžete vyloučit jenom na virtuálních počítačích, na kterých je nainstalovaná služba mobility.<br/><br/> To znamená, že musíte ručně nainstalovat službu mobility na virtuální počítače, pro které chcete vyloučit disky. Nemůžete použít mechanismus nabízené instalace, protože nainstaluje službu mobility jenom po povolení replikace. | Není relevantní.
-**Přidat nebo odebrat** | Můžete přidávat a odebírat disky na virtuálních počítačích Azure se spravovanými disky. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci a přidejte disk. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci.
+**Přidat nebo odebrat** | Spravované disky můžete do virtuálních počítačů Azure s podporou replikace přidat pomocí spravovaných disků. Disky nejde odebrat na virtuálních počítačích Azure s podporou replikace. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci a přidejte disk. | Po povolení replikace nelze disky přidat ani odebrat. Zakažte a znovu povolte replikaci.
 **Převzetí služeb** | Pokud aplikace potřebuje disk, který jste vyloučili, po převzetí služeb při selhání budete muset disk vytvořit ručně, aby se mohla spustit replikovaná aplikace.<br/><br/> Případně můžete disk vytvořit během převzetí služeb při selhání virtuálního počítače integrací služby Azure Automation do plánu obnovení. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure. | Pokud vyloučíte disk, který aplikace potřebuje, po převzetí služeb při selhání ho ručně vytvořte v Azure.
 **Místní navrácení služeb po obnovení – disky vytvořené ručně** | Není relevantní | **Virtuální počítače s Windows**: disky vytvořené ručně v Azure se nepovedlo vrátit zpátky. Pokud například při selhání převezmete tři disky a vytvoříte dva disky přímo na virtuálním počítači Azure, navrátí se po obnovení pouze tři disky, u kterých došlo k převzetí služeb při selhání.<br/><br/> **Virtuální počítače Linux**: disky vytvořené ručně v Azure se nepovedlo obnovit. Pokud například při selhání převezmete tři disky a na virtuálním počítači Azure vytvoříte dva disky, navrátí se všechna pět. Ručně vytvořené disky nemůžete vyloučit z navrácení služeb po obnovení. | Disky vytvořené ručně v Azure se nepovedlo vrátit zpátky. Pokud například při selhání převezmete tři disky a vytvoříte dva disky přímo na virtuálním počítači Azure, navrátí se zpět pouze tři disky, u kterých došlo k převzetí služeb při selhání.
 **Místní navrácení služeb po obnovení – vyloučené disky** | Není relevantní | Pokud navrátíte navrácení služeb po obnovení původnímu počítači, konfigurace disku pro navrácení služeb po obnovení neobsahuje vyloučené disky. Disky vyloučené z replikace z VMware do Azure nejsou k dispozici na virtuálním počítači pro navrácení služeb po obnovení. | Po navrácení služeb po obnovení do původního umístění technologie Hyper-V zůstane konfigurace disku pro navrácení služeb po obnovení stejná jako u původního zdrojového disku virtuálního počítače. Disky vyloučené z replikace z lokality Hyper-V do Azure jsou dostupné na virtuálním počítači pro navrácení služeb po obnovení.

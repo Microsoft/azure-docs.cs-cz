@@ -4,12 +4,12 @@ description: Podrobný popis postupu obnovení stavu systému Windows Server ze 
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602469"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610781"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Obnovení stavu systému na Windows Server
 
@@ -89,7 +89,7 @@ Terminologie použitá v těchto krocích zahrnuje:
 6. V podokně vybrat záložní server vyberte *zdrojový počítač* ze seznamu zobrazených počítačů.
 7. V podokně vybrat režim obnovení zvolte možnost **stav systému** a klikněte na tlačítko **Další**.
 
-    ![Search](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Vyhledávání](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. V kalendáři v podokně **Vybrat svazek a datum** vyberte bod obnovení. Můžete obnovit z libovolného bodu obnovení v čase. Kalendářní data **tučně** označují dostupnost alespoň jednoho bodu obnovení. Jakmile vyberete datum, pokud je k dispozici více bodů obnovení, zvolte konkrétní bod obnovení z rozevírací nabídky **čas** .
 
@@ -124,7 +124,7 @@ Jakmile obnovíte Stav systému jako soubory pomocí služby Azure Recovery Serv
 
 2. Po restartování otevřete modul snap-in Zálohování Windows Serveru. Pokud si nejste jisti, kde byl modul snap-in nainstalován, vyhledejte **zálohování Windows serveru**v počítači nebo na serveru.
 
-    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání.
+    Aplikace klasické pracovní plochy se zobrazí ve výsledcích hledání. Pokud se nezobrazí nebo dojde k chybám při otevírání aplikace, je třeba nainstalovat **funkce zálohování Windows serveru**a závislé komponenty pod ní, které jsou k dispozici v **Průvodci přidáním funkcí** v **Správce serveru**.
 
 3. V modulu snap-in vyberte **místní zálohování**.
 
