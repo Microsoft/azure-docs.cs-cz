@@ -1,6 +1,6 @@
 ---
 title: Jak ověřit stav šifrování pro Linux
-description: Tento článek obsahuje pokyny k ověření stavu šifrování z platformy a úrovně operačního režimu.
+description: Tento článek poskytuje pokyny k ověření stavu šifrování z platformy a na úrovni operačního systému.
 author: kailashmsft
 ms.service: security
 ms.topic: article
@@ -8,82 +8,82 @@ ms.author: kaib
 ms.date: 03/11/2020
 ms.custom: seodec18
 ms.openlocfilehash: 0aaa32c46d915eafffcfac9d95cfdd3a24d4086d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80123429"
 ---
 # <a name="how-to-verify-encryption-status-for-linux"></a>Jak ověřit stav šifrování pro Linux 
 
-**Tento scénář platí pro rozšíření ade dual pass a single-pass.**  
-Tento obor dokumentu je ověření stavu šifrování virtuálního počítače pomocí různých metod.
+**Tento scénář platí pro rozšíření ADE Dual-Pass a Single Pass.**  
+Tento obor dokumentů slouží k ověření stavu šifrování virtuálního počítače pomocí různých metod.
 
 ### <a name="environment"></a>Prostředí
 
-- Linuxové distribuce
+- Distribuce systému Linux
 
 ### <a name="procedure"></a>Postup
 
-Virtuální počítač byl zašifrován pomocí dvouprůchodového nebo jednoho průchodu.
+Virtuální počítač je zašifrovaný pomocí dvojího nebo jednoduchého průchodu.
 
 Stav šifrování lze ověřit během nebo po šifrování pomocí různých metod.
 
 >[!NOTE] 
->V celém dokumentu používáme proměnné, podle toho nahraďte hodnoty.
+>V celém dokumentu používáme proměnné, hodnoty proto nahraďte odpovídajícím způsobem.
 
 ### <a name="verification"></a>Ověření
 
-Ověření lze provést z portálu, Prostředí PowerShell, AZ CLI a nebo ze strany operačního systému virtuálního montu. 
+Ověření se dá provést z portálu, PowerShellu, AZ CLI a nebo z na straně operačního systému virtuálního počítače. 
 
-Toto ověření lze provést kontrolou disků připojených k určitému virtuálnímu počítače. 
+Toto ověření se dá udělat tak, že zkontrolujete disky připojené ke konkrétnímu virtuálnímu počítači. 
 
-Nebo dotazem na nastavení šifrování na každém jednotlivém disku, zda je disk připojen nebo nepřipojený.
+Nebo pomocí dotazu na nastavení šifrování na jednotlivých discích, ať už je disk připojený nebo nepřipojený.
 
-Pod různými metodami validace:
+Pod různými metodami ověřování:
 
 ## <a name="using-the-portal"></a>Používání portálu
 
-Ověřte stav šifrování kontrolou části rozšíření na webu Azure Portal.
+Ověřte stav šifrování zaškrtnutím části rozšíření na Azure Portal.
 
-V části **Rozšíření** uvidíte rozšíření ADE uvedené. 
+V části **rozšíření** se zobrazí uvedená přípona ADE. 
 
-Klikněte na něj a podívejte se na **stavovou zprávu**, bude to znamenat aktuální stav šifrování:
+Klikněte na něj a podívejte se na **stavovou zprávu**, která bude označovat aktuální stav šifrování:
 
-![Kontrola portálu číslo 1](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
+![Číslo kontroly portálu 1](./media/disk-encryption/verify-encryption-linux/portal-check-001.png)
 
-V seznamu rozšíření se zobrazí odpovídající verze rozšíření ADE. Verze 0.x odpovídá ADE Dual-Pass a verze 1.x odpovídá ADE Single-Pass.
+V seznamu rozšíření se zobrazí odpovídající verze rozšíření ADE. Verze 0. x odpovídá ADE Dual-Pass a verze 1. x odpovídá jedinému průchodu ADE.
 
-Můžete získat další podrobnosti kliknutím na rozšíření a pak na *Zobrazit podrobný stav*.
+Můžete získat další podrobnosti kliknutím na rozšíření a pak při *zobrazení podrobného stavu*.
 
-Podrobnější stav procesu šifrování uvidíte ve formátu json:
+Ve formátu JSON se zobrazí podrobnější stav procesu šifrování:
 
-![Kontrola portálu číslo 2](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
+![Číslo kontroly portálu 2](./media/disk-encryption/verify-encryption-linux/portal-check-002.png)
 
-![Kontrola portálu číslo 3](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
+![Číslo kontroly portálu 3](./media/disk-encryption/verify-encryption-linux/portal-check-003.png)
 
-Dalším způsobem ověření stavu šifrování je zobrazení části **Disky.**
+Dalším způsobem, jak ověřit stav šifrování, je prohlédnout si oddíl **disky** .
 
-![Kontrola portálu číslo 4](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
+![Číslo kontroly portálu 4](./media/disk-encryption/verify-encryption-linux/portal-check-004.png)
 
 >[!NOTE] 
-> Tento stav znamená, že disky mají nastavení šifrování razítkem, ale ne, že byly skutečně šifrovány na úrovni operačního systému. Záměrné, disky dostat razítkem první a šifrované později. Pokud se proces šifrování nezdaří, disky mohou skončit orazítkované, ale ne zašifrované. Chcete-li potvrdit, zda jsou disky skutečně šifrované, můžete zkontrolovat šifrování každého disku na úrovni operačního systému.
+> Tento stav znamená, že disky mají nastavené šifrování, ale nejsou ve skutečnosti zašifrované na úrovni operačního systému. Podle návrhu se disky nejprve zašifrují a šifrují později. Pokud proces šifrování selhává, disky se můžou zaregistrovat, ale nešifrují se. Pokud chcete potvrdit, jestli jsou disky skutečně zašifrované, můžete dvakrát zkontrolovat šifrování každého disku na úrovni operačního systému.
 
 ## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
-Obecný stav **šifrování** šifrovaného virtuálního mísy můžete ověřit pomocí následujících příkazů prostředí PowerShell:
+**Obecný** stav šifrování ŠIFROVANÉHO virtuálního počítače můžete ověřit pomocí následujících příkazů PowerShellu:
 
 ```azurepowershell
    $VMNAME="VMNAME"
    $RGNAME="RGNAME"
    Get-AzVmDiskEncryptionStatus -ResourceGroupName  ${RGNAME} -VMName ${VMNAME}
 ```
-![zkontrolovat PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
+![ověřit PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-status-ps-01.png)
 
-Nastavení šifrování můžete zachytit z každého jednotlivého disku pomocí následujících příkazů prostředí PowerShell:
+Nastavení šifrování můžete zachytit z každého jednotlivého disku pomocí následujících příkazů PowerShellu:
 
-### <a name="single-pass"></a>Jednoprůchodový průchod
-Pokud single-pass, nastavení šifrování jsou razítko na každém z disků (OS a data), můžete zachytit nastavení šifrování disku operačního systému v jednom průchodu takto:
+### <a name="single-pass"></a>Jednoduché předání
+Pokud je jedno předání, nastavení šifrování je na každém disku (operačním systému a datech) razítko. nastavení šifrování disku operačního systému můžete zachytit v jednom průchodu následujícím způsobem:
 
 ``` powershell
 $RGNAME = "RGNAME"
@@ -101,13 +101,13 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
  Write-Host "============================================================================================================================================================="
 ```
-![Ověření jednoho průchodu operačního příkazu 01](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
+![Ověřit jeden průchod operačním systémem 01](./media/disk-encryption/verify-encryption-linux/verify-os-single-ps-001.png)
 
-Pokud na disku není vyraženo nastavení šifrování, bude výstup prázdný, jak je znázorněno níže:
+Pokud disk nemá natištěné nastavení šifrování, bude výstup prázdný, jak je znázorněno níže:
 
-![Nastavení šifrování operačního režimu 2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
+![Nastavení šifrování operačního systému 2](./media/disk-encryption/verify-encryption-linux/os-encryption-settings-2.png)
 
-Nastavení šifrování datových disků:
+Zachytávání nastavení šifrování datových disků:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -128,12 +128,12 @@ $VM = Get-AzVM -Name ${VMNAME} -ResourceGroupName ${RGNAME}
  Write-Host "============================================================================================================================================================="
  }
 ```
-![Ověřit data jeden ps 001](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
+![Ověřit data v jednom PS 001](./media/disk-encryption/verify-encryption-linux/verify-data-single-ps-001.png)
 
-### <a name="dual-pass"></a>Dvouprůchodový průchod
-V Dual Pass nastavení šifrování jsou razítkem v modelu virtuálního počítače a ne na každém jednotlivém disku.
+### <a name="dual-pass"></a>Dvojí průchod
+Ve duálním průchodu jsou nastavení šifrování označená v modelu virtuálního počítače, a ne na každém jednotlivém disku.
 
-Chcete-li ověřit, zda byla nastavení šifrování označena dvěma průchody, můžete použít následující příkazy:
+Chcete-li ověřit, zda byla nastavení šifrování označena dvojím průchodem, můžete použít následující příkazy:
 
 ```azurepowershell
 $RGNAME = "RGNAME"
@@ -152,11 +152,11 @@ Write-Host "Secret URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSett
 Write-Host "Key URL:" $Sourcedisk.EncryptionSettingsCollection.EncryptionSettings.KeyEncryptionKey.KeyUrl
 Write-Host "============================================================================================================================================================="
 ```
-![Ověření dvouprůchodového Prostředí PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
+![Ověření duálního předávacího prostředí PowerShell 1](./media/disk-encryption/verify-encryption-linux/verify-dual-ps-001.png)
 
 ### <a name="unattached-disks"></a>Nepřipojené disky
 
-Zkontrolujte nastavení šifrování pro disky, které nejsou připojené k virtuálnímu počítače.
+Ověřte nastavení šifrování pro disky, které nejsou připojené k virtuálnímu počítači.
 
 ### <a name="managed-disks"></a>Spravované disky
 ```powershell
@@ -173,17 +173,17 @@ Write-Host "====================================================================
 ```
 ## <a name="using-az-cli"></a>Použití AZ CLI
 
-**Stav obecného** šifrování šifrovaného virtuálního virtuálního soudu můžete ověřit pomocí následujících příkazů AZ CLI:
+**Obecný** stav šifrování ŠIFROVANÉHO virtuálního počítače můžete ověřit pomocí následujících příkazů AZ CLI:
 
 ```bash
 VMNAME="VMNAME"
 RGNAME="RGNAME"
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} --query "substatus"
 ```
-![Ověření obecného použití rozhraní příkazu příkazu ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
+![Ověření obecného použití rozhraní příkazového řádku ](./media/disk-encryption/verify-encryption-linux/verify-gen-cli.png)
 
-### <a name="single-pass"></a>Jeden průchod
-Nastavení šifrování můžete ověřit z každého jednotlivého disku pomocí následujících příkazů Příkazového příkazu AZ:
+### <a name="single-pass"></a>Single Pass
+Nastavení šifrování můžete z každého jednotlivého disku ověřit pomocí následujících příkazů AZ CLI:
 
 ```bash
 az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuses[*].displayStatus]"  -o table
@@ -192,11 +192,11 @@ az vm encryption show -g ${RGNAME} -n ${VMNAME} --query "disks[*].[name, statuse
 ![Nastavení šifrování dat](./media/disk-encryption/verify-encryption-linux/data-encryption-settings-2.png)
 
 >[!IMPORTANT]
-> V případě, že disk nemá orazítkované nastavení šifrování, bude zobrazen jako "Disk není šifrován"
+> V případě, že se na disku nezobrazuje razítko s nastavením šifrování, bude zobrazená jako "disk není zašifrovaný".
 
 Podrobné nastavení stavu a šifrování:
 
-Disk operačního systému:
+Disk s operačním systémem:
 
 ```bash
 RGNAME="RGNAME"
@@ -234,15 +234,15 @@ echo "==========================================================================
 done
 ```
 
-![Jedno cli dat ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
+![Data Single CLI ](./media/disk-encryption/verify-encryption-linux/data-single-cli.png)
 
-### <a name="dual-pass"></a>Dvojitý průchod
+### <a name="dual-pass"></a>Duální průchod
 
 ``` bash
 az vm encryption show --name ${VMNAME} --resource-group ${RGNAME} -o table
 ```
 
-![Ověření obecného duálního použití rozhraní PŘÍKAZOVÉHO PŘÍKAZU: ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) Můžete také zkontrolovat nastavení šifrování na profilu úložiště modelu virtuálního počítače na disku operačního systému:
+![Ověření obecného duálního použití ](./media/disk-encryption/verify-encryption-linux/verify-gen-dual-cli.png) rozhraní příkazového řádku můžete také zkontrolovat nastavení šifrování na profilu úložiště modelu virtuálního počítače na disku s operačním systémem:
 
 ```bash
 disk=`az vm show -g ${RGNAME} -n ${VMNAME} --query storageProfile.osDisk.name -o tsv`
@@ -257,11 +257,11 @@ echo "==========================================================================
 done
 ```
 
-![Ověření duálního profilu virtuálního vana pomocí rozhraní PŘÍKAZOVÉHO PŘÍKAZU ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
+![Ověření duálního profilu virtuálního počítače pomocí rozhraní příkazového řádku ](./media/disk-encryption/verify-encryption-linux/verify-vm-profile-dual-cli.png)
 
 ### <a name="unattached-disks"></a>Nepřipojené disky
 
-Zkontrolujte nastavení šifrování pro disky, které nejsou připojené k virtuálnímu počítače.
+Ověřte nastavení šifrování pro disky, které nejsou připojené k virtuálnímu počítači.
 
 ### <a name="managed-disks"></a>Spravované disky
 
@@ -278,31 +278,31 @@ echo "==========================================================================
 ```
 ### <a name="unmanaged-disks"></a>Nespravované disky
 
-Nespravované disky jsou soubory Virtuálního pevného disku, které se ukládají jako objekty BLOB stránky v účtech úložiště Azure.
+Nespravované disky jsou soubory VHD, které se ukládají jako objekty blob stránky v účtech úložiště Azure.
 
-Chcete-li získat podrobnosti o konkrétním disku, musíte zadat:
+Chcete-li získat podrobnosti o konkrétním disku, je třeba zadat následující:
 
-ID účtu úložiště, který disk obsahuje.
-Připojovací řetězec pro tento konkrétní účet úložiště.
+ID účtu úložiště, který obsahuje disk
+Připojovací řetězec pro daný účet úložiště.
 Název kontejneru, který ukládá disk.
 Název disku.
 
-Tento příkaz obsahuje seznam všech ID pro všechny účty úložiště:
+Tento příkaz vypíše všechna ID pro všechny vaše účty úložiště:
 
 ```bash
 az storage account list --query [].[id] -o tsv
 ```
-ID účtu úložiště jsou uvedeny v následujícím formuláři:
+ID účtu úložiště jsou uvedená v následujícím tvaru:
 
-/subscriptions/\<id předplatného>/resourceGroups/\<název skupiny prostředků>/providers/Microsoft.Storage/storageAccounts/\<název účtu úložiště>
+ID\<předplatného/Subscriptions/\<> název skupiny prostředků/ResourceGroups/\<> název účtu úložiště/Providers/Microsoft.Storage/storageaccounts/>
 
-Vyberte příslušné ID a uložte jej na proměnnou:
+Vyberte odpovídající ID a uložte ho do proměnné:
 ```bash
 id="/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name>"
 ```
 Připojovací řetězec
 
-Tento příkaz získá připojovací řetězec pro jeden konkrétní účet úložiště a uloží jej na proměnnou:
+Tento příkaz načte připojovací řetězec pro jeden konkrétní účet úložiště a uloží ho do proměnné:
 
 ```bash
 ConnectionString=$(az storage account show-connection-string --ids $id --query connectionString -o tsv)
@@ -310,24 +310,24 @@ ConnectionString=$(az storage account show-connection-string --ids $id --query c
 
 Název kontejneru.
 
-Následující příkaz uvádí všechny kontejnery pod účtem úložiště:
+Následující příkaz vypíše všechny kontejnery v rámci účtu úložiště:
 ```bash
 az storage container list --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Kontejner používaný pro disky se obvykle nazývá "vhds"
+Kontejner používaný pro disky se obvykle nazývá "VHD".
 
-Uložení názvu kontejneru na proměnnou 
+Uložit název kontejneru pro proměnnou 
 ```bash
 ContainerName="name of the container"
 ```
 
 Název disku.
 
-Pomocí tohoto příkazu můžete vypsat všechny objekty BLOB v konkrétním kontejneru.
+Tento příkaz slouží k vypsání všech objektů BLOB v konkrétním kontejneru.
 ```bash 
 az storage blob list -c ${ContainerName} --connection-string $ConnectionString --query [].[name] -o tsv
 ```
-Vyberte disk, na který chcete zadat dotaz, a uložit jeho název do proměnné.
+Vyberte disk, na který chcete zadat dotaz, a uložte jeho název na proměnnou.
 ```bash
 DiskName="diskname.vhd"
 ```
@@ -336,29 +336,29 @@ Dotaz na nastavení šifrování disku
 az storage blob show -c ${ContainerName} --connection-string ${ConnectionString} -n ${DiskName} --query metadata.DiskEncryptionSettings
 ```
 
-## <a name="from-the-os"></a>Z operačního es
-Ověřit, zda jsou oddíly datového disku šifrované (a disk operačního systému není)
+## <a name="from-the-os"></a>Z operačního systému
+Ověří, jestli jsou oddíly datových disků šifrované (a disk s operačním systémem není).
 
-Když je oddíl/disk zašifrován, zobrazí se jako typ **krypty,** když není zašifrován, zobrazí se jako typ **součást/disk**
+Když je oddíl nebo disk zašifrovaný, zobrazuje se jako typ **kryptografie** , pokud není zašifrovaný, zobrazuje se jako typ **součásti nebo disku** .
 
 ``` bash
 lsblk
 ```
 
-![Vrstva Krypty operačního systému ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
+![Vrstva kryptografie operačního systému ](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer.png)
 
 Další podrobnosti můžete získat pomocí následující varianty "lsblk". 
 
-Zobrazí se vrstva typu **krypty,** která je připojena rozšířením.
+Zobrazí se vrstva typu **nešifrovaných** typů, která je připojena rozšířením.
 
-Následující příklad ukazuje logické svazky a normální disky s "**kryptoLUKS\_FSTYPE**".
+Následující příklad ukazuje logické svazky a běžné disky s "**kryptografickým\_LUKS FSTYPE**".
 
 ```bash
 lsblk -o NAME,TYPE,FSTYPE,LABEL,SIZE,RO,MOUNTPOINT
 ```
-![Os Krypta vrstva 2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
+![Nešifrovaný vrstva OS 2](./media/disk-encryption/verify-encryption-linux/verify-os-crypt-layer-2.png)
 
-Jako další krok můžete také ověřit, zda je na datovém disku načteny nějaké klíče.
+Jako další krok můžete také ověřit, jestli datový disk obsahuje nějaké klíče.
 
 ``` bash
 cryptsetup luksDump /dev/VGNAME/LVNAME
@@ -368,7 +368,7 @@ cryptsetup luksDump /dev/VGNAME/LVNAME
 cryptsetup luksDump /dev/sdd1
 ```
 
-A která dm zařízení jsou uvedena jako krypta
+A která zařízení DM jsou uvedena jako nešifrovaný
 
 ```bash
 dmsetup ls --target crypt
