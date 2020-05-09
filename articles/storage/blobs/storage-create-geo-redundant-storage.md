@@ -1,30 +1,30 @@
 ---
 title: Kurz – vytvoření vysoce dostupné aplikace s úložištěm BLOB
 titleSuffix: Azure Storage
-description: K zajištění vysoké dostupnosti dat aplikací použijte geograficky redundantní úložiště s přístupem pro čtení.
+description: K zajištění vysoké dostupnosti dat aplikací použijte úložiště geografického a redundantního úložiště s přístupem pro čtení (RA-GZRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606031"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856126"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
 Tento kurz je první částí série. V takovém případě se naučíte, jak zajistit vysokou dostupnost dat aplikace v Azure.
 
-Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a načte objekt BLOB z účtu úložiště s [geograficky redundantním přístupem pro čtení](../common/storage-redundancy.md) (RA-GRS).
+Po dokončení tohoto kurzu budete mít konzolovou aplikaci, která nahrává a načte objekt BLOB z účtu úložiště [geograficky redundantního pro přístup pro čtení](../common/storage-redundancy.md) (RA-GZRS).
 
-RA-GRS funguje replikací transakcí z primární oblasti do sekundární oblasti. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Aplikace používá ke zjištění, ke kterému koncovému bodu, ke kterému se má připojit, způsob [přerušení okruhu](/azure/architecture/patterns/circuit-breaker) , automaticky přepínání mezi koncovými body jako se selháním a obnovením se simuluje.
+Geografická redundance v Azure Storage replikuje transakce asynchronně z primární oblasti do sekundární oblasti, která je od sebe stovky kilometrů. Tento proces replikace zaručuje, že data v sekundární oblasti jsou nakonec konzistentní. Konzolová aplikace používá ke zjištění, ke kterému koncovému bodu se připojuje, automatické přepínání mezi koncovými body, jako jsou chyby a obnovení, a to pomocí vzoru [Break](/azure/architecture/patterns/circuit-breaker) .
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -64,25 +64,24 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 Účet úložiště poskytuje jedinečný obor názvů pro ukládání a přístup k datovým objektům Azure Storage.
 
-Podle těchto kroků můžete vytvořit účet geograficky redundantního úložiště jen pro čtení:
+Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redundantního (RA-GZRS) pro čtení:
 
-1. Vyberte tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2. Na **nové** stránce vyberte **úložiště** .
-3. Vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** v rámci **doporučeného**.
+1. V Azure Portal vyberte tlačítko **vytvořit prostředek** .
+2. Z **nové** stránky vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** .
 4. Vyplňte formulář účtu úložiště následujícími informacemi, jak ukazuje následující obrázek, a vyberte **Vytvořit**:
 
-   | Nastavení       | Navrhovaná hodnota | Popis |
+   | Nastavení       | Ukázková hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Název** | mystorageaccount | Jedinečná hodnota pro váš účet úložiště |
-   | **Model nasazení** | Resource Manager  | Resource Manager obsahuje nejnovější funkce.|
-   | **Druh účtu** | StorageV2 | Podrobnosti o typech účtů najdete v tématu [Typy účtů úložiště](../common/storage-introduction.md#types-of-storage-accounts). |
-   | **Výkon** | Standard | Pro ukázkový scénář stačí Standard. |
-   | **Replikace**| Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) | To je nezbytné, aby ukázka fungovala. |
-   |**Předplatné** | Vaše předplatné |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
-   |**ResourceGroup** | myResourceGroup |Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
-   |**Umístění** | USA – východ | Zvolte umístění. |
+   | **Předplatné** | *Moje předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
+   | **ResourceGroup** | *myResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
+   | **Název** | *mystorageaccount* | Jedinečný název vašeho účtu úložiště. |
+   | **Umístění** | *USA – východ* | Zvolte umístění. |
+   | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
+   | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |
+   | **Replikace**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
+   | **Access tier (Vrstva přístupu)**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
 
-![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
@@ -173,7 +172,7 @@ Nainstalujte požadované závislosti. Provedete to tak, že otevřete příkazo
 
 V aplikaci Visual Studio stiskněte klávesu **F5** nebo vyberte **začít** a zahajte ladění aplikace. Sada Visual Studio automaticky obnoví chybějící balíčky NuGet, pokud jsou nakonfigurované, a další informace najdete [v instalaci a přeinstalaci balíčků s obnovením balíčků](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) .
 
-Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
+Spustí se okno konzoly a aplikace začne běžet. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se image replikuje do sekundárního koncového bodu RA-GZRS. Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
 
 ![Spuštěná konzolová aplikace](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ Ve vzorovém kódu slouží úloha `RunCircuitBreakerAsync` v souboru `Program.c
 
 # <a name="python"></a>[Python](#tab/python)
 
-Pokud chcete aplikaci spustit na terminálu nebo v příkazovém řádku, přejděte do adresáře **circuitbreaker.py** a potom zadejte `python circuitbreaker.py`. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se obrázek replikoval na sekundární koncový bod geograficky redundantního úložiště jen pro čtení (RA-GRS). Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
+Pokud chcete aplikaci spustit na terminálu nebo v příkazovém řádku, přejděte do adresáře **circuitbreaker.py** a potom zadejte `python circuitbreaker.py`. Aplikace nahraje obrázek **HelloWorld.png** z řešení na účet úložiště. Aplikace zkontroluje, jestli se image replikuje do sekundárního koncového bodu RA-GZRS. Potom začne stahovat obrázek až 999x. Každý přečtený je reprezentován hodnotou **P** nebo **s**. Kde **P** představuje primární koncový bod a **y** představuje sekundární koncový bod.
 
 ![Spuštěná konzolová aplikace](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>Další kroky
 
-V první části série jste se dozvěděli o tom, že je aplikace vysoce dostupná pomocí účtů úložiště RA-GRS.
+V první části série jste se dozvěděli o tom, že je aplikace vysoce dostupná pomocí účtů úložiště RA-GZRS.
 
-Přejděte k druhé části série, kde se dozvíte, jak simulovat selhání a přinutit aplikaci použít sekundární koncový bod geograficky redundantního účtu úložiště jen pro čtení.
+Přejděte k druhé části série, kde se dozvíte, jak simulovat selhání a aplikace vynutí použití sekundárního koncového bodu RA-GZRS.
 
 > [!div class="nextstepaction"]
-> [Simulace selhání při čtení z primární oblasti](storage-simulate-failure-ragrs-account-app.md)
+> [Simulace selhání při čtení z primární oblasti](simulate-primary-region-failure.md)

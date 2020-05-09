@@ -2,15 +2,15 @@
 title: Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 description: Tento dokument popisuje, jak vytvořit funkci Azure pomocí TrackAvailability (), která se pravidelně spouští podle konfigurace zadané ve funkci TimerTrigger. Výsledky tohoto testu se odešlou do vašeho prostředku Application Insights, kde se budete moct dotazovat na data výsledků dostupnosti a upozornit na ně. Přizpůsobené testy vám umožní zapisovat složitější testy dostupnosti, než je možné pomocí uživatelského rozhraní portálu, monitorovat aplikaci v rámci virtuální sítě Azure, změnit adresu koncového bodu nebo vytvořit test dostupnosti, pokud není ve vaší oblasti dostupný.
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665795"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791101"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Vytvoření a spuštění vlastních testů dostupnosti pomocí Azure Functions
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Abyste se ujistili, že všechno funguje, můžete se podívat na graf na kartě Dostupnost prostředku Application Insights.
 
 > [!NOTE]
-> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest. csx, zobrazí se úspěšné výsledky, jako na snímcích obrazovky níže, pokud jste tak nepracovali, zobrazí se neúspěšné výsledky.
+> Pokud jste implementovali vlastní obchodní logiku v runAvailabilityTest. csx, zobrazí se úspěšné výsledky, jako na snímcích obrazovky níže, pokud jste tak nepracovali, zobrazí se neúspěšné výsledky. Testy vytvořené pomocí `TrackAvailability()` se zobrazí s **vlastním** názvem testu vedle názvu testu.
 
 >[!div class="mx-imgBorder"]
->![Karta dostupnost s úspěšnými výsledky](media/availability-azure-functions/availtab.png)
-
-Při nastavování testu pomocí Azure Functions všimnete si, že na rozdíl od použití možnosti **Přidat test** na kartě Dostupnost nebude název testu zobrazen a nebudete s ním moci pracovat. Výsledky jsou vizuálně vizuální, ale místo stejného podrobného zobrazení, které získáte při vytváření testu dostupnosti prostřednictvím portálu, získáte souhrnné zobrazení.
+>![Karta dostupnost s úspěšnými výsledky](media/availability-azure-functions/availability-custom.png)
 
 Chcete-li zobrazit podrobnosti o koncových transakcích, vyberte možnost **úspěšné** nebo **neúspěšné** v oblasti podrobností a pak vyberte ukázku. Můžete také získat informace o podrobnostech transakce, a to tak, že vyberete datový bod v grafu.
 

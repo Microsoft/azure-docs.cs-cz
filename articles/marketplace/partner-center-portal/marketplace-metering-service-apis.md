@@ -1,18 +1,18 @@
 ---
-title: Rozhraní API služby měření softwaru Marketplace | Azure Marketplace
-description: Událost použití pro nabídky SaaS v Azure Marketplace.
+title: Rozhraní API služby měření – komerční tržiště Microsoftu
+description: Rozhraní API události využití umožňuje generovat události využití pro nabídky SaaS v Microsoft AppSource a Azure Marketplace.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275743"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857865"
 ---
 # <a name="marketplace-metering-service-apis"></a>Rozhraní API služeb měření na marketplace
 
@@ -194,7 +194,7 @@ OK
 
 Popis stavového kódu odkazovaného `BatchUsageEvent` v odpovědi rozhraní API:
 
-| Kód stavu  | Popis |
+| Stavový kód  | Description |
 | ---------- | -------------------- |
 | `Accepted` | Přijatý kód. |
 | `Expired` | Použití vypršelo. |

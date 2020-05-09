@@ -3,12 +3,12 @@ title: Úvod do Azure Advisor
 description: K optimalizaci nasazení Azure použijte Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443097"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854432"
 ---
 # <a name="introduction-to-azure-advisor"></a>Úvod do Azure Advisor
 
@@ -24,7 +24,7 @@ Pomocí Poradce můžete:
 
 Ke službě Advisor můžete přistupovat prostřednictvím [Azure Portal](https://aka.ms/azureadvisordashboard). Přihlaste se k [portálu](https://portal.azure.com), vyhledejte **Poradce** v navigační nabídce nebo ho vyhledejte v nabídce **všechny služby** .
 
-Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení se dělí do čtyř kategorií: 
+Řídicí panel poradce zobrazuje individuální doporučení pro všechna Vaše předplatná.  Filtry můžete použít k zobrazení doporučení pro konkrétní předplatná a typy prostředků.  Doporučení jsou rozdělená na pět kategorií: 
 
 * **Vysoká dostupnost**: zajištění a zlepšení kontinuity důležitých podnikových aplikací. Další informace najdete v tématu [doporučení pro vysokou dostupnost služby Advisor](advisor-high-availability-recommendations.md).
 * **Zabezpečení**: detekuje hrozby a ohrožení zabezpečení, které by mohly vést k porušení zabezpečení. Další informace najdete v tématu [doporučení pro zabezpečení služby Advisor](advisor-security-recommendations.md).
