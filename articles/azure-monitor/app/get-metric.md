@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 309e467f5831961b6bc5a94ad2ce05fd3b991794
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629265"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927900"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Kolekce vlastních metrik v rozhraní .NET a .NET Core
 
@@ -20,7 +20,7 @@ Sady SDK Azure Monitor Application Insights .NET a .NET Core mají dvě různé 
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus getmetric
 
-`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním KANÁLEM sady SDK inicializátorů telemetrie a procesorů. Na rozdíl `TrackMetric()`od `GetMetric()` , zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
+`TrackMetric()`odesílá nezpracované telemetrie, která označuje metriku. Je neefektivní odeslat jednu položku telemetrie pro každou hodnotu. `TrackMetric()`je také neefektivní z pohledu výkonu, protože každý `TrackMetric(item)` projde kompletním KANÁLEM sady SDK inicializátorů telemetrie a procesorů. Na rozdíl `TrackMetric()`od `GetMetric()` , zpracovává místní předagregaci za vás a poté odesílá agregovanou souhrnnou metriku v pevném intervalu 1 minuty. Takže pokud potřebujete úzce monitorovat určitou vlastní metriku na druhé nebo dokonce úrovni milisekund, můžete tak učinit, ale jenom náklady na úložiště a síťovou komunikaci jenom sledujete každou minutu. Tím se značně snižuje riziko omezování, protože celkový počet položek telemetrie, které je potřeba odeslat pro agregovanou metriku, se výrazně sníží.
 
 V Application Insights vlastní metriky shromažďované přes `TrackMetric()` a `GetMetric()` nepodléhají [vzorkování](https://docs.microsoft.com/azure/azure-monitor/app/sampling). Vzorkování důležitých metrik může vést k situacím, kdy upozornění, která jste mohli vygenerovat kolem těchto metrik, by mohla být nespolehlivá. Když si vaše vlastní metriky nikdy nevzorkování, můžete si obecně být jistí, že když dojde k porušení prahových hodnot upozornění, aktivuje se výstraha.  Ale vzhledem k tomu, že vlastní metriky nejsou vzorkované, existují potenciální obavy.
 
@@ -186,7 +186,22 @@ Všimněte si ale, že nebudete schopni rozdělit metriku podle vaší nové vla
 
 ![Rozdělení podpory](./media/get-metric/splitting-support.png)
 
-Ve výchozím nastavení se multidimenzionální metriky v prostředí metrického Průzkumníka nezapnou v Application Insights prostředky. Pokud chcete toto chování zapnout, přejdete na kartu využití a odhadované náklady zaškrtnutím možnosti [Povolit upozorňování u vlastních dimenzí metriky](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+Ve výchozím nastavení se multidimenzionální metriky v prostředí metrického Průzkumníka nezapnou v Application Insights prostředky.
+
+### <a name="enable-multi-dimensional-metrics"></a>Zapnout multidimenzionální metriky
+
+Pokud chcete pro prostředek Application Insights povolit multidimenzionální metriky, vyberte **využití a odhadované náklady** > .**vlastní metriky** > **umožňují upozorňování na vlastní dimenze** > metriky**OK**. Další podrobnosti najdete [tady](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation).
+
+Po provedení této změny a odeslání nové multidimenzionální telemetrie budete moci **použít rozdělení**.
+
+> [!NOTE]
+> Po zapnutí funkce na portálu budou mít dimenze uložené jenom nově odeslané metriky.
+
+![Použít rozdělení](./media/get-metric/apply-splitting.png)
+
+A zobrazte agregace metrik pro každou dimenzi _FormFactor_ :
+
+![Faktory formuláře](./media/get-metric/formfactor.png)
 
 ### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>Jak používat MetricIdentifier, pokud existuje více než tři dimenze
 
@@ -199,21 +214,6 @@ MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold
 Metric computersSold  = _telemetryClient.GetMetric(id);
 computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
 ```
-
-### <a name="enable-multi-dimensional-metrics"></a>Zapnout multidimenzionální metriky
-
-Pokud chcete pro prostředek Application Insights povolit multidimenzionální metriky, vyberte **využití a odhadované náklady** > .**vlastní metriky** > **umožňují upozorňování na vlastní dimenze** > metriky**OK**.
-
-Po provedení této změny a odeslání nové multidimenzionální telemetrie budete moci **použít rozdělení**.
-
-> [!NOTE]
-> Po zapnutí funkce na portálu budou mít dimenze uložené jenom nově odeslané metriky.
-
-![Použít rozdělení](./media/get-metric/apply-splitting.png)
-
-A zobrazte agregace metrik pro každou dimenzi _FormFactor_ :
-
-![Faktory formuláře](./media/get-metric/formfactor.png)
 
 ## <a name="custom-metric-configuration"></a>Konfigurace vlastní metriky
 
