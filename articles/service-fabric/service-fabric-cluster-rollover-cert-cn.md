@@ -3,12 +3,12 @@ title: Převeďte certifikát clusteru Azure Service Fabric.
 description: Naučte se, jak převrátit Service Fabric certifikát clusteru identifikovaný běžným názvem certifikátu.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a5fe2a7f2a05295605ef0e1d5db321a83b96712
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451961"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611904"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ruční vrácení Service Fabric certifikátu clusteru
 Pokud se platnost certifikátu Service Fabric clusteru blíží k vypršení platnosti, budete muset certifikát aktualizovat.  Změna certifikátu je jednoduchá, pokud byl cluster [nastavený tak, aby používal certifikáty založené na běžném názvu](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (místo kryptografických otisků).  Získejte nový certifikát od certifikační autority s novým datem vypršení platnosti.  Certifikáty podepsané svým držitelem nejsou podporované pro produkční Service Fabric clustery, aby zahrnovaly certifikáty vygenerované během pracovního postupu vytvoření Azure Portal clusteru. Nový certifikát musí mít stejný běžný název jako starší certifikát. 
@@ -64,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose

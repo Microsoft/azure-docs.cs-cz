@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: První přidání nástroje
       href: how-to-add-tool-first-time.md
+    - name: Příprava na práci s nástroji ISV / Movere
+      href: prepare-isv-movere.md
     - name: Přidání nástrojů pro vyhodnocení
       href: how-to-assess.md
     - name: Nasazení zařízení Azure Migrate

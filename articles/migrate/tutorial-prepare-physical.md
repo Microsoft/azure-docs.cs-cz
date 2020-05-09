@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci fyzických ser
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535277"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901412"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Příprava na posouzení a migraci fyzických serverů do Azure
 
@@ -105,10 +105,9 @@ Připravte Azure na migraci fyzických serverů pomocí migrace serveru.
 ### <a name="assign-azure-account-permissions"></a>Přiřazení oprávnění účtu Azure
 
 Přiřaďte roli Přispěvatel virtuálních počítačů k účtu Azure. To poskytuje oprávnění k těmto akcím:
-
-    - Vytvoření virtuálního počítače ve vybrané skupině prostředků
-    - Vytvoření virtuálního počítače ve vybrané virtuální síti
-    - Zapište na spravovaný disk Azure. 
+  - Vytvoření virtuálního počítače ve vybrané skupině prostředků
+  - Vytvoření virtuálního počítače ve vybrané virtuální síti
+  - Zapište na spravovaný disk Azure. 
 
 ### <a name="create-an-azure-network"></a>Vytvoření sítě Azure
 

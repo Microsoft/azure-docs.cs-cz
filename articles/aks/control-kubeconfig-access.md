@@ -3,13 +3,13 @@ title: Omezení přístupu k kubeconfig ve službě Azure Kubernetes (AKS)
 description: Naučte se řídit přístup ke konfiguračnímu souboru Kubernetes (kubeconfig) pro správce clusteru a uživatele clusteru.
 services: container-service
 ms.topic: article
-ms.date: 01/28/2020
-ms.openlocfilehash: 25c710cce2855d6af985d3f46082f47573bbc101
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 87f4dc18fc595242117e10233d4fecd77e66373f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259549"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890883"
 ---
 # <a name="use-azure-role-based-access-controls-to-define-access-to-the-kubernetes-configuration-file-in-azure-kubernetes-service-aks"></a>Použití řízení přístupu na základě role v Azure k definování přístupu ke konfiguračnímu souboru Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -40,7 +40,8 @@ Tyto dvě předdefinované role:
 
 Tyto role RBAC se dají použít pro uživatele nebo skupinu Azure Active Directory (AD).
 
-> ! ZNAČTE V clusterech používajících službu Azure AD mají uživatelé s rolí *clusterUser* prázdný soubor *kubeconfig* , který vyzývá přihlášení. Po přihlášení uživatelé mají přístup na základě nastavení uživatele nebo skupiny Azure AD. Uživatelé s rolí *clusterAdmin* mají přístup správce.
+> [!NOTE]
+> V clusterech používajících službu Azure AD mají uživatelé s rolí *clusterUser* prázdný soubor *kubeconfig* , který vyzývá přihlášení. Po přihlášení uživatelé mají přístup na základě nastavení uživatele nebo skupiny Azure AD. Uživatelé s rolí *clusterAdmin* mají přístup správce.
 >
 > Clustery, které nepoužívají Azure AD, používají jenom roli *clusterAdmin* .
 

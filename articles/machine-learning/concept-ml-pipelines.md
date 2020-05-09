@@ -1,7 +1,6 @@
 ---
-title: Co jsou kanály ML
-titleSuffix: Azure Machine Learning
-description: V tomto článku se dozvíte o výhodách kanálů pro strojové učení (ML), které můžete vytvořit pomocí sady Azure Machine Learning SDK pro Python. Kanály pro strojové učení jsou používány odborníky přes data k sestavování, optimalizaci a správě pracovních postupů strojového učení.
+title: Co jsou Azure Machine Learning kanály
+description: Přečtěte si, jak kanály pro strojové učení (ML) pomůžou vytvářet, optimalizovat a spravovat pracovní postupy machine learningu.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +8,16 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878574"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983444"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Co jsou kanály Azure Machine Learning?
 
-Azure Machine Learning kanály umožňují vytvářet pracovní postupy v projektech machine learningu. Tyto pracovní postupy mají několik výhod: 
+V tomto článku se dozvíte, jak Azure Machine Learning kanály pomůžou vytvářet, optimalizovat a spravovat pracovní postupy machine learningu. Tyto pracovní postupy mají několik výhod: 
 
 + Administrativ
 + Rychlost
@@ -45,7 +44,6 @@ Cloud Azure nabízí několik dalších kanálů, z nichž každý má jiný ú�
 | Orchestrace modelů (Machine Learning) | Odborník přes data | Azure Machine Learning kanály | Kanály Kubeflow | Model dat > | Distribuce, ukládání do mezipaměti, kód – první, opakované použití | 
 | Orchestrace dat (PREP pro data) | Datový inženýr | [Kanály Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Postup Apache | Data-> data | Pohyb silného typu. Aktivity zaměřené na data. |
 | Kód & orchestrace aplikace (CI/CD) | Vývojář aplikace/OPS | [Kanály Azure DevOps](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > App/Service | Nejvyšší podpora otevřených a flexibilních aktivit, fronty schvalování, fáze s pořízením | 
-
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Co můžou kanály Azure ML dělat?
 

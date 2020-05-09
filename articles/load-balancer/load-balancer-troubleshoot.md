@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801718"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82925945"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Začněte</a></span><span class="has-padding-small">rychle řešit potíže pomocí našeho virtuálního agenta a spusťte <b>automatizovanou diagnostiku.</b> </span> Prohlášení o <sub>zásadách ochrany osobních údajů</sub> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <div align="right"></div></a></span></p>
@@ -132,11 +132,15 @@ Pokud je interní Load Balancer nakonfigurovaný v rámci virtuální sítě a j
 ### <a name="cause--the-backend-port-cannot-be-modified-for-a-load-balancing-rule-thats-used-by-a-health-probe-for-load-balancer-referenced-by-vm-scale-set"></a>Příčina: port back-endu nejde upravit pro pravidlo vyrovnávání zatížení, které používá sonda stavu pro nástroj pro vyrovnávání zatížení, na který odkazuje sada škálování virtuálního počítače.
 **Řešení** Pokud chcete změnit port, můžete odstranit sondu stavu tak, že aktualizujete sadu škálování virtuálního počítače, aktualizujte port a pak znovu nakonfigurujete test stavu.
 
+## <a name="symptom-small-traffic-is-still-going-through-load-balancer-after-removing-vms-from-backend-pool-of-the-load-balancer"></a>Příznak: po odebrání virtuálních počítačů ze back-endu fondu pro vyrovnávání zatížení stále probíhá malý provoz prostřednictvím nástroje pro vyrovnávání zatížení. 
+### <a name="cause--vms-removed-from-backend-pool-should-no-longer-receive-traffic-the-small-amount-of-network-traffic-could-be-related-to-storage-dns-and-other-functions-within-azure"></a>Příčina: virtuální počítače odebrané z back-end fondu by už neměly přijímat přenosy. Malé množství síťových přenosů může souviset s úložištěm, DNS a dalšími funkcemi v Azure. 
+K ověření můžete provést síťové trasování. Plně kvalifikovaný název domény, který se používá pro účty BLOB Storage, je uvedený v části vlastnosti každého účtu úložiště.  Z virtuálního počítače v rámci vašeho předplatného Azure můžete pomocí nástroje Nslookup určit IP adresu Azure přiřazenou k tomuto účtu úložiště.
+
 ## <a name="additional-network-captures"></a>Další síťové zachycení
 Pokud se rozhodnete otevřít případ podpory, shromážděte při rychlejším řešení následující informace. Vyberte jeden back-end virtuální počítač pro provedení následujících testů:
 - Pomocí Psping z jednoho ze back-end virtuálních počítačů v rámci virtuální sítě otestujte odpověď na port testu paměti (příklad: Psping 10.0.0.4:3389) a výsledky záznamu. 
 - Pokud se v těchto testech testu příkazu otestuje žádná odpověď, spusťte pro virtuální počítač back-end a virtuální počítač s testovacím virtuálním počítačem při spuštění PsPing a pak zastavte trasování Netsh. 
-  
+ 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud předchozí kroky problém nevyřeší, otevřete [lístek podpory](https://azure.microsoft.com/support/options/).

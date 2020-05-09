@@ -1,5 +1,6 @@
 ---
-title: Protokol OpenID Connect – Microsoft Identity Platform | Azure
+title: Microsoft Identity Platform a OpenID Connect Protocol | Azure
+titleSuffix: Microsoft identity platform
 description: Sestavujte webové aplikace pomocí implementace ověřovacího protokolu OpenID Connect v platformě Microsoft Identity Platform.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82688219"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926489"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform a OpenID Connect Protocol
 
-OpenID Connect je ověřovací protokol založený na OAuth 2,0, který můžete použít k bezpečnému přihlášení uživatele k webové aplikaci. Když použijete implementaci OpenID Connect koncového bodu platformy Microsoft identity, můžete přidat přihlašování a přístup k rozhraní API k vašim webovým aplikacím. Tento článek ukazuje, jak to provést nezávisle na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití knihoven Microsoft Open-Source Library.
+OpenID Connect (OIDC) je ověřovací protokol založený na OAuth 2,0, který můžete použít k bezpečnému přihlášení uživatele k webové aplikaci. Když použijete implementaci OpenID Connect koncového bodu platformy Microsoft identity, můžete přidat přihlašování a přístup k rozhraní API k vašim webovým aplikacím. Tento článek ukazuje, jak to provést nezávisle na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití knihoven Microsoft Open-Source Library.
 
 [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozšiřuje *autorizační* protokol OAuth 2,0, který se použije jako *ověřovací* protokol, abyste mohli provádět jednotné přihlašování pomocí OAuth. OpenID Connect zavádí koncept *tokenu ID*, což je token zabezpečení, který umožňuje klientovi ověřit identitu uživatele. Token ID také získá základní informace o profilu uživatele. Vzhledem k tomu, že OpenID Connect rozšiřuje OAuth 2,0, můžou aplikace bezpečně získat *přístupové tokeny*, které se dají použít k přístupu k prostředkům zabezpečeným [autorizačním serverem](active-directory-v2-protocols.md#the-basics). Koncový bod platformy Microsoft Identity taky umožňuje aplikacím třetích stran, které jsou zaregistrované ve službě Azure AD, vystavovat přístupové tokeny pro zabezpečené prostředky, jako jsou webová rozhraní API. Další informace o tom, jak nastavit aplikaci pro vydávání přístupových tokenů, najdete v tématu [Registrace aplikace s koncovým bodem Microsoft Identity Platform](quickstart-register-app.md). Pokud vytváříte [webovou aplikaci](v2-app-types.md#web-apps) , která je hostována na serveru a přístupná přes prohlížeč, doporučujeme použít OpenID Connect.
 

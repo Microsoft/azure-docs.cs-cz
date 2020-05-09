@@ -7,44 +7,31 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 249b9bb282024431d0ecd38c62d8d780602e6709
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5400b47c1e0b4657e40d2c57f8212711bbdaf3f
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229965"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927067"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurace chování relace v Azure Active Directory B2C
 
-Tato funkce poskytuje jemně odstupňovaný ovládací prvek na [základě toku pro jednotlivé uživatele](user-flow-overview.md):
-
-- Životnost relací webových aplikací, které jsou spravovány Azure AD B2C.
-- Chování jednotného přihlašování (SSO) napříč několika aplikacemi a toky uživatelů ve vašem Azure AD B2C tenantovi.
-
-Tato nastavení nejsou k dispozici pro uživatelské toky resetování hesla.
-
-Azure AD B2C podporuje [ověřovací protokol OpenID Connect](openid-connect.md) pro povolení zabezpečeného přihlašování k webovým aplikacím. Pomocí následujících vlastností můžete spravovat relace webových aplikací:
+Správa [relací jednotného přihlašování (SSO)](session-overview.md) v Azure Active Directory B2C (Azure AD B2C) umožňuje správci řídit interakci s uživatelem poté, co uživatel již ověřený. Správce může například řídit, jestli se zobrazuje výběr zprostředkovatelů identity, nebo jestli je potřeba zadat podrobnosti o účtu znovu. Tento článek popisuje, jak nakonfigurovat nastavení jednotného přihlašování pro Azure AD B2C.
 
 ## <a name="session-behavior-properties"></a>Vlastnosti chování relace
+
+Pomocí následujících vlastností můžete spravovat relace webových aplikací:
 
 - **Doba života relace webové aplikace (minuty)** – doba života souboru cookie relace Azure AD B2C's, která se po úspěšném ověření uloží v prohlížeči uživatele.
     - Výchozí hodnota = 1440 minut.
     - Minimální (včetně) = 15 minut.
     - Maximum (včetně) = 1440 minut.
-- **Časový limit relace webové aplikace** – Pokud je tento přepínač nastavený na **absolutní**, uživatel se po uplynutí časového intervalu zadaného v době **Trvání relace webové aplikace (minuty)** bude muset znovu ověřit. Pokud je tento přepínač nastavený na **vracení** (výchozí nastavení), zůstane uživatel přihlášený, dokud bude uživatel ve vaší webové aplikaci neustále aktivní.
-- **Konfigurace jednotného přihlašování** Pokud máte ve svém tenantovi B2C více aplikací a toků uživatelů, můžete pomocí vlastnosti **Konfigurace jednotného přihlašování** spravovat interakce uživatelů napříč nimi. Vlastnost můžete nastavit na jedno z následujících nastavení:
-    - **Tenant** – toto nastavení je výchozí. Pomocí tohoto nastavení může více aplikací a uživatelských toků v tenantovi B2C sdílet stejnou relaci uživatele. Když se například uživatel přihlásí do aplikace, může se při přístupu uživatele bez problémů přihlásit k jiné společnosti Contoso farmacie.
-    - **Aplikace** – toto nastavení umožňuje udržovat uživatelskou relaci exkluzivně pro aplikaci, nezávisle na jiných aplikacích. Například pokud chcete, aby se uživatel přihlásil do společnosti Contoso Farmaci (se stejnými přihlašovacími údaji), i když je uživatel již přihlášen k nákupu společnosti Contoso, jiná aplikace ve stejném tenantovi B2C.
-    - **Zásady** – toto nastavení umožňuje udržovat relaci uživatele výhradně pro uživatelský tok, a to nezávisle na aplikacích, které ji používají. Pokud se například uživatel už přihlásil a dokončil krok vícefaktorového ověřování (MFA), může se uživateli udělit přístup k několika částem aplikace s vyšším zabezpečením, pokud relace vázaná na tok uživatele nevyprší.
-    - **Disabled** – toto nastavení vynutí, aby uživatel při každém spuštění zásady spouštěl celý tok uživatele.
+- **Časový limit relace webové aplikace** – [Typ vypršení platnosti relace](session-overview.md#session-expiry-type), *návratová*nebo *absolutní*. 
+- **Konfigurace jednotného přihlašování** – [rozsah relace](session-overview.md#session-scope) chování jednotného přihlašování (SSO) v rámci více aplikací a toků uživatelů ve vašem Azure AD B2C klientovi. 
 
-Následující případy použití jsou povolené pomocí těchto vlastností:
-
-- Splnění požadavků na zabezpečení a dodržování předpisů v oboru nastavením příslušných životností relací webových aplikací.
-- Vynutí ověřování po nastaveném časovém období během interakce uživatele s vysokou zabezpečením části vaší webové aplikace.
 
 ## <a name="configure-the-properties"></a>Konfigurace vlastností
 

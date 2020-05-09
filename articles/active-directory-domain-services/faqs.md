@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655354"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926965"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
@@ -91,6 +91,7 @@ Ano. Každá Azure AD Domain Services spravovaná doména obsahuje dva řadiče 
 * [Můžu v mé spravované doméně upravovat nebo přidávat záznamy DNS?](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [Jaké jsou zásady životního cyklu hesel ve spravované doméně?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Poskytuje Azure AD Domain Services ochranu před uzamčením účtu AD?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Je možné nakonfigurovat systém souborů DFS (Distributed File System) (DFS) a replikaci v rámci Azure AD Domain Services?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Můžu se k řadiči domény pro spravovanou doménu připojit pomocí vzdálené plochy?
 Ne. Nemáte oprávnění pro připojení k řadičům domény pro spravovanou doménu pomocí vzdálené plochy. Členové skupiny *Správci AAD DC* můžou spravovat spravovanou doménu pomocí nástrojů pro správu služby AD, jako je centrum pro správu služby Active Directory (ADAC) nebo prostředí AD PowerShell. Tyto nástroje se instalují pomocí funkce *Nástroje pro vzdálenou správu serveru* na Windows serveru připojeném ke spravované doméně. Další informace najdete v tématu [Vytvoření virtuálního počítače pro správu pro konfiguraci a správu Azure AD Domain Services spravované domény](tutorial-create-management-vm.md).
@@ -118,6 +119,9 @@ Výchozí doba života hesla ve spravované doméně Azure AD Domain Services je
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Poskytuje Azure AD Domain Services ochranu před uzamčením účtu AD?
 Ano. Pět neplatných pokusů o zadání hesla ve spravované doméně způsobí, že se uživatelský účet zamkne po dobu 30 minut. Po 30 minutách se uživatelský účet automaticky odemkne. Neplatné pokusy o zadání hesla ve spravované doméně nezamkne uživatelský účet ve službě Azure AD. Uživatelský účet je uzamčený pouze v rámci vaší Azure AD Domain Services spravované domény. Další informace najdete v tématu [zásady hesel a uzamčení účtů ve spravovaných doménách](password-policy.md).
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Je možné nakonfigurovat systém souborů DFS (Distributed File System) a replikaci v rámci Azure AD Domain Services?
+Ne. Systém souborů DFS (Distributed File System) (DFS) a replikace nejsou k dispozici při použití Azure AD Domain Services.
 
 ## <a name="billing-and-availability"></a>Fakturace a dostupnost
 

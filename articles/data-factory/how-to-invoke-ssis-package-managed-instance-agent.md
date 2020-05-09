@@ -1,6 +1,6 @@
 ---
-title: Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL Database
-description: Naučte se spouštět balíčky SSIS pomocí agenta spravované instance Azure SQL Database.
+title: Plánování spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL Database
+description: Naučte se, jak naplánovat spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL Database.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,14 +9,17 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: fcbfeb5ab3a3a80fdb8f7e355f290451d4afe804
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f230e4d33686b006b20e856d5e8033847e3f3d67
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144806"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628482"
 ---
-# <a name="run-ssis-packages-by-using-azure-sql-database-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL Database
+# <a name="schedule-ssis-package-executions-by-using-azure-sql-database-managed-instance-agent"></a>Plánování spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL Database
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+
 Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) pomocí Azure SQL Database agenta spravované instance. Tato funkce poskytuje chování, které se podobá tomu, když naplánujete balíčky SSIS pomocí agenta SQL Server v místním prostředí.
 
 Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve spravované instanci Azure SQL Database nebo systému souborů, jako jsou soubory Azure.
@@ -78,7 +81,7 @@ V tomto postupu použijete Azure SQL Database agenta spravované instance ke spu
 
         ![Možnosti pro typ zdroje souboru](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-file-system.png)
       
-        Cesta k balíčku je ** \\ <storage account name>File.Core.Windows.NET\<název sdílené složky>\<název balíčku>. dtsx**.
+        Cesta k balíčku je **`\\<storage account name>.file.core.windows.net\<file share name>\<package name>.dtsx`**.
       
         V části **přihlašovací údaje pro přístup k souboru balíčku**zadejte název účtu služby Azure a klíč účtu pro přístup k souboru Azure. Doména je nastavená jako **Azure**.
 
@@ -89,11 +92,14 @@ V tomto postupu použijete Azure SQL Database agenta spravované instance ke spu
         Zadejte odpovídající doménu, uživatelské jméno a heslo pro přístup k souboru balíčku sdílené síťové složky.
    1. Pokud je soubor balíčku zašifrovaný pomocí hesla, vyberte heslo pro **šifrování** a zadejte heslo.
 1. Na kartě **Konfigurace** zadejte cestu ke konfiguračnímu souboru, pokud potřebujete konfigurační soubor ke spuštění balíčku SSIS.
+   Pokud svou konfiguraci uložíte ve službě soubory Azure, bude cesta konfigurace **`\\<storage account name>.file.core.windows.net\<file share name>\<configuration name>.dtsConfig`**.
 1. Na kartě **Možnosti spuštění** můžete zvolit, zda chcete-li spustit balíček SSIS pomocí **ověřování systému Windows** nebo **32 bitového běhu** .
-1. Na kartě **protokolování** můžete zvolit cestu protokolování a odpovídající přihlašovací údaje pro přístup k protokolování pro ukládání souborů protokolu. Ve výchozím nastavení je cesta protokolování stejná jako cesta ke složce balíčku a přihlašovací údaje pro přístup k balíčkům jsou stejné jako přihlašovací údaje pro přístup k balíčku.
+1. Na kartě **protokolování** můžete zvolit cestu protokolování a odpovídající přihlašovací údaje pro přístup k protokolování pro ukládání souborů protokolu. 
+   Ve výchozím nastavení je cesta protokolování stejná jako cesta ke složce balíčku a přihlašovací údaje pro přístup k balíčkům jsou stejné jako přihlašovací údaje pro přístup k balíčku.
+   Pokud vaše protokoly ukládáte do souborů Azure, vaše cesta protokolování bude **`\\<storage account name>.file.core.windows.net\<file share name>\<log folder name>`**.
 1. Na kartě **nastavit hodnoty** můžete zadat cestu a hodnotu vlastnosti pro přepsání vlastností balíčku.
  
-   Chcete-li například přepsat hodnotu proměnné uživatele, zadejte její cestu v následujícím formátu: **\package.Variables [uživatel:<variable name>:]. Hodnota**.
+   Chcete-li například přepsat hodnotu proměnné uživatele, zadejte cestu v následujícím formátu: **`\Package.Variables[User::<variable name>].Value`**.
 1. Výběrem **OK** uložte konfiguraci úlohy agenta.
 1. Spusťte úlohu agenta a spusťte balíček SSIS.
 

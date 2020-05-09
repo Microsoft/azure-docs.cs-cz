@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662072"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738078"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Struktura protokolů Azure Monitor
 Možnost rychle získat přehled o datech pomocí [dotazu protokolu](log-query-overview.md) je výkonná funkce Azure monitor. Chcete-li vytvořit efektivní a užitečné dotazy, měli byste pochopit některé základní koncepty, jako je například umístění dat, která potřebujete, a způsob jejího strukturování. Tento článek poskytuje základní koncepty, které potřebujete, abyste mohli začít.
@@ -54,16 +54,17 @@ Na rozdíl od Log Analytics pracovního prostoru má Application Insights aplika
 
 | Table | Popis | 
 |:---|:---|
-| availabilityResults | Souhrnná data z testů dostupnosti. |
-| browserTimings      | Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat. |
-| customEvents        | Vlastní události vytvořené vaší aplikací |
-| customMetrics       | Vlastní metriky vytvořené vaší aplikací |
-| závislosti        | Volání z aplikace do externích součástí. |
-| výjimek          | Výjimky vyvolané modulem runtime aplikace |
-| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči |
-| Čítače výkonu | Měření výkonu z výpočetních prostředků, které podporují aplikaci. |
-| požádal            | Podrobnosti o jednotlivých žádostech o aplikaci  |
-| trasování              | Výsledky z distribuovaného trasování. |
+| availabilityResults   | Souhrnná data z testů dostupnosti.
+| browserTimings      |     Data o výkonu klienta, například čas potřebný ke zpracování příchozích dat.
+| customEvents        | Vlastní události vytvořené vaší aplikací
+| customMetrics       | Vlastní metriky vytvořené vaší aplikací
+| závislosti        | Volání z aplikace do jiných komponent (včetně externích komponent) zaznamenaných prostřednictvím TrackDependency () – například volání REST API, databáze nebo systému souborů. 
+| výjimek            | Výjimky vyvolané modulem runtime aplikace zachycují výjimky na straně serveru i na straně klienta (prohlížeče).
+| pageViews           | Data o jednotlivých zobrazeních webu s informacemi v prohlížeči
+| Čítače výkonu   | Měření výkonu z výpočetních prostředků, které podporují aplikaci, například čítače výkonu systému Windows.
+| požádal            | Žádosti přijaté vaší aplikací Například záznam samostatné žádosti se zaznamená do protokolu pro každý požadavek HTTP, který vaše webová aplikace přijme. 
+| trasování                | Podrobné protokoly (trasování) emitované prostřednictvím rozhraní Code/protokolovacích rozhraní zaznamenaných prostřednictvím TrackTrace ().
+
 
 Schéma pro každou tabulku můžete zobrazit na kartě **schématu** v Log Analytics pro aplikaci.
 

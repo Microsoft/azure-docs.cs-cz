@@ -2,13 +2,13 @@
 title: Automatizace Azure Application Insights s využitím PowerShellu | Microsoft Docs
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275877"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780483"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -21,10 +21,10 @@ Klíčem k vytváření těchto prostředků jsou šablony JSON pro [Azure Resou
 ## <a name="one-time-setup"></a>Nastavení jednorázového času
 Pokud jste ještě nepoužili prostředí PowerShell s předplatným Azure, postupujte takto:
 
-Na počítač, na který chcete spouštět skripty, nainstalujte modul Azure PowerShell:
+Na počítač, na kterém chcete spouštět skripty, nainstalujte modul Azure PowerShell:
 
 1. Nainstalujte [Instalace webové platformy Microsoft (verze 5 nebo novější)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Použijte ji k instalaci Microsoft Azure PowerShellu.
+2. Použijte ji k instalaci Microsoft Azure PowerShell.
 
 Kromě používání šablon Správce prostředků existuje bohatá sada [Application Insights rutin PowerShellu](https://docs.microsoft.com/powershell/module/az.applicationinsights), která usnadňuje konfiguraci Application Insights prostředků programově. Mezi možnosti povolené rutinami patří:
 
@@ -229,7 +229,21 @@ Další vlastnosti jsou k dispozici prostřednictvím rutin:
 
 Informace o parametrech těchto rutin najdete v [podrobné dokumentaci](https://docs.microsoft.com/powershell/module/az.applicationinsights) .  
 
-## <a name="set-the-data-retention"></a>Nastavení uchovávání dat 
+## <a name="set-the-data-retention"></a>Nastavení uchovávání dat
+
+Níže jsou tři metody pro programové nastavení uchovávání dat u Application Insightsho prostředku.
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>Nastavení uchovávání dat pomocí příkazů PowerShellu
+
+Tady je jednoduchá sada příkazů PowerShellu pro nastavení uchovávání dat pro váš Application Insights prostředek:
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>Nastavení uchovávání dat pomocí REST
 
 Pokud chcete získat aktuální uchovávání dat pro váš Application Insights prostředek, můžete použít nástroj OSS [ARMClient](https://github.com/projectkudu/ARMClient).  (Další informace o ARMClient od článků [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) a [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Tady je příklad použití `ARMClient`pro získání aktuálního uchování:
 
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>Nastavení uchovávání dat pomocí skriptu PowerShellu
 
 Pro změnu uchovávání lze také použít následující skript. Zkopírujte tento skript a uložte ho `Set-ApplicationInsightsRetention.ps1`jako.
 
